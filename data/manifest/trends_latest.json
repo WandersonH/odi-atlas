@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-15T17:53:19Z",
+  "run_started_utc": "2026-10-15T18:19:26Z",
   "config": {
-    "nota": "Até 5 termos por grupo. Valores do Trends só são comparáveis dentro do mesmo grupo e período. Nomes de urna conforme o TSE (1º turno de 2026).",
+    "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período.",
     "geo": "BR",
     "periodos": [
       "now 7-d",
@@ -12,7 +12,22 @@
     "pausa_segundos": 5,
     "grupos": [
       {
-        "nome": "segundo_turno",
+        "nome": "segundo_turno_topicos",
+        "termos": [
+          {
+            "rotulo": "Flávio Bolsonaro",
+            "busca": "Flávio Bolsonaro",
+            "tipo_contem": "Senador"
+          },
+          {
+            "rotulo": "Lula",
+            "busca": "Luiz Inácio Lula da Silva",
+            "tipo_contem": "Presidente"
+          }
+        ]
+      },
+      {
+        "nome": "segundo_turno_palavras",
         "termos": [
           "Flávio Bolsonaro",
           "Lula"
@@ -33,10 +48,22 @@
   "aviso_metodologico": "Valores 0-100 relativos dentro de cada consulta (grupo x período). Não são volumes; não compare entre consultas diferentes.",
   "consultas": [
     {
-      "grupo": "segundo_turno",
+      "grupo": "segundo_turno_palavras",
       "termos": [
         "Flávio Bolsonaro",
         "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        }
       ],
       "periodo": "now 7-d",
       "geo": "BR",
@@ -45,10 +72,22 @@
       "status": "ok"
     },
     {
-      "grupo": "segundo_turno",
+      "grupo": "segundo_turno_palavras",
       "termos": [
         "Flávio Bolsonaro",
         "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        }
       ],
       "periodo": "today 3-m",
       "geo": "BR",
@@ -65,6 +104,33 @@
         "Renan Santos",
         "Ronaldo Caiado"
       ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "Augusto Cury",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "Ronaldo Caiado",
+          "modo": "palavra"
+        }
+      ],
       "periodo": "now 7-d",
       "geo": "BR",
       "serie_pontos": 169,
@@ -79,6 +145,33 @@
         "Augusto Cury",
         "Renan Santos",
         "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "Augusto Cury",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "Ronaldo Caiado",
+          "modo": "palavra"
+        }
       ],
       "periodo": "today 3-m",
       "geo": "BR",
@@ -87,7 +180,9 @@
       "status": "ok"
     }
   ],
-  "blocked": [],
-  "run_finished_utc": "2026-10-15T17:56:15Z",
-  "status": "ok"
+  "blocked": [
+    "grupo segundo_turno_topicos: ValueError: tópico não encontrado para 'Flávio Bolsonaro' com tipo contendo 'Senador'; opções: [('Flávio Bolsonaro', 'Candidato a Presidente do Brasil'), ('MÚSICA DE CAMPANHA FLÁVIO BOLSONARO 2026', 'Assunto'), ('FLÁVIO BOLSONARO', 'Assunto'), ('Flávio Bolsonaro', 'Assunto'), ('Flávio Bolsonaro', 'Canção')]"
+  ],
+  "run_finished_utc": "2026-10-15T18:20:40Z",
+  "status": "bloqueado"
 }
