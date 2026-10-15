@@ -8,7 +8,7 @@ Protótipo de observatório acadêmico do **Observatório de Desinformação e I
 
 | Item | Estado |
 |---|---|
-| `ODI_Atlas_v15_MVP.html` | Interface editorial com 13 cadernos. Caderno 12 (Geografia do Voto) com votos reais do TSE; caderno 13 (Conteúdo · YouTube por tema) com vídeos de Lula e Flávio, temas por dicionário aberto, linha do tempo e nuvem de palavras. |
+| `ODI_Atlas_v15_MVP.html` | Interface editorial com 14 cadernos. Caderno 12 (Geografia do Voto) com votos reais do TSE; caderno 13 (Conteúdo · YouTube por tema) com vídeos de Lula e Flávio, temas por dicionário aberto, linha do tempo, nuvem de palavras, rede de coocorrência e rede de influenciadores (Lula vermelho × Flávio verde); caderno 14 (Buscas · Google Trends). |
 | `scripts/fetch_sources.py` | P1: baixa os originais do TSE (CKAN) e do IBGE, registra SHA-256, tamanho e cabeçalhos HTTP, e extrai Presidente / 1º turno sem alterar colunas. |
 | `tests/` | Testes com arquivos sintéticos (filtro de cargo/turno, deduplicação entre arquivos BR e UF, conflitos, encoding Latin-1, execução completa sem rede). **Não substituem** a execução real. |
 | `.github/workflows/p1-fontes.yml` | Executa a P1 no GitHub Actions: manual ou toda segunda-feira. |

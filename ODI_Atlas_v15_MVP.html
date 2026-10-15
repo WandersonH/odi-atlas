@@ -530,8 +530,28 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .yt-lv{display:inline-block;font:700 9px/1 'Courier New',monospace;padding:2px 4px;color:#fff;margin-right:3px}
 @media (max-width:800px){.yt-infstats{grid-template-columns:1fr}}
 </style>
+
+<style>
+/* Caderno 14 · Google Trends */
+#gTrends{--yt-axis:#1b2a3d;--yt-a:#c8102e;--yt-b:#1f8a3b}
+#gTrends h2{margin:2px 0 10px;font:700 21px/1.2 Georgia,'Times New Roman',serif;color:#172238}
+.gt-sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+.gt-sum>div{border-top:3px solid var(--c);background:#f7f9fa;padding:10px 12px;font-size:12px;color:#53606b}
+.gt-sum b{display:block;font:700 26px/1.1 Georgia,serif;color:var(--c)}.gt-sum h4{margin:0 0 4px;font:700 13px Georgia,serif;color:#172238}
+.gt-chart{margin:12px 0}#gtChart svg{width:100%;height:auto;display:block}
+#gtChart text{font:10px 'Courier New',monospace;fill:#5d6a76}#gtChart .gt-grid{stroke:#e3e6e8}
+.gt-legend{display:flex;flex-wrap:wrap;gap:14px;font:11px 'Courier New',monospace;color:#3c4a58;margin-top:8px}.gt-legend i{display:inline-block;width:14px;height:3px;vertical-align:3px;margin-right:5px}
+.gt-legend .gt-sq{width:11px;height:11px;vertical-align:-1px}
+.gt-geo>div{min-width:0}.gt-geo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;margin:12px 0}
+.gt-tiles{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;max-width:470px}
+.gt-tile{aspect-ratio:1/1;min-width:0;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font:700 13px/1.1 'Courier New',monospace;cursor:default}
+.gt-tile small{font-weight:400;font-size:10px;opacity:.92}
+.gt-tbl{width:100%;border-collapse:collapse;font-size:12px}.gt-tbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px 'Courier New',monospace;text-transform:uppercase;padding:7px 8px;text-align:left}
+.gt-tbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}.gt-tbl td.n{text-align:right}
+@media (max-width:800px){.gt-geo{grid-template-columns:1fr}.gt-tile{font-size:11px}.gt-tile small{font-size:8px}}
+</style>
 </head>
-<body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 13 CADERNOS</div><nav class="nav" id="nav">
+<body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 14 CADERNOS</div><nav class="nav" id="nav">
 <button class="navbutton active" data-tab="overview"><span class="navicon">◫</span> Visão geral</button>
 <button class="navbutton" data-tab="followers"><span class="navicon">▣</span> Big Numbers · Seguidores</button>
 <button class="navbutton" data-tab="history"><span class="navicon">◷</span> Evolução diária</button>
@@ -545,6 +565,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 <button class="navbutton" data-tab="leiaMe"><span class="navicon">ⓘ</span> LEIA-ME</button>
 <button class="navbutton" data-tab="geoVote"><span class="navicon">⌖</span> Geografia do Voto · 2022/26</button>
 <button class="navbutton" data-tab="ytContent"><span class="navicon">▶</span> Conteúdo · YouTube por tema</button>
+<button class="navbutton" data-tab="gTrends"><span class="navicon">↗</span> Buscas · Google Trends</button>
 </nav><div class="sidefoot"><span>ESTUDO CONTÍNUO / V15 · MVP</span>PNAD 2025 · Social Blade SET–OUT 2026<br>Dados armazenados neste arquivo.</div></aside>
 <main class="main"><header class="header"><span class="crumb">EDIÇÃO DE PESQUISA  /  COMUNICAÇÃO POLÍTICA  /  2026</span><div class="actions"><span class="datechip">● Capturas: 10–11 OUT 2026</span><button class="ghostbutton" id="downloadJson">↓ Base JSON</button><button class="primarybutton" id="printView">↗ Imprimir / PDF</button></div></header>
 <section class="panel active" id="overview">
@@ -774,6 +795,28 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="ytMethod"></p>
     <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Tags são as que o próprio canal declara ao YouTube; não indicam o conteúdo de fato do vídeo. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
+</section>
+
+<section class="panel" id="gTrends" aria-label="Caderno 14 Buscas no Google Trends">
+  <div class="paper-ribbon"><span>CADERNO 14 / BUSCAS · GOOGLE TRENDS</span><span id="gtRibbon">BRASIL · COLETA DIÁRIA</span></div>
+  <div class="intro odi-map-hero"><div class="eyebrow">Google Trends · interesse de busca relativo</div>
+    <h1>Quem o Brasil procura no Google.<br><em>Hora a hora, estado a estado.</em></h1>
+    <p>Interesse de busca por <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (e pelos cinco mais votados do 1º turno). O Trends não dá volume: dá um índice de 0 a 100 relativo ao pico <b>dentro de cada consulta</b>. Mais busca não significa mais voto nem apoio — inclui curiosidade, crítica e notícia.</p>
+  </div>
+  <div class="yt-controls card">
+    <div class="yt-chips" id="gtGrupo" role="group" aria-label="Consulta"></div>
+    <div class="yt-chips" id="gtPeriodo" role="group" aria-label="Período"></div>
+  </div>
+  <div class="odi-signal" id="gtStatus" role="status">Aguardando leitura da coleta do Trends.</div>
+  <div class="gt-sum" id="gtSum"></div>
+  <div class="card gt-chart"><div class="eyebrow">Série temporal</div><h2 id="gtChartTitle"></h2><div id="gtChart"></div><div class="gt-legend" id="gtLegend"></div></div>
+  <div class="gt-geo">
+    <div class="card"><div class="eyebrow">Por estado</div><h2 id="gtMapTitle"></h2><div class="gt-tiles" id="gtTiles"></div><div class="gt-legend" id="gtMapLegend"></div></div>
+    <div class="card"><div class="eyebrow">Tabela por UF</div><div class="yt-tablewrap" style="max-height:470px"><table class="gt-tbl" id="gtTbl"></table></div></div>
+  </div>
+  <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="gtMethod"></p>
+    <p>Tópico × palavra: “Lula” como palavra também conta buscas pelo molusco; por isso o padrão é o <b>tópico</b> do Trends (a entidade da pessoa), escolhido pelo tipo e registrado abaixo. Renan Santos não tem tópico próprio e entra como palavra. Por estado, o Trends mostra a divisão do interesse entre os termos (soma 100% em cada UF), não o volume do estado. Fonte: endpoints públicos do Google Trends, coleta automática diária (GitHub Actions).</p>
+    <p id="gtFiles"></p></div>
 </section>
 
 <section class="panel" id="history">
@@ -1628,6 +1671,67 @@ document.querySelectorAll('#ytContent [data-iview]').forEach(b=>b.addEventListen
 $('ytInfSearch').addEventListener('input',ev=>{busca=ev.target.value;tabela();});
 $('ytInfReset').addEventListener('click',()=>{vb=[-60,-60,1120,1120];fixo=false;sel=null;desenhar();});
 stats();zoomPan();desenhar();}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+if(sec.classList.contains('active'))carregar();
+})();
+</script>
+
+<script>
+/* Caderno 14 · Google Trends (data/trends/caderno.json, gerado de cada coleta diária) */
+(function(){
+const sec=document.getElementById('gTrends');if(!sec)return;
+const COR={'Lula':'#c8102e','Flávio Bolsonaro':'#1f8a3b','Augusto Cury':'#b8862e','Renan Santos':'#5b7894','Ronaldo Caiado':'#7a4d8c'};
+const NOME_GRUPO={segundo_turno_topicos:'2º turno · tópicos',primeiro_turno_5_topicos:'1º turno · 5 mais votados',segundo_turno_palavras:'2º turno · palavras soltas'};
+const NOME_PER={'now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)'};
+const GRADE={RR:[2,0],AP:[4,0],AM:[1,1],PA:[3,1],MA:[4,1],CE:[5,1],RN:[6,1],AC:[0,2],RO:[1,2],MT:[2,2],TO:[3,2],PI:[4,2],PE:[5,2],PB:[6,2],MS:[2,3],GO:[3,3],DF:[4,3],BA:[5,3],AL:[6,3],PR:[2,4],SP:[3,4],MG:[4,4],ES:[5,4],SE:[6,4],SC:[2,5],RJ:[4,5],RS:[2,6]};
+let D=null,grupo='segundo_turno_topicos',periodo='now 7-d',feito=false;
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cor=t=>COR[t]||'#3c4a58';
+const atual=()=>D.consultas.find(c=>c.grupo===grupo&&c.periodo===periodo);
+const fmtT=(iso,h)=>{const d=new Date(iso);return h?d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',timeZone:'America/Sao_Paulo'}).replace(',',' ')+'h':d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'});};
+function mix(a,b,f){const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));const A=p(a),B=p(b);return 'rgb('+A.map((v,i)=>Math.round(B[i]+(v-B[i])*f)).join(',')+')';}
+function chips(){const grupos=[...new Set(D.consultas.map(c=>c.grupo))];
+$('gtGrupo').innerHTML=grupos.map(g=>`<button class="yt-chip" data-g="${g}" aria-pressed="${g===grupo}">${esc(NOME_GRUPO[g]||g)}</button>`).join('');
+$('gtPeriodo').innerHTML=['now 7-d','today 3-m'].map(p=>`<button class="yt-chip" data-p="${p}" aria-pressed="${p===periodo}">${p==='now 7-d'?'7 dias':'3 meses'}</button>`).join('');
+$('gtGrupo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{grupo=b.dataset.g;render();}));
+$('gtPeriodo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{periodo=b.dataset.p;render();}));}
+function resumo(c){const n=c.termos.length;const comp=c.serie.filter(p=>!p.parcial);
+$('gtSum').innerHTML=c.termos.map((t,i)=>{const vs=comp.map(p=>p.v[i]).filter(v=>v!=null);const media=vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:0;const pico=Math.max(0,...vs);
+const lider=c.uf.filter(u=>u.v[i]!=null&&u.v[i]===Math.max(...u.v.filter(x=>x!=null))).length;const it=c.itens[i];
+return `<div style="--c:${cor(t)}"><h4>${esc(t)}</h4><b>${media.toFixed(0)}</b>média no período · pico ${pico}<br>lidera em ${lider} de ${c.uf.length} UFs<br><span class="yt-meta">${it.modo==='topico'?'tópico: '+esc(it.tipo):'palavra solta'}</span></div>`;}).join('');}
+function grafico(c){const W=900,H=320,m={l:34,r:12,t:10,b:28};const N=c.serie.length;if(!N){$('gtChart').innerHTML='<p class="yt-meta">Sem série nesta consulta.</p>';return;}
+const x=i=>m.l+(W-m.l-m.r)*i/(N-1||1),y=v=>m.t+(H-m.t-m.b)*(1-v/100);const hora=c.periodo==='now 7-d';
+let h=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Série do Google Trends">`;
+for(const v of [0,25,50,75,100])h+=`<line class="gt-grid" x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}"/><text x="${m.l-6}" y="${y(v)+3}" text-anchor="end">${v}</text>`;
+const passo=Math.ceil(N/7);for(let i=0;i<N;i+=passo)h+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${esc(fmtT(c.serie[i].t,hora))}</text>`;
+c.termos.forEach((t,k)=>{let d='',dp='';c.serie.forEach((p,i)=>{const v=p.v[k];if(v==null)return;const seg=`${x(i).toFixed(1)},${y(v).toFixed(1)}`;if(!p.parcial)d+=(d?'L':'M')+seg;});
+const ult=c.serie.map((p,i)=>[p,i]).filter(([p])=>p.v[k]!=null);const par=ult.filter(([p])=>p.parcial);
+if(par.length){const prev=ult.filter(([p])=>!p.parcial).pop();const pts=(prev?[prev]:[]).concat(par);dp=pts.map(([p,i],j)=>(j?'L':'M')+x(i).toFixed(1)+','+y(p.v[k]).toFixed(1)).join('');}
+h+=`<path d="${d}" fill="none" stroke="${cor(t)}" stroke-width="${c.termos.length>2?1.8:2.4}"/>`+(dp?`<path d="${dp}" fill="none" stroke="${cor(t)}" stroke-width="2" stroke-dasharray="3 3"/>`:'');});
+h+='</svg>';$('gtChart').innerHTML=h;
+$('gtLegend').innerHTML=c.termos.map(t=>`<span><i style="background:${cor(t)}"></i>${esc(t)}</span>`).join('')+'<span><i style="background:repeating-linear-gradient(90deg,#5d6a76 0 3px,transparent 3px 6px)"></i>tracejado = período ainda incompleto</span>';
+$('gtChartTitle').textContent=(NOME_GRUPO[c.grupo]||c.grupo)+' · '+(NOME_PER[c.periodo]||c.periodo);}
+function mapa(c){const iL=c.termos.indexOf('Lula'),iF=c.termos.indexOf('Flávio Bolsonaro');const dois=c.termos.length===2&&iL>=0&&iF>=0;
+const by={};c.uf.forEach(u=>by[u.uf]=u);let h='';
+for(let r=0;r<7;r++)for(let col=0;col<7;col++){const uf=Object.keys(GRADE).find(k=>GRADE[k][0]===col&&GRADE[k][1]===r);if(!uf){h+='<div></div>';continue;}
+const u=by[uf];if(!u||u.v.every(v=>v==null)){h+=`<div class="gt-tile" style="background:#c9d1d6" title="${uf}: sem dado">${uf}<small>—</small></div>`;continue;}
+let bg,lab;if(dois){const l=u.v[iL]||0,f=u.v[iF]||0,fr=l+f?l/(l+f):.5;bg=mix('#c8102e','#1f8a3b',Math.max(0,Math.min(1,(fr-.35)/.3)));lab=`${l}·${f}`;}
+else{const mx=Math.max(...u.v.filter(v=>v!=null));const i=u.v.indexOf(mx);bg=cor(c.termos[i]);lab=`${esc(c.termos[i].split(' ')[0])} ${mx}%`;}
+h+=`<div class="gt-tile" style="background:${bg}" title="${esc(u.nome)}: ${c.termos.map((t,i)=>t+' '+(u.v[i]??'—')+'%').join(' · ')}">${uf}<small>${lab}</small></div>`;}
+$('gtTiles').innerHTML=h;$('gtMapTitle').textContent=dois?'Divisão do interesse entre Lula e Flávio':'Quem lidera o interesse em cada UF';
+$('gtMapLegend').innerHTML=dois?`<span>número = Lula·Flávio (%)</span><span><i class="gt-sq" style="background:#c8102e"></i>65%+ Lula</span><span><i class="gt-sq" style="background:${mix('#c8102e','#1f8a3b',.5)}"></i>equilíbrio</span><span><i class="gt-sq" style="background:#1f8a3b"></i>65%+ Flávio</span>`:c.termos.map(t=>`<span><i class="gt-sq" style="background:${cor(t)}"></i>${esc(t)}</span>`).join('');
+const rows=[...c.uf].sort((a,b)=>(b.v[iL>=0?iL:0]??-1)-(a.v[iL>=0?iL:0]??-1));
+$('gtTbl').innerHTML=`<thead><tr><th>UF</th>${c.termos.map(t=>`<th style="color:${cor(t)==='#3c4a58'?'#fff':'#fff'}">${esc(t.split(' ')[0])} %</th>`).join('')}</tr></thead><tbody>${rows.map(u=>`<tr><td>${esc(u.nome)}</td>${u.v.map((v,i)=>`<td class="n" style="color:${cor(c.termos[i])};font-weight:${v===Math.max(...u.v.filter(x=>x!=null))?700:400}">${v??'—'}</td>`).join('')}</tr>`).join('')}</tbody>`;}
+function render(){chips();const c=atual();if(!c){$('gtStatus').textContent='⛔ Consulta sem dados nesta coleta.';return;}
+resumo(c);grafico(c);mapa(c);
+$('gtFiles').innerHTML=`Arquivos desta consulta: <a href="./${esc(c.arquivos.serie)}" download>série (CSV)</a> · <a href="./${esc(c.arquivos.uf)}" download>por UF (CSV)</a> · consolidado: <a href="./data/trends/caderno.json" target="_blank" rel="noopener">caderno.json</a>. Termos consultados: ${c.itens.map(i=>esc(i.rotulo)+' → '+(i.modo==='topico'?'tópico '+esc(i.consulta)+' ('+esc(i.tipo)+')':'palavra “'+esc(i.consulta)+'”')).join('; ')}.`;}
+async function carregar(){if(feito)return;feito=true;
+try{const r=await fetch('./data/trends/caderno.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);D=await r.json();}
+catch(err){$('gtStatus').textContent='⛔ Coleta do Trends indisponível ('+err.message+'). Abra pelo GitHub Pages ou servidor local.';feito=false;return;}
+const quando=new Date(D.coleta_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
+$('gtStatus').textContent=`Coleta de ${quando} (Brasília) · ${D.consultas.length} consultas · ${D.aviso}`;$('gtRibbon').textContent='BRASIL · COLETA DE '+quando.slice(0,10);
+$('gtMethod').textContent=D.nota;render();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
 })();

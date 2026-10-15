@@ -29,6 +29,10 @@ jobs:
         id: coleta
         continue-on-error: true
         run: python scripts/collect_trends.py
+      - name: Caderno 14 — consolidar a coleta mais recente
+        if: always()
+        continue-on-error: true
+        run: python scripts/build_trends_caderno.py
       - name: Resumo
         if: always()
         run: |

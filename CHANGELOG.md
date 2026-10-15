@@ -6,6 +6,76 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C5.0] 2026-10-15 — Rede de influenciadores do YouTube (Lula vermelho × Flávio verde) e caderno 14 · Google Trends
+
+**Mudou — influenciadores (caderno 13)**
+- `scripts/collect_influenciadores.py` + `data/config/influenciadores_youtube.json`. Coleta diária dentro do workflow `seguidores-youtube.yml`, com a mesma chave `YOUTUBE_API_KEY`:
+  - **Busca** no YouTube (search.list) por “Lula” e “Flávio Bolsonaro” em três janelas: mais vistos desde 16/08, mais vistos em 7 dias e mais recentes em 3 dias. Depois, videos.list e channels.list.
+  - **Teto de 2.500 unidades de cota por execução** (de 10.000/dia).
+  - **Acumula** em `data/youtube/influenciadores/videos.csv.gz` e `canais.csv`.
+- **Exclusões:**
+  - canais de campanha declarados ao TSE;
+  - categorias Guias e estilo (o molusco “lula”), Música, Esportes e Jogos;
+  - termos de culinária;
+  - vídeo sem o nome no título ou na descrição;
+  - canal com menos de 10.000 inscritos públicos (assim, pessoa comum não entra).
+- **Níveis por vídeo, iguais para os dois** (definição do usuário, como no Flaviômetro):
+  - **1 · falou de**: nome, @, hashtag ou número como voto (“Flávio 22”, “#lula13”);
+  - **2 · pediu voto**: “vote 22”, “dia 25 é Flávio”, “vote 13”, “dia 25 é Lula”, “voto no Lula”…
+  - O trecho que disparou cada classificação vai para a planilha, para conferência humana.
+  - As regras são reaplicadas a todo o acervo a cada execução: mudar a regra não exige coletar de novo.
+- `scripts/build_rede_influenciadores.py`: rede bipartida, com os candidatos e até 200 canais (os que mais falam deles), posição por ForceAtlas2 LinLog.
+  - Cores: **Lula #c8102e (vermelho), Flávio #1f8a3b (verde)**, canais na mistura.
+  - Arestas: tracejada = falou; cheia = algum vídeo pediu voto.
+  - Saídas: `rede.json`, `rede.gexf`, `rede_nos.csv`, `rede_arestas.csv` e `videos_validos.csv` (link, nível e trecho de cada vídeo).
+- Página: bloco “Quem fala de Lula e de Flávio”, com quadros-resumo, rede (zoom, arrastar, painel com os vídeos mais vistos do canal e seus níveis), tabela ordenável de canais e downloads.
+
+**Mudou — Google Trends (caderno 14, novo)**
+- A coleta já rodava desde a versão C1.0, mas **não aparecia em nenhum caderno** (pendência registrada). Agora aparece.
+- `scripts/build_trends_caderno.py` consolida a coleta mais recente com status ok em `data/trends/caderno.json`. Roda no `trends.yml` depois de cada coleta.
+- Caderno 14 “Buscas · Google Trends”, com Lula vermelho e Flávio verde:
+  - consultas: 2º turno (tópicos), 1º turno (5 mais votados) e 2º turno (palavras soltas); períodos de 7 dias (por hora) e 3 meses (por dia);
+  - quadros com média, pico e nº de UFs em que lidera;
+  - série temporal, com o trecho incompleto tracejado;
+  - mapa em grade das 27 UFs (divisão Lula·Flávio) e tabela por UF;
+  - links para os CSVs originais e o tópico exato consultado.
+
+**Testado**
+- ✅ `python -m unittest discover -s tests` — 54 testes OK. Os novos cobrem:
+  - os níveis com 12 frases reais e de controle (“Flávio Dino” não conta; “Olê olá Lula 13” = falou; “Eu voto no Flávio Bolsonaro” = pediu voto);
+  - o molusco;
+  - o teto de cota;
+  - o bloqueio sem chave;
+  - a rede bipartida com corte por inscritos;
+  - o consolidador do Trends (usa a coleta ok mais recente; vazio vira null, não zero).
+- ✅ Run `38802451628` (Actions, 2026-10-15 ~20:30 UTC): coleta de influenciadores ok.
+  - **Cota usada: 2.023**.
+  - 870 vídeos retornados, 821 válidos.
+  - Exclusões: 31 de canais de campanha, 8 Esportes, 5 Música, 2 Jogos, 1 Guias e estilo e 2 sem menção.
+  - 239 canais.
+- ✅ Rede (gerada localmente com as regras finais, sobre esse acervo): **200 canais, 779 vídeos, 312 arestas**.
+  - Lula: 161 canais e 551 vídeos; só falaram dele 49 canais; **1 vídeo pediu voto** (TV Fórum).
+  - Flávio: 151 canais e 543 vídeos; só falaram dele 39 canais; **3 pediram voto** (Deltan Dallagnol “vote Flávio Bolsonaro 22”; Sem Freio Clips com Rui Costa Pimenta “eu voto no Flávio”; Itatiaia).
+  - 112 canais falaram dos dois, quase todos veículos de notícia (UOL, CNN Brasil, Itatiaia, SBT News…).
+- ⚠️ Conferência manual dos 6 casos “pediu voto” da 1ª versão da regra encontrou erro: “Flávio 22” numa notícia da CNN contava como pedido de voto. Corrigido para nível 1 (número como voto = “falou”, como na definição do usuário).
+- ⚠️ Limite que permanece: a Itatiaia **noticia** que Flávio pediu voto e a regra por palavras conta como pedido. O trecho está na planilha.
+- ✅ Trends (coleta de 2026-10-15 18:29 UTC), 2º turno por tópicos, 7 dias:
+  - média Lula 62 × Flávio 44;
+  - Lula lidera nas 27 UFs, com divisão entre 55·45 (ES) e 61·39 (AM);
+  - por palavra solta (que inclui o molusco), Lula 62 × Flávio 15. Mostra por que o padrão é o tópico.
+- ✅ Chromium headless (1400×900 e 390×844):
+  - caderno 13: rede de influenciadores com 202 pontos, 312 linhas e 200 linhas na tabela;
+  - caderno 14: 27 UFs, séries de 2 e 5 termos e tabela;
+  - sem rolagem horizontal.
+
+**Pendente**
+- O nível “pediu voto” por palavras confunde notícia com pedido. Para separar, só com leitura humana de amostra ou IA validada.
+- “Falar” não mede posição (a favor/contra).
+- O acervo de influenciadores cresce a cada dia. A busca do YouTube devolve no máximo ~500 resultados por consulta, então a cobertura é amostral, não censo.
+- Trends: ainda não há histórico de várias coletas no caderno (mostra só a mais recente; as anteriores ficam nas pastas datadas).
+
+---
+
 ## [C4.2] 2026-10-15 — Caderno 13: análise de redes (coocorrência) com tabela, planilhas e GEXF para o Gephi
 
 **Mudou**
