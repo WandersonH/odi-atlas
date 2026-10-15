@@ -1,0 +1,21 @@
+{
+  "nota": "Canais do YouTube (fora das campanhas) que publicaram vídeos citando Lula ou Flávio Bolsonaro. 'Cita' não quer dizer 'apoia': o vídeo pode ser a favor, contra ou neutro. Só entram canais públicos com min_inscritos ou mais (perfil de influenciador/veículo, não pessoa comum).",
+  "desde": "2026-08-16",
+  "min_inscritos": 10000,
+  "cota_maxima_por_execucao": 2500,
+  "candidatos": {
+    "280002542548": {"nome": "Lula", "cor": "#c8102e",
+                     "buscas": ["Lula"],
+                     "mencao": ["lula"]},
+    "280002551544": {"nome": "Flávio Bolsonaro", "cor": "#1f8a3b",
+                     "buscas": ["Flávio Bolsonaro"],
+                     "mencao": ["flavio bolsonaro", "flavio 22", "#flaviobolsonaro", "#flavio22", "senador flavio", "candidato flavio"]}
+  },
+  "buscas_por_execucao": [
+    {"ordem": "viewCount", "janela": "desde", "paginas": 4},
+    {"ordem": "viewCount", "janela_dias": 7, "paginas": 2},
+    {"ordem": "date", "janela_dias": 3, "paginas": 4}
+  ],
+  "excluir_categorias": {"26": "Guias e estilo (receitas: 'lula' também é o molusco)", "10": "Música", "17": "Esportes", "20": "Jogos"},
+  "excluir_termos": ["receita", "frutos do mar", "polvo", "camarao", "aneis de lula", "anel de lula", "lula a dore", "lula frita", "lula recheada"]
+}

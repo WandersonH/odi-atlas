@@ -17,7 +17,7 @@ permissions:
 jobs:
   youtube:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -41,6 +41,16 @@ jobs:
         if: steps.coleta.outcome == 'success'
         continue-on-error: true
         run: python scripts/build_rede.py
+      - name: Caderno 13 — influenciadores que citam Lula ou Flávio (busca do YouTube, teto de cota)
+        id: influ
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/collect_influenciadores.py
+      - name: Caderno 13 — rede de influenciadores (JSON, GEXF e planilhas)
+        if: hashFiles('data/youtube/influenciadores/videos.csv.gz') != ''
+        continue-on-error: true
+        run: python scripts/build_rede_influenciadores.py
 
       - name: Resumo
         if: always()
