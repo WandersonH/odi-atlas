@@ -1,0 +1,65 @@
+name: Teste — coleta gratuita TikTok/Kwai (só diagnóstico)
+
+# Diagnóstico manual: verifica se ferramentas gratuitas conseguem ler perfis públicos a partir do IP do GitHub.
+# Não grava dados no repositório; só escreve o resumo do run.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar yt-dlp (versão do dia)
+        run: pip install -q -U yt-dlp && yt-dlp --version
+      - name: TikTok via yt-dlp (10 vídeos mais recentes, só metadados)
+        continue-on-error: true
+        run: |
+          for u in lulaoficial flaviobolsonaro; do
+            echo "### TikTok @$u" >> "$GITHUB_STEP_SUMMARY"
+            if yt-dlp --skip-download --flat-playlist --playlist-end 10 -J "https://www.tiktok.com/@$u" > tt_$u.json 2> tt_$u.err; then
+              python - "$u" >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json, sys
+          d = json.load(open(f"tt_{sys.argv[1]}.json"))
+          es = d.get("entries") or []
+          print(f"- ✅ {len(es)} vídeos lidos")
+          for e in es[:3]:
+              print(f"  - {e.get('id')} · views={e.get('view_count')} · likes={e.get('like_count')} · comentários={e.get('comment_count')} · {str(e.get('title') or e.get('description') or '')[:80]}")
+          PY
+            else
+              echo "- ⛔ falhou: $(tail -2 tt_$u.err | tr '\n' ' ' | cut -c1-300)" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+      - name: TikTok via yt-dlp (1 vídeo com detalhes completos)
+        continue-on-error: true
+        run: |
+          id=$(python -c "import json;d=json.load(open('tt_lulaoficial.json'));print((d.get('entries') or [{}])[0].get('url') or '')" 2>/dev/null)
+          echo "### TikTok — vídeo completo" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "$id" ] && yt-dlp --skip-download -J "$id" > v.json 2> v.err; then
+            python -c "import json;v=json.load(open('v.json'));print('- ✅ campos:', ', '.join(k for k in ('title','description','timestamp','view_count','like_count','comment_count','repost_count','duration','track','artist','tags') if v.get(k) is not None))" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- ⛔ falhou: $(tail -2 v.err 2>/dev/null | tr '\n' ' ' | cut -c1-300)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Kwai — página pública do perfil (sem login)
+        continue-on-error: true
+        run: |
+          for u in flaviobolsonaro lulaoficial; do
+            echo "### Kwai @$u" >> "$GITHUB_STEP_SUMMARY"
+            code=$(curl -sL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36" -o kw_$u.html -w "%{http_code}" "https://www.kwai.com/@$u")
+            python - "$u" "$code" >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import re, sys
+          u, code = sys.argv[1], sys.argv[2]
+          h = open(f"kw_{u}.html", encoding="utf-8", errors="ignore").read()
+          sinais = {k: len(re.findall(p, h)) for k, p in {
+              "photoId": r'"photoId"', "viewCount": r'"viewCount"', "likeCount": r'"likeCount"',
+              "caption": r'"caption"', "fans/followers": r'"(?:fan|follower)s?Count"', "NEXT_DATA": r"__NEXT_DATA__",
+              "INITIAL_STATE": r"__INITIAL_STATE__|__APOLLO_STATE__"}.items()}
+          print(f"- HTTP {code} · {len(h):,} bytes · sinais de dados no HTML: {sinais}")
+          PY
+          done
