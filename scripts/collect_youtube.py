@@ -8,6 +8,9 @@
 - O YouTube arredonda publicamente o número de inscritos (3 dígitos significativos) e permite ocultá-lo;
   canal com contagem oculta fica sem número (não vira zero).
 - Saída: data/seguidores/youtube_latest.csv no formato do caderno 02, histórico e manifesto.
+- Vídeos: todos os publicados desde o início da campanha (16/08/2026), com visualizações, curtidas e
+  número de comentários, em data/youtube/videos_<data>.csv.gz (uma foto por dia, para ver a evolução).
+  O texto dos comentários NÃO é coletado (dados de pessoas comuns; LGPD).
 """
 from __future__ import annotations
 
@@ -24,7 +27,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from net import with_scheme, get_json, now_utc  # noqa: E402
 
-API = "https://www.googleapis.com/youtube/v3/channels"
+BASE = "https://www.googleapis.com/youtube/v3"
+API = BASE + "/channels"
+DESDE = "2026-08-16"  # início oficial da campanha eleitoral de 2026
 CARGOS = {"PRESIDENTE", "VICE-PRESIDENTE"}
 
 
@@ -59,8 +64,37 @@ def load_targets(root: Path, year: str = "2026"):
 
 def query(key: str, kind: str, value: str):
     param = {"id": "id", "handle": "forHandle", "username": "forUsername"}[kind]
-    q = urllib.parse.urlencode({"part": "id,snippet,statistics", param: value, "key": key})
+    q = urllib.parse.urlencode({"part": "id,snippet,statistics,contentDetails", param: value, "key": key})
     return get_json(f"{API}?{q}", timeout=60).get("items") or []
+
+
+def videos_do_canal(key: str, uploads: str, desde: str):
+    """Vídeos do canal publicados desde `desde` (ISO), com estatísticas. Devolve (lista, unidades de cota)."""
+    ids, page, cota = [], None, 0
+    while True:
+        q = {"part": "contentDetails", "playlistId": uploads, "maxResults": 50, "key": key}
+        if page:
+            q["pageToken"] = page
+        d = get_json(f"{BASE}/playlistItems?{urllib.parse.urlencode(q)}", timeout=60)
+        cota += 1
+        novos = [(it["contentDetails"]["videoId"], it["contentDetails"].get("videoPublishedAt") or "") for it in d.get("items", [])]
+        ids += [v for v, pub in novos if pub >= desde]
+        page = d.get("nextPageToken")
+        # a playlist de uploads vem do mais novo para o mais antigo: para quando passar da data
+        if not page or (novos and min(p for _, p in novos if p) < desde):
+            break
+    out = []
+    for i in range(0, len(ids), 50):
+        q = urllib.parse.urlencode({"part": "snippet,statistics,contentDetails", "id": ",".join(ids[i:i + 50]), "key": key})
+        d = get_json(f"{BASE}/videos?{q}", timeout=60)
+        cota += 1
+        for v in d.get("items", []):
+            st, sn = v.get("statistics", {}), v.get("snippet", {})
+            out.append({"video_id": v["id"], "publicado_em": sn.get("publishedAt"), "titulo": sn.get("title", ""),
+                        "duracao": v.get("contentDetails", {}).get("duration", ""),
+                        "visualizacoes": st.get("viewCount"), "curtidas": st.get("likeCount"),
+                        "comentarios": st.get("commentCount")})
+    return out, cota
 
 
 def main(argv=None) -> int:
@@ -86,6 +120,7 @@ def main(argv=None) -> int:
     man["alvos"] = len(targets)
     man["nao_resolvidos"] = [t["url"] for t in targets if not t["ref"]]
     rows, cache, cota = [], {}, 0
+    videos_por_canal, video_rows = {}, []
     for t in targets:
         if not t["ref"]:
             continue
@@ -107,6 +142,20 @@ def main(argv=None) -> int:
             st, sn = it.get("statistics", {}), it.get("snippet", {})
             c.update(channel_id=it["id"], titulo=sn.get("title"), oculto=st.get("hiddenSubscriberCount"),
                      inscritos=st.get("subscriberCount"), videos=st.get("videoCount"), visualizacoes=st.get("viewCount"))
+            uploads = it.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads")
+            if uploads and it["id"] not in videos_por_canal:
+                try:
+                    vids, q = videos_do_canal(key, uploads, DESDE)
+                    cota += q
+                    videos_por_canal[it["id"]] = vids
+                except Exception as e:
+                    man["warnings"].append(f"vídeos de {it['id']}: {type(e).__name__}: {e}")
+                    videos_por_canal[it["id"]] = []
+            for vd in videos_por_canal.get(it["id"], []):
+                video_rows.append([t["candidate_id"], t["candidate_name"], it["id"], sn.get("title", ""), vd["video_id"],
+                                   vd["publicado_em"], vd["titulo"], vd["duracao"], vd["visualizacoes"], vd["curtidas"],
+                                   vd["comentarios"], started])
+            c["videos_desde_inicio_campanha"] = len(videos_por_canal.get(it["id"], []))
             if not st.get("hiddenSubscriberCount") and st.get("subscriberCount") is not None:
                 rows.append([t["candidate_id"], t["candidate_name"], "YouTube", with_scheme(t["url"]), int(st["subscriberCount"]),
                              started[:10], f"https://www.youtube.com/channel/{it['id']}"])
@@ -119,6 +168,22 @@ def main(argv=None) -> int:
             w.writerow(header)
             w.writerows(rows)
     man["linhas_csv"] = len(rows)
+    vdir = root / "data" / "youtube"
+    vdir.mkdir(parents=True, exist_ok=True)
+    vh = ["candidate_id", "candidate_name", "channel_id", "canal", "video_id", "publicado_em", "titulo", "duracao",
+          "visualizacoes", "curtidas", "comentarios", "coletado_em"]
+    seen, uniq = set(), []
+    for r in video_rows:  # mesmo canal declarado por duas candidaturas aparece uma vez por candidatura
+        if (r[0], r[4]) not in seen:
+            seen.add((r[0], r[4]))
+            uniq.append(r)
+    for name in (f"videos_{started[:10]}.csv.gz", "videos_latest.csv.gz"):
+        with gzip.open(vdir / name, "wt", encoding="utf-8", newline="") as f:
+            w = csv.writer(f, delimiter=";", lineterminator="\n")
+            w.writerow(vh)
+            w.writerows(uniq)
+    man["videos"] = len(uniq)
+    man["videos_desde"] = DESDE
     if targets and not rows:
         man["blocked"].append("nenhum canal retornou número de inscritos")
     return finish(1 if man["blocked"] else 0)

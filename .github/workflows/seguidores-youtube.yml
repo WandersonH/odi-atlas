@@ -39,7 +39,7 @@ jobs:
           p = pathlib.Path("data/seguidores/youtube_manifesto_latest.json")
           if not p.exists(): print("## manifesto não gerado"); raise SystemExit
           m = json.loads(p.read_text(encoding="utf-8"))
-          print(f"## YouTube — status: **{m['status']}** · canais com número: {m.get('linhas_csv')} de {m.get('alvos')} · cota usada: {m.get('cota_usada')}\n")
+          print(f"## YouTube — status: **{m['status']}** · canais com número: {m.get('linhas_csv')} de {m.get('alvos')} · vídeos desde {m.get('videos_desde')}: {m.get('videos')} · cota usada: {m.get('cota_usada')}\n")
           for c in m["canais"]: print(f"- {c['url']} → {c.get('titulo') or 'não encontrado'} · {c.get('inscritos') or ('oculto' if c.get('oculto') else '—')}")
           for b in m["blocked"]: print(f"- ⛔ {b}")
           EOF

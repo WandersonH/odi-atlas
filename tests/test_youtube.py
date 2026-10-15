@@ -30,3 +30,32 @@ class TestParse(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestVideos(unittest.TestCase):
+    def test_pagina_ate_a_data_e_busca_estatisticas(self):
+        chamadas = []
+
+        def fake(url, timeout=60):
+            chamadas.append(url)
+            if "/playlistItems" in url and "pageToken" not in url:
+                return {"items": [{"contentDetails": {"videoId": "v2", "videoPublishedAt": "2026-10-10T00:00:00Z"}},
+                                  {"contentDetails": {"videoId": "v1", "videoPublishedAt": "2026-09-01T00:00:00Z"}}],
+                        "nextPageToken": "P2"}
+            if "/playlistItems" in url:
+                return {"items": [{"contentDetails": {"videoId": "v0", "videoPublishedAt": "2026-08-01T00:00:00Z"}}],
+                        "nextPageToken": "P3"}
+            return {"items": [{"id": "v2", "snippet": {"publishedAt": "2026-10-10T00:00:00Z", "title": "A"},
+                               "statistics": {"viewCount": "10", "likeCount": "2", "commentCount": "1"},
+                               "contentDetails": {"duration": "PT1M"}},
+                              {"id": "v1", "snippet": {"publishedAt": "2026-09-01T00:00:00Z", "title": "B"},
+                               "statistics": {"viewCount": "5"}, "contentDetails": {"duration": "PT2M"}}]}
+        orig = cy.get_json
+        cy.get_json = fake
+        try:
+            vids, cota = cy.videos_do_canal("k", "UU123", "2026-08-16")
+        finally:
+            cy.get_json = orig
+        self.assertEqual([v["video_id"] for v in vids], ["v2", "v1"])
+        self.assertEqual(cota, 3)  # 2 páginas da playlist (parou ao passar da data) + 1 videos.list
+        self.assertFalse(any("P3" in c for c in chamadas))
