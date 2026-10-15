@@ -33,6 +33,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_conteudo as bc  # noqa: E402
+import plataformas as pl  # noqa: E402
 
 K = 6
 MIN_FREQ = 3
@@ -180,8 +181,8 @@ def chi2_assoc(dentro: np.ndarray, total: np.ndarray, n_dentro: int, n: int) -> 
 
 
 def main(argv=None) -> int:
-    root = Path(argv[0]) if argv else Path(".")
-    linhas = list(csv.DictReader(open(root / "data/corpus/youtube_candidatos_segmentos.csv", encoding="utf-8")))
+    root, plat = pl.args(argv)
+    linhas = list(csv.DictReader(open(pl.caminho(root, plat, "segmentos"), encoding="utf-8")))
     X, voc = matriz([l["texto"] for l in linhas])
     n_ativos = int((X.sum(1) > 0).sum())
     mc = max(MIN_CLASSE, int(MIN_CLASSE_PCT * n_ativos))
@@ -235,8 +236,9 @@ def main(argv=None) -> int:
            "segmentos_total": len(linhas), "segmentos_classificados": n,
            "pct_classificados": round(100 * n / max(1, len(linhas)), 1), "formas_ativas": len(voc),
            "arvore": arvore, "classes": classes}
-    (root / "data/corpus/chd_reinert.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"CHD: {len(linhas)} segmentos, {n} classificados ({out['pct_classificados']}%), {len(voc)} formas, {len(classes)} classes")
+    out["plataforma"] = plat
+    pl.caminho(root, plat, "chd").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print(f"CHD [{plat}]: {len(linhas)} segmentos, {n} classificados ({out['pct_classificados']}%), {len(voc)} formas, {len(classes)} classes")
     for c in classes:
         print(f"  classe {c['classe']} ({c['pct']}%): " + ", ".join(f[0] for f in c["formas"][:10])
               + " | " + " ".join(f"{k}:{v['pct_da_classe']}% χ²{v['chi2']}" for k, v in c["candidatos"].items()))

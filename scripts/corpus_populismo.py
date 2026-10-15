@@ -25,6 +25,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_conteudo as bc  # noqa: E402
+import plataformas as pl  # noqa: E402
 
 SEMENTE = 42
 PALAVRAS_SEGMENTO = 40
@@ -118,11 +119,11 @@ def amostra_estratificada(vids: list[dict], n: int, semente: int = SEMENTE) -> l
 
 
 def main(argv=None) -> int:
-    root = Path(argv[0]) if argv else Path(".")
+    root, plat = pl.args(argv)
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     livro = json.loads((root / "data/config/livro_codigos_populismo.json").read_text(encoding="utf-8"))
     regs = compilar(livro)
-    rows = list(csv.DictReader(gzip.open(root / "data/youtube/videos_latest.csv.gz", "rt", encoding="utf-8"), delimiter=";"))
+    rows = pl.videos(root, plat)
     padrao = bc.texto_padrao(rows)
     coleta = max((r["coletado_em"] for r in rows), default=None)
     vids = []
@@ -162,21 +163,22 @@ def main(argv=None) -> int:
                                   "por_categoria": {c: por.get(c, 0) for c in cats},
                                   "por_semana": {str(s): dict(sem[s]) for s in sorted(sem)},
                                   "exemplos": exemplos}
-    (root / "data/youtube/populismo.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    out["plataforma"] = plat
+    pl.caminho(root, plat, "populismo").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
     # 2) corpus IRaMuTeQ e segmentos para a CHD
     cdir = root / "data/corpus"
     cdir.mkdir(parents=True, exist_ok=True)
     nseg = 0
-    with open(cdir / "youtube_candidatos_iramuteq.txt", "w", encoding="utf-8", newline="\n") as f, \
-         open(cdir / "youtube_candidatos_segmentos.csv", "w", encoding="utf-8", newline="") as g:
+    with open(pl.caminho(root, plat, "corpus"), "w", encoding="utf-8", newline="\n") as f, \
+         open(pl.caminho(root, plat, "segmentos"), "w", encoding="utf-8", newline="") as g:
         w = csv.writer(g, lineterminator="\n")
         w.writerow(["seg_id", "video_id", "cand", "semana", "formato", "texto"])
         for v in vids:
             texto = limpar_iramuteq(v["texto"])
             if len(texto.split()) < 3:
                 continue
-            cab = (f"**** *cand_{var(v['cand'].split()[0])} *mes_{v['publicado_em'][5:7]} *sem_{semana(v['publicado_em']):02d}"
+            cab = (f"**** *plat_{plat} *cand_{var(v['cand'].split()[0])} *mes_{v['publicado_em'][5:7]} *sem_{semana(v['publicado_em']):02d}"
                    f" *formato_{formato(v['duracao'])} *canal_{var(v['canal'])[:20]}"
                    + "".join(f" *pop_{c[:10]}_{int(c in v['pre'])}" for c in cats))
             f.write(cab + "\n" + texto + "\n")
@@ -188,7 +190,7 @@ def main(argv=None) -> int:
     # 3) amostra para a codificação humana (gerada uma única vez)
     kdir = root / "data/codificacao"
     kdir.mkdir(parents=True, exist_ok=True)
-    amostra_p = kdir / "amostra_populismo_v1.csv"
+    amostra_p = pl.caminho(root, plat, "amostra")
     if not amostra_p.exists():
         amostra = amostra_estratificada(vids, livro["amostra_humana"]["tamanho"])
         with open(amostra_p, "w", encoding="utf-8-sig", newline="") as f:
@@ -198,12 +200,12 @@ def main(argv=None) -> int:
             for v in amostra:
                 w.writerow([v["video_id"], f"https://www.youtube.com/watch?v={v['video_id']}", v["cand"], v["publicado_em"][:10],
                             v["titulo"], v["texto"][:1500], ""] + [""] * len(cats) + ["", ""])
-        with open(kdir / "amostra_populismo_v1_precodificacao.csv", "w", encoding="utf-8-sig", newline="") as f:
+        with open(amostra_p.with_name(amostra_p.stem + "_precodificacao.csv"), "w", encoding="utf-8-sig", newline="") as f:
             w = csv.writer(f, delimiter=";", lineterminator="\n")
             w.writerow(["video_id"] + cats)
             for v in amostra:
                 w.writerow([v["video_id"]] + [int(c in v["pre"]) for c in cats])
-    print(f"populismo: {len(vids)} vídeos; " + "; ".join(
+    print(f"populismo [{plat}]: {len(vids)} vídeos; " + "; ".join(
         f"{c['nome']}: {c['com_alguma']} com alguma categoria {c['por_categoria']}" for c in out["candidatos"].values())
         + f" | corpus: {nseg} segmentos")
     return 0

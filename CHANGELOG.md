@@ -6,6 +6,37 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C7.1] 2026-10-15 — TikTok com o mesmo pacote analítico do YouTube (Bardin, CHD/IRaMuTeQ, rede de coocorrência)
+
+**Por quê:** pedido do usuário ("cadê as redes e o IRaMuTeQ do TikTok, eu falei mesmo formato").
+
+**Mudou**
+- `scripts/plataformas.py`: entrada única das análises. Converte o acervo do TikTok para o formato de linha do YouTube (só vídeos desde 16/08) e define os caminhos de saída por plataforma.
+  - `corpus_populismo.py`, `chd_reinert.py`, `concordancia.py` e `build_rede.py` aceitam `--plataforma tiktok`. Sem o parâmetro, continuam no YouTube.
+  - **Mesmas regras, sem cópia de código.** O corpus IRaMuTeQ ganhou a variável `*plat_`.
+- **Saídas do TikTok:**
+  - `data/tiktok/populismo.json`;
+  - `data/corpus/tiktok_candidatos_iramuteq.txt` e `tiktok_candidatos_segmentos.csv`;
+  - `data/corpus/chd_reinert_tiktok.json`;
+  - `data/codificacao/amostra_populismo_tiktok_v1.csv` (+ pré-codificação separada) e `concordancia_tiktok_v1.json`;
+  - `data/tiktok/rede.json`, `.gexf`, `rede_nos.csv`, `rede_arestas.csv` e `rede_videos_termos.csv`.
+- Caderno 15: blocos "Estratégias discursivas e classes de discurso" e "Que assuntos andam juntos" (rede, tabelas de nós e arestas, downloads para o Gephi), iguais aos do caderno 13.
+- As redes de coocorrência dos cadernos 13 e 15 passam para o padrão Lula vermelho × Flávio verde (antes azul × terracota).
+- `tiktok.yml` roda essas análises depois de cada coleta, com networkx e numpy nas versões fixas.
+
+**Testado**
+- ✅ Testes: 72 OK (novos: argumentos e caminhos por plataforma; TikTok convertido para o formato do YouTube, descartando vídeos anteriores a 16/08).
+- ✅ **Regressão:** com as mesmas entradas, `rede.json`, `chd_reinert.json` e `populismo.json` do YouTube saíram **idênticos** antes e depois da refatoração (comparação de JSON, sem os campos de data).
+- ✅ TikTok, sobre o acervo de 2026-10-15 21:57 UTC (710 vídeos desde 16/08):
+  - **Pré-codificação:** Lula 250 vídeos com alguma categoria, Flávio 30.
+  - **CHD:** 1087/1099 segmentos (98.9%), 945 formas. Classes: 1 (7.9%, Lula 38.4%): bolsonaro, rede, federacao, pdt, psol; 2 (7.9%, Lula 93.0%): fernandohaddadoficial, marciofrancasp, paulo, simonetebet, marinasilvaoficial; 3 (7.9%, Lula 91.9%): flavio, bolsonaro, master, banco, vorcaro; 4 (17.3%, Lula 97.3%): futuro, educacao, soberano, mundo, pais; 5 (32.8%, Lula 91.0%): lula, brasil, frente, votar, lugar; 6 (26.2%, Lula 96.8%): escala, 6x1, familias, bets, familia.
+  - **Rede:** 150 nós, 1023 arestas, 6 comunidades, modularidade 0.24.
+- ✅ Chromium headless (1400×900 e 390×844): caderno 15 com 7 barras, 6 classes, 150 nós, 1.023 linhas e tabela de 150 nós. Caderno 13 sem regressão (148 nós, 6 classes, 202 nós na rede de influenciadores).
+
+**Limite:** no TikTok, Lula tem 629 vídeos e Flávio 81 (só @flaviobolsonaro tem vídeos), então a rede e a CHD são dominadas por Lula. Compare a estrutura, não o tamanho.
+
+---
+
 ## [C7.0] 2026-10-15 — Caderno 15 (TikTok, grátis com yt-dlp); Trends no período eleitoral completo; mapa do Brasil inteiro
 
 **Mudou**

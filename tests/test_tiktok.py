@@ -79,5 +79,27 @@ class TestProcessamento(unittest.TestCase):
             self.assertEqual(out["candidatos"]["280002551544"]["total_videos"], 0)
 
 
+class TestPlataformas(unittest.TestCase):
+    def test_args_e_caminhos(self):
+        import plataformas as pl
+        self.assertEqual(pl.args([]), (Path("."), "youtube"))
+        self.assertEqual(pl.args(["/x", "--plataforma", "tiktok"]), (Path("/x"), "tiktok"))
+        with self.assertRaises(SystemExit):
+            pl.args(["--plataforma", "kwai"])
+        self.assertNotEqual(pl.CAMINHOS["youtube"]["chd"], pl.CAMINHOS["tiktok"]["chd"])
+
+    def test_tiktok_no_formato_do_youtube(self):
+        import plataformas as pl
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "data/tiktok").mkdir(parents=True)
+            rows = [{**{k: "" for k in ct.COLS}, "candidate_id": "1", "perfil": "p", "video_id": "9", "legenda": "x #y",
+                     "publicado_em": pub, "duracao_s": "30", "ultima_coleta": "z"} for pub in ("2026-08-01T00:00:00Z", "2026-09-01T00:00:00Z")]
+            with gzip.open(Path(d) / "data/tiktok/videos.csv.gz", "wt", encoding="utf-8", newline="") as f:
+                w = csv.DictWriter(f, fieldnames=ct.COLS, delimiter=";"); w.writeheader(); w.writerows(rows)
+            v = pl.videos(Path(d), "tiktok")
+            self.assertEqual(len(v), 1)  # antes do início da campanha fica fora
+            self.assertEqual((v[0]["channel_id"], v[0]["descricao"], v[0]["duracao"]), ("p", "x #y", "PT30S"))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -18,6 +18,9 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import plataformas as pl  # noqa: E402
+
 VALIDOS = {"0", "1", "UC"}
 
 
@@ -65,20 +68,22 @@ def avaliar(A: dict, B: dict, pre: dict, cats: list[str]) -> dict:
 
 
 def main(argv=None) -> int:
-    root = Path(argv[0]) if argv else Path(".")
+    root, plat = pl.args(argv)
     d = root / "data/codificacao"
+    suf = "" if plat == "youtube" else "_" + plat
     livro = json.loads((root / "data/config/livro_codigos_populismo.json").read_text(encoding="utf-8"))
     cats = list(livro["categorias"])
-    pa, pb = d / "codificador_A_v1.csv", d / "codificador_B_v1.csv"
+    pa, pb = d / f"codificador_A{suf}_v1.csv", d / f"codificador_B{suf}_v1.csv"
     if not (pa.exists() and pb.exists()):
         out = {"status": "aguardando codificação humana",
                "faltam": [p.name for p in (pa, pb) if not p.exists()],
-               "instrucao": "Duas pessoas copiam amostra_populismo_v1.csv, preenchem as colunas de categoria com 0, 1 ou UC "
+               "instrucao": f"Duas pessoas copiam amostra_populismo{suf}_v1.csv, preenchem as colunas de categoria com 0, 1 ou UC "
                             "(e instituicoes_direcao com A, D ou UC) sem ver a pré-codificação nem a outra planilha, e salvam como "
-                            "codificador_A_v1.csv e codificador_B_v1.csv nesta pasta."}
+                            f"codificador_A{suf}_v1.csv e codificador_B{suf}_v1.csv nesta pasta."}
     else:
-        out = {"status": "ok", **avaliar(ler(pa), ler(pb), ler(d / "amostra_populismo_v1_precodificacao.csv"), cats)}
-    (d / "concordancia_v1.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+        out = {"status": "ok", **avaliar(ler(pa), ler(pb), ler(d / f"amostra_populismo{suf}_v1_precodificacao.csv"), cats)}
+    out["plataforma"] = plat
+    (d / f"concordancia{suf}_v1.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps({k: out[k] for k in out if k != "categorias"}, ensure_ascii=False))
     return 0
 

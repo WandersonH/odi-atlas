@@ -31,6 +31,7 @@ import networkx as nx
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_conteudo as bc  # noqa: E402
+import plataformas as pl  # noqa: E402
 
 MIN_VIDEOS = 8
 MAX_NOS = 150
@@ -109,16 +110,16 @@ def analisar(g: nx.Graph) -> dict:
 
 
 def cor_lado(lado: float) -> str:
-    """Azul (Lula) ↔ terracota (Flávio), mesmas cores do caderno."""
-    a, b = (0x1d, 0x4f, 0x86), (0xa8, 0x69, 0x3a)
+    """Vermelho (Lula) ↔ verde (Flávio), padrão dos cadernos 12–15."""
+    a, b = (0xc8, 0x10, 0x2e), (0x1f, 0x8a, 0x3b)
     return "#" + "".join(f"{round(b[i] + (a[i] - b[i]) * lado):02x}" for i in range(3))
 
 
 def main(argv=None) -> int:
-    root = Path(argv[0]) if argv else Path(".")
+    root, plat = pl.args(argv)
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     ids = tuple(cfg["candidatos"])  # (Lula, Flávio) na ordem do arquivo
-    rows = list(csv.DictReader(gzip.open(root / "data/youtube/videos_latest.csv.gz", "rt", encoding="utf-8"), delimiter=";"))
+    rows = pl.videos(root, plat)
     padrao, pacotes = bc.texto_padrao(rows), bc.pacotes_de_tags(rows)
     videos, video_ids = [], []
     for cid in ids:
@@ -140,7 +141,7 @@ def main(argv=None) -> int:
               f"aresta = aparecem no mesmo vídeo (peso = nº de vídeos, mínimo {MIN_PESO}; até {TOP_ARESTAS} arestas mais fortes por nó). "
               f"Comunidades: Louvain; posição: {info.get('layout', '—')}; semente {SEMENTE}. "
               "Texto sem links, rodapés repetidos, nome do canal, nome do próprio candidato e pacote fixo de tags. "
-              "Cor = proporção de uso por Lula (azul) e Flávio (terracota).")
+              "Cor = proporção de uso por Lula (vermelho) e Flávio (verde).")
     coletado = max((r["coletado_em"] for r in rows), default=None)
     comms = info.get("comunidades", [])
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -156,9 +157,9 @@ def main(argv=None) -> int:
                     "lado": d["lado"], "c": d["comunidade"], "g": d["grau"], "b": d["intermediacao"]}
                    for n, d in sorted(g.nodes(data=True))],
            "arestas": [[a, b, d["weight"]] for a, b, d in sorted(g.edges(data=True))]}
-    (root / "data/youtube/rede.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    pl.caminho(root, plat, "rede").with_suffix(".json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     # Planilhas para conferência e importação no Gephi (Laboratório de dados → Importar planilha)
-    yt = root / "data/youtube"
+    yt = pl.caminho(root, plat, "rede").parent
     with open(yt / "rede_nos.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Id", "Label", "videos", "videos_lula", "videos_flavio", "lado_lula", "comunidade", "grau",
@@ -183,7 +184,7 @@ def main(argv=None) -> int:
     for n in gx.nodes:
         gx.nodes[n].pop("x"); gx.nodes[n].pop("y")
     gx.graph.update({"descricao": metodo, "coletado_em_utc": coletado or ""})
-    nx.write_gexf(gx, root / "data/youtube/rede.gexf")
+    nx.write_gexf(gx, pl.caminho(root, plat, "rede").with_suffix(".gexf"))
     print(f"rede: {g.number_of_nodes()} nós, {g.number_of_edges()} arestas, {len(comms)} comunidades, "
           f"modularidade {info.get('modularidade')}, layout {info.get('layout')}")
     for c in out["comunidades"]:

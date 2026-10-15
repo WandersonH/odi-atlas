@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Dependências (yt-dlp sempre atualizado — o TikTok muda com frequência; versão registrada no manifesto)
-        run: pip install -q -U yt-dlp
+        run: pip install -q -U yt-dlp && pip install -q networkx==3.6.1 numpy==2.3.4
       - name: Testes
         run: python -m unittest discover -s tests
       - name: Coletar TikTok
@@ -36,6 +36,14 @@ jobs:
         if: hashFiles('data/tiktok/videos.csv.gz') != ''
         continue-on-error: true
         run: python scripts/build_tiktok.py
+      - name: Caderno 15 — livro de códigos, corpus IRaMuTeQ, CHD de Reinert, concordância e rede (mesmas regras do YouTube)
+        if: hashFiles('data/tiktok/videos.csv.gz') != ''
+        continue-on-error: true
+        run: |
+          python scripts/corpus_populismo.py --plataforma tiktok
+          python scripts/chd_reinert.py --plataforma tiktok
+          python scripts/concordancia.py --plataforma tiktok
+          python scripts/build_rede.py --plataforma tiktok
       - name: Resumo
         if: always()
         run: |
