@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "stage": "coleta-trends",
+  "run_started_utc": "2026-10-15T21:58:06Z",
+  "config": {
+    "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
+    "geo": "BR",
+    "periodos": [
+      "now 7-d",
+      "today 3-m",
+      "eleitoral"
+    ],
+    "pausa_segundos": 5,
+    "grupos": [
+      {
+        "nome": "segundo_turno_topicos",
+        "termos": [
+          {
+            "rotulo": "Flávio Bolsonaro",
+            "busca": "Flávio Bolsonaro",
+            "tipo_contem": "Presidente"
+          },
+          {
+            "rotulo": "Lula",
+            "busca": "Luiz Inácio Lula da Silva",
+            "tipo_contem": "Presidente"
+          }
+        ]
+      },
+      {
+        "nome": "primeiro_turno_5_topicos",
+        "termos": [
+          {
+            "rotulo": "Flávio Bolsonaro",
+            "busca": "Flávio Bolsonaro",
+            "tipo_contem": "Presidente"
+          },
+          {
+            "rotulo": "Lula",
+            "busca": "Luiz Inácio Lula da Silva",
+            "tipo_contem": "Presidente"
+          },
+          {
+            "rotulo": "Augusto Cury",
+            "busca": "Augusto Cury",
+            "tipo_contem": [
+              "Presidente",
+              "psiquiatra"
+            ]
+          },
+          "Renan Santos",
+          {
+            "rotulo": "Ronaldo Caiado",
+            "busca": "Ronaldo Caiado",
+            "tipo_contem": [
+              "Presidente",
+              "Governador",
+              "Político"
+            ]
+          }
+        ]
+      },
+      {
+        "nome": "segundo_turno_palavras",
+        "termos": [
+          "Flávio Bolsonaro",
+          "Lula"
+        ]
+      }
+    ],
+    "periodo_eleitoral": {
+      "inicio": "2026-07-20",
+      "fim": "2026-10-25",
+      "nota": "Das convenções partidárias (a partir de 20/07, Lei 9.504/1997, art. 8º) ao 2º turno (25/10/2026). Enquanto a eleição não termina, a data final é a do dia da coleta. Granularidade diária."
+    }
+  },
+  "aviso_metodologico": "Valores 0-100 relativos dentro de cada consulta (grupo x período). Não são volumes; não compare entre consultas diferentes.",
+  "consultas": [
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        }
+      ],
+      "periodo": "now 7-d",
+      "janela_trends": "now 7-d",
+      "geo": "BR",
+      "serie_pontos": 169,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        }
+      ],
+      "periodo": "today 3-m",
+      "janela_trends": "today 3-m",
+      "geo": "BR",
+      "serie_pontos": 93,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        }
+      ],
+      "periodo": "eleitoral",
+      "janela_trends": "2026-07-20 2026-10-15",
+      "geo": "BR",
+      "serie_pontos": 88,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "primeiro_turno_5_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula",
+        "Augusto Cury",
+        "Renan Santos",
+        "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "/m/07s813b",
+          "modo": "topico",
+          "topico_titulo": "Augusto Cury",
+          "topico_tipo": "Médico e psiquiatra brasileiro"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "/m/04fw8x8",
+          "modo": "topico",
+          "topico_titulo": "Ronaldo Caiado",
+          "topico_tipo": "Candidato a presidente do Brasil"
+        }
+      ],
+      "periodo": "now 7-d",
+      "janela_trends": "now 7-d",
+      "geo": "BR",
+      "serie_pontos": 169,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "primeiro_turno_5_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula",
+        "Augusto Cury",
+        "Renan Santos",
+        "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "/m/07s813b",
+          "modo": "topico",
+          "topico_titulo": "Augusto Cury",
+          "topico_tipo": "Médico e psiquiatra brasileiro"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "/m/04fw8x8",
+          "modo": "topico",
+          "topico_titulo": "Ronaldo Caiado",
+          "topico_tipo": "Candidato a presidente do Brasil"
+        }
+      ],
+      "periodo": "today 3-m",
+      "janela_trends": "today 3-m",
+      "geo": "BR",
+      "serie_pontos": 93,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "primeiro_turno_5_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula",
+        "Augusto Cury",
+        "Renan Santos",
+        "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "/m/07s813b",
+          "modo": "topico",
+          "topico_titulo": "Augusto Cury",
+          "topico_tipo": "Médico e psiquiatra brasileiro"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "/m/04fw8x8",
+          "modo": "topico",
+          "topico_titulo": "Ronaldo Caiado",
+          "topico_tipo": "Candidato a presidente do Brasil"
+        }
+      ],
+      "periodo": "eleitoral",
+      "janela_trends": "2026-07-20 2026-10-15",
+      "geo": "BR",
+      "serie_pontos": 88,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_palavras",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        }
+      ],
+      "periodo": "now 7-d",
+      "janela_trends": "now 7-d",
+      "geo": "BR",
+      "serie_pontos": 168,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_palavras",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        }
+      ],
+      "periodo": "today 3-m",
+      "janela_trends": "today 3-m",
+      "geo": "BR",
+      "serie_pontos": 93,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_palavras",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        }
+      ],
+      "periodo": "eleitoral",
+      "janela_trends": "2026-07-20 2026-10-15",
+      "geo": "BR",
+      "serie_pontos": 88,
+      "uf_linhas": 27,
+      "status": "ok"
+    }
+  ],
+  "blocked": [],
+  "run_finished_utc": "2026-10-15T22:01:26Z",
+  "status": "ok"
+}
