@@ -30,27 +30,38 @@ jobs:
           python-version: "3.12"
       - name: Testes
         run: python -m unittest discover -s tests
-      - name: Coletar
-        id: coleta
+      - name: TSE — candidaturas e redes
+        id: tse
+        if: contains(github.event.inputs.comandos || 'tse-candidatos sidra', 'tse-candidatos')
         continue-on-error: true
-        run: python scripts/collect_gov.py ${{ github.event.inputs.comandos || 'tse-candidatos sidra' }}
+        timeout-minutes: 15
+        run: python scripts/collect_gov.py tse-candidatos
+      - name: IBGE — SIDRA (PNAD Contínua Internet)
+        id: sidra
+        if: contains(github.event.inputs.comandos || 'tse-candidatos sidra', 'sidra')
+        continue-on-error: true
+        timeout-minutes: 25
+        run: python scripts/collect_gov.py sidra --orcamento-min 15
       - name: Resumo
         if: always()
         run: |
           python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
           import json, pathlib
-          p = pathlib.Path("data/manifest/gov_latest.json")
-          if not p.exists(): print("## manifesto não gerado"); raise SystemExit
-          m = json.loads(p.read_text(encoding="utf-8"))
-          print(f"## Dados de governo — status: **{m['status']}**\n")
-          for y, e in m["tse_candidatos"].items():
-              c, r = e.get("cadastro", {}), e.get("redes", {})
-              print(f"**TSE {y}:** {e.get('status')} · candidaturas {c.get('rows_written','')} · redes {r.get('rows_written','')} · por plataforma {r.get('by_plataforma','')}\n")
-          tabs = m["sidra"].get("tabelas", [])
-          print(f"**SIDRA:** {sum(t.get('status')=='ok' for t in tabs)} de {len(tabs)} tabelas baixadas\n")
-          for t in tabs: print(f"- {t['id']} · {t['nome']} · {t.get('status')}")
-          for b in m["blocked"]: print(f"- ⛔ {b}")
-          for w in m["warnings"]: print(f"- ⚠️ {w}")
+          for nome in ("tsecandidatos", "sidra"):
+              p = pathlib.Path(f"data/manifest/gov_{nome}_latest.json")
+              if not p.exists():
+                  print(f"## {nome}: manifesto não gerado"); continue
+              m = json.loads(p.read_text(encoding="utf-8"))
+              print(f"## {nome} — status: **{m['status']}**\n")
+              for y, e in m["tse_candidatos"].items():
+                  c, r = e.get("cadastro", {}), e.get("redes", {})
+                  print(f"**TSE {y}:** {e.get('status')} · candidaturas {c.get('rows_written','')} · redes {r.get('rows_written','')} · por plataforma {r.get('by_plataforma','')}\n")
+              tabs = m["sidra"].get("tabelas", [])
+              if tabs:
+                  print(f"**SIDRA:** {sum(t.get('status')=='ok' for t in tabs)} de {len(tabs)} tabelas baixadas\n")
+                  for t in tabs: print(f"- {t['id']} · {t['nome']} · {t.get('status')}")
+              for x in m["blocked"]: print(f"- ⛔ {x}")
+              for w in m["warnings"]: print(f"- ⚠️ {w}")
           EOF
       - name: Publicar originais num Release
         if: always() && hashFiles('raw/*') != ''
@@ -58,8 +69,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           tag="gov-$(date -u +%Y%m%dT%H%M%SZ)"
-          gh release create "$tag" raw/* data/manifest/gov_latest.json --title "Originais governo · $tag" \
-            --notes "Arquivos originais do run ${{ github.run_id }}. Hashes em gov_latest.json."
+          gh release create "$tag" raw/* data/manifest/gov_*_latest.json --title "Originais governo · $tag" \
+            --notes "Arquivos originais do run ${{ github.run_id }}. Hashes em gov_*_latest.json."
       - name: Commitar
         if: always()
         run: |
@@ -71,7 +82,7 @@ jobs:
           for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0; sleep 5; done
           exit 1
       - name: Falhar se houve bloqueio
-        if: steps.coleta.outcome == 'failure'
+        if: steps.tse.outcome == 'failure' || steps.sidra.outcome == 'failure'
         run: |
-          echo "::error::Coleta bloqueada — ver data/manifest/gov_latest.json"
+          echo "::error::Coleta bloqueada — ver data/manifest/gov_*_latest.json"
           exit 1
