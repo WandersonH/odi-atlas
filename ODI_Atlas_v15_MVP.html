@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>ODI Atlas / Comunicação Política Digital · V14</title>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><link rel="icon" href="./assets/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png"><link rel="apple-touch-icon" href="./assets/favicon-180.png"><title>ODI Atlas / Comunicação Política Digital · V14</title>
 <style>
 :root{--navy:#101b30;--navy2:#17243c;--ink:#172238;--muted:#69768a;--bg:#f5f7fb;--card:#fff;--line:#e8edf3;--cyan:#198b9e;--cyan2:#38bbc9;--sky:#eaf7f8;--slate:#d8e1ed;--amber:#d7a14a;--warning:#fff8ec;--shadow:0 16px 45px rgba(17,40,75,.035)}
 *{box-sizing:border-box}body{padding:0;margin:0;color:var(--ink);background:var(--bg);font:14px/1.55 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}button,select,input{font:inherit}button{cursor:pointer}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
@@ -411,7 +411,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .readme-edition-note{font-size:12px;line-height:1.65;border-top:3px double #1a2633;margin-top:36px;padding-top:18px;color:#576272}
 @media(max-width:1100px){.readme-method-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.readme-method-grid article:nth-child(3n){border-right:1px solid #b4bec4}.readme-method-grid article:nth-child(2n){border-right:0}.readme-index button{grid-template-columns:24px 1fr 14px}.readme-index button small{display:none}}
 @media(max-width:700px){.readme-source-header{display:none}.readme-source-row{grid-template-columns:1fr;gap:6px;padding:15px 4px}.readme-source-row strong{font-size:18px}.readme-source-row span{padding:0!important}.readme-strip{grid-template-columns:1fr}.readme-stat{border-right:0;border-bottom:1px solid #ccd2d5}.readme-index{grid-template-columns:1fr}.readme-index button:nth-child(odd){border-right:0}.readme-method-grid{grid-template-columns:1fr}.readme-method-grid article{border-right:0!important}.readme-workflow{grid-template-columns:repeat(2,minmax(0,1fr))}.readme-workflow>div:nth-child(2n){border-right:0}.readme-divider{font-size:9px;flex-wrap:wrap}.readme-hero h1{letter-spacing:-1.3px}}
-</style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+</style>
 <style>
 /* ODI Atlas Caderno 12 | inherits v14 editorial typography and colors */
 .odi-map-hero h1 em{font-style:italic;color:#57789d}.odi-controls{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:14px;padding:19px;margin:12px 0 14px}
@@ -421,7 +421,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .odi-signal{font-size:12px;line-height:1.55;color:#4b6274;padding:8px 13px;background:#edf2f7;border-left:3px solid #5b7894;margin-bottom:13px}
 .odi-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}.odi-stat{border-top:2px solid #173856;padding:12px 14px;background:#f7f9fa}.odi-stat small{display:block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#627787}.odi-stat strong{font-family:Georgia,serif;font-size:26px;display:block;color:#173856;margin-top:7px}.odi-stat em{font-size:11px;color:#667d8b;font-style:normal}
 .odi-map-layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(225px,1fr);gap:12px;align-items:stretch}.odi-map-card{padding:16px}.odi-map-heading{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:12px}.odi-map-heading h2,.odi-detail h2,.odi-method-footer h2{font-family:Georgia,serif;font-weight:500;font-size:23px;line-height:1.15;margin:4px 0}.odi-map-source{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#66798a}
-#odiElectionMap{height:480px;min-height:350px;background:#e9f0f2;border:1px solid #d4dde4;z-index:0}.odi-map-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:12px;font-size:11px;color:#475c6e}.odi-legend-item{display:flex;align-items:center;gap:4px;white-space:nowrap}.odi-swatch{width:15px;height:11px;display:inline-block;border:1px solid #b2bac0}.odi-map-hint{font-size:11px;line-height:1.5;color:#667783;margin:12px 0 0}
+#odiElectionMap{min-height:320px;background:#f3f5f6;border:1px solid #d4dde4;display:grid;gap:8px;touch-action:none}#odiElectionMap.odi-two{grid-template-columns:1fr 1fr}#odiElectionMap svg{width:100%;height:auto;display:block;max-height:560px;cursor:grab}#odiElectionMap path{stroke:#fff;stroke-width:.35;vector-effect:non-scaling-stroke}#odiElectionMap path:hover,#odiElectionMap path.odi-sel{stroke:#172238;stroke-width:1.6}#odiElectionMap figcaption{font:700 11px "Courier New",monospace;letter-spacing:.06em;text-transform:uppercase;color:#2c3a48;padding:6px 8px 0}#odiElectionMap figure{margin:0;min-width:0}.odi-mapwrap{position:relative}.odi-zoom{position:absolute;right:8px;bottom:8px;display:flex;flex-direction:column;gap:3px}.odi-zoom button{width:28px;height:28px;border:1px solid #c9d1d6;background:#fffdf8;font:700 15px/1 Georgia,serif;cursor:pointer;color:#172238}.odi-tip{position:absolute;pointer-events:none;background:#172238;color:#fff;font:12px/1.35 "Courier New",monospace;padding:6px 8px;max-width:240px;z-index:3}.odi-rank{margin-top:14px}.odi-rank h3{font:700 14px Georgia,serif;margin:0 0 6px;color:#172238}.odi-rank ol{margin:0;padding-left:20px;font-size:12px}.odi-rank li{margin:2px 0;cursor:pointer}.odi-rank li span{float:right;font-family:"Courier New",monospace}@media(max-width:700px){#odiElectionMap.odi-two{grid-template-columns:1fr}}.odi-map-legend{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:12px;font-size:11px;color:#475c6e}.odi-legend-item{display:flex;align-items:center;gap:4px;white-space:nowrap}.odi-swatch{width:15px;height:11px;display:inline-block;border:1px solid #b2bac0}.odi-map-hint{font-size:11px;line-height:1.5;color:#667783;margin:12px 0 0}
 .odi-detail{padding:19px}.odi-detail h2{font-size:28px;margin-top:13px}.odi-city-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #e1e6e8;font-size:12px}.odi-city-row strong{font-weight:700;white-space:nowrap}.odi-detail-footer{border-top:2px solid #254e6d;margin-top:24px;padding-top:14px}.odi-detail-footer p{color:#5e6e7e;font-size:12px;line-height:1.65;margin:9px 0}.odi-detail-footer strong{font-family:Georgia,serif;font-size:16px}
 .odi-method-footer{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:15px;padding:17px}.odi-method-footer p{font-size:11px;color:#5e6e7e;line-height:1.6}.odi-provenance-links{display:flex;flex-wrap:wrap;gap:9px}.odi-provenance-links a{font-size:11px;color:#214869}
 @media(max-width:1100px){.odi-controls{grid-template-columns:1fr 1fr}.odi-map-layout{grid-template-columns:1fr}.odi-stat strong{font-size:23px}}@media(max-width:560px){.odi-controls{grid-template-columns:1fr}.odi-stat-row{grid-template-columns:1fr}.odi-map-layout{grid-template-columns:1fr}#odiElectionMap{height:390px}.odi-map-heading{display:block}.odi-method-footer{display:block}}
@@ -693,10 +693,10 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p>Explore por município a votação presidencial de primeiro turno em 2022 e 2026, ou compare sua participação nos votos válidos. Fonte eleitoral: TSE. A associação geográfica utiliza os códigos oficiais do IBGE.</p>
   </div>
   <div class="odi-controls card">
-    <div><label for="odiYear">Recorte temporal</label><select id="odiYear"><option value="2026">Primeiro turno · 2026</option><option value="2022">Primeiro turno · 2022</option><option value="delta">Evolução · 2022 → 2026</option></select></div>
+    <div><label for="odiYear">Recorte temporal</label><select id="odiYear"><option value="2026">Primeiro turno · 2026</option><option value="2022">Primeiro turno · 2022</option><option value="lado">Lado a lado · 2022 | 2026</option><option value="delta">Evolução · 2022 → 2026</option></select></div>
     <div><label for="odiUf">Unidade da Federação</label><select id="odiUf"></select></div>
-    <div><label for="odiNumber">Candidatura / número</label><select id="odiNumber"><option value="13">Número 13</option><option value="22">Número 22</option></select></div>
-    <div><label for="odiMetric">Indicador territorial</label><select id="odiMetric"><option value="share">% dos votos válidos</option><option value="votes">Votos nominais</option></select></div>
+    <div><label for="odiNumber">Candidatura / número</label><select id="odiNumber"><option value="13">Lula (13)</option><option value="22">Flávio Bolsonaro (22)</option></select></div>
+    <div><label for="odiMetric">Indicador territorial</label><select id="odiMetric"><option value="margem">Quem venceu · 13 × 22 (pp)</option><option value="share">% dos votos válidos</option><option value="votes">Votos nominais</option></select></div>
     <div class="odi-actions"><label for="odiUpload" class="ghostbutton" role="button">↑ Importar JSON TSE</label><input type="file" id="odiUpload" accept=".json,application/json" hidden><button type="button" class="ghostbutton" id="odiExport">↓ Exportar recorte</button></div>
   </div>
   <div class="odi-signal" id="odiDataStatus" role="status">Aguardando leitura da base eleitoral.</div>
@@ -704,14 +704,14 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="odi-map-layout">
     <div class="card odi-map-card">
       <div class="odi-map-heading"><div><span class="eyebrow">Representação espacial</span><h2 id="odiMapTitle">Participação nos votos válidos</h2></div><span class="odi-map-source">1º turno · dados oficiais</span></div>
-      <div id="odiElectionMap" role="img" aria-label="Mapa interativo de municípios por resultado eleitoral"></div>
+      <div class="odi-mapwrap"><div id="odiElectionMap" role="img" aria-label="Mapa de municípios por resultado eleitoral"></div><div class="odi-zoom"><button type="button" id="odiZin" aria-label="Aproximar">+</button><button type="button" id="odiZout" aria-label="Afastar">−</button><button type="button" id="odiZreset" aria-label="Recentrar">⟲</button></div><div class="odi-tip" id="odiTip" hidden></div></div>
       <div id="odiLegend" class="odi-map-legend"></div><p id="odiMapHint" class="odi-map-hint">Selecione uma UF e passe o cursor sobre o município para ver os dados.</p>
     </div>
     <aside class="odi-detail card" aria-live="polite">
       <div class="eyebrow">FICHA MUNICIPAL / DETALHE</div>
       <h2 id="odiCityName">Selecione um município</h2>
-      <div id="odiCityDetail">Clique em um município no mapa para consultar os dados disponíveis.</div>
-      <div class="odi-detail-footer"><strong>Como ler a comparação</strong><p>As porcentagens utilizam votos nominais válidos para Presidente em cada município e ano. A diferença é expressa em pontos percentuais. Uma mudança territorial não permite inferir o voto individual ou transferência entre candidaturas.</p><p><b>Atenção ao nº 22:</b> candidatos distintos em 2022 e 2026. O número não equivale à identidade da candidatura.</p></div>
+      <div id="odiCityDetail">Clique em um município no mapa para consultar os dados disponíveis.</div><div id="odiRank"></div>
+      <div class="odi-detail-footer"><strong>Como ler a comparação</strong><p>As porcentagens utilizam votos nominais válidos para Presidente em cada município e ano. A diferença é expressa em pontos percentuais. Uma mudança territorial não permite inferir o voto individual ou transferência entre candidaturas.</p><p><b>Atenção ao nº 22:</b> candidatos distintos em 2022 (Jair Bolsonaro) e 2026 (Flávio Bolsonaro). O número não equivale à identidade da candidatura.</p></div>
     </aside>
   </div>
   <div class="card odi-method-footer"><div><span class="eyebrow">Rastreabilidade da base</span><h2>Dados verificáveis, não inferidos.</h2><p id="odiProvenance">As fontes oficiais e a data de geração serão exibidas depois da importação.</p></div>
@@ -1422,61 +1422,120 @@ el('sbExport').addEventListener('click',()=>csvSave('SocialBlade_Lula_YouTube_12
 el('pnadExport').addEventListener('click',()=>{const rows=[];for(let [dimension,obj] of [['Situação do domicílio',PNAD.domicile],['Grande região',PNAD.region],['Grupo de idade',PNAD.age]])for(let [name,years] of Object.entries(obj))for(let [year,value]of Object.entries(years))rows.push([dimension,name,year,value,PNAD.source]);csvSave('PNAD_Internet_2016_2025_Indicadores.csv',['dimensao','categoria','ano','percentual','fonte'],rows)});
 })();
 </script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
 <script>
-/* ODI Atlas · Caderno 12: TSE election map, source-aware and empty-state safe */
+/* ODI Atlas · Caderno 12: mapa eleitoral TSE × IBGE desenhado em SVG a partir da malha do próprio repositório
+   (sem biblioteca nem mapa-base externos: funciona offline). Lula (13) vermelho · nº 22 verde. */
 (()=>{
 'use strict';
 const UFS={AC:12,AL:27,AM:13,AP:16,BA:29,CE:23,DF:53,ES:32,GO:52,MA:21,MG:31,MS:50,MT:51,PA:15,PB:25,PE:26,PI:22,PR:41,RJ:33,RN:24,RO:11,RR:14,RS:43,SC:42,SE:28,SP:35,TO:17};
 const $=id=>document.getElementById(id), f=(v,d=0)=>Number(v??0).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dataHolder={years:{},candidates:{},diagnostics:{},source:{},generated_at_utc:null};
-const cache={};let currentFeatureLayer=null,map=null,baseLayer=null;
-const colors=['#eff2f5','#d2deec','#aac6dc','#7da7c7','#5388af','#2b668c','#153f65'];
-function status(message){$('odiDataStatus').textContent=message}
-function cityNorm(s){return String(s||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z0-9]+/g,' ').trim()}
-function dataFor(year,uf,name,code){const table=dataHolder.years?.[year]||{};const key=uf+'|'+cityNorm(name);if(table[key])return table[key];if(code){for(const v of Object.values(table))if(v.ibge===String(code))return v;}return null;}
-function candidateName(year,number){return dataHolder.candidates?.[year]?.[number]||('Nº '+number+' (sem identificação validada)');}
-function indicator(row,number,metric){if(!row||!row.candidatos||!row.validos_nominais)return null;let n=Number(row.candidatos[number]||0);return metric==='votes'?n:100*n/Number(row.validos_nominais)}
+const cache={},proj={};let vb=null,selCode=null,drag=null;
+const ESCALA={'13':['#fbe9eb','#f3c3c8','#e4878f','#d24b57','#b81d2c','#8f0f1d','#5e0812'],'22':['#e8f5ec','#bfe3c9','#86c79a','#4ea86b','#25894a','#136a35','#0a4721'],outro:['#eff2f5','#d2deec','#aac6dc','#7da7c7','#5388af','#2b668c','#153f65']};
+const BINS=[20,30,40,50,60,70];
+function status(m){$('odiDataStatus').textContent=m}
+function cityNorm(s){return String(s||'').normalize('NFKD').replace(/[̀-ͯ]/g,'').toUpperCase().replace(/[^A-Z0-9]+/g,' ').trim()}
+const idx={};
+function indexar(){for(const [y,t] of Object.entries(dataHolder.years||{})){idx[y]={};for(const r of Object.values(t))if(r.ibge)idx[y][r.ibge]=r;}}
+function dataFor(year,uf,name,code){if(code&&idx[year]?.[code])return idx[year][code];return (dataHolder.years?.[year]||{})[uf+'|'+cityNorm(name)]||null;}
+function titulo(n){return String(n||'').toLowerCase().replace(/(^|\s)\S/g,c=>c.toUpperCase()).replace(/\bD Avila\b/,"d'Avila")}
+function candidateName(year,number){const n=dataHolder.candidates?.[year]?.[number];return n?titulo(n):'nº '+number;}
+function share(row,n){return row&&row.validos_nominais?100*Number(row.candidatos?.[n]||0)/Number(row.validos_nominais):null}
 function state(){return {year:$('odiYear').value,uf:$('odiUf').value,number:$('odiNumber').value,metric:$('odiMetric').value}}
-function valueFor(feature,s){const code=String(feature.properties?.id??feature.properties?.CD_MUN??feature.properties?.CD_MUN_7??'');const name=feature.properties?.NM_MUN||feature.properties?.name||feature.properties?.NM_MUNICIP||'';let r22=dataFor('2022',s.uf,name,code),r26=dataFor('2026',s.uf,name,code);
- if(s.year==='delta'){let a=indicator(r22,s.number,'share'),b=indicator(r26,s.number,'share');return a===null||b===null?null:b-a;}
- return indicator(s.year==='2022'?r22:r26,s.number,s.metric);
-}
-function colorFor(val,s){if(val===null||!Number.isFinite(val))return '#e5e8e9';if(s.year==='delta'){const bins=[-15,-8,-4,-1,1,4,8,15];const c=['#2e506f','#527592','#83a3b8','#d2dde1','#ead7c5','#d6ad82','#b57d56','#8d4e38','#74402d'];return c[bins.findIndex(x=>val<x)===-1?8:bins.findIndex(x=>val<x)];}
- if(s.metric==='votes'){return colors[Math.min(6,Math.floor(Math.log10(Math.max(1,val))/1.05))]}
- const bins=[20,30,40,50,60,70];const i=bins.findIndex(x=>val<x);return colors[i===-1?6:i]}
-function legend(s){let arr=s.year==='delta'?[['≤ −15 pp','#2e506f'],['−8 a −4','#83a3b8'],['Próximo de 0','#d2dde1'],['+4 a +8','#d6ad82'],['≥ +15 pp','#74402d']]:(s.metric==='votes'?[['Sem dado','#e5e8e9'],['Baixo',colors[0]],['Médio',colors[3]],['Alto',colors[6]]]:[['Sem dado','#e5e8e9'],['< 20%',colors[0]],['20–30',colors[1]],['30–40',colors[2]],['40–50',colors[3]],['50–60',colors[4]],['60–70',colors[5]],['≥ 70%',colors[6]]]);$('odiLegend').replaceChildren(...arr.map(([t,c])=>{let el=document.createElement('span');el.className='odi-legend-item';el.innerHTML='<span class="odi-swatch" style="background:'+c+'"></span>'+t;return el;}));}
-function row(label,value){let e=document.createElement('div');e.className='odi-city-row';let l=document.createElement('span'),r=document.createElement('strong');l.textContent=label;r.textContent=value;e.append(l,r);return e;}
-function detail(feature){const s=state(),code=String(feature.properties?.CD_MUN??feature.properties?.id??''),name=feature.properties?.NM_MUN||feature.properties?.name||'Município',r22=dataFor('2022',s.uf,name,code),r26=dataFor('2026',s.uf,name,code),d=$('odiCityDetail');$('odiCityName').textContent=name+' / '+s.uf;d.replaceChildren();
- for(const [yr,rec] of [['2022',r22],['2026',r26]]){d.append(row(yr+' · '+candidateName(yr,s.number),rec?f(indicator(rec,s.number,'share'),2)+'%':'Sem dado'));d.append(row(yr+' · votos nominais',rec?f(indicator(rec,s.number,'votes')):'Sem dado'));d.append(row(yr+' · votos válidos',rec?f(rec.validos_nominais):'Sem dado'));}
- let a=indicator(r22,s.number,'share'),b=indicator(r26,s.number,'share');d.append(row('Variação 2022 → 2026',a===null||b===null?'Indisponível':(b-a>0?'+':'')+f(b-a,2)+' pp'));
- if(r22?.ibge||r26?.ibge)d.append(row('Código IBGE',r26?.ibge||r22?.ibge));
-}
-async function loadGeometry(uf){if(cache[uf])return cache[uf];const url='./data/geo/2025/mun_'+uf+'.json';const res=await fetch(url);if(!res.ok)throw new Error('HTTP '+res.status);const obj=await res.json();if(obj.type!=='FeatureCollection'||!obj.features?.length)throw new Error('GeoJSON sem municípios');cache[uf]=obj;return obj;}
-async function redraw(){const s=state();$('odiMapTitle').textContent=s.year==='delta'?'Variação da participação · 2022–2026':s.metric==='votes'?'Votação nominal · '+s.year:'Participação nos votos válidos · '+s.year;legend(s);
- $('odiMetric').disabled=s.year==='delta';
- if(!window.L){$('odiMapHint').textContent='Biblioteca de mapas indisponível. Conecte-se à internet para carregar o Leaflet.';refreshStats();return;}
- if(!map){map=L.map('odiElectionMap',{preferCanvas:true}).setView([-15.9,-47.9],4);baseLayer=L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);}
- if(currentFeatureLayer){map.removeLayer(currentFeatureLayer);currentFeatureLayer=null;}
- try{const geo=await loadGeometry(s.uf);currentFeatureLayer=L.geoJSON(geo,{style:(ft)=>({color:'#ffffff',weight:.65,opacity:.8,fillOpacity:.85,fillColor:colorFor(valueFor(ft,s),s)}),onEachFeature:(ft,layer)=>{let value=valueFor(ft,s),name=ft.properties?.NM_MUN||ft.properties?.name||'';layer.bindTooltip(name+' · '+(value===null?'Sem medição':(s.year==='delta'?(value>0?'+':'')+f(value,2)+' pp':f(value,s.metric==='votes'?0:2)+(s.metric==='votes'?' votos':'%'))),{sticky:true});layer.on('click',()=>detail(ft));layer.on('mouseover',()=>layer.setStyle({weight:2,color:'#172f49'}));layer.on('mouseout',()=>currentFeatureLayer?.resetStyle(layer));}}).addTo(map);if($('odiElectionMap').offsetWidth>0)map.fitBounds(currentFeatureLayer.getBounds(),{padding:[15,15]});
- $('odiMapHint').textContent='Mapa municipal da UF '+s.uf+' · malha municipal oficial do IBGE 2025 (simplificada) · clique para explorar os resultados.';
- }catch(e){$('odiMapHint').textContent='Falha ao carregar malha municipal para '+s.uf+': '+e.message+'. Verifique a conexão.';}
- refreshStats();setTimeout(()=>map.invalidateSize(),150);
-}
-function refreshStats(){const s=state(),year=s.year==='delta'?'2026':s.year,vals=Object.values(dataHolder.years?.[year]||{}).filter(r=>r.uf===s.uf);const hasTwo=vals.filter(r=>Boolean(dataHolder.years?.['2022']?.[r.uf+'|'+r.municipio])).length;
+function anosDe(s){return s.year==='lado'?['2022','2026']:s.year==='delta'?['delta']:[s.year]}
+function valor(row,rowA,s,ano){
+ if(ano==='delta'){const a=share(rowA,s.number),b=share(row,s.number);return a===null||b===null?null:b-a;}
+ if(!row)return null;
+ if(s.metric==='margem'){const a=share(row,'13'),b=share(row,'22');return a===null?null:a-b;}
+ if(s.metric==='votes')return Number(row.candidatos?.[s.number]||0);
+ return share(row,s.number);}
+function mix(a,b,t){const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));const A=p(a),B=p(b);return 'rgb('+A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(',')+')';}
+function cor(v,s,ano){if(v===null||!Number.isFinite(v))return '#dfe3e6';
+ if(ano==='delta'){const c=s.number==='13'?'#b81d2c':s.number==='22'?'#25894a':'#2b668c';const t=Math.min(1,Math.abs(v)/15);return v>=0?mix('#f1efe9',c,t):mix('#f1efe9','#6b7884',t);}
+ if(s.metric==='margem'){const t=Math.min(1,Math.abs(v)/50);return v>=0?mix('#f1efe9','#b81d2c',.15+.85*t):mix('#f1efe9','#25894a',.15+.85*t);}
+ const esc_=ESCALA[s.number]||ESCALA.outro;
+ if(s.metric==='votes')return esc_[Math.min(6,Math.floor(Math.log10(Math.max(1,v))/1.05))];
+ const i=BINS.findIndex(x=>v<x);return esc_[i===-1?6:i];}
+function legenda(s){let arr;const e=ESCALA[s.number]||ESCALA.outro;
+ if(s.year==='delta'){const c=s.number==='13'?'#b81d2c':s.number==='22'?'#25894a':'#2b668c';arr=[['≤ −15 pp',mix('#f1efe9','#6b7884',1)],['−7 pp',mix('#f1efe9','#6b7884',.5)],['0',mix('#f1efe9',c,0)],['+7 pp',mix('#f1efe9',c,.5)],['≥ +15 pp',c],['Sem dado','#dfe3e6']];}
+ else if(s.metric==='margem')arr=[['Lula +50 pp ou mais','#b81d2c'],['Lula +10',mix('#f1efe9','#b81d2c',.32)],['Empate',mix('#f1efe9','#b81d2c',.15)],['nº 22 +10',mix('#f1efe9','#25894a',.32)],['nº 22 +50 ou mais','#25894a'],['Sem dado','#dfe3e6']];
+ else if(s.metric==='votes')arr=[['Sem dado','#dfe3e6'],['Baixo',e[0]],['Médio',e[3]],['Alto',e[6]]];
+ else arr=[['Sem dado','#dfe3e6'],['< 20%',e[0]],['20–30',e[1]],['30–40',e[2]],['40–50',e[3]],['50–60',e[4]],['60–70',e[5]],['≥ 70%',e[6]]];
+ $('odiLegend').innerHTML=arr.map(([t,c])=>`<span class="odi-legend-item"><span class="odi-swatch" style="background:${c}"></span>${esc(t)}</span>`).join('');}
+function fmtV(v,s,ano){if(v===null||!Number.isFinite(v))return 'sem medição';if(ano==='delta')return (v>0?'+':'')+f(v,2)+' pp';if(s.metric==='margem')return (v>=0?'Lula +':'nº 22 +')+f(Math.abs(v),1)+' pp';if(s.metric==='votes')return f(v)+' votos';return f(v,2)+'%';}
+/* geometria → caminhos SVG (projeção equiretangular corrigida pela latitude média da UF) */
+async function geometria(uf){if(proj[uf])return proj[uf];
+ if(!cache[uf]){const r=await fetch('./data/geo/2025/mun_'+uf+'.json');if(!r.ok)throw new Error('HTTP '+r.status);const o=await r.json();if(o.type!=='FeatureCollection'||!o.features?.length)throw new Error('GeoJSON sem municípios');cache[uf]=o;}
+ const fs=cache[uf].features;let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;const anel=(g,fn)=>{const polys=g.type==='Polygon'?[g.coordinates]:g.type==='MultiPolygon'?g.coordinates:[];for(const p of polys)for(const r of p)fn(r);};
+ for(const ft of fs)anel(ft.geometry,r=>{for(const [x,y] of r){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;}});
+ const k=Math.cos((y0+y1)/2*Math.PI/180),W=1000,sc=W/Math.max((x1-x0)*k,(y1-y0));const H=(y1-y0)*sc;
+ const out=fs.map(ft=>{let d='';anel(ft.geometry,r=>{d+='M'+r.map(([x,y])=>((x-x0)*k*sc).toFixed(1)+','+((y1-y)*sc).toFixed(1)).join('L')+'Z';});const p=ft.properties||{};return {code:String(p.CD_MUN||''),name:p.NM_MUN||'',d};});
+ proj[uf]={paths:out,W,H};return proj[uf];}
+let atualUF=null;
+async function redraw(){const s=state();const anos=anosDe(s);
+ $('odiMapTitle').textContent=s.year==='delta'?'Variação de '+candidateName('2026',s.number)+' · 2022 → 2026 (pp)':(s.metric==='margem'?'Quem venceu · Lula (13) × nº 22':s.metric==='votes'?'Votação nominal · '+candidateName(s.year==='lado'?'2026':s.year,s.number):'% dos votos válidos · '+candidateName(s.year==='lado'?'2026':s.year,s.number))+(s.year==='lado'?' · 2022 | 2026':s.year==='delta'?'':' · '+s.year);
+ $('odiMetric').disabled=s.year==='delta';legenda(s);opcoesNumero(s);
+ const box=$('odiElectionMap');
+ let G;try{G=await geometria(s.uf);}catch(e){box.innerHTML='';$('odiMapHint').textContent='⛔ Falha ao carregar a malha municipal de '+s.uf+': '+e.message+'.';refreshStats();return;}
+ if(atualUF!==s.uf){vb=[-20,-20,G.W+40,G.H+40];atualUF=s.uf;selCode=null;}
+ box.classList.toggle('odi-two',anos.length===2);
+ box.innerHTML=anos.map(ano=>{const paths=G.paths.map(p=>{const r26=dataFor('2026',s.uf,p.name,p.code),r22=dataFor('2022',s.uf,p.name,p.code);const row=ano==='2022'?r22:r26;const v=valor(row,r22,s,ano);
+  return `<path d="${p.d}" fill="${cor(v,s,ano)}" data-c="${p.code}" data-a="${ano}"${p.code===selCode?' class="odi-sel"':''}/>`;}).join('');
+  const cap=anos.length===2?`<figcaption>${ano} · ${s.metric==='margem'?esc(candidateName(ano,'13'))+' × '+esc(candidateName(ano,'22')):esc(candidateName(ano,s.number))}</figcaption>`:'';
+  return `<figure>${cap}<svg viewBox="${vb.join(' ')}" preserveAspectRatio="xMidYMid meet">${paths}</svg></figure>`;}).join('');
+ ligar(s,G);
+ $('odiMapHint').textContent=`Malha municipal oficial do IBGE 2025 (simplificada) · ${G.paths.length} municípios de ${s.uf} · passe o cursor ou toque para ver, clique para a ficha · roda do mouse ou botões para aproximar, arraste para mover.`;
+ refreshStats();ranking(s);if(selCode){const p=G.paths.find(x=>x.code===selCode);if(p)detail(p,s);}}
+function aplicarVB(){document.querySelectorAll('#odiElectionMap svg').forEach(sv=>sv.setAttribute('viewBox',vb.join(' ')));}
+function ligar(s,G){const box=$('odiElectionMap'),tip=$('odiTip');const byCode={};G.paths.forEach(p=>byCode[p.code]=p);
+ box.querySelectorAll('path').forEach(el=>{const p=byCode[el.dataset.c];
+  el.addEventListener('mousemove',ev=>{const ano=el.dataset.a;const r26=dataFor('2026',s.uf,p.name,p.code),r22=dataFor('2022',s.uf,p.name,p.code);const v=valor(ano==='2022'?r22:r26,r22,s,ano);const wr=box.parentElement.getBoundingClientRect();tip.hidden=false;tip.innerHTML=`<b>${esc(p.name)}</b><br>${ano==='delta'?'2022→2026':ano}: ${esc(fmtV(v,s,ano))}`;let x=ev.clientX-wr.left+12,y=ev.clientY-wr.top+12;if(x>wr.width-200)x-=220;tip.style.left=x+'px';tip.style.top=y+'px';});
+  el.addEventListener('mouseleave',()=>{tip.hidden=true;});
+  el.addEventListener('click',ev=>{if(drag&&drag.moved)return;selCode=p.code;box.querySelectorAll('path.odi-sel').forEach(x=>x.classList.remove('odi-sel'));box.querySelectorAll(`path[data-c="${p.code}"]`).forEach(x=>x.classList.add('odi-sel'));detail(p,s);});});
+ box.querySelectorAll('svg').forEach(sv=>{
+  const pt=ev=>{const r=sv.getBoundingClientRect();const sx=vb[2]/r.width,sy=vb[3]/r.height,sc=Math.max(sx,sy);return [vb[0]+(ev.clientX-r.left-(r.width-vb[2]/sc)/2)*sc,vb[1]+(ev.clientY-r.top-(r.height-vb[3]/sc)/2)*sc,sc];};
+  sv.addEventListener('wheel',ev=>{ev.preventDefault();const [x,y]=pt(ev);zoom(ev.deltaY>0?1.2:1/1.2,x,y);},{passive:false});
+  sv.addEventListener('pointerdown',ev=>{drag={x:ev.clientX,y:ev.clientY,v:[...vb],moved:false,sc:pt(ev)[2]};});
+  sv.addEventListener('pointermove',ev=>{if(!drag)return;const dx=ev.clientX-drag.x,dy=ev.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>4)drag.moved=true;if(drag.moved){vb[0]=drag.v[0]-dx*drag.sc;vb[1]=drag.v[1]-dy*drag.sc;aplicarVB();}});
+  sv.addEventListener('pointerup',()=>{setTimeout(()=>{drag=null;},0);});sv.addEventListener('pointerleave',()=>{drag=null;});});}
+function zoom(k,cx,cy){if(!vb)return;const G=proj[atualUF];const nw=Math.min((G.W+40)*1.5,Math.max(30,vb[2]*k)),f_=nw/vb[2];if(cx===undefined){cx=vb[0]+vb[2]/2;cy=vb[1]+vb[3]/2;}vb=[cx-(cx-vb[0])*f_,cy-(cy-vb[1])*f_,vb[2]*f_,vb[3]*f_];aplicarVB();}
+function row(label,value,c){return `<div class="odi-city-row"><span>${label}</span><strong${c?` style="color:${c}"`:''}>${esc(value)}</strong></div>`;}
+function detail(p,s){const r22=dataFor('2022',s.uf,p.name,p.code),r26=dataFor('2026',s.uf,p.name,p.code);$('odiCityName').textContent=p.name+' / '+s.uf;let h='';
+ for(const [yr,rec] of [['2026',r26],['2022',r22]]){if(!rec){h+=row(yr,'Sem dado (município inexistente ou sem correspondência)');continue;}
+  const top=Object.entries(rec.candidatos).sort((a,b)=>b[1]-a[1]).slice(0,3);
+  h+=`<div class="eyebrow" style="margin-top:10px">${yr} · 1º turno · ${f(rec.validos_nominais)} votos válidos</div>`;
+  h+=top.map(([n,v])=>row(esc(candidateName(yr,n))+' ('+n+')',f(100*v/rec.validos_nominais,2)+'% · '+f(v),n==='13'?'#b81d2c':n==='22'?'#25894a':'')).join('');
+  if(!top.some(([n])=>n===s.number))h+=row(esc(candidateName(yr,s.number))+' ('+s.number+')',f(share(rec,s.number),2)+'%');}
+ const a=share(r22,s.number),b=share(r26,s.number);h+=row('Variação de nº '+s.number+' · 2022 → 2026',a===null||b===null?'Indisponível':(b-a>0?'+':'')+f(b-a,2)+' pp');
+ if(r22?.ibge||r26?.ibge)h+=row('Código IBGE',r26?.ibge||r22?.ibge);
+ $('odiCityDetail').innerHTML=h;}
+function ranking(s){const G=proj[s.uf];if(!G){$('odiRank').innerHTML='';return;}const ano=s.year==='lado'?'2026':s.year;
+ const vals=G.paths.map(p=>{const r26=dataFor('2026',s.uf,p.name,p.code),r22=dataFor('2022',s.uf,p.name,p.code);return [p,valor(ano==='2022'?r22:r26,r22,s,ano)];}).filter(([,v])=>v!==null&&Number.isFinite(v)).sort((x,y)=>y[1]-x[1]);
+ if(!vals.length){$('odiRank').innerHTML='';return;}
+ const li=arr=>arr.map(([p,v])=>`<li data-c="${p.code}">${esc(p.name)}<span>${esc(fmtV(v,s,ano))}</span></li>`).join('');
+ const lab=ano==='delta'?'maior ganho':s.metric==='margem'?'maior vantagem de Lula':'maior valor',lab2=ano==='delta'?'maior perda':s.metric==='margem'?'maior vantagem do nº 22':'menor valor';
+ $('odiRank').innerHTML=`<div class="odi-rank"><h3>${s.uf} · ${lab}${ano!=='delta'?' ('+ano+')':''}</h3><ol>${li(vals.slice(0,5))}</ol><h3 style="margin-top:10px">${lab2}</h3><ol>${li(vals.slice(-5).reverse())}</ol></div>`;
+ $('odiRank').querySelectorAll('li').forEach(el=>el.addEventListener('click',()=>{const p=G.paths.find(x=>x.code===el.dataset.c);selCode=p.code;document.querySelectorAll('#odiElectionMap path').forEach(x=>x.classList.toggle('odi-sel',x.dataset.c===p.code));detail(p,s);}));}
+function opcoesNumero(s){const ano=s.year==='2022'?'2022':'2026';const sel=$('odiNumber'),atual=sel.value;const t=dataHolder.years?.[ano]||{};const tot={};
+ for(const r of Object.values(t))for(const [n,v] of Object.entries(r.candidatos||{}))tot[n]=(tot[n]||0)+v;
+ const nums=Object.keys(dataHolder.candidates?.[ano]||{}).sort((a,b)=>(tot[b]||0)-(tot[a]||0));if(!nums.length)return;
+ const html=nums.map(n=>`<option value="${n}">${esc(candidateName(ano,n))} (${n})</option>`).join('');if(sel.dataset.h!==html){sel.innerHTML=html;sel.dataset.h=html;sel.value=nums.includes(atual)?atual:nums[0];}}
+function refreshStats(){const s=state(),year=(s.year==='delta'||s.year==='lado')?'2026':s.year,vals=Object.values(dataHolder.years?.[year]||{}).filter(r=>r.uf===s.uf);
  let sum=vals.reduce((a,r)=>a+(r.candidatos?.[s.number]||0),0),valid=vals.reduce((a,r)=>a+r.validos_nominais,0);
- const stats=[['Municípios com medição',f(vals.length),s.uf+' · '+year],['Votos nominais · nº '+s.number,vals.length?f(sum):'—','Dados de '+year],['Participação estadual',valid?f(100*sum/valid,2)+'%':'—',s.year==='delta'?f(hasTwo)+' municípios com ambos os anos':'Votos válidos para Presidente']];
- $('odiStats').replaceChildren(...stats.map(([k,v,n])=>{let el=document.createElement('div');el.className='odi-stat';let sm=document.createElement('small');sm.textContent=k;let st=document.createElement('strong');st.textContent=v;let em=document.createElement('em');em.textContent=n;el.append(sm,st,em);return el}));
- const years=Object.keys(dataHolder.years||{});status(years.length?'Base eleitoral disponível: '+years.join(' e ')+'. Captura: '+(dataHolder.generated_at_utc||'não informada')+'. Filtros aplicados localmente.':'Base oficial ainda não importada. O mapa pode carregar os limites dos municípios, mas não mostrará votos até receber data/elections.json.');
- $('odiProvenance').textContent=years.length?'Dados eleitorais: '+(dataHolder.source?.electoral||'TSE')+' · geografia: '+(dataHolder.source?.geographic||'IBGE')+' · gerado em '+(dataHolder.generated_at_utc||'data não informada')+'.':'Nenhuma votação foi inventada nesta versão. Execute scripts/ingest_tse.py (2022 e 2026) para preencher data/elections.json; ou importe um JSON já gerado.';
-}
-function installData(obj){if(!obj||obj.schema_version!==1||typeof obj.years!=='object')throw new Error('Formato de dados não reconhecido: esperado schema_version=1 e years.');Object.assign(dataHolder,obj);redraw();}
-$('odiUf').replaceChildren(...Object.entries(UFS).map(([uf])=>{let x=document.createElement('option');x.value=uf;x.textContent=uf;return x;}));$('odiUf').value='SP';
-for(const id of ['odiYear','odiUf','odiNumber','odiMetric'])$(id).addEventListener('change',redraw);
+ const venceu=n=>vals.filter(r=>{const e=Object.entries(r.candidatos||{}).sort((a,b)=>b[1]-a[1]);return e.length&&e[0][0]===n;}).length;
+ const stats=[['Municípios com medição',f(vals.length),s.uf+' · '+year],[esc(candidateName(year,s.number))+' · votos',vals.length?f(sum):'—','nº '+s.number+' · '+year],['% dos válidos em '+s.uf,valid?f(100*sum/valid,2)+'%':'—','Votos válidos para Presidente'],['Municípios em 1º lugar',vals.length?f(venceu(s.number))+' de '+f(vals.length):'—',esc(candidateName(year,s.number))+' · '+year]];
+ $('odiStats').innerHTML=stats.map(([k,v,n])=>`<div class="odi-stat"><small>${k}</small><strong>${v}</strong><em>${n}</em></div>`).join('');
+ const years=Object.keys(dataHolder.years||{});status(years.length?'Base eleitoral: '+years.join(' e ')+' · TSE, 1º turno, Presidente · gerada em '+(dataHolder.generated_at_utc||'data não informada')+'.':'⛔ Base oficial ainda não carregada (data/elections.json). Nenhum voto é inventado.');
+ $('odiProvenance').textContent=years.length?'Dados eleitorais: '+(dataHolder.source?.electoral||'TSE')+' · geografia: '+(dataHolder.source?.geographic||'IBGE')+' · gerado em '+(dataHolder.generated_at_utc||'data não informada')+'.':'Nenhuma votação foi inventada nesta versão.';}
+function installData(obj){if(!obj||obj.schema_version!==1||typeof obj.years!=='object')throw new Error('Formato de dados não reconhecido: esperado schema_version=1 e years.');Object.assign(dataHolder,obj);indexar();redraw();}
+$('odiUf').innerHTML=Object.keys(UFS).map(uf=>`<option value="${uf}">${uf}</option>`).join('');$('odiUf').value='SP';
+for(const id of ['odiYear','odiUf','odiNumber','odiMetric'])$(id).addEventListener('change',()=>{if(id==='odiUf')selCode=null;redraw();});
+$('odiZin').addEventListener('click',()=>zoom(1/1.4));$('odiZout').addEventListener('click',()=>zoom(1.4));$('odiZreset').addEventListener('click',()=>{const G=proj[atualUF];if(G){vb=[-20,-20,G.W+40,G.H+40];aplicarVB();}});
 $('odiUpload').addEventListener('change',async e=>{try{let file=e.target.files[0];if(file)installData(JSON.parse(await file.text()));}catch(err){status('Importação recusada: '+err.message)}});
-$('odiExport').addEventListener('click',()=>{const s=state();let yr=s.year==='delta'?'2026':s.year;let rows=Object.values(dataHolder.years?.[yr]||{}).filter(r=>r.uf===s.uf).map(r=>[r.uf,r.municipio,r.ibge||'',yr,s.number,r.candidatos?.[s.number]||0,r.validos_nominais]);if(!rows.length){status('Sem registros para exportar. Importe primeiro a base eleitoral oficial.');return;}let csv=[['uf','municipio','ibge','ano','numero','votos_nominais','validos_nominais'],...rows].map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\r\n');const url=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));let a=document.createElement('a');a.href=url;a.download='ODI_TSE_'+yr+'_'+s.uf+'_primeiro_turno.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-fetch('./data/elections.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(installData).catch(()=>redraw());
-const observer=new MutationObserver(()=>{if($('geoVote').classList.contains('active')&&map)setTimeout(()=>{map.invalidateSize();if(currentFeatureLayer)map.fitBounds(currentFeatureLayer.getBounds(),{padding:[15,15]});},50);});observer.observe($('geoVote'),{attributes:true,attributeFilter:['class']});
+$('odiExport').addEventListener('click',()=>{const s=state();let yr=(s.year==='delta'||s.year==='lado')?'2026':s.year;let rows=Object.values(dataHolder.years?.[yr]||{}).filter(r=>r.uf===s.uf).map(r=>[r.uf,r.municipio,r.ibge||'',yr,s.number,r.candidatos?.[s.number]||0,r.validos_nominais]);if(!rows.length){status('Sem registros para exportar.');return;}let csv=[['uf','municipio','ibge','ano','numero','votos_nominais','validos_nominais'],...rows].map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\r\n');const url=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'}));let a=document.createElement('a');a.href=url;a.download='ODI_TSE_'+yr+'_'+s.uf+'_primeiro_turno.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+fetch('./data/elections.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(installData).catch(()=>{refreshStats();redraw();});
 })();
 </script>
 

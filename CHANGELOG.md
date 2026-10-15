@@ -6,6 +6,41 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [P4.1] 2026-10-15 — Geografia do Voto sem dependência externa, com nomes, cores e 2022 | 2026 lado a lado; favicon
+
+**Mudou**
+- Caderno 12 (pedido do usuário: “arrumar a página geografia do voto”).
+  - **Sem Leaflet e sem mapa-base da CARTO.** O mapa é desenhado em SVG direto da malha do IBGE que já está no repositório (`data/geo/2025/mun_UF.json`). Projeção equiretangular corrigida pela latitude média da UF.
+    - Antes, se o CDN (unpkg) ou o servidor de mapa-base falhasse, o mapa ficava em branco; foi o que aconteceu no teste deste ambiente.
+    - Agora funciona offline (era um critério do dossiê).
+    - Zoom pela roda ou pelos botões, arrastar para mover, dica ao passar o cursor, clique para a ficha.
+  - **Candidaturas pelo nome**, ordenadas por votos no ano, a partir de `elections.json/candidates` (TSE): “Lula (13)”, “Flavio Bolsonaro (22)”… Antes eram só “Número 13/22”.
+  - **Cores:** Lula (13) em escala vermelha e nº 22 em escala verde (padrão adotado nos cadernos 13 e 14). Demais números continuam em azul.
+  - Novo indicador **“Quem venceu · 13 × 22”**: margem em pontos percentuais, divergente vermelho/verde. É o padrão ao abrir.
+  - Novo recorte **“Lado a lado · 2022 | 2026”**: dois mapas com o mesmo zoom. Era uma pendência do dossiê.
+  - Variação 2022 → 2026 com escala divergente (cor do candidato = ganho; cinza = perda).
+  - **Ficha municipal** com os 3 primeiros colocados de cada ano (% e votos), a variação e o código IBGE.
+  - **Ranking da UF**: 5 maiores e 5 menores valores do indicador. Clicar abre a ficha.
+  - Quadro novo: “municípios em 1º lugar”.
+- **Favicon** (imagem enviada pelo usuário) em `assets/`: `favicon.ico`, PNG 32 px e 180 px (apple-touch). Ligado no Atlas e no `index.html`.
+
+**Testado**
+- ✅ Chromium headless (1400×900 e 390×844), com o CDN bloqueado:
+  - SP: 645 municípios desenhados; lado a lado: 1.290 formas; RS: 497. Sem erro de JavaScript e sem rolagem horizontal.
+- ✅ Ficha de São José do Rio Preto conferida com `elections.json`:
+  - 2026: Flavio Bolsonaro 62,46% (156.807), Lula 28,39% (71.275), em 251.050 válidos;
+  - 2022: Jair Bolsonaro 60,91%, Lula 29,34%;
+  - variação de Lula: −0,95 pp.
+- ✅ SP 2026: Lula com 9.505.413 votos (38,20% dos válidos), 1º lugar em 40 de 645 municípios. Mesmos números do quadro anterior, agora com o nome.
+- ✅ Testes Python: 54 OK (o mapa é só front-end; nenhum script de dados mudou).
+
+**Pendente**
+- O nome vem como o TSE grava (“Flavio”, sem acento).
+- Visão do Brasil inteiro por município (5.571 formas, ~17 MB) não foi ativada, por peso no celular. Segue por UF.
+- Conferência de 3 municípios contra as páginas oficiais do TSE (critério do dossiê) continua pendente: só conferi contra a nossa base.
+
+---
+
 ## [C5.0] 2026-10-15 — Rede de influenciadores do YouTube (Lula vermelho × Flávio verde) e caderno 14 · Google Trends
 
 **Mudou — influenciadores (caderno 13)**
