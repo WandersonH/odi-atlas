@@ -6,6 +6,39 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C8.2] 2026-10-15 — YouTube na página: API oficial como fonte; Modash como adendo
+
+**Por quê:** decisão do usuário: "todo indicador de YouTube vamos deixar pela API oficial; dado do Modash é um adendo a essa tela".
+
+**Mudou** (`ODI_Atlas_v15_MVP.html`)
+- A página lê `data/youtube/fichas.json` antes de desenhar. Nos perfis de YouTube (Lula, Flávio, PT, PL), inscritos, engajamento, médias de visualizações, curtidas e comentários e a divisão curtos × longos vêm da API, nos cadernos:
+  - 01 (visão geral);
+  - 06 (fichas);
+  - 07 (escala: inscritos pela API × % no Brasil do Modash).
+- Se o arquivo faltar, esses campos ficam "—" com ⛔. O Modash não volta a preencher.
+- Do Modash, o YouTube mantém só a composição estimada da audiência (gênero, idade, país), rotulada "Adendo Modash", porque a API pública não fornece esse dado.
+- Caderno 06: novo cartão "Adendo Modash × API oficial", com os dois valores lado a lado.
+- Caderno 03: série da API (`fichas_historico.csv`) com 10 indicadores; nos perfis de YouTube, os indicadores Modash aparecem como "adendo Modash", e o padrão é "Inscritos · API oficial".
+- O caderno 02 já usava a API para o YouTube (sem mudança).
+
+**Testado**
+- ✅ Run `38822941698` (seguidores-youtube, dispatch): 4 canais, 61 unidades de cota, sem erro. Janela 13/09–13/10:
+
+  | Canal | Inscritos | Vídeos | Visualizações médias | Engajamento |
+  |---|---|---|---|---|
+  | Lula | 1.820.000 | 215 | 183.776 | 8,14% |
+  | Flávio | 1.520.000 | 208 | 137.247 | 8,27% |
+  | PT | 670.000 | 239 | 52.790 | 7,58% |
+  | PL | 207.000 | 52 | 35.297 | 4,43% |
+
+- ✅ Chromium (cadernos 01, 02, 03, 06 e 07, YouTube): valores da API exibidos com fonte e data, sem erro de console. Exemplo: PT na API, 52,8 mil visualizações médias; no Modash de 10/10, 9,5 mil.
+- ✅ Testes: suíte completa OK.
+
+**Pendente**
+- ⚠️ Caderno 04 (Social Blade · YouTube) continua com a série do Social Blade (12/09–11/10). A API não dá histórico retroativo; a série própria começa em 15/10.
+
+---
+
 ## [C8.1] 2026-10-15 — YouTube: fichas pela API oficial (coletor)
 
 **Por quê:** decisão do usuário: "todo indicador de YouTube vamos deixar pela API oficial; dado do Modash é um adendo".
