@@ -1,0 +1,60 @@
+name: Google Trends — candidaturas
+
+# Coleta diária do interesse de busca pelos nomes em data/config/trends.json.
+# Cada execução grava uma pasta nova em data/trends/AAAA-MM-DD/HHMMSS/ (nada é sobrescrito).
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 11 * * *"   # todo dia, 08h40 em Brasília
+
+concurrency:
+  group: trends
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  trends:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Coletar Trends
+        id: coleta
+        continue-on-error: true
+        run: python scripts/collect_trends.py
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("data/manifest/trends_latest.json")
+          if not p.exists(): print("## Trends: manifesto não gerado"); raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          print(f"## Google Trends — status: **{m['status']}**\n\n> {m['aviso_metodologico']}\n")
+          print("| Grupo | Período | Status | Pontos | UFs |\n|---|---|---|---|---|")
+          for c in m["consultas"]:
+              print(f"| {c['grupo']} | {c['periodo']} | {c.get('status')} | {c.get('serie_pontos','')} | {c.get('uf_linhas','')} |")
+          for b in m["blocked"]: print(f"- ⛔ {b}")
+          EOF
+      - name: Commitar
+        if: always()
+        run: |
+          git config user.name "odi-atlas-coletor"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && { echo "nada novo"; exit 0; }
+          git commit -m "Trends: coleta (run ${{ github.run_id }})"
+          for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0; sleep 5; done
+          exit 1
+      - name: Falhar se houve bloqueio
+        if: steps.coleta.outcome == 'failure'
+        run: |
+          echo "::error::Trends bloqueado — ver data/manifest/trends_latest.json"
+          exit 1

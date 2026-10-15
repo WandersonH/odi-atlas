@@ -30,10 +30,10 @@ import json
 import os
 import re
 import sys
-import urllib.error
-import urllib.request
 import zipfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 CKAN = "https://dadosabertos.tse.jus.br/api/3/action/package_show?id=resultados-{year}"
 IBGE_MUNICIPIOS = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
@@ -48,18 +48,7 @@ REQUIRED = ("CD_CARGO", "NR_TURNO", "SG_UF", "CD_MUNICIPIO", "NR_ZONA")
 CAND_COLS = ("NR_CANDIDATO", "NR_VOTAVEL")
 
 
-def now_utc() -> str:
-    return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def http_get(url: str, timeout: int = 120):
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    return urllib.request.urlopen(req, timeout=timeout)
-
-
-def get_json(url: str):
-    with http_get(url) as r:
-        return json.load(r)
+from net import download, get_json, now_utc, open_url as http_get  # noqa: E402
 
 
 def pick_munzona(resources: list[dict], year: str) -> dict | None:
@@ -71,28 +60,6 @@ def pick_munzona(resources: list[dict], year: str) -> dict | None:
     pat = re.compile(rf"/votacao_candidato_munzona_{year}\.zip$", re.I)
     hits = [r for r in resources if pat.search(r.get("url", ""))]
     return hits[0] if len(hits) == 1 else None
-
-
-def download(url: str, dest: Path) -> dict:
-    """Baixa em streaming, calcula SHA-256 e devolve a ficha de proveniência."""
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    h = hashlib.sha256()
-    size = 0
-    started = now_utc()
-    with http_get(url, timeout=600) as r, open(dest, "wb") as f:
-        headers = {k: r.headers.get(k) for k in ("Last-Modified", "ETag", "Content-Length", "Content-Type")}
-        while True:
-            b = r.read(CHUNK)
-            if not b:
-                break
-            h.update(b)
-            f.write(b)
-            size += len(b)
-    expected = headers.get("Content-Length")
-    if expected and int(expected) != size:
-        raise IOError(f"download incompleto: {size} de {expected} bytes")
-    return {"url": url, "file": dest.name, "bytes": size, "sha256": h.hexdigest(),
-            "http": headers, "started_at_utc": started, "finished_at_utc": now_utc()}
 
 
 def _decode_lines(raw: io.BufferedIOBase):
@@ -249,8 +216,9 @@ def run(args) -> int:
             manifest["blocked"].append(f"TSE {year}: {entry['error']}")
 
     # A tabela oficial de municípios vem do .dbf da malha (mesma fonte da geometria).
-    # A API de localidades é só complementar: em 15/10/2026 ela respondeu com cadeia
-    # de certificados incompleta, por isso sua falha vira aviso, não bloqueio.
+    # A API de localidades é complementar; sua falha vira aviso, não bloqueio.
+    # (Em 15/10/2026 ela respondeu com cadeia de certificados incompleta; net.py
+    # agora busca o certificado intermediário pelo AIA.)
     manifest["warnings"] = []
     if args.malha:
         try:

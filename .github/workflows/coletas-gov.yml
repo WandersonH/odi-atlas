@@ -1,0 +1,77 @@
+name: Dados de governo — TSE candidaturas/redes + IBGE Internet
+
+# Cadastro de candidaturas e redes sociais declaradas ao TSE; tabelas da PNAD Contínua
+# sobre Internet (SIDRA). Originais em Release; recortes e manifesto em data/.
+on:
+  workflow_dispatch:
+    inputs:
+      comandos:
+        description: "Coletas (tse-candidatos e/ou sidra)"
+        default: "tse-candidatos sidra"
+        required: true
+  schedule:
+    - cron: "20 9 * * 1"   # segundas, 06h20 em Brasília
+
+concurrency:
+  group: coletas-gov
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  gov:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Coletar
+        id: coleta
+        continue-on-error: true
+        run: python scripts/collect_gov.py ${{ github.event.inputs.comandos || 'tse-candidatos sidra' }}
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("data/manifest/gov_latest.json")
+          if not p.exists(): print("## manifesto não gerado"); raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          print(f"## Dados de governo — status: **{m['status']}**\n")
+          for y, e in m["tse_candidatos"].items():
+              c, r = e.get("cadastro", {}), e.get("redes", {})
+              print(f"**TSE {y}:** {e.get('status')} · candidaturas {c.get('rows_written','')} · redes {r.get('rows_written','')} · por plataforma {r.get('by_plataforma','')}\n")
+          tabs = m["sidra"].get("tabelas", [])
+          print(f"**SIDRA:** {sum(t.get('status')=='ok' for t in tabs)} de {len(tabs)} tabelas baixadas\n")
+          for t in tabs: print(f"- {t['id']} · {t['nome']} · {t.get('status')}")
+          for b in m["blocked"]: print(f"- ⛔ {b}")
+          for w in m["warnings"]: print(f"- ⚠️ {w}")
+          EOF
+      - name: Publicar originais num Release
+        if: always() && hashFiles('raw/*') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="gov-$(date -u +%Y%m%dT%H%M%SZ)"
+          gh release create "$tag" raw/* data/manifest/gov_latest.json --title "Originais governo · $tag" \
+            --notes "Arquivos originais do run ${{ github.run_id }}. Hashes em gov_latest.json."
+      - name: Commitar
+        if: always()
+        run: |
+          git config user.name "odi-atlas-coletor"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && { echo "nada novo"; exit 0; }
+          git commit -m "Governo: TSE candidaturas/redes + SIDRA (run ${{ github.run_id }})"
+          for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0; sleep 5; done
+          exit 1
+      - name: Falhar se houve bloqueio
+        if: steps.coleta.outcome == 'failure'
+        run: |
+          echo "::error::Coleta bloqueada — ver data/manifest/gov_latest.json"
+          exit 1
