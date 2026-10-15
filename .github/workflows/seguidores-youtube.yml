@@ -23,6 +23,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Dependência da rede (versão fixa)
+        run: pip install networkx==3.6.1
       - name: Testes
         run: python -m unittest discover -s tests
       - name: Coletar inscritos (YouTube Data API)
@@ -35,6 +37,10 @@ jobs:
         if: steps.coleta.outcome == 'success'
         continue-on-error: true
         run: python scripts/build_conteudo.py
+      - name: Caderno 13 — rede de coocorrência (JSON, GEXF e planilhas)
+        if: steps.coleta.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/build_rede.py
 
       - name: Resumo
         if: always()

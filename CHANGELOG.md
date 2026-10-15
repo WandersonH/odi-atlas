@@ -6,6 +6,53 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C4.2] 2026-10-15 — Caderno 13: análise de redes (coocorrência) com tabela, planilhas e GEXF para o Gephi
+
+**Mudou**
+- `scripts/build_rede.py` (networkx 3.6.1, versão fixa no workflow). Usa o mesmo texto útil do `build_conteudo`: sem links, sem rodapés repetidos, sem o nome do canal, sem o nome do próprio candidato, sem o pacote fixo de tags.
+  - **Nós:** palavras e #tags presentes em 8+ vídeos (até 150).
+  - **Arestas:** dois termos no mesmo vídeo. O peso é o nº de vídeos em comum, com mínimo 3. Cada nó guarda até 8 arestas, as mais fortes.
+  - **Medidas:** comunidades por **Louvain**, posição por **ForceAtlas2 LinLog** (partindo de um layout de mola com semente) e intermediação (*betweenness*). Semente fixa 42, então a mesma entrada gera a mesma rede. Se o layout gerar uma posição inválida (NaN), a rede não é publicada.
+- Saídas em `data/youtube/`:
+  - `rede.json`: desenhada na página;
+  - `rede.gexf`: abre direto no Gephi, já com posição, cor e tamanho;
+  - `rede_nos.csv` e `rede_arestas.csv`: no formato do *Importar planilha* do Gephi (Id/Label; Source/Target/Weight/Type);
+  - `rede_videos_termos.csv`: matriz de origem, com os termos da rede que cada vídeo contém e o link do vídeo. Permite refazer à mão o peso de qualquer aresta.
+- Caderno 13, novo bloco **“Que assuntos andam juntos em cada campanha”** (no fim da página):
+  - **Rede:** cor por candidato (azul ↔ terracota) ou por comunidade; tamanho do ponto = nº de vídeos. Arrastar move, a roda do mouse aproxima. Passar o mouse ou clicar destaca os vizinhos; um painel mostra os termos que aparecem junto e a comunidade. Ao lado, as 8 maiores pontes por intermediação.
+  - **Tabela de nós** e **tabela de arestas**, ordenáveis e com filtro por termo.
+  - Botões para baixar as quatro planilhas e o GEXF, com instruções de importação no Gephi.
+- `build_conteudo.py`: mais palavras funcionais na lista de exclusão (neste, desse, nisso…). Os topos da nuvem não mudaram.
+- `seguidores-youtube.yml`: instala `networkx==3.6.1` e roda `build_rede.py` depois da classificação, todo dia.
+- `tests/test_build_rede.py`: 3 testes:
+  - peso, lado e corte por mínimo;
+  - rede idêntica em duas execuções e comunidades separadas;
+  - execução completa em que o peso de **toda** aresta do CSV é refeito a partir da matriz vídeo × termos.
+  - Total: 45.
+
+**Testado**
+- ✅ `python -m unittest discover -s tests` — 45 OK.
+- ✅ `python scripts/build_rede.py` na coleta de 2026-10-15T20:06:19Z (run `38799228938`), com 784 vídeos de Lula e 401 de Flávio. Resultado: **148 nós, 797 arestas, 5 comunidades, modularidade 0,272**.
+  - C1 (57 nós, lado médio 0,73): brasil, presidente, país, futuro, vote.
+  - C2 (29 nós, 0,88): vida, família, mulheres, 6x1, escala.
+  - C3 (26 nós, 0,87): povo, brasileiro, flavio, bolsonaro, história, sus.
+  - C4 (20 nós, **0,25 — o grupo de Flávio**): vencer, governo, lula, verdade, #vote22, #direita.
+  - C5 (16 nós, 0,86): segurança, bets, crime, famílias.
+  - Maior ponte: “brasil” (intermediação 0,53).
+- ✅ Conferência manual: o peso de 3 arestas refeito pela matriz vídeo × termos bateu com o CSV (#direita–#eleicoes 6; brasil–mundo 13; brasileiro–ninguém 6).
+- ✅ `rede.gexf` relido com `networkx.read_gexf`: 148 nós e 801 arestas na versão anterior desta mesma execução, mesmo formato. **Não abri no Gephi** (não há Gephi neste ambiente).
+- ✅ Chromium headless (1400×900 e 390×844):
+  - 148 pontos e 797 linhas; tabela de nós com 148 linhas e tabela de arestas com 797;
+  - o filtro “seg” deixa 1 nó; o clique destaca os vizinhos;
+  - sem rolagem horizontal no celular.
+- ⚠️ O networkx emite um aviso numérico interno no LinLog (divisão por distância zero). Conferi que as 148 posições são finitas, e a checagem de NaN bloqueia a publicação se isso mudar.
+
+**Limites**
+- Coocorrência no mesmo vídeo não é relação semântica: termos frequentes viram centro por volume.
+- Lula tem quase o dobro de vídeos e descrições mais longas, então domina a rede. Compare a estrutura, não o tamanho. A página avisa isso.
+
+---
+
 ## [C4.1] 2026-10-15 — Caderno 13: mapa de tags (Lula × Flávio) e coleta das tags dos vídeos
 
 **Mudou**

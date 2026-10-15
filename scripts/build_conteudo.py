@@ -81,6 +81,7 @@ whatsapp telegram x clique aqui completo íntegra integra parte episódio episod
 obrigado obrigada pronto fim gente quer quero precisa contra lado enquanto nunca sempre grande novo nova tempo seguir bora
 propaganda eleitoral horário horario gratuito janeiro fevereiro março marco abril maio junho julho agosto setembro outubro
 novembro dezembro segunda terça terca quarta quinta sexta sábado sabado domingo
+neste nesta nesse nessa deste desta desse dessa disso nisso daquele daquela aquilo num numa pois sobre sob após apos
 """).split())
 NUVEM_TOP = 60
 NUVEM_MIN_VIDEOS = 3

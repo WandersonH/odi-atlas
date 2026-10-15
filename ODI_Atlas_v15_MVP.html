@@ -497,6 +497,27 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .yt-pac{border-left:3px solid var(--c);background:#f7f9fa;padding:10px 12px}.yt-pac h4{margin:0 0 6px;font:700 13px/1.3 Georgia,serif;color:#172238}
 .yt-pac p{margin:0 0 6px;font-size:11.5px;color:#4a5765}.yt-pac .yt-tags{gap:3px}
 @media (max-width:800px){.yt-pacotes{grid-template-columns:1fr}}
+.yt-net{margin:14px 0}.yt-net h2{margin:2px 0 0;font:700 22px/1.2 Georgia,'Times New Roman',serif;color:#172238}
+.yt-netctl{display:flex;gap:6px;align-items:center;font:11px 'Courier New',monospace;color:#53606b;flex-wrap:wrap}
+.yt-netbody[hidden]{display:none}.yt-netbody{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:14px;border-top:2px solid var(--yt-axis);padding-top:10px}
+.yt-netsvg{position:relative;background:#fffdf8;border:1px solid #e3e6e8}
+#ytNet{width:100%;height:auto;aspect-ratio:1/1;max-height:720px;display:block;cursor:grab;touch-action:none}
+#ytNet line{stroke:#9aa5ae;stroke-opacity:.28}#ytNet circle{stroke:#fffdf8;stroke-width:1;cursor:pointer}
+#ytNet text{font:700 11px 'Courier New',monospace;fill:#172238;paint-order:stroke;stroke:#fffdf8;stroke-width:3px;pointer-events:none}
+#ytNet.yt-focus line{stroke-opacity:.05}#ytNet.yt-focus circle{opacity:.15}#ytNet.yt-focus text{opacity:.12}
+#ytNet.yt-focus .yt-on{opacity:1!important;stroke-opacity:.75!important}
+.yt-netlegend{position:absolute;left:8px;bottom:8px;font:10px/1.5 'Courier New',monospace;color:#3c4a58;background:rgba(255,253,248,.92);padding:6px 8px;border:1px solid #e3e6e8;max-width:70%}
+.yt-netlegend i{display:inline-block;width:9px;height:9px;margin-right:4px;vertical-align:-1px}
+.yt-netside{font-size:12px;color:#3c4a58}.yt-netside h4{margin:0 0 6px;font:700 17px/1.2 Georgia,serif;color:#172238}
+.yt-netside ol{margin:6px 0 0;padding-left:18px}.yt-netside li{margin:2px 0}.yt-netside .yt-meta{margin:4px 0}
+@media (max-width:800px){.yt-netbody{grid-template-columns:1fr}}
+.yt-nettable{border-top:2px solid var(--yt-axis);padding-top:10px}.yt-nettable[hidden]{display:none}
+.yt-nettable input{width:100%;max-width:320px;padding:7px 9px;border:1px solid #c9d1d6;background:#fffdf8;font:12px 'Courier New',monospace;margin-bottom:8px}
+.yt-tablewrap{max-height:560px;overflow:auto;border:1px solid #e3e6e8}
+#ytNetTbl{width:100%;border-collapse:collapse;font-size:12px}#ytNetTbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px/1.2 'Courier New',monospace;text-transform:uppercase;letter-spacing:.04em;padding:7px 8px;text-align:left;cursor:pointer;white-space:nowrap}
+#ytNetTbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}#ytNetTbl td.n{text-align:right}#ytNetTbl tr:hover td{background:#f6f3ec}
+#ytNetTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
+.yt-netdl{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.yt-netdl .eyebrow{width:100%}.yt-netdl p{width:100%;margin:4px 0 0}
 </style>
 </head>
 <body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 13 CADERNOS</div><nav class="nav" id="nav">
@@ -703,6 +724,26 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot yt-b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="ytListB"></div></div>
   </div>
   <div class="yt-detail card" id="ytDetail" hidden></div>
+  <div class="card yt-net">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+      <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-view="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-view="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-view="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-cor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-cor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="ytNetReset">Recentrar</button></div></div>
+    <div class="yt-netbody">
+      <div class="yt-netsvg"><svg id="ytNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
+        <div class="yt-netlegend" id="ytNetLegend"></div></div>
+      <aside class="yt-netside" id="ytNetSide"></aside>
+    </div>
+    <div class="yt-nettable" id="ytNetTable" hidden>
+      <input type="search" id="ytNetSearch" placeholder="Filtrar termo…" aria-label="Filtrar termo">
+      <div class="yt-tablewrap"><table id="ytNetTbl"></table></div>
+    </div>
+    <div class="yt-netdl"><span class="eyebrow">Planilhas da rede (conferência e Gephi)</span>
+      <a class="ghostbutton" href="./data/youtube/rede_nos.csv" download>Nós · CSV</a>
+      <a class="ghostbutton" href="./data/youtube/rede_arestas.csv" download>Arestas · CSV</a>
+      <a class="ghostbutton" href="./data/youtube/rede_videos_termos.csv" download>Vídeo × termos · CSV</a>
+      <a class="ghostbutton" href="./data/youtube/rede.gexf" download>Rede · GEXF</a>
+      <p class="yt-cloudnote">No Gephi: <b>Arquivo → Abrir → rede.gexf</b> (já vem com posição, cor e comunidade), ou <b>Laboratório de dados → Importar planilha</b> com nós e depois arestas (tipo não direcionado). A planilha “vídeo × termos” lista, para cada vídeo, os termos da rede que ele contém: o peso de qualquer aresta é o nº de linhas em que os dois termos aparecem juntos.</p></div>
+    <p class="yt-cloudnote" id="ytNetNote"></p>
+  </div>
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="ytMethod"></p>
     <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Tags são as que o próprio canal declara ao YouTube; não indicam o conteúdo de fato do vídeo. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
 </section>
@@ -1430,6 +1471,74 @@ nuvem($y('ytCloudA'),a.nuvem);nuvem($y('ytCloudB'),b.nuvem);
 $y('ytOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$y('ytOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});
 render();}
 const sec=$y('ytContent');if(!sec)return;
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+if(sec.classList.contains('active'))carregar();
+})();
+</script>
+
+<script>
+/* Caderno 13 · rede de coocorrência (data/youtube/rede.json; mesma rede em rede.gexf para o Gephi) */
+(function(){
+const sec=document.getElementById('ytContent');if(!sec)return;
+const PAL=['#2f7d6b','#7a4d8c','#b8862e','#9c3f4a','#4f6b2e','#5b7894','#c25d8a','#3d3d3d'];
+const NS='http://www.w3.org/2000/svg';let R=null,modo='lado',sel=null,feito=false,vb=[-40,-40,1080,1080],vista='rede',ord={k:'v',d:-1},busca='';
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mix=l=>{const a=[0x1d,0x4f,0x86],b=[0xa8,0x69,0x3a];return 'rgb('+a.map((v,i)=>Math.round(b[i]+(v-b[i])*l)).join(',')+')';};
+const cor=n=>modo==='lado'?mix(n.lado):PAL[n.c%PAL.length];
+const raio=n=>3+Math.sqrt(n.v)*1.6;
+function legenda(){const el=document.getElementById('ytNetLegend');
+el.innerHTML=modo==='lado'?`<i style="background:${mix(1)}"></i>só Lula <i style="background:${mix(.5)}"></i>ambos <i style="background:${mix(0)}"></i>só Flávio<br>tamanho = nº de vídeos`:
+R.comunidades.map(c=>`<i style="background:${PAL[c.id%PAL.length]}"></i>C${c.id+1}: ${esc(c.principais.slice(0,3).join(', '))}`).join('<br>');}
+function lado(n){const t=n.l+n.f;return `Lula ${n.l} · Flávio ${n.f} vídeo${t>1?'s':''}`;}
+function painel(){const side=document.getElementById('ytNetSide');
+if(!sel){side.innerHTML=`<h4>Como ler</h4><p>Cada ponto é uma palavra ou #tag; a linha liga dois termos que aparecem no mesmo vídeo. Termos que andam juntos ficam próximos e formam grupos (comunidades). Passe o mouse ou toque num ponto para ver as conexões.</p><p class="yt-meta">${R.nos_total} nós · ${R.arestas_total} arestas · ${R.comunidades.length} comunidades · modularidade ${R.modularidade}</p><div class="eyebrow" style="margin-top:10px">Pontes (intermediação)</div><ol>${[...R.nos].sort((a,b)=>b.b-a.b).slice(0,8).map(n=>`<li>${esc(n.id)} <span class="yt-meta">${n.b.toFixed(3)}</span></li>`).join('')}</ol><p style="margin-top:10px"><a class="ghostbutton" href="./data/youtube/rede.gexf" download>Baixar .gexf (Gephi)</a></p>`;return;}
+const n=R.idx[sel],viz=R.adj[sel].slice().sort((a,b)=>b[1]-a[1]);const c=R.comunidades[n.c];
+side.innerHTML=`<h4>${esc(n.id)}</h4><p class="yt-meta">${lado(n)}<br>comunidade C${n.c+1} · ${n.g} conexões · intermediação ${n.b.toFixed(3)}</p><div class="eyebrow" style="margin-top:8px">Aparece junto com</div><ol>${viz.slice(0,12).map(([m,w])=>`<li>${esc(m)} <span class="yt-meta">${w} vídeos</span></li>`).join('')}</ol><p class="yt-meta" style="margin-top:8px">C${n.c+1}: ${esc(c.principais.join(', '))}</p><button class="ghostbutton" type="button" id="ytNetClear">Limpar seleção</button>`;
+document.getElementById('ytNetClear').addEventListener('click',()=>foco(null));}
+function foco(id){sel=id;const svg=document.getElementById('ytNet');svg.classList.toggle('yt-focus',!!id);svg.querySelectorAll('.yt-on').forEach(e=>e.classList.remove('yt-on'));
+if(id){const viz=new Set([id,...R.adj[id].map(x=>x[0])]);svg.querySelectorAll('circle,text').forEach(e=>{if(viz.has(e.dataset.id))e.classList.add('yt-on');});svg.querySelectorAll('line').forEach(e=>{if(e.dataset.a===id||e.dataset.b===id)e.classList.add('yt-on');});}
+painel();}
+function desenhar(){const svg=document.getElementById('ytNet');svg.setAttribute('viewBox',vb.join(' '));
+const mxw=Math.max(...R.arestas.map(e=>e[2]));let h='';
+for(const [a,b,w] of R.arestas){const p=R.idx[a],q=R.idx[b];h+=`<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" stroke-width="${(0.4+2.6*w/mxw).toFixed(2)}" data-a="${esc(a)}" data-b="${esc(b)}"/>`;}
+const ord=[...R.nos].sort((a,b)=>a.v-b.v);for(const n of ord)h+=`<circle cx="${n.x}" cy="${n.y}" r="${raio(n).toFixed(1)}" fill="${cor(n)}" data-id="${esc(n.id)}" tabindex="0"><title>${esc(n.id)} · ${lado(n)}</title></circle>`;
+const lim=[...R.nos].sort((a,b)=>b.v-a.v)[Math.min(39,R.nos.length-1)].v;
+for(const n of R.nos){const big=n.v>=lim;h+=`<text x="${(n.x+raio(n)+2).toFixed(1)}" y="${(n.y+4).toFixed(1)}" data-id="${esc(n.id)}" style="font-size:${big?Math.min(20,10+Math.sqrt(n.v)*0.6).toFixed(1):9}px" ${big?'':'class="yt-small" opacity="0"'}>${esc(n.id)}</text>`;}
+svg.innerHTML=h;
+svg.querySelectorAll('circle').forEach(c=>{c.addEventListener('mouseenter',()=>{if(!fixo)foco(c.dataset.id)});c.addEventListener('mouseleave',()=>{if(!fixo)foco(null)});c.addEventListener('click',ev=>{ev.stopPropagation();fixo=(fixo&&sel===c.dataset.id)?false:true;foco(fixo?c.dataset.id:null);});c.addEventListener('keydown',ev=>{if(ev.key==='Enter'){fixo=true;foco(c.dataset.id);}});});
+legenda();foco(sel);}
+let fixo=false;
+function zoomPan(){const svg=document.getElementById('ytNet');let drag=null;
+const pt=ev=>{const r=svg.getBoundingClientRect();return [vb[0]+(ev.clientX-r.left)/r.width*vb[2],vb[1]+(ev.clientY-r.top)/r.height*vb[3]];};
+svg.addEventListener('wheel',ev=>{ev.preventDefault();const [x,y]=pt(ev),k=ev.deltaY>0?1.15:1/1.15;const nw=Math.min(1600,Math.max(120,vb[2]*k));const f=nw/vb[2];vb=[x-(x-vb[0])*f,y-(y-vb[1])*f,nw,nw];svg.setAttribute('viewBox',vb.join(' '));svg.querySelectorAll('text.yt-small').forEach(t=>t.setAttribute('opacity',vb[2]<600?'1':'0'));},{passive:false});
+svg.addEventListener('pointerdown',ev=>{drag=[ev.clientX,ev.clientY,vb[0],vb[1]];svg.setPointerCapture(ev.pointerId);});
+svg.addEventListener('pointermove',ev=>{if(!drag)return;const r=svg.getBoundingClientRect();vb[0]=drag[2]-(ev.clientX-drag[0])/r.width*vb[2];vb[1]=drag[3]-(ev.clientY-drag[1])/r.height*vb[3];svg.setAttribute('viewBox',vb.join(' '));});
+svg.addEventListener('pointerup',()=>{drag=null;});
+svg.addEventListener('click',()=>{if(fixo){fixo=false;foco(null);}});}
+function tabela(){const t=document.getElementById('ytNetTbl');const q=busca.trim().toLowerCase();
+const num=v=>typeof v==='number'?v.toLocaleString('pt-BR'):esc(v);
+let cols,rows;
+if(vista==='nos'){cols=[['id','Termo'],['v','Vídeos'],['l','Lula'],['f','Flávio'],['lado','% Lula'],['c','Comunidade'],['g','Conexões'],['b','Intermediação']];
+rows=R.nos.filter(n=>!q||n.id.includes(q)).map(n=>({...n,lado:Math.round(n.lado*100),c:n.c+1}));}
+else{cols=[['a','Termo A'],['b','Termo B'],['w','Vídeos juntos'],['ca','Comun. A'],['cb','Comun. B']];
+rows=R.arestas.filter(([a,b])=>!q||a.includes(q)||b.includes(q)).map(([a,b,w])=>({a,b,w,ca:R.idx[a].c+1,cb:R.idx[b].c+1}));}
+rows.sort((x,y)=>{const A=x[ord.k],B=y[ord.k];return (typeof A==='number'?A-B:String(A).localeCompare(String(B),'pt'))*ord.d;});
+const sw=n=>`<i style="background:${cor(R.idx[n])}"></i>`;
+t.innerHTML=`<thead><tr>${cols.map(([k,l])=>`<th data-k="${k}">${l}${ord.k===k?(ord.d<0?' ↓':' ↑'):''}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${cols.map(([k])=>{const v=r[k];const isTerm=(k==='id'||k==='a'||(k==='b'&&vista==='arestas'));return `<td class="${typeof v==='number'?'n':''}">${isTerm?sw(v)+esc(v):(k==='b'&&vista==='nos'?v.toFixed(4):num(v))}</td>`;}).join('')}</tr>`).join('')}</tbody>`;
+t.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;ord=ord.k===k?{k,d:-ord.d}:{k,d:(k==='id'||k==='a'||(k==='b'&&vista==='arestas'))?1:-1};tabela();}));}
+function trocarVista(v){vista=v;document.querySelectorAll('#ytContent [data-view]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.view===v));
+document.querySelector('#ytContent .yt-netbody').hidden=v!=='rede';document.getElementById('ytNetTable').hidden=v==='rede';
+if(v!=='rede'){ord=v==='nos'?{k:'v',d:-1}:{k:'w',d:-1};tabela();}}
+async function carregar(){if(feito)return;feito=true;
+try{const r=await fetch('./data/youtube/rede.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);R=await r.json();}
+catch(err){document.getElementById('ytNetSide').innerHTML='<p>⛔ Rede indisponível ('+esc(err.message)+').</p>';feito=false;return;}
+R.idx={};R.adj={};for(const n of R.nos){R.idx[n.id]=n;R.adj[n.id]=[];}for(const [a,b,w] of R.arestas){R.adj[a].push([b,w]);R.adj[b].push([a,w]);}
+document.getElementById('ytNetNote').textContent=R.metodo+` Vídeos: Lula ${Object.values(R.videos)[0]}, Flávio ${Object.values(R.videos)[1]}. Lula tem mais vídeos e descrições mais longas, por isso domina a rede: compare a estrutura, não o tamanho. Arraste para mover, use a roda do mouse para aproximar.`;
+document.querySelectorAll('#ytContent [data-cor]').forEach(b=>b.addEventListener('click',()=>{modo=b.dataset.cor;document.querySelectorAll('#ytContent [data-cor]').forEach(x=>x.setAttribute('aria-pressed',x===b));desenhar();if(vista!=='rede')tabela();}));
+document.querySelectorAll('#ytContent [data-view]').forEach(b=>b.addEventListener('click',()=>trocarVista(b.dataset.view)));
+document.getElementById('ytNetSearch').addEventListener('input',ev=>{busca=ev.target.value;tabela();});
+document.getElementById('ytNetReset').addEventListener('click',()=>{vb=[-40,-40,1080,1080];fixo=false;sel=null;desenhar();});
+zoomPan();desenhar();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
 })();
