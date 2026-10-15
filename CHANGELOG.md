@@ -6,6 +6,26 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C7.2] 2026-10-15 — Trends: consultas e assuntos relacionados (método exploratório das aulas); TikTok bloqueado numa rodada, dados preservados
+
+**Por quê:** nas aulas de IA e produção de texto, o Trends é usado como etapa exploratória. As consultas relacionadas mostram como o público formula a busca e que termos associa ao tema (exemplo da aula: "Paraisópolis" associado a "Morumbi"). Esses termos orientam as strings de busca da coleta.
+
+**Mudou**
+- `collect_trends.py`: widgets `RELATED_QUERIES` e `RELATED_TOPICS` (endpoint `relatedsearches`), listas "principais" e "em alta".
+  - **Escopo:** só o grupo 2º turno por tópicos (Lula × Flávio), nos períodos eleitoral e de 7 dias, ou seja, 8 chamadas a mais por coleta. Configurável em `trends.json` → `relacionados`.
+  - **Saída:** `…__relacionados.csv` em formato longo (termo, tipo, lista, posição, texto, tipo de assunto, valor, rótulo).
+- `build_trends_caderno.py` leva os relacionados para `caderno.json`.
+- Caderno 14: bloco "O que o público busca junto com cada candidato", com consultas ou assuntos, "em alta" e "principais", por candidato.
+
+**Testado**
+- ✅ Testes: 73 OK (novo: CSV longo dos relacionados).
+- ✅ Run `38816064106` (Trends, 2026-10-15): 90 linhas de relacionados em 7 dias e 100 no período eleitoral. Em alta em 7 dias:
+  - **Lula:** "veja vorcaro lula", "audio vorcaro lula", "vorcaro instituto lula", "manifestação lula paulista" (aumento repentino);
+  - **Flávio:** "flavio usuario master", "flavio bolsonaro mussolini" (aumento repentino), "tropa do flavio" (+2.400%), "pesquisa lula e flávio segundo turno" (+1.250%).
+- ⛔ TikTok, run de 2026-10-15 22:06 UTC: **0 de 10 perfis** ("Unable to extract secondary user ID"). **O acervo de 710 vídeos foi preservado**, como projetado, e a página marca cada perfil como ⛔ não lido nesta coleta. Às 21:57 UTC haviam sido 7 de 10. Instabilidade do TikTok contra servidores, já registrada em D1.0.
+
+---
+
 ## [C7.1] 2026-10-15 — TikTok com o mesmo pacote analítico do YouTube (Bardin, CHD/IRaMuTeQ, rede de coocorrência)
 
 **Por quê:** pedido do usuário ("cadê as redes e o IRaMuTeQ do TikTok, eu falei mesmo formato").
