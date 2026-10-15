@@ -514,10 +514,21 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .yt-nettable{border-top:2px solid var(--yt-axis);padding-top:10px}.yt-nettable[hidden]{display:none}
 .yt-nettable input{width:100%;max-width:320px;padding:7px 9px;border:1px solid #c9d1d6;background:#fffdf8;font:12px 'Courier New',monospace;margin-bottom:8px}
 .yt-tablewrap{max-height:560px;overflow:auto;border:1px solid #e3e6e8}
+#ytInfTbl{width:100%;border-collapse:collapse;font-size:12px}#ytInfTbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px/1.2 'Courier New',monospace;text-transform:uppercase;padding:7px 8px;text-align:left;cursor:pointer;white-space:nowrap}#ytInfTbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}#ytInfTbl td.n{text-align:right}
 #ytNetTbl{width:100%;border-collapse:collapse;font-size:12px}#ytNetTbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px/1.2 'Courier New',monospace;text-transform:uppercase;letter-spacing:.04em;padding:7px 8px;text-align:left;cursor:pointer;white-space:nowrap}
 #ytNetTbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}#ytNetTbl td.n{text-align:right}#ytNetTbl tr:hover td{background:#f6f3ec}
-#ytNetTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
+#ytNetTbl i,#ytInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
 .yt-netdl{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.yt-netdl .eyebrow{width:100%}.yt-netdl p{width:100%;margin:4px 0 0}
+.yt-infstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:10px}
+.yt-infstats>div{border-top:3px solid var(--c);background:#f7f9fa;padding:10px 12px;font-size:12px;color:#53606b}
+.yt-infstats b{display:block;font:700 22px/1.1 Georgia,serif;color:#172238}.yt-infstats h4{margin:0 0 6px;font:700 14px Georgia,serif;color:var(--c)}
+.yt-infstats .yt-nums{display:flex;gap:16px;flex-wrap:wrap}
+#ytInf line{stroke-opacity:.35}#ytInf circle{stroke:#fffdf8;stroke-width:1;cursor:pointer}
+#ytInf text{font:700 11px 'Courier New',monospace;fill:#172238;paint-order:stroke;stroke:#fffdf8;stroke-width:3px;pointer-events:none}
+#ytInf.yt-focus line{stroke-opacity:.04}#ytInf.yt-focus circle{opacity:.15}#ytInf.yt-focus text{opacity:.1}
+#ytInf.yt-focus .yt-on{opacity:1!important;stroke-opacity:.9!important}
+.yt-lv{display:inline-block;font:700 9px/1 'Courier New',monospace;padding:2px 4px;color:#fff;margin-right:3px}
+@media (max-width:800px){.yt-infstats{grid-template-columns:1fr}}
 </style>
 </head>
 <body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 13 CADERNOS</div><nav class="nav" id="nav">
@@ -743,6 +754,23 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
       <a class="ghostbutton" href="./data/youtube/rede.gexf" download>Rede · GEXF</a>
       <p class="yt-cloudnote">No Gephi: <b>Arquivo → Abrir → rede.gexf</b> (já vem com posição, cor e comunidade), ou <b>Laboratório de dados → Importar planilha</b> com nós e depois arestas (tipo não direcionado). A planilha “vídeo × termos” lista, para cada vídeo, os termos da rede que ele contém: o peso de qualquer aresta é o nº de linhas em que os dois termos aparecem juntos.</p></div>
     <p class="yt-cloudnote" id="ytNetNote"></p>
+  </div>
+  <div class="card yt-net yt-inf">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · influenciadores no YouTube</div><h2>Quem fala de <span style="color:#c8102e">Lula</span> e de <span style="color:#1f8a3b">Flávio</span></h2></div>
+      <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-iview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-iview="tabela" aria-pressed="false">Tabela de canais</button><button class="yt-chip" id="ytInfReset">Recentrar</button></div></div>
+    <div class="yt-infstats" id="ytInfStats"></div>
+    <div class="yt-netbody" id="ytInfBody">
+      <div class="yt-netsvg"><svg id="ytInf" role="img" aria-label="Rede de canais que citam Lula ou Flávio"></svg>
+        <div class="yt-netlegend"><i style="background:#c8102e"></i>fala só de Lula <i style="background:#7a6a2a"></i>dos dois <i style="background:#1f8a3b"></i>só de Flávio<br>linha tracejada = falou · linha cheia = pediu voto · tamanho = inscritos</div></div>
+      <aside class="yt-netside" id="ytInfSide"></aside>
+    </div>
+    <div class="yt-nettable" id="ytInfTable" hidden><input type="search" id="ytInfSearch" placeholder="Filtrar canal…" aria-label="Filtrar canal"><div class="yt-tablewrap"><table id="ytInfTbl"></table></div></div>
+    <div class="yt-netdl"><span class="eyebrow">Planilhas (conferência e Gephi)</span>
+      <a class="ghostbutton" href="./data/youtube/influenciadores/rede_nos.csv" download>Canais · CSV</a>
+      <a class="ghostbutton" href="./data/youtube/influenciadores/rede_arestas.csv" download>Arestas · CSV</a>
+      <a class="ghostbutton" href="./data/youtube/influenciadores/videos_validos.csv" download>Vídeos e trechos · CSV</a>
+      <a class="ghostbutton" href="./data/youtube/influenciadores/rede.gexf" download>Rede · GEXF</a></div>
+    <p class="yt-cloudnote" id="ytInfNote"></p>
   </div>
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="ytMethod"></p>
     <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Tags são as que o próprio canal declara ao YouTube; não indicam o conteúdo de fato do vídeo. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
@@ -1539,6 +1567,67 @@ document.querySelectorAll('#ytContent [data-view]').forEach(b=>b.addEventListene
 document.getElementById('ytNetSearch').addEventListener('input',ev=>{busca=ev.target.value;tabela();});
 document.getElementById('ytNetReset').addEventListener('click',()=>{vb=[-40,-40,1080,1080];fixo=false;sel=null;desenhar();});
 zoomPan();desenhar();}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+if(sec.classList.contains('active'))carregar();
+})();
+</script>
+
+<script>
+/* Caderno 13 · rede de influenciadores (data/youtube/influenciadores/rede.json) — Lula vermelho, Flávio verde */
+(function(){
+const sec=document.getElementById('ytContent');if(!sec)return;
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';
+let R=null,feito=false,sel=null,fixo=false,vb=[-60,-60,1120,1120],ord={k:'v',d:-1},busca='';
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n||0).toLocaleString('pt-BR');
+const raio=n=>n.tipo==='candidato'?26:3+Math.log10(Math.max(n.inscritos,10))*1.9-6;
+const lv=(n,c)=>n===2?`<span class="yt-lv" style="background:${c}">PEDIU VOTO</span>`:n===1?`<span class="yt-lv" style="background:${c};opacity:.6">FALOU</span>`:'';
+function stats(){const a=R.candidatos[L],b=R.candidatos[F];
+const card=(x,c)=>`<div style="--c:${c}"><h4>${esc(x.nome)} · ${esc(x.numero)}</h4><div class="yt-nums"><span><b>${fmt(x.canais)}</b>canais falaram</span><span><b>${fmt(x.videos)}</b>vídeos</span><span><b>${fmt(x.videos_pedem_voto)}</b>pediram voto</span><span><b>${fmt(x.so_ele)}</b>só falaram dele</span></div></div>`;
+$('ytInfStats').innerHTML=card(a,CL)+`<div style="--c:#7a6a2a"><h4>Falaram dos dois</h4><div class="yt-nums"><span><b>${fmt(R.canais_ambos)}</b>canais</span><span><b>${fmt(R.canais_total)}</b>canais na rede</span><span><b>${fmt(R.videos_validos)}</b>vídeos</span></div></div>`+card(b,CF);}
+function painel(){const side=$('ytInfSide');
+if(!sel){const top=R.nos.filter(n=>n.tipo==='canal').sort((x,y)=>y.inscritos-x.inscritos).slice(0,8);
+side.innerHTML=`<h4>Como ler</h4><p>Os dois pontos grandes são os candidatos. Cada ponto menor é um canal do YouTube (fora das campanhas) que publicou vídeo falando de um deles. A cor vai do vermelho (só Lula) ao verde (só Flávio). Linha cheia: algum vídeo do canal pediu voto.</p><p><b>Falar não é apoiar:</b> o vídeo pode ser a favor, contra ou só noticiar.</p><div class="eyebrow" style="margin-top:10px">Maiores canais na rede</div><ol>${top.map(n=>`<li>${esc(n.label)} <span class="yt-meta">${fmt(n.inscritos)}</span></li>`).join('')}</ol>`;return;}
+const n=R.idx[sel];
+if(n.tipo==='candidato'){const c=n.id.slice(5);const viz=R.adj[sel].map(([m,w,pv])=>[R.idx[m],w,pv]).sort((a,b)=>b[1]-a[1]);
+side.innerHTML=`<h4 style="color:${n.cor}">${esc(n.label)}</h4><p class="yt-meta">${fmt(viz.length)} canais · ${fmt(n['v_'+c])} vídeos · ${fmt(n['voto_'+c])} pediram voto</p><div class="eyebrow" style="margin-top:8px">Canais que mais falaram dele</div><ol>${viz.slice(0,15).map(([m,w,pv])=>`<li>${esc(m.label)} <span class="yt-meta">${w} vídeo${w>1?'s':''}${pv?' · pediu voto':''}</span></li>`).join('')}</ol><button class="ghostbutton" type="button" id="ytInfClear">Limpar seleção</button>`;}
+else side.innerHTML=`<h4>${esc(n.label)}</h4><p class="yt-meta">${fmt(n.inscritos)} inscritos${n.handle?' · '+esc(n.handle):''}<br><span style="color:${CL}">Lula: ${n['v_'+L]} vídeo(s), ${n['voto_'+L]} pedindo voto</span><br><span style="color:${CF}">Flávio: ${n['v_'+F]} vídeo(s), ${n['voto_'+F]} pedindo voto</span></p><div class="eyebrow" style="margin-top:8px">Vídeos mais vistos</div><ol>${(n.top||[]).map(([id,t,vw,a,b])=>`<li><a href="https://www.youtube.com/watch?v=${encodeURIComponent(id)}" target="_blank" rel="noopener">${esc(t)}</a><br>${lv(a,CL)}${lv(b,CF)}<span class="yt-meta">${fmt(vw)} visualizações</span></li>`).join('')}</ol><p><a class="ghostbutton" href="https://www.youtube.com/channel/${encodeURIComponent(n.id)}" target="_blank" rel="noopener">Abrir canal ↗</a> <button class="ghostbutton" type="button" id="ytInfClear">Limpar</button></p>`;
+const b=$('ytInfClear');if(b)b.addEventListener('click',()=>{fixo=false;foco(null);});}
+function foco(id){sel=id;const svg=$('ytInf');svg.classList.toggle('yt-focus',!!id);svg.querySelectorAll('.yt-on').forEach(e=>e.classList.remove('yt-on'));
+if(id){const viz=new Set([id,...R.adj[id].map(x=>x[0])]);svg.querySelectorAll('circle,text').forEach(e=>{if(viz.has(e.dataset.id))e.classList.add('yt-on');});svg.querySelectorAll('line').forEach(e=>{if(e.dataset.a===id||e.dataset.b===id)e.classList.add('yt-on');});}
+painel();}
+function desenhar(){const svg=$('ytInf');svg.setAttribute('viewBox',vb.join(' '));let h='';const mx=Math.max(...R.arestas.map(e=>e[2]));
+for(const [a,b,w,pv] of R.arestas){const p=R.idx[a],q=R.idx[b];const cand=p.tipo==='candidato'?p:q;h+=`<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" stroke="${cand.cor}" stroke-width="${(0.6+3*w/mx).toFixed(2)}" ${pv?'':'stroke-dasharray="4 3"'} data-a="${esc(a)}" data-b="${esc(b)}"/>`;}
+for(const n of [...R.nos].sort((a,b)=>raio(a)-raio(b)))h+=`<circle cx="${n.x}" cy="${n.y}" r="${Math.max(2.5,raio(n)).toFixed(1)}" fill="${n.cor}" data-id="${esc(n.id)}" tabindex="0"><title>${esc(n.label)}${n.tipo==='canal'?' · '+fmt(n.inscritos)+' inscritos':''}</title></circle>`;
+const canais=R.nos.filter(n=>n.tipo==='canal').sort((a,b)=>b.inscritos-a.inscritos);const lim=canais[Math.min(24,canais.length-1)]?.inscritos||0;
+for(const n of R.nos){if(n.tipo==='candidato'){h+=`<text x="${n.x}" y="${n.y+5}" text-anchor="middle" style="font:700 15px Georgia,serif;fill:#fff;stroke:none" data-id="${esc(n.id)}">${esc(n.label.split(' ')[0])}</text>`;continue;}
+const big=n.inscritos>=lim;h+=`<text x="${(n.x+raio(n)+2).toFixed(1)}" y="${(n.y+4).toFixed(1)}" data-id="${esc(n.id)}" style="font-size:${big?11:9}px" ${big?'':'class="yt-small" opacity="0"'}>${esc(n.label)}</text>`;}
+svg.innerHTML=h;
+svg.querySelectorAll('circle').forEach(c=>{c.addEventListener('mouseenter',()=>{if(!fixo)foco(c.dataset.id)});c.addEventListener('mouseleave',()=>{if(!fixo)foco(null)});c.addEventListener('click',ev=>{ev.stopPropagation();fixo=!(fixo&&sel===c.dataset.id);foco(fixo?c.dataset.id:null);});c.addEventListener('keydown',ev=>{if(ev.key==='Enter'){fixo=true;foco(c.dataset.id);}});});
+foco(sel);}
+function zoomPan(){const svg=$('ytInf');let drag=null;
+const pt=ev=>{const r=svg.getBoundingClientRect();return [vb[0]+(ev.clientX-r.left)/r.width*vb[2],vb[1]+(ev.clientY-r.top)/r.height*vb[3]];};
+svg.addEventListener('wheel',ev=>{ev.preventDefault();const [x,y]=pt(ev),k=ev.deltaY>0?1.15:1/1.15;const nw=Math.min(1800,Math.max(120,vb[2]*k));const f=nw/vb[2];vb=[x-(x-vb[0])*f,y-(y-vb[1])*f,nw,nw];svg.setAttribute('viewBox',vb.join(' '));svg.querySelectorAll('text.yt-small').forEach(t=>t.setAttribute('opacity',vb[2]<650?'1':'0'));},{passive:false});
+svg.addEventListener('pointerdown',ev=>{drag=[ev.clientX,ev.clientY,vb[0],vb[1]];svg.setPointerCapture(ev.pointerId);});
+svg.addEventListener('pointermove',ev=>{if(!drag)return;const r=svg.getBoundingClientRect();vb[0]=drag[2]-(ev.clientX-drag[0])/r.width*vb[2];vb[1]=drag[3]-(ev.clientY-drag[1])/r.height*vb[3];svg.setAttribute('viewBox',vb.join(' '));});
+svg.addEventListener('pointerup',()=>{drag=null;});svg.addEventListener('click',()=>{if(fixo){fixo=false;foco(null);}});}
+function tabela(){const q=busca.trim().toLowerCase();
+const cols=[['label','Canal'],['inscritos','Inscritos'],['vl','Falou de Lula'],['pl','Pediu voto Lula'],['vf','Falou de Flávio'],['pf','Pediu voto Flávio'],['views','Visualizações (vídeos)']];
+let rows=R.nos.filter(n=>n.tipo==='canal'&&(!q||n.label.toLowerCase().includes(q))).map(n=>({...n,vl:n['v_'+L],pl:n['voto_'+L],vf:n['v_'+F],pf:n['voto_'+F]}));
+rows.sort((x,y)=>{const A=x[ord.k],B=y[ord.k];return (typeof A==='number'?A-B:String(A).localeCompare(String(B),'pt'))*ord.d;});
+const t=$('ytInfTbl');t.innerHTML=`<thead><tr>${cols.map(([k,l])=>`<th data-k="${k}">${l}${ord.k===k?(ord.d<0?' ↓':' ↑'):''}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${cols.map(([k])=>k==='label'?`<td><i style="background:${r.cor}"></i><a href="https://www.youtube.com/channel/${encodeURIComponent(r.id)}" target="_blank" rel="noopener">${esc(r.label)}</a></td>`:`<td class="n">${fmt(r[k])}</td>`).join('')}</tr>`).join('')}</tbody>`;
+t.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;ord=ord.k===k?{k,d:-ord.d}:{k,d:k==='label'?1:-1};tabela();}));}
+function vista(v){document.querySelectorAll('#ytContent [data-iview]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.iview===v));$('ytInfBody').hidden=v!=='rede';$('ytInfTable').hidden=v==='rede';if(v!=='rede'){ord={k:'vl',d:-1};tabela();}}
+async function carregar(){if(feito)return;feito=true;
+try{const r=await fetch('./data/youtube/influenciadores/rede.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);R=await r.json();}
+catch(err){$('ytInfSide').innerHTML='<p>⛔ Rede de influenciadores indisponível ('+esc(err.message)+').</p>';feito=false;return;}
+R.idx={};R.adj={};for(const n of R.nos){R.idx[n.id]=n;R.adj[n.id]=[];}for(const [a,b,w,pv] of R.arestas){R.adj[a].push([b,w,pv]);R.adj[b].push([a,w,pv]);}
+$('ytInfNote').textContent=R.metodo+` Coleta acumulada até ${(R.coletado_em_utc||'').replace('T',' ').slice(0,16)} UTC.`;
+document.querySelectorAll('#ytContent [data-iview]').forEach(b=>b.addEventListener('click',()=>vista(b.dataset.iview)));
+$('ytInfSearch').addEventListener('input',ev=>{busca=ev.target.value;tabela();});
+$('ytInfReset').addEventListener('click',()=>{vb=[-60,-60,1120,1120];fixo=false;sel=null;desenhar();});
+stats();zoomPan();desenhar();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
 })();

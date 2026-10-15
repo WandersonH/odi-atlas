@@ -29,7 +29,7 @@ from build_conteudo import norm, term_regex  # noqa: E402
 
 BASE = "https://www.googleapis.com/youtube/v3"
 VCOLS = ["video_id", "channel_id", "canal", "publicado_em", "titulo", "descricao", "categoria", "visualizacoes",
-         "curtidas", "comentarios", "cita_280002542548", "cita_280002551544", "excluido", "primeira_coleta", "ultima_coleta"]
+         "curtidas", "comentarios", "cita_280002542548", "cita_280002551544", "nivel_280002542548", "nivel_280002551544", "excluido", "primeira_coleta", "ultima_coleta"]
 CCOLS = ["channel_id", "canal", "handle", "inscritos", "videos_total", "pais", "atualizado_em"]
 
 
@@ -57,15 +57,31 @@ def janelas(cfg: dict, agora: dt.datetime) -> list[dict]:
 
 
 def compilar(cfg: dict):
-    men = {cid: [term_regex(t) for t in c["mencao"]] for cid, c in cfg["candidatos"].items()}
+    """Por candidato: (regex de menção, regex de pedido de voto). Pedido de voto também conta como menção."""
+    men = {}
+    for cid, c in cfg["candidatos"].items():
+        sub = lambda t: t.replace("{n}", c["numero"]).replace("{apelido}", c["apelido"])  # noqa: E731
+        voto = [term_regex(sub(t)) for t in cfg["pede_voto"]]
+        numero = [term_regex(sub(t)) for t in cfg.get("numero_como_voto", [])]  # "Flávio 22", "#lula13": nível 1
+        men[cid] = ([term_regex(t) for t in c["mencao"]] + numero, voto)
     excl = [term_regex(t) for t in cfg["excluir_termos"]]
     return men, excl
 
 
 def avaliar(v: dict, men, excl, cats: dict) -> dict:
-    """cita_<cid> por menção no título/descrição; excluido = motivo (ou vazio)."""
+    """nivel_<cid>: 0 não cita · 1 falou de (nome, @, hashtag, número como voto) · 2 pediu voto.
+    cita_<cid> = nível ≥ 1. excluido = motivo (ou vazio). Sobre título + descrição."""
     t = norm(v["titulo"] + " " + v["descricao"])
-    out = {f"cita_{cid}": int(any(r.search(t) for r in regs)) for cid, regs in men.items()}
+    out = {}
+    for cid, (regs, voto) in men.items():
+        mv = next((m for r in voto if (m := r.search(t))), None)
+        mc = None if mv else next((m for r in regs if (m := r.search(t))), None)
+        m = mv or mc
+        nivel = 2 if mv else 1 if mc else 0
+        out[f"nivel_{cid}"] = nivel
+        out[f"cita_{cid}"] = int(nivel >= 1)
+        # trecho que disparou a classificação (para conferência humana)
+        out[f"gatilho_{cid}"] = t[max(0, m.start() - 40):m.end() + 40].strip() if m else ""
     motivo = ""
     if v["categoria"] in cats:
         motivo = "categoria " + v["categoria"]

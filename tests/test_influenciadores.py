@@ -37,6 +37,15 @@ class TestAvaliar(unittest.TestCase):
         r = self.ev(v("Senador Flávio fala em Manaus"))
         self.assertEqual((r[f"cita_{L}"], r[f"cita_{F}"]), (0, 1))
 
+    def test_niveis_iguais_para_os_dois(self):
+        casos = {"Vote 22 no domingo": (0, 2), "Dia 25 é Flávio!": (0, 2), "Vote 13": (2, 0), "Dia 25 é Lula": (2, 0),
+                 "@flaviobolsonaro em Manaus": (0, 1), "#Lula13 #Lula": (1, 0), "Olê olá Lula 13": (1, 0), "Lula comenta inflação": (1, 0),
+                 "Flávio 22 e Lula 13 no debate": (1, 1), "Eu voto no Flávio Bolsonaro": (0, 2), "Votar Lula para garantir": (2, 0), "#FlavioBolsonaro critica o governo": (0, 1)}
+        for titulo, (nl, nf) in casos.items():
+            r = self.ev(v(titulo))
+            self.assertEqual((r[f"nivel_{L}"], r[f"nivel_{F}"]), (nl, nf), titulo)
+        self.assertIn("vote 22", self.ev(v("Domingo: vote 22"))[f"gatilho_{F}"])
+
     def test_flavio_sozinho_nao_basta(self):
         # "Flávio" sozinho é ambíguo (ex.: Flávio Dino)
         r = self.ev(v("Flávio Dino decide no STF"))
@@ -71,7 +80,7 @@ class TestRede(unittest.TestCase):
     def test_rede_bipartida_e_corte_por_inscritos(self):
         vids = []
         for i in range(3):
-            vids.append({"video_id": f"a{i}", "channel_id": "UCa", "visualizacoes": "100", "excluido": "", f"cita_{L}": "1", f"cita_{F}": "0"})
+            vids.append({"video_id": f"a{i}", "channel_id": "UCa", "visualizacoes": "100", "excluido": "", f"cita_{L}": "1", f"cita_{F}": "0", f"nivel_{L}": "2" if i == 0 else "1"})
         vids.append({"video_id": "b0", "channel_id": "UCb", "visualizacoes": "50", "excluido": "", f"cita_{L}": "1", f"cita_{F}": "1"})
         vids.append({"video_id": "c0", "channel_id": "UCc", "visualizacoes": "9", "excluido": "", f"cita_{L}": "0", f"cita_{F}": "1"})
         vids.append({"video_id": "x0", "channel_id": "UCa", "visualizacoes": "999", "excluido": "categoria 26", f"cita_{L}": "1", f"cita_{F}": "0"})
@@ -81,6 +90,9 @@ class TestRede(unittest.TestCase):
         self.assertNotIn("UCc", g)                       # abaixo de min_inscritos
         self.assertEqual(g["UCa"]["cand:" + L]["weight"], 3)  # vídeo excluído não conta
         self.assertNotIn("cand:" + F, g["UCa"])
+        self.assertEqual(g["UCa"]["cand:" + L]["pede_voto"], 1)
+        self.assertEqual(g["UCa"]["cand:" + L]["nivel"], 2)
+        self.assertEqual(g["UCb"]["cand:" + L]["nivel"], 1)
         self.assertEqual(g.nodes["UCb"]["frac_lula"], 0.5)
         self.assertEqual(g.nodes["UCa"]["cor"], CFG["candidatos"][L]["cor"])
 
