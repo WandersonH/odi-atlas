@@ -9,7 +9,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 ## [C4.2] 2026-10-15 — Caderno 13: análise de redes (coocorrência) com tabela, planilhas e GEXF para o Gephi
 
 **Mudou**
-- `scripts/build_rede.py` (networkx 3.6.1, versão fixa no workflow). Usa o mesmo texto útil do `build_conteudo`: sem links, sem rodapés repetidos, sem o nome do canal, sem o nome do próprio candidato, sem o pacote fixo de tags.
+- `scripts/build_rede.py` (networkx 3.6.1 + numpy 2.3.4, versões fixas no workflow). Usa o mesmo texto útil do `build_conteudo`: sem links, sem rodapés repetidos, sem o nome do canal, sem o nome do próprio candidato, sem o pacote fixo de tags.
   - **Nós:** palavras e #tags presentes em 8+ vídeos (até 150).
   - **Arestas:** dois termos no mesmo vídeo. O peso é o nº de vídeos em comum, com mínimo 3. Cada nó guarda até 8 arestas, as mais fortes.
   - **Medidas:** comunidades por **Louvain**, posição por **ForceAtlas2 LinLog** (partindo de um layout de mola com semente) e intermediação (*betweenness*). Semente fixa 42, então a mesma entrada gera a mesma rede. Se o layout gerar uma posição inválida (NaN), a rede não é publicada.
@@ -23,7 +23,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - **Tabela de nós** e **tabela de arestas**, ordenáveis e com filtro por termo.
   - Botões para baixar as quatro planilhas e o GEXF, com instruções de importação no Gephi.
 - `build_conteudo.py`: mais palavras funcionais na lista de exclusão (neste, desse, nisso…). Os topos da nuvem não mudaram.
-- `seguidores-youtube.yml`: instala `networkx==3.6.1` e roda `build_rede.py` depois da classificação, todo dia.
+- `seguidores-youtube.yml`: instala `networkx==3.6.1` e `numpy==2.3.4` e roda `build_rede.py` depois da classificação, todo dia.
 - `tests/test_build_rede.py`: 3 testes:
   - peso, lado e corte por mínimo;
   - rede idêntica em duas execuções e comunidades separadas;
@@ -40,7 +40,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - C5 (16 nós, 0,86): segurança, bets, crime, famílias.
   - Maior ponte: “brasil” (intermediação 0,53).
 - ✅ Conferência manual: o peso de 3 arestas refeito pela matriz vídeo × termos bateu com o CSV (#direita–#eleicoes 6; brasil–mundo 13; brasileiro–ninguém 6).
-- ✅ `rede.gexf` relido com `networkx.read_gexf`: 148 nós e 801 arestas na versão anterior desta mesma execução, mesmo formato. **Não abri no Gephi** (não há Gephi neste ambiente).
+- ✅ `rede.gexf` relido com `networkx.read_gexf`: 148 nós, 797 arestas. **Não abri no Gephi** (não há Gephi neste ambiente).
+- ⛔→✅ 1ª execução no Actions (run `38801248459`) falhou nos testes: os layouts do networkx precisam de `numpy`, que não vem junto. Corrigido fixando `numpy==2.3.4` no workflow. Reproduzido localmente em Python 3.12 + networkx 3.6.1 + numpy 2.3.4: 45 testes OK e **rede idêntica** à gerada em Python 3.13 + numpy 2.5.3 (mesmas posições, comunidades e arestas).
 - ✅ Chromium headless (1400×900 e 390×844):
   - 148 pontos e 797 linhas; tabela de nós com 148 linhas e tabela de arestas com 797;
   - o filtro “seg” deixa 1 nó; o clique destaca os vizinhos;
