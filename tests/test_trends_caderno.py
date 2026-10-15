@@ -22,6 +22,16 @@ def coleta(base: Path, dia: str, hora: str, status: str, valor: int):
     (d / "g__now_7-d__uf.csv").write_text("geo_code;geo_nome;Flávio Bolsonaro;Lula\nBR-SP;São Paulo;40;60\n", encoding="utf-8")
 
 
+class TestPeriodoEleitoral(unittest.TestCase):
+    def test_janela(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+        import collect_trends as ct
+        cfg = {"periodo_eleitoral": {"inicio": "2026-07-20", "fim": "2026-10-25"}}
+        self.assertEqual(ct.resolver_periodo("eleitoral", cfg, "2026-10-15"), "2026-07-20 2026-10-15")
+        self.assertEqual(ct.resolver_periodo("eleitoral", cfg, "2026-11-30"), "2026-07-20 2026-10-25")
+        self.assertEqual(ct.resolver_periodo("today 3-m", cfg), "today 3-m")
+
+
 class TestTrendsCaderno(unittest.TestCase):
     def test_usa_a_mais_recente_com_status_ok(self):
         with tempfile.TemporaryDirectory() as t:

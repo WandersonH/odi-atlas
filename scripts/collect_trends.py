@@ -119,6 +119,16 @@ def write_geo(data: dict, termos: list[str], path: Path) -> int:
     return len(rows)
 
 
+def resolver_periodo(periodo: str, cfg: dict, hoje: str | None = None) -> str:
+    """'eleitoral' = das convenções partidárias até o 2º turno (ou até hoje, se antes): 'AAAA-MM-DD AAAA-MM-DD'.
+    Outros valores ('now 7-d', 'today 3-m') vão direto para o Trends."""
+    if periodo != "eleitoral":
+        return periodo
+    e = cfg["periodo_eleitoral"]
+    hoje = hoje or time.strftime("%Y-%m-%d", time.gmtime())
+    return f"{e['inicio']} {min(hoje, e['fim'])}"
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--config", default="data/config/trends.json")
@@ -150,11 +160,13 @@ def main(argv=None) -> int:
             man["blocked"].append(f"grupo {g['nome']}: o Trends aceita no máximo 5 termos por consulta")
             continue
         for periodo in cfg["periodos"]:
-            c = {"grupo": g["nome"], "termos": termos, "itens": itens, "periodo": periodo, "geo": cfg.get("geo", "BR")}
+            janela = resolver_periodo(periodo, cfg)
+            c = {"grupo": g["nome"], "termos": termos, "itens": itens, "periodo": periodo, "janela_trends": janela,
+                 "geo": cfg.get("geo", "BR")}
             man["consultas"].append(c)
             tag = f"{g['nome']}__{periodo.replace(' ', '_')}"
             try:
-                ws = {w["id"]: w for w in t.explore(consultas, periodo, c["geo"])}
+                ws = {w["id"]: w for w in t.explore(consultas, janela, c["geo"])}
                 ts = t.widget("multiline", ws["TIMESERIES"])
                 (outdir / f"{tag}__serie.json").write_text(json.dumps(ts, ensure_ascii=False), encoding="utf-8")
                 c["serie_pontos"] = write_timeline(ts, termos, outdir / f"{tag}__serie.csv")
