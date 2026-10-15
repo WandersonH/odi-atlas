@@ -46,6 +46,12 @@ jobs:
             --years ${{ github.event.inputs.years || '2022 2026' }} \
             --malha "${{ github.event.inputs.malha || '2025' }}"
 
+      - name: P2/P3 — gerar data/elections.json (mapa do caderno 12)
+        id: build
+        if: steps.fetch.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/build_elections.py
+
       - name: Resumo da execução
         if: always()
         run: |
@@ -83,7 +89,7 @@ jobs:
           scripts/commit_push.sh "P1: originais TSE/IBGE (run ${{ github.run_id }})"
 
       - name: Falhar se houve bloqueio
-        if: steps.fetch.outcome == 'failure'
+        if: steps.fetch.outcome == 'failure' || steps.build.outcome == 'failure'
         run: |
-          echo "::error::P1 bloqueada — ver data/manifest/latest.json"
+          echo "::error::P1/P2 bloqueada — ver data/manifest/latest.json"
           exit 1

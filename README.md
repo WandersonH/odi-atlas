@@ -2,7 +2,7 @@
 
 Protótipo de observatório acadêmico do **Observatório de Desinformação e Intolerância Digital (ODI) · PPGCOM/UNIP**, sobre as eleições de 2026.
 
-> **Estado real (15/10/2026):** a interface v15 está aqui, mas o mapa do caderno 12 **ainda não tem dados eleitorais**. `data/elections.json` está como `pending_source_import`. Este repositório começa pela etapa **P1 — Origem**: trazer os originais oficiais com proveniência verificável. Nada além disso está declarado como pronto.
+> **Estado real (15/10/2026):** o mapa do caderno 12 já recebe votos reais do TSE (1º turno 2022 e 2026, por município) via `data/elections.json`. Veja o `CHANGELOG.md` para o que foi verificado e o que falta. Este repositório começa pela etapa **P1 — Origem**: trazer os originais oficiais com proveniência verificável. Nada além disso está declarado como pronto.
 
 ## O que existe
 
