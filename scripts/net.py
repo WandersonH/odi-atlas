@@ -15,6 +15,7 @@ import hashlib
 import http.cookiejar
 import json
 import os
+import re
 import ssl
 import tempfile
 import urllib.parse
@@ -24,6 +25,12 @@ from pathlib import Path
 UA = "odi-atlas-coletor/1.0 (+https://github.com/WandersonH/odi-atlas)"
 CHUNK = 1 << 20
 _CTX: dict[str, ssl.SSLContext] = {}
+
+
+def with_scheme(url: str) -> str:
+    """URLs do TSE às vezes vêm sem esquema (ex.: INSTAGRAM.COM/PERFIL); o caderno 02 precisa de URL completa."""
+    u = url.strip()
+    return u if re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*://", u) else "https://" + u
 
 
 def now_utc() -> str:

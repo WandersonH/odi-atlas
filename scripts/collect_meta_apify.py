@@ -24,7 +24,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from net import now_utc  # noqa: E402
+from net import with_scheme, now_utc  # noqa: E402
 
 API = "https://api.apify.com/v2"
 PLAT_LABEL = {"instagram": "Instagram", "facebook": "Facebook"}
@@ -169,7 +169,7 @@ def main(argv=None) -> int:
                 f = found.get(t["key"].lower())
                 if f and f["followers"] is not None:
                     ok += 1
-                    rows.append([t["candidate_id"], t["candidate_name"], PLAT_LABEL[plat], t["url"], f["followers"],
+                    rows.append([t["candidate_id"], t["candidate_name"], PLAT_LABEL[plat], with_scheme(t["url"]), f["followers"],
                                  started[:10], f["source_url"] or t["url"]])
             ex["perfis_com_numero"] = ok
             if ok == 0:

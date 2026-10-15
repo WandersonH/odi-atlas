@@ -6,6 +6,23 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C3.0] 2026-10-15 — YouTube pela API oficial; correção de URLs sem esquema
+
+**Mudou**
+- `scripts/collect_youtube.py` + workflow `seguidores-youtube.yml` (diário, 07h20): inscritos dos **15 canais** declarados pelas chapas presidenciais, pela YouTube Data API v3 (`channels.list`, 1 unidade de cota por canal). Chave só pelo segredo `YOUTUBE_API_KEY`. Saída `data/seguidores/youtube_latest.csv`. Canal com contagem oculta fica sem número.
+- Caderno 02 carrega as duas coletas automáticas (Apify e YouTube), cada card indicando a origem.
+- **Correção:** o TSE grava algumas URLs sem `https://` (ex.: `INSTAGRAM.COM/BRASILCOMLULA`). O número era coletado mas o card não o reconhecia. Agora coletores gravam a URL completa (`net.with_scheme`) e o caderno 02 aceita URL sem esquema. O `latest.csv` de hoje foi corrigido só na coluna `url` (3 linhas; números inalterados).
+- 29 testes.
+
+**Testado**
+- ✅ Navegador headless, caderno 02 · Lula: “Coletado” passou de 11 para 12 (Instagram BRASILCOMLULA, 1.028.524).
+- ⛔ YouTube ainda não executado: aguarda o segredo `YOUTUBE_API_KEY`.
+
+**Pendente**
+- ⚠️ 2 canais declarados por ID (Augusto Cury, Alfredo Gaspar) estão em MAIÚSCULAS no TSE e o ID do YouTube diferencia maiúsculas: podem não ser encontrados. Ficarão registrados no manifesto, não adivinhados.
+
+---
+
 ## [C2.1] 2026-10-15 — Teto mensal da coleta Apify para US$ 10
 
 **Mudou**

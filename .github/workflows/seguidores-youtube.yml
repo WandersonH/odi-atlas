@@ -1,0 +1,54 @@
+name: Seguidores YouTube — API oficial
+
+# Inscritos dos canais do YouTube declarados ao TSE pelas chapas presidenciais.
+# Chave só pelo segredo YOUTUBE_API_KEY. Gratuito (cota diária da API).
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 10 * * *"   # todo dia, 07h20 em Brasília
+
+concurrency:
+  group: seguidores-youtube
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  youtube:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Coletar inscritos (YouTube Data API)
+        id: coleta
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/collect_youtube.py
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("data/seguidores/youtube_manifesto_latest.json")
+          if not p.exists(): print("## manifesto não gerado"); raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          print(f"## YouTube — status: **{m['status']}** · canais com número: {m.get('linhas_csv')} de {m.get('alvos')} · cota usada: {m.get('cota_usada')}\n")
+          for c in m["canais"]: print(f"- {c['url']} → {c.get('titulo') or 'não encontrado'} · {c.get('inscritos') or ('oculto' if c.get('oculto') else '—')}")
+          for b in m["blocked"]: print(f"- ⛔ {b}")
+          EOF
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Seguidores YouTube: coleta (run ${{ github.run_id }})"
+      - name: Falhar se houve bloqueio
+        if: steps.coleta.outcome == 'failure'
+        run: |
+          echo "::error::Coleta do YouTube bloqueada — ver data/seguidores/youtube_manifesto_latest.json"
+          exit 1
