@@ -1,0 +1,56 @@
+name: Seguidores Meta (Instagram/Facebook) — Apify
+
+# Contagem de seguidores dos perfis Instagram e Facebook declarados ao TSE pelas chapas
+# presidenciais. Token só pelo segredo APIFY_TOKEN. Tetos em data/config/seguidores_meta.json.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "10 10 * * *"   # todo dia, 07h10 em Brasília
+
+concurrency:
+  group: seguidores-meta
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  meta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Coletar seguidores (Apify)
+        id: coleta
+        continue-on-error: true
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: python scripts/collect_meta_apify.py
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("data/seguidores/manifesto_latest.json")
+          if not p.exists(): print("## manifesto não gerado"); raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          print(f"## Seguidores Meta — status: **{m['status']}** · custo desta execução: US$ {m.get('custo_total_usd')} · gasto no mês antes: US$ {m.get('gasto_mes_antes_usd')}\n")
+          print("| Plataforma | Pedidos | Com número | Custo (US$) | Status Apify |\n|---|---|---|---|---|")
+          for e in m["execucoes"]:
+              print(f"| {e['plataforma']} | {e.get('perfis_pedidos')} | {e.get('perfis_com_numero','')} | {e.get('custo_usd','')} | {e.get('status_apify','')} |")
+          for b in m["blocked"]: print(f"- ⛔ {b}")
+          EOF
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Seguidores Meta: coleta Apify (run ${{ github.run_id }})"
+      - name: Falhar se houve bloqueio
+        if: steps.coleta.outcome == 'failure'
+        run: |
+          echo "::error::Coleta de seguidores bloqueada — ver data/seguidores/manifesto_latest.json"
+          exit 1

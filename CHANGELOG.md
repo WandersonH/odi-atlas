@@ -6,6 +6,24 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C2.0] 2026-10-15 — Seguidores Instagram/Facebook via Apify, agendado (caderno 02)
+
+**Mudou**
+- `scripts/collect_meta_apify.py` + `data/config/seguidores_meta.json` + workflow `seguidores-meta.yml` (diário, 07h10): conta seguidores dos perfis **Instagram e Facebook** declarados ao TSE pelas chapas presidenciais (Presidente e Vice), com os atores oficiais `apify~instagram-profile-scraper` e `apify~facebook-pages-scraper`.
+- Token só pelo segredo `APIFY_TOKEN` do GitHub; nunca gravado nem impresso.
+- Orçamento: **US$ 0,50 por execução** (`maxTotalChargeUsd` em cada ator) e **US$ 5,00 por mês**; antes de rodar, soma o custo real registrado nos manifestos do mês e bloqueia se passar do teto.
+- Saída `data/seguidores/latest.csv` no formato do modelo CSV do caderno 02, histórico `coleta_AAAA-MM-DD.csv`, manifesto com custo real por ator e bruto mínimo (chave, número, campo usado, URL — sem posts nem comentários).
+- Caderno 02 carrega `latest.csv` automaticamente: cards “Não coletado” passam a “Coletado”, com fonte e data. Importação manual continua tendo prioridade.
+- 27 testes (5 novos, incluindo bloqueio sem token e bloqueio por teto sem chamar a API).
+
+**Testado**
+- 🔜 Primeira execução real disparada nesta entrega — resultado na próxima entrada.
+
+**Pendente**
+- Perfil sem número na resposta fica “Não coletado” (não vira zero).
+
+---
+
 ## [P4.0] 2026-10-15 — Mapa com a malha oficial do IBGE e escala de cores legível
 
 **Mudou**
