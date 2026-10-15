@@ -46,6 +46,23 @@ class TestRelacionados(unittest.TestCase):
             self.assertIn("Lula;consultas;em_alta;1;Banco Master;Banco;5000;Aumento repentino", linhas)
 
 
+class TestVegetativo(unittest.TestCase):
+    def test_pico_substituido_pela_mediana(self):
+        datas = [f"2026-09-{d:02d}" for d in range(1, 16)]
+        vals = [2] * 7 + [3] * 7 + [90]
+        v = bt.vegetativo(datas, vals, k=2, blocos=(7, 15))
+        self.assertEqual([p["data"] for p in v["picos"]], ["2026-09-15"])
+        self.assertEqual(v["mediana"], 3)
+        self.assertEqual(v["serie_vegetativa"][-1], 3)          # pico vira a mediana
+        self.assertEqual(v["serie_vegetativa"][:14], vals[:14])  # o resto não muda
+        self.assertEqual(len(v["medias_por_bloco"]["7"]), 3)     # 7 + 7 + 1 dias
+        self.assertGreater(v["medias_por_bloco"]["15"][0]["media"], v["medias_por_bloco"]["15"][0]["media_sem_picos"])
+        self.assertGreaterEqual(v["picos_por_k"]["1"], v["picos_por_k"]["2"])
+
+    def test_poucos_dados(self):
+        self.assertEqual(bt.vegetativo(["a", "b"], [1, None]), {})
+
+
 class TestTrendsCaderno(unittest.TestCase):
     def test_usa_a_mais_recente_com_status_ok(self):
         with tempfile.TemporaryDirectory() as t:

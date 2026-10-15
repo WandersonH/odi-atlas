@@ -577,6 +577,11 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .gt-relcol h5{margin:8px 0 4px;font:700 10px 'Courier New',monospace;letter-spacing:.06em;text-transform:uppercase;color:#53606b}
 .gt-relcol ol{margin:0;padding-left:20px;font-size:12.5px;color:#172238}.gt-relcol li{margin:2px 0;overflow-wrap:anywhere}
 .gt-relcol li span{font:700 10.5px 'Courier New',monospace;color:#53606b;margin-left:6px}.gt-relcol li span.gt-up{color:#b03030}
+.gt-vegcard{margin:12px 0}.gt-vegcard h2{margin:2px 0 10px}
+.gt-vegstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
+.gt-vegstats>div{border-top:3px solid var(--c);background:#f7f9fa;padding:10px 12px;font-size:12px;color:#3c4a58}
+.gt-vegstats h4{margin:0 0 6px;font:700 14px Georgia,serif;color:var(--c)}.gt-vegstats .yt-nums{display:flex;gap:16px;flex-wrap:wrap;color:#53606b}.gt-vegstats .yt-nums b{display:block;font:700 19px/1.1 Georgia,serif;color:#172238}
+.gt-vegstats ul{margin:6px 0 0;padding-left:18px}.gt-blk svg{width:100%;height:auto;display:block}.gt-blk text{font:10px 'Courier New',monospace;fill:#53606b}
 </style>
 
 <style>
@@ -876,7 +881,13 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="odi-signal" id="gtStatus" role="status">Aguardando leitura da coleta do Trends.</div>
   <div class="gt-sum" id="gtSum"></div>
-  <div class="card gt-chart"><div class="eyebrow">Série temporal</div><h2 id="gtChartTitle"></h2><div id="gtChart"></div><div class="gt-legend" id="gtLegend"></div></div>
+  <div class="card gt-chart"><div class="eyebrow">Série temporal</div><h2 id="gtChartTitle"></h2>
+    <div class="yt-chips" id="gtVeg" role="group" aria-label="Série" style="margin-bottom:8px"><button class="yt-chip" data-v="orig" aria-pressed="true">Série original</button><button class="yt-chip" data-v="veg" aria-pressed="false">Sem picos (pico → mediana)</button></div>
+    <div id="gtChart"></div><div class="gt-legend" id="gtLegend"></div></div>
+  <div class="card gt-vegcard" id="gtVegCard"><div class="eyebrow">Método do período · normal × pico</div><h2>O que é nível normal e o que é pico de agenda</h2>
+    <div class="gt-vegstats" id="gtVegStats"></div>
+    <div class="yt-chips" id="gtBloco" role="group" aria-label="Período da média" style="margin:10px 0 6px"><button class="yt-chip" data-b="7" aria-pressed="false">Média de 7 dias</button><button class="yt-chip" data-b="15" aria-pressed="true">Média de 15 dias</button></div>
+    <div id="gtBlocos"></div><p class="yt-cloudnote" id="gtVegNote"></p></div>
   <div class="card gt-rel"><div class="eyebrow">Consultas e assuntos relacionados</div><h2>O que o público busca junto com cada candidato</h2>
     <div class="yt-chips" id="gtRelTipo" role="group" aria-label="Tipo"><button class="yt-chip" data-r="consultas" aria-pressed="true">Consultas</button><button class="yt-chip" data-r="assuntos" aria-pressed="false">Assuntos</button></div>
     <div class="gt-relgrid" id="gtRel"></div><p class="yt-cloudnote" id="gtRelNote"></p></div>
@@ -1889,7 +1900,7 @@ const NOME_GRUPO={segundo_turno_topicos:'2º turno · tópicos',primeiro_turno_5
 const NOME_PER={'now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)','eleitoral':'Período eleitoral · convenções (20/07) → 2º turno (25/10), por dia'};
 const MARCOS=[['2026-07-20','Convenções'],['2026-08-16','Início da campanha'],['2026-10-04','1º turno'],['2026-10-25','2º turno']];
 const GRADE={RR:[2,0],AP:[4,0],AM:[1,1],PA:[3,1],MA:[4,1],CE:[5,1],RN:[6,1],AC:[0,2],RO:[1,2],MT:[2,2],TO:[3,2],PI:[4,2],PE:[5,2],PB:[6,2],MS:[2,3],GO:[3,3],DF:[4,3],BA:[5,3],AL:[6,3],PR:[2,4],SP:[3,4],MG:[4,4],ES:[5,4],SE:[6,4],SC:[2,5],RJ:[4,5],RS:[2,6]};
-let D=null,grupo='segundo_turno_topicos',periodo='eleitoral',relTipo='consultas',feito=false;
+let D=null,grupo='segundo_turno_topicos',periodo='eleitoral',relTipo='consultas',vegModo='orig',bloco='15',feito=false;
 const $=id=>document.getElementById(id);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cor=t=>COR[t]||'#3c4a58';
@@ -1912,7 +1923,11 @@ let h=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Série do Google Tren
 for(const v of [0,25,50,75,100])h+=`<line class="gt-grid" x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}"/><text x="${m.l-6}" y="${y(v)+3}" text-anchor="end">${v}</text>`;
 const passo=Math.ceil(N/7);for(let i=0;i<N;i+=passo)h+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${esc(fmtT(c.serie[i].t,hora))}</text>`;
 if(!hora){const t0=Date.parse(c.serie[0].t),t1=Date.parse(c.serie[N-1].t);for(const [d,l] of MARCOS){const td=Date.parse(d+'T00:00:00Z');if(td<t0||td>t1+864e5)continue;const xm=m.l+(W-m.l-m.r)*(td-t0)/Math.max(1,t1-t0);h+=`<line x1="${xm.toFixed(1)}" x2="${xm.toFixed(1)}" y1="${m.t}" y2="${H-m.b}" stroke="#1b2a3d" stroke-dasharray="3 3" stroke-opacity=".55"/><text x="${(xm+3).toFixed(1)}" y="${m.t+10}" style="fill:#1b2a3d;font-weight:700">${l}</text>`;}}
-c.termos.forEach((t,k)=>{let d='',dp='';c.serie.forEach((p,i)=>{const v=p.v[k];if(v==null)return;const seg=`${x(i).toFixed(1)},${y(v).toFixed(1)}`;if(!p.parcial)d+=(d?'L':'M')+seg;});
+const VG=c.vegetativo||{};const temVeg=Object.keys(VG).length>0;
+const valorDe=(k,i)=>{const p=c.serie[i];if(!(temVeg&&vegModo==='veg'))return p.v[k];const vg=VG[c.termos[k]];if(!vg)return p.v[k];const j=vg.datas.indexOf(p.t.slice(0,10));return j>=0?vg.serie_vegetativa[j]:p.v[k];};
+if(temVeg){c.termos.forEach((t,k)=>{const vg=VG[t];if(!vg)return;h+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(vg.limite_pico).toFixed(1)}" y2="${y(vg.limite_pico).toFixed(1)}" stroke="${cor(t)}" stroke-dasharray="2 4" stroke-opacity=".7"/><text x="${W-m.r-4}" y="${(y(vg.limite_pico)-3).toFixed(1)}" text-anchor="end" style="fill:${cor(t)}">limite de pico ${t.split(' ')[0]} (${vg.limite_pico})</text>`;});}
+c.termos.forEach((t,k)=>{let d='',dp='';c.serie.forEach((p,i)=>{const v=valorDe(k,i);if(v==null)return;const seg=`${x(i).toFixed(1)},${y(v).toFixed(1)}`;if(!p.parcial)d+=(d?'L':'M')+seg;});
+if(temVeg&&vegModo==='orig'&&VG[t]){VG[t].picos.forEach(pk=>{const i=c.serie.findIndex(p=>p.t.slice(0,10)===pk.data);if(i<0)return;h+=`<circle cx="${x(i).toFixed(1)}" cy="${y(pk.valor).toFixed(1)}" r="5" fill="none" stroke="${cor(t)}" stroke-width="2"><title>Pico ${t}: ${pk.data} = ${pk.valor} (z = ${pk.z})</title></circle>`;});}
 const ult=c.serie.map((p,i)=>[p,i]).filter(([p])=>p.v[k]!=null);const par=ult.filter(([p])=>p.parcial);
 if(par.length){const prev=ult.filter(([p])=>!p.parcial).pop();const pts=(prev?[prev]:[]).concat(par);dp=pts.map(([p,i],j)=>(j?'L':'M')+x(i).toFixed(1)+','+y(p.v[k]).toFixed(1)).join('');}
 h+=`<path d="${d}" fill="none" stroke="${cor(t)}" stroke-width="${c.termos.length>2?1.8:2.4}"/>`+(dp?`<path d="${dp}" fill="none" stroke="${cor(t)}" stroke-width="2" stroke-dasharray="3 3"/>`:'');});
@@ -1946,8 +1961,19 @@ box.innerHTML=c.termos.map(t=>{const lst=l=>R.filter(r=>r.termo===t&&r.tipo===re
 const li=(arr,up)=>arr.length?arr.map(r=>`<li>${esc(r.texto)}${r.tipo_assunto?` <em class="yt-meta">(${esc(r.tipo_assunto)})</em>`:''}<span class="${up?'gt-up':''}">${esc(up?r.rotulo:r.valor)}</span></li>`).join(''):'<li class="yt-meta">sem dados</li>';
 return `<div class="gt-relcol" style="--c:${cor(t)}"><h4>${esc(t)}</h4><h5>Em alta no período</h5><ol>${li(lst('em_alta'),true)}</ol><h5>Principais (0–100)</h5><ol>${li(lst('principais'),false)}</ol></div>`;}).join('');
 $('gtRelNote').textContent=(D.nota_relacionados||'')+' “Em alta” compara com o período anterior de mesma duração; “Principais” é o índice relativo de 0 a 100 dentro do termo.';}
+function vegetativoBloco(c){const card=$('gtVegCard');const VG=c.vegetativo||{};if(!Object.keys(VG).length){card.hidden=true;$('gtVeg').hidden=true;return;}card.hidden=false;$('gtVeg').hidden=false;
+$('gtVegStats').innerHTML=c.termos.map(t=>{const v=VG[t];if(!v)return'';return `<div style="--c:${cor(t)}"><h4>${esc(t)}</h4><div class="yt-nums"><span><b>${v.media}</b>média</span><span><b>${v.desvio}</b>desvio-padrão</span><span><b>${v.mediana}</b>mediana</span><span><b>${v.limite_pico}</b>limite de pico (média + ${v.k}σ)</span></div>
+<div style="margin-top:6px">Faixa normal (média ± 1σ): ${v.faixa_normal[0]} a ${v.faixa_normal[1]} · picos com 1σ: ${v.picos_por_k['1']} · com 2σ: ${v.picos_por_k['2']}</div>
+<ul>${v.picos.length?v.picos.map(p=>`<li>${new Date(p.data+'T12:00:00Z').toLocaleDateString('pt-BR')} — ${p.valor} (z = ${p.z})</li>`).join(''):'<li>nenhum pico acima do limite</li>'}</ul></div>`;}).join('');
+const bl=c.termos.map(t=>VG[t]?VG[t].medias_por_bloco[bloco]:[]);const nB=Math.max(...bl.map(b=>b.length));if(!nB){$('gtBlocos').innerHTML='';return;}
+const W=900,H=240,m={l:34,r:10,t:14,b:42},gw=(W-m.l-m.r)/nB,bw=Math.min(28,(gw-10)/c.termos.length);const mx=Math.max(1,...bl.flat().map(b=>b.media));const y=v=>m.t+(H-m.t-m.b)*(1-v/mx);
+let h=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Médias por período">`;[0,.5,1].forEach(f=>{h+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(mx*f)}" y2="${y(mx*f)}" stroke="#e3e6e8"/><text x="${m.l-5}" y="${y(mx*f)+3}" text-anchor="end">${(mx*f).toFixed(0)}</text>`;});
+for(let i=0;i<nB;i++){const gx=m.l+i*gw+5;c.termos.forEach((t,k)=>{const b=bl[k][i];if(!b)return;const xx=gx+k*bw;h+=`<rect x="${xx.toFixed(1)}" y="${y(b.media).toFixed(1)}" width="${(bw-2).toFixed(1)}" height="${(H-m.b-y(b.media)).toFixed(1)}" fill="${cor(t)}" fill-opacity=".35"><title>${t} · ${b.inicio}→${b.fim}: média ${b.media} (sem picos ${b.media_sem_picos})</title></rect><rect x="${xx.toFixed(1)}" y="${y(b.media_sem_picos).toFixed(1)}" width="${(bw-2).toFixed(1)}" height="${(H-m.b-y(b.media_sem_picos)).toFixed(1)}" fill="${cor(t)}"/>`;});
+const b0=bl.find(b=>b[i])[i];h+=`<text x="${(gx+(gw-10)/2).toFixed(1)}" y="${H-m.b+14}" text-anchor="middle">${b0.inicio.slice(8,10)}/${b0.inicio.slice(5,7)}</text><text x="${(gx+(gw-10)/2).toFixed(1)}" y="${H-m.b+26}" text-anchor="middle">${b0.dias}d</text>`;}
+$('gtBlocos').innerHTML=`<div class="gt-blk">${h}</svg></div><div class="gt-legend">${c.termos.map(t=>`<span><i class="gt-sq" style="background:${cor(t)}"></i>${esc(t)} (sem picos)</span>`).join('')}<span><i class="gt-sq" style="background:#5d6a76;opacity:.35"></i>parte clara = contribuição dos picos à média</span></div>`;
+$('gtVegNote').textContent=D.nota_vegetativo||'';}
 function render(){chips();const c=atual();if(!c){$('gtStatus').textContent='⛔ Consulta sem dados nesta coleta.';return;}
-resumo(c);grafico(c);relacionados(c);mapa(c);
+resumo(c);grafico(c);vegetativoBloco(c);relacionados(c);mapa(c);
 $('gtFiles').innerHTML=`Arquivos desta consulta: <a href="./${esc(c.arquivos.serie)}" download>série (CSV)</a> · <a href="./${esc(c.arquivos.uf)}" download>por UF (CSV)</a> · consolidado: <a href="./data/trends/caderno.json" target="_blank" rel="noopener">caderno.json</a>. Termos consultados: ${c.itens.map(i=>esc(i.rotulo)+' → '+(i.modo==='topico'?'tópico '+esc(i.consulta)+' ('+esc(i.tipo)+')':'palavra “'+esc(i.consulta)+'”')).join('; ')}.`;}
 async function carregar(){if(feito)return;feito=true;
 try{const r=await fetch('./data/trends/caderno.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);D=await r.json();}
@@ -1955,6 +1981,8 @@ catch(err){$('gtStatus').textContent='⛔ Coleta do Trends indisponível ('+err.
 const quando=new Date(D.coleta_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
 $('gtStatus').textContent=`Coleta de ${quando} (Brasília) · ${D.consultas.length} consultas · ${D.aviso}`;$('gtRibbon').textContent='BRASIL · COLETA DE '+quando.slice(0,10);
 $('gtMethod').textContent=D.nota;
+$('gtVeg').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{vegModo=b.dataset.v;$('gtVeg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
+$('gtBloco').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{bloco=b.dataset.b;$('gtBloco').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));
 $('gtRelTipo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{relTipo=b.dataset.r;$('gtRelTipo').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));render();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();

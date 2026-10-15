@@ -78,5 +78,17 @@
       "now 7-d"
     ],
     "nota": "Consultas e assuntos relacionados de cada candidato (listas 'principais' e 'em alta'), como etapa exploratória do método: revelam como o público formula a busca e que termos associa ao candidato, e orientam as strings de busca das coletas (ex.: comentários, influenciadores). 'Em alta' mostra o crescimento no período ('Aumento repentino' = mais de 5.000%)."
+  },
+  "metodo_vegetativo": {
+    "k_desvio": 2,
+    "k_sensibilidade": [
+      1,
+      2
+    ],
+    "periodos_media_dias": [
+      7,
+      15
+    ],
+    "nota": "Método das aulas (Maurício): a série tem um nível 'vegetativo' (normal) e picos de agenda. Calcula-se média e desvio-padrão do período; dias acima de média + k·desvio são picos (outliers). Para ver a curva de fundo, cada pico é substituído pela MEDIANA da série (não puxa a curva para cima nem para baixo). Para comparar, usa-se a média por período (7 e 15 dias), não o dia. k = 2 por padrão (configurável); a contagem de picos com k = 1 fica registrada para conferência."
   }
 }

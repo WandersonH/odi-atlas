@@ -6,6 +6,32 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C7.4] 2026-10-15 — Trends: método do período (normal × pico; pico → mediana; média por período), por candidato
+
+**Por quê:** método do professor Maurício nas aulas (transcrição 1ed89c28 e 3641f036): "calculo o desvio padrão e sei aquilo que está acima do que é considerado normal… tiro o valor que saiu e substituo pela mediana… não trabalhei com o dia, trabalhei com a média do período, 7 dias, 15 dias… comparei média com média". Pedido do usuário.
+
+**Mudou**
+- `build_trends_caderno.py` → função `vegetativo()`, aplicada às séries diárias (período eleitoral e 3 meses). Fica de fora a de 7 dias por hora, porque pico de hora não é agenda diária. Por termo, calcula:
+  - média, desvio-padrão, mediana e faixa normal (média ± 1σ);
+  - **picos** = dias acima de média + k·σ, com o escore z;
+  - **série sem picos** (cada pico substituído pela mediana);
+  - **médias por blocos de 7 e 15 dias**, com e sem picos.
+- Parâmetros em `trends.json` → `metodo_vegetativo`: k = 2 por padrão. A fala da aula não fixa k ("fora do desvio padrão"), por isso a contagem de picos com k = 1 também é registrada.
+- Caderno 14:
+  - alternância "Série original / Sem picos (pico → mediana)", com linha do limite de pico por candidato e picos circulados;
+  - bloco "O que é nível normal e o que é pico de agenda", com estatísticas, lista de picos e barras das médias de 7 ou 15 dias. A parte clara da barra mostra a contribuição dos picos.
+
+**Testado**
+- ✅ Testes: 76 OK (novos: pico substituído pela mediana sem alterar o resto; blocos de 7 e 15 dias; mais picos com k = 1 do que com k = 2; série curta não calcula).
+- ✅ Dados reais, 2º turno por tópicos, período eleitoral (coleta de 2026-10-15 22:17 UTC):
+  - **Lula:** média 9.52, σ 13.57, mediana 5, limite 36.66; picos 2026-10-04 = 100, 2026-10-05 = 56 (com 1σ seriam 12).
+  - **Flávio:** média 6.26, σ 11.06, mediana 2, limite 28.39; picos 2026-10-04 = 83, 2026-10-05 = 47 (com 1σ seriam 9).
+  - Os dois picos coincidem com o 1º turno e o dia seguinte.
+  - Médias de 15 dias sem picos: Lula 1.93 → 2.6 → 5.8 → 5.0 → 12.13 → 22.5; Flávio 1.27 → 1.8 → 2.6 → 2.67 → 6.47 → 16.42.
+- ✅ Chromium headless (1400×900 e 390×844): 4 picos circulados, 24 barras; o bloco some na série de 7 dias por hora; sem rolagem horizontal.
+
+---
+
 ## [C7.3] 2026-10-15 — Mapa estadual de verdade no Trends; rede de menções do TikTok; perfis do TikTok com a última leitura bem-sucedida
 
 **Mudou**
