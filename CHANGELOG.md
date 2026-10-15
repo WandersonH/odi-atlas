@@ -6,6 +6,25 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [D1.0] 2026-10-15 — Diagnóstico: coleta gratuita de TikTok (yt-dlp) e Kwai (página pública e navegador automático)
+
+**Por quê:** o usuário quer evitar a assinatura da Apify; testar se as ferramentas gratuitas dos repositórios de referência funcionam a partir do GitHub Actions.
+
+**Mudou:** `.github/workflows/teste-tiktok-kwai.yml`, só manual (workflow_dispatch), sem gravar dados. Testa os perfis declarados ao TSE (`@lulaoficial` e `@flaviobolsonaro`) e publica o resultado como anotações do run.
+
+**Testado (runs reais)**
+- `38809517125` e `38809599505`: **TikTok via yt-dlp funcionou para os dois perfis.** Leu 10 vídeos de cada, com visualizações, curtidas, comentários e legenda. Exemplos: Flávio 7696508814228638997, 64.000 visualizações e 859 comentários; Lula 7696860113348431122, 22.600 visualizações.
+- `38809722618`, com `yt-dlp[curl-cffi]`: Flávio ✅; **Lula ⛔** ("Failed to parse JSON", resposta vazia do TikTok). **Instável:** o TikTok bloqueia de forma intermitente os IPs do GitHub. O detalhe completo de um vídeo falhou sem curl-cffi ("no impersonate target").
+- Kwai: a página pública responde HTTP 200, mas **sem nenhum dado de vídeo no HTML** (0 ocorrências de photoId, viewCount e caption) nos dois perfis.
+  - Navegador automático (Playwright/Chromium): nenhuma resposta JSON com vídeos para @lulaoficial; **tempo esgotado (60 s)** para @flaviobolsonaro.
+  - **Não há coleta gratuita do Kwai a partir do GitHub.**
+
+**Pendente**
+- Coletor de TikTok com yt-dlp: novas tentativas, último dado válido preservado, ⛔ quando falhar.
+- Kwai continua dependendo de serviço pago (Apify ou ScrapeCreators) com teto de custo por execução, mediante autorização.
+
+---
+
 ## [C6.0] 2026-10-15 — Livro de códigos de estratégias populistas (Bardin), CHD de Reinert e corpus para o IRaMuTeQ
 
 **Por quê:** alinhar o caderno 13 ao método das leituras da disciplina, ou seja, à análise de conteúdo categorial (Bardin) e à análise de conteúdo automatizada (Cervi, 2018: IRaMuTeQ/Reinert) usadas por Montuori Fernandes (2021, 2022, 2026), e à concordância entre codificadores do IPIE (TP2025.2). Pedido do usuário.
