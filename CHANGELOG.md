@@ -41,7 +41,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Maior ponte: “brasil” (intermediação 0,53).
 - ✅ Conferência manual: o peso de 3 arestas refeito pela matriz vídeo × termos bateu com o CSV (#direita–#eleicoes 6; brasil–mundo 13; brasileiro–ninguém 6).
 - ✅ `rede.gexf` relido com `networkx.read_gexf`: 148 nós, 797 arestas. **Não abri no Gephi** (não há Gephi neste ambiente).
-- ⛔→✅ 1ª execução no Actions (run `38801248459`) falhou nos testes: os layouts do networkx precisam de `numpy`, que não vem junto. Corrigido fixando `numpy==2.3.4` no workflow. Reproduzido localmente em Python 3.12 + networkx 3.6.1 + numpy 2.3.4: 45 testes OK e **rede idêntica** à gerada em Python 3.13 + numpy 2.5.3 (mesmas posições, comunidades e arestas).
+- ⛔→✅ 1ª execução no Actions (run `38801248459`) falhou nos testes: os layouts do networkx precisam de `numpy`, que não vem junto. Corrigido fixando `numpy==2.3.4` no workflow. A 2ª execução (run `38801414101`) passou em todos os passos, coletou de novo (2026-10-15T20:22:46Z) e regenerou a rede sozinha: 148 nós, 797 arestas, 5 comunidades, modularidade 0,272 (iguais à rede gerada localmente). Reproduzido localmente em Python 3.12 + networkx 3.6.1 + numpy 2.3.4: 45 testes OK e **rede idêntica** à gerada em Python 3.13 + numpy 2.5.3 (mesmas posições, comunidades e arestas).
 - ✅ Chromium headless (1400×900 e 390×844):
   - 148 pontos e 797 linhas; tabela de nós com 148 linhas e tabela de arestas com 797;
   - o filtro “seg” deixa 1 nó; o clique destaca os vizinhos;
