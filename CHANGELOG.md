@@ -6,6 +6,21 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C2.1] 2026-10-15 — Teto mensal da coleta Apify para US$ 10
+
+**Mudou**
+- `data/config/seguidores_meta.json`: `teto_mensal_usd` de 5,00 para **10,00**, mantendo a coleta **diária** (07h10) e o teto de US$ 0,50 por execução. Decisão do usuário (“pode ajustar”) após a primeira execução custar US$ 0,32.
+
+**Por quê:** a US$ 0,32/dia o mês sai ~US$ 9,70; com teto de US$ 5 a coleta pararia por volta do 15º dia, no meio da reta final da eleição (2º turno em 25/10).
+
+**Testado**
+- ✅ Testes (27) passando; o bloqueio por teto continua coberto por `test_teto_mensal_bloqueia_antes_de_gastar`.
+
+**Pendente**
+- Se o custo por execução subir (mais perfis ou mudança de preço da Apify), o teto mensal volta a bloquear sozinho; o custo real de cada dia fica em `data/seguidores/manifesto-*.json`.
+
+---
+
 ## [C2.0] 2026-10-15 — Seguidores Instagram/Facebook via Apify, agendado (caderno 02)
 
 **Mudou**
