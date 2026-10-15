@@ -46,6 +46,17 @@ jobs:
             --years ${{ github.event.inputs.years || '2022 2026' }} \
             --malha "${{ github.event.inputs.malha || '2025' }}"
 
+      - uses: actions/setup-node@v4
+        if: steps.fetch.outcome == 'success'
+        with:
+          node-version: "20"
+
+      - name: P4 — malha IBGE em GeoJSON por UF (mapa do caderno 12)
+        id: geo
+        if: steps.fetch.outcome == 'success' && hashFiles('raw/BR_Municipios_*.zip') != ''
+        continue-on-error: true
+        run: ./scripts/build_geo.sh "${{ github.event.inputs.malha || '2025' }}"
+
       - name: P2/P3 — gerar data/elections.json (mapa do caderno 12)
         id: build
         if: steps.fetch.outcome == 'success'
@@ -89,7 +100,7 @@ jobs:
           scripts/commit_push.sh "P1: originais TSE/IBGE (run ${{ github.run_id }})"
 
       - name: Falhar se houve bloqueio
-        if: steps.fetch.outcome == 'failure' || steps.build.outcome == 'failure'
+        if: steps.fetch.outcome == 'failure' || steps.build.outcome == 'failure' || steps.geo.outcome == 'failure'
         run: |
           echo "::error::P1/P2 bloqueada — ver data/manifest/latest.json"
           exit 1
