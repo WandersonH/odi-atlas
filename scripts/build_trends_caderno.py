@@ -34,13 +34,15 @@ def main(argv=None) -> int:
         return 1
     m = json.loads((pasta / "manifesto.json").read_text(encoding="utf-8"))
     out = {"schema_version": 1, "coleta_utc": m["run_started_utc"], "pasta": str(pasta.relative_to(root)),
-           "aviso": m.get("aviso_metodologico", ""), "nota": m["config"].get("nota", ""), "consultas": []}
+           "aviso": m.get("aviso_metodologico", ""), "nota": m["config"].get("nota", ""),
+           "nota_relacionados": (m["config"].get("relacionados") or {}).get("nota", ""), "consultas": []}
     for c in m["consultas"]:
         if c.get("status") != "ok":
             continue
         stem = f"{c['grupo']}__{c['periodo'].replace(' ', '_')}"
         serie = ler(pasta / f"{stem}__serie.csv")
         uf = ler(pasta / f"{stem}__uf.csv")
+        rel = ler(pasta / f"{stem}__relacionados.csv")
         termos = c["termos"]
         out["consultas"].append({
             "grupo": c["grupo"], "periodo": c["periodo"], "termos": termos,
@@ -49,7 +51,11 @@ def main(argv=None) -> int:
                        "v": [int(r[t]) if r.get(t, "").strip() != "" else None for t in termos]} for r in serie],
             "uf": [{"uf": r["geo_code"].replace("BR-", ""), "nome": r["geo_nome"],
                     "v": [int(r[t]) if r.get(t, "").strip() != "" else None for t in termos]} for r in uf],
-            "arquivos": {"serie": f"{out['pasta']}/{stem}__serie.csv", "uf": f"{out['pasta']}/{stem}__uf.csv"}})
+            "relacionados": [{"termo": r["termo"], "tipo": r["tipo"], "lista": r["lista"], "pos": int(r["posicao"]),
+                              "texto": r["texto"], "tipo_assunto": r["tipo_assunto"], "valor": r["valor"],
+                              "rotulo": r["valor_formatado"]} for r in rel],
+            "arquivos": {"serie": f"{out['pasta']}/{stem}__serie.csv", "uf": f"{out['pasta']}/{stem}__uf.csv",
+                         **({"relacionados": f"{out['pasta']}/{stem}__relacionados.csv"} if rel else {})}})
     (base / "caderno.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"trends: {len(out['consultas'])} consultas da coleta {out['coleta_utc']} ({out['pasta']})")
     return 0 if out["consultas"] else 1

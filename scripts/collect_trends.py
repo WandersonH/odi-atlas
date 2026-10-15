@@ -119,6 +119,25 @@ def write_geo(data: dict, termos: list[str], path: Path) -> int:
     return len(rows)
 
 
+def write_related(itens: list[tuple[str, str, dict]], path: Path) -> int:
+    """Consultas e assuntos relacionados (listas 'principais' e 'em alta') de cada termo → CSV longo."""
+    n = 0
+    with open(path, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, delimiter=";", lineterminator="\n")
+        w.writerow(["termo", "tipo", "lista", "posicao", "texto", "tipo_assunto", "valor", "valor_formatado"])
+        for termo, tipo, data in itens:
+            listas = (data.get("default") or {}).get("rankedList") or []
+            for nome, bloco in zip(("principais", "em_alta"), listas):
+                for i, k in enumerate(bloco.get("rankedKeyword") or [], 1):
+                    if "query" in k:
+                        texto, tipo_a = k["query"], ""
+                    else:
+                        texto, tipo_a = (k.get("topic") or {}).get("title", ""), (k.get("topic") or {}).get("type", "")
+                    w.writerow([termo, tipo, nome, i, texto, tipo_a, k.get("value"), k.get("formattedValue")])
+                    n += 1
+    return n
+
+
 def resolver_periodo(periodo: str, cfg: dict, hoje: str | None = None) -> str:
     """'eleitoral' = das convenções partidárias até o 2º turno (ou até hoje, se antes): 'AAAA-MM-DD AAAA-MM-DD'.
     Outros valores ('now 7-d', 'today 3-m') vão direto para o Trends."""
@@ -175,6 +194,16 @@ def main(argv=None) -> int:
                     gm = t.widget("comparedgeo", geo_w)
                     (outdir / f"{tag}__uf.json").write_text(json.dumps(gm, ensure_ascii=False), encoding="utf-8")
                     c["uf_linhas"] = write_geo(gm, termos, outdir / f"{tag}__uf.csv")
+                rel = cfg.get("relacionados", {})
+                if g["nome"] in rel.get("grupos", []) and periodo in rel.get("periodos", []):
+                    itens_rel = []
+                    for k, w in sorted(ws.items()):
+                        tipo = "consultas" if k.startswith("RELATED_QUERIES") else "assuntos" if k.startswith("RELATED_TOPICS") else None
+                        if not tipo:
+                            continue
+                        idx = int(k.rsplit("_", 1)[1]) if k.rsplit("_", 1)[-1].isdigit() else 0
+                        itens_rel.append((termos[idx] if idx < len(termos) else str(idx), tipo, t.widget("relatedsearches", w)))
+                    c["relacionados_linhas"] = write_related(itens_rel, outdir / f"{tag}__relacionados.csv")
                 c["status"] = "ok"
             except Exception as e:
                 c["status"] = "erro"

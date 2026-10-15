@@ -570,6 +570,13 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .gt-tbl{width:100%;border-collapse:collapse;font-size:12px}.gt-tbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px 'Courier New',monospace;text-transform:uppercase;padding:7px 8px;text-align:left}
 .gt-tbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}.gt-tbl td.n{text-align:right}
 @media (max-width:800px){.gt-geo{grid-template-columns:1fr}.gt-tile{font-size:11px}.gt-tile small{font-size:8px}}
+.gt-rel{margin:12px 0}.gt-rel #gtRelTipo{margin:4px 0 10px}
+.gt-relgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:14px}
+.gt-relcol{border-top:3px solid var(--c);background:#f7f9fa;padding:10px 12px;min-width:0}
+.gt-relcol h4{margin:0 0 6px;font:700 15px Georgia,serif;color:var(--c)}
+.gt-relcol h5{margin:8px 0 4px;font:700 10px 'Courier New',monospace;letter-spacing:.06em;text-transform:uppercase;color:#53606b}
+.gt-relcol ol{margin:0;padding-left:20px;font-size:12.5px;color:#172238}.gt-relcol li{margin:2px 0;overflow-wrap:anywhere}
+.gt-relcol li span{font:700 10.5px 'Courier New',monospace;color:#53606b;margin-left:6px}.gt-relcol li span.gt-up{color:#b03030}
 </style>
 
 <style>
@@ -868,6 +875,9 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="odi-signal" id="gtStatus" role="status">Aguardando leitura da coleta do Trends.</div>
   <div class="gt-sum" id="gtSum"></div>
   <div class="card gt-chart"><div class="eyebrow">Série temporal</div><h2 id="gtChartTitle"></h2><div id="gtChart"></div><div class="gt-legend" id="gtLegend"></div></div>
+  <div class="card gt-rel"><div class="eyebrow">Consultas e assuntos relacionados</div><h2>O que o público busca junto com cada candidato</h2>
+    <div class="yt-chips" id="gtRelTipo" role="group" aria-label="Tipo"><button class="yt-chip" data-r="consultas" aria-pressed="true">Consultas</button><button class="yt-chip" data-r="assuntos" aria-pressed="false">Assuntos</button></div>
+    <div class="gt-relgrid" id="gtRel"></div><p class="yt-cloudnote" id="gtRelNote"></p></div>
   <div class="gt-geo">
     <div class="card"><div class="eyebrow">Por estado</div><h2 id="gtMapTitle"></h2><div class="gt-tiles" id="gtTiles"></div><div class="gt-legend" id="gtMapLegend"></div></div>
     <div class="card"><div class="eyebrow">Tabela por UF</div><div class="yt-tablewrap" style="max-height:470px"><table class="gt-tbl" id="gtTbl"></table></div></div>
@@ -1865,7 +1875,7 @@ const NOME_GRUPO={segundo_turno_topicos:'2º turno · tópicos',primeiro_turno_5
 const NOME_PER={'now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)','eleitoral':'Período eleitoral · convenções (20/07) → 2º turno (25/10), por dia'};
 const MARCOS=[['2026-07-20','Convenções'],['2026-08-16','Início da campanha'],['2026-10-04','1º turno'],['2026-10-25','2º turno']];
 const GRADE={RR:[2,0],AP:[4,0],AM:[1,1],PA:[3,1],MA:[4,1],CE:[5,1],RN:[6,1],AC:[0,2],RO:[1,2],MT:[2,2],TO:[3,2],PI:[4,2],PE:[5,2],PB:[6,2],MS:[2,3],GO:[3,3],DF:[4,3],BA:[5,3],AL:[6,3],PR:[2,4],SP:[3,4],MG:[4,4],ES:[5,4],SE:[6,4],SC:[2,5],RJ:[4,5],RS:[2,6]};
-let D=null,grupo='segundo_turno_topicos',periodo='eleitoral',feito=false;
+let D=null,grupo='segundo_turno_topicos',periodo='eleitoral',relTipo='consultas',feito=false;
 const $=id=>document.getElementById(id);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cor=t=>COR[t]||'#3c4a58';
@@ -1906,15 +1916,22 @@ $('gtTiles').innerHTML=h;$('gtMapTitle').textContent=dois?'Divisão do interesse
 $('gtMapLegend').innerHTML=dois?`<span>número = Lula·Flávio (%)</span><span><i class="gt-sq" style="background:#c8102e"></i>65%+ Lula</span><span><i class="gt-sq" style="background:${mix('#c8102e','#1f8a3b',.5)}"></i>equilíbrio</span><span><i class="gt-sq" style="background:#1f8a3b"></i>65%+ Flávio</span>`:c.termos.map(t=>`<span><i class="gt-sq" style="background:${cor(t)}"></i>${esc(t)}</span>`).join('');
 const rows=[...c.uf].sort((a,b)=>(b.v[iL>=0?iL:0]??-1)-(a.v[iL>=0?iL:0]??-1));
 $('gtTbl').innerHTML=`<thead><tr><th>UF</th>${c.termos.map(t=>`<th style="color:${cor(t)==='#3c4a58'?'#fff':'#fff'}">${esc(t.split(' ')[0])} %</th>`).join('')}</tr></thead><tbody>${rows.map(u=>`<tr><td>${esc(u.nome)}</td>${u.v.map((v,i)=>`<td class="n" style="color:${cor(c.termos[i])};font-weight:${v===Math.max(...u.v.filter(x=>x!=null))?700:400}">${v??'—'}</td>`).join('')}</tr>`).join('')}</tbody>`;}
+function relacionados(c){const box=$('gtRel');const R=c.relacionados||[];
+if(!R.length){box.innerHTML='<p class="yt-meta">Relacionados são coletados só para “2º turno · tópicos” nos períodos eleitoral e de 7 dias. Escolha essa consulta.</p>';return;}
+box.innerHTML=c.termos.map(t=>{const lst=l=>R.filter(r=>r.termo===t&&r.tipo===relTipo&&r.lista===l).sort((a,b)=>a.pos-b.pos).slice(0,12);
+const li=(arr,up)=>arr.length?arr.map(r=>`<li>${esc(r.texto)}${r.tipo_assunto?` <em class="yt-meta">(${esc(r.tipo_assunto)})</em>`:''}<span class="${up?'gt-up':''}">${esc(up?r.rotulo:r.valor)}</span></li>`).join(''):'<li class="yt-meta">sem dados</li>';
+return `<div class="gt-relcol" style="--c:${cor(t)}"><h4>${esc(t)}</h4><h5>Em alta no período</h5><ol>${li(lst('em_alta'),true)}</ol><h5>Principais (0–100)</h5><ol>${li(lst('principais'),false)}</ol></div>`;}).join('');
+$('gtRelNote').textContent=(D.nota_relacionados||'')+' “Em alta” compara com o período anterior de mesma duração; “Principais” é o índice relativo de 0 a 100 dentro do termo.';}
 function render(){chips();const c=atual();if(!c){$('gtStatus').textContent='⛔ Consulta sem dados nesta coleta.';return;}
-resumo(c);grafico(c);mapa(c);
+resumo(c);grafico(c);relacionados(c);mapa(c);
 $('gtFiles').innerHTML=`Arquivos desta consulta: <a href="./${esc(c.arquivos.serie)}" download>série (CSV)</a> · <a href="./${esc(c.arquivos.uf)}" download>por UF (CSV)</a> · consolidado: <a href="./data/trends/caderno.json" target="_blank" rel="noopener">caderno.json</a>. Termos consultados: ${c.itens.map(i=>esc(i.rotulo)+' → '+(i.modo==='topico'?'tópico '+esc(i.consulta)+' ('+esc(i.tipo)+')':'palavra “'+esc(i.consulta)+'”')).join('; ')}.`;}
 async function carregar(){if(feito)return;feito=true;
 try{const r=await fetch('./data/trends/caderno.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);D=await r.json();}
 catch(err){$('gtStatus').textContent='⛔ Coleta do Trends indisponível ('+err.message+'). Abra pelo GitHub Pages ou servidor local.';feito=false;return;}
 const quando=new Date(D.coleta_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
 $('gtStatus').textContent=`Coleta de ${quando} (Brasília) · ${D.consultas.length} consultas · ${D.aviso}`;$('gtRibbon').textContent='BRASIL · COLETA DE '+quando.slice(0,10);
-$('gtMethod').textContent=D.nota;render();}
+$('gtMethod').textContent=D.nota;
+$('gtRelTipo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{relTipo=b.dataset.r;$('gtRelTipo').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();}));render();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
 })();

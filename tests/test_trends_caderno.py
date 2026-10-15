@@ -32,6 +32,20 @@ class TestPeriodoEleitoral(unittest.TestCase):
         self.assertEqual(ct.resolver_periodo("today 3-m", cfg), "today 3-m")
 
 
+class TestRelacionados(unittest.TestCase):
+    def test_csv_longo(self):
+        import collect_trends as ct
+        dados = {"default": {"rankedList": [
+            {"rankedKeyword": [{"query": "lula hoje", "value": 100, "formattedValue": "100"}]},
+            {"rankedKeyword": [{"topic": {"title": "Banco Master", "type": "Banco"}, "value": 5000, "formattedValue": "Aumento repentino"}]}]}}
+        with tempfile.TemporaryDirectory() as t:
+            p = Path(t) / "r.csv"
+            self.assertEqual(ct.write_related([("Lula", "consultas", dados)], p), 2)
+            linhas = p.read_text(encoding="utf-8").splitlines()
+            self.assertIn("Lula;consultas;principais;1;lula hoje;;100;100", linhas)
+            self.assertIn("Lula;consultas;em_alta;1;Banco Master;Banco;5000;Aumento repentino", linhas)
+
+
 class TestTrendsCaderno(unittest.TestCase):
     def test_usa_a_mais_recente_com_status_ok(self):
         with tempfile.TemporaryDirectory() as t:
