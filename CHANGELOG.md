@@ -6,6 +6,18 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C7.5] 2026-10-15 — Correção: rede de menções sem scipy (testes do GitHub falhavam)
+
+**Problema:** o run `38817560315` (TikTok) parou nos testes. A disposição da rede de menções usava `kamada_kawai_layout`, que exige o scipy; o GitHub Actions instala só networkx e numpy. Localmente passava porque este ambiente tem scipy. O mesmo teste roda no workflow do YouTube, que também quebraria na próxima coleta.
+
+**Correção:** `spring_layout` com semente fixa (só numpy), um bloco por campanha como antes.
+
+**Testado**
+- ✅ Reproduzido o erro em Python 3.12 com networkx 3.6.1 e numpy 2.3.4, sem scipy ("No module named 'scipy'"). Depois da correção: 76 OK nesse ambiente e 76 OK aqui.
+- ✅ Rede de menções regenerada: 25 contas e 23 ligações, idêntica em conteúdo. Chromium: 25 nós, sem rolagem horizontal.
+
+---
+
 ## [C7.4] 2026-10-15 — Trends: método do período (normal × pico; pico → mediana; média por período), por candidato
 
 **Por quê:** método do professor Maurício nas aulas (transcrição 1ed89c28 e 3641f036): "calculo o desvio padrão e sei aquilo que está acima do que é considerado normal… tiro o valor que saiu e substituo pela mediana… não trabalhei com o dia, trabalhei com a média do período, 7 dias, 15 dias… comparei média com média". Pedido do usuário.

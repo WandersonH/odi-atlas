@@ -85,7 +85,8 @@ def posicionar(g: nx.DiGraph):
     total, x0 = sum(larg), 0.0
     for c, w in zip(comps, larg):
         sub = g.subgraph(c).to_undirected()
-        pos = nx.kamada_kawai_layout(sub, weight=None) if len(c) > 2 else {n: (i * 0.5, 0.0) for i, n in enumerate(sorted(c))}
+        pos = (nx.spring_layout(sub, seed=SEMENTE, k=1.5 / math.sqrt(len(c)), iterations=300) if len(c) > 2
+               else {n: (i * 0.5, 0.0) for i, n in enumerate(sorted(c))})  # só numpy (sem scipy, como no GitHub Actions)
         xs, ys = [p[0] for p in pos.values()], [p[1] for p in pos.values()]
         spx, spy = (max(xs) - min(xs)) or 1.0, (max(ys) - min(ys)) or 1.0
         bw = 1000 * w / total
