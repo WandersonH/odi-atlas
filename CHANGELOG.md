@@ -6,6 +6,30 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C8.1] 2026-10-15 — YouTube: fichas pela API oficial (coletor)
+
+**Por quê:** decisão do usuário: "todo indicador de YouTube vamos deixar pela API oficial; dado do Modash é um adendo".
+
+**Mudou**
+- `scripts/build_youtube_fichas.py` + `data/config/youtube_fichas.json`: para @LulaOficial, @flaviobolsonaro, @ptbrasil e @PartidoLiberal22, lê pela YouTube Data API:
+  - inscritos, total de vídeos e de visualizações do canal;
+  - médias e medianas de visualizações, curtidas e comentários dos vídeos dos últimos 30 dias, sem as últimas 48 h;
+  - engajamento = (curtidas + comentários) ÷ visualizações;
+  - divisão curtos (≤ 180 s, aproximação de Shorts) × longos.
+- Saída em `data/youtube/fichas.json` e `fichas_historico.csv`. Novo passo no workflow `seguidores-youtube.yml`.
+
+**Testado**
+- ✅ `tests/test_youtube_fichas.py` (4 testes, dados fictícios); suíte completa OK.
+- ✅ Lógica aplicada, sem chamar a API, aos vídeos já coletados em `data/youtube/videos_latest.csv.gz` (15/10), janela 13/09–13/10:
+  - Lula: 215 vídeos, média de 183.419 visualizações, engajamento 8,14%;
+  - Flávio: 208 vídeos, média de 137.181, engajamento 8,27%.
+  - O Modash de 15/10 mostrava médias de 29,8 mil (Lula) e 30,7 mil (Flávio).
+- ⛔ Chamada real da API (inclui PT e PL, que não estão no TSE): depende do run do workflow.
+
+**Pendente:** página passar a ler `fichas.json` (C8.2).
+
+---
+
 ## [C8.0] 2026-10-15 — Modash: relatórios de 15/10 e leitor reprodutível dos PDFs
 
 **Por quê:** o usuário enviou 6 relatórios Modash de 15/10 (Instagram, TikTok e YouTube de Lula e Flávio) e os 13 PDFs originais de 10 e 11/10. Antes, os valores Modash estavam digitados no HTML, sem script que os refizesse.
