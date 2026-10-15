@@ -160,6 +160,47 @@ def extract_presidente_1t(zip_path: Path, out_gz: Path) -> dict:
     return stats
 
 
+def read_dbf(data: bytes, encoding: str = "utf-8") -> tuple[list[str], list[list[str]]]:
+    """Leitor mínimo de DBF (dBase III), suficiente para a tabela de atributos da malha IBGE."""
+    nrec = int.from_bytes(data[4:8], "little")
+    hlen = int.from_bytes(data[8:10], "little")
+    rlen = int.from_bytes(data[10:12], "little")
+    fields, pos = [], 32
+    while data[pos] != 0x0D:
+        name = data[pos:pos + 11].split(b"\x00")[0].decode("ascii")
+        fields.append((name, data[pos + 16]))
+        pos += 32
+    rows = []
+    for i in range(nrec):
+        rec = data[hlen + i * rlen: hlen + (i + 1) * rlen]
+        if rec[:1] == b"*":  # registro apagado
+            continue
+        off, row = 1, []
+        for _, size in fields:
+            row.append(rec[off:off + size].decode(encoding).strip())
+            off += size
+        rows.append(row)
+    return [f[0] for f in fields], rows
+
+
+def municipios_from_malha(zip_path: Path, out_csv: Path) -> dict:
+    """Gera a tabela oficial de municípios (código IBGE, nome, UF) a partir do .dbf da malha."""
+    with zipfile.ZipFile(zip_path) as z:
+        dbfs = [n for n in z.namelist() if n.lower().endswith(".dbf")]
+        if len(dbfs) != 1:
+            raise ValueError(f"esperado 1 .dbf na malha, achei {len(dbfs)}")
+        cpg = [n for n in z.namelist() if n.lower().endswith(".cpg")]
+        enc = z.read(cpg[0]).decode("ascii").strip() if cpg else "utf-8"
+        header, rows = read_dbf(z.read(dbfs[0]), "latin-1" if "1252" in enc or "8859" in enc else "utf-8")
+    out_csv.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_csv, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, delimiter=";", lineterminator="\n")
+        w.writerow(header)
+        w.writerows(rows)
+    return {"source_dbf": dbfs[0], "encoding": enc, "columns": header, "count": len(rows),
+            "output": str(out_csv), "output_sha256": hashlib.sha256(out_csv.read_bytes()).hexdigest()}
+
+
 def find_malha_zip(year: str) -> str | None:
     """Lê a listagem do diretório do IBGE e devolve o .zip da malha de municípios."""
     base = IBGE_MALHA_DIR.format(ano=year)
@@ -207,24 +248,31 @@ def run(args) -> int:
             entry["error"] = f"{type(e).__name__}: {e}"
             manifest["blocked"].append(f"TSE {year}: {entry['error']}")
 
-    try:
-        dest = root / "data" / "ibge" / "municipios.json"
-        info = download(IBGE_MUNICIPIOS, dest)
-        info["count"] = len(json.loads(dest.read_text(encoding="utf-8")))
-        manifest["ibge"]["municipios"] = info
-    except Exception as e:
-        manifest["ibge"]["municipios"] = {"status": "erro", "error": f"{type(e).__name__}: {e}"}
-        manifest["blocked"].append(f"IBGE municípios: {e}")
-
+    # A tabela oficial de municípios vem do .dbf da malha (mesma fonte da geometria).
+    # A API de localidades é só complementar: em 15/10/2026 ela respondeu com cadeia
+    # de certificados incompleta, por isso sua falha vira aviso, não bloqueio.
+    manifest["warnings"] = []
     if args.malha:
         try:
             url = find_malha_zip(args.malha)
             if not url:
                 raise ValueError("zip de municípios não identificado de forma única na listagem")
-            manifest["ibge"]["malha"] = download(url, raw / Path(url).name)
+            zpath = raw / Path(url).name
+            manifest["ibge"]["malha"] = download(url, zpath)
+            manifest["ibge"]["municipios_malha"] = municipios_from_malha(
+                zpath, root / "data" / "ibge" / f"municipios_malha_{args.malha}.csv")
         except Exception as e:
             manifest["ibge"]["malha"] = {"status": "erro", "error": f"{type(e).__name__}: {e}"}
             manifest["blocked"].append(f"IBGE malha {args.malha}: {e}")
+
+    try:
+        dest = root / "data" / "ibge" / "municipios_api.json"
+        info = download(IBGE_MUNICIPIOS, dest)
+        info["count"] = len(json.loads(dest.read_text(encoding="utf-8")))
+        manifest["ibge"]["municipios_api"] = info
+    except Exception as e:
+        manifest["ibge"]["municipios_api"] = {"status": "erro", "error": f"{type(e).__name__}: {e}"}
+        manifest["warnings"].append(f"IBGE API de localidades indisponível: {e}")
 
     manifest["run_finished_utc"] = now_utc()
     manifest["status"] = "bloqueado" if manifest["blocked"] else "ok"

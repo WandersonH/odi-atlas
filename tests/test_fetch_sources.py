@@ -138,8 +138,37 @@ class TestRunOffline(unittest.TestCase):
         self.assertEqual(m["tse"]["2022"]["status"], "ok")
         self.assertEqual(m["tse"]["2022"]["extract"]["rows_written"], 2)
         self.assertEqual(m["tse"]["2026"]["status"], "recurso_nao_encontrado")
-        self.assertEqual(m["ibge"]["municipios"]["count"], 1)
+        self.assertEqual(m["ibge"]["municipios_api"]["count"], 1)
         self.assertTrue((self.d / "data" / "tse" / "presidente_1t_2022_munzona.csv.gz").exists())
+
+
+def make_dbf(fields, rows):
+    """Escreve um DBF dBase III mínimo para teste."""
+    import struct
+    rlen = 1 + sum(sz for _, sz in fields)
+    hlen = 32 + 32 * len(fields) + 1
+    out = bytearray(struct.pack("<BBBBIHH20x", 3, 126, 1, 1, len(rows), hlen, rlen))
+    for name, sz in fields:
+        out += name.encode().ljust(11, b"\x00") + b"C" + b"\x00" * 4 + bytes([sz]) + b"\x00" * 15
+    out += b"\r"
+    for r in rows:
+        out += b" " + b"".join(v.encode("utf-8").ljust(sz, b" ")[:sz] for v, (_, sz) in zip(r, fields))
+    return bytes(out + b"\x1a")
+
+
+class TestMalha(unittest.TestCase):
+    def test_municipios_from_dbf(self):
+        d = Path(tempfile.mkdtemp())
+        zp = d / "BR_Municipios_2025.zip"
+        dbf = make_dbf([("CD_MUN", 7), ("NM_MUN", 30), ("SIGLA_UF", 2)],
+                       [["3550308", "São Paulo", "SP"], ["5300108", "Brasília", "DF"]])
+        with zipfile.ZipFile(zp, "w") as z:
+            z.writestr("BR_Municipios_2025.dbf", dbf)
+            z.writestr("BR_Municipios_2025.cpg", "UTF-8")
+        info = fs.municipios_from_malha(zp, d / "m.csv")
+        self.assertEqual(info["count"], 2)
+        self.assertEqual(info["columns"], ["CD_MUN", "NM_MUN", "SIGLA_UF"])
+        self.assertIn("3550308;São Paulo;SP", (d / "m.csv").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
