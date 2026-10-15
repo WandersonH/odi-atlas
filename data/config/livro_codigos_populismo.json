@@ -1,0 +1,222 @@
+{
+  "titulo": "Livro de códigos — estratégias discursivas populistas (ODI Atlas, caderno 13)",
+  "versao": "1.1 (2026-10-15) — exclusões após inspeção dos primeiros acertos e erros da pré-codificação",
+  "metodo": "Análise de conteúdo categorial (Bardin, 2011): unidade de registro = cada vídeo (título + descrição útil, sem links nem rodapés repetidos). Codificação por presença/ausência, várias categorias por vídeo. Os termos abaixo fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra codificada por duas pessoas, com concordância medida pelo kappa de Cohen (como no IPIE TP2025.2).",
+  "simetria": "Os indicadores valem para os dois lados do espectro: o populismo de esquerda (povo × banqueiros, bilionários, super-ricos) e o de direita (povo × sistema, comunistas, globalistas) caem nas MESMAS categorias. Nenhuma categoria mede posição ideológica.",
+  "codigos_gerais": {
+    "0": "ausente",
+    "1": "presente",
+    "UC": "incerto (codificador não consegue decidir; não força escolha binária)"
+  },
+  "categorias": {
+    "povo_equivalencia": {
+      "nome": "Equivalência com o povo",
+      "definicao": "O ator se apresenta como igual, porta-voz ou parte do 'povo' / 'gente comum', em oposição implícita ou explícita a um grupo que não é o povo.",
+      "fonte": "Montuori Fernandes, Oliveira e Chaves (2022), categoria 1 ('equivalência com o público'); Laclau (2005).",
+      "indicadores": [
+        "povo",
+        "povo brasileiro",
+        "gente como a gente",
+        "gente simples",
+        "gente humilde",
+        "humilde*",
+        "trabalhador*",
+        "pobre*",
+        "cidadao de bem",
+        "cidadaos de bem",
+        "pessoas comuns",
+        "brasileiro comum",
+        "voz do povo",
+        "pelo povo",
+        "do lado do povo",
+        "maioria do povo"
+      ],
+      "exemplo_inclusao": "'Sempre do lado do povo brasileiro'; 'o cidadão de bem não aguenta mais'.",
+      "exclusao": "Uso apenas descritivo/estatístico ('o povo de Manaus recebeu a obra') sem identificação do falante com o povo → codificar 0 ou UC."
+    },
+    "inimigo_contraposicao": {
+      "nome": "Contraposição ao inimigo",
+      "definicao": "Construção de um adversário coletivo moralizado (elite, sistema, corruptos, banqueiros, comunistas etc.) como responsável pelos problemas do povo.",
+      "fonte": "Montuori Fernandes, Oliveira e Chaves (2022), categoria 2; Montuori Fernandes et al. (2021), binarismo 'nós' × 'elite corrupta'.",
+      "indicadores": [
+        "elite*",
+        "o sistema",
+        "sistema podre",
+        "corrupt*",
+        "quadrilha",
+        "ladrao",
+        "ladroes",
+        "roubalheira",
+        "comunis*",
+        "fascis*",
+        "extrema direita",
+        "extrema esquerda",
+        "esquerdista*",
+        "bolsonarist*",
+        "petist*",
+        "banqueiro*",
+        "bilionario*",
+        "super ricos",
+        "os ricos",
+        "os de cima",
+        "inimigo*",
+        "traidor*",
+        "golpista*",
+        "globalist*",
+        "mafia",
+        "contra o povo"
+      ],
+      "exemplo_inclusao": "'Os bilionários não pagam imposto e o povo paga'; 'o sistema corrupto quer impedir'.",
+      "exclusao": "Menção factual a processo/crime sem construção de adversário coletivo (ex.: notícia de prisão) → 0 ou UC.",
+      "excluir_trechos": [
+        "sistema unico",
+        "sistema de saude",
+        "sistema de seguranca",
+        "sistema eleitoral",
+        "sistema financeiro",
+        "crime organizado"
+      ]
+    },
+    "personalismo": {
+      "nome": "Construção personalista do líder",
+      "definicao": "Ênfase na pessoa do líder (trajetória, qualidades, família, feitos individuais) acima do partido, programa ou instituições.",
+      "fonte": "Montuori Fernandes, Oliveira e Chaves (2022), categoria 3; personalismo na comunicação populista.",
+      "indicadores": [
+        "eu fiz",
+        "eu vou",
+        "eu prometo",
+        "eu garanto",
+        "eu sou",
+        "meu governo",
+        "minha historia",
+        "minha vida",
+        "minha trajetoria",
+        "meu pai",
+        "confie em mim",
+        "so eu",
+        "comigo",
+        "quem fez fui eu",
+        "nunca antes"
+      ],
+      "exemplo_inclusao": "'Eu fiz e vou fazer de novo'; 'meu pai foi perseguido e eu continuo'.",
+      "exclusao": "Primeira pessoa em relato operacional neutro ('eu estive hoje em Recife') sem exaltação do líder → 0.",
+      "excluir_trechos": [
+        "minha casa minha vida"
+      ]
+    },
+    "antipolitica": {
+      "nome": "Antipolítica",
+      "definicao": "Desqualificação da política, dos políticos ou dos partidos em geral; o ator se apresenta como fora ou acima da política tradicional.",
+      "fonte": "Schedler (1997), via Montuori Fernandes, Oliveira e Chaves (2022).",
+      "indicadores": [
+        "velha politica",
+        "politicagem",
+        "classe politica",
+        "politicos de sempre",
+        "nao sou politico",
+        "establishment",
+        "conchavo*",
+        "toma la da ca",
+        "centrao",
+        "cabide de emprego",
+        "politico profissional"
+      ],
+      "exemplo_inclusao": "'Não sou político de carreira'; 'chega de velha política'.",
+      "exclusao": "Menção neutra a partidos ou alianças → 0."
+    },
+    "ataque_imprensa": {
+      "nome": "Ataque à imprensa",
+      "definicao": "Desqualificação de veículos, jornalistas ou da imprensa em geral como parcial, mentirosa ou inimiga.",
+      "fonte": "Montuori Fernandes et al. (2021), 'Imprensa × Governo'.",
+      "indicadores": [
+        "imprensa",
+        "midia",
+        "globo",
+        "globolixo",
+        "jornalist*",
+        "extrema imprensa",
+        "imprensa marrom",
+        "fake news",
+        "mentira da midia",
+        "folha de sao paulo",
+        "folha de s paulo",
+        "estadao"
+      ],
+      "exemplo_inclusao": "'A Globo mente para você'; 'a extrema imprensa esconde'.",
+      "exclusao": "Citação neutra de veículo como fonte ('em entrevista à Globo') → 0. Por isso o indicador sozinho NÃO basta: a pré-codificação aqui tem precisão baixa esperada; decisão humana obrigatória.",
+      "excluir_trechos": [
+        "fala com a imprensa",
+        "fala a imprensa",
+        "coletiva de imprensa",
+        "entrevista a",
+        "entrevista ao",
+        "declaracao a imprensa",
+        "em entrevista",
+        "rede globo de",
+        "debate da globo",
+        "debate na globo",
+        "globo news",
+        "globonews",
+        "liberdade de imprensa"
+      ]
+    },
+    "instituicoes_conflito": {
+      "nome": "Instituições em conflito (com direção)",
+      "definicao": "Menção conflitiva a instituições democráticas (STF, TSE, urnas, Congresso). A DIREÇÃO é codificada à parte: A = ataque/deslegitimação; D = defesa das instituições contra ataque; UC = incerto.",
+      "fonte": "Montuori Fernandes et al. (2026), 'ódio à democracia'; IPIE TP2025.2 (categoria UC).",
+      "indicadores": [
+        "stf",
+        "supremo",
+        "moraes",
+        "xandao",
+        "tse",
+        "urna*",
+        "fraude*",
+        "censura",
+        "ditadura",
+        "intervencao",
+        "golpe",
+        "democracia",
+        "estado de direito"
+      ],
+      "direcao": {
+        "A": "ataque/deslegitimação",
+        "D": "defesa",
+        "UC": "incerto"
+      },
+      "exemplo_inclusao": "A: 'ditadura do STF'; D: 'defender a democracia contra o golpe'.",
+      "exclusao": "Informação de serviço eleitoral (local de votação, horário) → 0.",
+      "excluir_trechos": [
+        "local de votacao",
+        "horario de votacao",
+        "titulo de eleitor"
+      ]
+    },
+    "anticiencia": {
+      "nome": "Anticiência",
+      "definicao": "Desqualificação de cientistas, especialistas ou consensos científicos como elite contrária ao povo.",
+      "fonte": "Montuori Fernandes (2022), populismo anticiência (Mede e Schäfer, 2020).",
+      "indicadores": [
+        "tratamento precoce",
+        "cloroquina",
+        "ivermectina",
+        "ditadura sanitaria",
+        "passaporte sanitario",
+        "vacina experimental",
+        "especialistas erraram",
+        "cientistas erraram",
+        "fique em casa e"
+      ],
+      "exemplo_inclusao": "'Os especialistas erraram e o povo pagou'.",
+      "exclusao": "Defesa da ciência ou da vacinação ('investe em vacinas', 'faltou vacina') é o OPOSTO desta categoria → 0. Termos genéricos como 'vacina' ou 'especialistas' foram retirados dos indicadores por isso."
+    }
+  },
+  "amostra_humana": {
+    "tamanho": 200,
+    "estratos": "candidato × mês de publicação, proporcional, semente fixa 42",
+    "codificadores": 2,
+    "regra": "Codificadores independentes, sem ver a pré-codificação automática nem a do outro (coluna oculta na planilha). Divergências discutidas depois, sem alterar os dados originais (como no IPIE).",
+    "metrica": "kappa de Cohen por categoria; concordância percentual; precisão e cobertura da pré-codificação contra o consenso humano."
+  },
+  "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos listados em 'excluir_trechos' são retirados do texto (ex.: 'Sistema Único' não é 'o sistema'; 'fala com a imprensa' não é ataque)."
+}

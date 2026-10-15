@@ -529,6 +529,19 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 #ytInf.yt-focus .yt-on{opacity:1!important;stroke-opacity:.9!important}
 .yt-lv{display:inline-block;font:700 9px/1 'Courier New',monospace;padding:2px 4px;color:#fff;margin-right:3px}
 @media (max-width:800px){.yt-infstats{grid-template-columns:1fr}}
+.yt-pop{margin:14px 0}.yt-pop h2{margin:2px 0 0;font:700 22px/1.2 Georgia,'Times New Roman',serif;color:#172238}
+.yt-h3{margin:4px 0 4px;font:700 15px/1.25 Georgia,serif;color:#172238}
+.yt-popgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;border-top:2px solid var(--yt-axis);padding-top:10px}
+.yt-pbar{display:grid;grid-template-columns:150px 1fr;gap:8px;align-items:center;margin:6px 0;font-size:11.5px;color:#2c3a48}
+.yt-pbar .yt-pb{display:grid;gap:2px}.yt-pbar .yt-pb div{display:flex;align-items:center;gap:5px;font:10px 'Courier New',monospace;color:#53606b}
+.yt-pbar i{display:block;height:8px;min-width:1px}
+.yt-tree{font:11px 'Courier New',monospace;color:#2c3a48}.yt-tree svg{width:100%;height:auto;display:block}
+.yt-chdclasses{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:10px;margin-top:14px}
+.yt-chd{min-width:0;overflow-wrap:anywhere;border-top:3px solid #1b2a3d;background:#f7f9fa;padding:10px 12px;font-size:12px;color:#3c4a58}
+.yt-chd h4{margin:0 0 4px;font:700 14px Georgia,serif;color:#172238}.yt-chd .yt-split{display:flex;height:7px;margin:6px 0}
+.yt-chd .yt-forms{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 6px;line-height:1.35;margin:6px 0}.yt-chd .yt-forms span{font-family:Georgia,serif;font-weight:700;color:#172238}
+.yt-chd blockquote{margin:6px 0 0;padding-left:8px;border-left:2px solid #c9d1d6;font-size:11.5px;color:#4a5765}
+@media (max-width:800px){.yt-popgrid{grid-template-columns:1fr}.yt-pbar{grid-template-columns:110px 1fr}}
 </style>
 
 <style>
@@ -756,6 +769,22 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot yt-b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="ytListB"></div></div>
   </div>
   <div class="yt-detail card" id="ytDetail" hidden></div>
+  <div class="card yt-pop">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert</div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="odi-signal" id="ytPopStatus">Aguardando leitura.</div>
+    <div class="yt-popgrid">
+      <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="ytPopBars"></div></div>
+      <div><h3 class="yt-h3">CHD de Reinert · classes</h3><p class="yt-cloudnote" id="ytChdInfo"></p><div id="ytChdTree"></div></div>
+    </div>
+    <div class="yt-chdclasses" id="ytChdClasses"></div>
+    <div class="yt-netdl"><span class="eyebrow">Corpus e instrumentos (para IRaMuTeQ e codificação humana)</span>
+      <a class="ghostbutton" href="./data/corpus/youtube_candidatos_iramuteq.txt" download>Corpus IRaMuTeQ · TXT</a>
+      <a class="ghostbutton" href="./data/corpus/youtube_candidatos_segmentos.csv" download>Segmentos · CSV</a>
+      <a class="ghostbutton" href="./data/config/livro_codigos_populismo.json" download>Livro de códigos · JSON</a>
+      <a class="ghostbutton" href="./data/codificacao/amostra_populismo_v1.csv" download>Amostra p/ codificar · CSV</a>
+      <a class="ghostbutton" href="./data/corpus/chd_reinert.json" download>CHD · JSON</a></div>
+    <p class="yt-cloudnote" id="ytPopNote"></p>
+  </div>
   <div class="card yt-net">
     <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-view="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-view="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-view="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-cor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-cor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="ytNetReset">Recentrar</button></div></div>
@@ -1791,6 +1820,46 @@ catch(err){$('gtStatus').textContent='⛔ Coleta do Trends indisponível ('+err.
 const quando=new Date(D.coleta_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
 $('gtStatus').textContent=`Coleta de ${quando} (Brasília) · ${D.consultas.length} consultas · ${D.aviso}`;$('gtRibbon').textContent='BRASIL · COLETA DE '+quando.slice(0,10);
 $('gtMethod').textContent=D.nota;render();}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+if(sec.classList.contains('active'))carregar();
+})();
+</script>
+
+<script>
+/* Caderno 13 · estratégias discursivas (livro de códigos, Bardin) e CHD de Reinert */
+(function(){
+const sec=document.getElementById('ytContent');if(!sec)return;
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';let feito=false;
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pct=(a,b)=>b?100*a/b:0;
+async function j(u){const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error(u+' HTTP '+r.status);return r.json();}
+function barras(P){const a=P.candidatos[L],b=P.candidatos[F];const cats=Object.keys(P.categorias);
+const mx=Math.max(1,...cats.flatMap(c=>[pct(a.por_categoria[c],a.videos),pct(b.por_categoria[c],b.videos)]));
+$('ytPopBars').innerHTML=cats.map(c=>{const pa=pct(a.por_categoria[c],a.videos),pb=pct(b.por_categoria[c],b.videos);
+return `<div class="yt-pbar" title="${esc(P.categorias[c].definicao)} — ${esc(P.categorias[c].fonte)}"><span>${esc(P.categorias[c].nome)}</span><div class="yt-pb"><div><i style="width:${(pa/mx*100).toFixed(1)}%;background:${CL}"></i>${pa.toFixed(1)}% (${a.por_categoria[c]})</div><div><i style="width:${(pb/mx*100).toFixed(1)}%;background:${CF}"></i>${pb.toFixed(1)}% (${b.por_categoria[c]})</div></div></div>`;}).join('')+
+`<p class="yt-cloudnote"><span style="color:${CL}">■</span> Lula (${a.videos} vídeos) · <span style="color:${CF}">■</span> Flávio (${b.videos} vídeos). Passe o cursor na categoria para ver definição e fonte.</p>`;}
+function arvore(C){const T=C.arvore;const by={};T.forEach(n=>by[n.id]=n);const fol=[];(function v(i,d){const n=by[i];n.d=d;if(n.filhos)n.filhos.forEach(f=>v(f,d+1));else fol.push(n);})(0,0);
+const maxd=Math.max(...T.map(n=>n.d));const W=480,H=Math.max(140,fol.length*28),x=d=>20+d*(W-160)/Math.max(1,maxd);const y={};fol.forEach((n,i)=>y[n.id]=18+i*(H-30)/Math.max(1,fol.length-1));
+(function py(i){const n=by[i];if(n.filhos){n.filhos.forEach(py);y[i]=(y[n.filhos[0]]+y[n.filhos[1]])/2;}})(0);
+let h=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Dendrograma da CHD">`;
+T.forEach(n=>{if(n.filhos){const xs=x(n.d),xc=x(n.d+1);n.filhos.forEach(f=>{const ch=by[f];const xf=ch.filhos?xc:W-150;h+=`<path d="M${xs},${y[n.id]}V${y[f]}H${xf}" fill="none" stroke="#1b2a3d" stroke-width="1.4"/>`;});}});
+fol.forEach(n=>{const c=C.classes.find(k=>k.classe===n.classe);const lu=c?c.candidatos.lula.pct_da_classe:0;h+=`<rect x="${W-146}" y="${y[n.id]-9}" width="${(lu/100*36).toFixed(1)}" height="18" fill="${CL}"/><rect x="${W-146+lu/100*36}" y="${y[n.id]-9}" width="${((100-lu)/100*36).toFixed(1)}" height="18" fill="${CF}"/><text x="${W-104}" y="${y[n.id]+4}" style="font:700 11px 'Courier New',monospace;fill:#172238">Classe ${n.classe} · ${c?c.pct:''}%</text>`;});
+$('ytChdTree').innerHTML=`<div class="yt-tree">${h}</svg></div>`;}
+function classes(C){$('ytChdClasses').innerHTML=C.classes.map(c=>{const lu=c.candidatos.lula,fl=c.candidatos.flavio;const mx=c.formas.length?c.formas[0][1]:1;
+return `<div class="yt-chd"><h4>Classe ${c.classe} · ${c.pct}% dos segmentos</h4><div class="yt-meta">${c.nome?esc(c.nome):'nome: a definir pelo pesquisador'}</div>
+<div class="yt-split" title="Lula ${lu.pct_da_classe}% · Flávio ${fl.pct_da_classe}%"><i style="flex:${lu.pct_da_classe};background:${CL}"></i><i style="flex:${fl.pct_da_classe};background:${CF}"></i></div>
+<div class="yt-meta">Lula ${lu.pct_da_classe}% (χ² ${lu.chi2}) · Flávio ${fl.pct_da_classe}% (χ² ${fl.chi2})</div>
+<div class="yt-forms">${c.formas.slice(0,14).map(f=>`<span style="font-size:${(11+6*Math.sqrt(f[1]/mx)).toFixed(1)}px" title="χ² ${f[1]} · ${f[2]} segmentos">${esc(f[0])}</span>`).join('')}</div>
+${c.segmentos_caracteristicos.slice(0,2).map(sg=>`<blockquote><span style="color:${sg.cand==='lula'?CL:CF};font-weight:700">${sg.cand==='lula'?'Lula':'Flávio'}</span> · ${esc(sg.texto)}</blockquote>`).join('')}</div>`;}).join('');}
+async function carregar(){if(feito)return;feito=true;
+try{const [P,C,K]=await Promise.all([j('./data/youtube/populismo.json'),j('./data/corpus/chd_reinert.json'),j('./data/codificacao/concordancia_v1.json').catch(()=>null)]);
+const kap=K&&K.status==='ok'?'Concordância humana calculada (ver concordancia_v1.json).':'⛔ Validação humana pendente: '+(K?K.status:'sem arquivo de concordância')+'. Enquanto isso, as barras são só pré-codificação automática.';
+$('ytPopStatus').textContent=kap+' Livro de códigos '+P.livro+'.';
+barras(P);arvore(C);classes(C);
+$('ytChdInfo').textContent=`${C.segmentos_classificados} de ${C.segmentos_total} segmentos classificados (${C.pct_classificados}%), ${C.formas_ativas} formas ativas, ${C.classes.length} classes. Barra ao lado de cada classe: Lula × Flávio.`;
+$('ytPopNote').textContent=P.aviso+' '+C.metodo+' '+C.nota_sensibilidade;}
+catch(e){$('ytPopStatus').textContent='⛔ Análise indisponível ('+e.message+').';feito=false;}}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
 })();

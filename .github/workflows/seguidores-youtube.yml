@@ -37,6 +37,13 @@ jobs:
         if: steps.coleta.outcome == 'success'
         continue-on-error: true
         run: python scripts/build_conteudo.py
+      - name: Caderno 13 — livro de códigos (pré-codificação), corpus IRaMuTeQ, CHD de Reinert e concordância
+        if: steps.coleta.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python scripts/corpus_populismo.py
+          python scripts/chd_reinert.py
+          python scripts/concordancia.py
       - name: Caderno 13 — rede de coocorrência (JSON, GEXF e planilhas)
         if: steps.coleta.outcome == 'success'
         continue-on-error: true

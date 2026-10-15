@@ -6,6 +6,63 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C6.0] 2026-10-15 — Livro de códigos de estratégias populistas (Bardin), CHD de Reinert e corpus para o IRaMuTeQ
+
+**Por quê:** alinhar o caderno 13 ao método das leituras da disciplina, ou seja, à análise de conteúdo categorial (Bardin) e à análise de conteúdo automatizada (Cervi, 2018: IRaMuTeQ/Reinert) usadas por Montuori Fernandes (2021, 2022, 2026), e à concordância entre codificadores do IPIE (TP2025.2). Pedido do usuário.
+
+**Mudou**
+- `data/config/livro_codigos_populismo.json` (v1.1): 7 categorias com definição, fonte teórica, indicadores, exemplo e regra de exclusão.
+  - **Categorias:** equivalência com o povo, contraposição ao inimigo, personalismo, antipolítica, ataque à imprensa, instituições em conflito (com direção ataque/defesa/UC) e anticiência.
+  - **Simetria:** os indicadores são simétricos, e o populismo de esquerda e o de direita caem nas mesmas categorias.
+  - **Códigos:** 0, 1 ou UC (incerto).
+  - **Exclusões (v1.1):** acrescentadas depois de ler os primeiros resultados da pré-codificação. Antes delas:
+    - "Sistema Único de Saúde" contava como *inimigo*;
+    - "Lula fala com a imprensa" contava como *ataque à imprensa*;
+    - Lula **defendendo** vacinas contava como *anticiência*. Por isso "vacina" e "especialistas" saíram dos indicadores.
+- `scripts/corpus_populismo.py`:
+  - **pré-codificação** por vídeo, com o trecho que disparou → `data/youtube/populismo.json`, marcada como sugestão, não resultado;
+  - **corpus no formato do IRaMuTeQ** (`**** *cand_ *mes_ *sem_ *formato_ *canal_ *pop_…`) → `data/corpus/youtube_candidatos_iramuteq.txt`;
+  - segmentos de ~40 palavras → `youtube_candidatos_segmentos.csv`;
+  - **amostra estratificada de 200 vídeos** (candidato × mês, semente 42) para dois codificadores → `data/codificacao/amostra_populismo_v1.csv`. A pré-codificação fica num arquivo separado e a amostra é gerada uma única vez, nunca sobrescrita.
+- `scripts/chd_reinert.py`: CHD de Reinert em Python/numpy, com classificação simples.
+  - **Procedimento:** 1º fator da análise de correspondência; corte de maior χ²; realocação dos segmentos; formas e variáveis características por χ² ≥ 3,84; segmentos característicos.
+  - **Diferenças declaradas em relação ao IRaMuTeQ:** sem lematização; classificação simples, não dupla.
+  - **Classe mínima de 8% dos segmentos, com teste de sensibilidade gravado no JSON.** Com 3% e 5%, várias classes se formavam por nomes próprios de convidados (Dani Marques, Jeffrey Chiquini) e não tinham leitura temática.
+  - Os nomes das classes ficam para o pesquisador (`nome: null`).
+- `scripts/concordancia.py`: kappa de Cohen por categoria e precisão/cobertura da pré-codificação contra o consenso humano. Sem as duas planilhas de codificadores, grava "aguardando codificação humana" (bloqueio, não sucesso).
+- Caderno 13, bloco "Estratégias discursivas e classes de discurso":
+  - barras Lula × Flávio por categoria, com ⛔ de validação pendente;
+  - dendrograma das classes;
+  - cards das classes com formas, χ², divisão Lula × Flávio e segmentos característicos;
+  - downloads do corpus IRaMuTeQ, segmentos, livro de códigos, amostra e CHD.
+- O workflow do YouTube roda os três scripts todos os dias, depois da coleta.
+- `tests/test_populismo_chd.py`: 10 testes. Cobrem:
+  - simetria esquerda/direita e exclusões;
+  - trecho registrado;
+  - limpeza do corpus para o IRaMuTeQ;
+  - segmentos e variáveis;
+  - amostra estável e proporcional;
+  - a CHD separando dois vocabulários sintéticos;
+  - o sinal do χ²;
+  - o kappa contra um valor conhecido (po = 0,7 e pe = 0,5 → κ = 0,4);
+  - precisão e cobertura.
+  - Total: 64.
+
+**Testado**
+- ✅ `python -m unittest discover -s tests`: 64 OK.
+- ✅ Corpus real (coleta do YouTube de 2026-10-15, vídeos desde 16/08): Lula 784 vídeos, 159 com alguma categoria; Flávio Bolsonaro 402 vídeos, 58 com alguma categoria. 1.416 segmentos.
+- ✅ CHD: 1330 de 1416 segmentos classificados (93.9%), 792 formas ativas. Classes: classe 1 (29.2%, Lula 34.7%): flavio, bolsonaro, lula, vencer, flaviobolsonaro, vote22; classe 2 (8.0%, Lula 76.4%): entrevista, tapete, imprensa, participa, professora, pastor; classe 3 (18.0%, Lula 82.8%): 6x1, escala, mundo, mostrar, recado, segundo; classe 4 (8.0%, Lula 89.6%): presidente, sus, medidas, novas, bolso, sanciona; classe 5 (8.0%, Lula 77.4%): seguranca, lei, acima, proteger, crime, territorio; classe 6 (28.9%, Lula 82.6%): futuro, brasil, pais, educacao, oportunidades, brasileiro.
+- ✅ Chromium headless (1400×900 e 390×844): 7 barras, 6 classes e o dendrograma; sem rolagem horizontal (corrigida a quebra das formas nos cards).
+- ⚠️ **Nada da pré-codificação está validado:** a precisão real de cada categoria só sai depois da codificação humana. O kappa está ⛔ pendente.
+- ⚠️ CHD não conferida no IRaMuTeQ: o CRAN e o `rainette` estão bloqueados pela rede deste ambiente. Conferência pendente com o corpus exportado.
+
+**Pendente**
+- Duas pessoas codificarem a amostra (`codificador_A_v1.csv` e `codificador_B_v1.csv`) → kappa e precisão.
+- Rodar o mesmo corpus no IRaMuTeQ e comparar as classes.
+- O pesquisador nomear as classes.
+
+---
+
 ## [P4.1] 2026-10-15 — Geografia do Voto sem dependência externa, com nomes, cores e 2022 | 2026 lado a lado; favicon
 
 **Mudou**
