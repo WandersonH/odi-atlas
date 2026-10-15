@@ -1,0 +1,63 @@
+name: TikTok — chapas 13 e 22 (yt-dlp, grátis)
+
+# Lê os vídeos públicos dos perfis de TikTok declarados ao TSE pelas chapas 13 e 22 e gera o caderno 15.
+# O TikTok bloqueia de forma intermitente IPs de servidor: o coletor tenta de novo e preserva os dados anteriores.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "35 10 * * *"   # todo dia, 07h35 em Brasília
+    - cron: "35 22 * * *"   # e 19h35 (segunda chance no mesmo dia, se a primeira for bloqueada)
+
+concurrency:
+  group: tiktok
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  tiktok:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências (yt-dlp sempre atualizado — o TikTok muda com frequência; versão registrada no manifesto)
+        run: pip install -q -U "yt-dlp[default,curl-cffi]"
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Coletar TikTok
+        id: coleta
+        continue-on-error: true
+        run: python scripts/collect_tiktok.py
+      - name: Caderno 15 — classificar por tema
+        if: hashFiles('data/tiktok/videos.csv.gz') != ''
+        continue-on-error: true
+        run: python scripts/build_tiktok.py
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("data/tiktok/manifesto_latest.json")
+          if not p.exists(): print("## TikTok: manifesto não gerado"); raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          print(f"## TikTok — status: **{m['status']}** · {m.get('ferramenta')}\n")
+          print("| Perfil | Chapa | Status | Tentativas | Vídeos lidos | Desde 16/08 |\n|---|---|---|---|---|---|")
+          for x in m["perfis"]:
+              print(f"| @{x['perfil']} | {x['candidate_name']} | {x['status']} | {x['tentativas']} | {x['videos_lidos']} | {x['videos_desde_inicio_campanha']} |")
+          print(f"\nAcervo: {m.get('videos_acervo')} vídeos")
+          for b in m["blocked"]:
+              print(f"::warning title=TikTok::{b}")
+          PY
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "TikTok: coleta (run ${{ github.run_id }})"
+      - name: Falhar se todos os perfis bloquearam
+        if: steps.coleta.outcome == 'failure'
+        run: |
+          echo "::error::TikTok bloqueado em todos os perfis — ver data/tiktok/manifesto_latest.json"
+          exit 1
