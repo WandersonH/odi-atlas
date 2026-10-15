@@ -6,6 +6,59 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C8.0] 2026-10-15 — Modash: relatórios de 15/10 e leitor reprodutível dos PDFs
+
+**Por quê:** o usuário enviou 6 relatórios Modash de 15/10 (Instagram, TikTok e YouTube de Lula e Flávio) e os 13 PDFs originais de 10 e 11/10. Antes, os valores Modash estavam digitados no HTML, sem script que os refizesse.
+
+**Mudou**
+- `scripts/extrair_modash.py`: lê os PDFs com `pdftotext -layout` e grava `data/modash/`:
+  - `perfis/<data>_<perfil>.json`, com tudo o que o PDF imprime (hashtags e menções, composição da audiência, interesses, marcas, idade × sexo);
+  - `historico.csv`, no formato do caderno 03;
+  - `provas.json`, com SHA-256 e o que mudou em relação à captura anterior;
+  - `conferencia.json`, com os seguidores Modash × coleta própria do mesmo dia.
+- Com `--html`, o script atualiza `DATA.profiles`, `BN_BASE`, `INITIAL_HISTORY` e `PROOFS` na página.
+- Os PDFs ficam em `entrada/modash/`, fora do repositório (`.gitignore`). O upload guarda um prefixo porque o Modash dá o mesmo nome (`report-flaviobolsonaro-Oct-15-2026.pdf`) aos relatórios de Instagram e YouTube.
+- Página:
+  - a data de captura de cada ficha agora vem do próprio perfil (antes, "10/10/2026" estava fixo no código);
+  - caderno 06 ganhou dois cartões: "Hashtags e menções mais usadas pelo perfil" e "Composição estimada dos seguidores" (Instagram);
+  - caderno 03 ganhou o bloco "Controle de qualidade das capturas";
+  - LEIA-ME e Fontes atualizados (19 relatórios).
+
+**Testado**
+- ✅ Regressão contra a primeira implementação: os 13 PDFs de 10 e 11/10 reproduzem os 301 registros de `INITIAL_HISTORY` sem nenhuma diferença. Os campos de `DATA.profiles` também batem. Os SHA-256 dos 4 PDFs listados em `PROOFS` conferem.
+- ✅ `python -m unittest discover -s tests`: 81 OK. Inclui `tests/test_modash.py`, com texto fictício.
+- ✅ Chromium: cadernos 03 e 06 renderizados sem erro de console. Tabela de qualidade com 8 comparações e 11 linhas de conferência.
+
+**Achados (15/10 × captura anterior, de `data/modash/provas.json`)**
+- TikTok @lulaoficial: 19 de 19 indicadores iguais aos de 10/10. O relatório não foi atualizado pela Modash.
+- Instagram de Lula e de Flávio: mudaram só seguidores e engajamento. Os 30 demais indicadores, médias e percentuais de audiência, ficaram iguais. A Modash atualizou o cabeçalho, não a análise da audiência.
+  - Lula: 15,1 mi → 16,5 mi; engajamento 0,27 → 0,35%.
+  - Flávio: 11,7 mi → 13,8 mi; engajamento 0,86 → 0,72%.
+- YouTube: Flávio caiu de 1,5 mi para 1,1 mi, e o canal aparece como "TV Celular Flavio Bolsonaro". Lula foi de 1,8 mi para 1,7 mi.
+- Conferência com a coleta própria do mesmo dia (`data/seguidores/`):
+  - Instagram Lula −5,2% (16,5 mi × 17.399.404);
+  - Instagram Flávio −2,6% (13,8 mi × 14.166.897);
+  - YouTube Lula −6,6% (1,7 mi × 1.820.000);
+  - **YouTube Flávio −27,2%** (1,1 mi × 1.510.000 pela API oficial). O número Modash do YouTube de Flávio não deve ser usado.
+- TikTok @flaviobolsonaro: as hashtags do Modash convergem com o nosso acervo de 81 vídeos desde 16/08:
+
+  | Hashtag | Modash | Acervo próprio |
+  |---|---|---|
+  | #fy | 91,1% | 88,9% |
+  | #bolsonaro | 87,3% | 87,7% |
+  | #flaviobolsonaro | 84,8% | 86,4% |
+  | #vote22 | 29,1% | 32,1% |
+  | #forapt | 16,5% | 17,3% |
+
+  As menções também convergem com a rede de menções (@bolsonaromessiasjair, Nikolas, Sargento Fahur). Já no @lulaoficial, que quase não usa hashtag (0,7% dos 300 vídeos), os 20% do Modash vêm de uma base pequena.
+
+**Pendente**
+- ⛔ TikTok sem coleta própria de seguidores: não há com o que conferir os números Modash.
+- ⚠️ PT e PL continuam só com 10/10.
+- ⚠️ O Modash não informa a janela nem quantos posts entram nas médias.
+
+---
+
 ## [C7.5] 2026-10-15 — Correção: rede de menções sem scipy (testes do GitHub falhavam)
 
 **Problema:** o run `38817560315` (TikTok) parou nos testes. A disposição da rede de menções usava `kamada_kawai_layout`, que exige o scipy; o GitHub Actions instala só networkx e numpy. Localmente passava porque este ambiente tem scipy. O mesmo teste roda no workflow do YouTube, que também quebraria na próxima coleta.
