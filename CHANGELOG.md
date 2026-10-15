@@ -6,6 +6,19 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [P1.2] 2026-10-15 — Acesso pelo navegador (GitHub Pages)
+
+**Mudou**
+- `index.html` na raiz redireciona para `ODI_Atlas_v15_MVP.html`; `.nojekyll` para o Pages servir os arquivos como estão.
+
+**Testado**
+- ⛔ Ativação do Pages pela API foi recusada nesta sessão; precisa ser ligada manualmente em *Settings → Pages* (branch `main`, pasta `/`).
+
+**Pendente**
+- 🔜 Confirmar o endereço `https://wandersonh.github.io/odi-atlas/` depois de ativado. O caderno 12 continuará sem votos até a P2.
+
+---
+
 ## [P1.1] 2026-10-15 — Municípios a partir da malha IBGE
 
 **Mudou**
