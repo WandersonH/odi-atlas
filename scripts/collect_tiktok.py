@@ -77,13 +77,27 @@ def alvos(root: Path) -> list[dict]:
     return sorted(out, key=lambda a: (a["candidate_id"], a["perfil"]))
 
 
-def listar(perfil: str, limite: int = LIMITE_POR_PERFIL) -> list[dict]:
+def listar(perfil: str, limite: int = LIMITE_POR_PERFIL, desde: str = DESDE) -> tuple[list[dict], str | None]:
+    """Lê a lista de vídeos página a página (preguiçosa). Se uma página seguinte falhar, devolve o que já chegou
+    e o erro (antes, um erro em qualquer página descartava tudo). Para depois de 8 vídeos seguidos anteriores a `desde`
+    (vídeos fixados no topo podem ser antigos, por isso não para no primeiro)."""
     import yt_dlp  # importado aqui para os testes rodarem sem a dependência
-    opts = {"quiet": True, "no_warnings": True, "skip_download": True, "extract_flat": True,
-            "playlistend": limite, "ignoreerrors": False}
+    opts = {"quiet": True, "no_warnings": True, "skip_download": True, "extract_flat": True, "lazy_playlist": True}
+    out, antigos, erro = [], 0, None
     with yt_dlp.YoutubeDL(opts) as y:
-        info = y.extract_info(f"https://www.tiktok.com/@{perfil}", download=False)
-    return list(info.get("entries") or [])
+        info = y.extract_info(f"https://www.tiktok.com/@{perfil}", download=False, process=False)
+        try:
+            for e in info.get("entries") or []:
+                out.append(e)
+                pub = data_do_id(str(e.get("id") or "")) or ""
+                antigos = antigos + 1 if pub and pub < desde else 0
+                if antigos >= 8 or len(out) >= limite:
+                    break
+        except Exception as ex:  # página seguinte bloqueada: mantém as anteriores
+            erro = f"{type(ex).__name__}: {str(ex)[:160]}"
+    if not out and erro:
+        raise RuntimeError(erro)
+    return out, erro
 
 
 def linha(alvo: dict, e: dict, agora: str) -> dict | None:
@@ -143,7 +157,9 @@ def main(argv=None) -> int:
         for t in range(1, TENTATIVAS + 1):
             reg["tentativas"] = t
             try:
-                ents = listar(a["perfil"])
+                ents, parcial = listar(a["perfil"])
+                if parcial:
+                    reg["aviso"] = f"lista interrompida após {len(ents)} vídeos ({parcial})"
                 rows = [r for r in (linha(a, e, agora) for e in ents) if r]
                 reg["videos_lidos"] = len(rows)
                 rows = [r for r in rows if r["publicado_em"] >= DESDE]
@@ -152,10 +168,14 @@ def main(argv=None) -> int:
                 reg["status"] = "ok"
                 break
             except Exception as e:  # bloqueio intermitente: espera e tenta de novo
-                reg["status"] = f"⛔ {type(e).__name__}: {str(e)[:200]}"
+                msg = str(e)
+                reg["status"] = f"⛔ {type(e).__name__}: {msg[:200]}"
+                if "does not have any videos" in msg:
+                    reg["status"] = "sem vídeos públicos"  # perfil existe, mas vazio: não é bloqueio
+                    break
                 if t < TENTATIVAS:
                     time.sleep(ESPERA_S * t)
-        if reg["status"] != "ok":
+        if reg["status"] not in ("ok", "sem vídeos públicos"):
             man["blocked"].append(f"@{a['perfil']}: {reg['status']} (dados anteriores preservados)")
         man["perfis"].append(reg)
         time.sleep(3)
