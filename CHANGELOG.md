@@ -6,6 +6,51 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C7.0] 2026-10-15 — Caderno 15 (TikTok, grátis com yt-dlp); Trends no período eleitoral completo; mapa do Brasil inteiro
+
+**Mudou**
+- **TikTok.**
+  - `scripts/collect_tiktok.py` + workflow `tiktok.yml`, que roda 2× por dia (07h35 e 19h35) para dar uma segunda chance quando o TikTok bloqueia.
+  - **Perfis:** os perfis de TikTok declarados ao TSE pelas chapas 13 e 22, titulares e vices (10 perfis).
+  - **Coleta:** yt-dlp sem login, só metadados públicos; o texto dos comentários não é coletado. Leitura página a página, guardando o que já chegou. Até 3 tentativas por perfil, com espera.
+  - **Preservação:** perfil bloqueado mantém os dados da última coleta boa e fica ⛔ no manifesto. Perfil sem vídeos públicos não conta como bloqueio.
+  - **Data de publicação:** vem do próprio ID do vídeo.
+- `scripts/build_tiktok.py`: as **mesmas regras do caderno 13** (temas, texto repetido, nuvem, cita adversário, pede voto), mais as hashtags e a **taxa de interação** ((curtidas + comentários + compartilhamentos) ÷ visualizações).
+- **Caderno 15 · Conteúdo · TikTok por tema:**
+  - situação de cada perfil;
+  - quadros Lula (vermelho) × Flávio (verde), com filtros por tema;
+  - linha do tempo de bolhas proporcionais às visualizações. As miniaturas do TikTok expiram em horas e não servem para isso;
+  - nuvens e hashtags;
+  - listas e **player oficial do TikTok** ao clicar.
+- **Trends:**
+  - período `eleitoral` = das convenções (20/07/2026, Lei 9.504, art. 8º) ao 2º turno (25/10), com fim "hoje" até a eleição;
+  - passa a ser o padrão do caderno 14, com marcos no gráfico (convenções, início da campanha, 1º turno, 2º turno).
+- **Mapa do Brasil inteiro** no caderno 12 (pedido: "por que só fez de SP?").
+  - **Antes:** os 27 estados já existiam, mas só um por vez, e o mapa abria em SP.
+  - **Agora:** "Brasil · todos os municípios" é o padrão, com a malha nacional `data/geo/2025/brasil_municipios.json` (5.571 municípios, 4,5 MB, mapshaper ~0,9%, também gerada pelo `build_geo.sh`).
+  - Quadros, ranking e exportação funcionam no nível nacional.
+- `.github/workflows/teste-tiktok-kwai.yml` continua como diagnóstico manual.
+
+**Testado**
+- ✅ Testes: 70 OK (novos: perfis do TSE por chapa, data pelo ID, mescla que preserva os bloqueados, processamento, janela do período eleitoral).
+- ⛔→✅ TikTok, 3 runs no Actions:
+  - `38811032377` e `38812495873`, **com** `yt-dlp[curl-cffi]`: 0 de 10 perfis ("Failed to parse JSON").
+  - Run seguinte, **sem** curl-cffi: **7 de 10 perfis**, 710 vídeos no acervo (yt-dlp 2026.08.19).
+  - Sem vídeos públicos: @canaltvcelular e @alfredogaspar. ⛔ @alfredogasparoficial ("Unable to extract secondary user ID").
+- ✅ Caderno 15 com dados reais (desde 16/08):
+  - **Lula:** 629 vídeos em 4 perfis, 7,914,508 visualizações, interação mediana 0.1183, cita o adversário 80, pede voto 57.
+  - **Flávio:** 81 vídeos (só @flaviobolsonaro), 9,369,000 visualizações, interação mediana 0.0608, cita o adversário 17, pede voto 9.
+  - Chromium 1400×900 e 390×844: 710 bolhas, sem rolagem horizontal.
+- ✅ Trends com o período eleitoral (run de 2026-10-15 21:58 UTC): 9 consultas, sendo 3 eleitorais com 88 dias cada. Pico no dia do 1º turno.
+- ✅ Mapa nacional: 5.571 municípios; Lula 53.722.151 votos (45,16% dos válidos), 1º lugar em 2.665 municípios. O total é **igual** ao validado na P2/P4 (sem exterior). Lado a lado: 11.142 formas.
+
+**Pendente**
+- TikTok é instável por natureza (bloqueios intermitentes do TikTok aos servidores). O manifesto registra cada coleta.
+- @alfredogasparoficial não é lido pelo yt-dlp.
+- Kwai continua sem caminho grátis (diagnóstico D1.0).
+
+---
+
 ## [D1.0] 2026-10-15 — Diagnóstico: coleta gratuita de TikTok (yt-dlp) e Kwai (página pública e navegador automático)
 
 **Por quê:** o usuário quer evitar a assinatura da Apify; testar se as ferramentas gratuitas dos repositórios de referência funcionam a partir do GitHub Actions.

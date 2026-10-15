@@ -19,7 +19,14 @@ npx -y mapshaper@0.6.102 -i "$SHP" encoding=utf8 \
   -proj wgs84 \
   -split SIGLA_UF \
   -o "$OUT/" format=geojson precision=0.0001 extension=.json
-for f in "$OUT"/*.json; do b=$(basename "$f" .json); [[ "$b" == mun_* ]] || mv "$f" "$OUT/mun_${b}.json"; done
+for f in "$OUT"/*.json; do b=$(basename "$f" .json); [[ "$b" == mun_* || "$b" == brasil_municipios || "$b" == indice ]] || mv "$f" "$OUT/mun_${b}.json"; done
+# 5) visão nacional (caderno 12, opção "Brasil"): mesma malha, simplificação maior (~0,9%) para caber num arquivo só
+npx -y mapshaper@0.6.102 -i "$SHP" encoding=utf8 \
+  -filter '["4300001","4300002"].indexOf(CD_MUN) === -1' \
+  -simplify 0.9% keep-shapes weighting=0.7 \
+  -filter-fields CD_MUN,NM_MUN,SIGLA_UF \
+  -proj wgs84 \
+  -o "$OUT/brasil_municipios.json" format=geojson precision=0.001
 python3 - "$OUT" "$ANO" <<'PY'
 import json, sys, pathlib, hashlib
 out, ano = pathlib.Path(sys.argv[1]), sys.argv[2]
