@@ -14,7 +14,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 **Por quê:** o run das 17:27 UTC (disparado manualmente) baixou e extraiu tudo e publicou o Release, mas falhou no commit: durante a coleta houve outro push na `main` (index.html e CHANGELOG), e o push do runner foi recusado por estar desatualizado.
 
 **Testado**
-- 🔜 Validar no próximo run.
+- ✅ Run `38778407292`: coleta e commit concluídos com sucesso.
 
 ---
 
@@ -24,10 +24,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `index.html` na raiz redireciona para `ODI_Atlas_v15_MVP.html`; `.nojekyll` para o Pages servir os arquivos como estão.
 
 **Testado**
-- ⛔ Ativação do Pages pela API foi recusada nesta sessão; precisa ser ligada manualmente em *Settings → Pages* (branch `main`, pasta `/`).
+- ✅ Pages ativado manualmente (*Settings → Pages*, `main` / root). `https://wandersonh.github.io/odi-atlas/ODI_Atlas_v15_MVP.html` abre com a interface completa (conferido no navegador). O primeiro acesso deu 404 porque o deploy ainda estava em andamento.
 
 **Pendente**
-- 🔜 Confirmar o endereço `https://wandersonh.github.io/odi-atlas/` depois de ativado. O caderno 12 continuará sem votos até a P2.
+- O caderno 12 continua sem votos até a P2.
 
 ---
 
