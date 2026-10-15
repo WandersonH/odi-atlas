@@ -10,6 +10,8 @@ Cuidados metodológicos (registrados também no manifesto):
     RELATIVOS dentro de cada consulta: só compare termos do mesmo grupo e período.
   - Cada consulta é uma amostra; repetir a mesma consulta pode dar números um pouco
     diferentes. Por isso cada coleta é guardada com data/hora, sem sobrescrever.
+  - Palavras soltas são ambíguas ("lula" também é o molusco). Por isso a configuração
+    usa TÓPICOS (entidades) do Trends sempre que possível; o tópico escolhido fica no manifesto.
   - Não há API oficial aberta. O coletor usa os mesmos endereços que a página do
     Trends usa; o Google pode limitar (HTTP 429) e isso é registrado como bloqueio.
 """
@@ -64,10 +66,35 @@ class Trends:
         q = urllib.parse.urlencode({"hl": HL, "tz": TZ, "req": json.dumps(req, ensure_ascii=False)})
         return self._get(f"{BASE}/api/explore?{q}")["widgets"]
 
+    def autocomplete(self, termo: str) -> list[dict]:
+        q = urllib.parse.quote(termo)
+        return self._get(f"{BASE}/api/autocomplete/{q}?hl={HL}&tz={TZ}")["default"]["topics"]
+
     def widget(self, endpoint: str, w: dict):
         q = urllib.parse.urlencode({"hl": HL, "tz": TZ, "req": json.dumps(w["request"], ensure_ascii=False),
                                     "token": w["token"]})
         return self._get(f"{BASE}/api/widgetdata/{endpoint}?{q}")
+
+
+def resolver(t: "Trends", item) -> dict:
+    """Converte um item da configuração no que será consultado.
+
+    - texto simples ("Lula") → busca pela palavra, com o aviso de ambiguidade;
+    - {"rotulo", "busca", "tipo_contem"} → tópico do Trends (entidade), escolhido no
+      autocomplete pelo tipo esperado. Se nenhum tópico tiver esse tipo, é bloqueio:
+      não cair em silêncio para a palavra solta.
+    """
+    if isinstance(item, str):
+        return {"rotulo": item, "consulta": item, "modo": "palavra"}
+    tops = t.autocomplete(item["busca"])
+    alvo = item["tipo_contem"].lower()
+    hits = [x for x in tops if alvo in x.get("type", "").lower()]
+    if not hits:
+        raise ValueError(f"tópico não encontrado para {item['busca']!r} com tipo contendo {item['tipo_contem']!r}; "
+                         f"opções: {[(x.get('title'), x.get('type')) for x in tops]}")
+    h = hits[0]
+    return {"rotulo": item["rotulo"], "consulta": h["mid"], "modo": "topico",
+            "topico_titulo": h.get("title"), "topico_tipo": h.get("type")}
 
 
 def write_timeline(data: dict, termos: list[str], path: Path) -> int:
@@ -111,16 +138,22 @@ def main(argv=None) -> int:
         man["blocked"].append(f"sessão Trends: {type(e).__name__}: {e}")
         t = None
     for g in cfg["grupos"] if t else []:
-        termos = g["termos"]
+        try:
+            itens = [resolver(t, x) for x in g["termos"]]
+        except Exception as e:
+            man["blocked"].append(f"grupo {g['nome']}: {type(e).__name__}: {e}")
+            continue
+        termos = [i["rotulo"] for i in itens]
+        consultas = [i["consulta"] for i in itens]
         if len(termos) > 5:
             man["blocked"].append(f"grupo {g['nome']}: o Trends aceita no máximo 5 termos por consulta")
             continue
         for periodo in cfg["periodos"]:
-            c = {"grupo": g["nome"], "termos": termos, "periodo": periodo, "geo": cfg.get("geo", "BR")}
+            c = {"grupo": g["nome"], "termos": termos, "itens": itens, "periodo": periodo, "geo": cfg.get("geo", "BR")}
             man["consultas"].append(c)
             tag = f"{g['nome']}__{periodo.replace(' ', '_')}"
             try:
-                ws = {w["id"]: w for w in t.explore(termos, periodo, c["geo"])}
+                ws = {w["id"]: w for w in t.explore(consultas, periodo, c["geo"])}
                 ts = t.widget("multiline", ws["TIMESERIES"])
                 (outdir / f"{tag}__serie.json").write_text(json.dumps(ts, ensure_ascii=False), encoding="utf-8")
                 c["serie_pontos"] = write_timeline(ts, termos, outdir / f"{tag}__serie.csv")

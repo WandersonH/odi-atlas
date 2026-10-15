@@ -96,6 +96,17 @@ class TestTrends(unittest.TestCase):
         self.assertEqual(linhas[0], "timestamp_utc;rotulo;A;B;parcial")
         self.assertTrue(linhas[1].endswith(";80;100;1"))
 
+    def test_resolver_topico_e_bloqueio(self):
+        class T:
+            def autocomplete(self, termo):
+                return [{"mid": "/m/02yy8", "title": "Lula", "type": "Presidente do Brasil"},
+                        {"mid": "/m/0lula", "title": "Lula", "type": "Molusco"}]
+        r = ct.resolver(T(), {"rotulo": "Lula", "busca": "Lula", "tipo_contem": "presidente"})
+        self.assertEqual((r["consulta"], r["modo"]), ("/m/02yy8", "topico"))
+        self.assertEqual(ct.resolver(T(), "Lula")["modo"], "palavra")
+        with self.assertRaises(ValueError):
+            ct.resolver(T(), {"rotulo": "X", "busca": "X", "tipo_contem": "Governador"})
+
     def test_config_respeita_limite_de_5_termos(self):
         cfg = json.loads((Path(__file__).resolve().parents[1] / "data/config/trends.json").read_text(encoding="utf-8"))
         self.assertTrue(all(1 <= len(g["termos"]) <= 5 for g in cfg["grupos"]))
