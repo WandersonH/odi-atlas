@@ -1,0 +1,94 @@
+name: P1 — Origem (TSE + IBGE)
+
+# Baixa os originais oficiais, registra hash/tamanho/cabeçalhos HTTP e extrai
+# Presidente / 1º turno. Os ZIPs originais vão para um Release (imutável);
+# o recorte e o manifesto são commitados em data/.
+on:
+  workflow_dispatch:
+    inputs:
+      years:
+        description: "Anos (separados por espaço)"
+        default: "2022 2026"
+        required: true
+      malha:
+        description: "Ano da malha municipal do IBGE (vazio para pular)"
+        default: "2025"
+        required: false
+  schedule:
+    - cron: "15 9 * * 1"   # segundas, 06h15 em Brasília
+
+concurrency:
+  group: p1-fontes
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  origem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Testes (fixtures)
+        run: python -m unittest discover -s tests -v
+
+      - name: Baixar originais e extrair Presidente / 1º turno
+        id: fetch
+        continue-on-error: true
+        run: |
+          python scripts/fetch_sources.py \
+            --years ${{ github.event.inputs.years || '2022 2026' }} \
+            --malha "${{ github.event.inputs.malha || '2025' }}"
+
+      - name: Resumo da execução
+        if: always()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("data/manifest/latest.json")
+          if not p.exists():
+              print("## P1: manifesto não gerado"); raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          print(f"## P1 — status: **{m['status']}**\n")
+          print("| Fonte | Status | Arquivo | Bytes | SHA-256 | Linhas Pres./1T |")
+          print("|---|---|---|---|---|---|")
+          for y, e in m["tse"].items():
+              d = e.get("download", {}); x = e.get("extract", {})
+              print(f"| TSE {y} | {e.get('status')} | {d.get('file','')} | {d.get('bytes','')} | `{d.get('sha256','')[:16]}` | {x.get('rows_written','')} |")
+          for k, e in m["ibge"].items():
+              print(f"| IBGE {k} | {e.get('status','ok')} | {e.get('file','')} | {e.get('bytes','')} | `{e.get('sha256','')[:16]}` | |")
+          if m["blocked"]:
+              print("\n### Bloqueios\n"); [print(f"- {b}") for b in m["blocked"]]
+          EOF
+
+      - name: Publicar originais num Release
+        if: always() && hashFiles('raw/*') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="fontes-$(date -u +%Y%m%dT%H%M%SZ)"
+          gh release create "$tag" raw/* data/manifest/latest.json \
+            --title "Originais P1 · $tag" \
+            --notes "Arquivos originais baixados pelo run ${{ github.run_id }}. Hashes e cabeçalhos HTTP em latest.json."
+
+      - name: Commitar recorte e manifesto
+        if: always()
+        run: |
+          git config user.name "odi-atlas-coletor"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && { echo "nada novo"; exit 0; }
+          git commit -m "P1: originais TSE/IBGE (run ${{ github.run_id }})"
+          git push
+
+      - name: Falhar se houve bloqueio
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "::error::P1 bloqueada — ver data/manifest/latest.json"
+          exit 1

@@ -1,0 +1,146 @@
+"""Testes da P1 com arquivos sintéticos (fixtures). Não substituem a execução real contra o TSE."""
+import csv
+import gzip
+import io
+import sys
+import tempfile
+import unittest
+import zipfile
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+import fetch_sources as fs  # noqa: E402
+
+HEADER = ["ANO_ELEICAO", "NR_TURNO", "SG_UF", "CD_MUNICIPIO", "NM_MUNICIPIO", "NR_ZONA",
+          "CD_CARGO", "DS_CARGO", "NR_CANDIDATO", "NM_URNA_CANDIDATO", "QT_VOTOS_NOMINAIS"]
+
+
+def csv_bytes(rows):
+    buf = io.StringIO()
+    w = csv.writer(buf, delimiter=";", quotechar='"', quoting=csv.QUOTE_ALL, lineterminator="\n")
+    w.writerow(HEADER)
+    w.writerows(rows)
+    return buf.getvalue().encode("latin-1")
+
+
+SP = ["2022", "1", "SP", "71072", "SÃO PAULO", "1", "1", "PRESIDENTE", "13", "LULA", "100"]
+SP2 = ["2022", "1", "SP", "71072", "SÃO PAULO", "1", "1", "PRESIDENTE", "22", "BOLSONARO", "90"]
+SP_T2 = ["2022", "2", "SP", "71072", "SÃO PAULO", "1", "1", "PRESIDENTE", "13", "LULA", "120"]
+SP_DEP = ["2022", "1", "SP", "71072", "SÃO PAULO", "1", "6", "DEPUTADO FEDERAL", "1310", "FULANO", "5"]
+RJ = ["2022", "1", "RJ", "60011", "RIO DE JANEIRO", "4", "1", "PRESIDENTE", "13", "LULA", "80"]
+
+
+class TestPick(unittest.TestCase):
+    def test_exact_match_only(self):
+        res = [{"url": "https://x/votacao_partido_munzona_2022.zip"},
+               {"url": "https://x/detalhe_votacao_munzona_2022.zip"},
+               {"url": "https://x/votacao_candidato_munzona_2022.zip"}]
+        self.assertEqual(fs.pick_munzona(res, "2022")["url"], "https://x/votacao_candidato_munzona_2022.zip")
+
+    def test_missing_or_ambiguous_returns_none(self):
+        self.assertIsNone(fs.pick_munzona([{"url": "https://x/votacao_partido_munzona_2026.zip"}], "2026"))
+        two = [{"url": "https://a/votacao_candidato_munzona_2026.zip"},
+               {"url": "https://b/votacao_candidato_munzona_2026.zip"}]
+        self.assertIsNone(fs.pick_munzona(two, "2026"))
+
+
+class TestExtract(unittest.TestCase):
+    def build(self, files):
+        d = Path(tempfile.mkdtemp())
+        zp = d / "votacao_candidato_munzona_2022.zip"
+        with zipfile.ZipFile(zp, "w") as z:
+            for name, rows in files.items():
+                z.writestr(name, csv_bytes(rows))
+        return d, zp
+
+    def read(self, gz):
+        with gzip.open(gz, "rt", encoding="utf-8") as f:
+            return list(csv.reader(f, delimiter=";"))
+
+    def test_filters_cargo_turno_and_keeps_columns(self):
+        d, zp = self.build({"votacao_candidato_munzona_2022_SP.csv": [SP, SP2, SP_T2, SP_DEP]})
+        st = fs.extract_presidente_1t(zp, d / "out.csv.gz")
+        rows = self.read(d / "out.csv.gz")
+        self.assertEqual(rows[0], HEADER)
+        self.assertEqual(rows[1:], [SP, SP2])
+        self.assertEqual(st["rows_written"], 2)
+        self.assertEqual(st["files"][0]["rows_read"], 4)
+
+    def test_dedup_between_br_and_uf_files(self):
+        d, zp = self.build({"votacao_candidato_munzona_2022_BR.csv": [SP, SP2, RJ],
+                            "votacao_candidato_munzona_2022_SP.csv": [SP, SP2],
+                            "votacao_candidato_munzona_2022_RJ.csv": [RJ]})
+        st = fs.extract_presidente_1t(zp, d / "out.csv.gz")
+        self.assertEqual(st["rows_written"], 3)
+        self.assertEqual(st["duplicates_dropped"], 3)
+        self.assertEqual(st["rows_by_uf"], {"SP": 2, "RJ": 1})
+
+    def test_latin1_accents_survive(self):
+        d, zp = self.build({"a.csv": [SP]})
+        fs.extract_presidente_1t(zp, d / "out.csv.gz")
+        self.assertEqual(self.read(d / "out.csv.gz")[1][4], "SÃO PAULO")
+
+    def test_missing_columns_fail_loudly(self):
+        d = Path(tempfile.mkdtemp())
+        zp = d / "x.zip"
+        with zipfile.ZipFile(zp, "w") as z:
+            z.writestr("a.csv", b'"A";"B"\n"1";"2"\n')
+        with self.assertRaises(ValueError):
+            fs.extract_presidente_1t(zp, d / "out.csv.gz")
+
+
+class TestConflict(unittest.TestCase):
+    build = TestExtract.build
+
+    def test_same_key_different_votes_is_reported(self):
+        changed = SP[:-1] + ["999"]
+        d, zp = self.build({"a_BR.csv": [SP], "b_SP.csv": [changed]})
+        st = fs.extract_presidente_1t(zp, d / "out.csv.gz")
+        self.assertEqual(len(st["duplicate_conflicts"]), 1)
+
+
+class TestRunOffline(unittest.TestCase):
+    """Executa run() inteiro trocando a rede por arquivos locais."""
+
+    def setUp(self):
+        self.d = Path(tempfile.mkdtemp())
+        src = self.d / "src_votacao_candidato_munzona_2022.zip"
+        with zipfile.ZipFile(src, "w") as z:
+            z.writestr("votacao_candidato_munzona_2022_SP.csv", csv_bytes([SP, SP2, SP_DEP]))
+        self.src = src
+        self._orig = (fs.get_json, fs.download)
+
+        def fake_get_json(url):
+            if "resultados-2022" in url:
+                return {"result": {"metadata_modified": "x", "resources": [
+                    {"url": "https://cdn/votacao_candidato_munzona_2022.zip", "name": "Votação"}]}}
+            return {"result": {"resources": [{"url": "https://cdn/votacao_partido_munzona_2026.zip"}]}}
+
+        def fake_download(url, dest):
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            if url.endswith(".zip"):
+                dest.write_bytes(self.src.read_bytes())
+            else:
+                dest.write_text('[{"id": 3550308}]', encoding="utf-8")
+            return {"url": url, "file": dest.name, "bytes": dest.stat().st_size, "sha256": "x"}
+
+        fs.get_json, fs.download = fake_get_json, fake_download
+
+    def tearDown(self):
+        fs.get_json, fs.download = self._orig
+
+    def test_missing_year_blocks_and_manifest_is_written(self):
+        code = fs.main(["--years", "2022", "2026", "--malha", "", "--root", str(self.d)])
+        import json
+        m = json.loads((self.d / "data" / "manifest" / "latest.json").read_text(encoding="utf-8"))
+        self.assertEqual(code, 1)
+        self.assertEqual(m["status"], "bloqueado")
+        self.assertEqual(m["tse"]["2022"]["status"], "ok")
+        self.assertEqual(m["tse"]["2022"]["extract"]["rows_written"], 2)
+        self.assertEqual(m["tse"]["2026"]["status"], "recurso_nao_encontrado")
+        self.assertEqual(m["ibge"]["municipios"]["count"], 1)
+        self.assertTrue((self.d / "data" / "tse" / "presidente_1t_2022_munzona.csv.gz").exists())
+
+
+if __name__ == "__main__":
+    unittest.main()
