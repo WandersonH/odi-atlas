@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-15T18:19:26Z",
+  "run_started_utc": "2026-10-15T18:21:18Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período.",
     "geo": "BR",
@@ -17,11 +17,41 @@
           {
             "rotulo": "Flávio Bolsonaro",
             "busca": "Flávio Bolsonaro",
-            "tipo_contem": "Senador"
+            "tipo_contem": "Presidente"
           },
           {
             "rotulo": "Lula",
             "busca": "Luiz Inácio Lula da Silva",
+            "tipo_contem": "Presidente"
+          }
+        ]
+      },
+      {
+        "nome": "primeiro_turno_5_topicos",
+        "termos": [
+          {
+            "rotulo": "Flávio Bolsonaro",
+            "busca": "Flávio Bolsonaro",
+            "tipo_contem": "Presidente"
+          },
+          {
+            "rotulo": "Lula",
+            "busca": "Luiz Inácio Lula da Silva",
+            "tipo_contem": "Presidente"
+          },
+          {
+            "rotulo": "Augusto Cury",
+            "busca": "Augusto Cury",
+            "tipo_contem": "Presidente"
+          },
+          {
+            "rotulo": "Renan Santos",
+            "busca": "Renan Santos",
+            "tipo_contem": "Presidente"
+          },
+          {
+            "rotulo": "Ronaldo Caiado",
+            "busca": "Ronaldo Caiado",
             "tipo_contem": "Presidente"
           }
         ]
@@ -32,23 +62,13 @@
           "Flávio Bolsonaro",
           "Lula"
         ]
-      },
-      {
-        "nome": "primeiro_turno_5_mais_votados",
-        "termos": [
-          "Flávio Bolsonaro",
-          "Lula",
-          "Augusto Cury",
-          "Renan Santos",
-          "Ronaldo Caiado"
-        ]
       }
     ]
   },
   "aviso_metodologico": "Valores 0-100 relativos dentro de cada consulta (grupo x período). Não são volumes; não compare entre consultas diferentes.",
   "consultas": [
     {
-      "grupo": "segundo_turno_palavras",
+      "grupo": "segundo_turno_topicos",
       "termos": [
         "Flávio Bolsonaro",
         "Lula"
@@ -56,13 +76,17 @@
       "itens": [
         {
           "rotulo": "Flávio Bolsonaro",
-          "consulta": "Flávio Bolsonaro",
-          "modo": "palavra"
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
         },
         {
           "rotulo": "Lula",
-          "consulta": "Lula",
-          "modo": "palavra"
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
         }
       ],
       "periodo": "now 7-d",
@@ -72,7 +96,7 @@
       "status": "ok"
     },
     {
-      "grupo": "segundo_turno_palavras",
+      "grupo": "segundo_turno_topicos",
       "termos": [
         "Flávio Bolsonaro",
         "Lula"
@@ -80,13 +104,17 @@
       "itens": [
         {
           "rotulo": "Flávio Bolsonaro",
-          "consulta": "Flávio Bolsonaro",
-          "modo": "palavra"
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
         },
         {
           "rotulo": "Lula",
-          "consulta": "Lula",
-          "modo": "palavra"
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
         }
       ],
       "periodo": "today 3-m",
@@ -96,13 +124,10 @@
       "status": "ok"
     },
     {
-      "grupo": "primeiro_turno_5_mais_votados",
+      "grupo": "segundo_turno_palavras",
       "termos": [
         "Flávio Bolsonaro",
-        "Lula",
-        "Augusto Cury",
-        "Renan Santos",
-        "Ronaldo Caiado"
+        "Lula"
       ],
       "itens": [
         {
@@ -113,21 +138,6 @@
         {
           "rotulo": "Lula",
           "consulta": "Lula",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Augusto Cury",
-          "consulta": "Augusto Cury",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Renan Santos",
-          "consulta": "Renan Santos",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Ronaldo Caiado",
-          "consulta": "Ronaldo Caiado",
           "modo": "palavra"
         }
       ],
@@ -138,13 +148,10 @@
       "status": "ok"
     },
     {
-      "grupo": "primeiro_turno_5_mais_votados",
+      "grupo": "segundo_turno_palavras",
       "termos": [
         "Flávio Bolsonaro",
-        "Lula",
-        "Augusto Cury",
-        "Renan Santos",
-        "Ronaldo Caiado"
+        "Lula"
       ],
       "itens": [
         {
@@ -155,21 +162,6 @@
         {
           "rotulo": "Lula",
           "consulta": "Lula",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Augusto Cury",
-          "consulta": "Augusto Cury",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Renan Santos",
-          "consulta": "Renan Santos",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Ronaldo Caiado",
-          "consulta": "Ronaldo Caiado",
           "modo": "palavra"
         }
       ],
@@ -181,8 +173,8 @@
     }
   ],
   "blocked": [
-    "grupo segundo_turno_topicos: ValueError: tópico não encontrado para 'Flávio Bolsonaro' com tipo contendo 'Senador'; opções: [('Flávio Bolsonaro', 'Candidato a Presidente do Brasil'), ('MÚSICA DE CAMPANHA FLÁVIO BOLSONARO 2026', 'Assunto'), ('FLÁVIO BOLSONARO', 'Assunto'), ('Flávio Bolsonaro', 'Assunto'), ('Flávio Bolsonaro', 'Canção')]"
+    "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Augusto Cury' com tipo contendo 'Presidente'; opções: [('Augusto Cury', 'Médico e psiquiatra brasileiro')]"
   ],
-  "run_finished_utc": "2026-10-15T18:20:40Z",
+  "run_finished_utc": "2026-10-15T18:24:56Z",
   "status": "bloqueado"
 }
