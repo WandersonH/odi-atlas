@@ -17,7 +17,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 **Testado**
 - ✅ Navegador headless, caderno 02 · Lula: “Coletado” passou de 11 para 12 (Instagram BRASILCOMLULA, 1.028.524).
-- ⛔ YouTube ainda não executado: aguarda o segredo `YOUTUBE_API_KEY`.
+- ✅ Run `38796649549` (após o usuário cadastrar `YOUTUBE_API_KEY`): **12 de 15 canais** com inscritos; **2.125 vídeos** publicados desde 16/08/2026 com estatísticas; **cota usada: 115** de 10.000.
+- ⚠️ 3 canais não encontrados: os 2 declarados por ID em MAIÚSCULAS (Augusto Cury, Alfredo Gaspar — como previsto) e `@tv.celular` (handle inexistente). Registrados no manifesto, não adivinhados.
+- ⚠️ O YouTube arredonda publicamente os inscritos (ex.: Lula 1.820.000; Flávio 1.510.000).
 
 **Pendente**
 - ⚠️ 2 canais declarados por ID (Augusto Cury, Alfredo Gaspar) estão em MAIÚSCULAS no TSE e o ID do YouTube diferencia maiúsculas: podem não ser encontrados. Ficarão registrados no manifesto, não adivinhados.
