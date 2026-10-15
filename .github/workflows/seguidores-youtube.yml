@@ -31,6 +31,11 @@ jobs:
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python scripts/collect_youtube.py
+      - name: Caderno 13 — classificar vídeos por tema
+        if: steps.coleta.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/build_conteudo.py
+
       - name: Resumo
         if: always()
         run: |
