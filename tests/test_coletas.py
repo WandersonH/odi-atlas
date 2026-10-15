@@ -101,5 +101,18 @@ class TestTrends(unittest.TestCase):
         self.assertTrue(all(1 <= len(g["termos"]) <= 5 for g in cfg["grupos"]))
 
 
+class TestGzip(unittest.TestCase):
+    def test_read_body_descompacta(self):
+        import gzip as gz
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+        import net
+
+        class R:
+            headers = {}
+            def read(self):
+                return gz.compress(b'{"ok": 1}')
+        self.assertEqual(json.loads(net.read_body(R())), {"ok": 1})
+
+
 if __name__ == "__main__":
     unittest.main()

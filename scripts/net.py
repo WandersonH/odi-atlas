@@ -10,6 +10,7 @@ verificação de certificado.
 from __future__ import annotations
 
 import datetime as dt
+import gzip
 import hashlib
 import http.cookiejar
 import json
@@ -75,9 +76,17 @@ def open_url(url: str, timeout: int = 120, cookies=None, headers: dict | None = 
         return opener(cookies, host).open(req, timeout=timeout)
 
 
+def read_body(r) -> bytes:
+    """Lê a resposta inteira, descompactando gzip quando o servidor o envia sem ser pedido (caso do IBGE)."""
+    body = r.read()
+    if r.headers.get("Content-Encoding", "").lower() == "gzip" or body[:2] == b"\x1f\x8b":
+        body = gzip.decompress(body)
+    return body
+
+
 def get_json(url: str, **kw):
     with open_url(url, **kw) as r:
-        return json.load(r)
+        return json.loads(read_body(r))
 
 
 def download(url: str, dest: Path, timeout: int = 600) -> dict:
@@ -85,15 +94,18 @@ def download(url: str, dest: Path, timeout: int = 600) -> dict:
     dest.parent.mkdir(parents=True, exist_ok=True)
     h, size, started = hashlib.sha256(), 0, now_utc()
     with open_url(url, timeout=timeout) as r, open(dest, "wb") as f:
-        headers = {k: r.headers.get(k) for k in ("Last-Modified", "ETag", "Content-Length", "Content-Type")}
+        headers = {k: r.headers.get(k) for k in ("Last-Modified", "ETag", "Content-Length", "Content-Type",
+                                                  "Content-Encoding")}
+        gz = (headers.get("Content-Encoding") or "").lower() == "gzip"
+        src = gzip.GzipFile(fileobj=r) if gz else r  # grava e calcula o hash do conteúdo descompactado
         while True:
-            b = r.read(CHUNK)
+            b = src.read(CHUNK)
             if not b:
                 break
             h.update(b)
             f.write(b)
             size += len(b)
-    if headers.get("Content-Length") and int(headers["Content-Length"]) != size:
+    if not gz and headers.get("Content-Length") and int(headers["Content-Length"]) != size:
         raise IOError(f"download incompleto: {size} de {headers['Content-Length']} bytes")
     return {"url": url, "file": dest.name, "bytes": size, "sha256": h.hexdigest(),
             "http": headers, "started_at_utc": started, "finished_at_utc": now_utc()}
