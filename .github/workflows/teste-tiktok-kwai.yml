@@ -71,8 +71,7 @@ jobs:
           p = os.path.join(os.environ["RUNNER_TEMP"], "diag.md")
           texto = open(p, encoding="utf-8").read() if os.path.exists(p) else "(sem resultado)"
           open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8").write(texto)
-          for linha in texto.splitlines():
-              linha = linha.strip().replace("%", "%25").replace("\r", "").replace("\n", "%0A")
-              if linha:
-                  print(f"::notice title=diagnostico::{linha[:900]}")
+          blocos = [b.strip().replace("\n", " || ") for b in texto.split("### ") if b.strip()]
+          for b in blocos[:9]:  # o GitHub guarda no máximo 10 anotações por passo
+              print("::notice title=diagnostico::" + b.replace("%", "%25")[:3500])
           PY
