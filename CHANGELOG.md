@@ -6,6 +6,43 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C4.0] 2026-10-15 — Caderno 13: conteúdo do YouTube por tema, linha do tempo e nuvem de palavras (Lula × Flávio)
+
+**Mudou**
+- Novo **caderno 13 · Conteúdo · YouTube por tema** em `ODI_Atlas_v15_MVP.html`, no padrão editorial ODI (fita do caderno, manchete serifada, cards):
+  - filtros por tema (com contagem), “só pedidos de voto” e “só citam o adversário”;
+  - quadro por candidato: vídeos no filtro, visualizações somadas, nº que cita o adversário, nº que pede voto e barras por tema;
+  - **nuvem de palavras por candidato** (assuntos mais abordados);
+  - **linha do tempo horizontal por semana de campanha** (referência visual enviada pelo usuário): miniaturas de Lula acima do eixo, de Flávio abaixo, até 24 por semana ordenadas por visualizações, com “+N” para o restante;
+  - listas lado a lado dos 12 vídeos mais recentes no filtro e painel de detalhe com link para o YouTube.
+  - O caderno lê `data/youtube/conteudo.json` só quando é aberto. Sem a base, mostra ⛔ com o motivo (não mostra números de exemplo).
+- `scripts/build_conteudo.py` (roda no workflow `seguidores-youtube.yml` logo após a coleta diária):
+  - classificação por **dicionário aberto** (`data/config/temas_youtube.json`), não por IA, sobre título + descrição;
+  - antes de classificar: remove links e trechos de descrição repetidos em 10+ vídeos do mesmo canal (rodapés e textos institucionais; emojis agora também separam trechos);
+  - **nuvem**: em quantos vídeos cada palavra, hashtag ou par de palavras aparece; mínimo 3 vídeos, top 60; exclui palavras funcionais, meses, termos de formato (“propaganda eleitoral”, “acesse”, “inscreva-se”), o nome do próprio candidato e o nome/hashtag do próprio canal. Par de palavras absorve a palavra solta quando cobre 80%+ dela (ex.: “escala 6x1”).
+- **Correção de bug:** termos com `*` (prefixo, ex.: `trabalhador*`, `petista*`) **nunca funcionaram** porque `norm()` removia o `*` antes da checagem. O teste novo pegou; corrigido. Efeito nos números reais: Lula `sem_tema` 552 → 529, economia 81 → 101; Flávio `sem_tema` 317 → 301, economia 9 → 17. Conferi na base real todas as palavras que cada prefixo captura: nenhum falso positivo encontrado (ex.: `ato*` → ato/atos; `medic*` → medicamentos/médicos).
+- `tests/test_build_conteudo.py`: 9 testes (prefixo e palavra inteira, pedido de voto só com o próprio número, link não vira tema, rodapé repetido removido, emoji separa trecho, nuvem conta 1x por vídeo e exclui o próprio nome, par absorve palavra, hashtag sem par, execução completa com CSV sintético).
+
+**Testado**
+- ✅ `python -m unittest discover -s tests` — 39 testes OK.
+- ✅ `python scripts/build_conteudo.py` sobre `data/youtube/videos_latest.csv.gz` da coleta de 2026-10-15T19:54:20Z (run `38797622447`; sha256 do CSV descompactado `b828137b…952f`):
+  - Lula: 783 vídeos; sem tema 529; economia 101; educação 44; segurança 41; religião e valores 38; saúde 34; cita o adversário 66; pede voto 21.
+  - Flávio Bolsonaro: 401 vídeos; sem tema 301; agenda de campanha 29; segurança 20; economia 17; eleição e instituições 12; religião e valores 10; cita o adversário 67; pede voto 20.
+  - Topo da nuvem: Lula — brasil (202 vídeos), povo (107), presidente (94), país (56), brasileiro (54), futuro (52), flavio (51); Flávio — brasil (135), vencer (55), lula (52), governo (35), vote (28), #vote22 (24), #direita (22).
+- ✅ Chromium headless (1400×900 e 390×844): caderno carrega, 120 palavras nas duas nuvens, 9 semanas, 24 itens nas listas, filtro “Segurança” reduz a linha do tempo, painel de detalhe abre, sem rolagem horizontal da página no celular.
+- ⚠️ No ambiente de teste as miniaturas (`i.ytimg.com`) não carregam por bloqueio de rede; no navegador do usuário/GitHub Pages elas vêm do próprio YouTube. Não conferido visualmente com imagens.
+
+**Limites (também escritos na página)**
+- Dicionário erra ironia e contexto; ~2/3 dos vídeos de Lula e ~3/4 dos de Flávio ficam “sem tema identificado” (muitos são Shorts com título curto).
+- “Cita o adversário” e “pede voto” são marcas por regra; não medem apoio, alcance ou intenção de voto.
+- Nuvem mede frequência de termos, não sentimento nem posição.
+
+**Pendente**
+- 🔜 Classificação por IA (Claude) validada contra este dicionário, se aprovada (custo e amostra de conferência humana antes).
+- 🔜 Transcrição/legendas não são usadas (a API oficial não entrega legenda de terceiros sem OAuth do dono do canal).
+
+---
+
 ## [C3.0] 2026-10-15 — YouTube pela API oficial; correção de URLs sem esquema
 
 **Mudou**

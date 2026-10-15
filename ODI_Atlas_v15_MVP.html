@@ -426,8 +426,62 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .odi-method-footer{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:15px;padding:17px}.odi-method-footer p{font-size:11px;color:#5e6e7e;line-height:1.6}.odi-provenance-links{display:flex;flex-wrap:wrap;gap:9px}.odi-provenance-links a{font-size:11px;color:#214869}
 @media(max-width:1100px){.odi-controls{grid-template-columns:1fr 1fr}.odi-map-layout{grid-template-columns:1fr}.odi-stat strong{font-size:23px}}@media(max-width:560px){.odi-controls{grid-template-columns:1fr}.odi-stat-row{grid-template-columns:1fr}.odi-map-layout{grid-template-columns:1fr}#odiElectionMap{height:390px}.odi-map-heading{display:block}.odi-method-footer{display:block}}
 </style>
+
+<style>
+/* Caderno 13 · Conteúdo no YouTube por tema */
+#ytContent{--yt-a:#1d4f86;--yt-b:#a8693a;--yt-axis:#1b2a3d}
+.yt-controls{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;margin:18px 0 12px}
+.yt-chips{display:flex;flex-wrap:wrap;gap:6px}
+.yt-chip{border:1px solid #c9d1d6;background:#fffdf8;border-radius:2px;padding:6px 10px;font:600 11px/1.2 'Courier New',monospace;letter-spacing:.03em;color:#2c3a48;text-transform:uppercase}
+.yt-chip[aria-pressed="true"]{background:var(--yt-axis);border-color:var(--yt-axis);color:#fff}
+.yt-chip small{opacity:.7;margin-left:4px}
+.yt-toggles{display:flex;gap:16px;font-size:12px;color:#435160}.yt-toggles input{margin-right:6px;accent-color:var(--yt-axis)}
+.yt-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.yt-statcard{border-top:2px solid var(--yt-axis);background:#f7f9fa;padding:12px 14px}
+.yt-statcard h3{margin:0 0 6px;font:700 15px/1.2 Georgia,'Times New Roman',serif}
+.yt-statcard .yt-nums{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:#53606b}.yt-statcard .yt-nums b{display:block;font:700 20px/1.1 Georgia,serif;color:#172238}
+.yt-bars{margin-top:10px;display:grid;gap:4px}.yt-bar{display:grid;grid-template-columns:150px 1fr 40px;gap:8px;align-items:center;font-size:11px;color:#3c4a58}
+.yt-bar i{display:block;height:7px;background:var(--bar,#1b2a3d);opacity:.85}.yt-bar span:last-child{text-align:right;font-family:'Courier New',monospace}
+.yt-timeline-wrap{padding:16px 0 10px;overflow-x:auto}
+.yt-timeline{display:flex;min-width:max-content;padding:0 18px;position:relative}
+.yt-week{width:132px;flex:0 0 132px;border-left:1px solid #b9c0c4;display:flex;flex-direction:column;position:relative}
+.yt-week:last-child{border-right:1px solid #b9c0c4}
+.yt-half{display:flex;flex-wrap:wrap;gap:3px;padding:6px 6px;align-content:flex-end;min-height:170px}
+.yt-half.yt-down{align-content:flex-start}
+.yt-axis{height:34px;border-top:2px solid var(--yt-axis);border-bottom:2px solid var(--yt-axis);display:flex;flex-direction:column;justify-content:center;padding:0 6px;font:700 9px/1.25 'Courier New',monospace;letter-spacing:.04em;color:#2c3a48;text-transform:uppercase;background:#fffdf8}
+.yt-axis em{font-style:normal;color:#6f7b86;font-weight:400}
+.yt-th{width:38px;height:22px;object-fit:cover;background:#d9dee2;font-size:0;color:transparent;overflow:hidden;filter:grayscale(1) contrast(1.05);outline:1.5px solid transparent;cursor:pointer;transition:filter .15s}
+.yt-th:hover,.yt-th:focus{filter:none;outline-color:var(--yt-axis)}
+.yt-up .yt-th{box-shadow:0 2px 0 var(--yt-a)}.yt-down .yt-th{box-shadow:0 -2px 0 var(--yt-b)}
+.yt-more{font:700 9px/22px 'Courier New',monospace;color:#53606b;padding:0 3px}
+.yt-sidelabel{position:sticky;left:0;font:700 10px/1 'Courier New',monospace;letter-spacing:.1em;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);padding:8px 4px}
+.yt-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
+.yt-colhead{display:flex;align-items:center;gap:8px;margin-bottom:10px;font:700 16px/1.2 Georgia,serif}
+.yt-dot{width:10px;height:10px;display:inline-block}.yt-a{background:var(--yt-a)}.yt-b{background:var(--yt-b)}
+.yt-list{display:grid;gap:10px}
+.yt-item{display:grid;grid-template-columns:120px 1fr;gap:10px;align-items:start;padding-bottom:10px;border-bottom:1px solid #e3e6e8;cursor:pointer}
+.yt-item img{width:120px;height:68px;object-fit:cover}
+.yt-item h4{margin:0 0 4px;font:600 13px/1.3 Georgia,serif;color:#172238}
+.yt-meta{font:11px/1.4 'Courier New',monospace;color:#5d6a76}
+.yt-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}.yt-tag{font:700 9px/1 'Courier New',monospace;text-transform:uppercase;border:1px solid #c9d1d6;padding:3px 5px;color:#3c4a58}
+.yt-tag.yt-flag{background:#172238;color:#fff;border-color:#172238}
+.yt-detail{margin:14px 0;display:grid;grid-template-columns:320px 1fr;gap:16px}
+.yt-detail img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.yt-detail h3{margin:0 0 8px;font:700 19px/1.25 Georgia,serif}
+.yt-method p{font-size:12.5px;color:#4a5765;max-width:900px}
+@media (max-width:800px){.yt-stats,.yt-cols,.yt-detail{grid-template-columns:1fr}.yt-bar{grid-template-columns:110px 1fr 34px}}
+.yt-clouds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:12px 0 4px}
+.yt-cloud{margin:0}.yt-cloud figcaption{display:flex;align-items:center;gap:8px;font:13px/1.2 Georgia,serif;margin-bottom:10px;color:#2c3a48}
+.yt-cloudbox{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 12px;min-height:220px;padding:6px 4px;line-height:1.05}
+.yt-word{font-family:Georgia,'Times New Roman',serif;font-weight:700;cursor:default;white-space:nowrap}
+.yt-word.yt-hash{font-family:'Courier New',monospace;font-weight:700}
+#ytCloudA .yt-word{color:var(--yt-a)}#ytCloudB .yt-word{color:var(--yt-b)}
+.yt-word.yt-hit{outline:2px solid var(--yt-axis);outline-offset:2px}
+.yt-cloudnote{font-size:11.5px;color:#5d6a76;margin:2px 0 14px}
+@media (max-width:800px){.yt-clouds{grid-template-columns:1fr}}
+</style>
 </head>
-<body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 12 CADERNOS</div><nav class="nav" id="nav">
+<body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 13 CADERNOS</div><nav class="nav" id="nav">
 <button class="navbutton active" data-tab="overview"><span class="navicon">◫</span> Visão geral</button>
 <button class="navbutton" data-tab="followers"><span class="navicon">▣</span> Big Numbers · Seguidores</button>
 <button class="navbutton" data-tab="history"><span class="navicon">◷</span> Evolução diária</button>
@@ -440,6 +494,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 <button class="navbutton" data-tab="method"><span class="navicon">◇</span> Fontes & metodologia</button>
 <button class="navbutton" data-tab="leiaMe"><span class="navicon">ⓘ</span> LEIA-ME</button>
 <button class="navbutton" data-tab="geoVote"><span class="navicon">⌖</span> Geografia do Voto · 2022/26</button>
+<button class="navbutton" data-tab="ytContent"><span class="navicon">▶</span> Conteúdo · YouTube por tema</button>
 </nav><div class="sidefoot"><span>ESTUDO CONTÍNUO / V15 · MVP</span>PNAD 2025 · Social Blade SET–OUT 2026<br>Dados armazenados neste arquivo.</div></aside>
 <main class="main"><header class="header"><span class="crumb">EDIÇÃO DE PESQUISA  /  COMUNICAÇÃO POLÍTICA  /  2026</span><div class="actions"><span class="datechip">● Capturas: 10–11 OUT 2026</span><button class="ghostbutton" id="downloadJson">↓ Base JSON</button><button class="primarybutton" id="printView">↗ Imprimir / PDF</button></div></header>
 <section class="panel active" id="overview">
@@ -591,6 +646,36 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card odi-method-footer"><div><span class="eyebrow">Rastreabilidade da base</span><h2>Dados verificáveis, não inferidos.</h2><p id="odiProvenance">As fontes oficiais e a data de geração serão exibidas depois da importação.</p></div>
    <div class="odi-provenance-links"><a href="https://dadosabertos.tse.jus.br/dataset/resultados-2022" target="_blank" rel="noopener">TSE 2022 ↗</a><a href="https://dadosabertos.tse.jus.br/dataset/resultados-2026" target="_blank" rel="noopener">TSE 2026 ↗</a><a href="https://www.ibge.gov.br/geociencias/organizacao-do-territorio/estrutura-territorial/15774-malhas" target="_blank" rel="noopener">Malha IBGE ↗</a></div>
   </div>
+</section>
+
+<section class="panel" id="ytContent" aria-label="Caderno 13 Conteúdo no YouTube por tema">
+  <div class="paper-ribbon"><span>CADERNO 13 / CONTEÚDO · YOUTUBE</span><span>DESDE 16 AGO 2026 · INÍCIO DA CAMPANHA</span></div>
+  <div class="intro odi-map-hero"><div class="eyebrow">YouTube Data API · canais declarados ao TSE</div>
+    <h1>O que cada campanha publica.<br><em>Semana a semana, por tema.</em></h1>
+    <p>Vídeos dos canais de YouTube declarados ao TSE por Lula e Flávio Bolsonaro, organizados por semana de campanha. Acima do eixo, Lula; abaixo, Flávio. Os temas vêm de um dicionário aberto aplicado ao título e à descrição — não de IA — e podem errar em ironia ou contexto.</p>
+  </div>
+  <div class="yt-controls card">
+    <div class="yt-chips" id="ytChips" role="group" aria-label="Filtrar por tema"></div>
+    <div class="yt-toggles">
+      <label><input type="checkbox" id="ytOnlyVote"> Só pedidos de voto</label>
+      <label><input type="checkbox" id="ytOnlyAdv"> Só citam o adversário</label>
+    </div>
+  </div>
+  <div class="odi-signal" id="ytStatus" role="status">Aguardando leitura da base de vídeos.</div>
+  <div class="yt-stats" id="ytStats"></div>
+  <div class="yt-clouds">
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-a"></span><strong>Lula</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox" id="ytCloudA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox" id="ytCloudB"></div></figure>
+  </div>
+  <p class="yt-cloudnote" id="ytCloudNote"></p>
+  <div class="yt-timeline-wrap card"><div class="yt-timeline" id="ytTimeline"></div></div>
+  <div class="yt-cols">
+    <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot yt-a"></span><strong>Lula</strong><span class="smalltag">nº 13</span></div><div class="yt-list" id="ytListA"></div></div>
+    <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot yt-b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="ytListB"></div></div>
+  </div>
+  <div class="yt-detail card" id="ytDetail" hidden></div>
+  <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="ytMethod"></p>
+    <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
 </section>
 
 <section class="panel" id="history">
@@ -1251,6 +1336,62 @@ $('odiUpload').addEventListener('change',async e=>{try{let file=e.target.files[0
 $('odiExport').addEventListener('click',()=>{const s=state();let yr=s.year==='delta'?'2026':s.year;let rows=Object.values(dataHolder.years?.[yr]||{}).filter(r=>r.uf===s.uf).map(r=>[r.uf,r.municipio,r.ibge||'',yr,s.number,r.candidatos?.[s.number]||0,r.validos_nominais]);if(!rows.length){status('Sem registros para exportar. Importe primeiro a base eleitoral oficial.');return;}let csv=[['uf','municipio','ibge','ano','numero','votos_nominais','validos_nominais'],...rows].map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(';')).join('\r\n');const url=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));let a=document.createElement('a');a.href=url;a.download='ODI_TSE_'+yr+'_'+s.uf+'_primeiro_turno.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 fetch('./data/elections.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(installData).catch(()=>redraw());
 const observer=new MutationObserver(()=>{if($('geoVote').classList.contains('active')&&map)setTimeout(()=>{map.invalidateSize();if(currentFeatureLayer)map.fitBounds(currentFeatureLayer.getBounds(),{padding:[15,15]});},50);});observer.observe($('geoVote'),{attributes:true,attributeFilter:['class']});
+})();
+</script>
+
+<script>
+/* Caderno 13 · Conteúdo no YouTube por tema (dados: data/youtube/conteudo.json) */
+(function(){
+const LULA='280002542548',FLAVIO='280002551544',INICIO=Date.UTC(2026,7,16),SEM=7*864e5,MAX_POR_SEMANA=24;
+const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
+let D=null,filtro='todos',soVoto=false,soAdv=false,carregado=false;
+const $y=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
+const data=iso=>iso?new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''):'—';
+const thumb=id=>'https://i.ytimg.com/vi/'+encodeURIComponent(id)+'/mqdefault.jpg';
+const passa=v=>(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
+function dur(p){const m=/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(p||'');if(!m)return '';const h=+m[1]||0,mi=+m[2]||0,se=+m[3]||0;return h?`${h}h${String(mi).padStart(2,'0')}`:`${mi}:${String(se).padStart(2,'0')}`;}
+function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
+function chips(){const tot={};for(const c of [LULA,FLAVIO])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[LULA].total_videos+D.candidatos[FLAVIO].total_videos;
+$y('ytChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
+$y('ytChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
+function stats(){$y('ytStats').innerHTML=[LULA,FLAVIO].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),views=vs.reduce((a,v)=>a+(v.visualizacoes||0),0);const temas=Object.entries(x.por_tema).filter(([t])=>t!=='sem_tema'),mx=Math.max(1,...temas.map(([,n])=>n));
+return `<div class="yt-statcard" style="border-top-color:var(${c===LULA?'--yt-a':'--yt-b'})"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>vídeos no filtro</span><span><b>${fmt(views)}</b>visualizações</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div>
+<div class="yt-bars" style="--bar:var(${c===LULA?'--yt-a':'--yt-b'})">${temas.map(([t,n])=>`<div class="yt-bar"><span>${esc(ROT[t]||t)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');}
+function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes nesta coleta.</p>';return;}
+const mx=lista[0][1],mn=lista[lista.length-1][1];const ord=lista.map((x,i)=>[...x,i]).sort((a,b)=>a[0].localeCompare(b[0],'pt'));
+box.innerHTML=ord.map(([t,n,i])=>{const r=mx===mn?1:(n-mn)/(mx-mn);const fs=(12+Math.sqrt(r)*30).toFixed(1);const op=(0.55+r*0.45).toFixed(2);
+return `<span class="yt-word${t.startsWith('#')?' yt-hash':''}" style="font-size:${fs}px;opacity:${op}" title="${esc(t)}: aparece em ${fmt(n)} vídeos (posição ${i+1})">${esc(t)}</span>`;}).join('');}
+function semana(iso){return Math.floor((Date.parse(iso)-INICIO)/SEM);}
+function timeline(){const vids={};let maxW=0;for(const c of [LULA,FLAVIO]){vids[c]=D.candidatos[c].videos.filter(v=>v.publicado_em&&Date.parse(v.publicado_em)>=INICIO&&passa(v));for(const v of vids[c])maxW=Math.max(maxW,semana(v.publicado_em));}
+let h='';for(let w=0;w<=maxW;w++){const ini=new Date(INICIO+w*SEM),fim=new Date(INICIO+w*SEM+6*864e5);const lab=d=>d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'});
+const col=(c,cls)=>{const vs=vids[c].filter(v=>semana(v.publicado_em)===w).sort((a,b)=>(b.visualizacoes||0)-(a.visualizacoes||0));const sh=vs.slice(0,MAX_POR_SEMANA);
+return `<div class="yt-half ${cls}">${sh.map(v=>`<img class="yt-th" loading="lazy" src="${thumb(v.video_id)}" alt="${esc(v.titulo)}" title="${esc(v.titulo)} · ${fmt(v.visualizacoes)} visualizações" data-c="${c}" data-v="${esc(v.video_id)}" tabindex="0">`).join('')}${vs.length>sh.length?`<span class="yt-more">+${vs.length-sh.length}</span>`:''}</div>`;};
+const nA=vids[LULA].filter(v=>semana(v.publicado_em)===w).length,nB=vids[FLAVIO].filter(v=>semana(v.publicado_em)===w).length;
+h+=`<div class="yt-week">${col(LULA,'yt-up')}<div class="yt-axis">Sem. ${w+1}<em>${lab(ini)}–${lab(fim)}</em><em>${nA} · ${nB}</em></div>${col(FLAVIO,'yt-down')}</div>`;}
+$y('ytTimeline').innerHTML=h||'<p class="yt-meta">Nenhum vídeo neste filtro.</p>';
+$y('ytTimeline').querySelectorAll('.yt-th').forEach(el=>{const go=()=>detalhe(el.dataset.c,el.dataset.v);el.addEventListener('click',go);el.addEventListener('keydown',ev=>{if(ev.key==='Enter')go();});});
+const wrap=$y('ytTimeline').parentElement;wrap.scrollLeft=wrap.scrollWidth;}
+function listas(){for(const [c,id] of [[LULA,'ytListA'],[FLAVIO,'ytListB']]){const vs=D.candidatos[c].videos.filter(passa).slice(0,12);
+$y(id).innerHTML=vs.length?vs.map(v=>`<div class="yt-item" data-c="${c}" data-v="${esc(v.video_id)}" tabindex="0"><img loading="lazy" src="${thumb(v.video_id)}" alt=""><div><h4>${esc(v.titulo)}</h4><div class="yt-meta">${data(v.publicado_em)} · ${esc(dur(v.duracao))} · ${fmt(v.visualizacoes)} visualizações</div><div class="yt-tags">${tags(v)}</div></div></div>`).join(''):'<p class="yt-meta">Nenhum vídeo neste filtro.</p>';
+$y(id).querySelectorAll('.yt-item').forEach(el=>{const go=()=>detalhe(el.dataset.c,el.dataset.v);el.addEventListener('click',go);el.addEventListener('keydown',ev=>{if(ev.key==='Enter')go();});});}}
+function detalhe(c,id){const x=D.candidatos[c],v=x.videos.find(y=>y.video_id===id);if(!v)return;const el=$y('ytDetail');el.hidden=false;
+el.innerHTML=`<img src="${thumb(v.video_id)}" alt=""><div><div class="eyebrow">${esc(x.nome)} · ${esc(v.canal)}</div><h3>${esc(v.titulo)}</h3><div class="yt-meta">Publicado em ${v.publicado_em?new Date(v.publicado_em).toLocaleString('pt-BR'):'—'} · duração ${esc(dur(v.duracao))}<br>${fmt(v.visualizacoes)} visualizações · ${fmt(v.curtidas)} curtidas · ${fmt(v.comentarios)} comentários (na coleta de ${esc((D.coletado_em_utc||'').slice(0,10))})</div><div class="yt-tags" style="margin:10px 0">${tags(v)||'<span class="yt-tag">sem tema identificado</span>'}</div><a class="ghostbutton" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.video_id)}" target="_blank" rel="noopener">Abrir no YouTube ↗</a></div>`;
+el.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function render(){chips();stats();timeline();listas();}
+async function carregar(){if(carregado)return;carregado=true;const st=$y('ytStatus');
+try{const r=await fetch('./data/youtube/conteudo.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);D=await r.json();}
+catch(err){st.textContent='⛔ Base de vídeos indisponível ('+err.message+'). Abra o Atlas pelo GitHub Pages ou por um servidor local: o navegador bloqueia leitura de arquivos em file://.';carregado=false;return;}
+const a=D.candidatos[LULA],b=D.candidatos[FLAVIO];
+st.textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio Bolsonaro desde 16/08/2026 · coleta de ${(D.coletado_em_utc||'').replace('T',' ').slice(0,16)} UTC · ${D.fonte}.`;
+$y('ytMethod').textContent=D.metodo;$y('ytCloudNote').textContent=D.metodo_nuvem||'';
+nuvem($y('ytCloudA'),a.nuvem);nuvem($y('ytCloudB'),b.nuvem);
+$y('ytOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$y('ytOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});
+render();}
+const sec=$y('ytContent');if(!sec)return;
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+if(sec.classList.contains('active'))carregar();
 })();
 </script>
 </body></html>

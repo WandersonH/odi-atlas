@@ -1,20 +1,165 @@
 {
   "nota": "Dicionário aberto de temas aplicado a título + descrição dos vídeos (texto normalizado: minúsculas, sem acento). Um vídeo pode ter vários temas. Classificação por regras, NÃO por IA: auditável e replicável, mas não entende ironia nem contexto. Termos com * casam por prefixo.",
   "candidatos": {
-    "280002542548": {"nome": "Lula", "numero": "13", "adversario": ["flavio", "bolsonaro", "bolsonarismo", "bolsonarista*"]},
-    "280002551544": {"nome": "Flávio Bolsonaro", "numero": "22", "adversario": ["lula", "petista*", "pt", "lulista*", "descondenado"]}
+    "280002542548": {
+      "nome": "Lula",
+      "numero": "13",
+      "adversario": [
+        "flavio",
+        "bolsonaro",
+        "bolsonarismo",
+        "bolsonarista*"
+      ]
+    },
+    "280002551544": {
+      "nome": "Flávio Bolsonaro",
+      "numero": "22",
+      "adversario": [
+        "lula",
+        "petista*",
+        "pt",
+        "lulista*",
+        "descondenado"
+      ]
+    }
   },
   "temas": {
-    "economia": ["economia", "emprego*", "desemprego", "salario*", "inflacao", "imposto*", "juros", "renda", "preco*", "dolar", "gasolina", "combustive*", "industria", "agro*", "divida*"],
-    "programas_sociais": ["bolsa familia", "auxilio*", "fome", "pe de meia", "minha casa minha vida", "farmacia popular", "gas do povo", "programa* soci*"],
-    "seguranca": ["seguranca", "crime*", "criminos*", "bandid*", "policia*", "faccao", "faccoes", "violencia", "trafic*", "pcc", "milicia*"],
-    "saude": ["saude", "sus", "hospita*", "medic*", "vacina*", "remedio*"],
-    "educacao": ["educacao", "escola*", "professor*", "universidade*", "ensino", "estudante*"],
-    "religiao_valores": ["deus", "igreja*", "evangelic*", "cristao*", "cristaos", "catolic*", "familia", "aborto", "fe", "biblia", "ideologia de genero"],
-    "corrupcao_justica": ["corrupcao", "corrupt*", "ladrao", "ladroes", "roubo*", "stf", "supremo", "moraes", "lava jato", "inelegivel", "prisao", "preso*", "justica"],
-    "eleicao_instituicoes": ["urna*", "tse", "fraude*", "democracia", "golpe*", "8 de janeiro", "anistia", "censura"],
-    "agenda_campanha": ["comicio*", "carreata*", "motociata*", "caminhada*", "ao vivo", "live", "debate*", "entrevista*", "sabatina*", "ato*", "agenda"],
-    "internacional": ["trump", "eua", "estados unidos", "tarifa*", "china", "venezuela", "argentina", "milei", "israel", "russia", "ucrania"]
+    "economia": [
+      "economia",
+      "emprego*",
+      "desemprego",
+      "salario*",
+      "inflacao",
+      "imposto*",
+      "juros",
+      "renda",
+      "preco*",
+      "dolar",
+      "gasolina",
+      "combustive*",
+      "industria",
+      "agro*",
+      "divida*",
+      "trabalho*",
+      "trabalhador*",
+      "escala 6x1",
+      "6x1",
+      "aposentad*",
+      "previdencia",
+      "custo de vida"
+    ],
+    "programas_sociais": [
+      "bolsa familia",
+      "auxilio*",
+      "fome",
+      "pe de meia",
+      "minha casa minha vida",
+      "farmacia popular",
+      "gas do povo",
+      "programa* soci*"
+    ],
+    "seguranca": [
+      "seguranca",
+      "crime*",
+      "criminos*",
+      "bandid*",
+      "policia*",
+      "faccao",
+      "faccoes",
+      "violencia",
+      "trafic*",
+      "pcc",
+      "milicia*"
+    ],
+    "saude": [
+      "saude",
+      "sus",
+      "hospita*",
+      "medic*",
+      "vacina*",
+      "remedio*"
+    ],
+    "educacao": [
+      "educacao",
+      "escola*",
+      "professor*",
+      "universidade*",
+      "ensino",
+      "estudante*"
+    ],
+    "religiao_valores": [
+      "deus",
+      "igreja*",
+      "evangelic*",
+      "cristao*",
+      "cristaos",
+      "catolic*",
+      "familia",
+      "aborto",
+      "biblia",
+      "ideologia de genero"
+    ],
+    "corrupcao_justica": [
+      "corrupcao",
+      "corrupt*",
+      "ladrao",
+      "ladroes",
+      "roubo*",
+      "stf",
+      "supremo",
+      "moraes",
+      "lava jato",
+      "inelegivel",
+      "prisao",
+      "preso*",
+      "justica"
+    ],
+    "eleicao_instituicoes": [
+      "urna*",
+      "tse",
+      "fraude*",
+      "democracia",
+      "golpe*",
+      "8 de janeiro",
+      "anistia",
+      "censura"
+    ],
+    "agenda_campanha": [
+      "comicio*",
+      "carreata*",
+      "motociata*",
+      "caminhada*",
+      "ao vivo",
+      "live",
+      "debate*",
+      "entrevista*",
+      "sabatina*",
+      "ato*",
+      "agenda"
+    ],
+    "internacional": [
+      "trump",
+      "eua",
+      "estados unidos",
+      "tarifa*",
+      "china",
+      "venezuela",
+      "argentina",
+      "milei",
+      "israel",
+      "russia",
+      "ucrania"
+    ]
   },
-  "pede_voto": ["vote {n}", "vota {n}", "votar {n}", "voto {n}", "e {n}", "confirma {n}", "#{n}", "dia 25", "25 de outubro", "segundo turno"]
+  "pede_voto": [
+    "vote {n}",
+    "vota {n}",
+    "votar {n}",
+    "voto {n}",
+    "e {n}",
+    "confirma {n}",
+    "#{n}",
+    "dia 25",
+    "25 de outubro"
+  ]
 }
