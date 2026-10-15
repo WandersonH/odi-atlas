@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-influenciadores-youtube",
-  "run_started_utc": "2026-10-15T20:30:49Z",
+  "run_started_utc": "2026-10-15T23:21:25Z",
   "config": {
     "nota": "Canais do YouTube (fora das campanhas) que publicaram vídeos citando Lula ou Flávio Bolsonaro. 'Cita' não quer dizer 'apoia': o vídeo pode ser a favor, contra ou neutro. Só entram canais públicos com min_inscritos ou mais (perfil de influenciador/veículo, não pessoa comum).",
     "desde": "2026-08-16",
@@ -15,8 +15,13 @@
           "Lula"
         ],
         "mencao": [
-          "lula"
-        ]
+          "lula",
+          "lulaoficial",
+          "#lula",
+          "presidente lula"
+        ],
+        "numero": "13",
+        "apelido": "lula"
       },
       "280002551544": {
         "nome": "Flávio Bolsonaro",
@@ -26,12 +31,13 @@
         ],
         "mencao": [
           "flavio bolsonaro",
-          "flavio 22",
-          "#flaviobolsonaro",
-          "#flavio22",
+          "flaviobolsonaro",
+          "#flavio",
           "senador flavio",
           "candidato flavio"
-        ]
+        ],
+        "numero": "22",
+        "apelido": "flavio"
       }
     },
     "buscas_por_execucao": [
@@ -67,6 +73,37 @@
       "lula a dore",
       "lula frita",
       "lula recheada"
+    ],
+    "niveis": {
+      "0": "Não cita",
+      "1": "Falou de: cita pelo nome, @, hashtag ou o número como voto",
+      "2": "Pediu voto: pede voto no candidato (ex.: 'vote 22', 'dia 25 é Flávio')"
+    },
+    "pede_voto": [
+      "vote {n}",
+      "vota {n}",
+      "votar {n}",
+      "voto {n}",
+      "voto e {n}",
+      "confirma {n}",
+      "vote {apelido}",
+      "vota {apelido}",
+      "votar {apelido}",
+      "voto no {apelido}",
+      "votem {apelido}",
+      "votem {n}",
+      "dia 25 e {apelido}",
+      "25 e {apelido}",
+      "dia 25 e {n}",
+      "25 e {n}",
+      "dia 25 vote {n}"
+    ],
+    "numero_como_voto": [
+      "{apelido} {n}",
+      "#{apelido}{n}",
+      "{apelido}{n}",
+      "#{n}",
+      "e {n}"
     ]
   },
   "buscas": [
@@ -82,7 +119,7 @@
       "candidato": "Lula",
       "q": "Lula",
       "ordem": "viewCount",
-      "desde": "2026-10-08T20:30:49Z",
+      "desde": "2026-10-08T23:21:25Z",
       "paginas": 2,
       "videos": 100
     },
@@ -90,7 +127,7 @@
       "candidato": "Lula",
       "q": "Lula",
       "ordem": "date",
-      "desde": "2026-10-12T20:30:49Z",
+      "desde": "2026-10-12T23:21:25Z",
       "paginas": 4,
       "videos": 200
     },
@@ -106,7 +143,7 @@
       "candidato": "Flávio Bolsonaro",
       "q": "Flávio Bolsonaro",
       "ordem": "viewCount",
-      "desde": "2026-10-08T20:30:49Z",
+      "desde": "2026-10-08T23:21:25Z",
       "paginas": 2,
       "videos": 100
     },
@@ -114,7 +151,7 @@
       "candidato": "Flávio Bolsonaro",
       "q": "Flávio Bolsonaro",
       "ordem": "date",
-      "desde": "2026-10-12T20:30:49Z",
+      "desde": "2026-10-12T23:21:25Z",
       "paginas": 4,
       "videos": 200
     }
@@ -122,19 +159,19 @@
   "blocked": [],
   "warnings": [],
   "status": "ok",
-  "cota_usada": 2023,
-  "videos_retornados": 870,
-  "videos_detalhados": 870,
-  "videos_acumulados": 870,
-  "videos_validos": 821,
+  "cota_usada": 2024,
+  "videos_retornados": 854,
+  "videos_detalhados": 854,
+  "videos_acumulados": 1038,
+  "videos_validos": 984,
   "exclusoes": {
-    "canal de campanha (declarado ao TSE)": 31,
-    "categoria 17": 8,
+    "canal de campanha (declarado ao TSE)": 35,
     "categoria 10": 5,
-    "categoria 20": 2,
+    "categoria 17": 8,
+    "categoria 20": 3,
     "categoria 26": 1,
     "sem menção no título/descrição": 2
   },
-  "canais_validos": 239,
-  "canais_com_dados": 239
+  "canais_validos": 292,
+  "canais_com_dados": 292
 }
