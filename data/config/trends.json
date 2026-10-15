@@ -1,20 +1,76 @@
 {
   "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período.",
   "geo": "BR",
-  "periodos": ["now 7-d", "today 3-m"],
+  "periodos": [
+    "now 7-d",
+    "today 3-m"
+  ],
   "pausa_segundos": 5,
   "grupos": [
-    {"nome": "segundo_turno_topicos", "termos": [
-      {"rotulo": "Flávio Bolsonaro", "busca": "Flávio Bolsonaro", "tipo_contem": "Presidente"},
-      {"rotulo": "Lula", "busca": "Luiz Inácio Lula da Silva", "tipo_contem": "Presidente"}
-    ]},
-    {"nome": "primeiro_turno_5_topicos", "termos": [
-      {"rotulo": "Flávio Bolsonaro", "busca": "Flávio Bolsonaro", "tipo_contem": "Presidente"},
-      {"rotulo": "Lula", "busca": "Luiz Inácio Lula da Silva", "tipo_contem": "Presidente"},
-      {"rotulo": "Augusto Cury", "busca": "Augusto Cury", "tipo_contem": "Presidente"},
-      {"rotulo": "Renan Santos", "busca": "Renan Santos", "tipo_contem": "Presidente"},
-      {"rotulo": "Ronaldo Caiado", "busca": "Ronaldo Caiado", "tipo_contem": "Presidente"}
-    ]},
-    {"nome": "segundo_turno_palavras", "termos": ["Flávio Bolsonaro", "Lula"]}
+    {
+      "nome": "segundo_turno_topicos",
+      "termos": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "busca": "Flávio Bolsonaro",
+          "tipo_contem": "Presidente"
+        },
+        {
+          "rotulo": "Lula",
+          "busca": "Luiz Inácio Lula da Silva",
+          "tipo_contem": "Presidente"
+        }
+      ]
+    },
+    {
+      "nome": "primeiro_turno_5_topicos",
+      "termos": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "busca": "Flávio Bolsonaro",
+          "tipo_contem": "Presidente"
+        },
+        {
+          "rotulo": "Lula",
+          "busca": "Luiz Inácio Lula da Silva",
+          "tipo_contem": "Presidente"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "busca": "Augusto Cury",
+          "tipo_contem": [
+            "Presidente",
+            "psiquiatra"
+          ]
+        },
+        {
+          "rotulo": "Renan Santos",
+          "busca": "Renan Santos",
+          "tipo_contem": [
+            "Presidente",
+            "Político",
+            "Polític",
+            "Empresário",
+            "Ativista"
+          ]
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "busca": "Ronaldo Caiado",
+          "tipo_contem": [
+            "Presidente",
+            "Governador",
+            "Político"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "segundo_turno_palavras",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ]
+    }
   ]
 }

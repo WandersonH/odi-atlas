@@ -87,8 +87,9 @@ def resolver(t: "Trends", item) -> dict:
     if isinstance(item, str):
         return {"rotulo": item, "consulta": item, "modo": "palavra"}
     tops = t.autocomplete(item["busca"])
-    alvo = item["tipo_contem"].lower()
-    hits = [x for x in tops if alvo in x.get("type", "").lower()]
+    alvos = item["tipo_contem"] if isinstance(item["tipo_contem"], list) else [item["tipo_contem"]]
+    alvos = [a.lower() for a in alvos]
+    hits = [x for x in tops if any(a in x.get("type", "").lower() for a in alvos)]
     if not hits:
         raise ValueError(f"tópico não encontrado para {item['busca']!r} com tipo contendo {item['tipo_contem']!r}; "
                          f"opções: {[(x.get('title'), x.get('type')) for x in tops]}")
