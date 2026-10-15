@@ -31,8 +31,8 @@ from net import download, get_json, now_utc, sha256_file  # noqa: E402
 CKAN = "https://dadosabertos.tse.jus.br/api/3/action/package_show?id=candidatos-{year}"
 SIDRA_CATALOGO = "https://servicodados.ibge.gov.br/api/v3/agregados"
 SIDRA_META = "https://servicodados.ibge.gov.br/api/v3/agregados/{id}/metadados"
-SIDRA_VALORES = ("https://servicodados.ibge.gov.br/api/v3/agregados/{id}/periodos/{periodos}"
-                 "/variaveis/all?localidades=N1[all]|N3[all]")
+# API clássica do SIDRA: sem /c..., cada classificação vem só na categoria Total (resposta leve).
+SIDRA_VALORES = "https://apisidra.ibge.gov.br/values/t/{id}/n1/all/n3/all/v/all/p/{periodos}?formato=json"
 
 # Colunas do cadastro que podem ser publicadas. Qualquer outra é descartada na leitura.
 CAND_ALLOW = ["ANO_ELEICAO", "NR_TURNO", "CD_ELEICAO", "DS_ELEICAO", "SG_UF", "SG_UE", "NM_UE",
@@ -210,12 +210,16 @@ def cmd_sidra(args, root: Path, man: dict, save=lambda: None):
                 man["warnings"].append(f"SIDRA tabela {t['id']}: pulada (orçamento de {args.orcamento_min} min)")
                 continue
             try:
-                meta = get_json(SIDRA_META.format(id=t["id"]), timeout=60)
-                vals = get_json(SIDRA_VALORES.format(id=t["id"], periodos=args.periodos), timeout=120)
+                vals = get_json(SIDRA_VALORES.format(id=t["id"], periodos=urllib.parse.quote(args.periodos)), timeout=90)
+                try:
+                    meta = get_json(SIDRA_META.format(id=t["id"]), timeout=45)
+                except Exception as ex:  # metadados ajudam, mas não bloqueiam
+                    meta = {"erro": f"{type(ex).__name__}: {ex}"}
                 f = outdir / f"tabela_{t['id']}.json"
                 f.write_text(json.dumps({"metadados": meta, "valores": vals, "coletado_utc": now_utc()},
                                         ensure_ascii=False), encoding="utf-8")
                 t.update(status="ok", arquivo=f.name, sha256=sha256_file(f), bytes=f.stat().st_size,
+                         linhas=max(len(vals) - 1, 0) if isinstance(vals, list) else None,
                          segundos=round(time.monotonic() - t0))
             except Exception as ex:
                 t.update(status="erro", error=f"{type(ex).__name__}: {ex}")
@@ -232,7 +236,7 @@ def main(argv=None) -> int:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("comandos", nargs="+", choices=["tse-candidatos", "sidra"])
     p.add_argument("--years", nargs="+", default=["2026"])
-    p.add_argument("--periodos", default="-12", help="períodos do SIDRA (ex.: -12 = os 12 mais recentes)")
+    p.add_argument("--periodos", default="last 6", help="períodos na sintaxe da API SIDRA (ex.: 'last 6', 'all')")
     p.add_argument("--max-tabelas", type=int, default=25)
     p.add_argument("--orcamento-min", type=float, default=15, help="tempo máximo para o SIDRA, em minutos")
     p.add_argument("--root", default=".")
