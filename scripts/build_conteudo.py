@@ -121,6 +121,34 @@ def nuvem(textos: list[str], excluir: set, top: int = NUVEM_TOP, minimo: int = N
     return [[t, n] for t, n in sorted(df.items(), key=lambda x: (-x[1], x[0]))[:top]]
 
 
+HASHTAG = re.compile(r"#([0-9A-Za-zÀ-ÿ_]{3,})")
+MAPA_TOP = 90
+MAPA_MIN_VIDEOS = 2
+
+
+def tags_do_video(r: dict) -> set[str]:
+    """Tags do vídeo: as tags do canal (campo `tags`, separado por |) + #hashtags do título e da descrição.
+    Normalizadas sem acento e sem espaço, para "Flávio Bolsonaro" e "#FlavioBolsonaro" virarem a mesma tag."""
+    brutas = [t for t in (r.get("tags") or "").split("|") if t.strip()]
+    brutas += HASHTAG.findall((r.get("titulo") or "") + " " + URL.sub(" ", r.get("descricao") or ""))
+    out = set()
+    for t in brutas:
+        k = norm(t).replace(" ", "").lstrip("#")
+        if len(k) >= 3 and not k.isdigit():
+            out.add(k)
+    return out
+
+
+def mapa_tags(por_cand: dict[str, list[set]], top: int = MAPA_TOP, minimo: int = MAPA_MIN_VIDEOS) -> list[dict]:
+    """[{tag, <cid>: nº de vídeos com a tag, ...}] ordenado pelo total, só tags em `minimo`+ vídeos."""
+    cont = {cid: Counter(t for ts in lst for t in ts) for cid, lst in por_cand.items()}
+    todas = Counter()
+    for c in cont.values():
+        todas.update(c)
+    sel = [t for t, n in todas.most_common() if n >= minimo][:top]
+    return [{"tag": t, **{cid: cont[cid].get(t, 0) for cid in cont}} for t in sel]
+
+
 def classify(text: str, temas, cand) -> dict:
     t = norm(text)
     found = [k for k, regs in temas.items() if any(r.search(t) for r in regs)]
@@ -136,6 +164,8 @@ def main(argv=None) -> int:
     src = root / "data/youtube/videos_latest.csv.gz"
     rows = list(csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"))
     padrao = texto_padrao(rows)
+    tem_tags_canal = bool(rows) and "tags" in rows[0]
+    tags_por_cand: dict[str, list[set]] = {}
     coletado = max((r["coletado_em"] for r in rows), default=None)
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "coletado_em_utc": coletado, "fonte": "YouTube Data API v3 (canais declarados ao TSE)",
@@ -154,11 +184,14 @@ def main(argv=None) -> int:
             textos.append(tira_canal.sub(" ", txt))  # nome do canal não é assunto
             excluir.add(norm(r["canal"]).replace(" ", ""))  # hashtag do próprio canal (#tvcelular)
             c = classify(txt, temas, cand)
+            tg = tags_do_video(r)
+            tags_por_cand.setdefault(cid, []).append(tg)
             vids.append({"video_id": r["video_id"], "canal": r["canal"], "titulo": r["titulo"],
                          "publicado_em": r["publicado_em"], "duracao": r["duracao"],
                          "visualizacoes": int(r["visualizacoes"]) if r["visualizacoes"] else None,
                          "curtidas": int(r["curtidas"]) if r["curtidas"] else None,
-                         "comentarios": int(r["comentarios"]) if r["comentarios"] else None, **c})
+                         "comentarios": int(r["comentarios"]) if r["comentarios"] else None,
+                         "tags": sorted(tg), **c})
         vids.sort(key=lambda v: v["publicado_em"] or "", reverse=True)
         por_tema = Counter(t for v in vids for t in v["temas"])
         views_tema = Counter()
@@ -174,6 +207,11 @@ def main(argv=None) -> int:
                                   "videos": vids}
         print(cand["nome"], len(vids), "vídeos | temas:", dict(por_tema.most_common(6)),
               "| cita adversário:", out["candidatos"][cid]["cita_adversario"], "| pede voto:", out["candidatos"][cid]["pede_voto"])
+    out["mapa_tags"] = mapa_tags({cid: tags_por_cand.get(cid, []) for cid in cands})
+    out["metodo_tags"] = (("Tags colocadas pelo próprio canal em cada vídeo (YouTube Data API, snippet.tags) + " if tem_tags_canal
+                           else "Ainda sem as tags dos canais nesta coleta; só ") +
+                          f"#hashtags do título e da descrição. Normalizadas sem acento e sem espaço; contagem = nº de vídeos; mínimo {MAPA_MIN_VIDEOS} vídeos, top {MAPA_TOP}.")
+    out["tags_do_canal_coletadas"] = tem_tags_canal
     (root / "data/youtube/conteudo.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return 0
 

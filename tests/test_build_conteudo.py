@@ -77,6 +77,19 @@ class TestNuvem(unittest.TestCase):
         self.assertNotIn("#forapt #direita", t)
 
 
+class TestTags(unittest.TestCase):
+    def test_tags_canal_e_hashtag_unificadas(self):
+        r = {"tags": "Flávio Bolsonaro|segurança pública|22", "titulo": "Ato #FlavioBolsonaro #22",
+             "descricao": "veja https://x.com/#naoconta #SegurançaPública"}
+        self.assertEqual(b.tags_do_video(r), {"flaviobolsonaro", "segurancapublica"})
+
+    def test_mapa_conta_videos_por_candidato(self):
+        m = b.mapa_tags({"A": [{"sus", "saude"}, {"sus"}], "B": [{"sus"}, {"forapt"}, {"forapt"}]}, minimo=2)
+        self.assertEqual(m[0], {"tag": "sus", "A": 2, "B": 1})
+        self.assertIn({"tag": "forapt", "A": 0, "B": 2}, m)
+        self.assertNotIn("saude", [x["tag"] for x in m])
+
+
 class TestMain(unittest.TestCase):
     def test_execucao_completa(self):
         with tempfile.TemporaryDirectory() as d:

@@ -94,7 +94,9 @@ def videos_do_canal(key: str, uploads: str, desde: str):
                         "descricao": re.sub(r"\s+", " ", sn.get("description", ""))[:1500],
                         "duracao": v.get("contentDetails", {}).get("duration", ""),
                         "visualizacoes": st.get("viewCount"), "curtidas": st.get("likeCount"),
-                        "comentarios": st.get("commentCount")})
+                        "comentarios": st.get("commentCount"),
+                        # tags que o próprio canal colocou no vídeo (públicas na API; mesma chamada, sem cota extra)
+                        "tags": "|".join(t.replace("|", " ").strip() for t in sn.get("tags", []) if t.strip())})
     return out, cota
 
 
@@ -155,7 +157,7 @@ def main(argv=None) -> int:
             for vd in videos_por_canal.get(it["id"], []):
                 video_rows.append([t["candidate_id"], t["candidate_name"], it["id"], sn.get("title", ""), vd["video_id"],
                                    vd["publicado_em"], vd["titulo"], vd["duracao"], vd["visualizacoes"], vd["curtidas"],
-                                   vd["comentarios"], started, vd["descricao"]])
+                                   vd["comentarios"], started, vd["descricao"], vd.get("tags", "")])
             c["videos_desde_inicio_campanha"] = len(videos_por_canal.get(it["id"], []))
             if not st.get("hiddenSubscriberCount") and st.get("subscriberCount") is not None:
                 rows.append([t["candidate_id"], t["candidate_name"], "YouTube", with_scheme(t["url"]), int(st["subscriberCount"]),
@@ -172,7 +174,7 @@ def main(argv=None) -> int:
     vdir = root / "data" / "youtube"
     vdir.mkdir(parents=True, exist_ok=True)
     vh = ["candidate_id", "candidate_name", "channel_id", "canal", "video_id", "publicado_em", "titulo", "duracao",
-          "visualizacoes", "curtidas", "comentarios", "coletado_em", "descricao"]
+          "visualizacoes", "curtidas", "comentarios", "coletado_em", "descricao", "tags"]
     seen, uniq = set(), []
     for r in video_rows:  # mesmo canal declarado por duas candidaturas aparece uma vez por candidatura
         if (r[0], r[4]) not in seen:
