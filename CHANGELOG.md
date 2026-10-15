@@ -6,6 +6,18 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [P1.3] 2026-10-15 — Workflow: commit resistente a push concorrente
+
+**Mudou**
+- O passo "Commitar recorte e manifesto" faz `git pull --rebase` antes do `git push`, com até 3 tentativas.
+
+**Por quê:** o run das 17:27 UTC (disparado manualmente) baixou e extraiu tudo e publicou o Release, mas falhou no commit: durante a coleta houve outro push na `main` (index.html e CHANGELOG), e o push do runner foi recusado por estar desatualizado.
+
+**Testado**
+- 🔜 Validar no próximo run.
+
+---
+
 ## [P1.2] 2026-10-15 — Acesso pelo navegador (GitHub Pages)
 
 **Mudou**

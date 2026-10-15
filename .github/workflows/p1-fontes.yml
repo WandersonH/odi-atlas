@@ -85,7 +85,9 @@ jobs:
           git add data/
           git diff --cached --quiet && { echo "nada novo"; exit 0; }
           git commit -m "P1: originais TSE/IBGE (run ${{ github.run_id }})"
-          git push
+          # alguém pode ter feito push durante a coleta: rebase antes de enviar
+          for i in 1 2 3; do git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0; sleep 5; done
+          exit 1
 
       - name: Falhar se houve bloqueio
         if: steps.fetch.outcome == 'failure'
