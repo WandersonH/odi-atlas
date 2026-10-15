@@ -6,6 +6,21 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [D1.1] 2026-10-15 — Diagnóstico: rede de quem fala dos candidatos no TikTok (páginas de hashtag)
+
+**Por quê:** pedido do usuário, uma rede do TikTok como a de influenciadores do YouTube (contas que falaram de Lula/Flávio ou pediram voto).
+
+**Testado**
+- ⛔ Run `38816712756`: páginas de hashtag via yt-dlp (#lula, #flaviobolsonaro, #lula13, #flavio22) → "No working app info is available" nas quatro. A listagem por hashtag ou busca depende da API interna do app do TikTok, que o yt-dlp não acessa. **Não há caminho grátis** para a rede de entrada (quem fala deles).
+- ✅ Mesmo run: perfis das campanhas legíveis (10 vídeos de @lulaoficial e 10 de @flaviobolsonaro).
+- ✅ Rede de saída (quem as campanhas marcam com @ nas legendas), a partir do acervo existente (vídeos desde 16/08):
+  - Lula: 629 vídeos, 17 contas marcadas (fernandohaddadoficial 13, marciofrancasp 13, simonetebet 12, marinasilvaoficial 12, ricardostuckert 4…);
+  - Flávio: 81 vídeos, 6 contas (bolsonaromessiasjair 4, nikolas, sargentofahur.oficial…).
+
+**Pendente:** a rede de entrada depende de serviço pago (Apify, com teto de custo e autorização do usuário) ou da API de pesquisa oficial do TikTok (elegibilidade a verificar).
+
+---
+
 ## [C7.2] 2026-10-15 — Trends: consultas e assuntos relacionados (método exploratório das aulas); TikTok bloqueado numa rodada, dados preservados
 
 **Por quê:** nas aulas de IA e produção de texto, o Trends é usado como etapa exploratória. As consultas relacionadas mostram como o público formula a busca e que termos associa ao tema (exemplo da aula: "Paraisópolis" associado a "Morumbi"). Esses termos orientam as strings de busca da coleta.
