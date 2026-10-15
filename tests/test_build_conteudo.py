@@ -83,6 +83,16 @@ class TestTags(unittest.TestCase):
              "descricao": "veja https://x.com/#naoconta #SegurançaPública"}
         self.assertEqual(b.tags_do_video(r), {"flaviobolsonaro", "segurancapublica"})
 
+    def test_pacote_fixo_sai_do_mapa(self):
+        pacote = "Bolsonaro|ARMAS|Mito ou Verdade"
+        rows = [{"channel_id": "c", "titulo": f"v{i}", "descricao": "", "tags": pacote} for i in range(b.LIMIAR_REPETICAO)]
+        rows.append({"channel_id": "c", "titulo": "Saúde #SUS", "descricao": "", "tags": "Bolsonaro|hospital"})
+        pac = b.pacotes_de_tags(rows)
+        self.assertEqual(pac["c"]["videos"], b.LIMIAR_REPETICAO)
+        self.assertEqual(b.tags_do_video(rows[0], pac), set())
+        self.assertEqual(b.tags_do_video(rows[-1], pac), {"hospital", "sus"})
+        self.assertEqual(b.pacotes_de_tags(rows[:3]), {})  # abaixo do limiar não é pacote
+
     def test_mapa_conta_videos_por_candidato(self):
         m = b.mapa_tags({"A": [{"sus", "saude"}, {"sus"}], "B": [{"sus"}, {"forapt"}, {"forapt"}]}, minimo=2)
         self.assertEqual(m[0], {"tag": "sus", "A": 2, "B": 1})

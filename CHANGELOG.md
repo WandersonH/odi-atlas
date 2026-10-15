@@ -6,6 +6,34 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C4.1] 2026-10-15 — Caderno 13: mapa de tags (Lula × Flávio) e coleta das tags dos vídeos
+
+**Mudou**
+- `scripts/collect_youtube.py`: grava a coluna nova `tags` (as tags que o próprio canal colocou em cada vídeo, `snippet.tags`). Vem na mesma chamada `videos.list`, **sem cota extra**.
+- `scripts/build_conteudo.py`:
+  - `mapa_tags`: para cada tag, em quantos vídeos de cada candidato ela aparece. Fontes: tags do canal + #hashtags do título e da descrição útil. Normalizadas sem acento e sem espaço. Mínimo 2 vídeos, top 90.
+  - **Pacote fixo**: o mesmo conjunto exato de tags repetido em 10+ vídeos do mesmo canal é tratado como etiqueta aplicada em lote. Fica fora do mapa e é publicado à parte (`pacotes_de_tags`), como já se fazia com os rodapés das descrições.
+- Caderno 13: bloco **“Mapa de tags”** em três zonas: só Lula | usadas pelos dois (barra dividida na proporção) | só Flávio. Os blocos têm tamanho proporcional ao nº de vídeos. Clicar numa tag filtra a linha do tempo, as listas e os quadros. Abaixo ficam os pacotes fixos de cada canal, com a lista de tags.
+- Testes: +3 (tag do canal e hashtag unificadas, pacote fixo sai do mapa e abaixo do limiar não é pacote, contagem por candidato). Total: 42.
+
+**Testado**
+- ✅ `python -m unittest discover -s tests` — 42 OK.
+- ✅ Run `38799228938` (workflow `seguidores-youtube.yml`, disparado em 2026-10-15 20:06 UTC) concluído com sucesso, já com a coluna `tags`. Resultado:
+  - Lula: 784 vídeos; 84 com tags.
+  - Flávio: 401 vídeos; 162 com tags.
+- ✅ Achado nos dados reais:
+  - Canal “Lula”: o mesmo pacote de 19 tags em **78** vídeos (inclui “Eleições 2022”, “Lula inocente”, “Lula em Salvador”, “FM 103.9”).
+  - Canal “TV Celular Flavio Bolsonaro”: pacote de 28 tags em **124** vídeos (inclui “Ustra”, “Olavo de Carvalho”, “Bolsomito”, “Karl Marx”, “Presidente 2022”).
+  - Fora dos pacotes, Lula não tem nenhuma tag própria em 2+ vídeos. Flávio tem 39: #vote22 (24 vídeos), #direita (22), #tvcelular (14), #forapt (12), #eleicoes (10), #bolsonaro (9) e outras.
+  - Em comum: #flaviobolsonaro (Lula 1, Flávio 46), #eleicoes2026 (1·6), #seguranca (1·5), #lula (1·2).
+- ✅ Chromium headless (1400×900 e 390×844): 43 blocos, clique em #flaviobolsonaro filtra para 13 itens nas listas e 41 miniaturas; sem rolagem horizontal no celular.
+- Os números de temas mudaram pouco com a coleta nova (Lula 784 vídeos, economia 102; Flávio inalterado).
+
+**Limites**
+- A tag é o que o canal declara ao YouTube, não o conteúdo de fato do vídeo. Pacotes antigos (2022) aparecem em vídeos de 2026.
+
+---
+
 ## [C4.0] 2026-10-15 — Caderno 13: conteúdo do YouTube por tema, linha do tempo e nuvem de palavras (Lula × Flávio)
 
 **Mudou**

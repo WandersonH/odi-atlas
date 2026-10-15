@@ -479,6 +479,24 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .yt-word.yt-hit{outline:2px solid var(--yt-axis);outline-offset:2px}
 .yt-cloudnote{font-size:11.5px;color:#5d6a76;margin:2px 0 14px}
 @media (max-width:800px){.yt-clouds{grid-template-columns:1fr}}
+.yt-tagmap{margin:6px 0 14px}.yt-tmhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.yt-tagmap h2{margin:2px 0 0;font:700 22px/1.2 Georgia,'Times New Roman',serif;color:#172238}
+.yt-tmgrid{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:0;border-top:2px solid var(--yt-axis)}
+.yt-tmzone{padding:10px 10px 4px;border-right:1px solid #d5dbe0}.yt-tmzone:last-child{border-right:0}
+.yt-tmshared{background:#f6f3ec}
+.yt-tmlabel{display:flex;align-items:center;gap:6px;font:700 10px/1 'Courier New',monospace;letter-spacing:.08em;text-transform:uppercase;color:#2c3a48;margin-bottom:10px}
+.yt-tmtiles{display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start;min-height:80px}
+.yt-tile{border:0;color:#fff;font:700 11px/1.15 'Courier New',monospace;padding:6px 7px;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;min-width:58px;flex-grow:1;word-break:break-word}
+.yt-tile small{font-weight:400;opacity:.85;font-size:10px;margin-top:4px}
+.yt-tile.yt-ta{background:var(--yt-a)}.yt-tile.yt-tb{background:var(--yt-b)}
+.yt-tile:hover,.yt-tile:focus{outline:2px solid var(--yt-axis);outline-offset:1px}.yt-tile[aria-pressed="true"]{outline:3px solid #172238;outline-offset:1px}
+.yt-tmsel{font:12px/1.3 'Courier New',monospace;background:#172238;color:#fff;padding:6px 10px;display:flex;gap:10px;align-items:center}
+.yt-tmsel[hidden]{display:none}.yt-tmsel button{background:none;border:1px solid #fff;color:#fff;font:inherit;padding:2px 6px;cursor:pointer}
+@media (max-width:800px){.yt-tmgrid{grid-template-columns:1fr}.yt-tmzone{border-right:0;border-bottom:1px solid #d5dbe0}}
+.yt-pacotes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.yt-pac{border-left:3px solid var(--c);background:#f7f9fa;padding:10px 12px}.yt-pac h4{margin:0 0 6px;font:700 13px/1.3 Georgia,serif;color:#172238}
+.yt-pac p{margin:0 0 6px;font-size:11.5px;color:#4a5765}.yt-pac .yt-tags{gap:3px}
+@media (max-width:800px){.yt-pacotes{grid-template-columns:1fr}}
 </style>
 </head>
 <body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 13 CADERNOS</div><nav class="nav" id="nav">
@@ -668,6 +686,17 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox" id="ytCloudB"></div></figure>
   </div>
   <p class="yt-cloudnote" id="ytCloudNote"></p>
+  <div class="card yt-tagmap">
+    <div class="yt-tmhead"><div><div class="eyebrow">Mapa de tags</div><h2>Como cada campanha etiqueta seus vídeos</h2></div>
+      <div class="yt-tmsel" id="ytTagSel" hidden></div></div>
+    <div class="yt-tmgrid">
+      <div class="yt-tmzone"><div class="yt-tmlabel"><span class="yt-dot yt-a"></span>Só Lula</div><div class="yt-tmtiles" id="ytTmA"></div></div>
+      <div class="yt-tmzone yt-tmshared"><div class="yt-tmlabel"><span class="yt-dot yt-a"></span><span class="yt-dot yt-b"></span>Usadas pelos dois</div><div class="yt-tmtiles" id="ytTmAB"></div></div>
+      <div class="yt-tmzone"><div class="yt-tmlabel"><span class="yt-dot yt-b"></span>Só Flávio</div><div class="yt-tmtiles" id="ytTmB"></div></div>
+    </div>
+    <div class="yt-pacotes" id="ytPacotes"></div>
+    <p class="yt-cloudnote" id="ytTagNote"></p>
+  </div>
   <div class="yt-timeline-wrap card"><div class="yt-timeline" id="ytTimeline"></div></div>
   <div class="yt-cols">
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot yt-a"></span><strong>Lula</strong><span class="smalltag">nº 13</span></div><div class="yt-list" id="ytListA"></div></div>
@@ -675,7 +704,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="yt-detail card" id="ytDetail" hidden></div>
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="ytMethod"></p>
-    <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
+    <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Tags são as que o próprio canal declara ao YouTube; não indicam o conteúdo de fato do vídeo. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
 </section>
 
 <section class="panel" id="history">
@@ -1344,13 +1373,13 @@ const observer=new MutationObserver(()=>{if($('geoVote').classList.contains('act
 (function(){
 const LULA='280002542548',FLAVIO='280002551544',INICIO=Date.UTC(2026,7,16),SEM=7*864e5,MAX_POR_SEMANA=24;
 const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
-let D=null,filtro='todos',soVoto=false,soAdv=false,carregado=false;
+let D=null,filtro='todos',soVoto=false,soAdv=false,tagSel=null,carregado=false;
 const $y=id=>document.getElementById(id);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
 const data=iso=>iso?new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''):'—';
 const thumb=id=>'https://i.ytimg.com/vi/'+encodeURIComponent(id)+'/mqdefault.jpg';
-const passa=v=>(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
+const passa=v=>(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario)&&(!tagSel||(v.tags||[]).includes(tagSel));
 function dur(p){const m=/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(p||'');if(!m)return '';const h=+m[1]||0,mi=+m[2]||0,se=+m[3]||0;return h?`${h}h${String(mi).padStart(2,'0')}`:`${mi}:${String(se).padStart(2,'0')}`;}
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function chips(){const tot={};for(const c of [LULA,FLAVIO])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[LULA].total_videos+D.candidatos[FLAVIO].total_videos;
@@ -1379,13 +1408,24 @@ $y(id).querySelectorAll('.yt-item').forEach(el=>{const go=()=>detalhe(el.dataset
 function detalhe(c,id){const x=D.candidatos[c],v=x.videos.find(y=>y.video_id===id);if(!v)return;const el=$y('ytDetail');el.hidden=false;
 el.innerHTML=`<img src="${thumb(v.video_id)}" alt=""><div><div class="eyebrow">${esc(x.nome)} · ${esc(v.canal)}</div><h3>${esc(v.titulo)}</h3><div class="yt-meta">Publicado em ${v.publicado_em?new Date(v.publicado_em).toLocaleString('pt-BR'):'—'} · duração ${esc(dur(v.duracao))}<br>${fmt(v.visualizacoes)} visualizações · ${fmt(v.curtidas)} curtidas · ${fmt(v.comentarios)} comentários (na coleta de ${esc((D.coletado_em_utc||'').slice(0,10))})</div><div class="yt-tags" style="margin:10px 0">${tags(v)||'<span class="yt-tag">sem tema identificado</span>'}</div><a class="ghostbutton" href="https://www.youtube.com/watch?v=${encodeURIComponent(v.video_id)}" target="_blank" rel="noopener">Abrir no YouTube ↗</a></div>`;
 el.scrollIntoView({behavior:'smooth',block:'nearest'});}
-function render(){chips();stats();timeline();listas();}
+function tagmap(){const m=D.mapa_tags||[];const zA=[],zB=[],zAB=[];for(const x of m){const a=x[LULA]||0,b=x[FLAVIO]||0;(a&&b?zAB:a?zA:zB).push([x.tag,a,b]);}
+const mx=Math.max(1,...m.map(x=>(x[LULA]||0)+(x[FLAVIO]||0)));
+const tile=(t,a,b)=>{const n=a+b,r=Math.sqrt(n/mx),w=Math.round(58+r*150),h=Math.round(30+r*58),fs=(10+r*8).toFixed(1);
+const bg=a&&b?`background:linear-gradient(90deg,var(--yt-a) ${(a/n*100).toFixed(0)}%,var(--yt-b) ${(a/n*100).toFixed(0)}%)`:'';
+return `<button class="yt-tile ${a&&b?'':a?'yt-ta':'yt-tb'}" style="flex-basis:${w}px;min-height:${h}px;font-size:${fs}px;${bg}" data-tag="${esc(t)}" aria-pressed="${tagSel===t}" title="#${esc(t)} · Lula ${a} vídeo(s) · Flávio ${b} vídeo(s)">#${esc(t)}<small>${a&&b?`${a} · ${b}`:fmt(n)} vídeo${n>1?'s':''}</small></button>`;};
+const put=(id,arr,vazio)=>{$y(id).innerHTML=arr.length?arr.map(x=>tile(...x)).join(''):`<p class="yt-meta">${vazio}</p>`;};
+put('ytTmA',zA,'Nenhuma tag própria de Lula em 2+ vídeos nesta coleta: fora do pacote fixo (abaixo), o canal quase não etiqueta os vídeos.');put('ytTmAB',zAB,'Nenhuma tag em comum nesta coleta.');put('ytTmB',zB,'Nenhuma tag própria de Flávio em 2+ vídeos nesta coleta.');
+$y('ytPacotes').innerHTML=[LULA,FLAVIO].map(c=>{const x=D.candidatos[c];const ps=x.pacotes_de_tags||[];
+return `<div class="yt-pac" style="--c:var(${c===LULA?'--yt-a':'--yt-b'})"><h4>Pacote fixo · ${esc(x.nome)}</h4>${ps.length?ps.map(p=>`<p>O mesmo conjunto de ${p.tags.length} tags aparece em <b>${fmt(p.videos)}</b> vídeos do canal “${esc(p.canal)}”. Fica fora do mapa.</p><div class="yt-tags">${p.tags.map(t=>`<span class="yt-tag">${esc(t)}</span>`).join('')}</div>`).join(''):'<p>Nenhum pacote fixo detectado.</p>'}</div>`;}).join('');
+document.querySelectorAll('#ytContent .yt-tile').forEach(el=>el.addEventListener('click',()=>{tagSel=tagSel===el.dataset.tag?null:el.dataset.tag;render();}));
+const sel=$y('ytTagSel');if(tagSel){sel.hidden=false;sel.innerHTML=`Filtrando por #${esc(tagSel)} <button type="button">limpar</button>`;sel.querySelector('button').addEventListener('click',()=>{tagSel=null;render();});}else sel.hidden=true;}
+function render(){chips();stats();tagmap();timeline();listas();}
 async function carregar(){if(carregado)return;carregado=true;const st=$y('ytStatus');
 try{const r=await fetch('./data/youtube/conteudo.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);D=await r.json();}
 catch(err){st.textContent='⛔ Base de vídeos indisponível ('+err.message+'). Abra o Atlas pelo GitHub Pages ou por um servidor local: o navegador bloqueia leitura de arquivos em file://.';carregado=false;return;}
 const a=D.candidatos[LULA],b=D.candidatos[FLAVIO];
 st.textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio Bolsonaro desde 16/08/2026 · coleta de ${(D.coletado_em_utc||'').replace('T',' ').slice(0,16)} UTC · ${D.fonte}.`;
-$y('ytMethod').textContent=D.metodo;$y('ytCloudNote').textContent=D.metodo_nuvem||'';
+$y('ytMethod').textContent=D.metodo;$y('ytCloudNote').textContent=D.metodo_nuvem||'';$y('ytTagNote').textContent=(D.metodo_tags||'')+' Clique numa tag para filtrar a linha do tempo e as listas.';
 nuvem($y('ytCloudA'),a.nuvem);nuvem($y('ytCloudB'),b.nuvem);
 $y('ytOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$y('ytOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});
 render();}

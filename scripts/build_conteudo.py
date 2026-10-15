@@ -126,14 +126,37 @@ MAPA_TOP = 90
 MAPA_MIN_VIDEOS = 2
 
 
-def tags_do_video(r: dict) -> set[str]:
-    """Tags do vídeo: as tags do canal (campo `tags`, separado por |) + #hashtags do título e da descrição.
-    Normalizadas sem acento e sem espaço, para "Flávio Bolsonaro" e "#FlavioBolsonaro" virarem a mesma tag."""
-    brutas = [t for t in (r.get("tags") or "").split("|") if t.strip()]
-    brutas += HASHTAG.findall((r.get("titulo") or "") + " " + URL.sub(" ", r.get("descricao") or ""))
+def _tag_key(t: str) -> str:
+    return norm(t).replace(" ", "").lstrip("#")
+
+
+def pacotes_de_tags(rows: list[dict]) -> dict[str, dict]:
+    """Por canal, o conjunto IDÊNTICO de tags repetido em LIMIAR_REPETICAO+ vídeos (pacote fixo aplicado em lote).
+    Devolve {channel_id: {"tags": [originais], "chaves": set, "videos": n}} só para canais que têm pacote."""
+    cont: dict[str, Counter] = {}
+    for r in rows:
+        ts = frozenset(t.strip() for t in (r.get("tags") or "").split("|") if t.strip())
+        if ts:
+            cont.setdefault(r["channel_id"], Counter())[ts] += 1
+    out = {}
+    for ch, c in cont.items():
+        ts, n = c.most_common(1)[0]
+        if n >= LIMIAR_REPETICAO:
+            out[ch] = {"tags": sorted(ts, key=str.lower), "chaves": {_tag_key(t) for t in ts}, "videos": n}
+    return out
+
+
+def tags_do_video(r: dict, pacotes: dict | None = None, padrao: dict | None = None) -> set[str]:
+    """Tags específicas do vídeo: tags do canal (campo `tags`, separado por |) fora do pacote fixo do canal +
+    #hashtags do título e da descrição útil (sem rodapé repetido). Normalizadas sem acento e sem espaço,
+    para "Flávio Bolsonaro" e "#FlavioBolsonaro" virarem a mesma tag."""
+    fora = (pacotes or {}).get(r.get("channel_id"), {}).get("chaves", set())
+    brutas = [t for t in (r.get("tags") or "").split("|") if t.strip() and _tag_key(t) not in fora]
+    texto = texto_util(r, padrao) if padrao is not None else (r.get("titulo") or "") + " " + URL.sub(" ", r.get("descricao") or "")
+    brutas += HASHTAG.findall(texto)
     out = set()
     for t in brutas:
-        k = norm(t).replace(" ", "").lstrip("#")
+        k = _tag_key(t)
         if len(k) >= 3 and not k.isdigit():
             out.add(k)
     return out
@@ -165,6 +188,7 @@ def main(argv=None) -> int:
     rows = list(csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"))
     padrao = texto_padrao(rows)
     tem_tags_canal = bool(rows) and "tags" in rows[0]
+    pacotes = pacotes_de_tags(rows)
     tags_por_cand: dict[str, list[set]] = {}
     coletado = max((r["coletado_em"] for r in rows), default=None)
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -184,7 +208,7 @@ def main(argv=None) -> int:
             textos.append(tira_canal.sub(" ", txt))  # nome do canal não é assunto
             excluir.add(norm(r["canal"]).replace(" ", ""))  # hashtag do próprio canal (#tvcelular)
             c = classify(txt, temas, cand)
-            tg = tags_do_video(r)
+            tg = tags_do_video(r, pacotes, padrao)
             tags_por_cand.setdefault(cid, []).append(tg)
             vids.append({"video_id": r["video_id"], "canal": r["canal"], "titulo": r["titulo"],
                          "publicado_em": r["publicado_em"], "duracao": r["duracao"],
@@ -198,7 +222,10 @@ def main(argv=None) -> int:
         for v in vids:
             for t in v["temas"]:
                 views_tema[t] += v["visualizacoes"] or 0
-        out["candidatos"][cid] = {"nome": cand["nome"], "numero": cand["numero"], "total_videos": len(vids),
+        canais_ids = sorted({r["channel_id"] for r in rows if r["candidate_id"] == cid})
+        pac = [{"canal": next(r["canal"] for r in rows if r["channel_id"] == ch), "videos": pacotes[ch]["videos"],
+                "tags": pacotes[ch]["tags"]} for ch in canais_ids if ch in pacotes]
+        out["candidatos"][cid] = {"pacotes_de_tags": pac, "nome": cand["nome"], "numero": cand["numero"], "total_videos": len(vids),
                                   "canais": sorted({v["canal"] for v in vids}),
                                   "por_tema": dict(por_tema.most_common()), "visualizacoes_por_tema": dict(views_tema.most_common()),
                                   "cita_adversario": sum(v["cita_adversario"] for v in vids),
@@ -210,7 +237,7 @@ def main(argv=None) -> int:
     out["mapa_tags"] = mapa_tags({cid: tags_por_cand.get(cid, []) for cid in cands})
     out["metodo_tags"] = (("Tags colocadas pelo próprio canal em cada vídeo (YouTube Data API, snippet.tags) + " if tem_tags_canal
                            else "Ainda sem as tags dos canais nesta coleta; só ") +
-                          f"#hashtags do título e da descrição. Normalizadas sem acento e sem espaço; contagem = nº de vídeos; mínimo {MAPA_MIN_VIDEOS} vídeos, top {MAPA_TOP}.")
+                          f"#hashtags do título e da descrição. O pacote fixo de cada canal (o mesmo conjunto de tags repetido em {LIMIAR_REPETICAO}+ vídeos) aparece à parte e não entra no mapa. Normalizadas sem acento e sem espaço; contagem = nº de vídeos; mínimo {MAPA_MIN_VIDEOS} vídeos, top {MAPA_TOP}.")
     out["tags_do_canal_coletadas"] = tem_tags_canal
     (root / "data/youtube/conteudo.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return 0
