@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-15T18:21:18Z",
+  "run_started_utc": "2026-10-15T18:25:36Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período.",
     "geo": "BR",
@@ -42,17 +42,30 @@
           {
             "rotulo": "Augusto Cury",
             "busca": "Augusto Cury",
-            "tipo_contem": "Presidente"
+            "tipo_contem": [
+              "Presidente",
+              "psiquiatra"
+            ]
           },
           {
             "rotulo": "Renan Santos",
             "busca": "Renan Santos",
-            "tipo_contem": "Presidente"
+            "tipo_contem": [
+              "Presidente",
+              "Político",
+              "Polític",
+              "Empresário",
+              "Ativista"
+            ]
           },
           {
             "rotulo": "Ronaldo Caiado",
             "busca": "Ronaldo Caiado",
-            "tipo_contem": "Presidente"
+            "tipo_contem": [
+              "Presidente",
+              "Governador",
+              "Político"
+            ]
           }
         ]
       },
@@ -173,8 +186,8 @@
     }
   ],
   "blocked": [
-    "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Augusto Cury' com tipo contendo 'Presidente'; opções: [('Augusto Cury', 'Médico e psiquiatra brasileiro')]"
+    "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Renan Santos' com tipo contendo ['Presidente', 'Político', 'Polític', 'Empresário', 'Ativista']; opções: [('Renan Santos', 'Assunto'), ('Renan Lodi', 'Jogador de futebol brasileiro'), ('Renan Castro', 'Jogador de futebol brasileiro'), ('Renan Santos Souza', 'Assunto'), ('Renan dos Santos Paixão', 'Jogador de futebol brasileiro')]"
   ],
-  "run_finished_utc": "2026-10-15T18:24:56Z",
+  "run_finished_utc": "2026-10-15T18:27:27Z",
   "status": "bloqueado"
 }
