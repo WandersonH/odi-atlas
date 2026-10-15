@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "stage": "P1-origem",
-  "run_started_utc": "2026-10-15T17:53:23Z",
+  "run_started_utc": "2026-10-15T17:59:11Z",
   "runner": {
-    "github_run_id": "38781044291",
-    "github_sha": "8fb529ba20a7e02c2820246813d4470aabddb422",
+    "github_run_id": "38781834841",
+    "github_sha": "786f56e2999932c097b28903e37045a77536801b",
     "github_repository": "WandersonH/odi-atlas"
   },
   "tse": {
@@ -29,10 +29,11 @@
           "Last-Modified": "Thu, 15 Oct 2026 07:10:30 GMT",
           "ETag": "\"22a1d081-65ddbbe2d04de\"",
           "Content-Length": "581030017",
-          "Content-Type": "application/zip"
+          "Content-Type": "application/zip",
+          "Content-Encoding": null
         },
-        "started_at_utc": "2026-10-15T17:53:23Z",
-        "finished_at_utc": "2026-10-15T17:53:36Z"
+        "started_at_utc": "2026-10-15T17:59:11Z",
+        "finished_at_utc": "2026-10-15T17:59:28Z"
       },
       "extract": {
         "files": [
@@ -297,7 +298,7 @@
         ],
         "candidate_column": "NR_CANDIDATO",
         "output": "data/tse/presidente_1t_2022_munzona.csv.gz",
-        "output_sha256": "bd3a151ff0668142ddd3f302850a7dbb606064adf874e2fde343c8559d1fe3ac"
+        "output_sha256": "ae3d02f0c415d5aa8588c8e22e2c0591c53540014d52ddde5f294ec414790354"
       },
       "status": "ok"
     },
@@ -322,10 +323,11 @@
           "Last-Modified": "Thu, 15 Oct 2026 16:10:15 GMT",
           "ETag": "\"1b4a2f39-65de3487fb0f1\"",
           "Content-Length": "457846585",
-          "Content-Type": "application/zip"
+          "Content-Type": "application/zip",
+          "Content-Encoding": null
         },
-        "started_at_utc": "2026-10-15T17:55:24Z",
-        "finished_at_utc": "2026-10-15T17:55:32Z"
+        "started_at_utc": "2026-10-15T18:01:43Z",
+        "finished_at_utc": "2026-10-15T18:02:01Z"
       },
       "extract": {
         "files": [
@@ -590,7 +592,7 @@
         ],
         "candidate_column": "NR_CANDIDATO",
         "output": "data/tse/presidente_1t_2026_munzona.csv.gz",
-        "output_sha256": "7e5bb71689922d525656e3282bd276fbf98c111775fcfd33aec0cbc11d4dd66e"
+        "output_sha256": "42d741c24d60cc2c54ed23385481e727f76b8536bab4d5ec3c2cb67c8e2d6f36"
       },
       "status": "ok"
     }
@@ -605,10 +607,11 @@
         "Last-Modified": "Thu, 26 Feb 2026 20:02:48 GMT",
         "ETag": "\"e21491f-64bbf9ac98a00\"",
         "Content-Length": "237062431",
-        "Content-Type": "application/zip"
+        "Content-Type": "application/zip",
+        "Content-Encoding": null
       },
-      "started_at_utc": "2026-10-15T17:56:54Z",
-      "finished_at_utc": "2026-10-15T17:57:06Z"
+      "started_at_utc": "2026-10-15T18:03:43Z",
+      "finished_at_utc": "2026-10-15T18:03:54Z"
     },
     "municipios_malha": {
       "source_dbf": "BR_Municipios_2025.dbf",
@@ -635,14 +638,24 @@
       "output_sha256": "f8a18a1405a2d975ca5d0b07d229c50126d8d678f1995162778200b17689e022"
     },
     "municipios_api": {
-      "status": "erro",
-      "error": "UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte"
+      "url": "https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
+      "file": "municipios_api.json",
+      "bytes": 2470036,
+      "sha256": "86ecdccdf97d72e7e5e46f0854cfcea8bacc28154cc1bc4ed0e6110e3a6c9c02",
+      "http": {
+        "Last-Modified": null,
+        "ETag": null,
+        "Content-Length": null,
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Encoding": "gzip"
+      },
+      "started_at_utc": "2026-10-15T18:03:54Z",
+      "finished_at_utc": "2026-10-15T18:03:56Z",
+      "count": 5571
     }
   },
   "blocked": [],
-  "warnings": [
-    "IBGE API de localidades indisponível: 'utf-8' codec can't decode byte 0x8b in position 1: invalid start byte"
-  ],
-  "run_finished_utc": "2026-10-15T17:57:08Z",
+  "warnings": [],
+  "run_finished_utc": "2026-10-15T18:03:56Z",
   "status": "ok"
 }
