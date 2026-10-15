@@ -63,3 +63,13 @@ jobs:
           print(f"- HTTP {code} · {len(h):,} bytes · sinais de dados no HTML: {sinais}")
           PY
           done
+      - name: Publicar resultado como anotações (legíveis pela API)
+        if: always()
+        run: |
+          python - <<'PY'
+          import os
+          for linha in open(os.environ["GITHUB_STEP_SUMMARY"], encoding="utf-8"):
+              linha = linha.strip().replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+              if linha:
+                  print(f"::notice title=diagnostico::{linha[:900]}")
+          PY
