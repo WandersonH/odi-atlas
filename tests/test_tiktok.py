@@ -103,3 +103,29 @@ class TestPlataformas(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestMencoes(unittest.TestCase):
+    def test_mencoes_e_rede(self):
+        try:
+            import build_rede_mencoes_tiktok as bm
+        except ImportError:
+            self.skipTest("networkx ausente")
+        self.assertEqual(bm.mencoes("Com @FernandoHaddadOficial e @lulaoficial. email a@b.com"), {"fernandohaddadoficial", "lulaoficial"})
+        base = {k: "" for k in ct.COLS}
+        rows = [{**base, "candidate_id": "280002542548", "candidate_name": "Lula", "perfil": "alck", "video_id": str(i),
+                 "publicado_em": "2026-09-01T00:00:00Z", "legenda": "com @lulaoficial @simonetebet", "url": "u"} for i in range(3)]
+        rows += [{**base, "candidate_id": "280002551544", "candidate_name": "Flávio", "perfil": "fb", "video_id": "9",
+                  "publicado_em": "2026-09-01T00:00:00Z", "legenda": "com @nikolas e @fb", "url": "u"},
+                 {**base, "candidate_id": "280002542548", "candidate_name": "Lula", "perfil": "vazio", "video_id": "8",
+                  "publicado_em": "2026-09-01T00:00:00Z", "legenda": "sem marcação", "url": "u"},
+                 {**base, "candidate_id": "280002542548", "candidate_name": "Lula", "perfil": "alck", "video_id": "7",
+                  "publicado_em": "2026-07-01T00:00:00Z", "legenda": "@antes", "url": "u"}]
+        g = bm.montar(rows)
+        self.assertEqual(g["alck"]["lulaoficial"]["weight"], 3)
+        self.assertNotIn("antes", g)            # antes de 16/08 fica fora
+        self.assertFalse(g.has_edge("fb", "fb"))  # automenção não conta
+        self.assertEqual(g.nodes["nikolas"]["frac_lula"], 0.0)
+        bm.posicionar(g)
+        self.assertNotIn("vazio", g)            # perfil sem marcação sai do desenho
+        self.assertLess(g.nodes["lulaoficial"]["x"], g.nodes["nikolas"]["x"])  # Lula à esquerda, Flávio à direita

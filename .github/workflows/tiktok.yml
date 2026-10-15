@@ -44,6 +44,7 @@ jobs:
           python scripts/chd_reinert.py --plataforma tiktok
           python scripts/concordancia.py --plataforma tiktok
           python scripts/build_rede.py --plataforma tiktok
+          python scripts/build_rede_mencoes_tiktok.py
       - name: Resumo
         if: always()
         run: |

@@ -6,6 +6,33 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C7.3] 2026-10-15 — Mapa estadual de verdade no Trends; rede de menções do TikTok; perfis do TikTok com a última leitura bem-sucedida
+
+**Mudou**
+- **Trends por UF:** o mapa em grade virou **mapa do Brasil por estado** (pedido: "isso deveria ser um mapa, não?").
+  - Malha `data/geo/2025/brasil_ufs.json` (27 UFs, 157 KB), obtida dissolvendo por UF a malha nacional de municípios (mapshaper). O `build_geo.sh` também a gera.
+  - Rótulos com UF e divisão Lula·Flávio; dica com os valores ao passar o cursor. A tabela continua ao lado.
+- **Rede de menções do TikTok** (o usuário escolheu só a rede grátis): `scripts/build_rede_mencoes_tiktok.py`.
+  - **Rede:** dirigida, perfil da campanha → conta marcada com @ na legenda; peso = nº de vídeos.
+  - **Saídas:** JSON, GEXF, CSV de nós e arestas, e CSV de vídeos com link.
+  - **Disposição:** um bloco por campanha (Lula à esquerda, Flávio à direita). Perfis sem marcação saem do desenho e ficam listados.
+  - **Página:** bloco "Quem as campanhas marcam no TikTok" no caderno 15; o clique mostra os vídeos de cada marcação. Roda no `tiktok.yml`.
+- **Etiquetas dos perfis do TikTok:** antes mostravam só o resultado da última tentativa, o que fazia parecer que "não leu nada" depois de um bloqueio. Agora mostram **quantos vídeos e quando foi a última leitura bem-sucedida**, e marcam se a última tentativa foi bloqueada. O status geral explica que os números são da última leitura boa.
+
+**Testado**
+- ✅ Testes: 74 OK (novo: extração de @, peso, corte por data, automenção, posição por campanha, perfil sem marcação).
+- ✅ Rede de menções (acervo de 2026-10-15 21:57 UTC):
+  - 25 contas e 23 ligações no desenho;
+  - Lula: 99 marcações para 17 contas, a partir de 2 perfis (@alckmingeraldo → @lulaoficial 19, @presidente 16, @fernandohaddadoficial 13, @marciofrancasp 13, @marinasilvaoficial 12, @simonetebet 12);
+  - Flávio: 9 marcações para 6 contas (@flaviobolsonaro → @bolsonaromessiasjair 4, @nikolas, @sargentofahur.oficial…);
+  - sem marcação no período: @brasilcomlula_ e @pode_espalhar.
+- ✅ Chromium headless (1400×900 e 390×844):
+  - Trends: 27 estados no mapa, 48 itens de relacionados;
+  - TikTok: 25 nós e 23 setas; etiqueta "@alckmingeraldo · Lula · 80 vídeos · lido em 15/10, 18:57 · ⛔ última tentativa bloqueada";
+  - sem rolagem horizontal.
+
+---
+
 ## [D1.1] 2026-10-15 — Diagnóstico: rede de quem fala dos candidatos no TikTok (páginas de hashtag)
 
 **Por quê:** pedido do usuário, uma rede do TikTok como a de influenciadores do YouTube (contas que falaram de Lula/Flávio ou pediram voto).

@@ -564,7 +564,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .gt-legend{display:flex;flex-wrap:wrap;gap:14px;font:11px 'Courier New',monospace;color:#3c4a58;margin-top:8px}.gt-legend i{display:inline-block;width:14px;height:3px;vertical-align:3px;margin-right:5px}
 .gt-legend .gt-sq{width:11px;height:11px;vertical-align:-1px}
 .gt-geo>div{min-width:0}.gt-geo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;margin:12px 0}
-.gt-tiles{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;max-width:470px}
+.gt-tiles{max-width:560px}.gt-map{width:100%;height:auto;display:block}.gt-map path{stroke:#fffdf8;stroke-width:1;vector-effect:non-scaling-stroke}.gt-map path:hover{stroke:#172238;stroke-width:2}.gt-map text{fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.35);stroke-width:2px;pointer-events:none}
 .gt-tile{aspect-ratio:1/1;min-width:0;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font:700 13px/1.1 'Courier New',monospace;cursor:default}
 .gt-tile small{font-weight:400;font-size:10px;opacity:.92}
 .gt-tbl{width:100%;border-collapse:collapse;font-size:12px}.gt-tbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px 'Courier New',monospace;text-transform:uppercase;padding:7px 8px;text-align:left}
@@ -586,7 +586,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .tk-h2{margin:2px 0 8px;font:700 21px/1.2 Georgia,'Times New Roman',serif;color:#172238}
 .tk-perfis{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
 .tk-perfil{font:11px/1.2 'Courier New',monospace;border:1px solid #c9d1d6;padding:5px 8px;background:#fffdf8;color:#2c3a48}
-.tk-perfil b{font-weight:700}.tk-perfil.tk-off{border-color:#b03030;color:#8a1f1f;background:#fbeeee}
+.tk-perfil b{font-weight:700}.tk-perfil.tk-old{border-color:#c9a227;background:#fbf6e6}.tk-perfil.tk-off{border-color:#b03030;color:#8a1f1f;background:#fbeeee}
 .tk-tl{margin:12px 0}.tk-tlwrap{overflow-x:auto}#tkTimeline{display:block;min-width:720px;width:100%;height:auto}
 #tkTimeline circle{cursor:pointer;stroke:#fffdf8;stroke-width:1}#tkTimeline circle:hover{stroke:#172238;stroke-width:2}
 #tkTimeline text{font:10px 'Courier New',monospace;fill:#53606b}
@@ -597,6 +597,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .tk-item p{margin:0 0 4px;font:13px/1.35 Georgia,serif;color:#172238}
 .yt-detail[hidden]{display:none!important}.tk-detail{grid-template-columns:325px 1fr}.tk-detail iframe{width:325px;height:578px;border:0;background:#000}
 @media (max-width:800px){.tk-detail{grid-template-columns:1fr}.tk-detail iframe{width:100%;max-width:325px}}
+#tkMen{width:100%;height:auto;aspect-ratio:4/3;display:block}#tkMen circle{cursor:pointer}#tkMen text{font:700 11px 'Courier New',monospace;fill:#172238;paint-order:stroke;stroke:#fffdf8;stroke-width:3px;pointer-events:none}
+#tkMen.yt-focus .tk-dim{opacity:.12}
 </style>
 </head>
 <body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 15 CADERNOS</div><nav class="nav" id="nav">
@@ -945,6 +947,18 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
       <a class="ghostbutton" href="./data/tiktok/rede.gexf" download>Rede · GEXF</a>
       <p class="yt-cloudnote">No Gephi: <b>Arquivo → Abrir → rede.gexf</b> (já vem com posição, cor e comunidade), ou <b>Laboratório de dados → Importar planilha</b> com nós e depois arestas (tipo não direcionado). A planilha “vídeo × termos” lista, para cada vídeo, os termos da rede que ele contém: o peso de qualquer aresta é o nº de linhas em que os dois termos aparecem juntos.</p></div>
     <p class="yt-cloudnote" id="tkNetNote"></p>
+  </div>
+  <div class="card yt-net tk-men">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções</div><h2>Quem as campanhas marcam no TikTok</h2></div></div>
+    <div class="yt-netbody"><div class="yt-netsvg"><svg id="tkMen" role="img" aria-label="Rede de menções das campanhas no TikTok"></svg>
+      <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
+      <aside class="yt-netside" id="tkMenSide"></aside></div>
+    <div class="yt-netdl"><span class="eyebrow">Planilhas (conferência e Gephi)</span>
+      <a class="ghostbutton" href="./data/tiktok/rede_mencoes_nos.csv" download>Contas · CSV</a>
+      <a class="ghostbutton" href="./data/tiktok/rede_mencoes_arestas.csv" download>Marcações · CSV</a>
+      <a class="ghostbutton" href="./data/tiktok/rede_mencoes_videos.csv" download>Vídeos · CSV</a>
+      <a class="ghostbutton" href="./data/tiktok/rede_mencoes.gexf" download>Rede · GEXF</a></div>
+    <p class="yt-cloudnote" id="tkMenNote"></p>
   </div>
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="tkMethod"></p>
     <p>Coleta grátis com o programa aberto yt-dlp, sem login, só metadados públicos (legenda, visualizações, curtidas, comentários, compartilhamentos); o texto dos comentários não é coletado. O TikTok bloqueia servidores de forma intermitente: cada perfil tem 3 tentativas por coleta, duas coletas por dia, e um perfil bloqueado mantém os números da última coleta bem-sucedida (marcado ⛔ acima). A data de publicação vem do próprio ID do vídeo. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações. Dados: <a href="./data/tiktok/conteudo.json" target="_blank" rel="noopener">conteudo.json</a> · <a href="./data/tiktok/videos.csv.gz" download>acervo CSV</a> · <a href="./data/tiktok/manifesto_latest.json" target="_blank" rel="noopener">manifesto</a>.</p></div>
@@ -1905,14 +1919,24 @@ h+=`<path d="${d}" fill="none" stroke="${cor(t)}" stroke-width="${c.termos.lengt
 h+='</svg>';$('gtChart').innerHTML=h;
 $('gtLegend').innerHTML=c.termos.map(t=>`<span><i style="background:${cor(t)}"></i>${esc(t)}</span>`).join('')+'<span><i style="background:repeating-linear-gradient(90deg,#5d6a76 0 3px,transparent 3px 6px)"></i>tracejado = período ainda incompleto</span>';
 $('gtChartTitle').textContent=(NOME_GRUPO[c.grupo]||c.grupo)+' · '+(NOME_PER[c.periodo]||c.periodo);}
-function mapa(c){const iL=c.termos.indexOf('Lula'),iF=c.termos.indexOf('Flávio Bolsonaro');const dois=c.termos.length===2&&iL>=0&&iF>=0;
-const by={};c.uf.forEach(u=>by[u.uf]=u);let h='';
-for(let r=0;r<7;r++)for(let col=0;col<7;col++){const uf=Object.keys(GRADE).find(k=>GRADE[k][0]===col&&GRADE[k][1]===r);if(!uf){h+='<div></div>';continue;}
-const u=by[uf];if(!u||u.v.every(v=>v==null)){h+=`<div class="gt-tile" style="background:#c9d1d6" title="${uf}: sem dado">${uf}<small>—</small></div>`;continue;}
-let bg,lab;if(dois){const l=u.v[iL]||0,f=u.v[iF]||0,fr=l+f?l/(l+f):.5;bg=mix('#c8102e','#1f8a3b',Math.max(0,Math.min(1,(fr-.35)/.3)));lab=`${l}·${f}`;}
-else{const mx=Math.max(...u.v.filter(v=>v!=null));const i=u.v.indexOf(mx);bg=cor(c.termos[i]);lab=`${esc(c.termos[i].split(' ')[0])} ${mx}%`;}
-h+=`<div class="gt-tile" style="background:${bg}" title="${esc(u.nome)}: ${c.termos.map((t,i)=>t+' '+(u.v[i]??'—')+'%').join(' · ')}">${uf}<small>${lab}</small></div>`;}
-$('gtTiles').innerHTML=h;$('gtMapTitle').textContent=dois?'Divisão do interesse entre Lula e Flávio':'Quem lidera o interesse em cada UF';
+let UFGEO=null;
+async function geoUF(){if(UFGEO)return UFGEO;const r=await fetch('./data/geo/2025/brasil_ufs.json');if(!r.ok)throw new Error('malha estadual HTTP '+r.status);const g=await r.json();
+let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;const polys=f=>f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates;
+g.features.forEach(f=>polys(f).forEach(p=>p.forEach(r=>r.forEach(([x,y])=>{x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}))));
+const k=Math.cos((y0+y1)/2*Math.PI/180),sc=600/Math.max((x1-x0)*k,y1-y0),P=([x,y])=>[(x-x0)*k*sc,(y1-y)*sc];
+UFGEO={W:(x1-x0)*k*sc,H:(y1-y0)*sc,ufs:g.features.map(f=>{let d='',best=null,ba=0;polys(f).forEach(p=>{const ring=p[0].map(P);d+='M'+ring.map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join('L')+'Z';p.slice(1).forEach(h=>{d+='M'+h.map(P).map(q=>q[0].toFixed(1)+','+q[1].toFixed(1)).join('L')+'Z';});
+let A=0,cx=0,cy=0;for(let i=0,j=ring.length-1;i<ring.length;j=i++){const t=ring[j][0]*ring[i][1]-ring[i][0]*ring[j][1];A+=t;cx+=(ring[j][0]+ring[i][0])*t;cy+=(ring[j][1]+ring[i][1])*t;}
+if(Math.abs(A)>ba){ba=Math.abs(A);best=[cx/(3*A),cy/(3*A)];}});return {uf:f.properties.SIGLA_UF,d,c:best};})};return UFGEO;}
+async function mapa(c){const iL=c.termos.indexOf('Lula'),iF=c.termos.indexOf('Flávio Bolsonaro');const dois=c.termos.length===2&&iL>=0&&iF>=0;
+const by={};c.uf.forEach(u=>by[u.uf]=u);
+const corUF=u=>{if(!u||u.v.every(v=>v==null))return ['#dfe3e6','sem dado'];if(dois){const l=u.v[iL]||0,f=u.v[iF]||0,fr=l+f?l/(l+f):.5;return [mix('#c8102e','#1f8a3b',Math.max(0,Math.min(1,(fr-.35)/.3))),`${l}·${f}`];}
+const mx=Math.max(...u.v.filter(v=>v!=null));const i=u.v.indexOf(mx);return [cor(c.termos[i]),`${c.termos[i].split(' ')[0]} ${mx}%`];};
+let G;try{G=await geoUF();}catch(e){$('gtTiles').innerHTML='<p class="yt-meta">⛔ '+esc(e.message)+'</p>';return;}
+const peq=new Set(['DF','SE','AL','PB','RN','ES','RJ']);
+let h=`<svg class="gt-map" viewBox="-5 -5 ${(G.W+10).toFixed(0)} ${(G.H+10).toFixed(0)}" role="img" aria-label="Mapa do Brasil por UF">`;
+G.ufs.forEach(g=>{const u=by[g.uf];const [bg]=corUF(u);h+=`<path d="${g.d}" fill="${bg}" data-uf="${g.uf}"><title>${esc(u?u.nome:g.uf)}: ${u?c.termos.map((t,i)=>t+' '+(u.v[i]??'—')+'%').join(' · '):'sem dado'}</title></path>`;});
+G.ufs.forEach(g=>{if(!g.c)return;const u=by[g.uf];const [,lab]=corUF(u);const s=peq.has(g.uf)?8:11;h+=`<text x="${g.c[0].toFixed(1)}" y="${g.c[1].toFixed(1)}" text-anchor="middle" style="font:700 ${s}px 'Courier New',monospace">${g.uf}</text>`+(peq.has(g.uf)?'':`<text x="${g.c[0].toFixed(1)}" y="${(g.c[1]+11).toFixed(1)}" text-anchor="middle" style="font:9px 'Courier New',monospace">${esc(lab)}</text>`);});
+$('gtTiles').innerHTML=h+'</svg>';$('gtMapTitle').textContent=dois?'Divisão do interesse entre Lula e Flávio':'Quem lidera o interesse em cada UF';
 $('gtMapLegend').innerHTML=dois?`<span>número = Lula·Flávio (%)</span><span><i class="gt-sq" style="background:#c8102e"></i>65%+ Lula</span><span><i class="gt-sq" style="background:${mix('#c8102e','#1f8a3b',.5)}"></i>equilíbrio</span><span><i class="gt-sq" style="background:#1f8a3b"></i>65%+ Flávio</span>`:c.termos.map(t=>`<span><i class="gt-sq" style="background:${cor(t)}"></i>${esc(t)}</span>`).join('');
 const rows=[...c.uf].sort((a,b)=>(b.v[iL>=0?iL:0]??-1)-(a.v[iL>=0?iL:0]??-1));
 $('gtTbl').innerHTML=`<thead><tr><th>UF</th>${c.termos.map(t=>`<th style="color:${cor(t)==='#3c4a58'?'#fff':'#fff'}">${esc(t.split(' ')[0])} %</th>`).join('')}</tr></thead><tbody>${rows.map(u=>`<tr><td>${esc(u.nome)}</td>${u.v.map((v,i)=>`<td class="n" style="color:${cor(c.termos[i])};font-weight:${v===Math.max(...u.v.filter(x=>x!=null))?700:400}">${v??'—'}</td>`).join('')}</tr>`).join('')}</tbody>`;}
@@ -1992,7 +2016,11 @@ const data=iso=>iso?new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',mont
 const passa=v=>(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
-function perfis(){$('tkPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>`<span class="tk-perfil ${p.status==='ok'||p.status==='sem vídeos públicos'?'':'tk-off'}" title="${esc(p.status)} · ${p.tentativas} tentativa(s)"><b>@${esc(p.perfil)}</b> · ${esc(p.candidate_name)} · ${p.status==='ok'?fmt(p.videos_desde_inicio_campanha)+' vídeos desde 16/08':p.status==='sem vídeos públicos'?'sem vídeos públicos':'⛔ não lido nesta coleta'}</span>`).join('');}
+function perfis(){const quando=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'';
+$('tkPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>{const vazio=p.status==='sem vídeos públicos',ok=p.status==='ok',tem=p.videos_desde_16_08>0;
+const dado=tem?`${fmt(p.videos_desde_16_08)} vídeos · lido em ${quando(p.ultima_leitura_ok)}`:(vazio?'sem vídeos públicos':'nunca lido');
+const agora=ok||vazio?'':' · ⛔ última tentativa bloqueada';
+return `<span class="tk-perfil ${ok||vazio?'':(tem?'tk-old':'tk-off')}" title="${esc(p.status)} · ${p.tentativas} tentativa(s)"><b>@${esc(p.perfil)}</b> · ${esc(p.candidate_name)} · ${dado}${agora}</span>`;}).join('');}
 function chips(){const tot={};for(const c of [L,F])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[L].total_videos+D.candidatos[F].total_videos;
 $('tkChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
 $('tkChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
@@ -2023,7 +2051,9 @@ async function carregar(){if(feito)return;feito=true;
 try{const r=await fetch('./data/tiktok/conteudo.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);D=await r.json();}
 catch(err){$('tkStatus').textContent='⛔ Base do TikTok indisponível ('+err.message+').';feito=false;return;}
 const a=D.candidatos[L],b=D.candidatos[F];const ok=(D.perfis_coleta||[]).filter(p=>p.status==='ok').length,tot=(D.perfis_coleta||[]).length;
-$('tkStatus').textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio desde 16/08/2026 · última coleta ${(D.coletado_em_utc||'').replace('T',' ').slice(0,16)} UTC (${D.ferramenta||'yt-dlp'}) · ${ok} de ${tot} perfis lidos${ok<tot?' — os bloqueados mantêm os dados da última coleta bem-sucedida':''}.`;
+const hora=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'—';
+const comDados=(D.perfis_coleta||[]).filter(p=>p.videos_desde_16_08>0).length;
+$('tkStatus').textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio desde 16/08/2026, de ${comDados} perfis. `+(ok===0?`A tentativa mais recente (${hora(D.coletado_em_utc)}) foi bloqueada pelo TikTok em todos os perfis; os números abaixo são da última leitura bem-sucedida de cada perfil (data em cada etiqueta). Nova tentativa às 07h35 e 19h35.`:`Tentativa mais recente (${hora(D.coletado_em_utc)}): ${ok} de ${tot} perfis lidos${ok<tot?'; os demais mantêm a última leitura bem-sucedida':''}.`)+` Ferramenta: ${D.ferramenta||'yt-dlp'}.`;
 $('tkMethod').textContent=D.metodo;perfis();nuvem($('tkCloudA'),a.nuvem);nuvem($('tkCloudB'),b.nuvem);hashtags('tkTagsA',a.hashtags);hashtags('tkTagsB',b.hashtags);
 $('tkOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$('tkOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});render();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
@@ -2132,6 +2162,35 @@ document.querySelectorAll('#tkContent [data-tkview]').forEach(b=>b.addEventListe
 document.getElementById('tkNetSearch').addEventListener('input',ev=>{busca=ev.target.value;tabela();});
 document.getElementById('tkNetReset').addEventListener('click',()=>{vb=[-40,-40,1080,1080];fixo=false;sel=null;desenhar();});
 zoomPan();desenhar();}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+if(sec.classList.contains('active'))carregar();
+})();
+</script>
+
+<script>
+/* Caderno 15 · rede de menções (data/tiktok/rede_mencoes.json) — quem as campanhas marcam com @ */
+(function(){
+const sec=document.getElementById('tkContent');if(!sec)return;let R=null,feito=false,sel=null;
+const $=id=>document.getElementById(id);const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n||0).toLocaleString('pt-BR');
+function lado(){const side=$('tkMenSide');if(!sel){const top=[...R.nos].filter(n=>n.tipo==='marcada').sort((a,b)=>b.marcacoes_recebidas-a.marcacoes_recebidas).slice(0,10);
+const rs=R.resumo;side.innerHTML=`<h4>Como ler</h4><p>Cada seta sai de um perfil de campanha (círculo vazado) para uma conta que ele marcou com @ na legenda; a espessura é o número de vídeos. Mostra com quem cada campanha se associa — aliados, adversários, os próprios perfis.</p><p class="yt-meta"><span style="color:#c8102e">Lula: ${rs['280002542548'].contas_marcadas} contas, ${rs['280002542548'].marcacoes} marcações</span><br><span style="color:#1f8a3b">Flávio: ${rs['280002551544'].contas_marcadas} contas, ${rs['280002551544'].marcacoes} marcações</span></p><div class="eyebrow" style="margin-top:8px">Mais marcadas</div><ol>${top.map(n=>`<li>@${esc(n.id)} <span class="yt-meta">${n.marcacoes_recebidas}</span></li>`).join('')}</ol>${(R.perfis_sem_marcacao||[]).length?`<p class="yt-meta" style="margin-top:8px">Perfis de campanha sem nenhuma marcação no período (fora do desenho): ${R.perfis_sem_marcacao.map(x=>'@'+esc(x)).join(', ')}.</p>`:''}`;return;}
+const n=R.nos.find(x=>x.id===sel);const ar=R.arestas.filter(a=>a.de===sel||a.para===sel);
+side.innerHTML=`<h4>@${esc(n.id)}</h4><p class="yt-meta">${n.tipo==='campanha'?'perfil da campanha de '+esc(n.candidato):'conta marcada'} · recebeu ${n.marcacoes_recebidas} · fez ${n.marcacoes_feitas}</p>${ar.map(a=>`<div class="yt-meta" style="margin-top:8px"><b>@${esc(a.de)} → @${esc(a.para)}</b> · ${a.peso} vídeo(s)</div><ol>${a.videos.map(v=>`<li><a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.legenda||'(sem legenda)')}</a></li>`).join('')}</ol>`).join('')}<p><a class="ghostbutton" href="https://www.tiktok.com/@${encodeURIComponent(n.id)}" target="_blank" rel="noopener">Abrir perfil ↗</a></p>`;}
+function desenhar(){const svg=$('tkMen');const by={};R.nos.forEach(n=>by[n.id]=n);const mx=Math.max(1,...R.arestas.map(a=>a.peso));
+let h='<defs><marker id="tkArr" viewBox="0 0 10 10" refX="10" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#5d6a76"/></marker></defs>';
+const r=n=>n.tipo==='campanha'?14:5+Math.sqrt(n.marcacoes_recebidas)*3;
+for(const a of R.arestas){const p=by[a.de],q=by[a.para];const dx=q.x-p.x,dy=q.y-p.y,L=Math.hypot(dx,dy)||1,rr=r(q)+3;
+h+=`<line x1="${p.x}" y1="${p.y}" x2="${(q.x-dx/L*rr).toFixed(1)}" y2="${(q.y-dy/L*rr).toFixed(1)}" stroke="${p.cor}" stroke-opacity=".55" stroke-width="${(1+5*a.peso/mx).toFixed(1)}" marker-end="url(#tkArr)" data-a="${esc(a.de)}" data-b="${esc(a.para)}"/>`;}
+for(const n of R.nos){h+=n.tipo==='campanha'?`<circle cx="${n.x}" cy="${n.y}" r="${r(n)}" fill="#fffdf8" stroke="${n.cor}" stroke-width="4" data-id="${esc(n.id)}"><title>@${esc(n.id)} (campanha de ${esc(n.candidato)})</title></circle>`:`<circle cx="${n.x}" cy="${n.y}" r="${r(n).toFixed(1)}" fill="${n.cor}" data-id="${esc(n.id)}"><title>@${esc(n.id)} · marcada ${n.marcacoes_recebidas}×</title></circle>`;
+h+=`<text x="${n.x+r(n)+3}" y="${n.y+4}" data-id="${esc(n.id)}">@${esc(n.id)}</text>`;}
+svg.setAttribute("viewBox","-20 20 1220 960");svg.innerHTML=h;
+svg.querySelectorAll('circle').forEach(c=>c.addEventListener('click',ev=>{ev.stopPropagation();sel=sel===c.dataset.id?null:c.dataset.id;foco();}));svg.addEventListener('click',()=>{sel=null;foco();});}
+function foco(){const svg=$('tkMen');svg.classList.toggle('yt-focus',!!sel);const viz=new Set([sel]);R.arestas.forEach(a=>{if(a.de===sel)viz.add(a.para);if(a.para===sel)viz.add(a.de);});
+svg.querySelectorAll('circle,text').forEach(e=>e.classList.toggle('tk-dim',!!sel&&!viz.has(e.dataset.id)));svg.querySelectorAll('line').forEach(e=>e.classList.toggle('tk-dim',!!sel&&e.dataset.a!==sel&&e.dataset.b!==sel));lado();}
+async function carregar(){if(feito)return;feito=true;try{const r=await fetch('./data/tiktok/rede_mencoes.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);R=await r.json();}
+catch(e){$('tkMenSide').innerHTML='<p>⛔ Rede de menções indisponível ('+esc(e.message)+').</p>';feito=false;return;}
+$('tkMenNote').textContent=R.metodo;desenhar();lado();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
 })();

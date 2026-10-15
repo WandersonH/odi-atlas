@@ -49,10 +49,17 @@ def main(argv=None) -> int:
     man = json.loads(man_p.read_text(encoding="utf-8")) if man_p.exists() else {}
     # adapta ao formato do YouTube: perfil = canal, legenda = descrição
     pseudo = [{"channel_id": r["perfil"], "titulo": "", "descricao": r["legenda"]} for r in rows]
+    # última leitura bem-sucedida de cada perfil (a tentativa mais recente pode ter sido bloqueada)
+    acervo_perfil = {}
+    for r in rows:
+        a = acervo_perfil.setdefault(r["perfil"], {"videos_desde_16_08": 0, "ultima_leitura_ok": ""})
+        a["videos_desde_16_08"] += int(r["publicado_em"] >= "2026-08-16")
+        a["ultima_leitura_ok"] = max(a["ultima_leitura_ok"], r["ultima_coleta"] or "")
     padrao = bc.texto_padrao(pseudo)
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "coletado_em_utc": man.get("run_started_utc"), "status_coleta": man.get("status"),
-           "ferramenta": man.get("ferramenta"), "perfis_coleta": man.get("perfis", []),
+           "ferramenta": man.get("ferramenta"), "perfis_coleta": [{**p, **acervo_perfil.get(p["perfil"], {"videos_desde_16_08": 0, "ultima_leitura_ok": ""})}
+                             for p in man.get("perfis", [])],
            "fonte": "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)",
            "metodo": cfg["nota"] + f" Mesmas regras do caderno 13 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
            "temas": list(cfg["temas"]) + ["sem_tema"], "candidatos": {}}
