@@ -13,6 +13,7 @@ Protótipo de observatório acadêmico do **Observatório de Desinformação e I
 | `tests/` | Testes com arquivos sintéticos (filtro de cargo/turno, deduplicação entre arquivos BR e UF, conflitos, encoding Latin-1, execução completa sem rede). **Não substituem** a execução real. |
 | `.github/workflows/p1-fontes.yml` | Executa a P1 no GitHub Actions: manual ou toda segunda-feira. |
 | `data/manifest/` | Manifestos de cada execução (gerados pelo workflow). |
+| `CHANGELOG.md` | **Registro de cada versão**: o que mudou, o que foi testado, pendências e evidências. |
 | Releases `fontes-*` | ZIPs originais exatamente como baixados, imutáveis. |
 
 ## Como a proveniência funciona
