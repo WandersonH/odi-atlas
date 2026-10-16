@@ -6,6 +6,36 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C9.1] 2026-10-15 — Caderno 16 (comentários do YouTube) e WhatsApp na página; primeiros runs reais
+
+**Mudou**
+- Página: novo **caderno 16 · Audiência · comentários YouTube**, só com agregados:
+  - números por candidato;
+  - nuvens de palavras;
+  - intolerância/incivilidade e populismo em barras pareadas (vermelho/verde);
+  - aderência ao tema do vídeo;
+  - série diária (sem o dia da coleta);
+  - classes da CHD;
+  - método e downloads.
+- Caderno 02 ganhou o cartão "Canais de WhatsApp · seguidores", lido de `data/whatsapp/seguidores.csv`.
+- `whatsapp_canais.json`: o segundo canal é o "Canal do Lula", nome lido da página; lado = Lula. A primeira linha da planilha recebeu o mesmo rótulo de lado (configuração, não medida).
+
+**Testado (dados reais)**
+- ✅ Run `38827011582` (comentarios-youtube): 1.012 vídeos, 2.024 chamadas (= unidades de cota) e 151.484 registros lidos; 128.125 após remover os repetidos entre "relevância" e "recentes". Um vídeo deu HTTP 400.
+  - Lula: 63.386 comentários e 11.253 respostas em 641 vídeos, 31.272 autores; incivilidade 1,55%, intolerância 0,75%, copiar e colar 1,42%.
+  - Flávio: 48.485 comentários e 5.000 respostas em 371 vídeos, 22.734 autores; incivilidade 1,53%, intolerância 0,52%, copiar e colar 3,8%.
+  - CHD: 6 classes por candidato, com 99,6% e 99,8% da amostra classificada.
+  - Rodou em **modo efêmero**: o segredo `ODI_INTERNO_TOKEN` não existe, então o texto bruto foi descartado no fim do run e a amostra humana não foi gravada.
+- ✅ Run `38827172627` (whatsapp): EXÉRCITO DO LULA "4,6 mi seguidores" → 4.600.000; Canal do Lula "1,7 mi seguidores" → 1.700.000.
+- ✅ Chromium 1300 px e 390 px: cadernos 16 e 02 sem erro de console e sem rolagem horizontal.
+
+**Pendente**
+- ⛔ `ODI_INTERNO_TOKEN` (segredo do repositório público, criado pelo usuário: token fino só para `odi-atlas-interno`, Contents read/write). Sem ele não há texto guardado, amostra para codificação nem corpus IRaMuTeQ.
+- ⚠️ Percentuais de intolerância vêm de pré-codificação por palavras; validar com a amostra humana (kappa) antes de citar.
+- 🔜 Links dos demais canais de WhatsApp.
+
+---
+
 ## [D2.0] 2026-10-15 — WhatsApp: seguidores diários dos canais (planilha)
 
 **Por quê:** pedido do usuário: "extraia os números dessas páginas diariamente e grave no nosso banco em uma planilha". Links enviados: Exército do Lula (`0029VbCbRfD7tkj88k3soZ0Y`, repetido 3 vezes na mensagem) e `0029VaDH1GU7DAWpJTrCXH39` (nome a confirmar pela própria página).
