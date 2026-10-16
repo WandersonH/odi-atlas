@@ -6,6 +6,22 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [D2.0] 2026-10-15 — WhatsApp: seguidores diários dos canais (planilha)
+
+**Por quê:** pedido do usuário: "extraia os números dessas páginas diariamente e grave no nosso banco em uma planilha". Links enviados: Exército do Lula (`0029VbCbRfD7tkj88k3soZ0Y`, repetido 3 vezes na mensagem) e `0029VaDH1GU7DAWpJTrCXH39` (nome a confirmar pela própria página).
+
+**Mudou**
+- `scripts/collect_whatsapp.py`: lê a página pública `whatsapp.com/channel/<id>`, com nome e número de seguidores. Converte "45,6 mil", "1,2 mi" e "2.1M" e grava também o texto original.
+- `data/config/whatsapp_canais.json`: lista de canais.
+- Saída: `data/whatsapp/seguidores.csv` (histórico, uma linha por dia e canal; abre no Excel/Sheets), `seguidores_latest.csv` e `manifesto_latest.json`.
+- `.github/workflows/whatsapp.yml`, diário às 08h05 BRT.
+
+**Testado**
+- ✅ `tests/test_whatsapp.py` (4 testes, HTML fictício).
+- ⛔ Este ambiente não alcança whatsapp.com (proxy 403). A leitura real depende do run no GitHub Actions. Se a página não trouxer o número, o manifesto grava o começo do texto visível para diagnóstico.
+
+---
+
 ## [C9.0] 2026-10-15 — Comentários do YouTube: coleta, livro de códigos de intolerância e análise agregada (pipeline)
 
 **Por quê:** pedido do usuário: "análise de discurso dos comentários do YouTube por candidato". Ele escolheu guardar o texto no repositório privado `odi-atlas-interno`, criado hoje.

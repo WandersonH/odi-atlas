@@ -1,0 +1,50 @@
+name: WhatsApp — seguidores dos canais
+
+# Número público de seguidores de canais de WhatsApp (data/config/whatsapp_canais.json), uma leitura por dia.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "5 11 * * *"   # todo dia, 08h05 em Brasília
+
+concurrency:
+  group: whatsapp
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  whatsapp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes do coletor
+        run: python -m unittest tests.test_whatsapp
+      - name: Ler os canais
+        id: coleta
+        continue-on-error: true
+        run: python scripts/collect_whatsapp.py
+      - name: Resumo e anotações
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, pathlib
+          p = pathlib.Path("data/whatsapp/manifesto_latest.json")
+          if not p.exists(): raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+              f.write(f"## WhatsApp — {m['status']}\n")
+              for c in m["canais"]:
+                  f.write(f"- {c.get('nome') or c['canal_id']}: {c.get('seguidores')} ({c.get('texto_original')}) · {c['status']}\n")
+          for c in m["canais"]:
+              nivel = "notice" if c["status"] == "ok" else "warning"
+              print(f"::{nivel} title=WhatsApp {c['canal_id']}::{c['status']} · {c.get('nome')} · {c.get('texto_original')} · {c.get('trecho_pagina','')[:300]}")
+          PY
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "WhatsApp: seguidores (run ${{ github.run_id }})"
