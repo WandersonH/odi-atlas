@@ -44,6 +44,7 @@ jobs:
         continue-on-error: true
         env:
           GOOGLE_CSE_KEY: ${{ secrets.GOOGLE_CSE_KEY || vars.GOOGLE_CSE_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           GOOGLE_CSE_CX: ${{ secrets.GOOGLE_CSE_CX || vars.GOOGLE_CSE_CX }}
         run: python scripts/collect_google_busca.py
       - name: Resumo

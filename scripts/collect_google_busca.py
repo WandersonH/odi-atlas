@@ -56,12 +56,14 @@ def consultar(key: str, cx: str, q: str, n: int, extra: dict) -> tuple[list[dict
 def main(argv=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/google_busca.json").read_text(encoding="utf-8"))
-    key, cx = os.environ.get("GOOGLE_CSE_KEY"), os.environ.get("GOOGLE_CSE_CX")
+    # a chave pode ser a mesma do YouTube (mesmo projeto do Google Cloud, com a Custom Search API ativada)
+    key, cx = os.environ.get("GOOGLE_CSE_KEY") or os.environ.get("YOUTUBE_API_KEY"), os.environ.get("GOOGLE_CSE_CX")
     agora = now_utc()
     out = {"schema_version": 1, "coletado_em_utc": agora, "nota": cfg["nota"], "candidatos": {}, "erros": {}}
     d = root / "data/trends"
     if not key or not cx:
-        out["status"] = "⛔ faltam os segredos GOOGLE_CSE_KEY e/ou GOOGLE_CSE_CX no GitHub"
+        falta = [n for n, v in (("chave (GOOGLE_CSE_KEY ou YOUTUBE_API_KEY)", key), ("ID do mecanismo de busca (GOOGLE_CSE_CX)", cx)) if not v]
+        out["status"] = "⛔ falta no GitHub: " + " e ".join(falta)
         (d / "google_busca.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
         print(out["status"])
         return 1

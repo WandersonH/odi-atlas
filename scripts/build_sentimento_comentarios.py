@@ -15,6 +15,7 @@ import json
 import os
 import re
 import sys
+import time
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -129,17 +130,25 @@ def main(argv=None, classificar=None) -> int:
     pend = [r for r in rows if r["comment_id"] not in cache and (r.get("texto") or "").strip()]
     pend.sort(key=lambda r: r.get("publicado_em", ""), reverse=True)  # mais recentes primeiro
     pend = pend[:cfg["max_por_execucao"]]
-    revisao = ""
+    revisao, feitos, t0 = "", 0, time.monotonic()
     if pend:
         if classificar is None:
             classificar, revisao = classificador(cfg["modelo"], cfg["max_tokens"], cfg["lote"])
-        agora = now_utc()
-        for r, s in zip(pend, classificar([r["texto"] for r in pend])):
-            cache[r["comment_id"]] = {"comment_id": r["comment_id"], **s, "modelo": cfg["modelo"], "revisao": revisao, "classificado_em": agora}
-        with gzip.open(d / "sentimento.csv.gz", "wt", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, CAMPOS_CACHE, delimiter=";", lineterminator="\n")
-            w.writeheader()
-            w.writerows(cache.values())
+        bloco = cfg.get("bloco_gravacao", 2000)
+        for i in range(0, len(pend), bloco):  # grava a cada bloco: um run interrompido não perde o que já fez
+            if time.monotonic() - t0 > cfg.get("tempo_max_minutos", 80) * 60:
+                print(f"tempo máximo atingido: {feitos} classificados neste run, o resto fica para o próximo")
+                break
+            parte = pend[i:i + bloco]
+            agora = now_utc()
+            for r, s in zip(parte, classificar([r["texto"] for r in parte])):
+                cache[r["comment_id"]] = {"comment_id": r["comment_id"], **s, "modelo": cfg["modelo"], "revisao": revisao, "classificado_em": agora}
+            feitos += len(parte)
+            with gzip.open(d / "sentimento.csv.gz", "wt", encoding="utf-8", newline="") as f:
+                w = csv.DictWriter(f, CAMPOS_CACHE, delimiter=";", lineterminator="\n")
+                w.writeheader()
+                w.writerows(cache.values())
+            print(f"  {feitos} classificados ({time.monotonic() - t0:.0f} s)", flush=True)
     rot = {k: v["rotulo"] for k, v in cache.items()}
     nomes = {}
     cj = root / "data/youtube/conteudo.json"
@@ -149,12 +158,12 @@ def main(argv=None, classificar=None) -> int:
     faltam = sum(1 for r in rows if r["comment_id"] not in rot and (r.get("texto") or "").strip())
     revs = sorted({v.get("revisao", "") for v in cache.values()} - {""})
     out = {**base, "status": "ok" if not faltam else f"parcial: faltam {faltam} comentários (próximos runs)",
-           "revisoes_modelo": revs, "classificados_neste_run": len(pend), "classificados_total": len(rot),
+           "revisoes_modelo": revs, "classificados_neste_run": feitos, "classificados_total": len(rot),
            "comentarios_coletados": len(rows), "candidatos": cand}
     saida.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     for c in cand.values():
         print(f"{c['nome']}: {c.get('n')} classificados ({c['cobertura_pct']}%) · positivo {c.get('positivo')}% · negativo {c.get('negativo')}% · neutro {c.get('neutro')}%")
-    print(f"sentimento: {len(pend)} classificados neste run, {faltam} pendentes")
+    print(f"sentimento: {feitos} classificados neste run, {faltam} pendentes")
     return 0
 
 

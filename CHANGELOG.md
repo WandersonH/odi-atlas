@@ -4,6 +4,32 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C12.0 — Anúncios pagos (Meta e Google), sentimento dos comentários do YouTube, chave do Google Busca (2026-10-16) ⚠️
+
+**O que mudou**
+- Diagnóstico `scripts/diag_bibliotecas_anuncios.py` + `teste-bibliotecas-anuncios.yml` (não grava dados). Run 38853829904:
+  - Biblioteca da Meta sem login abre e mostra contagem ("50.000 resultados" para Lula e para Flávio Bolsonaro, anúncios políticos BR), mas sem gasto estruturado;
+  - Central de Transparência do Google: a página de campanhas políticas BR carrega (`SearchCreatives`), a busca por anunciante via URL não devolveu resultados.
+- Meta: `scripts/collect_meta_anuncios.py` (API oficial `ads_archive` v26.0, anúncios POLITICAL_AND_ISSUE_ADS no BR desde 20/07 que citam cada candidato), `data/config/meta_anuncios.json`, `.github/workflows/meta-anuncios.yml` (diário 09h25), `tests/test_meta_anuncios.py`. Bruto só no privado; público: agregados por candidato, fase e página anunciante.
+- Página: nova subpágina "Anúncios pagos (Meta e Google)" no caderno 02 (`#adsLib`), com bloco explicando a proibição de impulsionamento eleitoral pelo Google (2024, mantida em 2026).
+- Sentimento: `scripts/build_sentimento_comentarios.py` (modelo `pysentimiento/bertweet-pt-sentiment`, cache privado `youtube/comentarios/sentimento.csv.gz`, grava a cada 2.000 e para em 75 min), `data/config/sentimento_comentarios.json`, `.github/workflows/sentimento-youtube.yml` (diário 08h40), `tests/test_sentimento.py`. Público: `data/youtube/comentarios/sentimento.json` (percentuais por candidato, fase e vídeo com ≥ 30 comentários).
+- Página: listas e detalhe de vídeo do YouTube mostram curtidas e comentários e a barra de tom; caderno 04 ganha "Tom geral dos comentários".
+- Google Busca: aceita a chave do YouTube (`YOUTUBE_API_KEY`) quando `GOOGLE_CSE_KEY` não existe (o usuário informou que é a mesma chave); diagnóstico de presença dos segredos no workflow (sem valores). Status diz qual item falta.
+
+**Por quê** — pedido do usuário: capturar bibliotecas de anúncios Google e Meta, marcar impulsionamento e trazer dados e sentimento dos vídeos do YouTube.
+
+**Testes executados**
+- `python -m unittest discover -s tests` sem falhas.
+- Chromium local com dados de teste numa cópia descartável (não publicada): blocos renderizam, sem erro de JS, sem rolagem a 390 px.
+- Google Busca run 38854074811 e seguinte: nenhum segredo GOOGLE_CSE_* encontrado.
+
+**Pendente / bloqueios**
+- ⛔ Meta: falta o segredo `META_AD_LIBRARY_TOKEN` (`data/meta/anuncios.json` registra o status).
+- ⛔ Sentimento: primeiro run (38854095565) em andamento; números ainda não publicados. Sem validação humana.
+- ⛔ Google Busca: falta `GOOGLE_CSE_CX`; a Custom Search JSON API está fechada a clientes novos e pode responder 403.
+- 🔜 Monitoramento automático da Central de Transparência do Google.
+- Os commits bb870e5 e anteriores desta rodada saíram sem entrada no CHANGELOG; esta entrada os cobre.
+
 ## P4.5 — Índice de busca por fase: pré-campanha, 1º turno, 2º turno (2026-10-16) ✅
 
 **O que mudou**
