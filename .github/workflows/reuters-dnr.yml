@@ -35,7 +35,7 @@ jobs:
               pdfinfo "$RUNNER_TEMP/dnr$ano.pdf" > /dev/null 2>&1 && break
               echo "tentativa $t incompleta ($(stat -c %s "$RUNNER_TEMP/dnr$ano.pdf" 2>/dev/null) bytes)"; sleep $((t * 5))
             done
-            pdfinfo "$RUNNER_TEMP/dnr$ano.pdf" > /dev/null
+            if ! pdfinfo "$RUNNER_TEMP/dnr$ano.pdf" > /dev/null 2>&1; then echo "::warning title=DNR $ano::download incompleto após 6 tentativas; texto anterior mantido"; return 0; fi
             sha=$(sha256sum "$RUNNER_TEMP/dnr$ano.pdf" | cut -d' ' -f1); pags=$(pdfinfo "$RUNNER_TEMP/dnr$ano.pdf" | awk '/^Pages/{print $2}')
             pdftotext -layout "$RUNNER_TEMP/dnr$ano.pdf" "$d/dnr$ano.txt"
             printf '{"ano": %s, "url": "%s", "sha256": "%s", "paginas": %s, "baixado_em": "%s"}\n' "$ano" "$url" "$sha" "$pags" "$(date -u +%FT%TZ)" > "$d/dnr$ano.json"
@@ -49,6 +49,7 @@ jobs:
           d="$RUNNER_TEMP/interno/reuters/img"; mkdir -p "$d"
           IFS=',' read -ra itens <<< "$IMAGENS"
           for it in "${itens[@]}"; do ano=${it%%:*}; fx=${it#*:}; ini=${fx%-*}; fim=${fx#*-}
+            [ -f "$RUNNER_TEMP/dnr$ano.pdf" ] && pdfinfo "$RUNNER_TEMP/dnr$ano.pdf" > /dev/null 2>&1 || continue
             pdftoppm -r 110 -png -f "$ini" -l "$fim" "$RUNNER_TEMP/dnr$ano.pdf" "$d/dnr${ano}_p"; done
           ls "$d" | tr '\n' ' '
       - name: Gravar no repositório privado
