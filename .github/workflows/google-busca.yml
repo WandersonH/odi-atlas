@@ -1,8 +1,14 @@
 name: Google Busca — 5 primeiros e 3 mais recentes por candidato
 
-# Google Programmable Search (Custom Search JSON API). Segredos: GOOGLE_CSE_KEY e GOOGLE_CSE_CX. 4 consultas por execução.
+# Custom Search JSON API quando liberada; senão, RSS público do Google Notícias. Também mantém os 5 primeiros por dia
+# (data/trends/google_noticias_diario.json): a cada hora refaz ontem e hoje; "desde" (manual) reconstitui dias anteriores.
 on:
   workflow_dispatch:
+    inputs:
+      desde:
+        description: "Reconstituir os 5 primeiros por dia desde (AAAA-MM-DD); vazio = só ontem e hoje"
+        required: false
+        default: ""
   schedule:
     - cron: "17 * * * *"   # de hora em hora, no minuto 17 (o GitHub pode atrasar alguns minutos)
 
@@ -23,7 +29,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Testes
-        run: python -m unittest tests.test_google_busca
+        run: python -m unittest tests.test_google_busca tests.test_google_noticias_diario
       - name: Onde estão a chave e o cx (só presença, nunca o valor)
         env:
           S_KEY: ${{ secrets.GOOGLE_CSE_KEY }}
@@ -52,6 +58,14 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           GOOGLE_CSE_CX: ${{ secrets.GOOGLE_CSE_CX || vars.GOOGLE_CSE_CX }}
         run: python scripts/collect_google_busca.py
+      - name: 5 primeiros por dia (Google Notícias)
+        continue-on-error: true
+        env:
+          DESDE: ${{ github.event.inputs.desde }}
+        run: |
+          if [ -n "$DESDE" ]; then python scripts/collect_google_noticias_diario.py --desde "$DESDE"; else python scripts/collect_google_noticias_diario.py; fi > diario.txt 2>&1; rc=$?
+          echo "::notice title=Google Notícias por dia::$(tail -n 1 diario.txt)"
+          exit $rc
       - name: Resumo
         if: always()
         run: |
