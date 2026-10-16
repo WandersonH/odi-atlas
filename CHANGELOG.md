@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C14.0 — Reuters Digital News Report 2022 e 2026: dados do Brasil (2026-10-16) ✅
+
+**O que mudou**
+- `.github/workflows/reuters-dnr.yml`: baixa os PDFs (URLs dadas pelo usuário), registra SHA-256 e grava texto extraído (`pdftotext -layout`) e imagens das páginas do Brasil SÓ no repositório privado (`reuters/`). Download validado pelo `pdfinfo`, com novas tentativas (o servidor cortou a transferência de 2022 em dois runs).
+- `data/reuters/brasil.json`: só Brasil (pedido do usuário), transcrito das páginas do país — DNR 2022 p. 116–117 (PDF 116–117, SHA-256 fa7608e2…), DNR 2026 p. 126–127 (PDF 129–130, SHA-256 39a8e895…): confiança geral, evitação, pagamento, penetração de internet, fontes (2013 e ano da edição), dispositivos (2022), redes para notícias, chatbots de IA, podcasts, criadores/influenciadores, RSF, alcance semanal das marcas e confiança por marca.
+- `scripts/conferir_reuters.py` (roda com o repositório privado) e `tests/test_reuters.py`.
+- Página: subpágina "Consumo de notícias (Reuters)" no caderno 06, entre PNAD e Contas × eleitorado: 8 indicadores, comparações 2022 → 2026 (fontes, redes, confiança por marca, alcance), fonte com página e SHA-256.
+
+**Testes executados**
+- Conferência visual das 4 páginas renderizadas (run do workflow com imagens) e `conferir_reuters.py`: 107 números de 2022 e 119 de 2026, todos presentes no texto das páginas; SHA-256 iguais aos do download.
+- `python -m unittest discover -s tests` sem falhas; Chromium sem erro de JS, sem rolagem a 390 px.
+
+**Ressalvas**
+- Amostra online e urbana (YouGov), não representativa da população geral.
+- Alcance das marcas: 2022 "uso semanal", 2026 "uso semanal para notícias" — pergunta diferente. Telegram 2022 vem do texto da página, não da tabela. Fontes de notícias de 2013 lidas no gráfico (rótulos do início das linhas).
+- Dados do Brasil em gráficos comparativos de outras seções dos relatórios ainda não foram extraídos.
+
 ## C13.1 — Rede (Gephi) dos veículos que publicaram (2026-10-16) ✅
 
 - `build_noticias_texto.py`: `rede_veiculos()` — nó = veículo com 10+ títulos; aresta = semelhança de agenda (cosseno entre perfis TF-IDF de palavras dos títulos, idf suavizado), cada veículo ligado aos 5 mais parecidos com cosseno ≥ 0,15; Louvain; Kamada-Kawai no componente principal (distância = 1 − cosseno), componentes soltos em fila na base. Palavras distintivas por veículo (TF-IDF sem suavização). Saídas: `rede_veiculos.json/.gexf`, `rede_veiculos_nos.csv`, `rede_veiculos_arestas.csv`. Teste ampliado.
