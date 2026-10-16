@@ -57,7 +57,7 @@ def main(argv=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/google_busca.json").read_text(encoding="utf-8"))
     # a chave pode ser a mesma do YouTube (mesmo projeto do Google Cloud, com a Custom Search API ativada)
-    key, cx = os.environ.get("GOOGLE_CSE_KEY") or os.environ.get("YOUTUBE_API_KEY"), os.environ.get("GOOGLE_CSE_CX")
+    key, cx = os.environ.get("GOOGLE_CSE_KEY") or os.environ.get("YOUTUBE_API_KEY"), (os.environ.get("GOOGLE_CSE_CX") or cfg.get("cx"))
     agora = now_utc()
     out = {"schema_version": 1, "coletado_em_utc": agora, "nota": cfg["nota"], "candidatos": {}, "erros": {}}
     d = root / "data/trends"
