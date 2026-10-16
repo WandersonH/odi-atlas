@@ -6,6 +6,14 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C9.2] 2026-10-15 — Texto de aviso do caderno 16
+
+**Mudou:** o aviso dizia "repositório privado ainda não ligado", o que dava a entender que o repositório não estava conectado. Ele está conectado à sessão do Claude (README enviado no commit `8932e7f`). O que falta é a permissão da coleta automática do GitHub Actions, que roda no servidor do GitHub e precisa do segredo `ODI_INTERNO_TOKEN`. O texto agora diz isso.
+
+**Testado:** suíte de testes OK; só texto alterado.
+
+---
+
 ## [C9.1] 2026-10-15 — Caderno 16 (comentários do YouTube) e WhatsApp na página; primeiros runs reais
 
 **Mudou**
