@@ -1,0 +1,39 @@
+name: Reuters Digital News Report — baixar e extrair texto (2022 e 2026)
+
+# Baixa os PDFs públicos do Reuters Institute, registra SHA-256 e grava o texto extraído (pdftotext -layout) SÓ no
+# repositório privado (odi-atlas-interno/reuters/). O público recebe apenas os indicadores do Brasil, extraídos depois
+# por scripts/extrair_reuters.py com página de origem.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Ferramentas
+        run: sudo apt-get install -y -q poppler-utils > /dev/null
+      - name: Repositório privado
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+      - name: Baixar e extrair
+        run: |
+          d="$RUNNER_TEMP/interno/reuters"; mkdir -p "$d"
+          baixa(){ ano=$1; url=$2
+            curl -sSfL -A "Mozilla/5.0 (odi-atlas; pesquisa academica)" -o "$RUNNER_TEMP/dnr$ano.pdf" "$url"
+            sha=$(sha256sum "$RUNNER_TEMP/dnr$ano.pdf" | cut -d' ' -f1); pags=$(pdfinfo "$RUNNER_TEMP/dnr$ano.pdf" | awk '/^Pages/{print $2}')
+            pdftotext -layout "$RUNNER_TEMP/dnr$ano.pdf" "$d/dnr$ano.txt"
+            printf '{"ano": %s, "url": "%s", "sha256": "%s", "paginas": %s, "baixado_em": "%s"}\n' "$ano" "$url" "$sha" "$pags" "$(date -u +%FT%TZ)" > "$d/dnr$ano.json"
+            echo "::notice title=DNR $ano::$pags páginas · sha256 $sha · $(wc -c < "$d/dnr$ano.txt") bytes de texto"; }
+          baixa 2022 "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2022-06/Digital_News-Report_2022.pdf"
+          baixa 2026 "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2026-06/DNR%202026%20FINAL_2.pdf"
+      - name: Gravar no repositório privado
+        run: |
+          cd "$RUNNER_TEMP/interno"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A; git diff --cached --quiet || git commit -q -m "Reuters DNR 2022 e 2026: texto extraído (run ${{ github.run_id }})"
+          git push -q origin HEAD:main
