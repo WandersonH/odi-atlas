@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C12.4 — Primeiros números de sentimento dos comentários do YouTube (2026-10-16) ⚠️
+
+- Run 38854095565 (versão que gravava só no fim): cancelado no limite de 2 h, nada gravado.
+- Run 38862215596 (grava a cada 2.000, para em 75 min): 48.000 de 128.104 comentários classificados (os mais recentes primeiro), cache no repositório privado, agregados em `data/youtube/comentarios/sentimento.json`. Ritmo observado: ~2.000 a cada ~195 s.
+  - Lula: 30.281 classificados (40,5% dos coletados) — 50,6% positivo, 32,5% neutro, 16,8% negativo; 160 de 370 vídeos com ≥ 30 classificados.
+  - Flávio Bolsonaro: 17.719 (33,2%) — 41,5% positivo, 40,5% neutro, 18,0% negativo; 114 de 268 vídeos.
+  - Por fase (data do comentário): 1º turno Lula 55,4% pos./16,1% neg. (n 3.913), Flávio 43,1%/15,8% (n 3.255); 2º turno Lula 49,9%/16,9% (n 26.368), Flávio 41,1%/18,5% (n 14.464).
+- Página: na tabela de fases, a pré-campanha passa a dizer "fora da coleta (comentários desde 16/08)" em vez de ⛔.
+- Chromium com os dados reais: card do caderno 04 e detalhe do vídeo (ex.: "Conquistamos o fim da escala 6x1…", n = 212, 76,4% positivo) renderizados, sem erro, sem rolagem a 390 px.
+- Ressalvas: parcial (faltam 80.079; novo run disparado; os diários seguintes completam) e enviesado para o 2º turno até completar; `revisoes_modelo` veio vazio (o hash da revisão do modelo não foi capturado); sem validação humana; o modelo lê tom, não posição política, e ironia tende a ser lida pelo sentido literal.
+
 ## C12.3 — 5 primeiros do Google Notícias por dia, ligados ao filtro de período (2026-10-16) ✅
 
 - `scripts/collect_google_noticias_diario.py` + `tests/test_google_noticias_diario.py`: por dia e candidato, os 5 primeiros do RSS do Google Notícias publicados naquele dia (horário de Brasília), via `after:`/`before:`. A cada hora refaz ontem e hoje; o `workflow_dispatch` aceita `desde` para reconstituir dias anteriores. Dias anteriores a 16/10 são reconstituição retroativa (ordem do momento da coleta).
