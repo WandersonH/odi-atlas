@@ -66,6 +66,15 @@ jobs:
           if [ -n "$DESDE" ]; then python scripts/collect_google_noticias_diario.py --desde "$DESDE"; else python scripts/collect_google_noticias_diario.py; fi > diario.txt 2>&1; rc=$?
           echo "::notice title=Google Notícias por dia::$(tail -n 1 diario.txt)"
           exit $rc
+      - name: Universo das notícias — nuvem, CHD, rede (Gephi), corpus (IRaMuTeQ) · 1x por dia (07h) e em execução manual
+        continue-on-error: true
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || [ "$(date -u +%H)" = "10" ]; then
+            pip install -q networkx==3.6.1 numpy==2.3.4
+            python scripts/build_noticias_texto.py > texto.txt 2>&1; rc=$?
+            while IFS= read -r l; do echo "::notice title=Universo das notícias::$l"; done < texto.txt
+            exit $rc
+          fi
       - name: Resumo
         if: always()
         run: |
