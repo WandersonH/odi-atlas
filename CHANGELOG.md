@@ -6,6 +6,38 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C10.0] 2026-10-16 — TikTok: contas que publicam sobre os candidatos (hashtags, grátis)
+
+**Por quê:** o usuário notou que o TikTok do atlas mostrava só os perfis grandes das campanhas e pediu para "ver o que conseguimos free".
+
+**Mudou**
+- `scripts/collect_tiktok_hashtags.py` + `data/config/tiktok_hashtags.json`:
+  - abre num Chromium headless, sem login, as páginas públicas de 10 hashtags (Lula: #lula13 #lula2026 #lulapresidente #fazol #lula; Flávio: #flaviobolsonaro #flavio22 #vote22 #flaviopresidente #bolsonaro);
+  - guarda os vídeos que a página carrega, de qualquer conta;
+  - lista completa no repositório privado; no público, só contas com 10 mil+ seguidores (mesmo corte do YouTube).
+- `scripts/build_rede_tiktok_apoio.py`: rede bipartida conta × candidato com as mesmas regras dos influenciadores do YouTube (nível 1 = falou; nível 2 = pediu voto, pela legenda e pelas hashtags do vídeo). Perfis de campanha excluídos.
+  - `build_rede_influenciadores.py` foi refatorado (`gerar()`) para servir às duas plataformas. A rede do YouTube refeita ficou idêntica, salvo o carimbo de data.
+- `.github/workflows/tiktok-hashtags.yml`, diário às 09h15 BRT.
+- Página: bloco "contas do TikTok que publicam com hashtags dos candidatos" na aba TikTok do caderno 02, com rede, tabela, GEXF e CSVs.
+
+**Testado (run real `38850779477`)**
+- ✅ Cada hashtag rendeu 57–60 vídeos e 49–57 contas. Só 2 páginas da rolagem carregam sem login, então a coleta acumula dia a dia.
+- ✅ No 1º dia: 512 vídeos lidos, 442 após remover os repetidos entre hashtags, 385 contas (220 com 10 mil+).
+- ✅ Rede pública: 174 contas e 213 vídeos.
+  - Lula: 119 contas falaram dele (90 só dele), 1 pediu voto.
+  - Flávio: 84 contas (55 só dele), 8 pediram voto (11 vídeos).
+  - 29 contas falaram dos dois.
+  - Entre as maiores: Metrópoles, g1, CNN, Jovem Pan News, UOL, Erika Hilton, PT, Instituto Lula.
+- ✅ Testes: `tests/test_tiktok_hashtags.py` (2) e suíte OK.
+- ✅ Chromium 1300/390 px: 176 círculos na rede do TikTok e a rede do YouTube intacta (202), sem erro e sem rolagem horizontal.
+
+**Limites**
+- A página de hashtag mostra vídeos "populares", não em ordem de data: não é amostra do universo.
+- Hashtag não é apoio: o lado vem do texto.
+- Comentários do TikTok continuam bloqueados sem login (D1.2).
+
+---
+
 ## [D1.2] 2026-10-16 — Diagnóstico: comentários do TikTok (bloqueados) e vídeos de apoiadores por hashtag (funciona)
 
 **Por quê:** o usuário pediu a página de comentários do TikTok e perguntou por que não aparecem os vídeos de apoio de contas menores.

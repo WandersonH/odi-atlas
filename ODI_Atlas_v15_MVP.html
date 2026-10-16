@@ -436,6 +436,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 @media(max-width:700px){.pv-tab .src{display:none}.pv-tab td.n{font-size:13px;white-space:normal}}
 #declarations .controls{flex-wrap:wrap;min-width:0}#declarations .controls input,#declarations .controls select{max-width:100%;min-width:0}
 #declarations .datatable{display:block;overflow-x:auto;max-width:100%}
+
+#tkInfTbl{width:100%;border-collapse:collapse;font-size:12px}#tkInfTbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px/1.2 'Courier New',monospace;text-transform:uppercase;padding:7px 8px;text-align:left;cursor:pointer;white-space:nowrap}#tkInfTbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}#tkInfTbl td.n{text-align:right}#tkInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}#tkInf line{stroke-opacity:.35}#tkInf circle{stroke:#fffdf8;stroke-width:1;cursor:pointer}#tkInf text{font:700 11px 'Courier New',monospace;fill:#172238;paint-order:stroke;stroke:#fffdf8;stroke-width:3px;pointer-events:none}#tkInf.yt-focus line{stroke-opacity:.04}#tkInf.yt-focus circle{opacity:.15}#tkInf.yt-focus text{opacity:.1}#tkInf.yt-focus .yt-on{opacity:1!important;stroke-opacity:.9!important}#tkInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
 </style>
 <style>
 /* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
@@ -972,6 +974,23 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="tkMethod"></p>
     <p>Coleta grátis com o programa aberto yt-dlp, sem login, só metadados públicos (legenda, visualizações, curtidas, comentários, compartilhamentos); o texto dos comentários não é coletado. O TikTok bloqueia servidores de forma intermitente: cada perfil tem 3 tentativas por coleta, duas coletas por dia, e um perfil bloqueado mantém os números da última coleta bem-sucedida (marcado ⛔ acima). A data de publicação vem do próprio ID do vídeo. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações. Dados: <a href="./data/tiktok/conteudo.json" target="_blank" rel="noopener">conteudo.json</a> · <a href="./data/tiktok/videos.csv.gz" download>acervo CSV</a> · <a href="./data/tiktok/manifesto_latest.json" target="_blank" rel="noopener">manifesto</a>.</p></div>
+  <div class="card yt-net yt-inf">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · contas do TikTok que publicam com hashtags dos candidatos</div><h2>Quem fala de <span style="color:#c8102e">Lula</span> e de <span style="color:#1f8a3b">Flávio</span></h2></div>
+      <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-iview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-iview="tabela" aria-pressed="false">Tabela de contas</button><button class="yt-chip" id="tkInfReset">Recentrar</button></div></div>
+    <div class="yt-infstats" id="tkInfStats"></div>
+    <div class="yt-netbody" id="tkInfBody">
+      <div class="yt-netsvg"><svg id="tkInf" role="img" aria-label="Rede de contas que citam Lula ou Flávio"></svg>
+        <div class="yt-netlegend"><i style="background:#c8102e"></i>fala só de Lula <i style="background:#7a6a2a"></i>dos dois <i style="background:#1f8a3b"></i>só de Flávio<br>linha tracejada = falou · linha cheia = pediu voto · tamanho = seguidores</div></div>
+      <aside class="yt-netside" id="tkInfSide"></aside>
+    </div>
+    <div class="yt-nettable" id="tkInfTable" hidden><input type="search" id="tkInfSearch" placeholder="Filtrar conta…" aria-label="Filtrar conta"><div class="yt-tablewrap"><table id="tkInfTbl"></table></div></div>
+    <div class="yt-netdl"><span class="eyebrow">Planilhas (conferência e Gephi)</span>
+      <a class="ghostbutton" href="./data/tiktok/hashtags/rede_nos.csv" download>Contas · CSV</a>
+      <a class="ghostbutton" href="./data/tiktok/hashtags/rede_arestas.csv" download>Arestas · CSV</a>
+      <a class="ghostbutton" href="./data/tiktok/hashtags/videos_validos.csv" download>Vídeos e trechos · CSV</a>
+      <a class="ghostbutton" href="./data/tiktok/hashtags/rede.gexf" download>Rede · GEXF</a></div>
+    <p class="yt-cloudnote" id="tkInfNote"></p>
+  </div>
 </section>
 <section class="panel" id="ytComments" aria-label="Caderno 04 Comentários do YouTube">
   <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO YOUTUBE</span><span>DESDE 16 AGO 2026 · SÓ AGREGADOS</span></div>
@@ -1981,6 +2000,66 @@ $('ytInfNote').textContent=R.metodo+` Coleta acumulada até ${(R.coletado_em_utc
 document.querySelectorAll('#ytContent [data-iview]').forEach(b=>b.addEventListener('click',()=>vista(b.dataset.iview)));
 $('ytInfSearch').addEventListener('input',ev=>{busca=ev.target.value;tabela();});
 $('ytInfReset').addEventListener('click',()=>{vb=[-60,-60,1120,1120];fixo=false;sel=null;desenhar();});
+stats();zoomPan();desenhar();}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+if(sec.classList.contains('active'))carregar();
+})();
+</script>
+<script>
+/* Caderno 02 (TikTok) · contas que publicam sobre os candidatos, por hashtag (data/tiktok/hashtags/rede.json) — Lula vermelho, Flávio verde */
+(function(){
+const sec=document.getElementById('tkContent');if(!sec)return;
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';
+let R=null,feito=false,sel=null,fixo=false,vb=[-60,-60,1120,1120],ord={k:'v',d:-1},busca='';
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>Number(n||0).toLocaleString('pt-BR');
+const raio=n=>n.tipo==='candidato'?26:3+Math.log10(Math.max(n.inscritos,10))*1.9-6;
+const lv=(n,c)=>n===2?`<span class="yt-lv" style="background:${c}">PEDIU VOTO</span>`:n===1?`<span class="yt-lv" style="background:${c};opacity:.6">FALOU</span>`:'';
+function stats(){const a=R.candidatos[L],b=R.candidatos[F];
+const card=(x,c)=>`<div style="--c:${c}"><h4>${esc(x.nome)} · ${esc(x.numero)}</h4><div class="yt-nums"><span><b>${fmt(x.canais)}</b>contas falaram</span><span><b>${fmt(x.videos)}</b>vídeos</span><span><b>${fmt(x.videos_pedem_voto)}</b>pediram voto</span><span><b>${fmt(x.so_ele)}</b>só falaram dele</span></div></div>`;
+$('tkInfStats').innerHTML=card(a,CL)+`<div style="--c:#7a6a2a"><h4>Falaram dos dois</h4><div class="yt-nums"><span><b>${fmt(R.canais_ambos)}</b>contas</span><span><b>${fmt(R.canais_total)}</b>contas na rede</span><span><b>${fmt(R.videos_validos)}</b>vídeos</span></div></div>`+card(b,CF);}
+function painel(){const side=$('tkInfSide');
+if(!sel){const top=R.nos.filter(n=>n.tipo==='conta').sort((x,y)=>y.inscritos-x.inscritos).slice(0,8);
+side.innerHTML=`<h4>Como ler</h4><p>Os dois pontos grandes são os candidatos. Cada ponto menor é uma conta do TikTok (fora das campanhas) que publicou vídeo falando de um deles. A cor vai do vermelho (só Lula) ao verde (só Flávio). Linha cheia: algum vídeo da conta pediu voto.</p><p><b>Falar não é apoiar:</b> o vídeo pode ser a favor, contra ou só noticiar.</p><div class="eyebrow" style="margin-top:10px">Maiores contas na rede</div><ol>${top.map(n=>`<li>${esc(n.label)} <span class="yt-meta">${fmt(n.inscritos)}</span></li>`).join('')}</ol>`;return;}
+const n=R.idx[sel];
+if(n.tipo==='candidato'){const c=n.id.slice(5);const viz=R.adj[sel].map(([m,w,pv])=>[R.idx[m],w,pv]).sort((a,b)=>b[1]-a[1]);
+side.innerHTML=`<h4 style="color:${n.cor}">${esc(n.label)}</h4><p class="yt-meta">${fmt(viz.length)} contas · ${fmt(n['v_'+c])} vídeos · ${fmt(n['voto_'+c])} pediram voto</p><div class="eyebrow" style="margin-top:8px">Contas que mais falaram dele</div><ol>${viz.slice(0,15).map(([m,w,pv])=>`<li>${esc(m.label)} <span class="yt-meta">${w} vídeo${w>1?'s':''}${pv?' · pediu voto':''}</span></li>`).join('')}</ol><button class="ghostbutton" type="button" id="tkInfClear">Limpar seleção</button>`;}
+else side.innerHTML=`<h4>${esc(n.label)}</h4><p class="yt-meta">${fmt(n.inscritos)} seguidores${n.handle?' · '+esc(n.handle):''}<br><span style="color:${CL}">Lula: ${n['v_'+L]} vídeo(s), ${n['voto_'+L]} pedindo voto</span><br><span style="color:${CF}">Flávio: ${n['v_'+F]} vídeo(s), ${n['voto_'+F]} pedindo voto</span></p><div class="eyebrow" style="margin-top:8px">Vídeos mais vistos</div><ol>${(n.top||[]).map(([id,t,vw,a,b])=>`<li><a href="https://www.tiktok.com/video/${encodeURIComponent(id)}" target="_blank" rel="noopener">${esc(t)}</a><br>${lv(a,CL)}${lv(b,CF)}<span class="yt-meta">${fmt(vw)} visualizações</span></li>`).join('')}</ol><p><a class="ghostbutton" href="https://www.tiktok.com/@${encodeURIComponent(n.id)}" target="_blank" rel="noopener">Abrir conta ↗</a> <button class="ghostbutton" type="button" id="tkInfClear">Limpar</button></p>`;
+const b=$('tkInfClear');if(b)b.addEventListener('click',()=>{fixo=false;foco(null);});}
+function foco(id){sel=id;const svg=$('tkInf');svg.classList.toggle('yt-focus',!!id);svg.querySelectorAll('.yt-on').forEach(e=>e.classList.remove('yt-on'));
+if(id){const viz=new Set([id,...R.adj[id].map(x=>x[0])]);svg.querySelectorAll('circle,text').forEach(e=>{if(viz.has(e.dataset.id))e.classList.add('yt-on');});svg.querySelectorAll('line').forEach(e=>{if(e.dataset.a===id||e.dataset.b===id)e.classList.add('yt-on');});}
+painel();}
+function desenhar(){const svg=$('tkInf');svg.setAttribute('viewBox',vb.join(' '));let h='';const mx=Math.max(...R.arestas.map(e=>e[2]));
+for(const [a,b,w,pv] of R.arestas){const p=R.idx[a],q=R.idx[b];const cand=p.tipo==='candidato'?p:q;h+=`<line x1="${p.x}" y1="${p.y}" x2="${q.x}" y2="${q.y}" stroke="${cand.cor}" stroke-width="${(0.6+3*w/mx).toFixed(2)}" ${pv?'':'stroke-dasharray="4 3"'} data-a="${esc(a)}" data-b="${esc(b)}"/>`;}
+for(const n of [...R.nos].sort((a,b)=>raio(a)-raio(b)))h+=`<circle cx="${n.x}" cy="${n.y}" r="${Math.max(2.5,raio(n)).toFixed(1)}" fill="${n.cor}" data-id="${esc(n.id)}" tabindex="0"><title>${esc(n.label)}${n.tipo==='conta'?' · '+fmt(n.inscritos)+' seguidores':''}</title></circle>`;
+const contas=R.nos.filter(n=>n.tipo==='conta').sort((a,b)=>b.inscritos-a.inscritos);const lim=contas[Math.min(24,contas.length-1)]?.inscritos||0;
+for(const n of R.nos){if(n.tipo==='candidato'){h+=`<text x="${n.x}" y="${n.y+5}" text-anchor="middle" style="font:700 15px Georgia,serif;fill:#fff;stroke:none" data-id="${esc(n.id)}">${esc(n.label.split(' ')[0])}</text>`;continue;}
+const big=n.inscritos>=lim;h+=`<text x="${(n.x+raio(n)+2).toFixed(1)}" y="${(n.y+4).toFixed(1)}" data-id="${esc(n.id)}" style="font-size:${big?11:9}px" ${big?'':'class="yt-small" opacity="0"'}>${esc(n.label)}</text>`;}
+svg.innerHTML=h;
+svg.querySelectorAll('circle').forEach(c=>{c.addEventListener('mouseenter',()=>{if(!fixo)foco(c.dataset.id)});c.addEventListener('mouseleave',()=>{if(!fixo)foco(null)});c.addEventListener('click',ev=>{ev.stopPropagation();fixo=!(fixo&&sel===c.dataset.id);foco(fixo?c.dataset.id:null);});c.addEventListener('keydown',ev=>{if(ev.key==='Enter'){fixo=true;foco(c.dataset.id);}});});
+foco(sel);}
+function zoomPan(){const svg=$('tkInf');let drag=null;
+const pt=ev=>{const r=svg.getBoundingClientRect();return [vb[0]+(ev.clientX-r.left)/r.width*vb[2],vb[1]+(ev.clientY-r.top)/r.height*vb[3]];};
+svg.addEventListener('wheel',ev=>{ev.preventDefault();const [x,y]=pt(ev),k=ev.deltaY>0?1.15:1/1.15;const nw=Math.min(1800,Math.max(120,vb[2]*k));const f=nw/vb[2];vb=[x-(x-vb[0])*f,y-(y-vb[1])*f,nw,nw];svg.setAttribute('viewBox',vb.join(' '));svg.querySelectorAll('text.yt-small').forEach(t=>t.setAttribute('opacity',vb[2]<650?'1':'0'));},{passive:false});
+svg.addEventListener('pointerdown',ev=>{drag=[ev.clientX,ev.clientY,vb[0],vb[1]];svg.setPointerCapture(ev.pointerId);});
+svg.addEventListener('pointermove',ev=>{if(!drag)return;const r=svg.getBoundingClientRect();vb[0]=drag[2]-(ev.clientX-drag[0])/r.width*vb[2];vb[1]=drag[3]-(ev.clientY-drag[1])/r.height*vb[3];svg.setAttribute('viewBox',vb.join(' '));});
+svg.addEventListener('pointerup',()=>{drag=null;});svg.addEventListener('click',()=>{if(fixo){fixo=false;foco(null);}});}
+function tabela(){const q=busca.trim().toLowerCase();
+const cols=[['label','Conta'],['inscritos','Inscritos'],['vl','Falou de Lula'],['pl','Pediu voto Lula'],['vf','Falou de Flávio'],['pf','Pediu voto Flávio'],['views','Visualizações (vídeos)']];
+let rows=R.nos.filter(n=>n.tipo==='conta'&&(!q||n.label.toLowerCase().includes(q))).map(n=>({...n,vl:n['v_'+L],pl:n['voto_'+L],vf:n['v_'+F],pf:n['voto_'+F]}));
+rows.sort((x,y)=>{const A=x[ord.k],B=y[ord.k];return (typeof A==='number'?A-B:String(A).localeCompare(String(B),'pt'))*ord.d;});
+const t=$('tkInfTbl');t.innerHTML=`<thead><tr>${cols.map(([k,l])=>`<th data-k="${k}">${l}${ord.k===k?(ord.d<0?' ↓':' ↑'):''}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${cols.map(([k])=>k==='label'?`<td><i style="background:${r.cor}"></i><a href="https://www.tiktok.com/@${encodeURIComponent(r.id)}" target="_blank" rel="noopener">${esc(r.label)}</a></td>`:`<td class="n">${fmt(r[k])}</td>`).join('')}</tr>`).join('')}</tbody>`;
+t.querySelectorAll('th').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;ord=ord.k===k?{k,d:-ord.d}:{k,d:k==='label'?1:-1};tabela();}));}
+function vista(v){document.querySelectorAll('#tkContent [data-iview]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.iview===v));$('tkInfBody').hidden=v!=='rede';$('tkInfTable').hidden=v==='rede';if(v!=='rede'){ord={k:'vl',d:-1};tabela();}}
+async function carregar(){if(feito)return;feito=true;
+try{const r=await fetch('./data/tiktok/hashtags/rede.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);R=await r.json();}
+catch(err){$('tkInfSide').innerHTML='<p>⛔ Rede de influenciadores indisponível ('+esc(err.message)+').</p>';feito=false;return;}
+R.idx={};R.adj={};for(const n of R.nos){R.idx[n.id]=n;R.adj[n.id]=[];}for(const [a,b,w,pv] of R.arestas){R.adj[a].push([b,w,pv]);R.adj[b].push([a,w,pv]);}
+$('tkInfNote').textContent=R.metodo+` Coleta acumulada até ${(R.coletado_em_utc||'').replace('T',' ').slice(0,16)} UTC.`;
+document.querySelectorAll('#tkContent [data-iview]').forEach(b=>b.addEventListener('click',()=>vista(b.dataset.iview)));
+$('tkInfSearch').addEventListener('input',ev=>{busca=ev.target.value;tabela();});
+$('tkInfReset').addEventListener('click',()=>{vb=[-60,-60,1120,1120];fixo=false;sel=null;desenhar();});
 stats();zoomPan();desenhar();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
