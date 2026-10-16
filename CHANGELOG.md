@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C12.2 — Google Busca de hora em hora (2026-10-16) 🔜
+
+- `google-busca.yml`: agenda passa de 07h40 e 19h40 para de hora em hora (minuto 17). Pedido do usuário.
+- `data/trends/google_busca_historico.csv` recebe uma linha por resultado a cada hora (até 16 por execução).
+- Teste: só a validação do YAML; a primeira execução agendada ainda não aconteceu (o GitHub pode atrasar ou pular execuções agendadas em horários de pico).
+
 ## C12.1 — Google Busca passa a usar o Google Notícias (RSS) (2026-10-16) ✅
 
 **O que mudou**
