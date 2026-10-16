@@ -4,13 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C12.3 — 5 primeiros do Google Notícias por dia, ligados ao filtro de período (2026-10-16) ⚠️
+## C12.3 — 5 primeiros do Google Notícias por dia, ligados ao filtro de período (2026-10-16) ✅
 
 - `scripts/collect_google_noticias_diario.py` + `tests/test_google_noticias_diario.py`: por dia e candidato, os 5 primeiros do RSS do Google Notícias publicados naquele dia (horário de Brasília), via `after:`/`before:`. A cada hora refaz ontem e hoje; o `workflow_dispatch` aceita `desde` para reconstituir dias anteriores. Dias anteriores a 16/10 são reconstituição retroativa (ordem do momento da coleta).
 - `google-busca.yml`: passo novo e entrada `desde`.
 - Página (caderno 05): card "As manchetes de cada dia no período do filtro" — seletor de dia e ranking de veículos no top 5, que mudam com o filtro de período do Trends (evento `gt:periodo`).
 - Testes: `python -m unittest discover -s tests` sem falhas; Chromium a 390 px sem erro de JS (ainda sem o arquivo de dados: mostra ⛔).
-- Pendente: reconstituição desde 20/07 em andamento (run 38863725033); conferir dias vazios e erros quando terminar.
+- Run 38863725033 (`desde=2026-07-20`): 89 dias (20/07–16/10) em `data/trends/google_noticias_diario.json`, 0 erros; Lula com 5 itens em 86 dias (4 em 2, 1 em 1); Flávio com 5 em 88 (2 em 1).
+- Chromium com os dados reais: período eleitoral = 88 dias até 15/10 (fim da série do Trends); trocar para "últimos 7 dias" muda dias e ranking; seletor de dia funciona; sem erro, sem rolagem a 390 px.
+- Ressalva: notícias mais antigas vêm do RSS com data sem hora (07:00 UTC); a atribuição ao dia é por data.
 
 ## C12.2 — Google Busca de hora em hora (2026-10-16) 🔜
 
