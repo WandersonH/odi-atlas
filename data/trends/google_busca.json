@@ -1,8 +1,26 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-10-16T06:36:02Z",
+ "coletado_em_utc": "2026-10-16T06:45:11Z",
  "nota": "Google Programmable Search (Custom Search JSON API) com a chave e o mecanismo de busca (cx) do projeto do usuário. Para cada candidato: os 5 primeiros resultados (ordem de relevância do Google) e os 3 mais recentes (ordenados por data, publicados nas últimas 72 h). Parâmetros: Brasil (gl=br, cr=countryBR), português (lr=lang_pt). Os resultados dependem da configuração do mecanismo (web inteira ou lista de sites) e não são idênticos aos de uma busca pessoal no google.com, que é personalizada. A API será desligada pelo Google em 01/01/2027.",
- "candidatos": {},
- "erros": {},
- "status": "⛔ falta no GitHub: ID do mecanismo de busca (GOOGLE_CSE_CX)"
+ "candidatos": {
+  "280002542548": {
+   "nome": "Lula",
+   "consulta": "Lula",
+   "primeiros": [],
+   "recentes": []
+  },
+  "280002551544": {
+   "nome": "Flávio Bolsonaro",
+   "consulta": "\"Flávio Bolsonaro\"",
+   "primeiros": [],
+   "recentes": []
+  }
+ },
+ "erros": {
+  "Lula · primeiros": "HTTP 403 This project does not have the access to Custom Search JSON API.",
+  "Lula · recentes": "HTTP 403 This project does not have the access to Custom Search JSON API.",
+  "Flávio Bolsonaro · primeiros": "HTTP 403 This project does not have the access to Custom Search JSON API.",
+  "Flávio Bolsonaro · recentes": "HTTP 403 This project does not have the access to Custom Search JSON API."
+ },
+ "status": "⛔ nenhum resultado"
 }
