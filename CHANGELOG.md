@@ -6,6 +6,14 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C10.1] 2026-10-16 — TikTok: mais 4 hashtags pedidas pelo usuário
+
+**Mudou:** `data/config/tiktok_hashtags.json` ganhou #boralula e #exercitodolula (Lula) e #tropadoflavio e #bloquinho22 (Flávio), agora 14 hashtags. Pedido do usuário: "tropa do Flávio, bloquinho 22, boralula, exército do Lula".
+
+**Testado:** run seguinte do workflow `tiktok-hashtags.yml` (resultado abaixo, quando houver).
+
+---
+
 ## [C10.0] 2026-10-16 — TikTok: contas que publicam sobre os candidatos (hashtags, grátis)
 
 **Por quê:** o usuário notou que o TikTok do atlas mostrava só os perfis grandes das campanhas e pediu para "ver o que conseguimos free".
