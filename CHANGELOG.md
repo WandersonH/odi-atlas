@@ -6,6 +6,47 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C9.0] 2026-10-15 — Comentários do YouTube: coleta, livro de códigos de intolerância e análise agregada (pipeline)
+
+**Por quê:** pedido do usuário: "análise de discurso dos comentários do YouTube por candidato". Ele escolheu guardar o texto no repositório privado `odi-atlas-interno`, criado hoje.
+
+**Mudou**
+- `data/config/livro_codigos_intolerancia.json` (v1.0): 10 categorias, separando incivilidade de intolerância (Rossini 2022):
+  - incivilidade;
+  - rótulo pejorativo político (simétrico: gado/bolsominion e petralha/mortadela);
+  - desumanização;
+  - ódio de gênero, LGBT, raça/origem e religião;
+  - ameaça/violência;
+  - ataque à integridade eleitoral;
+  - acusação de corrupção.
+
+  Cada categoria tem definição, fonte, exemplo, regra de exclusão e trechos excluídos.
+- `scripts/collect_comentarios_youtube.py`: `commentThreads.list`, até 100 conversas por relevância e 100 mais recentes por vídeo das campanhas desde 16/08, com as respostas que vêm junto. Teto de 4.000 unidades de cota. O texto bruto vai só para o repositório privado (ou para uma pasta temporária, apagada no fim do run). No público fica só o manifesto.
+- `scripts/build_comentarios.py`: só agregados em `data/youtube/comentarios/analise.json`, por candidato:
+  - volume e concentração de autores;
+  - "copiar e colar" (mesmo texto de 3+ autores);
+  - nuvem de palavras (termo em 10+ comentários);
+  - temas;
+  - aderência ao tema do vídeo;
+  - populismo e intolerância em %;
+  - curtidas de comentários incivis × civis;
+  - série diária;
+  - CHD de Reinert (formas, sem trechos).
+- No privado: amostra de 200 comentários por candidato para codificação humana (sorteada uma vez), pré-codificação separada, corpus IRaMuTeQ e trechos característicos das classes.
+- `.github/workflows/comentarios-youtube.yml` (diário, 07h50 BRT). Grava no privado se existir o segredo `ODI_INTERNO_TOKEN`; senão roda em modo efêmero.
+- Repositório privado inicializado com README de regras (LGPD).
+
+**Testado**
+- ✅ `tests/test_comentarios.py` (7 testes, dados fictícios):
+  - formato da API;
+  - mescla por `comment_id`;
+  - exclusões do livro ("preço do gado", "fraude do INSS", "matar a saudade");
+  - ponta a ponta confirmando que frase, nome e canal do autor não aparecem no JSON público;
+  - modo privado gera amostra (200 por candidato) e corpus.
+- 🔜 Run real: em seguida.
+
+---
+
 ## [C8.2] 2026-10-15 — YouTube na página: API oficial como fonte; Modash como adendo
 
 **Por quê:** decisão do usuário: "todo indicador de YouTube vamos deixar pela API oficial; dado do Modash é um adendo a essa tela".

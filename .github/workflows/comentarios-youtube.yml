@@ -1,0 +1,85 @@
+name: Comentários YouTube — API oficial
+
+# Comentários públicos dos vídeos das campanhas (caderno 16). Texto bruto SÓ no repositório privado odi-atlas-interno
+# (segredo ODI_INTERNO_TOKEN: token de acesso fino, só a esse repositório, permissão Contents: read and write).
+# Sem o segredo, os comentários são processados e descartados no fim do run (modo efêmero); o público recebe só agregados.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "50 10 * * *"   # todo dia, 07h50 em Brasília (depois da coleta de vídeos das 07h20)
+
+concurrency:
+  group: comentarios-youtube
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  comentarios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências (versões fixas)
+        run: pip install networkx==3.6.1 numpy==2.3.4
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Repositório privado (se o segredo existir)
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::ODI_INTERNO_TOKEN ausente: comentários processados e descartados no fim do run (modo efêmero)."
+          fi
+      - name: Coletar comentários (YouTube Data API)
+        id: coleta
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: python scripts/collect_comentarios_youtube.py
+      - name: Caderno 16 — análise agregada por candidato
+        if: steps.coleta.outcome == 'success'
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: python scripts/build_comentarios.py
+      - name: Gravar no repositório privado
+        if: steps.interno.outputs.dir != '' && steps.coleta.outcome == 'success'
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Comentários YouTube (run ${{ github.run_id }})"
+          git push -q origin HEAD:main
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'EOF' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          p = pathlib.Path("data/youtube/comentarios/manifesto_latest.json")
+          if not p.exists(): print("## manifesto não gerado"); raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          print(f"## Comentários — {m.get('status')} · modo {m.get('modo')} · {m.get('videos_alvo')} vídeos · {m.get('chamadas')} chamadas · {m.get('registros_acumulados')} registros · erros {m.get('erros')}")
+          for b in m.get("blocked", []): print(f"- ⛔ {b}")
+          a = pathlib.Path("data/youtube/comentarios/analise.json")
+          if a.exists():
+              for c in json.loads(a.read_text(encoding="utf-8"))["candidatos"].values():
+                  print(f"- {c['nome']}: {c.get('comentarios')} comentários, incivilidade {c.get('qualquer_incivilidade_pct')}%, intolerância {c.get('qualquer_intolerancia_pct')}%")
+          EOF
+      - name: Commitar (só agregados)
+        if: always()
+        run: scripts/commit_push.sh "Comentários YouTube: agregados (run ${{ github.run_id }})"
+      - name: Falhar se a coleta falhou
+        if: steps.coleta.outcome == 'failure'
+        run: |
+          echo "::error::Coleta de comentários falhou — ver data/youtube/comentarios/manifesto_latest.json"
+          exit 1
