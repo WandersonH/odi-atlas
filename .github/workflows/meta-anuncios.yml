@@ -1,0 +1,60 @@
+name: Meta — Biblioteca de Anúncios (anúncios políticos que citam os candidatos)
+
+# API oficial ads_archive. Segredo: META_AD_LIBRARY_TOKEN (token de usuário do app da Meta com acesso à API da Biblioteca de Anúncios).
+# Bruto (texto dos anúncios) só no repositório privado (ODI_INTERNO_TOKEN); no público, agregados.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "25 12 * * *"   # todo dia, 09h25 em Brasília
+
+concurrency:
+  group: meta-anuncios
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  meta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest tests.test_meta_anuncios
+      - name: Repositório privado (se o segredo existir)
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::sem repositório privado: bruto descartado no fim do run"
+          fi
+      - name: Consultar a Biblioteca de Anúncios
+        id: coleta
+        continue-on-error: true
+        env:
+          META_AD_LIBRARY_TOKEN: ${{ secrets.META_AD_LIBRARY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/collect_meta_anuncios.py > meta.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Meta anúncios::$l"; done < meta.txt
+          exit $rc
+      - name: Gravar bruto no repositório privado
+        if: steps.interno.outputs.dir != '' && steps.coleta.outcome == 'success'
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Meta anúncios (run ${{ github.run_id }})"
+          git pull -q --rebase origin main && git push -q origin HEAD:main
+      - name: Commitar (só agregados)
+        if: always()
+        run: |
+          scripts/commit_push.sh "Meta anúncios: agregados (run ${{ github.run_id }})"
