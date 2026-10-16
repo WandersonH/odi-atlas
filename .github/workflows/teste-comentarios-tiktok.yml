@@ -16,6 +16,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Navegador headless (Playwright) — comentários, hashtag e busca
+        run: |
+          pip install -q playwright && python -m playwright install --with-deps chromium > /dev/null 2>&1
+          python scripts/diag_tiktok_navegador.py > nav.txt 2>&1 || true
+          while IFS= read -r l; do echo "::notice title=TikTok navegador::$(echo "$l" | cut -c1-900)"; done < nav.txt
       - name: Ler comentários de 6 vídeos (diagnóstico sem texto)
         run: |
           python scripts/collect_comentarios_tiktok.py --teste 6 > diag.txt 2>&1 || true
