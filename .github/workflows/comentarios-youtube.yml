@@ -77,7 +77,8 @@ jobs:
           EOF
       - name: Commitar (só agregados)
         if: always()
-        run: scripts/commit_push.sh "Comentários YouTube: agregados (run ${{ github.run_id }})"
+        run: |
+          scripts/commit_push.sh "Comentários YouTube: agregados (run ${{ github.run_id }})"
       - name: Falhar se a coleta falhou
         if: steps.coleta.outcome == 'failure'
         run: |

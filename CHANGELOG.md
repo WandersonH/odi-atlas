@@ -43,6 +43,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - exclusões do livro ("preço do gado", "fraude do INSS", "matar a saudade");
   - ponta a ponta confirmando que frase, nome e canal do autor não aparecem no JSON público;
   - modo privado gera amostra (200 por candidato) e corpus.
+- ⚠️ Primeira versão do workflow com erro de YAML (":" num comando sem bloco); o GitHub não registrou o gatilho manual. Corrigido e validado com `yaml.safe_load`.
 - 🔜 Run real: em seguida.
 
 ---
