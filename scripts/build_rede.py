@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Caderno 11 — rede de coocorrência de termos e tags nos vídeos de YouTube de Lula e Flávio Bolsonaro.
+"""Caderno 02 — rede de coocorrência de termos e tags nos vídeos de YouTube de Lula e Flávio Bolsonaro.
 
 Entrada: data/youtube/videos_latest.csv.gz + data/config/temas_youtube.json
-Saída:   data/youtube/rede.json  (desenhada no caderno 11)
+Saída:   data/youtube/rede.json  (desenhada no caderno 02)
          data/youtube/rede.gexf  (abre direto no Gephi, com posição, cor, tamanho e comunidade)
 
 Método (mesmo texto útil do build_conteudo: sem links, sem rodapé repetido, sem nome do canal):
@@ -110,7 +110,7 @@ def analisar(g: nx.Graph) -> dict:
 
 
 def cor_lado(lado: float) -> str:
-    """Vermelho (Lula) ↔ verde (Flávio), padrão dos cadernos 08 e 11–14."""
+    """Vermelho (Lula) ↔ verde (Flávio), padrão dos páginas de campanhas, comentários, buscas e território."""
     a, b = (0xc8, 0x10, 0x2e), (0x1f, 0x8a, 0x3b)
     return "#" + "".join(f"{round(b[i] + (a[i] - b[i]) * lado):02x}" for i in range(3))
 

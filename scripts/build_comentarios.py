@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Caderno 14 — o que a audiência diz nos comentários do YouTube, por candidato. Só AGREGADOS vão para o público.
+"""Caderno 04 — o que a audiência diz nos comentários do YouTube, por candidato. Só AGREGADOS vão para o público.
 
 Entrada: arquivo bruto de collect_comentarios_youtube.py (privado ou temporário), data/youtube/conteudo.json (temas
 de cada vídeo), data/config/temas_youtube.json, livros de códigos de populismo e de intolerância.

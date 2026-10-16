@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rede de influenciadores do YouTube que citam Lula (vermelho) ou Flávio Bolsonaro (verde) — caderno 11.
+"""Rede de influenciadores do YouTube que citam Lula (vermelho) ou Flávio Bolsonaro (verde) — caderno 02.
 
 Entrada: data/youtube/influenciadores/videos.csv.gz + canais.csv (collect_influenciadores.py)
 Saída (data/youtube/influenciadores/):

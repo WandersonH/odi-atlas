@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Caderno 14 — redes dos comentários do YouTube para o Gephi, e corpus-amostra para o IRaMuTeQ.
+"""Caderno 04 — redes dos comentários do YouTube para o Gephi, e corpus-amostra para o IRaMuTeQ.
 
 1) Rede de coocorrência de termos (pública: só palavras): nó = palavra presente em muitos comentários; aresta = as duas
    aparecem no mesmo comentário; cor = proporção de uso na audiência de Lula (vermelho) e de Flávio (verde).
-   Mesmo método do caderno 11 (build_rede.montar/analisar: Louvain, ForceAtlas2, semente 42).
+   Mesmo método do caderno 02 (build_rede.montar/analisar: Louvain, ForceAtlas2, semente 42).
 2) Rede de respostas entre comentaristas (Recuero: rede de conversação). Aresta dirigida: quem responde → autor do
    comentário respondido; peso = nº de respostas. No PÚBLICO, os autores viram códigos P00001… (sorteio com semente
    fixa; a tabela código → canal fica só no repositório privado). Métricas: grau de entrada, comunidades (Louvain),

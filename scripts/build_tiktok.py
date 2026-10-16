@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Caderno 13 — TikTok de Lula e Flávio Bolsonaro por tema, com as MESMAS regras do caderno 11 (YouTube).
+"""Caderno 02 — TikTok de Lula e Flávio Bolsonaro por tema, com as MESMAS regras do caderno 02 (YouTube).
 
 Entrada: data/tiktok/videos.csv.gz (collect_tiktok.py), data/tiktok/manifesto_latest.json, data/config/temas_youtube.json
 Saída:   data/tiktok/conteudo.json
@@ -61,7 +61,7 @@ def main(argv=None) -> int:
            "ferramenta": man.get("ferramenta"), "perfis_coleta": [{**p, **acervo_perfil.get(p["perfil"], {"videos_desde_16_08": 0, "ultima_leitura_ok": ""})}
                              for p in man.get("perfis", [])],
            "fonte": "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)",
-           "metodo": cfg["nota"] + f" Mesmas regras do caderno 11 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
+           "metodo": cfg["nota"] + f" Mesmas regras do caderno 02 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
            "temas": list(cfg["temas"]) + ["sem_tema"], "candidatos": {}}
     for cid, cand in cands.items():
         meus = [(r, p) for r, p in zip(rows, pseudo) if r["candidate_id"] == cid and r["publicado_em"] >= "2026-08-16"]

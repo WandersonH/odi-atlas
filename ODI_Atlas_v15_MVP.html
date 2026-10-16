@@ -425,9 +425,20 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .yc-tab th{font:700 10px 'Courier New',monospace;text-transform:uppercase;color:#53606b}
 @media (max-width:640px){.yc-row{grid-template-columns:1fr}}
 #ytComments .yc-net{overflow-x:auto;background:#fffdf8;border:1px solid #e3e6e8;margin:8px 0}#ytComments .yc-net svg{display:block;width:100%;min-width:640px;height:auto}
+.subtabs{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;padding:8px 0;border-bottom:1px solid #d9dee2;position:sticky;top:0;z-index:5;background:var(--paper,#f5f2ea)}
+.subtabs button{border:1px solid #c9d0d6;background:#fffdf8;color:#1b2a3d;padding:7px 12px;font:600 12px/1.2 inherit;cursor:pointer}
+.subtabs button[aria-pressed="true"]{background:#1b2a3d;color:#fff;border-color:#1b2a3d}
+#pvResumo{margin:0 0 22px}.pv-h2{font:500 28px/1.15 Georgia,serif;margin:4px 0 6px}.pv-h2 em{color:#56739a}.pv-lead{font-size:13px;color:#53606b;max-width:760px}
+.pv-tab{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}.pv-tab th,.pv-tab td{padding:8px 10px;border-bottom:1px solid #e3e6e8;text-align:left;vertical-align:top}
+.pv-tab thead th{font:700 10px 'Courier New',monospace;text-transform:uppercase;color:#53606b}.pv-tab td.n{font:600 15px Georgia,serif;white-space:nowrap}
+.pv-tab td.lead{box-shadow:inset 0 -3px 0 var(--c)}.pv-tab tr.pv-etapa td{background:#1b2a3d;color:#fff;font:700 11px 'Courier New',monospace;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px}
+.pv-tab td.src{font-size:11px;color:#6a7682}.pv-tab td.src a{color:inherit}
+@media(max-width:700px){.pv-tab .src{display:none}.pv-tab td.n{font-size:13px;white-space:normal}}
+#declarations .controls{flex-wrap:wrap;min-width:0}#declarations .controls input,#declarations .controls select{max-width:100%;min-width:0}
+#declarations .datatable{display:block;overflow-x:auto;max-width:100%}
 </style>
 <style>
-/* ODI Atlas Caderno 11 | inherits v14 editorial typography and colors */
+/* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
 .odi-map-hero h1 em{font-style:italic;color:#57789d}.odi-controls{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:14px;padding:19px;margin:12px 0 14px}
 .odi-controls>div{min-width:0}.odi-controls label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;display:block;color:#49617a;margin-bottom:7px}
 .odi-controls select{appearance:auto;display:block;width:100%;min-width:0;border:1px solid #d4dce3;background:#fcfdfe;color:#263a4d;padding:10px 9px;border-radius:3px;font:inherit;font-size:13px}
@@ -442,7 +453,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 </style>
 
 <style>
-/* Caderno 11 · Conteúdo no YouTube por tema */
+/* Caderno 02 (YouTube) · Conteúdo no YouTube por tema */
 #ytContent{--yt-a:#1d4f86;--yt-b:#a8693a;--yt-axis:#1b2a3d}
 .yt-controls{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;margin:18px 0 12px}
 .yt-chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -567,7 +578,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 #tkNetTbl i,#ytInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}</style>
 
 <style>
-/* Caderno 12 · Google Trends */
+/* Caderno 05 · Google Trends */
 #gTrends{--yt-axis:#1b2a3d;--yt-a:#c8102e;--yt-b:#1f8a3b}
 #gTrends h2{margin:2px 0 10px;font:700 21px/1.2 Georgia,'Times New Roman',serif;color:#172238}
 .gt-sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
@@ -599,7 +610,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 </style>
 
 <style>
-/* Caderno 13 · TikTok */
+/* Caderno 02 (TikTok) · TikTok */
 #tkContent{--yt-axis:#1b2a3d;--tk-a:#c8102e;--tk-b:#1f8a3b}
 #tkContent .yt-chip[aria-pressed="true"]{background:#1b2a3d;border-color:#1b2a3d;color:#fff}
 .tk-h2{margin:2px 0 8px;font:700 21px/1.2 Georgia,'Times New Roman',serif;color:#172238}
@@ -620,31 +631,24 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 #tkMen.yt-focus .tk-dim{opacity:.12}
 </style>
 </head>
-<body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 14 CADERNOS</div><nav class="nav" id="nav">
-<button class="navbutton active" data-tab="overview"><span class="navicon">◫</span> Visão geral</button>
-<button class="navbutton" data-tab="followers"><span class="navicon">▣</span> Big Numbers · Seguidores</button>
-<button class="navbutton" data-tab="history"><span class="navicon">◷</span> Evolução diária</button>
-<button class="navbutton" data-tab="blade"><span class="navicon">▥</span> Social Blade · YouTube</button>
-<button class="navbutton" data-tab="internet"><span class="navicon">◈</span> PNAD · Acesso digital</button>
-<button class="navbutton" data-tab="profiles"><span class="navicon">◎</span> Perfis digitais</button>
-<button class="navbutton" data-tab="scale"><span class="navicon">◉</span> Escala digital × eleitorado</button>
-<button class="navbutton" data-tab="electorate"><span class="navicon">▥</span> Eleitorado, voto & participação</button>
-<button class="navbutton" data-tab="declarations"><span class="navicon">⌘</span> Cards & URLs do TSE</button>
-<button class="navbutton" data-tab="leiaMe"><span class="navicon">ⓘ</span> LEIA-ME · Fontes & metodologia</button>
-<button class="navbutton" data-tab="ytContent"><span class="navicon">▶</span> Conteúdo · YouTube por tema</button>
-<button class="navbutton" data-tab="gTrends"><span class="navicon">↗</span> Buscas · Google Trends</button>
-<button class="navbutton" data-tab="tkContent"><span class="navicon">♪</span> Conteúdo · TikTok por tema</button>
-<button class="navbutton" data-tab="ytComments"><span class="navicon">❝</span> Audiência · comentários YouTube</button>
+<body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — painel de dados"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="data:image/jpeg;base64,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"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>EDIÇÃO 01 · 2026</span></div></div><div class="navcaption">ÍNDICE / 7 CADERNOS</div><nav class="nav" id="nav">
+<button class="navbutton active" data-tab="overview" data-group="panorama"><span class="navicon">◫</span> Panorama · da busca ao voto</button>
+<button class="navbutton" data-tab="ytContent" data-group="campanhas"><span class="navicon">▶</span> O que as campanhas dizem</button>
+<button class="navbutton" data-tab="followers" data-group="audiencia"><span class="navicon">▣</span> Quem acompanha</button>
+<button class="navbutton" data-tab="ytComments" data-group="comentarios"><span class="navicon">❝</span> Comentários · YouTube</button>
+<button class="navbutton" data-tab="gTrends" data-group="buscas"><span class="navicon">↗</span> Buscas · Google Trends</button>
+<button class="navbutton" data-tab="electorate" data-group="territorio"><span class="navicon">⌖</span> Eleitorado e território</button>
+<button class="navbutton" data-tab="leiaMe" data-group="metodo"><span class="navicon">ⓘ</span> Método, fontes e universo</button>
 </nav><div class="sidefoot"><span>ESTUDO CONTÍNUO / V15 · MVP</span>PNAD 2025 · Social Blade SET–OUT 2026<br>Dados armazenados neste arquivo.</div></aside>
 <main class="main"><header class="header"><span class="crumb">EDIÇÃO DE PESQUISA  /  COMUNICAÇÃO POLÍTICA  /  2026</span><div class="actions"><span class="datechip">● Capturas: 10–11 OUT 2026</span><button class="ghostbutton" id="downloadJson">↓ Base JSON</button><button class="primarybutton" id="printView">↗ Imprimir / PDF</button></div></header>
 <section class="panel active" id="overview">
  <div class="intro overview-intro atlas-cover">
 <div class="atlas-cover-copy">
 <div class="atlas-edition"><span>OBSERVATÓRIO / 2026</span><span>EDIÇÃO DIGITAL N.º 01</span></div>
-<div class="eyebrow">CADERNO 01 &nbsp; / &nbsp; PRESENÇA &amp; CIRCULAÇÃO</div>
+<div class="eyebrow">CADERNO 01 &nbsp; / &nbsp; PANORAMA · DA BUSCA AO VOTO</div>
 <h1>Lula <em>×</em> Flávio:<br><span>comunicação<br>em dados.</span></h1>
 <p>Panorama documental de perfis digitais nas eleições brasileiras de 2026. Dados das plataformas em perspectiva com o eleitorado e o acesso à internet. Audiência não equivale a voto.</p>
-<div class="atlas-cover-caption"><span><b>03</b> PLATAFORMAS</span><span><b>11</b> RELATÓRIOS MODASH</span><span><b>2026</b> BRASIL</span></div>
+<div class="atlas-cover-caption"><span><b>05</b> FONTES DE AUDIÊNCIA</span><span><b>1º</b> TURNO APURADO</span><span><b>2026</b> BRASIL</span></div>
 </div>
 <div class="atlas-hero-art" aria-hidden="true"><div class="atlas-art-head"><span>FIG. 01</span><span>FLUXO DE COMUNICAÇÃO</span></div>
 <svg viewBox="0 0 440 330" width="100%" role="img" aria-label="Diagrama editorial de comunicação entre emissores e receptores">
@@ -663,6 +667,9 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 <div class="atlas-art-foot"><span>01 — CANAL</span><span>02 — ATENÇÃO</span><span>03 — RETORNO</span></div></div>
 </div>
  <div class="atlas-chapter"><span>SEÇÃO 01</span><strong>PERFIS &amp; AUDIÊNCIAS</strong><span>INSTRUMENTO DE CONSULTA / MODASH</span></div>
+<div class="card pv-card" id="pvResumo"><div class="eyebrow">Resumo dos candidatos · da busca ao voto</div><h2 class="pv-h2">Lula <em>×</em> Flávio em cinco etapas</h2>
+<p class="pv-lead">Cada linha vem de uma fonte própria e tem data. As etapas não se somam: quem busca, quem segue, quem comenta e quem vota são populações diferentes.</p>
+<div id="pvTabela"><div class="placeholder">Carregando os dados…</div></div></div>
 <div class="overview-toolbar card">
   <div>
     <strong>Plataforma analisada</strong><span class="overview-toolbar-sub">Um conjunto de métricas por vez · Instagram e TikTok: Modash · YouTube: API oficial (Modash como adendo de audiência)</span>
@@ -686,7 +693,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 </section>
 
 <section class="panel" id="followers">
-<div class="paper-ribbon"><span>CADERNO 02 &nbsp;/&nbsp; REDES & SEGUIDORES</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
+<div class="paper-ribbon"><span>CADERNO 03 &nbsp;/&nbsp; QUEM ACOMPANHA · SEGUIDORES AGORA</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
  <div class="intro"><div class="eyebrow">Camada 04 · Retratos de audiências públicas</div><h1>Big Numbers · Seguidores declarados</h1>
  <p>Selecione uma candidatura para consultar cada rede social declarada ao TSE e sua contagem de seguidores quando existe fonte documentada. Nenhum número é apresentado como votação, pessoas únicas ou medição em tempo real.</p></div>
  <div class="bn-intro card">
@@ -706,7 +713,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 </section>
 
 <section class="panel" id="leiaMe">
-  <div class="paper-ribbon"><span>CADERNO 10 / EXPEDIENTE, FONTES & METODOLOGIA</span><span>ATUALIZAÇÃO DOCUMENTAL · 15 OUT 2026</span></div>
+  <div class="paper-ribbon"><span>CADERNO 07 / MÉTODO, FONTES E UNIVERSO</span><span>ATUALIZAÇÃO DOCUMENTAL · 15 OUT 2026</span></div>
   <div class="intro readme-hero">
     <div class="eyebrow">LEIA-ME · FONTES & METODOLOGIA · GUIA DE LEITURA</div>
     <h1>Sobre esta edição<br><em>e seus dados.</em></h1>
@@ -717,7 +724,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="readme-source-table" role="region" aria-label="Inventário das coleções de dados">
     <div class="readme-source-header"><span>COLEÇÃO</span><span>COBERTURA DOCUMENTADA</span><span>FONTE / ESTADO</span></div>
     <div class="readme-source-row"><strong>Modash / Audiências</strong><span>19 relatórios: base de 11 perfis em 10/10/2026 (4 Instagram, 3 TikTok, 4 YouTube), Instagram de Lula e Flávio repetido em 11/10 e os 6 perfis de Lula e Flávio atualizados em 15/10/2026. Cada ficha mostra a própria data.</span><span><a href="https://www.modash.io/" target="_blank" rel="noopener noreferrer">Modash ↗</a><small>Relatórios incorporados</small></span></div>
-    <div class="readme-source-row"><strong>Modash / Série histórica</strong><span>Histórico de indicadores por captura (10, 11 e 15/10/2026) gerado por <code>scripts/extrair_modash.py</code>; o que mudou entre capturas e a conferência com a coleta própria ficam no caderno 03.</span><span><a href="./data/modash/historico.csv" download>historico.csv ↓</a><small>data/modash/</small></span></div>
+    <div class="readme-source-row"><strong>Modash / Série histórica</strong><span>Histórico de indicadores por captura (10, 11 e 15/10/2026) gerado por <code>scripts/extrair_modash.py</code>; o que mudou entre capturas e a conferência com a coleta própria ficam no página Quem acompanha.</span><span><a href="./data/modash/historico.csv" download>historico.csv ↓</a><small>data/modash/</small></span></div>
     <div class="readme-source-row"><strong>Social Blade / YouTube</strong><span>30 datas, de 12/09 a 11/10/2026: inscritos arredondados, visualizações diárias e acumuladas e vídeos. Alguns valores diários estão ausentes.</span><span><a href="https://socialblade.com/" target="_blank" rel="noopener noreferrer">Social Blade ↗</a><small>1 série documentada</small></span></div>
     <div class="readme-source-row"><strong>TSE / Eleitorado</strong><span>Eleitorado apto em 2026, recortes agregados de gênero, escolaridade e faixas etárias; séries de referência publicadas pelo TSE.</span><span><a href="https://dadosabertos.tse.jus.br/dataset/eleitorado-2026" target="_blank" rel="noopener noreferrer">Dados abertos ↗</a><small>Agregados disponíveis</small></span></div>
     <div class="readme-source-row"><strong>TSE / Candidaturas</strong><span>251 URLs declaradas em 27 identificadores de candidatura; extração do CSV gerado em 10/10/2026. Nomes associados a partir de fontes públicas: confronto integral com consulta_cand_2026 pendente.</span><span><a href="https://dadosabertos.tse.jus.br/dataset/candidatos-2026" target="_blank" rel="noopener noreferrer">Candidatos 2026 ↗</a><small>URLs lidas; nomes a conferir</small></span></div>
@@ -733,22 +740,15 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="readme-divider"><span>02 / COBERTURA POR PLATAFORMA</span><span>RELATÓRIOS MODASH / 10–15 OUT 2026</span></div>
   <div class="readme-strip" id="readmePlatformCoverage"></div>
-  <div class="readme-divider"><span>03 / ÍNDICE DOS CADERNOS</span><span>NAVEGUE PELO OBJETO DE PESQUISA</span></div>
+  <div class="readme-divider"><span>03 / ÍNDICE DAS PÁGINAS</span><span>NAVEGUE PELO OBJETO DE PESQUISA</span></div>
   <div class="readme-index">
-    <button data-goto="overview"><b>01</b><span>Panorama documental</span><small>Retratos por plataforma</small>↗</button>
-    <button data-goto="followers"><b>02</b><span>Big Numbers</span><small>Seguidores por candidatura e canais de WhatsApp</small>↗</button>
-    <button data-goto="history"><b>03</b><span>Evolução diária</span><small>Capturas, controle de qualidade e série da API</small>↗</button>
-    <button data-goto="blade"><b>04</b><span>Social Blade</span><small>Série diária de YouTube (12/09–11/10)</small>↗</button>
-    <button data-goto="internet"><b>05</b><span>PNAD e internet</span><small>Condições de acesso digital</small>↗</button>
-    <button data-goto="profiles"><b>06</b><span>Perfis digitais</span><small>Fichas; YouTube pela API oficial</small>↗</button>
-    <button data-goto="scale"><b>07</b><span>Escala digital × eleitorado</span><small>Proporção numérica, não penetração real</small>↗</button>
-    <button data-goto="electorate"><b>08</b><span>Eleitorado, voto & participação</span><small>Mapa do voto 2022/2026, eleitorado e abstenção</small>↗</button>
-    <button data-goto="declarations"><b>09</b><span>Redes declaradas</span><small>Cadastro de URLs do TSE</small>↗</button>
-    <button data-goto="leiaMe"><b>10</b><span>LEIA-ME · Fontes & metodologia</span><small>Esta página</small>↗</button>
-    <button data-goto="ytContent"><b>11</b><span>Conteúdo · YouTube</span><small>Temas, Bardin, CHD, redes</small>↗</button>
-    <button data-goto="gTrends"><b>12</b><span>Buscas · Google Trends</span><small>Período eleitoral, picos e mapa</small>↗</button>
-    <button data-goto="tkContent"><b>13</b><span>Conteúdo · TikTok</span><small>Mesmas regras do caderno 11</small>↗</button>
-    <button data-goto="ytComments"><b>14</b><span>Audiência · comentários</span><small>YouTube, só agregados</small>↗</button>
+    <button data-goto="overview"><b>01</b><span>Panorama · da busca ao voto</span><small>Resumo dos dois candidatos e retratos por plataforma</small>↗</button>
+    <button data-goto="ytContent"><b>02</b><span>O que as campanhas dizem</span><small>YouTube e TikTok: temas, Bardin, Reinert, redes</small>↗</button>
+    <button data-goto="followers"><b>03</b><span>Quem acompanha</span><small>Seguidores, fichas, evolução, série do YouTube</small>↗</button>
+    <button data-goto="ytComments"><b>04</b><span>Comentários · YouTube</span><small>Discurso da audiência, Gephi, IRaMuTeQ</small>↗</button>
+    <button data-goto="gTrends"><b>05</b><span>Buscas · Google Trends</span><small>Período eleitoral, picos e mapa</small>↗</button>
+    <button data-goto="electorate"><b>06</b><span>Eleitorado e território</span><small>Voto 2022/2026, eleitorado, PNAD, contas × eleitores</small>↗</button>
+    <button data-goto="leiaMe"><b>07</b><span>Método, fontes e universo</span><small>Esta página e os perfis declarados ao TSE</small>↗</button>
   </div>
   <div class="readme-divider"><span>04 / COMO INTERPRETAR</span><span>LIMITES E COMPARABILIDADE</span></div>
   <div class="readme-method-grid">
@@ -774,8 +774,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 
 
 
-<section class="panel" id="ytContent" aria-label="Caderno 11 Conteúdo no YouTube por tema">
-  <div class="paper-ribbon"><span>CADERNO 11 / CONTEÚDO · YOUTUBE</span><span>DESDE 16 AGO 2026 · INÍCIO DA CAMPANHA</span></div>
+<section class="panel" id="ytContent" aria-label="Caderno 02 (YouTube) Conteúdo no YouTube por tema">
+  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · YOUTUBE</span><span>DESDE 16 AGO 2026 · INÍCIO DA CAMPANHA</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">YouTube Data API · canais declarados ao TSE</div>
     <h1>O que cada campanha publica.<br><em>Semana a semana, por tema.</em></h1>
     <p>Vídeos dos canais de YouTube declarados ao TSE por Lula e Flávio Bolsonaro, organizados por semana de campanha. Acima do eixo, Lula; abaixo, Flávio. Os temas vêm de um dicionário aberto aplicado ao título e à descrição — não de IA — e podem errar em ironia ou contexto.</p>
@@ -868,8 +868,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Tags são as que o próprio canal declara ao YouTube; não indicam o conteúdo de fato do vídeo. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
 </section>
 
-<section class="panel" id="gTrends" aria-label="Caderno 12 Buscas no Google Trends">
-  <div class="paper-ribbon"><span>CADERNO 12 / BUSCAS · GOOGLE TRENDS</span><span id="gtRibbon">BRASIL · COLETA DIÁRIA</span></div>
+<section class="panel" id="gTrends" aria-label="Caderno 05 Buscas no Google Trends">
+  <div class="paper-ribbon"><span>CADERNO 05 / BUSCAS · GOOGLE TRENDS</span><span id="gtRibbon">BRASIL · COLETA DIÁRIA</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Google Trends · interesse de busca relativo</div>
     <h1>Quem o Brasil procura no Google.<br><em>Hora a hora, estado a estado.</em></h1>
     <p>Interesse de busca por <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (e pelos cinco mais votados do 1º turno). O Trends não dá volume: dá um índice de 0 a 100 relativo ao pico <b>dentro de cada consulta</b>. Mais busca não significa mais voto nem apoio — inclui curiosidade, crítica e notícia.</p>
@@ -899,11 +899,11 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p id="gtFiles"></p></div>
 </section>
 
-<section class="panel" id="tkContent" aria-label="Caderno 13 Conteúdo no TikTok por tema">
-  <div class="paper-ribbon"><span>CADERNO 13 / CONTEÚDO · TIKTOK</span><span>DESDE 16 AGO 2026 · PERFIS DECLARADOS AO TSE</span></div>
+<section class="panel" id="tkContent" aria-label="Caderno 02 (TikTok) Conteúdo no TikTok por tema">
+  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · TIKTOK</span><span>DESDE 16 AGO 2026 · PERFIS DECLARADOS AO TSE</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">TikTok público · chapas 13 e 22</div>
     <h1>O que cada campanha publica no TikTok.<br><em>Vídeo curto, por tema.</em></h1>
-    <p>Vídeos dos perfis de TikTok declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares e vices). Mesmas regras do caderno 11: temas por dicionário aberto aplicado à legenda — não IA — e marcas de "cita o adversário" e "pede voto".</p>
+    <p>Vídeos dos perfis de TikTok declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares e vices). Mesmas regras do página de campanhas (YouTube): temas por dicionário aberto aplicado à legenda — não IA — e marcas de "cita o adversário" e "pede voto".</p>
   </div>
   <div class="odi-signal" id="tkStatus" role="status">Aguardando leitura da base do TikTok.</div>
   <div class="tk-perfis" id="tkPerfis"></div>
@@ -973,8 +973,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="tkMethod"></p>
     <p>Coleta grátis com o programa aberto yt-dlp, sem login, só metadados públicos (legenda, visualizações, curtidas, comentários, compartilhamentos); o texto dos comentários não é coletado. O TikTok bloqueia servidores de forma intermitente: cada perfil tem 3 tentativas por coleta, duas coletas por dia, e um perfil bloqueado mantém os números da última coleta bem-sucedida (marcado ⛔ acima). A data de publicação vem do próprio ID do vídeo. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações. Dados: <a href="./data/tiktok/conteudo.json" target="_blank" rel="noopener">conteudo.json</a> · <a href="./data/tiktok/videos.csv.gz" download>acervo CSV</a> · <a href="./data/tiktok/manifesto_latest.json" target="_blank" rel="noopener">manifesto</a>.</p></div>
 </section>
-<section class="panel" id="ytComments" aria-label="Caderno 14 Comentários do YouTube">
-  <div class="paper-ribbon"><span>CADERNO 14 / AUDIÊNCIA · COMENTÁRIOS DO YOUTUBE</span><span>DESDE 16 AGO 2026 · SÓ AGREGADOS</span></div>
+<section class="panel" id="ytComments" aria-label="Caderno 04 Comentários do YouTube">
+  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO YOUTUBE</span><span>DESDE 16 AGO 2026 · SÓ AGREGADOS</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">YouTube Data API · comentários públicos</div>
     <h1>O que a audiência responde.<br><em>Comentários dos vídeos das campanhas.</em></h1>
     <p>Comentários dos vídeos dos canais de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>: até 100 por relevância e 100 mais recentes por vídeo, com as respostas. Pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou canal de quem comentou é publicado aqui.</p>
@@ -987,7 +987,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="card yc-block"><div class="eyebrow">Livro de códigos · intolerância e incivilidade (Rossini 2022; Coe, Kenski e Rains 2014)</div><h2 class="tk-h2">% dos comentários com cada marca</h2><div id="ycIntol"></div><p class="yt-cloudnote" id="ycCurtidas"></p></div>
   <div class="card yc-block"><div class="eyebrow">Livro de códigos · estratégias populistas (Bardin)</div><h2 class="tk-h2">% dos comentários com cada estratégia</h2><div id="ycPop"></div></div>
-  <div class="card yc-block"><div class="eyebrow">Aderência ao tema</div><h2 class="tk-h2">O vídeo fala de um tema; a audiência fala do quê?</h2><div id="ycAder"></div><p class="yt-cloudnote">Para cada tema dos vídeos (caderno 11), a parcela dos comentários desses vídeos que trata do mesmo tema, a que não tem tema identificável e os outros temas mais citados. Só temas com 30+ comentários.</p></div>
+  <div class="card yc-block"><div class="eyebrow">Aderência ao tema</div><h2 class="tk-h2">O vídeo fala de um tema; a audiência fala do quê?</h2><div id="ycAder"></div><p class="yt-cloudnote">Para cada tema dos vídeos (página de campanhas, YouTube), a parcela dos comentários desses vídeos que trata do mesmo tema, a que não tem tema identificável e os outros temas mais citados. Só temas com 30+ comentários.</p></div>
   <div class="card yc-block"><div class="eyebrow">Série diária</div><h2 class="tk-h2">Volume de comentários por dia de publicação</h2><div class="tk-tlwrap"><svg id="ycSerie" role="img" aria-label="Comentários por dia, Lula e Flávio"></svg></div><p class="yt-cloudnote">Linha: comentários por dia (sem o dia da coleta, ainda incompleto). A coleta privilegia comentários relevantes e recentes, então dias antigos ficam sub-representados.</p></div>
   <div class="card yc-block"><div class="eyebrow">CHD de Reinert · amostra de 4.000 comentários com 8+ palavras por candidato</div><h2 class="tk-h2">Classes de discurso da audiência</h2><div class="yc-chd" id="ycChd"></div><p class="yt-cloudnote">Formas características (χ² ≥ 3,84). Os nomes das classes ficam para o pesquisador; os trechos característicos estão no repositório privado.</p></div>
   <div class="card yc-block"><div class="eyebrow">Gephi · rede de coocorrência de palavras</div><h2 class="tk-h2">Que palavras a audiência usa juntas</h2><div class="odi-signal" id="ycNetStatus">Aguardando leitura.</div><div class="yc-net"><svg id="ycNetT" role="img" aria-label="Rede de coocorrência de palavras nos comentários"></svg></div><div id="ycNetCom"></div><p class="yt-cloudnote" id="ycNetMet"></p><p class="yt-cloudnote"><a href="./data/youtube/comentarios/rede_termos.gexf" download>↓ GEXF (Gephi)</a> · <a href="./data/youtube/comentarios/rede_termos_nos.csv" download>↓ nós (CSV)</a> · <a href="./data/youtube/comentarios/rede_termos_arestas.csv" download>↓ arestas (CSV)</a> · <a href="./data/youtube/comentarios/rede_termos.json" download>↓ JSON</a></p></div>
@@ -997,7 +997,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 </section>
 
 <section class="panel" id="history">
-<div class="paper-ribbon"><span>CADERNO 03 &nbsp;/&nbsp; OBSERVAÇÕES LONGITUDINAIS</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
+<div class="paper-ribbon"><span>CADERNO 03 &nbsp;/&nbsp; QUEM ACOMPANHA · EVOLUÇÃO NO TEMPO</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
   <div class="tr-head"><div><div class="eyebrow">Camada temporal / Modash · registro documental</div><h1>Evolução diária das métricas digitais</h1><p>Série histórica de relatórios exportados. Cada data representa a <strong>captura do arquivo</strong>, não necessariamente uma atualização realizada pela Modash. Explore um perfil de cada vez e consulte mudanças somente quando forem observáveis.</p></div><span class="tr-marker">10 e 11 de outubro · 2026</span></div>
   <div id="trGlobalKpis" class="tr-hero"></div>
   <div class="card"><div class="tr-filters"><div class="tr-filter"><label for="trProfile">Perfil documentado</label><select id="trProfile" aria-label="Selecionar perfil para série histórica"></select></div><div class="tr-filter"><label for="trMetric">Indicador</label><select id="trMetric" aria-label="Selecionar indicador temporal"></select></div></div><div class="tr-status" id="trStatus" role="status"></div></div>
@@ -1019,7 +1019,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 <div class="sectionlabel"><h2>Outras características estimadas</h2></div><div class="grid2"><div class="card"><div class="cardheader"><div><div class="cardtitle">Dados de curtidores</div><div class="carddesc">Disponíveis apenas para determinados relatórios</div></div></div><div id="likersBlock"></div></div><div class="card"><div class="cardheader"><div><div class="cardtitle">Capacidade potencial de alcance</div><div class="carddesc">Faixas da Modash segundo número de contas seguidas</div></div></div><div id="reachabilityBlock"></div></div></div><div class="grid2"><div class="card"><div class="cardheader"><div><div class="cardtitle">Hashtags e menções mais usadas pelo perfil</div><div class="carddesc">% dos posts analisados pela Modash (o relatório não informa quantos)</div></div></div><div id="hashtagBlock"></div></div><div class="card"><div class="cardheader"><div><div class="cardtitle">Composição estimada dos seguidores</div><div class="carddesc">Classificação da Modash · só Instagram</div></div></div><div id="breakdownBlock"></div></div></div><div class="card" id="ytAdendoCard" hidden style="margin-top:17px"><div class="cardheader"><div><div class="cardtitle">Adendo Modash × API oficial</div><div class="carddesc">Os números do perfil vêm da API; o Modash fica como referência</div></div></div><div id="ytAdendo"></div></div><div class="callout" id="profileCaveat"></div></section>
 
 <section class="panel" id="scale">
-<div class="paper-ribbon"><span>CADERNO 07 &nbsp;/&nbsp; CADASTRO & AUDIÊNCIAS</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
+<div class="paper-ribbon"><span>CADERNO 06 &nbsp;/&nbsp; ELEITORADO E TERRITÓRIO · CONTAS × ELEITORADO</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
   <div class="intro">
     <div class="eyebrow">Camada adicional · Universo digital e cadastro eleitoral</div>
     <h1>Escala digital em contexto eleitoral.</h1>
@@ -1060,7 +1060,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div id="scaleCaveat" class="callout"></div>
 </section>
 <section class="panel" id="electorate">
-<div class="paper-ribbon"><span>CADERNO 08 &nbsp;/&nbsp; ELEITORADO, VOTO & PARTICIPAÇÃO</span><span>TSE × IBGE · 2022 ↔ 2026</span></div>
+<div class="paper-ribbon"><span>CADERNO 06 &nbsp;/&nbsp; ELEITORADO E TERRITÓRIO · VOTO E ELEITORADO</span><span>TSE × IBGE · 2022 ↔ 2026</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">TSE × IBGE · Pesquisa territorial</div>
     <h1>O voto, no território.<br><em>Dois pleitos. Uma leitura.</em></h1>
     <p>Explore por município a votação presidencial de primeiro turno em 2022 e 2026, ou compare sua participação nos votos válidos. Fonte eleitoral: TSE. A associação geográfica utiliza os códigos oficiais do IBGE.</p>
@@ -1122,7 +1122,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div hidden aria-hidden="true"><div id="electorateKpis"></div><div id="tseGender"></div><div id="tseEducation"></div><select id="regionSelect"></select><div id="abstentionPanel"></div></div>
 </section>
 <section class="panel" id="declarations">
-<div class="paper-ribbon"><span>CADERNO 09 &nbsp;/&nbsp; REDES DECLARADAS</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div><div class="intro"><div class="eyebrow">Camada 03 · Dados abertos do TSE</div><h1>Candidaturas, perfis e redes declaradas</h1><p>Base <code>rede_social_candidato_2026_BR.csv</code> de 10/10/2026. Registros associados ao identificador sequencial <code>SQ_CANDIDATO</code>; nomes vinculados ao identificador de candidatura por consulta a espelhos públicos do cadastro TSE (ver metodologia).</p></div>
+<div class="paper-ribbon"><span>CADERNO 07 &nbsp;/&nbsp; MÉTODO · PERFIS DECLARADOS AO TSE</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div><div class="intro"><div class="eyebrow">Camada 03 · Dados abertos do TSE</div><h1>Candidaturas, perfis e redes declaradas</h1><p>Base <code>rede_social_candidato_2026_BR.csv</code> de 10/10/2026. Registros associados ao identificador sequencial <code>SQ_CANDIDATO</code>; nomes vinculados ao identificador de candidatura por consulta a espelhos públicos do cadastro TSE (ver metodologia).</p></div>
 <div class="kpigrid" id="declarationKpis"></div><div class="sectionlabel"><h2>Distribuição documental por tipo de URL</h2><p>Classificação técnica feita pelo domínio</p></div><div class="gridwide"><div class="card"><div id="domainBreakdown"></div></div><div class="card"><div class="cardtitle">O que este arquivo comprova?</div><p class="muted">A URL foi informada em registro de candidatura no momento de extração da base. A declaração não comprova titularidade, atividade atual ou autoria de cada publicação.</p><div class="sourcehint"><strong>Identificador:</strong> <code>SQ_CANDIDATO</code><br><strong>Endereço:</strong> <code>DS_URL</code><br><strong>Arquivo:</strong> âmbito BR, eleição 6257</div><p class="sourcehint"><strong>Nomes, cargos e partidos:</strong> obtidos por correspondência exata de <code>SQ_CANDIDATO</code> com fichas de consulta públicas que reproduzem o cadastro do TSE. O arquivo original de redes sociais não contém esses campos. A associação nominal está identificada como <em>consulta secundária</em> até validação com o CSV oficial <code>consulta_cand_2026</code>. <a target="_blank" rel="noopener noreferrer" href="https://dadosabertos.tse.jus.br/dataset/candidatos-2026">Cadastro de candidatos — TSE ↗</a>.</p><p class="urlhint"><a target="_blank" rel="noopener" href="https://dadosabertos.tse.jus.br/dataset/candidatos-2026/resource/7c480cbf-7415-4237-8db7-8c8167542da9">Recurso oficial no TSE ↗</a></p></div></div>
 
 <div class="sectionlabel"><h2>Galeria de candidaturas e perfis</h2><p>Cards com URLs informadas ao TSE</p></div>
@@ -1140,7 +1140,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 
 
 <section class="panel" id="internet">
-<div class="paper-ribbon"><span>CADERNO 05 &nbsp;/&nbsp; ACESSO DIGITAL</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
+<div class="paper-ribbon"><span>CADERNO 06 &nbsp;/&nbsp; ELEITORADO E TERRITÓRIO · ACESSO À INTERNET</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
   <div class="v9-head"><div class="eyebrow">IBGE / PNAD Contínua TIC · série 2016–2025</div><h1>Acesso à internet no Brasil</h1><p>Contextualização da presença digital por situação do domicílio, região e idade. Pesquisa amostral de pessoas com 10 anos ou mais que utilizaram a internet nos três meses anteriores à entrevista.</p><span class="v9-pill">Fonte oficial · IBGE 2025</span></div>
   <div class="v9-cards">
     <div class="v9-kpi"><div class="cap">Pessoas que utilizaram internet</div><strong>90,5%</strong><small>168,7 milhões · população de 10+ anos</small></div>
@@ -1156,7 +1156,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
 </section>
 <section class="panel" id="blade">
-<div class="paper-ribbon"><span>CADERNO 04 &nbsp;/&nbsp; SÉRIE DE PLATAFORMA</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
+<div class="paper-ribbon"><span>CADERNO 03 &nbsp;/&nbsp; QUEM ACOMPANHA · SÉRIE HISTÓRICA DO YOUTUBE</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
  <div class="v9-head"><div class="eyebrow">Social Blade / YouTube · 12 set–11 out 2026</div><h1>Monitoramento diário de canal</h1><p>Série documental de métricas públicas do <a href="https://socialblade.com/youtube/handle/lulaoficial" target="_blank" rel="noopener noreferrer">YouTube @lulaoficial ↗</a>. A fonte não revela pessoas únicas alcançadas, exposição eleitoral ou intenção de voto.</p><span class="v9-pill">30 datas · fonte Social Blade</span></div>
  <div class="v9-cards"><div class="v9-kpi"><div class="cap">Inscritos · último registro</div><strong>1,79 mi</strong><small>11/10/2026 · valor arredondado</small></div><div class="v9-kpi"><div class="cap">Visualizações acumuladas</div><strong>473,36 mi</strong><small>11/10/2026 · contador público</small></div><div class="v9-kpi"><div class="cap">Inscritos ganhos em 30 dias</div><strong>130 mil</strong><small>Resumo divulgado pelo Social Blade</small></div><div class="v9-kpi"><div class="cap">Visualizações em 30 dias</div><strong>41,24 mi</strong><small>Resumo divulgado pela plataforma</small></div></div>
  <div class="v9-grid"><article class="v9-card"><h2>Visualizações diárias</h2><p>Valores observados · lacunas permanecem sem preenchimento</p><div id="sbViewsChart"></div></article><article class="v9-card"><h2>Inscritos exibidos ao longo do período</h2><p>Valores arredondados em dezenas de milhares</p><div id="sbSubsChart"></div></article>
@@ -1193,7 +1193,10 @@ function ytAplicarApi(f){
 }
 const janelaTxt=p=>p.api&&p.api.janela?`${p.api.janela.videos} vídeos · ${dataBR(p.api.janela.de.slice(0,10)).slice(0,5)}–${dataBR(p.api.janela.ate.slice(0,10)).slice(0,5)}`:'';
 let tab='overview';
-function setTab(t){if(!document.getElementById(t))return;tab=t;document.querySelectorAll('.navbutton').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===t));window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.goto)));
+const GRUPOS={panorama:['overview'],campanhas:['ytContent','tkContent'],audiencia:['followers','profiles','history','blade'],comentarios:['ytComments'],buscas:['gTrends'],territorio:['electorate','internet','scale'],metodo:['leiaMe','declarations']};
+const GRUPO_DE=Object.fromEntries(Object.entries(GRUPOS).flatMap(([g,ids])=>ids.map(i=>[i,g])));
+const SUBROT={ytContent:'YouTube',tkContent:'TikTok',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
+function setTab(t){if(!document.getElementById(t))return;tab=t;document.querySelectorAll('.navbutton').forEach(b=>b.classList.toggle('active',b.dataset.group===(GRUPO_DE[t]||t)));document.querySelectorAll('.subtabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tab===t)));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===t));window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.goto)));
 function save(filename,str,type){const blob=new Blob([str],{type:type||'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}function toCsv(head,rows){return '\ufeff'+[head.map(csvCell).join(';'),...rows.map(row=>row.map(csvCell).join(';'))].join('\n')}
 document.getElementById('downloadJson').onclick=()=>save('dados_dashboard_modash_tse_2026.json',JSON.stringify(DATA,null,2),'application/json;charset=utf-8');document.getElementById('printView').onclick=()=>window.print();
@@ -1673,7 +1676,7 @@ el('pnadExport').addEventListener('click',()=>{const rows=[];for(let [dimension,
 </script>
 
 <script>
-/* ODI Atlas · Caderno 11: mapa eleitoral TSE × IBGE desenhado em SVG a partir da malha do próprio repositório
+/* ODI Atlas · Caderno 06: mapa eleitoral TSE × IBGE desenhado em SVG a partir da malha do próprio repositório
    (sem biblioteca nem mapa-base externos: funciona offline). Lula (13) vermelho · nº 22 verde. */
 (()=>{
 'use strict';
@@ -1789,7 +1792,7 @@ fetch('./data/elections.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.statu
 </script>
 
 <script>
-/* Caderno 11 · Conteúdo no YouTube por tema (dados: data/youtube/conteudo.json) */
+/* Caderno 02 (YouTube) · Conteúdo no YouTube por tema (dados: data/youtube/conteudo.json) */
 (function(){
 const LULA='280002542548',FLAVIO='280002551544',INICIO=Date.UTC(2026,7,16),SEM=7*864e5,MAX_POR_SEMANA=24;
 const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
@@ -1856,7 +1859,7 @@ if(sec.classList.contains('active'))carregar();
 </script>
 
 <script>
-/* Caderno 11 · rede de coocorrência (data/youtube/rede.json; mesma rede em rede.gexf para o Gephi) */
+/* Caderno 02 (YouTube) · rede de coocorrência (data/youtube/rede.json; mesma rede em rede.gexf para o Gephi) */
 (function(){
 const sec=document.getElementById('ytContent');if(!sec)return;
 const PAL=['#2f7d6b','#7a4d8c','#b8862e','#9c3f4a','#4f6b2e','#5b7894','#c25d8a','#3d3d3d'];
@@ -1924,7 +1927,7 @@ if(sec.classList.contains('active'))carregar();
 </script>
 
 <script>
-/* Caderno 11 · rede de influenciadores (data/youtube/influenciadores/rede.json) — Lula vermelho, Flávio verde */
+/* Caderno 02 (YouTube) · rede de influenciadores (data/youtube/influenciadores/rede.json) — Lula vermelho, Flávio verde */
 (function(){
 const sec=document.getElementById('ytContent');if(!sec)return;
 const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';
@@ -1985,7 +1988,7 @@ if(sec.classList.contains('active'))carregar();
 </script>
 
 <script>
-/* Caderno 12 · Google Trends (data/trends/caderno.json, gerado de cada coleta diária) */
+/* Caderno 05 · Google Trends (data/trends/caderno.json, gerado de cada coleta diária) */
 (function(){
 const sec=document.getElementById('gTrends');if(!sec)return;
 const COR={'Lula':'#c8102e','Flávio Bolsonaro':'#1f8a3b','Augusto Cury':'#b8862e','Renan Santos':'#5b7894','Ronaldo Caiado':'#7a4d8c'};
@@ -2083,7 +2086,7 @@ if(sec.classList.contains('active'))carregar();
 </script>
 
 <script>
-/* Caderno 11 · estratégias discursivas (livro de códigos, Bardin) e CHD de Reinert */
+/* Caderno 02 (YouTube) · estratégias discursivas (livro de códigos, Bardin) e CHD de Reinert */
 (function(){
 const sec=document.getElementById('ytContent');if(!sec)return;
 const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';let feito=false;
@@ -2123,7 +2126,7 @@ if(sec.classList.contains('active'))carregar();
 </script>
 
 <script>
-/* Caderno 13 · TikTok por tema (data/tiktok/conteudo.json) — Lula vermelho, Flávio verde */
+/* Caderno 02 (TikTok) · TikTok por tema (data/tiktok/conteudo.json) — Lula vermelho, Flávio verde */
 (function(){
 const sec=document.getElementById('tkContent');if(!sec)return;
 const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b',INICIO=Date.UTC(2026,7,16),SEM=7*864e5;
@@ -2182,7 +2185,7 @@ if(sec.classList.contains('active'))carregar();
 })();
 </script>
 <script>
-/* Caderno 13 · estratégias (TikTok) discursivas (livro de códigos, Bardin) e CHD de Reinert */
+/* Caderno 02 (TikTok) · estratégias (TikTok) discursivas (livro de códigos, Bardin) e CHD de Reinert */
 (function(){
 const sec=document.getElementById('tkContent');if(!sec)return;
 const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';let feito=false;
@@ -2221,7 +2224,7 @@ if(sec.classList.contains('active'))carregar();
 })();
 </script>
 <script>
-/* Caderno 13 · rede (TikTok) de coocorrência (data/youtube/rede.json; mesma rede em rede.gexf para o Gephi) */
+/* Caderno 02 (TikTok) · rede (TikTok) de coocorrência (data/youtube/rede.json; mesma rede em rede.gexf para o Gephi) */
 (function(){
 const sec=document.getElementById('tkContent');if(!sec)return;
 const PAL=['#2f7d6b','#7a4d8c','#b8862e','#9c3f4a','#4f6b2e','#5b7894','#c25d8a','#3d3d3d'];
@@ -2289,7 +2292,7 @@ if(sec.classList.contains('active'))carregar();
 </script>
 
 <script>
-/* Caderno 13 · rede de menções (data/tiktok/rede_mencoes.json) — quem as campanhas marcam com @ */
+/* Caderno 02 (TikTok) · rede de menções (data/tiktok/rede_mencoes.json) — quem as campanhas marcam com @ */
 (function(){
 const sec=document.getElementById('tkContent');if(!sec)return;let R=null,feito=false,sel=null;
 const $=id=>document.getElementById(id);const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -2317,7 +2320,7 @@ if(sec.classList.contains('active'))carregar();
 })();
 </script>
 <script>
-/* Caderno 14 · Comentários do YouTube (data/youtube/comentarios/analise.json) — só agregados; Lula vermelho, Flávio verde */
+/* Caderno 04 · Comentários do YouTube (data/youtube/comentarios/analise.json) — só agregados; Lula vermelho, Flávio verde */
 (function(){
 const sec=document.getElementById('ytComments');if(!sec)return;
 const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';
@@ -2365,7 +2368,7 @@ fetch('./data/whatsapp/seguidores.csv',{cache:'no-store'}).then(r=>{if(!r.ok)thr
 }).catch(e=>{el.innerHTML=`<div class="placeholder">⛔ ${esc(e.message)}</div>`;});})();
 </script>
 <script>
-/* Caderno 14 · redes dos comentários (Gephi): coocorrência de palavras e conversação pseudonimizada */
+/* Caderno 04 · redes dos comentários (Gephi): coocorrência de palavras e conversação pseudonimizada */
 (function(){const sec=document.getElementById('ytComments');if(!sec)return;let feito=false;const $=id=>document.getElementById(id);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
@@ -2387,5 +2390,59 @@ async function carregar(){if(feito)return;feito=true;
   $('ycRespMet').textContent=r.metodo;
  }catch(e){$('ycNetStatus').textContent='⛔ Não foi possível ler as redes: '+e.message;}}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
+</script>
+<script>
+/* Abas internas das páginas que reúnem mais de um caderno */
+(function(){for(const ids of Object.values(GRUPOS)){if(ids.length<2)continue;for(const id of ids){const sec=document.getElementById(id);if(!sec)continue;const bar=document.createElement('div');bar.className='subtabs';bar.setAttribute('role','tablist');
+bar.innerHTML=ids.map(x=>`<button type="button" data-tab="${x}" aria-pressed="${x===id}">${SUBROT[x]||x}</button>`).join('');bar.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));sec.prepend(bar);}}})();
+</script>
+<script>
+/* Panorama · resumo dos candidatos, da busca ao voto (lê os arquivos de cada coleta) */
+(function(){const el=document.getElementById('pvTabela');if(!el)return;
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const n=v=>v==null||Number.isNaN(v)?'—':Number(v).toLocaleString('pt-BR');
+const k=v=>v==null?'—':new Intl.NumberFormat('pt-BR',{notation:'compact',maximumFractionDigits:1}).format(v);
+const pc=(v,d=1)=>v==null?'—':Number(v).toLocaleString('pt-BR',{maximumFractionDigits:d})+'%';
+const dbr=d=>d?String(d).slice(0,10).split('-').reverse().join('/'):'';
+const J=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);
+const T=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.text():'').catch(()=>'');
+const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.split(';');return ls.map(l=>Object.fromEntries(l.split(';').map((v,i)=>[H[i],v])));};
+(async()=>{const [el26,tr,yt,ytc,tk,com,seg,wa]=await Promise.all([J('./data/elections.json'),J('./data/trends/caderno.json'),J('./data/youtube/fichas.json'),J('./data/youtube/conteudo.json'),J('./data/tiktok/conteudo.json'),J('./data/youtube/comentarios/analise.json'),T('./data/seguidores/latest.csv'),T('./data/whatsapp/seguidores_latest.csv')]);
+ const rows=[];const etapa=t=>rows.push({etapa:t});const linha=(rot,l,f,fmt,fonte,maior=true)=>rows.push({rot,l,f,fmt,fonte,maior});
+ // 1. Buscas
+ etapa('1 · Buscas no Google');
+ const q=tr&&tr.consultas.find(c=>c.grupo==='segundo_turno_topicos'&&c.periodo==='eleitoral');
+ if(q){const iL=q.termos.indexOf('Lula'),iF=q.termos.indexOf('Flávio Bolsonaro'),vg=q.vegetativo||{};const ini=q.serie[0]?.t,fim=q.serie.at(-1)?.t,src=`Google Trends · tópicos · ${dbr(ini)}–${dbr(fim)}`;
+  linha('Interesse médio no período eleitoral (0–100)',vg['Lula']?.media,vg['Flávio Bolsonaro']?.media,v=>n(v),src);
+  const pico=x=>x&&x.picos&&x.picos.length?x.picos.reduce((a,b)=>b.valor>a.valor?b:a):null,pl=pico(vg['Lula']),pf=pico(vg['Flávio Bolsonaro']);
+  rows.push({rot:'Maior pico de busca',l:pl?`${pl.valor} em ${dbr(pl.data).slice(0,5)}`:'—',f:pf?`${pf.valor} em ${dbr(pf.data).slice(0,5)}`:'—',fmt:x=>x,fonte:src,txt:true});
+  const ufL=q.uf.filter(u=>u.v[iL]>u.v[iF]).length,ufF=q.uf.filter(u=>u.v[iF]>u.v[iL]).length;linha('Estados onde é o mais buscado',ufL,ufF,v=>n(v)+' UF',src);}
+ else rows.push({rot:'⛔ Trends não carregou',l:'',f:'',fmt:x=>x,fonte:'',txt:true});
+ // 2. Presença
+ etapa('2 · Presença digital (seguidores do maior perfil)');
+ const S=csv(seg),maior=(cid,plat)=>S.filter(r=>r.candidate_id===cid&&r.platform===plat).reduce((a,b)=>Number(b.followers)>Number(a?.followers||-1)?b:a,null);
+ for(const plat of ['Instagram','Facebook']){const a=maior(L,plat),b=maior(F,plat);if(a||b)linha(plat,a&&Number(a.followers),b&&Number(b.followers),k,`coleta própria (Apify) · ${dbr(a?.captured_at||b?.captured_at)}`);}
+ if(yt){linha('YouTube (inscritos)',yt.perfis.yt_lula?.inscritos,yt.perfis.yt_flavio?.inscritos,k,`YouTube Data API · ${dbr(yt.data)}`);}
+ const pt=id=>DATA.profiles.find(p=>p.id===id);linha('TikTok',pt('tt_lula')?.followers,pt('tt_flavio')?.followers,k,`Modash · ${dbr(pt('tt_lula')?.captured_at)} (sem coleta própria)`);
+ const W=csv(wa);if(W.length){const soma=lado=>W.filter(r=>r.lado===lado).reduce((a,r)=>a+Number(r.seguidores),0)||null;linha('Canais de WhatsApp acompanhados',soma('Lula'),soma('Flávio')||null,k,`whatsapp.com/channel · ${dbr(W[0].data)} · ${W.length} canais (só do lado de Lula até agora)`);}
+ // 3. O que publicam
+ etapa('3 · O que as campanhas publicam');
+ if(yt){const a=yt.perfis.yt_lula?.janela,b=yt.perfis.yt_flavio?.janela;linha('YouTube · vídeos nos últimos 30 dias',a?.videos,b?.videos,n,`YouTube Data API · ${dbr(yt.data)}`,null);linha('YouTube · visualizações médias por vídeo',a?.media_visualizacoes,b?.media_visualizacoes,k,'idem');linha('YouTube · engajamento',a?.engajamento,b?.engajamento,v=>pc(v,2),'(curtidas + comentários) ÷ visualizações');}
+ if(tk){const a=tk.candidatos[L],b=tk.candidatos[F];linha('TikTok · vídeos desde 16/08',a?.total_videos,b?.total_videos,n,`perfis declarados ao TSE · ${dbr(tk.coletado_em_utc)}`,null);linha('TikTok · visualizações somadas',a?.totais?.visualizacoes,b?.totais?.visualizacoes,k,'idem');}
+ if(ytc){const tema=c=>{const e=Object.entries(c.por_tema||{}).filter(([t])=>t!=='sem_tema').sort((x,y)=>y[1]-x[1])[0];return e?e[0].replace(/_/g,' '):'—';};rows.push({rot:'Tema mais frequente no YouTube',l:tema(ytc.candidatos[L]),f:tema(ytc.candidatos[F]),fmt:x=>x,fonte:'dicionário de temas (página 02)',txt:true});}
+ // 4. Reação
+ etapa('4 · Como o público reage');
+ if(com){const a=com.candidatos[L],b=com.candidatos[F];linha('Comentários no YouTube (com respostas)',a&&a.comentarios+a.respostas,b&&b.comentarios+b.respostas,n,`YouTube Data API · ${dbr(com.coletado_em_utc)}`,null);linha('Comentários com incivilidade',a?.qualquer_incivilidade_pct,b?.qualquer_incivilidade_pct,v=>pc(v,2),'pré-codificação por dicionário (validar com kappa)',null);linha('Comentários com intolerância',a?.qualquer_intolerancia_pct,b?.qualquer_intolerancia_pct,v=>pc(v,2),'idem',null);}
+ if(tk){linha('TikTok · interação mediana por visualização',tk.candidatos[L]?.taxa_interacao_mediana*100,tk.candidatos[F]?.taxa_interacao_mediana*100,v=>pc(v,1),'(curtidas + comentários + compart.) ÷ visualizações');}
+ // 5. Voto
+ etapa('5 · Voto · 1º turno de 2026');
+ if(el26&&el26.years&&el26.years['2026']){let vL=0,vF=0,val=0,mL=0,mF=0,tot=0;for(const m of Object.values(el26.years['2026'])){const c=m.candidatos||{};vL+=c['13']||0;vF+=c['22']||0;val+=m.validos_nominais||0;tot++;const mx=Math.max(...Object.values(c));if(mx>0&&c['13']===mx)mL++;else if(mx>0&&c['22']===mx)mF++;}
+  const src=`TSE · votação por município · ${dbr(el26.generated_at_utc)}`;linha('Votos',vL,vF,n,src);linha('% dos votos válidos',100*vL/val,100*vF/val,v=>pc(v,2),src);linha('Municípios em 1º lugar',mL,mF,v=>n(v)+' de '+n(tot),src);}
+ else rows.push({rot:'⛔ elections.json não carregou',l:'',f:'',fmt:x=>x,fonte:'',txt:true});
+ el.innerHTML=`<div style="overflow-x:auto"><table class="pv-tab"><thead><tr><th>Indicador</th><th style="color:${CL}">Lula</th><th style="color:${CF}">Flávio Bolsonaro</th><th class="src">Fonte · data</th></tr></thead><tbody>${rows.map(r=>{if(r.etapa)return `<tr class="pv-etapa"><td colspan="4">${esc(r.etapa)}</td></tr>`;
+  const lv=r.l,fv=r.f,cmp=!r.txt&&r.maior!==null&&lv!=null&&fv!=null&&lv!==fv,ll=cmp&&lv>fv,fl=cmp&&fv>lv;
+  return `<tr><td>${esc(r.rot)}</td><td class="n${ll?' lead':''}" style="--c:${CL}">${esc(r.fmt(lv))}</td><td class="n${fl?' lead':''}" style="--c:${CF}">${esc(r.fmt(fv))}</td><td class="src">${esc(r.fonte)}</td></tr>`;}).join('')}</tbody></table></div><div class="chartfoot">Sublinhado: o maior valor da linha, só onde “maior” tem leitura direta. Vídeos publicados, volume de comentários e incivilidade não são marcados: mais não é melhor. Detalhes e método em cada página.</div>`;
+})();})();
 </script>
 </body></html>

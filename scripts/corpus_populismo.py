@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Caderno 11 — estratégias discursivas (Bardin) e corpus para IRaMuTeQ.
+"""Caderno 02 — estratégias discursivas (Bardin) e corpus para IRaMuTeQ.
 
 Entrada: data/youtube/videos_latest.csv.gz, data/config/temas_youtube.json, data/config/livro_codigos_populismo.json
 Saídas:

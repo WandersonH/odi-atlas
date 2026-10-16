@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Classificação Hierárquica Descendente (CHD) de Reinert — implementação em Python (numpy) para o caderno 11.
+"""Classificação Hierárquica Descendente (CHD) de Reinert — implementação em Python (numpy) para o caderno 02.
 
 Entrada: data/corpus/youtube_candidatos_segmentos.csv (corpus_populismo.py)
 Saída:   data/corpus/chd_reinert.json

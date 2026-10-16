@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Caderno 11 — vídeos do YouTube de Lula e Flávio Bolsonaro classificados por tema (dicionário aberto).
+"""Caderno 02 — vídeos do YouTube de Lula e Flávio Bolsonaro classificados por tema (dicionário aberto).
 
 Entrada: data/youtube/videos_latest.csv.gz (coleta diária) + data/config/temas_youtube.json
 Saída:   data/youtube/conteudo.json

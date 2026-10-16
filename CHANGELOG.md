@@ -6,6 +6,44 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [P4.3] 2026-10-15 — Página reorganizada em 7 cadernos; Panorama vira resumo "da busca ao voto"
+
+**Por quê:** pedido do usuário. Avaliar junções de páginas que se complementam, com visão focal; o Panorama deve ser "um resumo de todos os dados sobre os candidatos, de buscas a voto". A junção Comentários + Trends foi descartada pelo usuário ("não fazer"); Eleitorado + PNAD + Escala foi aprovada.
+
+**Mudou**
+- **Menu com 7 cadernos.** As páginas que se juntam ganham abas internas fixas no topo. O código de cada caderno não mudou, e os links antigos (`data-goto`) continuam funcionando.
+
+  | Nº | Caderno | Abas |
+  |---|---|---|
+  | 01 | Panorama · da busca ao voto | — |
+  | 02 | O que as campanhas dizem | YouTube, TikTok |
+  | 03 | Quem acompanha | Seguidores agora, Ficha do perfil, Evolução no tempo, Série histórica do YouTube (Social Blade) |
+  | 04 | Comentários · YouTube | — |
+  | 05 | Buscas · Google Trends | — |
+  | 06 | Eleitorado e território | Voto e eleitorado, Acesso à internet (PNAD), Contas × eleitorado |
+  | 07 | Método, fontes e universo | LEIA-ME/fontes/método, Perfis declarados ao TSE |
+
+- **Panorama: tabela Lula × Flávio em 5 etapas.** Cada linha é lida na hora do arquivo de origem e mostra fonte e data:
+  1. Buscas (Trends, período eleitoral);
+  2. Presença digital (Instagram e Facebook por Apify, YouTube pela API, TikTok pelo Modash, WhatsApp);
+  3. O que publicam (YouTube API, TikTok, tema mais frequente);
+  4. Reação (comentários, incivilidade, intolerância, interação no TikTok);
+  5. Voto no 1º turno de 2026 (TSE).
+
+  O sublinhado marca o maior valor só onde "maior" tem leitura direta.
+- Faixas dos cadernos, índice do LEIA-ME, menções no texto e nos scripts/workflows renumerados (11 → 02, 12 → 05, 13 → 02, 14 → 04; geografia → 06).
+- Correção: a aba de perfis declarados ao TSE transbordava a 390 px (antes desta mudança); filtros e tabela agora cabem, com rolagem própria na tabela.
+
+**Testado**
+- ✅ Chromium 1300 px e 390 px: os 7 cadernos e as abas internas (TikTok, Social Blade, Contas × eleitorado, Perfis declarados) abrem a seção certa e acendem o item certo do menu. Sem erro de console e sem rolagem horizontal.
+- ✅ Valores do Panorama conferidos com as fontes, por exemplo:
+  - Trends: média 9,52 × 6,26; Lula à frente nos 27 estados, com o menor valor dele em Roraima, 57 × 43;
+  - YouTube: 1,82 mi × 1,52 mi;
+  - votos: 53.722.151 (45,16%) × 55.960.603 (47,04%); municípios em 1º lugar: 2.665 × 2.906 de 5.571.
+- ✅ Suíte de testes OK; YAML dos workflows válido.
+
+---
+
 ## [C9.4] 2026-10-15 — Comentários: repositório privado ligado; redes para o Gephi e corpus para o IRaMuTeQ
 
 **Por quê:** o usuário ajustou o token (Contents: read and write) e pediu "nos comentários, Gephi e IRaMuTeQ".

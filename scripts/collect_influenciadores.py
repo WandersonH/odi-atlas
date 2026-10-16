@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Canais do YouTube que citam Lula ou Flávio Bolsonaro (rede de influenciadores do caderno 11).
+"""Canais do YouTube que citam Lula ou Flávio Bolsonaro (rede de influenciadores do caderno 02).
 
 - Chave SOMENTE por YOUTUBE_API_KEY (segredo do GitHub). Nunca gravada nem impressa.
 - search.list (100 unidades/página) com as buscas de data/config/influenciadores_youtube.json, depois

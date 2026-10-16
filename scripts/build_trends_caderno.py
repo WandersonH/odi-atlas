@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Caderno 12 — consolida a coleta mais recente do Google Trends num arquivo para a página.
+"""Caderno 05 — consolida a coleta mais recente do Google Trends num arquivo para a página.
 
 Entrada: data/trends/AAAA-MM-DD/HHMMSS/ (collect_trends.py; usa a pasta mais recente com status ok)
 Saída:   data/trends/caderno.json  (séries e mapa por UF de cada grupo × período, com o tópico usado)

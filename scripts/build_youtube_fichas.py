@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fichas de YouTube (cadernos 01, 03, 06 e 07) pela YouTube Data API v3 — fonte principal de todo indicador de YouTube.
+"""Fichas de YouTube (páginas Panorama, Quem acompanha e Eleitorado e território) pela YouTube Data API v3 — fonte principal de todo indicador de YouTube.
 
 O Modash vira adendo: só a composição estimada da audiência (gênero, idade, país), que a API pública não fornece
 (dados demográficos só existem no YouTube Analytics, para o dono do canal).
