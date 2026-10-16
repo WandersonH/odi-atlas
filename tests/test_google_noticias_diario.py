@@ -31,10 +31,14 @@ class TestDiario(unittest.TestCase):
                 n1 = len(chamadas)
                 g.main(["--desde", "2026-10-10"], buscar_fn=fake, hoje=dt.date(2026, 10, 13))
                 d = json.loads(Path("data/trends/google_noticias_diario.json").read_text(encoding="utf-8"))
+                import csv, gzip
+                u = list(csv.DictReader(gzip.open("data/trends/noticias/universo.csv.gz", "rt", encoding="utf-8"), delimiter=";"))
             finally:
                 os.chdir(cwd)
         self.assertEqual(n1, 8)                 # 4 dias × 2 candidatos
         self.assertEqual(len(chamadas) - n1, 4)  # depois, só ontem e hoje
+        self.assertEqual(len(u), 8)  # 1 item por dia e candidato, sem duplicar nas recoletas
+        self.assertEqual(d["dias"]["2026-10-10"]["universo"], {"280002542548": 1, "280002551544": 1})
         self.assertTrue(d["dias"]["2026-10-10"]["fechado"]); self.assertFalse(d["dias"]["2026-10-13"]["fechado"])
 
 
