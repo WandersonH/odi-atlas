@@ -4,6 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C12.1 — Google Busca passa a usar o Google Notícias (RSS) (2026-10-16) ✅
+
+**O que mudou**
+- O usuário informou que a chave é a mesma do YouTube e criou o mecanismo; o cx (ID público, aparece no código de incorporação) entrou em `data/config/google_busca.json`.
+- O teste da chave sem cx (workflow `google-busca.yml`) respondeu `400 INVALID_ARGUMENT`; com o cx, todas as consultas responderam `HTTP 403 This project does not have the access to Custom Search JSON API` (API fechada a novos clientes).
+- `scripts/collect_google_busca.py`: quando a API recusa o projeto, usa o RSS público de busca do Google Notícias (`news.google.com/rss/search`, pt-BR/BR, sem chave): 5 primeiros na ordem do Google Notícias e 3 mais recentes da busca `when:3d`. `parse_rss` com teste em `tests/test_google_busca.py`.
+- Página: bloco mostra a fonte, o veículo e o domínio; título "Google Busca · Google Notícias".
+
+**Testes executados**
+- `python -m unittest discover -s tests` sem falhas.
+- Run do `google-busca.yml` das 03h47 (16/10): status ok, 5 + 3 resultados para cada candidato em `data/trends/google_busca.json` (ex.: Lula 1º O Globo "Lula na TV Globo..."; Flávio 1º Folha "Datafolha: Flávio Bolsonaro tem 51%...").
+- Chromium local a 390 px: bloco renderizado, sem erro, sem rolagem horizontal.
+
+**Ressalvas**
+- Só notícias indexadas pelo Google Notícias, não a busca geral da web. A lista de sites do mecanismo não é usada nesse caminho.
+
 ## C12.0 — Anúncios pagos (Meta e Google), sentimento dos comentários do YouTube, chave do Google Busca (2026-10-16) ⚠️
 
 **O que mudou**
