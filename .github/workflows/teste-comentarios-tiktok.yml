@@ -1,0 +1,22 @@
+name: Teste — comentários do TikTok (só diagnóstico)
+
+# Verifica se o endpoint público de comentários do TikTok responde a partir do IP do GitHub. Não grava nada.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ler comentários de 6 vídeos (diagnóstico sem texto)
+        run: |
+          python scripts/collect_comentarios_tiktok.py --teste 6 > diag.txt 2>&1 || true
+          while IFS= read -r l; do echo "::notice title=TikTok comentários::$(echo "$l" | cut -c1-900)"; done < diag.txt
