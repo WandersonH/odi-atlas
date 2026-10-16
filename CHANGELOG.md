@@ -6,6 +6,20 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [P4.4] 2026-10-16 — Panorama: índice de busca com média e mediana
+
+**Por quê:** o usuário perguntou se o dado de busca era mediana ou número bruto e pediu os dois.
+
+**Mudou:** na etapa 1 do Panorama, "Interesse médio" virou duas linhas, com valores lidos de `data/trends/caderno.json` (vegetativo, período eleitoral):
+- "Índice de busca · média do período": Lula 9,52 × Flávio 6,26;
+- "Índice de busca · mediana do período (dia típico)": Lula 5 × Flávio 2.
+
+O Trends não fornece número bruto de buscas, só o índice relativo de 0 a 100.
+
+**Testado:** ✅ Chromium, as duas linhas renderizadas sem erro; suíte de testes OK.
+
+---
+
 ## [C11.0] 2026-10-16 — Buscas: o que o Google mostra (5 primeiros e 3 mais recentes por candidato)
 
 **Por quê:** pedido do usuário: "usar a API search via chave Google para trazer os 5 primeiros resultados na página do Trends e os últimos 3 novos publicados".
