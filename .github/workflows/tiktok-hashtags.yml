@@ -1,0 +1,74 @@
+name: TikTok — vídeos por hashtag (contas que publicam sobre os candidatos)
+
+# Páginas públicas de hashtag do TikTok num navegador headless, sem login (diagnóstico D1.2). Gratuito.
+# Lista completa de contas (inclui pessoas comuns) só no repositório privado; no público, contas com 10 mil+ seguidores.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 12 * * *"   # todo dia, 09h15 em Brasília
+
+concurrency:
+  group: tiktok-hashtags
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  hashtags:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: |
+          pip install -q networkx==3.6.1 numpy==2.3.4 playwright
+          python -m playwright install --with-deps chromium > /dev/null 2>&1
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Repositório privado (se o segredo existir)
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::sem acesso ao repositório privado: lista completa de contas descartada no fim do run"
+          fi
+      - name: Coletar vídeos por hashtag
+        id: coleta
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: python scripts/collect_tiktok_hashtags.py
+      - name: Rede de contas (Gephi)
+        if: steps.coleta.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/build_rede_tiktok_apoio.py
+      - name: Gravar no repositório privado
+        if: steps.interno.outputs.dir != '' && steps.coleta.outcome == 'success'
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A; git diff --cached --quiet || git commit -q -m "TikTok hashtags (run ${{ github.run_id }})"; git push -q origin HEAD:main
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, pathlib
+          p = pathlib.Path("data/tiktok/hashtags/manifesto_latest.json")
+          if not p.exists(): raise SystemExit
+          m = json.loads(p.read_text(encoding="utf-8"))
+          linhas = [f"## TikTok hashtags — {m['status']} · {m['videos_desta_coleta']} vídeos · {m['contas_acumuladas']} contas ({m['contas_com_10mil_ou_mais']} com 10 mil+)"]
+          linhas += [f"- #{t}: {h['videos']} vídeos, {h['contas']} contas {h.get('erro') or ''}" for t, h in m["hashtags"].items()]
+          open(os.environ["GITHUB_STEP_SUMMARY"], "a").write("\n".join(linhas) + "\n")
+          for l in linhas: print(f"::notice title=TikTok hashtags::{l}")
+          PY
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "TikTok hashtags: coleta (run ${{ github.run_id }})"

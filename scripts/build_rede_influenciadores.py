@@ -112,17 +112,30 @@ def main(argv=None) -> int:
         v.update(avaliar(v, men, excl, cfg["excluir_categorias"]))
         if v["channel_id"] in campanha:
             v["excluido"] = "canal de campanha (declarado ao TSE)"
+    metodo = (f"{cfg['nota']} Busca do YouTube (search.list) por " +
+              "; ".join(f"{c['nome']}: {', '.join(c['buscas'])}" for c in cfg["candidatos"].values()) +
+              f", desde {cfg['desde']}, acumulada a cada coleta diária. Só conta vídeo com o nome no título ou na descrição; "
+              f"excluídos canais de campanha declarados ao TSE, categorias {', '.join(cfg['excluir_categorias'].values())} e termos de culinária. "
+              f"Canal com {cfg['min_inscritos']:,}+ inscritos públicos; até {MAX_CANAIS} canais (os que mais citam). ".replace(",", ".") + NIVEIS)
+    return gerar(videos, canais, cfg, d, metodo, lambda c: f"https://www.youtube.com/channel/{c}",
+                 lambda v: f"https://www.youtube.com/watch?v={v['video_id']}")
+
+
+NIVEIS = ("Níveis por vídeo (iguais para os dois): 1 = falou do candidato (nome, @, hashtag ou o número como voto, ex.: 'Flávio 22', '#lula13'); "
+          "2 = pediu voto (ex.: 'vote 22', 'dia 25 é Flávio', 'vote 13', 'dia 25 é Lula'). Regra por palavras: notícia que relata um pedido "
+          "de voto também cai no nível 2; o trecho que disparou cada caso está na planilha. Aresta = nº de vídeos do canal que falam do "
+          "candidato; linha cheia quando algum desses vídeos pede voto. Posição: ForceAtlas2 LinLog (networkx), semente 42.")
+
+
+def gerar(videos, canais, cfg, d: Path, metodo: str, url_canal, url_video) -> int:
+    """Monta, posiciona e grava rede.json, rede_nos.csv, rede_arestas.csv, videos_validos.csv e rede.gexf em `d`.
+    Usada pelo YouTube (influenciadores) e pelo TikTok (contas que publicam com hashtags dos candidatos)."""
+    ids = list(cfg["candidatos"])
     g = montar(videos, canais, cfg)
     posicionar(g)
     canais_n = [n for n in g.nodes if g.nodes[n]["tipo"] == "canal"]
     so = {cid: sum(1 for n in canais_n if g.nodes[n][f"v_{cid}"] and not any(g.nodes[n][f"v_{o}"] for o in ids if o != cid)) for cid in ids}
     ambos = sum(1 for n in canais_n if all(g.nodes[n][f"v_{cid}"] for cid in ids))
-    metodo = (f"{cfg['nota']} Busca do YouTube (search.list) por " +
-              "; ".join(f"{c['nome']}: {', '.join(c['buscas'])}" for c in cfg["candidatos"].values()) +
-              f", desde {cfg['desde']}, acumulada a cada coleta diária. Só conta vídeo com o nome no título ou na descrição; "
-              f"excluídos canais de campanha declarados ao TSE, categorias {', '.join(cfg['excluir_categorias'].values())} e termos de culinária. "
-              f"Canal com {cfg['min_inscritos']:,}+ inscritos públicos; até {MAX_CANAIS} canais (os que mais citam). ".replace(",", ".") +
-              "Níveis por vídeo (iguais para os dois): 1 = falou do candidato (nome, @, hashtag ou o número como voto, ex.: 'Flávio 22', '#lula13'); 2 = pediu voto (ex.: 'vote 22', 'dia 25 é Flávio', 'vote 13', 'dia 25 é Lula'). Regra por palavras: notícia que relata um pedido de voto também cai no nível 2; o trecho que disparou cada caso está na planilha. Aresta = nº de vídeos do canal que falam do candidato; linha cheia quando algum desses vídeos pede voto. Posição: ForceAtlas2 LinLog (networkx), semente 42.")
     coleta = max((v["ultima_coleta"] for v in videos), default=None)
     validos = [v for v in videos if not v["excluido"] and v["channel_id"] in g]
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -154,7 +167,7 @@ def main(argv=None) -> int:
         w.writerow(["Id", "Label", "tipo", "inscritos", "videos_falou_lula", "videos_pediu_voto_lula", "videos_falou_flavio",
                     "videos_pediu_voto_flavio", "visualizacoes_videos", "url", "cor", "x", "y"])
         for n in out["nos"]:
-            url = "" if n["tipo"] == "candidato" else f"https://www.youtube.com/channel/{n['id']}"
+            url = "" if n["tipo"] == "candidato" else url_canal(n["id"])
             w.writerow([n["id"], n["label"], n["tipo"], n["inscritos"], n[f"v_{ids[0]}"], n[f"voto_{ids[0]}"], n[f"v_{ids[1]}"],
                         n[f"voto_{ids[1]}"], n["views"], url, n["cor"], n["x"], n["y"]])
     with open(d / "rede_arestas.csv", "w", encoding="utf-8", newline="") as f:
@@ -166,7 +179,7 @@ def main(argv=None) -> int:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["video_id", "url", "channel_id", "canal", "publicado_em", "titulo", "visualizacoes", "nivel_lula", "trecho_lula", "nivel_flavio", "trecho_flavio"])
         for v in sorted(validos, key=lambda v: v["publicado_em"], reverse=True):
-            w.writerow([v["video_id"], f"https://www.youtube.com/watch?v={v['video_id']}", v["channel_id"], v["canal"], v["publicado_em"],
+            w.writerow([v["video_id"], url_video(v), v["channel_id"], v["canal"], v["publicado_em"],
                         v["titulo"], v["visualizacoes"], v[f"nivel_{ids[0]}"], v[f"gatilho_{ids[0]}"],
                         v[f"nivel_{ids[1]}"], v[f"gatilho_{ids[1]}"]])
     gx = g.copy()
