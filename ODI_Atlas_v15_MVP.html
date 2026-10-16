@@ -609,6 +609,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .gt-relcol ol{margin:0;padding-left:20px;font-size:12.5px;color:#172238}.gt-relcol li{margin:2px 0;overflow-wrap:anywhere}
 .gt-relcol li span{font:700 10.5px 'Courier New',monospace;color:#53606b;margin-left:6px}.gt-relcol li span.gt-up{color:#b03030}
 .gt-vegcard{margin:12px 0}.gt-vegcard h2{margin:2px 0 10px}
+.gt-fasetit{font-family:inherit;font-size:1rem;margin:14px 0 6px}.gt-fasewrap{overflow-x:auto}.gt-fasetab{border-collapse:collapse;width:100%;font-size:.88rem}.gt-fasetab th,.gt-fasetab td{border-bottom:1px solid #e3e6e8;padding:6px 8px;text-align:left;vertical-align:top}.gt-fasetab small{color:#5d6a76;font-weight:400}
 .gt-vegstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px}
 .gt-vegstats>div{border-top:3px solid var(--c);background:#f7f9fa;padding:10px 12px;font-size:12px;color:#3c4a58}
 .gt-vegstats h4{margin:0 0 6px;font:700 14px Georgia,serif;color:var(--c)}.gt-vegstats .yt-nums{display:flex;gap:16px;flex-wrap:wrap;color:#53606b}.gt-vegstats .yt-nums b{display:block;font:700 19px/1.1 Georgia,serif;color:#172238}
@@ -891,6 +892,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div id="gtChart"></div><div class="gt-legend" id="gtLegend"></div></div>
   <div class="card gt-vegcard" id="gtVegCard"><div class="eyebrow">Método do período · normal × pico</div><h2>O que é nível normal e o que é pico de agenda</h2>
     <div class="gt-vegstats" id="gtVegStats"></div>
+    <h3 class="gt-fasetit">Por fase do calendário eleitoral</h3><div class="gt-fases" id="gtFases"></div>
     <div class="yt-chips" id="gtBloco" role="group" aria-label="Período da média" style="margin:10px 0 6px"><button class="yt-chip" data-b="7" aria-pressed="false">Média de 7 dias</button><button class="yt-chip" data-b="15" aria-pressed="true">Média de 15 dias</button></div>
     <div id="gtBlocos"></div><p class="yt-cloudnote" id="gtVegNote"></p></div>
   <div class="card gt-rel"><div class="eyebrow">Consultas e assuntos relacionados</div><h2>O que o público busca junto com cada candidato</h2>
@@ -2146,6 +2148,8 @@ function vegetativoBloco(c){const card=$('gtVegCard');const VG=c.vegetativo||{};
 $('gtVegStats').innerHTML=c.termos.map(t=>{const v=VG[t];if(!v)return'';return `<div style="--c:${cor(t)}"><h4>${esc(t)}</h4><div class="yt-nums"><span><b>${v.media}</b>média</span><span><b>${v.desvio}</b>desvio-padrão</span><span><b>${v.mediana}</b>mediana</span><span><b>${v.limite_pico}</b>limite de pico (média + ${v.k}σ)</span></div>
 <div style="margin-top:6px">Faixa normal (média ± 1σ): ${v.faixa_normal[0]} a ${v.faixa_normal[1]} · picos com 1σ: ${v.picos_por_k['1']} · com 2σ: ${v.picos_por_k['2']}</div>
 <ul>${v.picos.length?v.picos.map(p=>`<li>${new Date(p.data+'T12:00:00Z').toLocaleDateString('pt-BR')} — ${p.valor} (z = ${p.z})</li>`).join(''):'<li>nenhum pico acima do limite</li>'}</ul></div>`;}).join('');
+const fz=c.termos.map(t=>VG[t]?.fases||[]),f0=fz.find(f=>f.length)||[];
+$('gtFases').innerHTML=f0.length?`<div class="gt-fasewrap"><table class="gt-fasetab"><thead><tr><th>Fase</th>${c.termos.map(t=>`<th style="color:${cor(t)}">${esc(t)}<br><small>média · mediana · máx.</small></th>`).join('')}</tr></thead><tbody>${f0.map((f,i)=>`<tr><th>${esc(f.rotulo)}<br><small>${f.de.slice(8,10)}/${f.de.slice(5,7)}–${f.ate.slice(8,10)}/${f.ate.slice(5,7)}${f.dias?` · ${f.dias} dias`:''}</small></th>${fz.map(fs=>{const x=fs[i];return x&&x.dias?`<td><b>${x.media}</b> · ${x.mediana} · ${x.maximo} <small>(${x.data_maximo.slice(8,10)}/${x.data_maximo.slice(5,7)})</small><br><small>média sem picos ${x.media_sem_picos}</small></td>`:'<td>⛔ sem dias observados</td>';}).join('')}</tr>`).join('')}</tbody></table></div><p class="yt-cloudnote">Fases: pré-campanha (convenções, 20/07–15/08), campanha do 1º turno (16/08–04/10, dia da votação), 2º turno (05/10–25/10). Índice 0–100 relativo dentro da consulta; a fase em curso só conta os dias já coletados.</p>`:'';
 const bl=c.termos.map(t=>VG[t]?VG[t].medias_por_bloco[bloco]:[]);const nB=Math.max(...bl.map(b=>b.length));if(!nB){$('gtBlocos').innerHTML='';return;}
 const W=900,H=240,m={l:34,r:10,t:14,b:42},gw=(W-m.l-m.r)/nB,bw=Math.min(28,(gw-10)/c.termos.length);const mx=Math.max(1,...bl.flat().map(b=>b.media));const y=v=>m.t+(H-m.t-m.b)*(1-v/mx);
 let h=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Médias por período">`;[0,.5,1].forEach(f=>{h+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(mx*f)}" y2="${y(mx*f)}" stroke="#e3e6e8"/><text x="${m.l-5}" y="${y(mx*f)+3}" text-anchor="end">${(mx*f).toFixed(0)}</text>`;});
@@ -2499,8 +2503,10 @@ const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.s
  etapa('1 · Buscas no Google');
  const q=tr&&tr.consultas.find(c=>c.grupo==='segundo_turno_topicos'&&c.periodo==='eleitoral');
  if(q){const iL=q.termos.indexOf('Lula'),iF=q.termos.indexOf('Flávio Bolsonaro'),vg=q.vegetativo||{};const ini=q.serie[0]?.t,fim=q.serie.at(-1)?.t,src=`Google Trends · tópicos · ${dbr(ini)}–${dbr(fim)}`;
-  linha('Índice de busca · média do período (0–100)',vg['Lula']?.media,vg['Flávio Bolsonaro']?.media,v=>n(v),src);
-  linha('Índice de busca · mediana do período (dia típico)',vg['Lula']?.mediana,vg['Flávio Bolsonaro']?.mediana,v=>n(v),'mediana: metade dos dias abaixo, metade acima; não é puxada pelos picos');
+  const mm=x=>x&&x.dias?`${n(x.media)} · ${n(x.mediana)}`:'⛔ sem dias';
+  rows.push({rot:'Índice de busca · média · mediana · período todo',l:mm({dias:1,...vg['Lula']}),f:mm({dias:1,...vg['Flávio Bolsonaro']}),fmt:x=>x,fonte:src+' · 0–100 relativo; mediana = dia típico, não puxada pelos picos',txt:true});
+  (vg['Lula']?.fases||[]).forEach((fL,i)=>{const fF=(vg['Flávio Bolsonaro']?.fases||[])[i];
+   rows.push({rot:`↳ ${fL.rotulo} · média · mediana`,l:mm(fL),f:mm(fF),fmt:x=>x,fonte:`${dbr(fL.de)}–${dbr(fL.ate)}${fL.dias?` · ${fL.dias} dias observados até ${dbr(fL.ate_observado)}`:''}`,txt:true});});
   const pico=x=>x&&x.picos&&x.picos.length?x.picos.reduce((a,b)=>b.valor>a.valor?b:a):null,pl=pico(vg['Lula']),pf=pico(vg['Flávio Bolsonaro']);
   rows.push({rot:'Maior pico de busca',l:pl?`${pl.valor} em ${dbr(pl.data).slice(0,5)}`:'—',f:pf?`${pf.valor} em ${dbr(pf.data).slice(0,5)}`:'—',fmt:x=>x,fonte:src,txt:true});
   const ufL=q.uf.filter(u=>u.v[iL]>u.v[iF]).length,ufF=q.uf.filter(u=>u.v[iF]>u.v[iL]).length;linha('Estados onde é o mais buscado',ufL,ufF,v=>n(v)+' UF',src);}

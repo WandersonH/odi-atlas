@@ -26,7 +26,23 @@ def ler(p: Path) -> list[dict]:
     return list(csv.DictReader(open(p, encoding="utf-8"), delimiter=";")) if p.exists() else []
 
 
-def vegetativo(datas: list[str], valores: list[int | None], k: float = 2.0, ks=(1, 2), blocos=(7, 15)) -> dict:
+def por_fase(pares: list[tuple[str, int]], sem_picos: list, fases: list[dict]) -> list[dict]:
+    """Média, mediana e máximo do índice em cada fase do calendário eleitoral (só os dias já observados)."""
+    out = []
+    for f in fases:
+        idx = [i for i, (d, _) in enumerate(pares) if f["de"] <= d <= f["ate"]]
+        if not idx:
+            out.append({**f, "dias": 0})
+            continue
+        vs = [pares[i][1] for i in idx]
+        imax = max(idx, key=lambda i: pares[i][1])
+        out.append({**f, "dias": len(idx), "ate_observado": pares[idx[-1]][0], "media": round(statistics.fmean(vs), 2),
+                    "mediana": statistics.median(vs), "maximo": pares[imax][1], "data_maximo": pares[imax][0],
+                    "media_sem_picos": round(statistics.fmean(sem_picos[i] for i in idx), 2)})
+    return out
+
+
+def vegetativo(datas: list[str], valores: list[int | None], k: float = 2.0, ks=(1, 2), blocos=(7, 15), fases=()) -> dict:
     """Série diária de um termo → média, desvio, mediana, picos (> média + k·desvio), série sem picos (pico → mediana)
     e médias por blocos de N dias a partir do início da série. Ignora dias sem valor."""
     pares = [(d, v) for d, v in zip(datas, valores) if v is not None]
@@ -42,7 +58,8 @@ def vegetativo(datas: list[str], valores: list[int | None], k: float = 2.0, ks=(
     out = {"media": round(media, 2), "desvio": round(desvio, 2), "mediana": mediana, "k": k, "limite_pico": round(lim, 2),
            "faixa_normal": [round(max(0, media - desvio), 2), round(media + desvio, 2)],
            "picos": picos, "picos_por_k": {str(x): sum(1 for v in vals if v > media + x * desvio) for x in ks},
-           "datas": [d for d, _ in pares], "serie_vegetativa": sem_picos, "medias_por_bloco": {}}
+           "datas": [d for d, _ in pares], "serie_vegetativa": sem_picos, "medias_por_bloco": {},
+           "fases": por_fase(pares, sem_picos, list(fases))}
     for n in blocos:
         bl = []
         for i in range(0, len(pares), n):
@@ -62,6 +79,8 @@ def main(argv=None) -> int:
         print("⛔ nenhuma coleta do Trends com status ok")
         return 1
     m = json.loads((pasta / "manifesto.json").read_text(encoding="utf-8"))
+    cfg_p = root / "data/config/trends.json"  # fases do calendário: config atual (manifestos antigos não têm)
+    cfg_atual = json.loads(cfg_p.read_text(encoding="utf-8")) if cfg_p.exists() else {}
     out = {"schema_version": 1, "coleta_utc": m["run_started_utc"], "pasta": str(pasta.relative_to(root)),
            "aviso": m.get("aviso_metodologico", ""), "nota": m["config"].get("nota", ""),
            "nota_relacionados": (m["config"].get("relacionados") or {}).get("nota", ""),
@@ -76,6 +95,7 @@ def main(argv=None) -> int:
 
         termos = c["termos"]
         mv = m["config"].get("metodo_vegetativo") or {}
+        fases = m["config"].get("fases") or cfg_atual.get("fases", [])
         serie_ok = [{"t": r["timestamp_utc"], "v": [int(r[t]) if r.get(t, "").strip() != "" else None for t in termos]}
                     for r in serie if r.get("parcial") not in ("1", "True", "true")]
         diaria = c["periodo"] != "now 7-d"  # séries por hora não entram no método (picos de hora não são agenda diária)
@@ -88,7 +108,7 @@ def main(argv=None) -> int:
                     "v": [int(r[t]) if r.get(t, "").strip() != "" else None for t in termos]} for r in uf],
             "vegetativo": ({t: vegetativo([p["t"][:10] for p in serie_ok], [p["v"][i] for p in serie_ok],
                                           k=mv.get("k_desvio", 2), ks=tuple(mv.get("k_sensibilidade", [1, 2])),
-                                          blocos=tuple(mv.get("periodos_media_dias", [7, 15])))
+                                          blocos=tuple(mv.get("periodos_media_dias", [7, 15])), fases=fases)
                             for i, t in enumerate(termos)} if diaria else {}),
             "relacionados": [{"termo": r["termo"], "tipo": r["tipo"], "lista": r["lista"], "pos": int(r["posicao"]),
                               "texto": r["texto"], "tipo_assunto": r["tipo_assunto"], "valor": r["valor"],

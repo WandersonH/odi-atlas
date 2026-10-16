@@ -4,6 +4,27 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## P4.5 — Índice de busca por fase: pré-campanha, 1º turno, 2º turno (2026-10-16) ✅
+
+**O que mudou**
+- `data/config/trends.json`: novo bloco `fases` — pré-campanha 20/07–15/08 (convenções), campanha do 1º turno 16/08–04/10 (dia da votação), 2º turno 05/10–25/10.
+- `scripts/build_trends_caderno.py`: `por_fase()` calcula, por termo e fase, dias observados, média, mediana, máximo (com data) e média sem picos; sai em `vegetativo[termo].fases` do `data/trends/caderno.json`. Manifestos antigos sem `fases` usam a config atual.
+- Panorama: a linha do índice mostra "média · mediana" do período todo e uma linha por fase.
+- Caderno de buscas: tabela "Por fase do calendário eleitoral" no card do método (média · mediana · máximo e média sem picos).
+
+**Por quê** — pedido do usuário: dividir os números de busca em pré-campanha, campanha do 1º turno e 2º turno.
+
+**Testes executados**
+- `tests/test_trends_caderno.py::TestFases` (novo); `python -m unittest discover -s tests -v` sem falhas.
+- `python3 scripts/build_trends_caderno.py` sobre a coleta `data/trends/2026-10-15/221726` (consulta `segundo_turno_topicos`, período eleitoral), resultado em `data/trends/caderno.json`:
+  - Lula — pré 2,07 · 2 (27 dias); 1º turno 9,68 · 5 (50 dias, máx. 100 em 04/10); 2º turno 28,8 · 26,5 (10 dias, máx. 56 em 05/10).
+  - Flávio — pré 1,44 · 1; 1º turno 5,64 · 3 (máx. 83 em 04/10); 2º turno 22,4 · 20 (máx. 47 em 05/10).
+- Chromium (Playwright) local: linhas no Panorama e tabela no caderno renderizadas, sem erro de JS, sem rolagem horizontal a 390 px.
+
+**Pendente / ressalvas**
+- O 2º turno está em curso: só conta os dias já coletados (até 14/10 nesta coleta; o dia parcial fica de fora).
+- O índice é 0–100 relativo dentro da consulta; a comparação entre fases vale porque todas estão na mesma série.
+
 ---
 
 ## [P4.4] 2026-10-16 — Panorama: índice de busca com média e mediana

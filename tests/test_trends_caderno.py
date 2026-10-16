@@ -85,5 +85,21 @@ class TestTrendsCaderno(unittest.TestCase):
             self.assertEqual(bt.main([t]), 1)
 
 
+class TestFases(unittest.TestCase):
+    def test_por_fase(self):
+        import build_trends_caderno as b
+        datas = ["2026-08-14", "2026-08-15", "2026-08-16", "2026-08-17", "2026-10-05"]
+        vals = [2, 4, 10, 6, 50]
+        v = b.vegetativo(datas, vals, k=1, fases=[{"id": "pre", "de": "2026-07-20", "ate": "2026-08-15"},
+                                                  {"id": "t1", "de": "2026-08-16", "ate": "2026-10-04"},
+                                                  {"id": "t2", "de": "2026-10-05", "ate": "2026-10-25"},
+                                                  {"id": "x", "de": "2026-11-01", "ate": "2026-11-02"}])
+        f = {x["id"]: x for x in v["fases"]}
+        self.assertEqual((f["pre"]["dias"], f["pre"]["media"], f["pre"]["mediana"]), (2, 3, 3.0))
+        self.assertEqual((f["t1"]["maximo"], f["t1"]["data_maximo"]), (10, "2026-08-16"))
+        self.assertEqual(f["t2"]["media_sem_picos"], 6)  # o pico de 50 vira a mediana da série (6)
+        self.assertEqual(f["x"]["dias"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()
