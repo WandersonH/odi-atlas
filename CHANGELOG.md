@@ -4,6 +4,24 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C13.0 — Universo das notícias no caderno 05: nuvem, CHD (IRaMuTeQ), rede (Gephi), corpus (2026-10-16) ✅
+
+**O que mudou**
+- `collect_google_noticias_diario.py` guarda todos os itens do dia (não só os 5 primeiros) em `data/trends/noticias/universo.csv.gz`; `--refazer` recoleta dias fechados. Teste ampliado.
+- `scripts/build_noticias_texto.py` + `tests/test_noticias_texto.py`: título único por candidato; nuvem (sem os nomes dos candidatos), CHD de Reinert (títulos com 4+ palavras, formas em 10+ títulos), rede de coocorrência (Louvain, cosseno de Salton), corpus IRaMuTeQ com `*cand_ *fase_ *mes_ *veic_`, `titulos_unicos.csv`, GEXF e CSVs de nós e arestas.
+- `google-busca.yml`: análise 1x por dia (07h) e em execução manual; removidos os passos de diagnóstico de segredos e de teste da chave (geravam anotações "não" e "400" que pareciam erro).
+- Página (caderno 05): card "O que a imprensa escreveu sobre cada candidato" com números, nuvens, classes da CHD com 3 manchetes de exemplo, rede e downloads. Cobre o período todo (não segue o filtro de período).
+
+**Testes executados**
+- `python -m unittest discover -s tests` sem falhas.
+- Run 38901445572 (`desde=2026-07-20`): 6.046 itens no universo (Lula 3.075, Flávio 2.971); máximo de 83 itens num dia, nenhum dia no limite de 100 do feed.
+- Run 38901902789 (análise): Lula 3.058 títulos únicos, 115 veículos, CHD com 6 classes; Flávio 2.954 títulos, 132 veículos, CHD com 6 classes; rede com 150 palavras, 754 ligações, 6 comunidades, modularidade 0,421.
+- Chromium com os dados reais: 150 nós, 70 palavras na nuvem de Lula, 12 classes; sem erro de JS; sem rolagem horizontal a 390 px.
+
+**Ressalvas**
+- A ordem e a cobertura são as do Google Notícias no momento da coleta (reconstituição retroativa para dias antes de 16/10).
+- CHD sem lematização; nomes das classes ficam para o pesquisador. O nome do adversário fica na CHD (é informativo), mas sai da nuvem e da rede.
+
 ## C12.4 — Primeiros números de sentimento dos comentários do YouTube (2026-10-16) ⚠️
 
 - Run 38854095565 (versão que gravava só no fim): cancelado no limite de 2 h, nada gravado.
