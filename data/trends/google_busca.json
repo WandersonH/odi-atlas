@@ -1,26 +1,171 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-10-16T06:45:11Z",
- "nota": "Google Programmable Search (Custom Search JSON API) com a chave e o mecanismo de busca (cx) do projeto do usuário. Para cada candidato: os 5 primeiros resultados (ordem de relevância do Google) e os 3 mais recentes (ordenados por data, publicados nas últimas 72 h). Parâmetros: Brasil (gl=br, cr=countryBR), português (lr=lang_pt). Os resultados dependem da configuração do mecanismo (web inteira ou lista de sites) e não são idênticos aos de uma busca pessoal no google.com, que é personalizada. A API será desligada pelo Google em 01/01/2027.",
+ "coletado_em_utc": "2026-10-16T06:47:02Z",
+ "nota": "Google Notícias (feed RSS público de busca, Brasil, português; sem chave). Usado porque a Custom Search JSON API recusou o projeto (fechada a novos clientes). '5 primeiros' = os 5 primeiros itens na ordem do próprio Google Notícias para a busca; '3 mais recentes' = os 3 itens mais novos da busca restrita aos últimos 3 dias (when:3d). Só notícias indexadas pelo Google Notícias, não a busca geral da web, e não personalizado.",
  "candidatos": {
   "280002542548": {
    "nome": "Lula",
    "consulta": "Lula",
-   "primeiros": [],
-   "recentes": []
+   "primeiros": [
+    {
+     "posicao": 1,
+     "titulo": "Lula na TV Globo: veja como os colunistas do GLOBO analisaram em tempo real a entrevista com o petista",
+     "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQWHdBXzJ0NTVGdU81THVOMEFIN2lSODkxa3VMTjF3aGJYS2s2ZC16S2w5eDNsWl8tT3dmOEpjcDFCTG5LY1NqUTJnX3hkSnUzekJUdkRXTDNKaVA2a1NRTkhHMzJIelpfNW9vU2pjei1jSGpDdklQTXdsal9USHNZaW50Tjh5X1BwQmtiV0dKM0xzdGV6MUhtTlNWb2F0bUNmaEt5ZFBHZjFvd3UtRHFINjBOMXJzckVSUkpBX05VQmtyUVFIc2p0M3MzbkNjQdIB3AFBVV95cUxOZ2ZTcEd0TjhscEhiMWpHX0U5N1BKam5jSUZzZC1uUFQ0Y3U1Y1dYeV9vU2NMb004bXpHVXNoajNjb2lCOUhqSGZ4YjZKOVcydmp2SS1LcFZidkpwZUE0aEpwbGt2eE50T1pwY2dDMkhQX1Rwa0lnaV9aZXZsc24wRUlCUjVFRnEzb0lneVo1SURSUUZMWUpqZUs1ZlIzb3hMeEVXUW5RM2hhelNpcUpqUktGWEwwQTBJbUFoMEJ3QVl4QTRZWGxPTk93am5SZzhpTTQ5eHlPaFlrdTBO?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T02:59:00Z"
+    },
+    {
+     "posicao": 2,
+     "titulo": "Datafolha: Flávio Bolsonaro tem 51% e Lula, 49% dos votos válidos, um empate técnico",
+     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNZWozaURJallmakJxMFRyNzdqcVVWN3VpXzZFcHJrZEY3VU1lcG50VGJOaUpmQWF2d2UxZDYyN0RscFJ2WXVxb2V3dkdMTGthNVZFRlRZMEZ6UzlqcndHSjNVVkNqcTU5NGRjTzdTel9lYThabk1LdEtEa1JWYXpyUEJtaEIzekJPcEhwdVRKbXhMNXhiSUhPUXYzcVBoTnFWbUFzLXdlcWpaNHZMeGpqSGx3Yzg3MHN5VXUxcFUzLVhJZTZCN0llbQ?oc=5",
+     "dominio": "www1.folha.uol.com.br",
+     "veiculo": "Folha de S.Paulo",
+     "trecho": "",
+     "data_publicacao": "2026-10-15T21:30:00Z"
+    },
+    {
+     "posicao": 3,
+     "titulo": "Lula participa hoje de promulgação da PEC da 6x1 e retoma atos de campanha",
+     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOa1lDVnBpLUlRY0pPNE45TEQ2cC1NeEhQSGNBSzVsWU5DVFdLRUlDQ3RoTC1KZ2g2QWM3Rm1JWDA4cC1PQ0l4LUZhVlJKTHdQTU0tTU5iS0hKT3M3dlNiQ3h3WVp4TVFvaTdUMXdRT0JsMUFTVkZkbUtMak1YZFVMV2xhMjZOcUJEMWpSU1V1a1k4dzdJRzZwWmZPOGtTeWpaM0ZJMlNDTmVNWEV1VkpyX3FhUQ?oc=5",
+     "dominio": "cnnbrasil.com.br",
+     "veiculo": "CNN Brasil",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:31:58Z"
+    },
+    {
+     "posicao": 4,
+     "titulo": "Defesa de Lula sobre redução da maioridade penal é inflexão para evitar ser emparedado por Flávio, dizem aliados",
+     "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNY0NTbWR0WlNxWDZJVXhOU3JlaVd2OE5WX0VkZHkyUGZpd3NIanREblFsOVVVQWFWUDhIQllRUVJidVBieThMb0lQQWNiRURKSnVoUHJJaVBybzV5VjFFcXhOZHp0M1M5aXZ4ZmdTcmlEclU1ZXl2RXpKMlczdlB3MU5KY1FENlE4emItZUtHRDJFd0ExVDZmcGJXQXJpMV9QclpPMzVJTDN4R1E4N0VkVlRRRGRCTFdrbGZXLW5CV0h0c1hDX2xkWGRGLTNVVjhTUExQRjN0c0tIdVN4cC1OUExqY3Y4ZW5ZVy1JNkNKRi1WTTJkMUY3aWk0WFNydDJFbnVyaVBlc205cFFGOVpELXZB0gGgAkFVX3lxTE9Nb0RBY1ozMkZpSWMwcFlQTEl5MTBWdXhWN0JOVVhlWGQtdWtYa3NDaGttQUYzVEE0cXUwQVRINzRFZTRDY3VwUGo0a3JrMDFIajh5MEt2RThCNkgxYkp5UzRVMHZIUDd6WTVNdnNveXZoZTVLRjNjZUhaV1NWeDA2LW1iSkxFay1xUzQ3Rm83SWlSTEhWVmktakYyV21qRkg1MTR5OU55Z29LMlJfdG1ibE8wN29NNVY4SnpiMm5HUDBveENmbzFCaEVxaVBPbjNxYkF5TWhJRGRfdmFONms5T0xmZlE2OU1VRUg0M24zMEFFSExDTllxbWFUSzRVMS16UldEMnJjQlVKVU5uS0EzWnVSRXYzNjlqOVhGM05YUg?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:00Z"
+    },
+    {
+     "posicao": 5,
+     "titulo": "Dos MEIs à gasolina: promessa de tarifa zero aos fins de semana e feriados amplia lista de benesses eleitorais de Lula",
+     "link": "https://news.google.com/rss/articles/CBMimgJBVV95cUxPVEpIN0FFVmVGTVJjdXpjUm1JMlROSm9lSkVBcGRnTHoxWUZVN3J5Y0hOUEtUX09ZQTE1RFp2WkVTdjZpTzRXTFh3V3hDcUFZMXNyNUVwQWdZXzZLQlJnd1NjblhWV0h3cE9BSDMwTXRJaVVfVThPV0xIZS1Sc2wwQnlta1RKd1pIV3lJZzRobkdXTjhpek9HQkFqS3RmUXNBSjZKc2Q0b3FRQWxWb05veVlvZW1OT3lIS0RxZUt4bXFTWENQcm1FeExWNFNUWEhsQXZQeHNZc0F2cHlEaVpTMGdWTnRGZVVJOTJUbU5CTGpsRnowdC1LOU1hd1g5T2VsMWhCNFhCZkxqZlNVSUFpdW10NTA2dnJMeFHSAagCQVVfeXFMTV8xb1JQZ3M2Ql94MDJ1eFpfR0JSVnozNGF0Wi05eEoxZFAzRkhYVVhhQ2xmLTBPVGU2MFg0akJBdTlwMUlLWWotYW5BTlRyeUhNb0R5cFloTURwWkx0Z1cwaWd3cEFOcXo3RnlOdzktQzJRQnhhaG02R2RIXzNZM05KV3Z1cEJiZlJnM182Sm1lRE1LQmY2NFJ3SFpLMG1JMlVfRFBJR1MzZ0lpY0w3eXZrcUtpYzNMT2g3MmdLMTNZMGI4NEJic0xEVjRGQWRnamQ1TkdXclFueWRMdFQ1Z3NrNjIybFoxbmNtSWE0cVRQX2FmNVIyUVlWdWpqNjhibjYzT0p1WC1ZV2dWS3dsNGJULXYycGNESWJ6ZVZzYTFZR0lNRVlhSGk?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:00Z"
+    }
+   ],
+   "recentes": [
+    {
+     "posicao": 1,
+     "titulo": "Lula impulsiona críticas ao 'tesouraço' de Flávio, que aposta em posts sobre segurança e manutenção do Bolsa Família",
+     "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOR0h1S2M3empLYXc5Y0hmY0tiWXQzTkZ2eFY3WThLbWYyYXdWTlg1Q3VIZ3lBMkx3MC0zYk1sTFViZXRIbG9NcUNFaDRDcGVfb2lFaDF5YlpobWdvVF90UzZ3NnJ0Y3NiazZwd2o3VlI5aWhONEIyRkx4R1k4cnN1c3JoamowYko2Z2wwaHpMdUFlb1VSSlA0Wk9jS3VjUnZsdXVtS00tSUxZelQ0Wkp0bm9LX0tkQ3dxbW1wZUJ4blg3aVdCa0xOSlprM2p6ZWNRVndlN3JlU2Z6ZFI2SjAydkJ0QkVrc3c2YWl3YktoLTkwVW40dXRNTTVpdDNlbEg3bThJcWI1Zm85QUQ3T2RjdEhZM3DSAaMCQVVfeXFMT2JuLS1yRm5iS0FpX3Rla2lrZjAta1hla09ZR3BneVNRVG5HRlNuVkFoTXZBejlYYk5aYW05ejZqV3hMeFNtdlRpNmlyTDBSby1VWlhXdlB4dm1XNTRDX1lNVklEb0YxT2lQOU9TYzRqdWduTkt0MnA0OEVhV24yalJqRTk1bTk0UGdFTGgzVUVjWGkxamtvS2RFTEEyRTBrdlNrZWl4MDhNY05aNkJrMGk4MlJyYmd2SFZEVUtueG1sYVZfZUVzMDBFVmRMNlU1elpQbllQV0RrQkMzcjNyTUVNTkViN0xER3NPLVRZSTJxeXhEUVZ2bDJSUTBELTVDTFRhM29Cb1MtZzNKSDRfS3FkWG4wNFhKQUJMUVFhVmpwc2Nv?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:00Z"
+    },
+    {
+     "posicao": 2,
+     "titulo": "Defesa de Lula sobre redução da maioridade penal é inflexão para evitar ser emparedado por Flávio, dizem aliados",
+     "link": "https://news.google.com/rss/articles/CBMikgJBVV95cUxNY0NTbWR0WlNxWDZJVXhOU3JlaVd2OE5WX0VkZHkyUGZpd3NIanREblFsOVVVQWFWUDhIQllRUVJidVBieThMb0lQQWNiRURKSnVoUHJJaVBybzV5VjFFcXhOZHp0M1M5aXZ4ZmdTcmlEclU1ZXl2RXpKMlczdlB3MU5KY1FENlE4emItZUtHRDJFd0ExVDZmcGJXQXJpMV9QclpPMzVJTDN4R1E4N0VkVlRRRGRCTFdrbGZXLW5CV0h0c1hDX2xkWGRGLTNVVjhTUExQRjN0c0tIdVN4cC1OUExqY3Y4ZW5ZVy1JNkNKRi1WTTJkMUY3aWk0WFNydDJFbnVyaVBlc205cFFGOVpELXZB0gGgAkFVX3lxTE9Nb0RBY1ozMkZpSWMwcFlQTEl5MTBWdXhWN0JOVVhlWGQtdWtYa3NDaGttQUYzVEE0cXUwQVRINzRFZTRDY3VwUGo0a3JrMDFIajh5MEt2RThCNkgxYkp5UzRVMHZIUDd6WTVNdnNveXZoZTVLRjNjZUhaV1NWeDA2LW1iSkxFay1xUzQ3Rm83SWlSTEhWVmktakYyV21qRkg1MTR5OU55Z29LMlJfdG1ibE8wN29NNVY4SnpiMm5HUDBveENmbzFCaEVxaVBPbjNxYkF5TWhJRGRfdmFONms5T0xmZlE2OU1VRUg0M24zMEFFSExDTllxbWFUSzRVMS16UldEMnJjQlVKVU5uS0EzWnVSRXYzNjlqOVhGM05YUg?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:00Z"
+    },
+    {
+     "posicao": 3,
+     "titulo": "Na Globo, Lula erra dado de empregos e exagera sobre partidos no governo",
+     "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPczhCSlZQS0h1M0YydF9UMzZNWWlzTm9QUjNERHc0OGNNTlBuSmpWVU4xbjZ3VDlnZnJ5MzcxOVJyeGo5MjhyaFBXcS1rbmo2c1pVVlZJUGdabTlKVkxJaTFYLVNZdldpOHozNWpjb1k1TGpadWNGMktnQWd2alZVQkNoVjFja1E5Rk1GMWtMdjBJamppNHk3VExONmNyS3MtSlp6Mmt5MzljeFN5Sk0xRA?oc=5",
+     "dominio": "noticias.uol.com.br",
+     "veiculo": "UOL Notícias",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:09:22Z"
+    }
+   ]
   },
   "280002551544": {
    "nome": "Flávio Bolsonaro",
    "consulta": "\"Flávio Bolsonaro\"",
-   "primeiros": [],
-   "recentes": []
+   "primeiros": [
+    {
+     "posicao": 1,
+     "titulo": "Datafolha: Flávio Bolsonaro tem 51% e Lula, 49% dos votos válidos, um empate técnico",
+     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNZWozaURJallmakJxMFRyNzdqcVVWN3VpXzZFcHJrZEY3VU1lcG50VGJOaUpmQWF2d2UxZDYyN0RscFJ2WXVxb2V3dkdMTGthNVZFRlRZMEZ6UzlqcndHSjNVVkNqcTU5NGRjTzdTel9lYThabk1LdEtEa1JWYXpyUEJtaEIzekJPcEhwdVRKbXhMNXhiSUhPUXYzcVBoTnFWbUFzLXdlcWpaNHZMeGpqSGx3Yzg3MHN5VXUxcFUzLVhJZTZCN0llbQ?oc=5",
+     "dominio": "www1.folha.uol.com.br",
+     "veiculo": "Folha de S.Paulo",
+     "trecho": "",
+     "data_publicacao": "2026-10-15T21:30:00Z"
+    },
+    {
+     "posicao": 2,
+     "titulo": "Datafolha, 2º turno: Flávio Bolsonaro, 47%; Lula, 45%",
+     "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQbS1Vd3Q3aWQxbFN0T2FTcVdJOEl3OFlBMVY0VW5IN0pXZUhMYzdVU1dpZUNxa1pWN2pmZERIakF2Vm1fWUstdENKeFN6MVdhdzNIRmlrd3A2ajdEZnVVZWF5UnhtaDJ0Q215ZXZBVTJENHhJUGw4NjJLTXFIblB2OENnR2QyWWZ3eHJFRTNjbXBTUnVmQ1FjaXVfakVHOTc2cmFjZEd4Y1lSMXlLMTJRVU9GbldtUEJIbkRmWDR6WjdGU1RabTQzb1VZNDB0QdIB3AFBVV95cUxPYlN5X19vSzl5Y2F4NnhPeDM1ZTFQZkwtaUh2d2RzTXFTaXZyZXdMRm1pNklldlpmaThVX2xIclZGZkc4STFrcWZqQTFGd3M3cmZsX0pJYUY5RmRldzFPM0xYNEpId3dBODloTm5iYlNuVkF2WmhYM1dVNEdXM0R4cDF3Q1p1MVYwaklReUREcE9ST2F4NDR0RGJ6YXZWTjRfLWFlWGxQdTA0ZHJQbjVmaEJsZnBDQ3JlNnJOWjhqMlc0YnlQNWtEemJvcWtGMWJwbi1UZnNtSklCZzZo?oc=5",
+     "dominio": "g1.globo.com",
+     "veiculo": "G1",
+     "trecho": "",
+     "data_publicacao": "2026-10-15T21:32:10Z"
+    },
+    {
+     "posicao": 3,
+     "titulo": "Flávio reserva dia de hoje para se dedicar à sabatina da TV Globo, no Rio",
+     "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRzFJVURPUnJNQjJUR1FyWm90ZlBGSjN1M1BKSWhzZzM0TG1PdHpqMm1WbnNCOF8tZGttdGJwRHFqckZSUHN2REtuSE5DMlpFSEpwSjZIYU9PTlZzd3FHejBvUnVPNml6a2ZKRWlVQndzdjZLdnhOaWM1LV9fRVlPZ1hnb19yX3puV0hITHdHSHJQaGxxNzhLdnp0ZXZuTnFsUm1lSnAyRVRHTkdCVVp2eA?oc=5",
+     "dominio": "cnnbrasil.com.br",
+     "veiculo": "CNN Brasil",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:01Z"
+    },
+    {
+     "posicao": 4,
+     "titulo": "Lula impulsiona críticas ao 'tesouraço' de Flávio, que aposta em posts sobre segurança e manutenção do Bolsa Família",
+     "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOR0h1S2M3empLYXc5Y0hmY0tiWXQzTkZ2eFY3WThLbWYyYXdWTlg1Q3VIZ3lBMkx3MC0zYk1sTFViZXRIbG9NcUNFaDRDcGVfb2lFaDF5YlpobWdvVF90UzZ3NnJ0Y3NiazZwd2o3VlI5aWhONEIyRkx4R1k4cnN1c3JoamowYko2Z2wwaHpMdUFlb1VSSlA0Wk9jS3VjUnZsdXVtS00tSUxZelQ0Wkp0bm9LX0tkQ3dxbW1wZUJ4blg3aVdCa0xOSlprM2p6ZWNRVndlN3JlU2Z6ZFI2SjAydkJ0QkVrc3c2YWl3YktoLTkwVW40dXRNTTVpdDNlbEg3bThJcWI1Zm85QUQ3T2RjdEhZM3DSAaMCQVVfeXFMT2JuLS1yRm5iS0FpX3Rla2lrZjAta1hla09ZR3BneVNRVG5HRlNuVkFoTXZBejlYYk5aYW05ejZqV3hMeFNtdlRpNmlyTDBSby1VWlhXdlB4dm1XNTRDX1lNVklEb0YxT2lQOU9TYzRqdWduTkt0MnA0OEVhV24yalJqRTk1bTk0UGdFTGgzVUVjWGkxamtvS2RFTEEyRTBrdlNrZWl4MDhNY05aNkJrMGk4MlJyYmd2SFZEVUtueG1sYVZfZUVzMDBFVmRMNlU1elpQbllQV0RrQkMzcjNyTUVNTkViN0xER3NPLVRZSTJxeXhEUVZ2bDJSUTBELTVDTFRhM29Cb1MtZzNKSDRfS3FkWG4wNFhKQUJMUVFhVmpwc2Nv?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:00Z"
+    },
+    {
+     "posicao": 5,
+     "titulo": "Rali: Flávio aparece 2,2 pontos à frente de Lula no agregador de pesquisas do GLOBO",
+     "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPU2ZZSmJwcXJxME01aXV4Vk1Ea3BWbTNXN2kyM2Y0XzM3TzFkZGdOOTNxUFlIdjJtdXB1N1hEcUNtUmU2aE83SDFVU1Z2Z0QxN3g1NmV2STZjOU90TUZIVWwxdmlpeE8wcXRaS2pDUlA0cEllSFlnWktNWG1EVlBGOFBjbU1JTG9XQ2kxeUpyMnkxU2RMYTZPQmlJNThKMk9NOWpGZDlYVWNhUVJ2Qm1WQjE2ZEVRVEw5Y3k3WXREbFVNZGtCWGIycmRzYmEwbkRsa29J0gHiAUFVX3lxTE1ySG1OSmtPZ3VPY1ZNUkVnWVI5RWpPSV9VYjUwTFVnVHp2QmZ4MHkzZ0xMSFVoYmZwdGhobE43WThnQjcyalpTLWZnc2g2dHAwSVdHa0RHTWlQellWVUZXeGpORGh2eGxSZ09GdHEweDJMd3B5RmE5cWFBbGV3OFNoaXlISVA0WEZjQms4RzBiSmw3RUIyak5UYWFUcS1hNUxaZlA0V0JPNmhxVElpUzVzVTRVNXdjemVyQUxESDdydC1mdWR3dUxiUnprdTlQaExMRGpkMkptV09XdlVXRy1tbVE?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:00Z"
+    }
+   ],
+   "recentes": [
+    {
+     "posicao": 1,
+     "titulo": "Lula impulsiona críticas ao 'tesouraço' de Flávio, que aposta em posts sobre segurança e manutenção do Bolsa Família",
+     "link": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOR0h1S2M3empLYXc5Y0hmY0tiWXQzTkZ2eFY3WThLbWYyYXdWTlg1Q3VIZ3lBMkx3MC0zYk1sTFViZXRIbG9NcUNFaDRDcGVfb2lFaDF5YlpobWdvVF90UzZ3NnJ0Y3NiazZwd2o3VlI5aWhONEIyRkx4R1k4cnN1c3JoamowYko2Z2wwaHpMdUFlb1VSSlA0Wk9jS3VjUnZsdXVtS00tSUxZelQ0Wkp0bm9LX0tkQ3dxbW1wZUJ4blg3aVdCa0xOSlprM2p6ZWNRVndlN3JlU2Z6ZFI2SjAydkJ0QkVrc3c2YWl3YktoLTkwVW40dXRNTTVpdDNlbEg3bThJcWI1Zm85QUQ3T2RjdEhZM3DSAaMCQVVfeXFMT2JuLS1yRm5iS0FpX3Rla2lrZjAta1hla09ZR3BneVNRVG5HRlNuVkFoTXZBejlYYk5aYW05ejZqV3hMeFNtdlRpNmlyTDBSby1VWlhXdlB4dm1XNTRDX1lNVklEb0YxT2lQOU9TYzRqdWduTkt0MnA0OEVhV24yalJqRTk1bTk0UGdFTGgzVUVjWGkxamtvS2RFTEEyRTBrdlNrZWl4MDhNY05aNkJrMGk4MlJyYmd2SFZEVUtueG1sYVZfZUVzMDBFVmRMNlU1elpQbllQV0RrQkMzcjNyTUVNTkViN0xER3NPLVRZSTJxeXhEUVZ2bDJSUTBELTVDTFRhM29Cb1MtZzNKSDRfS3FkWG4wNFhKQUJMUVFhVmpwc2Nv?oc=5",
+     "dominio": "oglobo.globo.com",
+     "veiculo": "O GLOBO",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T06:30:00Z"
+    },
+    {
+     "posicao": 2,
+     "titulo": "Entrevista de Flávio Bolsonaro na Globo: veja quando e onde assistir",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNZWt2TGFLVkU5ZkhmczlKdEV4a19SdXI5OG9pc21jbnk0ZlhBa0NWT2pOdVlNb1kxMFNDd1VpTUJFa01BNjRrRzA2bThYY2lyWUU4TWEtZWt0UjdRZlFwNTZMajNaSlNuV2N5ODdkM2REbzhKaHNwM01TMjJ4emEyVjFEOTlOVDA4dlgwVFVzNGFUdFFra3M4dThfUk1aR3ZWenY3ZHA2OG3SAbcBQVVfeXFMTklvN0NzYXdKSWdkWVE5bEhOd2w1VDh3aTJ5NlFBRnVDUTBVd000VmV1eTh4LVBndnE1MGdwU0k0dGN2eWFPMFRMNW5XajVXZ0E1RHMzU3JtalNYaEZ4N183aXhaaWszNTBCX0xsd2QzMmhzU3lOX2xveWNXb0pZMW1NbEprOVQ5T2J3aUZJWW02M01SUVlwSF9sWlIza2k3b2tmSGljQjJHbGtFblVNeUJyZXdtUnpz?oc=5",
+     "dominio": "g1.globo.com",
+     "veiculo": "G1",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T03:00:01Z"
+    },
+    {
+     "posicao": 3,
+     "titulo": "Datafolha e Quaest mostram empate técnico entre Flávio Bolsonaro e Lula no 2º turno",
+     "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPMVpOcGdEOWFpMUlnYTM0QVRxR3lmYVdvdUdya284ZzRYc3piY0tadWYtTnhKdU83NHB1V0RmWFNmaG80amdxUVJOdEYzRzY2NUwxZ29EX1N6RUUyUUd3Ql9scU9nN1BLa2NKdGZ6NjNGaFgtaDNvTDVFX0dTcS1ReWZjM2ZKSUplaWlaSjdJSk5FSlNwN1g5U0ZqYUTSAasBQVVfeXFMTWZRa3UyYXZyYWhOeE90M2phbk5CRHRYTmIyM0ZNQ1VVcVJybmNfRTZSUUVObDFWaE52RHNoNlEteHQxWkczOVVCVlVBSzlGZERvTmhOMzBodEtpWTFnbWdMUzhhbnc2bURvQ3V6Vl95VVRaMDZBbThCdTlNR2xMREpzR29wYkpXd1FEMEtXLWQ5dXliUURFcF9zWF91THpnUGs1aG1GNE9nT2xB?oc=5",
+     "dominio": "g1.globo.com",
+     "veiculo": "G1",
+     "trecho": "",
+     "data_publicacao": "2026-10-16T03:00:00Z"
+    }
+   ]
   }
  },
- "erros": {
-  "Lula · primeiros": "HTTP 403 This project does not have the access to Custom Search JSON API.",
-  "Lula · recentes": "HTTP 403 This project does not have the access to Custom Search JSON API.",
-  "Flávio Bolsonaro · primeiros": "HTTP 403 This project does not have the access to Custom Search JSON API.",
-  "Flávio Bolsonaro · recentes": "HTTP 403 This project does not have the access to Custom Search JSON API."
- },
- "status": "⛔ nenhum resultado"
+ "erros": {},
+ "cse_recusada": "HTTP 403 This project does not have the access to Custom Search JSON API.",
+ "fonte": "Google Notícias · RSS de busca",
+ "status": "ok"
 }
