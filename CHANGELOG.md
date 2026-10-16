@@ -6,6 +6,16 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C9.3] 2026-10-15 — Diagnóstico do acesso ao repositório privado
+
+**Por quê:** o run `38834073420`, o primeiro depois de o usuário criar o segredo `ODI_INTERNO_TOKEN`, parou no `git clone` do `odi-atlas-interno` (exit 128). O log não é legível daqui.
+
+**Mudou:** quando o clone falha, o passo publica uma anotação com o erro do git (token mascarado), o código HTTP da API do repositório com esse token, o tamanho do token e o prefixo `github_pat_`. Assim dá para distinguir token vazio, sem acesso ao repositório ou sem permissão.
+
+**Testado:** YAML validado; o run seguinte registra o resultado.
+
+---
+
 ## [C9.2] 2026-10-15 — Texto de aviso do caderno 16
 
 **Mudou:** o aviso dizia "repositório privado ainda não ligado", o que dava a entender que o repositório não estava conectado. Ele está conectado à sessão do Claude (README enviado no commit `8932e7f`). O que falta é a permissão da coleta automática do GitHub Actions, que roda no servidor do GitHub e precisa do segredo `ODI_INTERNO_TOKEN`. O texto agora diz isso.

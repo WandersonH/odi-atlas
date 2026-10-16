@@ -34,8 +34,14 @@ jobs:
           TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
         run: |
           if [ -n "$TOKEN" ]; then
-            git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
-            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+            echo "token: ${#TOKEN} caracteres, prefixo ${TOKEN:0:11}"
+            if out=$(git clone --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno" 2>&1); then
+              echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+            else
+              code=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $TOKEN" https://api.github.com/repos/WandersonH/odi-atlas-interno)
+              echo "::error title=Repositório privado inacessível::git: $(echo "$out" | sed "s/${TOKEN}/***/g" | tail -n 3 | tr '\n' ' ') · API do repositório com o token: HTTP $code · token com ${#TOKEN} caracteres, prefixo ${TOKEN:0:11}"
+              exit 1
+            fi
           else
             echo "::warning::ODI_INTERNO_TOKEN ausente: comentários processados e descartados no fim do run (modo efêmero)."
           fi
