@@ -900,7 +900,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card gt-rel"><div class="eyebrow">Consultas e assuntos relacionados</div><h2>O que o público busca junto com cada candidato</h2>
     <div class="yt-chips" id="gtRelTipo" role="group" aria-label="Tipo"><button class="yt-chip" data-r="consultas" aria-pressed="true">Consultas</button><button class="yt-chip" data-r="assuntos" aria-pressed="false">Assuntos</button></div>
     <div class="gt-relgrid" id="gtRel"></div><p class="yt-cloudnote" id="gtRelNote"></p></div>
-  <div class="card gb-card"><div class="eyebrow">Google Busca · Programmable Search</div><h2>O que o Google mostra para cada candidato</h2>
+  <div class="card gb-card"><div class="eyebrow">Google Busca · Google Notícias</div><h2>O que o Google mostra para cada candidato</h2>
     <div class="odi-signal" id="gbStatus">Aguardando leitura.</div><div class="gb-grid" id="gbGrid"></div><p class="yt-cloudnote" id="gbNote"></p></div>
   <div class="gt-geo">
     <div class="card"><div class="eyebrow">Por estado</div><h2 id="gtMapTitle"></h2><div class="gt-tiles" id="gtTiles"></div><div class="gt-legend" id="gtMapLegend"></div></div>
@@ -2589,12 +2589,12 @@ const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.s
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const COR={'280002542548':'#c8102e','280002551544':'#1f8a3b'};
 const dt=s=>{if(!s)return '';const d=new Date(s);return isNaN(d)?esc(s.slice(0,10)):d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});};
-const lista=(rs,vazio)=>rs&&rs.length?`<ol>${rs.map(r=>`<li><a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.titulo)}</a><small>${esc(r.dominio)}${r.data_publicacao?' · '+dt(r.data_publicacao):''}</small></li>`).join('')}</ol>`:`<p class="yt-meta">${vazio}</p>`;
+const lista=(rs,vazio)=>rs&&rs.length?`<ol>${rs.map(r=>`<li><a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.titulo)}</a><small>${esc(r.veiculo||r.dominio)}${r.veiculo&&r.dominio?' ('+esc(r.dominio)+')':''}${r.data_publicacao?' · '+dt(r.data_publicacao):''}</small></li>`).join('')}</ol>`:`<p class="yt-meta">${vazio}</p>`;
 async function carregar(){if(feito)return;feito=true;
  try{const r=await fetch('./data/trends/google_busca.json',{cache:'no-store'});if(!r.ok)throw new Error('google_busca.json '+r.status);const d=await r.json();
   const quando=new Date(d.coletado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
-  $('gbStatus').textContent=(d.status==='ok'?'Coleta de ':d.status+' · tentativa de ')+quando+(Object.keys(d.erros||{}).length?' · erros: '+Object.entries(d.erros).map(([k,v])=>k+': '+v).join('; '):'');
-  $('gbGrid').innerHTML=Object.entries(d.candidatos||{}).map(([cid,c])=>`<div class="gb-col" style="--c:${COR[cid]||'#1b2a3d'}"><h3>${esc(c.nome)} <small class="yt-meta">busca: ${esc(c.consulta)}</small></h3><h4>5 primeiros resultados</h4>${lista(c.primeiros,'Sem resultados.')}<h4>3 mais recentes (últimas 72 h)</h4>${lista(c.recentes,'Nenhum resultado datado nas últimas 72 h.')}</div>`).join('');
+  $('gbStatus').textContent=(d.status==='ok'?'Coleta de ':d.status+' · tentativa de ')+quando+(d.fonte?' · fonte: '+d.fonte:'')+(Object.keys(d.erros||{}).length?' · erros: '+Object.entries(d.erros).map(([k,v])=>k+': '+v).join('; '):'');
+  $('gbGrid').innerHTML=Object.entries(d.candidatos||{}).map(([cid,c])=>`<div class="gb-col" style="--c:${COR[cid]||'#1b2a3d'}"><h3>${esc(c.nome)} <small class="yt-meta">busca: ${esc(c.consulta)}</small></h3><h4>5 primeiros resultados</h4>${lista(c.primeiros,'Sem resultados.')}<h4>3 mais recentes (últimos 3 dias)</h4>${lista(c.recentes,'Nenhum resultado datado nas últimas 72 h.')}</div>`).join('');
   $('gbNote').textContent=d.nota;
  }catch(e){$('gbStatus').textContent='⛔ Ainda sem coleta do Google Busca: '+e.message;}}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});if(sec.classList.contains('active'))carregar();})();

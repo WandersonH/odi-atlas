@@ -17,9 +17,48 @@ import urllib.parse
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from net import get_json, now_utc  # noqa: E402
+from net import get_json, now_utc, open_url, read_body  # noqa: E402
 
 API = "https://www.googleapis.com/customsearch/v1"
+RSS = "https://news.google.com/rss/search"
+NOTA_RSS = ("Google Notícias (feed RSS público de busca, Brasil, português; sem chave). Usado porque a Custom Search JSON API "
+            "recusou o projeto (fechada a novos clientes). '5 primeiros' = os 5 primeiros itens na ordem do próprio Google Notícias "
+            "para a busca; '3 mais recentes' = os 3 itens mais novos da busca restrita aos últimos 3 dias (when:3d). Só notícias "
+            "indexadas pelo Google Notícias, não a busca geral da web, e não personalizado.")
+
+
+def parse_rss(xml: bytes) -> list[dict]:
+    """Itens do RSS do Google Notícias: título sem o ' - Veículo' final, link, veículo e domínio, data (RFC 822 → ISO)."""
+    import email.utils
+    import xml.etree.ElementTree as ET
+    out = []
+    for it in ET.fromstring(xml).iter("item"):
+        src = it.find("source")
+        veic = (src.text or "").strip() if src is not None else ""
+        dom = urllib.parse.urlparse(src.get("url", "")).hostname or "" if src is not None else ""
+        tit = (it.findtext("title") or "").strip()
+        if veic and tit.endswith(" - " + veic):
+            tit = tit[: -len(veic) - 3]
+        pub = it.findtext("pubDate") or ""
+        try:
+            iso = email.utils.parsedate_to_datetime(pub).strftime("%Y-%m-%dT%H:%M:%SZ") if pub else ""
+        except (TypeError, ValueError):
+            iso = ""
+        out.append({"titulo": tit, "link": it.findtext("link") or "", "dominio": dom.removeprefix("www."),
+                    "veiculo": veic, "trecho": "", "data_publicacao": iso})
+    return out
+
+
+def consultar_rss(q: str, n: int, recentes: bool) -> tuple[list[dict], str | None]:
+    params = {"q": q + (" when:3d" if recentes else ""), "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"}
+    try:
+        with open_url(f"{RSS}?{urllib.parse.urlencode(params)}", timeout=40) as r:
+            itens = parse_rss(read_body(r))
+    except Exception as e:  # noqa: BLE001
+        return [], f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
+    if recentes:
+        itens.sort(key=lambda x: x["data_publicacao"], reverse=True)
+    return [{"posicao": i + 1, **x} for i, x in enumerate(itens[:n])], None
 HCOLS = ["coletado_em", "candidate_id", "lista", "posicao", "titulo", "link", "dominio", "data_publicacao"]
 
 
@@ -67,14 +106,26 @@ def main(argv=None) -> int:
         (d / "google_busca.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
         print(out["status"])
         return 1
+    fonte = "cse"
     for cid, c in cfg["consultas"].items():
-        top, e1 = consultar(key, cx, c["q"], cfg["primeiros"], {})
-        rec, e2 = consultar(key, cx, c["q"], cfg["recentes"], {"sort": "date", "dateRestrict": cfg["recentes_janela"]})
+        if fonte == "cse":
+            top, e1 = consultar(key, cx, c["q"], cfg["primeiros"], {})
+            if e1 and "does not have the access" in e1:  # API fechada para este projeto → Google Notícias (RSS público)
+                fonte, out["cse_recusada"] = "rss", e1
+        if fonte == "rss":
+            top, e1 = consultar_rss(c["q"], cfg["primeiros"], False)
+            rec, e2 = consultar_rss(c["q"], cfg["recentes"], True)
+        else:
+            rec, e2 = consultar(key, cx, c["q"], cfg["recentes"], {"sort": "date", "dateRestrict": cfg["recentes_janela"]})
         out["candidatos"][cid] = {"nome": c["nome"], "consulta": c["q"], "primeiros": top, "recentes": rec}
         for lista, e in (("primeiros", e1), ("recentes", e2)):
             if e:
                 out["erros"][f"{c['nome']} · {lista}"] = e
         print(f"{c['nome']}: {len(top)} primeiros, {len(rec)} recentes {e1 or ''} {e2 or ''}")
+    if fonte == "rss":
+        out["fonte"], out["nota"] = "Google Notícias · RSS de busca", NOTA_RSS
+    else:
+        out["fonte"] = "Google Programmable Search · Custom Search JSON API"
     ok = any(v["primeiros"] or v["recentes"] for v in out["candidatos"].values())
     out["status"] = "ok" if ok and not out["erros"] else ("⚠️ parcial" if ok else "⛔ nenhum resultado")
     (d / "google_busca.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -18,5 +18,16 @@ class TestGoogleBusca(unittest.TestCase):
         self.assertEqual(gb.data_pub({"title": "x"}), "")
 
 
+
+class TestRSS(unittest.TestCase):
+    def test_parse_rss(self):
+        import collect_google_busca as g
+        xml = b"""<?xml version="1.0"?><rss><channel><item><title>Lula faz X - Folha de S.Paulo</title><link>https://news.google.com/a</link>
+<pubDate>Thu, 15 Oct 2026 22:10:00 GMT</pubDate><source url="https://www.folha.uol.com.br">Folha de S.Paulo</source></item></channel></rss>"""
+        r = g.parse_rss(xml)[0]
+        self.assertEqual((r["titulo"], r["dominio"], r["veiculo"], r["data_publicacao"]),
+                         ("Lula faz X", "folha.uol.com.br", "Folha de S.Paulo", "2026-10-15T22:10:00Z"))
+
+
 if __name__ == "__main__":
     unittest.main()
