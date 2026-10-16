@@ -39,6 +39,12 @@ jobs:
         run: |
           p(){ [ -n "$1" ] && echo "sim (${#1} caracteres)" || echo "não"; }
           echo "::notice title=Segredos Google::secrets.GOOGLE_CSE_KEY $(p "$S_KEY") · secrets.GOOGLE_CSE_CX $(p "$S_CX") · vars.GOOGLE_CSE_KEY $(p "$V_KEY") · vars.GOOGLE_CSE_CX $(p "$V_CX") · outros nomes: GOOGLE_API_KEY $(p "$A1"), GOOGLE_CSE_ID $(p "$A2"), GOOGLE_CX $(p "$A3"), CSE_KEY $(p "$A4"), CSE_CX $(p "$A5")"
+      - name: A chave tem a Custom Search API liberada? (sem cx; só a mensagem de erro do Google)
+        env:
+          K: ${{ secrets.GOOGLE_CSE_KEY || secrets.YOUTUBE_API_KEY }}
+        run: |
+          r=$(curl -s "https://customsearch.googleapis.com/customsearch/v1?q=teste&key=$K" | python3 -c "import json,sys;e=json.load(sys.stdin).get('error',{});print(e.get('code'),e.get('status'),(e.get('message') or '')[:300])" || true)
+          echo "::notice title=Custom Search · teste da chave::$r"
       - name: Consultar o Google
         id: busca
         continue-on-error: true
