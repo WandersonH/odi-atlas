@@ -24,7 +24,7 @@ jobs:
         run: |
           d="$RUNNER_TEMP/interno/reuters"; mkdir -p "$d"
           baixa(){ ano=$1; url=$2
-            curl -sSfL -A "Mozilla/5.0 (odi-atlas; pesquisa academica)" -o "$RUNNER_TEMP/dnr$ano.pdf" "$url"
+            curl -sSfL --http1.1 --retry 5 --retry-all-errors --retry-delay 5 -C - -A "Mozilla/5.0 (odi-atlas; pesquisa academica)" -o "$RUNNER_TEMP/dnr$ano.pdf" "$url"
             sha=$(sha256sum "$RUNNER_TEMP/dnr$ano.pdf" | cut -d' ' -f1); pags=$(pdfinfo "$RUNNER_TEMP/dnr$ano.pdf" | awk '/^Pages/{print $2}')
             pdftotext -layout "$RUNNER_TEMP/dnr$ano.pdf" "$d/dnr$ano.txt"
             printf '{"ano": %s, "url": "%s", "sha256": "%s", "paginas": %s, "baixado_em": "%s"}\n' "$ano" "$url" "$sha" "$pags" "$(date -u +%FT%TZ)" > "$d/dnr$ano.json"
