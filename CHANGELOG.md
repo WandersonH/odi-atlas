@@ -6,6 +6,26 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [D1.2] 2026-10-16 — Diagnóstico: comentários do TikTok (bloqueados) e vídeos de apoiadores por hashtag (funciona)
+
+**Por quê:** o usuário pediu a página de comentários do TikTok e perguntou por que não aparecem os vídeos de apoio de contas menores.
+
+**Testado (GitHub Actions, IP do GitHub, sem login)**
+- ⛔ **Comentários do TikTok:**
+  - o endpoint público `api/comment/list` devolveu resposta vazia nos 6 vídeos testados (5 de Lula e aliados, 1 de Flávio). O TikTok exige parâmetros assinados ou login;
+  - num Chromium headless (Playwright), as duas páginas de vídeo foram para a tela de login ("Entrar | TikTok"), sem nenhum pedido de comentários;
+  - o yt-dlp 2026.08.19 não tem extração de comentários do TikTok.
+  - O coletor `collect_comentarios_tiktok.py` foi removido. O teste fica em `teste-comentarios-tiktok.yml` + `scripts/diag_tiktok_navegador.py`.
+- ✅ **Páginas de hashtag no navegador headless:**
+  - `#lula13`: 58 vídeos de 26 + 30 contas distintas em duas páginas da rolagem;
+  - `#flaviobolsonaro`: 59 vídeos de 29 + 27 contas.
+  - É o caminho gratuito para os vídeos de apoio de contas menores (o yt-dlp falhava nessas páginas: "No working app info", D1.1).
+- ⛔ Busca do TikTok: tela de login.
+
+**Pendente:** coletor de vídeos por hashtag e página de apoiadores (aguarda decisão do usuário).
+
+---
+
 ## [P4.3] 2026-10-15 — Página reorganizada em 7 cadernos; Panorama vira resumo "da busca ao voto"
 
 **Por quê:** pedido do usuário. Avaliar junções de páginas que se complementam, com visão focal; o Panorama deve ser "um resumo de todos os dados sobre os candidatos, de buscas a voto". A junção Comentários + Trends foi descartada pelo usuário ("não fazer"); Eleitorado + PNAD + Escala foi aprovada.

@@ -1,4 +1,4 @@
-name: Teste — comentários do TikTok (só diagnóstico)
+name: Teste — TikTok no navegador (comentários, hashtag, busca; só diagnóstico)
 
 # Verifica se o endpoint público de comentários do TikTok responde a partir do IP do GitHub. Não grava nada.
 on:
@@ -21,7 +21,3 @@ jobs:
           pip install -q playwright && python -m playwright install --with-deps chromium > /dev/null 2>&1
           python scripts/diag_tiktok_navegador.py > nav.txt 2>&1 || true
           while IFS= read -r l; do echo "::notice title=TikTok navegador::$(echo "$l" | cut -c1-900)"; done < nav.txt
-      - name: Ler comentários de 6 vídeos (diagnóstico sem texto)
-        run: |
-          python scripts/collect_comentarios_tiktok.py --teste 6 > diag.txt 2>&1 || true
-          while IFS= read -r l; do echo "::notice title=TikTok comentários::$(echo "$l" | cut -c1-900)"; done < diag.txt
