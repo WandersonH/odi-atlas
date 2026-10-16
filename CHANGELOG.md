@@ -6,6 +6,30 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C11.0] 2026-10-16 — Buscas: o que o Google mostra (5 primeiros e 3 mais recentes por candidato)
+
+**Por quê:** pedido do usuário: "usar a API search via chave Google para trazer os 5 primeiros resultados na página do Trends e os últimos 3 novos publicados".
+
+**Mudou**
+- `scripts/collect_google_busca.py` + `data/config/google_busca.json`: Google Custom Search JSON API, 4 consultas por execução (cota grátis: 100/dia).
+  - Para Lula e para "Flávio Bolsonaro": 5 primeiros (relevância) e 3 mais recentes (`sort=date`, últimas 72 h).
+  - Brasil e português; data de publicação lida das metatags quando a página informa.
+  - Saída em `data/trends/google_busca.json` e histórico em `google_busca_historico.csv`.
+- `.github/workflows/google-busca.yml`, às 07h40 e 19h40 BRT.
+- Caderno 05: bloco "O que o Google mostra para cada candidato".
+
+**Testado**
+- ✅ `tests/test_google_busca.py` (2); suíte OK.
+- ✅ Chromium 1300/390 px: bloco renderizado com o aviso de bloqueio, sem erro e sem rolagem horizontal.
+- ⛔ Sem consulta real: faltam os segredos `GOOGLE_CSE_KEY` e `GOOGLE_CSE_CX` (o usuário cria; não são pedidos no chat).
+
+**Atenção (fonte: [Brave, alternativas à API do Google](https://brave.com/learn/google-api-shutdown/))**
+- O Google fechou a Custom Search JSON API a novos clientes e vai desligá-la em 01/01/2027.
+- Mecanismos criados desde 20/01/2026 só buscam numa lista de até 50 sites. A "web inteira" só vale para mecanismos antigos.
+- Serve para o período eleitoral (2º turno em 25/10/2026).
+
+---
+
 ## [C10.1] 2026-10-16 — TikTok: mais 4 hashtags pedidas pelo usuário
 
 **Mudou:** `data/config/tiktok_hashtags.json` ganhou #boralula e #exercitodolula (Lula) e #tropadoflavio e #bloquinho22 (Flávio), agora 14 hashtags. Pedido do usuário: "tropa do Flávio, bloquinho 22, boralula, exército do Lula".

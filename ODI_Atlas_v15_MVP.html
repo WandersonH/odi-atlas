@@ -438,6 +438,10 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 #declarations .datatable{display:block;overflow-x:auto;max-width:100%}
 
 #tkInfTbl{width:100%;border-collapse:collapse;font-size:12px}#tkInfTbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px/1.2 'Courier New',monospace;text-transform:uppercase;padding:7px 8px;text-align:left;cursor:pointer;white-space:nowrap}#tkInfTbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}#tkInfTbl td.n{text-align:right}#tkInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}#tkInf line{stroke-opacity:.35}#tkInf circle{stroke:#fffdf8;stroke-width:1;cursor:pointer}#tkInf text{font:700 11px 'Courier New',monospace;fill:#172238;paint-order:stroke;stroke:#fffdf8;stroke-width:3px;pointer-events:none}#tkInf.yt-focus line{stroke-opacity:.04}#tkInf.yt-focus circle{opacity:.15}#tkInf.yt-focus text{opacity:.1}#tkInf.yt-focus .yt-on{opacity:1!important;stroke-opacity:.9!important}#tkInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
+.gb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:10px}.gb-col{border-top:3px solid var(--c);padding-top:8px;min-width:0}
+.gb-col h3{margin:0 0 6px;font:700 15px Georgia,serif;color:var(--c)}.gb-col h4{margin:12px 0 4px;font:700 10px 'Courier New',monospace;text-transform:uppercase;color:#53606b}
+.gb-col ol{margin:0;padding-left:20px}.gb-col li{margin:0 0 9px;font-size:13px;overflow-wrap:anywhere}.gb-col li a{color:#172238;font-weight:600}.gb-col li small{display:block;color:#6a7682;font-size:11px}
+@media(max-width:760px){.gb-grid{grid-template-columns:1fr}}
 </style>
 <style>
 /* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
@@ -892,6 +896,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card gt-rel"><div class="eyebrow">Consultas e assuntos relacionados</div><h2>O que o público busca junto com cada candidato</h2>
     <div class="yt-chips" id="gtRelTipo" role="group" aria-label="Tipo"><button class="yt-chip" data-r="consultas" aria-pressed="true">Consultas</button><button class="yt-chip" data-r="assuntos" aria-pressed="false">Assuntos</button></div>
     <div class="gt-relgrid" id="gtRel"></div><p class="yt-cloudnote" id="gtRelNote"></p></div>
+  <div class="card gb-card"><div class="eyebrow">Google Busca · Programmable Search</div><h2>O que o Google mostra para cada candidato</h2>
+    <div class="odi-signal" id="gbStatus">Aguardando leitura.</div><div class="gb-grid" id="gbGrid"></div><p class="yt-cloudnote" id="gbNote"></p></div>
   <div class="gt-geo">
     <div class="card"><div class="eyebrow">Por estado</div><h2 id="gtMapTitle"></h2><div class="gt-tiles" id="gtTiles"></div><div class="gt-legend" id="gtMapLegend"></div></div>
     <div class="card"><div class="eyebrow">Tabela por UF</div><div class="yt-tablewrap" style="max-height:470px"><table class="gt-tbl" id="gtTbl"></table></div></div>
@@ -2523,5 +2529,21 @@ const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.s
   const lv=r.l,fv=r.f,cmp=!r.txt&&r.maior!==null&&lv!=null&&fv!=null&&lv!==fv,ll=cmp&&lv>fv,fl=cmp&&fv>lv;
   return `<tr><td>${esc(r.rot)}</td><td class="n${ll?' lead':''}" style="--c:${CL}">${esc(r.fmt(lv))}</td><td class="n${fl?' lead':''}" style="--c:${CF}">${esc(r.fmt(fv))}</td><td class="src">${esc(r.fonte)}</td></tr>`;}).join('')}</tbody></table></div><div class="chartfoot">Sublinhado: o maior valor da linha, só onde “maior” tem leitura direta. Vídeos publicados, volume de comentários e incivilidade não são marcados: mais não é melhor. Detalhes e método em cada página.</div>`;
 })();})();
+</script>
+<script>
+/* Caderno 05 · Google Busca: 5 primeiros e 3 mais recentes por candidato (data/trends/google_busca.json) */
+(function(){const sec=document.getElementById('gTrends');if(!sec)return;let feito=false;const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const COR={'280002542548':'#c8102e','280002551544':'#1f8a3b'};
+const dt=s=>{if(!s)return '';const d=new Date(s);return isNaN(d)?esc(s.slice(0,10)):d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});};
+const lista=(rs,vazio)=>rs&&rs.length?`<ol>${rs.map(r=>`<li><a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.titulo)}</a><small>${esc(r.dominio)}${r.data_publicacao?' · '+dt(r.data_publicacao):''}</small></li>`).join('')}</ol>`:`<p class="yt-meta">${vazio}</p>`;
+async function carregar(){if(feito)return;feito=true;
+ try{const r=await fetch('./data/trends/google_busca.json',{cache:'no-store'});if(!r.ok)throw new Error('google_busca.json '+r.status);const d=await r.json();
+  const quando=new Date(d.coletado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
+  $('gbStatus').textContent=(d.status==='ok'?'Coleta de ':d.status+' · tentativa de ')+quando+(Object.keys(d.erros||{}).length?' · erros: '+Object.entries(d.erros).map(([k,v])=>k+': '+v).join('; '):'');
+  $('gbGrid').innerHTML=Object.entries(d.candidatos||{}).map(([cid,c])=>`<div class="gb-col" style="--c:${COR[cid]||'#1b2a3d'}"><h3>${esc(c.nome)} <small class="yt-meta">busca: ${esc(c.consulta)}</small></h3><h4>5 primeiros resultados</h4>${lista(c.primeiros,'Sem resultados.')}<h4>3 mais recentes (últimas 72 h)</h4>${lista(c.recentes,'Nenhum resultado datado nas últimas 72 h.')}</div>`).join('');
+  $('gbNote').textContent=d.nota;
+ }catch(e){$('gbStatus').textContent='⛔ Ainda sem coleta do Google Busca: '+e.message;}}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});if(sec.classList.contains('active'))carregar();})();
 </script>
 </body></html>

@@ -1,0 +1,48 @@
+name: Google Busca — 5 primeiros e 3 mais recentes por candidato
+
+# Google Programmable Search (Custom Search JSON API). Segredos: GOOGLE_CSE_KEY e GOOGLE_CSE_CX. 4 consultas por execução.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 10 * * *"   # 07h40 em Brasília
+    - cron: "40 22 * * *"   # 19h40 em Brasília
+
+concurrency:
+  group: google-busca
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  busca:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest tests.test_google_busca
+      - name: Consultar o Google
+        id: busca
+        continue-on-error: true
+        env:
+          GOOGLE_CSE_KEY: ${{ secrets.GOOGLE_CSE_KEY }}
+          GOOGLE_CSE_CX: ${{ secrets.GOOGLE_CSE_CX }}
+        run: python scripts/collect_google_busca.py
+      - name: Resumo
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          d = json.loads(pathlib.Path("data/trends/google_busca.json").read_text(encoding="utf-8"))
+          print(f"::notice title=Google Busca::{d.get('status')} · erros {d.get('erros')}")
+          for c in d.get("candidatos", {}).values():
+              print(f"::notice title=Google Busca · {c['nome']}::primeiros: " + " | ".join(r['dominio'] for r in c['primeiros']) + " · recentes: " + " | ".join(r['dominio'] for r in c['recentes']))
+          PY
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Google Busca: coleta (run ${{ github.run_id }})"
