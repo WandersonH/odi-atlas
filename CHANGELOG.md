@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C12.3 — 5 primeiros do Google Notícias por dia, ligados ao filtro de período (2026-10-16) ⚠️
+
+- `scripts/collect_google_noticias_diario.py` + `tests/test_google_noticias_diario.py`: por dia e candidato, os 5 primeiros do RSS do Google Notícias publicados naquele dia (horário de Brasília), via `after:`/`before:`. A cada hora refaz ontem e hoje; o `workflow_dispatch` aceita `desde` para reconstituir dias anteriores. Dias anteriores a 16/10 são reconstituição retroativa (ordem do momento da coleta).
+- `google-busca.yml`: passo novo e entrada `desde`.
+- Página (caderno 05): card "As manchetes de cada dia no período do filtro" — seletor de dia e ranking de veículos no top 5, que mudam com o filtro de período do Trends (evento `gt:periodo`).
+- Testes: `python -m unittest discover -s tests` sem falhas; Chromium a 390 px sem erro de JS (ainda sem o arquivo de dados: mostra ⛔).
+- Pendente: reconstituição desde 20/07 em andamento (run 38863725033); conferir dias vazios e erros quando terminar.
+
 ## C12.2 — Google Busca de hora em hora (2026-10-16) 🔜
 
 - `google-busca.yml`: agenda passa de 07h40 e 19h40 para de hora em hora (minuto 17). Pedido do usuário.

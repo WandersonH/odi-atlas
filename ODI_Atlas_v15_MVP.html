@@ -438,6 +438,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 #declarations .datatable{display:block;overflow-x:auto;max-width:100%}
 
 #tkInfTbl{width:100%;border-collapse:collapse;font-size:12px}#tkInfTbl th{position:sticky;top:0;background:#172238;color:#fff;font:700 10px/1.2 'Courier New',monospace;text-transform:uppercase;padding:7px 8px;text-align:left;cursor:pointer;white-space:nowrap}#tkInfTbl td{padding:5px 8px;border-bottom:1px solid #eef0f2;font-family:'Courier New',monospace}#tkInfTbl td.n{text-align:right}#tkInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}#tkInf line{stroke-opacity:.35}#tkInf circle{stroke:#fffdf8;stroke-width:1;cursor:pointer}#tkInf text{font:700 11px 'Courier New',monospace;fill:#172238;paint-order:stroke;stroke:#fffdf8;stroke-width:3px;pointer-events:none}#tkInf.yt-focus line{stroke-opacity:.04}#tkInf.yt-focus circle{opacity:.15}#tkInf.yt-focus text{opacity:.1}#tkInf.yt-focus .yt-on{opacity:1!important;stroke-opacity:.9!important}#tkInfTbl i{display:inline-block;width:9px;height:9px;margin-right:5px;vertical-align:-1px}
+.gd-ctrl{margin:10px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.gd-ctrl select{font:inherit;padding:4px 6px;max-width:100%}.gd-bar{display:grid;grid-template-columns:minmax(0,1fr) 60px 28px;gap:6px;align-items:center;font-size:12px;margin:3px 0}.gd-bar i{display:block;height:8px;background:var(--c)}
 .gb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:10px}.gb-col{border-top:3px solid var(--c);padding-top:8px;min-width:0}
 .gb-col h3{margin:0 0 6px;font:700 15px Georgia,serif;color:var(--c)}.gb-col h4{margin:12px 0 4px;font:700 10px 'Courier New',monospace;text-transform:uppercase;color:#53606b}
 .gb-col ol{margin:0;padding-left:20px}.gb-col li{margin:0 0 9px;font-size:13px;overflow-wrap:anywhere}.gb-col li a{color:#172238;font-weight:600}.gb-col li small{display:block;color:#6a7682;font-size:11px}
@@ -902,6 +903,12 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="gt-relgrid" id="gtRel"></div><p class="yt-cloudnote" id="gtRelNote"></p></div>
   <div class="card gb-card"><div class="eyebrow">Google Busca · Google Notícias</div><h2>O que o Google mostra para cada candidato</h2>
     <div class="odi-signal" id="gbStatus">Aguardando leitura.</div><div class="gb-grid" id="gbGrid"></div><p class="yt-cloudnote" id="gbNote"></p></div>
+  <div class="card gb-card" id="gdCard"><div class="eyebrow">Google Notícias · 5 primeiros por dia</div><h2>As manchetes de cada dia no período do filtro</h2>
+    <div class="odi-signal" id="gdStatus">Aguardando leitura.</div>
+    <div class="gd-ctrl"><label for="gdDia">Dia</label> <select id="gdDia"></select> <span class="yt-meta" id="gdPer"></span></div>
+    <div class="gb-grid" id="gdGrid"></div>
+    <h3 class="gt-fasetit">Veículos que mais aparecem entre os 5 primeiros no período</h3><div class="gb-grid" id="gdVeic"></div>
+    <p class="yt-cloudnote" id="gdNote"></p></div>
   <div class="gt-geo">
     <div class="card"><div class="eyebrow">Por estado</div><h2 id="gtMapTitle"></h2><div class="gt-tiles" id="gtTiles"></div><div class="gt-legend" id="gtMapLegend"></div></div>
     <div class="card"><div class="eyebrow">Tabela por UF</div><div class="yt-tablewrap" style="max-height:470px"><table class="gt-tbl" id="gtTbl"></table></div></div>
@@ -2184,6 +2191,7 @@ $('gtBlocos').innerHTML=`<div class="gt-blk">${h}</svg></div><div class="gt-lege
 $('gtVegNote').textContent=D.nota_vegetativo||'';}
 function render(){chips();const c=atual();if(!c){$('gtStatus').textContent='⛔ Consulta sem dados nesta coleta.';return;}
 resumo(c);grafico(c);vegetativoBloco(c);relacionados(c);mapa(c);
+try{const per={periodo:c.periodo,de:(c.serie[0]?.t||'').slice(0,10),ate:(c.serie.at(-1)?.t||'').slice(0,10)};window.GT_PERIODO=per;document.dispatchEvent(new CustomEvent('gt:periodo',{detail:per}));}catch(e){}
 $('gtFiles').innerHTML=`Arquivos desta consulta: <a href="./${esc(c.arquivos.serie)}" download>série (CSV)</a> · <a href="./${esc(c.arquivos.uf)}" download>por UF (CSV)</a> · consolidado: <a href="./data/trends/caderno.json" target="_blank" rel="noopener">caderno.json</a>. Termos consultados: ${c.itens.map(i=>esc(i.rotulo)+' → '+(i.modo==='topico'?'tópico '+esc(i.consulta)+' ('+esc(i.tipo)+')':'palavra “'+esc(i.consulta)+'”')).join('; ')}.`;}
 async function carregar(){if(feito)return;feito=true;
 try{const r=await fetch('./data/trends/caderno.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);D=await r.json();}
@@ -2584,6 +2592,27 @@ const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.s
 })();})();
 </script>
 <script>
+/* Caderno 05 · 5 primeiros do Google Notícias por dia, acompanhando o filtro de período do Trends (data/trends/google_noticias_diario.json) */
+(function(){const $=id=>document.getElementById(id);if(!$('gdCard'))return;
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const COR={'280002542548':'#c8102e','280002551544':'#1f8a3b'};const NOMEP={'eleitoral':'período eleitoral','today 3-m':'últimos 3 meses','now 7-d':'últimos 7 dias'};
+const br=d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4);let G=null,per=null,dia=null;
+function render(){if(!G||!per)return;const dias=Object.keys(G.dias).filter(d=>d>=per.de&&d<=per.ate).sort().reverse();
+ $('gdPer').textContent=`${NOMEP[per.periodo]||per.periodo}: ${br(per.de)} a ${br(per.ate)} · ${dias.length} dias com coleta`;
+ if(!dias.length){$('gdDia').innerHTML='';$('gdGrid').innerHTML='<p class="yt-meta">⛔ Sem dias coletados neste período.</p>';$('gdVeic').innerHTML='';return;}
+ if(!dias.includes(dia))dia=dias[0];
+ $('gdDia').innerHTML=dias.map(d=>`<option value="${d}"${d===dia?' selected':''}>${br(d)}${G.dias[d].fechado?'':' (em aberto)'}</option>`).join('');
+ const reg=G.dias[dia].candidatos;
+ $('gdGrid').innerHTML=Object.entries(G.candidatos).map(([cid,nome])=>{const rs=reg[cid]||[];return `<div class="gb-col" style="--c:${COR[cid]||'#1b2a3d'}"><h3>${esc(nome)}</h3>${rs.length?`<ol>${rs.map(r=>`<li><a href="${esc(r.link)}" target="_blank" rel="noopener noreferrer">${esc(r.titulo)}</a><small>${esc(r.veiculo||r.dominio)}</small></li>`).join('')}</ol>`:'<p class="yt-meta">Nenhuma notícia datada neste dia.</p>'}</div>`;}).join('');
+ $('gdVeic').innerHTML=Object.entries(G.candidatos).map(([cid,nome])=>{const n={};let tot=0;for(const d of dias)for(const r of (G.dias[d].candidatos[cid]||[])){const v=r.veiculo||r.dominio;n[v]=(n[v]||0)+1;tot++;}
+  const top=Object.entries(n).sort((a,b)=>b[1]-a[1]).slice(0,8),mx=top[0]?.[1]||1;
+  return `<div class="gb-col" style="--c:${COR[cid]||'#1b2a3d'}"><h3>${esc(nome)} <small class="yt-meta">${tot} posições em ${dias.length} dias</small></h3>${top.map(([v,k])=>`<div class="gd-bar"><span>${esc(v)}</span><i style="width:${(k/mx*100).toFixed(0)}%"></i><b>${k}</b></div>`).join('')||'<p class="yt-meta">—</p>'}</div>`;}).join('');}
+$('gdDia').addEventListener('change',e=>{dia=e.target.value;render();});
+document.addEventListener('gt:periodo',e=>{per=e.detail;render();});
+fetch('./data/trends/google_noticias_diario.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(d=>{G=d;
+ $('gdStatus').textContent=`Atualizado em ${new Date(d.atualizado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})} · ${Object.keys(d.dias).length} dias · muda junto com o filtro de período acima`;
+ $('gdNote').textContent=d.metodo;per=per||window.GT_PERIODO||null;render();})
+ .catch(e=>{$('gdStatus').textContent='⛔ Ainda sem a série diária do Google Notícias ('+e.message+').';});})();
 /* Caderno 05 · Google Busca: 5 primeiros e 3 mais recentes por candidato (data/trends/google_busca.json) */
 (function(){const sec=document.getElementById('gTrends');if(!sec)return;let feito=false;const $=id=>document.getElementById(id);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
