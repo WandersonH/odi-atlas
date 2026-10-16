@@ -57,6 +57,12 @@ jobs:
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: python scripts/build_comentarios.py
+      - name: Caderno 14 — redes para o Gephi e corpus-amostra para o IRaMuTeQ
+        if: steps.coleta.outcome == 'success'
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: python scripts/build_rede_comentarios.py
       - name: Gravar no repositório privado
         if: steps.interno.outputs.dir != '' && steps.coleta.outcome == 'success'
         run: |

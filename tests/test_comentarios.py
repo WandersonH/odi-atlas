@@ -128,3 +128,22 @@ class TestAnalise(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRedesComentarios(unittest.TestCase):
+    def test_freeman_estrela_e_espalhado(self):
+        import networkx as nx
+        import build_rede_comentarios as brc
+        estrela = nx.DiGraph([(f"a{i}", "centro") for i in range(5)])
+        self.assertEqual(brc.freeman_in(estrela), 1.0)  # todos respondem ao mesmo autor
+        ciclo = nx.DiGraph([("a", "b"), ("b", "c"), ("c", "a")])
+        self.assertEqual(brc.freeman_in(ciclo), 0.0)
+
+    def test_rede_respostas_ignora_autorresposta(self):
+        import build_rede_comentarios as brc
+        rows = [{"comment_id": "1", "parent_id": "", "tipo": "comentario", "autor_canal": "A", "autor_nome": "", "candidate_id": "c"},
+                {"comment_id": "1.1", "parent_id": "1", "tipo": "resposta", "autor_canal": "B", "autor_nome": "", "candidate_id": "c"},
+                {"comment_id": "1.2", "parent_id": "1", "tipo": "resposta", "autor_canal": "B", "autor_nome": "", "candidate_id": "c"},
+                {"comment_id": "1.3", "parent_id": "1", "tipo": "resposta", "autor_canal": "A", "autor_nome": "", "candidate_id": "c"}]
+        g, comms = brc.rede_respostas(rows)
+        self.assertEqual(list(g.edges(data="weight")), [("B", "A", 2)])

@@ -6,6 +6,34 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [C9.4] 2026-10-15 — Comentários: repositório privado ligado; redes para o Gephi e corpus para o IRaMuTeQ
+
+**Por quê:** o usuário ajustou o token (Contents: read and write) e pediu "nos comentários, Gephi e IRaMuTeQ".
+
+**Testado com dados reais**
+- ✅ Run `38834967148` (comentarios-youtube) em **modo interno**:
+  - 1.012 vídeos, 2.024 chamadas, 128.104 registros; 6 vídeos deram HTTP 400;
+  - o repositório privado recebeu os comentários (11,9 MB, gz), o corpus IRaMuTeQ completo (15,3 MB), os trechos da CHD e a amostra de codificação.
+  - A amostra tem 399 comentários, não 400: 200 de Lula e 199 de Flávio, por arredondamento da estratificação semanal. Ela fica assim, porque a amostra não é refeita.
+- ✅ `scripts/build_rede_comentarios.py`, rodado localmente sobre o mesmo arquivo bruto (cópia do repositório privado):
+  - **Rede de palavras:** 150 nós, 1.083 arestas, 5 comunidades, modularidade 0,226, a partir de 90.021 comentários (52.115 de Lula e 37.906 de Flávio). Mais típicas da audiência de Flávio: alfredo, gaspar, jair, vencer, ladrão, liberdade, stf. Da de Lula: gratidão, viva, democracia, bets, soberania, reeleito, tetra, estadista.
+  - **Rede de respostas (pseudonimizada):** 12.515 autores, 14.092 ligações, maior componente com 9.708 autores, centralização de Freeman do grau de entrada 0,005 no todo. A maior comunidade (884 autores) tem 1,6% dos comentários em vídeos de Lula; as seguintes têm 87–99,6% em vídeos de Lula. As duas audiências quase não se respondem.
+  - A posição dos nós usa o cosseno de Salton, porque o ForceAtlas2 empurrava os polos para as bordas. A cor é normalizada pelo tamanho de cada audiência.
+- ✅ Saídas privadas enviadas ao `odi-atlas-interno` (commit próprio): `rede_respostas_identificada.gexf`, `codigos_autores.csv`, `corpus_iramuteq_amostra.txt` (2,0 MB).
+- ✅ No público, nenhum ID de canal (`UC…`) nos arquivos da rede de respostas (grep).
+- ✅ Testes: 2 novos (Freeman 1,0 numa estrela e 0 num ciclo; autorresposta ignorada); suíte OK. Chromium 1300/390 px sem erro e sem rolagem horizontal.
+
+**Mudou**
+- Script novo `scripts/build_rede_comentarios.py`, com passo no workflow `comentarios-youtube.yml`.
+- Caderno 14 ganhou três blocos:
+  - rede de palavras (desenho, comunidades, GEXF, CSVs e JSON);
+  - rede de conversação (números, desenho dos 400 autores com mais ligações, tabela por comunidade com grau de entrada, centralização e % em vídeos de Lula, GEXF e CSVs);
+  - IRaMuTeQ (onde ficam os corpora no repositório privado e como abrir).
+
+**Limite:** a API devolve até 5 respostas por conversa; conversas longas aparecem incompletas na rede de respostas.
+
+---
+
 ## [P4.2] 2026-10-15 — Página: LEIA-ME + Fontes & metodologia numa só; Geografia do voto no topo de Eleitorado
 
 **Por quê:** pedidos do usuário: "fontes e metodologia e leia-me têm que virar uma única página"; "juntar geografia do voto ao topo da página eleitorado e participação".
