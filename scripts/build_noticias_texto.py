@@ -117,6 +117,73 @@ def rede(docs: list[tuple[str, set]], ids: tuple[str, str]) -> tuple[nx.Graph, d
     return g, info, par
 
 
+def rede_veiculos(tit: list[dict], ids: tuple[str, str], excluir: set, min_titulos: int = 10, vizinhos: int = 5,
+                  min_cos: float = 0.15) -> tuple[nx.Graph, dict]:
+    """Veículos ligados pela semelhança de agenda: cosseno entre os perfis TF-IDF de palavras dos títulos de cada veículo.
+    Nó = veículo com min_titulos+ títulos; aresta = um dos `vizinhos` mais parecidos (cosseno ≥ min_cos)."""
+    por_v: dict[str, list] = defaultdict(list)
+    for t in tit:
+        por_v[t["veiculo"] or t["dominio"]].append(t)
+    vs = sorted(v for v, ts in por_v.items() if len(ts) >= min_titulos)
+    nl = sum(1 for t in tit if t["candidate_id"] == ids[0]) or 1
+    nf = sum(1 for t in tit if t["candidate_id"] == ids[1]) or 1
+    perfis = {}
+    for v in vs:
+        c = Counter()
+        for t in por_v[v]:
+            c.update(x for x in bc.termos(t["titulo"], excluir) if " " not in x and not x.startswith("#"))
+        perfis[v] = c
+    df = Counter(w for c in perfis.values() for w in c)
+    nv = len(vs)
+    vec = {v: {w: n * (math.log((1 + nv) / (1 + df[w])) + 1) for w, n in c.items()} for v, c in perfis.items()}  # idf suavizado
+    norma = {v: math.sqrt(sum(x * x for x in d.values())) or 1 for v, d in vec.items()}
+    def cos(a, b):  # noqa: E306
+        da, db = vec[a], vec[b]
+        if len(da) > len(db):
+            da, db = db, da
+        return sum(x * db.get(w, 0) for w, x in da.items()) / (norma[a] * norma[b])
+    g = nx.Graph()
+    for v in vs:
+        ts = por_v[v]
+        l_, f_ = sum(1 for t in ts if t["candidate_id"] == ids[0]), sum(1 for t in ts if t["candidate_id"] == ids[1])
+        tl, tf = l_ / nl, f_ / nf
+        g.add_node(v, titulos=len(ts), lula=l_, flavio=f_, lado=round(tl / (tl + tf), 3) if tl + tf else 0.5,
+                   dominio=Counter(t["dominio"] for t in ts).most_common(1)[0][0],
+                   palavras=[w for w, _ in sorted(perfis[v].items(), key=lambda x: (-x[1] * math.log((1 + nv) / (1 + df[x[0]])), x[0]))[:8]])  # distintivas
+    for v in vs:
+        sims = sorted(((cos(v, u), u) for u in vs if u != v), reverse=True)[:vizinhos]
+        for c_, u in sims:
+            if c_ >= min_cos:
+                g.add_edge(v, u, weight=round(c_, 4))
+    g.remove_nodes_from([n for n in list(g) if g.degree(n) == 0])
+    info = {"min_titulos": min_titulos, "vizinhos": vizinhos, "min_cos": min_cos, "veiculos_considerados": nv}
+    if g.number_of_nodes() < 3:
+        return g, info
+    comms = sorted(nx.community.louvain_communities(g, weight="weight", seed=SEMENTE), key=lambda c: (-len(c), sorted(c)[0]))
+    for i, c in enumerate(comms):
+        for n in c:
+            g.nodes[n]["comunidade"] = i
+    btw = nx.betweenness_centrality(g, seed=SEMENTE)
+    # componente maior: Kamada-Kawai (distância = 1 − cosseno); componentes soltos em fila na base do desenho
+    comps = sorted(nx.connected_components(g), key=lambda c: (-len(c), sorted(c)[0]))
+    gm = g.subgraph(comps[0]).copy()
+    for _, _, d in gm.edges(data=True):
+        d["dist"] = 1 - d["weight"]
+    pos = nx.kamada_kawai_layout(gm, weight="dist")
+    xs, ys = [p[0] for p in pos.values()], [p[1] for p in pos.values()]
+    span = max(max(xs) - min(xs), max(ys) - min(ys)) or 1
+    pos = {n: ((x - min(xs)) / span, (y - min(ys)) / span * 0.85) for n, (x, y) in pos.items()}
+    resto = [n for c in comps[1:] for n in sorted(c)]
+    for i, n in enumerate(resto):
+        pos[n] = ((i + 0.5) / max(1, len(resto)), 0.97)
+    xs, ys, span = [0.0], [0.0], 1.0
+    for n, (x, y) in pos.items():
+        g.nodes[n].update(x=round(float(x - min(xs)) / span * 1000, 1), y=round(float(y - min(ys)) / span * 1000, 1),
+                          intermediacao=round(float(btw[n]), 4), grau=g.degree(n))
+    info.update(comunidades=comms, modularidade=round(nx.community.modularity(g, comms, weight="weight"), 3))
+    return g, info
+
+
 def slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", bc.norm(s))[:30] or "na"
 
@@ -198,6 +265,48 @@ def main(argv=None) -> int:
     for a, b, d in g.edges(data=True):
         gx.add_edge(a, b, weight=d["weight"])
     nx.write_gexf(gx, pasta / "rede_termos.gexf")
+    # rede de veículos (semelhança de agenda)
+    gv, iv = rede_veiculos(tit, ids, excluir)
+    cv = iv.get("comunidades", [])
+    rv = {"schema_version": 1, "gerado_em_utc": out["gerado_em_utc"],
+          "metodo": (f"Rede dos veículos que publicaram: nó = veículo com {iv['min_titulos']}+ títulos sobre os candidatos "
+                     f"({gv.number_of_nodes()} de {len(set(t['veiculo'] or t['dominio'] for t in tit))}); aresta = semelhança de agenda, "
+                     f"cosseno entre os perfis de palavras dos títulos de cada veículo (TF-IDF), ligando cada veículo aos seus "
+                     f"{iv['vizinhos']} mais parecidos com cosseno ≥ {iv['min_cos']}. Comunidades: Louvain (semente {SEMENTE}); posição: "
+                     "Kamada-Kawai no componente principal (distância = 1 − cosseno; veículos sem ligação com ele ficam em fila na base). Tamanho = nº de títulos; cor = proporção de títulos sobre Lula (vermelho) ou Flávio "
+                     "Bolsonaro (verde), relativa ao total de cada um. Mede semelhança de pauta e vocabulário, não linha editorial."),
+          "parametros": {k: v for k, v in iv.items() if k != "comunidades"},
+          "nos_total": gv.number_of_nodes(), "arestas_total": gv.number_of_edges(), "modularidade": iv.get("modularidade"),
+          "comunidades": [{"id": i, "nos": len(c), "principais": sorted(c, key=lambda n: (-gv.nodes[n]["titulos"], n))[:8],
+                           "palavras": [w for w, _ in Counter(w for n in c for w in gv.nodes[n]["palavras"]).most_common(8)],
+                           "lado_medio": round(sum(gv.nodes[n]["lado"] * gv.nodes[n]["titulos"] for n in c) / sum(gv.nodes[n]["titulos"] for n in c), 3)}
+                          for i, c in enumerate(cv)],
+          "nos": [{"id": n, "dominio": d["dominio"], "x": d.get("x", 0), "y": d.get("y", 0), "v": d["titulos"], "l": d["lula"],
+                   "f": d["flavio"], "lado": d["lado"], "c": d.get("comunidade", 0), "g": d.get("grau", 0),
+                   "b": d.get("intermediacao", 0), "palavras": d["palavras"]} for n, d in sorted(gv.nodes(data=True))],
+          "arestas": [[a, b, d["weight"]] for a, b, d in sorted(gv.edges(data=True))]}
+    (pasta / "rede_veiculos.json").write_text(json.dumps(rv, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    with open(pasta / "rede_veiculos_nos.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n")
+        w.writerow(["Id", "Label", "dominio", "titulos", "titulos_lula", "titulos_flavio", "lado_lula", "comunidade", "grau", "intermediacao", "palavras", "x", "y"])
+        for n in rv["nos"]:
+            w.writerow([n["id"], n["id"], n["dominio"], n["v"], n["l"], n["f"], n["lado"], n["c"] + 1, n["g"], n["b"], " ".join(n["palavras"]), n["x"], n["y"]])
+    with open(pasta / "rede_veiculos_arestas.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n")
+        w.writerow(["Source", "Target", "Weight", "Type"])
+        w.writerows([a, b, p, "Undirected"] for a, b, p in rv["arestas"])
+    gx = nx.Graph()
+    for n, d in gv.nodes(data=True):
+        r_, g_, b_ = (int(br.cor_lado(d["lado"])[i:i + 2], 16) for i in (1, 3, 5))
+        gx.add_node(n, label=n, dominio=d["dominio"], titulos=d["titulos"], titulos_lula=d["lula"], titulos_flavio=d["flavio"],
+                    lado_lula=d["lado"], comunidade=d.get("comunidade", 0) + 1,
+                    viz={"position": {"x": d.get("x", 0), "y": -d.get("y", 0), "z": 0.0}, "size": 2 + 3 * math.sqrt(d["titulos"] / 5),
+                         "color": {"r": r_, "g": g_, "b": b_, "a": 1.0}})
+    for a, b, d in gv.edges(data=True):
+        gx.add_edge(a, b, weight=d["weight"])
+    nx.write_gexf(gx, pasta / "rede_veiculos.gexf")
+    out["rede_veiculos"] = {"nos": rv["nos_total"], "arestas": rv["arestas_total"], "comunidades": len(cv), "modularidade": rv["modularidade"]}
+    print(f"rede de veículos: {rv['nos_total']} veículos, {rv['arestas_total']} ligações, {len(cv)} comunidades, modularidade {rv['modularidade']}")
     # corpus IRaMuTeQ e lista de títulos únicos
     with open(pasta / "corpus_iramuteq.txt", "w", encoding="utf-8") as f:
         for t in sorted(tit, key=lambda t: (t["candidate_id"], t["dia"], int(t["posicao"]))):

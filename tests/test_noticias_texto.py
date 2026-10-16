@@ -48,6 +48,9 @@ class TestNoticias(unittest.TestCase):
             self.assertTrue(corpus[0].startswith("**** *cand_"))
             self.assertIn("*fase_turno1", corpus[0])
             self.assertTrue((r / "data/trends/noticias/rede_termos.gexf").exists())
+            rv = json.loads((r / "data/trends/noticias/rede_veiculos.json").read_text(encoding="utf-8"))
+            self.assertEqual(rv["nos_total"], 7)  # V0..V6, todos com 10+ títulos
+            self.assertTrue(rv["arestas"]); self.assertTrue((r / "data/trends/noticias/rede_veiculos.gexf").exists())
 
 
 if __name__ == "__main__":

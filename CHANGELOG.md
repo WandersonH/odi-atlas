@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C13.1 — Rede (Gephi) dos veículos que publicaram (2026-10-16) ✅
+
+- `build_noticias_texto.py`: `rede_veiculos()` — nó = veículo com 10+ títulos; aresta = semelhança de agenda (cosseno entre perfis TF-IDF de palavras dos títulos, idf suavizado), cada veículo ligado aos 5 mais parecidos com cosseno ≥ 0,15; Louvain; Kamada-Kawai no componente principal (distância = 1 − cosseno), componentes soltos em fila na base. Palavras distintivas por veículo (TF-IDF sem suavização). Saídas: `rede_veiculos.json/.gexf`, `rede_veiculos_nos.csv`, `rede_veiculos_arestas.csv`. Teste ampliado.
+- Página: bloco "Gephi · rede dos veículos que publicaram" no card do universo das notícias, com grupos e downloads.
+- Execução local sobre `data/trends/noticias/universo.csv.gz` (o mesmo do run 38901902789): 36 veículos, 134 ligações, 6 comunidades, modularidade 0,187 (agendas parecidas: a separação entre grupos é fraca). Grupos: núcleo de grandes veículos (G1, Valor, Folha, Brasil de Fato, CNN, Gazeta do Povo); VEJA, CartaCapital, UOL Notícias, JOTA; O Globo, BBC, Estadão; imprensa gaúcha (Sul 21, Jornal do Comércio) com UOL, R7, Band; jurídicos e oficiais (Agência Brasil, ConJur, Migalhas, TSE); CUT e Fundação Perseu Abramo (componente separado).
+- Chromium: 36 nós e rótulos, sem erro, sem rolagem a 390 px. `python -m unittest discover -s tests` sem falhas.
+- Ressalva: mede semelhança de pauta e vocabulário nos títulos, não linha editorial nem posição política.
+
 ## C13.0 — Universo das notícias no caderno 05: nuvem, CHD (IRaMuTeQ), rede (Gephi), corpus (2026-10-16) ✅
 
 **O que mudou**
