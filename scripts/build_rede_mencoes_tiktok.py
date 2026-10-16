@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Caderno 15 — rede de menções no TikTok: quem os perfis das campanhas de Lula e Flávio marcam (@) nas legendas.
+"""Caderno 13 — rede de menções no TikTok: quem os perfis das campanhas de Lula e Flávio marcam (@) nas legendas.
 
 Entrada: data/tiktok/videos.csv.gz (vídeos desde 16/08/2026)
 Saída (data/tiktok/):

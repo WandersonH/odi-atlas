@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""P2 + P3 — gera data/elections.json para o caderno 12, a partir dos recortes da P1.
+"""P2 + P3 — gera data/elections.json para o caderno 11, a partir dos recortes da P1.
 
 Entrada:  data/tse/presidente_1t_<ANO>_munzona.csv.gz   (P1)
           data/ibge/municipios_malha_2025.csv              (P1.1, malha oficial)
           data/config/tse_ibge_excecoes.csv                (exceções revisadas à mão)
-Saída:    data/elections.json   (formato schema_version=1 lido pelo caderno 12)
+Saída:    data/elections.json   (formato schema_version=1 lido pelo caderno 11)
 
 Regras:
 - Votos válidos = soma de QT_VOTOS_NOMINAIS_VALIDOS de todas as candidaturas do município.
@@ -32,7 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def norm(s: str) -> str:
-    """Mesma normalização do caderno 12 (cityNorm)."""
+    """Mesma normalização do caderno 11 (cityNorm)."""
     s = unicodedata.normalize("NFKD", str(s or ""))
     s = "".join(ch for ch in s if not unicodedata.combining(ch))
     return re.sub(r"[^A-Z0-9]+", " ", s.upper()).strip()

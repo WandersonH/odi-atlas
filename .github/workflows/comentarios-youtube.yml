@@ -1,6 +1,6 @@
 name: Comentários YouTube — API oficial
 
-# Comentários públicos dos vídeos das campanhas (caderno 16). Texto bruto SÓ no repositório privado odi-atlas-interno
+# Comentários públicos dos vídeos das campanhas (caderno 14). Texto bruto SÓ no repositório privado odi-atlas-interno
 # (segredo ODI_INTERNO_TOKEN: token de acesso fino, só a esse repositório, permissão Contents: read and write).
 # Sem o segredo, os comentários são processados e descartados no fim do run (modo efêmero); o público recebe só agregados.
 on:
@@ -52,7 +52,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: python scripts/collect_comentarios_youtube.py
-      - name: Caderno 16 — análise agregada por candidato
+      - name: Caderno 14 — análise agregada por candidato
         if: steps.coleta.outcome == 'success'
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}

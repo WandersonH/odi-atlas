@@ -51,13 +51,13 @@ jobs:
         with:
           node-version: "20"
 
-      - name: P4 — malha IBGE em GeoJSON por UF (mapa do caderno 12)
+      - name: P4 — malha IBGE em GeoJSON por UF (mapa do caderno 11)
         id: geo
         if: steps.fetch.outcome == 'success' && hashFiles('raw/BR_Municipios_*.zip') != ''
         continue-on-error: true
         run: ./scripts/build_geo.sh "${{ github.event.inputs.malha || '2025' }}"
 
-      - name: P2/P3 — gerar data/elections.json (mapa do caderno 12)
+      - name: P2/P3 — gerar data/elections.json (mapa do caderno 11)
         id: build
         if: steps.fetch.outcome == 'success'
         continue-on-error: true

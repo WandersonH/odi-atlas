@@ -6,6 +6,24 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 ---
 
+## [P4.2] 2026-10-15 — Página: LEIA-ME + Fontes & metodologia numa só; Geografia do voto no topo de Eleitorado
+
+**Por quê:** pedidos do usuário: "fontes e metodologia e leia-me têm que virar uma única página"; "juntar geografia do voto ao topo da página eleitorado e participação".
+
+**Mudou**
+- **Caderno 10 · LEIA-ME · Fontes & metodologia**: a antiga página de Fontes & metodologia (fontes digitais, dados eleitorais, limitações, o que falta, referências externas) virou as seções 06 e 07 do LEIA-ME.
+- O inventário de fontes foi atualizado: entram YouTube Data API, comentários, TikTok, Trends, WhatsApp e votação TSE × IBGE, com link para cada arquivo. O índice ficou com os 14 cadernos, e a frase "base até 11/10" saiu.
+- **Caderno 08 · Eleitorado, voto & participação**: o mapa municipal (antigo caderno 12) abre a página; abaixo vem "Parte 2 / Eleitorado e participação". O código do mapa não mudou (carrega no início, independente da seção).
+- **Renumeração (15 → 14 cadernos):** 13 → 11 (YouTube), 14 → 12 (Trends), 15 → 13 (TikTok), 16 → 14 (Comentários). As referências "caderno N" no HTML, nos scripts, nos workflows, no livro de códigos e em `data/tiktok/conteudo.json` foram atualizadas. Entradas antigas deste CHANGELOG mantêm a numeração da época.
+- Links `data-goto` para `method` e `geoVote` agora apontam para as páginas que os absorveram.
+- CSS: URLs longas das referências quebram a linha (a 390 px elas transbordavam).
+
+**Testado**
+- ✅ Chromium 1300 px e 390 px: 14 itens no menu, mapa com 5.572 caminhos, referências renderizadas, sem erro de console e sem rolagem horizontal.
+- ✅ Suíte de testes OK.
+
+---
+
 ## [C9.3] 2026-10-15 — Diagnóstico do acesso ao repositório privado
 
 **Por quê:** o run `38834073420`, o primeiro depois de o usuário criar o segredo `ODI_INTERNO_TOKEN`, parou no `git clone` do `odi-atlas-interno` (exit 128). O log não é legível daqui.

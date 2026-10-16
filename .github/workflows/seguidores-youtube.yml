@@ -38,28 +38,28 @@ jobs:
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python scripts/build_youtube_fichas.py
-      - name: Caderno 13 — classificar vídeos por tema
+      - name: Caderno 11 — classificar vídeos por tema
         if: steps.coleta.outcome == 'success'
         continue-on-error: true
         run: python scripts/build_conteudo.py
-      - name: Caderno 13 — livro de códigos (pré-codificação), corpus IRaMuTeQ, CHD de Reinert e concordância
+      - name: Caderno 11 — livro de códigos (pré-codificação), corpus IRaMuTeQ, CHD de Reinert e concordância
         if: steps.coleta.outcome == 'success'
         continue-on-error: true
         run: |
           python scripts/corpus_populismo.py
           python scripts/chd_reinert.py
           python scripts/concordancia.py
-      - name: Caderno 13 — rede de coocorrência (JSON, GEXF e planilhas)
+      - name: Caderno 11 — rede de coocorrência (JSON, GEXF e planilhas)
         if: steps.coleta.outcome == 'success'
         continue-on-error: true
         run: python scripts/build_rede.py
-      - name: Caderno 13 — influenciadores que citam Lula ou Flávio (busca do YouTube, teto de cota)
+      - name: Caderno 11 — influenciadores que citam Lula ou Flávio (busca do YouTube, teto de cota)
         id: influ
         continue-on-error: true
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python scripts/collect_influenciadores.py
-      - name: Caderno 13 — rede de influenciadores (JSON, GEXF e planilhas)
+      - name: Caderno 11 — rede de influenciadores (JSON, GEXF e planilhas)
         if: hashFiles('data/youtube/influenciadores/videos.csv.gz') != ''
         continue-on-error: true
         run: python scripts/build_rede_influenciadores.py

@@ -1,6 +1,6 @@
 name: TikTok — chapas 13 e 22 (yt-dlp, grátis)
 
-# Lê os vídeos públicos dos perfis de TikTok declarados ao TSE pelas chapas 13 e 22 e gera o caderno 15.
+# Lê os vídeos públicos dos perfis de TikTok declarados ao TSE pelas chapas 13 e 22 e gera o caderno 13.
 # O TikTok bloqueia de forma intermitente IPs de servidor: o coletor tenta de novo e preserva os dados anteriores.
 on:
   workflow_dispatch:
@@ -32,11 +32,11 @@ jobs:
         id: coleta
         continue-on-error: true
         run: python scripts/collect_tiktok.py
-      - name: Caderno 15 — classificar por tema
+      - name: Caderno 13 — classificar por tema
         if: hashFiles('data/tiktok/videos.csv.gz') != ''
         continue-on-error: true
         run: python scripts/build_tiktok.py
-      - name: Caderno 15 — livro de códigos, corpus IRaMuTeQ, CHD de Reinert, concordância e rede (mesmas regras do YouTube)
+      - name: Caderno 13 — livro de códigos, corpus IRaMuTeQ, CHD de Reinert, concordância e rede (mesmas regras do YouTube)
         if: hashFiles('data/tiktok/videos.csv.gz') != ''
         continue-on-error: true
         run: |
