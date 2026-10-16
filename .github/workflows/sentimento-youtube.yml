@@ -45,7 +45,9 @@ jobs:
       - name: Classificar e agregar
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-        run: python scripts/build_sentimento_comentarios.py | tee sent.txt; while IFS= read -r l; do echo "::notice title=Sentimento::$l"; done < sent.txt
+        run: |
+          python scripts/build_sentimento_comentarios.py | tee sent.txt
+          while IFS= read -r l; do echo "::notice title=Sentimento::$l"; done < sent.txt
       - name: Gravar cache no repositório privado
         run: |
           cd "${{ steps.interno.outputs.dir }}"
@@ -55,4 +57,5 @@ jobs:
           git diff --cached --quiet || git commit -q -m "Sentimento dos comentários (run ${{ github.run_id }})"
           git pull -q --rebase origin main && git push -q origin HEAD:main
       - name: Commitar (só agregados)
-        run: scripts/commit_push.sh "Sentimento dos comentários do YouTube: agregados (run ${{ github.run_id }})"
+        run: |
+          scripts/commit_push.sh "Sentimento dos comentários do YouTube: agregados (run ${{ github.run_id }})"
