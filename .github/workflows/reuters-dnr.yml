@@ -5,6 +5,11 @@ name: Reuters Digital News Report — baixar e extrair texto (2022 e 2026)
 # por scripts/extrair_reuters.py com página de origem.
 on:
   workflow_dispatch:
+    inputs:
+      imagens:
+        description: "Páginas a renderizar para conferência visual, ex.: 2022:116-117,2026:129-130"
+        required: false
+        default: "2022:116-117,2026:129-130"
 
 permissions:
   contents: read
@@ -31,6 +36,15 @@ jobs:
             echo "::notice title=DNR $ano::$pags páginas · sha256 $sha · $(wc -c < "$d/dnr$ano.txt") bytes de texto"; }
           baixa 2022 "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2022-06/Digital_News-Report_2022.pdf"
           baixa 2026 "https://reutersinstitute.politics.ox.ac.uk/sites/default/files/2026-06/DNR%202026%20FINAL_2.pdf"
+      - name: Imagens das páginas (conferência visual dos números)
+        env:
+          IMAGENS: ${{ github.event.inputs.imagens }}
+        run: |
+          d="$RUNNER_TEMP/interno/reuters/img"; mkdir -p "$d"
+          IFS=',' read -ra itens <<< "$IMAGENS"
+          for it in "${itens[@]}"; do ano=${it%%:*}; fx=${it#*:}; ini=${fx%-*}; fim=${fx#*-}
+            pdftoppm -r 110 -png -f "$ini" -l "$fim" "$RUNNER_TEMP/dnr$ano.pdf" "$d/dnr${ano}_p"; done
+          ls "$d" | tr '\n' ' '
       - name: Gravar no repositório privado
         run: |
           cd "$RUNNER_TEMP/interno"
