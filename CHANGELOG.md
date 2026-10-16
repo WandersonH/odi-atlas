@@ -10,7 +10,13 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 **Mudou:** `data/config/tiktok_hashtags.json` ganhou #boralula e #exercitodolula (Lula) e #tropadoflavio e #bloquinho22 (Flávio), agora 14 hashtags. Pedido do usuário: "tropa do Flávio, bloquinho 22, boralula, exército do Lula".
 
-**Testado:** run seguinte do workflow `tiktok-hashtags.yml` (resultado abaixo, quando houver).
+**Testado (run `38851470318`)**
+- ✅ As 4 novas hashtags trouxeram vídeos: #boralula 60 vídeos / 58 contas; #exercitodolula 59/50; #tropadoflavio 60/51; #bloquinho22 60/53.
+- ✅ Acervo acumulado: 810 vídeos e 691 contas, 340 delas com 10 mil+ seguidores; 432 vídeos no público.
+- ✅ Rede: 200 contas, o teto `MAX_CANAIS` atingido; ficam as que mais citam.
+  - Lula: 138 contas (108 só dele), 1 pediu voto.
+  - Flávio: 92 contas (62 só dele), 8 pediram voto (11 vídeos).
+  - 30 falaram dos dois.
 
 ---
 
