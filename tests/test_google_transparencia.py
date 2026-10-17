@@ -40,5 +40,18 @@ class TestTransparencia(unittest.TestCase):
             self.assertEqual([c["creative_id"] for c in o["anuncios_exibidos_na_campanha"]], ["CR1"])
 
 
+
+class TestRecorte(unittest.TestCase):
+    def test_so_2026(self):
+        import collect_google_transparencia as g
+        an = {"A": {"advertiser_id": "A", "nome": "Eleição 2022"}, "B": {"advertiser_id": "B", "nome": "PT"}}
+        cs = [{"advertiser_id": "A", "creative_id": "1", "primeira_exibicao": "2022-08-21", "ultima_exibicao": "2022-10-28"},
+              {"advertiser_id": "B", "creative_id": "2", "primeira_exibicao": "2022-10-27", "ultima_exibicao": "2022-10-27"},
+              {"advertiser_id": "B", "creative_id": "3", "primeira_exibicao": "2026-02-01", "ultima_exibicao": "2026-03-01"}]
+        a2, c2, fora = g.recortar(an, cs, {"exibir_desde": "2026-01-01"})
+        self.assertEqual(list(a2), ["B"])
+        self.assertEqual([c["creative_id"] for c in c2], ["3"])
+        self.assertEqual((fora["anuncios"], fora["anunciantes"], fora["periodo"]), (2, ["Eleição 2022"], ["2022-08-21", "2022-10-28"]))
+
 if __name__ == "__main__":
     unittest.main()

@@ -6,6 +6,15 @@ on:
       busca:
         description: "Atores para detalhar (dono~nome, separados por vírgula)"
         default: "apify~facebook-ads-scraper"
+      termos:
+        description: "Termos de busca na loja (separados por vírgula)"
+        default: "facebook ads library,meta ad library,facebook ads scraper,ads library,meta ads,facebook ad library cheap,political ads"
+      filtro:
+        description: "Palavras que o título/descrição precisa ter (vírgula)"
+        default: "ad library,ads library,ad-library,ads-library,biblioteca"
+      palavra:
+        description: "Trecho do README a mostrar (palavra-chave)"
+        default: "spend"
 
 permissions:
   contents: read
@@ -17,17 +26,19 @@ jobs:
     steps:
       - name: Loja Apify (API pública) — vários termos, ordenado pelo preço por anúncio
         run: |
-          for q in "facebook ads library" "meta ad library" "facebook ads scraper" "ads library" "meta ads" "facebook ad library cheap" "political ads"; do
+          IFS=',' read -ra TERMOS <<< "${{ github.event.inputs.termos }}"
+          for q in "${TERMOS[@]}"; do
             curl -s "https://api.apify.com/v2/store?limit=60&search=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$q")" > "s_$(echo $q | tr ' ' _).json"
           done
-          python3 - <<'PY'
-          import json, glob
+          FILTRO="${{ github.event.inputs.filtro }}" python3 - <<'PY'
+          import json, glob, os
+          filtro = [w.strip().lower() for w in os.environ["FILTRO"].split(",") if w.strip()]
           vistos = {}
           for f in glob.glob("s_*.json"):
               for x in json.load(open(f)).get("data", {}).get("items", []):
                   k = f"{x['username']}/{x['name']}"
                   t = (x.get("title") or "").lower() + " " + (x.get("description") or "").lower()
-                  if not any(w in t for w in ("ad library", "ads library", "ad-library", "ads-library", "biblioteca")):
+                  if not any(w in t for w in filtro):
                       continue
                   p = x.get("currentPricingInfo") or {}
                   ev = (p.get("pricingPerEvent") or {}).get("actorChargeEvents") or {}
@@ -45,9 +56,9 @@ jobs:
             curl -s -H "Authorization: Bearer $APIFY_TOKEN" "https://api.apify.com/v2/acts/$a" > a.json
             b=$(python3 -c "import json;d=json.load(open('a.json'))['data'];print(d.get('defaultRunOptions',{}).get('build','latest'))")
             curl -s -H "Authorization: Bearer $APIFY_TOKEN" "https://api.apify.com/v2/acts/$a/builds/default" > b.json
-            python3 - "$a" <<'PY'
+            python3 - "$a" "${{ github.event.inputs.palavra }}" <<'PY'
           import json, sys, re
-          a = sys.argv[1]
+          a, palavra = sys.argv[1], sys.argv[2].lower()
           d = json.load(open("a.json")).get("data", {})
           b = json.load(open("b.json")).get("data", {})
           readme = re.sub(r"\s+", " ", (b.get("readme") or d.get("description") or ""))
@@ -55,7 +66,7 @@ jobs:
           inp = (b.get("inputSchema") or "")
           props = list(json.loads(inp).get("properties", {}).keys()) if inp else []
           print(f"::notice title={a}::entrada: {props[:25]} · README cita: {campos}")
-          i = readme.lower().find("spend")
-          print(f"::notice title={a} README::{readme[max(0,i-300):i+500] if i>=0 else readme[:600]}")
+          for i in [m.start() for m in re.finditer(re.escape(palavra), readme.lower())][:4] or [-1]:
+              print(f"::notice title={a} README::{readme[max(0,i-300):i+500] if i>=0 else readme[:600]}")
           PY
           done

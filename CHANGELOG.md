@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.6 — Anúncios: Google sem os anúncios de 2022; busca de coletor de comentários do Kwai (2026-10-17) 🔜
+
+- Pedido do usuário: "na página de anúncios retira 2022". A Central do Google trazia 27 anúncios de 2022 (anunciante "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE" e vídeos do PT), mais 1 de 2024. `collect_google_transparencia.py` passa a recortar por `exibir_desde` = 01/01/2026 (`data/config/google_transparencia.json`): anunciantes, prévias, contagem por domínio e `anuncios.csv` só com anúncios de 2026; o que saiu é contado em `fora_do_recorte` e citado na nota da página. Teste novo (`TestRecorte`). Na Meta não havia anúncio de 2022 (datas de início: 2024–2026).
+- `teste-apify-loja.yml`: termos de busca, filtro e trecho do README viram entradas, para procurar coletores de comentários do Kwai.
+- Pendente: run do Google com o recorte; preço do coletor de comentários do Kwai.
+
 ## C18.5 — Kwai: arestas das redes invisíveis (2026-10-17) ✅
 
 - Erro apontado pelo usuário: na rede de coocorrência de palavras-chave do Kwai as arestas não apareciam. Causa: o CSS das redes e da linha do tempo do TikTok é preso ao id do elemento (`#tkNet line{stroke:…}`); a página do Kwai, gerada a partir do bloco do TikTok, ganhou ids `kw…` sem as regras, e as linhas ficaram sem cor. As 22 regras foram copiadas para os ids do Kwai.

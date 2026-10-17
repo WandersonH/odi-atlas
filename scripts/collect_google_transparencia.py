@@ -181,6 +181,20 @@ def resumir(anunciantes: dict, criativos: list[dict], cfg: dict) -> list[dict]:
     return sorted(out, key=lambda x: (-x["exibidos_na_campanha"], -x["anuncios"], x["nome"]))
 
 
+def recortar(anunciantes: dict, criativos: list[dict], cfg: dict) -> tuple[dict, list[dict], dict]:
+    """Só anúncios com última exibição a partir de cfg['exibir_desde']; anunciantes sem nenhum ficam fora. Devolve o que saiu, contado."""
+    desde = cfg.get("exibir_desde") or ""
+    dentro = [c for c in criativos if (c.get("ultima_exibicao") or "") >= desde]
+    fora = [c for c in criativos if (c.get("ultima_exibicao") or "") < desde]
+    ids = {c["advertiser_id"] for c in dentro}
+    sai = {k: v for k, v in anunciantes.items() if k not in ids}
+    info = {"criterio": f"última exibição antes de {desde}", "anuncios": len(fora),
+            "anunciantes": sorted({v["nome"] for v in sai.values()}),
+            "periodo": [min((c["primeira_exibicao"] for c in fora if c.get("primeira_exibicao")), default=None),
+                        max((c["ultima_exibicao"] for c in fora if c.get("ultima_exibicao")), default=None)]}
+    return {k: v for k, v in anunciantes.items() if k in ids}, dentro, info
+
+
 def main(argv=None, coletar_fn=None) -> int:
     root = Path(argv[0]) if argv else Path(".")
     cfg = json.loads((root / "data/config/google_transparencia.json").read_text(encoding="utf-8"))
@@ -194,13 +208,19 @@ def main(argv=None, coletar_fn=None) -> int:
         anunciantes, criativos, erros = {}, [], [f"navegador: {type(e).__name__} {e}"[:200]]
     pasta = root / "data/google_ads"
     pasta.mkdir(parents=True, exist_ok=True)
+    total_lido, leu = len(criativos), bool(anunciantes or criativos)
+    anunciantes, criativos, fora = recortar(anunciantes, criativos, cfg)
+    for d in list(cfg["_por_dominio"]):
+        if cfg["_por_dominio"][d] is not None:
+            cfg["_por_dominio"][d] = sum(1 for c in criativos if c.get("dominio") == d)
     resumo = resumir(anunciantes, criativos, cfg)
     camp = sorted((c for c in criativos if (c["ultima_exibicao"] or "") >= cfg["inicio_campanha"]),
                   key=lambda c: c["ultima_exibicao"] or "", reverse=True)
-    status = "ok" if (anunciantes or criativos) and not erros else ("⚠️ parcial: " + "; ".join(erros) if anunciantes or criativos else "⛔ " + ("; ".join(erros) or "nenhum anunciante encontrado"))
+    status = "ok" if leu and not erros else ("⚠️ parcial: " + "; ".join(erros) if leu else "⛔ " + ("; ".join(erros) or "nenhum anunciante encontrado"))
     out = {"schema_version": 1, "coletado_em_utc": agora, "fonte": "Google · Central de Transparência de Anúncios (navegador sem login)",
            "nota": cfg["nota"], "status": status, "anunciantes": resumo, "total_anuncios": len(criativos),
-           "anuncios_exibidos_na_campanha": camp, "erros": erros,
+           "anuncios_exibidos_na_campanha": camp, "erros": erros, "exibir_desde": cfg.get("exibir_desde"),
+           "fora_do_recorte": fora, "total_lido": total_lido,
            "anuncios_previas": sorted(({k: c.get(k) for k in ("creative_id", "anunciante", "formato", "primeira_exibicao", "ultima_exibicao", "url", "previa")}
                                        for c in criativos if c.get("previa")), key=lambda c: c["ultima_exibicao"] or "", reverse=True),
            "dominios_consultados": [{"dominio": d, "origem": tse.get(d, "partido (config)"),
@@ -210,6 +230,8 @@ def main(argv=None, coletar_fn=None) -> int:
     vistos = {}
     if hist.exists():
         vistos = {r["creative_id"]: r for r in csv.DictReader(open(hist, encoding="utf-8"), delimiter=";")}
+    desde = cfg.get("exibir_desde") or ""
+    vistos = {k: r for k, r in vistos.items() if (r.get("ultima_exibicao") or "") >= desde}
     for c in criativos:
         vistos[c["creative_id"]] = {**vistos.get(c["creative_id"], {}), **{k: c.get(k, "") for k in COLS if k != "visto_em"}, "visto_em": agora}
     with open(hist, "w", encoding="utf-8", newline="") as f:
@@ -222,7 +244,8 @@ def main(argv=None, coletar_fn=None) -> int:
     print(f"domínios: {len(cfg['_dominios'])} consultados; com anúncios: "
           f"{', '.join(f'{d} ({n})' for d, n in cfg['_por_dominio'].items() if n) or 'nenhum'}; sem leitura: {', '.join(sem) or 'nenhum'}")
     print(f"google transparência: {status} · {len(resumo)} anunciantes · {len(criativos)} anúncios · {len(camp)} exibidos desde {cfg['inicio_campanha']}")
-    return 0 if anunciantes or criativos else 1
+    print(f"fora do recorte ({fora['criterio']}): {fora['anuncios']} anúncios · {', '.join(fora['anunciantes']) or 'nenhum anunciante inteiro'}")
+    return 0 if leu else 1
 
 
 if __name__ == "__main__":
