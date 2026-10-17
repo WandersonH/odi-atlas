@@ -37,6 +37,13 @@ def ts(x) -> str | None:
         return None
 
 
+def previa_google(c: dict) -> str | None:
+    """URL da imagem de prévia (tpc.googlesyndication.com/archive/...) quando a Central a fornece; vídeo/texto renderizados por script ficam sem."""
+    html = ((c.get("3") or {}).get("3") or {}).get("2") or ""
+    m = re.search(r'src="([^"]+)"', html)
+    return m.group(1) if m else None
+
+
 def parse_criativos(d: dict, origem: str) -> list[dict]:
     out = []
     for c in d.get("1", []) or []:
@@ -45,7 +52,7 @@ def parse_criativos(d: dict, origem: str) -> list[dict]:
         out.append({"creative_id": c["2"], "advertiser_id": c.get("1", ""), "anunciante": c.get("12", ""),
                     "dominio": c.get("14", ""), "formato": FORMATO.get(c.get("4"), str(c.get("4", ""))),
                     "primeira_exibicao": ts(c.get("6")), "ultima_exibicao": ts(c.get("7")), "origem": origem,
-                    "url": f"{BASE}/advertiser/{c.get('1', '')}/creative/{c['2']}?region=BR"})
+                    "url": f"{BASE}/advertiser/{c.get('1', '')}/creative/{c['2']}?region=BR", "previa": previa_google(c)})
     return out
 
 
@@ -194,6 +201,8 @@ def main(argv=None, coletar_fn=None) -> int:
     out = {"schema_version": 1, "coletado_em_utc": agora, "fonte": "Google · Central de Transparência de Anúncios (navegador sem login)",
            "nota": cfg["nota"], "status": status, "anunciantes": resumo, "total_anuncios": len(criativos),
            "anuncios_exibidos_na_campanha": camp, "erros": erros,
+           "anuncios_previas": sorted(({k: c.get(k) for k in ("creative_id", "anunciante", "formato", "primeira_exibicao", "ultima_exibicao", "url", "previa")}
+                                       for c in criativos if c.get("previa")), key=lambda c: c["ultima_exibicao"] or "", reverse=True),
            "dominios_consultados": [{"dominio": d, "origem": tse.get(d, "partido (config)"),
                                      "anuncios": cfg["_por_dominio"].get(d)} for d in cfg["_dominios"]]}
     (pasta / "transparencia.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

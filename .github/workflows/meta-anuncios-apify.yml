@@ -6,7 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       teste:
-        description: "Execução de teste (teto US$ 0,50)"
+        description: "Execução de teste (teto de teste)"
+        type: boolean
+        default: false
+      apenas_criativos:
+        description: "Só refazer criativos e miniaturas a partir do último bruto (sem custo na Apify)"
         type: boolean
         default: false
   schedule:
@@ -29,7 +33,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Testes
-        run: python -m unittest tests.test_meta_anuncios tests.test_meta_anuncios_apify
+        run: python -m unittest tests.test_meta_anuncios tests.test_meta_anuncios_apify tests.test_criativos_meta
       - name: Repositório privado (se o segredo existir)
         id: interno
         env:
@@ -40,6 +44,7 @@ jobs:
           fi
       - name: Coletar (Apify, com teto)
         id: coleta
+        if: github.event.inputs.apenas_criativos != 'true'
         continue-on-error: true
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
@@ -49,6 +54,16 @@ jobs:
           if [ "$TESTE" = "true" ]; then a="--teste"; else a=""; fi
           python scripts/collect_meta_anuncios_apify.py $a > m.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Meta via Apify::$(echo "$l" | cut -c1-900)"; done < m.txt
+          exit $rc
+      - name: Criativos com miniatura (maiores alcances)
+        if: steps.interno.outputs.dir != ''
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          pip install -q pillow==11.3.0
+          python scripts/build_criativos_meta.py > c.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Criativos Meta::$l"; done < c.txt
           exit $rc
       - name: Gravar bruto no repositório privado
         if: steps.interno.outputs.dir != ''
