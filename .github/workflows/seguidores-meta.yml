@@ -45,6 +45,10 @@ jobs:
               print(f"| {e['plataforma']} | {e.get('perfis_pedidos')} | {e.get('perfis_com_numero','')} | {e.get('custo_usd','')} | {e.get('status_apify','')} |")
           for b in m["blocked"]: print(f"- ⛔ {b}")
           EOF
+      - name: Variação de seguidores (última coleta × anterior)
+        if: always()
+        continue-on-error: true
+        run: python scripts/build_variacao_seguidores.py
       - name: Commitar
         if: always()
         run: |

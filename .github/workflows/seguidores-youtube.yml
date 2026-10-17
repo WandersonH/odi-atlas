@@ -76,6 +76,10 @@ jobs:
           for c in m["canais"]: print(f"- {c['url']} → {c.get('titulo') or 'não encontrado'} · {c.get('inscritos') or ('oculto' if c.get('oculto') else '—')}")
           for b in m["blocked"]: print(f"- ⛔ {b}")
           EOF
+      - name: Variação de seguidores (última coleta × anterior)
+        if: always()
+        continue-on-error: true
+        run: python scripts/build_variacao_seguidores.py
       - name: Commitar
         if: always()
         run: |
