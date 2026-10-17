@@ -20,7 +20,8 @@ class TestMetaApify(unittest.TestCase):
 
     def test_main_teto_e_atribuicao(self):
         def fake(payload, cap):
-            self.assertEqual(cap, 0.25)  # teto do teste dividido entre as 2 consultas
+            cfg = json.loads((RAIZ / "data/config/meta_anuncios_apify.json").read_text(encoding="utf-8"))
+            self.assertEqual(cap, round(cfg["teto_teste_usd"] / len(cfg["consultas"]), 4))  # teto dividido entre as consultas
             self.assertIn("ad_type=political_and_issue_ads", payload["adLibraryUrls"][0])
             return ({"id": "r1", "status": "SUCCEEDED", "usageTotalUsd": 0.0, "chargedEventCounts": {"apify-default-dataset-item": 800},
                      "pricingInfo": {"pricingPerEvent": {"actorChargeEvents": {"apify-default-dataset-item": {"eventTieredPricingUsd": {"FREE": {"tieredEventPriceUsd": 0.00015}}}}}}},
