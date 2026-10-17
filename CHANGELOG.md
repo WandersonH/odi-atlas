@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C15.0 — Anúncios: Google (Central de Transparência) em produção; Meta segue sem token (2026-10-17) ⚠️
+
+**O que mudou**
+- Diagnóstico `scripts/diag_google_transparencia.py` + `teste-google-transparencia.yml` (não grava): a busca da Central devolve anunciantes pelo RPC `SearchSuggestions` e os anúncios pelo `SearchCreatives` nas páginas de anunciante e de domínio, sem login.
+- `scripts/collect_google_transparencia.py` + `data/config/google_transparencia.json` + `.github/workflows/google-transparencia.yml` (diário 09h35) + `tests/test_google_transparencia.py`: busca por partidos e candidatos, aceita só anunciantes do Brasil com nome verificado da lista (homônimos pessoas físicas ficam fora — a busca "Lula" devolve vários), lê os anúncios das páginas de anunciante e dos domínios oficiais. Saídas: `data/google_ads/transparencia.json` e `data/google_ads/anuncios.csv` (histórico).
+- Página (caderno 02 · Anúncios pagos): o bloco do Google passa a mostrar a tabela de anunciantes, anúncios, formatos, datas e quantos foram exibidos desde 16/08/2026.
+
+**Testes executados**
+- Run do `google-transparencia.yml` (17/10, 15h22): status ok, 4 anunciantes e 30 anúncios — "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE" (25 anúncios, 21/08 a 28/10/2022), "Partido dos trabalhadores" (3, 27/10/2022 a 01/03/2024) e duas contas "PARTIDO DOS TRABALHADORES - PT" (1 imagem cada, exibidas entre 17 e 24/03/2026). Nenhum anúncio exibido desde 16/08/2026. Nenhum anunciante de Flávio Bolsonaro ou do PL; o domínio partidoliberal.org.br retornou 0 anúncios.
+- Meta: run 39057347549 terminou com ⛔ "falta o segredo META_AD_LIBRARY_TOKEN".
+- `python -m unittest discover -s tests` sem falhas; Chromium sem erro, sem rolagem a 390 px.
+
+**Ressalvas**
+- Códigos de formato (1 texto, 2 imagem, 3 vídeo) seguem o mapeamento usado por raspadores públicos da Central; não são documentados pelo Google.
+- A Central não tem API pública; a coleta depende da página e pode quebrar se o Google mudar o site.
+- Pendente: token da Meta (`META_AD_LIBRARY_TOKEN`).
+
 ## C14.1 — Coletas paradas no passo "Testes" desde 16/10 (correção) ⚠️
 
 - Desde 16/10 ~11h47 (Brasília), Trends, TikTok (chapas e hashtags), Seguidores (YouTube e Meta), Comentários e Sentimento falharam no passo "Testes" e não coletaram (runs 38918628605, 38919511864, 38920163024, 38920522670, 38924412568, 38924663601, 38933719945, 38987759138, 38989936728). Pedido do usuário: forçar a coleta do Trends.
