@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       busca:
-        description: "Termo de busca na loja"
-        default: "facebook ads library"
+        description: "Atores para detalhar (dono~nome, separados por vírgula)"
+        default: "apify~facebook-ads-scraper"
 
 permissions:
   contents: read
@@ -15,25 +15,33 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Loja Apify (API pública)
-        env:
-          BUSCA: ${{ github.event.inputs.busca }}
+      - name: Loja Apify (API pública) — vários termos, ordenado pelo preço por anúncio
         run: |
-          curl -s "https://api.apify.com/v2/store?limit=15&search=$(python3 -c 'import os,urllib.parse;print(urllib.parse.quote(os.environ["BUSCA"]))')" > s.json
+          for q in "facebook ads library" "meta ad library" "facebook ads scraper" "ads library" "meta ads" "facebook ad library cheap" "political ads"; do
+            curl -s "https://api.apify.com/v2/store?limit=60&search=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$q")" > "s_$(echo $q | tr ' ' _).json"
+          done
           python3 - <<'PY'
-          import json
-          for x in json.load(open("s.json"))["data"]["items"]:
-              p = x.get("currentPricingInfo") or {}
-              ev = ((p.get("pricingPerEvent") or {}).get("actorChargeEvents") or {})
-              evs = "; ".join(f"{k}={v.get('eventPriceUsd')}" for k, v in list(ev.items())[:4])
-              st = x.get("stats") or {}
-              print(f"::notice title={x['username']}/{x['name']}::modelo {p.get('pricingModel')} · por unidade {p.get('pricePerUnitUsd')} · eventos {evs} · usuários 30d {st.get('totalUsers30Days')} · avaliação {x.get('actorReviewRating')} ({x.get('actorReviewCount')}) · sucesso 30d {(st.get('publicActorRunStats30Days') or {}).get('SUCCEEDED')}/{(st.get('publicActorRunStats30Days') or {}).get('TOTAL')}")
+          import json, glob
+          vistos = {}
+          for f in glob.glob("s_*.json"):
+              for x in json.load(open(f)).get("data", {}).get("items", []):
+                  k = f"{x['username']}/{x['name']}"
+                  t = (x.get("title") or "").lower() + " " + (x.get("description") or "").lower()
+                  if not any(w in t for w in ("ad library", "ads library", "ad-library", "ads-library", "biblioteca")):
+                      continue
+                  p = x.get("currentPricingInfo") or {}
+                  ev = (p.get("pricingPerEvent") or {}).get("actorChargeEvents") or {}
+                  precos = {e: (v.get("eventPriceUsd") if v.get("eventPriceUsd") is not None else (v.get("eventTieredPricingUsd") or {})) for e, v in ev.items()}
+                  st = x.get("stats") or {}; ok = (st.get("publicActorRunStats30Days") or {})
+                  vistos[k] = (p.get("pricingModel"), p.get("pricePerUnitUsd"), precos, st.get("totalUsers30Days"), x.get("actorReviewRating"), x.get("actorReviewCount"), ok.get("SUCCEEDED"), ok.get("TOTAL"))
+          for k, v in sorted(vistos.items(), key=lambda kv: -(kv[1][3] or 0)):
+              print(f"::notice title={k}::{v[0]} unidade={v[1]} eventos={json.dumps(v[2])[:400]} · usuários30d={v[3]} · nota={v[4]}({v[5]}) · sucesso={v[6]}/{v[7]}")
           PY
       - name: Detalhes de atores (README e esquema de entrada; leitura, sem executar)
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: |
-          for a in azzouzana~meta-facebook-instagram-ads-library hyperbach~meta-ads-library-scraper apify~facebook-ads-scraper; do
+          for a in $(echo "${{ github.event.inputs.busca }}" | tr ',' ' '); do
             curl -s -H "Authorization: Bearer $APIFY_TOKEN" "https://api.apify.com/v2/acts/$a" > a.json
             b=$(python3 -c "import json;d=json.load(open('a.json'))['data'];print(d.get('defaultRunOptions',{}).get('build','latest'))")
             curl -s -H "Authorization: Bearer $APIFY_TOKEN" "https://api.apify.com/v2/acts/$a/builds/default" > b.json
