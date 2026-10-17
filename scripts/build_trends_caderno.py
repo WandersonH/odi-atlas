@@ -98,7 +98,7 @@ def main(argv=None) -> int:
         fases = m["config"].get("fases") or cfg_atual.get("fases", [])
         serie_ok = [{"t": r["timestamp_utc"], "v": [int(r[t]) if r.get(t, "").strip() != "" else None for t in termos]}
                     for r in serie if r.get("parcial") not in ("1", "True", "true")]
-        diaria = c["periodo"] != "now 7-d"  # séries por hora não entram no método (picos de hora não são agenda diária)
+        diaria = c["periodo"] not in ("now 7-d", "now 1-d")  # séries por hora não entram no método (picos de hora não são agenda diária)
         out["consultas"].append({
             "grupo": c["grupo"], "periodo": c["periodo"], "termos": termos,
             "itens": [{"rotulo": i["rotulo"], "modo": i["modo"], "tipo": i.get("topico_tipo", ""), "consulta": i["consulta"]} for i in c["itens"]],

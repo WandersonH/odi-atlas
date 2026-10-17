@@ -2136,7 +2136,7 @@ if(sec.classList.contains('active'))carregar();
 const sec=document.getElementById('gTrends');if(!sec)return;
 const COR={'Lula':'#c8102e','Flávio Bolsonaro':'#1f8a3b','Augusto Cury':'#b8862e','Renan Santos':'#5b7894','Ronaldo Caiado':'#7a4d8c'};
 const NOME_GRUPO={segundo_turno_topicos:'2º turno · tópicos',primeiro_turno_5_topicos:'1º turno · 5 mais votados',segundo_turno_palavras:'2º turno · palavras soltas'};
-const NOME_PER={'now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)','eleitoral':'Período eleitoral · convenções (20/07) → 2º turno (25/10), por dia'};
+const NOME_PER={'now 1-d':'Últimas 24 horas (a cada 8 minutos)','now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)','eleitoral':'Período eleitoral · convenções (20/07) → 2º turno (25/10), por dia'};
 const MARCOS=[['2026-07-20','Convenções'],['2026-08-16','Início da campanha'],['2026-10-04','1º turno'],['2026-10-25','2º turno']];
 const GRADE={RR:[2,0],AP:[4,0],AM:[1,1],PA:[3,1],MA:[4,1],CE:[5,1],RN:[6,1],AC:[0,2],RO:[1,2],MT:[2,2],TO:[3,2],PI:[4,2],PE:[5,2],PB:[6,2],MS:[2,3],GO:[3,3],DF:[4,3],BA:[5,3],AL:[6,3],PR:[2,4],SP:[3,4],MG:[4,4],ES:[5,4],SE:[6,4],SC:[2,5],RJ:[4,5],RS:[2,6]};
 let D=null,grupo='segundo_turno_topicos',periodo='eleitoral',relTipo='consultas',vegModo='orig',bloco='15',feito=false;
@@ -2144,12 +2144,12 @@ const $=id=>document.getElementById(id);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cor=t=>COR[t]||'#3c4a58';
 const atual=()=>D.consultas.find(c=>c.grupo===grupo&&c.periodo===periodo);
-const fmtT=(iso,h)=>{const d=new Date(iso);return h?d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',timeZone:'America/Sao_Paulo'}).replace(',',' ')+'h':d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'});};
+const fmtT=(iso,h)=>{const d=new Date(iso);if(h==='min')return d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});return h?d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',timeZone:'America/Sao_Paulo'}).replace(',',' ')+'h':d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'});};
 function mix(a,b,f){const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));const A=p(a),B=p(b);return 'rgb('+A.map((v,i)=>Math.round(B[i]+(v-B[i])*f)).join(',')+')';}
 function chips(){const grupos=[...new Set(D.consultas.map(c=>c.grupo))];
 $('gtGrupo').innerHTML=grupos.map(g=>`<button class="yt-chip" data-g="${g}" aria-pressed="${g===grupo}">${esc(NOME_GRUPO[g]||g)}</button>`).join('');
-const pers=['eleitoral','today 3-m','now 7-d'].filter(p=>D.consultas.some(c=>c.periodo===p));if(!pers.includes(periodo))periodo=pers[0]||'now 7-d';
-$('gtPeriodo').innerHTML=pers.map(p=>`<button class="yt-chip" data-p="${p}" aria-pressed="${p===periodo}">${p==='now 7-d'?'7 dias':p==='today 3-m'?'3 meses':'Período eleitoral'}</button>`).join('');
+const pers=['eleitoral','today 3-m','now 7-d','now 1-d'].filter(p=>D.consultas.some(c=>c.periodo===p));if(!pers.includes(periodo))periodo=pers[0]||'now 7-d';
+$('gtPeriodo').innerHTML=pers.map(p=>`<button class="yt-chip" data-p="${p}" aria-pressed="${p===periodo}">${p==='now 1-d'?'24 horas':p==='now 7-d'?'7 dias':p==='today 3-m'?'3 meses':'Período eleitoral'}</button>`).join('');
 $('gtGrupo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{grupo=b.dataset.g;render();}));
 $('gtPeriodo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{periodo=b.dataset.p;render();}));}
 function resumo(c){const n=c.termos.length;const comp=c.serie.filter(p=>!p.parcial);
@@ -2157,7 +2157,7 @@ $('gtSum').innerHTML=c.termos.map((t,i)=>{const vs=comp.map(p=>p.v[i]).filter(v=
 const lider=c.uf.filter(u=>u.v[i]!=null&&u.v[i]===Math.max(...u.v.filter(x=>x!=null))).length;const it=c.itens[i];
 return `<div style="--c:${cor(t)}"><h4>${esc(t)}</h4><b>${media.toFixed(0)}</b>média no período · pico ${pico}<br>lidera em ${lider} de ${c.uf.length} UFs<br><span class="yt-meta">${it.modo==='topico'?'tópico: '+esc(it.tipo):'palavra solta'}</span></div>`;}).join('');}
 function grafico(c){const W=900,H=320,m={l:34,r:12,t:10,b:28};const N=c.serie.length;if(!N){$('gtChart').innerHTML='<p class="yt-meta">Sem série nesta consulta.</p>';return;}
-const x=i=>m.l+(W-m.l-m.r)*i/(N-1||1),y=v=>m.t+(H-m.t-m.b)*(1-v/100);const hora=c.periodo==='now 7-d';
+const x=i=>m.l+(W-m.l-m.r)*i/(N-1||1),y=v=>m.t+(H-m.t-m.b)*(1-v/100);const hora=c.periodo==='now 1-d'?'min':c.periodo==='now 7-d';
 let h=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Série do Google Trends">`;
 for(const v of [0,25,50,75,100])h+=`<line class="gt-grid" x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}"/><text x="${m.l-6}" y="${y(v)+3}" text-anchor="end">${v}</text>`;
 const passo=Math.ceil(N/7);for(let i=0;i<N;i+=passo)h+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${esc(fmtT(c.serie[i].t,hora))}</text>`;
@@ -2693,7 +2693,7 @@ new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).obse
 /* Caderno 05 · 5 primeiros do Google Notícias por dia, acompanhando o filtro de período do Trends (data/trends/google_noticias_diario.json) */
 (function(){const $=id=>document.getElementById(id);if(!$('gdCard'))return;
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const COR={'280002542548':'#c8102e','280002551544':'#1f8a3b'};const NOMEP={'eleitoral':'período eleitoral','today 3-m':'últimos 3 meses','now 7-d':'últimos 7 dias'};
+const COR={'280002542548':'#c8102e','280002551544':'#1f8a3b'};const NOMEP={'now 1-d':'últimas 24 horas','eleitoral':'período eleitoral','today 3-m':'últimos 3 meses','now 7-d':'últimos 7 dias'};
 const br=d=>d.slice(8,10)+'/'+d.slice(5,7)+'/'+d.slice(0,4);let G=null,per=null,dia=null;
 function render(){if(!G||!per)return;const dias=Object.keys(G.dias).filter(d=>d>=per.de&&d<=per.ate).sort().reverse();
  $('gdPer').textContent=`${NOMEP[per.periodo]||per.periodo}: ${br(per.de)} a ${br(per.ate)} · ${dias.length} dias com coleta`;

@@ -5,7 +5,7 @@ name: Google Trends — candidaturas
 on:
   workflow_dispatch:
   schedule:
-    - cron: "40 11 * * *"   # todo dia, 08h40 em Brasília
+    - cron: "40 11,17,23 * * *"   # 08h40, 14h40 e 20h40 em Brasília (o filtro de 24 horas precisa de coletas ao longo do dia)
 
 concurrency:
   group: trends
