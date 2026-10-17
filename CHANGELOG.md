@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C17.1 — Filtro de período em todo o caderno de Buscas; diagnóstico do Kwai (2026-10-17) ⚠️
+
+**Filtro de período**
+- `build_noticias_texto.py` passa a gerar o universo das notícias em três recortes: período todo, últimos 7 dias e últimas 24 horas (por data de publicação), com sufixos `_7d` e `_24h` em todos os arquivos (texto, redes, GEXF, CSVs, corpus). Limiares menores nos recortes curtos (< 1.500 títulos). O passo roda a cada execução do `google-busca.yml` (antes 1x por dia).
+- Página: o card "O que a imprensa escreveu" (números, nuvens, CHD, rede de palavras, rede de veículos e downloads) segue o filtro de período do Trends (24 horas → `_24h`, 7 dias → `_7d`, demais → período todo). Relacionados do Trends passam a incluir `now 1-d`.
+- Execução local: período todo 6.155 títulos (rede 150 palavras; 35 veículos); 7 dias 1.025 (150; 24); 24 horas 247 (135; 13). Na janela de 24 horas a CHD fica em ⛔ (122 e 125 títulos, abaixo do mínimo de 200). Chromium: troca de período atualiza tudo, sem erro.
+
+**Kwai (pedido do usuário: avaliar github.com/Joaopedrobs7/kwai-video-scraper e testar uma versão 2026)**
+- O repositório (1 arquivo, 118 linhas, último commit 25/10/2024, sem licença, chromedriver de Windows embutido) só baixa arquivos de vídeo; não coleta métricas. Não foi executado.
+- `scripts/diag_kwai.py` + `teste-kwai.yml` (Playwright, sem login, não grava): nos perfis declarados ao TSE, o site devolve só o menu (resposta `antispamPluginRsp` do Kwai) — sem perfil, vídeos ou números. Links curtos do TSE (k.kwai.com/u/…/XGXCOK66, s.kw.ai/u/ECB8-VMN) falham com `KEY_FORMAT_ERR`: o TSE grava a URL em maiúsculas e o código do link diferencia maiúsculas.
+- Conclusão: coleta gratuita do Kwai ⛔ bloqueada a partir do GitHub; alternativa paga avaliada: ator `unfenced-group/kwai-scraper` (perfis, vídeos com visualizações, curtidas, comentários e compartilhamentos; a partir de US$ 1,49/mil itens de lista; "onlyNewVideos" não cobra o que já veio). Aguarda autorização e teto do usuário.
+
 ## C17.0 — Biblioteca de Anúncios da Meta via Apify (2026-10-17) ⚠️
 
 **Decisão e autorização**
