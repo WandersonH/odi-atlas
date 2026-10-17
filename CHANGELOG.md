@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.5 — Kwai: arestas das redes invisíveis (2026-10-17) ✅
+
+- Erro apontado pelo usuário: na rede de coocorrência de palavras-chave do Kwai as arestas não apareciam. Causa: o CSS das redes e da linha do tempo do TikTok é preso ao id do elemento (`#tkNet line{stroke:…}`); a página do Kwai, gerada a partir do bloco do TikTok, ganhou ids `kw…` sem as regras, e as linhas ficaram sem cor. As 22 regras foram copiadas para os ids do Kwai.
+- Rede de menções: o Kwai mantém maiúsculas no nome do perfil, então "@flaviobolsonaro" na legenda de @FlavioBolsonaro aparecia como conta marcada (automenção). Agora a comparação ignora maiúsculas. Regerado: Flávio marca 4 contas em 107 menções; Lula, nenhuma.
+- Teste: Chromium 1300 px — rede de coocorrência do Kwai com 939 arestas visíveis, rede de menções e linha do tempo desenhadas, sem erro de JavaScript. `python -m unittest discover -s tests` OK.
+
 ## C18.4 — Kwai: página no padrão do TikTok, capas; Panorama com Kwai e WhatsApp (2026-10-17) ⚠️
 
 - Run 39073285546 (carga histórica, teto US$ 4,50): 1.279 itens, 925 vídeos novos, acervo de 1.270 vídeos — @FlavioBolsonaro 955 de 958, @podeespalhar 315 de 321, **@Lulaoficial 0 de 916**: o ator devolve o perfil (7.452.649 seguidores) mas nenhum vídeo dessa conta, em todas as execuções. ⛔ a investigar. A Apify registrou 0 eventos cobrados e uso US$ 0 (`run_apify` no manifesto).

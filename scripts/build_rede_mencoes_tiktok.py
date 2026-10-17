@@ -50,7 +50,7 @@ def montar(rows: list[dict], inicio: str = INICIO) -> nx.DiGraph:
         origem = r["perfil"]
         if origem not in g:
             g.add_node(origem, tipo="campanha", candidato=r["candidate_name"], cid=r["candidate_id"])
-        for alvo in mencoes(r["legenda"]) - {origem}:
+        for alvo in mencoes(r["legenda"]) - {origem.lower()}:  # o Kwai mantém maiúsculas no perfil
             vids[(origem, alvo)].append(r)
     for (o, a), lst in vids.items():
         if a not in g:
