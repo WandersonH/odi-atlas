@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C17.2 — Criativos dos anúncios com miniatura (Meta) e prévias (Google) (2026-10-17) ✅
+
+- Pedido do usuário: mostrar o criativo e a miniatura dos anúncios. Decisão registrada: o texto dos anúncios da Meta, antes só no privado, passa a ser publicado para os 24 de maior alcance por busca (anúncios políticos, públicos na Biblioteca da Meta), limitado a 400 caracteres.
+- `scripts/build_criativos_meta.py` + `tests/test_criativos_meta.py`: a partir do último bruto (privado), os 24 anúncios de maior alcance por busca (empates ">1M" desfeitos pelo maior gasto); miniatura reduzida a 320 px em `data/meta/miniaturas/<id>.jpg` (os links fbcdn expiram em dias); `data/meta/criativos.json`. Passo no `meta-anuncios-apify.yml`, com a opção `apenas_criativos` (sem custo na Apify).
+- Google: `collect_google_transparencia.py` guarda a URL da imagem de prévia (tpc.googlesyndication.com) e `anuncios_previas` no JSON; vídeo e texto a Central só mostra por script na página.
+- Página (Anúncios pagos): card "Os anúncios que mais circularam" com seleção por busca, miniatura, página, quem pagou, texto, datas, faixas e link para a Biblioteca; prévias do Google na tabela da Central.
+- Execuções: criativos (só reprocessamento) — 24 + 24 criativos, todos com miniatura, 46 arquivos (1,2 MB); Google — 5 anúncios com prévia de imagem. Chromium: miniaturas carregam, sem erro, sem rolagem a 390 px. Testes OK.
+- Ressalva: na busca "Lula", os anúncios de maior alcance são em boa parte de outros candidatos que citam Lula (ex.: Elton Welter, Nilto Tatto) — é o que a busca por palavra-chave da Biblioteca devolve.
+
 ## C17.1 — Filtro de período em todo o caderno de Buscas; diagnóstico do Kwai (2026-10-17) ⚠️
 
 **Filtro de período**

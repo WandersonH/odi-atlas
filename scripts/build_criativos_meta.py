@@ -79,12 +79,12 @@ def main(argv=None) -> int:
     pasta = root / "data/meta/miniaturas"
     pasta.mkdir(parents=True, exist_ok=True)
     out = {"schema_version": 1, "gerado_em_utc": now_utc(), "fonte_bruto": Path(arqs[-1]).name,
-           "metodo": (f"Os {POR_CONSULTA} anúncios de maior alcance (piso da faixa de impressões informada pela Meta) de cada busca na "
+           "metodo": (f"Os {POR_CONSULTA} anúncios de maior alcance (piso da faixa de impressões informada pela Meta; empates — a Meta agrupa tudo acima de 1 milhão — desfeitos pelo maior gasto) de cada busca na "
                       "última coleta. Miniatura: cópia reduzida da prévia (imagem ou primeiro quadro do vídeo); texto até 400 caracteres. "
                       "Link para o anúncio na Biblioteca de Anúncios da Meta."), "consultas": {}}
     usados = set()
     for q in sorted({x.get("_consulta") for x in xs if x.get("_consulta")}):
-        cand = sorted((x for x in xs if x.get("_consulta") == q and x.get("ad_archive_id")), key=lambda x: -piso_impressoes(x))
+        cand = sorted((x for x in xs if x.get("_consulta") == q and x.get("ad_archive_id")), key=lambda x: (-piso_impressoes(x), -int((faixa_de(x.get("spend")) or {}).get("lower_bound") or 0)))  # empate (">1M") → maior gasto
         lista, vistos = [], set()
         for x in cand:
             if len(lista) >= POR_CONSULTA:
