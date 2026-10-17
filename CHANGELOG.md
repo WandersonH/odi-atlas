@@ -4,7 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C18.3 — Kwai: carga histórica completa, capas e análises iguais às do TikTok (2026-10-17) 🔜
+## C18.4 — Kwai: página no padrão do TikTok, capas; Panorama com Kwai e WhatsApp (2026-10-17) ⚠️
+
+- Run 39073285546 (carga histórica, teto US$ 4,50): 1.279 itens, 925 vídeos novos, acervo de 1.270 vídeos — @FlavioBolsonaro 955 de 958, @podeespalhar 315 de 321, **@Lulaoficial 0 de 916**: o ator devolve o perfil (7.452.649 seguidores) mas nenhum vídeo dessa conta, em todas as execuções. ⛔ a investigar. A Apify registrou 0 eventos cobrados e uso US$ 0 (`run_apify` no manifesto).
+- Capas: 286 miniaturas (3,6 MB) em `data/kwai/miniaturas/`, 0 falhas. Bruto (`apify_2026-10-17_220043.jsonl.gz`) e banco tratado (`kwai/banco/`) no repositório privado.
+- Análises do Kwai geradas no run: CHD de Reinert (1.542 segmentos, 6 classes), livro de códigos (1.270 vídeos), rede de coocorrência e rede de menções.
+- Página do Kwai refeita a partir do bloco do TikTok (mesma estrutura e regras): perfis, período (campanha desde 16/08 ou acervo completo), filtros de tema/voto/adversário, linha do tempo, nuvens e hashtags, listas com capa, detalhe com capa e link para o Kwai (o Kwai não tem player incorporável), Bardin + CHD, rede de coocorrência e rede de menções com downloads. O card de contas por hashtag do TikTok não tem equivalente no Kwai e ficou fora.
+- Panorama: chips **Kwai** e **WhatsApp** nos cards dos candidatos (seguidores, perfis/canais, vídeos e visualizações desde 16/08, interação mediana; composição da audiência marcada ⛔ sem fonte) e linhas do Kwai na tabela "da busca ao voto" (seguidores, vídeos e visualizações desde 16/08, interação mediana). WhatsApp: só canais do lado de Lula têm link; Flávio aparece como ⛔.
+- Teste: Chromium 1300 px e 390 px sem erro de JavaScript e sem rolagem horizontal; capas carregadas na lista e no detalhe. `python -m unittest discover -s tests` OK.
+
+## C18.3 — Kwai: carga histórica completa, capas e análises iguais às do TikTok (2026-10-17) ⚠️ (executado em C18.4)
 
 - Autorização do usuário (17/10, 18h56): "pode completar, temos 5 dólares na conta". Teto da carga histórica US$ 4,50; teto mensal da conta secundária elevado a US$ 5 (`data/config/kwai.json`).
 - `collect_kwai_apify.py --historico`: sem data mínima, `onlyNewVideos` desligado (reentrega os vídeos já vistos para obter a capa), até 2.400 itens. Nova coluna `capa_url` (coverUrl do ator).
