@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C15.1 — Google Transparência consulta todos os sites declarados ao TSE (2026-10-17) ✅
+
+- Correção apontada pelo usuário: a primeira versão consultava só 4 domínios escritos à mão (dois deles, lula.com.br e flaviobolsonaro.com.br, por suposição). Agora os domínios vêm de `data/tse/redes_presidencia_2026.json` — sites declarados pelas chapas 13 e 22 (titular e vice), sem redes sociais, encurtadores e plataformas genéricas, reduzidos ao domínio registrado — mais pt.org.br e partidoliberal.org.br: 41 domínios (13 da chapa 13, 26 da chapa 22 incluindo o vice Alfredo Gaspar).
+- Saída ganha `dominios_consultados` (domínio, chapa, nº de anúncios); a página lista todos.
+- Run 39063937210: 41 domínios lidos, nenhum sem leitura; com anúncios só lula.com.br (25, a campanha de 2022) e pt.org.br (3). Nenhum anúncio exibido desde 16/08/2026. Testes OK; Chromium a 390 px sem erro.
+
 ## C15.0 — Anúncios: Google (Central de Transparência) em produção; Meta segue sem token (2026-10-17) ⚠️
 
 **O que mudou**
