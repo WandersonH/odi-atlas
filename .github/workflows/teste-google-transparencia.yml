@@ -1,0 +1,23 @@
+name: Teste — Central de Transparência de Anúncios do Google (só diagnóstico)
+
+# Verifica, num navegador sem login, o que a busca por anunciante da Central devolve (região Brasil). Não grava nada.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Navegador headless (Playwright)
+        run: |
+          pip install -q playwright && python -m playwright install --with-deps chromium > /dev/null 2>&1
+          python scripts/diag_google_transparencia.py > g.txt 2>&1 || true
+          while IFS= read -r l; do echo "::notice title=Google Transparência::$(echo "$l" | cut -c1-3000)"; done < g.txt
