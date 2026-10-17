@@ -28,7 +28,7 @@ jobs:
           pip install -q torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
           pip install -q transformers==5.20.0 emoji==2.16.0
       - name: Testes
-        run: python -m unittest discover -s tests
+        run: scripts/testes_ci.sh
       - name: Modelo em cache
         uses: actions/cache@v4
         with:

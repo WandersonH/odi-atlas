@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Testes
-        run: python -m unittest discover -s tests
+        run: scripts/testes_ci.sh
       - name: Coletar Trends
         id: coleta
         continue-on-error: true

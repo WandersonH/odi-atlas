@@ -26,7 +26,7 @@ jobs:
       - name: Dependências da rede (versões fixas)
         run: pip install networkx==3.6.1 numpy==2.3.4
       - name: Testes
-        run: python -m unittest discover -s tests
+        run: scripts/testes_ci.sh
       - name: Coletar inscritos (YouTube Data API)
         id: coleta
         continue-on-error: true

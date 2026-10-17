@@ -27,7 +27,7 @@ jobs:
       - name: Dependências (versões fixas)
         run: pip install networkx==3.6.1 numpy==2.3.4
       - name: Testes
-        run: python -m unittest discover -s tests
+        run: scripts/testes_ci.sh
       - name: Repositório privado (se o segredo existir)
         id: interno
         env:

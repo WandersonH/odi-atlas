@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C14.1 — Coletas paradas no passo "Testes" desde 16/10 (correção) ⚠️
+
+- Desde 16/10 ~11h47 (Brasília), Trends, TikTok (chapas e hashtags), Seguidores (YouTube e Meta), Comentários e Sentimento falharam no passo "Testes" e não coletaram (runs 38918628605, 38919511864, 38920163024, 38920522670, 38924412568, 38924663601, 38933719945, 38987759138, 38989936728). Pedido do usuário: forçar a coleta do Trends.
+- Causa encontrada: `tests/test_comentarios.py` importa módulos que exigem numpy; num ambiente sem numpy (Python 3.12 limpo) a descoberta de testes quebra. Correção: o módulo é pulado quando a dependência falta (roda no workflow de comentários, que instala numpy).
+- `scripts/testes_ci.sh`: os workflows passam a publicar cada teste que falhar como anotação (o log completo não é legível por aqui), para diagnosticar se houver outra causa.
+- Testes: suíte completa OK no Python 3.13 com dependências e OK (10 pulados) num venv Python 3.12 limpo.
+- Pendente: confirmar nos runs redisparados (resultado na próxima entrada).
+
 ## C14.0 — Reuters Digital News Report 2022 e 2026: dados do Brasil (2026-10-16) ✅
 
 **O que mudou**

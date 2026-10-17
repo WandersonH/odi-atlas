@@ -12,9 +12,12 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "scripts"))
-import build_comentarios as bcm  # noqa: E402
-import collect_comentarios_youtube as cc  # noqa: E402
-import corpus_populismo as cp  # noqa: E402
+try:
+    import build_comentarios as bcm  # noqa: E402
+    import collect_comentarios_youtube as cc  # noqa: E402
+    import corpus_populismo as cp  # noqa: E402
+except ImportError as e:  # workflows sem numpy (ex.: Trends): estes testes rodam no workflow de comentários
+    raise unittest.SkipTest(f"dependência ausente: {e}")
 
 
 def item(cid, texto, autor="UCa", respostas=()):

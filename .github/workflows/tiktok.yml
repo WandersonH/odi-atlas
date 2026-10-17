@@ -27,7 +27,7 @@ jobs:
       - name: Dependências (yt-dlp sempre atualizado — o TikTok muda com frequência; versão registrada no manifesto)
         run: pip install -q -U yt-dlp && pip install -q networkx==3.6.1 numpy==2.3.4
       - name: Testes
-        run: python -m unittest discover -s tests
+        run: scripts/testes_ci.sh
       - name: Coletar TikTok
         id: coleta
         continue-on-error: true

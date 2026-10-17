@@ -28,7 +28,7 @@ jobs:
           pip install -q networkx==3.6.1 numpy==2.3.4 playwright
           python -m playwright install --with-deps chromium > /dev/null 2>&1
       - name: Testes
-        run: python -m unittest discover -s tests
+        run: scripts/testes_ci.sh
       - name: Repositório privado (se o segredo existir)
         id: interno
         env:
