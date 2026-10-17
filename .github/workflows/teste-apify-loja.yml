@@ -1,0 +1,31 @@
+name: Teste — preços de atores da Apify (só leitura da loja pública)
+
+on:
+  workflow_dispatch:
+    inputs:
+      busca:
+        description: "Termo de busca na loja"
+        default: "facebook ads library"
+
+permissions:
+  contents: read
+
+jobs:
+  loja:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Loja Apify (API pública)
+        env:
+          BUSCA: ${{ github.event.inputs.busca }}
+        run: |
+          curl -s "https://api.apify.com/v2/store?limit=15&search=$(python3 -c 'import os,urllib.parse;print(urllib.parse.quote(os.environ["BUSCA"]))')" > s.json
+          python3 - <<'PY'
+          import json
+          for x in json.load(open("s.json"))["data"]["items"]:
+              p = x.get("currentPricingInfo") or {}
+              ev = ((p.get("pricingPerEvent") or {}).get("actorChargeEvents") or {})
+              evs = "; ".join(f"{k}={v.get('eventPriceUsd')}" for k, v in list(ev.items())[:4])
+              st = x.get("stats") or {}
+              print(f"::notice title={x['username']}/{x['name']}::modelo {p.get('pricingModel')} · por unidade {p.get('pricePerUnitUsd')} · eventos {evs} · usuários 30d {st.get('totalUsers30Days')} · avaliação {x.get('actorReviewRating')} ({x.get('actorReviewCount')}) · sucesso 30d {(st.get('publicActorRunStats30Days') or {}).get('SUCCEEDED')}/{(st.get('publicActorRunStats30Days') or {}).get('TOTAL')}")
+          PY
