@@ -1,0 +1,71 @@
+name: Kwai — chapas 13 e 22 (Apify, conta secundária, teto de gasto)
+
+# Ator unfenced-group/kwai-scraper com APIFY_TOKEN_2. Tetos: teste US$ 0,50; diário US$ 0,10; mensal US$ 3.
+on:
+  workflow_dispatch:
+    inputs:
+      teste:
+        description: "Carga inicial (vídeos desde 16/08; teto de teste)"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "10 13 * * *"   # todo dia, 10h10 em Brasília
+
+concurrency:
+  group: kwai
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  kwai:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest tests.test_kwai
+      - name: Repositório privado (se o segredo existir)
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar (Apify, com teto)
+        id: coleta
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          TESTE: ${{ github.event.inputs.teste }}
+        run: |
+          if [ "$TESTE" = "true" ]; then a="--teste"; else a=""; fi
+          python scripts/collect_kwai_apify.py $a > k.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Kwai::$(echo "$l" | cut -c1-900)"; done < k.txt
+          exit $rc
+      - name: Conteúdo por tema (mesmas regras do TikTok)
+        if: always()
+        continue-on-error: true
+        run: |
+          python scripts/build_tiktok.py --kwai > b.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Kwai conteúdo::$(echo "$l" | cut -c1-400)"; done < b.txt
+          exit $rc
+      - name: Gravar bruto no repositório privado
+        if: steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Kwai (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Kwai (run ${{ github.run_id }})"

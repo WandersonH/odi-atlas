@@ -37,15 +37,18 @@ def taxa(r: dict) -> float | None:
 
 
 def main(argv=None) -> int:
+    argv = list(argv or [])
+    plat = "kwai" if "--kwai" in argv else "tiktok"  # o Kwai usa o mesmo formato de acervo e as mesmas regras
+    argv = [a for a in argv if a != "--kwai"]
     root = Path(argv[0]) if argv else Path(".")
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     temas, cands = bc.compile_cfg(cfg)
-    src = root / "data/tiktok/videos.csv.gz"
+    src = root / f"data/{plat}/videos.csv.gz"
     if not src.exists():
-        print("⛔ sem acervo do TikTok (data/tiktok/videos.csv.gz)")
+        print(f"⛔ sem acervo ({src})")
         return 1
     rows = list(csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"))
-    man_p = root / "data/tiktok/manifesto_latest.json"
+    man_p = root / f"data/{plat}/manifesto_latest.json"
     man = json.loads(man_p.read_text(encoding="utf-8")) if man_p.exists() else {}
     # adapta ao formato do YouTube: perfil = canal, legenda = descrição
     pseudo = [{"channel_id": r["perfil"], "titulo": "", "descricao": r["legenda"]} for r in rows]
@@ -60,7 +63,8 @@ def main(argv=None) -> int:
            "coletado_em_utc": man.get("run_started_utc"), "status_coleta": man.get("status"),
            "ferramenta": man.get("ferramenta"), "perfis_coleta": [{**p, **acervo_perfil.get(p["perfil"], {"videos_desde_16_08": 0, "ultima_leitura_ok": ""})}
                              for p in man.get("perfis", [])],
-           "fonte": "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)",
+           "fonte": ("Kwai público via Apify (perfis declarados ao TSE pelas chapas 13 e 22)" if plat == "kwai"
+                     else "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)"),
            "metodo": cfg["nota"] + f" Mesmas regras do caderno 02 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
            "temas": list(cfg["temas"]) + ["sem_tema"], "candidatos": {}}
     for cid, cand in cands.items():
@@ -101,7 +105,7 @@ def main(argv=None) -> int:
         print(f"{cand['nome']}: {len(vids)} vídeos de {len(c['perfis'])} perfis | {tot['visualizacoes']:,} visualizações | "
               f"interação mediana {c['taxa_interacao_mediana']} | temas {dict(por_tema.most_common(5))} | "
               f"cita adversário {c['cita_adversario']} | pede voto {c['pede_voto']}")
-    (root / "data/tiktok/conteudo.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (root / f"data/{plat}/conteudo.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     return 0
 
 
