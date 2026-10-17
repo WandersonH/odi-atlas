@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-15T22:17:26Z",
+  "run_started_utc": "2026-10-17T01:16:26Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -82,7 +82,39 @@
         "now 7-d"
       ],
       "nota": "Consultas e assuntos relacionados de cada candidato (listas 'principais' e 'em alta'), como etapa exploratória do método: revelam como o público formula a busca e que termos associa ao candidato, e orientam as strings de busca das coletas (ex.: comentários, influenciadores). 'Em alta' mostra o crescimento no período ('Aumento repentino' = mais de 5.000%)."
-    }
+    },
+    "metodo_vegetativo": {
+      "k_desvio": 2,
+      "k_sensibilidade": [
+        1,
+        2
+      ],
+      "periodos_media_dias": [
+        7,
+        15
+      ],
+      "nota": "Método das aulas (Maurício): a série tem um nível 'vegetativo' (normal) e picos de agenda. Calcula-se média e desvio-padrão do período; dias acima de média + k·desvio são picos (outliers). Para ver a curva de fundo, cada pico é substituído pela MEDIANA da série (não puxa a curva para cima nem para baixo). Para comparar, usa-se a média por período (7 e 15 dias), não o dia. k = 2 por padrão (configurável); a contagem de picos com k = 1 fica registrada para conferência."
+    },
+    "fases": [
+      {
+        "id": "pre",
+        "rotulo": "Pré-campanha",
+        "de": "2026-07-20",
+        "ate": "2026-08-15"
+      },
+      {
+        "id": "turno1",
+        "rotulo": "Campanha do 1º turno",
+        "de": "2026-08-16",
+        "ate": "2026-10-04"
+      },
+      {
+        "id": "turno2",
+        "rotulo": "2º turno",
+        "de": "2026-10-05",
+        "ate": "2026-10-25"
+      }
+    ]
   },
   "aviso_metodologico": "Valores 0-100 relativos dentro de cada consulta (grupo x período). Não são volumes; não compare entre consultas diferentes.",
   "consultas": [
@@ -113,7 +145,7 @@
       "geo": "BR",
       "serie_pontos": 169,
       "uf_linhas": 27,
-      "relacionados_linhas": 90,
+      "relacionados_linhas": 100,
       "status": "ok"
     },
     {
@@ -168,9 +200,9 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-15",
+      "janela_trends": "2026-07-20 2026-10-17",
       "geo": "BR",
-      "serie_pontos": 88,
+      "serie_pontos": 90,
       "uf_linhas": 27,
       "relacionados_linhas": 100,
       "status": "ok"
@@ -322,9 +354,9 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-15",
+      "janela_trends": "2026-07-20 2026-10-17",
       "geo": "BR",
-      "serie_pontos": 88,
+      "serie_pontos": 90,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -397,14 +429,14 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-15",
+      "janela_trends": "2026-07-20 2026-10-17",
       "geo": "BR",
-      "serie_pontos": 88,
+      "serie_pontos": 90,
       "uf_linhas": 27,
       "status": "ok"
     }
   ],
   "blocked": [],
-  "run_finished_utc": "2026-10-15T22:20:51Z",
+  "run_finished_utc": "2026-10-17T01:19:53Z",
   "status": "ok"
 }
