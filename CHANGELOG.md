@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.0 — Subpágina Kwai no caderno 02 (Apify, conta secundária) (2026-10-17) ⛔
+
+- Pedido do usuário: página "O que as campanhas dizem · Kwai" usando a conta secundária da Apify (segredo `APIFY_TOKEN_2`). Tetos: os propostos na conversa (teste US$ 0,50; diário US$ 0,10; mensal US$ 3), em `data/config/kwai.json`.
+- `scripts/collect_kwai_apify.py` + `.github/workflows/kwai.yml` (diário 10h10; manual com "teste") + `tests/test_kwai.py`: ator `unfenced-group/kwai-scraper`, perfis @lulaoficial, @podeespalhar (chapa 13) e @flaviobolsonaro (chapa 22) — nomes de usuário tirados das URLs do TSE; o vice Alfredo Gaspar fica fora (link curto quebrado pelo TSE). Acervo no formato do TikTok (`data/kwai/videos.csv.gz`), seguidores por dia (`data/kwai/perfis.csv`), manifestos com custo; bruto no privado. Mapeamento de campos tolerante a nomes alternativos, a confirmar no primeiro run real.
+- `scripts/build_tiktok.py --kwai`: mesmas regras de tema, nuvem, "cita o adversário", "pede voto" e taxa de interação, saída `data/kwai/conteudo.json`.
+- Página: subpágina "Kwai" entre TikTok e Anúncios pagos.
+- Run 39071862408 (teste): ⛔ "APIFY_TOKEN_2 ausente" — o segredo ainda não existe no repositório; nada foi cobrado. Chromium: subpágina abre, mostra o bloqueio, sem erro, sem rolagem a 390 px. Testes OK.
+
 ## C17.2 — Criativos dos anúncios com miniatura (Meta) e prévias (Google) (2026-10-17) ✅
 
 - Pedido do usuário: mostrar o criativo e a miniatura dos anúncios. Decisão registrada: o texto dos anúncios da Meta, antes só no privado, passa a ser publicado para os 24 de maior alcance por busca (anúncios políticos, públicos na Biblioteca da Meta), limitado a 400 caracteres.

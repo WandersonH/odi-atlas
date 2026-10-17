@@ -2501,7 +2501,7 @@ async function carregar(){if(feito)return;feito=true;const j=u=>fetch(u,{cache:'
   nuvem($('kwCloudA'),A&&A.nuvem);nuvem($('kwCloudB'),B&&B.nuvem);
   const lista=x=>x&&x.videos.length?x.videos.slice(0,15).map(v=>`<div class="yt-item"><div><h4><a href="${esc(v.url)}" target="_blank" rel="noopener">${esc((v.legenda||'(sem legenda)').slice(0,160))}</a></h4><div class="yt-meta">${v.publicado_em?new Date(v.publicado_em).toLocaleDateString('pt-BR'):'—'} · @${esc(v.perfil)} · ${fmt(v.visualizacoes)} visualizações · ${fmt(v.curtidas)} curtidas · ${fmt(v.comentarios)} comentários · interação ${pc(v.taxa_interacao)}</div><div class="yt-tags">${v.temas.map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')}${v.pede_voto?'<span class="yt-tag">pede voto</span>':''}${v.cita_adversario?'<span class="yt-tag">cita o adversário</span>':''}</div></div></div>`).join(''):'<p class="yt-meta">Nenhum vídeo coletado.</p>';
   $('kwListA').innerHTML=lista(A);$('kwListB').innerHTML=lista(B);$('kwMetodo').textContent=D.metodo;
- }catch(e){$('kwStatus').textContent=`⛔ ${M&&M.status?M.status:'Kwai ainda sem coleta'} (${e.message}).`;}}
+ }catch(e){$('kwStatus').textContent=M&&M.status?`${M.status} · tentativa de ${new Date(M.run_started_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}`:'⛔ Kwai ainda sem coleta ('+e.message+').';}}
 if(sec.classList.contains('active'))carregar();new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
 /* Caderno 02 · Criativos da Meta (data/meta/criativos.json) e prévias do Google */
 (function(){const $=id=>document.getElementById(id);if(!$('crCard'))return;
