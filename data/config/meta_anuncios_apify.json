@@ -1,17 +1,25 @@
 {
  "ator": "jmlp~meta-ad-library-scraper",
  "preco_referencia": "US$ 0,15 por 1.000 anúncios (preço por item do ator, plano gratuito, lido na loja da Apify em 17/10/2026)",
- "teto_teste_usd": 0.5,
+ "teto_teste_usd": 0.26,
  "teto_diario_usd": 0.3,
  "teto_mensal_usd": 9.0,
- "autorizacao": "Tetos autorizados pelo usuário em 17/10/2026: teste US$ 0,50; depois US$ 0,30 por dia.",
+ "autorizacao": "Tetos autorizados pelo usuário em 17/10/2026: teste US$ 0,50 no total (1ª execução US$ 0,2376; a 2ª usa o restante, US$ 0,26); depois US$ 0,30 por dia; mensal US$ 9.",
  "pais": "BR",
  "desde": "2026-07-20",
- "max_anuncios_por_consulta_teste": 1600,
+ "max_anuncios_por_consulta_teste": 850,
  "max_anuncios_por_consulta_diario": 900,
  "consultas": [
-  {"id": "lula", "candidato": "Lula", "termo": "Lula"},
-  {"id": "flavio", "candidato": "Flávio Bolsonaro", "termo": "Flávio Bolsonaro"}
+  {
+   "id": "lula",
+   "candidato": "Lula",
+   "termo": "Lula"
+  },
+  {
+   "id": "flavio",
+   "candidato": "Flávio Bolsonaro",
+   "termo": "Flávio Bolsonaro"
+  }
  ],
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado."
 }
