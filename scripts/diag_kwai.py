@@ -7,7 +7,8 @@ seguidores, nº de vídeos, legendas, datas, visualizações e curtidas. Imprime
 """
 import asyncio, json, re
 
-PERFIS = [("22 Flávio Bolsonaro", "https://www.kwai.com/@FLAVIOBOLSONARO"),
+PERFIS = [("22 Flávio · kwai-video.com", "https://www.kwai-video.com/@FLAVIOBOLSONARO"),
+          ("busca lula", "https://www.kwai.com/discover/lula"),("22 Flávio Bolsonaro", "https://www.kwai.com/@FLAVIOBOLSONARO"),
           ("13 Lula", "https://k.kwai.com/u/@lulaoficial/XGXCOK66"),
           ("13 Lula · Pode Espalhar", "https://www.kwai.com/u/@podeespalhar/Cu4CfgOx"),
           ("22 Alfredo Gaspar", "https://s.kw.ai/u/ECB8-VMN"),
@@ -74,8 +75,8 @@ async def main():
                                   "lista": listas(d), "campos": resumo_json(d)})
             pg.on("response", on_resp)
             try:
-                await pg.goto(url, wait_until="domcontentloaded", timeout=60000)
-                await pg.wait_for_timeout(7000)
+                await pg.goto(url, wait_until="networkidle", timeout=60000)
+                await pg.wait_for_timeout(8000)
                 for _ in range(4):
                     await pg.mouse.wheel(0, 3000); await pg.wait_for_timeout(2500)
                 final = pg.url
@@ -98,7 +99,7 @@ async def main():
             except Exception as e:
                 final, estado, n_videos_dom, login, nums, txt = f"erro {type(e).__name__}", {}, 0, None, [], ""
             print(json.dumps({"perfil": nome, "url_final": final[:110], "login_ou_app": login, "numeros_na_pagina": nums,
-                              "elementos_video_dom": n_videos_dom, "estado_embutido": estado, "chars_texto": len(txt),
+                              "elementos_video_dom": n_videos_dom, "estado_embutido": estado, "chars_texto": len(txt), "texto": re.sub(r"\s+", " ", txt)[:300],
                               "respostas_json": resps[:6]}, ensure_ascii=False))
             await pg.close()
         await b.close()
