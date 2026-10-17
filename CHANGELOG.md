@@ -4,6 +4,27 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C17.0 — Biblioteca de Anúncios da Meta via Apify (2026-10-17) ⚠️
+
+**Decisão e autorização**
+- O token oficial da Meta volta com "Application does not have permission for this action" (run 39064748507); o usuário pediu a coleta pela Apify, no ator mais econômico, e autorizou: teste US$ 0,50 no total; depois US$ 0,30 por dia (teto mensal configurado em US$ 9).
+- Atores comparados pela API pública da loja (workflow `teste-apify-loja.yml`, só leitura): escolhido `jmlp/meta-ad-library-scraper` — US$ 0,00015 por anúncio no plano gratuito (US$ 0,15/mil), 565 usuários em 30 dias, nota 5 (11), 339.254 de 340.265 execuções bem-sucedidas; o README informa gasto e alcance dos anúncios políticos. O ator oficial `apify/facebook-ads-scraper` custa US$ 0,0058 por anúncio no mesmo plano.
+
+**O que mudou**
+- `scripts/collect_meta_anuncios_apify.py` + `data/config/meta_anuncios_apify.json` + `.github/workflows/meta-anuncios-apify.yml` (diário 09h50; manual com "teste") + `tests/test_meta_anuncios_apify.py`: uma execução por candidato com `maxTotalChargeUsd` (teto dividido entre as buscas), custo calculado pelos eventos cobrados, teto mensal somando os manifestos `data/meta/manifesto-*.json`; faixas "R$20K - R$25K", ">1M" etc. convertidas; acumulado público sem texto em `data/meta/anuncios_apify.csv`; bruto só no privado. Mesmo formato de `data/meta/anuncios.json` da coleta oficial, então a página não mudou de estrutura; o status mostra custo, teto e o aviso de amostra.
+- `meta-anuncios.yml` (token oficial): agenda pausada até a Meta liberar o app.
+
+**Execuções**
+- Teste 1 (17/10 17h30, uma execução com as duas buscas): 1.600 anúncios, US$ 0,2376 — descartado na página porque não dava para saber de qual busca vinha cada anúncio (617 não citam nenhum nome no texto); motivou a execução por consulta. Revelou também que o ator ignora o filtro de data de início: os anúncios vêm com exibição no período, ordenados pelo alcance.
+- Teste 2 (run 39067390195, teto restante US$ 0,26): 850 anúncios por candidato (limite), US$ 0,2538. Total gasto no teste: US$ 0,4914 (≤ US$ 0,50).
+  - Busca "Lula": 266 páginas; página Lula 175 anúncios, R$ 1.585.800 a 1.920.295.
+  - Busca "Flávio Bolsonaro": 220 páginas; página Flavio Bolsonaro 132 anúncios, R$ 4.436.100 a 5.165.986; página Lula aparece com 162 anúncios que citam Flávio.
+- Chromium: página de anúncios com os dados, sem erro, sem rolagem a 390 px. Testes OK.
+
+**Ressalvas**
+- É amostra: o teto limita aos ~850 anúncios de maior alcance por busca na carga inicial e ~1.000 por dia (exibidos desde ontem) nas execuções diárias; o acumulado cresce a cada dia. Somas de gasto são faixas e contam "ou mais" quando a Meta informa só o piso.
+- Fases contam anúncios pela data de início; anúncios iniciados antes de 20/07 com exibição no período não entram em nenhuma fase.
+
 ## C16.0 — Variação diária de seguidores e filtro "24 horas" no Trends (2026-10-17) ✅
 
 - `scripts/build_variacao_seguidores.py` + `tests/test_variacao_seguidores.py`: compara, por conta (candidate_id + endereço normalizado como na página), a coleta mais recente com a anterior (`coleta_*.csv` da Apify e `youtube_*.csv`), em `data/seguidores/variacao.json`. Roda nos workflows de seguidores Meta e YouTube. Página "Quem acompanha": cada card mostra ▲/▼ %, a diferença absoluta e a data comparada.
