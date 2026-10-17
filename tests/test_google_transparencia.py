@@ -19,6 +19,10 @@ class TestTransparencia(unittest.TestCase):
         self.assertFalse(g.aceitar({"nome": "MONICA ROCHA LULA", "pais": "BR"}, aceitos))
         self.assertFalse(g.aceitar({"nome": "Partido dos Trabalhadores", "pais": "US"}, aceitos))
 
+    def test_dominio_registrado(self):
+        self.assertEqual(g.dominio_registrado("geracao.lula.com.br"), "lula.com.br")
+        self.assertEqual(g.dominio_registrado("www.fbtv22.net"), "fbtv22.net")
+
     def test_main(self):
         def fake(cfg):
             return ({"AR1": {"advertiser_id": "AR1", "nome": "PT", "encontrado_por": "x"}},

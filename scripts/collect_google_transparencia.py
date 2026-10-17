@@ -12,9 +12,11 @@ import asyncio
 import csv
 import datetime as dt
 import json
+import re
 import sys
 import unicodedata
 from pathlib import Path
+from urllib.parse import urlparse
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from net import now_utc  # noqa: E402
@@ -47,12 +49,43 @@ def parse_criativos(d: dict, origem: str) -> list[dict]:
     return out
 
 
+SOCIAIS = re.compile(r"instagram|facebook|tiktok|youtube|youtu\.be|twitter|x\.com|threads|kwai|kw\.ai|linkedin|whatsapp|t\.me|"
+                     r"telegram|flickr|spotify|deezer|sticker\.ly|truthsocial|gettr|bsky|pinterest|soundcloud|apple\.com|discord|tse\.jus", re.I)
+
+
+def dominio_registrado(host: str) -> str:
+    partes = host.lower().removeprefix("www.").split(".")
+    n = 3 if len(partes) >= 3 and partes[-1] == "br" and partes[-2] in ("com", "org", "net", "gov", "jus", "leg", "edu") else 2
+    return ".".join(partes[-n:])
+
+
+def dominios_tse(root: Path, cfg: dict) -> dict[str, str]:
+    """{domínio: 'nº · nome na urna (cargo)'} dos sites declarados ao TSE pelas chapas configuradas."""
+    t = cfg.get("dominios_tse")
+    if not t or not (root / t["arquivo"]).exists():
+        return {}
+    out = {}
+    for r in json.loads((root / t["arquivo"]).read_text(encoding="utf-8")):
+        u = (r.get("url") or "").strip()
+        if str(r.get("nr")) not in t["numeros"] or not u or SOCIAIS.search(u):
+            continue
+        host = urlparse(u if "://" in u else "https://" + u).hostname or ""
+        if "." not in host:
+            continue
+        dom = dominio_registrado(host)
+        if any(dom == i or dom.endswith("." + i) for i in t["ignorar"]):
+            continue
+        out.setdefault(dom, f"{r.get('nr')} · {r.get('urna')} ({str(r.get('cargo', '')).lower()})")
+    return dict(sorted(out.items()))
+
+
 def aceitar(sug: dict, aceitos: list[str]) -> bool:
     nome = norm(sug.get("nome", ""))
     return sug.get("pais") == "BR" and any(a in nome for a in aceitos)
 
 
 async def coletar(cfg: dict) -> tuple[dict, list[dict], list[str]]:
+    porDominio = cfg["_por_dominio"]
     from playwright.async_api import async_playwright
     anunciantes, criativos, erros = {}, {}, []
     async with async_playwright() as p:
@@ -89,7 +122,7 @@ async def coletar(cfg: dict) -> tuple[dict, list[dict], list[str]]:
             await pg.close()
         # 2) página de cada anunciante e de cada domínio
         alvos = [(f"{BASE}/advertiser/{a}?region={cfg['regiao']}", f"anunciante:{a}") for a in anunciantes] + \
-                [(f"{BASE}/?region={cfg['regiao']}&domain={d}", f"dominio:{d}") for d in cfg["dominios"]]
+                [(f"{BASE}/?region={cfg['regiao']}&domain={d}", f"dominio:{d}") for d in cfg["_dominios"]]
         for url, origem in alvos:
             pg = await ctx.new_page()
             lidos = []
@@ -113,6 +146,8 @@ async def coletar(cfg: dict) -> tuple[dict, list[dict], list[str]]:
                     await pg.wait_for_timeout(2500)
             except Exception as e:  # noqa: BLE001
                 erros.append(f"{origem}: {type(e).__name__}")
+            if origem.startswith("dominio:"):
+                porDominio[origem[8:]] = len({c["creative_id"] for c in lidos})
             for c in lidos:
                 criativos.setdefault(c["creative_id"], c)
                 if c["advertiser_id"] and c["advertiser_id"] not in anunciantes and origem.startswith("dominio:"):
@@ -143,6 +178,9 @@ def main(argv=None, coletar_fn=None) -> int:
     root = Path(argv[0]) if argv else Path(".")
     cfg = json.loads((root / "data/config/google_transparencia.json").read_text(encoding="utf-8"))
     agora = now_utc()
+    tse = dominios_tse(root, cfg)
+    cfg["_dominios"] = sorted(set(cfg["dominios"]) | set(tse))
+    cfg["_por_dominio"] = {}
     try:
         anunciantes, criativos, erros = asyncio.run(coletar(cfg)) if coletar_fn is None else coletar_fn(cfg)
     except Exception as e:  # noqa: BLE001
@@ -155,7 +193,9 @@ def main(argv=None, coletar_fn=None) -> int:
     status = "ok" if (anunciantes or criativos) and not erros else ("⚠️ parcial: " + "; ".join(erros) if anunciantes or criativos else "⛔ " + ("; ".join(erros) or "nenhum anunciante encontrado"))
     out = {"schema_version": 1, "coletado_em_utc": agora, "fonte": "Google · Central de Transparência de Anúncios (navegador sem login)",
            "nota": cfg["nota"], "status": status, "anunciantes": resumo, "total_anuncios": len(criativos),
-           "anuncios_exibidos_na_campanha": camp, "erros": erros}
+           "anuncios_exibidos_na_campanha": camp, "erros": erros,
+           "dominios_consultados": [{"dominio": d, "origem": tse.get(d, "partido (config)"),
+                                     "anuncios": cfg["_por_dominio"].get(d)} for d in cfg["_dominios"]]}
     (pasta / "transparencia.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     hist = pasta / "anuncios.csv"
     vistos = {}
@@ -169,6 +209,9 @@ def main(argv=None, coletar_fn=None) -> int:
         w.writerows(sorted(vistos.values(), key=lambda r: (r["advertiser_id"], r["creative_id"])))
     for a in resumo:
         print(f"{a['nome']} ({a['advertiser_id']}): {a['anuncios']} anúncios · última exibição {a['ultima_exibicao']} · na campanha {a['exibidos_na_campanha']}")
+    sem = [d for d in cfg["_dominios"] if cfg["_por_dominio"].get(d) is None]
+    print(f"domínios: {len(cfg['_dominios'])} consultados; com anúncios: "
+          f"{', '.join(f'{d} ({n})' for d, n in cfg['_por_dominio'].items() if n) or 'nenhum'}; sem leitura: {', '.join(sem) or 'nenhum'}")
     print(f"google transparência: {status} · {len(resumo)} anunciantes · {len(criativos)} anúncios · {len(camp)} exibidos desde {cfg['inicio_campanha']}")
     return 0 if anunciantes or criativos else 1
 
