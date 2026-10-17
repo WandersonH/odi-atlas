@@ -4,8 +4,8 @@ name: Meta — Biblioteca de Anúncios (anúncios políticos que citam os candid
 # Bruto (texto dos anúncios) só no repositório privado (ODI_INTERNO_TOKEN); no público, agregados.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "25 12 * * *"   # todo dia, 09h25 em Brasília
+  # agenda desligada em 17/10/2026: a Meta ainda não liberou o app ("Application does not have permission");
+  # enquanto isso a coleta diária é a da Apify (meta-anuncios-apify.yml). Religar quando o token oficial funcionar.
 
 concurrency:
   group: meta-anuncios
