@@ -10,7 +10,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Causa encontrada: `tests/test_comentarios.py` importa módulos que exigem numpy; num ambiente sem numpy (Python 3.12 limpo) a descoberta de testes quebra. Correção: o módulo é pulado quando a dependência falta (roda no workflow de comentários, que instala numpy).
 - `scripts/testes_ci.sh`: os workflows passam a publicar cada teste que falhar como anotação (o log completo não é legível por aqui), para diagnosticar se houver outra causa.
 - Testes: suíte completa OK no Python 3.13 com dependências e OK (10 pulados) num venv Python 3.12 limpo.
-- Pendente: confirmar nos runs redisparados (resultado na próxima entrada).
+- Run 38990134816 (Trends, 17/10 01h16 UTC): testes OK, coleta OK — 9 consultas em `data/trends/2026-10-17/011626`.
+- As anotações novas mostraram a causa principal nos demais workflows: `test_noticias_texto` falhava com `No module named 'scipy'` — a rede de veículos (C13.1) usava `kamada_kawai_layout`, que exige scipy, e os workflows instalam só networkx e numpy. O mesmo erro fazia a análise do universo das notícias falhar em silêncio no `google-busca.yml` (passo com continue-on-error). Correção: layout Fruchterman-Reingold (sem scipy) no componente principal. Recalculado com os dados atuais: 35 veículos, 130 ligações, 6 comunidades, modularidade 0,171.
+- Teste: suíte completa OK num venv Python 3.12 com só networkx 3.6.1 e numpy 2.3.4 (como nos workflows).
+- Lição registrada: dependência nova em script coberto por teste precisa entrar nos workflows ou o teste precisa pular quando ela falta.
 
 ## C14.0 — Reuters Digital News Report 2022 e 2026: dados do Brasil (2026-10-16) ✅
 

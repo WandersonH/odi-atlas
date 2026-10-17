@@ -164,12 +164,10 @@ def rede_veiculos(tit: list[dict], ids: tuple[str, str], excluir: set, min_titul
         for n in c:
             g.nodes[n]["comunidade"] = i
     btw = nx.betweenness_centrality(g, seed=SEMENTE)
-    # componente maior: Kamada-Kawai (distância = 1 − cosseno); componentes soltos em fila na base do desenho
+    # componente maior: Fruchterman-Reingold (sem scipy); componentes soltos em fila na base do desenho
     comps = sorted(nx.connected_components(g), key=lambda c: (-len(c), sorted(c)[0]))
     gm = g.subgraph(comps[0]).copy()
-    for _, _, d in gm.edges(data=True):
-        d["dist"] = 1 - d["weight"]
-    pos = nx.kamada_kawai_layout(gm, weight="dist")
+    pos = nx.spring_layout(gm, weight="weight", seed=SEMENTE, k=2.5 / math.sqrt(max(1, gm.number_of_nodes())), iterations=500)  # sem scipy
     xs, ys = [p[0] for p in pos.values()], [p[1] for p in pos.values()]
     span = max(max(xs) - min(xs), max(ys) - min(ys)) or 1
     pos = {n: ((x - min(xs)) / span, (y - min(ys)) / span * 0.85) for n, (x, y) in pos.items()}
@@ -273,7 +271,7 @@ def main(argv=None) -> int:
                      f"({gv.number_of_nodes()} de {len(set(t['veiculo'] or t['dominio'] for t in tit))}); aresta = semelhança de agenda, "
                      f"cosseno entre os perfis de palavras dos títulos de cada veículo (TF-IDF), ligando cada veículo aos seus "
                      f"{iv['vizinhos']} mais parecidos com cosseno ≥ {iv['min_cos']}. Comunidades: Louvain (semente {SEMENTE}); posição: "
-                     "Kamada-Kawai no componente principal (distância = 1 − cosseno; veículos sem ligação com ele ficam em fila na base). Tamanho = nº de títulos; cor = proporção de títulos sobre Lula (vermelho) ou Flávio "
+                     "Fruchterman-Reingold no componente principal (peso = cosseno; veículos sem ligação com ele ficam em fila na base). Tamanho = nº de títulos; cor = proporção de títulos sobre Lula (vermelho) ou Flávio "
                      "Bolsonaro (verde), relativa ao total de cada um. Mede semelhança de pauta e vocabulário, não linha editorial."),
           "parametros": {k: v for k, v in iv.items() if k != "comunidades"},
           "nos_total": gv.number_of_nodes(), "arestas_total": gv.number_of_edges(), "modularidade": iv.get("modularidade"),
