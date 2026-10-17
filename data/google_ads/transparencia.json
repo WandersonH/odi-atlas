@@ -1,40 +1,10 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-10-17T21:26:41Z",
+ "coletado_em_utc": "2026-10-17T22:35:04Z",
  "fonte": "Google · Central de Transparência de Anúncios (navegador sem login)",
  "nota": "Central de Transparência de Anúncios do Google (adstransparency.google.com), região Brasil, consultada por navegador sem login, como faria um leitor. Anunciantes encontrados pela busca da própria Central e mantidos só quando o nome verificado corresponde a partido ou candidato da lista (pessoas físicas homônimas ficam fora). Também os anúncios que apontam para os domínios oficiais das campanhas e partidos. O Google proíbe anúncio eleitoral pago no Brasil (2024, mantido em 2026): anúncio veiculado no período eleitoral é registrado para análise, não é acusação de irregularidade. Datas de primeira e última exibição são as informadas pela Central; códigos de formato: 1 texto, 2 imagem, 3 vídeo.",
  "status": "ok",
  "anunciantes": [
-  {
-   "advertiser_id": "AR12360772460340051969",
-   "nome": "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE",
-   "encontrado_por": "dominio:lula.com.br",
-   "anuncios": 25,
-   "formatos": {
-    "vídeo": 23,
-    "texto": 2
-   },
-   "primeira_exibicao": "2022-08-21",
-   "ultima_exibicao": "2022-10-28",
-   "exibidos_desde_inicio_periodo": 0,
-   "exibidos_na_campanha": 0,
-   "url": "https://adstransparency.google.com/advertiser/AR12360772460340051969?region=BR"
-  },
-  {
-   "advertiser_id": "AR10134162251888721921",
-   "nome": "Partido dos trabalhadores",
-   "encontrado_por": "dominio:pt.org.br",
-   "anuncios": 3,
-   "formatos": {
-    "texto": 1,
-    "vídeo": 2
-   },
-   "primeira_exibicao": "2022-10-27",
-   "ultima_exibicao": "2024-03-01",
-   "exibidos_desde_inicio_periodo": 0,
-   "exibidos_na_campanha": 0,
-   "url": "https://adstransparency.google.com/advertiser/AR10134162251888721921?region=BR"
-  },
   {
    "advertiser_id": "AR13313535647001083905",
    "nome": "PARTIDO DOS TRABALHADORES - PT",
@@ -64,9 +34,23 @@
    "url": "https://adstransparency.google.com/advertiser/AR15188918754428846081?region=BR"
   }
  ],
- "total_anuncios": 30,
+ "total_anuncios": 2,
  "anuncios_exibidos_na_campanha": [],
  "erros": [],
+ "exibir_desde": "2026-01-01",
+ "fora_do_recorte": {
+  "criterio": "última exibição antes de 2026-01-01",
+  "anuncios": 28,
+  "anunciantes": [
+   "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE",
+   "Partido dos trabalhadores"
+  ],
+  "periodo": [
+   "2022-08-21",
+   "2024-03-01"
+  ]
+ },
+ "total_lido": 30,
  "anuncios_previas": [
   {
    "creative_id": "CR11824874968317952001",
@@ -85,33 +69,6 @@
    "ultima_exibicao": "2026-03-22",
    "url": "https://adstransparency.google.com/advertiser/AR15188918754428846081/creative/CR15152577696107593729?region=BR",
    "previa": "https://tpc.googlesyndication.com/archive/simgad/907643326979244036"
-  },
-  {
-   "creative_id": "CR13482879189505802241",
-   "anunciante": "Partido dos trabalhadores",
-   "formato": "texto",
-   "primeira_exibicao": "2023-03-17",
-   "ultima_exibicao": "2024-03-01",
-   "url": "https://adstransparency.google.com/advertiser/AR10134162251888721921/creative/CR13482879189505802241?region=BR",
-   "previa": "https://tpc.googlesyndication.com/archive/simgad/12188271662112469750"
-  },
-  {
-   "creative_id": "CR02412848099304144897",
-   "anunciante": "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE",
-   "formato": "texto",
-   "primeira_exibicao": "2022-09-09",
-   "ultima_exibicao": "2022-10-27",
-   "url": "https://adstransparency.google.com/advertiser/AR12360772460340051969/creative/CR02412848099304144897?region=BR",
-   "previa": "https://tpc.googlesyndication.com/archive/simgad/7008723981798634582"
-  },
-  {
-   "creative_id": "CR17597451674320896001",
-   "anunciante": "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE",
-   "formato": "texto",
-   "primeira_exibicao": "2022-08-21",
-   "ultima_exibicao": "2022-08-21",
-   "url": "https://adstransparency.google.com/advertiser/AR12360772460340051969/creative/CR17597451674320896001?region=BR",
-   "previa": "https://tpc.googlesyndication.com/archive/simgad/12986340990983791452"
   }
  ],
  "dominios_consultados": [
@@ -233,7 +190,7 @@
   {
    "dominio": "lula.com.br",
    "origem": "13 · LULA (presidente)",
-   "anuncios": 25
+   "anuncios": 0
   },
   {
    "dominio": "mercadodamentira.com.br",
@@ -273,7 +230,7 @@
   {
    "dominio": "pt.org.br",
    "origem": "partido (config)",
-   "anuncios": 3
+   "anuncios": 0
   },
   {
    "dominio": "timedoalfredo.com.br",
