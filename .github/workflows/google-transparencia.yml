@@ -1,0 +1,39 @@
+name: Google — Central de Transparência de Anúncios (partidos e candidatos)
+
+# Navegador sem login (Playwright). Só agregados e metadados públicos dos anúncios (IDs, datas, formato, link para a Central).
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "35 12 * * *"   # todo dia, 09h35 em Brasília
+
+concurrency:
+  group: google-transparencia
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  google:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest tests.test_google_transparencia
+      - name: Navegador (Playwright)
+        run: pip install -q playwright==1.64.0 && python -m playwright install --with-deps chromium > /dev/null 2>&1
+      - name: Coletar
+        id: coleta
+        continue-on-error: true
+        run: |
+          python scripts/collect_google_transparencia.py > g.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Google Transparência::$(echo "$l" | cut -c1-400)"; done < g.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Google Transparência de Anúncios (run ${{ github.run_id }})"
