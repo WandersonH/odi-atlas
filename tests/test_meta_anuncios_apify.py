@@ -13,16 +13,20 @@ class TestMetaApify(unittest.TestCase):
         self.assertEqual(m.faixa_de("<R$100"), {"lower_bound": "0", "upper_bound": "100"})
         self.assertEqual(m.faixa_de(">1M")["upper_bound"], "")
         self.assertIsNone(m.faixa_de(""))
+        self.assertEqual(m.faixa_de("R$20K - R$25K"), {"lower_bound": "20000", "upper_bound": "25000"})
+        self.assertEqual(m.faixa_de("R$1.5K - R$2K"), {"lower_bound": "1500", "upper_bound": "2000"})
+        self.assertEqual(m.faixa_de(">1M"), {"lower_bound": "1000000", "upper_bound": ""})
+        self.assertEqual(m.faixa_de("700K - 800K"), {"lower_bound": "700000", "upper_bound": "800000"})
 
     def test_main_teto_e_atribuicao(self):
         def fake(payload, cap):
-            self.assertEqual(cap, 0.5)
+            self.assertEqual(cap, 0.25)  # teto do teste dividido entre as 2 consultas
             self.assertIn("ad_type=political_and_issue_ads", payload["adLibraryUrls"][0])
             return ({"id": "r1", "status": "SUCCEEDED", "usageTotalUsd": 0.0, "chargedEventCounts": {"apify-default-dataset-item": 800},
                      "pricingInfo": {"pricingPerEvent": {"actorChargeEvents": {"apify-default-dataset-item": {"eventTieredPricingUsd": {"FREE": {"tieredEventPriceUsd": 0.00015}}}}}}},
-                    [{"ad_archive_id": "1", "page_name": "P", "page_id": "9", "start_date": 1789000000, "spend": "R$ 100 - R$ 199",
+                    [{"ad_archive_id": "1", "page_name": "P", "page_id": "9", "start_date": 1789000000, "spend": "R$ 100 - R$ 199", "impressions_with_index": {"impressions_text": "1K - 5K"},
                       "publisher_platform": ["FACEBOOK"], "adLibraryUrl": payload["adLibraryUrls"][0]},
-                     {"ad_archive_id": "2", "page_name": "Q", "snapshot": {"body": {"text": "Flávio Bolsonaro"}}, "start_date": 1789000000}])
+                     {"page_name": "Q", "snapshot": {"body": {"text": "Flávio Bolsonaro"}}, "start_date": 1789000000}])
         cwd = os.getcwd()
         with tempfile.TemporaryDirectory() as t:
             (Path(t) / "data/config").mkdir(parents=True)
@@ -34,9 +38,10 @@ class TestMetaApify(unittest.TestCase):
                 o = json.loads(Path("data/meta/anuncios.json").read_text(encoding="utf-8"))
             finally:
                 os.chdir(cwd)
-        self.assertEqual((o["consultas"]["lula"]["anuncios"], o["consultas"]["flavio"]["anuncios"]), (1, 1))
+        self.assertEqual((o["consultas"]["lula"]["anuncios"], o["consultas"]["flavio"]["anuncios"]), (1, 1))  # sem id não entra
         self.assertEqual(o["consultas"]["lula"]["gasto"]["min"], 100)
-        self.assertEqual(o["custo_usd"], 0.12)  # 800 × 0,00015
+        self.assertEqual(o["consultas"]["lula"]["impressoes"]["min"], 1000)
+        self.assertEqual(o["custo_usd"], 0.24)  # 2 execuções × 800 × 0,00015
 
 
 if __name__ == "__main__":

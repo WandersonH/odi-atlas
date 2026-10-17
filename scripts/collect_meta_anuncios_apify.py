@@ -36,7 +36,14 @@ def faixa_de(v) -> dict | None:
     if isinstance(v, (int, float)):
         return {"lower_bound": str(int(v)), "upper_bound": str(int(v))}
     s = str(v)
-    nums = [int(x.replace(".", "").replace(",", "")) for x in re.findall(r"\d[\d.,]*", s)]
+    mult = {"K": 1_000, "M": 1_000_000, "B": 1_000_000_000, "MIL": 1_000, "MI": 1_000_000}
+
+    def num(tok: str, suf: str) -> int:
+        suf = suf.upper()
+        if suf in mult:  # "1.5K" → 1500 (ponto decimal); "1,5 mil" → 1500
+            return int(round(float(tok.replace(",", ".")) * mult[suf]))
+        return int(tok.replace(".", "").replace(",", ""))
+    nums = [num(t, u) for t, u in re.findall(r"(\d[\d.,]*)\s*(K|M|B|mil|mi)?\b", s, re.I)]
     if not nums:
         return None
     if s.strip().startswith("<"):
@@ -63,9 +70,31 @@ def normalizar(x: dict) -> dict:
             "bylines": snap.get("byline") or x.get("byline") or x.get("bylines") or "",
             "ad_delivery_start_time": iso(x.get("start_date") or x.get("startDate")),
             "ad_delivery_stop_time": iso(x.get("end_date") or x.get("endDate")),
-            "spend": faixa_de(x.get("spend")), "impressions": faixa_de(x.get("impressions") or x.get("impressions_with_index")),
+            "spend": faixa_de(x.get("spend")),
+            "impressions": faixa_de((x.get("impressions_with_index") or {}).get("impressions_text") if isinstance(x.get("impressions_with_index"), dict) else x.get("impressions")),
             "reach": faixa_de(x.get("reach_estimate") or x.get("reach")), "currency": x.get("currency") or "",
             "publisher_platforms": [str(p).lower() for p in plat], "delivery_by_region": x.get("delivery_by_region") or []}
+
+
+COLS = ["id", "consulta", "page_id", "page_name", "bylines", "ad_delivery_start_time", "ad_delivery_stop_time", "gasto_min", "gasto_max",
+        "impressoes_min", "impressoes_max", "alcance_min", "alcance_max", "plataformas", "visto_em"]
+
+
+def linha(a: dict, consulta: str, agora: str) -> dict:
+    g, i, r = a.get("spend") or {}, a.get("impressions") or {}, a.get("reach") or {}
+    return {"id": a["id"], "consulta": consulta, "page_id": a["page_id"], "page_name": a["page_name"], "bylines": a["bylines"],
+            "ad_delivery_start_time": a["ad_delivery_start_time"], "ad_delivery_stop_time": a["ad_delivery_stop_time"],
+            "gasto_min": g.get("lower_bound", ""), "gasto_max": g.get("upper_bound", ""), "impressoes_min": i.get("lower_bound", ""),
+            "impressoes_max": i.get("upper_bound", ""), "alcance_min": r.get("lower_bound", ""), "alcance_max": r.get("upper_bound", ""),
+            "plataformas": ",".join(a["publisher_platforms"]), "visto_em": agora}
+
+
+def de_linha(r: dict) -> dict:
+    f = lambda lo, up: {"lower_bound": r[lo] or "0", "upper_bound": r[up]} if (r[lo] or r[up]) else None  # noqa: E731
+    return {"id": r["id"], "page_id": r["page_id"], "page_name": r["page_name"], "bylines": r["bylines"],
+            "ad_delivery_start_time": r["ad_delivery_start_time"], "ad_delivery_stop_time": r["ad_delivery_stop_time"],
+            "spend": f("gasto_min", "gasto_max"), "impressions": f("impressoes_min", "impressoes_max"),
+            "currency": "BRL", "publisher_platforms": [p for p in r["plataformas"].split(",") if p], "delivery_by_region": []}
 
 
 def url_biblioteca(termo: str, pais: str, desde: str) -> str:
@@ -123,39 +152,52 @@ def main(argv=None, executar=None) -> int:
         return 1
     executar = executar or (lambda payload, cap: run_actor(token, cfg["ator"], payload, cap))
     max_ads = cfg["max_anuncios_por_consulta_teste" if teste else "max_anuncios_por_consulta_diario"]
-    payload = {"adLibraryUrls": [url_biblioteca(c["termo"], cfg["pais"], cfg["desde"]) for c in cfg["consultas"]],
-               "country": cfg["pais"], "minDate": cfg["desde"], "maxAds": max_ads, "activeStatus": "all"}
-    custo, brutos = 0.0, []
-    try:
-        run, itens = executar(payload, teto)
-        custo = custo_run(run)
-        out["run_apify"] = {"id": run.get("id"), "status": run.get("status"), "custo_usd": custo}
-        brutos = itens or []
-    except Exception as e:  # noqa: BLE001 — a mensagem não contém o token (vai no cabeçalho)
-        out["erros"]["apify"] = f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
-    # cada item volta com a URL/termo de origem em campos diferentes conforme o ator; atribui pelo texto da busca
-    por = {c["id"]: [] for c in cfg["consultas"]}
-    for x in brutos:
-        origem = json.dumps({k: x.get(k) for k in ("adLibraryUrl", "inputUrl", "url", "query", "keyword", "searchTerm")}, ensure_ascii=False).lower()
-        alvo = next((c["id"] for c in cfg["consultas"] if urllib.parse.quote(c["termo"]).lower() in origem or c["termo"].lower() in origem), None)
-        if alvo is None:  # sem origem no item: atribui por menção no texto do anúncio
-            txt = json.dumps(x, ensure_ascii=False).lower()
-            alvo = next((c["id"] for c in cfg["consultas"] if c["termo"].lower() in txt), None)
-        if alvo:
-            por[alvo].append(normalizar(x))
+    # teste: anúncios com exibição desde o início do período; diário: com exibição desde ontem (os maiores primeiro)
+    janela = cfg["desde"] if teste else (dt.date.fromisoformat(agora[:10]) - dt.timedelta(days=1)).isoformat()
+    custo, brutos, runs = 0.0, [], []
+    novos = {}
+    cap = round(teto / len(cfg["consultas"]), 4)
+    for c in cfg["consultas"]:  # uma execução por consulta: a origem de cada anúncio fica certa
+        payload = {"adLibraryUrls": [url_biblioteca(c["termo"], cfg["pais"], janela)], "country": cfg["pais"],
+                   "minDate": janela, "maxAds": max_ads, "activeStatus": "all"}
+        try:
+            run, itens = executar(payload, cap)
+            custo += custo_run(run)
+            runs.append({"consulta": c["id"], "id": run.get("id"), "status": run.get("status"), "custo_usd": custo_run(run), "itens": len(itens or [])})
+            for x in itens or []:
+                brutos.append({"_consulta": c["id"], **x})
+                a_ = normalizar(x)
+                if a_["id"]:
+                    novos[(c["id"], a_["id"])] = linha(a_, c["id"], agora)
+        except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho, não na mensagem
+            out["erros"][c["id"]] = f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
+    out["runs_apify"] = runs
+    # acumulado público (sem texto dos anúncios): última leitura de cada anúncio por consulta
+    hist = pasta / "anuncios_apify.csv"
+    acum = {}
+    if hist.exists():
+        import csv as _csv
+        acum = {(r["consulta"], r["id"]): r for r in _csv.DictReader(open(hist, encoding="utf-8"), delimiter=";")}
+    acum.update(novos)
+    import csv as _csv
+    with open(hist, "w", encoding="utf-8", newline="") as f:
+        w = _csv.DictWriter(f, COLS, delimiter=";", lineterminator="\n")
+        w.writeheader()
+        w.writerows(sorted(acum.values(), key=lambda r: (r["consulta"], r["id"])))
     for c in cfg["consultas"]:
-        ads = [a for a in por[c["id"]] if a["id"]]
-        ads = list({a["id"]: a for a in ads}.values())
-        out["consultas"][c["id"]] = {"candidato": c["candidato"], "termo": c["termo"], "paginas_api": None,
-                                     "limite_da_coleta": max_ads, "no_limite": len(ads) >= max_ads, **agregar(ads, fases)}
-        print(f"{c['candidato']}: {len(ads)} anúncios{' (limite da coleta atingido)' if len(ads) >= max_ads else ''}")
+        ads = [de_linha(r) for (q, _), r in acum.items() if q == c["id"]]
+        hoje = sum(1 for (q, _) in novos if q == c["id"])
+        out["consultas"][c["id"]] = {"candidato": c["candidato"], "termo": c["termo"], "paginas_api": None, "lidos_nesta_execucao": hoje,
+                                     "limite_da_coleta": max_ads, "no_limite": hoje >= max_ads, **agregar(ads, fases)}
+        print(f"{c['candidato']}: {hoje} lidos nesta execução{' (limite atingido)' if hoje >= max_ads else ''}; {len(ads)} no acumulado")
     ok = any(v["anuncios"] for v in out["consultas"].values())
+    out["janela_desta_execucao"] = janela
     out["status"] = "ok" if ok and not out["erros"] else ("⚠️ parcial" if ok else "⛔ " + ("; ".join(f"{k}: {v}" for k, v in out["erros"].items()) or "nenhum anúncio"))
     out["custo_usd"] = custo
     (pasta / "anuncios.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     (pasta / f"manifesto-{agora[:7]}-{agora.replace(':', '').replace('-', '')}.json").write_text(
         json.dumps({"coletado_em_utc": agora, "modo": out["modo"], "teto_usd": teto, "custo_usd": custo, "itens": len(brutos),
-                    "run": out.get("run_apify", {}).get("id")}, ensure_ascii=False, indent=1), encoding="utf-8")
+                    "runs": runs}, ensure_ascii=False, indent=1), encoding="utf-8")
     interno = os.environ.get("ODI_INTERNO_DIR")
     if interno and brutos:
         d = Path(interno) / "meta/anuncios"
