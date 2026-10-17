@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C16.0 — Variação diária de seguidores e filtro "24 horas" no Trends (2026-10-17) ✅
+
+- `scripts/build_variacao_seguidores.py` + `tests/test_variacao_seguidores.py`: compara, por conta (candidate_id + endereço normalizado como na página), a coleta mais recente com a anterior (`coleta_*.csv` da Apify e `youtube_*.csv`), em `data/seguidores/variacao.json`. Roda nos workflows de seguidores Meta e YouTube. Página "Quem acompanha": cada card mostra ▲/▼ %, a diferença absoluta e a data comparada.
+- Execução local: 84 contas com duas coletas; a comparação de hoje é 17/10 × 15/10 (2 dias), porque a coleta de 16/10 falhou (C14.1). Ex.: @lulaoficial +1,06% (+185.173), @brasilcomlula +6,41%, @evangelicoscomlula +9,15%, Facebook /LULA +0,34%.
+- Trends: período `now 1-d` (últimas 24 horas, um ponto a cada 8 minutos) na config, no `build_trends_caderno.py` (fora do método de picos, como o de 7 dias) e na página (botão "24 horas", eixo em hh:mm). `trends.yml` passa a rodar 3x ao dia (08h40, 14h40, 20h40).
+- Run 39065205773: 12 consultas, 181/181/180 pontos nas séries de 24 horas. Chromium: botão e eixo (17:00 … 13:48) corretos, sem erro; cards com a variação, sem rolagem a 390 px. Testes OK.
+- Ressalva: contagens arredondadas pela plataforma (ex.: "90 mil") podem esconder variação real.
+
 ## C15.1 — Google Transparência consulta todos os sites declarados ao TSE (2026-10-17) ✅
 
 - Correção apontada pelo usuário: a primeira versão consultava só 4 domínios escritos à mão (dois deles, lula.com.br e flaviobolsonaro.com.br, por suposição). Agora os domínios vêm de `data/tse/redes_presidencia_2026.json` — sites declarados pelas chapas 13 e 22 (titular e vice), sem redes sociais, encurtadores e plataformas genéricas, reduzidos ao domínio registrado — mais pt.org.br e partidoliberal.org.br: 41 domínios (13 da chapa 13, 26 da chapa 22 incluindo o vice Alfredo Gaspar).
