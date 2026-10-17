@@ -912,7 +912,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="gb-grid" id="gdGrid"></div>
     <h3 class="gt-fasetit">Veículos que mais aparecem entre os 5 primeiros no período</h3><div class="gb-grid" id="gdVeic"></div>
     <p class="yt-cloudnote" id="gdNote"></p></div>
-  <div class="card gb-card" id="nuCard"><div class="eyebrow">Google Notícias · universo do período todo</div><h2>O que a imprensa escreveu sobre cada candidato</h2>
+  <div class="card gb-card" id="nuCard"><div class="eyebrow">Google Notícias · universo · <span id="nuRecorte">período todo</span></div><h2>O que a imprensa escreveu sobre cada candidato</h2>
     <div class="odi-signal" id="nuStatus">Aguardando leitura.</div><div class="yt-stats" id="nuStats"></div>
     <h3 class="gt-fasetit">Nuvem de palavras dos títulos</h3>
     <div class="yt-clouds"><figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · títulos de notícias</figcaption><div class="yt-cloudbox" id="nuCloudA" style="--c:#c8102e"></div></figure><figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · títulos de notícias</figcaption><div class="yt-cloudbox" id="nuCloudB" style="--c:#1f8a3b"></div></figure></div>
@@ -920,7 +920,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <h3 class="gt-fasetit">Gephi · rede de coocorrência de palavras</h3><div class="odi-signal" id="nuNetStatus"></div><div class="nu-net"><svg id="nuNet" role="img" aria-label="Rede de coocorrência de palavras nos títulos das notícias"></svg></div><div id="nuNetCom"></div>
     <h3 class="gt-fasetit">Gephi · rede dos veículos que publicaram</h3><div class="odi-signal" id="nuVeStatus"></div><div class="nu-net"><svg id="nuVe" role="img" aria-label="Rede dos veículos ligados pela semelhança de agenda"></svg></div><div id="nuVeCom"></div><p class="yt-cloudnote" id="nuVeMet"></p>
     <p class="yt-cloudnote" id="nuMetodo"></p><p class="yt-cloudnote" id="nuNetMet"></p>
-    <p class="yt-cloudnote"><a href="./data/trends/noticias/corpus_iramuteq.txt" download>↓ Corpus IRaMuTeQ (TXT)</a> · <a href="./data/trends/noticias/rede_termos.gexf" download>↓ GEXF (Gephi)</a> · <a href="./data/trends/noticias/rede_termos_nos.csv" download>↓ nós (CSV)</a> · <a href="./data/trends/noticias/rede_termos_arestas.csv" download>↓ arestas (CSV)</a> · <a href="./data/trends/noticias/rede_veiculos.gexf" download>↓ GEXF dos veículos (Gephi)</a> · <a href="./data/trends/noticias/rede_veiculos_nos.csv" download>↓ veículos (CSV)</a> · <a href="./data/trends/noticias/rede_veiculos_arestas.csv" download>↓ ligações entre veículos (CSV)</a> · <a href="./data/trends/noticias/titulos_unicos.csv" download>↓ títulos (CSV)</a> · <a href="./data/trends/noticias/texto.json" download>↓ JSON</a></p></div>
+    <p class="yt-cloudnote"><a href="./data/trends/noticias/corpus_iramuteq.txt" data-base="corpus_iramuteq" data-ext="txt" download>↓ Corpus IRaMuTeQ (TXT)</a> · <a href="./data/trends/noticias/rede_termos.gexf" data-base="rede_termos" data-ext="gexf" download>↓ GEXF (Gephi)</a> · <a href="./data/trends/noticias/rede_termos_nos.csv" data-base="rede_termos_nos" data-ext="csv" download>↓ nós (CSV)</a> · <a href="./data/trends/noticias/rede_termos_arestas.csv" data-base="rede_termos_arestas" data-ext="csv" download>↓ arestas (CSV)</a> · <a href="./data/trends/noticias/rede_veiculos.gexf" data-base="rede_veiculos" data-ext="gexf" download>↓ GEXF dos veículos (Gephi)</a> · <a href="./data/trends/noticias/rede_veiculos_nos.csv" data-base="rede_veiculos_nos" data-ext="csv" download>↓ veículos (CSV)</a> · <a href="./data/trends/noticias/rede_veiculos_arestas.csv" data-base="rede_veiculos_arestas" data-ext="csv" download>↓ ligações entre veículos (CSV)</a> · <a href="./data/trends/noticias/titulos_unicos.csv" data-base="titulos_unicos" data-ext="csv" download>↓ títulos (CSV)</a> · <a href="./data/trends/noticias/texto.json" data-base="texto" data-ext="json" download>↓ JSON</a></p></div>
   <div class="gt-geo">
     <div class="card"><div class="eyebrow">Por estado</div><h2 id="gtMapTitle"></h2><div class="gt-tiles" id="gtTiles"></div><div class="gt-legend" id="gtMapLegend"></div></div>
     <div class="card"><div class="eyebrow">Tabela por UF</div><div class="yt-tablewrap" style="max-height:470px"><table class="gt-tbl" id="gtTbl"></table></div></div>
@@ -2663,7 +2663,7 @@ async function carregar(){if(feito)return;feito=true;
 const sec=$('reuters');if(sec.classList.contains('active'))carregar();
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
 /* Caderno 05 · Universo das notícias (Google Notícias, período todo): nuvem, CHD, rede (data/trends/noticias/) */
-(function(){const $=id=>document.getElementById(id);if(!$('nuCard'))return;let feito=false;
+(function(){const $=id=>document.getElementById(id);if(!$('nuCard'))return;let atualSfx=null;
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';
 const mix=l=>{const a=[0xc8,0x10,0x2e],b=[0x1f,0x8a,0x3b];return 'rgb('+a.map((v,i)=>Math.round(b[i]+(v-b[i])*l)).join(',')+')';};
@@ -2675,14 +2675,17 @@ function desenhar(svg,nos,arestas,nRot=45,un='títulos'){const P=60,W=1000+2*P,i
  h+=nos.map(n=>`<circle cx="${n.x+P}" cy="${n.y+P}" r="${raio(n).toFixed(1)}" fill="${mix(n.lado)}" fill-opacity=".85" stroke="#fff" stroke-width=".6"><title>${esc(n.id)} · ${fmt(n.v)} ${un} (${fmt(n.l)} sobre Lula, ${fmt(n.f)} sobre Flávio)${n.palavras?' · '+n.palavras.slice(0,5).join(', '):''}</title></circle>`).join('');
  h+=[...nos].sort((a,b)=>b.v-a.v).slice(0,nRot).map(n=>`<text x="${n.x+P}" y="${n.y+P-raio(n)-2}" text-anchor="middle" font-size="12" font-family="Georgia,serif" fill="#172238" paint-order="stroke" stroke="#fffdf8" stroke-width="3">${esc(n.id)}</text>`).join('');
  svg.setAttribute('viewBox',`0 0 ${W} ${W}`);svg.innerHTML=h;}
-async function carregar(){if(feito)return;feito=true;
+async function carregar(sfx=''){if(sfx===atualSfx)return;atualSfx=sfx;
+ $('nuCard').querySelectorAll('a[data-base]').forEach(a=>{a.href=`./data/trends/noticias/${a.dataset.base}${sfx}.${a.dataset.ext}`;});
+ $('nuRecorte').textContent=sfx==='_24h'?'últimas 24 horas':sfx==='_7d'?'últimos 7 dias':'período todo (desde 20/07)';
  try{const j=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(u.split('/').pop()+' '+r.status);return r.json();});
-  const [T,R]=await Promise.all([j('./data/trends/noticias/texto.json'),j('./data/trends/noticias/rede_termos.json')]);
-  j('./data/trends/noticias/rede_veiculos.json').then(V=>{$('nuVeStatus').textContent=`${fmt(V.nos_total)} veículos · ${fmt(V.arestas_total)} ligações · ${V.comunidades.length} comunidades · modularidade ${String(V.modularidade).replace('.',',')}`;
+  const T=await j(`./data/trends/noticias/texto${sfx}.json`);if(!T.candidatos){$('nuStatus').textContent=T.status||'⛔ sem dados neste recorte';['nuStats','nuCloudA','nuCloudB','nuChd','nuNetCom','nuVeCom'].forEach(i=>$(i).innerHTML='');$('nuNet').innerHTML='';$('nuVe').innerHTML='';return;}
+  const R=await j(`./data/trends/noticias/rede_termos${sfx}.json`);
+  j(`./data/trends/noticias/rede_veiculos${sfx}.json`).then(V=>{$('nuVeStatus').textContent=`${fmt(V.nos_total)} veículos · ${fmt(V.arestas_total)} ligações · ${V.comunidades.length} comunidades · modularidade ${String(V.modularidade).replace('.',',')}`;
    desenhar($('nuVe'),V.nos,V.arestas,V.nos.length,'títulos');
    $('nuVeCom').innerHTML='<div class="yc-rows">'+V.comunidades.map(c=>`<div class="yc-row"><span>Grupo ${c.id+1} · ${c.nos} veículos · ${Math.round(100*c.lado_medio)}% Lula</span><span>${c.principais.map(esc).join(', ')} <small class="yt-meta">· pauta: ${c.palavras.slice(0,6).map(esc).join(', ')}</small></span></div>`).join('')+'</div>';
    $('nuVeMet').textContent=V.metodo;}).catch(e=>{$('nuVeStatus').textContent='⛔ Rede de veículos ainda não processada ('+e.message+').';});const A=T.candidatos[L],B=T.candidatos[F];
-  $('nuStatus').textContent=`${T.fonte} · ${br(T.periodo[0])}/${T.periodo[0].slice(0,4)} a ${br(T.periodo[1])}/${T.periodo[1].slice(0,4)} · processado em ${new Date(T.gerado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}`;
+  $('nuStatus').textContent=`${T.recorte?T.recorte+' · ':''}${T.fonte} · ${br(T.periodo[0])}/${T.periodo[0].slice(0,4)} a ${br(T.periodo[1])}/${T.periodo[1].slice(0,4)} · processado em ${new Date(T.gerado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}`;
   $('nuStats').innerHTML=[[A,CL],[B,CF]].map(([x,c])=>`<div class="yt-statcard" style="border-top-color:${c}"><h3>${esc(x.nome)}</h3><div class="yt-nums"><span><b>${fmt(x.titulos_unicos)}</b>títulos únicos</span><span><b>${fmt(x.itens)}</b>itens no feed</span><span><b>${fmt(x.veiculos)}</b>veículos</span><span><b>${fmt(x.dias)}</b>dias</span></div><div class="yt-meta">Mais frequentes: ${x.top_veiculos.slice(0,5).map(([v,n])=>`${esc(v)} (${fmt(n)})`).join(' · ')}${x.dias_no_limite_do_feed?` · ⚠️ ${x.dias_no_limite_do_feed} dias no limite de 100 itens do feed`:''}</div></div>`).join('');
   nuvem($('nuCloudA'),A.nuvem);nuvem($('nuCloudB'),B.nuvem);
   $('nuChd').innerHTML=[[A,CL],[B,CF]].map(([x,c])=>`<div><h3 style="font:700 15px Georgia,serif;color:${c}">${esc(x.nome)}${x.chd.classificados?` <small class="yt-meta">${fmt(x.chd.classificados)} de ${fmt(x.chd.amostra)} títulos classificados</small>`:''}</h3>${x.chd.classes?x.chd.classes.map(k=>`<div class="yc-classe" style="--c:${c}"><b>Classe ${k.classe} · ${String(k.pct).replace('.',',')}%</b><br>${k.formas.slice(0,14).map(f=>esc(f[0])).join(', ')}<ul class="nu-ex">${k.exemplos.slice(0,3).map(e=>`<li><a href="${esc(e.link)}" target="_blank" rel="noopener noreferrer">${esc(e.titulo)}</a> <small>${esc(e.veiculo)} · ${br(e.dia)}</small></li>`).join('')}</ul></div>`).join(''):`<p class="yt-meta">${esc(x.chd.status||'')}</p>`}</div>`).join('');
@@ -2691,8 +2694,10 @@ async function carregar(){if(feito)return;feito=true;
   $('nuNetCom').innerHTML='<div class="yc-rows">'+R.comunidades.map(c=>`<div class="yc-row"><span>Comunidade ${c.id+1} · ${c.nos} palavras · ${Math.round(100*c.lado_medio)}% Lula</span><span>${c.principais.map(esc).join(', ')}</span></div>`).join('')+'</div>';
   $('nuMetodo').textContent=T.metodo;$('nuNetMet').textContent=R.metodo+' Vermelho = Lula, verde = Flávio Bolsonaro.';
  }catch(e){$('nuStatus').textContent='⛔ Universo das notícias ainda não processado ('+e.message+').';}}
-const sec=document.getElementById('gTrends');if(sec.classList.contains('active'))carregar();
-new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
+const sfxDe=p=>p&&p.periodo==='now 1-d'?'_24h':p&&p.periodo==='now 7-d'?'_7d':'';
+const sec=document.getElementById('gTrends');if(sec.classList.contains('active'))carregar(sfxDe(window.GT_PERIODO));
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar(sfxDe(window.GT_PERIODO));}).observe(sec,{attributes:true,attributeFilter:['class']});
+document.addEventListener('gt:periodo',e=>{if(sec.classList.contains('active'))carregar(sfxDe(e.detail));});})();
 /* Caderno 05 · 5 primeiros do Google Notícias por dia, acompanhando o filtro de período do Trends (data/trends/google_noticias_diario.json) */
 (function(){const $=id=>document.getElementById(id);if(!$('gdCard'))return;
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -11,6 +11,7 @@ corpus_iramuteq.txt · titulos_unicos.csv
 from __future__ import annotations
 
 import csv
+import datetime as dt
 import gzip
 import json
 import math
@@ -94,7 +95,9 @@ def chd_titulos(titulos: list[dict], semente: int = SEMENTE) -> dict:
 
 def rede(docs: list[tuple[str, set]], ids: tuple[str, str]) -> tuple[nx.Graph, dict, dict]:
     n = len(docs)
-    par = {"min_titulos": max(15, n // 600), "max_nos": 150, "min_peso": max(5, n // 3000), "top_arestas": 8, "titulos": n}
+    pequeno = n < 1500  # recortes curtos (7 dias, 24 horas): limiares menores
+    par = {"min_titulos": max(3 if pequeno else 15, n // 600), "max_nos": 150, "min_peso": max(2 if pequeno else 5, n // 3000),
+           "top_arestas": 8, "titulos": n}
     g = br.montar(docs, ids, min_videos=par["min_titulos"], max_nos=par["max_nos"], min_peso=par["min_peso"], top_arestas=par["top_arestas"])
     info = br.analisar(g)
     nl, nf = sum(1 for c, _ in docs if c == ids[0]), sum(1 for c, _ in docs if c == ids[1])
@@ -197,6 +200,25 @@ def main(argv=None) -> int:
         rows = list(csv.DictReader(f, delimiter=";"))
     cfg = json.loads((root / "data/config/google_busca.json").read_text(encoding="utf-8"))
     fases = json.loads((root / "data/config/trends.json").read_text(encoding="utf-8")).get("fases", [])
+    agora = dt.datetime.now(dt.timezone.utc)
+    for sfx, horas, rotulo in (("", None, "período todo"), ("_7d", 24 * 7, "últimos 7 dias"), ("_24h", 24, "últimas 24 horas")):
+        if horas is None:
+            sub = rows
+        else:
+            corte = (agora - dt.timedelta(hours=horas)).strftime("%Y-%m-%dT%H:%M:%SZ")
+            sub = [r for r in rows if (r.get("data_publicacao") or "") >= corte]
+        print(f"== {rotulo}: {len(sub)} itens")
+        if not sub:
+            (pasta / f"texto{sfx}.json").write_text(json.dumps({"schema_version": 1, "recorte": rotulo, "status": f"⛔ nenhuma notícia nas {rotulo}"},
+                                                              ensure_ascii=False), encoding="utf-8")
+            continue
+        gerar(sub, pasta, sfx, rotulo, cfg, fases)
+    return 0
+
+
+def gerar(rows: list[dict], pasta: Path, sfx: str, rotulo: str, cfg: dict, fases: list[dict]) -> None:
+    """Uma rodada completa (nuvem, CHD, redes, corpus) para um recorte do universo; arquivos com sufixo sfx."""
+    pequeno = len(rows) < 1500
     nomes = {c["nome"] for c in cfg["consultas"].values()}
     excluir = {t for nm in nomes for t in bc.norm(nm).split()} | {"luiz", "inacio", "silva", "flavio"}
     ids = tuple(cfg["consultas"])
@@ -204,7 +226,7 @@ def main(argv=None) -> int:
     por = defaultdict(list)
     for t in tit:
         por[t["candidate_id"]].append(t)
-    out = {"schema_version": 1, "gerado_em_utc": now_utc(), "fonte": "Google Notícias · RSS de busca (universo diário)",
+    out = {"schema_version": 1, "recorte": rotulo, "gerado_em_utc": now_utc(), "fonte": "Google Notícias · RSS de busca (universo diário)",
            "periodo": [min(r["dia"] for r in rows), max(r["dia"] for r in rows)] if rows else None,
            "metodo": ("Universo: tudo o que o RSS de busca do Google Notícias devolve, dia a dia, para o nome de cada candidato "
                       "(até 100 itens por dia e busca: dias que atingem o limite estão subrepresentados). Unidade: o título, uma vez "
@@ -223,7 +245,7 @@ def main(argv=None) -> int:
             "dias_no_limite_do_feed": sum(1 for n in dias.values() if n >= 100), "veiculos": len(veic),
             "top_veiculos": veic.most_common(15),
             "por_fase": {f["id"]: sum(1 for t in ts if fase_de(t["dia"], fases) == f["id"]) for f in fases},
-            "nuvem": bc.nuvem([t["titulo"] for t in ts], excluir, top=70, minimo=5),
+            "nuvem": bc.nuvem([t["titulo"] for t in ts], excluir, top=70, minimo=2 if pequeno else 5),
             "chd": chd_titulos(ts)}
     # rede (palavras soltas, como no caderno 04)
     docs = [(t["candidate_id"], {x for x in bc.termos(t["titulo"], excluir) if " " not in x and not x.startswith("#")}) for t in tit]
@@ -244,13 +266,13 @@ def main(argv=None) -> int:
           "nos": [{"id": n, "x": d["x"], "y": d["y"], "v": d["videos"], "l": d["lula"], "f": d["flavio"], "lado": d["lado"],
                    "c": d["comunidade"], "g": d["grau"], "b": d["intermediacao"]} for n, d in sorted(g.nodes(data=True))],
           "arestas": [[a, b, d["weight"]] for a, b, d in sorted(g.edges(data=True))]}
-    (pasta / "rede_termos.json").write_text(json.dumps(rt, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    with open(pasta / "rede_termos_nos.csv", "w", encoding="utf-8", newline="") as f:
+    (pasta / f"rede_termos{sfx}.json").write_text(json.dumps(rt, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    with open(pasta / f"rede_termos_nos{sfx}.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Id", "Label", "titulos", "titulos_lula", "titulos_flavio", "lado_lula", "comunidade", "grau", "intermediacao", "x", "y"])
         for n in rt["nos"]:
             w.writerow([n["id"], n["id"], n["v"], n["l"], n["f"], n["lado"], n["c"] + 1, n["g"], n["b"], n["x"], n["y"]])
-    with open(pasta / "rede_termos_arestas.csv", "w", encoding="utf-8", newline="") as f:
+    with open(pasta / f"rede_termos_arestas{sfx}.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Source", "Target", "Weight", "Type"])
         w.writerows([a, b, p, "Undirected"] for a, b, p in rt["arestas"])
@@ -262,9 +284,9 @@ def main(argv=None) -> int:
                          "color": {"r": r_, "g": g_, "b": b_, "a": 1.0}})
     for a, b, d in g.edges(data=True):
         gx.add_edge(a, b, weight=d["weight"])
-    nx.write_gexf(gx, pasta / "rede_termos.gexf")
+    nx.write_gexf(gx, pasta / f"rede_termos{sfx}.gexf")
     # rede de veículos (semelhança de agenda)
-    gv, iv = rede_veiculos(tit, ids, excluir)
+    gv, iv = rede_veiculos(tit, ids, excluir, min_titulos=3 if pequeno else 10)
     cv = iv.get("comunidades", [])
     rv = {"schema_version": 1, "gerado_em_utc": out["gerado_em_utc"],
           "metodo": (f"Rede dos veículos que publicaram: nó = veículo com {iv['min_titulos']}+ títulos sobre os candidatos "
@@ -283,13 +305,13 @@ def main(argv=None) -> int:
                    "f": d["flavio"], "lado": d["lado"], "c": d.get("comunidade", 0), "g": d.get("grau", 0),
                    "b": d.get("intermediacao", 0), "palavras": d["palavras"]} for n, d in sorted(gv.nodes(data=True))],
           "arestas": [[a, b, d["weight"]] for a, b, d in sorted(gv.edges(data=True))]}
-    (pasta / "rede_veiculos.json").write_text(json.dumps(rv, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    with open(pasta / "rede_veiculos_nos.csv", "w", encoding="utf-8", newline="") as f:
+    (pasta / f"rede_veiculos{sfx}.json").write_text(json.dumps(rv, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    with open(pasta / f"rede_veiculos_nos{sfx}.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Id", "Label", "dominio", "titulos", "titulos_lula", "titulos_flavio", "lado_lula", "comunidade", "grau", "intermediacao", "palavras", "x", "y"])
         for n in rv["nos"]:
             w.writerow([n["id"], n["id"], n["dominio"], n["v"], n["l"], n["f"], n["lado"], n["c"] + 1, n["g"], n["b"], " ".join(n["palavras"]), n["x"], n["y"]])
-    with open(pasta / "rede_veiculos_arestas.csv", "w", encoding="utf-8", newline="") as f:
+    with open(pasta / f"rede_veiculos_arestas{sfx}.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Source", "Target", "Weight", "Type"])
         w.writerows([a, b, p, "Undirected"] for a, b, p in rv["arestas"])
@@ -302,28 +324,27 @@ def main(argv=None) -> int:
                          "color": {"r": r_, "g": g_, "b": b_, "a": 1.0}})
     for a, b, d in gv.edges(data=True):
         gx.add_edge(a, b, weight=d["weight"])
-    nx.write_gexf(gx, pasta / "rede_veiculos.gexf")
+    nx.write_gexf(gx, pasta / f"rede_veiculos{sfx}.gexf")
     out["rede_veiculos"] = {"nos": rv["nos_total"], "arestas": rv["arestas_total"], "comunidades": len(cv), "modularidade": rv["modularidade"]}
     print(f"rede de veículos: {rv['nos_total']} veículos, {rv['arestas_total']} ligações, {len(cv)} comunidades, modularidade {rv['modularidade']}")
     # corpus IRaMuTeQ e lista de títulos únicos
-    with open(pasta / "corpus_iramuteq.txt", "w", encoding="utf-8") as f:
+    with open(pasta / f"corpus_iramuteq{sfx}.txt", "w", encoding="utf-8") as f:
         for t in sorted(tit, key=lambda t: (t["candidate_id"], t["dia"], int(t["posicao"]))):
             txt = re.sub(r"[*\n\r]", " ", t["titulo"]).strip()
             f.write(f"**** *cand_{SLUG.get(t['candidate_id'], t['candidate_id'])} *fase_{fase_de(t['dia'], fases)} "
                     f"*mes_{t['dia'][5:7]} *veic_{slug(t['veiculo'] or t['dominio'])}\n{txt}\n")
-    with open(pasta / "titulos_unicos.csv", "w", encoding="utf-8", newline="") as f:
+    with open(pasta / f"titulos_unicos{sfx}.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, ["candidate_id", "dia", "posicao", "titulo", "veiculo", "dominio", "link", "repeticoes"],
                            delimiter=";", lineterminator="\n", extrasaction="ignore")
         w.writeheader()
         w.writerows(sorted(tit, key=lambda t: (t["candidate_id"], t["dia"], int(t["posicao"]))))
     out["rede"] = {"nos": rt["nos_total"], "arestas": rt["arestas_total"], "comunidades": len(comms), "modularidade": rt["modularidade"]}
-    (pasta / "texto.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (pasta / f"texto{sfx}.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     for c in out["candidatos"].values():
         k = c["chd"].get("classes")
         print(f"{c['nome']}: {c['itens']} itens, {c['titulos_unicos']} títulos únicos, {c['veiculos']} veículos, "
               f"{c['dias_no_limite_do_feed']} dias no limite; CHD {len(k) if k else c['chd'].get('status')} classes")
     print(f"rede: {rt['nos_total']} nós, {rt['arestas_total']} arestas, {len(comms)} comunidades, modularidade {rt['modularidade']}")
-    return 0
 
 
 if __name__ == "__main__":
