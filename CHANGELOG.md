@@ -13,6 +13,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Run 38990134816 (Trends, 17/10 01h16 UTC): testes OK, coleta OK — 9 consultas em `data/trends/2026-10-17/011626`.
 - As anotações novas mostraram a causa principal nos demais workflows: `test_noticias_texto` falhava com `No module named 'scipy'` — a rede de veículos (C13.1) usava `kamada_kawai_layout`, que exige scipy, e os workflows instalam só networkx e numpy. O mesmo erro fazia a análise do universo das notícias falhar em silêncio no `google-busca.yml` (passo com continue-on-error). Correção: layout Fruchterman-Reingold (sem scipy) no componente principal. Recalculado com os dados atuais: 35 veículos, 130 ligações, 6 comunidades, modularidade 0,171.
 - Teste: suíte completa OK num venv Python 3.12 com só networkx 3.6.1 e numpy 2.3.4 (como nos workflows).
+- Redisparos após a correção: google-busca, seguidores-youtube, tiktok e tiktok-hashtags OK; comentarios-youtube coletou e publicou agregados, mas o push no repositório privado foi recusado (provável concorrência) — o passo agora faz pull --rebase e tenta 3 vezes.
 - Lição registrada: dependência nova em script coberto por teste precisa entrar nos workflows ou o teste precisa pular quando ela falta.
 
 ## C14.0 — Reuters Digital News Report 2022 e 2026: dados do Brasil (2026-10-16) ✅

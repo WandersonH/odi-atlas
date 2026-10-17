@@ -71,7 +71,8 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -q -m "Comentários YouTube (run ${{ github.run_id }})"
-          git push -q origin HEAD:main
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          echo "::error title=Repositório privado::push recusado após 3 tentativas"; exit 1
       - name: Resumo
         if: always()
         run: |
