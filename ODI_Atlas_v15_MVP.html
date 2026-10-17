@@ -511,6 +511,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .yt-cloudbox{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 12px;min-height:220px;padding:6px 4px;line-height:1.05}
 .yt-word{font-family:Georgia,'Times New Roman',serif;font-weight:700;cursor:default;white-space:nowrap}
 .yt-word.yt-hash{font-family:'Courier New',monospace;font-weight:700}
+#kwCloudA .yt-word{color:#c8102e}#kwCloudB .yt-word{color:#1f8a3b}
 #ytCloudA .yt-word{color:var(--yt-a)}#ytCloudB .yt-word{color:var(--yt-b)}
 .yt-word.yt-hit{outline:2px solid var(--yt-axis);outline-offset:2px}
 .yt-cloudnote{font-size:11.5px;color:#5d6a76;margin:2px 0 14px}
@@ -1022,6 +1023,18 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="tkInfNote"></p>
   </div>
 </section>
+<section class="panel" id="kwContent" aria-label="Caderno 02 (Kwai) Conteúdo no Kwai por tema">
+  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · KWAI</span><span>DESDE 16 AGO 2026 · PERFIS DECLARADOS AO TSE</span></div>
+  <div class="intro odi-map-hero"><div class="eyebrow">Kwai público · chapas 13 e 22</div>
+    <h1>O que cada campanha publica no Kwai.<br><em>Vídeo curto, por tema.</em></h1>
+    <p>Vídeos dos perfis de Kwai declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>. Mesmas regras do TikTok e do YouTube: temas por dicionário aberto aplicado à legenda, marcas de "cita o adversário" e "pede voto"; taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.</p>
+  </div>
+  <div class="odi-signal" id="kwStatus" role="status">Aguardando leitura.</div>
+  <div class="yt-stats" id="kwStats"></div>
+  <div class="yt-clouds"><figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · o que dizem as legendas</figcaption><div class="yt-cloudbox" id="kwCloudA"></div></figure><figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · o que dizem as legendas</figcaption><div class="yt-cloudbox" id="kwCloudB"></div></figure></div>
+  <div class="grid2"><div class="card"><div class="eyebrow" style="color:#c8102e">Lula · vídeos mais recentes</div><div id="kwListA"></div></div><div class="card"><div class="eyebrow" style="color:#1f8a3b">Flávio Bolsonaro · vídeos mais recentes</div><div id="kwListB"></div></div></div>
+  <div class="card yc-block"><div class="eyebrow">Método e fonte</div><p class="yt-cloudnote" id="kwMetodo"></p><p class="yt-cloudnote" id="kwPerfis"></p><p class="yt-cloudnote"><a href="./data/kwai/conteudo.json" download>↓ Conteúdo (JSON)</a> · <a href="./data/kwai/videos.csv.gz" download>↓ Vídeos (CSV)</a> · <a href="./data/kwai/perfis.csv" download>↓ Perfis por dia (CSV)</a> · <a href="./data/config/kwai.json" download>↓ Configuração</a></p></div>
+</section>
 <section class="panel" id="adsLib" aria-label="Caderno 02 (Anúncios) Bibliotecas de anúncios Meta e Google">
   <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · ANÚNCIOS PAGOS</span><span>DESDE 20 JUL 2026 · BIBLIOTECAS PÚBLICAS</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Impulsionamento · Meta e Google</div>
@@ -1272,9 +1285,9 @@ function ytAplicarApi(f){
 }
 const janelaTxt=p=>p.api&&p.api.janela?`${p.api.janela.videos} vídeos · ${dataBR(p.api.janela.de.slice(0,10)).slice(0,5)}–${dataBR(p.api.janela.ate.slice(0,10)).slice(0,5)}`:'';
 let tab='overview';
-const GRUPOS={panorama:['overview'],campanhas:['ytContent','tkContent','adsLib'],audiencia:['followers','profiles','history','blade'],comentarios:['ytComments'],buscas:['gTrends'],territorio:['electorate','internet','reuters','scale'],metodo:['leiaMe','declarations']};
+const GRUPOS={panorama:['overview'],campanhas:['ytContent','tkContent','kwContent','adsLib'],audiencia:['followers','profiles','history','blade'],comentarios:['ytComments'],buscas:['gTrends'],territorio:['electorate','internet','reuters','scale'],metodo:['leiaMe','declarations']};
 const GRUPO_DE=Object.fromEntries(Object.entries(GRUPOS).flatMap(([g,ids])=>ids.map(i=>[i,g])));
-const SUBROT={ytContent:'YouTube',tkContent:'TikTok',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
+const SUBROT={ytContent:'YouTube',tkContent:'TikTok',kwContent:'Kwai',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
 function setTab(t){if(!document.getElementById(t))return;tab=t;document.querySelectorAll('.navbutton').forEach(b=>b.classList.toggle('active',b.dataset.group===(GRUPO_DE[t]||t)));document.querySelectorAll('.subtabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tab===t)));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===t));window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.goto)));
 function save(filename,str,type){const blob=new Blob([str],{type:type||'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}function toCsv(head,rows){return '\ufeff'+[head.map(csvCell).join(';'),...rows.map(row=>row.map(csvCell).join(';'))].join('\n')}
@@ -2472,6 +2485,24 @@ if(sec.classList.contains('active'))carregar();
 })();
 </script>
 <script>
+/* Caderno 02 · Kwai (data/kwai/conteudo.json e manifesto_latest.json) */
+(function(){const $=id=>document.getElementById(id);const sec=$('kwContent');if(!sec)return;let feito=false;
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const pc=x=>x==null?'—':(x*100).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
+const L='280002542548',F='280002551544';const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',sem_tema:'Sem tema'};
+function nuvem(box,l){if(!l||!l.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes.</p>';return;}const mx=l[0][1],mn=l[l.length-1][1];
+ box.innerHTML=[...l].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} vídeos">${esc(t)}</span>`;}).join('');}
+async function carregar(){if(feito)return;feito=true;const j=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(u.split('/').pop()+' '+r.status);return r.json();});
+ let M=null;try{M=await j('./data/kwai/manifesto_latest.json');}catch(e){}
+ if(M)$('kwPerfis').textContent=`Perfis: ${(M.perfis||[]).map(p=>`@${p.perfil} (${p.candidato}${p.seguidores!=null?', '+fmt(p.seguidores)+' seguidores':''}; ${fmt(p.videos_no_acervo)} vídeos no acervo)`).join(' · ')||'—'}. ${M.fora||''} Coleta: ${M.ferramenta||''}${M.custo_usd!=null?' · custo da última execução US$ '+String(M.custo_usd).replace('.',','):''}.`;
+ try{const D=await j('./data/kwai/conteudo.json');const A=D.candidatos[L],B=D.candidatos[F];
+  $('kwStatus').textContent=`${M&&M.status&&M.status!=='ok'?M.status+' · ':''}Coleta de ${new Date(D.coletado_em_utc||D.gerado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})} · ${D.fonte}`;
+  $('kwStats').innerHTML=[[A,'#c8102e'],[B,'#1f8a3b']].filter(x=>x[0]).map(([x,c])=>{const t=Object.entries(x.por_tema).filter(([k])=>k!=='sem_tema'),mx=Math.max(1,...t.map(([,n])=>n));return `<div class="yt-statcard" style="border-top-color:${c}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(x.total_videos)}</b>vídeos desde 16/08</span><span><b>${fmt(x.totais.visualizacoes)}</b>visualizações</span><span><b>${fmt(x.totais.curtidas)}</b>curtidas</span><span><b>${fmt(x.totais.comentarios)}</b>comentários</span><span><b>${fmt(x.totais.compartilhamentos)}</b>compartilhamentos</span><span><b>${pc(x.taxa_interacao_mediana)}</b>interação mediana</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div><div class="yt-bars" style="--bar:${c}">${t.map(([k,n])=>`<div class="yt-bar"><span>${esc(ROT[k]||k)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');
+  nuvem($('kwCloudA'),A&&A.nuvem);nuvem($('kwCloudB'),B&&B.nuvem);
+  const lista=x=>x&&x.videos.length?x.videos.slice(0,15).map(v=>`<div class="yt-item"><div><h4><a href="${esc(v.url)}" target="_blank" rel="noopener">${esc((v.legenda||'(sem legenda)').slice(0,160))}</a></h4><div class="yt-meta">${v.publicado_em?new Date(v.publicado_em).toLocaleDateString('pt-BR'):'—'} · @${esc(v.perfil)} · ${fmt(v.visualizacoes)} visualizações · ${fmt(v.curtidas)} curtidas · ${fmt(v.comentarios)} comentários · interação ${pc(v.taxa_interacao)}</div><div class="yt-tags">${v.temas.map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')}${v.pede_voto?'<span class="yt-tag">pede voto</span>':''}${v.cita_adversario?'<span class="yt-tag">cita o adversário</span>':''}</div></div></div>`).join(''):'<p class="yt-meta">Nenhum vídeo coletado.</p>';
+  $('kwListA').innerHTML=lista(A);$('kwListB').innerHTML=lista(B);$('kwMetodo').textContent=D.metodo;
+ }catch(e){$('kwStatus').textContent=`⛔ ${M&&M.status?M.status:'Kwai ainda sem coleta'} (${e.message}).`;}}
+if(sec.classList.contains('active'))carregar();new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
 /* Caderno 02 · Criativos da Meta (data/meta/criativos.json) e prévias do Google */
 (function(){const $=id=>document.getElementById(id);if(!$('crCard'))return;
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
