@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.2 — Kwai: contas oficiais corretas e seguidores nos cards (2026-10-17) ⚠️
+
+- Correção de C18.1: o nome de usuário do Kwai diferencia maiúsculas. O TSE grava as URLs em maiúsculas e a 1ª carga pediu os nomes em minúsculas, o que trouxe outras contas ("Mateus Café" em `lulaoficial`; "Apoio Flávio Bolsonaro" em `flaviobolsonaro`). As grafias das páginas já indexadas no Atlas (`@Lulaoficial`, `@FlavioBolsonaro`) resolvem as contas oficiais. Os 8 vídeos da conta de apoio foram removidos do acervo e de `perfis.csv`; a comparação de nomes passou a respeitar maiúsculas.
+- Run 39072776525 (modo diário, teto US$ 0,10): @Lulaoficial 7.452.635 seguidores e 916 vídeos no perfil; @FlavioBolsonaro 755.997 seguidores e 958 vídeos; @podeespalhar 953. Vieram 30 vídeos de Flávio desde 16/08 (limite diário) e nenhum de Lula desde 16/08. A Apify informou 0 eventos cobrados.
+- Seguidores do Kwai em `data/seguidores/kwai_latest.csv` e `kwai_AAAA-MM-DD.csv` (URL declarada ao TSE, para casar com o card); `build_variacao_seguidores.py` inclui o Kwai. Página "Quem acompanha": cards do Kwai passam de "indexado" (estimativa) para "Coleta automática (Kwai via Apify)". Chromium: cards de Lula (7,45 mi; 953) e Flávio (756 mil) exibidos, sem erro. Testes OK.
+- Pendente: carga histórica das contas oficiais (916 + 958 vídeos ≈ US$ 2,80 pela tabela do ator) — aguarda autorização de teto.
+
 ## C18.1 — Kwai: carga histórica com data dos posts (2026-10-17) ⚠️
 
 - Usuário cadastrou `APIFY_TOKEN_2` e pediu a carga histórica com a data dos posts.
