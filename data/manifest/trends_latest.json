@@ -1,11 +1,12 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-17T14:22:58Z",
+  "run_started_utc": "2026-10-17T20:05:10Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
     "periodos": [
+      "now 1-d",
       "now 7-d",
       "today 3-m",
       "eleitoral"
@@ -140,6 +141,35 @@
           "topico_tipo": "Presidente do Brasil"
         }
       ],
+      "periodo": "now 1-d",
+      "janela_trends": "now 1-d",
+      "geo": "BR",
+      "serie_pontos": 181,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        }
+      ],
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
@@ -251,6 +281,57 @@
           "topico_tipo": "Candidato a presidente do Brasil"
         }
       ],
+      "periodo": "now 1-d",
+      "janela_trends": "now 1-d",
+      "geo": "BR",
+      "serie_pontos": 181,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "primeiro_turno_5_topicos",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula",
+        "Augusto Cury",
+        "Renan Santos",
+        "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "/m/07s813b",
+          "modo": "topico",
+          "topico_titulo": "Augusto Cury",
+          "topico_tipo": "Médico e psiquiatra brasileiro"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "/m/04fw8x8",
+          "modo": "topico",
+          "topico_titulo": "Ronaldo Caiado",
+          "topico_tipo": "Candidato a presidente do Brasil"
+        }
+      ],
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
@@ -357,6 +438,31 @@
       "janela_trends": "2026-07-20 2026-10-17",
       "geo": "BR",
       "serie_pontos": 90,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_palavras",
+      "termos": [
+        "Flávio Bolsonaro",
+        "Lula"
+      ],
+      "itens": [
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        }
+      ],
+      "periodo": "now 1-d",
+      "janela_trends": "now 1-d",
+      "geo": "BR",
+      "serie_pontos": 180,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -437,6 +543,6 @@
     }
   ],
   "blocked": [],
-  "run_finished_utc": "2026-10-17T14:26:23Z",
+  "run_finished_utc": "2026-10-17T20:09:39Z",
   "status": "ok"
 }
