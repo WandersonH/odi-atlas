@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.3 — Kwai: carga histórica completa, capas e análises iguais às do TikTok (2026-10-17) 🔜
+
+- Autorização do usuário (17/10, 18h56): "pode completar, temos 5 dólares na conta". Teto da carga histórica US$ 4,50; teto mensal da conta secundária elevado a US$ 5 (`data/config/kwai.json`).
+- `collect_kwai_apify.py --historico`: sem data mínima, `onlyNewVideos` desligado (reentrega os vídeos já vistos para obter a capa), até 2.400 itens. Nova coluna `capa_url` (coverUrl do ator).
+- Bug corrigido: o bruto no repositório privado era gravado como `apify_AAAA-MM-DD_HH` e runs na mesma hora se sobrescreviam (só restou um dos 3 brutos de hoje). Agora inclui minuto e segundo.
+- Banco tratado (`videos.csv.gz`, `perfis.csv`) copiado também para `odi-atlas-interno/kwai/banco/` a cada run.
+- `build_miniaturas_kwai.py`: capas em JPEG de 180 px (`data/kwai/miniaturas/`), para vídeos desde 20/07 e os 60 de maior audiência de cada perfil; logo após a coleta, porque a URL da CDN expira.
+- Análises do Kwai com as mesmas regras do TikTok/YouTube (`plataformas.py` aceita `kwai`, acervo completo sem corte de data): livro de códigos, corpus IRaMuTeQ, CHD de Reinert, rede de coocorrência e rede de menções (`build_rede_mencoes_tiktok.py --kwai`). Execução local com o acervo atual (345 vídeos) rodou sem erro; os arquivos serão gerados pelo run da carga.
+- Testes: `python -m unittest discover -s tests` OK (inclui modo histórico e seleção de miniaturas).
+- Pendente: o run da carga histórica (ID e números na próxima entrada).
+
 ## C18.2 — Kwai: contas oficiais corretas e seguidores nos cards (2026-10-17) ⚠️
 
 - Correção de C18.1: o nome de usuário do Kwai diferencia maiúsculas. O TSE grava as URLs em maiúsculas e a 1ª carga pediu os nomes em minúsculas, o que trouxe outras contas ("Mateus Café" em `lulaoficial`; "Apoio Flávio Bolsonaro" em `flaviobolsonaro`). As grafias das páginas já indexadas no Atlas (`@Lulaoficial`, `@FlavioBolsonaro`) resolvem as contas oficiais. Os 8 vídeos da conta de apoio foram removidos do acervo e de `perfis.csv`; a comparação de nomes passou a respeitar maiúsculas.

@@ -2,10 +2,10 @@
  "ator": "unfenced-group~kwai-scraper",
  "preco_referencia": "a partir de US$ 1,49 por 1.000 itens de lista e US$ 1,99 por 1.000 com detalhe (página do ator, 17/10/2026)",
  "segredo": "APIFY_TOKEN_2",
- "autorizacao": "Usuário pediu em 17/10/2026 a página do Kwai com a conta secundária da Apify (APIFY_TOKEN_2), após a proposta de tetos: teste US$ 0,50; diário US$ 0,10. Carga histórica (pedido de 17/10, 18h46): todo o acervo dos perfis, com o restante do teto de teste (US$ 0,37 após o 1º teste).",
+ "autorizacao": "Usuário pediu em 17/10/2026 a página do Kwai com a conta secundária da Apify (APIFY_TOKEN_2), após a proposta de tetos: teste US$ 0,50; diário US$ 0,10. Carga histórica (pedido de 17/10, 18h46): todo o acervo dos perfis, com o restante do teto de teste (US$ 0,37 após o 1º teste). Carga histórica completa das contas oficiais (pedido de 17/10, 18h56): \"pode completar, temos 5 dólares na conta\" — teto da carga US$ 4,50; teto mensal elevado a US$ 5 (saldo informado).",
  "teto_teste_usd": 0.37,
  "teto_diario_usd": 0.1,
- "teto_mensal_usd": 3.0,
+ "teto_mensal_usd": 5.0,
  "desde": "2026-08-16",
  "max_videos_por_perfil_teste": 400,
  "max_videos_por_perfil_diario": 30,
@@ -34,5 +34,12 @@
  ],
  "fora": "O nome de usuário do Kwai diferencia maiúsculas: o TSE grava as URLs em maiúsculas e a 1ª carga pediu os nomes em minúsculas — 'lulaoficial' e 'flaviobolsonaro' são outras contas (\"Mateus Café\"; \"Apoio Flávio Bolsonaro\", que pede doação via Pix), descartadas. As contas oficiais são @Lulaoficial e @FlavioBolsonaro (grafia das páginas indexadas). ALFREDO GASPAR (vice 22) declarou só o link curto https://s.kw.ai/u/ECB8-VMN, que não abre (KEY_FORMAT_ERR).",
  "nota": "Kwai público via ator da Apify (unfenced-group/kwai-scraper), sem login: perfis declarados ao TSE pelas chapas 13 e 22, acervo histórico de vídeos com legenda, data, visualizações, curtidas, comentários e compartilhamentos. Coleta diária só dos vídeos novos; os números dos vídeos já coletados são os da primeira leitura (o ator não recobra o que já entregou).",
- "desde_carga_historica": ""
+ "desde_carga_historica": "",
+ "teto_historico_usd": 4.5,
+ "max_videos_por_perfil_historico": 2400,
+ "miniaturas": {
+  "desde": "2026-07-20",
+  "top_por_perfil": 60,
+  "largura_px": 180
+ }
 }

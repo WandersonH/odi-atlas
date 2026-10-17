@@ -41,11 +41,11 @@ def mistura(fr: float) -> str:
     return "#" + "".join(f"{round(b[i] + (a[i] - b[i]) * fr):02x}" for i in range(3))
 
 
-def montar(rows: list[dict]) -> nx.DiGraph:
+def montar(rows: list[dict], inicio: str = INICIO) -> nx.DiGraph:
     g = nx.DiGraph()
     vids = defaultdict(list)
     for r in rows:
-        if r["publicado_em"] < INICIO:
+        if r["publicado_em"] < inicio:
             continue
         origem = r["perfil"]
         if origem not in g:
@@ -97,21 +97,25 @@ def posicionar(g: nx.DiGraph):
 
 
 def main(argv=None) -> int:
+    argv = list(argv or [])
+    kwai = "--kwai" in argv  # Kwai: mesmo formato de acervo, histórico completo
+    argv = [a for a in argv if a != "--kwai"]
     root = Path(argv[0]) if argv else Path(".")
-    d = root / "data/tiktok"
+    d = root / ("data/kwai" if kwai else "data/tiktok")
+    nome, inicio = ("Kwai", "") if kwai else ("TikTok", INICIO)
     src = d / "videos.csv.gz"
     if not src.exists():
-        print("⛔ sem acervo do TikTok")
+        print(f"⛔ sem acervo do {nome}")
         return 1
     rows = list(csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"))
     por_id = {r["video_id"]: r for r in rows}
-    g = montar(rows)
+    g = montar(rows, inicio)
     sem = sorted(n for n in g.nodes if g.degree(n) == 0)
     posicionar(g)
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-           "metodo": ("Rede dirigida de menções: perfil de TikTok da campanha (declarado ao TSE) → conta marcada com @ na legenda; "
-                      "peso = nº de vídeos com a marcação, desde 16/08/2026. Mostra quem as campanhas CITAM (aliados, adversários, "
-                      "os próprios perfis). Quem fala DELAS no TikTok não é coletado: não há coleta gratuita (diagnóstico D1.1). "
+           "metodo": (f"Rede dirigida de menções: perfil de {nome} da campanha (declarado ao TSE) → conta marcada com @ na legenda; "
+                      f"peso = nº de vídeos com a marcação, {'em todo o acervo histórico' if kwai else 'desde 16/08/2026'}. Mostra quem as campanhas CITAM (aliados, adversários, "
+                      f"os próprios perfis). Quem fala DELAS no {nome} não entra nesta rede. "
                       "Cor: vermelho = campanha de Lula, verde = campanha de Flávio; contas marcadas pelas duas ficam na mistura."),
            "nos": [{"id": n, **{k: v for k, v in a.items()}} for n, a in sorted(g.nodes(data=True))],
            "arestas": [{"de": u, "para": v, "peso": a["weight"],
@@ -129,7 +133,7 @@ def main(argv=None) -> int:
         w.writerow(["Id", "Label", "tipo", "candidato", "marcacoes_recebidas", "marcacoes_feitas", "frac_lula", "url", "x", "y"])
         for n, a in sorted(g.nodes(data=True)):
             w.writerow([n, "@" + n, a["tipo"], a.get("candidato", ""), a["marcacoes_recebidas"], a["marcacoes_feitas"],
-                        a.get("frac_lula", ""), f"https://www.tiktok.com/@{n}", a.get("x"), a.get("y")])
+                        a.get("frac_lula", ""), (f"https://www.kwai.com/@{n}" if kwai else f"https://www.tiktok.com/@{n}"), a.get("x"), a.get("y")])
     with open(d / "rede_mencoes_arestas.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Source", "Target", "Weight", "Type"])
@@ -152,7 +156,7 @@ def main(argv=None) -> int:
     for u, v, a in g.edges(data=True):
         gx.add_edge(u, v, weight=a["weight"])
     nx.write_gexf(gx, d / "rede_mencoes.gexf")
-    print(f"menções TikTok: {g.number_of_nodes()} contas, {g.number_of_edges()} ligações; " +
+    print(f"menções {nome}: {g.number_of_nodes()} contas, {g.number_of_edges()} ligações; " +
           "; ".join(f"{c}: {v}" for c, v in out["resumo"].items()))
     return 0
 

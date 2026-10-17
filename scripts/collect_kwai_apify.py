@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Kwai das chapas 13 e 22 via Apify (ator unfenced-group/kwai-scraper), com teto de gasto. Token SOMENTE por APIFY_TOKEN_2.
 
+--historico: acervo completo (sem data inicial, reentrega vídeos já vistos para obter a capa), teto_historico_usd.
 --teste: carga inicial (vídeos desde 16/08, até max_videos_por_perfil_teste por perfil, teto de teste).
 sem opção: diário, só vídeos novos (onlyNewVideos), teto diário. Respeita o teto mensal somando data/kwai/manifesto-*.json.
 Saídas: data/kwai/videos.csv.gz (mesmo formato do TikTok), data/kwai/perfis.csv (seguidores etc. por dia),
@@ -24,7 +25,7 @@ from collect_meta_apify import run_actor  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS = ["candidate_id", "candidate_name", "perfil", "declarado_por", "video_id", "url", "publicado_em", "legenda", "duracao_s",
-        "visualizacoes", "curtidas", "comentarios", "compartilhamentos", "primeira_coleta", "ultima_coleta"]
+        "visualizacoes", "curtidas", "comentarios", "compartilhamentos", "primeira_coleta", "ultima_coleta", "capa_url"]
 PCOLS = ["data", "perfil", "candidate_id", "seguidores", "curtidas_total", "videos_total", "nome"]
 
 
@@ -76,14 +77,15 @@ def main(argv=None, executar=None) -> int:
     argv = list(argv or [])
     root = Path(".")
     cfg = json.loads((root / "data/config/kwai.json").read_text(encoding="utf-8"))
-    teste = "--teste" in argv
+    historico = "--historico" in argv
+    teste = "--teste" in argv or historico
     pasta = root / "data/kwai"
     pasta.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
-    teto = cfg["teto_teste_usd"] if teste else cfg["teto_diario_usd"]
+    teto = cfg["teto_historico_usd"] if historico else cfg["teto_teste_usd"] if teste else cfg["teto_diario_usd"]
     mes = agora[:7]
     ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pasta.glob(f"manifesto-{mes}-*.json")), 4)
-    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "diário",
+    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "histórico" if historico else "teste" if teste else "diário",
            "teto_usd": teto, "gasto_mes_antes_usd": ja, "perfis": [], "fora": cfg.get("fora")}
     token = os.environ.get("APIFY_TOKEN_2", "").strip()
     if not token and executar is None:
@@ -97,8 +99,9 @@ def main(argv=None, executar=None) -> int:
     executar = executar or (lambda payload, cap: run_actor(token, cfg["ator"], payload, cap))
     por_handle = {p["handle"]: p for p in cfg["perfis"]}
     desde = cfg.get("desde_carga_historica", cfg["desde"]) if teste else cfg["desde"]
+    maximo = cfg["max_videos_por_perfil_historico" if historico else "max_videos_por_perfil_teste" if teste else "max_videos_por_perfil_diario"]
     payload = {"profileHandles": list(por_handle), "includeProfileVideos": True, **({"postedAfter": desde} if desde else {}),
-               "maxItems": cfg["max_videos_por_perfil_teste" if teste else "max_videos_por_perfil_diario"], "onlyNewVideos": True}
+               "maxItems": maximo, "onlyNewVideos": not historico}
     try:
         run, itens = executar(payload, teto)
     except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
@@ -115,7 +118,7 @@ def main(argv=None, executar=None) -> int:
     if interno and itens:
         d = Path(interno) / "kwai"
         d.mkdir(parents=True, exist_ok=True)
-        with gzip.open(d / f"apify_{agora[:10]}_{agora[11:13]}.jsonl.gz", "wt", encoding="utf-8") as f:
+        with gzip.open(d / f"apify_{agora[:10]}_{agora[11:13]}{agora[14:16]}{agora[17:19]}.jsonl.gz", "wt", encoding="utf-8") as f:
             for x in itens:
                 f.write(json.dumps(x, ensure_ascii=False) + "\n")
     # reprocessa também os brutos anteriores (o ator não reentrega vídeos já entregues: onlyNewVideos)
@@ -152,7 +155,8 @@ def main(argv=None, executar=None) -> int:
                        "curtidas": inteiro(g(x, "likeCount", "likes", "stats.likes")),
                        "comentarios": inteiro(g(x, "commentCount", "comments", "stats.comments")),
                        "compartilhamentos": inteiro(g(x, "shareCount", "shares", "stats.shares")),
-                       "primeira_coleta": old.get("primeira_coleta") or agora, "ultima_coleta": agora}
+                       "primeira_coleta": old.get("primeira_coleta") or agora, "ultima_coleta": agora,
+                       "capa_url": g(x, "coverUrl", "firstFrameUrl", "thumbnail", "cover") or old.get("capa_url", "")}
         novos += 0 if old else 1
     with gzip.open(src, "wt", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, COLS, delimiter=";", lineterminator="\n")

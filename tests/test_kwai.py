@@ -35,5 +35,41 @@ class TestKwai(unittest.TestCase):
         self.assertIn("Kwai;https://www.kwai.com/u/@podeespalhar/Cu4CfgOx;1000", seg)  # URL declarada ao TSE, para casar com o card
 
 
+    def test_historico(self):
+        visto = {}
+
+        def fake(payload, cap):
+            visto.update(payload=payload, cap=cap)
+            return ({"id": "r", "status": "SUCCEEDED", "chargedEventCounts": {}},
+                    [{"recordType": "video", "videoId": "v9", "url": "https://www.kwai.com/@FlavioBolsonaro/video/v9", "caption": "a",
+                      "createTime": "2025-01-02T00:00:00Z", "viewCount": 5, "coverUrl": "https://p16-kimg.kwai.net/c.webp"}])
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as t:
+            (Path(t) / "data/config").mkdir(parents=True)
+            (Path(t) / "data/config/kwai.json").write_text((RAIZ / "data/config/kwai.json").read_text(encoding="utf-8"), encoding="utf-8")
+            os.chdir(t)
+            try:
+                self.assertEqual(k.main(["--historico"], executar=fake), 0)
+                rows = list(csv.DictReader(gzip.open("data/kwai/videos.csv.gz", "rt", encoding="utf-8"), delimiter=";"))
+                man = json.loads(Path("data/kwai/manifesto_latest.json").read_text(encoding="utf-8"))
+            finally:
+                os.chdir(cwd)
+        cfg = json.loads((RAIZ / "data/config/kwai.json").read_text(encoding="utf-8"))
+        self.assertNotIn("postedAfter", visto["payload"])  # acervo completo
+        self.assertFalse(visto["payload"]["onlyNewVideos"])  # reentrega os já vistos para obter a capa
+        self.assertEqual(visto["cap"], cfg["teto_historico_usd"])
+        self.assertLessEqual(cfg["teto_historico_usd"], cfg["teto_mensal_usd"])
+        self.assertEqual(man["modo"], "histórico")
+        self.assertEqual(rows[0]["capa_url"], "https://p16-kimg.kwai.net/c.webp")
+
+    def test_miniaturas(self):
+        import build_miniaturas_kwai as bm
+        rows = [{"video_id": str(i), "perfil": "a", "publicado_em": f"2025-0{1 + i % 8}-01", "visualizacoes": str(i), "capa_url": "u"} for i in range(5)]
+        rows.append({"video_id": "novo", "perfil": "b", "publicado_em": "2026-09-01", "visualizacoes": "0", "capa_url": "u"})
+        rows.append({"video_id": "semcapa", "perfil": "b", "publicado_em": "2026-09-02", "visualizacoes": "9", "capa_url": ""})
+        sel = {r["video_id"] for r in bm.selecionar(rows, "2026-07-20", 2)}
+        self.assertEqual(sel, {"4", "3", "novo"})
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,4 +1,4 @@
-"""Entrada única das análises (corpus/Bardin, CHD de Reinert, rede de coocorrência) para YouTube e TikTok.
+"""Entrada única das análises (corpus/Bardin, CHD de Reinert, rede de coocorrência) para YouTube, TikTok e Kwai.
 
 Converte o acervo de cada plataforma para o mesmo formato de linha usado pelo YouTube (candidate_id, channel_id,
 canal, video_id, publicado_em, titulo, descricao, duracao, visualizacoes, coletado_em, tags) e diz onde gravar
@@ -25,11 +25,19 @@ CAMINHOS = {
                "chd": "data/corpus/chd_reinert_tiktok.json",
                "amostra": "data/codificacao/amostra_populismo_tiktok_v1.csv",
                "rede": "data/tiktok/rede"},
+    "kwai": {"populismo": "data/kwai/populismo.json",
+             "corpus": "data/corpus/kwai_candidatos_iramuteq.txt",
+             "segmentos": "data/corpus/kwai_candidatos_segmentos.csv",
+             "chd": "data/corpus/chd_reinert_kwai.json",
+             "amostra": "data/codificacao/amostra_populismo_kwai_v1.csv",
+             "rede": "data/kwai/rede"},
 }
+# Kwai: acervo histórico completo (pedido de 17/10/2026), sem corte de data; TikTok: desde o início da campanha
+INICIO_POR_PLATAFORMA = {"tiktok": INICIO_CAMPANHA, "kwai": ""}
 
 
 def args(argv) -> tuple[Path, str]:
-    """[raiz] [--plataforma youtube|tiktok] → (raiz, plataforma). Sem argumentos: diretório atual, youtube."""
+    """[raiz] [--plataforma youtube|tiktok|kwai] → (raiz, plataforma). Sem argumentos: diretório atual, youtube."""
     argv = list(argv or [])
     plat = "youtube"
     if "--plataforma" in argv:
@@ -45,8 +53,9 @@ def videos(root: Path, plat: str) -> list[dict]:
     if plat == "youtube":
         return list(csv.DictReader(gzip.open(root / "data/youtube/videos_latest.csv.gz", "rt", encoding="utf-8"), delimiter=";"))
     out = []
-    for r in csv.DictReader(gzip.open(root / "data/tiktok/videos.csv.gz", "rt", encoding="utf-8"), delimiter=";"):
-        if r["publicado_em"] < INICIO_CAMPANHA:
+    inicio = INICIO_POR_PLATAFORMA[plat]
+    for r in csv.DictReader(gzip.open(root / f"data/{plat}/videos.csv.gz", "rt", encoding="utf-8"), delimiter=";"):
+        if r["publicado_em"] < inicio:
             continue
         out.append({"candidate_id": r["candidate_id"], "candidate_name": r["candidate_name"], "channel_id": r["perfil"],
                     "canal": r["perfil"], "video_id": r["video_id"], "publicado_em": r["publicado_em"], "titulo": "",

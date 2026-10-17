@@ -85,8 +85,9 @@ class TestPlataformas(unittest.TestCase):
         self.assertEqual(pl.args([]), (Path("."), "youtube"))
         self.assertEqual(pl.args(["/x", "--plataforma", "tiktok"]), (Path("/x"), "tiktok"))
         with self.assertRaises(SystemExit):
-            pl.args(["--plataforma", "kwai"])
-        self.assertNotEqual(pl.CAMINHOS["youtube"]["chd"], pl.CAMINHOS["tiktok"]["chd"])
+            pl.args(["--plataforma", "instagram"])
+        self.assertEqual(pl.args(["--plataforma", "kwai"])[1], "kwai")
+        self.assertEqual(len({pl.CAMINHOS[p]["chd"] for p in ("youtube", "tiktok", "kwai")}), 3)
 
     def test_tiktok_no_formato_do_youtube(self):
         import plataformas as pl

@@ -1,11 +1,15 @@
 name: Kwai — chapas 13 e 22 (Apify, conta secundária, teto de gasto)
 
-# Ator unfenced-group/kwai-scraper com APIFY_TOKEN_2. Tetos: teste US$ 0,50; diário US$ 0,10; mensal US$ 3.
+# Ator unfenced-group/kwai-scraper com APIFY_TOKEN_2. Tetos: teste US$ 0,50; diário US$ 0,10; carga histórica US$ 4,50; mensal US$ 5.
 on:
   workflow_dispatch:
     inputs:
       teste:
         description: "Carga inicial (vídeos desde 16/08; teto de teste)"
+        type: boolean
+        default: false
+      historico:
+        description: "Carga histórica completa (todo o acervo, com capas; teto US$ 4,50)"
         type: boolean
         default: false
   schedule:
@@ -21,7 +25,7 @@ permissions:
 jobs:
   kwai:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -44,21 +48,35 @@ jobs:
           APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           TESTE: ${{ github.event.inputs.teste }}
+          HISTORICO: ${{ github.event.inputs.historico }}
         run: |
-          if [ "$TESTE" = "true" ]; then a="--teste"; else a=""; fi
+          if [ "$HISTORICO" = "true" ]; then a="--historico"; elif [ "$TESTE" = "true" ]; then a="--teste"; else a=""; fi
           python scripts/collect_kwai_apify.py $a > k.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Kwai::$(echo "$l" | cut -c1-900)"; done < k.txt
+          exit $rc
+      - name: Miniaturas (capas; a URL da CDN expira, por isso logo após a coleta)
+        if: always()
+        continue-on-error: true
+        run: |
+          pip install -q pillow==11.3.0
+          python scripts/build_miniaturas_kwai.py > m.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Kwai miniaturas::$(echo "$l" | cut -c1-400)"; done < m.txt
           exit $rc
       - name: Conteúdo por tema (mesmas regras do TikTok)
         if: always()
         continue-on-error: true
         run: |
-          python scripts/build_tiktok.py --kwai > b.txt 2>&1; rc=$?
-          while IFS= read -r l; do echo "::notice title=Kwai conteúdo::$(echo "$l" | cut -c1-400)"; done < b.txt
+          pip install -q networkx==3.6.1 numpy==2.3.4
+          rc=0
+          { python scripts/build_tiktok.py --kwai && python scripts/corpus_populismo.py --plataforma kwai && python scripts/chd_reinert.py --plataforma kwai \
+            && python scripts/concordancia.py --plataforma kwai && python scripts/build_rede.py --plataforma kwai && python scripts/build_rede_mencoes_tiktok.py --kwai; } > b.txt 2>&1 || rc=$?
+          grep -v RuntimeWarning b.txt | grep -v "attraction =" | while IFS= read -r l; do echo "::notice title=Kwai análises::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Gravar bruto no repositório privado
         if: steps.interno.outputs.dir != ''
         run: |
+          mkdir -p "${{ steps.interno.outputs.dir }}/kwai/banco"
+          cp data/kwai/videos.csv.gz data/kwai/perfis.csv "${{ steps.interno.outputs.dir }}/kwai/banco/"
           cd "${{ steps.interno.outputs.dir }}"
           git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
           git add -A
