@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-10-17T20:30:28Z",
+ "coletado_em_utc": "2026-10-17T20:36:01Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -9,26 +9,31 @@
    "candidato": "Lula",
    "termo": "Lula",
    "paginas_api": null,
-   "limite_da_coleta": 1600,
-   "no_limite": false,
-   "anuncios": 440,
-   "paginas": 154,
+   "lidos_nesta_execucao": 850,
+   "limite_da_coleta": 850,
+   "no_limite": true,
+   "anuncios": 850,
+   "paginas": 266,
    "gasto": {
-    "min": 20847,
+    "min": 6260700,
     "max": null,
-    "faixas_abertas": 1
+    "faixas_abertas": 49
    },
    "impressoes": {
-    "min": 0,
+    "min": 494400000,
     "max": null,
-    "faixas_abertas": 440
+    "faixas_abertas": 363
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 435,
-    "facebook": 342
+    "instagram": 837,
+    "facebook": 687,
+    "audience_network": 25,
+    "threads": 18,
+    "whatsapp": 14,
+    "messenger": 7
    },
    "fases": [
     {
@@ -36,11 +41,11 @@
      "rotulo": "Pré-campanha",
      "de": "2026-07-20",
      "ate": "2026-08-15",
-     "anuncios": 59,
+     "anuncios": 170,
      "gasto": {
-      "min": 5498,
-      "max": 7147,
-      "faixas_abertas": 0
+      "min": 535400,
+      "max": null,
+      "faixas_abertas": 7
      }
     },
     {
@@ -48,11 +53,11 @@
      "rotulo": "Campanha do 1º turno",
      "de": "2026-08-16",
      "ate": "2026-10-04",
-     "anuncios": 348,
+     "anuncios": 270,
      "gasto": {
-      "min": 10887,
-      "max": 13041,
-      "faixas_abertas": 0
+      "min": 4525800,
+      "max": null,
+      "faixas_abertas": 16
      }
     },
     {
@@ -60,732 +65,156 @@
      "rotulo": "2º turno",
      "de": "2026-10-05",
      "ate": "2026-10-25",
-     "anuncios": 0,
+     "anuncios": 224,
      "gasto": {
-      "min": 0,
-      "max": 0,
-      "faixas_abertas": 0
+      "min": 786300,
+      "max": null,
+      "faixas_abertas": 4
      }
     }
    ],
    "regioes_gasto_min_estimado": [],
    "top_paginas": [
     {
-     "page_id": "464027120688299",
-     "pagina": "Leonel De Esquerda - Você É De Esquerda E Não Sabe",
-     "anuncios": 10,
-     "gasto": {
-      "min": 1909,
-      "max": 2103,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 10
-     },
-     "pagadores": [
-      "ELEICAO 2026 LEONEL QUERINO DA SILVA NETO DEPUTADO ESTADUAL",
-      "Leonel De Esquerda - Você É De Esquerda E Não Sabe"
-     ]
-    },
-    {
      "page_id": "267949976607343",
      "pagina": "Lula",
-     "anuncios": 44,
+     "anuncios": 175,
      "gasto": {
-      "min": 1008,
-      "max": 1264,
+      "min": 1585800,
+      "max": 1920295,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 97800000,
       "max": null,
-      "faixas_abertas": 44
+      "faixas_abertas": 49
      },
      "pagadores": [
+      "ELEICAO 2026 LUIZ INAC... ⋅ Digitally created",
       "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE",
       "Partido dos Trabalhadores"
      ]
     },
     {
-     "page_id": "128416167198648",
-     "pagina": "Marcelo Freixo",
-     "anuncios": 2,
-     "gasto": {
-      "min": 902,
-      "max": 1024,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "ELEICAO 2026 MARCELO RIBEIRO FREIXO DEPUTADO FEDERAL - 68.470.641/0001-43"
-     ]
-    },
-    {
-     "page_id": "109097553983879",
-     "pagina": "Luna Zarattini",
-     "anuncios": 1,
-     "gasto": {
-      "min": 900,
-      "max": 999,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "Luna Zarattini"
-     ]
-    },
-    {
-     "page_id": "106031434153186",
-     "pagina": "Pedro Pôncio Ex MST",
-     "anuncios": 7,
-     "gasto": {
-      "min": 844,
-      "max": 1009,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 7
-     },
-     "pagadores": [
-      "ELEICAO 2026 PEDRO BRUNO DE BARROS PONCIO DEPUTADO FEDERAL - 68.235.869/0001-59 - NOVO"
-     ]
-    },
-    {
-     "page_id": "115913574875497",
-     "pagina": "Ninamarinabraga",
-     "anuncios": 2,
-     "gasto": {
-      "min": 802,
-      "max": 924,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "ELEICAO 2026 MARINA PEREIRA BRAGA DEPUTADO ESTADUAL"
-     ]
-    },
-    {
-     "page_id": "421034447967783",
-     "pagina": "Coronel David",
-     "anuncios": 3,
-     "gasto": {
-      "min": 800,
-      "max": 1097,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 3
-     },
-     "pagadores": [
-      "Coronel David"
-     ]
-    },
-    {
-     "page_id": "759292450758577",
-     "pagina": "PCdoB/SP",
-     "anuncios": 1,
-     "gasto": {
-      "min": 800,
-      "max": 899,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "PCdoB SP"
-     ]
-    },
-    {
-     "page_id": "1195018403686389",
-     "pagina": "Coronel Pimenta - Pré Deputado Federal",
-     "anuncios": 1,
-     "gasto": {
-      "min": 800,
-      "max": 899,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "ELEICAO 2026 STEFAN DE OLIVEIRA PIMENTA DEPUTADO FEDERAL -68.553.061/0001-10 "
-     ]
-    },
-    {
-     "page_id": "174217422747805",
-     "pagina": "Humberto Costa",
-     "anuncios": 6,
-     "gasto": {
-      "min": 718,
-      "max": 945,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 6
-     },
-     "pagadores": [
-      "ELEICAO 2026 HUMBERTO SERGIO COSTA LIMA SENADOR",
-      "Humberto Sérgio Costa Lima"
-     ]
-    },
-    {
-     "page_id": "428795217537762",
-     "pagina": "Rodolfo Nogueira",
-     "anuncios": 2,
-     "gasto": {
-      "min": 715,
-      "max": 801,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "ELEICAO 2026 RODOLFO OLIVEIRA NOGUEIRA DEPUTADO FEDERAL"
-     ]
-    },
-    {
-     "page_id": "159596491802",
-     "pagina": "Rádio JBFM",
-     "anuncios": 4,
-     "gasto": {
-      "min": 700,
-      "max": 1096,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 4
-     },
-     "pagadores": [
-      "Rádio JBFM"
-     ]
-    },
-    {
      "page_id": "812731998761475",
      "pagina": "Elmano de Freitas",
-     "anuncios": 10,
+     "anuncios": 9,
      "gasto": {
-      "min": 654,
-      "max": 770,
+      "min": 680000,
+      "max": 795000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 9000000,
       "max": null,
-      "faixas_abertas": 10
+      "faixas_abertas": 9
      },
      "pagadores": [
       "ELEICAO 2026 ELMANO DE FREITAS DA COSTA GOVERNADOR"
      ]
     },
     {
-     "page_id": "220778897969256",
-     "pagina": "Zeca Dirceu",
-     "anuncios": 2,
-     "gasto": {
-      "min": 615,
-      "max": 701,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "Zeca Dirceu"
-     ]
-    },
-    {
-     "page_id": "257401334462190",
-     "pagina": "Antonio Donato Madormo",
+     "page_id": "108150038324294",
+     "pagina": "Sergio Moro",
      "anuncios": 1,
      "gasto": {
-      "min": 600,
-      "max": 699,
+      "min": 250000,
+      "max": 300000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 1000000,
       "max": null,
       "faixas_abertas": 1
      },
      "pagadores": [
-      "Antonio Donato Madormo"
-     ]
-    },
-    {
-     "page_id": "1441694696095209",
-     "pagina": "Brasil Atual",
-     "anuncios": 1,
-     "gasto": {
-      "min": 600,
-      "max": 699,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "Brasil Atual"
-     ]
-    },
-    {
-     "page_id": "230108600416232",
-     "pagina": "ABC Dados",
-     "anuncios": 1,
-     "gasto": {
-      "min": 500,
-      "max": 599,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "ABC Dados"
-     ]
-    },
-    {
-     "page_id": "529125213807667",
-     "pagina": "Reinhold Stephanes Junior",
-     "anuncios": 3,
-     "gasto": {
-      "min": 401,
-      "max": 613,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 3
-     },
-     "pagadores": [
-      "ELEICAO 2026 REINHOLD STEPHANES JUNIOR DEPUTADO FEDERAL",
-      "Reinhold Stephanes Junior"
-     ]
-    },
-    {
-     "page_id": "140347022821700",
-     "pagina": "Silvio Costa Filho",
-     "anuncios": 2,
-     "gasto": {
-      "min": 401,
-      "max": 514,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "Silvio Costa Filho"
-     ]
-    },
-    {
-     "page_id": "851094731588215",
-     "pagina": "Liana Cirne",
-     "anuncios": 1,
-     "gasto": {
-      "min": 400,
-      "max": 499,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "Liana Cirne"
-     ]
-    },
-    {
-     "page_id": "1405025743082214",
-     "pagina": "Coronel Alberto Feitosa",
-     "anuncios": 10,
-     "gasto": {
-      "min": 372,
-      "max": 541,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 10
-     },
-     "pagadores": [
-      "Alberto Jorge Nascimento Feitosa",
-      "ELEICAO 2026 ALBERTO JORGE DO NASCIMENTO FEITOSA DEPUTADO ESTADUAL"
-     ]
-    },
-    {
-     "page_id": "223382044339765",
-     "pagina": "Lindbergh Farias",
-     "anuncios": 22,
-     "gasto": {
-      "min": 309,
-      "max": 393,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 22
-     },
-     "pagadores": [
-      "ELEIÇÃO 2026 LUIZ LIND... ⋅ Digitally created",
-      "ELEIÇÃO 2026 LUIZ LINDBERGH FARIAS FILHO DEPUTADO FEDERAL"
-     ]
-    },
-    {
-     "page_id": "123884341029248",
-     "pagina": "João Jorge",
-     "anuncios": 1,
-     "gasto": {
-      "min": 300,
-      "max": 399,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "João Jorge de Souza"
-     ]
-    },
-    {
-     "page_id": "156951837773645",
-     "pagina": "Flavio Bolsonaro",
-     "anuncios": 3,
-     "gasto": {
-      "min": 205,
-      "max": 245,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 3
-     },
-     "pagadores": [
-      "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
+      "ELEICAO 2026 SERGIO FERNANDO MORO GOVERNADOR | CNPJ 68.456.168/0001-40"
      ]
     },
     {
      "page_id": "1216504185136925",
      "pagina": "Ciro Gomes",
-     "anuncios": 4,
+     "anuncios": 5,
      "gasto": {
-      "min": 200,
-      "max": 230,
+      "min": 207000,
+      "max": 238000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 4600000,
       "max": null,
       "faixas_abertas": 4
      },
      "pagadores": [
       "ELEICAO 2026 CIRO FERREIRA GOMES GOVERNADOR"
      ]
-    }
-   ]
-  },
-  "flavio": {
-   "candidato": "Flávio Bolsonaro",
-   "termo": "Flávio Bolsonaro",
-   "paginas_api": null,
-   "limite_da_coleta": 1600,
-   "no_limite": false,
-   "anuncios": 367,
-   "paginas": 141,
-   "gasto": {
-    "min": 61077,
-    "max": 73910,
-    "faixas_abertas": 0
-   },
-   "impressoes": {
-    "min": 0,
-    "max": null,
-    "faixas_abertas": 367
-   },
-   "moedas": [
-    "BRL"
-   ],
-   "plataformas": {
-    "instagram": 348,
-    "facebook": 247
-   },
-   "fases": [
-    {
-     "id": "pre",
-     "rotulo": "Pré-campanha",
-     "de": "2026-07-20",
-     "ate": "2026-08-15",
-     "anuncios": 92,
-     "gasto": {
-      "min": 27160,
-      "max": 34399,
-      "faixas_abertas": 0
-     }
     },
     {
-     "id": "turno1",
-     "rotulo": "Campanha do 1º turno",
-     "de": "2026-08-16",
-     "ate": "2026-10-04",
-     "anuncios": 224,
+     "page_id": "156951837773645",
+     "pagina": "Flavio Bolsonaro",
+     "anuncios": 13,
      "gasto": {
-      "min": 26022,
-      "max": 29138,
-      "faixas_abertas": 0
-     }
-    },
-    {
-     "id": "turno2",
-     "rotulo": "2º turno",
-     "de": "2026-10-05",
-     "ate": "2026-10-25",
-     "anuncios": 0,
-     "gasto": {
-      "min": 0,
-      "max": 0,
-      "faixas_abertas": 0
-     }
-    }
-   ],
-   "regioes_gasto_min_estimado": [],
-   "top_paginas": [
-    {
-     "page_id": "228158820563303",
-     "pagina": "André do Prado",
-     "anuncios": 43,
-     "gasto": {
-      "min": 15733,
-      "max": 17803,
+      "min": 176000,
+      "max": 210500,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 9700000,
       "max": null,
-      "faixas_abertas": 43
+      "faixas_abertas": 7
      },
      "pagadores": [
-      "ELEICAO 2026 ANDRE LUIS DO PRADO SENADOR - 68.464.743/0001-56 - PL - CORAGEM PARA SEGUIR AVANÇANDO (FEDERAÇÃO UNIÃO PROGRESSISTA(44-UNIÃO/11-PP) / REPUBLICANOS / PL / MDB / DEMOCRATA / PSD / FEDERAÇÃO RENOVAÇÃO SOLIDÁRIA(25-PRD/77-SOLIDARIEDADE) / AVANTE)",
-      "PARTIDO LIBERAL"
+      "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
      ]
     },
     {
-     "page_id": "110190561574954",
-     "pagina": "Inst. Conhecimento Liberta",
-     "anuncios": 17,
+     "page_id": "330300883714439",
+     "pagina": "Luizianne Lins",
+     "anuncios": 8,
      "gasto": {
-      "min": 2513,
-      "max": 2984,
+      "min": 130000,
+      "max": 158000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 8000000,
       "max": null,
-      "faixas_abertas": 17
+      "faixas_abertas": 8
      },
      "pagadores": [
-      "Instituto Conhecimento Liberta"
+      "ELEICAO 2026 LUIZIANNE DE OLIVEIRA LINS SENADOR"
      ]
     },
     {
-     "page_id": "108779085330708",
-     "pagina": "Alessandro de Jesus",
-     "anuncios": 4,
+     "page_id": "398434416879875",
+     "pagina": "Ronaldo Caiado",
+     "anuncios": 20,
      "gasto": {
-      "min": 2200,
-      "max": 2596,
+      "min": 118500,
+      "max": 145000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 13600000,
       "max": null,
-      "faixas_abertas": 4
+      "faixas_abertas": 10
      },
      "pagadores": [
-      "Alessandro de Jesus"
-     ]
-    },
-    {
-     "page_id": "474176645934058",
-     "pagina": "Wilson Lima",
-     "anuncios": 2,
-     "gasto": {
-      "min": 1800,
-      "max": 1998,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "Wilson Lima"
-     ]
-    },
-    {
-     "page_id": "494760090676746",
-     "pagina": "Altineu Côrtes",
-     "anuncios": 4,
-     "gasto": {
-      "min": 1727,
-      "max": 1926,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 4
-     },
-     "pagadores": [
-      "ELEICAO 2026 ALTINEU CORTES FREITAS COUTINHO DEPUTADO FEDERAL"
-     ]
-    },
-    {
-     "page_id": "485434228470137",
-     "pagina": "Tenente Coimbra",
-     "anuncios": 4,
-     "gasto": {
-      "min": 1700,
-      "max": 2096,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 4
-     },
-     "pagadores": [
-      "Matheus Coimbra Martins de Aguiar"
-     ]
-    },
-    {
-     "page_id": "1042447872549823",
-     "pagina": "Sargento Lima",
-     "anuncios": 2,
-     "gasto": {
-      "min": 1600,
-      "max": 1798,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "Eleição 2026 Carlos Henrique de Lima Deputado Federal CNPJ 68.438.341/0001-87"
-     ]
-    },
-    {
-     "page_id": "1314539265229539",
-     "pagina": "Renato Bolsonaro",
-     "anuncios": 4,
-     "gasto": {
-      "min": 1511,
-      "max": 1728,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 4
-     },
-     "pagadores": [
-      "Eleicao 2026 Renato Antonio Bolsonaro Deputado Federal"
-     ]
-    },
-    {
-     "page_id": "108513687218374",
-     "pagina": "Rogério Barra",
-     "anuncios": 3,
-     "gasto": {
-      "min": 1500,
-      "max": 1797,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 3
-     },
-     "pagadores": [
-      "Eleicao 2026 Hugo Rogerio Sarmanho Barra Deputado Federal",
-      "Rogério Barra"
-     ]
-    },
-    {
-     "page_id": "251685528306322",
-     "pagina": "Jair Bittencourt",
-     "anuncios": 3,
-     "gasto": {
-      "min": 1402,
-      "max": 1623,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 3
-     },
-     "pagadores": [
-      "ELEICAO 2026 JAIR DE SIQUEIRA BITTENCOURT JUNIOR DEPUTADO ESTADUAL"
+      "ELEICAO 2026 RONALDO RAMOS CAIADO PRESIDENTE",
+      "Partido Social Democrático - PSD Diretório Nacional"
      ]
     },
     {
      "page_id": "223382044339765",
      "pagina": "Lindbergh Farias",
-     "anuncios": 9,
+     "anuncios": 36,
      "gasto": {
-      "min": 1377,
-      "max": 1620,
+      "min": 111100,
+      "max": 141981,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 18600000,
       "max": null,
       "faixas_abertas": 9
      },
@@ -795,256 +224,844 @@
      ]
     },
     {
-     "page_id": "320224375133233",
-     "pagina": "Delegado Péricles",
-     "anuncios": 11,
+     "page_id": "311887468974835",
+     "pagina": "Nilto Tatto",
+     "anuncios": 5,
      "gasto": {
-      "min": 1053,
-      "max": 1100,
+      "min": 108500,
+      "max": 129000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 5000000,
       "max": null,
-      "faixas_abertas": 11
+      "faixas_abertas": 5
      },
      "pagadores": [
-      "ELEICAO 2026 PERICLES RODRIGUES DO NASCIMENTO DEPUTADO ESTADUAL"
+      "Deputado Federal Nilto Tatto",
+      "ELEICAO 2026 NILTO IGNACIO TATTO DEPUTADO FEDERAL"
      ]
     },
     {
-     "page_id": "190411254444841",
-     "pagina": "Otoni de Paula",
-     "anuncios": 3,
+     "page_id": "185105811599662",
+     "pagina": "Edinho Silva",
+     "anuncios": 15,
      "gasto": {
-      "min": 1000,
-      "max": 1297,
+      "min": 105500,
+      "max": 119500,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 3
-     },
-     "pagadores": [
-      "Otoni de Paula"
-     ]
-    },
-    {
-     "page_id": "104646105212317",
-     "pagina": "Delegada Tathiana Guzella",
-     "anuncios": 2,
-     "gasto": {
-      "min": 904,
-      "max": 1044,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "ELEICAO 2026 TATHIANA LAIZ GUZELLA DEPUTADO ESTADUAL"
-     ]
-    },
-    {
-     "page_id": "577255795999910",
-     "pagina": "Major Vitor Hugo",
-     "anuncios": 2,
-     "gasto": {
-      "min": 904,
-      "max": 1044,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "ELEICAO 2026 VITOR HUGO DE ARAUJO ALMEIDA DEPUTADO FEDERAL"
-     ]
-    },
-    {
-     "page_id": "327240367136474",
-     "pagina": "Laguiar",
-     "anuncios": 2,
-     "gasto": {
-      "min": 902,
-      "max": 1024,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "ELEICAO 2026 LETICIA AGUIAR DE BRITO RESENDE DEPUTADO ESTADUAL"
-     ]
-    },
-    {
-     "page_id": "540986972601727",
-     "pagina": "Marco Antonio Villa",
-     "anuncios": 2,
-     "gasto": {
-      "min": 900,
-      "max": 1098,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "Marco Antonio Villa"
-     ]
-    },
-    {
-     "page_id": "1414301995348590",
-     "pagina": "Delegado Pablo",
-     "anuncios": 1,
-     "gasto": {
-      "min": 900,
-      "max": 999,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "ELEICAO 2026 PABLO OLIVA SOUZA DEPUTADO FEDERAL"
-     ]
-    },
-    {
-     "page_id": "121075234233037",
-     "pagina": "Victor Jansen ",
-     "anuncios": 1,
-     "gasto": {
-      "min": 900,
-      "max": 999,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "Victor Jansen "
-     ]
-    },
-    {
-     "page_id": "2042050096056582",
-     "pagina": "Coronel Meira",
-     "anuncios": 1,
-     "gasto": {
-      "min": 900,
-      "max": 999,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "ELEICAO 2026 LUIZ DE FRANCA E SILVA MEIRA DEPUTADO FEDERAL"
-     ]
-    },
-    {
-     "page_id": "403456263539768",
-     "pagina": "Partido Liberal",
-     "anuncios": 4,
-     "gasto": {
-      "min": 813,
-      "max": 928,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 0,
+      "min": 9300000,
       "max": null,
       "faixas_abertas": 4
      },
      "pagadores": [
-      "Partido Liberal"
+      "ELEICAO 2026 EDSON ANTONIO EDINHO DA SILVA DEPUTADO FEDERAL 68.373.149/0001-50",
+      "Partido dos Trabalhadores"
      ]
     },
     {
-     "page_id": "108143861587898",
-     "pagina": "Mauricio Neves",
-     "anuncios": 7,
+     "page_id": "904277726319518",
+     "pagina": "Fernando Haddad",
+     "anuncios": 5,
      "gasto": {
-      "min": 803,
-      "max": 1242,
+      "min": 105000,
+      "max": 130000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 5000000,
+      "max": null,
+      "faixas_abertas": 5
+     },
+     "pagadores": [
+      "Coligação Desperta São Paulo - CNPJ: 68.553.001/0001-05"
+     ]
+    },
+    {
+     "page_id": "451890981576627",
+     "pagina": "Celso Sabino",
+     "anuncios": 9,
+     "gasto": {
+      "min": 80200,
+      "max": 107398,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 7850000,
       "max": null,
       "faixas_abertas": 7
      },
      "pagadores": [
-      "Mauricio Neves"
+      "Celso Sabino",
+      "ELEICAO 2026 CELSO SABINO DE OLIVEIRA SENADOR - 68.430.638/0001-04"
      ]
     },
     {
-     "page_id": "552483638152177",
-     "pagina": "Giovani Cherini",
-     "anuncios": 2,
+     "page_id": "1176267865563271",
+     "pagina": "Lula Pelo Brasil",
+     "anuncios": 21,
      "gasto": {
-      "min": 802,
-      "max": 924,
+      "min": 77300,
+      "max": 101498,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 8750000,
+      "max": 10200000,
+      "faixas_abertas": 0
+     },
+     "pagadores": [
+      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE",
+      "Partido dos Trabalhadores"
+     ]
+    },
+    {
+     "page_id": "339606729398017",
+     "pagina": "Roberto Requião",
+     "anuncios": 1,
+     "gasto": {
+      "min": 70000,
+      "max": 80000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1000000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "ELEICAO 2026 ROBERTO REQUIÃO MELLO E SILVA DEPUTADO FEDERAL - CNPJ: 68.464.683/0001-71 -  PDT"
+     ]
+    },
+    {
+     "page_id": "241140532664404",
+     "pagina": "Fernanda Melchionna",
+     "anuncios": 8,
+     "gasto": {
+      "min": 68000,
+      "max": 87000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 8000000,
+      "max": null,
+      "faixas_abertas": 8
+     },
+     "pagadores": [
+      "ELEICAO 2026 FERNANDA MELCHIONNA E SILVA DEPUTADO FEDERAL"
+     ]
+    },
+    {
+     "page_id": "244743189706914",
+     "pagina": "Evangélicos com Lula",
+     "anuncios": 6,
+     "gasto": {
+      "min": 66400,
+      "max": 77697,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 3350000,
       "max": null,
       "faixas_abertas": 2
      },
      "pagadores": [
-      "Deputado Federal Giovani Cherini",
-      "ELEIÇÃO 2026 GIOVANI CHERINI DEPUTADO FEDERAL"
+      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE"
      ]
     },
     {
-     "page_id": "285146924692337",
-     "pagina": "Márcia do PL",
-     "anuncios": 4,
+     "page_id": "114073650505247",
+     "pagina": "Jerônimo Rodrigues",
+     "anuncios": 2,
      "gasto": {
-      "min": 800,
-      "max": 1196,
+      "min": 65000,
+      "max": 76000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 2000000,
+      "max": null,
+      "faixas_abertas": 2
+     },
+     "pagadores": [
+      "ELEICAO 2026 JERONIMO RODRIGUES SOUZA GOVERNADOR"
+     ]
+    },
+    {
+     "page_id": "464027120688299",
+     "pagina": "Leonel De Esquerda - Você É De Esquerda E Não Sabe",
+     "anuncios": 8,
+     "gasto": {
+      "min": 62000,
+      "max": 80000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 5950000,
+      "max": null,
+      "faixas_abertas": 5
+     },
+     "pagadores": [
+      "ELEICAO 2026 LEONEL QUERINO DA SILVA NETO DEPUTADO ESTADUAL",
+      "Leonel De Esquerda - Você É De Esquerda E Não Sabe"
+     ]
+    },
+    {
+     "page_id": "388811064617464",
+     "pagina": "Delegado Eder Mauro",
+     "anuncios": 4,
+     "gasto": {
+      "min": 60000,
+      "max": 80000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 4000000,
       "max": null,
       "faixas_abertas": 4
      },
      "pagadores": [
-      "Márcia do PL"
+      "Eleicao 2026 Eder Mauro Cardoso Barra Senador"
      ]
     },
     {
-     "page_id": "219772558144985",
-     "pagina": "Thiago Bagatin",
+     "page_id": "105821366170914",
+     "pagina": "PT - Partido dos Trabalhadores",
      "anuncios": 2,
      "gasto": {
-      "min": 800,
-      "max": 998,
+      "min": 60000,
+      "max": 70000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 0,
+      "min": 2000000,
       "max": null,
       "faixas_abertas": 2
      },
      "pagadores": [
-      "Thiago Bagatin"
+      "Partido dos Trabalhadores"
+     ]
+    },
+    {
+     "page_id": "163790763963427",
+     "pagina": "Zoe Martinez",
+     "anuncios": 6,
+     "gasto": {
+      "min": 59000,
+      "max": 81000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 6000000,
+      "max": null,
+      "faixas_abertas": 6
+     },
+     "pagadores": [
+      "ELEICAO 2026 ZOE MARIA FERNANDEZ MARTINEZ DEPUTADO FEDERAL"
+     ]
+    },
+    {
+     "page_id": "604453922952420",
+     "pagina": "Patrus Ananias",
+     "anuncios": 8,
+     "gasto": {
+      "min": 55000,
+      "max": 70000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 7250000,
+      "max": null,
+      "faixas_abertas": 7
+     },
+     "pagadores": [
+      "ELEICAO 2026 PATRUS ANANIAS DE SOUZA GOVERNADOR"
+     ]
+    },
+    {
+     "page_id": "398858610176824",
+     "pagina": "Renildo Calheiros",
+     "anuncios": 1,
+     "gasto": {
+      "min": 50000,
+      "max": 60000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1000000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "ELEICAO 2026 RENILDO VASCONCELOS CALHEIROS DEPUTADO FEDERAL 68.258.303/0001-42"
+     ]
+    },
+    {
+     "page_id": "707722716097737",
+     "pagina": "Leandro Soares",
+     "anuncios": 1,
+     "gasto": {
+      "min": 50000,
+      "max": 60000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1000000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "Leandro Soares"
+     ]
+    },
+    {
+     "page_id": "124651867726092",
+     "pagina": "Marília Campos",
+     "anuncios": 7,
+     "gasto": {
+      "min": 46300,
+      "max": 63899,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 5950000,
+      "max": null,
+      "faixas_abertas": 5
+     },
+     "pagadores": [
+      "ELEICAO 2026 MARILIA APARECIDA CAMPOS SENADOR",
+      "Marília Campos"
+     ]
+    }
+   ]
+  },
+  "flavio": {
+   "candidato": "Flávio Bolsonaro",
+   "termo": "Flávio Bolsonaro",
+   "paginas_api": null,
+   "lidos_nesta_execucao": 850,
+   "limite_da_coleta": 850,
+   "no_limite": true,
+   "anuncios": 850,
+   "paginas": 220,
+   "gasto": {
+    "min": 7639000,
+    "max": null,
+    "faixas_abertas": 7
+   },
+   "impressoes": {
+    "min": 360665000,
+    "max": null,
+    "faixas_abertas": 209
+   },
+   "moedas": [
+    "BRL"
+   ],
+   "plataformas": {
+    "instagram": 829,
+    "facebook": 664,
+    "threads": 17,
+    "audience_network": 14,
+    "whatsapp": 13
+   },
+   "fases": [
+    {
+     "id": "pre",
+     "rotulo": "Pré-campanha",
+     "de": "2026-07-20",
+     "ate": "2026-08-15",
+     "anuncios": 181,
+     "gasto": {
+      "min": 247700,
+      "max": 306897,
+      "faixas_abertas": 0
+     }
+    },
+    {
+     "id": "turno1",
+     "rotulo": "Campanha do 1º turno",
+     "de": "2026-08-16",
+     "ate": "2026-10-04",
+     "anuncios": 181,
+     "gasto": {
+      "min": 6222900,
+      "max": null,
+      "faixas_abertas": 1
+     }
+    },
+    {
+     "id": "turno2",
+     "rotulo": "2º turno",
+     "de": "2026-10-05",
+     "ate": "2026-10-25",
+     "anuncios": 381,
+     "gasto": {
+      "min": 994300,
+      "max": null,
+      "faixas_abertas": 6
+     }
+    }
+   ],
+   "regioes_gasto_min_estimado": [],
+   "top_paginas": [
+    {
+     "page_id": "156951837773645",
+     "pagina": "Flavio Bolsonaro",
+     "anuncios": 132,
+     "gasto": {
+      "min": 4436100,
+      "max": 5165986,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 73325000,
+      "max": null,
+      "faixas_abertas": 45
+     },
+     "pagadores": [
+      "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
+     ]
+    },
+    {
+     "page_id": "267949976607343",
+     "pagina": "Lula",
+     "anuncios": 162,
+     "gasto": {
+      "min": 369000,
+      "max": 466153,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 42480000,
+      "max": null,
+      "faixas_abertas": 10
+     },
+     "pagadores": [
+      "ELEICAO 2026 LUIZ INAC... ⋅ Digitally created",
+      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE"
+     ]
+    },
+    {
+     "page_id": "108150038324294",
+     "pagina": "Sergio Moro",
+     "anuncios": 1,
+     "gasto": {
+      "min": 250000,
+      "max": 300000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1000000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "ELEICAO 2026 SERGIO FERNANDO MORO GOVERNADOR | CNPJ 68.456.168/0001-40"
+     ]
+    },
+    {
+     "page_id": "228158820563303",
+     "pagina": "André do Prado",
+     "anuncios": 28,
+     "gasto": {
+      "min": 232200,
+      "max": 283987,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 12800000,
+      "max": null,
+      "faixas_abertas": 9
+     },
+     "pagadores": [
+      "ELEICAO 2026 ANDRE LUIS DO PRADO SENADOR - 68.464.743/0001-56 - PL - CORAGEM PARA SEGUIR AVANÇANDO (FEDERAÇÃO UNIÃO PROGRESSISTA(44-UNIÃO/11-PP) / REPUBLICANOS / PL / MDB / DEMOCRATA / PSD / FEDERAÇÃO RENOVAÇÃO SOLIDÁRIA(25-PRD/77-SOLIDARIEDADE) / AVANTE)",
+      "PARTIDO LIBERAL"
+     ]
+    },
+    {
+     "page_id": "105844212205007",
+     "pagina": "Paulo Bilynskyj 2247",
+     "anuncios": 7,
+     "gasto": {
+      "min": 220000,
+      "max": 257000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 7000000,
+      "max": null,
+      "faixas_abertas": 7
+     },
+     "pagadores": [
+      "ELEICAO 2026 PAULO FRANCISCO MUNIZ BILYNSKYJ DEPUTADO FEDERAL"
+     ]
+    },
+    {
+     "page_id": "1216504185136925",
+     "pagina": "Ciro Gomes",
+     "anuncios": 4,
+     "gasto": {
+      "min": 200000,
+      "max": 230000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 4000000,
+      "max": null,
+      "faixas_abertas": 4
+     },
+     "pagadores": [
+      "ELEICAO 2026 CIRO FERREIRA GOMES GOVERNADOR"
+     ]
+    },
+    {
+     "page_id": "791431354245527",
+     "pagina": "Adilson Barroso - Ambientalista",
+     "anuncios": 9,
+     "gasto": {
+      "min": 134500,
+      "max": 163000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 8500000,
+      "max": null,
+      "faixas_abertas": 8
+     },
+     "pagadores": [
+      "ELEICAO 2026 ADILSON BARROSO OLIVEIRA DEPUTADO FEDERAL"
+     ]
+    },
+    {
+     "page_id": "800191420076446",
+     "pagina": "Paulo Mansur",
+     "anuncios": 4,
+     "gasto": {
+      "min": 121500,
+      "max": 142000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 3200000,
+      "max": null,
+      "faixas_abertas": 3
+     },
+     "pagadores": [
+      "ELEICAO 2026 PAULO JORGE MANSUR NETO DEPUTADO ESTADUAL",
+      "Paulo Mansur"
+     ]
+    },
+    {
+     "page_id": "395748880458898",
+     "pagina": "Domingos Sávio",
+     "anuncios": 7,
+     "gasto": {
+      "min": 71000,
+      "max": 85000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 7000000,
+      "max": null,
+      "faixas_abertas": 7
+     },
+     "pagadores": [
+      "ELEICAO 2026 DOMINGOS SAVIO CAMPOS RESENDE SENADOR"
+     ]
+    },
+    {
+     "page_id": "388811064617464",
+     "pagina": "Delegado Eder Mauro",
+     "anuncios": 15,
+     "gasto": {
+      "min": 64100,
+      "max": 85189,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 5775000,
+      "max": null,
+      "faixas_abertas": 4
+     },
+     "pagadores": [
+      "Delegado Eder Mauro",
+      "Eleicao 2026 Eder Mauro Cardoso Barra Senador"
+     ]
+    },
+    {
+     "page_id": "106713537695500",
+     "pagina": "Tomé Abduch",
+     "anuncios": 2,
+     "gasto": {
+      "min": 60400,
+      "max": 70499,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1175000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "Tomé Abduch"
+     ]
+    },
+    {
+     "page_id": "239800806402562",
+     "pagina": "Filipe Barros",
+     "anuncios": 16,
+     "gasto": {
+      "min": 60300,
+      "max": 73597,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 9000000,
+      "max": null,
+      "faixas_abertas": 3
+     },
+     "pagadores": [
+      "PARTIDO LIBERAL - PARANÁ - PR"
+     ]
+    },
+    {
+     "page_id": "110420701228621",
+     "pagina": "Douglas Ruas",
+     "anuncios": 4,
+     "gasto": {
+      "min": 53000,
+      "max": 69000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 4000000,
+      "max": null,
+      "faixas_abertas": 4
+     },
+     "pagadores": [
+      "Douglas Ruas",
+      "ELEICAO 2026 DOUGLAS RUAS DOS SANTOS GOVERNADOR"
+     ]
+    },
+    {
+     "page_id": "433929629797766",
+     "pagina": "Lucas Bove",
+     "anuncios": 2,
+     "gasto": {
+      "min": 45000,
+      "max": 55000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 2000000,
+      "max": null,
+      "faixas_abertas": 2
+     },
+     "pagadores": [
+      "ELEICAO 2026 LUCAS DIEZ BOVE DEPUTADO ESTADUAL - 68.353.136/0001-19 - PL"
+     ]
+    },
+    {
+     "page_id": "239872239397663",
+     "pagina": "André Janones",
+     "anuncios": 1,
+     "gasto": {
+      "min": 45000,
+      "max": 50000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1000000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "ELEICAO 2026 ANDRE LUIS GASPAR JANONES DEPUTADO FEDERAL"
+     ]
+    },
+    {
+     "page_id": "195247917006787",
+     "pagina": "Professora Maria do Carmo",
+     "anuncios": 16,
+     "gasto": {
+      "min": 40200,
+      "max": 47393,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 4535000,
+      "max": 5255000,
+      "faixas_abertas": 0
+     },
+     "pagadores": [
+      "ELEICAO 2026 MARIA DO CARMO SEFFAIR LINS DE ALBUQUERQUE GOVERNADOR",
+      "Professora Maria do Carmo"
+     ]
+    },
+    {
+     "page_id": "289063974792840",
+     "pagina": "Jair Martins",
+     "anuncios": 1,
+     "gasto": {
+      "min": 40000,
+      "max": 45000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1000000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "Jair Martins"
+     ]
+    },
+    {
+     "page_id": "324890500939046",
+     "pagina": "Rodrigo da Zaeli",
+     "anuncios": 5,
+     "gasto": {
+      "min": 37600,
+      "max": 49699,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 4400000,
+      "max": null,
+      "faixas_abertas": 4
+     },
+     "pagadores": [
+      "ELEICAO 2026 RODRIGO LUGLI DEPUTADO FEDERAL",
+      "Rodrigo da Zaeli"
+     ]
+    },
+    {
+     "page_id": "163790763963427",
+     "pagina": "Zoe Martinez",
+     "anuncios": 4,
+     "gasto": {
+      "min": 37000,
+      "max": 53000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 4000000,
+      "max": null,
+      "faixas_abertas": 4
+     },
+     "pagadores": [
+      "ELEICAO 2026 ZOE MARIA FERNANDEZ MARTINEZ DEPUTADO FEDERAL"
+     ]
+    },
+    {
+     "page_id": "314784062046862",
+     "pagina": "Fabiana Bolsonaro",
+     "anuncios": 2,
+     "gasto": {
+      "min": 37000,
+      "max": 43000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 2000000,
+      "max": null,
+      "faixas_abertas": 2
+     },
+     "pagadores": [
+      "ELEICAO 2026 FABIANA DE LIMA BARROSO SOUZA DEPUTADO ESTADUAL"
+     ]
+    },
+    {
+     "page_id": "110190561574954",
+     "pagina": "Inst. Conhecimento Liberta",
+     "anuncios": 9,
+     "gasto": {
+      "min": 36500,
+      "max": 42500,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1480000,
+      "max": 1765000,
+      "faixas_abertas": 0
+     },
+     "pagadores": [
+      "Instituto Conhecimento Liberta"
+     ]
+    },
+    {
+     "page_id": "1696264184008883",
+     "pagina": "Alexandre Knoploch",
+     "anuncios": 1,
+     "gasto": {
+      "min": 35000,
+      "max": 40000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1000000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "Alexandre Knoploch"
+     ]
+    },
+    {
+     "page_id": "485434228470137",
+     "pagina": "Tenente Coimbra",
+     "anuncios": 2,
+     "gasto": {
+      "min": 30500,
+      "max": 35599,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 1080000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "ELEICAO 2026 MATHEUS COIMBRA MARTINS DE AGUIAR DEPUTADO ESTADUAL",
+      "Matheus Coimbra Martins de Aguiar"
+     ]
+    },
+    {
+     "page_id": "1314539265229539",
+     "pagina": "Renato Bolsonaro",
+     "anuncios": 3,
+     "gasto": {
+      "min": 30000,
+      "max": 45000,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 3000000,
+      "max": null,
+      "faixas_abertas": 3
+     },
+     "pagadores": [
+      "Eleicao 2026 Renato Antonio Bolsonaro Deputado Federal"
+     ]
+    },
+    {
+     "page_id": "291482090931929",
+     "pagina": "Professora Dorinha",
+     "anuncios": 16,
+     "gasto": {
+      "min": 29800,
+      "max": 37399,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 2145000,
+      "max": 2550000,
+      "faixas_abertas": 0
+     },
+     "pagadores": [
+      "ELEICAO 2026 MARIA AUXILIADORA SEABRA REZENDE GOVERNADOR"
      ]
     }
    ]
@@ -1052,13 +1069,25 @@
  },
  "erros": {},
  "modo": "teste",
- "teto_usd": 0.5,
- "gasto_mes_antes_usd": 0.0,
- "run_apify": {
-  "id": "KKcgvBDOzzad3uPP7",
-  "status": "SUCCEEDED",
-  "custo_usd": 0.2376
- },
+ "teto_usd": 0.26,
+ "gasto_mes_antes_usd": 0.2376,
+ "runs_apify": [
+  {
+   "consulta": "lula",
+   "id": "oKEzVyNzVHEZUouYT",
+   "status": "ABORTED",
+   "custo_usd": 0.1263,
+   "itens": 850
+  },
+  {
+   "consulta": "flavio",
+   "id": "8bAWLnqR5C1xrRy4I",
+   "status": "ABORTED",
+   "custo_usd": 0.1275,
+   "itens": 850
+  }
+ ],
+ "janela_desta_execucao": "2026-07-20",
  "status": "ok",
- "custo_usd": 0.2376
+ "custo_usd": 0.2538
 }
