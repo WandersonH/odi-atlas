@@ -108,7 +108,9 @@ def main(argv=None, executar=None) -> int:
         return 1
     itens = itens or []
     custo = custo_run(run)
-    man.update(run_apify={"id": run.get("id"), "status": run.get("status")}, custo_usd=custo, itens=len(itens))
+    man.update(run_apify={"id": run.get("id"), "status": run.get("status"), "eventos_cobrados": run.get("chargedEventCounts"),
+                          "uso_plataforma_usd": run.get("usageTotalUsd"), "teto_usd": (run.get("options") or {}).get("maxTotalChargeUsd")},
+               custo_usd=custo, itens=len(itens))
     interno = os.environ.get("ODI_INTERNO_DIR")
     if interno and itens:
         d = Path(interno) / "kwai"

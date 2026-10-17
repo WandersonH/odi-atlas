@@ -41,6 +41,7 @@ def main(argv=None) -> int:
     plat = "kwai" if "--kwai" in argv else "tiktok"  # o Kwai usa o mesmo formato de acervo e as mesmas regras
     argv = [a for a in argv if a != "--kwai"]
     root = Path(argv[0]) if argv else Path(".")
+    desde = "" if plat == "kwai" else "2026-08-16"  # Kwai: acervo histórico completo, com a data de cada post
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     temas, cands = bc.compile_cfg(cfg)
     src = root / f"data/{plat}/videos.csv.gz"
@@ -66,9 +67,9 @@ def main(argv=None) -> int:
            "fonte": ("Kwai público via Apify (perfis declarados ao TSE pelas chapas 13 e 22)" if plat == "kwai"
                      else "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)"),
            "metodo": cfg["nota"] + f" Mesmas regras do caderno 02 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
-           "temas": list(cfg["temas"]) + ["sem_tema"], "candidatos": {}}
+           "temas": list(cfg["temas"]) + ["sem_tema"], "desde": desde or None, "candidatos": {}}
     for cid, cand in cands.items():
-        meus = [(r, p) for r, p in zip(rows, pseudo) if r["candidate_id"] == cid and r["publicado_em"] >= "2026-08-16"]
+        meus = [(r, p) for r, p in zip(rows, pseudo) if r["candidate_id"] == cid and r["publicado_em"] >= desde]
         nome = bc.norm(cand["nome"]).split()
         excluir = set(nome) | {"".join(nome)} | {r["perfil"].replace("_", "").replace(".", "") for r, _ in meus}
         vids, textos, tags = [], [], []
@@ -100,6 +101,8 @@ def main(argv=None) -> int:
             "cita_adversario": sum(v["cita_adversario"] for v in vids), "pede_voto": sum(v["pede_voto"] for v in vids),
             "nuvem": bc.nuvem(textos, excluir),
             "hashtags": [[t, n] for t, n in Counter(t for s in tags for t in s).most_common(40) if n >= 2],
+            "por_mes": dict(sorted(Counter(v["publicado_em"][:7] for v in vids if v["publicado_em"]).items())),
+            "desde_16_08": sum(1 for v in vids if v["publicado_em"] >= "2026-08-16"),
             "videos": vids}
         c = out["candidatos"][cid]
         print(f"{cand['nome']}: {len(vids)} vídeos de {len(c['perfis'])} perfis | {tot['visualizacoes']:,} visualizações | "

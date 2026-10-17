@@ -4,7 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C18.0 — Subpágina Kwai no caderno 02 (Apify, conta secundária) (2026-10-17) ⛔
+## C18.1 — Kwai: carga histórica com data dos posts (2026-10-17) ⚠️
+
+- Usuário cadastrou `APIFY_TOKEN_2` e pediu a carga histórica com a data dos posts.
+- 1º run (39072298655, desde 16/08): 89 itens, mas 0 vídeos gravados — o ator não traz o dono do vídeo num campo de nome de usuário; agora vem da URL (`/@perfil/video/…`). Legendas com entidades HTML (`&eacute;`) passam a ser decodificadas.
+- Achados nos perfis: o link curto de LULA no TSE leva a `@lulaoficial`, que no Kwai é outra pessoa ("Mateus Café", 3 vídeos) — retirado da coleta; `@flaviobolsonaro`, declarado por FLAVIO BOLSONARO, é a conta "Apoio Flávio Bolsonaro" (85 seguidores, bio pede doação via Pix) — mantida e descrita na página por ser a URL declarada.
+- 2º run (39072422892, carga histórica sem data mínima, reprocessando o bruto anterior): acervo de 323 vídeos — @podeespalhar 315 de 321 (17/06/2025 a 16/10/2026; 86 desde 16/08) e @flaviobolsonaro 8 (todos antes de 16/08). Datas em `publicado_em` (createTime do Kwai).
+- `build_tiktok.py --kwai` usa o acervo completo (`desde` nulo), com contagem por mês e quantos desde 16/08. Lula: 315 vídeos, 233.155 visualizações, interação mediana 4,8%, 33 citam o adversário, 26 pedem voto; Flávio: 8 vídeos, 6.997 visualizações.
+- Página: título "acervo histórico", vídeos por mês, 30 mais recentes com data; quebra de palavras longas (rolagem a 390 px corrigida). Testes OK.
+- Ressalva: o custo apareceu como US$ 0,00 no manifesto (o objeto da execução não trouxe os eventos cobrados); o teto da Apify (`maxTotalChargeUsd`) segue valendo; o manifesto passa a guardar `eventos_cobrados` e `uso_plataforma_usd` para conferência.
+
+## C18.0 — Subpágina Kwai no caderno 02 (Apify, conta secundária) (2026-10-17) ⚠️ (atualizado em C18.1)
 
 - Pedido do usuário: página "O que as campanhas dizem · Kwai" usando a conta secundária da Apify (segredo `APIFY_TOKEN_2`). Tetos: os propostos na conversa (teste US$ 0,50; diário US$ 0,10; mensal US$ 3), em `data/config/kwai.json`.
 - `scripts/collect_kwai_apify.py` + `.github/workflows/kwai.yml` (diário 10h10; manual com "teste") + `tests/test_kwai.py`: ator `unfenced-group/kwai-scraper`, perfis @lulaoficial, @podeespalhar (chapa 13) e @flaviobolsonaro (chapa 22) — nomes de usuário tirados das URLs do TSE; o vice Alfredo Gaspar fica fora (link curto quebrado pelo TSE). Acervo no formato do TikTok (`data/kwai/videos.csv.gz`), seguidores por dia (`data/kwai/perfis.csv`), manifestos com custo; bruto no privado. Mapeamento de campos tolerante a nomes alternativos, a confirmar no primeiro run real.
