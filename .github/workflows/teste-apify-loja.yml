@@ -29,3 +29,25 @@ jobs:
               st = x.get("stats") or {}
               print(f"::notice title={x['username']}/{x['name']}::modelo {p.get('pricingModel')} · por unidade {p.get('pricePerUnitUsd')} · eventos {evs} · usuários 30d {st.get('totalUsers30Days')} · avaliação {x.get('actorReviewRating')} ({x.get('actorReviewCount')}) · sucesso 30d {(st.get('publicActorRunStats30Days') or {}).get('SUCCEEDED')}/{(st.get('publicActorRunStats30Days') or {}).get('TOTAL')}")
           PY
+      - name: Detalhes de atores (README e esquema de entrada; leitura, sem executar)
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          for a in azzouzana~meta-facebook-instagram-ads-library hyperbach~meta-ads-library-scraper apify~facebook-ads-scraper; do
+            curl -s -H "Authorization: Bearer $APIFY_TOKEN" "https://api.apify.com/v2/acts/$a" > a.json
+            b=$(python3 -c "import json;d=json.load(open('a.json'))['data'];print(d.get('defaultRunOptions',{}).get('build','latest'))")
+            curl -s -H "Authorization: Bearer $APIFY_TOKEN" "https://api.apify.com/v2/acts/$a/builds/default" > b.json
+            python3 - "$a" <<'PY'
+          import json, sys, re
+          a = sys.argv[1]
+          d = json.load(open("a.json")).get("data", {})
+          b = json.load(open("b.json")).get("data", {})
+          readme = re.sub(r"\s+", " ", (b.get("readme") or d.get("description") or ""))
+          campos = [k for k in ("spend", "impressions", "reach", "demographic", "region", "byline", "political", "paid for", "disclaimer") if k in readme.lower()]
+          inp = (b.get("inputSchema") or "")
+          props = list(json.loads(inp).get("properties", {}).keys()) if inp else []
+          print(f"::notice title={a}::entrada: {props[:25]} · README cita: {campos}")
+          i = readme.lower().find("spend")
+          print(f"::notice title={a} README::{readme[max(0,i-300):i+500] if i>=0 else readme[:600]}")
+          PY
+          done
