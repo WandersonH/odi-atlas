@@ -9,10 +9,10 @@ RAIZ = Path(__file__).resolve().parents[1]
 class TestKwai(unittest.TestCase):
     def test_main(self):
         def fake(payload, cap):
-            self.assertEqual(payload["profileHandles"], ["lulaoficial", "podeespalhar", "flaviobolsonaro"])
+            self.assertEqual(payload["profileHandles"], ["podeespalhar", "flaviobolsonaro"])
             return ({"id": "r", "status": "SUCCEEDED", "chargedEventCounts": {}},
-                    [{"type": "profile", "handle": "lulaoficial", "followers": 1000, "displayName": "Lula"},
-                     {"type": "video", "videoId": "v1", "authorHandle": "@LulaOficial", "caption": "Vote 13", "uploadTime": 1789000000,
+                    [{"recordType": "profile", "handle": "podeespalhar", "url": "https://www.kwai.com/@podeespalhar", "followers": 1000, "displayName": "PE"},
+                     {"recordType": "video", "videoId": "v1", "url": "https://www.kwai.com/@podeespalhar/video/v1", "caption": "Vote 13 &eacute;", "uploadTime": 1789000000,
                       "viewCount": 100, "likeCount": 10, "commentCount": 1, "shareCount": 2},
                      {"type": "video", "videoId": "v2", "authorHandle": "outro", "caption": "x", "viewCount": 1}])
         cwd = os.getcwd()
@@ -28,7 +28,7 @@ class TestKwai(unittest.TestCase):
             finally:
                 os.chdir(cwd)
         self.assertEqual([r["video_id"] for r in rows], ["v1"])  # perfil não monitorado fica fora
-        self.assertEqual((rows[0]["perfil"], rows[0]["visualizacoes"], rows[0]["publicado_em"][:10]), ("lulaoficial", "100", "2026-09-10"))
+        self.assertEqual((rows[0]["perfil"], rows[0]["visualizacoes"], rows[0]["publicado_em"][:10], rows[0]["legenda"]), ("podeespalhar", "100", "2026-09-10", "Vote 13 é"))
         self.assertEqual(perf[0]["seguidores"], "1000")
         self.assertEqual(man["videos_novos"], 1)
 

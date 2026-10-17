@@ -11,8 +11,10 @@ from __future__ import annotations
 import csv
 import datetime as dt
 import gzip
+import html
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -63,7 +65,10 @@ def e_video(x: dict) -> bool:
 
 
 def handle_de(x: dict) -> str:
-    h = g(x, "authorHandle", "author.handle", "author.username", "creator.handle", "handle", "username", "userName", "author.kwaiId", "kwaiId") or ""
+    m = re.search(r"/@([^/?#]+)/video/", str(x.get("url") or ""))
+    if m:
+        return m.group(1).lower()
+    h = g(x, "sourceProfile", "authorHandle", "author.handle", "author.username", "creator.handle", "handle", "username", "userName", "author.kwaiId", "kwaiId") or ""
     return str(h).lstrip("@").lower()
 
 
@@ -91,8 +96,9 @@ def main(argv=None, executar=None) -> int:
         return 1
     executar = executar or (lambda payload, cap: run_actor(token, cfg["ator"], payload, cap))
     por_handle = {p["handle"]: p for p in cfg["perfis"]}
-    payload = {"profileHandles": list(por_handle), "includeProfileVideos": True, "postedAfter": cfg["desde"],
-               "maxItems": cfg["max_videos_por_perfil_teste" if teste else "max_videos_por_perfil_diario"], "onlyNewVideos": not teste}
+    desde = cfg.get("desde_carga_historica", cfg["desde"]) if teste else cfg["desde"]
+    payload = {"profileHandles": list(por_handle), "includeProfileVideos": True, **({"postedAfter": desde} if desde else {}),
+               "maxItems": cfg["max_videos_por_perfil_teste" if teste else "max_videos_por_perfil_diario"], "onlyNewVideos": True}
     try:
         run, itens = executar(payload, teto)
     except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
@@ -110,6 +116,13 @@ def main(argv=None, executar=None) -> int:
         with gzip.open(d / f"apify_{agora[:10]}_{agora[11:13]}.jsonl.gz", "wt", encoding="utf-8") as f:
             for x in itens:
                 f.write(json.dumps(x, ensure_ascii=False) + "\n")
+    # reprocessa também os brutos anteriores (o ator não reentrega vídeos já entregues: onlyNewVideos)
+    if interno:
+        anteriores = []
+        for f in sorted((Path(interno) / "kwai").glob("apify_*.jsonl.gz")):
+            anteriores += [json.loads(l) for l in gzip.open(f, "rt", encoding="utf-8")]
+        ids = {str(g(x, "videoId", "video_id", "photoId", "id")) for x in itens}
+        itens = [x for x in anteriores if str(g(x, "videoId", "video_id", "photoId", "id")) not in ids or not e_video(x)] + itens
     # vídeos
     src = pasta / "videos.csv.gz"
     acervo = {}
@@ -119,8 +132,9 @@ def main(argv=None, executar=None) -> int:
     for x in itens:
         h = handle_de(x)
         if not e_video(x):
-            if h in por_handle:
-                perfis_vistos[h] = x
+            pedido = str(x.get("url") or "").rstrip("/").split("/@")[-1].lower()
+            if pedido in por_handle:
+                perfis_vistos[pedido] = {**x, "_handle_resolvido": str(x.get("handle") or "").lower()}
             continue
         p = por_handle.get(h)
         if not p:
@@ -130,7 +144,7 @@ def main(argv=None, executar=None) -> int:
         acervo[vid] = {"candidate_id": p["candidate_id"], "candidate_name": p["candidato"], "perfil": h, "declarado_por": p["declarado_por"],
                        "video_id": vid, "url": g(x, "url", "videoUrl", "shareUrl") or f"https://www.kwai.com/@{h}/video/{vid}",
                        "publicado_em": quando(g(x, "uploadTime", "createTime", "timestamp", "publishedAt", "postedAt", "created_at")),
-                       "legenda": " ".join(str(g(x, "caption", "description", "title") or "").split()),
+                       "legenda": " ".join(html.unescape(str(g(x, "caption", "description", "title") or "")).split()),
                        "duracao_s": inteiro(g(x, "duration", "durationSeconds", "videoDuration")),
                        "visualizacoes": inteiro(g(x, "viewCount", "views", "playCount", "stats.views")),
                        "curtidas": inteiro(g(x, "likeCount", "likes", "stats.likes")),
@@ -161,7 +175,9 @@ def main(argv=None, executar=None) -> int:
         pv = perfis_vistos.get(h)
         man["perfis"].append({"perfil": h, "candidato": p["candidato"], "url": f"https://www.kwai.com/@{h}", "url_tse": p["url_tse"],
                               "lido_nesta_execucao": bool(pv) or any(handle_de(x) == h for x in itens), "videos_no_acervo": n,
-                              "seguidores": inteiro(g(pv, "followers", "followerCount", "fans", "stats.followers")) if pv else None})
+                              "seguidores": inteiro(g(pv, "followers", "followerCount", "fans", "stats.followers")) if pv else None,
+                              "nome_exibido": (pv or {}).get("displayName"), "videos_no_perfil": inteiro((pv or {}).get("videoCount")) if pv else None,
+                              "handle_resolvido": (pv or {}).get("_handle_resolvido")})
     man["videos_novos"] = novos
     man["status"] = "ok" if acervo else "⛔ nenhum vídeo lido"
     for nome in (f"manifesto-{mes}-{agora.replace(':', '').replace('-', '')}.json", "manifesto_latest.json"):
