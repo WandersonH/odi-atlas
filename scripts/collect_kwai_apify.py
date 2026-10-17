@@ -66,10 +66,10 @@ def e_video(x: dict) -> bool:
 
 def handle_de(x: dict) -> str:
     m = re.search(r"/@([^/?#]+)/video/", str(x.get("url") or ""))
-    if m:
-        return m.group(1).lower()
+    if m:  # o nome de usuário do Kwai diferencia maiúsculas: comparar como veio
+        return m.group(1)
     h = g(x, "sourceProfile", "authorHandle", "author.handle", "author.username", "creator.handle", "handle", "username", "userName", "author.kwaiId", "kwaiId") or ""
-    return str(h).lstrip("@").lower()
+    return str(h).lstrip("@")
 
 
 def main(argv=None, executar=None) -> int:
@@ -134,9 +134,9 @@ def main(argv=None, executar=None) -> int:
     for x in itens:
         h = handle_de(x)
         if not e_video(x):
-            pedido = str(x.get("url") or "").rstrip("/").split("/@")[-1].lower()
+            pedido = str(x.get("url") or "").rstrip("/").split("/@")[-1]
             if pedido in por_handle:
-                perfis_vistos[pedido] = {**x, "_handle_resolvido": str(x.get("handle") or "").lower()}
+                perfis_vistos[pedido] = {**x, "_handle_resolvido": str(x.get("handle") or "")}
             continue
         p = por_handle.get(h)
         if not p:
@@ -172,6 +172,20 @@ def main(argv=None, executar=None) -> int:
         w = csv.DictWriter(f, PCOLS, delimiter=";", lineterminator="\n")
         w.writeheader()
         w.writerows(sorted(linhas, key=lambda r: (r["data"], r["perfil"])))
+    # seguidores para a página "Quem acompanha" (mesmo formato de latest.csv; URL declarada ao TSE para casar com o card)
+    seg = root / "data/seguidores"
+    seg.mkdir(parents=True, exist_ok=True)
+    hoje_linhas = [r for r in linhas if r["data"] == agora[:10] and r["seguidores"] != ""]
+    if hoje_linhas:
+        cols = ["candidate_id", "candidate_name", "platform", "url", "followers", "captured_at", "source_url"]
+        for nome in (f"kwai_{agora[:10]}.csv", "kwai_latest.csv"):
+            with open(seg / nome, "w", encoding="utf-8", newline="") as f:
+                w = csv.DictWriter(f, cols, delimiter=";", lineterminator="\n")
+                w.writeheader()
+                for r in hoje_linhas:
+                    p = por_handle[r["perfil"]]
+                    w.writerow({"candidate_id": p["candidate_id"], "candidate_name": p["declarado_por"], "platform": "Kwai", "url": p["url_tse"],
+                                "followers": r["seguidores"], "captured_at": agora[:10], "source_url": f"https://www.kwai.com/@{r['perfil']}"})
     for h, p in por_handle.items():
         n = sum(1 for r in acervo.values() if r["perfil"] == h)
         pv = perfis_vistos.get(h)
