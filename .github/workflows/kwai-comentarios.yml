@@ -5,10 +5,11 @@ name: Kwai — comentários (Apify, APIFY_TOKEN_3, teto US$ 4)
 on:
   workflow_dispatch:
     inputs:
-      teste:
-        description: "Teste (3 vídeos × 10 comentários + 5 vídeos de @Lulaoficial; US$ 0,10)"
-        type: boolean
-        default: true
+      modo:
+        description: "teste (2 vídeos × 5) · videos-lula (vídeos de @Lulaoficial) · carga (cota por candidato)"
+        type: choice
+        options: [teste, videos-lula, carga]
+        default: teste
 
 concurrency:
   group: kwai-comentarios
@@ -43,14 +44,25 @@ jobs:
         env:
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-          TESTE: ${{ github.event.inputs.teste }}
+          MODO: ${{ github.event.inputs.modo }}
         run: |
-          if [ "$TESTE" = "true" ]; then a="--teste"; else a=""; fi
+          case "$MODO" in teste) a="--teste";; videos-lula) a="--videos-lula";; *) a="";; esac
           python scripts/collect_comentarios_kwai.py $a > k.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Kwai comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc
+      - name: Vídeos novos no acervo do Kwai — capas, temas e análises
+        if: always() && github.event.inputs.modo == 'videos-lula'
+        continue-on-error: true
+        run: |
+          pip install -q pillow==11.3.0
+          rc=0
+          { python scripts/build_miniaturas_kwai.py && python scripts/build_tiktok.py --kwai && python scripts/corpus_populismo.py --plataforma kwai \
+            && python scripts/chd_reinert.py --plataforma kwai && python scripts/concordancia.py --plataforma kwai && python scripts/build_rede.py --plataforma kwai \
+            && python scripts/build_rede_mencoes_tiktok.py --kwai; } > v.txt 2>&1 || rc=$?
+          grep -v "RuntimeWarning\|attraction =" v.txt | while IFS= read -r l; do echo "::notice title=Kwai vídeos::$(echo "$l" | cut -c1-400)"; done
+          exit $rc
       - name: Análise (mesmas regras do YouTube; só agregados no público)
-        if: always() && steps.interno.outputs.dir != ''
+        if: always() && steps.interno.outputs.dir != '' && github.event.inputs.modo != 'videos-lula'
         continue-on-error: true
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}

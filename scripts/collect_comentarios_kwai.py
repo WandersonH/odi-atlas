@@ -91,7 +91,7 @@ def linhas(x: dict, video: dict, agora: str) -> list[dict]:
     if e_comentario(x):
         pai = str(g(x, "replyToCommentId", "parentId", "parentCommentId", "replyTo.id") or "")
         return [{"video_id": video["video_id"], "candidate_id": video["candidate_id"], "channel_id": video["perfil"], "ordem": "kwai",
-                 "coletado_em": agora, "atualizado_em": "", "comment_id": str(x.get("id") or ""), "parent_id": pai,
+                 "coletado_em": agora, "atualizado_em": "", "comment_id": str(g(x, "commentId", "comment_id", "id") or ""), "parent_id": pai,
                  "tipo": "resposta" if pai else "comentario",
                  "autor_canal": str(g(x, "authorId", "author.id", "userId", "user.id", "authorUsername", "author.username") or ""),
                  "autor_nome": str(g(x, "authorName", "author.name", "author.nickname", "userName", "user.name", "nickname") or ""),
@@ -165,54 +165,79 @@ def main(argv=None, executar=None) -> int:
     pendentes = [v for v in videos if v["video_id"] not in feitos]
     pendentes.sort(key=lambda v: -int(v["comentarios"] or 0))
     p = cfg["preco_usd"]
+    executar = executar or (lambda ator, pl, cap: run_actor(token, ator, pl, cap))
+    man["runs"] = []
+    gasto = 0.0
+
+    def rodar(ator: str, payload: dict, cap: float):
+        run, itens = executar(ator, payload, round(cap, 4))
+        itens = itens or []
+        with gzip.open(priv / f"apify_{now_utc().replace(':', '').replace('-', '')}_{len(man['runs'])}.jsonl.gz", "wt", encoding="utf-8") as f:
+            for x in itens:
+                f.write(json.dumps(x, ensure_ascii=False) + "\n")
+        return run, itens
+
+    if "--videos-lula" in argv:  # vídeos de @Lulaoficial pelo ator que os lista (o dos vídeos não lista)
+        vl = cfg["videos_lula"]
+        cap = min(vl["teto_usd"], teto)
+        try:
+            run, itens = rodar(vl["ator"], {"urls": [vl["perfil"]], "maxItems": vl["max_videos"], "maxCommentsPerVideo": 0}, cap)
+        except Exception as e:  # noqa: BLE001
+            return fim(f"⛔ Apify: {type(e).__name__} {getattr(e, 'code', '')}".strip(), 1)
+        vs = [x for x in itens if not e_comentario(x) and str(g(x, "authorMeta.username") or "").lower() == vl["handle"].lower()]
+        custo = max(custo_run(run) or 0, round(0.00005 + 0.002 * len(itens), 4))
+        n = juntar_videos(root, vs, vl["handle"], agora)
+        man.update(custo_usd=custo, runs=[{"id": run.get("id"), "itens": len(itens), "custo_usd": custo}], videos_lula_lidos=len(vs), videos_novos_no_acervo=n,
+                   videos_lula_desde=min((quando(g(x, "createTime")) for x in vs), default=None))
+        print(f"vídeos de @{vl['handle']}: {len(vs)} lidos ({n} novos no acervo) · mais antigo {man['videos_lula_desde']} · custo US$ {custo}")
+        return fim("ok" if vs else "⛔ nenhum vídeo lido", 0 if vs else 1)
+
     if teste:
         t = cfg["teste"]
-        alvo, por_video, perfis = pendentes[:t["videos"]], t["comentarios_por_video"], t["perfis"]
-        max_itens = max(len(alvo), t["videos_por_perfil"])
-    else:
-        por_video, perfis = cfg["max_comentarios_por_video"], []
+        lotes = [(pendentes[:t["videos"]], t["comentarios_por_video"])]
+    else:  # cota igual por candidato, dividida entre os vídeos do período
+        lotes = []
+        for cid in sorted({v["candidate_id"] for v in videos}):
+            todos_c = [v for v in videos if v["candidate_id"] == cid]
+            pv = max(cfg["min_comentarios_por_video"], min(cfg["max_comentarios_por_video"], cfg["cota_comentarios_por_candidato"] // max(1, len(todos_c))))
+            lotes.append(([v for v in pendentes if v["candidate_id"] == cid], pv))
+    novas, alvo_total = [], 0
+    fmt = cfg.get("url_video") or "{url}"
+    for alvo_c, por_video in lotes:
         alvo, est = [], p["inicio"]
-        for v in pendentes:  # cabe no teto pela tabela de preços (estimativa conservadora)
+        for v in alvo_c:  # cabe no que resta do teto pela tabela de preços (estimativa conservadora)
             c = p["video"] + p["comentario"] * min(por_video, int(v["comentarios"] or 0))
-            if est + c > teto * 0.97:
+            if gasto + est + c > teto * 0.97:
                 break
             alvo.append(v)
             est += c
-        max_itens = max(1, len(alvo))
-    man["videos_alvo"] = len(alvo)
+        if not alvo:
+            continue
+        alvo_total += len(alvo)
+        por_id = {v["video_id"]: v for v in alvo}
+        payload = {"videoUrls": [fmt.format(video_id=v["video_id"], url=v["url"]) for v in alvo], "maxCommentsPerVideo": por_video,
+                   "includeReplies": cfg["max_respostas_por_comentario"] > 0, "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
+        try:
+            run, itens = rodar(cfg["ator"], payload, teto - gasto)
+        except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
+            man["runs"].append({"erro": f"{type(e).__name__} {getattr(e, 'code', '')}".strip()})
+            continue
+        lin = [l for x in itens if e_comentario(x) and video_do_comentario(x) in por_id for l in linhas(x, por_id[video_do_comentario(x)], agora)]
+        n_c = sum(1 for x in itens if e_comentario(x))
+        estimado = round(p["inicio"] + p["comentario"] * n_c + p["video"] * (len(itens) - n_c), 4)
+        custo = max(custo_run(run) or 0, estimado)
+        gasto += custo
+        novas += lin
+        man["runs"].append({"id": run.get("id"), "status": run.get("status"), "videos": len(alvo), "por_video": por_video, "itens": len(itens),
+                            "comentarios": len(lin), "custo_usd": custo, "custo_estimado_tabela_usd": estimado,
+                            "eventos_cobrados": run.get("chargedEventCounts")})
+        print(f"lote: {len(alvo)} vídeos × até {por_video} · {len(itens)} itens · {len(lin)} comentários · US$ {custo}")
+        if itens and not lin:
+            print("1º item (só chaves e tipos, sem conteúdo): " + json.dumps({k: type(v).__name__ for k, v in itens[0].items()})[:700])
+    man["videos_alvo"] = alvo_total
     man["videos_pendentes"] = len(pendentes)
-    if not alvo and not perfis:
+    if not alvo_total:
         return fim("ok · nada pendente", 0)
-    por_id = {v["video_id"]: v for v in alvo}
-    fmt = cfg.get("url_video") or "{url}"
-    urls = [fmt.format(video_id=v["video_id"], url=v["url"]) for v in alvo]
-    if cfg.get("entrada") == "zen":
-        payload = {"videoUrls": urls, "maxCommentsPerVideo": por_video, "includeReplies": cfg["max_respostas_por_comentario"] > 0,
-                   "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
-    else:
-        payload = {"urls": urls + perfis, "maxItems": max_itens, "maxCommentsPerVideo": por_video,
-                   "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
-    executar = executar or (lambda pl, cap: run_actor(token, cfg["ator"], pl, cap))
-    try:
-        run, itens = executar(payload, teto)
-    except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
-        return fim(f"⛔ Apify: {type(e).__name__} {getattr(e, 'code', '')}".strip(), 1)
-    itens = itens or []
-    with gzip.open(priv / f"apify_{agora[:10]}_{agora[11:13]}{agora[14:16]}{agora[17:19]}.jsonl.gz", "wt", encoding="utf-8") as f:
-        for x in itens:
-            f.write(json.dumps(x, ensure_ascii=False) + "\n")
-    novas, perfil_teste = [], []
-    for x in itens:
-        vid = video_do_comentario(x) if e_comentario(x) else id_video(x)
-        if vid in por_id:
-            novas += linhas(x, por_id[vid], agora)
-        elif not e_comentario(x):
-            perfil_teste.append({"video_id": vid, "autor": g(x, "author.username", "author.name", "authorName", "username"),
-                                 "publicado_em": quando(g(x, "createTime", "timestamp")), "comentarios_no_item": len(lista_comentarios(x))})
-    n_coment = sum(1 for r in novas if r["tipo"] == "comentario")
-    n_videos = sum(1 for x in itens if not e_comentario(x))
-    estimado = round(p["inicio"] + p["video"] * n_videos + p["comentario"] * (len(itens) - n_videos), 4)
-    custo = max(custo_run(run) or 0, estimado)
     ids_novos = {r["comment_id"] for r in novas}
     todos = [r for r in antigos if r["comment_id"] not in ids_novos] + novas
     with gzip.open(acervo, "wt", encoding="utf-8", newline="") as f:
@@ -221,21 +246,40 @@ def main(argv=None, executar=None) -> int:
         w.writerows(todos)
     lidos = sorted(feitos | {r["video_id"] for r in novas})  # só conta como lido o vídeo que trouxe comentário
     (priv / "videos_lidos.json").write_text(json.dumps(lidos), encoding="utf-8")
-    man.update(run_apify={"id": run.get("id"), "status": run.get("status"), "eventos_cobrados": run.get("chargedEventCounts"),
-                          "uso_plataforma_usd": run.get("usageTotalUsd")},
-               custo_usd=custo, custo_estimado_tabela_usd=estimado, itens=len(itens), comentarios_novos=n_coment,
-               respostas_novas=len(novas) - n_coment, comentarios_no_acervo=len(todos),
-               videos_com_comentarios=len({r["video_id"] for r in todos}), itens_fora_da_lista=perfil_teste[:20])
-    print("chaves do 1º item: " + ", ".join(sorted(itens[0].keys()))[:900] if itens else "nenhum item")
-    if itens and not novas:
-        print("1º item (só chaves e tipos, sem conteúdo): " + json.dumps({k: type(v).__name__ for k, v in itens[0].items()})[:700])
-    lc = next((lista_comentarios(x) for x in itens if lista_comentarios(x)), [])
-    if lc:
-        print("chaves de um comentário: " + ", ".join(sorted(lc[0].keys()))[:600])
-    print(f"{len(itens)} itens · {n_coment} comentários e {len(novas) - n_coment} respostas novos · acervo {len(todos)} · "
-          f"custo US$ {custo} (tabela {estimado}; Apify {custo_run(run)}) · teto {teto} · fora da lista: {len(perfil_teste)}")
-    return fim("ok" if novas or teste else "⛔ nenhum comentário lido", 0 if novas or teste else 1)
+    n_coment = sum(1 for r in novas if r["tipo"] == "comentario")
+    por_cand = {}
+    for r in todos:
+        por_cand[r["candidate_id"]] = por_cand.get(r["candidate_id"], 0) + 1
+    man.update(custo_usd=round(gasto, 4), comentarios_novos=n_coment, respostas_novas=len(novas) - n_coment, comentarios_no_acervo=len(todos),
+               comentarios_por_candidato=por_cand, videos_com_comentarios=len({r["video_id"] for r in todos}))
+    print(f"{n_coment} comentários e {len(novas) - n_coment} respostas novos · acervo {len(todos)} {por_cand} · custo US$ {round(gasto, 4)} · teto {teto}")
+    return fim("ok" if novas else "⛔ nenhum comentário lido", 0 if novas else 1)
 
+
+def juntar_videos(root: Path, vs: list[dict], handle: str, agora: str) -> int:
+    """Vídeos lidos pelo ator natanielsantos entram no acervo do Kwai (mesmas colunas do collect_kwai_apify)."""
+    import collect_kwai_apify as ck
+    cfgk = json.loads((root / "data/config/kwai.json").read_text(encoding="utf-8"))
+    perfil = next(p for p in cfgk["perfis"] if p["handle"] == handle)
+    src = root / "data/kwai/videos.csv.gz"
+    acervo = {r["video_id"]: r for r in csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";")} if src.exists() else {}
+    novos = 0
+    for x in vs:
+        vid = str(x["id"])
+        old = acervo.get(vid, {})
+        novos += 0 if old else 1
+        acervo[vid] = {"candidate_id": perfil["candidate_id"], "candidate_name": perfil["candidato"], "perfil": handle,
+                       "declarado_por": perfil["declarado_por"], "video_id": vid, "url": x.get("url") or f"https://www.kwai.com/@{handle}/video/{vid}",
+                       "publicado_em": quando(x.get("createTime")), "legenda": " ".join(str(x.get("caption") or "").split()),
+                       "duracao_s": ck.inteiro(x.get("duration")), "visualizacoes": ck.inteiro(x.get("viewCount")),
+                       "curtidas": ck.inteiro(x.get("likeCount")), "comentarios": ck.inteiro(x.get("commentCount")),
+                       "compartilhamentos": ck.inteiro(x.get("shareCount")), "primeira_coleta": old.get("primeira_coleta") or agora,
+                       "ultima_coleta": agora, "capa_url": x.get("thumb") or old.get("capa_url", "")}
+    with gzip.open(src, "wt", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, ck.COLS, delimiter=";", lineterminator="\n")
+        w.writeheader()
+        w.writerows(sorted(acervo.values(), key=lambda r: (r["candidate_id"], r["publicado_em"]), reverse=True))
+    return novos
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))

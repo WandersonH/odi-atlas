@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.9 — Kwai: vídeos de @Lulaoficial e cota de comentários por candidato (2026-10-17) 🔜
+
+- Teste 3 (run 39081710065): zen-studio/kwai-comments-scraper devolveu 5 comentários (campos `commentId`, `content`, `author`, `photoId`, `timestamp`, `likeCount`). Corrigido: o id do comentário vem de `commentId`; a rede de termos não quebra com amostra minúscula. Gasto dos 3 testes ≈ US$ 0,02 (manifestos em `data/kwai/comentarios/`).
+- Sem vídeos de @Lulaoficial, o lado de Lula teria só 24 comentários (@podeespalhar). Modo `--videos-lula`: o natanielsantos/kwai-scraper (que lista a conta oficial, teste 1) lê até 250 vídeos do perfil (teto US$ 0,55, dentro dos US$ 4 dos comentários) e os junta ao acervo do Kwai, com capas, temas e análises refeitos no mesmo run.
+- Carga: cota igual por candidato (1.700 comentários), dividida entre os vídeos do período (5 a 50 por vídeo), um run da Apify por candidato, tudo dentro do que resta do teto.
+- `kwai-comentarios.yml`: entrada `modo` (teste · videos-lula · carga). Testes: suíte OK.
+
 ## C18.8 — Comentários do Kwai: teste 1 e ajuste de formato; página "Comentários · Kwai" (2026-10-17) 🔜
 
 - Teste 1 (run 39081371929, US$ 0,0161 pela Apify e pela tabela): 8 itens, **0 comentários**. Vídeos pedidos como `/@perfil/video/ID`; o README do ator mostra comentários como itens próprios (`content`, `videoId`, `timestamp`, `likedCount`, `replyToCommentId`) e vídeos como `/video/ID`. O coletor agora lê esse formato e pede `/video/ID`; só marca como lido o vídeo que trouxe comentário (a lista do teste 1 foi zerada no repositório privado). Teste 2: 2 vídeos × 5 comentários.

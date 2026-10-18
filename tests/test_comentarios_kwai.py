@@ -10,14 +10,13 @@ class TestComentariosKwai(unittest.TestCase):
     def test_teste_e_carga(self):
         visto = []
 
-        def fake(payload, cap):
+        def fake(ator, payload, cap):
             visto.append((payload, cap))
             return ({"id": "r", "status": "SUCCEEDED", "chargedEventCounts": {}},
-                    [{"id": "v1", "comments": [{"id": "c1", "text": "  bom  vídeo ", "likeCount": 3, "createTime": 1789000000,
-                                                "author": {"id": "u1", "name": "Fulano"}}]},
+                    [{"commentId": "c1", "content": "  bom  vídeo ", "likeCount": 3, "timestamp": 1789000000,
+                      "author": {"id": "u1", "name": "Fulano"}, "photoId": "v1"},
                      {"id": "c2", "authorId": 7, "authorName": "Beltrana", "content": "outro  formato", "timestamp": 1789000000000,
-                      "likedCount": 1, "replyToCommentId": None, "replyCount": 0, "videoId": "v1"},
-                     {"id": "x9", "author": {"username": "Lulaoficial"}, "createTime": "2026-10-01T00:00:00Z"}])
+                      "likedCount": 1, "replyToCommentId": None, "replyCount": 0, "videoId": "v1"}])
         cwd = os.getcwd()
         with tempfile.TemporaryDirectory() as t, tempfile.TemporaryDirectory() as priv:
             (Path(t) / "data/config").mkdir(parents=True)
@@ -52,7 +51,6 @@ class TestComentariosKwai(unittest.TestCase):
         self.assertNotIn("Beltrana", pub)  # nome e texto só no privado
         self.assertNotIn("bom vídeo", pub)
         self.assertGreater(man["custo_usd"], 0)  # estimativa pela tabela quando a Apify não informa
-        self.assertEqual(man["itens_fora_da_lista"][0]["autor"], "Lulaoficial")
         self.assertEqual(len(visto), 1)
         self.assertEqual(man2["status"], "ok · nada pendente")
 

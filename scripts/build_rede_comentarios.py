@@ -67,7 +67,7 @@ def rede_termos(rows: list[dict], ids: tuple[str, str], excluir: set) -> tuple[n
     for a_, b_, d in g.edges(data=True):
         d["w_log"] = d["weight"] / math.sqrt(g.nodes[a_]["videos"] * g.nodes[b_]["videos"])
     pos = nx.spring_layout(g, weight="w_log", seed=SEMENTE, k=2.2 / math.sqrt(max(1, g.number_of_nodes())), iterations=400)
-    xs, ys = [p[0] for p in pos.values()], [p[1] for p in pos.values()]
+    xs, ys = [p[0] for p in pos.values()] or [0], [p[1] for p in pos.values()] or [0]  # rede vazia em amostras pequenas
     span = max(max(xs) - min(xs), max(ys) - min(ys)) or 1
     for v, (x, y) in pos.items():
         g.nodes[v]["x"] = round(float(x - min(xs)) / span * 1000, 1)
