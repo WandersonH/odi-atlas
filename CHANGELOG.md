@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.15 — Seguidores retroativos via Social Blade pela Apify (2026-10-18) 🔜
+
+- Pedido do usuário: série diária retroativa de seguidores coletada pela Apify, sem contratar a API do Social Blade. Loja (run de `teste-apify-loja`, 18/10): rl1987/social-blade-lookup (US$ 0,01 por evento: perfil, histórico, crescimento; Instagram, TikTok, YouTube e Twitch — sem X e Facebook), radeance/socialblade-api (US$ 0,01 por resultado), solidcode/socialblade-scraper (US$ 0,03 por item).
+- `collect_socialblade.py` + `socialblade.yml`: 35 perfis declarados ao TSE pelas chapas 13 e 22 (Instagram 19, TikTok 10, YouTube 6), modo "profile" com histórico; série em `data/seguidores/socialblade_historico.csv` (plataforma, perfil, data, seguidores, seguindo, posts, visualizações). Teto US$ 3; contas 3 a 7.
+- Testes: suíte OK.
+
 ## C19.14 — X: assuntos do momento no Brasil, de hora em hora (2026-10-18) 🔜
 
 - Pedido do usuário: coleta das top trends do dia no X. Diagnóstico (`diag-fontes-web.yml`): trends24.in e socialblade.com respondem 403 (Cloudflare) a robôs; getdaytrends.com/brazil/ responde 200. `collect_x_trends.py` + `x-trends.yml` (de hora em hora, grátis): lista do momento com volume de posts quando o X informa, em `data/x/trends/AAAA-MM-DD.csv` e resumo do dia em `latest.json` (top 30, melhor posição, horas na lista, assuntos que citam os candidatos).

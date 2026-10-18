@@ -1,0 +1,64 @@
+name: Social Blade — série retroativa de seguidores (Apify, contas 3 a 7, teto US$ 3)
+
+# Ator rl1987/social-blade-lookup (US$ 0,01 por evento). Instagram, TikTok e YouTube declarados ao TSE (13 e 22).
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "teste (Instagram @lulaoficial) · carga (todos)"
+        type: choice
+        options: [teste, carga]
+        default: teste
+
+concurrency:
+  group: socialblade
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  socialblade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar (Apify, com teto)
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          MODO: ${{ github.event.inputs.modo }}
+        run: |
+          if [ "$MODO" = "teste" ]; then a="--teste"; else a=""; fi
+          python scripts/collect_socialblade.py $a > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Social Blade::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Gravar bruto no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Social Blade (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Social Blade (run ${{ github.run_id }})"
