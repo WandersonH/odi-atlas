@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.19 — Ordem fixa: Lula primeiro, com aviso (2026-10-18) 🔜
+
+- Decisão do usuário (pergunta de 18/10): Lula primeiro em todas as páginas por ser o candidato à reeleição, com aviso. `data/config/trends.json`: termos com Lula primeiro nas 3 consultas que o incluem (a ordem não muda os índices do Trends, a escala é comum à consulta); `ordem_nota` registra a regra. Página: selo fixo no cabeçalho "ORDEM: LULA (ATUAL PRESIDENTE, À REELEIÇÃO) · FLÁVIO — NÃO INDICA PREFERÊNCIA".
+- Testes: suíte OK. Pendente: nova coleta do Trends com a ordem nova.
+
 ## C19.18 — Social Blade: 30 dias retroativos de TikTok e YouTube (2026-10-18) ⚠️
 
 - Carga (16 perfis, US$ 0,33): **222 pontos diários de 16/09 a 18/10** — TikTok flaviobolsonaro, lulaoficial, pode_espalhar e alckmingeraldo (31 dias cada); YouTube flaviobolsonaro, lulaoficial e brasilcomlula (31 dias cada); comitedeluta, canaltvcelular, brasilcomlula_, evangelicoscomlula e alfredogaspar com 1 ponto; alfredogasparoficial e 3 canais de YouTube sem dados. Arquivo `data/seguidores/socialblade_historico.csv`.
