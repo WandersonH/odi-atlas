@@ -1,9 +1,9 @@
 {
- "ator": "natanielsantos~kwai-scraper",
+ "ator": "zen-studio~kwai-comments-scraper",
  "segredo": "APIFY_TOKEN_3",
  "preco_usd": {
-  "video": 0.002,
-  "comentario": 0.001,
+  "video": 0.0,
+  "comentario": 0.00099,
   "inicio": 5e-05,
   "fonte": "loja Apify, run 'teste-apify-loja' de 17/10/2026"
  },
@@ -20,6 +20,9 @@
   "videos_por_perfil": 0
  },
  "nota": "Comentários públicos dos vídeos do Kwai dos perfis declarados ao TSE (chapas 13 e 22), desde 16/08/2026: até 50 comentários por vídeo, sem respostas, na ordem que o Kwai entrega. Texto e autor só no repositório privado; na página, só agregados (mesmas regras dos comentários do YouTube).",
- "url_video": "https://www.kwai.com/video/{video_id}",
- "nota_teste_1": "Teste 1 (run 39081371929, US$ 0,0161): 8 vídeos e 0 comentários com URLs no formato /@perfil/video/ID; o ator listou os vídeos de @Lulaoficial (o outro ator não). Teste 2 usa o formato /video/ID, o do exemplo do README."
+ "url_video": "{url}",
+ "nota_teste_1": "Teste 1 (run 39081371929, US$ 0,0161): 8 vídeos e 0 comentários com URLs no formato /@perfil/video/ID; o ator listou os vídeos de @Lulaoficial (o outro ator não). Teste 2 usa o formato /video/ID, o do exemplo do README.",
+ "nota_teste_2": "Teste 2 (run 39081622751, US$ 0,0001): formato /video/ID não devolve nada. Este ator não entregou comentários em nenhum formato; troca para zen-studio/kwai-comments-scraper (US$ 0,00099/comentário, entrada videoUrls), mesmo teto.",
+ "ator_anterior": "natanielsantos~kwai-scraper",
+ "entrada": "zen"
 }

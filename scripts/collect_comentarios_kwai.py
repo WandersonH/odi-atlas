@@ -73,21 +73,32 @@ def lista_comentarios(x: dict) -> list[dict]:
     return []
 
 
+def video_do_comentario(x: dict) -> str:
+    v = g(x, "videoId", "video_id", "photoId", "video.id")
+    if v:
+        return str(v)
+    m = re.search(r"/video/(\d+)", str(g(x, "videoUrl", "video_url", "inputUrl", "sourceUrl", "url") or ""))
+    return m.group(1) if m else ""
+
+
 def e_comentario(x: dict) -> bool:
-    """Formato do ator (README, 'Comment Output Example'): um item por comentário, com content e videoId."""
-    return "content" in x and "videoId" in x and "caption" not in x
+    """Um item por comentário (formato dos atores de comentários): tem texto e aponta um vídeo; não é o próprio vídeo."""
+    return any(k in x for k in TEXTO) and "caption" not in x and "viewCount" not in x and bool(video_do_comentario(x))
 
 
 def linhas(x: dict, video: dict, agora: str) -> list[dict]:
     out = []
     if e_comentario(x):
-        pai = str(x.get("replyToCommentId") or "")
+        pai = str(g(x, "replyToCommentId", "parentId", "parentCommentId", "replyTo.id") or "")
         return [{"video_id": video["video_id"], "candidate_id": video["candidate_id"], "channel_id": video["perfil"], "ordem": "kwai",
                  "coletado_em": agora, "atualizado_em": "", "comment_id": str(x.get("id") or ""), "parent_id": pai,
-                 "tipo": "resposta" if pai else "comentario", "autor_canal": str(x.get("authorId") or x.get("authorUsername") or ""),
-                 "autor_nome": str(x.get("authorName") or ""), "texto": " ".join(str(x.get("content") or "").split()),
-                 "curtidas": x.get("likedCount") or 0, "respostas": x.get("replyCount") if not pai else "",
-                 "publicado_em": quando(x.get("timestamp"))}]
+                 "tipo": "resposta" if pai else "comentario",
+                 "autor_canal": str(g(x, "authorId", "author.id", "userId", "user.id", "authorUsername", "author.username") or ""),
+                 "autor_nome": str(g(x, "authorName", "author.name", "author.nickname", "userName", "user.name", "nickname") or ""),
+                 "texto": " ".join(str(g(x, *TEXTO) or "").split()),
+                 "curtidas": g(x, "likedCount", "likeCount", "likes", "diggCount") or 0,
+                 "respostas": g(x, "replyCount", "subCommentCount") if not pai else "",
+                 "publicado_em": quando(g(x, "timestamp", "createTime", "createdAt", "time", "publishedAt"))}]
     for c in lista_comentarios(x):
         cid = str(g(c, "id", "commentId", "comment_id") or "")
         base = {"video_id": video["video_id"], "candidate_id": video["candidate_id"], "channel_id": video["perfil"], "ordem": "kwai",
@@ -174,8 +185,13 @@ def main(argv=None, executar=None) -> int:
         return fim("ok · nada pendente", 0)
     por_id = {v["video_id"]: v for v in alvo}
     fmt = cfg.get("url_video") or "{url}"
-    payload = {"urls": [fmt.format(video_id=v["video_id"], url=v["url"]) for v in alvo] + perfis, "maxItems": max_itens, "maxCommentsPerVideo": por_video,
-               "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
+    urls = [fmt.format(video_id=v["video_id"], url=v["url"]) for v in alvo]
+    if cfg.get("entrada") == "zen":
+        payload = {"videoUrls": urls, "maxCommentsPerVideo": por_video, "includeReplies": cfg["max_respostas_por_comentario"] > 0,
+                   "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
+    else:
+        payload = {"urls": urls + perfis, "maxItems": max_itens, "maxCommentsPerVideo": por_video,
+                   "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
     executar = executar or (lambda pl, cap: run_actor(token, cfg["ator"], pl, cap))
     try:
         run, itens = executar(payload, teto)
@@ -187,7 +203,7 @@ def main(argv=None, executar=None) -> int:
             f.write(json.dumps(x, ensure_ascii=False) + "\n")
     novas, perfil_teste = [], []
     for x in itens:
-        vid = str(x.get("videoId")) if e_comentario(x) else id_video(x)
+        vid = video_do_comentario(x) if e_comentario(x) else id_video(x)
         if vid in por_id:
             novas += linhas(x, por_id[vid], agora)
         elif not e_comentario(x):
@@ -211,6 +227,8 @@ def main(argv=None, executar=None) -> int:
                respostas_novas=len(novas) - n_coment, comentarios_no_acervo=len(todos),
                videos_com_comentarios=len({r["video_id"] for r in todos}), itens_fora_da_lista=perfil_teste[:20])
     print("chaves do 1º item: " + ", ".join(sorted(itens[0].keys()))[:900] if itens else "nenhum item")
+    if itens and not novas:
+        print("1º item (só chaves e tipos, sem conteúdo): " + json.dumps({k: type(v).__name__ for k, v in itens[0].items()})[:700])
     lc = next((lista_comentarios(x) for x in itens if lista_comentarios(x)), [])
     if lc:
         print("chaves de um comentário: " + ", ".join(sorted(lc[0].keys()))[:600])

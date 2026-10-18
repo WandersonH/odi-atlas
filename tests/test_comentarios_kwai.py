@@ -44,8 +44,7 @@ class TestComentariosKwai(unittest.TestCase):
                 del os.environ["ODI_INTERNO_DIR"]
         cfg = json.loads((RAIZ / "data/config/kwai_comentarios.json").read_text(encoding="utf-8"))
         payload, cap = visto[0]
-        self.assertEqual(payload["urls"][0], "https://www.kwai.com/video/v1")  # vídeo de janeiro fica fora; formato /video/ID
-        self.assertEqual(len(payload["urls"]), 1 + len(cfg["teste"]["perfis"]))
+        self.assertEqual(payload["videoUrls"], ["https://www.kwai.com/@FlavioBolsonaro/video/v1"])  # vídeo de janeiro fica fora
         self.assertEqual(cap, cfg["teto_teste_usd"])
         self.assertEqual((rows[0]["comment_id"], rows[0]["texto"], rows[0]["autor_nome"], rows[0]["publicado_em"][:10]), ("c1", "bom vídeo", "Fulano", "2026-09-10"))
         self.assertEqual((rows[1]["comment_id"], rows[1]["texto"], rows[1]["autor_nome"], rows[1]["tipo"]), ("c2", "outro formato", "Beltrana", "comentario"))

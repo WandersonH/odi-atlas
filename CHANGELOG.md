@@ -10,6 +10,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Achado: este ator **lista os vídeos de @Lulaoficial** (5 mais recentes, de 15 a 18/10, até 537.497 visualizações), que o unfenced-group/kwai-scraper não devolve.
 - `build_rede_comentarios.py` para com ⛔ quando há menos de 2 comentários (o teste 1 quebrou com lista vazia).
 - Página: subaba **Kwai** em Comentários, gerada da página do YouTube (mesmos blocos: números, sentimento, nuvens, intolerância/incivilidade, populismo, aderência ao tema, série diária, CHD, redes Gephi, IRaMuTeQ no privado, método), lendo `data/kwai/comentarios/`. Botão do menu: "Comentários · YouTube e Kwai".
+- Teste 2 (run 39081622751, US$ 0,0001): com `/video/ID` o ator não devolve nada. O natanielsantos/kwai-scraper não entregou comentários em nenhum formato; o coletor passa para **zen-studio/kwai-comments-scraper** (US$ 0,00099/comentário, entrada `videoUrls`), mesmo teto de US$ 4 e mesma chave. Leitura dos campos do comentário tolerante a nomes diferentes; o log mostra só as chaves e tipos do 1º item quando nada for reconhecido.
 - Testes: suíte OK.
 
 ## C18.7 — Comentários do Kwai: coletor e análises com as regras do YouTube (2026-10-17) 🔜
