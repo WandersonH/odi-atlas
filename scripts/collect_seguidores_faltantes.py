@@ -32,7 +32,10 @@ PADRAO = {"tiktok": r"tiktok\.com/@?([A-Za-z0-9._]+)", "x": r"(?:x|twitter)\.com
 ATORES = {
     "tiktok": [("clockworks~tiktok-profile-scraper", lambda u: {"profiles": [u], "resultsPerPage": 1, "shouldDownloadVideos": False}),
                ("clockworks~tiktok-scraper", lambda u: {"profiles": [u], "resultsPerPage": 1, "shouldDownloadVideos": False})],
-    "x": [("apidojo~twitter-user-scraper", lambda u: {"twitterHandles": [u], "maxItems": 1, "getFollowers": False, "getFollowing": False})],
+    # X: o post mais recente do perfil (qualquer data) traz os números do autor; xquik funciona no plano gratuito.
+    # apidojo/twitter-user-scraper fica como 2ª opção (no plano gratuito costuma devolver item de demonstração, descartado).
+    "x": [("xquik~x-tweet-scraper", lambda u: {"searchTerms": [f"from:{u}"], "maxItems": 1, "queryType": "Latest"}),
+          ("apidojo~twitter-user-scraper", lambda u: {"twitterHandles": [u], "maxItems": 1, "getFollowers": False, "getFollowing": False})],
     "instagram": [("apify~instagram-profile-scraper", lambda u: {"usernames": [u]}),
                   ("apify~instagram-scraper", lambda u: {"directUrls": [f"https://www.instagram.com/{u}/"], "resultsType": "details", "resultsLimit": 1})],
     "facebook": [("apify~facebook-pages-scraper", lambda u: {"startUrls": [{"url": f"https://www.facebook.com/{u}"}]})],
@@ -52,7 +55,7 @@ def usuario(plat: str, url: str) -> str | None:
 def seguidores(x: dict):
     return g(x, "authorMeta.fans", "followersCount", "followers_count", "followers", "fans", "user.followerCount",
              "author.followerCount", "authorStats.followerCount", "stats.followerCount", "public_metrics.followers_count",
-             "legacy.followers_count")
+             "legacy.followers_count", "author.followers", "author.followersCount", "author.followers_count", "user.followers_count")
 
 
 def alvos_tse(root: Path) -> list[dict]:
