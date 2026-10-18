@@ -32,8 +32,14 @@ CAMINHOS = {
              "amostra": "data/codificacao/amostra_populismo_kwai_v1.csv",
              "rede": "data/kwai/rede"},
 }
+CAMINHOS["facebook"] = {"populismo": "data/facebook/populismo.json",
+                         "corpus": "data/corpus/facebook_candidatos_iramuteq.txt",
+                         "segmentos": "data/corpus/facebook_candidatos_segmentos.csv",
+                         "chd": "data/corpus/chd_reinert_facebook.json",
+                         "amostra": "data/codificacao/amostra_populismo_facebook_v1.csv",
+                         "rede": "data/facebook/rede"}
 # Kwai: acervo histórico completo (pedido de 17/10/2026), sem corte de data; TikTok: desde o início da campanha
-INICIO_POR_PLATAFORMA = {"tiktok": INICIO_CAMPANHA, "kwai": ""}
+INICIO_POR_PLATAFORMA = {"tiktok": INICIO_CAMPANHA, "kwai": "", "facebook": INICIO_CAMPANHA}
 
 
 def args(argv) -> tuple[Path, str]:

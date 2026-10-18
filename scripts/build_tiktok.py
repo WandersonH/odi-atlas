@@ -38,8 +38,8 @@ def taxa(r: dict) -> float | None:
 
 def main(argv=None) -> int:
     argv = list(argv or [])
-    plat = "kwai" if "--kwai" in argv else "tiktok"  # o Kwai usa o mesmo formato de acervo e as mesmas regras
-    argv = [a for a in argv if a != "--kwai"]
+    plat = "kwai" if "--kwai" in argv else "facebook" if "--facebook" in argv else "tiktok"  # Kwai e Facebook: mesmo formato de acervo e mesmas regras
+    argv = [a for a in argv if a not in ("--kwai", "--facebook")]
     root = Path(argv[0]) if argv else Path(".")
     desde = "" if plat == "kwai" else "2026-08-16"  # Kwai: acervo histórico completo, com a data de cada post
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
@@ -63,8 +63,9 @@ def main(argv=None) -> int:
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "coletado_em_utc": man.get("run_started_utc"), "status_coleta": man.get("status"),
            "ferramenta": man.get("ferramenta"), "perfis_coleta": [{**p, **acervo_perfil.get(p["perfil"], {"videos_desde_16_08": 0, "ultima_leitura_ok": ""})}
-                             for p in man.get("perfis", [])],
+                             for p in (man.get("perfis") or man.get("paginas") or [])],
            "fonte": ("Kwai público via Apify (perfis declarados ao TSE pelas chapas 13 e 22)" if plat == "kwai"
+                     else "Facebook público via Apify (páginas declaradas ao TSE pelas chapas 13 e 22)" if plat == "facebook"
                      else "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)"),
            "metodo": cfg["nota"] + f" Mesmas regras do caderno 02 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
            "temas": list(cfg["temas"]) + ["sem_tema"], "desde": desde or None, "candidatos": {}}

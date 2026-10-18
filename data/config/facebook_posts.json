@@ -1,0 +1,26 @@
+{
+ "ator": "apify~facebook-posts-scraper",
+ "segredo": "APIFY_TOKEN_2",
+ "preco_usd": {"post": 0.005, "inicio": 0.001, "fonte": "loja Apify (plano gratuito: US$ 0,005/post; até ~1.000 posts, 700 com filtro de data), run teste-apify-loja de 17/10/2026"},
+ "autorizacao": "Usuário em 17/10/2026, 21h3x: 'o que as campanhas dizem' no Facebook com a conta Apify 2, todas as páginas declaradas ao TSE pelas chapas 13 e 22, teto de US$ 5.",
+ "teto_total_usd": 5.0,
+ "teto_teste_usd": 0.1,
+ "desde": "2026-08-16",
+ "teste": {"pagina": "https://www.facebook.com/lula", "posts": 10},
+ "posts_por_pagina": {"principal": 150, "outras": 40},
+ "paginas": [
+  {"url": "https://www.facebook.com/lula", "perfil": "lula", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA", "principal": true},
+  {"url": "https://www.facebook.com/flaviobolsonaro", "perfil": "flaviobolsonaro", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "FLAVIO BOLSONARO", "principal": true},
+  {"url": "https://www.facebook.com/geraldoalckmin", "perfil": "geraldoalckmin", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "GERALDO ALCKMIN"},
+  {"url": "https://www.facebook.com/people/Pode-Espalhar/61577944114979", "perfil": "Pode-Espalhar", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"url": "https://www.facebook.com/obrasilcomlula", "perfil": "obrasilcomlula", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"url": "https://www.facebook.com/lulaverso", "perfil": "lulaverso", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"url": "https://www.facebook.com/geracaolula", "perfil": "geracaolula", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"url": "https://www.facebook.com/evangelicoscomlula", "perfil": "evangelicoscomlula", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"url": "https://www.facebook.com/denuncia.br.2026", "perfil": "denuncia.br.2026", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "FLAVIO BOLSONARO"},
+  {"url": "https://www.facebook.com/canaltvcelular", "perfil": "canaltvcelular", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "FLAVIO BOLSONARO"},
+  {"url": "https://www.facebook.com/alfredogasparoficial", "perfil": "alfredogasparoficial", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "ALFREDO GASPAR"},
+  {"url": "https://www.facebook.com/share/18DZYGMXKL/", "perfil": "share-18DZYGMXKL", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "ALFREDO GASPAR"}
+ ],
+ "nota": "Posts públicos das páginas de Facebook declaradas ao TSE pelas chapas 13 e 22 (12 endereços; 'facebook.com/obrasilcomlula' aparece duas vezes no TSE e foi lido uma vez), desde 16/08/2026, via Apify (apify/facebook-posts-scraper, sem login). Até 150 posts das páginas principais (Lula e Flávio) e 40 das demais. Mesmas regras de tema, 'cita o adversário' e 'pede voto' do YouTube, TikTok e Kwai."
+}

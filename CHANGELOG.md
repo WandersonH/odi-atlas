@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.0 — Facebook: o que as campanhas publicam (Apify, conta 2, teto US$ 5) (2026-10-17) 🔜
+
+- Pedido do usuário: "com a conta apify 2 consegue fazer o que as campanhas dizem no face"; escolheu todas as páginas declaradas ao TSE, teto de US$ 5 (pergunta de 17/10, 21h3x).
+- Loja Apify (run de `teste-apify-loja`, 17/10): apify/facebook-posts-scraper — no plano gratuito US$ 0,005 por post, até cerca de 1.000 posts (700 com filtro de data), segundo o README.
+- `data/config/facebook_posts.json`: 12 páginas declaradas pelas chapas 13 e 22 (obrasilcomlula, repetida no TSE, entra uma vez); até 150 posts das páginas principais (facebook.com/lula, facebook.com/flaviobolsonaro) e 40 das demais, desde 16/08 (≈ 700 posts, ≈ US$ 3,51 pela tabela).
+- `collect_facebook_posts.py` + `facebook-posts.yml` (teste: 10 posts de facebook.com/lula; carga: uma execução por página, 3 em paralelo). Acervo em `data/facebook/videos.csv.gz` com as colunas do TikTok/Kwai; bruto no repositório privado. `build_tiktok.py --facebook` e `plataformas.py` (facebook) aplicam as mesmas regras de tema, Bardin, CHD e rede.
+- Testes: `tests/test_facebook_posts.py`; suíte OK.
+- Pendente: runs de teste e carga; página "Facebook" no caderno 02.
+
 ## C18.12 — Comentários do Kwai: teto de US$ 5 e teste com o natanielsantos por vídeo único (2026-10-17) ⛔ (sem coletor gratuito para o restante)
 
 - Pedido do usuário (21h24): "colete tudo que conseguir com até 5 dólares" — teto total dos comentários do Kwai passa a US$ 5.
