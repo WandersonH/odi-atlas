@@ -7,6 +7,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 ## C19.35 — Instagram: gravar a coleta antes das etapas lentas; miniaturas em paralelo (2026-10-18) 🔜
 
 - A 1ª carga do Instagram (run 39100842854) terminou a coleta em 9 min, mas a etapa de miniaturas passou de 30 min (≈1.100 capas baixadas uma a uma, espera de até 30 s cada), com risco de o job (limite de 60 min) acabar antes de gravar os posts. `instagram-posts.yml`: grava `data/` logo após a coleta, miniaturas com limite de 15 min, job com limite de 120 min. `build_miniaturas_kwai.py`: 8 downloads em paralelo (vale para Kwai, Facebook, X e Instagram).
+- Carga (run 39100842854, conta 8): 3.599 posts de 17 perfis desde 20/07 (US$ 0,34). @lulaoficial 823, @flaviobolsonaro 316; brasilcomlula, lulaversoficial e pode_espalhar bateram o limite de 400 (mais antigo: 26/09, 12/09 e 20/09); denunciabr_reserva, denunciabr_reserva1 e flaviocomaverdade sem posts no período. Visualizações vazias em 1.272 (fotos e carrosséis), legenda vazia em 14. Limite dos perfis de apoio sobe para 1.500 e a carga é refeita.
 - Testes: suíte OK.
 
 ## C19.34 — Auditoria (itens 10 e 12): Trends, contas × eleitorado e Reuters (2026-10-18) ✅
