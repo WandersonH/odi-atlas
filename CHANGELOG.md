@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.13 — Comentários do Facebook carregados; seguidores do TikTok; saldo das contas (2026-10-18) ⚠️
+
+- Comentários do Facebook, carga (run 39085893432, conta 3): **4.965 comentários** — Lula 2.315, Flávio 2.650 — em 5 execuções; US$ 1,25 pela tabela (teto US$ 1,50). Texto só no repositório privado; agregados em `data/facebook/comentarios/`.
+- Seguidores do TikTok (run `tiktok` 39086010561, US$ 0,0165): lulaoficial 6.162.331, flaviobolsonaro 2.519.862, pode_espalhar 174.335. Os outros 7 perfis voltaram sem número (sem erro): a investigar.
+- Saldo real das contas (run `apify-contas`, 18/10 00h43 UTC): 1 US$ 11,08 (Starter, não usada); 2 −0,27; 3 US$ 2,37; 4 US$ 2,80; 5, 6 e 7 US$ 5,00 cada.
+
 ## C19.12 — Seguidores de todos os TikToks declarados (contas 3 a 7) (2026-10-17) 🔜
 
 - Cards "Não coletado" do TikTok (print do usuário): nenhuma rotina lia seguidores dos perfis secundários. `collect_seguidores_tiktok.py` (apidojo/tiktok-profile-scraper, US$ 0,0003 por item; 1 item por perfil, ≈ US$ 0,003 por coleta) roda no `tiktok.yml` (2× ao dia) e grava `data/seguidores/tiktok_latest.csv` com a URL declarada ao TSE; `bnLoadAuto` lê o arquivo; variação diária incluída.
