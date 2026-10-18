@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.18 — Social Blade: 30 dias retroativos de TikTok e YouTube (2026-10-18) ⚠️
+
+- Carga (16 perfis, US$ 0,33): **222 pontos diários de 16/09 a 18/10** — TikTok flaviobolsonaro, lulaoficial, pode_espalhar e alckmingeraldo (31 dias cada); YouTube flaviobolsonaro, lulaoficial e brasilcomlula (31 dias cada); comitedeluta, canaltvcelular, brasilcomlula_, evangelicoscomlula e alfredogaspar com 1 ponto; alfredogasparoficial e 3 canais de YouTube sem dados. Arquivo `data/seguidores/socialblade_historico.csv`.
+- Teste de histórico pelo id com `historyLimit` 365 (US$ 0,02): devolveu os mesmos 30 dias. O Social Blade só entrega ~30 dias por essa via; a pré-campanha (20/07 a 15/08) não tem série retroativa. Instagram: série bloqueada pelo próprio Social Blade (README do ator).
+- Testes: suíte OK.
+
 ## C19.17 — Sentimento por semana de campanha (menu recolhível) (2026-10-18) 🔜
 
 - Pedido do usuário (print do "Tom geral dos comentários"): nos quadros por fase, um menu oculto com a métrica por semana de campanha. `build_sentimento_comentarios.py` passa a gravar, em cada fase, `semanas` (segunda a domingo, rótulo da segunda-feira) com a mesma distribuição; a tabela de sentimento do YouTube, Kwai e Facebook ganha, sob cada fase, "Ver por semana de campanha (N)" (recolhido por padrão). "Fora da coleta (comentários desde 16/08)" virou "sem comentários coletados nesta fase" (a coleta agora começa em 20/07).

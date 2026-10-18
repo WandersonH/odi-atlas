@@ -118,8 +118,9 @@ def main(argv=None, executar=None) -> int:
         itens = itens or []
         custo += max(custo_run(run or {}) or 0, 0.02 * len(itens))
         # o modo "profile" pode vir sem a série; nesse caso, pede o histórico pelo id da plataforma (exigência do ator)
-        # o modo "profile" traz ~30 dias; para voltar à pré-campanha, pede o histórico (até 365 dias) pelo id de cada perfil
-        sem = {str(x.get("id")): x for x in itens if x.get("id")}
+        # o modo "profile" traz ~30 dias; o pedido de histórico pelo id (historyLimit 365) devolveu os mesmos 30 dias
+        # (teste de 18/10), então só é feito para perfil que veio sem série
+        sem = {str(x.get("id")): x for x in itens if x.get("id") and not pontos(x)}
         if sem:
             try:
                 run2, hist = executar({"platform": plat, "resultType": "history", "queries": list(sem), "historyLimit": 365}, max(0.1, round(0.01 * len(sem) + 0.02, 3)))
