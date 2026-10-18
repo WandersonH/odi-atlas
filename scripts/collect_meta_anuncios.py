@@ -70,6 +70,10 @@ def agregar(ads: list[dict], fases: list[dict]) -> dict:
             "fases": [{"id": f["id"], "rotulo": f["rotulo"], "de": f["de"], "ate": f["ate"],
                        **(lambda xs: {"anuncios": len(xs), "gasto": soma([faixa(a.get("spend")) for a in xs])})(
                            [a for a in ads if fase_de(a.get("ad_delivery_start_time"), [f])])} for f in fases],
+            # reconciliação: anúncios sem data de início ou com início fora das fases (antes de 20/07, ou ainda veiculando de antes)
+            "fora_das_fases": (lambda xs: {"anuncios": len(xs), "sem_data": sum(1 for a in xs if not a.get("ad_delivery_start_time")),
+                                           "gasto": soma([faixa(a.get("spend")) for a in xs])})(
+                [a for a in ads if not fase_de(a.get("ad_delivery_start_time"), fases)]),
             "regioes_gasto_min_estimado": [{"regiao": k, "gasto_min": round(v)} for k, v in sorted(reg.items(), key=lambda x: -x[1])[:27]],
             "top_paginas": paginas[:25]}
 

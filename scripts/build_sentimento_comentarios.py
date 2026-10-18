@@ -144,6 +144,8 @@ def main(argv=None, classificar=None) -> int:
         return 1
     d = Path(interno) / plat / ("respostas" if plat == "x" else "comentarios")
     rows = ler_csv(d / ("respostas.csv.gz" if plat == "x" else "comentarios.csv.gz"))
+    # um comentário conta uma vez (o acervo pode repetir o id quando o mesmo comentário volta em duas coletas)
+    rows = list({r["comment_id"]: r for r in rows if r.get("comment_id")}.values())
     cache = {r["comment_id"]: r for r in ler_csv(d / "sentimento.csv.gz") if r.get("modelo") == cfg["modelo"]}
     pend = [r for r in rows if r["comment_id"] not in cache and (r.get("texto") or "").strip()]
     pend.sort(key=lambda r: r.get("publicado_em", ""), reverse=True)  # mais recentes primeiro
@@ -175,8 +177,11 @@ def main(argv=None, classificar=None) -> int:
     cand = agregar(rows, rot, fases, cfg["min_comentarios_video"], nomes)
     faltam = sum(1 for r in rows if r["comment_id"] not in rot and (r.get("texto") or "").strip())
     revs = sorted({v.get("revisao", "") for v in cache.values()} - {""})
+    sem_texto = sum(1 for r in rows if not (r.get("texto") or "").strip())
+    base["metodo"] = cfg["nota"] + f" Universo: {cfg.get('universo', {}).get(plat, 'os comentários coletados')}."
     out = {**base, "status": "ok" if not faltam else f"parcial: faltam {faltam} comentários (próximos runs)",
-           "revisoes_modelo": revs, "classificados_neste_run": feitos, "classificados_total": len(rot),
+           "sem_texto_classificavel": sem_texto,
+           "revisoes_modelo": revs, "classificados_neste_run": feitos, "classificados_total": sum(1 for r in rows if r["comment_id"] in rot),
            "comentarios_coletados": len(rows), "candidatos": cand}
     saida.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     for c in cand.values():

@@ -9,7 +9,13 @@
  "lote": 64,
  "max_por_execucao": 60000,
  "min_comentarios_video": 30,
- "nota": "Polaridade de cada comentário (positivo, negativo, neutro) por modelo de linguagem treinado em português (BERTabaporu ajustado pelo pysentimiento; Pérez, Giudici e Luque, 2021). Mede o tom do texto, não a posição política: 'que vergonha esse governo' é negativo seja quem for o alvo, e ironia costuma ser lida pelo sentido literal. Classificação automática, sem validação humana nesta versão. Universo: os comentários coletados (até 100 por relevância e até 100 recentes por vídeo, com respostas), não todos os comentários do vídeo. Por vídeo, só com pelo menos 30 comentários classificados.",
+ "nota": "Polaridade de cada comentário (positivo, negativo, neutro) por modelo de linguagem treinado em português (BERTabaporu ajustado pelo pysentimiento; Pérez, Giudici e Luque, 2021). Mede o tom do texto, não a posição política: 'que vergonha esse governo' é negativo seja quem for o alvo, e ironia costuma ser lida pelo sentido literal. Classificação automática, sem validação humana nesta versão. Por vídeo, só com pelo menos 30 comentários classificados.",
  "bloco_gravacao": 2000,
- "tempo_max_minutos": 75
+ "tempo_max_minutos": 75,
+ "universo": {
+  "youtube": "os comentários coletados (até 100 por relevância e até 100 recentes por vídeo, com respostas), não todos os comentários do vídeo",
+  "kwai": "os comentários coletados (até 50 por vídeo, na ordem que o Kwai entrega, sem respostas), não todos os comentários do vídeo",
+  "facebook": "os comentários coletados (amostra por post, na ordem de relevância do Facebook, sem respostas), não todos os comentários do post",
+  "x": "a amostra de respostas a @LulaOficial e @FlavioBolsonaro (por dia e por post), não todas as respostas"
+ }
 }

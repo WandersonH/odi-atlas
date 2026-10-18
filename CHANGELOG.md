@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.28 — Auditoria (itens 2, 3, 6 e 7) e página do Instagram (2026-10-18) ⚠️
+
+- O usuário anexou uma auditoria (18/10, 02h21) com 12 correções. Feitas nesta entrada:
+  - **2 · Sentimento do Kwai não fechava** ("513 de 678", 489 + 28 = 517 e "todos foram classificados"): o acervo repetia ids de comentário (agora contados uma vez); o total de classificados passa a contar só comentários do acervo; a página mostra "N de M comentários classificados (K sem texto classificável)" e o status quando não está completo. O texto de método deixa de repetir o universo do YouTube: cada rede tem o seu (`data/config/sentimento_comentarios.json`, chave `universo`). Os números só mudam no próximo run do sentimento (o arquivo atual do Kwai é de antes da carga de comentários terminar: 678 coletados contra 1.137 no acervo).
+  - **3 · Anúncios por fase não somavam o total** (850 por busca; fases somam 664 em Lula e 743 em Flávio): a tabela ganhou a linha "sem data ou início fora das fases" (186 e 107) e o total da busca. A partir da próxima coleta, `collect_meta_anuncios.agregar` grava `fora_das_fases` com o gasto dessa linha; até lá a página mostra só a contagem e diz que o gasto não está separado.
+  - **6 · Rede de respostas zerada onde não há respostas**: no Kwai e no Facebook a seção passa a dizer "não disponível: esta coleta não inclui respostas" (antes, zeros e "null" com texto da API do YouTube).
+  - **7 · Textos copiados entre redes**: faixas do Kwai e do X diziam "TIKTOK"; a de comentários do Facebook dizia "KWAI"; "comentários dos vídeos" no Facebook vira "dos posts"; nas páginas do Facebook, X e Instagram "vídeo(s)" vira "post(s)" nos rótulos.
+- Página do Instagram ("Instagram" em O que as campanhas dizem), gerada da página do Facebook com textos próprios: perfis (não páginas), visualizações só em reels, sem compartilhamentos. Verificação com os 10 posts do teste: com o Flávio ainda sem posts, o gráfico de bolhas gera coordenadas NaN; refazer a verificação com a carga completa.
+- Testes: suíte OK; páginas de anúncios e Facebook abertas no Chromium local sem erro de JavaScript.
+
 ## C19.27 — Instagram: coletor de posts das campanhas (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 02h21–02h24): página "o que as campanhas dizem" do Instagram, teto de US$ 5, numa das contas novas (conta 8, só para o Instagram).
