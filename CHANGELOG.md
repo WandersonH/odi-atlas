@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.33 — Auditoria (item 9): cobertura da coleta por fase e Kwai que não fechava (2026-10-18) ⚠️
+
+- **Kwai: Panorama com 50 vídeos de @Lulaoficial e lista de perfis com zero**: a lista lia `videos_no_acervo`, que `build_tiktok` não gravava. Agora grava `videos_no_acervo` e `videos_desde_20_07` por perfil (conteúdo regenerado: Lulaoficial 50 no acervo / 50 desde 20/07; podeespalhar 315 / 107; FlavioBolsonaro 955 / 100). As contagens "desde 16/08" do Kwai e do TikTok passam a "desde 20/07" (início adotado pelo Atlas); a introdução dos comentários do Kwai diz "desde 20/07". O "16/08" do Google (início oficial da campanha) foi mantido.
+- **Comparações dominadas pela cobertura**: cada página de conteúdo (YouTube, TikTok, Kwai, Facebook, Instagram, X) ganha a tabela "Cobertura da coleta" (conteúdos por candidato e fase, e média por dia) com aviso quando a média de um candidato varia mais de 4× entre fases. Situação atual (Chromium local): Facebook — Lula 0 / 19 / 282 e Flávio 0 / 118 / 52 (pré / 1º / 2º turno; a coleta de posts começou em 16/08 e o ator lê os mais recentes primeiro); Kwai — Lula 21 / 74 / 62. ⚠️ Lacuna real do Facebook (pré-campanha e 1º turno de Lula); "comparação com cobertura equivalente" ainda não implementada.
+- Testes: suíte OK; sem erro de JavaScript.
+
 ## C19.32 — Auditoria (item 8): versão, última coleta por fonte e revisão separadas (2026-10-18) ✅
 
 - **8 · Documentação atrás das coletas** (cabeçalho "Capturas: 10–11 OUT 2026", rodapé "v14"): o cabeçalho passa a mostrar a data da coleta mais recente lida dos manifestos ("Última coleta: 18/10/2026, 02:30" no teste local); o rodapé diz v15 (MVP); o LEIA-ME ganha o quadro "Versão, coletas e revisão", com versão do produto, data da última revisão metodológica e uma tabela de 21 fontes com a data e a situação da última coleta de cada uma, lidas dos próprios manifestos ao abrir a página (sem custo). Arquivos que só têm o dia (assuntos do dia do X) aparecem como "(só o dia)" e não entram na data do cabeçalho.

@@ -68,13 +68,15 @@ def main(argv=None) -> int:
     # última leitura bem-sucedida de cada perfil (a tentativa mais recente pode ter sido bloqueada)
     acervo_perfil = {}
     for r in rows:
-        a = acervo_perfil.setdefault(r["perfil"], {"videos_desde_16_08": 0, "ultima_leitura_ok": ""})
+        a = acervo_perfil.setdefault(r["perfil"], {"videos_desde_20_07": 0, "videos_desde_16_08": 0, "videos_no_acervo": 0, "ultima_leitura_ok": ""})
+        a["videos_no_acervo"] += 1
+        a["videos_desde_20_07"] += int(r["publicado_em"] >= "2026-07-20")
         a["videos_desde_16_08"] += int(r["publicado_em"] >= "2026-08-16")
         a["ultima_leitura_ok"] = max(a["ultima_leitura_ok"], r["ultima_coleta"] or "")
     padrao = bc.texto_padrao(pseudo)
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "coletado_em_utc": man.get("run_started_utc"), "status_coleta": man.get("status"),
-           "ferramenta": man.get("ferramenta"), "perfis_coleta": [{**p, **acervo_perfil.get(p["perfil"], {"videos_desde_16_08": 0, "ultima_leitura_ok": ""})}
+           "ferramenta": man.get("ferramenta"), "perfis_coleta": [{**p, **acervo_perfil.get(p["perfil"], {"videos_desde_20_07": 0, "videos_desde_16_08": 0, "videos_no_acervo": 0, "ultima_leitura_ok": ""})}
                              for p in (man.get("perfis") or man.get("paginas") or [])],
            "fonte": ("Kwai público via Apify (perfis declarados ao TSE pelas chapas 13 e 22)" if plat == "kwai"
                      else "Facebook público via Apify (páginas declaradas ao TSE pelas chapas 13 e 22)" if plat == "facebook"

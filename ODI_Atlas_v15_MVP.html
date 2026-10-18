@@ -506,6 +506,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 
 /* Instagram: mesmas regras da página do Facebook */
 #ytContent .nf-tag,#tkContent .nf-tag,#kwContent .nf-tag,#fbContent .nf-tag,#igContent .nf-tag,#twContent .nf-tag{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid #c9d0d6;font:700 9.5px "Courier New",monospace;letter-spacing:.04em;text-transform:uppercase;color:#53606b;background:#fffdf8;vertical-align:middle}
+.cob-fase{margin:8px 0;font-size:12.5px}.cob-fase table{border-collapse:collapse;font-size:12px}.cob-fase th,.cob-fase td{padding:4px 8px;border-bottom:1px solid #e3e6e8;text-align:left}.cob-fase th{font:700 10px "Courier New",monospace;text-transform:uppercase;color:#53606b}.cob-fase .cob-aviso{border-left:3px solid #b3261e;background:#fbeeee;padding:6px 10px;margin-top:6px}
 </style>
 <style>
 /* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
@@ -968,6 +969,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     </div>
   </div>
   <div class="odi-signal" id="ytStatus" role="status">Aguardando leitura da base de vídeos.</div>
+  <div class="cob-fase" id="ytCobertura" data-plat="youtube"></div>
   <div class="yt-stats" id="ytStats"></div>
   <div class="yt-clouds">
     <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-a"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox" id="ytCloudA"></div></figure>
@@ -1104,6 +1106,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p>Vídeos dos perfis de TikTok declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares e vices). Mesmas regras do página de campanhas (YouTube): temas por dicionário aberto aplicado à legenda — não IA — e marcas de "cita o adversário" e "pede voto".</p>
   </div>
   <div class="odi-signal" id="tkStatus" role="status">Aguardando leitura da base do TikTok.</div>
+  <div class="cob-fase" id="tkCobertura" data-plat="tiktok"></div>
   <div class="tk-perfis" id="tkPerfis"></div>
   <div class="yt-stats" id="tkStats"></div>
   <div class="yt-controls card">
@@ -1193,9 +1196,10 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · KWAI</span><span>ACERVO HISTÓRICO · PERFIS DECLARADOS AO TSE</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Kwai público · chapas 13 e 22</div>
     <h1>O que cada campanha publica no Kwai.<br><em>Vídeo curto, por tema.</em></h1>
-    <p>Acervo histórico (com a data de cada post) dos perfis de Kwai declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>. Mesmas regras do TikTok e do YouTube: temas por dicionário aberto aplicado à legenda — não IA — e marcas de "cita o adversário" e "pede voto". Escolha o período: campanha (desde 16/08) ou acervo completo.</p>
+    <p>Acervo histórico (com a data de cada post) dos perfis de Kwai declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>. Mesmas regras do TikTok e do YouTube: temas por dicionário aberto aplicado à legenda — não IA — e marcas de "cita o adversário" e "pede voto". Escolha o período: campanha (desde 20/07, pré-campanha) ou acervo completo.</p>
   </div>
   <div class="odi-signal" id="kwStatus" role="status">Aguardando leitura da base do Kwai.</div>
+  <div class="cob-fase" id="kwCobertura" data-plat="kwai"></div>
   <div class="tk-perfis" id="kwPerfis"></div>
   <div class="yt-stats" id="kwStats"></div>
   <div class="yt-controls card">
@@ -1272,6 +1276,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p>Posts públicos das páginas de Facebook declaradas ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares, vices e páginas de apoio), desde 20/07 (pré-campanha), com filtro por fase. Mesmas regras do YouTube, TikTok e Kwai: temas por dicionário aberto aplicado ao texto — não IA — e marcas de "cita o adversário" e "pede voto". Visualizações só existem para vídeos e reels; a interação usa reações + comentários + compartilhamentos.</p>
   </div>
   <div class="odi-signal" id="fbStatus" role="status">Aguardando leitura da base do Facebook.</div>
+  <div class="cob-fase" id="fbCobertura" data-plat="facebook"></div>
   <div class="tk-perfis" id="fbPerfis"></div>
   <div class="yt-stats" id="fbStats"></div>
   <div class="yt-controls card">
@@ -1348,6 +1353,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p>Posts e respostas dos perfis de X declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares, vices e perfis de apoio), desde 20/07 (pré-campanha), sem reposts, com filtro por fase. Mesmas regras do YouTube, TikTok, Kwai e Facebook: temas por dicionário aberto aplicado ao texto — não IA — e marcas de "cita o adversário" e "pede voto". Interação = (curtidas + respostas + reposts + citações) ÷ visualizações.</p>
   </div>
   <div class="odi-signal" id="twStatus" role="status">Aguardando leitura da base do X.</div>
+  <div class="cob-fase" id="twCobertura" data-plat="x"></div>
   <div class="tk-perfis" id="twPerfis"></div>
   <div class="yt-stats" id="twStats"></div>
   <div class="yt-controls card">
@@ -1462,7 +1468,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO KWAI</span><span>DESDE 20 JUL 2026 · SÓ AGREGADOS</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Kwai público via Apify · comentários</div>
     <h1>O que a audiência responde.<br><em>Comentários dos vídeos das campanhas.</em></h1>
-    <p>Comentários dos vídeos do Kwai dos perfis declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>, desde 16/08: até 50 por vídeo, na ordem que o Kwai entrega, sem respostas. Mesmas regras da página de comentários do YouTube: pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou perfil de quem comentou é publicado aqui.</p>
+    <p>Comentários dos vídeos do Kwai dos perfis declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>, desde 20/07 (pré-campanha): até 50 por vídeo, na ordem que o Kwai entrega, sem respostas. Mesmas regras da página de comentários do YouTube: pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou perfil de quem comentou é publicado aqui.</p>
   </div>
   <div class="odi-signal" id="kcStatus" role="status">Aguardando leitura.</div>
   <div class="yt-stats" id="kcStats"></div>
@@ -2855,8 +2861,8 @@ const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];retur
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){const quando=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'';
-$('tkPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>{const vazio=p.status==='sem vídeos públicos',ok=p.status==='ok',tem=p.videos_desde_16_08>0;
-const dado=tem?`${fmt(p.videos_desde_16_08)} vídeos · lido em ${quando(p.ultima_leitura_ok)}`:(vazio?'sem vídeos públicos':'nunca lido');
+$('tkPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>{const vazio=p.status==='sem vídeos públicos',ok=p.status==='ok',tem=(p.videos_desde_20_07??p.videos_desde_16_08)>0;
+const dado=tem?`${fmt((p.videos_desde_20_07??p.videos_desde_16_08))} vídeos · lido em ${quando(p.ultima_leitura_ok)}`:(vazio?'sem vídeos públicos':'nunca lido');
 const agora=ok||vazio?'':' · ⛔ última tentativa bloqueada';
 return `<span class="tk-perfil ${ok||vazio?'':(tem?'tk-old':'tk-off')}" title="${esc(p.status)} · ${p.tentativas} tentativa(s)"><b>@${esc(p.perfil)}</b> · ${esc(p.candidate_name)} · ${dado}${agora}</span>`;}).join('');}
 function chips(){const tot={};for(const c of [L,F])for(const v of D.candidatos[c].videos.filter(naFase))for(const t of v.temas)tot[t]=(tot[t]||0)+1;const all=D.candidatos[L].videos.filter(naFase).length+D.candidatos[F].videos.filter(naFase).length;
@@ -2890,7 +2896,7 @@ try{const r=await fetch('./data/tiktok/conteudo.json',{cache:'no-store'});if(!r.
 catch(err){$('tkStatus').textContent='⛔ Base do TikTok indisponível ('+err.message+').';feito=false;return;}
 const a=D.candidatos[L],b=D.candidatos[F];const ok=(D.perfis_coleta||[]).filter(p=>p.status==='ok').length,tot=(D.perfis_coleta||[]).length;
 const hora=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'—';
-const comDados=(D.perfis_coleta||[]).filter(p=>p.videos_desde_16_08>0).length;
+const comDados=(D.perfis_coleta||[]).filter(p=>(p.videos_desde_20_07??p.videos_desde_16_08)>0).length;
 $('tkStatus').textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio desde 20/07/2026 (pré-campanha), de ${comDados} perfis. `+(ok===0?`A tentativa mais recente (${hora(D.coletado_em_utc)}) foi bloqueada pelo TikTok em todos os perfis; os números abaixo são da última leitura bem-sucedida de cada perfil (data em cada etiqueta). Nova tentativa às 07h35 e 19h35.`:`Tentativa mais recente (${hora(D.coletado_em_utc)}): ${ok} de ${tot} perfis lidos${ok<tot?'; os demais mantêm a última leitura bem-sucedida':''}.`)+` Ferramenta: ${D.ferramenta||'yt-dlp'}.`;
 $('tkMethod').textContent=D.metodo;perfis();nuvem($('tkCloudA'),a.nuvem);nuvem($('tkCloudB'),b.nuvem);hashtags('tkTagsA',a.hashtags);hashtags('tkTagsB',b.hashtags);
 $('tkOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});document.querySelectorAll('#tkContent [data-tkper]').forEach(x=>x.addEventListener('click',()=>{periodo=x.dataset.tkper;document.querySelectorAll('#tkContent [data-tkper]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)));INICIO=Date.parse(FASES[periodo][0]);render();}));$('tkOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});render();}
@@ -3084,8 +3090,8 @@ catch(err){$('kwStatus').textContent='⛔ Base do Kwai indisponível ('+err.mess
 const a=D.candidatos[L],b=D.candidatos[F];
 try{const m=await fetch('./data/kwai/miniaturas.json',{cache:'no-store'});if(m.ok)MINI=new Set((await m.json()).ids||[]);}catch(e){}
 const hora=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'—';
-const desde=x=>x.videos.filter(v=>(v.publicado_em||'')>='2026-08-16').length;
-$('kwStatus').textContent=`Acervo: ${fmt(a.total_videos)} vídeos de Lula (${fmt(desde(a))} desde 16/08) e ${fmt(b.total_videos)} de Flávio (${fmt(desde(b))} desde 16/08). Coleta de ${hora(D.coletado_em_utc)} · ${D.fonte}. Capas: ${fmt(MINI.size)} vídeos.`;
+const desde=x=>x.videos.filter(v=>(v.publicado_em||'')>='2026-07-20').length;
+$('kwStatus').textContent=`Acervo: ${fmt(a.total_videos)} vídeos de Lula (${fmt(desde(a))} desde 20/07) e ${fmt(b.total_videos)} de Flávio (${fmt(desde(b))} desde 20/07). Coleta de ${hora(D.coletado_em_utc)} · ${D.fonte}. Capas: ${fmt(MINI.size)} vídeos.`;
 document.querySelectorAll('#kwContent [data-kwper]').forEach(x=>x.addEventListener('click',()=>{periodo=x.dataset.kwper;document.querySelectorAll('#kwContent [data-kwper]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)));
  INICIO=periodo==='acervo'?Math.min(CAMP,...[L,F].flatMap(c=>D.candidatos[c].videos.map(v=>Date.parse(v.publicado_em)).filter(Number.isFinite))):Date.parse(FASES[periodo][0]);render();}));
 fetch('./data/kwai/manifesto_latest.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(M=>{if(M)$('kwPerfisNota').textContent=`${M.fora||''} Última execução: ${M.modo||''} · ${M.status||''}.`;}).catch(()=>{});
@@ -3433,6 +3439,7 @@ if(sec.classList.contains('active'))carregar();
     <p>Posts públicos dos perfis de Instagram declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares, vices e perfis de apoio), desde 20/07 (pré-campanha), com filtro por fase. Mesmas regras do YouTube, TikTok, Kwai, Facebook e X: temas por dicionário aberto aplicado ao texto — não IA — e marcas de "cita o adversário" e "pede voto". Visualizações só existem para reels (fotos e carrosséis não têm contagem pública); curtidas ocultas pelo perfil ficam sem valor. O Instagram não mostra compartilhamentos: a interação usa curtidas + comentários, sobre visualizações, e só existe para reels.</p>
   </div>
   <div class="odi-signal" id="igStatus" role="status">Aguardando leitura da base do Instagram.</div>
+  <div class="cob-fase" id="igCobertura" data-plat="instagram"></div>
   <div class="tk-perfis" id="igPerfis"></div>
   <div class="yt-stats" id="igStats"></div>
   <div class="yt-controls card">
@@ -4330,5 +4337,18 @@ const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 Promise.all(F.map(async([n,u])=>{try{const r=await fetch('./'+u,{cache:'no-store'});if(!r.ok)return [n,u,null,'⛔ arquivo ausente'];const d=await r.json();return [n,u,quando(d),d.status||d.status_coleta||'—'];}catch(e){return [n,u,null,'⛔ não lido'];}})).then(rs=>{
  const tb=document.querySelector('#fontesDatasTab tbody');if(tb)tb.innerHTML=rs.map(([n,u,q,st])=>`<tr><td>${esc(n)}</td><td>${q?esc(br(q)):'—'}</td><td>${esc(String(st).slice(0,120))}</td><td><a href="./${esc(u)}" download>${esc(u.split('/').slice(-2).join('/'))}</a></td></tr>`).join('');
  const ds=rs.map(r=>r[2]).filter(x=>x&&x.length>10).sort();const ch=document.getElementById('ultimaColeta');if(ch&&ds.length)ch.textContent='● Última coleta: '+br(ds[ds.length-1]);});})();
+</script>
+<script>
+/* Cobertura por fase em cada página de conteúdo (auditoria de 18/10/2026, item 9): quantos conteúdos a coleta tem
+   de cada candidato em cada fase. Comparações entre fases e candidatos dependem dela. */
+(function(){const L='280002542548',F='280002551544';const FS=[['pre','Pré-campanha','2026-07-20','2026-08-15'],['turno1','1º turno','2026-08-16','2026-10-04'],['turno2','2º turno','2026-10-05','2026-10-25']];
+const fmt=n=>Number(n).toLocaleString('pt-BR');
+document.querySelectorAll('.cob-fase').forEach(async box=>{const plat=box.dataset.plat;let D;try{const r=await fetch(`./data/${plat}/conteudo.json`,{cache:'no-store'});if(!r.ok)return;D=await r.json();}catch(e){return;}
+ const n={};for(const c of [L,F]){const vs=(D.candidatos[c]||{}).videos||[];n[c]=FS.map(f=>vs.filter(v=>{const d=(v.publicado_em||'').slice(0,10);return d>=f[2]&&d<=f[3];}).length);}
+ // dias com dados em cada fase (até hoje): conteúdos por dia
+ const hoje=new Date().toISOString().slice(0,10);const dias=FS.map(f=>{const fim=f[3]<hoje?f[3]:hoje;return f[2]>hoje?0:Math.round((Date.parse(fim)-Date.parse(f[2]))/864e5)+1;});
+ const pd=(x,i)=>dias[i]?(x/dias[i]).toFixed(1).replace('.',','):'—';
+ const avisos=[];for(const [c,nome] of [[L,'Lula'],[F,'Flávio Bolsonaro']]){const r=n[c].map((x,i)=>dias[i]?x/dias[i]:null).filter(v=>v!=null);const mx=Math.max(...r),mn=Math.min(...r);if(mx>0&&mn<mx/4)avisos.push(`${nome}: a média de conteúdos por dia varia mais de 4× entre as fases — pode ser limite da coleta (o ator lê os mais recentes primeiro), não só comportamento da campanha.`);}
+ box.innerHTML=`<table><thead><tr><th>Cobertura da coleta</th>${FS.map((f,i)=>`<th>${f[1]}</th>`).join('')}</tr></thead><tbody>${[[L,'Lula','#c8102e'],[F,'Flávio Bolsonaro','#1f8a3b']].map(([c,nm,cor])=>`<tr><td style="color:${cor};font-weight:700">${nm}</td>${n[c].map((x,i)=>`<td>${fmt(x)} <small>(${pd(x,i)}/dia)</small></td>`).join('')}</tr>`).join('')}</tbody></table>${avisos.length?`<div class="cob-aviso">⚠️ ${avisos.join(' ')} Compare fases com cautela.</div>`:''}`;});})();
 </script>
 </body></html>
