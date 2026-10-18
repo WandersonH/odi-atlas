@@ -1,0 +1,73 @@
+name: X — respostas aos candidatos (Apify xquik, contas 3 a 15, teto US$ 5)
+
+# Amostra igual por candidato e por dia, desde 20/07/2026. Texto e autor só no repositório privado.
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "teste (1 dia, 20 por candidato) · carga (todo o período, até o teto)"
+        type: choice
+        options: [teste, carga]
+        default: teste
+
+concurrency:
+  group: x-respostas
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  respostas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar (Apify, com teto)
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          APIFY_TOKEN_8: ${{ secrets.APIFY_TOKEN_8 }}
+          APIFY_TOKEN_9: ${{ secrets.APIFY_TOKEN_9 }}
+          APIFY_TOKEN_10: ${{ secrets.APIFY_TOKEN_10 }}
+          APIFY_TOKEN_11: ${{ secrets.APIFY_TOKEN_11 }}
+          APIFY_TOKEN_12: ${{ secrets.APIFY_TOKEN_12 }}
+          APIFY_TOKEN_13: ${{ secrets.APIFY_TOKEN_13 }}
+          APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
+          APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          MODO: ${{ github.event.inputs.modo }}
+        run: |
+          if [ "$MODO" = "teste" ]; then a="--teste"; else a=""; fi
+          python scripts/collect_x_respostas.py $a > f.txt 2>&1; rc=$?
+          grep -v "^lote " f.txt | while IFS= read -r l; do echo "::notice title=X respostas::$(echo "$l" | cut -c1-900)"; done
+          tail -1 f.txt | sed 's/^/::notice title=X respostas fim::/'
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "X respostas (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "X respostas (run ${{ github.run_id }})"
