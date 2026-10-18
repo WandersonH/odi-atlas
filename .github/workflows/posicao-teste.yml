@@ -49,4 +49,5 @@ jobs:
           git pull -q --rebase origin main && git push -q origin HEAD:main
       - name: Commitar (só distribuição)
         if: always()
-        run: scripts/commit_push.sh "Teste de posicionamento: distribuição (run ${{ github.run_id }})"
+        run: |
+          scripts/commit_push.sh "Teste de posicionamento: distribuição (run ${{ github.run_id }})"

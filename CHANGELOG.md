@@ -8,6 +8,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Pergunta do usuário (18/10, 03h57): "conseguimos testar?" (camada de posição proposta na revisão de literatura). Os textos do UstanceBR não são distribuídos (só ids do X, verificado no artigo), então o teste usa um modelo aberto de inferência textual multilíngue (`MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7`) rodando no próprio Actions: nenhum comentário sai para serviço externo, sem custo.
 - `scripts/teste_posicao.py` + `posicao-teste.yml`: amostra com semente fixa (400 comentários do YouTube e 200 respostas do X, metade em conteúdo de cada candidato, 20+ caracteres); para Lula e para Flávio, hipóteses "o autor apoia / é contra"; rótulo pela mais provável acima de 0,6, senão "neutro/incerto". Privado: `posicao/teste_amostra.csv` com colunas vazias para dois codificadores. Público: `data/pontes/posicao_teste.json`, só distribuição, marcada "TESTE · NÃO VALIDADO".
+- Correção: a última etapa do workflow tinha dois-pontos numa linha `run:` simples (YAML inválido; o GitHub recusava o disparo com "não tem workflow_dispatch"). Passou a bloco `run: |`.
 - Testes: suíte OK (`test_posicao`). Pendente: execução.
 
 ## C19.39 — Nuvens, hashtags e mapa de tags acompanham o filtro de fase (2026-10-18) ⚠️
