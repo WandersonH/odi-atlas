@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verifica as contas Apify (APIFY_TOKEN, APIFY_TOKEN_2 … APIFY_TOKEN_7): plano, uso do mês e limite. Só leitura.
+"""Verifica as contas Apify (APIFY_TOKEN, APIFY_TOKEN_2 … APIFY_TOKEN_15): plano, uso do mês e limite. Só leitura.
 
 Nada que identifique a conta é gravado (sem nome de usuário, e-mail ou id): só "conta N", o plano e os valores em US$.
 Saída: data/apify/contas.json.
@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_meta_apify import api  # noqa: E402
 from net import now_utc  # noqa: E402
 
-NOMES = ["APIFY_TOKEN"] + [f"APIFY_TOKEN_{i}" for i in range(2, 8)]
+NOMES = ["APIFY_TOKEN"] + [f"APIFY_TOKEN_{i}" for i in range(2, 16)]
 
 
 def ler(token: str) -> dict:

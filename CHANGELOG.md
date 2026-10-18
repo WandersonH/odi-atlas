@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.22 — Contas Apify 8 a 15 como reserva (2026-10-18) 🔜
+
+- O usuário cadastrou mais uma conta Apify (18/10) e disse que pode cadastrar até mais 8. Todos os coletores que usam as contas dos outros pesquisadores (Kwai, comentários do Kwai e do Facebook, posts do Facebook e do X, seguidores do TikTok, Social Blade e perfis sem número) e a verificação diária de saldo passam a aceitar `APIFY_TOKEN_8` a `APIFY_TOKEN_15`, nessa ordem, depois das contas 3 a 7. Segredo ausente é pulado. A conta 1 continua só nas rotinas diárias.
+- Testes: suíte OK. Pendente: verificação de saldo para confirmar o nome do segredo da conta nova.
+
 ## C19.21 — Card "Perfil não encontrado" e Facebook nos perfis sem número (2026-10-18) 🔜
 
 - 2ª execução do coletor de faltantes: os atores responderam "Profile does not exist" para Instagram comitepopularoficial e alfredogasparoficial e "This profile/hashtag does not exist." para TikTok alfredogasparoficial (`data/seguidores/complemento_manifesto_latest.json`). Esses endereços foram declarados ao TSE mas não existem hoje na rede. O card deixa de dizer "Não coletado" e passa a dizer "Perfil não encontrado", com a mensagem da rede e a data da consulta.

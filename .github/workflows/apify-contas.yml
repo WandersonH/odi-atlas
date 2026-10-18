@@ -1,6 +1,6 @@
 name: Apify — verificação das contas (só leitura, sem custo)
 
-# Plano, uso do mês e limite de cada conta (APIFY_TOKEN, APIFY_TOKEN_2 … _7). Nada que identifique a conta é gravado.
+# Plano, uso do mês e limite de cada conta (APIFY_TOKEN, APIFY_TOKEN_2 … _15). Nada que identifique a conta é gravado.
 on:
   workflow_dispatch:
   schedule:
@@ -27,6 +27,14 @@ jobs:
           APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
           APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
           APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          APIFY_TOKEN_8: ${{ secrets.APIFY_TOKEN_8 }}
+          APIFY_TOKEN_9: ${{ secrets.APIFY_TOKEN_9 }}
+          APIFY_TOKEN_10: ${{ secrets.APIFY_TOKEN_10 }}
+          APIFY_TOKEN_11: ${{ secrets.APIFY_TOKEN_11 }}
+          APIFY_TOKEN_12: ${{ secrets.APIFY_TOKEN_12 }}
+          APIFY_TOKEN_13: ${{ secrets.APIFY_TOKEN_13 }}
+          APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
+          APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
         run: |
           python scripts/verificar_contas_apify.py > c.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Apify contas::$(echo "$l" | cut -c1-400)"; done < c.txt

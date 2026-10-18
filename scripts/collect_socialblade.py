@@ -26,7 +26,7 @@ from collect_meta_apify import escolher_conta, run_actor  # noqa: E402
 from net import now_utc  # noqa: E402
 
 ATOR = "rl1987~social-blade-lookup"
-SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"]
+SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"] + [f"APIFY_TOKEN_{i}" for i in range(8, 16)]
 IDS = {"13": "280002542548", "22": "280002551544"}
 PADROES = {"instagram": r"instagram\.com/([A-Za-z0-9._]+)", "tiktok": r"tiktok\.com/@?([A-Za-z0-9._]+)",
            "youtube": r"youtube\.com/(?:@|c/|user/|channel/)?([A-Za-z0-9._-]+)"}

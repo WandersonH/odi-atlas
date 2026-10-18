@@ -21,7 +21,7 @@ from collect_meta_apify import escolher_conta, run_actor  # noqa: E402
 from net import now_utc  # noqa: E402
 
 ATOR = "apidojo~tiktok-profile-scraper"
-SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"]
+SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"] + [f"APIFY_TOKEN_{i}" for i in range(8, 16)]
 IDS = {"13": "280002542548", "22": "280002551544"}
 
 

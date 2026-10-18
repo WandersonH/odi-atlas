@@ -24,7 +24,7 @@ from collect_kwai_apify import g, inteiro  # noqa: E402
 from collect_meta_apify import escolher_conta, run_actor  # noqa: E402
 from net import now_utc  # noqa: E402
 
-SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"]
+SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"] + [f"APIFY_TOKEN_{i}" for i in range(8, 16)]
 ROTULO = {"tiktok": "TikTok", "x": "X / Twitter", "instagram": "Instagram", "facebook": "Facebook"}
 PADRAO = {"tiktok": r"tiktok\.com/@?([A-Za-z0-9._]+)", "x": r"(?:x|twitter)\.com/@?([A-Za-z0-9_]+)",
           "instagram": r"instagram\.com/([A-Za-z0-9._]+)", "facebook": r"facebook\.com/([A-Za-z0-9.]+)"}
