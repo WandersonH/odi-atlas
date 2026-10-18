@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.52 — ⛔ Chaves Apify das contas 2 a 10 recusadas (2026-10-18)
+
+- Teste da coleta do cross (runs 39163386868 e seguinte): todas as chamadas à Apify voltaram HTTP 401 "user-or-token-not-found". Conferido no `apify-contas` às ~17h40: as contas 2 a 10 respondem 401 (às ~17h25 as contas 2 a 8 respondiam normalmente e 9 e 10 apareciam como segredo ausente; logo, os segredos foram trocados ou as chaves revogadas nesse intervalo). Só a conta 1 responde, e ela não é usada por pedido do usuário.
+- Nada foi gasto nesses testes. A coleta do cross (+ US$ 3,50 autorizados) fica parada até as chaves serem regravadas nos segredos do GitHub (Settings → Secrets → Actions). Coletas diárias que usam essas contas também vão falhar até lá.
+- `collect_casos.py` passa a registrar a mensagem de erro da Apify (sem o token) no manifesto; o workflow de casos recebe também a conta 8.
+
 ## C19.51 — Caso 1: coleta para o cross entre redes (2026-10-18) 🔜
 
 - Pergunta do usuário (18/10, 17h22): "você só coletou Twitter, eu quero entender o cross". Diagnóstico: TikTok 82, Instagram 19, Facebook 13, Kwai 0 contra X 10.862; nos posts do X, só 69 trazem link para outra rede (Instagram 36, WhatsApp 14, x.com 8, YouTube 2, TikTok 1; contagem nos brutos do privado, `entities.urls`).
