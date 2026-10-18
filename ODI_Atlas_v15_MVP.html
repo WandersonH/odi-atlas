@@ -505,6 +505,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 @media (max-width:640px){#pontes .yt-stats{grid-template-columns:1fr}}
 
 /* Instagram: mesmas regras da página do Facebook */
+#ytContent .nf-tag,#tkContent .nf-tag,#kwContent .nf-tag,#fbContent .nf-tag,#igContent .nf-tag,#twContent .nf-tag{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid #c9d0d6;font:700 9.5px "Courier New",monospace;letter-spacing:.04em;text-transform:uppercase;color:#53606b;background:#fffdf8;vertical-align:middle}
 </style>
 <style>
 /* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
@@ -968,12 +969,12 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="odi-signal" id="ytStatus" role="status">Aguardando leitura da base de vídeos.</div>
   <div class="yt-stats" id="ytStats"></div>
   <div class="yt-clouds">
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-a"></span><strong>Lula</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox" id="ytCloudA"></div></figure>
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox" id="ytCloudB"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-a"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox" id="ytCloudA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot yt-b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox" id="ytCloudB"></div></figure>
   </div>
   <p class="yt-cloudnote" id="ytCloudNote"></p>
   <div class="card yt-tagmap">
-    <div class="yt-tmhead"><div><div class="eyebrow">Mapa de tags</div><h2>Como cada campanha etiqueta seus vídeos</h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Mapa de tags <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Como cada campanha etiqueta seus vídeos</h2></div>
       <div class="yt-tmsel" id="ytTagSel" hidden></div></div>
     <div class="yt-tmgrid">
       <div class="yt-tmzone"><div class="yt-tmlabel"><span class="yt-dot yt-a"></span>Só Lula</div><div class="yt-tmtiles" id="ytTmA"></div></div>
@@ -990,7 +991,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="yt-detail card" id="ytDetail" hidden></div>
   <div class="card yt-pop">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert</div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
     <div class="odi-signal" id="ytPopStatus">Aguardando leitura.</div>
     <div class="yt-popgrid">
       <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="ytPopBars"></div></div>
@@ -1006,7 +1007,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="ytPopNote"></p>
   </div>
   <div class="card yt-net">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-view="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-view="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-view="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-cor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-cor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="ytNetReset">Recentrar</button></div></div>
     <div class="yt-netbody">
       <div class="yt-netsvg"><svg id="ytNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
@@ -1026,7 +1027,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="ytNetNote"></p>
   </div>
   <div class="card yt-net yt-inf">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · influenciadores no YouTube</div><h2>Quem fala de <span style="color:#c8102e">Lula</span> e de <span style="color:#1f8a3b">Flávio</span></h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · influenciadores no YouTube <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Quem fala de <span style="color:#c8102e">Lula</span> e de <span style="color:#1f8a3b">Flávio</span></h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-iview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-iview="tabela" aria-pressed="false">Tabela de canais</button><button class="yt-chip" id="ytInfReset">Recentrar</button></div></div>
     <div class="yt-infstats" id="ytInfStats"></div>
     <div class="yt-netbody" id="ytInfBody">
@@ -1111,8 +1112,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="card tk-tl"><div class="eyebrow">Linha do tempo · semana a semana</div><h2 class="tk-h2">Cada bolha é um vídeo; o tamanho é a audiência</h2><div class="tk-tlwrap"><svg id="tkTimeline" role="img" aria-label="Linha do tempo dos vídeos do TikTok"></svg></div><p class="yt-cloudnote">Acima do eixo, Lula; abaixo, Flávio. Clique numa bolha para assistir.</p></div>
   <div class="yt-clouds">
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="tkCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="tkTagsA"></div></figure>
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="tkCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="tkTagsB"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="tkCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="tkTagsA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="tkCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="tkTagsB"></div></figure>
   </div>
   <div class="yt-detail card tk-detail" id="tkDetail" hidden></div>
   <div class="yt-cols">
@@ -1120,7 +1121,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="tkListB"></div></div>
   </div>
   <div class="card yt-pop">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert</div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
     <div class="odi-signal" id="tkPopStatus">Aguardando leitura.</div>
     <div class="yt-popgrid">
       <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="tkPopBars"></div></div>
@@ -1136,7 +1137,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="tkPopNote"></p>
   </div>
   <div class="card yt-net">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-tkview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-tkview="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-tkview="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-tkcor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-tkcor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="tkNetReset">Recentrar</button></div></div>
     <div class="yt-netbody">
       <div class="yt-netsvg"><svg id="tkNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
@@ -1156,7 +1157,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="tkNetNote"></p>
   </div>
   <div class="card yt-net tk-men">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções</div><h2>Quem as campanhas marcam no TikTok</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Quem as campanhas marcam no TikTok</h2></div></div>
     <div class="yt-netbody"><div class="yt-netsvg"><svg id="tkMen" role="img" aria-label="Rede de menções das campanhas no TikTok"></svg>
       <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
       <aside class="yt-netside" id="tkMenSide"></aside></div>
@@ -1170,7 +1171,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="tkMethod"></p>
     <p>Coleta grátis com o programa aberto yt-dlp, sem login, só metadados públicos (legenda, visualizações, curtidas, comentários, compartilhamentos); o texto dos comentários não é coletado. O TikTok bloqueia servidores de forma intermitente: cada perfil tem 3 tentativas por coleta, duas coletas por dia, e um perfil bloqueado mantém os números da última coleta bem-sucedida (marcado ⛔ acima). A data de publicação vem do próprio ID do vídeo. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações. Dados: <a href="./data/tiktok/conteudo.json" target="_blank" rel="noopener">conteudo.json</a> · <a href="./data/tiktok/videos.csv.gz" download>acervo CSV</a> · <a href="./data/tiktok/manifesto_latest.json" target="_blank" rel="noopener">manifesto</a>.</p></div>
   <div class="card yt-net yt-inf">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · contas do TikTok que publicam com hashtags dos candidatos</div><h2>Quem fala de <span style="color:#c8102e">Lula</span> e de <span style="color:#1f8a3b">Flávio</span></h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · contas do TikTok que publicam com hashtags dos candidatos <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Quem fala de <span style="color:#c8102e">Lula</span> e de <span style="color:#1f8a3b">Flávio</span></h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-iview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-iview="tabela" aria-pressed="false">Tabela de contas</button><button class="yt-chip" id="tkInfReset">Recentrar</button></div></div>
     <div class="yt-infstats" id="tkInfStats"></div>
     <div class="yt-netbody" id="tkInfBody">
@@ -1203,8 +1204,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="card tk-tl"><div class="eyebrow">Linha do tempo · semana a semana</div><h2 class="tk-h2">Cada bolha é um vídeo; o tamanho é a audiência</h2><div class="tk-tlwrap"><svg id="kwTimeline" role="img" aria-label="Linha do tempo dos vídeos do Kwai"></svg></div><p class="yt-cloudnote">Acima do eixo, Lula; abaixo, Flávio. Clique numa bolha para ver o vídeo.</p></div>
   <div class="yt-clouds">
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="kwCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="kwTagsA"></div></figure>
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="kwCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="kwTagsB"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="kwCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="kwTagsA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="kwCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="kwTagsB"></div></figure>
   </div>
   <div class="yt-detail card tk-detail" id="kwDetail" hidden></div>
   <div class="yt-cols">
@@ -1212,7 +1213,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="kwListB"></div></div>
   </div>
   <div class="card yt-pop">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert</div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
     <div class="odi-signal" id="kwPopStatus">Aguardando leitura.</div>
     <div class="yt-popgrid">
       <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="kwPopBars"></div></div>
@@ -1228,7 +1229,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="kwPopNote"></p>
   </div>
   <div class="card yt-net">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-kwview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-kwview="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-kwview="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-kwcor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-kwcor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="kwNetReset">Recentrar</button></div></div>
     <div class="yt-netbody">
       <div class="yt-netsvg"><svg id="kwNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
@@ -1248,7 +1249,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="kwNetNote"></p>
   </div>
   <div class="card yt-net tk-men">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções</div><h2>Quem as campanhas marcam no Kwai</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Quem as campanhas marcam no Kwai</h2></div></div>
     <div class="yt-netbody"><div class="yt-netsvg"><svg id="kwMen" role="img" aria-label="Rede de menções das campanhas no Kwai"></svg>
       <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
       <aside class="yt-netside" id="kwMenSide"></aside></div>
@@ -1279,8 +1280,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="card tk-tl"><div class="eyebrow">Linha do tempo · semana a semana</div><h2 class="tk-h2">Cada bolha é um post; o tamanho é a audiência (visualizações, ou reações quando não há)</h2><div class="tk-tlwrap"><svg id="fbTimeline" role="img" aria-label="Linha do tempo dos vídeos do Facebook"></svg></div><p class="yt-cloudnote">Acima do eixo, Lula; abaixo, Flávio. Clique numa bolha para ver o post.</p></div>
   <div class="yt-clouds">
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="fbCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="fbTagsA"></div></figure>
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="fbCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="fbTagsB"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="fbCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="fbTagsA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="fbCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="fbTagsB"></div></figure>
   </div>
   <div class="yt-detail card tk-detail" id="fbDetail" hidden></div>
   <div class="yt-cols">
@@ -1288,7 +1289,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="fbListB"></div></div>
   </div>
   <div class="card yt-pop">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert</div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
     <div class="odi-signal" id="fbPopStatus">Aguardando leitura.</div>
     <div class="yt-popgrid">
       <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="fbPopBars"></div></div>
@@ -1304,7 +1305,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="fbPopNote"></p>
   </div>
   <div class="card yt-net">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-fbview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-fbview="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-fbview="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-fbcor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-fbcor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="fbNetReset">Recentrar</button></div></div>
     <div class="yt-netbody">
       <div class="yt-netsvg"><svg id="fbNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
@@ -1324,7 +1325,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="fbNetNote"></p>
   </div>
   <div class="card yt-net tk-men">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções</div><h2>Quem as campanhas marcam no Facebook</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Quem as campanhas marcam no Facebook</h2></div></div>
     <div class="yt-netbody"><div class="yt-netsvg"><svg id="fbMen" role="img" aria-label="Rede de menções das campanhas no Facebook"></svg>
       <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
       <aside class="yt-netside" id="fbMenSide"></aside></div>
@@ -1355,8 +1356,8 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   </div>
   <div class="card tk-tl"><div class="eyebrow">Linha do tempo · semana a semana</div><h2 class="tk-h2">Cada bolha é um post; o tamanho é a audiência (visualizações)</h2><div class="tk-tlwrap"><svg id="twTimeline" role="img" aria-label="Linha do tempo dos vídeos do X"></svg></div><p class="yt-cloudnote">Acima do eixo, Lula; abaixo, Flávio. Clique numa bolha para ver o post.</p></div>
   <div class="yt-clouds">
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="twCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="twTagsA"></div></figure>
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="twCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="twTagsB"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="twCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="twTagsA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="twCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="twTagsB"></div></figure>
   </div>
   <div class="yt-detail card tk-detail" id="twDetail" hidden></div>
   <div class="yt-cols">
@@ -1364,7 +1365,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="twListB"></div></div>
   </div>
   <div class="card yt-pop">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert</div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
     <div class="odi-signal" id="twPopStatus">Aguardando leitura.</div>
     <div class="yt-popgrid">
       <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="twPopBars"></div></div>
@@ -1380,7 +1381,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="twPopNote"></p>
   </div>
   <div class="card yt-net">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-twview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-twview="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-twview="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-twcor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-twcor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="twNetReset">Recentrar</button></div></div>
     <div class="yt-netbody">
       <div class="yt-netsvg"><svg id="twNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
@@ -1400,7 +1401,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote" id="twNetNote"></p>
   </div>
   <div class="card yt-net tk-men">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções</div><h2>Quem as campanhas marcam no X</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Quem as campanhas marcam no X</h2></div></div>
     <div class="yt-netbody"><div class="yt-netsvg"><svg id="twMen" role="img" aria-label="Rede de menções das campanhas no X"></svg>
       <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
       <aside class="yt-netside" id="twMenSide"></aside></div>
@@ -2446,11 +2447,11 @@ const thumb=id=>'https://i.ytimg.com/vi/'+encodeURIComponent(id)+'/mqdefault.jpg
 const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];return d>=f[0]&&d<=f[1];};const passa=v=>naFase(v)&&(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario)&&(!tagSel||(v.tags||[]).includes(tagSel));
 function dur(p){const m=/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(p||'');if(!m)return '';const h=+m[1]||0,mi=+m[2]||0,se=+m[3]||0;return h?`${h}h${String(mi).padStart(2,'0')}`:`${mi}:${String(se).padStart(2,'0')}`;}
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
-function chips(){const tot={};for(const c of [LULA,FLAVIO])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[LULA].total_videos+D.candidatos[FLAVIO].total_videos;
+function chips(){const tot={};for(const c of [LULA,FLAVIO])for(const v of D.candidatos[c].videos.filter(naFase))for(const t of v.temas)tot[t]=(tot[t]||0)+1;const all=D.candidatos[LULA].videos.filter(naFase).length+D.candidatos[FLAVIO].videos.filter(naFase).length;
 $y('ytChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
 $y('ytChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
-function stats(){$y('ytStats').innerHTML=[LULA,FLAVIO].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),views=vs.reduce((a,v)=>a+(v.visualizacoes||0),0);const temas=Object.entries(x.por_tema).filter(([t])=>t!=='sem_tema'),mx=Math.max(1,...temas.map(([,n])=>n));
-return `<div class="yt-statcard" style="border-top-color:var(${c===LULA?'--yt-a':'--yt-b'})"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>vídeos no filtro</span><span><b>${fmt(views)}</b>visualizações</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div>
+function stats(){$y('ytStats').innerHTML=[LULA,FLAVIO].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),views=vs.reduce((a,v)=>a+(v.visualizacoes||0),0);const vf=x.videos.filter(naFase),pt={};for(const v of vf)for(const t of v.temas)pt[t]=(pt[t]||0)+1;const temas=Object.entries(pt).filter(([t])=>t!=='sem_tema').sort((a,b)=>b[1]-a[1]),mx=Math.max(1,...temas.map(([,n])=>n));
+return `<div class="yt-statcard" style="border-top-color:var(${c===LULA?'--yt-a':'--yt-b'})"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>vídeos no filtro</span><span><b>${fmt(views)}</b>visualizações</span><span><b>${fmt(vf.filter(v=>v.cita_adversario).length)}</b>citam o adversário</span><span><b>${fmt(vf.filter(v=>v.pede_voto).length)}</b>pedem voto</span></div>
 <div class="yt-bars" style="--bar:var(${c===LULA?'--yt-a':'--yt-b'})">${temas.map(([t,n])=>`<div class="yt-bar"><span>${esc(ROT[t]||t)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');}
 function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes nesta coleta.</p>';return;}
 const mx=lista[0][1],mn=lista[lista.length-1][1];const ord=lista.map((x,i)=>[...x,i]).sort((a,b)=>a[0].localeCompare(b[0],'pt'));
@@ -2857,11 +2858,11 @@ $('tkPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>{const vazio=p.status==='se
 const dado=tem?`${fmt(p.videos_desde_16_08)} vídeos · lido em ${quando(p.ultima_leitura_ok)}`:(vazio?'sem vídeos públicos':'nunca lido');
 const agora=ok||vazio?'':' · ⛔ última tentativa bloqueada';
 return `<span class="tk-perfil ${ok||vazio?'':(tem?'tk-old':'tk-off')}" title="${esc(p.status)} · ${p.tentativas} tentativa(s)"><b>@${esc(p.perfil)}</b> · ${esc(p.candidate_name)} · ${dado}${agora}</span>`;}).join('');}
-function chips(){const tot={};for(const c of [L,F])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[L].total_videos+D.candidatos[F].total_videos;
+function chips(){const tot={};for(const c of [L,F])for(const v of D.candidatos[c].videos.filter(naFase))for(const t of v.temas)tot[t]=(tot[t]||0)+1;const all=D.candidatos[L].videos.filter(naFase).length+D.candidatos[F].videos.filter(naFase).length;
 $('tkChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
 $('tkChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
-function stats(){$('tkStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const temas=Object.entries(x.por_tema).filter(([t])=>t!=='sem_tema'),mx=Math.max(1,...temas.map(([,n])=>n));
-return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>vídeos no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf(x.taxa_interacao_mediana)}</b>interação mediana</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div>
+function stats(){$('tkStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const vf=x.videos.filter(naFase),pt={};for(const v of vf)for(const t of v.temas)pt[t]=(pt[t]||0)+1;const temas=Object.entries(pt).filter(([t])=>t!=='sem_tema').sort((a,b)=>b[1]-a[1]),mx=Math.max(1,...temas.map(([,n])=>n));
+return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>vídeos no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf((a=>{a=a.filter(t=>t!=null).sort((p,q)=>p-q);if(!a.length)return null;const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2;})(vf.map(v=>v.taxa_interacao)))}</b>interação mediana</span><span><b>${fmt(vf.filter(v=>v.cita_adversario).length)}</b>citam o adversário</span><span><b>${fmt(vf.filter(v=>v.pede_voto).length)}</b>pedem voto</span></div>
 <div class="yt-bars" style="--bar:${cor(c)}">${temas.map(([t,n])=>`<div class="yt-bar"><span>${esc(ROT[t]||t)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');}
 function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes nesta coleta.</p>';return;}const mx=lista[0][1],mn=lista[lista.length-1][1];
 box.innerHTML=[...lista].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} vídeos">${esc(t)}</span>`;}).join('');}
@@ -3049,11 +3050,11 @@ const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){const quando=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'';
 $('kwPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>{const n=p.videos_no_acervo||0;return `<span class="tk-perfil ${p.lido_nesta_execucao?'':'tk-old'}"><b>@${esc(p.perfil)}</b> · ${esc(p.candidato)} · ${p.seguidores!=null?fmt(p.seguidores)+' seguidores · ':''}${fmt(n)} de ${fmt(p.videos_no_perfil)} vídeos no acervo${p.ultima_leitura_ok?' · lido em '+quando(p.ultima_leitura_ok):''}</span>`;}).join('');}
-function chips(){const tot={};for(const c of [L,F])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[L].total_videos+D.candidatos[F].total_videos;
+function chips(){const tot={};for(const c of [L,F])for(const v of D.candidatos[c].videos.filter(naFase))for(const t of v.temas)tot[t]=(tot[t]||0)+1;const all=D.candidatos[L].videos.filter(naFase).length+D.candidatos[F].videos.filter(naFase).length;
 $('kwChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
 $('kwChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
-function stats(){$('kwStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const temas=Object.entries(x.por_tema).filter(([t])=>t!=='sem_tema'),mx=Math.max(1,...temas.map(([,n])=>n));
-return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>vídeos no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf(x.taxa_interacao_mediana)}</b>interação mediana</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div>
+function stats(){$('kwStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const vf=x.videos.filter(naFase),pt={};for(const v of vf)for(const t of v.temas)pt[t]=(pt[t]||0)+1;const temas=Object.entries(pt).filter(([t])=>t!=='sem_tema').sort((a,b)=>b[1]-a[1]),mx=Math.max(1,...temas.map(([,n])=>n));
+return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>vídeos no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf((a=>{a=a.filter(t=>t!=null).sort((p,q)=>p-q);if(!a.length)return null;const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2;})(vf.map(v=>v.taxa_interacao)))}</b>interação mediana</span><span><b>${fmt(vf.filter(v=>v.cita_adversario).length)}</b>citam o adversário</span><span><b>${fmt(vf.filter(v=>v.pede_voto).length)}</b>pedem voto</span></div>
 <div class="yt-bars" style="--bar:${cor(c)}">${temas.map(([t,n])=>`<div class="yt-bar"><span>${esc(ROT[t]||t)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');}
 function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes nesta coleta.</p>';return;}const mx=lista[0][1],mn=lista[lista.length-1][1];
 box.innerHTML=[...lista].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} vídeos">${esc(t)}</span>`;}).join('');}
@@ -3245,11 +3246,11 @@ const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];retur
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){$('fbPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>`<span class="tk-perfil ${p.lidos?'':'tk-off'}"><b>${esc(p.perfil)}</b> · ${esc(p.candidato)} · ${p.lidos?fmt(p.lidos)+' posts lidos':'⛔ '+esc(p.erro||'nenhum post')}</span>`).join('');}
-function chips(){const tot={};for(const c of [L,F])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[L].total_videos+D.candidatos[F].total_videos;
+function chips(){const tot={};for(const c of [L,F])for(const v of D.candidatos[c].videos.filter(naFase))for(const t of v.temas)tot[t]=(tot[t]||0)+1;const all=D.candidatos[L].videos.filter(naFase).length+D.candidatos[F].videos.filter(naFase).length;
 $('fbChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
 $('fbChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
-function stats(){$('fbStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const temas=Object.entries(x.por_tema).filter(([t])=>t!=='sem_tema'),mx=Math.max(1,...temas.map(([,n])=>n));
-return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>posts no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf(x.taxa_interacao_mediana)}</b>interação mediana</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div>
+function stats(){$('fbStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const vf=x.videos.filter(naFase),pt={};for(const v of vf)for(const t of v.temas)pt[t]=(pt[t]||0)+1;const temas=Object.entries(pt).filter(([t])=>t!=='sem_tema').sort((a,b)=>b[1]-a[1]),mx=Math.max(1,...temas.map(([,n])=>n));
+return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>posts no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf((a=>{a=a.filter(t=>t!=null).sort((p,q)=>p-q);if(!a.length)return null;const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2;})(vf.map(v=>v.taxa_interacao)))}</b>interação mediana</span><span><b>${fmt(vf.filter(v=>v.cita_adversario).length)}</b>citam o adversário</span><span><b>${fmt(vf.filter(v=>v.pede_voto).length)}</b>pedem voto</span></div>
 <div class="yt-bars" style="--bar:${cor(c)}">${temas.map(([t,n])=>`<div class="yt-bar"><span>${esc(ROT[t]||t)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');}
 function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes nesta coleta.</p>';return;}const mx=lista[0][1],mn=lista[lista.length-1][1];
 box.innerHTML=[...lista].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} posts">${esc(t)}</span>`;}).join('');}
@@ -3440,8 +3441,8 @@ if(sec.classList.contains('active'))carregar();
   </div>
   <div class="card tk-tl"><div class="eyebrow">Linha do tempo · semana a semana</div><h2 class="tk-h2">Cada bolha é um post; o tamanho é a audiência (visualizações, ou curtidas quando não há)</h2><div class="tk-tlwrap"><svg id="igTimeline" role="img" aria-label="Linha do tempo dos vídeos do Instagram"></svg></div><p class="yt-cloudnote">Acima do eixo, Lula; abaixo, Flávio. Clique numa bolha para ver o post.</p></div>
   <div class="yt-clouds">
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="igCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="igTagsA"></div></figure>
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados</figcaption><div class="yt-cloudbox tk-cloud" id="igCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="igTagsB"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="igCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="igTagsA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="igCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="igTagsB"></div></figure>
   </div>
   <div class="yt-detail card tk-detail" id="igDetail" hidden></div>
   <div class="yt-cols">
@@ -3449,7 +3450,7 @@ if(sec.classList.contains('active'))carregar();
     <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="igListB"></div></div>
   </div>
   <div class="card yt-pop">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert</div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
     <div class="odi-signal" id="igPopStatus">Aguardando leitura.</div>
     <div class="yt-popgrid">
       <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="igPopBars"></div></div>
@@ -3465,7 +3466,7 @@ if(sec.classList.contains('active'))carregar();
     <p class="yt-cloudnote" id="igPopNote"></p>
   </div>
   <div class="card yt-net">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência</div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
       <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-fbview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-fbview="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-fbview="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-fbcor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-fbcor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="igNetReset">Recentrar</button></div></div>
     <div class="yt-netbody">
       <div class="yt-netsvg"><svg id="igNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
@@ -3485,7 +3486,7 @@ if(sec.classList.contains('active'))carregar();
     <p class="yt-cloudnote" id="igNetNote"></p>
   </div>
   <div class="card yt-net tk-men">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções</div><h2>Quem as campanhas marcam no Instagram</h2></div></div>
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Quem as campanhas marcam no Instagram</h2></div></div>
     <div class="yt-netbody"><div class="yt-netsvg"><svg id="igMen" role="img" aria-label="Rede de menções das campanhas no Instagram"></svg>
       <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
       <aside class="yt-netside" id="igMenSide"></aside></div>
@@ -3517,11 +3518,11 @@ const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];retur
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){$('igPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>`<span class="tk-perfil ${p.lidos?'':'tk-off'}"><b>${esc(p.perfil)}</b> · ${esc(p.candidato)} · ${p.lidos?fmt(p.lidos)+' posts lidos':'⛔ '+esc(p.erro||'nenhum post')}</span>`).join('');}
-function chips(){const tot={};for(const c of [L,F])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[L].total_videos+D.candidatos[F].total_videos;
+function chips(){const tot={};for(const c of [L,F])for(const v of D.candidatos[c].videos.filter(naFase))for(const t of v.temas)tot[t]=(tot[t]||0)+1;const all=D.candidatos[L].videos.filter(naFase).length+D.candidatos[F].videos.filter(naFase).length;
 $('igChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
 $('igChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
-function stats(){$('igStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const temas=Object.entries(x.por_tema).filter(([t])=>t!=='sem_tema'),mx=Math.max(1,...temas.map(([,n])=>n));
-return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>posts no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${pctf(x.taxa_interacao_mediana)}</b>interação mediana</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div>
+function stats(){$('igStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const vf=x.videos.filter(naFase),pt={};for(const v of vf)for(const t of v.temas)pt[t]=(pt[t]||0)+1;const temas=Object.entries(pt).filter(([t])=>t!=='sem_tema').sort((a,b)=>b[1]-a[1]),mx=Math.max(1,...temas.map(([,n])=>n));
+return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>posts no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${pctf((a=>{a=a.filter(t=>t!=null).sort((p,q)=>p-q);if(!a.length)return null;const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2;})(vf.map(v=>v.taxa_interacao)))}</b>interação mediana</span><span><b>${fmt(vf.filter(v=>v.cita_adversario).length)}</b>citam o adversário</span><span><b>${fmt(vf.filter(v=>v.pede_voto).length)}</b>pedem voto</span></div>
 <div class="yt-bars" style="--bar:${cor(c)}">${temas.map(([t,n])=>`<div class="yt-bar"><span>${esc(ROT[t]||t)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');}
 function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes nesta coleta.</p>';return;}const mx=lista[0][1],mn=lista[lista.length-1][1];
 box.innerHTML=[...lista].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} posts">${esc(t)}</span>`;}).join('');}
@@ -3713,11 +3714,11 @@ const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];retur
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){$('twPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>`<span class="tk-perfil ${p.lidos?'':'tk-off'}"><b>${esc(p.perfil)}</b> · ${esc(p.candidato)} · ${p.lidos?fmt(p.lidos)+' posts lidos':'⛔ '+esc(p.erro||'nenhum post na busca')}</span>`).join('');}
-function chips(){const tot={};for(const c of [L,F])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[L].total_videos+D.candidatos[F].total_videos;
+function chips(){const tot={};for(const c of [L,F])for(const v of D.candidatos[c].videos.filter(naFase))for(const t of v.temas)tot[t]=(tot[t]||0)+1;const all=D.candidatos[L].videos.filter(naFase).length+D.candidatos[F].videos.filter(naFase).length;
 $('twChips').innerHTML=[['todos','Todos',all]].concat(D.temas.map(t=>[t,ROT[t]||t,tot[t]||0])).map(([k,l,n])=>`<button class="yt-chip" data-t="${esc(k)}" aria-pressed="${k===filtro}">${esc(l)}<small>${fmt(n)}</small></button>`).join('');
 $('twChips').querySelectorAll('.yt-chip').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.t;render();}));}
-function stats(){$('twStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const temas=Object.entries(x.por_tema).filter(([t])=>t!=='sem_tema'),mx=Math.max(1,...temas.map(([,n])=>n));
-return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>posts no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf(x.taxa_interacao_mediana)}</b>interação mediana</span><span><b>${fmt(x.cita_adversario)}</b>citam o adversário</span><span><b>${fmt(x.pede_voto)}</b>pedem voto</span></div>
+function stats(){$('twStats').innerHTML=[L,F].map(c=>{const x=D.candidatos[c],vs=x.videos.filter(passa),soma=k=>vs.reduce((a,v)=>a+(v[k]||0),0);const vf=x.videos.filter(naFase),pt={};for(const v of vf)for(const t of v.temas)pt[t]=(pt[t]||0)+1;const temas=Object.entries(pt).filter(([t])=>t!=='sem_tema').sort((a,b)=>b[1]-a[1]),mx=Math.max(1,...temas.map(([,n])=>n));
+return `<div class="yt-statcard" style="border-top-color:${cor(c)}"><h3>${esc(x.nome)} · nº ${esc(x.numero)}</h3><div class="yt-nums"><span><b>${fmt(vs.length)}</b>posts no filtro</span><span><b>${fmt(soma('visualizacoes'))}</b>visualizações</span><span><b>${fmt(soma('curtidas'))}</b>curtidas</span><span><b>${fmt(soma('comentarios'))}</b>comentários</span><span><b>${fmt(soma('compartilhamentos'))}</b>compartilhamentos</span><span><b>${pctf((a=>{a=a.filter(t=>t!=null).sort((p,q)=>p-q);if(!a.length)return null;const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2;})(vf.map(v=>v.taxa_interacao)))}</b>interação mediana</span><span><b>${fmt(vf.filter(v=>v.cita_adversario).length)}</b>citam o adversário</span><span><b>${fmt(vf.filter(v=>v.pede_voto).length)}</b>pedem voto</span></div>
 <div class="yt-bars" style="--bar:${cor(c)}">${temas.map(([t,n])=>`<div class="yt-bar"><span>${esc(ROT[t]||t)}</span><i style="width:${(n/mx*100).toFixed(1)}%"></i><span>${fmt(n)}</span></div>`).join('')}</div></div>`;}).join('');}
 function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes nesta coleta.</p>';return;}const mx=lista[0][1],mn=lista[lista.length-1][1];
 box.innerHTML=[...lista].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} posts">${esc(t)}</span>`;}).join('');}

@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.31 — Auditoria (item 1): o filtro de fase governa a página (2026-10-18) ✅
+
+- **1 · Filtro de turno só mudava parte da página**: nas 6 páginas de conteúdo (YouTube, TikTok, Kwai, Facebook, Instagram, X), as contagens por tema (chips e barras), "citam o adversário", "pedem voto" e a interação mediana passam a ser calculadas sobre os conteúdos da fase escolhida (antes vinham do acervo inteiro). Componentes que dependem de análises pré-calculadas sobre o acervo (nuvens, mapa de tags, CHD, redes de coocorrência e de menções, influenciadores) ganham o selo "acervo completo · não acompanha o filtro de fase".
+- Verificado no Chromium local (todo o período × 2º turno, Lula): YouTube 1.030 → 131 vídeos, cita adversário 79 → 22, pede voto 22 → 5, chip "Todos" 1.552 → 243; TikTok 826 → 112, interação mediana 11,7% → 16,7%; Facebook 301 → 282 posts; X 2.149 → 451. Sem erro de JavaScript.
+- Testes: suíte OK.
+
 ## C19.30 — Auditoria (item 4): análises de discurso sem rodapé legal e sem acervo antigo (2026-10-18) ✅
 
 - **4 · Classes da CHD com CNPJ, coligação, federação e partidos (Facebook e X) e com 2022/2024 e hashtags de formato (Kwai)**: `build_conteudo.texto_util` passa a descartar trechos do rodapé legal da propaganda (CNPJ, coligação, federação, "propaganda eleitoral"); hashtags de formato (#fyp, #viral, #parati, #explore...) entram na lista de palavras vazias; as análises de discurso do Kwai (corpus, CHD, redes) passam a usar só a campanha de 2026 (desde 20/07), como as outras redes — a página de conteúdo continua mostrando o acervo histórico. O texto original fica no acervo para auditoria.
