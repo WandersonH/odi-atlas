@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.30 — Auditoria (item 4): análises de discurso sem rodapé legal e sem acervo antigo (2026-10-18) ✅
+
+- **4 · Classes da CHD com CNPJ, coligação, federação e partidos (Facebook e X) e com 2022/2024 e hashtags de formato (Kwai)**: `build_conteudo.texto_util` passa a descartar trechos do rodapé legal da propaganda (CNPJ, coligação, federação, "propaganda eleitoral"); hashtags de formato (#fyp, #viral, #parati, #explore...) entram na lista de palavras vazias; as análises de discurso do Kwai (corpus, CHD, redes) passam a usar só a campanha de 2026 (desde 20/07), como as outras redes — a página de conteúdo continua mostrando o acervo histórico. O texto original fica no acervo para auditoria.
+- Regeneradas localmente as análises de conteúdo de YouTube, TikTok, Kwai, Facebook e X (`build_tiktok`/`build_conteudo`, `corpus_populismo`, `chd_reinert`, `concordancia`, `build_rede`). Conferido: nenhuma classe de YouTube, TikTok, Kwai, Facebook ou X contém "cnpj" ou "coligação"; classes novas, por exemplo, Facebook: escala 6×1 / descanso, programas sociais, futuro/esperança, voto 22; Kwai: escala 6×1, voto 22, independência/retrocesso. Pendente: Instagram (gerado antes da correção; refazer após a carga).
+- Testes: suíte OK (`TestRodape`).
+
 ## C19.29 — Auditoria (itens 5 e 11): χ² com direção e palavras partidas (2026-10-18) ✅
 
 - **5 · "χ² -79,7"**: a CHD grava o χ² 2×2 com sinal (+ acima do esperado, − abaixo). A página passa a mostrar o valor absoluto e a direção por extenso ("χ² 79,7 abaixo do esperado") e avisa que é implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.

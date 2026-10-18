@@ -66,9 +66,14 @@ def texto_padrao(rows: list[dict]) -> dict[str, set]:
     return {ch: {s for s, n in c.items() if n >= LIMIAR_REPETICAO} for ch, c in cont.items()}
 
 
+# Rodapé legal da propaganda eleitoral (Res. TSE 23.610): "Propaganda eleitoral - Coligação ...: PSB/PDT/Federação ... CNPJ ..."
+# Não é discurso: sai do texto analisado (o original fica no acervo, para auditoria).
+RODAPE = re.compile(r"cnpj|coliga[çc][ãa]o|federa[çc][ãa]o\s|propaganda eleitoral|propaganda paga|contratante|cnpj\s*:", re.I)
+
+
 def texto_util(r: dict, padrao: dict[str, set]) -> str:
     fora = padrao.get(r["channel_id"], set())
-    return r["titulo"] + " " + " ".join(s for s in segmentos(r.get("descricao", "")) if s not in fora)
+    return r["titulo"] + " " + " ".join(s for s in segmentos(r.get("descricao", "")) if s not in fora and not RODAPE.search(s))
 
 
 # Nuvem de palavras: frequência por documento (em quantos vídeos o termo aparece), sobre o mesmo texto útil.
@@ -81,6 +86,7 @@ vamos ter tem têm tinha teve fazer faz fez feito ver vê vou estou estamos são
 dia dias ano anos vez vezes cada outro outra outros outras mesmo mesma só so ainda então entao assim bem sim também
 https http www com br youtube video vídeo vídeos videos canal inscreva inscrevase inscreva-se ative sininho link bio
 shorts short live ao vivo assista confira acompanhe veja siga redes sociais instagram facebook tiktok twitter kwai
+fyp foryou foryoupage fy parati paravoce pravoce viral viralizar viralizou trend trending explore explorar reels kwaivideo kwaibrasil capcut
 whatsapp telegram x clique aqui completo íntegra integra parte episódio episodio programa acesse site conheça conheca
 obrigado obrigada pronto fim gente quer quero precisa contra lado enquanto nunca sempre grande novo nova tempo seguir bora
 propaganda eleitoral horário horario gratuito janeiro fevereiro março marco abril maio junho julho agosto setembro outubro

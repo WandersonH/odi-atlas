@@ -41,7 +41,9 @@ CAMINHOS["facebook"] = {"populismo": "data/facebook/populismo.json",
 CAMINHOS["x"] = {k: v.replace("facebook", "x") for k, v in CAMINHOS["facebook"].items()}
 CAMINHOS["instagram"] = {k: v.replace("facebook", "instagram") for k, v in CAMINHOS["facebook"].items()}
 # Kwai: acervo histórico completo (pedido de 17/10/2026), sem corte de data; TikTok: desde o início da campanha
-INICIO_POR_PLATAFORMA = {"tiktok": INICIO_CAMPANHA, "kwai": "", "facebook": INICIO_CAMPANHA, "x": INICIO_CAMPANHA, "instagram": INICIO_CAMPANHA}
+# Análises de discurso (corpus, CHD, redes) só com a campanha de 2026 em todas as redes. O Kwai guarda acervo histórico
+# (2022, 2024...) na página de conteúdo, mas ele não entra aqui (auditoria de 18/10/2026: classes com referências a 2022 e 2024).
+INICIO_POR_PLATAFORMA = {"tiktok": INICIO_CAMPANHA, "kwai": INICIO_CAMPANHA, "facebook": INICIO_CAMPANHA, "x": INICIO_CAMPANHA, "instagram": INICIO_CAMPANHA}
 
 
 def args(argv) -> tuple[Path, str]:

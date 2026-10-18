@@ -19,5 +19,14 @@ class TestNormalizacao(unittest.TestCase):
         self.assertNotIn("heart", chd.tokens("Lula [heart] presidente do brasil"))
 
 
+class TestRodape(unittest.TestCase):
+    def test_rodape_legal_sai(self):
+        r = {"channel_id": "c", "titulo": "", "descricao": "Educação pública de qualidade. - Propaganda eleitoral - Coligação Brasil: PSB/PDT/Federação Fé Brasil (PT/PCdoB/PV). CNPJ: 68.475.818/0001-02."}
+        t = bc.texto_util(r, {})
+        self.assertIn("Educação pública", t)
+        self.assertNotIn("CNPJ", t)
+        self.assertNotIn("Coligação", t)
+
+
 if __name__ == "__main__":
     unittest.main()
