@@ -33,7 +33,7 @@ def chave_url(raw: str) -> str:
 def series(pasta: Path) -> dict[str, dict[str, int]]:
     out: dict[str, dict[str, int]] = {}
     for p in sorted(pasta.glob("*.csv")):
-        m = re.fullmatch(r"(?:coleta|youtube|kwai)_(\d{4}-\d{2}-\d{2})\.csv", p.name)
+        m = re.fullmatch(r"(?:coleta|youtube|kwai|x|tiktok)_(\d{4}-\d{2}-\d{2})\.csv", p.name)
         if not m:
             continue
         for r in csv.DictReader(open(p, encoding="utf-8"), delimiter=";"):

@@ -1,0 +1,25 @@
+{
+ "ator": "apidojo~tweet-scraper",
+ "segredos": ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"],
+ "contas_nota": "Contas Apify de outros pesquisadores do grupo (confirmado em 17/10/2026); a conta 1 (principal) não é usada (pedido do usuário, 17/10, 22h02).",
+ "preco_usd": {"post": 0.0004, "inicio": 0.0, "fonte": "loja Apify (apidojo/tweet-scraper, US$ 0,0004 por item), run teste-apify-loja de 17/10/2026"},
+ "autorizacao": "Usuário em 17/10/2026, 22h02: página 'o que as campanhas dizem no X' e usar as contas dos outros pesquisadores (limite de US$ 5 cada) para completar a coleta. Teto desta fonte: US$ 2.",
+ "teto_total_usd": 2.0,
+ "teto_teste_usd": 0.05,
+ "desde": "2026-07-20",
+ "teste": {"perfil": "LulaOficial", "posts": 20},
+ "posts_por_perfil": {"principal": 1000, "outras": 300},
+ "perfis": [
+  {"handle": "LulaOficial", "url_tse": "HTTPS://X.COM/LULAOFICIAL", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA", "principal": true},
+  {"handle": "FlavioBolsonaro", "url_tse": "HTTPS://X.COM/FLAVIOBOLSONARO", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "FLAVIO BOLSONARO", "principal": true},
+  {"handle": "comitespop", "url_tse": "https://x.com/comitespop", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"handle": "pode_espalhar", "url_tse": "https://x.com/pode_espalhar", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"handle": "geraldoalckmin", "url_tse": "HTTPS://X.COM/GERALDOALCKMIN?S=11&T=FGN66BD6-UKMWUH9V2R9EG", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "GERALDO ALCKMIN"},
+  {"handle": "lulaverso", "url_tse": "https://x.com/lulaverso", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"handle": "LulaEvangelicos", "url_tse": "https://x.com/LulaEvangelicos", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"handle": "obrasilcomlula", "url_tse": "HTTPS://X.COM/OBRASILCOMLULA", "candidate_id": "280002542548", "candidato": "Lula", "declarado_por": "LULA"},
+  {"handle": "alfredogaspar_", "url_tse": "HTTPS://MOBILE.TWITTER.COM/ALFREDOGASPAR_", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "ALFREDO GASPAR"},
+  {"handle": "pl22al", "url_tse": "HTTPS://MOBILE.TWITTER.COM/PL22AL", "candidate_id": "280002551544", "candidato": "Flávio Bolsonaro", "declarado_por": "ALFREDO GASPAR"}
+ ],
+ "nota": "Posts públicos dos perfis de X declarados ao TSE pelas chapas 13 e 22, desde 20/07/2026 (pré-campanha), via Apify (apidojo/tweet-scraper, sem login). Até 1.000 posts dos perfis principais e 300 dos demais. Mesmas regras de tema, 'cita o adversário' e 'pede voto' das outras redes. Interação = (curtidas + respostas + reposts + citações) ÷ visualizações."
+}

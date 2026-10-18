@@ -1,0 +1,91 @@
+name: X — o que as campanhas publicam (Apify, contas 3 a 7, teto US$ 2)
+
+# Ator apidojo/tweet-scraper. Perfis declarados ao TSE pelas chapas 13 e 22, desde 16/08/2026.
+# Teto total autorizado: US$ 2 (data/config/x_posts.json); teste US$ 0,05.
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "teste (20 posts de @LulaOficial) · carga (todos os perfis) · so-analises (sem coleta, sem custo)"
+        type: choice
+        options: [teste, carga, so-analises]
+        default: teste
+
+concurrency:
+  group: x-posts
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  x:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q networkx==3.6.1 numpy==2.3.4
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar (Apify, com teto)
+        if: github.event.inputs.modo != 'so-analises'
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          MODO: ${{ github.event.inputs.modo }}
+        run: |
+          case "$MODO" in teste) a="--teste";; *) a="";; esac
+          python scripts/collect_x_posts.py $a > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=X::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Miniaturas (a URL da capa expira; logo após a coleta)
+        if: always()
+        continue-on-error: true
+        run: |
+          pip install -q pillow==11.3.0
+          python scripts/build_miniaturas_kwai.py --x > m.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=X miniaturas::$(echo "$l" | cut -c1-400)"; done < m.txt
+          exit $rc
+      - name: Conteúdo por tema e análises (mesmas regras do TikTok e do Kwai)
+        if: always()
+        continue-on-error: true
+        run: |
+          rc=0
+          { python scripts/build_tiktok.py --x && python scripts/corpus_populismo.py --plataforma x && python scripts/chd_reinert.py --plataforma x \
+            && python scripts/concordancia.py --plataforma x && python scripts/build_rede.py --plataforma x && python scripts/build_rede_mencoes_tiktok.py --x; } > b.txt 2>&1 || rc=$?
+          grep -v "RuntimeWarning\|attraction =" b.txt | while IFS= read -r l; do echo "::notice title=X análises::$(echo "$l" | cut -c1-400)"; done
+          exit $rc
+      - name: Variação de seguidores (hoje × ontem)
+        if: always()
+        continue-on-error: true
+        run: python scripts/build_variacao_seguidores.py
+      - name: Gravar bruto no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "X (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "X (run ${{ github.run_id }})"

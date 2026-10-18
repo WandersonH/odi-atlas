@@ -4,11 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.7 — X: coletor de posts e seguidores dos perfis declarados (contas 3 a 7, teto US$ 2) (2026-10-17) 🔜
+
+- Pedidos do usuário (17/10, 22h02): página "o que as campanhas dizem no X"; cards de seguidores "não coletados"; não usar a conta principal (1), só as dos outros pesquisadores.
+- Loja Apify (run de `teste-apify-loja`, 17/10): apidojo/tweet-scraper (US$ 0,0004 por item; 9.488 usuários em 30 dias) e apidojo/tiktok-profile-scraper (US$ 0,0003 por item).
+- `collect_x_posts.py` + `x-posts.yml`: 10 perfis de X declarados ao TSE pelas chapas 13 e 22, desde 20/07, até 1.000 posts dos principais e 300 dos demais (≈ US$ 1,76 pela tabela; teto US$ 2). Só posts do próprio perfil (reposts de outros ficam fora). Seguidores de cada perfil (do próprio post) em `data/seguidores/x_latest.csv`, com a URL declarada ao TSE, lidos pelos cards de "Quem acompanha"; variação diária incluída (`build_variacao_seguidores.py` aceita `x_` e `tiktok_`).
+- `build_tiktok.py --x`, `plataformas.py` (x), `build_rede_mencoes_tiktok.py --x` e `build_miniaturas_kwai.py --x`: mesmas regras das outras redes.
+- Testes: `tests/test_x_posts.py`; suíte OK.
+
 ## C19.6 — Contas Apify com troca automática; Facebook da pré-campanha (2026-10-17) 🔜
 
 - O usuário confirmou que as contas Apify 2 a 7 são de pessoas diferentes do grupo. `escolher_conta()` (em `collect_meta_apify.py`) usa a primeira conta da lista com saldo real suficiente (`/users/me/limits`); listas em `segredos` de `kwai.json` (2→7), `kwai_comentarios.json` (3→7) e `facebook_posts.json` (2, 4→7). A conta 1 (Starter) fica para as rotinas diárias de seguidores e anúncios. O manifesto registra qual conta pagou.
 - Facebook: modo `pre-campanha` (`--pre`): posts de 20/07 a 15/08 (`onlyPostsOlderThan` 16/08), até 60 das páginas principais e 20 das demais, sem repetir os já coletados; ≈ US$ 1,61 pela tabela, dentro do teto de US$ 5 (gasto até aqui US$ 2,52).
 - Run `pre-campanha` 39084573495 (conta 4 escolhida automaticamente; US$ 0,01): 0 posts em todas as páginas — o filtro `onlyPostsOlderThan` devolve "no_items". Ajuste: o modo relê só as páginas principais desde 20/07, sem limite superior, até 200 posts cada (os posts já coletados são cobrados de novo; ≈ US$ 1,65 pela tabela, dentro do teto).
+- Run `pre-campanha` 39084766464 (conta 4): lula 150 e flaviobolsonaro 150 posts lidos (até 200 pedidos), 81 novos (pré-campanha); acervo do Facebook 471 posts (Lula 301, Flávio 170); 80 capas novas; US$ 1,997. Gasto do Facebook: US$ 4,52 de 5.
 - Testes: suíte OK.
 
 ## C19.5 — Todas as páginas desde a pré-campanha (20/07), com filtro por fase (2026-10-17) 🔜
