@@ -4,11 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.43 — Teste de posicionamento v2: com contexto e só sobre o dono do conteúdo (2026-10-18) 🔜
+## C19.44 — Todas as chapas do 1º turno e vices; seguidores retroativos para todos (2026-10-18) 🔜
+
+- Pedido do usuário (18/10, 04h33): "colete todos dados de rede dos candidatos do 1º turno e vices" e "você consegue coletar seguidor retroativo?". Tetos escolhidos pelo usuário: US$ 6 para as publicações; "use até $5" para os seguidores retroativos. Contas dos outros pesquisadores (a conta 1 não é usada; a 8 fica com o Instagram).
+- `collect_primeiro_turno.py` + `primeiro-turno.yml`: chapas que foram às urnas, menos 13 e 22 (já cobertas), titular e vice (vice soma na chapa), perfis declarados ao TSE. Endereços "site_ou_outro" só entram quando dizem a rede ("Tik Tok - @clarianabr", "X - @Clarianabr", kwai-video.com/u/@wilsongrassi); "@clarianabarao" solto não é atribuído. Chapa 28 fora (não foi às urnas). Perfis: Instagram 29, TikTok 14, Facebook 13, X 11, Kwai 4 (contagem de `alvos()` sobre o arquivo do TSE).
+  - TikTok por yt-dlp (grátis). Instagram, Facebook, X e Kwai pela Apify com teto por rede em `data/config/primeiro_turno.json` (Facebook 3,40; X 1,00; Instagram 0,90; Kwai 0,60 = 5,90). Posts por perfil saem do teto, iguais para todos da rede: Facebook 49, X 575, Instagram 294 (duas leituras: posts e reels), Kwai 71 (`por_perfil`). Perfil que bateu no limite fica marcado (`no_limite`).
+  - YouTube já cobria todas as chapas (API oficial; `videos_latest.csv.gz` tem Renan Santos, Zema, Caiado, Marçal, Hertz Dias, Girão).
+- `build_primeiro_turno.py` → `data/primeiro_turno/resumo.json`: por chapa e rede, seguidores (último número de cada endereço), posts, visualizações e interações por fase, votos do 1º turno; cobertura da coleta das demais chapas (pedido por perfil, perfis com erro).
+- Social Blade (`collect_socialblade.py`): de 13 e 22 para todas as chapas do 1º turno (TikTok e YouTube; Instagram segue bloqueado pelo Social Blade), canal corrigido do Augusto Cury, pula perfil com série lida há menos de 2 dias. Teto total 3 + 5 = US$ 8. Resposta ao "retroativo": o ator devolve ~30 dias (31 pontos por perfil na carga de 18/10); repetir a coleta a cada 2–4 semanas emenda a série.
+- Testes: `tests/test_primeiro_turno.py` (alvos, endereços explícitos, cálculo por perfil, coleta com ator simulado, resumo, alvos do Social Blade); suíte completa OK. Pendente: execuções no Actions (IDs na próxima entrada).
+
+## C19.43 — Teste de posicionamento v2: com contexto e só sobre o dono do conteúdo (2026-10-18) ⚠️
 
 - Escolha do usuário (18/10): "versão 2 com modelo aberto". `teste_posicao.py --v2`: premissa "Comentário publicado num vídeo do canal de <dono> / em resposta a uma postagem de <dono>: <texto>", hipóteses "quem escreveu apoia / critica <dono>" (só o dono do conteúdo); links e @menções removidos; texto que sobra com menos de 8 letras → "sem conteúdo". Mesma amostra (semente 42).
 - Privado: `posicao/teste_amostra_v2.csv` (previsões) e `posicao/codificacao_posicao_v2.csv` — 200 itens (50 por rede × dono), embaralhados e SEM a previsão do modelo, para duas pessoas codificarem (favor / contra / neutro / sem conteúdo). Público: `data/pontes/posicao_teste_v2.json`, só distribuição, "TESTE v2 · NÃO VALIDADO".
-- Testes: suíte OK (`TestV2`). Pendente: execução e codificação humana.
+- Testes: suíte OK (`TestV2`). Execução: run 39107597882 (24 min, CPU do Actions).
+- Resultado: pior que a v1. 600 itens: contra 434 (72%), favor 114, sem conteúdo 52. Leitura de 30 previsões sorteadas (privado, semente 11): 12 apoios explícitos rotulados "contra" com probabilidade ≥ 0,98 (ex.: "Presidente lula tem meu voto", "FLÁVIO BOLSONARO NO PRIMEIRO TURNO", "LULA VAI SER REELEITO"); a hipótese "critica" é aceita para quase tudo. Conclusão: o modelo sem treino não serve para a etiqueta de posição, nem com contexto. A planilha de codificação humana (200 itens, privado) continua válida para testar outra abordagem.
 
 ## C19.42 — Página do Instagram em branco no site (2026-10-18) ✅
 

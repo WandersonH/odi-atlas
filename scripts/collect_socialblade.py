@@ -5,7 +5,10 @@ O Social Blade bloqueia acesso direto de robôs (Cloudflare); o ator usa o backe
 TikTok e YouTube (o ator não cobre X nem Facebook). Contas 3 a 7 (a conta 1 não é usada).
 
 --teste: 1 perfil (Instagram @lulaoficial).
-sem opção: todos os perfis de Instagram, TikTok e YouTube declarados ao TSE pelas chapas 13 e 22.
+sem opção: perfis de TikTok e YouTube declarados ao TSE por todas as chapas que foram às urnas no 1º turno (titular e vice;
+o vice conta na chapa do titular). Perfis com série lida nos últimos 2 dias são pulados (a série é de ~30 dias; repetir a
+coleta a cada 2 a 4 semanas emenda a série).
+Tetos: US$ 3 (18/10, chapas 13 e 22) + US$ 5 (18/10, pedido "use até $5" para estender a todos os candidatos e vices).
 Saída: data/seguidores/socialblade_historico.csv (plataforma; perfil; candidate_id; url_tse; data; seguidores; seguindo; posts;
 visualizações quando houver) e socialblade_manifesto_latest.json. Bruto no privado.
 """
@@ -27,16 +30,31 @@ from net import now_utc  # noqa: E402
 
 ATOR = "rl1987~social-blade-lookup"
 SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"] + [f"APIFY_TOKEN_{i}" for i in range(8, 16)]
-IDS = {"13": "280002542548", "22": "280002551544"}
 PADROES = {"instagram": r"instagram\.com/([A-Za-z0-9._]+)", "tiktok": r"tiktok\.com/@?([A-Za-z0-9._]+)",
            "youtube": r"youtube\.com/(?:@|c/|user/|channel/)?([A-Za-z0-9._-]+)"}
 COLS = ["plataforma", "perfil", "candidate_id", "url_tse", "data", "seguidores", "seguindo", "posts", "visualizacoes", "coletado_em"]
-TETO_TOTAL = 3.0
+TETO_TOTAL = 8.0
+
+
+def titulares(root: Path) -> dict[str, str]:
+    """número → SQ do titular, para as chapas que foram às urnas no 1º turno."""
+    urna = json.loads((root / "data/elections.json").read_text(encoding="utf-8"))["candidates"]["2026"]
+    out = {}
+    for r in csv.DictReader(gzip.open(root / "data/tse/redes_sociais_candidatos_2026.csv.gz", "rt", encoding="utf-8"), delimiter=";"):
+        nr = r.get("NR_CANDIDATO")
+        if r.get("DS_CARGO", "").upper() == "PRESIDENTE" and nr in urna and (nr not in out or r.get("NM_URNA_CANDIDATO") == urna[nr]):
+            out[nr] = r["SQ_CANDIDATO"]
+    return out
 
 
 def alvos(root: Path) -> list[dict]:
     out, vistos = [], set()
+    IDS = titulares(root)
+    pc = root / "data/config/youtube_correcoes.json"
+    corr = json.loads(pc.read_text(encoding="utf-8")).get("correcoes", {}) if pc.exists() else {}
     for x in json.loads((root / "data/tse/redes_presidencia_2026.json").read_text(encoding="utf-8")):
+        if x["url"] in corr:  # canal declarado que não funciona (ID todo em maiúsculas): usa o corrigido
+            x = {**x, "url": corr[x["url"]]["usar"]}
         if x["plataforma"] not in PADROES or x["plataforma"] == "instagram" or x["nr"] not in IDS:  # Instagram: série bloqueada pelo Social Blade (README do ator)
             continue
         m = re.search(PADROES[x["plataforma"]], x["url"], re.I)
@@ -84,6 +102,13 @@ def main(argv=None, executar=None) -> int:
         return code
 
     al = alvos(root)
+    arq0 = seg / "socialblade_historico.csv"
+    if arq0.exists() and not teste:  # série lida há menos de 2 dias: pula (economia; a série do ator é de ~30 dias)
+        import datetime as dt
+        limite = (dt.date.fromisoformat(agora[:10]) - dt.timedelta(days=2)).isoformat()
+        recentes = {(r["plataforma"], r["perfil"].lower()) for r in csv.DictReader(open(arq0, encoding="utf-8"), delimiter=";") if r["coletado_em"][:10] >= limite}
+        man["pulados_coleta_recente"] = sorted(f"{p}:{h}" for p, h in recentes if any((a["plataforma"], a["perfil"].lower()) == (p, h) for a in al))
+        al = [a for a in al if (a["plataforma"], a["perfil"].lower()) not in recentes]
     if teste:
         al = [a for a in al if a["plataforma"] == "tiktok" and a["perfil"].lower() == "lulaoficial"][:1]
     custo_est = 0.03 * len(al) + 0.01
@@ -92,7 +117,7 @@ def main(argv=None, executar=None) -> int:
     nome, token, saldo = escolher_conta(SEGREDOS, custo_est) if executar is None else ("teste", "x", None)
     man.update(conta=nome, saldo_conta_antes_usd=saldo)
     if not token:
-        return fim("⛔ nenhuma conta Apify com saldo (3 a 7)", 1)
+        return fim("⛔ nenhuma conta Apify dos outros pesquisadores com saldo", 1)
     executar = executar or (lambda pl, cap: run_actor(token, ATOR, pl, cap))
     arq = seg / "socialblade_historico.csv"
     linhas = {}

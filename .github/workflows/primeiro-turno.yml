@@ -1,0 +1,88 @@
+name: 1º turno — publicações das demais chapas e vices (TikTok grátis; Apify, contas dos outros pesquisadores, teto US$ 6)
+
+# Chapas que foram às urnas no 1º turno, menos 13 e 22 (já cobertas). Tetos por rede em data/config/primeiro_turno.json.
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "teste (1 perfil por rede, 10 posts) · carga (todos os perfis)"
+        type: choice
+        options: [teste, carga]
+        default: teste
+      redes:
+        description: "redes separadas por espaço (vazio = tiktok instagram facebook x kwai)"
+        default: ""
+
+concurrency:
+  group: primeiro-turno
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  coleta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q -U yt-dlp && pip install -q networkx==3.6.1 numpy==2.3.4
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar (com teto por rede)
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          APIFY_TOKEN_8: ${{ secrets.APIFY_TOKEN_8 }}
+          APIFY_TOKEN_9: ${{ secrets.APIFY_TOKEN_9 }}
+          APIFY_TOKEN_10: ${{ secrets.APIFY_TOKEN_10 }}
+          APIFY_TOKEN_11: ${{ secrets.APIFY_TOKEN_11 }}
+          APIFY_TOKEN_12: ${{ secrets.APIFY_TOKEN_12 }}
+          APIFY_TOKEN_13: ${{ secrets.APIFY_TOKEN_13 }}
+          APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
+          APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          MODO: ${{ github.event.inputs.modo }}
+          REDES: ${{ github.event.inputs.redes }}
+        run: |
+          a=""
+          if [ "$MODO" = "teste" ]; then a="--teste"; fi
+          for r in $REDES; do a="$a --rede $r"; done
+          python scripts/collect_primeiro_turno.py $a > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=1º turno::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Resumo por chapa
+        if: always()
+        continue-on-error: true
+        run: |
+          python scripts/build_primeiro_turno.py > b.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=1º turno resumo::$(echo "$l" | cut -c1-600)"; done < b.txt
+          exit $rc
+      - name: Gravar bruto no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "1º turno (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "1º turno: publicações das demais chapas (run ${{ github.run_id }})"

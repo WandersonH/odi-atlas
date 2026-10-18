@@ -1,0 +1,60 @@
+{
+ "autorizacao": "Usuário em 18/10/2026: \"colete todos dados de rede dos candidatos do 1º turno e vices\"; teto escolhido: US$ 6 (todas as redes; Facebook com até 50 posts por página), nas contas dos outros pesquisadores (a conta 1 não é usada; a conta 8 fica para o Instagram).",
+ "desde": "2026-07-20",
+ "teto_total_usd": 6.0,
+ "teto_teste_usd": 0.05,
+ "segredos": [
+  "APIFY_TOKEN_5",
+  "APIFY_TOKEN_6",
+  "APIFY_TOKEN_7",
+  "APIFY_TOKEN_4",
+  "APIFY_TOKEN_9",
+  "APIFY_TOKEN_10",
+  "APIFY_TOKEN_11",
+  "APIFY_TOKEN_12",
+  "APIFY_TOKEN_13",
+  "APIFY_TOKEN_14",
+  "APIFY_TOKEN_15"
+ ],
+ "redes": {
+  "facebook": {
+   "ator": "apify~facebook-posts-scraper",
+   "item": 0.005,
+   "inicio": 0.001,
+   "teto_usd": 3.4,
+   "maximo_por_perfil": 50,
+   "fonte": "loja Apify, plano gratuito: US$ 0,005/post (consulta de 17/10/2026, ver data/config/facebook_posts.json)"
+  },
+  "x": {
+   "ator": "xquik~x-tweet-scraper",
+   "item": 0.00015,
+   "inicio": 0.0,
+   "teto_usd": 1.0,
+   "maximo_por_perfil": 1500,
+   "fonte": "README do xquik/x-tweet-scraper: US$ 0,00015 por linha (ver data/config/x_posts.json)"
+  },
+  "instagram": {
+   "ator": "esdrasdw~instagram-content-scraper",
+   "item": 5e-05,
+   "inicio": 0.0,
+   "teto_usd": 0.9,
+   "maximo_por_perfil": 600,
+   "segredos": [
+    "APIFY_TOKEN_8",
+    "APIFY_TOKEN_5",
+    "APIFY_TOKEN_6",
+    "APIFY_TOKEN_7"
+   ],
+   "fonte": "loja Apify, 18/10/2026: US$ 0,05 por 1.000 itens (ver data/config/instagram_posts.json); duas leituras por perfil (posts e reels)"
+  },
+  "kwai": {
+   "ator": "unfenced-group~kwai-scraper",
+   "item": 0.002,
+   "inicio": 0.0,
+   "teto_usd": 0.6,
+   "maximo_por_perfil": 300,
+   "fonte": "página do ator, 17/10/2026: US$ 1,99 por 1.000 itens com detalhe (ver data/config/kwai.json)"
+  }
+ },
+ "nota": "Soma dos tetos por rede: US$ 5,90 (≤ US$ 6). TikTok por yt-dlp e YouTube pela API oficial, sem custo. Chapa 28 fora: não foi às urnas no 1º turno."
+}
