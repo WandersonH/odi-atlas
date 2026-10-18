@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.54 — ⛔ Apify bloqueou as contas 2 a 12 (2026-10-18)
+
+- Informação do usuário (18/10, 18h11): "o Apify bloqueou as contas todas". Confirma o diagnóstico de C19.53: chaves com formato correto (46 caracteres, prefixo `apify_api_`, sem aspas nem espaços), recusadas com HTTP 401 desde ~17h30.
+- Efeito: toda coleta paga fica parada, exceto pela conta 1 (que segue fora por pedido do usuário). Rotinas diárias afetadas — terminam com ⛔ no manifesto, sem apagar dados anteriores: `seguidores-faltantes` (11h17 UTC), `kwai` (13h10 UTC, conta 2), etapa Apify do `tiktok` (o TikTok por yt-dlp continua). Coletas grátis seguem: YouTube (API oficial), TikTok por yt-dlp, Google Trends e Notícias, X trends, Internet Archive, WhatsApp (canais públicos).
+- Caso 1: a coleta do cross (+ US$ 3,50 autorizados) não foi feita; nada foi gasto nas tentativas. O caso continua com o que já foi coletado (10.976 publicações, quase todas do X).
+
 ## C19.53 — Diagnóstico do formato das chaves Apify (2026-10-18) 🔜
 
 - 17h39: as contas 2 a 12 seguem com HTTP 401 (a 12 passou a existir e também é recusada); só a conta 1 responde (`data/apify/contas.json`). Como todas falham igual, o mais provável é o valor gravado, não as contas.
