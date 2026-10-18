@@ -52,6 +52,10 @@ jobs:
             python -u scripts/build_sentimento_comentarios.py --plataforma kwai | tee sk.txt
             while IFS= read -r l; do echo "::notice title=Sentimento Kwai::$l"; done < sk.txt
           fi
+          if [ -f "$ODI_INTERNO_DIR/facebook/comentarios/comentarios.csv.gz" ]; then
+            python -u scripts/build_sentimento_comentarios.py --plataforma facebook | tee sf.txt
+            while IFS= read -r l; do echo "::notice title=Sentimento Facebook::$l"; done < sf.txt
+          fi
       - name: Gravar cache no repositório privado
         if: always() && steps.interno.outputs.dir != ''
         run: |

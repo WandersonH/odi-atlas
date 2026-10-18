@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.9 — Comentários do Facebook: coletor (contas 3 a 7, teto US$ 1,50) (2026-10-17) 🔜
+
+- Pedido do usuário (22h05): criar a página de comentários do Facebook. Loja Apify (run de `teste-apify-loja`, 17/10): dami_studio/facebook-comments-scraper, US$ 0,25 por 1.000 comentários no plano gratuito (o oficial da Apify cobra US$ 2,50 por 1.000).
+- `collect_comentarios_facebook.py` + `facebook-comentarios.yml`: posts desde 20/07 com comentários; cota igual por candidato (2.800), de 5 a 50 por post, por relevância, sem respostas; até 100 posts por execução. Texto e autor só no repositório privado; análises com `--plataforma facebook` (mesmas regras do YouTube e do Kwai); sentimento incluído em `sentimento-youtube.yml`.
+- Testes: `tests/test_comentarios_facebook.py`; suíte OK.
+
 ## C19.8 — X: troca de coletor (2026-10-17) 🔜
 
 - Teste (run 39085223674) e carga (run 39085278763) com apidojo/tweet-scraper (conta 3/4): no plano gratuito o ator devolve no máximo 10 itens por execução; 4 perfis vieram com 10 posts cada (LulaOficial 10.765.351 seguidores, FlavioBolsonaro 3.794.680, comitespop 12.111, pode_espalhar 7.803) e 6 perfis com nenhum post próprio. Gasto: US$ 0,044.

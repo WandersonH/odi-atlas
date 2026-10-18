@@ -1,0 +1,79 @@
+name: Facebook — comentários (Apify, contas 3 a 7, teto US$ 1,50)
+
+# Ator dami_studio/facebook-comments-scraper. Teto total autorizado: US$ 1,50 (data/config/facebook_comentarios.json).
+# Texto e autor dos comentários só no repositório privado; no público, só agregados.
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "teste (2 posts × 10) · carga (cota por candidato)"
+        type: choice
+        options: [teste, carga]
+        default: teste
+
+concurrency:
+  group: facebook-comentarios
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  facebook_comentarios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q networkx==3.6.1 numpy==2.3.4
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar (Apify, com teto)
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          MODO: ${{ github.event.inputs.modo }}
+        run: |
+          case "$MODO" in teste) a="--teste";; *) a="";; esac
+          python scripts/collect_comentarios_facebook.py $a > k.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Facebook comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
+          exit $rc
+      - name: Análise (mesmas regras do YouTube; só agregados no público)
+        if: always() && steps.interno.outputs.dir != ''
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          rc=0
+          { python scripts/build_comentarios.py --plataforma facebook && python scripts/build_rede_comentarios.py --plataforma facebook; } > a.txt 2>&1 || rc=$?
+          grep -v "RuntimeWarning\|attraction =" a.txt | while IFS= read -r l; do echo "::notice title=Facebook análise::$(echo "$l" | cut -c1-500)"; done
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Facebook comentários (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Facebook comentários (run ${{ github.run_id }})"
