@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.50 — Caso 1: são duas hashtags (#brasilinteiro e #verdeeamarelo) (2026-10-18) 🔜
+
+- Correção do usuário (18/10, 16h54): "@verdeeamarelo — eu tinha te dito que eram duas #". Saem a busca "@verdeeamarelo OR from:verdeeamarelo" no X e a leitura do perfil @verdeeamarelo no Instagram; título do caso: "#brasilinteiro e #verdeeamarelo". `build_casos.py` passa a usar só os termos atuais do caso: publicação trazida apenas por termo removido sai dos agregados (havia 1, que também tinha #brasilinteiro e fica). O bruto continua no privado.
+- O que a busca do @ custou (manifesto de 18/10 13h33): X 1 post, US$ 0,00015; Instagram 0 itens, sem cobrança.
+- #verdeeamarelo passa a ser hashtag principal: a carga parou no limite (1.685) com o mais antigo em 17/10 12h48 UTC; novo complemento do X de 16/10 até esse horário. Tetos do caso redistribuídos dentro dos US$ 3 (gasto até aqui US$ 1,35): X 2,20; Instagram 0,20; Facebook 0,50; Kwai 0,10; máximo por termo 6.000.
+- Testes: `test_casos` atualizado (duas hashtags; 6.000 itens por termo com o novo teto); suíte OK. Pendente: o complemento e a regeração dos agregados.
+
 ## C19.49 — Caso 1: X completado por janelas de horário, lacunas e decolagem (2026-10-18) ⚠️
 
 - Complementos do X para #brasilinteiro (runs 39133523009, 39133657951, 39133785803): antes de 17/10 06h (Brasília) 36 posts (abaixo do limite); 12h05–12h18 UTC 2.000 (no limite); 09h00–12h05 UTC 1.098 (abaixo do limite de 1.325). Total do caso: 7.776 publicações de 4.212 contas (X 7.662, TikTok 82, Instagram 19, Facebook 13, Kwai 0).

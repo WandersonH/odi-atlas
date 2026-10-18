@@ -43,20 +43,14 @@
   {
    "id": "001",
    "slug": "brasilinteiro",
-   "titulo": "#brasilinteiro e @verdeeamarelo",
+   "titulo": "#brasilinteiro e #verdeeamarelo",
    "tipo": "movimento",
    "rotulo_tipo": "em análise",
-   "descricao": "Hashtag e perfil indicados pela equipe como movimento de apoio a Lula. O dossiê acompanha de onde partiu, quem amplificou e quanto circulou em cada rede, a partir do que a coleta encontrar (marco zero = primeira publicação localizada).",
+   "descricao": "Duas hashtags indicadas pela equipe como movimento de apoio a Lula. O dossiê acompanha de onde partiu, quem amplificou e quanto circulou em cada rede, a partir do que a coleta encontrar (marco zero = primeira publicação localizada).",
    "coletar": true,
    "desde": "2026-10-16",
    "hashtags": [
     "brasilinteiro",
-    "verdeeamarelo"
-   ],
-   "mencoes_x": [
-    "verdeeamarelo"
-   ],
-   "perfis_instagram": [
     "verdeeamarelo"
    ],
    "termos_trends": [
@@ -69,12 +63,12 @@
     "\"verde e amarelo\" Lula"
    ],
    "rolagens_tiktok": 25,
-   "maximo_por_termo": 2000,
+   "maximo_por_termo": 6000,
    "teto_usd": {
-    "x": 1.3,
-    "instagram": 0.4,
-    "facebook": 0.8,
-    "kwai": 0.3
+    "x": 2.2,
+    "instagram": 0.2,
+    "facebook": 0.5,
+    "kwai": 0.1
    },
    "aviso_termos": "#verdeeamarelo é hashtag antiga e genérica (usada também por apoiadores de Bolsonaro desde 2018); por isso cada publicação guarda o termo que a trouxe e a página separa os dois.",
    "filtro_titulo_noticias": [
@@ -87,12 +81,12 @@
    "nota_noticias": "Só entram títulos que trazem um dos termos do caso (a busca do Google Notícias também devolve textos que só citam as palavras no corpo).",
    "complementos_x": [
     {
-     "termo": "#brasilinteiro",
-     "busca": "#brasilinteiro since:2026-10-17_09:00:00_UTC until:2026-10-17_12:05:26_UTC",
-     "motivo": "o 3º complemento (run 39133657951) parou no limite em 12h05 UTC; esta busca lê o que houver entre 06h e 09h05 de 17/10 (Brasília)"
+     "termo": "#verdeeamarelo",
+     "busca": "#verdeeamarelo since:2026-10-16 until:2026-10-17_12:48:30_UTC",
+     "motivo": "a carga de 18/10 (run 39132035304) parou no limite de 1.685 posts e o mais antigo lido de #verdeeamarelo foi 17/10 12h48 UTC"
     }
    ],
-   "nota_teto": "18/10: tetos redistribuídos dentro dos US$ 3 do caso (X 0,80→1,30; Instagram 0,75→0,40; Kwai 0,50→0,30), porque o X concentra quase todo o volume e o começo do caso ficou fora.",
+   "nota_teto": "18/10: tetos redistribuídos dentro dos US$ 3 do caso para o X, onde está quase todo o volume (X 2,20; Instagram 0,20; Facebook 0,50; Kwai 0,10).",
    "lacunas": [
     {
      "rede": "X",
@@ -100,16 +94,10 @@
      "de": "2026-10-17T10:00",
      "ate": "2026-10-17T10:59",
      "motivo": "só 3 posts lidos nessa hora, contra centenas nas horas vizinhas: a busca do X (mais recentes primeiro) pulou esse trecho; o teto do X para o caso acabou antes de refazer"
-    },
-    {
-     "rede": "X",
-     "termo": "#verdeeamarelo",
-     "de": null,
-     "ate": "2026-10-17T09:48",
-     "motivo": "a carga parou no limite (1.685 posts) e não houve complemento; antes disso a hashtag pode ter mais posts do que os lidos"
     }
    ],
-   "nota_x": "X de #brasilinteiro lido em quatro buscas (carga de 18/10 e três complementos por janela de horário: runs 39132035304, 39132855716, 39133523009, 39133657951, 39133785803). A busca do X não garante devolver tudo."
+   "nota_x": "X de #brasilinteiro lido em quatro buscas (carga de 18/10 e três complementos por janela de horário: runs 39132035304, 39132855716, 39133523009, 39133657951, 39133785803). A busca do X não garante devolver tudo.",
+   "correcao_termos": "18/10, 16h54: o usuário corrigiu — o caso são duas hashtags (#brasilinteiro e #verdeeamarelo); @verdeeamarelo não faz parte. Publicações trazidas só pela busca de @verdeeamarelo saem dos agregados (o bruto continua no privado)."
   },
   {
    "id": "002",

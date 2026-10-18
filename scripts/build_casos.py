@@ -93,6 +93,10 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     minimo = cfg.get("min_seguidores_publico", 10000)
     dec = declarados(root)
     itens = [r for r in itens if r.get("publicado_em", "")[:10] >= caso["desde"]]
+    # só os termos atuais do caso (ex.: @verdeeamarelo saiu em 18/10); publicação trazida só por termo removido sai
+    validos = {f"#{h}" for h in caso.get("hashtags", [])} | {f"@{m}" for m in caso.get("mencoes_x", [])} | {f"@{p}" for p in caso.get("perfis_instagram", [])}
+    itens = [{**r, "termo": "|".join(t for t in r["termo"].split("|") if t in validos)} for r in itens]
+    itens = [r for r in itens if r["termo"]]
     itens.sort(key=lambda r: r["publicado_em"])
     # quem aparece com nome
     ativ = Counter((r["rede"], r["conta"]) for r in itens if r["conta"])

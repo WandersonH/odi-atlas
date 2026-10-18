@@ -15,7 +15,7 @@ class TestCasos(unittest.TestCase):
     def test_pedidos_e_norm(self):
         cfg = json.loads((RAIZ / "data/config/casos.json").read_text(encoding="utf-8"))
         caso = cfg["casos"][0]
-        self.assertEqual([t for t, _, _ in cc.pedidos("x", caso, 5)], ["#brasilinteiro", "#verdeeamarelo", "@verdeeamarelo"])
+        self.assertEqual([t for t, _, _ in cc.pedidos("x", caso, 5)], ["#brasilinteiro", "#verdeeamarelo"])   # duas hashtags (correção do usuário, 18/10)
         self.assertEqual(cc.pedidos("instagram", caso, 5)[0][2]["keyword"], "brasilinteiro")
         r = cc.norm("x", item_x(1, "fulano", 50, "2026-10-17T03:00:00.000Z"), "#brasilinteiro", "agora")
         self.assertEqual((r["item_id"], r["conta"], r["seguidores"], r["publicado_em"]), ("1", "fulano", 50, "2026-10-17T03:00:00Z"))
@@ -57,7 +57,7 @@ class TestCasos(unittest.TestCase):
         self.assertNotIn("pequeno\"", gexf)
         self.assertNotIn("custo", json.dumps(caso))                              # custo da coleta nunca vai para a página
         self.assertEqual([c["estado"] for c in indice["casos"]][1:], ["aguardando confirmação de datas e termos"] * 3)
-        self.assertEqual(man["redes"][0]["itens_pedidos_por_termo"], 2000)       # teto do X (1,30) cabe o máximo por termo
+        self.assertEqual(man["redes"][0]["itens_pedidos_por_termo"], 6000)       # teto do X (2,20) cabe o máximo por termo
 
 
 if __name__ == "__main__":
