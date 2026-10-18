@@ -20,6 +20,7 @@ import gzip
 import json
 import os
 import random
+import re
 import sys
 import time
 from collections import Counter
@@ -33,6 +34,11 @@ L, F = "280002542548", "280002551544"
 ALVOS = {"lula": "Lula", "flavio": "Flávio Bolsonaro"}
 N_YT, N_X, LIMIAR, SEMENTE = 400, 200, 0.6, 42
 HIP = {"favor": "O autor deste comentário apoia {}.", "contra": "O autor deste comentário é contra {}."}
+# v2 (18/10/2026, depois da leitura da v1): o modelo recebe o contexto (em que conteúdo o comentário está) e julga só a
+# posição sobre o DONO do conteúdo; textos que são só link, menção ou emoji ficam "sem conteúdo" (sem rótulo).
+HIP2 = {"favor": "Quem escreveu este comentário apoia {}.", "contra": "Quem escreveu este comentário critica {}."}
+URL_MENC = re.compile(r"https?://\S+|@\w+")
+N_CODIFICAR = 200
 
 
 def ler(p: Path) -> list[dict]:
@@ -53,7 +59,85 @@ def rotulo(sf: float, sc: float) -> str:
     return ("favor" if sf >= sc else "contra") if max(sf, sc) >= LIMIAR else "neutro/incerto"
 
 
+def limpo(texto: str) -> str:
+    return " ".join(URL_MENC.sub(" ", texto or "").split())
+
+
+def premissa(texto: str, rede: str, dono: str) -> str:
+    onde = "num vídeo do canal de" if rede == "youtube" else "em resposta a uma postagem de"
+    return f"Comentário publicado {onde} {dono}: \"{texto[:900]}\""
+
+
+def main_v2(classificar=None) -> int:
+    root = Path(".")
+    interno = os.environ.get("ODI_INTERNO_DIR")
+    if not interno:
+        print("⛔ ODI_INTERNO_DIR ausente")
+        return 1
+    d = Path(interno)
+    am = amostra(ler(d / "youtube/comentarios/comentarios.csv.gz"), N_YT, "youtube") + amostra(ler(d / "x/respostas/respostas.csv.gz"), N_X, "x")
+    if classificar is None:
+        from transformers import pipeline
+        clf = pipeline("zero-shot-classification", model=MODELO)
+
+        def classificar(prem: str, alvo: str) -> dict:
+            hs = [HIP2["favor"].format(alvo), HIP2["contra"].format(alvo)]
+            r = clf(prem, hs, hypothesis_template="{}", multi_label=True)
+            sc = dict(zip(r["labels"], r["scores"]))
+            return {"favor": sc[hs[0]], "contra": sc[hs[1]]}
+    t0, linhas = time.monotonic(), []
+    for i, r in enumerate(am):
+        dono = "Lula" if r["candidate_id"] == L else "Flávio Bolsonaro"
+        txt = limpo(r["texto"])
+        lin = {"id_teste": i + 1, "rede": r["rede"], "conteudo_de": dono, "texto": " ".join(r["texto"].split())}
+        if len(re.sub(r"[^\wÀ-ÿ]", "", txt)) < 8:
+            lin.update(p_favor="", p_contra="", modelo="sem conteúdo")
+        else:
+            sc = classificar(premissa(txt, r["rede"], dono), dono)
+            lin.update(p_favor=round(sc["favor"], 3), p_contra=round(sc["contra"], 3), modelo=rotulo(sc["favor"], sc["contra"]))
+        lin.update(codificador1="", codificador2="")
+        linhas.append(lin)
+        if (i + 1) % 100 == 0:
+            print(f"  {i + 1}/{len(am)} ({time.monotonic() - t0:.0f} s)", flush=True)
+    pd = d / "posicao"
+    pd.mkdir(parents=True, exist_ok=True)
+    cols = list(linhas[0].keys())
+    with open(pd / "teste_amostra_v2.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, cols, delimiter=";", lineterminator="\n")
+        w.writeheader()
+        w.writerows(linhas)
+    # planilha de codificação: 200 itens (50 por rede × dono), ordem embaralhada, SEM a previsão do modelo (para não induzir)
+    rnd = random.Random(SEMENTE + 1)
+    cod = []
+    for rede in ("youtube", "x"):
+        for dono in ("Lula", "Flávio Bolsonaro"):
+            sub = [x for x in linhas if x["rede"] == rede and x["conteudo_de"] == dono]
+            rnd.shuffle(sub)
+            cod += sub[: N_CODIFICAR // 4]
+    rnd.shuffle(cod)
+    with open(pd / "codificacao_posicao_v2.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, delimiter=";", lineterminator="\n")
+        w.writerow(["id_teste", "rede", "conteudo_de", "texto", "posicao_sobre_o_dono (favor | contra | neutro | sem conteúdo)", "codificador", "observacao"])
+        for x in cod:
+            w.writerow([x["id_teste"], x["rede"], x["conteudo_de"], x["texto"], "", "", ""])
+    dist = {}
+    for rede in ("youtube", "x"):
+        for dono in ("Lula", "Flávio Bolsonaro"):
+            sub = [x for x in linhas if x["rede"] == rede and x["conteudo_de"] == dono]
+            dist[f"{rede} · conteúdo de {dono} · posição sobre {dono}"] = {"n": len(sub), **dict(Counter(x["modelo"] for x in sub))}
+    out = {"schema_version": 2, "gerado_em_utc": now_utc(), "status": "TESTE v2 · NÃO VALIDADO",
+           "aviso": "Classificação automática sem treino, com o contexto do conteúdo; ainda sem codificação humana. Não usar como resultado.",
+           "modelo": MODELO, "limiar": LIMIAR, "hipoteses": HIP2, "premissa": "Comentário publicado {num vídeo do canal de | em resposta a uma postagem de} <dono>: \"<texto sem links e menções>\"",
+           "semente": SEMENTE, "codificacao": {"itens": len(cod), "arquivo_privado": "posicao/codificacao_posicao_v2.csv"}, "distribuicao": dist}
+    (root / "data/pontes/posicao_teste_v2.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    for k, v in dist.items():
+        print(k, json.dumps(v, ensure_ascii=False))
+    return 0
+
+
 def main(argv=None, classificar=None) -> int:
+    if "--v2" in list(argv or []):
+        return main_v2(classificar)
     root = Path(".")
     interno = os.environ.get("ODI_INTERNO_DIR")
     saida = root / "data/pontes/posicao_teste.json"

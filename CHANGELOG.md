@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.43 — Teste de posicionamento v2: com contexto e só sobre o dono do conteúdo (2026-10-18) 🔜
+
+- Escolha do usuário (18/10): "versão 2 com modelo aberto". `teste_posicao.py --v2`: premissa "Comentário publicado num vídeo do canal de <dono> / em resposta a uma postagem de <dono>: <texto>", hipóteses "quem escreveu apoia / critica <dono>" (só o dono do conteúdo); links e @menções removidos; texto que sobra com menos de 8 letras → "sem conteúdo". Mesma amostra (semente 42).
+- Privado: `posicao/teste_amostra_v2.csv` (previsões) e `posicao/codificacao_posicao_v2.csv` — 200 itens (50 por rede × dono), embaralhados e SEM a previsão do modelo, para duas pessoas codificarem (favor / contra / neutro / sem conteúdo). Público: `data/pontes/posicao_teste_v2.json`, só distribuição, "TESTE v2 · NÃO VALIDADO".
+- Testes: suíte OK (`TestV2`). Pendente: execução e codificação humana.
+
 ## C19.42 — Página do Instagram em branco no site (2026-10-18) ✅
 
 - Relato do usuário (18/10, 04h15): "página Instagram tá em branco". Conferido no Chrome do usuário, no site publicado: os dados carregavam (4.629 posts de Lula e 695 de Flávio), mas a seção estava fora de `<main>` (filha de `<body>`, depois do rodapé), porque foi inserida após o último script do Facebook, que fica fora da área principal. O conteúdo ia para baixo do layout e a área visível ficava vazia. O teste local anterior usava captura da página inteira e não pegou isso.

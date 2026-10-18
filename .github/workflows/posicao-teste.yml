@@ -4,6 +4,12 @@ name: Teste — posicionamento sem treino (modelo aberto, sem custo)
 # Roda aqui mesmo (CPU), nenhum texto sai para serviço externo. Texto e previsões só no repositório privado.
 on:
   workflow_dispatch:
+    inputs:
+      versao:
+        description: "v1 (hipóteses sobre os dois candidatos) · v2 (contexto + posição sobre o dono do conteúdo)"
+        type: choice
+        options: [v2, v1]
+        default: v2
 
 permissions:
   contents: write
@@ -37,7 +43,8 @@ jobs:
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python -u scripts/teste_posicao.py | tee p.txt
+          if [ "${{ github.event.inputs.versao }}" = "v1" ]; then a=""; else a="--v2"; fi
+          python -u scripts/teste_posicao.py $a | tee p.txt
           while IFS= read -r l; do echo "::notice title=Posição (teste)::$(echo "$l" | cut -c1-600)"; done < p.txt
       - name: Gravar no repositório privado
         if: always()

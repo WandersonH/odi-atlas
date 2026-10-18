@@ -16,5 +16,12 @@ class TestPosicao(unittest.TestCase):
         self.assertEqual(sum(1 for r in a if r["candidate_id"] == tp.L), 10)
 
 
+class TestV2(unittest.TestCase):
+    def test_limpo_e_premissa(self):
+        self.assertEqual(tp.limpo("@LulaOficial https://t.co/x"), "")
+        self.assertIn("num vídeo do canal de Lula", tp.premissa("texto", "youtube", "Lula"))
+        self.assertIn("em resposta a uma postagem de Flávio", tp.premissa("texto", "x", "Flávio Bolsonaro"))
+
+
 if __name__ == "__main__":
     unittest.main()
