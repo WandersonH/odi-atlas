@@ -56,6 +56,19 @@ jobs:
             python -u scripts/build_sentimento_comentarios.py --plataforma facebook | tee sf.txt
             while IFS= read -r l; do echo "::notice title=Sentimento Facebook::$l"; done < sf.txt
           fi
+          if [ -f "$ODI_INTERNO_DIR/x/respostas/respostas.csv.gz" ]; then
+            python -u scripts/build_sentimento_comentarios.py --plataforma x | tee sx.txt
+            while IFS= read -r l; do echo "::notice title=Sentimento X (respostas)::$l"; done < sx.txt
+          fi
+      - name: Pontes entre públicos e temas que circulam (só agregados)
+        if: always() && steps.interno.outputs.dir != ''
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          for p in youtube x facebook; do python scripts/build_pontes.py --plataforma $p; done > pt.txt 2>&1
+          python scripts/build_temas_circulam.py | tail -3 >> pt.txt 2>&1
+          while IFS= read -r l; do echo "::notice title=Pontes::$(echo "$l" | cut -c1-600)"; done < pt.txt
       - name: Gravar cache no repositório privado
         if: always() && steps.interno.outputs.dir != ''
         run: |

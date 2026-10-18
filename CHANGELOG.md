@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.26 — Pontes entre públicos e temas que circulam (2026-10-18) ⚠️
+
+- Pedido do usuário (18/10, 02h00 e 02h07): na área de comentários, encontrar contas que interagem com os dois campos, respostas entre comunidades e circulação dos mesmos temas em espaços distintos, sem presumir orientação política individual por uma interação.
+- `scripts/build_pontes.py` (YouTube, X, Facebook) → `data/pontes/<rede>.json`, só agregados. "Público frequente" = autor com 2+ comentários e 2/3 deles num candidato (comportamento, não orientação). Mede contas-ponte (por semana e fase), tom (modelo de sentimento do Atlas) das contas-ponte, do público do adversário e do próprio público, respostas entre públicos (onde há árvore de respostas) com temas, e conteúdos que atraem o público do adversário (30+ comentaristas com público definido).
+- `scripts/build_temas_circulam.py` → `data/pontes/temas.json`: % semanal dos conteúdos de cada candidato por tema (YouTube, TikTok, Kwai, Facebook, X e todas juntas) e dos comentários do YouTube; picos (média + 1 desvio-padrão, mínimo 5 pontos), quem chegou primeiro (pico do outro lado em até 2 semanas; sequência, não causa) e correlação semanal.
+- Primeira execução com os dados atuais (repositório privado, 18/10): YouTube 158.365 comentários de 65.359 autores; 719 contas-ponte (1,1%); público frequente: 13.563 de Lula e 9.037 de Flávio; 127 de 19.498 respostas (0,65%) ligam públicos diferentes, tom 42,5% negativo (todas as respostas: 28,2%). Comentários das contas-ponte nos vídeos de Lula: 39,0% negativos (próprio público: 14,7%). Em 45,8% dos vídeos de Lula e 49,7% dos de Flávio com 30+ comentaristas de público definido aparece ao menos um do público do adversário. Facebook: 4 contas-ponte em 4.405 autores (amostra sem respostas). X: só o teste de 39 respostas até a carga terminar. Temas: picos em comum em segurança (2), religião e valores (3), eleição e instituições (2) e agenda de campanha (1).
+- Página: nova aba "Pontes entre públicos" em Comentários, com aviso de método no topo, escolha de rede, quatro blocos e downloads. Aberta no Chromium local (1300 px e 390 px, sem rolagem lateral, sem erro de JavaScript).
+- Diário: `sentimento-youtube.yml` classifica também as respostas do X (`--plataforma x`, lendo `x/respostas`) e recalcula as pontes e os temas depois do sentimento.
+- ⚠️ Os comentários do YouTube começam em 16/08 (a pré-campanha tem 1 autor); o X e o Facebook dependem das cargas em andamento.
+- Testes: suíte OK (`test_pontes`).
+
 ## C19.25 — Facebook: amostra maior de comentários (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 02h10): ampliar os comentários do Facebook com mais US$ 3 (teto da fonte: US$ 1,50 → US$ 4,50). Cota por candidato 2.800 → 8.800; até 200 comentários por post (antes 50).

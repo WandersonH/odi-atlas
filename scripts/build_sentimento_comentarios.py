@@ -142,8 +142,8 @@ def main(argv=None, classificar=None) -> int:
                                     ensure_ascii=False, indent=1), encoding="utf-8")
         print("⛔ ODI_INTERNO_DIR ausente")
         return 1
-    d = Path(interno) / plat / "comentarios"
-    rows = ler_csv(d / "comentarios.csv.gz")
+    d = Path(interno) / plat / ("respostas" if plat == "x" else "comentarios")
+    rows = ler_csv(d / ("respostas.csv.gz" if plat == "x" else "comentarios.csv.gz"))
     cache = {r["comment_id"]: r for r in ler_csv(d / "sentimento.csv.gz") if r.get("modelo") == cfg["modelo"]}
     pend = [r for r in rows if r["comment_id"] not in cache and (r.get("texto") or "").strip()]
     pend.sort(key=lambda r: r.get("publicado_em", ""), reverse=True)  # mais recentes primeiro

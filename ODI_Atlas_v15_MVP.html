@@ -484,6 +484,25 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .odi-chat form button{border:1px solid #172238;background:#172238;color:#fff;font:700 11px 'Courier New',monospace;padding:0 10px;cursor:pointer}
 .odi-chat .nota{padding:0 12px 8px;font:10px 'Courier New',monospace;color:#5d6a76}
 @media print{.odi-chat-btn,.odi-chat{display:none!important}}
+/* Pontes entre públicos */
+#pontes{--yt-axis:#1b2a3d}
+#pontes .yc-block{margin-top:14px}
+#pontes .pt-chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+#pontes .pt-chips button{border:1px solid #172238;background:#fffdf8;color:#172238;font:700 11px 'Courier New',monospace;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;cursor:pointer}
+#pontes .pt-chips button[aria-pressed="true"]{background:#172238;color:#fff}
+#pontes .pt-big{font:700 44px/1 Georgia,'Times New Roman',serif;color:#172238}
+#pontes .pt-big small{font:400 15px Georgia,serif;color:#53606b;margin-left:6px}
+#pontes .pt-bar{display:flex;height:14px;min-width:120px;border:1px solid #c9d0d6}
+#pontes .pt-bar span{display:block;height:100%}
+#pontes .pt-leg{font:11px 'Courier New',monospace;color:#53606b}
+#pontes .pt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+#pontes .pt-mini{border-top:2px solid #172238;background:#fffdf8;padding:8px 10px}
+#pontes .pt-mini h3{margin:0 0 2px;font:700 14px Georgia,serif}
+#pontes .pt-mini p{margin:2px 0;font-size:11.5px;color:#53606b}
+#pontes .pt-mini svg{display:block;width:100%;height:auto}
+#pontes .pt-aviso{border-left:3px solid #297de2;background:#eef2f8;padding:10px 12px;font-size:13px;margin:10px 0}
+#pontes a{color:#1f5fae}
+@media (max-width:640px){#pontes .yt-stats{grid-template-columns:1fr}}
 </style>
 <style>
 /* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
@@ -1481,6 +1500,80 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card yc-block"><div class="eyebrow">IRaMuTeQ</div><h2 class="tk-h2">Corpus dos comentários</h2><p class="yt-cloudnote">Os corpora contêm o texto dos comentários e ficam só no repositório privado <code>odi-atlas-interno</code>: <code>facebook/comentarios/corpus_iramuteq_amostra.txt</code> (a mesma amostra da CHD acima, até 4.000 comentários por candidato, com variáveis <code>*cand_ *sem_ *tipo_</code>; tamanho adequado ao IRaMuTeQ num computador comum) e <code>corpus_iramuteq_comentarios.txt</code> (todos, com <code>*incv_ *intol_</code>). No IRaMuTeQ: Arquivo → Abrir um corpus → codificação UTF-8 → idioma português → Análise de texto → Método de Reinert. Compare as classes com as da CHD desta página.</p></div>
   <div class="card yc-block"><div class="eyebrow">Método</div><p class="yt-cloudnote" id="fcMetodo"></p><p class="yt-cloudnote"><a href="./data/facebook/comentarios/analise.json" download>↓ Agregados (JSON)</a> · <a href="./data/config/livro_codigos_intolerancia.json" download>↓ Livro de códigos de intolerância</a> · <a href="./data/facebook/comentarios/manifesto_latest.json" download>↓ Manifesto da coleta</a></p></div>
 </section>
+<section class="panel" id="pontes" aria-label="Caderno 04 Pontes entre públicos">
+  <div class="paper-ribbon"><span>CADERNO 04 / PONTES ENTRE PÚBLICOS</span><span>DESDE 20 JUL 2026 · SÓ AGREGADOS</span></div>
+  <div class="intro odi-map-hero"><div class="eyebrow">Comentários e respostas públicas · YouTube, X e Facebook</div>
+    <h1>Quem atravessa a bolha.<br><em>Contas-ponte, respostas entre públicos e temas que circulam.</em></h1>
+    <p>Quem comenta nos conteúdos de <span style="color:#c8102e;font-weight:700">Lula</span> e também nos de <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>, quando o público frequente de um responde ao do outro, quais conteúdos atraem o público do adversário e quais temas aparecem nos dois lados, e quem chega primeiro a eles.</p>
+  </div>
+  <div class="pt-aviso"><strong>Como ler.</strong> "Público frequente" de um candidato é quem fez pelo menos 2 comentários no período, 2/3 deles nos conteúdos desse candidato. Isso descreve um <em>comportamento na plataforma</em>, não a orientação política de ninguém: comentar no canal do adversário pode ser para apoiar, discordar ou atacar, e uma interação não diz em quem a pessoa vota. Nenhum texto, nome ou identificador de quem comentou é publicado; tudo aqui é contagem.</div>
+  <div class="pt-chips" id="ptRede" role="group" aria-label="Rede"><button type="button" data-p="youtube" aria-pressed="true">YouTube</button><button type="button" data-p="x" aria-pressed="false">X</button><button type="button" data-p="facebook" aria-pressed="false">Facebook</button></div>
+  <div class="odi-signal" id="ptStatus" role="status">Aguardando leitura.</div>
+  <div class="yt-stats" id="ptStats"></div>
+  <div class="card yc-block"><div class="eyebrow">1 · Contas-ponte</div><h2 class="tk-h2">Quantos comentaristas aparecem dos dois lados</h2><div id="ptPonte"></div><div class="tk-tlwrap"><svg id="ptPonteSem" role="img" aria-label="Contas-ponte por semana"></svg></div><p class="yt-cloudnote">Barras: % dos autores da semana que comentaram nos conteúdos dos dois candidatos naquela mesma semana.</p></div>
+  <div class="card yc-block"><div class="eyebrow">Tom · modelo de sentimento do Atlas</div><h2 class="tk-h2">Em que tom as contas-ponte e o público do adversário comentam</h2><div id="ptTom"></div></div>
+  <div class="card yc-block"><div class="eyebrow">2 · Respostas entre públicos</div><h2 class="tk-h2">Quando o público de um responde ao público do outro</h2><div id="ptResp"></div></div>
+  <div class="card yc-block"><div class="eyebrow">3 · Conteúdos que furam bolha</div><h2 class="tk-h2">Quais conteúdos atraem o público frequente do adversário</h2><div id="ptFura"></div></div>
+  <div class="card yc-block"><div class="eyebrow">4 · Temas que circulam · todas as redes</div><h2 class="tk-h2">O mesmo tema nos dois lados, semana a semana</h2>
+    <div class="pt-chips" id="ptTemaFonte" role="group" aria-label="Fonte dos temas"></div>
+    <div id="ptTemasResumo"></div><div class="pt-grid" id="ptTemas"></div>
+    <p class="yt-cloudnote" id="ptTemasNota"></p></div>
+  <div class="card yc-block"><div class="eyebrow">Método e limites</div><div id="ptMetodo" class="yt-cloudnote"></div>
+    <p class="yt-cloudnote"><a href="./data/pontes/youtube.json" download>↓ YouTube (JSON)</a> · <a href="./data/pontes/x.json" download>↓ X (JSON)</a> · <a href="./data/pontes/facebook.json" download>↓ Facebook (JSON)</a> · <a href="./data/pontes/temas.json" download>↓ Temas que circulam (JSON)</a></p></div>
+</section>
+<script>
+/* Pontes entre públicos: lê data/pontes/*.json (agregados) */
+(function(){const $=id=>document.getElementById(id);const sec=$('pontes');if(!sec)return;
+const C={Lula:'#c8102e','Flávio Bolsonaro':'#1f8a3b'};const NOME=['Lula','Flávio Bolsonaro'];
+const TEMA={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional'};
+const REDE={youtube:'YouTube',tiktok:'TikTok',kwai:'Kwai',facebook:'Facebook',x:'X'};
+const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const pc=n=>n==null?'—':String(n).replace('.',',')+'%';
+const dd=iso=>iso?iso.slice(8,10)+'/'+iso.slice(5,7):'—';
+const FASE={pre:'Pré-campanha',turno1:'1º turno',turno2:'2º turno'};
+let cache={},rede='youtube',temas=null,fonteTema='todas';
+async function ler(u){if(cache[u])return cache[u];const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return cache[u]=await r.json();}
+function barra(t){if(!t)return '<span class="pt-leg">sem rótulos de tom</span>';return `<div class="pt-bar" title="positivo ${pc(t.positivo)} · neutro ${pc(t.neutro)} · negativo ${pc(t.negativo)}"><span style="width:${t.positivo}%;background:#297de2"></span><span style="width:${t.neutro}%;background:#c9d0d6"></span><span style="width:${t.negativo}%;background:#b3261e"></span></div><span class="pt-leg">${pc(t.positivo)} pos · ${pc(t.neutro)} neu · ${pc(t.negativo)} neg · n=${fmt(t.n)}</span>`;}
+function barrasSemana(svg,ps){const ks=Object.keys(ps);const W=720,H=170,pl=36,pb=26,pt=10;const mx=Math.max(1,...ks.map(k=>ps[k].pct||0));const bw=(W-pl-10)/Math.max(1,ks.length);
+ let g=`<line x1="${pl}" y1="${H-pb}" x2="${W-6}" y2="${H-pb}" stroke="#53606b"/>`;[0,mx/2,mx].forEach(v=>{const y=H-pb-(H-pb-pt)*v/mx;g+=`<text x="${pl-4}" y="${y+3}" text-anchor="end" font-size="10" fill="#53606b">${v.toFixed(1).replace('.',',')}%</text><line x1="${pl}" x2="${W-6}" y1="${y}" y2="${y}" stroke="#e3e6e8"/>`;});
+ ks.forEach((k,i)=>{const v=ps[k].pct||0,h=(H-pb-pt)*v/mx,x=pl+i*bw+2;g+=`<rect x="${x}" y="${H-pb-h}" width="${Math.max(2,bw-4)}" height="${h}" fill="#172238"><title>semana de ${dd(k)}: ${pc(ps[k].pct)} (${fmt(ps[k].contas_ponte)} de ${fmt(ps[k].autores)} autores)</title></rect>`;if(i%2===0)g+=`<text x="${x+bw/2-2}" y="${H-8}" text-anchor="middle" font-size="10" fill="#53606b">${dd(k)}</text>`;});
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML=g;}
+function linhas(serie,semanas){const W=260,H=90,p=6;const vals=[...serie.Lula,...serie['Flávio Bolsonaro']].filter(v=>v!=null);const mx=Math.max(10,...vals);const x=i=>p+(W-2*p)*i/Math.max(1,semanas.length-1),y=v=>H-p-(H-2*p)*v/mx;
+ let g=`<line x1="${p}" x2="${W-p}" y1="${H-p}" y2="${H-p}" stroke="#c9d0d6"/><text x="${W-p}" y="${p+8}" text-anchor="end" font-size="9" fill="#53606b">máx ${Math.round(mx)}%</text>`;
+ for(const n of NOME){let d='',on=false;serie[n].forEach((v,i)=>{if(v==null){on=false;return;}d+=(on?'L':'M')+x(i).toFixed(1)+','+y(v).toFixed(1);on=true;});g+=`<path d="${d}" fill="none" stroke="${C[n]}" stroke-width="1.8"/>`;}
+ return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Série semanal">${g}</svg>`;}
+async function carregarRede(){try{const d=await ler(`./data/pontes/${rede}.json`);
+ if(d.status!=='ok'){$('ptStatus').textContent=d.status||'⛔ sem dados';['ptStats','ptPonte','ptTom','ptResp','ptFura'].forEach(i=>$(i).innerHTML='');$('ptPonteSem').innerHTML='';return;}
+ const notas={youtube:'YouTube: comentários coletados desde 16/08 (relevância + recentes, com respostas).',x:'X: amostra de respostas a @LulaOficial e @FlavioBolsonaro, igual por candidato e por dia (as mais recentes de cada dia). As respostas do X não trazem a árvore completa, então não há "respostas entre públicos".',facebook:'Facebook: amostra de comentários dos posts das páginas declaradas, sem respostas; a amostra é pequena para medir pontes.'};
+ $('ptStatus').textContent=`${REDE[rede]} · ${fmt(d.comentarios)} ${rede==='x'?'respostas':'comentários'} de ${fmt(d.autores)} autores, de ${d.periodo?dd(d.periodo.de)+'/'+d.periodo.de.slice(0,4):'—'} a ${d.periodo?dd(d.periodo.ate)+'/'+d.periodo.ate.slice(0,4):'—'} · ${notas[rede]}`;
+ $('ptStats').innerHTML=NOME.map(n=>`<div class="yt-statcard" style="--yt-axis:${C[n]}"><h3 style="color:${C[n]}">${n}</h3><div class="yt-nums"><span><b>${fmt(d.publico_frequente[n])}</b>público frequente</span><span><b>${pc(d.conteudos_que_furam_bolha[n].media_pct)}</b>média de público do adversário por conteúdo</span><span><b>${fmt(d.conteudos_que_furam_bolha[n].itens_avaliados)}</b>conteúdos avaliados</span></div></div>`).join('');
+ const cp=d.contas_ponte;$('ptPonte').innerHTML=`<p><span class="pt-big">${fmt(cp.autores)}<small>contas-ponte · ${pc(cp.pct_autores)} dos ${fmt(d.autores)} autores</small></span></p><div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th>Fase</th><th>Autores</th><th>Contas-ponte na fase</th><th>%</th></tr></thead><tbody>${Object.entries(d.por_fase).map(([k,v])=>`<tr><td>${FASE[k]||k}</td><td>${fmt(v.autores)}</td><td>${fmt(v.contas_ponte)}</td><td>${v.autores<30?'<span class="pt-leg">poucos autores</span>':pc(v.pct)}</td></tr>`).join('')}</tbody></table></div>`;
+ barrasSemana($('ptPonteSem'),d.por_semana);
+ $('ptTom').innerHTML=`<div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th>Nos conteúdos de</th><th>Contas-ponte</th><th>Público frequente do adversário</th><th>Próprio público</th><th>Todos</th></tr></thead><tbody>${NOME.map(n=>{const t=d.tom_por_lado[n];return `<tr><td style="color:${C[n]};font-weight:700">${n}</td><td>${barra(t.contas_ponte)}</td><td>${barra(t.publico_do_adversario)}</td><td>${barra(t.proprio_publico)}</td><td>${barra(t.todos)}</td></tr>`;}).join('')}</tbody></table></div><p class="yt-cloudnote">Azul: positivo · cinza: neutro · vermelho: negativo. Tom do comentário, não do autor.</p>`;
+ const r=d.respostas_entre_publicos;
+ $('ptResp').innerHTML=!r.disponivel?`<p class="yt-meta">⛔ Não disponível nesta rede: a coleta não traz respostas a outros comentários.</p>`:`<p><span class="pt-big">${fmt(r.entre_publicos_diferentes)}<small>de ${fmt(r.respostas_com_pai_no_acervo)} respostas (${pc(r.pct)}) ligam públicos frequentes diferentes</small></span></p><p class="yt-meta">Nos conteúdos de Lula: ${fmt(r.por_lado['Lula'])} · nos de Flávio: ${fmt(r.por_lado['Flávio Bolsonaro'])} · ${Object.entries(r.por_fase).map(([k,v])=>`${FASE[k]||k}: ${fmt(v)}`).join(' · ')}</p>
+ <div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th></th><th>Tom</th></tr></thead><tbody><tr><td>Respostas entre públicos</td><td>${barra(r.tom)}</td></tr><tr><td>Todas as respostas</td><td>${barra(r.tom_todas_respostas)}</td></tr></tbody></table></div>
+ <div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th>Tema (dicionário do Atlas)</th><th>% das respostas entre públicos</th><th>% de todas as respostas</th></tr></thead><tbody>${Object.keys(TEMA).filter(k=>r.temas[k]||r.temas_todas_respostas[k]).sort((a,b)=>((r.temas[b]||{}).pct||0)-((r.temas[a]||{}).pct||0)).map(k=>`<tr><td>${TEMA[k]}</td><td>${r.temas[k]?pc(r.temas[k].pct)+' ('+r.temas[k].n+')':'—'}</td><td>${r.temas_todas_respostas[k]?pc(r.temas_todas_respostas[k].pct):'—'}</td></tr>`).join('')}</tbody></table></div><p class="yt-cloudnote">Com ${fmt(r.entre_publicos_diferentes)} respostas, diferenças de 1 a 2 pontos entre temas não são conclusivas.</p>`;
+ $('ptFura').innerHTML=NOME.map(n=>{const f=d.conteudos_que_furam_bolha[n];return `<h3 style="font:700 16px Georgia,serif;color:${C[n]};margin:14px 0 4px">${n}</h3><p class="yt-meta">${fmt(f.itens_avaliados)} conteúdos com 30+ comentaristas de público definido · em ${pc(f.pct_itens_com_publico_adversario)} deles aparece pelo menos um comentarista do público frequente do adversário · média ${pc(f.media_pct)}.</p>
+ <div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th>Data</th><th>Conteúdo</th><th>Temas</th><th>% do público do adversário</th><th>Comentaristas com público</th></tr></thead><tbody>${f.top.map(x=>`<tr><td>${dd(x.data)}</td><td>${x.url?`<a href="${esc(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.titulo)}</a>`:esc(x.titulo)}</td><td>${x.temas.map(t=>TEMA[t]||t).join(', ')||'—'}</td><td><b>${pc(x.pct_publico_adversario)}</b> (${x.publico_adversario})</td><td>${fmt(x.comentaristas_com_publico)}</td></tr>`).join('')}</tbody></table></div>
+ ${Object.keys(f.por_tema).length?`<p class="yt-meta" style="margin-top:8px">Por tema (5+ conteúdos): ${Object.entries(f.por_tema).map(([t,v])=>`${TEMA[t]||t} ${pc(v.media_pct)} em média, ${pc(v.pct_itens_com_publico_adversario)} dos conteúdos`).join(' · ')}</p>`:''}`;}).join('')+'<p class="yt-cloudnote">Público do adversário: comentaristas cujo padrão no período é comentar mais (2/3+) nos conteúdos do outro candidato. Pode ser apoio, crítica ou ataque; o tom está no bloco acima.</p>';
+ const m=d.metodo;$('ptMetodo').innerHTML=`<p><b>Público frequente:</b> ${esc(m.publico_frequente)}.</p><p><b>Conta-ponte:</b> ${esc(m.conta_ponte)}.</p><p><b>Resposta entre públicos:</b> ${esc(m.resposta_entre_publicos)}.</p><p><b>Fura bolha:</b> ${esc(m.fura_bolha)}.</p><p><b>Tom:</b> ${esc(m.tom)}.</p><p>${notas[rede]} Gerado em ${esc(d.gerado_em_utc)}.</p>`;
+ }catch(e){$('ptStatus').textContent='⛔ Não foi possível ler '+rede+': '+e.message;}}
+async function carregarTemas(){try{temas=temas||await ler('./data/pontes/temas.json');
+ const fontes=[['todas','Conteúdo · todas as redes'],...Object.keys(temas.por_rede).map(k=>[k,'Conteúdo · '+REDE[k]]),...(temas.comentarios_youtube?[['coment','Comentários · YouTube']]:[])];
+ $('ptTemaFonte').innerHTML=fontes.map(([k,r])=>`<button type="button" data-f="${k}" aria-pressed="${k===fonteTema}">${r}</button>`).join('');
+ $('ptTemaFonte').querySelectorAll('button').forEach(b=>b.onclick=()=>{fonteTema=b.dataset.f;carregarTemas();});
+ const bloco=fonteTema==='todas'?temas.todas_as_redes:fonteTema==='coment'?temas.comentarios_youtube:temas.por_rede[fonteTema];
+ const ord=Object.entries(bloco.temas).sort((a,b)=>(b[1].picos_em_comum-a[1].picos_em_comum)||((b[1].correlacao??-2)-(a[1].correlacao??-2)));
+ const tot=ord.reduce((a,[,v])=>({l:a.l+v.lula_antes,f:a.f+v.flavio_antes,m:a.m+v.mesma_semana}),{l:0,f:0,m:0});
+ $('ptTemasResumo').innerHTML=`<p class="yt-meta">Picos de tema que aparecem nos dois lados em até 2 semanas: <b style="color:#c8102e">Lula chegou antes ${tot.l}×</b> · <b style="color:#1f8a3b">Flávio chegou antes ${tot.f}×</b> · mesma semana ${tot.m}×. Semanas de ${dd(temas.semanas[0])} a ${dd(temas.semanas[temas.semanas.length-1])} (a última ainda em curso).</p>`;
+ $('ptTemas').innerHTML=ord.map(([t,v])=>{const seq=v.picos.filter(p=>p.defasagem_semanas!=null);return `<div class="pt-mini"><h3>${TEMA[t]||t}</h3>${linhas(v.serie,temas.semanas)}<p>Média: <b style="color:#c8102e">${pc(v.media_lula)}</b> · <b style="color:#1f8a3b">${pc(v.media_flavio)}</b> dos ${fonteTema==='coment'?'comentários':'conteúdos'} · correlação ${v.correlacao==null?'—':String(v.correlacao).replace('.',',')}</p><p>${seq.length?seq.map(p=>p.primeiro==='mesma semana'?`pico junto em ${dd(p.semana_lula)}`:`${p.primeiro==='Lula'?'Lula':'Flávio'} antes: ${dd(p.primeiro==='Lula'?p.semana_lula:p.semana_flavio)} → ${dd(p.primeiro==='Lula'?p.semana_flavio:p.semana_lula)}`).join(' · '):'sem picos em comum'}</p></div>`;}).join('');
+ $('ptTemasNota').textContent=`Linhas: % dos ${fonteTema==='coment'?'comentários no espaço':'conteúdos'} de cada candidato na semana que tratam do tema (vermelho Lula, verde Flávio). ${temas.metodo.pico}. Quem chegou primeiro: ${temas.metodo.quem_primeiro}. Correlação: ${temas.metodo.correlacao}. Conteúdos desde 20/07: ${Object.entries(temas.itens_por_rede).map(([k,n])=>REDE[k]+' '+fmt(n)).join(' · ')}.`;
+ }catch(e){$('ptTemasResumo').textContent='⛔ Não foi possível ler os temas: '+e.message;}}
+$('ptRede').querySelectorAll('button').forEach(b=>b.onclick=()=>{rede=b.dataset.p;$('ptRede').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));carregarRede();});
+let feito=false;new MutationObserver(()=>{if(sec.classList.contains('active')&&!feito){feito=true;carregarRede();carregarTemas();}}).observe(sec,{attributes:true,attributeFilter:['class']});})();
+</script>
+
 
 <section class="panel" id="history">
 <div class="paper-ribbon"><span>CADERNO 03 &nbsp;/&nbsp; QUEM ACOMPANHA · EVOLUÇÃO NO TEMPO</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
@@ -1690,9 +1783,9 @@ function ytAplicarApi(f){
 }
 const janelaTxt=p=>p.api&&p.api.janela?`${p.api.janela.videos} vídeos · ${dataBR(p.api.janela.de.slice(0,10)).slice(0,5)}–${dataBR(p.api.janela.ate.slice(0,10)).slice(0,5)}`:'';
 let tab='overview';
-const GRUPOS={panorama:['overview'],campanhas:['ytContent','tkContent','kwContent','fbContent','twContent','adsLib'],audiencia:['followers','profiles','history','blade'],comentarios:['ytComments','kwComments','fbComments'],buscas:['gTrends'],territorio:['electorate','internet','reuters','scale'],metodo:['leiaMe','declarations']};
+const GRUPOS={panorama:['overview'],campanhas:['ytContent','tkContent','kwContent','fbContent','twContent','adsLib'],audiencia:['followers','profiles','history','blade'],comentarios:['ytComments','kwComments','fbComments','pontes'],buscas:['gTrends'],territorio:['electorate','internet','reuters','scale'],metodo:['leiaMe','declarations']};
 const GRUPO_DE=Object.fromEntries(Object.entries(GRUPOS).flatMap(([g,ids])=>ids.map(i=>[i,g])));
-const SUBROT={ytComments:'YouTube',kwComments:'Kwai',fbComments:'Facebook',ytContent:'YouTube',tkContent:'TikTok',kwContent:'Kwai',fbContent:'Facebook',twContent:'X',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
+const SUBROT={ytComments:'YouTube',kwComments:'Kwai',fbComments:'Facebook',pontes:'Pontes entre públicos',ytContent:'YouTube',tkContent:'TikTok',kwContent:'Kwai',fbContent:'Facebook',twContent:'X',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
 function setTab(t){if(!document.getElementById(t))return;tab=t;document.querySelectorAll('.navbutton').forEach(b=>b.classList.toggle('active',b.dataset.group===(GRUPO_DE[t]||t)));document.querySelectorAll('.subtabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tab===t)));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===t));window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.goto)));
 function save(filename,str,type){const blob=new Blob([str],{type:type||'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}function toCsv(head,rows){return '\ufeff'+[head.map(csvCell).join(';'),...rows.map(row=>row.map(csvCell).join(';'))].join('\n')}
