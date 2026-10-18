@@ -1,0 +1,40 @@
+name: Diagnóstico — formato das chaves Apify (sem mostrar valores)
+
+# Mostra só características do valor de cada segredo (tamanho, prefixo esperado, aspas, espaços, "="), nunca o valor.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Formato
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          APIFY_TOKEN_8: ${{ secrets.APIFY_TOKEN_8 }}
+          APIFY_TOKEN_9: ${{ secrets.APIFY_TOKEN_9 }}
+          APIFY_TOKEN_10: ${{ secrets.APIFY_TOKEN_10 }}
+          APIFY_TOKEN_11: ${{ secrets.APIFY_TOKEN_11 }}
+          APIFY_TOKEN_12: ${{ secrets.APIFY_TOKEN_12 }}
+        run: |
+          python3 - <<'PY'
+          import os, re
+          for n in ["APIFY_TOKEN"] + [f"APIFY_TOKEN_{i}" for i in range(2, 13)]:
+              v = os.environ.get(n, "")
+              if not v:
+                  print(f"::notice title={n}::ausente"); continue
+              s = v.strip()
+              print(f"::notice title={n}::tamanho {len(v)} (sem bordas {len(s)}) · começa com apify_api_: {s.startswith('apify_api_')} · "
+                    f"aspas: {any(c in s for c in chr(34)+chr(39))} · espaço/quebra no meio: {bool(re.search(r'\s', s))} · tem '=': {'=' in s} · "
+                    f"tem 'Bearer': {'bearer' in s.lower()} · só caracteres de chave: {bool(re.fullmatch(r'[A-Za-z0-9_]+', s))}")
+          PY

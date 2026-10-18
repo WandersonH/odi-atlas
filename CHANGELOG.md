@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.53 — Diagnóstico do formato das chaves Apify (2026-10-18) 🔜
+
+- 17h39: as contas 2 a 12 seguem com HTTP 401 (a 12 passou a existir e também é recusada); só a conta 1 responde (`data/apify/contas.json`). Como todas falham igual, o mais provável é o valor gravado, não as contas.
+- `diag-chaves-apify.yml`: mostra só características de cada segredo (tamanho, prefixo `apify_api_`, aspas, espaço ou quebra no meio, "=", "Bearer", caracteres válidos), nunca o valor. Sem custo.
+
 ## C19.52 — ⛔ Chaves Apify das contas 2 a 10 recusadas (2026-10-18)
 
 - Teste da coleta do cross (runs 39163386868 e seguinte): todas as chamadas à Apify voltaram HTTP 401 "user-or-token-not-found". Conferido no `apify-contas` às ~17h40: as contas 2 a 10 respondem 401 (às ~17h25 as contas 2 a 8 respondiam normalmente e 9 e 10 apareciam como segredo ausente; logo, os segredos foram trocados ou as chaves revogadas nesse intervalo). Só a conta 1 responde, e ela não é usada por pedido do usuário.
