@@ -50,8 +50,8 @@ def por_fase(vids: list[dict], fases: list[dict]) -> dict:
 
 def main(argv=None) -> int:
     argv = list(argv or [])
-    plat = "kwai" if "--kwai" in argv else "facebook" if "--facebook" in argv else "x" if "--x" in argv else "tiktok"  # mesmo formato de acervo e mesmas regras
-    argv = [a for a in argv if a not in ("--kwai", "--facebook", "--x")]
+    plat = "kwai" if "--kwai" in argv else "facebook" if "--facebook" in argv else "x" if "--x" in argv else "instagram" if "--instagram" in argv else "tiktok"  # mesmo formato de acervo e mesmas regras
+    argv = [a for a in argv if a not in ("--kwai", "--facebook", "--x", "--instagram")]
     root = Path(argv[0]) if argv else Path(".")
     desde = "" if plat == "kwai" else "2026-07-20"  # TikTok e Facebook: desde a pré-campanha  # Kwai: acervo histórico completo, com a data de cada post
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
@@ -79,6 +79,7 @@ def main(argv=None) -> int:
            "fonte": ("Kwai público via Apify (perfis declarados ao TSE pelas chapas 13 e 22)" if plat == "kwai"
                      else "Facebook público via Apify (páginas declaradas ao TSE pelas chapas 13 e 22)" if plat == "facebook"
                      else "X público via Apify (perfis declarados ao TSE pelas chapas 13 e 22)" if plat == "x"
+                     else "Instagram público via Apify (perfis declarados ao TSE pelas chapas 13 e 22)" if plat == "instagram"
                      else "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)"),
            "metodo": cfg["nota"] + f" Mesmas regras do caderno 02 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
            "temas": list(cfg["temas"]) + ["sem_tema"], "desde": desde or None, "candidatos": {}}

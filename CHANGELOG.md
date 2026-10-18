@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.27 — Instagram: coletor de posts das campanhas (2026-10-18) 🔜
+
+- Pedido do usuário (18/10, 02h21–02h24): página "o que as campanhas dizem" do Instagram, teto de US$ 5, numa das contas novas (conta 8, só para o Instagram).
+- Preços consultados na loja Apify (API pública `/v2/store` pelo workflow `teste-apify-loja` e páginas dos atores, 18/10, plano gratuito): esdrasdw/instagram-content-scraper US$ 0,05/1.000 itens; sones/instagram-posts-scraper-lowcost US$ 0,30/1.000 + US$ 0,005 por execução; apidojo/instagram-scraper US$ 0,50/1.000; apify/instagram-post-scraper US$ 1,70/1.000; apify/instagram-scraper US$ 2,70/1.000. Ordem de teste no `data/config/instagram_posts.json`.
+- `scripts/collect_instagram_posts.py` + `instagram-posts.yml`: perfis de Instagram das chapas 13 e 22 (presidente e vice; vice na chapa do titular), sem os 2 que não existem mais, desde 20/07; até 1.500 posts nos perfis principais e 400 nos demais; descarta itens de demonstração e fora do período. Mesmo formato de acervo das outras redes; `build_tiktok`, análises (`--plataforma instagram`), menções e miniaturas aceitam `--instagram`.
+- Testes: suíte OK (`test_instagram_posts`, dados simulados). Pendente: teste real de cada ator, carga e a página.
+
 ## C19.26 — Pontes entre públicos e temas que circulam (2026-10-18) ⚠️
 
 - Pedido do usuário (18/10, 02h00 e 02h07): na área de comentários, encontrar contas que interagem com os dois campos, respostas entre comunidades e circulação dos mesmos temas em espaços distintos, sem presumir orientação política individual por uma interação.

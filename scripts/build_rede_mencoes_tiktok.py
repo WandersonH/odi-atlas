@@ -101,10 +101,11 @@ def main(argv=None) -> int:
     kwai = "--kwai" in argv  # Kwai: mesmo formato de acervo, histórico completo
     face = "--facebook" in argv  # Facebook: mesmo formato de acervo, desde a pré-campanha
     xx = "--x" in argv  # X: idem
-    argv = [a for a in argv if a not in ("--kwai", "--facebook", "--x")]
+    ig = "--instagram" in argv  # Instagram: idem
+    argv = [a for a in argv if a not in ("--kwai", "--facebook", "--x", "--instagram")]
     root = Path(argv[0]) if argv else Path(".")
-    d = root / ("data/kwai" if kwai else "data/facebook" if face else "data/x" if xx else "data/tiktok")
-    nome, inicio = ("Kwai", "") if kwai else ("Facebook", INICIO) if face else ("X", INICIO) if xx else ("TikTok", INICIO)
+    d = root / ("data/kwai" if kwai else "data/facebook" if face else "data/x" if xx else "data/instagram" if ig else "data/tiktok")
+    nome, inicio = ("Kwai", "") if kwai else ("Facebook", INICIO) if face else ("X", INICIO) if xx else ("Instagram", INICIO) if ig else ("TikTok", INICIO)
     src = d / "videos.csv.gz"
     if not src.exists():
         print(f"⛔ sem acervo do {nome}")
@@ -135,7 +136,7 @@ def main(argv=None) -> int:
         w.writerow(["Id", "Label", "tipo", "candidato", "marcacoes_recebidas", "marcacoes_feitas", "frac_lula", "url", "x", "y"])
         for n, a in sorted(g.nodes(data=True)):
             w.writerow([n, "@" + n, a["tipo"], a.get("candidato", ""), a["marcacoes_recebidas"], a["marcacoes_feitas"],
-                        a.get("frac_lula", ""), (f"https://www.kwai.com/@{n}" if kwai else f"https://www.facebook.com/{n}" if face else f"https://x.com/{n}" if xx else f"https://www.tiktok.com/@{n}"), a.get("x"), a.get("y")])
+                        a.get("frac_lula", ""), (f"https://www.kwai.com/@{n}" if kwai else f"https://www.facebook.com/{n}" if face else f"https://x.com/{n}" if xx else f"https://www.instagram.com/{n}" if ig else f"https://www.tiktok.com/@{n}"), a.get("x"), a.get("y")])
     with open(d / "rede_mencoes_arestas.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Source", "Target", "Weight", "Type"])

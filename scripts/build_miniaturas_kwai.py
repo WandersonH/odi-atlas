@@ -31,8 +31,8 @@ def selecionar(rows: list[dict], desde: str, top: int) -> list[dict]:
 
 def main(argv=None, baixar=None) -> int:
     argv = list(argv or [])
-    plat = "facebook" if "--facebook" in argv else "x" if "--x" in argv else "kwai"  # Facebook e X: mesmas regras, imagem do post
-    argv = [a for a in argv if a not in ("--facebook", "--x")]
+    plat = "facebook" if "--facebook" in argv else "x" if "--x" in argv else "instagram" if "--instagram" in argv else "kwai"  # Facebook e X: mesmas regras, imagem do post
+    argv = [a for a in argv if a not in ("--facebook", "--x", "--instagram")]
     root = Path(argv[0]) if argv else Path(".")
     cfg = json.loads((root / "data/config/kwai.json").read_text(encoding="utf-8"))["miniaturas"]
     src = root / f"data/{plat}/videos.csv.gz"

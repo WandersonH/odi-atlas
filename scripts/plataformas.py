@@ -39,8 +39,9 @@ CAMINHOS["facebook"] = {"populismo": "data/facebook/populismo.json",
                          "amostra": "data/codificacao/amostra_populismo_facebook_v1.csv",
                          "rede": "data/facebook/rede"}
 CAMINHOS["x"] = {k: v.replace("facebook", "x") for k, v in CAMINHOS["facebook"].items()}
+CAMINHOS["instagram"] = {k: v.replace("facebook", "instagram") for k, v in CAMINHOS["facebook"].items()}
 # Kwai: acervo histórico completo (pedido de 17/10/2026), sem corte de data; TikTok: desde o início da campanha
-INICIO_POR_PLATAFORMA = {"tiktok": INICIO_CAMPANHA, "kwai": "", "facebook": INICIO_CAMPANHA, "x": INICIO_CAMPANHA}
+INICIO_POR_PLATAFORMA = {"tiktok": INICIO_CAMPANHA, "kwai": "", "facebook": INICIO_CAMPANHA, "x": INICIO_CAMPANHA, "instagram": INICIO_CAMPANHA}
 
 
 def args(argv) -> tuple[Path, str]:
