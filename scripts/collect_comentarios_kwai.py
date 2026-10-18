@@ -201,7 +201,7 @@ def main(argv=None, executar=None) -> int:
             todos_c = [v for v in videos if v["candidate_id"] == cid]
             pv = max(cfg["min_comentarios_por_video"], min(cfg["max_comentarios_por_video"], cfg["cota_comentarios_por_candidato"] // max(1, len(todos_c))))
             lotes.append(([v for v in pendentes if v["candidate_id"] == cid], pv))
-    novas, alvo_total = [], 0
+    novas, alvo_total, limite_gratis = [], 0, None
     fmt = cfg.get("url_video") or "{url}"
     for alvo_c, por_video in lotes:
         alvo, est = [], p["inicio"]
@@ -235,6 +235,9 @@ def main(argv=None, executar=None) -> int:
                 continue
             itens = itens or []
             brutos += itens
+            lim = next((x for x in itens if x.get("limitReached")), None)
+            if lim:  # resposta do ator quando a conta gratuita esgota as execuções permitidas
+                limite_gratis = lim.get("freeRunsLimit") or True
             lin = [l for x in itens if e_comentario(x) and video_do_comentario(x) == v["video_id"] for l in linhas(x, v, agora)]
             n_c = sum(1 for x in itens if e_comentario(x))
             custo = max(custo_run(run) or 0, round(p["inicio"] + p["comentario"] * n_c, 5))
@@ -270,6 +273,9 @@ def main(argv=None, executar=None) -> int:
     man.update(custo_usd=round(gasto, 4), comentarios_novos=n_coment, respostas_novas=len(novas) - n_coment, comentarios_no_acervo=len(todos),
                comentarios_por_candidato=por_cand, videos_com_comentarios=len({r["video_id"] for r in todos}))
     print(f"{n_coment} comentários e {len(novas) - n_coment} respostas novos · acervo {len(todos)} {por_cand} · custo US$ {round(gasto, 4)} · teto {teto}")
+    if limite_gratis:
+        return fim(f"⛔ o ator só permite {limite_gratis} execuções gratuitas por conta e o limite foi atingido; comentários novos nesta execução: {n_coment}. "
+                   "Para continuar, a conta precisa de plano pago na Apify (ou outro coletor).", 0 if novas else 1)
     return fim("ok" if novas else "⛔ nenhum comentário lido", 0 if novas else 1)
 
 

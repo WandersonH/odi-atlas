@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.11 — Comentários do Kwai: limite gratuito do ator; página no ar com aviso de desequilíbrio (2026-10-17) ⚠️
+
+- Carga por vídeo (run 39082082015): 67 vídeos de Lula × até 25 → **625 comentários**; os 70 de Flávio voltaram vazios. Re-execução (run 39082275709, com status de cada execução): 112 execuções SUCCEEDED, todas com a mesma resposta do ator — "You have used all 25 free runs for this Actor" (`limitReached`, `freeRunsLimit` 25). O zen-studio/kwai-comments-scraper só permite 25 execuções gratuitas por conta e, nessa conta, lê só o 1º vídeo de cada execução. O coletor passa a reconhecer essa resposta e a registrar o motivo no manifesto.
+- Acervo de comentários do Kwai (privado): **678** — Lula 650 (26 vídeos, 570 autores), Flávio 28 (2 vídeos, 25 autores). Agregados em `data/kwai/comentarios/analise.json`; rede de termos com 2 nós (amostra pequena); CHD sem classes (poucos comentários longos).
+- Gasto registrado: US$ 0,81 pela tabela de preços (estimativa conservadora); a Apify informou 0 eventos `comment-result` cobrados. Não usei outras contas para contornar o limite gratuito do ator.
+- Página "Comentários · Kwai": no ar, com aviso de amostra desequilibrada ("não compare os dois lados") quando um candidato tem menos de 25% dos comentários do outro. Chromium 1300 e 390 px sem erro de JavaScript (só o 404 do sentimento, ainda não calculado) e sem rolagem horizontal.
+- Pendente: comentários de Flávio (exige plano pago na conta da Apify ou outro coletor); sentimento do Kwai (workflow `sentimento-youtube.yml` disparado).
+
 ## C18.10 — Comentários do Kwai: uma execução por vídeo (2026-10-17) 🔜
 
 - Run `--videos-lula` (39081858562, US$ 0,1001): o ator devolveu 50 vídeos de @Lulaoficial (o máximo que entregou, de 02/10 a 17/10), juntados ao acervo; capas (+50), temas e análises refeitos. Lula passa a 365 vídeos no Kwai (2 perfis, 24.053.656 visualizações).
