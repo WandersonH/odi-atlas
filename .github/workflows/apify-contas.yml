@@ -1,0 +1,36 @@
+name: Apify — verificação das contas (só leitura, sem custo)
+
+# Plano, uso do mês e limite de cada conta (APIFY_TOKEN, APIFY_TOKEN_2 … _7). Nada que identifique a conta é gravado.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "5 12 * * *"   # todo dia, 09h05 em Brasília
+
+permissions:
+  contents: write
+
+jobs:
+  contas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verificar
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+        run: |
+          python scripts/verificar_contas_apify.py > c.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Apify contas::$(echo "$l" | cut -c1-400)"; done < c.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: scripts/commit_push.sh "Apify: verificação das contas (run ${{ github.run_id }})"
