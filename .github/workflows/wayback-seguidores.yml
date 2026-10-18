@@ -1,0 +1,32 @@
+name: Seguidores retroativos — Internet Archive (grátis, todas as chapas do 1º turno)
+
+# Número de seguidores nas capturas arquivadas das páginas de perfil (até 1 por mês desde 01/2026). Sem custo.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: wayback-seguidores
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  wayback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar
+        continue-on-error: true
+        run: |
+          python scripts/collect_wayback_seguidores.py > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Wayback::$(echo "$l" | cut -c1-600)"; done < f.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Seguidores retroativos pelo Internet Archive (run ${{ github.run_id }})"

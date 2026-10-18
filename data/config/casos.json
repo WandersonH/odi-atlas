@@ -1,0 +1,124 @@
+{
+ "autorizacao": "Usuário em 18/10/2026: \"Implemente a página de casos\"; teto escolhido para o caso 1: US$ 3 (\"Caso 1 completo; os casos 2 a 4 entram como dossiê com o que já temos, até você confirmar as datas\"). Contas dos outros pesquisadores; a conta 1 não é usada.",
+ "teto_teste_usd": 0.05,
+ "segredos": [
+  "APIFY_TOKEN_6",
+  "APIFY_TOKEN_7",
+  "APIFY_TOKEN_5",
+  "APIFY_TOKEN_4",
+  "APIFY_TOKEN_9",
+  "APIFY_TOKEN_10",
+  "APIFY_TOKEN_11",
+  "APIFY_TOKEN_12",
+  "APIFY_TOKEN_13",
+  "APIFY_TOKEN_14",
+  "APIFY_TOKEN_15"
+ ],
+ "precos_usd": {
+  "xquik~x-tweet-scraper": {
+   "item": 0.00015,
+   "fonte": "README do ator: US$ 0,00015 por linha (ver data/config/x_posts.json)"
+  },
+  "apidojo~instagram-hashtag-scraper": {
+   "item": 0.0004,
+   "consulta": 0.016,
+   "fonte": "loja Apify (/v2/store, run 39130885845 de 18/10/2026): keyword-query US$ 0,016 + dataset-item US$ 0,0004"
+  },
+  "esdrasdw~instagram-content-scraper": {
+   "item": 5e-05,
+   "fonte": "loja Apify, 18/10/2026: US$ 0,05 por 1.000 itens"
+  },
+  "scrapeforge~facebook-search-posts": {
+   "item": 0.00259,
+   "consulta": 5e-05,
+   "fonte": "loja Apify (/v2/store, run 39130885845 de 18/10/2026): US$ 0,00259 por item + US$ 0,00005 por início"
+  },
+  "unfenced-group~kwai-scraper": {
+   "item": 0.002,
+   "fonte": "página do ator, 17/10/2026: US$ 1,99 por 1.000 itens com detalhe"
+  }
+ },
+ "min_seguidores_publico": 10000,
+ "casos": [
+  {
+   "id": "001",
+   "slug": "brasilinteiro",
+   "titulo": "#brasilinteiro e @verdeeamarelo",
+   "tipo": "movimento",
+   "rotulo_tipo": "em análise",
+   "descricao": "Hashtag e perfil indicados pela equipe como movimento de apoio a Lula. O dossiê acompanha de onde partiu, quem amplificou e quanto circulou em cada rede, a partir do que a coleta encontrar (marco zero = primeira publicação localizada).",
+   "coletar": true,
+   "desde": "2026-10-16",
+   "hashtags": [
+    "brasilinteiro",
+    "verdeeamarelo"
+   ],
+   "mencoes_x": [
+    "verdeeamarelo"
+   ],
+   "perfis_instagram": [
+    "verdeeamarelo"
+   ],
+   "termos_trends": [
+    "brasil inteiro",
+    "verde e amarelo"
+   ],
+   "termos_noticias": [
+    "\"brasil inteiro\" Lula",
+    "#brasilinteiro",
+    "\"verde e amarelo\" Lula"
+   ],
+   "rolagens_tiktok": 25,
+   "maximo_por_termo": 2000,
+   "teto_usd": {
+    "x": 0.8,
+    "instagram": 0.75,
+    "facebook": 0.8,
+    "kwai": 0.5
+   },
+   "aviso_termos": "#verdeeamarelo é hashtag antiga e genérica (usada também por apoiadores de Bolsonaro desde 2018); por isso cada publicação guarda o termo que a trouxe e a página separa os dois."
+  },
+  {
+   "id": "002",
+   "slug": "onde-nasceu-ladrao",
+   "titulo": "\"Onde nasceu ladrão\"",
+   "tipo": "desinformação",
+   "rotulo_tipo": "desinformação",
+   "coletar": false,
+   "descricao": "Busca por voz e texto. Aguardando a equipe confirmar datas e termos antes de qualquer coleta paga.",
+   "redes_previstas": [
+    "Google",
+    "YouTube",
+    "TikTok"
+   ]
+  },
+  {
+   "id": "003",
+   "slug": "ninguem-morre-nos-devendo",
+   "titulo": "\"Ninguém morre nos devendo\"",
+   "tipo": "fala",
+   "rotulo_tipo": "fala",
+   "coletar": false,
+   "descricao": "Fala. Data a confirmar pela equipe antes de qualquer coleta paga.",
+   "redes_previstas": [
+    "todas as redes",
+    "imprensa"
+   ]
+  },
+  {
+   "id": "004",
+   "slug": "flamengo-bets",
+   "titulo": "Flamengo e a proibição das bets",
+   "tipo": "esporte × política",
+   "rotulo_tipo": "esporte × política",
+   "coletar": false,
+   "descricao": "Protesto, janela indicada de 07 a 12/10/2026. Coleta paga não autorizada ainda (o teto aprovado em 18/10 cobre só o caso 1).",
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "imprensa"
+   ],
+   "janela_indicada": "2026-10-07 a 2026-10-12"
+  }
+ ]
+}

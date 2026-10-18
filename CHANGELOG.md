@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.45 — Casos e análises: coleta por hashtag e termo; seguidores pelo Internet Archive (2026-10-18) 🔜
+
+- Pedido do usuário (18/10, 04h33): "Implemente a página de casos"; teto do caso 1 escolhido: US$ 3 ("caso 1 completo; os casos 2 a 4 entram como dossiê com o que já temos, até você confirmar as datas").
+- `collect_casos.py` + `casos.yml`, configuração em `data/config/casos.json` (4 casos; só o 001 com `coletar: true`). Caso 001: #brasilinteiro, #verdeeamarelo, @verdeeamarelo, desde 16/10. TikTok pela página pública da hashtag (Playwright, grátis); X pelo xquik (hashtags e "@verdeeamarelo OR from:verdeeamarelo"); Instagram pelo apidojo/instagram-hashtag-scraper (página da hashtag) e esdrasdw (perfil @verdeeamarelo); Facebook pelo scrapeforge/facebook-search-posts; Kwai pelo feed da hashtag; Google Trends (por hora, 7 dias) e Google Notícias (RSS). Preços da loja Apify lidos no run 39130885845 (18/10); tetos por rede X 0,80 · Instagram 0,75 · Facebook 0,80 · Kwai 0,50 (= 2,85); itens por termo saem do teto (X 1.688, Instagram 800, Facebook 146, Kwai 118).
+  - Aviso registrado no caso: #verdeeamarelo é hashtag antiga e genérica; cada publicação guarda o termo que a trouxe e a página separa os dois.
+- `build_casos.py` → `data/casos/indice.json` e `data/casos/<id>/caso.json` (números por rede e termo, série por hora em horário de Brasília, pico e meia-vida, marco zero geral/por rede/por termo, primeiros e maiores, galeria, palavras, Google, desenho da rede, método) + `rede.gexf` e CSVs para o Gephi. Privacidade: publicações de qualquer pessoa; arquivo completo só no privado; conta com menos de 10 mil seguidores e sem selo aparece como código, sem texto nem link; perfis declarados ao TSE identificados. Tom da audiência ⛔ (o caso não coleta comentários). O custo da coleta não vai para a página.
+- `collect_wayback_seguidores.py` + `wayback-seguidores.yml` (grátis): número de seguidores nas capturas do Internet Archive (até 1 por mês desde 01/2026), com o link de cada captura; perfis de todas as chapas do 1º turno.
+- Social Blade na carga de 18/10 (run 39130851181): 602 pontos; 31 dias para 9 perfis de TikTok e 10 de YouTube; 13 perfis de TikTok com 1 ponto só (o Social Blade não tem histórico deles); erro em 5 perfis (alfredogasparoficial, 3 canais do YouTube de apoio e o de Gilberto Kassab). @eduardogiraooficial (TikTok) veio com série de 10/10 a 16/12/2024: o Social Blade parou de atualizar esse perfil — não é dado de 2026.
+- Coleta das demais chapas (run 39130849798, teste): 10 posts por rede lidos em TikTok, Instagram, Facebook, X e Kwai. Carga disparada em seguida.
+- Testes: `tests/test_casos.py` (pedidos e normalização; coleta simulada → agregados: marco zero anonimizado, perfil do TSE identificado, sem custo no JSON público, estado dos casos 2–4) e Wayback em `tests/test_primeiro_turno.py`; suíte completa OK. Pendente: execuções no Actions e a página.
+
 ## C19.44 — Todas as chapas do 1º turno e vices; seguidores retroativos para todos (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 04h33): "colete todos dados de rede dos candidatos do 1º turno e vices" e "você consegue coletar seguidor retroativo?". Tetos escolhidos pelo usuário: US$ 6 para as publicações; "use até $5" para os seguidores retroativos. Contas dos outros pesquisadores (a conta 1 não é usada; a 8 fica com o Instagram).

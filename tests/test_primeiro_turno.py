@@ -86,3 +86,29 @@ class TestPrimeiroTurno(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestWayback(unittest.TestCase):
+    def test_extrair(self):
+        import collect_wayback_seguidores as wb
+        self.assertEqual(wb.extrair("tiktok", '{"followerCount":12345,"x":1}'), 12345)
+        self.assertEqual(wb.extrair("youtube", '"subscriberCountText":{"simpleText":"1,2 mi de inscritos"}'), 1200000)
+        self.assertEqual(wb.extrair("instagram", '<meta property="og:description" content="1M Followers, 10 Following, 300 Posts">'), 1000000)
+        self.assertIsNone(wb.extrair("x", "<html>sem número</html>"))
+        self.assertEqual(wb.endereco("tiktok", "https://www.tiktok.com/@LulaOficial?x=1"), "tiktok.com/@lulaoficial")
+
+    def test_main(self):
+        import collect_wayback_seguidores as wb
+        with tempfile.TemporaryDirectory() as t:
+            for d in ("data/tse", "data/config"):
+                (Path(t) / d).mkdir(parents=True)
+            shutil.copy(RAIZ / "data/tse/redes_sociais_candidatos_2026.csv.gz", Path(t) / "data/tse/")
+            shutil.copy(RAIZ / "data/elections.json", Path(t) / "data/")
+            get = lambda u: [["timestamp", "original"], ["20260315120000", "https://www.tiktok.com/@x"]] if "tiktok" in u else []  # noqa: E731
+            wb.time.sleep = lambda s: None
+            wb.main([t], get=get, pagina=lambda u: '"followerCount":777')
+            with open(Path(t) / "data/seguidores/wayback_historico.csv", encoding="utf-8") as f:
+                rows = list(csv.DictReader(f, delimiter=";"))
+        self.assertTrue(rows)
+        self.assertEqual((rows[0]["data"], rows[0]["seguidores"]), ("2026-03-15", "777"))
+        self.assertTrue(rows[0]["captura"].startswith("https://web.archive.org/web/20260315120000/"))
