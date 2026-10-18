@@ -1,0 +1,43 @@
+{
+ "schema_version": 2,
+ "gerado_em_utc": "2026-10-18T07:49:39Z",
+ "status": "TESTE v2 · NÃO VALIDADO",
+ "aviso": "Classificação automática sem treino, com o contexto do conteúdo; ainda sem codificação humana. Não usar como resultado.",
+ "modelo": "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+ "limiar": 0.6,
+ "hipoteses": {
+  "favor": "Quem escreveu este comentário apoia {}.",
+  "contra": "Quem escreveu este comentário critica {}."
+ },
+ "premissa": "Comentário publicado {num vídeo do canal de | em resposta a uma postagem de} <dono>: \"<texto sem links e menções>\"",
+ "semente": 42,
+ "codificacao": {
+  "itens": 200,
+  "arquivo_privado": "posicao/codificacao_posicao_v2.csv"
+ },
+ "distribuicao": {
+  "youtube · conteúdo de Lula · posição sobre Lula": {
+   "n": 200,
+   "contra": 143,
+   "favor": 52,
+   "sem conteúdo": 5
+  },
+  "youtube · conteúdo de Flávio Bolsonaro · posição sobre Flávio Bolsonaro": {
+   "n": 200,
+   "favor": 59,
+   "contra": 136,
+   "sem conteúdo": 5
+  },
+  "x · conteúdo de Lula · posição sobre Lula": {
+   "n": 100,
+   "contra": 77,
+   "sem conteúdo": 20,
+   "favor": 3
+  },
+  "x · conteúdo de Flávio Bolsonaro · posição sobre Flávio Bolsonaro": {
+   "n": 100,
+   "contra": 78,
+   "sem conteúdo": 22
+  }
+ }
+}
