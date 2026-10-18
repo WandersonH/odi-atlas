@@ -4,10 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C18.12 — Comentários do Kwai: teto de US$ 5 e teste com o natanielsantos por vídeo único (2026-10-17) 🔜
+## C18.12 — Comentários do Kwai: teto de US$ 5 e teste com o natanielsantos por vídeo único (2026-10-17) ⛔ (sem coletor gratuito para o restante)
 
 - Pedido do usuário (21h24): "colete tudo que conseguir com até 5 dólares" — teto total dos comentários do Kwai passa a US$ 5.
 - O zen-studio está bloqueado pelo limite de 25 execuções gratuitas da conta; não uso outras contas para contornar. Modos novos: `teste-nataniel` (1 vídeo × 20 comentários pelo natanielsantos/kwai-scraper, que no teste 1 não trouxe comentários com vários vídeos) e `carga-nataniel` (todos os pendentes numa execução por candidato).
+- Resultado do `teste-nataniel` (run 39082754047, US$ 0,0021): 1 vídeo, **0 comentários** (eventos `comment`: 0). O natanielsantos/kwai-scraper não entrega comentários nesta conta. Sem plano pago na Apify, não há como coletar mais comentários do Kwai; o acervo fica em 678 (Lula 650, Flávio 28). Gasto acumulado registrado: US$ 0,81.
 - Testes: suíte OK.
 
 ## C18.11 — Comentários do Kwai: limite gratuito do ator; página no ar com aviso de desequilíbrio (2026-10-17) ⚠️
