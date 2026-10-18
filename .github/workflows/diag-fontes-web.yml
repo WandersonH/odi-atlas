@@ -1,0 +1,25 @@
+name: Diagnóstico — fontes web (trends24, Social Blade; só leitura, grátis)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Testar acesso
+        run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          for u in "https://trends24.in/brazil/" "https://getdaytrends.com/brazil/" "https://socialblade.com/instagram/user/lulaoficial" "https://socialblade.com/twitter/user/lulaoficial" "https://socialblade.com/tiktok/user/lulaoficial" "https://socialblade.com/youtube/handle/lula"; do
+            code=$(curl -sL -A "$UA" -o p.html -w "%{http_code}" "$u"); n=$(wc -c < p.html)
+            t=$(python3 -c "import re;s=open('p.html',errors='ignore').read();m=re.search(r'<title>(.*?)</title>',s,re.S);print((m.group(1) if m else '').strip()[:80])")
+            k=$(python3 -c "import re;s=open('p.html',errors='ignore').read();print(len(re.findall(r'trend-name|trend-card|followers|Followers',s)))")
+            echo "::notice title=$u::HTTP $code · $n bytes · título: $t · marcadores: $k"
+          done
+          curl -sL -A "$UA" "https://trends24.in/brazil/" | python3 -c "
+          import sys,re;s=sys.stdin.read()
+          print('::notice title=trends24 amostra::'+' | '.join(re.findall(r'<a href=\"https://twitter.com/search\?q=[^\"]+\"[^>]*>([^<]+)</a>',s)[:25]))"
