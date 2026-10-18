@@ -263,7 +263,12 @@ def paga(rede: str, caso: dict, cfg: dict, pasta: Path, teste: bool, agora: str,
             itens = itens or []
             return termo, ator, itens, max(custo_run(run or {}) or 0, round(q_p + it_p * len(itens), 5)), (run or {}).get("id"), None
         except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
-            return termo, ator, [], 0.0, None, f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
+            corpo = ""
+            try:
+                corpo = e.read().decode("utf-8", "replace")[:240]  # mensagem da Apify (não contém o token)
+            except Exception:  # noqa: BLE001
+                pass
+            return termo, ator, [], 0.0, None, f"{type(e).__name__} {getattr(e, 'code', '')} {corpo}".strip()
     with ThreadPoolExecutor(max_workers=3) as ex:
         res = list(ex.map(um, lista))
     rows, gasto, brutos = [], 0.0, []
