@@ -15,6 +15,8 @@ class TestComentariosKwai(unittest.TestCase):
             return ({"id": "r", "status": "SUCCEEDED", "chargedEventCounts": {}},
                     [{"id": "v1", "comments": [{"id": "c1", "text": "  bom  vídeo ", "likeCount": 3, "createTime": 1789000000,
                                                 "author": {"id": "u1", "name": "Fulano"}}]},
+                     {"id": "c2", "authorId": 7, "authorName": "Beltrana", "content": "outro  formato", "timestamp": 1789000000000,
+                      "likedCount": 1, "replyToCommentId": None, "replyCount": 0, "videoId": "v1"},
                      {"id": "x9", "author": {"username": "Lulaoficial"}, "createTime": "2026-10-01T00:00:00Z"}])
         cwd = os.getcwd()
         with tempfile.TemporaryDirectory() as t, tempfile.TemporaryDirectory() as priv:
@@ -42,10 +44,13 @@ class TestComentariosKwai(unittest.TestCase):
                 del os.environ["ODI_INTERNO_DIR"]
         cfg = json.loads((RAIZ / "data/config/kwai_comentarios.json").read_text(encoding="utf-8"))
         payload, cap = visto[0]
-        self.assertEqual(payload["urls"], ["https://www.kwai.com/@FlavioBolsonaro/video/v1", "https://www.kwai.com/@Lulaoficial"])  # vídeo de janeiro fica fora
+        self.assertEqual(payload["urls"][0], "https://www.kwai.com/video/v1")  # vídeo de janeiro fica fora; formato /video/ID
+        self.assertEqual(len(payload["urls"]), 1 + len(cfg["teste"]["perfis"]))
         self.assertEqual(cap, cfg["teto_teste_usd"])
         self.assertEqual((rows[0]["comment_id"], rows[0]["texto"], rows[0]["autor_nome"], rows[0]["publicado_em"][:10]), ("c1", "bom vídeo", "Fulano", "2026-09-10"))
-        self.assertNotIn("Fulano", pub)  # nome e texto só no privado
+        self.assertEqual((rows[1]["comment_id"], rows[1]["texto"], rows[1]["autor_nome"], rows[1]["tipo"]), ("c2", "outro formato", "Beltrana", "comentario"))
+        self.assertNotIn("Fulano", pub)
+        self.assertNotIn("Beltrana", pub)  # nome e texto só no privado
         self.assertNotIn("bom vídeo", pub)
         self.assertGreater(man["custo_usd"], 0)  # estimativa pela tabela quando a Apify não informa
         self.assertEqual(man["itens_fora_da_lista"][0]["autor"], "Lulaoficial")

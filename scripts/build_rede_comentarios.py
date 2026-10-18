@@ -123,6 +123,9 @@ def main(argv=None) -> int:
         print(f"⛔ sem arquivo bruto ({bruto})")
         return 1
     rows = [r for r in csv.DictReader(gzip.open(bruto, "rt", encoding="utf-8"), delimiter=";") if (r["publicado_em"][:10] or bcm.DESDE) >= bcm.DESDE]
+    if len(rows) < 2:
+        print(f"⛔ comentários insuficientes para a rede ({len(rows)})")
+        return 1
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     ids = tuple(cfg["candidatos"])
     L, F = ids

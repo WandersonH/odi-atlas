@@ -1,13 +1,25 @@
 {
  "ator": "natanielsantos~kwai-scraper",
  "segredo": "APIFY_TOKEN_3",
- "preco_usd": {"video": 0.002, "comentario": 0.001, "inicio": 0.00005, "fonte": "loja Apify, run 'teste-apify-loja' de 17/10/2026"},
+ "preco_usd": {
+  "video": 0.002,
+  "comentario": 0.001,
+  "inicio": 5e-05,
+  "fonte": "loja Apify, run 'teste-apify-loja' de 17/10/2026"
+ },
  "autorizacao": "Usuário em 17/10/2026, 19h4x: teto de US$ 4 para os comentários do Kwai, com a chave APIFY_TOKEN_3 (\"4 dolar mais use por essa chave APIFY_TOKEN_3\"). Teste de US$ 0,10 descontado do mesmo teto.",
  "teto_total_usd": 4.0,
  "teto_teste_usd": 0.1,
  "desde": "2026-08-16",
  "max_comentarios_por_video": 50,
  "max_respostas_por_comentario": 0,
- "teste": {"videos": 3, "comentarios_por_video": 10, "perfis": ["https://www.kwai.com/@Lulaoficial"], "videos_por_perfil": 5},
- "nota": "Comentários públicos dos vídeos do Kwai dos perfis declarados ao TSE (chapas 13 e 22), desde 16/08/2026: até 50 comentários por vídeo, sem respostas, na ordem que o Kwai entrega. Texto e autor só no repositório privado; na página, só agregados (mesmas regras dos comentários do YouTube)."
+ "teste": {
+  "videos": 2,
+  "comentarios_por_video": 5,
+  "perfis": [],
+  "videos_por_perfil": 0
+ },
+ "nota": "Comentários públicos dos vídeos do Kwai dos perfis declarados ao TSE (chapas 13 e 22), desde 16/08/2026: até 50 comentários por vídeo, sem respostas, na ordem que o Kwai entrega. Texto e autor só no repositório privado; na página, só agregados (mesmas regras dos comentários do YouTube).",
+ "url_video": "https://www.kwai.com/video/{video_id}",
+ "nota_teste_1": "Teste 1 (run 39081371929, US$ 0,0161): 8 vídeos e 0 comentários com URLs no formato /@perfil/video/ID; o ator listou os vídeos de @Lulaoficial (o outro ator não). Teste 2 usa o formato /video/ID, o do exemplo do README."
 }

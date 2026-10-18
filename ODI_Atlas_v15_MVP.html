@@ -448,6 +448,12 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .gb-col ol{margin:0;padding-left:20px}.gb-col li{margin:0 0 9px;font-size:13px;overflow-wrap:anywhere}.gb-col li a{color:#172238;font-weight:600}.gb-col li small{display:block;color:#6a7682;font-size:11px}
 @media(max-width:760px){.gb-grid{grid-template-columns:1fr}}
 .bn-var{font:600 13px/1.3 inherit;margin:2px 0 6px}.bn-var small{font-weight:400;color:#5d6a76}.bn-up{color:#1f7a3a}.bn-down{color:#b3261e}.bn-flat{color:#5d6a76}
+
+/* Comentários do Kwai: mesmas regras da página do YouTube */
+#kwComments{--yt-axis:#1b2a3d}
+#kwComments .yc-block{margin-top:14px}
+#kwComments .yc-net{overflow-x:auto;background:#fffdf8;border:1px solid #e3e6e8;margin:8px 0}
+#kwComments .yc-net svg{display:block;width:100%;min-width:640px;height:auto}
 </style>
 <style>
 /* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
@@ -679,7 +685,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 <button class="navbutton active" data-tab="overview" data-group="panorama"><span class="navicon">◫</span> Panorama · da busca ao voto</button>
 <button class="navbutton" data-tab="ytContent" data-group="campanhas"><span class="navicon">▶</span> O que as campanhas dizem</button>
 <button class="navbutton" data-tab="followers" data-group="audiencia"><span class="navicon">▣</span> Quem acompanha</button>
-<button class="navbutton" data-tab="ytComments" data-group="comentarios"><span class="navicon">❝</span> Comentários · YouTube</button>
+<button class="navbutton" data-tab="ytComments" data-group="comentarios"><span class="navicon">❝</span> Comentários · YouTube e Kwai</button>
 <button class="navbutton" data-tab="gTrends" data-group="buscas"><span class="navicon">↗</span> Buscas · Google Trends</button>
 <button class="navbutton" data-tab="electorate" data-group="territorio"><span class="navicon">⌖</span> Eleitorado e território</button>
 <button class="navbutton" data-tab="leiaMe" data-group="metodo"><span class="navicon">ⓘ</span> Método, fontes e universo</button>
@@ -1171,6 +1177,29 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card yc-block"><div class="eyebrow">IRaMuTeQ</div><h2 class="tk-h2">Corpus dos comentários</h2><p class="yt-cloudnote">Os corpora contêm o texto dos comentários e ficam só no repositório privado <code>odi-atlas-interno</code>: <code>youtube/comentarios/corpus_iramuteq_amostra.txt</code> (a mesma amostra da CHD acima, até 4.000 comentários por candidato, com variáveis <code>*cand_ *sem_ *tipo_</code>; tamanho adequado ao IRaMuTeQ num computador comum) e <code>corpus_iramuteq_comentarios.txt</code> (todos, com <code>*incv_ *intol_</code>). No IRaMuTeQ: Arquivo → Abrir um corpus → codificação UTF-8 → idioma português → Análise de texto → Método de Reinert. Compare as classes com as da CHD desta página.</p></div>
   <div class="card yc-block"><div class="eyebrow">Método</div><p class="yt-cloudnote" id="ycMetodo"></p><p class="yt-cloudnote"><a href="./data/youtube/comentarios/analise.json" download>↓ Agregados (JSON)</a> · <a href="./data/config/livro_codigos_intolerancia.json" download>↓ Livro de códigos de intolerância</a> · <a href="./data/youtube/comentarios/manifesto_latest.json" download>↓ Manifesto da coleta</a></p></div>
 </section>
+<section class="panel" id="kwComments" aria-label="Caderno 04 Comentários do Kwai">
+  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO KWAI</span><span>DESDE 16 AGO 2026 · SÓ AGREGADOS</span></div>
+  <div class="intro odi-map-hero"><div class="eyebrow">Kwai público via Apify · comentários</div>
+    <h1>O que a audiência responde.<br><em>Comentários dos vídeos das campanhas.</em></h1>
+    <p>Comentários dos vídeos do Kwai dos perfis declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>, desde 16/08: até 50 por vídeo, na ordem que o Kwai entrega, sem respostas. Mesmas regras da página de comentários do YouTube: pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou perfil de quem comentou é publicado aqui.</p>
+  </div>
+  <div class="odi-signal" id="kcStatus" role="status">Aguardando leitura.</div>
+  <div class="yt-stats" id="kcStats"></div>
+  <div class="card yc-block" id="kcSentCard"><div class="eyebrow">Sentimento · modelo em português</div><h2 class="tk-h2">Tom geral dos comentários</h2><div id="kcSent"><p class="yt-meta">Aguardando leitura.</p></div><p class="yt-cloudnote" id="kcSentNota"></p></div>
+  <div class="yt-clouds">
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · o que a audiência escreve</figcaption><div class="yt-cloudbox tk-cloud" id="kcCloudA" style="--c:#c8102e"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · o que a audiência escreve</figcaption><div class="yt-cloudbox tk-cloud" id="kcCloudB" style="--c:#1f8a3b"></div></figure>
+  </div>
+  <div class="card yc-block"><div class="eyebrow">Livro de códigos · intolerância e incivilidade (Rossini 2022; Coe, Kenski e Rains 2014)</div><h2 class="tk-h2">% dos comentários com cada marca</h2><div id="kcIntol"></div><p class="yt-cloudnote" id="kcCurtidas"></p></div>
+  <div class="card yc-block"><div class="eyebrow">Livro de códigos · estratégias populistas (Bardin)</div><h2 class="tk-h2">% dos comentários com cada estratégia</h2><div id="kcPop"></div></div>
+  <div class="card yc-block"><div class="eyebrow">Aderência ao tema</div><h2 class="tk-h2">O vídeo fala de um tema; a audiência fala do quê?</h2><div id="kcAder"></div><p class="yt-cloudnote">Para cada tema dos vídeos (página de campanhas, Kwai), a parcela dos comentários desses vídeos que trata do mesmo tema, a que não tem tema identificável e os outros temas mais citados. Só temas com 30+ comentários.</p></div>
+  <div class="card yc-block"><div class="eyebrow">Série diária</div><h2 class="tk-h2">Volume de comentários por dia de publicação</h2><div class="tk-tlwrap"><svg id="kcSerie" role="img" aria-label="Comentários por dia, Lula e Flávio"></svg></div><p class="yt-cloudnote">Linha: comentários por dia (sem o dia da coleta, ainda incompleto). A coleta pega até 50 comentários por vídeo, na ordem do Kwai: não é o universo de comentários.</p></div>
+  <div class="card yc-block"><div class="eyebrow">CHD de Reinert · amostra de 4.000 comentários com 8+ palavras por candidato</div><h2 class="tk-h2">Classes de discurso da audiência</h2><div class="yc-chd" id="kcChd"></div><p class="yt-cloudnote">Formas características (χ² ≥ 3,84). Os nomes das classes ficam para o pesquisador; os trechos característicos estão no repositório privado.</p></div>
+  <div class="card yc-block"><div class="eyebrow">Gephi · rede de coocorrência de palavras</div><h2 class="tk-h2">Que palavras a audiência usa juntas</h2><div class="odi-signal" id="kcNetStatus">Aguardando leitura.</div><div class="yc-net"><svg id="kcNetT" role="img" aria-label="Rede de coocorrência de palavras nos comentários"></svg></div><div id="kcNetCom"></div><p class="yt-cloudnote" id="kcNetMet"></p><p class="yt-cloudnote"><a href="./data/kwai/comentarios/rede_termos.gexf" download>↓ GEXF (Gephi)</a> · <a href="./data/kwai/comentarios/rede_termos_nos.csv" download>↓ nós (CSV)</a> · <a href="./data/kwai/comentarios/rede_termos_arestas.csv" download>↓ arestas (CSV)</a> · <a href="./data/kwai/comentarios/rede_termos.json" download>↓ JSON</a></p></div>
+  <div class="card yc-block"><div class="eyebrow">Gephi · rede de conversação (Recuero)</div><h2 class="tk-h2">Quem responde a quem nos comentários</h2><div class="yt-stats" id="kcRespStats"></div><div class="yc-net"><svg id="kcNetR" role="img" aria-label="Rede de respostas entre comentaristas pseudonimizados"></svg></div><p class="yt-cloudnote">Desenho: os 400 autores com mais ligações. Tamanho = respostas recebidas (grau de entrada); cor = onde o autor comenta (vermelho, vídeos de Lula; verde, de Flávio).</p><div id="kcRespCom"></div><p class="yt-cloudnote" id="kcRespMet"></p><p class="yt-cloudnote"><a href="./data/kwai/comentarios/rede_respostas.gexf" download>↓ GEXF (Gephi, rede completa pseudonimizada)</a> · <a href="./data/kwai/comentarios/rede_respostas_nos.csv" download>↓ nós (CSV)</a> · <a href="./data/kwai/comentarios/rede_respostas_arestas.csv" download>↓ arestas (CSV)</a></p></div>
+  <div class="card yc-block"><div class="eyebrow">IRaMuTeQ</div><h2 class="tk-h2">Corpus dos comentários</h2><p class="yt-cloudnote">Os corpora contêm o texto dos comentários e ficam só no repositório privado <code>odi-atlas-interno</code>: <code>kwai/comentarios/corpus_iramuteq_amostra.txt</code> (a mesma amostra da CHD acima, até 4.000 comentários por candidato, com variáveis <code>*cand_ *sem_ *tipo_</code>; tamanho adequado ao IRaMuTeQ num computador comum) e <code>corpus_iramuteq_comentarios.txt</code> (todos, com <code>*incv_ *intol_</code>). No IRaMuTeQ: Arquivo → Abrir um corpus → codificação UTF-8 → idioma português → Análise de texto → Método de Reinert. Compare as classes com as da CHD desta página.</p></div>
+  <div class="card yc-block"><div class="eyebrow">Método</div><p class="yt-cloudnote" id="kcMetodo"></p><p class="yt-cloudnote"><a href="./data/kwai/comentarios/analise.json" download>↓ Agregados (JSON)</a> · <a href="./data/config/livro_codigos_intolerancia.json" download>↓ Livro de códigos de intolerância</a> · <a href="./data/kwai/comentarios/manifesto_latest.json" download>↓ Manifesto da coleta</a></p></div>
+</section>
 
 <section class="panel" id="history">
 <div class="paper-ribbon"><span>CADERNO 03 &nbsp;/&nbsp; QUEM ACOMPANHA · EVOLUÇÃO NO TEMPO</span><span>EDIÇÃO Nº 01 &nbsp;·&nbsp; 11 OUT 2026</span></div>
@@ -1380,9 +1409,9 @@ function ytAplicarApi(f){
 }
 const janelaTxt=p=>p.api&&p.api.janela?`${p.api.janela.videos} vídeos · ${dataBR(p.api.janela.de.slice(0,10)).slice(0,5)}–${dataBR(p.api.janela.ate.slice(0,10)).slice(0,5)}`:'';
 let tab='overview';
-const GRUPOS={panorama:['overview'],campanhas:['ytContent','tkContent','kwContent','adsLib'],audiencia:['followers','profiles','history','blade'],comentarios:['ytComments'],buscas:['gTrends'],territorio:['electorate','internet','reuters','scale'],metodo:['leiaMe','declarations']};
+const GRUPOS={panorama:['overview'],campanhas:['ytContent','tkContent','kwContent','adsLib'],audiencia:['followers','profiles','history','blade'],comentarios:['ytComments','kwComments'],buscas:['gTrends'],territorio:['electorate','internet','reuters','scale'],metodo:['leiaMe','declarations']};
 const GRUPO_DE=Object.fromEntries(Object.entries(GRUPOS).flatMap(([g,ids])=>ids.map(i=>[i,g])));
-const SUBROT={ytContent:'YouTube',tkContent:'TikTok',kwContent:'Kwai',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
+const SUBROT={ytComments:'YouTube',kwComments:'Kwai',ytContent:'YouTube',tkContent:'TikTok',kwContent:'Kwai',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
 function setTab(t){if(!document.getElementById(t))return;tab=t;document.querySelectorAll('.navbutton').forEach(b=>b.classList.toggle('active',b.dataset.group===(GRUPO_DE[t]||t)));document.querySelectorAll('.subtabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tab===t)));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===t));window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.goto)));
 function save(filename,str,type){const blob=new Blob([str],{type:type||'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}function toCsv(head,rows){return '\ufeff'+[head.map(csvCell).join(';'),...rows.map(row=>row.map(csvCell).join(';'))].join('\n')}
@@ -2935,6 +2964,83 @@ async function carregar(){if(feito)return;feito=true;
   $('ycRespCom').innerHTML=`<div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th>Comunidade</th><th>Autores</th><th>Respostas</th><th>Grau de entrada máx. / médio</th><th>Centralização</th><th>% em vídeos de Lula</th><th>Mais respondidos (código: respostas)</th></tr></thead><tbody>${r.comunidades.map(c=>`<tr><td>${c.comunidade}</td><td>${fmt(c.autores)}</td><td>${fmt(c.respostas)}</td><td>${c.grau_entrada_max} / ${String(c.grau_entrada_medio).replace('.',',')}</td><td>${String(c.centralizacao_freeman).replace('.',',')}</td><td style="color:${mix(c.pct_comentarios_em_videos_de_lula/100)};font-weight:700">${String(c.pct_comentarios_em_videos_de_lula).replace('.',',')}%</td><td>${c.mais_respondidos.map(([k,n])=>`${esc(k)}: ${n}`).join(' · ')}</td></tr>`).join('')}</tbody></table></div>`;
   $('ycRespMet').textContent=r.metodo;
  }catch(e){$('ycNetStatus').textContent='⛔ Não foi possível ler as redes: '+e.message;}}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
+/* Caderno 04 · Comentários do Kwai (gerado do bloco do YouTube — mesmas regras) (data/kwai/comentarios/analise.json) — só agregados; Lula vermelho, Flávio verde */
+(function(){
+const sec=document.getElementById('kwComments');if(!sec)return;
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b';
+const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
+let feito=false;const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const pc=x=>x==null?'—':Number(x).toLocaleString('pt-BR',{maximumFractionDigits:2})+'%';
+function pares(rot,a,b){const mx=Math.max(0.01,...Object.keys(rot).flatMap(k=>[a[k]||0,b[k]||0]));
+ return '<div class="yc-rows">'+Object.entries(rot).map(([k,n])=>`<div class="yc-row"><span>${esc(n)}</span><div class="yc-pair"><div><i style="width:${(100*(a[k]||0)/mx).toFixed(1)}%;background:${CL}"></i><span>${pc(a[k])}</span></div><div><i style="width:${(100*(b[k]||0)/mx).toFixed(1)}%;background:${CF}"></i><span>${pc(b[k])}</span></div></div></div>`).join('')+'</div>';}
+function nuvem(box,l){if(!l||!l.length){box.innerHTML='<p class="yt-meta">Sem termos suficientes.</p>';return;}const mx=l[0][1],mn=l[l.length-1][1];
+ box.innerHTML=[...l].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} comentários">${esc(t)}</span>`;}).join('');}
+function serie(A,B){const svg=$('kcSerie');const dias=[...new Set([...A,...B].map(x=>x[0]))].sort();if(!dias.length)return;
+ const W=Math.max(720,dias.length*14),H=240,P=34,mx=Math.max(1,...A.map(x=>x[1]),...B.map(x=>x[1]));const X=d=>P+(W-2*P)*dias.indexOf(d)/Math.max(1,dias.length-1),Y=v=>H-P-(H-2*P)*v/mx;
+ const linha=(S,c)=>`<path d="${S.map((x,i)=>(i?'L':'M')+X(x[0]).toFixed(1)+' '+Y(x[1]).toFixed(1)).join(' ')}" fill="none" stroke="${c}" stroke-width="2"/>`;
+ let h=`<line x1="${P}" x2="${W-P}" y1="${H-P}" y2="${H-P}" stroke="#1b2a3d"/>`;[0,.5,1].forEach(f=>{h+=`<text x="4" y="${Y(mx*f)+4}" font-size="10">${fmt(Math.round(mx*f))}</text>`;});
+ dias.forEach((d,i)=>{if(i%7===0)h+=`<text x="${X(d)}" y="${H-P+16}" font-size="10" text-anchor="middle">${d.slice(8,10)}/${d.slice(5,7)}</text>`;});
+ svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);svg.innerHTML=h+linha(A,CL)+linha(B,CF);}
+async function carregar(){if(feito)return;feito=true;
+ try{const [a,m]=await Promise.all(['./data/kwai/comentarios/analise.json','./data/kwai/comentarios/manifesto_latest.json'].map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(u+' '+r.status);return r.json();})));
+  const A=a.candidatos[L],B=a.candidatos[F];
+  $('kcStatus').innerHTML=`Coleta de ${new Date(a.coletado_em_utc||m.run_started_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})} · ${fmt(m.videos_com_comentarios)} vídeos com comentários · ${fmt(m.comentarios_no_acervo)} comentários no acervo · gasto acumulado US$ ${String(Math.round(((m.gasto_antes_usd||0)+(m.custo_usd||0))*100)/100).replace('.',',')} de US$ ${String(m.teto_total_usd).replace('.',',')} autorizados · texto bruto só no repositório privado${m.status&&m.status!=='ok'?' · '+esc(m.status):''}`;
+  $('kcStats').innerHTML=[[A,CL],[B,CF]].map(([x,c])=>`<div class="yt-statcard" style="border-top-color:${c}"><h3>${esc(x.nome)}</h3><div class="yt-nums"><span><b>${fmt(x.comentarios)}</b>comentários</span><span><b>${fmt(x.respostas)}</b>respostas</span><span><b>${fmt(x.videos)}</b>vídeos</span><span><b>${fmt(x.autores.autores_unicos)}</b>autores</span><span><b>${pc(x.autores.pct_dos_comentarios_top10pct_autores)}</b>escritos pelos 10% mais ativos</span><span><b>${pc(x.copiar_colar.pct)}</b>copiar e colar</span><span><b>${pc(x.qualquer_incivilidade_pct)}</b>com incivilidade</span><span><b>${pc(x.qualquer_intolerancia_pct)}</b>com intolerância</span><span><b>${pc(x.cita_adversario_pct)}</b>citam o adversário</span></div></div>`).join('');
+  nuvem($('kcCloudA'),A.nuvem);nuvem($('kcCloudB'),B.nuvem);
+  try{const r=await fetch('./data/kwai/comentarios/sentimento.json',{cache:'no-store'});const S=r.ok?await r.json():null;
+   if(!S||!S.candidatos){$('kcSent').innerHTML=`<p class="odi-signal">⛔ ${esc(S&&S.status||'sentimento ainda não calculado')}</p>`;}
+   else{const bar=x=>x&&x.n?`<div class="sent-bar"><i class="p" style="width:${x.positivo}%"></i><i class="u" style="width:${x.neutro}%"></i><i class="n" style="width:${x.negativo}%"></i></div><small>${x.positivo}% pos. · ${x.neutro}% neutro · ${x.negativo}% neg. · n = ${fmt(x.n)}</small>`:(x&&x.ate<'2026-08-16'?'— fora da coleta (comentários desde 16/08)':'⛔ sem comentários classificados');
+    const SA=S.candidatos[L],SB=S.candidatos[F],linhas=[['Período todo',SA,SB]].concat((SA?.fases||[]).map((f,i)=>[`${f.rotulo} <small>(${f.de.slice(8,10)}/${f.de.slice(5,7)}–${f.ate.slice(8,10)}/${f.ate.slice(5,7)})</small>`,f,SB?.fases?.[i]]));
+    $('kcSent').innerHTML=`<p class="yt-meta">${esc(S.status==='ok'?'Todos os comentários coletados com texto foram classificados':S.status)} · ${fmt(S.classificados_total)} de ${fmt(S.comentarios_coletados)} · atualizado em ${new Date(S.gerado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}</p><div style="overflow-x:auto"><table class="sent-tab"><thead><tr><th>Recorte (data do comentário)</th><th style="color:${CL}">Lula</th><th style="color:${CF}">Flávio Bolsonaro</th></tr></thead><tbody>${linhas.map(([r,a,b])=>`<tr><th>${r}</th><td>${bar(a)}</td><td>${bar(b)}</td></tr>`).join('')}</tbody></table></div><p class="sent-leg"><i class="gt-sq" style="background:#2f7d4f"></i> positivo · <i class="gt-sq" style="background:#b8c0c8"></i> neutro · <i class="gt-sq" style="background:#b3261e"></i> negativo. O tom de cada vídeo aparece no caderno 02, ao abrir o vídeo.</p>`;}
+   $('kcSentNota').textContent=(S&&S.metodo||'')+(S&&S.modelo?` Modelo: ${S.modelo}${S.revisoes_modelo&&S.revisoes_modelo.length?' (revisão '+S.revisoes_modelo.join(', ').slice(0,12)+')':''}.`:'');}
+  catch(e){$('kcSent').innerHTML='<p class="odi-signal">⛔ sentimento indisponível</p>';}
+  const li=a.livros.intolerancia;$('kcIntol').innerHTML=pares(Object.fromEntries(Object.entries(li).map(([k,v])=>[k,v.nome])),A.intolerancia_pct,B.intolerancia_pct);
+  $('kcCurtidas').textContent=`Curtidas médias por comentário — Lula: incivis ${fmt(A.curtidas_medias.incivis)}, civis ${fmt(A.curtidas_medias.civis)}; Flávio: incivis ${fmt(B.curtidas_medias.incivis)}, civis ${fmt(B.curtidas_medias.civis)}. Vermelho = Lula, verde = Flávio. Desinformação eleitoral, ódio e ameaça são pré-codificação por palavras: conferir na amostra humana antes de citar.`;
+  $('kcPop').innerHTML=pares(a.livros.populismo,A.populismo_pct,B.populismo_pct);
+  const temas=[...new Set([...Object.keys(A.aderencia_ao_tema_do_video),...Object.keys(B.aderencia_ao_tema_do_video)])];
+  $('kcAder').innerHTML=`<div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th>Tema do vídeo</th><th>Lula · mesmo tema / sem tema</th><th>Lula · outros temas</th><th>Flávio · mesmo tema / sem tema</th><th>Flávio · outros temas</th></tr></thead><tbody>${temas.map(t=>{const x=A.aderencia_ao_tema_do_video[t],y=B.aderencia_ao_tema_do_video[t],o=z=>z?z.outros_temas.map(([k,v])=>`${esc(ROT[k]||k)} ${pc(v)}`).join('<br>'):'—',m=z=>z?`<b>${pc(z.pct_falam_do_tema)}</b> / ${pc(z.pct_sem_tema)}<br><small>${fmt(z.comentarios)} coment.</small>`:'—';return `<tr><td>${esc(ROT[t]||t)}</td><td>${m(x)}</td><td>${o(x)}</td><td>${m(y)}</td><td>${o(y)}</td></tr>`;}).join('')}</tbody></table></div>`;
+  const hoje=String(a.coletado_em_utc).slice(0,10),corta=x=>x.filter(d=>d[0]<hoje);serie(corta(A.serie_diaria),corta(B.serie_diaria));
+  $('kcChd').innerHTML=[[A,CL],[B,CF]].map(([x,c])=>`<div><h3 style="font:700 15px Georgia,serif;color:${c}">${esc(x.nome)}</h3>${x.chd.classes?x.chd.classes.map(k=>`<div class="yc-classe" style="--c:${c}"><b>Classe ${k.classe} · ${pc(k.pct)}</b><br>${k.formas.slice(0,14).map(f=>esc(f[0])).join(', ')}</div>`).join(''):`<p class="yt-meta">${esc(x.chd.status||'')}</p>`}</div>`).join('');
+  $('kcMetodo').textContent=a.metodo;
+ }catch(e){$('kcStatus').textContent='⛔ Não foi possível ler os agregados: '+e.message;}}
+new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
+})();
+</script>
+<script>
+/* WhatsApp: seguidores dos canais (data/whatsapp/seguidores.csv, scripts/collect_whatsapp.py) */
+(function(){const el=document.getElementById('waBlock');if(!el)return;
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+fetch('./data/whatsapp/seguidores.csv',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('seguidores.csv '+r.status);return r.text();}).then(t=>{
+ const [h,...ls]=t.trim().split(/\r?\n/);const H=h.split(';');const rows=ls.map(l=>Object.fromEntries(l.split(';').map((v,i)=>[H[i],v])));
+ const canais=[...new Set(rows.map(r=>r.canal_id))];
+ el.innerHTML=`<div style="overflow-x:auto"><table class="tr-table"><thead><tr><th>Canal</th><th>Lado</th><th>Último registro</th><th>Seguidores</th><th>Texto na página</th><th>Variação desde o 1º registro</th></tr></thead><tbody>${canais.map(c=>{const rs=rows.filter(r=>r.canal_id===c).sort((a,b)=>a.data.localeCompare(b.data)),u=rs.at(-1),f=rs[0],d=Number(u.seguidores)-Number(f.seguidores);
+ return `<tr><td><a href="${esc(u.url)}" target="_blank" rel="noopener noreferrer">${esc(u.nome)} ↗</a></td><td>${esc(u.lado||'—')}</td><td>${esc(u.data.split('-').reverse().join('/'))}</td><td><b>${Number(u.seguidores).toLocaleString('pt-BR')}</b></td><td>${esc(u.texto_original)}</td><td>${rs.length>1?(d>=0?'+':'')+d.toLocaleString('pt-BR')+' ('+rs.length+' dias)':'1º registro'}</td></tr>`;}).join('')}</tbody></table></div><div class="chartfoot">O WhatsApp arredonda (ex.: “4,6 mi”): variações menores que o arredondamento não aparecem. <a href="./data/whatsapp/seguidores.csv" download>↓ Planilha (CSV)</a></div>`;
+}).catch(e=>{el.innerHTML=`<div class="placeholder">⛔ ${esc(e.message)}</div>`;});})();
+</script>
+<script>
+/* Caderno 04 · redes dos comentários (Gephi): coocorrência de palavras e conversação pseudonimizada */
+(function(){const sec=document.getElementById('kwComments');if(!sec)return;let feito=false;const $=id=>document.getElementById(id);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
+const mix=f=>{const a=[0xc8,0x10,0x2e],b=[0x1f,0x8a,0x3b];return 'rgb('+b.map((v,i)=>Math.round(v+(a[i]-v)*f)).join(',')+')';};
+function desenhar(svg,nos,arestas,raio,rotulos){const P=30,W=1000+2*P,ix=Object.fromEntries(nos.map(n=>[n.id,n]));const mw=Math.max(1,...arestas.map(a=>a[2]));
+ let h=arestas.map(([a,b,w])=>{const p=ix[a],q=ix[b];if(!p||!q)return '';return `<line x1="${p.x+P}" y1="${p.y+P}" x2="${q.x+P}" y2="${q.y+P}" stroke="#9aa5ae" stroke-opacity="${(0.15+0.5*w/mw).toFixed(2)}" stroke-width="${(0.5+2*w/mw).toFixed(2)}"/>`;}).join('');
+ h+=nos.map(n=>`<circle cx="${n.x+P}" cy="${n.y+P}" r="${raio(n).toFixed(1)}" fill="${mix(n.lado)}" fill-opacity=".85" stroke="#fff" stroke-width=".6"><title>${esc(n.id)}</title></circle>`).join('');
+ if(rotulos)h+=rotulos.map(n=>`<text x="${n.x+P}" y="${n.y+P-raio(n)-2}" text-anchor="middle" font-size="12" font-family="Georgia,serif" fill="#172238" paint-order="stroke" stroke="#fffdf8" stroke-width="3">${esc(n.id)}</text>`).join('');
+ svg.setAttribute('viewBox',`0 0 ${W} ${W}`);svg.innerHTML=h;}
+async function carregar(){if(feito)return;feito=true;
+ try{const [t,r]=await Promise.all(['./data/kwai/comentarios/rede_termos.json','./data/kwai/comentarios/rede_respostas.json'].map(u=>fetch(u,{cache:'no-store'}).then(x=>{if(!x.ok)throw new Error(u+' '+x.status);return x.json();})));
+  $('kcNetStatus').textContent=`${fmt(t.nos_total)} palavras · ${fmt(t.arestas_total)} ligações · ${t.comunidades.length} comunidades · modularidade ${String(t.modularidade).replace('.',',')} · ${fmt(t.parametros.comentarios)} comentários`;
+  const mv=Math.max(...t.nos.map(n=>n.v));desenhar($('kcNetT'),t.nos,t.arestas,n=>3+14*Math.sqrt(n.v/mv),[...t.nos].sort((a,b)=>b.v-a.v).slice(0,45));
+  $('kcNetCom').innerHTML='<div class="yc-rows">'+t.comunidades.map(c=>`<div class="yc-row"><span>Comunidade ${c.id+1} · ${c.nos} palavras · ${Math.round(100*c.lado_medio)}% Lula</span><span>${c.principais.map(esc).join(', ')}</span></div>`).join('')+'</div>';
+  $('kcNetMet').textContent=t.metodo;
+  $('kcRespStats').innerHTML=`<div class="yt-statcard"><h3>Rede inteira</h3><div class="yt-nums"><span><b>${fmt(r.autores)}</b>autores</span><span><b>${fmt(r.respostas)}</b>respostas</span><span><b>${fmt(r.ligacoes)}</b>ligações</span><span><b>${fmt(r.maior_componente)}</b>no maior componente</span><span><b>${fmt(r.comunidades_total)}</b>comunidades</span><span><b>${String(r.centralizacao_freeman_total).replace('.',',')}</b>centralização (Freeman)</span></div></div>`;
+  const me=Math.max(1,...r.desenho.nos.map(n=>n.e));desenhar($('kcNetR'),r.desenho.nos,r.desenho.arestas,n=>2+12*Math.sqrt(n.e/me),null);
+  $('kcRespCom').innerHTML=`<div style="overflow-x:auto"><table class="yc-tab"><thead><tr><th>Comunidade</th><th>Autores</th><th>Respostas</th><th>Grau de entrada máx. / médio</th><th>Centralização</th><th>% em vídeos de Lula</th><th>Mais respondidos (código: respostas)</th></tr></thead><tbody>${r.comunidades.map(c=>`<tr><td>${c.comunidade}</td><td>${fmt(c.autores)}</td><td>${fmt(c.respostas)}</td><td>${c.grau_entrada_max} / ${String(c.grau_entrada_medio).replace('.',',')}</td><td>${String(c.centralizacao_freeman).replace('.',',')}</td><td style="color:${mix(c.pct_comentarios_em_videos_de_lula/100)};font-weight:700">${String(c.pct_comentarios_em_videos_de_lula).replace('.',',')}%</td><td>${c.mais_respondidos.map(([k,n])=>`${esc(k)}: ${n}`).join(' · ')}</td></tr>`).join('')}</tbody></table></div>`;
+  $('kcRespMet').textContent=r.metodo;
+ }catch(e){$('kcNetStatus').textContent='⛔ Não foi possível ler as redes: '+e.message;}}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
 </script>
 <script>

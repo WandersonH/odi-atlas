@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.8 — Comentários do Kwai: teste 1 e ajuste de formato; página "Comentários · Kwai" (2026-10-17) 🔜
+
+- Teste 1 (run 39081371929, US$ 0,0161 pela Apify e pela tabela): 8 itens, **0 comentários**. Vídeos pedidos como `/@perfil/video/ID`; o README do ator mostra comentários como itens próprios (`content`, `videoId`, `timestamp`, `likedCount`, `replyToCommentId`) e vídeos como `/video/ID`. O coletor agora lê esse formato e pede `/video/ID`; só marca como lido o vídeo que trouxe comentário (a lista do teste 1 foi zerada no repositório privado). Teste 2: 2 vídeos × 5 comentários.
+- Achado: este ator **lista os vídeos de @Lulaoficial** (5 mais recentes, de 15 a 18/10, até 537.497 visualizações), que o unfenced-group/kwai-scraper não devolve.
+- `build_rede_comentarios.py` para com ⛔ quando há menos de 2 comentários (o teste 1 quebrou com lista vazia).
+- Página: subaba **Kwai** em Comentários, gerada da página do YouTube (mesmos blocos: números, sentimento, nuvens, intolerância/incivilidade, populismo, aderência ao tema, série diária, CHD, redes Gephi, IRaMuTeQ no privado, método), lendo `data/kwai/comentarios/`. Botão do menu: "Comentários · YouTube e Kwai".
+- Testes: suíte OK.
+
 ## C18.7 — Comentários do Kwai: coletor e análises com as regras do YouTube (2026-10-17) 🔜
 
 - Run do Google com o recorte (39075625107): 30 anúncios lidos, 28 fora do recorte (21/08/2022 a 01/03/2024; anunciantes "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE" e "Partido dos trabalhadores" saem inteiros), 2 anúncios de 2026 de 2 anunciantes ficam na página.

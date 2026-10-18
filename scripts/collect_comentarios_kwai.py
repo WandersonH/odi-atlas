@@ -73,8 +73,21 @@ def lista_comentarios(x: dict) -> list[dict]:
     return []
 
 
+def e_comentario(x: dict) -> bool:
+    """Formato do ator (README, 'Comment Output Example'): um item por comentário, com content e videoId."""
+    return "content" in x and "videoId" in x and "caption" not in x
+
+
 def linhas(x: dict, video: dict, agora: str) -> list[dict]:
     out = []
+    if e_comentario(x):
+        pai = str(x.get("replyToCommentId") or "")
+        return [{"video_id": video["video_id"], "candidate_id": video["candidate_id"], "channel_id": video["perfil"], "ordem": "kwai",
+                 "coletado_em": agora, "atualizado_em": "", "comment_id": str(x.get("id") or ""), "parent_id": pai,
+                 "tipo": "resposta" if pai else "comentario", "autor_canal": str(x.get("authorId") or x.get("authorUsername") or ""),
+                 "autor_nome": str(x.get("authorName") or ""), "texto": " ".join(str(x.get("content") or "").split()),
+                 "curtidas": x.get("likedCount") or 0, "respostas": x.get("replyCount") if not pai else "",
+                 "publicado_em": quando(x.get("timestamp"))}]
     for c in lista_comentarios(x):
         cid = str(g(c, "id", "commentId", "comment_id") or "")
         base = {"video_id": video["video_id"], "candidate_id": video["candidate_id"], "channel_id": video["perfil"], "ordem": "kwai",
@@ -160,7 +173,8 @@ def main(argv=None, executar=None) -> int:
     if not alvo and not perfis:
         return fim("ok · nada pendente", 0)
     por_id = {v["video_id"]: v for v in alvo}
-    payload = {"urls": [v["url"] for v in alvo] + perfis, "maxItems": max_itens, "maxCommentsPerVideo": por_video,
+    fmt = cfg.get("url_video") or "{url}"
+    payload = {"urls": [fmt.format(video_id=v["video_id"], url=v["url"]) for v in alvo] + perfis, "maxItems": max_itens, "maxCommentsPerVideo": por_video,
                "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
     executar = executar or (lambda pl, cap: run_actor(token, cfg["ator"], pl, cap))
     try:
@@ -173,14 +187,15 @@ def main(argv=None, executar=None) -> int:
             f.write(json.dumps(x, ensure_ascii=False) + "\n")
     novas, perfil_teste = [], []
     for x in itens:
-        vid = id_video(x)
+        vid = str(x.get("videoId")) if e_comentario(x) else id_video(x)
         if vid in por_id:
             novas += linhas(x, por_id[vid], agora)
-        else:
+        elif not e_comentario(x):
             perfil_teste.append({"video_id": vid, "autor": g(x, "author.username", "author.name", "authorName", "username"),
                                  "publicado_em": quando(g(x, "createTime", "timestamp")), "comentarios_no_item": len(lista_comentarios(x))})
     n_coment = sum(1 for r in novas if r["tipo"] == "comentario")
-    estimado = round(p["inicio"] + p["video"] * len(itens) + p["comentario"] * len(novas), 4)
+    n_videos = sum(1 for x in itens if not e_comentario(x))
+    estimado = round(p["inicio"] + p["video"] * n_videos + p["comentario"] * (len(itens) - n_videos), 4)
     custo = max(custo_run(run) or 0, estimado)
     ids_novos = {r["comment_id"] for r in novas}
     todos = [r for r in antigos if r["comment_id"] not in ids_novos] + novas
@@ -188,7 +203,7 @@ def main(argv=None, executar=None) -> int:
         w = csv.DictWriter(f, CAMPOS, delimiter=";", lineterminator="\n", extrasaction="ignore")
         w.writeheader()
         w.writerows(todos)
-    lidos = sorted(feitos | {id_video(x) for x in itens if id_video(x) in por_id})
+    lidos = sorted(feitos | {r["video_id"] for r in novas})  # só conta como lido o vídeo que trouxe comentário
     (priv / "videos_lidos.json").write_text(json.dumps(lidos), encoding="utf-8")
     man.update(run_apify={"id": run.get("id"), "status": run.get("status"), "eventos_cobrados": run.get("chargedEventCounts"),
                           "uso_plataforma_usd": run.get("usageTotalUsd")},
