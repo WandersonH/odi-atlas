@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.11 — Página "O que as campanhas dizem no X" (2026-10-17) ✅
+
+- Página X no caderno 02, gerada da do Facebook (perfis, fases, temas, linha do tempo, listas, Bardin + CHD, redes de coocorrência e de menções, downloads), lendo `data/x/`. Chromium 1300 e 390 px: 2.149 posts de Lula e 926 de Flávio desde 20/07, rede de coocorrência com 1.065 arestas, rede de menções com 240 contas, sem erro de JavaScript e sem rolagem horizontal.
+- Comentários do Facebook: teste após o ajuste (manifesto de 18/10 01h16 UTC) com 20 comentários de 2 posts, US$ 0,005; carga disparada.
+- Testes: suíte OK.
+
 ## C19.10 — X carregado; página Comentários sem nome das redes, com Facebook (2026-10-17) ⚠️
 
 - X, carga (run 39085553991, xquik, conta 3): **3.061 posts** (sem reposts) desde 20/07 — LulaOficial 1.482, FlavioBolsonaro 485, alfredogaspar_ 440, geraldoalckmin 226, comitespop 147, lulaverso 119, pode_espalhar 109, obrasilcomlula 53; pl22al e LulaEvangelicos sem posts na busca. US$ 0,46 pela tabela. Seguidores de 8 perfis gravados em `data/seguidores/x_latest.csv` (LulaOficial 10.765.666; FlavioBolsonaro 3.794.692; geraldoalckmin 1.373.545; lulaverso 139.882; alfredogaspar_ 82.689; comitespop 12.113; pode_espalhar 7.803; obrasilcomlula 183).
