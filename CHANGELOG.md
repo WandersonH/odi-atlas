@@ -8,6 +8,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Pedido do usuário: coleta das top trends do dia no X. Diagnóstico (`diag-fontes-web.yml`): trends24.in e socialblade.com respondem 403 (Cloudflare) a robôs; getdaytrends.com/brazil/ responde 200. `collect_x_trends.py` + `x-trends.yml` (de hora em hora, grátis): lista do momento com volume de posts quando o X informa, em `data/x/trends/AAAA-MM-DD.csv` e resumo do dia em `latest.json` (top 30, melhor posição, horas na lista, assuntos que citam os candidatos).
 - Seguidores retroativos: o Social Blade bloqueia acesso automatizado (Cloudflare, "Just a moment...") e contornar a verificação não é permitido; as plataformas não publicam série histórica de seguidores. A série diária cresce a partir das coletas próprias.
+- 1ª execução: 0 assuntos — na página real há um gráfico (svg) entre o nome e o fim da linha e o padrão só aceitava 400 caracteres. Corrigido e conferido na página guardada: 15 assuntos (1º "#LulaTemOMaiorExercitoDoMundo"); o getdaytrends não mostra volume nessa tabela.
 - Testes: `tests/test_x_trends.py`; suíte OK.
 
 ## C19.13 — Comentários do Facebook carregados; seguidores do TikTok; saldo das contas (2026-10-18) ⚠️

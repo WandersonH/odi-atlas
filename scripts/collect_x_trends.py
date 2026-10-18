@@ -40,7 +40,7 @@ def parse(pagina: str) -> list[dict]:
     """Primeira tabela da página (assuntos de agora): link /brazil/trend/<x>/ e o volume ('87.1K tweets') logo depois."""
     corpo = pagina.split("</table>")[0]
     out = []
-    for m in re.finditer(r'<a[^>]+href="(/brazil/trend/[^"]+)"[^>]*>(.*?)</a>(.{0,400}?)</tr>', corpo, re.S):
+    for m in re.finditer(r'<a[^>]+href="(/brazil/trend/[^"]+)"[^>]*>(.*?)</a>(.*?)</tr>', corpo, re.S):
         nome = html.unescape(re.sub(r"<[^>]+>", "", m.group(2))).strip()
         vt = re.search(r"([\d.,]+\s*[KkMm]?)\s*(?:tweets|posts)", m.group(3), re.I)
         if nome:
