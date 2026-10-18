@@ -102,11 +102,17 @@ def main(argv=None, executar=None) -> int:
         if gasto + est > teto * 0.97:
             continue
         por_url = {chave_post(v["url"]): v for v in alvo}
-        pl = {"startUrls": [{"url": v["url"]} for v in alvo], "resultsLimit": pv, "includeNestedComments": False, "viewOption": "RANKED_RELEVANT"}
+        pl = {"startUrls": [{"url": v["url"]} for v in alvo], "resultsLimit": pv}
         try:
             run, itens = executar(pl, round(min(teto - gasto, est * 1.2 + 0.01), 4))
         except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
-            man["runs"].append({"erro": f"{type(e).__name__} {getattr(e, 'code', '')}".strip()})
+            corpo = ""
+            try:
+                corpo = e.read().decode("utf-8", "replace")[:300]  # resposta da Apify (não contém o token)
+            except Exception:  # noqa: BLE001
+                pass
+            man["runs"].append({"erro": f"{type(e).__name__} {getattr(e, 'code', '')} {corpo}".strip()})
+            print(f"erro na execução: {type(e).__name__} {getattr(e, 'code', '')} {corpo}")
             continue
         itens = itens or []
         brutos += itens

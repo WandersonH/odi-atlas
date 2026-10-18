@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.10 — X carregado; página Comentários sem nome das redes, com Facebook (2026-10-17) ⚠️
+
+- X, carga (run 39085553991, xquik, conta 3): **3.061 posts** (sem reposts) desde 20/07 — LulaOficial 1.482, FlavioBolsonaro 485, alfredogaspar_ 440, geraldoalckmin 226, comitespop 147, lulaverso 119, pode_espalhar 109, obrasilcomlula 53; pl22al e LulaEvangelicos sem posts na busca. US$ 0,46 pela tabela. Seguidores de 8 perfis gravados em `data/seguidores/x_latest.csv` (LulaOficial 10.765.666; FlavioBolsonaro 3.794.692; geraldoalckmin 1.373.545; lulaverso 139.882; alfredogaspar_ 82.689; comitespop 12.113; pode_espalhar 7.803; obrasilcomlula 183).
+- Comentários do Facebook, teste (run 39085646280, conta 3): HTTP 400 da Apify na entrada. Entrada reduzida a `startUrls` + `resultsLimit`; o erro passa a registrar a resposta da Apify (sem o token).
+- Página: o menu passa a "Comentários" (sem o nome das redes), com as subabas YouTube, Kwai e Facebook; a do Facebook é gerada da do Kwai e lê `data/facebook/comentarios/`.
+- Testes: suíte OK.
+
 ## C19.9 — Comentários do Facebook: coletor (contas 3 a 7, teto US$ 1,50) (2026-10-17) 🔜
 
 - Pedido do usuário (22h05): criar a página de comentários do Facebook. Loja Apify (run de `teste-apify-loja`, 17/10): dami_studio/facebook-comments-scraper, US$ 0,25 por 1.000 comentários no plano gratuito (o oficial da Apify cobra US$ 2,50 por 1.000).
