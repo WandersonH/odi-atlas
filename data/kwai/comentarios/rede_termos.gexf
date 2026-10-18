@@ -1,10 +1,38 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+<gexf xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
   <meta lastmodifieddate="2026-10-18">
     <creator>NetworkX 3.6.1</creator>
   </meta>
   <graph defaultedgetype="undirected" mode="static" name="">
-    <nodes />
-    <edges />
+    <attributes mode="static" class="node">
+      <attribute id="0" title="comentarios" type="long" />
+      <attribute id="1" title="lado_lula" type="double" />
+      <attribute id="2" title="comunidade" type="long" />
+    </attributes>
+    <nodes>
+      <node id="presidente" label="presidente">
+        <viz:color r="77" g="105" b="55" a="1.0" />
+        <viz:size value="10.215838362577491" />
+        <viz:position x="0.0" y="-984.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="75" />
+          <attvalue for="1" value="0.273" />
+          <attvalue for="2" value="1" />
+        </attvalues>
+      </node>
+      <node id="heart" label="heart">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="9.58946638440411" />
+        <viz:position x="1000.0" y="-0.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="64" />
+          <attvalue for="1" value="1.0" />
+          <attvalue for="2" value="1" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="presidente" target="heart" id="0" weight="23" />
+    </edges>
   </graph>
 </gexf>
