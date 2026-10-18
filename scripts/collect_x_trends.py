@@ -83,6 +83,8 @@ def main(argv=None, pagina: str | None = None) -> int:
     if not itens:  # diagnóstico do formato da página (sem dados pessoais: é a lista pública de assuntos)
         i = pagina.find("/trend/")
         print(f"página com {len(pagina)} caracteres; 1º '/trend/' em {i}: " + re.sub(r"\s+", " ", pagina[max(0, i - 300):i + 500]))
+        (root / "data/x/trends").mkdir(parents=True, exist_ok=True)
+        (root / "data/x/trends/diag_formato.txt").write_text(pagina[:200000], encoding="utf-8")
     pasta = root / "data/x/trends"
     pasta.mkdir(parents=True, exist_ok=True)
     dia = (dt.datetime.fromisoformat(agora.replace("Z", "+00:00")) - dt.timedelta(hours=3)).strftime("%Y-%m-%d")  # dia em Brasília
