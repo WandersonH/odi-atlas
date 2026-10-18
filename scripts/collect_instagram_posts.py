@@ -49,13 +49,23 @@ def perfis(root: Path, excluir: set[str]) -> list[dict]:
 
 
 def entrada(ator: str, perfil: str, n: int, desde: str) -> dict:
-    if ator.startswith("esdrasdw~"):
-        return {"directUrls": [perfil], "resultsType": "posts", "resultsLimit": n, "onlyPostsNewerThan": desde}
+    if ator.startswith("esdrasdw~"):  # legenda completa é opcional (selectedFields); visualizações só no modo reels (ver `reels`)
+        return {"directUrls": [perfil], "resultsType": "posts", "resultsLimit": n, "onlyPostsNewerThan": desde,
+                "selectedFields": ["shortCode", "id", "url", "timestamp", "caption", "title", "likesCount", "commentsCount",
+                                   "displayUrl", "ownerUsername", "videoDuration"]}
     if ator.startswith("apidojo~"):
         return {"startUrls": [f"https://www.instagram.com/{perfil}/"], "maxItems": n, "until": desde}
     if ator.startswith("apify~instagram-post-scraper"):
         return {"username": [perfil], "resultsLimit": n, "onlyPostsNewerThan": desde}
     return {"directUrls": [f"https://www.instagram.com/{perfil}/"], "resultsType": "posts", "resultsLimit": n, "onlyPostsNewerThan": desde}
+
+
+def reels(ator: str, perfil: str, n: int, desde: str) -> dict | None:
+    """2ª leitura só para visualizações (o esdrasdw só informa plays no modo reels)."""
+    if ator.startswith("esdrasdw~"):
+        return {"directUrls": [perfil], "resultsType": "reels", "resultsLimit": n, "onlyPostsNewerThan": desde,
+                "selectedFields": ["shortCode", "videoPlayCount", "videoDuration"]}
+    return None
 
 
 def linha(x: dict, pf: dict, agora: str, old: dict) -> dict:
@@ -71,7 +81,7 @@ def linha(x: dict, pf: dict, agora: str, old: dict) -> dict:
             "curtidas": likes if likes is not None and likes >= 0 else None, "comentarios": inteiro(g(x, "commentsCount", "commentCount", "comment_count")),
             "compartilhamentos": inteiro(g(x, "reshareCount", "sharesCount")), "primeira_coleta": old.get("primeira_coleta") or agora,
             "ultima_coleta": agora, "capa_url": g(x, "displayUrl", "thumbnailUrl", "imageUrl", "image_versions2.candidates.0.url") or old.get("capa_url", ""),
-            "tipo": "vídeo" if views is not None or re.search(r"video|reel|clip", tipo, re.I) else "post"}
+            "tipo": "vídeo" if views is not None or x.get("_reel") or re.search(r"video|reel|clip", tipo, re.I) else "post"}
 
 
 def main(argv=None, executar=None) -> int:
@@ -127,8 +137,22 @@ def main(argv=None, executar=None) -> int:
     def um(a):
         pf, n = a
         try:
-            run, itens = executar(entrada(ator, pf["perfil"], n, cfg["desde"]), max(0.1, round(p_run + p_item * n * 1.3 + 0.005, 4)))
-            return pf, n, run or {}, itens or [], None
+            cap = max(0.1, round(p_run + p_item * n * 1.3 + 0.005, 4))
+            run, itens = executar(entrada(ator, pf["perfil"], n, cfg["desde"]), cap)
+            itens = itens or []
+            pr = reels(ator, pf["perfil"], n, cfg["desde"])
+            if pr and itens:
+                run2, vistos = executar(pr, cap)
+                plays = {str(v.get("shortCode")): v for v in (vistos or []) if v.get("shortCode")}
+                for x in itens:
+                    v = plays.get(str(x.get("shortCode")))
+                    if v:
+                        x["videoPlayCount"] = v.get("videoPlayCount")
+                        x["videoDuration"] = x.get("videoDuration") or v.get("videoDuration")
+                        x["_reel"] = True
+                run = {**(run or {}), "_custo_extra": max(custo_run(run2 or {}) or 0, round(p_run + p_item * len(vistos or []), 5)),
+                       "_reels_lidos": len(vistos or [])}
+            return pf, n, run or {}, itens, None
         except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
             corpo = ""
             try:
@@ -144,7 +168,7 @@ def main(argv=None, executar=None) -> int:
     for pf, n, run, itens, erro in res:
         posts = [x for x in itens if g(x, "shortCode", "shortcode", "code", "id") and not x.get("error") and not x.get("demo")]
         brutos += itens
-        custo = 0.0 if erro and not run else max(custo_run(run) or 0, round(p_run + p_item * len(itens), 5))
+        custo = 0.0 if erro and not run else max(custo_run(run) or 0, round(p_run + p_item * len(itens), 5)) + (run.get("_custo_extra") or 0)
         gasto += custo
         lidos = 0
         for x in posts:
@@ -154,7 +178,7 @@ def main(argv=None, executar=None) -> int:
                 acervo[r["video_id"]] = r
                 lidos += 1
         man["perfis"].append({"perfil": pf["perfil"], "candidato": pf["candidato"], "declarado_por": pf["declarado_por"], "pedido": n,
-                              "itens": len(itens), "lidos_no_periodo": lidos,
+                              "itens": len(itens), "reels_lidos": run.get("_reels_lidos"), "lidos_no_periodo": lidos,
                               "erro": erro or next((str(x.get("error") or x.get("errorDescription"))[:200] for x in itens if x.get("error")), None),
                               "mais_antigo": min((quando(g(x, "timestamp", "takenAt")) for x in posts), default=None),
                               "run": run.get("id"), "custo_usd": custo})
