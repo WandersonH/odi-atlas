@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.10 — Comentários do Kwai: uma execução por vídeo (2026-10-17) 🔜
+
+- Run `--videos-lula` (39081858562, US$ 0,1001): o ator devolveu 50 vídeos de @Lulaoficial (o máximo que entregou, de 02/10 a 17/10), juntados ao acervo; capas (+50), temas e análises refeitos. Lula passa a 365 vídeos no Kwai (2 perfis, 24.053.656 visualizações).
+- Carga 1 (39081962796, US$ 0,0476): pedidos 68 vídeos (Lula, até 25 cada) e 71 (Flávio, até 23 cada), mas cada execução leu só o 1º vídeo da lista: 25 + 23 comentários. Agora o coletor faz uma execução por vídeo (US$ 0,00005 de início cada), 4 em paralelo, com teto pequeno por execução e o mesmo teto total.
+- Testes: suíte OK.
+
 ## C18.9 — Kwai: vídeos de @Lulaoficial e cota de comentários por candidato (2026-10-17) 🔜
 
 - Teste 3 (run 39081710065): zen-studio/kwai-comments-scraper devolveu 5 comentários (campos `commentId`, `content`, `author`, `photoId`, `timestamp`, `likeCount`). Corrigido: o id do comentário vem de `commentId`; a rede de termos não quebra com amostra minúscula. Gasto dos 3 testes ≈ US$ 0,02 (manifestos em `data/kwai/comentarios/`).

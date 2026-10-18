@@ -44,7 +44,7 @@ class TestComentariosKwai(unittest.TestCase):
         cfg = json.loads((RAIZ / "data/config/kwai_comentarios.json").read_text(encoding="utf-8"))
         payload, cap = visto[0]
         self.assertEqual(payload["videoUrls"], ["https://www.kwai.com/@FlavioBolsonaro/video/v1"])  # vídeo de janeiro fica fora
-        self.assertEqual(cap, cfg["teto_teste_usd"])
+        self.assertLessEqual(cap, cfg["teto_teste_usd"])  # uma execução por vídeo, teto pequeno em cada
         self.assertEqual((rows[0]["comment_id"], rows[0]["texto"], rows[0]["autor_nome"], rows[0]["publicado_em"][:10]), ("c1", "bom vídeo", "Fulano", "2026-09-10"))
         self.assertEqual((rows[1]["comment_id"], rows[1]["texto"], rows[1]["autor_nome"], rows[1]["tipo"]), ("c2", "outro formato", "Beltrana", "comentario"))
         self.assertNotIn("Fulano", pub)

@@ -214,26 +214,39 @@ def main(argv=None, executar=None) -> int:
         if not alvo:
             continue
         alvo_total += len(alvo)
-        por_id = {v["video_id"]: v for v in alvo}
-        payload = {"videoUrls": [fmt.format(video_id=v["video_id"], url=v["url"]) for v in alvo], "maxCommentsPerVideo": por_video,
-                   "includeReplies": cfg["max_respostas_por_comentario"] > 0, "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
-        try:
-            run, itens = rodar(cfg["ator"], payload, teto - gasto)
-        except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
-            man["runs"].append({"erro": f"{type(e).__name__} {getattr(e, 'code', '')}".strip()})
-            continue
-        lin = [l for x in itens if e_comentario(x) and video_do_comentario(x) in por_id for l in linhas(x, por_id[video_do_comentario(x)], agora)]
-        n_c = sum(1 for x in itens if e_comentario(x))
-        estimado = round(p["inicio"] + p["comentario"] * n_c + p["video"] * (len(itens) - n_c), 4)
-        custo = max(custo_run(run) or 0, estimado)
-        gasto += custo
-        novas += lin
-        man["runs"].append({"id": run.get("id"), "status": run.get("status"), "videos": len(alvo), "por_video": por_video, "itens": len(itens),
-                            "comentarios": len(lin), "custo_usd": custo, "custo_estimado_tabela_usd": estimado,
-                            "eventos_cobrados": run.get("chargedEventCounts")})
-        print(f"lote: {len(alvo)} vídeos × até {por_video} · {len(itens)} itens · {len(lin)} comentários · US$ {custo}")
-        if itens and not lin:
-            print("1º item (só chaves e tipos, sem conteúdo): " + json.dumps({k: type(v).__name__ for k, v in itens[0].items()})[:700])
+        # O ator só lê o 1º vídeo de cada execução nesta conta (carga de 17/10: 68 e 71 vídeos pedidos, 1 lido em cada):
+        # uma execução por vídeo (início = US$ 0,00005), 4 em paralelo.
+        from concurrent.futures import ThreadPoolExecutor
+
+        def um(v):
+            pl = {"videoUrls": [fmt.format(video_id=v["video_id"], url=v["url"])], "maxCommentsPerVideo": por_video,
+                  "includeReplies": cfg["max_respostas_por_comentario"] > 0, "maxRepliesPerComment": cfg["max_respostas_por_comentario"]}
+            cap = p["inicio"] + p["comentario"] * por_video * 1.2 + 0.001
+            try:
+                return v, *executar(cfg["ator"], pl, round(cap, 4)), None
+            except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
+                return v, {}, [], f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
+        with ThreadPoolExecutor(max_workers=cfg.get("execucoes_paralelas", 4)) as ex:
+            resultados = list(ex.map(um, alvo))
+        brutos, lote_c, lote_custo, erros = [], 0, 0.0, 0
+        for v, run, itens, erro in resultados:
+            if erro:
+                erros += 1
+                continue
+            itens = itens or []
+            brutos += itens
+            lin = [l for x in itens if e_comentario(x) and video_do_comentario(x) == v["video_id"] for l in linhas(x, v, agora)]
+            n_c = sum(1 for x in itens if e_comentario(x))
+            custo = max(custo_run(run) or 0, round(p["inicio"] + p["comentario"] * n_c, 5))
+            lote_custo += custo
+            lote_c += len(lin)
+            novas += lin
+        gasto += lote_custo
+        with gzip.open(priv / f"apify_{now_utc().replace(':', '').replace('-', '')}_{len(man['runs'])}.jsonl.gz", "wt", encoding="utf-8") as f:
+            for x in brutos:
+                f.write(json.dumps(x, ensure_ascii=False) + "\n")
+        man["runs"].append({"execucoes": len(alvo), "erros": erros, "por_video": por_video, "comentarios": lote_c, "custo_usd": round(lote_custo, 4)})
+        print(f"lote: {len(alvo)} vídeos × até {por_video} (uma execução por vídeo) · {lote_c} comentários · {erros} erros · US$ {round(lote_custo, 4)}")
     man["videos_alvo"] = alvo_total
     man["videos_pendentes"] = len(pendentes)
     if not alvo_total:
