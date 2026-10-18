@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.23 — WhatsApp: seguidores dos canais públicos (2026-10-18) 🔜
+
+- Decisão do usuário (18/10, 02h): não usar o ator extremescrapes/whatsapp-messages-scraper (exige conectar um WhatsApp pessoal por QR code e lê conversas privadas e grupos, com telefone de pessoas comuns; não traz histórico). Primeira camada de WhatsApp: só os canais públicos declarados ao TSE.
+- `scripts/collect_whatsapp_canais.py`: lê a página pública de cada canal (whatsapp.com/channel/…, sem login, sem Apify) e extrai nome e "N seguidores" das metatags. Link de grupo (chat.whatsapp.com) não é canal e fica registrado como não coletado. Saída `data/seguidores/whatsapp_latest.csv` (lida pela página e pelo resumo da IA) e manifesto. Workflow `whatsapp-canais.yml` diário (11h41 UTC).
+- Testes: suíte OK (`test_whatsapp_canais`, com página simulada). Pendente: primeira execução real.
+
 ## C19.22 — Contas Apify 8 a 15 como reserva (2026-10-18) 🔜
 
 - O usuário cadastrou mais uma conta Apify (18/10) e disse que pode cadastrar até mais 8. Todos os coletores que usam as contas dos outros pesquisadores (Kwai, comentários do Kwai e do Facebook, posts do Facebook e do X, seguidores do TikTok, Social Blade e perfis sem número) e a verificação diária de saldo passam a aceitar `APIFY_TOKEN_8` a `APIFY_TOKEN_15`, nessa ordem, depois das contas 3 a 7. Segredo ausente é pulado. A conta 1 continua só nas rotinas diárias.

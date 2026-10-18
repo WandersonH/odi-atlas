@@ -1,0 +1,34 @@
+name: WhatsApp — seguidores dos canais públicos (sem login, sem custo)
+
+# Página pública de cada canal declarado ao TSE (presidente e vice). Nenhuma mensagem é lida.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 11 * * *"
+
+concurrency:
+  group: whatsapp-canais
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  canais:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar
+        continue-on-error: true
+        run: |
+          python scripts/collect_whatsapp_canais.py > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=WhatsApp::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "WhatsApp canais (run ${{ github.run_id }})"

@@ -71,7 +71,7 @@ def comentarios(root: Path, plat: str) -> dict | None:
 def seguidores(root: Path) -> list[dict]:
     out = []
     for arq, origem in (("latest.csv", "Apify (Instagram/Facebook)"), ("youtube_latest.csv", "YouTube API"), ("kwai_latest.csv", "Kwai"),
-                        ("x_latest.csv", "X"), ("tiktok_latest.csv", "TikTok"), ("complemento_latest.csv", "Apify (consulta direta ao perfil)")):
+                        ("x_latest.csv", "X"), ("tiktok_latest.csv", "TikTok"), ("complemento_latest.csv", "Apify (consulta direta ao perfil)"), ("whatsapp_latest.csv", "WhatsApp (página pública do canal)")):
         p = root / "data/seguidores" / arq
         if not p.exists():
             continue
