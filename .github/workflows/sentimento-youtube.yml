@@ -48,6 +48,10 @@ jobs:
         run: |
           python -u scripts/build_sentimento_comentarios.py | tee sent.txt
           while IFS= read -r l; do echo "::notice title=Sentimento::$l"; done < sent.txt
+          if [ -f "$ODI_INTERNO_DIR/kwai/comentarios/comentarios.csv.gz" ]; then
+            python -u scripts/build_sentimento_comentarios.py --plataforma kwai | tee sk.txt
+            while IFS= read -r l; do echo "::notice title=Sentimento Kwai::$l"; done < sk.txt
+          fi
       - name: Gravar cache no repositório privado
         if: always() && steps.interno.outputs.dir != ''
         run: |

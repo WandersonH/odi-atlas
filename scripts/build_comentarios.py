@@ -30,7 +30,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_conteudo as bc  # noqa: E402
 import chd_reinert as chd  # noqa: E402
 import corpus_populismo as cp  # noqa: E402
-from collect_comentarios_youtube import destino  # noqa: E402
+from collect_comentarios_youtube import destino, plataforma  # noqa: E402
 
 DESDE = "2026-08-16"
 SEMENTE = 42
@@ -135,25 +135,29 @@ def amostra_humana(rows: list[dict], n: int, semente: int = SEMENTE) -> list[dic
 
 def main(argv=None) -> int:
     root = Path(".")
-    dest, modo = destino()
+    plat, argv = plataforma(argv)
+    dest, modo = destino(plat)
     bruto = Path(argv[0]) if argv else dest / "comentarios.csv.gz"
-    pub = root / "data/youtube/comentarios"
+    pub = root / f"data/{plat}/comentarios"
     pub.mkdir(parents=True, exist_ok=True)
     if not bruto.exists():
         print(f"⛔ sem arquivo bruto de comentários ({bruto})")
         return 1
-    rows = [r for r in csv.DictReader(gzip.open(bruto, "rt", encoding="utf-8"), delimiter=";") if r["publicado_em"][:10] >= DESDE]
+    rows = [r for r in csv.DictReader(gzip.open(bruto, "rt", encoding="utf-8"), delimiter=";") if (r["publicado_em"][:10] or DESDE) >= DESDE]
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     temas, cands = bc.compile_cfg(cfg)
     pop = json.loads((root / "data/config/livro_codigos_populismo.json").read_text(encoding="utf-8"))
     intol = json.loads((root / "data/config/livro_codigos_intolerancia.json").read_text(encoding="utf-8"))
     r_pop, r_int = cp.compilar(pop), cp.compilar(intol)
-    conteudo = json.loads((root / "data/youtube/conteudo.json").read_text(encoding="utf-8"))
+    conteudo = json.loads((root / f"data/{plat}/conteudo.json").read_text(encoding="utf-8"))
     tema_video = {v["video_id"]: set(v["temas"]) - {"sem_tema"} for c in conteudo["candidatos"].values() for v in c["videos"]}
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "coletado_em_utc": max((r["coletado_em"] for r in rows), default=None), "modo": modo,
-           "metodo": ("Comentários públicos dos vídeos das campanhas desde 16/08/2026, pela API oficial: até 100 conversas por "
-                      "relevância e 100 mais recentes por vídeo, com as respostas que a API devolve junto. Não é o universo de "
+           "plataforma": plat,
+           "metodo": (("Comentários públicos dos vídeos do Kwai das campanhas desde 16/08/2026, via Apify (natanielsantos/kwai-scraper): "
+                       "até 50 comentários por vídeo, na ordem que o Kwai entrega, sem respostas. Não é o universo de " if plat == "kwai" else
+                       "Comentários públicos dos vídeos das campanhas desde 16/08/2026, pela API oficial: até 100 conversas por "
+                       "relevância e 100 mais recentes por vídeo, com as respostas que a API devolve junto. Não é o universo de ") +
                       "comentários nem amostra do eleitorado. Pré-codificação por dicionário (livros de códigos de populismo e de "
                       "intolerância/incivilidade): indica candidatos a cada categoria; a validação é humana (kappa). "
                       f"'Copiar e colar' = mesmo texto ({MIN_REPETIDO_CHARS}+ caracteres) publicado por {MIN_REPETIDO_AUTORES}+ "
@@ -222,11 +226,11 @@ def main(argv=None) -> int:
               f"{c['qualquer_intolerancia_pct']}%; copiar-colar {c['copiar_colar']['pct']}%; CHD {len(pub_chd.get('classes', []))} classes")
     (pub / "analise.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     if modo == "interno":
-        gravar_privado(dest, privado, cands, intol, pop)
+        gravar_privado(dest, privado, cands, intol, pop, plat)
     return 0
 
 
-def gravar_privado(dest: Path, privado: dict, cands: dict, intol: dict, pop: dict) -> None:
+def gravar_privado(dest: Path, privado: dict, cands: dict, intol: dict, pop: dict, plat: str = "youtube") -> None:
     """Material de pesquisa que contém texto de comentário: só no repositório privado."""
     cod = dest.parent.parent / "codificacao"
     cod.mkdir(parents=True, exist_ok=True)
@@ -245,7 +249,7 @@ def gravar_privado(dest: Path, privado: dict, cands: dict, intol: dict, pop: dic
                 pos = {r["comment_id"]: i for i, r in enumerate(rr)}
                 for r in am:
                     i = pos[r["comment_id"]]
-                    w.writerow([r["comment_id"], cands[cid]["nome"], f"https://www.youtube.com/watch?v={r['video_id']}", r["tipo"],
+                    w.writerow([r["comment_id"], cands[cid]["nome"], (f"https://www.kwai.com/@{r['channel_id']}/video/{r['video_id']}" if plat == "kwai" else f"https://www.youtube.com/watch?v={r['video_id']}"), r["tipo"],
                                 r["publicado_em"], r["texto"].replace("\n", " ")] + [""] * len(cats) + [""])
                     wp.writerow([r["comment_id"]] + [int(k in (c_int[i] | c_pop[i])) for k in cats])
     with open(dest / "corpus_iramuteq_comentarios.txt", "w", encoding="utf-8") as f:

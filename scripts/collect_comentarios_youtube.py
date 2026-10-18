@@ -34,11 +34,24 @@ CAMPOS = ["comment_id", "parent_id", "tipo", "video_id", "candidate_id", "channe
           "texto", "curtidas", "respostas", "publicado_em", "atualizado_em", "coletado_em"]
 
 
-def destino() -> tuple[Path, str]:
+def destino(plat: str = "youtube") -> tuple[Path, str]:
     d = os.environ.get("ODI_INTERNO_DIR")
     if d:
-        return Path(d) / "youtube/comentarios", "interno"
-    return Path(os.environ.get("RUNNER_TEMP") or tempfile.gettempdir()) / "odi_comentarios", "efemero"
+        return Path(d) / plat / "comentarios", "interno"
+    return Path(os.environ.get("RUNNER_TEMP") or tempfile.gettempdir()) / f"odi_comentarios_{plat}", "efemero"
+
+
+def plataforma(argv) -> tuple[str, list]:
+    """--plataforma youtube|kwai (padrão youtube): as análises de comentários valem para as duas, com as mesmas regras."""
+    argv = list(argv or [])
+    plat = "youtube"
+    if "--plataforma" in argv:
+        i = argv.index("--plataforma")
+        plat = argv[i + 1]
+        del argv[i:i + 2]
+    if plat not in ("youtube", "kwai"):
+        raise SystemExit(f"plataforma desconhecida: {plat}")
+    return plat, argv
 
 
 def linhas_da_conversa(item: dict, video: dict, ordem: str, agora: str) -> list[dict]:

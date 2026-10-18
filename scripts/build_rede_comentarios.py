@@ -36,7 +36,7 @@ import build_conteudo as bc  # noqa: E402
 import build_rede as br  # noqa: E402
 import chd_reinert as chd  # noqa: E402
 import corpus_populismo as cp  # noqa: E402
-from collect_comentarios_youtube import destino  # noqa: E402
+from collect_comentarios_youtube import destino, plataforma  # noqa: E402
 
 SEMENTE = 42
 MAX_NOS_DESENHO = 400
@@ -114,14 +114,15 @@ def rede_respostas(rows: list[dict]) -> tuple[nx.DiGraph, list]:
 
 def main(argv=None) -> int:
     root = Path(".")
-    dest, modo = destino()
+    plat, argv = plataforma(argv)
+    dest, modo = destino(plat)
     bruto = Path(argv[0]) if argv else dest / "comentarios.csv.gz"
-    pub = root / "data/youtube/comentarios"
+    pub = root / f"data/{plat}/comentarios"
     pub.mkdir(parents=True, exist_ok=True)
     if not bruto.exists():
         print(f"⛔ sem arquivo bruto ({bruto})")
         return 1
-    rows = [r for r in csv.DictReader(gzip.open(bruto, "rt", encoding="utf-8"), delimiter=";") if r["publicado_em"][:10] >= bcm.DESDE]
+    rows = [r for r in csv.DictReader(gzip.open(bruto, "rt", encoding="utf-8"), delimiter=";") if (r["publicado_em"][:10] or bcm.DESDE) >= bcm.DESDE]
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     ids = tuple(cfg["candidatos"])
     L, F = ids

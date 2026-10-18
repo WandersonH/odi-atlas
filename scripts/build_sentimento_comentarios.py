@@ -111,10 +111,12 @@ def ler_csv(p: Path) -> list[dict]:
 
 
 def main(argv=None, classificar=None) -> int:
+    from collect_comentarios_youtube import plataforma
+    plat, argv = plataforma(argv)
     root = Path(argv[0]) if argv else Path(".")
     cfg = json.loads((root / "data/config/sentimento_comentarios.json").read_text(encoding="utf-8"))
     fases = json.loads((root / "data/config/trends.json").read_text(encoding="utf-8")).get("fases", [])
-    saida = root / "data/youtube/comentarios/sentimento.json"
+    saida = root / f"data/{plat}/comentarios/sentimento.json"
     saida.parent.mkdir(parents=True, exist_ok=True)
     base = {"schema_version": 1, "gerado_em_utc": now_utc(), "modelo": cfg["modelo"], "metodo": cfg["nota"],
             "min_comentarios_video": cfg["min_comentarios_video"]}
@@ -124,7 +126,7 @@ def main(argv=None, classificar=None) -> int:
                                     ensure_ascii=False, indent=1), encoding="utf-8")
         print("⛔ ODI_INTERNO_DIR ausente")
         return 1
-    d = Path(interno) / "youtube/comentarios"
+    d = Path(interno) / plat / "comentarios"
     rows = ler_csv(d / "comentarios.csv.gz")
     cache = {r["comment_id"]: r for r in ler_csv(d / "sentimento.csv.gz") if r.get("modelo") == cfg["modelo"]}
     pend = [r for r in rows if r["comment_id"] not in cache and (r.get("texto") or "").strip()]
@@ -151,7 +153,7 @@ def main(argv=None, classificar=None) -> int:
             print(f"  {feitos} classificados ({time.monotonic() - t0:.0f} s)", flush=True)
     rot = {k: v["rotulo"] for k, v in cache.items()}
     nomes = {}
-    cj = root / "data/youtube/conteudo.json"
+    cj = root / f"data/{plat}/conteudo.json"
     if cj.exists():
         nomes = {k: v.get("nome", k) for k, v in json.loads(cj.read_text(encoding="utf-8"))["candidatos"].items()}
     cand = agregar(rows, rot, fases, cfg["min_comentarios_video"], nomes)

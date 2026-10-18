@@ -4,7 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C18.6 — Anúncios: Google sem os anúncios de 2022; busca de coletor de comentários do Kwai (2026-10-17) 🔜
+## C18.7 — Comentários do Kwai: coletor e análises com as regras do YouTube (2026-10-17) 🔜
+
+- Run do Google com o recorte (39075625107): 30 anúncios lidos, 28 fora do recorte (21/08/2022 a 01/03/2024; anunciantes "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE" e "Partido dos trabalhadores" saem inteiros), 2 anúncios de 2026 de 2 anunciantes ficam na página.
+- Loja Apify (run de `teste-apify-loja`, 17/10): coletores de comentários do Kwai — natanielsantos/kwai-scraper (US$ 0,002/vídeo + US$ 0,001/comentário; 224 usuários em 30 dias, 1.638/1.657 execuções com sucesso) e zen-studio/kwai-comments-scraper (US$ 0,00099/comentário; 2 usuários). Escolhido o primeiro.
+- Volume (acervo `data/kwai/videos.csv.gz`, desde 16/08): Flávio 72 vídeos e 159.608 comentários (3.565 com limite de 50 por vídeo); @podeespalhar 86 vídeos e 24 comentários; @Lulaoficial sem vídeos.
+- Autorização do usuário: teto de US$ 4 com a chave `APIFY_TOKEN_3` (`data/config/kwai_comentarios.json`); teste de US$ 0,10 dentro do mesmo teto.
+- `collect_comentarios_kwai.py` (+ `kwai-comentarios.yml`): teste com 3 vídeos × 10 comentários e 5 vídeos de @Lulaoficial (para ver se este ator lista a conta oficial); carga com até 50 comentários por vídeo, vídeos que cabem no teto pela tabela de preços. Custo de cada execução = maior entre o informado pela Apify e a estimativa pela tabela. Texto e autor só no repositório privado.
+- `build_comentarios.py`, `build_rede_comentarios.py` e `build_sentimento_comentarios.py` aceitam `--plataforma kwai` (mesmas regras do YouTube; saída em `data/kwai/comentarios/`); `sentimento-youtube.yml` classifica também o Kwai quando houver comentários.
+- Testes: `tests/test_comentarios_kwai.py` (formato, recorte de data, nada de texto ou nome no público, custo estimado); suíte OK.
+- Pendente: run de teste e carga; página "Comentários do Kwai".
+
+## C18.6 — Anúncios: Google sem os anúncios de 2022; busca de coletor de comentários do Kwai (2026-10-17) ✅ (Google executado no run 39075625107)
 
 - Pedido do usuário: "na página de anúncios retira 2022". A Central do Google trazia 27 anúncios de 2022 (anunciante "ELEIÇÃO 2022 LUIZ INACIO LULA DA SILVA PRESIDENTE" e vídeos do PT), mais 1 de 2024. `collect_google_transparencia.py` passa a recortar por `exibir_desde` = 01/01/2026 (`data/config/google_transparencia.json`): anunciantes, prévias, contagem por domínio e `anuncios.csv` só com anúncios de 2026; o que saiu é contado em `fora_do_recorte` e citado na nota da página. Teste novo (`TestRecorte`). Na Meta não havia anúncio de 2022 (datas de início: 2024–2026).
 - `teste-apify-loja.yml`: termos de busca, filtro e trecho do README viram entradas, para procurar coletores de comentários do Kwai.
