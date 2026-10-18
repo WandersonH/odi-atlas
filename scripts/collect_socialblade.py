@@ -105,7 +105,7 @@ def main(argv=None, executar=None) -> int:
         pl = {"platform": plat, "resultType": "profile", "queries": [a["perfil"] for a in grupo], "includeHistory": True, "includeGrowth": False,
               "historyLimit": 365}
         try:
-            run, itens = executar(pl, round(0.03 * len(grupo) + 0.02, 3))
+            run, itens = executar(pl, max(0.1, round(0.03 * len(grupo) + 0.02, 3)))  # a Apify exige teto mínimo de US$ 0,10 por execução neste ator
         except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
             corpo = ""
             try:

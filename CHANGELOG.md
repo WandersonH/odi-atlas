@@ -8,6 +8,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Pedido do usuário: série diária retroativa de seguidores coletada pela Apify, sem contratar a API do Social Blade. Loja (run de `teste-apify-loja`, 18/10): rl1987/social-blade-lookup (US$ 0,01 por evento: perfil, histórico, crescimento; Instagram, TikTok, YouTube e Twitch — sem X e Facebook), radeance/socialblade-api (US$ 0,01 por resultado), solidcode/socialblade-scraper (US$ 0,03 por item).
 - `collect_socialblade.py` + `socialblade.yml`: 35 perfis declarados ao TSE pelas chapas 13 e 22 (Instagram 19, TikTok 10, YouTube 6), modo "profile" com histórico; série em `data/seguidores/socialblade_historico.csv` (plataforma, perfil, data, seguidores, seguindo, posts, visualizações). Teto US$ 3; contas 3 a 7.
+- Teste 1 (18/10 03h31 UTC, conta 3): HTTP 400 "max-total-charge-usd-below-minimum" — este ator exige teto mínimo de US$ 0,10 por execução (o mesmo motivo provável do 400 no 1º teste dos comentários do Facebook). Teto por execução ajustado.
 - Testes: suíte OK.
 
 ## C19.14 — X: assuntos do momento no Brasil, de hora em hora (2026-10-18) 🔜
