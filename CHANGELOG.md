@@ -9,7 +9,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Carga das demais chapas (run 39131229326): acervos TikTok 1.494, Instagram 3.942, Facebook 464, X 3.017 publicações. Sem leitura: Facebook EDPCB21 ("no_items") e AUGUSTOCURY.AUTOR ("not_available"); Instagram com 0 no período: cleusa_santos191, cachorreirosdesaopaulo, gateirosdabahia, gateirosdesaopaulo; X @Clarianabr 0; TikTok @oncaviral e @eduardogiraooficial sem vídeo desde 20/07. No limite (piso, não total): Instagram 294 em 10 perfis, X 574 em 3, TikTok 300 (limite do coletor) em 3 — o TikTok passa a marcar `no_limite` como as outras redes. Kwai falhou por falta de conta com saldo ≥ 0,60 → com conta reaproveitada aceita saldo menor; refeito só o Kwai.
 - Caso 1, complemento do X (run 39132855716): +1.855 posts (total 4.642 publicações, X 4.528), mas o mais antigo continuou 17/10 12h18 UTC — no pico o X teve ≈ 2 mil posts por hora, e a busca "mais recentes" não alcança o começo. Tetos do caso redistribuídos dentro dos US$ 3 (X 1,30; Instagram 0,40; Kwai 0,30; Facebook 0,80) e novo complemento só antes de 17/10 06h (Brasília).
 - `build_casos.py`: rede com termo no limite em qualquer coleta fica marcada (`no_limite`); a página mostra "≥" nos números e avisa na linha do tempo que o começo naquela rede pode estar fora.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.47 — Caso 1: resultado da carga e complemento do começo no X (2026-10-18) ⚠️
 
@@ -60,14 +60,14 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Relato do usuário (18/10, 04h15): "página Instagram tá em branco". Conferido no Chrome do usuário, no site publicado: os dados carregavam (4.629 posts de Lula e 695 de Flávio), mas a seção estava fora de `<main>` (filha de `<body>`, depois do rodapé), porque foi inserida após o último script do Facebook, que fica fora da área principal. O conteúdo ia para baixo do layout e a área visível ficava vazia. O teste local anterior usava captura da página inteira e não pegou isso.
 - Correção: a seção do Instagram vai para dentro de `<main>`, logo depois da do Facebook; conferido que nenhum painel fica fora de `<main>`. Título da aba do navegador: V14 → V15 (auditoria, item 8).
 - Verificado no Chromium local pelo caminho do usuário (menu → "O que as campanhas dizem" → aba Instagram), em tela de 1200×700: título, introdução e acervo visíveis no topo; sem erro de JavaScript.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.41 — Pontes entre públicos: Gephi e IRaMuTeQ (2026-10-18) ✅
 
 - Pedido do usuário (18/10, 03h23): "nessa página ponte entre públicos não esqueça IRaMuTeQ e Gephi". `build_pontes.py` passa a gerar, por rede: `data/pontes/<rede>_contas_ponte.gexf` (bipartida conta-ponte × conteúdo, peso = comentários, tom predominante na ligação) e `data/pontes/<rede>_respostas_entre_publicos.gexf` (dirigida, quem responde → respondido, nº de negativas). Autores só por código P0001… (ordem de atividade); a tabela código ↔ conta fica no privado (`pontes/<rede>_codigos.csv`). Corpus IRaMuTeQ privado (`pontes/<rede>_corpus_iramuteq.txt`) com os comentários das contas-ponte e as respostas entre públicos e as variáveis `*rede_ *conteudo_ *publico_ *ponte_ *resposta_entre_publicos_ *tom_ *fase_`.
 - Números da execução local (repositório privado, 18/10): YouTube — rede de contas-ponte 1.530 nós / 3.501 ligações, respostas entre públicos 193 / 118, corpus 4.730 comentários; X (com a carga por post: 29.260 respostas, 12.693 autores) — 585 contas-ponte (4,61% dos autores), 58 respostas entre públicos de 2.561 com mensagem respondida na amostra, rede 1.172 / 3.978, corpus 4.926; Facebook (11.882 comentários após a ampliação) — 30 contas-ponte (0,28%), sem respostas.
 - Página: cartão "Redes para o Gephi e corpus para o IRaMuTeQ" na aba Pontes, por rede, com downloads e instruções; a nota do X corrigida (agora há respostas entre públicos). Verificado no Chromium local, sem erro de JavaScript.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.40 — Teste de posicionamento sem treino (2026-10-18) 🔜
 
@@ -83,7 +83,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Pedido do usuário (18/10, 03h31, print do mapa de tags com "acervo completo · não acompanha o filtro"): "integre ao filtro". `build_conteudo.py` (YouTube) grava `nuvem_por_fase` e `mapa_tags_por_fase`; `build_tiktok.py` (TikTok, Kwai, Facebook, X, Instagram) grava `nuvem_por_fase` e `hashtags_por_fase`. Nas 6 páginas, nuvens, hashtags e o mapa de tags são redesenhados ao trocar a fase, e o selo do cartão vira "acompanha o filtro de fase". Conteúdos regenerados localmente.
 - Verificado no Chromium local (todo o período → 2º turno): YouTube, mapa de tags de Flávio "#vote22 29 vídeos" → "#flaviobolsonaro 6, #vote22 5"; TikTok, hashtags de Flávio "#ultimasnoticias 30, #vote22 28" → "#vote22 6, #bolsafamilia 3"; nuvens mudam; sem erro de JavaScript.
 - ⚠️ Ainda não acompanham o filtro: estratégias discursivas (Bardin) e CHD (trabalho iniciado e guardado fora do repositório; o primeiro teste quebrou o gerador do corpus e não foi enviado), rede de influenciadores do YouTube e rede de contas do TikTok com hashtags dos candidatos.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.38 — YouTube: canal correto do Augusto Cury (2026-10-18) 🔜
 
@@ -98,19 +98,19 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Correção encontrada no teste: o botão "Baixar .gexf" do painel lateral das redes de TikTok, Kwai, Facebook, Instagram e X baixava a rede do YouTube (texto copiado na geração das páginas); agora baixa a rede da própria plataforma e da fase.
 - Redes geradas localmente (exemplos): YouTube pré 41 nós, 1º turno 147, 2º turno 22; Facebook 1º turno 25, 2º turno 130, pré sem rede (sem posts coletados); menções do X pré 64 contas, 1º turno 124, 2º turno 104.
 - Verificado no Chromium local (Facebook, YouTube, Instagram; período todo → 2º turno → pré): desenho e links mudam, sem erro de JavaScript.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.36 — Página do Instagram verificada com a carga (2026-10-18) ✅
 
 - Aberta no Chromium local com os 3.599 posts: cobertura (Lula 262 / 1.541 / 1.101; Flávio 159 / 393 / 143 por fase, com aviso de variação em Lula), lista de perfis, temas, linha do tempo, nuvens, posts, CHD e redes, sem erro de JavaScript.
 - Correções: o "espalhamento" vertical das bolhas lia os últimos dígitos do id do post (no Instagram o código tem letras → coordenada NaN); agora usa um hash do código. A bolha usa curtidas quando o post não tem visualização (fotos e carrosséis), como o título já dizia. A lista de perfis lia `lidos` (campo do Facebook); passa a ler também `lidos_no_periodo` ("823 posts desde 20/07").
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.35 — Instagram: gravar a coleta antes das etapas lentas; miniaturas em paralelo (2026-10-18) 🔜
 
 - A 1ª carga do Instagram (run 39100842854) terminou a coleta em 9 min, mas a etapa de miniaturas passou de 30 min (≈1.100 capas baixadas uma a uma, espera de até 30 s cada), com risco de o job (limite de 60 min) acabar antes de gravar os posts. `instagram-posts.yml`: grava `data/` logo após a coleta, miniaturas com limite de 15 min, job com limite de 120 min. `build_miniaturas_kwai.py`: 8 downloads em paralelo (vale para Kwai, Facebook, X e Instagram).
 - Carga (run 39100842854, conta 8): 3.599 posts de 17 perfis desde 20/07 (US$ 0,34). @lulaoficial 823, @flaviobolsonaro 316; brasilcomlula, lulaversoficial e pode_espalhar bateram o limite de 400 (mais antigo: 26/09, 12/09 e 20/09); denunciabr_reserva, denunciabr_reserva1 e flaviocomaverdade sem posts no período. Visualizações vazias em 1.272 (fotos e carrosséis), legenda vazia em 14. Limite dos perfis de apoio sobe para 1.500 e a carga é refeita.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.34 — Auditoria (itens 10 e 12): Trends, contas × eleitorado e Reuters (2026-10-18) ✅
 
@@ -134,7 +134,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - **1 · Filtro de turno só mudava parte da página**: nas 6 páginas de conteúdo (YouTube, TikTok, Kwai, Facebook, Instagram, X), as contagens por tema (chips e barras), "citam o adversário", "pedem voto" e a interação mediana passam a ser calculadas sobre os conteúdos da fase escolhida (antes vinham do acervo inteiro). Componentes que dependem de análises pré-calculadas sobre o acervo (nuvens, mapa de tags, CHD, redes de coocorrência e de menções, influenciadores) ganham o selo "acervo completo · não acompanha o filtro de fase".
 - Verificado no Chromium local (todo o período × 2º turno, Lula): YouTube 1.030 → 131 vídeos, cita adversário 79 → 22, pede voto 22 → 5, chip "Todos" 1.552 → 243; TikTok 826 → 112, interação mediana 11,7% → 16,7%; Facebook 301 → 282 posts; X 2.149 → 451. Sem erro de JavaScript.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.30 — Auditoria (item 4): análises de discurso sem rodapé legal e sem acervo antigo (2026-10-18) ✅
 
@@ -238,7 +238,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Carga (16 perfis, US$ 0,33): **222 pontos diários de 16/09 a 18/10** — TikTok flaviobolsonaro, lulaoficial, pode_espalhar e alckmingeraldo (31 dias cada); YouTube flaviobolsonaro, lulaoficial e brasilcomlula (31 dias cada); comitedeluta, canaltvcelular, brasilcomlula_, evangelicoscomlula e alfredogaspar com 1 ponto; alfredogasparoficial e 3 canais de YouTube sem dados. Arquivo `data/seguidores/socialblade_historico.csv`.
 - Teste de histórico pelo id com `historyLimit` 365 (US$ 0,02): devolveu os mesmos 30 dias. O Social Blade só entrega ~30 dias por essa via; a pré-campanha (20/07 a 15/08) não tem série retroativa. Instagram: série bloqueada pelo próprio Social Blade (README do ator).
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.17 — Sentimento por semana de campanha (menu recolhível) (2026-10-18) 🔜
 
@@ -250,7 +250,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Pedido do usuário: "nunca exibir o custo da coleta". Removidos da página todos os textos de custo/gasto das coletas (Kwai, Facebook, X, anúncios da Meta e comentários do Kwai e do Facebook). Os manifestos com custo continuam no repositório como evidência (regra do CLAUDE.md), sem aparecer na página. "Gasto" dos anúncios (dado declarado pela Meta) continua.
 - Comentários do Kwai: o coletor pula contas que já esgotaram as 25 execuções gratuitas do ator (conta 3; e as próximas, registradas no manifesto), começa pelo candidato com menos comentários (Flávio: 28) e passa a valer desde 20/07.
 - Social Blade (teste TikTok @lulaoficial, US$ 0,02): 31 dias de série (18/09 a 18/10: seguidores, seguindo, vídeos, curtidas). Carga de 16 perfis (TikTok e YouTube) disparada.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.15 — Seguidores retroativos via Social Blade pela Apify (2026-10-18) 🔜
 
@@ -258,7 +258,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `collect_socialblade.py` + `socialblade.yml`: 35 perfis declarados ao TSE pelas chapas 13 e 22 (Instagram 19, TikTok 10, YouTube 6), modo "profile" com histórico; série em `data/seguidores/socialblade_historico.csv` (plataforma, perfil, data, seguidores, seguindo, posts, visualizações). Teto US$ 3; contas 3 a 7.
 - Teste 1 (18/10 03h31 UTC, conta 3): HTTP 400 "max-total-charge-usd-below-minimum" — este ator exige teto mínimo de US$ 0,10 por execução (o mesmo motivo provável do 400 no 1º teste dos comentários do Facebook). Teto por execução ajustado.
 - Teste 2 (Instagram @lulaoficial, US$ 0,02): o perfil veio sem série. O README do ator informa que, no Instagram, histórico e crescimento são bloqueados pelo próprio Social Blade; ficam só TikTok e YouTube (16 perfis).
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.14 — X: assuntos do momento no Brasil, de hora em hora (2026-10-18) 🔜
 
@@ -282,14 +282,14 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Página X no caderno 02, gerada da do Facebook (perfis, fases, temas, linha do tempo, listas, Bardin + CHD, redes de coocorrência e de menções, downloads), lendo `data/x/`. Chromium 1300 e 390 px: 2.149 posts de Lula e 926 de Flávio desde 20/07, rede de coocorrência com 1.065 arestas, rede de menções com 240 contas, sem erro de JavaScript e sem rolagem horizontal.
 - Comentários do Facebook: teste após o ajuste (manifesto de 18/10 01h16 UTC) com 20 comentários de 2 posts, US$ 0,005; carga disparada.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.10 — X carregado; página Comentários sem nome das redes, com Facebook (2026-10-17) ⚠️
 
 - X, carga (run 39085553991, xquik, conta 3): **3.061 posts** (sem reposts) desde 20/07 — LulaOficial 1.482, FlavioBolsonaro 485, alfredogaspar_ 440, geraldoalckmin 226, comitespop 147, lulaverso 119, pode_espalhar 109, obrasilcomlula 53; pl22al e LulaEvangelicos sem posts na busca. US$ 0,46 pela tabela. Seguidores de 8 perfis gravados em `data/seguidores/x_latest.csv` (LulaOficial 10.765.666; FlavioBolsonaro 3.794.692; geraldoalckmin 1.373.545; lulaverso 139.882; alfredogaspar_ 82.689; comitespop 12.113; pode_espalhar 7.803; obrasilcomlula 183).
 - Comentários do Facebook, teste (run 39085646280, conta 3): HTTP 400 da Apify na entrada. Entrada reduzida a `startUrls` + `resultsLimit`; o erro passa a registrar a resposta da Apify (sem o token).
 - Página: o menu passa a "Comentários" (sem o nome das redes), com as subabas YouTube, Kwai e Facebook; a do Facebook é gerada da do Kwai e lê `data/facebook/comentarios/`.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.9 — Comentários do Facebook: coletor (contas 3 a 7, teto US$ 1,50) (2026-10-17) 🔜
 
@@ -303,7 +303,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Teste com xquik (run 39085419257, US$ 0,003): 20 itens da linha do tempo de @LulaOficial em ~1 hora, quase todos reposts e respostas. O coletor passa a usar a busca do próprio X (`from:perfil since:2026-07-20 -filter:retweets`): posts e respostas do perfil, sem reposts.
 - O coletor passa para **xquik/x-tweet-scraper** (README: US$ 0,00015 por linha, funciona no plano gratuito), com leitura de campos tolerante a nomes diferentes; mesmo teto de US$ 2.
 - Teste da busca (run 39085493277): 20 posts próprios de @LulaOficial (10.765.658 seguidores). Carga: até 2.500 posts dos perfis principais e 800 dos demais (≈ US$ 1,71 pela tabela).
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.7 — X: coletor de posts e seguidores dos perfis declarados (contas 3 a 7, teto US$ 2) (2026-10-17) 🔜
 
@@ -319,7 +319,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Facebook: modo `pre-campanha` (`--pre`): posts de 20/07 a 15/08 (`onlyPostsOlderThan` 16/08), até 60 das páginas principais e 20 das demais, sem repetir os já coletados; ≈ US$ 1,61 pela tabela, dentro do teto de US$ 5 (gasto até aqui US$ 2,52).
 - Run `pre-campanha` 39084573495 (conta 4 escolhida automaticamente; US$ 0,01): 0 posts em todas as páginas — o filtro `onlyPostsOlderThan` devolve "no_items". Ajuste: o modo relê só as páginas principais desde 20/07, sem limite superior, até 200 posts cada (os posts já coletados são cobrados de novo; ≈ US$ 1,65 pela tabela, dentro do teto).
 - Run `pre-campanha` 39084766464 (conta 4): lula 150 e flaviobolsonaro 150 posts lidos (até 200 pedidos), 81 novos (pré-campanha); acervo do Facebook 471 posts (Lula 301, Flávio 170); 80 capas novas; US$ 1,997. Gasto do Facebook: US$ 4,52 de 5.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.5 — Todas as páginas desde a pré-campanha (20/07), com filtro por fase (2026-10-17) 🔜
 
@@ -340,7 +340,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Achado: os manifestos do Kwai registraram US$ 0 (a Apify devolveu `chargedEventCounts` vazio), mas a conta 2 foi cobrada: o custo por execução não é confiável nesse ator. Os coletores do Kwai, do Facebook e dos comentários do Kwai passam a ler o saldo real da conta (`/users/me/limits`) antes de rodar e param com ⛔ se o saldo for menor que o teto da execução.
 - Consequência: a coleta diária do Kwai (conta 2) fica parada até o novo ciclo da conta (01/11) ou até mudar de conta.
 - Facebook (run `so-analises`): 340 capas (12 falhas, 38 posts sem URL de capa); rede de menções gerada. Página verificada no Chromium (1300 e 390 px): 22 capas na lista, 928 arestas na rede de coocorrência, rede de menções com 20 contas, sem erro de JavaScript e sem rolagem horizontal.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.2 — Apify: verificação diária das contas 1 a 7 (2026-10-17) 🔜
 
@@ -353,7 +353,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Teste (run 39083282446, US$ 0,036): 7 posts de facebook.com/lula (desde 16/08).
 - Carga (run 39083340754, US$ 2,482 pela tabela): **390 posts** desde 16/08 — lula 112, flaviobolsonaro 112, obrasilcomlula 30, Pode-Espalhar 30, evangelicoscomlula 30, geraldoalckmin 30, geracaolula 30, alfredogasparoficial 12, denuncia.br.2026 3, canaltvcelular 1; lulaverso "not_available". Lula 262 posts (6 páginas, 63.341.066 visualizações de vídeos), Flávio 128 (4 páginas, 93.542.329). CHD: 629 segmentos, 6 classes. Gasto acumulado: US$ 2,52 de US$ 5.
 - Página "Facebook" no caderno 02, gerada da do Kwai (perfis/páginas, temas, linha do tempo, listas com capa, Bardin + CHD, redes de coocorrência e de menções, downloads). Capas e rede de menções do Facebook: `build_miniaturas_kwai.py --facebook` e `build_rede_mencoes_tiktok.py --facebook`; modo `so-analises` no workflow refaz tudo sem nova coleta (sem custo).
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C19.0 — Facebook: o que as campanhas publicam (Apify, conta 2, teto US$ 5) (2026-10-17) 🔜
 
@@ -369,7 +369,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Pedido do usuário (21h24): "colete tudo que conseguir com até 5 dólares" — teto total dos comentários do Kwai passa a US$ 5.
 - O zen-studio está bloqueado pelo limite de 25 execuções gratuitas da conta; não uso outras contas para contornar. Modos novos: `teste-nataniel` (1 vídeo × 20 comentários pelo natanielsantos/kwai-scraper, que no teste 1 não trouxe comentários com vários vídeos) e `carga-nataniel` (todos os pendentes numa execução por candidato).
 - Resultado do `teste-nataniel` (run 39082754047, US$ 0,0021): 1 vídeo, **0 comentários** (eventos `comment`: 0). O natanielsantos/kwai-scraper não entrega comentários nesta conta. Sem plano pago na Apify, não há como coletar mais comentários do Kwai; o acervo fica em 678 (Lula 650, Flávio 28). Gasto acumulado registrado: US$ 0,81.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C18.11 — Comentários do Kwai: limite gratuito do ator; página no ar com aviso de desequilíbrio (2026-10-17) ⚠️
 
@@ -383,7 +383,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Run `--videos-lula` (39081858562, US$ 0,1001): o ator devolveu 50 vídeos de @Lulaoficial (o máximo que entregou, de 02/10 a 17/10), juntados ao acervo; capas (+50), temas e análises refeitos. Lula passa a 365 vídeos no Kwai (2 perfis, 24.053.656 visualizações).
 - Carga 1 (39081962796, US$ 0,0476): pedidos 68 vídeos (Lula, até 25 cada) e 71 (Flávio, até 23 cada), mas cada execução leu só o 1º vídeo da lista: 25 + 23 comentários. Agora o coletor faz uma execução por vídeo (US$ 0,00005 de início cada), 4 em paralelo, com teto pequeno por execução e o mesmo teto total.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C18.9 — Kwai: vídeos de @Lulaoficial e cota de comentários por candidato (2026-10-17) 🔜
 
@@ -399,7 +399,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `build_rede_comentarios.py` para com ⛔ quando há menos de 2 comentários (o teste 1 quebrou com lista vazia).
 - Página: subaba **Kwai** em Comentários, gerada da página do YouTube (mesmos blocos: números, sentimento, nuvens, intolerância/incivilidade, populismo, aderência ao tema, série diária, CHD, redes Gephi, IRaMuTeQ no privado, método), lendo `data/kwai/comentarios/`. Botão do menu: "Comentários · YouTube e Kwai".
 - Teste 2 (run 39081622751, US$ 0,0001): com `/video/ID` o ator não devolve nada. O natanielsantos/kwai-scraper não entregou comentários em nenhum formato; o coletor passa para **zen-studio/kwai-comments-scraper** (US$ 0,00099/comentário, entrada `videoUrls`), mesmo teto de US$ 4 e mesma chave. Leitura dos campos do comentário tolerante a nomes diferentes; o log mostra só as chaves e tipos do 1º item quando nada for reconhecido.
-- Testes: suíte OK.
+- Testes: o commit anterior saiu com `test_casos` desatualizado (esperava 1.688 itens por termo; com o novo teto do X o máximo de 2.000 cabe) — corrigido no commit seguinte; suíte OK.
 
 ## C18.7 — Comentários do Kwai: coletor e análises com as regras do YouTube (2026-10-17) 🔜
 

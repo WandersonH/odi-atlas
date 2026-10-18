@@ -57,7 +57,7 @@ class TestCasos(unittest.TestCase):
         self.assertNotIn("pequeno\"", gexf)
         self.assertNotIn("custo", json.dumps(caso))                              # custo da coleta nunca vai para a página
         self.assertEqual([c["estado"] for c in indice["casos"]][1:], ["aguardando confirmação de datas e termos"] * 3)
-        self.assertEqual(man["redes"][0]["itens_pedidos_por_termo"], 1688)
+        self.assertEqual(man["redes"][0]["itens_pedidos_por_termo"], 2000)       # teto do X (1,30) cabe o máximo por termo
 
 
 if __name__ == "__main__":
