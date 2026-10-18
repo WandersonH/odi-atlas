@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.21 — Card "Perfil não encontrado" e Facebook nos perfis sem número (2026-10-18) 🔜
+
+- 2ª execução do coletor de faltantes: os atores responderam "Profile does not exist" para Instagram comitepopularoficial e alfredogasparoficial e "This profile/hashtag does not exist." para TikTok alfredogasparoficial (`data/seguidores/complemento_manifesto_latest.json`). Esses endereços foram declarados ao TSE mas não existem hoje na rede. O card deixa de dizer "Não coletado" e passa a dizer "Perfil não encontrado", com a mensagem da rede e a data da consulta.
+- Facebook entra no coletor de faltantes (apify/facebook-pages-scraper): o card facebook.com/lulaverso estava sem número (item vazio na coleta diária de 17/10, `bruto/2026-10-17/facebook.json`).
+- Testes: suíte OK; página aberta no Chromium local: card do Instagram comitepopularoficial mostra "Perfil não encontrado", sem erro de JavaScript. Pendente: execução do Facebook.
+
 ## C19.20 — Chat com a IA (Gemini) e perfis sem número de seguidores (2026-10-18) 🔜
 
 - Chat: ícone no canto inferior esquerdo da página abre uma conversa com a IA (Gemini). A página chama a função `odi-chat` do Supabase (projeto gratuito `odi-atlas`, criado com autorização do usuário em 18/10); a chave do Gemini fica só nos segredos do Supabase (`GEMINI_API_KEY` ou `GEMINI`), nunca na página nem no repositório. A IA lê apenas `data/ia/resumo.json` (agregados públicos com fonte e data, gerado por `scripts/build_resumo_ia.py`, 42 KB), não o DuckDB nem textos de comentários. Código da função em `supabase/functions/odi-chat/index.ts` (versão implantada: 1).

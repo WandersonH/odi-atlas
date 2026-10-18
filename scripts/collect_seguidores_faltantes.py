@@ -25,9 +25,9 @@ from net import now_utc  # noqa: E402
 
 SEGREDOS = ["APIFY_TOKEN_3", "APIFY_TOKEN_4", "APIFY_TOKEN_5", "APIFY_TOKEN_6", "APIFY_TOKEN_7"]
 IDS = {"13": "280002542548", "22": "280002551544"}
-ROTULO = {"tiktok": "TikTok", "x": "X / Twitter", "instagram": "Instagram"}
+ROTULO = {"tiktok": "TikTok", "x": "X / Twitter", "instagram": "Instagram", "facebook": "Facebook"}
 PADRAO = {"tiktok": r"tiktok\.com/@?([A-Za-z0-9._]+)", "x": r"(?:x|twitter)\.com/@?([A-Za-z0-9_]+)",
-          "instagram": r"instagram\.com/([A-Za-z0-9._]+)"}
+          "instagram": r"instagram\.com/([A-Za-z0-9._]+)", "facebook": r"facebook\.com/([A-Za-z0-9.]+)"}
 # (ator, função que monta a entrada). Ordem = preferência.
 ATORES = {
     "tiktok": [("clockworks~tiktok-profile-scraper", lambda u: {"profiles": [u], "resultsPerPage": 1, "shouldDownloadVideos": False}),
@@ -35,6 +35,7 @@ ATORES = {
     "x": [("apidojo~twitter-user-scraper", lambda u: {"twitterHandles": [u], "maxItems": 1, "getFollowers": False, "getFollowing": False})],
     "instagram": [("apify~instagram-profile-scraper", lambda u: {"usernames": [u]}),
                   ("apify~instagram-scraper", lambda u: {"directUrls": [f"https://www.instagram.com/{u}/"], "resultsType": "details", "resultsLimit": 1})],
+    "facebook": [("apify~facebook-pages-scraper", lambda u: {"startUrls": [{"url": f"https://www.facebook.com/{u}"}]})],
 }
 ARQS = ("latest.csv", "youtube_latest.csv", "kwai_latest.csv", "x_latest.csv", "tiktok_latest.csv")
 COLS = ["candidate_id", "candidate_name", "platform", "url", "followers", "captured_at", "source_url"]
@@ -45,7 +46,7 @@ def usuario(plat: str, url: str) -> str | None:
     if not m:
         return None
     u = m.group(1).lower()
-    return None if u in ("p", "reel", "explore", "intent", "share", "home") else u
+    return None if u in ("p", "reel", "explore", "intent", "share", "home", "profile.php", "people", "groups") else u
 
 
 def seguidores(x: dict):
@@ -55,7 +56,7 @@ def seguidores(x: dict):
 
 
 def faltantes(root: Path) -> list[dict]:
-    """Perfis TikTok/X/Instagram das chapas 13 e 22 cujo usuário não aparece com número em nenhum CSV de seguidores."""
+    """Perfis TikTok/X/Instagram/Facebook das chapas 13 e 22 cujo usuário não aparece com número em nenhum CSV de seguidores."""
     com_numero = set()
     seg = root / "data/seguidores"
     for arq in ARQS:
@@ -134,7 +135,7 @@ def main(argv=None, executar=None) -> int:
             novos += 1
             r = {"candidate_id": a["candidate_id"], "candidate_name": a["declarado_por"], "platform": ROTULO[a["plataforma"]],
                  "url": a["url_tse"], "followers": n, "captured_at": agora[:10],
-                 "source_url": {"tiktok": "https://www.tiktok.com/@", "x": "https://x.com/", "instagram": "https://www.instagram.com/"}[a["plataforma"]] + a["usuario"]}
+                 "source_url": {"tiktok": "https://www.tiktok.com/@", "x": "https://x.com/", "instagram": "https://www.instagram.com/", "facebook": "https://www.facebook.com/"}[a["plataforma"]] + a["usuario"]}
             antigos[(r["platform"], r["url"].lower())] = r
     with open(p, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, COLS, delimiter=";", lineterminator="\n", extrasaction="ignore")
