@@ -81,10 +81,21 @@ def main(argv=None, executar=None) -> int:
     priv.mkdir(parents=True, exist_ok=True)
     acervo = priv / "comentarios.csv.gz"
     antigos = list(csv.DictReader(gzip.open(acervo, "rt", encoding="utf-8"), delimiter=";")) if acervo.exists() else []
-    feitos = {r["video_id"] for r in antigos}
+    ja_por_post = {}
+    for r in antigos:
+        ja_por_post[r["video_id"]] = ja_por_post.get(r["video_id"], 0) + 1
     posts = [r for r in csv.DictReader(gzip.open(root / "data/facebook/videos.csv.gz", "rt", encoding="utf-8"), delimiter=";")
              if r["publicado_em"][:10] >= cfg["desde"] and int(r["comentarios"] or 0) > 0 and r["url"]]
-    pendentes = sorted((v for v in posts if v["video_id"] not in feitos), key=lambda v: -int(v["comentarios"] or 0))
+    alvo_post = {}
+    for cid in {v["candidate_id"] for v in posts}:
+        n_c = sum(1 for v in posts if v["candidate_id"] == cid)
+        pv_c = max(cfg["min_comentarios_por_post"], min(cfg["max_comentarios_por_post"], cfg["cota_comentarios_por_candidato"] // max(1, n_c)))
+        for v in posts:
+            if v["candidate_id"] == cid:
+                alvo_post[v["video_id"]] = min(pv_c, int(v["comentarios"] or 0))
+    # pendente: post sem coleta ou com menos de 80% da meta atual (a meta sobe quando o teto aumenta; repetidos são descartados)
+    pendentes = sorted((v for v in posts if ja_por_post.get(v["video_id"], 0) < 0.8 * alvo_post[v["video_id"]]),
+                       key=lambda v: -int(v["comentarios"] or 0))
     p = cfg["preco_usd"]
     if teste:
         lotes = [(pendentes[:cfg["teste"]["posts"]], cfg["teste"]["comentarios_por_post"])]

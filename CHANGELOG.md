@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.25 — Facebook: amostra maior de comentários (2026-10-18) 🔜
+
+- Pedido do usuário (18/10, 02h10): ampliar os comentários do Facebook com mais US$ 3 (teto da fonte: US$ 1,50 → US$ 4,50). Cota por candidato 2.800 → 8.800; até 200 comentários por post (antes 50).
+- `collect_comentarios_facebook.py`: um post deixa de ser "feito" só por ter alguma coleta; volta à fila se tiver menos de 80% da meta atual. Comentários repetidos (mesmo id) são descartados ao juntar com o acervo. Custo conhecido: a nova leitura de um post já coletado paga de novo os comentários que já tínhamos.
+- Testes: suíte OK. Pendente: carga.
+
 ## C19.24 — X: respostas aos candidatos para a análise de pontes (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 02h07): coletar as respostas aos posts dos candidatos no X. Coletar tudo custaria ~US$ 147 (os posts de Lula e Flávio desde 20/07 em `data/x/videos.csv.gz` informam 981.931 respostas; US$ 0,00015 cada, `data/config/x_posts.json`); o usuário escolheu teto de US$ 5.
