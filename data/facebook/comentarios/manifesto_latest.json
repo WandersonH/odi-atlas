@@ -1,44 +1,53 @@
 {
- "run_started_utc": "2026-10-18T05:14:16Z",
+ "run_started_utc": "2026-10-18T05:32:29Z",
  "ferramenta": "Apify · dami_studio/facebook-comments-scraper",
  "modo": "carga",
  "teto_total_usd": 4.5,
- "gasto_antes_usd": 1.255,
- "teto_execucao_usd": 3.245,
+ "gasto_antes_usd": 1.6345,
+ "teto_execucao_usd": 2.8655,
  "runs": [
   {
-   "id": "qMfXN90aqP1QFrtpH",
-   "status": "ABORTED",
+   "id": "w7Uynbb7DOFhbObsU",
+   "status": "SUCCEEDED",
    "posts": 100,
    "por_post": 32,
-   "itens": 1518,
-   "comentarios": 1518,
-   "custo_usd": 0.3795,
+   "itens": 3200,
+   "comentarios": 3200,
+   "custo_usd": 0.8005,
    "eventos_cobrados": {
-    "comment-scraped": 1513,
+    "comment-scraped": 3198,
     "apify-actor-start": 1
    }
   },
   {
-   "erro": "HTTPError 403 {\n  \"error\": {\n    \"type\": \"actor-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded. Please upgrade your subscription or contact support@apify.com\"\n  }\n}"
+   "erro": "IncompleteRead"
   },
   {
-   "erro": "HTTPError 403 {\n  \"error\": {\n    \"type\": \"actor-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded. Please upgrade your subscription or contact support@apify.com\"\n  }\n}"
-  },
-  {
-   "erro": "HTTPError 403 {\n  \"error\": {\n    \"type\": \"actor-disabled\",\n    \"message\": \"Monthly usage hard limit exceeded. Please upgrade your subscription or contact support@apify.com\"\n  }\n}"
+   "id": "es6qZs5Wbhcu6ATc2",
+   "status": "SUCCEEDED",
+   "posts": 100,
+   "por_post": 53,
+   "itens": 5300,
+   "comentarios": 5299,
+   "custo_usd": 1.3248,
+   "eventos_cobrados": {
+    "comment-scraped": 5280,
+    "apify-actor-start": 1
+   }
   }
  ],
- "conta": "APIFY_TOKEN_3",
- "saldo_conta_antes_usd": 1.5336,
- "custo_usd": 0.3795,
- "comentarios_novos": 1518,
- "comentarios_no_acervo": 5994,
+ "conta": "APIFY_TOKEN_5",
+ "saldo_conta_antes_usd": 3.7245,
+ "contas_esgotadas": [],
+ "conta_final": "APIFY_TOKEN_5",
+ "custo_usd": 2.1253,
+ "comentarios_novos": 8499,
+ "comentarios_no_acervo": 11882,
  "comentarios_por_candidato": {
-  "280002551544": 2650,
-  "280002542548": 3344
+  "280002542548": 5527,
+  "280002551544": 6355
  },
  "videos_com_comentarios": 431,
- "posts_pendentes": 400,
+ "posts_pendentes": 354,
  "status": "ok"
 }
