@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.40 — Teste de posicionamento sem treino (2026-10-18) 🔜
+
+- Pergunta do usuário (18/10, 03h57): "conseguimos testar?" (camada de posição proposta na revisão de literatura). Os textos do UstanceBR não são distribuídos (só ids do X, verificado no artigo), então o teste usa um modelo aberto de inferência textual multilíngue (`MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7`) rodando no próprio Actions: nenhum comentário sai para serviço externo, sem custo.
+- `scripts/teste_posicao.py` + `posicao-teste.yml`: amostra com semente fixa (400 comentários do YouTube e 200 respostas do X, metade em conteúdo de cada candidato, 20+ caracteres); para Lula e para Flávio, hipóteses "o autor apoia / é contra"; rótulo pela mais provável acima de 0,6, senão "neutro/incerto". Privado: `posicao/teste_amostra.csv` com colunas vazias para dois codificadores. Público: `data/pontes/posicao_teste.json`, só distribuição, marcada "TESTE · NÃO VALIDADO".
+- Testes: suíte OK (`test_posicao`). Pendente: execução.
+
 ## C19.39 — Nuvens, hashtags e mapa de tags acompanham o filtro de fase (2026-10-18) ⚠️
 
 - Pedido do usuário (18/10, 03h31, print do mapa de tags com "acervo completo · não acompanha o filtro"): "integre ao filtro". `build_conteudo.py` (YouTube) grava `nuvem_por_fase` e `mapa_tags_por_fase`; `build_tiktok.py` (TikTok, Kwai, Facebook, X, Instagram) grava `nuvem_por_fase` e `hashtags_por_fase`. Nas 6 páginas, nuvens, hashtags e o mapa de tags são redesenhados ao trocar a fase, e o selo do cartão vira "acompanha o filtro de fase". Conteúdos regenerados localmente.
