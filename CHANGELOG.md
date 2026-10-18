@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.17 — Sentimento por semana de campanha (menu recolhível) (2026-10-18) 🔜
+
+- Pedido do usuário (print do "Tom geral dos comentários"): nos quadros por fase, um menu oculto com a métrica por semana de campanha. `build_sentimento_comentarios.py` passa a gravar, em cada fase, `semanas` (segunda a domingo, rótulo da segunda-feira) com a mesma distribuição; a tabela de sentimento do YouTube, Kwai e Facebook ganha, sob cada fase, "Ver por semana de campanha (N)" (recolhido por padrão). "Fora da coleta (comentários desde 16/08)" virou "sem comentários coletados nesta fase" (a coleta agora começa em 20/07).
+- Testes: suíte OK. Pendente: rodar o sentimento para gerar as semanas.
+
 ## C19.16 — Página sem custo de coleta; comentários do Kwai continuam pelas outras contas (2026-10-18) 🔜
 
 - Pedido do usuário: "nunca exibir o custo da coleta". Removidos da página todos os textos de custo/gasto das coletas (Kwai, Facebook, X, anúncios da Meta e comentários do Kwai e do Facebook). Os manifestos com custo continuam no repositório como evidência (regra do CLAUDE.md), sem aparecer na página. "Gasto" dos anúncios (dado declarado pela Meta) continua.

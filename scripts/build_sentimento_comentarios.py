@@ -76,8 +76,19 @@ def fase_de(data: str, fases: list[dict]) -> str | None:
     return None
 
 
+def semana_de(iso: str, fases: list[dict]) -> str | None:
+    """Semana de campanha (segunda a domingo), rotulada pela segunda-feira; só dentro das fases."""
+    import datetime as _dt
+    d = (iso or "")[:10]
+    if not fases or not d or d < fases[0]["de"] or d > fases[-1]["ate"]:
+        return None
+    dia = _dt.date.fromisoformat(d)
+    return (dia - _dt.timedelta(days=dia.weekday())).isoformat()
+
+
 def agregar(rows: list[dict], rot: dict[str, str], fases: list[dict], min_n: int, nomes: dict) -> dict:
     por_cand, por_fase, por_video, total = defaultdict(list), defaultdict(list), defaultdict(list), Counter()
+    por_semana = defaultdict(list)
     for r in rows:
         total[r["candidate_id"]] += 1
         lab = rot.get(r["comment_id"])
@@ -87,6 +98,9 @@ def agregar(rows: list[dict], rot: dict[str, str], fases: list[dict], min_n: int
         f = fase_de(r.get("publicado_em", ""), fases)
         if f:
             por_fase[(r["candidate_id"], f)].append(lab)
+            sem = semana_de(r.get("publicado_em", ""), fases)
+            if sem:
+                por_semana[(r["candidate_id"], f, sem)].append(lab)
         por_video[(r["candidate_id"], r["video_id"])].append(lab)
     out = {}
     for c in sorted(total):
@@ -98,7 +112,9 @@ def agregar(rows: list[dict], rot: dict[str, str], fases: list[dict], min_n: int
         out[c] = {"nome": nomes.get(c, c), "coletados": total[c], **distrib(por_cand[c]),
                   "cobertura_pct": round(len(por_cand[c]) / total[c] * 100, 1),
                   "fases": [{"id": f["id"], "rotulo": f["rotulo"], "de": f["de"], "ate": f["ate"],
-                             **distrib(por_fase[(c, f["id"])])} for f in fases],
+                             **distrib(por_fase[(c, f["id"])]),
+                             "semanas": [{"semana": w, **distrib(por_semana[(c, f["id"], w)])}
+                                         for w in sorted({k[2] for k in por_semana if k[0] == c and k[1] == f["id"]})]} for f in fases],
                   "videos": vids}
     return out
 
