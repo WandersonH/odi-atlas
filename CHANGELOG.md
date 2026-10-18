@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.32 — Auditoria (item 8): versão, última coleta por fonte e revisão separadas (2026-10-18) ✅
+
+- **8 · Documentação atrás das coletas** (cabeçalho "Capturas: 10–11 OUT 2026", rodapé "v14"): o cabeçalho passa a mostrar a data da coleta mais recente lida dos manifestos ("Última coleta: 18/10/2026, 02:30" no teste local); o rodapé diz v15 (MVP); o LEIA-ME ganha o quadro "Versão, coletas e revisão", com versão do produto, data da última revisão metodológica e uma tabela de 21 fontes com a data e a situação da última coleta de cada uma, lidas dos próprios manifestos ao abrir a página (sem custo). Arquivos que só têm o dia (assuntos do dia do X) aparecem como "(só o dia)" e não entram na data do cabeçalho.
+- Testes: suíte OK; LEIA-ME aberto no Chromium local sem erro de JavaScript.
+
 ## C19.31 — Auditoria (item 1): o filtro de fase governa a página (2026-10-18) ✅
 
 - **1 · Filtro de turno só mudava parte da página**: nas 6 páginas de conteúdo (YouTube, TikTok, Kwai, Facebook, Instagram, X), as contagens por tema (chips e barras), "citam o adversário", "pedem voto" e a interação mediana passam a ser calculadas sobre os conteúdos da fase escolhida (antes vinham do acervo inteiro). Componentes que dependem de análises pré-calculadas sobre o acervo (nuvens, mapa de tags, CHD, redes de coocorrência e de menções, influenciadores) ganham o selo "acervo completo · não acompanha o filtro de fase".
