@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.35 — Instagram: gravar a coleta antes das etapas lentas; miniaturas em paralelo (2026-10-18) 🔜
+
+- A 1ª carga do Instagram (run 39100842854) terminou a coleta em 9 min, mas a etapa de miniaturas passou de 30 min (≈1.100 capas baixadas uma a uma, espera de até 30 s cada), com risco de o job (limite de 60 min) acabar antes de gravar os posts. `instagram-posts.yml`: grava `data/` logo após a coleta, miniaturas com limite de 15 min, job com limite de 120 min. `build_miniaturas_kwai.py`: 8 downloads em paralelo (vale para Kwai, Facebook, X e Instagram).
+- Testes: suíte OK.
+
 ## C19.34 — Auditoria (itens 10 e 12): Trends, contas × eleitorado e Reuters (2026-10-18) ✅
 
 - **10 · Trends**: o botão "2º turno · tópicos" escolhia os candidatos, não o período. As consultas passam a se chamar "Lula × Flávio · tópicos", "5 mais votados no 1º turno · tópicos" e "Lula × Flávio · palavras soltas", com rótulos separados para "quem entra na comparação" e "período (independe da consulta)". A série sem picos passa a se chamar "Série tratada · picos trocados pela mediana (não é observação direta)"; a original continua sendo a padrão.

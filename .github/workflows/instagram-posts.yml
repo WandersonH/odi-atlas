@@ -23,7 +23,7 @@ permissions:
 jobs:
   instagram:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -67,9 +67,14 @@ jobs:
           python scripts/collect_instagram_posts.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Instagram::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
+      - name: Gravar a coleta antes das etapas lentas
+        if: always()
+        run: |
+          scripts/commit_push.sh "Instagram: posts (run ${{ github.run_id }})"
       - name: Miniaturas (a URL da capa expira; logo após a coleta)
         if: always()
         continue-on-error: true
+        timeout-minutes: 15
         run: |
           pip install -q pillow==11.3.0
           python scripts/build_miniaturas_kwai.py --instagram > m.txt 2>&1; rc=$?

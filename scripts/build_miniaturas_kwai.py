@@ -44,15 +44,12 @@ def main(argv=None, baixar=None) -> int:
     pasta.mkdir(parents=True, exist_ok=True)
     bcm.LARGURA = cfg["largura_px"]
     baixar = baixar or bcm.miniatura
-    novas = falhas = 0
-    for r in selecionar(rows, cfg["desde"], cfg["top_por_perfil"]):
-        dest = pasta / f"{r['video_id']}.jpg"
-        if dest.exists():
-            continue
-        if baixar(r["capa_url"], dest):
-            novas += 1
-        else:
-            falhas += 1
+    pend = [r for r in selecionar(rows, cfg["desde"], cfg["top_por_perfil"]) if not (pasta / f"{r['video_id']}.jpg").exists()]
+    # 8 downloads em paralelo: em série, ~1.100 capas com espera de até 30 s cada passavam de 30 minutos (Instagram, 18/10)
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        res = list(ex.map(lambda r: baixar(r["capa_url"], pasta / f"{r['video_id']}.jpg"), pend))
+    novas, falhas = sum(1 for x in res if x), sum(1 for x in res if not x)
     ids = sorted(p.stem for p in pasta.glob("*.jpg"))
     sem_capa = sum(1 for r in rows if not r.get("capa_url"))
     (root / f"data/{plat}/miniaturas.json").write_text(json.dumps({"ids": ids, "sem_capa_url": sem_capa}, separators=(",", ":")), encoding="utf-8")
