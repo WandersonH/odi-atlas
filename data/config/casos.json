@@ -71,10 +71,10 @@
    "rolagens_tiktok": 25,
    "maximo_por_termo": 2000,
    "teto_usd": {
-    "x": 0.8,
-    "instagram": 0.75,
+    "x": 1.3,
+    "instagram": 0.4,
     "facebook": 0.8,
-    "kwai": 0.5
+    "kwai": 0.3
    },
    "aviso_termos": "#verdeeamarelo é hashtag antiga e genérica (usada também por apoiadores de Bolsonaro desde 2018); por isso cada publicação guarda o termo que a trouxe e a página separa os dois.",
    "filtro_titulo_noticias": [
@@ -88,10 +88,11 @@
    "complementos_x": [
     {
      "termo": "#brasilinteiro",
-     "busca": "#brasilinteiro since:2026-10-16 until:2026-10-17_12:48:00_UTC",
-     "motivo": "carga de 18/10 (run 39132035304) parou no limite de 1.685 posts e o mais antigo lido foi de 17/10 12h48 UTC; esta busca lê o começo"
+     "busca": "#brasilinteiro since:2026-10-16 until:2026-10-17_09:00:00_UTC",
+     "motivo": "as cargas de 18/10 (runs 39132035304 e 39132855716) pararam no limite e o mais antigo lido foi 17/10 12h18 UTC, no pico (≈2 mil posts por hora); esta busca lê só o que veio antes das 06h de 17/10 (Brasília)"
     }
-   ]
+   ],
+   "nota_teto": "18/10: tetos redistribuídos dentro dos US$ 3 do caso (X 0,80→1,30; Instagram 0,75→0,40; Kwai 0,50→0,30), porque o X concentra quase todo o volume e o começo do caso ficou fora."
   },
   {
    "id": "002",

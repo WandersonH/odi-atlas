@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.48 — Cargas do 1º turno e do caso 1: limites marcados, Kwai refeito, começo do caso no X (2026-10-18) ⚠️
+
+- Carga das demais chapas (run 39131229326): acervos TikTok 1.494, Instagram 3.942, Facebook 464, X 3.017 publicações. Sem leitura: Facebook EDPCB21 ("no_items") e AUGUSTOCURY.AUTOR ("not_available"); Instagram com 0 no período: cleusa_santos191, cachorreirosdesaopaulo, gateirosdabahia, gateirosdesaopaulo; X @Clarianabr 0; TikTok @oncaviral e @eduardogiraooficial sem vídeo desde 20/07. No limite (piso, não total): Instagram 294 em 10 perfis, X 574 em 3, TikTok 300 (limite do coletor) em 3 — o TikTok passa a marcar `no_limite` como as outras redes. Kwai falhou por falta de conta com saldo ≥ 0,60 → com conta reaproveitada aceita saldo menor; refeito só o Kwai.
+- Caso 1, complemento do X (run 39132855716): +1.855 posts (total 4.642 publicações, X 4.528), mas o mais antigo continuou 17/10 12h18 UTC — no pico o X teve ≈ 2 mil posts por hora, e a busca "mais recentes" não alcança o começo. Tetos do caso redistribuídos dentro dos US$ 3 (X 1,30; Instagram 0,40; Kwai 0,30; Facebook 0,80) e novo complemento só antes de 17/10 06h (Brasília).
+- `build_casos.py`: rede com termo no limite em qualquer coleta fica marcada (`no_limite`); a página mostra "≥" nos números e avisa na linha do tempo que o começo naquela rede pode estar fora.
+- Testes: suíte OK.
+
 ## C19.47 — Caso 1: resultado da carga e complemento do começo no X (2026-10-18) ⚠️
 
 - Carga do caso 1 (run 39132035304): 2.787 publicações de 1.335 contas — X 2.673, TikTok 82, Instagram 19, Facebook 13, Kwai 0 (o feed da hashtag não trouxe nada desde 16/10). Pico: 17/10 11h (Brasília), 501 publicações na hora; meia-vida 3 h (`data/casos/001/caso.json`).

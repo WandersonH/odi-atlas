@@ -218,7 +218,8 @@ def tiktok(root: Path, perfis: list[dict], desde: str, teste: bool, agora: str) 
                     r["primeira_coleta"] = (acervo.get(r["video_id"]) or {}).get("primeira_coleta") or agora
                     r["tipo"] = "vídeo"
                     acervo[r["video_id"]] = r
-                reg.update(status="ok", lidos=len(rows), aviso=f"lista interrompida ({parcial})" if parcial else None)
+                reg.update(status="ok", lidos=len(rows), aviso=f"lista interrompida ({parcial})" if parcial else None,
+                           no_limite=len(ents) >= (10 if teste else ct.LIMITE_POR_PERFIL))
                 break
             except Exception as e:  # noqa: BLE001
                 reg["status"] = "sem vídeos públicos" if "does not have any videos" in str(e) else f"⛔ {type(e).__name__}: {str(e)[:160]}"
@@ -246,8 +247,8 @@ def paga(root: Path, rede: str, cfg: dict, perfis: list[dict], teste: bool, agor
     if executar is None:
         segredos = [s for s in (rc.get("segredos") or cfg["segredos"]) if s not in usadas]
         nome, token, saldo = escolher_conta(segredos, min(teto, 1.0))
-        if not token:  # nenhuma conta ainda não usada nesta execução: reaproveita uma já usada
-            nome, token, saldo = escolher_conta(list(rc.get("segredos") or cfg["segredos"]), min(teto, 1.0))
+        if not token:  # nenhuma conta ainda não usada nesta execução: reaproveita uma já usada, com o saldo que tiver
+            nome, token, saldo = escolher_conta(list(rc.get("segredos") or cfg["segredos"]), min(teto, 0.15))
         if not token:
             return {**man, "custo_usd": 0.0, "status": "⛔ nenhuma conta dos outros pesquisadores com saldo"}
         usadas.add(nome)
