@@ -245,7 +245,11 @@ def main(argv=None, executar=None) -> int:
         with gzip.open(priv / f"apify_{now_utc().replace(':', '').replace('-', '')}_{len(man['runs'])}.jsonl.gz", "wt", encoding="utf-8") as f:
             for x in brutos:
                 f.write(json.dumps(x, ensure_ascii=False) + "\n")
-        man["runs"].append({"execucoes": len(alvo), "erros": erros, "por_video": por_video, "comentarios": lote_c, "custo_usd": round(lote_custo, 4)})
+        from collections import Counter
+        st = Counter(str((run or {}).get("status")) + ("" if itens else " vazio") for _, run, itens, _ in resultados)
+        man["runs"].append({"execucoes": len(alvo), "erros": erros, "por_video": por_video, "comentarios": lote_c, "custo_usd": round(lote_custo, 4),
+                            "status_execucoes": dict(st), "exemplo_vazio": next((r.get("id") for _, r, i, _ in resultados if not i and r), None)})
+        print(f"status das execuções: {dict(st)}")
         print(f"lote: {len(alvo)} vídeos × até {por_video} (uma execução por vídeo) · {lote_c} comentários · {erros} erros · US$ {round(lote_custo, 4)}")
     man["videos_alvo"] = alvo_total
     man["videos_pendentes"] = len(pendentes)
