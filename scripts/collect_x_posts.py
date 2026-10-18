@@ -42,16 +42,26 @@ def quando(v) -> str:
     return s
 
 
+def autor(x: dict) -> str:
+    return str(g(x, "author.userName", "author.username", "author.screen_name", "user.screen_name", "user.username", "username") or "")
+
+
+def seguidores_de(x: dict):
+    return g(x, "author.followers", "author.followersCount", "author.followers_count", "user.followers_count", "author.public_metrics.followers_count")
+
+
 def linha(x: dict, pf: dict, agora: str, old: dict) -> dict:
     tid = str(g(x, "id", "id_str", "tweetId") or "")
-    rt, qt = inteiro(g(x, "retweetCount")) or 0, inteiro(g(x, "quoteCount")) or 0
+    rt = inteiro(g(x, "retweetCount", "retweet_count", "public_metrics.retweet_count")) or 0
+    qt = inteiro(g(x, "quoteCount", "quote_count", "public_metrics.quote_count")) or 0
     midia = (g(x, "extendedEntities.media") or g(x, "entities.media") or [])
     capa = next((m.get("media_url_https") for m in midia if isinstance(m, dict) and m.get("media_url_https")), "") if isinstance(midia, list) else ""
     return {"candidate_id": pf["candidate_id"], "candidate_name": pf["candidato"], "perfil": pf["handle"], "declarado_por": pf["declarado_por"],
             "video_id": tid, "url": g(x, "url", "twitterUrl") or f"https://x.com/{pf['handle']}/status/{tid}",
-            "publicado_em": quando(g(x, "createdAt", "created_at")), "legenda": " ".join(str(g(x, "fullText", "text") or "").split()),
-            "duracao_s": "", "visualizacoes": inteiro(g(x, "viewCount", "views")), "curtidas": inteiro(g(x, "likeCount", "favoriteCount")),
-            "comentarios": inteiro(g(x, "replyCount")), "compartilhamentos": rt + qt,
+            "publicado_em": quando(g(x, "createdAt", "created_at", "date")), "legenda": " ".join(str(g(x, "fullText", "text") or "").split()),
+            "duracao_s": "", "visualizacoes": inteiro(g(x, "viewCount", "views", "view_count", "public_metrics.impression_count")),
+            "curtidas": inteiro(g(x, "likeCount", "favoriteCount", "favorite_count", "public_metrics.like_count")),
+            "comentarios": inteiro(g(x, "replyCount", "reply_count", "public_metrics.reply_count")), "compartilhamentos": rt + qt,
             "primeira_coleta": old.get("primeira_coleta") or agora, "ultima_coleta": agora, "capa_url": capa or old.get("capa_url", "")}
 
 
@@ -100,7 +110,8 @@ def main(argv=None, executar=None) -> int:
 
     def um(a):
         pf, n = a
-        pl = {"twitterHandles": [pf["handle"]], "start": cfg["desde"], "maxItems": n, "sort": "Latest"}
+        pl = ({"twitterHandles": [pf["handle"]], "maxItems": n, "maxItemsPerTarget": n} if "xquik" in cfg["ator"]
+              else {"twitterHandles": [pf["handle"]], "start": cfg["desde"], "maxItems": n, "sort": "Latest"})
         try:
             run, itens = executar(pl, round(p["post"] * n * 1.05 + 0.01, 4))
             return pf, n, run or {}, itens or [], None
@@ -112,17 +123,17 @@ def main(argv=None, executar=None) -> int:
     acervo = {r["video_id"]: r for r in csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";")} if src.exists() else {}
     gasto, novos, brutos, seguidores = 0.0, 0, [], {}
     for pf, n, run, itens, erro in res:
-        posts = [x for x in itens if g(x, "id", "id_str") and not x.get("noResults") and str(g(x, "type") or "tweet").lower() == "tweet"]
+        posts = [x for x in itens if g(x, "id", "id_str", "tweetId") and not x.get("noResults") and str(g(x, "type") or "tweet").lower() in ("tweet", "post")]
         brutos += itens
-        meus = [x for x in posts if str(g(x, "author.userName") or "").lower() == pf["handle"].lower()]  # reposts de outros ficam fora
+        meus = [x for x in posts if autor(x).lower() == pf["handle"].lower() and not g(x, "isRetweet", "retweeted_status")]  # reposts ficam fora
         custo = max(custo_run(run) or 0, round(p["post"] * len(itens), 4))
         gasto += custo
         for x in meus:
-            r = linha(x, pf, agora, acervo.get(str(g(x, "id"))) or {})
+            r = linha(x, pf, agora, acervo.get(str(g(x, "id", "tweetId"))) or {})
             if r["video_id"] and (r["publicado_em"] or "9") >= cfg["desde"]:
                 novos += 0 if r["video_id"] in acervo else 1
                 acervo[r["video_id"]] = r
-        fol = next((inteiro(g(x, "author.followers", "author.followersCount")) for x in meus if g(x, "author.followers", "author.followersCount") is not None), None)
+        fol = next((inteiro(seguidores_de(x)) for x in posts if autor(x).lower() == pf["handle"].lower() and seguidores_de(x) is not None), None)
         if fol not in (None, ""):
             seguidores[pf["handle"]] = fol
         man["perfis"].append({"perfil": pf["handle"], "candidato": pf["candidato"], "pedido": n, "itens": len(itens), "lidos": len(meus),

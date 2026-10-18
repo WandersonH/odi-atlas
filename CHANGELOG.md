@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.8 — X: troca de coletor (2026-10-17) 🔜
+
+- Teste (run 39085223674) e carga (run 39085278763) com apidojo/tweet-scraper (conta 3/4): no plano gratuito o ator devolve no máximo 10 itens por execução; 4 perfis vieram com 10 posts cada (LulaOficial 10.765.351 seguidores, FlavioBolsonaro 3.794.680, comitespop 12.111, pode_espalhar 7.803) e 6 perfis com nenhum post próprio. Gasto: US$ 0,044.
+- O coletor passa para **xquik/x-tweet-scraper** (README: US$ 0,00015 por linha, funciona no plano gratuito), com leitura de campos tolerante a nomes diferentes; mesmo teto de US$ 2.
+- Testes: suíte OK.
+
 ## C19.7 — X: coletor de posts e seguidores dos perfis declarados (contas 3 a 7, teto US$ 2) (2026-10-17) 🔜
 
 - Pedidos do usuário (17/10, 22h02): página "o que as campanhas dizem no X"; cards de seguidores "não coletados"; não usar a conta principal (1), só as dos outros pesquisadores.
