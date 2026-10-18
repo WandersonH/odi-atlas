@@ -8,7 +8,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Decisão do usuário (18/10, 02h): não usar o ator extremescrapes/whatsapp-messages-scraper (exige conectar um WhatsApp pessoal por QR code e lê conversas privadas e grupos, com telefone de pessoas comuns; não traz histórico). Primeira camada de WhatsApp: só os canais públicos declarados ao TSE.
 - `scripts/collect_whatsapp_canais.py`: lê a página pública de cada canal (whatsapp.com/channel/…, sem login, sem Apify) e extrai nome e "N seguidores" das metatags. Link de grupo (chat.whatsapp.com) não é canal e fica registrado como não coletado. Saída `data/seguidores/whatsapp_latest.csv` (lida pela página e pelo resumo da IA) e manifesto. Workflow `whatsapp-canais.yml` diário (11h41 UTC).
-- Testes: suíte OK (`test_whatsapp_canais`, com página simulada). Pendente: primeira execução real.
+- 1ª execução: 3 de 7 endereços com número — EXÉRCITO DO LULA 5,2 mi, Canal do Lula 1,7 mi, TROPA DO FLÁVIO 🇧🇷 1,9 mi (a página só mostra o número arredondado, ex.: "5,2 mi"). Sem número: 3 canais com ID declarado ao TSE todo em maiúsculas (o ID de canal do WhatsApp diferencia maiúsculas; o card explica) e 1 link de grupo de Alfredo Gaspar.
+- A página usava a base de redes do TSE de 10/10; 13 endereços acrescentados pelo TSE depois disso (base de 15/10) não tinham card, entre eles os dois canais do Lula e a Tropa do Flávio. Incluídos em `DATA.declarations`, com a nota "acrescentado pelo TSE depois de 10/10/2026".
+- A camada de WhatsApp que já existia (`collect_whatsapp.py`, `data/whatsapp/`, usada no Panorama) acompanhava só os 2 canais do Lula; a Tropa do Flávio entra em `data/config/whatsapp_canais.json`.
+- Testes: suíte OK; página aberta no Chromium local com todos os candidatos, sem erro de JavaScript.
 
 ## C19.22 — Contas Apify 8 a 15 como reserva (2026-10-18) 🔜
 
