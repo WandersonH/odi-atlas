@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-17T20:56:54Z",
+  "run_started_utc": "2026-10-18T01:30:15Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -147,7 +147,7 @@
       "geo": "BR",
       "serie_pontos": 180,
       "uf_linhas": 27,
-      "relacionados_linhas": 96,
+      "relacionados_linhas": 90,
       "status": "ok"
     },
     {
@@ -177,8 +177,8 @@
       "geo": "BR",
       "serie_pontos": 169,
       "uf_linhas": 27,
-      "relacionados_linhas": 100,
-      "status": "ok"
+      "status": "erro",
+      "error": "HTTPError: HTTP Error 429: unknown"
     },
     {
       "grupo": "segundo_turno_topicos",
@@ -232,9 +232,9 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-17",
+      "janela_trends": "2026-07-20 2026-10-18",
       "geo": "BR",
-      "serie_pontos": 90,
+      "serie_pontos": 91,
       "uf_linhas": 27,
       "relacionados_linhas": 100,
       "status": "ok"
@@ -437,9 +437,9 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-17",
+      "janela_trends": "2026-07-20 2026-10-18",
       "geo": "BR",
-      "serie_pontos": 90,
+      "serie_pontos": 91,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -489,7 +489,7 @@
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
-      "serie_pontos": 168,
+      "serie_pontos": 169,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -537,14 +537,16 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-17",
+      "janela_trends": "2026-07-20 2026-10-18",
       "geo": "BR",
-      "serie_pontos": 90,
+      "serie_pontos": 91,
       "uf_linhas": 27,
       "status": "ok"
     }
   ],
-  "blocked": [],
-  "run_finished_utc": "2026-10-17T21:01:37Z",
-  "status": "ok"
+  "blocked": [
+    "segundo_turno_topicos__now_7-d: HTTPError: HTTP Error 429: unknown"
+  ],
+  "run_finished_utc": "2026-10-18T01:35:20Z",
+  "status": "bloqueado"
 }
