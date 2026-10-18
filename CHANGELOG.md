@@ -8,6 +8,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Pedido do usuário (18/10, 02h07): coletar as respostas aos posts dos candidatos no X. Coletar tudo custaria ~US$ 147 (os posts de Lula e Flávio desde 20/07 em `data/x/videos.csv.gz` informam 981.931 respostas; US$ 0,00015 cada, `data/config/x_posts.json`); o usuário escolheu teto de US$ 5.
 - `scripts/collect_x_respostas.py` + `data/config/x_respostas.json` + `x-respostas.yml`: busca `to:<perfil> since:<dia> until:<dia+1> filter:replies` para @LulaOficial e @FlavioBolsonaro, um dia por vez desde 20/07, mesmo número por candidato e por dia (o teto define quantas por dia). Troca de conta quando o saldo acaba (contas 3 a 15). Texto e autor só no repositório privado (`x/respostas/respostas.csv.gz`, mesmas colunas dos comentários do YouTube); manifesto público só com contagens.
+- 1º teste real (run do x-respostas, 18/10 05h11 UTC): parou antes de chamar a Apify, porque o teto de teste (US$ 0,02) era menor que a estimativa do lote com margem (US$ 0,0266); custo zero. Teto de teste passa a US$ 0,05.
 - Testes: suíte OK (`test_x_respostas`, dados simulados). Pendente: teste real e carga.
 
 ## C19.23 — WhatsApp: seguidores dos canais públicos (2026-10-18) 🔜
