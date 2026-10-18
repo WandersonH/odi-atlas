@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.49 — Caso 1: X completado por janelas de horário, lacunas e decolagem (2026-10-18) ⚠️
+
+- Complementos do X para #brasilinteiro (runs 39133523009, 39133657951, 39133785803): antes de 17/10 06h (Brasília) 36 posts (abaixo do limite); 12h05–12h18 UTC 2.000 (no limite); 09h00–12h05 UTC 1.098 (abaixo do limite de 1.325). Total do caso: 7.776 publicações de 4.212 contas (X 7.662, TikTok 82, Instagram 19, Facebook 13, Kwai 0).
+- Observado nos dados (privado, contagem por minuto): o volume no X sobe de 1–3 posts por minuto para 361 no minuto 12h00 UTC (09h00 de Brasília) de 17/10 e fica acima de 100 por minuto na meia hora seguinte. É padrão de publicação concentrada num horário; os dados não dizem quem combinou nem se houve automação.
+- Lacunas registradas em `casos.json` e mostradas na página: X #brasilinteiro 17/10 10h (só 3 posts lidos contra centenas nas horas vizinhas: a busca pulou o trecho; o teto do X para o caso acabou) e X #verdeeamarelo antes de 17/10 09h48 (carga no limite, sem complemento).
+- Marco zero geral (TikTok, 16/10 09h) é um post de futebol que usa a hashtag ("O Brasil inteiro é SC Internacional"): a página passa a dizer que o marco zero pode ser uso sem relação e mostra a **decolagem** (1ª hora com ≥ 5% do pico, mínimo 10): 17/10 09h, 5.072 publicações.
+- Agregados regerados localmente com o privado (`build_casos.py`) e verificados no Chromium local (1300 e 390 px, sem erro de JavaScript). Testes: suíte OK.
+
 ## C19.48 — Cargas do 1º turno e do caso 1: limites marcados, Kwai refeito, começo do caso no X (2026-10-18) ⚠️
 
 - Carga das demais chapas (run 39131229326): acervos TikTok 1.494, Instagram 3.942, Facebook 464, X 3.017 publicações. Sem leitura: Facebook EDPCB21 ("no_items") e AUGUSTOCURY.AUTOR ("not_available"); Instagram com 0 no período: cleusa_santos191, cachorreirosdesaopaulo, gateirosdabahia, gateirosdesaopaulo; X @Clarianabr 0; TikTok @oncaviral e @eduardogiraooficial sem vídeo desde 20/07. No limite (piso, não total): Instagram 294 em 10 perfis, X 574 em 3, TikTok 300 (limite do coletor) em 3 — o TikTok passa a marcar `no_limite` como as outras redes. Kwai falhou por falta de conta com saldo ≥ 0,60 → com conta reaproveitada aceita saldo menor; refeito só o Kwai.

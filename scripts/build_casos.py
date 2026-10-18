@@ -141,6 +141,10 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
                     serie_termo[t][pos[h]] += 1
     total = [sum(serie[rd][i] for rd in serie) for i in range(len(eixo))]
     ip, mv = meia_vida(total)
+    # decolagem: 1ª hora com pelo menos 5% do pico (mínimo 10 publicações) — o marco zero pode ser uso antigo ou sem relação
+    lim_d = max(10, 0.05 * max(total)) if total else None
+    i_d = next((i for i, v in enumerate(total) if lim_d and v >= lim_d), None)
+    decolagem = {"hora_brt": eixo[i_d], "publicacoes": total[i_d], "criterio": "1ª hora com pelo menos 5% do pico (mínimo 10 publicações)"} if i_d is not None else None
     # marco zero: geral, por rede e por termo
     def marco(rs):
         if not rs:
@@ -240,6 +244,7 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
             "coletado_em": man.get("run_started_utc"), "publicacoes": len(itens), "contas": len(ativ),
             "redes": {ROTULO[k]: {**v, "no_limite": ROTULO[k] in limite} for k, v in redes.items()}, "eixo_horas_brt": eixo,
             "serie_por_rede": {ROTULO[k]: v for k, v in serie.items()}, "serie_por_termo": serie_termo,
+            "decolagem": decolagem,
             "pico": {"hora_brt": eixo[ip] if ip is not None else None, "publicacoes": total[ip] if ip is not None else None,
                      "horas_desde_marco_zero": ip, "meia_vida_horas": mv},
             "marco_zero": marcos, "primeiros": primeiros, "maiores": maiores, "galeria": galeria, "palavras": palavras,
@@ -247,6 +252,7 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
                                                      "arestas": f"data/casos/{caso['id']}/rede_arestas.csv"} if nos else None,
             "google": {"trends": g.get("trends"), "noticias": len(noticias), "veiculos": len({n.get("veiculo") for n in noticias if n.get("veiculo")}),
                        "primeira_noticia": noticias[0] if noticias else None, "titulos": noticias[:15], "coletado_em": g.get("coletado_em")},
+            "lacunas": caso.get("lacunas") or [], "nota_x": caso.get("nota_x"),
             "tom": None, "tom_motivo": "⛔ não calculado: a coleta do caso traz publicações, não os comentários a elas.",
             "metodo": metodo, "privacidade": f"Contas com menos de {minimo:,} seguidores e sem selo aparecem só como código (ordem de atividade), sem texto nem link. Textos completos só no repositório privado.".replace(",", ".")}
 
