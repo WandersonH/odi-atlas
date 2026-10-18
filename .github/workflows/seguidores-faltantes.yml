@@ -1,0 +1,44 @@
+name: Seguidores — perfis sem número (Apify, contas 3 a 7)
+
+# Perfis TikTok/X/Instagram das chapas 13 e 22 que ficaram sem número nas coletas principais.
+# Atores alternativos por perfil (teto mínimo de US$ 0,10 por execução). A conta 1 não é usada.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 11 * * *"
+
+concurrency:
+  group: seguidores-faltantes
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  faltantes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+        run: |
+          python scripts/collect_seguidores_faltantes.py > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Seguidores faltantes::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Resumo da IA
+        if: always()
+        run: python scripts/build_resumo_ia.py
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Seguidores faltantes (run ${{ github.run_id }})"

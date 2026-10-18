@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.20 — Chat com a IA (Gemini) e perfis sem número de seguidores (2026-10-18) 🔜
+
+- Chat: ícone no canto inferior esquerdo da página abre uma conversa com a IA (Gemini). A página chama a função `odi-chat` do Supabase (projeto gratuito `odi-atlas`, criado com autorização do usuário em 18/10); a chave do Gemini fica só nos segredos do Supabase (`GEMINI_API_KEY` ou `GEMINI`), nunca na página nem no repositório. A IA lê apenas `data/ia/resumo.json` (agregados públicos com fonte e data, gerado por `scripts/build_resumo_ia.py`, 42 KB), não o DuckDB nem textos de comentários. Código da função em `supabase/functions/odi-chat/index.ts` (versão implantada: 1).
+- Seguidores: os cards "Não coletado" eram perfis em que o ator principal não devolveu número — TikTok (apidojo devolveu `noResults` para 7 perfis: evangelicoscomlula, comitedeluta, brasilcomlula_, canaltvcelular, alckmingeraldo, alfredogaspar, alfredogasparoficial; manifesto `tiktok_manifesto_latest.json`), X (LulaEvangelicos e pl22al sem post desde 20/07, e o número vinha dos posts; `data/x/manifesto_latest.json`) e Instagram (comitepopularoficial e alfredogasparoficial com item vazio; `bruto/2026-10-17/instagram.json`). Novo `scripts/collect_seguidores_faltantes.py`: consulta direta ao perfil com atores alternativos (TikTok: clockworks; X: apidojo/twitter-user-scraper; Instagram: apify/instagram-profile-scraper e apify/instagram-scraper), contas 3 a 7, saída `data/seguidores/complemento_latest.csv` (lida pela página e pelo resumo da IA). Workflow `seguidores-faltantes.yml` diário (11h17 UTC), que também regenera o resumo da IA.
+- Testes: suíte OK (`test_seguidores_faltantes`). Pendente: primeira execução real do coletor; o chat só responde depois que a chave do Gemini for cadastrada no Supabase.
+
 ## C19.19 — Ordem fixa: Lula primeiro, com aviso (2026-10-18) 🔜
 
 - Decisão do usuário (pergunta de 18/10): Lula primeiro em todas as páginas por ser o candidato à reeleição, com aviso. `data/config/trends.json`: termos com Lula primeiro nas 3 consultas que o incluem (a ordem não muda os índices do Trends, a escala é comum à consulta); `ordem_nota` registra a regra. Página: selo fixo no cabeçalho "ORDEM: LULA (ATUAL PRESIDENTE, À REELEIÇÃO) · FLÁVIO — NÃO INDICA PREFERÊNCIA".

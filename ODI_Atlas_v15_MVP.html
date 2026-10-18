@@ -471,6 +471,19 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 #twComments .yc-net svg{display:block;width:100%;min-width:640px;height:auto}
 .sent-sem>td{padding:0 0 8px!important;border-top:0!important}.sent-sem summary{cursor:pointer;font:700 11px 'Courier New',monospace;color:#297de2;padding:4px 0}.sent-sem summary:hover{text-decoration:underline}.sent-sem table{margin:4px 0 6px 12px;width:calc(100% - 12px)}.sent-sem th{font-weight:400;font-size:12px}
 .ordem-flag{display:inline-block;margin-left:12px;border:1px solid #172238;padding:2px 7px;font:700 9px 'Courier New',monospace;letter-spacing:.06em;color:#172238;background:#fffdf8}@media(max-width:750px){.ordem-flag{display:block;margin:6px 0 0}}
+.odi-chat-btn{position:fixed;left:16px;bottom:16px;z-index:50;width:52px;height:52px;border-radius:50%;border:2px solid #172238;background:#fffdf8;color:#172238;box-shadow:3px 3px 0 #172238;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.odi-chat-btn:hover{background:#172238;color:#fff}
+.odi-chat{position:fixed;left:16px;bottom:80px;z-index:51;width:min(380px,calc(100vw - 32px));height:min(520px,calc(100vh - 120px));background:#fffdf8;border:2px solid #172238;box-shadow:5px 5px 0 #172238;display:flex;flex-direction:column}
+.odi-chat[hidden]{display:none}
+.odi-chat header{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #172238;font:700 11px 'Courier New',monospace;letter-spacing:.08em;text-transform:uppercase}
+.odi-chat header button{border:0;background:none;font-size:18px;cursor:pointer;color:#172238}
+.odi-chat .msgs{flex:1;overflow:auto;padding:10px 12px;font:14px/1.45 Georgia,serif}
+.odi-chat .m{margin:0 0 10px;white-space:pre-wrap;overflow-wrap:anywhere}.odi-chat .m.u{background:#eef2f8;padding:6px 9px;border-left:3px solid #297de2}.odi-chat .m.ia{padding:2px 0}
+.odi-chat .m.erro{color:#b3261e;font:12px 'Courier New',monospace}
+.odi-chat form{display:flex;gap:6px;padding:8px;border-top:1px solid #172238}.odi-chat textarea{flex:1;resize:none;height:44px;font:13px Georgia,serif;border:1px solid #c9d0d6;padding:6px}
+.odi-chat form button{border:1px solid #172238;background:#172238;color:#fff;font:700 11px 'Courier New',monospace;padding:0 10px;cursor:pointer}
+.odi-chat .nota{padding:0 12px 8px;font:10px 'Courier New',monospace;color:#5d6a76}
+@media print{.odi-chat-btn,.odi-chat{display:none!important}}
 </style>
 <style>
 /* ODI Atlas Caderno 02 (YouTube) | inherits v14 editorial typography and colors */
@@ -2060,7 +2073,7 @@ function bnInit(){const select=document.getElementById('bnCandidate');if(!select
 // Coleta automática (GitHub Actions + Apify): data/seguidores/latest.csv, mesmo formato do modelo CSV.
 let bnVar={};
 function bnVarBadge(d){const v=bnVar[d.candidate_id+'|'+bnUrlForMatch(d.normalized_url||d.url)];if(!v||v.variacao_pct==null)return '';const p=v.variacao_pct,dias=Math.round((Date.parse(v.data_atual)-Date.parse(v.data_anterior))/864e5),cls=p>0?'bn-up':p<0?'bn-down':'bn-flat',seta=p>0?'▲':p<0?'▼':'■';const ant=v.data_anterior.slice(8,10)+'/'+v.data_anterior.slice(5,7);return `<div class="bn-var ${cls}" title="${e(bnFull(v.anterior))} em ${ant} → ${e(bnFull(v.atual))}">${seta} ${p>0?'+':''}${p.toLocaleString('pt-BR',{maximumFractionDigits:2})}% <small>(${v.diferenca>0?'+':''}${e(bnFull(v.diferenca))}) vs ${ant}${dias>1?' · '+dias+' dias':''}</small></div>`;}
-async function bnLoadAuto(){try{const r=await fetch('./data/seguidores/variacao.json',{cache:'no-store'});if(r.ok)bnVar=(await r.json()).itens||{};}catch(e){}const fontes=[['./data/seguidores/latest.csv','Apify'],['./data/seguidores/youtube_latest.csv','YouTube Data API'],['./data/seguidores/kwai_latest.csv','Kwai via Apify'],['./data/seguidores/x_latest.csv','X via Apify'],['./data/seguidores/tiktok_latest.csv','TikTok via Apify']];let all=[];for(const [arq,origem] of fontes){try{const r=await fetch(arq,{cache:'no-store'});if(!r.ok)continue;const rows=bnParseCsv(await r.text());all=all.concat(rows.map(row=>({candidate_id:row.candidate_id,url:row.url,followers:Number(row.followers),source_type:'Coleta automática',source_label:'Coleta automática ('+origem+') · '+(row.captured_at||'data não informada'),capture_date:row.captured_at||'',source_url:row.source_url||''})).filter(x=>x.candidate_id&&x.url&&Number.isFinite(x.followers)));}catch(e){}}bnAuto=all;bnRender();}
+async function bnLoadAuto(){try{const r=await fetch('./data/seguidores/variacao.json',{cache:'no-store'});if(r.ok)bnVar=(await r.json()).itens||{};}catch(e){}const fontes=[['./data/seguidores/latest.csv','Apify'],['./data/seguidores/youtube_latest.csv','YouTube Data API'],['./data/seguidores/kwai_latest.csv','Kwai via Apify'],['./data/seguidores/x_latest.csv','X via Apify'],['./data/seguidores/tiktok_latest.csv','TikTok via Apify'],['./data/seguidores/complemento_latest.csv','Apify, consulta direta ao perfil']];let all=[];for(const [arq,origem] of fontes){try{const r=await fetch(arq,{cache:'no-store'});if(!r.ok)continue;const rows=bnParseCsv(await r.text());all=all.concat(rows.map(row=>({candidate_id:row.candidate_id,url:row.url,followers:Number(row.followers),source_type:'Coleta automática',source_label:'Coleta automática ('+origem+') · '+(row.captured_at||'data não informada'),capture_date:row.captured_at||'',source_url:row.source_url||''})).filter(x=>x.candidate_id&&x.url&&Number.isFinite(x.followers)));}catch(e){}}bnAuto=all;bnRender();}
 (async()=>{let f=null;try{const r=await fetch('./data/youtube/fichas.json',{cache:'no-store'});if(r.ok)f=await r.json();}catch(err){}
 ytAplicarApi(f);
 overview();renderReadme();setPlatform('Instagram');electorate();declarations();renderCandidateCards();refs();
@@ -3912,5 +3925,22 @@ async function carregar(){if(feito)return;feito=true;
   $('gbNote').textContent=d.nota;
  }catch(e){$('gbStatus').textContent='⛔ Ainda sem coleta do Google Busca: '+e.message;}}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});if(sec.classList.contains('active'))carregar();})();
+</script>
+<button class="odi-chat-btn" id="odiChatBtn" type="button" aria-label="Conversar com a IA sobre os dados do Atlas" title="Perguntar aos dados (IA)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></button>
+<section class="odi-chat" id="odiChat" hidden aria-label="Conversa com a IA sobre os dados do Atlas"><header><span>Pergunte aos dados · IA</span><button type="button" id="odiChatX" aria-label="Fechar">×</button></header>
+<div class="msgs" id="odiChatMsgs"><p class="m ia">Pergunte sobre os números do Atlas (conteúdo das campanhas, seguidores, comentários, buscas, anúncios, voto). A resposta usa só os dados públicos da página e cita a fonte.</p></div>
+<form id="odiChatForm"><textarea id="odiChatIn" maxlength="800" placeholder="Ex.: quantos vídeos Lula e Flávio publicaram no Kwai na pré-campanha?" aria-label="Pergunta"></textarea><button type="submit">Enviar</button></form>
+<div class="nota">IA (Gemini) lendo o resumo público do Atlas. Pode errar: confira na página e na fonte citada.</div></section>
+<script>
+/* Chat com a IA (Gemini via função do Supabase). A chave não fica na página. */
+(function(){const $=id=>document.getElementById(id);const URL_IA='https://vidnoyzechknrqhczmrr.supabase.co/functions/v1/odi-chat';const hist=[];
+const add=(t,c)=>{const p=document.createElement('p');p.className='m '+c;p.textContent=t;$('odiChatMsgs').appendChild(p);$('odiChatMsgs').scrollTop=1e9;return p;};
+$('odiChatBtn').addEventListener('click',()=>{const c=$('odiChat');c.hidden=!c.hidden;if(!c.hidden)$('odiChatIn').focus();});
+$('odiChatX').addEventListener('click',()=>{$('odiChat').hidden=true;});
+$('odiChatIn').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('odiChatForm').requestSubmit();}});
+$('odiChatForm').addEventListener('submit',async e=>{e.preventDefault();const q=$('odiChatIn').value.trim();if(!q)return;$('odiChatIn').value='';add(q,'u');const w=add('consultando os dados…','ia');
+ try{const r=await fetch(URL_IA,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pergunta:q,historico:hist.slice(-6)})});const j=await r.json();
+  if(j.resposta){w.textContent=j.resposta;hist.push({papel:'u',texto:q},{papel:'ia',texto:j.resposta});}else{w.className='m erro';w.textContent='⛔ '+(j.erro||('HTTP '+r.status));}}
+ catch(err){w.className='m erro';w.textContent='⛔ não foi possível falar com o serviço de IA ('+err.message+').';}});})();
 </script>
 </body></html>
