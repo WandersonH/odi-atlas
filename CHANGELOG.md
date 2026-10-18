@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.36 — Página do Instagram verificada com a carga (2026-10-18) ✅
+
+- Aberta no Chromium local com os 3.599 posts: cobertura (Lula 262 / 1.541 / 1.101; Flávio 159 / 393 / 143 por fase, com aviso de variação em Lula), lista de perfis, temas, linha do tempo, nuvens, posts, CHD e redes, sem erro de JavaScript.
+- Correções: o "espalhamento" vertical das bolhas lia os últimos dígitos do id do post (no Instagram o código tem letras → coordenada NaN); agora usa um hash do código. A bolha usa curtidas quando o post não tem visualização (fotos e carrosséis), como o título já dizia. A lista de perfis lia `lidos` (campo do Facebook); passa a ler também `lidos_no_periodo` ("823 posts desde 20/07").
+- Testes: suíte OK.
+
 ## C19.35 — Instagram: gravar a coleta antes das etapas lentas; miniaturas em paralelo (2026-10-18) 🔜
 
 - A 1ª carga do Instagram (run 39100842854) terminou a coleta em 9 min, mas a etapa de miniaturas passou de 30 min (≈1.100 capas baixadas uma a uma, espera de até 30 s cada), com risco de o job (limite de 60 min) acabar antes de gravar os posts. `instagram-posts.yml`: grava `data/` logo após a coleta, miniaturas com limite de 15 min, job com limite de 120 min. `build_miniaturas_kwai.py`: 8 downloads em paralelo (vale para Kwai, Facebook, X e Instagram).
