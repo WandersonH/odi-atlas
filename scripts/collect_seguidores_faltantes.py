@@ -114,7 +114,8 @@ def main(argv=None, executar=None) -> int:
             itens = itens or []
             n = next((inteiro(seguidores(x)) for x in itens if seguidores(x) is not None), None)
             tentativas.append({"ator": ator.replace("~", "/"), "run": (run or {}).get("id"), "itens": len(itens), "seguidores": n,
-                               "chaves": sorted(itens[0].keys())[:25] if itens and n is None else None})
+                               "chaves": sorted(itens[0].keys())[:25] if itens and n is None else None,
+                               "erro_ator": str(g(itens[0], "errorDescription", "error", "message") or "")[:200] if itens and n is None else None})
             if n is not None:
                 return a, n, ator, tentativas
         return a, None, None, tentativas
