@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.1 — Facebook: carga das 12 páginas e página no caderno 02 (2026-10-17) ⚠️
+
+- Teste (run 39083282446, US$ 0,036): 7 posts de facebook.com/lula (desde 16/08).
+- Carga (run 39083340754, US$ 2,482 pela tabela): **390 posts** desde 16/08 — lula 112, flaviobolsonaro 112, obrasilcomlula 30, Pode-Espalhar 30, evangelicoscomlula 30, geraldoalckmin 30, geracaolula 30, alfredogasparoficial 12, denuncia.br.2026 3, canaltvcelular 1; lulaverso "not_available". Lula 262 posts (6 páginas, 63.341.066 visualizações de vídeos), Flávio 128 (4 páginas, 93.542.329). CHD: 629 segmentos, 6 classes. Gasto acumulado: US$ 2,52 de US$ 5.
+- Página "Facebook" no caderno 02, gerada da do Kwai (perfis/páginas, temas, linha do tempo, listas com capa, Bardin + CHD, redes de coocorrência e de menções, downloads). Capas e rede de menções do Facebook: `build_miniaturas_kwai.py --facebook` e `build_rede_mencoes_tiktok.py --facebook`; modo `so-analises` no workflow refaz tudo sem nova coleta (sem custo).
+- Testes: suíte OK.
+
 ## C19.0 — Facebook: o que as campanhas publicam (Apify, conta 2, teto US$ 5) (2026-10-17) 🔜
 
 - Pedido do usuário: "com a conta apify 2 consegue fazer o que as campanhas dizem no face"; escolheu todas as páginas declaradas ao TSE, teto de US$ 5 (pergunta de 17/10, 21h3x).

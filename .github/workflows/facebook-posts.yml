@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       modo:
-        description: "teste (10 posts de facebook.com/lula) · carga (todas as páginas)"
+        description: "teste (10 posts de facebook.com/lula) · carga (todas as páginas) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [teste, carga]
+        options: [teste, carga, so-analises]
         default: teste
 
 concurrency:
@@ -40,6 +40,7 @@ jobs:
             echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
           fi
       - name: Coletar (Apify, com teto)
+        if: github.event.inputs.modo != 'so-analises'
         continue-on-error: true
         env:
           APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
@@ -50,13 +51,21 @@ jobs:
           python scripts/collect_facebook_posts.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Facebook::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
+      - name: Miniaturas (a URL da capa expira; logo após a coleta)
+        if: always()
+        continue-on-error: true
+        run: |
+          pip install -q pillow==11.3.0
+          python scripts/build_miniaturas_kwai.py --facebook > m.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Facebook miniaturas::$(echo "$l" | cut -c1-400)"; done < m.txt
+          exit $rc
       - name: Conteúdo por tema e análises (mesmas regras do TikTok e do Kwai)
         if: always()
         continue-on-error: true
         run: |
           rc=0
           { python scripts/build_tiktok.py --facebook && python scripts/corpus_populismo.py --plataforma facebook && python scripts/chd_reinert.py --plataforma facebook \
-            && python scripts/concordancia.py --plataforma facebook && python scripts/build_rede.py --plataforma facebook; } > b.txt 2>&1 || rc=$?
+            && python scripts/concordancia.py --plataforma facebook && python scripts/build_rede.py --plataforma facebook && python scripts/build_rede_mencoes_tiktok.py --facebook; } > b.txt 2>&1 || rc=$?
           grep -v "RuntimeWarning\|attraction =" b.txt | while IFS= read -r l; do echo "::notice title=Facebook análises::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Gravar bruto no repositório privado

@@ -30,14 +30,17 @@ def selecionar(rows: list[dict], desde: str, top: int) -> list[dict]:
 
 
 def main(argv=None, baixar=None) -> int:
-    root = Path((argv or ["."])[0]) if argv else Path(".")
+    argv = list(argv or [])
+    plat = "facebook" if "--facebook" in argv else "kwai"  # Facebook: mesmas regras, capa do post
+    argv = [a for a in argv if a != "--facebook"]
+    root = Path(argv[0]) if argv else Path(".")
     cfg = json.loads((root / "data/config/kwai.json").read_text(encoding="utf-8"))["miniaturas"]
-    src = root / "data/kwai/videos.csv.gz"
+    src = root / f"data/{plat}/videos.csv.gz"
     if not src.exists():
-        print("⛔ sem acervo do Kwai")
+        print(f"⛔ sem acervo ({plat})")
         return 1
     rows = list(csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"))
-    pasta = root / "data/kwai/miniaturas"
+    pasta = root / f"data/{plat}/miniaturas"
     pasta.mkdir(parents=True, exist_ok=True)
     bcm.LARGURA = cfg["largura_px"]
     baixar = baixar or bcm.miniatura
@@ -52,8 +55,8 @@ def main(argv=None, baixar=None) -> int:
             falhas += 1
     ids = sorted(p.stem for p in pasta.glob("*.jpg"))
     sem_capa = sum(1 for r in rows if not r.get("capa_url"))
-    (root / "data/kwai/miniaturas.json").write_text(json.dumps({"ids": ids, "sem_capa_url": sem_capa}, separators=(",", ":")), encoding="utf-8")
-    print(f"miniaturas Kwai: {novas} novas, {falhas} falhas, {len(ids)} no total; {sem_capa} vídeos do acervo sem URL de capa")
+    (root / f"data/{plat}/miniaturas.json").write_text(json.dumps({"ids": ids, "sem_capa_url": sem_capa}, separators=(",", ":")), encoding="utf-8")
+    print(f"miniaturas {plat}: {novas} novas, {falhas} falhas, {len(ids)} no total; {sem_capa} vídeos do acervo sem URL de capa")
     return 0 if ids else 1
 
 
