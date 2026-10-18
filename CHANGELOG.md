@@ -8,7 +8,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - 2ª execução do coletor de faltantes: os atores responderam "Profile does not exist" para Instagram comitepopularoficial e alfredogasparoficial e "This profile/hashtag does not exist." para TikTok alfredogasparoficial (`data/seguidores/complemento_manifesto_latest.json`). Esses endereços foram declarados ao TSE mas não existem hoje na rede. O card deixa de dizer "Não coletado" e passa a dizer "Perfil não encontrado", com a mensagem da rede e a data da consulta.
 - Facebook entra no coletor de faltantes (apify/facebook-pages-scraper): o card facebook.com/lulaverso estava sem número (item vazio na coleta diária de 17/10, `bruto/2026-10-17/facebook.json`).
-- Testes: suíte OK; página aberta no Chromium local: card do Instagram comitepopularoficial mostra "Perfil não encontrado", sem erro de JavaScript. Pendente: execução do Facebook.
+- Execução com Facebook (3ª): facebook.com/lulaverso → o Facebook respondeu que o conteúdo foi apagado ou restrito; o card mostra "Perfil indisponível" com essa mensagem. X @pl22al: o ator devolveu item de **demonstração** do plano gratuito; o "1 seguidor" da 1ª execução foi descartado do CSV e itens de demonstração passam a ser ignorados.
+- Varredura da página (Chromium local, todos os candidatos): os cards "Não coletado" não eram só da chapa 13/22. TikTok, X e o coletor de faltantes só olhavam as chapas 13 e 22, e gravavam os perfis dos vices com o id do titular (por isso Alckmin e Alfredo Gaspar ficavam "Pendente" no card deles). O coletor de faltantes passa a usar `redes_sociais_candidatos_2026.csv.gz` (presidente e vice, id de cada pessoa): 42 cards sem número, 2 preenchidos com número já coletado sob outro id e 40 perfis a consultar (uma consulta por perfil, mesmo se declarado por mais de uma pessoa).
+- Testes: suíte OK (140); página sem erro de JavaScript. Pendente: execução com todos os candidatos.
 
 ## C19.20 — Chat com a IA (Gemini) e perfis sem número de seguidores (2026-10-18) 🔜
 
