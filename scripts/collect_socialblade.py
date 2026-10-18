@@ -118,7 +118,8 @@ def main(argv=None, executar=None) -> int:
         itens = itens or []
         custo += max(custo_run(run or {}) or 0, 0.02 * len(itens))
         # o modo "profile" pode vir sem a série; nesse caso, pede o histórico pelo id da plataforma (exigência do ator)
-        sem = {str(x.get("id")): x for x in itens if x.get("id") and not pontos(x)}
+        # o modo "profile" traz ~30 dias; para voltar à pré-campanha, pede o histórico (até 365 dias) pelo id de cada perfil
+        sem = {str(x.get("id")): x for x in itens if x.get("id")}
         if sem:
             try:
                 run2, hist = executar({"platform": plat, "resultType": "history", "queries": list(sem), "historyLimit": 365}, max(0.1, round(0.01 * len(sem) + 0.02, 3)))
@@ -126,7 +127,7 @@ def main(argv=None, executar=None) -> int:
                 for hx in hist or []:
                     alvo = sem.get(str(g(hx, "id", "query", "user.id") or ""))
                     if alvo is not None:
-                        alvo["_history"] = pontos(hx) or ([hx] if g(hx, "date") else [])
+                        alvo["_history"] = (alvo.get("_history") or pontos(alvo)) + (pontos(hx) or ([hx] if g(hx, "date") else []))
                     else:
                         man.setdefault("historico_sem_par", []).append(sorted(hx.keys())[:20])
                 brutos += hist or []
