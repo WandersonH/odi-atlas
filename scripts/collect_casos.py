@@ -39,7 +39,8 @@ from net import now_utc  # noqa: E402
 REDES = ("tiktok", "x", "instagram", "facebook", "kwai", "google")
 COLS = ["rede", "item_id", "conta", "nome_conta", "seguidores", "verificada", "publicado_em", "texto", "visualizacoes", "curtidas",
         "comentarios", "compartilhamentos", "termo", "url", "capa_url", "coletado_em"]
-ATOR = {"x": "xquik~x-tweet-scraper", "instagram": "apidojo~instagram-hashtag-scraper", "instagram_perfil": "esdrasdw~instagram-content-scraper",
+ATOR = {"x": "xquik~x-tweet-scraper", "instagram": "apify~instagram-hashtag-scraper", "instagram_palavra": "apidojo~instagram-hashtag-scraper",
+        "tiktok_apify": "novi~multiple-tiktok-hashtag-scraper", "instagram_perfil": "esdrasdw~instagram-content-scraper",
         "facebook": "scrapeforge~facebook-search-posts", "kwai": "unfenced-group~kwai-scraper"}
 
 
@@ -74,6 +75,21 @@ def norm(rede: str, x: dict, termo: str, agora: str) -> dict | None:
                         "visualizacoes": inteiro(g(x, "viewCount", "views")), "curtidas": inteiro(g(x, "likeCount", "favoriteCount")),
                         "comentarios": inteiro(g(x, "replyCount")), "compartilhamentos": (inteiro(g(x, "retweetCount")) or 0) + (inteiro(g(x, "quoteCount")) or 0),
                         "termo": termo, "url": g(x, "url", "twitterUrl") or (f"https://x.com/{conta}/status/{iid}" if conta else ""),
+                        "capa_url": "", "coletado_em": agora}
+    if rede == "tiktok":
+        iid = g(x, "id", "aweme_id", "video_id", "videoId")
+        conta = g(x, "author.uniqueId", "author.unique_id", "authorMeta.name", "author.username", "author")
+        conta = conta if isinstance(conta, str) else ""
+        return iid and {"rede": rede, "item_id": str(iid), "conta": conta, "nome_conta": g(x, "author.nickname", "authorMeta.nickName") or "",
+                        "seguidores": inteiro(g(x, "authorStats.followerCount", "author.follower_count", "authorMeta.fans", "author.followerCount")),
+                        "verificada": int(bool(g(x, "author.verified", "authorMeta.verified"))),
+                        "publicado_em": iso(g(x, "createTime", "create_time", "createTimeISO", "timestamp")),
+                        "texto": " ".join(str(g(x, "desc", "text", "description") or "").split()),
+                        "visualizacoes": inteiro(g(x, "stats.playCount", "statistics.play_count", "playCount")),
+                        "curtidas": inteiro(g(x, "stats.diggCount", "statistics.digg_count", "diggCount")),
+                        "comentarios": inteiro(g(x, "stats.commentCount", "statistics.comment_count", "commentCount")),
+                        "compartilhamentos": inteiro(g(x, "stats.shareCount", "statistics.share_count", "shareCount")), "termo": termo,
+                        "url": g(x, "webVideoUrl", "share_url", "url") or (f"https://www.tiktok.com/@{conta}/video/{iid}" if conta else ""),
                         "capa_url": "", "coletado_em": agora}
     if rede == "instagram":
         iid = g(x, "code", "shortCode", "shortcode", "id")
@@ -127,15 +143,21 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
     elif rede == "instagram":
         for t in tags:
             # "startUrls" com a página da hashtag devolveu 0 itens no teste de 18/10 (run 39131491525); a busca por palavra-chave é a entrada documentada
-            out.append((f"#{t}", ATOR["instagram"], {"keyword": t, "maxItems": n, "until": d, "getPosts": True, "getReels": True}))
+            # apidojo (palavra-chave) devolveu só 10 por hashtag na carga de 18/10 (run 39132035304); apify/instagram-hashtag-scraper lê o feed da hashtag
+            out.append((f"#{t}", ATOR["instagram"], {"hashtags": [t], "resultsType": "posts", "resultsLimit": n}))
         for p in caso.get("perfis_instagram", []):
             out.append((f"@{p}", ATOR["instagram_perfil"], {"directUrls": [p], "resultsType": "posts", "resultsLimit": n, "onlyPostsNewerThan": d}))
     elif rede == "facebook":
         for t in tags:
-            out.append((f"#{t}", ATOR["facebook"], {"query": f"#{t}", "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": True}))
+            # com recent_posts=True a busca devolveu 5 por hashtag (runs de 18/10); sem ele, a busca geral do período
+            out.append((f"#{t}", ATOR["facebook"], {"query": f"#{t}", "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": False}))
     elif rede == "kwai":
         for t in tags:
-            out.append((f"#{t}", ATOR["kwai"], {"hashtags": [t], "maxItems": n, "postedAfter": d}))
+            # o feed da hashtag não trouxe nada desde 16/10 (run 39132035304); busca por palavra completada com o feed da hashtag
+            out.append((f"#{t}", ATOR["kwai"], {"searchTerms": [t], "expandSearchWithHashtag": True, "maxItems": n, "postedAfter": d}))
+    elif rede == "tiktok":
+        for t in tags:
+            out.append((f"#{t}", ATOR["tiktok_apify"], {"hashtags": [t], "region": "BR", "limit": n}))
     return out
 
 
@@ -208,9 +230,10 @@ def paga(rede: str, caso: dict, cfg: dict, pasta: Path, teste: bool, agora: str,
         return [], {**man, "custo_usd": 0.0, "status": "⛔ teto da rede esgotado"}
     if executar is None:
         # prefere conta ainda não usada nesta execução; se nenhuma tiver saldo, reaproveita uma já usada
-        nome, token, saldo = escolher_conta([s for s in cfg["segredos"] if s not in usadas], min(teto, 0.5))
+        lista = cfg.get("segredos_por_rede", {}).get(rede) or cfg["segredos"]
+        nome, token, saldo = escolher_conta([s for s in lista if s not in usadas], min(teto, 0.5))
         if not token:
-            nome, token, saldo = escolher_conta(list(cfg["segredos"]), min(teto, 0.5))
+            nome, token, saldo = escolher_conta(list(lista), min(teto, 0.5))
         if not token:
             return [], {**man, "custo_usd": 0.0, "status": "⛔ nenhuma conta dos outros pesquisadores com saldo"}
         usadas.add(nome)
@@ -286,6 +309,8 @@ def main(argv=None, executar=None) -> int:
             try:
                 if rede == "google":
                     rows, m = [], google(caso, agora, pasta)
+                elif rede == "tiktok" and caso.get("teto_usd", {}).get("tiktok"):
+                    rows, m = paga(rede, caso, cfg, pasta, teste, agora, usadas, executar)
                 elif rede == "tiktok":
                     rows, m = tiktok(caso, teste, agora)
                     m["status"] = "ok" if rows else "⛔ nenhum vídeo lido"

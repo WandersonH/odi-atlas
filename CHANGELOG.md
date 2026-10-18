@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.51 — Caso 1: coleta para o cross entre redes (2026-10-18) 🔜
+
+- Pergunta do usuário (18/10, 17h22): "você só coletou Twitter, eu quero entender o cross". Diagnóstico: TikTok 82, Instagram 19, Facebook 13, Kwai 0 contra X 10.862; nos posts do X, só 69 trazem link para outra rede (Instagram 36, WhatsApp 14, x.com 8, YouTube 2, TikTok 1; contagem nos brutos do privado, `entities.urls`).
+- Autorização (18/10, 17h2x): "+ US$ 3,50" (teto do caso 3 + 3,50 = 6,50). Tetos por rede: X 2,40; TikTok 1,10; Instagram 1,25; Facebook 0,65; Kwai 0,40 (= 5,80).
+- Atores trocados onde a carga veio rasa: TikTok pelo novi/multiple-tiktok-hashtag-scraper (US$ 0,001 por vídeo + 0,001 por hashtag; a leitura grátis pela página parava em 2 páginas); Instagram pelo apify/instagram-hashtag-scraper (feed da hashtag; o apidojo por palavra-chave devolveu 10); Facebook sem `recent_posts` (com ele vieram 5); Kwai por busca de palavra completada com o feed da hashtag (o feed sozinho veio vazio). Itens por hashtag pelo teto: TikTok ~521, Instagram ~228, Facebook ~119, Kwai ~95.
+- Contas: saldo consultado (run do `apify-contas`, 18/10): só as contas 8 e 7 têm saldo útil (5 e 6 quase no fim; 2, 3 e 4 esgotadas no mês; 9 a 15 sem chave). Instagram na 8; TikTok, Facebook, Kwai e X na 7 (`segredos_por_rede`).
+- Testes: `test_casos` (novos atores e normalização do TikTok); suíte OK. Pendente: teste e carga no Actions; análise do cross.
+
 ## C19.50 — Caso 1: são duas hashtags (#brasilinteiro e #verdeeamarelo) (2026-10-18) 🔜
 
 - Correção do usuário (18/10, 16h54): "@verdeeamarelo — eu tinha te dito que eram duas #". Saem a busca "@verdeeamarelo OR from:verdeeamarelo" no X e a leitura do perfil @verdeeamarelo no Instagram; título do caso: "#brasilinteiro e #verdeeamarelo". `build_casos.py` passa a usar só os termos atuais do caso: publicação trazida apenas por termo removido sai dos agregados (havia 1, que também tinha #brasilinteiro e fica). O bruto continua no privado.

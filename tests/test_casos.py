@@ -16,7 +16,11 @@ class TestCasos(unittest.TestCase):
         cfg = json.loads((RAIZ / "data/config/casos.json").read_text(encoding="utf-8"))
         caso = cfg["casos"][0]
         self.assertEqual([t for t, _, _ in cc.pedidos("x", caso, 5)], ["#brasilinteiro", "#verdeeamarelo"])   # duas hashtags (correção do usuário, 18/10)
-        self.assertEqual(cc.pedidos("instagram", caso, 5)[0][2]["keyword"], "brasilinteiro")
+        self.assertEqual(cc.pedidos("instagram", caso, 5)[0][2]["hashtags"], ["brasilinteiro"])
+        self.assertEqual(cc.pedidos("tiktok", caso, 5)[0][1], "novi~multiple-tiktok-hashtag-scraper")
+        r = cc.norm("tiktok", {"id": "7", "desc": "oi #brasilinteiro", "createTime": 1760670000, "author": {"uniqueId": "fulana"},
+                               "authorStats": {"followerCount": 20000}, "stats": {"playCount": 100}}, "#brasilinteiro", "agora")
+        self.assertEqual((r["conta"], r["seguidores"], r["visualizacoes"], r["url"]), ("fulana", 20000, 100, "https://www.tiktok.com/@fulana/video/7"))
         r = cc.norm("x", item_x(1, "fulano", 50, "2026-10-17T03:00:00.000Z"), "#brasilinteiro", "agora")
         self.assertEqual((r["item_id"], r["conta"], r["seguidores"], r["publicado_em"]), ("1", "fulano", 50, "2026-10-17T03:00:00Z"))
         self.assertIsNone(cc.norm("x", {"noResults": True}, "t", "a"))

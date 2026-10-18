@@ -2,17 +2,11 @@
  "autorizacao": "Usuário em 18/10/2026: \"Implemente a página de casos\"; teto escolhido para o caso 1: US$ 3 (\"Caso 1 completo; os casos 2 a 4 entram como dossiê com o que já temos, até você confirmar as datas\"). Contas dos outros pesquisadores; a conta 1 não é usada.",
  "teto_teste_usd": 0.05,
  "segredos": [
-  "APIFY_TOKEN_6",
   "APIFY_TOKEN_7",
+  "APIFY_TOKEN_8",
   "APIFY_TOKEN_5",
-  "APIFY_TOKEN_4",
-  "APIFY_TOKEN_9",
-  "APIFY_TOKEN_10",
-  "APIFY_TOKEN_11",
-  "APIFY_TOKEN_12",
-  "APIFY_TOKEN_13",
-  "APIFY_TOKEN_14",
-  "APIFY_TOKEN_15"
+  "APIFY_TOKEN_6",
+  "APIFY_TOKEN_4"
  ],
  "precos_usd": {
   "xquik~x-tweet-scraper": {
@@ -36,6 +30,15 @@
   "unfenced-group~kwai-scraper": {
    "item": 0.002,
    "fonte": "página do ator, 17/10/2026: US$ 1,99 por 1.000 itens com detalhe"
+  },
+  "novi~multiple-tiktok-hashtag-scraper": {
+   "item": 0.001,
+   "consulta": 0.001,
+   "fonte": "loja Apify (/v2/store, 18/10/2026): US$ 0,001 por item + US$ 0,001 por hashtag (plano gratuito)"
+  },
+  "apify~instagram-hashtag-scraper": {
+   "item": 0.0026,
+   "fonte": "loja Apify (/v2/store, run 39130885845 de 18/10/2026): US$ 0,0026 por resultado (plano gratuito)"
   }
  },
  "min_seguidores_publico": 10000,
@@ -66,9 +69,10 @@
    "maximo_por_termo": 6000,
    "teto_usd": {
     "x": 2.4,
-    "instagram": 0.2,
-    "facebook": 0.3,
-    "kwai": 0.1
+    "tiktok": 1.1,
+    "instagram": 1.25,
+    "facebook": 0.65,
+    "kwai": 0.4
    },
    "aviso_termos": "#verdeeamarelo é hashtag antiga e genérica (usada também por apoiadores de Bolsonaro desde 2018); por isso cada publicação guarda o termo que a trouxe e a página separa os dois.",
    "filtro_titulo_noticias": [
@@ -89,7 +93,8 @@
    "nota_teto": "18/10: tetos redistribuídos dentro dos US$ 3 do caso para o X, onde está quase todo o volume (X 2,40; Instagram 0,20; Facebook 0,30; Kwai 0,10).",
    "lacunas": [],
    "nota_x": "X lido por janelas de horário até cada janela vir abaixo do limite (carga de 18/10 e complementos: runs 39132035304, 39132855716, 39133523009, 39133657951, 39133785803, 39161034090, 39161280098). Todas as janelas de #brasilinteiro e #verdeeamarelo desde 16/10 fecharam abaixo do limite, mas a busca do X não garante devolver tudo: os números são posts lidos, não o total oficial.",
-   "correcao_termos": "18/10, 16h54: o usuário corrigiu — o caso são duas hashtags (#brasilinteiro e #verdeeamarelo); @verdeeamarelo não faz parte. Publicações trazidas só pela busca de @verdeeamarelo saem dos agregados (o bruto continua no privado)."
+   "correcao_termos": "18/10, 16h54: o usuário corrigiu — o caso são duas hashtags (#brasilinteiro e #verdeeamarelo); @verdeeamarelo não faz parte. Publicações trazidas só pela busca de @verdeeamarelo saem dos agregados (o bruto continua no privado).",
+   "autorizacao_cross": "Usuário em 18/10/2026, 17h2x: \"+ US$ 3,50\" para medir o cross entre redes no caso 1 (TikTok ~1.000 vídeos, Instagram ~400 posts, Facebook ~200, Kwai ~100). Teto do caso: US$ 3 + 3,50 = 6,50; tetos por rede somam 5,80."
   },
   {
    "id": "002",
@@ -133,5 +138,27 @@
    ],
    "janela_indicada": "2026-10-07 a 2026-10-12"
   }
- ]
+ ],
+ "segredos_por_rede": {
+  "instagram": [
+   "APIFY_TOKEN_8",
+   "APIFY_TOKEN_7"
+  ],
+  "tiktok": [
+   "APIFY_TOKEN_7",
+   "APIFY_TOKEN_8"
+  ],
+  "facebook": [
+   "APIFY_TOKEN_7",
+   "APIFY_TOKEN_5"
+  ],
+  "kwai": [
+   "APIFY_TOKEN_7",
+   "APIFY_TOKEN_5"
+  ],
+  "x": [
+   "APIFY_TOKEN_7",
+   "APIFY_TOKEN_5"
+  ]
+ }
 }
