@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.34 — Auditoria (itens 10 e 12): Trends, contas × eleitorado e Reuters (2026-10-18) ✅
+
+- **10 · Trends**: o botão "2º turno · tópicos" escolhia os candidatos, não o período. As consultas passam a se chamar "Lula × Flávio · tópicos", "5 mais votados no 1º turno · tópicos" e "Lula × Flávio · palavras soltas", com rótulos separados para "quem entra na comparação" e "período (independe da consulta)". A série sem picos passa a se chamar "Série tratada · picos trocados pela mediana (não é observação direta)"; a original continua sendo a padrão.
+- **12 · Contas × eleitorado**: o destaque deixa de ser o percentual (ex.: 9,83%) e passa a ser as duas magnitudes lado a lado ("≈ N contas no Brasil" e "158.745.463 eleitores aptos"); a razão fica como referência de escala.
+- **12 · Reuters 2022 × 2026**: o aviso "pergunta diferente em 2022 e 2026 · não é tendência direta" sobe para o título dos dois gráficos de alcance semanal.
+- Testes: suíte OK; Trends, Contas × eleitorado e Reuters abertos no Chromium local sem erro de JavaScript.
+
 ## C19.33 — Auditoria (item 9): cobertura da coleta por fase e Kwai que não fechava (2026-10-18) ⚠️
 
 - **Kwai: Panorama com 50 vídeos de @Lulaoficial e lista de perfis com zero**: a lista lia `videos_no_acervo`, que `build_tiktok` não gravava. Agora grava `videos_no_acervo` e `videos_desde_20_07` por perfil (conteúdo regenerado: Lulaoficial 50 no acervo / 50 desde 20/07; podeespalhar 315 / 107; FlavioBolsonaro 955 / 100). As contagens "desde 16/08" do Kwai e do TikTok passam a "desde 20/07" (início adotado pelo Atlas); a introdução dos comentários do Kwai diz "desde 20/07". O "16/08" do Google (início oficial da campanha) foi mantido.

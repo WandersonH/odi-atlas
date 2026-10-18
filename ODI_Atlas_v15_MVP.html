@@ -505,7 +505,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 @media (max-width:640px){#pontes .yt-stats{grid-template-columns:1fr}}
 
 /* Instagram: mesmas regras da página do Facebook */
-#ytContent .nf-tag,#tkContent .nf-tag,#kwContent .nf-tag,#fbContent .nf-tag,#igContent .nf-tag,#twContent .nf-tag{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid #c9d0d6;font:700 9.5px "Courier New",monospace;letter-spacing:.04em;text-transform:uppercase;color:#53606b;background:#fffdf8;vertical-align:middle}
+#ytContent .nf-tag,#tkContent .nf-tag,#kwContent .nf-tag,#fbContent .nf-tag,#igContent .nf-tag,#twContent .nf-tag,#reuters .nf-tag{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid #c9d0d6;font:700 9.5px "Courier New",monospace;letter-spacing:.04em;text-transform:uppercase;color:#53606b;background:#fffdf8;vertical-align:middle}
 .cob-fase{margin:8px 0;font-size:12.5px}.cob-fase table{border-collapse:collapse;font-size:12px}.cob-fase th,.cob-fase td{padding:4px 8px;border-bottom:1px solid #e3e6e8;text-align:left}.cob-fase th{font:700 10px "Courier New",monospace;text-transform:uppercase;color:#53606b}.cob-fase .cob-aviso{border-left:3px solid #b3261e;background:#fbeeee;padding:6px 10px;margin-top:6px}
 </style>
 <style>
@@ -1057,13 +1057,15 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p>Interesse de busca por <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (e pelos cinco mais votados do 1º turno). O Trends não dá volume: dá um índice de 0 a 100 relativo ao pico <b>dentro de cada consulta</b>. Mais busca não significa mais voto nem apoio — inclui curiosidade, crítica e notícia.</p>
   </div>
   <div class="yt-controls card">
+    <div class="pt-leg" style="font:700 10px 'Courier New',monospace;text-transform:uppercase;color:#53606b;margin-bottom:4px">Quem entra na comparação (consulta)</div>
     <div class="yt-chips" id="gtGrupo" role="group" aria-label="Consulta"></div>
+    <div class="pt-leg" style="font:700 10px 'Courier New',monospace;text-transform:uppercase;color:#53606b;margin:8px 0 4px">Período (independe da consulta)</div>
     <div class="yt-chips" id="gtPeriodo" role="group" aria-label="Período"></div>
   </div>
   <div class="odi-signal" id="gtStatus" role="status">Aguardando leitura da coleta do Trends.</div>
   <div class="gt-sum" id="gtSum"></div>
   <div class="card gt-chart"><div class="eyebrow">Série temporal</div><h2 id="gtChartTitle"></h2>
-    <div class="yt-chips" id="gtVeg" role="group" aria-label="Série" style="margin-bottom:8px"><button class="yt-chip" data-v="orig" aria-pressed="true">Série original</button><button class="yt-chip" data-v="veg" aria-pressed="false">Sem picos (pico → mediana)</button></div>
+    <div class="yt-chips" id="gtVeg" role="group" aria-label="Série" style="margin-bottom:8px"><button class="yt-chip" data-v="orig" aria-pressed="true">Série original</button><button class="yt-chip" data-v="veg" aria-pressed="false">Série tratada · picos trocados pela mediana (não é observação direta)</button></div>
     <div id="gtChart"></div><div class="gt-legend" id="gtLegend"></div></div>
   <div class="card gt-vegcard" id="gtVegCard"><div class="eyebrow">Método do período · normal × pico</div><h2>O que é nível normal e o que é pico de agenda</h2>
     <div class="gt-vegstats" id="gtVegStats"></div>
@@ -1737,7 +1739,7 @@ let feito=false;new MutationObserver(()=>{if(sec.classList.contains('active')&&!
   <div class="grid2"><div class="card"><div class="eyebrow">Fontes de notícias · % semanal</div><h2 class="tk-h2">De onde vem a notícia</h2><div id="rtFontes"></div></div>
   <div class="card"><div class="eyebrow">Redes, mensageiros e vídeo · uso para notícias</div><h2 class="tk-h2">Instagram passa o YouTube</h2><div id="rtRedes"></div></div></div>
   <div class="card yc-block"><div class="eyebrow">Confiança por marca · % que confia (nota 6–10)</div><h2 class="tk-h2">Marcas presentes nas duas edições</h2><div id="rtConf"></div></div>
-  <div class="grid2"><div class="card"><div class="eyebrow">Alcance semanal · TV, rádio e impresso</div><div id="rtOff"></div></div><div class="card"><div class="eyebrow">Alcance semanal · online</div><div id="rtOn"></div></div></div>
+  <div class="grid2"><div class="card"><div class="eyebrow">Alcance semanal · TV, rádio e impresso <span class="nf-tag" style="border-color:#b3261e;color:#b3261e">pergunta diferente em 2022 e 2026 · não é tendência direta</span></div><div id="rtOff"></div></div><div class="card"><div class="eyebrow">Alcance semanal · online <span class="nf-tag" style="border-color:#b3261e;color:#b3261e">pergunta diferente em 2022 e 2026 · não é tendência direta</span></div><div id="rtOn"></div></div></div>
   <div class="card yc-block"><div class="eyebrow">Fonte e método</div><p class="yt-cloudnote" id="rtNota"></p><p class="yt-cloudnote" id="rtFonte"></p><p class="yt-cloudnote"><a href="./data/reuters/brasil.json" download>↓ Dados do Brasil (JSON)</a></p></div>
 </section>
 <section class="panel" id="internet">
@@ -2116,7 +2118,7 @@ function scaleRender(){
  document.getElementById('scaleProfileHeading').innerHTML=`<div class="scaleIdentity"><span class="eyebrow" style="color:#74cbd0">Perfil individual · ${e(p.platform)}</span><b>${e(p.name)}</b><small>${e(p.handle)} · ${ytApi(p)?'inscritos: '+e(fonteMet(p))+' · % Brasil: Modash '+dataBR(p.captured_at):dataBR(p.captured_at)+' · '+e(p.source)}</small></div>`;
  const country=countryEst(p),pct=scaleRatio(p);
  document.getElementById('scaleKpis').innerHTML=kpi(ytApi(p)?'Inscritos do canal':'Seguidores do perfil',fmtK(p.followers),ytApi(p)?fonteMet(p):'Contas estimadas • Modash')+kpi('Parcela localizada no Brasil',fmtPct(p.brazil),'Estimativa de distribuição geográfica')+kpi('Contas no Brasil (estim.)','≈ '+fmtK(country),ytApi(p)?'Inscritos (API) × % no Brasil (adendo Modash)':'Produto de duas estimativas Modash')+kpi('Eleitorado nacional apto',fmtK(t.total),'TSE • 2026 • pessoas');
- document.getElementById('scaleGauge').innerHTML=`<div class="scaleGaugeTitle">${fmtPct(pct)}</div><div class="scaleGaugeCaption">Equivalência numérica aproximada de contas estimadas no Brasil diante do cadastro eleitoral. <strong>Não representa alcance entre eleitores.</strong></div><div class="scaleGaugeTrack" role="img" aria-label="Razão numérica: ${fmtPct(pct)}"><div class="scaleGaugeFill" style="width:${Math.min(pct,100)}%"></div></div>${scaleLine('Numerador · contas estimadas no Brasil','≈ '+fmtN(Math.round(country),0))}${scaleLine('Denominador · eleitores aptos (TSE)',fmtN(t.total,0))}`;
+ document.getElementById('scaleGauge').innerHTML=`<div class="scaleGaugeTitle" style="font-size:clamp(20px,3.2vw,34px)">≈ ${fmtK(country)} contas no Brasil<br><small style="font-size:.55em;font-weight:400">ao lado de ${fmtK(DATA.tse.electorate2026.total)} eleitores aptos (TSE 2026)</small></div><div class="scaleGaugeCaption">Magnitudes lado a lado, de universos diferentes. A razão aritmética entre elas (${fmtPct(pct)}) aparece só como referência de escala. <strong>Não representa alcance entre eleitores.</strong></div><div class="scaleGaugeTrack" role="img" aria-label="Razão numérica: ${fmtPct(pct)}"><div class="scaleGaugeFill" style="width:${Math.min(pct,100)}%"></div></div>${scaleLine('Numerador · contas estimadas no Brasil','≈ '+fmtN(Math.round(country),0))}${scaleLine('Denominador · eleitores aptos (TSE)',fmtN(t.total,0))}`;
  document.getElementById('scaleTseContext').innerHTML=scaleLine('Eleitorado apto nacional',fmtN(t.total,0))+scaleLine('Mulheres no cadastro',fmtPct(t.female_pct))+scaleLine('Homens no cadastro',fmtPct(t.male_pct))+scaleLine('Abstenção BR · 1º turno 2026',fmtPct(d.abstention))+`<div class="scaleSmall">A abstenção é apresentada apenas como contexto do pleito, sem aplicação ao cálculo e sem inferência sobre seguidores.</div>`;
  document.getElementById('scaleAudience').innerHTML=`<div class="sectionlabel" style="margin-top:0"><h2 style="font-size:12px">Gênero · seguidores</h2></div>${gender(p.female,p.male)}<div class="sectionlabel" style="margin-top:22px"><h2 style="font-size:12px">Faixas etárias · seguidores</h2></div>${Object.entries(p.ages).map(([label,n])=>row(label,n,50)).join('')}<div class="chartfoot">Estimativa da plataforma, incluindo a faixa 13–17, sem filtro por cadastro eleitoral. Não há dados de 65+ nesses intervalos.</div>`;
  document.getElementById('scaleElectorate').innerHTML=scaleLine('Mulheres aptas',fmtN(t.female,0))+scaleLine('Homens aptos',fmtN(t.male,0))+scaleLine('Outras categorias / não informado',fmtN(t.residual,0))+scaleLine('Eleitores de 60 anos ou mais',fmtN(t.age60plus,0))+`<div class="chartfoot">As faixas disponíveis no TSE não foram harmonizadas individualmente com as faixas da Modash. A distribuição geográfica de seguidores não estabelece domicílio eleitoral.</div>`;
@@ -2709,7 +2711,7 @@ if(sec.classList.contains('active'))carregar();
 (function(){
 const sec=document.getElementById('gTrends');if(!sec)return;
 const COR={'Lula':'#c8102e','Flávio Bolsonaro':'#1f8a3b','Augusto Cury':'#b8862e','Renan Santos':'#5b7894','Ronaldo Caiado':'#7a4d8c'};
-const NOME_GRUPO={segundo_turno_topicos:'2º turno · tópicos',primeiro_turno_5_topicos:'1º turno · 5 mais votados',segundo_turno_palavras:'2º turno · palavras soltas'};
+const NOME_GRUPO={segundo_turno_topicos:'Lula × Flávio · tópicos',primeiro_turno_5_topicos:'5 mais votados no 1º turno · tópicos',segundo_turno_palavras:'Lula × Flávio · palavras soltas'};
 const NOME_PER={'now 1-d':'Últimas 24 horas (a cada 8 minutos)','now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)','eleitoral':'Período eleitoral · convenções (20/07) → 2º turno (25/10), por dia'};
 const MARCOS=[['2026-07-20','Convenções'],['2026-08-16','Início da campanha'],['2026-10-04','1º turno'],['2026-10-25','2º turno']];
 const GRADE={RR:[2,0],AP:[4,0],AM:[1,1],PA:[3,1],MA:[4,1],CE:[5,1],RN:[6,1],AC:[0,2],RO:[1,2],MT:[2,2],TO:[3,2],PI:[4,2],PE:[5,2],PB:[6,2],MS:[2,3],GO:[3,3],DF:[4,3],BA:[5,3],AL:[6,3],PR:[2,4],SP:[3,4],MG:[4,4],ES:[5,4],SE:[6,4],SC:[2,5],RJ:[4,5],RS:[2,6]};
@@ -2769,7 +2771,7 @@ $('gtMapLegend').innerHTML=dois?`<span>número = Lula·Flávio (%)</span><span><
 const rows=[...c.uf].sort((a,b)=>(b.v[iL>=0?iL:0]??-1)-(a.v[iL>=0?iL:0]??-1));
 $('gtTbl').innerHTML=`<thead><tr><th>UF</th>${c.termos.map(t=>`<th style="color:${cor(t)==='#3c4a58'?'#fff':'#fff'}">${esc(t.split(' ')[0])} %</th>`).join('')}</tr></thead><tbody>${rows.map(u=>`<tr><td>${esc(u.nome)}</td>${u.v.map((v,i)=>`<td class="n" style="color:${cor(c.termos[i])};font-weight:${v===Math.max(...u.v.filter(x=>x!=null))?700:400}">${v??'—'}</td>`).join('')}</tr>`).join('')}</tbody>`;}
 function relacionados(c){const box=$('gtRel');const R=c.relacionados||[];
-if(!R.length){box.innerHTML='<p class="yt-meta">Relacionados são coletados só para “2º turno · tópicos” nos períodos eleitoral e de 7 dias. Escolha essa consulta.</p>';return;}
+if(!R.length){box.innerHTML='<p class="yt-meta">Relacionados são coletados só para “Lula × Flávio · tópicos” nos períodos eleitoral e de 7 dias. Escolha essa consulta.</p>';return;}
 box.innerHTML=c.termos.map(t=>{const lst=l=>R.filter(r=>r.termo===t&&r.tipo===relTipo&&r.lista===l).sort((a,b)=>a.pos-b.pos).slice(0,12);
 const li=(arr,up)=>arr.length?arr.map(r=>`<li>${esc(r.texto)}${r.tipo_assunto?` <em class="yt-meta">(${esc(r.tipo_assunto)})</em>`:''}<span class="${up?'gt-up':''}">${esc(up?r.rotulo:r.valor)}</span></li>`).join(''):'<li class="yt-meta">sem dados</li>';
 return `<div class="gt-relcol" style="--c:${cor(t)}"><h4>${esc(t)}</h4><h5>Em alta no período</h5><ol>${li(lst('em_alta'),true)}</ol><h5>Principais (0–100)</h5><ol>${li(lst('principais'),false)}</ol></div>`;}).join('');
