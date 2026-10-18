@@ -1,0 +1,67 @@
+{
+ "schema_version": 1,
+ "gerado_em_utc": "2026-10-18T07:22:18Z",
+ "status": "TESTE · NÃO VALIDADO",
+ "aviso": "Classificação automática sem treino, ainda sem codificação humana. Não usar como resultado: serve para decidir se vale validar (amostra com duas pessoas, kappa).",
+ "modelo": "MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+ "limiar": 0.6,
+ "hipoteses": {
+  "favor": "O autor deste comentário apoia {}.",
+  "contra": "O autor deste comentário é contra {}."
+ },
+ "semente": 42,
+ "distribuicao": {
+  "youtube · conteúdo de Lula": {
+   "n": 200,
+   "sobre Lula": {
+    "contra": 51,
+    "favor": 124,
+    "neutro/incerto": 25
+   },
+   "sobre Flávio Bolsonaro": {
+    "contra": 124,
+    "favor": 33,
+    "neutro/incerto": 43
+   }
+  },
+  "youtube · conteúdo de Flávio Bolsonaro": {
+   "n": 200,
+   "sobre Lula": {
+    "neutro/incerto": 51,
+    "favor": 61,
+    "contra": 88
+   },
+   "sobre Flávio Bolsonaro": {
+    "favor": 104,
+    "contra": 70,
+    "neutro/incerto": 26
+   }
+  },
+  "x · conteúdo de Lula": {
+   "n": 100,
+   "sobre Lula": {
+    "favor": 86,
+    "contra": 10,
+    "neutro/incerto": 4
+   },
+   "sobre Flávio Bolsonaro": {
+    "contra": 57,
+    "favor": 36,
+    "neutro/incerto": 7
+   }
+  },
+  "x · conteúdo de Flávio Bolsonaro": {
+   "n": 100,
+   "sobre Lula": {
+    "contra": 87,
+    "favor": 10,
+    "neutro/incerto": 3
+   },
+   "sobre Flávio Bolsonaro": {
+    "contra": 21,
+    "favor": 67,
+    "neutro/incerto": 12
+   }
+  }
+ }
+}
