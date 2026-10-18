@@ -85,7 +85,7 @@ class TestPlataformas(unittest.TestCase):
         self.assertEqual(pl.args([]), (Path("."), "youtube"))
         self.assertEqual(pl.args(["/x", "--plataforma", "tiktok"]), (Path("/x"), "tiktok"))
         with self.assertRaises(SystemExit):
-            pl.args(["--plataforma", "instagram"])
+            pl.args(["--plataforma", "orkut"])
         self.assertEqual(pl.args(["--plataforma", "kwai"])[1], "kwai")
         self.assertEqual(len({pl.CAMINHOS[p]["chd"] for p in ("youtube", "tiktok", "kwai")}), 3)
 
