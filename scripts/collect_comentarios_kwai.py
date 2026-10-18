@@ -194,7 +194,7 @@ def main(argv=None, executar=None) -> int:
 
     if teste:
         t = cfg["teste"]
-        lotes = [(pendentes[:t["videos"]], t["comentarios_por_video"])]
+        lotes = [(pendentes[:1], 20)] if "--nataniel" in argv else [(pendentes[:t["videos"]], t["comentarios_por_video"])]
     else:  # cota igual por candidato, dividida entre os vídeos do período
         lotes = []
         for cid in sorted({v["candidate_id"] for v in videos}):
@@ -202,6 +202,7 @@ def main(argv=None, executar=None) -> int:
             pv = max(cfg["min_comentarios_por_video"], min(cfg["max_comentarios_por_video"], cfg["cota_comentarios_por_candidato"] // max(1, len(todos_c))))
             lotes.append(([v for v in pendentes if v["candidate_id"] == cid], pv))
     novas, alvo_total, limite_gratis = [], 0, None
+    nataniel = "--nataniel" in argv
     fmt = cfg.get("url_video") or "{url}"
     for alvo_c, por_video in lotes:
         alvo, est = [], p["inicio"]
@@ -214,6 +215,26 @@ def main(argv=None, executar=None) -> int:
         if not alvo:
             continue
         alvo_total += len(alvo)
+        if nataniel:  # natanielsantos/kwai-scraper: vídeos e comentários numa execução só (US$ 0,002/vídeo + US$ 0,001/comentário)
+            por_id = {v["video_id"]: v for v in alvo}
+            pl = {"urls": [v["url"] for v in alvo], "maxItems": len(alvo), "maxCommentsPerVideo": por_video, "maxRepliesPerComment": 0}
+            try:
+                run, itens = rodar(cfg["ator_nataniel"], pl, teto - gasto)
+            except Exception as e:  # noqa: BLE001
+                man["runs"].append({"erro": f"{type(e).__name__} {getattr(e, 'code', '')}".strip()})
+                continue
+            lin = [l for x in itens if e_comentario(x) and video_do_comentario(x) in por_id for l in linhas(x, por_id[video_do_comentario(x)], agora)]
+            n_c = sum(1 for x in itens if e_comentario(x))
+            custo = max(custo_run(run) or 0, round(0.00005 + 0.001 * n_c + 0.002 * (len(itens) - n_c), 4))
+            gasto += custo
+            novas += lin
+            man["runs"].append({"id": run.get("id"), "status": run.get("status"), "ator": cfg["ator_nataniel"], "videos": len(alvo), "por_video": por_video,
+                                "itens": len(itens), "comentarios": len(lin), "custo_usd": custo, "eventos_cobrados": run.get("chargedEventCounts")})
+            print(f"lote natanielsantos: {len(alvo)} vídeos × até {por_video} · {len(itens)} itens · {len(lin)} comentários · US$ {custo}")
+            if itens and not lin:
+                tipos = sorted({tuple(sorted(x.keys()))[:12] for x in itens}, key=len)[:3]
+                print("itens sem comentário reconhecido; chaves: " + json.dumps(tipos)[:700])
+            continue
         # O ator só lê o 1º vídeo de cada execução nesta conta (carga de 17/10: 68 e 71 vídeos pedidos, 1 lido em cada):
         # uma execução por vídeo (início = US$ 0,00005), 4 em paralelo.
         from concurrent.futures import ThreadPoolExecutor

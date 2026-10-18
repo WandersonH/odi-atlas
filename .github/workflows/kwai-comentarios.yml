@@ -1,6 +1,6 @@
 name: Kwai — comentários (Apify, APIFY_TOKEN_3, teto US$ 4)
 
-# Ator natanielsantos/kwai-scraper. Teto total autorizado: US$ 4 (data/config/kwai_comentarios.json), teste US$ 0,10.
+# Ator natanielsantos/kwai-scraper. Teto total autorizado: US$ 5 (data/config/kwai_comentarios.json), teste US$ 0,10.
 # Texto e autor dos comentários só no repositório privado; no público, só agregados.
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
       modo:
         description: "teste (2 vídeos × 5) · videos-lula (vídeos de @Lulaoficial) · carga (cota por candidato)"
         type: choice
-        options: [teste, videos-lula, carga]
+        options: [teste, videos-lula, carga, teste-nataniel, carga-nataniel]
         default: teste
 
 concurrency:
@@ -46,7 +46,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event.inputs.modo }}
         run: |
-          case "$MODO" in teste) a="--teste";; videos-lula) a="--videos-lula";; *) a="";; esac
+          case "$MODO" in teste) a="--teste";; videos-lula) a="--videos-lula";; teste-nataniel) a="--teste --nataniel";; carga-nataniel) a="--nataniel";; *) a="";; esac
           python scripts/collect_comentarios_kwai.py $a > k.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Kwai comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc

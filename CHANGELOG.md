@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C18.12 — Comentários do Kwai: teto de US$ 5 e teste com o natanielsantos por vídeo único (2026-10-17) 🔜
+
+- Pedido do usuário (21h24): "colete tudo que conseguir com até 5 dólares" — teto total dos comentários do Kwai passa a US$ 5.
+- O zen-studio está bloqueado pelo limite de 25 execuções gratuitas da conta; não uso outras contas para contornar. Modos novos: `teste-nataniel` (1 vídeo × 20 comentários pelo natanielsantos/kwai-scraper, que no teste 1 não trouxe comentários com vários vídeos) e `carga-nataniel` (todos os pendentes numa execução por candidato).
+- Testes: suíte OK.
+
 ## C18.11 — Comentários do Kwai: limite gratuito do ator; página no ar com aviso de desequilíbrio (2026-10-17) ⚠️
 
 - Carga por vídeo (run 39082082015): 67 vídeos de Lula × até 25 → **625 comentários**; os 70 de Flávio voltaram vazios. Re-execução (run 39082275709, com status de cada execução): 112 execuções SUCCEEDED, todas com a mesma resposta do ator — "You have used all 25 free runs for this Actor" (`limitReached`, `freeRunsLimit` 25). O zen-studio/kwai-comments-scraper só permite 25 execuções gratuitas por conta e, nessa conta, lê só o 1º vídeo de cada execução. O coletor passa a reconhecer essa resposta e a registrar o motivo no manifesto.
