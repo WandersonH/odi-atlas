@@ -27,7 +27,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `scripts/collect_x_respostas.py` + `data/config/x_respostas.json` + `x-respostas.yml`: busca `to:<perfil> since:<dia> until:<dia+1> filter:replies` para @LulaOficial e @FlavioBolsonaro, um dia por vez desde 20/07, mesmo número por candidato e por dia (o teto define quantas por dia). Troca de conta quando o saldo acaba (contas 3 a 15). Texto e autor só no repositório privado (`x/respostas/respostas.csv.gz`, mesmas colunas dos comentários do YouTube); manifesto público só com contagens.
 - 1º teste real (run do x-respostas, 18/10 05h11 UTC): parou antes de chamar a Apify, porque o teto de teste (US$ 0,02) era menor que a estimativa do lote com margem (US$ 0,0266); custo zero. Teto de teste passa a US$ 0,05.
 - 2º teste real (18/10 05h12 UTC, conta 3): 39 respostas de 10/10 (19 a @LulaOficial, 20 a @FlavioBolsonaro), 26 autores, todas com autor e post respondido. Campo `ordem` passa a marcar `direta` (resposta ao candidato) ou `na_conversa` (resposta a outra pessoa dentro da conversa do post).
-- Testes: suíte OK (`test_x_respostas`, dados simulados). Pendente: teste real e carga.
+- Carga por dia (run de 18/10 05h13 UTC, conta 3): 178 buscas, 8.041 respostas (3.978 a @LulaOficial, 4.063 a @FlavioBolsonaro), 4.415 autores, US$ 1,21. A busca devolveu bem menos que o pedido nas datas antigas (mediana de 19 respostas por dia; só 7 dias cheios por candidato): julho 306/431, outubro 1.692/1.636.
+- 2ª estratégia (`--por-post`, modos `teste-por-post` e `carga-por-post`): respostas de cada post (`conversation_id:<id>`), os 15 posts com mais respostas de cada semana por candidato, mesmo teto por post, com o saldo restante da fonte (US$ 3,79).
+- Testes: suíte OK (`test_x_respostas`, dados simulados). Pendente: teste e carga por post.
 
 ## C19.23 — WhatsApp: seguidores dos canais públicos (2026-10-18) 🔜
 

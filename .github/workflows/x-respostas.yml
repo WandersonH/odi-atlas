@@ -7,7 +7,7 @@ on:
       modo:
         description: "teste (1 dia, 20 por candidato) · carga (todo o período, até o teto)"
         type: choice
-        options: [teste, carga]
+        options: [teste, carga, teste-por-post, carga-por-post]
         default: teste
 
 concurrency:
@@ -53,7 +53,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event.inputs.modo }}
         run: |
-          if [ "$MODO" = "teste" ]; then a="--teste"; else a=""; fi
+          case "$MODO" in teste) a="--teste";; teste-por-post) a="--teste --por-post";; carga-por-post) a="--por-post";; *) a="";; esac
           python scripts/collect_x_respostas.py $a > f.txt 2>&1; rc=$?
           grep -v "^lote " f.txt | while IFS= read -r l; do echo "::notice title=X respostas::$(echo "$l" | cut -c1-900)"; done
           tail -1 f.txt | sed 's/^/::notice title=X respostas fim::/'
