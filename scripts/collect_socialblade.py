@@ -116,13 +116,28 @@ def main(argv=None, executar=None) -> int:
             print(f"{plat}: erro {type(e).__name__} {corpo}")
             continue
         itens = itens or []
-        brutos += itens
         custo += max(custo_run(run or {}) or 0, 0.02 * len(itens))
+        # o modo "profile" pode vir sem a série; nesse caso, pede o histórico pelo id da plataforma (exigência do ator)
+        sem = {str(x.get("id")): x for x in itens if x.get("id") and not pontos(x)}
+        if sem:
+            try:
+                run2, hist = executar({"platform": plat, "resultType": "history", "queries": list(sem), "historyLimit": 365}, max(0.1, round(0.01 * len(sem) + 0.02, 3)))
+                custo += max(custo_run(run2 or {}) or 0, 0.01 * len(hist or []))
+                for hx in hist or []:
+                    alvo = sem.get(str(g(hx, "id", "query", "user.id") or ""))
+                    if alvo is not None:
+                        alvo["_history"] = pontos(hx) or ([hx] if g(hx, "date") else [])
+                    else:
+                        man.setdefault("historico_sem_par", []).append(sorted(hx.keys())[:20])
+                brutos += hist or []
+            except Exception as e:  # noqa: BLE001
+                man["perfis"].append({"plataforma": plat, "erro_historico": f"{type(e).__name__} {getattr(e, 'code', '')}"})
+        brutos += itens
         por = {a["perfil"].lower(): a for a in grupo}
         for x in itens:
             h = str(g(x, "query", "input", "username", "handle", "profile.username", "user.username") or "").lstrip("@").lower()
             a = por.get(h)
-            pts = pontos(x)
+            pts = x.get("_history") or pontos(x)
             man["perfis"].append({"plataforma": plat, "perfil": h, "casou": bool(a), "pontos": len(pts),
                                   "chaves": sorted(x.keys())[:25], "chaves_ponto": sorted(pts[0].keys())[:15] if pts else None})
             if not a:
