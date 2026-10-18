@@ -42,7 +42,9 @@ def linha(x: dict, perfil: dict, agora: str) -> dict | None:
     pai = str(g(x, "inReplyToId", "inReplyToStatusId", "in_reply_to_status_id_str", "inReplyToTweetId") or "")
     conv = str(g(x, "conversationId", "conversation_id_str") or "")
     return {"comment_id": tid, "parent_id": pai, "tipo": "resposta_x", "video_id": conv or pai,
-            "candidate_id": perfil["candidate_id"], "channel_id": perfil["handle"], "ordem": "x",
+            "candidate_id": perfil["candidate_id"], "channel_id": perfil["handle"],
+            # resposta direta ao candidato ou a outra pessoa dentro da conversa do post do candidato
+            "ordem": "direta" if str(g(x, "inReplyToUsername") or "").lower() == perfil["handle"].lower() else "na_conversa",
             "autor_canal": str(g(x, "author.id", "author.userId", "user.id_str", "user.id") or ""),
             "autor_nome": str(g(x, "author.userName", "author.username", "user.screen_name") or ""),
             "texto": " ".join(str(g(x, "text", "fullText", "full_text") or "").split()),
