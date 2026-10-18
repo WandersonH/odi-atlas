@@ -112,55 +112,73 @@ def main(argv=None) -> int:
         return 1
     rows = list(csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"))
     por_id = {r["video_id"]: r for r in rows}
-    g = montar(rows, inicio)
-    sem = sorted(n for n in g.nodes if g.degree(n) == 0)
-    posicionar(g)
-    out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-           "metodo": (f"Rede dirigida de menções: perfil de {nome} da campanha (declarado ao TSE) → conta marcada com @ na legenda; "
-                      f"peso = nº de vídeos com a marcação, {'em todo o acervo histórico' if kwai else 'desde 20/07/2026 (pré-campanha)'}. Mostra quem as campanhas CITAM (aliados, adversários, "
-                      f"os próprios perfis). Quem fala DELAS no {nome} não entra nesta rede. "
-                      "Cor: vermelho = campanha de Lula, verde = campanha de Flávio; contas marcadas pelas duas ficam na mistura."),
-           "nos": [{"id": n, **{k: v for k, v in a.items()}} for n, a in sorted(g.nodes(data=True))],
-           "arestas": [{"de": u, "para": v, "peso": a["weight"],
-                        "videos": [{"id": i, "legenda": por_id[i]["legenda"][:160], "url": por_id[i]["url"],
-                                    "publicado_em": por_id[i]["publicado_em"]} for i in a["videos"][:6]]}
-                       for u, v, a in sorted(g.edges(data=True))]}
-    out["perfis_sem_marcacao"] = sem
-    out["resumo"] = {c: {"perfis_com_marcacao": sum(1 for _, a in g.nodes(data=True) if a.get("cid") == c),
-                         "contas_marcadas": len({v for u, v in g.edges() if g.nodes[u].get("cid") == c}),
-                         "marcacoes": sum(a["weight"] for u, _, a in g.edges(data=True) if g.nodes[u].get("cid") == c)}
-                     for c in CORES}
-    (d / "rede_mencoes.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    with open(d / "rede_mencoes_nos.csv", "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f, lineterminator="\n")
-        w.writerow(["Id", "Label", "tipo", "candidato", "marcacoes_recebidas", "marcacoes_feitas", "frac_lula", "url", "x", "y"])
-        for n, a in sorted(g.nodes(data=True)):
-            w.writerow([n, "@" + n, a["tipo"], a.get("candidato", ""), a["marcacoes_recebidas"], a["marcacoes_feitas"],
-                        a.get("frac_lula", ""), (f"https://www.kwai.com/@{n}" if kwai else f"https://www.facebook.com/{n}" if face else f"https://x.com/{n}" if xx else f"https://www.instagram.com/{n}" if ig else f"https://www.tiktok.com/@{n}"), a.get("x"), a.get("y")])
-    with open(d / "rede_mencoes_arestas.csv", "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f, lineterminator="\n")
-        w.writerow(["Source", "Target", "Weight", "Type"])
-        for u, v, a in sorted(g.edges(data=True)):
-            w.writerow([u, v, a["weight"], "Directed"])
-    with open(d / "rede_mencoes_videos.csv", "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f, lineterminator="\n")
-        w.writerow(["perfil_campanha", "conta_marcada", "video_id", "url", "publicado_em", "legenda"])
-        for u, v, a in sorted(g.edges(data=True)):
-            for i in a["videos"]:
-                r = por_id[i]
-                w.writerow([u, v, i, r["url"], r["publicado_em"], r["legenda"]])
-    gx = nx.DiGraph()
-    for n, a in g.nodes(data=True):
-        r, gg, b = (int(a["cor"][i:i + 2], 16) for i in (1, 3, 5))
-        gx.add_node(n, label="@" + n, tipo=a["tipo"], candidato=a.get("candidato", ""), marcacoes_recebidas=a["marcacoes_recebidas"],
-                    viz={"position": {"x": a.get("x", 0), "y": -a.get("y", 0), "z": 0.0},
-                         "size": 6 + 3 * math.sqrt(a["marcacoes_recebidas"] + a["marcacoes_feitas"]),
-                         "color": {"r": r, "g": gg, "b": b, "a": 1.0}})
-    for u, v, a in g.edges(data=True):
-        gx.add_edge(u, v, weight=a["weight"])
-    nx.write_gexf(gx, d / "rede_mencoes.gexf")
-    print(f"menções {nome}: {g.number_of_nodes()} contas, {g.number_of_edges()} ligações; " +
-          "; ".join(f"{c}: {v}" for c, v in out["resumo"].items()))
+    def gerar(rows: list[dict], sufixo: str, fase: dict | None) -> None:
+        g = montar(rows, inicio)
+        sem = sorted(n for n in g.nodes if g.degree(n) == 0)
+        posicionar(g)
+        out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+               "metodo": (f"Rede dirigida de menções: perfil de {nome} da campanha (declarado ao TSE) → conta marcada com @ na legenda; "
+                          f"peso = nº de vídeos com a marcação, {'em todo o acervo histórico' if kwai else 'desde 20/07/2026 (pré-campanha)'}. Mostra quem as campanhas CITAM (aliados, adversários, "
+                          f"os próprios perfis). Quem fala DELAS no {nome} não entra nesta rede. "
+                          "Cor: vermelho = campanha de Lula, verde = campanha de Flávio; contas marcadas pelas duas ficam na mistura."),
+               "nos": [{"id": n, **{k: v for k, v in a.items()}} for n, a in sorted(g.nodes(data=True))],
+               "arestas": [{"de": u, "para": v, "peso": a["weight"],
+                            "videos": [{"id": i, "legenda": por_id[i]["legenda"][:160], "url": por_id[i]["url"],
+                                        "publicado_em": por_id[i]["publicado_em"]} for i in a["videos"][:6]]}
+                           for u, v, a in sorted(g.edges(data=True))]}
+        out["perfis_sem_marcacao"] = sem
+        out["fase"] = fase["id"] if fase else "todo"
+        if fase:
+            out["metodo"] += f" Fase: {fase['rotulo']} ({fase['de'][8:10]}/{fase['de'][5:7]}–{fase['ate'][8:10]}/{fase['ate'][5:7]})."
+        out["resumo"] = {c: {"perfis_com_marcacao": sum(1 for _, a in g.nodes(data=True) if a.get("cid") == c),
+                             "contas_marcadas": len({v for u, v in g.edges() if g.nodes[u].get("cid") == c}),
+                             "marcacoes": sum(a["weight"] for u, _, a in g.edges(data=True) if g.nodes[u].get("cid") == c)}
+                         for c in CORES}
+        (d / f"rede_mencoes{sufixo}.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        with open(d / f"rede_mencoes{sufixo}_nos.csv", "w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(["Id", "Label", "tipo", "candidato", "marcacoes_recebidas", "marcacoes_feitas", "frac_lula", "url", "x", "y"])
+            for n, a in sorted(g.nodes(data=True)):
+                w.writerow([n, "@" + n, a["tipo"], a.get("candidato", ""), a["marcacoes_recebidas"], a["marcacoes_feitas"],
+                            a.get("frac_lula", ""), (f"https://www.kwai.com/@{n}" if kwai else f"https://www.facebook.com/{n}" if face else f"https://x.com/{n}" if xx else f"https://www.instagram.com/{n}" if ig else f"https://www.tiktok.com/@{n}"), a.get("x"), a.get("y")])
+        with open(d / f"rede_mencoes{sufixo}_arestas.csv", "w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(["Source", "Target", "Weight", "Type"])
+            for u, v, a in sorted(g.edges(data=True)):
+                w.writerow([u, v, a["weight"], "Directed"])
+        with open(d / f"rede_mencoes{sufixo}_videos.csv", "w", encoding="utf-8", newline="") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(["perfil_campanha", "conta_marcada", "video_id", "url", "publicado_em", "legenda"])
+            for u, v, a in sorted(g.edges(data=True)):
+                for i in a["videos"]:
+                    r = por_id[i]
+                    w.writerow([u, v, i, r["url"], r["publicado_em"], r["legenda"]])
+        gx = nx.DiGraph()
+        for n, a in g.nodes(data=True):
+            r, gg, b = (int(a["cor"][i:i + 2], 16) for i in (1, 3, 5))
+            gx.add_node(n, label="@" + n, tipo=a["tipo"], candidato=a.get("candidato", ""), marcacoes_recebidas=a["marcacoes_recebidas"],
+                        viz={"position": {"x": a.get("x", 0), "y": -a.get("y", 0), "z": 0.0},
+                             "size": 6 + 3 * math.sqrt(a["marcacoes_recebidas"] + a["marcacoes_feitas"]),
+                             "color": {"r": r, "g": gg, "b": b, "a": 1.0}})
+        for u, v, a in g.edges(data=True):
+            gx.add_edge(u, v, weight=a["weight"])
+        nx.write_gexf(gx, d / f"rede_mencoes{sufixo}.gexf")
+        print(f"menções{sufixo} {nome}: {g.number_of_nodes()} contas, {g.number_of_edges()} ligações; " +
+              "; ".join(f"{c}: {v}" for c, v in out["resumo"].items()))
+
+    gerar(rows, "", None)
+    # uma rede por fase, para a página trocar de rede quando o filtro de fase muda (pedido de 18/10/2026)
+    tj = root / "data/config/trends.json"
+    for f in (json.loads(tj.read_text(encoding="utf-8")).get("fases", []) if tj.exists() else []):
+        sub = [r for r in rows if f["de"] <= r["publicado_em"][:10] <= f["ate"]]
+        if len(sub) < 5:
+            for ext in (".json", ".gexf"):
+                q = d / f"rede_mencoes_{f['id']}{ext}"
+                if q.exists():
+                    q.unlink()
+            print(f"menções {f['id']}: só {len(sub)} conteúdos, não gerada")
+            continue
+        gerar(sub, f"_{f['id']}", f)
     return 0
 
 

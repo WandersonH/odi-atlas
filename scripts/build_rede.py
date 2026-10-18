@@ -118,8 +118,26 @@ def cor_lado(lado: float) -> str:
 def main(argv=None) -> int:
     root, plat = pl.args(argv)
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
-    ids = tuple(cfg["candidatos"])  # (Lula, Flávio) na ordem do arquivo
     rows = pl.videos(root, plat)
+    construir(root, plat, cfg, rows, "", None)
+    # uma rede por fase, para a página trocar de rede quando o filtro de fase muda (pedido de 18/10/2026)
+    tj = root / "data/config/trends.json"
+    fases = json.loads(tj.read_text(encoding="utf-8")).get("fases", []) if tj.exists() else []
+    for f in fases:
+        sub = [r for r in rows if f["de"] <= (r.get("publicado_em") or "")[:10] <= f["ate"]]
+        if len(sub) < 10:
+            print(f"rede {f['id']}: só {len(sub)} conteúdos, não gerada")
+            for ext in (".json", ".gexf"):
+                q = pl.caminho(root, plat, "rede").with_name(f"rede_{f['id']}{ext}")
+                if q.exists():
+                    q.unlink()
+            continue
+        construir(root, plat, cfg, sub, f"_{f['id']}", f)
+    return 0
+
+
+def construir(root: Path, plat: str, cfg: dict, rows: list[dict], sufixo: str, fase: dict | None) -> None:
+    ids = tuple(cfg["candidatos"])  # (Lula, Flávio) na ordem do arquivo
     padrao, pacotes = bc.texto_padrao(rows), bc.pacotes_de_tags(rows)
     videos, video_ids = [], []
     for cid in ids:
@@ -137,15 +155,17 @@ def main(argv=None) -> int:
         d["cor"] = cor_lado(d["lado"])
         d["viz"] = {"position": {"x": d["x"], "y": -d["y"], "z": 0.0}, "size": 2 + 3 * d["videos"] ** 0.5,
                     "color": {"r": int(d["cor"][1:3], 16), "g": int(d["cor"][3:5], 16), "b": int(d["cor"][5:7], 16), "a": 1.0}}
+    rotulo_fase = f" Fase: {fase['rotulo']} ({fase['de'][8:10]}/{fase['de'][5:7]}–{fase['ate'][8:10]}/{fase['ate'][5:7]})." if fase else ""
     metodo = (f"Rede de coocorrência: nó = palavra ou #tag presente em {MIN_VIDEOS}+ vídeos (até {MAX_NOS}); "
               f"aresta = aparecem no mesmo vídeo (peso = nº de vídeos, mínimo {MIN_PESO}; até {TOP_ARESTAS} arestas mais fortes por nó). "
               f"Comunidades: Louvain; posição: {info.get('layout', '—')}; semente {SEMENTE}. "
               "Texto sem links, rodapés repetidos, nome do canal, nome do próprio candidato e pacote fixo de tags. "
-              "Cor = proporção de uso por Lula (vermelho) e Flávio (verde).")
+              "Cor = proporção de uso por Lula (vermelho) e Flávio (verde)." + rotulo_fase)
     coletado = max((r["coletado_em"] for r in rows), default=None)
     comms = info.get("comunidades", [])
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "coletado_em_utc": coletado, "metodo": metodo, "networkx": nx.__version__,
+           "fase": fase["id"] if fase else "todo",
            "videos": {cid: sum(1 for c, _ in videos if c == cid) for cid in ids},
            "nos_total": g.number_of_nodes(), "arestas_total": g.number_of_edges(),
            "modularidade": info.get("modularidade"),
@@ -157,23 +177,25 @@ def main(argv=None) -> int:
                     "lado": d["lado"], "c": d["comunidade"], "g": d["grau"], "b": d["intermediacao"]}
                    for n, d in sorted(g.nodes(data=True))],
            "arestas": [[a, b, d["weight"]] for a, b, d in sorted(g.edges(data=True))]}
-    pl.caminho(root, plat, "rede").with_suffix(".json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    base = pl.caminho(root, plat, "rede")
+    base = base.with_name(base.name + sufixo)
+    base.with_suffix(".json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     # Planilhas para conferência e importação no Gephi (Laboratório de dados → Importar planilha)
-    yt = pl.caminho(root, plat, "rede").parent
-    with open(yt / "rede_nos.csv", "w", encoding="utf-8", newline="") as f:
+    yt = base.parent
+    with open(yt / f"rede{sufixo}_nos.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Id", "Label", "videos", "videos_lula", "videos_flavio", "lado_lula", "comunidade", "grau",
                     "intermediacao", "x", "y"])
         for n in out["nos"]:
             w.writerow([n["id"], n["id"], n["v"], n["l"], n["f"], n["lado"], n["c"] + 1, n["g"], n["b"], n["x"], n["y"]])
-    with open(yt / "rede_arestas.csv", "w", encoding="utf-8", newline="") as f:
+    with open(yt / f"rede{sufixo}_arestas.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["Source", "Target", "Weight", "Type"])
         for a, b2, wt in out["arestas"]:
             w.writerow([a, b2, wt, "Undirected"])
     # Matriz de origem: que termos da rede cada vídeo contém (permite refazer a contagem de qualquer aresta)
     nos_set = set(g.nodes)
-    with open(yt / "rede_videos_termos.csv", "w", encoding="utf-8", newline="") as f:
+    with open(yt / f"rede{sufixo}_videos_termos.csv", "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["candidate_id", "candidato", "video_id", "url", "termos_na_rede"])
         for (cid, ts), vid in zip(videos, video_ids):
@@ -184,12 +206,11 @@ def main(argv=None) -> int:
     for n in gx.nodes:
         gx.nodes[n].pop("x"); gx.nodes[n].pop("y")
     gx.graph.update({"descricao": metodo, "coletado_em_utc": coletado or ""})
-    nx.write_gexf(gx, pl.caminho(root, plat, "rede").with_suffix(".gexf"))
-    print(f"rede: {g.number_of_nodes()} nós, {g.number_of_edges()} arestas, {len(comms)} comunidades, "
+    nx.write_gexf(gx, base.with_suffix(".gexf"))
+    print(f"rede{sufixo}: {g.number_of_nodes()} nós, {g.number_of_edges()} arestas, {len(comms)} comunidades, "
           f"modularidade {info.get('modularidade')}, layout {info.get('layout')}")
     for c in out["comunidades"]:
         print(f"  C{c['id']} ({c['nos']} nós, lado médio {c['lado_medio']}): {', '.join(c['principais'])}")
-    return 0
 
 
 if __name__ == "__main__":

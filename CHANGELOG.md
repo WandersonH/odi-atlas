@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.37 — Redes do Gephi acompanham o filtro de fase (2026-10-18) ✅
+
+- Pedido do usuário (18/10, 03h26): "a gente consegue fazer o Gephi também se alterar". `build_rede.py` e `build_rede_mencoes_tiktok.py` passam a gerar, além da rede do período todo, uma rede por fase (`rede_pre`, `rede_turno1`, `rede_turno2` e `rede_mencoes_<fase>`, em JSON, GEXF e CSV). Fase com menos de 10 conteúdos (coocorrência) ou 5 (menções) não gera rede, e arquivos antigos dessa fase são apagados.
+- Página: ao trocar a fase em qualquer página de conteúdo, as redes de coocorrência e de menções recarregam a rede da fase, os desenhos antigos são limpos, os links de GEXF e CSV passam a apontar para a fase e o selo do cartão vira "acompanha o filtro de fase". Sem rede para a fase: "poucos conteúdos nesta fase para formar a rede". A rede de influenciadores do YouTube não é por fase e mantém o link original.
+- Correção encontrada no teste: o botão "Baixar .gexf" do painel lateral das redes de TikTok, Kwai, Facebook, Instagram e X baixava a rede do YouTube (texto copiado na geração das páginas); agora baixa a rede da própria plataforma e da fase.
+- Redes geradas localmente (exemplos): YouTube pré 41 nós, 1º turno 147, 2º turno 22; Facebook 1º turno 25, 2º turno 130, pré sem rede (sem posts coletados); menções do X pré 64 contas, 1º turno 124, 2º turno 104.
+- Verificado no Chromium local (Facebook, YouTube, Instagram; período todo → 2º turno → pré): desenho e links mudam, sem erro de JavaScript.
+- Testes: suíte OK.
+
 ## C19.36 — Página do Instagram verificada com a carga (2026-10-18) ✅
 
 - Aberta no Chromium local com os 3.599 posts: cobertura (Lula 262 / 1.541 / 1.101; Flávio 159 / 393 / 143 por fase, com aviso de variação em Lula), lista de perfis, temas, linha do tempo, nuvens, posts, CHD e redes, sem erro de JavaScript.
