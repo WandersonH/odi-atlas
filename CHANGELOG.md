@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.2 — Apify: verificação diária das contas 1 a 7 (2026-10-17) 🔜
+
+- Pedido do usuário: verificar as contas Apify de 1 a 7. `verificar_contas_apify.py` + `apify-contas.yml` (diário, 09h05, e manual): só leitura (`/users/me` e `/users/me/limits`), sem custo; grava em `data/apify/contas.json` plano, uso do mês, limite e saldo de cada conta, sem nome de usuário, e-mail ou id.
+- Correção: o 1º commit do workflow tinha erro de YAML (dois-pontos numa linha `run` sem bloco) e foi para o repositório sem esta entrada; corrigido no commit seguinte.
+- Pendente: o run; a troca automática de conta quando uma falha não foi implementada (ver resposta ao usuário sobre os termos de uso da Apify).
+
 ## C19.1 — Facebook: carga das 12 páginas e página no caderno 02 (2026-10-17) ⚠️
 
 - Teste (run 39083282446, US$ 0,036): 7 posts de facebook.com/lula (desde 16/08).

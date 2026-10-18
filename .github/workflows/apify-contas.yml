@@ -33,4 +33,5 @@ jobs:
           exit $rc
       - name: Commitar
         if: always()
-        run: scripts/commit_push.sh "Apify: verificação das contas (run ${{ github.run_id }})"
+        run: |
+          scripts/commit_push.sh "Apify - verificação das contas (run ${{ github.run_id }})"
