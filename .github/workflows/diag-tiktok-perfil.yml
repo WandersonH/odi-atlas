@@ -1,0 +1,43 @@
+name: Diagnóstico — vídeos de um perfil do TikTok (yt-dlp, grátis)
+
+on:
+  workflow_dispatch:
+    inputs:
+      perfil:
+        description: "nome do perfil, sem @"
+        default: "evangelicoscomlula"
+
+permissions:
+  contents: read
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Listar os 40 primeiros vídeos com data
+        env:
+          PERFIL: ${{ github.event.inputs.perfil }}
+        run: |
+          pip install -q -U yt-dlp
+          python - <<'PY' > d.txt 2>&1 || true
+          import os, sys
+          sys.path.insert(0, "scripts")
+          import yt_dlp
+          from collect_tiktok import data_do_id
+          p = os.environ["PERFIL"]
+          with yt_dlp.YoutubeDL({"quiet": True, "no_warnings": True, "skip_download": True, "extract_flat": True, "lazy_playlist": True}) as y:
+              info = y.extract_info(f"https://www.tiktok.com/@{p}", download=False, process=False)
+              n = 0
+              for e in info.get("entries") or []:
+                  n += 1
+                  print(f"{n:02d} {data_do_id(str(e.get('id')))} {e.get('id')} views={e.get('view_count')}")
+                  if n >= 40:
+                      break
+              print(f"total listado: {n}")
+          PY
+          while IFS= read -r l; do echo "::notice title=TikTok @$PERFIL::$l"; done < d.txt
