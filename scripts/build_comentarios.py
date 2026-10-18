@@ -32,7 +32,7 @@ import chd_reinert as chd  # noqa: E402
 import corpus_populismo as cp  # noqa: E402
 from collect_comentarios_youtube import destino, plataforma  # noqa: E402
 
-DESDE = "2026-08-16"
+DESDE = "2026-07-20"  # pré-campanha
 SEMENTE = 42
 MIN_REPETIDO_AUTORES = 3
 MIN_REPETIDO_CHARS = 25
@@ -154,9 +154,9 @@ def main(argv=None) -> int:
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "coletado_em_utc": max((r["coletado_em"] for r in rows), default=None), "modo": modo,
            "plataforma": plat,
-           "metodo": (("Comentários públicos dos vídeos do Kwai das campanhas desde 16/08/2026, via Apify (natanielsantos/kwai-scraper): "
+           "metodo": (("Comentários públicos dos vídeos do Kwai das campanhas desde 20/07/2026, via Apify (natanielsantos/kwai-scraper): "
                        "até 50 comentários por vídeo, na ordem que o Kwai entrega, sem respostas. Não é o universo de " if plat == "kwai" else
-                       "Comentários públicos dos vídeos das campanhas desde 16/08/2026, pela API oficial: até 100 conversas por "
+                       "Comentários públicos dos vídeos das campanhas desde 20/07/2026, pela API oficial: até 100 conversas por "
                        "relevância e 100 mais recentes por vídeo, com as respostas que a API devolve junto. Não é o universo de ") +
                       "comentários nem amostra do eleitorado. Pré-codificação por dicionário (livros de códigos de populismo e de "
                       "intolerância/incivilidade): indica candidatos a cada categoria; a validação é humana (kappa). "

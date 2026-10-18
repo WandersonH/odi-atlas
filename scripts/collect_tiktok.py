@@ -25,7 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from net import now_utc  # noqa: E402
 
-DESDE = "2026-08-16"
+DESDE = "2026-07-20"  # pré-campanha (fases em data/config/trends.json)
 TENTATIVAS = 3
 ESPERA_S = 20
 LIMITE_POR_PERFIL = 300

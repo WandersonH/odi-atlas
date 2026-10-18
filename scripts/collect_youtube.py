@@ -8,7 +8,7 @@
 - O YouTube arredonda publicamente o número de inscritos (3 dígitos significativos) e permite ocultá-lo;
   canal com contagem oculta fica sem número (não vira zero).
 - Saída: data/seguidores/youtube_latest.csv no formato do caderno 02, histórico e manifesto.
-- Vídeos: todos os publicados desde o início da campanha (16/08/2026), com visualizações, curtidas e
+- Vídeos: todos os publicados desde o início da pré-campanha (20/07/2026), com visualizações, curtidas e
   número de comentários, em data/youtube/videos_<data>.csv.gz (uma foto por dia, para ver a evolução).
   O texto dos comentários NÃO é coletado (dados de pessoas comuns; LGPD).
 """
@@ -29,7 +29,7 @@ from net import with_scheme, get_json, now_utc  # noqa: E402
 
 BASE = "https://www.googleapis.com/youtube/v3"
 API = BASE + "/channels"
-DESDE = "2026-08-16"  # início oficial da campanha eleitoral de 2026
+DESDE = "2026-07-20"  # início da pré-campanha (fases em data/config/trends.json); a campanha oficial começa em 16/08
 CARGOS = {"PRESIDENTE", "VICE-PRESIDENTE"}
 
 

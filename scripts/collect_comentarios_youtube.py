@@ -7,7 +7,7 @@ repositório público. Destino do arquivo bruto:
   - senão, pasta temporária da execução (RUNNER_TEMP ou /tmp), apagada ao fim do run.
 No público fica só o manifesto (contagens, cota, erros) em data/youtube/comentarios/manifesto_latest.json.
 
-Para cada vídeo das campanhas publicado desde 16/08/2026 e com comentários: até 100 conversas por ordem de
+Para cada vídeo das campanhas publicado desde 20/07/2026 (pré-campanha) e com comentários: até 100 conversas por ordem de
 RELEVÂNCIA (a do YouTube) e até 100 pelas MAIS RECENTES, com as respostas que vêm junto (a API devolve até 5 por
 conversa). 1 unidade de cota por chamada; teto em data/config/comentarios_youtube.json.
 Chave SOMENTE pela variável de ambiente YOUTUBE_API_KEY; erros não imprimem URL (a URL contém a chave).

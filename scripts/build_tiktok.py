@@ -36,12 +36,24 @@ def taxa(r: dict) -> float | None:
     return sum(num(r[k]) or 0 for k in ("curtidas", "comentarios", "compartilhamentos")) / v
 
 
+def por_fase(vids: list[dict], fases: list[dict]) -> dict:
+    """Vídeos, visualizações e interação mediana por fase (pré-campanha, 1º turno, 2º turno — data/config/trends.json)."""
+    out = {}
+    for f in fases:
+        vs = [v for v in vids if f["de"] <= (v["publicado_em"] or "")[:10] <= f["ate"]]
+        tx = [v["taxa_interacao"] for v in vs if v["taxa_interacao"] is not None]
+        out[f["id"]] = {"rotulo": f["rotulo"], "de": f["de"], "ate": f["ate"], "videos": len(vs),
+                        "visualizacoes": sum(v["visualizacoes"] or 0 for v in vs),
+                        "taxa_interacao_mediana": round(statistics.median(tx), 4) if tx else None}
+    return out
+
+
 def main(argv=None) -> int:
     argv = list(argv or [])
     plat = "kwai" if "--kwai" in argv else "facebook" if "--facebook" in argv else "tiktok"  # Kwai e Facebook: mesmo formato de acervo e mesmas regras
     argv = [a for a in argv if a not in ("--kwai", "--facebook")]
     root = Path(argv[0]) if argv else Path(".")
-    desde = "" if plat == "kwai" else "2026-08-16"  # Kwai: acervo histórico completo, com a data de cada post
+    desde = "" if plat == "kwai" else "2026-07-20"  # TikTok e Facebook: desde a pré-campanha  # Kwai: acervo histórico completo, com a data de cada post
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     temas, cands = bc.compile_cfg(cfg)
     src = root / f"data/{plat}/videos.csv.gz"
@@ -69,6 +81,9 @@ def main(argv=None) -> int:
                      else "TikTok público via yt-dlp (perfis declarados ao TSE pelas chapas 13 e 22)"),
            "metodo": cfg["nota"] + f" Mesmas regras do caderno 02 (YouTube): links removidos e trechos repetidos em {bc.LIMIAR_REPETICAO}+ vídeos do mesmo perfil descartados. Taxa de interação = (curtidas + comentários + compartilhamentos) ÷ visualizações.",
            "temas": list(cfg["temas"]) + ["sem_tema"], "desde": desde or None, "candidatos": {}}
+    tj = root / "data/config/trends.json"
+    fases = json.loads(tj.read_text(encoding="utf-8")).get("fases", []) if tj.exists() else []
+    out["fases"] = fases
     for cid, cand in cands.items():
         meus = [(r, p) for r, p in zip(rows, pseudo) if r["candidate_id"] == cid and r["publicado_em"] >= desde]
         nome = bc.norm(cand["nome"]).split()
@@ -104,6 +119,7 @@ def main(argv=None) -> int:
             "hashtags": [[t, n] for t, n in Counter(t for s in tags for t in s).most_common(40) if n >= 2],
             "por_mes": dict(sorted(Counter(v["publicado_em"][:7] for v in vids if v["publicado_em"]).items())),
             "desde_16_08": sum(1 for v in vids if v["publicado_em"] >= "2026-08-16"),
+            "por_fase": por_fase(vids, fases),
             "videos": vids}
         c = out["candidatos"][cid]
         print(f"{cand['nome']}: {len(vids)} vídeos de {len(c['perfis'])} perfis | {tot['visualizacoes']:,} visualizações | "

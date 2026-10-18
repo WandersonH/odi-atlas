@@ -50,8 +50,8 @@ class TestCorpus(unittest.TestCase):
         self.assertEqual(cp.var("Flávio Bolsonaro"), "flaviobolsonaro")
         self.assertEqual(cp.formato("PT45S"), "short")
         self.assertEqual(cp.formato("PT1H2M"), "longo")
-        self.assertEqual(cp.semana("2026-08-16T10:00:00Z"), 1)
-        self.assertEqual(cp.semana("2026-08-23T10:00:00Z"), 2)
+        self.assertEqual(cp.semana("2026-07-20T10:00:00Z"), 1)  # semana 1 = início da pré-campanha
+        self.assertEqual(cp.semana("2026-07-27T10:00:00Z"), 2)
 
     def test_amostra_estratificada_estavel(self):
         vids = [{"cid": c, "publicado_em": f"2026-{m:02d}-01", "video_id": f"{c}{m}{i}"}

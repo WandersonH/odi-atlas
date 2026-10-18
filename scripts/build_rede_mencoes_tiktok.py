@@ -26,7 +26,7 @@ from pathlib import Path
 
 import networkx as nx
 
-INICIO = "2026-08-16"
+INICIO = "2026-07-20"  # pré-campanha
 SEMENTE = 42
 MENCAO = re.compile(r"(?<![\w.])@([A-Za-z0-9._]{2,30})")
 CORES = {"280002542548": "#c8102e", "280002551544": "#1f8a3b"}
@@ -115,7 +115,7 @@ def main(argv=None) -> int:
     posicionar(g)
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "metodo": (f"Rede dirigida de menções: perfil de {nome} da campanha (declarado ao TSE) → conta marcada com @ na legenda; "
-                      f"peso = nº de vídeos com a marcação, {'em todo o acervo histórico' if kwai else 'desde 16/08/2026'}. Mostra quem as campanhas CITAM (aliados, adversários, "
+                      f"peso = nº de vídeos com a marcação, {'em todo o acervo histórico' if kwai else 'desde 20/07/2026 (pré-campanha)'}. Mostra quem as campanhas CITAM (aliados, adversários, "
                       f"os próprios perfis). Quem fala DELAS no {nome} não entra nesta rede. "
                       "Cor: vermelho = campanha de Lula, verde = campanha de Flávio; contas marcadas pelas duas ficam na mistura."),
            "nos": [{"id": n, **{k: v for k, v in a.items()}} for n, a in sorted(g.nodes(data=True))],

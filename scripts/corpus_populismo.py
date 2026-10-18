@@ -29,7 +29,7 @@ import plataformas as pl  # noqa: E402
 
 SEMENTE = 42
 PALAVRAS_SEGMENTO = 40
-DESDE = dt.datetime(2026, 8, 16, tzinfo=dt.timezone.utc)
+DESDE = dt.datetime(2026, 7, 20, tzinfo=dt.timezone.utc)  # pré-campanha
 
 
 def compilar(livro: dict) -> dict:

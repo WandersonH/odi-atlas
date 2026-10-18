@@ -827,7 +827,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <div class="readme-source-row"><strong>IBGE / PNAD Contínua TIC</strong><span>Uso da internet em 2016, 2019, 2024 e 2025; regiões, situação urbana/rural e idades selecionadas. Base: pessoas com 10 anos ou mais.</span><span><a href="https://www.ibge.gov.br/" target="_blank" rel="noopener noreferrer">IBGE ↗</a><small>Indicadores agregados</small></span></div>
     <div class="readme-source-row"><strong>YouTube Data API</strong><span>Inscritos, vídeos e estatísticas dos canais declarados ao TSE e de PT/PL; médias de 30 dias por canal. Diário (07h20).</span><span><a href="./data/youtube/fichas.json" download>fichas.json ↓</a><small>coleta automática</small></span></div>
     <div class="readme-source-row"><strong>YouTube / Comentários</strong><span>Comentários públicos dos vídeos das campanhas (relevância + recentes); só agregados no público, texto no repositório privado. Diário (07h50).</span><span><a href="./data/youtube/comentarios/analise.json" download>analise.json ↓</a><small>coleta automática</small></span></div>
-    <div class="readme-source-row"><strong>TikTok (yt-dlp)</strong><span>Vídeos dos perfis declarados ao TSE pelas chapas 13 e 22, desde 16/08/2026. Duas vezes ao dia; perfis bloqueados mantêm a última leitura.</span><span><a href="./data/tiktok/conteudo.json" download>conteudo.json ↓</a><small>coleta automática</small></span></div>
+    <div class="readme-source-row"><strong>TikTok (yt-dlp)</strong><span>Vídeos dos perfis declarados ao TSE pelas chapas 13 e 22, desde 20/07/2026 (pré-campanha). Duas vezes ao dia; perfis bloqueados mantêm a última leitura.</span><span><a href="./data/tiktok/conteudo.json" download>conteudo.json ↓</a><small>coleta automática</small></span></div>
     <div class="readme-source-row"><strong>Google Trends</strong><span>Interesse de busca por candidato: 7 dias, 3 meses e período eleitoral (20/07–25/10), por UF, com consultas relacionadas.</span><span><a href="./data/trends/caderno.json" download>caderno.json ↓</a><small>coleta automática</small></span></div>
     <div class="readme-source-row"><strong>WhatsApp / Canais</strong><span>Número público de seguidores dos canais acompanhados, uma leitura por dia (08h05).</span><span><a href="./data/whatsapp/seguidores.csv" download>seguidores.csv ↓</a><small>coleta automática</small></span></div>
     <div class="readme-source-row"><strong>TSE × IBGE / Votação</strong><span>Resultados de presidente por município (2022 e 2026) e malha municipal IBGE 2025.</span><span><a href="./data/elections.json" download>elections.json ↓</a><small>P1–P3</small></span></div>
@@ -870,12 +870,13 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 
 
 <section class="panel" id="ytContent" aria-label="Caderno 02 (YouTube) Conteúdo no YouTube por tema">
-  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · YOUTUBE</span><span>DESDE 16 AGO 2026 · INÍCIO DA CAMPANHA</span></div>
+  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · YOUTUBE</span><span>DESDE 20 JUL 2026 · PRÉ-CAMPANHA, 1º E 2º TURNO</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">YouTube Data API · canais declarados ao TSE</div>
     <h1>O que cada campanha publica.<br><em>Semana a semana, por tema.</em></h1>
     <p>Vídeos dos canais de YouTube declarados ao TSE por Lula e Flávio Bolsonaro, organizados por semana de campanha. Acima do eixo, Lula; abaixo, Flávio. Os temas vêm de um dicionário aberto aplicado ao título e à descrição — não de IA — e podem errar em ironia ou contexto.</p>
   </div>
   <div class="yt-controls card">
+    <div class="yt-chips" role="group" aria-label="Fase"><button class="yt-chip" data-ytper="todo" aria-pressed="true">Desde 20/07</button><button class="yt-chip" data-ytper="pre" aria-pressed="false">Pré-campanha</button><button class="yt-chip" data-ytper="turno1" aria-pressed="false">1º turno</button><button class="yt-chip" data-ytper="turno2" aria-pressed="false">2º turno</button></div>
     <div class="yt-chips" id="ytChips" role="group" aria-label="Filtrar por tema"></div>
     <div class="yt-toggles">
       <label><input type="checkbox" id="ytOnlyVote"> Só pedidos de voto</label>
@@ -1013,7 +1014,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 </section>
 
 <section class="panel" id="tkContent" aria-label="Caderno 02 (TikTok) Conteúdo no TikTok por tema">
-  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · TIKTOK</span><span>DESDE 16 AGO 2026 · PERFIS DECLARADOS AO TSE</span></div>
+  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · TIKTOK</span><span>DESDE 20 JUL 2026 (PRÉ-CAMPANHA) · PERFIS DECLARADOS AO TSE</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">TikTok público · chapas 13 e 22</div>
     <h1>O que cada campanha publica no TikTok.<br><em>Vídeo curto, por tema.</em></h1>
     <p>Vídeos dos perfis de TikTok declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares e vices). Mesmas regras do página de campanhas (YouTube): temas por dicionário aberto aplicado à legenda — não IA — e marcas de "cita o adversário" e "pede voto".</p>
@@ -1022,6 +1023,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="tk-perfis" id="tkPerfis"></div>
   <div class="yt-stats" id="tkStats"></div>
   <div class="yt-controls card">
+    <div class="yt-chips" role="group" aria-label="Fase"><button class="yt-chip" data-tkper="todo" aria-pressed="true">Desde 20/07</button><button class="yt-chip" data-tkper="pre" aria-pressed="false">Pré-campanha</button><button class="yt-chip" data-tkper="turno1" aria-pressed="false">1º turno</button><button class="yt-chip" data-tkper="turno2" aria-pressed="false">2º turno</button></div>
     <div class="yt-chips" id="tkChips" role="group" aria-label="Filtrar por tema"></div>
     <div class="yt-toggles"><label><input type="checkbox" id="tkOnlyVote"> Só pedidos de voto</label><label><input type="checkbox" id="tkOnlyAdv"> Só citam o adversário</label></div>
   </div>
@@ -1113,7 +1115,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="tk-perfis" id="kwPerfis"></div>
   <div class="yt-stats" id="kwStats"></div>
   <div class="yt-controls card">
-    <div class="yt-chips" role="group" aria-label="Período"><button class="yt-chip" data-kwper="campanha" aria-pressed="true">Campanha · desde 16/08</button><button class="yt-chip" data-kwper="tudo" aria-pressed="false">Acervo completo</button></div>
+    <div class="yt-chips" role="group" aria-label="Fase"><button class="yt-chip" data-kwper="todo" aria-pressed="true">Desde 20/07</button><button class="yt-chip" data-kwper="pre" aria-pressed="false">Pré-campanha</button><button class="yt-chip" data-kwper="turno1" aria-pressed="false">1º turno</button><button class="yt-chip" data-kwper="turno2" aria-pressed="false">2º turno</button><button class="yt-chip" data-kwper="acervo" aria-pressed="false">Acervo completo</button></div>
     <div class="yt-chips" id="kwChips" role="group" aria-label="Filtrar por tema"></div>
     <div class="yt-toggles"><label><input type="checkbox" id="kwOnlyVote"> Só pedidos de voto</label><label><input type="checkbox" id="kwOnlyAdv"> Só citam o adversário</label></div>
   </div>
@@ -1180,15 +1182,16 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
     <p class="yt-cloudnote"><a href="./data/kwai/conteudo.json" download>↓ Conteúdo (JSON)</a> · <a href="./data/kwai/videos.csv.gz" download>↓ Vídeos (CSV)</a> · <a href="./data/kwai/perfis.csv" download>↓ Perfis por dia (CSV)</a> · <a href="./data/kwai/manifesto_latest.json" download>↓ Manifesto da coleta</a> · <a href="./data/config/kwai.json" download>↓ Configuração</a></p></div>
 </section>
 <section class="panel" id="fbContent" aria-label="Caderno 02 (Facebook) Conteúdo no Facebook por tema">
-  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · TIKTOK</span><span>DESDE 16 AGO 2026 · PÁGINAS DECLARADAS AO TSE</span></div>
+  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · TIKTOK</span><span>DESDE 20 JUL 2026 (PRÉ-CAMPANHA) · PÁGINAS DECLARADAS AO TSE</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Facebook público · chapas 13 e 22</div>
     <h1>O que cada campanha publica no Facebook.<br><em>Posts, vídeos e reels, por tema.</em></h1>
-    <p>Posts públicos das páginas de Facebook declaradas ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares, vices e páginas de apoio), desde 16/08. Mesmas regras do YouTube, TikTok e Kwai: temas por dicionário aberto aplicado ao texto — não IA — e marcas de "cita o adversário" e "pede voto". Visualizações só existem para vídeos e reels; a interação usa reações + comentários + compartilhamentos.</p>
+    <p>Posts públicos das páginas de Facebook declaradas ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares, vices e páginas de apoio), desde 20/07 (pré-campanha), com filtro por fase. Mesmas regras do YouTube, TikTok e Kwai: temas por dicionário aberto aplicado ao texto — não IA — e marcas de "cita o adversário" e "pede voto". Visualizações só existem para vídeos e reels; a interação usa reações + comentários + compartilhamentos.</p>
   </div>
   <div class="odi-signal" id="fbStatus" role="status">Aguardando leitura da base do Facebook.</div>
   <div class="tk-perfis" id="fbPerfis"></div>
   <div class="yt-stats" id="fbStats"></div>
   <div class="yt-controls card">
+    <div class="yt-chips" role="group" aria-label="Fase"><button class="yt-chip" data-fbper="todo" aria-pressed="true">Desde 20/07</button><button class="yt-chip" data-fbper="pre" aria-pressed="false">Pré-campanha</button><button class="yt-chip" data-fbper="turno1" aria-pressed="false">1º turno</button><button class="yt-chip" data-fbper="turno2" aria-pressed="false">2º turno</button></div>
     <div class="yt-chips" id="fbChips" role="group" aria-label="Filtrar por tema"></div>
     <div class="yt-toggles"><label><input type="checkbox" id="fbOnlyVote"> Só pedidos de voto</label><label><input type="checkbox" id="fbOnlyAdv"> Só citam o adversário</label></div>
   </div>
@@ -1273,7 +1276,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card yc-block"><div class="eyebrow">Método</div><p class="yt-cloudnote" id="adNota"></p><p class="yt-cloudnote"><a href="./data/meta/anuncios.json" download>↓ Agregados (JSON)</a> · <a href="./data/config/meta_anuncios.json" download>↓ Configuração</a></p></div>
 </section>
 <section class="panel" id="ytComments" aria-label="Caderno 04 Comentários do YouTube">
-  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO YOUTUBE</span><span>DESDE 16 AGO 2026 · SÓ AGREGADOS</span></div>
+  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO YOUTUBE</span><span>DESDE 20 JUL 2026 · SÓ AGREGADOS</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">YouTube Data API · comentários públicos</div>
     <h1>O que a audiência responde.<br><em>Comentários dos vídeos das campanhas.</em></h1>
     <p>Comentários dos vídeos dos canais de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>: até 100 por relevância e 100 mais recentes por vídeo, com as respostas. Pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou canal de quem comentou é publicado aqui.</p>
@@ -1296,7 +1299,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card yc-block"><div class="eyebrow">Método</div><p class="yt-cloudnote" id="ycMetodo"></p><p class="yt-cloudnote"><a href="./data/youtube/comentarios/analise.json" download>↓ Agregados (JSON)</a> · <a href="./data/config/livro_codigos_intolerancia.json" download>↓ Livro de códigos de intolerância</a> · <a href="./data/youtube/comentarios/manifesto_latest.json" download>↓ Manifesto da coleta</a></p></div>
 </section>
 <section class="panel" id="kwComments" aria-label="Caderno 04 Comentários do Kwai">
-  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO KWAI</span><span>DESDE 16 AGO 2026 · SÓ AGREGADOS</span></div>
+  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO KWAI</span><span>DESDE 20 JUL 2026 · SÓ AGREGADOS</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Kwai público via Apify · comentários</div>
     <h1>O que a audiência responde.<br><em>Comentários dos vídeos das campanhas.</em></h1>
     <p>Comentários dos vídeos do Kwai dos perfis declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>, desde 16/08: até 50 por vídeo, na ordem que o Kwai entrega, sem respostas. Mesmas regras da página de comentários do YouTube: pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou perfil de quem comentou é publicado aqui.</p>
@@ -1566,18 +1569,18 @@ function overviewExtCard(key){
  const wrap=h=>`<article class="ov-person card" aria-label="${e(plat)} · ${e(m.label)}">${h}</article>`;
  if(plat==='Kwai'){const K=OVX.kw;if(!K)return wrap(head('Carregando…')+'<div class="ov-ext-off">Carregando a base do Kwai…</div>');
   const ps=K.perfis.filter(r=>r.candidate_id===m.id).sort((a,b)=>Number(b.seguidores)-Number(a.seguidores)),top=ps[0];
-  const c=K.c&&K.c.candidatos?K.c.candidatos[m.id]:null,vs=(c&&c.videos)||[],camp=vs.filter(v=>(v.publicado_em||'')>='2026-08-16');
+  const c=K.c&&K.c.candidatos?K.c.candidatos[m.id]:null,vs=(c&&c.videos)||[],camp=vs.filter(v=>(v.publicado_em||'')>='2026-07-20');
   const soma=(a,k)=>a.reduce((t,v)=>t+(Number(v[k])||0),0),med=a=>{const x=a.map(v=>Number(v.taxa_interacao)).filter(Number.isFinite).sort((p,q)=>p-q);return x.length?(x.length%2?x[(x.length-1)/2]:(x[x.length/2-1]+x[x.length/2])/2):null;};
   const mi=med(camp),ultimo=vs.reduce((a,v)=>(v.publicado_em||'')>a?v.publicado_em:a,'');
   const metr=overviewMetric('Seguidores'+(top?' · @'+top.perfil:''),top?fmtK(Number(top.seguidores)):'—','Perfil declarado ao TSE · '+dbr(K.data))
    +overviewMetric('Vídeos nos perfis',n(ps.reduce((t,r)=>t+(Number(r.videos_total)||0),0)),'Contagem exibida pelo Kwai')
-   +overviewMetric('Vídeos desde 16/08',n(camp.length),camp.length?'No acervo coletado':'⛔ nenhum no acervo coletado')
-   +overviewMetric('Visualizações desde 16/08',camp.length?fmtK(soma(camp,'visualizacoes')):'—',mi!=null?`Interação mediana ${(mi*100).toLocaleString('pt-BR',{maximumFractionDigits:1})}%`:'(curtidas + coment. + compart.) ÷ visualizações');
+   +overviewMetric('Vídeos desde 20/07',n(camp.length),camp.length?'No acervo coletado':'⛔ nenhum no acervo coletado')
+   +overviewMetric('Visualizações desde 20/07',camp.length?fmtK(soma(camp,'visualizacoes')):'—',mi!=null?`Interação mediana ${(mi*100).toLocaleString('pt-BR',{maximumFractionDigits:1})}%`:'(curtidas + coment. + compart.) ÷ visualizações');
   const lista=ps.length?ps.map(r=>`<div class="ov-ext-row"><span><a href="https://www.kwai.com/@${encodeURIComponent(r.perfil)}" target="_blank" rel="noopener noreferrer">@${e(r.perfil)}</a> · ${n(r.videos_total)} vídeos no perfil · ${n(vs.filter(v=>v.perfil===r.perfil).length)} no acervo</span><b>${n(r.seguidores)}</b></div>`).join(''):'<div class="ov-ext-off">⛔ Nenhum perfil de Kwai lido para esta candidatura.</div>';
   return wrap(head(ps.map(r=>'@'+r.perfil).join(' · ')||'sem perfil lido',top?`https://www.kwai.com/@${encodeURIComponent(top.perfil)}`:null,'Abrir perfil')
    +`<div class="ov-metricgrid">${metr}</div><div class="ov-headline"><span>Perfis declarados ao TSE</span><small>seguidores · ${dbr(K.data)}</small></div><div class="ov-ext-list">${lista}</div>`
    +`<div class="ov-headline"><span>Composição da audiência</span><small>sem fonte</small></div><div class="ov-ext-off">⛔ O Kwai não publica gênero e idade dos seguidores, e a Modash não cobre a plataforma.</div>`
-   +`<div class="ov-headline"><span>Atividade em conteúdo</span><small>acervo coletado</small></div><div class="ov-minigrid">${overviewMini('Vídeos no acervo',n(vs.length))}${overviewMini('Último vídeo coletado',dbr(ultimo))}${overviewMini('Curtidas desde 16/08',camp.length?fmtK(soma(camp,'curtidas')):'—')}${overviewMini('Comentários desde 16/08',camp.length?fmtK(soma(camp,'comentarios')):'—')}</div>`
+   +`<div class="ov-headline"><span>Atividade em conteúdo</span><small>acervo coletado</small></div><div class="ov-minigrid">${overviewMini('Vídeos no acervo',n(vs.length))}${overviewMini('Último vídeo coletado',dbr(ultimo))}${overviewMini('Curtidas desde 20/07',camp.length?fmtK(soma(camp,'curtidas')):'—')}${overviewMini('Comentários desde 20/07',camp.length?fmtK(soma(camp,'comentarios')):'—')}</div>`
    +`<footer class="ov-person-foot"><small>Fonte: coleta própria · Apify (unfenced-group/kwai-scraper) · ${dbr(K.data)}</small><button type="button" class="ghostbutton ov-open" data-ov-goto="kwContent">Ver página do Kwai →</button></footer>`);}
  const W=OVX.wa;if(!W)return wrap(head('Carregando…')+'<div class="ov-ext-off">Carregando os canais de WhatsApp…</div>');
  const cs=W.canais.filter(r=>r.lado===lado).sort((a,b)=>Number(b.seguidores)-Number(a.seguidores)),tot=cs.reduce((t,r)=>t+(Number(r.seguidores)||0),0),dt=cs[0]?.data;
@@ -2173,7 +2176,7 @@ fetch('./data/elections.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.statu
 <script>
 /* Caderno 02 (YouTube) · Conteúdo no YouTube por tema (dados: data/youtube/conteudo.json) */
 (function(){
-const LULA='280002542548',FLAVIO='280002551544',INICIO=Date.UTC(2026,7,16),SEM=7*864e5,MAX_POR_SEMANA=24;
+const LULA='280002542548',FLAVIO='280002551544',SEM=7*864e5,MAX_POR_SEMANA=24;let INICIO=Date.UTC(2026,6,20),periodo='todo';const FASES={todo:['2026-07-20','2099-12-31'],pre:['2026-07-20','2026-08-15'],turno1:['2026-08-16','2026-10-04'],turno2:['2026-10-05','2026-10-25']};
 const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
 let D=null,filtro='todos',soVoto=false,soAdv=false,tagSel=null,carregado=false;
 const $y=id=>document.getElementById(id);
@@ -2181,7 +2184,7 @@ const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
 const data=iso=>iso?new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''):'—';
 const thumb=id=>'https://i.ytimg.com/vi/'+encodeURIComponent(id)+'/mqdefault.jpg';
-const passa=v=>(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario)&&(!tagSel||(v.tags||[]).includes(tagSel));
+const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];return d>=f[0]&&d<=f[1];};const passa=v=>naFase(v)&&(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario)&&(!tagSel||(v.tags||[]).includes(tagSel));
 function dur(p){const m=/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(p||'');if(!m)return '';const h=+m[1]||0,mi=+m[2]||0,se=+m[3]||0;return h?`${h}h${String(mi).padStart(2,'0')}`:`${mi}:${String(se).padStart(2,'0')}`;}
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function chips(){const tot={};for(const c of [LULA,FLAVIO])for(const [t,n] of Object.entries(D.candidatos[c].por_tema))tot[t]=(tot[t]||0)+n;const all=D.candidatos[LULA].total_videos+D.candidatos[FLAVIO].total_videos;
@@ -2234,10 +2237,10 @@ try{const r=await fetch('./data/youtube/conteudo.json',{cache:'no-store'});if(!r
 catch(err){st.textContent='⛔ Base de vídeos indisponível ('+err.message+'). Abra o Atlas pelo GitHub Pages ou por um servidor local: o navegador bloqueia leitura de arquivos em file://.';carregado=false;return;}
 try{const r=await fetch('./data/youtube/comentarios/sentimento.json',{cache:'no-store'});SENT=r.ok?await r.json():null;}catch(e){SENT=null;}
 const a=D.candidatos[LULA],b=D.candidatos[FLAVIO];
-st.textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio Bolsonaro desde 16/08/2026 · coleta de ${(D.coletado_em_utc||'').replace('T',' ').slice(0,16)} UTC · ${D.fonte}.`;
+st.textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio Bolsonaro desde 20/07/2026 (pré-campanha) · coleta de ${(D.coletado_em_utc||'').replace('T',' ').slice(0,16)} UTC · ${D.fonte}.`;
 $y('ytMethod').textContent=D.metodo;$y('ytCloudNote').textContent=D.metodo_nuvem||'';$y('ytTagNote').textContent=(D.metodo_tags||'')+' Clique numa tag para filtrar a linha do tempo e as listas.';
 nuvem($y('ytCloudA'),a.nuvem);nuvem($y('ytCloudB'),b.nuvem);
-$y('ytOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$y('ytOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});
+$y('ytOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});document.querySelectorAll('#ytContent [data-ytper]').forEach(x=>x.addEventListener('click',()=>{periodo=x.dataset.ytper;document.querySelectorAll('#ytContent [data-ytper]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)));INICIO=Date.parse(FASES[periodo][0]);render();}));$y('ytOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});
 render();}
 const sec=$y('ytContent');if(!sec)return;
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
@@ -2579,7 +2582,7 @@ if(sec.classList.contains('active'))carregar();
 /* Caderno 02 (TikTok) · TikTok por tema (data/tiktok/conteudo.json) — Lula vermelho, Flávio verde */
 (function(){
 const sec=document.getElementById('tkContent');if(!sec)return;
-const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b',INICIO=Date.UTC(2026,7,16),SEM=7*864e5;
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b',SEM=7*864e5;let INICIO=Date.UTC(2026,6,20),periodo='todo';const FASES={todo:['2026-07-20','2099-12-31'],pre:['2026-07-20','2026-08-15'],turno1:['2026-08-16','2026-10-04'],turno2:['2026-10-05','2026-10-25'],acervo:['0000','9999']};
 const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
 let D=null,filtro='todos',soVoto=false,soAdv=false,feito=false;
 const $=id=>document.getElementById(id);
@@ -2587,7 +2590,7 @@ const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
 const pctf=x=>x==null?'—':(100*x).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
 const data=iso=>iso?new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''):'—';
-const passa=v=>(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
+const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];return d>=f[0]&&d<=f[1];};const passa=v=>naFase(v)&&(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){const quando=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'';
@@ -2627,9 +2630,9 @@ catch(err){$('tkStatus').textContent='⛔ Base do TikTok indisponível ('+err.me
 const a=D.candidatos[L],b=D.candidatos[F];const ok=(D.perfis_coleta||[]).filter(p=>p.status==='ok').length,tot=(D.perfis_coleta||[]).length;
 const hora=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'—';
 const comDados=(D.perfis_coleta||[]).filter(p=>p.videos_desde_16_08>0).length;
-$('tkStatus').textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio desde 16/08/2026, de ${comDados} perfis. `+(ok===0?`A tentativa mais recente (${hora(D.coletado_em_utc)}) foi bloqueada pelo TikTok em todos os perfis; os números abaixo são da última leitura bem-sucedida de cada perfil (data em cada etiqueta). Nova tentativa às 07h35 e 19h35.`:`Tentativa mais recente (${hora(D.coletado_em_utc)}): ${ok} de ${tot} perfis lidos${ok<tot?'; os demais mantêm a última leitura bem-sucedida':''}.`)+` Ferramenta: ${D.ferramenta||'yt-dlp'}.`;
+$('tkStatus').textContent=`${fmt(a.total_videos)} vídeos de Lula e ${fmt(b.total_videos)} de Flávio desde 20/07/2026 (pré-campanha), de ${comDados} perfis. `+(ok===0?`A tentativa mais recente (${hora(D.coletado_em_utc)}) foi bloqueada pelo TikTok em todos os perfis; os números abaixo são da última leitura bem-sucedida de cada perfil (data em cada etiqueta). Nova tentativa às 07h35 e 19h35.`:`Tentativa mais recente (${hora(D.coletado_em_utc)}): ${ok} de ${tot} perfis lidos${ok<tot?'; os demais mantêm a última leitura bem-sucedida':''}.`)+` Ferramenta: ${D.ferramenta||'yt-dlp'}.`;
 $('tkMethod').textContent=D.metodo;perfis();nuvem($('tkCloudA'),a.nuvem);nuvem($('tkCloudB'),b.nuvem);hashtags('tkTagsA',a.hashtags);hashtags('tkTagsB',b.hashtags);
-$('tkOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$('tkOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});render();}
+$('tkOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});document.querySelectorAll('#tkContent [data-tkper]').forEach(x=>x.addEventListener('click',()=>{periodo=x.dataset.tkper;document.querySelectorAll('#tkContent [data-tkper]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)));INICIO=Date.parse(FASES[periodo][0]);render();}));$('tkOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});render();}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});
 if(sec.classList.contains('active'))carregar();
 })();
@@ -2774,7 +2777,7 @@ if(sec.classList.contains('active'))carregar();
 /* Caderno 02 (Kwai, gerado a partir do bloco do TikTok — mesmas regras) · Kwai por tema (data/tiktok/conteudo.json) — Lula vermelho, Flávio verde */
 (function(){
 const sec=document.getElementById('kwContent');if(!sec)return;
-const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b',CAMP=Date.UTC(2026,7,16),SEM=7*864e5;let INICIO=CAMP,periodo='campanha',MINI=new Set();
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b',CAMP=Date.UTC(2026,6,20),SEM=7*864e5;let INICIO=CAMP,periodo='todo',MINI=new Set();const FASES={todo:['2026-07-20','2099-12-31'],pre:['2026-07-20','2026-08-15'],turno1:['2026-08-16','2026-10-04'],turno2:['2026-10-05','2026-10-25'],acervo:['0000','9999']};
 const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
 let D=null,filtro='todos',soVoto=false,soAdv=false,feito=false;
 const $=id=>document.getElementById(id);
@@ -2782,7 +2785,7 @@ const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
 const pctf=x=>x==null?'—':(100*x).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
 const data=iso=>iso?new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''):'—';
-const passa=v=>(periodo==='tudo'||(v.publicado_em||'')>='2026-08-16')&&(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
+const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];return d>=f[0]&&d<=f[1];};const passa=v=>naFase(v)&&(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){const quando=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'';
@@ -2797,8 +2800,8 @@ function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-
 box.innerHTML=[...lista].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} vídeos">${esc(t)}</span>`;}).join('');}
 function hashtags(id,l){$(id).innerHTML=(l||[]).slice(0,20).map(([t,n])=>`<span title="${fmt(n)} vídeos">#${esc(t)} · ${fmt(n)}</span>`).join('')||'<span>sem hashtags recorrentes</span>';}
 function timeline(){const vs={};let maxW=0,maxV=1;for(const c of [L,F]){vs[c]=D.candidatos[c].videos.filter(v=>v.publicado_em&&Date.parse(v.publicado_em)>=INICIO&&passa(v));for(const v of vs[c]){maxW=Math.max(maxW,Math.floor((Date.parse(v.publicado_em)-INICIO)/SEM));maxV=Math.max(maxV,v.visualizacoes||0);}}
-const W=Math.max(720,(maxW+1)*(periodo==='tudo'?30:120)),H=420,mid=H/2,colW=(W-40)/(maxW+1);let h='';
-for(let w=0;w<=maxW;w++){const x=20+w*colW;const ini=new Date(INICIO+w*SEM);if(periodo==='tudo'&&w%4)continue;h+=`<line x1="${x}" x2="${x}" y1="10" y2="${H-10}" stroke="#e3e6e8"/><text x="${x+4}" y="${mid+4}">S${w+1} ${ini.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'})}</text>`;}
+const W=Math.max(720,(maxW+1)*(periodo==='acervo'?30:120)),H=420,mid=H/2,colW=(W-40)/(maxW+1);let h='';
+for(let w=0;w<=maxW;w++){const x=20+w*colW;const ini=new Date(INICIO+w*SEM);if(periodo==='acervo'&&w%4)continue;h+=`<line x1="${x}" x2="${x}" y1="10" y2="${H-10}" stroke="#e3e6e8"/><text x="${x+4}" y="${mid+4}">S${w+1} ${ini.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'})}</text>`;}
 h+=`<line x1="20" x2="${W-20}" y1="${mid-10}" y2="${mid-10}" stroke="#1b2a3d" stroke-width="2"/><line x1="20" x2="${W-20}" y1="${mid+10}" y2="${mid+10}" stroke="#1b2a3d" stroke-width="2"/>`;
 for(const c of [L,F]){const up=c===L;for(const v of vs[c]){const t=(Date.parse(v.publicado_em)-INICIO)/SEM;const x=20+t*colW;const r=3+Math.sqrt((v.visualizacoes||0)/maxV)*22;
 const jitter=(parseInt(v.video_id.slice(-4),10)%1000)/1000;const y=up?mid-18-r-jitter*(mid-60-r):mid+18+r+jitter*(mid-60-r);
@@ -2823,7 +2826,7 @@ const hora=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2
 const desde=x=>x.videos.filter(v=>(v.publicado_em||'')>='2026-08-16').length;
 $('kwStatus').textContent=`Acervo: ${fmt(a.total_videos)} vídeos de Lula (${fmt(desde(a))} desde 16/08) e ${fmt(b.total_videos)} de Flávio (${fmt(desde(b))} desde 16/08). Coleta de ${hora(D.coletado_em_utc)} · ${D.fonte}. Capas: ${fmt(MINI.size)} vídeos.`;
 document.querySelectorAll('#kwContent [data-kwper]').forEach(x=>x.addEventListener('click',()=>{periodo=x.dataset.kwper;document.querySelectorAll('#kwContent [data-kwper]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)));
- INICIO=periodo==='tudo'?Math.min(CAMP,...[L,F].flatMap(c=>D.candidatos[c].videos.map(v=>Date.parse(v.publicado_em)).filter(Number.isFinite))):CAMP;render();}));
+ INICIO=periodo==='acervo'?Math.min(CAMP,...[L,F].flatMap(c=>D.candidatos[c].videos.map(v=>Date.parse(v.publicado_em)).filter(Number.isFinite))):Date.parse(FASES[periodo][0]);render();}));
 fetch('./data/kwai/manifesto_latest.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(M=>{if(M)$('kwPerfisNota').textContent=`${M.fora||''} Última execução: ${M.modo||''} · ${M.status||''}${M.custo_usd!=null?' · custo US$ '+String(M.custo_usd).replace('.',','):''}.`;}).catch(()=>{});
 $('kwMethod').textContent=D.metodo;perfis();nuvem($('kwCloudA'),a.nuvem);nuvem($('kwCloudB'),b.nuvem);hashtags('kwTagsA',a.hashtags);hashtags('kwTagsB',b.hashtags);
 $('kwOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$('kwOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});render();}
@@ -2971,7 +2974,7 @@ if(sec.classList.contains('active'))carregar();
 /* Caderno 02 (Facebook, gerado a partir do bloco do Kwai/TikTok — mesmas regras) · Facebook por tema (data/tiktok/conteudo.json) — Lula vermelho, Flávio verde */
 (function(){
 const sec=document.getElementById('fbContent');if(!sec)return;
-const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b',CAMP=Date.UTC(2026,7,16),SEM=7*864e5;let INICIO=CAMP,periodo='campanha',MINI=new Set();
+const L='280002542548',F='280002551544',CL='#c8102e',CF='#1f8a3b',CAMP=Date.UTC(2026,6,20),SEM=7*864e5;let INICIO=CAMP,periodo='todo',MINI=new Set();const FASES={todo:['2026-07-20','2099-12-31'],pre:['2026-07-20','2026-08-15'],turno1:['2026-08-16','2026-10-04'],turno2:['2026-10-05','2026-10-25'],acervo:['0000','9999']};
 const ROT={economia:'Economia e trabalho',programas_sociais:'Programas sociais',seguranca:'Segurança',saude:'Saúde',educacao:'Educação',religiao_valores:'Religião e valores',corrupcao_justica:'Corrupção e justiça',eleicao_instituicoes:'Eleição e instituições',agenda_campanha:'Agenda de campanha',internacional:'Internacional',sem_tema:'Sem tema identificado'};
 let D=null,filtro='todos',soVoto=false,soAdv=false,feito=false;
 const $=id=>document.getElementById(id);
@@ -2979,7 +2982,7 @@ const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
 const pctf=x=>x==null?'—':(100*x).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
 const data=iso=>iso?new Date(iso).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''):'—';
-const passa=v=>(periodo==='tudo'||(v.publicado_em||'')>='2026-08-16')&&(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
+const naFase=v=>{const d=(v.publicado_em||'').slice(0,10),f=FASES[periodo];return d>=f[0]&&d<=f[1];};const passa=v=>naFase(v)&&(filtro==='todos'||v.temas.includes(filtro))&&(!soVoto||v.pede_voto)&&(!soAdv||v.cita_adversario);
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){$('fbPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>`<span class="tk-perfil ${p.lidos?'':'tk-off'}"><b>${esc(p.perfil)}</b> · ${esc(p.candidato)} · ${p.lidos?fmt(p.lidos)+' posts lidos':'⛔ '+esc(p.erro||'nenhum post')}</span>`).join('');}
@@ -2993,8 +2996,8 @@ function nuvem(box,lista){if(!lista||!lista.length){box.innerHTML='<p class="yt-
 box.innerHTML=[...lista].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*28).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${fmt(n)} vídeos">${esc(t)}</span>`;}).join('');}
 function hashtags(id,l){$(id).innerHTML=(l||[]).slice(0,20).map(([t,n])=>`<span title="${fmt(n)} vídeos">#${esc(t)} · ${fmt(n)}</span>`).join('')||'<span>sem hashtags recorrentes</span>';}
 function timeline(){const vs={};let maxW=0,maxV=1;for(const c of [L,F]){vs[c]=D.candidatos[c].videos.filter(v=>v.publicado_em&&Date.parse(v.publicado_em)>=INICIO&&passa(v));for(const v of vs[c]){maxW=Math.max(maxW,Math.floor((Date.parse(v.publicado_em)-INICIO)/SEM));maxV=Math.max(maxV,v.visualizacoes||0);}}
-const W=Math.max(720,(maxW+1)*(periodo==='tudo'?30:120)),H=420,mid=H/2,colW=(W-40)/(maxW+1);let h='';
-for(let w=0;w<=maxW;w++){const x=20+w*colW;const ini=new Date(INICIO+w*SEM);if(periodo==='tudo'&&w%4)continue;h+=`<line x1="${x}" x2="${x}" y1="10" y2="${H-10}" stroke="#e3e6e8"/><text x="${x+4}" y="${mid+4}">S${w+1} ${ini.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'})}</text>`;}
+const W=Math.max(720,(maxW+1)*(periodo==='acervo'?30:120)),H=420,mid=H/2,colW=(W-40)/(maxW+1);let h='';
+for(let w=0;w<=maxW;w++){const x=20+w*colW;const ini=new Date(INICIO+w*SEM);if(periodo==='acervo'&&w%4)continue;h+=`<line x1="${x}" x2="${x}" y1="10" y2="${H-10}" stroke="#e3e6e8"/><text x="${x+4}" y="${mid+4}">S${w+1} ${ini.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'UTC'})}</text>`;}
 h+=`<line x1="20" x2="${W-20}" y1="${mid-10}" y2="${mid-10}" stroke="#1b2a3d" stroke-width="2"/><line x1="20" x2="${W-20}" y1="${mid+10}" y2="${mid+10}" stroke="#1b2a3d" stroke-width="2"/>`;
 for(const c of [L,F]){const up=c===L;for(const v of vs[c]){const t=(Date.parse(v.publicado_em)-INICIO)/SEM;const x=20+t*colW;const r=3+Math.sqrt((v.visualizacoes||0)/maxV)*22;
 const jitter=(parseInt(v.video_id.slice(-4),10)%1000)/1000;const y=up?mid-18-r-jitter*(mid-60-r):mid+18+r+jitter*(mid-60-r);
@@ -3017,9 +3020,9 @@ const a=D.candidatos[L],b=D.candidatos[F];
 try{const m=await fetch('./data/facebook/miniaturas.json',{cache:'no-store'});if(m.ok)MINI=new Set((await m.json()).ids||[]);}catch(e){}
 const hora=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'—';
 const desde=x=>x.videos.filter(v=>(v.publicado_em||'')>='2026-08-16').length;
-$('fbStatus').textContent=`Acervo: ${fmt(a.total_videos)} posts de Lula e ${fmt(b.total_videos)} de Flávio desde 16/08. Coleta de ${hora(D.coletado_em_utc)} · ${D.fonte}. Capas: ${fmt(MINI.size)} posts.`;
+$('fbStatus').textContent=`Acervo: ${fmt(a.total_videos)} posts de Lula e ${fmt(b.total_videos)} de Flávio desde 20/07 (pré-campanha). Coleta de ${hora(D.coletado_em_utc)} · ${D.fonte}. Capas: ${fmt(MINI.size)} posts.`;
 document.querySelectorAll('#fbContent [data-fbper]').forEach(x=>x.addEventListener('click',()=>{periodo=x.dataset.fbper;document.querySelectorAll('#fbContent [data-fbper]').forEach(y=>y.setAttribute('aria-pressed',String(y===x)));
- INICIO=periodo==='tudo'?Math.min(CAMP,...[L,F].flatMap(c=>D.candidatos[c].videos.map(v=>Date.parse(v.publicado_em)).filter(Number.isFinite))):CAMP;render();}));
+ INICIO=periodo==='acervo'?Math.min(CAMP,...[L,F].flatMap(c=>D.candidatos[c].videos.map(v=>Date.parse(v.publicado_em)).filter(Number.isFinite))):Date.parse(FASES[periodo][0]);render();}));
 fetch('./data/facebook/manifesto_latest.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(M=>{if(M)$('fbPerfisNota').textContent=`Última execução: ${M.modo||''} · ${M.status||''}${M.custo_usd!=null?' · custo US$ '+String(M.custo_usd).replace('.',','):''}.`;}).catch(()=>{});
 $('fbMethod').textContent=D.metodo;perfis();nuvem($('fbCloudA'),a.nuvem);nuvem($('fbCloudB'),b.nuvem);hashtags('fbTagsA',a.hashtags);hashtags('fbTagsB',b.hashtags);
 $('fbOnlyVote').addEventListener('change',ev=>{soVoto=ev.target.checked;render();});$('fbOnlyAdv').addEventListener('change',ev=>{soAdv=ev.target.checked;render();});render();}
@@ -3376,7 +3379,7 @@ const T=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.text():'').catch(()=>'');
 const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.split(';');return ls.map(l=>Object.fromEntries(l.split(';').map((v,i)=>[H[i],v])));};
 (async()=>{const [el26,tr,yt,ytc,tk,com,seg,wa]=await Promise.all([J('./data/elections.json'),J('./data/trends/caderno.json'),J('./data/youtube/fichas.json'),J('./data/youtube/conteudo.json'),J('./data/tiktok/conteudo.json'),J('./data/youtube/comentarios/analise.json'),T('./data/seguidores/latest.csv'),T('./data/whatsapp/seguidores_latest.csv')]);
  const [kwc,kws]=await Promise.all([J('./data/kwai/conteudo.json'),T('./data/seguidores/kwai_latest.csv')]);
- const KV=cid=>((kwc&&kwc.candidatos[cid]&&kwc.candidatos[cid].videos)||[]).filter(v=>(v.publicado_em||'')>='2026-08-16');
+ const KV=cid=>((kwc&&kwc.candidatos[cid]&&kwc.candidatos[cid].videos)||[]).filter(v=>(v.publicado_em||'')>='2026-07-20');
  const KM=a=>{const x=a.map(v=>Number(v.taxa_interacao)).filter(Number.isFinite).sort((p,q)=>p-q);return x.length?100*(x.length%2?x[(x.length-1)/2]:(x[x.length/2-1]+x[x.length/2])/2):null;};
  const rows=[];const etapa=t=>rows.push({etapa:t});const linha=(rot,l,f,fmt,fonte,maior=true)=>rows.push({rot,l,f,fmt,fonte,maior});
  // 1. Buscas
@@ -3402,14 +3405,14 @@ const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.s
  // 3. O que publicam
  etapa('3 · O que as campanhas publicam');
  if(yt){const a=yt.perfis.yt_lula?.janela,b=yt.perfis.yt_flavio?.janela;linha('YouTube · vídeos nos últimos 30 dias',a?.videos,b?.videos,n,`YouTube Data API · ${dbr(yt.data)}`,null);linha('YouTube · visualizações médias por vídeo',a?.media_visualizacoes,b?.media_visualizacoes,k,'idem');linha('YouTube · engajamento',a?.engajamento,b?.engajamento,v=>pc(v,2),'(curtidas + comentários) ÷ visualizações');}
- if(tk){const a=tk.candidatos[L],b=tk.candidatos[F];linha('TikTok · vídeos desde 16/08',a?.total_videos,b?.total_videos,n,`perfis declarados ao TSE · ${dbr(tk.coletado_em_utc)}`,null);linha('TikTok · visualizações somadas',a?.totais?.visualizacoes,b?.totais?.visualizacoes,k,'idem');}
- if(kwc){const a=KV(L),b=KV(F),sv=x=>x.length?x.reduce((t,v)=>t+(Number(v.visualizacoes)||0),0):null;linha('Kwai · vídeos desde 16/08 (no acervo)',a.length,b.length,n,`perfis declarados ao TSE · ${dbr(kwc.coletado_em_utc)}`,null);linha('Kwai · visualizações somadas',sv(a),sv(b),k,'idem');}
+ if(tk){const a=tk.candidatos[L],b=tk.candidatos[F];linha('TikTok · vídeos desde 20/07',a?.total_videos,b?.total_videos,n,`perfis declarados ao TSE · ${dbr(tk.coletado_em_utc)}`,null);linha('TikTok · visualizações somadas',a?.totais?.visualizacoes,b?.totais?.visualizacoes,k,'idem');}
+ if(kwc){const a=KV(L),b=KV(F),sv=x=>x.length?x.reduce((t,v)=>t+(Number(v.visualizacoes)||0),0):null;linha('Kwai · vídeos desde 20/07 (no acervo)',a.length,b.length,n,`perfis declarados ao TSE · ${dbr(kwc.coletado_em_utc)}`,null);linha('Kwai · visualizações somadas',sv(a),sv(b),k,'idem');}
  if(ytc){const tema=c=>{const e=Object.entries(c.por_tema||{}).filter(([t])=>t!=='sem_tema').sort((x,y)=>y[1]-x[1])[0];return e?e[0].replace(/_/g,' '):'—';};rows.push({rot:'Tema mais frequente no YouTube',l:tema(ytc.candidatos[L]),f:tema(ytc.candidatos[F]),fmt:x=>x,fonte:'dicionário de temas (página 02)',txt:true});}
  // 4. Reação
  etapa('4 · Como o público reage');
  if(com){const a=com.candidatos[L],b=com.candidatos[F];linha('Comentários no YouTube (com respostas)',a&&a.comentarios+a.respostas,b&&b.comentarios+b.respostas,n,`YouTube Data API · ${dbr(com.coletado_em_utc)}`,null);linha('Comentários com incivilidade',a?.qualquer_incivilidade_pct,b?.qualquer_incivilidade_pct,v=>pc(v,2),'pré-codificação por dicionário (validar com kappa)',null);linha('Comentários com intolerância',a?.qualquer_intolerancia_pct,b?.qualquer_intolerancia_pct,v=>pc(v,2),'idem',null);}
  if(tk){linha('TikTok · interação mediana por visualização',tk.candidatos[L]?.taxa_interacao_mediana*100,tk.candidatos[F]?.taxa_interacao_mediana*100,v=>pc(v,1),'(curtidas + comentários + compart.) ÷ visualizações');}
- if(kwc){linha('Kwai · interação mediana por visualização',KM(KV(L)),KM(KV(F)),v=>pc(v,1),'desde 16/08 · mesma fórmula do TikTok');}
+ if(kwc){linha('Kwai · interação mediana por visualização',KM(KV(L)),KM(KV(F)),v=>pc(v,1),'desde 20/07 · mesma fórmula do TikTok');}
  // 5. Voto
  etapa('5 · Voto · 1º turno de 2026');
  if(el26&&el26.years&&el26.years['2026']){let vL=0,vF=0,val=0,mL=0,mF=0,tot=0;for(const m of Object.values(el26.years['2026'])){const c=m.candidatos||{};vL+=c['13']||0;vF+=c['22']||0;val+=m.validos_nominais||0;tot++;const mx=Math.max(...Object.values(c));if(mx>0&&c['13']===mx)mL++;else if(mx>0&&c['22']===mx)mF++;}

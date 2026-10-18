@@ -10,7 +10,7 @@ import csv
 import gzip
 from pathlib import Path
 
-INICIO_CAMPANHA = "2026-08-16"
+INICIO_CAMPANHA = "2026-07-20"  # análises desde a pré-campanha (fases: pré, 1º turno, 2º turno)
 
 CAMINHOS = {
     "youtube": {"populismo": "data/youtube/populismo.json",
