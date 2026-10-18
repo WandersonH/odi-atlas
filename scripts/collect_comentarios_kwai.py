@@ -147,6 +147,12 @@ def main(argv=None, executar=None) -> int:
         return code
 
     segredos = cfg.get("segredos") or [cfg["segredo"]]
+    # contas que já esgotaram as execuções gratuitas do ator de comentários (registradas nos manifestos) ficam fora
+    esgotadas = {json.loads(f.read_text(encoding="utf-8")).get("conta") for f in pub.glob("manifesto-*.json")
+                 if json.loads(f.read_text(encoding="utf-8")).get("limite_gratis_conta")}
+    esgotadas |= set(cfg.get("contas_limite_gratis_esgotado", []))
+    segredos = [x for x in segredos if x not in esgotadas]
+    man["contas_puladas_limite"] = sorted(x for x in esgotadas if x)
     nome_conta, token, saldo = escolher_conta(segredos, 0.05) if executar is None else ("teste", "x", None)
     man["conta"] = nome_conta
     interno = os.environ.get("ODI_INTERNO_DIR")
@@ -205,7 +211,11 @@ def main(argv=None, executar=None) -> int:
         lotes = [(pendentes[:1], 20)] if "--nataniel" in argv else [(pendentes[:t["videos"]], t["comentarios_por_video"])]
     else:  # cota igual por candidato, dividida entre os vídeos do período
         lotes = []
-        for cid in sorted({v["candidate_id"] for v in videos}):
+        ja_tem = {}
+        for r in antigos:
+            ja_tem[r["candidate_id"]] = ja_tem.get(r["candidate_id"], 0) + 1
+        # primeiro o candidato com menos comentários no acervo (as execuções gratuitas por conta são poucas)
+        for cid in sorted({v["candidate_id"] for v in videos}, key=lambda c: ja_tem.get(c, 0)):
             todos_c = [v for v in videos if v["candidate_id"] == cid]
             pv = max(cfg["min_comentarios_por_video"], min(cfg["max_comentarios_por_video"], cfg["cota_comentarios_por_candidato"] // max(1, len(todos_c))))
             lotes.append(([v for v in pendentes if v["candidate_id"] == cid], pv))
@@ -303,6 +313,7 @@ def main(argv=None, executar=None) -> int:
                comentarios_por_candidato=por_cand, videos_com_comentarios=len({r["video_id"] for r in todos}))
     print(f"{n_coment} comentários e {len(novas) - n_coment} respostas novos · acervo {len(todos)} {por_cand} · custo US$ {round(gasto, 4)} · teto {teto}")
     if limite_gratis:
+        man["limite_gratis_conta"] = True
         return fim(f"⛔ o ator só permite {limite_gratis} execuções gratuitas por conta e o limite foi atingido; comentários novos nesta execução: {n_coment}. "
                    "Para continuar, a conta precisa de plano pago na Apify (ou outro coletor).", 0 if novas else 1)
     return fim("ok" if novas else "⛔ nenhum comentário lido", 0 if novas else 1)

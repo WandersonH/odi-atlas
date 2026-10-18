@@ -10,7 +10,7 @@
  "autorizacao": "Usuário em 17/10/2026, 19h4x: teto de US$ 4 para os comentários do Kwai, com a chave APIFY_TOKEN_3 (\"4 dolar mais use por essa chave APIFY_TOKEN_3\"). Teste de US$ 0,10 descontado do mesmo teto. Em 17/10, 21h24: \"colete tudo que conseguir com até 5 dólares\" — teto total elevado a US$ 5.",
  "teto_total_usd": 5.0,
  "teto_teste_usd": 0.1,
- "desde": "2026-08-16",
+ "desde": "2026-07-20",
  "max_comentarios_por_video": 50,
  "max_respostas_por_comentario": 0,
  "teste": {
@@ -37,7 +37,7 @@
  "cota_comentarios_por_candidato": 1700,
  "min_comentarios_por_video": 5,
  "ator_nataniel": "natanielsantos~kwai-scraper",
- "nota_limite": "zen-studio/kwai-comments-scraper: 25 execuções gratuitas por conta (resposta limitReached em 17/10); não se usam outras contas para contornar.",
+ "nota_limite": "zen-studio/kwai-comments-scraper: 25 execuções gratuitas por conta. A conta 3 esgotou em 17/10; o coletor passa às contas seguintes (de outros pesquisadores, confirmado pelo usuário) e registra no manifesto quando cada uma esgota.",
  "segredos": [
   "APIFY_TOKEN_3",
   "APIFY_TOKEN_4",
@@ -45,5 +45,8 @@
   "APIFY_TOKEN_6",
   "APIFY_TOKEN_7"
  ],
- "contas_nota": "Contas Apify de pessoas diferentes do grupo (confirmado em 17/10/2026). Usa a primeira da lista com saldo; a conta 1 (APIFY_TOKEN, Starter) fica para as rotinas diárias de seguidores e anúncios."
+ "contas_nota": "Contas Apify de pessoas diferentes do grupo (confirmado em 17/10/2026). Usa a primeira da lista com saldo; a conta 1 (APIFY_TOKEN, Starter) fica para as rotinas diárias de seguidores e anúncios.",
+ "contas_limite_gratis_esgotado": [
+  "APIFY_TOKEN_3"
+ ]
 }

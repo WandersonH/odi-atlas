@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.16 — Página sem custo de coleta; comentários do Kwai continuam pelas outras contas (2026-10-18) 🔜
+
+- Pedido do usuário: "nunca exibir o custo da coleta". Removidos da página todos os textos de custo/gasto das coletas (Kwai, Facebook, X, anúncios da Meta e comentários do Kwai e do Facebook). Os manifestos com custo continuam no repositório como evidência (regra do CLAUDE.md), sem aparecer na página. "Gasto" dos anúncios (dado declarado pela Meta) continua.
+- Comentários do Kwai: o coletor pula contas que já esgotaram as 25 execuções gratuitas do ator (conta 3; e as próximas, registradas no manifesto), começa pelo candidato com menos comentários (Flávio: 28) e passa a valer desde 20/07.
+- Social Blade (teste TikTok @lulaoficial, US$ 0,02): 31 dias de série (18/09 a 18/10: seguidores, seguindo, vídeos, curtidas). Carga de 16 perfis (TikTok e YouTube) disparada.
+- Testes: suíte OK.
+
 ## C19.15 — Seguidores retroativos via Social Blade pela Apify (2026-10-18) 🔜
 
 - Pedido do usuário: série diária retroativa de seguidores coletada pela Apify, sem contratar a API do Social Blade. Loja (run de `teste-apify-loja`, 18/10): rl1987/social-blade-lookup (US$ 0,01 por evento: perfil, histórico, crescimento; Instagram, TikTok, YouTube e Twitch — sem X e Facebook), radeance/socialblade-api (US$ 0,01 por resultado), solidcode/socialblade-scraper (US$ 0,03 por item).
