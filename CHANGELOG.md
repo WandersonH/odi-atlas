@@ -27,7 +27,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Pedido do usuário (18/10, 02h10): ampliar os comentários do Facebook com mais US$ 3 (teto da fonte: US$ 1,50 → US$ 4,50). Cota por candidato 2.800 → 8.800; até 200 comentários por post (antes 50).
 - `collect_comentarios_facebook.py`: um post deixa de ser "feito" só por ter alguma coleta; volta à fila se tiver menos de 80% da meta atual. Comentários repetidos (mesmo id) são descartados ao juntar com o acervo. Custo conhecido: a nova leitura de um post já coletado paga de novo os comentários que já tínhamos.
-- Testes: suíte OK. Pendente: carga.
+- 1ª carga (run de 18/10 05h14 UTC): 1.518 comentários novos (acervo 5.994: Lula 3.344, Flávio 2.650; 431 posts). Parou porque a conta 3 bateu o limite do mês (HTTP 403 "Monthly usage hard limit exceeded") e o coletor não trocava de conta. Correção: em 403 ele passa para a próxima conta com saldo; o teto da fonte vale para a soma das contas.
+- Testes: suíte OK. Pendente: continuar a carga.
 
 ## C19.24 — X: respostas aos candidatos para a análise de pontes (2026-10-18) 🔜
 
@@ -37,7 +38,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - 2º teste real (18/10 05h12 UTC, conta 3): 39 respostas de 10/10 (19 a @LulaOficial, 20 a @FlavioBolsonaro), 26 autores, todas com autor e post respondido. Campo `ordem` passa a marcar `direta` (resposta ao candidato) ou `na_conversa` (resposta a outra pessoa dentro da conversa do post).
 - Carga por dia (run de 18/10 05h13 UTC, conta 3): 178 buscas, 8.041 respostas (3.978 a @LulaOficial, 4.063 a @FlavioBolsonaro), 4.415 autores, US$ 1,21. A busca devolveu bem menos que o pedido nas datas antigas (mediana de 19 respostas por dia; só 7 dias cheios por candidato): julho 306/431, outubro 1.692/1.636.
 - 2ª estratégia (`--por-post`, modos `teste-por-post` e `carga-por-post`): respostas de cada post (`conversation_id:<id>`), os 15 posts com mais respostas de cada semana por candidato, mesmo teto por post, com o saldo restante da fonte (US$ 3,79).
-- Testes: suíte OK (`test_x_respostas`, dados simulados). Pendente: teste e carga por post.
+- Carga por post (run de 18/10 05h21 UTC): 390 buscas (15 posts por semana por candidato, até 61 respostas cada), 22.626 respostas novas. Acervo final: 29.260 respostas (14.375 a @LulaOficial, 14.885 a @FlavioBolsonaro), 12.693 autores, todas com autor e post respondido; 1 busca com erro de rede (IncompleteRead). Gasto total da fonte: US$ 4,63 de US$ 5.
+- Testes: suíte OK (`test_x_respostas`, dados simulados).
 
 ## C19.23 — WhatsApp: seguidores dos canais públicos (2026-10-18) 🔜
 

@@ -74,9 +74,25 @@ def main(argv=None, executar=None) -> int:
     man.update(conta=nome_conta, saldo_conta_antes_usd=saldo)
     if not token:
         return fim(f"⛔ nenhuma conta Apify com saldo entre {', '.join(cfg['segredos'])}", 1)
-    if saldo is not None:
-        teto = min(teto, saldo)
-    executar = executar or (lambda pl, cap: run_actor(token, cfg["ator"], pl, cap))
+    # o teto da fonte vale para a soma das contas: quando uma esgota, o coletor passa para a próxima
+    conta = {"nome": nome_conta, "token": token, "esgotadas": []}
+
+    def executar_real(pl, cap):
+        """Troca de conta quando a atual bate o limite do mês (HTTP 403 'hard limit')."""
+        while True:
+            try:
+                return run_actor(conta["token"], cfg["ator"], pl, cap)
+            except Exception as e:  # noqa: BLE001
+                if getattr(e, "code", None) != 403:
+                    raise
+                conta["esgotadas"].append(conta["nome"])
+                resto = [x for x in cfg["segredos"] if x not in conta["esgotadas"]]
+                n2, t2, _s2 = escolher_conta(resto, cap) if resto else ("", "", None)
+                if not t2:
+                    raise
+                print(f"conta {conta['nome']} sem saldo no mês; seguindo com {n2}")
+                conta.update(nome=n2, token=t2)
+    executar = executar or executar_real
     priv = Path(interno) / "facebook/comentarios"
     priv.mkdir(parents=True, exist_ok=True)
     acervo = priv / "comentarios.csv.gz"
@@ -150,6 +166,7 @@ def main(argv=None, executar=None) -> int:
     por_cand = {}
     for r in todos:
         por_cand[r["candidate_id"]] = por_cand.get(r["candidate_id"], 0) + 1
+    man.update(contas_esgotadas=conta["esgotadas"], conta_final=conta["nome"])
     man.update(custo_usd=round(gasto, 4), comentarios_novos=len(novas), comentarios_no_acervo=len(todos), comentarios_por_candidato=por_cand,
                videos_com_comentarios=len({r["video_id"] for r in todos}), posts_pendentes=len(pendentes))
     print(f"{len(novas)} comentários novos · acervo {len(todos)} {por_cand} · custo US$ {round(gasto, 4)} · teto {teto}")
