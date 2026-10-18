@@ -9,6 +9,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Teste (run 39085223674) e carga (run 39085278763) com apidojo/tweet-scraper (conta 3/4): no plano gratuito o ator devolve no máximo 10 itens por execução; 4 perfis vieram com 10 posts cada (LulaOficial 10.765.351 seguidores, FlavioBolsonaro 3.794.680, comitespop 12.111, pode_espalhar 7.803) e 6 perfis com nenhum post próprio. Gasto: US$ 0,044.
 - Teste com xquik (run 39085419257, US$ 0,003): 20 itens da linha do tempo de @LulaOficial em ~1 hora, quase todos reposts e respostas. O coletor passa a usar a busca do próprio X (`from:perfil since:2026-07-20 -filter:retweets`): posts e respostas do perfil, sem reposts.
 - O coletor passa para **xquik/x-tweet-scraper** (README: US$ 0,00015 por linha, funciona no plano gratuito), com leitura de campos tolerante a nomes diferentes; mesmo teto de US$ 2.
+- Teste da busca (run 39085493277): 20 posts próprios de @LulaOficial (10.765.658 seguidores). Carga: até 2.500 posts dos perfis principais e 800 dos demais (≈ US$ 1,71 pela tabela).
 - Testes: suíte OK.
 
 ## C19.7 — X: coletor de posts e seguidores dos perfis declarados (contas 3 a 7, teto US$ 2) (2026-10-17) 🔜
