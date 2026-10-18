@@ -1,0 +1,32 @@
+name: X — assuntos do momento no Brasil (getdaytrends, de hora em hora, grátis)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 * * * *"
+
+concurrency:
+  group: x-trends
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  trends:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar
+        run: |
+          python scripts/collect_x_trends.py > t.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=X trends::$(echo "$l" | cut -c1-400)"; done < t.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "X trends (run ${{ github.run_id }})"

@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.14 — X: assuntos do momento no Brasil, de hora em hora (2026-10-18) 🔜
+
+- Pedido do usuário: coleta das top trends do dia no X. Diagnóstico (`diag-fontes-web.yml`): trends24.in e socialblade.com respondem 403 (Cloudflare) a robôs; getdaytrends.com/brazil/ responde 200. `collect_x_trends.py` + `x-trends.yml` (de hora em hora, grátis): lista do momento com volume de posts quando o X informa, em `data/x/trends/AAAA-MM-DD.csv` e resumo do dia em `latest.json` (top 30, melhor posição, horas na lista, assuntos que citam os candidatos).
+- Seguidores retroativos: o Social Blade bloqueia acesso automatizado (Cloudflare, "Just a moment...") e contornar a verificação não é permitido; as plataformas não publicam série histórica de seguidores. A série diária cresce a partir das coletas próprias.
+- Testes: `tests/test_x_trends.py`; suíte OK.
+
 ## C19.13 — Comentários do Facebook carregados; seguidores do TikTok; saldo das contas (2026-10-18) ⚠️
 
 - Comentários do Facebook, carga (run 39085893432, conta 3): **4.965 comentários** — Lula 2.315, Flávio 2.650 — em 5 execuções; US$ 1,25 pela tabela (teto US$ 1,50). Texto só no repositório privado; agregados em `data/facebook/comentarios/`.
