@@ -4,9 +4,10 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.4 — Diagnóstico de perfil do TikTok (2026-10-17) 🔜
+## C19.4 — Diagnóstico de perfil do TikTok (2026-10-17) ✅
 
 - Pergunta do usuário: por que @evangelicoscomlula (declarado ao TSE por LULA) não aparece. O manifesto da última coleta mostra o perfil lido com status ok e 8 vídeos lidos, 0 desde 16/08: o coletor para depois de 8 vídeos seguidos anteriores a 16/08 e só guarda os da campanha. `diag-tiktok-perfil.yml` lista os 40 primeiros vídeos de um perfil com a data (yt-dlp, sem custo) para conferir.
+- Resultado (run do `diag-tiktok-perfil`, 17/10): o vídeo mais recente de @evangelicoscomlula é de 29/10/2022 (os 10 primeiros da lista vão de 25 a 29/10/2022, de 69 a 951 visualizações). O perfil existe, mas não publica desde a eleição de 2022; não há vídeo no período da campanha de 2026.
 
 ## C19.3 — Apify: saldo real das contas e trava antes de cada execução (2026-10-17) ⚠️
 
