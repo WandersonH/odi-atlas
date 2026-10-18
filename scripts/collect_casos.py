@@ -13,7 +13,8 @@ Contas dos outros pesquisadores (a conta 1 não é usada). Teto por rede e por c
 Privacidade: publicações de qualquer pessoa. O arquivo completo (com contas e textos) vai SÓ para o repositório privado
 (ODI_INTERNO_DIR/casos/<id>/itens.csv.gz); sem o privado, fica num temporário e só os agregados são gerados.
 
---caso ID (padrão: todos os ativos) · --rede R (repetível) · --teste (1 termo por rede, 10 itens).
+--caso ID (padrão: todos os ativos) · --rede R (repetível) · --teste (1 termo por rede, 10 itens) ·
+--complemento (só as buscas de `complementos_x`: a busca do X devolve os mais recentes primeiro e, no limite, corta o começo).
 Saída pública: data/casos/<id>/manifesto-*.json. Os agregados da página saem de build_casos.py.
 """
 from __future__ import annotations
@@ -116,6 +117,8 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
     """[(termo, ator, entrada)] de uma rede para o caso."""
     d, tags = caso["desde"], caso.get("hashtags", [])
     out = []
+    if rede == "x" and caso.get("_so_complemento"):
+        return [(c["termo"], ATOR["x"], {"searchTerms": [c["busca"]], "maxItems": n, "queryType": "Latest"}) for c in caso.get("complementos_x", [])]
     if rede == "x":
         for t in tags:
             out.append((f"#{t}", ATOR["x"], {"searchTerms": [f"#{t} since:{d}"], "maxItems": n, "queryType": "Latest"}))
@@ -270,6 +273,8 @@ def main(argv=None, executar=None) -> int:
     for caso in cfg["casos"]:
         if not caso.get("coletar") or (so and caso["id"] not in so):
             continue
+        if "--complemento" in argv:  # só as buscas complementares do X (ex.: o começo do caso, que a busca "mais recentes" cortou)
+            caso = {**caso, "_so_complemento": True}
         pasta = root / "data/casos" / caso["id"]
         pasta.mkdir(parents=True, exist_ok=True)
         priv = (Path(interno) if interno else Path(os.environ.get("RUNNER_TEMP") or tempfile.gettempdir()) / "odi_casos") / "casos" / caso["id"]

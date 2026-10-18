@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.47 — Caso 1: resultado da carga e complemento do começo no X (2026-10-18) ⚠️
+
+- Carga do caso 1 (run 39132035304): 2.787 publicações de 1.335 contas — X 2.673, TikTok 82, Instagram 19, Facebook 13, Kwai 0 (o feed da hashtag não trouxe nada desde 16/10). Pico: 17/10 11h (Brasília), 501 publicações na hora; meia-vida 3 h (`data/casos/001/caso.json`).
+- Limites observados: no X as duas hashtags pararam no máximo pedido (1.685 cada) e a busca devolve as mais recentes primeiro — o mais antigo lido foi 17/10 12h48 UTC, então o começo do caso no X ficou de fora. O Instagram devolveu 10 por hashtag e nada de @verdeeamarelo; o Facebook, 5 por busca; o TikTok, 59 vídeos por hashtag (2 páginas).
+- `--complemento` / modo `complemento` no workflow: roda só as buscas de `complementos_x` (caso 1: "#brasilinteiro since:2026-10-16 until:2026-10-17_12:48:00_UTC"), dentro do que resta do teto do X do caso.
+- Testes: `TestComplemento`; suíte OK.
+
 ## C19.46 — Página: Casos e análises, todas as chapas do 1º turno e seguidores retroativos (2026-10-18) ⚠️
 
 - Novo caderno **08 · Casos e análises** (menu lateral; índice passa a 8 cadernos): fichas dos 4 casos, dossiê do caso selecionado (marco zero geral e por termo, linha do tempo, números por rede, Google Trends e Notícias, circulação hora a hora com filtro por rede, primeiros e maiores, galeria, quadro de ligações com GEXF/CSV, palavras, tom ⛔, método e limites). Casos 2–4 aparecem como "aguardando confirmação de datas e termos", sem números. Nenhum custo de coleta na página.

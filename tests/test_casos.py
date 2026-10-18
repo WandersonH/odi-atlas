@@ -62,3 +62,12 @@ class TestCasos(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestComplemento(unittest.TestCase):
+    def test_so_complemento(self):
+        caso = {"desde": "2026-10-16", "hashtags": ["a"], "_so_complemento": True, "complementos_x": [{"termo": "#a", "busca": "#a until:2026-10-17"}]}
+        p = cc.pedidos("x", caso, 7)
+        self.assertEqual(len(p), 1)
+        self.assertEqual(p[0][2]["searchTerms"], ["#a until:2026-10-17"])
+        self.assertEqual(cc.pedidos("instagram", {**caso, "perfis_instagram": []}, 7)[0][0], "#a")
