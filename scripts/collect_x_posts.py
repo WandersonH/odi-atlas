@@ -110,7 +110,8 @@ def main(argv=None, executar=None) -> int:
 
     def um(a):
         pf, n = a
-        pl = ({"twitterHandles": [pf["handle"]], "maxItems": n, "maxItemsPerTarget": n} if "xquik" in cfg["ator"]
+        # busca do próprio X: só posts e respostas do perfil, sem reposts, desde a pré-campanha
+        pl = ({"searchTerms": [f"from:{pf['handle']} since:{cfg['desde']} -filter:retweets"], "maxItems": n, "queryType": "Latest"} if "xquik" in cfg["ator"]
               else {"twitterHandles": [pf["handle"]], "start": cfg["desde"], "maxItems": n, "sort": "Latest"})
         try:
             run, itens = executar(pl, round(p["post"] * n * 1.05 + 0.01, 4))
@@ -123,7 +124,7 @@ def main(argv=None, executar=None) -> int:
     acervo = {r["video_id"]: r for r in csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";")} if src.exists() else {}
     gasto, novos, brutos, seguidores = 0.0, 0, [], {}
     for pf, n, run, itens, erro in res:
-        posts = [x for x in itens if g(x, "id", "id_str", "tweetId") and not x.get("noResults") and str(g(x, "type") or "tweet").lower() in ("tweet", "post")]
+        posts = [x for x in itens if g(x, "id", "id_str", "tweetId") and not x.get("noResults") and str(g(x, "type") or "tweet").lower() in ("tweet", "post", "reply", "quote")]
         brutos += itens
         meus = [x for x in posts if autor(x).lower() == pf["handle"].lower() and not g(x, "isRetweet", "retweeted_status")]  # reposts ficam fora
         custo = max(custo_run(run) or 0, round(p["post"] * len(itens), 4))

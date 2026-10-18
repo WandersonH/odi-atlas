@@ -29,7 +29,7 @@ class TestX(unittest.TestCase):
                 seg = Path("data/seguidores/x_latest.csv").read_text(encoding="utf-8")
             finally:
                 os.chdir(cwd)
-        self.assertEqual(pedidos[0][0]["twitterHandles"], ["LulaOficial"])
+        self.assertIn("from:LulaOficial since:2026-07-20", pedidos[0][0]["searchTerms"][0])
         self.assertEqual([r["video_id"] for r in rows], ["1"])  # repost de outro perfil e post antigo ficam fora
         self.assertEqual((rows[0]["legenda"], rows[0]["publicado_em"], rows[0]["compartilhamentos"]), ("Vote 13", "2026-09-02T12:00:00Z", "4"))
         self.assertIn("X / Twitter;HTTPS://X.COM/LULAOFICIAL;9000000", seg)  # URL declarada ao TSE, para casar com o card
