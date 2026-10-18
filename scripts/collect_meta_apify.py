@@ -49,6 +49,20 @@ def saldo_conta(token: str) -> float | None:
         return None
 
 
+def escolher_conta(segredos: list[str], minimo: float) -> tuple[str, str, float | None]:
+    """Primeira conta da lista (nomes de segredos) com saldo do mês >= `minimo`; contas sem token são puladas.
+    Contas são de pessoas diferentes do grupo (confirmado pelo usuário em 17/10/2026); a conta 1 fica para as rotinas diárias.
+    Devolve (nome do segredo, token, saldo) ou ("", "", None) se nenhuma servir."""
+    for nome in segredos:
+        tok = os.environ.get(nome, "").strip()
+        if not tok:
+            continue
+        s = saldo_conta(tok)
+        if s is None or s >= minimo:
+            return nome, tok, s
+    return "", "", None
+
+
 def ig_username(url: str) -> str | None:
     u = url.strip()
     p = urllib.parse.urlparse(u if "://" in u else "https://" + u)

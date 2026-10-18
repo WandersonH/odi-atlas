@@ -42,7 +42,12 @@ jobs:
       - name: Coletar (Apify, com teto)
         continue-on-error: true
         env:
+          APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event.inputs.modo }}
         run: |

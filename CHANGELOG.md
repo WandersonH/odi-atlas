@@ -4,13 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.6 — Contas Apify com troca automática; Facebook da pré-campanha (2026-10-17) 🔜
+
+- O usuário confirmou que as contas Apify 2 a 7 são de pessoas diferentes do grupo. `escolher_conta()` (em `collect_meta_apify.py`) usa a primeira conta da lista com saldo real suficiente (`/users/me/limits`); listas em `segredos` de `kwai.json` (2→7), `kwai_comentarios.json` (3→7) e `facebook_posts.json` (2, 4→7). A conta 1 (Starter) fica para as rotinas diárias de seguidores e anúncios. O manifesto registra qual conta pagou.
+- Facebook: modo `pre-campanha` (`--pre`): posts de 20/07 a 15/08 (`onlyPostsOlderThan` 16/08), até 60 das páginas principais e 20 das demais, sem repetir os já coletados; ≈ US$ 1,61 pela tabela, dentro do teto de US$ 5 (gasto até aqui US$ 2,52).
+- Testes: suíte OK.
+
 ## C19.5 — Todas as páginas desde a pré-campanha (20/07), com filtro por fase (2026-10-17) 🔜
 
 - Pedido do usuário: "todas as páginas têm que ter os históricos de pré-campanha e pós, assim como captamos em tudo". Início das coletas e análises passa de 16/08 para **20/07/2026** (início da pré-campanha, `fases` de `data/config/trends.json`): `collect_youtube.py`, `collect_tiktok.py`, `build_tiktok.py` (TikTok e Facebook), `plataformas.py` (Bardin, CHD, redes), `corpus_populismo.py` (semana 1 = 20/07), `build_rede_mencoes_tiktok.py`, `build_comentarios.py` e configs de comentários do YouTube, hashtags do TikTok, influenciadores, Kwai, comentários do Kwai e Facebook. Fica em 16/08 só o que é marco da campanha (Google: anúncio exibido na campanha; contagem "desde 16/08"; janela de 30 dias das fichas).
 - `build_tiktok.py`: novo `por_fase` (vídeos, visualizações e interação mediana na pré-campanha, 1º turno e 2º turno).
 - Página: botões de fase (Desde 20/07 · Pré-campanha · 1º turno · 2º turno; no Kwai também "Acervo completo") no YouTube, TikTok, Kwai e Facebook; rótulos "desde 16/08" do Panorama e das páginas trocados por "desde 20/07". Chromium: botões filtram números e listas nas quatro páginas, sem erro de JavaScript. A pré-campanha aparece zerada no YouTube, TikTok e Facebook até as novas coletas.
 - Testes ajustados ao novo início; suíte OK.
-- Pendente: runs de YouTube, comentários do YouTube, TikTok e hashtags (grátis); Facebook de 20/07 a 15/08 é pago (aguarda escolha de conta).
+- Runs (17/10): `seguidores-youtube` 39084251540, `tiktok` 39084252795, `tiktok-hashtags` 39084254076, todos ok. Vídeos antes de 16/08 agora no acervo: YouTube Lula 220 e Flávio 82; TikTok Lula 168 e Flávio 44. Comentários do YouTube disparados.
 
 ## C19.4 — Diagnóstico de perfil do TikTok (2026-10-17) ✅
 

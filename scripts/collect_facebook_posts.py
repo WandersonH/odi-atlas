@@ -24,7 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_kwai_apify import COLS, g, inteiro, quando  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
-from collect_meta_apify import run_actor, saldo_conta  # noqa: E402
+from collect_meta_apify import escolher_conta, run_actor, saldo_conta  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS_FB = COLS + ["reacoes", "tipo"]
@@ -49,13 +49,14 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/facebook_posts.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
+    pre = "--pre" in argv  # só a pré-campanha (de `desde` até `pre_ate`), sem repetir os posts já coletados da campanha
     pasta = root / "data/facebook"
     pasta.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
     ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pasta.glob("manifesto-*.json")), 4)
     resta = round(cfg["teto_total_usd"] - ja, 4)
     teto = min(cfg["teto_teste_usd"], resta) if teste else resta
-    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "carga",
+    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "pré-campanha" if pre else "carga",
            "teto_total_usd": cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "paginas": []}
 
     def fim(status: str, code: int) -> int:
@@ -66,13 +67,15 @@ def main(argv=None, executar=None) -> int:
         print(f"facebook: {status}")
         return code
 
-    token = os.environ.get(cfg["segredo"], "").strip()
+    segredos = cfg.get("segredos") or [cfg["segredo"]]
+    nome_conta, token, saldo = escolher_conta(segredos, 0.1) if executar is None else ("teste", "x", None)
+    man["conta"] = nome_conta
     if not token and executar is None:
-        return fim(f"⛔ {cfg['segredo']} ausente", 1)
+        return fim(f"⛔ nenhuma conta Apify com saldo entre {', '.join(segredos)}", 1)
     if teto < 0.01:
         return fim(f"⛔ teto autorizado de US$ {cfg['teto_total_usd']} esgotado (gasto US$ {ja})", 1)
     if executar is None:
-        saldo = man["saldo_conta_antes_usd"] = saldo_conta(token)
+        man["saldo_conta_antes_usd"] = saldo
         if saldo is not None:
             teto = min(teto, saldo)
             if teto < 0.05:
@@ -83,8 +86,9 @@ def main(argv=None, executar=None) -> int:
         alvos = [(next(x for x in cfg["paginas"] if x["url"] == cfg["teste"]["pagina"]), cfg["teste"]["posts"])]
     else:
         alvos, est = [], 0.0
+        cota = cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
         for pg in cfg["paginas"]:
-            n = cfg["posts_por_pagina"]["principal" if pg.get("principal") else "outras"]
+            n = cota["principal" if pg.get("principal") else "outras"]
             c = p["inicio"] + p["post"] * n
             if est + c > teto:
                 n = int((teto - est - p["inicio"]) / p["post"])
@@ -96,7 +100,8 @@ def main(argv=None, executar=None) -> int:
 
     def um(a):
         pg, n = a
-        pl = {"startUrls": [{"url": pg["url"]}], "resultsLimit": n, "onlyPostsNewerThan": cfg["desde"]}
+        pl = {"startUrls": [{"url": pg["url"]}], "resultsLimit": n, "onlyPostsNewerThan": cfg["desde"],
+              **({"onlyPostsOlderThan": cfg["pre_ate"]} if pre else {})}
         try:
             run, itens = executar(pl, round(p["inicio"] + p["post"] * n * 1.05 + 0.002, 4))
             return pg, n, run or {}, itens or [], None

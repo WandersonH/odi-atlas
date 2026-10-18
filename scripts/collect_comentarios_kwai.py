@@ -25,7 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_comentarios_youtube import CAMPOS  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
-from collect_meta_apify import run_actor, saldo_conta  # noqa: E402
+from collect_meta_apify import escolher_conta, run_actor, saldo_conta  # noqa: E402
 from net import now_utc  # noqa: E402
 
 TEXTO = ("text", "content", "comment", "commentText", "body")
@@ -146,16 +146,18 @@ def main(argv=None, executar=None) -> int:
         print(f"comentários Kwai: {status}")
         return code
 
-    token = os.environ.get(cfg["segredo"], "").strip()
+    segredos = cfg.get("segredos") or [cfg["segredo"]]
+    nome_conta, token, saldo = escolher_conta(segredos, 0.05) if executar is None else ("teste", "x", None)
+    man["conta"] = nome_conta
     interno = os.environ.get("ODI_INTERNO_DIR")
     if not token and executar is None:
-        return fim(f"⛔ {cfg['segredo']} ausente", 1)
+        return fim(f"⛔ nenhuma conta Apify com saldo entre {', '.join(segredos)}", 1)
     if not interno:
         return fim("⛔ sem repositório privado: texto de comentário não pode ir para o público", 1)
     if teto < 0.01:
         return fim(f"⛔ teto autorizado de US$ {cfg['teto_total_usd']} esgotado (gasto US$ {ja})", 1)
     if executar is None:
-        saldo = man["saldo_conta_antes_usd"] = saldo_conta(token)
+        man["saldo_conta_antes_usd"] = saldo
         if saldo is not None:
             teto = min(teto, saldo)
             if teto < 0.01:

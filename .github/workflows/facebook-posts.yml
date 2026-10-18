@@ -8,7 +8,7 @@ on:
       modo:
         description: "teste (10 posts de facebook.com/lula) · carga (todas as páginas) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [teste, carga, so-analises]
+        options: [teste, carga, pre-campanha, so-analises]
         default: teste
 
 concurrency:
@@ -44,10 +44,15 @@ jobs:
         continue-on-error: true
         env:
           APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event.inputs.modo }}
         run: |
-          if [ "$MODO" = "teste" ]; then a="--teste"; else a=""; fi
+          case "$MODO" in teste) a="--teste";; pre-campanha) a="--pre";; *) a="";; esac
           python scripts/collect_facebook_posts.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Facebook::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc

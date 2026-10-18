@@ -21,7 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
-from collect_meta_apify import run_actor, saldo_conta  # noqa: E402
+from collect_meta_apify import escolher_conta, run_actor, saldo_conta  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS = ["candidate_id", "candidate_name", "perfil", "declarado_por", "video_id", "url", "publicado_em", "legenda", "duracao_s",
@@ -87,13 +87,15 @@ def main(argv=None, executar=None) -> int:
     ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pasta.glob(f"manifesto-{mes}-*.json")), 4)
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "histórico" if historico else "teste" if teste else "diário",
            "teto_usd": teto, "gasto_mes_antes_usd": ja, "perfis": [], "fora": cfg.get("fora")}
-    token = os.environ.get("APIFY_TOKEN_2", "").strip()
+    segredos = cfg.get("segredos") or [cfg.get("segredo", "APIFY_TOKEN_2")]
+    nome_conta, token, saldo = escolher_conta(segredos, teto) if executar is None else ("teste", "x", None)
+    man["conta"] = nome_conta
     if not token and executar is None:
-        man["status"] = "⛔ APIFY_TOKEN_2 ausente"
+        man["status"] = f"⛔ nenhuma conta Apify com saldo para o teto (US$ {teto}) entre {', '.join(segredos)}"
     elif ja + teto > cfg["teto_mensal_usd"] + 1e-9:
         man["status"] = f"⛔ teto mensal de US$ {cfg['teto_mensal_usd']} atingido (já gasto US$ {ja})"
     if "status" not in man and executar is None:
-        man["saldo_conta_antes_usd"] = saldo = saldo_conta(token)
+        man["saldo_conta_antes_usd"] = saldo
         if saldo is not None and saldo < teto:
             man["status"] = f"⛔ saldo da conta Apify (US$ {saldo}) menor que o teto desta execução (US$ {teto})"
     if "status" in man:
