@@ -246,6 +246,8 @@ def paga(root: Path, rede: str, cfg: dict, perfis: list[dict], teste: bool, agor
     if executar is None:
         segredos = [s for s in (rc.get("segredos") or cfg["segredos"]) if s not in usadas]
         nome, token, saldo = escolher_conta(segredos, min(teto, 1.0))
+        if not token:  # nenhuma conta ainda não usada nesta execução: reaproveita uma já usada
+            nome, token, saldo = escolher_conta(list(rc.get("segredos") or cfg["segredos"]), min(teto, 1.0))
         if not token:
             return {**man, "custo_usd": 0.0, "status": "⛔ nenhuma conta dos outros pesquisadores com saldo"}
         usadas.add(nome)

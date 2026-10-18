@@ -175,7 +175,8 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
                 "visualizacoes": num(r["visualizacoes"]) or None, "curtidas": num(r["curtidas"]) or None,
                 "compartilhamentos": num(r["compartilhamentos"]) or None, "termo": r["termo"]} for r in pecas]
     # palavras (só contagens)
-    excl = {bc.norm(t.lstrip("#@")) for t in termos} | {bc.norm(t) for t in termos}
+    base = {bc.norm(t.lstrip("#@")) for t in termos} | {bc.norm(h) for h in caso.get("hashtags", [])}
+    excl = base | {"#" + b for b in base} | {"@" + b for b in base}
     palavras = bc.nuvem([r["texto"] for r in itens], excl, top=60, minimo=3)
     # rede para o Gephi: conta → hashtag/menção
     nos, arestas = {}, Counter()

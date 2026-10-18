@@ -16,7 +16,7 @@ class TestCasos(unittest.TestCase):
         cfg = json.loads((RAIZ / "data/config/casos.json").read_text(encoding="utf-8"))
         caso = cfg["casos"][0]
         self.assertEqual([t for t, _, _ in cc.pedidos("x", caso, 5)], ["#brasilinteiro", "#verdeeamarelo", "@verdeeamarelo"])
-        self.assertIn("explore/tags/brasilinteiro", cc.pedidos("instagram", caso, 5)[0][2]["startUrls"][0])
+        self.assertEqual(cc.pedidos("instagram", caso, 5)[0][2]["keyword"], "brasilinteiro")
         r = cc.norm("x", item_x(1, "fulano", 50, "2026-10-17T03:00:00.000Z"), "#brasilinteiro", "agora")
         self.assertEqual((r["item_id"], r["conta"], r["seguidores"], r["publicado_em"]), ("1", "fulano", 50, "2026-10-17T03:00:00Z"))
         self.assertIsNone(cc.norm("x", {"noResults": True}, "t", "a"))

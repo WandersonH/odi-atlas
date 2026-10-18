@@ -123,7 +123,8 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
             out.append((f"@{m}", ATOR["x"], {"searchTerms": [f"(@{m} OR from:{m}) since:{d}"], "maxItems": n, "queryType": "Latest"}))
     elif rede == "instagram":
         for t in tags:
-            out.append((f"#{t}", ATOR["instagram"], {"startUrls": [f"https://www.instagram.com/explore/tags/{t}/"], "maxItems": n, "until": d}))
+            # "startUrls" com a página da hashtag devolveu 0 itens no teste de 18/10 (run 39131491525); a busca por palavra-chave é a entrada documentada
+            out.append((f"#{t}", ATOR["instagram"], {"keyword": t, "maxItems": n, "until": d, "getPosts": True, "getReels": True}))
         for p in caso.get("perfis_instagram", []):
             out.append((f"@{p}", ATOR["instagram_perfil"], {"directUrls": [p], "resultsType": "posts", "resultsLimit": n, "onlyPostsNewerThan": d}))
     elif rede == "facebook":
@@ -157,6 +158,7 @@ def google(caso: dict, agora: str, pasta: Path) -> dict:
     from collect_google_busca import RSS, parse_rss
     from collect_trends import Trends
     from net import open_url, read_body
+    from build_conteudo import norm as bc_norm
     man = {"rede": "google", "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias", "custo_usd": 0.0}
     out = {"coletado_em": agora, "trends": None, "noticias": []}
     termos = caso.get("termos_trends") or []
@@ -178,8 +180,9 @@ def google(caso: dict, agora: str, pasta: Path) -> dict:
             url = RSS + "?" + urllib.parse.urlencode({"q": busca, "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"})
             with open_url(url, timeout=40) as r:
                 its = parse_rss(read_body(r))
+            filtro = [bc_norm(x) for x in caso.get("filtro_titulo_noticias") or []]
             out["noticias"] += [{**{k: i.get(k) for k in ("titulo", "link", "veiculo", "dominio", "data_publicacao")}, "termo": q} for i in its
-                                if (i.get("data_publicacao") or "") >= caso["desde"]]
+                                if (i.get("data_publicacao") or "") >= caso["desde"] and (not filtro or any(f in bc_norm(i.get("titulo") or "") for f in filtro))]
         except Exception as e:  # noqa: BLE001
             man.setdefault("noticias_erros", []).append(f"{q}: {type(e).__name__}")
     vistos, uniq = set(), []
@@ -201,7 +204,10 @@ def paga(rede: str, caso: dict, cfg: dict, pasta: Path, teste: bool, agora: str,
     if teto < 0.02:
         return [], {**man, "custo_usd": 0.0, "status": "⛔ teto da rede esgotado"}
     if executar is None:
+        # prefere conta ainda não usada nesta execução; se nenhuma tiver saldo, reaproveita uma já usada
         nome, token, saldo = escolher_conta([s for s in cfg["segredos"] if s not in usadas], min(teto, 0.5))
+        if not token:
+            nome, token, saldo = escolher_conta(list(cfg["segredos"]), min(teto, 0.5))
         if not token:
             return [], {**man, "custo_usd": 0.0, "status": "⛔ nenhuma conta dos outros pesquisadores com saldo"}
         usadas.add(nome)

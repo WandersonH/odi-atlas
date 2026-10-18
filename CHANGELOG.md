@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.46 — Página: Casos e análises, todas as chapas do 1º turno e seguidores retroativos (2026-10-18) ⚠️
+
+- Novo caderno **08 · Casos e análises** (menu lateral; índice passa a 8 cadernos): fichas dos 4 casos, dossiê do caso selecionado (marco zero geral e por termo, linha do tempo, números por rede, Google Trends e Notícias, circulação hora a hora com filtro por rede, primeiros e maiores, galeria, quadro de ligações com GEXF/CSV, palavras, tom ⛔, método e limites). Casos 2–4 aparecem como "aguardando confirmação de datas e termos", sem números. Nenhum custo de coleta na página.
+- Panorama ganha a aba **Todas as chapas do 1º turno** (`data/primeiro_turno/resumo.json`): tabela chapa × rede (publicações, visualizações, interações ou seguidores; pré-campanha, 1º turno ou ambos), votos do 1º turno, soma por chapa, "≥" quando algum perfil bateu no limite, Lula primeiro com o aviso de que a ordem não indica preferência.
+- Quem acompanha ganha a aba **Seguidores retroativos (todas as chapas)**: Social Blade e Internet Archive em séries separadas (não emendadas), tabela de cobertura por perfil, aviso de série parada (@eduardogiraooficial no TikTok) e de perfis só com o dia da coleta.
+- Ajustes depois do teste do caso 1 (run 39131491525, 40 publicações: TikTok 25, X 10, Facebook 5): Instagram devolveu 0 itens pela página da hashtag → passa a usar a busca por palavra-chave do ator; Kwai ficou sem conta porque cada rede exigia conta diferente → agora reaproveita conta já usada quando nenhuma outra tem saldo (também no coletor do 1º turno); Google Notícias trazia títulos sem relação (busca casa com o corpo do texto) → só entram títulos com um dos termos do caso; a nuvem de palavras exclui as próprias hashtags do caso.
+- Corrigido antes de publicar: o id `rtStatus` da nova aba colidia com o do caderno Reuters (renomeado para `sr*`).
+- Verificado no Chromium local (1300 px e 390 px): as três abas renderizam com os dados do repositório, sem erro de JavaScript (só o 404 esperado de `wayback_historico.csv`, ainda não gerado), sem rolagem horizontal em 390 px. Testes: suíte OK. Pendente: cargas do caso 1 e do 1º turno, Internet Archive, conferência no site publicado.
+
 ## C19.45 — Casos e análises: coleta por hashtag e termo; seguidores pelo Internet Archive (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 04h33): "Implemente a página de casos"; teto do caso 1 escolhido: US$ 3 ("caso 1 completo; os casos 2 a 4 entram como dossiê com o que já temos, até você confirmar as datas").
