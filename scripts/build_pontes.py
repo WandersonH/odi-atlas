@@ -27,6 +27,7 @@ import datetime as dt
 import gzip
 import json
 import os
+import re
 import statistics
 import sys
 from collections import Counter, defaultdict
@@ -175,6 +176,87 @@ def analisar(rows: list[dict], rot: dict, itens: dict, fases: list[dict], temas_
     return res
 
 
+TOM = {"POS": "pos", "NEG": "neg", "NEU": "neu"}
+
+
+def exportar(root: Path, interno: Path, plat: str, rows: list[dict], rot: dict, itens: dict, fases: list[dict]) -> dict:
+    """Gephi (público, autores pseudonimizados) e IRaMuTeQ (privado, com texto) das pontes entre públicos.
+
+    Pseudônimos: P0001, P0002... na ordem de atividade (mais comentários primeiro); a correspondência com o autor
+    real fica só no repositório privado (pontes/<rede>_codigos.csv). Nada de nome ou id de autor no público."""
+    import networkx as nx
+    rows = [r for r in rows if r.get("candidate_id") in (L, F) and (r.get("publicado_em") or "")[:10] >= DESDE and r.get("autor_canal")]
+    casa = publicos(rows)
+    por_autor = defaultdict(Counter)
+    for r in rows:
+        por_autor[r["autor_canal"]][r["candidate_id"]] += 1
+    pontes = {a for a, c in por_autor.items() if c[L] and c[F]}
+    por_id = {r["comment_id"]: r for r in rows}
+    cruz = [r for r in rows if r.get("parent_id") in por_id and casa.get(r["autor_canal"]) and casa.get(por_id[r["parent_id"]]["autor_canal"])
+            and casa[r["autor_canal"]] != casa[por_id[r["parent_id"]]["autor_canal"]]]
+    envolvidos = pontes | {r["autor_canal"] for r in cruz} | {por_id[r["parent_id"]]["autor_canal"] for r in cruz}
+    ordem = sorted(envolvidos, key=lambda a: (-sum(por_autor[a].values()), a))
+    cod = {a: f"P{i + 1:04d}" for i, a in enumerate(ordem)}
+    pub_nome = lambda a: {L: "Lula", F: "Flávio Bolsonaro"}.get(casa.get(a), "sem público definido")  # noqa: E731
+    cor = {L: (200, 16, 46), F: (31, 138, 59), None: (120, 128, 136)}
+    pasta = root / "data/pontes"
+    # 1) contas-ponte × conteúdos (bipartida)
+    g = nx.Graph()
+    arest = defaultdict(list)
+    for r in rows:
+        if r["autor_canal"] in pontes and r["video_id"] in itens:
+            arest[(r["autor_canal"], r["video_id"])].append(rot.get(r["comment_id"], ""))
+    for (a, v), tons in arest.items():
+        if cod[a] not in g:
+            rr, gg, bb = cor[casa.get(a)]
+            g.add_node(cod[a], label=cod[a], tipo="conta-ponte", publico=pub_nome(a), comentarios_lula=por_autor[a][L], comentarios_flavio=por_autor[a][F],
+                       viz={"color": {"r": rr, "g": gg, "b": bb, "a": 1.0}, "size": 4 + sum(por_autor[a].values()) ** 0.5})
+        it = itens[v]
+        if v not in g:
+            rr, gg, bb = cor[it["candidate_id"]]
+            g.add_node(v, label=it["titulo"][:60] or v, tipo="conteúdo", candidato=NOMES[it["candidate_id"]], data=it["data"], url=it["url"],
+                       temas="|".join(it["temas"]), viz={"color": {"r": rr, "g": gg, "b": bb, "a": 1.0}, "size": 8.0})
+        c = Counter(t for t in tons if t)
+        g.add_edge(cod[a], v, weight=len(tons), tom_predominante=TOM.get(c.most_common(1)[0][0], "sem") if c else "sem")
+    nx.write_gexf(g, pasta / f"{plat}_contas_ponte.gexf")
+    # 2) respostas entre públicos (dirigida: quem responde → quem foi respondido)
+    h = nx.DiGraph()
+    for r in cruz:
+        a, b = r["autor_canal"], por_id[r["parent_id"]]["autor_canal"]
+        for x in (a, b):
+            if cod[x] not in h:
+                rr, gg, bb = cor[casa.get(x)]
+                h.add_node(cod[x], label=cod[x], publico=pub_nome(x), viz={"color": {"r": rr, "g": gg, "b": bb, "a": 1.0}, "size": 6.0})
+        e = h.get_edge_data(cod[a], cod[b]) or {"weight": 0, "neg": 0}
+        h.add_edge(cod[a], cod[b], weight=e["weight"] + 1, neg=e["neg"] + int(rot.get(r["comment_id"]) == "NEG"),
+                   conteudo_de=NOMES[r["candidate_id"]])
+    nx.write_gexf(h, pasta / f"{plat}_respostas_entre_publicos.gexf")
+    # 3) privado: códigos e corpus IRaMuTeQ
+    priv = interno / "pontes"
+    priv.mkdir(parents=True, exist_ok=True)
+    with open(priv / f"{plat}_codigos.csv", "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, delimiter=";", lineterminator="\n")
+        w.writerow(["codigo", "autor_canal", "publico"])
+        for a in ordem:
+            w.writerow([cod[a], a, pub_nome(a)])
+    ids_cruz = {r["comment_id"] for r in cruz}
+    sel = [r for r in rows if r["autor_canal"] in pontes or r["comment_id"] in ids_cruz]
+    slug = {L: "lula", F: "flavio", None: "indef"}
+    with open(priv / f"{plat}_corpus_iramuteq.txt", "w", encoding="utf-8", newline="\n") as f:
+        for r in sel:
+            texto = " ".join(re.sub(r"[*$%]", " ", r.get("texto") or "").split())
+            if len(texto) < 3:
+                continue
+            fz = fase(r["publicado_em"], fases) or "fora"
+            f.write(f"**** *rede_{plat} *conteudo_{slug[r['candidate_id']]} *publico_{slug[casa.get(r['autor_canal'])]} "
+                    f"*ponte_{'sim' if r['autor_canal'] in pontes else 'nao'} *resposta_entre_publicos_{'sim' if r['comment_id'] in ids_cruz else 'nao'} "
+                    f"*tom_{TOM.get(rot.get(r['comment_id']), 'sem')} *fase_{fz}\n{texto}\n")
+    return {"gephi_contas_ponte": f"data/pontes/{plat}_contas_ponte.gexf", "gephi_contas_ponte_tamanho": {"nos": g.number_of_nodes(), "arestas": g.number_of_edges()},
+            "gephi_respostas": f"data/pontes/{plat}_respostas_entre_publicos.gexf", "gephi_respostas_tamanho": {"nos": h.number_of_nodes(), "arestas": h.number_of_edges()},
+            "iramuteq_privado": f"odi-atlas-interno/pontes/{plat}_corpus_iramuteq.txt", "iramuteq_segmentos": len(sel),
+            "variaveis_iramuteq": ["*rede_", "*conteudo_", "*publico_", "*ponte_", "*resposta_entre_publicos_", "*tom_", "*fase_"]}
+
+
 def itens_da_plataforma(root: Path, plat: str) -> dict:
     d = json.loads((root / f"data/{plat}/conteudo.json").read_text(encoding="utf-8"))
     out = {}
@@ -219,6 +301,7 @@ def main(argv=None) -> int:
     datas = sorted(r["publicado_em"][:10] for r in rows if r.get("publicado_em"))
     out = {**base, "status": "ok", "periodo": {"de": max(DESDE, datas[0]) if datas else None, "ate": datas[-1] if datas else None},
            "comentarios_com_tom": sum(1 for r in rows if r["comment_id"] in rot), **res}
+    out["arquivos"] = exportar(root, Path(interno), plat, rows, rot, itens_da_plataforma(root, plat), fases)
     saida.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     cp = res["contas_ponte"]
     print(f"{plat}: {res['comentarios']} comentários · {res['autores']} autores · contas-ponte {cp['autores']} ({cp['pct_autores']}%) · "

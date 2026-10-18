@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.41 — Pontes entre públicos: Gephi e IRaMuTeQ (2026-10-18) ✅
+
+- Pedido do usuário (18/10, 03h23): "nessa página ponte entre públicos não esqueça IRaMuTeQ e Gephi". `build_pontes.py` passa a gerar, por rede: `data/pontes/<rede>_contas_ponte.gexf` (bipartida conta-ponte × conteúdo, peso = comentários, tom predominante na ligação) e `data/pontes/<rede>_respostas_entre_publicos.gexf` (dirigida, quem responde → respondido, nº de negativas). Autores só por código P0001… (ordem de atividade); a tabela código ↔ conta fica no privado (`pontes/<rede>_codigos.csv`). Corpus IRaMuTeQ privado (`pontes/<rede>_corpus_iramuteq.txt`) com os comentários das contas-ponte e as respostas entre públicos e as variáveis `*rede_ *conteudo_ *publico_ *ponte_ *resposta_entre_publicos_ *tom_ *fase_`.
+- Números da execução local (repositório privado, 18/10): YouTube — rede de contas-ponte 1.530 nós / 3.501 ligações, respostas entre públicos 193 / 118, corpus 4.730 comentários; X (com a carga por post: 29.260 respostas, 12.693 autores) — 585 contas-ponte (4,61% dos autores), 58 respostas entre públicos de 2.561 com mensagem respondida na amostra, rede 1.172 / 3.978, corpus 4.926; Facebook (11.882 comentários após a ampliação) — 30 contas-ponte (0,28%), sem respostas.
+- Página: cartão "Redes para o Gephi e corpus para o IRaMuTeQ" na aba Pontes, por rede, com downloads e instruções; a nota do X corrigida (agora há respostas entre públicos). Verificado no Chromium local, sem erro de JavaScript.
+- Testes: suíte OK.
+
 ## C19.40 — Teste de posicionamento sem treino (2026-10-18) 🔜
 
 - Pergunta do usuário (18/10, 03h57): "conseguimos testar?" (camada de posição proposta na revisão de literatura). Os textos do UstanceBR não são distribuídos (só ids do X, verificado no artigo), então o teste usa um modelo aberto de inferência textual multilíngue (`MoritzLaurer/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7`) rodando no próprio Actions: nenhum comentário sai para serviço externo, sem custo.
