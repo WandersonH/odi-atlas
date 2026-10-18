@@ -115,10 +115,9 @@
   "APIFY_TOKEN_7"
  ],
  "contas_nota": "Contas Apify de pessoas diferentes do grupo (confirmado em 17/10/2026). Usa a primeira da lista com saldo; a conta 1 (APIFY_TOKEN, Starter) fica para as rotinas diárias de seguidores e anúncios.",
- "pre_ate": "2026-08-16",
  "posts_por_pagina_pre": {
-  "principal": 60,
-  "outras": 20
+  "principal": 200,
+  "outras": 0
  },
- "nota_pre": "Pré-campanha (20/07 a 15/08) coletada à parte (modo --pre: onlyPostsOlderThan 16/08), até 60 posts das páginas principais e 20 das demais (≈ 320 posts, ≈ US$ 1,61 pela tabela), dentro do teto de US$ 5."
+ "nota_pre": "Pré-campanha: o filtro onlyPostsOlderThan devolveu 'no_items' em todas as páginas (run 39084573495, conta 4, US$ 0,01). O modo --pre relê as páginas principais (lula, flaviobolsonaro) desde 20/07 sem limite superior de data, até 200 posts cada (os já coletados são lidos de novo e pagos de novo); ≈ US$ 1,65 pela tabela, dentro do teto de US$ 5. As demais páginas ficam para o próximo ciclo de saldo."
 }

@@ -8,6 +8,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - O usuário confirmou que as contas Apify 2 a 7 são de pessoas diferentes do grupo. `escolher_conta()` (em `collect_meta_apify.py`) usa a primeira conta da lista com saldo real suficiente (`/users/me/limits`); listas em `segredos` de `kwai.json` (2→7), `kwai_comentarios.json` (3→7) e `facebook_posts.json` (2, 4→7). A conta 1 (Starter) fica para as rotinas diárias de seguidores e anúncios. O manifesto registra qual conta pagou.
 - Facebook: modo `pre-campanha` (`--pre`): posts de 20/07 a 15/08 (`onlyPostsOlderThan` 16/08), até 60 das páginas principais e 20 das demais, sem repetir os já coletados; ≈ US$ 1,61 pela tabela, dentro do teto de US$ 5 (gasto até aqui US$ 2,52).
+- Run `pre-campanha` 39084573495 (conta 4 escolhida automaticamente; US$ 0,01): 0 posts em todas as páginas — o filtro `onlyPostsOlderThan` devolve "no_items". Ajuste: o modo relê só as páginas principais desde 20/07, sem limite superior, até 200 posts cada (os posts já coletados são cobrados de novo; ≈ US$ 1,65 pela tabela, dentro do teto).
 - Testes: suíte OK.
 
 ## C19.5 — Todas as páginas desde a pré-campanha (20/07), com filtro por fase (2026-10-17) 🔜

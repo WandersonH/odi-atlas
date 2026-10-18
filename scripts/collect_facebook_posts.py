@@ -89,6 +89,8 @@ def main(argv=None, executar=None) -> int:
         cota = cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
         for pg in cfg["paginas"]:
             n = cota["principal" if pg.get("principal") else "outras"]
+            if not n:
+                continue
             c = p["inicio"] + p["post"] * n
             if est + c > teto:
                 n = int((teto - est - p["inicio"]) / p["post"])
@@ -100,8 +102,7 @@ def main(argv=None, executar=None) -> int:
 
     def um(a):
         pg, n = a
-        pl = {"startUrls": [{"url": pg["url"]}], "resultsLimit": n, "onlyPostsNewerThan": cfg["desde"],
-              **({"onlyPostsOlderThan": cfg["pre_ate"]} if pre else {})}
+        pl = {"startUrls": [{"url": pg["url"]}], "resultsLimit": n, "onlyPostsNewerThan": cfg["desde"]}
         try:
             run, itens = executar(pl, round(p["inicio"] + p["post"] * n * 1.05 + 0.002, 4))
             return pg, n, run or {}, itens or [], None
