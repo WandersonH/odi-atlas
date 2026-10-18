@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.38 — YouTube: canal correto do Augusto Cury (2026-10-18) 🔜
+
+- O usuário indicou (18/10, 03h44) o canal correto: https://www.youtube.com/@AugustoCury. O endereço declarado ao TSE (`/CHANNEL/UC3F2E1LOB9X8AWYULLURYJG`, todo em maiúsculas) não é encontrado pela API. Novo `data/config/youtube_correcoes.json` (endereço do TSE → endereço usado, com quem indicou e quando); `collect_youtube.load_targets` usa o corrigido na consulta e mantém a URL do TSE para casar com o card (`corrigido_para` registrado).
+- Testes: `test_youtube_correcoes`. Pendente: próxima coleta diária do YouTube.
+- Fora deste commit (em andamento, não publicado): análise de conteúdo (Bardin e CHD) por fase — o primeiro teste local quebrou o gerador do corpus e sobrescreveu as CHDs locais com classes vazias; nada disso foi enviado.
+
 ## C19.37 — Redes do Gephi acompanham o filtro de fase (2026-10-18) ✅
 
 - Pedido do usuário (18/10, 03h26): "a gente consegue fazer o Gephi também se alterar". `build_rede.py` e `build_rede_mencoes_tiktok.py` passam a gerar, além da rede do período todo, uma rede por fase (`rede_pre`, `rede_turno1`, `rede_turno2` e `rede_mencoes_<fase>`, em JSON, GEXF e CSV). Fase com menos de 10 conteúdos (coocorrência) ou 5 (menções) não gera rede, e arquivos antigos dessa fase são apagados.

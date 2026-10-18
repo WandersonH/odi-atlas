@@ -54,11 +54,14 @@ def parse_channel(url: str):
 
 def load_targets(root: Path, year: str = "2026"):
     src = root / "data" / "tse" / f"redes_sociais_candidatos_{year}.csv.gz"
+    pc = root / "data" / "config" / "youtube_correcoes.json"
+    corr = json.loads(pc.read_text(encoding="utf-8")).get("correcoes", {}) if pc.exists() else {}
     out = []
     for r in csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"):
         if r.get("DS_CARGO", "").upper() in CARGOS and r.get("PLATAFORMA") == "youtube":
             out.append({"candidate_id": r["SQ_CANDIDATO"], "candidate_name": r.get("NM_URNA_CANDIDATO", ""),
-                        "url": r["DS_URL"].strip(), "ref": parse_channel(r["DS_URL"])})
+                        "url": r["DS_URL"].strip(), "ref": parse_channel(corr.get(r["DS_URL"].strip(), {}).get("usar") or r["DS_URL"]),
+                        "corrigido_para": corr.get(r["DS_URL"].strip(), {}).get("usar")})
     return out
 
 
