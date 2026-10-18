@@ -32,6 +32,19 @@ jobs:
         id: coleta
         continue-on-error: true
         run: python scripts/collect_tiktok.py
+      - name: Seguidores dos perfis declarados (Apify, contas 3 a 7)
+        continue-on-error: true
+        env:
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+        run: |
+          python scripts/collect_seguidores_tiktok.py > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=TikTok seguidores::$(echo "$l" | cut -c1-300)"; done < s.txt
+          python scripts/build_variacao_seguidores.py || true
+          exit $rc
       - name: Caderno 02 — classificar por tema
         if: hashFiles('data/tiktok/videos.csv.gz') != ''
         continue-on-error: true

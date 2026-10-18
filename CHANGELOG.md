@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.12 — Seguidores de todos os TikToks declarados (contas 3 a 7) (2026-10-17) 🔜
+
+- Cards "Não coletado" do TikTok (print do usuário): nenhuma rotina lia seguidores dos perfis secundários. `collect_seguidores_tiktok.py` (apidojo/tiktok-profile-scraper, US$ 0,0003 por item; 1 item por perfil, ≈ US$ 0,003 por coleta) roda no `tiktok.yml` (2× ao dia) e grava `data/seguidores/tiktok_latest.csv` com a URL declarada ao TSE; `bnLoadAuto` lê o arquivo; variação diária incluída.
+- Testes: `tests/test_seguidores_tiktok.py`; suíte OK.
+
 ## C19.11 — Página "O que as campanhas dizem no X" (2026-10-17) ✅
 
 - Página X no caderno 02, gerada da do Facebook (perfis, fases, temas, linha do tempo, listas, Bardin + CHD, redes de coocorrência e de menções, downloads), lendo `data/x/`. Chromium 1300 e 390 px: 2.149 posts de Lula e 926 de Flávio desde 20/07, rede de coocorrência com 1.065 arestas, rede de menções com 240 contas, sem erro de JavaScript e sem rolagem horizontal.
