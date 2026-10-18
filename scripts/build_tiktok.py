@@ -121,6 +121,11 @@ def main(argv=None) -> int:
             "cita_adversario": sum(v["cita_adversario"] for v in vids), "pede_voto": sum(v["pede_voto"] for v in vids),
             "nuvem": bc.nuvem(textos, excluir),
             "hashtags": [[t, n] for t, n in Counter(t for s in tags for t in s).most_common(40) if n >= 2],
+            # por fase, para a página acompanhar o filtro (pedido de 18/10/2026)
+            "nuvem_por_fase": {f["id"]: bc.nuvem([t for t, (r, _) in zip(textos, meus) if f["de"] <= r["publicado_em"][:10] <= f["ate"]], excluir)
+                               for f in fases},
+            "hashtags_por_fase": {f["id"]: [[t, n] for t, n in Counter(t for s, (r, _) in zip(tags, meus) if f["de"] <= r["publicado_em"][:10] <= f["ate"]
+                                                                        for t in s).most_common(40) if n >= 2] for f in fases},
             "por_mes": dict(sorted(Counter(v["publicado_em"][:7] for v in vids if v["publicado_em"]).items())),
             "desde_16_08": sum(1 for v in vids if v["publicado_em"] >= "2026-08-16"),
             "por_fase": por_fase(vids, fases),

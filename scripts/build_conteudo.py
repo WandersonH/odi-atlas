@@ -174,6 +174,11 @@ def tags_do_video(r: dict, pacotes: dict | None = None, padrao: dict | None = No
     return out
 
 
+def FASES_CFG(root: Path) -> list[dict]:
+    p = root / "data/config/trends.json"
+    return json.loads(p.read_text(encoding="utf-8")).get("fases", []) if p.exists() else []
+
+
 def mapa_tags(por_cand: dict[str, list[set]], top: int = MAPA_TOP, minimo: int = MAPA_MIN_VIDEOS) -> list[dict]:
     """[{tag, <cid>: nº de vídeos com a tag, ...}] ordenado pelo total, só tags em `minimo`+ vídeos."""
     cont = {cid: Counter(t for ts in lst for t in ts) for cid, lst in por_cand.items()}
@@ -207,8 +212,9 @@ def main(argv=None) -> int:
            "coletado_em_utc": coletado, "fonte": "YouTube Data API v3 (canais declarados ao TSE)",
            "metodo_nuvem": f"Nuvem: em quantos vídeos cada palavra ou par de palavras aparece (título + descrição útil), mínimo {NUVEM_MIN_VIDEOS} vídeos, top {NUVEM_TOP}; excluídas palavras funcionais, meses, termos de formato (propaganda eleitoral, acesse, inscreva-se), o nome do próprio candidato e o nome e a hashtag do próprio canal. Hashtags aparecem com #.",
            "metodo": cfg["nota"] + f" Antes de classificar, links são removidos e trechos de descrição repetidos em {LIMIAR_REPETICAO}+ vídeos do mesmo canal (rodapés, textos institucionais) são descartados.", "temas": list(cfg["temas"]) + ["sem_tema"], "candidatos": {}}
+    datas_por_cand = {}
     for cid, cand in cands.items():
-        vids, textos = [], []
+        vids, textos, datas = [], [], []
         nomes_canais = sorted({r["canal"] for r in rows if r["candidate_id"] == cid}, key=len, reverse=True)
         tira_canal = re.compile("|".join(re.escape(n) for n in nomes_canais) or "(?!)", re.I)
         nome = norm(cand["nome"]).split()
@@ -218,6 +224,7 @@ def main(argv=None) -> int:
                 continue
             txt = texto_util(r, padrao)
             textos.append(tira_canal.sub(" ", txt))  # nome do canal não é assunto
+            datas.append((r.get("publicado_em") or "")[:10])
             excluir.add(norm(r["canal"]).replace(" ", ""))  # hashtag do próprio canal (#tvcelular)
             c = classify(txt, temas, cand)
             tg = tags_do_video(r, pacotes, padrao)
@@ -243,10 +250,16 @@ def main(argv=None) -> int:
                                   "cita_adversario": sum(v["cita_adversario"] for v in vids),
                                   "pede_voto": sum(v["pede_voto"] for v in vids),
                                   "nuvem": nuvem(textos, excluir),
+                                  # nuvem de cada fase, para a página acompanhar o filtro (pedido de 18/10/2026)
+                                  "nuvem_por_fase": {f["id"]: nuvem([t for t, d in zip(textos, datas) if f["de"] <= d <= f["ate"]], excluir)
+                                                     for f in FASES_CFG(root)},
                                   "videos": vids}
+        datas_por_cand[cid] = datas
         print(cand["nome"], len(vids), "vídeos | temas:", dict(por_tema.most_common(6)),
               "| cita adversário:", out["candidatos"][cid]["cita_adversario"], "| pede voto:", out["candidatos"][cid]["pede_voto"])
     out["mapa_tags"] = mapa_tags({cid: tags_por_cand.get(cid, []) for cid in cands})
+    out["mapa_tags_por_fase"] = {f["id"]: mapa_tags({cid: [tg for tg, d in zip(tags_por_cand.get(cid, []), datas_por_cand.get(cid, []))
+                                                           if f["de"] <= d <= f["ate"]] for cid in cands}) for f in FASES_CFG(root)}
     out["metodo_tags"] = (("Tags colocadas pelo próprio canal em cada vídeo (YouTube Data API, snippet.tags) + " if tem_tags_canal
                            else "Ainda sem as tags dos canais nesta coleta; só ") +
                           f"#hashtags do título e da descrição. O pacote fixo de cada canal (o mesmo conjunto de tags repetido em {LIMIAR_REPETICAO}+ vídeos) aparece à parte e não entra no mapa. Normalizadas sem acento e sem espaço; contagem = nº de vídeos; mínimo {MAPA_MIN_VIDEOS} vídeos, top {MAPA_TOP}.")

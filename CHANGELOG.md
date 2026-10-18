@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.39 — Nuvens, hashtags e mapa de tags acompanham o filtro de fase (2026-10-18) ⚠️
+
+- Pedido do usuário (18/10, 03h31, print do mapa de tags com "acervo completo · não acompanha o filtro"): "integre ao filtro". `build_conteudo.py` (YouTube) grava `nuvem_por_fase` e `mapa_tags_por_fase`; `build_tiktok.py` (TikTok, Kwai, Facebook, X, Instagram) grava `nuvem_por_fase` e `hashtags_por_fase`. Nas 6 páginas, nuvens, hashtags e o mapa de tags são redesenhados ao trocar a fase, e o selo do cartão vira "acompanha o filtro de fase". Conteúdos regenerados localmente.
+- Verificado no Chromium local (todo o período → 2º turno): YouTube, mapa de tags de Flávio "#vote22 29 vídeos" → "#flaviobolsonaro 6, #vote22 5"; TikTok, hashtags de Flávio "#ultimasnoticias 30, #vote22 28" → "#vote22 6, #bolsafamilia 3"; nuvens mudam; sem erro de JavaScript.
+- ⚠️ Ainda não acompanham o filtro: estratégias discursivas (Bardin) e CHD (trabalho iniciado e guardado fora do repositório; o primeiro teste quebrou o gerador do corpus e não foi enviado), rede de influenciadores do YouTube e rede de contas do TikTok com hashtags dos candidatos.
+- Testes: suíte OK.
+
 ## C19.38 — YouTube: canal correto do Augusto Cury (2026-10-18) 🔜
 
 - O usuário indicou (18/10, 03h44) o canal correto: https://www.youtube.com/@AugustoCury. O endereço declarado ao TSE (`/CHANNEL/UC3F2E1LOB9X8AWYULLURYJG`, todo em maiúsculas) não é encontrado pela API. Novo `data/config/youtube_correcoes.json` (endereço do TSE → endereço usado, com quem indicou e quando); `collect_youtube.load_targets` usa o corrigido na consulta e mantém a URL do TSE para casar com o card (`corrigido_para` registrado).
