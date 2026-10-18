@@ -80,6 +80,9 @@ def main(argv=None, pagina: str | None = None) -> int:
         with urllib.request.urlopen(req, timeout=60) as r:
             pagina = r.read().decode("utf-8", "replace")
     itens = parse(pagina)
+    if not itens:  # diagnóstico do formato da página (sem dados pessoais: é a lista pública de assuntos)
+        i = pagina.find("/trend/")
+        print(f"página com {len(pagina)} caracteres; 1º '/trend/' em {i}: " + re.sub(r"\s+", " ", pagina[max(0, i - 300):i + 500]))
     pasta = root / "data/x/trends"
     pasta.mkdir(parents=True, exist_ok=True)
     dia = (dt.datetime.fromisoformat(agora.replace("Z", "+00:00")) - dt.timedelta(hours=3)).strftime("%Y-%m-%d")  # dia em Brasília
