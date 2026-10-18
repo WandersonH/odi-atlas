@@ -37,7 +37,7 @@ TETO_TOTAL = 3.0
 def alvos(root: Path) -> list[dict]:
     out, vistos = [], set()
     for x in json.loads((root / "data/tse/redes_presidencia_2026.json").read_text(encoding="utf-8")):
-        if x["plataforma"] not in PADROES or x["nr"] not in IDS:
+        if x["plataforma"] not in PADROES or x["plataforma"] == "instagram" or x["nr"] not in IDS:  # Instagram: série bloqueada pelo Social Blade (README do ator)
             continue
         m = re.search(PADROES[x["plataforma"]], x["url"], re.I)
         if not m or m.group(1).lower() in ("p", "reel", "watch", "share"):
@@ -85,7 +85,7 @@ def main(argv=None, executar=None) -> int:
 
     al = alvos(root)
     if teste:
-        al = [a for a in al if a["plataforma"] == "instagram" and a["perfil"].lower() == "lulaoficial"][:1]
+        al = [a for a in al if a["plataforma"] == "tiktok" and a["perfil"].lower() == "lulaoficial"][:1]
     custo_est = 0.03 * len(al) + 0.01
     if ja + custo_est > TETO_TOTAL:
         return fim(f"⛔ teto de US$ {TETO_TOTAL} (gasto US$ {ja}; esta carga ≈ US$ {round(custo_est, 2)})", 1)
