@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.29 — Auditoria (itens 5 e 11): χ² com direção e palavras partidas (2026-10-18) ✅
+
+- **5 · "χ² -79,7"**: a CHD grava o χ² 2×2 com sinal (+ acima do esperado, − abaixo). A página passa a mostrar o valor absoluto e a direção por extenso ("χ² 79,7 abaixo do esperado") e avisa que é implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.
+- **11 · "fla", "vio", "fami lia", "heart" nos comentários do Kwai**: parte dos comentários vem com acento decomposto (Unicode NFD) e o separador de palavras cortava no acento; o Kwai entrega emojis como texto ("[heart]", "[heart_eyes]"). `build_conteudo.termos` normaliza para NFC antes de separar e `norm` remove os emojis em colchetes (vale para nuvens, redes e CHD de todas as redes). Análises de comentários do Kwai regeneradas: `analise.json` e `rede_termos.json` sem esses fragmentos (conferido). Facebook e YouTube saem corrigidos no próximo run de cada um.
+- Testes: suíte OK (`test_normalizacao`).
+
 ## C19.28 — Auditoria (itens 2, 3, 6 e 7) e página do Instagram (2026-10-18) ⚠️
 
 - O usuário anexou uma auditoria (18/10, 02h21) com 12 correções. Feitas nesta entrada:

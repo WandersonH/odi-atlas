@@ -23,8 +23,12 @@ from collections import Counter
 from pathlib import Path
 
 
+# Emojis que o Kwai entrega como texto entre colchetes ("[heart]", "[heart_eyes]"): não são palavras
+EMOJI_TAG = re.compile(r"\[[a-z_]{2,30}\]", re.I)
+
+
 def norm(s: str) -> str:
-    s = unicodedata.normalize("NFKD", s or "").lower()
+    s = unicodedata.normalize("NFKD", EMOJI_TAG.sub(" ", s or "")).lower()
     s = "".join(c for c in s if not unicodedata.combining(c))
     return " " + re.sub(r"[^a-z0-9#]+", " ", s).strip() + " "
 
@@ -95,7 +99,8 @@ def _valido(t: str, excluir: set) -> bool:
 def termos(text: str, excluir: set) -> set[str]:
     """Termos (palavras, hashtags e pares de palavras) normalizados sem acento; um termo conta 1x por vídeo.
     Hashtags não formam pares."""
-    toks = [t for t in (norm(x).strip() for x in TOKEN.findall((text or "").lower())) if t]
+    # NFC antes de separar: com acento decomposto (NFD), "família" virava "fami" + "lia"
+    toks = [t for t in (norm(x).strip() for x in TOKEN.findall(unicodedata.normalize("NFC", EMOJI_TAG.sub(" ", text or "")).lower())) if t]
     out = set()
     for i, t in enumerate(toks):
         ok = _valido(t, excluir)

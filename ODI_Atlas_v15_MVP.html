@@ -2821,7 +2821,7 @@ $('ytChdTree').innerHTML=`<div class="yt-tree">${h}</svg></div>`;}
 function classes(C){$('ytChdClasses').innerHTML=C.classes.map(c=>{const lu=c.candidatos.lula,fl=c.candidatos.flavio;const mx=c.formas.length?c.formas[0][1]:1;
 return `<div class="yt-chd"><h4>Classe ${c.classe} · ${c.pct}% dos segmentos</h4><div class="yt-meta">${c.nome?esc(c.nome):'nome: a definir pelo pesquisador'}</div>
 <div class="yt-split" title="Lula ${lu.pct_da_classe}% · Flávio ${fl.pct_da_classe}%"><i style="flex:${lu.pct_da_classe};background:${CL}"></i><i style="flex:${fl.pct_da_classe};background:${CF}"></i></div>
-<div class="yt-meta">Lula ${lu.pct_da_classe}% (χ² ${lu.chi2}) · Flávio ${fl.pct_da_classe}% (χ² ${fl.chi2})</div>
+<div class="yt-meta">Lula ${lu.pct_da_classe}% (${lu.chi2==null?'χ² —':'χ² '+String(Math.abs(lu.chi2)).replace('.',',')+((lu.chi2)>=0?' acima':' abaixo')+' do esperado'}) · Flávio ${fl.pct_da_classe}% (${fl.chi2==null?'χ² —':'χ² '+String(Math.abs(fl.chi2)).replace('.',',')+((fl.chi2)>=0?' acima':' abaixo')+' do esperado'})</div><div class="yt-meta" style="font-size:11px">χ² de associação 2×2 (classe × candidato): o número é a força; "acima/abaixo do esperado" é a direção. Implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.</div>
 <div class="yt-forms">${c.formas.slice(0,14).map(f=>`<span style="font-size:${(11+6*Math.sqrt(f[1]/mx)).toFixed(1)}px" title="χ² ${f[1]} · ${f[2]} segmentos">${esc(f[0])}</span>`).join('')}</div>
 ${c.segmentos_caracteristicos.slice(0,2).map(sg=>`<blockquote><span style="color:${sg.cand==='lula'?CL:CF};font-weight:700">${sg.cand==='lula'?'Lula':'Flávio'}</span> · ${esc(sg.texto)}</blockquote>`).join('')}</div>`;}).join('');}
 async function carregar(){if(feito)return;feito=true;
@@ -2920,7 +2920,7 @@ $('tkChdTree').innerHTML=`<div class="yt-tree">${h}</svg></div>`;}
 function classes(C){$('tkChdClasses').innerHTML=C.classes.map(c=>{const lu=c.candidatos.lula,fl=c.candidatos.flavio;const mx=c.formas.length?c.formas[0][1]:1;
 return `<div class="yt-chd"><h4>Classe ${c.classe} · ${c.pct}% dos segmentos</h4><div class="yt-meta">${c.nome?esc(c.nome):'nome: a definir pelo pesquisador'}</div>
 <div class="yt-split" title="Lula ${lu.pct_da_classe}% · Flávio ${fl.pct_da_classe}%"><i style="flex:${lu.pct_da_classe};background:${CL}"></i><i style="flex:${fl.pct_da_classe};background:${CF}"></i></div>
-<div class="yt-meta">Lula ${lu.pct_da_classe}% (χ² ${lu.chi2}) · Flávio ${fl.pct_da_classe}% (χ² ${fl.chi2})</div>
+<div class="yt-meta">Lula ${lu.pct_da_classe}% (${lu.chi2==null?'χ² —':'χ² '+String(Math.abs(lu.chi2)).replace('.',',')+((lu.chi2)>=0?' acima':' abaixo')+' do esperado'}) · Flávio ${fl.pct_da_classe}% (${fl.chi2==null?'χ² —':'χ² '+String(Math.abs(fl.chi2)).replace('.',',')+((fl.chi2)>=0?' acima':' abaixo')+' do esperado'})</div><div class="yt-meta" style="font-size:11px">χ² de associação 2×2 (classe × candidato): o número é a força; "acima/abaixo do esperado" é a direção. Implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.</div>
 <div class="yt-forms">${c.formas.slice(0,14).map(f=>`<span style="font-size:${(11+6*Math.sqrt(f[1]/mx)).toFixed(1)}px" title="χ² ${f[1]} · ${f[2]} segmentos">${esc(f[0])}</span>`).join('')}</div>
 ${c.segmentos_caracteristicos.slice(0,2).map(sg=>`<blockquote><span style="color:${sg.cand==='lula'?CL:CF};font-weight:700">${sg.cand==='lula'?'Lula':'Flávio'}</span> · ${esc(sg.texto)}</blockquote>`).join('')}</div>`;}).join('');}
 async function carregar(){if(feito)return;feito=true;
@@ -3117,7 +3117,7 @@ $('kwChdTree').innerHTML=`<div class="yt-tree">${h}</svg></div>`;}
 function classes(C){$('kwChdClasses').innerHTML=C.classes.map(c=>{const lu=c.candidatos.lula,fl=c.candidatos.flavio;const mx=c.formas.length?c.formas[0][1]:1;
 return `<div class="yt-chd"><h4>Classe ${c.classe} · ${c.pct}% dos segmentos</h4><div class="yt-meta">${c.nome?esc(c.nome):'nome: a definir pelo pesquisador'}</div>
 <div class="yt-split" title="Lula ${lu.pct_da_classe}% · Flávio ${fl.pct_da_classe}%"><i style="flex:${lu.pct_da_classe};background:${CL}"></i><i style="flex:${fl.pct_da_classe};background:${CF}"></i></div>
-<div class="yt-meta">Lula ${lu.pct_da_classe}% (χ² ${lu.chi2}) · Flávio ${fl.pct_da_classe}% (χ² ${fl.chi2})</div>
+<div class="yt-meta">Lula ${lu.pct_da_classe}% (${lu.chi2==null?'χ² —':'χ² '+String(Math.abs(lu.chi2)).replace('.',',')+((lu.chi2)>=0?' acima':' abaixo')+' do esperado'}) · Flávio ${fl.pct_da_classe}% (${fl.chi2==null?'χ² —':'χ² '+String(Math.abs(fl.chi2)).replace('.',',')+((fl.chi2)>=0?' acima':' abaixo')+' do esperado'})</div><div class="yt-meta" style="font-size:11px">χ² de associação 2×2 (classe × candidato): o número é a força; "acima/abaixo do esperado" é a direção. Implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.</div>
 <div class="yt-forms">${c.formas.slice(0,14).map(f=>`<span style="font-size:${(11+6*Math.sqrt(f[1]/mx)).toFixed(1)}px" title="χ² ${f[1]} · ${f[2]} segmentos">${esc(f[0])}</span>`).join('')}</div>
 ${c.segmentos_caracteristicos.slice(0,2).map(sg=>`<blockquote><span style="color:${sg.cand==='lula'?CL:CF};font-weight:700">${sg.cand==='lula'?'Lula':'Flávio'}</span> · ${esc(sg.texto)}</blockquote>`).join('')}</div>`;}).join('');}
 async function carregar(){if(feito)return;feito=true;
@@ -3313,7 +3313,7 @@ $('fbChdTree').innerHTML=`<div class="yt-tree">${h}</svg></div>`;}
 function classes(C){$('fbChdClasses').innerHTML=C.classes.map(c=>{const lu=c.candidatos.lula,fl=c.candidatos.flavio;const mx=c.formas.length?c.formas[0][1]:1;
 return `<div class="yt-chd"><h4>Classe ${c.classe} · ${c.pct}% dos segmentos</h4><div class="yt-meta">${c.nome?esc(c.nome):'nome: a definir pelo pesquisador'}</div>
 <div class="yt-split" title="Lula ${lu.pct_da_classe}% · Flávio ${fl.pct_da_classe}%"><i style="flex:${lu.pct_da_classe};background:${CL}"></i><i style="flex:${fl.pct_da_classe};background:${CF}"></i></div>
-<div class="yt-meta">Lula ${lu.pct_da_classe}% (χ² ${lu.chi2}) · Flávio ${fl.pct_da_classe}% (χ² ${fl.chi2})</div>
+<div class="yt-meta">Lula ${lu.pct_da_classe}% (${lu.chi2==null?'χ² —':'χ² '+String(Math.abs(lu.chi2)).replace('.',',')+((lu.chi2)>=0?' acima':' abaixo')+' do esperado'}) · Flávio ${fl.pct_da_classe}% (${fl.chi2==null?'χ² —':'χ² '+String(Math.abs(fl.chi2)).replace('.',',')+((fl.chi2)>=0?' acima':' abaixo')+' do esperado'})</div><div class="yt-meta" style="font-size:11px">χ² de associação 2×2 (classe × candidato): o número é a força; "acima/abaixo do esperado" é a direção. Implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.</div>
 <div class="yt-forms">${c.formas.slice(0,14).map(f=>`<span style="font-size:${(11+6*Math.sqrt(f[1]/mx)).toFixed(1)}px" title="χ² ${f[1]} · ${f[2]} segmentos">${esc(f[0])}</span>`).join('')}</div>
 ${c.segmentos_caracteristicos.slice(0,2).map(sg=>`<blockquote><span style="color:${sg.cand==='lula'?CL:CF};font-weight:700">${sg.cand==='lula'?'Lula':'Flávio'}</span> · ${esc(sg.texto)}</blockquote>`).join('')}</div>`;}).join('');}
 async function carregar(){if(feito)return;feito=true;
@@ -3585,7 +3585,7 @@ $('igChdTree').innerHTML=`<div class="yt-tree">${h}</svg></div>`;}
 function classes(C){$('igChdClasses').innerHTML=C.classes.map(c=>{const lu=c.candidatos.lula,fl=c.candidatos.flavio;const mx=c.formas.length?c.formas[0][1]:1;
 return `<div class="yt-chd"><h4>Classe ${c.classe} · ${c.pct}% dos segmentos</h4><div class="yt-meta">${c.nome?esc(c.nome):'nome: a definir pelo pesquisador'}</div>
 <div class="yt-split" title="Lula ${lu.pct_da_classe}% · Flávio ${fl.pct_da_classe}%"><i style="flex:${lu.pct_da_classe};background:${CL}"></i><i style="flex:${fl.pct_da_classe};background:${CF}"></i></div>
-<div class="yt-meta">Lula ${lu.pct_da_classe}% (χ² ${lu.chi2}) · Flávio ${fl.pct_da_classe}% (χ² ${fl.chi2})</div>
+<div class="yt-meta">Lula ${lu.pct_da_classe}% (${lu.chi2==null?'χ² —':'χ² '+String(Math.abs(lu.chi2)).replace('.',',')+((lu.chi2)>=0?' acima':' abaixo')+' do esperado'}) · Flávio ${fl.pct_da_classe}% (${fl.chi2==null?'χ² —':'χ² '+String(Math.abs(fl.chi2)).replace('.',',')+((fl.chi2)>=0?' acima':' abaixo')+' do esperado'})</div><div class="yt-meta" style="font-size:11px">χ² de associação 2×2 (classe × candidato): o número é a força; "acima/abaixo do esperado" é a direção. Implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.</div>
 <div class="yt-forms">${c.formas.slice(0,14).map(f=>`<span style="font-size:${(11+6*Math.sqrt(f[1]/mx)).toFixed(1)}px" title="χ² ${f[1]} · ${f[2]} segmentos">${esc(f[0])}</span>`).join('')}</div>
 ${c.segmentos_caracteristicos.slice(0,2).map(sg=>`<blockquote><span style="color:${sg.cand==='lula'?CL:CF};font-weight:700">${sg.cand==='lula'?'Lula':'Flávio'}</span> · ${esc(sg.texto)}</blockquote>`).join('')}</div>`;}).join('');}
 async function carregar(){if(feito)return;feito=true;
@@ -3781,7 +3781,7 @@ $('twChdTree').innerHTML=`<div class="yt-tree">${h}</svg></div>`;}
 function classes(C){$('twChdClasses').innerHTML=C.classes.map(c=>{const lu=c.candidatos.lula,fl=c.candidatos.flavio;const mx=c.formas.length?c.formas[0][1]:1;
 return `<div class="yt-chd"><h4>Classe ${c.classe} · ${c.pct}% dos segmentos</h4><div class="yt-meta">${c.nome?esc(c.nome):'nome: a definir pelo pesquisador'}</div>
 <div class="yt-split" title="Lula ${lu.pct_da_classe}% · Flávio ${fl.pct_da_classe}%"><i style="flex:${lu.pct_da_classe};background:${CL}"></i><i style="flex:${fl.pct_da_classe};background:${CF}"></i></div>
-<div class="yt-meta">Lula ${lu.pct_da_classe}% (χ² ${lu.chi2}) · Flávio ${fl.pct_da_classe}% (χ² ${fl.chi2})</div>
+<div class="yt-meta">Lula ${lu.pct_da_classe}% (${lu.chi2==null?'χ² —':'χ² '+String(Math.abs(lu.chi2)).replace('.',',')+((lu.chi2)>=0?' acima':' abaixo')+' do esperado'}) · Flávio ${fl.pct_da_classe}% (${fl.chi2==null?'χ² —':'χ² '+String(Math.abs(fl.chi2)).replace('.',',')+((fl.chi2)>=0?' acima':' abaixo')+' do esperado'})</div><div class="yt-meta" style="font-size:11px">χ² de associação 2×2 (classe × candidato): o número é a força; "acima/abaixo do esperado" é a direção. Implementação própria do método de Reinert, ainda não comparada com o IRaMuTeQ.</div>
 <div class="yt-forms">${c.formas.slice(0,14).map(f=>`<span style="font-size:${(11+6*Math.sqrt(f[1]/mx)).toFixed(1)}px" title="χ² ${f[1]} · ${f[2]} segmentos">${esc(f[0])}</span>`).join('')}</div>
 ${c.segmentos_caracteristicos.slice(0,2).map(sg=>`<blockquote><span style="color:${sg.cand==='lula'?CL:CF};font-weight:700">${sg.cand==='lula'?'Lula':'Flávio'}</span> · ${esc(sg.texto)}</blockquote>`).join('')}</div>`;}).join('');}
 async function carregar(){if(feito)return;feito=true;
