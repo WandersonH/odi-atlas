@@ -1,10 +1,3200 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+<gexf xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
   <meta lastmodifieddate="2026-10-18">
     <creator>NetworkX 3.6.1</creator>
   </meta>
   <graph defaultedgetype="undirected" mode="static" name="">
-    <nodes />
-    <edges />
+    <attributes mode="static" class="node">
+      <attribute id="0" title="videos" type="long" />
+      <attribute id="1" title="lula" type="long" />
+      <attribute id="2" title="flavio" type="long" />
+      <attribute id="3" title="lado" type="double" />
+      <attribute id="4" title="comunidade" type="long" />
+      <attribute id="5" title="intermediacao" type="double" />
+      <attribute id="6" title="grau" type="long" />
+      <attribute id="7" title="cor" type="string" />
+    </attributes>
+    <nodes>
+      <node id="brasil" label="brasil">
+        <viz:color r="143" g="57" b="50" a="1.0" />
+        <viz:size value="44.74342054632502" />
+        <viz:position x="508.6" y="-398.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="203" />
+          <attvalue for="1" value="135" />
+          <attvalue for="2" value="68" />
+          <attvalue for="3" value="0.665" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.5737" />
+          <attvalue for="6" value="142" />
+          <attvalue for="7" value="#8f3932" />
+        </attvalues>
+      </node>
+      <node id="vote" label="vote">
+        <viz:color r="84" g="99" b="55" a="1.0" />
+        <viz:size value="31.698484809834994" />
+        <viz:position x="1000.0" y="-388.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="98" />
+          <attvalue for="1" value="31" />
+          <attvalue for="2" value="67" />
+          <attvalue for="3" value="0.316" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0524" />
+          <attvalue for="6" value="53" />
+          <attvalue for="7" value="#546337" />
+        </attvalues>
+      </node>
+      <node id="povo" label="povo">
+        <viz:color r="182" g="29" b="47" a="1.0" />
+        <viz:size value="29.49545416973504" />
+        <viz:position x="611.1" y="-887.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="84" />
+          <attvalue for="1" value="75" />
+          <attvalue for="2" value="9" />
+          <attvalue for="3" value="0.893" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.1166" />
+          <attvalue for="6" value="83" />
+          <attvalue for="7" value="#b61d2f" />
+        </attvalues>
+      </node>
+      <node id="presidente" label="presidente">
+        <viz:color r="182" g="29" b="47" a="1.0" />
+        <viz:size value="26.55605831561735" />
+        <viz:position x="840.4" y="-19.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="67" />
+          <attvalue for="1" value="60" />
+          <attvalue for="2" value="7" />
+          <attvalue for="3" value="0.896" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.033" />
+          <attvalue for="6" value="46" />
+          <attvalue for="7" value="#b61d2f" />
+        </attvalues>
+      </node>
+      <node id="pais" label="pais">
+        <viz:color r="143" g="57" b="50" a="1.0" />
+        <viz:size value="22.56696380120313" />
+        <viz:position x="706.8" y="-428.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="47" />
+          <attvalue for="1" value="31" />
+          <attvalue for="2" value="16" />
+          <attvalue for="3" value="0.66" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0082" />
+          <attvalue for="6" value="26" />
+          <attvalue for="7" value="#8f3932" />
+        </attvalues>
+      </node>
+      <node id="flavio" label="flavio">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="22.12461179749811" />
+        <viz:position x="390.2" y="-516.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="45" />
+          <attvalue for="1" value="45" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.002" />
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="bolsonaro" label="bolsonaro">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="21.8997487421324" />
+        <viz:position x="387.2" y="-479.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="44" />
+          <attvalue for="1" value="44" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.006" />
+          <attvalue for="6" value="23" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="#vote22" label="#vote22">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="21.44222209522358" />
+        <viz:position x="872.5" y="-430.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="42" />
+          <attvalue for="1" value="0" />
+          <attvalue for="2" value="42" />
+          <attvalue for="3" value="0.0" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0023" />
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="#1f8a3b" />
+        </attvalues>
+      </node>
+      <node id="vida" label="vida">
+        <viz:color r="176" g="33" b="48" a="1.0" />
+        <viz:size value="21.44222209522358" />
+        <viz:position x="216.2" y="-724.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="42" />
+          <attvalue for="1" value="36" />
+          <attvalue for="2" value="6" />
+          <attvalue for="3" value="0.857" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0158" />
+          <attvalue for="6" value="34" />
+          <attvalue for="7" value="#b02130" />
+        </attvalues>
+      </node>
+      <node id="brasileiro" label="brasileiro">
+        <viz:color r="183" g="28" b="47" a="1.0" />
+        <viz:size value="21.209372712298546" />
+        <viz:position x="397.8" y="-796.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="41" />
+          <attvalue for="1" value="37" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.902" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.014" />
+          <attvalue for="6" value="34" />
+          <attvalue for="7" value="#b71c2f" />
+        </attvalues>
+      </node>
+      <node id="familia" label="familia">
+        <viz:color r="164" g="42" b="49" a="1.0" />
+        <viz:size value="20.49324200890693" />
+        <viz:position x="41.6" y="-409.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="38" />
+          <attvalue for="1" value="30" />
+          <attvalue for="2" value="8" />
+          <attvalue for="3" value="0.789" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0197" />
+          <attvalue for="6" value="39" />
+          <attvalue for="7" value="#a42a31" />
+        </attvalues>
+      </node>
+      <node id="futuro" label="futuro">
+        <viz:color r="178" g="32" b="48" a="1.0" />
+        <viz:size value="20.49324200890693" />
+        <viz:position x="421.5" y="-202.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="38" />
+          <attvalue for="1" value="33" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.868" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0057" />
+          <attvalue for="6" value="22" />
+          <attvalue for="7" value="#b22030" />
+        </attvalues>
+      </node>
+      <node id="vencer" label="vencer">
+        <viz:color r="60" g="117" b="57" a="1.0" />
+        <viz:size value="19.74823934929885" />
+        <viz:position x="882.4" y="-401.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="35" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="29" />
+          <attvalue for="3" value="0.171" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#3c7539" />
+        </attvalues>
+      </node>
+      <node id="coligacao" label="coligacao">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="19.492855684535904" />
+        <viz:position x="379.0" y="-66.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="34" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0075" />
+          <attvalue for="6" value="29" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="federacao" label="federacao">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="19.492855684535904" />
+        <viz:position x="322.3" y="-105.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="34" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0057" />
+          <attvalue for="6" value="27" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="pcdob" label="pcdob">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="19.492855684535904" />
+        <viz:position x="350.1" y="-136.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="34" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.002" />
+          <attvalue for="6" value="21" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="pdt" label="pdt">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="19.492855684535904" />
+        <viz:position x="381.5" y="-111.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="34" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.001" />
+          <attvalue for="6" value="18" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="psb" label="psb">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="19.492855684535904" />
+        <viz:position x="369.4" y="-106.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="34" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="psol" label="psol">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="19.492855684535904" />
+        <viz:position x="366.2" y="-105.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="34" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="13" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="rede" label="rede">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="19.492855684535904" />
+        <viz:position x="371.4" y="-105.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="34" />
+          <attvalue for="1" value="34" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="6x1" label="6x1">
+        <viz:color r="195" g="20" b="46" a="1.0" />
+        <viz:size value="18.970562748477143" />
+        <viz:position x="0.0" y="-536.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="32" />
+          <attvalue for="1" value="31" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.969" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0119" />
+          <attvalue for="6" value="35" />
+          <attvalue for="7" value="#c3142e" />
+        </attvalues>
+      </node>
+      <node id="partido" label="partido">
+        <viz:color r="36" g="134" b="59" a="1.0" />
+        <viz:size value="18.970562748477143" />
+        <viz:position x="886.2" y="-436.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="32" />
+          <attvalue for="1" value="1" />
+          <attvalue for="2" value="31" />
+          <attvalue for="3" value="0.031" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0009" />
+          <attvalue for="6" value="12" />
+          <attvalue for="7" value="#24863b" />
+        </attvalues>
+      </node>
+      <node id="liberal" label="liberal">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="18.703293088490064" />
+        <viz:position x="891.3" y="-456.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="31" />
+          <attvalue for="1" value="0" />
+          <attvalue for="2" value="31" />
+          <attvalue for="3" value="0.0" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0013" />
+          <attvalue for="6" value="14" />
+          <attvalue for="7" value="#1f8a3b" />
+        </attvalues>
+      </node>
+      <node id="juntos" label="juntos">
+        <viz:color r="166" g="40" b="49" a="1.0" />
+        <viz:size value="18.431676725154983" />
+        <viz:position x="477.7" y="-183.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="30" />
+          <attvalue for="1" value="24" />
+          <attvalue for="2" value="6" />
+          <attvalue for="3" value="0.8" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0031" />
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="#a62831" />
+        </attvalues>
+      </node>
+      <node id="escala" label="escala">
+        <viz:color r="194" g="20" b="46" a="1.0" />
+        <viz:size value="18.15549442140351" />
+        <viz:position x="23.7" y="-598.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="29" />
+          <attvalue for="1" value="28" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.966" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0069" />
+          <attvalue for="6" value="28" />
+          <attvalue for="7" value="#c2142e" />
+        </attvalues>
+      </node>
+      <node id="oportunidades" label="oportunidades">
+        <viz:color r="171" g="37" b="48" a="1.0" />
+        <viz:size value="18.15549442140351" />
+        <viz:position x="599.5" y="-316.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="29" />
+          <attvalue for="1" value="24" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.828" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0043" />
+          <attvalue for="6" value="19" />
+          <attvalue for="7" value="#ab2530" />
+        </attvalues>
+      </node>
+      <node id="#evangelicoscomlula" label="#evangelicoscomlula">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="17.29705854077835" />
+        <viz:position x="824.0" y="-145.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="26" />
+          <attvalue for="1" value="26" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0034" />
+          <attvalue for="6" value="22" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="garantir" label="garantir">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="17.0" />
+        <viz:position x="348.7" y="-646.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="25" />
+          <attvalue for="1" value="25" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0033" />
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="melhor" label="melhor">
+        <viz:color r="186" g="26" b="47" a="1.0" />
+        <viz:size value="17.0" />
+        <viz:position x="563.1" y="-79.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="25" />
+          <attvalue for="1" value="23" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.92" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0023" />
+          <attvalue for="6" value="13" />
+          <attvalue for="7" value="#ba1a2f" />
+        </attvalues>
+      </node>
+      <node id="turno" label="turno">
+        <viz:color r="112" g="79" b="53" a="1.0" />
+        <viz:size value="17.0" />
+        <viz:position x="852.4" y="-331.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="25" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="13" />
+          <attvalue for="3" value="0.48" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0007" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#704f35" />
+        </attvalues>
+      </node>
+      <node id="#cristao" label="#cristao">
+        <viz:color r="193" g="21" b="47" a="1.0" />
+        <viz:size value="16.696938456699066" />
+        <viz:position x="873.4" y="-169.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="24" />
+          <attvalue for="1" value="23" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.958" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0023" />
+          <attvalue for="6" value="19" />
+          <attvalue for="7" value="#c1152f" />
+        </attvalues>
+      </node>
+      <node id="#forapt" label="#forapt">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="16.07124727947029" />
+        <viz:position x="898.6" y="-424.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="22" />
+          <attvalue for="1" value="0" />
+          <attvalue for="2" value="22" />
+          <attvalue for="3" value="0.0" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#1f8a3b" />
+        </attvalues>
+      </node>
+      <node id="#lulapresidente" label="#lulapresidente">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="16.07124727947029" />
+        <viz:position x="851.1" y="-151.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="22" />
+          <attvalue for="1" value="22" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0012" />
+          <attvalue for="6" value="15" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="mudanca" label="mudanca">
+        <viz:color r="77" g="105" b="55" a="1.0" />
+        <viz:size value="16.07124727947029" />
+        <viz:position x="623.7" y="-214.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="22" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="16" />
+          <attvalue for="3" value="0.273" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0026" />
+          <attvalue for="6" value="14" />
+          <attvalue for="7" value="#4d6937" />
+        </attvalues>
+      </node>
+      <node id="viver" label="viver">
+        <viz:color r="177" g="33" b="48" a="1.0" />
+        <viz:size value="16.07124727947029" />
+        <viz:position x="172.0" y="-611.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="22" />
+          <attvalue for="1" value="19" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.864" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0032" />
+          <attvalue for="6" value="21" />
+          <attvalue for="7" value="#b12130" />
+        </attvalues>
+      </node>
+      <node id="#flaviopresidente" label="#flaviopresidente">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="15.74772708486752" />
+        <viz:position x="896.9" y="-396.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="21" />
+          <attvalue for="1" value="0" />
+          <attvalue for="2" value="21" />
+          <attvalue for="3" value="0.0" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#1f8a3b" />
+        </attvalues>
+      </node>
+      <node id="familias" label="familias">
+        <viz:color r="168" g="39" b="48" a="1.0" />
+        <viz:size value="15.74772708486752" />
+        <viz:position x="541.0" y="-649.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="21" />
+          <attvalue for="1" value="17" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.81" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0024" />
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="#a82730" />
+        </attvalues>
+      </node>
+      <node id="respeito" label="respeito">
+        <viz:color r="168" g="39" b="48" a="1.0" />
+        <viz:size value="15.74772708486752" />
+        <viz:position x="762.8" y="-230.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="21" />
+          <attvalue for="1" value="17" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.81" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.001" />
+          <attvalue for="6" value="12" />
+          <attvalue for="7" value="#a82730" />
+        </attvalues>
+      </node>
+      <node id="#lula2026" label="#lula2026">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="15.416407864998739" />
+        <viz:position x="838.2" y="-177.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="20" />
+          <attvalue for="1" value="20" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0015" />
+          <attvalue for="6" value="16" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="democracia" label="democracia">
+        <viz:color r="183" g="28" b="47" a="1.0" />
+        <viz:size value="15.416407864998739" />
+        <viz:position x="728.4" y="-313.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="20" />
+          <attvalue for="1" value="18" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.9" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#b71c2f" />
+        </attvalues>
+      </node>
+      <node id="direitos" label="direitos">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="15.416407864998739" />
+        <viz:position x="352.6" y="-563.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="20" />
+          <attvalue for="1" value="20" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="lula" label="lula">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="15.416407864998739" />
+        <viz:position x="915.3" y="-440.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="20" />
+          <attvalue for="1" value="0" />
+          <attvalue for="2" value="20" />
+          <attvalue for="3" value="0.0" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#1f8a3b" />
+        </attvalues>
+      </node>
+      <node id="primeiro" label="primeiro">
+        <viz:color r="107" g="83" b="53" a="1.0" />
+        <viz:size value="15.416407864998739" />
+        <viz:position x="856.6" y="-311.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="20" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="11" />
+          <attvalue for="3" value="0.45" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#6b5335" />
+        </attvalues>
+      </node>
+      <node id="virar" label="virar">
+        <viz:color r="183" g="28" b="47" a="1.0" />
+        <viz:size value="15.416407864998739" />
+        <viz:position x="430.4" y="-147.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="20" />
+          <attvalue for="1" value="18" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.9" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b71c2f" />
+        </attvalues>
+      </node>
+      <node id="brasileiros" label="brasileiros">
+        <viz:color r="156" g="48" b="49" a="1.0" />
+        <viz:size value="15.076696830622023" />
+        <viz:position x="381.3" y="-307.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="19" />
+          <attvalue for="1" value="14" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.737" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0012" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#9c3031" />
+        </attvalues>
+      </node>
+      <node id="esperanca" label="esperanca">
+        <viz:color r="182" g="29" b="47" a="1.0" />
+        <viz:size value="15.076696830622023" />
+        <viz:position x="652.8" y="-349.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="19" />
+          <attvalue for="1" value="17" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.895" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#b61d2f" />
+        </attvalues>
+      </node>
+      <node id="ruas" label="ruas">
+        <viz:color r="129" g="67" b="51" a="1.0" />
+        <viz:size value="15.076696830622023" />
+        <viz:position x="567.3" y="-383.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="19" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="8" />
+          <attvalue for="3" value="0.579" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0013" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#814333" />
+        </attvalues>
+      </node>
+      <node id="voto" label="voto">
+        <viz:color r="156" g="48" b="49" a="1.0" />
+        <viz:size value="15.076696830622023" />
+        <viz:position x="809.8" y="-221.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="19" />
+          <attvalue for="1" value="14" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.737" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#9c3031" />
+        </attvalues>
+      </node>
+      <node id="governo" label="governo">
+        <viz:color r="172" g="36" b="48" a="1.0" />
+        <viz:size value="14.727922061357855" />
+        <viz:position x="541.4" y="-315.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="18" />
+          <attvalue for="1" value="15" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.833" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0056" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#ac2430" />
+        </attvalues>
+      </node>
+      <node id="hora" label="hora">
+        <viz:color r="172" g="36" b="48" a="1.0" />
+        <viz:size value="14.727922061357855" />
+        <viz:position x="433.9" y="-329.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="18" />
+          <attvalue for="1" value="15" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.833" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0053" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#ac2430" />
+        </attvalues>
+      </node>
+      <node id="seguranca" label="seguranca">
+        <viz:color r="153" g="50" b="50" a="1.0" />
+        <viz:size value="14.727922061357855" />
+        <viz:position x="581.0" y="-664.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="18" />
+          <attvalue for="1" value="13" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.722" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#993232" />
+        </attvalues>
+      </node>
+      <node id="trabalhador" label="trabalhador">
+        <viz:color r="191" g="23" b="47" a="1.0" />
+        <viz:size value="14.727922061357855" />
+        <viz:position x="210.2" y="-536.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="18" />
+          <attvalue for="1" value="17" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.944" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#bf172f" />
+        </attvalues>
+      </node>
+      <node id="verdade" label="verdade">
+        <viz:color r="134" g="63" b="51" a="1.0" />
+        <viz:size value="14.727922061357855" />
+        <viz:position x="419.5" y="-430.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="18" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="7" />
+          <attvalue for="3" value="0.611" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0046" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#863f33" />
+        </attvalues>
+      </node>
+      <node id="trabalhadores" label="trabalhadores">
+        <viz:color r="180" g="30" b="48" a="1.0" />
+        <viz:size value="14.36931687685298" />
+        <viz:position x="248.6" y="-560.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="17" />
+          <attvalue for="1" value="15" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.882" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#b41e30" />
+        </attvalues>
+      </node>
+      <node id="trabalho" label="trabalho">
+        <viz:color r="170" g="37" b="48" a="1.0" />
+        <viz:size value="14.36931687685298" />
+        <viz:position x="439.4" y="-703.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="17" />
+          <attvalue for="1" value="14" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.824" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#aa2530" />
+        </attvalues>
+      </node>
+      <node id="vitoria" label="vitoria">
+        <viz:color r="170" g="37" b="48" a="1.0" />
+        <viz:size value="14.36931687685298" />
+        <viz:position x="333.0" y="-413.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="17" />
+          <attvalue for="1" value="14" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.824" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#aa2530" />
+        </attvalues>
+      </node>
+      <node id="jogo" label="jogo">
+        <viz:color r="158" g="46" b="49" a="1.0" />
+        <viz:size value="14.0" />
+        <viz:position x="433.2" y="-254.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="16" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.75" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0008" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#9e2e31" />
+        </attvalues>
+      </node>
+      <node id="milhoes" label="milhoes">
+        <viz:color r="158" g="46" b="49" a="1.0" />
+        <viz:size value="14.0" />
+        <viz:position x="278.5" y="-440.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="16" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.75" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0016" />
+          <attvalue for="6" value="12" />
+          <attvalue for="7" value="#9e2e31" />
+        </attvalues>
+      </node>
+      <node id="mundo" label="mundo">
+        <viz:color r="179" g="31" b="48" a="1.0" />
+        <viz:size value="14.0" />
+        <viz:position x="608.4" y="-432.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="16" />
+          <attvalue for="1" value="14" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.875" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="5" />
+          <attvalue for="7" value="#b31f30" />
+        </attvalues>
+      </node>
+      <node id="sabe" label="sabe">
+        <viz:color r="179" g="31" b="48" a="1.0" />
+        <viz:size value="14.0" />
+        <viz:position x="346.6" y="-269.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="16" />
+          <attvalue for="1" value="14" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.875" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b31f30" />
+        </attvalues>
+      </node>
+      <node id="cnpj" label="cnpj">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="13.618950038622252" />
+        <viz:position x="362.6" y="-100.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="15" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="cuidar" label="cuidar">
+        <viz:color r="155" g="49" b="49" a="1.0" />
+        <viz:size value="13.618950038622252" />
+        <viz:position x="242.2" y="-602.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.733" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#9b3131" />
+        </attvalues>
+      </node>
+      <node id="dignidade" label="dignidade">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="13.618950038622252" />
+        <viz:position x="307.1" y="-636.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="15" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="filhos" label="filhos">
+        <viz:color r="166" g="40" b="49" a="1.0" />
+        <viz:size value="13.618950038622252" />
+        <viz:position x="130.1" y="-681.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.8" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0021" />
+          <attvalue for="6" value="13" />
+          <attvalue for="7" value="#a62831" />
+        </attvalues>
+      </node>
+      <node id="historia" label="historia">
+        <viz:color r="178" g="32" b="48" a="1.0" />
+        <viz:size value="13.618950038622252" />
+        <viz:position x="584.9" y="-465.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="13" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.867" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b22030" />
+        </attvalues>
+      </node>
+      <node id="saude" label="saude">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="13.618950038622252" />
+        <viz:position x="456.9" y="-585.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="15" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0044" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="trabalha" label="trabalha">
+        <viz:color r="178" g="32" b="48" a="1.0" />
+        <viz:size value="13.618950038622252" />
+        <viz:position x="238.3" y="-677.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="15" />
+          <attvalue for="1" value="13" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.867" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#b22030" />
+        </attvalues>
+      </node>
+      <node id="casa" label="casa">
+        <viz:color r="140" g="60" b="51" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="425.2" y="-499.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.643" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#8c3c33" />
+        </attvalues>
+      </node>
+      <node id="conquista" label="conquista">
+        <viz:color r="188" g="25" b="47" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="145.0" y="-609.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="13" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.929" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#bc192f" />
+        </attvalues>
+      </node>
+      <node id="construir" label="construir">
+        <viz:color r="140" g="60" b="51" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="568.3" y="-436.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.643" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#8c3c33" />
+        </attvalues>
+      </node>
+      <node id="descansar" label="descansar">
+        <viz:color r="188" g="25" b="47" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="107.8" y="-632.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="13" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.929" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0017" />
+          <attvalue for="6" value="18" />
+          <attvalue for="7" value="#bc192f" />
+        </attvalues>
+      </node>
+      <node id="forca" label="forca">
+        <viz:color r="176" g="33" b="48" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="618.3" y="-463.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.857" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#b02130" />
+        </attvalues>
+      </node>
+      <node id="frente" label="frente">
+        <viz:color r="164" g="42" b="49" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="551.2" y="-452.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.786" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a42a31" />
+        </attvalues>
+      </node>
+      <node id="pai" label="pai">
+        <viz:color r="116" g="77" b="52" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="438.9" y="-546.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="7" />
+          <attvalue for="3" value="0.5" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#744d34" />
+        </attvalues>
+      </node>
+      <node id="qualidade" label="qualidade">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="74.9" y="-568.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="14" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="votar" label="votar">
+        <viz:color r="176" g="33" b="48" a="1.0" />
+        <viz:size value="13.224972160321824" />
+        <viz:position x="765.9" y="-302.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="14" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.857" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b02130" />
+        </attvalues>
+      </node>
+      <node id="brasileira" label="brasileira">
+        <viz:color r="187" g="25" b="47" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="392.4" y="-693.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.923" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#bb192f" />
+        </attvalues>
+      </node>
+      <node id="compartilhe" label="compartilhe">
+        <viz:color r="174" g="35" b="48" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="702.1" y="-255.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.846" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#ae2330" />
+        </attvalues>
+      </node>
+      <node id="compromisso" label="compromisso">
+        <viz:color r="174" g="35" b="48" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="631.4" y="-407.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.846" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#ae2330" />
+        </attvalues>
+      </node>
+      <node id="educacao" label="educacao">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="383.3" y="-161.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="13" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="luta" label="luta">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="307.5" y="-358.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="13" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="merece" label="merece">
+        <viz:color r="161" g="44" b="49" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="178.5" y="-470.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="10" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.769" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#a12c31" />
+        </attvalues>
+      </node>
+      <node id="pessoas" label="pessoas">
+        <viz:color r="161" g="44" b="49" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="789.3" y="-196.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="10" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.769" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a12c31" />
+        </attvalues>
+      </node>
+      <node id="segundo" label="segundo">
+        <viz:color r="174" g="35" b="48" a="1.0" />
+        <viz:size value="12.816653826391967" />
+        <viz:position x="841.9" y="-253.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="13" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.846" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#ae2330" />
+        </attvalues>
+      </node>
+      <node id="conta" label="conta">
+        <viz:color r="144" g="57" b="50" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="470.4" y="-355.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.667" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="7" />
+          <attvalue for="7" value="#903932" />
+        </attvalues>
+      </node>
+      <node id="direito" label="direito">
+        <viz:color r="186" g="26" b="47" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="174.2" y="-560.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.917" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#ba1a2f" />
+        </attvalues>
+      </node>
+      <node id="globo" label="globo">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="484.1" y="-230.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="libertar" label="libertar">
+        <viz:color r="59" g="118" b="57" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="842.5" y="-443.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="2" />
+          <attvalue for="2" value="10" />
+          <attvalue for="3" value="0.167" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#3b7639" />
+        </attvalues>
+      </node>
+      <node id="luiz" label="luiz">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="647.1" y="-9.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="projeto" label="projeto">
+        <viz:color r="186" g="26" b="47" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="402.1" y="-568.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.917" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#ba1a2f" />
+        </attvalues>
+      </node>
+      <node id="queremos" label="queremos">
+        <viz:color r="186" g="26" b="47" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="535.8" y="-534.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.917" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0007" />
+          <attvalue for="6" value="7" />
+          <attvalue for="7" value="#ba1a2f" />
+        </attvalues>
+      </node>
+      <node id="rua" label="rua">
+        <viz:color r="130" g="67" b="51" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="600.2" y="-415.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.583" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="#824333" />
+        </attvalues>
+      </node>
+      <node id="silva" label="silva">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="12.392304845413264" />
+        <viz:position x="664.0" y="-0.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="12" />
+          <attvalue for="1" value="12" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="avancar" label="avancar">
+        <viz:color r="185" g="27" b="47" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="375.0" y="-377.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="10" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.909" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#b91b2f" />
+        </attvalues>
+      </node>
+      <node id="caminho" label="caminho">
+        <viz:color r="93" g="94" b="54" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="705.4" y="-476.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="4" />
+          <attvalue for="2" value="7" />
+          <attvalue for="3" value="0.364" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="#5d5e36" />
+        </attvalues>
+      </node>
+      <node id="carinho" label="carinho">
+        <viz:color r="93" g="94" b="54" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="671.9" y="-549.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="4" />
+          <attvalue for="2" value="7" />
+          <attvalue for="3" value="0.364" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="#5d5e36" />
+        </attvalues>
+      </node>
+      <node id="cio" label="cio">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="656.0" y="-13.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="defende" label="defende">
+        <viz:color r="185" g="27" b="47" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="427.4" y="-450.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="10" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.909" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b91b2f" />
+        </attvalues>
+      </node>
+      <node id="energia" label="energia">
+        <viz:color r="108" g="82" b="53" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="673.4" y="-525.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="5" />
+          <attvalue for="2" value="6" />
+          <attvalue for="3" value="0.455" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#6c5235" />
+        </attvalues>
+      </node>
+      <node id="geracao" label="geracao">
+        <viz:color r="185" g="27" b="47" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="364.9" y="-97.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="10" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.909" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b91b2f" />
+        </attvalues>
+      </node>
+      <node id="ina" label="ina">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="663.0" y="-19.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="11" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="maior" label="maior">
+        <viz:color r="154" g="49" b="50" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="522.4" y="-493.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.727" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#9a3132" />
+        </attvalues>
+      </node>
+      <node id="proteger" label="proteger">
+        <viz:color r="169" g="38" b="48" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="492.6" y="-452.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.818" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a92630" />
+        </attvalues>
+      </node>
+      <node id="publica" label="publica">
+        <viz:color r="154" g="49" b="50" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="586.7" y="-679.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.727" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#9a3132" />
+        </attvalues>
+      </node>
+      <node id="seguimos" label="seguimos">
+        <viz:color r="169" g="38" b="48" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="500.0" y="-313.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.818" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a92630" />
+        </attvalues>
+      </node>
+      <node id="trabalhar" label="trabalhar">
+        <viz:color r="185" g="27" b="47" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="356.9" y="-735.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="10" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.909" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b91b2f" />
+        </attvalues>
+      </node>
+      <node id="voz" label="voz">
+        <viz:color r="138" g="60" b="51" a="1.0" />
+        <viz:size value="11.9498743710662" />
+        <viz:position x="523.8" y="-575.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="11" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.636" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#8a3c33" />
+        </attvalues>
+      </node>
+      <node id="alfredo" label="alfredo">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="625.7" y="-298.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="0" />
+          <attvalue for="2" value="10" />
+          <attvalue for="3" value="0.0" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="#1f8a3b" />
+        </attvalues>
+      </node>
+      <node id="apoio" label="apoio">
+        <viz:color r="132" g="65" b="51" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="743.7" y="-421.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.6" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="5" />
+          <attvalue for="7" value="#844133" />
+        </attvalues>
+      </node>
+      <node id="crime" label="crime">
+        <viz:color r="166" g="40" b="49" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="567.5" y="-684.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.8" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a62831" />
+        </attvalues>
+      </node>
+      <node id="dar" label="dar">
+        <viz:color r="183" g="28" b="47" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="474.7" y="-715.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.9" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="#b71c2f" />
+        </attvalues>
+      </node>
+      <node id="defender" label="defender">
+        <viz:color r="183" g="28" b="47" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="338.1" y="-186.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.9" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b71c2f" />
+        </attvalues>
+      </node>
+      <node id="diferenca" label="diferenca">
+        <viz:color r="183" g="28" b="47" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="343.2" y="-56.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.9" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b71c2f" />
+        </attvalues>
+      </node>
+      <node id="paulista" label="paulista">
+        <viz:color r="132" g="65" b="51" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="608.0" y="-382.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.6" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="5" />
+          <attvalue for="7" value="#844133" />
+        </attvalues>
+      </node>
+      <node id="recado" label="recado">
+        <viz:color r="166" g="40" b="49" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="568.2" y="-413.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.8" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="#a62831" />
+        </attvalues>
+      </node>
+      <node id="reducao" label="reducao">
+        <viz:color r="166" g="40" b="49" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="64.6" y="-651.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.8" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a62831" />
+        </attvalues>
+      </node>
+      <node id="rio" label="rio">
+        <viz:color r="132" g="65" b="51" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="551.5" y="-371.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.6" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="#844133" />
+        </attvalues>
+      </node>
+      <node id="vem" label="vem">
+        <viz:color r="149" g="53" b="50" a="1.0" />
+        <viz:size value="11.486832980505138" />
+        <viz:position x="584.6" y="-386.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="10" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.7" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="3" />
+          <attvalue for="7" value="#953532" />
+        </attvalues>
+      </node>
+      <node id="acabar" label="acabar">
+        <viz:color r="162" g="43" b="49" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="413.8" y="-515.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.778" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="#a22b31" />
+        </attvalues>
+      </node>
+      <node id="avancando" label="avancando">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="578.0" y="-358.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="certeza" label="certeza">
+        <viz:color r="87" g="97" b="55" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="777.1" y="-547.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="3" />
+          <attvalue for="2" value="6" />
+          <attvalue for="3" value="0.333" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#576137" />
+        </attvalues>
+      </node>
+      <node id="chegou" label="chegou">
+        <viz:color r="162" g="43" b="49" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="790.6" y="-366.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.778" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="2" />
+          <attvalue for="7" value="#a22b31" />
+        </attvalues>
+      </node>
+      <node id="coisa" label="coisa">
+        <viz:color r="162" g="43" b="49" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="606.8" y="-671.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.778" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a22b31" />
+        </attvalues>
+      </node>
+      <node id="descanso" label="descanso">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="65.9" y="-529.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="eleicao" label="eleicao">
+        <viz:color r="125" g="70" b="52" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="932.1" y="-416.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="5" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.556" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="3" />
+          <attvalue for="7" value="#7d4634" />
+        </attvalues>
+      </node>
+      <node id="liberdade" label="liberdade">
+        <viz:color r="162" g="43" b="49" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="882.7" y="-145.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.778" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#a22b31" />
+        </attvalues>
+      </node>
+      <node id="lutar" label="lutar">
+        <viz:color r="181" g="30" b="47" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="570.8" y="-569.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.889" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0007" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#b51e2f" />
+        </attvalues>
+      </node>
+      <node id="menos" label="menos">
+        <viz:color r="144" g="57" b="50" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="813.9" y="-470.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.667" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="#903932" />
+        </attvalues>
+      </node>
+      <node id="mil" label="mil">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="444.1" y="-430.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="3" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="onda" label="onda">
+        <viz:color r="106" g="84" b="53" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="607.1" y="-274.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="4" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.444" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#6a5435" />
+        </attvalues>
+      </node>
+      <node id="qualquer" label="qualquer">
+        <viz:color r="162" g="43" b="49" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="623.5" y="-525.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.778" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="5" />
+          <attvalue for="7" value="#a22b31" />
+        </attvalues>
+      </node>
+      <node id="salario" label="salario">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="75.8" y="-668.5" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="9" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="vidas" label="vidas">
+        <viz:color r="181" g="30" b="47" a="1.0" />
+        <viz:size value="11.0" />
+        <viz:position x="384.8" y="-227.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="9" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.889" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#b51e2f" />
+        </attvalues>
+      </node>
+      <node id="#eleicoes" label="#eleicoes">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="352.3" y="-95.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="2" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="#segundoturno" label="#segundoturno">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="844.2" y="-372.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="0" />
+          <attvalue for="2" value="8" />
+          <attvalue for="3" value="0.0" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#1f8a3b" />
+        </attvalues>
+      </node>
+      <node id="acabou" label="acabou">
+        <viz:color r="116" g="77" b="52" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="235.2" y="-364.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="4" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="0.5" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0005" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#744d34" />
+        </attvalues>
+      </node>
+      <node id="alckmin" label="alckmin">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="856.4" y="-124.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="7" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="amigos" label="amigos">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="86.4" y="-475.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0008" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="aproveitar" label="aproveitar">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="69.6" y="-601.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="11" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="brasileiras" label="brasileiras">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="164.0" y="-658.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.001" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="cidade" label="cidade">
+        <viz:color r="158" g="46" b="49" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="769.8" y="-69.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.75" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="2" />
+          <attvalue for="7" value="#9e2e31" />
+        </attvalues>
+      </node>
+      <node id="cortar" label="cortar">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="397.7" y="-493.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="3" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="dentro" label="dentro">
+        <viz:color r="137" g="62" b="51" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="597.2" y="-490.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="5" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.625" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="3" />
+          <attvalue for="7" value="#893e33" />
+        </attvalues>
+      </node>
+      <node id="deus" label="deus">
+        <viz:color r="73" g="108" b="56" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="811.3" y="-514.6" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="2" />
+          <attvalue for="2" value="6" />
+          <attvalue for="3" value="0.25" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0004" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#496c38" />
+        </attvalues>
+      </node>
+      <node id="estar" label="estar">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="144.3" y="-514.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0006" />
+          <attvalue for="6" value="10" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="fala" label="fala">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="462.0" y="-512.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="governador" label="governador">
+        <viz:color r="137" g="62" b="51" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="665.1" y="-437.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="5" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0.625" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0003" />
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="#893e33" />
+        </attvalues>
+      </node>
+      <node id="importante" label="importante">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="783.0" y="-143.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="4" />
+          <attvalue for="5" value="0.0002" />
+          <attvalue for="6" value="8" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="merecem" label="merecem">
+        <viz:color r="158" g="46" b="49" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="458.8" y="-387.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.75" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0001" />
+          <attvalue for="6" value="5" />
+          <attvalue for="7" value="#9e2e31" />
+        </attvalues>
+      </node>
+      <node id="mudar" label="mudar">
+        <viz:color r="158" g="46" b="49" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="572.0" y="-93.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="0.75" />
+          <attvalue for="4" value="3" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="3" />
+          <attvalue for="7" value="#9e2e31" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="brasil" target="vote" id="0" weight="62" />
+      <edge source="brasil" target="povo" id="1" weight="48" />
+      <edge source="brasil" target="coligacao" id="2" weight="34" />
+      <edge source="brasil" target="federacao" id="3" weight="34" />
+      <edge source="brasil" target="pcdob" id="4" weight="34" />
+      <edge source="brasil" target="pdt" id="5" weight="34" />
+      <edge source="brasil" target="psb" id="6" weight="34" />
+      <edge source="brasil" target="psol" id="7" weight="34" />
+      <edge source="brasil" target="presidente" id="8" weight="30" />
+      <edge source="brasil" target="pais" id="9" weight="31" />
+      <edge source="brasil" target="flavio" id="10" weight="18" />
+      <edge source="brasil" target="bolsonaro" id="11" weight="22" />
+      <edge source="brasil" target="#vote22" id="12" weight="25" />
+      <edge source="brasil" target="vida" id="13" weight="20" />
+      <edge source="brasil" target="brasileiro" id="14" weight="22" />
+      <edge source="brasil" target="familia" id="15" weight="23" />
+      <edge source="brasil" target="futuro" id="16" weight="30" />
+      <edge source="brasil" target="vencer" id="17" weight="30" />
+      <edge source="brasil" target="rede" id="18" weight="34" />
+      <edge source="brasil" target="6x1" id="19" weight="14" />
+      <edge source="brasil" target="partido" id="20" weight="14" />
+      <edge source="brasil" target="liberal" id="21" weight="14" />
+      <edge source="brasil" target="juntos" id="22" weight="20" />
+      <edge source="brasil" target="escala" id="23" weight="13" />
+      <edge source="brasil" target="oportunidades" id="24" weight="23" />
+      <edge source="brasil" target="#evangelicoscomlula" id="25" weight="13" />
+      <edge source="brasil" target="garantir" id="26" weight="15" />
+      <edge source="brasil" target="melhor" id="27" weight="16" />
+      <edge source="brasil" target="turno" id="28" weight="18" />
+      <edge source="brasil" target="#cristao" id="29" weight="11" />
+      <edge source="brasil" target="#forapt" id="30" weight="14" />
+      <edge source="brasil" target="#lulapresidente" id="31" weight="13" />
+      <edge source="brasil" target="mudanca" id="32" weight="15" />
+      <edge source="brasil" target="viver" id="33" weight="13" />
+      <edge source="brasil" target="#flaviopresidente" id="34" weight="14" />
+      <edge source="brasil" target="familias" id="35" weight="15" />
+      <edge source="brasil" target="respeito" id="36" weight="13" />
+      <edge source="brasil" target="#lula2026" id="37" weight="11" />
+      <edge source="brasil" target="democracia" id="38" weight="14" />
+      <edge source="brasil" target="direitos" id="39" weight="13" />
+      <edge source="brasil" target="lula" id="40" weight="12" />
+      <edge source="brasil" target="primeiro" id="41" weight="11" />
+      <edge source="brasil" target="virar" id="42" weight="12" />
+      <edge source="brasil" target="brasileiros" id="43" weight="13" />
+      <edge source="brasil" target="esperanca" id="44" weight="16" />
+      <edge source="brasil" target="ruas" id="45" weight="16" />
+      <edge source="brasil" target="voto" id="46" weight="11" />
+      <edge source="brasil" target="governo" id="47" weight="7" />
+      <edge source="brasil" target="hora" id="48" weight="11" />
+      <edge source="brasil" target="seguranca" id="49" weight="9" />
+      <edge source="brasil" target="trabalhador" id="50" weight="6" />
+      <edge source="brasil" target="verdade" id="51" weight="10" />
+      <edge source="brasil" target="trabalhadores" id="52" weight="12" />
+      <edge source="brasil" target="trabalho" id="53" weight="8" />
+      <edge source="brasil" target="vitoria" id="54" weight="11" />
+      <edge source="brasil" target="jogo" id="55" weight="11" />
+      <edge source="brasil" target="milhoes" id="56" weight="12" />
+      <edge source="brasil" target="mundo" id="57" weight="8" />
+      <edge source="brasil" target="sabe" id="58" weight="8" />
+      <edge source="brasil" target="cnpj" id="59" weight="15" />
+      <edge source="brasil" target="cuidar" id="60" weight="11" />
+      <edge source="brasil" target="dignidade" id="61" weight="12" />
+      <edge source="brasil" target="filhos" id="62" weight="6" />
+      <edge source="brasil" target="historia" id="63" weight="10" />
+      <edge source="brasil" target="saude" id="64" weight="9" />
+      <edge source="brasil" target="trabalha" id="65" weight="7" />
+      <edge source="brasil" target="casa" id="66" weight="8" />
+      <edge source="brasil" target="conquista" id="67" weight="7" />
+      <edge source="brasil" target="construir" id="68" weight="13" />
+      <edge source="brasil" target="forca" id="69" weight="11" />
+      <edge source="brasil" target="frente" id="70" weight="9" />
+      <edge source="brasil" target="pai" id="71" weight="9" />
+      <edge source="brasil" target="qualidade" id="72" weight="6" />
+      <edge source="brasil" target="votar" id="73" weight="9" />
+      <edge source="brasil" target="brasileira" id="74" weight="7" />
+      <edge source="brasil" target="compartilhe" id="75" weight="5" />
+      <edge source="brasil" target="compromisso" id="76" weight="11" />
+      <edge source="brasil" target="educacao" id="77" weight="10" />
+      <edge source="brasil" target="luta" id="78" weight="9" />
+      <edge source="brasil" target="merece" id="79" weight="8" />
+      <edge source="brasil" target="pessoas" id="80" weight="7" />
+      <edge source="brasil" target="segundo" id="81" weight="11" />
+      <edge source="brasil" target="conta" id="82" weight="5" />
+      <edge source="brasil" target="direito" id="83" weight="4" />
+      <edge source="brasil" target="globo" id="84" weight="6" />
+      <edge source="brasil" target="libertar" id="85" weight="9" />
+      <edge source="brasil" target="luiz" id="86" weight="3" />
+      <edge source="brasil" target="projeto" id="87" weight="8" />
+      <edge source="brasil" target="queremos" id="88" weight="8" />
+      <edge source="brasil" target="rua" id="89" weight="10" />
+      <edge source="brasil" target="silva" id="90" weight="3" />
+      <edge source="brasil" target="avancar" id="91" weight="10" />
+      <edge source="brasil" target="caminho" id="92" weight="8" />
+      <edge source="brasil" target="carinho" id="93" weight="4" />
+      <edge source="brasil" target="cio" id="94" weight="3" />
+      <edge source="brasil" target="defende" id="95" weight="5" />
+      <edge source="brasil" target="energia" id="96" weight="7" />
+      <edge source="brasil" target="geracao" id="97" weight="11" />
+      <edge source="brasil" target="ina" id="98" weight="3" />
+      <edge source="brasil" target="maior" id="99" weight="6" />
+      <edge source="brasil" target="proteger" id="100" weight="8" />
+      <edge source="brasil" target="publica" id="101" weight="7" />
+      <edge source="brasil" target="seguimos" id="102" weight="9" />
+      <edge source="brasil" target="trabalhar" id="103" weight="4" />
+      <edge source="brasil" target="voz" id="104" weight="7" />
+      <edge source="brasil" target="alfredo" id="105" weight="6" />
+      <edge source="brasil" target="apoio" id="106" weight="4" />
+      <edge source="brasil" target="crime" id="107" weight="5" />
+      <edge source="brasil" target="dar" id="108" weight="4" />
+      <edge source="brasil" target="defender" id="109" weight="8" />
+      <edge source="brasil" target="diferenca" id="110" weight="6" />
+      <edge source="brasil" target="paulista" id="111" weight="6" />
+      <edge source="brasil" target="recado" id="112" weight="8" />
+      <edge source="brasil" target="rio" id="113" weight="9" />
+      <edge source="brasil" target="vem" id="114" weight="3" />
+      <edge source="brasil" target="acabar" id="115" weight="4" />
+      <edge source="brasil" target="avancando" id="116" weight="9" />
+      <edge source="brasil" target="certeza" id="117" weight="6" />
+      <edge source="brasil" target="coisa" id="118" weight="6" />
+      <edge source="brasil" target="descanso" id="119" weight="5" />
+      <edge source="brasil" target="eleicao" id="120" weight="5" />
+      <edge source="brasil" target="lutar" id="121" weight="5" />
+      <edge source="brasil" target="menos" id="122" weight="3" />
+      <edge source="brasil" target="onda" id="123" weight="4" />
+      <edge source="brasil" target="qualquer" id="124" weight="4" />
+      <edge source="brasil" target="vidas" id="125" weight="6" />
+      <edge source="brasil" target="#eleicoes" id="126" weight="8" />
+      <edge source="brasil" target="#segundoturno" id="127" weight="6" />
+      <edge source="brasil" target="acabou" id="128" weight="4" />
+      <edge source="brasil" target="alckmin" id="129" weight="4" />
+      <edge source="brasil" target="amigos" id="130" weight="4" />
+      <edge source="brasil" target="brasileiras" id="131" weight="3" />
+      <edge source="brasil" target="cidade" id="132" weight="3" />
+      <edge source="brasil" target="cortar" id="133" weight="4" />
+      <edge source="brasil" target="dentro" id="134" weight="6" />
+      <edge source="brasil" target="deus" id="135" weight="4" />
+      <edge source="brasil" target="estar" id="136" weight="5" />
+      <edge source="brasil" target="fala" id="137" weight="4" />
+      <edge source="brasil" target="governador" id="138" weight="6" />
+      <edge source="brasil" target="importante" id="139" weight="5" />
+      <edge source="brasil" target="merecem" id="140" weight="5" />
+      <edge source="brasil" target="mudar" id="141" weight="5" />
+      <edge source="vote" target="#vote22" id="142" weight="33" />
+      <edge source="vote" target="vencer" id="143" weight="22" />
+      <edge source="vote" target="#flaviopresidente" id="144" weight="21" />
+      <edge source="vote" target="presidente" id="145" weight="21" />
+      <edge source="vote" target="#forapt" id="146" weight="20" />
+      <edge source="vote" target="liberal" id="147" weight="15" />
+      <edge source="vote" target="lula" id="148" weight="15" />
+      <edge source="vote" target="povo" id="149" weight="14" />
+      <edge source="vote" target="pais" id="150" weight="15" />
+      <edge source="vote" target="partido" id="151" weight="15" />
+      <edge source="vote" target="#evangelicoscomlula" id="152" weight="14" />
+      <edge source="vote" target="turno" id="153" weight="13" />
+      <edge source="vote" target="#cristao" id="154" weight="13" />
+      <edge source="vote" target="#lulapresidente" id="155" weight="14" />
+      <edge source="vote" target="mudanca" id="156" weight="7" />
+      <edge source="vote" target="familias" id="157" weight="5" />
+      <edge source="vote" target="respeito" id="158" weight="6" />
+      <edge source="vote" target="#lula2026" id="159" weight="9" />
+      <edge source="vote" target="democracia" id="160" weight="5" />
+      <edge source="vote" target="primeiro" id="161" weight="11" />
+      <edge source="vote" target="esperanca" id="162" weight="5" />
+      <edge source="vote" target="voto" id="163" weight="7" />
+      <edge source="vote" target="governo" id="164" weight="5" />
+      <edge source="vote" target="trabalho" id="165" weight="7" />
+      <edge source="vote" target="jogo" id="166" weight="5" />
+      <edge source="vote" target="milhoes" id="167" weight="6" />
+      <edge source="vote" target="mundo" id="168" weight="3" />
+      <edge source="vote" target="historia" id="169" weight="4" />
+      <edge source="vote" target="casa" id="170" weight="4" />
+      <edge source="vote" target="construir" id="171" weight="6" />
+      <edge source="vote" target="frente" id="172" weight="5" />
+      <edge source="vote" target="votar" id="173" weight="4" />
+      <edge source="vote" target="compromisso" id="174" weight="4" />
+      <edge source="vote" target="pessoas" id="175" weight="5" />
+      <edge source="vote" target="libertar" id="176" weight="8" />
+      <edge source="vote" target="caminho" id="177" weight="3" />
+      <edge source="vote" target="defende" id="178" weight="3" />
+      <edge source="vote" target="maior" id="179" weight="3" />
+      <edge source="vote" target="trabalhar" id="180" weight="4" />
+      <edge source="vote" target="apoio" id="181" weight="4" />
+      <edge source="vote" target="paulista" id="182" weight="3" />
+      <edge source="vote" target="certeza" id="183" weight="7" />
+      <edge source="vote" target="chegou" id="184" weight="3" />
+      <edge source="vote" target="eleicao" id="185" weight="5" />
+      <edge source="vote" target="liberdade" id="186" weight="5" />
+      <edge source="vote" target="menos" id="187" weight="4" />
+      <edge source="vote" target="qualquer" id="188" weight="3" />
+      <edge source="vote" target="#segundoturno" id="189" weight="8" />
+      <edge source="vote" target="acabou" id="190" weight="4" />
+      <edge source="vote" target="alckmin" id="191" weight="4" />
+      <edge source="vote" target="dentro" id="192" weight="4" />
+      <edge source="vote" target="deus" id="193" weight="5" />
+      <edge source="povo" target="brasileiro" id="194" weight="34" />
+      <edge source="povo" target="presidente" id="195" weight="19" />
+      <edge source="povo" target="6x1" id="196" weight="14" />
+      <edge source="povo" target="familia" id="197" weight="14" />
+      <edge source="povo" target="bolsonaro" id="198" weight="13" />
+      <edge source="povo" target="flavio" id="199" weight="13" />
+      <edge source="povo" target="pais" id="200" weight="11" />
+      <edge source="povo" target="vida" id="201" weight="13" />
+      <edge source="povo" target="juntos" id="202" weight="8" />
+      <edge source="povo" target="escala" id="203" weight="12" />
+      <edge source="povo" target="oportunidades" id="204" weight="11" />
+      <edge source="povo" target="#evangelicoscomlula" id="205" weight="7" />
+      <edge source="povo" target="garantir" id="206" weight="11" />
+      <edge source="povo" target="#cristao" id="207" weight="7" />
+      <edge source="povo" target="#lulapresidente" id="208" weight="6" />
+      <edge source="povo" target="viver" id="209" weight="13" />
+      <edge source="povo" target="familias" id="210" weight="8" />
+      <edge source="povo" target="respeito" id="211" weight="6" />
+      <edge source="povo" target="democracia" id="212" weight="5" />
+      <edge source="povo" target="direitos" id="213" weight="9" />
+      <edge source="povo" target="lula" id="214" weight="4" />
+      <edge source="povo" target="brasileiros" id="215" weight="7" />
+      <edge source="povo" target="esperanca" id="216" weight="7" />
+      <edge source="povo" target="ruas" id="217" weight="5" />
+      <edge source="povo" target="governo" id="218" weight="6" />
+      <edge source="povo" target="hora" id="219" weight="5" />
+      <edge source="povo" target="seguranca" id="220" weight="6" />
+      <edge source="povo" target="trabalhador" id="221" weight="7" />
+      <edge source="povo" target="verdade" id="222" weight="4" />
+      <edge source="povo" target="trabalhadores" id="223" weight="8" />
+      <edge source="povo" target="trabalho" id="224" weight="10" />
+      <edge source="povo" target="vitoria" id="225" weight="8" />
+      <edge source="povo" target="milhoes" id="226" weight="7" />
+      <edge source="povo" target="mundo" id="227" weight="5" />
+      <edge source="povo" target="cuidar" id="228" weight="6" />
+      <edge source="povo" target="dignidade" id="229" weight="8" />
+      <edge source="povo" target="filhos" id="230" weight="6" />
+      <edge source="povo" target="historia" id="231" weight="6" />
+      <edge source="povo" target="saude" id="232" weight="9" />
+      <edge source="povo" target="trabalha" id="233" weight="7" />
+      <edge source="povo" target="conquista" id="234" weight="8" />
+      <edge source="povo" target="construir" id="235" weight="4" />
+      <edge source="povo" target="descansar" id="236" weight="10" />
+      <edge source="povo" target="forca" id="237" weight="7" />
+      <edge source="povo" target="frente" id="238" weight="6" />
+      <edge source="povo" target="brasileira" id="239" weight="7" />
+      <edge source="povo" target="compartilhe" id="240" weight="6" />
+      <edge source="povo" target="compromisso" id="241" weight="6" />
+      <edge source="povo" target="luta" id="242" weight="6" />
+      <edge source="povo" target="conta" id="243" weight="3" />
+      <edge source="povo" target="direito" id="244" weight="5" />
+      <edge source="povo" target="globo" id="245" weight="6" />
+      <edge source="povo" target="projeto" id="246" weight="7" />
+      <edge source="povo" target="queremos" id="247" weight="6" />
+      <edge source="povo" target="avancar" id="248" weight="4" />
+      <edge source="povo" target="carinho" id="249" weight="6" />
+      <edge source="povo" target="defende" id="250" weight="3" />
+      <edge source="povo" target="energia" id="251" weight="3" />
+      <edge source="povo" target="maior" id="252" weight="3" />
+      <edge source="povo" target="proteger" id="253" weight="8" />
+      <edge source="povo" target="publica" id="254" weight="6" />
+      <edge source="povo" target="seguimos" id="255" weight="4" />
+      <edge source="povo" target="trabalhar" id="256" weight="4" />
+      <edge source="povo" target="voz" id="257" weight="5" />
+      <edge source="povo" target="crime" id="258" weight="4" />
+      <edge source="povo" target="dar" id="259" weight="3" />
+      <edge source="povo" target="paulista" id="260" weight="3" />
+      <edge source="povo" target="recado" id="261" weight="4" />
+      <edge source="povo" target="reducao" id="262" weight="6" />
+      <edge source="povo" target="acabar" id="263" weight="4" />
+      <edge source="povo" target="avancando" id="264" weight="3" />
+      <edge source="povo" target="certeza" id="265" weight="3" />
+      <edge source="povo" target="coisa" id="266" weight="6" />
+      <edge source="povo" target="lutar" id="267" weight="4" />
+      <edge source="povo" target="salario" id="268" weight="7" />
+      <edge source="povo" target="amigos" id="269" weight="4" />
+      <edge source="povo" target="brasileiras" id="270" weight="5" />
+      <edge source="povo" target="estar" id="271" weight="5" />
+      <edge source="povo" target="fala" id="272" weight="3" />
+      <edge source="povo" target="governador" id="273" weight="4" />
+      <edge source="povo" target="importante" id="274" weight="4" />
+      <edge source="presidente" target="#evangelicoscomlula" id="275" weight="22" />
+      <edge source="presidente" target="#lulapresidente" id="276" weight="22" />
+      <edge source="presidente" target="#cristao" id="277" weight="20" />
+      <edge source="presidente" target="#lula2026" id="278" weight="16" />
+      <edge source="presidente" target="pais" id="279" weight="11" />
+      <edge source="presidente" target="brasileiro" id="280" weight="8" />
+      <edge source="presidente" target="oportunidades" id="281" weight="9" />
+      <edge source="presidente" target="respeito" id="282" weight="6" />
+      <edge source="presidente" target="democracia" id="283" weight="5" />
+      <edge source="presidente" target="primeiro" id="284" weight="5" />
+      <edge source="presidente" target="esperanca" id="285" weight="5" />
+      <edge source="presidente" target="voto" id="286" weight="5" />
+      <edge source="presidente" target="seguranca" id="287" weight="6" />
+      <edge source="presidente" target="verdade" id="288" weight="5" />
+      <edge source="presidente" target="trabalho" id="289" weight="5" />
+      <edge source="presidente" target="saude" id="290" weight="4" />
+      <edge source="presidente" target="compartilhe" id="291" weight="6" />
+      <edge source="presidente" target="pessoas" id="292" weight="5" />
+      <edge source="presidente" target="segundo" id="293" weight="5" />
+      <edge source="presidente" target="globo" id="294" weight="6" />
+      <edge source="presidente" target="luiz" id="295" weight="7" />
+      <edge source="presidente" target="projeto" id="296" weight="3" />
+      <edge source="presidente" target="silva" id="297" weight="7" />
+      <edge source="presidente" target="cio" id="298" weight="7" />
+      <edge source="presidente" target="defende" id="299" weight="3" />
+      <edge source="presidente" target="ina" id="300" weight="7" />
+      <edge source="presidente" target="maior" id="301" weight="3" />
+      <edge source="presidente" target="publica" id="302" weight="3" />
+      <edge source="presidente" target="voz" id="303" weight="3" />
+      <edge source="presidente" target="paulista" id="304" weight="3" />
+      <edge source="presidente" target="recado" id="305" weight="3" />
+      <edge source="presidente" target="avancando" id="306" weight="3" />
+      <edge source="presidente" target="coisa" id="307" weight="3" />
+      <edge source="presidente" target="descanso" id="308" weight="4" />
+      <edge source="presidente" target="liberdade" id="309" weight="5" />
+      <edge source="presidente" target="onda" id="310" weight="4" />
+      <edge source="presidente" target="qualquer" id="311" weight="3" />
+      <edge source="presidente" target="alckmin" id="312" weight="7" />
+      <edge source="presidente" target="cidade" id="313" weight="3" />
+      <edge source="presidente" target="fala" id="314" weight="3" />
+      <edge source="presidente" target="governador" id="315" weight="3" />
+      <edge source="presidente" target="importante" id="316" weight="4" />
+      <edge source="presidente" target="mudar" id="317" weight="3" />
+      <edge source="pais" target="futuro" id="318" weight="10" />
+      <edge source="pais" target="democracia" id="319" weight="8" />
+      <edge source="pais" target="#vote22" id="320" weight="7" />
+      <edge source="pais" target="brasileiro" id="321" weight="7" />
+      <edge source="pais" target="#lula2026" id="322" weight="6" />
+      <edge source="pais" target="esperanca" id="323" weight="5" />
+      <edge source="pais" target="sabe" id="324" weight="4" />
+      <edge source="pais" target="historia" id="325" weight="7" />
+      <edge source="pais" target="construir" id="326" weight="5" />
+      <edge source="pais" target="forca" id="327" weight="4" />
+      <edge source="pais" target="frente" id="328" weight="4" />
+      <edge source="pais" target="votar" id="329" weight="5" />
+      <edge source="pais" target="compromisso" id="330" weight="4" />
+      <edge source="pais" target="libertar" id="331" weight="4" />
+      <edge source="pais" target="queremos" id="332" weight="5" />
+      <edge source="pais" target="caminho" id="333" weight="4" />
+      <edge source="pais" target="apoio" id="334" weight="4" />
+      <edge source="pais" target="recado" id="335" weight="3" />
+      <edge source="pais" target="#segundoturno" id="336" weight="3" />
+      <edge source="pais" target="deus" id="337" weight="4" />
+      <edge source="pais" target="governador" id="338" weight="3" />
+      <edge source="pais" target="merecem" id="339" weight="3" />
+      <edge source="flavio" target="bolsonaro" id="340" weight="38" />
+      <edge source="flavio" target="vida" id="341" weight="11" />
+      <edge source="flavio" target="direitos" id="342" weight="9" />
+      <edge source="flavio" target="brasileiro" id="343" weight="7" />
+      <edge source="flavio" target="cortar" id="344" weight="7" />
+      <edge source="flavio" target="trabalhador" id="345" weight="7" />
+      <edge source="flavio" target="governo" id="346" weight="3" />
+      <edge source="flavio" target="casa" id="347" weight="5" />
+      <edge source="flavio" target="pai" id="348" weight="4" />
+      <edge source="flavio" target="conta" id="349" weight="3" />
+      <edge source="flavio" target="projeto" id="350" weight="4" />
+      <edge source="flavio" target="defende" id="351" weight="5" />
+      <edge source="flavio" target="acabar" id="352" weight="5" />
+      <edge source="flavio" target="fala" id="353" weight="3" />
+      <edge source="bolsonaro" target="vida" id="354" weight="11" />
+      <edge source="bolsonaro" target="brasileiro" id="355" weight="8" />
+      <edge source="bolsonaro" target="#evangelicoscomlula" id="356" weight="6" />
+      <edge source="bolsonaro" target="brasileiros" id="357" weight="6" />
+      <edge source="bolsonaro" target="coligacao" id="358" weight="6" />
+      <edge source="bolsonaro" target="respeito" id="359" weight="5" />
+      <edge source="bolsonaro" target="direitos" id="360" weight="6" />
+      <edge source="bolsonaro" target="governo" id="361" weight="5" />
+      <edge source="bolsonaro" target="trabalhador" id="362" weight="6" />
+      <edge source="bolsonaro" target="verdade" id="363" weight="4" />
+      <edge source="bolsonaro" target="saude" id="364" weight="5" />
+      <edge source="bolsonaro" target="casa" id="365" weight="4" />
+      <edge source="bolsonaro" target="pai" id="366" weight="4" />
+      <edge source="bolsonaro" target="projeto" id="367" weight="4" />
+      <edge source="bolsonaro" target="queremos" id="368" weight="3" />
+      <edge source="bolsonaro" target="defende" id="369" weight="6" />
+      <edge source="bolsonaro" target="defender" id="370" weight="4" />
+      <edge source="bolsonaro" target="acabar" id="371" weight="4" />
+      <edge source="bolsonaro" target="cortar" id="372" weight="6" />
+      <edge source="bolsonaro" target="fala" id="373" weight="5" />
+      <edge source="#vote22" target="#forapt" id="374" weight="14" />
+      <edge source="#vote22" target="liberal" id="375" weight="11" />
+      <edge source="#vote22" target="partido" id="376" weight="11" />
+      <edge source="#vote22" target="lula" id="377" weight="8" />
+      <edge source="#vote22" target="vencer" id="378" weight="8" />
+      <edge source="#vote22" target="turno" id="379" weight="5" />
+      <edge source="#vote22" target="#flaviopresidente" id="380" weight="6" />
+      <edge source="#vote22" target="casa" id="381" weight="3" />
+      <edge source="#vote22" target="libertar" id="382" weight="6" />
+      <edge source="#vote22" target="vem" id="383" weight="3" />
+      <edge source="#vote22" target="certeza" id="384" weight="3" />
+      <edge source="#vote22" target="menos" id="385" weight="3" />
+      <edge source="#vote22" target="governador" id="386" weight="3" />
+      <edge source="vida" target="familia" id="387" weight="19" />
+      <edge source="vida" target="6x1" id="388" weight="13" />
+      <edge source="vida" target="escala" id="389" weight="12" />
+      <edge source="vida" target="garantir" id="390" weight="12" />
+      <edge source="vida" target="qualidade" id="391" weight="12" />
+      <edge source="vida" target="brasileiro" id="392" weight="11" />
+      <edge source="vida" target="viver" id="393" weight="11" />
+      <edge source="vida" target="familias" id="394" weight="5" />
+      <edge source="vida" target="direitos" id="395" weight="10" />
+      <edge source="vida" target="trabalhador" id="396" weight="7" />
+      <edge source="vida" target="verdade" id="397" weight="4" />
+      <edge source="vida" target="sabe" id="398" weight="4" />
+      <edge source="vida" target="cuidar" id="399" weight="5" />
+      <edge source="vida" target="dignidade" id="400" weight="7" />
+      <edge source="vida" target="filhos" id="401" weight="7" />
+      <edge source="vida" target="saude" id="402" weight="4" />
+      <edge source="vida" target="trabalha" id="403" weight="10" />
+      <edge source="vida" target="casa" id="404" weight="5" />
+      <edge source="vida" target="brasileira" id="405" weight="4" />
+      <edge source="vida" target="merece" id="406" weight="7" />
+      <edge source="vida" target="avancar" id="407" weight="4" />
+      <edge source="vida" target="maior" id="408" weight="3" />
+      <edge source="vida" target="reducao" id="409" weight="4" />
+      <edge source="vida" target="certeza" id="410" weight="3" />
+      <edge source="vida" target="descanso" id="411" weight="7" />
+      <edge source="vida" target="liberdade" id="412" weight="3" />
+      <edge source="vida" target="menos" id="413" weight="3" />
+      <edge source="vida" target="salario" id="414" weight="4" />
+      <edge source="vida" target="amigos" id="415" weight="3" />
+      <edge source="vida" target="aproveitar" id="416" weight="8" />
+      <edge source="brasileiro" target="viver" id="417" weight="10" />
+      <edge source="brasileiro" target="6x1" id="418" weight="9" />
+      <edge source="brasileiro" target="oportunidades" id="419" weight="8" />
+      <edge source="brasileiro" target="familias" id="420" weight="4" />
+      <edge source="brasileiro" target="direitos" id="421" weight="6" />
+      <edge source="brasileiro" target="ruas" id="422" weight="4" />
+      <edge source="brasileiro" target="trabalhadores" id="423" weight="5" />
+      <edge source="brasileiro" target="trabalho" id="424" weight="6" />
+      <edge source="brasileiro" target="saude" id="425" weight="5" />
+      <edge source="brasileiro" target="trabalha" id="426" weight="4" />
+      <edge source="brasileiro" target="conquista" id="427" weight="7" />
+      <edge source="brasileiro" target="descansar" id="428" weight="7" />
+      <edge source="brasileiro" target="frente" id="429" weight="3" />
+      <edge source="brasileiro" target="pai" id="430" weight="3" />
+      <edge source="brasileiro" target="qualidade" id="431" weight="5" />
+      <edge source="brasileiro" target="brasileira" id="432" weight="4" />
+      <edge source="brasileiro" target="compartilhe" id="433" weight="4" />
+      <edge source="brasileiro" target="direito" id="434" weight="5" />
+      <edge source="brasileiro" target="globo" id="435" weight="4" />
+      <edge source="brasileiro" target="projeto" id="436" weight="3" />
+      <edge source="brasileiro" target="queremos" id="437" weight="3" />
+      <edge source="brasileiro" target="trabalhar" id="438" weight="4" />
+      <edge source="brasileiro" target="voz" id="439" weight="3" />
+      <edge source="brasileiro" target="dar" id="440" weight="4" />
+      <edge source="brasileiro" target="reducao" id="441" weight="5" />
+      <edge source="brasileiro" target="salario" id="442" weight="5" />
+      <edge source="brasileiro" target="fala" id="443" weight="3" />
+      <edge source="familia" target="6x1" id="444" weight="16" />
+      <edge source="familia" target="escala" id="445" weight="15" />
+      <edge source="familia" target="viver" id="446" weight="12" />
+      <edge source="familia" target="descansar" id="447" weight="11" />
+      <edge source="familia" target="descanso" id="448" weight="8" />
+      <edge source="familia" target="familias" id="449" weight="5" />
+      <edge source="familia" target="hora" id="450" weight="5" />
+      <edge source="familia" target="trabalhador" id="451" weight="8" />
+      <edge source="familia" target="verdade" id="452" weight="4" />
+      <edge source="familia" target="trabalhadores" id="453" weight="8" />
+      <edge source="familia" target="vitoria" id="454" weight="4" />
+      <edge source="familia" target="milhoes" id="455" weight="7" />
+      <edge source="familia" target="sabe" id="456" weight="3" />
+      <edge source="familia" target="cuidar" id="457" weight="6" />
+      <edge source="familia" target="filhos" id="458" weight="7" />
+      <edge source="familia" target="historia" id="459" weight="4" />
+      <edge source="familia" target="casa" id="460" weight="5" />
+      <edge source="familia" target="conquista" id="461" weight="7" />
+      <edge source="familia" target="construir" id="462" weight="4" />
+      <edge source="familia" target="qualidade" id="463" weight="8" />
+      <edge source="familia" target="brasileira" id="464" weight="3" />
+      <edge source="familia" target="merece" id="465" weight="5" />
+      <edge source="familia" target="direito" id="466" weight="5" />
+      <edge source="familia" target="avancar" id="467" weight="3" />
+      <edge source="familia" target="caminho" id="468" weight="3" />
+      <edge source="familia" target="defende" id="469" weight="3" />
+      <edge source="familia" target="maior" id="470" weight="3" />
+      <edge source="familia" target="seguimos" id="471" weight="4" />
+      <edge source="familia" target="reducao" id="472" weight="6" />
+      <edge source="familia" target="salario" id="473" weight="5" />
+      <edge source="familia" target="acabou" id="474" weight="3" />
+      <edge source="familia" target="amigos" id="475" weight="5" />
+      <edge source="familia" target="aproveitar" id="476" weight="7" />
+      <edge source="familia" target="brasileiras" id="477" weight="4" />
+      <edge source="familia" target="estar" id="478" weight="5" />
+      <edge source="familia" target="merecem" id="479" weight="3" />
+      <edge source="futuro" target="coligacao" id="480" weight="11" />
+      <edge source="futuro" target="federacao" id="481" weight="11" />
+      <edge source="futuro" target="pcdob" id="482" weight="11" />
+      <edge source="futuro" target="pdt" id="483" weight="11" />
+      <edge source="futuro" target="psb" id="484" weight="11" />
+      <edge source="futuro" target="psol" id="485" weight="11" />
+      <edge source="futuro" target="rede" id="486" weight="11" />
+      <edge source="futuro" target="oportunidades" id="487" weight="9" />
+      <edge source="futuro" target="melhor" id="488" weight="5" />
+      <edge source="futuro" target="hora" id="489" weight="5" />
+      <edge source="futuro" target="jogo" id="490" weight="5" />
+      <edge source="futuro" target="construir" id="491" weight="5" />
+      <edge source="futuro" target="frente" id="492" weight="5" />
+      <edge source="futuro" target="votar" id="493" weight="4" />
+      <edge source="futuro" target="compromisso" id="494" weight="5" />
+      <edge source="futuro" target="educacao" id="495" weight="8" />
+      <edge source="futuro" target="merece" id="496" weight="5" />
+      <edge source="futuro" target="avancar" id="497" weight="5" />
+      <edge source="futuro" target="maior" id="498" weight="3" />
+      <edge source="futuro" target="vidas" id="499" weight="6" />
+      <edge source="vencer" target="#flaviopresidente" id="500" weight="9" />
+      <edge source="vencer" target="lula" id="501" weight="8" />
+      <edge source="vencer" target="liberal" id="502" weight="7" />
+      <edge source="vencer" target="partido" id="503" weight="7" />
+      <edge source="vencer" target="turno" id="504" weight="7" />
+      <edge source="vencer" target="#forapt" id="505" weight="6" />
+      <edge source="vencer" target="primeiro" id="506" weight="5" />
+      <edge source="vencer" target="#segundoturno" id="507" weight="3" />
+      <edge source="coligacao" target="federacao" id="508" weight="34" />
+      <edge source="coligacao" target="pcdob" id="509" weight="34" />
+      <edge source="coligacao" target="pdt" id="510" weight="34" />
+      <edge source="coligacao" target="psb" id="511" weight="34" />
+      <edge source="coligacao" target="psol" id="512" weight="34" />
+      <edge source="coligacao" target="rede" id="513" weight="34" />
+      <edge source="coligacao" target="cnpj" id="514" weight="14" />
+      <edge source="coligacao" target="juntos" id="515" weight="8" />
+      <edge source="coligacao" target="garantir" id="516" weight="7" />
+      <edge source="coligacao" target="melhor" id="517" weight="5" />
+      <edge source="coligacao" target="virar" id="518" weight="6" />
+      <edge source="coligacao" target="brasileiros" id="519" weight="6" />
+      <edge source="coligacao" target="hora" id="520" weight="4" />
+      <edge source="coligacao" target="vitoria" id="521" weight="4" />
+      <edge source="coligacao" target="jogo" id="522" weight="4" />
+      <edge source="coligacao" target="sabe" id="523" weight="3" />
+      <edge source="coligacao" target="forca" id="524" weight="3" />
+      <edge source="coligacao" target="educacao" id="525" weight="5" />
+      <edge source="coligacao" target="luta" id="526" weight="4" />
+      <edge source="coligacao" target="globo" id="527" weight="4" />
+      <edge source="coligacao" target="geracao" id="528" weight="10" />
+      <edge source="coligacao" target="proteger" id="529" weight="3" />
+      <edge source="coligacao" target="defender" id="530" weight="4" />
+      <edge source="coligacao" target="diferenca" id="531" weight="4" />
+      <edge source="coligacao" target="vidas" id="532" weight="3" />
+      <edge source="coligacao" target="#eleicoes" id="533" weight="8" />
+      <edge source="federacao" target="pcdob" id="534" weight="34" />
+      <edge source="federacao" target="pdt" id="535" weight="34" />
+      <edge source="federacao" target="psb" id="536" weight="34" />
+      <edge source="federacao" target="psol" id="537" weight="34" />
+      <edge source="federacao" target="rede" id="538" weight="34" />
+      <edge source="federacao" target="cnpj" id="539" weight="14" />
+      <edge source="federacao" target="juntos" id="540" weight="8" />
+      <edge source="federacao" target="garantir" id="541" weight="7" />
+      <edge source="federacao" target="melhor" id="542" weight="5" />
+      <edge source="federacao" target="virar" id="543" weight="6" />
+      <edge source="federacao" target="brasileiros" id="544" weight="6" />
+      <edge source="federacao" target="hora" id="545" weight="4" />
+      <edge source="federacao" target="vitoria" id="546" weight="4" />
+      <edge source="federacao" target="jogo" id="547" weight="4" />
+      <edge source="federacao" target="sabe" id="548" weight="3" />
+      <edge source="federacao" target="educacao" id="549" weight="5" />
+      <edge source="federacao" target="luta" id="550" weight="4" />
+      <edge source="federacao" target="globo" id="551" weight="4" />
+      <edge source="federacao" target="geracao" id="552" weight="10" />
+      <edge source="federacao" target="proteger" id="553" weight="3" />
+      <edge source="federacao" target="defender" id="554" weight="4" />
+      <edge source="federacao" target="diferenca" id="555" weight="4" />
+      <edge source="federacao" target="vidas" id="556" weight="3" />
+      <edge source="federacao" target="#eleicoes" id="557" weight="8" />
+      <edge source="pcdob" target="pdt" id="558" weight="34" />
+      <edge source="pcdob" target="psb" id="559" weight="34" />
+      <edge source="pcdob" target="psol" id="560" weight="34" />
+      <edge source="pcdob" target="rede" id="561" weight="34" />
+      <edge source="pcdob" target="cnpj" id="562" weight="14" />
+      <edge source="pcdob" target="juntos" id="563" weight="8" />
+      <edge source="pcdob" target="virar" id="564" weight="6" />
+      <edge source="pcdob" target="brasileiros" id="565" weight="6" />
+      <edge source="pcdob" target="sabe" id="566" weight="3" />
+      <edge source="pcdob" target="educacao" id="567" weight="5" />
+      <edge source="pcdob" target="luta" id="568" weight="4" />
+      <edge source="pcdob" target="globo" id="569" weight="4" />
+      <edge source="pcdob" target="geracao" id="570" weight="10" />
+      <edge source="pcdob" target="proteger" id="571" weight="3" />
+      <edge source="pcdob" target="defender" id="572" weight="4" />
+      <edge source="pcdob" target="diferenca" id="573" weight="4" />
+      <edge source="pcdob" target="#eleicoes" id="574" weight="8" />
+      <edge source="pdt" target="psb" id="575" weight="34" />
+      <edge source="pdt" target="psol" id="576" weight="34" />
+      <edge source="pdt" target="rede" id="577" weight="34" />
+      <edge source="pdt" target="cnpj" id="578" weight="14" />
+      <edge source="pdt" target="juntos" id="579" weight="8" />
+      <edge source="pdt" target="virar" id="580" weight="6" />
+      <edge source="pdt" target="brasileiros" id="581" weight="6" />
+      <edge source="pdt" target="educacao" id="582" weight="5" />
+      <edge source="pdt" target="globo" id="583" weight="4" />
+      <edge source="pdt" target="geracao" id="584" weight="10" />
+      <edge source="pdt" target="defender" id="585" weight="4" />
+      <edge source="pdt" target="diferenca" id="586" weight="4" />
+      <edge source="pdt" target="#eleicoes" id="587" weight="8" />
+      <edge source="psb" target="psol" id="588" weight="34" />
+      <edge source="psb" target="rede" id="589" weight="34" />
+      <edge source="psb" target="cnpj" id="590" weight="14" />
+      <edge source="psb" target="juntos" id="591" weight="8" />
+      <edge source="psb" target="virar" id="592" weight="6" />
+      <edge source="psb" target="educacao" id="593" weight="5" />
+      <edge source="psb" target="geracao" id="594" weight="10" />
+      <edge source="psb" target="defender" id="595" weight="4" />
+      <edge source="psb" target="diferenca" id="596" weight="4" />
+      <edge source="psb" target="#eleicoes" id="597" weight="8" />
+      <edge source="psol" target="rede" id="598" weight="34" />
+      <edge source="psol" target="cnpj" id="599" weight="14" />
+      <edge source="psol" target="juntos" id="600" weight="8" />
+      <edge source="psol" target="educacao" id="601" weight="5" />
+      <edge source="psol" target="geracao" id="602" weight="10" />
+      <edge source="psol" target="#eleicoes" id="603" weight="8" />
+      <edge source="rede" target="cnpj" id="604" weight="14" />
+      <edge source="rede" target="geracao" id="605" weight="10" />
+      <edge source="rede" target="#eleicoes" id="606" weight="8" />
+      <edge source="6x1" target="escala" id="607" weight="28" />
+      <edge source="6x1" target="descansar" id="608" weight="12" />
+      <edge source="6x1" target="viver" id="609" weight="12" />
+      <edge source="6x1" target="qualidade" id="610" weight="10" />
+      <edge source="6x1" target="garantir" id="611" weight="7" />
+      <edge source="6x1" target="direitos" id="612" weight="6" />
+      <edge source="6x1" target="trabalhador" id="613" weight="7" />
+      <edge source="6x1" target="verdade" id="614" weight="3" />
+      <edge source="6x1" target="trabalhadores" id="615" weight="10" />
+      <edge source="6x1" target="trabalho" id="616" weight="5" />
+      <edge source="6x1" target="vitoria" id="617" weight="5" />
+      <edge source="6x1" target="dignidade" id="618" weight="5" />
+      <edge source="6x1" target="filhos" id="619" weight="7" />
+      <edge source="6x1" target="trabalha" id="620" weight="6" />
+      <edge source="6x1" target="conquista" id="621" weight="9" />
+      <edge source="6x1" target="compartilhe" id="622" weight="3" />
+      <edge source="6x1" target="luta" id="623" weight="5" />
+      <edge source="6x1" target="merece" id="624" weight="4" />
+      <edge source="6x1" target="direito" id="625" weight="4" />
+      <edge source="6x1" target="projeto" id="626" weight="4" />
+      <edge source="6x1" target="avancar" id="627" weight="3" />
+      <edge source="6x1" target="trabalhar" id="628" weight="4" />
+      <edge source="6x1" target="reducao" id="629" weight="7" />
+      <edge source="6x1" target="descanso" id="630" weight="7" />
+      <edge source="6x1" target="salario" id="631" weight="7" />
+      <edge source="6x1" target="acabou" id="632" weight="4" />
+      <edge source="6x1" target="amigos" id="633" weight="3" />
+      <edge source="6x1" target="aproveitar" id="634" weight="7" />
+      <edge source="6x1" target="estar" id="635" weight="6" />
+      <edge source="6x1" target="importante" id="636" weight="3" />
+      <edge source="partido" target="liberal" id="637" weight="31" />
+      <edge source="partido" target="#forapt" id="638" weight="8" />
+      <edge source="partido" target="lula" id="639" weight="6" />
+      <edge source="partido" target="turno" id="640" weight="5" />
+      <edge source="partido" target="rua" id="641" weight="3" />
+      <edge source="partido" target="energia" id="642" weight="3" />
+      <edge source="partido" target="alfredo" id="643" weight="3" />
+      <edge source="partido" target="deus" id="644" weight="4" />
+      <edge source="liberal" target="#forapt" id="645" weight="8" />
+      <edge source="liberal" target="lula" id="646" weight="6" />
+      <edge source="liberal" target="turno" id="647" weight="5" />
+      <edge source="liberal" target="#flaviopresidente" id="648" weight="4" />
+      <edge source="liberal" target="libertar" id="649" weight="3" />
+      <edge source="liberal" target="rua" id="650" weight="3" />
+      <edge source="liberal" target="energia" id="651" weight="3" />
+      <edge source="liberal" target="alfredo" id="652" weight="3" />
+      <edge source="liberal" target="deus" id="653" weight="4" />
+      <edge source="juntos" target="turno" id="654" weight="5" />
+      <edge source="juntos" target="mudanca" id="655" weight="4" />
+      <edge source="juntos" target="ruas" id="656" weight="4" />
+      <edge source="juntos" target="forca" id="657" weight="4" />
+      <edge source="juntos" target="energia" id="658" weight="3" />
+      <edge source="juntos" target="seguimos" id="659" weight="5" />
+      <edge source="juntos" target="voz" id="660" weight="3" />
+      <edge source="juntos" target="diferenca" id="661" weight="4" />
+      <edge source="escala" target="viver" id="662" weight="11" />
+      <edge source="escala" target="descansar" id="663" weight="10" />
+      <edge source="escala" target="conquista" id="664" weight="8" />
+      <edge source="escala" target="trabalhador" id="665" weight="6" />
+      <edge source="escala" target="trabalhadores" id="666" weight="8" />
+      <edge source="escala" target="trabalho" id="667" weight="5" />
+      <edge source="escala" target="vitoria" id="668" weight="5" />
+      <edge source="escala" target="dignidade" id="669" weight="5" />
+      <edge source="escala" target="filhos" id="670" weight="6" />
+      <edge source="escala" target="trabalha" id="671" weight="5" />
+      <edge source="escala" target="qualidade" id="672" weight="8" />
+      <edge source="escala" target="luta" id="673" weight="4" />
+      <edge source="escala" target="merece" id="674" weight="4" />
+      <edge source="escala" target="direito" id="675" weight="4" />
+      <edge source="escala" target="projeto" id="676" weight="4" />
+      <edge source="escala" target="trabalhar" id="677" weight="5" />
+      <edge source="escala" target="reducao" id="678" weight="6" />
+      <edge source="escala" target="descanso" id="679" weight="7" />
+      <edge source="escala" target="salario" id="680" weight="6" />
+      <edge source="escala" target="acabou" id="681" weight="4" />
+      <edge source="escala" target="amigos" id="682" weight="3" />
+      <edge source="escala" target="aproveitar" id="683" weight="7" />
+      <edge source="escala" target="estar" id="684" weight="5" />
+      <edge source="oportunidades" target="#evangelicoscomlula" id="685" weight="7" />
+      <edge source="oportunidades" target="#lula2026" id="686" weight="7" />
+      <edge source="oportunidades" target="esperanca" id="687" weight="7" />
+      <edge source="oportunidades" target="#lulapresidente" id="688" weight="6" />
+      <edge source="oportunidades" target="mudanca" id="689" weight="4" />
+      <edge source="oportunidades" target="ruas" id="690" weight="4" />
+      <edge source="oportunidades" target="hora" id="691" weight="5" />
+      <edge source="oportunidades" target="construir" id="692" weight="5" />
+      <edge source="oportunidades" target="forca" id="693" weight="4" />
+      <edge source="oportunidades" target="brasileira" id="694" weight="4" />
+      <edge source="oportunidades" target="alfredo" id="695" weight="5" />
+      <edge source="oportunidades" target="lutar" id="696" weight="3" />
+      <edge source="oportunidades" target="onda" id="697" weight="3" />
+      <edge source="oportunidades" target="vidas" id="698" weight="3" />
+      <edge source="#evangelicoscomlula" target="#cristao" id="699" weight="23" />
+      <edge source="#evangelicoscomlula" target="#lulapresidente" id="700" weight="21" />
+      <edge source="#evangelicoscomlula" target="#lula2026" id="701" weight="20" />
+      <edge source="#evangelicoscomlula" target="respeito" id="702" weight="7" />
+      <edge source="#evangelicoscomlula" target="democracia" id="703" weight="5" />
+      <edge source="#evangelicoscomlula" target="esperanca" id="704" weight="5" />
+      <edge source="#evangelicoscomlula" target="voto" id="705" weight="5" />
+      <edge source="#evangelicoscomlula" target="votar" id="706" weight="3" />
+      <edge source="#evangelicoscomlula" target="compartilhe" id="707" weight="3" />
+      <edge source="#evangelicoscomlula" target="compromisso" id="708" weight="3" />
+      <edge source="#evangelicoscomlula" target="pessoas" id="709" weight="3" />
+      <edge source="#evangelicoscomlula" target="segundo" id="710" weight="4" />
+      <edge source="#evangelicoscomlula" target="seguimos" id="711" weight="3" />
+      <edge source="#evangelicoscomlula" target="liberdade" id="712" weight="6" />
+      <edge source="#evangelicoscomlula" target="alckmin" id="713" weight="6" />
+      <edge source="#evangelicoscomlula" target="importante" id="714" weight="4" />
+      <edge source="garantir" target="viver" id="715" weight="9" />
+      <edge source="garantir" target="dignidade" id="716" weight="7" />
+      <edge source="garantir" target="familias" id="717" weight="6" />
+      <edge source="garantir" target="seguranca" id="718" weight="4" />
+      <edge source="garantir" target="brasileira" id="719" weight="3" />
+      <edge source="garantir" target="proteger" id="720" weight="3" />
+      <edge source="garantir" target="publica" id="721" weight="4" />
+      <edge source="garantir" target="crime" id="722" weight="4" />
+      <edge source="garantir" target="aproveitar" id="723" weight="5" />
+      <edge source="garantir" target="brasileiras" id="724" weight="4" />
+      <edge source="melhor" target="mudar" id="725" weight="7" />
+      <edge source="melhor" target="cio" id="726" weight="5" />
+      <edge source="melhor" target="ina" id="727" weight="5" />
+      <edge source="melhor" target="luiz" id="728" weight="5" />
+      <edge source="melhor" target="sabe" id="729" weight="3" />
+      <edge source="melhor" target="silva" id="730" weight="5" />
+      <edge source="melhor" target="rio" id="731" weight="3" />
+      <edge source="melhor" target="coisa" id="732" weight="3" />
+      <edge source="melhor" target="lutar" id="733" weight="3" />
+      <edge source="turno" target="primeiro" id="734" weight="17" />
+      <edge source="turno" target="segundo" id="735" weight="12" />
+      <edge source="turno" target="votar" id="736" weight="4" />
+      <edge source="#cristao" target="#lulapresidente" id="737" weight="18" />
+      <edge source="#cristao" target="#lula2026" id="738" weight="17" />
+      <edge source="#cristao" target="alckmin" id="739" weight="6" />
+      <edge source="#cristao" target="respeito" id="740" weight="6" />
+      <edge source="#cristao" target="primeiro" id="741" weight="4" />
+      <edge source="#cristao" target="esperanca" id="742" weight="4" />
+      <edge source="#cristao" target="voto" id="743" weight="5" />
+      <edge source="#cristao" target="votar" id="744" weight="3" />
+      <edge source="#cristao" target="compartilhe" id="745" weight="3" />
+      <edge source="#cristao" target="pessoas" id="746" weight="3" />
+      <edge source="#cristao" target="segundo" id="747" weight="4" />
+      <edge source="#cristao" target="seguimos" id="748" weight="3" />
+      <edge source="#cristao" target="liberdade" id="749" weight="6" />
+      <edge source="#cristao" target="importante" id="750" weight="4" />
+      <edge source="#forapt" target="lula" id="751" weight="7" />
+      <edge source="#forapt" target="#flaviopresidente" id="752" weight="4" />
+      <edge source="#forapt" target="libertar" id="753" weight="3" />
+      <edge source="#lulapresidente" target="#lula2026" id="754" weight="15" />
+      <edge source="#lulapresidente" target="respeito" id="755" weight="5" />
+      <edge source="#lulapresidente" target="compartilhe" id="756" weight="3" />
+      <edge source="#lulapresidente" target="pessoas" id="757" weight="3" />
+      <edge source="#lulapresidente" target="segundo" id="758" weight="4" />
+      <edge source="#lulapresidente" target="liberdade" id="759" weight="5" />
+      <edge source="#lulapresidente" target="alckmin" id="760" weight="5" />
+      <edge source="#lulapresidente" target="importante" id="761" weight="3" />
+      <edge source="mudanca" target="#flaviopresidente" id="762" weight="4" />
+      <edge source="mudanca" target="#segundoturno" id="763" weight="4" />
+      <edge source="mudanca" target="alfredo" id="764" weight="4" />
+      <edge source="mudanca" target="onda" id="765" weight="4" />
+      <edge source="mudanca" target="conta" id="766" weight="3" />
+      <edge source="mudanca" target="luiz" id="767" weight="3" />
+      <edge source="mudanca" target="silva" id="768" weight="3" />
+      <edge source="mudanca" target="cio" id="769" weight="3" />
+      <edge source="mudanca" target="ina" id="770" weight="3" />
+      <edge source="mudanca" target="acabou" id="771" weight="3" />
+      <edge source="viver" target="descansar" id="772" weight="10" />
+      <edge source="viver" target="milhoes" id="773" weight="6" />
+      <edge source="viver" target="cuidar" id="774" weight="7" />
+      <edge source="viver" target="trabalha" id="775" weight="6" />
+      <edge source="viver" target="conquista" id="776" weight="8" />
+      <edge source="viver" target="qualidade" id="777" weight="7" />
+      <edge source="viver" target="merece" id="778" weight="5" />
+      <edge source="viver" target="direito" id="779" weight="4" />
+      <edge source="viver" target="crime" id="780" weight="3" />
+      <edge source="viver" target="descanso" id="781" weight="4" />
+      <edge source="viver" target="aproveitar" id="782" weight="6" />
+      <edge source="viver" target="brasileiras" id="783" weight="5" />
+      <edge source="viver" target="estar" id="784" weight="6" />
+      <edge source="#flaviopresidente" target="#segundoturno" id="785" weight="5" />
+      <edge source="familias" target="seguranca" id="786" weight="5" />
+      <edge source="familias" target="pai" id="787" weight="3" />
+      <edge source="familias" target="maior" id="788" weight="3" />
+      <edge source="familias" target="proteger" id="789" weight="4" />
+      <edge source="familias" target="publica" id="790" weight="3" />
+      <edge source="familias" target="crime" id="791" weight="4" />
+      <edge source="familias" target="coisa" id="792" weight="3" />
+      <edge source="familias" target="lutar" id="793" weight="4" />
+      <edge source="familias" target="dentro" id="794" weight="4" />
+      <edge source="respeito" target="democracia" id="795" weight="5" />
+      <edge source="respeito" target="avancando" id="796" weight="4" />
+      <edge source="respeito" target="liberdade" id="797" weight="4" />
+      <edge source="respeito" target="alckmin" id="798" weight="3" />
+      <edge source="#lula2026" target="democracia" id="799" weight="4" />
+      <edge source="#lula2026" target="voto" id="800" weight="5" />
+      <edge source="#lula2026" target="votar" id="801" weight="3" />
+      <edge source="#lula2026" target="compromisso" id="802" weight="3" />
+      <edge source="#lula2026" target="segundo" id="803" weight="4" />
+      <edge source="#lula2026" target="seguimos" id="804" weight="3" />
+      <edge source="#lula2026" target="liberdade" id="805" weight="3" />
+      <edge source="#lula2026" target="importante" id="806" weight="3" />
+      <edge source="democracia" target="forca" id="807" weight="3" />
+      <edge source="democracia" target="pessoas" id="808" weight="4" />
+      <edge source="direitos" target="trabalhadores" id="809" weight="7" />
+      <edge source="direitos" target="saude" id="810" weight="4" />
+      <edge source="direitos" target="luta" id="811" weight="4" />
+      <edge source="direitos" target="avancar" id="812" weight="3" />
+      <edge source="lula" target="libertar" id="813" weight="3" />
+      <edge source="lula" target="eleicao" id="814" weight="3" />
+      <edge source="primeiro" target="segundo" id="815" weight="6" />
+      <edge source="primeiro" target="voto" id="816" weight="5" />
+      <edge source="virar" target="voto" id="817" weight="9" />
+      <edge source="virar" target="jogo" id="818" weight="8" />
+      <edge source="brasileiros" target="milhoes" id="819" weight="7" />
+      <edge source="brasileiros" target="saude" id="820" weight="4" />
+      <edge source="brasileiros" target="libertar" id="821" weight="3" />
+      <edge source="brasileiros" target="defender" id="822" weight="4" />
+      <edge source="esperanca" target="merecem" id="823" weight="3" />
+      <edge source="ruas" target="onda" id="824" weight="4" />
+      <edge source="ruas" target="rio" id="825" weight="4" />
+      <edge source="ruas" target="carinho" id="826" weight="3" />
+      <edge source="ruas" target="energia" id="827" weight="3" />
+      <edge source="ruas" target="paulista" id="828" weight="3" />
+      <edge source="ruas" target="vem" id="829" weight="3" />
+      <edge source="voto" target="#segundoturno" id="830" weight="3" />
+      <edge source="governo" target="proteger" id="831" weight="4" />
+      <edge source="governo" target="cio" id="832" weight="3" />
+      <edge source="governo" target="ina" id="833" weight="3" />
+      <edge source="governo" target="luiz" id="834" weight="3" />
+      <edge source="governo" target="silva" id="835" weight="3" />
+      <edge source="governo" target="mil" id="836" weight="3" />
+      <edge source="hora" target="frente" id="837" weight="4" />
+      <edge source="hora" target="avancar" id="838" weight="3" />
+      <edge source="hora" target="chegou" id="839" weight="3" />
+      <edge source="hora" target="amigos" id="840" weight="3" />
+      <edge source="seguranca" target="crime" id="841" weight="8" />
+      <edge source="seguranca" target="publica" id="842" weight="7" />
+      <edge source="seguranca" target="coisa" id="843" weight="4" />
+      <edge source="trabalhador" target="direito" id="844" weight="4" />
+      <edge source="verdade" target="defende" id="845" weight="5" />
+      <edge source="verdade" target="mil" id="846" weight="3" />
+      <edge source="trabalhadores" target="descansar" id="847" weight="6" />
+      <edge source="trabalhadores" target="lutar" id="848" weight="4" />
+      <edge source="trabalho" target="descansar" id="849" weight="5" />
+      <edge source="trabalho" target="trabalhar" id="850" weight="4" />
+      <edge source="vitoria" target="historia" id="851" weight="4" />
+      <edge source="jogo" target="acabou" id="852" weight="4" />
+      <edge source="jogo" target="milhoes" id="853" weight="4" />
+      <edge source="jogo" target="conta" id="854" weight="3" />
+      <edge source="milhoes" target="descansar" id="855" weight="6" />
+      <edge source="milhoes" target="cuidar" id="856" weight="5" />
+      <edge source="milhoes" target="acabou" id="857" weight="3" />
+      <edge source="milhoes" target="estar" id="858" weight="5" />
+      <edge source="milhoes" target="merecem" id="859" weight="3" />
+      <edge source="mundo" target="pessoas" id="860" weight="3" />
+      <edge source="mundo" target="rua" id="861" weight="3" />
+      <edge source="cnpj" target="diferenca" id="862" weight="4" />
+      <edge source="cuidar" target="descansar" id="863" weight="6" />
+      <edge source="cuidar" target="dignidade" id="864" weight="5" />
+      <edge source="cuidar" target="trabalha" id="865" weight="4" />
+      <edge source="cuidar" target="merece" id="866" weight="4" />
+      <edge source="dignidade" target="conquista" id="867" weight="5" />
+      <edge source="dignidade" target="compromisso" id="868" weight="4" />
+      <edge source="dignidade" target="voz" id="869" weight="3" />
+      <edge source="filhos" target="descansar" id="870" weight="7" />
+      <edge source="filhos" target="aproveitar" id="871" weight="5" />
+      <edge source="filhos" target="casa" id="872" weight="3" />
+      <edge source="filhos" target="pai" id="873" weight="3" />
+      <edge source="filhos" target="dar" id="874" weight="3" />
+      <edge source="filhos" target="lutar" id="875" weight="3" />
+      <edge source="filhos" target="brasileiras" id="876" weight="4" />
+      <edge source="historia" target="construir" id="877" weight="4" />
+      <edge source="historia" target="apoio" id="878" weight="3" />
+      <edge source="saude" target="mil" id="879" weight="3" />
+      <edge source="trabalha" target="conta" id="880" weight="3" />
+      <edge source="casa" target="pai" id="881" weight="3" />
+      <edge source="conquista" target="descansar" id="882" weight="7" />
+      <edge source="conquista" target="brasileira" id="883" weight="3" />
+      <edge source="construir" target="frente" id="884" weight="3" />
+      <edge source="construir" target="queremos" id="885" weight="3" />
+      <edge source="descansar" target="trabalhar" id="886" weight="4" />
+      <edge source="descansar" target="reducao" id="887" weight="4" />
+      <edge source="descansar" target="salario" id="888" weight="4" />
+      <edge source="descansar" target="aproveitar" id="889" weight="5" />
+      <edge source="descansar" target="brasileiras" id="890" weight="4" />
+      <edge source="descansar" target="estar" id="891" weight="6" />
+      <edge source="forca" target="energia" id="892" weight="3" />
+      <edge source="forca" target="lutar" id="893" weight="3" />
+      <edge source="pai" target="dar" id="894" weight="3" />
+      <edge source="qualidade" target="aproveitar" id="895" weight="5" />
+      <edge source="qualidade" target="descanso" id="896" weight="5" />
+      <edge source="educacao" target="vidas" id="897" weight="5" />
+      <edge source="merece" target="vidas" id="898" weight="3" />
+      <edge source="conta" target="onda" id="899" weight="3" />
+      <edge source="luiz" target="silva" id="900" weight="12" />
+      <edge source="luiz" target="cio" id="901" weight="11" />
+      <edge source="luiz" target="ina" id="902" weight="11" />
+      <edge source="queremos" target="salario" id="903" weight="3" />
+      <edge source="silva" target="cio" id="904" weight="11" />
+      <edge source="silva" target="ina" id="905" weight="11" />
+      <edge source="avancar" target="vidas" id="906" weight="3" />
+      <edge source="caminho" target="certeza" id="907" weight="3" />
+      <edge source="caminho" target="deus" id="908" weight="3" />
+      <edge source="carinho" target="energia" id="909" weight="6" />
+      <edge source="carinho" target="certeza" id="910" weight="3" />
+      <edge source="carinho" target="onda" id="911" weight="3" />
+      <edge source="cio" target="ina" id="912" weight="11" />
+      <edge source="publica" target="crime" id="913" weight="5" />
+      <edge source="publica" target="coisa" id="914" weight="4" />
+      <edge source="seguimos" target="estar" id="915" weight="4" />
+      <edge source="voz" target="deus" id="916" weight="3" />
+      <edge source="voz" target="estar" id="917" weight="3" />
+      <edge source="alfredo" target="onda" id="918" weight="3" />
+      <edge source="apoio" target="#segundoturno" id="919" weight="3" />
+      <edge source="crime" target="coisa" id="920" weight="4" />
+      <edge source="dar" target="qualquer" id="921" weight="3" />
+      <edge source="reducao" target="salario" id="922" weight="6" />
+      <edge source="rio" target="governador" id="923" weight="3" />
+      <edge source="certeza" target="deus" id="924" weight="4" />
+      <edge source="lutar" target="qualquer" id="925" weight="3" />
+      <edge source="amigos" target="aproveitar" id="926" weight="3" />
+      <edge source="aproveitar" target="brasileiras" id="927" weight="3" />
+    </edges>
   </graph>
 </gexf>
