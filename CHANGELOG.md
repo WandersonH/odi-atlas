@@ -9,7 +9,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Correção do usuário (18/10, 16h54): "@verdeeamarelo — eu tinha te dito que eram duas #". Saem a busca "@verdeeamarelo OR from:verdeeamarelo" no X e a leitura do perfil @verdeeamarelo no Instagram; título do caso: "#brasilinteiro e #verdeeamarelo". `build_casos.py` passa a usar só os termos atuais do caso: publicação trazida apenas por termo removido sai dos agregados (havia 1, que também tinha #brasilinteiro e fica). O bruto continua no privado.
 - O que a busca do @ custou (manifesto de 18/10 13h33): X 1 post, US$ 0,00015; Instagram 0 itens, sem cobrança.
 - #verdeeamarelo passa a ser hashtag principal: a carga parou no limite (1.685) com o mais antigo em 17/10 12h48 UTC; novo complemento do X de 16/10 até esse horário. Tetos do caso redistribuídos dentro dos US$ 3 (gasto até aqui US$ 1,35): X 2,20; Instagram 0,20; Facebook 0,50; Kwai 0,10; máximo por termo 6.000.
-- Testes: `test_casos` atualizado (duas hashtags; 6.000 itens por termo com o novo teto); suíte OK. Pendente: o complemento e a regeração dos agregados.
+- Complemento de #verdeeamarelo (run 39161034090): 5.405 posts de 16/10 até 17/10 12h48 UTC, abaixo do pedido (5.982), ou seja, a janela fechou. Caso: 10.079 publicações de 5.257 contas (X 9.965). Na hora das 09h de 17/10: 7.349 publicações (pico e decolagem). #verdeeamarelo: 1ª publicação lida 16/10 11h (X).
+- Lacuna das 10h de 17/10 em #brasilinteiro (3 posts, contra 388 de #verdeeamarelo): novo complemento só dessa janela, com o teto do X a 2,40 (Instagram 0,20; Facebook 0,30; Kwai 0,10 — soma US$ 3,00; gasto do caso até aqui US$ 2,16).
+- Testes: `test_casos` atualizado (duas hashtags; 6.000 itens por termo com o novo teto); suíte OK.
 
 ## C19.49 — Caso 1: X completado por janelas de horário, lacunas e decolagem (2026-10-18) ⚠️
 
