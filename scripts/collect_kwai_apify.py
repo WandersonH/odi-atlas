@@ -21,7 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
-from collect_meta_apify import run_actor  # noqa: E402
+from collect_meta_apify import run_actor, saldo_conta  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS = ["candidate_id", "candidate_name", "perfil", "declarado_por", "video_id", "url", "publicado_em", "legenda", "duracao_s",
@@ -92,6 +92,10 @@ def main(argv=None, executar=None) -> int:
         man["status"] = "⛔ APIFY_TOKEN_2 ausente"
     elif ja + teto > cfg["teto_mensal_usd"] + 1e-9:
         man["status"] = f"⛔ teto mensal de US$ {cfg['teto_mensal_usd']} atingido (já gasto US$ {ja})"
+    if "status" not in man and executar is None:
+        man["saldo_conta_antes_usd"] = saldo = saldo_conta(token)
+        if saldo is not None and saldo < teto:
+            man["status"] = f"⛔ saldo da conta Apify (US$ {saldo}) menor que o teto desta execução (US$ {teto})"
     if "status" in man:
         (pasta / "manifesto_latest.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8")
         print(man["status"])

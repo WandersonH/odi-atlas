@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.3 — Apify: saldo real das contas e trava antes de cada execução (2026-10-17) ⚠️
+
+- Verificação das contas (run 39083808726, `data/apify/contas.json`): conta 1 STARTER, US$ 7,92 de 19 no ciclo até 23/10; conta 2 FREE, **US$ 5,27 de 5 (estourada)**; conta 3 FREE, US$ 0,82 de 5; contas 4 a 7 FREE, US$ 0 de 5.
+- Achado: os manifestos do Kwai registraram US$ 0 (a Apify devolveu `chargedEventCounts` vazio), mas a conta 2 foi cobrada: o custo por execução não é confiável nesse ator. Os coletores do Kwai, do Facebook e dos comentários do Kwai passam a ler o saldo real da conta (`/users/me/limits`) antes de rodar e param com ⛔ se o saldo for menor que o teto da execução.
+- Consequência: a coleta diária do Kwai (conta 2) fica parada até o novo ciclo da conta (01/11) ou até mudar de conta.
+- Facebook (run `so-analises`): 340 capas (12 falhas, 38 posts sem URL de capa); rede de menções gerada. Página verificada no Chromium (1300 e 390 px): 22 capas na lista, 928 arestas na rede de coocorrência, rede de menções com 20 contas, sem erro de JavaScript e sem rolagem horizontal.
+- Testes: suíte OK.
+
 ## C19.2 — Apify: verificação diária das contas 1 a 7 (2026-10-17) 🔜
 
 - Pedido do usuário: verificar as contas Apify de 1 a 7. `verificar_contas_apify.py` + `apify-contas.yml` (diário, 09h05, e manual): só leitura (`/users/me` e `/users/me/limits`), sem custo; grava em `data/apify/contas.json` plano, uso do mês, limite e saldo de cada conta, sem nome de usuário, e-mail ou id.

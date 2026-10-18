@@ -24,7 +24,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_kwai_apify import COLS, g, inteiro, quando  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
-from collect_meta_apify import run_actor  # noqa: E402
+from collect_meta_apify import run_actor, saldo_conta  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS_FB = COLS + ["reacoes", "tipo"]
@@ -71,6 +71,12 @@ def main(argv=None, executar=None) -> int:
         return fim(f"⛔ {cfg['segredo']} ausente", 1)
     if teto < 0.01:
         return fim(f"⛔ teto autorizado de US$ {cfg['teto_total_usd']} esgotado (gasto US$ {ja})", 1)
+    if executar is None:
+        saldo = man["saldo_conta_antes_usd"] = saldo_conta(token)
+        if saldo is not None:
+            teto = min(teto, saldo)
+            if teto < 0.05:
+                return fim(f"⛔ saldo da conta Apify esgotado (US$ {saldo})", 1)
     executar = executar or (lambda pl, cap: run_actor(token, cfg["ator"], pl, cap))
     p = cfg["preco_usd"]
     if teste:

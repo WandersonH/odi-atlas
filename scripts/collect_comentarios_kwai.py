@@ -25,7 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_comentarios_youtube import CAMPOS  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
-from collect_meta_apify import run_actor  # noqa: E402
+from collect_meta_apify import run_actor, saldo_conta  # noqa: E402
 from net import now_utc  # noqa: E402
 
 TEXTO = ("text", "content", "comment", "commentText", "body")
@@ -154,6 +154,12 @@ def main(argv=None, executar=None) -> int:
         return fim("⛔ sem repositório privado: texto de comentário não pode ir para o público", 1)
     if teto < 0.01:
         return fim(f"⛔ teto autorizado de US$ {cfg['teto_total_usd']} esgotado (gasto US$ {ja})", 1)
+    if executar is None:
+        saldo = man["saldo_conta_antes_usd"] = saldo_conta(token)
+        if saldo is not None:
+            teto = min(teto, saldo)
+            if teto < 0.01:
+                return fim(f"⛔ saldo da conta Apify esgotado (US$ {saldo})", 1)
     priv = Path(interno) / "kwai/comentarios"
     priv.mkdir(parents=True, exist_ok=True)
     acervo = priv / "comentarios.csv.gz"

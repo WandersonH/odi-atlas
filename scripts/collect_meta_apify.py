@@ -38,6 +38,17 @@ def api(method: str, path: str, token: str, body=None, timeout=360):
         return json.loads(r.read() or b"null")
 
 
+def saldo_conta(token: str) -> float | None:
+    """Saldo real do mês na conta Apify (limite − uso), pela API de limites. None se não der para ler.
+    O custo informado em cada execução pode vir zerado; o saldo da conta é a referência para não estourar o limite."""
+    try:
+        lim = (api("GET", "/users/me/limits", token, timeout=60) or {}).get("data", {})
+        uso, teto = (lim.get("current") or {}).get("monthlyUsageUsd"), (lim.get("limits") or {}).get("maxMonthlyUsageUsd")
+        return round(teto - uso, 4) if isinstance(uso, (int, float)) and isinstance(teto, (int, float)) else None
+    except Exception:  # noqa: BLE001 — a mensagem não contém o token
+        return None
+
+
 def ig_username(url: str) -> str | None:
     u = url.strip()
     p = urllib.parse.urlparse(u if "://" in u else "https://" + u)
