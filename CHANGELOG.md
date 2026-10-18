@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.42 — Página do Instagram em branco no site (2026-10-18) ✅
+
+- Relato do usuário (18/10, 04h15): "página Instagram tá em branco". Conferido no Chrome do usuário, no site publicado: os dados carregavam (4.629 posts de Lula e 695 de Flávio), mas a seção estava fora de `<main>` (filha de `<body>`, depois do rodapé), porque foi inserida após o último script do Facebook, que fica fora da área principal. O conteúdo ia para baixo do layout e a área visível ficava vazia. O teste local anterior usava captura da página inteira e não pegou isso.
+- Correção: a seção do Instagram vai para dentro de `<main>`, logo depois da do Facebook; conferido que nenhum painel fica fora de `<main>`. Título da aba do navegador: V14 → V15 (auditoria, item 8).
+- Verificado no Chromium local pelo caminho do usuário (menu → "O que as campanhas dizem" → aba Instagram), em tela de 1200×700: título, introdução e acervo visíveis no topo; sem erro de JavaScript.
+- Testes: suíte OK.
+
 ## C19.41 — Pontes entre públicos: Gephi e IRaMuTeQ (2026-10-18) ✅
 
 - Pedido do usuário (18/10, 03h23): "nessa página ponte entre públicos não esqueça IRaMuTeQ e Gephi". `build_pontes.py` passa a gerar, por rede: `data/pontes/<rede>_contas_ponte.gexf` (bipartida conta-ponte × conteúdo, peso = comentários, tom predominante na ligação) e `data/pontes/<rede>_respostas_entre_publicos.gexf` (dirigida, quem responde → respondido, nº de negativas). Autores só por código P0001… (ordem de atividade); a tabela código ↔ conta fica no privado (`pontes/<rede>_codigos.csv`). Corpus IRaMuTeQ privado (`pontes/<rede>_corpus_iramuteq.txt`) com os comentários das contas-ponte e as respostas entre públicos e as variáveis `*rede_ *conteudo_ *publico_ *ponte_ *resposta_entre_publicos_ *tom_ *fase_`.

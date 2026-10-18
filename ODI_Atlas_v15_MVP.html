@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><link rel="icon" href="./assets/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png"><link rel="apple-touch-icon" href="./assets/favicon-180.png"><title>ODI Atlas / Comunicação Política Digital · V14</title>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><link rel="icon" href="./assets/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png"><link rel="apple-touch-icon" href="./assets/favicon-180.png"><title>ODI Atlas / Comunicação Política Digital · V15</title>
 <style>
 :root{--navy:#101b30;--navy2:#17243c;--ink:#172238;--muted:#69768a;--bg:#f5f7fb;--card:#fff;--line:#e8edf3;--cyan:#198b9e;--cyan2:#38bbc9;--sky:#eaf7f8;--slate:#d8e1ed;--amber:#d7a14a;--warning:#fff8ec;--shadow:0 16px 45px rgba(17,40,75,.035)}
 *{box-sizing:border-box}body{padding:0;margin:0;color:var(--ink);background:var(--bg);font:14px/1.55 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}button,select,input{font:inherit}button{cursor:pointer}a{color:var(--cyan);text-decoration:none}a:hover{text-decoration:underline}
@@ -1347,6 +1347,83 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="fbMethod"></p>
     <p id="fbPerfisNota" class="yt-cloudnote"></p>
     <p class="yt-cloudnote"><a href="./data/facebook/conteudo.json" download>↓ Conteúdo (JSON)</a> · <a href="./data/facebook/videos.csv.gz" download>↓ Posts (CSV)</a> · <a href="./data/facebook/manifesto_latest.json" download>↓ Manifesto da coleta</a> · <a href="./data/config/facebook_posts.json" download>↓ Configuração</a></p></div>
+</section>
+<section class="panel" id="igContent" aria-label="Caderno 02 (Instagram) Conteúdo no Instagram por tema">
+  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · INSTAGRAM</span><span>DESDE 20 JUL 2026 (PRÉ-CAMPANHA) · PERFIS DECLARADOS AO TSE</span></div>
+  <div class="intro odi-map-hero"><div class="eyebrow">Instagram público · chapas 13 e 22</div>
+    <h1>O que cada campanha publica no Instagram.<br><em>Posts, carrosséis e reels, por tema.</em></h1>
+    <p>Posts públicos dos perfis de Instagram declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares, vices e perfis de apoio), desde 20/07 (pré-campanha), com filtro por fase. Mesmas regras do YouTube, TikTok, Kwai, Facebook e X: temas por dicionário aberto aplicado ao texto — não IA — e marcas de "cita o adversário" e "pede voto". Visualizações só existem para reels (fotos e carrosséis não têm contagem pública); curtidas ocultas pelo perfil ficam sem valor. O Instagram não mostra compartilhamentos: a interação usa curtidas + comentários, sobre visualizações, e só existe para reels.</p>
+  </div>
+  <div class="odi-signal" id="igStatus" role="status">Aguardando leitura da base do Instagram.</div>
+  <div class="cob-fase" id="igCobertura" data-plat="instagram"></div>
+  <div class="tk-perfis" id="igPerfis"></div>
+  <div class="yt-stats" id="igStats"></div>
+  <div class="yt-controls card">
+    <div class="yt-chips" role="group" aria-label="Fase"><button class="yt-chip" data-igper="todo" aria-pressed="true">Desde 20/07</button><button class="yt-chip" data-igper="pre" aria-pressed="false">Pré-campanha</button><button class="yt-chip" data-igper="turno1" aria-pressed="false">1º turno</button><button class="yt-chip" data-igper="turno2" aria-pressed="false">2º turno</button></div>
+    <div class="yt-chips" id="igChips" role="group" aria-label="Filtrar por tema"></div>
+    <div class="yt-toggles"><label><input type="checkbox" id="igOnlyVote"> Só pedidos de voto</label><label><input type="checkbox" id="igOnlyAdv"> Só citam o adversário</label></div>
+  </div>
+  <div class="card tk-tl"><div class="eyebrow">Linha do tempo · semana a semana</div><h2 class="tk-h2">Cada bolha é um post; o tamanho é a audiência (visualizações, ou curtidas quando não há)</h2><div class="tk-tlwrap"><svg id="igTimeline" role="img" aria-label="Linha do tempo dos vídeos do Instagram"></svg></div><p class="yt-cloudnote">Acima do eixo, Lula; abaixo, Flávio. Clique numa bolha para ver o post.</p></div>
+  <div class="yt-clouds">
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="igCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="igTagsA"></div></figure>
+    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="igCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="igTagsB"></div></figure>
+  </div>
+  <div class="yt-detail card tk-detail" id="igDetail" hidden></div>
+  <div class="yt-cols">
+    <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong><span class="smalltag">nº 13</span></div><div class="yt-list" id="igListA"></div></div>
+    <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="igListB"></div></div>
+  </div>
+  <div class="card yt-pop">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
+    <div class="odi-signal" id="igPopStatus">Aguardando leitura.</div>
+    <div class="yt-popgrid">
+      <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="igPopBars"></div></div>
+      <div><h3 class="yt-h3">CHD de Reinert · classes</h3><p class="yt-cloudnote" id="igChdInfo"></p><div id="igChdTree"></div></div>
+    </div>
+    <div class="yt-chdclasses" id="igChdClasses"></div>
+    <div class="yt-netdl"><span class="eyebrow">Corpus e instrumentos (para IRaMuTeQ e codificação humana)</span>
+      <a class="ghostbutton" href="./data/corpus/facebook_candidatos_iramuteq.txt" download>Corpus IRaMuTeQ · TXT</a>
+      <a class="ghostbutton" href="./data/corpus/facebook_candidatos_segmentos.csv" download>Segmentos · CSV</a>
+      <a class="ghostbutton" href="./data/config/livro_codigos_populismo.json" download>Livro de códigos · JSON</a>
+      <a class="ghostbutton" href="./data/codificacao/amostra_populismo_facebook_v1.csv" download>Amostra p/ codificar · CSV</a>
+      <a class="ghostbutton" href="./data/corpus/chd_reinert_instagram.json" download>CHD · JSON</a></div>
+    <p class="yt-cloudnote" id="igPopNote"></p>
+  </div>
+  <div class="card yt-net">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
+      <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-fbview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-fbview="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-fbview="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-fbcor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-fbcor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="igNetReset">Recentrar</button></div></div>
+    <div class="yt-netbody">
+      <div class="yt-netsvg"><svg id="igNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
+        <div class="yt-netlegend" id="igNetLegend"></div></div>
+      <aside class="yt-netside" id="igNetSide"></aside>
+    </div>
+    <div class="yt-nettable" id="igNetTable" hidden>
+      <input type="search" id="igNetSearch" placeholder="Filtrar termo…" aria-label="Filtrar termo">
+      <div class="yt-tablewrap"><table id="igNetTbl"></table></div>
+    </div>
+    <div class="yt-netdl"><span class="eyebrow">Planilhas da rede (conferência e Gephi)</span>
+      <a class="ghostbutton" href="./data/instagram/rede_nos.csv" download>Nós · CSV</a>
+      <a class="ghostbutton" href="./data/instagram/rede_arestas.csv" download>Arestas · CSV</a>
+      <a class="ghostbutton" href="./data/instagram/rede_videos_termos.csv" download>Vídeo × termos · CSV</a>
+      <a class="ghostbutton" href="./data/instagram/rede.gexf" download>Rede · GEXF</a>
+      <p class="yt-cloudnote">No Gephi: <b>Arquivo → Abrir → rede.gexf</b> (já vem com posição, cor e comunidade), ou <b>Laboratório de dados → Importar planilha</b> com nós e depois arestas (tipo não direcionado). A planilha “vídeo × termos” lista, para cada vídeo, os termos da rede que ele contém: o peso de qualquer aresta é o nº de linhas em que os dois termos aparecem juntos.</p></div>
+    <p class="yt-cloudnote" id="igNetNote"></p>
+  </div>
+  <div class="card yt-net tk-men">
+    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></div><h2>Quem as campanhas marcam no Instagram</h2></div></div>
+    <div class="yt-netbody"><div class="yt-netsvg"><svg id="igMen" role="img" aria-label="Rede de menções das campanhas no Instagram"></svg>
+      <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
+      <aside class="yt-netside" id="igMenSide"></aside></div>
+    <div class="yt-netdl"><span class="eyebrow">Planilhas (conferência e Gephi)</span>
+      <a class="ghostbutton" href="./data/instagram/rede_mencoes_nos.csv" download>Contas · CSV</a>
+      <a class="ghostbutton" href="./data/instagram/rede_mencoes_arestas.csv" download>Marcações · CSV</a>
+      <a class="ghostbutton" href="./data/instagram/rede_mencoes_videos.csv" download>Vídeos · CSV</a>
+      <a class="ghostbutton" href="./data/instagram/rede_mencoes.gexf" download>Rede · GEXF</a></div>
+    <p class="yt-cloudnote" id="igMenNote"></p>
+  </div>
+  <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="igMethod"></p>
+    <p id="igPerfisNota" class="yt-cloudnote"></p>
+    <p class="yt-cloudnote"><a href="./data/instagram/conteudo.json" download>↓ Conteúdo (JSON)</a> · <a href="./data/instagram/videos.csv.gz" download>↓ Posts (CSV)</a> · <a href="./data/instagram/manifesto_latest.json" download>↓ Manifesto da coleta</a> · <a href="./data/config/instagram_posts.json" download>↓ Configuração</a></p></div>
 </section>
 <section class="panel" id="twContent" aria-label="Caderno 02 (X) Conteúdo no X por tema">
   <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · X</span><span>DESDE 20 JUL 2026 (PRÉ-CAMPANHA) · PERFIS DECLARADOS AO TSE</span></div>
@@ -3444,83 +3521,7 @@ new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).obse
 if(sec.classList.contains('active'))carregar();
 })();
 </script>
-<section class="panel" id="igContent" aria-label="Caderno 02 (Instagram) Conteúdo no Instagram por tema">
-  <div class="paper-ribbon"><span>CADERNO 02 / O QUE AS CAMPANHAS DIZEM · INSTAGRAM</span><span>DESDE 20 JUL 2026 (PRÉ-CAMPANHA) · PERFIS DECLARADOS AO TSE</span></div>
-  <div class="intro odi-map-hero"><div class="eyebrow">Instagram público · chapas 13 e 22</div>
-    <h1>O que cada campanha publica no Instagram.<br><em>Posts, carrosséis e reels, por tema.</em></h1>
-    <p>Posts públicos dos perfis de Instagram declarados ao TSE pelas chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span> (titulares, vices e perfis de apoio), desde 20/07 (pré-campanha), com filtro por fase. Mesmas regras do YouTube, TikTok, Kwai, Facebook e X: temas por dicionário aberto aplicado ao texto — não IA — e marcas de "cita o adversário" e "pede voto". Visualizações só existem para reels (fotos e carrosséis não têm contagem pública); curtidas ocultas pelo perfil ficam sem valor. O Instagram não mostra compartilhamentos: a interação usa curtidas + comentários, sobre visualizações, e só existe para reels.</p>
-  </div>
-  <div class="odi-signal" id="igStatus" role="status">Aguardando leitura da base do Instagram.</div>
-  <div class="cob-fase" id="igCobertura" data-plat="instagram"></div>
-  <div class="tk-perfis" id="igPerfis"></div>
-  <div class="yt-stats" id="igStats"></div>
-  <div class="yt-controls card">
-    <div class="yt-chips" role="group" aria-label="Fase"><button class="yt-chip" data-igper="todo" aria-pressed="true">Desde 20/07</button><button class="yt-chip" data-igper="pre" aria-pressed="false">Pré-campanha</button><button class="yt-chip" data-igper="turno1" aria-pressed="false">1º turno</button><button class="yt-chip" data-igper="turno2" aria-pressed="false">2º turno</button></div>
-    <div class="yt-chips" id="igChips" role="group" aria-label="Filtrar por tema"></div>
-    <div class="yt-toggles"><label><input type="checkbox" id="igOnlyVote"> Só pedidos de voto</label><label><input type="checkbox" id="igOnlyAdv"> Só citam o adversário</label></div>
-  </div>
-  <div class="card tk-tl"><div class="eyebrow">Linha do tempo · semana a semana</div><h2 class="tk-h2">Cada bolha é um post; o tamanho é a audiência (visualizações, ou curtidas quando não há)</h2><div class="tk-tlwrap"><svg id="igTimeline" role="img" aria-label="Linha do tempo dos vídeos do Instagram"></svg></div><p class="yt-cloudnote">Acima do eixo, Lula; abaixo, Flávio. Clique numa bolha para ver o post.</p></div>
-  <div class="yt-clouds">
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong> · assuntos mais abordados <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="igCloudA" style="--c:#c8102e"></div><div class="tk-tags" id="igTagsA"></div></figure>
-    <figure class="yt-cloud card"><figcaption><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong> · assuntos mais abordados <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></figcaption><div class="yt-cloudbox tk-cloud" id="igCloudB" style="--c:#1f8a3b"></div><div class="tk-tags" id="igTagsB"></div></figure>
-  </div>
-  <div class="yt-detail card tk-detail" id="igDetail" hidden></div>
-  <div class="yt-cols">
-    <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#c8102e"></span><strong>Lula</strong><span class="smalltag">nº 13</span></div><div class="yt-list" id="igListA"></div></div>
-    <div class="yt-col card"><div class="yt-colhead"><span class="yt-dot" style="background:#1f8a3b"></span><strong>Flávio Bolsonaro</strong><span class="smalltag">nº 22</span></div><div class="yt-list" id="igListB"></div></div>
-  </div>
-  <div class="card yt-pop">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de conteúdo · Bardin + CHD de Reinert <span class="nf-tag">acervo completo · não acompanha o filtro de fase</span></div><h2>Estratégias discursivas e classes de discurso</h2></div></div>
-    <div class="odi-signal" id="igPopStatus">Aguardando leitura.</div>
-    <div class="yt-popgrid">
-      <div><h3 class="yt-h3">Livro de códigos · pré-codificação automática</h3><p class="yt-cloudnote">Percentual dos vídeos de cada candidato em que os indicadores da categoria aparecem. É sugestão para a codificação humana, ainda sem validação.</p><div id="igPopBars"></div></div>
-      <div><h3 class="yt-h3">CHD de Reinert · classes</h3><p class="yt-cloudnote" id="igChdInfo"></p><div id="igChdTree"></div></div>
-    </div>
-    <div class="yt-chdclasses" id="igChdClasses"></div>
-    <div class="yt-netdl"><span class="eyebrow">Corpus e instrumentos (para IRaMuTeQ e codificação humana)</span>
-      <a class="ghostbutton" href="./data/corpus/facebook_candidatos_iramuteq.txt" download>Corpus IRaMuTeQ · TXT</a>
-      <a class="ghostbutton" href="./data/corpus/facebook_candidatos_segmentos.csv" download>Segmentos · CSV</a>
-      <a class="ghostbutton" href="./data/config/livro_codigos_populismo.json" download>Livro de códigos · JSON</a>
-      <a class="ghostbutton" href="./data/codificacao/amostra_populismo_facebook_v1.csv" download>Amostra p/ codificar · CSV</a>
-      <a class="ghostbutton" href="./data/corpus/chd_reinert_instagram.json" download>CHD · JSON</a></div>
-    <p class="yt-cloudnote" id="igPopNote"></p>
-  </div>
-  <div class="card yt-net">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · coocorrência <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></div><h2>Que assuntos andam juntos em cada campanha</h2></div>
-      <div class="yt-netctl"><span>Ver:</span><button class="yt-chip" data-fbview="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-fbview="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-fbview="arestas" aria-pressed="false">Tabela de arestas</button><span style="margin-left:10px">Cor:</span><button class="yt-chip" data-fbcor="lado" aria-pressed="true">Candidato</button><button class="yt-chip" data-fbcor="com" aria-pressed="false">Comunidade</button><button class="yt-chip" id="igNetReset">Recentrar</button></div></div>
-    <div class="yt-netbody">
-      <div class="yt-netsvg"><svg id="igNet" role="img" aria-label="Rede de coocorrência de termos e tags"></svg>
-        <div class="yt-netlegend" id="igNetLegend"></div></div>
-      <aside class="yt-netside" id="igNetSide"></aside>
-    </div>
-    <div class="yt-nettable" id="igNetTable" hidden>
-      <input type="search" id="igNetSearch" placeholder="Filtrar termo…" aria-label="Filtrar termo">
-      <div class="yt-tablewrap"><table id="igNetTbl"></table></div>
-    </div>
-    <div class="yt-netdl"><span class="eyebrow">Planilhas da rede (conferência e Gephi)</span>
-      <a class="ghostbutton" href="./data/instagram/rede_nos.csv" download>Nós · CSV</a>
-      <a class="ghostbutton" href="./data/instagram/rede_arestas.csv" download>Arestas · CSV</a>
-      <a class="ghostbutton" href="./data/instagram/rede_videos_termos.csv" download>Vídeo × termos · CSV</a>
-      <a class="ghostbutton" href="./data/instagram/rede.gexf" download>Rede · GEXF</a>
-      <p class="yt-cloudnote">No Gephi: <b>Arquivo → Abrir → rede.gexf</b> (já vem com posição, cor e comunidade), ou <b>Laboratório de dados → Importar planilha</b> com nós e depois arestas (tipo não direcionado). A planilha “vídeo × termos” lista, para cada vídeo, os termos da rede que ele contém: o peso de qualquer aresta é o nº de linhas em que os dois termos aparecem juntos.</p></div>
-    <p class="yt-cloudnote" id="igNetNote"></p>
-  </div>
-  <div class="card yt-net tk-men">
-    <div class="yt-tmhead"><div><div class="eyebrow">Análise de redes · menções <span class="nf-tag" style="border-color:#297de2;color:#1f5fae">acompanha o filtro de fase</span></div><h2>Quem as campanhas marcam no Instagram</h2></div></div>
-    <div class="yt-netbody"><div class="yt-netsvg"><svg id="igMen" role="img" aria-label="Rede de menções das campanhas no Instagram"></svg>
-      <div class="yt-netlegend"><i style="background:#c8102e"></i>campanha de Lula <i style="background:#1f8a3b"></i>campanha de Flávio · ○ perfil da campanha · ● conta marcada · seta = quem marca quem</div></div>
-      <aside class="yt-netside" id="igMenSide"></aside></div>
-    <div class="yt-netdl"><span class="eyebrow">Planilhas (conferência e Gephi)</span>
-      <a class="ghostbutton" href="./data/instagram/rede_mencoes_nos.csv" download>Contas · CSV</a>
-      <a class="ghostbutton" href="./data/instagram/rede_mencoes_arestas.csv" download>Marcações · CSV</a>
-      <a class="ghostbutton" href="./data/instagram/rede_mencoes_videos.csv" download>Vídeos · CSV</a>
-      <a class="ghostbutton" href="./data/instagram/rede_mencoes.gexf" download>Rede · GEXF</a></div>
-    <p class="yt-cloudnote" id="igMenNote"></p>
-  </div>
-  <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="igMethod"></p>
-    <p id="igPerfisNota" class="yt-cloudnote"></p>
-    <p class="yt-cloudnote"><a href="./data/instagram/conteudo.json" download>↓ Conteúdo (JSON)</a> · <a href="./data/instagram/videos.csv.gz" download>↓ Posts (CSV)</a> · <a href="./data/instagram/manifesto_latest.json" download>↓ Manifesto da coleta</a> · <a href="./data/config/instagram_posts.json" download>↓ Configuração</a></p></div>
-</section>
+
 <script>
 /* Caderno 02 · Kwai (data/kwai/conteudo.json e manifesto_latest.json) */
 /* Caderno 02 (Instagram, gerado a partir do bloco do Kwai/TikTok — mesmas regras) · Instagram por tema (data/tiktok/conteudo.json) — Lula vermelho, Flávio verde */
