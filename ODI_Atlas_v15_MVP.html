@@ -2106,6 +2106,9 @@ J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class=
 <div class="db-rel2"><div><h3 style="font:700 11px 'Courier New',monospace;text-transform:uppercase">Em alta no estado</h3><div class="db-scroll" style="max-height:520px"><table class="db-tab" id="dbEstTab"></table></div></div>
     <div><h3 style="font:700 11px 'Courier New',monospace;text-transform:uppercase" id="dbEstRelTit">Termos mais buscados no estado</h3><div class="pt-chips" id="dbEstRelTermo" role="group" aria-label="Termo"><button type="button" data-v="debate" aria-pressed="true">debate</button><button type="button" data-v="Lula" aria-pressed="false">Lula</button><button type="button" data-v="Flávio Bolsonaro" aria-pressed="false">Flávio Bolsonaro</button></div><div id="dbEstRel"></div></div></div>
     <p class="yt-cloudnote" id="dbEstNota">A lista "Em alta agora" do Google Trends para o estado (últimas 24 h), lida uma vez por hora.</p></div>
+  <div class="card yc-block"><div class="eyebrow">08 · Redes · Gephi</div><h2 class="tk-h2" id="dbRedeTit">Rede de canais</h2>
+    <div class="pt-chips" id="dbRedeTipo" role="group" aria-label="Rede"><button type="button" data-v="canais" aria-pressed="true">Canais (veículos)</button><button type="button" data-v="palavras" aria-pressed="false">Palavras-chave</button></div>
+    <div id="dbRede"></div><p class="yt-cloudnote" id="dbRedeNota"></p><p class="yt-cloudnote" id="dbRedeArq"></p></div>
   <div class="card yc-block"><div class="eyebrow">03 · Ranking</div><h2 class="tk-h2" id="dbTit">Termos em alta · Política</h2><div class="db-scroll"><table class="db-tab" id="dbTab"></table></div>
     <p class="yt-cloudnote">"Visto pelo Atlas": entre o primeiro e o último retrato em que o termo apareceu na lista. "No topo do Google Notícias agora": as 5 primeiras matérias para o termo nas últimas 24 h, na ordem do Google Notícias (renovadas a cada hora; não é a busca geral da web, nem personalizada). Notícias com fonte "Trends": as que o próprio Trends liga ao termo, quando há.</p></div>
   <div class="card yc-block"><div class="eyebrow">Método e limites</div><div class="yt-cloudnote" id="dbMetodo"></div>
@@ -2164,9 +2167,26 @@ function estados(){const E=D.em_alta_por_uf;const sel=$('dbEst');if(!E){$('dbEst
  if(!sel.options.length){sel.innerHTML=Object.keys(E).sort().map(u=>`<option value="${u}"${u==='SP'?' selected':''}>${u}</option>`).join('');sel.addEventListener('change',estados);$('dbEstPol').addEventListener('change',estados);}
  const uf=sel.value||'SP';const l=(E[uf]||[]).filter(x=>!$('dbEstPol').checked||x.politica);$('dbEstTit').textContent=`Em alta agora · ${uf} · ${l.length} termos`;
  $('dbEstTab').innerHTML='<thead><tr><th>Termo</th><th>Volume</th><th>Começou</th></tr></thead><tbody>'+(l.map(x=>`<tr class="${x.politica?'pol':''}"><td><b>${esc(x.termo)}</b> ${x.ativo?'<span class="db-ativo">● em alta</span>':''}${mats(x.termo,2)}</td><td class="n">${vol(x.volume)}</td><td>${brt(x.inicio)}</td></tr>`).join('')||'<tr><td colspan="3">Nenhum termo neste recorte.</td></tr>')+'</tbody>';estRelDraw();}
-function draw(){pontos();curvaDraw();tabela();extras();estados();}
+let redeTipo='canais';const REDES_DB={};
+async function redeDraw(){const R=REDES_DB[redeTipo]||(REDES_DB[redeTipo]=await fetch(`./data/trends/agora/rede_${redeTipo}.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null));
+ const el=$('dbRede');const d=R&&R.desenho;$('dbRedeTit').textContent=redeTipo==='canais'?'Rede de canais: quais veículos estão no topo de cada busca':'Rede de palavras-chave: o que se busca junto';
+ $('dbRedeArq').innerHTML=`<a href="./data/trends/agora/rede_${redeTipo}.gexf" download>↓ GEXF para o Gephi</a> · <a href="./data/trends/agora/rede_${redeTipo}_nos.csv" download>↓ nós (CSV)</a> · <a href="./data/trends/agora/rede_${redeTipo}_arestas.csv" download>↓ ligações (CSV)</a>`;
+ if(!d){el.innerHTML='<p class="yt-cloudnote">⛔ Rede ainda não gerada.</p>';$('dbRedeNota').textContent='';return;}
+ const W=760,H=470,xs=d.nos.map(n=>n.x),ys=d.nos.map(n=>n.y),x0=Math.min(...xs),x1=Math.max(...xs),y0=Math.min(...ys),y1=Math.max(...ys);
+ const X=v=>40+(v-x0)/((x1-x0)||1)*(W-80),Y=v=>20+(v-y0)/((y1-y0)||1)*(H-40);const P=Object.fromEntries(d.nos.map(n=>[n.id,n]));const mx=Math.max(...d.nos.map(n=>n.grau));
+ const COR={'termo em alta':'#b3261e','veículo':'#172238','termo agrupado pelo Trends':'#d7a14a','consulta relacionada':'#297de2','termo acompanhado':'#1f8a3b'};
+ let svg=d.arestas.map(([a,b,w])=>`<line x1="${X(P[a].x)}" y1="${Y(P[a].y)}" x2="${X(P[b].x)}" y2="${Y(P[b].y)}" stroke="#9aa3ad" stroke-opacity=".45" stroke-width="${Math.min(3.5,.6+w*.6)}"/>`).join('');
+ const rotulos=new Set(d.nos.slice().sort((a,b)=>b.grau-a.grau).slice(0,28).map(n=>n.id));
+ const ocup=[];svg+=d.nos.slice().sort((a,b)=>b.grau-a.grau).map(n=>{const r=3+9*Math.sqrt(n.grau/mx);let rot='';
+  if(rotulos.has(n.id)){const txt=String(n.rotulo).slice(0,30);const w=txt.length*5.8,x=X(n.x)+r+2,y=Y(n.y)+3;const a0=x,a1=x+w;if(!ocup.some(o=>Math.abs(o.y-y)<10&&o.a0<a1&&a0<o.a1)){ocup.push({a0,a1,y});
+   rot=`<text x="${x}" y="${y}" font-size="9.5" font-family="Courier New" fill="#172238" paint-order="stroke" stroke="#efe7d6" stroke-width="3">${esc(txt)}</text>`;}}
+  return `<circle cx="${X(n.x)}" cy="${Y(n.y)}" r="${r}" fill="${COR[n.tipo]||'#5b7894'}" fill-opacity=".85"><title>${esc(n.rotulo)} · ${esc(n.tipo)} · ${n.grau} ligação(ões)${n.volume?' · '+vol(n.volume):''}</title></circle>${rot}`;}).join('');
+ el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Rede" class="cs-board">${svg}</svg>`;
+ const leg=Object.entries(COR).filter(([k])=>d.nos.some(n=>n.tipo===k)).map(([k,c])=>`<span style="color:${c}">●</span> ${esc(k)}`).join(' · ');
+ $('dbRedeNota').innerHTML=`${leg}. ${esc(R.o_que_e)}. Desenho com os ${d.nos.length} nós mais ligados de ${d.total_nos} (${d.total_arestas} ligações no arquivo do Gephi).${R.veiculos_mais_presentes?' Veículos mais presentes no topo: '+R.veiculos_mais_presentes.slice(0,8).map(([v,n])=>`${esc(v)} (${n})`).join(', ')+'.':''}${redeTipo==='canais'?' Presença no topo do Google Notícias não é audiência nem linha editorial.':' Termos ligados foram buscados junto ou agrupados pelo Trends; não indica concordância entre eles.'} Passe o mouse sobre um nó para ver o nome.`;}
+function draw(){pontos();curvaDraw();tabela();extras();estados();redeDraw();}
 function chips(id,set){$(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));set(b.dataset.v);draw();}));}
-chips('dbCat',v=>cat=v);chips('dbJan',v=>jan=v);chips('dbCurva',v=>curva=v);chips('dbZoom',v=>zoom=v);chips('dbRelTermo',v=>relTermo=v);chips('dbEstRelTermo',v=>estRel=v);
+chips('dbCat',v=>cat=v);chips('dbJan',v=>jan=v);chips('dbCurva',v=>curva=v);chips('dbZoom',v=>zoom=v);chips('dbRelTermo',v=>relTermo=v);chips('dbEstRelTermo',v=>estRel=v);chips('dbRedeTipo',v=>redeTipo=v);
 fetch('./data/trends/agora/debate.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(!d){$('dbStatus').textContent='⛔ Ainda sem leitura.';return;}D=d;
  $('dbData').textContent='ÚLTIMA LEITURA '+brt(d.gerado_em_utc);const pol=d.termos.filter(t=>t.politica).length;const er=Object.keys((d.ultimo_retrato||{}).erros||{});
  $('dbStatus').textContent=`${d.retratos.length} leitura(s) desde ${brt(d.retratos[0]&&d.retratos[0].t)} · ${d.termos.length} termos vistos em alta, ${pol} na categoria Política. ${esc(d.debate.rotulo)}.${er.length?' ⚠ última leitura com falha em: '+er.join(', '):''}`;

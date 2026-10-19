@@ -4,12 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.57 — Debate: termos mais buscados por estado e matérias no topo de cada busca (2026-10-18) 🔜
+## C19.58 — Debate: redes de canais e de palavras-chave (2026-10-18) ✅
+
+- Pedido do usuário (18/10, 23h05): "pode gerar as redes de canais e palavras-chave". `build_rede_debate.py` (no workflow `trends-agora`, depois de cada leitura):
+  - rede de canais: termo em alta de Política — veículo com matéria entre as 5 primeiras do Google Notícias para o termo (peso = nº de matérias);
+  - rede de palavras-chave: termo em alta de Política — termos que o Trends agrupa nele; Lula, Flávio Bolsonaro e "debate" — consultas relacionadas (24 h).
+  - Variações de acento viram um nó só ("flávio miliciano" = "flavio miliciano"). Saídas: `data/trends/agora/rede_{canais,palavras}.{gexf,json}` e CSVs de nós e ligações.
+- Leitura de 19/10 01h53 UTC: canais 163 nós e 255 ligações; palavras 288 nós e 280 ligações. Veículos mais presentes no topo: Poder360 (23), Valor Econômico (18), O Globo (14), Estadão (14), Metrópoles (12), UOL (10), Folha (10), G1 (9).
+- Página: painel 08 · Redes (canais / palavras-chave), desenho com os ~90 nós mais ligados, rótulos sem sobreposição, GEXF e CSVs para baixar. Verificado no Chromium local (1300 e 390 px, sem erro de JavaScript).
+- Testes: `tests/test_rede_debate.py`; suíte OK.
+
+## C19.57 — Debate: termos mais buscados por estado e matérias no topo de cada busca (2026-10-18) ✅
 
 - Pedidos do usuário (18/10, 22h37 e 22h50): "falta só os termos mais buscados por estado" e "ver quais matérias estão no início de cada busca".
 - Por estado: na primeira leitura de cada hora, consultas relacionadas (principais e em alta, até 10) a Lula, Flávio Bolsonaro e "debate" em cada UF, últimas 24 h (`relacionados_por_uf`). Página: painel 07 ganha "Termos mais buscados sobre… no estado" ao lado da lista em alta do estado.
 - Matérias: para cada termo de Política em alta (até 60), as 5 primeiras matérias do Google Notícias nas últimas 24 h, na ordem do Google Notícias, renovadas a cada hora (`data/trends/agora/materias.json`). Aparecem no ranking (5) e na lista de cada estado (2). Limite: é o Google Notícias, não a busca geral da web (a API de busca do Google recusou o projeto), e não é personalizado.
-- Workflow com tempo máximo de 25 min (as 27 UFs levam alguns minutos). Testes: `test_trends_agora` com matérias simuladas; suíte OK. Pendente: leitura no Actions.
+- Workflow com tempo máximo de 25 min. Leitura de 19/10 01h53 UTC: termos relacionados nas 27 UFs; matérias para 59 termos de Política. Testes: `test_trends_agora` com matérias simuladas; suíte OK.
 
 ## C19.56 — Debate: perguntas, termos mais buscados e buscas por estado (2026-10-18) 🔜
 

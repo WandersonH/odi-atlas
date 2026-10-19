@@ -34,6 +34,14 @@ jobs:
           python scripts/collect_trends_agora.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Trends agora::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
+      - name: Redes de canais e palavras-chave
+        if: always()
+        continue-on-error: true
+        run: |
+          pip install -q networkx==3.6.1 numpy==2.3.4
+          python scripts/build_rede_debate.py > r.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Redes do debate::$(echo "$l" | cut -c1-400)"; done < r.txt
+          exit $rc
       - name: Commitar
         if: always()
         run: |
