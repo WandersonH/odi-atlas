@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.67 — Debate no YouTube: todos os vídeos, big numbers e comentários (2026-10-19) 🔜
+
+- Pedido do usuário (19/10, 03h16): big numbers do debate somando as réplicas (todas as cópias, lives, íntegras e cortes) e análise do que foi publicado no YouTube e dos comentários, na mesma página, lembrando que o chat da live é diferente dos comentários.
+- `collect_debate_youtube.py` + `debate-youtube.yml` (a cada 6 h, grátis): busca na YouTube Data API (6 consultas, até 150 vídeos cada, publicados desde 18/10 12h UTC, e a busca "debate" nos 4 canais das campanhas), filtra pelo título/descrição, lê os números públicos de cada vídeo e os comentários dos 40 mais vistos (até 100 por relevância + 100 recentes). Comentários só no privado. O chat ao vivo não é lido: a API só o oferece enquanto a live está no ar (registrado como ⛔).
+- `build_debate_youtube.py` → `data/debate/youtube.json`: totais (vídeos, canais, visualizações, curtidas, comentários, horas), por formato (live, íntegra, corte, curto) e por origem (emissoras do debate, outros veículos, campanhas, outros canais), vídeos mais vistos e agregados dos comentários (menções, incivilidade e intolerância pelo livro de códigos, termos).
+- Testes: `tests/test_debate_youtube.py`; suíte OK. Execução real: próxima entrada.
+
 ## C19.66 — Debate: quem fala, por codificação manual dos turnos (2026-10-19) ⚠️
 
 - 205 turnos marcados sobre a íntegra (legenda automática), lendo a transcrição inteira: Lula, Flávio Bolsonaro, mediação, intervalo comercial e 4 trechos indefinidos (falas sobrepostas). Codificação assistida por IA (Claude), ainda **não validada por pessoa da equipe**. As âncoras de cada turno (começo da fala) ficam no privado (`debate/turnos_codificacao.tsv`); `resolver_turnos.py` gera `data/config/debate_turnos.json`, só com tempos e oradores.

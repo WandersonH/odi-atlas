@@ -1,0 +1,57 @@
+name: Debate do 2º turno — vídeos e comentários no YouTube (YouTube Data API, grátis)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 */6 * * *"   # a cada 6 h
+
+permissions:
+  contents: write
+
+concurrency:
+  group: debate-youtube
+  cancel-in-progress: false
+
+jobs:
+  youtube:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar e analisar
+        id: coleta
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/collect_debate_youtube.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
+          python scripts/build_debate_youtube.py . >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          tail -n 8 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Debate YouTube::$(echo "$l" | cut -c1-400)"; done
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Debate: comentários do YouTube (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Debate no YouTube (run ${{ github.run_id }})"
