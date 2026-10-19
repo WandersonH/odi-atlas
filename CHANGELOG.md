@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.55 — Debate do 2º turno: Google Trends "em alta agora" (2026-10-18) 🔜
+
+- Pedido do usuário (18/10, 22h24): página sobre o debate, "cópia do Trends mais precisa", tendências das últimas horas e categoria Política; "debate iniciou às 8 mas antes já temos notícias, por isso a janela de 24 h e repercussão de +24 h". Debate Band/Estadão, 18/10, 20h (Brasília), conforme o DGABC.
+- `collect_trends_agora.py` + `trends-agora.yml` (a cada 15 min, grátis): lista "Em alta agora" do Brasil (4 h e 24 h; termo, volume aproximado, aumento, início, se segue ativo, categorias, termos agrupados), RSS de tendências (volume e notícias por termo), curvas de Lula, Flávio Bolsonaro e "debate" (24 h a cada 8 min; 7 dias por hora). Retratos em `data/trends/agora/retratos/`, consolidado em `data/trends/agora/debate.json`. Fora da janela (até 19/10 20h) o coletor não faz nada.
+- Testes: `tests/test_trends_agora.py`; suíte OK. Pendente: primeira execução (as posições dos campos da lista vêm da página e ficam conferidas pela amostra bruta no log) e a página.
+
 ## C19.54 — ⛔ Apify bloqueou as contas 2 a 12 (2026-10-18)
 
 - Informação do usuário (18/10, 18h11): "o Apify bloqueou as contas todas". Confirma o diagnóstico de C19.53: chaves com formato correto (46 caracteres, prefixo `apify_api_`, sem aspas nem espaços), recusadas com HTTP 401 desde ~17h30.
