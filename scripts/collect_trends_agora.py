@@ -32,10 +32,11 @@ from net import now_utc, open_url, read_body  # noqa: E402
 
 BATCH = "https://trends.google.com/_/TrendsUi/data/batchexecute"
 RSS = "https://trends.google.com/trending/rss?geo=BR"
-CATEGORIAS = {1: "Veículos", 2: "Beleza e moda", 3: "Negócios e finanças", 4: "Clima", 5: "Entretenimento", 6: "Comida e bebida",
-              7: "Jogos", 8: "Saúde", 9: "Hobbies e lazer", 10: "Empregos e educação", 11: "Lei e governo", 12: "Outros",
-              13: "Animais", 14: "Política", 15: "Ciência", 16: "Compras", 17: "Esportes", 18: "Tecnologia", 19: "Viagens e transporte",
-              20: "Clima"}
+# ids da página "Em alta agora"; nomes conferidos pelos termos de cada id no retrato de 19/10 01h26 UTC (ex.: 17 = futebol,
+# 20 = previsão do tempo, 9 = Unicamp/OAB, 10 = locais de votação); 12 e 13 não apareceram e ficam sem nome
+CATEGORIAS = {1: "Veículos", 2: "Beleza e moda", 3: "Negócios e finanças", 4: "Entretenimento", 5: "Comida e bebida", 6: "Jogos",
+              7: "Saúde", 8: "Hobbies e lazer", 9: "Empregos e educação", 10: "Lei e governo", 11: "Outros", 14: "Política",
+              15: "Ciência", 16: "Compras", 17: "Esportes", 18: "Tecnologia", 19: "Viagens e transporte", 20: "Clima"}
 POLITICA = 14
 DEBATE = {"inicio": "2026-10-18T23:00:00Z", "rotulo": "Debate Band/Estadão · 2º turno · 18/10 às 20h (Brasília)",
           "janela_de": "2026-10-17T23:00:00Z", "janela_ate": "2026-10-19T23:00:00Z"}

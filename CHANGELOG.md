@@ -8,7 +8,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Pedido do usuário (18/10, 22h24): página sobre o debate, "cópia do Trends mais precisa", tendências das últimas horas e categoria Política; "debate iniciou às 8 mas antes já temos notícias, por isso a janela de 24 h e repercussão de +24 h". Debate Band/Estadão, 18/10, 20h (Brasília), conforme o DGABC.
 - `collect_trends_agora.py` + `trends-agora.yml` (a cada 15 min, grátis): lista "Em alta agora" do Brasil (4 h e 24 h; termo, volume aproximado, aumento, início, se segue ativo, categorias, termos agrupados), RSS de tendências (volume e notícias por termo), curvas de Lula, Flávio Bolsonaro e "debate" (24 h a cada 8 min; 7 dias por hora). Retratos em `data/trends/agora/retratos/`, consolidado em `data/trends/agora/debate.json`. Fora da janela (até 19/10 20h) o coletor não faz nada.
-- Testes: `tests/test_trends_agora.py`; suíte OK. Pendente: primeira execução (as posições dos campos da lista vêm da página e ficam conferidas pela amostra bruta no log) e a página.
+- 1ª execução (19/10 01h26 UTC): 137 termos nas últimas 4 h, 403 nas 24 h, 57 na categoria Política; posições conferidas pela amostra bruta (termo, início, volume, aumento, termos agrupados, categorias). Nomes das categorias corrigidos pelos termos de cada id (ex.: 17 = jogos de futebol, 20 = previsão do tempo, 9 = Unicamp/OAB, 10 = locais de votação); a 1ª versão chamava o id 10 de "Empregos e educação".
+- Página: aba **Debate do 2º turno (em alta agora)** no caderno de Buscas — termos por horário de início × volume (Política em vermelho; noite do debate ou janela inteira), curvas de Lula, Flávio e "debate" (24 h e 7 dias), ranking com termos agrupados, notícias do RSS, "visto pelo Atlas", filtros Política/todas e antes/depois do debate/ainda em alta. Verificado no Chromium local (1300 e 390 px, sem erro de JavaScript).
+- Testes: `tests/test_trends_agora.py`; suíte OK.
 
 ## C19.54 — ⛔ Apify bloqueou as contas 2 a 12 (2026-10-18)
 
