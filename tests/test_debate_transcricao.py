@@ -56,3 +56,12 @@ class TestDebate(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestSrt(unittest.TestCase):
+    def test_ler_srt(self):
+        import importar_srt as im
+        srt = "1\n00:00:00,000 --> 00:00:02,674\nOlá, [música]\n\n2\n00:01:07,600 --> 00:01:13,960\nboa noite\npara você\n"
+        s = im.ler_srt(srt)
+        self.assertEqual(len(s), 2)
+        self.assertEqual(s[1], {"ini": 67.6, "fim": 73.96, "texto": "boa noite para você"})

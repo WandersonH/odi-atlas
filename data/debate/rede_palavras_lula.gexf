@@ -3,24 +3,34 @@
 <graph defaultedgetype="directed">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="rede" type="string"/><attribute id="2" title="publicacoes" type="integer"/></attributes>
 <nodes>
-<node id="seguranca" label="seguranca"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="4"/></attvalues></node>
-<node id="organizado" label="organizado"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
-<node id="resposta" label="resposta"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
 <node id="federal" label="federal"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
+<node id="candidato" label="candidato"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="6"/></attvalues></node>
 <node id="publica" label="publica"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="4"/></attvalues></node>
-<node id="pergunta" label="pergunta"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
+<node id="seguranca" label="seguranca"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="4"/></attvalues></node>
 <node id="estado" label="estado"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
+<node id="pergunta" label="pergunta"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
+<node id="organizado" label="organizado"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
+<node id="favor" label="favor"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="4"/></attvalues></node>
+<node id="minutos" label="minutos"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="estado" target="federal" weight="2"/>
-<edge id="1" source="estado" target="publica" weight="3"/>
-<edge id="2" source="estado" target="seguranca" weight="3"/>
-<edge id="3" source="federal" target="publica" weight="2"/>
-<edge id="4" source="federal" target="seguranca" weight="2"/>
-<edge id="5" source="publica" target="seguranca" weight="3"/>
-<edge id="6" source="federal" target="organizado" weight="1"/>
-<edge id="7" source="organizado" target="seguranca" weight="1"/>
-<edge id="8" source="pergunta" target="publica" weight="1"/>
-<edge id="9" source="pergunta" target="resposta" weight="1"/>
+<edge id="0" source="candidato" target="estado" weight="1"/>
+<edge id="1" source="candidato" target="federal" weight="1"/>
+<edge id="2" source="candidato" target="publica" weight="1"/>
+<edge id="3" source="candidato" target="seguranca" weight="1"/>
+<edge id="4" source="estado" target="federal" weight="2"/>
+<edge id="5" source="estado" target="publica" weight="3"/>
+<edge id="6" source="estado" target="seguranca" weight="3"/>
+<edge id="7" source="federal" target="publica" weight="2"/>
+<edge id="8" source="federal" target="seguranca" weight="2"/>
+<edge id="9" source="publica" target="seguranca" weight="3"/>
+<edge id="10" source="federal" target="organizado" weight="1"/>
+<edge id="11" source="organizado" target="seguranca" weight="1"/>
+<edge id="12" source="pergunta" target="publica" weight="1"/>
+<edge id="13" source="candidato" target="minutos" weight="2"/>
+<edge id="14" source="candidato" target="pergunta" weight="1"/>
+<edge id="15" source="minutos" target="pergunta" weight="1"/>
+<edge id="16" source="candidato" target="favor" weight="4"/>
+<edge id="17" source="favor" target="minutos" weight="1"/>
 </edges>
 </graph>
 </gexf>

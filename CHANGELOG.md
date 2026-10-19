@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.65 — Debate: transcrição completa a partir do .srt da íntegra enviado pelo usuário (2026-10-19) ⚠️
+
+- Bloco 3 pela Apify: mais uma tentativa (run 39207352137; Apify 4UDA8RrgDVAlYpv5S, US$ 0,00005), de novo ⛔ "HTTP Error 429: Too Many Requests". Até aqui eram 2 dos 3 blocos (~70 de ~100 min).
+- O usuário enviou (19/10, 03h00) a legenda automática do YouTube da íntegra, em .srt ("ÍNTEGRA (1) debate entre Lula e Flávio Bolsonaro nas eleições 2026", baixada em DownloadYoutubeSubtitles.com). Lida: 2.928 trechos, 18.859 palavras, 114,3 min, da abertura ("começa agora o primeiro debate…") ao encerramento. O id do vídeo não veio no arquivo.
+- `importar_srt.py`: grava a transcrição privada no formato de sempre e guarda o .srt no privado (`debate/integra_legenda_youtube_auto.srt`). `collect_debate_video.py` não troca mais uma transcrição maior por uma menor (a menos que se passe `--forcar`), para que uma nova leitura por blocos não apague a íntegra.
+- `build_debate_transcricao.py` rodado localmente sobre a íntegra: 470 trechos de análise, CHD com 6 classes, redes regeradas. ⛔ Quem fala continua sem atribuição confiável: só 18 deixas da mediação para 208 trocas de voz; Não atribuído 89,0 min. Próximo passo: codificação manual dos turnos.
+- Testes: `TestSrt` em `tests/test_debate_transcricao.py`; suíte OK.
+
 ## C19.64 — Checagens publicadas funcionando; painel 09 na página do debate (2026-10-19) ✅
 
 - O usuário liberou a Fact Check Tools API na chave do Google Cloud (19/10, 02h52). Run 39206833280: 344 checagens únicas em português (60 dias), sem erro. Por consulta: "Lula" 257, "Flávio Bolsonaro" 114, "urna eletrônica" 13, "eleições 2026" 12, "debate presidencial" 1, "debate Band" 0 (há sobreposição entre consultas). Agências: UOL Notícias 86, Aos Fatos 84, Estadão 62, AFP Checamos 55, BOL-UOL 34, Projeto Comprova 16, Observador 7. Rótulos: falso 245, enganoso 58, distorcido 14. Nenhuma checagem com data de 18/10 em diante; a mais recente é de 16/10. 181 sem data de checagem na API.

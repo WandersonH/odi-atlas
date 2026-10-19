@@ -274,6 +274,13 @@ def main(argv=None) -> int:
     man.update(diagnostico=[e for e in ERROS if e.split(": ", 1)[-1]], trecho=argv[argv.index("--trecho") + 1] if "--trecho" in argv else None, transcricao_fonte=fonte, segmentos=len(segs), palavras=sum(len(s["texto"].split()) for s in segs),
                status="ok" if segs else "⛔ sem legendas (tente --whisper)")
     interno = os.environ.get("ODI_INTERNO_DIR")
+    atual = Path(interno) / "debate/transcricao.json" if interno else None
+    if segs and atual and atual.exists() and "--forcar" not in argv:
+        antes = json.loads(atual.read_text(encoding="utf-8"))
+        if len(antes.get("segmentos") or []) > len(segs):  # não troca uma transcrição mais completa (ex.: SRT da íntegra) por uma parcial
+            man["transcricao_mantida"] = f"o privado já tem {len(antes['segmentos'])} trechos ({antes.get('fonte')}); esta leitura trouxe {len(segs)} e não substituiu"
+            print(man["transcricao_mantida"])
+            segs = []
     if segs and interno:
         d = Path(interno) / "debate"
         d.mkdir(parents=True, exist_ok=True)
