@@ -60,6 +60,39 @@ class TestAvaliar(unittest.TestCase):
         self.assertTrue(c.gastar(100)); self.assertTrue(c.gastar(100)); self.assertFalse(c.gastar(100))
         self.assertEqual(c.usada, 200)
 
+    def test_descricao_integral_no_csv(self):
+        """Mantém quebras, ponto e vírgula, URL e conteúdo após o antigo limite de 600 caracteres."""
+        import os
+        from unittest.mock import patch
+
+        descricao = "Primeiro parágrafo\n\n" + "texto " * 150 + "\nhttps://youtube.com/watch?v=abc;fim"
+        video = {
+            "id": "video-com-descricao",
+            "snippet": {
+                "channelId": "UCcanal", "channelTitle": "Canal teste",
+                "publishedAt": "2026-10-18T12:00:00Z",
+                "title": "Lula participa do debate",
+                "description": descricao, "categoryId": "25",
+            },
+            "statistics": {"viewCount": "100", "likeCount": "10", "commentCount": "1"},
+        }
+
+        def fake_lotes(key, recurso, part, ids, cota):
+            return [video] if recurso == "videos" else [{"id": "UCcanal", "snippet": {"title": "Canal teste"},
+                                                          "statistics": {"subscriberCount": "10000", "videoCount": "10"}}]
+
+        with tempfile.TemporaryDirectory() as d:
+            conf = Path(d) / "data/config"
+            conf.mkdir(parents=True)
+            (conf / "influenciadores_youtube.json").write_text(json.dumps(CFG), encoding="utf-8")
+            with patch.dict(os.environ, {"YOUTUBE_API_KEY": "chave_sintetica"}), \
+                 patch.object(ci, "buscar", return_value=["video-com-descricao"]), \
+                 patch.object(ci, "em_lotes", side_effect=fake_lotes):
+                self.assertEqual(ci.main([d]), 0)
+            with gzip.open(Path(d) / "data/youtube/influenciadores/videos.csv.gz", "rt", encoding="utf-8") as f:
+                linha = next(csv.DictReader(f, delimiter=";"))
+            self.assertEqual(linha["descricao"], descricao)
+
     def test_sem_chave_bloqueia(self):
         import os
         old = os.environ.pop("YOUTUBE_API_KEY", None)
