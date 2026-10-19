@@ -1,0 +1,42 @@
+name: Checagens publicadas — Google Fact Check Tools API (ClaimReview, grátis)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: "janela em dias (checagens publicadas desde)"
+        default: "60"
+  schedule:
+    - cron: "23 */6 * * *"   # a cada 6 h
+
+permissions:
+  contents: write
+
+concurrency:
+  group: checagens
+  cancel-in-progress: false
+
+jobs:
+  checagens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Coletar checagens
+        id: coleta
+        continue-on-error: true
+        env:
+          FACTCHECK_API_KEY: ${{ secrets.FACTCHECK_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          DIAS: ${{ github.event.inputs.dias }}
+        run: |
+          python scripts/collect_checagens.py --dias "${DIAS:-60}" | tee "$RUNNER_TEMP/saida.txt"
+          while IFS= read -r l; do echo "::notice title=Checagens::$(echo "$l" | cut -c1-400)"; done < "$RUNNER_TEMP/saida.txt"
+      - name: Commitar
+        run: |
+          scripts/commit_push.sh "Checagens publicadas (run ${{ github.run_id }})"

@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.63 — Checagens publicadas: Google Fact Check Tools API (2026-10-19) 🔜
+
+- Pedido do usuário (19/10, 02h35): protocolo de fact-check para o discurso. Primeiro passo do protocolo: cruzar com o que as agências já checaram, sem veredito do Atlas. O usuário confirmou às 02h45 que a Fact Check Tools API está ativa no Google Cloud.
+- `collect_checagens.py` + `checagens.yml` (a cada 6 h, grátis): `claims:search` em português para "Lula", "Flávio Bolsonaro", "debate Band", "debate presidencial", "eleições 2026", "urna eletrônica" (janela de 60 dias); junta por link, marca o candidato citado e se a checagem é de 18/10 em diante. Chave: segredo `FACTCHECK_API_KEY` ou, na falta, `YOUTUBE_API_KEY`. Saída: `data/checagens/checagens.json`.
+- Testes: `tests/test_checagens.py`; suíte OK. Primeira execução real: ver a próxima entrada.
+
 ## C19.62 — Debate: legendas dos blocos 1 e 2 lidas; atribuição automática de quem fala retirada por ser errada (2026-10-19) ⚠️
 
 - Run 39204798894 (19/10 05h2x UTC, `--blocos … --apify`): Apify, conta 1, run eoKn1Ix5Qn02Kwg6l, status SUCCEEDED, 3 itens. Bloco 1 (S17iktRbpa0, "Acompanhe o 1° bloco do Debate da Band", Rádio BandNews FM, 46 min): 1.256 trechos de legenda automática. Bloco 2 (HMn0LIrfcws, 23,5 min): 619. ⛔ Bloco 3 (Omay_TlhdZM, 30 min): item sem segmentos (o ator devolveu erro; o motivo não foi gravado). Total lido: 12.281 palavras.
