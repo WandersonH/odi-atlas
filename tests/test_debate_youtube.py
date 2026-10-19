@@ -27,3 +27,10 @@ class TestDebateYoutube(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestConteudo(unittest.TestCase):
+    def test_conteudo(self):
+        self.assertEqual(by.conteudo_de({"titulo": "PRÉ-DEBATE PRESIDENCIAL | Flávio x Lula"}), "pré-debate")
+        self.assertEqual(by.conteudo_de({"titulo": "Canal Livre analisa 1º debate"}), "análise, reação e cobertura")
+        self.assertEqual(by.conteudo_de({"titulo": "Lula para Flávio sobre voto de presidiários"}), "o debate e trechos dele")

@@ -4,7 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.67 — Debate no YouTube: todos os vídeos, big numbers e comentários (2026-10-19) 🔜
+## C19.68 — Debate: big numbers e painel do YouTube na página (2026-10-19) ✅
+
+- Run 39209236316 (19/10 06h2x UTC), sem erro: 418 vídeos achados, 404 sobre o debate, de 216 canais. Somados: 76.283.920 visualizações, 1.752.743 curtidas, 108.501 comentários (contadores públicos) e 223,5 h de vídeo. A transmissão da Band Jornalismo (Gqc1rQtzWUk) sozinha tem 31.125.686 visualizações.
+  - Por formato: 80 transmissões ao vivo (60,9 mi visualizações), 221 vídeos curtos (7,6 mi), 88 cortes (7,4 mi), 15 íntegras ou vídeos longos (364 mil).
+  - Por origem: emissoras do debate 52,5 mi; outros canais (comentaristas, cortes, perfis) 13,4 mi; outros veículos 7,7 mi; canais das campanhas 2,8 mi (4 vídeos, todos do canal TV Celular Flávio Bolsonaro).
+  - Comentários lidos: 8.932 em 40 vídeos, de 6.341 autores. 24,2% citam Lula e 25,5% citam Flávio Bolsonaro; incivilidade 3,2% e intolerância 0,8% (pré-codificação por dicionário).
+  - Nas lives, 0% dos 4.984 comentários lidos foi escrito durante a transmissão: o primeiro comentário de cada live é do minuto em que ela terminou. Isso confirma o que o usuário apontou: durante a live a conversa acontece no chat, que a API não oferece depois (⛔ não coletado).
+- `build_debate_youtube.py`: classificação por conteúdo pelo título (o debate e trechos, análise/reação/cobertura, pré-debate), comentários por hora e indicador "durante a transmissão".
+- Página (aba do debate): cartão "Big numbers" logo abaixo do vídeo (YouTube, duração, tempo de fala, checagens) e painel "10 · YouTube" (barras por formato, origem e conteúdo; 20 vídeos mais vistos; comentários com o aviso de que chat não é comentário; comentários por hora; tabela por origem; termos). Nenhum texto ou autor de comentário é publicado. Verificado no Chromium local, em 1300 e 390 px (largura 390), sem erro de JavaScript. Suíte OK.
+
+## C19.67 — Debate no YouTube: todos os vídeos, big numbers e comentários (2026-10-19) ✅ (resultados em C19.68)
 
 - Pedido do usuário (19/10, 03h16): big numbers do debate somando as réplicas (todas as cópias, lives, íntegras e cortes) e análise do que foi publicado no YouTube e dos comentários, na mesma página, lembrando que o chat da live é diferente dos comentários.
 - `collect_debate_youtube.py` + `debate-youtube.yml` (a cada 6 h, grátis): busca na YouTube Data API (6 consultas, até 150 vídeos cada, publicados desde 18/10 12h UTC, e a busca "debate" nos 4 canais das campanhas), filtra pelo título/descrição, lê os números públicos de cada vídeo e os comentários dos 40 mais vistos (até 100 por relevância + 100 recentes). Comentários só no privado. O chat ao vivo não é lido: a API só o oferece enquanto a live está no ar (registrado como ⛔).

@@ -41,6 +41,20 @@ def grupo_de(v: dict) -> str:
     return "outros canais (comentaristas, cortes, perfis)"
 
 
+PRE = re.compile(r"pr[eé][ -]?debate|esquenta|antes do debate|\bchegada|chega para o debate|bastidores antes", re.I)
+POS = re.compile(r"an[aá]lis|analisa|p[oó]s[ -]?debate|quem venceu|quem ganhou|repercut|react|rea[cç][aã]o|reage|coment[aá]|plant[aã]o|"
+                 r"cobertura|canal livre|central das elei|live de|opini", re.I)
+
+
+def conteudo_de(v: dict) -> str:
+    t = v.get("titulo") or ""
+    if PRE.search(t):
+        return "pré-debate"
+    if POS.search(t):
+        return "análise, reação e cobertura"
+    return "o debate e trechos dele"
+
+
 def soma(vs: list[dict], k: str) -> int:
     return sum(v.get(k) or 0 for v in vs)
 
@@ -75,7 +89,14 @@ def analisar_comentarios(rows: list[dict], vids: dict, root: Path) -> dict:
         v = vids.get(r["video_id"]) or {}
         por_grupo[v.get("grupo", "?")].append(i)
         por_tipo[v.get("tipo", "?")].append(i)
-    return {"total": bloco(tudo), "por_grupo": {g: bloco(ix) for g, ix in por_grupo.items()},
+    vivo = [i for i, r in enumerate(rows) if (vids.get(r["video_id"]) or {}).get("live_inicio")]
+    def durante(i):
+        v = vids[rows[i]["video_id"]]
+        return bool(v.get("live_fim")) and v["live_inicio"] <= rows[i]["publicado_em"] <= v["live_fim"]
+    hora = Counter(r["publicado_em"][:13] for r in rows if r["publicado_em"])
+    return {"total": bloco(tudo), "por_hora_utc": sorted(hora.items()),
+            "lives": {"comentarios": len(vivo), "durante_a_transmissao_pct": pct(sum(durante(i) for i in vivo), len(vivo))},
+            "por_grupo": {g: bloco(ix) for g, ix in por_grupo.items()},
             "por_tipo": {t: bloco(ix) for t, ix in por_tipo.items()},
             "categorias": {k: c["nome"] for k, c in intol["categorias"].items()},
             "nota": "Pré-codificação por dicionário (livro de códigos de intolerância do Atlas): indica candidatos a cada categoria; não é decisão. "
@@ -88,21 +109,27 @@ def main(argv=None) -> int:
     vs = d["videos"]
     for v in vs:
         v["grupo"] = grupo_de(v)
+        v["conteudo"] = conteudo_de(v)
     por_tipo = defaultdict(list)
     por_grupo = defaultdict(list)
+    por_conteudo = defaultdict(list)
     for v in vs:
         por_tipo[v["tipo"]].append(v)
         por_grupo[v["grupo"]].append(v)
+        por_conteudo[v["conteudo"]].append(v)
     canais = Counter()
     for v in vs:
         canais[v["canal"]] += v.get("visualizacoes") or 0
     out = {"schema_version": 1, "gerado_em_utc": now_utc(), "coletado_em_utc": d["coletado_em_utc"], "desde_utc": d["desde_utc"],
            "consultas": d["consultas"], "erros": d["erros"], "chat_ao_vivo": d["chat_ao_vivo"],
            "total": resumo(vs), "por_tipo": {k: resumo(x) for k, x in por_tipo.items()}, "por_grupo": {k: resumo(x) for k, x in por_grupo.items()},
+           "por_conteudo": {k: resumo(x) for k, x in por_conteudo.items()},
+           "nota_classificacao": "Formato pela duração e pelos dados de live da API; origem pelo nome do canal; conteúdo pelo título "
+                                 "(pré-debate, análise/reação/cobertura ou o próprio debate e trechos). Classificação automática, aproximada.",
            "canais_mais_vistos": canais.most_common(15),
            "lives": [{k: v.get(k) for k in ("id", "titulo", "canal", "visualizacoes", "curtidas", "comentarios", "comentarios_abertos", "live_inicio", "live_fim", "duracao_s")}
                      for v in vs if v["tipo"] == "transmissão ao vivo"],
-           "videos": [{k: v.get(k) for k in ("id", "titulo", "canal", "grupo", "tipo", "publicado_em", "duracao_s", "visualizacoes", "curtidas",
+           "videos": [{k: v.get(k) for k in ("id", "titulo", "canal", "grupo", "tipo", "conteudo", "publicado_em", "duracao_s", "visualizacoes", "curtidas",
                                              "comentarios", "comentarios_lidos", "campanha")} for v in vs],
            "comentarios": None}
     interno = os.environ.get("ODI_INTERNO_DIR")
