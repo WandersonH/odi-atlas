@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.59 — Debate: vídeo e transcrição (2026-10-18) 🔜
+
+- Pedido do usuário (18/10, 23h07): vídeo do debate no início da página, análise de redes da transcrição, análise no estilo IRaMuTeQ e contagem por tema.
+- `collect_debate_video.py` + `debate-video.yml` (grátis): procura o vídeo pela YouTube Data API (canal da Band ou do Estadão, mais de 1 h, publicado desde 18/10 17h) e baixa a legenda do YouTube (manual ou automática) por yt-dlp; opção de transcrever o áudio com faster-whisper. Transcrição integral só no privado; público: `data/debate/video.json`. Pendente: execução.
+
 ## C19.58 — Debate: redes de canais e de palavras-chave (2026-10-18) ✅
 
 - Pedido do usuário (18/10, 23h05): "pode gerar as redes de canais e palavras-chave". `build_rede_debate.py` (no workflow `trends-agora`, depois de cada leitura):

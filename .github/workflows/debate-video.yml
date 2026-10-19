@@ -1,0 +1,74 @@
+name: Debate do 2º turno — vídeo e transcrição (YouTube API + legendas; Whisper opcional; grátis)
+
+on:
+  workflow_dispatch:
+    inputs:
+      video:
+        description: "id do vídeo no YouTube (vazio = procurar)"
+        default: ""
+      whisper:
+        description: "transcrever o áudio se não houver legenda"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  debate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: |
+          pip install -q -U yt-dlp && pip install -q networkx==3.6.1 numpy==2.3.4
+          if [ "${{ github.event.inputs.whisper }}" = "true" ]; then pip install -q faster-whisper==1.1.1; sudo apt-get install -y -qq ffmpeg > /dev/null; fi
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Vídeo e transcrição
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          VIDEO: ${{ github.event.inputs.video }}
+          WHISPER: ${{ github.event.inputs.whisper }}
+        run: |
+          a=""; if [ -n "$VIDEO" ]; then a="--video $VIDEO"; fi
+          if [ "$WHISPER" = "true" ]; then a="$a --whisper"; fi
+          python scripts/collect_debate_video.py $a > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Debate vídeo::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Análises da transcrição
+        if: always() && steps.interno.outputs.dir != ''
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          if [ -f scripts/build_debate_transcricao.py ]; then
+            python scripts/build_debate_transcricao.py > b.txt 2>&1; rc=$?
+            while IFS= read -r l; do echo "::notice title=Debate análises::$(echo "$l" | cut -c1-600)"; done < b.txt
+            exit $rc
+          fi
+      - name: Gravar no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Debate: transcrição (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Debate: vídeo e transcrição (run ${{ github.run_id }})"
