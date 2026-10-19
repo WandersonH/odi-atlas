@@ -41,7 +41,7 @@ COLS = ["rede", "item_id", "conta", "nome_conta", "seguidores", "verificada", "p
         "comentarios", "compartilhamentos", "termo", "url", "capa_url", "coletado_em"]
 ATOR = {"x": "xquik~x-tweet-scraper", "instagram": "apify~instagram-hashtag-scraper", "instagram_palavra": "apidojo~instagram-hashtag-scraper",
         "tiktok_apify": "novi~multiple-tiktok-hashtag-scraper", "instagram_perfil": "esdrasdw~instagram-content-scraper",
-        "facebook": "scrapeforge~facebook-search-posts", "kwai": "unfenced-group~kwai-scraper"}
+        "facebook": "scrapeforge~facebook-search-posts", "kwai": "unfenced-group~kwai-scraper", "tiktok_busca": "apidojo~tiktok-scraper"}
 
 
 def iso(v) -> str:
@@ -156,6 +156,8 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
             # o feed da hashtag não trouxe nada desde 16/10 (run 39132035304); busca por palavra completada com o feed da hashtag
             out.append((f"#{t}", ATOR["kwai"], {"searchTerms": [t], "expandSearchWithHashtag": True, "maxItems": n, "postedAfter": d}))
     elif rede == "tiktok":
+        for q in caso.get("buscas_tiktok", []):  # busca por frase (como a caixa de busca do TikTok)
+            out.append((q, ATOR["tiktok_busca"], {"keywords": [q], "maxItems": n}))
         for t in tags:
             out.append((f"#{t}", ATOR["tiktok_apify"], {"hashtags": [t], "region": "BR", "limit": n}))
     return out
@@ -168,11 +170,13 @@ def preco(rede: str, ator: str, cfg: dict) -> tuple[float, float]:
 
 def tiktok(caso: dict, teste: bool, agora: str) -> tuple[list[dict], dict]:
     import collect_tiktok_hashtags as th
-    sub = {"hashtags": {"caso": caso.get("hashtags", [])[:1] if teste else caso.get("hashtags", [])}, "rolagens_por_hashtag": 2 if teste else caso.get("rolagens_tiktok", 25)}
+    sub = {"hashtags": {"caso": caso.get("hashtags", [])[:1] if teste else caso.get("hashtags", [])}, "rolagens_por_hashtag": 2 if teste else caso.get("rolagens_tiktok", 25),
+           "buscas": caso.get("buscas_tiktok", [])[:1] if teste else caso.get("buscas_tiktok", [])}
     brutos, resumo = asyncio.run(th.coletar(sub, agora))
     rows = [{"rede": "tiktok", "item_id": r["video_id"], "conta": r["conta"], "nome_conta": r["nome_conta"], "seguidores": r["seguidores"],
              "verificada": r["verificada"], "publicado_em": r["publicado_em"], "texto": r["legenda"], "visualizacoes": r["visualizacoes"],
-             "curtidas": r["curtidas"], "comentarios": r["comentarios"], "compartilhamentos": r["compartilhamentos"], "termo": f"#{r['hashtag_coletada']}",
+             "curtidas": r["curtidas"], "comentarios": r["comentarios"], "compartilhamentos": r["compartilhamentos"],
+             "termo": r["hashtag_coletada"] if r["lado_hashtag"] == "busca" else f"#{r['hashtag_coletada']}",
              "url": r["url"], "capa_url": "", "coletado_em": agora} for r in brutos]
     return rows, {"rede": "tiktok", "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)", "termos": resumo, "custo_usd": 0.0}
 
@@ -228,6 +232,13 @@ def paga(rede: str, caso: dict, cfg: dict, pasta: Path, teste: bool, agora: str,
     man = {"rede": rede, "teto_usd": caso["teto_usd"][rede], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "termos": []}
     if teto < 0.02:
         return [], {**man, "custo_usd": 0.0, "status": "⛔ teto da rede esgotado"}
+    if executar is None and caso.get("segredo"):
+        # conta exclusiva do caso: usa o token direto, sem consultar saldo ou plano (o teto vai em cada execução)
+        token = os.environ.get(caso["segredo"], "").strip()
+        if not token:
+            return [], {**man, "custo_usd": 0.0, "status": f"⛔ segredo {caso['segredo']} ausente no GitHub"}
+        man["conta"] = caso["segredo"]
+        executar = lambda ator, pl, cap: run_actor(token, ator, pl, cap)  # noqa: E731
     if executar is None:
         # prefere conta ainda não usada nesta execução; se nenhuma tiver saldo, reaproveita uma já usada
         lista = cfg.get("segredos_por_rede", {}).get(rede) or cfg["segredos"]

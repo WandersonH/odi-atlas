@@ -60,7 +60,7 @@ class TestCasos(unittest.TestCase):
         self.assertIn("perfil de Lula", next(g["conta"] for g in caso["galeria"] if "LulaOficial" in g["conta"]))  # perfil declarado ao TSE
         self.assertNotIn("pequeno\"", gexf)
         self.assertNotIn("custo", json.dumps(caso))                              # custo da coleta nunca vai para a página
-        self.assertEqual([c["estado"] for c in indice["casos"]][1:], ["aguardando confirmação de datas e termos"] * 3)
+        self.assertEqual([c["estado"] for c in indice["casos"] if c["id"] in ("002", "004")], ["aguardando confirmação de datas e termos"] * 2)
         self.assertEqual(man["redes"][0]["itens_pedidos_por_termo"], 6000)       # teto do X (2,40) cabe o máximo por termo
 
 

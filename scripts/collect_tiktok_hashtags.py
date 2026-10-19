@@ -52,21 +52,26 @@ async def coletar(cfg: dict, agora: str) -> tuple[list[dict], dict]:
         b = await p.chromium.launch(headless=True)
         ctx = await b.new_context(locale="pt-BR", viewport={"width": 1366, "height": 900},
                                   user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36")
-        for lado, tags in cfg["hashtags"].items():
-            for tag in tags:
+        alvos = [(lado, tag, f"https://www.tiktok.com/tag/{tag}") for lado, tags in cfg["hashtags"].items() for tag in tags]
+        # busca por frase (como a caixa de busca do site); sem login o TikTok pode limitar ou exigir entrada — o resumo registra
+        alvos += [("busca", q, "https://www.tiktok.com/search/video?" + __import__("urllib.parse").parse.urlencode({"q": q})) for q in cfg.get("buscas", [])]
+        for lado, tag, endereco in alvos:
+            if True:
                 pg, itens, respostas = await ctx.new_page(), [], []
 
                 async def resp(r, itens=itens, respostas=respostas):
-                    if "/api/challenge/item_list" in r.url:
+                    if "/api/challenge/item_list" in r.url or "/api/search/" in r.url:
                         respostas.append(r.status)
                         try:
-                            itens.extend((await r.json()).get("itemList") or [])
+                            d = await r.json()
+                            itens.extend(d.get("itemList") or d.get("item_list") or [])
+                            itens.extend(x["item"] for x in d.get("data") or [] if isinstance(x, dict) and isinstance(x.get("item"), dict))
                         except Exception:  # noqa: BLE001
                             pass
                 pg.on("response", resp)
                 erro = None
                 try:
-                    await pg.goto(f"https://www.tiktok.com/tag/{tag}", wait_until="domcontentloaded", timeout=45000)
+                    await pg.goto(endereco, wait_until="domcontentloaded", timeout=45000)
                     await pg.wait_for_timeout(5000)
                     parado = 0
                     for _ in range(cfg["rolagens_por_hashtag"]):
@@ -83,7 +88,7 @@ async def coletar(cfg: dict, agora: str) -> tuple[list[dict], dict]:
                 out += ls
                 resumo[tag] = {"lado": lado, "respostas_api": len(respostas), "videos": len(ls),
                                "contas": len({l["conta"] for l in ls}), "erro": erro}
-                print(f"#{tag}: {len(ls)} vídeos de {resumo[tag]['contas']} contas ({len(respostas)} respostas) {erro or ''}")
+                print(f"{'#' if lado != 'busca' else 'busca: '}{tag}: {len(ls)} vídeos de {resumo[tag]['contas']} contas ({len(respostas)} respostas) {erro or ''}")
         await b.close()
     return out, resumo
 

@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.72 — Caso 003 "Ninguém morre nos devendo" (Flamengo e as bets) ativado, coleta grátis do TikTok (2026-10-19) 🔜
+
+- Pedido do usuário (19/10, 19h11): coletar o caso Flamengo / "ninguém morre nos devendo" (depois da proibição das bets) na página de casos, começando pelo TikTok, com a conta Apify `APIFY_TOKEN_FL` (US$ 5) só para este caso e sem as consultas às contas que precederam o bloqueio. Em seguida (19h12): "você já bloqueou a conta" / "colete na versão free".
+  - Nenhuma chamada foi feita com `APIFY_TOKEN_FL` nesta sessão: o caso usa só a coleta grátis (página pública do TikTok, sem login). O caminho com conta exclusiva (`"segredo"` no caso, sem consulta de saldo) ficou no código para uso futuro e não está ativo.
+  - Consulta de preços na loja Apify (run teste-apify-loja de 19/10) usou o token da conta 1, como nas consultas anteriores; só leitura.
+- O caso 003 já existia como dossiê aguardando data e termos; agora está ativo, com a descrição do contexto, as fontes Aos Fatos (29/09) e Poder360 (08/10) e o marco "desde" em 25/09/2026 (MP que proibiu as bets).
+  - TikTok: hashtag #ninguemmorrenosdevendo e buscas "ninguém morre nos devendo" e "flamengo ninguém morre nos devendo".
+  - Google Trends e Notícias.
+- `collect_tiktok_hashtags.py`: além da página da hashtag, abre a busca do site (`/search/video?q=`) e lê as respostas `/api/search/`. Sem login, o TikTok pode limitar a busca; o manifesto registra quantas respostas vieram.
+- `apify-contas.yml`: agendamento diário desligado. Ele consultava todas as contas todo dia, o tipo de chamada que o usuário pediu para evitar.
+- Testes: suíte OK; `test_casos` ajustado (casos 002 e 004 continuam aguardando).
+
 ## C19.71 — Coletas diárias de seguidores: duas coletas no mesmo arquivo não se derrubam mais (2026-10-19) ✅
 
 - Pedido do usuário (19/10, 19h04): a coleta de "Quem acompanha" deve ser diária. Situação de 19/10:

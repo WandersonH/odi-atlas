@@ -62,6 +62,7 @@ jobs:
           APIFY_TOKEN_13: ${{ secrets.APIFY_TOKEN_13 }}
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
+          APIFY_TOKEN_FL: ${{ secrets.APIFY_TOKEN_FL }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event.inputs.modo }}
           CASO: ${{ github.event.inputs.caso }}

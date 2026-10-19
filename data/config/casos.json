@@ -39,6 +39,11 @@
   "apify~instagram-hashtag-scraper": {
    "item": 0.0026,
    "fonte": "loja Apify (/v2/store, run 39130885845 de 18/10/2026): US$ 0,0026 por resultado (plano gratuito)"
+  },
+  "apidojo~tiktok-scraper": {
+   "item": 0.0004,
+   "consulta": 0.006,
+   "fonte": "loja Apify (run teste-apify-loja de 19/10/2026): README cita US$ 0,30 por 1.000 posts; teto calculado com US$ 0,0004 por item + 0,006 por busca, por precaução"
   }
  },
  "min_seguidores_publico": 10000,
@@ -113,15 +118,50 @@
   {
    "id": "003",
    "slug": "ninguem-morre-nos-devendo",
-   "titulo": "\"Ninguém morre nos devendo\"",
+   "titulo": "\"Ninguém morre nos devendo\" (Flamengo e as bets)",
    "tipo": "fala",
-   "rotulo_tipo": "fala",
-   "coletar": false,
-   "descricao": "Fala. Data a confirmar pela equipe antes de qualquer coleta paga.",
+   "rotulo_tipo": "em análise",
+   "descricao": "Depois da medida provisória que proibiu as bets (25/09/2026), circularam posts com torcedores do Flamengo e a frase \"ninguém morre nos devendo\", apresentados como protesto contra o fim das apostas. O Aos Fatos (29/09) mostrou que as imagens eram antigas ou feitas por IA. O dossiê mede quanto o conteúdo circulou, começando pelo TikTok.",
+   "fonte_contexto": [
+    {
+     "titulo": "Aos Fatos: posts não mostram protesto da torcida do Flamengo contra fim das bets (29/09/2026)",
+     "url": "https://www.aosfatos.org/noticias/posts-nao-mostram-protesto-da-torcida-do-flamengo-contra-fim-das-bets/"
+    },
+    {
+     "titulo": "Poder360: Flamengo entra em campo com mensagem contra proibição das bets (08/10/2026)",
+     "url": "https://www.poder360.com.br/poder-sportsmkt/flamengo-entra-em-campo-com-mensagem-contra-proibicao-das-bets/"
+    }
+   ],
+   "coletar": true,
+   "desde": "2026-09-25",
+   "hashtags": [
+    "ninguemmorrenosdevendo"
+   ],
+   "buscas_tiktok": [
+    "ninguém morre nos devendo",
+    "flamengo ninguém morre nos devendo"
+   ],
+   "termos_trends": [
+    "ninguém morre nos devendo"
+   ],
+   "termos_noticias": [
+    "\"ninguém morre nos devendo\"",
+    "Flamengo bets protesto torcida"
+   ],
+   "filtro_titulo_noticias": [
+    "ninguém morre nos devendo",
+    "ninguem morre nos devendo",
+    "bets",
+    "apostas"
+   ],
+   "maximo_por_termo": 3000,
+   "autorizacao": "Usuário em 19/10/2026, 19h11–19h12: começar pelo TikTok; a conta APIFY_TOKEN_FL foi informada mas o usuário disse em seguida que ela já está bloqueada e pediu a coleta na versão gratuita (página pública do TikTok, sem login). Nenhuma chamada foi feita com APIFY_TOKEN_FL.",
+   "rolagens_tiktok": 25,
    "redes_previstas": [
     "todas as redes",
     "imprensa"
-   ]
+   ],
+   "historico": "Dossiê criado em 18/10 aguardando data e termos; ativado em 19/10, 19h11, pelo usuário, com o contexto Flamengo/proibição das bets e a busca do TikTok indicada (q=\"flamengo ninguem morre nos devendo\")."
   },
   {
    "id": "004",

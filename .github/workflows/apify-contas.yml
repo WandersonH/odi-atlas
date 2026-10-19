@@ -4,7 +4,8 @@ name: Apify — verificação das contas (só leitura, sem custo)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "5 12 * * *"   # todo dia, 09h05 em Brasília
+    # agendamento diário desligado em 19/10/2026: a consulta diária a todas as contas é o tipo de chamada que o usuário pediu para evitar
+    # - cron: "5 12 * * *"
 
 permissions:
   contents: write
