@@ -7,7 +7,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 ## C19.59 — Debate: vídeo e transcrição (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 23h07): vídeo do debate no início da página, análise de redes da transcrição, análise no estilo IRaMuTeQ e contagem por tema.
-- `collect_debate_video.py` + `debate-video.yml` (grátis): procura o vídeo pela YouTube Data API (canal da Band ou do Estadão, mais de 1 h, publicado desde 18/10 17h) e baixa a legenda do YouTube (manual ou automática) por yt-dlp; opção de transcrever o áudio com faster-whisper. Transcrição integral só no privado; público: `data/debate/video.json`. Pendente: execução.
+- `collect_debate_video.py` + `debate-video.yml` (grátis): procura o vídeo pela YouTube Data API (canal da Band ou do Estadão, mais de 1 h, publicado desde 18/10 17h) e baixa a legenda do YouTube (manual ou automática) por yt-dlp; opção de transcrever o áudio com faster-whisper. Transcrição integral só no privado; público: `data/debate/video.json`.
+- Execuções (runs de 18/10 23h1x e 39188742204): vídeo encontrado pela API — "Flávio Bolsonaro x Lula: debate presidencial do 2º turno na Band - 18/10/2026", Band Jornalismo, id Gqc1rQtzWUk, 6h12min (live iniciada 15h59; o debate começa por volta de 4h00 do vídeo). ⛔ Legendas e áudio recusados pelo YouTube nos servidores do GitHub ("Sign in to confirm you're not a bot"; yt-dlp pede cookies). A YouTube Data API não serve: baixar legenda (captions.download) exige autorização do dono do canal. O Chrome do usuário não tem permissão para youtube.com.
+- `build_debate_transcricao.py` (pronto, aguardando a transcrição): orador por deixas da mediação (corrigível em `data/config/debate_turnos.json`), segmentos de ~40 palavras, contagem por tema (dicionário do Atlas), rede de coocorrência por orador (GEXF), CHD de Reinert com a variável orador, corpus IRaMuTeQ (privado), trechos públicos ≤ 25 palavras. Testes: `tests/test_debate_transcricao.py`.
+- Página: vídeo no topo da aba do debate (player do YouTube sem cookies, abrindo em ~4h00) e bloco "Análise da transcrição" (tempo de fala, temas, classes CHD, rede de palavras), hoje com ⛔ explicando por que a transcrição não entrou. Suíte OK.
 
 ## C19.58 — Debate: redes de canais e de palavras-chave (2026-10-18) ✅
 
