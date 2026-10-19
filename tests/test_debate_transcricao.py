@@ -65,3 +65,14 @@ class TestSrt(unittest.TestCase):
         s = im.ler_srt(srt)
         self.assertEqual(len(s), 2)
         self.assertEqual(s[1], {"ini": 67.6, "fim": 73.96, "texto": "boa noite para você"})
+
+
+class TestTurnos(unittest.TestCase):
+    def test_resolver_ancora(self):
+        import resolver_turnos as rt
+        segs = [{"ini": 0.0, "texto": "boa noite"}, {"ini": 3.0, "texto": "candidato Lula, 2 minutos."},
+                {"ini": 5.5, "texto": "O candidato poderia ter"}, {"ini": 8.0, "texto": "votado a emenda"}]
+        linhas = rt.ler_tsv("# c\n0\tmediacao\n3\tlula\tO candidato poderia ter votado\n9\tflavio\tfrase que não existe\n")
+        turnos, erros = rt.resolver(linhas, segs)
+        self.assertEqual(turnos, {"0.00": "mediacao", "5.50": "lula"})
+        self.assertEqual(len(erros), 1)

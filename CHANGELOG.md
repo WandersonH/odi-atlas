@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.66 — Debate: quem fala, por codificação manual dos turnos (2026-10-19) ⚠️
+
+- 205 turnos marcados sobre a íntegra (legenda automática), lendo a transcrição inteira: Lula, Flávio Bolsonaro, mediação, intervalo comercial e 4 trechos indefinidos (falas sobrepostas). Codificação assistida por IA (Claude), ainda **não validada por pessoa da equipe**. As âncoras de cada turno (começo da fala) ficam no privado (`debate/turnos_codificacao.tsv`); `resolver_turnos.py` gera `data/config/debate_turnos.json`, só com tempos e oradores.
+- Resultado (`build_debate_transcricao.py`, rodado localmente): Lula 35,8 min (5.879 palavras), Flávio Bolsonaro 43,1 min (8.397), mediação 20,4 min, não atribuído 0,2 min, intervalos 10,1 min (fora da conta). CHD: 6 classes, 394 de 400 trechos classificados.
+- Conferência com as regras do debate: no 1º confronto (banco de 15 min por candidato), a mediação anunciou que Flávio esgotou o tempo e que Lula tinha 1min08 restantes. Na codificação, Lula tem 13,8 min nesse confronto (15 − 1,1 = 13,9) e Flávio 16,8 min. O excedente de Flávio vem das falas por cima do adversário: a legenda não separa vozes simultâneas e o cronômetro só corre para quem está com a palavra. Tempo de fala é aproximado.
+- `build_debate_transcricao.py`: rótulo "intervalo", que fica fora das análises; a marca ">>" da legenda sai do texto analisado; o método da atribuição vai para a página. A página troca o aviso quando a atribuição é manual.
+- Testes: `TestTurnos` (âncora encontrada / não encontrada); suíte OK. Verificado no Chromium local, sem erro de JavaScript.
+
 ## C19.65 — Debate: transcrição completa a partir do .srt da íntegra enviado pelo usuário (2026-10-19) ⚠️
 
 - Bloco 3 pela Apify: mais uma tentativa (run 39207352137; Apify 4UDA8RrgDVAlYpv5S, US$ 0,00005), de novo ⛔ "HTTP Error 429: Too Many Requests". Até aqui eram 2 dos 3 blocos (~70 de ~100 min).

@@ -33,7 +33,8 @@ import chd_reinert as cr  # noqa: E402
 from build_casos import gexf  # noqa: E402
 from net import now_utc  # noqa: E402
 
-ORADORES = {"lula": "Lula", "flavio": "Flávio Bolsonaro", "mediacao": "Mediação", "indefinido": "Não atribuído"}
+ORADORES = {"lula": "Lula", "flavio": "Flávio Bolsonaro", "mediacao": "Mediação", "indefinido": "Não atribuído", "intervalo": "Intervalo"}
+FORA = ("mediacao", "intervalo")  # fora das análises de discurso dos candidatos
 DEIXA_NOME = {"lula": re.compile(r"\b(candidato|presidente|senhor)\s+lula\b|\blula,", re.I),
               "flavio": re.compile(r"\b(candidato|senador|senhor)\s+fl[aá]vio\b|\bfl[aá]vio( bolsonaro)?,", re.I)}
 DEIXA_TEMPO = re.compile(r"pergunt|respost|r[ée]plica|tr[ée]plica|\btempo\b|minuto|segundo|com a palavra|direito de resposta|consider[aã][cç][oõ]es|o senhor tem|a palavra", re.I)
@@ -69,7 +70,7 @@ def segmentar(segs: list[dict], quem: list[str]) -> list[dict]:
         if ini is None:
             ini, dono = s["ini"], q
         dono = q
-        buf += s["texto"].split()
+        buf += s["texto"].replace(">>", " ").split()  # ">>" é a marca de troca de voz da legenda automática
     if buf:
         out.append({"orador": dono, "ini": ini, "texto": " ".join(buf)})
     return out
@@ -124,7 +125,7 @@ def rede(segmentos: list[dict], minimo: int = 3, top: int = 70) -> tuple[dict, C
 
 
 def chd_debate(segmentos: list[dict]) -> dict | None:
-    segs = [s for s in segmentos if s["orador"] != "mediacao"]  # candidatos + trechos ainda não atribuídos (sem a mediação identificada)
+    segs = [s for s in segmentos if s["orador"] not in FORA]  # candidatos + trechos não atribuídos
     if len(segs) < 60:
         return None
     X, voc = cr.matriz([s["texto"] for s in segs])
@@ -157,7 +158,7 @@ def chd_debate(segmentos: list[dict]) -> dict | None:
 def iramuteq(segmentos: list[dict], inicio: float) -> str:
     linhas = []
     for s in segmentos:
-        if s["orador"] == "mediacao":
+        if s["orador"] in FORA:
             continue
         bloco = int((s["ini"] - inicio) // 1800) + 1  # blocos de 30 min desde o início do debate
         tx = re.sub(r"[*\-$]", " ", s["texto"])
@@ -175,7 +176,8 @@ def main(argv=None) -> int:
     tr = json.loads(arq.read_text(encoding="utf-8"))
     segs = tr["segmentos"]
     pc = root / "data/config/debate_turnos.json"
-    correcoes = json.loads(pc.read_text(encoding="utf-8")).get("turnos", {}) if pc.exists() else {}
+    cfg_turnos = json.loads(pc.read_text(encoding="utf-8")) if pc.exists() else {}
+    correcoes = cfg_turnos.get("turnos", {})
     quem = orador_por_deixas(segs, correcoes)
     segmentos = segmentar(segs, quem)
     tempo = Counter()
@@ -198,9 +200,11 @@ def main(argv=None) -> int:
     out = {"schema_version": 1, "gerado_em_utc": now_utc(), "video": tr["video"], "fonte_transcricao": tr["fonte"],
            "inicio_s": segs[0]["ini"] if segs else None, "fim_s": segs[-1]["fim"] if segs else None,
            "segmentos": len(segmentos), "palavras": sum(len(s["texto"].split()) for s in segmentos),
-           "tempo_de_fala_min": {ORADORES[o]: round(tempo[o] / 60, 1) for o in ORADORES},
+           "tempo_de_fala_min": {ORADORES[o]: round(tempo[o] / 60, 1) for o in ORADORES if o != "intervalo"},
+           "intervalos_min": round(tempo["intervalo"] / 60, 1),
            "palavras_por_orador": {ORADORES[o]: sum(len(s["texto"].split()) for s in segmentos if s["orador"] == o) for o in ORADORES},
-           "atribuicao": {"metodo": "automática por deixas da mediação (nome do candidato + passagem de tempo); não validada",
+           "atribuicao": {"metodo": (cfg_turnos.get("metodo") or "codificação manual dos turnos") if correcoes else "automática por deixas da mediação (nome do candidato + passagem de tempo); não validada",
+                          "manual": bool(correcoes),
                           "deixas_encontradas": deixas, "correcoes_manuais": len(correcoes)},
            "temas": temas(segmentos, cfg), "rede": redes, "chd": ch,
            "palavras_mais_usadas": {ORADORES[o]: bc.nuvem([s["texto"] for s in segmentos if s["orador"] == o], set(), top=40, minimo=3) for o in ("lula", "flavio")},
