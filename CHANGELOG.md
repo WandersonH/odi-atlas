@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.70 — Checagens das falas do debate (Lupa e Estadão Verifica) (2026-10-19) ⚠️
+
+- O usuário observou (19/10, 03h36) que as checagens do painel 09 eram anteriores ao debate. É isso mesmo: a Google Fact Check Tools API ainda não indexou checagens do debate (a mais recente é de 16/10). Busca na web (19/10 ~03h45) encontrou as checagens do debate publicadas pelas agências:
+  - Agência Lupa, "Ao vivo: checagem do debate…" (atualizada 19/10 01h27): 40 falas. Lula 17 (verdadeiro 9, falso 2, exagerado 2, falta contexto 2, insustentável 1, subestimado 1); Flávio Bolsonaro 23 (verdadeiro 2, falso 8, exagerado 4, falta contexto 5, insustentável 3, subestimado 1).
+  - Estadão Verifica, "Checamos o debate…" (republicado no Terra, 19/10 01h01): 28 falas. Lula 13 (verdadeiro/é verdade 8, enganoso 2, exagerado 2, impreciso 1); Flávio Bolsonaro 15 (verdadeiro 1, enganoso 5, falta contexto 5, é falso 2, exagerado 1, subestimado 1).
+  - Ranking dos Políticos (76 falas) ficou de fora: não há indicação de que seja agência de checagem reconhecida.
+- `data/checagens/debate_band.json`: lista transcrita à mão (assistida por IA, a partir da leitura das páginas das agências) com orador, rótulo da agência, tema (resumo do Atlas) e link. Rótulos agrupados só para a cor; os totais não se somam entre agências. ⚠️ Conferir na fonte antes de citar.
+- Página: painel 09 abre com "Falas do debate checadas pelas agências" (barras por agência e candidato, lista expansível, link para cada checagem); as checagens do Google Fact Check passam a ter o título "Antes do debate · checagens da campanha". Big numbers: "Falas do debate checadas: 68 (Lupa 40 · Estadão Verifica 28)" e "Checagens na campanha: 344". Verificado no Chromium local (1300 e 390 px), sem erro de JavaScript. Suíte OK.
+- Chat ao vivo: a loja da Apify tem atores de replay de chat (US$ 0,0002 a 0,001 por mensagem, consulta de 19/10, run de teste-apify-loja). Não foi rodado: a conta 1 exige autorização e teto, e o número de mensagens da live principal é desconhecido.
+
 ## C19.69 — Checagens: gráfico por candidato e big number corrigido (2026-10-19) ✅
 
 - O usuário apontou (19/10, 03h28) que o big number mostrava 0 checagens, embora a lista do painel 09 tenha 344. O 0 era só "desde o dia do debate". Agora o big number mostra o total (344, 60 dias) e o "desde o debate" fica no texto de apoio.
