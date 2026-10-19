@@ -2,7 +2,10 @@ import sys, unicodedata, unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import build_conteudo as bc
-import chd_reinert as chd
+try:
+    import chd_reinert as chd
+except ImportError:  # workflows de coleta sem numpy (ex.: Seguidores Meta): não derrubar a coleta
+    chd = None
 
 
 class TestNormalizacao(unittest.TestCase):
@@ -16,6 +19,8 @@ class TestNormalizacao(unittest.TestCase):
 
     def test_emoji_do_kwai(self):
         self.assertNotIn("heart", bc.termos("Lula [heart][heart_eyes] presidente", set()))
+        if chd is None:
+            self.skipTest("sem numpy neste workflow")
         self.assertNotIn("heart", chd.tokens("Lula [heart] presidente do brasil"))
 
 

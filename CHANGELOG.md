@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.61 — Debate: player por bloco; legendas pela Apify (conta 1, teto US$ 0,05); testes não derrubam mais a coleta Meta (2026-10-19) ⚠️
+
+- Página: o player saiu da transmissão ao vivo (Gqc1rQtzWUk) e passou para os três vídeos por bloco indicados pelo usuário (S17iktRbpa0, HMn0LIrfcws, Omay_TlhdZM), com botões Bloco 1/2/3 que trocam o vídeo, o título e o link "Abrir no YouTube". Pedido do usuário (19/10, 02h2x): "video tambem tem que ser atualizado na pagina vc deixou com ao vivo". Estilo dos botões (`.pt-chips`) estendido às seções `#debate` e `#casos`, onde estava sem estilo. Verificado no Chromium local: clique no Bloco 3 troca src, título e link; sem erro de JavaScript (o vídeo em si não carrega no ambiente de teste, que não acessa o YouTube).
+- `collect_debate_video.py --apify` (input `apify` no `debate-video.yml`): lê as legendas dos 3 blocos com o ator seemuapps~youtube-transcript-scraper na conta 1 (`APIFY_TOKEN`), teto US$ 0,05 — autorização do usuário só para isso (19/10). Resultado do run registrado na próxima entrada.
+- Correção: o workflow diário "Seguidores Meta" falhou em 18/10 (run 39133868120) no passo de testes, antes da coleta, porque `tests/test_normalizacao.py` importava `chd_reinert` (numpy), que o workflow não instala. Agora os testes que dependem de numpy/networkx (`test_normalizacao`, `test_debate_transcricao`, `test_rede_debate`) são pulados quando a biblioteca falta. Testado: suíte completa OK; suíte com numpy e networkx bloqueados: 166 testes, OK (14 pulados).
+- Pendente: ⛔ não houve coleta Meta (Instagram/Facebook) em 18/10; a de 19/10 roda às 07h10 (conta 1, `APIFY_TOKEN`). "Seguidores faltantes" usa as contas 3 a 7, hoje recusadas pela Apify (401).
+
 ## C19.60 — Debate: vídeos por bloco; legendas existem, mas o YouTube recusa a leitura pelo GitHub (2026-10-19) ⛔
 
 - O usuário indicou os vídeos do debate por bloco (18/10, 23h31): S17iktRbpa0, HMn0LIrfcws, Omay_TlhdZM. `collect_debate_video.py --blocos` lê um por um e junta a transcrição em sequência (bloco e tempo guardados).

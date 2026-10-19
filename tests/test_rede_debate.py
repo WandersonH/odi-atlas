@@ -5,6 +5,7 @@ import build_rede_debate as rd
 
 
 class TestRedeDebate(unittest.TestCase):
+    @unittest.skipIf(__import__("importlib").util.find_spec("networkx") is None or __import__("importlib").util.find_spec("numpy") is None, "sem networkx/numpy neste workflow")
     def test_redes(self):
         d = {"gerado_em_utc": "x", "termos": [
             {"termo": "flavio miliciano", "politica": True, "volume_max": 1000000, "relacionados": ["miliciano", "debate band"],

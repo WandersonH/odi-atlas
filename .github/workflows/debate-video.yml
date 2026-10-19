@@ -9,6 +9,10 @@ on:
       blocos:
         description: "ids dos vídeos por bloco, separados por vírgula"
         default: ""
+      apify:
+        description: "ler as legendas pela Apify (conta 1, teto US$ 0,05)"
+        type: boolean
+        default: false
       trecho:
         description: "trecho do vídeo para o Whisper (h:mm:ss-h:mm:ss)"
         default: ""
@@ -50,11 +54,14 @@ jobs:
           WHISPER: ${{ github.event.inputs.whisper }}
           TRECHO: ${{ github.event.inputs.trecho }}
           BLOCOS: ${{ github.event.inputs.blocos }}
+          APIFY: ${{ github.event.inputs.apify }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: |
           a=""; if [ -n "$VIDEO" ]; then a="--video $VIDEO"; fi
           if [ "$WHISPER" = "true" ]; then a="$a --whisper"; fi
           if [ -n "$TRECHO" ]; then a="$a --trecho $TRECHO"; fi
           if [ -n "$BLOCOS" ]; then a="$a --blocos $BLOCOS"; fi
+          if [ "$APIFY" = "true" ]; then a="$a --apify"; fi
           python scripts/collect_debate_video.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Debate vídeo::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc

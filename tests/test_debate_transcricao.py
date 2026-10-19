@@ -1,12 +1,16 @@
 import json, os, shutil, sys, tempfile, unittest
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-import build_debate_transcricao as bd
+try:
+    import build_debate_transcricao as bd
+except ImportError:  # coletas sem numpy/networkx
+    bd = None
 import collect_debate_video as cv
 
 RAIZ = Path(__file__).resolve().parents[1]
 
 
+@unittest.skipIf(bd is None, "sem numpy/networkx neste workflow")
 class TestDebate(unittest.TestCase):
     def test_vtt(self):
         vtt = "WEBVTT\n\n00:00:01.000 --> 00:00:03.000\nboa noite\n\n00:00:03.000 --> 00:00:05.000\nboa noite\nvamos começar\n"
