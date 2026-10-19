@@ -45,7 +45,7 @@ class TestVideos(unittest.TestCase):
             if "/playlistItems" in url:
                 return {"items": [{"contentDetails": {"videoId": "v0", "videoPublishedAt": "2026-08-01T00:00:00Z"}}],
                         "nextPageToken": "P3"}
-            return {"items": [{"id": "v2", "snippet": {"publishedAt": "2026-10-10T00:00:00Z", "title": "A"},
+            return {"items": [{"id": "v2", "snippet": {"publishedAt": "2026-10-10T00:00:00Z", "title": "A", "description": "Introdução\n\nLinha; com acento\n" + "á" * 1800 + "\nhttps://youtube.com/exemplo"},
                                "statistics": {"viewCount": "10", "likeCount": "2", "commentCount": "1"},
                                "contentDetails": {"duration": "PT1M"}},
                               {"id": "v1", "snippet": {"publishedAt": "2026-09-01T00:00:00Z", "title": "B"},
@@ -59,3 +59,5 @@ class TestVideos(unittest.TestCase):
         self.assertEqual([v["video_id"] for v in vids], ["v2", "v1"])
         self.assertEqual(cota, 3)  # 2 páginas da playlist (parou ao passar da data) + 1 videos.list
         self.assertFalse(any("P3" in c for c in chamadas))
+        self.assertEqual(vids[0]["descricao"], "Introdução\n\nLinha; com acento\n" + "á" * 1800 + "\nhttps://youtube.com/exemplo")
+        self.assertEqual(vids[1]["descricao"], "")

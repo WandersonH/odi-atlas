@@ -94,7 +94,7 @@ def videos_do_canal(key: str, uploads: str, desde: str):
         for v in d.get("items", []):
             st, sn = v.get("statistics", {}), v.get("snippet", {})
             out.append({"video_id": v["id"], "publicado_em": sn.get("publishedAt"), "titulo": sn.get("title", ""),
-                        "descricao": re.sub(r"\s+", " ", sn.get("description", ""))[:1500],
+                        "descricao": sn.get("description") or "",
                         "duracao": v.get("contentDetails", {}).get("duration", ""),
                         "visualizacoes": st.get("viewCount"), "curtidas": st.get("likeCount"),
                         "comentarios": st.get("commentCount"),

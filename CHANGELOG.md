@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.60 — YouTube: preservar descrição integral da API (2026-10-19) ⚠️
+
+- Alterados `scripts/collect_youtube.py` e `scripts/collect_influenciadores.py`: o campo `descricao` agora grava integralmente `snippet.description` da YouTube Data API v3, sem substituir espaços/quebras de linha e sem os cortes anteriores de 1.500 e 600 caracteres. Não muda a consulta à API, a cota ou as colunas dos CSVs.
+- Motivo: os cortes descartavam trechos de fonte primária e podiam omitir menções, pedidos de voto e hashtags relevantes para as classificações posteriores. O uso analítico de texto normalizado continua separado, em `build_conteudo.py` e `avaliar`.
+- Testes adicionados: `tests/test_youtube.py` verifica descrição longa, acentos, URLs, linhas e ausência de descrição; `tests/test_influenciadores.py` verifica ida e volta com CSV comprimido contendo quebras de linha. Verificação estática dos trechos alterados feita durante a criação do patch.
+- ⛔ Suíte `python -m unittest discover -s tests -v` não executada: checkout/execução do repositório indisponível neste ambiente. Confirmar antes do merge; sem validação de coleta real.
+- ⛔ Descrições já armazenadas de forma truncada não são restauradas retroativamente. É necessário recolher `videos.list` para recompor o corpus, principalmente registros históricos de influenciadores que não reapareçam nas buscas. A interface HTML não foi alterada.
+- Evidência: diff da proposta de alteração em branch isolada; nenhuma alteração à aba Debate/Trends.
+
 ## C19.59 — Debate: vídeo e transcrição (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 23h07): vídeo do debate no início da página, análise de redes da transcrição, análise no estilo IRaMuTeQ e contagem por tema.

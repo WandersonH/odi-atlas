@@ -181,7 +181,7 @@ def main(argv=None) -> int:
         sn, st = v.get("snippet", {}), v.get("statistics", {})
         row = {"video_id": v["id"], "channel_id": sn.get("channelId", ""), "canal": sn.get("channelTitle", ""),
                "publicado_em": sn.get("publishedAt", ""), "titulo": sn.get("title", ""),
-               "descricao": re.sub(r"\s+", " ", sn.get("description", ""))[:600], "categoria": sn.get("categoryId", ""),
+               "descricao": sn.get("description") or "", "categoria": sn.get("categoryId", ""),
                "visualizacoes": st.get("viewCount", ""), "curtidas": st.get("likeCount", ""),
                "comentarios": st.get("commentCount", ""), "ultima_coleta": started}
         if row["publicado_em"] < cfg["desde"]:
