@@ -2069,6 +2069,12 @@ J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class=
 .db-tag.pol{border-color:#b3261e;color:#b3261e}.db-ativo{color:#1f8a3b;font:700 10px 'Courier New',monospace}
 .db-rel{font-size:11px;color:#53606b;margin-top:3px}.db-rel span{display:inline-block;background:#f1ece0;margin:1px 3px 1px 0;padding:0 4px}
 .db-scroll{overflow-x:auto;max-height:640px;overflow-y:auto}
+.db-perg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.db-perg div{background:#1f6f78;color:#fff;padding:10px 12px;font:700 13px/1.3 Georgia,serif}
+.db-perg small{display:block;font:10px 'Courier New',monospace;opacity:.85;margin-top:4px;font-weight:400}
+.db-rel2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.db-rel2 h3{font:700 11px 'Courier New',monospace;text-transform:uppercase;margin:4px 0}
+.db-bar{display:grid;grid-template-columns:1fr 70px;gap:6px;align-items:center;font-size:12.5px;padding:3px 0;border-bottom:1px dotted #d9d3c4}.db-bar i{display:block;height:6px;background:#297de2;margin-top:2px}
+.db-uf{display:flex;height:12px;width:100%;min-width:120px}.db-uf i{display:block;height:12px}
+@media(max-width:760px){.db-perg,.db-rel2{grid-template-columns:1fr}}
 </style>
 <section class="panel" id="debate" aria-label="Caderno 05 Debate do 2º turno no Google Trends">
   <div class="paper-ribbon"><span>CADERNO 05 / BUSCAS · DEBATE BAND/ESTADÃO · 2º TURNO</span><span id="dbData">—</span></div>
@@ -2087,6 +2093,13 @@ J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class=
     <div class="pt-chips" id="dbCurva" role="group" aria-label="Janela"><button type="button" data-v="now 1-d" aria-pressed="true">24 h (a cada 8 min)</button><button type="button" data-v="now 7-d" aria-pressed="false">7 dias (por hora)</button></div>
     <svg id="dbCurvaSvg" viewBox="0 0 760 240" width="100%" role="img" aria-label="Interesse de busca por Lula, Flávio Bolsonaro e debate"></svg>
     <p class="yt-cloudnote" id="dbCurvaNota"></p></div>
+  <div class="card yc-block"><div class="eyebrow">04 · Principais perguntas</div><h2 class="tk-h2">O que o Brasil perguntou ao Google nas últimas 24 horas</h2><div id="dbPerg"></div>
+    <p class="yt-cloudnote">Consultas relacionadas a "debate", "Lula" e "Flávio Bolsonaro" que começam como pergunta (como, quem, qual, por que, o que…). Valor: índice do Trends (principais) ou aumento (em alta). É o que o Trends lista, não uma pesquisa de opinião.</p></div>
+  <div class="card yc-block"><div class="eyebrow">05 · Termos mais buscados sobre…</div><h2 class="tk-h2" id="dbRelTit">Consultas relacionadas</h2>
+    <div class="pt-chips" id="dbRelTermo" role="group" aria-label="Termo"><button type="button" data-v="debate" aria-pressed="true">debate</button><button type="button" data-v="Lula" aria-pressed="false">Lula</button><button type="button" data-v="Flávio Bolsonaro" aria-pressed="false">Flávio Bolsonaro</button></div>
+    <div class="db-rel2" id="dbRel"></div></div>
+  <div class="card yc-block"><div class="eyebrow">06 · Buscas por estado</div><h2 class="tk-h2">Onde Lula, Flávio e "debate" foram mais buscados nas últimas 24 horas</h2><div class="db-scroll" style="max-height:520px"><table class="db-tab" id="dbUf"></table></div>
+    <p class="yt-cloudnote">Para cada estado, como as buscas se dividem entre os três termos (soma = 100%), na mesma consulta do Trends. Mostra peso relativo dentro do estado, não volume nem intenção de voto. Lula aparece primeiro por padrão do Atlas; a ordem não indica preferência.</p></div>
   <div class="card yc-block"><div class="eyebrow">03 · Ranking</div><h2 class="tk-h2" id="dbTit">Termos em alta · Política</h2><div class="db-scroll"><table class="db-tab" id="dbTab"></table></div>
     <p class="yt-cloudnote">"Visto pelo Atlas": entre o primeiro e o último retrato em que o termo apareceu na lista. Notícias: as que o próprio Trends liga ao termo (RSS), quando há.</p></div>
   <div class="card yc-block"><div class="eyebrow">Método e limites</div><div class="yt-cloudnote" id="dbMetodo"></div>
@@ -2126,9 +2139,18 @@ function curvaDraw(){const svg=$('dbCurvaSvg');const pts=(D.curvas||{})[curva]||
  $('dbCurvaNota').innerHTML=Object.keys(CORC).map(k=>`<span style="color:${CORC[k]}">■</span> ${esc(k)} (pico ${quando(k)})`).join(' · ')+'. Índice 0–100 relativo ao maior valor entre os três termos nesta consulta; não é volume. Palavras soltas: "Lula" e "debate" pegam também outros sentidos.';}
 function tabela(){const l=lista();const C=CAT();$('dbTit').textContent=`Termos em alta · ${cat==='pol'?'Política':'todas as categorias'} · ${l.length}`;
  $('dbTab').innerHTML='<thead><tr><th>Termo</th><th>Volume</th><th>Começou</th><th>Visto pelo Atlas</th><th>Categorias</th></tr></thead><tbody>'+l.slice(0,150).map(t=>`<tr class="${t.politica?'pol':''}"><td><b>${esc(t.termo)}</b> ${t.ativo?'<span class="db-ativo">● em alta</span>':''}${(t.relacionados||[]).length?`<div class="db-rel">${t.relacionados.slice(0,10).map(r=>`<span>${esc(r)}</span>`).join('')}</div>`:''}${(t.noticias||[]).length?`<small>${t.noticias.slice(0,2).map(n=>`<a href="${esc(n.url)}" target="_blank" rel="noopener noreferrer">${esc(n.titulo)}</a> · ${esc(n.veiculo)}`).join('<br>')}</small>`:''}</td><td class="n">${vol(t.volume_max)}</td><td>${brt(t.inicio)}<small>${esc(t.momento||'')}</small></td><td>${brt(t.primeira_vez_visto)}<small>até ${brt(t.ultima_vez_visto)} · ${t.retratos} leitura(s)</small></td><td>${(t.categorias||[]).map(c=>`<span class="db-tag ${c===D.politica_id?'pol':''}">${esc(C[c]||'categoria '+c)}</span>`).join('')}</td></tr>`).join('')+'</tbody>';}
-function draw(){pontos();curvaDraw();tabela();}
+let relTermo='debate';
+function extras(){const c=D.curvas||{};const P=c.perguntas_24h||[];
+ $('dbPerg').innerHTML=P.length?`<div class="db-perg">${P.slice(0,12).map(p=>`<div>${esc(p.pergunta)}<small>sobre "${esc(p.termo)}" · ${p.lista==='em_alta'?'em alta '+esc(p.exibido||''):'principais · índice '+esc(p.exibido||'')}</small></div>`).join('')}</div>`:'<p class="yt-cloudnote">⛔ Nenhuma pergunta entre as consultas relacionadas desta leitura.</p>';
+ const R=(c.relacionados_24h||{})[relTermo]||{};$('dbRelTit').textContent=`Termos mais buscados sobre "${relTermo}" · últimas 24 h`;
+ const col=(nome,l,alta)=>{const mx=Math.max(1,...(l||[]).map(x=>alta?Math.min(+x.valor||0,5000):(+x.valor||0)));return `<div><h3>${nome}</h3>${(l||[]).slice(0,15).map(x=>`<div class="db-bar"><span>${esc(x.texto)}<i style="width:${Math.max(2,Math.min(100,(alta?Math.min(+x.valor||0,5000):(+x.valor||0))/mx*100))}%;background:${alta?'#b3261e':'#297de2'}"></i></span><b class="pt1-num" style="font-size:11px;text-align:right">${esc(x.exibido||'')}</b></div>`).join('')||'<p class="yt-cloudnote">—</p>'}</div>`;};
+ $('dbRel').innerHTML=col('Principais (índice 0–100)',R.principais,false)+col('Em alta (aumento)',R.em_alta,true);
+ const U=c.uf_24h||[];const CORU={'Lula':'#c8102e','Flávio Bolsonaro':'#1f8a3b','debate':'#297de2'};
+ $('dbUf').innerHTML=U.length?'<thead><tr><th>Estado</th><th>Lula</th><th>Flávio Bolsonaro</th><th>debate</th><th>Divisão</th></tr></thead><tbody>'+U.slice().sort((a,b)=>(b.v['Lula']||0)-(a.v['Lula']||0)).map(u=>{const tot=Object.values(u.v).reduce((s,x)=>s+(+x||0),0)||1;const pc=k=>Math.round((u.v[k]||0)/tot*100);
+  return `<tr><td>${esc(u.nome)} <small>${esc(u.uf)}</small></td><td class="n">${pc('Lula')}%</td><td class="n">${pc('Flávio Bolsonaro')}%</td><td class="n">${pc('debate')}%</td><td><div class="db-uf">${Object.keys(CORU).map(k=>`<i style="width:${pc(k)}%;background:${CORU[k]}" title="${esc(k)} ${pc(k)}%"></i>`).join('')}</div></td></tr>`;}).join('')+'</tbody>':'<tr><td>⛔ Interesse por estado ainda não lido.</td></tr>';}
+function draw(){pontos();curvaDraw();tabela();extras();}
 function chips(id,set){$(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));set(b.dataset.v);draw();}));}
-chips('dbCat',v=>cat=v);chips('dbJan',v=>jan=v);chips('dbCurva',v=>curva=v);chips('dbZoom',v=>zoom=v);
+chips('dbCat',v=>cat=v);chips('dbJan',v=>jan=v);chips('dbCurva',v=>curva=v);chips('dbZoom',v=>zoom=v);chips('dbRelTermo',v=>relTermo=v);
 fetch('./data/trends/agora/debate.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(!d){$('dbStatus').textContent='⛔ Ainda sem leitura.';return;}D=d;
  $('dbData').textContent='ÚLTIMA LEITURA '+brt(d.gerado_em_utc);const pol=d.termos.filter(t=>t.politica).length;const er=Object.keys((d.ultimo_retrato||{}).erros||{});
  $('dbStatus').textContent=`${d.retratos.length} leitura(s) desde ${brt(d.retratos[0]&&d.retratos[0].t)} · ${d.termos.length} termos vistos em alta, ${pol} na categoria Política. ${esc(d.debate.rotulo)}.${er.length?' ⚠ última leitura com falha em: '+er.join(', '):''}`;

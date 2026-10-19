@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.56 — Debate: perguntas, termos mais buscados e buscas por estado (2026-10-18) 🔜
+
+- Referência do usuário (18/10, 22h30): a sala digital Band e Google acompanha "principais perguntas", "termos mais buscados sobre…", curvas e buscas por estado. `collect_trends_agora.py` passa a guardar, para Lula, Flávio Bolsonaro e "debate" nas últimas 24 h: consultas relacionadas (principais e em alta), as que começam como pergunta, e o interesse por UF (divisão entre os três termos na mesma consulta).
+- Página do debate: painéis 04 · Principais perguntas, 05 · Termos mais buscados sobre… (por termo, principais × em alta) e 06 · Buscas por estado (divisão por UF; Lula primeiro com o aviso de ordem). No visual do Atlas, não no da Band.
+- Testes: `TestRelacionados`; suíte OK. Pendente: próxima leitura do Actions com os novos campos.
+
 ## C19.55 — Debate do 2º turno: Google Trends "em alta agora" (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 22h24): página sobre o debate, "cópia do Trends mais precisa", tendências das últimas horas e categoria Política; "debate iniciou às 8 mas antes já temos notícias, por isso a janela de 24 h e repercussão de +24 h". Debate Band/Estadão, 18/10, 20h (Brasília), conforme o DGABC.

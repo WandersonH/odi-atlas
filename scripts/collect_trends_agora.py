@@ -107,7 +107,21 @@ def rss(get=None) -> dict:
     return out
 
 
+PERGUNTA = re.compile(r"^(como|quem|qual|quais|quando|onde|quanto|quantos|quantas|por que|porque|o que|pq|é verdade|e verdade|pode|vai|tem)\b", re.I)
+
+
+def relacionados(data: dict) -> dict:
+    """Consultas relacionadas do Trends → {"principais": [...], "em_alta": [...]} com texto e valor exibido."""
+    listas = (data.get("default") or {}).get("rankedList") or []
+    out = {}
+    for nome, bloco in zip(("principais", "em_alta"), listas):
+        out[nome] = [{"texto": k.get("query"), "valor": k.get("value"), "exibido": k.get("formattedValue")}
+                     for k in (bloco.get("rankedKeyword") or []) if k.get("query")][:25]
+    return out
+
+
 def curvas() -> dict:
+    """Curvas (24 h e 7 dias), consultas relacionadas de cada termo e interesse por UF nas últimas 24 h."""
     t = Trends(pause=3)
     out = {}
     for janela in ("now 1-d", "now 7-d"):
@@ -115,6 +129,31 @@ def curvas() -> dict:
         ts_ = t.widget("multiline", ws["TIMESERIES"])
         out[janela] = [{"t": dt.datetime.fromtimestamp(int(p["time"]), dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                         "v": dict(zip(TERMOS_CURVA, p.get("value") or []))} for p in ts_["default"]["timelineData"]]
+        if janela != "now 1-d":
+            continue
+        geo = next((w for k, w in ws.items() if k.startswith("GEO_MAP")), None)
+        if geo:
+            gm = t.widget("comparedgeo", geo)
+            out["uf_24h"] = [{"uf": (r.get("geoCode") or "").replace("BR-", ""), "nome": r.get("geoName"), "v": dict(zip(TERMOS_CURVA, r.get("value") or []))}
+                             for r in gm["default"]["geoMapData"]]
+        rel = {}
+        for k, w in sorted(ws.items()):
+            if not k.startswith("RELATED_QUERIES"):
+                continue
+            idx = int(k.rsplit("_", 1)[1]) if k.rsplit("_", 1)[-1].isdigit() else 0
+            if idx < len(TERMOS_CURVA):
+                rel[TERMOS_CURVA[idx]] = relacionados(t.widget("relatedsearches", w))
+        out["relacionados_24h"] = rel
+        # perguntas: consultas relacionadas que começam como pergunta, juntando os três termos e as duas listas
+        vistos, perg = set(), []
+        for termo_, ls in rel.items():
+            for lista, itens in ls.items():
+                for x in itens:
+                    q = (x["texto"] or "").strip()
+                    if PERGUNTA.match(q) and q.lower() not in vistos:
+                        vistos.add(q.lower())
+                        perg.append({"pergunta": q, "termo": termo_, "lista": lista, "exibido": x["exibido"]})
+        out["perguntas_24h"] = perg
     return out
 
 

@@ -29,3 +29,12 @@ class TestTrendsAgora(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRelacionados(unittest.TestCase):
+    def test_perguntas_e_relacionados(self):
+        r = ta.relacionados({"default": {"rankedList": [{"rankedKeyword": [{"query": "quem ganhou o debate", "value": 100, "formattedValue": "100"}]},
+                                                        {"rankedKeyword": [{"query": "debate band", "value": 5000, "formattedValue": "+5.000%"}]}]}})
+        self.assertEqual(r["em_alta"][0]["exibido"], "+5.000%")
+        self.assertTrue(ta.PERGUNTA.match("quem ganhou o debate"))
+        self.assertFalse(ta.PERGUNTA.match("debate band ao vivo"))
