@@ -8,7 +8,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Referência do usuário (18/10, 22h30): a sala digital Band e Google acompanha "principais perguntas", "termos mais buscados sobre…", curvas e buscas por estado. `collect_trends_agora.py` passa a guardar, para Lula, Flávio Bolsonaro e "debate" nas últimas 24 h: consultas relacionadas (principais e em alta), as que começam como pergunta, e o interesse por UF (divisão entre os três termos na mesma consulta).
 - Página do debate: painéis 04 · Principais perguntas, 05 · Termos mais buscados sobre… (por termo, principais × em alta) e 06 · Buscas por estado (divisão por UF; Lula primeiro com o aviso de ordem). No visual do Atlas, não no da Band.
-- Testes: `TestRelacionados`; suíte OK. Pendente: próxima leitura do Actions com os novos campos.
+- Leitura de 19/10 01h31 UTC: 6 perguntas (ex.: "onde vai ser o debate presidencial hoje", em alta +2.100%; "quem tá na frente flávio bolsonaro ou lula"), 25 consultas relacionadas por termo e lista, 27 UFs.
+- Pergunta do usuário (22h31): "recorte por estado… é possível pegar esse dado?". Além do interesse por UF, o coletor lê a lista "Em alta agora" de cada estado (geo BR-UF, 24 h, até 40 termos) na primeira leitura de cada hora; página: painel 07 · Em alta em cada estado (seletor de UF, filtro Política).
+- Testes: `TestRelacionados`; suíte OK.
 
 ## C19.55 — Debate do 2º turno: Google Trends "em alta agora" (2026-10-18) 🔜
 

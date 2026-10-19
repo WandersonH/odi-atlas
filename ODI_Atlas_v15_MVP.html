@@ -2100,6 +2100,10 @@ J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class=
     <div class="db-rel2" id="dbRel"></div></div>
   <div class="card yc-block"><div class="eyebrow">06 · Buscas por estado</div><h2 class="tk-h2">Onde Lula, Flávio e "debate" foram mais buscados nas últimas 24 horas</h2><div class="db-scroll" style="max-height:520px"><table class="db-tab" id="dbUf"></table></div>
     <p class="yt-cloudnote">Para cada estado, como as buscas se dividem entre os três termos (soma = 100%), na mesma consulta do Trends. Mostra peso relativo dentro do estado, não volume nem intenção de voto. Lula aparece primeiro por padrão do Atlas; a ordem não indica preferência.</p></div>
+  <div class="card yc-block"><div class="eyebrow">07 · Em alta em cada estado</div><h2 class="tk-h2" id="dbEstTit">Em alta agora por estado</h2>
+    <div class="rt-sel"><label for="dbEst" class="eyebrow">Estado</label><select id="dbEst" aria-label="Estado"></select><label style="font-size:12px"><input type="checkbox" id="dbEstPol" checked> só Política</label></div>
+    <div class="db-scroll" style="max-height:480px"><table class="db-tab" id="dbEstTab"></table></div>
+    <p class="yt-cloudnote" id="dbEstNota">A lista "Em alta agora" do Google Trends para o estado (últimas 24 h), lida uma vez por hora.</p></div>
   <div class="card yc-block"><div class="eyebrow">03 · Ranking</div><h2 class="tk-h2" id="dbTit">Termos em alta · Política</h2><div class="db-scroll"><table class="db-tab" id="dbTab"></table></div>
     <p class="yt-cloudnote">"Visto pelo Atlas": entre o primeiro e o último retrato em que o termo apareceu na lista. Notícias: as que o próprio Trends liga ao termo (RSS), quando há.</p></div>
   <div class="card yc-block"><div class="eyebrow">Método e limites</div><div class="yt-cloudnote" id="dbMetodo"></div>
@@ -2148,7 +2152,11 @@ function extras(){const c=D.curvas||{};const P=c.perguntas_24h||[];
  const U=c.uf_24h||[];const CORU={'Lula':'#c8102e','Flávio Bolsonaro':'#1f8a3b','debate':'#297de2'};
  $('dbUf').innerHTML=U.length?'<thead><tr><th>Estado</th><th>Lula</th><th>Flávio Bolsonaro</th><th>debate</th><th>Divisão</th></tr></thead><tbody>'+U.slice().sort((a,b)=>(b.v['Lula']||0)-(a.v['Lula']||0)).map(u=>{const tot=Object.values(u.v).reduce((s,x)=>s+(+x||0),0)||1;const pc=k=>Math.round((u.v[k]||0)/tot*100);
   return `<tr><td>${esc(u.nome)} <small>${esc(u.uf)}</small></td><td class="n">${pc('Lula')}%</td><td class="n">${pc('Flávio Bolsonaro')}%</td><td class="n">${pc('debate')}%</td><td><div class="db-uf">${Object.keys(CORU).map(k=>`<i style="width:${pc(k)}%;background:${CORU[k]}" title="${esc(k)} ${pc(k)}%"></i>`).join('')}</div></td></tr>`;}).join('')+'</tbody>':'<tr><td>⛔ Interesse por estado ainda não lido.</td></tr>';}
-function draw(){pontos();curvaDraw();tabela();extras();}
+function estados(){const E=D.em_alta_por_uf;const sel=$('dbEst');if(!E){$('dbEstTab').innerHTML='<tr><td>⛔ Lista por estado ainda não lida (sai na primeira leitura de cada hora).</td></tr>';return;}
+ if(!sel.options.length){sel.innerHTML=Object.keys(E).sort().map(u=>`<option value="${u}"${u==='SP'?' selected':''}>${u}</option>`).join('');sel.addEventListener('change',estados);$('dbEstPol').addEventListener('change',estados);}
+ const uf=sel.value||'SP';const l=(E[uf]||[]).filter(x=>!$('dbEstPol').checked||x.politica);$('dbEstTit').textContent=`Em alta agora · ${uf} · ${l.length} termos`;
+ $('dbEstTab').innerHTML='<thead><tr><th>Termo</th><th>Volume</th><th>Começou</th></tr></thead><tbody>'+(l.map(x=>`<tr class="${x.politica?'pol':''}"><td><b>${esc(x.termo)}</b> ${x.ativo?'<span class="db-ativo">● em alta</span>':''}</td><td class="n">${vol(x.volume)}</td><td>${brt(x.inicio)}</td></tr>`).join('')||'<tr><td colspan="3">Nenhum termo neste recorte.</td></tr>')+'</tbody>';}
+function draw(){pontos();curvaDraw();tabela();extras();estados();}
 function chips(id,set){$(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{$(id).querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));set(b.dataset.v);draw();}));}
 chips('dbCat',v=>cat=v);chips('dbJan',v=>jan=v);chips('dbCurva',v=>curva=v);chips('dbZoom',v=>zoom=v);chips('dbRelTermo',v=>relTermo=v);
 fetch('./data/trends/agora/debate.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(!d){$('dbStatus').textContent='⛔ Ainda sem leitura.';return;}D=d;

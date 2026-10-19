@@ -43,11 +43,14 @@ DEBATE = {"inicio": "2026-10-18T23:00:00Z", "rotulo": "Debate Band/Estadão · 2
 TERMOS_CURVA = ["Lula", "Flávio Bolsonaro", "debate"]
 
 
-def batch(horas: int, get=None) -> list:
-    req = json.dumps([[["i0OFE", json.dumps([None, None, "BR", 0, "pt-BR", horas, 1]), None, "generic"]]])
+UFS = "AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO".split()
+
+
+def batch(horas: int, get=None, geo: str = "BR") -> list:
+    req = json.dumps([[["i0OFE", json.dumps([None, None, geo, 0, "pt-BR", horas, 1]), None, "generic"]]])
     body = urllib.parse.urlencode({"f.req": req}).encode()
     if get:
-        txt = get(horas)
+        txt = get(horas) if geo == "BR" else get(horas, geo)
     else:
         r = urllib.request.Request(BATCH + "?hl=pt-BR&gl=BR", data=body,
                                    headers={"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -174,6 +177,15 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None) -> int:
                 ret.setdefault("amostra_bruta", json.dumps(brutos[0], ensure_ascii=False)[:1500])
         except Exception as e:  # noqa: BLE001
             ret["erros"][f"lista_{h}h"] = f"{type(e).__name__}: {str(e)[:200]}"
+    # "em alta" de cada estado: uma vez por hora (1ª leitura de cada hora), para não ser bloqueado
+    if "--uf" in (argv or []) or int(agora[14:16]) < 15:
+        ret["por_uf"] = {}
+        for uf in UFS:
+            try:
+                ret["por_uf"][uf] = [termo(t) for t in batch(24, get_batch, f"BR-{uf}") if isinstance(t, list) and t and isinstance(t[0], str)][:40]
+            except Exception as e:  # noqa: BLE001
+                ret["erros"][f"uf_{uf}"] = f"{type(e).__name__}"
+            time.sleep(1)
     try:
         ret["rss"] = rss(get_rss)
     except Exception as e:  # noqa: BLE001
@@ -220,10 +232,16 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None) -> int:
         ini = c.get("inicio")
         c["momento"] = None if not ini else "antes do debate" if ini < DEBATE["inicio"] else "durante/depois do debate"
     termos = sorted(cons.values(), key=lambda c: (-(c["volume_max"] or 0), c["termo"]))
+    ult_uf = next((json.loads(f.read_text(encoding="utf-8")).get("por_uf") for f in sorted((pasta / "retratos").glob("*.json"), reverse=True)
+                   if json.loads(f.read_text(encoding="utf-8")).get("por_uf")), None)
+    por_uf = None
+    if ult_uf:
+        por_uf = {uf: [{"termo": x["termo"], "volume": x["volume"], "inicio": x["inicio"], "ativo": x["ativo"], "politica": POLITICA in x["categorias"]}
+                       for x in l] for uf, l in ult_uf.items()}
     out = {"schema_version": 1, "gerado_em_utc": agora, "debate": DEBATE, "categorias": CATEGORIAS, "politica_id": POLITICA,
            "retratos": retratos, "ultimo_retrato": {"t": agora, "erros": ret["erros"],
                                                        "lista_4h": [x["termo"] for x in ret["listas"].get("4h", [])][:60]},
-           "termos": termos, "curvas": ultima_curva,
+           "termos": termos, "curvas": ultima_curva, "em_alta_por_uf": por_uf,
            "metodo": "Lista 'Em alta agora' do Google Trends (Brasil, pt-BR), lida a cada execução; volumes são as faixas aproximadas "
                      "que o Trends mostra. 'Primeira vez visto' é o primeiro retrato do Atlas em que o termo apareceu; 'início' é o "
                      "horário que o próprio Trends informa. Categoria Política = rótulo do Trends (id 14). Curvas: interesse relativo "
