@@ -186,11 +186,11 @@ def curvas() -> dict:
 def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=None) -> int:
     root = Path(next((a for a in (argv or []) if not a.startswith("--")), "."))
     pasta = root / "data/trends/agora"
-    (pasta / "retratos").mkdir(parents=True, exist_ok=True)
     agora = now_utc()
     if "--sempre" not in (argv or []) and agora > DEBATE["janela_ate"]:
         print(f"fora da janela do debate (até {DEBATE['janela_ate']}): nada coletado")
         return 0
+    (pasta / "retratos").mkdir(parents=True, exist_ok=True)
     ret = {"coletado_em_utc": agora, "erros": {}, "listas": {}}
     for h in (4, 24):
         try:

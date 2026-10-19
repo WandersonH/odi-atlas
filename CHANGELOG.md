@@ -9,6 +9,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Pedido do usuário (19/10, 02h35): protocolo de fact-check para o discurso. Primeiro passo do protocolo: cruzar com o que as agências já checaram, sem veredito do Atlas. O usuário confirmou às 02h45 que a Fact Check Tools API está ativa no Google Cloud.
 - `collect_checagens.py` + `checagens.yml` (a cada 6 h, grátis): `claims:search` em português para "Lula", "Flávio Bolsonaro", "debate Band", "debate presidencial", "eleições 2026", "urna eletrônica" (janela de 60 dias); junta por link, marca o candidato citado e se a checagem é de 18/10 em diante. Chave: segredo `FACTCHECK_API_KEY` ou, na falta, `YOUTUBE_API_KEY`. Saída: `data/checagens/checagens.json`.
 - Testes: `tests/test_checagens.py`; suíte OK. Primeira execução real: ver a próxima entrada.
+- Correção encontrada na primeira execução (run 39206306669, falhou no passo de testes): `test_trends_agora.test_fora_da_janela` criava a pasta antes de checar a janela; no GitHub (usuário sem root) isso dá "Permission denied: '/nao'". Localmente passava porque o ambiente roda como root. Como todos os workflows de coleta rodam a suíte antes de coletar, as coletas diárias de 19/10 (07h10 em diante) falhariam. `collect_trends_agora.py` agora só cria a pasta depois de checar a janela.
 
 ## C19.62 — Debate: legendas dos blocos 1 e 2 lidas; atribuição automática de quem fala retirada por ser errada (2026-10-19) ⚠️
 
