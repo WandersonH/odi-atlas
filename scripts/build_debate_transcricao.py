@@ -33,7 +33,7 @@ import chd_reinert as cr  # noqa: E402
 from build_casos import gexf  # noqa: E402
 from net import now_utc  # noqa: E402
 
-ORADORES = {"lula": "Lula", "flavio": "Flávio Bolsonaro", "mediacao": "Mediação"}
+ORADORES = {"lula": "Lula", "flavio": "Flávio Bolsonaro", "mediacao": "Mediação", "indefinido": "Não atribuído"}
 DEIXA_NOME = {"lula": re.compile(r"\b(candidato|presidente|senhor)\s+lula\b|\blula,", re.I),
               "flavio": re.compile(r"\b(candidato|senador|senhor)\s+fl[aá]vio\b|\bfl[aá]vio( bolsonaro)?,", re.I)}
 DEIXA_TEMPO = re.compile(r"pergunt|respost|r[ée]plica|tr[ée]plica|\btempo\b|minuto|segundo|com a palavra|direito de resposta|consider[aã][cç][oõ]es|o senhor tem|a palavra", re.I)
@@ -54,6 +54,8 @@ def orador_por_deixas(segs: list[dict], correcoes: dict) -> list[str]:
             out.append("mediacao")
             atual = nomes[0]
             continue
+        if ">>" in t:  # a legenda automática marca troca de voz com ">>"; sem deixa, não dá para saber quem entrou
+            atual = "indefinido"
         out.append(manual[-1] if manual else atual)  # correção manual vale do seu início até a próxima
     return out
 
@@ -122,7 +124,7 @@ def rede(segmentos: list[dict], minimo: int = 3, top: int = 70) -> tuple[dict, C
 
 
 def chd_debate(segmentos: list[dict]) -> dict | None:
-    segs = [s for s in segmentos if s["orador"] in ("lula", "flavio")]
+    segs = [s for s in segmentos if s["orador"] != "mediacao"]  # candidatos + trechos ainda não atribuídos (sem a mediação identificada)
     if len(segs) < 60:
         return None
     X, voc = cr.matriz([s["texto"] for s in segs])
@@ -177,13 +179,14 @@ def main(argv=None) -> int:
     quem = orador_por_deixas(segs, correcoes)
     segmentos = segmentar(segs, quem)
     tempo = Counter()
-    for s, q in zip(segs, quem):
-        tempo[q] += max(0.0, s["fim"] - s["ini"])
+    for i, (s, q) in enumerate(zip(segs, quem)):  # legendas automáticas se sobrepõem: o trecho vai até o início do seguinte
+        seg_fim = min(s["fim"], segs[i + 1]["ini"]) if i + 1 < len(segs) and segs[i + 1].get("bloco") == s.get("bloco") else s["fim"]
+        tempo[q] += max(0.0, seg_fim - s["ini"])
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
     out_dir = root / "data/debate"
     out_dir.mkdir(parents=True, exist_ok=True)
     redes = {}
-    for nome, filtro in (("todos", ("lula", "flavio")), ("lula", ("lula",)), ("flavio", ("flavio",))):
+    for nome, filtro in (("todos", ("lula", "flavio", "indefinido")), ("lula", ("lula",)), ("flavio", ("flavio",))):
         nos, ar, des = rede([s for s in segmentos if s["orador"] in filtro])
         if nos:
             gexf(nos, ar, out_dir / f"rede_palavras_{nome}.gexf")

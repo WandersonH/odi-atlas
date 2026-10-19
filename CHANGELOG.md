@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.62 — Debate: legendas dos blocos 1 e 2 lidas; atribuição automática de quem fala retirada por ser errada (2026-10-19) ⚠️
+
+- Run 39204798894 (19/10 05h2x UTC, `--blocos … --apify`): Apify, conta 1, run eoKn1Ix5Qn02Kwg6l, status SUCCEEDED, 3 itens. Bloco 1 (S17iktRbpa0, "Acompanhe o 1° bloco do Debate da Band", Rádio BandNews FM, 46 min): 1.256 trechos de legenda automática. Bloco 2 (HMn0LIrfcws, 23,5 min): 619. ⛔ Bloco 3 (Omay_TlhdZM, 30 min): item sem segmentos (o ator devolveu erro; o motivo não foi gravado). Total lido: 12.281 palavras.
+- Erro encontrado na saída desse run: a atribuição por deixas da mediação deu Lula 91,2 min e Flávio 37,2 min, mais que a duração dos blocos. Duas causas: (1) os trechos da legenda automática se sobrepõem e a soma contava a sobreposição — agora cada trecho vai até o início do seguinte; (2) só há 12 deixas para ~166 trocas de voz (">>" na legenda), então o orador "herdava" a fala do outro por minutos (ex.: uma fala de Flávio dirigida a Lula saiu como de Lula). Agora troca de voz sem deixa vira "Não atribuído". Com a regra nova (rodada local sobre a mesma transcrição): Lula 3,3 min, Flávio 0,2, Mediação 0,5, Não atribuído 65,4 — ou seja, a atribuição automática não serve; o próximo passo é a codificação manual dos turnos em `data/config/debate_turnos.json`.
+- Enquanto isso, a rede "Os dois" e a CHD usam todas as falas fora da mediação identificada (candidatos + não atribuídas); temas por candidato só contam trechos atribuídos.
+- `collect_debate_video.py`: reaproveita do privado os blocos já lidos e só pede à Apify o que falta; grava `ini_video` e a fonte por trecho; registra o erro do item e o custo do run.
+- Página: barra de tempo de fala com "Não atribuído" e aviso explicando por quê. Verificado no Chromium local (sem erro de JavaScript). Suíte OK.
+
 ## C19.61 — Debate: player por bloco; legendas pela Apify (conta 1, teto US$ 0,05); testes não derrubam mais a coleta Meta (2026-10-19) ⚠️
 
 - Página: o player saiu da transmissão ao vivo (Gqc1rQtzWUk) e passou para os três vídeos por bloco indicados pelo usuário (S17iktRbpa0, HMn0LIrfcws, Omay_TlhdZM), com botões Bloco 1/2/3 que trocam o vídeo, o título e o link "Abrir no YouTube". Pedido do usuário (19/10, 02h2x): "video tambem tem que ser atualizado na pagina vc deixou com ao vivo". Estilo dos botões (`.pt-chips`) estendido às seções `#debate` e `#casos`, onde estava sem estilo. Verificado no Chromium local: clique no Bloco 3 troca src, título e link; sem erro de JavaScript (o vídeo em si não carrega no ambiente de teste, que não acessa o YouTube).
