@@ -15,11 +15,13 @@ class TestTrendsAgora(unittest.TestCase):
     def test_coleta(self):
         with tempfile.TemporaryDirectory() as t:
             ta.now_utc = lambda: "2026-10-19T01:00:00Z"
-            ta.main([t], get_batch=lambda h: RESP, get_rss=lambda: RSS, get_curvas=lambda: {"now 1-d": []})
+            NEWS = b"""<rss><channel><item><title>Flavio no debate - Folha</title><link>https://n/1</link><source url="https://folha.uol.com.br">Folha</source><pubDate>Sun, 18 Oct 2026 23:30:00 +0000</pubDate></item></channel></rss>"""
+            ta.main([t], get_batch=lambda h, *a: RESP, get_rss=lambda: RSS, get_curvas=lambda: {"now 1-d": []}, get_materias=lambda q: NEWS)
             d = json.loads((Path(t) / "data/trends/agora/debate.json").read_text(encoding="utf-8"))
         x = d["termos"][0]
         self.assertEqual((x["termo"], x["volume_max"], x["politica"], x["trafego_rss"]), ("debate na band", 50000, True, "50000+"))
         self.assertEqual(x["noticias"][0]["veiculo"], "Band")
+        self.assertEqual((x["materias"][0]["posicao"], x["materias"][0]["titulo"], x["materias"][0]["veiculo"]), (1, "Flavio no debate", "Folha"))
         self.assertEqual(x["inicio"], "2025-10-18T23:00:00Z" if False else ta.ts([1760828400]))
 
     def test_fora_da_janela(self):

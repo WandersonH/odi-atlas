@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.57 — Debate: termos mais buscados por estado e matérias no topo de cada busca (2026-10-18) 🔜
+
+- Pedidos do usuário (18/10, 22h37 e 22h50): "falta só os termos mais buscados por estado" e "ver quais matérias estão no início de cada busca".
+- Por estado: na primeira leitura de cada hora, consultas relacionadas (principais e em alta, até 10) a Lula, Flávio Bolsonaro e "debate" em cada UF, últimas 24 h (`relacionados_por_uf`). Página: painel 07 ganha "Termos mais buscados sobre… no estado" ao lado da lista em alta do estado.
+- Matérias: para cada termo de Política em alta (até 60), as 5 primeiras matérias do Google Notícias nas últimas 24 h, na ordem do Google Notícias, renovadas a cada hora (`data/trends/agora/materias.json`). Aparecem no ranking (5) e na lista de cada estado (2). Limite: é o Google Notícias, não a busca geral da web (a API de busca do Google recusou o projeto), e não é personalizado.
+- Workflow com tempo máximo de 25 min (as 27 UFs levam alguns minutos). Testes: `test_trends_agora` com matérias simuladas; suíte OK. Pendente: leitura no Actions.
+
 ## C19.56 — Debate: perguntas, termos mais buscados e buscas por estado (2026-10-18) 🔜
 
 - Referência do usuário (18/10, 22h30): a sala digital Band e Google acompanha "principais perguntas", "termos mais buscados sobre…", curvas e buscas por estado. `collect_trends_agora.py` passa a guardar, para Lula, Flávio Bolsonaro e "debate" nas últimas 24 h: consultas relacionadas (principais e em alta), as que começam como pergunta, e o interesse por UF (divisão entre os três termos na mesma consulta).

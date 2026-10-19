@@ -123,6 +123,29 @@ def relacionados(data: dict) -> dict:
     return out
 
 
+def materias(termo_: str, get=None) -> list[dict]:
+    """As 5 primeiras matérias do Google Notícias para o termo nas últimas 24 h, na ordem do próprio Google Notícias."""
+    from collect_google_busca import RSS as NRSS, parse_rss
+    url = NRSS + "?" + urllib.parse.urlencode({"q": f"{termo_} when:1d", "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"})
+    xml = get(termo_) if get else read_body(open_url(url, timeout=40))
+    return [{"posicao": i, **{k: x.get(k) for k in ("titulo", "link", "veiculo", "dominio", "data_publicacao")}} for i, x in enumerate(parse_rss(xml)[:5], 1)]
+
+
+def relacionados_uf(uf: str, t=None) -> dict:
+    """Termos mais buscados (principais e em alta) sobre Lula, Flávio Bolsonaro e "debate" no estado, últimas 24 h."""
+    t = t or Trends(pause=3)
+    ws = {w["id"]: w for w in t.explore(TERMOS_CURVA, "now 1-d", f"BR-{uf}")}
+    out = {}
+    for k, w in sorted(ws.items()):
+        if not k.startswith("RELATED_QUERIES"):
+            continue
+        idx = int(k.rsplit("_", 1)[1]) if k.rsplit("_", 1)[-1].isdigit() else 0
+        if idx < len(TERMOS_CURVA):
+            r = relacionados(t.widget("relatedsearches", w))
+            out[TERMOS_CURVA[idx]] = {lista: v[:10] for lista, v in r.items()}
+    return out
+
+
 def curvas() -> dict:
     """Curvas (24 h e 7 dias), consultas relacionadas de cada termo e interesse por UF nas últimas 24 h."""
     t = Trends(pause=3)
@@ -160,7 +183,7 @@ def curvas() -> dict:
     return out
 
 
-def main(argv=None, get_batch=None, get_rss=None, get_curvas=None) -> int:
+def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=None) -> int:
     root = Path(next((a for a in (argv or []) if not a.startswith("--")), "."))
     pasta = root / "data/trends/agora"
     (pasta / "retratos").mkdir(parents=True, exist_ok=True)
@@ -186,6 +209,17 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None) -> int:
             except Exception as e:  # noqa: BLE001
                 ret["erros"][f"uf_{uf}"] = f"{type(e).__name__}"
             time.sleep(1)
+        if get_batch is None:  # termos mais buscados em cada estado (explore por UF)
+            ret["relacionados_uf"] = {}
+            try:
+                tr = Trends(pause=3)
+                for uf in UFS:
+                    try:
+                        ret["relacionados_uf"][uf] = relacionados_uf(uf, tr)
+                    except Exception as e:  # noqa: BLE001
+                        ret["erros"][f"rel_{uf}"] = f"{type(e).__name__}"
+            except Exception as e:  # noqa: BLE001
+                ret["erros"]["rel_uf"] = f"{type(e).__name__}: {str(e)[:120]}"
     try:
         ret["rss"] = rss(get_rss)
     except Exception as e:  # noqa: BLE001
@@ -232,6 +266,28 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None) -> int:
         ini = c.get("inicio")
         c["momento"] = None if not ini else "antes do debate" if ini < DEBATE["inicio"] else "durante/depois do debate"
     termos = sorted(cons.values(), key=lambda c: (-(c["volume_max"] or 0), c["termo"]))
+    # matérias no topo do Google Notícias para cada termo de Política (renovadas a cada hora; termo novo entra na hora)
+    cache_p = pasta / "materias.json"
+    cache = json.loads(cache_p.read_text(encoding="utf-8")) if cache_p.exists() else {}
+    limite = (dt.datetime.strptime(agora, "%Y-%m-%dT%H:%M:%SZ") - dt.timedelta(minutes=55)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    alvos = [c for c in termos if c["politica"]][:60]
+    for c in alvos:
+        k = c["termo"].lower()
+        if k in cache and cache[k]["coletado_em"] >= limite:
+            continue
+        try:
+            cache[k] = {"coletado_em": agora, "itens": materias(c["termo"], get_materias)}
+        except Exception as e:  # noqa: BLE001
+            ret["erros"].setdefault("materias", []).append(f"{c['termo']}: {type(e).__name__}")
+        if get_materias is None:
+            time.sleep(0.5)
+    cache_p.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+    for c in termos:
+        m = cache.get(c["termo"].lower())
+        if m:
+            c["materias"], c["materias_em"] = m["itens"], m["coletado_em"]
+    ult_rel_uf = next((json.loads(f.read_text(encoding="utf-8")).get("relacionados_uf") for f in sorted((pasta / "retratos").glob("*.json"), reverse=True)
+                       if json.loads(f.read_text(encoding="utf-8")).get("relacionados_uf")), None)
     ult_uf = next((json.loads(f.read_text(encoding="utf-8")).get("por_uf") for f in sorted((pasta / "retratos").glob("*.json"), reverse=True)
                    if json.loads(f.read_text(encoding="utf-8")).get("por_uf")), None)
     por_uf = None
@@ -241,7 +297,7 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None) -> int:
     out = {"schema_version": 1, "gerado_em_utc": agora, "debate": DEBATE, "categorias": CATEGORIAS, "politica_id": POLITICA,
            "retratos": retratos, "ultimo_retrato": {"t": agora, "erros": ret["erros"],
                                                        "lista_4h": [x["termo"] for x in ret["listas"].get("4h", [])][:60]},
-           "termos": termos, "curvas": ultima_curva, "em_alta_por_uf": por_uf,
+           "termos": termos, "curvas": ultima_curva, "em_alta_por_uf": por_uf, "relacionados_por_uf": ult_rel_uf,
            "metodo": "Lista 'Em alta agora' do Google Trends (Brasil, pt-BR), lida a cada execução; volumes são as faixas aproximadas "
                      "que o Trends mostra. 'Primeira vez visto' é o primeiro retrato do Atlas em que o termo apareceu; 'início' é o "
                      "horário que o próprio Trends informa. Categoria Política = rótulo do Trends (id 14). Curvas: interesse relativo "
