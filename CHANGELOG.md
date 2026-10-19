@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.60 — Debate: vídeos por bloco; legendas existem, mas o YouTube recusa a leitura pelo GitHub (2026-10-19) ⛔
+
+- O usuário indicou os vídeos do debate por bloco (18/10, 23h31): S17iktRbpa0, HMn0LIrfcws, Omay_TlhdZM. `collect_debate_video.py --blocos` lê um por um e junta a transcrição em sequência (bloco e tempo guardados).
+- Run de 19/10 05h20 UTC: a YouTube Data API (captions.list, só a chave do Google Cloud) confirma legenda automática em português nos três blocos. Mas a leitura do texto falhou em todos os caminhos: yt-dlp com 5 clientes do YouTube (padrão, tv_embedded/web_embedded, mweb, android_vr, ios) pede login ("confirme que não é um robô") e o endpoint público de legendas (timedtext) volta vazio. Baixar pela API (captions.download) exige autorização do dono do canal.
+- Caminhos restantes, aguardando o usuário: ator de legendas da Apify na conta 1 (a única ativa; ~US$ 0,0001 a 0,01 por vídeo, loja de 18/10) ou leitura pelo Chrome do usuário (exige liberar youtube.com na extensão).
+
 ## C19.59 — Debate: vídeo e transcrição (2026-10-18) 🔜
 
 - Pedido do usuário (18/10, 23h07): vídeo do debate no início da página, análise de redes da transcrição, análise no estilo IRaMuTeQ e contagem por tema.
