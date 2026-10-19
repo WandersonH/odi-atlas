@@ -4,11 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.63 — Checagens publicadas: Google Fact Check Tools API (2026-10-19) 🔜
+## C19.63 — Checagens publicadas: Google Fact Check Tools API (2026-10-19) ⛔
 
 - Pedido do usuário (19/10, 02h35): protocolo de fact-check para o discurso. Primeiro passo do protocolo: cruzar com o que as agências já checaram, sem veredito do Atlas. O usuário confirmou às 02h45 que a Fact Check Tools API está ativa no Google Cloud.
 - `collect_checagens.py` + `checagens.yml` (a cada 6 h, grátis): `claims:search` em português para "Lula", "Flávio Bolsonaro", "debate Band", "debate presidencial", "eleições 2026", "urna eletrônica" (janela de 60 dias); junta por link, marca o candidato citado e se a checagem é de 18/10 em diante. Chave: segredo `FACTCHECK_API_KEY` ou, na falta, `YOUTUBE_API_KEY`. Saída: `data/checagens/checagens.json`.
 - Testes: `tests/test_checagens.py`; suíte OK. Primeira execução real: ver a próxima entrada.
+- Execução real (run 39206410820, 19/10 ~05h55 UTC): ⛔ HTTP 403 em todas as consultas — "Requests to this API factchecktools.googleapis.com … are blocked" (PERMISSION_DENIED). Sem `FACTCHECK_API_KEY`, o script usou a chave do YouTube, que está restrita à YouTube Data API. Falta: incluir a Fact Check Tools API nas restrições dessa chave ou criar outra chave e salvá-la como segredo `FACTCHECK_API_KEY`. 0 checagens gravadas.
 - Correção encontrada na primeira execução (run 39206306669, falhou no passo de testes): `test_trends_agora.test_fora_da_janela` criava a pasta antes de checar a janela; no GitHub (usuário sem root) isso dá "Permission denied: '/nao'". Localmente passava porque o ambiente roda como root. Como todos os workflows de coleta rodam a suíte antes de coletar, as coletas diárias de 19/10 (07h10 em diante) falhariam. `collect_trends_agora.py` agora só cria a pasta depois de checar a janela.
 
 ## C19.62 — Debate: legendas dos blocos 1 e 2 lidas; atribuição automática de quem fala retirada por ser errada (2026-10-19) ⚠️
