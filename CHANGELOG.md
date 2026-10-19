@@ -4,7 +4,7 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.72 — Caso 003 "Ninguém morre nos devendo" (Flamengo e as bets) ativado, coleta grátis do TikTok (2026-10-19) 🔜
+## C19.72 — Caso 003 "Ninguém morre nos devendo" (Flamengo e as bets) ativado, coleta grátis do TikTok (2026-10-19) ⚠️
 
 - Pedido do usuário (19/10, 19h11): coletar o caso Flamengo / "ninguém morre nos devendo" (depois da proibição das bets) na página de casos, começando pelo TikTok, com a conta Apify `APIFY_TOKEN_FL` (US$ 5) só para este caso e sem as consultas às contas que precederam o bloqueio. Em seguida (19h12): "você já bloqueou a conta" / "colete na versão free".
   - Nenhuma chamada foi feita com `APIFY_TOKEN_FL` nesta sessão: o caso usa só a coleta grátis (página pública do TikTok, sem login). O caminho com conta exclusiva (`"segredo"` no caso, sem consulta de saldo) ficou no código para uso futuro e não está ativo.
@@ -15,6 +15,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `collect_tiktok_hashtags.py`: além da página da hashtag, abre a busca do site (`/search/video?q=`) e lê as respostas `/api/search/`. Sem login, o TikTok pode limitar a busca; o manifesto registra quantas respostas vieram.
 - `apify-contas.yml`: agendamento diário desligado. Ele consultava todas as contas todo dia, o tipo de chamada que o usuário pediu para evitar.
 - Testes: suíte OK; `test_casos` ajustado (casos 002 e 004 continuam aguardando).
+- Execução real (run 39333583748, carga, TikTok e Google, grátis):
+  - Hashtag #ninguemmorrenosdevendo: 59 vídeos de 44 contas, 27 deles publicados desde 25/09. Primeiro vídeo localizado no período: 27/09, 21h (Brasília), conta com 455,9 mil seguidores.
+  - Busca por frase: 0 vídeos nas duas buscas (2 respostas cada). Sem login, a busca do TikTok não entrega resultados; ⛔ a busca por frase fica pendente.
+  - Google: 169 pontos do Trends e 43 notícias.
 
 ## C19.71 — Coletas diárias de seguidores: duas coletas no mesmo arquivo não se derrubam mais (2026-10-19) ✅
 
