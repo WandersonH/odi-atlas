@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.69 — Checagens: gráfico por candidato e big number corrigido (2026-10-19) ✅
+
+- O usuário apontou (19/10, 03h28) que o big number mostrava 0 checagens, embora a lista do painel 09 tenha 344. O 0 era só "desde o dia do debate". Agora o big number mostra o total (344, 60 dias) e o "desde o debate" fica no texto de apoio.
+- Pedido do mesmo horário: barras por candidato com verdadeiro, falso e outras classificações, acima da tabela. `collect_checagens.py` agrupa os rótulos das agências em Falso, Enganoso ou fora de contexto, Verdadeiro e Outros, e separa duas contagens:
+  - Checagens que **citam** o candidato: Lula 246 (falso 172, enganoso/fora de contexto 72, verdadeiro 2); Flávio Bolsonaro 101 (falso 79, enganoso 22). Quase todas checam boatos **sobre** o candidato. A página avisa que "falso" ali não quer dizer que o candidato mentiu.
+  - Afirmações **ditas pelo próprio candidato**, segundo o campo "quem disse" da agência: Lula 4 (2 enganosas/fora de contexto, 2 verdadeiras); Flávio Bolsonaro 1 (enganosa/fora de contexto). A página avisa que números tão pequenos não permitem comparar os dois.
+  - Recalculado sobre a coleta do run 39206833280, sem nova chamada à API.
+- Privacidade: em 3 checagens, "quem disse" trazia nome de pessoa comum; o público passa a mostrar "pessoa ou perfil (nome omitido pelo Atlas)". Também foi corrigida a exibição de afirmações vazias ("/"), que agora mostram o título da checagem.
+- Testes: `TestRotulos`; suíte OK. Verificado no Chromium local (1300 e 390 px), sem erro de JavaScript.
+
 ## C19.68 — Debate: big numbers e painel do YouTube na página (2026-10-19) ✅
 
 - Run 39209236316 (19/10 06h2x UTC), sem erro: 418 vídeos achados, 404 sobre o debate, de 216 canais. Somados: 76.283.920 visualizações, 1.752.743 curtidas, 108.501 comentários (contadores públicos) e 223,5 h de vídeo. A transmissão da Band Jornalismo (Gqc1rQtzWUk) sozinha tem 31.125.686 visualizações.

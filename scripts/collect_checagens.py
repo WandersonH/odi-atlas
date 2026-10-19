@@ -77,6 +77,48 @@ def buscar(chave: str, consulta: str, dias: int, erros: list[str]) -> list[dict]
     return itens
 
 
+GRUPOS_ROTULO = [("Falso", ("falso", "errado", "fake", "mentira", "inventado", "montagem", "golpe")),
+                 ("Enganoso ou fora de contexto", ("enganos", "enganador", "distorcid", "contexto", "nao e bem assim", "nao_e_bem_assim",
+                                                    "exager", "imprecis", "parcial", "insustent", "sem provas", "satira")),
+                 ("Verdadeiro", ("verdadeiro", "verdade", "correto", "confirmado", "procede"))]
+GENERICOS = ("boato", "rede", "desinforma", "varias fontes", "varia fontes", "utilizador", "usuario", "postage", "posts", "perfis", "internet",
+             "whatsapp", "video", "site", "blog")
+
+
+def grupo_rotulo(rotulo: str | None) -> str:
+    r = norm(rotulo or "").replace("_", " ")
+    for g, chaves in GRUPOS_ROTULO:
+        if any(norm(k).replace("_", " ") in r for k in chaves):
+            return g
+    return "Outros ou sem rótulo"
+
+
+def autor_candidato(quem: str | None) -> str | None:
+    q = norm(quem or "").strip()
+    if q in ("lula", "luiz inacio lula da silva", "presidente lula", "luis inacio lula da silva"):
+        return "Lula"
+    if q in ("flavio bolsonaro", "senador flavio bolsonaro", "flavio"):
+        return "Flávio Bolsonaro"
+    return None
+
+
+def quem_publico(quem: str | None) -> str | None:
+    """Quem disse, como a agência registrou — só candidatos ou fontes genéricas; nome de pessoa comum não vai para o público."""
+    if not quem:
+        return None
+    if autor_candidato(quem) or any(g in norm(quem) for g in GENERICOS):
+        return quem
+    return "pessoa ou perfil (nome omitido pelo Atlas)"
+
+
+def enriquecer(itens: list[dict]) -> list[dict]:
+    for x in itens:
+        x["grupo_rotulo"] = grupo_rotulo(x.get("rotulo"))
+        x["dito_pelo_candidato"] = autor_candidato(x.get("quem_disse"))
+        x["quem_disse"] = quem_publico(x.get("quem_disse"))
+    return itens
+
+
 def juntar(itens: list[dict]) -> list[dict]:
     por = {}
     for x in itens:
@@ -90,6 +132,17 @@ def juntar(itens: list[dict]) -> list[dict]:
         x["candidatos"] = candidato(x["afirmacao"] + " " + (x["titulo"] or ""), x["quem_disse"] or "")
         x["desde_o_debate"] = bool(x["data_checagem"] and x["data_checagem"] >= DEBATE_INICIO)
     out.sort(key=lambda x: (x["data_checagem"] or "", x["agencia"] or ""), reverse=True)
+    return enriquecer(out)
+
+
+def resumo_candidatos(itens: list[dict]) -> dict:
+    grupos = [g for g, _ in GRUPOS_ROTULO] + ["Outros ou sem rótulo"]
+    out = {}
+    for c in ("Lula", "Flávio Bolsonaro"):
+        cit = [x for x in itens if c in x["candidatos"]]
+        dit = [x for x in itens if x["dito_pelo_candidato"] == c]
+        out[c] = {"citam": {g: sum(x["grupo_rotulo"] == g for x in cit) for g in grupos}, "citam_total": len(cit),
+                  "ditas_pelo_candidato": {g: sum(x["grupo_rotulo"] == g for x in dit) for g in grupos}, "ditas_total": len(dit)}
     return out
 
 
@@ -114,6 +167,7 @@ def main(argv=None) -> int:
            "consultas": CONSULTAS, "idioma": "pt", "janela_dias": dias, "debate_inicio": DEBATE_INICIO,
            "total": len(itens), "desde_o_debate": sum(x["desde_o_debate"] for x in itens),
            "por_agencia": ag.most_common(), "rotulos": rot.most_common(30), "erros": erros,
+           "por_candidato": resumo_candidatos(itens),
            "status": "ok" if itens else ("⛔ " + erros[0] if erros else "⛔ nenhuma checagem encontrada"),
            "nota": "Rótulos e textos são das agências de checagem; o Atlas não dá veredito. A API só traz checagens marcadas em ClaimReview.",
            "itens": itens}

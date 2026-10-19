@@ -26,3 +26,16 @@ class TestChecagens(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRotulos(unittest.TestCase):
+    def test_grupos_e_autor(self):
+        self.assertEqual(cc.grupo_rotulo("Falso"), "Falso")
+        self.assertEqual(cc.grupo_rotulo("não_é_bem_assim"), "Enganoso ou fora de contexto")
+        self.assertEqual(cc.grupo_rotulo("Falta contexto"), "Enganoso ou fora de contexto")
+        self.assertEqual(cc.grupo_rotulo("verdadeiro"), "Verdadeiro")
+        self.assertEqual(cc.grupo_rotulo(None), "Outros ou sem rótulo")
+        self.assertEqual(cc.autor_candidato("Lula"), "Lula")
+        self.assertIsNone(cc.autor_candidato("Boato de internet"))
+        self.assertEqual(cc.quem_publico("Fulana de Tal"), "pessoa ou perfil (nome omitido pelo Atlas)")
+        self.assertEqual(cc.quem_publico("Boato de internet"), "Boato de internet")
