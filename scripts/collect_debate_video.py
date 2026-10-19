@@ -87,26 +87,41 @@ def vtt_segmentos(txt: str) -> list[dict]:
     return segs
 
 
+ERROS: list[str] = []
+
+
 def legendas(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
     base = ["yt-dlp", "--skip-download", "--sub-format", "vtt", "-o", str(pasta / "%(id)s.%(ext)s"), f"https://www.youtube.com/watch?v={vid}"]
     for modo, args in (("manual", ["--write-subs", "--sub-langs", "pt.*,pt"]), ("automática", ["--write-auto-subs", "--sub-langs", "pt-orig,pt"])):
-        subprocess.run(base[:1] + args + base[1:], capture_output=True, text=True, timeout=600)
+        r = subprocess.run(base[:1] + args + base[1:], capture_output=True, text=True, timeout=600)
+        ERROS.append(f"{modo}: " + " | ".join(l for l in (r.stderr or "").splitlines() if "ERROR" in l or "WARNING" in l)[-300:])
         arqs = sorted(glob.glob(str(pasta / f"{vid}*.vtt")))
         if arqs:
             return vtt_segmentos(Path(arqs[0]).read_text(encoding="utf-8")), f"legenda {modo} do YouTube ({Path(arqs[0]).name.split('.')[-2]})"
     return [], None
 
 
-def whisper(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
-    r = subprocess.run(["yt-dlp", "-f", "bestaudio", "-x", "--audio-format", "mp3", "--audio-quality", "9", "-o", str(pasta / "audio.%(ext)s"),
+def whisper(vid: str, pasta: Path, trecho: str | None = None) -> tuple[list[dict], str | None]:
+    """Só o áudio do trecho do debate (ex.: "4:00:00-6:12:26"), mono 16 kHz; tempos devolvidos já no relógio do vídeo."""
+    extra = ["--download-sections", f"*{trecho}"] if trecho else []
+    r = subprocess.run(["yt-dlp", "-f", "bestaudio", "-x", "--audio-format", "mp3", "--audio-quality", "9", *extra, "-o", str(pasta / "audio.%(ext)s"),
                         f"https://www.youtube.com/watch?v={vid}"], capture_output=True, text=True, timeout=3600)
+    ERROS.append("áudio: " + " | ".join(l for l in (r.stderr or "").splitlines() if "ERROR" in l)[-300:])
     arq = next(iter(glob.glob(str(pasta / "audio.*"))), None)
     if not arq:
         return [], None
     from faster_whisper import WhisperModel
     m = WhisperModel("small", device="cpu", compute_type="int8")
     segs, info = m.transcribe(arq, language="pt", vad_filter=True, beam_size=1)
-    out = [{"ini": round(s.start, 2), "fim": round(s.end, 2), "texto": s.text.strip()} for s in segs]
+    desloc = 0
+    if trecho:
+        h = [int(x) for x in trecho.split("-")[0].split(":")]
+        desloc = h[0] * 3600 + h[1] * 60 + h[2] if len(h) == 3 else h[0] * 60 + h[1]
+    out = []
+    for s in segs:
+        out.append({"ini": round(s.start + desloc, 2), "fim": round(s.end + desloc, 2), "texto": s.text.strip()})
+        if len(out) % 200 == 0:
+            print(f"whisper: {len(out)} segmentos, {round(s.end / 60)} min", flush=True)
     _ = r
     return out, "faster-whisper small (CPU), transcrição automática do áudio"
 
@@ -137,8 +152,8 @@ def main(argv=None) -> int:
     with tempfile.TemporaryDirectory() as t:
         segs, fonte = legendas(escolhido["id"], Path(t))
         if not segs and "--whisper" in argv:
-            segs, fonte = whisper(escolhido["id"], Path(t))
-    man.update(transcricao_fonte=fonte, segmentos=len(segs), palavras=sum(len(s["texto"].split()) for s in segs),
+            segs, fonte = whisper(escolhido["id"], Path(t), argv[argv.index("--trecho") + 1] if "--trecho" in argv else None)
+    man.update(diagnostico=[e for e in ERROS if e.split(": ", 1)[-1]], trecho=argv[argv.index("--trecho") + 1] if "--trecho" in argv else None, transcricao_fonte=fonte, segmentos=len(segs), palavras=sum(len(s["texto"].split()) for s in segs),
                status="ok" if segs else "⛔ sem legendas (tente --whisper)")
     interno = os.environ.get("ODI_INTERNO_DIR")
     if segs and interno:

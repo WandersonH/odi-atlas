@@ -6,6 +6,9 @@ on:
       video:
         description: "id do vídeo no YouTube (vazio = procurar)"
         default: ""
+      trecho:
+        description: "trecho do vídeo para o Whisper (h:mm:ss-h:mm:ss)"
+        default: ""
       whisper:
         description: "transcrever o áudio se não houver legenda"
         type: boolean
@@ -42,9 +45,11 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           VIDEO: ${{ github.event.inputs.video }}
           WHISPER: ${{ github.event.inputs.whisper }}
+          TRECHO: ${{ github.event.inputs.trecho }}
         run: |
           a=""; if [ -n "$VIDEO" ]; then a="--video $VIDEO"; fi
           if [ "$WHISPER" = "true" ]; then a="$a --whisper"; fi
+          if [ -n "$TRECHO" ]; then a="$a --trecho $TRECHO"; fi
           python scripts/collect_debate_video.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Debate vídeo::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
