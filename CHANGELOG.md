@@ -4,7 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.63 — Checagens publicadas: Google Fact Check Tools API (2026-10-19) ⛔
+## C19.64 — Checagens publicadas funcionando; painel 09 na página do debate (2026-10-19) ✅
+
+- O usuário liberou a Fact Check Tools API na chave do Google Cloud (19/10, 02h52). Run 39206833280: 344 checagens únicas em português (60 dias), sem erro. Por consulta: "Lula" 257, "Flávio Bolsonaro" 114, "urna eletrônica" 13, "eleições 2026" 12, "debate presidencial" 1, "debate Band" 0 (há sobreposição entre consultas). Agências: UOL Notícias 86, Aos Fatos 84, Estadão 62, AFP Checamos 55, BOL-UOL 34, Projeto Comprova 16, Observador 7. Rótulos: falso 245, enganoso 58, distorcido 14. Nenhuma checagem com data de 18/10 em diante; a mais recente é de 16/10. 181 sem data de checagem na API.
+- Página (aba do debate): painel "09 · Checagens publicadas", com filtro Todas / Citam Lula / Citam Flávio Bolsonaro, resumo por agência e rótulo, e tabela das 60 mais recentes com link para cada checagem. Aviso: rótulo e texto são das agências, o Atlas não dá veredito, e "citam" não quer dizer autoria.
+- Correção de layout: a tabela de temas da transcrição estourava a largura no celular (484 px em tela de 390); agora rola dentro do cartão. Verificado no Chromium local, em 1300 e 390 px (largura da página 390), sem erro de JavaScript. Suíte OK.
+
+## C19.63 — Checagens publicadas: Google Fact Check Tools API (2026-10-19) ⛔ (resolvido em C19.64)
 
 - Pedido do usuário (19/10, 02h35): protocolo de fact-check para o discurso. Primeiro passo do protocolo: cruzar com o que as agências já checaram, sem veredito do Atlas. O usuário confirmou às 02h45 que a Fact Check Tools API está ativa no Google Cloud.
 - `collect_checagens.py` + `checagens.yml` (a cada 6 h, grátis): `claims:search` em português para "Lula", "Flávio Bolsonaro", "debate Band", "debate presidencial", "eleições 2026", "urna eletrônica" (janela de 60 dias); junta por link, marca o candidato citado e se a checagem é de 18/10 em diante. Chave: segredo `FACTCHECK_API_KEY` ou, na falta, `YOUTUBE_API_KEY`. Saída: `data/checagens/checagens.json`.
