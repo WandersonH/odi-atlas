@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.71 — Coletas diárias de seguidores: duas coletas no mesmo arquivo não se derrubam mais (2026-10-19) ✅
+
+- Pedido do usuário (19/10, 19h04): a coleta de "Quem acompanha" deve ser diária. Situação de 19/10:
+  - Seguidores Meta (run 39290012064), WhatsApp (39294037889), WhatsApp canais (39296768953), TikTok (39291556905) e Kwai (39309924473) gravaram os dados do dia.
+  - ⛔ Seguidores YouTube (run 39290277156) coletou, mas não gravou: o envio ao GitHub parou em conflito do git com a coleta Meta, que tinha gravado `data/seguidores/latest.csv` e `variacao.json` um minuto antes. Os números do YouTube de 19/10 se perderam nessa execução.
+  - ⛔ Seguidores faltantes (39294371417): rodou, mas todos os perfis voltaram sem número, porque usa as contas Apify 3 a 7, recusadas pela Apify.
+  - Os agendamentos de 07h10 a 08h41 só começaram entre 13h57 e 14h45 (atraso do agendador do GitHub).
+- Correção: `scripts/resolver_conflitos.py`, chamado por `commit_push.sh` quando o rebase para em conflito. Tabelas de seguidores: junta as duas versões, uma linha por candidato/rede/endereço, ficando com a captura mais recente; nenhuma coleta apaga a outra. Arquivos derivados: fica a versão desta coleta (recalculada na próxima). Teste de integração `tests/test_commit_push.py`, com dois clones gravando o mesmo `latest.csv`: as duas atualizações sobrevivem. Suíte OK.
+- Seguidores YouTube disparado de novo em 19/10 (resultado na próxima entrada).
+
 ## C19.70 — Checagens das falas do debate (Lupa e Estadão Verifica) (2026-10-19) ⚠️
 
 - O usuário observou (19/10, 03h36) que as checagens do painel 09 eram anteriores ao debate. É isso mesmo: a Google Fact Check Tools API ainda não indexou checagens do debate (a mais recente é de 16/10). Busca na web (19/10 ~03h45) encontrou as checagens do debate publicadas pelas agências:

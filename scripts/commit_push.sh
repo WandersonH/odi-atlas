@@ -9,7 +9,20 @@ git add data/
 if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
 git commit -q -m "$msg"
 for i in 1 2 3 4; do
-  if out=$( { git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}" && git push; } 2>&1 ); then
+  out=$(git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}" 2>&1); rc=$?
+  # conflito com outra coleta que gravou os mesmos arquivos: resolve (união das tabelas de seguidores) e continua
+  n=0
+  while [ $rc -ne 0 ] && [ -d .git/rebase-merge -o -d .git/rebase-apply ] && [ $n -lt 10 ]; do
+    if python3 scripts/resolver_conflitos.py; then
+      out="$out
+$(GIT_EDITOR=true git rebase --continue 2>&1)"; rc=$?
+    else
+      break
+    fi
+    n=$((n + 1))
+  done
+  if [ $rc -eq 0 ] && out="$out
+$(git push 2>&1)"; then
     echo "$out"; echo "enviado na tentativa $i"; exit 0
   fi
   echo "$out"
