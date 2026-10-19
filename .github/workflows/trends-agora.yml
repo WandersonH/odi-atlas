@@ -3,6 +3,11 @@ name: Google Trends — em alta agora (debate do 2º turno, a cada 15 min, grát
 # Lista "Em alta agora" do Brasil, RSS e curvas de Lula/Flávio/debate. Janela: 24 h antes e 24 h depois do debate de 18/10.
 on:
   workflow_dispatch:
+    inputs:
+      uf:
+        description: "ler também a lista de cada estado agora"
+        type: boolean
+        default: false
   schedule:
     - cron: "*/15 * * * *"
 
@@ -25,7 +30,8 @@ jobs:
       - name: Coletar
         continue-on-error: true
         run: |
-          python scripts/collect_trends_agora.py > f.txt 2>&1; rc=$?
+          a=""; if [ "${{ github.event.inputs.uf }}" = "true" ]; then a="--uf"; fi
+          python scripts/collect_trends_agora.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Trends agora::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Commitar
