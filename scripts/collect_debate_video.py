@@ -90,11 +90,44 @@ def vtt_segmentos(txt: str) -> list[dict]:
 ERROS: list[str] = []
 
 
+CLIENTES = ("default", "tv_embedded,web_embedded", "mweb", "android_vr", "ios")
+
+
+def faixas_api(vid: str, key: str) -> list[dict]:
+    """captions.list (YouTube Data API, só a chave): quais legendas existem (idioma, automática ou não). Baixar exige OAuth do dono."""
+    p = {"part": "snippet", "videoId": vid, "key": key}
+    return [{"idioma": x["snippet"].get("language"), "tipo": x["snippet"].get("trackKind"), "nome": x["snippet"].get("name")}
+            for x in get_json(f"{API}/captions?{urllib.parse.urlencode(p)}").get("items") or []]
+
+
+def timedtext(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
+    """Endpoint público de legendas (o mesmo do player), sem yt-dlp."""
+    from net import open_url, read_body
+    for q in ({"lang": "pt", "fmt": "vtt"}, {"lang": "pt-BR", "fmt": "vtt"}, {"lang": "pt", "kind": "asr", "fmt": "vtt"}):
+        try:
+            txt = read_body(open_url(f"https://www.youtube.com/api/timedtext?v={vid}&" + urllib.parse.urlencode(q), timeout=60)).decode("utf-8", "replace")
+            if "-->" in txt:
+                return vtt_segmentos(txt), f"legenda do YouTube (timedtext, {q.get('kind', 'manual')} {q['lang']})"
+            ERROS.append(f"timedtext {q}: vazio ({len(txt)} bytes)")
+        except Exception as e:  # noqa: BLE001
+            ERROS.append(f"timedtext {q}: {type(e).__name__} {getattr(e, 'code', '')}")
+    return [], None
+
+
 def legendas(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
-    base = ["yt-dlp", "--skip-download", "--sub-format", "vtt", "-o", str(pasta / "%(id)s.%(ext)s"), f"https://www.youtube.com/watch?v={vid}"]
+    for cli in CLIENTES:
+        segs, fonte = legendas_cliente(vid, pasta, cli)
+        if segs:
+            return segs, f"{fonte} · cliente {cli}"
+    return timedtext(vid, pasta)
+
+
+def legendas_cliente(vid: str, pasta: Path, cliente: str) -> tuple[list[dict], str | None]:
+    extra = [] if cliente == "default" else ["--extractor-args", f"youtube:player_client={cliente}"]
+    base = ["yt-dlp", *extra, "--skip-download", "--sub-format", "vtt", "-o", str(pasta / "%(id)s.%(ext)s"), f"https://www.youtube.com/watch?v={vid}"]
     for modo, args in (("manual", ["--write-subs", "--sub-langs", "pt.*,pt"]), ("automática", ["--write-auto-subs", "--sub-langs", "pt-orig,pt"])):
         r = subprocess.run(base[:1] + args + base[1:], capture_output=True, text=True, timeout=600)
-        ERROS.append(f"{modo}: " + " | ".join(l for l in (r.stderr or "").splitlines() if "ERROR" in l or "WARNING" in l)[-300:])
+        ERROS.append(f"{cliente} {modo}: " + " | ".join(l for l in (r.stderr or "").splitlines() if "ERROR" in l or "WARNING" in l)[-300:])
         arqs = sorted(glob.glob(str(pasta / f"{vid}*.vtt")))
         if arqs:
             return vtt_segmentos(Path(arqs[0]).read_text(encoding="utf-8")), f"legenda {modo} do YouTube ({Path(arqs[0]).name.split('.')[-2]})"
@@ -149,10 +182,32 @@ def main(argv=None) -> int:
         (pasta / "video.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8")
         print(man["status"], [(c["canal"], c["titulo"], c["duracao_s"]) for c in cands[:8]])
         return 1
-    with tempfile.TemporaryDirectory() as t:
-        segs, fonte = legendas(escolhido["id"], Path(t))
-        if not segs and "--whisper" in argv:
-            segs, fonte = whisper(escolhido["id"], Path(t), argv[argv.index("--trecho") + 1] if "--trecho" in argv else None)
+    blocos = argv[argv.index("--blocos") + 1].split(",") if "--blocos" in argv else []
+    if blocos:  # vídeos do debate por bloco (indicados pelo usuário em 19/10): uma transcrição por bloco, em sequência
+        segs, fontes, desloc, man["blocos"] = [], [], 0.0, []
+        for i, b in enumerate(blocos, 1):
+            info = {"bloco": i, "id": b}
+            if key:
+                try:
+                    info["faixas_api"] = faixas_api(b, key)
+                except Exception as e:  # noqa: BLE001
+                    info["faixas_api_erro"] = type(e).__name__
+            with tempfile.TemporaryDirectory() as t:
+                sb, fb = legendas(b, Path(t))
+            for x in sb:
+                segs.append({**x, "ini": round(x["ini"] + desloc, 2), "fim": round(x["fim"] + desloc, 2), "bloco": i, "video": b})
+            info.update(segmentos=len(sb), fonte=fb, duracao_s=round(sb[-1]["fim"], 1) if sb else None)
+            desloc += (sb[-1]["fim"] if sb else 0) + 1
+            fontes.append(fb)
+            man["blocos"].append(info)
+            print(f"bloco {i} ({b}): {len(sb)} segmentos · {fb} · faixas API {info.get('faixas_api')}")
+        fonte = "; ".join(sorted({f for f in fontes if f})) or None
+        escolhido = {**escolhido, "blocos": blocos}
+    else:
+        with tempfile.TemporaryDirectory() as t:
+            segs, fonte = legendas(escolhido["id"], Path(t))
+            if not segs and "--whisper" in argv:
+                segs, fonte = whisper(escolhido["id"], Path(t), argv[argv.index("--trecho") + 1] if "--trecho" in argv else None)
     man.update(diagnostico=[e for e in ERROS if e.split(": ", 1)[-1]], trecho=argv[argv.index("--trecho") + 1] if "--trecho" in argv else None, transcricao_fonte=fonte, segmentos=len(segs), palavras=sum(len(s["texto"].split()) for s in segs),
                status="ok" if segs else "⛔ sem legendas (tente --whisper)")
     interno = os.environ.get("ODI_INTERNO_DIR")
