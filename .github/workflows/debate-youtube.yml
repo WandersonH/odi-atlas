@@ -3,7 +3,7 @@ name: Debate do 2º turno — vídeos e comentários no YouTube (YouTube Data AP
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 */6 * * *"   # a cada 6 h
+    - cron: "37 9 * * *"   # 1 vez por dia (06h37 em Brasília); a cada 6 h gastava ~8.800 unidades/dia da cota do YouTube
 
 permissions:
   contents: write

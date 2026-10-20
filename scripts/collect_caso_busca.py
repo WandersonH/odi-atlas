@@ -176,7 +176,7 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
             n = lambda k: int(st[k]) if str(st.get(k, "")).isdigit() else None  # noqa: E731
             vids.append({"id": it["id"], "titulo": sn.get("title"), "canal": sn.get("channelTitle"), "canal_id": sn.get("channelId"),
                          "publicado_em": sn.get("publishedAt"), "visualizacoes": n("viewCount"), "curtidas": n("likeCount"),
-                         "comentarios": n("commentCount"), "consulta": ids[it["id"]]})
+                         "comentarios": n("commentCount"), "consulta": ids[it["id"]], "descricao": (sn.get("description") or "")[:300]})
     canais = list({v["canal_id"] for v in vids})
     inscritos = {}
     for i in range(0, len(canais), 50):
@@ -274,6 +274,19 @@ def main(argv=None) -> int:
     rows = []
     if key and "--sem-youtube" not in argv:
         out["youtube"], rows = youtube(key, agora)
+        # a busca do YouTube devolve conjuntos diferentes a cada dia: um vídeo já encontrado continua no caso (com os números da
+        # última leitura e a data em que foi visto pela última vez), desde que ainda passe no filtro atual
+        ant = priv_dir() / "busca_coleta.json"
+        if ant.exists():
+            velhos = (json.loads(ant.read_text(encoding="utf-8")).get("youtube") or {}).get("videos", [])
+            atuais = {v["id"] for v in out["youtube"]["videos"]}
+            for v in out["youtube"]["videos"]:
+                v["visto_por_ultimo"] = agora
+            for v in velhos:
+                txt = f"{v.get('titulo') or ''}"
+                if v["id"] not in atuais and RX_TITULO.search(txt) and RX_ATRIBUTO.search(txt + " " + (v.get("descricao") or "")):
+                    out["youtube"]["videos"].append({**v, "visto_por_ultimo": v.get("visto_por_ultimo") or json.loads(ant.read_text(encoding="utf-8")).get("coletado_em_utc")})
+            out["youtube"]["videos"].sort(key=lambda v: v.get("visualizacoes") or 0, reverse=True)
     out["noticias"] = noticias()
     out["checagens"] = checagens(fc_key) if fc_key else []
     out["arquivo_web"] = wayback()
