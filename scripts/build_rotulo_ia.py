@@ -54,13 +54,13 @@ def tiktok(t: dict | None) -> dict | None:
     vs = t["videos"]
     por = defaultdict(list)
     for v in vs:
-        por[v["candidato"]].append(v)
+        por[v["candidato"] or "vídeos de qualquer conta nas hashtags " + ", ".join(sorted({o.split(" ", 1)[1] for o in (x.get("origem") or "" for x in vs) if o.startswith("hashtag")}))].append(v)
     campos = Counter(c for v in vs for c in v["campos_ia"])
     return {"videos": len(vs), "rotulados": sum(v["rotulo_ia"] for v in vs),
             "por_candidato": ordenar({c: {"videos": len(x), "perfis": len({v["perfil"] for v in x}), "rotulados": sum(v["rotulo_ia"] for v in x),
                                           "pct": pct(sum(v["rotulo_ia"] for v in x), len(x))} for c, x in por.items()}),
             "perfis": t["perfis"], "campos_vistos": campos.most_common(),
-            "lista": sorted([{k: v[k] for k in ("id", "perfil", "candidato", "publicado_em", "legenda", "url", "campos_ia")} for v in vs if v["rotulo_ia"]],
+            "lista": sorted([{k: v[k] for k in ("id", "perfil", "candidato", "origem", "publicado_em", "legenda", "url", "campos_ia")} for v in vs if v["rotulo_ia"]],
                             key=lambda v: v["publicado_em"] or "", reverse=True),
             "nota": "Campos lidos do JSON que a página pública do TikTok entrega (sem login). O TikTok não documenta esses campos; "
                     "a lista de campos vistos fica no arquivo para conferência."}

@@ -12,7 +12,11 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - TikTok: página pública dos perfis declarados ao TSE pelas chapas presidenciais; guarda qualquer campo do JSON cujo nome indique rótulo de IA.
   - Instagram: ⛔ registrado como lacuna. Os ~16,6 mil posts já coletados no Atlas (privado) têm 15 campos e nenhum de IA (verificação de 19/10).
 - `build_rotulo_ia.py` → `data/ia/rotulo.json`: por candidato e plataforma, listas do que foi rotulado e checagens da base Google Fact Check que citam IA, deepfake, montagem ou manipulação. Pela regra de 19/10: 49 de 333.
-- Testes: `tests/test_rotulo_ia.py`; suíte OK. Execução real: próxima entrada.
+- Primeira execução (run 39356820487):
+  - YouTube: 2.090 vídeos lidos e o campo `containsSyntheticMedia` veio ausente em todos. A API não entrega essa declaração para vídeos de terceiros, então ⛔ não serve para medir.
+  - TikTok: os perfis voltaram com 0 vídeos (a página de perfil não entrega a lista sem login). A coleta passa a ler também as páginas de hashtag (#lula, #flaviobolsonaro, #eleicoes2026), que funcionam sem login.
+  - Checagens: 58 de 333 citam IA, deepfake, montagem ou manipulação.
+- Teste do Instagram, autorizado pelo usuário (19/10, 23h05: "pode testar uma coleta teste de até 1 dólar"; conta 1 confirmada em seguida): `teste_instagram_rotulo.py` + `teste-instagram-rotulo.yml`. Usa dois atores que devolvem o JSON completo (apify/instagram-scraper e apify/instagram-reel-scraper), nos posts e reels mais recentes de @lulaoficial e @flaviobolsonaro, com teto de US$ 0,35 cada e US$ 1 no total. Grava só nomes de campos e o que vier marcado como IA.
 
 ## C19.73 — Execuções "canceladas" e "com falha" no GitHub Actions explicadas; workflow inválido corrigido (2026-10-19) ✅
 

@@ -98,6 +98,9 @@ def youtube(key: str, alvos: list[dict]) -> list[dict]:
     return [a for a in por.values() if "campo_presente" in a]
 
 
+HASHTAGS_TIKTOK = ["lula", "flaviobolsonaro", "eleicoes2026"]  # páginas de hashtag funcionam sem login; perfis voltaram vazios em 19/10 (run 39356820487)
+
+
 async def tiktok(perfis: list[dict], rolagens: int) -> tuple[list[dict], dict]:
     from playwright.async_api import async_playwright
     out, resumo = [], {}
@@ -105,11 +108,13 @@ async def tiktok(perfis: list[dict], rolagens: int) -> tuple[list[dict], dict]:
         b = await p.chromium.launch(headless=True)
         ctx = await b.new_context(locale="pt-BR", viewport={"width": 1366, "height": 900},
                                   user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36")
-        for a in perfis:
+        alvos = [{**a, "endereco": f"https://www.tiktok.com/@{a['perfil']}", "tipo": "perfil"} for a in perfis]
+        alvos += [{"perfil": f"#{h}", "candidate_name": None, "endereco": f"https://www.tiktok.com/tag/{h}", "tipo": "hashtag"} for h in HASHTAGS_TIKTOK]
+        for a in alvos:
             pg, itens, respostas = await ctx.new_page(), [], []
 
             async def resp(r, itens=itens, respostas=respostas):
-                if "/api/post/item_list" in r.url or "/api/creator/item_list" in r.url:
+                if "/api/post/item_list" in r.url or "/api/creator/item_list" in r.url or "/api/challenge/item_list" in r.url:
                     respostas.append(r.status)
                     try:
                         itens.extend((await r.json()).get("itemList") or [])
@@ -118,7 +123,7 @@ async def tiktok(perfis: list[dict], rolagens: int) -> tuple[list[dict], dict]:
             pg.on("response", resp)
             erro = None
             try:
-                await pg.goto(f"https://www.tiktok.com/@{a['perfil']}", wait_until="domcontentloaded", timeout=45000)
+                await pg.goto(a["endereco"], wait_until="domcontentloaded", timeout=45000)
                 await pg.wait_for_timeout(6000)
                 # a primeira página de vídeos vem embutida no HTML (estado inicial); lê de lá também
                 try:
@@ -148,14 +153,16 @@ async def tiktok(perfis: list[dict], rolagens: int) -> tuple[list[dict], dict]:
                 c = campos_ia(it)
                 nomes |= set(c)
                 ts = it.get("createTime")
-                out.append({"id": str(it["id"]), "perfil": a["perfil"], "candidato": a["candidate_name"],
+                autor = ((it.get("author") or {}).get("uniqueId")) or a["perfil"]
+                out.append({"id": str(it["id"]), "perfil": autor if a["tipo"] == "hashtag" else a["perfil"], "origem": a["tipo"] + " " + a["perfil"],
+                            "candidato": a["candidate_name"],
                             "publicado_em": (__import__("datetime").datetime.fromtimestamp(int(ts), __import__("datetime").timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if str(ts or "").isdigit() else None),
-                            "legenda": " ".join((it.get("desc") or "").split())[:200], "url": f"https://www.tiktok.com/@{a['perfil']}/video/{it['id']}",
+                            "legenda": " ".join((it.get("desc") or "").split())[:200], "url": f"https://www.tiktok.com/@{autor}/video/{it['id']}",
                             "campos_ia": c, "rotulo_ia": tem_rotulo(c),
                             "visualizacoes": (it.get("stats") or {}).get("playCount")})
-            resumo[a["perfil"]] = {"candidato": a["candidate_name"], "respostas_api": len(respostas), "videos": len(vistos),
+            resumo[a["perfil"]] = {"tipo": a["tipo"], "candidato": a["candidate_name"], "respostas_api": len(respostas), "videos": len(vistos),
                                    "campos_ia_vistos": sorted(nomes), "erro": erro}
-            print(f"tiktok @{a['perfil']}: {len(vistos)} vídeos · campos de IA vistos {sorted(nomes)[:6]} {erro or ''}")
+            print(f"tiktok {a['tipo']} {a['perfil']}: {len(vistos)} vídeos · campos de IA vistos {sorted(nomes)[:6]} {erro or ''}")
         await b.close()
     return out, resumo
 

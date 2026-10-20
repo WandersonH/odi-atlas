@@ -1,0 +1,31 @@
+name: Teste — rótulo de IA no Instagram (Apify, conta 1, teto US$ 1)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Teste
+        continue-on-error: true
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          python scripts/teste_instagram_rotulo.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
+          tail -n 5 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Instagram rótulo IA::$(echo "$l" | cut -c1-500)"; done
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Teste rótulo de IA no Instagram (run ${{ github.run_id }})"
