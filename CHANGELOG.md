@@ -24,6 +24,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - "Em alta agora" permanente: depois da janela do debate, `collect_trends_agora.py` grava `data/trends/agora/em_alta.json` e acumula `em_alta_historico.csv`, com matérias do topo do Google Notícias para os termos de Política; o consolidado do debate fica congelado. O workflow passou de 15 em 15 min para de hora em hora. Novo painel no topo da página do Google Trends.
 - Checagens: janela padrão de 60 para 400 dias (período todo da campanha e pré-campanha).
 - Testes: `TestEmAlta` e `TestRedesCaso` (privacidade de nomes e códigos); suíte OK. Execuções reais: próxima entrada.
+- Execuções: "Em alta agora" (run 39457956837) leu 35 termos em 4 h e 230 em 24 h, 15 de Política. A primeira tentativa das checagens com 400 dias (run 39457959969) falhou nos testes: `TestRedesCaso` precisava de numpy, que esse workflow não instala. Corrigido: o teste é pulado sem numpy/networkx (suíte conferida das duas formas).
 
 ## C19.77 — Casos 002 ("onde mora/nasceu o ladrão") e 005 (caso Ana Clara): coleta grátis de buscas, YouTube, imprensa e checagens (2026-10-20) ⚠️
 

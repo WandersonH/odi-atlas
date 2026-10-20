@@ -56,6 +56,7 @@ class TestCasoBusca(unittest.TestCase):
         self.assertTrue(cb.CATEGORIAS["relato de teste"].search("testei aqui e deu o lula"))
 
 
+@unittest.skipIf(__import__("importlib").util.find_spec("numpy") is None or __import__("importlib").util.find_spec("networkx") is None, "sem numpy/networkx neste workflow")
 class TestRedesCaso(unittest.TestCase):
     def test_privacidade(self):
         import redes_caso as rc
