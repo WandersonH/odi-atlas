@@ -25,6 +25,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - O filtro do 002 aceitava vídeo de assalto ("ladrão" + "anos"); agora exige a estrutura da consulta ("onde mora/nasceu", "quantos anos", "idade do ladrão") ou "Google".
   - Comentários de vídeos que saíram pelo filtro mais estrito continuam guardados no privado, mas deixam de entrar na conta.
   - ⚠️ As hashtags do TikTok (#casoanaclara) também pegam vídeos de outros casos com o mesmo nome; o marco zero de 2021 no TikTok precisa de conferência humana.
+- Segunda execução, com os filtros novos (run 39453711364):
+  - 005: 100 vídeos, 5.010.510 visualizações, 3.836 comentários lidos, 79 notícias, 4 falas no debate.
+  - 002: 17 vídeos, 79.736 visualizações, 109 comentários. O artigo de 2022 já tem 1 cópia no Internet Archive.
+  - O Trends voltou a recusar janelas (429). Para que uma janela recusada não apague a leitura anterior, a coleta agora reaproveita a última leitura boa da mesma janela, marcada com a data em que foi lida.
 - Página: nova aba "Casos de busca (Ana Clara, "o ladrão")" no caderno 08, com big numbers, falas no debate, Trends (5 anos, 12 meses, 7 dias, controles, relacionadas, estados), YouTube por ano e mais vistos, comentários pré-codificados, imprensa e checagens, arquivo e a bateria manual do 002.
 
 ## C19.76 — Regra: nunca apagar ou limpar dados (2026-10-20) ✅

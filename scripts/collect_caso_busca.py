@@ -248,6 +248,18 @@ def main(argv=None) -> int:
     out = {"caso": CASO, "coletado_em_utc": agora, "variantes": VARIANTES, "controles": CONTROLES}
     if "--sem-trends" not in argv:
         out["trends"] = trends()
+        # janela recusada pelo Trends (HTTP 429) não apaga a leitura anterior: reaproveita a última que deu certo, marcada com a data
+        ant = priv_dir() / "busca_coleta.json"
+        if ant.exists():
+            velho = (json.loads(ant.read_text(encoding="utf-8")).get("trends") or {})
+            for g, dados in out["trends"].items():
+                if not isinstance(dados, dict):
+                    continue
+                for k, v in (velho.get(g) or {}).items():
+                    if k not in dados and k != "lido_em":
+                        dados[k] = v
+                        dados.setdefault("reaproveitado", {})[k] = (velho.get(g) or {}).get("lido_em") or json.loads(ant.read_text(encoding="utf-8")).get("coletado_em_utc")
+                dados.setdefault("lido_em", agora)
     rows = []
     if key and "--sem-youtube" not in argv:
         out["youtube"], rows = youtube(key, agora)
