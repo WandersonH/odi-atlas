@@ -104,16 +104,35 @@
   {
    "id": "002",
    "slug": "onde-nasceu-ladrao",
-   "titulo": "\"Onde nasceu ladrão\"",
+   "titulo": "Consulta depreciativa associada a um candidato no Google (\"onde mora/nasceu o ladrão\")",
    "tipo": "desinformação",
-   "rotulo_tipo": "desinformação",
-   "coletar": false,
-   "descricao": "Busca por voz e texto. Aguardando a equipe confirmar datas e termos antes de qualquer coleta paga.",
+   "rotulo_tipo": "busca e IA",
+   "coletar": true,
+   "descricao": "Consultas como \"onde mora o ladrão\" (2022) e \"onde nasceu o ladrão\" / \"quantos anos tem o ladrão\" (2026) passaram a devolver dados biográficos de um candidato, agora também em respostas de IA do Google. O caso mede o interesse de busca, os vídeos e comentários do YouTube, a imprensa e as checagens, sem afirmar a associação: mostra o que o sistema respondeu e com que fontes.",
    "redes_previstas": [
     "Google",
     "YouTube",
     "TikTok"
-   ]
+   ],
+   "desde": "2022-01-01",
+   "hashtags": [
+    "ondemoraoladrao",
+    "ondenasceuoladrao",
+    "quantosanostemoladrao"
+   ],
+   "termos_trends": [
+    "onde mora o ladrão",
+    "onde nasceu o ladrão"
+   ],
+   "termos_noticias": [
+    "\"onde mora o ladrão\"",
+    "\"onde nasceu o ladrão\""
+   ],
+   "filtro_titulo_noticias": [
+    "ladrão"
+   ],
+   "busca": "collect_caso_busca.py --caso 002",
+   "historico": "Dossiê de 18/10 aguardando data e termos; ativado em 20/10, 12h45, pelo usuário, com o escopo grátis (Trends, YouTube, imprensa, checagens, arquivo de 2022) e a bateria manual de consultas."
   },
   {
    "id": "003",
@@ -177,6 +196,38 @@
     "imprensa"
    ],
    "janela_indicada": "2026-10-07 a 2026-10-12"
+  },
+  {
+   "id": "005",
+   "slug": "caso-ana-clara",
+   "titulo": "Caso Ana Clara",
+   "tipo": "fala",
+   "rotulo_tipo": "fala no debate",
+   "descricao": "Ana Clara, 5 anos, morreu baleada em Niterói (RJ) em fevereiro de 2021; o PM acusado vai a júri. Em 2024, o senador Flávio Bolsonaro assinou recurso na defesa do policial. Lula citou o caso no debate da Band de 18/10/2026. O caso mede buscas, vídeos do YouTube e o alcance total do assunto.",
+   "fonte_contexto": [
+    {
+     "titulo": "Agência Pública: \"Silêncio de Flávio sobre Ana Clara foi desesperador\", diz a mãe da menina (19/10/2026)",
+     "url": "https://apublica.org/2026/10/silencio-de-flavio-sobre-ana-clara-foi-desesperador-diz-a-mae-da-menina/"
+    }
+   ],
+   "coletar": true,
+   "desde": "2021-02-01",
+   "hashtags": [
+    "pesquiseocasoanaclara",
+    "casoanaclara"
+   ],
+   "termos_trends": [
+    "caso Ana Clara"
+   ],
+   "termos_noticias": [
+    "\"caso Ana Clara\"",
+    "\"Ana Clara\" Flávio Bolsonaro"
+   ],
+   "filtro_titulo_noticias": [
+    "ana clara"
+   ],
+   "busca": "collect_caso_busca.py --caso 005",
+   "historico": "Criado em 20/10/2026, 12h46, a pedido do usuário (\"caso Ana Clara\": buscas, vídeos do YouTube e alcance total; citado por Lula no debate)."
   }
  ],
  "segredos_por_rede": {

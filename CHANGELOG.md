@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.77 — Casos 002 ("onde mora/nasceu o ladrão") e 005 (caso Ana Clara): coleta grátis de buscas, YouTube, imprensa e checagens (2026-10-20) 🔜
+
+- Pedidos do usuário (20/10, 12h45–12h47): ativar o caso 002 com o escopo sugerido e criar o caso Ana Clara ("buscas e vídeos do YouTube sobre o assunto e o alcance total"; o caso foi citado por Lula no debate).
+- `collect_caso_busca.py` + `build_caso_busca.py` + `casos-busca.yml` (diário 11h53 e manual, grátis), configuração por caso:
+  - Google Trends: variantes e controles separados, em 5 anos, 12 meses e 7 dias; UF e consultas relacionadas em 12 meses.
+  - YouTube: busca pela API, filtro no título e descrição, e comentários dos 30 mais vistos (só no privado).
+  - Google Notícias, checagens (Fact Check Tools) e cópia no Internet Archive das páginas de referência (artigo de Victor Gabry de 2022, para o 002; Agência Pública, para o 005).
+  - Público (`data/casos/<id>/busca.json`): agregados; vídeos com nome só de canais com 10 mil inscritos ou mais.
+- Caso 005: localiza na transcrição do debate (privada) as falas que citam o caso, com minuto e orador da codificação de turnos. Teste local: 4 falas, aos 31,7 min (Lula), 33,2 (Flávio Bolsonaro), 34,0 (Lula) e 35,1 (Lula).
+- Caso 002: bateria manual de consultas ao Google com modelo de registro em `data/casos/002/bateria_modelo.csv`. Não há API do Google para isso: a Custom Search API recusou o projeto, e o Google bloqueia robôs.
+- `casos.json`: 002 ativo, com título neutro e hashtags do TikTok; 005 novo, com contexto e fonte da Agência Pública. TikTok e Google dos dois pelo pipeline de casos (grátis).
+- Testes: `TestCasoBusca`; `test_casos` ajustado; suíte OK. Execução real: próxima entrada.
+
 ## C19.76 — Regra: nunca apagar ou limpar dados (2026-10-20) ✅
 
 - O usuário avisou (20/10, 12h37) que em nenhum momento estou autorizado a limpar o banco de dados. Regra 8 do `CLAUDE.md`: não apagar nem limpar dados (`data/`, repositório privado, histórico do git) e não reescrever histórico sem autorização explícita; dado sensível no lugar errado é movido para o privado, nunca descartado.

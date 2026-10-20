@@ -38,3 +38,19 @@ class TestRotuloIA(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestCasoBusca(unittest.TestCase):
+    def test_config_e_youtube(self):
+        import collect_caso_busca as cb
+        import build_caso_busca as bb
+        cb.configurar("005")
+        self.assertTrue(cb.RX_TITULO.search("Caso ANA CLARA: menina morta"))
+        cb.configurar("002")
+        self.assertTrue(cb.RX_TITULO.search("Onde mora o ladrão?") and cb.RX_ATRIBUTO.search("onde mora"))
+        y = bb.youtube({"videos": [{"id": "a", "canal_id": "c1", "publicado_em": "2022-11-03", "visualizacoes": 100, "curtidas": 5, "comentarios": 2, "inscritos": 50000, "titulo": "t", "canal": "C"},
+                                   {"id": "b", "canal_id": "c2", "publicado_em": "2026-10-09", "visualizacoes": 10, "curtidas": None, "comentarios": 1, "inscritos": 300, "titulo": "t", "canal": "P"}]})
+        self.assertEqual((y["videos"], y["visualizacoes"], y["videos_de_canais_pequenos"]), (2, 110, 1))
+        self.assertEqual([v["id"] for v in y["mais_vistos"]], ["a"])
+        self.assertEqual(y["por_ano"]["2022"]["visualizacoes"], 100)
+        self.assertTrue(cb.CATEGORIAS["relato de teste"].search("testei aqui e deu o lula"))
