@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.74 — Caso "Rótulo de IA nas campanhas": coleta grátis no YouTube e no TikTok (2026-10-19) 🔜
+
+- Pedido do usuário (19/10, 23h00): começar a página do caso sobre o rótulo de IA ("quanto conteúdo sai declarado como IA").
+- `collect_rotulo_ia.py` + `rotulo-ia.yml` (diário 10h47 e manual, grátis):
+  - YouTube: campo `status.containsSyntheticMedia` (declaração do canal) dos vídeos dos canais das candidaturas e dos vídeos sobre o debate.
+  - TikTok: página pública dos perfis declarados ao TSE pelas chapas presidenciais; guarda qualquer campo do JSON cujo nome indique rótulo de IA.
+  - Instagram: ⛔ registrado como lacuna. Os ~16,6 mil posts já coletados no Atlas (privado) têm 15 campos e nenhum de IA (verificação de 19/10).
+- `build_rotulo_ia.py` → `data/ia/rotulo.json`: por candidato e plataforma, listas do que foi rotulado e checagens da base Google Fact Check que citam IA, deepfake, montagem ou manipulação. Pela regra de 19/10: 49 de 333.
+- Testes: `tests/test_rotulo_ia.py`; suíte OK. Execução real: próxima entrada.
+
 ## C19.73 — Execuções "canceladas" e "com falha" no GitHub Actions explicadas; workflow inválido corrigido (2026-10-19) ✅
 
 - Pergunta do usuário (19/10, 22h32): por que há tantos scripts abortados. Levantamento das execuções desde 17/10 que não terminaram em sucesso (API do GitHub):

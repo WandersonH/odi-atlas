@@ -1,0 +1,49 @@
+name: Rótulo de IA nas campanhas — YouTube (API oficial) e TikTok (página pública), grátis
+
+on:
+  workflow_dispatch:
+    inputs:
+      tiktok:
+        description: "ler também o TikTok (página pública dos perfis)"
+        type: boolean
+        default: true
+  schedule:
+    - cron: "47 13 * * *"   # todo dia, 10h47 em Brasília
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rotulo-ia
+  cancel-in-progress: false
+
+jobs:
+  rotulo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: |
+          pip install -q playwright
+          python -m playwright install --with-deps chromium > /dev/null 2>&1
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Coletar e agregar
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TIKTOK: ${{ github.event.inputs.tiktok }}
+        run: |
+          a=""; if [ "$TIKTOK" = "false" ]; then a="--sem-tiktok"; fi
+          python scripts/collect_rotulo_ia.py $a > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
+          python scripts/build_rotulo_ia.py . >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          tail -n 9 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Rótulo de IA::$(echo "$l" | cut -c1-400)"; done
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Rótulo de IA (run ${{ github.run_id }})"
