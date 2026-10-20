@@ -59,10 +59,11 @@ def main() -> int:
                for it, c in ia if tem_rotulo(c)]
         campos = Counter(k for _, c in ia for k in c)
         t = {"ator": ator.replace("~", "/"), "run": (run or {}).get("id"), "status": (run or {}).get("status"), "itens": len(itens), "custo_usd": custo,
-             "erro": erro, "campos_ia_vistos": campos.most_common(), "itens_com_rotulo": len(rot), "rotulados": rot,
+             "erro": erro, "erros_dos_itens": sorted({f"{it.get('error')}: {str(it.get('errorDescription'))[:160]}" for it in itens if it.get("error")}),
+             "campos_ia_vistos": campos.most_common(), "itens_com_rotulo": len(rot), "rotulados": rot,
              "total_de_campos": len(todas), "campos": sorted(todas)[:400]}
         out["testes"].append(t)
-        print(f"{ator}: {len(itens)} itens · {len(todas)} campos · campos de IA {campos.most_common(6)} · rotulados {len(rot)} · run {t['run']} {erro or ''}")
+        print(f"{ator}: {t['erros_dos_itens'][:2]} · {len(itens)} itens · {len(todas)} campos · campos de IA {campos.most_common(6)} · rotulados {len(rot)} · run {t['run']} {erro or ''}")
     out["custo_total_usd"] = round(gasto, 4)
     Path("data/ia").mkdir(parents=True, exist_ok=True)
     Path("data/ia/teste_instagram.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
