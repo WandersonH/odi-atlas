@@ -3,9 +3,7 @@ name: Apify — verificação das contas (só leitura, sem custo)
 # Plano, uso do mês e limite de cada conta (APIFY_TOKEN, APIFY_TOKEN_2 … _15). Nada que identifique a conta é gravado.
 on:
   workflow_dispatch:
-  schedule:
-    # agendamento diário desligado em 19/10/2026: a consulta diária a todas as contas é o tipo de chamada que o usuário pediu para evitar
-    # - cron: "5 12 * * *"
+  # agendamento diário (cron "5 12 * * *") desligado em 19/10/2026: a consulta diária a todas as contas é o tipo de chamada que o usuário pediu para evitar
 
 permissions:
   contents: write

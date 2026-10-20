@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.73 — Execuções "canceladas" e "com falha" no GitHub Actions explicadas; workflow inválido corrigido (2026-10-19) ✅
+
+- Pergunta do usuário (19/10, 22h32): por que há tantos scripts abortados. Levantamento das execuções desde 17/10 que não terminaram em sucesso (API do GitHub):
+  - 57 "pages build and deployment" cancelados. É a publicação do site: cada coleta que grava dados dispara uma publicação, e quando outra coleta grava logo depois, o GitHub cancela a publicação antiga e fica com a mais nova. Nenhum dado se perde; o site sai com a versão mais recente.
+  - 3 falhas de `apify-contas.yml` em push: erro meu em C19.72. Ao comentar o agendamento, a chave `schedule:` ficou vazia, o que torna o arquivo inválido. Corrigido: a chave foi removida e o workflow continua só manual.
+  - 4 falhas de "Google Trends — candidaturas" e 1 de "Checagens": o teste que criava a pasta `/nao` (corrigido em C19.63, 19/10 ~03h).
+  - 1 falha de "Seguidores YouTube" (conflito do git, corrigido em C19.71) e 1 de "Seguidores Meta" em 18/10 (teste sem numpy, corrigido em C19.61).
+  - 3 falhas do teste de preços da loja Apify, 3 do X (assuntos do momento), 2 do Instagram, 1 do Meta Anúncios, 1 de Casos, 1 do 1º turno e 1 de `posicao-teste.yml`: execuções de 17 e 18/10, antes das correções ou com as contas Apify bloqueadas.
+
 ## C19.72 — Caso 003 "Ninguém morre nos devendo" (Flamengo e as bets) ativado, coleta grátis do TikTok (2026-10-19) ⚠️
 
 - Pedido do usuário (19/10, 19h11): coletar o caso Flamengo / "ninguém morre nos devendo" (depois da proibição das bets) na página de casos, começando pelo TikTok, com a conta Apify `APIFY_TOKEN_FL` (US$ 5) só para este caso e sem as consultas às contas que precederam o bloqueio. Em seguida (19h12): "você já bloqueou a conta" / "colete na versão free".
