@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.76 — Regra: nunca apagar ou limpar dados (2026-10-20) ✅
+
+- O usuário avisou (20/10, 12h37) que em nenhum momento estou autorizado a limpar o banco de dados. Regra 8 do `CLAUDE.md`: não apagar nem limpar dados (`data/`, repositório privado, histórico do git) e não reescrever histórico sem autorização explícita; dado sensível no lugar errado é movido para o privado, nunca descartado.
+- Conferência: a única remoção desta sessão foi `data/ia/rotulo_coleta.json`, que saiu do público em C19.75. O conteúdo foi preservado integralmente no privado (`ia/rotulo_coleta.json`, commit 4506e71: 174 vídeos do TikTok e 2.090 do YouTube). A proposta de reescrever o histórico público (C19.75) está cancelada.
+
 ## C19.75 — Página "Rótulo de IA nas campanhas" (caderno 08) e resultado dos testes (2026-10-19) ⚠️
 
 - Teste do Instagram (conta 1, autorizado até US$ 1), três rodadas:

@@ -7,3 +7,4 @@
 5. Preserve a identidade visual ODI no HTML. Não substitua pelo estilo de outros projetos.
 6. Nunca coloque tokens ou chaves em código, commits ou mensagens.
 7. Ordem do projeto: P1 Origem → P2 Ingestão → P3 Correspondência TSE↔IBGE → P4 Front-end → P5 Refatoração → P6 Automação → P7 Entrega.
+8. **Nunca apagar ou limpar dados** (arquivos de `data/`, repositório privado, histórico do git), nem reescrever histórico, sem autorização explícita do responsável naquele momento. Dado sensível no lugar errado se move para o privado, nunca se descarta. (Regra do responsável, 20/10/2026.)
