@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-10-19T18:51:41Z",
+ "coletado_em_utc": "2026-10-20T17:35:20Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -9,31 +9,31 @@
    "candidato": "Lula",
    "termo": "Lula",
    "paginas_api": null,
-   "lidos_nesta_execucao": 888,
+   "lidos_nesta_execucao": 900,
    "limite_da_coleta": 900,
-   "no_limite": false,
-   "anuncios": 1816,
-   "paginas": 483,
+   "no_limite": true,
+   "anuncios": 2052,
+   "paginas": 511,
    "gasto": {
-    "min": 6728100,
+    "min": 6952100,
     "max": null,
-    "faixas_abertas": 312
+    "faixas_abertas": 334
    },
    "impressoes": {
-    "min": 563580000,
+    "min": 598740000,
     "max": null,
-    "faixas_abertas": 634
+    "faixas_abertas": 666
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 1780,
-    "facebook": 1539,
-    "audience_network": 130,
-    "threads": 87,
-    "whatsapp": 64,
-    "messenger": 37
+    "instagram": 2010,
+    "facebook": 1755,
+    "audience_network": 140,
+    "threads": 92,
+    "whatsapp": 69,
+    "messenger": 38
    },
    "fases": [
     {
@@ -41,11 +41,11 @@
      "rotulo": "Pré-campanha",
      "de": "2026-07-20",
      "ate": "2026-08-15",
-     "anuncios": 201,
+     "anuncios": 202,
      "gasto": {
       "min": 538000,
       "max": null,
-      "faixas_abertas": 34
+      "faixas_abertas": 35
      }
     },
     {
@@ -53,11 +53,11 @@
      "rotulo": "Campanha do 1º turno",
      "de": "2026-08-16",
      "ate": "2026-10-04",
-     "anuncios": 395,
+     "anuncios": 400,
      "gasto": {
-      "min": 4534800,
+      "min": 4534900,
       "max": null,
-      "faixas_abertas": 135
+      "faixas_abertas": 139
      }
     },
     {
@@ -65,21 +65,21 @@
      "rotulo": "2º turno",
      "de": "2026-10-05",
      "ate": "2026-10-25",
-     "anuncios": 993,
+     "anuncios": 1218,
      "gasto": {
-      "min": 1241300,
+      "min": 1465100,
       "max": null,
-      "faixas_abertas": 82
+      "faixas_abertas": 94
      }
     }
    ],
    "fora_das_fases": {
-    "anuncios": 227,
+    "anuncios": 232,
     "sem_data": 0,
     "gasto": {
-     "min": 414000,
+     "min": 414100,
      "max": null,
-     "faixas_abertas": 61
+     "faixas_abertas": 66
     }
    },
    "regioes_gasto_min_estimado": [],
@@ -87,16 +87,16 @@
     {
      "page_id": "267949976607343",
      "pagina": "Lula",
-     "anuncios": 639,
+     "anuncios": 768,
      "gasto": {
-      "min": 1870800,
-      "max": 2290392,
+      "min": 1986600,
+      "max": 2435290,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 138740000,
+      "min": 158440000,
       "max": null,
-      "faixas_abertas": 55
+      "faixas_abertas": 61
      },
      "pagadores": [
       "ELEICAO 2026 LUIZ INAC... ⋅ Digitally created",
@@ -141,6 +141,24 @@
      ]
     },
     {
+     "page_id": "156951837773645",
+     "pagina": "Flavio Bolsonaro",
+     "anuncios": 45,
+     "gasto": {
+      "min": 246000,
+      "max": 296094,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 15295000,
+      "max": null,
+      "faixas_abertas": 7
+     },
+     "pagadores": [
+      "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
+     ]
+    },
+    {
      "page_id": "1216504185136925",
      "pagina": "Ciro Gomes",
      "anuncios": 5,
@@ -159,21 +177,22 @@
      ]
     },
     {
-     "page_id": "156951837773645",
-     "pagina": "Flavio Bolsonaro",
-     "anuncios": 24,
+     "page_id": "185105811599662",
+     "pagina": "Edinho Silva",
+     "anuncios": 38,
      "gasto": {
-      "min": 206500,
-      "max": 247198,
+      "min": 145600,
+      "max": 167288,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 12125000,
+      "min": 16260000,
       "max": null,
-      "faixas_abertas": 7
+      "faixas_abertas": 8
      },
      "pagadores": [
-      "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
+      "ELEICAO 2026 EDSON ANTONIO EDINHO DA SILVA DEPUTADO FEDERAL 68.373.149/0001-50",
+      "Partido dos Trabalhadores"
      ]
     },
     {
@@ -195,21 +214,21 @@
      ]
     },
     {
-     "page_id": "185105811599662",
-     "pagina": "Edinho Silva",
-     "anuncios": 32,
+     "page_id": "1176267865563271",
+     "pagina": "Lula Pelo Brasil",
+     "anuncios": 52,
      "gasto": {
-      "min": 124000,
-      "max": 142589,
+      "min": 121500,
+      "max": 157679,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 12535000,
+      "min": 15420000,
       "max": null,
-      "faixas_abertas": 5
+      "faixas_abertas": 2
      },
      "pagadores": [
-      "ELEICAO 2026 EDSON ANTONIO EDINHO DA SILVA DEPUTADO FEDERAL 68.373.149/0001-50",
+      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE",
       "Partido dos Trabalhadores"
      ]
     },
@@ -271,25 +290,6 @@
      ]
     },
     {
-     "page_id": "1176267865563271",
-     "pagina": "Lula Pelo Brasil",
-     "anuncios": 47,
-     "gasto": {
-      "min": 106300,
-      "max": 140682,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 13840000,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE",
-      "Partido dos Trabalhadores"
-     ]
-    },
-    {
      "page_id": "904277726319518",
      "pagina": "Fernando Haddad",
      "anuncios": 5,
@@ -329,14 +329,14 @@
     {
      "page_id": "244743189706914",
      "pagina": "Evangélicos com Lula",
-     "anuncios": 11,
+     "anuncios": 12,
      "gasto": {
-      "min": 71900,
-      "max": 84093,
+      "min": 73800,
+      "max": 86493,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 4900000,
+      "min": 5700000,
       "max": null,
       "faixas_abertas": 2
      },
@@ -553,24 +553,24 @@
    "lidos_nesta_execucao": 900,
    "limite_da_coleta": 900,
    "no_limite": true,
-   "anuncios": 1893,
-   "paginas": 399,
+   "anuncios": 2171,
+   "paginas": 414,
    "gasto": {
-    "min": 8279000,
+    "min": 8699600,
     "max": null,
-    "faixas_abertas": 62
+    "faixas_abertas": 57
    },
    "impressoes": {
-    "min": 418084300,
+    "min": 448403300,
     "max": null,
-    "faixas_abertas": 278
+    "faixas_abertas": 280
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 1830,
-    "facebook": 1545,
+    "instagram": 2100,
+    "facebook": 1782,
     "audience_network": 36,
     "whatsapp": 33,
     "threads": 27,
@@ -596,9 +596,9 @@
      "ate": "2026-10-04",
      "anuncios": 191,
      "gasto": {
-      "min": 6226200,
+      "min": 6227200,
       "max": null,
-      "faixas_abertas": 6
+      "faixas_abertas": 5
      }
     },
     {
@@ -606,11 +606,11 @@
      "rotulo": "2º turno",
      "de": "2026-10-05",
      "ate": "2026-10-25",
-     "anuncios": 1412,
+     "anuncios": 1690,
      "gasto": {
-      "min": 1630400,
+      "min": 2050000,
       "max": null,
-      "faixas_abertas": 56
+      "faixas_abertas": 52
      }
     }
    ],
@@ -628,16 +628,16 @@
     {
      "page_id": "156951837773645",
      "pagina": "Flavio Bolsonaro",
-     "anuncios": 377,
+     "anuncios": 466,
      "gasto": {
-      "min": 4866000,
-      "max": 5706574,
+      "min": 5234200,
+      "max": 6162254,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 103491600,
+      "min": 124725600,
       "max": null,
-      "faixas_abertas": 56
+      "faixas_abertas": 60
      },
      "pagadores": [
       "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
@@ -646,16 +646,16 @@
     {
      "page_id": "267949976607343",
      "pagina": "Lula",
-     "anuncios": 421,
+     "anuncios": 525,
      "gasto": {
-      "min": 428700,
-      "max": 563492,
+      "min": 444900,
+      "max": 591652,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 49612100,
+      "min": 53465100,
       "max": null,
-      "faixas_abertas": 12
+      "faixas_abertas": 13
      },
      "pagadores": [
       "ELEICAO 2026 LUIZ INAC... ⋅ Digitally created",
@@ -773,6 +773,24 @@
      ]
     },
     {
+     "page_id": "291482090931929",
+     "pagina": "Professora Dorinha",
+     "anuncios": 66,
+     "gasto": {
+      "min": 79200,
+      "max": 100975,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 3999000,
+      "max": 4754000,
+      "faixas_abertas": 0
+     },
+     "pagadores": [
+      "ELEICAO 2026 MARIA AUXILIADORA SEABRA REZENDE GOVERNADOR"
+     ]
+    },
+    {
      "page_id": "395748880458898",
      "pagina": "Domingos Sávio",
      "anuncios": 7,
@@ -807,24 +825,6 @@
      "pagadores": [
       "ELEICAO 2026 MARIA DO CARMO SEFFAIR LINS DE ALBUQUERQUE GOVERNADOR",
       "Professora Maria do Carmo"
-     ]
-    },
-    {
-     "page_id": "291482090931929",
-     "pagina": "Professora Dorinha",
-     "anuncios": 46,
-     "gasto": {
-      "min": 65500,
-      "max": 82485,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 3291000,
-      "max": 3923000,
-      "faixas_abertas": 0
-     },
-     "pagadores": [
-      "ELEICAO 2026 MARIA AUXILIADORA SEABRA REZENDE GOVERNADOR"
      ]
     },
     {
@@ -956,6 +956,42 @@
      ]
     },
     {
+     "page_id": "1145880815277346",
+     "pagina": "Kelaine Goulart ",
+     "anuncios": 23,
+     "gasto": {
+      "min": 38800,
+      "max": 46790,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 2412000,
+      "max": 2861000,
+      "faixas_abertas": 0
+     },
+     "pagadores": [
+      "Kelaine Goulart "
+     ]
+    },
+    {
+     "page_id": "185105811599662",
+     "pagina": "Edinho Silva",
+     "anuncios": 12,
+     "gasto": {
+      "min": 37800,
+      "max": 43899,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 7725000,
+      "max": null,
+      "faixas_abertas": 4
+     },
+     "pagadores": [
+      "Partido dos Trabalhadores"
+     ]
+    },
+    {
      "page_id": "324890500939046",
      "pagina": "Rodrigo da Zaeli",
      "anuncios": 5,
@@ -1029,57 +1065,21 @@
      ]
     },
     {
-     "page_id": "1145880815277346",
-     "pagina": "Kelaine Goulart ",
-     "anuncios": 19,
-     "gasto": {
-      "min": 35800,
-      "max": 43394,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 2172000,
-      "max": 2554000,
-      "faixas_abertas": 0
-     },
-     "pagadores": [
-      "Kelaine Goulart "
-     ]
-    },
-    {
      "page_id": "1696264184008883",
      "pagina": "Alexandre Knoploch",
      "anuncios": 2,
      "gasto": {
-      "min": 35100,
-      "max": 40199,
+      "min": 35200,
+      "max": 40299,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 1015000,
+      "min": 1020000,
       "max": null,
       "faixas_abertas": 1
      },
      "pagadores": [
       "Alexandre Knoploch"
-     ]
-    },
-    {
-     "page_id": "185105811599662",
-     "pagina": "Edinho Silva",
-     "anuncios": 11,
-     "gasto": {
-      "min": 34300,
-      "max": 39899,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 6625000,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "Partido dos Trabalhadores"
      ]
     }
    ]
@@ -1088,24 +1088,24 @@
  "erros": {},
  "modo": "diário",
  "teto_usd": 0.3,
- "gasto_mes_antes_usd": 0.7471,
+ "gasto_mes_antes_usd": 1.0033,
  "runs_apify": [
   {
    "consulta": "lula",
-   "id": "6LqbLtlih92QSy00d",
-   "status": "ABORTED",
-   "custo_usd": 0.1272,
-   "itens": 888
+   "id": "2RYHidNwg3X7alknY",
+   "status": "SUCCEEDED",
+   "custo_usd": 0.1268,
+   "itens": 900
   },
   {
    "consulta": "flavio",
-   "id": "NjVYk4JGQBzezE64K",
+   "id": "WeQTmW4V6P5QdNNNb",
    "status": "ABORTED",
-   "custo_usd": 0.129,
+   "custo_usd": 0.1291,
    "itens": 900
   }
  ],
- "janela_desta_execucao": "2026-10-18",
+ "janela_desta_execucao": "2026-10-19",
  "status": "ok",
- "custo_usd": 0.2562
+ "custo_usd": 0.2559
 }
