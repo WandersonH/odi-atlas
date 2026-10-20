@@ -19,7 +19,13 @@ from collect_rotulo_ia import campos_ia, tem_rotulo  # noqa: E402
 from net import now_utc  # noqa: E402
 
 PERFIS = ["https://www.instagram.com/lulaoficial/", "https://www.instagram.com/flaviobolsonaro/"]
-TESTES = [("apify~instagram-scraper", {"directUrls": PERFIS, "resultsType": "posts", "resultsLimit": 30, "addParentData": False}, 0.35, 60),
+POSTS = ["https://www.instagram.com/p/DenaM-yuWjG/", "https://www.instagram.com/reel/DenNo9hu3GT/", "https://www.instagram.com/reel/DemdquUNuDl/",
+         "https://www.instagram.com/p/Dek4NddOSly/", "https://www.instagram.com/reel/DelvH6wRefD/", "https://www.instagram.com/p/Dek6QqqOJXW/",
+         "https://www.instagram.com/reel/DenGv40ptw9/", "https://www.instagram.com/reel/Dem9eVkCZak/", "https://www.instagram.com/reel/Dem1vz2Js1s/",
+         "https://www.instagram.com/reel/Demk-2NpFWb/", "https://www.instagram.com/reel/DemT6e7p5F_/", "https://www.instagram.com/reel/DelIY11Jk_r/"]
+# 1ª rodada (run 39357421750 e seguinte): perfis voltaram "Empty or private data"; 2ª: endereços de posts recentes (já coletados) dos dois perfis
+TESTES = [("apify~instagram-scraper", {"directUrls": POSTS, "resultsType": "details", "resultsLimit": 12, "addParentData": False}, 0.3, 12)]
+TESTES_PERFIL = [("apify~instagram-scraper", {"directUrls": PERFIS, "resultsType": "posts", "resultsLimit": 30, "addParentData": False}, 0.35, 60),
           ("apify~instagram-reel-scraper", {"username": ["lulaoficial", "flaviobolsonaro"], "resultsLimit": 25}, 0.35, 50)]
 TETO_TOTAL = 1.0
 
