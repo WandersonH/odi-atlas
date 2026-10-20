@@ -89,6 +89,35 @@ def debate(caso: str) -> list[dict] | None:
     return out
 
 
+def redes(caso: str, c: dict, pv: Path, pasta: Path, vids: set) -> tuple[dict, dict | None]:
+    """Padrão dos casos: rede de circulação, redes dos comentários (palavras e respostas) e classes estilo IRaMuTeQ."""
+    import redes_caso as rc
+    arq = pv / "youtube_comentarios.csv.gz"
+    rows = [r for r in csv.DictReader(gzip.open(arq, "rt", encoding="utf-8"), delimiter=";") if r["video_id"] in vids] if arq.exists() else []
+    tt = pv / "itens.csv.gz"
+    tiktok = [r for r in csv.DictReader(gzip.open(tt, "rt", encoding="utf-8"), delimiter=";") if r.get("rede") == "tiktok"] if tt.exists() else []
+    out, cls = {}, None
+    try:
+        n, a, d = rc.circulacao((c.get("youtube") or {}).get("videos", []), c.get("noticias") or [], tiktok)
+        rc.gexf(n, a, pasta / "rede_circulacao.gexf")
+        out["circulacao"] = {"desenho": d, "o_que_e": "quem publicou (canais do YouTube, veículos, contas do TikTok) ligado ao termo ou hashtag "
+                             "que o trouxe; peso = visualizações (notícia = 1); perfis com menos de 10 mil seguidores/inscritos aparecem como código",
+                             "tiktok_itens": len(tiktok)}
+        if rows:
+            textos = [r["texto"] for r in rows]
+            n, a, d = rc.palavras(textos)
+            rc.gexf(n, a, pasta / "rede_palavras_comentarios.gexf")
+            out["palavras"] = {"desenho": d, "o_que_e": "palavras que aparecem juntas no mesmo comentário (3+ vezes); cor = comunidade"}
+            n, a, r = rc.respostas(rows)
+            rc.gexf(n, a, pasta / "rede_respostas_comentarios.gexf", dirigida=True)
+            out["respostas"] = {**r, "o_que_e": "quem responde a quem nos comentários; autores sempre como código (A0001…)"}
+            cls = rc.classes(textos, [(r.get("publicado_em") or "0000")[:4] for r in rows])
+            (pv / "corpus_iramuteq_comentarios.txt").write_text(rc.corpus_iramuteq(rows), encoding="utf-8")
+    except Exception as e:  # noqa: BLE001 — sem numpy/networkx a coleta não cai
+        out["erro"] = f"{type(e).__name__}: {str(e)[:200]}"
+    return out, cls
+
+
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     caso = argv[argv.index("--caso") + 1] if "--caso" in argv else "002"
@@ -107,10 +136,12 @@ def main(argv=None) -> int:
            "arquivo_web": c.get("arquivo_web"), "debate": debate(caso), "erros": c.get("erros")}
     pasta = Path("data/casos") / caso
     pasta.mkdir(parents=True, exist_ok=True)
+    out["redes"], out["classes"] = redes(caso, c, pv, pasta, {v["id"] for v in (c.get("youtube") or {}).get("videos", [])})
     (pasta / "busca.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     cm = out["comentarios"] or {}
     print(f"caso {caso}: YouTube {y and y['videos']} vídeos · {y and y['visualizacoes']} visualizações · comentários lidos {cm.get('comentarios')} · "
-          f"notícias {len(out['noticias'] or [])} · checagens {len(out['checagens'])} · falas no debate {len(out['debate'] or [])}")
+          f"notícias {len(out['noticias'] or [])} · checagens {len(out['checagens'])} · falas no debate {len(out['debate'] or [])} · "
+          f"redes {[(k, (v.get('desenho') or {}).get('total_nos')) for k, v in out['redes'].items() if isinstance(v, dict)]} · classes {len((out['classes'] or {}).get('classes', []))}")
     return 0
 
 

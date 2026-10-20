@@ -39,7 +39,7 @@ CASOS = {
             "controles": ["onde mora o ladrão", "onde mora o político", "onde nasceu o político corrupto", "onde nasceu Lula"],  # 1º = âncora comum
             "janelas": ["today 5-y", "today 12-m", "now 7-d"], "youtube": None, "desde_yt": "2022-01-01T00:00:00Z",
             # 20/10: "anos"/"mora" soltos traziam vídeos de assalto; exige a estrutura da consulta ou o Google
-            "rx_titulo": r"ladr[aã]o", "rx_atributo": r"\b(a?onde (mora|nasceu|nasce)|quantos anos|idade do ladr|em que ano nasceu|google|pesquis)",
+            "rx_titulo": r"ladr[aã]o", "rx_atributo": r"\b(a?onde (mora|nasceu|nasce)|quantos anos|idade do ladr|em que ano nasceu|google)",
             "checagens": ["onde mora o ladrão", "onde nasceu o ladrão", "quantos anos tem o ladrão", "ladrão Google Lula"],
             "arquivo_web": ["https://victorgabry.com/onde-mora-o-ladrao-resultado-do-google/"]},
     "005": {"variantes": ["caso Ana Clara", "Ana Clara Niterói", "Ana Clara Flávio Bolsonaro", "Ana Clara PM"],
@@ -51,6 +51,17 @@ CASOS = {
             "rx_atributo": r"niter[oó]i|fl[aá]vio|bolsonaro|\bpm\b|policial|fuzil|\bbala\b|\btiro|delaroli|j[uú]ri|julgamento que nunca|debate|\blula\b|cristiane|largo da batalha|5 anos",
             "checagens": ["Ana Clara Flávio Bolsonaro", "caso Ana Clara"],
             "arquivo_web": ["https://apublica.org/2026/10/silencio-de-flavio-sobre-ana-clara-foi-desesperador-diz-a-mae-da-menina/"]},
+    # 20/10 (13h2x): o usuário pediu o mesmo padrão (Trends, YouTube, checagens, redes, IRaMuTeQ) para todos os casos
+    "001": {"variantes": ["brasil inteiro", "verde e amarelo", "brasilinteiro"], "controles": ["brasil inteiro", "Lula"],
+            "janelas": ["today 12-m", "now 7-d"], "youtube": ["#brasilinteiro", "brasil inteiro Lula", "#verdeeamarelo Lula"],
+            "desde_yt": "2026-10-10T00:00:00Z", "rx_titulo": r"brasil ?inteiro|verde ?e ?amarelo", "rx_atributo": r"lula|elei|campanha|\b13\b|brasil",
+            "checagens": ["brasil inteiro Lula", "verde e amarelo Lula"], "arquivo_web": []},
+    "003": {"variantes": ["ninguém morre nos devendo", "flamengo bets", "proibição das bets"], "controles": ["ninguém morre nos devendo", "Flamengo"],
+            "janelas": ["today 12-m", "now 7-d"],
+            "youtube": ["ninguém morre nos devendo", "flamengo ninguém morre nos devendo", "torcida do flamengo bets protesto"],
+            "desde_yt": "2026-09-25T00:00:00Z", "rx_titulo": r"devendo|\bbets?\b|apostas", "rx_atributo": r"flamengo|lula|torcida|meng[aã]o",
+            "checagens": ["ninguém morre nos devendo", "Flamengo bets protesto torcida"],
+            "arquivo_web": ["https://www.aosfatos.org/noticias/posts-nao-mostram-protesto-da-torcida-do-flamengo-contra-fim-das-bets/"]},
 }
 CASO = "002"
 TOP_COMENTARIOS = 30

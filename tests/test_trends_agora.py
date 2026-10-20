@@ -40,3 +40,22 @@ class TestRelacionados(unittest.TestCase):
         self.assertEqual(r["em_alta"][0]["exibido"], "+5.000%")
         self.assertTrue(ta.PERGUNTA.match("quem ganhou o debate"))
         self.assertFalse(ta.PERGUNTA.match("debate band ao vivo"))
+
+
+class TestEmAlta(unittest.TestCase):
+    def test_em_alta_fora_da_janela(self):
+        import tempfile
+        from pathlib import Path as P
+        bruto = [["termo político", None, None, [1760900000], None, None, 5000, None, 300, ["rel a"], [14]],
+                 ["jogo", None, None, [1760900000], [1760903600], None, 20000, None, 1000, [], [17]]]
+        with tempfile.TemporaryDirectory() as t:
+            (P(t) / "data").mkdir()
+            ta.now_utc = lambda: "2026-10-21T12:00:00Z"
+            resp = ")]}'\n\n1\n" + json.dumps([["wrb.fr", "i0OFE", json.dumps([None, bruto]), None, None, None, "generic"]]) + "\n"
+            rc = ta.main([t], get_batch=lambda h, *a: resp, get_materias=lambda q: [{"posicao": 1, "titulo": "x", "link": "l", "veiculo": "v"}])
+            self.assertEqual(rc, 0)
+            d = json.loads((P(t) / "data/trends/agora/em_alta.json").read_text(encoding="utf-8"))
+            self.assertEqual([x["termo"] for x in d["listas"]["24h"]], ["termo político", "jogo"])
+            self.assertEqual(d["listas"]["24h"][0]["materias"][0]["veiculo"], "v")
+            self.assertEqual(len((P(t) / "data/trends/agora/em_alta_historico.csv").read_text(encoding="utf-8").splitlines()), 5)
+            self.assertFalse((P(t) / "data/trends/agora/retratos").exists())  # debate congelado

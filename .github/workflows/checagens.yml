@@ -5,7 +5,7 @@ on:
     inputs:
       dias:
         description: "janela em dias (checagens publicadas desde)"
-        default: "60"
+        default: "400"
   schedule:
     - cron: "23 */6 * * *"   # a cada 6 h
 
@@ -35,7 +35,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           DIAS: ${{ github.event.inputs.dias }}
         run: |
-          python scripts/collect_checagens.py --dias "${DIAS:-60}" | tee "$RUNNER_TEMP/saida.txt"
+          python scripts/collect_checagens.py --dias "${DIAS:-400}" | tee "$RUNNER_TEMP/saida.txt"
           while IFS= read -r l; do echo "::notice title=Checagens::$(echo "$l" | cut -c1-400)"; done < "$RUNNER_TEMP/saida.txt"
       - name: Commitar
         run: |

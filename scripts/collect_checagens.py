@@ -148,7 +148,7 @@ def resumo_candidatos(itens: list[dict]) -> dict:
 
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
-    dias = int(argv[argv.index("--dias") + 1]) if "--dias" in argv else 60
+    dias = int(argv[argv.index("--dias") + 1]) if "--dias" in argv else 400  # período todo (pedido de 20/10/2026)
     chave = (os.environ.get("FACTCHECK_API_KEY") or os.environ.get("YOUTUBE_API_KEY") or "").strip()
     pasta = Path("data/checagens")
     pasta.mkdir(parents=True, exist_ok=True)

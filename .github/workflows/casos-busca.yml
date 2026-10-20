@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       caso:
-        description: "id do caso (002 ou 005; vazio = os dois)"
+        description: "id do caso (001, 002, 003 ou 005; vazio = todos)"
         default: ""
   schedule:
     - cron: "53 14 * * *"   # todo dia, 11h53 em Brasília
@@ -46,7 +46,7 @@ jobs:
           CASO: ${{ github.event.inputs.caso }}
         run: |
           rc=0
-          for c in ${CASO:-002 005}; do
+          for c in ${CASO:-001 002 003 005}; do
             python scripts/collect_caso_busca.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
             python scripts/build_caso_busca.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
           done

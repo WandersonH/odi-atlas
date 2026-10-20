@@ -183,11 +183,55 @@ def curvas() -> dict:
     return out
 
 
+def em_alta(root: Path, agora: str, get_batch=None, get_materias=None) -> int:
+    """"Em alta agora" (Brasil, últimas 4 h e 24 h): retrato atual em data/trends/agora/em_alta.json e histórico de cada
+    leitura em data/trends/agora/em_alta_historico.csv (uma linha por termo e leitura). Matérias do topo do Google Notícias
+    para os termos de Política (cache de 55 min, como no debate)."""
+    import csv as _csv
+    pasta = root / "data/trends/agora"
+    pasta.mkdir(parents=True, exist_ok=True)
+    out = {"coletado_em_utc": agora, "listas": {}, "erros": {}, "categorias": CATEGORIAS}
+    for h in (4, 24):
+        try:
+            out["listas"][f"{h}h"] = [termo(t) for t in batch(h, get_batch) if isinstance(t, list) and t and isinstance(t[0], str)]
+        except Exception as e:  # noqa: BLE001
+            out["erros"][f"lista_{h}h"] = f"{type(e).__name__}: {str(e)[:200]}"
+    pol = [x for x in out["listas"].get("24h", []) if POLITICA in x["categorias"]][:15]
+    cache_p = pasta / "materias.json"
+    cache = json.loads(cache_p.read_text(encoding="utf-8")) if cache_p.exists() else {}
+    for x in pol:
+        c = cache.get(x["termo"])
+        if c and c.get("t", "") > (dt.datetime.fromisoformat(agora.replace("Z", "+00:00")) - dt.timedelta(minutes=55)).strftime("%Y-%m-%dT%H:%M:%SZ"):
+            x["materias"] = c["itens"]
+            continue
+        try:
+            x["materias"] = (get_materias or materias)(x["termo"])
+            cache[x["termo"]] = {"t": agora, "itens": x["materias"]}
+        except Exception as e:  # noqa: BLE001
+            out["erros"][f"materias_{x['termo']}"] = type(e).__name__
+    cache_p.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+    (pasta / "em_alta.json").write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    hist = pasta / "em_alta_historico.csv"
+    novo = not hist.exists()
+    with open(hist, "a", encoding="utf-8", newline="") as f:
+        w = _csv.writer(f, delimiter=";")
+        if novo:
+            w.writerow(["coletado_em_utc", "janela", "posicao", "termo", "volume", "aumento_pct", "inicio", "ativo", "categorias"])
+        for jan, ls in out["listas"].items():
+            for i, x in enumerate(ls, 1):
+                w.writerow([agora, jan, i, x["termo"], x["volume"], x["aumento_pct"], x["inicio"], int(bool(x["ativo"])), "|".join(map(str, x["categorias"]))])
+    print(f"em alta: {len(out['listas'].get('4h', []))} termos (4 h) · {len(out['listas'].get('24h', []))} (24 h) · Política {len(pol)} · erros {list(out['erros'])[:4]}")
+    return 0 if out["listas"] else 1
+
+
 def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=None) -> int:
     root = Path(next((a for a in (argv or []) if not a.startswith("--")), "."))
     pasta = root / "data/trends/agora"
     agora = now_utc()
     if "--sempre" not in (argv or []) and agora > DEBATE["janela_ate"]:
+        # depois da janela do debate: só o "Em alta agora" permanente da página do Google Trends (pedido de 20/10/2026)
+        if root == Path(".") or (root / "data").exists():
+            return em_alta(root, agora, get_batch, get_materias)
         print(f"fora da janela do debate (até {DEBATE['janela_ate']}): nada coletado")
         return 0
     (pasta / "retratos").mkdir(parents=True, exist_ok=True)

@@ -9,7 +9,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "7 * * * *"   # de hora em hora: depois da janela do debate, só o "Em alta agora" da página do Trends
 
 concurrency:
   group: trends-agora

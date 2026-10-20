@@ -4,6 +4,27 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.78 — Padrão de análise para todos os casos; páginas separadas; "Em alta agora" permanente; checagens do período todo (2026-10-20) 🔜
+
+- Pedidos do usuário (20/10, 13h20–13h26):
+  - "Em alta" na página de Trends.
+  - Checagens do período todo.
+  - Nos casos, sempre redes (circulação e comentários) e IRaMuTeQ.
+  - O caso 002 não tinha uma tela de linha de tendência e de estados: "se já temos um padrão de análise, os casos devem desenvolver dados".
+  - A página do caso Ana Clara estava misturada com a do "ladrão" no título.
+  - O fact-check é padrão para todos os casos.
+- `redes_caso.py` (padrão dos casos):
+  - Rede de circulação: canais do YouTube, veículos e contas do TikTok ligados ao termo ou hashtag que os trouxe; perfis com menos de 10 mil aparecem como código P0001.
+  - Redes dos comentários: palavras que aparecem juntas e quem responde a quem, com autores sempre como código A0001.
+  - CHD de Reinert nos comentários e corpus IRaMuTeQ no privado.
+  - GEXF de cada rede. O desenho distribui cada componente em área própria; o layout anterior jogava componentes pequenos para os cantos.
+  - Teste local (privado de 20/10): 005 com circulação de 238 nós, palavras de 1.039, respostas de 907 autores e 6 classes; 002 com 77, 10, 24 e 5 classes.
+- Casos 001 e 003 entram no mesmo padrão (Trends, YouTube, imprensa, checagens, redes, classes): `collect_caso_busca.py` com configuração de cada um. O workflow diário roda 001, 002, 003 e 005.
+- Página: cada caso numa aba própria do caderno 08 (#brasilinteiro, Consulta depreciativa no Google, Ninguém morre nos devendo, Caso Ana Clara). Cada aba tem título e contexto próprios e os blocos big numbers, debate (quando houver), Trends (linha em 5 anos, 12 meses e 7 dias; controles; relacionadas; tabela por estado com barras para cada termo), YouTube, comentários, redes, classes, imprensa e checagens. Filtro do 002 sem "pesquis" (trazia vídeo de assalto).
+- "Em alta agora" permanente: depois da janela do debate, `collect_trends_agora.py` grava `data/trends/agora/em_alta.json` e acumula `em_alta_historico.csv`, com matérias do topo do Google Notícias para os termos de Política; o consolidado do debate fica congelado. O workflow passou de 15 em 15 min para de hora em hora. Novo painel no topo da página do Google Trends.
+- Checagens: janela padrão de 60 para 400 dias (período todo da campanha e pré-campanha).
+- Testes: `TestEmAlta` e `TestRedesCaso` (privacidade de nomes e códigos); suíte OK. Execuções reais: próxima entrada.
+
 ## C19.77 — Casos 002 ("onde mora/nasceu o ladrão") e 005 (caso Ana Clara): coleta grátis de buscas, YouTube, imprensa e checagens (2026-10-20) ⚠️
 
 - Pedidos do usuário (20/10, 12h45–12h47): ativar o caso 002 com o escopo sugerido e criar o caso Ana Clara ("buscas e vídeos do YouTube sobre o assunto e o alcance total"; o caso foi citado por Lula no debate).

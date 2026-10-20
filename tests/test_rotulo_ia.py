@@ -54,3 +54,21 @@ class TestCasoBusca(unittest.TestCase):
         self.assertEqual([v["id"] for v in y["mais_vistos"]], ["a"])
         self.assertEqual(y["por_ano"]["2022"]["visualizacoes"], 100)
         self.assertTrue(cb.CATEGORIAS["relato de teste"].search("testei aqui e deu o lula"))
+
+
+class TestRedesCaso(unittest.TestCase):
+    def test_privacidade(self):
+        import redes_caso as rc
+        n, a, d = rc.circulacao([{"canal_id": "c1", "canal": "Canal Grande", "inscritos": 50000, "visualizacoes": 10, "consulta": "q"},
+                                 {"canal_id": "c2", "canal": "Fulano", "inscritos": 20, "visualizacoes": 5, "consulta": "q"}],
+                                [{"veiculo": "G1", "consulta": "q"}],
+                                [{"conta": "pessoa", "seguidores": "15", "verificada": "0", "termo": "#x", "visualizacoes": "3"}])
+        rotulos = {v["rotulo"] for v in n.values()}
+        self.assertIn("Canal Grande", rotulos)
+        self.assertNotIn("Fulano", rotulos)
+        self.assertNotIn("@pessoa", rotulos)
+        rows = [{"comment_id": "1", "parent_id": "", "tipo": "comentario", "autor_canal": "X", "autor_nome": "Maria"},
+                {"comment_id": "2", "parent_id": "1", "tipo": "resposta", "autor_canal": "Y", "autor_nome": "João"}]
+        n, a, r = rc.respostas(rows)
+        self.assertEqual(set(n), {"A0001", "A0002"})
+        self.assertEqual(r["respostas_entre_autores"], 1)
