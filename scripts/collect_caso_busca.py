@@ -38,14 +38,17 @@ CASOS = {
     "002": {"variantes": ["onde mora o ladrão", "onde nasceu o ladrão", "quantos anos tem o ladrão", "qual a idade do ladrão", "aonde nasceu o ladrão"],
             "controles": ["onde mora o ladrão", "onde mora o político", "onde nasceu o político corrupto", "onde nasceu Lula"],  # 1º = âncora comum
             "janelas": ["today 5-y", "today 12-m", "now 7-d"], "youtube": None, "desde_yt": "2022-01-01T00:00:00Z",
-            "rx_titulo": r"ladr[aã]o", "rx_atributo": r"\b(mora|nasceu|nasce|anos|idade|google|pesquis)",
+            # 20/10: "anos"/"mora" soltos traziam vídeos de assalto; exige a estrutura da consulta ou o Google
+            "rx_titulo": r"ladr[aã]o", "rx_atributo": r"\b(a?onde (mora|nasceu|nasce)|quantos anos|idade do ladr|em que ano nasceu|google|pesquis)",
             "checagens": ["onde mora o ladrão", "onde nasceu o ladrão", "quantos anos tem o ladrão", "ladrão Google Lula"],
             "arquivo_web": ["https://victorgabry.com/onde-mora-o-ladrao-resultado-do-google/"]},
     "005": {"variantes": ["caso Ana Clara", "Ana Clara Niterói", "Ana Clara Flávio Bolsonaro", "Ana Clara PM"],
             "controles": ["caso Ana Clara", "Flávio Bolsonaro"],
             "janelas": ["today 5-y", "today 12-m", "now 7-d"],
             "youtube": ["caso Ana Clara", "Ana Clara Niterói", "Ana Clara Flávio Bolsonaro", "Flávio Bolsonaro advogado PM criança", "menina Ana Clara tiro fuzil"],
-            "desde_yt": "2021-02-01T00:00:00Z", "rx_titulo": r"ana clara|menina de 5 anos|criança de 5 anos", "rx_atributo": r".",
+            "desde_yt": "2021-02-01T00:00:00Z", "rx_titulo": r"ana clara",
+            # 20/10: só "ana clara" trazia outros casos com o mesmo nome; exige um elemento deste caso
+            "rx_atributo": r"niter[oó]i|fl[aá]vio|bolsonaro|\bpm\b|policial|fuzil|\bbala\b|\btiro|delaroli|j[uú]ri|julgamento que nunca|debate|\blula\b|cristiane|largo da batalha|5 anos",
             "checagens": ["Ana Clara Flávio Bolsonaro", "caso Ana Clara"],
             "arquivo_web": ["https://apublica.org/2026/10/silencio-de-flavio-sobre-ana-clara-foi-desesperador-diz-a-mae-da-menina/"]},
 }

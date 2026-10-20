@@ -48,10 +48,12 @@ def youtube(y: dict | None) -> dict | None:
                     f"{cb.MIN_PUBLICO:,} inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.".replace(",", ".")}
 
 
-def comentarios(arq: Path, vids: dict) -> dict | None:
+def comentarios(arq: Path, vids: set) -> dict | None:
     if not arq.exists():
         return None
-    rows = list(csv.DictReader(gzip.open(arq, "rt", encoding="utf-8"), delimiter=";"))
+    # só comentários de vídeos que estão na lista atual do caso (o arquivo privado acumula leituras anteriores, inclusive de vídeos
+    # que um filtro mais estrito tirou do caso; eles continuam guardados, mas não entram na conta)
+    rows = [r for r in csv.DictReader(gzip.open(arq, "rt", encoding="utf-8"), delimiter=";") if not vids or r["video_id"] in vids]
     if not rows:
         return None
     txt = [r["texto"] for r in rows]
@@ -100,7 +102,7 @@ def main(argv=None) -> int:
     y = youtube(c.get("youtube"))
     out = {"schema_version": 1, "caso": caso, "gerado_em_utc": now_utc(), "coletado_em_utc": c["coletado_em_utc"],
            "variantes": c["variantes"], "controles": c["controles"], "trends": c.get("trends"), "youtube": y,
-           "comentarios": comentarios(pv / "youtube_comentarios.csv.gz", {}), "noticias": c.get("noticias"),
+           "comentarios": comentarios(pv / "youtube_comentarios.csv.gz", {v["id"] for v in (c.get("youtube") or {}).get("videos", [])}), "noticias": c.get("noticias"),
            "checagens": [{k: x.get(k) for k in ("data_checagem", "agencia", "rotulo", "titulo", "afirmacao", "url")} for x in c.get("checagens") or []],
            "arquivo_web": c.get("arquivo_web"), "debate": debate(caso), "erros": c.get("erros")}
     pasta = Path("data/casos") / caso

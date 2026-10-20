@@ -4,7 +4,7 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.77 — Casos 002 ("onde mora/nasceu o ladrão") e 005 (caso Ana Clara): coleta grátis de buscas, YouTube, imprensa e checagens (2026-10-20) 🔜
+## C19.77 — Casos 002 ("onde mora/nasceu o ladrão") e 005 (caso Ana Clara): coleta grátis de buscas, YouTube, imprensa e checagens (2026-10-20) ⚠️
 
 - Pedidos do usuário (20/10, 12h45–12h47): ativar o caso 002 com o escopo sugerido e criar o caso Ana Clara ("buscas e vídeos do YouTube sobre o assunto e o alcance total"; o caso foi citado por Lula no debate).
 - `collect_caso_busca.py` + `build_caso_busca.py` + `casos-busca.yml` (diário 11h53 e manual, grátis), configuração por caso:
@@ -15,7 +15,17 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Caso 005: localiza na transcrição do debate (privada) as falas que citam o caso, com minuto e orador da codificação de turnos. Teste local: 4 falas, aos 31,7 min (Lula), 33,2 (Flávio Bolsonaro), 34,0 (Lula) e 35,1 (Lula).
 - Caso 002: bateria manual de consultas ao Google com modelo de registro em `data/casos/002/bateria_modelo.csv`. Não há API do Google para isso: a Custom Search API recusou o projeto, e o Google bloqueia robôs.
 - `casos.json`: 002 ativo, com título neutro e hashtags do TikTok; 005 novo, com contexto e fonte da Agência Pública. TikTok e Google dos dois pelo pipeline de casos (grátis).
-- Testes: `TestCasoBusca`; `test_casos` ajustado; suíte OK. Execução real: próxima entrada.
+- Testes: `TestCasoBusca`; `test_casos` ajustado; suíte OK.
+- Primeira execução (run 39452047078, casos de busca; runs 39452052039 e 39452056962, TikTok e Google pelo pipeline de casos):
+  - 005: 159 vídeos no YouTube, 7.300.612 visualizações somadas, 5.065 comentários lidos, 89 notícias, 0 checagens, 4 falas no debate. Página da Pública arquivada no Internet Archive em 20/10. TikTok: 101 vídeos (#casoanaclara e #pesquiseocasoanaclara).
+  - 002: 20 vídeos (13 de 2022), 92.209 visualizações, 122 comentários, 0 notícias, 0 checagens. TikTok: 58 vídeos em #ondenasceuoladrao; 0 em #ondemoraoladrao e em #quantosanostemoladrao. ⛔ Arquivo do artigo de 2022: sem cópia, e o pedido de cópia falhou (URLError).
+  - ⛔ Trends recusou algumas janelas (HTTP 429): no 005, variantes em 5 anos e controles em 12 meses; no 002, controles em 5 anos. Nova tentativa na coleta diária.
+- Correções depois da conferência dos resultados:
+  - O filtro do 005 aceitava qualquer "Ana Clara"; entre os mais vistos havia dois vídeos de outros casos com o mesmo nome. Agora exige um elemento deste caso (Niterói, Flávio, PM, fuzil, júri, debate, Lula…).
+  - O filtro do 002 aceitava vídeo de assalto ("ladrão" + "anos"); agora exige a estrutura da consulta ("onde mora/nasceu", "quantos anos", "idade do ladrão") ou "Google".
+  - Comentários de vídeos que saíram pelo filtro mais estrito continuam guardados no privado, mas deixam de entrar na conta.
+  - ⚠️ As hashtags do TikTok (#casoanaclara) também pegam vídeos de outros casos com o mesmo nome; o marco zero de 2021 no TikTok precisa de conferência humana.
+- Página: nova aba "Casos de busca (Ana Clara, "o ladrão")" no caderno 08, com big numbers, falas no debate, Trends (5 anos, 12 meses, 7 dias, controles, relacionadas, estados), YouTube por ano e mais vistos, comentários pré-codificados, imprensa e checagens, arquivo e a bateria manual do 002.
 
 ## C19.76 — Regra: nunca apagar ou limpar dados (2026-10-20) ✅
 
