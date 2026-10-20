@@ -9,7 +9,8 @@
 3. Instagram: ⛔ nenhuma das ferramentas usadas devolve o rótulo "Informações de IA" (verificado em 19/10 nos ~16,6 mil
    posts já coletados, 15 campos por post). Fica registrado como lacuna.
 
-Saída pública: data/ia/rotulo_coleta.json (vídeos de contas públicas de campanha e canais, só metadados).
+Saída: ODI_INTERNO_DIR/ia/rotulo_coleta.json (privado: inclui contas pequenas das hashtags do TikTok — pessoas comuns, LGPD);
+sem ODI_INTERNO_DIR, pasta temporária. O público recebe só os agregados de build_rotulo_ia.py.
 Uso: python scripts/collect_rotulo_ia.py [--sem-tiktok] [--rolagens 15]
 """
 from __future__ import annotations
@@ -50,8 +51,17 @@ def campos_ia(o, caminho: str = "") -> dict:
 
 
 def tem_rotulo(campos: dict) -> bool:
-    """Rótulo ativo: algum campo de IA com valor verdadeiro, número > 0 ou texto não vazio."""
-    for v in campos.values():
+    """Rótulo ativo. TikTok (run 39357423522): `aigcLabelType` / `moderationAigcLabelType` > 0 ou `AIGCDescription` com texto;
+    `ShowAIGC` vem verdadeiro em quase todos os vídeos (173 de 174) e não indica rótulo, por isso é ignorado.
+    Outros campos de IA: valor verdadeiro, número > 0 ou texto."""
+    for k, v in campos.items():
+        nome = k.split(".")[-1].lower()
+        if nome == "showaigc":
+            continue
+        if nome.endswith("labeltype"):
+            if str(v).isdigit() and int(v) > 0:
+                return True
+            continue
         if v is True or (isinstance(v, (int, float)) and not isinstance(v, bool) and v > 0) or (isinstance(v, str) and v.strip() not in ("", "0", "false", "False")):
             return True
     return False
@@ -159,12 +169,19 @@ async def tiktok(perfis: list[dict], rolagens: int) -> tuple[list[dict], dict]:
                             "publicado_em": (__import__("datetime").datetime.fromtimestamp(int(ts), __import__("datetime").timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if str(ts or "").isdigit() else None),
                             "legenda": " ".join((it.get("desc") or "").split())[:200], "url": f"https://www.tiktok.com/@{autor}/video/{it['id']}",
                             "campos_ia": c, "rotulo_ia": tem_rotulo(c),
-                            "visualizacoes": (it.get("stats") or {}).get("playCount")})
+                            "visualizacoes": (it.get("stats") or {}).get("playCount"),
+                            "seguidores": (it.get("authorStats") or {}).get("followerCount")})
             resumo[a["perfil"]] = {"tipo": a["tipo"], "candidato": a["candidate_name"], "respostas_api": len(respostas), "videos": len(vistos),
                                    "campos_ia_vistos": sorted(nomes), "erro": erro}
             print(f"tiktok {a['tipo']} {a['perfil']}: {len(vistos)} vídeos · campos de IA vistos {sorted(nomes)[:6]} {erro or ''}")
         await b.close()
     return out, resumo
+
+
+def arquivo_coleta() -> Path:
+    import tempfile
+    base = os.environ.get("ODI_INTERNO_DIR") or os.path.join(os.environ.get("RUNNER_TEMP") or tempfile.gettempdir(), "odi_ia")
+    return Path(base) / "ia/rotulo_coleta.json"
 
 
 def main(argv=None) -> int:
@@ -192,8 +209,9 @@ def main(argv=None) -> int:
         except Exception as e:  # noqa: BLE001
             ERROS.append(f"tiktok: {type(e).__name__}: {str(e)[:200]}")
     out["erros"] = ERROS
-    Path("data/ia").mkdir(parents=True, exist_ok=True)
-    Path("data/ia/rotulo_coleta.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    destino = arquivo_coleta()
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    destino.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"erros: {ERROS[:4]}")
     return 0 if (out["youtube"] or out["tiktok"]) else 1
 

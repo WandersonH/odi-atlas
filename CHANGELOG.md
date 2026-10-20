@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.75 — Página "Rótulo de IA nas campanhas" (caderno 08) e resultado dos testes (2026-10-19) ⚠️
+
+- Teste do Instagram (conta 1, autorizado até US$ 1), três rodadas:
+  - Runs 39357421750 e seguinte (apify/instagram-scraper e apify/instagram-reel-scraper, perfis @lulaoficial e @flaviobolsonaro): "no_items: Empty or private data for provided input". Custo registrado: US$ 0,0056 por rodada.
+  - Rodada com 12 endereços de posts recentes dos dois perfis (apify/instagram-scraper, run JsmQCh9NFEiVgBln0): 12 posts, 64 campos, nenhum de IA. A API não informou custo para essa rodada.
+  - ⛔ Conclusão: pelos meios testados, o rótulo "Informações de IA" do Instagram não chega.
+- TikTok (run 39357423522, páginas de hashtag sem login): os campos `AIGCDescription`, `ShowAIGC`, `aigcLabelType` e `moderationAigcLabelType` aparecem no JSON. `ShowAIGC` veio verdadeiro em 173 de 174 vídeos e não indica rótulo; a regra passou a contar como rotulado quando `aigcLabelType` ou `moderationAigcLabelType` > 0. Resultado: 13 de 174 vídeos (7,5%) em #lula, #flaviobolsonaro e #eleicoes2026. Perfis oficiais das chapas: 0 vídeos sem login (⛔).
+- YouTube: `containsSyntheticMedia` ausente nos 2.090 vídeos lidos (⛔).
+- Checagens: 58 de 333 citam IA (40), deepfake (1) ou montagem/manipulação/edição (26); 37 citam Lula e 23 citam Flávio Bolsonaro. "IA" passou a ser buscado só em maiúsculas, porque "ia" é também o verbo ir.
+- Privacidade: a primeira versão gravou a coleta bruta (contas pequenas das hashtags, com legenda) em `data/ia/rotulo_coleta.json`, no repositório público. O arquivo foi removido e a coleta bruta vai para o privado (`ia/rotulo_coleta.json`). ⚠️ Continua no histórico do git público (commit desta noite). No público, só aparecem com nome e link contas com 10 mil seguidores ou mais; nesta leitura, os 13 rotulados são de contas menores ou sem número de seguidores e entram só na contagem.
+- Página: nova aba "Rótulo de IA nas campanhas" no caderno 08 (Casos), com big numbers, tabela do que dá para medir em cada plataforma, TikTok, checagens e método. Verificada no Chromium local (1300 e 390 px), sem erro de JavaScript.
+- Premissa interna do projeto registrada no repositório privado (`PREMISSA_INTERNA.md`), a pedido do usuário; não vai para o público.
+
 ## C19.74 — Caso "Rótulo de IA nas campanhas": coleta grátis no YouTube e no TikTok (2026-10-19) 🔜
 
 - Pedido do usuário (19/10, 23h00): começar a página do caso sobre o rótulo de IA ("quanto conteúdo sai declarado como IA").

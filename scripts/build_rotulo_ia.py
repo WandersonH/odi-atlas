@@ -1,6 +1,6 @@
 """Rótulo de IA nas campanhas → data/ia/rotulo.json (agregados e listas de conteúdo de contas públicas).
 
-Entradas: data/ia/rotulo_coleta.json (collect_rotulo_ia.py) e data/checagens/checagens.json (checagens que tratam de IA).
+Entradas: ODI_INTERNO_DIR/ia/rotulo_coleta.json (collect_rotulo_ia.py; privado) e data/checagens/checagens.json (checagens que tratam de IA).
 """
 from __future__ import annotations
 
@@ -13,8 +13,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from net import now_utc  # noqa: E402
 
+MIN_PUBLICO = 10000  # mesma regra dos casos: abaixo disso, perfil de pessoa comum (LGPD)
 ORDEM = ["Lula", "Flávio Bolsonaro"]  # Lula primeiro por padrão do Atlas
-TERMOS_IA = {"IA ou inteligência artificial": re.compile(r"\bIA\b|intelig[eê]ncia artificial", re.I),
+# "IA" só em maiúsculas: em minúsculas, "ia" é o verbo ir ("ia votar") e trazia checagens sem relação com IA (19/10)
+TERMOS_IA = {"IA ou inteligência artificial": re.compile(r"\bIA\b|[Ii]ntelig[eê]ncia [Aa]rtificial"),
              "deepfake": re.compile(r"deep ?fake", re.I),
              "montagem, manipulação ou edição": re.compile(r"\bmontage|\bmanipula|\beditad|\balterad", re.I)}
 
@@ -60,8 +62,12 @@ def tiktok(t: dict | None) -> dict | None:
             "por_candidato": ordenar({c: {"videos": len(x), "perfis": len({v["perfil"] for v in x}), "rotulados": sum(v["rotulo_ia"] for v in x),
                                           "pct": pct(sum(v["rotulo_ia"] for v in x), len(x))} for c, x in por.items()}),
             "perfis": t["perfis"], "campos_vistos": campos.most_common(),
-            "lista": sorted([{k: v[k] for k in ("id", "perfil", "candidato", "origem", "publicado_em", "legenda", "url", "campos_ia")} for v in vs if v["rotulo_ia"]],
+            # só contas com MIN_PUBLICO+ seguidores aparecem com nome e link; as demais (pessoas comuns) entram só na contagem
+            "lista": sorted([{k: v.get(k) for k in ("id", "perfil", "candidato", "origem", "publicado_em", "legenda", "url", "campos_ia", "seguidores")}
+                             for v in vs if v["rotulo_ia"] and (v.get("seguidores") or 0) >= MIN_PUBLICO],
                             key=lambda v: v["publicado_em"] or "", reverse=True),
+            "rotulados_contas_pequenas": sum(1 for v in vs if v["rotulo_ia"] and (v.get("seguidores") or 0) < MIN_PUBLICO),
+            "min_seguidores_publico": MIN_PUBLICO,
             "nota": "Campos lidos do JSON que a página pública do TikTok entrega (sem login). O TikTok não documenta esses campos; "
                     "a lista de campos vistos fica no arquivo para conferência."}
 
@@ -91,7 +97,8 @@ def checagens(root: Path) -> dict | None:
 
 def main(argv=None) -> int:
     root = Path(argv[0]) if argv else Path(".")
-    col = root / "data/ia/rotulo_coleta.json"
+    from collect_rotulo_ia import arquivo_coleta
+    col = arquivo_coleta()
     c = json.loads(col.read_text(encoding="utf-8")) if col.exists() else {}
     out = {"schema_version": 1, "gerado_em_utc": now_utc(), "coletado_em_utc": c.get("coletado_em_utc"),
            "youtube": youtube(c.get("youtube")), "tiktok": tiktok(c.get("tiktok")), "instagram": c.get("instagram"),
