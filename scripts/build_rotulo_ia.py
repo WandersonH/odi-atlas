@@ -63,13 +63,39 @@ def tiktok(t: dict | None) -> dict | None:
                                           "pct": pct(sum(v["rotulo_ia"] for v in x), len(x))} for c, x in por.items()}),
             "perfis": t["perfis"], "campos_vistos": campos.most_common(),
             # só contas com MIN_PUBLICO+ seguidores aparecem com nome e link; as demais (pessoas comuns) entram só na contagem
-            "lista": sorted([{k: v.get(k) for k in ("id", "perfil", "candidato", "origem", "publicado_em", "legenda", "url", "campos_ia", "seguidores")}
+            "lista": sorted([{k: v.get(k) for k in ("id", "perfil", "candidato", "origem", "publicado_em", "legenda", "url", "campos_ia", "seguidores", "capa_url")}
                              for v in vs if v["rotulo_ia"] and (v.get("seguidores") or 0) >= MIN_PUBLICO],
                             key=lambda v: v["publicado_em"] or "", reverse=True),
             "rotulados_contas_pequenas": sum(1 for v in vs if v["rotulo_ia"] and (v.get("seguidores") or 0) < MIN_PUBLICO),
             "min_seguidores_publico": MIN_PUBLICO,
             "nota": "Campos lidos do JSON que a página pública do TikTok entrega (sem login). O TikTok não documenta esses campos; "
                     "a lista de campos vistos fica no arquivo para conferência."}
+
+
+def capas(root: Path, lista: list[dict], baixar=None) -> None:
+    """Miniatura de cada vídeo rotulado de conta pública: data/ia/miniaturas/tiktok_<id>.jpg (320 px). A capa vem da URL que a
+    página da hashtag entregou (expira em horas; por isso o build roda logo após a coleta) ou, se faltar ou falhar, do oEmbed
+    público do TikTok (thumbnail_url). Não rebaixa o que já existe. Sem capa: o campo fica vazio e a página mostra ⛔."""
+    import urllib.parse
+    if baixar is None:
+        import build_criativos_meta as bcm
+        baixar = bcm.miniatura
+    pasta = root / "data/ia/miniaturas"
+    pasta.mkdir(parents=True, exist_ok=True)
+    for v in lista:
+        arq = pasta / f"tiktok_{v['id']}.jpg"
+        if not arq.exists():
+            urls = [v.get("capa_url")]
+            try:
+                from net import get_json
+                urls.append((get_json("https://www.tiktok.com/oembed?url=" + urllib.parse.quote(v["url"], safe="")) or {}).get("thumbnail_url"))
+            except Exception:  # noqa: BLE001
+                pass
+            for u in [u for u in urls if u]:
+                if baixar(u, arq):
+                    break
+        v["miniatura"] = f"data/ia/miniaturas/{arq.name}" if arq.exists() else None
+        v.pop("capa_url", None)
 
 
 def checagens(root: Path) -> dict | None:
@@ -106,6 +132,8 @@ def main(argv=None) -> int:
            "regra_tse": "Res. TSE nº 23.610/2019, alterada pela Res. nº 23.755/2026: conteúdo sintético na propaganda, quando permitido, "
                         "deve ser informado de modo explícito (art. 9º-B)."}
     (root / "data/ia").mkdir(parents=True, exist_ok=True)
+    if out["tiktok"]:
+        capas(root, out["tiktok"]["lista"])
     (root / "data/ia/rotulo.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     y, t, k = out["youtube"] or {}, out["tiktok"] or {}, out["checagens"] or {}
     print(f"rótulo de IA: YouTube {y.get('declarados')} declarados de {y.get('lidos')} (campo presente em {y.get('campo_presente')}) · "

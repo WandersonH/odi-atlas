@@ -6,6 +6,34 @@ import build_rotulo_ia as br
 
 
 class TestRotuloIA(unittest.TestCase):
+    def test_capas(self):
+        import tempfile
+        from pathlib import Path
+        import build_rotulo_ia as br
+        lista = [{"id": "1", "url": "https://www.tiktok.com/@a/video/1", "capa_url": "https://cdn/x.jpg"},
+                 {"id": "2", "url": "https://www.tiktok.com/@b/video/2", "capa_url": None}]
+        pedidos = []
+
+        def fake(url, destino):
+            pedidos.append(url)
+            if url == "https://cdn/x.jpg":
+                destino.write_bytes(b"jpg")
+                return True
+            return False
+        import net
+        orig = net.get_json
+        net.get_json = lambda u: (_ for _ in ()).throw(OSError("sem rede"))
+        try:
+            with tempfile.TemporaryDirectory() as t:
+                br.capas(Path(t), lista, baixar=fake)
+                br.capas(Path(t), lista, baixar=fake)  # 2ª vez não rebaixa
+        finally:
+            net.get_json = orig
+        self.assertEqual(pedidos, ["https://cdn/x.jpg"])
+        self.assertEqual(lista[0]["miniatura"], "data/ia/miniaturas/tiktok_1.jpg")
+        self.assertIsNone(lista[1]["miniatura"])
+        self.assertNotIn("capa_url", lista[0])
+
     def test_campos(self):
         it = {"id": "1", "desc": "x", "aigcLabelType": 1, "AIGCDescription": "", "stats": {"playCount": 3}, "music": {"isAiGenerated": False}}
         c = cr.campos_ia(it)

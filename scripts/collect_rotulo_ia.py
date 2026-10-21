@@ -169,6 +169,7 @@ async def tiktok(perfis: list[dict], rolagens: int) -> tuple[list[dict], dict]:
                             "publicado_em": (__import__("datetime").datetime.fromtimestamp(int(ts), __import__("datetime").timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") if str(ts or "").isdigit() else None),
                             "legenda": " ".join((it.get("desc") or "").split())[:200], "url": f"https://www.tiktok.com/@{autor}/video/{it['id']}",
                             "campos_ia": c, "rotulo_ia": tem_rotulo(c),
+                            "capa_url": (it.get("video") or {}).get("cover") or (it.get("video") or {}).get("originCover"),  # URL assinada, expira: baixada no build logo depois
                             "visualizacoes": (it.get("stats") or {}).get("playCount"),
                             "seguidores": (it.get("authorStats") or {}).get("followerCount")})
             resumo[a["perfil"]] = {"tipo": a["tipo"], "candidato": a["candidate_name"], "respostas_api": len(respostas), "videos": len(vistos),

@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.80 — Rótulo de IA: miniatura do conteúdo na lista do TikTok (2026-10-20) 🔜
+
+- **Pedido do responsável (20/10, 23h42):** a tabela "Vídeos marcados como IA" deveria mostrar a miniatura do conteúdo.
+- **O que mudou:**
+  - `collect_rotulo_ia.py` passa a guardar `capa_url`, a capa que a página da hashtag entrega.
+  - `build_rotulo_ia.capas()` baixa a capa de cada vídeo rotulado de conta pública (10 mil seguidores ou mais). O arquivo vai para `data/ia/miniaturas/tiktok_<id>.jpg`, com 320 px e Pillow.
+    - Se a URL da capa expirou ou está ausente, tenta o oEmbed público do TikTok.
+    - Não baixa de novo o que já existe e não publica a URL assinada.
+  - A página ganhou a coluna "Conteúdo" com a capa linkada ao vídeo. Quando falta capa, mostra "⛔ sem capa".
+  - O workflow instala Pillow.
+- **Testes:** `python -m unittest discover -s tests -v`, com 192 OK, incluindo `test_capas`.
+- **Pendente:** as capas só existem depois do próximo run do `rotulo-ia.yml`, disparado em seguida. Daqui não dá para testar a rede: o proxy desta sessão recusa tiktok.com.
+
 ## C19.79 — Perfis sem número: modo conta 1 com teto total (2026-10-20) ⚠️
 
 - **Pedido do responsável (20/10, 23h33):** "rode na principal". O teto autorizado para esta execução foi de US$ 0,50.
