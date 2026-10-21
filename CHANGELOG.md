@@ -40,6 +40,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Testes:**
   - `python -m unittest discover -s tests -v` passa, incluindo `test_abrangencia`, com nove casos tirados de textos reais.
   - As páginas foram renderizadas com Chromium (Playwright) a partir dos agregados do bruto real, em cópia temporária fora do repositório. Sem erro de JavaScript, a 1300 px e a 390 px.
+- **Correção de privacidade (mesmo dia):**
+  - O run 39536902729 publicou em `data/tse/pesquisas/resumo.json` a razão social de uma empresa individual (MEI) contratante. Esse tipo de razão social traz nome e CPF do titular.
+  - `pessoa()` agora omite o nome quando a razão social contém um CPF, e há teste para isso.
+  - A versão anterior continua no histórico do git, que não é reescrito sem autorização (regra 8). O dado também é público no próprio portal do TSE.
 - **Limites:**
   - A abrangência é uma leitura automática e pode errar em textos ambíguos. A página diz isso.
   - O arquivo de denúncias não tem data por denúncia, e a série começa em 20/10.

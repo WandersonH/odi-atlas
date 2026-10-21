@@ -70,6 +70,7 @@ class TestPesquisas(unittest.TestCase):
         txt = str(p)
         self.assertNotIn("MARIA", txt)
         self.assertNotIn("FULANO", txt)  # estatístico responsável não vai para o público
+        self.assertEqual(tp.pessoa("12345678000199", "FULANO DE TAL 99263319634"), "empresa individual (nome omitido)")
         self.assertEqual(p["nacionais"]["origem_recurso"], [("Recursos Próprios", 1)])
 
 

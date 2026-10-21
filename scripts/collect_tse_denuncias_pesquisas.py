@@ -165,6 +165,8 @@ def valor(v: str | None) -> float | None:
 def pessoa(doc: str | None, nome: str | None) -> str:
     """Empresa (CNPJ, 14 dígitos) aparece com nome; pessoa física (CPF) não."""
     d = re.sub(r"\D", "", doc or "")
+    if re.search(r"\d{3}\.?\d{3}\.?\d{3}-?\d{2}", nome or ""):
+        return "empresa individual (nome omitido)"  # MEI: a razão social traz nome e CPF do titular (achado de 21/10/2026)
     if len(d) == 14 and limpo(nome):
         return limpo(nome)
     return "pessoa física (nome omitido)" if len(d) == 11 else (limpo(nome) or "não informado")
