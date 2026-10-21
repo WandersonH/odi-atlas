@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.87 — WhatsApp: PT, Nikolas Ferreira e Partido Liberal na coleta diária (2026-10-21) ✅
+
+- **Pedido do responsável (21/10, 16h33):** incluir três canais, com os links e nomes enviados por ele.
+- **Incluídos em `data/config/whatsapp_canais.json`:**
+  - "PT - Partido dos Trabalhadores" (`0029Va9GZPM8vd1ThwjXO91d`), lado Lula, partido da chapa 13;
+  - "Nikolas Ferreira - Oficial" (`0029VbDNtfo4o7qVYbwemy1f`), lado Flávio;
+  - "Canal do Partido Liberal" (`0029VaASWC80AgW20a3dQj1z`), lado Flávio, partido da chapa 22.
+  - Com isso, saem da pendência três dos canais da nota de 15/10: Nikolas Ferreira, Partido Liberal e Tropa da Erika Hilton (C19.86).
+- **Testes:** suíte completa. O run do `whatsapp.yml` foi disparado em seguida, e o número de cada canal está em `data/whatsapp/seguidores_latest.csv`.
+
 ## C19.86 — WhatsApp: dois canais novos na coleta diária (2026-10-21) ✅
 
 - **Pedido do responsável (21/10, 16h30):** incluir três links na coleta de WhatsApp.
