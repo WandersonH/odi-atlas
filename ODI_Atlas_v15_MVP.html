@@ -474,7 +474,7 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 .odi-chat-btn{position:fixed;left:16px;bottom:16px;z-index:50;width:52px;height:52px;border-radius:50%;border:2px solid #172238;background:#fffdf8;color:#172238;box-shadow:3px 3px 0 #172238;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .odi-chat-btn:hover{background:#172238;color:#fff}
 .odi-chat{position:fixed;left:16px;bottom:80px;z-index:51;width:min(380px,calc(100vw - 32px));height:min(520px,calc(100vh - 120px));background:#fffdf8;border:2px solid #172238;box-shadow:5px 5px 0 #172238;display:flex;flex-direction:column}
-.odi-chat[hidden]{display:none}
+.odi-chat[hidden],.odi-chat-btn[hidden]{display:none!important}
 .odi-chat header{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #172238;font:700 11px 'Courier New',monospace;letter-spacing:.08em;text-transform:uppercase}
 .odi-chat header button{border:0;background:none;font-size:18px;cursor:pointer;color:#172238}
 .odi-chat .msgs{flex:1;overflow:auto;padding:10px 12px;font:14px/1.45 Georgia,serif}
@@ -5019,7 +5019,9 @@ new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).obse
 <div class="nota">IA (Gemini) lendo o resumo público do Atlas. Pode errar: confira na página e na fonte citada.</div></section>
 <script>
 /* Chat com a IA (Gemini via função do Supabase). A chave não fica na página. */
-(function(){const $=id=>document.getElementById(id);const URL_IA='https://vidnoyzechknrqhczmrr.supabase.co/functions/v1/odi-chat';const hist=[];
+/* Chat desativado temporariamente a pedido do responsável (21/10/2026, 19h29). Para reativar: ODI_CHAT_ATIVO = true. */
+const ODI_CHAT_ATIVO=false;
+(function(){const $=id=>document.getElementById(id);if(!ODI_CHAT_ATIVO){$('odiChatBtn').hidden=true;$('odiChat').hidden=true;return;}const URL_IA='https://vidnoyzechknrqhczmrr.supabase.co/functions/v1/odi-chat';const hist=[];
 const add=(t,c)=>{const p=document.createElement('p');p.className='m '+c;p.textContent=t;$('odiChatMsgs').appendChild(p);$('odiChatMsgs').scrollTop=1e9;return p;};
 $('odiChatBtn').addEventListener('click',()=>{const c=$('odiChat');c.hidden=!c.hidden;if(!c.hidden)$('odiChatIn').focus();});
 $('odiChatX').addEventListener('click',()=>{$('odiChat').hidden=true;});

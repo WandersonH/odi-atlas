@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.88 — Chat com IA desativado temporariamente (2026-10-21) ✅
+
+- **Pedido do responsável (21/10, 19h29):** desativar o chat temporariamente.
+- **O que mudou:**
+  - Nova constante `ODI_CHAT_ATIVO = false` no script do chat. Com ela, o botão flutuante e a janela ficam ocultos e nenhuma chamada à função `odi-chat` (Supabase) é feita.
+  - O código do chat continua na página. Para reativar, basta trocar a constante para `true`.
+- **Testes:** suíte completa. Chromium a 1300 px: o botão não aparece e não há erro de JavaScript.
+
 ## C19.87 — WhatsApp: PT, Nikolas Ferreira e Partido Liberal na coleta diária (2026-10-21) ✅
 
 - **Pedido do responsável (21/10, 16h33):** incluir três canais, com os links e nomes enviados por ele.
