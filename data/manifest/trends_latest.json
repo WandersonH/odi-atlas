@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-21T16:05:31Z",
+  "run_started_utc": "2026-10-21T20:52:26Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -146,8 +146,10 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "serie_pontos": 181,
+      "uf_linhas": 27,
+      "relacionados_linhas": 94,
+      "status": "ok"
     },
     {
       "grupo": "segundo_turno_topicos",
@@ -174,8 +176,10 @@
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "serie_pontos": 169,
+      "uf_linhas": 27,
+      "relacionados_linhas": 100,
+      "status": "ok"
     },
     {
       "grupo": "segundo_turno_topicos",
@@ -233,8 +237,8 @@
       "geo": "BR",
       "serie_pontos": 94,
       "uf_linhas": 27,
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "relacionados_linhas": 100,
+      "status": "ok"
     },
     {
       "grupo": "primeiro_turno_5_topicos",
@@ -283,7 +287,7 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 180,
+      "serie_pontos": 181,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -436,9 +440,8 @@
       "periodo": "eleitoral",
       "janela_trends": "2026-07-20 2026-10-21",
       "geo": "BR",
-      "serie_pontos": 94,
-      "uf_linhas": 27,
-      "status": "ok"
+      "status": "erro",
+      "error": "HTTPError: HTTP Error 429: unknown"
     },
     {
       "grupo": "segundo_turno_palavras",
@@ -461,9 +464,9 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 181,
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "serie_pontos": 180,
+      "uf_linhas": 27,
+      "status": "ok"
     },
     {
       "grupo": "segundo_turno_palavras",
@@ -486,8 +489,9 @@
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "serie_pontos": 169,
+      "uf_linhas": 27,
+      "status": "ok"
     },
     {
       "grupo": "segundo_turno_palavras",
@@ -510,8 +514,9 @@
       "periodo": "today 3-m",
       "janela_trends": "today 3-m",
       "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "serie_pontos": 93,
+      "uf_linhas": 27,
+      "status": "ok"
     },
     {
       "grupo": "segundo_turno_palavras",
@@ -540,13 +545,8 @@
     }
   ],
   "blocked": [
-    "segundo_turno_topicos__now_1-d: HTTPError: HTTP Error 429: unknown",
-    "segundo_turno_topicos__now_7-d: HTTPError: HTTP Error 429: unknown",
-    "segundo_turno_topicos__eleitoral: HTTPError: HTTP Error 429: unknown",
-    "segundo_turno_palavras__now_1-d: HTTPError: HTTP Error 429: unknown",
-    "segundo_turno_palavras__now_7-d: HTTPError: HTTP Error 429: unknown",
-    "segundo_turno_palavras__today_3-m: HTTPError: HTTP Error 429: unknown"
+    "primeiro_turno_5_topicos__eleitoral: HTTPError: HTTP Error 429: unknown"
   ],
-  "run_finished_utc": "2026-10-21T16:17:27Z",
+  "run_finished_utc": "2026-10-21T20:59:12Z",
   "status": "bloqueado"
 }
