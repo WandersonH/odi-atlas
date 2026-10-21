@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.84 — Aviso de direitos autorais vai para a barra lateral (2026-10-21) ✅
+
+- **Pedido do responsável (21/10, 16h14):** trocar a faixa do rodapé (C19.83) para a barra lateral, logo abaixo das infos do estudo ("Estudo contínuo / V15 · MVP…").
+- **O que mudou:**
+  - `.odi-direitos-lateral` fica dentro do `aside`, depois de `.sidefoot`. Tem filete duplo, selo "Confidencial" em azul-marinho e texto em Georgia itálico de 11 px, na paleta clara da barra.
+  - Abaixo de 760 px a barra lateral esconde as infos do estudo (regra que já existia). Por isso o mesmo aviso aparece no fim da página, só no celular, como `.odi-direitos-movel`. Na impressão sai a versão do fim da página.
+- **Testes:**
+  - Suíte completa.
+  - Render com Chromium a 1300×900, 1300×700 e 390 px. Na tela baixa a barra lateral já rola (`overflow-y:auto`) e o aviso fica no fim dela, sem sobrepor nada.
+
 ## C19.83 — Aviso de confidencialidade e direitos autorais no rodapé do dashboard (2026-10-21) ✅
 
 - **Pedido do responsável (21/10, 16h07):** uma faixa sofisticada no rodapé, sem quebrar o layout, com o texto: "Documento confidencial e de uso restrito. Proibida a reprodução, distribuição ou divulgação, total ou parcial, sem autorização expressa do autor. Todos os direitos reservados (Lei nº 9.610/1998)."
