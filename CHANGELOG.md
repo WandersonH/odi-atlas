@@ -23,7 +23,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Por que uma sonda:** o proxy desta sessão recusa cdn.tse.jus.br e pollingdata.com.br. A estrutura dos arquivos é lida no Actions.
   - O log do Actions é público, então a sonda imprime só colunas, número de linhas e contagens de colunas com poucos valores. Nenhuma linha de dado vai para o log.
 - **Arquivos:** `scripts/sonda_tse_pesquisas.py` e `.github/workflows/sonda-tse-pesquisas.yml` (só disparo manual, leitura).
-  - A saída vai para um artefato do run, guardado por 3 dias. O Actions mostra no máximo 10 anotações por passo e o 1º run (39535824150) cortou a saída.
+  - A saída vai para o repositório privado, em `sondas/tse_pesquisas_denuncias.txt`. O Actions mostra no máximo 10 anotações por passo e o 1º run (39535824150) cortou a saída.
 - **Testes:** suíte completa antes do commit. A sonda não grava dados.
 - **Pendente:** o coletor e as duas páginas, desenhados a partir do resultado da sonda.
 
