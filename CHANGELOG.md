@@ -17,6 +17,15 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Limite conhecido:** o registro do PesqEle não traz os percentuais das pesquisas. O agregador precisa de outra fonte para os resultados (⛔ a definir).
 - **Testes:** suíte completa (`python -m unittest discover -s tests -v`). O run real está registrado no manifesto, disparado em seguida.
 
+## C19.81 — Sonda dos dados do TSE (Pardal e pesquisas 2026) e do PollingData (2026-10-20) 🔜
+
+- **Pedido do responsável (20/10, 23h55):** duas páginas novas na seção Eleitorado. Uma de denúncias eleitorais (Pardal) e uma de pesquisas eleitorais 2026, usando o agregador PollingData como referência.
+- **Por que uma sonda:** o proxy desta sessão recusa cdn.tse.jus.br e pollingdata.com.br. A estrutura dos arquivos é lida no Actions.
+  - O log do Actions é público, então a sonda imprime só colunas, número de linhas e contagens de colunas com poucos valores. Nenhuma linha de dado vai para o log.
+- **Arquivos:** `scripts/sonda_tse_pesquisas.py` e `.github/workflows/sonda-tse-pesquisas.yml` (só disparo manual, leitura).
+- **Testes:** suíte completa antes do commit. A sonda não grava dados.
+- **Pendente:** o coletor e as duas páginas, desenhados a partir do resultado da sonda.
+
 ## C19.80 — Rótulo de IA: miniatura do conteúdo na lista do TikTok (2026-10-20) 🔜
 
 - **Pedido do responsável (20/10, 23h42):** a tabela "Vídeos marcados como IA" deveria mostrar a miniatura do conteúdo.
