@@ -4,6 +4,32 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.85 — Modash: relatórios de 21/10 (Lula e Flávio, Instagram, TikTok e YouTube) (2026-10-21) ✅
+
+- **Pedido do responsável (21/10, 16h26):** "atualização", com 6 PDFs do Modash de 21/10.
+- **O que mudou:**
+  - Os 6 PDFs foram para `entrada/modash/`, fora do repositório. O total passa a ser 25 relatórios.
+  - Rodou `python scripts/extrair_modash.py entrada/modash/*.pdf --html`.
+  - Novos `data/modash/perfis/2026-10-21_*.json`. `historico.csv` tem 557 registros e `provas.json` tem 25 provas, com SHA-256. `conferencia.json` também foi atualizado.
+  - Na página foram atualizadas as constantes de perfis, histórico e provas, e os textos de contagem do LEIA-ME e das Fontes (19 → 25 relatórios).
+- **Achados (21/10 × 15/10, de `provas.json`):**
+  - Instagram @lulaoficial e YouTube de Lula e de Flávio: todos os indicadores iguais (32 de 32 e 13 de 13). O relatório não foi atualizado pela Modash.
+  - Instagram @flaviobolsonaro:
+    - curtidas médias de 99,9 mil para 172 mil;
+    - alcance estimado de 2,2 mi para 3,6 mi;
+    - impressões de 3,3 mi para 5,5 mi;
+    - seguidores iguais (13,8 mi).
+  - TikTok @lulaoficial: visualizações médias de 20,7 mil para 12,7 mil; o resto igual.
+  - TikTok @flaviobolsonaro: seguidores de 2,4 mi para 2,5 mi; o resto igual.
+- **Conferência com a coleta própria (`conferencia.json`):**
+  - Instagram Lula −9,7% (16,5 mi × 18.262.778);
+  - Instagram Flávio −8,7% (13,8 mi × 15.119.048);
+  - YouTube Lula −9,1% (1,7 mi × 1.870.000);
+  - YouTube Flávio −29,5% (1,1 mi × 1.560.000). Continua valendo a decisão C8.2: no YouTube o número é o da API oficial.
+- **Testes:**
+  - Suíte completa.
+  - Chromium nos cadernos 03, 06 e Quem acompanha, sem erro de JavaScript. A captura de 21/10 aparece no caderno 03.
+
 ## C19.84 — Aviso de direitos autorais vai para a barra lateral (2026-10-21) ✅
 
 - **Pedido do responsável (21/10, 16h14):** trocar a faixa do rodapé (C19.83) para a barra lateral, logo abaixo das infos do estudo ("Estudo contínuo / V15 · MVP…").
