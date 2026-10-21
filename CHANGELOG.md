@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.83 — Aviso de confidencialidade e direitos autorais no rodapé do dashboard (2026-10-21) ✅
+
+- **Pedido do responsável (21/10, 16h07):** uma faixa sofisticada no rodapé, sem quebrar o layout, com o texto: "Documento confidencial e de uso restrito. Proibida a reprodução, distribuição ou divulgação, total ou parcial, sem autorização expressa do autor. Todos os direitos reservados (Lei nº 9.610/1998)."
+- **O que mudou:**
+  - A faixa `.odi-direitos` fica logo abaixo do rodapé existente, dentro do `main`, e aparece em todas as páginas.
+  - Visual na identidade ODI: fundo azul-marinho #172238, filete duplo no topo, selo "Confidencial" em Courier e texto em Georgia itálico.
+  - Em telas estreitas os elementos empilham. Na impressão a faixa sai sem fundo.
+- **Testes:**
+  - Suíte completa.
+  - Render com Chromium (Playwright) a 1300 px e a 390 px, em cópia temporária, sem sobreposição com o layout.
+- **Observação:** o aviso não impede cópia técnica de uma página pública. Ele declara a restrição.
+
 ## C19.82 — Eleitorado: denúncias do Pardal e pesquisas eleitorais registradas no TSE (2026-10-21) ⚠️
 
 - **Pedido do responsável (20/10, 23h55):** duas páginas novas na seção Eleitorado.
