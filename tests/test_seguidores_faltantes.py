@@ -68,6 +68,40 @@ class TestSeguidoresFaltantes(unittest.TestCase):
                 os.chdir(cwd)
         self.assertNotIn("pl22al", txt.lower())
 
+    def test_orcamento_nunca_passa_do_teto(self):
+        o = sf.Orcamento(0.5)
+        ok = 0
+        while o.reservar():
+            ok += 1
+            o.liquidar(0.004)  # custo real pequeno libera a reserva
+        self.assertLessEqual(o.gasto, 0.5)
+        o2 = sf.Orcamento(0.25)
+        self.assertTrue(o2.reservar()); self.assertTrue(o2.reservar()); self.assertFalse(o2.reservar())  # 2 x 0,10 reservados
+        o2.liquidar(None); o2.liquidar(None)
+        self.assertAlmostEqual(o2.gasto, 0.2)
+
+    def test_conta1_exige_teto_e_para_no_teto(self):
+        chamadas = []
+
+        def fake(ator, pl):
+            chamadas.append(ator)
+            return {"id": "r", "usageTotalUsd": 0.09}, [{"noResults": True}]
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as t:
+            tse_minimo(t, [[str(i), f"https://www.tiktok.com/@p{i}", "PRESIDENTE", "A", "tiktok"] for i in range(5)])
+            os.chdir(t)
+            try:
+                self.assertEqual(sf.main(["--conta1"], executar=fake), 1)
+                self.assertEqual(chamadas, [])
+                sf.main(["--conta1", "--teto", "0.3"], executar=fake)
+                import json
+                man = json.loads(Path("data/seguidores/complemento_manifesto_latest.json").read_text(encoding="utf-8"))
+            finally:
+                os.chdir(cwd)
+        self.assertLessEqual(man["custo_total_usd"], 0.3)
+        self.assertEqual(man["conta"], "APIFY_TOKEN")
+        self.assertTrue(any("teto" in (t.get("erro") or "") for p in man["perfis"] for t in p["tentativas"]))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.79 — Perfis sem número: modo conta 1 com teto total (2026-10-20) ⚠️
+
+- **Pedido do responsável (20/10, 23h33):** "rode na principal". O teto autorizado para esta execução foi de US$ 0,50.
+- **Por quê:** os runs de 19/10 e 20/10 consultaram 40 perfis e não trouxeram nenhum número. Todas as tentativas deram HTTP 401 nas contas 3 a 15. Evidência: `data/seguidores/complemento_manifesto_latest.json`, run de 2026-10-20T15:39Z.
+- **O que mudou:**
+  - `scripts/collect_seguidores_faltantes.py` ganhou `--conta1 --teto X`. Nesse modo:
+    - usa `APIFY_TOKEN` e não consulta saldo;
+    - a classe `Orcamento` reserva US$ 0,10 antes de cada chamada e depois troca a reserva pelo `usageTotalUsd` do run;
+    - um erro conta como US$ 0,10;
+    - quando a reserva passaria do teto, a chamada não é feita e fica registrada como "teto atingido";
+    - o manifesto passa a gravar `teto_usd` e `custo_total_usd`.
+  - O workflow `seguidores-faltantes.yml` recebeu os inputs `conta1` e `teto`. O agendamento diário continua nas contas 3 a 15; a conta 1 só entra por disparo manual.
+- **Testes:**
+  - `python -m unittest discover -s tests -v`: 190 testes antes destes; os novos `test_orcamento_nunca_passa_do_teto` e `test_conta1_exige_teto_e_para_no_teto` passam.
+  - O run real, disparado depois deste commit, está registrado no manifesto acima.
+- **Pendente:** o agendamento diário segue nas contas bloqueadas. Usar a conta 1 todo dia depende de decisão e teto do responsável.
+
 ## C19.78 — Padrão de análise para todos os casos; páginas separadas; "Em alta agora" permanente; checagens do período todo (2026-10-20) 🔜
 
 - Pedidos do usuário (20/10, 13h20–13h26):

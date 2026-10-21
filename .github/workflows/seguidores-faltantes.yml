@@ -1,9 +1,17 @@
-name: Seguidores — perfis sem número (Apify, contas 3 a 7)
+name: Seguidores — perfis sem número (Apify, contas 3 a 15; conta 1 só por disparo manual com teto)
 
 # Perfis TikTok/X/Instagram das chapas 13 e 22 que ficaram sem número nas coletas principais.
 # Atores alternativos por perfil (teto mínimo de US$ 0,10 por execução). A conta 1 não é usada.
+# conta1=sim usa APIFY_TOKEN (conta 1) sem consultar saldo, com teto total em US$ (autorização do responsável a cada uso).
 on:
   workflow_dispatch:
+    inputs:
+      conta1:
+        description: "Usar a conta 1 (sim/não) — só com autorização do responsável"
+        default: "não"
+      teto:
+        description: "Teto total em US$ quando conta1=sim"
+        default: ""
   schedule:
     - cron: "17 11 * * *"
 
@@ -26,6 +34,9 @@ jobs:
       - name: Coletar
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ inputs.conta1 == 'sim' && secrets.APIFY_TOKEN || '' }}
+          CONTA1: ${{ inputs.conta1 }}
+          TETO: ${{ inputs.teto }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
           APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
@@ -40,7 +51,8 @@ jobs:
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
         run: |
-          python scripts/collect_seguidores_faltantes.py > f.txt 2>&1; rc=$?
+          if [ "$CONTA1" = "sim" ]; then args="--conta1 --teto ${TETO}"; else args=""; fi
+          python scripts/collect_seguidores_faltantes.py $args > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Seguidores faltantes::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Resumo da IA

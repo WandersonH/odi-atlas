@@ -14,8 +14,10 @@ from __future__ import annotations
 import csv
 import gzip
 import json
+import os
 import re
 import sys
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -103,7 +105,31 @@ def faltantes(root: Path) -> list[dict]:
     return [a for a in alvos_tse(root) if (a["candidate_id"], a["plataforma"], a["usuario"]) not in tem]
 
 
+class Orcamento:
+    """Teto total da execução na conta 1 (autorizado pelo responsável). Antes de cada chamada reserva o teto da chamada
+    (US$ 0,10); depois troca a reserva pelo custo real do run (usageTotalUsd). Assim a soma nunca passa do teto."""
+
+    def __init__(self, teto: float, por_chamada: float = 0.1):
+        self.teto, self.por_chamada, self.gasto, self.reservado = teto, por_chamada, 0.0, 0.0
+        self.trava = threading.Lock()
+
+    def reservar(self) -> bool:
+        with self.trava:
+            if self.gasto + self.reservado + self.por_chamada > self.teto + 1e-9:
+                return False
+            self.reservado += self.por_chamada
+            return True
+
+    def liquidar(self, custo: float | None) -> None:
+        with self.trava:
+            self.reservado -= self.por_chamada
+            self.gasto += self.por_chamada if custo is None else float(custo)  # sem custo informado, conta o teto da chamada
+
+
 def main(argv=None, executar=None) -> int:
+    argv = list(argv or [])
+    conta1 = "--conta1" in argv
+    teto = float(argv[argv.index("--teto") + 1]) if "--teto" in argv else None
     root = Path(".")
     agora = now_utc()
     seg = root / "data/seguidores"
@@ -132,21 +158,38 @@ def main(argv=None, executar=None) -> int:
                                                             "captured_at": r0.get("captured_at"), "source_url": r0.get("source_url") or r0.get("url")}
     res = []
     if consultar:
-        nome, token, _saldo = escolher_conta(SEGREDOS, 0.15) if executar is None else ("teste", "x", None)
+        orc = None
+        if conta1:
+            # conta 1 por autorização explícita do responsável (20/10/2026), sempre com teto total; sem consulta de saldo
+            if teto is None:
+                return fim("⛔ conta 1 exige --teto (US$) autorizado pelo responsável", 1)
+            nome, token = "APIFY_TOKEN", ("x" if executar else os.environ.get("APIFY_TOKEN", "").strip())
+            orc = Orcamento(teto)
+            man.update(teto_usd=teto)
+        else:
+            nome, token, _saldo = escolher_conta(SEGREDOS, 0.15) if executar is None else ("teste", "x", None)
         man.update(conta=nome)
         if not token:
-            return fim("⛔ nenhuma conta Apify com saldo (3 a 7)", 1)
+            return fim("⛔ nenhuma conta Apify disponível" + (" (APIFY_TOKEN ausente)" if conta1 else " (3 a 15)"), 1)
         executar = executar or (lambda ator, pl: run_actor(token, ator, pl, 0.1))
 
         def um(chave):
             plat, u = chave
             tentativas = []
             for ator, entrada in ATORES[plat]:
+                if orc and not orc.reservar():
+                    tentativas.append({"ator": ator.replace("~", "/"), "erro": f"teto de US$ {teto} atingido (não executado)"})
+                    break
+                run = None
                 try:
                     run, itens = executar(ator, entrada(u))
                 except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho, não na mensagem
+                    if orc:
+                        orc.liquidar(None)
                     tentativas.append({"ator": ator.replace("~", "/"), "erro": f"{type(e).__name__} {getattr(e, 'code', '')}".strip()})
                     continue
+                if orc:
+                    orc.liquidar((run or {}).get("usageTotalUsd"))
                 itens = itens or []
                 if any("demo" in x for x in itens):  # plano gratuito do ator devolve item de demonstração, não o perfil
                     tentativas.append({"ator": ator.replace("~", "/"), "run": (run or {}).get("id"), "itens": len(itens), "seguidores": None,
@@ -181,6 +224,8 @@ def main(argv=None, executar=None) -> int:
         w.writerows(linhas.values())
     sem = [f"{x['plataforma']} @{x['usuario']}" for x in man["perfis"] if x["seguidores"] is None]
     man["sem_numero"] = sem
+    if conta1 and consultar:
+        man["custo_total_usd"] = round(orc.gasto, 4) if orc else None
     status = f"ok · {len(reaproveitar)} cards preenchidos com número já coletado · {novos} de {len(consultar)} perfis consultados com número"
     return fim(status + (f" · ⛔ sem número: {', '.join(sem)}" if sem else ""), 0 if (novos or reaproveitar or not al) else 1)
 
