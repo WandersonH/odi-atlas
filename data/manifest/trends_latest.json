@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-21T01:59:08Z",
+  "run_started_utc": "2026-10-21T16:05:31Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -146,8 +146,6 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 181,
-      "uf_linhas": 27,
       "status": "erro",
       "error": "HTTPError: HTTP Error 429: unknown"
     },
@@ -176,8 +174,6 @@
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
-      "serie_pontos": 168,
-      "uf_linhas": 27,
       "status": "erro",
       "error": "HTTPError: HTTP Error 429: unknown"
     },
@@ -237,8 +233,8 @@
       "geo": "BR",
       "serie_pontos": 94,
       "uf_linhas": 27,
-      "relacionados_linhas": 100,
-      "status": "ok"
+      "status": "erro",
+      "error": "HTTPError: HTTP Error 429: unknown"
     },
     {
       "grupo": "primeiro_turno_5_topicos",
@@ -287,107 +283,7 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
-    },
-    {
-      "grupo": "primeiro_turno_5_topicos",
-      "termos": [
-        "Lula",
-        "Flávio Bolsonaro",
-        "Augusto Cury",
-        "Renan Santos",
-        "Ronaldo Caiado"
-      ],
-      "itens": [
-        {
-          "rotulo": "Lula",
-          "consulta": "/m/0pc9q",
-          "modo": "topico",
-          "topico_titulo": "Luiz Inácio Lula da Silva",
-          "topico_tipo": "Presidente do Brasil"
-        },
-        {
-          "rotulo": "Flávio Bolsonaro",
-          "consulta": "/g/122pdhqd",
-          "modo": "topico",
-          "topico_titulo": "Flávio Bolsonaro",
-          "topico_tipo": "Candidato a Presidente do Brasil"
-        },
-        {
-          "rotulo": "Augusto Cury",
-          "consulta": "/m/07s813b",
-          "modo": "topico",
-          "topico_titulo": "Augusto Cury",
-          "topico_tipo": "Médico e psiquiatra brasileiro"
-        },
-        {
-          "rotulo": "Renan Santos",
-          "consulta": "Renan Santos",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Ronaldo Caiado",
-          "consulta": "/m/04fw8x8",
-          "modo": "topico",
-          "topico_titulo": "Ronaldo Caiado",
-          "topico_tipo": "Candidato a presidente do Brasil"
-        }
-      ],
-      "periodo": "now 7-d",
-      "janela_trends": "now 7-d",
-      "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
-    },
-    {
-      "grupo": "primeiro_turno_5_topicos",
-      "termos": [
-        "Lula",
-        "Flávio Bolsonaro",
-        "Augusto Cury",
-        "Renan Santos",
-        "Ronaldo Caiado"
-      ],
-      "itens": [
-        {
-          "rotulo": "Lula",
-          "consulta": "/m/0pc9q",
-          "modo": "topico",
-          "topico_titulo": "Luiz Inácio Lula da Silva",
-          "topico_tipo": "Presidente do Brasil"
-        },
-        {
-          "rotulo": "Flávio Bolsonaro",
-          "consulta": "/g/122pdhqd",
-          "modo": "topico",
-          "topico_titulo": "Flávio Bolsonaro",
-          "topico_tipo": "Candidato a Presidente do Brasil"
-        },
-        {
-          "rotulo": "Augusto Cury",
-          "consulta": "/m/07s813b",
-          "modo": "topico",
-          "topico_titulo": "Augusto Cury",
-          "topico_tipo": "Médico e psiquiatra brasileiro"
-        },
-        {
-          "rotulo": "Renan Santos",
-          "consulta": "Renan Santos",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Ronaldo Caiado",
-          "consulta": "/m/04fw8x8",
-          "modo": "topico",
-          "topico_titulo": "Ronaldo Caiado",
-          "topico_tipo": "Candidato a presidente do Brasil"
-        }
-      ],
-      "periodo": "today 3-m",
-      "janela_trends": "today 3-m",
-      "geo": "BR",
-      "serie_pontos": 93,
+      "serie_pontos": 180,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -433,55 +329,6 @@
           "modo": "topico",
           "topico_titulo": "Ronaldo Caiado",
           "topico_tipo": "Candidato a presidente do Brasil"
-        }
-      ],
-      "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-21",
-      "geo": "BR",
-      "serie_pontos": 94,
-      "uf_linhas": 27,
-      "status": "ok"
-    },
-    {
-      "grupo": "segundo_turno_palavras",
-      "termos": [
-        "Lula",
-        "Flávio Bolsonaro"
-      ],
-      "itens": [
-        {
-          "rotulo": "Lula",
-          "consulta": "Lula",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Flávio Bolsonaro",
-          "consulta": "Flávio Bolsonaro",
-          "modo": "palavra"
-        }
-      ],
-      "periodo": "now 1-d",
-      "janela_trends": "now 1-d",
-      "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
-    },
-    {
-      "grupo": "segundo_turno_palavras",
-      "termos": [
-        "Lula",
-        "Flávio Bolsonaro"
-      ],
-      "itens": [
-        {
-          "rotulo": "Lula",
-          "consulta": "Lula",
-          "modo": "palavra"
-        },
-        {
-          "rotulo": "Flávio Bolsonaro",
-          "consulta": "Flávio Bolsonaro",
-          "modo": "palavra"
         }
       ],
       "periodo": "now 7-d",
@@ -490,6 +337,157 @@
       "serie_pontos": 169,
       "uf_linhas": 27,
       "status": "ok"
+    },
+    {
+      "grupo": "primeiro_turno_5_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro",
+        "Augusto Cury",
+        "Renan Santos",
+        "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "/m/07s813b",
+          "modo": "topico",
+          "topico_titulo": "Augusto Cury",
+          "topico_tipo": "Médico e psiquiatra brasileiro"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "/m/04fw8x8",
+          "modo": "topico",
+          "topico_titulo": "Ronaldo Caiado",
+          "topico_tipo": "Candidato a presidente do Brasil"
+        }
+      ],
+      "periodo": "today 3-m",
+      "janela_trends": "today 3-m",
+      "geo": "BR",
+      "serie_pontos": 93,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "primeiro_turno_5_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro",
+        "Augusto Cury",
+        "Renan Santos",
+        "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Candidato a Presidente do Brasil"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "/m/07s813b",
+          "modo": "topico",
+          "topico_titulo": "Augusto Cury",
+          "topico_tipo": "Médico e psiquiatra brasileiro"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "/m/04fw8x8",
+          "modo": "topico",
+          "topico_titulo": "Ronaldo Caiado",
+          "topico_tipo": "Candidato a presidente do Brasil"
+        }
+      ],
+      "periodo": "eleitoral",
+      "janela_trends": "2026-07-20 2026-10-21",
+      "geo": "BR",
+      "serie_pontos": 94,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_palavras",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        }
+      ],
+      "periodo": "now 1-d",
+      "janela_trends": "now 1-d",
+      "geo": "BR",
+      "serie_pontos": 181,
+      "status": "erro",
+      "error": "HTTPError: HTTP Error 429: unknown"
+    },
+    {
+      "grupo": "segundo_turno_palavras",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        }
+      ],
+      "periodo": "now 7-d",
+      "janela_trends": "now 7-d",
+      "geo": "BR",
+      "status": "erro",
+      "error": "HTTPError: HTTP Error 429: unknown"
     },
     {
       "grupo": "segundo_turno_palavras",
@@ -544,11 +542,11 @@
   "blocked": [
     "segundo_turno_topicos__now_1-d: HTTPError: HTTP Error 429: unknown",
     "segundo_turno_topicos__now_7-d: HTTPError: HTTP Error 429: unknown",
-    "primeiro_turno_5_topicos__now_1-d: HTTPError: HTTP Error 429: unknown",
-    "primeiro_turno_5_topicos__now_7-d: HTTPError: HTTP Error 429: unknown",
+    "segundo_turno_topicos__eleitoral: HTTPError: HTTP Error 429: unknown",
     "segundo_turno_palavras__now_1-d: HTTPError: HTTP Error 429: unknown",
+    "segundo_turno_palavras__now_7-d: HTTPError: HTTP Error 429: unknown",
     "segundo_turno_palavras__today_3-m: HTTPError: HTTP Error 429: unknown"
   ],
-  "run_finished_utc": "2026-10-21T02:11:14Z",
+  "run_finished_utc": "2026-10-21T16:17:27Z",
   "status": "bloqueado"
 }
