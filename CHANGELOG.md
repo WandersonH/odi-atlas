@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.81 — TSE: pesquisas eleitorais registradas e denúncias do Pardal, etapa de origem (2026-10-20) 🔜
+
+- **Pedido do responsável (20/10, 23h53):** os datasets "Pesquisas Eleitorais 2026" e "Denúncias Eleitorais" do TSE, com o agregador PollingData como referência.
+- **O que mudou:** `scripts/collect_tse_pesquisas.py` e o workflow `tse-pesquisas.yml` (só disparo manual) baixam 4 ZIPs do CDN do TSE:
+  - pesquisa;
+  - contratante;
+  - pagante;
+  - denúncia.
+
+  O bruto vai para o privado, em `tse/*.csv.gz`. No público fica só `data/tse/pesquisas_denuncias_manifesto.json`, com colunas, linhas e data de geração. Nenhuma linha de dado vai para o log.
+- **Limite conhecido:** o registro do PesqEle não traz os percentuais das pesquisas. O agregador precisa de outra fonte para os resultados (⛔ a definir).
+- **Testes:** suíte completa (`python -m unittest discover -s tests -v`). O run real está registrado no manifesto, disparado em seguida.
+
 ## C19.80 — Rótulo de IA: miniatura do conteúdo na lista do TikTok (2026-10-20) 🔜
 
 - **Pedido do responsável (20/10, 23h42):** a tabela "Vídeos marcados como IA" deveria mostrar a miniatura do conteúdo.
