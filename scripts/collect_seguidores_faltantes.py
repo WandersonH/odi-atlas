@@ -107,23 +107,28 @@ def faltantes(root: Path) -> list[dict]:
 
 class Orcamento:
     """Teto total da execução na conta 1 (autorizado pelo responsável). Antes de cada chamada reserva o teto da chamada
-    (US$ 0,10); depois troca a reserva pelo custo real do run (usageTotalUsd). Assim a soma nunca passa do teto."""
+    (US$ 0,10); depois troca a reserva pelo custo real do run (usageTotalUsd). Assim a soma nunca passa do teto.
+    Se o teto só estiver ocupado por reservas de chamadas em andamento, espera elas terminarem (não desiste à toa)."""
 
     def __init__(self, teto: float, por_chamada: float = 0.1):
         self.teto, self.por_chamada, self.gasto, self.reservado = teto, por_chamada, 0.0, 0.0
-        self.trava = threading.Lock()
+        self.cond = threading.Condition()
 
     def reservar(self) -> bool:
-        with self.trava:
-            if self.gasto + self.reservado + self.por_chamada > self.teto + 1e-9:
-                return False
-            self.reservado += self.por_chamada
-            return True
+        with self.cond:
+            while True:
+                if self.gasto + self.por_chamada > self.teto + 1e-9:
+                    return False
+                if self.gasto + self.reservado + self.por_chamada <= self.teto + 1e-9:
+                    self.reservado += self.por_chamada
+                    return True
+                self.cond.wait()
 
     def liquidar(self, custo: float | None) -> None:
-        with self.trava:
+        with self.cond:
             self.reservado -= self.por_chamada
             self.gasto += self.por_chamada if custo is None else float(custo)  # sem custo informado, conta o teto da chamada
+            self.cond.notify_all()
 
 
 def main(argv=None, executar=None) -> int:
@@ -135,6 +140,17 @@ def main(argv=None, executar=None) -> int:
     seg = root / "data/seguidores"
     seg.mkdir(parents=True, exist_ok=True)
     _, num = ja_coletados(root)
+    # número que esta mesma coleta já obteve hoje (complemento_latest.csv): não paga de novo pelo mesmo perfil no mesmo dia
+    comp = seg / "complemento_latest.csv"
+    if comp.exists():
+        with open(comp, encoding="utf-8") as f:
+            for r in csv.DictReader(f, delimiter=";"):
+                if (r.get("captured_at") or "")[:10] != agora[:10] or not str(r.get("followers") or "").strip():
+                    continue
+                for plat in PADRAO:
+                    u = usuario(plat, r.get("source_url") or "") if ROTULO[plat] == r.get("platform") else None
+                    if u and (plat, u) not in num:
+                        num[(plat, u)] = dict(r, _arq="complemento_latest.csv")
     al = faltantes(root)
     # Mesmo perfil já coletado sob outro candidato (ex.: perfil do vice gravado com o id do titular): reaproveita, sem nova consulta.
     reaproveitar = [a for a in al if (a["plataforma"], a["usuario"]) in num]

@@ -19,6 +19,12 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Testes:**
   - `python -m unittest discover -s tests -v`: 190 testes antes destes; os novos `test_orcamento_nunca_passa_do_teto` e `test_conta1_exige_teto_e_para_no_teto` passam.
   - O run real, disparado depois deste commit, está registrado no manifesto acima.
+- **Correção no mesmo dia:**
+  - O 1º run na conta 1 (39534057745, 2026-10-21T02:37Z) gastou US$ 0,1063 de US$ 0,50 e trouxe 8 de 40 perfis.
+  - Mesmo assim, 31 chamadas foram puladas como "teto atingido". Com 4 chamadas em paralelo, as reservas de US$ 0,10 ocupavam o teto e a 5ª desistia em vez de esperar.
+  - Agora `reservar()` espera as chamadas em andamento terminarem e só desiste quando o gasto real mais US$ 0,10 passa do teto (teste `test_reserva_espera_chamadas_em_andamento`).
+  - Perfis que já têm número coletado hoje em `complemento_latest.csv` não são consultados de novo no mesmo dia.
+  - O 2º run usa o restante do valor autorizado: teto de US$ 0,39.
 - **Pendente:** o agendamento diário segue nas contas bloqueadas. Usar a conta 1 todo dia depende de decisão e teto do responsável.
 
 ## C19.78 — Padrão de análise para todos os casos; páginas separadas; "Em alta agora" permanente; checagens do período todo (2026-10-20) 🔜
