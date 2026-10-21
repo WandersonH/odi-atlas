@@ -43,6 +43,46 @@ NULOS = {"", "#NULO", "#NULO#", "NÃO DIVULGÁVEL", "NAO DIVULGAVEL"}
 DIGITAIS = re.compile(r"internet|mensage|telemarketing|desinforma|intelig[êe]ncia artificial|conte[úu]do sint", re.I)
 csv.field_size_limit(10**9)
 
+# Abrangência da pesquisa. O TSE registra toda pesquisa que inclui presidente com UE = BR, mesmo quando a amostra é de um só estado
+# ou município (verificado em 21/10/2026: 1.404 de 1.404 com UE = BR). A abrangência real está no texto do plano amostral e da
+# área de coleta, escritos pela empresa; a classificação abaixo é automática (por expressões) e fica marcada como tal na página.
+UFN = {"ACRE": "AC", "ALAGOAS": "AL", "AMAPA": "AP", "AMAZONAS": "AM", "BAHIA": "BA", "CEARA": "CE", "DISTRITO FEDERAL": "DF", "ESPIRITO SANTO": "ES",
+       "GOIAS": "GO", "MARANHAO": "MA", "MATO GROSSO DO SUL": "MS", "MATO GROSSO": "MT", "MINAS GERAIS": "MG", "PARAIBA": "PB", "PARANA": "PR",
+       "PARA": "PA", "PERNAMBUCO": "PE", "PIAUI": "PI", "RIO DE JANEIRO": "RJ", "RIO GRANDE DO NORTE": "RN", "RIO GRANDE DO SUL": "RS",
+       "RONDONIA": "RO", "RORAIMA": "RR", "SANTA CATARINA": "SC", "SAO PAULO": "SP", "SERGIPE": "SE", "TOCANTINS": "TO"}
+_UFS = "|".join(sorted(UFN, key=len, reverse=True))
+RX_NAC = re.compile(r"TERRITORIO (NACIONAL|BRASILEIRO)|AMBITO NACIONAL|ABRANGENCIA NACIONAL|AMOSTRA NACIONAL|PESQUISA NACIONAL|NIVEL NACIONAL|"
+                    r"ELEITORADO (BRASILEIRO|NACIONAL|DE BRASIL|DO BRASIL)|ELEITORES BRASILEIROS|BRASILEIROS (A PARTIR|COM|DE 16)|TODO O (BRASIL|PAIS)|"
+                    r"TODAS AS (27 )?(UNIDADES DA FEDERACAO|UFS?|REGIOES|CINCO REGIOES|GRANDES REGIOES)|27 (UNIDADES|UFS?|ESTADOS)|"
+                    r"\b5 REGIOES|CINCO (GRANDES )?REGIOES|(UNIVERSO|ABRANGENCIA)[^.]{0,60}\bBRASIL\b|ELEITORES (DO|DE TODO O) BRASIL|COLETA E NACIONAL|ABRANGENCIA (DA COLETA )?(E )?NACIONAL")
+RX_EST = re.compile(r"(ESTADO|ELEITORADO|ELEITORES|UF|UNIDADE DA FEDERACAO|ESTADUAL|POPULACAO)\b[^.;]{0,40}?\b(DO|DA|DE)\s+(" + _UFS + r")\b|"
+                    r"ABRANGENCIA[^.]{0,40}?:\s*(" + _UFS + r")\s*(?:\.|$|A RELACAO)")
+RX_EST_SIGLA = re.compile(r"\bESTADO D[OEA]\s+(" + "|".join(sorted(set(UFN.values()))) + r")\b")
+RX_EST_SEM_UF = re.compile(r"DESTA UF|DESTE ESTADO|ABRANGENCIA ESTADUAL|PESQUISA ESTADUAL|PLANO AMOSTRAL ESTADUAL|AMOSTRA ESTADUAL")
+RX_MUN = re.compile(r"MUNICIPIO D[EO]\s+[A-Z]|CIDADE D[EOA]\s+[A-Z]|RESIDENTES NO MUNICIPIO|ELEITORADO D[OE] MUNICIPIO|"
+                    r"ABRANGENCIA[^.]{0,40}?:\s*[A-Z ]+\s*-\s*[A-Z]{2}\b|\bMUNICIPAL\b")
+
+
+def _sem_acento(s: str | None) -> str:
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFD", (s or "").upper()) if unicodedata.category(c) != "Mn")
+
+
+def abrangencia(plano: str | None, area: str | None, metodo: str | None = None) -> tuple[str, str | None]:
+    """Uma única UF nomeada como universo (estado/eleitorado/eleitores de X) → estadual, mesmo que o texto cite o Brasil em outro
+    ponto (textos-padrão citam "população brasileira" do IBGE); senão, expressão de universo nacional → nacional."""
+    t = _sem_acento(f"{plano or ''} . {area or ''} . {metodo or ''}")
+    ufs = {UFN[m.group(3) or m.group(4)] for m in RX_EST.finditer(t)} | {m.group(1) for m in RX_EST_SIGLA.finditer(t)}
+    if len(ufs) == 1:
+        return "estadual", next(iter(ufs))
+    if RX_NAC.search(t):
+        return "nacional", None
+    if RX_EST_SEM_UF.search(t):
+        return "estadual", None
+    if RX_MUN.search(t):
+        return "municipal", None
+    return "não identificada", None
+
 
 def baixar(rel: str) -> zipfile.ZipFile:
     req = urllib.request.Request(BASE + rel, headers={"User-Agent": "Mozilla/5.0 (ODI Atlas; pesquisa acadêmica)"})
@@ -137,11 +177,11 @@ def resumo_pesquisas(pesq: list[dict], contr: list[dict], pag: list[dict]) -> di
     for r in pag:
         ppor[r["NR_PROTOCOLO_REGISTRO"]].append(r)
     pres = [r for r in pesq if "presidente" in (r.get("DS_CARGO") or "").lower()]
-    nac = [r for r in pres if (r.get("SG_UE") or "").upper() == "BR"]
 
     def item(r: dict) -> dict:
         cs, ps = cpor.get(r["NR_PROTOCOLO_REGISTRO"], []), ppor.get(r["NR_PROTOCOLO_REGISTRO"], [])
-        return {"protocolo": r["NR_PROTOCOLO_REGISTRO"], "uf": r.get("SG_UE"), "empresa": limpo(r.get("NM_EMPRESA_FANTASIA")) or limpo(r.get("NM_EMPRESA")),
+        ab, uf = abrangencia(r.get("DS_PLANO_AMOSTRAL"), r.get("DS_DADO_MUNICIPIO"), r.get("DS_METODOLOGIA_PESQUISA"))
+        return {"protocolo": r["NR_PROTOCOLO_REGISTRO"], "ue_registro": r.get("SG_UE"), "abrangencia": ab, "uf_amostra": uf, "empresa": limpo(r.get("NM_EMPRESA_FANTASIA")) or limpo(r.get("NM_EMPRESA")),
                 "razao_social": limpo(r.get("NM_EMPRESA")), "registro": data_iso(r.get("DT_REGISTRO")), "inicio": data_iso(r.get("DT_INICIO_PESQUISA")),
                 "fim": data_iso(r.get("DT_FIM_PESQUISA")), "divulgacao": data_iso(r.get("DT_DIVULGACAO")),
                 "entrevistados": int(r["QT_ENTREVISTADO"]) if (r.get("QT_ENTREVISTADO") or "").isdigit() else None, "valor": valor(r.get("VR_PESQUISA")),
@@ -151,8 +191,9 @@ def resumo_pesquisas(pesq: list[dict], contr: list[dict], pag: list[dict]) -> di
                 "origem_recurso": sorted({limpo(x.get("DS_ORIGEM_RECURSO")) for x in cs + ps} - {""}),
                 "segundo_turno": bool(data_iso(r.get("DT_INICIO_PESQUISA")) and data_iso(r.get("DT_INICIO_PESQUISA")) > PRIMEIRO_TURNO)}
 
-    itens = [item(r) for r in nac]
-    itens.sort(key=lambda x: (x["divulgacao"] or "", x["empresa"] or ""), reverse=True)
+    todos = [item(r) for r in pres]
+    todos.sort(key=lambda x: (x["divulgacao"] or "", x["empresa"] or ""), reverse=True)
+    itens = [x for x in todos if x["abrangencia"] == "nacional"]
     seg = [x for x in itens if x["segundo_turno"]]
     ents = [x["entrevistados"] for x in itens if x["entrevistados"]]
     vals = [x["valor"] for x in itens if x["valor"]]
@@ -160,16 +201,19 @@ def resumo_pesquisas(pesq: list[dict], contr: list[dict], pag: list[dict]) -> di
     emp = Counter(x["empresa"] for x in itens)
     contratantes = Counter(c for x in itens for c in x["contratantes"])
     origem = Counter(o for x in itens for o in x["origem_recurso"])
+    ab = Counter(x["abrangencia"] for x in todos)
+    ab2 = Counter(x["abrangencia"] for x in todos if x["segundo_turno"])
     return {"gerado_pelo_tse": data_iso(pesq[0].get("DT_GERACAO")) if pesq else None, "registradas_total": len(pesq),
-            "com_presidente": len(pres), "presidente_nacionais": len(nac), "presidente_estaduais": len(pres) - len(nac),
-            "presidente_por_uf": [[k, n] for k, n in Counter(r.get("SG_UE") for r in pres if (r.get("SG_UE") or "").upper() != "BR").most_common()],
+            "com_presidente": len(pres), "ue_registro_presidente": Counter(r.get("SG_UE") for r in pres).most_common(),
+            "abrangencia_presidente": ab.most_common(), "abrangencia_presidente_2t": ab2.most_common(),
+            "estaduais_por_uf": Counter(x["uf_amostra"] or "UF não identificada" for x in todos if x["abrangencia"] == "estadual").most_common(),
             "por_cargo_registro": [[k, n] for k, n in Counter(limpo(r.get("DS_CARGO")) or "não informado" for r in pesq).most_common(12)],
             "nacionais": {"total": len(itens), "segundo_turno": len(seg), "empresas": len(emp), "por_mes_divulgacao": sorted(mes.items()),
                           "por_empresa": emp.most_common(25), "contratantes_top": contratantes.most_common(20), "origem_recurso": origem.most_common(),
                           "proprias": sum(x["propria"] for x in itens), "entrevistados_mediana": statistics.median(ents) if ents else None,
                           "entrevistados_max": max(ents) if ents else None, "valor_total": round(sum(vals), 2) if vals else None,
                           "valor_mediana": statistics.median(vals) if vals else None, "com_valor": len(vals)},
-            "lista_nacionais": itens}
+            "lista_presidente": todos}
 
 
 def main(argv=None) -> int:
@@ -218,7 +262,7 @@ def main(argv=None) -> int:
                     f.write(txt)
         n = p["nacionais"]
         print(f"pesquisas: {p['registradas_total']} registradas (TSE {p['gerado_pelo_tse']}) · com presidente {p['com_presidente']} · "
-              f"nacionais {n['total']} ({n['segundo_turno']} com campo após o 1º turno) · {n['empresas']} empresas")
+              f"abrangência {p['abrangencia_presidente']} · nacionais {n['total']} ({n['segundo_turno']} com campo após o 1º turno) · {n['empresas']} empresas")
     except Exception as e:  # noqa: BLE001
         erros.append(f"pesquisas: {type(e).__name__}: {str(e)[:200]}")
         rc = 1

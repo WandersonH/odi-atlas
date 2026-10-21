@@ -4,7 +4,7 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.82 — Eleitorado: denúncias do Pardal e pesquisas eleitorais registradas no TSE (2026-10-21) 🔜
+## C19.82 — Eleitorado: denúncias do Pardal e pesquisas eleitorais registradas no TSE (2026-10-21) ⚠️
 
 - **Pedido do responsável (20/10, 23h55):** duas páginas novas na seção Eleitorado.
   - Denúncias eleitorais, a partir dos dados abertos do TSE (Pardal).
@@ -19,6 +19,31 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - O bruto do TSE vai para o repositório privado, em `tse/`.
 - **Workflow:** `tse-denuncias-pesquisas.yml`, uma vez por dia às 20h41 UTC.
 - **Testes:** `tests/test_tse_denuncias_pesquisas.py` cobre agregados, histórico sem duplicar e privacidade de pessoa física e estatístico.
+- **1º run real (39536356575, sem erros), arquivos do TSE gerados em 20/10/2026:**
+  - **Denúncias:** 76.439 no total; 3.150 sobre presidente ou vice; 8.470 nos tipos digitais; 19.911 viraram petição no PJe.
+    - Os tipos digitais são "Propaganda na Internet", "Envio de mensagens", "Disparo de mensagem em massa", "Telemarketing", "Desinformação eleitoral" e "Aplicativo de mensagem instantânea".
+  - **Pesquisas:** 3.649 registradas; 1.404 incluem presidente.
+- **Achado e correção:**
+  - As 1.404 pesquisas com presidente estão todas registradas com UE = BR, mesmo quando ouvem só um estado. Exemplos: Datafolha "Eleitores do estado do Ceará"; Ipec "abrangência … Estado do Ceará".
+  - O coletor passou a classificar a abrangência por expressões no plano amostral, na área de coleta e na metodologia, com a função `abrangencia()`:
+    - uma única UF citada como universo da pesquisa → estadual, mesmo que o texto cite "população brasileira" do IBGE, o que acontece em textos-padrão da Verita, da Real Time e do 100 Cidades;
+    - universo nacional → nacional;
+    - município citado → municipal;
+    - nenhum dos casos → "não identificada".
+  - Resultado no bruto de 20/10, aplicado ao arquivo privado: 1.066 estaduais, 234 nacionais, 65 municipais e 39 não identificadas.
+    - Das nacionais, 57 têm campo depois do 1º turno, e 29 empresas aparecem nelas.
+    - Datafolha: 17 nacionais e 44 estaduais. Quaest: 18 nacionais, 88 estaduais e 5 não identificadas.
+- **Páginas:** "Denúncias eleitorais (Pardal)" e "Pesquisas eleitorais registradas", no grupo Eleitorado e território.
+  - Seguem a identidade ODI: faixa de caderno, big numbers, barras e tabela.
+  - A tabela de pesquisas tem filtro por período (após o 1º turno ou ano todo) e por abrangência. Divulgação com data futura aparece marcada como "prevista".
+  - O PollingData aparece só como link de referência.
+- **Testes:**
+  - `python -m unittest discover -s tests -v` passa, incluindo `test_abrangencia`, com nove casos tirados de textos reais.
+  - As páginas foram renderizadas com Chromium (Playwright) a partir dos agregados do bruto real, em cópia temporária fora do repositório. Sem erro de JavaScript, a 1300 px e a 390 px.
+- **Limites:**
+  - A abrangência é uma leitura automática e pode errar em textos ambíguos. A página diz isso.
+  - O arquivo de denúncias não tem data por denúncia, e a série começa em 20/10.
+  - O registro de pesquisas não traz intenção de voto (⛔ no Atlas). A referência é o PollingData.
 
 ## C19.81 — TSE: pesquisas eleitorais registradas e denúncias do Pardal, etapa de origem (2026-10-20) 🔜
 

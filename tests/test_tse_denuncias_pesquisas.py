@@ -47,17 +47,22 @@ class TestPesquisas(unittest.TestCase):
         pesq = [{"DT_GERACAO": "20/10/2026", "NR_PROTOCOLO_REGISTRO": "BR1", "SG_UE": "BR", "DS_CARGO": "Presidente", "NM_EMPRESA": "X LTDA",
                  "NM_EMPRESA_FANTASIA": "#NULO#", "DT_REGISTRO": "2026-10-10 10:00:00", "DT_INICIO_PESQUISA": "2026-10-12 00:00:00",
                  "DT_FIM_PESQUISA": "2026-10-14 00:00:00", "DT_DIVULGACAO": "2026-10-16 00:00:00", "QT_ENTREVISTADO": "2000",
-                 "VR_PESQUISA": "150000,00", "ST_PESQUISA_PROPRIA": "N", "NM_ESTATISTICO_RESP": "FULANO"},
-                {"DT_GERACAO": "20/10/2026", "NR_PROTOCOLO_REGISTRO": "SP1", "SG_UE": "SP", "DS_CARGO": "Presidente, Governador",
-                 "NM_EMPRESA": "Y", "QT_ENTREVISTADO": "800", "DT_INICIO_PESQUISA": "2026-09-01 00:00:00"},
+                 "VR_PESQUISA": "150000,00", "ST_PESQUISA_PROPRIA": "N", "NM_ESTATISTICO_RESP": "FULANO",
+                 "DS_PLANO_AMOSTRAL": "Universo: eleitorado brasileiro com 16 anos ou mais."},
+                {"DT_GERACAO": "20/10/2026", "NR_PROTOCOLO_REGISTRO": "BR2", "SG_UE": "BR", "DS_CARGO": "Presidente, Governador",
+                 "NM_EMPRESA": "Y", "QT_ENTREVISTADO": "800", "DT_INICIO_PESQUISA": "2026-09-01 00:00:00",
+                 "DS_PLANO_AMOSTRAL": "Universo: Eleitores do estado de São Paulo. Fonte: IBGE, população brasileira."},
                 {"DT_GERACAO": "20/10/2026", "NR_PROTOCOLO_REGISTRO": "BA1", "SG_UE": "BA", "DS_CARGO": "Governador"}]
         contr = [{"NR_PROTOCOLO_REGISTRO": "BR1", "NR_CPF_CNPJ_CONTRATANTE": "12345678901", "NM_CONTRATANTE": "MARIA DA SILVA",
                   "DS_ORIGEM_RECURSO": "Recursos Próprios"},
                  {"NR_PROTOCOLO_REGISTRO": "BR1", "NR_CPF_CNPJ_CONTRATANTE": "12345678000199", "NM_CONTRATANTE": "JORNAL Z LTDA", "DS_ORIGEM_RECURSO": "#NULO#"}]
         pag = [{"NR_PROTOCOLO_REGISTRO": "BR1", "NR_CPF_CNPJ_PAGANTE": "12345678000199", "NM_PAGANTE": "JORNAL Z LTDA", "DS_ORIGEM_RECURSO": "#NULO#"}]
         p = tp.resumo_pesquisas(pesq, contr, pag)
-        self.assertEqual((p["registradas_total"], p["com_presidente"], p["presidente_nacionais"], p["presidente_estaduais"]), (3, 2, 1, 1))
-        x = p["lista_nacionais"][0]
+        self.assertEqual((p["registradas_total"], p["com_presidente"]), (3, 2))
+        self.assertEqual(dict(p["abrangencia_presidente"]), {"nacional": 1, "estadual": 1})
+        self.assertEqual(p["estaduais_por_uf"], [("SP", 1)])
+        self.assertEqual(p["nacionais"]["total"], 1)
+        x = next(i for i in p["lista_presidente"] if i["protocolo"] == "BR1")
         self.assertEqual(x["empresa"], "X LTDA")
         self.assertTrue(x["segundo_turno"])
         self.assertEqual(x["valor"], 150000.0)
@@ -66,6 +71,19 @@ class TestPesquisas(unittest.TestCase):
         self.assertNotIn("MARIA", txt)
         self.assertNotIn("FULANO", txt)  # estatístico responsável não vai para o público
         self.assertEqual(p["nacionais"]["origem_recurso"], [("Recursos Próprios", 1)])
+
+
+    def test_abrangencia(self):
+        ab = tp.abrangencia
+        self.assertEqual(ab("Universo: Eleitorado brasileiro", ""), ("nacional", None))
+        self.assertEqual(ab("Eleitores do estado do Ceará", "Fonte: IBGE, população brasileira"), ("estadual", "CE"))
+        self.assertEqual(ab("", "A área de abrangência da coleta é : ESPIRITO SANTO A relação das localidades"), ("estadual", "ES"))
+        self.assertEqual(ab("cobertura geográfica no estado do RN", ""), ("estadual", "RN"))
+        self.assertEqual(ab("Eleitores do município de Cuiabá", ""), ("municipal", None))
+        self.assertEqual(ab("A área de abrangência da coleta é : NOVA FLORESTA - PB", ""), ("municipal", None))
+        self.assertEqual(ab("amostra representativa do eleitorado desta UF", ""), ("estadual", None))
+        self.assertEqual(ab("Representativo do eleitorado da área em estudo", "EM ANEXO."), ("não identificada", None))
+        self.assertEqual(ab("Estado de Minas Gerais, Estado da Bahia e Estado de São Paulo", "abrangência nacional"), ("nacional", None))
 
 
 if __name__ == "__main__":
