@@ -2,6 +2,10 @@ name: Sonda — estrutura dos dados do TSE (Pardal, pesquisas 2026) e PollingDat
 
 on:
   workflow_dispatch:
+    inputs:
+      args:
+        description: "--so-pd para sondar só o PollingData"
+        default: ""
 
 permissions:
   contents: read
@@ -17,7 +21,7 @@ jobs:
           python-version: "3.12"
       - name: Sonda
         run: |
-          python scripts/sonda_tse_pesquisas.py > s.txt 2>&1
+          python scripts/sonda_tse_pesquisas.py ${{ inputs.args }} > s.txt 2>&1
           tail -n 3 s.txt | while IFS= read -r l; do echo "::notice title=Sonda::$(echo "$l" | cut -c1-3500)"; done
       - name: Gravar no repositório privado
         env:

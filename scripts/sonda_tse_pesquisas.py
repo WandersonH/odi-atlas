@@ -10,7 +10,7 @@ import zipfile
 from collections import Counter
 
 BASE = "https://cdn.tse.jus.br/estatistica/sead/odsele/"
-ARQS = ["denuncia/denuncia_2026.zip", "pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
+ARQS = [] if "--so-pd" in sys.argv else ["denuncia/denuncia_2026.zip", "pesquisa_eleitoral/pesquisa_eleitoral_2026.zip",
         "pesquisa_eleitoral/pesquisa_contratante_2026.zip", "pesquisa_eleitoral/pesquisa_pagante_2026.zip"]
 csv.field_size_limit(10**9)
 
@@ -50,6 +50,10 @@ try:
         achados = sorted(set(re.findall(r'https?://[A-Za-z0-9./_-]*(?:api|json|data|firestore|supabase|amazonaws|storage)[A-Za-z0-9./_?=&-]*', t)))[:40]
         rel = sorted(set(re.findall(r'["\'](/(?:api|data)[A-Za-z0-9./_{}$-]*)["\']', t)))[:40]
         print(f"js {u} ({len(t)} bytes): urls {achados} rel {rel}")
+        for m in list(re.finditer(r"api/pro/v1|pdvoto|fetch\(|axios|\.get\(`|/v1/", t))[:60]:
+            trecho = t[max(0, m.start() - 160): m.end() + 220].replace("\n", " ")
+            if re.search(r"pdvoto|agreg|pesquisa|poll|estimat|\$\{", trecho, re.I):
+                print("  ctx:", trecho)
 except Exception as e:  # noqa: BLE001
     print(f"pollingdata ERRO {type(e).__name__} {e}")
 sys.exit(0)
