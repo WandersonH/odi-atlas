@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.86 — WhatsApp: dois canais novos na coleta diária (2026-10-21) ✅
+
+- **Pedido do responsável (21/10, 16h30):** incluir três links na coleta de WhatsApp.
+  - Um deles, `0029Vb8kT6E3AzNNDpBkN22J` (Tropa do Flávio), já estava na lista desde 18/10.
+- **Incluídos em `data/config/whatsapp_canais.json`:**
+  - "Tropa da Erika Hilton com Lula" (`0029VaZFDSo8qJ01Vr2NNr1e`), lado Lula;
+  - "Exército do Pavanato com Flávio" (`0029Vb9RUoR2kNFk2kq11N3A`), lado Flávio.
+  - Nomes e lado vêm do nome do canal na página pública, lida em 21/10 com WebFetch.
+- **Testes:** suíte completa. O run do `whatsapp.yml` foi disparado em seguida, e o resultado está em `data/whatsapp/manifesto_latest.json`.
+
 ## C19.85 — Modash: relatórios de 21/10 (Lula e Flávio, Instagram, TikTok e YouTube) (2026-10-21) ✅
 
 - **Pedido do responsável (21/10, 16h26):** "atualização", com 6 PDFs do Modash de 21/10.
