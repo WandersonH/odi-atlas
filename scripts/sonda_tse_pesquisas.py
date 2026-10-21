@@ -27,7 +27,7 @@ for a in ARQS:
         continue
     nomes = z.namelist()
     print(f"== {a}: {len(nomes)} arquivos: {nomes[:8]}")
-    for n in [x for x in nomes if x.lower().endswith((".csv", ".txt"))][:2]:
+    for n in [x for x in nomes if x.lower().endswith((".csv", ".txt"))][:1] + [x for x in nomes if "_BRASIL" in x.upper() or "_BR." in x.upper()][:1]:
         txt = z.read(n).decode("latin-1")
         r = list(csv.reader(io.StringIO(txt), delimiter=";"))
         cab, linhas = r[0], r[1:]
