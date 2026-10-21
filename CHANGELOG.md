@@ -4,6 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.82 — Eleitorado: denúncias do Pardal e pesquisas eleitorais registradas no TSE (2026-10-21) 🔜
+
+- **Pedido do responsável (20/10, 23h55):** duas páginas novas na seção Eleitorado.
+  - Denúncias eleitorais, a partir dos dados abertos do TSE (Pardal).
+  - Pesquisas eleitorais 2026, a partir dos dados abertos do TSE, com o agregador PollingData como referência.
+- **Coletor `scripts/collect_tse_denuncias_pesquisas.py`:** colunas conferidas pela sonda C19.81, run 39535985536.
+  - **Denúncias:** lê `denuncia_2026_BRASIL.csv`, com 76.439 linhas na geração de 20/10, segundo a sonda. Agrega por turno, tipo, cargo, UF, situação e origem, separa presidente e os tipos digitais (internet, mensagens, telemarketing, desinformação) e lista os 15 municípios com mais denúncias.
+    - O arquivo não tem a data de cada denúncia. Por isso `historico.csv` guarda uma linha por geração do TSE, e a série começa nesta coleta.
+  - **Pesquisas:** lê os três CSV BRASIL (registro, contratante, pagante) e agrega o registro das pesquisas com presidente de abrangência nacional (UE = BR): empresa, datas, entrevistados, valor, contratantes, pagantes e origem do recurso.
+    - Pessoa física (CPF) aparece sem nome. O estatístico responsável não é publicado.
+    - O registro do TSE não traz o resultado da pesquisa.
+  - **PollingData:** a sonda mostrou que os dados vêm de uma API comercial (`api.pollingdata.com.br/api/pro/v1`, planos Pro), com todos os direitos reservados. O Atlas só traz o link como referência e não reproduz as estimativas.
+  - O bruto do TSE vai para o repositório privado, em `tse/`.
+- **Workflow:** `tse-denuncias-pesquisas.yml`, uma vez por dia às 20h41 UTC.
+- **Testes:** `tests/test_tse_denuncias_pesquisas.py` cobre agregados, histórico sem duplicar e privacidade de pessoa física e estatístico.
+
 ## C19.81 — TSE: pesquisas eleitorais registradas e denúncias do Pardal, etapa de origem (2026-10-20) 🔜
 
 - **Pedido do responsável (20/10, 23h53):** os datasets "Pesquisas Eleitorais 2026" e "Denúncias Eleitorais" do TSE, com o agregador PollingData como referência.

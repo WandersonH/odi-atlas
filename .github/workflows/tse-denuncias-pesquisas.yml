@@ -1,0 +1,54 @@
+name: TSE — denúncias do Pardal e pesquisas eleitorais registradas (dados abertos, grátis)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 20 * * *"   # 1 vez por dia (17h41 em Brasília), depois da geração diária do TSE
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tse-denuncias-pesquisas
+  cancel-in-progress: false
+
+jobs:
+  tse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Coletar e agregar
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/collect_tse_denuncias_pesquisas.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
+          tail -n 5 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=TSE::$(echo "$l" | cut -c1-500)"; done
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "TSE: denúncias e pesquisas (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "TSE: denúncias e pesquisas (run ${{ github.run_id }})"
