@@ -38,6 +38,26 @@ class TestColetarCaso(unittest.TestCase):
             cc.coletar("008", "https://www.instagram.com/reel/X/", 0.5, 2000, Path(d) / "a", self._exec(ch, lambda a, pl: 0.01))
             self.assertEqual(ch[1][1]["max_comments"], int((0.5 - 0.01 - cc.RESERVA_PERFIL) / cc.PRECO_COMENTARIO))
 
+    def test_nova_tentativa_reaproveita_e_conta_no_teto(self):
+        ch = []
+        with tempfile.TemporaryDirectory() as d:
+            priv = Path(d) / "a"
+            priv.mkdir()
+            (priv / "r0.json").write_text(json.dumps({"ator": "apify/instagram-reel-scraper · X", "custo_usd": 0, "status": "SUCCEEDED",
+                                                      "items": [{"ownerUsername": "autor", "videoPlayCount": 1}]}), encoding="utf-8")
+            cc.coletar("008", "u", 1.0, 2000, priv, self._exec(ch, lambda a, pl: 0.01))
+            self.assertNotIn("apify~instagram-reel-scraper", [c[0] for c in ch])
+            self.assertEqual(ch[0][1]["max_comments"], int((1.0 - 0.01 - cc.RESERVA_PERFIL) / cc.PRECO_COMENTARIO))
+
+    def test_erro_da_api_fica_registrado(self):
+        def executar(ator, pl, cap):
+            if "datadoping" in ator:
+                raise RuntimeError("entrada inválida")
+            return {"id": "r", "status": "SUCCEEDED", "usageTotalUsd": 0.01}, [{"ownerUsername": "autor", "videoPlayCount": 1, "followersCount": 5}]
+        with tempfile.TemporaryDirectory() as d:
+            man = cc.coletar("008", "u", 3.0, 2000, Path(d) / "a", executar)
+            self.assertTrue(any("entrada inválida" in e for e in man["erros"]))
+
     def test_sem_teto_nao_roda(self):
         self.assertEqual(cc.main(["--caso", "008", "--url", "https://www.instagram.com/reel/X/"], executar=lambda *a: None), 1)
 
