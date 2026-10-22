@@ -4,6 +4,32 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.99 — Eleitorado: mapa de alienação eleitoral por município, local de votação e seção (2026-10-22) ⚠️
+
+- **Pedido do responsável (22/10, 01h26):** mapa de alienação eleitoral por cidade e seção na página de Eleitorado. Às 01h48 ele autorizou terminar nesta sessão o que a sessão paralela tinha começado (C19.97: coletor e dados do 1º turno, run 39723691829).
+- **O que mudou:** nova aba "Alienação eleitoral (mapa)" no grupo Eleitorado e território, lendo `data/tse/alienacao/<N>t/`.
+  - **Big numbers do Brasil:** alienação de 24,8% (39.439.045 de 158.745.502 aptos); abstenção de 21,1%; brancos 1,5%; nulos 2,3%; 499.248 seções.
+  - **Mapa municipal:** malha do IBGE 2025, a mesma do mapa de voto.
+    - Indicadores: alienação, abstenção, brancos ou nulos.
+    - Área: Brasil ou UF. A cor é por sétimos dos municípios da área.
+    - Zoom e arraste.
+    - Ranking dos municípios (1.000+ aptos) e barras por UF; o exterior fica fora do mapa.
+  - **Clique num município:**
+    - o mapa aproxima e os locais de votação aparecem como pontos, com cor pela mesma escala e tamanho pelos aptos;
+    - a tabela de locais vem ordenada por alienação;
+    - o clique num local ou ponto abre as seções, com aptos, abstenções, brancos, nulos e alienação.
+  - **Turno:** o 2º turno mostra ⛔ até o TSE publicar e o coletor rodar.
+- **Limites (dos dados, `resumo.json` → `diagnostico`):**
+  - 56.828 seções sem local e 2.308 sem coordenada entram nas somas e ficam fora do mapa de pontos.
+  - AC, AP, MA, PA, RO e RR não têm o arquivo `locais_<UF>.json`. Ao clicar num município dessas UFs aparece ⛔ e só as somas do município.
+- **Testes:**
+  - Suíte completa.
+  - Chromium em cópia temporária com os dados reais:
+    - Brasil com 5.571 municípios coloridos;
+    - RJ → Rio de Janeiro com 1.449 pontos e 1.449 linhas, e o clique no 1º local mostra 4 seções;
+    - PA mostra o ⛔ de locais; o 2º turno mostra o ⛔.
+  - Sem erro de JavaScript.
+
 ## C19.98 — Processos eleitorais 2026 (processual-2026): coletor (2026-10-22) 🔜
 
 - **Pedido do responsável (22/10, 01h26):** acrescentar os dados do conjunto processual-2026.

@@ -833,6 +833,23 @@ select,.input,.bn-toggle,.tr-filter select{background:#fffcf6;border:1px solid #
 #adsLib .ad-anunc{border:0;background:none;padding:0;font:inherit;color:#172238;text-align:left;cursor:pointer;border-bottom:1px dotted #8a96a3}
 #adsLib .ad-anunc:hover,#adsLib .ad-anunc:focus-visible{color:#2376d3;border-bottom-color:#2376d3}
 #adsLib .cr-filtro{background:#172238;color:#fff;border-color:#172238}
+/* Alienação eleitoral */
+#alienacao .db-big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid #172238;border-left:1px solid #d9d3c4;margin:8px 0 6px}
+#alienacao .db-big>div{border-right:1px solid #d9d3c4;border-bottom:1px solid #d9d3c4;padding:12px 14px 11px;background:#fffdf8}
+#alienacao .db-big b{display:block;font:700 30px/1.1 Georgia,'Times New Roman',serif;color:#172238;letter-spacing:-.5px;margin:4px 0 3px}
+#alienacao .db-big span{font:700 10px 'Courier New',monospace;text-transform:uppercase;letter-spacing:.06em;color:#53606b}
+#alienacao .db-big small{display:block;font-size:11px;color:#67778b;line-height:1.35}
+#alienacao .al-ctrl{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px}#alienacao .al-ctrl label{display:block;font:700 10px 'Courier New',monospace;text-transform:uppercase;letter-spacing:.06em;color:#53606b;margin-bottom:3px}
+#alienacao .al-ctrl select{border:1px solid #172238;background:#fffdf8;padding:7px 9px;font:inherit;min-width:180px}
+#alienacao .al-wrap{position:relative}#alienacao .al-map svg{width:100%;height:auto;max-height:640px;display:block;background:#fbf9f4;border:1px solid #d9d3c4;cursor:grab;touch-action:none}
+#alienacao .al-map path{stroke:#fffdf8;stroke-width:.35;cursor:pointer}#alienacao .al-map path:hover{stroke:#172238;stroke-width:1}#alienacao .al-map path.odi-sel{stroke:#172238;stroke-width:2}
+#alienacao .al-map circle{cursor:pointer}
+#alienacao .al-tip{position:absolute;pointer-events:none;background:#172238;color:#fff;font-size:12px;padding:7px 9px;max-width:230px;z-index:3}
+#alienacao .al-leg{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:8px 0;font-size:11.5px}
+#alienacao .al-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px}
+#alienacao .yt-bar{grid-template-columns:40px 1fr 54px}
+#alienacao tr[data-i]{cursor:pointer}#alienacao tr[data-i]:hover td{background:#f4efe3}
+@media (max-width:800px){#alienacao .db-big{grid-template-columns:1fr 1fr}#alienacao .al-cols{grid-template-columns:1fr}}
 /* Aviso de direitos autorais: na barra lateral, abaixo das infos do estudo (pedido de 21/10/2026, 16h14); abaixo de 760 px a
    barra lateral esconde essas infos, então o aviso aparece no fim da página */
 .odi-direitos-lateral{margin:10px 24px 0;padding:11px 0 4px;border-top:3px double #b9b5ac}
@@ -2143,6 +2160,99 @@ J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class=
 .db-uf{display:flex;height:12px;width:100%;min-width:120px}.db-uf i{display:block;height:12px}
 @media(max-width:760px){.db-perg,.db-rel2{grid-template-columns:1fr}}
 </style>
+<section class="panel" id="alienacao" aria-label="Caderno 06 Alienação eleitoral">
+  <div class="paper-ribbon"><span>CADERNO 06 / ELEITORADO E TERRITÓRIO · ALIENAÇÃO ELEITORAL</span><span id="alData">—</span></div>
+  <div class="intro odi-map-hero"><div class="eyebrow">TSE · apuração por seção · locais de votação · Presidente</div>
+    <h1>Alienação eleitoral.<br><em>Quem não escolheu ninguém: abstenção, brancos e nulos por cidade e por seção.</em></h1>
+    <p>Para cada seção eleitoral, a soma de quem não foi votar, de quem votou em branco e de quem anulou o voto para presidente, sobre o eleitorado apto. O mapa mostra os municípios; ao clicar num município, aparecem os locais de votação e as seções de cada um.</p></div>
+  <div class="card yc-block"><div class="eyebrow">Big numbers · Brasil</div><div class="db-big" id="alBig"></div><p class="yt-cloudnote" id="alDef"></p></div>
+  <div class="card yc-block">
+    <div class="al-ctrl">
+      <div><label for="alTurno">Turno</label><select id="alTurno"><option value="1">1º turno (04/10)</option><option value="2">2º turno (25/10)</option></select></div>
+      <div><label for="alUf">Área</label><select id="alUf"></select></div>
+      <div><label for="alMet">Indicador</label><select id="alMet"><option value="pct_alienacao">Alienação (abstenção + brancos + nulos)</option><option value="pct_abstencoes">Abstenção</option><option value="pct_brancos">Brancos</option><option value="pct_nulos">Nulos</option></select></div>
+    </div>
+    <h2 class="tk-h2" id="alTit">—</h2>
+    <div class="al-wrap"><div class="al-map" id="alMapa"></div><div class="al-tip" id="alTip" hidden></div></div>
+    <div class="al-leg" id="alLeg"></div>
+    <p class="yt-cloudnote" id="alHint"></p>
+    <div class="al-cols"><div id="alRank"></div><div id="alUfs"></div></div>
+  </div>
+  <div class="card yc-block" id="alCidade"><div class="eyebrow">Município · locais de votação e seções</div><h2 class="tk-h2" id="alCidTit">Clique num município do mapa</h2><div id="alCid"></div></div>
+  <div class="card yc-block"><div class="eyebrow">Método e limites</div><div class="yt-cloudnote" id="alMetodo"></div></div>
+</section>
+<script>
+/* Caderno 06 · Alienação eleitoral (data/tse/alienacao/<N>t/resumo.json e locais_<UF>.json — scripts/collect_alienacao.py) */
+(function(){const $=id=>document.getElementById(id);if(!$('alienacao'))return;
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nf=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const pc=v=>v==null||!isFinite(v)?'—':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+const UFS=['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'];
+const ROT={pct_alienacao:'Alienação',pct_abstencoes:'Abstenção',pct_brancos:'Brancos',pct_nulos:'Nulos'};
+const PAL=['#f4f1ea','#e3dccd','#c9b9a0','#ad8f6a','#8a6440','#5f3f22','#2f1e10'];
+let R=null,turno='1',uf='BR',met='pct_alienacao',sel=null,vb=null,G=null,cortes=[];const geo={},proj={},locais={},res={};let feito=false;
+$('alUf').innerHTML='<option value="BR">Brasil · todos os municípios</option>'+UFS.map(u=>`<option value="${u}">${u}</option>`).join('');
+function quebras(vals){const v=vals.filter(x=>x!=null&&isFinite(x)).sort((a,b)=>a-b);if(!v.length)return [];return [1,2,3,4,5,6].map(i=>v[Math.min(v.length-1,Math.floor(i*v.length/7))]);}
+function cor(v){if(v==null||!isFinite(v))return '#dfe3e6';const i=cortes.findIndex(c=>v<c);return PAL[i===-1?6:i];}
+function legenda(){const c=cortes;$('alLeg').innerHTML=['<span class="odi-legend-item"><span class="odi-swatch" style="background:#dfe3e6"></span>sem dado</span>'].concat(PAL.map((p,i)=>`<span class="odi-legend-item"><span class="odi-swatch" style="background:${p}"></span>${i===0?'< '+pc(c[0]):i===6?'≥ '+pc(c[5]):pc(c[i-1])+' – '+pc(c[i])}</span>`)).join('')+'<span class="yt-cloudnote" style="margin-left:6px">faixas = sétimos dos municípios da área</span>';}
+async function geometria(u){if(proj[u])return proj[u];
+ if(!geo[u]){const r=await fetch(u==='BR'?'./data/geo/2025/brasil_municipios.json':'./data/geo/2025/mun_'+u+'.json');if(!r.ok)throw new Error('HTTP '+r.status);geo[u]=await r.json();}
+ const fs=geo[u].features;let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;const anel=(g,fn)=>{const ps=g.type==='Polygon'?[g.coordinates]:g.type==='MultiPolygon'?g.coordinates:[];for(const p of ps)for(const r of p)fn(r);};
+ for(const ft of fs)anel(ft.geometry,r=>{for(const [x,y] of r){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;}});
+ const k=Math.cos((y0+y1)/2*Math.PI/180),W=1000,sc=W/Math.max((x1-x0)*k,(y1-y0)),H=(y1-y0)*sc;const P=(x,y)=>[(x-x0)*k*sc,(y1-y)*sc];
+ const paths=fs.map(ft=>{let d='',bx=[1e9,1e9,-1e9,-1e9];anel(ft.geometry,r=>{d+='M'+r.map(([x,y])=>{const [a,b]=P(x,y);if(a<bx[0])bx[0]=a;if(b<bx[1])bx[1]=b;if(a>bx[2])bx[2]=a;if(b>bx[3])bx[3]=b;return a.toFixed(1)+','+b.toFixed(1);}).join('L')+'Z';});const p=ft.properties||{};return {code:String(p.CD_MUN||''),name:p.NM_MUN||'',uf:p.SIGLA_UF||u,d,bx};});
+ proj[u]={paths,W,H,P};return proj[u];}
+async function resumo(t){if(res[t]!==undefined)return res[t];res[t]=await fetch(`./data/tse/alienacao/${t}t/resumo.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);return res[t];}
+async function locaisUF(t,u){const k=t+u;if(locais[k]!==undefined)return locais[k];locais[k]=await fetch(`./data/tse/alienacao/${t}t/locais_${u}.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);return locais[k];}
+function big(){const B=R.brasil;$('alBig').innerHTML=[['Alienação',pc(B.pct_alienacao),`${nf(B.alienacao)} de ${nf(B.aptos)} aptos`],['Abstenção',pc(B.pct_abstencoes),`${nf(B.abstencoes)} eleitores não foram votar`],['Brancos',pc(B.pct_brancos),`${nf(B.brancos)} votos para presidente`],['Nulos',pc(B.pct_nulos),`${nf(B.nulos)} votos para presidente`],['Seções apuradas',nf(R.diagnostico.secoes),`${nf(Object.keys(R.municipios).length)} municípios`],['Seções fora do mapa de pontos',nf((R.diagnostico.secoes_sem_local||0)+(R.diagnostico.secoes_sem_coordenada||0)),'sem local ou sem coordenada no TSE; entram nas somas']].map(([a,b,c])=>`<div><span>${esc(a)}</span><b>${b}</b><small>${esc(c)}</small></div>`).join('');
+ $('alDef').textContent=`${R.definicao}. ${R.nota}`;$('alData').textContent=`${turno}º turno · gerado em ${new Date(R.gerado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}`;}
+async function desenhar(){R=await resumo(turno);
+ if(!R){$('alBig').innerHTML=`<div class="odi-signal">⛔ ${turno}º turno ainda não publicado pelo TSE (ou não coletado).</div>`;$('alMapa').innerHTML='';$('alTit').textContent='—';$('alRank').innerHTML='';$('alUfs').innerHTML='';$('alLeg').innerHTML='';return;}
+ big();try{G=await geometria(uf);}catch(e){$('alMapa').innerHTML='';$('alHint').textContent='⛔ Falha ao carregar a malha municipal: '+e.message;return;}
+ const M=R.municipios,dentro=G.paths.map(p=>M[p.code]?.[met]);cortes=quebras(dentro);legenda();
+ vb=[-20,-20,G.W+40,G.H+40];
+ $('alTit').textContent=`${ROT[met]} por município · ${uf==='BR'?'Brasil':uf} · ${turno}º turno, Presidente`;
+ $('alMapa').innerHTML=`<svg viewBox="${vb.join(' ')}" preserveAspectRatio="xMidYMid meet"><g id="alG">${G.paths.map(p=>`<path d="${p.d}" fill="${cor(M[p.code]?.[met])}" data-c="${p.code}"${p.code===sel?' class="odi-sel"':''}/>`).join('')}</g><g id="alPts"></g></svg>`;
+ const tip=$('alTip'),wrap=$('alMapa').parentElement;
+ $('alMapa').querySelectorAll('path').forEach(el=>{const c=el.dataset.c,m=M[c],p=G.paths.find(x=>x.code===c);
+  el.addEventListener('mousemove',ev=>{const r=wrap.getBoundingClientRect();tip.hidden=false;tip.innerHTML=`<b>${esc(p.name)}</b> / ${esc(p.uf)}<br>${m?`${ROT[met]}: <b>${pc(m[met])}</b><br>${nf(m.aptos)} aptos · ${nf(m.secoes)} seções`:'sem dado'}`;let x=ev.clientX-r.left+12;if(x>r.width-220)x-=230;tip.style.left=x+'px';tip.style.top=(ev.clientY-r.top+12)+'px';});
+  el.addEventListener('mouseleave',()=>{tip.hidden=true;});el.addEventListener('click',()=>cidade(p));});
+ const vals=G.paths.map(p=>[p,M[p.code]]).filter(([,m])=>m&&m.aptos>=1000).sort((a,b)=>b[1][met]-a[1][met]);
+ const li=a=>a.map(([p,m])=>`<li data-c="${p.code}">${esc(p.name)}${uf==='BR'?' / '+p.uf:''}<span>${pc(m[met])}</span></li>`).join('');
+ $('alRank').innerHTML=vals.length?`<div class="odi-rank"><h3>Maior ${ROT[met].toLowerCase()} (municípios com 1.000+ aptos)</h3><ol>${li(vals.slice(0,8))}</ol><h3 style="margin-top:10px">Menor</h3><ol>${li(vals.slice(-8).reverse())}</ol></div>`:'';
+ $('alRank').querySelectorAll('li').forEach(el=>el.addEventListener('click',()=>cidade(G.paths.find(x=>x.code===el.dataset.c))));
+ const U=Object.entries(R.ufs).filter(([u])=>u!=='ZZ').sort((a,b)=>b[1][met]-a[1][met]),mx=Math.max(...U.map(([,x])=>x[met]));
+ $('alUfs').innerHTML=`<h3 class="tk-h3">${ROT[met]} por UF</h3><div class="yt-bars">${U.map(([u,x])=>`<div class="yt-bar"><span>${u}</span><i style="width:${(100*x[met]/mx).toFixed(1)}%;background:#8a6440"></i><span>${pc(x[met])}</span></div>`).join('')}</div>${R.ufs.ZZ?`<p class="yt-cloudnote">Exterior (fora do mapa): ${pc(R.ufs.ZZ[met])}.</p>`:''}`;
+ $('alHint').textContent=`Malha municipal do IBGE 2025 · ${nf(G.paths.length)} municípios · passe o cursor para ver, clique para os locais de votação · roda do mouse para aproximar, arraste para mover.`;
+ zoomPan();if(sel){const p=G.paths.find(x=>x.code===sel);if(p)cidade(p,true);}}
+function zoomPan(){const sv=$('alMapa').querySelector('svg');if(!sv)return;let drag=null;const ap=()=>sv.setAttribute('viewBox',vb.join(' '));
+ const pt=ev=>{const r=sv.getBoundingClientRect(),sc=Math.max(vb[2]/r.width,vb[3]/r.height);return [vb[0]+(ev.clientX-r.left-(r.width-vb[2]/sc)/2)*sc,vb[1]+(ev.clientY-r.top-(r.height-vb[3]/sc)/2)*sc,sc];};
+ sv.addEventListener('wheel',ev=>{ev.preventDefault();const [x,y]=pt(ev),k=ev.deltaY>0?1.2:1/1.2,nw=Math.max(8,Math.min((G.W+40)*1.5,vb[2]*k)),f=nw/vb[2];vb=[x-(x-vb[0])*f,y-(y-vb[1])*f,vb[2]*f,vb[3]*f];ap();},{passive:false});
+ sv.addEventListener('pointerdown',ev=>{drag={x:ev.clientX,y:ev.clientY,v:[...vb],sc:pt(ev)[2],m:false};});
+ sv.addEventListener('pointermove',ev=>{if(!drag)return;const dx=ev.clientX-drag.x,dy=ev.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>4)drag.m=true;if(drag.m){vb[0]=drag.v[0]-dx*drag.sc;vb[1]=drag.v[1]-dy*drag.sc;ap();}});
+ sv.addEventListener('pointerup',()=>setTimeout(()=>{drag=null;},0));sv.addEventListener('pointerleave',()=>{drag=null;});
+ sv.addEventListener('click',ev=>{if(drag&&drag.m)ev.stopPropagation();},true);}
+async function cidade(p,manterZoom){if(!p)return;sel=p.code;const m=R.municipios[p.code];
+ $('alMapa').querySelectorAll('path').forEach(x=>x.classList.toggle('odi-sel',x.dataset.c===p.code));
+ $('alCidTit').textContent=`${p.name} / ${p.uf}`;
+ if(!manterZoom){const b=p.bx,w=Math.max(b[2]-b[0],b[3]-b[1],6)*1.3;vb=[(b[0]+b[2])/2-w/2,(b[1]+b[3])/2-w/2,w,w];$('alMapa').querySelector('svg').setAttribute('viewBox',vb.join(' '));}
+ let h=m?`<div class="db-big">${[['Alienação',pc(m.pct_alienacao),`${nf(m.alienacao)} de ${nf(m.aptos)} aptos`],['Abstenção',pc(m.pct_abstencoes),nf(m.abstencoes)],['Brancos',pc(m.pct_brancos),nf(m.brancos)],['Nulos',pc(m.pct_nulos),nf(m.nulos)],['Seções',nf(m.secoes),'apuradas']].map(([a,b,c])=>`<div><span>${esc(a)}</span><b>${b}</b><small>${esc(c)}</small></div>`).join('')}</div>`:'<div class="odi-signal">⛔ sem dado para este município.</div>';
+ $('alCid').innerHTML=h+'<p class="yt-cloudnote">Carregando locais de votação…</p>';
+ const L=await locaisUF(turno,p.uf),pts=$('alPts');pts.innerHTML='';
+ if(!L){$('alCid').innerHTML=h+`<div class="odi-signal">⛔ Locais de votação de ${esc(p.uf)} sem coordenadas no arquivo do TSE (ou não coletados): o mapa por seção não está disponível para esta UF; as somas do município estão acima.</div>`;return;}
+ const ls=L.locais.filter(l=>l.mun===p.code);const cs=L.campos_secao;
+ const r=Math.max(vb[2]/180,0.15);const comCoord=ls.filter(l=>l.lat!=null&&l.lon!=null);
+ pts.innerHTML=comCoord.map((l,i)=>{const [x,y]=G.P(l.lon,l.lat);const v=met==='pct_alienacao'?l.pct_alienacao:100*(l[met.replace('pct_','')]||0)/l.aptos;return `<circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${(r*(0.6+Math.sqrt(l.aptos/2000))).toFixed(2)}" fill="${cor(v)}" stroke="#172238" stroke-width="${(r/6).toFixed(2)}" data-i="${ls.indexOf(l)}"><title>${esc(l.nome)} · ${esc(l.bairro)} · ${pc(v)} · ${nf(l.aptos)} aptos · ${l.secoes.length} seções</title></circle>`;}).join('');
+ const ord=ls.slice().sort((a,b)=>b.pct_alienacao-a.pct_alienacao);
+ const tab=l=>`<tr data-i="${ls.indexOf(l)}"><td><b>${esc(l.nome)}</b><br><small class="muted">${esc(l.bairro)} · zona ${esc(l.zona)}</small></td><td class="n">${nf(l.aptos)}</td><td class="n">${l.secoes.length}</td><td class="n">${pc(100*l.abstencoes/l.aptos)}</td><td class="n">${pc(100*(l.brancos+l.nulos)/l.aptos)}</td><td class="n"><b>${pc(l.pct_alienacao)}</b></td></tr>`;
+ $('alCid').innerHTML=h+`<p class="yt-cloudnote">${nf(ls.length)} locais de votação${comCoord.length<ls.length?` (${nf(ls.length-comCoord.length)} sem coordenada, fora do mapa)`:''}. Cada ponto é um local; a cor segue a mesma escala do mapa e o tamanho, o número de aptos. Clique numa linha para ver as seções.</p><div class="db-scroll" style="max-height:460px"><table class="db-tab"><thead><tr><th>Local de votação</th><th>Aptos</th><th>Seções</th><th>Abstenção</th><th>Brancos + nulos</th><th>Alienação</th></tr></thead><tbody>${ord.map(tab).join('')}</tbody></table></div><div id="alSec"></div>`;
+ const secoes=i=>{const l=ls[i];const I=k=>cs.indexOf(k);$('alSec').innerHTML=`<h3 class="tk-h3" style="margin-top:14px">${esc(l.nome)} · seções</h3><div class="db-scroll"><table class="db-tab"><thead><tr><th>Seção</th><th>Aptos</th><th>Abstenções</th><th>Brancos</th><th>Nulos</th><th>Alienação</th></tr></thead><tbody>${l.secoes.slice().sort((a,b)=>(b[I('abstencoes')]+b[I('brancos')]+b[I('nulos')])/b[I('aptos')]-(a[I('abstencoes')]+a[I('brancos')]+a[I('nulos')])/a[I('aptos')]).map(s=>`<tr><td>${esc(s[I('secao')])}</td><td class="n">${nf(s[I('aptos')])}</td><td class="n">${nf(s[I('abstencoes')])}</td><td class="n">${nf(s[I('brancos')])}</td><td class="n">${nf(s[I('nulos')])}</td><td class="n"><b>${pc(100*(s[I('abstencoes')]+s[I('brancos')]+s[I('nulos')])/s[I('aptos')])}</b></td></tr>`).join('')}</tbody></table></div>`;$('alSec').scrollIntoView({behavior:'smooth',block:'nearest'});};
+ $('alCid').querySelectorAll('tr[data-i]').forEach(tr=>tr.addEventListener('click',()=>secoes(+tr.dataset.i)));
+ pts.querySelectorAll('circle').forEach(c=>c.addEventListener('click',ev=>{ev.stopPropagation();secoes(+c.dataset.i);}));}
+$('alMetodo').innerHTML=`Fontes: <a href="https://dadosabertos.tse.jus.br/dataset/resultados-2026" target="_blank" rel="noopener noreferrer">TSE · detalhe da apuração por seção eleitoral</a> (aptos, comparecimento, abstenções, brancos e nulos por seção, cargo Presidente) e <a href="https://dadosabertos.tse.jus.br/dataset/eleitorado-2026" target="_blank" rel="noopener noreferrer">TSE · eleitorado por local de votação</a> (local, bairro e coordenadas de cada seção). Município pelo código IBGE (mesma correspondência do mapa de voto). Alienação = (abstenções + brancos + nulos) ÷ aptos. As faixas de cor são os sétimos dos municípios da área escolhida (mudam quando se troca a área ou o indicador). Índice descritivo: a abstenção inclui quem mudou de cidade sem transferir o título, eleitor falecido sem baixa no cadastro e quem justificou; não mede rejeição. Brancos e nulos são do voto para presidente. Seções sem local ou sem coordenada entram nas somas e ficam fora do mapa de pontos.`;
+for(const [id,fn] of [['alTurno',v=>{turno=v;sel=null;}],['alUf',v=>{uf=v;sel=null;}],['alMet',v=>{met=v;}]])$(id).addEventListener('change',e=>{fn(e.target.value);desenhar();});
+const sec=$('alienacao');const ini=()=>{if(!feito&&sec.classList.contains('active')){feito=true;desenhar();}};new MutationObserver(ini).observe(sec,{attributes:true,attributeFilter:['class']});ini();
+})();
+</script>
 <section class="panel" id="denunciasTse" aria-label="Caderno 06 Denúncias eleitorais (Pardal)">
   <div class="paper-ribbon"><span>CADERNO 06 / ELEITORADO E TERRITÓRIO · DENÚNCIAS ELEITORAIS</span><span id="dnData">—</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">TSE · Pardal · dados abertos · eleição 2026</div>
@@ -2623,9 +2733,9 @@ window.ODI_FASE=window.ODI_FASE||{};
 function sufixoFase(sec){const p=(window.ODI_FASE||{})[sec]||'todo';return (p==='todo'||p==='acervo')?'':'_'+p;}
 async function fetchFase(plat,nome,sec){const suf=sufixoFase(sec);const r=await fetch(`./data/${plat}/${nome}${suf}.json`,{cache:'no-store'});if(!r.ok&&suf&&r.status===404)return {ok:false,status:'— poucos conteúdos nesta fase para formar a rede',json:async()=>null};return r;}
 function odiFase(sec,periodo){window.ODI_FASE[sec]=periodo;const suf=sufixoFase(sec);const el=document.getElementById(sec);if(el)el.querySelectorAll('svg[id$="Net"],svg[id$="Men"]').forEach(v=>{v.innerHTML='';});if(el)el.querySelectorAll('a[href*="/rede"]:not([href*="influenciadores"])').forEach(x=>{x.href=x.getAttribute('href').replace(/(rede(?:_mencoes)?)(?:_(?:pre|turno1|turno2))?(?=(\.gexf|\.json|_nos\.csv|_arestas\.csv|_videos(?:_termos)?\.csv))/,'$1'+suf);});document.dispatchEvent(new CustomEvent('odi-fase',{detail:sec}));}
-const GRUPOS={panorama:['overview','primeiroTurno'],campanhas:['ytContent','tkContent','kwContent','fbContent','igContent','twContent','adsLib'],audiencia:['followers','profiles','history','retroativo','blade'],comentarios:['ytComments','kwComments','fbComments','pontes'],buscas:['gTrends','debate'],casos:['casos','rotuloIA','caso001','caso002','caso003','caso005','caso006','caso007'],territorio:['electorate','denunciasTse','pesquisasTse','internet','reuters','scale'],metodo:['leiaMe','declarations']};
+const GRUPOS={panorama:['overview','primeiroTurno'],campanhas:['ytContent','tkContent','kwContent','fbContent','igContent','twContent','adsLib'],audiencia:['followers','profiles','history','retroativo','blade'],comentarios:['ytComments','kwComments','fbComments','pontes'],buscas:['gTrends','debate'],casos:['casos','rotuloIA','caso001','caso002','caso003','caso005','caso006','caso007'],territorio:['electorate','alienacao','denunciasTse','pesquisasTse','internet','reuters','scale'],metodo:['leiaMe','declarations']};
 const GRUPO_DE=Object.fromEntries(Object.entries(GRUPOS).flatMap(([g,ids])=>ids.map(i=>[i,g])));
-const SUBROT={denunciasTse:'Denúncias eleitorais (Pardal)',pesquisasTse:'Pesquisas eleitorais registradas',casos:'Casos e dossiês',rotuloIA:'Rótulo de IA nas campanhas',caso001:'#brasilinteiro',caso002:'Consulta depreciativa no Google',caso003:'Ninguém morre nos devendo',caso005:'Caso Ana Clara',caso006:'PCC e CV terroristas (X)',caso007:'"Lula amassa a bandeira"',gTrends:'Google Trends',debate:'Debate do 2º turno (em alta agora)',overview:'Lula × Flávio Bolsonaro',primeiroTurno:'Todas as chapas do 1º turno',retroativo:'Seguidores retroativos (todas as chapas)',ytComments:'YouTube',kwComments:'Kwai',fbComments:'Facebook',pontes:'Pontes entre públicos',ytContent:'YouTube',tkContent:'TikTok',kwContent:'Kwai',fbContent:'Facebook',igContent:'Instagram',twContent:'X',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
+const SUBROT={alienacao:'Alienação eleitoral (mapa)',denunciasTse:'Denúncias eleitorais (Pardal)',pesquisasTse:'Pesquisas eleitorais registradas',casos:'Casos e dossiês',rotuloIA:'Rótulo de IA nas campanhas',caso001:'#brasilinteiro',caso002:'Consulta depreciativa no Google',caso003:'Ninguém morre nos devendo',caso005:'Caso Ana Clara',caso006:'PCC e CV terroristas (X)',caso007:'"Lula amassa a bandeira"',gTrends:'Google Trends',debate:'Debate do 2º turno (em alta agora)',overview:'Lula × Flávio Bolsonaro',primeiroTurno:'Todas as chapas do 1º turno',retroativo:'Seguidores retroativos (todas as chapas)',ytComments:'YouTube',kwComments:'Kwai',fbComments:'Facebook',pontes:'Pontes entre públicos',ytContent:'YouTube',tkContent:'TikTok',kwContent:'Kwai',fbContent:'Facebook',igContent:'Instagram',twContent:'X',adsLib:'Anúncios pagos (Meta e Google)',followers:'Seguidores agora',profiles:'Ficha do perfil',history:'Evolução no tempo',blade:'Série histórica do YouTube (Social Blade)',electorate:'Voto e eleitorado',internet:'Acesso à internet (PNAD)',reuters:'Consumo de notícias (Reuters)',scale:'Contas × eleitorado',leiaMe:'LEIA-ME, fontes e método',declarations:'Perfis declarados ao TSE'};
 function setTab(t){if(!document.getElementById(t))return;tab=t;document.querySelectorAll('.navbutton').forEach(b=>b.classList.toggle('active',b.dataset.group===(GRUPO_DE[t]||t)));document.querySelectorAll('.subtabs button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.tab===t)));document.querySelectorAll('.panel').forEach(x=>x.classList.toggle('active',x.id===t));window.scrollTo({top:0,behavior:'instant'});}document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.goto)));
 function save(filename,str,type){const blob=new Blob([str],{type:type||'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
 function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}function toCsv(head,rows){return '\ufeff'+[head.map(csvCell).join(';'),...rows.map(row=>row.map(csvCell).join(';'))].join('\n')}
