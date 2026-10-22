@@ -270,6 +270,8 @@ def main(argv=None) -> int:
         pasta = root / "data/casos" / caso["id"]
         arq = Path(interno) / "casos" / caso["id"] / "itens.csv.gz" if interno else None
         estado = "aguardando confirmação de datas e termos" if not caso.get("coletar") else "sem coleta ainda"
+        if caso.get("aba"):
+            estado = "página própria do caso"
         if caso.get("unido_a"):
             estado = f"unido ao caso {caso['unido_a']}"  # 22/10/2026: o responsável juntou o 004 ao 003
         n = None
@@ -285,7 +287,7 @@ def main(argv=None) -> int:
             n = json.loads((pasta / "caso.json").read_text(encoding="utf-8")).get("publicacoes")
         indice.append({"id": caso["id"], "titulo": caso["titulo"], "tipo": caso.get("rotulo_tipo"), "descricao": caso.get("descricao"),
                        "desde": caso.get("desde"), "janela_indicada": caso.get("janela_indicada"), "redes_previstas": caso.get("redes_previstas"),
-                       "estado": estado, "publicacoes": n, "arquivo": f"data/casos/{caso['id']}/caso.json" if estado == "coletado" else None})
+                       "estado": estado, "publicacoes": n, "aba": caso.get("aba"), "busca_google": bool(caso.get("busca_google")), "arquivo": f"data/casos/{caso['id']}/caso.json" if estado == "coletado" else None})
     (root / "data/casos").mkdir(parents=True, exist_ok=True)
     (root / "data/casos/indice.json").write_text(json.dumps({"gerado_em_utc": now_utc(), "casos": indice}, ensure_ascii=False, indent=1), encoding="utf-8")
     return 0

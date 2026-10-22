@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.96 — Casos e análises: casos de busca com o gráfico do Google como principal; 006 e 007 na grade (2026-10-22) ✅
+
+- **Pedido do responsável (22/10, 01h36):** na tela de resumo dos casos, o 002 ("onde nasceu o ladrão") e o 005 (Ana Clara) medem buscas no Google. O gráfico principal deles deveria ser o das buscas, e não "circulação hora a hora" (o print mostrava picos isolados desde 2021).
+- **O que mudou:**
+  - No dossiê dos casos 002 e 005, o bloco 02 passa a ser "Quanto se procurou no Google": a linha do Google Trends de `data/casos/<id>/busca.json`, com as janelas 5 anos, 12 meses e 7 dias. O 002 abre em 5 anos (episódios de 2022 e 2026); o 005 abre em 12 meses.
+  - A circulação hora a hora continua acessível, recolhida como gráfico secundário.
+  - Há um link para a página completa do caso.
+  - Casos 006 e 007 entraram na grade (`casos.json` com `aba`). O clique abre a página própria do caso, e o índice mostra "página própria do caso".
+- **Testes:** suíte completa. Chromium: dossiê 005 com a linha do Trends, grade com 7 cartões, clique no 006 abre a aba `caso006`. Sem erro de JavaScript.
+
 ## C19.95 — Sonda: boletim de urna, locais de votação e processual 2026 (2026-10-22) 🔜
 
 - **Pedido do responsável (22/10, 01h26):**
