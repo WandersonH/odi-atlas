@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.102 — Rótulo de IA: reportagem do New York Times (21/10) como referência (2026-10-22) ✅
+
+- **Pedido do responsável (22/10, 01h59 e 02h02):** link e PDF da reportagem "A.I. Election Videos Are Flooding Brazil. Could They Sway the Vote?" (Ana Ionova, NYT, 21/10/2026).
+  - O site do NYT recusa o acesso automático. O texto foi lido do PDF enviado, que é a cópia do archive.today de 21/10, 09:17 UTC.
+  - O PDF não entra no repositório.
+- **O que mudou:** a página "Rótulo de IA nas campanhas" ganhou o bloco 05 · Na imprensa:
+  - resumo em português, parafraseado, sem reproduzir o texto;
+  - os números citados pela reportagem: Lupa com ~10% do conteúdo de IA de candidatos sem rótulo; 56% × 40% de confiança em IA; vídeo com mais de 800 mil visualizações;
+  - tabela "o que a reportagem cita × o que o Atlas mede", deixando claro que são recortes diferentes;
+  - links para o NYT e para a cópia arquivada.
+- **Testes:** suíte completa e render no Chromium sem erro de JavaScript.
+- **Pendente:** os perfis citados como exemplo (TikTok, Instagram, Kwai, X) não estão na coleta. A leitura de rótulo do TikTok pode incluí-los sem custo, se o responsável pedir.
+
 ## C19.101 — Rótulo de IA: processos da Justiça Eleitoral sobre IA e deepfake (2026-10-22) ✅
 
 - **Pedido do responsável (22/10, 01h56):** "puxar os de IA pra nossa página de caso de IA". O Atlas leu o pedido como os processos do tema IA ou conteúdo sintético.
