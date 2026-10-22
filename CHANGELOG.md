@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.112 — Facebook: leitura retroativa feita (páginas principais desde 20/07) (2026-10-22) ✅
+
+**Execução** (workflow facebook-posts, modo `retroativo`, run 39862565729, conta 1, teto US$ 7,50): `lula` 734 posts, o mais antigo de 20/07/2026 14h25 UTC, US$ 3,671; `flaviobolsonaro` 302 posts, o mais antigo de 20/07/2026 00h02 UTC, US$ 1,511. Total US$ 5,182 (fonte: `data/facebook/manifesto_latest.json`). Os dois pararam pelo filtro de data, antes do limite pedido: o período 20/07–22/10 das páginas principais está completo. 631 posts novos; acervo de 1.339 posts.
+**Acervo por candidato** (`data/facebook/conteudo.json`): Lula 1.003 posts (página `lula`: 736 desde 20/07), Flávio 336 (página `flaviobolsonaro`: 305 desde 20/07).
+**Panorama.** As linhas do Facebook passam a mostrar o mesmo início para os dois lados. As páginas secundárias continuam lidas só desde outubro; a fonte lista cada uma com a data de início, e os totais ficam sem marcação de maior.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local do Panorama, sem erro de JavaScript.
+
 ## C19.111 — Caso 008: coleta do reel feita; termos de busca ajustados ao fato (2026-10-22) ⚠️
 
 **Coleta (conta 1, teto US$ 3,00).** Reel `DewwdGCR_Qn` de @guilhermederrite (2.287.681 seguidores, verificado, então pode aparecer com nome e com o reel incorporado), publicado em 21/10/2026 12h44 (Brasília): 7.063.507 reproduções, 321.475 curtidas, 20.154 comentários informados, 92.928 compartilhamentos. Execuções: reel `quPezdF2ogfR47Xoa` (custo ≈ 0), comentários `datadoping` (US$ 2,80, 2.000 itens), perfil `ky7VWVzrN1d1RyJID` (custo ≈ 0). Total ≈ US$ 2,81. A 1ª tentativa de comentários foi recusada pela API antes de rodar. Na 2ª, a conexão caiu durante a espera, mas a execução seguiu no Apify; foi lida pelo importador (só leitura), sem nova execução paga. Após unificação: 1.950 comentários únicos, de 1.469 autores.

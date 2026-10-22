@@ -5157,7 +5157,8 @@ const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.s
  const soma=(a,c)=>a.length?a.reduce((t,v)=>t+(Number(v[c])||0),0):null,comV=a=>a.filter(v=>Number(v.visualizacoes)>0);
  const ini=a=>a.length?a.reduce((m,v)=>v.publicado_em<m?v.publicado_em:m,a[0].publicado_em):null;
  const redeMeta=(C,nome)=>{if(!C)return null;const a=PV(C,L),b=PV(C,F),iA=ini(a),iB=ini(b),igual=iA&&iB&&iA.slice(0,10)===iB.slice(0,10)||(iA&&iB&&iA.slice(0,10)<='2026-07-27'&&iB.slice(0,10)<='2026-07-27');
-  return {a,b,igual,fonte:`acervo próprio (Apify) · ${dbr(C.coletado_em_utc)} · posts a partir de ${dbr(iA)} (Lula) e ${dbr(iB)} (Flávio)${igual?'':' — períodos diferentes, não comparar totais'}`};};
+  const tarde=[...new Set([...a,...b].map(v=>v.perfil))].map(pf=>[pf,[...a,...b].filter(v=>v.perfil===pf).reduce((m,v)=>v.publicado_em<m?v.publicado_em:m,'9')]).filter(([,d])=>d.slice(0,10)>'2026-07-27');
+  return {a,b,igual:igual&&!tarde.length,fonte:`acervo próprio (Apify) · ${dbr(C.coletado_em_utc)} · posts a partir de ${dbr(iA)} (Lula) e ${dbr(iB)} (Flávio)${igual?'':' — períodos diferentes, não comparar totais'}${igual&&tarde.length?' — totais sem marcação de maior':''}${tarde.length?` · páginas secundárias lidas só a partir de: ${tarde.map(([pf,d])=>pf+' '+dbr(d).slice(0,5)).join(', ')}`:''}`};};
  const IG=redeMeta(igc,'Instagram'),FB=redeMeta(fbc,'Facebook');
  const KV=cid=>((kwc&&kwc.candidatos[cid]&&kwc.candidatos[cid].videos)||[]).filter(v=>(v.publicado_em||'')>='2026-07-20');
  const KM=a=>{const x=a.map(v=>Number(v.taxa_interacao)).filter(Number.isFinite).sort((p,q)=>p-q);return x.length?100*(x.length%2?x[(x.length-1)/2]:(x[x.length/2-1]+x[x.length/2])/2):null;};
