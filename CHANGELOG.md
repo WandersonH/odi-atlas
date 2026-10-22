@@ -4,6 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.92 — Anúncios: clicar no anunciante filtra os anúncios dele (2026-10-22) ✅
+
+- **Pedido do responsável (22/10, 00h46):** "quando clicar no anunciante mostrar os anúncios, tipo um filtro".
+- **Antes:** a grade "Os anúncios que mais circularam" tinha só os 24 de maior alcance de cada busca. Na busca de Flávio eles vinham de 1 página; na de Lula, de 5. Quase nenhum anunciante da tabela "quem anuncia" tinha anúncio para mostrar.
+- **O que mudou:**
+  - `build_criativos_meta.py` ganhou `por_anunciante`: até 8 anúncios, os de maior alcance, de cada um dos 15 anunciantes da tabela, lidos de todos os brutos privados. Com os brutos de 17 a 21/10 isso dá 15 de 15 páginas com anúncios nas duas buscas: 93 anúncios em Flávio e 97 em Lula.
+  - O script deixou de apagar miniaturas fora de uso (regra 8 do CLAUDE.md).
+  - Na página, o nome da página na tabela "quem anuncia" virou botão. O clique filtra a grade, rola até ela e mostra o chip "Anunciante: … ✕" para limpar.
+- **Testes:**
+  - Suíte completa.
+  - Chromium com o `criativos.json` gerado do bruto real em cópia temporária: o clique em "André do Prado" mostra 8 cartões, todos dessa página, e o ✕ volta aos 24. Sem erro de JavaScript.
+  - O run `meta-anuncios-apify.yml` com `apenas_criativos=true` (sem coleta e sem custo) foi disparado em seguida para gerar o arquivo com as miniaturas.
+- **Limite:** as prévias da Meta expiram em dias. Anúncio antigo de um anunciante pode aparecer "sem prévia", com texto e link para a Biblioteca.
+
 ## C19.91 — Conta 1: lacunas e rotinas diárias de Instagram e comentários do Facebook (2026-10-22) ⚠️
 
 - **Autorização do responsável (22/10, 00h13, "pode rodar"):** proposta de 00h12, tudo na conta 1 (`APIFY_TOKEN`):

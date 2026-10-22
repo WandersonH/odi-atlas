@@ -6,6 +6,9 @@ Para cada busca (candidato), os N anúncios de maior alcance (piso de impressõe
 (imagem, primeiro quadro do vídeo ou primeiro cartão), reduz para 320 px de largura (JPEG) e grava em
 data/meta/miniaturas/<id>.jpg — os links da Meta (fbcdn) expiram em dias, por isso a cópia reduzida.
 Saída: data/meta/criativos.json (texto até 400 caracteres, título, página, quem pagou, datas, faixas, link da Biblioteca).
+Também `por_anunciante`: para cada busca, até POR_ANUNCIANTE anúncios de cada uma das TOP_ANUNCIANTES páginas da tabela "quem anuncia"
+(data/meta/anuncios.json → top_paginas), lidos de todos os brutos (o mais recente de cada anúncio vale) — é o que a página mostra
+quando se clica num anunciante (pedido de 22/10/2026). Anúncio antigo cuja prévia já expirou fica sem miniatura.
 Anúncios políticos são públicos na Biblioteca de Anúncios; a cópia reduzida serve à documentação da pesquisa.
 """
 from __future__ import annotations
@@ -24,6 +27,8 @@ from collect_meta_anuncios_apify import faixa_de, iso  # noqa: E402
 from net import now_utc  # noqa: E402
 
 POR_CONSULTA = 24
+TOP_ANUNCIANTES = 15
+POR_ANUNCIANTE = 8
 LARGURA = 320
 
 
@@ -68,7 +73,31 @@ def miniatura(url: str, destino: Path) -> bool:
     return True
 
 
-def main(argv=None) -> int:
+def ordem(x: dict) -> tuple:
+    return (-piso_impressoes(x), -int((faixa_de(x.get("spend")) or {}).get("lower_bound") or 0))  # empate (">1M") → maior gasto
+
+
+def criativo(x: dict, pasta: Path, usados: set, baixar=None) -> dict:
+    baixar = baixar or miniatura
+    aid = str(x["ad_archive_id"])
+    snap = x.get("snapshot") or {}
+    u = previa(snap)
+    arq = pasta / f"{aid}.jpg"
+    ok = arq.exists() or (bool(u) and baixar(u, arq))
+    if ok:
+        usados.add(arq.name)
+    g = faixa_de(x.get("spend")) or {}
+    i = faixa_de((x.get("impressions_with_index") or {}).get("impressions_text")) or {}
+    return {"id": aid, "pagina": x.get("page_name") or snap.get("page_name") or "", "pago_por": snap.get("byline") or "",
+            "formato": snap.get("display_format") or "", "titulo": " ".join(str(snap.get("title") or "").split())[:140],
+            "texto": texto(snap), "inicio": iso(x.get("start_date"))[:10], "fim": iso(x.get("end_date"))[:10],
+            "ativo": bool(x.get("is_active")), "gasto": g, "impressoes": i,
+            "plataformas": [str(p).lower() for p in x.get("publisher_platform") or []],
+            "miniatura": f"data/meta/miniaturas/{aid}.jpg" if ok else None,
+            "link": f"https://www.facebook.com/ads/library/?id={aid}"}
+
+
+def main(argv=None, baixar=None) -> int:
     root = Path(".")
     interno = os.environ.get("ODI_INTERNO_DIR")
     arqs = sorted(glob.glob(str(Path(interno or "/nao-existe") / "meta/anuncios/apify_*.jsonl.gz")))
@@ -76,15 +105,24 @@ def main(argv=None) -> int:
         print("⛔ sem bruto da coleta da Meta no repositório privado")
         return 1
     xs = [json.loads(l) for l in gzip.open(arqs[-1], "rt", encoding="utf-8")]
+    todos = {}  # (busca, id) → versão mais recente, em todos os brutos
+    for a in arqs:
+        for l in gzip.open(a, "rt", encoding="utf-8"):
+            x = json.loads(l)
+            if x.get("_consulta") and x.get("ad_archive_id"):
+                todos[(x["_consulta"], str(x["ad_archive_id"]))] = x
     pasta = root / "data/meta/miniaturas"
     pasta.mkdir(parents=True, exist_ok=True)
     out = {"schema_version": 1, "gerado_em_utc": now_utc(), "fonte_bruto": Path(arqs[-1]).name,
            "metodo": (f"Os {POR_CONSULTA} anúncios de maior alcance (piso da faixa de impressões informada pela Meta; empates — a Meta agrupa tudo acima de 1 milhão — desfeitos pelo maior gasto) de cada busca na "
                       "última coleta. Miniatura: cópia reduzida da prévia (imagem ou primeiro quadro do vídeo); texto até 400 caracteres. "
-                      "Link para o anúncio na Biblioteca de Anúncios da Meta."), "consultas": {}}
+                      "Link para o anúncio na Biblioteca de Anúncios da Meta. Ao clicar num anunciante, a página mostra até "
+                      f"{POR_ANUNCIANTE} anúncios dele, de todas as coletas (os de maior alcance); prévia de anúncio antigo pode ter expirado."),
+           "consultas": {}, "por_anunciante": {}}
     usados = set()
+    agreg = json.loads((root / "data/meta/anuncios.json").read_text(encoding="utf-8")) if (root / "data/meta/anuncios.json").exists() else {}
     for q in sorted({x.get("_consulta") for x in xs if x.get("_consulta")}):
-        cand = sorted((x for x in xs if x.get("_consulta") == q and x.get("ad_archive_id")), key=lambda x: (-piso_impressoes(x), -int((faixa_de(x.get("spend")) or {}).get("lower_bound") or 0)))  # empate (">1M") → maior gasto
+        cand = sorted((x for x in xs if x.get("_consulta") == q and x.get("ad_archive_id")), key=ordem)
         lista, vistos = [], set()
         for x in cand:
             if len(lista) >= POR_CONSULTA:
@@ -93,26 +131,17 @@ def main(argv=None) -> int:
             if aid in vistos:
                 continue
             vistos.add(aid)
-            snap = x.get("snapshot") or {}
-            u = previa(snap)
-            arq = pasta / f"{aid}.jpg"
-            ok = arq.exists() or (bool(u) and miniatura(u, arq))
-            if ok:
-                usados.add(arq.name)
-            g = faixa_de(x.get("spend")) or {}
-            i = faixa_de((x.get("impressions_with_index") or {}).get("impressions_text")) or {}
-            lista.append({"id": aid, "pagina": x.get("page_name") or snap.get("page_name") or "", "pago_por": snap.get("byline") or "",
-                          "formato": snap.get("display_format") or "", "titulo": " ".join(str(snap.get("title") or "").split())[:140],
-                          "texto": texto(snap), "inicio": iso(x.get("start_date"))[:10], "fim": iso(x.get("end_date"))[:10],
-                          "ativo": bool(x.get("is_active")), "gasto": g, "impressoes": i,
-                          "plataformas": [str(p).lower() for p in x.get("publisher_platform") or []],
-                          "miniatura": f"data/meta/miniaturas/{aid}.jpg" if ok else None,
-                          "link": f"https://www.facebook.com/ads/library/?id={aid}"})
+            lista.append(criativo(x, pasta, usados, baixar))
         out["consultas"][q] = lista
-        print(f"{q}: {len(lista)} criativos, {sum(1 for c in lista if c['miniatura'])} com miniatura")
-    for f in pasta.glob("*.jpg"):  # mantém só as miniaturas em uso
-        if f.name not in usados:
-            f.unlink()
+        tops = [p["pagina"] for p in ((agreg.get("consultas") or {}).get(q) or {}).get("top_paginas", [])[:TOP_ANUNCIANTES]]
+        por = {}
+        for pg in tops:
+            dele = sorted((x for (qq, _), x in todos.items() if qq == q and (x.get("page_name") or (x.get("snapshot") or {}).get("page_name")) == pg), key=ordem)
+            por[pg] = [criativo(x, pasta, usados, baixar) for x in dele[:POR_ANUNCIANTE]]
+        out["por_anunciante"][q] = por
+        print(f"{q}: {len(lista)} criativos, {sum(1 for c in lista if c['miniatura'])} com miniatura · por anunciante: "
+              f"{sum(1 for v in por.values() if v)} de {len(tops)} páginas com anúncios, {sum(len(v) for v in por.values())} anúncios")
+    # miniaturas fora de uso não são apagadas (regra 8 do CLAUDE.md: não limpar dados sem autorização)
     (root / "data/meta/criativos.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     return 0
 
