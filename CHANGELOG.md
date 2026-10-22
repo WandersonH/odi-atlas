@@ -4,6 +4,28 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.101 — Rótulo de IA: processos da Justiça Eleitoral sobre IA e deepfake (2026-10-22) ✅
+
+- **Pedido do responsável (22/10, 01h56):** "puxar os de IA pra nossa página de caso de IA". O Atlas leu o pedido como os processos do tema IA ou conteúdo sintético.
+- **Coletor (`collect_processual.py`):**
+  - Para os temas de IA e de desinformação, grava a lista de processos: número, classe, assuntos do tema, tribunal, datas, decisões, link público e as chapas presidenciais que são parte, com o polo.
+  - Grava também a contagem por mês e por classe.
+  - Novo `tema_por_chapa`: para cada tema, processos por candidatura à Presidência e polo.
+  - O arquivo de 21/10 foi regenerado a partir do bruto privado do mesmo arquivo do TSE, sem nova coleta. O total confere: 96.367 processos.
+- **Números (21/10):**
+  - 762 processos com assunto "Uso de Inteligência Artificial" (636) ou "Deep Fake" (299). A classe dominante é Representação, com 705.
+  - 52 desses processos têm chapa presidencial como parte.
+  - Flávio Bolsonaro aparece como polo ativo em 26 e passivo em 20. Lula, ativo em 3 e passivo em 1. Alckmin, passivo em 1. Gaspar, 2 e 2. Marçal, passivo em 4.
+- **Página "Rótulo de IA nas campanhas", novo bloco 04 · Justiça Eleitoral:**
+  - big numbers;
+  - tabela de chapas com polo, com Lula primeiro;
+  - processos por mês e por tribunal;
+  - lista filtrável (todos, Deep Fake, Uso de IA, com chapa presidencial, e por texto) com link para a consulta pública;
+  - só candidaturas à Presidência aparecem com nome.
+- **Testes:**
+  - Suíte completa, com o novo `test_lista_de_ia_e_tema_por_chapa`.
+  - Chromium: 300 linhas na lista; o filtro "com chapa presidencial" mostra 52. Sem erro de JavaScript.
+
 ## C19.100 — Eleitorado: página de processos eleitorais 2026 (2026-10-22) ✅
 
 - **Pedido do responsável (22/10, 01h26):** acrescentar os dados do conjunto processual-2026. O coletor veio da sessão paralela (C19.98) e o arquivo é `data/tse/processual/resumo.json`, de 21/10. Às 01h48 o responsável autorizou terminar a página nesta sessão.

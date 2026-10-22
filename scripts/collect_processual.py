@@ -46,6 +46,7 @@ TEMAS = {
     "abuso de poder": r"abuso",
     "direito de resposta": r"direito de resposta",
 }
+LISTAR_TEMAS = ["inteligência artificial ou conteúdo sintético", "desinformação ou fato inverídico"]
 csv.field_size_limit(10**9)
 UA = {"User-Agent": "Mozilla/5.0 (ODI Atlas; pesquisa acadêmica)"}
 
@@ -100,10 +101,37 @@ def agregar(D: dict, cands: dict) -> dict:
     mes = Counter((iso(p.get("DT_AUTUACAO")) or "?")[:7] for p in unicos.values())
     # candidatos à Presidência como parte
     envolv = defaultdict(list)
+    chapas_do_proc = defaultdict(set)  # processo → {(nome, cargo, número, polo)}
     for x in par:
         sq = (x.get("SQ_CANDIDATO") or "").strip()
         if sq in cands and x["NR_PROCESSO"] in unicos:
             envolv[sq].append(x)
+            c = cands[sq]
+            chapas_do_proc[x["NR_PROCESSO"]].add((c["nome"], c["cargo"], c["numero"], limpo(x.get("DS_POLO"))))
+    # lista dos processos dos temas de IA e desinformação (pedido de 22/10/2026: levar à página de rótulo de IA) e tema × chapa
+    for t in LISTAR_TEMAS:
+        r = re.compile(TEMAS[t], re.I)
+        ids = [n for n, st in por_proc_ass.items() if n in unicos and any(r.search(x) for x in st if x)]
+        lista = []
+        for n in ids:
+            p = unicos[n]
+            lista.append({"processo": n, "classe": limpo(p.get("DS_CLASSE")), "assuntos": sorted(x for x in por_proc_ass[n] if x and r.search(x)),
+                          "tribunal": tribunal(p["SG_UF_TRIBUNAL"], p["NR_INSTANCIA"]), "uf": p.get("SG_UF_TRIBUNAL"), "autuacao": iso(p.get("DT_AUTUACAO")),
+                          "baixa": iso(p.get("DT_BAIXA")), "decisoes": int(p.get("QT_DECISOES") or 0), "url": limpo(p.get("DS_URL_PROCESSO")),
+                          "chapas": sorted({f"{nm} ({cg.lower()}, {nr}) · {pl.replace('Pólo ', 'polo ')}" for nm, cg, nr, pl in chapas_do_proc.get(n, ())})})
+        lista.sort(key=lambda x: x["autuacao"] or "", reverse=True)
+        temas[t]["lista"] = lista
+        temas[t]["por_mes"] = sorted(Counter((x["autuacao"] or "?")[:7] for x in lista).items())
+        temas[t]["por_classe"] = Counter(x["classe"] for x in lista).most_common(10)
+    tema_chapa = {}
+    for t, rx in TEMAS.items():
+        r = re.compile(rx, re.I)
+        cont = Counter()
+        for n, st in por_proc_ass.items():
+            if n in unicos and any(r.search(x) for x in st if x):
+                for nm, cg, nr, pl in {(a, b, c, "passivo" if "passivo" in d.lower() else "ativo" if "ativo" in d.lower() else "outro") for a, b, c, d in chapas_do_proc.get(n, ())}:
+                    cont[(nr, nm, cg, pl)] += 1
+        tema_chapa[t] = [{"numero": nr, "nome": nm, "cargo": cg, "polo": pl, "processos": v} for (nr, nm, cg, pl), v in cont.most_common()]
     pres = []
     for sq, xs in envolv.items():
         c = cands[sq]
@@ -129,7 +157,7 @@ def agregar(D: dict, cands: dict) -> dict:
             "decisoes_por_mes": sorted(Counter((iso(d.get("DT_DECISAO")) or "?")[:7] for d in dec).items()),
             "recursos_por_classe": Counter(limpo(r.get("DS_CLASSE")) or "não informado" for r in rec).most_common(),
             "recursos_por_tribunal": Counter(tribunal(r["SG_UF_TRIBUNAL"], r["NR_INSTANCIA"]) for r in rec).most_common(15),
-            "temas": temas, "candidatos_presidencia": pres}
+            "temas": temas, "tema_por_chapa": tema_chapa, "candidatos_presidencia": pres}
 
 
 def main(argv=None) -> int:
