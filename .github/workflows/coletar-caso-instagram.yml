@@ -1,0 +1,64 @@
+name: Coletar post do Instagram para um caso (conta 1, teto obrigatório, uso pontual autorizado)
+
+# Coleta nova (Apify, conta 1): números do post, comentários e seguidores do autor, tudo dentro do teto informado.
+# Autorizado pelo responsável a cada caso (22/10/2026, 18h48: caso 008, teto US$ 3,00). Resultado só no repositório privado.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        required: true
+      url:
+        description: "link do post (https://www.instagram.com/reel/<código>/)"
+        required: true
+      teto:
+        description: "teto total em US$ (obrigatório)"
+        required: true
+      comentarios:
+        description: "máximo de comentários"
+        default: "2000"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: coletar-caso-instagram
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Coletar
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          CASO: ${{ inputs.caso }}
+          URL: ${{ inputs.url }}
+          TETO: ${{ inputs.teto }}
+          MAXIMO: ${{ inputs.comentarios }}
+        run: |
+          python scripts/coletar_caso_instagram.py --caso "$CASO" --url "$URL" --teto "$TETO" --comentarios "$MAXIMO" > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Coleta do caso::$(echo "$l" | cut -c1-400)"; done < s.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Caso ${{ inputs.caso }}: coleta do post no Instagram (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1

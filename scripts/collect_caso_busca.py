@@ -75,6 +75,13 @@ CASOS = {
             "youtube": ["Lula amassa bandeira", "Lula amassou a bandeira", "Lula bandeira do Brasil eleição"],
             "desde_yt": "2026-10-01T00:00:00Z", "rx_titulo": r"bandeira", "rx_atributo": r"lula|amass|elei|vot|urna",
             "checagens": ["Lula amassa bandeira", "Lula bandeira do Brasil amassada"], "arquivo_web": []},
+    # 22/10 (18h48): reel do Instagram sobre camisas do PT em Piracicaba (21–22/10) e a denúncia do PT em 22/10
+    "008": {"variantes": ["camisas PT Piracicaba", "camisetas PT Piracicaba", "PT Piracicaba denúncia", "Piracicaba camisa Lula"],
+            "controles": ["Piracicaba", "camisa do PT"], "janelas": ["now 7-d", "today 1-m"],
+            "youtube": ["camisas PT Piracicaba", "camisetas PT Piracicaba", "Piracicaba camisa do PT", "PT denúncia Piracicaba", "Piracicaba camisas Lula"],
+            "desde_yt": "2026-10-21T00:00:00Z", "rx_titulo": r"piracicaba",
+            "rx_atributo": r"\bpt\b|camis|lula|petista|den[uú]ncia|partido dos trabalhadores|elei",
+            "checagens": ["camisas PT Piracicaba", "Piracicaba camisetas PT"], "arquivo_web": ["https://www.instagram.com/reel/DewwdGCR_Qn/"]},
 }
 CASO = "002"
 TOP_COMENTARIOS = 30

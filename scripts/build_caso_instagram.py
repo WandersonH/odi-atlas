@@ -43,7 +43,23 @@ CASOS = {
                 "cita Bolsonaro ou família": r"bolsonaro|fl[aá]vio|\beduardo\b|\bbozo|\bmito\b",
                 "bandeira e pátria": r"bandeira|p[aá]tria|brasil acima|verde e amarelo|s[ií]mbolo nacional|hino",
                 "eleição e voto": r"elei[cç]|\bvot|urna|\b22\b|\b13\b|1º turno|primeiro turno|2º turno|segundo turno",
-            }},
+            },
+            "nota_coleta": "Coletas de comentários do Instagram feitas no Apify em 06 e 07/10/2026, importadas sem nova execução e unificadas por id do comentário.",
+            "marco": "dia do 1º turno"},
+    # 22/10/2026 (18h48): reel sobre camisas do PT em Piracicaba; coleta nova (scripts/coletar_caso_instagram.py), teto US$ 3,00
+    "008": {"shortcode": "DewwdGCR_Qn",
+            "titulo": "Camisas do PT em Piracicaba (reel do Instagram, 21–22/10/2026)",
+            "categorias": {
+                "aponta montagem, armação ou fake": r"\bfake\b|montag|mentira|arma[cç][aã]o|plantad|falso|manipula|\bia\b|encena",
+                "acusa crime eleitoral ou compra de voto": r"crime|compra de voto|comprando voto|boca de urna|propaganda irregular|ilegal|\btse\b|justi[cç]a eleitoral|den[uú]nci|pol[ií]cia|pres[oa]",
+                "ataca o PT ou Lula": r"ladr[aã]o|ladr[oõ]es|bandid|vergonha|nojo|corrup|petralha|cachaceiro|descondenad|nove dedos|9 dedos|molusco|quadrilha",
+                "defende o PT ou Lula": r"\blula ?13\b|faz o l|\bfazol|lula presidente|lula l[aá]|#lula|❤️ ?lula|vamos de 13|\b13\b ?confirma",
+                "cita Bolsonaro ou família": r"bolsonaro|fl[aá]vio|\beduardo\b|\bbozo|\bmito\b|\b22\b",
+                "cita camisas": r"camis",
+                "cita Piracicaba": r"piracicaba|piraci",
+            },
+            "nota_coleta": "Coleta nova do Atlas no Apify em 22/10/2026 (conta 1, teto autorizado de US$ 3,00), comentários unificados por id.",
+            "marco": "início do caso"},
 }
 CAMPOS = ["id", "criado_em_utc", "texto", "curtidas", "respostas", "autor_id", "autor_usuario", "autor_nome", "autor_verificado", "runs"]
 
@@ -124,7 +140,7 @@ def agregar(coms: dict, reel: dict, stats: dict, cfg: dict, perfil: dict | None 
     curt = sorted((c["curtidas"] or 0 for c in cs), reverse=True)
     return {"reel": {"publicado_em_utc": reel.get("timestamp"), "reproducoes": reel.get("videoPlayCount"), "curtidas": reel.get("likesCount"),
                      "comentarios_informados": reel.get("commentsCount"), "compartilhamentos": reel.get("sharesCount"), "duracao_s": reel.get("videoDuration"),
-                     "lido_em_utc": reel.get("lido_em_utc"), **autor_publico(perfil, cfg["shortcode"])},
+                     "lido_em_utc": reel.get("lido_em_utc"), "marco": cfg.get("marco"), **autor_publico(perfil, cfg["shortcode"])},
             "unificacao": {**stats, "duplicados_removidos": stats["itens_brutos"] - stats["comentarios_unicos"] - (1 if reel else 0),
                            "autores_unicos": len({c["autor_id"] or c["autor_usuario"] for c in cs}),
                            "cobertura": {"comentarios_coletados": len(cs), "comentarios_informados_pelo_instagram": reel.get("commentsCount")}},
@@ -144,7 +160,7 @@ def main(argv=None) -> int:
         print("⛔ sem repositório privado")
         return 1
     pv = Path(interno) / f"casos/{caso}"
-    arqs = [Path(f) for f in sorted(glob.glob(str(pv / "apify/*.json"))) if not f.endswith("manifesto.json")]
+    arqs = [Path(f) for f in sorted(glob.glob(str(pv / "apify/*.json"))) if not f.endswith(("manifesto.json", "manifesto_coleta.json"))]
     if not arqs:
         print(f"⛔ caso {caso}: nenhuma coleta importada")
         return 1
@@ -156,8 +172,7 @@ def main(argv=None) -> int:
         w.writeheader()
         w.writerows({**c, "runs": "|".join(sorted(c["runs"]))} for c in sorted(coms.values(), key=lambda c: c["criado_em_utc"] or ""))
     out = {"schema_version": 1, "caso": caso, "plataforma": "Instagram", "titulo": cfg["titulo"], "gerado_em_utc": now_utc(), **agregar(coms, reel, stats, cfg, perfil),
-           "nota": "Coletas de comentários do Instagram feitas no Apify em 06 e 07/10/2026, importadas sem nova execução e unificadas por id do "
-                   "comentário. É o que as coletas devolveram (ordem 'populares' do Instagram), não o total. Categorias = pré-codificação por "
+           "nota": cfg["nota_coleta"] + " É o que as coletas devolveram (ordem 'populares' do Instagram), não o total. Categorias = pré-codificação por "
                    "dicionário, não decisão. Quem comenta nunca aparece com nome; texto e autor ficam no repositório privado."}
     pasta = Path("data/casos") / caso
     pasta.mkdir(parents=True, exist_ok=True)

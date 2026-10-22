@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.109 — Caso 008: camisas do PT em Piracicaba (reel do Instagram, YouTube, imprensa) (2026-10-22) 🔜
+
+**O que mudou.** Pedido do responsável (22/10, 18h48), com coleta autorizada na conta 1 do Apify e teto de US$ 3,00:
+- `scripts/coletar_caso_instagram.py` + `coletar-caso-instagram.yml` (novos): coleta NOVA de um post do Instagram para um caso, com teto obrigatório. Faz três execuções em sequência, cada uma limitada ao que sobra do teto: números do reel, até N comentários (o limite é reduzido para caber, a US$ 1,40 por mil, preço conferido no custo real do caso 007) e seguidores do autor (regra de nome: 10 mil+). Os brutos vão para o privado no mesmo formato da importação; o builder lê igual.
+- Caso 008 em `collect_caso_busca.py` (Trends, YouTube desde 21/10, Google Notícias, checagens, arquivo web do reel), em `build_caso_instagram.py` (dicionário próprio de pré-codificação), em `data/config/casos.json` e na página (seção `caso008`, menu, CSS). `casos-busca.yml` passa a incluir o 008.
+- `build_caso_instagram.py`: a nota da coleta e o marco do post ("dia do 1º turno" no 007) saem da configuração do caso; antes estavam fixos no código e na página.
+
+**Teste.** `python -m unittest discover -s tests -v`: 215 OK (novos em `tests/test_coletar_caso_instagram.py`: cada execução cabe no que sobra do teto; teto pequeno reduz os comentários; sem teto não roda). Render local: a seção 008 mostra "⛔ Coleta do caso 008 ainda não disponível", sem erro de JavaScript.
+
+**Pendente.** Rodar a coleta (workflow) e o `casos-busca` do 008; números e custo real entram na próxima entrada.
+
 ## C19.108 — Panorama: Instagram e Facebook no comparativo Lula × Flávio (2026-10-22) ⚠️
 
 **O que mudou.** Pedido do responsável: o resumo "Lula × Flávio em cinco etapas" só tinha Instagram e Facebook na etapa 2 (seguidores). Agora:
