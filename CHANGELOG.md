@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.104 — Caso 007: leitura dos seguidores do autor do reel, para a regra de nome (2026-10-22) 🔜
+
+- **Pedido do responsável (22/10, 02h03):** "toda vez que temos um case de post, seja vídeo, seria bom ter ele na página" (Lula e a bandeira).
+  - Pergunta feita: incorporar o reel mostra o @ do autor, um perfil pessoal sem número de seguidores coletado.
+  - Resposta (02h0x): "Checar seguidores" na conta 1, uma leitura, cerca de US$ 0,01.
+- **Novo `scripts/checar_seguidores_perfil.py`:**
+  - uma execução do `apify/instagram-profile-scraper`, com teto de US$ 0,10 (mínimo do Apify);
+  - lê o autor do bruto privado do caso, para o nome não passar por parâmetro do workflow, que é visível no repositório público;
+  - grava o resultado só no privado (`casos/<caso>/perfil_instagram.json`).
+- **Workflow `checar-perfil.yml`:** só disparo manual, entrada `caso`.
+- **Testes:** suíte completa. O run real foi disparado em seguida.
+
 ## C19.103 — Rótulo de IA: busca diária de notícias sobre IA nas eleições (2026-10-22) 🔜
 
 - **Pedido do responsável (22/10, 02h02):** "adicionar uma busca de notícias desta forma na página do caso" (a de IA), no mesmo formato da reportagem do NYT.

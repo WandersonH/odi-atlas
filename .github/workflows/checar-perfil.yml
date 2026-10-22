@@ -1,0 +1,49 @@
+name: Checar seguidores de um perfil (conta 1, teto US$ 0,10, uso pontual autorizado)
+
+# Uma execução para um perfil, para aplicar a regra de nome (10 mil+). Resultado só no repositório privado.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        required: true
+      rede:
+        description: "rede (instagram)"
+        default: "instagram"
+
+permissions:
+  contents: read
+
+jobs:
+  checar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Ler o perfil
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/checar_seguidores_perfil.py --caso "${{ inputs.caso }}" --rede "${{ inputs.rede }}" > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Perfil::$l"; done < s.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Perfil do caso ${{ inputs.caso }} (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
