@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.111 — Caso 008: coleta do reel feita; termos de busca ajustados ao fato (2026-10-22) ⚠️
+
+**Coleta (conta 1, teto US$ 3,00).** Reel `DewwdGCR_Qn` de @guilhermederrite (2.287.681 seguidores, verificado, então pode aparecer com nome e com o reel incorporado), publicado em 21/10/2026 12h44 (Brasília): 7.063.507 reproduções, 321.475 curtidas, 20.154 comentários informados, 92.928 compartilhamentos. Execuções: reel `quPezdF2ogfR47Xoa` (custo ≈ 0), comentários `datadoping` (US$ 2,80, 2.000 itens), perfil `ky7VWVzrN1d1RyJID` (custo ≈ 0). Total ≈ US$ 2,81. A 1ª tentativa de comentários foi recusada pela API antes de rodar. Na 2ª, a conexão caiu durante a espera, mas a execução seguiu no Apify; foi lida pelo importador (só leitura), sem nova execução paga. Após unificação: 1.950 comentários únicos, de 1.469 autores.
+**casos-busca 008** (run do workflow em 22/10): YouTube com 30 vídeos e 441.998 visualizações; 2.337 comentários do YouTube lidos; notícias 0, porque a busca exigia "Piracicaba" no título e quase nenhum título traz.
+**Ajuste.** Os vídeos mostram o fato: acusação de que a PM-SP obrigou jovens presos em Piracicaba a vestir camisetas de Lula/PT, e o PT pediu investigação. Novos termos de YouTube, Trends e notícias. Notícias agora sem aspas, nos últimos 3 dias, e o título precisa citar camisa/camiseta e um elemento do caso (`noticias` e `janela_noticias` na configuração do caso; os outros casos não mudam). Textos da página, de `casos.json` e do builder trazem o contexto com fonte.
+**Teste.** `python -m unittest discover -s tests -v`: OK.
+**Pendente.** Rodar de novo o casos-busca do 008 com os termos novos.
+
 ## C19.110 — Facebook: leitura retroativa das páginas principais desde 20/07 (Lula e Flávio) (2026-10-22) 🔜
 
 **O que mudou.** Pedido do responsável (22/10, 19h03: "a coleta do período que não temos do Lula no Face"; 19h05: "pode rodar" sobre a opção 1, teto de US$ 7,50, conta 1). No acervo, os posts de Lula começam em 02/10 e os de Flávio em 26/08.

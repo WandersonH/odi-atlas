@@ -76,12 +76,16 @@ CASOS = {
             "desde_yt": "2026-10-01T00:00:00Z", "rx_titulo": r"bandeira", "rx_atributo": r"lula|amass|elei|vot|urna",
             "checagens": ["Lula amassa bandeira", "Lula bandeira do Brasil amassada"], "arquivo_web": []},
     # 22/10 (18h48): reel do Instagram sobre camisas do PT em Piracicaba (21–22/10) e a denúncia do PT em 22/10
-    "008": {"variantes": ["camisas PT Piracicaba", "camisetas PT Piracicaba", "PT Piracicaba denúncia", "Piracicaba camisa Lula"],
-            "controles": ["Piracicaba", "camisa do PT"], "janelas": ["now 7-d", "today 1-m"],
-            "youtube": ["camisas PT Piracicaba", "camisetas PT Piracicaba", "Piracicaba camisa do PT", "PT denúncia Piracicaba", "Piracicaba camisas Lula"],
-            "desde_yt": "2026-10-21T00:00:00Z", "rx_titulo": r"piracicaba",
-            "rx_atributo": r"\bpt\b|camis|lula|petista|den[uú]ncia|partido dos trabalhadores|elei",
-            "checagens": ["camisas PT Piracicaba", "Piracicaba camisetas PT"], "arquivo_web": ["https://www.instagram.com/reel/DewwdGCR_Qn/"]},
+    "008": {"variantes": ["camisetas PT Piracicaba", "PM camiseta Lula presos", "Piracicaba camiseta Lula", "Derrite camisetas PT"],
+            "controles": ["Piracicaba", "camiseta Lula"], "janelas": ["now 7-d", "today 1-m"],
+            "youtube": ["PM camisetas PT Piracicaba", "presos camiseta Lula Piracicaba", "PM obriga presos camiseta Lula", "Derrite camisetas PT",
+                        "PT denúncia PM camisetas", "policiais camiseta Lula militantes"],
+            "desde_yt": "2026-10-21T00:00:00Z", "rx_titulo": r"camis",
+            "rx_atributo": r"piracicaba|\bpm\b|pol[ií]cia|policiais|pres[oa]s|jovens|derrite|tarc[ií]sio|militantes|incrimin|arma[cç][aã]o|\bpt\b|lula",
+            # 22/10 (19h): sem aspas e só dos últimos 3 dias; os títulos quase nunca trazem "Piracicaba"
+            "noticias": ["PM Piracicaba camisetas PT", "presos camiseta Lula PM", "Derrite camisetas PT", "PT denúncia PM camisetas Lula",
+                         "jovens presos camiseta Lula", "PM camiseta Lula Piracicaba"], "janela_noticias": "3d",
+            "checagens": ["camisetas PT Piracicaba", "PM presos camiseta Lula"], "arquivo_web": ["https://www.instagram.com/reel/DewwdGCR_Qn/"]},
 }
 CASO = "002"
 TOP_COMENTARIOS = 30
@@ -228,11 +232,14 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
 def noticias() -> list[dict]:
     from collect_google_busca import RSS, parse_rss
     out, vistos = [], set()
-    for q in VARIANTES:
+    c = CASOS[CASO]
+    for q in c.get("noticias") or VARIANTES:
         try:
-            url = RSS + "?" + urllib.parse.urlencode({"q": f'"{q}"', "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"})
+            # termos próprios de notícias (sem aspas, com janela) quando o caso os define; senão, as variantes entre aspas
+            busca = f"{q} when:{c['janela_noticias']}" if c.get("noticias") else f'"{q}"'
+            url = RSS + "?" + urllib.parse.urlencode({"q": busca, "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"})
             for x in parse_rss(read_body(open_url(url, timeout=40))):
-                if x.get("link") in vistos or not RX_TITULO.search(x.get("titulo") or ""):
+                if x.get("link") in vistos or not RX_TITULO.search(x.get("titulo") or "") or (c.get("noticias") and not RX_ATRIBUTO.search(x.get("titulo") or "")):
                     continue
                 vistos.add(x.get("link"))
                 out.append({**{k: x.get(k) for k in ("titulo", "link", "veiculo", "dominio", "data_publicacao")}, "consulta": q})

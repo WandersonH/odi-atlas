@@ -48,7 +48,7 @@ CASOS = {
             "marco": "dia do 1º turno"},
     # 22/10/2026 (18h48): reel sobre camisas do PT em Piracicaba; coleta nova (scripts/coletar_caso_instagram.py), teto US$ 3,00
     "008": {"shortcode": "DewwdGCR_Qn",
-            "titulo": "Camisas do PT em Piracicaba (reel do Instagram, 21–22/10/2026)",
+            "titulo": "Camisetas do PT em Piracicaba: reel de Guilherme Derrite (Instagram, 21/10/2026)",
             "categorias": {
                 "aponta montagem, armação ou fake": r"\bfake\b|montag|mentira|arma[cç][aã]o|plantad|falso|manipula|\bia\b|encena",
                 "acusa crime eleitoral ou compra de voto": r"crime|compra de voto|comprando voto|boca de urna|propaganda irregular|ilegal|\btse\b|justi[cç]a eleitoral|den[uú]nci|pol[ií]cia|pres[oa]",
