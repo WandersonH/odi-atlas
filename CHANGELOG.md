@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.106 — Debate no YouTube: coletor passa a acumular; vídeos e comentários perdidos recuperados do histórico (2026-10-22) ⚠️
+
+**O que mudou.** A coleta de 22/10 (run 39727118468) achou 69 vídeos, contra 426 em 21/10: 9 buscas falharam com HTTP 429 (cota da YouTube Data API) e `collect_debate_youtube.py` reescrevia a lista e o arquivo privado de comentários só com o que a coleta do dia devolvia. Agora:
+- `collect_debate_youtube.py` parte da lista anterior: todo vídeo já achado é relido por `videos.list` (números novos, `numeros_lidos_em`); vídeo que a API não devolver fica com os últimos números e `nao_relido_em`. Comentários acumulam por `comment_id` no privado; `comentarios_lidos` por vídeo vem do acervo.
+- `scripts/recuperar_debate_youtube.py` (novo, só lê o histórico com `git show`, não apaga nada) juntou as 7 versões públicas de `data/debate/youtube_videos.json` (19/10 a 22/10) e as 8 versões privadas de `debate/youtube_comentarios.csv.gz`: **69 → 894 vídeos** (cada versão tinha entre 404 e 499, com conjuntos diferentes porque a busca devolve resultados diferentes a cada dia) e **12.599 → 35.791 comentários únicos**. Saída de `build_debate_youtube.py`: 894 vídeos, 457 canais, 167.424.740 visualizações.
+- `build_debate_youtube.py` publica `numeros_lidos_em` (vídeos por data da última leitura: 19/10 256 · 20/10 209 · 21/10 360 · 22/10 69); a nota da página diz que a lista acumula e mostra essas datas.
+
+**Ressalva.** Os números de 825 vídeos são da última leitura (19 a 21/10), não de hoje; a próxima coleta os relê (videos.list custa 1 unidade por 50 vídeos), se a cota permitir. 146 dos 894 títulos não citam o debate no título — entraram pela descrição, que não é guardada; ficam como estavam.
+
+**Teste.** `python -m unittest discover -s tests -v`: 211 testes OK. Novos em `tests/test_debate_youtube.py`: `test_coleta_com_busca_parcial_nao_perde_videos_nem_comentarios` (busca devolve 1 vídeo, lista anterior tem 2: saem os 3, comentários antigos preservados) e `test_recuperacao_une_versoes_e_ultima_leitura_vence`. Recuperação e build rodados aqui com `ODI_INTERNO_DIR` (comandos acima).
+
+**Evidência.** `data/debate/youtube_videos.json` (`recuperado_do_historico`), `data/debate/youtube.json`; privado `debate/youtube_comentarios.csv.gz`.
+
 ## C19.105 — Casos: o 004 sai da grade (unido ao 003) (2026-10-22) ✅
 
 - **Reclamação do responsável (22/10, 02h06), com print:** a grade de "Casos e análises" ainda mostrava o cartão "004 · Flamengo e a proibição das bets", com o selo "unido ao caso 003".

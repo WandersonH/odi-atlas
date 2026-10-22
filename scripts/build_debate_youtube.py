@@ -122,6 +122,8 @@ def main(argv=None) -> int:
         canais[v["canal"]] += v.get("visualizacoes") or 0
     out = {"schema_version": 1, "gerado_em_utc": now_utc(), "coletado_em_utc": d["coletado_em_utc"], "desde_utc": d["desde_utc"],
            "consultas": d["consultas"], "erros": d["erros"], "chat_ao_vivo": d["chat_ao_vivo"],
+           # números de cada vídeo valem na data em que foram lidos (o acervo acumula; vídeo não relido mantém a última leitura)
+           "numeros_lidos_em": sorted(Counter((v.get("numeros_lidos_em") or d["coletado_em_utc"])[:10] for v in vs).items()),
            "total": resumo(vs), "por_tipo": {k: resumo(x) for k, x in por_tipo.items()}, "por_grupo": {k: resumo(x) for k, x in por_grupo.items()},
            "por_conteudo": {k: resumo(x) for k, x in por_conteudo.items()},
            "nota_classificacao": "Formato pela duração e pelos dados de live da API; origem pelo nome do canal; conteúdo pelo título "

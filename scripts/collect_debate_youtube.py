@@ -16,6 +16,7 @@ depois que termina, o "replay do chat" não é oferecido pela API. Isso fica reg
 from __future__ import annotations
 
 import csv
+from collections import Counter
 import gzip
 import json
 import os
@@ -155,30 +156,49 @@ def main(argv=None) -> int:
         return 1
     agora = now_utc()
     achados = buscar(key)
-    vids = [v for v in detalhes(key, list(achados)) if v["id"] in CONHECIDOS or sobre_o_debate(v["titulo"] or "", v["descricao"])]
+    # acumula (22/10/2026): a busca falha por cota (HTTP 429) e devolve menos vídeos; quem já foi achado continua na lista e
+    # tem os números atualizados por videos.list (1 unidade por 50 vídeos). Antes, cada run substituía a lista.
+    arq_pub = Path("data/debate/youtube_videos.json")
+    antes = {v["id"]: v for v in (json.loads(arq_pub.read_text(encoding="utf-8")).get("videos") or [])} if arq_pub.exists() else {}
+    for vid, v in antes.items():
+        achados.setdefault(vid, v.get("achado_por"))
+    vids = [v for v in detalhes(key, list(achados)) if v["id"] in CONHECIDOS or v["id"] in antes or sobre_o_debate(v["titulo"] or "", v["descricao"])]
+    vistos = {v["id"] for v in vids}
+    for vid, v in antes.items():  # vídeo que a API não devolveu agora (removido ou falha): fica com os últimos números lidos
+        if vid not in vistos:
+            vids.append({**v, "nao_relido_em": agora})
     for v in vids:
-        v["tipo"] = tipo_de(v)
-        v["achado_por"] = achados.get(v["id"])
+        if v["id"] in vistos:
+            v["numeros_lidos_em"] = agora
+        v["tipo"] = v.get("tipo") or tipo_de(v)
+        v["achado_por"] = achados.get(v["id"]) or v.get("achado_por")
         v["campanha"] = CANAIS_CAMPANHA.get(v["canal_id"])
     vids.sort(key=lambda v: v["visualizacoes"] or 0, reverse=True)
     alvo = [v for v in vids if (v["comentarios"] or 0) > 0][:TOP_COMENTARIOS]
     rows, status = comentarios(key, alvo, agora)
+    lidos_hoje = Counter(r["video_id"] for r in rows)
     for v in vids:
-        v["comentarios_lidos"] = sum(1 for r in rows if r["video_id"] == v["id"])
-        v["leitura_comentarios"] = status.get(v["id"])
+        v["leitura_comentarios"] = status.get(v["id"]) or v.get("leitura_comentarios")
         v.pop("descricao", None)
     interno = os.environ.get("ODI_INTERNO_DIR")
     destino = "nenhum (sem ODI_INTERNO_DIR: comentários descartados)"
     if interno and rows:
         p = Path(interno) / "debate/youtube_comentarios.csv.gz"
         p.parent.mkdir(parents=True, exist_ok=True)
+        # acumula por comment_id (22/10/2026): antes o arquivo era reescrito só com a leitura do dia
+        antigos = list(csv.DictReader(gzip.open(p, "rt", encoding="utf-8"), delimiter=";")) if p.exists() else []
+        novos_ids = {r["comment_id"] for r in rows}
+        rows = [r for r in antigos if r.get("comment_id") not in novos_ids] + rows
         with gzip.open(p, "wt", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=CAMPOS, delimiter=";")
+            w = csv.DictWriter(f, fieldnames=CAMPOS, delimiter=";", extrasaction="ignore")
             w.writeheader()
             w.writerows(rows)
         destino = "privado: debate/youtube_comentarios.csv.gz"
+    por_video = Counter(r["video_id"] for r in rows)
+    for v in vids:  # acervo (privado) quando houver; sem ele, só a leitura de hoje, sem zerar o que já constava
+        v["comentarios_lidos"] = por_video.get(v["id"]) or lidos_hoje.get(v["id"]) or v.get("comentarios_lidos") or 0
     out = {"coletado_em_utc": agora, "desde_utc": DESDE, "consultas": CONSULTAS, "canais_campanha": CANAIS_CAMPANHA,
-           "videos_com_comentarios_lidos": len(alvo), "comentarios_lidos": len(rows), "comentarios_destino": destino, "erros": ERROS,
+           "videos_com_comentarios_lidos": sum(1 for v in vids if v["comentarios_lidos"]), "comentarios_lidos": len(rows), "comentarios_destino": destino, "erros": ERROS,
            "chat_ao_vivo": "⛔ não coletado: a YouTube Data API só lê o chat enquanto a transmissão está no ar; o replay do chat não é oferecido depois",
            "videos": vids}
     Path("data/debate").mkdir(parents=True, exist_ok=True)
