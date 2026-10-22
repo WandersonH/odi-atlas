@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-10-21T20:52:26Z",
+  "run_started_utc": "2026-10-22T01:48:24Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -148,7 +148,7 @@
       "geo": "BR",
       "serie_pontos": 181,
       "uf_linhas": 27,
-      "relacionados_linhas": 94,
+      "relacionados_linhas": 74,
       "status": "ok"
     },
     {
@@ -233,9 +233,9 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-21",
+      "janela_trends": "2026-07-20 2026-10-22",
       "geo": "BR",
-      "serie_pontos": 94,
+      "serie_pontos": 95,
       "uf_linhas": 27,
       "relacionados_linhas": 100,
       "status": "ok"
@@ -438,10 +438,11 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-21",
+      "janela_trends": "2026-07-20 2026-10-22",
       "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "serie_pontos": 95,
+      "uf_linhas": 27,
+      "status": "ok"
     },
     {
       "grupo": "segundo_turno_palavras",
@@ -537,16 +538,14 @@
         }
       ],
       "periodo": "eleitoral",
-      "janela_trends": "2026-07-20 2026-10-21",
+      "janela_trends": "2026-07-20 2026-10-22",
       "geo": "BR",
-      "serie_pontos": 94,
+      "serie_pontos": 95,
       "uf_linhas": 27,
       "status": "ok"
     }
   ],
-  "blocked": [
-    "primeiro_turno_5_topicos__eleitoral: HTTPError: HTTP Error 429: unknown"
-  ],
-  "run_finished_utc": "2026-10-21T20:59:12Z",
-  "status": "bloqueado"
+  "blocked": [],
+  "run_finished_utc": "2026-10-22T01:54:16Z",
+  "status": "ok"
 }
