@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.94 — Casos: grade dos números nos casos 006/007 e pré-codificação dos comentários por caso (2026-10-22) ✅
+
+- **Achado no render das páginas novas (Chromium):**
+  - os números de destaque dos casos 006 e 007 saíam sem grade, porque as regras CSS de `.db-big` e `.pt-chips` listavam só os casos 001 a 005;
+  - o bloco "O que a audiência comenta" usava o dicionário do caso 002 ("relato de teste", "mudança percebida") em todos os casos.
+- **O que mudou:**
+  - As 8 regras CSS que listavam `#caso002` passam a incluir `#caso006` e `#caso007`.
+  - `build_caso_busca.categorias_do_caso()`:
+    - o caso 002 mantém o dicionário dele;
+    - 006 e 007 usam o dicionário do próprio caso, de `build_caso_x` / `build_caso_instagram`;
+    - 001, 003 e 005 passam a um dicionário neutro (cita Lula, cita Bolsonaro ou família, aponta montagem/IA/fake). Ele vale a partir do próximo run diário.
+- **Testes:** suíte completa. Run do `casos-busca` para 006 e 007 e novo render em seguida.
+
 ## C19.93 — Casos 006 (PCC e CV terroristas, X) e 007 ("Lula amassa a bandeira", Instagram); 004 unido ao 003 (2026-10-22) ⚠️
 
 - **Pedido do responsável (22/10, 01h05):** criar o caso a partir do post de Marco Rubio (x.com/SecRubio/status/2060119225176404134), classificação "PCC, organizações terroristas". O pedido inclui:

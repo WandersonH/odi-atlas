@@ -48,6 +48,20 @@ def youtube(y: dict | None) -> dict | None:
                     f"{cb.MIN_PUBLICO:,} inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.".replace(",", ".")}
 
 
+def categorias_do_caso() -> dict:
+    """Dicionário de pré-codificação do caso: o do caso 002 (cb.CATEGORIAS) só vale para ele; 006 e 007 usam o dicionário
+    do próprio caso (build_caso_x / build_caso_instagram); os demais, um dicionário neutro de citação dos candidatos."""
+    import build_caso_instagram as bi
+    import build_caso_x as bx
+    if cb.CASO == "002":
+        return cb.CATEGORIAS
+    fonte = (bx.CASOS.get(cb.CASO) or bi.CASOS.get(cb.CASO) or {}).get("categorias")
+    if fonte:
+        return {k: re.compile(v, re.I) for k, v in fonte.items()}
+    return {"cita Lula": re.compile(r"\blula\b|petista|\bpt\b", re.I), "cita Bolsonaro ou família": re.compile(r"bolsonaro|fl[aá]vio|\beduardo\b", re.I),
+            "aponta montagem, IA ou fake": re.compile(r"\bfake\b|montag|mentira|\bia\b|intelig[eê]ncia artificial|falso", re.I)}
+
+
 def comentarios(arq: Path, vids: set) -> dict | None:
     if not arq.exists():
         return None
@@ -58,11 +72,11 @@ def comentarios(arq: Path, vids: set) -> dict | None:
         return None
     txt = [r["texto"] for r in rows]
     ano = Counter((r["publicado_em"] or "?")[:4] for r in rows)
-    cats = {k: pct(sum(bool(rx.search(t)) for t in txt), len(txt)) for k, rx in cb.CATEGORIAS.items()}
+    cats = {k: pct(sum(bool(rx.search(t)) for t in txt), len(txt)) for k, rx in categorias_do_caso().items()}
     return {"comentarios": len(rows), "autores_unicos": len({r["autor_canal"] or r["autor_nome"] for r in rows}),
             "videos": len({r["video_id"] for r in rows}), "por_ano": dict(sorted(ano.items())), "categorias_pct": cats,
             "termos": bc.nuvem(txt, EXCLUIR, top=40, minimo=5),
-            "nota": "Pré-codificação por dicionário (relato de teste, mudança percebida, contestação, cita Lula): indica candidatos, não decide. "
+            "nota": "Pré-codificação por dicionário do caso: indica candidatos, não decide. "
                     "Texto e autor ficam só no repositório privado."}
 
 
