@@ -4,6 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.93 — Caso 006 (PCC e CV como organizações terroristas): importação das coletas do X de 23–24/09 (2026-10-22) 🔜
+
+- **Pedido do responsável (22/10, 01h05):** criar o caso a partir do post de Marco Rubio (x.com/SecRubio/status/2060119225176404134), classificação "PCC, organizações terroristas". O pedido inclui:
+  - trazer do Apify as coletas feitas em 23 e 24/09;
+  - unificar e remover duplicados.
+- **Contexto, com fonte:** em 28/05/2026 Rubio anunciou que os EUA classificariam PCC e CV como organizações terroristas ([La Nación](https://www.lanacion.com.py/politica/2026/05/28/rubio-confirma-designacion-de-organizaciones-terroristas-al-pcc-y-el-comando-vermelho/), [Forbes Brasil](https://forbes.com.br/geral/2026/05/eua-pretendem-designar-comando-vermelho-e-pcc-como-organizacoes-terroristas-diz-rubio/)).
+- **Pelo print do console Apify enviado pelo responsável:** as coletas de 23–24/09 são anteriores ao repositório, cujo 1º commit é de 15/10. Foram disparadas à mão ("Web"), com uma exceção via API, nos atores xquik "X (Twitter) Engagement Scraper" (1.235, 1.149 e 1.719 resultados) e "X (Twitter) Tweet Scraper".
+- **Novo `scripts/importar_apify_runs.py`:** só leitura, não inicia execução.
+  - Lista as execuções da conta na janela pedida e filtra pelo nome do ator.
+  - Guarda a entrada e os itens de cada execução no repositório privado (`casos/006/apify/`).
+  - Publica só metadados em `data/casos/006/importacao_apify.json`.
+  - Dataset já apagado pela retenção do Apify fica registrado como ⛔.
+- **Workflow `importar-apify.yml`:** só disparo manual, conta 1.
+- **Testes:** `tests/test_importar_apify.py` cobre janela de datas, só GET, dataset apagado registrado como ⛔ e entrada fora do público.
+
 ## C19.92 — Anúncios: clicar no anunciante filtra os anúncios dele (2026-10-22) ✅
 
 - **Pedido do responsável (22/10, 00h46):** "quando clicar no anunciante mostrar os anúncios, tipo um filtro".

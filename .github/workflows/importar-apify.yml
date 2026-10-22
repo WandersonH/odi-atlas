@@ -1,0 +1,65 @@
+name: Importar execuções já feitas no Apify (só leitura, sem custo de ator)
+
+# Lê execuções antigas de uma conta Apify e guarda entrada + resultados no repositório privado (caso indicado).
+# Não inicia nenhuma execução. Conta padrão: 1 (APIFY_TOKEN). Uso autorizado em 22/10/2026 (caso 006, coletas de 23–24/09).
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        default: "006"
+      de:
+        description: "data inicial (AAAA-MM-DD, UTC)"
+        default: "2026-09-23"
+      ate:
+        description: "data final (AAAA-MM-DD, UTC)"
+        default: "2026-09-24"
+      ator:
+        description: "trecho do nome do ator (vazio = todos)"
+        default: "xquik"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-apify
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Importar
+        continue-on-error: true
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/importar_apify_runs.py --caso "${{ inputs.caso }}" --de "${{ inputs.de }}" --ate "${{ inputs.ate }}" --ator "${{ inputs.ator }}" > s.txt 2>&1; rc=$?
+          tail -n 9 s.txt | while IFS= read -r l; do echo "::notice title=Importar Apify::$(echo "$l" | cut -c1-400)"; done
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Importação Apify, caso ${{ inputs.caso }} (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Importação Apify, caso ${{ inputs.caso }} (run ${{ github.run_id }})"
