@@ -1,0 +1,43 @@
+name: TSE — alienação eleitoral por seção (abstenção, brancos e nulos; dados abertos, grátis)
+
+# Detalhe da apuração por seção + locais de votação (coordenadas). Dado fixo depois de cada turno:
+# roda à mão e, depois do 2º turno, uma vez por dia até o TSE publicar o arquivo do 2º turno.
+on:
+  workflow_dispatch:
+    inputs:
+      turno:
+        description: "turno (1 ou 2)"
+        default: "1"
+  schedule:
+    - cron: "17 13 * * *"   # 10h17 em Brasília: tenta o 2º turno (sem dado, termina com ⛔ e não grava nada novo)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tse-alienacao
+  cancel-in-progress: false
+
+jobs:
+  alienacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Coletar e agregar
+        continue-on-error: true
+        env:
+          TURNO: ${{ github.event_name == 'schedule' && '2' || inputs.turno }}
+        run: |
+          python scripts/collect_alienacao.py --turno "$TURNO" > s.txt 2>&1; rc=$?
+          tail -n 4 s.txt | while IFS= read -r l; do echo "::notice title=Alienação::$(echo "$l" | cut -c1-900)"; done
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "TSE: alienação eleitoral por seção (run ${{ github.run_id }})"

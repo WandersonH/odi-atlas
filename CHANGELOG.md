@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.97 — Alienação eleitoral por seção: coletor (2026-10-22) 🔜
+
+- **Pedido do responsável (22/10, 01h26):** na página de Eleitorado, um mapa de alienação eleitoral (abstenção + brancos + nulos) por cidade e por seção, como o mapa de voto.
+- **Fontes, achadas pela sonda C19.95 (run 39723264242):**
+  - "Detalhe da apuração por seção eleitoral" (`detalhe_votacao_secao_2026.zip`): números por seção, menor que o boletim de urna, que tem 5,08 GB no 1º turno.
+  - "Eleitorado por local de votação 2026": liga seção, local, bairro e latitude/longitude. Em RS, 252 de 55.476 seções estão sem coordenada.
+  - Correspondência TSE→IBGE: `data/elections.json`, a mesma do mapa de voto.
+- **Novo `scripts/collect_alienacao.py`:**
+  - usa o cargo Presidente e calcula alienação = (abstenções + brancos + nulos) / aptos;
+  - saída em `data/tse/alienacao/<N>t/resumo.json` (Brasil, UFs, municípios pelo código IBGE e diagnóstico) e `locais_<UF>.json` (locais com coordenadas e as seções de cada um);
+  - o exterior (ZZ) entra no total do país e fica fora do mapa;
+  - seção sem local ou sem coordenada é contada no diagnóstico.
+- **Workflow `tse-alienacao.yml`:**
+  - roda à mão (`turno`);
+  - por agendamento diário, tenta o 2º turno e termina com ⛔ enquanto o TSE não publicar.
+- **Testes:** `tests/test_alienacao.py` cobre soma por município e por local, exterior e seção sem coordenada. O 1º run real foi disparado em seguida.
+
 ## C19.96 — Casos e análises: casos de busca com o gráfico do Google como principal; 006 e 007 na grade (2026-10-22) ✅
 
 - **Pedido do responsável (22/10, 01h36):** na tela de resumo dos casos, o 002 ("onde nasceu o ladrão") e o 005 (Ana Clara) medem buscas no Google. O gráfico principal deles deveria ser o das buscas, e não "circulação hora a hora" (o print mostrava picos isolados desde 2021).
