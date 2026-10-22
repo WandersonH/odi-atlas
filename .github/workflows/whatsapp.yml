@@ -1,10 +1,10 @@
 name: WhatsApp — seguidores dos canais
 
-# Número público de seguidores de canais de WhatsApp (data/config/whatsapp_canais.json), uma leitura por dia.
+# Número público de seguidores de canais de WhatsApp (data/config/whatsapp_canais.json), uma leitura por hora (pedido de 21/10/2026).
 on:
   workflow_dispatch:
   schedule:
-    - cron: "5 11 * * *"   # todo dia, 08h05 em Brasília
+    - cron: "5 * * * *"   # de hora em hora, no minuto 05
 
 concurrency:
   group: whatsapp

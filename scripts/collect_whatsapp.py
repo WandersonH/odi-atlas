@@ -6,7 +6,8 @@ Mensagens do canal não são lidas aqui. O WhatsApp arredonda o número (mil / m
 ao lado do número convertido, para conferência.
 
 Entrada: data/config/whatsapp_canais.json
-Saída:   data/whatsapp/seguidores.csv (histórico, uma linha por dia e canal — abre no Excel/Sheets),
+Saída:   data/whatsapp/seguidores.csv (histórico, uma linha por dia e canal: a última leitura do dia — abre no Excel/Sheets),
+         data/whatsapp/seguidores_horario.csv (toda leitura, uma por hora desde 21/10/2026),
          data/whatsapp/seguidores_latest.csv e data/whatsapp/manifesto_latest.json
 """
 from __future__ import annotations
@@ -98,7 +99,12 @@ def main(argv=None) -> int:
     novas_chaves = {(l["data"], l["canal_id"]) for l in linhas}
     todas = [r for r in antigas if (r["data"], r["canal_id"]) not in novas_chaves] + linhas
     todas.sort(key=lambda r: (r["data"], r["canal_id"]))
-    for p, rows in ((hist, todas), (d / "seguidores_latest.csv", linhas)):
+    hora = d / "seguidores_horario.csv"  # toda leitura (coleta de hora em hora, pedido de 21/10/2026)
+    ant_h = list(csv.DictReader(open(hora, encoding="utf-8"), delimiter=";")) if hora.exists() else []
+    vistas = {(r["coletado_em_utc"], r["canal_id"]) for r in ant_h}
+    toda_hora = ant_h + [l for l in linhas if (l["coletado_em_utc"], l["canal_id"]) not in vistas]
+    toda_hora.sort(key=lambda r: (r["coletado_em_utc"], r["canal_id"]))
+    for p, rows in ((hist, todas), (d / "seguidores_latest.csv", linhas), (hora, toda_hora)):
         with open(p, "w", encoding="utf-8", newline="") as f:
             w = csv.DictWriter(f, CAMPOS, delimiter=";", lineterminator="\n")
             w.writeheader()

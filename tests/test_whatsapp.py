@@ -30,5 +30,25 @@ class TestWhatsapp(unittest.TestCase):
         self.assertNotIn("seguidores", wa.extrair("<html><body>nada</body></html>"))
 
 
+    def test_historico_horario_acumula_cada_leitura(self):
+        import csv, json, tempfile
+        from pathlib import Path
+        import collect_whatsapp as cw
+        orig_b, orig_n = cw.baixar, cw.now_utc
+        cw.baixar = lambda url, idioma: '<meta property="og:title" content="Canal X"><meta name="d" content="1,2 mil seguidores">'
+        try:
+            with tempfile.TemporaryDirectory() as t:
+                (Path(t) / "data/config").mkdir(parents=True)
+                (Path(t) / "data/config/whatsapp_canais.json").write_text(json.dumps({"canais": [{"id": "A1", "nome": "X", "lado": "Lula"}]}), encoding="utf-8")
+                for hora in ("2026-10-21T22:05:00Z", "2026-10-21T23:05:00Z"):
+                    cw.now_utc = lambda h=hora: h
+                    self.assertEqual(cw.main([t]), 0)
+                ler = lambda n: list(csv.DictReader(open(Path(t) / "data/whatsapp" / n, encoding="utf-8"), delimiter=";"))
+                self.assertEqual(len(ler("seguidores_horario.csv")), 2)
+                self.assertEqual(len(ler("seguidores.csv")), 1)   # a planilha diária guarda a última leitura do dia
+                self.assertEqual(ler("seguidores.csv")[0]["coletado_em_utc"], "2026-10-21T23:05:00Z")
+        finally:
+            cw.baixar, cw.now_utc = orig_b, orig_n
+
 if __name__ == "__main__":
     unittest.main()

@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.89 — WhatsApp: leitura de hora em hora (2026-10-21) ✅
+
+- **Pedido do responsável (21/10, 22h08):** atualizar os canais de WhatsApp de hora em hora.
+- **O que mudou:**
+  - O `whatsapp.yml` passou de uma vez por dia (08h05) para toda hora, no minuto 05 (`5 * * * *`).
+  - `collect_whatsapp.py` grava um arquivo novo, `data/whatsapp/seguidores_horario.csv`, com toda leitura, chaveada por `coletado_em_utc` e canal.
+    - `seguidores.csv` continua com uma linha por dia e canal, a última leitura do dia, e a página segue lendo esse arquivo.
+  - Na página, a coluna "Último registro" mostra data e hora de Brasília. Os textos do cartão e do LEIA-ME passam a dizer "uma leitura por hora".
+- **Testes:**
+  - Suíte completa. Novo `test_historico_horario_acumula_cada_leitura`: duas leituras na mesma data geram 2 linhas no horário e 1 no diário, que fica com a última.
+  - Run manual disparado em seguida.
+- **Observação:** o WhatsApp arredonda o número ("2,2 mi"). Em perfis grandes a leitura de hora em hora tende a repetir o mesmo valor por várias horas.
+
 ## C19.88 — Chat com IA desativado temporariamente (2026-10-21) ✅
 
 - **Pedido do responsável (21/10, 19h29):** desativar o chat temporariamente.
