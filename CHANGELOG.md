@@ -4,6 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.98 — Processos eleitorais 2026 (processual-2026): coletor (2026-10-22) 🔜
+
+- **Pedido do responsável (22/10, 01h26):** acrescentar os dados do conjunto processual-2026.
+- **Estrutura, pela sonda C19.95 com arquivos de 21/10:**
+  - 99.459 linhas de processo, 96.367 processos distintos;
+  - 182.111 assuntos, 136.923 decisões, 616.691 partes e 9.101 recursos.
+- **Novo `scripts/collect_processual.py`:** só agregados no público.
+  - Processos por classe, assunto principal, tribunal e instância (zona, TRE, TSE), mês de autuação e situação.
+  - Decisões por tipo e mês; recursos por classe e tribunal.
+  - Recorte de temas do Observatório lido nos assuntos de cada processo: propaganda, internet e redes, desinformação ou fato inverídico, IA ou conteúdo sintético, pesquisa, abuso de poder e direito de resposta.
+  - Processos em que candidatos a presidente ou vice são parte, pelo `SQ_CANDIDATO` da base de candidaturas: número, classe, assunto, tribunal, datas, polo e link público.
+  - Outras partes nunca têm nome publicado, e relatores também não. O bruto vai para o privado.
+- **Execução:** roda todo dia junto com denúncias e pesquisas (`tse-denuncias-pesquisas.yml`).
+- **Testes:** `tests/test_processual.py` cobre temas, tribunal, candidato com polo e parte comum fora do público.
+
 ## C19.97 — Alienação eleitoral por seção: coletor (2026-10-22) 🔜
 
 - **Pedido do responsável (22/10, 01h26):** na página de Eleitorado, um mapa de alienação eleitoral (abstenção + brancos + nulos) por cidade e por seção, como o mapa de voto.

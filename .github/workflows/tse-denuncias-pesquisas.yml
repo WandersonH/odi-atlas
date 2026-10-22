@@ -1,4 +1,4 @@
-name: TSE — denúncias do Pardal e pesquisas eleitorais registradas (dados abertos, grátis)
+name: TSE — denúncias do Pardal, pesquisas registradas e processos eleitorais (dados abertos, grátis)
 
 on:
   workflow_dispatch:
@@ -37,7 +37,8 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
           python scripts/collect_tse_denuncias_pesquisas.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
-          tail -n 5 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=TSE::$(echo "$l" | cut -c1-500)"; done
+          python scripts/collect_processual.py >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          tail -n 9 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=TSE::$(echo "$l" | cut -c1-500)"; done
           exit $rc
       - name: Gravar no repositório privado
         if: always() && steps.interno.outputs.dir != ''
