@@ -37,3 +37,15 @@ class TestCasoInstagram(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAutorPublico(unittest.TestCase):
+    def test_nome_e_video_so_com_10_mil_seguidores_lidos(self):
+        import build_caso_instagram as b
+        grande = b.autor_publico({"usuario": "u", "nome": "N", "seguidores": 10000, "lido_em_utc": "x"}, "SC")
+        self.assertEqual(grande["autor"], "@u (N)")
+        self.assertEqual(grande["embed"], "https://www.instagram.com/p/SC/embed")
+        pequeno = b.autor_publico({"usuario": "u", "nome": "N", "seguidores": 9999}, "SC")
+        self.assertNotIn("u", pequeno["autor"].split())
+        self.assertNotIn("embed", pequeno)
+        self.assertTrue(b.autor_publico(None, "SC")["autor"].startswith("⛔"))

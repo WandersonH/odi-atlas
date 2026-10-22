@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.107 — Casos 006 e 007: o post do caso aparece incorporado na página; autor do reel com nome (2026-10-22) ⚠️
+
+**O que mudou.** Pedido do responsável: "toda vez que temos um case de post seja video seria bom ter ele na pagina".
+- `build_caso_instagram.py` lê `ODI_INTERNO_DIR/casos/<caso>/perfil_instagram.json` (C19.104). Com 10 mil seguidores ou mais, o reel sai com nome, link e endereço de incorporação; abaixo disso, sem nome e sem link; sem leitura, ⛔ como antes. Caso 007: @fmachado79, 1.726.409 seguidores (leitura de 22/10/2026, run Apify dCMRChWfUc8N2J3q2, custo 0).
+- Página dos casos: o card "Conversa no X/Instagram" mostra o post incorporado da própria plataforma (X: `platform.twitter.com/embed/Tweet.html`, a partir do link do post original; Instagram: `/p/<código>/embed`) e o link "Abrir no …". Vale para qualquer caso futuro com conversa importada.
+
+**Teste.** `python -m unittest discover -s tests -v`: 212 OK (novo `test_nome_e_video_so_com_10_mil_seguidores_lidos`). `build_caso_instagram.py --caso 007` e `build_caso_busca.py --caso 007` rodados aqui com `ODI_INTERNO_DIR` (1.654 comentários únicos; YouTube 77 vídeos, inalterado). Render local com Chromium: os dois iframes aparecem nos cards (src conferidos), sem erro de JavaScript.
+
+**Ressalva.** O conteúdo dos iframes não foi visto aqui: o proxy deste ambiente bloqueia instagram.com e platform.twitter.com. Conferir no site publicado.
+
 ## C19.106 — Debate no YouTube: coletor passa a acumular; vídeos e comentários perdidos recuperados do histórico (2026-10-22) ⚠️
 
 **O que mudou.** A coleta de 22/10 (run 39727118468) achou 69 vídeos, contra 426 em 21/10: 9 buscas falharam com HTTP 429 (cota da YouTube Data API) e `collect_debate_youtube.py` reescrevia a lista e o arquivo privado de comentários só com o que a coleta do dia devolvia. Agora:

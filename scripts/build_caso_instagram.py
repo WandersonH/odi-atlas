@@ -7,8 +7,9 @@ Caso 007 (pedido de 22/10/2026, 01h09): fake news "Lula amassa a bandeira no dia
 para os números do vídeo) são do mesmo reel, publicado em 04/10/2026, dia do 1º turno. Os mesmos comentários aparecem em
 várias execuções e contam uma vez (por id do comentário).
 
-Privacidade: quem comenta nunca aparece com nome no público. O perfil que publicou o reel só aparece com nome se tiver
-10 mil seguidores ou mais — as coletas não trazem o número de seguidores dele, então fica sem nome e sem link (⛔).
+Privacidade: quem comenta nunca aparece com nome no público. O perfil que publicou o reel só aparece com nome, link e o
+vídeo incorporado se tiver 10 mil seguidores ou mais, conforme a leitura em ODI_INTERNO_DIR/casos/<caso>/perfil_instagram.json
+(scripts/checar_seguidores_perfil.py); sem essa leitura, fica sem nome e sem link (⛔).
 
 Entrada: ODI_INTERNO_DIR/casos/<caso>/apify/*.json.
 Saída privada: ODI_INTERNO_DIR/casos/<caso>/instagram_comentarios.csv.gz e corpus_iramuteq_instagram.txt.
@@ -104,7 +105,18 @@ def unificar(arquivos: list[Path], shortcode: str) -> tuple[dict, dict, dict]:
     return coms, reel, stats
 
 
-def agregar(coms: dict, reel: dict, stats: dict, cfg: dict) -> dict:
+def autor_publico(perfil: dict | None, shortcode: str) -> dict:
+    """Nome, link e incorporação do reel só com 10 mil+ seguidores lidos; senão, ⛔ e nada que identifique o perfil."""
+    if perfil and isinstance(perfil.get("seguidores"), int) and perfil["seguidores"] >= MIN_PUBLICO:
+        return {"autor": f"@{perfil['usuario']}" + (f" ({perfil['nome']})" if perfil.get("nome") else ""), "autor_seguidores": perfil["seguidores"],
+                "autor_verificado": bool(perfil.get("verificado")), "autor_seguidores_lido_em_utc": perfil.get("lido_em_utc"),
+                "url": f"https://www.instagram.com/p/{shortcode}/", "embed": f"https://www.instagram.com/p/{shortcode}/embed"}
+    if perfil and isinstance(perfil.get("seguidores"), int):
+        return {"autor": f"perfil com menos de {MIN_PUBLICO:,} seguidores".replace(",", "."), "autor_seguidores": None}
+    return {"autor": "⛔ perfil pessoal sem número de seguidores coletado: nome e link ficam no repositório privado"}
+
+
+def agregar(coms: dict, reel: dict, stats: dict, cfg: dict, perfil: dict | None = None) -> dict:
     cats = {k: re.compile(v, re.I) for k, v in cfg["categorias"].items()}
     cs = list(coms.values())
     hora = Counter((c["criado_em_utc"] or "")[:13] for c in cs if c["criado_em_utc"])
@@ -112,8 +124,7 @@ def agregar(coms: dict, reel: dict, stats: dict, cfg: dict) -> dict:
     curt = sorted((c["curtidas"] or 0 for c in cs), reverse=True)
     return {"reel": {"publicado_em_utc": reel.get("timestamp"), "reproducoes": reel.get("videoPlayCount"), "curtidas": reel.get("likesCount"),
                      "comentarios_informados": reel.get("commentsCount"), "compartilhamentos": reel.get("sharesCount"), "duracao_s": reel.get("videoDuration"),
-                     "lido_em_utc": reel.get("lido_em_utc"),
-                     "autor": "⛔ perfil pessoal sem número de seguidores coletado: nome e link ficam no repositório privado"},
+                     "lido_em_utc": reel.get("lido_em_utc"), **autor_publico(perfil, cfg["shortcode"])},
             "unificacao": {**stats, "duplicados_removidos": stats["itens_brutos"] - stats["comentarios_unicos"] - (1 if reel else 0),
                            "autores_unicos": len({c["autor_id"] or c["autor_usuario"] for c in cs}),
                            "cobertura": {"comentarios_coletados": len(cs), "comentarios_informados_pelo_instagram": reel.get("commentsCount")}},
@@ -138,11 +149,13 @@ def main(argv=None) -> int:
         print(f"⛔ caso {caso}: nenhuma coleta importada")
         return 1
     coms, reel, stats = unificar(arqs, cfg["shortcode"])
+    arq_perfil = pv / "perfil_instagram.json"
+    perfil = json.loads(arq_perfil.read_text(encoding="utf-8")) if arq_perfil.exists() else None
     with gzip.open(pv / "instagram_comentarios.csv.gz", "wt", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, CAMPOS, delimiter=";", lineterminator="\n")
         w.writeheader()
         w.writerows({**c, "runs": "|".join(sorted(c["runs"]))} for c in sorted(coms.values(), key=lambda c: c["criado_em_utc"] or ""))
-    out = {"schema_version": 1, "caso": caso, "plataforma": "Instagram", "titulo": cfg["titulo"], "gerado_em_utc": now_utc(), **agregar(coms, reel, stats, cfg),
+    out = {"schema_version": 1, "caso": caso, "plataforma": "Instagram", "titulo": cfg["titulo"], "gerado_em_utc": now_utc(), **agregar(coms, reel, stats, cfg, perfil),
            "nota": "Coletas de comentários do Instagram feitas no Apify em 06 e 07/10/2026, importadas sem nova execução e unificadas por id do "
                    "comentário. É o que as coletas devolveram (ordem 'populares' do Instagram), não o total. Categorias = pré-codificação por "
                    "dicionário, não decisão. Quem comenta nunca aparece com nome; texto e autor ficam no repositório privado."}
