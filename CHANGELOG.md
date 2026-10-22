@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.110 — Facebook: leitura retroativa das páginas principais desde 20/07 (Lula e Flávio) (2026-10-22) 🔜
+
+**O que mudou.** Pedido do responsável (22/10, 19h03: "a coleta do período que não temos do Lula no Face"; 19h05: "pode rodar" sobre a opção 1, teto de US$ 7,50, conta 1). No acervo, os posts de Lula começam em 02/10 e os de Flávio em 26/08.
+- `collect_facebook_posts.py --retroativo` (novo modo, configuração `retroativo` em `data/config/facebook_posts.json`): só as páginas `lula` (até 1.100 posts) e `flaviobolsonaro` (até 400), desde 20/07, uma página por vez, Lula primeiro. Cada página tem como teto o que sobra do total (custo real da Apify), então a soma não passa de US$ 7,50. O teto conta o que já foi gasto em execuções retroativas anteriores com o mesmo início.
+- Correção: o acervo descartava posts anteriores a 16/08 (`desde` da carga), então a pré-campanha nunca ficava guardada. O piso agora é o menor entre esse início e o `desde` da leitura.
+- `facebook-posts.yml`: modo `retroativo`.
+
+**Teste.** `python -m unittest discover -s tests -v`: OK. Novo `test_retroativo_so_paginas_autorizadas_teto_e_pre_campanha`: pede só lula e flaviobolsonaro, nessa ordem, desde 20/07; o custo fica no teto; posts de 25/07 ficam no acervo.
+
+**Pendente.** Execução real e números (próxima entrada).
+
 ## C19.109 — Caso 008: camisas do PT em Piracicaba (reel do Instagram, YouTube, imprensa) (2026-10-22) 🔜
 
 **O que mudou.** Pedido do responsável (22/10, 18h48), com coleta autorizada na conta 1 do Apify e teto de US$ 3,00:

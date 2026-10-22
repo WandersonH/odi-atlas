@@ -150,5 +150,22 @@
   },
   "autorizacao": "Responsável em 22/10/2026, 00h13 ('pode rodar'), sobre a proposta de 00h12: preencher os posts de 18 a 20/10 na conta 1, teto de US$ 1,00, uma vez.",
   "nota": "O filtro onlyPostsOlderThan não funciona neste ator (nota_pre), então a leitura vai de 18/10 até hoje e os posts de 21–22/10 já coletados são lidos e pagos de novo."
+ },
+ "retroativo": {
+  "segredo": "APIFY_TOKEN",
+  "desde": "2026-07-20",
+  "teto_usd": 7.5,
+  "paginas": [
+   "lula",
+   "flaviobolsonaro"
+  ],
+  "posts_por_pagina": {
+   "lula": 1100,
+   "flaviobolsonaro": 400,
+   "principal": 0,
+   "outras": 0
+  },
+  "autorizacao": "Responsável em 22/10/2026, 19h05 ('pode rodar'), sobre a proposta de 19h03 (opção 1): página principal de Lula desde 20/07 e de Flávio de 20/07 a 25/08, conta 1, teto de US$ 7,50, uma vez.",
+  "nota": "O ator não aceita data final (onlyPostsOlderThan não funciona): lê de hoje para trás até 20/07, relendo e pagando de novo os posts de outubro. O ator pode parar perto de 1.000 posts por página; o mais antigo lido fica no manifesto."
  }
 }

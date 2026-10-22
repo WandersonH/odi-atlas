@@ -51,7 +51,8 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/facebook_posts.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
-    lacuna = "--lacuna" in argv  # uma vez: cfg["lacuna"] (conta 1, desde fixo, teto próprio)
+    lacuna = "--lacuna" in argv or "--retroativo" in argv  # uma vez: cfg["lacuna"] ou cfg["retroativo"] (conta 1, desde fixo, teto próprio)
+    chave = "retroativo" if "--retroativo" in argv else "lacuna"
     diario = "--diario" in argv or lacuna
     pre = "--pre" in argv  # só a pré-campanha (de `desde` até `pre_ate`), sem repetir os posts já coletados da campanha
     pasta = root / "data/facebook"
@@ -63,9 +64,9 @@ def main(argv=None, executar=None) -> int:
         import datetime as dt
         D = cfg["diario"]
         if lacuna:
-            L = cfg["lacuna"]
+            L = cfg[chave]
             desde = L["desde"]
-            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "lacuna" and m.get("desde") == desde), 4)
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == chave and m.get("desde") == desde), 4)
             teto = round(L["teto_usd"] - ja, 4)
         else:
             ontem = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
@@ -77,8 +78,8 @@ def main(argv=None, executar=None) -> int:
         resta = round(cfg["teto_total_usd"] - ja, 4)
         teto = min(cfg["teto_teste_usd"], resta) if teste else resta
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}",
-           "modo": "lacuna" if lacuna else "diário" if diario else "teste" if teste else "pré-campanha" if pre else "carga",
-           "teto_total_usd": cfg["lacuna"]["teto_usd"] if lacuna else cfg["diario"]["teto_mes_usd"] if diario else cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto,
+           "modo": chave if lacuna else "diário" if diario else "teste" if teste else "pré-campanha" if pre else "carga",
+           "teto_total_usd": cfg[chave]["teto_usd"] if lacuna else cfg["diario"]["teto_mes_usd"] if diario else cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto,
            "desde": desde, "paginas": []}
 
     def fim(status: str, code: int) -> int:
@@ -113,9 +114,12 @@ def main(argv=None, executar=None) -> int:
         alvos = [(next(x for x in cfg["paginas"] if x["url"] == cfg["teste"]["pagina"]), cfg["teste"]["posts"])]
     else:
         alvos, est = [], 0.0
-        cota = cfg["lacuna"]["posts_por_pagina"] if lacuna else cfg["diario"]["posts_por_pagina"] if diario else cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
+        cota = cfg[chave]["posts_por_pagina"] if lacuna else cfg["diario"]["posts_por_pagina"] if diario else cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
+        so = (cfg[chave].get("paginas") if lacuna else None) or None  # retroativo: só as páginas autorizadas
         for pg in cfg["paginas"]:
-            n = cota["principal" if pg.get("principal") else "outras"]
+            if so and pg["perfil"] not in so:
+                continue
+            n = cota.get(pg["perfil"]) or cota["principal" if pg.get("principal") else "outras"]
             if not n:
                 continue
             if diario:
@@ -141,10 +145,11 @@ def main(argv=None, executar=None) -> int:
     if diario:
         # uma página por vez: o teto de cada página é o que sobra do dia, pelo custo real das anteriores
         res, sobra = [], teto
-        for pg, n in sorted(alvos, key=lambda a: not a[0].get("principal")):
+        ordem = so or []
+        for pg, n in sorted(alvos, key=lambda a: (not a[0].get("principal"), ordem.index(a[0]["perfil"]) if a[0]["perfil"] in ordem else 99)):
             n = min(n, int((sobra - p["inicio"]) / p["post"] / 1.05))
             if n < 1:
-                res.append((pg, 0, {}, [], f"teto {'da lacuna' if lacuna else 'do dia'} de US$ {teto} atingido (não executado)"))
+                res.append((pg, 0, {}, [], f"teto {'da ' + chave if lacuna else 'do dia'} de US$ {teto} atingido (não executado)"))
                 continue
             r = um((pg, n))
             res.append(r)
@@ -163,7 +168,8 @@ def main(argv=None, executar=None) -> int:
         gasto += custo
         for x in posts:
             r = linha(x, pg, agora, acervo.get(str(g(x, "postId", "id"))) or {})
-            if r["video_id"] and (r["publicado_em"] or "9") >= cfg["desde"]:
+            # piso = o menor entre o início da campanha e o `desde` desta leitura (o retroativo guarda a pré-campanha, desde 20/07)
+            if r["video_id"] and (r["publicado_em"] or "9") >= min(cfg["desde"], desde):
                 novos += 0 if r["video_id"] in acervo else 1
                 acervo[r["video_id"]] = r
         man["paginas"].append({"perfil": pg["perfil"], "url": pg["url"], "candidato": pg["candidato"], "pedido": n, "lidos": len(posts),

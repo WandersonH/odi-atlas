@@ -90,6 +90,33 @@ class TestFacebook(unittest.TestCase):
         self.assertLessEqual(man2["gasto_antes_usd"] + (man2.get("custo_usd") or 0), cfg["lacuna"]["teto_usd"] + 1e-9)
         self.assertGreaterEqual(n, 1)
 
+    def test_retroativo_so_paginas_autorizadas_teto_e_pre_campanha(self):
+        pedidos = []
+
+        def fake(payload, cap):
+            pedidos.append((payload, cap))
+            n = payload["resultsLimit"]
+            return ({"id": "r", "usageTotalUsd": round(0.001 + 0.005 * n, 4)},
+                    [{"postId": f"{len(pedidos)}-{i}", "time": "2026-07-25T12:00:00.000Z"} for i in range(n)])
+        cfg = json.loads((RAIZ / "data/config/facebook_posts.json").read_text(encoding="utf-8"))
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as t:
+            (Path(t) / "data/config").mkdir(parents=True)
+            (Path(t) / "data/config/facebook_posts.json").write_text(json.dumps(cfg), encoding="utf-8")
+            os.chdir(t)
+            try:
+                fb.main(["--retroativo"], executar=fake)
+                man = json.loads(Path("data/facebook/manifesto_latest.json").read_text(encoding="utf-8"))
+                import csv, gzip
+                datas = [r["publicado_em"] for r in csv.DictReader(gzip.open("data/facebook/videos.csv.gz", "rt", encoding="utf-8"), delimiter=";")]
+            finally:
+                os.chdir(cwd)
+        self.assertEqual(man["modo"], "retroativo")
+        self.assertEqual([p["startUrls"][0]["url"] for p, _ in pedidos], ["https://www.facebook.com/lula", "https://www.facebook.com/flaviobolsonaro"])
+        self.assertEqual(pedidos[0][0]["onlyPostsNewerThan"], "2026-07-20")
+        self.assertLessEqual(man["custo_usd"], cfg["retroativo"]["teto_usd"] + 1e-9)
+        self.assertTrue(datas and all(d[:10] == "2026-07-25" for d in datas))  # pré-campanha fica no acervo
+
 
 if __name__ == "__main__":
     unittest.main()
