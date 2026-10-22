@@ -4,7 +4,7 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.93 — Caso 006 (PCC e CV como organizações terroristas): importação das coletas do X de 23–24/09 (2026-10-22) 🔜
+## C19.93 — Casos 006 (PCC e CV terroristas, X) e 007 ("Lula amassa a bandeira", Instagram); 004 unido ao 003 (2026-10-22) ⚠️
 
 - **Pedido do responsável (22/10, 01h05):** criar o caso a partir do post de Marco Rubio (x.com/SecRubio/status/2060119225176404134), classificação "PCC, organizações terroristas". O pedido inclui:
   - trazer do Apify as coletas feitas em 23 e 24/09;
@@ -18,6 +18,33 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Dataset já apagado pela retenção do Apify fica registrado como ⛔.
 - **Workflow `importar-apify.yml`:** só disparo manual, conta 1.
 - **Testes:** `tests/test_importar_apify.py` cobre janela de datas, só GET, dataset apagado registrado como ⛔ e entrada fora do público.
+- **Importação real, só leitura, conta 1:**
+  - **Caso 006** (run 39720596762): 11 execuções em 23–24/09, todas com dados, 4.274 itens. Todas são do mesmo post de Rubio:
+    - 5 de respostas, citações e fio, nos dois atores;
+    - 3 de quem repostou;
+    - as demais trouxeram só o post.
+  - **Caso 007** (run 39720866598, janela 06–07/10, ator contendo "instagram"): 7 execuções, 3.001 itens, todas do mesmo reel (`DeFBlCfM1vy`).
+    - Duas de comentários no datadoping, uma no apify/instagram-comment-scraper e uma no reel scraper.
+    - Três no ator próprio adswanderson/instagram-circulation-comments voltaram vazias.
+- **Unificação e duplicados:**
+  - `scripts/build_caso_x.py` (006), por id do post e id do perfil:
+    - 4.274 itens → 1.551 posts únicos (1 original, 1.104 respostas, 443 citações, 3 do fio) + 294 perfis que repostaram;
+    - 2.429 repetidos removidos; 1.216 autores.
+    - Cobertura frente ao que o X informa no post: 19.242 respostas, 3.083 citações e 23.951 reposts.
+  - `scripts/build_caso_instagram.py` (007), por id do comentário:
+    - 3.001 itens → 1.654 comentários únicos, 1.346 repetidos removidos, 1.466 autores.
+    - O reel tinha 11.487.458 reproduções e 70.558 comentários quando foi lido, em 07/10.
+  - Bruto unificado só no privado: `casos/006/x_posts.csv.gz`, `x_repostadores.csv.gz`, `casos/007/instagram_comentarios.csv.gz` e os corpora do IRaMuTeQ.
+  - Público: `data/casos/006/x.json`, `data/casos/007/instagram.json` e os GEXF.
+- **Privacidade:**
+  - Caso 006: nomes só de perfis com 10 mil seguidores ou mais. Os demais entram só nas contagens, e a rede de respostas usa códigos.
+  - Caso 007: quem comenta nunca aparece com nome. O autor do reel é um perfil pessoal sem número de seguidores coletado, então nome e link ficam no privado (⛔ na página).
+- **Padrão dos casos:**
+  - 006 e 007 entraram em `collect_caso_busca.py` (Trends, YouTube, imprensa, checagens) e no laço diário de `casos-busca.yml`. Esse laço refaz a unificação antes do build.
+  - `build_caso_busca.py` junta as conversas no `busca.json` e acrescenta as redes `respostas_x`, `palavras_x` e `palavras_instagram`.
+  - Na página: abas "PCC e CV terroristas (X)" e "Lula amassa a bandeira", cada uma com o bloco "Conversa no X / no Instagram". O bloco traz números, unificação, pré-codificação, série por dia, mais curtidos públicos e quem repostou.
+- **Caso 004:** o responsável disse em 22/10, 01h13, que "o 3 e 4 são a mesma coisa". `casos.json` marca o 004 com `unido_a: "003"` e o índice o mostra como "unido ao caso 003". O registro não foi apagado.
+- **Testes:** `test_caso_x`, `test_caso_instagram` e `test_importar_apify`, todos com dados fictícios. O run real do `casos-busca` para 006 e 007 foi disparado em seguida.
 
 ## C19.92 — Anúncios: clicar no anunciante filtra os anúncios dele (2026-10-22) ✅
 

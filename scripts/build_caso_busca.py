@@ -137,6 +137,19 @@ def main(argv=None) -> int:
     pasta = Path("data/casos") / caso
     pasta.mkdir(parents=True, exist_ok=True)
     out["redes"], out["classes"] = redes(caso, c, pv, pasta, {v["id"] for v in (c.get("youtube") or {}).get("videos", [])})
+    # conversas em redes sociais importadas para o caso (build_caso_x.py e similares): entram na página do caso
+    out["conversas"] = []
+    for arq in ("x.json", "instagram.json"):
+        f = pasta / arq
+        if f.exists():
+            cv = json.loads(f.read_text(encoding="utf-8"))
+            plat = cv.get("plataforma") or arq.split(".")[0]
+            for k, r in (cv.get("redes") or {}).items():
+                if isinstance(r, dict) and r.get("desenho"):
+                    out["redes"][f"{k}_{plat.lower()}"] = r
+            if not out["classes"] and cv.get("classes"):
+                out["classes"] = {**cv["classes"], "fonte": plat}
+            out["conversas"].append({k: v for k, v in cv.items() if k not in ("redes", "classes")})
     (pasta / "busca.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     cm = out["comentarios"] or {}
     print(f"caso {caso}: YouTube {y and y['videos']} vídeos · {y and y['visualizacoes']} visualizações · comentários lidos {cm.get('comentarios')} · "

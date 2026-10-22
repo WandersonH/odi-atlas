@@ -62,6 +62,19 @@ CASOS = {
             "desde_yt": "2026-09-25T00:00:00Z", "rx_titulo": r"devendo|\bbets?\b|apostas", "rx_atributo": r"flamengo|lula|torcida|meng[aã]o",
             "checagens": ["ninguém morre nos devendo", "Flamengo bets protesto torcida"],
             "arquivo_web": ["https://www.aosfatos.org/noticias/posts-nao-mostram-protesto-da-torcida-do-flamengo-contra-fim-das-bets/"]},
+    # 22/10 (01h05): PCC e CV classificados como organizações terroristas pelos EUA (post de Marco Rubio, 28/05/2026)
+    "006": {"variantes": ["PCC terrorista", "Comando Vermelho terrorista", "PCC organização terrorista", "Rubio PCC"],
+            "controles": ["PCC", "Comando Vermelho"], "janelas": ["today 12-m", "now 7-d"],
+            "youtube": ["PCC organização terrorista", "EUA PCC Comando Vermelho terroristas", "Rubio PCC Comando Vermelho", "PCC CV terroristas Trump"],
+            "desde_yt": "2026-05-01T00:00:00Z", "rx_titulo": r"\bpcc\b|comando vermelho|\bcv\b|primeiro comando",
+            "rx_atributo": r"terror|rubio|\beua\b|estados unidos|trump|designa|classifica|narco",
+            "checagens": ["PCC terrorista", "Comando Vermelho terrorista Estados Unidos"], "arquivo_web": []},
+    # 22/10 (01h09): fake news "Lula amassa a bandeira no dia da eleição" (reel de 04/10/2026)
+    "007": {"variantes": ["Lula amassa bandeira", "Lula bandeira amassada", "Lula bandeira do Brasil"],
+            "controles": ["Lula bandeira", "bandeira do Brasil"], "janelas": ["today 12-m", "now 7-d"],
+            "youtube": ["Lula amassa bandeira", "Lula amassou a bandeira", "Lula bandeira do Brasil eleição"],
+            "desde_yt": "2026-10-01T00:00:00Z", "rx_titulo": r"bandeira", "rx_atributo": r"lula|amass|elei|vot|urna",
+            "checagens": ["Lula amassa bandeira", "Lula bandeira do Brasil amassada"], "arquivo_web": []},
 }
 CASO = "002"
 TOP_COMENTARIOS = 30

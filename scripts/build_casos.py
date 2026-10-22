@@ -270,6 +270,8 @@ def main(argv=None) -> int:
         pasta = root / "data/casos" / caso["id"]
         arq = Path(interno) / "casos" / caso["id"] / "itens.csv.gz" if interno else None
         estado = "aguardando confirmação de datas e termos" if not caso.get("coletar") else "sem coleta ainda"
+        if caso.get("unido_a"):
+            estado = f"unido ao caso {caso['unido_a']}"  # 22/10/2026: o responsável juntou o 004 ao 003
         n = None
         if arq and arq.exists():
             pasta.mkdir(parents=True, exist_ok=True)
