@@ -2153,7 +2153,7 @@ async function abrir(id){const meta0=IDX.casos.find(c=>c.id===id);if(meta0&&meta
  if(BUSCA.has(c.id)){if(!abrir.jan||abrir.jan!==c.id){janBusca=JAN0[c.id]||'today 12-m';abrir.jan=c.id;$('csJan').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===janBusca)));}const B=await J(`./data/casos/${c.id}/busca.json`);const desenhar=()=>linhaBusca($('csTrends'),B&&B.trends);desenhar();
   $('csJan').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{janBusca=b.dataset.v;$('csJan').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));desenhar();}));}
  $('csCaso').querySelectorAll('[data-aba]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setTab(a.dataset.aba);}));}
-J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class="odi-signal">⛔ Índice de casos ainda não gerado.</div>';return;}IDX=d;abrir((d.casos.find(c=>c.estado==='coletado')||d.casos[0]).id);});})();
+J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class="odi-signal">⛔ Índice de casos ainda não gerado.</div>';return;}d.casos=d.casos.filter(c=>!String(c.estado||'').startsWith('unido'));/* 004 unido ao 003 (22/10/2026): não aparece como cartão próprio */IDX=d;abrir((d.casos.find(c=>c.estado==='coletado')||d.casos[0]).id);});})();
 </script>
 
 <style>

@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.105 — Casos: o 004 sai da grade (unido ao 003) (2026-10-22) ✅
+
+- **Reclamação do responsável (22/10, 02h06), com print:** a grade de "Casos e análises" ainda mostrava o cartão "004 · Flamengo e a proibição das bets", com o selo "unido ao caso 003".
+- **O que mudou:** a página filtra da grade os casos com estado "unido ao caso …". O 004 fica só no `casos.json` e no `indice.json`, como registro, e deixa de aparecer como cartão. Nenhum dado foi apagado.
+- **Testes:** suíte completa. No Chromium, a grade deixa de ter o cartão 004 e não há erro de JavaScript.
+
 ## C19.104 — Caso 007: leitura dos seguidores do autor do reel, para a regra de nome (2026-10-22) 🔜
 
 - **Pedido do responsável (22/10, 02h03):** "toda vez que temos um case de post, seja vídeo, seria bom ter ele na página" (Lula e a bandeira).
