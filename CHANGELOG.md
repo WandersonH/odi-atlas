@@ -4,6 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.103 — Rótulo de IA: busca diária de notícias sobre IA nas eleições (2026-10-22) 🔜
+
+- **Pedido do responsável (22/10, 02h02):** "adicionar uma busca de notícias desta forma na página do caso" (a de IA), no mesmo formato da reportagem do NYT.
+- **Novo `scripts/collect_imprensa_ia.py`:**
+  - busca no Google Notícias (RSS público, grátis) com 9 consultas, 6 em português e 3 em inglês, configuradas em `data/config/imprensa_ia.json`, com janela de 30 dias;
+  - só entram títulos que falam de IA ou deepfake e também de eleição, candidato ou Brasil;
+  - o acervo acumula por link e nada é apagado;
+  - saída em `data/ia/imprensa.json`.
+  - Roda todo dia junto com o `rotulo-ia.yml`.
+- **Página:** bloco 05 · Na imprensa, com a reportagem do NYT em destaque e a lista da busca diária (data, veículo, título com link, idioma) com filtro por idioma.
+- **Testes:**
+  - `tests/test_imprensa_ia.py` cobre o filtro e o acúmulo sem duplicar.
+  - O 1º run real foi disparado em seguida e o número de notícias está no arquivo.
+
 ## C19.102 — Rótulo de IA: reportagem do New York Times (21/10) como referência (2026-10-22) ✅
 
 - **Pedido do responsável (22/10, 01h59 e 02h02):** link e PDF da reportagem "A.I. Election Videos Are Flooding Brazil. Could They Sway the Vote?" (Ana Ionova, NYT, 21/10/2026).

@@ -50,6 +50,7 @@ jobs:
           a=""; if [ "$TIKTOK" = "false" ]; then a="--sem-tiktok"; fi
           python scripts/collect_rotulo_ia.py $a > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
           python scripts/build_rotulo_ia.py . >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          python scripts/collect_imprensa_ia.py >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
           tail -n 9 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Rótulo de IA::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Gravar no repositório privado

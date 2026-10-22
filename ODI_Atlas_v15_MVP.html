@@ -2408,7 +2408,7 @@ if($('pesquisasTse'))fetch('./data/tse/pesquisas/resumo.json',{cache:'no-store'}
     <div class="al-cols" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:12px"><div><h3 class="tk-h3">Por mês de autuação</h3><div id="riJusMes"></div></div><div><h3 class="tk-h3">Onde tramitam</h3><div id="riJusTrib"></div></div></div>
     <h3 class="tk-h3" style="margin-top:12px">Processos</h3><div class="pt-chips" id="riJusF" role="group" aria-label="Filtro"></div><input id="riJusBusca" type="search" placeholder="filtrar por classe, tribunal, assunto ou chapa" style="border:1px solid #172238;background:#fffdf8;padding:7px 9px;min-width:300px;margin:6px 0">
     <div class="db-scroll" style="max-height:520px"><table class="db-tab" id="riJusLista"></table></div><p class="yt-cloudnote" id="riJusNota"></p></div>
-  <div class="card yc-block" id="riImprensa"><div class="eyebrow">05 · Na imprensa · The New York Times, 21/10/2026</div>
+  <div class="card yc-block" id="riImprensa"><div class="eyebrow">05 · Na imprensa · destaque: The New York Times, 21/10/2026 · e busca diária de notícias</div>
     <h2 class="tk-h2">"A.I. Election Videos Are Flooding Brazil. Could They Sway the Vote?"</h2>
     <p class="yt-cloudnote" style="font-size:13px">Reportagem de Ana Ionova (com Thayz Guimarães, Leonardo Coelho, Isabela Cruz e Lis Moriconi). Resumo do Atlas, em português:</p>
     <ul class="yt-cloudnote" style="font-size:13px;line-height:1.55;margin:6px 0 10px 18px">
@@ -2427,9 +2427,23 @@ if($('pesquisasTse'))fetch('./data/tse/pesquisas/resumo.json',{cache:'no-store'}
       <tr><td>Checadores sobrecarregados pelo volume</td><td>Checagens publicadas sobre IA ou montagem (bloco 03).</td></tr>
       <tr><td>Exemplos no TikTok, Instagram, Kwai e X</td><td>⛔ Os perfis citados não estão na coleta do Atlas; podem ser incluídos na leitura de rótulo do TikTok (grátis) se o responsável pedir.</td></tr>
     </tbody></table></div>
+    <h3 class="tk-h3" style="margin-top:14px">Busca diária de notícias sobre IA nas eleições</h3><p class="yt-cloudnote" id="riNewsStatus">Aguardando leitura.</p><div class="pt-chips" id="riNewsF"></div><div class="db-scroll" style="max-height:460px"><table class="db-tab" id="riNews"></table></div>
     <p class="yt-cloudnote"><a href="https://www.nytimes.com/2026/10/21/world/americas/ai-election-videos-brazil.html" target="_blank" rel="noopener noreferrer">The New York Times ↗</a> · <a href="https://archive.is/20261021091721/https://www.nytimes.com/2026/10/21/world/americas/ai-election-videos-brazil.html" target="_blank" rel="noopener noreferrer">cópia no archive.today (21/10/2026, 09:17 UTC) ↗</a>. Resumo do Atlas; números e falas são da reportagem, não medidos pelo Atlas.</p></div>
   <div class="card yc-block"><div class="eyebrow">Método e limites</div><div class="yt-cloudnote" id="riMetodo"></div></div>
 </section>
+<script>
+/* Caderno 08 · Rótulo de IA · imprensa (data/ia/imprensa.json — scripts/collect_imprensa_ia.py) */
+(function(){const $=id=>document.getElementById(id);if(!$('riNews'))return;
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=d=>d?d.slice(0,10).split('-').reverse().join('/'):'—';
+let I=[],f='todos';
+const draw=()=>{const xs=I.filter(x=>f==='todos'||x.idioma===f);$('riNews').innerHTML=`<thead><tr><th>Data</th><th>Veículo</th><th>Título</th><th>Idioma</th></tr></thead><tbody>${xs.slice(0,200).map(x=>`<tr><td class="n" style="font-size:11px">${fmt(x.data_publicacao)}</td><td>${esc(x.veiculo)}</td><td><a href="${esc(x.link)}" target="_blank" rel="noopener noreferrer">${esc(x.titulo)}</a></td><td>${esc(x.idioma)}</td></tr>`).join('')||'<tr><td colspan="4">⛔ nenhuma notícia neste recorte</td></tr>'}</tbody>`;};
+fetch('./data/ia/imprensa.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(D=>{if(!D){$('riNewsStatus').textContent='⛔ Busca ainda não rodou.';return;}
+ I=D.itens||[];$('riNewsStatus').textContent=`${I.length.toLocaleString('pt-BR')} notícias no acervo · atualizado em ${new Date(D.atualizado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})} · ${D.fonte}. ${D.nota}`;
+ const n=k=>I.filter(x=>k==='todos'||x.idioma===k).length;$('riNewsF').innerHTML=[['todos','todas'],['pt','português'],['en','inglês']].map(([k,r])=>`<button type="button" data-k="${k}" aria-pressed="${k===f}">${r} <small>${n(k)}</small></button>`).join('');
+ $('riNewsF').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{f=b.dataset.k;$('riNewsF').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));draw();}));draw();})
+ .catch(()=>{$('riNewsStatus').textContent='⛔ Falha ao ler as notícias.';});})();
+</script>
+
 <script>
 /* Caderno 08 · Rótulo de IA · processos sobre IA e deepfake (data/tse/processual/resumo.json → temas, tema_por_chapa) */
 (function(){const $=id=>document.getElementById(id);if(!$('riJus'))return;
