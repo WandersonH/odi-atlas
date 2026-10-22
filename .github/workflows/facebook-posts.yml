@@ -11,7 +11,7 @@ on:
       modo:
         description: "teste (10 posts de facebook.com/lula) · carga (todas as páginas) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [diario, teste, carga, pre-campanha, so-analises]
+        options: [diario, lacuna, teste, carga, pre-campanha, so-analises]
         default: teste
 
 concurrency:
@@ -46,7 +46,7 @@ jobs:
         if: github.event.inputs.modo != 'so-analises'
         continue-on-error: true
         env:
-          APIFY_TOKEN: ${{ (github.event_name == 'schedule' || github.event.inputs.modo == 'diario') && secrets.APIFY_TOKEN || '' }}
+          APIFY_TOKEN: ${{ (github.event_name == 'schedule' || github.event.inputs.modo == 'diario' || github.event.inputs.modo == 'lacuna') && secrets.APIFY_TOKEN || '' }}
           APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
@@ -64,7 +64,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event_name == 'schedule' && 'diario' || github.event.inputs.modo }}
         run: |
-          case "$MODO" in diario) a="--diario";; teste) a="--teste";; pre-campanha) a="--pre";; carga) a="";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
+          case "$MODO" in diario) a="--diario";; lacuna) a="--lacuna";; teste) a="--teste";; pre-campanha) a="--pre";; carga) a="";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
           python scripts/collect_facebook_posts.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Facebook::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc

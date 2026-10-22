@@ -51,7 +51,8 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/facebook_posts.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
-    diario = "--diario" in argv
+    lacuna = "--lacuna" in argv  # uma vez: cfg["lacuna"] (conta 1, desde fixo, teto próprio)
+    diario = "--diario" in argv or lacuna
     pre = "--pre" in argv  # só a pré-campanha (de `desde` até `pre_ate`), sem repetir os posts já coletados da campanha
     pasta = root / "data/facebook"
     pasta.mkdir(parents=True, exist_ok=True)
@@ -61,17 +62,23 @@ def main(argv=None, executar=None) -> int:
     if diario:
         import datetime as dt
         D = cfg["diario"]
-        ontem = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
-        desde = ontem
-        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-        teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
+        if lacuna:
+            L = cfg["lacuna"]
+            desde = L["desde"]
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "lacuna" and m.get("desde") == desde), 4)
+            teto = round(L["teto_usd"] - ja, 4)
+        else:
+            ontem = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+            desde = ontem
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
+            teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
     else:
-        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") != "diário"), 4)
+        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") not in ("diário", "lacuna")), 4)
         resta = round(cfg["teto_total_usd"] - ja, 4)
         teto = min(cfg["teto_teste_usd"], resta) if teste else resta
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}",
-           "modo": "diário" if diario else "teste" if teste else "pré-campanha" if pre else "carga",
-           "teto_total_usd": cfg["diario"]["teto_mes_usd"] if diario else cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto,
+           "modo": "lacuna" if lacuna else "diário" if diario else "teste" if teste else "pré-campanha" if pre else "carga",
+           "teto_total_usd": cfg["lacuna"]["teto_usd"] if lacuna else cfg["diario"]["teto_mes_usd"] if diario else cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto,
            "desde": desde, "paginas": []}
 
     def fim(status: str, code: int) -> int:
@@ -106,7 +113,7 @@ def main(argv=None, executar=None) -> int:
         alvos = [(next(x for x in cfg["paginas"] if x["url"] == cfg["teste"]["pagina"]), cfg["teste"]["posts"])]
     else:
         alvos, est = [], 0.0
-        cota = cfg["diario"]["posts_por_pagina"] if diario else cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
+        cota = cfg["lacuna"]["posts_por_pagina"] if lacuna else cfg["diario"]["posts_por_pagina"] if diario else cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
         for pg in cfg["paginas"]:
             n = cota["principal" if pg.get("principal") else "outras"]
             if not n:
@@ -137,7 +144,7 @@ def main(argv=None, executar=None) -> int:
         for pg, n in sorted(alvos, key=lambda a: not a[0].get("principal")):
             n = min(n, int((sobra - p["inicio"]) / p["post"] / 1.05))
             if n < 1:
-                res.append((pg, 0, {}, [], f"teto do dia de US$ {teto} atingido (não executado)"))
+                res.append((pg, 0, {}, [], f"teto {'da lacuna' if lacuna else 'do dia'} de US$ {teto} atingido (não executado)"))
                 continue
             r = um((pg, n))
             res.append(r)

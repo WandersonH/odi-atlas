@@ -65,6 +65,31 @@ class TestFacebook(unittest.TestCase):
         self.assertTrue(pedidos[0][0]["startUrls"][0]["url"].endswith(("/lula", "/flaviobolsonaro")))  # principais primeiro
         self.assertEqual(pedidos[0][0]["onlyPostsNewerThan"], man["desde"])
         self.assertTrue(any("teto do dia" in (pg["erro"] or "") for pg in man["paginas"]))  # no pior caso, páginas ficam de fora
+    def test_lacuna_desde_fixo_e_teto_proprio(self):
+        pedidos = []
+
+        def fake(payload, cap):
+            pedidos.append(payload)
+            return ({"id": "r"}, [{"postId": f"{len(pedidos)}-{i}", "time": "2026-10-19T12:00:00.000Z"} for i in range(payload["resultsLimit"])])
+        cfg = json.loads((RAIZ / "data/config/facebook_posts.json").read_text(encoding="utf-8"))
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as t:
+            (Path(t) / "data/config").mkdir(parents=True)
+            (Path(t) / "data/config/facebook_posts.json").write_text(json.dumps(cfg), encoding="utf-8")
+            os.chdir(t)
+            try:
+                fb.main(["--lacuna"], executar=fake)
+                man = json.loads(Path("data/facebook/manifesto_latest.json").read_text(encoding="utf-8"))
+                n = len(pedidos)
+                fb.main(["--lacuna"], executar=fake)  # 2ª vez: o teto já foi gasto, não roda de novo
+                man2 = json.loads(Path("data/facebook/manifesto_latest.json").read_text(encoding="utf-8"))
+            finally:
+                os.chdir(cwd)
+        self.assertEqual((man["modo"], man["desde"]), ("lacuna", cfg["lacuna"]["desde"]))
+        self.assertLessEqual(man["custo_usd"], cfg["lacuna"]["teto_usd"])
+        self.assertLessEqual(man2["gasto_antes_usd"] + (man2.get("custo_usd") or 0), cfg["lacuna"]["teto_usd"] + 1e-9)
+        self.assertGreaterEqual(n, 1)
+
 
 if __name__ == "__main__":
     unittest.main()

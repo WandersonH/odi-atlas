@@ -4,6 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.91 — Conta 1: lacunas e rotinas diárias de Instagram e comentários do Facebook (2026-10-22) 🔜
+
+- **Autorização do responsável (22/10, 00h13, "pode rodar"):** proposta de 00h12, tudo na conta 1 (`APIFY_TOKEN`):
+  - Facebook, posts de 18 a 20/10, uma vez: teto de US$ 1,00;
+  - Instagram, posts diários: US$ 0,15 por dia e US$ 4 por mês;
+  - Instagram, posts de 18 a 21/10, uma vez: US$ 0,25;
+  - Facebook, comentários diários, até 100 por post: US$ 1 por dia e US$ 25 por mês.
+- **Facebook, lacuna:** `collect_facebook_posts.py --lacuna` usa `cfg["lacuna"]`:
+  - posts desde 18/10, até 100 por página principal e 30 nas demais;
+  - roda uma página por vez com o teto que sobra;
+  - o teto vale para a soma de todas as execuções com o mesmo `desde`, então não dá para pagar duas vezes.
+  - O filtro de data final não funciona neste ator, e os posts de 21–22/10 são relidos.
+  - Teste: `test_lacuna_desde_fixo_e_teto_proprio`.
+
 ## C19.90 — Facebook: coleta diária de posts na conta 1, com teto (2026-10-22) ⚠️
 
 - **Autorização do responsável (22/10, 00h00, "já autorizei"):** proposta de 21/10, 23h57, para coletar todo dia os posts do Facebook na conta 1 (`APIFY_TOKEN`), com teto de US$ 0,40 por dia e US$ 10 por mês.

@@ -139,5 +139,16 @@
   "janela": "posts publicados desde o dia anterior (data de Brasília)",
   "autorizacao": "Responsável em 22/10/2026, 00h00 ('já autorizei'), sobre a proposta de 21/10, 23h57: coleta diária de posts do Facebook na conta 1 (APIFY_TOKEN), teto de US$ 0,40 por dia e US$ 10 por mês.",
   "execucao": "uma página por vez; cada página recebe como teto o que sobra do teto do dia (gasto real da Apify), então a soma nunca passa de US$ 0,40"
+ },
+ "lacuna": {
+  "segredo": "APIFY_TOKEN",
+  "desde": "2026-10-18",
+  "teto_usd": 1.0,
+  "posts_por_pagina": {
+   "principal": 100,
+   "outras": 30
+  },
+  "autorizacao": "Responsável em 22/10/2026, 00h13 ('pode rodar'), sobre a proposta de 00h12: preencher os posts de 18 a 20/10 na conta 1, teto de US$ 1,00, uma vez.",
+  "nota": "O filtro onlyPostsOlderThan não funciona neste ator (nota_pre), então a leitura vai de 18/10 até hoje e os posts de 21–22/10 já coletados são lidos e pagos de novo."
  }
 }
