@@ -1,14 +1,17 @@
-name: Facebook — comentários (Apify, contas 3 a 7, teto US$ 1,50)
+name: Facebook — comentários (Apify; diário na conta 1, até 100 por post, US$ 1/dia e US$ 25/mês)
 
 # Ator dami_studio/facebook-comments-scraper. Teto total autorizado: US$ 1,50 (data/config/facebook_comentarios.json).
 # Texto e autor dos comentários só no repositório privado; no público, só agregados.
+# Diário autorizado em 22/10/2026 (conta 1, APIFY_TOKEN): data/config/facebook_comentarios.json → diario.
 on:
+  schedule:
+    - cron: "5 13 * * *"   # todo dia, 10h05 em Brasília, depois da coleta diária de posts (09h20)
   workflow_dispatch:
     inputs:
       modo:
         description: "teste (2 posts × 10) · carga (cota por candidato)"
         type: choice
-        options: [teste, carga]
+        options: [diario, teste, carga]
         default: teste
 
 concurrency:
@@ -42,6 +45,7 @@ jobs:
       - name: Coletar (Apify, com teto)
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ (github.event_name == 'schedule' || github.event.inputs.modo == 'diario') && secrets.APIFY_TOKEN || '' }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
           APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
@@ -56,9 +60,9 @@ jobs:
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-          MODO: ${{ github.event.inputs.modo }}
+          MODO: ${{ github.event_name == 'schedule' && 'diario' || github.event.inputs.modo }}
         run: |
-          case "$MODO" in teste) a="--teste";; *) a="";; esac
+          case "$MODO" in diario) a="--diario";; teste) a="--teste";; carga) a="";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
           python scripts/collect_comentarios_facebook.py $a > k.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Facebook comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc

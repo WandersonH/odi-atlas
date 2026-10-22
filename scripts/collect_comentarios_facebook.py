@@ -5,6 +5,8 @@ Contas: a primeira de `segredos` com saldo (data/config/facebook_comentarios.jso
 Teto total da fonte (soma dos manifestos); custo = maior entre o informado pela Apify e a tabela de preços.
 
 --teste: 2 posts × 10 comentários.
+--diario: conta 1 (APIFY_TOKEN, autorizado em 22/10/2026), posts desde ontem ainda sem comentários no acervo, até
+          cfg["diario"]["comentarios_por_post"] por post; teto por dia e por mês em cfg["diario"]; sem consulta de saldo.
 sem opção: cota igual por candidato dividida entre os posts do período (desde `desde`), até 100 posts por execução.
 
 Saída privada (ODI_INTERNO_DIR/facebook/comentarios/): bruto e comentarios.csv.gz (mesmas colunas do YouTube).
@@ -48,14 +50,25 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/facebook_comentarios.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
+    diario = "--diario" in argv
     pub = root / "data/facebook/comentarios"
     pub.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
-    ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pub.glob("manifesto-*.json")), 4)
-    resta = round(cfg["teto_total_usd"] - ja, 4)
-    teto = min(cfg["teto_teste_usd"], resta) if teste else resta
-    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "carga",
-           "teto_total_usd": cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "runs": []}
+    mans = [json.loads(f.read_text(encoding="utf-8")) for f in pub.glob("manifesto-*.json")]
+    desde = cfg["desde"]
+    if diario:
+        import datetime as dt
+        D = cfg["diario"]
+        desde = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
+        teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
+    else:
+        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") != "diário"), 4)
+        resta = round(cfg["teto_total_usd"] - ja, 4)
+        teto = min(cfg["teto_teste_usd"], resta) if teste else resta
+    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "diário" if diario else "teste" if teste else "carga",
+           "teto_total_usd": cfg["diario"]["teto_mes_usd"] if diario else cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto,
+           "desde": desde, "runs": []}
 
     def fim(status: str, code: int) -> int:
         man["status"] = status
@@ -70,7 +83,11 @@ def main(argv=None, executar=None) -> int:
         return fim("⛔ sem repositório privado: texto de comentário não pode ir para o público", 1)
     if teto < 0.005:
         return fim(f"⛔ teto de US$ {cfg['teto_total_usd']} esgotado (gasto US$ {ja})", 1)
-    nome_conta, token, saldo = escolher_conta(cfg["segredos"], min(teto, 0.2)) if executar is None else ("teste", "x", None)
+    if diario:  # conta 1 autorizada; sem consulta de saldo e sem troca de conta
+        nome_conta, saldo = cfg["diario"]["segredo"], None
+        token = "x" if executar is not None else os.environ.get(nome_conta, "").strip()
+    else:
+        nome_conta, token, saldo = escolher_conta(cfg["segredos"], min(teto, 0.2)) if executar is None else ("teste", "x", None)
     man.update(conta=nome_conta, saldo_conta_antes_usd=saldo)
     if not token:
         return fim(f"⛔ nenhuma conta Apify com saldo entre {', '.join(cfg['segredos'])}", 1)
@@ -83,7 +100,7 @@ def main(argv=None, executar=None) -> int:
             try:
                 return run_actor(conta["token"], cfg["ator"], pl, cap)
             except Exception as e:  # noqa: BLE001
-                if getattr(e, "code", None) != 403:
+                if getattr(e, "code", None) != 403 or diario:
                     raise
                 conta["esgotadas"].append(conta["nome"])
                 resto = [x for x in cfg["segredos"] if x not in conta["esgotadas"]]
@@ -101,7 +118,7 @@ def main(argv=None, executar=None) -> int:
     for r in antigos:
         ja_por_post[r["video_id"]] = ja_por_post.get(r["video_id"], 0) + 1
     posts = [r for r in csv.DictReader(gzip.open(root / "data/facebook/videos.csv.gz", "rt", encoding="utf-8"), delimiter=";")
-             if r["publicado_em"][:10] >= cfg["desde"] and int(r["comentarios"] or 0) > 0 and r["url"]]
+             if r["publicado_em"][:10] >= desde and int(r["comentarios"] or 0) > 0 and r["url"]]
     alvo_post = {}
     for cid in {v["candidate_id"] for v in posts}:
         n_c = sum(1 for v in posts if v["candidate_id"] == cid)
@@ -113,7 +130,13 @@ def main(argv=None, executar=None) -> int:
     pendentes = sorted((v for v in posts if ja_por_post.get(v["video_id"], 0) < 0.8 * alvo_post[v["video_id"]]),
                        key=lambda v: -int(v["comentarios"] or 0))
     p = cfg["preco_usd"]
-    if teste:
+    if diario:
+        pv = cfg["diario"]["comentarios_por_post"]
+        novos_posts = [v for v in posts if not ja_por_post.get(v["video_id"])]
+        novos_posts.sort(key=lambda v: -int(v["comentarios"] or 0))
+        pendentes = novos_posts
+        lotes = [(novos_posts[i:i + cfg["posts_por_execucao"]], pv) for i in range(0, len(novos_posts), cfg["posts_por_execucao"])]
+    elif teste:
         lotes = [(pendentes[:cfg["teste"]["posts"]], cfg["teste"]["comentarios_por_post"])]
     else:
         lotes = []
@@ -126,7 +149,10 @@ def main(argv=None, executar=None) -> int:
     novas, gasto, brutos = [], 0.0, []
     for alvo, pv in lotes:
         est = sum(p["comentario"] * min(pv, int(v["comentarios"] or 0)) for v in alvo)
-        if gasto + est > teto * 0.97:
+        while diario and alvo and gasto + est * 1.2 + 0.01 > teto:
+            alvo = alvo[:-1]  # tira o post com menos comentários até caber
+            est = sum(p["comentario"] * min(pv, int(v["comentarios"] or 0)) for v in alvo)
+        if not alvo or gasto + est > teto * 0.97:
             continue
         por_url = {chave_post(v["url"]): v for v in alvo}
         pl = {"startUrls": [{"url": v["url"]} for v in alvo], "resultsLimit": pv}

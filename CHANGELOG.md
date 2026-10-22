@@ -11,6 +11,13 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Instagram, posts diários: US$ 0,15 por dia e US$ 4 por mês;
   - Instagram, posts de 18 a 21/10, uma vez: US$ 0,25;
   - Facebook, comentários diários, até 100 por post: US$ 1 por dia e US$ 25 por mês.
+- **Facebook, comentários diários:** `collect_comentarios_facebook.py --diario`:
+  - pega os posts desde ontem que ainda não têm comentário no acervo privado, os de mais comentários primeiro, até 100 comentários por post;
+  - não consulta saldo e não troca de conta;
+  - quando o lote não cabe no teto do dia, tira os posts com menos comentários até caber. O teto de cada execução é o que sobra pelo custo real;
+  - o workflow `facebook-comentarios.yml` roda todo dia às 10h05 de Brasília, depois da coleta de posts das 09h20;
+  - texto e autor continuam só no repositório privado;
+  - teste: `test_diario_conta1_so_posts_novos_e_teto`.
 - **Instagram, diário e lacuna:** `collect_instagram_posts.py --diario | --lacuna`, função `rotina_conta1`:
   - uma execução com todos os perfis declarados ao TSE para os posts, com teto da Apify de min(US$ 0,10, teto restante);
   - uma segunda execução para as visualizações dos reels, com o que sobra pelo custo real da primeira. Assim o custo real da 1ª mais o teto da 2ª cabem no teto do dia, ou no da lacuna;

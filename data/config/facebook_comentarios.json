@@ -33,5 +33,13 @@
   "posts": 2,
   "comentarios_por_post": 10
  },
- "nota": "Comentários públicos dos posts das páginas de Facebook declaradas ao TSE pelas chapas 13 e 22, desde 20/07/2026 (pré-campanha), via Apify (dami_studio/facebook-comments-scraper, sem login). Cota igual por candidato (8.800 comentários desde a ampliação de 18/10/2026; antes 2.800), dividida entre os posts do período (5 a 200 por post), sem respostas, na ordem de relevância do Facebook. Texto e autor só no repositório privado; na página, só agregados (mesmas regras dos comentários do YouTube e do Kwai)."
+ "nota": "Comentários públicos dos posts das páginas de Facebook declaradas ao TSE pelas chapas 13 e 22, desde 20/07/2026 (pré-campanha), via Apify (dami_studio/facebook-comments-scraper, sem login). Cota igual por candidato (8.800 comentários desde a ampliação de 18/10/2026; antes 2.800), dividida entre os posts do período (5 a 200 por post), sem respostas, na ordem de relevância do Facebook. Texto e autor só no repositório privado; na página, só agregados (mesmas regras dos comentários do YouTube e do Kwai).",
+ "diario": {
+  "segredo": "APIFY_TOKEN",
+  "teto_dia_usd": 1.0,
+  "teto_mes_usd": 25.0,
+  "comentarios_por_post": 100,
+  "janela": "posts publicados desde o dia anterior (data de Brasília) que ainda não têm comentário no acervo",
+  "autorizacao": "Responsável em 22/10/2026, 00h13 ('pode rodar'): comentários do Facebook, diário, até 100 por post, na conta 1, US$ 1/dia e US$ 25/mês."
+ }
 }
