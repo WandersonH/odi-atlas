@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.108 — Panorama: Instagram e Facebook no comparativo Lula × Flávio (2026-10-22) ⚠️
+
+**O que mudou.** Pedido do responsável: o resumo "Lula × Flávio em cinco etapas" só tinha Instagram e Facebook na etapa 2 (seguidores). Agora:
+- Etapa 3 (o que publicam), a partir de `data/instagram/conteudo.json` e `data/facebook/conteudo.json` (acervo próprio, Apify), posts desde 20/07: quantidade de posts, curtidas somadas e visualizações somadas dos posts em vídeo. A fonte mostra a data do primeiro post de cada lado no acervo.
+- Etapa 4 (reação): Facebook com comentários lidos, % de incivilidade e % de intolerância (`data/facebook/comentarios/analise.json`); interação mediana por visualização no Instagram e no Facebook (mesma fórmula do TikTok, só posts em vídeo). Instagram · comentários = ⛔: não há coleta de comentários das campanhas no Instagram.
+- As linhas de incivilidade e intolerância do YouTube ganharam o prefixo "YouTube ·".
+
+**Ressalva.** No Facebook, o acervo de Lula começa em 02/10/2026 e o de Flávio em 26/08/2026: os totais não são comparáveis. A página avisa isso e não sublinha o maior valor nessas linhas. Valores no render de 22/10: Instagram 5.032 × 779 posts e 321,9 mi × 123,9 mi curtidas; Facebook 504 × 204 posts; interação mediana no Instagram 11,5% × 9,3% e no Facebook 15,1% × 11,1%.
+
+**Teste.** `python -m unittest discover -s tests -v`: 212 OK. Render local com Chromium da tabela `#pvTabela`: as linhas novas aparecem, sem erro de JavaScript.
+
 ## C19.107 — Casos 006 e 007: o post do caso aparece incorporado na página; autor do reel com nome (2026-10-22) ⚠️
 
 **O que mudou.** Pedido do responsável: "toda vez que temos um case de post seja video seria bom ter ele na pagina".

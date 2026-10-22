@@ -5143,7 +5143,14 @@ const J=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>nul
 const T=u=>fetch(u,{cache:'no-store'}).then(r=>r.ok?r.text():'').catch(()=>'');
 const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.split(';');return ls.map(l=>Object.fromEntries(l.split(';').map((v,i)=>[H[i],v])));};
 (async()=>{const [el26,tr,yt,ytc,tk,com,seg,wa]=await Promise.all([J('./data/elections.json'),J('./data/trends/caderno.json'),J('./data/youtube/fichas.json'),J('./data/youtube/conteudo.json'),J('./data/tiktok/conteudo.json'),J('./data/youtube/comentarios/analise.json'),T('./data/seguidores/latest.csv'),T('./data/whatsapp/seguidores_latest.csv')]);
- const [kwc,kws]=await Promise.all([J('./data/kwai/conteudo.json'),T('./data/seguidores/kwai_latest.csv')]);
+ const [kwc,kws,igc,fbc,fbcom]=await Promise.all([J('./data/kwai/conteudo.json'),T('./data/seguidores/kwai_latest.csv'),J('./data/instagram/conteudo.json'),J('./data/facebook/conteudo.json'),J('./data/facebook/comentarios/analise.json')]);
+ // Instagram e Facebook (22/10/2026): acervo próprio de posts (Apify) desde 20/07; o início real do acervo de cada lado vai na fonte
+ const PV=(C,cid)=>((C&&C.candidatos[cid]&&C.candidatos[cid].videos)||[]).filter(v=>(v.publicado_em||'')>='2026-07-20');
+ const soma=(a,c)=>a.length?a.reduce((t,v)=>t+(Number(v[c])||0),0):null,comV=a=>a.filter(v=>Number(v.visualizacoes)>0);
+ const ini=a=>a.length?a.reduce((m,v)=>v.publicado_em<m?v.publicado_em:m,a[0].publicado_em):null;
+ const redeMeta=(C,nome)=>{if(!C)return null;const a=PV(C,L),b=PV(C,F),iA=ini(a),iB=ini(b),igual=iA&&iB&&iA.slice(0,10)===iB.slice(0,10)||(iA&&iB&&iA.slice(0,10)<='2026-07-27'&&iB.slice(0,10)<='2026-07-27');
+  return {a,b,igual,fonte:`acervo próprio (Apify) · ${dbr(C.coletado_em_utc)} · posts a partir de ${dbr(iA)} (Lula) e ${dbr(iB)} (Flávio)${igual?'':' — períodos diferentes, não comparar totais'}`};};
+ const IG=redeMeta(igc,'Instagram'),FB=redeMeta(fbc,'Facebook');
  const KV=cid=>((kwc&&kwc.candidatos[cid]&&kwc.candidatos[cid].videos)||[]).filter(v=>(v.publicado_em||'')>='2026-07-20');
  const KM=a=>{const x=a.map(v=>Number(v.taxa_interacao)).filter(Number.isFinite).sort((p,q)=>p-q);return x.length?100*(x.length%2?x[(x.length-1)/2]:(x[x.length/2-1]+x[x.length/2])/2):null;};
  const rows=[];const etapa=t=>rows.push({etapa:t});const linha=(rot,l,f,fmt,fonte,maior=true)=>rows.push({rot,l,f,fmt,fonte,maior});
@@ -5172,10 +5179,18 @@ const csv=t=>{const [h,...ls]=t.trim().split(/\r?\n/);if(!h)return[];const H=h.s
  if(yt){const a=yt.perfis.yt_lula?.janela,b=yt.perfis.yt_flavio?.janela;linha('YouTube · vídeos nos últimos 30 dias',a?.videos,b?.videos,n,`YouTube Data API · ${dbr(yt.data)}`,null);linha('YouTube · visualizações médias por vídeo',a?.media_visualizacoes,b?.media_visualizacoes,k,'idem');linha('YouTube · engajamento',a?.engajamento,b?.engajamento,v=>pc(v,2),'(curtidas + comentários) ÷ visualizações');}
  if(tk){const a=tk.candidatos[L],b=tk.candidatos[F];linha('TikTok · vídeos desde 20/07',a?.total_videos,b?.total_videos,n,`perfis declarados ao TSE · ${dbr(tk.coletado_em_utc)}`,null);linha('TikTok · visualizações somadas',a?.totais?.visualizacoes,b?.totais?.visualizacoes,k,'idem');}
  if(kwc){const a=KV(L),b=KV(F),sv=x=>x.length?x.reduce((t,v)=>t+(Number(v.visualizacoes)||0),0):null;linha('Kwai · vídeos desde 20/07 (no acervo)',a.length,b.length,n,`perfis declarados ao TSE · ${dbr(kwc.coletado_em_utc)}`,null);linha('Kwai · visualizações somadas',sv(a),sv(b),k,'idem');}
+ for(const [nm,R] of [['Instagram',IG],['Facebook',FB]]){if(!R){rows.push({rot:`⛔ ${nm}: conteudo.json não carregou`,l:'',f:'',fmt:x=>x,fonte:'',txt:true});continue;}
+  linha(`${nm} · posts desde 20/07 (no acervo)`,R.a.length,R.b.length,n,R.fonte,null);
+  linha(`${nm} · curtidas somadas`,soma(R.a,'curtidas'),soma(R.b,'curtidas'),k,'idem',R.igual?true:null);
+  linha(`${nm} · visualizações dos vídeos somadas`,soma(comV(R.a),'visualizacoes'),soma(comV(R.b),'visualizacoes'),k,`só posts em vídeo (${n(comV(R.a).length)} × ${n(comV(R.b).length)}); foto não tem visualização pública`,R.igual?true:null);}
  if(ytc){const tema=c=>{const e=Object.entries(c.por_tema||{}).filter(([t])=>t!=='sem_tema').sort((x,y)=>y[1]-x[1])[0];return e?e[0].replace(/_/g,' '):'—';};rows.push({rot:'Tema mais frequente no YouTube',l:tema(ytc.candidatos[L]),f:tema(ytc.candidatos[F]),fmt:x=>x,fonte:'dicionário de temas (página 02)',txt:true});}
  // 4. Reação
  etapa('4 · Como o público reage');
- if(com){const a=com.candidatos[L],b=com.candidatos[F];linha('Comentários no YouTube (com respostas)',a&&a.comentarios+a.respostas,b&&b.comentarios+b.respostas,n,`YouTube Data API · ${dbr(com.coletado_em_utc)}`,null);linha('Comentários com incivilidade',a?.qualquer_incivilidade_pct,b?.qualquer_incivilidade_pct,v=>pc(v,2),'pré-codificação por dicionário (validar com kappa)',null);linha('Comentários com intolerância',a?.qualquer_intolerancia_pct,b?.qualquer_intolerancia_pct,v=>pc(v,2),'idem',null);}
+ if(com){const a=com.candidatos[L],b=com.candidatos[F];linha('Comentários no YouTube (com respostas)',a&&a.comentarios+a.respostas,b&&b.comentarios+b.respostas,n,`YouTube Data API · ${dbr(com.coletado_em_utc)}`,null);linha('YouTube · comentários com incivilidade',a?.qualquer_incivilidade_pct,b?.qualquer_incivilidade_pct,v=>pc(v,2),'pré-codificação por dicionário (validar com kappa)',null);linha('YouTube · comentários com intolerância',a?.qualquer_intolerancia_pct,b?.qualquer_intolerancia_pct,v=>pc(v,2),'idem',null);}
+ if(fbcom){const a=fbcom.candidatos[L],b=fbcom.candidatos[F];linha('Facebook · comentários lidos',a?.comentarios,b?.comentarios,n,`Apify, por relevância, cota por post (método na página de comentários) · ${dbr(fbcom.coletado_em_utc)}`,null);linha('Facebook · comentários com incivilidade',a?.qualquer_incivilidade_pct,b?.qualquer_incivilidade_pct,v=>pc(v,2),'mesmo dicionário do YouTube (validar com kappa)',null);linha('Facebook · comentários com intolerância',a?.qualquer_intolerancia_pct,b?.qualquer_intolerancia_pct,v=>pc(v,2),'idem',null);}
+ else rows.push({rot:'⛔ Facebook · comentários: analise.json não carregou',l:'',f:'',fmt:x=>x,fonte:'',txt:true});
+ rows.push({rot:'Instagram · comentários',l:'⛔',f:'⛔',fmt:x=>x,fonte:'sem coleta de comentários das campanhas no Instagram (só nos casos)',txt:true});
+ for(const [nm,R] of [['Instagram',IG],['Facebook',FB]])if(R)linha(`${nm} · interação mediana por visualização`,KM(comV(R.a)),KM(comV(R.b)),v=>pc(v,1),'posts em vídeo desde 20/07 · (curtidas + comentários + compart.) ÷ visualizações'+(nm==='Instagram'?' · o Instagram não informa compartilhamentos':''));
  if(tk){linha('TikTok · interação mediana por visualização',tk.candidatos[L]?.taxa_interacao_mediana*100,tk.candidatos[F]?.taxa_interacao_mediana*100,v=>pc(v,1),'(curtidas + comentários + compart.) ÷ visualizações');}
  if(kwc){linha('Kwai · interação mediana por visualização',KM(KV(L)),KM(KV(F)),v=>pc(v,1),'desde 20/07 · mesma fórmula do TikTok');}
  // 5. Voto
