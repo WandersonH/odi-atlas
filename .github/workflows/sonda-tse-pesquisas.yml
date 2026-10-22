@@ -6,6 +6,9 @@ on:
       args:
         description: "--so-pd para sondar só o PollingData"
         default: ""
+      script:
+        description: "script da sonda (sonda_tse_pesquisas.py ou sonda_tse_urna.py)"
+        default: "sonda_tse_pesquisas.py"
 
 permissions:
   contents: read
@@ -13,7 +16,7 @@ permissions:
 jobs:
   sonda:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,14 +24,14 @@ jobs:
           python-version: "3.12"
       - name: Sonda
         run: |
-          python scripts/sonda_tse_pesquisas.py ${{ inputs.args }} > s.txt 2>&1
+          python scripts/${{ inputs.script || 'sonda_tse_pesquisas.py' }} ${{ inputs.args }} > s.txt 2>&1
           tail -n 3 s.txt | while IFS= read -r l; do echo "::notice title=Sonda::$(echo "$l" | cut -c1-3500)"; done
       - name: Gravar no repositório privado
         env:
           TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
         run: |
           git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
-          mkdir -p "$RUNNER_TEMP/interno/sondas" && cp s.txt "$RUNNER_TEMP/interno/sondas/tse_pesquisas_denuncias.txt"
+          mkdir -p "$RUNNER_TEMP/interno/sondas" && cp s.txt "$RUNNER_TEMP/interno/sondas/$(basename "${{ inputs.script || 'sonda_tse_pesquisas.py' }}" .py).txt"
           cd "$RUNNER_TEMP/interno"
           git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
           git add -A; git diff --cached --quiet || git commit -q -m "Sonda TSE pesquisas/denúncias (run ${{ github.run_id }})"

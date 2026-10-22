@@ -4,6 +4,25 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.95 — Sonda: boletim de urna, locais de votação e processual 2026 (2026-10-22) 🔜
+
+- **Pedido do responsável (22/10, 01h26):**
+  - na página de Eleitorado, um mapa de "alienação eleitoral": brancos, nulos e abstenção por cidade e por seção, como o mapa de voto;
+  - também os dados do conjunto "processual-2026".
+- **Fontes indicadas e lidas com WebFetch:**
+  - Boletim de urna 2026: 28 ZIPs do 1º turno (27 UFs + ZZ), gerados em 05/10.
+  - Arquivos transmitidos para totalização: 28 ZIPs, com logs, RDV e imagens do BU.
+  - Processual 2026: 5 CSVs (processo, assuntos, decisões, partes, recursos).
+- **Por que uma sonda:**
+  - uma seção eleitoral não tem polígono no mapa, então desenhá-la exige as coordenadas do local de votação, de outro conjunto do TSE;
+  - o boletim de urna é grande.
+  - A `scripts/sonda_tse_urna.py` faz três coisas:
+    - procura no catálogo do TSE o conjunto de locais de votação de 2026;
+    - mede o tamanho de cada boletim e lê a estrutura do boletim do AC;
+    - lê as colunas do processual. Da tabela de partes, só colunas e número de linhas.
+  - A saída vai para o repositório privado. O workflow da sonda ganhou o input `script`.
+- **Testes:** suíte completa. A sonda não grava dados públicos.
+
 ## C19.94 — Casos: grade dos números nos casos 006/007 e pré-codificação dos comentários por caso (2026-10-22) ✅
 
 - **Achado no render das páginas novas (Chromium):**
