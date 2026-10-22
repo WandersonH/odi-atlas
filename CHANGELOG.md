@@ -44,7 +44,10 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - `build_caso_busca.py` junta as conversas no `busca.json` e acrescenta as redes `respostas_x`, `palavras_x` e `palavras_instagram`.
   - Na página: abas "PCC e CV terroristas (X)" e "Lula amassa a bandeira", cada uma com o bloco "Conversa no X / no Instagram". O bloco traz números, unificação, pré-codificação, série por dia, mais curtidos públicos e quem repostou.
 - **Caso 004:** o responsável disse em 22/10, 01h13, que "o 3 e 4 são a mesma coisa". `casos.json` marca o 004 com `unido_a: "003"` e o índice o mostra como "unido ao caso 003". O registro não foi apagado.
-- **Testes:** `test_caso_x`, `test_caso_instagram` e `test_importar_apify`, todos com dados fictícios. O run real do `casos-busca` para 006 e 007 foi disparado em seguida.
+- **Testes:**
+  - `test_caso_x`, `test_caso_instagram` e `test_importar_apify`, todos com dados fictícios.
+  - Correção: o commit anterior (C19.93) subiu com `test_casos` falhando, porque o teste ainda esperava o 004 "aguardando". A expectativa foi atualizada para "unido ao caso 003" e a suíte passa.
+  - O run real do `casos-busca` para 006 e 007 foi disparado em seguida.
 
 ## C19.92 — Anúncios: clicar no anunciante filtra os anúncios dele (2026-10-22) ✅
 
