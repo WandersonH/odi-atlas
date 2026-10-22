@@ -4,6 +4,28 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.100 — Eleitorado: página de processos eleitorais 2026 (2026-10-22) ✅
+
+- **Pedido do responsável (22/10, 01h26):** acrescentar os dados do conjunto processual-2026. O coletor veio da sessão paralela (C19.98) e o arquivo é `data/tse/processual/resumo.json`, de 21/10. Às 01h48 o responsável autorizou terminar a página nesta sessão.
+- **O que mudou:** nova aba "Processos eleitorais" no grupo Eleitorado e território.
+  - **Big numbers:**
+    - 96.367 processos, 55,1% já baixados;
+    - 29.744 sem decisão;
+    - 136.923 decisões e 9.101 recursos;
+    - 34.730 processos com assunto de propaganda.
+  - **Chapas presidenciais:** processos em que cada candidatura é parte, com polo passivo e ativo. Ordem: chapa 13 e chapa 22 primeiro, com nota de que a ordem não indica preferência.
+    - Números: Lula 895 (874 passivo), Alckmin 213, Flávio Bolsonaro 1.414 (916 passivo, 496 ativo), Gaspar 93.
+  - **Lista de processos por candidatura:** botão por candidatura e filtro por texto. Mostra até 300 por vez, com link para a consulta pública do PJe.
+  - **Temas do Observatório:**
+    - propaganda 34.730, internet e redes 10.254, pesquisa 1.491, direito de resposta 1.137;
+    - desinformação ou fato inverídico 811; IA ou conteúdo sintético 762; abuso de poder 478;
+    - para desinformação e IA, também onde tramitam e os assuntos.
+  - **Também:** autuação e decisões por mês, classes, tribunais, assuntos e recursos.
+- **Privacidade:** como no coletor, só candidaturas à Presidência aparecem com nome; outras partes e relatores, não.
+- **Testes:**
+  - Suíte completa.
+  - Chromium em cópia temporária com o arquivo real: 9 botões de candidatura, lista com 300 linhas, filtro "internet" com 84. Sem erro de JavaScript.
+
 ## C19.99 — Eleitorado: mapa de alienação eleitoral por município, local de votação e seção (2026-10-22) ⚠️
 
 - **Pedido do responsável (22/10, 01h26):** mapa de alienação eleitoral por cidade e seção na página de Eleitorado. Às 01h48 ele autorizou terminar nesta sessão o que a sessão paralela tinha começado (C19.97: coletor e dados do 1º turno, run 39723691829).
