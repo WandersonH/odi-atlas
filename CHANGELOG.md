@@ -4,13 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.91 — Conta 1: lacunas e rotinas diárias de Instagram e comentários do Facebook (2026-10-22) 🔜
+## C19.91 — Conta 1: lacunas e rotinas diárias de Instagram e comentários do Facebook (2026-10-22) ⚠️
 
 - **Autorização do responsável (22/10, 00h13, "pode rodar"):** proposta de 00h12, tudo na conta 1 (`APIFY_TOKEN`):
   - Facebook, posts de 18 a 20/10, uma vez: teto de US$ 1,00;
   - Instagram, posts diários: US$ 0,15 por dia e US$ 4 por mês;
   - Instagram, posts de 18 a 21/10, uma vez: US$ 0,25;
   - Facebook, comentários diários, até 100 por post: US$ 1 por dia e US$ 25 por mês.
+- **Runs reais (22/10, madrugada; números dos manifestos):**
+  - **Facebook, lacuna** (run 39715763575): US$ 0,984 de US$ 1,00. 144 posts novos; o acervo foi de 528 para 672.
+    - Três endereços ficaram fora porque o teto acabou: canaltvcelular e o endereço de compartilhamento `share-…`, que não devolveram nada nos runs anteriores, e alfredogasparoficial.
+    - obrasilcomlula bateu o limite de 30 com o post mais antigo em 21/10, então os posts dela de 18 a 20/10 ficaram incompletos.
+  - **Instagram, lacuna** (run 39715931721): US$ 0,0563 de US$ 0,25. 646 itens e 433 posts novos; o acervo tem 5.757. 421 visualizações de reels lidas, sem erros.
+  - **Facebook, comentários diários** (run 39717444772): US$ 0,8144 de US$ 1,00. 33 posts × 100 e 3.215 comentários novos; o acervo privado tem 15.097. 66 posts ficaram pendentes para os próximos dias.
 - **Facebook, comentários diários:** `collect_comentarios_facebook.py --diario`:
   - pega os posts desde ontem que ainda não têm comentário no acervo privado, os de mais comentários primeiro, até 100 comentários por post;
   - não consulta saldo e não troca de conta;
