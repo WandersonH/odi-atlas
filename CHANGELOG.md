@@ -4,6 +4,24 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.90 — Facebook: coleta diária de posts na conta 1, com teto (2026-10-22) ⚠️
+
+- **Autorização do responsável (22/10, 00h00, "já autorizei"):** proposta de 21/10, 23h57, para coletar todo dia os posts do Facebook na conta 1 (`APIFY_TOKEN`), com teto de US$ 0,40 por dia e US$ 10 por mês.
+  - Antes disso, a última coleta de posts tinha sido em 18/10, e só por disparo manual nas contas 2 a 15, hoje bloqueadas.
+- **O que mudou:**
+  - `collect_facebook_posts.py --diario`:
+    - usa `APIFY_TOKEN` e não consulta saldo da conta;
+    - pede os posts desde o dia anterior (data de Brasília), até 30 por página principal (Lula, Flávio) e 10 nas demais;
+    - roda uma página por vez, as principais primeiro. Cada página recebe como teto o que sobra do dia, pelo custo real das anteriores, e as que não cabem ficam marcadas "teto do dia atingido";
+    - o gasto do mês soma só os manifestos do modo diário. O teto de US$ 5 da carga antiga continua separado.
+  - `facebook-posts.yml` ganhou agendamento diário às 09h20 de Brasília (`20 12 * * *`) e a opção "diario" no disparo manual. Modo desconhecido agora para com erro, para nunca cair na carga por engano.
+  - A conta 1 só entra no ambiente quando o modo é diário.
+- **Volume esperado, medido no acervo de 12 a 17/10:** média de 11,7 posts por dia em /lula, 3,5 em /flaviobolsonaro e até 5 nas demais. Na janela de dois dias (ontem e hoje), a estimativa é de US$ 0,20 a 0,35 por dia.
+- **Testes:**
+  - Suíte completa. Novo `test_diario_conta1_respeita_teto_do_dia_e_do_mes`: no pior caso, com a Apify devolvendo o máximo pedido, o custo fica em até US$ 0,40, as principais vão primeiro e as páginas que não cabem são registradas.
+  - 1º run real disparado em seguida.
+- **Pendente:** os comentários do Facebook e os posts do Instagram continuam sem rotina diária, até o responsável autorizar conta e teto para eles.
+
 ## C19.89 — WhatsApp: leitura de hora em hora (2026-10-21) ✅
 
 - **Pedido do responsável (21/10, 22h08):** atualizar os canais de WhatsApp de hora em hora.

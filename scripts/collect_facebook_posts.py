@@ -5,6 +5,8 @@ Token SOMENTE por APIFY_TOKEN_2. Teto total autorizado em data/config/facebook_p
 custo de cada execução = maior entre o informado pela Apify e a estimativa pela tabela de preços do plano gratuito.
 
 --teste: 10 posts de facebook.com/lula (teto de teste).
+--diario: conta 1 (APIFY_TOKEN), posts desde o dia anterior, teto por dia e por mês em cfg["diario"] (autorizado em 22/10/2026);
+          não consulta saldo da conta.
 sem opção: uma execução por página (posts desde `desde`, até N por página), 3 em paralelo.
 
 Saída pública: data/facebook/videos.csv.gz (mesmas colunas do acervo do TikTok/Kwai: video_id = id do post,
@@ -49,15 +51,28 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/facebook_posts.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
+    diario = "--diario" in argv
     pre = "--pre" in argv  # só a pré-campanha (de `desde` até `pre_ate`), sem repetir os posts já coletados da campanha
     pasta = root / "data/facebook"
     pasta.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
-    ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pasta.glob("manifesto-*.json")), 4)
-    resta = round(cfg["teto_total_usd"] - ja, 4)
-    teto = min(cfg["teto_teste_usd"], resta) if teste else resta
-    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "pré-campanha" if pre else "carga",
-           "teto_total_usd": cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "paginas": []}
+    mans = [json.loads(f.read_text(encoding="utf-8")) for f in pasta.glob("manifesto-*.json")]
+    desde = cfg["desde"]
+    if diario:
+        import datetime as dt
+        D = cfg["diario"]
+        ontem = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+        desde = ontem
+        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
+        teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
+    else:
+        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") != "diário"), 4)
+        resta = round(cfg["teto_total_usd"] - ja, 4)
+        teto = min(cfg["teto_teste_usd"], resta) if teste else resta
+    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}",
+           "modo": "diário" if diario else "teste" if teste else "pré-campanha" if pre else "carga",
+           "teto_total_usd": cfg["diario"]["teto_mes_usd"] if diario else cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto,
+           "desde": desde, "paginas": []}
 
     def fim(status: str, code: int) -> int:
         man["status"] = status
@@ -68,13 +83,18 @@ def main(argv=None, executar=None) -> int:
         return code
 
     segredos = cfg.get("segredos") or [cfg["segredo"]]
-    nome_conta, token, saldo = escolher_conta(segredos, 0.1) if executar is None else ("teste", "x", None)
+    if diario:  # conta 1 autorizada; sem consulta de saldo
+        nome_conta, token, saldo = cfg["diario"]["segredo"], os.environ.get(cfg["diario"]["segredo"], "").strip(), None
+        if executar is not None:
+            token = "x"
+    else:
+        nome_conta, token, saldo = escolher_conta(segredos, 0.1) if executar is None else ("teste", "x", None)
     man["conta"] = nome_conta
     if not token and executar is None:
-        return fim(f"⛔ nenhuma conta Apify com saldo entre {', '.join(segredos)}", 1)
+        return fim(f"⛔ nenhuma conta Apify disponível ({nome_conta if diario else ', '.join(segredos)})", 1)
     if teto < 0.01:
-        return fim(f"⛔ teto autorizado de US$ {cfg['teto_total_usd']} esgotado (gasto US$ {ja})", 1)
-    if executar is None:
+        return fim(f"⛔ teto autorizado esgotado (gasto US$ {ja}, teto US$ {man['teto_total_usd']})", 1)
+    if executar is None and not diario:
         man["saldo_conta_antes_usd"] = saldo
         if saldo is not None:
             teto = min(teto, saldo)
@@ -86,10 +106,13 @@ def main(argv=None, executar=None) -> int:
         alvos = [(next(x for x in cfg["paginas"] if x["url"] == cfg["teste"]["pagina"]), cfg["teste"]["posts"])]
     else:
         alvos, est = [], 0.0
-        cota = cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
+        cota = cfg["diario"]["posts_por_pagina"] if diario else cfg["posts_por_pagina_pre"] if pre else cfg["posts_por_pagina"]
         for pg in cfg["paginas"]:
             n = cota["principal" if pg.get("principal") else "outras"]
             if not n:
+                continue
+            if diario:
+                alvos.append((pg, n))
                 continue
             c = p["inicio"] + p["post"] * n
             if est + c > teto:
@@ -102,14 +125,26 @@ def main(argv=None, executar=None) -> int:
 
     def um(a):
         pg, n = a
-        pl = {"startUrls": [{"url": pg["url"]}], "resultsLimit": n, "onlyPostsNewerThan": cfg["desde"]}
+        pl = {"startUrls": [{"url": pg["url"]}], "resultsLimit": n, "onlyPostsNewerThan": desde}
         try:
             run, itens = executar(pl, round(p["inicio"] + p["post"] * n * 1.05 + 0.002, 4))
             return pg, n, run or {}, itens or [], None
         except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
             return pg, n, {}, [], f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
-    with ThreadPoolExecutor(max_workers=3) as ex:
-        res = list(ex.map(um, alvos))
+    if diario:
+        # uma página por vez: o teto de cada página é o que sobra do dia, pelo custo real das anteriores
+        res, sobra = [], teto
+        for pg, n in sorted(alvos, key=lambda a: not a[0].get("principal")):
+            n = min(n, int((sobra - p["inicio"]) / p["post"] / 1.05))
+            if n < 1:
+                res.append((pg, 0, {}, [], f"teto do dia de US$ {teto} atingido (não executado)"))
+                continue
+            r = um((pg, n))
+            res.append(r)
+            sobra -= max(custo_run(r[2]) or 0, round((p["inicio"] if r[2] else 0) + p["post"] * len(r[3]), 4))
+    else:
+        with ThreadPoolExecutor(max_workers=3) as ex:
+            res = list(ex.map(um, alvos))
     interno = os.environ.get("ODI_INTERNO_DIR")
     src = pasta / "videos.csv.gz"
     acervo = {r["video_id"]: r for r in csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";")} if src.exists() else {}

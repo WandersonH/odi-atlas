@@ -39,5 +39,32 @@ class TestFacebook(unittest.TestCase):
         self.assertLessEqual(man2["gasto_antes_usd"] + man2["custo_usd"], cfg["teto_total_usd"])
 
 
+    def test_diario_conta1_respeita_teto_do_dia_e_do_mes(self):
+        pedidos = []
+
+        def fake(payload, cap):
+            pedidos.append((payload, cap))
+            n = payload["resultsLimit"]  # devolve o máximo pedido: pior caso de custo
+            return ({"id": "r", "usageTotalUsd": None},
+                    [{"postId": f"{payload['startUrls'][0]['url'][-6:]}{i}", "text": "x", "time": "2026-10-21T12:00:00.000Z"} for i in range(n)])
+        cfg = json.loads((RAIZ / "data/config/facebook_posts.json").read_text(encoding="utf-8"))
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as t:
+            (Path(t) / "data/config").mkdir(parents=True)
+            (Path(t) / "data/config/facebook_posts.json").write_text(json.dumps(cfg), encoding="utf-8")
+            os.chdir(t)
+            try:
+                fb.main(["--diario"], executar=fake)
+                man = json.loads(Path("data/facebook/manifesto_latest.json").read_text(encoding="utf-8"))
+            finally:
+                os.chdir(cwd)
+        D = cfg["diario"]
+        self.assertEqual(man["modo"], "diário")
+        self.assertEqual(man["conta"], "APIFY_TOKEN")
+        self.assertLessEqual(man["custo_usd"], D["teto_dia_usd"])
+        self.assertTrue(pedidos[0][0]["startUrls"][0]["url"].endswith(("/lula", "/flaviobolsonaro")))  # principais primeiro
+        self.assertEqual(pedidos[0][0]["onlyPostsNewerThan"], man["desde"])
+        self.assertTrue(any("teto do dia" in (pg["erro"] or "") for pg in man["paginas"]))  # no pior caso, páginas ficam de fora
+
 if __name__ == "__main__":
     unittest.main()

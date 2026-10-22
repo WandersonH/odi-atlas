@@ -127,5 +127,17 @@
   "principal": 200,
   "outras": 0
  },
- "nota_pre": "Pré-campanha: o filtro onlyPostsOlderThan devolveu 'no_items' em todas as páginas (run 39084573495, conta 4, US$ 0,01). O modo --pre relê as páginas principais (lula, flaviobolsonaro) desde 20/07 sem limite superior de data, até 200 posts cada (os já coletados são lidos de novo e pagos de novo); ≈ US$ 1,65 pela tabela, dentro do teto de US$ 5. As demais páginas ficam para o próximo ciclo de saldo."
+ "nota_pre": "Pré-campanha: o filtro onlyPostsOlderThan devolveu 'no_items' em todas as páginas (run 39084573495, conta 4, US$ 0,01). O modo --pre relê as páginas principais (lula, flaviobolsonaro) desde 20/07 sem limite superior de data, até 200 posts cada (os já coletados são lidos de novo e pagos de novo); ≈ US$ 1,65 pela tabela, dentro do teto de US$ 5. As demais páginas ficam para o próximo ciclo de saldo.",
+ "diario": {
+  "segredo": "APIFY_TOKEN",
+  "teto_dia_usd": 0.4,
+  "teto_mes_usd": 10.0,
+  "posts_por_pagina": {
+   "principal": 30,
+   "outras": 10
+  },
+  "janela": "posts publicados desde o dia anterior (data de Brasília)",
+  "autorizacao": "Responsável em 22/10/2026, 00h00 ('já autorizei'), sobre a proposta de 21/10, 23h57: coleta diária de posts do Facebook na conta 1 (APIFY_TOKEN), teto de US$ 0,40 por dia e US$ 10 por mês.",
+  "execucao": "uma página por vez; cada página recebe como teto o que sobra do teto do dia (gasto real da Apify), então a soma nunca passa de US$ 0,40"
+ }
 }

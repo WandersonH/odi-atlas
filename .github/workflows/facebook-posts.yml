@@ -1,14 +1,17 @@
-name: Facebook — o que as campanhas publicam (Apify, APIFY_TOKEN_2, teto US$ 5)
+name: Facebook — o que as campanhas publicam (Apify; diário na conta 1, teto US$ 0,40/dia e US$ 10/mês)
 
 # Ator apify/facebook-posts-scraper. Páginas declaradas ao TSE pelas chapas 13 e 22, desde 16/08/2026.
 # Teto total autorizado: US$ 5 (data/config/facebook_posts.json); teste US$ 0,10.
+# Diário (autorizado em 22/10/2026): conta 1 (APIFY_TOKEN), posts desde o dia anterior, US$ 0,40/dia e US$ 10/mês.
 on:
+  schedule:
+    - cron: "20 12 * * *"   # todo dia, 09h20 em Brasília (modo diário)
   workflow_dispatch:
     inputs:
       modo:
         description: "teste (10 posts de facebook.com/lula) · carga (todas as páginas) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [teste, carga, pre-campanha, so-analises]
+        options: [diario, teste, carga, pre-campanha, so-analises]
         default: teste
 
 concurrency:
@@ -43,6 +46,7 @@ jobs:
         if: github.event.inputs.modo != 'so-analises'
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ (github.event_name == 'schedule' || github.event.inputs.modo == 'diario') && secrets.APIFY_TOKEN || '' }}
           APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
@@ -58,9 +62,9 @@ jobs:
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-          MODO: ${{ github.event.inputs.modo }}
+          MODO: ${{ github.event_name == 'schedule' && 'diario' || github.event.inputs.modo }}
         run: |
-          case "$MODO" in teste) a="--teste";; pre-campanha) a="--pre";; *) a="";; esac
+          case "$MODO" in diario) a="--diario";; teste) a="--teste";; pre-campanha) a="--pre";; carga) a="";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
           python scripts/collect_facebook_posts.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Facebook::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
