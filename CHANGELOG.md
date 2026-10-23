@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.142 — Instagram: resultado da coleta de respostas (2026-10-23) ✅
+
+**Execução.** Run 39989507153 (`instagram-comentarios.yml`, modo `respostas`, conta 1, lote `ig-resp-2310`). Prévias grátis lidas dos brutos: 385. Coleta paga: 4 execuções Apify (ycA7FEaKyeQrrgLya, vYwl5UGiFNautWYlU, d4v6jQ91U9SOHonDB, WsiyjpBqzFKTDLoaQ), 40 posts, 940 itens, 747 respostas. **Custo: US$ 1,2698 do teto de US$ 2** (sobra US$ 0,73 no lote). Em média vieram menos de 6 respostas por comentário: o ator devolve menos que o pedido.
+**Acervo.** 6.135 registros, sendo 1.128 respostas (Lula 546, Flávio 194 nos posts de cada um, pela contagem do `build_comentarios`).
+**Rede de conversa** (`data/instagram/comentarios/rede_respostas.*`): agora é de respostas, não de menções. 779 autores, 719 ligações, 732 respostas, 66 comunidades; maior componente com 142 autores; centralização de Freeman 0,1211.
+**Evidência.** `data/instagram/comentarios/manifesto_latest.json` e anotações do run.
+
 ## C19.141 — Instagram: respostas dos comentários (teto US$ 2, conta 1) para a rede de conversa (2026-10-23) 🔜
 
 **Autorização.** Responsável em 23/10, 13h43 ("pode fazer neh"), sobre a proposta de US$ 2 para as respostas. Registrada em `data/config/instagram_comentarios.json` → `respostas`: lote `ig-resp-2310`, teto de US$ 2, uma vez.
@@ -14,7 +21,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Comentário com `parent_comment_id` vira `tipo=resposta`, com `parent_id`. Assim `build_rede_comentarios.py` monta a rede de respostas de verdade, no lugar da de menções (C19.140).
 - O workflow ganhou o modo `respostas`. Na página, o bloco troca o título e a nota quando a rede é de respostas.
 **Teste.** `python -m unittest discover -s tests -v`: OK, com novo teste de prévia aninhada → `resposta` com `parent_id`. Simulação local com executor falso: 40 posts em 4 execuções, tetos de 0,51 + 0,51 + 0,51 + 0,41 = US$ 1,96. Os manifestos da simulação não foram publicados.
-**Pendente.** Resultado real da execução no GitHub: entrada seguinte a esta.
+**Resultado.** Ver C19.142.
 
 ## C19.140 — Comentários: rede de conversa por menções (Instagram, TikTok, Facebook, Kwai) e rede de palavras maior nos acervos pequenos (2026-10-23) ✅
 
