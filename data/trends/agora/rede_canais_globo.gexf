@@ -9,13 +9,13 @@
 <node id="v:espaco do povo" label="Espaço do Povo"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="5"/></attvalues></node>
 <node id="v:thmais" label="THMais"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="2"/></attvalues></node>
 <node id="v:noticias ao minuto brasil" label="Notícias ao Minuto Brasil"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="3"/></attvalues></node>
-<node id="t:que horas e o debate na globo" label="que horas é o debate na globo"><attvalues><attvalue for="0" value="termo em alta"/><attvalue for="1" value=""/><attvalue for="2" value="5"/></attvalues></node>
+<node id="t:debate hoje" label="debate hoje"><attvalues><attvalue for="0" value="termo em alta"/><attvalue for="1" value=""/><attvalue for="2" value="5"/></attvalues></node>
 <node id="v:valor economico" label="Valor Econômico"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="9"/></attvalues></node>
 <node id="v:jota info" label="JOTA Info"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="8"/></attvalues></node>
 <node id="v:exame" label="Exame"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="7"/></attvalues></node>
-<node id="v:o globo" label="O GLOBO"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="19"/></attvalues></node>
-<node id="t:debate hoje" label="debate hoje"><attvalues><attvalue for="0" value="termo em alta"/><attvalue for="1" value=""/><attvalue for="2" value="5"/></attvalues></node>
 <node id="v:estadao" label="Estadão"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="5"/></attvalues></node>
+<node id="t:que horas e o debate na globo" label="que horas é o debate na globo"><attvalues><attvalue for="0" value="termo em alta"/><attvalue for="1" value=""/><attvalue for="2" value="5"/></attvalues></node>
+<node id="v:o globo" label="O GLOBO"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="19"/></attvalues></node>
 <node id="t:datafolha pesquisa" label="datafolha pesquisa"><attvalues><attvalue for="0" value="termo em alta"/><attvalue for="1" value=""/><attvalue for="2" value="5"/></attvalues></node>
 <node id="v:g1" label="G1"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="17"/></attvalues></node>
 <node id="v:folha de s.paulo" label="Folha de S.Paulo"><attvalues><attvalue for="0" value="veículo"/><attvalue for="1" value=""/><attvalue for="2" value="20"/></attvalues></node>
@@ -225,16 +225,16 @@
 <edge id="2" source="t:bolsonaro talvane albuquerque" target="v:espaco do povo" weight="1"/>
 <edge id="3" source="t:bolsonaro talvane albuquerque" target="v:thmais" weight="1"/>
 <edge id="4" source="t:bolsonaro talvane albuquerque" target="v:noticias ao minuto brasil" weight="1"/>
-<edge id="5" source="t:que horas e o debate na globo" target="v:valor economico" weight="1"/>
-<edge id="6" source="t:que horas e o debate na globo" target="v:uol noticias" weight="1"/>
-<edge id="7" source="t:que horas e o debate na globo" target="v:jota info" weight="1"/>
-<edge id="8" source="t:que horas e o debate na globo" target="v:exame" weight="1"/>
-<edge id="9" source="t:que horas e o debate na globo" target="v:o globo" weight="1"/>
-<edge id="10" source="t:debate hoje" target="v:uol noticias" weight="1"/>
-<edge id="11" source="t:debate hoje" target="v:valor economico" weight="1"/>
-<edge id="12" source="t:debate hoje" target="v:jota info" weight="1"/>
-<edge id="13" source="t:debate hoje" target="v:exame" weight="1"/>
-<edge id="14" source="t:debate hoje" target="v:estadao" weight="1"/>
+<edge id="5" source="t:debate hoje" target="v:uol noticias" weight="1"/>
+<edge id="6" source="t:debate hoje" target="v:valor economico" weight="1"/>
+<edge id="7" source="t:debate hoje" target="v:jota info" weight="1"/>
+<edge id="8" source="t:debate hoje" target="v:exame" weight="1"/>
+<edge id="9" source="t:debate hoje" target="v:estadao" weight="1"/>
+<edge id="10" source="t:que horas e o debate na globo" target="v:valor economico" weight="1"/>
+<edge id="11" source="t:que horas e o debate na globo" target="v:uol noticias" weight="1"/>
+<edge id="12" source="t:que horas e o debate na globo" target="v:jota info" weight="1"/>
+<edge id="13" source="t:que horas e o debate na globo" target="v:exame" weight="1"/>
+<edge id="14" source="t:que horas e o debate na globo" target="v:o globo" weight="1"/>
 <edge id="15" source="t:datafolha pesquisa" target="v:g1" weight="1"/>
 <edge id="16" source="t:datafolha pesquisa" target="v:folha de s.paulo" weight="1"/>
 <edge id="17" source="t:datafolha pesquisa" target="v:brasil de fato" weight="1"/>
