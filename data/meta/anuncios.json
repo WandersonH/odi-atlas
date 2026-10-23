@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-10-22T17:40:30Z",
+ "coletado_em_utc": "2026-10-23T17:31:04Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -9,31 +9,31 @@
    "candidato": "Lula",
    "termo": "Lula",
    "paginas_api": null,
-   "lidos_nesta_execucao": 853,
+   "lidos_nesta_execucao": 900,
    "limite_da_coleta": 900,
-   "no_limite": false,
-   "anuncios": 2415,
-   "paginas": 525,
+   "no_limite": true,
+   "anuncios": 2507,
+   "paginas": 532,
    "gasto": {
-    "min": 9270600,
+    "min": 10163000,
     "max": null,
-    "faixas_abertas": 351
+    "faixas_abertas": 357
    },
    "impressoes": {
-    "min": 707135000,
+    "min": 736740000,
     "max": null,
-    "faixas_abertas": 734
+    "faixas_abertas": 754
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 2368,
-    "facebook": 2097,
-    "audience_network": 155,
-    "threads": 101,
-    "whatsapp": 73,
-    "messenger": 38
+    "instagram": 2460,
+    "facebook": 2186,
+    "audience_network": 159,
+    "threads": 104,
+    "whatsapp": 75,
+    "messenger": 39
    },
    "fases": [
     {
@@ -53,9 +53,9 @@
      "rotulo": "Campanha do 1º turno",
      "de": "2026-08-16",
      "ate": "2026-10-04",
-     "anuncios": 401,
+     "anuncios": 402,
      "gasto": {
-      "min": 4535200,
+      "min": 4536700,
       "max": null,
       "faixas_abertas": 139
      }
@@ -65,21 +65,21 @@
      "rotulo": "2º turno",
      "de": "2026-10-05",
      "ate": "2026-10-25",
-     "anuncios": 1577,
+     "anuncios": 1666,
      "gasto": {
-      "min": 3783100,
+      "min": 4673500,
       "max": null,
-      "faixas_abertas": 109
+      "faixas_abertas": 114
      }
     }
    ],
    "fora_das_fases": {
-    "anuncios": 235,
+    "anuncios": 237,
     "sem_data": 0,
     "gasto": {
-     "min": 414300,
+     "min": 414800,
      "max": null,
-     "faixas_abertas": 68
+     "faixas_abertas": 69
     }
    },
    "regioes_gasto_min_estimado": [],
@@ -87,16 +87,16 @@
     {
      "page_id": "267949976607343",
      "pagina": "Lula",
-     "anuncios": 983,
+     "anuncios": 1051,
      "gasto": {
-      "min": 3098300,
-      "max": 3787790,
+      "min": 3851000,
+      "max": 4669569,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 226345000,
+      "min": 246290000,
       "max": null,
-      "faixas_abertas": 97
+      "faixas_abertas": 106
      },
      "pagadores": [
       "ELEICAO 2026 LUIZ INAC... ⋅ Digitally created",
@@ -107,16 +107,16 @@
     {
      "page_id": "156951837773645",
      "pagina": "Flavio Bolsonaro",
-     "anuncios": 95,
+     "anuncios": 99,
      "gasto": {
-      "min": 1300000,
-      "max": 1552891,
+      "min": 1339900,
+      "max": 1597187,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 38390000,
+      "min": 39055000,
       "max": null,
-      "faixas_abertas": 17
+      "faixas_abertas": 18
      },
      "pagadores": [
       "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
@@ -138,6 +138,25 @@
      },
      "pagadores": [
       "ELEICAO 2026 ELMANO DE FREITAS DA COSTA GOVERNADOR"
+     ]
+    },
+    {
+     "page_id": "1176267865563271",
+     "pagina": "Lula Pelo Brasil",
+     "anuncios": 91,
+     "gasto": {
+      "min": 279300,
+      "max": 350672,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 31245000,
+      "max": null,
+      "faixas_abertas": 6
+     },
+     "pagadores": [
+      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE",
+      "Partido dos Trabalhadores"
      ]
     },
     {
@@ -174,25 +193,6 @@
      },
      "pagadores": [
       "ELEICAO 2026 CIRO FERREIRA GOMES GOVERNADOR"
-     ]
-    },
-    {
-     "page_id": "1176267865563271",
-     "pagina": "Lula Pelo Brasil",
-     "anuncios": 85,
-     "gasto": {
-      "min": 206000,
-      "max": 257872,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 24345000,
-      "max": null,
-      "faixas_abertas": 3
-     },
-     "pagadores": [
-      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE",
-      "Partido dos Trabalhadores"
      ]
     },
     {
@@ -308,6 +308,24 @@
      ]
     },
     {
+     "page_id": "244743189706914",
+     "pagina": "Evangélicos com Lula",
+     "anuncios": 14,
+     "gasto": {
+      "min": 83000,
+      "max": 97094,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 7975000,
+      "max": null,
+      "faixas_abertas": 5
+     },
+     "pagadores": [
+      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE"
+     ]
+    },
+    {
      "page_id": "451890981576627",
      "pagina": "Celso Sabino",
      "anuncios": 9,
@@ -324,24 +342,6 @@
      "pagadores": [
       "Celso Sabino",
       "ELEICAO 2026 CELSO SABINO DE OLIVEIRA SENADOR - 68.430.638/0001-04"
-     ]
-    },
-    {
-     "page_id": "244743189706914",
-     "pagina": "Evangélicos com Lula",
-     "anuncios": 12,
-     "gasto": {
-      "min": 79200,
-      "max": 92695,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 7350000,
-      "max": null,
-      "faixas_abertas": 4
-     },
-     "pagadores": [
-      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE"
      ]
     },
     {
@@ -472,6 +472,24 @@
      ]
     },
     {
+     "page_id": "195247917006787",
+     "pagina": "Professora Maria do Carmo",
+     "anuncios": 13,
+     "gasto": {
+      "min": 56800,
+      "max": 73399,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 4795000,
+      "max": null,
+      "faixas_abertas": 1
+     },
+     "pagadores": [
+      "ELEICAO 2026 MARIA DO CARMO SEFFAIR LINS DE ALBUQUERQUE GOVERNADOR"
+     ]
+    },
+    {
      "page_id": "604453922952420",
      "pagina": "Patrus Ananias",
      "anuncios": 8,
@@ -494,12 +512,12 @@
      "pagina": "Lulaverso",
      "anuncios": 5,
      "gasto": {
-      "min": 50500,
-      "max": 67000,
+      "min": 51500,
+      "max": 68000,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 4000000,
+      "min": 4100000,
       "max": null,
       "faixas_abertas": 3
      },
@@ -524,24 +542,6 @@
      "pagadores": [
       "ELEICAO 2026 RENILDO VASCONCELOS CALHEIROS DEPUTADO FEDERAL 68.258.303/0001-42"
      ]
-    },
-    {
-     "page_id": "707722716097737",
-     "pagina": "Leandro Soares",
-     "anuncios": 1,
-     "gasto": {
-      "min": 50000,
-      "max": 60000,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 1000000,
-      "max": null,
-      "faixas_abertas": 1
-     },
-     "pagadores": [
-      "Leandro Soares"
-     ]
     }
    ]
   },
@@ -552,24 +552,24 @@
    "lidos_nesta_execucao": 900,
    "limite_da_coleta": 900,
    "no_limite": true,
-   "anuncios": 2666,
-   "paginas": 438,
+   "anuncios": 2776,
+   "paginas": 446,
    "gasto": {
-    "min": 14845400,
+    "min": 17134900,
     "max": null,
-    "faixas_abertas": 55
+    "faixas_abertas": 59
    },
    "impressoes": {
-    "min": 579529100,
+    "min": 610668100,
     "max": null,
-    "faixas_abertas": 350
+    "faixas_abertas": 368
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 2575,
-    "facebook": 2212,
+    "instagram": 2681,
+    "facebook": 2316,
     "audience_network": 38,
     "whatsapp": 35,
     "threads": 27,
@@ -593,11 +593,11 @@
      "rotulo": "Campanha do 1º turno",
      "de": "2026-08-16",
      "ate": "2026-10-04",
-     "anuncios": 197,
+     "anuncios": 198,
      "gasto": {
-      "min": 6228300,
+      "min": 6228400,
       "max": null,
-      "faixas_abertas": 5
+      "faixas_abertas": 4
      }
     },
     {
@@ -605,11 +605,11 @@
      "rotulo": "2º turno",
      "de": "2026-10-05",
      "ate": "2026-10-25",
-     "anuncios": 2178,
+     "anuncios": 2287,
      "gasto": {
-      "min": 8194700,
+      "min": 10484100,
       "max": null,
-      "faixas_abertas": 49
+      "faixas_abertas": 54
      }
     }
    ],
@@ -627,16 +627,16 @@
     {
      "page_id": "156951837773645",
      "pagina": "Flavio Bolsonaro",
-     "anuncios": 606,
+     "anuncios": 689,
      "gasto": {
-      "min": 10693300,
-      "max": 12642344,
+      "min": 12740100,
+      "max": 15096045,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 200018600,
+      "min": 220811600,
       "max": null,
-      "faixas_abertas": 109
+      "faixas_abertas": 116
      },
      "pagadores": [
       "ELEIÇÃO 2026 FLAVIO NANTES BOLSONARO PRESIDENTE"
@@ -645,16 +645,16 @@
     {
      "page_id": "267949976607343",
      "pagina": "Lula",
-     "anuncios": 713,
+     "anuncios": 717,
      "gasto": {
-      "min": 838100,
-      "max": 1083070,
+      "min": 992700,
+      "max": 1257474,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 85553100,
+      "min": 89462100,
       "max": null,
-      "faixas_abertas": 28
+      "faixas_abertas": 31
      },
      "pagadores": [
       "ELEICAO 2026 LUIZ INAC... ⋅ Digitally created",
@@ -737,15 +737,15 @@
     {
      "page_id": "291482090931929",
      "pagina": "Professora Dorinha",
-     "anuncios": 103,
+     "anuncios": 105,
      "gasto": {
-      "min": 152300,
-      "max": 188661,
+      "min": 167000,
+      "max": 205262,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 6942000,
-      "max": 8249000,
+      "min": 7532000,
+      "max": 8934000,
       "faixas_abertas": 0
      },
      "pagadores": [
@@ -757,14 +757,14 @@
      "pagina": "Partido Liberal",
      "anuncios": 26,
      "gasto": {
-      "min": 141400,
-      "max": 174499,
+      "min": 153400,
+      "max": 190999,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 17605000,
+      "min": 18555000,
       "max": null,
-      "faixas_abertas": 9
+      "faixas_abertas": 10
      },
      "pagadores": [
       "Partido Liberal"
@@ -810,20 +810,38 @@
     {
      "page_id": "195247917006787",
      "pagina": "Professora Maria do Carmo",
-     "anuncios": 43,
+     "anuncios": 44,
      "gasto": {
-      "min": 84800,
-      "max": 103676,
+      "min": 96300,
+      "max": 120176,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 8990000,
+      "min": 9470000,
       "max": null,
       "faixas_abertas": 1
      },
      "pagadores": [
       "ELEICAO 2026 MARIA DO CARMO SEFFAIR LINS DE ALBUQUERQUE GOVERNADOR",
       "Professora Maria do Carmo"
+     ]
+    },
+    {
+     "page_id": "1176267865563271",
+     "pagina": "Lula Pelo Brasil",
+     "anuncios": 47,
+     "gasto": {
+      "min": 93100,
+      "max": 114686,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 11864000,
+      "max": null,
+      "faixas_abertas": 3
+     },
+     "pagadores": [
+      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE"
      ]
     },
     {
@@ -900,24 +918,6 @@
      ]
     },
     {
-     "page_id": "1176267865563271",
-     "pagina": "Lula Pelo Brasil",
-     "anuncios": 45,
-     "gasto": {
-      "min": 57700,
-      "max": 72385,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 8289000,
-      "max": 9713000,
-      "faixas_abertas": 0
-     },
-     "pagadores": [
-      "ELEICAO 2026 LUIZ INACIO LULA DA SILVA PRESIDENTE"
-     ]
-    },
-    {
      "page_id": "110420701228621",
      "pagina": "Douglas Ruas",
      "anuncios": 4,
@@ -970,6 +970,24 @@
      },
      "pagadores": [
       "ELEICAO 2026 ANDRE LUIS GASPAR JANONES DEPUTADO FEDERAL"
+     ]
+    },
+    {
+     "page_id": "213808655377408",
+     "pagina": "Alan Rick",
+     "anuncios": 43,
+     "gasto": {
+      "min": 43300,
+      "max": 54474,
+      "faixas_abertas": 0
+     },
+     "impressoes": {
+      "min": 2038000,
+      "max": 2395000,
+      "faixas_abertas": 0
+     },
+     "pagadores": [
+      "ELEICAO 2026 ALAN RICK MIRANDA GOVERNADOR"
      ]
     },
     {
@@ -1062,24 +1080,6 @@
      "pagadores": [
       "ELEICAO 2026 ZOE MARIA FERNANDEZ MARTINEZ DEPUTADO FEDERAL"
      ]
-    },
-    {
-     "page_id": "314784062046862",
-     "pagina": "Fabiana Bolsonaro",
-     "anuncios": 2,
-     "gasto": {
-      "min": 37000,
-      "max": 43000,
-      "faixas_abertas": 0
-     },
-     "impressoes": {
-      "min": 2000000,
-      "max": null,
-      "faixas_abertas": 2
-     },
-     "pagadores": [
-      "ELEICAO 2026 FABIANA DE LIMA BARROSO SOUZA DEPUTADO ESTADUAL"
-     ]
     }
    ]
   }
@@ -1087,24 +1087,24 @@
  "erros": {},
  "modo": "diário",
  "teto_usd": 0.3,
- "gasto_mes_antes_usd": 1.4971,
+ "gasto_mes_antes_usd": 1.7461,
  "runs_apify": [
   {
    "consulta": "lula",
-   "id": "e519AyMG5KgO7mNJl",
+   "id": "Ed8vC6QM0DwaGaJKd",
    "status": "ABORTED",
-   "custo_usd": 0.1237,
-   "itens": 853
+   "custo_usd": 0.1269,
+   "itens": 900
   },
   {
    "consulta": "flavio",
-   "id": "9NrQWcSG5s2yPnuqM",
+   "id": "RAZ4fmzz4WjwB2s5H",
    "status": "ABORTED",
-   "custo_usd": 0.1253,
+   "custo_usd": 0.123,
    "itens": 900
   }
  ],
- "janela_desta_execucao": "2026-10-21",
+ "janela_desta_execucao": "2026-10-22",
  "status": "ok",
- "custo_usd": 0.249
+ "custo_usd": 0.2499
 }
