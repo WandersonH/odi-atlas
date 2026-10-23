@@ -68,8 +68,29 @@ def dur_s(iso: str | None) -> int | None:
     return d * 86400 + h * 3600 + mi * 60 + s
 
 
+ARQ_PUB = "data/debate/youtube_videos.json"
+ARQ_PRIV = "debate/youtube_comentarios.csv.gz"
+EXCLUI = None
+INICIO = None
+
+
+def configurar(debate: str) -> None:
+    """Outro debate de data/config/debates.json (Band = padrão, arquivos sem sufixo): busca, janela e arquivos próprios."""
+    global DESDE, CONSULTAS, CONHECIDOS, ARQ_PUB, ARQ_PRIV, EXCLUI, INICIO
+    cfg = json.loads((Path(__file__).resolve().parents[1] / "data/config/debates.json").read_text(encoding="utf-8"))[debate]
+    INICIO = cfg["inicio"]
+    if debate == "band":
+        return
+    y = cfg["youtube"]
+    DESDE, CONSULTAS, CONHECIDOS = y["desde"], y["consultas"], y.get("conhecidos", [])
+    EXCLUI = re.compile(y["exclui_titulo"], re.I) if y.get("exclui_titulo") else None
+    ARQ_PUB, ARQ_PRIV = f"data/debate/{debate}/youtube_videos.json", f"debate/{debate}/youtube_comentarios.csv.gz"
+
+
 def sobre_o_debate(titulo: str, descricao: str) -> bool:
-    t = bc.norm(f"{titulo} {descricao[:400]}")
+    if EXCLUI and EXCLUI.search(titulo or "") and not re.search(r"globo", titulo or "", re.I):
+        return False  # vídeo de outro debate (ex.: Band) publicado depois deste
+    t = bc.norm(f"{titulo} {(descricao or '')[:400]}")
     return "debate" in t and any(k in t for k in ("lula", "flavio", "bolsonaro", "band", "presidencia"))
 
 
@@ -150,6 +171,11 @@ def comentarios(key: str, vids: list[dict], agora: str) -> tuple[list[dict], dic
 
 
 def main(argv=None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
+    configurar(argv[argv.index("--debate") + 1] if "--debate" in argv else "band")
+    if INICIO and now_utc() < INICIO:
+        print(f"⛔ o debate ainda não aconteceu (início {INICIO} UTC): nada coletado")
+        return 0
     key = os.environ.get("YOUTUBE_API_KEY", "").strip()
     if not key:
         print("⛔ falta YOUTUBE_API_KEY")
@@ -158,7 +184,7 @@ def main(argv=None) -> int:
     achados = buscar(key)
     # acumula (22/10/2026): a busca falha por cota (HTTP 429) e devolve menos vídeos; quem já foi achado continua na lista e
     # tem os números atualizados por videos.list (1 unidade por 50 vídeos). Antes, cada run substituía a lista.
-    arq_pub = Path("data/debate/youtube_videos.json")
+    arq_pub = Path(ARQ_PUB)
     antes = {v["id"]: v for v in (json.loads(arq_pub.read_text(encoding="utf-8")).get("videos") or [])} if arq_pub.exists() else {}
     for vid, v in antes.items():
         achados.setdefault(vid, v.get("achado_por"))
@@ -183,7 +209,7 @@ def main(argv=None) -> int:
     interno = os.environ.get("ODI_INTERNO_DIR")
     destino = "nenhum (sem ODI_INTERNO_DIR: comentários descartados)"
     if interno and rows:
-        p = Path(interno) / "debate/youtube_comentarios.csv.gz"
+        p = Path(interno) / ARQ_PRIV
         p.parent.mkdir(parents=True, exist_ok=True)
         # acumula por comment_id (22/10/2026): antes o arquivo era reescrito só com a leitura do dia
         antigos = list(csv.DictReader(gzip.open(p, "rt", encoding="utf-8"), delimiter=";")) if p.exists() else []
@@ -193,7 +219,7 @@ def main(argv=None) -> int:
             w = csv.DictWriter(f, fieldnames=CAMPOS, delimiter=";", extrasaction="ignore")
             w.writeheader()
             w.writerows(rows)
-        destino = "privado: debate/youtube_comentarios.csv.gz"
+        destino = "privado: " + ARQ_PRIV
     por_video = Counter(r["video_id"] for r in rows)
     for v in vids:  # acervo (privado) quando houver; sem ele, só a leitura de hoje, sem zerar o que já constava
         v["comentarios_lidos"] = por_video.get(v["id"]) or lidos_hoje.get(v["id"]) or v.get("comentarios_lidos") or 0
@@ -201,8 +227,8 @@ def main(argv=None) -> int:
            "videos_com_comentarios_lidos": sum(1 for v in vids if v["comentarios_lidos"]), "comentarios_lidos": len(rows), "comentarios_destino": destino, "erros": ERROS,
            "chat_ao_vivo": "⛔ não coletado: a YouTube Data API só lê o chat enquanto a transmissão está no ar; o replay do chat não é oferecido depois",
            "videos": vids}
-    Path("data/debate").mkdir(parents=True, exist_ok=True)
-    Path("data/debate/youtube_videos.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    Path(ARQ_PUB).parent.mkdir(parents=True, exist_ok=True)
+    Path(ARQ_PUB).write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"vídeos sobre o debate: {len(vids)} de {len(achados)} achados · visualizações {sum(v['visualizacoes'] or 0 for v in vids):,} · "
           f"comentários lidos {len(rows)} em {len(alvo)} vídeos · erros {ERROS[:3]}")
     return 0 if vids else 1

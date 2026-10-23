@@ -38,8 +38,21 @@ CATEGORIAS = {1: "Veículos", 2: "Beleza e moda", 3: "Negócios e finanças", 4:
               7: "Saúde", 8: "Hobbies e lazer", 9: "Empregos e educação", 10: "Lei e governo", 11: "Outros", 14: "Política",
               15: "Ciência", 16: "Compras", 17: "Esportes", 18: "Tecnologia", 19: "Viagens e transporte", 20: "Clima"}
 POLITICA = 14
-DEBATE = {"inicio": "2026-10-18T23:00:00Z", "rotulo": "Debate Band/Estadão · 2º turno · 18/10 às 20h (Brasília)",
-          "janela_de": "2026-10-17T23:00:00Z", "janela_ate": "2026-10-19T23:00:00Z"}
+# debates acompanhados (data/config/debates.json): a coleta de 15 em 15 min vale na janela de cada um (24 h antes a 24 h depois)
+DEBATES = {k: v for k, v in json.loads((Path(__file__).resolve().parents[1] / "data/config/debates.json").read_text(encoding="utf-8")).items()
+           if not k.startswith("_")}
+DEBATE = {k: DEBATES["band"][k] for k in ("inicio", "rotulo", "janela_de", "janela_ate")}
+
+
+def debate_ativo(agora: str, argv: list) -> tuple[str, dict] | None:
+    """--debate <id> escolhe; senão, o debate cuja janela contém agora; --sempre sem janela = Band (testes e leitura manual)."""
+    if "--debate" in argv:
+        k = argv[argv.index("--debate") + 1]
+        return k, DEBATES[k]
+    for k, v in DEBATES.items():
+        if v["janela_de"] <= agora <= v["janela_ate"]:
+            return k, v
+    return ("band", DEBATES["band"]) if "--sempre" in argv else None
 TERMOS_CURVA = ["Lula", "Flávio Bolsonaro", "debate"]
 
 
@@ -225,16 +238,26 @@ def em_alta(root: Path, agora: str, get_batch=None, get_materias=None) -> int:
 
 
 def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=None) -> int:
-    root = Path(next((a for a in (argv or []) if not a.startswith("--")), "."))
+    argv = list(argv or [])
+    root = Path(next((a for i, a in enumerate(argv) if not a.startswith("--") and (i == 0 or argv[i - 1] != "--debate")), "."))
     pasta = root / "data/trends/agora"
     agora = now_utc()
-    if "--sempre" not in (argv or []) and agora > DEBATE["janela_ate"]:
-        # depois da janela do debate: só o "Em alta agora" permanente da página do Google Trends (pedido de 20/10/2026)
+    ativo = debate_ativo(agora, argv)
+    if ativo is None:
+        # fora da janela de qualquer debate: só o "Em alta agora" permanente da página do Google Trends (pedido de 20/10/2026),
+        # uma vez por hora (o agendamento roda de 15 em 15 min por causa das janelas dos debates)
+        if get_batch is None and int(agora[14:16]) >= 15:
+            print("fora da janela dos debates: o 'Em alta agora' é lido só na primeira execução de cada hora")
+            return 0
         if root == Path(".") or (root / "data").exists():
             return em_alta(root, agora, get_batch, get_materias)
-        print(f"fora da janela do debate (até {DEBATE['janela_ate']}): nada coletado")
+        print("fora da janela dos debates: nada coletado")
         return 0
-    (pasta / "retratos").mkdir(parents=True, exist_ok=True)
+    chave, cfg_deb = ativo
+    DEB = {k: cfg_deb[k] for k in ("inicio", "rotulo", "janela_de", "janela_ate")}
+    suf = cfg_deb.get("sufixo", "")
+    retr = pasta / f"retratos{suf}"
+    retr.mkdir(parents=True, exist_ok=True)
     ret = {"coletado_em_utc": agora, "erros": {}, "listas": {}}
     for h in (4, 24):
         try:
@@ -273,12 +296,12 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
         ret["curvas"] = (get_curvas or curvas)()
     except Exception as e:  # noqa: BLE001
         ret["erros"]["curvas"] = f"{type(e).__name__}: {str(e)[:200]}"
-    (pasta / "retratos" / f"{agora[:16].replace('-', '').replace(':', '').replace('T', '-')}.json").write_text(json.dumps(ret, ensure_ascii=False), encoding="utf-8")
+    (retr / f"{agora[:16].replace('-', '').replace(':', '').replace('T', '-')}.json").write_text(json.dumps(ret, ensure_ascii=False), encoding="utf-8")
     # consolidado: todos os retratos
     cons = {}
     retratos = []
     ultima_curva = None
-    for f in sorted((pasta / "retratos").glob("*.json")):
+    for f in sorted(retr.glob("*.json")):
         r = json.loads(f.read_text(encoding="utf-8"))
         retratos.append({"t": r["coletado_em_utc"], "n24": len(r["listas"].get("24h", [])), "erros": list(r.get("erros", {}))})
         if r.get("curvas"):
@@ -308,7 +331,7 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
         c["politica"] = POLITICA in c["categorias"]
         c["rotulos"] = [CATEGORIAS.get(i, str(i)) for i in c["categorias"]]
         ini = c.get("inicio")
-        c["momento"] = None if not ini else "antes do debate" if ini < DEBATE["inicio"] else "durante/depois do debate"
+        c["momento"] = None if not ini else "antes do debate" if ini < DEB["inicio"] else "durante/depois do debate"
     termos = sorted(cons.values(), key=lambda c: (-(c["volume_max"] or 0), c["termo"]))
     # matérias no topo do Google Notícias para cada termo de Política (renovadas a cada hora; termo novo entra na hora)
     cache_p = pasta / "materias.json"
@@ -330,15 +353,15 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
         m = cache.get(c["termo"].lower())
         if m:
             c["materias"], c["materias_em"] = m["itens"], m["coletado_em"]
-    ult_rel_uf = next((json.loads(f.read_text(encoding="utf-8")).get("relacionados_uf") for f in sorted((pasta / "retratos").glob("*.json"), reverse=True)
+    ult_rel_uf = next((json.loads(f.read_text(encoding="utf-8")).get("relacionados_uf") for f in sorted(retr.glob("*.json"), reverse=True)
                        if json.loads(f.read_text(encoding="utf-8")).get("relacionados_uf")), None)
-    ult_uf = next((json.loads(f.read_text(encoding="utf-8")).get("por_uf") for f in sorted((pasta / "retratos").glob("*.json"), reverse=True)
+    ult_uf = next((json.loads(f.read_text(encoding="utf-8")).get("por_uf") for f in sorted(retr.glob("*.json"), reverse=True)
                    if json.loads(f.read_text(encoding="utf-8")).get("por_uf")), None)
     por_uf = None
     if ult_uf:
         por_uf = {uf: [{"termo": x["termo"], "volume": x["volume"], "inicio": x["inicio"], "ativo": x["ativo"], "politica": POLITICA in x["categorias"]}
                        for x in l] for uf, l in ult_uf.items()}
-    out = {"schema_version": 1, "gerado_em_utc": agora, "debate": DEBATE, "categorias": CATEGORIAS, "politica_id": POLITICA,
+    out = {"schema_version": 1, "gerado_em_utc": agora, "debate": {**DEB, "id": chave}, "categorias": CATEGORIAS, "politica_id": POLITICA,
            "retratos": retratos, "ultimo_retrato": {"t": agora, "erros": ret["erros"],
                                                        "lista_4h": [x["termo"] for x in ret["listas"].get("4h", [])][:60]},
            "termos": termos, "curvas": ultima_curva, "em_alta_por_uf": por_uf, "relacionados_por_uf": ult_rel_uf,
@@ -346,7 +369,7 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
                      "que o Trends mostra. 'Primeira vez visto' é o primeiro retrato do Atlas em que o termo apareceu; 'início' é o "
                      "horário que o próprio Trends informa. Categoria Política = rótulo do Trends (id 14). Curvas: interesse relativo "
                      "(0–100) por termo, mesma consulta para os três termos."}
-    (pasta / "debate.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (pasta / f"debate{suf}.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     n = {k: len(v) for k, v in ret["listas"].items()}
     pol = sum(1 for c in termos if c["politica"])
     print(f"retrato {agora}: listas {n} · rss {len(ret.get('rss') or {})} · termos acumulados {len(termos)} (política {pol}) · erros {ret['erros']}")

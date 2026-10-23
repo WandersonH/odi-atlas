@@ -104,8 +104,17 @@ def analisar_comentarios(rows: list[dict], vids: dict, root: Path) -> dict:
 
 
 def main(argv=None) -> int:
+    argv = list(argv or [])
+    sub = ""
+    if "--debate" in argv:  # outro debate: data/debate/<id>/ (a Band fica na raiz de data/debate)
+        k = argv.pop(argv.index("--debate") + 1)
+        argv.remove("--debate")
+        sub = "" if k == "band" else f"{k}/"
     root = Path(argv[0]) if argv else Path(".")
-    d = json.loads((root / "data/debate/youtube_videos.json").read_text(encoding="utf-8"))
+    if not (root / f"data/debate/{sub}youtube_videos.json").exists():
+        print(f"⛔ sem data/debate/{sub}youtube_videos.json ainda (o debate ainda não foi coletado)")
+        return 0
+    d = json.loads((root / f"data/debate/{sub}youtube_videos.json").read_text(encoding="utf-8"))
     vs = d["videos"]
     for v in vs:
         v["grupo"] = grupo_de(v)
@@ -135,13 +144,13 @@ def main(argv=None) -> int:
                                              "comentarios", "comentarios_lidos", "campanha")} for v in vs],
            "comentarios": None}
     interno = os.environ.get("ODI_INTERNO_DIR")
-    arq = Path(interno) / "debate/youtube_comentarios.csv.gz" if interno else None
+    arq = Path(interno) / f"debate/{sub}youtube_comentarios.csv.gz" if interno else None
     if arq and arq.exists():
         rows = list(csv.DictReader(gzip.open(arq, "rt", encoding="utf-8"), delimiter=";"))
         out["comentarios"] = {**analisar_comentarios(rows, {v["id"]: v for v in vs}, root), "videos_lidos": d["videos_com_comentarios_lidos"],
                               "metodo": "Até 100 conversas por relevância e 100 pelas mais recentes (com as respostas que a API traz) nos "
                                         f"{d['videos_com_comentarios_lidos']} vídeos mais vistos com comentários abertos."}
-    (root / "data/debate/youtube.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    (root / f"data/debate/{sub}youtube.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     t = out["total"]
     c = (out["comentarios"] or {}).get("total") or {}
     print(f"debate no YouTube: {t['videos']} vídeos · {t['canais']} canais · {t['visualizacoes']:,} visualizações · {t['curtidas']:,} curtidas · "

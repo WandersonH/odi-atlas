@@ -1,6 +1,7 @@
-name: Google Trends — em alta agora (debate do 2º turno, a cada 15 min, grátis)
+name: Google Trends — em alta agora (debates do 2º turno, a cada 15 min na janela de cada debate, grátis)
 
-# Lista "Em alta agora" do Brasil, RSS e curvas de Lula/Flávio/debate. Janela: 24 h antes e 24 h depois do debate de 18/10.
+# Lista "Em alta agora" do Brasil, RSS e curvas de Lula/Flávio/debate. Janela: 24 h antes e 24 h depois de cada debate (data/config/debates.json).
+# Fora das janelas, só o "Em alta agora" permanente, na primeira execução de cada hora.
 on:
   workflow_dispatch:
     inputs:
@@ -9,7 +10,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: "7 * * * *"   # de hora em hora: depois da janela do debate, só o "Em alta agora" da página do Trends
+    - cron: "7,22,37,52 * * * *"   # 15 em 15 min (o script decide: janela de debate ou só o "Em alta agora" de hora em hora)
 
 concurrency:
   group: trends-agora
@@ -40,6 +41,7 @@ jobs:
         run: |
           pip install -q networkx==3.6.1 numpy==2.3.4
           python scripts/build_rede_debate.py > r.txt 2>&1; rc=$?
+          python scripts/build_rede_debate.py --debate globo >> r.txt 2>&1 || rc=1
           while IFS= read -r l; do echo "::notice title=Redes do debate::$(echo "$l" | cut -c1-400)"; done < r.txt
           exit $rc
       - name: Commitar

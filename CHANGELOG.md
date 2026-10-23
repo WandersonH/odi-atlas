@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.114 — Página do debate da Globo (23/10, 21h20), no mesmo modelo da Band (2026-10-22) 🔜
+
+**O que mudou.** Pedido do responsável (22/10, 23h37): página do debate da Globo, mesmo modelo da anterior; Trends já; transcrição e réplicas no YouTube só depois do debate.
+- `data/config/debates.json` (novo): Band (18/10, 20h) e Globo (sexta 23/10, 21h20 de Brasília = 24/10 00h20 UTC; janela do Trends de 24 h antes a 24 h depois). Data e hora conferidas no Diario de Pernambuco ("Quando é o último debate entre Flávio e Lula no 2º turno?", consultado em 22/10).
+- `collect_trends_agora.py`: escolhe o debate cuja janela contém o horário, com retratos e consolidado próprios (`retratos_globo/`, `debate_globo.json`). Fora das janelas continua só o "Em alta agora", uma vez por hora. `trends-agora.yml` passa a rodar de 15 em 15 min; `build_rede_debate.py --debate globo` grava `rede_*_globo`.
+- `collect_debate_youtube.py` / `build_debate_youtube.py --debate globo`: busca, janela e arquivos próprios (`data/debate/globo/`, privado `debate/globo/`); vídeos que citam a Band e não a Globo ficam fora. O coletor não faz nada antes do início do debate. `debate-youtube.yml` roda a Globo junto e uma vez a mais em 24/10, 00h45.
+- Página: seção `debateGlobo` ("Debate da Globo · 23/10" em Buscas), com o mesmo código da Band. O script virou `montarDebate(prefixo, arquivos)`, chamado para os dois debates; o vídeo e a transcrição aparecem como ⛔ até o debate acontecer. As checagens "desde o debate" contam a partir do dia de cada debate.
+**Teste.** `python -m unittest discover -s tests -v`: OK (novo `test_janela_escolhe_o_debate`). Render local com Chromium: a página da Band igual à anterior (8 leituras, transcrição, redes); a página da Globo com "⛔ Ainda sem leitura" e os blocos vazios, sem erro de JavaScript. Um erro de nome (prefixo `P` sombreado dentro de `trDraw`) foi achado no render e corrigido antes do commit.
+**Pendente.** Primeira leitura do Trends para a Globo; transcrição (`collect_debate_video.py` ainda só para a Band) depois do debate.
+
 ## C19.113 — Casos: aviso de "sem cópia no Internet Archive" explicado na página (2026-10-22) ✅
 
 **O que mudou.** No bloco 04 dos casos, "⛔ sem cópia (falhou: HTTPError 520)" passa a dizer que o pedido de cópia ao Internet Archive falhou, que a coleta diária tenta de novo e que os números e os comentários do post estão no acervo do Atlas. Motivo: pergunta do responsável sobre o caso 008. O Internet Archive devolveu HTTP 520 ao pedido anônimo de cópia do reel (`web.archive.org/save/`, run do casos-busca de 22/10). O 520 é erro do lado do servidor deles, e é comum com o Instagram, que responde ao robô com a tela de login.

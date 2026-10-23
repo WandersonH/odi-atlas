@@ -107,16 +107,25 @@ def salvar(pasta: Path, nome: str, nos: dict, ar: Counter, meta: dict):
 
 
 def main(argv=None) -> int:
+    argv = list(argv or [])
+    suf = ""
+    if "--debate" in argv:  # outro debate (data/config/debates.json): lê debate<sufixo>.json e grava rede_*<sufixo>
+        k = argv.pop(argv.index("--debate") + 1)
+        argv.remove("--debate")
+        suf = json.loads((Path(__file__).resolve().parents[1] / "data/config/debates.json").read_text(encoding="utf-8"))[k].get("sufixo", "")
     root = Path(argv[0]) if argv else Path(".")
     pasta = root / "data/trends/agora"
-    d = json.loads((pasta / "debate.json").read_text(encoding="utf-8"))
+    if not (pasta / f"debate{suf}.json").exists():
+        print(f"⛔ sem data/trends/agora/debate{suf}.json ainda")
+        return 0
+    d = json.loads((pasta / f"debate{suf}.json").read_text(encoding="utf-8"))
     base = {"gerado_em_utc": now_utc(), "fonte_em_utc": d.get("gerado_em_utc")}
     n1, a1 = canais(d)
     v = Counter({k: x["n"] for k, x in n1.items() if x["tipo"] == "veículo"})
-    salvar(pasta, "rede_canais", n1, a1, {**base, "o_que_e": "termo em alta (Política) — veículo com matéria entre as 5 primeiras do Google Notícias para o termo",
+    salvar(pasta, f"rede_canais{suf}", n1, a1, {**base, "o_que_e": "termo em alta (Política) — veículo com matéria entre as 5 primeiras do Google Notícias para o termo",
                                          "veiculos_mais_presentes": [[n1[k]["rotulo"], c] for k, c in v.most_common(15)]})
     n2, a2 = palavras(d)
-    salvar(pasta, "rede_palavras", n2, a2, {**base, "o_que_e": "termo em alta (Política) — termos que o Trends agrupa nele; Lula, Flávio Bolsonaro e debate — consultas relacionadas (24 h)"})
+    salvar(pasta, f"rede_palavras{suf}", n2, a2, {**base, "o_que_e": "termo em alta (Política) — termos que o Trends agrupa nele; Lula, Flávio Bolsonaro e debate — consultas relacionadas (24 h)"})
     print(f"rede de canais: {len(n1)} nós, {len(a1)} ligações · rede de palavras: {len(n2)} nós, {len(a2)} ligações")
     return 0
 

@@ -29,9 +29,6 @@ class TestTrendsAgora(unittest.TestCase):
         self.assertEqual(ta.main(["/nao/existe"]), 0)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 
 class TestRelacionados(unittest.TestCase):
     def test_perguntas_e_relacionados(self):
@@ -59,3 +56,17 @@ class TestEmAlta(unittest.TestCase):
             self.assertEqual(d["listas"]["24h"][0]["materias"][0]["veiculo"], "v")
             self.assertEqual(len((P(t) / "data/trends/agora/em_alta_historico.csv").read_text(encoding="utf-8").splitlines()), 5)
             self.assertFalse((P(t) / "data/trends/agora/retratos").exists())  # debate congelado
+
+
+class TestDebatesAtivos(unittest.TestCase):
+    def test_janela_escolhe_o_debate(self):
+        self.assertEqual(ta.debate_ativo("2026-10-18T23:30:00Z", [])[0], "band")
+        self.assertEqual(ta.debate_ativo("2026-10-23T12:00:00Z", [])[0], "globo")
+        self.assertEqual(ta.debate_ativo("2026-10-24T03:00:00Z", [])[1]["sufixo"], "_globo")
+        self.assertIsNone(ta.debate_ativo("2026-10-21T12:00:00Z", []))
+        self.assertEqual(ta.debate_ativo("2026-10-21T12:00:00Z", ["--sempre"])[0], "band")
+        self.assertEqual(ta.debate_ativo("2026-10-21T12:00:00Z", ["--debate", "globo"])[0], "globo")
+
+
+if __name__ == "__main__":
+    unittest.main()

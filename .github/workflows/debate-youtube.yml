@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "37 9 * * *"   # 1 vez por dia (06h37 em Brasília); a cada 6 h gastava ~8.800 unidades/dia da cota do YouTube
+    - cron: "45 3 24 10 *" # noite do debate da Globo: 24/10, 00h45 em Brasília (o coletor ignora antes do início)
 
 permissions:
   contents: write
@@ -40,7 +41,10 @@ jobs:
         run: |
           python scripts/collect_debate_youtube.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
           python scripts/build_debate_youtube.py . >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
-          tail -n 8 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Debate YouTube::$(echo "$l" | cut -c1-400)"; done
+          # debate da Globo (23/10, 21h20): o coletor não faz nada antes do início do debate
+          python scripts/collect_debate_youtube.py --debate globo >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          python scripts/build_debate_youtube.py . --debate globo >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          tail -n 10 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Debate YouTube::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Gravar no repositório privado
         if: always() && steps.interno.outputs.dir != ''
