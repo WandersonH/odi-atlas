@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.147 — Caso 008: a página mostra a cópia do vídeo no lugar do post apagado (2026-10-23) ✅
+
+**Pedido.** "isso já coloca na página no lugar do que tava lá". O post incorporado do Instagram estava vazio porque o reel saiu do ar.
+**O que mudou.**
+- `data/casos/008/midia/`: `video.mp4` (vídeo e áudio juntados sem recodificar, 15,97 s; sha256 1564b37b…8982), `capa.jpg` e `copia.json` (sha256, origem, data do download, aviso de que o post saiu do ar).
+- O autor é perfil público verificado com mais de 10 mil seguidores (@guilhermederrite, 2.287.681 seguidores lidos em 22/10). Pela regra do projeto ele pode ser identificado, e o post já era incorporado na página.
+- `build_caso_busca.py` anexa `copia` ao `reel` da conversa quando existe `data/casos/<id>/midia/copia.json`, então a coleta diária mantém a troca.
+- Página: com cópia, aparece um `<video>` com capa, legenda "Cópia guardada pelo Atlas", sha256 e links para o vídeo, o registro e o endereço original, no lugar do iframe do Instagram.
+**Teste.** `python -m unittest discover -s tests -v`: OK. `build_caso_busca.py --caso 008` local: mesmos números de antes (90 notícias, 47 vídeos, 5.728 comentários), mais `copia`. Render local (Playwright): o vídeo carrega (readyState 4, 15,97 s), nenhum iframe do Instagram, sem erro de JS nas páginas dos casos 008, 007 e 001.
+
 ## C19.146 — Caso 008: guardar no privado a mídia do reel (vídeo, capa, áudio) pelos links já coletados (2026-10-23) ✅
 
 **Pedido.** "tu não baixou o post das camisetas, agora ele saiu do ar". Correto: a coleta de 22/10 guardou metadados, legenda, números e 2.000 comentários, mas não o arquivo de vídeo. A cópia no arquivo web tinha falhado (HTTP 520).

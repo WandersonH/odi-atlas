@@ -163,7 +163,11 @@ def main(argv=None) -> int:
                     out["redes"][f"{k}_{plat.lower()}"] = r
             if not out["classes"] and cv.get("classes"):
                 out["classes"] = {**cv["classes"], "fonte": plat}
-            out["conversas"].append({k: v for k, v in cv.items() if k not in ("redes", "classes")})
+            conv = {k: v for k, v in cv.items() if k not in ("redes", "classes")}
+            copia = pasta / "midia" / "copia.json"  # cópia do vídeo do post guardada pelo Atlas (arquivar_midia_caso.py)
+            if copia.exists() and isinstance(conv.get("reel"), dict) and conv["reel"].get("embed"):
+                conv["reel"]["copia"] = json.loads(copia.read_text(encoding="utf-8"))
+            out["conversas"].append(conv)
     (pasta / "busca.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     cm = out["comentarios"] or {}
     print(f"caso {caso}: YouTube {y and y['videos']} vídeos · {y and y['visualizacoes']} visualizações · comentários lidos {cm.get('comentarios')} · "
