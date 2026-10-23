@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.137 — DJEN: os processos de IA quase não têm publicação no diário nacional (2026-10-23) ⚠️
+
+**Execução** (navegador do aplicativo no computador do responsável, Brasil; site `comunicaapi.pje.jus.br` liberado pelo responsável): consulta por número para os 762 processos do tema IA (`data/tse/processual/resumo.json`), 3 em paralelo. 389 respostas válidas (HTTP 200), **todas com `count` 0**. A partir daí a API devolveu "Too Many Requests" e a coleta parou para não insistir; 373 processos não foram consultados. Controle: a mesma consulta para a REPRESENTAÇÃO 0601743-79.2026.6.00.0000 devolve 5 comunicações (com só dígitos, com máscara e com `siglaTribunal`), então o parâmetro funciona.
+**Leitura.** Nesses processos, as comunicações quase não passam pelo DJEN. Nas representações do período eleitoral, as intimações costumam sair pelo mural eletrônico da Justiça Eleitoral (a confirmar na Res. TSE 23.608/2019). Nada foi gravado: não houve texto a guardar.
+
 ## C19.136 — Casos: o resumo passa a mostrar os mesmos números das páginas dos casos (2026-10-23) ✅
 
 **O que estava diferente** (o responsável: "senti diferença entre a página resumo do caso e as infos dos casos"): os cartões do resumo mostravam só a coleta paga das redes de 18–20/10 (ex.: 001 "10.976 publicações") ou "página própria do caso" (006–008). As páginas dos casos mostram a coleta diária grátis (YouTube, notícias, checagens) e as conversas importadas. A faixa do topo dizia "COLETA DE 18/10" sem dizer de qual coleta.
