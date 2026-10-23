@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.121 — Página de comentários do Instagram (campanhas) e coletor na conta 1 (2026-10-23) 🔜
+
+**O que mudou.** Pedido do responsável (23/10, 01h31: "não temos uma página de comentários do Instagram"; 01h36: "pode", sobre a opção A + diário).
+- `scripts/collect_comentarios_instagram.py` + `instagram-comentarios.yml` + `data/config/instagram_comentarios.json`: ator datadoping (o dos casos 007 e 008, US$ 1,40 por mil comentários, pelo custo real do caso 008), conta 1, só os perfis principais (@lulaoficial, @flaviobolsonaro).
+  - `--carga`: cota de 3.000 por candidato nos posts desde 16/08, de 5 a 50 por post, a partir dos posts com mais comentários; execuções de até 40 posts, cada uma limitada ao que sobra do teto (US$ 8,50, uma vez).
+  - `--diario` (10h20): posts desde ontem, 30 por post, US$ 0,55/dia e US$ 6/mês.
+  - A legenda do dono do post não entra como comentário. Texto e autor só no privado (`instagram/comentarios/`).
+- `build_comentarios.py` e `build_rede_comentarios.py` aceitam `--plataforma instagram`.
+- Página `igComments` ("Instagram" em Comentários): cópia da página do Facebook, com os mesmos blocos e regras.
+**Teste.** `python -m unittest discover -s tests -v`: OK (novo `tests/test_comentarios_instagram.py`: só perfis principais desde 16/08, cota por candidato, teto por execução, legenda fora, nada de autor no público). Render local: a página nova mostra ⛔ até a 1ª coleta; a do Facebook segue igual (17.500 comentários).
+**Pendente.** Carga real (próxima entrada).
+
 ## C19.120 — Kwai: comentários feitos; página de IA: busca paga de conteúdo de IA (TikTok e Instagram) preparada (2026-10-23) 🔜
 
 **Kwai (lote `kwai-2310`, conta 1, teto US$ 8).** Vídeos de @Lulaoficial (kwai-comentarios, modo `conta1-videos-lula`): 930 lidos, 880 novos no acervo, o mais antigo de 12/07/2022, US$ 1,8601. Comentários desde 16/08 (modo `conta1-carga`): 4.316 novos, US$ 4,2888 (2 lotes: 271 vídeos × até 10 e 47 × até 41; 3 execuções vazias ou com falha). Acervo de comentários do Kwai: Lula 3.121 em 296 vídeos, Flávio 2.332 em 74 vídeos. Lote: US$ 6,15 de US$ 8,00. Fonte: anotações dos workflows e `data/kwai/comentarios/manifesto_latest.json`.

@@ -49,7 +49,7 @@ def plataforma(argv) -> tuple[str, list]:
         i = argv.index("--plataforma")
         plat = argv[i + 1]
         del argv[i:i + 2]
-    if plat not in ("youtube", "kwai", "facebook", "x"):  # x: respostas do X (x/respostas no repositório privado)
+    if plat not in ("youtube", "kwai", "facebook", "instagram", "x"):  # x: respostas do X (x/respostas no repositório privado)
         raise SystemExit(f"plataforma desconhecida: {plat}")
     return plat, argv
 

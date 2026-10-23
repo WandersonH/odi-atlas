@@ -159,6 +159,9 @@ def main(argv=None) -> int:
                        "Comentários públicos dos posts das páginas de Facebook das campanhas desde 20/07/2026, via Apify "
                        "(dami_studio/facebook-comments-scraper): cota igual por candidato, de 5 a 50 por post, por relevância, sem respostas. "
                        "Não é o universo de " if plat == "facebook" else
+                       "Comentários públicos dos posts dos perfis principais de Instagram das campanhas (@lulaoficial e @flaviobolsonaro) desde "
+                       "16/08/2026, via Apify (datadoping/instagram-comments-and-replies-scraper): cota igual por candidato (3.000), de 5 a 50 por "
+                       "post a partir dos posts com mais comentários, ordem 'populares' do Instagram, sem respostas. Não é o universo de " if plat == "instagram" else
                        "Comentários públicos dos vídeos das campanhas desde 20/07/2026, pela API oficial: até 100 conversas por "
                        "relevância e 100 mais recentes por vídeo, com as respostas que a API devolve junto. Não é o universo de ") +
                       "comentários nem amostra do eleitorado. Pré-codificação por dicionário (livros de códigos de populismo e de "
@@ -252,7 +255,7 @@ def gravar_privado(dest: Path, privado: dict, cands: dict, intol: dict, pop: dic
                 pos = {r["comment_id"]: i for i, r in enumerate(rr)}
                 for r in am:
                     i = pos[r["comment_id"]]
-                    w.writerow([r["comment_id"], cands[cid]["nome"], (f"https://www.kwai.com/@{r['channel_id']}/video/{r['video_id']}" if plat == "kwai" else f"https://www.facebook.com/{r['video_id']}" if plat == "facebook" else f"https://www.youtube.com/watch?v={r['video_id']}"), r["tipo"],
+                    w.writerow([r["comment_id"], cands[cid]["nome"], (f"https://www.kwai.com/@{r['channel_id']}/video/{r['video_id']}" if plat == "kwai" else f"https://www.instagram.com/p/{r['video_id']}/" if plat == "instagram" else f"https://www.facebook.com/{r['video_id']}" if plat == "facebook" else f"https://www.youtube.com/watch?v={r['video_id']}"), r["tipo"],
                                 r["publicado_em"], r["texto"].replace("\n", " ")] + [""] * len(cats) + [""])
                     wp.writerow([r["comment_id"]] + [int(k in (c_int[i] | c_pop[i])) for k in cats])
     with open(dest / "corpus_iramuteq_comentarios.txt", "w", encoding="utf-8") as f:
