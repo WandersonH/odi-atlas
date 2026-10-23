@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.127 — Filtro "Últimas 24 h" nas páginas de "O que as campanhas dizem"; resultados do TikTok do vice e do sentimento do Instagram (2026-10-23) ✅
+
+**O que mudou.** Pedido do responsável (23/10, 10h53: o filtro de fases "em todas as páginas e adicionar últimas 24 h"). As 6 páginas de conteúdo (YouTube, TikTok, Kwai, Facebook, Instagram, X) já tinham Desde 20/07 · Pré-campanha · 1º turno · 2º turno; agora todas têm também **Últimas 24 h**.
+- Lista, contagens e gráficos filtram pelas 24 h exatas a contar de quem abre a página.
+- Nuvem e hashtags usam a fase móvel `h24` gerada no build (`build_conteudo.fase_24h()`, também em `build_tiktok.py`): desde a véspera, em Brasília, da última atualização.
+- As redes do Gephi continuam do período todo nessa opção (não há rede por 24 h).
+- `conteudo.json` das 6 redes reconstruído aqui.
+- A página de anúncios não tem esses botões; tem a tabela "Por fase".
+**TikTok do vice** (C19.126; tiktok.yml, coleta de 23/10 13h52 UTC, `data/tiktok/manifesto_latest.json`): @alfredogaspar_ lido, 230 vídeos. Os endereços do TSE continuam como estavam (@alfredogaspar sem vídeos públicos; @alfredogasparoficial com erro).
+**Sentimento do Instagram** (sentimento-youtube, `data/instagram/comentarios/sentimento.json`): 4.944 comentários classificados. Lula: 63,0% positivos, 5,6% negativos. Flávio: 49,8% positivos, 5,7% negativos.
+**Teste.** `python -m unittest discover -s tests -v`: 222 OK. Render local: o botão "Últimas 24 h" nas 6 páginas filtra o conteúdo (aria-pressed verdadeiro e texto da página reduzido), sem erro de JavaScript.
+
 ## C19.126 — TikTok: perfil ativo do vice de Flávio é @alfredogaspar_ (correção do responsável) (2026-10-23) 🔜
 
 **O que mudou.** O responsável indicou (23/10, 10h51: "o @ está errado") que o perfil do TikTok de Alfredo Gaspar é https://www.tiktok.com/@alfredogaspar_. Os dois endereços declarados ao TSE não servem: tiktok.com/alfredogaspar não tem vídeos públicos; @alfredogasparoficial deu "Unable to extract secondary user ID" nas 3 tentativas (`data/tiktok/manifesto_latest.json`). Por isso ele aparecia como "nunca lido" no TikTok, mas nas redes de menções de Instagram, X e Facebook, que são coletadas por outros perfis.

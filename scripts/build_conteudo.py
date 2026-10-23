@@ -174,9 +174,18 @@ def tags_do_video(r: dict, pacotes: dict | None = None, padrao: dict | None = No
     return out
 
 
+def fase_24h() -> dict:
+    """Fase móvel "últimas 24 h" (pedido de 23/10/2026): nas nuvens e hashtags, por dia (desde a véspera, em Brasília, da hora em
+    que o build roda); na página, a lista de vídeos filtra pelas 24 h exatas a contar de quem abre."""
+    import datetime as _dt
+    ontem = (_dt.datetime.now(_dt.timezone(_dt.timedelta(hours=-3))) - _dt.timedelta(hours=24)).date().isoformat()
+    return {"id": "h24", "rotulo": "Últimas 24 h", "de": ontem, "ate": "2099-12-31", "movel": True}
+
+
 def FASES_CFG(root: Path) -> list[dict]:
     p = root / "data/config/trends.json"
-    return json.loads(p.read_text(encoding="utf-8")).get("fases", []) if p.exists() else []
+    fases = json.loads(p.read_text(encoding="utf-8")).get("fases", []) if p.exists() else []
+    return fases + [fase_24h()] if fases else fases
 
 
 def mapa_tags(por_cand: dict[str, list[set]], top: int = MAPA_TOP, minimo: int = MAPA_MIN_VIDEOS) -> list[dict]:

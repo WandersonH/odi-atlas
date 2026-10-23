@@ -87,6 +87,7 @@ def main(argv=None) -> int:
            "temas": list(cfg["temas"]) + ["sem_tema"], "desde": desde or None, "candidatos": {}}
     tj = root / "data/config/trends.json"
     fases = json.loads(tj.read_text(encoding="utf-8")).get("fases", []) if tj.exists() else []
+    fases = fases + [bc.fase_24h()] if fases else fases  # "últimas 24 h" (pedido de 23/10/2026)
     out["fases"] = fases
     for cid, cand in cands.items():
         meus = [(r, p) for r, p in zip(rows, pseudo) if r["candidate_id"] == cid and r["publicado_em"] >= desde]
