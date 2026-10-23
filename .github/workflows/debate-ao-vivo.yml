@@ -1,0 +1,63 @@
+name: Debate ao vivo — Trends de 15 em 15 min sem depender do agendamento do GitHub (grátis)
+
+# O agendamento "7,22,37,52 * * * *" do trends-agora.yml foi atrasado ou pulado pelo GitHub (23/10: só 5 leituras no dia).
+# Este job fica rodando até 5h50 e lê o Trends a cada INTERVALO minutos dentro da janela do debate, gravando a cada leitura.
+# No fim, se a janela ainda não acabou, dispara a si mesmo de novo. Também dispara o YouTube do debate (só Globo) nos horários
+# pedidos (depois da renovação da cota da API, 07h UTC).
+on:
+  workflow_dispatch:
+    inputs:
+      intervalo:
+        description: "minutos entre leituras"
+        default: "15"
+      youtube_utc:
+        description: "horários UTC (AAAA-MM-DDTHH:MM) para disparar o YouTube do debate, separados por espaço"
+        default: "2026-10-24T07:15 2026-10-24T13:00 2026-10-24T22:00"
+
+concurrency:
+  group: trends-agora
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  ao-vivo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q networkx==3.6.1 numpy==2.3.4
+      - name: Leituras em laço
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INTERVALO: ${{ github.event.inputs.intervalo }}
+          YT: ${{ github.event.inputs.youtube_utc }}
+        run: |
+          fim_janela=$(python -c "import json;print(json.load(open('data/config/debates.json'))['globo']['janela_ate'])")
+          inicio_job=$(date -u +%s); limite=$((inicio_job + 5*3600 + 40*60))
+          disparados=""
+          while :; do
+            agora=$(date -u +%s)
+            [ "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \> "$fim_janela" ] && { echo "janela do debate encerrada"; break; }
+            [ $agora -ge $limite ] && break
+            git pull -q --rebase origin main || true
+            python scripts/collect_trends_agora.py --manual > f.txt 2>&1 || true
+            python scripts/build_rede_debate.py --debate globo >> f.txt 2>&1 || true
+            tail -n 3 f.txt | while IFS= read -r l; do echo "::notice title=Debate ao vivo $(date -u +%H:%M)::$(echo "$l" | cut -c1-300)"; done
+            scripts/commit_push.sh "Debate ao vivo: Trends $(date -u +%H:%M) UTC (run ${{ github.run_id }})" || true
+            for h in $YT; do
+              if [ "$(date -u +%Y-%m-%dT%H:%M)" \> "$h" ] && ! echo "$disparados" | grep -q "$h"; then
+                gh workflow run debate-youtube.yml -f so_globo=true && echo "::notice title=Debate ao vivo::YouTube do debate disparado ($h UTC)"
+                disparados="$disparados $h"
+              fi
+            done
+            sleep $(( ${INTERVALO:-15} * 60 - ($(date -u +%s) - agora) > 60 ? ${INTERVALO:-15} * 60 - ($(date -u +%s) - agora) : 60 ))
+          done
+          if [ "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \< "$fim_janela" ]; then
+            gh workflow run debate-ao-vivo.yml -f intervalo="${INTERVALO:-15}" -f youtube_utc="$YT" && echo "::notice title=Debate ao vivo::continua em novo run"
+          fi

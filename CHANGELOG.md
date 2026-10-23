@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.151 — Debate da Globo: leitura ao vivo do Trends sem depender do agendamento do GitHub; YouTube só da Globo depois da renovação da cota (2026-10-23) 🔜
+
+**Pergunta.** "a coleta do debate já está rolando?" Conferido às 18h31 (Brasília): sim, mas com falhas. Havia 5 retratos do Trends no dia (`data/trends/agora/retratos_globo/`: 02h44, 02h53, 12h53, 17h54 e 21h19 UTC). O agendamento de 15 em 15 min (`trends-agora.yml`) estava sendo atrasado ou pulado pelo GitHub; a leitura por hora prometida não aconteceu.
+**O que mudou.**
+- `debate-ao-vivo.yml`: um job manual que fica rodando até 5h40 e lê o Trends a cada 15 min (`collect_trends_agora.py --manual` + `build_rede_debate.py --debate globo`), gravando a cada leitura. Se a janela do debate (até 25/10, 00h20 UTC) não acabou, dispara a si mesmo de novo. Usa o mesmo grupo de concorrência do `trends-agora.yml`, para não gravarem ao mesmo tempo.
+- YouTube do debate: a cota da API de hoje já foi quase toda usada (comentários diários, leitura completa e debate das 06h37). Por isso o laço dispara `debate-youtube.yml` com o novo `so_globo` (pula a Band) às 07h15 UTC de 24/10, depois da renovação da cota (meia-noite do Pacífico), e de novo às 13h00 e 22h00 UTC. O agendamento de 00h45 de Brasília continua, mas pode bater na cota.
+**Teste.** `python -m unittest discover -s tests -v`: OK; YAML dos dois workflows validado. Execução real: entrada seguinte.
+
 ## C19.150 — YouTube: carga histórica dos comentários desde a pré-campanha (20/07) (2026-10-23) 🔜
 
 **Pedido.** "não poderíamos fazer uma carga histórica de YouTube?". Opções apresentadas: pré-campanha completa; todos os vídeos dos canais desde a criação (@LulaOficial 2.647 vídeos, @flaviobolsonaro 6.010, por `data/youtube/fichas.json`); comentários de 2026 inteiro. **Escolha do responsável: "Pré-campanha completa".**

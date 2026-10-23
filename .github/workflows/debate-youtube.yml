@@ -2,6 +2,11 @@ name: Debate do 2º turno — vídeos e comentários no YouTube (YouTube Data AP
 
 on:
   workflow_dispatch:
+    inputs:
+      so_globo:
+        description: "só o debate da Globo (pula o da Band, economiza cota)"
+        type: boolean
+        default: false
   schedule:
     - cron: "37 9 * * *"   # 1 vez por dia (06h37 em Brasília); a cada 6 h gastava ~8.800 unidades/dia da cota do YouTube
     - cron: "45 3 24 10 *" # noite do debate da Globo: 24/10, 00h45 em Brasília (o coletor ignora antes do início)
@@ -39,8 +44,11 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/collect_debate_youtube.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
-          python scripts/build_debate_youtube.py . >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          rc=0; : > "$RUNNER_TEMP/s.txt"
+          if [ "${{ github.event.inputs.so_globo }}" != "true" ]; then
+            python scripts/collect_debate_youtube.py > "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+            python scripts/build_debate_youtube.py . >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          fi
           # debate da Globo (23/10, 21h20): o coletor não faz nada antes do início do debate
           python scripts/collect_debate_youtube.py --debate globo >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
           python scripts/build_debate_youtube.py . --debate globo >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
