@@ -167,38 +167,44 @@ def itens_privados(C: dict, priv: Path) -> list[dict]:
     return list(por.values())
 
 
-async def ler_rotulos(itens: list[dict], C: dict) -> None:
+async def ler_rotulos(itens: list[dict], C: dict, limite_tk: int | None = None, limite_ig: int | None = None, paralelas: int = 4) -> None:
     import collect_rotulo_ia as cr
     from playwright.async_api import async_playwright
-    tk = sorted([i for i in itens if i["rede"] == "TikTok" and "rotulo_status" not in i and i.get("url")], key=lambda i: -(i["visualizacoes"] or 0))[:C["tiktok"]["rotulo_top"]]
-    ig = sorted([i for i in itens if i["rede"] == "Instagram" and "rotulo_status" not in i], key=lambda i: -(i["curtidas"] or 0))[:C["instagram"]["rotulo_amostra"]]
+    lt = C["tiktok"]["rotulo_top"] if limite_tk is None else limite_tk
+    li = C["instagram"]["rotulo_amostra"] if limite_ig is None else limite_ig
+    tk = sorted([i for i in itens if i["rede"] == "TikTok" and "rotulo_status" not in i and i.get("url")], key=lambda i: -(i["visualizacoes"] or 0))[:lt]
+    ig = sorted([i for i in itens if i["rede"] == "Instagram" and "rotulo_status" not in i], key=lambda i: -(i["curtidas"] or 0))[:li]
     async with async_playwright() as p:
         b = await p.chromium.launch(headless=True)
         ctx = await b.new_context(locale="pt-BR", viewport={"width": 1366, "height": 900},
                                   user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36")
-        for i in tk + ig:
-            pg = await ctx.new_page()
-            try:
-                await pg.goto(i["url"], wait_until="domcontentloaded", timeout=40000)
-                await pg.wait_for_timeout(3500)
-                if i["rede"] == "TikTok":
-                    estado = await pg.evaluate("() => { const s = document.getElementById('__UNIVERSAL_DATA_FOR_REHYDRATION__'); return s ? s.textContent : null; }")
-                    it = ((((json.loads(estado) if estado else {}).get("__DEFAULT_SCOPE__") or {}).get("webapp.video-detail") or {}).get("itemInfo") or {}).get("itemStruct")
-                    if it:
-                        c = cr.campos_ia(it)
-                        i.update(campos_ia=c, rotulo_ia=cr.tem_rotulo(c), rotulo_status="lido")
+        sem = asyncio.Semaphore(paralelas)  # 23/10: 2.200 vídeos em sequência levariam ~3 h; 4 abas ao mesmo tempo
+
+        async def um(i):
+            async with sem:
+                pg = await ctx.new_page()
+                try:
+                    await pg.goto(i["url"], wait_until="domcontentloaded", timeout=40000)
+                    await pg.wait_for_timeout(3500)
+                    if i["rede"] == "TikTok":
+                        estado = await pg.evaluate("() => { const s = document.getElementById('__UNIVERSAL_DATA_FOR_REHYDRATION__'); return s ? s.textContent : null; }")
+                        it = ((((json.loads(estado) if estado else {}).get("__DEFAULT_SCOPE__") or {}).get("webapp.video-detail") or {}).get("itemInfo") or {}).get("itemStruct")
+                        if it:
+                            c = cr.campos_ia(it)
+                            i.update(campos_ia=c, rotulo_ia=cr.tem_rotulo(c), rotulo_status="lido")
+                        else:
+                            i["rotulo_status"] = "⛔ página sem dados do vídeo (removido, restrito ou bloqueio)"
                     else:
-                        i["rotulo_status"] = "⛔ página sem dados do vídeo (removido, restrito ou bloqueio)"
-                else:
-                    txt = await pg.evaluate("() => document.body ? document.body.innerText : ''")
-                    if re.search(r"Log in|Entrar|Sign up|Cadastre-se", txt[:400]) and not re.search(r"likes|curtidas", txt, re.I):
-                        i["rotulo_status"] = "⛔ página pediu login"
-                    else:
-                        i.update(rotulo_ia=bool(SELO_IG.search(txt)), rotulo_status="lido")
-            except Exception as e:  # noqa: BLE001
-                i["rotulo_status"] = f"⛔ {type(e).__name__}"
-            i["rotulo_lido_em"] = now_utc()
-            await pg.close()
+                        txt = await pg.evaluate("() => document.body ? document.body.innerText : ''")
+                        if re.search(r"Log in|Entrar|Sign up|Cadastre-se", txt[:400]) and not re.search(r"likes|curtidas", txt, re.I):
+                            i["rotulo_status"] = "⛔ página pediu login"
+                        else:
+                            i.update(rotulo_ia=bool(SELO_IG.search(txt)), rotulo_status="lido")
+                except Exception as e:  # noqa: BLE001
+                    i["rotulo_status"] = f"⛔ {type(e).__name__}"
+                i["rotulo_lido_em"] = now_utc()
+                await pg.close()
+        await asyncio.gather(*(um(i) for i in tk + ig))
         await b.close()
     print(f"rótulos: TikTok {sum(1 for i in tk if i.get('rotulo_status') == 'lido')} de {len(tk)} lidos · "
           f"Instagram {sum(1 for i in ig if i.get('rotulo_status') == 'lido')} de {len(ig)} lidos")
@@ -260,7 +266,8 @@ def main(argv=None, executar=None) -> int:
         print(f"coleta: {len(man['execucoes'])} execuções · custo desta rodada US$ {man['custo_usd']} · lote US$ {round(man['gasto_antes_usd'] + man['custo_usd'], 4)} de US$ {C['teto_usd']}")
     itens = itens_privados(C, priv)
     if "--rotulos" in argv and itens:
-        asyncio.run(ler_rotulos(itens, C))
+        lim = lambda k: int(argv[argv.index(k) + 1]) if k in argv else None  # noqa: E731
+        asyncio.run(ler_rotulos(itens, C, lim("--limite-tiktok"), lim("--limite-instagram")))
     priv.mkdir(parents=True, exist_ok=True)
     (priv / "itens.json").write_text(json.dumps(itens, ensure_ascii=False), encoding="utf-8")
     if "--build" in argv or "--rotulos" in argv or "--coletar" in argv:

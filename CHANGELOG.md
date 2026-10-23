@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.124 — Busca de IA: leitura de rótulo dos demais vídeos do TikTok (grátis), 4 abas em paralelo (2026-10-23) 🔜
+
+**O que mudou.** Pedido do responsável (23/10, 10h10: "sim"): conferir o rótulo dos cerca de 2.200 vídeos do TikTok da busca ainda não lidos. `collect_busca_ia.py --rotulos` aceita `--limite-tiktok` e `--limite-instagram` e abre 4 páginas ao mesmo tempo. `busca-ia.yml` ganhou essas entradas e o tempo limite passou a 240 min. Sem custo: navegador sem login, nenhuma execução do Apify.
+**Teste.** `python -m unittest discover -s tests -v`: OK.
+
 ## C19.123 — Trends: o filtro "de hora em hora" pulava as leituras (agendamento atrasado do GitHub) (2026-10-23) ✅
 
 **Erro.** O debate da Globo tinha só 2 leituras (23/10, 02h44 e 02h53 UTC). O agendamento de 15 em 15 min não rodou na madrugada (só uma execução, às 07h57 UTC). A regra "lê só na primeira execução da hora" (minuto < 15) pulou essa execução, porque a das :07 rodou às :57. Fonte: `gh run list` do trends-agora (02h44, 02h53, 07h57) e `data/trends/agora/debate_globo.json` (2 retratos).

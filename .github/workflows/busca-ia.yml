@@ -8,6 +8,12 @@ on:
       etapa:
         description: "coletar+rotulos (padrão) · rotulos (só a leitura grátis) · build"
         default: "coletar+rotulos"
+      limite_tiktok:
+        description: "vídeos do TikTok com rótulo a ler nesta execução (vazio = 400)"
+        default: ""
+      limite_instagram:
+        description: "posts do Instagram a ler (vazio = 80)"
+        default: ""
 
 permissions:
   contents: write
@@ -19,7 +25,7 @@ concurrency:
 jobs:
   busca:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -46,6 +52,8 @@ jobs:
           case "$ETAPA" in *coletar*) a="$a --coletar";; esac
           case "$ETAPA" in *rotulos*) a="$a --rotulos";; esac
           case "$ETAPA" in *build*) a="$a --build";; esac
+          if [ -n "${{ github.event.inputs.limite_tiktok }}" ]; then a="$a --limite-tiktok ${{ github.event.inputs.limite_tiktok }}"; fi
+          if [ -n "${{ github.event.inputs.limite_instagram }}" ]; then a="$a --limite-instagram ${{ github.event.inputs.limite_instagram }}"; fi
           python scripts/collect_busca_ia.py $a > s.txt 2>&1; rc=$?
           tail -n 30 s.txt | while IFS= read -r l; do echo "::notice title=Busca IA::$(echo "$l" | cut -c1-400)"; done
           exit $rc
