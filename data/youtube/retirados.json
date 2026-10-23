@@ -1,0 +1,12 @@
+{
+ "gerado_em_utc": "2026-10-23T21:02:55Z",
+ "fotos": [
+  "2026-10-15",
+  "2026-10-23"
+ ],
+ "fotos_n": 8,
+ "conferido_na_api": false,
+ "total": 0,
+ "videos": [],
+ "metodo": "Pergunta do responsável (23/10/2026, 18h01): dá para marcar vídeos retirados, e se foi por decisão do TSE?\n- Detecção: compara as fotos diárias data/youtube/videos_AAAA-MM-DD.csv.gz. Vídeo publicado desde 20/07 que aparecia e não\n  está na foto mais recente, com o canal dele lido nessa foto, é candidato a retirado.\n- Confirmação (com YOUTUBE_API_KEY): videos.list por id (1 unidade a cada 50 ids). Se a API ainda devolve o vídeo, ele só\n  saiu da janela da lista; se não devolve, fica \"retirado do ar ou tornado privado\". A API não diz qual dos dois nem o motivo.\n- Decisão judicial: o YouTube não informa o motivo e o processual do TSE não traz o link do vídeo. Por isso o Atlas NÃO marca\n  \"retirado por decisão\" automaticamente: lista os processos do TSE em que o candidato do canal é parte, com assunto de\n  internet ou redes sociais e decisão a partir de 7 dias antes da última vez em que o vídeo foi visto, como pistas a\n  conferir. Só vira \"decisão\" com a peça ou a notícia que cite o vídeo (campo manual em data/config/retirados_confirmados.json).\nSaída: data/youtube/retirados.json."
+}

@@ -39,6 +39,11 @@ jobs:
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: python scripts/build_youtube_fichas.py
+      - name: Vídeos que saíram do ar (fotos diárias + conferência na API, 1 unidade a cada 50)
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python scripts/build_retirados_youtube.py
       - name: Caderno 02 — classificar vídeos por tema
         if: steps.coleta.outcome == 'success'
         continue-on-error: true

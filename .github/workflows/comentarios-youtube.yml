@@ -5,6 +5,11 @@ name: Comentários YouTube — API oficial
 # Sem o segredo, os comentários são processados e descartados no fim do run (modo efêmero); o público recebe só agregados.
 on:
   workflow_dispatch:
+    inputs:
+      so_completo:
+        description: "só a leitura completa (pula a coleta diária, que já rodou hoje)"
+        type: boolean
+        default: false
   schedule:
     - cron: "50 10 * * *"   # todo dia, 07h50 em Brasília (depois da coleta de vídeos das 07h20)
 
@@ -18,7 +23,7 @@ permissions:
 jobs:
   comentarios:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -47,24 +52,35 @@ jobs:
           fi
       - name: Coletar comentários (YouTube Data API)
         id: coleta
+        if: github.event.inputs.so_completo != 'true'
         continue-on-error: true
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: python scripts/collect_comentarios_youtube.py
+      - name: Leitura completa (todas as páginas e respostas, em etapas diárias, 3.500 unidades/dia)
+        if: steps.interno.outputs.dir != ''
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/collect_comentarios_youtube_completo.py > cc.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Comentários YouTube completo::$(echo "$l" | cut -c1-400)"; done < cc.txt
+          exit $rc
       - name: Caderno 04 — análise agregada por candidato
-        if: steps.coleta.outcome == 'success'
+        if: steps.coleta.outcome == 'success' || github.event.inputs.so_completo == 'true'
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: python scripts/build_comentarios.py
       - name: Caderno 04 — redes para o Gephi e corpus-amostra para o IRaMuTeQ
-        if: steps.coleta.outcome == 'success'
+        if: steps.coleta.outcome == 'success' || github.event.inputs.so_completo == 'true'
         continue-on-error: true
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: python scripts/build_rede_comentarios.py
       - name: Gravar no repositório privado
-        if: steps.interno.outputs.dir != '' && steps.coleta.outcome == 'success'
+        if: steps.interno.outputs.dir != '' && (steps.coleta.outcome == 'success' || github.event.inputs.so_completo == 'true')
         run: |
           cd "${{ steps.interno.outputs.dir }}"
           git config user.name "odi-atlas-bot"

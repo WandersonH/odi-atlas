@@ -1,7 +1,14 @@
 {
  "desde": "2026-08-16",
- "ordens": ["relevance", "time"],
+ "ordens": [
+  "relevance",
+  "time"
+ ],
  "cota_maxima": 4000,
  "paralelo": 6,
- "nota": "Até 100 conversas por ordem de relevância (algoritmo do YouTube) e até 100 mais recentes por vídeo das campanhas desde 16/08/2026, com as respostas que a API devolve junto (até 5 por conversa). Não é o universo de comentários: vídeos com milhares de comentários ficam representados por esses dois recortes. Texto bruto só no repositório privado."
+ "nota": "Até 100 conversas por ordem de relevância (algoritmo do YouTube) e até 100 mais recentes por vídeo das campanhas desde 16/08/2026, com as respostas que a API devolve junto (até 5 por conversa). Não é o universo de comentários: vídeos com milhares de comentários ficam representados por esses dois recortes. Texto bruto só no repositório privado.",
+ "completo": {
+  "cota_dia": 3500,
+  "nota": "Leitura completa (todas as páginas de cada vídeo e depois todas as respostas), em etapas diárias, pedida pelo responsável em 23/10/2026, 18h00. Grátis (cota da API). 3.500 unidades por dia para não faltar cota às outras coletas do YouTube (a diária usa ~2.440)."
+ }
 }

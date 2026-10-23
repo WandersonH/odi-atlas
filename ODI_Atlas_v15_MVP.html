@@ -1125,6 +1125,16 @@ function odiContarAba(t){try{if(ODI_GOATCOUNTER&&window.goatcounter&&window.goat
   </div>
   <div class="card yt-method"><div class="eyebrow">Método e limites</div><p id="ytMethod"></p>
     <p>Visualizações, curtidas e comentários são os números públicos do YouTube no momento da coleta (diária). “Cita o adversário” e “Pede voto” são marcas por regra, inspiradas nos níveis de citação usados por monitores de campanha; não medem apoio, alcance real ou intenção de voto. Tags são as que o próprio canal declara ao YouTube; não indicam o conteúdo de fato do vídeo. Dicionário: <a href="./data/config/temas_youtube.json" target="_blank" rel="noopener">temas_youtube.json</a> · dados: <a href="./data/youtube/conteudo.json" target="_blank" rel="noopener">conteudo.json</a>.</p></div>
+<div class="card" id="ytRetirados" style="margin-top:17px"><div class="eyebrow">Vídeos que saíram do ar</div><h2 class="tk-h2">Retirados ou tornados privados</h2><div id="ytRetLista" class="yt-meta">Aguardando leitura.</div><p class="yt-cloudnote" id="ytRetMet"></p></div>
+<script>
+/* Vídeos retirados (C19.149): data/youtube/retirados.json. "Retirado por decisão judicial" só com fonte (peça ou notícia) registrada à mão. */
+(function(){const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));const br=d=>d?d.slice(0,10).split('-').reverse().join('/'):'—';
+fetch('./data/youtube/retirados.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(R=>{const el=document.getElementById('ytRetLista');if(!el)return;
+if(!R){el.textContent='⛔ verificação ainda não gerada (data/youtube/retirados.json).';return;}
+document.getElementById('ytRetMet').textContent=`Fotos diárias de ${br(R.fotos&&R.fotos[0])} a ${br(R.fotos&&R.fotos[1])} (${R.fotos_n} leituras). O YouTube não informa se o vídeo foi apagado, tornado privado ou removido por ordem, nem o motivo; "retirado por decisão judicial" só aparece com peça ou notícia que cite o vídeo. Os processos listados são pistas a conferir, não prova.`;
+if(!R.total){el.innerHTML=`<b>Nenhum vídeo das campanhas publicado desde 20/07 saiu do ar</b> entre ${br(R.fotos&&R.fotos[0])} e ${br(R.fotos&&R.fotos[1])}.`;return;}
+el.innerHTML=R.videos.map(v=>`<div class="yc-row" style="display:block;padding:8px 0;border-bottom:1px solid #e3ddd0"><span class="nf-tag" style="border-color:${v.tag.includes('decisão')?'#9b1c1c':'#7a6a2a'};color:${v.tag.includes('decisão')?'#9b1c1c':'#7a6a2a'}">${esc(v.tag)}</span> <b>${esc(v.titulo)}</b> · ${esc(v.canal)} · publicado ${br(v.publicado_em)} · visto pela última vez ${br(v.visto_pela_ultima_vez)}<br><small>${esc(v.situacao)} · motivo: ${esc(v.motivo)}${v.fonte_motivo?` (<a href="${esc(v.fonte_motivo)}" target="_blank" rel="noopener noreferrer">fonte</a>)`:''}${v.pistas_tse&&v.pistas_tse.length?` · processos a conferir: ${v.pistas_tse.map(p=>`<a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">${esc(p.processo)}</a>`).join(', ')}`:''}</small></div>`).join('');}).catch(()=>{});})();
+</script>
 </section>
 
 <section class="panel" id="gTrends" aria-label="Caderno 05 Buscas no Google Trends">

@@ -4,6 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.149 — YouTube: leitura completa dos comentários em etapas diárias; vídeos que saíram do ar (2026-10-23) 🔜
+
+**Pedidos.** (18h00) "Por que não lemos tudo, já que o YouTube nos dá mais liberdade para extrair?" e (18h01) "dá para identificar vídeos retirados, com uma tag, e se foi decisão do TSE?".
+**Comentários: tamanho do problema.** Vídeos das campanhas desde 16/08: 1.397, com 740.145 comentários informados pelo YouTube (respostas incluídas; `data/youtube/conteudo.json`). Lidos até hoje: 215.790 (29%; `manifesto_latest.json`). A coleta diária só lê dois recortes por vídeo (100 por relevância e 100 mais recentes, até 5 respostas cada) e usa cerca de 2.440 unidades da cota diária gratuita (10 mil, dividida com as outras coletas do YouTube).
+**O que mudou.**
+- `scripts/collect_comentarios_youtube_completo.py`: percorre todas as páginas de cada vídeo (fase 1). Depois busca todas as respostas das conversas com mais respostas do que as já lidas (fase 2, `comments.list`). O estado de onde parou fica no privado (`youtube/comentarios/estado_completo.json`). Usa até 3.500 unidades por dia (`comentarios_youtube.json` → `completo.cota_dia`) e para no primeiro `quotaExceeded`. Grátis.
+- Estimativa: no máximo cerca de 8.160 chamadas para a fase 1, ou seja, 2 a 3 dias. A fase 2 depende de quantas conversas longas existem; o número real sai no manifesto (`data/youtube/comentarios/manifesto_completo.json`).
+- Entra todo dia em `comentarios-youtube.yml`, depois da coleta diária. O disparo manual `so_completo` pula a diária. Timeout do job: 90 min.
+**Vídeos retirados.**
+- `scripts/build_retirados_youtube.py` compara as fotos diárias `videos_AAAA-MM-DD.csv.gz`. Um vídeo publicado desde 20/07 que sumiu da foto mais recente, com o canal lido nela, é conferido na API (`videos.list`, 1 unidade a cada 50 ids).
+- A API não diz se o vídeo foi apagado, tornado privado ou removido por ordem, e o processual do TSE não traz o link do vídeo. Por isso a tag é "retirado". "Retirado por decisão judicial" só entra com fonte registrada à mão em `data/config/retirados_confirmados.json`. Processos do TSE em que o candidato é réu, com assunto de internet ou IA e decisão próxima, aparecem como pistas a conferir.
+- Bloco "Vídeos que saíram do ar" na página do YouTube. Roda em `seguidores-youtube.yml`.
+- **Resultado de hoje:** 0 vídeos das campanhas saíram do ar entre 15/10 e 23/10 (8 fotos diárias). Antes de 15/10 não há foto.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Novo `tests/test_comentarios_youtube_completo.py`: paginação até o fim, respostas além das 5, estado gravado; detecção de retirado só com canal lido e só desde 20/07. Render local da página do YouTube: bloco com "nenhum vídeo saiu do ar", sem erro de JS.
+**Pendente.** Primeira rodada da leitura completa: disparada agora com `so_completo`. Resultado na próxima entrada.
+
 ## C19.148 — Caso 008: legenda original do reel na página, junto da cópia do vídeo (2026-10-23) ✅
 
 **Pedido.** "conseguiu recuperar a legenda também?". Sim: ela estava na coleta de 22/10 (`apify/instagram-reel-scraper`, run quPezdF2ogfR47Xoa, campo `caption`). Foi para `data/casos/008/midia/copia.json` sem edição, com a fonte e o áudio que a plataforma registra ("Suspense de Expectativa", Geek Soundtracks, da biblioteca do Instagram). A página mostra a legenda em destaque acima do aviso da cópia. Texto do próprio autor público, que já era exibido pelo post incorporado.
