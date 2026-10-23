@@ -42,10 +42,24 @@ def linha(x: dict, post: dict, cid: str, agora: str) -> dict | None:
     if not texto or not cid_c:
         return None
     u = x.get("user") if isinstance(x.get("user"), dict) else {}
-    return {"comment_id": cid_c, "parent_id": "", "tipo": "comentario", "video_id": post["video_id"], "candidate_id": cid,
+    pai = str(x.get("parent_comment_id") or x.get("replied_to_comment_id") or "")
+    return {"comment_id": cid_c, "parent_id": pai, "tipo": "resposta" if pai else "comentario", "video_id": post["video_id"], "candidate_id": cid,
             "channel_id": post["perfil"], "ordem": "popular", "autor_canal": str(x.get("user_id") or u.get("id") or ""),
             "autor_nome": x.get("username") or u.get("username") or "", "texto": texto, "curtidas": x.get("like_count") or 0,
             "respostas": x.get("child_comment_count") or 0, "publicado_em": x.get("created_at_utc") or "", "atualizado_em": "", "coletado_em": agora}
+
+
+def desdobrar(itens: list[dict]) -> list[dict]:
+    """Itens do ator mais as respostas que vêm dentro de cada comentário (prévia grátis em preview_child_comments, ou
+    listas de respostas quando o ator as entrega aninhadas). A resposta herda o input_url do comentário."""
+    out = []
+    for x in itens:
+        out.append(x)
+        for k in ("preview_child_comments", "replies", "child_comments"):
+            for r in x.get(k) or []:
+                if isinstance(r, dict):
+                    out.append({**r, "input_url": x.get("input_url"), "parent_comment_id": r.get("parent_comment_id") or x.get("comment_id") or x.get("id")})
+    return out
 
 
 def main(argv=None, executar=None) -> int:
@@ -53,8 +67,9 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     C = json.loads((root / "data/config/instagram_comentarios.json").read_text(encoding="utf-8"))
     diario = "--diario" in argv
-    if not diario and "--carga" not in argv:
-        print("⛔ informe --carga ou --diario")
+    respostas = "--respostas" in argv
+    if not diario and not respostas and "--carga" not in argv:
+        print("⛔ informe --carga, --diario ou --respostas")
         return 1
     agora = now_utc()
     pub = root / "data/instagram/comentarios"
@@ -65,10 +80,11 @@ def main(argv=None, executar=None) -> int:
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
         teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
     else:
-        D = C["carga"]
+        D = C["respostas"] if respostas else C["carga"]
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == D["lote"]), 4)
         teto = round(D["teto_usd"] - ja, 4)
-    man = {"run_started_utc": agora, "modo": "diário" if diario else "carga", "lote": None if diario else D["lote"], "conta": C["segredo"],
+    modo = "diário" if diario else "respostas" if respostas else "carga"
+    man = {"run_started_utc": agora, "modo": modo, "lote": None if diario else D["lote"], "conta": C["segredo"],
            "ferramenta": "Apify · " + C["ator"].replace("~", "/"), "gasto_antes_usd": ja, "teto_execucao_usd": teto, "execucoes": []}
 
     def fim(status: str, code: int) -> int:
@@ -103,17 +119,41 @@ def main(argv=None, executar=None) -> int:
         alvo = [(p, D["por_post"]) for p in posts.values() if p["video_id"] not in feitos and p["publicado_em"][:10] >= ontem]
     else:
         alvo = []
-        for cid in sorted(set(C["perfis"].values())):
+        for cid in ([] if respostas else sorted(set(C["perfis"].values()))):
             ps = sorted([p for p in posts.values() if p["candidate_id"] == cid and p["video_id"] not in feitos], key=lambda p: -(p.get("comentarios") or 0))
             n = max(D["min_por_post"], min(D["max_por_post"], D["cota_por_candidato"] // max(1, len(ps))))
             k = max(1, D["cota_por_candidato"] // n)
             alvo += [(p, n) for p in ps[:k]]
+    if respostas:  # posts com mais respostas no acervo bruto (child_comment_count dos comentários já lidos)
+        soma = {}
+        for f in priv.glob("apify_*.jsonl.gz"):
+            for l in gzip.open(f, "rt", encoding="utf-8"):
+                x = json.loads(l)
+                m = CODIGO.search(str(x.get("input_url") or ""))
+                if m and x.get("content_type") != "caption":
+                    soma[m.group(1)] = soma.get(m.group(1), 0) + int(x.get("child_comment_count") or 0)
+        ja_resp = {r["parent_id"] for r in antigos if r.get("tipo") == "resposta"}
+        ordem = sorted((v for v in posts if soma.get(v)), key=lambda v: -soma[v])
+        alvo = [(posts[v], D["comentarios_por_post"]) for v in ordem[:D["posts"]]]
+        man["respostas_ja_no_acervo"] = len(ja_resp)
     man["posts_alvo"] = len(alvo)
     if not alvo:
         return fim("ok · nada pendente", 0)
     from collect_meta_apify import run_actor
     executar = executar or (lambda ator, pl, cap: run_actor(token, ator, pl, cap))
     gasto, novas = 0.0, []
+    if respostas:  # grátis: prévias de respostas que já vieram nos brutos anteriores (preview_child_comments)
+        for f in sorted(priv.glob("apify_*.jsonl.gz")):
+            for l in gzip.open(f, "rt", encoding="utf-8"):
+                x = json.loads(l)
+                for y in desdobrar([x])[1:]:
+                    m = CODIGO.search(str(y.get("input_url") or ""))
+                    p = posts.get(m.group(1)) if m else None
+                    r = linha(y, p, p["candidate_id"], agora) if p else None
+                    if r and r["tipo"] == "resposta":
+                        novas.append(r)
+        man["respostas_previas_gratis"] = len(novas)
+        print(f"prévias de respostas já nos brutos (grátis): {len(novas)}")
     lotes = {}
     for p, n in alvo:  # mesmo limite por post numa execução
         lotes.setdefault(n, []).append(p)
@@ -121,13 +161,15 @@ def main(argv=None, executar=None) -> int:
         for i in range(0, len(ps), D["posts_por_execucao"]):
             grupo = ps[i:i + D["posts_por_execucao"]]
             sobra = round(teto - gasto, 4)
-            caber = int(sobra / C["preco_comentario_usd"] / 1.05 / n)
+            por_item = n * (1 + (D["respostas_por_comentario"] if respostas else 0))  # comentário + respostas
+            caber = int(sobra / C["preco_comentario_usd"] / 1.05 / por_item)
             if caber < 1 or sobra < 0.1:
                 man["execucoes"].append({"posts": len(grupo), "status": f"⛔ não executada: teto de US$ {teto} atingido"})
                 continue
             grupo = grupo[:caber]
-            cap = round(min(sobra, max(0.1, C["preco_comentario_usd"] * n * len(grupo) * 1.05)), 4)
-            pl = {"code_or_id_or_url": [p["url"] for p in grupo], "sort_by": "popular", "max_comments": n, "scrape_replies": False, "max_replies": 20}
+            cap = round(min(sobra, max(0.1, C["preco_comentario_usd"] * por_item * len(grupo) * 1.05)), 4)
+            pl = {"code_or_id_or_url": [p["url"] for p in grupo], "sort_by": "popular", "max_comments": n, "scrape_replies": respostas,
+                  "max_replies": D["respostas_por_comentario"] if respostas else 20}
             try:
                 run, itens = executar(C["ator"], pl, cap)
             except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho
@@ -136,7 +178,7 @@ def main(argv=None, executar=None) -> int:
             itens = itens or []
             por_codigo = {p["video_id"]: p for p in grupo}
             lin = []
-            for x in itens:
+            for x in desdobrar(itens):
                 m = CODIGO.search(str(x.get("input_url") or ""))
                 p = por_codigo.get(m.group(1)) if m else None
                 r = linha(x, p, p["candidate_id"], agora) if p else None
@@ -149,8 +191,9 @@ def main(argv=None, executar=None) -> int:
                 for x in itens:
                     f.write(json.dumps(x, ensure_ascii=False) + "\n")
             man["execucoes"].append({"run": (run or {}).get("id"), "status": (run or {}).get("status"), "posts": len(grupo), "por_post": n,
-                                     "itens": len(itens), "comentarios": len(lin), "custo_usd": c})
+                                     "itens": len(itens), "comentarios": len(lin), "respostas": sum(1 for r in lin if r["tipo"] == "resposta"), "custo_usd": c})
             print(f"execução: {len(grupo)} posts × até {n} · {len(lin)} comentários · US$ {c} · total US$ {gasto}")
+    novas = list({r["comment_id"]: r for r in novas}.values())  # prévia grátis e coleta paga podem trazer a mesma resposta
     ids = {r["comment_id"] for r in novas}
     todos = [r for r in antigos if r["comment_id"] not in ids] + novas
     with gzip.open(acervo, "wt", encoding="utf-8", newline="") as f:
@@ -160,7 +203,7 @@ def main(argv=None, executar=None) -> int:
     por_cand = {}
     for r in todos:
         por_cand[r["candidate_id"]] = por_cand.get(r["candidate_id"], 0) + 1
-    man.update(custo_usd=round(gasto, 4), comentarios_novos=len(novas), comentarios_no_acervo=len(todos), comentarios_por_candidato=por_cand,
+    man.update(custo_usd=round(gasto, 4), comentarios_novos=len(novas), respostas_no_acervo=sum(1 for r in todos if r.get("tipo") == "resposta"), comentarios_no_acervo=len(todos), comentarios_por_candidato=por_cand,
                posts_com_comentarios=len({r["video_id"] for r in todos}))
     print(f"{len(novas)} comentários novos · acervo {len(todos)} {por_cand} · custo US$ {round(gasto, 4)} (teto {teto})")
     return fim("ok" if novas else "⛔ nenhum comentário lido", 0 if novas else 1)

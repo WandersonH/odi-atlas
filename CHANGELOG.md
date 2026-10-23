@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.141 — Instagram: respostas dos comentários (teto US$ 2, conta 1) para a rede de conversa (2026-10-23) 🔜
+
+**Autorização.** Responsável em 23/10, 13h43 ("pode fazer neh"), sobre a proposta de US$ 2 para as respostas. Registrada em `data/config/instagram_comentarios.json` → `respostas`: lote `ig-resp-2310`, teto de US$ 2, uma vez.
+**O que mudou.**
+- `collect_comentarios_instagram.py --respostas` lê primeiro, sem custo, as prévias de respostas que já vinham nos brutos (`preview_child_comments`): 385 respostas, contadas localmente no acervo privado de 23/10.
+- Depois escolhe os 40 posts com mais respostas no acervo, somando o `child_comment_count` dos comentários já lidos. Para cada post pede os 5 comentários mais populares e até 6 respostas de cada um.
+- São 4 execuções de até 10 posts. Cada execução é limitada ao que sobra do teto.
+- Comentário com `parent_comment_id` vira `tipo=resposta`, com `parent_id`. Assim `build_rede_comentarios.py` monta a rede de respostas de verdade, no lugar da de menções (C19.140).
+- O workflow ganhou o modo `respostas`. Na página, o bloco troca o título e a nota quando a rede é de respostas.
+**Teste.** `python -m unittest discover -s tests -v`: OK, com novo teste de prévia aninhada → `resposta` com `parent_id`. Simulação local com executor falso: 40 posts em 4 execuções, tetos de 0,51 + 0,51 + 0,51 + 0,41 = US$ 1,96. Os manifestos da simulação não foram publicados.
+**Pendente.** Resultado real da execução no GitHub: entrada seguinte a esta.
+
 ## C19.140 — Comentários: rede de conversa por menções (Instagram, TikTok, Facebook, Kwai) e rede de palavras maior nos acervos pequenos (2026-10-23) ✅
 
 **Por quê.** O responsável: "tá faltando as arestas do Gephi de Instagram". Conferido: `data/instagram/comentarios/rede_respostas_arestas.csv` só tinha o cabeçalho. Os comentários do Instagram foram coletados sem respostas (autorização de 23/10, 01h36), então a rede de conversa ficava vazia, e a página nem tinha esse bloco. O mesmo valia para TikTok, Facebook e Kwai (0 ligações). A rede de palavras do Instagram tinha 26 nós e 75 arestas, porque o piso fixo de 50 comentários por palavra é alto para um acervo de ~5 mil.

@@ -60,3 +60,16 @@ class TestComentariosInstagram(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRespostasInstagram(unittest.TestCase):
+    def test_desdobrar_e_linha_de_resposta(self):
+        import collect_comentarios_instagram as I
+        x = {"comment_id": "10", "content_type": "comment", "text": "pai", "username": "a", "user_id": "1", "input_url": "https://www.instagram.com/p/ABC/",
+             "preview_child_comments": [{"id": "11", "content_type": "comment", "text": "filho", "username": "b", "user_id": "2", "parent_comment_id": "10"}]}
+        itens = I.desdobrar([x])
+        self.assertEqual(len(itens), 2)
+        post = {"video_id": "ABC", "perfil": "lulaoficial"}
+        r = I.linha(itens[1], post, "280002542548", "2026-10-23T00:00:00Z")
+        self.assertEqual((r["tipo"], r["parent_id"], r["video_id"]), ("resposta", "10", "ABC"))
+        self.assertEqual(I.linha(itens[0], post, "280002542548", "t")["tipo"], "comentario")

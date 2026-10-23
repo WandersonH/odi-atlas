@@ -232,7 +232,7 @@ def main(argv=None) -> int:
                         "pseudonimizados (P00001…; tabela só no repositório privado). Comunidades: Louvain (semente 42). "
                         "Cor: proporção dos comentários da conta feitos em posts de Lula (vermelho) ou de Flávio (verde); "
                         "marrom (meio-termo) = conta marcada que não comentou no acervo.") if por_mencao else ("Rede de conversação (Recuero): aresta dirigida de quem responde para o autor do comentário respondido; "
-                        "peso = nº de respostas. A API devolve até 5 respostas por conversa, então conversas longas aparecem "
+                        "peso = nº de respostas. A coleta traz só parte das respostas de cada conversa (YouTube: até 5; Instagram: até 6 nos comentários mais populares dos posts com mais respostas), então conversas longas aparecem "
                         "incompletas. Autores pseudonimizados (P00001…; tabela de correspondência só no repositório privado). "
                         "Comunidades: Louvain (semente 42). Centralização de Freeman do grau de entrada: 0 = respostas espalhadas, "
                         "1 = todas para um só autor. Cor: proporção dos comentários do autor feitos em vídeos de Lula (vermelho) "
