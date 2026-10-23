@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.115 — Trends da Globo: o consolidado não era gravado (cache de matérias com outro formato) (2026-10-23) ✅
+
+**Erro.** A 1ª leitura da Globo (trends-agora, 23/10 02h44 UTC) gravou o retrato `retratos_globo/20261023-0244.json` (92 termos em 4 h, 337 em 24 h), mas parou antes do consolidado com `KeyError: 'coletado_em'`. O `materias.json` passou a ser escrito pelo "Em alta agora" permanente (desde 20/10) em outro formato, e o modo debate lia o mesmo arquivo.
+**Correção.** O modo debate usa um cache próprio (`materias_debate<sufixo>.json`) e lê os campos com tolerância. Reproduzido e conferido aqui com o retrato real: o consolidado sai com 353 termos (39 de Política).
+**Teste.** `python -m unittest discover -s tests -v`: OK.
+
 ## C19.114 — Página do debate da Globo (23/10, 21h20), no mesmo modelo da Band (2026-10-22) 🔜
 
 **O que mudou.** Pedido do responsável (22/10, 23h37): página do debate da Globo, mesmo modelo da anterior; Trends já; transcrição e réplicas no YouTube só depois do debate.

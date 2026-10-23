@@ -334,13 +334,13 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
         c["momento"] = None if not ini else "antes do debate" if ini < DEB["inicio"] else "durante/depois do debate"
     termos = sorted(cons.values(), key=lambda c: (-(c["volume_max"] or 0), c["termo"]))
     # matérias no topo do Google Notícias para cada termo de Política (renovadas a cada hora; termo novo entra na hora)
-    cache_p = pasta / "materias.json"
+    cache_p = pasta / f"materias_debate{suf}.json"  # próprio do debate: o materias.json do "Em alta agora" tem outro formato
     cache = json.loads(cache_p.read_text(encoding="utf-8")) if cache_p.exists() else {}
     limite = (dt.datetime.strptime(agora, "%Y-%m-%dT%H:%M:%SZ") - dt.timedelta(minutes=55)).strftime("%Y-%m-%dT%H:%M:%SZ")
     alvos = [c for c in termos if c["politica"]][:60]
     for c in alvos:
         k = c["termo"].lower()
-        if k in cache and cache[k]["coletado_em"] >= limite:
+        if k in cache and (cache[k].get("coletado_em") or "") >= limite:
             continue
         try:
             cache[k] = {"coletado_em": agora, "itens": materias(c["termo"], get_materias)}
@@ -352,7 +352,7 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
     for c in termos:
         m = cache.get(c["termo"].lower())
         if m:
-            c["materias"], c["materias_em"] = m["itens"], m["coletado_em"]
+            c["materias"], c["materias_em"] = m.get("itens"), m.get("coletado_em")
     ult_rel_uf = next((json.loads(f.read_text(encoding="utf-8")).get("relacionados_uf") for f in sorted(retr.glob("*.json"), reverse=True)
                        if json.loads(f.read_text(encoding="utf-8")).get("relacionados_uf")), None)
     ult_uf = next((json.loads(f.read_text(encoding="utf-8")).get("por_uf") for f in sorted(retr.glob("*.json"), reverse=True)
