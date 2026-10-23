@@ -4,12 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.146 — Caso 008: guardar no privado a mídia do reel (vídeo, capa, áudio) pelos links já coletados (2026-10-23) 🔜
+## C19.146 — Caso 008: guardar no privado a mídia do reel (vídeo, capa, áudio) pelos links já coletados (2026-10-23) ✅
 
 **Pedido.** "tu não baixou o post das camisetas, agora ele saiu do ar". Correto: a coleta de 22/10 guardou metadados, legenda, números e 2.000 comentários, mas não o arquivo de vídeo. A cópia no arquivo web tinha falhado (HTTP 520).
 **O que já existe no privado** (`casos/008/apify/quPezdF2ogfR47Xoa.json`, coleta de 22/10, 21h52 UTC): legenda; autor @guilhermederrite; publicado em 21/10, 15h44 UTC; 7.063.507 reproduções; 321.475 curtidas; 20.154 comentários; 92.928 compartilhamentos; 16 s de duração. Também os links do CDN do vídeo, da capa e do áudio, assinados até 27/10 (vídeo e capa) e 24/10 (áudio).
 **O que mudou.** `scripts/arquivar_midia_caso.py` + `arquivar-midia-caso.yml`: baixa esses links pelo GitHub, sem nova coleta paga, e grava em `odi-atlas-interno/casos/<id>/midia/` com sha256, tamanho e origem. O CDN não é acessível deste ambiente.
-**Pendente.** Resultado da execução: entrada seguinte.
+**Resultado.** Run 40018058745: os 3 arquivos foram baixados do CDN depois de o post sair do ar. `video.mp4`: 3.915.310 bytes, 1072×1906, 15,97 s, só imagem; sha256 e2e25bed…37e5. `capa.jpg`: 293.324 bytes; sha256 3ab23b8f…389b. `audio.mp4`: 177.724 bytes; sha256 16199aa2…be5c. Também `video_com_audio.mp4`, juntado com ffmpeg sem recodificar (`-c copy`); sha256 1564b37b…8982. Tudo em `odi-atlas-interno/casos/008/midia/`, com manifesto. Nada foi publicado no repositório público.
 
 ## C19.145 — Lista de peças a baixar à mão: processos de IA e deepfake com candidatos à Presidência (2026-10-23) ⚠️
 
