@@ -70,13 +70,32 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/x_posts.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
+    conta1, diario = "--conta1" in argv, "--diario" in argv  # 23/10/2026: lacuna desde 17/10 e diário na conta 1 (cfg["conta1"])
     pasta = root / "data/x"
     pasta.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
-    ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pasta.glob("manifesto-*.json")), 4)
-    teto = min(cfg["teto_teste_usd"], cfg["teto_total_usd"] - ja) if teste else round(cfg["teto_total_usd"] - ja, 4)
-    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "carga",
-           "teto_total_usd": cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "perfis": []}
+    mans = [json.loads(f.read_text(encoding="utf-8")) for f in pasta.glob("manifesto-*.json")]
+    if conta1:
+        C1 = cfg["conta1"]
+        if diario:
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"] + "-diario" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
+            teto = round(min(C1["diario"]["teto_dia_usd"], C1["diario"]["teto_mes_usd"] - ja), 4)
+            busca_desde = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+            cfg["posts_por_perfil"] = C1["diario"]["por_perfil"]
+        else:
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"]), 4)
+            teto = round(C1["teto_lacuna_usd"] - ja, 4)
+            busca_desde = C1["desde_lacuna"]
+            cfg["posts_por_perfil"] = C1["por_perfil_lacuna"]
+        cfg["teto_total_usd"] = C1["teto_lacuna_usd"]
+    else:
+        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans), 4)
+        teto = min(cfg["teto_teste_usd"], cfg["teto_total_usd"] - ja) if teste else round(cfg["teto_total_usd"] - ja, 4)
+        busca_desde = cfg["desde"]
+    man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "diário" if diario else "lacuna" if conta1 else "teste" if teste else "carga",
+           "teto_total_usd": cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "desde": busca_desde, "perfis": []}
+    if conta1:
+        man["lote"] = cfg["conta1"]["lote"] + ("-diario" if diario else "")
 
     def fim(status: str, code: int) -> int:
         man["status"] = status
@@ -88,7 +107,10 @@ def main(argv=None, executar=None) -> int:
 
     if teto < 0.01:
         return fim(f"⛔ teto de US$ {cfg['teto_total_usd']} esgotado (gasto US$ {ja})", 1)
-    nome_conta, token, saldo = escolher_conta(cfg["segredos"], min(teto, 0.5)) if executar is None else ("teste", "x", None)
+    if conta1:  # conta autorizada; sem consulta de saldo
+        nome_conta, token, saldo = "APIFY_TOKEN", os.environ.get("APIFY_TOKEN", "").strip() or ("x" if executar else ""), None
+    else:
+        nome_conta, token, saldo = escolher_conta(cfg["segredos"], min(teto, 0.5)) if executar is None else ("teste", "x", None)
     man.update(conta=nome_conta, saldo_conta_antes_usd=saldo)
     if not token:
         return fim(f"⛔ nenhuma conta Apify com saldo entre {', '.join(cfg['segredos'])}", 1)
@@ -111,8 +133,8 @@ def main(argv=None, executar=None) -> int:
     def um(a):
         pf, n = a
         # busca do próprio X: só posts e respostas do perfil, sem reposts, desde a pré-campanha
-        pl = ({"searchTerms": [f"from:{pf['handle']} since:{cfg['desde']} -filter:retweets"], "maxItems": n, "queryType": "Latest"} if "xquik" in cfg["ator"]
-              else {"twitterHandles": [pf["handle"]], "start": cfg["desde"], "maxItems": n, "sort": "Latest"})
+        pl = ({"searchTerms": [f"from:{pf['handle']} since:{busca_desde} -filter:retweets"], "maxItems": n, "queryType": "Latest"} if "xquik" in cfg["ator"]
+              else {"twitterHandles": [pf["handle"]], "start": busca_desde, "maxItems": n, "sort": "Latest"})
         try:
             run, itens = executar(pl, round(p["post"] * n * 1.05 + 0.01, 4))
             return pf, n, run or {}, itens or [], None

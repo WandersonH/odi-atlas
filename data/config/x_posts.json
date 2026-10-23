@@ -109,5 +109,24 @@
  ],
  "nota": "Posts públicos dos perfis de X declarados ao TSE pelas chapas 13 e 22, desde 20/07/2026 (pré-campanha), via Apify (apidojo/tweet-scraper, sem login). Até 2.500 posts (e respostas, sem reposts) dos perfis principais e 800 dos demais. Mesmas regras de tema, 'cita o adversário' e 'pede voto' das outras redes. Interação = (curtidas + respostas + reposts + citações) ÷ visualizações.",
  "ator_anterior": "apidojo~tweet-scraper",
- "nota_ator": "apidojo/tweet-scraper (run 39085278763): no plano gratuito devolve no máximo 10 itens por execução e, em 6 dos 10 perfis, nenhum post do próprio perfil. Troca para xquik/x-tweet-scraper, que funciona no plano gratuito."
+ "nota_ator": "apidojo/tweet-scraper (run 39085278763): no plano gratuito devolve no máximo 10 itens por execução e, em 6 dos 10 perfis, nenhum post do próprio perfil. Troca para xquik/x-tweet-scraper, que funciona no plano gratuito.",
+ "conta1": {
+  "segredo": "APIFY_TOKEN",
+  "lote": "x-2310",
+  "teto_lacuna_usd": 0.2,
+  "desde_lacuna": "2026-10-17",
+  "por_perfil_lacuna": {
+   "principal": 200,
+   "outras": 60
+  },
+  "diario": {
+   "teto_dia_usd": 0.03,
+   "teto_mes_usd": 0.6,
+   "por_perfil": {
+    "principal": 60,
+    "outras": 20
+   }
+  },
+  "autorizacao": "Responsável em 23/10/2026, 13h08 ('sim'), sobre a proposta de 12h4x: X na conta 1, teto de US$ 0,50 uma vez (lacuna de posts e respostas desde 17/10) e US$ 0,10/dia, até US$ 2/mês (posts e respostas). Aqui: posts, US$ 0,20 uma vez e US$ 0,03/dia, US$ 0,60/mês."
+ }
 }

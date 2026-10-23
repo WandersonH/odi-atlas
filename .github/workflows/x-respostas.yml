@@ -2,12 +2,14 @@ name: X — respostas aos candidatos (Apify xquik, contas 3 a 15, teto US$ 5)
 
 # Amostra igual por candidato e por dia, desde 20/07/2026. Texto e autor só no repositório privado.
 on:
+  schedule:
+    - cron: "10 13 * * *"   # todo dia, 10h10 em Brasília: respostas de ontem (conta 1, teto do dia)
   workflow_dispatch:
     inputs:
       modo:
         description: "teste (1 dia, 20 por candidato) · carga (todo o período, até o teto)"
         type: choice
-        options: [teste, carga, teste-por-post, carga-por-post]
+        options: [teste, carga, teste-por-post, carga-por-post, lacuna-conta1, diario-conta1]
         default: teste
 
 concurrency:
@@ -37,6 +39,7 @@ jobs:
       - name: Coletar (Apify, com teto)
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ (github.event_name == 'schedule' || endsWith(github.event.inputs.modo, 'conta1')) && secrets.APIFY_TOKEN || '' }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
           APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
@@ -51,9 +54,9 @@ jobs:
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-          MODO: ${{ github.event.inputs.modo }}
+          MODO: ${{ github.event_name == 'schedule' && 'diario-conta1' || github.event.inputs.modo }}
         run: |
-          case "$MODO" in teste) a="--teste";; teste-por-post) a="--teste --por-post";; carga-por-post) a="--por-post";; *) a="";; esac
+          case "$MODO" in lacuna-conta1) a="--conta1";; diario-conta1) a="--conta1 --diario";; teste) a="--teste";; teste-por-post) a="--teste --por-post";; carga-por-post) a="--por-post";; *) a="";; esac
           python scripts/collect_x_respostas.py $a > f.txt 2>&1; rc=$?
           grep -v "^lote " f.txt | while IFS= read -r l; do echo "::notice title=X respostas::$(echo "$l" | cut -c1-900)"; done
           tail -1 f.txt | sed 's/^/::notice title=X respostas fim::/'

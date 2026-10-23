@@ -4060,7 +4060,7 @@ const naFase=v=>{if(periodo==='h24')return Date.parse(v.publicado_em||'')>=Date.
 const cor=c=>c===L?CL:CF;
 function tags(v){return v.temas.filter(t=>t!=='sem_tema').map(t=>`<span class="yt-tag">${esc(ROT[t]||t)}</span>`).join('')+(v.pede_voto?'<span class="yt-tag yt-flag">pede voto</span>':'')+(v.cita_adversario?'<span class="yt-tag yt-flag">cita adversário</span>':'');}
 function perfis(){const quando=iso=>iso?new Date(iso).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'}):'';
-$('tkPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>{const vazio=p.status==='sem vídeos públicos',ok=p.status==='ok',tem=(p.videos_desde_20_07??p.videos_desde_16_08)>0;
+$('tkPerfis').innerHTML=(D.perfis_coleta||[]).map(p=>{if(p.substituido_por||/^substituído por/.test(p.status||''))return `<span class="tk-perfil" title="Endereço declarado ao TSE que não é o perfil ativo (correção do responsável, 23/10/2026)"><b>@${esc(p.perfil)}</b> · ${esc(p.candidate_name)} · endereço do TSE substituído por @${esc(p.substituido_por||String(p.status).replace(/^substituído por @/,''))}</span>`;const vazio=p.status==='sem vídeos públicos',ok=p.status==='ok',tem=(p.videos_desde_20_07??p.videos_desde_16_08)>0;
 const dado=tem?`${fmt((p.videos_desde_20_07??p.videos_desde_16_08))} vídeos · lido em ${quando(p.ultima_leitura_ok)}`:(vazio?'sem vídeos públicos':'nunca lido');
 const agora=ok||vazio?'':' · ⛔ última tentativa bloqueada';
 return `<span class="tk-perfil ${ok||vazio?'':(tem?'tk-old':'tk-off')}" title="${esc(p.status)} · ${p.tentativas} tentativa(s)"><b>@${esc(p.perfil)}</b> · ${esc(p.candidate_name)} · ${dado}${agora}</span>`;}).join('');}

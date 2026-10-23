@@ -3,12 +3,14 @@ name: X — o que as campanhas publicam (Apify, contas 3 a 7, teto US$ 2)
 # Ator apidojo/tweet-scraper. Perfis declarados ao TSE pelas chapas 13 e 22, desde 16/08/2026.
 # Teto total autorizado: US$ 2 (data/config/x_posts.json); teste US$ 0,05.
 on:
+  schedule:
+    - cron: "40 12 * * *"   # todo dia, 09h40 em Brasília: posts desde ontem (conta 1, teto do dia)
   workflow_dispatch:
     inputs:
       modo:
         description: "teste (20 posts de @LulaOficial) · carga (todos os perfis) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [teste, carga, so-analises]
+        options: [teste, carga, so-analises, lacuna-conta1, diario-conta1]
         default: teste
 
 concurrency:
@@ -40,9 +42,10 @@ jobs:
             echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
           fi
       - name: Coletar (Apify, com teto)
-        if: github.event.inputs.modo != 'so-analises'
+        if: github.event_name == 'schedule' || github.event.inputs.modo != 'so-analises'
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ (github.event_name == 'schedule' || endsWith(github.event.inputs.modo, 'conta1')) && secrets.APIFY_TOKEN || '' }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
           APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
@@ -57,9 +60,9 @@ jobs:
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-          MODO: ${{ github.event.inputs.modo }}
+          MODO: ${{ github.event_name == 'schedule' && 'diario-conta1' || github.event.inputs.modo }}
         run: |
-          case "$MODO" in teste) a="--teste";; *) a="";; esac
+          case "$MODO" in teste) a="--teste";; lacuna-conta1) a="--conta1";; diario-conta1) a="--conta1 --diario";; *) a="";; esac
           python scripts/collect_x_posts.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=X::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc

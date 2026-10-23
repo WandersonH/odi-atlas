@@ -76,6 +76,11 @@ def alvos(root: Path) -> list[dict]:
                     "declarado_por": r.get("NM_URNA_CANDIDATO", ""), "url_tse": r["DS_URL"]})
     extra = root / "data/config/tiktok_perfis_extra.json"  # correções do responsável (perfil ativo fora do cadastro do TSE)
     if extra.exists():
+        # endereço declarado ao TSE que o responsável indicou como errado: fica na lista, marcado, e não é mais tentado (23/10/2026)
+        troca = {h: e["perfil"] for e in json.loads(extra.read_text(encoding="utf-8"))["perfis"] for h in e.get("substitui", [])}
+        for a in out:
+            if a["perfil"] in troca:
+                a["substituido_por"] = troca[a["perfil"]]
         for e in json.loads(extra.read_text(encoding="utf-8"))["perfis"]:
             if e["perfil"] not in vistos and e["candidate_id"] in cfg["candidatos"]:
                 vistos.add(e["perfil"])
@@ -161,6 +166,10 @@ def main(argv=None) -> int:
     novas = []
     for a in alvos(root):
         reg = {**a, "status": None, "tentativas": 0, "videos_lidos": 0, "videos_desde_inicio_campanha": 0}
+        if a.get("substituido_por"):
+            reg["status"] = f"substituído por @{a['substituido_por']}"
+            man["perfis"].append(reg)
+            continue
         for t in range(1, TENTATIVAS + 1):
             reg["tentativas"] = t
             try:

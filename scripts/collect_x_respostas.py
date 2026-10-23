@@ -64,15 +64,29 @@ def main(argv=None, executar=None, contas=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/x_respostas.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
+    conta1, diario = "--conta1" in argv, "--diario" in argv  # 23/10/2026: lacuna desde 17/10 e diário na conta 1 (cfg["conta1"])
     pub = root / "data/x/respostas"
     pub.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
-    ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pub.glob("manifesto-*.json")), 4)
-    resta = round(cfg["teto_total_usd"] - ja, 4)
-    teto = min(cfg["teto_teste_usd"], resta) if teste else resta
+    mans = [json.loads(f.read_text(encoding="utf-8")) for f in pub.glob("manifesto-*.json")]
+    if conta1:
+        C1 = cfg["conta1"]
+        if diario:
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"] + "-diario" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
+            teto = round(min(C1["diario"]["teto_dia_usd"], C1["diario"]["teto_mes_usd"] - ja), 4)
+        else:
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"]), 4)
+            teto = round(C1["teto_lacuna_usd"] - ja, 4)
+        cfg["teto_total_usd"] = C1["teto_lacuna_usd"]
+    else:
+        ja = round(sum(float(m.get("custo_usd") or 0) for m in mans), 4)
+        resta = round(cfg["teto_total_usd"] - ja, 4)
+        teto = min(cfg["teto_teste_usd"], resta) if teste else resta
     preco = cfg["preco_usd"]["post"]
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "carga",
            "teto_total_usd": cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "buscas": []}
+    if conta1:
+        man.update(lote=cfg["conta1"]["lote"] + ("-diario" if diario else ""), modo="diário" if diario else "lacuna")
 
     def fim(status: str, code: int) -> int:
         man["status"] = status
@@ -94,6 +108,8 @@ def main(argv=None, executar=None, contas=None) -> int:
     feitos = {(r["channel_id"], r["publicado_em"][:10]) for r in antigos}  # (perfil, dia) já com respostas
     ate = (dt.date.fromisoformat(agora[:10]) - dt.timedelta(days=1)).isoformat()
     lista_dias = dias(cfg["desde"], ate)
+    if conta1:  # lacuna: de 17/10 até ontem; diário: só ontem (dia completo, Brasília ≈ UTC−3)
+        lista_dias = [ate] if diario else dias(cfg["conta1"]["desde_lacuna"], ate)
     por_post = "--por-post" in argv
     if por_post:
         # 2ª estratégia: respostas de cada post (conversation_id), os posts com mais respostas de cada semana, mesmo número por candidato
@@ -119,6 +135,8 @@ def main(argv=None, executar=None, contas=None) -> int:
     else:
         pend = [(p, d) for d in lista_dias for p in cfg["perfis"] if (p["handle"], d) not in feitos]
         n = max(10, min(cfg["max_por_dia"], int(teto * 0.95 / preco / max(1, len(pend)))))
+        if conta1:
+            n = min(n, cfg["conta1"]["diario"]["por_dia"] if diario else cfg["conta1"]["por_dia"])
         tarefas = [(p, d, n) for p, d in pend]
     man.update(estrategia="por post (conversation_id)" if por_post else "por dia (to:perfil)", dias_no_periodo=len(lista_dias),
                buscas_planejadas=len(tarefas), por_busca=max((t[2] for t in tarefas), default=0))
@@ -132,7 +150,13 @@ def main(argv=None, executar=None, contas=None) -> int:
             man["parou"] = f"teto: gasto US$ {round(gasto, 4)} + estimativa do lote US$ {est} > US$ {teto}"
             print(man["parou"])
             break
-        if executar is None:
+        if executar is None and conta1:  # conta autorizada; sem consulta de saldo
+            token = os.environ.get("APIFY_TOKEN", "").strip()
+            if not token:
+                man["parou"] = "falta APIFY_TOKEN"
+                break
+            nome, exe = "APIFY_TOKEN", (lambda tok: (lambda pl, cap: run_actor(tok, cfg["ator"], pl, cap)))(token)
+        elif executar is None:
             nome, token, saldo = (contas or escolher_conta)(cfg["segredos"], est)
             if not token:
                 man["parou"] = "nenhuma conta Apify com saldo"

@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.138 — X na conta 1 (lacuna desde 17/10 e diário); TikTok: endereços do vice declarados ao TSE marcados como substituídos (2026-10-23) 🔜
+
+**X** (autorizado pelo responsável em 23/10, 13h08: "sim"; tetos em `data/config/x_posts.json` e `x_respostas.json` → `conta1`). A coleta de posts e de respostas estava parada desde 18/10 (só rodava à mão, contas 3–15).
+- `collect_x_posts.py --conta1`: lacuna desde 17/10, US$ 0,20, uma vez. Com `--diario`: posts desde ontem, US$ 0,03/dia, US$ 0,60/mês.
+- `collect_x_respostas.py --conta1`: dias de 17/10 até ontem, 150 por perfil e dia, US$ 0,30. Com `--diario`: só ontem, US$ 0,07/dia, US$ 1,40/mês.
+- Sem consulta de saldo; o teto conta só o gasto do próprio lote. `x-posts.yml` (09h40) e `x-respostas.yml` (10h10) passam a ter agendamento diário na conta 1 e os modos `lacuna-conta1` e `diario-conta1`.
+**TikTok** (o responsável: "@alfredogasparoficial … nunca lido · ⛔ … tu não ajustou isso?"). Em C19.126 o perfil certo (@alfredogaspar_) entrou, mas os dois endereços declarados ao TSE continuaram na lista como "nunca lido / bloqueado". Agora `tiktok_perfis_extra.json` diz quais endereços o perfil indicado substitui; o coletor não tenta mais esses endereços, e a página mostra "endereço do TSE substituído por @alfredogaspar_". `manifesto_latest.json` e `conteudo.json` receberam o campo `substituido_por` (nada foi removido).
+**Teste.** `python -m unittest discover -s tests -v`: OK (novo `tests/test_x_conta1.py`). Render local do TikTok com as duas linhas marcadas e @alfredogaspar_ com 222 vídeos.
+
 ## C19.137 — DJEN: os processos de IA quase não têm publicação no diário nacional (2026-10-23) ⚠️
 
 **Execução** (navegador do aplicativo no computador do responsável, Brasil; site `comunicaapi.pje.jus.br` liberado pelo responsável): consulta por número para os 762 processos do tema IA (`data/tse/processual/resumo.json`), 3 em paralelo. 389 respostas válidas (HTTP 200), **todas com `count` 0**. A partir daí a API devolveu "Too Many Requests" e a coleta parou para não insistir; 373 processos não foram consultados. Controle: a mesma consulta para a REPRESENTAÇÃO 0601743-79.2026.6.00.0000 devolve 5 comunicações (com só dígitos, com máscara e com `siglaTribunal`), então o parâmetro funciona.
