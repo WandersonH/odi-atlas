@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.131 — YouTube das campanhas: 4 leituras por dia em vez de 1 (2026-10-23) ✅
+
+**Por quê.** O responsável perguntou por que o YouTube não estava coletando, sendo grátis. A coleta rodava uma vez por dia (07h20), mas o GitHub tem disparado com cerca de 5 h de atraso: a última leitura foi em 22/10, 12h20, e o filtro "Últimas 24 h" ficava vazio. Cada leitura gasta 157 unidades da cota (de 10.000 por dia), segundo `data/seguidores/youtube_manifesto_latest.json` de 22/10.
+**O que mudou.** `seguidores-youtube.yml` lê também às 13h20, 19h20 e 01h20 (canais, vídeos, conteúdo e redes). A busca de influenciadores, que gasta mais cota, continua só na leitura das 07h20 e nas execuções manuais. Leitura manual disparada agora.
+
 ## C19.130 — "Últimas 24 h": aviso quando não há publicação no período (2026-10-23) ✅
 
 **O que estava acontecendo** (o responsável: "o filtro de 24 horas está vazio"): o filtro funciona, mas em duas redes não havia nada no período. YouTube: última coleta em 22/10, 12h20 (o agendamento das 07h20 roda com cerca de 5 h de atraso no GitHub), último vídeo de 22/10, 00h09. X: a coleta de posts está parada desde 17/10 (só roda à mão). Contagem em `conteudo.json` às 14h45 UTC de 23/10: TikTok 28, Kwai 9, Facebook 19, Instagram 25, YouTube 0, X 0.
