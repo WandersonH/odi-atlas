@@ -1681,10 +1681,10 @@ fetch('./data/trends/agora/em_alta.json',{cache:'no-store'}).then(r=>r.ok?r.json
   <div class="card yc-block"><div class="eyebrow">Método</div><p class="yt-cloudnote" id="fcMetodo"></p><p class="yt-cloudnote"><a href="./data/facebook/comentarios/analise.json" download>↓ Agregados (JSON)</a> · <a href="./data/config/livro_codigos_intolerancia.json" download>↓ Livro de códigos de intolerância</a> · <a href="./data/facebook/comentarios/manifesto_latest.json" download>↓ Manifesto da coleta</a></p></div>
 </section>
 <section class="panel" id="igComments" aria-label="Caderno 04 Comentários do Instagram">
-  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO FACEBOOK</span><span>DESDE 20 JUL 2026 · SÓ AGREGADOS</span></div>
+  <div class="paper-ribbon"><span>CADERNO 04 / COMENTÁRIOS DO INSTAGRAM</span><span>DESDE 16 AGO 2026 · SÓ AGREGADOS</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Instagram público via Apify · comentários</div>
     <h1>O que a audiência responde.<br><em>Comentários dos posts das campanhas.</em></h1>
-    <p>Comentários dos posts dos perfis principais de Instagram (@lulaoficial e @flaviobolsonaro) das chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>, desde 20/07 (pré-campanha): cota igual por candidato, de 5 a 50 por post, por relevância, sem respostas. Mesmas regras da página de comentários do YouTube: pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou perfil de quem comentou é publicado aqui.</p>
+    <p>Comentários dos posts dos perfis principais de Instagram (@lulaoficial e @flaviobolsonaro) das chapas de <span style="color:#c8102e;font-weight:700">Lula</span> e <span style="color:#1f8a3b;font-weight:700">Flávio Bolsonaro</span>, desde 16/08 (campanha): cota igual por candidato (3.000), de 5 a 50 por post a partir dos posts com mais comentários, na ordem "populares" do Instagram, sem respostas; depois, 30 por post novo a cada dia. Mesmas regras da página de comentários do YouTube: pré-codificação por dicionário aberto (livros de códigos de populismo e de intolerância/incivilidade) — indica candidatos, não decide; a validação é humana. Nenhum texto, nome ou perfil de quem comentou é publicado aqui.</p>
   </div>
   <div class="odi-signal" id="icStatus" role="status">Aguardando leitura.</div>
   <div class="yt-stats" id="icStats"></div>
@@ -5214,7 +5214,7 @@ function serie(A,B){const svg=$('icSerie');const dias=[...new Set([...A,...B].ma
 async function carregar(){if(feito)return;feito=true;
  try{const [a,m]=await Promise.all(['./data/instagram/comentarios/analise.json','./data/instagram/comentarios/manifesto_latest.json'].map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(u+' '+r.status);return r.json();})));
   const A=a.candidatos[L],B=a.candidatos[F];
-  $('icStatus').innerHTML=`Coleta de ${new Date(a.coletado_em_utc||m.run_started_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})} · ${fmt(m.videos_com_comentarios)} vídeos com comentários · ${fmt(m.comentarios_no_acervo)} comentários no acervo · texto bruto só no repositório privado${m.status&&m.status!=='ok'?' · '+esc(m.status):''}`+(()=>{const ns=Object.values(a.candidatos||{}).map(c=>c.comentarios||0);const mn=Math.min(...ns),mx=Math.max(...ns);return mx&&mn/mx<0.25?`<br><b>⚠️ Amostra desequilibrada (${ns.map(fmt).join(' × ')} comentários): os números de cada candidato descrevem só a própria amostra; não compare os dois lados.</b>`:'';})();
+  $('icStatus').innerHTML=`Coleta de ${new Date(a.coletado_em_utc||m.run_started_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})} · ${fmt(m.videos_com_comentarios??m.posts_com_comentarios)} posts com comentários · ${fmt(m.comentarios_no_acervo)} comentários no acervo · texto bruto só no repositório privado${m.status&&m.status!=='ok'?' · '+esc(m.status):''}`+(()=>{const ns=Object.values(a.candidatos||{}).map(c=>c.comentarios||0);const mn=Math.min(...ns),mx=Math.max(...ns);return mx&&mn/mx<0.25?`<br><b>⚠️ Amostra desequilibrada (${ns.map(fmt).join(' × ')} comentários): os números de cada candidato descrevem só a própria amostra; não compare os dois lados.</b>`:'';})();
   $('icStats').innerHTML=[[A,CL],[B,CF]].map(([x,c])=>`<div class="yt-statcard" style="border-top-color:${c}"><h3>${esc(x.nome)}</h3><div class="yt-nums"><span><b>${fmt(x.comentarios)}</b>comentários</span><span><b>${fmt(x.respostas)}</b>respostas</span><span><b>${fmt(x.videos)}</b>vídeos</span><span><b>${fmt(x.autores.autores_unicos)}</b>autores</span><span><b>${pc(x.autores.pct_dos_comentarios_top10pct_autores)}</b>escritos pelos 10% mais ativos</span><span><b>${pc(x.copiar_colar.pct)}</b>copiar e colar</span><span><b>${pc(x.qualquer_incivilidade_pct)}</b>com incivilidade</span><span><b>${pc(x.qualquer_intolerancia_pct)}</b>com intolerância</span><span><b>${pc(x.cita_adversario_pct)}</b>citam o adversário</span></div></div>`).join('');
   nuvem($('icCloudA'),A.nuvem);nuvem($('icCloudB'),B.nuvem);
   try{const r=await fetch('./data/instagram/comentarios/sentimento.json',{cache:'no-store'});const S=r.ok?await r.json():null;
@@ -5270,6 +5270,28 @@ async function carregar(){if(feito)return;feito=true;
   $('kcRespMet').textContent=r.metodo;}
  }catch(e){$('kcNetStatus').textContent='⛔ Não foi possível ler as redes: '+e.message;}}
 new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});})();
+</script>
+<script>
+/* Rede de palavras dos comentários do Facebook (fc) e do Instagram (ic): data/<rede>/comentarios/rede_termos.json (23/10/2026:
+   a página do Facebook, copiada da do YouTube, nunca tinha ligado este bloco) */
+(function(){const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
+const mix=f=>{const a=[0xc8,0x10,0x2e],b=[0x1f,0x8a,0x3b];return 'rgb('+b.map((v,i)=>Math.round(v+(a[i]-v)*f)).join(',')+')';};
+function desenhar(svg,nos,arestas,raio,rotulos){const P=30,W=1000+2*P,ix=Object.fromEntries(nos.map(n=>[n.id,n]));const mw=Math.max(1,...arestas.map(a=>a[2]));
+ let h=arestas.map(([a,b,w])=>{const p=ix[a],q=ix[b];if(!p||!q)return '';return `<line x1="${p.x+P}" y1="${p.y+P}" x2="${q.x+P}" y2="${q.y+P}" stroke="#9aa5ae" stroke-opacity="${(0.15+0.5*w/mw).toFixed(2)}" stroke-width="${(0.5+2*w/mw).toFixed(2)}"/>`;}).join('');
+ h+=nos.map(n=>`<circle cx="${n.x+P}" cy="${n.y+P}" r="${raio(n).toFixed(1)}" fill="${mix(n.lado)}" fill-opacity=".85" stroke="#fff" stroke-width=".6"><title>${esc(n.id)}</title></circle>`).join('');
+ h+=rotulos.map(n=>`<text x="${n.x+P}" y="${n.y+P-raio(n)-2}" text-anchor="middle" font-size="12" font-family="Georgia,serif" fill="#172238" paint-order="stroke" stroke="#fffdf8" stroke-width="3">${esc(n.id)}</text>`).join('');
+ svg.setAttribute('viewBox',`0 0 ${W} ${W}`);svg.innerHTML=h;}
+[['fc','fbComments','facebook'],['ic','igComments','instagram']].forEach(([P,secId,rede])=>{const sec=document.getElementById(secId);if(!sec)return;const $=id=>document.getElementById(P+id);let feito=false;
+ async function carregar(){if(feito||!$('NetStatus'))return;feito=true;
+  try{const r=await fetch(`./data/${rede}/comentarios/rede_termos.json`,{cache:'no-store'});if(!r.ok)throw new Error('rede_termos.json '+r.status);const t=await r.json();
+   $('NetStatus').textContent=`${fmt(t.nos_total)} palavras · ${fmt(t.arestas_total)} ligações · ${t.comunidades.length} comunidades · modularidade ${String(t.modularidade).replace('.',',')} · ${fmt(t.parametros.comentarios)} comentários`;
+   const mv=Math.max(...t.nos.map(n=>n.v));if($('NetT'))desenhar($('NetT'),t.nos,t.arestas,n=>3+14*Math.sqrt(n.v/mv),[...t.nos].sort((a,b)=>b.v-a.v).slice(0,45));
+   if($('NetCom'))$('NetCom').innerHTML='<div class="yc-rows">'+t.comunidades.map(c=>`<div class="yc-row"><span>Comunidade ${c.id+1} · ${c.nos} palavras · ${Math.round(100*c.lado_medio)}% Lula</span><span>${c.principais.map(esc).join(', ')}</span></div>`).join('')+'</div>';
+   if($('NetMet'))$('NetMet').textContent=t.metodo;
+  }catch(e){$('NetStatus').textContent='⛔ Não foi possível ler a rede: '+e.message;}}
+ if(sec.classList.contains('active'))carregar();
+ new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});});})();
 </script>
 <script>
 /* Abas internas das páginas que reúnem mais de um caderno */

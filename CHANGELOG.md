@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.125 — Comentários do Instagram: página corrigida; rede de palavras ligada também no Facebook; sentimento do Instagram (2026-10-23) ✅
+
+**O que estava errado** (o responsável apontou, 10h30: "parece não estar 100%"; render local conferido):
+- Faixa do topo dizia "COMENTÁRIOS DO FACEBOOK · DESDE 20 JUL". O texto de abertura descrevia a coleta do Facebook (desde 20/07, por relevância).
+- A linha de status mostrava "— vídeos com comentários", porque o manifesto do Instagram usa `posts_com_comentarios`.
+- Rede de palavras em "Aguardando leitura": o bloco, copiado da página do YouTube, nunca foi ligado nem na página do Facebook.
+- Sentimento "⛔ ainda não calculado": o workflow de sentimento não incluía o Instagram.
+**Correção.** Faixa, texto e status agora do Instagram (desde 16/08, cota de 3.000, 5 a 50 por post, populares, diário com 30 por post). Novo carregador da rede de palavras para Facebook e Instagram (`data/<rede>/comentarios/rede_termos.json`). `sentimento-youtube.yml` classifica também `instagram/comentarios` (o próximo agendamento é às 08h40; disparado agora à mão).
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local: Instagram com 811 posts com comentários e rede de 26 palavras, 75 ligações (3.095 comentários); Facebook com rede de 148 palavras, 983 ligações (12.881 comentários). Sem erro de JavaScript.
+
 ## C19.124 — Busca de IA: leitura de rótulo dos demais vídeos do TikTok (grátis), 4 abas em paralelo (2026-10-23) 🔜
 
 **O que mudou.** Pedido do responsável (23/10, 10h10: "sim"): conferir o rótulo dos cerca de 2.200 vídeos do TikTok da busca ainda não lidos. `collect_busca_ia.py --rotulos` aceita `--limite-tiktok` e `--limite-instagram` e abre 4 páginas ao mesmo tempo. `busca-ia.yml` ganhou essas entradas e o tempo limite passou a 240 min. Sem custo: navegador sem login, nenhuma execução do Apify.
