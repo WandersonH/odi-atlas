@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.134 — Carga de comentários do TikTok: resultado (2026-10-23) ⚠️
+
+**Execução** (tiktok-comentarios, modo carga; `data/tiktok/comentarios/manifesto_latest.json`): 22 execuções com status SUCCEEDED, 839 vídeos pedidos, 2.702 comentários em 482 vídeos, US$ 2,225 de US$ 3,50. Lula 1.258 em 323 vídeos e Flávio 1.444 em 159 (`analise.json`); incivilidade 0% nos dois; intolerância 1,03% (Lula) e 0,41% (Flávio).
+**Ressalva.** O ator devolveu menos que o pedido: cerca de 2,6 por vídeo em vez de 5 (Lula) e cerca de 4,8 em vez de 13 (Flávio), então ficou longe da cota de 3.000 por candidato. O custo real foi de cerca de US$ 0,82 por mil comentários, acima dos US$ 0,50 estimados. Dentro do teto.
+
 ## C19.133 — Resultado da sonda do DJEN: a API funciona do Brasil e bloqueia o GitHub (2026-10-23) ⚠️
 
 **Execução 1** (sonda-djen, GitHub Actions, EUA): HTTP 403 do CloudFront ("The request could not be satisfied") nos 5 processos. Bloqueio de origem, não do processo.
