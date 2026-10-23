@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.117 — Contador de acessos (GoatCounter) preparado, ainda desligado (2026-10-23) 🔜
+
+**O que mudou.** O responsável escolheu o GoatCounter (23/10, 00h55): gratuito, sem cookies, sem dados pessoais. O código entrou na página, mas só liga quando `ODI_GOATCOUNTER` receber o nome da conta, que o responsável cria em goatcounter.com. Cada troca de aba (`setTab`) conta como uma página (`/#<aba>`). Até lá nada é carregado de fora.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local com Chromium sem erro de JavaScript.
+**Pendente.** Nome da conta; depois disso, uma nota na página de método.
+
 ## C19.116 — Trends da Globo: de hora em hora até o início do debate; regras do debate na página (2026-10-23) ✅
 
 **O que mudou.** Pedido do responsável (23/10, 00h48): "as buscas do debate devem ter uma atualização de hora em hora até o debate". O `collect_trends_agora.py` lê na janela do debate de hora em hora até o início (primeira execução de cada hora) e de 15 em 15 min do início até o fim da janela. A execução manual (`--manual`, passado pelo workflow em `workflow_dispatch`) lê sempre. A página da Globo traz as regras e o formato, pelo texto do g1 enviado pelo responsável (4 blocos e considerações finais, íntegra no Globoplay e no g1, checagens do Fato ou Fake); a mesma fonte ficou registrada em `data/config/debates.json`.
