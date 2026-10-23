@@ -4,6 +4,10 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.128 — Busca de IA: rótulo lido em todos os vídeos do TikTok (grátis) (2026-10-23) ✅
+
+**Execução** (busca-ia, etapa `rotulos`, limite 2.300 TikTok, 0 Instagram): 2.206 de 2.212 vídeos lidos; 6 sem dados (removidos ou restritos). Total da busca: 2.606 de 2.612 vídeos do TikTok com a página lida, 534 com rótulo de IA (20,5%) (`data/ia/busca.json`). Por busca: "vídeo feito com IA Lula" 104 de 234; "Lula inteligência artificial vídeo" 97 de 207; "Lula IA" 90 de 227; "Bolsonaro pede voto Flávio IA" 14 de 159; "Vorcaro Flávio Bolsonaro IA" 14 de 221. Custo: zero (nenhuma execução do Apify).
+
 ## C19.127 — Filtro "Últimas 24 h" nas páginas de "O que as campanhas dizem"; resultados do TikTok do vice e do sentimento do Instagram (2026-10-23) ✅
 
 **O que mudou.** Pedido do responsável (23/10, 10h53: o filtro de fases "em todas as páginas e adicionar últimas 24 h"). As 6 páginas de conteúdo (YouTube, TikTok, Kwai, Facebook, Instagram, X) já tinham Desde 20/07 · Pré-campanha · 1º turno · 2º turno; agora todas têm também **Últimas 24 h**.
