@@ -256,6 +256,11 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
     chave, cfg_deb = ativo
     DEB = {k: cfg_deb[k] for k in ("inicio", "rotulo", "janela_de", "janela_ate")}
     suf = cfg_deb.get("sufixo", "")
+    # até o início do debate, uma leitura por hora (pedido de 23/10/2026, 00h48); do início ao fim da janela, de 15 em 15 min.
+    # Execução manual (--manual, workflow_dispatch) lê sempre.
+    if get_batch is None and "--manual" not in argv and agora < DEB["inicio"] and int(agora[14:16]) >= 15:
+        print(f"{DEB['rotulo']}: antes do início, a leitura é de hora em hora (próxima na primeira execução da hora)")
+        return 0
     retr = pasta / f"retratos{suf}"
     retr.mkdir(parents=True, exist_ok=True)
     ret = {"coletado_em_utc": agora, "erros": {}, "listas": {}}

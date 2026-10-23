@@ -10,7 +10,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: "7,22,37,52 * * * *"   # 15 em 15 min (o script decide: janela de debate ou só o "Em alta agora" de hora em hora)
+    - cron: "7,22,37,52 * * * *"   # 15 em 15 min; o script lê de hora em hora fora das janelas e antes do início de cada debate
 
 concurrency:
   group: trends-agora
@@ -32,6 +32,7 @@ jobs:
         continue-on-error: true
         run: |
           a=""; if [ "${{ github.event.inputs.uf }}" = "true" ]; then a="--uf"; fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then a="$a --manual"; fi
           python scripts/collect_trends_agora.py $a > f.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Trends agora::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc

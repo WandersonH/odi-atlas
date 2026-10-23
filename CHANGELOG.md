@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.116 — Trends da Globo: de hora em hora até o início do debate; regras do debate na página (2026-10-23) ✅
+
+**O que mudou.** Pedido do responsável (23/10, 00h48): "as buscas do debate devem ter uma atualização de hora em hora até o debate". O `collect_trends_agora.py` lê na janela do debate de hora em hora até o início (primeira execução de cada hora) e de 15 em 15 min do início até o fim da janela. A execução manual (`--manual`, passado pelo workflow em `workflow_dispatch`) lê sempre. A página da Globo traz as regras e o formato, pelo texto do g1 enviado pelo responsável (4 blocos e considerações finais, íntegra no Globoplay e no g1, checagens do Fato ou Fake); a mesma fonte ficou registrada em `data/config/debates.json`.
+**Teste.** `python -m unittest discover -s tests -v`: OK.
+
 ## C19.115 — Trends da Globo: o consolidado não era gravado (cache de matérias com outro formato) (2026-10-23) ✅
 
 **Erro.** A 1ª leitura da Globo (trends-agora, 23/10 02h44 UTC) gravou o retrato `retratos_globo/20261023-0244.json` (92 termos em 4 h, 337 em 24 h), mas parou antes do consolidado com `KeyError: 'coletado_em'`. O `materias.json` passou a ser escrito pelo "Em alta agora" permanente (desde 20/10) em outro formato, e o modo debate lia o mesmo arquivo.
