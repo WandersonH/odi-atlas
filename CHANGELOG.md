@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.122 — Resultados: busca de IA (US$ 2,51) e carga de comentários do Instagram (US$ 7,56) (2026-10-23) ⚠️
+
+**Busca de IA** (busca-ia, run 39900249317; `data/ia/busca/manifesto_latest.json`, `data/ia/busca.json`): 22 execuções com status SUCCEEDED, US$ 2,5128 de US$ 10.
+- TikTok: 2.612 vídeos, 2.130 sobre a eleição, 520.584.831 visualizações. Rótulo lido nos 400 mais vistos: 69 com rótulo (17,2%). Campos vistos: aigcLabelType, moderationAigcLabelType, AIGCDescription, IsAigc, ShowAIGC.
+- Exemplos do NYT, de 159 a 238 vídeos por busca.
+- Instagram: as hashtags de IA política quase não existem (#lulaia 2 posts, #flavioia 1, #bolsonaroia 3); #deepfake e #feitocomia, 200 cada, de todo tema. São 440 posts, 64 sobre a eleição. Selo: 12 páginas lidas (3 com selo); 68 pediram login (⛔).
+**Comentários do Instagram** (instagram-comentarios, modo carga; `data/instagram/comentarios/manifesto_latest.json`): 21 execuções, 4.944 comentários em 811 posts, US$ 7,5572 de US$ 8,50. Lula 2.384 em 597 posts e Flávio 2.560 em 214 (`analise.json`).
+**Ressalva.** Com o limite de 5 por post, o ator devolveu cerca de 4 por post de Lula, então ficaram 2.384, abaixo da cota de 3.000. O custo real foi de cerca de US$ 1,53 por mil comentários, acima dos US$ 1,40 estimados (a legenda do post também conta como item). Os dois ficaram dentro do teto.
+**Teste.** Os números acima vêm das anotações dos workflows e dos arquivos citados.
+
 ## C19.121 — Página de comentários do Instagram (campanhas) e coletor na conta 1 (2026-10-23) 🔜
 
 **O que mudou.** Pedido do responsável (23/10, 01h31: "não temos uma página de comentários do Instagram"; 01h36: "pode", sobre a opção A + diário).
