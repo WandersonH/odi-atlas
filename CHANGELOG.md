@@ -18,7 +18,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Bloco "Vídeos que saíram do ar" na página do YouTube. Roda em `seguidores-youtube.yml`.
 - **Resultado de hoje:** 0 vídeos das campanhas saíram do ar entre 15/10 e 23/10 (8 fotos diárias). Antes de 15/10 não há foto.
 **Teste.** `python -m unittest discover -s tests -v`: OK. Novo `tests/test_comentarios_youtube_completo.py`: paginação até o fim, respostas além das 5, estado gravado; detecção de retirado só com canal lido e só desde 20/07. Render local da página do YouTube: bloco com "nenhum vídeo saiu do ar", sem erro de JS.
-**Pendente.** Primeira rodada da leitura completa: disparada agora com `so_completo`. Resultado na próxima entrada.
+**Primeira rodada** (run 40023991369, 23/10, 18h04 de Brasília): 3.500 chamadas, sem erro e sem esgotar a cota. 259.280 registros novos. Acervo de 215.790 para 475.070, ou 64,2% dos 740.145 informados. 370 de 1.230 vídeos com comentário lidos até o fim. Fase 1 (conversas) continua amanhã. Evidência: `data/youtube/comentarios/manifesto_completo.json`.
 
 ## C19.148 — Caso 008: legenda original do reel na página, junto da cópia do vídeo (2026-10-23) ✅
 
