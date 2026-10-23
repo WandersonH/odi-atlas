@@ -1,0 +1,38 @@
+{
+ "autorizacao": "Responsável em 23/10/2026, 01h16: busca para a página de IA, 'te dou 10 dólares', opção '3+4' (TikTok por termos + exemplos citados pelo NYT, e Reels do Instagram com conferência do selo de IA). Conta 1 (APIFY_TOKEN), teto total de US$ 10, uma vez.",
+ "segredo": "APIFY_TOKEN",
+ "lote": "busca-ia-2310",
+ "teto_usd": 10.0,
+ "desde": "2026-07-20",
+ "tiktok": {
+  "ator": "apidojo~tiktok-scraper",
+  "preco": {"item": 0.0004, "consulta": 0.006, "fonte": "data/config/casos.json (precos_usd, 19/10/2026)"},
+  "por_busca": 250,
+  "buscas": [
+   {"q": "Lula IA", "grupo": "termos"},
+   {"q": "Flávio Bolsonaro IA", "grupo": "termos"},
+   {"q": "vídeo feito com IA Lula", "grupo": "termos"},
+   {"q": "vídeo feito com IA Bolsonaro", "grupo": "termos"},
+   {"q": "deepfake Lula", "grupo": "termos"},
+   {"q": "deepfake Bolsonaro", "grupo": "termos"},
+   {"q": "inteligência artificial eleição 2026", "grupo": "termos"},
+   {"q": "Lula inteligência artificial vídeo", "grupo": "termos"},
+   {"q": "Lula musculoso cachorro PIX", "grupo": "nyt", "exemplo": "Lula musculoso salvando um cão chamado PIX"},
+   {"q": "Lula fugindo da polícia IA", "grupo": "nyt", "exemplo": "Lula fugindo da polícia com um ministro do STF"},
+   {"q": "Bolsonaro pede voto Flávio IA", "grupo": "nyt", "exemplo": "Deepfake de Jair Bolsonaro pedindo voto para o filho"},
+   {"q": "Vorcaro Flávio Bolsonaro IA", "grupo": "nyt", "exemplo": "Vídeos com o banqueiro Daniel Vorcaro e Flávio Bolsonaro"},
+   {"q": "pesquisa eleitoral falsa IA", "grupo": "nyt", "exemplo": "Pesquisas falsas e 'eleitores' fictícios em formato de reportagem"},
+   {"q": "multidão IA Lula Flávio comício", "grupo": "nyt", "exemplo": "Multidões geradas por IA"}
+  ],
+  "rotulo_top": 400
+ },
+ "instagram": {
+  "ator": "apify~instagram-hashtag-scraper",
+  "preco": {"item": 0.0026, "fonte": "data/config/casos.json (precos_usd, 18/10/2026)"},
+  "por_hashtag": 200,
+  "hashtags": ["lulaia", "bolsonaroia", "flavioia", "flaviobolsonaroia", "iapolitica", "deepfakepolitico", "deepfake", "feitocomia"],
+  "rotulo_amostra": 80
+ },
+ "filtro_politico": "lula|fl[aá]vio|bolsonaro|elei[cç]|\\bvot[oe]|presiden|\\bpt\\b|\\bpl\\b|\\btse\\b|campanha|candidat|stf|moraes|vorcaro",
+ "min_seguidores_publico": 10000
+}

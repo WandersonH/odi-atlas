@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.120 — Kwai: comentários feitos; página de IA: busca paga de conteúdo de IA (TikTok e Instagram) preparada (2026-10-23) 🔜
+
+**Kwai (lote `kwai-2310`, conta 1, teto US$ 8).** Vídeos de @Lulaoficial (kwai-comentarios, modo `conta1-videos-lula`): 930 lidos, 880 novos no acervo, o mais antigo de 12/07/2022, US$ 1,8601. Comentários desde 16/08 (modo `conta1-carga`): 4.316 novos, US$ 4,2888 (2 lotes: 271 vídeos × até 10 e 47 × até 41; 3 execuções vazias ou com falha). Acervo de comentários do Kwai: Lula 3.121 em 296 vídeos, Flávio 2.332 em 74 vídeos. Lote: US$ 6,15 de US$ 8,00. Fonte: anotações dos workflows e `data/kwai/comentarios/manifesto_latest.json`.
+**Busca de IA** (pedido de 23/10, 01h16: "te dou 10 dólares", opção "3+4"): `scripts/collect_busca_ia.py` + `busca-ia.yml` + `data/config/busca_ia.json`, conta 1, teto do lote US$ 10, cada execução limitada ao que sobra.
+- TikTok: 8 buscas por termo e 6 pelos exemplos citados pelo NYT (apidojo/tiktok-scraper, até 250 cada).
+- Instagram: 8 hashtags de IA política (apify/instagram-hashtag-scraper, até 200 cada).
+- Depois, grátis, a página pública de cada post: no TikTok, os 400 mais vistos, com os campos de rótulo do próprio TikTok; no Instagram, amostra de 80 com o selo "AI info"/"Informações de IA". Página que pede login fica ⛔.
+- Página de IA: bloco 06 (posts, % com rótulo, exemplos do NYT, mais vistos de contas com 10 mil+). A linha ⛔ "perfis citados" da tabela do NYT aponta para o bloco 06.
+**Teste.** `python -m unittest discover -s tests -v`: OK (novo `tests/test_busca_ia.py`: teto do lote, nada repete depois do teto, contas sem seguidores conhecidos não são nomeadas).
+**Pendente.** Execução real da busca (próxima entrada).
+
 ## C19.119 — Kwai na conta 1: vídeos históricos de @Lulaoficial, comentários desde 16/08 e diário (2026-10-23) 🔜
 
 **Por quê.** Situação em 23/10: o diário do Kwai parou em 18/10 (conta 2 com HTTP 401, `data/kwai/manifesto_latest.json` de 22/10); de @Lulaoficial só havia 50 dos 918 vídeos (desde 02/10), porque o ator dos vídeos não lista essa conta; comentários: 650 (Lula) e 487 (Flávio), de 18/10 (`data/kwai/comentarios/analise.json`). O responsável autorizou (01h04, "faca") a conta 1 com teto de US$ 8,00, uma vez, e US$ 0,15/dia (até US$ 4/mês) para o diário.
