@@ -52,8 +52,9 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     C = json.loads((root / "data/config/tiktok_comentarios.json").read_text(encoding="utf-8"))
     diario = "--diario" in argv
-    if not diario and "--carga" not in argv:
-        print("⛔ informe --carga ou --diario")
+    reforco = "--reforco" in argv  # 23/10/2026: o resto do teto da carga em 50 comentários nos vídeos mais comentados (15 por candidato)
+    if not diario and "--carga" not in argv and not reforco:
+        print("⛔ informe --carga, --reforco ou --diario")
         return 1
     agora = now_utc()
     pub = root / "data/tiktok/comentarios"
@@ -67,7 +68,7 @@ def main(argv=None, executar=None) -> int:
         D = C["carga"]
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == D["lote"]), 4)
         teto = round(D["teto_usd"] - ja, 4)
-    man = {"run_started_utc": agora, "modo": "diário" if diario else "carga", "lote": None if diario else D["lote"], "conta": C["segredo"],
+    man = {"run_started_utc": agora, "modo": "diário" if diario else "reforço" if reforco else "carga", "lote": None if diario else D["lote"], "conta": C["segredo"],
            "ferramenta": "Apify · " + C["ator"].replace("~", "/"), "gasto_antes_usd": ja, "teto_execucao_usd": teto, "execucoes": []}
 
     def fim(status: str, code: int) -> int:
@@ -100,6 +101,11 @@ def main(argv=None, executar=None) -> int:
     if diario:
         ontem = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
         alvo = [(p, D["por_video"]) for p in posts.values() if p["video_id"] not in feitos and p["publicado_em"][:10] >= ontem]
+    elif reforco:  # mesmo lote e teto da carga; vídeos já lidos entram de novo (comentários repetidos contam uma vez, por id)
+        alvo = []
+        for cid in sorted(conteudo["candidatos"]):
+            ps = sorted([p for p in posts.values() if p["candidate_id"] == cid], key=lambda p: -(p.get("comentarios") or 0))
+            alvo += [(p, D["max_por_video"]) for p in ps[:D.get("reforco_videos_por_candidato", 15)]]
     else:
         alvo = []
         for cid in sorted(conteudo["candidatos"]):

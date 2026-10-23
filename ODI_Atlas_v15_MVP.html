@@ -5368,6 +5368,26 @@ function desenhar(svg,nos,arestas,raio,rotulos){const P=30,W=1000+2*P,ix=Object.
  new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});});})();
 </script>
 <script>
+/* Tamanho da amostra nas páginas de comentários (pedido de 23/10/2026: "queria os big numbers pra entender qual o tamanho da amostra"):
+   universo = publicações das campanhas no período e soma dos comentários que a própria plataforma informa em cada uma
+   (data/<rede>/conteudo.json); amostra = comentários lidos pelo Atlas (data/<rede>/comentarios/analise.json). */
+(function(){const L='280002542548',F='280002551544';
+const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const pc=(a,b)=>b?(100*a/b).toLocaleString('pt-BR',{maximumFractionDigits:a/b<0.01?2:1})+'%':'—';
+const PAGS=[['yc','ytComments','youtube','2026-07-20',null,'vídeos'],['tc','tkComments','tiktok','2026-08-16',null,'vídeos'],['kc','kwComments','kwai','2026-07-20',null,'vídeos'],
+ ['fc','fbComments','facebook','2026-07-20',null,'posts'],['ic','igComments','instagram','2026-08-16',['lulaoficial','flaviobolsonaro'],'posts']];
+PAGS.forEach(([P,secId,rede,desde,perfis,un])=>{const sec=document.getElementById(secId),st=document.getElementById(P+'Status');if(!sec||!st)return;let feito=false;
+ async function carregar(){if(feito)return;feito=true;
+  try{const [C,A]=await Promise.all([`./data/${rede}/conteudo.json`,`./data/${rede}/comentarios/analise.json`].map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(u+' '+r.status);return r.json();})));
+   const linha=cid=>{const vs=((C.candidatos[cid]||{}).videos||[]).filter(v=>(v.publicado_em||'')>=desde&&(!perfis||perfis.includes(v.perfil)));
+    const inf=vs.reduce((t,v)=>t+(Number(v.comentarios)||0),0),a=A.candidatos[cid]||{},lid=(a.comentarios||0)+(a.respostas||0);
+    return {nome:a.nome||(C.candidatos[cid]||{}).nome,pub:vs.length,inf,lid,pubLidas:a.videos||0};};
+   const R=[linha(L),linha(F)];const card=document.createElement('div');card.className='card yc-block';
+   card.innerHTML=`<div class="eyebrow">Tamanho da amostra</div><h2 class="tk-h2">Quanto do que foi comentado o Atlas leu</h2><div class="db-scroll"><table class="db-tab"><thead><tr><th></th><th>${un} das campanhas desde ${desde.slice(8,10)}/${desde.slice(5,7)}${perfis?' (perfis '+perfis.map(p=>'@'+p).join(', ')+')':''}</th><th>${un} com comentários lidos</th><th>comentários informados pela plataforma</th><th>comentários lidos pelo Atlas</th><th>parcela lida</th></tr></thead><tbody>${R.map((r,i)=>`<tr><td style="font-weight:700;color:${i?'#1f8a3b':'#c8102e'}">${r.nome}</td><td class="n">${fmt(r.pub)}</td><td class="n">${fmt(r.pubLidas)} (${pc(r.pubLidas,r.pub)})</td><td class="n">${fmt(r.inf)}</td><td class="n"><b>${fmt(r.lid)}</b></td><td class="n">${pc(r.lid,r.inf)}</td></tr>`).join('')}</tbody></table></div><p class="yt-cloudnote">Amostra, não universo: a plataforma informa quantos comentários cada publicação tem; o Atlas lê uma parte (cota por candidato e limite por publicação, descritos no método). Os percentuais da página valem para os comentários lidos. O número informado muda a cada leitura e pode incluir respostas.</p>`;
+   const ant=sec.querySelector('.odi-amostra');if(ant)ant.remove();card.classList.add('odi-amostra');const stats=document.getElementById(P+'Stats');(stats||st).insertAdjacentElement('afterend',card);
+  }catch(e){/* sem coleta ainda: a página já mostra o ⛔ no status */}}
+ if(sec.classList.contains('active'))carregar();new MutationObserver(()=>{if(sec.classList.contains('active'))carregar();}).observe(sec,{attributes:true,attributeFilter:['class']});});})();
+</script>
+<script>
 /* Abas internas das páginas que reúnem mais de um caderno */
 (function(){for(const ids of Object.values(GRUPOS)){if(ids.length<2)continue;for(const id of ids){const sec=document.getElementById(id);if(!sec)continue;const bar=document.createElement('div');bar.className='subtabs';bar.setAttribute('role','tablist');
 bar.innerHTML=ids.map(x=>`<button type="button" data-tab="${x}" aria-pressed="${x===id}">${SUBROT[x]||x}</button>`).join('');bar.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));sec.prepend(bar);}}})();

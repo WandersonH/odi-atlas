@@ -10,7 +10,7 @@ on:
       modo:
         description: "carga (uma vez) · diario"
         type: choice
-        options: [carga, diario]
+        options: [carga, reforco, diario]
         default: carga
 
 concurrency:
@@ -45,7 +45,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event_name == 'schedule' && 'diario' || github.event.inputs.modo }}
         run: |
-          case "$MODO" in diario) a="--diario";; carga) a="--carga";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
+          case "$MODO" in diario) a="--diario";; carga) a="--carga";; reforco) a="--reforco";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
           python scripts/collect_comentarios_tiktok.py $a > k.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=TikTok comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc

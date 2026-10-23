@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.135 — Páginas de comentários: bloco "Tamanho da amostra"; TikTok: reforço nos vídeos mais comentados (2026-10-23) ✅
+
+**O que mudou.** Pedido do responsável (23/10, 12h33: "queria os big numbers pra entender qual o tamanho da amostra"; "faça" o reforço do TikTok).
+- Novo bloco nas 5 páginas de comentários (YouTube, TikTok, Kwai, Facebook, Instagram), para cada candidato: publicações das campanhas no período, quantas tiveram comentários lidos, soma dos comentários que a plataforma informa (`conteudo.json`), comentários lidos pelo Atlas (`analise.json`) e a parcela lida. Render local de 23/10: TikTok 1,1% e 1,1%; YouTube 23,1% e 24,9%; Kwai 0,44% e 1,5%; Facebook 0,21% e 0,3%; Instagram 0,01% e 0,04%.
+- `collect_comentarios_tiktok.py --reforco` (modo `reforco` no workflow): o resto do teto da carga (lote `tk-com-2310`) em até 50 comentários nos 15 vídeos mais comentados de cada candidato; comentários repetidos contam uma vez.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local das 5 páginas, sem erro de JavaScript.
+
 ## C19.134 — Carga de comentários do TikTok: resultado (2026-10-23) ⚠️
 
 **Execução** (tiktok-comentarios, modo carga; `data/tiktok/comentarios/manifesto_latest.json`): 22 execuções com status SUCCEEDED, 839 vídeos pedidos, 2.702 comentários em 482 vídeos, US$ 2,225 de US$ 3,50. Lula 1.258 em 323 vídeos e Flávio 1.444 em 159 (`analise.json`); incivilidade 0% nos dois; intolerância 1,03% (Lula) e 0,41% (Flávio).
