@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.145 — Lista de peças a baixar à mão: processos de IA e deepfake com candidatos à Presidência (2026-10-23) ⚠️
+
+**Pedido.** "rolou de pegar as peças das ações judiciais?" Resposta: não automaticamente. O DJEN não tem publicações desses processos (C19.137), e a consulta pública do PJe exige CAPTCHA, que o Atlas não contorna.
+**O que foi feito.** `data/tse/processual/pecas_ia_presidencia.csv`: 16 processos, todos REPRESENTAÇÃO no TSE, cujo **assunto principal** é "Uso de Inteligência Artificial" (10) ou "Deep Fake" (6) e que têm candidato à Presidência como parte. Autuados entre 09/07 e 15/10/2026, todos com pelo menos uma decisão. A chapa 22 aparece em 14: em 12 no polo ativo (autora) e em 2 no passivo. A lista tem colunas para marcar o que foi baixado (petição inicial, decisão). Fonte: `data/tse/processual/resumo.json` (TSE, processual-2026, gerado em 22/10). Os outros processos do tema IA têm IA só nos assuntos secundários; ficam para uma segunda rodada.
+**Teste.** Contagem refeita a partir do resumo publicado; nenhum número digitado à mão.
+
 ## C19.144 — Casos: atualização diária grátis (TikTok e Google) e rede não coletada aparece como ⛔ (2026-10-23) ✅
 
 **Pedido.** O responsável mostrou o caso Ana Clara com "coleta de 20/10" e Instagram, X, Kwai e Facebook com "0 publicações": "parece que essas páginas estão desatualizadas".
