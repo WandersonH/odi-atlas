@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.152 — Debate da Globo: checagens ao vivo no YouTube (2026-10-23) 🔜
+
+**Pedido.** "já está coletando os vídeos? tem alguns canais fazendo checagem" (20h54, antes do início às 21h20).
+**O que mudou** (`data/config/debates.json` → `globo.youtube`):
+- Três consultas novas: "checagem debate Globo", "debate Globo ao vivo checagem Lula Flávio", "Fato ou Fake debate Globo".
+- `desde` recuado de 24/10 00h UTC para 23/10 12h UTC. Uma transmissão ao vivo agendada é publicada antes de começar e ficaria fora do recorte.
+- Links de canais indicados pelo responsável entram em `conhecidos`.
+- Disparos extras do YouTube do debate (`so_globo`) às 00h40 e 01h50 UTC. A cota do dia pode estar esgotada; nesse caso a coleta das 07h15 UTC (C19.151) pega tudo, inclusive as transmissões, que continuam publicadas depois de acabar.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Resultado dos disparos: próxima entrada.
+
 ## C19.151 — Debate da Globo: leitura ao vivo do Trends sem depender do agendamento do GitHub; YouTube só da Globo depois da renovação da cota (2026-10-23) 🔜
 
 **Pergunta.** "a coleta do debate já está rolando?" Conferido às 18h31 (Brasília): sim, mas com falhas. Havia 5 retratos do Trends no dia (`data/trends/agora/retratos_globo/`: 02h44, 02h53, 12h53, 17h54 e 21h19 UTC). O agendamento de 15 em 15 min (`trends-agora.yml`) estava sendo atrasado ou pulado pelo GitHub; a leitura por hora prometida não aconteceu.
