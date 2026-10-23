@@ -10,7 +10,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 **O que mudou.**
 - `debate-ao-vivo.yml`: um job manual que fica rodando até 5h40 e lê o Trends a cada 15 min (`collect_trends_agora.py --manual` + `build_rede_debate.py --debate globo`), gravando a cada leitura. Se a janela do debate (até 25/10, 00h20 UTC) não acabou, dispara a si mesmo de novo. Usa o mesmo grupo de concorrência do `trends-agora.yml`, para não gravarem ao mesmo tempo.
 - YouTube do debate: a cota da API de hoje já foi quase toda usada (comentários diários, leitura completa e debate das 06h37). Por isso o laço dispara `debate-youtube.yml` com o novo `so_globo` (pula a Band) às 07h15 UTC de 24/10, depois da renovação da cota (meia-noite do Pacífico), e de novo às 13h00 e 22h00 UTC. O agendamento de 00h45 de Brasília continua, mas pode bater na cota.
-**Teste.** `python -m unittest discover -s tests -v`: OK; YAML dos dois workflows validado. Execução real: entrada seguinte.
+**Teste.** `python -m unittest discover -s tests -v`: OK; YAML dos dois workflows validado. **Execução real:** run 40027585850 gravou retratos às 21h33 e 21h48 UTC (`retratos_globo/20261023-2133.json` e `-2148.json`; commits 1cc8b15 e 9ce559a), 15 min de intervalo, como previsto.
 
 ## C19.150 — YouTube: carga histórica dos comentários desde a pré-campanha (20/07) (2026-10-23) 🔜
 
