@@ -15,7 +15,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 **Reprocessamento** (local, com o acervo privado atualizado): Lula 2.982 registros (2.436 comentários, 546 respostas); Flávio 2.765 (2.571, 194). Rede de palavras: 149 nós, 687 arestas. Rede de respostas igual à C19.142.
 **Erro meu, corrigido.** Ao copiar as saídas privadas do reprocessamento, sobrescrevi `codificacao/amostra_comentarios_v1.csv` e o arquivo de pré-codificação. É a amostra do YouTube, sorteada uma vez para os codificadores. Restaurei os dois a partir da versão anterior no repositório privado (commit 20627a1); `git diff` contra o estado original dá vazio. O histórico não foi reescrito.
 **Teste.** `python -m unittest discover -s tests -v`: OK. Render local (Playwright): um único bloco de conversa, sem "sem respostas", sem @perfis, sem erro de JS. Os únicos 404 são os arquivos do debate da Globo, que ainda não aconteceu.
-**Pendente.** O sentimento do Instagram ainda conta 4.944 comentários (sem as respostas). Disparado `sentimento-youtube.yml` (modelo local, grátis) para recalcular.
+**Sentimento.** Run 39992528089 de `sentimento-youtube.yml` (grátis): 1.191 classificados neste run; 6.135 de 6.135 no total, agora com as respostas (`data/instagram/comentarios/sentimento.json`, 17h09 UTC).
 
 ## C19.142 — Instagram: resultado da coleta de respostas (2026-10-23) ✅
 
