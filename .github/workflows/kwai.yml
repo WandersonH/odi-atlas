@@ -1,4 +1,4 @@
-name: Kwai — chapas 13 e 22 (Apify, conta secundária, teto de gasto)
+name: Kwai — chapas 13 e 22 (Apify, teto de gasto; diário na conta 1 desde 23/10)
 
 # Ator unfenced-group/kwai-scraper com APIFY_TOKEN_2. Tetos: teste US$ 0,50; diário US$ 0,10; carga histórica US$ 4,50; mensal US$ 5.
 on:
@@ -45,6 +45,7 @@ jobs:
         id: coleta
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ (github.event_name == 'schedule' || (github.event.inputs.teste != 'true' && github.event.inputs.historico != 'true')) && secrets.APIFY_TOKEN || '' }}
           APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
@@ -63,8 +64,11 @@ jobs:
           TESTE: ${{ github.event.inputs.teste }}
           HISTORICO: ${{ github.event.inputs.historico }}
         run: |
-          if [ "$HISTORICO" = "true" ]; then a="--historico"; elif [ "$TESTE" = "true" ]; then a="--teste"; else a=""; fi
+          # diário (agendado ou manual sem opção): conta 1, US$ 0,11/dia (autorização de 23/10/2026); a conta 2 passou a recusar (HTTP 401)
+          if [ "$HISTORICO" = "true" ]; then a="--historico"; elif [ "$TESTE" = "true" ]; then a="--teste"; else a="--conta1"; fi
           python scripts/collect_kwai_apify.py $a > k.txt 2>&1; rc=$?
+          # vídeos novos de @Lulaoficial (o ator acima não lista esta conta): conta 1, US$ 0,04/dia
+          if [ "$a" = "--conta1" ] && [ -n "$ODI_INTERNO_DIR" ]; then python scripts/collect_comentarios_kwai.py --conta1 --videos-lula --diario >> k.txt 2>&1 || rc=1; fi
           while IFS= read -r l; do echo "::notice title=Kwai::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc
       - name: Miniaturas (capas; a URL da CDN expira, por isso logo após a coleta)

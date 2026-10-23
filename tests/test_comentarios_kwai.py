@@ -54,6 +54,37 @@ class TestComentariosKwai(unittest.TestCase):
         self.assertEqual(len(visto), 1)
         self.assertEqual(man2["status"], "ok · nada pendente")
 
+    def test_conta1_lote_teto_e_desde(self):
+        visto = []
+
+        def fake(ator, payload, cap):
+            visto.append((ator, payload, cap))
+            return ({"id": "r", "status": "SUCCEEDED", "usageTotalUsd": 0.5}, [{"commentId": "c9", "content": "x", "timestamp": 1789000000, "photoId": "v1"}])
+        cwd = os.getcwd()
+        with tempfile.TemporaryDirectory() as t, tempfile.TemporaryDirectory() as priv:
+            (Path(t) / "data/config").mkdir(parents=True)
+            (Path(t) / "data/kwai/comentarios").mkdir(parents=True)
+            (Path(t) / "data/config/kwai_comentarios.json").write_text((RAIZ / "data/config/kwai_comentarios.json").read_text(encoding="utf-8"), encoding="utf-8")
+            # gasto anterior de outro lote não conta; do mesmo lote conta
+            (Path(t) / "data/kwai/comentarios/manifesto-a.json").write_text(json.dumps({"custo_usd": 4.9}), encoding="utf-8")
+            (Path(t) / "data/kwai/comentarios/manifesto-b.json").write_text(json.dumps({"custo_usd": 2.0, "lote": "kwai-2310"}), encoding="utf-8")
+            with gzip.open(Path(t) / "data/kwai/videos.csv.gz", "wt", encoding="utf-8") as f:
+                w = csv.DictWriter(f, ["candidate_id", "perfil", "video_id", "url", "publicado_em", "comentarios"], delimiter=";")
+                w.writeheader()
+                w.writerow({"candidate_id": "280002551544", "perfil": "FlavioBolsonaro", "video_id": "v1", "url": "u1", "publicado_em": "2026-09-01T00:00:00Z", "comentarios": "500"})
+                w.writerow({"candidate_id": "280002551544", "perfil": "FlavioBolsonaro", "video_id": "v2", "url": "u2", "publicado_em": "2026-08-01T00:00:00Z", "comentarios": "500"})
+            os.chdir(t)
+            os.environ["ODI_INTERNO_DIR"] = priv
+            try:
+                k.main(["--conta1"], executar=fake)
+                man = json.loads(Path("data/kwai/comentarios/manifesto_latest.json").read_text(encoding="utf-8"))
+            finally:
+                os.chdir(cwd)
+                del os.environ["ODI_INTERNO_DIR"]
+        self.assertEqual((man["lote"], man["conta"], man["gasto_antes_usd"], man["teto_execucao_usd"]), ("kwai-2310", "APIFY_TOKEN", 2.0, 6.0))
+        self.assertEqual([p["videoUrls"] for _, p, _ in visto], [["u1"]])  # vídeo de 01/08 fica fora (desde 16/08)
+        self.assertEqual(visto[0][1]["maxCommentsPerVideo"], 50)
+
 
 if __name__ == "__main__":
     unittest.main()

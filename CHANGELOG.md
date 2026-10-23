@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.119 — Kwai na conta 1: vídeos históricos de @Lulaoficial, comentários desde 16/08 e diário (2026-10-23) 🔜
+
+**Por quê.** Situação em 23/10: o diário do Kwai parou em 18/10 (conta 2 com HTTP 401, `data/kwai/manifesto_latest.json` de 22/10); de @Lulaoficial só havia 50 dos 918 vídeos (desde 02/10), porque o ator dos vídeos não lista essa conta; comentários: 650 (Lula) e 487 (Flávio), de 18/10 (`data/kwai/comentarios/analise.json`). O responsável autorizou (01h04, "faca") a conta 1 com teto de US$ 8,00, uma vez, e US$ 0,15/dia (até US$ 4/mês) para o diário.
+- `collect_comentarios_kwai.py --conta1` (lote `kwai-2310`, `data/config/kwai_comentarios.json` → `conta1`): sem consulta de saldo. O teto é US$ 8 menos o gasto do próprio lote (soma dos manifestos com `lote`). Com `--videos-lula`, até 1.000 vídeos de @Lulaoficial (teto US$ 2,10). Sem essa opção, comentários dos vídeos desde 16/08: cota de 3.000 por candidato, de 5 a 50 por vídeo. Com `--videos-lula --diario`, os vídeos novos de Lula: até 15, US$ 0,04/dia, US$ 1,20/mês.
+- `collect_kwai_apify.py --conta1`: diário na conta 1, US$ 0,11/dia, US$ 2,80/mês, até 20 vídeos por perfil. O gasto do mês é separado do das outras contas.
+- `kwai.yml`: o agendado e o manual sem opção usam a conta 1 e, em seguida, os vídeos novos de Lula. `kwai-comentarios.yml`: modos `conta1-videos-lula` e `conta1-carga`.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Novo `test_conta1_lote_teto_e_desde`: só o gasto do lote conta no teto (US$ 2 gastos → teto US$ 6), vídeos anteriores a 16/08 ficam fora, conta 1.
+**Pendente.** Execuções reais (próxima entrada).
+
 ## C19.118 — Contador de acessos ligado (GoatCounter, conta atlasodiunip) (2026-10-23) ✅
 
 **O que mudou.** O responsável criou a conta (23/10, 00h59: `atlasodiunip.goatcounter.com`). `ODI_GOATCOUNTER = 'atlasodiunip'`: o script `gc.zgo.at/count.js` passa a carregar e cada aba conta como página. O LEIA-ME ganhou a linha "Acessos ao Atlas" (sem cookies, sem dados pessoais).

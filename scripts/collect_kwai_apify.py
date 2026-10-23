@@ -82,17 +82,26 @@ def main(argv=None, executar=None) -> int:
     pasta = root / "data/kwai"
     pasta.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
+    conta1 = "--conta1" in argv and not teste  # diário na conta 1 (autorização de 23/10/2026: cfg["conta1"])
     teto = cfg["teto_historico_usd"] if historico else cfg["teto_teste_usd"] if teste else cfg["teto_diario_usd"]
     mes = agora[:7]
-    ja = round(sum(float(json.loads(f.read_text(encoding="utf-8")).get("custo_usd") or 0) for f in pasta.glob(f"manifesto-{mes}-*.json")), 4)
+    mans_mes = [json.loads(f.read_text(encoding="utf-8")) for f in pasta.glob(f"manifesto-{mes}-*.json")]
+    ja = round(sum(float(m.get("custo_usd") or 0) for m in mans_mes if (m.get("conta") == "APIFY_TOKEN") == conta1), 4)
+    if conta1:
+        C1 = cfg["conta1"]
+        teto = round(min(C1["teto_dia_usd"], C1["teto_mes_usd"] - ja), 4)
+        cfg["teto_mensal_usd"], cfg["max_videos_por_perfil_diario"] = C1["teto_mes_usd"], C1["max_videos_por_perfil"]
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "histórico" if historico else "teste" if teste else "diário",
            "teto_usd": teto, "gasto_mes_antes_usd": ja, "perfis": [], "fora": cfg.get("fora")}
     segredos = cfg.get("segredos") or [cfg.get("segredo", "APIFY_TOKEN_2")]
-    nome_conta, token, saldo = escolher_conta(segredos, teto) if executar is None else ("teste", "x", None)
+    if conta1:  # conta autorizada; sem consulta de saldo
+        nome_conta, token, saldo = "APIFY_TOKEN", os.environ.get("APIFY_TOKEN", "").strip(), None
+    else:
+        nome_conta, token, saldo = escolher_conta(segredos, teto) if executar is None else ("teste", "x", None)
     man["conta"] = nome_conta
     if not token and executar is None:
         man["status"] = f"⛔ nenhuma conta Apify com saldo para o teto (US$ {teto}) entre {', '.join(segredos)}"
-    elif ja + teto > cfg["teto_mensal_usd"] + 1e-9:
+    elif teto < 0.01 or ja + teto > cfg["teto_mensal_usd"] + 1e-9:
         man["status"] = f"⛔ teto mensal de US$ {cfg['teto_mensal_usd']} atingido (já gasto US$ {ja})"
     if "status" not in man and executar is None:
         man["saldo_conta_antes_usd"] = saldo

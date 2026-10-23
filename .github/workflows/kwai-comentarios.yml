@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       modo:
-        description: "teste (2 vídeos × 5) · videos-lula (vídeos de @Lulaoficial) · carga (cota por candidato)"
+        description: "teste · videos-lula · carga · conta1-videos-lula / conta1-carga (conta 1, lote de 23/10, teto US$ 8)"
         type: choice
-        options: [teste, videos-lula, carga, teste-nataniel, carga-nataniel]
+        options: [teste, videos-lula, carga, teste-nataniel, carga-nataniel, conta1-videos-lula, conta1-carga]
         default: teste
 
 concurrency:
@@ -42,6 +42,7 @@ jobs:
       - name: Coletar (Apify, com teto)
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ startsWith(github.event.inputs.modo, 'conta1') && secrets.APIFY_TOKEN || '' }}
           APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
@@ -59,12 +60,12 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event.inputs.modo }}
         run: |
-          case "$MODO" in teste) a="--teste";; videos-lula) a="--videos-lula";; teste-nataniel) a="--teste --nataniel";; carga-nataniel) a="--nataniel";; *) a="";; esac
+          case "$MODO" in teste) a="--teste";; videos-lula) a="--videos-lula";; conta1-videos-lula) a="--conta1 --videos-lula";; conta1-carga) a="--conta1";; teste-nataniel) a="--teste --nataniel";; carga-nataniel) a="--nataniel";; *) a="";; esac
           python scripts/collect_comentarios_kwai.py $a > k.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Kwai comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc
       - name: Vídeos novos no acervo do Kwai — capas, temas e análises
-        if: always() && github.event.inputs.modo == 'videos-lula'
+        if: always() && endsWith(github.event.inputs.modo, 'videos-lula')
         continue-on-error: true
         run: |
           pip install -q pillow==11.3.0
@@ -75,7 +76,7 @@ jobs:
           grep -v "RuntimeWarning\|attraction =" v.txt | while IFS= read -r l; do echo "::notice title=Kwai vídeos::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Análise (mesmas regras do YouTube; só agregados no público)
-        if: always() && steps.interno.outputs.dir != '' && github.event.inputs.modo != 'videos-lula'
+        if: always() && steps.interno.outputs.dir != '' && !endsWith(github.event.inputs.modo, 'videos-lula')
         continue-on-error: true
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}

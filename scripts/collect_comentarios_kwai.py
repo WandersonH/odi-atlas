@@ -129,14 +129,32 @@ def main(argv=None, executar=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/kwai_comentarios.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
+    conta1 = "--conta1" in argv  # conta 1 (APIFY_TOKEN), lote autorizado em 23/10/2026: cfg["conta1"]
+    diario = "--diario" in argv  # com --conta1 --videos-lula: só os vídeos novos de @Lulaoficial, teto do dia
     pub = root / "data/kwai/comentarios"
     pub.mkdir(parents=True, exist_ok=True)
     agora = now_utc()
-    ja = gasto_total(pub)
-    resta = round(cfg["teto_total_usd"] - ja, 4)
-    teto = min(cfg["teto_teste_usd"], resta) if teste else resta
+    if conta1:
+        C1 = cfg["conta1"]
+        mans = [json.loads(f.read_text(encoding="utf-8")) for f in pub.glob("manifesto-*.json")]
+        if diario:
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"] + "-diario" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
+            teto = round(min(C1["diario"]["teto_dia_usd"], C1["diario"]["teto_mes_usd"] - ja), 4)
+            cfg["videos_lula"] = {**cfg["videos_lula"], "max_videos": C1["diario"]["videos_lula_max"], "teto_usd": teto}
+        else:
+            ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"]), 4)
+            teto = round(C1["teto_usd"] - ja, 4)
+            cfg["videos_lula"] = {**cfg["videos_lula"], **C1["videos_lula"]}
+        cfg["desde"], cfg["cota_comentarios_por_candidato"] = C1["desde"], C1["cota_comentarios_por_candidato"]
+        cfg["teto_total_usd"] = C1["teto_usd"]
+    else:
+        ja = gasto_total(pub)
+        resta = round(cfg["teto_total_usd"] - ja, 4)
+        teto = min(cfg["teto_teste_usd"], resta) if teste else resta
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "teste" if teste else "carga",
            "teto_total_usd": cfg["teto_total_usd"], "gasto_antes_usd": ja, "teto_execucao_usd": teto}
+    if conta1:
+        man["lote"] = cfg["conta1"]["lote"] + ("-diario" if diario else "")
 
     def fim(status: str, code: int) -> int:
         man["status"] = status
@@ -153,7 +171,10 @@ def main(argv=None, executar=None) -> int:
     esgotadas |= set(cfg.get("contas_limite_gratis_esgotado", []))
     segredos = [x for x in segredos if x not in esgotadas]
     man["contas_puladas_limite"] = sorted(x for x in esgotadas if x)
-    nome_conta, token, saldo = escolher_conta(segredos, 0.05) if executar is None else ("teste", "x", None)
+    if conta1:  # conta autorizada; sem consulta de saldo
+        nome_conta, token, saldo = "APIFY_TOKEN", os.environ.get("APIFY_TOKEN", "").strip() or ("x" if executar else ""), None
+    else:
+        nome_conta, token, saldo = escolher_conta(segredos, 0.05) if executar is None else ("teste", "x", None)
     man["conta"] = nome_conta
     interno = os.environ.get("ODI_INTERNO_DIR")
     if not token and executar is None:
