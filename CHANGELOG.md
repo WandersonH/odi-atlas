@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.133 — Resultado da sonda do DJEN: a API funciona do Brasil e bloqueia o GitHub (2026-10-23) ⚠️
+
+**Execução 1** (sonda-djen, GitHub Actions, EUA): HTTP 403 do CloudFront ("The request could not be satisfied") nos 5 processos. Bloqueio de origem, não do processo.
+**Execução 2** (navegador do aplicativo, no computador do responsável, Brasil, acesso ao site aprovado pelo responsável):
+- `numeroProcesso=06017758420266000000` (TSE, um dos 5): `{"status":"success","count":0}`. A API responde; esse processo não tem comunicação publicada.
+- `siglaTribunal=TSE`, de 01/10 a 22/10: `count` 5 na 1ª página. Ex.: edital de citação de 09/10/2026 na REPRESENTAÇÃO 0601743-79.2026.6.00.0000 (juiz auxiliar ministro André Mendonça). Cada item traz o texto integral, classe, órgão, data e `link` para o documento no PJe do TSE (`pje.tse.jus.br/pje/Processo/ConsultaDocumento/listView.seam?x=…`).
+**Conclusão.** O DJEN serve para decisões, despachos, intimações e editais, com texto integral, mas só a partir de um endereço no Brasil. A coleta precisa rodar no computador do responsável (ou numa máquina no Brasil), não no GitHub. Os textos trazem dados pessoais (nomes e e-mails de partes), então ficam só no privado.
+
 ## C19.132 — Sonda: o DJEN do CNJ devolve decisões dos processos de IA? (2026-10-23) 🔜
 
 **O que é.** Pedido do responsável (23/10, 11h53: "teste"): `scripts/sonda_djen.py` + `sonda-djen.yml` consultam a API pública do Diário de Justiça Eletrônico Nacional (`comunicaapi.pje.jus.br/api/v1/comunicacao?numeroProcesso=`) para 5 processos do tema "inteligência artificial ou conteúdo sintético" (`data/tse/processual/resumo.json`), primeiro os ligados a chapas presidenciais e com decisão registrada. Respostas brutas só no privado (`sondas/djen/`); no log, só status, quantidade e campos. Grátis. Este ambiente não alcança o domínio (proxy 403), por isso a sonda roda no GitHub Actions.
