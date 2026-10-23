@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.148 — Caso 008: legenda original do reel na página, junto da cópia do vídeo (2026-10-23) ✅
+
+**Pedido.** "conseguiu recuperar a legenda também?". Sim: ela estava na coleta de 22/10 (`apify/instagram-reel-scraper`, run quPezdF2ogfR47Xoa, campo `caption`). Foi para `data/casos/008/midia/copia.json` sem edição, com a fonte e o áudio que a plataforma registra ("Suspense de Expectativa", Geek Soundtracks, da biblioteca do Instagram). A página mostra a legenda em destaque acima do aviso da cópia. Texto do próprio autor público, que já era exibido pelo post incorporado.
+**Teste.** `python -m unittest discover -s tests -v`: OK. `build_caso_busca.py --caso 008` local mantém `copia.legenda`. Render local: legenda completa (3 parágrafos), sem erro de JS.
+
 ## C19.147 — Caso 008: a página mostra a cópia do vídeo no lugar do post apagado (2026-10-23) ✅
 
 **Pedido.** "isso já coloca na página no lugar do que tava lá". O post incorporado do Instagram estava vazio porque o reel saiu do ar.
