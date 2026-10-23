@@ -18,7 +18,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `casos.yml` ganhou agendamento diário (08h17 de Brasília) só com as fontes grátis: TikTok (página pública da hashtag) e Google (Trends e Notícias), modo `carga`, todos os casos ativos. As redes pagas continuam só com autorização.
 - `build_casos.py` marca `coletada` por rede: rede que alguma coleta tentou vale como resultado, inclusive 0; rede sem tentativa aparece na página como "⛔ não coletada".
 - Datas de publicação de outro ano mostram o ano: "27/10/2025 21h", e não "27/10 21h".
-**Teste.** `python -m unittest discover -s tests -v`: OK. `build_casos.py` local com o acervo privado: 005 → TikTok coletada; X, Instagram, Facebook e Kwai não coletadas. Disparada a coleta grátis de todos os casos (resultado na próxima entrada).
+**Teste.** `python -m unittest discover -s tests -v`: OK. `build_casos.py` local com o acervo privado: 005 → TikTok coletada; X, Instagram, Facebook e Kwai não coletadas. Coleta grátis de todos os casos: run 40012811908 (23/10, 16h38 de Brasília). TikTok: 005 Ana Clara de 101 para 182 publicações; 003 Flamengo de 27 para 48; 002 de 58 para 81. ⚠️ No caso 001 o TikTok usa ator Apify por hashtag (contas 4+), que devolveu HTTP 401 sem custo; os números do 001 seguem os de 18/10 até haver conta autorizada.
 
 ## C19.143 — Página de comentários do Instagram corrigida; @perfis fora dos termos publicados (2026-10-23) ✅
 
