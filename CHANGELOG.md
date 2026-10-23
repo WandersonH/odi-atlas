@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.136 — Casos: o resumo passa a mostrar os mesmos números das páginas dos casos (2026-10-23) ✅
+
+**O que estava diferente** (o responsável: "senti diferença entre a página resumo do caso e as infos dos casos"): os cartões do resumo mostravam só a coleta paga das redes de 18–20/10 (ex.: 001 "10.976 publicações") ou "página própria do caso" (006–008). As páginas dos casos mostram a coleta diária grátis (YouTube, notícias, checagens) e as conversas importadas. A faixa do topo dizia "COLETA DE 18/10" sem dizer de qual coleta.
+**Correção.** `build_casos.py` grava em `indice.json` o resumo de `busca.json` (vídeos do YouTube, notícias, checagens, conversas do X/Instagram e data da coleta) e a data da coleta das redes. Cada cartão mostra esses números e "atualizado em". A coleta paga das redes aparece separada, com a própria data. A faixa diz "COLETA DAS REDES DE …".
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local dos 7 cartões (ex.: 006 "YouTube 308 vídeos · X 1.551 posts · 43 notícias · 3 checagens"), sem erro de JavaScript.
+
 ## C19.135 — Páginas de comentários: bloco "Tamanho da amostra"; TikTok: reforço nos vídeos mais comentados (2026-10-23) ✅
 
 **O que mudou.** Pedido do responsável (23/10, 12h33: "queria os big numbers pra entender qual o tamanho da amostra"; "faça" o reforço do TikTok).

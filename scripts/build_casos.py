@@ -285,7 +285,19 @@ def main(argv=None) -> int:
         elif (pasta / "caso.json").exists():
             estado = "coletado"
             n = json.loads((pasta / "caso.json").read_text(encoding="utf-8")).get("publicacoes")
-        indice.append({"id": caso["id"], "titulo": caso["titulo"], "tipo": caso.get("rotulo_tipo"), "descricao": caso.get("descricao"),
+        # 23/10/2026: o cartão do resumo mostra os mesmos números da página do caso (coleta diária grátis em busca.json e
+        # conversas importadas), com a data de cada coleta; a coleta paga das redes (caso.json) aparece com a própria data
+        resumo, bj = None, pasta / "busca.json"
+        if bj.exists():
+            b = json.loads(bj.read_text(encoding="utf-8"))
+            y, c = b.get("youtube") or {}, b.get("comentarios") or {}
+            conv = [{"plataforma": v.get("plataforma"), "comentarios": (v.get("unificacao") or {}).get("comentarios_unicos") or (v.get("unificacao") or {}).get("posts_unicos")}
+                    for v in b.get("conversas") or []]
+            resumo = {"coletado_em_utc": b.get("coletado_em_utc"), "youtube_videos": y.get("videos"), "youtube_visualizacoes": y.get("visualizacoes"),
+                      "youtube_comentarios_lidos": c.get("comentarios"), "noticias": len(b.get("noticias") or []), "checagens": len(b.get("checagens") or []),
+                      "conversas": conv}
+        coleta_redes = json.loads((pasta / "caso.json").read_text(encoding="utf-8")).get("coletado_em") if (pasta / "caso.json").exists() else None
+        indice.append({"id": caso["id"], "titulo": caso["titulo"], "resumo": resumo, "coleta_redes_em": coleta_redes, "tipo": caso.get("rotulo_tipo"), "descricao": caso.get("descricao"),
                        "desde": caso.get("desde"), "janela_indicada": caso.get("janela_indicada"), "redes_previstas": caso.get("redes_previstas"),
                        "estado": estado, "publicacoes": n, "aba": caso.get("aba"), "busca_google": bool(caso.get("busca_google")), "arquivo": f"data/casos/{caso['id']}/caso.json" if estado == "coletado" else None})
     (root / "data/casos").mkdir(parents=True, exist_ok=True)
