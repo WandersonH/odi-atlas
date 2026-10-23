@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.126 — TikTok: perfil ativo do vice de Flávio é @alfredogaspar_ (correção do responsável) (2026-10-23) 🔜
+
+**O que mudou.** O responsável indicou (23/10, 10h51: "o @ está errado") que o perfil do TikTok de Alfredo Gaspar é https://www.tiktok.com/@alfredogaspar_. Os dois endereços declarados ao TSE não servem: tiktok.com/alfredogaspar não tem vídeos públicos; @alfredogasparoficial deu "Unable to extract secondary user ID" nas 3 tentativas (`data/tiktok/manifesto_latest.json`). Por isso ele aparecia como "nunca lido" no TikTok, mas nas redes de menções de Instagram, X e Facebook, que são coletadas por outros perfis.
+`data/config/tiktok_perfis_extra.json` (novo) e `collect_tiktok.py` → `alvos()`: perfis indicados pelo responsável entram na coleta, marcados como "não declarado ao TSE". Os declarados continuam com o status de cada um.
+**Teste.** `python -m unittest discover -s tests -v`: OK. `alvos()` lista 11 perfis, com `alfredogaspar_`. Coleta do TikTok disparada em seguida.
+
 ## C19.125 — Comentários do Instagram: página corrigida; rede de palavras ligada também no Facebook; sentimento do Instagram (2026-10-23) ✅
 
 **O que estava errado** (o responsável apontou, 10h30: "parece não estar 100%"; render local conferido):

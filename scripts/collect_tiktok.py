@@ -74,6 +74,13 @@ def alvos(root: Path) -> list[dict]:
         cid, nome = por_numero[nr]
         out.append({"candidate_id": cid, "candidate_name": nome, "perfil": h,
                     "declarado_por": r.get("NM_URNA_CANDIDATO", ""), "url_tse": r["DS_URL"]})
+    extra = root / "data/config/tiktok_perfis_extra.json"  # correções do responsável (perfil ativo fora do cadastro do TSE)
+    if extra.exists():
+        for e in json.loads(extra.read_text(encoding="utf-8"))["perfis"]:
+            if e["perfil"] not in vistos and e["candidate_id"] in cfg["candidatos"]:
+                vistos.add(e["perfil"])
+                out.append({"candidate_id": e["candidate_id"], "candidate_name": cfg["candidatos"][e["candidate_id"]]["nome"], "perfil": e["perfil"],
+                            "declarado_por": e["declarado_por"], "url_tse": "não declarado ao TSE: " + e["url"], "fonte": e["fonte"]})
     return sorted(out, key=lambda a: (a["candidate_id"], a["perfil"]))
 
 
