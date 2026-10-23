@@ -96,7 +96,7 @@ def main(argv=None, chamar_api=None) -> int:
     est = json.loads(arq_estado.read_text(encoding="utf-8")) if arq_estado.exists() else {"threads": {}, "respostas": {}}
     acum = dest / "comentarios.csv.gz"
     antigos = list(csv.DictReader(gzip.open(acum, "rt", encoding="utf-8"), delimiter=";")) if acum.exists() else []
-    vids = alvos(root, cfg)
+    vids = alvos(root, {**cfg, "desde": cfg.get("completo", {}).get("desde", cfg["desde"])})  # carga histórica: desde a pré-campanha
     cota = Cota(teto)
     novos, lock = [], threading.Lock()
 

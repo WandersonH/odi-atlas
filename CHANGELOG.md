@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.150 — YouTube: carga histórica dos comentários desde a pré-campanha (20/07) (2026-10-23) 🔜
+
+**Pedido.** "não poderíamos fazer uma carga histórica de YouTube?". Opções apresentadas: pré-campanha completa; todos os vídeos dos canais desde a criação (@LulaOficial 2.647 vídeos, @flaviobolsonaro 6.010, por `data/youtube/fichas.json`); comentários de 2026 inteiro. **Escolha do responsável: "Pré-campanha completa".**
+**O que mudou.** A leitura completa (C19.149) passa a ir desde 20/07/2026 (`comentarios_youtube.json` → `completo.desde`), não só desde 16/08. A pré-campanha tem 302 vídeos de Lula (220) e Flávio (82), com 129.646 comentários informados (`videos_latest.csv.gz`). Fila total da leitura completa: 1.461 vídeos e 869.791 comentários informados. Os vídeos mais novos vêm primeiro, então a pré-campanha entra no fim da fila. O método da página foi atualizado. Grátis; mesma cota de 3.500 unidades por dia.
+**Teste.** `python -m unittest discover -s tests -v`: OK. `alvos()` com desde 20/07: 1.461 vídeos.
+**Pendente.** Não disparei hoje, porque a cota do dia já foi usada pela primeira rodada. A cota renova à meia-noite do Pacífico (04h de Brasília). Segue no agendamento de 07h50. Estimativa: 2 a 3 dias para terminar as conversas; as respostas longas vêm depois. Acompanhar em `data/youtube/comentarios/manifesto_completo.json`.
+
 ## C19.149 — YouTube: leitura completa dos comentários em etapas diárias; vídeos que saíram do ar (2026-10-23) 🔜
 
 **Pedidos.** (18h00) "Por que não lemos tudo, já que o YouTube nos dá mais liberdade para extrair?" e (18h01) "dá para identificar vídeos retirados, com uma tag, e se foi decisão do TSE?".

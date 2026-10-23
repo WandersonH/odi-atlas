@@ -170,7 +170,7 @@ def main(argv=None) -> int:
                        "Comentários públicos dos vídeos de TikTok das campanhas (perfis declarados ao TSE e o do vice indicado pelo responsável) desde "
                        "16/08/2026, via Apify (clockworks/tiktok-comments-scraper): cota igual por candidato (3.000), de 5 a 50 por vídeo a partir "
                        "dos vídeos com mais comentários, sem respostas; depois, 30 por vídeo novo a cada dia. Não é o universo de " if plat == "tiktok" else
-                       "Comentários públicos dos vídeos das campanhas desde 20/07/2026, pela API oficial: até 100 conversas por "
+                       "Comentários públicos dos vídeos das campanhas desde 20/07/2026, pela API oficial. Desde 23/10/2026, leitura completa (todas as páginas de cada vídeo e depois todas as respostas), em etapas diárias dentro da cota gratuita; antes disso, só os recortes: até 100 conversas por "
                        "relevância e 100 mais recentes por vídeo, com as respostas que a API devolve junto. Não é o universo de ") +
                       "comentários nem amostra do eleitorado. Pré-codificação por dicionário (livros de códigos de populismo e de "
                       "intolerância/incivilidade): indica candidatos a cada categoria; a validação é humana (kappa). "
