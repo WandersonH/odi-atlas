@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.123 — Trends: o filtro "de hora em hora" pulava as leituras (agendamento atrasado do GitHub) (2026-10-23) ✅
+
+**Erro.** O debate da Globo tinha só 2 leituras (23/10, 02h44 e 02h53 UTC). O agendamento de 15 em 15 min não rodou na madrugada (só uma execução, às 07h57 UTC). A regra "lê só na primeira execução da hora" (minuto < 15) pulou essa execução, porque a das :07 rodou às :57. Fonte: `gh run list` do trends-agora (02h44, 02h53, 07h57) e `data/trends/agora/debate_globo.json` (2 retratos).
+**Correção.** Antes do início do debate, a leitura vale se o último retrato tem 50 min ou mais; o mesmo vale para o "Em alta agora" fora das janelas, pela data de `em_alta.json`. Não depende mais do minuto em que o GitHub dispara.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Leitura manual disparada em seguida.
+
 ## C19.122 — Resultados: busca de IA (US$ 2,51) e carga de comentários do Instagram (US$ 7,56) (2026-10-23) ⚠️
 
 **Busca de IA** (busca-ia, run 39900249317; `data/ia/busca/manifesto_latest.json`, `data/ia/busca.json`): 22 execuções com status SUCCEEDED, US$ 2,5128 de US$ 10.

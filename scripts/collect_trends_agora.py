@@ -246,9 +246,15 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
     if ativo is None:
         # fora da janela de qualquer debate: só o "Em alta agora" permanente da página do Google Trends (pedido de 20/10/2026),
         # uma vez por hora (o agendamento roda de 15 em 15 min por causa das janelas dos debates)
-        if get_batch is None and int(agora[14:16]) >= 15:
-            print("fora da janela dos debates: o 'Em alta agora' é lido só na primeira execução de cada hora")
-            return 0
+        ea = pasta / "em_alta.json"
+        if get_batch is None and "--manual" not in argv and ea.exists():
+            try:
+                t_ult = dt.datetime.strptime(json.loads(ea.read_text(encoding="utf-8")).get("coletado_em_utc", ""), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=dt.timezone.utc)
+                if dt.datetime.now(dt.timezone.utc) - t_ult < dt.timedelta(minutes=50):
+                    print("fora da janela dos debates: o 'Em alta agora' é lido uma vez por hora")
+                    return 0
+            except ValueError:
+                pass
         if root == Path(".") or (root / "data").exists():
             return em_alta(root, agora, get_batch, get_materias)
         print("fora da janela dos debates: nada coletado")
@@ -258,10 +264,16 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
     suf = cfg_deb.get("sufixo", "")
     # até o início do debate, uma leitura por hora (pedido de 23/10/2026, 00h48); do início ao fim da janela, de 15 em 15 min.
     # Execução manual (--manual, workflow_dispatch) lê sempre.
-    if get_batch is None and "--manual" not in argv and agora < DEB["inicio"] and int(agora[14:16]) >= 15:
-        print(f"{DEB['rotulo']}: antes do início, a leitura é de hora em hora (próxima na primeira execução da hora)")
-        return 0
     retr = pasta / f"retratos{suf}"
+    # 23/10: o GitHub atrasa o agendamento (a execução das :07 rodou às :57) e o filtro pelo minuto pulava todas as leituras;
+    # agora a regra é o tempo desde o último retrato: antes do início, lê se o último tem 50 min ou mais
+    if get_batch is None and "--manual" not in argv and agora < DEB["inicio"]:
+        ult = max((f.stem for f in retr.glob("*.json")), default="")
+        if ult:
+            t_ult = dt.datetime.strptime(ult, "%Y%m%d-%H%M").replace(tzinfo=dt.timezone.utc)
+            if dt.datetime.now(dt.timezone.utc) - t_ult < dt.timedelta(minutes=50):
+                print(f"{DEB['rotulo']}: antes do início, uma leitura por hora (última {ult} UTC)")
+                return 0
     retr.mkdir(parents=True, exist_ok=True)
     ret = {"coletado_em_utc": agora, "erros": {}, "listas": {}}
     for h in (4, 24):
