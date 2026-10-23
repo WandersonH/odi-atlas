@@ -4,6 +4,10 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.132 — Sonda: o DJEN do CNJ devolve decisões dos processos de IA? (2026-10-23) 🔜
+
+**O que é.** Pedido do responsável (23/10, 11h53: "teste"): `scripts/sonda_djen.py` + `sonda-djen.yml` consultam a API pública do Diário de Justiça Eletrônico Nacional (`comunicaapi.pje.jus.br/api/v1/comunicacao?numeroProcesso=`) para 5 processos do tema "inteligência artificial ou conteúdo sintético" (`data/tse/processual/resumo.json`), primeiro os ligados a chapas presidenciais e com decisão registrada. Respostas brutas só no privado (`sondas/djen/`); no log, só status, quantidade e campos. Grátis. Este ambiente não alcança o domínio (proxy 403), por isso a sonda roda no GitHub Actions.
+
 ## C19.131 — YouTube das campanhas: 4 leituras por dia em vez de 1 (2026-10-23) ✅
 
 **Por quê.** O responsável perguntou por que o YouTube não estava coletando, sendo grátis. A coleta rodava uma vez por dia (07h20), mas o GitHub tem disparado com cerca de 5 h de atraso: a última leitura foi em 22/10, 12h20, e o filtro "Últimas 24 h" ficava vazio. Cada leitura gasta 157 unidades da cota (de 10.000 por dia), segundo `data/seguidores/youtube_manifesto_latest.json` de 22/10.
