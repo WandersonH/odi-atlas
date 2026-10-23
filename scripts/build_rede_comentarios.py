@@ -24,6 +24,7 @@ import gzip
 import json
 import math
 import random
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -50,7 +51,10 @@ def rede_termos(rows: list[dict], ids: tuple[str, str], excluir: set) -> tuple[n
     docs = [(r["candidate_id"], termos_comentario(bcm.limpo(r["texto"]), excluir)) for r in rows]
     docs = [d for d in docs if len(d[1]) >= 2 and d[0] in ids]
     n = len(docs)
-    par = {"min_comentarios": max(50, n // 500), "max_nos": 150, "min_peso": max(10, n // 4000), "top_arestas": 8}
+    if n >= 10000:  # acervos grandes (YouTube, Facebook): regra original
+        par = {"min_comentarios": max(50, n // 500), "max_nos": 150, "min_peso": max(10, n // 4000), "top_arestas": 8}
+    else:  # acervos pequenos (Instagram, TikTok, Kwai): o piso fixo de 50 deixava a rede com poucas dezenas de palavras (23/10/2026)
+        par = {"min_comentarios": max(10, n // 300), "max_nos": 150, "min_peso": max(3, n // 1500), "top_arestas": 8}
     g = br.montar(docs, ids, min_videos=par["min_comentarios"], max_nos=par["max_nos"], min_peso=par["min_peso"],
                   top_arestas=par["top_arestas"])
     info = br.analisar(g)
@@ -88,20 +92,39 @@ def freeman_in(g: nx.DiGraph) -> float | None:
     return round(sum(max(d) - x for x in d) / ((n - 1) ** 2), 4)
 
 
+RX_MENCAO = re.compile(r"(?<![\w.])@([A-Za-z0-9_](?:[A-Za-z0-9_.]{0,28}[A-Za-z0-9_])?)")
+
+
+def tem_respostas(rows: list[dict]) -> bool:
+    return any(r["tipo"] == "resposta" and r.get("parent_id") for r in rows)
+
+
 def rede_respostas(rows: list[dict]) -> tuple[nx.DiGraph, list]:
+    """Com respostas coletadas: quem responde → autor respondido. Sem respostas (Instagram, TikTok e Facebook foram coletados
+    só com comentários de primeiro nível): quem comenta → conta marcada com @ no comentário (rede de menções, também de
+    conversação em Recuero). A conta marcada é identificada pelo @ (nome de usuário), o autor pelo id do canal ou nome."""
     por_id = {r["comment_id"]: r for r in rows}
     g = nx.DiGraph()
     lado = defaultdict(Counter)
+    usuario = {}
     for r in rows:
-        lado[r["autor_canal"] or r["autor_nome"]][r["candidate_id"]] += 1
-    for r in rows:
-        if r["tipo"] != "resposta" or r["parent_id"] not in por_id:
-            continue
-        a, b = r["autor_canal"] or r["autor_nome"], por_id[r["parent_id"]]["autor_canal"] or por_id[r["parent_id"]]["autor_nome"]
+        k = r["autor_canal"] or r["autor_nome"]
+        lado[k][r["candidate_id"]] += 1
+        if r.get("autor_nome"):
+            usuario[r["autor_nome"].lower().lstrip("@")] = k
+    def ligar(a, b):
         if not a or not b or a == b:
-            continue
+            return
         w = g.get_edge_data(a, b, {}).get("weight", 0)
         g.add_edge(a, b, weight=w + 1)
+    if tem_respostas(rows):
+        for r in rows:
+            if r["tipo"] == "resposta" and r["parent_id"] in por_id:
+                ligar(r["autor_canal"] or r["autor_nome"], por_id[r["parent_id"]]["autor_canal"] or por_id[r["parent_id"]]["autor_nome"])
+    else:
+        for r in rows:
+            for m in {x.lower() for x in RX_MENCAO.findall(r["texto"] or "")}:
+                ligar(r["autor_canal"] or r["autor_nome"], usuario.get(m, "@" + m))
     for v in g:
         g.nodes[v]["lado"] = lado[v]
     comms = nx.community.louvain_communities(g.to_undirected(), weight="weight", seed=SEMENTE)
@@ -198,14 +221,23 @@ def main(argv=None) -> int:
     pos = nx.spring_layout(sub.to_undirected(), seed=SEMENTE, k=1.2 / math.sqrt(max(1, sub.number_of_nodes())), iterations=200)
     xs, ys = [p[0] for p in pos.values()] or [0], [p[1] for p in pos.values()] or [0]
     span = max(max(xs) - min(xs), max(ys) - min(ys)) or 1
-    frac = lambda v: round(tot_l(v) / max(1, tot_l(v) + tot_f(v)), 3)  # noqa: E731
+    # conta marcada que não comentou no acervo: sem lado conhecido, cor neutra (0,5)
+    frac = lambda v: round(tot_l(v) / (tot_l(v) + tot_f(v)), 3) if tot_l(v) + tot_f(v) else 0.5  # noqa: E731
+    por_mencao = not tem_respostas(rows)
     out_r = {"schema_version": 1, "gerado_em_utc": agora, "coletado_em_utc": coletado,
-             "metodo": ("Rede de conversação (Recuero): aresta dirigida de quem responde para o autor do comentário respondido; "
+             "tipo_rede": "mencoes" if por_mencao else "respostas",
+             "metodo": ("Rede de conversação por menções (Recuero): esta plataforma foi coletada só com comentários de primeiro nível "
+                        "(sem respostas), então a aresta dirigida vai de quem comenta para a conta marcada com @ no comentário; "
+                        "peso = nº de comentários com a marcação. Só entram comentários com @. Autores e contas marcadas "
+                        "pseudonimizados (P00001…; tabela só no repositório privado). Comunidades: Louvain (semente 42). "
+                        "Cor: proporção dos comentários da conta feitos em posts de Lula (vermelho) ou de Flávio (verde); "
+                        "marrom (meio-termo) = conta marcada que não comentou no acervo.") if por_mencao else ("Rede de conversação (Recuero): aresta dirigida de quem responde para o autor do comentário respondido; "
                         "peso = nº de respostas. A API devolve até 5 respostas por conversa, então conversas longas aparecem "
                         "incompletas. Autores pseudonimizados (P00001…; tabela de correspondência só no repositório privado). "
                         "Comunidades: Louvain (semente 42). Centralização de Freeman do grau de entrada: 0 = respostas espalhadas, "
                         "1 = todas para um só autor. Cor: proporção dos comentários do autor feitos em vídeos de Lula (vermelho) "
                         "ou de Flávio (verde)."),
+             "comentarios_com_mencao": sum(1 for r in rows if RX_MENCAO.search(r["texto"] or "")) if por_mencao else None,
              "autores": gr.number_of_nodes(), "ligacoes": gr.number_of_edges(),
              "respostas": int(sum(d["weight"] for *_, d in gr.edges(data=True))), "comunidades_total": len(comms_r),
              "centralizacao_freeman_total": freeman_in(gr),

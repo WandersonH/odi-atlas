@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.140 — Comentários: rede de conversa por menções (Instagram, TikTok, Facebook, Kwai) e rede de palavras maior nos acervos pequenos (2026-10-23) ✅
+
+**Por quê.** O responsável: "tá faltando as arestas do Gephi de Instagram". Conferido: `data/instagram/comentarios/rede_respostas_arestas.csv` só tinha o cabeçalho. Os comentários do Instagram foram coletados sem respostas (autorização de 23/10, 01h36), então a rede de conversa ficava vazia, e a página nem tinha esse bloco. O mesmo valia para TikTok, Facebook e Kwai (0 ligações). A rede de palavras do Instagram tinha 26 nós e 75 arestas, porque o piso fixo de 50 comentários por palavra é alto para um acervo de ~5 mil.
+**O que mudou** (`scripts/build_rede_comentarios.py`):
+- Sem respostas no acervo, a rede de conversa passa a ser de **menções**: aresta de quem comenta para a conta marcada com @. Peso = nº de comentários com a marcação. Autores e marcados continuam pseudonimizados (P00001…); a tabela de códigos fica só no privado. Campo `tipo_rede` no JSON. O YouTube, que tem respostas, não muda.
+- Acervo com menos de 10 mil comentários: piso de 10 comentários por palavra (ou n/300) e peso mínimo 3 (ou n/1500). YouTube e Facebook (≥10 mil) mantêm a regra antiga.
+**Página.** Novo bloco "Quem marca quem nos comentários" nas páginas de comentários do Instagram, TikTok e Facebook, com GEXF, nós e arestas. No Kwai, o bloco existente passa a dizer "menções" quando for o caso.
+**Resultado** (gerado localmente com o acervo privado de 23/10; o CI regera nas próximas coletas):
+
+| Rede | Palavras: nós / arestas (antes → agora) | Conversa: contas / ligações / comentários com @ |
+|---|---|---|
+| Instagram | 26 / 75 → 148 / 691 | 177 / 155 / 155 |
+| TikTok | 13 / 17 → 146 / 591 | 41 / 26 / 20 |
+| Kwai | 37 / 134 → 149 / 823 | 54 / 57 / 132 |
+| Facebook | 148 / 983 (igual) | 36 / 21 / 22 |
+
+Saídas privadas (`codigos_autores.csv`, `rede_respostas_identificada.gexf`, `corpus_iramuteq_amostra.txt`) gravadas no repositório privado (commit 1a06df7).
+**Teste.** `python -m unittest discover -s tests -v`: OK, com novo teste da rede de menções (marcado que também comenta liga ao mesmo autor; e-mail não vira menção). Render local (Playwright) das 5 páginas de comentários: as duas redes desenhadas, sem erro de JS.
+**Limite.** A rede de menções é pequena: no Instagram, só 155 de 4.944 comentários marcam alguém. A rede de respostas de verdade exige coletar respostas, o que é pago e precisa de autorização.
+
 ## C19.139 — Saúde da coleta verificável; seguidores do TikTok pela página pública (grátis); X recuperado desde 17/10 (2026-10-23) ⚠️
 
 **Por quê.** O responsável viu no card do TikTok "Coleta automática (TikTok via Apify) · 2026-10-18 · 6.165.685" e perguntou: "como posso acreditar em vc que tudo tá sendo coletado". Ele tinha razão: os seguidores do TikTok não eram lidos desde 18/10 (contas Apify 3+ devolvem HTTP 401 todo dia) e o workflow terminava **verde** (`continue-on-error`). O chip do topo mostrava "Última coleta: <a data mais recente entre todas as fontes>", o que escondia as séries paradas.

@@ -78,3 +78,17 @@ class TestTikTokPagina(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRedeMencoes(unittest.TestCase):
+    def test_sem_respostas_usa_mencoes(self):
+        import build_rede_comentarios as R
+        base = {"parent_id": "", "tipo": "comentario", "video_id": "v", "candidate_id": "280002542548"}
+        rows = [{**base, "comment_id": "1", "autor_canal": "a1", "autor_nome": "ana", "texto": "olha isso @bia e @carlos.x"},
+                {**base, "comment_id": "2", "autor_canal": "b1", "autor_nome": "bia", "texto": "sem marcação"},
+                {**base, "comment_id": "3", "autor_canal": "a1", "autor_nome": "ana", "texto": "de novo @Bia, email x@y.com"}]
+        self.assertFalse(R.tem_respostas(rows))
+        g, _ = R.rede_respostas(rows)
+        self.assertEqual(g["a1"]["b1"]["weight"], 2)  # @bia é comentarista do acervo: liga ao id dela
+        self.assertTrue(g.has_edge("a1", "@carlos.x"))
+        self.assertFalse(any("y.com" in str(v) for v in g.nodes))
