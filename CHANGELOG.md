@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.118 — Contador de acessos ligado (GoatCounter, conta atlasodiunip) (2026-10-23) ✅
+
+**O que mudou.** O responsável criou a conta (23/10, 00h59: `atlasodiunip.goatcounter.com`). `ODI_GOATCOUNTER = 'atlasodiunip'`: o script `gc.zgo.at/count.js` passa a carregar e cada aba conta como página. O LEIA-ME ganhou a linha "Acessos ao Atlas" (sem cookies, sem dados pessoais).
+**Teste.** `python -m unittest discover -s tests -v`: OK. A contagem só pode ser conferida no painel do GoatCounter depois da publicação (este ambiente não acessa gc.zgo.at).
+
 ## C19.117 — Contador de acessos (GoatCounter) preparado, ainda desligado (2026-10-23) 🔜
 
 **O que mudou.** O responsável escolheu o GoatCounter (23/10, 00h55): gratuito, sem cookies, sem dados pessoais. O código entrou na página, mas só liga quando `ODI_GOATCOUNTER` receber o nome da conta, que o responsável cria em goatcounter.com. Cada troca de aba (`setTab`) conta como uma página (`/#<aba>`). Até lá nada é carregado de fora.
