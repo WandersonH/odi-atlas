@@ -1,0 +1,46 @@
+name: Casos — guardar mídia do post no privado (grátis)
+
+# Baixa vídeo, capa e áudio de um post de caso pelos links do CDN já registrados na coleta (sem nova coleta paga)
+# e grava em odi-atlas-interno/casos/<id>/midia/ com sha256. Nada vai para o repositório público.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        default: "008"
+
+permissions:
+  contents: read
+
+jobs:
+  midia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Baixar
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/arquivar_midia_caso.py --caso "${{ github.event.inputs.caso }}" > m.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Mídia do caso::$(echo "$l" | cut -c1-300)"; done < m.txt
+          exit $rc
+      - name: Gravar no privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A casos
+          git diff --cached --quiet || git commit -q -m "Caso ${{ github.event.inputs.caso }}: mídia do post (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1

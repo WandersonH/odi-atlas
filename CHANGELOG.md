@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.146 — Caso 008: guardar no privado a mídia do reel (vídeo, capa, áudio) pelos links já coletados (2026-10-23) 🔜
+
+**Pedido.** "tu não baixou o post das camisetas, agora ele saiu do ar". Correto: a coleta de 22/10 guardou metadados, legenda, números e 2.000 comentários, mas não o arquivo de vídeo. A cópia no arquivo web tinha falhado (HTTP 520).
+**O que já existe no privado** (`casos/008/apify/quPezdF2ogfR47Xoa.json`, coleta de 22/10, 21h52 UTC): legenda; autor @guilhermederrite; publicado em 21/10, 15h44 UTC; 7.063.507 reproduções; 321.475 curtidas; 20.154 comentários; 92.928 compartilhamentos; 16 s de duração. Também os links do CDN do vídeo, da capa e do áudio, assinados até 27/10 (vídeo e capa) e 24/10 (áudio).
+**O que mudou.** `scripts/arquivar_midia_caso.py` + `arquivar-midia-caso.yml`: baixa esses links pelo GitHub, sem nova coleta paga, e grava em `odi-atlas-interno/casos/<id>/midia/` com sha256, tamanho e origem. O CDN não é acessível deste ambiente.
+**Pendente.** Resultado da execução: entrada seguinte.
+
 ## C19.145 — Lista de peças a baixar à mão: processos de IA e deepfake com candidatos à Presidência (2026-10-23) ⚠️
 
 **Pedido.** "rolou de pegar as peças das ações judiciais?" Resposta: não automaticamente. O DJEN não tem publicações desses processos (C19.137), e a consulta pública do PJe exige CAPTCHA, que o Atlas não contorna.
