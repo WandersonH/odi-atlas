@@ -47,8 +47,13 @@ INTOLERANCIA = ["desumanizacao", "odio_genero", "odio_lgbt", "odio_raca_origem",
 INCIVILIDADE = ["incivilidade", "rotulo_pejorativo_politico"]
 
 
+ARROBA = re.compile(r"(?<![\w.])@[A-Za-z0-9_.]{2,30}")
+
+
 def limpo(t: str) -> str:
-    return RISO.sub(" ", bc.URL.sub(" ", t or "")).strip()
+    """Sem links, risadas e @perfis: quem comenta costuma marcar outras pessoas, e o @ não pode virar termo publicado
+    (nuvem, rede de palavras, CHD) — perfil de pessoa comum não aparece no público (23/10/2026)."""
+    return RISO.sub(" ", ARROBA.sub(" ", bc.URL.sub(" ", t or ""))).strip()
 
 
 def chave_texto(t: str) -> str:
@@ -161,7 +166,7 @@ def main(argv=None) -> int:
                        "Não é o universo de " if plat == "facebook" else
                        "Comentários públicos dos posts dos perfis principais de Instagram das campanhas (@lulaoficial e @flaviobolsonaro) desde "
                        "16/08/2026, via Apify (datadoping/instagram-comments-and-replies-scraper): cota igual por candidato (3.000), de 5 a 50 por "
-                       "post a partir dos posts com mais comentários, ordem 'populares' do Instagram, sem respostas. Não é o universo de " if plat == "instagram" else
+                       "post a partir dos posts com mais comentários, ordem 'populares' do Instagram; em 23/10, respostas aos 5 comentários mais populares dos 40 posts com mais respostas (até 6 cada) e as prévias de respostas que vieram na coleta. Não é o universo de " if plat == "instagram" else
                        "Comentários públicos dos vídeos de TikTok das campanhas (perfis declarados ao TSE e o do vice indicado pelo responsável) desde "
                        "16/08/2026, via Apify (clockworks/tiktok-comments-scraper): cota igual por candidato (3.000), de 5 a 50 por vídeo a partir "
                        "dos vídeos com mais comentários, sem respostas; depois, 30 por vídeo novo a cada dia. Não é o universo de " if plat == "tiktok" else

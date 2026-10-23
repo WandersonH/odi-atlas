@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.143 — Página de comentários do Instagram corrigida; @perfis fora dos termos publicados (2026-10-23) ✅
+
+**Pedido.** "arruma comentários do instagram". Problemas encontrados no render da página:
+1. Havia dois blocos de rede de conversa no Instagram, no TikTok e no Facebook: o novo e o antigo "⛔ Não disponível", com `id` repetido. O antigo foi removido nas três páginas.
+2. A introdução e o método diziam "sem respostas", mas o acervo agora tem 1.128 respostas (C19.142). O texto foi atualizado na página e em `build_comentarios.py`.
+3. O contador dizia "vídeos" para posts do Instagram e do Facebook. Agora diz "posts".
+4. A legenda da rede de respostas dizia "Tamanho = vezes em que a conta foi marcada". Agora diz "respostas recebidas". A tabela de comunidades não lista mais códigos com 0.
+5. **Privacidade.** A nuvem "o que a audiência escreve" e a rede de palavras publicavam @perfis marcados por quem comenta, alguns de pessoas comuns. `build_comentarios.limpo()` agora remove @perfis antes de extrair termos (nuvem, rede de palavras, CHD, corpus). Isso vale para todas as plataformas a partir do próximo processamento de cada uma. Instagram reprocessado agora: nenhum dos @perfis vistos antes aparece em `analise.json` nem em `rede_termos.json`.
+**Reprocessamento** (local, com o acervo privado atualizado): Lula 2.982 registros (2.436 comentários, 546 respostas); Flávio 2.765 (2.571, 194). Rede de palavras: 149 nós, 687 arestas. Rede de respostas igual à C19.142.
+**Erro meu, corrigido.** Ao copiar as saídas privadas do reprocessamento, sobrescrevi `codificacao/amostra_comentarios_v1.csv` e o arquivo de pré-codificação. É a amostra do YouTube, sorteada uma vez para os codificadores. Restaurei os dois a partir da versão anterior no repositório privado (commit 20627a1); `git diff` contra o estado original dá vazio. O histórico não foi reescrito.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local (Playwright): um único bloco de conversa, sem "sem respostas", sem @perfis, sem erro de JS. Os únicos 404 são os arquivos do debate da Globo, que ainda não aconteceu.
+**Pendente.** O sentimento do Instagram ainda conta 4.944 comentários (sem as respostas). Disparado `sentimento-youtube.yml` (modelo local, grátis) para recalcular.
+
 ## C19.142 — Instagram: resultado da coleta de respostas (2026-10-23) ✅
 
 **Execução.** Run 39989507153 (`instagram-comentarios.yml`, modo `respostas`, conta 1, lote `ig-resp-2310`). Prévias grátis lidas dos brutos: 385. Coleta paga: 4 execuções Apify (ycA7FEaKyeQrrgLya, vYwl5UGiFNautWYlU, d4v6jQ91U9SOHonDB, WsiyjpBqzFKTDLoaQ), 40 posts, 940 itens, 747 respostas. **Custo: US$ 1,2698 do teto de US$ 2** (sobra US$ 0,73 no lote). Em média vieram menos de 6 respostas por comentário: o ator devolve menos que o pedido.
