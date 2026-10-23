@@ -890,7 +890,7 @@ function odiContarAba(t){try{if(ODI_GOATCOUNTER&&window.goatcounter&&window.goat
 <button class="navbutton" data-tab="electorate" data-group="territorio"><span class="navicon">⌖</span> Eleitorado e território</button>
 <button class="navbutton" data-tab="leiaMe" data-group="metodo"><span class="navicon">ⓘ</span> Método, fontes e universo</button>
 </nav><div class="sidefoot"><span>ESTUDO CONTÍNUO / V15 · MVP</span>PNAD 2025 · Social Blade SET–OUT 2026<br>Dados armazenados neste arquivo.</div><div class="odi-direitos odi-direitos-lateral" role="note" aria-label="Aviso de confidencialidade e direitos autorais"><span class="odi-direitos-selo">Confidencial</span><p>Documento confidencial e de uso restrito. Proibida a reprodução, distribuição ou divulgação, total ou parcial, sem autorização expressa do autor. Todos os direitos reservados <span class="odi-direitos-lei">(Lei nº 9.610/1998)</span>.</p></div></aside>
-<main class="main"><header class="header"><span class="crumb">EDIÇÃO DE PESQUISA  /  COMUNICAÇÃO POLÍTICA  /  2026</span><span class="ordem-flag" title="Lula aparece primeiro por ser o candidato à reeleição (atual presidente). A ordem não indica preferência.">ORDEM: LULA (ATUAL PRESIDENTE, À REELEIÇÃO) · FLÁVIO — NÃO INDICA PREFERÊNCIA</span><div class="actions"><span class="datechip" id="ultimaColeta" title="Data da coleta mais recente entre as fontes automáticas; a data de cada fonte está no LEIA-ME">● Coletas automáticas diárias</span><button class="ghostbutton" id="downloadJson">↓ Base JSON</button><button class="primarybutton" id="printView">↗ Imprimir / PDF</button></div></header>
+<main class="main"><header class="header"><span class="crumb">EDIÇÃO DE PESQUISA  /  COMUNICAÇÃO POLÍTICA  /  2026</span><span class="ordem-flag" title="Lula aparece primeiro por ser o candidato à reeleição (atual presidente). A ordem não indica preferência.">ORDEM: LULA (ATUAL PRESIDENTE, À REELEIÇÃO) · FLÁVIO — NÃO INDICA PREFERÊNCIA</span><div class="actions"><span class="datechip" id="ultimaColeta" title="Quantas séries automáticas têm dado novo dentro do prazo; detalhe por série no LEIA-ME" role="button" tabindex="0" style="cursor:pointer">● Saúde da coleta…</span><button class="ghostbutton" id="downloadJson">↓ Base JSON</button><button class="primarybutton" id="printView">↗ Imprimir / PDF</button></div></header>
 <section class="panel active" id="overview">
  <div class="intro overview-intro atlas-cover">
 <div class="atlas-cover-copy">
@@ -972,6 +972,9 @@ function odiContarAba(t){try{if(ODI_GOATCOUNTER&&window.goatcounter&&window.goat
     <p>O <strong>ATLAS</strong> é um protótipo editorial e exploratório do Observatório de Desinformação e Intolerância Digital (PPGCOM/UNIP). Reúne métricas públicas e estimativas de plataformas, registros eleitorais e estatísticas de acesso digital. Esta edição documenta <strong>o que já está incorporado, de quando são os dados e o que ainda não podemos afirmar</strong>.</p>
   </div>
   <div class="kpigrid" id="readmeKpis" aria-label="Resumo do acervo"></div>
+  <div class="readme-divider" id="saudeColeta"><span>00 / SAÚDE DA COLETA</span><span id="scQuando">VERIFICAÇÃO AUTOMÁTICA</span></div>
+  <p class="muted" style="margin:10px 6px 0;font-size:13px;line-height:1.5">Esta tabela não depende de ninguém dizer que está tudo certo: é gerada por <code>scripts/build_saude_coleta.py</code> a partir dos próprios arquivos publicados (planilhas de seguidores e registros de cada coleta). Conta o tempo desde o último <strong>dado novo</strong>, não desde a última tentativa. Série fora do prazo aparece com ⛔, e o workflow <em>Saúde da coleta</em> fica vermelho no GitHub.</p>
+  <div class="readme-source-table" id="scTabela" role="region" aria-label="Saúde da coleta"><div class="readme-source-row"><strong>…</strong><span>carregando data/saude_coleta.json</span><span></span></div></div>
   <div class="readme-divider"><span>01 / COLEÇÕES E FONTES</span><span>REFERÊNCIA E RASTREABILIDADE</span></div>
   <div class="readme-source-table" role="region" aria-label="Inventário das coleções de dados">
     <div class="readme-source-header"><span>COLEÇÃO</span><span>COBERTURA DOCUMENTADA</span><span>FONTE / ESTADO</span></div>
@@ -5605,7 +5608,7 @@ const br=iso=>{if(/^\d{4}-\d{2}-\d{2}$/.test(iso||''))return iso.slice(8,10)+'/'
 const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 Promise.all(F.map(async([n,u])=>{try{const r=await fetch('./'+u,{cache:'no-store'});if(!r.ok)return [n,u,null,'⛔ arquivo ausente'];const d=await r.json();return [n,u,quando(d),d.status||d.status_coleta||'—'];}catch(e){return [n,u,null,'⛔ não lido'];}})).then(rs=>{
  const tb=document.querySelector('#fontesDatasTab tbody');if(tb)tb.innerHTML=rs.map(([n,u,q,st])=>`<tr><td>${esc(n)}</td><td>${q?esc(br(q)):'—'}</td><td>${esc(String(st).slice(0,120))}</td><td><a href="./${esc(u)}" download>${esc(u.split('/').slice(-2).join('/'))}</a></td></tr>`).join('');
- const ds=rs.map(r=>r[2]).filter(x=>x&&x.length>10).sort();const ch=document.getElementById('ultimaColeta');if(ch&&ds.length)ch.textContent='● Última coleta: '+br(ds[ds.length-1]);});})();
+ const ds=rs.map(r=>r[2]).filter(x=>x&&x.length>10).sort();/* o chip do topo agora mostra a saúde da coleta (data/saude_coleta.json), não só a data mais recente */});})();
 </script>
 <script>
 /* Cobertura por fase em cada página de conteúdo (auditoria de 18/10/2026, item 9): quantos conteúdos a coleta tem
@@ -5619,5 +5622,22 @@ document.querySelectorAll('.cob-fase').forEach(async box=>{const plat=box.datase
  const pd=(x,i)=>dias[i]?(x/dias[i]).toFixed(1).replace('.',','):'—';
  const avisos=[];for(const [c,nome] of [[L,'Lula'],[F,'Flávio Bolsonaro']]){const r=n[c].map((x,i)=>dias[i]?x/dias[i]:null).filter(v=>v!=null);const mx=Math.max(...r),mn=Math.min(...r);if(mx>0&&mn<mx/4)avisos.push(`${nome}: a média de conteúdos por dia varia mais de 4× entre as fases — pode ser limite da coleta (o ator lê os mais recentes primeiro), não só comportamento da campanha.`);}
  box.innerHTML=`<table><thead><tr><th>Cobertura da coleta</th>${FS.map((f,i)=>`<th>${f[1]}</th>`).join('')}</tr></thead><tbody>${[[L,'Lula','#c8102e'],[F,'Flávio Bolsonaro','#1f8a3b']].map(([c,nm,cor])=>`<tr><td style="color:${cor};font-weight:700">${nm}</td>${n[c].map((x,i)=>`<td>${fmt(x)} <small>(${pd(x,i)}/dia)</small></td>`).join('')}</tr>`).join('')}</tbody></table>${avisos.length?`<div class="cob-aviso">⚠️ ${avisos.join(' ')} Compare fases com cautela.</div>`:''}`;});})();
+</script>
+<script>
+/* Saúde da coleta (C19.139): lê data/saude_coleta.json; chip do topo + tabela no LEIA-ME */
+(function(){const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const dh=s=>{if(!s)return'nunca registrado';const d=new Date(s);return d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});};
+const ha=h=>h==null?'':h<1?' (há menos de 1 h)':h<48?` (há ${Math.round(h)} h)`:` (há ${Math.round(h/24)} dias)`;
+fetch('./data/saude_coleta.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(S=>{const ch=document.getElementById('ultimaColeta'),tb=document.getElementById('scTabela');
+if(!S){if(ch)ch.textContent='⛔ saúde da coleta indisponível';if(tb)tb.innerHTML='<div class="readme-source-row"><strong>⛔</strong><span>data/saude_coleta.json não encontrado</span><span></span></div>';return;}
+const n=S.series.length,at=S.atrasadas.length;
+if(ch){ch.textContent=at?`⛔ ${at} de ${n} coletas atrasadas`:`● ${n} de ${n} coletas em dia`;ch.style.color=at?'#9b1c1c':'';ch.style.borderColor=at?'#9b1c1c':'';
+const ir=()=>{if(typeof setTab==='function')setTab('leiaMe');setTimeout(()=>document.getElementById('saudeColeta')?.scrollIntoView({behavior:'smooth'}),60);};ch.onclick=ir;ch.onkeydown=e=>{if(e.key==='Enter')ir();};}
+const q=document.getElementById('scQuando');if(q)q.textContent='VERIFICADO EM '+dh(S.gerado_em_utc).toUpperCase()+' · '+(n-at)+' DE '+n+' EM DIA';
+if(tb){const ord=[...S.series].sort((a,b)=>(a.situacao==='em dia')-(b.situacao==='em dia'));
+tb.innerHTML='<div class="readme-source-header"><span>SÉRIE</span><span>ÚLTIMO DADO NOVO · ÚLTIMA TENTATIVA</span><span>SITUAÇÃO / FONTE</span></div>'+ord.map(x=>{const ok=x.situacao==='em dia';
+const perf=x.perfis_no_arquivo!=null?` · ${x.perfis_lidos_no_ultimo_dia} de ${x.perfis_no_arquivo} perfis com leitura nessa data`:'';
+return `<div class="readme-source-row"><strong>${esc(x.nome)}<small>página: ${esc(x.pagina)}</small></strong><span>Último dado novo: <b>${esc(x.so_data&&x.ultimo_dado?x.ultimo_dado.slice(8,10)+'/'+x.ultimo_dado.slice(5,7):dh(x.ultimo_dado))}</b>${ha(x.horas_desde_ultimo_dado)}${perf}<small>Última tentativa: ${esc(dh(x.ultima_execucao))} · ${esc(x.status_ultima_execucao)}</small></span><span style="color:${ok?'#25613a':'#9b1c1c'};font-weight:700">${ok?'● em dia':'⛔ atrasada'}<small>prazo: ${x.max_horas} h · <a href="./${esc(x.fonte)}" download>${esc(x.fonte.split('/').slice(-2).join('/'))}</a></small></span></div>`;}).join('');}
+}).catch(()=>{});})();
 </script>
 </body></html>

@@ -32,7 +32,7 @@ jobs:
         id: coleta
         continue-on-error: true
         run: python scripts/collect_tiktok.py
-      - name: Seguidores dos perfis declarados (Apify, contas 3 a 7)
+      - name: Seguidores dos perfis declarados (página pública, grátis; Apify contas 3+ só se a página falhar)
         continue-on-error: true
         env:
           APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
@@ -49,7 +49,7 @@ jobs:
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
         run: |
-          python scripts/collect_seguidores_tiktok.py > s.txt 2>&1; rc=$?
+          python scripts/collect_seguidores_tiktok.py --gratis > s.txt 2>&1 || python scripts/collect_seguidores_tiktok.py >> s.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=TikTok seguidores::$(echo "$l" | cut -c1-300)"; done < s.txt
           python scripts/build_variacao_seguidores.py || true
           exit $rc

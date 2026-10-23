@@ -1,0 +1,43 @@
+name: Saúde da coleta (verificação automática)
+
+# Lê os arquivos publicados e marca ⛔ toda série automática sem dado novo dentro do prazo
+# (data/config/saude_coleta.json). Se houver série atrasada, este workflow termina VERMELHO e o GitHub avisa por e-mail.
+# Pedido do responsável (23/10/2026): "como posso acreditar em vc que tudo tá sendo coletado".
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 2,14,20 * * *"   # 23h30, 11h30 e 17h30 em Brasília
+
+concurrency:
+  group: saude-coleta
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  saude:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verificar
+        run: |
+          python scripts/build_saude_coleta.py > s.txt; cat s.txt
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          S = json.load(open("data/saude_coleta.json", encoding="utf-8"))
+          print(f"## Saúde da coleta — {S['em_dia']} de {len(S['series'])} séries em dia\n")
+          print("| Situação | Série | Último dado novo | Horas | Última tentativa |\n|---|---|---|---|---|")
+          for x in S["series"]:
+              print(f"| {x['situacao']} | {x['nome']} | {x['ultimo_dado']} | {x['horas_desde_ultimo_dado']} | {x['status_ultima_execucao'][:80]} |")
+          for a in S["atrasadas"]:
+              print(f"::error title=Coleta atrasada::{a}")
+          PY
+      - name: Commitar
+        run: scripts/commit_push.sh "Saúde da coleta (run ${{ github.run_id }})"
+      - name: Falhar se houver série atrasada
+        run: python scripts/build_saude_coleta.py --falhar > /dev/null
