@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.129 — Página de comentários do TikTok e coletor na conta 1 (2026-10-23) 🔜
+
+**O que mudou.** Pedido do responsável (23/10, 11h40: "não temos a página de comentários do TikTok"; 11h43: "a com diario").
+- `scripts/collect_comentarios_tiktok.py` + `tiktok-comentarios.yml` + `data/config/tiktok_comentarios.json`: ator clockworks/tiktok-comments-scraper, conta 1, todos os perfis do acervo do TikTok (os declarados ao TSE e @alfredogaspar_).
+  - Carga: cota de 3.000 por candidato nos vídeos desde 16/08, de 5 a 50 por vídeo, a partir dos mais comentados, teto de US$ 3,50. Se a 1ª execução não trouxer nenhum comentário reconhecido, as demais não rodam.
+  - Diário às 20h50: vídeos novos, 30 por vídeo, US$ 0,30/dia, US$ 5/mês.
+  - Preço usado na estimativa: US$ 0,50 por mil (Scrape Creators, preço visto em 27/09); o teto corta pelo custo real.
+- `build_comentarios.py`, `build_rede_comentarios.py` e o sentimento aceitam `tiktok`. Página `tkComments` ("TikTok" em Comentários), cópia da do Instagram, com a rede de palavras ligada.
+**Teste.** `python -m unittest discover -s tests -v`: OK (novo `tests/test_comentarios_tiktok.py`: cota, teto, nada de autor no público; parada quando a 1ª execução vem vazia). Render local: página nova com ⛔ até a 1ª coleta; Instagram igual. Sem erro de JavaScript.
+**Pendente.** Carga real (próxima entrada).
+
 ## C19.128 — Busca de IA: rótulo lido em todos os vídeos do TikTok (grátis) (2026-10-23) ✅
 
 **Execução** (busca-ia, etapa `rotulos`, limite 2.300 TikTok, 0 Instagram): 2.206 de 2.212 vídeos lidos; 6 sem dados (removidos ou restritos). Total da busca: 2.606 de 2.612 vídeos do TikTok com a página lida, 534 com rótulo de IA (20,5%) (`data/ia/busca.json`). Por busca: "vídeo feito com IA Lula" 104 de 234; "Lula inteligência artificial vídeo" 97 de 207; "Lula IA" 90 de 227; "Bolsonaro pede voto Flávio IA" 14 de 159; "Vorcaro Flávio Bolsonaro IA" 14 de 221. Custo: zero (nenhuma execução do Apify).

@@ -1,0 +1,22 @@
+{
+ "autorizacao": "Responsável em 23/10/2026, 11h43 ('a com diario'), sobre a proposta de 11h4x: comentários do TikTok das campanhas na conta 1 (APIFY_TOKEN). Carga (opção A): 3.000 comentários por candidato nos vídeos desde 16/08, teto de US$ 3,50, uma vez. Diário: vídeos novos, 30 comentários por vídeo, US$ 0,30/dia e US$ 5/mês.",
+ "segredo": "APIFY_TOKEN",
+ "ator": "clockworks~tiktok-comments-scraper",
+ "preco_comentario_usd": 0.0005,
+ "preco_fonte": "estimativa conservadora: US$ 0,50 por 1.000 comentários (Scrape Creators, 'TikTok comment scrapers', preço visto em 27/09); o custo real de cada execução é o informado pela Apify",
+ "desde": "2026-08-16",
+ "carga": {
+  "lote": "tk-com-2310",
+  "teto_usd": 3.5,
+  "cota_por_candidato": 3000,
+  "min_por_video": 5,
+  "max_por_video": 50,
+  "videos_por_execucao": 40
+ },
+ "diario": {
+  "teto_dia_usd": 0.3,
+  "teto_mes_usd": 5.0,
+  "por_video": 30,
+  "videos_por_execucao": 40
+ }
+}

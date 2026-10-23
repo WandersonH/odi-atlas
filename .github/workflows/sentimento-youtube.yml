@@ -60,6 +60,10 @@ jobs:
             python -u scripts/build_sentimento_comentarios.py --plataforma instagram | tee si.txt
             while IFS= read -r l; do echo "::notice title=Sentimento Instagram::$l"; done < si.txt
           fi
+          if [ -f "$ODI_INTERNO_DIR/tiktok/comentarios/comentarios.csv.gz" ]; then
+            python -u scripts/build_sentimento_comentarios.py --plataforma tiktok | tee st.txt
+            while IFS= read -r l; do echo "::notice title=Sentimento TikTok::$l"; done < st.txt
+          fi
           if [ -f "$ODI_INTERNO_DIR/x/respostas/respostas.csv.gz" ]; then
             python -u scripts/build_sentimento_comentarios.py --plataforma x | tee sx.txt
             while IFS= read -r l; do echo "::notice title=Sentimento X (respostas)::$l"; done < sx.txt

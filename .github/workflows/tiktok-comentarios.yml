@@ -1,0 +1,74 @@
+name: TikTok — comentários das campanhas (Apify, conta 1, tetos autorizados)
+
+# data/config/tiktok_comentarios.json — autorizado em 23/10/2026 (11h43): carga (US$ 3,50, uma vez) e diário (US$ 0,30/dia, US$ 5/mês).
+# Texto e autor dos comentários só no repositório privado; no público, só agregados.
+on:
+  schedule:
+    - cron: "50 23 * * *"   # todo dia, 20h50 em Brasília, depois da coleta de vídeos do TikTok (19h35)
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "carga (uma vez) · diario"
+        type: choice
+        options: [carga, diario]
+        default: carga
+
+concurrency:
+  group: tiktok-comentarios
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  comentarios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q networkx==3.6.1 numpy==2.3.4
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Coletar
+        continue-on-error: true
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          MODO: ${{ github.event_name == 'schedule' && 'diario' || github.event.inputs.modo }}
+        run: |
+          case "$MODO" in diario) a="--diario";; carga) a="--carga";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
+          python scripts/collect_comentarios_tiktok.py $a > k.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=TikTok comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
+          exit $rc
+      - name: Análise (mesmas regras do YouTube; só agregados no público)
+        if: always()
+        continue-on-error: true
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          rc=0
+          { python scripts/build_comentarios.py --plataforma tiktok && python scripts/build_rede_comentarios.py --plataforma tiktok; } > a.txt 2>&1 || rc=$?
+          grep -v "RuntimeWarning\|attraction =" a.txt | while IFS= read -r l; do echo "::notice title=TikTok análise::$(echo "$l" | cut -c1-500)"; done
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "TikTok comentários (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "TikTok comentários (run ${{ github.run_id }})"
