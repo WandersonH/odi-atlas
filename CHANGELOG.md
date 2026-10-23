@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.113 — Casos: aviso de "sem cópia no Internet Archive" explicado na página (2026-10-22) ✅
+
+**O que mudou.** No bloco 04 dos casos, "⛔ sem cópia (falhou: HTTPError 520)" passa a dizer que o pedido de cópia ao Internet Archive falhou, que a coleta diária tenta de novo e que os números e os comentários do post estão no acervo do Atlas. Motivo: pergunta do responsável sobre o caso 008. O Internet Archive devolveu HTTP 520 ao pedido anônimo de cópia do reel (`web.archive.org/save/`, run do casos-busca de 22/10). O 520 é erro do lado do servidor deles, e é comum com o Instagram, que responde ao robô com a tela de login.
+**Teste.** `python -m unittest discover -s tests -v`: OK.
+
 ## C19.112 — Facebook: leitura retroativa feita (páginas principais desde 20/07) (2026-10-22) ✅
 
 **Execução** (workflow facebook-posts, modo `retroativo`, run 39862565729, conta 1, teto US$ 7,50): `lula` 734 posts, o mais antigo de 20/07/2026 14h25 UTC, US$ 3,671; `flaviobolsonaro` 302 posts, o mais antigo de 20/07/2026 00h02 UTC, US$ 1,511. Total US$ 5,182 (fonte: `data/facebook/manifesto_latest.json`). Os dois pararam pelo filtro de data, antes do limite pedido: o período 20/07–22/10 das páginas principais está completo. 631 posts novos; acervo de 1.339 posts.
