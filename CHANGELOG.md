@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.130 — "Últimas 24 h": aviso quando não há publicação no período (2026-10-23) ✅
+
+**O que estava acontecendo** (o responsável: "o filtro de 24 horas está vazio"): o filtro funciona, mas em duas redes não havia nada no período. YouTube: última coleta em 22/10, 12h20 (o agendamento das 07h20 roda com cerca de 5 h de atraso no GitHub), último vídeo de 22/10, 00h09. X: a coleta de posts está parada desde 17/10 (só roda à mão). Contagem em `conteudo.json` às 14h45 UTC de 23/10: TikTok 28, Kwai 9, Facebook 19, Instagram 25, YouTube 0, X 0.
+**Correção.** Ao escolher "Últimas 24 h", a página diz quantas publicações entraram e a hora da última coleta. Quando não há nenhuma, diz isso, mostra a publicação mais recente coletada e avisa se a coleta da rede está parada há mais de 48 h.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local: YouTube e X com o aviso ⛔; TikTok e Instagram com a contagem. Sem erro de JavaScript.
+
 ## C19.129 — Página de comentários do TikTok e coletor na conta 1 (2026-10-23) 🔜
 
 **O que mudou.** Pedido do responsável (23/10, 11h40: "não temos a página de comentários do TikTok"; 11h43: "a com diario").
