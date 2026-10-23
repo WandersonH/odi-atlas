@@ -2,6 +2,8 @@ name: Casos e análises — coleta por hashtag e termo (TikTok e Google grátis;
 
 # Termos, janela e tetos em data/config/casos.json. Publicações de qualquer pessoa: texto e contas só no repositório privado.
 on:
+  schedule:
+    - cron: "17 11 * * *"   # todo dia, 08h17 em Brasília: só TikTok (página pública) e Google, grátis (pedido de 23/10/2026)
   workflow_dispatch:
     inputs:
       modo:
@@ -64,9 +66,9 @@ jobs:
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
           APIFY_TOKEN_FL: ${{ secrets.APIFY_TOKEN_FL }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-          MODO: ${{ github.event.inputs.modo }}
+          MODO: ${{ github.event_name == 'schedule' && 'carga' || github.event.inputs.modo }}
           CASO: ${{ github.event.inputs.caso }}
-          REDES: ${{ github.event.inputs.redes }}
+          REDES: ${{ github.event_name == 'schedule' && 'tiktok google' || github.event.inputs.redes }}
         run: |
           a=""
           if [ "$MODO" = "teste" ]; then a="--teste"; fi

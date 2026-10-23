@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.144 — Casos: atualização diária grátis (TikTok e Google) e rede não coletada aparece como ⛔ (2026-10-23) ✅
+
+**Pedido.** O responsável mostrou o caso Ana Clara com "coleta de 20/10" e Instagram, X, Kwai e Facebook com "0 publicações": "parece que essas páginas estão desatualizadas".
+**Causa.** `casos.yml` só rodava à mão; a última coleta dos casos foi em 18–20/10. O zero das redes pagas não era resultado: essas redes nunca foram coletadas nesses casos.
+**O que mudou.**
+- `casos.yml` ganhou agendamento diário (08h17 de Brasília) só com as fontes grátis: TikTok (página pública da hashtag) e Google (Trends e Notícias), modo `carga`, todos os casos ativos. As redes pagas continuam só com autorização.
+- `build_casos.py` marca `coletada` por rede: rede que alguma coleta tentou vale como resultado, inclusive 0; rede sem tentativa aparece na página como "⛔ não coletada".
+- Datas de publicação de outro ano mostram o ano: "27/10/2025 21h", e não "27/10 21h".
+**Teste.** `python -m unittest discover -s tests -v`: OK. `build_casos.py` local com o acervo privado: 005 → TikTok coletada; X, Instagram, Facebook e Kwai não coletadas. Disparada a coleta grátis de todos os casos (resultado na próxima entrada).
+
 ## C19.143 — Página de comentários do Instagram corrigida; @perfis fora dos termos publicados (2026-10-23) ✅
 
 **Pedido.** "arruma comentários do instagram". Problemas encontrados no render da página:

@@ -232,9 +232,11 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     except ImportError:
         pass
     # rede com algum termo no limite em qualquer coleta: o total é piso e o começo pode estar fora
-    limite = set()
+    limite, coletadas = set(), set()
     for f in pasta.glob("manifesto-*.json"):
         for m in json.loads(f.read_text(encoding="utf-8")).get("redes", []):
+            if m.get("rede") in ROTULO:  # rede que alguma coleta tentou: 0 é resultado; sem tentativa é "não coletada" (23/10/2026)
+                coletadas.add(ROTULO[m["rede"]])
             if any(isinstance(t, dict) and t.get("no_limite") for t in m.get("termos", [])) and m.get("rede") in ROTULO:
                 limite.add(ROTULO[m["rede"]])
     g = json.loads((pasta / "google.json").read_text(encoding="utf-8")) if (pasta / "google.json").exists() else {}
@@ -246,7 +248,7 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     return {"schema_version": 1, "gerado_em_utc": now_utc(), "id": caso["id"], "titulo": caso["titulo"], "tipo": caso.get("rotulo_tipo"),
             "descricao": caso.get("descricao"), "aviso_termos": caso.get("aviso_termos"), "desde": caso["desde"], "termos": termos,
             "coletado_em": man.get("run_started_utc"), "publicacoes": len(itens), "contas": len(ativ),
-            "redes": {ROTULO[k]: {**v, "no_limite": ROTULO[k] in limite} for k, v in redes.items()}, "eixo_horas_brt": eixo,
+            "redes": {ROTULO[k]: {**v, "no_limite": ROTULO[k] in limite, "coletada": ROTULO[k] in coletadas} for k, v in redes.items()}, "eixo_horas_brt": eixo,
             "serie_por_rede": {ROTULO[k]: v for k, v in serie.items()}, "serie_por_termo": serie_termo,
             "decolagem": decolagem,
             "pico": {"hora_brt": eixo[ip] if ip is not None else None, "publicacoes": total[ip] if ip is not None else None,
