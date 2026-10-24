@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "stage": "seguidores-meta",
- "run_started_utc": "2026-10-23T15:00:10Z",
+ "run_started_utc": "2026-10-24T13:59:18Z",
  "config": {
   "nota": "Coleta de seguidores de perfis Instagram e Facebook declarados ao TSE pelas chapas presidenciais. Tetos em dólares (cobrança da Apify). Altere aqui para mudar o orçamento.",
   "cargos": [
@@ -25,34 +25,29 @@
    "ator": "apify~instagram-profile-scraper",
    "perfis_pedidos": 52,
    "teto_usd": 0.25,
-   "run_id": "bheOYrRUdORPeCau4",
-   "status_apify": "SUCCEEDED",
-   "custo_usd": 0.1173,
-   "itens": 52,
-   "perfis_com_numero": 48
+   "erro": "HTTPError: HTTP Error 403: Forbidden"
   },
   {
    "plataforma": "facebook",
    "ator": "apify~facebook-pages-scraper",
    "perfis_pedidos": 27,
    "teto_usd": 0.25,
-   "run_id": "yR4nicus4lHnVMVm8",
-   "status_apify": "SUCCEEDED",
-   "custo_usd": 0.20500000000000002,
-   "itens": 27,
-   "perfis_com_numero": 24
+   "erro": "HTTPError: HTTP Error 403: Forbidden"
   }
  ],
- "blocked": [],
+ "blocked": [
+  "instagram: HTTPError: HTTP Error 403: Forbidden",
+  "facebook: HTTPError: HTTP Error 403: Forbidden"
+ ],
  "warnings": [],
- "gasto_mes_antes_usd": 2.2331,
+ "gasto_mes_antes_usd": 2.5554,
  "alvos": {
   "instagram": 53,
   "facebook": 28
  },
  "alvos_sem_chave": [],
- "linhas_csv": 72,
- "custo_total_usd": 0.3223,
- "run_finished_utc": "2026-10-23T15:01:51Z",
- "status": "ok"
+ "linhas_csv": 0,
+ "custo_total_usd": 0,
+ "run_finished_utc": "2026-10-24T13:59:19Z",
+ "status": "bloqueado"
 }
