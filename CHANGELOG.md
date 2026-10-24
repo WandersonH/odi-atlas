@@ -4,6 +4,10 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.157 — Debate da Globo: coleta do YouTube depois do debate (2026-10-24) ✅
+
+O agendamento de 00h45 de Brasília (`45 3 24 10 *`) não rodou: o GitHub pulou o horário. Coleta manual `so_globo`, run 40061595658 (04h15 UTC; 01h15 de Brasília): 214 vídeos de 136 canais, 55.469.617 visualizações, 1.081.200 curtidas, 50.282 comentários informados, 9.785 lidos em 40 vídeos. Mesmas três buscas com HTTP 429. Próximas coletas: 07h15, 13h00 e 22h00 UTC (laço do C19.151). Evidência: `data/debate/globo/youtube.json`.
+
 ## C19.156 — Saúde da coleta: série só com data não aparece mais "no futuro" (2026-10-23) ✅
 
 `build_saude_coleta.py` lia data sem hora (as planilhas de seguidores) como meio-dia UTC. Às 22h de Brasília, que já é dia 24 em UTC, isso dava "−10,8 h". Agora a data sem hora vale como início do dia em UTC, nunca no futuro. Verificação às 22h09 de Brasília (01h09 UTC): 18 de 18 séries em dia. `python -m unittest discover -s tests -v`: OK.
