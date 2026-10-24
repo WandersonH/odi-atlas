@@ -163,7 +163,8 @@ def curvas() -> dict:
     """Curvas (24 h e 7 dias), consultas relacionadas de cada termo e interesse por UF nas últimas 24 h."""
     t = Trends(pause=3)
     out = {}
-    for janela in ("now 1-d", "now 7-d"):
+    # "now 4-H": resolução de 1 minuto, para medir a variação durante o debate (pedido de 23/10/2026, 21h39)
+    for janela in ("now 4-H", "now 1-d", "now 7-d"):
         ws = {w["id"]: w for w in t.explore(TERMOS_CURVA, janela, "BR")}
         ts_ = t.widget("multiline", ws["TIMESERIES"])
         out[janela] = [{"t": dt.datetime.fromtimestamp(int(p["time"]), dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),

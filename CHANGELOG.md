@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.154 — Debate da Globo: curva do Trends minuto a minuto e variação na última hora (2026-10-23) 🔜
+
+**Pedido** (21h39, início do debate): "nossas coletas de Trends agora precisam medir a variação".
+**O que mudou.** `collect_trends_agora.curvas()` passa a ler também a janela "now 4-H" do Google Trends, que tem resolução de 1 minuto, além de 24 h (8 min) e 7 dias (hora). Uma consulta a mais por leitura. O laço ao vivo (C19.151) faz `git pull` a cada volta e pega a mudança sem ser reiniciado. Página do debate da Globo: chip novo "4 h (minuto a minuto)", padrão quando existe. A nota mostra a variação de cada termo (Lula, Flávio Bolsonaro, debate) entre o último minuto e 60 minutos antes, em pontos do índice 0–100. Enquanto a primeira leitura de 4 h não chega, aparece "entra na próxima leitura".
+**Limite.** O índice é relativo dentro de cada consulta: a variação vale dentro da mesma janela de 4 h, não entre leituras diferentes.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local das páginas dos dois debates sem erro de JS; chips 4 h, 24 h e 7 dias funcionando. Primeira leitura real: próxima entrada.
+
 ## C19.153 — Testes: o teste da rede de menções derrubava workflows sem networkx (2026-10-23) ✅
 
 **Erro meu.** O teste de C19.140 (`TestRedeMencoes`, em `tests/test_saude_coleta.py`) importa `build_rede_comentarios`, que precisa de networkx. Workflows que rodam `scripts/testes_ci.sh` sem instalar networkx passaram a falhar no passo de testes. Visto no `debate-youtube.yml` do debate da Globo (run 40044544742, 00h21 UTC): `ModuleNotFoundError: No module named 'networkx'`. Nada foi coletado nesse run.
