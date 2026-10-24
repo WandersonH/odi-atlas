@@ -13,6 +13,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Links de canais indicados pelo responsável entram em `conhecidos`.
 - Disparos extras do YouTube do debate (`so_globo`) às 00h40 e 01h50 UTC. A cota do dia pode estar esgotada; nesse caso a coleta das 07h15 UTC (C19.151) pega tudo, inclusive as transmissões, que continuam publicadas depois de acabar.
 **Teste.** `python -m unittest discover -s tests -v`: OK. Resultado dos disparos: próxima entrada.
+**Página** (21h08: o responsável viu "⛔ Coleta do YouTube ainda não disponível"). Antes do início não há vídeos, e o aviso não dizia por quê. Agora explica que a coleta começa depois das 21h20 e dá os horários: 21h40; 4h15, 10h e 19h de 24/10 se a cota acabar. O recorte da busca aparece a partir de 9h de 23/10. Render local da página dos dois debates sem erro de JS (o `C` local de `ytDraw` sombreava a configuração; a configuração foi para `CFG`).
 
 ## C19.151 — Debate da Globo: leitura ao vivo do Trends sem depender do agendamento do GitHub; YouTube só da Globo depois da renovação da cota (2026-10-23) 🔜
 

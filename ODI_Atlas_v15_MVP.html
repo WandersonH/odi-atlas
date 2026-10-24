@@ -2813,7 +2813,7 @@ montarCasoBusca('005');montarCasoBusca('002');montarCasoBusca('001');montarCasoB
 </section>
 <script>
 /* Debates do 2º turno (Band 18/10, Globo 23/10): mesmo modelo, prefixo de ids P e arquivos de cada debate em C */
-function montarDebate(PFX,C){
+function montarDebate(PFX,C){const CFG=C;
 const $=id=>document.getElementById(id.replace(/^db/,PFX));if(!document.getElementById(C.sec))return;
 const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const vol=n=>n==null?'—':(n>=1e6?(n/1e6).toLocaleString('pt-BR')+' mi+':n>=1e3?(n/1e3).toLocaleString('pt-BR')+' mil+':n+'+');
@@ -2937,7 +2937,7 @@ function bigDraw(){const el=$('dbBig');if(!el)return;const c=[];const L='Lula',F
  if(CHK)c.push(['Checagens na campanha',nf(CHK.total),`boatos e falas que citam os candidatos, últimos ${CHK.janela_dias} dias (Google Fact Check)`]);
  el.innerHTML=c.length?c.map(([a,b,d])=>`<div><span>${esc(a)}</span><b>${b}</b><small>${esc(d)}</small></div>`).join(''):'<div class="odi-signal">⛔ Números ainda não carregados.</div>';
  $('dbBigNota').innerHTML=`${YT?`YouTube: busca pela API oficial de vídeos publicados desde ${C.yt_desde_br} (Brasília), lida em ${new Date(YT.coletado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}${(YT.numeros_lidos_em||[]).length>1?` (a lista acumula entre coletas; números de cada vídeo na data da última leitura: ${YT.numeros_lidos_em.map(([d,n])=>d.slice(8,10)+'/'+d.slice(5,7)+': '+n.toLocaleString('pt-BR')).join(' · ')})`:''}; visualizações das transmissões incluem quem assistiu ao vivo e depois. `:''}${TR?'Tempo de fala: marcação dos turnos sobre a legenda automática (aproximado; a validar). ':''}Lula aparece primeiro por padrão do Atlas; a ordem não indica preferência.`;}
-function ytDraw(){const el=$('dbYt');if(!el)return;if(!YT){el.innerHTML='<div class="odi-signal">⛔ Coleta do YouTube ainda não disponível.</div>';return;}
+function ytDraw(){const el=$('dbYt');if(!el)return;if(!YT){el.innerHTML=`<div class="odi-signal">⛔ Ainda sem vídeos do debate: a coleta do YouTube só começa depois do início (${CFG.hora}).${CFG.yt_agenda?' '+CFG.yt_agenda:''}</div>`;return;}
  const bars=(o,k)=>{const e=Object.entries(o).sort((a,b)=>b[1][k]-a[1][k]),mx=Math.max(...e.map(x=>x[1][k]))||1;return e.map(([n,r])=>`<div class="db-bar"><span>${esc(n)} <small class="muted">· ${nf(r.videos)} vídeos · ${nf(r.canais)} canais</small></span><em>${mi(r[k])}</em><i style="width:${100*r[k]/mx}%"></i></div>`).join('');};
  let h=`<div class="db-tri">`+
   [['Por formato','por_tipo'],['Por origem','por_grupo'],['Por conteúdo','por_conteudo']].map(([t,k])=>`<div><h3 style="font:700 11px 'Courier New',monospace;text-transform:uppercase">${t} · visualizações</h3>${bars(YT[k],'visualizacoes')}</div>`).join('')+`</div><p class="yt-cloudnote">${esc(YT.nota_classificacao)}</p>`;
@@ -2960,7 +2960,7 @@ fetch(C.trends,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(!d){$
  $('dbStatus').textContent=`${d.retratos.length} leitura(s) desde ${brt(d.retratos[0]&&d.retratos[0].t)} · ${d.termos.length} termos vistos em alta, ${pol} na categoria Política. ${esc(d.debate.rotulo)}.${er.length?' ⚠ última leitura com falha em: '+er.join(', '):''}`;
  $('dbMetodo').innerHTML=`<p>${esc(d.metodo)}</p><p>Janela do acompanhamento: ${brt(d.debate.janela_de)} a ${brt(d.debate.janela_ate)} (Brasília). Termos que entraram e saíram da lista entre duas leituras podem não aparecer. Nomes das categorias conferidos pelos termos de cada uma (ex.: Esportes = jogos de futebol); a página do Trends usa as mesmas categorias.</p>`;draw();}).catch(()=>{$('dbStatus').textContent='⛔ Falha ao ler.';});}
 montarDebate('db',{sec:'debate',trends:'./data/trends/agora/debate.json',youtube:'./data/debate/youtube.json',analise:'./data/debate/analise.json',checagens:'./data/checagens/debate_band.json',suf:'',dir:'./data/debate/',hora:'20h',dia:'2026-10-18',dia_br:'18/10',yt_desde_br:'18/10, 9h',duracao:'das 20h às 22h'});
-montarDebate('dg',{sec:'debateGlobo',trends:'./data/trends/agora/debate_globo.json',youtube:'./data/debate/globo/youtube.json',analise:'./data/debate/globo/analise.json',checagens:'./data/checagens/debate_globo.json',suf:'_globo',dir:'./data/debate/globo/',hora:'21h20',dia:'2026-10-23',dia_br:'23/10',yt_desde_br:'23/10, 21h',duracao:'a partir das 21h20 (horário de término a confirmar)'});
+montarDebate('dg',{sec:'debateGlobo',trends:'./data/trends/agora/debate_globo.json',youtube:'./data/debate/globo/youtube.json',analise:'./data/debate/globo/analise.json',checagens:'./data/checagens/debate_globo.json',suf:'_globo',dir:'./data/debate/globo/',hora:'21h20',dia:'2026-10-23',dia_br:'23/10',yt_desde_br:'23/10, 9h',yt_agenda:'Primeira tentativa às 21h40; se a cota diária da API do YouTube já tiver acabado, a coleta sai às 4h15 de 24/10, depois da renovação, e de novo às 10h e às 19h. Inclui canais de checagem ao vivo.',duracao:'a partir das 21h20 (horário de término a confirmar)'});
 </script>
 
 <footer class="footer"><span>ODI / ATLAS · Comunicação Política Digital 2026 · v15 (MVP)</span><span>Modash · TSE · IBGE/PNAD · Social Blade • capturas documentais, sem atualização automática</span></footer>
