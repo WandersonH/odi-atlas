@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gexf xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
-  <meta lastmodifieddate="2026-10-23">
+  <meta lastmodifieddate="2026-10-24">
     <creator>NetworkX 3.6.1</creator>
   </meta>
   <graph defaultedgetype="directed" mode="static" name="">
@@ -10,6 +10,16 @@
       <attribute id="2" title="marcacoes_recebidas" type="long" />
     </attributes>
     <nodes>
+      <node id="alfredogaspar_" label="@alfredogaspar_">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="10.242640687119286" />
+        <viz:position x="722.5" y="-285.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="campanha" />
+          <attvalue for="1" value="Flávio Bolsonaro" />
+          <attvalue for="2" value="0" />
+        </attvalues>
+      </node>
       <node id="lulaoficial" label="@lulaoficial">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="15.0" />
@@ -23,21 +33,11 @@
       <node id="flaviobolsonaro" label="@flaviobolsonaro">
         <viz:color r="31" g="138" b="59" a="1.0" />
         <viz:size value="10.242640687119286" />
-        <viz:position x="847.0" y="-285.7" z="0.0" />
+        <viz:position x="847.0" y="-534.3" z="0.0" />
         <attvalues>
           <attvalue for="0" value="campanha" />
           <attvalue for="1" value="Flávio Bolsonaro" />
           <attvalue for="2" value="1" />
-        </attvalues>
-      </node>
-      <node id="alfredogaspar_" label="@alfredogaspar_">
-        <viz:color r="31" g="138" b="59" a="1.0" />
-        <viz:size value="10.242640687119286" />
-        <viz:position x="722.5" y="-534.3" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="campanha" />
-          <attvalue for="1" value="Flávio Bolsonaro" />
-          <attvalue for="2" value="0" />
         </attvalues>
       </node>
       <node id="alckmingeraldo" label="@alckmingeraldo">
@@ -53,7 +53,7 @@
       <node id="alfredogaspar" label="@alfredogaspar">
         <viz:color r="31" g="138" b="59" a="1.0" />
         <viz:size value="9.0" />
-        <viz:position x="609.5" y="-760.0" z="0.0" />
+        <viz:position x="609.5" y="-60.0" z="0.0" />
         <attvalues>
           <attvalue for="0" value="marcada" />
           <attvalue for="1" value="" />
@@ -113,7 +113,7 @@
       <node id="bolsonaromessiasjair" label="@bolsonaromessiasjair">
         <viz:color r="31" g="138" b="59" a="1.0" />
         <viz:size value="9.0" />
-        <viz:position x="960.0" y="-60.0" z="0.0" />
+        <viz:position x="960.0" y="-760.0" z="0.0" />
         <attvalues>
           <attvalue for="0" value="marcada" />
           <attvalue for="1" value="" />
@@ -122,13 +122,13 @@
       </node>
     </nodes>
     <edges>
-      <edge source="lulaoficial" target="ricardostuckert" id="0" weight="4" />
-      <edge source="lulaoficial" target="richarlison" id="1" weight="1" />
-      <edge source="lulaoficial" target="andrejanones" id="2" weight="1" />
-      <edge source="lulaoficial" target="janjalulaoficial" id="3" weight="1" />
-      <edge source="flaviobolsonaro" target="bolsonaromessiasjair" id="4" weight="1" />
-      <edge source="alfredogaspar_" target="flaviobolsonaro" id="5" weight="1" />
-      <edge source="alfredogaspar_" target="alfredogaspar" id="6" weight="1" />
+      <edge source="alfredogaspar_" target="flaviobolsonaro" id="0" weight="1" />
+      <edge source="alfredogaspar_" target="alfredogaspar" id="1" weight="1" />
+      <edge source="lulaoficial" target="ricardostuckert" id="2" weight="4" />
+      <edge source="lulaoficial" target="richarlison" id="3" weight="1" />
+      <edge source="lulaoficial" target="andrejanones" id="4" weight="1" />
+      <edge source="lulaoficial" target="janjalulaoficial" id="5" weight="1" />
+      <edge source="flaviobolsonaro" target="bolsonaromessiasjair" id="6" weight="1" />
       <edge source="alckmingeraldo" target="lulaoficial" id="7" weight="2" />
       <edge source="alckmingeraldo" target="joseanibal45" id="8" weight="1" />
     </edges>
