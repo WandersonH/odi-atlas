@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.155 — Debate da Globo: gráfico de busca do período do debate, numa escala única (2026-10-23) 🔜
+
+**Pedido** (21h43): "vamos armazenar posteriormente em um gráfico de busca do período do debate".
+**Por quê uma consulta única.** As leituras de 4 h (C19.154) têm cada uma sua própria escala 0–100, então juntá-las distorceria a curva. O gráfico do período é **uma** consulta do Google Trends para a janela inteira, de 1 h antes a 4 h depois do início (23h e 04h UTC de 23–24/10), com os três termos na mesma escala.
+**O que mudou.** `collect_trends_agora.curva_periodo()` roda dentro do laço ao vivo (C19.151). É feita uma vez 4h20 depois do início (versão "preliminar") e relida 12 h depois do início (versão "final"; o Trends ainda ajusta as horas recentes). Fica em `data/trends/agora/periodo_debate_globo.json`, com janela, horário da leitura e versão, e entra em `debate_globo.json` → `curvas.periodo`. Página: chip "Período do debate" no gráfico de busca; enquanto não existe, o aviso diz quando sai.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local: chip novo com o aviso, as outras janelas continuam, sem erro de JS. Primeira leitura real: por volta de 04h40 UTC de 24/10 (01h40 de Brasília).
+
 ## C19.154 — Debate da Globo: curva do Trends minuto a minuto e variação na última hora (2026-10-23) 🔜
 
 **Pedido** (21h39, início do debate): "nossas coletas de Trends agora precisam medir a variação".

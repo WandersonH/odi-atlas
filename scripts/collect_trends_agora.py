@@ -197,6 +197,18 @@ def curvas() -> dict:
     return out
 
 
+def curva_periodo(inicio: str, t=None) -> tuple[str, list[dict]]:
+    """Uma única consulta do Trends cobrindo o debate inteiro (1 h antes a 4 h depois do início), na mesma escala 0–100:
+    é o gráfico de busca do período do debate (pedido de 23/10/2026, 21h43). Janela em horas UTC."""
+    t = t or Trends(pause=3)
+    i = dt.datetime.fromisoformat(inicio.replace("Z", "+00:00"))
+    tf = f"{(i - dt.timedelta(hours=1)):%Y-%m-%dT%H} {(i + dt.timedelta(hours=4)):%Y-%m-%dT%H}"
+    ws = {w["id"]: w for w in t.explore(TERMOS_CURVA, tf, "BR")}
+    ts_ = t.widget("multiline", ws["TIMESERIES"])
+    return tf, [{"t": dt.datetime.fromtimestamp(int(p["time"]), dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                 "v": dict(zip(TERMOS_CURVA, p.get("value") or []))} for p in ts_["default"]["timelineData"]]
+
+
 def em_alta(root: Path, agora: str, get_batch=None, get_materias=None) -> int:
     """"Em alta agora" (Brasil, últimas 4 h e 24 h): retrato atual em data/trends/agora/em_alta.json e histórico de cada
     leitura em data/trends/agora/em_alta_historico.csv (uma linha por termo e leitura). Matérias do topo do Google Notícias
@@ -379,6 +391,26 @@ def main(argv=None, get_batch=None, get_rss=None, get_curvas=None, get_materias=
     if ult_uf:
         por_uf = {uf: [{"termo": x["termo"], "volume": x["volume"], "inicio": x["inicio"], "ativo": x["ativo"], "politica": POLITICA in x["categorias"]}
                        for x in l] for uf, l in ult_uf.items()}
+    # gráfico de busca do período do debate: lido depois do fim (4h20 após o início) e relido 12 h depois, versão final
+    arq_per = pasta / f"periodo_debate{suf}.json"
+    if DEB.get("inicio") and get_batch is None:
+        ini = dt.datetime.fromisoformat(DEB["inicio"].replace("Z", "+00:00"))
+        ag = dt.datetime.now(dt.timezone.utc)
+        velho = json.loads(arq_per.read_text(encoding="utf-8")) if arq_per.exists() else None
+        if ag >= ini + dt.timedelta(hours=4, minutes=20) and (velho is None or (velho.get("versao") == "preliminar" and ag >= ini + dt.timedelta(hours=12))):
+            try:
+                tf, pts = curva_periodo(DEB["inicio"])
+                arq_per.write_text(json.dumps({"debate": chave, "janela_trends_utc": tf, "lido_em_utc": agora, "termos": TERMOS_CURVA,
+                                               "versao": "final" if ag >= ini + dt.timedelta(hours=12) else "preliminar", "pontos": pts,
+                                               "metodo": "Uma consulta do Google Trends para a janela inteira (1 h antes a 4 h depois do início), "
+                                                         "Brasil, índice 0–100 relativo ao pico dos três termos nessa janela."},
+                                              ensure_ascii=False), encoding="utf-8")
+                print(f"período do debate: {len(pts)} pontos ({tf})")
+            except Exception as e:  # noqa: BLE001
+                print(f"período do debate: ⛔ {type(e).__name__}: {str(e)[:150]}")
+    if arq_per.exists() and ultima_curva is not None:
+        per = json.loads(arq_per.read_text(encoding="utf-8"))
+        ultima_curva = {**ultima_curva, "periodo": per["pontos"], "periodo_meta": {k: per.get(k) for k in ("janela_trends_utc", "lido_em_utc", "versao")}}
     out = {"schema_version": 1, "gerado_em_utc": agora, "debate": {**DEB, "id": chave}, "categorias": CATEGORIAS, "politica_id": POLITICA,
            "retratos": retratos, "ultimo_retrato": {"t": agora, "erros": ret["erros"],
                                                        "lista_4h": [x["termo"] for x in ret["listas"].get("4h", [])][:60]},
