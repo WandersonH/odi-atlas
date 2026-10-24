@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.153 — Testes: o teste da rede de menções derrubava workflows sem networkx (2026-10-23) ✅
+
+**Erro meu.** O teste de C19.140 (`TestRedeMencoes`, em `tests/test_saude_coleta.py`) importa `build_rede_comentarios`, que precisa de networkx. Workflows que rodam `scripts/testes_ci.sh` sem instalar networkx passaram a falhar no passo de testes. Visto no `debate-youtube.yml` do debate da Globo (run 40044544742, 00h21 UTC): `ModuleNotFoundError: No module named 'networkx'`. Nada foi coletado nesse run.
+**Correção.** O teste é pulado quando networkx não está instalado, como os outros testes que dependem dele. Conferido com `python -m unittest discover -s tests` simulando a falta de networkx e numpy: OK (16 pulados), 0 erros. Normal: OK.
+**Próximo passo.** Novo disparo do YouTube do debate (`so_globo`). Outros workflows que falharam no passo de testes desde C19.140 estão listados na entrada seguinte.
+
 ## C19.152 — Debate da Globo: checagens ao vivo no YouTube (2026-10-23) 🔜
 
 **Pedido.** "já está coletando os vídeos? tem alguns canais fazendo checagem" (20h54, antes do início às 21h20).

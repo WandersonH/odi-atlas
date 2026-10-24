@@ -82,6 +82,10 @@ if __name__ == "__main__":
 
 class TestRedeMencoes(unittest.TestCase):
     def test_sem_respostas_usa_mencoes(self):
+        try:
+            import networkx  # noqa: F401  — alguns workflows rodam os testes sem networkx
+        except ImportError:
+            self.skipTest("networkx ausente")
         import build_rede_comentarios as R
         base = {"parent_id": "", "tipo": "comentario", "video_id": "v", "candidate_id": "280002542548"}
         rows = [{**base, "comment_id": "1", "autor_canal": "a1", "autor_nome": "ana", "texto": "olha isso @bia e @carlos.x"},
