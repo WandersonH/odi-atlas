@@ -11,12 +11,12 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 **O que mudou.** `collect_trends_agora.curva_periodo()` roda dentro do laço ao vivo (C19.151). É feita uma vez 4h20 depois do início (versão "preliminar") e relida 12 h depois do início (versão "final"; o Trends ainda ajusta as horas recentes). Fica em `data/trends/agora/periodo_debate_globo.json`, com janela, horário da leitura e versão, e entra em `debate_globo.json` → `curvas.periodo`. Página: chip "Período do debate" no gráfico de busca; enquanto não existe, o aviso diz quando sai.
 **Teste.** `python -m unittest discover -s tests -v`: OK. Render local: chip novo com o aviso, as outras janelas continuam, sem erro de JS. Primeira leitura real: por volta de 04h40 UTC de 24/10 (01h40 de Brasília).
 
-## C19.154 — Debate da Globo: curva do Trends minuto a minuto e variação na última hora (2026-10-23) 🔜
+## C19.154 — Debate da Globo: curva do Trends minuto a minuto e variação na última hora (2026-10-23) ✅
 
 **Pedido** (21h39, início do debate): "nossas coletas de Trends agora precisam medir a variação".
 **O que mudou.** `collect_trends_agora.curvas()` passa a ler também a janela "now 4-H" do Google Trends, que tem resolução de 1 minuto, além de 24 h (8 min) e 7 dias (hora). Uma consulta a mais por leitura. O laço ao vivo (C19.151) faz `git pull` a cada volta e pega a mudança sem ser reiniciado. Página do debate da Globo: chip novo "4 h (minuto a minuto)", padrão quando existe. A nota mostra a variação de cada termo (Lula, Flávio Bolsonaro, debate) entre o último minuto e 60 minutos antes, em pontos do índice 0–100. Enquanto a primeira leitura de 4 h não chega, aparece "entra na próxima leitura".
 **Limite.** O índice é relativo dentro de cada consulta: a variação vale dentro da mesma janela de 4 h, não entre leituras diferentes.
-**Teste.** `python -m unittest discover -s tests -v`: OK. Render local das páginas dos dois debates sem erro de JS; chips 4 h, 24 h e 7 dias funcionando. Primeira leitura real: próxima entrada.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local das páginas dos dois debates sem erro de JS; chips 4 h, 24 h e 7 dias funcionando. **Primeira leitura real:** 00h49 UTC (commit 6146b8e), 238 pontos de 1 minuto. Entre 23h45 e 00h45 UTC: "debate" de 31 para 71, Lula de 8 para 12, Flávio Bolsonaro de 2 para 3 (`data/trends/agora/debate_globo.json` → `curvas.now 4-H`).
 
 ## C19.153 — Testes: o teste da rede de menções derrubava workflows sem networkx (2026-10-23) ✅
 
