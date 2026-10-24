@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.158 — Debate da Globo: checagens das agências sobre o debate de 23/10 (2026-10-24) ⚠️
+
+**Pedido** (01h23): "acho que a checagem tinha que ser focada em hoje". O bloco de checagens da página do debate da Globo não tinha dados (`data/checagens/debate_globo.json` não existia). A busca automática de checagens (`collect_checagens.py`, ClaimReview) cobre o período todo e estava presa ao debate da Band.
+**O que foi feito.** Mesmo método do debate da Band (C19.x de 19/10): leitura das páginas de checagem do debate de 23/10, com tema resumido pelo Atlas e rótulo da agência, gravada em `data/checagens/debate_globo.json`.
+- **Agência Lupa**, "Ao vivo: checagem do último debate…", atualizada em 24/10, 01h01 de Brasília: 34 falas. Lula 14 (verdadeiro 7, falso 2, falta contexto 2, subestimado 2, exagerado 1). Flávio 20 (falta contexto 6, falso 5, exagerado 4, verdadeiro 4, insustentável 1). A soma confere com a lista.
+- **Aos Fatos**, "Checamos Flávio Bolsonaro e Lula no debate da Globo", publicada em 23/10, 21h18, ainda "em atualização": 14 falas (Flávio 8, Lula 6). Só 5 têm palavra de veredito explícita; as outras 9 ficam como "Sem selo explícito", porque o Atlas não atribui rótulo.
+- **Não incluídos** (listados na página como ⛔): g1 Fato ou Fake, porque só achei reprodução parcial (Sem Pauta, 2 falas); Estadão Verifica; UOL Confere; a rede de entidades com checagem ao vivo no YouTube (Fenaj, RNCD, Intercom, SBPJor, AletheiaFact).
+- Página: cor cinza para "Sem selo explícito" (só aparece quando existe), horário de atualização de cada agência, observação e lista de pendentes.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local das páginas dos dois debates: Globo com Lupa e Aos Fatos; Band igual a antes; sem erro de JS.
+**Pendente.** Reler as páginas de manhã (as agências seguem atualizando) e incluir Fato ou Fake e Estadão Verifica quando as páginas forem localizadas.
+
 ## C19.157 — Debate da Globo: coleta do YouTube depois do debate (2026-10-24) ✅
 
 O agendamento de 00h45 de Brasília (`45 3 24 10 *`) não rodou: o GitHub pulou o horário. Coleta manual `so_globo`, run 40061595658 (04h15 UTC; 01h15 de Brasília): 214 vídeos de 136 canais, 55.469.617 visualizações, 1.081.200 curtidas, 50.282 comentários informados, 9.785 lidos em 40 vídeos. Mesmas três buscas com HTTP 429. Próximas coletas: 07h15, 13h00 e 22h00 UTC (laço do C19.151). Evidência: `data/debate/globo/youtube.json`.
