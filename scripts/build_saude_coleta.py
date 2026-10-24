@@ -24,7 +24,7 @@ def instante(s: str | None) -> dt.datetime | None:
     s = str(s).strip()
     try:
         if len(s) == 10:
-            return dt.datetime.fromisoformat(s).replace(hour=12, tzinfo=dt.timezone.utc)  # só a data: meio-dia UTC
+            return dt.datetime.fromisoformat(s).replace(tzinfo=dt.timezone.utc)  # só a data: início do dia (UTC), nunca no futuro
         return dt.datetime.fromisoformat(s.replace("Z", "+00:00")).astimezone(dt.timezone.utc)
     except ValueError:
         return None

@@ -4,6 +4,10 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.156 — Saúde da coleta: série só com data não aparece mais "no futuro" (2026-10-23) ✅
+
+`build_saude_coleta.py` lia data sem hora (as planilhas de seguidores) como meio-dia UTC. Às 22h de Brasília, que já é dia 24 em UTC, isso dava "−10,8 h". Agora a data sem hora vale como início do dia em UTC, nunca no futuro. Verificação às 22h09 de Brasília (01h09 UTC): 18 de 18 séries em dia. `python -m unittest discover -s tests -v`: OK.
+
 ## C19.155 — Debate da Globo: gráfico de busca do período do debate, numa escala única (2026-10-23) 🔜
 
 **Pedido** (21h43): "vamos armazenar posteriormente em um gráfico de busca do período do debate".
