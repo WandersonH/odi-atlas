@@ -10,7 +10,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 **O que mudou** (`data/config/debates.json` → `globo.youtube`):
 - Três consultas novas: "checagem debate Globo", "debate Globo ao vivo checagem Lula Flávio", "Fato ou Fake debate Globo".
 - `desde` recuado de 24/10 00h UTC para 23/10 12h UTC. Uma transmissão ao vivo agendada é publicada antes de começar e ficaria fora do recorte.
-- Links de canais indicados pelo responsável entram em `conhecidos`.
+- Links de canais indicados pelo responsável entram em `conhecidos`. Em 21h10 entraram AnfhTUDyI3o e K8uw2y0W_h8 (transmissões de checagem, entre elas a do ICL).
 - Disparos extras do YouTube do debate (`so_globo`) às 00h40 e 01h50 UTC. A cota do dia pode estar esgotada; nesse caso a coleta das 07h15 UTC (C19.151) pega tudo, inclusive as transmissões, que continuam publicadas depois de acabar.
 **Teste.** `python -m unittest discover -s tests -v`: OK. Resultado dos disparos: próxima entrada.
 **Página** (21h08: o responsável viu "⛔ Coleta do YouTube ainda não disponível"). Antes do início não há vídeos, e o aviso não dizia por quê. Agora explica que a coleta começa depois das 21h20 e dá os horários: 21h40; 4h15, 10h e 19h de 24/10 se a cota acabar. O recorte da busca aparece a partir de 9h de 23/10. Render local da página dos dois debates sem erro de JS (o `C` local de `ytDraw` sombreava a configuração; a configuração foi para `CFG`).
