@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-10-23T17:31:04Z",
+ "coletado_em_utc": "2026-10-24T16:17:39Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -9,9 +9,9 @@
    "candidato": "Lula",
    "termo": "Lula",
    "paginas_api": null,
-   "lidos_nesta_execucao": 900,
+   "lidos_nesta_execucao": 0,
    "limite_da_coleta": 900,
-   "no_limite": true,
+   "no_limite": false,
    "anuncios": 2507,
    "paginas": 532,
    "gasto": {
@@ -549,9 +549,9 @@
    "candidato": "Flávio Bolsonaro",
    "termo": "Flávio Bolsonaro",
    "paginas_api": null,
-   "lidos_nesta_execucao": 900,
+   "lidos_nesta_execucao": 0,
    "limite_da_coleta": 900,
-   "no_limite": true,
+   "no_limite": false,
    "anuncios": 2776,
    "paginas": 446,
    "gasto": {
@@ -1084,27 +1084,15 @@
    ]
   }
  },
- "erros": {},
+ "erros": {
+  "lula": "HTTPError 403",
+  "flavio": "HTTPError 403"
+ },
  "modo": "diário",
  "teto_usd": 0.3,
- "gasto_mes_antes_usd": 1.7461,
- "runs_apify": [
-  {
-   "consulta": "lula",
-   "id": "Ed8vC6QM0DwaGaJKd",
-   "status": "ABORTED",
-   "custo_usd": 0.1269,
-   "itens": 900
-  },
-  {
-   "consulta": "flavio",
-   "id": "RAZ4fmzz4WjwB2s5H",
-   "status": "ABORTED",
-   "custo_usd": 0.123,
-   "itens": 900
-  }
- ],
- "janela_desta_execucao": "2026-10-22",
- "status": "ok",
- "custo_usd": 0.2499
+ "gasto_mes_antes_usd": 1.996,
+ "runs_apify": [],
+ "janela_desta_execucao": "2026-10-23",
+ "status": "⚠️ parcial",
+ "custo_usd": 0.0
 }
