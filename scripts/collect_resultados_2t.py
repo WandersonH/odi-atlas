@@ -136,6 +136,10 @@ def main(argv=None) -> int:
                 print(f"sonda {nome}: 200 · {len(raw)} bytes · chaves {sorted(dd.keys())[:25]} · {json.dumps(dd, ensure_ascii=False)[:500]}")
             except Exception as e:  # noqa: BLE001
                 print(f"sonda {nome}: {type(e).__name__} {getattr(e, 'code', '')}")
+        ab = get(b + "sp-e006258-ab.json")
+        x = ab["abr"][0]
+        print("sonda ab[0] chaves", sorted(x.keys()), "·", json.dumps({k: v for k, v in x.items() if k not in ("s", "e")}, ensure_ascii=False)[:1500])
+        print("sonda ab tipos", sorted({a.get("tpabr") for a in ab["abr"]}), "n", len(ab["abr"]))
         cm = get(f"{BASE}/{pleito}/{ele}/config/mun-e{int(ele):06d}-cm.json")
         print("sonda cm: abr", len(cm.get("abr", [])), "· 1º mun", json.dumps(cm["abr"][0]["mu"][0], ensure_ascii=False))
         return 0
