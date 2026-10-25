@@ -16,14 +16,31 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Página: com sentimento parcial, a fase sem classificados mostra "⏳ ainda não classificados (classificação em andamento)". O texto do universo do YouTube foi atualizado para a leitura completa.
 **Teste.** `python -m unittest discover -s tests -v`: OK; novo teste de partes em paralelo e junção (30 comentários, 2 partes, nada reclassificado na junção). Render local das 5 páginas de comentários sem erro de JS. Disparado `sentimento-paralelo.yml` agora; resultado na próxima entrada.
 
-## C19.162 — Reposição de 23 a 25/10 nas coletas pagas, depois do ajuste da conta Apify (2026-10-25) 🔜
+## C19.162 — Reposição de 23 a 25/10 nas coletas pagas, depois do ajuste da conta Apify (2026-10-25) ✅
 
 **Autorização.** Responsável em 25/10, 18h34: "já ajustei a conta, força rodar com uma carga histórica desses 2 dias".
 **O que mudou.**
 - `scripts/reposicao.py` + `data/config/reposicao.json` (desde 23/10, até 25/10). Enquanto a data de hoje (Brasília) for até 25/10, o modo diário de cada coletor pago recua a janela para 23/10 e multiplica o teto do dia por 3 (dias cobertos). O teto do mês já autorizado continua valendo. Depois de 25/10 volta ao normal sozinho.
 - Ligado em: posts de Instagram, Facebook e X; respostas do X (dias 23 e 24); comentários de Instagram, Facebook, TikTok e Kwai; vídeos do Kwai.
 - Seguidores de Instagram e Facebook e o TikTok por hashtag não têm janela; só rodam de novo.
-**Teste.** `python -m unittest discover -s tests -v`: 233 OK. `janela("2026-10-24")` → ("2026-10-23", 3). Resultado das execuções: entrada seguinte.
+**Teste.** `python -m unittest discover -s tests -v`: 233 OK. `janela("2026-10-24")` → ("2026-10-23", 3).
+**Execuções (25/10, 18h33–19h03 de Brasília; manifestos `*_latest.json` de cada pasta):**
+
+| Coleta | Run | Desde | Novos | Custo (US$) |
+|---|---|---|---|---|
+| Posts Instagram (teste, desde 24/10) | 40235986351 | 24/10 | — | 0,0302 |
+| Posts Instagram (reposição) | 40237160541 | 23/10 | 19 posts | 0,0413 |
+| Posts Facebook | 40237162292 | 23/10 | 98 posts | 0,542 |
+| Posts X | 40237164132 | 23/10 | 125 posts | 0,0196 |
+| Vídeos Kwai | 40237165993 | — | 5 vídeos | 0,00 (a Apify registrou 0 eventos) |
+| Comentários Kwai (vídeos de Lula) | idem | — | — | 0,0301 |
+| Seguidores Instagram e Facebook | 40237167664 | — | — | 0,32 |
+| Comentários Instagram | 40238339277 | 23/10 | 346 | 0,4844 |
+| Comentários Facebook | 40238341091 | 23/10 | 6.765 | 1,7434 |
+| Comentários TikTok | 40238342818 | 23/10 | 905 | 0,884 |
+| Respostas X (23 e 24/10) | 40238344536 | — | 600 | 0,09 |
+
+**Total: US$ 4,185**, todo na conta 1, cada coleta dentro do teto do dia × 3 e do teto do mês já autorizados. Saúde da coleta depois da reposição: **18 de 18 séries em dia**. A reposição desliga sozinha depois de 25/10 (`data/config/reposicao.json` → `ate`).
 
 ## C19.161 — Coletas agendadas: Apify da conta 1 com HTTP 403 desde 24/10; push no privado sem nova tentativa (2026-10-25) ⚠️
 
