@@ -34,6 +34,8 @@ def descobrir(cfg: dict) -> tuple[str, str]:
     if cfg.get("eleicao") and cfg.get("pleito"):
         return cfg["pleito"], str(cfg["eleicao"])
     d = get(f"{BASE}/comum/config/ele-c.json")
+    Path("data/tse/segundo_turno").mkdir(parents=True, exist_ok=True)
+    Path("data/tse/segundo_turno/config_tse.json").write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")  # conferência
     achados = []
 
     def walk(o, pleito=None):
