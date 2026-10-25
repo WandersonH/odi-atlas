@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.168 — Resultado do 2º turno: mapa por município em tempo real (2026-10-25) ✅
+
+O responsável (20h40): "faltou só o mapa nessa página". O bloco "1º turno × 2º turno" ganhou um mapa dos municípios.
+- Malha: IBGE 2025, a mesma do mapa de alienação (`data/geo/2025/brasil_municipios.json` e `mun_<UF>.json`), ligada pelo código IBGE que o TSE dá para cada município (`cdi`).
+- Quatro leituras: quem lidera no 2º turno (cor pela margem, saturada a partir de 40 pontos); Δ de Lula; Δ de Flávio (saturado a partir de ±30 pontos); mudou o líder em relação ao 1º turno.
+- Área: Brasil ou uma UF. Ao passar o mouse, aparecem a cidade, os dois turnos e o % apurado. Cinza: município ainda sem dado.
+- O mapa é redesenhado a cada leitura (2 min), junto com as tabelas.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local com os dados reais das 20h35: 5.571 polígonos no Brasil e 645 em SP; modos e legenda funcionando; sem erro de JS.
+
 ## C19.167 — Resultado do 2º turno como primeira página do Panorama e do Atlas (2026-10-25) ✅
 
 O responsável (20h36): "coloca a página como primeira dessa seção". A aba "Resultado do 2º turno (TSE)" passa a ser a primeira do Panorama, é a que abre ao entrar no Atlas e é a do botão Panorama no menu. "Lula × Flávio Bolsonaro" (antiga abertura) vem em seguida. Render local: ao abrir, a aba ativa é a do 2º turno (59,77%, TSE 20h35min10; 5.757 municípios); as outras abas abrem normalmente, sem erro de JS.
