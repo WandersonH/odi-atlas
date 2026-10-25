@@ -892,6 +892,7 @@ function odiContarAba(t){try{if(ODI_GOATCOUNTER&&window.goatcounter&&window.goat
 </nav><div class="sidefoot"><span>ESTUDO CONTÍNUO / V15 · MVP</span>PNAD 2025 · Social Blade SET–OUT 2026<br>Dados armazenados neste arquivo.</div><div class="odi-direitos odi-direitos-lateral" role="note" aria-label="Aviso de confidencialidade e direitos autorais"><span class="odi-direitos-selo">Confidencial</span><p>Documento confidencial e de uso restrito. Proibida a reprodução, distribuição ou divulgação, total ou parcial, sem autorização expressa do autor. Todos os direitos reservados <span class="odi-direitos-lei">(Lei nº 9.610/1998)</span>.</p></div></aside>
 <main class="main"><header class="header"><span class="crumb">EDIÇÃO DE PESQUISA  /  COMUNICAÇÃO POLÍTICA  /  2026</span><span class="ordem-flag" title="Lula aparece primeiro por ser o candidato à reeleição (atual presidente). A ordem não indica preferência.">ORDEM: LULA (ATUAL PRESIDENTE, À REELEIÇÃO) · FLÁVIO — NÃO INDICA PREFERÊNCIA</span><div class="actions"><span class="datechip" id="ultimaColeta" title="Quantas séries automáticas têm dado novo dentro do prazo; detalhe por série no LEIA-ME" role="button" tabindex="0" style="cursor:pointer">● Saúde da coleta…</span><button class="ghostbutton" id="downloadJson">↓ Base JSON</button><button class="primarybutton" id="printView">↗ Imprimir / PDF</button></div></header>
 <section class="panel active" id="overview">
+<a href="#segundoTurno" onclick="setTab('segundoTurno');return false;" style="display:block;margin:14px 0 4px;padding:12px 16px;background:#172238;color:#fff;font:700 14px 'Courier New',monospace;text-decoration:none;border-left:6px solid #c8102e">● AO VIVO · Resultado do 2º turno (TSE) e comparação com o 1º turno, estado a estado e cidade a cidade →</a>
  <div class="intro overview-intro atlas-cover">
 <div class="atlas-cover-copy">
 <div class="atlas-edition"><span>OBSERVATÓRIO / 2026</span><span>EDIÇÃO DIGITAL N.º 01</span></div>
@@ -5737,5 +5738,10 @@ function ler(){fetch('./data/tse/segundo_turno/municipios.json',{cache:'no-store
 ['rcUf','rcOrd'].forEach(id=>$(id).addEventListener('change',()=>D&&muns()));$('rcBusca').addEventListener('input',()=>D&&muns());
 function ativo(){if(sec.classList.contains('active')){ler();if(!timer)timer=setInterval(ler,120000);}else if(timer){clearInterval(timer);timer=null;}}
 new MutationObserver(ativo).observe(sec,{attributes:true,attributeFilter:['class']});ativo();})();
+</script>
+<script>
+/* link direto para uma aba: ...html#segundoTurno (C19.166) */
+(function(){const ir=()=>{const h=decodeURIComponent((location.hash||'').slice(1));if(h&&document.getElementById(h)&&document.getElementById(h).classList.contains('panel')&&typeof setTab==='function'){setTab(h);window.scrollTo(0,0);}};
+window.addEventListener('hashchange',ir);if(document.readyState==='complete')ir();else window.addEventListener('load',ir);})();
 </script>
 </body></html>

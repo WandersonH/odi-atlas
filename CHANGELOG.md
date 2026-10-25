@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.166 — Link direto para as abas e chamada "ao vivo" no Panorama (2026-10-25) ✅
+
+O responsável (20h30): "onde está essa página?". A aba existia em Panorama → "Resultado do 2º turno (TSE)", mas sem destaque e sem link direto.
+- Faixa "● AO VIVO · Resultado do 2º turno (TSE)…" no topo do Panorama, que abre a aba.
+- Link direto por âncora para qualquer aba (`…/ODI_Atlas_v15_MVP.html#segundoTurno`), inclusive ao trocar a âncora com a página aberta.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local: abrir com `#segundoTurno` mostra a aba (52,46% das seções, dado do TSE de 20h29); o clique na faixa abre a aba; sem erro de JS.
+
 ## C19.165 — Resultado do 2º turno: leitura a cada 2 min (2026-10-25) ✅
 
 O responsável (20h22): "já tamos em 43%". A página estava em 39,84%, com dado do TSE de 20h17min40, lido às 20h18. A defasagem vinha do intervalo de 5 min mais a publicação do GitHub Pages (cerca de 1 min). O laço foi reiniciado com intervalo de 2 min. Leitura seguinte: dado do TSE de 20h22min49, 45,40% das seções, lido às 20h23min34. A parte dos municípios continua limitada a 2,5 min por volta.
