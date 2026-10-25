@@ -4,6 +4,10 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.165 — Resultado do 2º turno: leitura a cada 2 min (2026-10-25) ✅
+
+O responsável (20h22): "já tamos em 43%". A página estava em 39,84%, com dado do TSE de 20h17min40, lido às 20h18. A defasagem vinha do intervalo de 5 min mais a publicação do GitHub Pages (cerca de 1 min). O laço foi reiniciado com intervalo de 2 min. Leitura seguinte: dado do TSE de 20h22min49, 45,40% das seções, lido às 20h23min34. A parte dos municípios continua limitada a 2,5 min por volta.
+
 ## C19.164 — 2º turno × 1º turno por UF e por município, em tempo real (2026-10-25) ✅
 
 **Pedido** (19h43): "preciso de uma página que compare o resultado anterior e o atual cidade a cidade e estado a estado, em tempo real". O resultado anterior é o 1º turno de 2026.
