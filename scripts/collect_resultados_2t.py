@@ -116,6 +116,14 @@ def main(argv=None) -> int:
             out["ufs"][uf.upper()] = resumo(get(url(uf)))
         except Exception as e:  # noqa: BLE001
             out["erros"][uf] = f"{type(e).__name__}"
+    if "brasil" not in out and "--sonda" in (argv or sys.argv[1:]):  # confere o caminho e a leitura com o 1º turno (6257)
+        try:
+            t1 = get(f"{BASE}/{pleito}/6257/dados-simplificados/br/br-c0001-e006257-r.json")
+            r1 = resumo(t1)
+            print("conferência com o 1º turno (6257): chaves", sorted(t1.keys())[:40], "· resumo", json.dumps({k: r1[k] for k in ("pct_secoes_totalizadas", "eleitores", "pct_abstencao")}, ensure_ascii=False),
+                  "· 2 primeiros", json.dumps(r1["candidatos"][:2], ensure_ascii=False)[:400])
+        except Exception as e:  # noqa: BLE001
+            print(f"conferência com o 1º turno: ⛔ {type(e).__name__}: {str(e)[:150]}")
     if "brasil" not in out:
         print(f"⛔ sem o arquivo do Brasil: {out['erros'].get('br')} · {url('br')}")
         (pasta / "ultima_tentativa.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
