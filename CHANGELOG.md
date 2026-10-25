@@ -4,7 +4,7 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.164 — 2º turno × 1º turno por UF e por município, em tempo real (2026-10-25) 🔜
+## C19.164 — 2º turno × 1º turno por UF e por município, em tempo real (2026-10-25) ✅
 
 **Pedido** (19h43): "preciso de uma página que compare o resultado anterior e o atual cidade a cidade e estado a estado, em tempo real". O resultado anterior é o 1º turno de 2026.
 **Fontes.**
@@ -19,6 +19,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 **Teste.** `python -m unittest discover -s tests -v`: OK. Coletor simulado com respostas falsas do TSE: soma por UF, % e Δ corretos; a segunda leitura não baixa município sem mudança. Interface testada localmente com arquivo de teste (apagado, não publicado): ordenação, filtro e busca, sem erro de JS. Primeira leitura real: próxima volta do laço (até 5 min).
 **Primeira leitura real** (22h53 UTC): 1.661 de 5.757 municípios; 4.096 downloads recusados. Com 24 conexões em paralelo, o TSE limitou a frequência; SP, RJ e RS ficaram sem nenhum município. **Ajuste:** 8 conexões, até 3 tentativas com espera, municípios sem dado e maiores primeiro, falhas contadas por tipo (`erros_por_tipo`). O % do 2º turno de cada UF passa a ser o oficial do arquivo da UF (`resultado.json`), não a soma dos municípios já baixados; coluna nova "Apurado na UF". Falhas entram de novo na próxima volta.
 **Segundo ajuste (19h5x).** Com as novas tentativas e esperas, os cerca de 4 mil municípios pendentes travaram a volta do laço por mais de 10 minutos, e o resultado nacional também parou de atualizar. Agora a parte dos municípios tem limite de 2,5 min por volta e para se o TSE recusar 40 seguidas (o resto fica "adiado" para a volta seguinte). O laço foi cancelado (run 40233199016) e disparado de novo.
+**Leitura depois do ajuste** (23h08 UTC; 20h08 de Brasília): **5.757 de 5.757 municípios com dados, 0 erros**. Brasil: TSE às 20h07min19 de Brasília, 29,16% das seções. Exemplos por UF (% dos válidos, 1º → 2º turno): SP Lula 38,2 → 39,95 e Flávio 51,93 → 60,05 (6,98% apurado); MG Lula 43,33 → 50,04 (22,96%); PE Lula 63,45 → 72,46 (16,74%). Parciais.
 
 ## C19.163 — YouTube: comentários da pré-campanha estavam coletados, mas não classificados; sentimento em ordem aleatória e em 4 partes paralelas (2026-10-25) 🔜
 
