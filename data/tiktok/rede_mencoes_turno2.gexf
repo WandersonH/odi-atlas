@@ -10,6 +10,16 @@
       <attribute id="2" title="marcacoes_recebidas" type="long" />
     </attributes>
     <nodes>
+      <node id="flaviobolsonaro" label="@flaviobolsonaro">
+        <viz:color r="31" g="138" b="59" a="1.0" />
+        <viz:size value="10.242640687119286" />
+        <viz:position x="847.0" y="-285.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="campanha" />
+          <attvalue for="1" value="Flávio Bolsonaro" />
+          <attvalue for="2" value="1" />
+        </attvalues>
+      </node>
       <node id="lulaoficial" label="@lulaoficial">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="15.9498743710662" />
@@ -38,16 +48,6 @@
           <attvalue for="0" value="campanha" />
           <attvalue for="1" value="Lula" />
           <attvalue for="2" value="0" />
-        </attvalues>
-      </node>
-      <node id="flaviobolsonaro" label="@flaviobolsonaro">
-        <viz:color r="31" g="138" b="59" a="1.0" />
-        <viz:size value="10.242640687119286" />
-        <viz:position x="847.0" y="-285.7" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="campanha" />
-          <attvalue for="1" value="Flávio Bolsonaro" />
-          <attvalue for="2" value="1" />
         </attvalues>
       </node>
       <node id="ricardostuckert" label="@ricardostuckert">
@@ -122,15 +122,15 @@
       </node>
     </nodes>
     <edges>
-      <edge source="lulaoficial" target="ricardostuckert" id="0" weight="5" />
-      <edge source="lulaoficial" target="richarlison" id="1" weight="1" />
-      <edge source="lulaoficial" target="andrejanones" id="2" weight="1" />
-      <edge source="lulaoficial" target="janjalulaoficial" id="3" weight="1" />
-      <edge source="alfredogaspar_" target="flaviobolsonaro" id="4" weight="1" />
+      <edge source="flaviobolsonaro" target="bolsonaromessiasjair" id="0" weight="1" />
+      <edge source="lulaoficial" target="ricardostuckert" id="1" weight="5" />
+      <edge source="lulaoficial" target="richarlison" id="2" weight="1" />
+      <edge source="lulaoficial" target="andrejanones" id="3" weight="1" />
+      <edge source="lulaoficial" target="janjalulaoficial" id="4" weight="1" />
       <edge source="alfredogaspar_" target="alfredogaspar" id="5" weight="1" />
-      <edge source="alckmingeraldo" target="lulaoficial" id="6" weight="3" />
-      <edge source="alckmingeraldo" target="joseanibal45" id="7" weight="1" />
-      <edge source="flaviobolsonaro" target="bolsonaromessiasjair" id="8" weight="1" />
+      <edge source="alfredogaspar_" target="flaviobolsonaro" id="6" weight="1" />
+      <edge source="alckmingeraldo" target="lulaoficial" id="7" weight="3" />
+      <edge source="alckmingeraldo" target="joseanibal45" id="8" weight="1" />
     </edges>
   </graph>
 </gexf>
