@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_comentarios_youtube import CAMPOS  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
 from collect_meta_apify import escolher_conta, run_actor, saldo_conta  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 TEXTO = ("text", "content", "comment", "commentText", "body")
@@ -139,7 +140,8 @@ def main(argv=None, executar=None) -> int:
         mans = [json.loads(f.read_text(encoding="utf-8")) for f in pub.glob("manifesto-*.json")]
         if diario:
             ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"] + "-diario" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-            teto = round(min(C1["diario"]["teto_dia_usd"], C1["diario"]["teto_mes_usd"] - ja), 4)
+            _, mult = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
+            teto = round(min(C1["diario"]["teto_dia_usd"] * mult, C1["diario"]["teto_mes_usd"] - ja), 4)
             cfg["videos_lula"] = {**cfg["videos_lula"], "max_videos": C1["diario"]["videos_lula_max"], "teto_usd": teto}
         else:
             ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"]), 4)

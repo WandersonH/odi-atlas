@@ -22,6 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
 from collect_meta_apify import escolher_conta, run_actor, saldo_conta  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS = ["candidate_id", "candidate_name", "perfil", "declarado_por", "video_id", "url", "publicado_em", "legenda", "duracao_s",
@@ -89,7 +90,8 @@ def main(argv=None, executar=None) -> int:
     ja = round(sum(float(m.get("custo_usd") or 0) for m in mans_mes if (m.get("conta") == "APIFY_TOKEN") == conta1), 4)
     if conta1:
         C1 = cfg["conta1"]
-        teto = round(min(C1["teto_dia_usd"], C1["teto_mes_usd"] - ja), 4)
+        _, mult = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
+        teto = round(min(C1["teto_dia_usd"] * mult, C1["teto_mes_usd"] - ja), 4)
         cfg["teto_mensal_usd"], cfg["max_videos_por_perfil_diario"] = C1["teto_mes_usd"], C1["max_videos_por_perfil"]
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {cfg['ator'].replace('~', '/')}", "modo": "histórico" if historico else "teste" if teste else "diário",
            "teto_usd": teto, "gasto_mes_antes_usd": ja, "perfis": [], "fora": cfg.get("fora")}

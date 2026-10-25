@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_kwai_apify import COLS, g, inteiro  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
 from collect_meta_apify import escolher_conta, run_actor  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 
@@ -79,8 +80,8 @@ def main(argv=None, executar=None) -> int:
         C1 = cfg["conta1"]
         if diario:
             ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"] + "-diario" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-            teto = round(min(C1["diario"]["teto_dia_usd"], C1["diario"]["teto_mes_usd"] - ja), 4)
-            busca_desde = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+            busca_desde, mult = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
+            teto = round(min(C1["diario"]["teto_dia_usd"] * mult, C1["diario"]["teto_mes_usd"] - ja), 4)
             cfg["posts_por_perfil"] = C1["diario"]["por_perfil"]
         else:
             ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"]), 4)

@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_kwai_apify import COLS, g, inteiro, quando  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
 from collect_meta_apify import escolher_conta, run_actor, saldo_conta  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS_FB = COLS + ["reacoes", "tipo"]
@@ -70,9 +71,9 @@ def main(argv=None, executar=None) -> int:
             teto = round(L["teto_usd"] - ja, 4)
         else:
             ontem = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
-            desde = ontem
+            desde, mult = janela(ontem)
             ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-            teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
+            teto = round(min(D["teto_dia_usd"] * mult, D["teto_mes_usd"] - ja), 4)
     else:
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") not in ("diário", "lacuna")), 4)
         resta = round(cfg["teto_total_usd"] - ja, 4)

@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.162 — Reposição de 23 a 25/10 nas coletas pagas, depois do ajuste da conta Apify (2026-10-25) 🔜
+
+**Autorização.** Responsável em 25/10, 18h34: "já ajustei a conta, força rodar com uma carga histórica desses 2 dias".
+**O que mudou.**
+- `scripts/reposicao.py` + `data/config/reposicao.json` (desde 23/10, até 25/10). Enquanto a data de hoje (Brasília) for até 25/10, o modo diário de cada coletor pago recua a janela para 23/10 e multiplica o teto do dia por 3 (dias cobertos). O teto do mês já autorizado continua valendo. Depois de 25/10 volta ao normal sozinho.
+- Ligado em: posts de Instagram, Facebook e X; respostas do X (dias 23 e 24); comentários de Instagram, Facebook, TikTok e Kwai; vídeos do Kwai.
+- Seguidores de Instagram e Facebook e o TikTok por hashtag não têm janela; só rodam de novo.
+**Teste.** `python -m unittest discover -s tests -v`: 233 OK. `janela("2026-10-24")` → ("2026-10-23", 3). Resultado das execuções: entrada seguinte.
+
 ## C19.161 — Coletas agendadas: Apify da conta 1 com HTTP 403 desde 24/10; push no privado sem nova tentativa (2026-10-25) ⚠️
 
 **Pedido** (18h30): "execute as coletas agendadas, acho que deram erro". Conferido nos runs e manifestos de 24 e 25/10:

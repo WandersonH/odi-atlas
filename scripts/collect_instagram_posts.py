@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_kwai_apify import COLS, g, inteiro, quando  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
 from collect_meta_apify import escolher_conta, ig_username, run_actor  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 COLS_IG = COLS + ["tipo"]
@@ -100,9 +101,9 @@ def rotina_conta1(root: Path, cfg: dict, lacuna: bool, executar=None) -> int:
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "lacuna" and m.get("desde") == desde), 4)
         teto = round(C["teto_usd"] - ja, 4)
     else:
-        desde = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+        desde, mult = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-        teto = round(min(C["teto_dia_usd"], C["teto_mes_usd"] - ja), 4)
+        teto = round(min(C["teto_dia_usd"] * mult, C["teto_mes_usd"] - ja), 4)
     ator = C["ator"]
     man = {"run_started_utc": agora, "ferramenta": f"Apify · {ator.replace('~', '/')}", "modo": "lacuna" if lacuna else "diário", "conta": C["segredo"],
            "desde": desde, "gasto_antes_usd": ja, "teto_execucao_usd": teto, "perfis": []}

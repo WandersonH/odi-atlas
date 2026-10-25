@@ -27,6 +27,7 @@ from collect_comentarios_youtube import CAMPOS  # noqa: E402
 from collect_kwai_apify import g, quando  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
 from collect_meta_apify import escolher_conta, run_actor  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 
@@ -59,9 +60,9 @@ def main(argv=None, executar=None) -> int:
     if diario:
         import datetime as dt
         D = cfg["diario"]
-        desde = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+        desde, mult = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-        teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
+        teto = round(min(D["teto_dia_usd"] * mult, D["teto_mes_usd"] - ja), 4)
     else:
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") != "diário"), 4)
         resta = round(cfg["teto_total_usd"] - ja, 4)

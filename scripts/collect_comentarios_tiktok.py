@@ -26,6 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from collect_comentarios_youtube import CAMPOS  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 CODIGO = re.compile(r"/video/(\d+)")
@@ -63,7 +64,8 @@ def main(argv=None, executar=None) -> int:
     if diario:
         D = C["diario"]
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("modo") == "diário" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-        teto = round(min(D["teto_dia_usd"], D["teto_mes_usd"] - ja), 4)
+        _, mult = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
+        teto = round(min(D["teto_dia_usd"] * mult, D["teto_mes_usd"] - ja), 4)
     else:
         D = C["carga"]
         ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == D["lote"]), 4)
@@ -99,7 +101,7 @@ def main(argv=None, executar=None) -> int:
             if (v.get("publicado_em") or "") >= C["desde"] and (v.get("comentarios") or 0) > 0:
                 posts[v["video_id"]] = {**v, "candidate_id": cid}
     if diario:
-        ontem = (dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat()
+        ontem, _ = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
         alvo = [(p, D["por_video"]) for p in posts.values() if p["video_id"] not in feitos and p["publicado_em"][:10] >= ontem]
     elif reforco:  # mesmo lote e teto da carga; vídeos já lidos entram de novo (comentários repetidos contam uma vez, por id)
         alvo = []

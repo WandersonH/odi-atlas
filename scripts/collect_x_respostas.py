@@ -34,6 +34,7 @@ from collect_kwai_apify import g, inteiro  # noqa: E402
 from collect_meta_anuncios_apify import custo_run  # noqa: E402
 from collect_meta_apify import escolher_conta, run_actor  # noqa: E402
 from collect_x_posts import quando  # noqa: E402
+from reposicao import janela  # noqa: E402
 from net import now_utc  # noqa: E402
 
 
@@ -73,7 +74,8 @@ def main(argv=None, executar=None, contas=None) -> int:
         C1 = cfg["conta1"]
         if diario:
             ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"] + "-diario" and (m.get("run_started_utc") or "")[:7] == agora[:7]), 4)
-            teto = round(min(C1["diario"]["teto_dia_usd"], C1["diario"]["teto_mes_usd"] - ja), 4)
+            desde_rep, mult = janela((dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))) - dt.timedelta(days=1)).date().isoformat())
+            teto = round(min(C1["diario"]["teto_dia_usd"] * mult, C1["diario"]["teto_mes_usd"] - ja), 4)
         else:
             ja = round(sum(float(m.get("custo_usd") or 0) for m in mans if m.get("lote") == C1["lote"]), 4)
             teto = round(C1["teto_lacuna_usd"] - ja, 4)
@@ -109,7 +111,7 @@ def main(argv=None, executar=None, contas=None) -> int:
     ate = (dt.date.fromisoformat(agora[:10]) - dt.timedelta(days=1)).isoformat()
     lista_dias = dias(cfg["desde"], ate)
     if conta1:  # lacuna: de 17/10 até ontem; diário: só ontem (dia completo, Brasília ≈ UTC−3)
-        lista_dias = [ate] if diario else dias(cfg["conta1"]["desde_lacuna"], ate)
+        lista_dias = dias(min(desde_rep, ate), ate) if diario else dias(cfg["conta1"]["desde_lacuna"], ate)
     por_post = "--por-post" in argv
     if por_post:
         # 2ª estratégia: respostas de cada post (conversation_id), os posts com mais respostas de cada semana, mesmo número por candidato
