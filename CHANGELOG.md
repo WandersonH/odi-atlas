@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.161 — Coletas agendadas: Apify da conta 1 com HTTP 403 desde 24/10; push no privado sem nova tentativa (2026-10-25) ⚠️
+
+**Pedido** (18h30): "execute as coletas agendadas, acho que deram erro". Conferido nos runs e manifestos de 24 e 25/10:
+- **Coletas pagas na conta 1 (APIFY_TOKEN) devolvem HTTP 403 desde 24/10.** Primeiro erro: comentários do TikTok, 24/10, 02h01 UTC. Depois: posts do Instagram (24 e 25/10), Kwai (25/10), comentários do Facebook, do Instagram e do TikTok, respostas do X, seguidores de Instagram e Facebook. Custo dessas execuções: US$ 0. Os manifestos de posts do Facebook e do X saem "ok" com custo 0 e nada novo. A última coleta paga com dado é de 23/10, entre 15h36 e 17h53 UTC. Repetir não resolve: 403 é recusa da conta (limite de uso do mês, plano ou bloqueio). Conforme a regra do responsável, a conta não foi consultada.
+- **TikTok por hashtag (grátis):** coletou (60 vídeos por hashtag), mas o run falhou ao gravar no privado, porque o push não puxava as mudanças de outros jobs antes. O mesmo padrão existia em `reuters-dnr.yml`.
+**O que mudou.**
+- `tiktok-hashtags.yml` e `reuters-dnr.yml`: push no privado com `pull --rebase` e até 3 tentativas; o passo falha se as 3 falharem.
+- `collect_meta_apify.api()` (usada por todos os coletores Apify) registra o tipo e a mensagem do erro devolvidos pela Apify (sem o token) quando a resposta é HTTP de erro. Assim o próximo 403 diz o motivo.
+**Execução.** Disparados de novo: TikTok por hashtag (grátis) e uma coleta paga já agendada e autorizada, posts do Instagram no modo diário (teto US$ 0,15), só para registrar o motivo do 403. Resultado: entrada seguinte.
+
 ## C19.160 — Comentários do YouTube: página mostra a leitura completa; sentimento 4× por dia até alcançar o acervo (2026-10-25) ✅
 
 **Pedido** (18h16): "parece que a página de YouTube ainda não foi atualizada". Os dados estavam atualizados (`analise.json` de 25/10, 11h44 de Brasília: Lula 524.790 comentários + 30.534 respostas; Flávio 318.307 + 15.333). Os textos da página, não:

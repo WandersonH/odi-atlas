@@ -57,4 +57,4 @@ jobs:
           cd "$RUNNER_TEMP/interno"
           git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
           git add -A; git diff --cached --quiet || git commit -q -m "Reuters DNR 2022 e 2026: texto extraído (run ${{ github.run_id }})"
-          git push -q origin HEAD:main
+          ok=0; for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && { ok=1; break; }; sleep $((t * 10)); done; [ $ok = 1 ]

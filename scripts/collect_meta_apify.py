@@ -20,6 +20,7 @@ import os
 import re
 import sys
 import urllib.parse
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -34,8 +35,18 @@ def api(method: str, path: str, token: str, body=None, timeout=360):
     req = urllib.request.Request(f"{API}{path}", method=method,
                                  data=None if body is None else json.dumps(body).encode(),
                                  headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read() or b"null")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read() or b"null")
+    except urllib.error.HTTPError as e:
+        # motivo informado pela Apify (tipo e mensagem do erro; nunca contém o token), para diagnosticar 403/402 (25/10/2026)
+        try:
+            err = (json.loads(e.read() or b"{}") or {}).get("error") or {}
+            print(f"Apify HTTP {e.code}: {err.get('type')}: {str(err.get('message'))[:160]}", file=sys.stderr)
+            e.msg = f"{e.msg} [{err.get('type')}]"
+        except Exception:  # noqa: BLE001
+            pass
+        raise
 
 
 def saldo_conta(token: str) -> float | None:
