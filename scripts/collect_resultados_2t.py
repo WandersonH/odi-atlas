@@ -42,8 +42,13 @@ def descobrir(cfg: dict) -> tuple[str, str]:
         if isinstance(o, dict):
             if str(o.get("cd", "")).startswith("ele20"):
                 pleito = o["cd"]
+            if str(o.get("c", "")).startswith("ele20"):
+                pleito = o["c"]
             if pleito and "2026" in pleito and str(o.get("t")) == "2" and o.get("cd") and str(o["cd"]).isdigit():
                 achados.append((pleito, str(o["cd"]), str(o.get("nm") or o.get("ds") or "")))
+            # o config de 18/10 só lista o 1º turno; o 2º vem em "cdt2" (6257 → 6258 na eleição federal)
+            if pleito and "2026" in pleito and str(o.get("t")) == "1" and str(o.get("cdt2") or "").isdigit():
+                achados.append((pleito, str(o["cdt2"]), str(o.get("nm") or "").replace("1º Turno", "2º Turno")))
             for v in o.values():
                 walk(v, pleito)
         elif isinstance(o, list):
