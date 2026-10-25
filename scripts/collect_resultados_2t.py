@@ -76,16 +76,25 @@ def pct(x) -> float | None:
 
 
 def resumo(d: dict) -> dict:
-    """Campos do arquivo simplificado (mesmos nomes de 2022; ausentes ficam None)."""
+    """Arquivo de resultado da divulgação de 2026 (dados/<uf>/<uf>-c0001-e<ele>-u.json; estrutura conferida em 25/10/2026,
+    17h06, no navegador do responsável): s = seções, e = eleitorado/comparecimento, v = votos, carg[0].agr[].par[].cand[]."""
+    S, E, V = d.get("s") or {}, d.get("e") or {}, d.get("v") or {}
     cands = []
-    for c in d.get("cand") or []:
-        cands.append({"numero": str(c.get("n")), "nome": c.get("nm"), "votos": num(c.get("vap")), "pct": pct(c.get("pvap")),
-                      "eleito": str(c.get("e")).lower() in ("s", "true", "1"), "situacao": c.get("st") or c.get("dvt")})
-    return {"data_hora_tse": f"{d.get('dg', '')} {d.get('hg', '')}".strip() or None, "pct_secoes_totalizadas": pct(d.get("pst")),
-            "secoes_totalizadas": num(d.get("st")), "secoes": num(d.get("s")), "eleitores": num(d.get("e")),
-            "comparecimento": num(d.get("c")), "pct_comparecimento": pct(d.get("pc")), "abstencao": num(d.get("a")), "pct_abstencao": pct(d.get("pa")),
-            "validos": num(d.get("vv")), "brancos": num(d.get("vb")), "pct_brancos": pct(d.get("pvb")), "nulos": num(d.get("tvn") or d.get("vn")),
-            "pct_nulos": pct(d.get("ptvn") or d.get("pvn")), "matematicamente_definido": d.get("md"), "candidatos": sorted(cands, key=lambda c: c["numero"] != "13")}
+    for cg in d.get("carg") or []:
+        if str(cg.get("cd")) != "1":
+            continue
+        for ag in cg.get("agr") or []:
+            for pa in ag.get("par") or []:
+                for c in pa.get("cand") or []:
+                    cands.append({"numero": str(c.get("n")), "nome": c.get("nmu") or c.get("nm"), "votos": num(c.get("vap")), "pct": pct(c.get("pvap")),
+                                  "eleito": str(c.get("e")).lower() == "s", "situacao": c.get("st") or c.get("dvt"),
+                                  "vice": ((c.get("vs") or [{}])[0]).get("nmu")})
+    return {"data_hora_tse": f"{d.get('dg', '')} {d.get('hg', '')}".strip() or None, "pct_secoes_totalizadas": pct(S.get("pst")),
+            "secoes_totalizadas": num(S.get("st")), "secoes": num(S.get("ts")), "eleitores": num(E.get("te")),
+            "comparecimento": num(E.get("c")), "pct_comparecimento": pct(E.get("pc")), "abstencao": num(E.get("a")), "pct_abstencao": pct(E.get("pa")),
+            "validos": num(V.get("vv")), "brancos": num(V.get("vb")), "pct_brancos": pct(V.get("pvb")), "nulos": num(V.get("tvn") or V.get("vn")),
+            "pct_nulos": pct(V.get("ptvn")), "matematicamente_definido": str(d.get("md")).lower() == "s", "totalizacao_final": str(d.get("tf")).lower() == "s",
+            "candidatos": sorted(cands, key=lambda c: c["numero"] != "13")}
 
 
 def main(argv=None) -> int:
@@ -100,8 +109,8 @@ def main(argv=None) -> int:
     except Exception as e:  # noqa: BLE001
         print(f"⛔ descoberta da eleição: {type(e).__name__}: {str(e)[:700]}")
         return 1
-    url = lambda ab: f"{BASE}/{pleito}/{ele}/dados-simplificados/{ab}/{ab}-c0001-e{int(ele):06d}-r.json"  # noqa: E731
-    out = {"lido_em_utc": agora, "fonte": f"{BASE}/{pleito}/{ele}/ (divulgação oficial do TSE, arquivos simplificados, cargo Presidente)",
+    url = lambda ab: f"{BASE}/{pleito}/{ele}/dados/{ab}/{ab}-c0001-e{int(ele):06d}-u.json"  # noqa: E731
+    out = {"lido_em_utc": agora, "fonte": f"{BASE}/{pleito}/{ele}/dados/ (divulgação oficial do TSE, cargo Presidente)",
            "pleito": pleito, "eleicao": ele, "erros": {}}
     try:
         br_raw = get(url("br"))
@@ -118,7 +127,7 @@ def main(argv=None) -> int:
             out["erros"][uf] = f"{type(e).__name__}"
     if "brasil" not in out and "--sonda" in (argv or sys.argv[1:]):  # confere o caminho e a leitura com o 1º turno (6257)
         try:
-            t1 = get(f"{BASE}/{pleito}/6257/dados-simplificados/br/br-c0001-e006257-r.json")
+            t1 = get(f"{BASE}/{pleito}/6257/dados/br/br-c0001-e006257-u.json")
             r1 = resumo(t1)
             print("conferência com o 1º turno (6257): chaves", sorted(t1.keys())[:40], "· resumo", json.dumps({k: r1[k] for k in ("pct_secoes_totalizadas", "eleitores", "pct_abstencao")}, ensure_ascii=False),
                   "· 2 primeiros", json.dumps(r1["candidatos"][:2], ensure_ascii=False)[:400])
