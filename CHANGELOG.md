@@ -4,6 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.164 — 2º turno × 1º turno por UF e por município, em tempo real (2026-10-25) 🔜
+
+**Pedido** (19h43): "preciso de uma página que compare o resultado anterior e o atual cidade a cidade e estado a estado, em tempo real". O resultado anterior é o 1º turno de 2026.
+**Fontes.**
+- **2º turno:** divulgação oficial do TSE, um arquivo por município (`dados/<uf>/<uf><mun>-c0001-e006258-u.json`).
+- **Quais municípios mudaram:** arquivo de abrangências de cada UF (`<uf>-e006258-ab.json`). Os dois caminhos e a estrutura foram conferidos pela sonda `sonda-tse-resultados.yml` (25/10, 19h4x): o `-ab` traz seções e eleitorado por município, sem votos; o `-u` por município traz os votos.
+- **1º turno:** `data/tse/presidente_1t_2026_munzona.csv.gz` (Dados Abertos), votos válidos de Lula e Flávio sobre os válidos de 12 candidatos, por município. Cache em `data/tse/segundo_turno/base_1t.json`: 5.757 municípios, exterior incluído.
+**O que mudou.**
+- `scripts/collect_resultados_2t_mun.py`: a cada leitura, só baixa de novo os municípios cujo horário de totalização mudou (24 em paralelo). Grava `municipios.json` com % de Lula e Flávio nos dois turnos, Δ em pontos percentuais, % apurado por município e a soma por UF.
+- É chamado ao fim de `collect_resultados_2t.py`, então o laço de 5 min que já está rodando passa a gerar a comparação sem ser reiniciado.
+- Página "Resultado do 2º turno (TSE)", bloco novo "1º turno × 2º turno": tabela por UF (1º e 2º turno de cada um, Δ, cidades 100% apuradas, aviso "mudou o líder") e tabela de cidades com filtro por UF, busca e ordenação (maiores cidades, maior alta de Lula, maior alta de Flávio, mudou de líder). Relê a cada 2 min com a aba aberta.
+- Nota na página: o 1º turno tinha 12 candidatos; o Δ mostra a redistribuição dos votos, não a mudança de voto de cada eleitor.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Coletor simulado com respostas falsas do TSE: soma por UF, % e Δ corretos; a segunda leitura não baixa município sem mudança. Interface testada localmente com arquivo de teste (apagado, não publicado): ordenação, filtro e busca, sem erro de JS. Primeira leitura real: próxima volta do laço (até 5 min).
+
 ## C19.163 — YouTube: comentários da pré-campanha estavam coletados, mas não classificados; sentimento em ordem aleatória e em 4 partes paralelas (2026-10-25) 🔜
 
 **Pergunta** (18h38): "YouTube: tu não pegou comentários do Flávio da pré-campanha". Pegou. Acervo privado (`youtube/comentarios/comentarios.csv.gz`): vídeos de 20/07 a 15/08 têm 96.092 comentários lidos de Flávio (99.886 informados) e 30.220 de Lula (30.861 informados). 80 dos 82 vídeos de Flávio estão lidos até o fim; os outros 2 têm comentários indisponíveis (HTTP 400). O quadro de tom dizia "sem comentários coletados nesta fase" porque:

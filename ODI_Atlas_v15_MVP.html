@@ -2043,6 +2043,14 @@ let feito=false;new MutationObserver(()=>{if(sec.classList.contains('active')&&!
   <div class="odi-signal" id="r2Status" role="status">Aguardando leitura.</div>
   <div id="r2Br"></div>
   <div class="card" style="margin-top:17px"><div class="eyebrow">Ritmo da apuração</div><h2 class="tk-h2">Percentual de cada candidato conforme as seções foram totalizadas</h2><svg id="r2Serie" viewBox="0 0 760 260" style="width:100%;height:auto" role="img" aria-label="Evolução da apuração"></svg><p class="yt-cloudnote" id="r2SerieNota"></p></div>
+  <div class="card" style="margin-top:17px" id="r2Comp"><div class="eyebrow">1º turno × 2º turno · em tempo real</div><h2 class="tk-h2">Para onde foram os votos, estado a estado e cidade a cidade</h2>
+    <div class="odi-signal" id="rcStatus">Aguardando leitura dos municípios.</div>
+    <div class="db-scroll" style="max-height:520px"><table class="db-tab" id="rcUfs" style="width:100%"></table></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0 8px"><label>UF <select id="rcUf"><option value="">todas</option></select></label>
+      <label>Ordenar <select id="rcOrd"><option value="eleit">maiores cidades (válidos no 1º turno)</option><option value="dl">maior alta de Lula</option><option value="df">maior alta de Flávio</option><option value="virou">mudou de líder</option><option value="nome">nome</option></select></label>
+      <input type="search" id="rcBusca" placeholder="Buscar cidade…" aria-label="Buscar cidade"></div>
+    <div class="db-scroll" style="max-height:640px"><table class="db-tab" id="rcMun" style="width:100%"></table></div>
+    <p class="yt-cloudnote" id="rcNota"></p></div>
   <div class="card" style="margin-top:17px"><div class="eyebrow">Por unidade da federação</div><h2 class="tk-h2">Resultado em cada UF</h2><div class="db-scroll" style="max-height:560px"><table class="db-tab" id="r2Ufs" style="width:100%"></table></div><p class="yt-cloudnote" id="r2Fonte"></p></div>
 </section>
 <script>
@@ -5702,5 +5710,32 @@ tb.innerHTML='<div class="readme-source-header"><span>SÉRIE</span><span>ÚLTIMO
 const perf=x.perfis_no_arquivo!=null?` · ${x.perfis_lidos_no_ultimo_dia} de ${x.perfis_no_arquivo} perfis com leitura nessa data`:'';
 return `<div class="readme-source-row"><strong>${esc(x.nome)}<small>página: ${esc(x.pagina)}</small></strong><span>Último dado novo: <b>${esc(x.so_data&&x.ultimo_dado?x.ultimo_dado.slice(8,10)+'/'+x.ultimo_dado.slice(5,7):dh(x.ultimo_dado))}</b>${ha(x.horas_desde_ultimo_dado)}${perf}<small>Última tentativa: ${esc(dh(x.ultima_execucao))} · ${esc(x.status_ultima_execucao)}</small></span><span style="color:${ok?'#25613a':'#9b1c1c'};font-weight:700">${ok?'● em dia':'⛔ atrasada'}<small>prazo: ${x.max_horas} h · <a href="./${esc(x.fonte)}" download>${esc(x.fonte.split('/').slice(-2).join('/'))}</a></small></span></div>`;}).join('');}
 }).catch(()=>{});})();
+</script>
+<script>
+/* 1º × 2º turno por UF e município (C19.164): data/tse/segundo_turno/municipios.json, relido a cada 2 min com a aba aberta */
+(function(){const $=id=>document.getElementById(id);const sec=$('segundoTurno');if(!sec||!$('r2Comp'))return;
+const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));const fmt=n=>n==null?'—':Number(n).toLocaleString('pt-BR');
+const p=v=>v==null?'—':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+const d=(a,b)=>a==null||b==null?null:Math.round((a-b)*10)/10;const dp=v=>v==null?'—':(v>0?'+':'')+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});
+const CL='#c8102e',CF='#1f8a3b';let D=null,timer=null;
+const UFN={AC:'Acre',AL:'Alagoas',AM:'Amazonas',AP:'Amapá',BA:'Bahia',CE:'Ceará',DF:'Distrito Federal',ES:'Espírito Santo',GO:'Goiás',MA:'Maranhão',MG:'Minas Gerais',MS:'Mato Grosso do Sul',MT:'Mato Grosso',PA:'Pará',PB:'Paraíba',PE:'Pernambuco',PI:'Piauí',PR:'Paraná',RJ:'Rio de Janeiro',RN:'Rio Grande do Norte',RO:'Rondônia',RR:'Roraima',RS:'Rio Grande do Sul',SC:'Santa Catarina',SE:'Sergipe',SP:'São Paulo',TO:'Tocantins',ZZ:'Exterior'};
+const lider=(l,f)=>l==null||f==null?null:(l>f?'L':f>l?'F':'=');
+function ufs(){const U=Object.entries(D.ufs).sort((a,b)=>(UFN[a[0]]||a[0]).localeCompare(UFN[b[0]]||b[0],'pt'));
+ $('rcUfs').innerHTML=`<thead><tr><th>UF</th><th style="color:${CL}">Lula 1º t.</th><th style="color:${CL}">Lula 2º t.</th><th style="color:${CL}">Δ</th><th style="color:${CF}">Flávio 1º t.</th><th style="color:${CF}">Flávio 2º t.</th><th style="color:${CF}">Δ</th><th>Cidades 100% apuradas</th></tr></thead><tbody>${U.map(([u,x])=>{const lv=lider(x.l1,x.f1),lv2=lider(x.l2,x.f2);return `<tr><td><b>${esc(UFN[u]||u)}</b>${lv&&lv2&&lv!==lv2?' <small style="color:#9b1c1c">mudou o líder</small>':''}</td><td>${p(x.l1)}</td><td style="color:${CL};font-weight:${lv2==='L'?700:400}">${p(x.l2)}</td><td>${dp(d(x.l2,x.l1))}</td><td>${p(x.f1)}</td><td style="color:${CF};font-weight:${lv2==='F'?700:400}">${p(x.f2)}</td><td>${dp(d(x.f2,x.f1))}</td><td>${fmt(x.municipios_100)} de ${fmt(x.municipios)}</td></tr>`;}).join('')}</tbody>`;}
+function muns(){const uf=$('rcUf').value,q=($('rcBusca').value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),o=$('rcOrd').value;
+ let L=Object.entries(D.m).map(([k,m])=>({k,...m})).filter(m=>(!uf||m.uf===uf)&&(!q||String(m.nome||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(q)));
+ if(o==='virou')L=L.filter(m=>m.l2!=null&&lider(m.l1,m.f1)!==lider(m.l2,m.f2));
+ const B=D.base||{};L.sort((a,b)=>o==='dl'?(d(b.l2,b.l1)??-999)-(d(a.l2,a.l1)??-999):o==='df'?(d(b.f2,b.f1)??-999)-(d(a.f2,a.f1)??-999):o==='nome'?String(a.nome).localeCompare(String(b.nome),'pt'):((b.v1||0)-(a.v1||0)));
+ const n=L.length;L=L.slice(0,300);
+ $('rcMun').innerHTML=`<thead><tr><th>Cidade</th><th>UF</th><th style="color:${CL}">Lula 1º t.</th><th style="color:${CL}">Lula 2º t.</th><th style="color:${CL}">Δ</th><th style="color:${CF}">Flávio 1º t.</th><th style="color:${CF}">Flávio 2º t.</th><th style="color:${CF}">Δ</th><th>Apurado</th></tr></thead><tbody>${L.map(m=>{const v=m.l2!=null&&lider(m.l1,m.f1)!==lider(m.l2,m.f2);return `<tr><td><b>${esc(m.nome)}</b>${v?' <small style="color:#9b1c1c">mudou o líder</small>':''}</td><td>${esc(m.uf)}</td><td>${p(m.l1)}</td><td style="color:${CL}">${p(m.l2)}</td><td>${dp(d(m.l2,m.l1))}</td><td>${p(m.f1)}</td><td style="color:${CF}">${p(m.f2)}</td><td>${dp(d(m.f2,m.f1))}</td><td>${m.pst==null?'—':p(m.pst)}</td></tr>`;}).join('')}</tbody>`;
+ $('rcNota').innerHTML=`${fmt(n)} cidades no filtro${n>300?' (mostrando 300)':''}. ${esc(D.nota)} Fontes: 2º turno ${esc(D.fonte_2t)}; 1º turno ${esc(D.fonte_1t)}. <a href="./data/tse/segundo_turno/municipios.json" download>↓ Dados (JSON)</a>`;}
+function draw(){const br=new Date(D.lido_em_utc).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});
+ $('rcStatus').innerHTML=`<b>${fmt(D.municipios_lidos)} de ${fmt(D.municipios_total)} municípios</b> com dados do 2º turno · lido pelo Atlas em ${br} · ${fmt(D.baixados_nesta_leitura)} atualizados nesta leitura${D.erros?' · '+fmt(D.erros)+' falhas (tentadas de novo na próxima)':''}`;
+ const sel=$('rcUf');if(sel.options.length<2)sel.innerHTML='<option value="">todas</option>'+Object.keys(D.ufs).sort((a,b)=>(UFN[a]||a).localeCompare(UFN[b]||b,'pt')).map(u=>`<option value="${u}">${esc(UFN[u]||u)}</option>`).join('');
+ ufs();muns();}
+function ler(){fetch('./data/tse/segundo_turno/municipios.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(x=>{if(!x){$('rcStatus').textContent='⛔ Comparação por município ainda não gerada: sai na próxima leitura do TSE (a cada 5 min).';return;}D=x;draw();}).catch(()=>{});}
+['rcUf','rcOrd'].forEach(id=>$(id).addEventListener('change',()=>D&&muns()));$('rcBusca').addEventListener('input',()=>D&&muns());
+function ativo(){if(sec.classList.contains('active')){ler();if(!timer)timer=setInterval(ler,120000);}else if(timer){clearInterval(timer);timer=null;}}
+new MutationObserver(ativo).observe(sec,{attributes:true,attributeFilter:['class']});ativo();})();
 </script>
 </body></html>

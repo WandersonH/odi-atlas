@@ -165,6 +165,11 @@ def main(argv=None) -> int:
                       "c": {c["numero"]: c["pct"] for c in b.get("candidatos", [])}})
     out["serie_apuracao"] = serie
     (pasta / "resultado.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    try:  # município a município e UF a UF, com o 1º turno (25/10/2026, 19h43); roda no mesmo laço
+        import collect_resultados_2t_mun as mun
+        mun.main(root, pleito, ele)
+    except Exception as e:  # noqa: BLE001
+        print(f"municípios: ⛔ {type(e).__name__}: {str(e)[:200]}")
     b = out["brasil"]
     print(f"2º turno: {b['pct_secoes_totalizadas']}% das seções · " + " · ".join(f"{c['nome']} {c['pct']}%" for c in b["candidatos"])
           + f" · UFs lidas {len(out['ufs'])}/27 · erros {len(out['erros'])}")
