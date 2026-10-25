@@ -14,6 +14,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 **O que mudou na página.** A introdução descreve a leitura completa. O status mostra o total no acervo, os vídeos lidos até o fim, a % dos informados e a fase. No YouTube, a nota do quadro de amostra explica que a leitura é quase completa e de onde vem a diferença; as outras redes continuam com "amostra, não universo".
 **Sentimento.** 287.743 de 888.964 classificados; cada run tem limite de tempo (80 min). `sentimento-youtube.yml` passa de 1× para 4× por dia (08h40, 14h40, 20h40 e 02h40 de Brasília) até alcançar o acervo. Grátis.
 **Teste.** `python -m unittest discover -s tests -v`: OK. Render local das páginas de comentários do YouTube e do TikTok: textos novos, sem erro de JS.
+**Quadro "Tamanho da amostra"** (18h21, "não ia coletar isso para termos universo?"). Os 207 vídeos de Lula e os 30 de Flávio que pareciam "não lidos" não têm nenhum comentário na plataforma: comentários zerados ou desativados, a maior parte no canal "Brasil com Lula" (175) (`conteudo.json`). O quadro agora separa isso em todas as redes: vídeos ou posts com comentários lidos e, embaixo, quantos têm comentário na plataforma e quantos não têm nenhum. No YouTube, a nota explica a busca do universo. Os 4,3% e 2,3% que faltam são respostas da fase 2, que começa no próximo run, e comentários que a API não entrega (apagados, retidos ou marcados como spam).
 
 ## C19.159 — Resultado do 2º turno: página com a divulgação oficial do TSE, lida a cada 5 min (2026-10-25) ✅
 
