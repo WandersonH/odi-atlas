@@ -4,6 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.159 — Resultado do 2º turno: página com a divulgação oficial do TSE, lida a cada 5 min (2026-10-25) ✅
+
+**Pedido** (16h24): "preciso de uma página para receber os dados do 2º turno do TSE".
+**Fonte.** Divulgação oficial do TSE (resultados.tse.jus.br), os mesmos arquivos do aplicativo Resultados.
+- O código da eleição foi lido no config do TSE (`data/tse/segundo_turno/config_tse.json`): o 1º turno federal (6257) aponta o 2º turno em `cdt2` = **6258**.
+- Em 2026 o caminho mudou de `dados-simplificados/…-r.json` (2022) para `dados/<uf>/<uf>-c0001-e006258-u.json`. Isso foi conferido no navegador do aplicativo no computador do responsável, no Brasil: a primeira sonda pelo GitHub deu 404/403 no caminho antigo. A estrutura do arquivo também foi conferida ali: `s` seções, `e` eleitorado e comparecimento, `v` votos, `carg[0].agr[].par[].cand[]` candidatos.
+**O que mudou.**
+- `scripts/collect_resultados_2t.py` lê Brasil e as 28 abrangências (27 UFs + exterior). Grava cada leitura em `data/tse/segundo_turno/leituras/` e o retrato em `resultado.json`, com a série da apuração (% de seções × % de cada candidato).
+- `resultados-2t.yml`: laço a cada 5 min por até 5h40, que se redispara; para quando o Brasil e todas as UFs chegam a 100% das seções.
+- Página "Resultado do 2º turno (TSE)", no grupo Panorama: status com % apurado e horário do TSE; Lula e Flávio (Lula primeiro; ordem não indica preferência) com % dos válidos e votos; comparecimento, abstenção, brancos e nulos; curva da apuração; tabela por UF. Relê o arquivo a cada 60 s com a aba aberta.
+**Primeira leitura real** (GitHub, 20h58 UTC): horário do TSE 25/10, 17h06min31; 0,25% das seções (1.225 de 499.248); Lula 57,66% (193.574 votos), Flávio Bolsonaro 42,34% (142.169); 28 de 28 abrangências lidas, sem erro. Às 17h58 de Brasília o próprio arquivo do TSE, lido no navegador no Brasil, ainda estava em 17h06: o Atlas lê o mesmo arquivo do aplicativo.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Leitura testada com a estrutura real; render local com os dados de 17h06, sem erro de JS.
+**Pendente.** Mapa por município e alienação do 2º turno quando o TSE publicar a totalização nos Dados Abertos (`collect_alienacao.py --turno 2`).
+
 ## C19.158 — Debate da Globo: checagens das agências sobre o debate de 23/10 (2026-10-24) ⚠️
 
 **Pedido** (01h23): "acho que a checagem tinha que ser focada em hoje". O bloco de checagens da página do debate da Globo não tinha dados (`data/checagens/debate_globo.json` não existia). A busca automática de checagens (`collect_checagens.py`, ClaimReview) cobre o período todo e estava presa ao debate da Band.
