@@ -81,16 +81,27 @@ def main(root: Path = Path("."), pleito: str = "ele2026", ele: str = "6258") -> 
                 pendentes.append((sg, k, mu, novo_ht))
             M.setdefault(k, {"uf": uf["cd"].upper(), "nome": mu.get("nm"), "ibge": mu.get("cdi")})
 
+    import time
+    tipos = {}
+
     def baixa(t):
         sg, k, mu, novo_ht = t
-        try:
-            return k, novo_ht, votos(resumo(get(f"{BASE}/{pleito}/{ele}/dados/{sg}/{sg}{k}-c0001-e{int(ele):06d}-u.json", timeout=30)))
-        except Exception:  # noqa: BLE001
-            return k, None, None
-    with ThreadPoolExecutor(max_workers=24) as ex:
-        for k, novo_ht, v in ex.map(baixa, pendentes):
+        for tent in range(3):  # o TSE limita a frequência (403/429): espera e tenta de novo
+            try:
+                return k, novo_ht, votos(resumo(get(f"{BASE}/{pleito}/{ele}/dados/{sg}/{sg}{k}-c0001-e{int(ele):06d}-u.json", timeout=30))), None
+            except Exception as e:  # noqa: BLE001
+                err = f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
+                if getattr(e, "code", None) == 404:
+                    return k, None, None, err
+                time.sleep(2 * (tent + 1))
+        return k, None, None, err
+    # prioridade: municípios ainda sem nenhum dado, depois os maiores (válidos no 1º turno)
+    pendentes.sort(key=lambda t: (M.get(t[1], {}).get("l") is not None, -(b1.get(t[1], {}).get("validos") or 0)))
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        for k, novo_ht, v, err in ex.map(baixa, pendentes):
             if v is None:
                 erros += 1
+                tipos[err] = tipos.get(err, 0) + 1
                 continue
             M[k].update(v)
             M[k]["ht"] = novo_ht or M[k].get("ht")
@@ -122,15 +133,22 @@ def main(root: Path = Path("."), pleito: str = "ele2026", ele: str = "6258") -> 
         ufs[s] = {"l2": round(100 * u["l"] / t2, 2) if t2 else None, "f2": round(100 * u["f"] / t2, 2) if t2 else None,
                   "l1": round(100 * u["l1"] / u["v1"], 2) if u["v1"] else None, "f1": round(100 * u["f1"] / u["v1"], 2) if u["v1"] else None,
                   "votos_l": u["l"], "votos_f": u["f"], "municipios": u["mun"], "municipios_100": u["mun_100"]}
+    # 2º turno da UF: o número oficial do arquivo da UF (resultado.json), não a soma dos municípios já baixados
+    rp = pasta / "resultado.json"
+    if rp.exists():
+        for sg, r in (json.loads(rp.read_text(encoding="utf-8")).get("ufs") or {}).items():
+            c = {x["numero"]: x for x in r.get("candidatos", [])}
+            if sg in ufs and c.get(L) and c.get(F):
+                ufs[sg].update(l2=c[L]["pct"], f2=c[F]["pct"], votos_l=c[L]["votos"], votos_f=c[F]["votos"], pst=r.get("pct_secoes_totalizadas"))
     lidos = sum(1 for m in M.values() if m.get("l") is not None)
     out = {"lido_em_utc": agora, "fonte_2t": f"{BASE}/{pleito}/{ele}/dados/<uf>/<uf><mun>-c0001-e{int(ele):06d}-u.json",
            "fonte_1t": "TSE, Dados Abertos: votacao_candidato_munzona_2026, 1º turno (data/tse/presidente_1t_2026_munzona.csv.gz)",
            "nota": "Percentuais sobre os votos válidos. No 1º turno, % de Lula e de Flávio entre os válidos de 12 candidatos; no 2º, entre os "
                    "dois. A diferença (pontos percentuais) mostra a redistribuição dos votos, não a mudança de voto de cada eleitor. "
                    "A soma das UFs usa os municípios (exterior em ZZ).",
-           "municipios_total": len(M), "municipios_lidos": lidos, "baixados_nesta_leitura": len(pendentes), "erros": erros, "ufs": ufs, "m": M}
+           "municipios_total": len(M), "municipios_lidos": lidos, "baixados_nesta_leitura": len(pendentes) - erros, "erros": erros, "erros_por_tipo": tipos, "ufs": ufs, "m": M}
     ant_p.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"municípios: {lidos} de {len(M)} com dados · baixados agora {len(pendentes)} · erros {erros}")
+    print(f"municípios: {lidos} de {len(M)} com dados · baixados agora {len(pendentes) - erros} · erros {erros} {tipos}")
     return 0
 
 
