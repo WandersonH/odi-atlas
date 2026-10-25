@@ -53,6 +53,31 @@ class TestSentimento(unittest.TestCase):
             o = json.loads(pub)
             self.assertEqual((o["status"], o["candidatos"]["A"]["positivo"], o["candidatos"]["A"]["videos"]["v"]["n"]), ("ok", 100.0, 40))
 
+    def test_partes_em_paralelo_e_juncao(self):
+        with tempfile.TemporaryDirectory() as t:
+            root, interno = Path(t) / "r", Path(t) / "i"
+            (root / "data/config").mkdir(parents=True)
+            for f in ("sentimento_comentarios.json", "trends.json"):
+                (root / "data/config" / f).write_text((Path(__file__).resolve().parents[1] / "data/config" / f).read_text(encoding="utf-8"), encoding="utf-8")
+            d = interno / "youtube/comentarios"; d.mkdir(parents=True)
+            with gzip.open(d / "comentarios.csv.gz", "wt", encoding="utf-8", newline="") as f:
+                w = csv.DictWriter(f, ["comment_id", "candidate_id", "video_id", "publicado_em", "texto"], delimiter=";"); w.writeheader()
+                for i in range(30):
+                    w.writerow({"comment_id": f"c{i}", "candidate_id": "A", "video_id": "v", "publicado_em": "2026-08-01T00:00:00Z", "texto": f"t {i}"})
+            chamadas = []
+            fake = lambda ts: chamadas.append(len(ts)) or [{"rotulo": "NEG", "p_pos": .1, "p_neg": .8, "p_neu": .1} for _ in ts]
+            os.environ["ODI_INTERNO_DIR"] = str(interno)
+            try:
+                self.assertEqual(b.main([str(root), "--parte", "0/2"], classificar=fake), 0)
+                self.assertEqual(b.main([str(root), "--parte", "1/2"], classificar=fake), 0)
+                self.assertEqual(b.main([str(root)], classificar=fake), 0)  # junta: nada a classificar
+            finally:
+                del os.environ["ODI_INTERNO_DIR"]
+            self.assertEqual(sum(chamadas), 30)
+            self.assertEqual(len(chamadas), 2)
+            o = json.loads((root / "data/youtube/comentarios/sentimento.json").read_text(encoding="utf-8"))
+            self.assertEqual((o["status"], o["classificados_total"]), ("ok", 30))
+
 
 if __name__ == "__main__":
     unittest.main()

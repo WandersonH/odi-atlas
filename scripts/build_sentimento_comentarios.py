@@ -119,6 +119,10 @@ def agregar(rows: list[dict], rot: dict[str, str], fases: list[dict], min_n: int
     return out
 
 
+def ler_csv_dict(p: Path) -> dict:
+    return {r["comment_id"]: r for r in ler_csv(p)}
+
+
 def ler_csv(p: Path) -> list[dict]:
     if not p.exists():
         return []
@@ -146,9 +150,24 @@ def main(argv=None, classificar=None) -> int:
     rows = ler_csv(d / ("respostas.csv.gz" if plat == "x" else "comentarios.csv.gz"))
     # um comentário conta uma vez (o acervo pode repetir o id quando o mesmo comentário volta em duas coletas)
     rows = list({r["comment_id"]: r for r in rows if r.get("comment_id")}.values())
-    cache = {r["comment_id"]: r for r in ler_csv(d / "sentimento.csv.gz") if r.get("modelo") == cfg["modelo"]}
+    # --parte K/N: classifica só os comentários cujo id cai na parte K de N (jobs em paralelo) e grava em
+    # sentimento_parte_K.csv.gz; a execução normal junta o cache principal e as partes (25/10/2026)
+    parte_k = parte_n = None
+    if "--parte" in argv:
+        parte_k, parte_n = (int(x) for x in argv[argv.index("--parte") + 1].split("/"))
+    cache = {}
+    for arq in [d / "sentimento.csv.gz"] + sorted(d.glob("sentimento_parte_*.csv.gz")):
+        cache.update({r["comment_id"]: r for r in ler_csv(arq) if r.get("modelo") == cfg["modelo"]})
     pend = [r for r in rows if r["comment_id"] not in cache and (r.get("texto") or "").strip()]
-    pend.sort(key=lambda r: r.get("publicado_em", ""), reverse=True)  # mais recentes primeiro
+    if parte_n:
+        import zlib
+        pend = [r for r in pend if zlib.crc32(r["comment_id"].encode()) % parte_n == parte_k]
+        cache_parte = {k: v for k, v in ler_csv_dict(d / f"sentimento_parte_{parte_k}.csv.gz").items()}
+    # ordem aleatória fixa (semente 42): enquanto o acervo não está todo classificado, o que já foi classificado é uma amostra
+    # aleatória de todas as fases (antes, "mais recentes primeiro" deixava a pré-campanha sem nenhum classificado; 25/10/2026)
+    import random
+    pend.sort(key=lambda r: r["comment_id"])
+    random.Random(42).shuffle(pend)
     pend = pend[:cfg["max_por_execucao"]]
     revisao, feitos, t0 = "", 0, time.monotonic()
     if pend:
@@ -163,12 +182,18 @@ def main(argv=None, classificar=None) -> int:
             agora = now_utc()
             for r, s in zip(parte, classificar([r["texto"] for r in parte])):
                 cache[r["comment_id"]] = {"comment_id": r["comment_id"], **s, "modelo": cfg["modelo"], "revisao": revisao, "classificado_em": agora}
+                if parte_n:
+                    cache_parte[r["comment_id"]] = cache[r["comment_id"]]
             feitos += len(parte)
-            with gzip.open(d / "sentimento.csv.gz", "wt", encoding="utf-8", newline="") as f:
+            destino_cache = d / (f"sentimento_parte_{parte_k}.csv.gz" if parte_n else "sentimento.csv.gz")
+            with gzip.open(destino_cache, "wt", encoding="utf-8", newline="") as f:
                 w = csv.DictWriter(f, CAMPOS_CACHE, delimiter=";", lineterminator="\n")
                 w.writeheader()
-                w.writerows(cache.values())
+                w.writerows((cache_parte if parte_n else cache).values())
             print(f"  {feitos} classificados ({time.monotonic() - t0:.0f} s)", flush=True)
+    if parte_n:
+        print(f"parte {parte_k}/{parte_n}: {feitos} classificados neste run")
+        return 0
     rot = {k: v["rotulo"] for k, v in cache.items()}
     nomes = {}
     cj = root / f"data/{plat}/conteudo.json"

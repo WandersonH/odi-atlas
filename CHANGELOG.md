@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.163 — YouTube: comentários da pré-campanha estavam coletados, mas não classificados; sentimento em ordem aleatória e em 4 partes paralelas (2026-10-25) 🔜
+
+**Pergunta** (18h38): "YouTube: tu não pegou comentários do Flávio da pré-campanha". Pegou. Acervo privado (`youtube/comentarios/comentarios.csv.gz`): vídeos de 20/07 a 15/08 têm 96.092 comentários lidos de Flávio (99.886 informados) e 30.220 de Lula (30.861 informados). 80 dos 82 vídeos de Flávio estão lidos até o fim; os outros 2 têm comentários indisponíveis (HTTP 400). O quadro de tom dizia "sem comentários coletados nesta fase" porque:
+1. a classificação de sentimento seguia a ordem "mais recentes primeiro" e ainda não tinha chegado a julho e agosto: 287.743 de 888.964 classificados;
+2. o texto da página supunha que nenhuma rede tinha comentário antes de 16/08.
+**O que mudou.**
+- `build_sentimento_comentarios.py`: os pendentes vão em ordem aleatória fixa (semente 42). Enquanto o acervo não está todo classificado, o que já foi classificado é uma amostra aleatória de todas as fases.
+- Modo `--parte K/N`: cada job classifica uma parte dos ids (crc32 % N) e grava `sentimento_parte_K.csv.gz`. A execução normal junta o cache principal e as partes.
+- Novo `sentimento-paralelo.yml`: 4 partes em paralelo (cerca de 4 × 36 mil em 75 min), às 10h10 e 22h10 de Brasília, e depois dispara a agregação. Grátis (GitHub Actions).
+- Página: com sentimento parcial, a fase sem classificados mostra "⏳ ainda não classificados (classificação em andamento)". O texto do universo do YouTube foi atualizado para a leitura completa.
+**Teste.** `python -m unittest discover -s tests -v`: OK; novo teste de partes em paralelo e junção (30 comentários, 2 partes, nada reclassificado na junção). Render local das 5 páginas de comentários sem erro de JS. Disparado `sentimento-paralelo.yml` agora; resultado na próxima entrada.
+
 ## C19.162 — Reposição de 23 a 25/10 nas coletas pagas, depois do ajuste da conta Apify (2026-10-25) 🔜
 
 **Autorização.** Responsável em 25/10, 18h34: "já ajustei a conta, força rodar com uma carga histórica desses 2 dias".
