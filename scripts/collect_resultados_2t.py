@@ -125,6 +125,20 @@ def main(argv=None) -> int:
             out["ufs"][uf.upper()] = resumo(get(url(uf)))
         except Exception as e:  # noqa: BLE001
             out["erros"][uf] = f"{type(e).__name__}"
+    if "--sonda-mun" in (argv or sys.argv[1:]):  # descobre o arquivo por município (pedido de 25/10, 19h43)
+        b = f"{BASE}/{pleito}/{ele}/dados/sp/"
+        for nome in ("sp-c0001-e006258-u.json", "sp71072-c0001-e006258-u.json", "sp-c0001-e006258-v.json", "sp-e006258-ab.json",
+                     "sp-c0001-e006258-ab.json", "sp-c0001-e006258-e.json", "sp-e006258-u.json", "sp71072-c0001-e006258-v.json"):
+            try:
+                with urllib.request.urlopen(urllib.request.Request(b + nome, headers=UA), timeout=30) as r:
+                    raw = r.read()
+                dd = json.loads(raw.decode("utf-8"))
+                print(f"sonda {nome}: 200 · {len(raw)} bytes · chaves {sorted(dd.keys())[:25]} · {json.dumps(dd, ensure_ascii=False)[:500]}")
+            except Exception as e:  # noqa: BLE001
+                print(f"sonda {nome}: {type(e).__name__} {getattr(e, 'code', '')}")
+        cm = get(f"{BASE}/{pleito}/{ele}/config/mun-e{int(ele):06d}-cm.json")
+        print("sonda cm: abr", len(cm.get("abr", [])), "· 1º mun", json.dumps(cm["abr"][0]["mu"][0], ensure_ascii=False))
+        return 0
     if "brasil" not in out and "--sonda" in (argv or sys.argv[1:]):  # confere o caminho e a leitura com o 1º turno (6257)
         try:
             t1 = get(f"{BASE}/{pleito}/6257/dados/br/br-c0001-e006257-u.json")

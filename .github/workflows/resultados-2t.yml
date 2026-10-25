@@ -12,6 +12,10 @@ on:
         description: "só uma leitura, imprimindo as chaves do arquivo"
         type: boolean
         default: false
+      sonda_mun:
+        description: "só descobrir o arquivo por município"
+        type: boolean
+        default: false
 
 concurrency:
   group: resultados-2t
@@ -35,6 +39,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           INTERVALO: ${{ github.event.inputs.intervalo }}
         run: |
+          if [ "${{ github.event.inputs.sonda_mun }}" = "true" ]; then
+            python scripts/collect_resultados_2t.py --sonda-mun 2>&1 | while IFS= read -r l; do echo "::notice title=Sonda municípios::$(echo "$l" | cut -c1-900)"; done; exit 0
+          fi
           if [ "${{ github.event.inputs.sonda }}" = "true" ]; then
             python scripts/collect_resultados_2t.py --sonda 2>&1 | while IFS= read -r l; do echo "::notice title=Resultado 2º turno::$(echo "$l" | cut -c1-900)"; done
             scripts/commit_push.sh "Resultado do 2º turno: sonda (run ${{ github.run_id }})"; exit 0
