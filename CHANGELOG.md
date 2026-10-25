@@ -4,6 +4,10 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.167 — Resultado do 2º turno como primeira página do Panorama e do Atlas (2026-10-25) ✅
+
+O responsável (20h36): "coloca a página como primeira dessa seção". A aba "Resultado do 2º turno (TSE)" passa a ser a primeira do Panorama, é a que abre ao entrar no Atlas e é a do botão Panorama no menu. "Lula × Flávio Bolsonaro" (antiga abertura) vem em seguida. Render local: ao abrir, a aba ativa é a do 2º turno (59,77%, TSE 20h35min10; 5.757 municípios); as outras abas abrem normalmente, sem erro de JS.
+
 ## C19.166 — Link direto para as abas e chamada "ao vivo" no Panorama (2026-10-25) ✅
 
 O responsável (20h30): "onde está essa página?". A aba existia em Panorama → "Resultado do 2º turno (TSE)", mas sem destaque e sem link direto.
