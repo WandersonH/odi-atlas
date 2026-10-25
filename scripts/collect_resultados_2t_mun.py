@@ -84,16 +84,24 @@ def main(root: Path = Path("."), pleito: str = "ele2026", ele: str = "6258") -> 
     import time
     tipos = {}
 
+    limite = time.monotonic() + 150  # o laço do resultado nacional não pode esperar: até 2,5 min por leitura
+    falhas_seguidas = [0]
+
     def baixa(t):
         sg, k, mu, novo_ht = t
-        for tent in range(3):  # o TSE limita a frequência (403/429): espera e tenta de novo
+        if time.monotonic() > limite or falhas_seguidas[0] > 40:  # sem tempo, ou o TSE recusando em sequência: fica para a próxima
+            return k, None, None, "adiado"
+        for tent in range(2):  # o TSE limita a frequência (403/429): espera e tenta de novo
             try:
-                return k, novo_ht, votos(resumo(get(f"{BASE}/{pleito}/{ele}/dados/{sg}/{sg}{k}-c0001-e{int(ele):06d}-u.json", timeout=30))), None
+                v = votos(resumo(get(f"{BASE}/{pleito}/{ele}/dados/{sg}/{sg}{k}-c0001-e{int(ele):06d}-u.json", timeout=15)))
+                falhas_seguidas[0] = 0
+                return k, novo_ht, v, None
             except Exception as e:  # noqa: BLE001
                 err = f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
                 if getattr(e, "code", None) == 404:
                     return k, None, None, err
-                time.sleep(2 * (tent + 1))
+                time.sleep(1 + tent)
+        falhas_seguidas[0] += 1
         return k, None, None, err
     # prioridade: municípios ainda sem nenhum dado, depois os maiores (válidos no 1º turno)
     pendentes.sort(key=lambda t: (M.get(t[1], {}).get("l") is not None, -(b1.get(t[1], {}).get("validos") or 0)))
