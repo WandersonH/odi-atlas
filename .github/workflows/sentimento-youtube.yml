@@ -5,7 +5,7 @@ name: Sentimento dos comentários do YouTube
 on:
   workflow_dispatch:
   schedule:
-    - cron: "40 11 * * *"   # todo dia, 08h40 em Brasília (depois dos comentários das 07h50)
+    - cron: "40 11,17,23,5 * * *"   # 4x por dia (08h40, 14h40, 20h40, 02h40 de Brasília) até classificar o acervo completo do YouTube (C19.160)
 
 concurrency:
   group: sentimento-youtube

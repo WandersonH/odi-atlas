@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.160 — Comentários do YouTube: página mostra a leitura completa; sentimento 4× por dia até alcançar o acervo (2026-10-25) ✅
+
+**Pedido** (18h16): "parece que a página de YouTube ainda não foi atualizada". Os dados estavam atualizados (`analise.json` de 25/10, 11h44 de Brasília: Lula 524.790 comentários + 30.534 respostas; Flávio 318.307 + 15.333). Os textos da página, não:
+- A introdução ainda dizia "até 100 por relevância e 100 mais recentes".
+- O status mostrava o acervo da coleta diária (711.523) e não o total analisado.
+- O quadro de amostra dizia "o Atlas lê uma parte".
+**Leitura completa** (`manifesto_completo.json`, etapa de 25/10, 11h39): 1.510 de 1.512 vídeos lidos até o fim; 888.964 comentários e respostas, 97,0% dos 916.625 informados pelo YouTube (vídeos desde 20/07, pré-campanha incluída). Ainda na fase 1. Dois vídeos com HTTP 400 (comentários indisponíveis).
+**O que mudou na página.** A introdução descreve a leitura completa. O status mostra o total no acervo, os vídeos lidos até o fim, a % dos informados e a fase. No YouTube, a nota do quadro de amostra explica que a leitura é quase completa e de onde vem a diferença; as outras redes continuam com "amostra, não universo".
+**Sentimento.** 287.743 de 888.964 classificados; cada run tem limite de tempo (80 min). `sentimento-youtube.yml` passa de 1× para 4× por dia (08h40, 14h40, 20h40 e 02h40 de Brasília) até alcançar o acervo. Grátis.
+**Teste.** `python -m unittest discover -s tests -v`: OK. Render local das páginas de comentários do YouTube e do TikTok: textos novos, sem erro de JS.
+
 ## C19.159 — Resultado do 2º turno: página com a divulgação oficial do TSE, lida a cada 5 min (2026-10-25) ✅
 
 **Pedido** (16h24): "preciso de uma página para receber os dados do 2º turno do TSE".
