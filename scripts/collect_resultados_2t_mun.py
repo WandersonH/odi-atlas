@@ -50,7 +50,26 @@ def base_1t(root: Path) -> dict:
 def votos(r: dict) -> dict:
     c = {x["numero"]: x for x in r["candidatos"]}
     return {"pst": r["pct_secoes_totalizadas"], "l": (c.get(L) or {}).get("votos"), "f": (c.get(F) or {}).get("votos"),
-            "validos": r["validos"], "pct_abst": r["pct_abstencao"], "brancos": r["brancos"], "nulos": r["nulos"]}
+            "validos": r["validos"], "pct_abst": r["pct_abstencao"], "brancos": r["brancos"], "nulos": r["nulos"],
+            "comp": r["comparecimento"], "abst": r["abstencao"]}
+
+
+def alienacao(a, b, n, comp) -> dict:
+    """Mesma definição do 1º turno (data/tse/alienacao): sobre os aptos das seções já totalizadas (comparecimento + abstenção)."""
+    if a is None or comp is None or not (a + comp):
+        return {}
+    apt = a + comp
+    b, n = b or 0, n or 0
+    return {"pa": round(100 * a / apt, 2), "pb": round(100 * b / apt, 2), "pn": round(100 * n / apt, 2), "pal": round(100 * (a + b + n) / apt, 2)}
+
+
+def base_alienacao_1t(root: Path) -> dict:
+    p = root / "data/tse/alienacao/1t/resumo.json"
+    if not p.exists():
+        return {}
+    d = json.loads(p.read_text(encoding="utf-8"))
+    f = lambda x: {"pa": x["pct_abstencoes"], "pb": x["pct_brancos"], "pn": x["pct_nulos"], "pal": x["pct_alienacao"]}  # noqa: E731
+    return {"m": {k: f(x) for k, x in d["municipios"].items()}, "ufs": {k: f(x) for k, x in d["ufs"].items()}, "brasil": f(d["brasil"])}
 
 
 def main(root: Path = Path("."), pleito: str = "ele2026", ele: str = "6258") -> int:
@@ -77,7 +96,7 @@ def main(root: Path = Path("."), pleito: str = "ele2026", ele: str = "6258") -> 
             k = mu["cd"]
             reg = M.get(k)
             novo_ht = ht.get(k)
-            if reg is None or (novo_ht and novo_ht != reg.get("ht")) or (not novo_ht and (reg.get("pst") or 0) < 100):
+            if reg is None or "comp" not in reg or (novo_ht and novo_ht != reg.get("ht")) or (not novo_ht and (reg.get("pst") or 0) < 100):
                 pendentes.append((sg, k, mu, novo_ht))
             M.setdefault(k, {"uf": uf["cd"].upper(), "nome": mu.get("nm"), "ibge": mu.get("cdi")})
 
@@ -122,6 +141,13 @@ def main(root: Path = Path("."), pleito: str = "ele2026", ele: str = "6258") -> 
         tot = (m.get("l") or 0) + (m.get("f") or 0)
         if tot:
             m["l2"], m["f2"] = round(100 * m["l"] / tot, 2), round(100 * m["f"] / tot, 2)
+    # brancos, nulos e abstenção (alienação), 2º turno × 1º turno
+    A1 = base_alienacao_1t(root)
+    for k, m in M.items():
+        m.update({f"{x}2": v for x, v in alienacao(m.get("abst"), m.get("brancos"), m.get("nulos"), m.get("comp")).items()})
+        a1 = (A1.get("m") or {}).get(str(m.get("ibge")))
+        if a1:
+            m.update({f"{x}1": v for x, v in a1.items()})
     # UFs (soma dos municípios: 2º turno; 1º turno da base)
     U = defaultdict(lambda: {"l": 0, "f": 0, "v1": 0, "l1": 0, "f1": 0, "mun": 0, "mun_100": 0})
     for k, m in M.items():
@@ -148,12 +174,23 @@ def main(root: Path = Path("."), pleito: str = "ele2026", ele: str = "6258") -> 
             c = {x["numero"]: x for x in r.get("candidatos", [])}
             if sg in ufs and c.get(L) and c.get(F):
                 ufs[sg].update(l2=c[L]["pct"], f2=c[F]["pct"], votos_l=c[L]["votos"], votos_f=c[F]["votos"], pst=r.get("pct_secoes_totalizadas"))
+    br_al = {}
+    if rp.exists():
+        R = json.loads(rp.read_text(encoding="utf-8"))
+        for sg, r in (R.get("ufs") or {}).items():
+            if sg in ufs:
+                ufs[sg].update({f"{x}2": v for x, v in alienacao(r.get("abstencao"), r.get("brancos"), r.get("nulos"), r.get("comparecimento")).items()})
+                ufs[sg].update({f"{x}1": v for x, v in ((A1.get("ufs") or {}).get(sg) or {}).items()})
+        b = R.get("brasil") or {}
+        br_al = {**{f"{x}2": v for x, v in alienacao(b.get("abstencao"), b.get("brancos"), b.get("nulos"), b.get("comparecimento")).items()},
+                 **{f"{x}1": v for x, v in (A1.get("brasil") or {}).items()}}
     lidos = sum(1 for m in M.values() if m.get("l") is not None)
     out = {"lido_em_utc": agora, "fonte_2t": f"{BASE}/{pleito}/{ele}/dados/<uf>/<uf><mun>-c0001-e{int(ele):06d}-u.json",
            "fonte_1t": "TSE, Dados Abertos: votacao_candidato_munzona_2026, 1º turno (data/tse/presidente_1t_2026_munzona.csv.gz)",
            "nota": "Percentuais sobre os votos válidos. No 1º turno, % de Lula e de Flávio entre os válidos de 12 candidatos; no 2º, entre os "
                    "dois. A diferença (pontos percentuais) mostra a redistribuição dos votos, não a mudança de voto de cada eleitor. "
                    "A soma das UFs usa os municípios (exterior em ZZ).",
+           "alienacao_brasil": br_al, "definicao_alienacao": "Alienação = (abstenções + brancos + nulos) ÷ aptos, como no 1º turno (data/tse/alienacao); no 2º turno parcial, sobre os aptos das seções já totalizadas (comparecimento + abstenção).",
            "municipios_total": len(M), "municipios_lidos": lidos, "baixados_nesta_leitura": len(pendentes) - erros, "erros": erros, "erros_por_tipo": tipos, "ufs": ufs, "m": M}
     ant_p.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"municípios: {lidos} de {len(M)} com dados · baixados agora {len(pendentes) - erros} · erros {erros} {tipos}")

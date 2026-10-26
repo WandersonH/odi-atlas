@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.169 — Resultado do 2º turno: abstenção, brancos, nulos e alienação 1º × 2º turno por UF e município, com mapa (2026-10-26) ⚠️
+
+- **O que mudou:** pedido do responsável (26/10): "adicione o cálculo e mapa de brancos e nulos e abstenções" e "adicione nas tabelas também anteriores por estado".
+  - `scripts/collect_resultados_2t_mun.py` passa a guardar comparecimento e abstenção de cada município do 2º turno e calcula abstenção, brancos, nulos e alienação (% dos aptos das seções totalizadas: aptos = comparecimento + abstenção). O 1º turno vem de `data/tse/alienacao/1t/resumo.json` (mesma definição já usada no Atlas). Por UF, o 2º turno vem do `resultado.json` oficial. Novos campos `alienacao_brasil` e `definicao_alienacao`.
+  - Página (seção 2º turno): tabela por UF com colunas Abstenção, Brancos, Nulos e Alienação 1º → 2º; tabela por município com Abstenção, Brancos + nulos e Alienação 1º → 2º e ordenação por alienação e variação; mapa com modos abstenção, brancos, nulos, alienação (sétimos) e variação da alienação (divergente, ±10 pp); linha Brasil no status.
+- **Por quê:** comparar a participação entre turnos no mesmo nível (UF e município) que os votos.
+- **Teste executado:** `python -m unittest discover -s tests -v` → 234 testes OK; `alienacao(337841,4158,5153,345054)` → pa 49,47 · pb 0,61 · pn 0,75 · pal 50,84; base 1º turno lida com 5.571 municípios (Brasil 1º turno: abstenção 21,08% · brancos 1,45% · nulos 2,31% · alienação 24,84%); render local com Playwright dos modos pa, pal, dal e da ordenação por alienação, sem erro de JavaScript.
+- **Pendente:** os campos do 2º turno por município só aparecem depois da próxima leitura do loop `resultados-2t.yml` (o coletor força um novo download de todos os municípios porque o arquivo atual não tem comparecimento). Até lá a página mostra "—". Verificar `municipios.json` após o loop.
+- **Evidência:** `data/tse/segundo_turno/municipios.json` (próxima leitura), `data/tse/alienacao/1t/resumo.json`.
+
 ## C19.168 — Resultado do 2º turno: mapa por município em tempo real (2026-10-25) ✅
 
 O responsável (20h40): "faltou só o mapa nessa página". O bloco "1º turno × 2º turno" ganhou um mapa dos municípios.
