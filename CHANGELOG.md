@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.170 — Caso 009: coleta do reel de @nikolasferreiradm ("O Nordeste que foi esquecido"), com transcrição (2026-10-26) 🔜
+
+- **Pedido:** "vamos criar um estudo deste post" (instagram.com/reel/DeuEvFlRfuH) e "esse post foi arquivado, preciso de uma cópia dele na página". Autorização: "aprovado" (26/10/2026, 02h04) para a proposta de teto **US$ 3,50**: reel com compartilhamentos e transcrição, perfil do autor, até 2.000 comentários, vídeo e capa guardados no privado.
+- **Verificado antes da coleta (26/10, 01h55, navegador do responsável, sem login):** o post ainda abria. Autor @nikolasferreiradm, publicado em 20/10/2026, legenda "O Nordeste que foi esquecido.", 7.366.959 curtidas, 1.437.037 comentários (texto da página). Internet Archive: nenhuma cópia (consulta CDX vazia). archive.today: pediu CAPTCHA, não foi usado. O post não estava no acervo do Atlas.
+- **O que mudou:** `scripts/coletar_caso_instagram.py` ganha `--transcricao` (campo `includeTranscript` do apify/instagram-reel-scraper, US$ 0,041 por minuto iniciado; teto da etapa US$ 0,30). `coletar-caso-instagram.yml` ganha a entrada `transcricao`.
+- **Teste executado:** `python -m unittest discover -s tests -v` → OK, com teste novo (`TestTranscricao`).
+- **Pendente:** rodar a coleta, guardar a mídia (`arquivar-midia-caso.yml`) e montar a página do caso 009; custo real e números entram na próxima entrada.
+
 ## C19.169 — Resultado do 2º turno: abstenção, brancos, nulos e alienação 1º × 2º turno por UF e município, com mapa (2026-10-26) ⚠️
 
 - **O que mudou:** pedido do responsável (26/10): "adicione o cálculo e mapa de brancos e nulos e abstenções" e "adicione nas tabelas também anteriores por estado".

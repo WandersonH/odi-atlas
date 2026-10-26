@@ -12,7 +12,7 @@ Cada execução é gravada como as importadas (scripts/importar_apify_runs.py), 
 
 Saída privada: ODI_INTERNO_DIR/casos/<caso>/apify/<run_id>.json, manifesto_coleta.json e perfil_instagram.json.
 Saída pública: nenhuma direta (o build do caso agrega).
-Uso: python scripts/coletar_caso_instagram.py --caso 008 --url https://www.instagram.com/reel/<código>/ --teto 3.0 [--comentarios 2000]
+Uso: python scripts/coletar_caso_instagram.py --caso 008 --url https://www.instagram.com/reel/<código>/ --teto 3.0 [--comentarios 2000] [--transcricao]
 """
 from __future__ import annotations
 
@@ -29,6 +29,7 @@ from net import now_utc  # noqa: E402
 PRECO_COMENTARIO = 1.40 / 1000
 RESERVA_PERFIL = 0.10   # mínimo de maxTotalChargeUsd aceito pelo Apify; o custo real do perfil no caso 007 foi 0
 MIN_CAP = 0.10
+CAP_TRANSCRICAO = 0.30
 
 
 def arg(argv, k, d=None):
@@ -39,7 +40,7 @@ def custo(run: dict | None) -> float:
     return float((run or {}).get("usageTotalUsd") or 0)
 
 
-def coletar(caso: str, url: str, teto: float, maximo: int, priv: Path, executar) -> dict:
+def coletar(caso: str, url: str, teto: float, maximo: int, priv: Path, executar, transcricao: bool = False) -> dict:
     priv.mkdir(parents=True, exist_ok=True)
     gasto, regs, erros = 0.0, [], []
     # nova tentativa no mesmo caso: execuções já gravadas contam no teto e não se repetem (o custo informado logo após o fim
@@ -77,8 +78,9 @@ def coletar(caso: str, url: str, teto: float, maximo: int, priv: Path, executar)
     if "apify/instagram-reel-scraper" in feitos:
         itens = feitos["apify/instagram-reel-scraper"].get("items") or []
     else:
-        e1 = {"username": [url], "includeSharesCount": True, "includeTranscript": False, "includeDownloadedVideo": False}
-        run, itens = tentar("apify~instagram-reel-scraper", e1, min(MIN_CAP, teto))
+        # transcrição (caso 009, autorizada em 26/10/2026): US$ 0,041 por minuto iniciado; o teto da etapa cobre até ~6 min
+        e1 = {"username": [url], "includeSharesCount": True, "includeTranscript": transcricao, "includeDownloadedVideo": False}
+        run, itens = tentar("apify~instagram-reel-scraper", e1, min(CAP_TRANSCRICAO if transcricao else MIN_CAP, teto))
         if run:
             gasto += custo(run)
             gravar("apify/instagram-reel-scraper · Instagram Reel Scraper", e1, run, itens)
@@ -126,7 +128,7 @@ def main(argv=None, executar=None) -> int:
         print("⛔ URL de post do Instagram inválida")
         return 1
     executar = executar or (lambda ator, pl, cap: run_actor(token, ator, pl, cap))
-    man = coletar(caso, url, float(teto), maximo, Path(interno) / f"casos/{caso}/apify", executar)
+    man = coletar(caso, url, float(teto), maximo, Path(interno) / f"casos/{caso}/apify", executar, "--transcricao" in argv)
     print(f"caso {caso}: {len(man['runs'])} execuções · itens {[r['itens'] for r in man['runs']]} · perfil lido: {man['perfil_lido']} · dentro do teto: {man['gasto_usd'] <= man['teto_usd']}")
     for e in man["erros"]:
         print("⛔ " + e)

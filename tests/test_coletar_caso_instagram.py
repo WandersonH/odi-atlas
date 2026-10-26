@@ -64,3 +64,21 @@ class TestColetarCaso(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTranscricao(unittest.TestCase):
+    def test_transcricao_liga_o_campo_e_aumenta_o_teto_da_etapa(self):
+        ch = []
+
+        def executar(ator, pl, cap):
+            ch.append((ator, pl, cap))
+            return {"id": f"r{len(ch)}", "status": "SUCCEEDED", "usageTotalUsd": 0.01}, [{"ownerUsername": "autor", "videoPlayCount": 1}]
+        with tempfile.TemporaryDirectory() as d:
+            cc.coletar("009", "u", 3.5, 2000, Path(d) / "a", executar, transcricao=True)
+            self.assertTrue(ch[0][1]["includeTranscript"])
+            self.assertEqual(ch[0][2], cc.CAP_TRANSCRICAO)
+        ch.clear()
+        with tempfile.TemporaryDirectory() as d:
+            cc.coletar("009", "u", 3.5, 2000, Path(d) / "a", executar)
+            self.assertFalse(ch[0][1]["includeTranscript"])
+            self.assertEqual(ch[0][2], cc.MIN_CAP)

@@ -17,6 +17,9 @@ on:
       comentarios:
         description: "máximo de comentários"
         default: "2000"
+      transcricao:
+        description: "transcrever a fala do vídeo (US$ 0,041 por minuto)"
+        default: "false"
 
 permissions:
   contents: read
@@ -49,8 +52,9 @@ jobs:
           URL: ${{ inputs.url }}
           TETO: ${{ inputs.teto }}
           MAXIMO: ${{ inputs.comentarios }}
+          TRANSCRICAO: ${{ inputs.transcricao }}
         run: |
-          python scripts/coletar_caso_instagram.py --caso "$CASO" --url "$URL" --teto "$TETO" --comentarios "$MAXIMO" > s.txt 2>&1; rc=$?
+          python scripts/coletar_caso_instagram.py --caso "$CASO" --url "$URL" --teto "$TETO" --comentarios "$MAXIMO" $([ "$TRANSCRICAO" = "true" ] && echo --transcricao) > s.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Coleta do caso::$(echo "$l" | cut -c1-400)"; done < s.txt
           exit $rc
       - name: Gravar no repositório privado
