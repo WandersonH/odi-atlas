@@ -1,0 +1,60 @@
+name: Circulação dos posts de um caso (leitura diária, conta 1, teto em data/config/circulacao_caso.json)
+
+# Pedido do responsável (26/10/2026, 02h11): comparar a circulação do reel do caso 009 com o carrossel DeujIRxGDYZ.
+# O script para sozinho depois da data final ou no teto. Números públicos no repositório público; estado e custo no privado.
+on:
+  schedule:
+    - cron: "47 12 * * *"   # 09h47 em Brasília
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        default: "009"
+      sem_coleta:
+        description: "só refazer o arquivo público, sem nova leitura"
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: circulacao-caso
+  cancel-in-progress: false
+
+jobs:
+  circulacao:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Ler
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          CASO: ${{ inputs.caso || '009' }}
+          SEM: ${{ inputs.sem_coleta || 'false' }}
+        run: |
+          python scripts/circulacao_caso.py --caso "$CASO" $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Circulação::$(echo "$l" | cut -c1-400)"; done < s.txt
+          exit $rc
+      - name: Gravar no privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Circulação do caso (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Gravar no público
+        run: scripts/commit_push.sh "Circulação do caso ${{ inputs.caso || '009' }} (run ${{ github.run_id }})"

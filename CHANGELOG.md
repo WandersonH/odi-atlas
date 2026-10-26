@@ -10,7 +10,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **O que mudou:** `scripts/coletar_caso_instagram.py`: se o post for `/p/` e o leitor de reels não devolver nada, usa `apify/instagram-scraper` (`directUrls`, `resultsType: details`, US$ 0,0026 por resultado, sem compartilhamentos). Coleta em `casos/009b/` no privado, para não reaproveitar por engano a leitura do reel.
 - **Resultado parcial do reel (run Apify NNKuWbTs8PxAU2zyX, 26/10 05h06 UTC, custo US$ 0,001):** publicado em 20/10/2026 14h59 UTC; 179,4 s; 165.446.023 reproduções; 7.366.980 curtidas; 1.437.076 comentários; 3.285.050 compartilhamentos; autor com 26.027.345 seguidores (run wmFUagbYRaYWZdAHH). O áudio está silenciado pelo Instagram (`musicInfo.should_mute_audio_reason`: "This song is currently unavailable."), e a transcrição não veio (`error: partial_data`). Os comentários (datadoping) falharam na leitura (IncompleteRead), como no 008: importar a execução com `importar-apify.yml`, sem nova coleta.
 - **Teste executado:** `python -m unittest discover -s tests -v` → 237 OK (novos: `TestPostComum`).
-- **Pendente:** coleta do carrossel, importação dos comentários do reel, leitura diária por 7 dias, página do caso.
+- **Leitura diária:** `scripts/circulacao_caso.py` + `circulacao-caso.yml` (09h47 em Brasília) + `data/config/circulacao_caso.json`: uma leitura por dia de cada post até 02/11/2026, teto US$ 0,20 (reel com compartilhamentos; carrossel pelo leitor geral, sem compartilhamentos). O ponto zero é a coleta do caso. Público: `data/casos/009/circulacao.json` (só números; autor só com 10 mil+ seguidores; sem custo). Testes novos em `tests/test_circulacao_caso.py`.
+- **Pendente:** coleta do carrossel, importação dos comentários do reel, página do caso.
 
 ## C19.170 — Caso 009: coleta do reel de @nikolasferreiradm ("O Nordeste que foi esquecido"), com transcrição (2026-10-26) 🔜
 
