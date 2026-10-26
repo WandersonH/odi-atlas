@@ -130,7 +130,7 @@ def main(argv=None, executar=run_actor, root: Path = Path(".")) -> int:
         ls = est["leituras"][cod]
         seg = seguidores(interno, post["pasta"])
         autor = next((x["autor"] for x in ls if x.get("autor")), None)
-        pub["posts"].append({"codigo": cod, "url": post["url"], "rotulo": post["rotulo"], "tipo": next((x["tipo"] for x in ls if x.get("tipo")), None),
+        pub["posts"].append({"codigo": cod, "url": post["url"], "rotulo": post["rotulo"], "descricao": post.get("descricao"), "tipo": next((x["tipo"] for x in ls if x.get("tipo")), None),
                              "publicado_em_utc": next((x["publicado_em_utc"] for x in ls if x.get("publicado_em_utc")), None),
                              "autor": autor if (seg or 0) >= MIN_PUBLICO else None, "seguidores_autor": seg,
                              "tem_compartilhamentos": post["ator"] == "reel",
