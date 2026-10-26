@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "stage": "P1-origem",
-  "run_started_utc": "2026-10-19T16:29:27Z",
+  "run_started_utc": "2026-10-26T16:09:07Z",
   "runner": {
-    "github_run_id": "39285801400",
-    "github_sha": "8ef8896f8c531ca02f0841ef00c689114d74fff0",
+    "github_run_id": "40356254752",
+    "github_sha": "345b1738ec3dbd8ffb0fc26e6c3c69bdf6e10c11",
     "github_repository": "WandersonH/odi-atlas"
   },
   "tse": {
@@ -23,17 +23,17 @@
       "download": {
         "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2022.zip",
         "file": "votacao_candidato_munzona_2022.zip",
-        "bytes": 636048104,
-        "sha256": "bf030dc4644053a1b98c3c2ab54d87de2b59ad89a5a0893f978f087f57df47d4",
+        "bytes": 642592078,
+        "sha256": "56265a50afc3765efeabc3d88b1e8ef35796ac38572fb1344496f3d3c8543369",
         "http": {
-          "Last-Modified": "Sun, 18 Oct 2026 07:11:25 GMT",
-          "ETag": "\"25e952e8-65e181b00e754\"",
-          "Content-Length": "636048104",
+          "Last-Modified": "Sat, 24 Oct 2026 07:24:58 GMT",
+          "ETag": "\"264d2d4e-65e90fe80037a\"",
+          "Content-Length": "642592078",
           "Content-Type": "application/zip",
           "Content-Encoding": null
         },
-        "started_at_utc": "2026-10-19T16:29:27Z",
-        "finished_at_utc": "2026-10-19T16:29:31Z"
+        "started_at_utc": "2026-10-26T16:09:08Z",
+        "finished_at_utc": "2026-10-26T16:09:27Z"
       },
       "extract": {
         "files": [
@@ -215,34 +215,34 @@
         "rows_written": 69113,
         "duplicates_dropped": 69113,
         "rows_by_uf": {
-          "MG": 9878,
+          "PA": 1749,
           "SP": 8580,
-          "GO": 2849,
-          "RJ": 2013,
+          "BA": 4950,
+          "SC": 3454,
+          "PR": 4620,
+          "MA": 2453,
+          "TO": 1540,
           "PB": 2530,
           "CE": 2255,
-          "TO": 1540,
-          "MS": 968,
-          "PI": 2530,
-          "BA": 4950,
           "MT": 1606,
-          "ES": 935,
-          "SC": 3454,
-          "AC": 253,
-          "RS": 5742,
           "SE": 847,
-          "MA": 2453,
-          "PA": 1749,
-          "PR": 4620,
-          "RR": 176,
+          "RJ": 2013,
           "PE": 2299,
-          "RN": 1892,
-          "ZZ": 1991,
-          "DF": 209,
-          "RO": 616,
+          "AC": 253,
+          "MG": 9878,
+          "ES": 935,
+          "PI": 2530,
           "AL": 1177,
+          "RS": 5742,
+          "AM": 814,
           "AP": 187,
-          "AM": 814
+          "ZZ": 1991,
+          "RN": 1892,
+          "GO": 2849,
+          "RO": 616,
+          "RR": 176,
+          "MS": 968,
+          "DF": 209
         },
         "header": [
           "DT_GERACAO",
@@ -298,7 +298,7 @@
         ],
         "candidate_column": "NR_CANDIDATO",
         "output": "data/tse/presidente_1t_2022_munzona.csv.gz",
-        "output_sha256": "78fa95318186c46c65156fc8d0edb8c42bba16d5540b084816aa5a90eb121806"
+        "output_sha256": "c47d1ddf98b46521e8f1e30b90c2b4c8a0984751a7e5c6a086149124c0827b7d"
       },
       "status": "ok"
     },
@@ -317,17 +317,17 @@
       "download": {
         "url": "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2026.zip",
         "file": "votacao_candidato_munzona_2026.zip",
-        "bytes": 453421136,
-        "sha256": "197222cff9df45f64dda9edcc82492c6aa19b97fe329c161a26ed39ba950a5ba",
+        "bytes": 452159174,
+        "sha256": "cef14bbf848da85cb1462657c9d3c95cd2d76d9b884c4ccd579e0384035be9a6",
         "http": {
-          "Last-Modified": "Mon, 19 Oct 2026 16:14:01 GMT",
-          "ETag": "\"1b06a850-65e33cd5422c1\"",
-          "Content-Length": "453421136",
+          "Last-Modified": "Sun, 25 Oct 2026 16:16:37 GMT",
+          "ETag": "\"1af366c6-65eac89a8ef12\"",
+          "Content-Length": "452159174",
           "Content-Type": "application/zip",
           "Content-Encoding": null
         },
-        "started_at_utc": "2026-10-19T16:31:49Z",
-        "finished_at_utc": "2026-10-19T16:32:50Z"
+        "started_at_utc": "2026-10-26T16:11:37Z",
+        "finished_at_utc": "2026-10-26T16:11:42Z"
       },
       "extract": {
         "files": [
@@ -369,7 +369,7 @@
           },
           {
             "name": "votacao_candidato_munzona_2026_BRASIL.csv",
-            "rows_read": 6735370,
+            "rows_read": 6734817,
             "rows_presidente_1t": 75504,
             "duplicates": 75504
           },
@@ -435,7 +435,7 @@
           },
           {
             "name": "votacao_candidato_munzona_2026_PE.csv",
-            "rows_read": 180785,
+            "rows_read": 180576,
             "rows_presidente_1t": 0,
             "duplicates": 0
           },
@@ -459,7 +459,7 @@
           },
           {
             "name": "votacao_candidato_munzona_2026_RN.csv",
-            "rows_read": 46096,
+            "rows_read": 45752,
             "rows_presidente_1t": 0,
             "duplicates": 0
           },
@@ -509,34 +509,34 @@
         "rows_written": 75504,
         "duplicates_dropped": 75504,
         "rows_by_uf": {
-          "RS": 6264,
-          "BA": 5400,
-          "MG": 10776,
-          "MA": 2676,
           "PB": 2760,
-          "SP": 9348,
-          "ZZ": 2232,
-          "AM": 888,
-          "AC": 276,
-          "CE": 2460,
-          "RJ": 2196,
-          "DF": 228,
-          "GO": 3108,
+          "RS": 6264,
           "SC": 3780,
-          "AP": 216,
-          "TO": 1680,
-          "PA": 1920,
-          "AL": 1284,
-          "PE": 2508,
-          "SE": 924,
-          "PI": 2760,
-          "RO": 672,
           "MT": 1764,
+          "RO": 672,
+          "AL": 1284,
+          "AC": 276,
+          "AP": 216,
+          "BA": 5400,
+          "RJ": 2196,
+          "PI": 2760,
+          "MG": 10776,
+          "ZZ": 2232,
+          "MA": 2676,
+          "AM": 888,
+          "SP": 9348,
+          "RR": 192,
+          "PA": 1920,
           "RN": 2064,
+          "PE": 2508,
+          "CE": 2460,
+          "TO": 1680,
+          "GO": 3108,
+          "SE": 924,
+          "MS": 1056,
           "PR": 5052,
           "ES": 1020,
-          "MS": 1056,
-          "RR": 192
+          "DF": 228
         },
         "header": [
           "DT_GERACAO",
@@ -592,7 +592,7 @@
         ],
         "candidate_column": "NR_CANDIDATO",
         "output": "data/tse/presidente_1t_2026_munzona.csv.gz",
-        "output_sha256": "eca312e71620e109388e3935b626b114c1ed859c05d5ad6bc3a3c7eeaa1a0179"
+        "output_sha256": "95b12d70d54ad7c97490dd1033680dd442bc4eb50bcac8b1a84806651ccf01dc"
       },
       "status": "ok"
     }
@@ -610,8 +610,8 @@
         "Content-Type": "application/zip",
         "Content-Encoding": null
       },
-      "started_at_utc": "2026-10-19T16:34:32Z",
-      "finished_at_utc": "2026-10-19T16:34:42Z"
+      "started_at_utc": "2026-10-26T16:13:17Z",
+      "finished_at_utc": "2026-10-26T16:13:25Z"
     },
     "municipios_malha": {
       "source_dbf": "BR_Municipios_2025.dbf",
@@ -638,24 +638,14 @@
       "output_sha256": "f8a18a1405a2d975ca5d0b07d229c50126d8d678f1995162778200b17689e022"
     },
     "municipios_api": {
-      "url": "https://servicodados.ibge.gov.br/api/v1/localidades/municipios",
-      "file": "municipios_api.json",
-      "bytes": 2470036,
-      "sha256": "86ecdccdf97d72e7e5e46f0854cfcea8bacc28154cc1bc4ed0e6110e3a6c9c02",
-      "http": {
-        "Last-Modified": null,
-        "ETag": null,
-        "Content-Length": null,
-        "Content-Type": "application/json; charset=utf-8",
-        "Content-Encoding": "gzip"
-      },
-      "started_at_utc": "2026-10-19T16:34:42Z",
-      "finished_at_utc": "2026-10-19T16:34:43Z",
-      "count": 5571
+      "status": "erro",
+      "error": "URLError: <urlopen error [Errno 110] Connection timed out>"
     }
   },
   "blocked": [],
-  "warnings": [],
-  "run_finished_utc": "2026-10-19T16:34:43Z",
+  "warnings": [
+    "IBGE API de localidades indisponível: <urlopen error [Errno 110] Connection timed out>"
+  ],
+  "run_finished_utc": "2026-10-26T16:15:42Z",
   "status": "ok"
 }
