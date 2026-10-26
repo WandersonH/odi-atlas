@@ -13,7 +13,7 @@ Lê, na conta indicada (padrão APIFY_TOKEN = conta 1):
 
 Saída privada: ODI_INTERNO_DIR/casos/<caso>/apify/<run_id>.json (metadados, entrada e itens brutos) e manifesto.json.
 Saída pública: data/casos/<caso>/importacao_apify.json (só metadados das execuções: ator, datas, contagens; sem texto nem autor).
-Uso: python scripts/importar_apify_runs.py --caso 006 --de 2026-09-23 --ate 2026-09-24 [--ator xquik] [--segredo APIFY_TOKEN]
+Uso: python scripts/importar_apify_runs.py --caso 006 --de 2026-09-23 --ate 2026-09-24 [--ator xquik] [--segredo APIFY_TOKEN] [--url <código do post>]
 """
 from __future__ import annotations
 
@@ -47,7 +47,26 @@ def listar_runs(token: str, de: str, ate: str, chamar=api) -> list[dict]:
         offset += len(itens)
 
 
-def importar(token: str, caso: str, de: str, ate: str, filtro_ator: str, priv: Path, pub: Path, chamar=api) -> dict:
+def paginas(chamar, token: str, ds: str, n: int = 500, tentativas: int = 3) -> list:
+    """Itens do dataset em páginas, com nova tentativa por página (a leitura de uma vez falhou com IncompleteRead nos casos 008 e 009)."""
+    out, off = [], 0
+    while True:
+        for t in range(tentativas):
+            try:
+                pg = chamar("GET", f"/datasets/{ds}/items?clean=true&format=json&limit={n}&offset={off}", token) or []
+                break
+            except urllib.error.HTTPError:
+                raise
+            except Exception:  # noqa: BLE001 — IncompleteRead, conexão interrompida
+                if t == tentativas - 1:
+                    raise
+        out.extend(pg)
+        if len(pg) < n:
+            return out
+        off += n
+
+
+def importar(token: str, caso: str, de: str, ate: str, filtro_ator: str, priv: Path, pub: Path, chamar=api, filtro_url: str = "") -> dict:
     agora = now_utc()
     nomes, regs = {}, []
     runs = listar_runs(token, de, ate, chamar)
@@ -72,8 +91,11 @@ def importar(token: str, caso: str, de: str, ate: str, filtro_ator: str, priv: P
             reg["entrada"] = f"⛔ HTTP {e.code} (apagada pela retenção do Apify ou inexistente)"
         except Exception as e:  # noqa: BLE001
             reg["entrada"] = f"⛔ {type(e).__name__}"
+        # 26/10/2026: caso 009 e 009b usam o mesmo ator no mesmo dia; --url separa pelo código do post na entrada
+        if filtro_url and filtro_url not in json.dumps(entrada or {}, ensure_ascii=False):
+            continue
         try:
-            itens = chamar("GET", f"/datasets/{r.get('defaultDatasetId')}/items?clean=true&format=json", token) or []
+            itens = paginas(chamar, token, r.get("defaultDatasetId"))
             reg["itens"] = len(itens)
         except urllib.error.HTTPError as e:
             reg["itens"] = None
@@ -106,7 +128,8 @@ def main(argv=None) -> int:
     if not token or not interno:
         print(f"⛔ falta {segredo if not token else 'ODI_INTERNO_DIR'}")
         return 1
-    man = importar(token, caso, de, ate, arg(argv, "--ator", "") or "", Path(interno) / f"casos/{caso}/apify", Path("data/casos") / caso)
+    man = importar(token, caso, de, ate, arg(argv, "--ator", "") or "", Path(interno) / f"casos/{caso}/apify", Path("data/casos") / caso,
+                   filtro_url=arg(argv, "--url", "") or "")
     print(f"janela {de}..{ate}: {man['runs_na_janela']} runs; importados {man['runs_importados']}; com itens {man['com_itens']}; itens {man['itens_total']}")
     return 0 if man["runs_importados"] else 1
 

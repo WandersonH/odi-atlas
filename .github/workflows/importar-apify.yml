@@ -17,6 +17,9 @@ on:
       ator:
         description: "trecho do nome do ator (vazio = todos)"
         default: "xquik"
+      url:
+        description: "código do post na entrada da execução (vazio = sem filtro)"
+        default: ""
 
 permissions:
   contents: write
@@ -47,7 +50,7 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/importar_apify_runs.py --caso "${{ inputs.caso }}" --de "${{ inputs.de }}" --ate "${{ inputs.ate }}" --ator "${{ inputs.ator }}" > s.txt 2>&1; rc=$?
+          python scripts/importar_apify_runs.py --caso "${{ inputs.caso }}" --de "${{ inputs.de }}" --ate "${{ inputs.ate }}" --ator "${{ inputs.ator }}" --url "${{ inputs.url }}" > s.txt 2>&1; rc=$?
           tail -n 9 s.txt | while IFS= read -r l; do echo "::notice title=Importar Apify::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Gravar no repositório privado
