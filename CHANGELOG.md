@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.172 — Caso 009 na página: cópia do vídeo, falas e cartelas lidas das legendas, circulação comparada (2026-10-26) ⚠️
+
+- **Pedido:** "esse post foi arquivado, preciso de uma cópia dele na página" e a comparação de circulação com o carrossel DeujIRxGDYZ.
+- **Cópia:** `data/casos/009/midia/video.mp4` (21.991.626 bytes, 720×1280, 179,4 s, só imagem; sha256 3082cb12…56a0) e `capa.jpg` (sha256 9cc79b5c…ca55), os mesmos arquivos guardados no privado pelo run 40273226024. `copia.json` traz origem, legenda do post ("O Nordeste que foi esquecido."), o motivo de não haver áudio e as falas.
+- **Falas sem áudio:** o Instagram silenciou o áudio (campo `musicInfo.should_mute_audio_reason`: "This song is currently unavailable.") e a transcrição da plataforma não veio. O texto foi lido das legendas gravadas na imagem: OCR (Tesseract 5, português) de um quadro a cada 0,5 s, repetições juntadas e erros evidentes corrigidos à mão; as cartelas finais foram lidas direto nos quadros. 21 trechos com tempo: abertura de Nikolas ("hoje eu vou falar sobre o nordeste, mas…"), "sem filtro", 14 trechos de depoimentos, a montagem "LULA · DISCURSO PRESIDENCIAL EM 2003 … 2026" e as cartelas ("Depois de 20 anos no poder, continua sendo a região mais pobre do país", "36,5 milhões sem coleta de esgoto", "14 milhões sem acesso ao abastecimento de água", "Mais de 300 mil nordestinos na fila por cirurgias", "Todas as 10 cidades mais violentas do Brasil estão no Nordeste", "Na hora de votar, não se esqueça de quem esqueceu de você"). As cartelas são afirmações do vídeo, não verificadas pelo Atlas.
+- **Comentários do reel:** importados pelo `importar-apify.yml` (run 40273564371, execução Apify duVTblmyIMa1MviDQ, 2.000 itens). `build_caso_instagram.py --caso 009` local: 2.001 itens brutos → 1.723 comentários únicos, 1.375 autores.
+- **Página:** seção `caso009` (menu Casos), bloco "00 · Circulação comparada" (`montarCirculacao`, lê `data/casos/009/circulacao.json`: tabela dos dois posts, curtidas por hora desde a publicação, curtidas por mil seguidores, leituras dia a dia com a variação), e no bloco do post a lista "Falas e cartelas do vídeo". A legenda da cópia deixa de dizer "coletada em 22/10" fixo e mostra a fonte de cada caso.
+- **Teste executado:** `python -m unittest discover -s tests -v` → OK. Render local (Playwright) de `#caso009`: circulação do reel (165.446.023 reproduções; 7.366.980 curtidas; 1.437.076 comentários; 3.285.050 compartilhamentos; 54.936 curtidas por hora; 283 curtidas por mil seguidores) e carrossel "ainda não lido"; sem erro de JavaScript.
+- **Pendente:** coleta do carrossel (run em andamento), `casos-busca` do 009 (monta o bloco do post com a cópia), leitura diária.
+
 ## C19.171 — Caso 009: comparação de circulação com o carrossel DeujIRxGDYZ (produção da Makinoff) (2026-10-26) 🔜
 
 - **Pedido:** "quero uma comparação de circulação com este sobre Makinoff produção" (instagram.com/p/DeujIRxGDYZ). Autorização (26/10/2026, 02h1x, resposta à pergunta de teto): **US$ 3,50** para o carrossel: leitura agora, leitura diária dos dois posts por 7 dias e até 2.000 comentários do carrossel. Separado dos US$ 3,50 do reel (C19.170).
