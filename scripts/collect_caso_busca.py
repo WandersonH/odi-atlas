@@ -86,6 +86,14 @@ CASOS = {
             "noticias": ["PM Piracicaba camisetas PT", "presos camiseta Lula PM", "Derrite camisetas PT", "PT denúncia PM camisetas Lula",
                          "jovens presos camiseta Lula", "PM camiseta Lula Piracicaba"], "janela_noticias": "3d",
             "checagens": ["camisetas PT Piracicaba", "PM presos camiseta Lula"], "arquivo_web": ["https://www.instagram.com/reel/DewwdGCR_Qn/"]},
+    # 26/10 (01h41): reel de Nikolas Ferreira "O Nordeste que foi esquecido." (20/10/2026); termos iniciais, revisar com a transcrição
+    "009": {"variantes": ["Nordeste esquecido", "Nikolas Nordeste", "Nikolas Ferreira Nordeste vídeo"],
+            "controles": ["Nordeste", "Nikolas Ferreira"], "janelas": ["now 7-d", "today 1-m"],
+            "youtube": ["Nikolas Ferreira Nordeste esquecido", "Nikolas Ferreira vídeo Nordeste", "Nordeste que foi esquecido Nikolas"],
+            "desde_yt": "2026-10-20T00:00:00Z", "rx_titulo": r"nordest",
+            "rx_atributo": r"nikolas|v[ií]deo|esquecid|lula|elei|vot",
+            "noticias": ["Nikolas Ferreira Nordeste vídeo", "Nikolas Nordeste esquecido"], "janela_noticias": "7d",
+            "checagens": ["Nikolas Ferreira Nordeste", "vídeo Nikolas Nordeste"], "arquivo_web": ["https://www.instagram.com/reel/DeuEvFlRfuH/"]},
 }
 CASO = "002"
 TOP_COMENTARIOS = 30

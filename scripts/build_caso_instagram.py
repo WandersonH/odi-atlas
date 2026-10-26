@@ -60,6 +60,19 @@ CASOS = {
             },
             "nota_coleta": "Coleta nova do Atlas no Apify em 22/10/2026 (conta 1, teto autorizado de US$ 3,00), comentários unificados por id.",
             "marco": "início do caso"},
+    # 26/10/2026 (02h04): reel de Nikolas Ferreira, "O Nordeste que foi esquecido."; teto US$ 3,50; categorias iniciais, revisar com a transcrição
+    "009": {"shortcode": "DeuEvFlRfuH",
+            "titulo": "\"O Nordeste que foi esquecido\": reel de Nikolas Ferreira (Instagram, 20/10/2026)",
+            "categorias": {
+                "aponta montagem, IA ou fake": r"\bfake\b|montag|mentira|editad|\bia\b|intelig[eê]ncia artificial|deep ?fake|falso|manipula",
+                "ataca Lula ou o PT": r"ladr[aã]o|ladr[oõ]es|bandid|vergonha|nojo|corrup|petralha|cachaceiro|descondenad|nove dedos|9 dedos|molusco|quadrilha",
+                "defende Lula ou o PT": r"\blula ?13\b|faz o l|\bfazol|lula presidente|lula l[aá]|#lula|❤️ ?lula|vamos de 13",
+                "cita Bolsonaro ou família": r"bolsonaro|fl[aá]vio|\beduardo\b|\bbozo|\bmito\b|\b22\b",
+                "cita Nordeste ou nordestinos": r"nordest|sert[aã]o|seca|bahia|pernambuc|cear[aá]|maranh|para[ií]ba|piau[ií]|alagoas|sergipe|potiguar",
+                "elogia Nikolas": r"nikolas|parab[eé]ns|orgulho|verdade|disse tudo|falou tudo",
+            },
+            "nota_coleta": "Coleta nova do Atlas no Apify em 26/10/2026 (conta 1, teto autorizado de US$ 3,50), comentários unificados por id.",
+            "marco": "início do caso"},
 }
 CAMPOS = ["id", "criado_em_utc", "texto", "curtidas", "respostas", "autor_id", "autor_usuario", "autor_nome", "autor_verificado", "runs"]
 

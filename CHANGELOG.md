@@ -10,6 +10,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Verificado antes da coleta (26/10, 01h55, navegador do responsável, sem login):** o post ainda abria. Autor @nikolasferreiradm, publicado em 20/10/2026, legenda "O Nordeste que foi esquecido.", 7.366.959 curtidas, 1.437.037 comentários (texto da página). Internet Archive: nenhuma cópia (consulta CDX vazia). archive.today: pediu CAPTCHA, não foi usado. O post não estava no acervo do Atlas.
 - **O que mudou:** `scripts/coletar_caso_instagram.py` ganha `--transcricao` (campo `includeTranscript` do apify/instagram-reel-scraper, US$ 0,041 por minuto iniciado; teto da etapa US$ 0,30). `coletar-caso-instagram.yml` ganha a entrada `transcricao`.
 - **Teste executado:** `python -m unittest discover -s tests -v` → OK, com teste novo (`TestTranscricao`).
+- **Também:** caso 009 em `data/config/casos.json`, em `collect_caso_busca.py` (Trends, YouTube desde 20/10, notícias de 7 dias, checagens, arquivo web do reel), em `build_caso_instagram.py` (categorias iniciais dos comentários, a revisar com a transcrição) e no `casos-busca.yml`.
 - **Pendente:** rodar a coleta, guardar a mídia (`arquivar-midia-caso.yml`) e montar a página do caso 009; custo real e números entram na próxima entrada.
 
 ## C19.169 — Resultado do 2º turno: abstenção, brancos, nulos e alienação 1º × 2º turno por UF e município, com mapa (2026-10-26) ⚠️
