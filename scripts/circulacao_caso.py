@@ -134,7 +134,10 @@ def main(argv=None, executar=run_actor, root: Path = Path(".")) -> int:
                              "publicado_em_utc": next((x["publicado_em_utc"] for x in ls if x.get("publicado_em_utc")), None),
                              "autor": autor if (seg or 0) >= MIN_PUBLICO else None, "seguidores_autor": seg,
                              "tem_compartilhamentos": post["ator"] == "reel",
-                             "serie": [{k: x.get(k) for k in ("lido_em_utc", "origem", "reproducoes", "curtidas", "comentarios", "compartilhamentos")} for x in ls]})
+                             # carrossel: o leitor de reels devolveu sharesCount 0 para um post com 230 mil curtidas (26/10/2026);
+                             # número não confiável, então o compartilhamento só vale para reel
+                             "serie": [{k: (x.get(k) if (k != "compartilhamentos" or post["ator"] == "reel") else None)
+                                        for k in ("lido_em_utc", "origem", "reproducoes", "curtidas", "comentarios", "compartilhamentos")} for x in ls]})
     dest = root / "data/casos" / caso / "circulacao.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(pub, ensure_ascii=False, indent=1), encoding="utf-8")

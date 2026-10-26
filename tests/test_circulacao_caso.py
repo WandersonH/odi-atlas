@@ -47,6 +47,7 @@ class TestCirculacao(unittest.TestCase):
             self.assertIsNone(car["autor"])  # menos de 10 mil seguidores
             self.assertEqual(car["codigo"], "BBB")
             self.assertNotIn("custo", json.dumps(pub))
+            self.assertTrue(all(x["compartilhamentos"] is None for x in car["serie"]))
             est = json.loads((interno / "casos/009/circulacao_estado.json").read_text(encoding="utf-8"))
             self.assertLessEqual(est["gasto_usd"], CFG["009"]["teto_usd"])
 
