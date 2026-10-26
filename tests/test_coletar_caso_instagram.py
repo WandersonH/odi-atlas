@@ -82,3 +82,29 @@ class TestTranscricao(unittest.TestCase):
             cc.coletar("009", "u", 3.5, 2000, Path(d) / "a", executar)
             self.assertFalse(ch[0][1]["includeTranscript"])
             self.assertEqual(ch[0][2], cc.MIN_CAP)
+
+
+class TestPostComum(unittest.TestCase):
+    def test_carrossel_usa_plano_b_quando_o_leitor_de_reels_nao_devolve(self):
+        ch = []
+
+        def executar(ator, pl, cap):
+            ch.append((ator, pl, cap))
+            itens = {"apify~instagram-reel-scraper": [], "apify~instagram-scraper": [{"ownerUsername": "autor", "likesCount": 5}]}.get(ator, [])
+            return {"id": f"r{len(ch)}", "status": "SUCCEEDED", "usageTotalUsd": 0.003}, itens
+        with tempfile.TemporaryDirectory() as d:
+            man = cc.coletar("009b", "https://www.instagram.com/p/X/", 3.3, 2000, Path(d) / "a", executar)
+            atores = [c[0] for c in ch]
+            self.assertEqual(atores[:2], ["apify~instagram-reel-scraper", "apify~instagram-scraper"])
+            self.assertEqual(ch[1][1]["directUrls"], ["https://www.instagram.com/p/X/"])
+            self.assertLessEqual(man["gasto_usd"], 3.3)
+
+    def test_reel_nao_chama_plano_b(self):
+        ch = []
+
+        def executar(ator, pl, cap):
+            ch.append(ator)
+            return {"id": f"r{len(ch)}", "status": "SUCCEEDED", "usageTotalUsd": 0.003}, []
+        with tempfile.TemporaryDirectory() as d:
+            cc.coletar("009", "https://www.instagram.com/reel/X/", 3.3, 2000, Path(d) / "a", executar)
+            self.assertNotIn("apify~instagram-scraper", ch)

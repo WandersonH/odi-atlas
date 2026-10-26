@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.171 — Caso 009: comparação de circulação com o carrossel DeujIRxGDYZ (produção da Makinoff) (2026-10-26) 🔜
+
+- **Pedido:** "quero uma comparação de circulação com este sobre Makinoff produção" (instagram.com/p/DeujIRxGDYZ). Autorização (26/10/2026, 02h1x, resposta à pergunta de teto): **US$ 3,50** para o carrossel: leitura agora, leitura diária dos dois posts por 7 dias e até 2.000 comentários do carrossel. Separado dos US$ 3,50 do reel (C19.170).
+- **O que mudou:** `scripts/coletar_caso_instagram.py`: se o post for `/p/` e o leitor de reels não devolver nada, usa `apify/instagram-scraper` (`directUrls`, `resultsType: details`, US$ 0,0026 por resultado, sem compartilhamentos). Coleta em `casos/009b/` no privado, para não reaproveitar por engano a leitura do reel.
+- **Resultado parcial do reel (run Apify NNKuWbTs8PxAU2zyX, 26/10 05h06 UTC, custo US$ 0,001):** publicado em 20/10/2026 14h59 UTC; 179,4 s; 165.446.023 reproduções; 7.366.980 curtidas; 1.437.076 comentários; 3.285.050 compartilhamentos; autor com 26.027.345 seguidores (run wmFUagbYRaYWZdAHH). O áudio está silenciado pelo Instagram (`musicInfo.should_mute_audio_reason`: "This song is currently unavailable."), e a transcrição não veio (`error: partial_data`). Os comentários (datadoping) falharam na leitura (IncompleteRead), como no 008: importar a execução com `importar-apify.yml`, sem nova coleta.
+- **Teste executado:** `python -m unittest discover -s tests -v` → 237 OK (novos: `TestPostComum`).
+- **Pendente:** coleta do carrossel, importação dos comentários do reel, leitura diária por 7 dias, página do caso.
+
 ## C19.170 — Caso 009: coleta do reel de @nikolasferreiradm ("O Nordeste que foi esquecido"), com transcrição (2026-10-26) 🔜
 
 - **Pedido:** "vamos criar um estudo deste post" (instagram.com/reel/DeuEvFlRfuH) e "esse post foi arquivado, preciso de uma cópia dele na página". Autorização: "aprovado" (26/10/2026, 02h04) para a proposta de teto **US$ 3,50**: reel com compartilhamentos e transcrição, perfil do autor, até 2.000 comentários, vídeo e capa guardados no privado.

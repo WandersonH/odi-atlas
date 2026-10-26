@@ -50,7 +50,7 @@ def coletar(caso: str, url: str, teto: float, maximo: int, priv: Path, executar,
         if f.name.startswith("manifesto"):
             continue
         d = json.loads(f.read_text(encoding="utf-8"))
-        piso = 0.01 if "reel-scraper" in d.get("ator", "") else len(d.get("items") or []) * PRECO_COMENTARIO
+        piso = 0.01 if ("reel-scraper" in d.get("ator", "") or "instagram-scraper ·" in d.get("ator", "")) else len(d.get("items") or []) * PRECO_COMENTARIO
         gasto += max(float(d.get("custo_usd") or 0), piso)
         feitos[d.get("ator", "").split(" ")[0]] = d
         regs.append({k: d.get(k) for k in ("run_id", "ator", "status", "inicio_utc", "fim_utc", "origem", "custo_usd", "itens")} | {"reaproveitado": True})
@@ -84,6 +84,17 @@ def coletar(caso: str, url: str, teto: float, maximo: int, priv: Path, executar,
         if run:
             gasto += custo(run)
             gravar("apify/instagram-reel-scraper · Instagram Reel Scraper", e1, run, itens)
+    # 1b. post comum ou carrossel (/p/): o leitor de reels pode não devolver nada; plano B com o leitor geral de posts
+    #     (apify/instagram-scraper, US$ 0,0026 por resultado; sem número de compartilhamentos). Pedido de 26/10/2026, 02h11.
+    if not itens and "/p/" in url:
+        if "apify/instagram-scraper" in feitos:
+            itens = feitos["apify/instagram-scraper"].get("items") or []
+        else:
+            e1b = {"directUrls": [url], "resultsType": "details", "resultsLimit": 1, "addParentData": False}
+            run, itens = tentar("apify~instagram-scraper", e1b, min(MIN_CAP, max(teto - gasto, 0)))
+            if run:
+                gasto += custo(run)
+                gravar("apify/instagram-scraper · Instagram Scraper", e1b, run, itens)
     autor = next((x.get("ownerUsername") for x in itens if x.get("ownerUsername")), None)
     # 2. comentários, cabendo no teto (reserva o perfil)
     sobra = teto - gasto - RESERVA_PERFIL
