@@ -53,7 +53,7 @@ jobs:
             python scripts/collect_resultados_2t.py > r.txt 2>&1 || true
             echo "::notice title=Resultado 2º turno $(date -u +%H:%M)::$(tail -n 1 r.txt | cut -c1-600)"
             scripts/commit_push.sh "Resultado do 2º turno $(date -u +%H:%M) UTC (run ${{ github.run_id }})" || true
-            if python -c "import json,sys;d=json.load(open('data/tse/segundo_turno/resultado.json'));sys.exit(0 if (d.get('brasil') or {}).get('pct_secoes_totalizadas')==100.0 and all((u or {}).get('pct_secoes_totalizadas')==100.0 for u in d.get('ufs',{}).values()) else 1)" 2>/dev/null; then
+            if python -c "import json,sys;d=json.load(open('data/tse/segundo_turno/resultado.json'));m=json.load(open('data/tse/segundo_turno/municipios.json'))['m'];sys.exit(0 if (d.get('brasil') or {}).get('pct_secoes_totalizadas')==100.0 and all((u or {}).get('pct_secoes_totalizadas')==100.0 for u in d.get('ufs',{}).values()) and all((x.get('pst') or 0)>=100 for x in m.values() if x.get('l') is not None) else 1)" 2>/dev/null; then
               echo "::notice title=Resultado 2º turno::100% das seções totalizadas: fim"; exit 0
             fi
             dt=$(( ${INTERVALO:-5} * 60 - ($(date -u +%s) - t0) )); [ $dt -gt 30 ] && sleep $dt
