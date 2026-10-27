@@ -215,7 +215,18 @@ def analisar(caso: str, cfg: dict, dados: dict, priv: Path, interno: Path, pub: 
         if all(not (x["id"] == c["id"] and x["lido_em_utc"] == c["lido_em_utc"]) for x in serie):
             serie.append({k: c[k] for k in ("id", "titulo", "lido_em_utc", "inscritos", "visualizacoes", "videos")})
     serie_arq.write_text(json.dumps(serie, ensure_ascii=False, indent=1), encoding="utf-8")
-    return {"caso": caso, "gerado_em_utc": now_utc(), "titulo": cfg["titulo"], "desde": cfg["desde"], "comentarios_desde": cfg["comentarios_desde"],
+    import comentarios_caso as cmc
+    analise = cmc.analisar(rows, TEMAS, pub, priv)
+    temas_comentarios_por_canal = {nome.get(c["id"], c["id"]): cmc.temas_pct([r.get("texto") or "" for r in rows if r["channel_id"] == c["id"]], TEMAS)
+                                   for c in canais}
+    insc = {c["id"]: c["inscritos"] for c in canais}
+    circ_videos = [{**v, "inscritos": insc.get(v["canal_id"]), "consulta": t} for v in envios for t, rx in TEMAS.items()
+                   if re.search(rx, f"{v['titulo']} {v['descricao']}", re.I)]
+    circ = cmc.circulacao(circ_videos, pub)
+    if circ.get("o_que_e"):
+        circ["o_que_e"] = "canais ligados aos temas dos seus vídeos (título e descrição); peso = visualizações dos vídeos com o tema"
+    return {"caso": caso, "gerado_em_utc": now_utc(), "titulo": cfg["titulo"],
+            "comentarios_analise": analise, "temas_comentarios_por_canal": temas_comentarios_por_canal, "circulacao": circ, "desde": cfg["desde"], "comentarios_desde": cfg["comentarios_desde"],
             "producao": prod, "publico": publico, "pares": pares, "autores_total": len(todos), "autores_em_todos_os_canais": len(em_todos),
             "comentarios_total": len(rows), "acervo_autores": len(lados), "serie": serie, "temas_regex": TEMAS,
             "redes": {"canais": len(cn), "canais_autores": len(nos), "canais_temas": len(nt)},

@@ -47,6 +47,17 @@ RX = re.compile(r"joice|hasselmann|hasselman", re.I)
 PAGINAS = 10
 LULA, FLAVIO = "280002542548", "280002551544"
 MIN_PUBLICO = 10000
+TEMAS = {  # comentários (pedido de 27/10/2026, 03h04: "análise geral dos comentários")
+    "elogia ou acolhe Joice": r"parab[eé]ns|coragem|corajos\w*|bem[- ]vinda|respeito|admir\w*|l[uú]cid\w*|obrigad\w*|gratid\w*",
+    "chama de traidora ou oportunista": r"tra[ií]d\w*|tra[ií]ra|vira[- ]?casaca|oportunist\w*|mudou de lado|cargo|mamata|hip[oó]crit\w*|interesseir\w*",
+    "duvida ou desmente": r"mentir\w*|mentira|mentirosa|\bfake\b|n[aã]o acredito|inventou|lorota|vitimis\w*|teatro",
+    "cita a agressão": r"agress\w*|\bmatar\b|tentou me matar|apanh\w*|espanc\w*|pancada|atentado|surr\w*",
+    "cita golpe ou 8 de janeiro": r"\bgolpe\w*|8 de janeiro|ditadura",
+    "cita Lula ou PT": r"\blula\w*|\bpt\b|petist\w*|esquerd\w*",
+    "cita Bolsonaro e família": r"bolsonar\w*|\bjair\b|fl[aá]vio|\beduardo\b|carluxo|\bbozo\b",
+    "cita eleição ou voto": r"elei[cç]\w*|\bvot\w*|urna\w*|2[ºo°] turno|segundo turno",
+    "ofensa ou ataque pessoal": r"\bpeppa\b|porca|gorda|\bfeia\b|\blixo\b|vagabund\w*|\blouca\b|\bdoida\b|nojent\w*|\bburra\b",
+}
 
 
 def yt(rota, **q):
@@ -277,7 +288,31 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path) -> dict:
     for x in canais:
         if not x["e_o_canal_dela"] and (x["inscritos"] or 0) < MIN_PUBLICO:
             x.update(canal="canal com menos de 10 mil inscritos", canal_id=None)
+    # público histórico × público da entrevista e dos recortes (o vídeo dela de 23/10 está com comentários desligados)
+    hist = {r["autor_canal"] for r in antes if r.get("autor_canal")}
+    novos = {r["autor_canal"] for r in fora if r.get("autor_canal")}
+    sobre = {"autores_historicos": len(hist), "autores_entrevista_recortes": len(novos), "em_comum": len(hist & novos),
+             "pct_dos_recortes_que_ja_comentavam_no_canal_dela": round(100 * len(hist & novos) / len(novos), 1) if novos else None,
+             "pct_do_historico_que_apareceu_nos_recortes": round(100 * len(hist & novos) / len(hist), 1) if hist else None}
+    import comentarios_caso as cmc
+    analise = cmc.analisar(fora, TEMAS, pub, priv)
+    temas_hist = cmc.temas_pct([r.get("texto") or "" for r in antes], TEMAS)
+    circ_videos = [{**v, "inscritos": v.get("inscritos_canal"), "consulta": v.get("busca") or "entrevista (partida)"} for v in
+                   dados.get("sementes", []) + dados.get("recortes", [])]
+    circ = cmc.circulacao(circ_videos, pub)
+    sr_arq = pub / "recortes_serie.json"
+    sr = json.loads(sr_arq.read_text(encoding="utf-8")) if sr_arq.exists() else []
+    lido = dados.get("lido_em_utc")
+    if lido and all(x["lido_em_utc"] != lido for x in sr):
+        sr.append({"lido_em_utc": lido, "videos": len(circ_videos), "canais": len({v["canal_id"] for v in circ_videos}),
+                   "visualizacoes": sum(v.get("visualizacoes") or 0 for v in circ_videos),
+                   "entrevista": next((v.get("visualizacoes") for v in dados.get("sementes", []) if v["id"] == "jTeWOpW7fg4"), None)})
+    sr_arq.write_text(json.dumps(sr, ensure_ascii=False, indent=1), encoding="utf-8")
     return {"caso": CASO, "gerado_em_utc": now_utc(), "marco": MARCO, "canal": c, "serie_canal": serie,
+            "sobreposicao": sobre, "comentarios_entrevista_recortes": analise, "temas_publico_historico": temas_hist,
+            "circulacao": circ, "serie_recortes": sr,
+            "aviso_canal_dela": "O vídeo dela de 23/10 (\"Meu voto é pelo futuro do Brasil\") está com os comentários desligados, e o envio anterior é de "
+                                "dezembro de 2025; por isso o público de depois de 22/10 é medido na entrevista e nos recortes, não no canal dela.",
             "sementes": dados.get("sementes", []), "recortes": grandes,
             "recortes_canais_pequenos": {"videos": len(pequenos), "visualizacoes": sum(v["visualizacoes"] or 0 for v in pequenos)},
             "recortes_total": {"videos": len(dados.get("recortes", [])), "canais": len({v["canal_id"] for v in dados.get("recortes", [])}),
