@@ -13,7 +13,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Redes (Gephi):** `data/casos/011/rede_canais_autores.gexf` (canais × autores em código, com o lado no acervo e âncoras "Acervo Lula"/"Acervo Flávio") e `rede_canais.gexf` (canais × canais, peso = autores em comum). Canais com menos de 10 mil inscritos em código.
 - **Instagram:** `coletar-caso-instagram.yml` caso 011, teto US$ 3,30 (US$ 0,20 ficam para a leitura diária).
 - **Teste:** `tests/test_caso_joice.py` (bolha antes × depois, canais pequenos sem nome, nada de texto ou autor no público, âncoras na rede); `python -m unittest discover -s tests -v` → OK.
-- **Pendente:** rodar `caso-joice.yml`, resultado do Instagram, página.
+- **Página:** seção `caso011` (menu Casos, "Joice Hasselmann: furou a bolha?"), `montarCaso011()`: bolha antes × depois e por canal (composição Lula/ambos/Flávio/nenhum), entrevista e recortes, média de visualizações antes × depois, comentários por dia, série de inscritos e links das redes `.gexf`. Sem dados mostra ⛔.
+- **Pendente:** resultado de `caso-joice.yml` e do Instagram; render com dados reais.
 
 ## C19.173 — Caso 010: brasileiros nos perfis de Donald Trump e Marco Rubio (X e Instagram, 24 a 27/10/2026) 🔜
 
