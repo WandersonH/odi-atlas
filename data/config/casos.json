@@ -185,7 +185,32 @@
    "inclui": [
     "004"
    ],
-   "janela_indicada_004": "2026-10-07 a 2026-10-12"
+   "janela_indicada_004": "2026-10-07 a 2026-10-12",
+   "segredo": "APIFY_TOKEN",
+   "teto_usd": {
+    "x": 1.8,
+    "instagram": 1.3,
+    "facebook": 0.52,
+    "kwai": 0.4
+   },
+   "autorizacao_paga": "Responsável em 27/10/2026, 03h05: \"colete o caso flamengo do primeiro turno, quanto precisa\"; teto escolhido US$ 4,00 (X 1,80; Instagram 1,30; Facebook 0,52; Kwai 0,40), conta 1 (APIFY_TOKEN), sem consulta de saldo de contas.",
+   "complementos_x": [
+    {
+     "termo": "\"ninguém morre nos devendo\"",
+     "busca": "\"ninguém morre nos devendo\" since:2026-09-25 until:2026-10-20",
+     "motivo": "a frase do caso, com e sem acento"
+    },
+    {
+     "termo": "Flamengo bets",
+     "busca": "flamengo (bets OR apostas OR bet) (proibição OR proibir OR MP OR protesto OR faixa OR mensagem) since:2026-09-25 until:2026-10-20",
+     "motivo": "protesto e mensagem do Flamengo contra a proibição das bets"
+    },
+    {
+     "termo": "\"ninguem morre nos devendo\"",
+     "busca": "\"ninguem morre nos devendo\" since:2026-09-25 until:2026-10-20",
+     "motivo": "a frase sem acento"
+    }
+   ]
   },
   {
    "id": "004",

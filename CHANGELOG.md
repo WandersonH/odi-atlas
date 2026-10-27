@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.176 — Caso 003 (Flamengo, "ninguém morre nos devendo"): coleta paga do X, Instagram, Facebook e Kwai (2026-10-27) 🔜
+
+- **Pedido (27/10/2026, 03h05):** "colete o caso flamengo do primeiro turno, quanto precisa". Orçamento por preço de tabela (`data/config/casos.json` → `precos_usd`): X até 12 mil posts US$ 1,80; Instagram até ~475 posts US$ 1,30; Facebook até ~190 US$ 0,52; Kwai até ~190 US$ 0,40. **Teto autorizado: US$ 4,00** (resposta à pergunta de teto). TikTok e Google já vinham da coleta diária grátis.
+- **O que mudou:** caso 003 com `segredo: APIFY_TOKEN` (conta 1, sem consulta de saldo de contas), `teto_usd` por rede e 3 buscas complementares do X (a frase com e sem acento; Flamengo + bets/apostas + proibição/protesto/faixa/mensagem), de 25/09 a 19/10. Instagram, Facebook e Kwai pela hashtag #ninguemmorrenosdevendo.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; `pedidos()` gera 1 busca por rede e 3 complementos do X.
+- **Pendente:** `casos.yml` modo carga (caso 003; X, Instagram, Facebook, Kwai) e modo complemento (X); números e custo real na próxima entrada.
+
 ## C19.175 — Caso 012: frente de transnacionalização do bolsonarismo (Allan dos Santos, Paulo Figueiredo, Alexandre Ramagem no YouTube) (2026-10-27) 🔜
 
 - **Pedido (27/10/2026, 03h02):** youtube.com/@allandossantosbr, @PauloFigueiredoShow, @delegadoramagem, "frente Transnacionalização bolsonarismo". YouTube pela API, grátis; nenhuma coleta paga.
