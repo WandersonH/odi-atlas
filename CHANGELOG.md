@@ -10,7 +10,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **X:** caso 010 em `data/config/casos.json` com `segredo: APIFY_TOKEN` e 5 buscas complementares (xquik/x-tweet-scraper, US$ 0,00015 por linha, até 3.800 por busca): `to:realDonaldTrump lang:pt`, `to:marcorubio lang:pt`, `to:SecRubio lang:pt`, menções em português sem ser resposta, e os posts dos três perfis, todas `since:2026-10-24`. `casos.yml` passa a receber `APIFY_TOKEN`.
 - **Limite do método:** `lang:pt` é o idioma detectado pelo X, não a nacionalidade; inclui portugueses e outros lusófonos. A página fala em "em português".
 - **Teste executado:** `python -m unittest discover -s tests -v` → OK; `pedidos('x', caso 010)` só gera as 5 buscas no modo complemento e nenhuma no modo normal (a coleta diária grátis não gasta no caso).
-- **Pendente:** rodar o X (`casos.yml`, modo complemento, caso 010), coletor do Instagram, página.
+- **Instagram:** `scripts/coletar_caso_perfis_instagram.py` + `coletar-perfis-instagram.yml`: posts de @realdonaldtrump, @marcorubio e @secrubio desde 24/10 (apify/instagram-scraper, até 15 por perfil) e comentários de todos os posts numa execução do datadoping (mesma quantidade por post, ordem "popular"), dentro de US$ 2,50; leitura do dataset em páginas. Privado: `casos/010/instagram/`; público: `data/casos/010/instagram_coleta.json` (contagens e posts dos perfis, sem comentários). Testes em `tests/test_coletar_caso_perfis_instagram.py`.
+- **Pedido seguinte (02h00):** "quero um % amostra comentários citando Brasil ou eleições": entra na análise do caso.
+- **Pendente:** resultados do X e do Instagram, análise (% que cita Brasil, % que cita eleição) e página.
 
 ## C19.172 — Caso 009 na página: cópia do vídeo, falas e cartelas lidas das legendas, circulação comparada (2026-10-26) ⚠️
 

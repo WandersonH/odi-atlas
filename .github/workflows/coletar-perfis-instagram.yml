@@ -1,0 +1,62 @@
+name: Coletar posts e comentários de perfis do Instagram para um caso (conta 1, teto obrigatório, uso pontual autorizado)
+
+# Autorizado pelo responsável a cada caso (27/10/2026, 01h58: caso 010, Trump e Rubio, teto US$ 2,50). Texto e autor só no privado.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        required: true
+      perfis:
+        description: "perfis separados por vírgula"
+        required: true
+      desde:
+        description: "data inicial (AAAA-MM-DD)"
+        required: true
+      teto:
+        description: "teto total em US$ (obrigatório)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coletar-perfis-instagram
+  cancel-in-progress: false
+
+jobs:
+  coletar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Coletar
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/coletar_caso_perfis_instagram.py --caso "${{ inputs.caso }}" --perfis "${{ inputs.perfis }}" --desde "${{ inputs.desde }}" --teto "${{ inputs.teto }}" > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Instagram do caso::$(echo "$l" | cut -c1-500)"; done < s.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Caso ${{ inputs.caso }}: Instagram dos perfis (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Gravar no público
+        if: always()
+        run: scripts/commit_push.sh "Caso ${{ inputs.caso }}: Instagram dos perfis, contagens (run ${{ github.run_id }})"
