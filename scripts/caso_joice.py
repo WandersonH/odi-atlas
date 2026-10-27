@@ -297,6 +297,21 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path) -> dict:
     import comentarios_caso as cmc
     analise = cmc.analisar(fora, TEMAS, pub, priv)
     temas_hist = cmc.temas_pct([r.get("texto") or "" for r in antes], TEMAS)
+    # comentários do reel no Instagram (coleta paga do caso, casos/011/apify; texto e autor só no privado)
+    ig = []
+    for f in sorted((priv / "apify").glob("*.json")):
+        try:
+            dd = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if "datadoping" in str(dd.get("ator", "")):
+            for x in dd.get("items") or []:
+                ts = x.get("created_at_utc") or x.get("created_at")
+                iso = datetime.utcfromtimestamp(int(ts)).strftime("%Y-%m-%dT%H:%M:%SZ") if str(ts or "").isdigit() else str(ts or "")
+                ig.append({"comment_id": str(x.get("comment_id") or x.get("id")), "texto": x.get("text") or "", "publicado_em": iso,
+                           "autor_canal": str(x.get("user_id") or x.get("username") or ""), "tipo": "comentario", "parent_id": ""})
+    ig = list({r["comment_id"]: r for r in ig}.values())
+    analise_ig = cmc.analisar(ig, TEMAS, pub, priv, "_instagram") if ig else None
     circ_videos = [{**v, "inscritos": v.get("inscritos_canal"), "consulta": v.get("busca") or "entrevista (partida)"} for v in
                    dados.get("sementes", []) + dados.get("recortes", [])]
     circ = cmc.circulacao(circ_videos, pub)
@@ -309,7 +324,7 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path) -> dict:
                    "entrevista": next((v.get("visualizacoes") for v in dados.get("sementes", []) if v["id"] == "jTeWOpW7fg4"), None)})
     sr_arq.write_text(json.dumps(sr, ensure_ascii=False, indent=1), encoding="utf-8")
     return {"caso": CASO, "gerado_em_utc": now_utc(), "marco": MARCO, "canal": c, "serie_canal": serie,
-            "sobreposicao": sobre, "comentarios_entrevista_recortes": analise, "temas_publico_historico": temas_hist,
+            "sobreposicao": sobre, "comentarios_entrevista_recortes": analise, "comentarios_instagram": analise_ig, "temas_publico_historico": temas_hist,
             "circulacao": circ, "serie_recortes": sr,
             "aviso_canal_dela": "O vídeo dela de 23/10 (\"Meu voto é pelo futuro do Brasil\") está com os comentários desligados, e o envio anterior é de "
                                 "dezembro de 2025; por isso o público de depois de 22/10 é medido na entrevista e nos recortes, não no canal dela.",

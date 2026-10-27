@@ -9,7 +9,7 @@ on:
     inputs:
       caso:
         description: "id do caso"
-        default: "009"
+        default: ""
       sem_coleta:
         description: "só refazer o arquivo público, sem nova leitura"
         default: "false"
@@ -41,10 +41,14 @@ jobs:
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
-          CASO: ${{ inputs.caso || '009' }}
+          CASO: ${{ inputs.caso || '' }}
           SEM: ${{ inputs.sem_coleta || 'false' }}
         run: |
-          python scripts/circulacao_caso.py --caso "$CASO" $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1; rc=$?
+          # sem caso informado (agendamento): todos os casos de data/config/circulacao_caso.json (27/10/2026: 009 e 011)
+          rc=0; : > s.txt
+          for c in ${CASO:-$(python -c "import json;print(' '.join(json.load(open('data/config/circulacao_caso.json'))))")}; do
+            python scripts/circulacao_caso.py --caso "$c" $([ "$SEM" = "true" ] && echo --sem-coleta) >> s.txt 2>&1 || rc=1
+          done
           while IFS= read -r l; do echo "::notice title=Circulação::$(echo "$l" | cut -c1-400)"; done < s.txt
           exit $rc
       - name: Gravar no privado
@@ -57,4 +61,4 @@ jobs:
           for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
           exit 1
       - name: Gravar no público
-        run: scripts/commit_push.sh "Circulação do caso ${{ inputs.caso || '009' }} (run ${{ github.run_id }})"
+        run: scripts/commit_push.sh "Circulação dos casos ${{ inputs.caso || '(todos)' }} (run ${{ github.run_id }})"

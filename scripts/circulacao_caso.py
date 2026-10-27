@@ -119,6 +119,14 @@ def main(argv=None, executar=run_actor, root: Path = Path(".")) -> int:
                 continue
             reg, custo, erro = ler(token, post, executar)
             est["gasto_usd"] = round(est["gasto_usd"] + custo, 4)
+            if reg and post.get("perfil") and est["gasto_usd"] + CAP <= cfg["teto_usd"]:
+                # 27/10/2026, caso 011: seguidores do perfil a cada leitura (apify/instagram-profile-scraper; custo real 0 nos casos 007-011)
+                try:
+                    run, its = executar(token, "apify~instagram-profile-scraper", {"usernames": [post["perfil"]]}, CAP)
+                    est["gasto_usd"] = round(est["gasto_usd"] + float(run.get("usageTotalUsd") or 0), 4)
+                    reg["seguidores_autor"] = next((x.get("followersCount") for x in its if x.get("followersCount") is not None), None)
+                except Exception as e:  # noqa: BLE001
+                    est["erros"].append(f"{now_utc()} perfil {post['perfil']}: {type(e).__name__}")
             if reg:
                 est["leituras"][cod].append(reg)
             if erro:
@@ -137,7 +145,7 @@ def main(argv=None, executar=run_actor, root: Path = Path(".")) -> int:
                              # carrossel: o leitor de reels devolveu sharesCount 0 para um post com 230 mil curtidas (26/10/2026);
                              # número não confiável, então o compartilhamento só vale para reel
                              "serie": [{k: (x.get(k) if (k != "compartilhamentos" or post["ator"] == "reel") else None)
-                                        for k in ("lido_em_utc", "origem", "reproducoes", "curtidas", "comentarios", "compartilhamentos")} for x in ls]})
+                                        for k in ("lido_em_utc", "origem", "reproducoes", "curtidas", "comentarios", "compartilhamentos", "seguidores_autor")} for x in ls]})
     dest = root / "data/casos" / caso / "circulacao.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(pub, ensure_ascii=False, indent=1), encoding="utf-8")

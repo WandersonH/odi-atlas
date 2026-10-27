@@ -2677,6 +2677,7 @@ fetch('./data/ia/rotulo.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).th
   <div class="intro odi-map-hero"><div class="eyebrow">Caso 011 · YouTube · Instagram · redes para o Gephi</div>
     <h1>Joice Hasselmann vota em Lula.<br><em>A entrevista furou a bolha? O que aconteceu com o canal dela depois.</em></h1>
     <p>Em 22/10/2026, na TV 247, Joice Hasselmann declarou voto em Lula e disse que Bolsonaro mandou agredi-la em 2021. O caso segue os recortes da entrevista publicados desde então e o canal dela. Para medir a bolha, cada pessoa que comentou é cruzada com o acervo do Atlas de comentários nos canais das campanhas: já tinha comentado do lado de Lula, do lado de Flávio, dos dois ou de nenhum? É indício de público, não prova de voto.</p></div>
+  <div id="cb011Circ"></div>
   <div id="cb011Corpo"><p class="yt-cloudnote">Carregando…</p></div>
 </section>
 <section class="panel" id="caso012" aria-label="Caderno 08 Caso 012">
@@ -2731,7 +2732,7 @@ function montarCirculacao(caso){const el=document.getElementById('cb'+caso+'Circ
  fetch('./data/casos/'+caso+'/circulacao.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(C=>{
   const P=C.posts||[];if(!P.length){el.innerHTML='<p class="yt-cloudnote">⛔ Circulação ainda não coletada.</p>';return;}
   const ult=p=>(p.serie||[]).slice(-1)[0]||{};const prim=p=>(p.serie||[])[0]||{};
-  const met=[['reproducoes','Reproduções'],['curtidas','Curtidas'],['comentarios','Comentários'],['compartilhamentos','Compartilhamentos']];
+  const met=[['reproducoes','Reproduções'],['curtidas','Curtidas'],['comentarios','Comentários'],['compartilhamentos','Compartilhamentos'],...(P.some(p=>(p.serie||[]).some(x=>x.seguidores_autor!=null))?[['seguidores_autor','Seguidores do autor']]:[])];
   const cab=P.map(p=>`<th style="text-align:right">${e(p.rotulo)}<br><small style="font-weight:400;color:#69768a">${!(p.serie||[]).length?'ainda não lido':(p.autor?'@'+e(p.autor):'autor com menos de 10 mil seguidores')+' · '+e(p.tipo||'')}</small></th>`).join('');
   const lin=met.map(([k,t])=>`<tr><td>${t}</td>${P.map(p=>{const v=ult(p)[k];return `<td style="text-align:right"><b>${v==null?(k==='compartilhamentos'&&!p.tem_compartilhamentos?'<small style="font-weight:400;color:#69768a">não informado pela plataforma a esse leitor</small>':'—'):n(v)}</b></td>`;}).join('')}</tr>`).join('');
   const ritmo=`<tr><td>Curtidas por hora desde a publicação</td>${P.map(p=>{const u=ult(p),hh=h(p.publicado_em_utc,u.lido_em_utc);return `<td style="text-align:right">${u.curtidas!=null&&hh?n(Math.round(u.curtidas/hh)):'—'}</td>`;}).join('')}</tr>`
@@ -2834,7 +2835,8 @@ function montarCaso011(){const el=document.getElementById('cb011Corpo');if(!el)r
    <table class="db-tab" style="font-size:13px"><thead><tr><th>Leitura</th><th style="text-align:right">Inscritos</th><th style="text-align:right">Visualizações do canal</th><th style="text-align:right">Vídeos</th></tr></thead><tbody>${serie||'<tr><td colspan="4">—</td></tr>'}</tbody></table>
    ${h2('05 · Circulação: por onde a entrevista passou')}<p>${n((R.serie_recortes||[]).slice(-1)[0]&&R.serie_recortes.slice(-1)[0].visualizacoes)} visualizações somadas da entrevista e dos recortes na última leitura (${n((R.serie_recortes||[]).slice(-1)[0]&&R.serie_recortes.slice(-1)[0].videos)} vídeos em ${n((R.serie_recortes||[]).slice(-1)[0]&&R.serie_recortes.slice(-1)[0].canais)} canais; a entrevista sozinha: ${n((R.serie_recortes||[]).slice(-1)[0]&&R.serie_recortes.slice(-1)[0].entrevista)}). A soma é relida todo dia.</p>${blocoRedeCaso(R.circulacao,'011')}
    ${h2('06 · Análise geral dos comentários da entrevista e dos recortes')}${blocoComentariosCaso(R.comentarios_entrevista_recortes,'011',[['Público histórico do canal dela',R.temas_publico_historico]])}
-   ${h2('07 · Redes para o Gephi')}
+   ${h2('07 · Comentários do reel no Instagram')}${R.comentarios_instagram?blocoComentariosCaso(R.comentarios_instagram,'011',[['Entrevista e recortes (YouTube)',(R.comentarios_entrevista_recortes||{}).temas]]):'<p class="yt-cloudnote">⛔ Comentários do Instagram ainda não analisados.</p>'}<p class="yt-cloudnote">Amostra de 2.000 comentários (ordem "populares") de ${n(215708)} informados pelo Instagram na coleta de 27/10. Quem comenta no Instagram não pode ser cruzado com o acervo do YouTube.</p>
+   ${h2('08 · Redes para o Gephi')}
    <p><a href="./data/casos/011/rede_canais.gexf" download>↓ Canais × canais</a> (${n((R.redes||{}).canais&&R.redes.canais.nos)} nós; peso = autores em comum, incluindo as âncoras "Acervo Lula" e "Acervo Flávio") · <a href="./data/casos/011/rede_canais_autores.gexf" download>↓ Canais × autores</a> (${n((R.redes||{}).canais_autores&&R.redes.canais_autores.nos)} nós; autores em código, atributo "tipo" com o lado no acervo). No Gephi: colorir pelo atributo <i>tipo</i> e aplicar ForceAtlas 2.</p>
    <p class="yt-cloudnote"><b>Método.</b> ${e(R.nota||'')} Gerado ${dt(R.gerado_em_utc)}. ${(R.erros||[]).length?'Avisos da coleta: '+e(R.erros.join(' · ')):''} <a href="./data/casos/011/youtube.json" download>↓ youtube.json</a></p>`;
   const d=document.getElementById('cb011Data');if(d)d.textContent='atualizado '+dt(R.gerado_em_utc);
@@ -2940,7 +2942,7 @@ function draw(R){const el=$('cb'+caso+'Corpo');if(!R){el.innerHTML=`<div class="
   box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" class="cs-board" role="img" aria-label="Rede do caso">${sv}</svg><p class="yt-cloudnote">${esc(r.o_que_e)}. Desenho com os ${d.nos.length} nós de maior peso de ${nf(d.total_nos)} (${nf(d.total_arestas)} ligações no arquivo; ${d.comunidades} comunidades). Nós escuros = termos de busca ou hashtags.${ex} <a href="./data/casos/${caso}/${r.gexf||('rede_'+(redeSel==='circulacao'?'circulacao':redeSel==='palavras'?'palavras_comentarios':'respostas_comentarios')+'.gexf')}" download>↓ GEXF para o Gephi</a></p>`;}}}
 function carregar(){if(cache[caso]!==undefined)return draw(cache[caso]);fetch(`./data/casos/${caso}/busca.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(x=>{cache[caso]=x;draw(x);}).catch(()=>draw(null));}
 carregar();}
-montarCasoBusca('005');montarCasoBusca('002');montarCasoBusca('001');montarCasoBusca('003');montarCasoBusca('006');montarCasoBusca('007');montarCasoBusca('008');montarCasoBusca('009');montarCirculacao('009');montarCaso010();montarCaso011();montarCaso012();
+montarCasoBusca('005');montarCasoBusca('002');montarCasoBusca('001');montarCasoBusca('003');montarCasoBusca('006');montarCasoBusca('007');montarCasoBusca('008');montarCasoBusca('009');montarCirculacao('009');montarCaso010();montarCaso011();montarCirculacao('011');montarCaso012();
 </script>
 <section class="panel" id="debate" aria-label="Caderno 05 Debate do 2º turno no Google Trends">
   <div class="paper-ribbon"><span>CADERNO 05 / BUSCAS · DEBATE BAND/ESTADÃO · 2º TURNO</span><span id="dbData">—</span></div>

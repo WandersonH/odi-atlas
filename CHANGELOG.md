@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.178 — Caso 011: Instagram (reel de declaração de voto), comentários e leitura diária com seguidores (2026-10-27) ⚠️
+
+- **Coleta do Instagram (run 40457415454, conta 1, US$ 2,7296 de US$ 3,30):** reel Dez0LqMp0Xz de @joicehasselmannoficial (1.198.297 seguidores, verificado), publicado em 22/10/2026 20h16 UTC (17h16 em Brasília), antes da estreia da entrevista na TV 247 (23h00 UTC); 322 s; 21.893.257 reproduções; 1.145.809 curtidas; 215.708 comentários; 1.042.288 compartilhamentos. 2.000 comentários (ordem "populares").
+- **Comentários do Instagram:** `caso_joice.py` lê o datadoping do caso e roda a mesma análise geral (temas, palavras, redes, classes; arquivos `*_instagram.gexf`). Análise local sem nova coleta: 2.000 comentários de 1.479 autores; cita Lula/PT 22,8%; Bolsonaro e família 21,1%; elogia ou acolhe 9,0%; traidora/oportunista 0,1%. Palavras mais frequentes são hashtags de campanha: lulapresidente (520), abreosigiloflavio (513), anaclara (510), justiçaporanaclara (510), somaisumvotoprolula (102). Quem comenta no Instagram não é cruzado com o acervo do YouTube.
+- **Leitura diária (`circulacao_caso.py`):** novo campo opcional `perfil` lê os seguidores do autor a cada leitura (apify/instagram-profile-scraper, custo real 0 nos casos 007 a 011); caso 011 em `circulacao_caso.json` até 03/11, teto US$ 0,20. `circulacao-caso.yml` agendado passa a rodar todos os casos do arquivo (009 e 011).
+- **Página:** caso 011 ganha o bloco "00 · Circulação" do reel (com a coluna de seguidores quando houver) e "07 · Comentários do reel no Instagram" (temas lado a lado com a entrevista e os recortes do YouTube). Corrigido um `${'${'}…}` que aparecia literal no texto.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Render local de `#caso011`: 4 desenhos de rede, sem erro de JavaScript.
+- **Gasto total do caso 011:** US$ 2,7296 de US$ 3,50 (YouTube grátis).
+
 ## C19.177 — Casos 011 e 012: circulação e análise geral dos comentários; caso 011 reorganizado (público histórico × entrevista e recortes); resultado do caso 003 (2026-10-27) ⚠️
 
 - **Pedido (27/10/2026, 03h04):** "quero circulação e uma análise geral dos comentários".
