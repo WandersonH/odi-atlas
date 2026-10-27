@@ -86,6 +86,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
           python scripts/build_casos.py > b.txt 2>&1; rc=$?
+          if [ -d "$ODI_INTERNO_DIR/casos/010" ]; then python scripts/build_caso_perfis_exterior.py --caso 010 >> b.txt 2>&1 || rc=1; fi
           while IFS= read -r l; do echo "::notice title=Casos agregados::$(echo "$l" | cut -c1-600)"; done < b.txt
           exit $rc
       - name: Gravar no repositório privado

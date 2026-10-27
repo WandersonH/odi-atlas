@@ -48,6 +48,12 @@ jobs:
           python scripts/coletar_caso_perfis_instagram.py --caso "${{ inputs.caso }}" --perfis "${{ inputs.perfis }}" --desde "${{ inputs.desde }}" --teto "${{ inputs.teto }}" > s.txt 2>&1; rc=$?
           while IFS= read -r l; do echo "::notice title=Instagram do caso::$(echo "$l" | cut -c1-500)"; done < s.txt
           exit $rc
+      - name: Análise do caso (só agregados no público)
+        if: always()
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          if [ "${{ inputs.caso }}" = "010" ]; then python scripts/build_caso_perfis_exterior.py --caso 010 | while IFS= read -r l; do echo "::notice title=Análise::$(echo "$l" | cut -c1-500)"; done; fi
       - name: Gravar no repositório privado
         if: always()
         run: |
