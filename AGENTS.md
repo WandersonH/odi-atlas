@@ -8,3 +8,4 @@
 6. Nunca coloque tokens ou chaves em código, commits ou mensagens.
 7. Ordem do projeto: P1 Origem → P2 Ingestão → P3 Correspondência TSE↔IBGE → P4 Front-end → P5 Refatoração → P6 Automação → P7 Entrega.
 8. **Nunca apagar ou limpar dados** (arquivos de `data/`, repositório privado, histórico do git), nem reescrever histórico, sem autorização explícita do responsável naquele momento. Dado sensível no lugar errado se move para o privado, nunca se descarta. (Regra do responsável, 20/10/2026.)
+9. **Toda amostra aparece com o universo.** Em toda coleta e página: quanto a plataforma informa que existe (universo, com a fonte), quanto foi lido, o percentual e como a amostra foi tirada. Universo que a plataforma não informa é ⛔ desconhecido, nunca estimado. Percentuais de análise valem para a amostra lida. (Regra do responsável, 27/10/2026: "é sempre importante ter o universo e qual o real tamanho da amostra que temos".)

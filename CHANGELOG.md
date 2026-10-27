@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.179 — Universo × amostra nos casos 010, 011 e 012; regra 9 no CLAUDE.md (2026-10-27) ✅
+
+- **Pedido (27/10/2026, 03h24):** "é sempre importante ter o universo e qual o real tamanho da amostra que temos". Entra como regra 9 do `CLAUDE.md`.
+- **O que mudou:** `caso_joice.py`, `caso_canais.py` e `build_caso_perfis_exterior.py` gravam `universo` (conjunto, universo com a fonte, lido, %, critério da amostra); a página mostra a tabela "Universo × amostra" no topo dos casos 010, 011 e 012 (`blocoUniverso`). Sem contagem da plataforma: "⛔ desconhecido".
+- **Números (análise local sem nova coleta, mesmos dados dos runs 40453115048, 40452831269, 40460763845 e 40460484058):**
+  - 010: X, respostas aos 12 posts de Trump e Rubio no período (todas as línguas, informadas pelo X) 23.415 × respostas em português lidas 803 (3,43%; a busca to:perfil também pega respostas a posts anteriores); menções em português 2.640, universo ⛔ desconhecido; Instagram, post de @secrubio 5.591 × 536 (9,6%).
+  - 011: entrevista na TV 247 10.491 × 1.080 (10,3%); recortes 26.538 × 20.935 (78,9%); canal dela, 10 vídeos anteriores a 22/10, 12.462 × 7.234 (58,0%); reel no Instagram 215.708 × 2.000 (0,93%); recortes encontrados 144, universo ⛔ desconhecido.
+  - 012: comentários dos vídeos desde 27/09: Allan dos Santos 1.412 × 886 (62,7%), Paulo Figueiredo 20.787 × 10.342 (49,8%), Ramagem 1.130 × 866 (76,6%); vídeos desde 20/07: 100% dos envios lidos nos três canais.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** levar a mesma tabela aos casos 001 a 009 e às páginas de comentários das campanhas.
+
 ## C19.178 — Caso 011: Instagram (reel de declaração de voto), comentários e leitura diária com seguidores (2026-10-27) ⚠️
 
 - **Coleta do Instagram (run 40457415454, conta 1, US$ 2,7296 de US$ 3,30):** reel Dez0LqMp0Xz de @joicehasselmannoficial (1.198.297 seguidores, verificado), publicado em 22/10/2026 20h16 UTC (17h16 em Brasília), antes da estreia da entrevista na TV 247 (23h00 UTC); 322 s; 21.893.257 reproduções; 1.145.809 curtidas; 215.708 comentários; 1.042.288 compartilhamentos. 2.000 comentários (ordem "populares").

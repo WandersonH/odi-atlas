@@ -311,6 +311,30 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path) -> dict:
                 ig.append({"comment_id": str(x.get("comment_id") or x.get("id")), "texto": x.get("text") or "", "publicado_em": iso,
                            "autor_canal": str(x.get("user_id") or x.get("username") or ""), "tipo": "comentario", "parent_id": ""})
     ig = list({r["comment_id"]: r for r in ig}.values())
+    ig_inf = None
+    for f in sorted((priv / "apify").glob("*.json")):
+        try:
+            dd = json.loads(f.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        if "reel-scraper" in str(dd.get("ator", "")):
+            ig_inf = next((int(x["commentsCount"]) for x in dd.get("items") or [] if str(x.get("commentsCount", "")).isdigit()), ig_inf)
+    # universo × amostra (pedido de 27/10/2026, 03h24: "é sempre importante ter o universo e qual o real tamanho da amostra")
+    lidos = Counter(r["video_id"] for r in rows)
+    def linha(conj, vs, criterio):
+        inf = sum(v.get("comentarios") or 0 for v in vs)
+        li = sum(lidos.get(v["id"], 0) for v in vs)
+        return {"conjunto": conj, "videos": len(vs), "universo": inf if vs else None, "fonte_universo": "contagem de comentários informada pelo YouTube (inclui respostas)",
+                "amostra": li, "pct": round(100 * li / inf, 1) if inf else None, "criterio": criterio}
+    crit = f"até {PAGINAS * 100} conversas por vídeo, das mais recentes para as mais antigas, com até 5 respostas cada"
+    base_v = [v for v in vids.values() if v["canal_id"] == canal_dela and (v.get("publicado_em") or "") < MARCO and lidos.get(v["id"])]
+    universo = [linha("Entrevista na TV 247", [v for v in dados.get("sementes", []) if v["id"] == "jTeWOpW7fg4"], crit),
+                linha("Recortes desde 22/10 (todos os canais)", dados.get("recortes", []), crit),
+                linha("Canal dela, 10 vídeos anteriores a 22/10 (público histórico)", base_v, crit),
+                {"conjunto": "Reel no Instagram (Dez0LqMp0Xz)", "videos": 1, "universo": ig_inf, "fonte_universo": "contagem de comentários informada pelo Instagram",
+                 "amostra": len(ig), "pct": round(100 * len(ig) / ig_inf, 2) if ig_inf else None, "criterio": "2.000 comentários pedidos, ordem \"populares\" do Instagram, sem respostas"},
+                {"conjunto": "Recortes encontrados", "videos": None, "universo": None, "fonte_universo": "⛔ não há contagem total de vídeos sobre o tema; a busca do YouTube devolve até 100 por consulta",
+                 "amostra": len(dados.get("recortes", [])), "pct": None, "criterio": f"{len(BUSCAS)} buscas × data e relevância, 2 páginas cada; só vídeos com Joice/Hasselmann no título ou descrição"}]
     analise_ig = cmc.analisar(ig, TEMAS, pub, priv, "_instagram") if ig else None
     circ_videos = [{**v, "inscritos": v.get("inscritos_canal"), "consulta": v.get("busca") or "entrevista (partida)"} for v in
                    dados.get("sementes", []) + dados.get("recortes", [])]
@@ -324,7 +348,7 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path) -> dict:
                    "entrevista": next((v.get("visualizacoes") for v in dados.get("sementes", []) if v["id"] == "jTeWOpW7fg4"), None)})
     sr_arq.write_text(json.dumps(sr, ensure_ascii=False, indent=1), encoding="utf-8")
     return {"caso": CASO, "gerado_em_utc": now_utc(), "marco": MARCO, "canal": c, "serie_canal": serie,
-            "sobreposicao": sobre, "comentarios_entrevista_recortes": analise, "comentarios_instagram": analise_ig, "temas_publico_historico": temas_hist,
+            "sobreposicao": sobre, "comentarios_entrevista_recortes": analise, "comentarios_instagram": analise_ig, "universo": universo, "temas_publico_historico": temas_hist,
             "circulacao": circ, "serie_recortes": sr,
             "aviso_canal_dela": "O vídeo dela de 23/10 (\"Meu voto é pelo futuro do Brasil\") está com os comentários desligados, e o envio anterior é de "
                                 "dezembro de 2025; por isso o público de depois de 22/10 é medido na entrevista e nos recortes, não no canal dela.",

@@ -85,7 +85,7 @@ def ler_x(pasta: Path) -> tuple[list[dict], list[dict]]:
             r = {"id": iid, "termo": x.get("_termo"), "texto": " ".join(str(g(x, "fullText", "text") or "").split()),
                  "data": iso(g(x, "createdAt", "created_at")) or "", "conta": g(x, "author.userName", "author.username") or "",
                  "seguidores": g(x, "author.followers", "author.followersCount") or 0, "resposta_a": g(x, "inReplyToUsername", "in_reply_to_screen_name"),
-                 "curtidas": g(x, "likeCount") or 0, "url": g(x, "url", "twitterUrl") or ""}
+                 "curtidas": g(x, "likeCount") or 0, "respostas": g(x, "replyCount") or 0, "url": g(x, "url", "twitterUrl") or ""}
             (proprios if x.get("_termo") == "posts dos perfis" else amostra).append(r)
     return amostra, proprios
 
@@ -147,12 +147,28 @@ def main(argv=None) -> int:
            "x": {"total": resumo_grupo(xa),
                  "por_busca": {t: resumo_grupo([r for r in xa if r["termo"] == t]) for t in sorted({r["termo"] for r in xa})},
                  "contas_10mil_que_mais_aparecem": [{"conta": c, "seguidores": seg[c], "mensagens": n} for c, n in contas.most_common(15)],
-                 "posts_dos_perfis": [{k: r[k] for k in ("conta", "data", "texto", "curtidas", "url")} for r in sorted(xp, key=lambda r: r["data"])]},
+                 "posts_dos_perfis": [{k: r[k] for k in ("conta", "data", "texto", "curtidas", "respostas", "url")} for r in sorted(xp, key=lambda r: r["data"])]},
            "instagram": {"comentarios_lidos": len(ic), "em_portugues": len(ic_pt),
                          "pct_em_portugues": round(100 * len(ic_pt) / len(ic), 1) if ic else None,
                          "pt": resumo_grupo(ic_pt), "todos": resumo_grupo(ic),
                          "por_post": [{**p, "comentarios_lidos": sum(1 for r in ic if p["url"].rstrip("/") in r["post"]),
                                        "em_portugues": sum(1 for r in ic_pt if p["url"].rstrip("/") in r["post"])} for p in ip]}}
+    # universo × amostra (pedido de 27/10/2026, 03h24)
+    resp_inf = sum(int(r.get("respostas") or 0) for r in xp)
+    resp_pt = sum(1 for r in xa if str(r.get("termo", "")).startswith("resp."))
+    out["universo"] = [
+        {"conjunto": "X: respostas aos posts de Trump e Rubio no período", "universo": resp_inf,
+         "fonte_universo": f"soma do número de respostas informado pelo X nos {len(xp)} posts dos perfis desde 24/10 (todas as línguas)",
+         "amostra": resp_pt, "pct": round(100 * resp_pt / resp_inf, 2) if resp_inf else None,
+         "criterio": "busca to:perfil lang:pt (só português, detectado pelo X); inclui respostas a posts anteriores ao período"},
+        {"conjunto": "X: menções em português", "universo": None, "fonte_universo": "⛔ o X não informa o total de menções",
+         "amostra": sum(1 for r in xa if r.get("termo") == "menções em pt"), "pct": None, "criterio": "tudo o que a busca devolveu (não bateu no limite de 3.800)"}]
+    for p in ip:
+        lidos_p = sum(1 for r in ic if p["url"].rstrip("/") in r["post"])
+        inf = int(p["comentarios"]) if str(p.get("comentarios") or "").isdigit() else None
+        out["universo"].append({"conjunto": f"Instagram: comentários do post de @{p['perfil']}", "universo": inf, "fonte_universo": "contagem informada pelo Instagram",
+                                "amostra": lidos_p, "pct": round(100 * lidos_p / inf, 1) if inf else None,
+                                "criterio": "ordem \"populares\" do Instagram, sem respostas; português separado depois"})
     dest = Path("data/casos") / caso / "resumo.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
