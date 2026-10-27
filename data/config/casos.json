@@ -300,6 +300,67 @@
     "YouTube",
     "imprensa"
    ]
+  },
+  {
+   "id": "010",
+   "slug": "brasileiros-trump-rubio",
+   "titulo": "Brasileiros nos perfis de Donald Trump e Marco Rubio (24 a 27/10/2026)",
+   "tipo": "X e Instagram",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-10-24",
+   "aba": "caso010",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 27/10/2026, 01h56: \"queria uma coleta sobre posts de brasileiros no perfil de Donald Trump e Marco Rubio nos últimos 3 dias\"; teto escolhido para o X: US$ 3,00 (01h5x). Instagram: \"adicione o instagram\" (01h58), teto adicional US$ 2,50. Conta 1 (APIFY_TOKEN), sem consulta de saldo.",
+   "descricao": "Respostas e menções em português aos perfis de Donald Trump (@realDonaldTrump) e Marco Rubio (@marcorubio, @SecRubio) no X e comentários nos posts deles no Instagram, de 24/10/2026 (véspera do 2º turno) a 27/10. O filtro de idioma do X (lang:pt) inclui portugueses e outros lusófonos; a página trata o conjunto como \"em português\", não como prova de nacionalidade.",
+   "hashtags": [],
+   "termos_trends": [
+    "Trump Brasil",
+    "Rubio Brasil"
+   ],
+   "termos_noticias": [
+    "Trump eleição Brasil",
+    "Rubio eleição Brasil",
+    "Trump Lula",
+    "Rubio Lula"
+   ],
+   "maximo_por_termo": 6000,
+   "teto_usd": {
+    "x": 3.0
+   },
+   "complementos_x": [
+    {
+     "termo": "resp. @realDonaldTrump",
+     "busca": "to:realDonaldTrump lang:pt since:2026-10-24",
+     "motivo": "respostas em português ao perfil de Trump"
+    },
+    {
+     "termo": "resp. @marcorubio",
+     "busca": "to:marcorubio lang:pt since:2026-10-24",
+     "motivo": "respostas em português ao perfil pessoal de Rubio"
+    },
+    {
+     "termo": "resp. @SecRubio",
+     "busca": "to:SecRubio lang:pt since:2026-10-24",
+     "motivo": "respostas em português ao perfil oficial de Rubio"
+    },
+    {
+     "termo": "menções em pt",
+     "busca": "(@realDonaldTrump OR @marcorubio OR @SecRubio) lang:pt -filter:replies since:2026-10-24",
+     "motivo": "posts em português que citam os perfis sem ser resposta"
+    },
+    {
+     "termo": "posts dos perfis",
+     "busca": "(from:realDonaldTrump OR from:marcorubio OR from:SecRubio) since:2026-10-24",
+     "motivo": "o que Trump e Rubio publicaram no período"
+    }
+   ],
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "Google",
+    "imprensa"
+   ]
   }
  ],
  "segredos_por_rede": {

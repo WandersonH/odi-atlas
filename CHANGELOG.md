@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.173 — Caso 010: brasileiros nos perfis de Donald Trump e Marco Rubio (X e Instagram, 24 a 27/10/2026) 🔜
+
+- **Pedido:** "queria uma coleta sobre posts de brasileiros no perfil de Donald Trump e Marco Rubio nos últimos 3 dias" (27/10/2026, 01h56) e "adicione o instagram" (01h58). Autorização: X até **US$ 3,00** e Instagram até mais **US$ 2,50** (total US$ 5,50), respostas às perguntas de teto. Conta 1 (APIFY_TOKEN), sem consulta de saldo de contas.
+- **X:** caso 010 em `data/config/casos.json` com `segredo: APIFY_TOKEN` e 5 buscas complementares (xquik/x-tweet-scraper, US$ 0,00015 por linha, até 3.800 por busca): `to:realDonaldTrump lang:pt`, `to:marcorubio lang:pt`, `to:SecRubio lang:pt`, menções em português sem ser resposta, e os posts dos três perfis, todas `since:2026-10-24`. `casos.yml` passa a receber `APIFY_TOKEN`.
+- **Limite do método:** `lang:pt` é o idioma detectado pelo X, não a nacionalidade; inclui portugueses e outros lusófonos. A página fala em "em português".
+- **Teste executado:** `python -m unittest discover -s tests -v` → OK; `pedidos('x', caso 010)` só gera as 5 buscas no modo complemento e nenhuma no modo normal (a coleta diária grátis não gasta no caso).
+- **Pendente:** rodar o X (`casos.yml`, modo complemento, caso 010), coletor do Instagram, página.
+
 ## C19.172 — Caso 009 na página: cópia do vídeo, falas e cartelas lidas das legendas, circulação comparada (2026-10-26) ⚠️
 
 - **Pedido:** "esse post foi arquivado, preciso de uma cópia dele na página" e a comparação de circulação com o carrossel DeujIRxGDYZ.

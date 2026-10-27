@@ -52,6 +52,7 @@ jobs:
         if: github.event.inputs.modo != 'so-analises'
         continue-on-error: true
         env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
           APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
           APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
