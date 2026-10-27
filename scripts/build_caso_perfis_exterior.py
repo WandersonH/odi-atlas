@@ -36,7 +36,7 @@ CATEGORIAS = {
     "cita Moraes, STF ou censura": r"moraes|xand[aã]o|\bstf\b|supremo|zanin|\bdino\b|gilmar|barroso|fachin|toffoli|\bfux\b|c[aá]rmen l[uú]cia|mendon[cç]a|nunes marques"
                                    r"|censur\w*|censorship|ditadura|dictator\w*",
     "fala em golpe ou fraude": r"\bgolpe\w*|\bcoup\b|fraud\w*|roubad\w*|rigged|stolen|manipula\w*",
-    "pede ajuda, sanção ou intervenção": r"\bajud\w*|\bhelp\b|\bsave\b|salv[ae]\w*|san[cç]\w*|sanction\w*|tarif\w*|magnitsky|interven\w*|socorr\w*|liberta\w*",
+    "pede ajuda, sanção ou intervenção": r"\bsos\b|\bajud\w*|\bhelp\b|\bsave\b|salv[ae]\w*|san[cç]\w*|sanction\w*|tarif\w*|magnitsky|interven\w*|socorr\w*|liberta\w*",
 }
 UNIAO = "cita o Brasil ou a eleição"
 PT = re.compile(r"[ãõç]|\b(n[ãa]o|voc[eê]|vc|pra|muito|obrigad[oa]|n[oó]s|est[aá]|s[ãa]o|tamb[eé]m|brasil\w*|ent[ãa]o|agora|nosso|nossa|povo|aqui|isso|tá|tô|deus|vai|esse|essa|mais)\b", re.I)
@@ -105,7 +105,7 @@ def ler_ig(pasta: Path) -> tuple[list[dict], list[dict]]:
                 coms.append({"id": cid, "texto": " ".join(str(x.get("text") or "").split()), "data": iso(g(x, "created_at_utc", "created_at")) or "",
                              "post": str(g(x, "input_url", "post_url") or ""), "curtidas": g(x, "like_count") or 0,
                              "conta": g(x, "username", "user.username") or ""})
-            elif x.get("url"):
+            elif x.get("url") and not x.get("error"):  # perfil sem post no período volta como erro "no_items"
                 posts.append({"perfil": x.get("ownerUsername"), "url": x.get("url"), "publicado_utc": x.get("timestamp"), "tipo": x.get("type"),
                               "curtidas": x.get("likesCount"), "comentarios": x.get("commentsCount"), "legenda": (x.get("caption") or "")[:400]})
     return coms, posts

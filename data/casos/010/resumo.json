@@ -1,13 +1,13 @@
 {
  "caso": "010",
- "gerado_em_utc": "2026-10-27T05:05:28Z",
+ "gerado_em_utc": "2026-10-27T05:08:50Z",
  "categorias_regex": {
   "cita o Brasil": "\\bbrasil\\w*|\\bbrazil\\w*|🇧🇷|\\bbr\\b",
   "cita a eleição": "elei[cç][aãoõ]\\w*|\\beleit\\w*|\\belection\\w*|\\bvot[aeo]\\w*|\\bvote[ds]?\\b|\\burnas?\\b|fraud\\w*|\\b2[ºo°] turno|segundo turno|apura[cç]\\w*|\\btse\\b|rigged|stolen|roubad\\w*|resultado",
   "cita Lula, Bolsonaro ou Flávio": "\\blula\\w*|bolsonar\\w*|fl[aá]vio\\b|\\bjair\\b|\\beduardo\\b",
   "cita Moraes, STF ou censura": "moraes|xand[aã]o|\\bstf\\b|supremo|zanin|\\bdino\\b|gilmar|barroso|fachin|toffoli|\\bfux\\b|c[aá]rmen l[uú]cia|mendon[cç]a|nunes marques|censur\\w*|censorship|ditadura|dictator\\w*",
   "fala em golpe ou fraude": "\\bgolpe\\w*|\\bcoup\\b|fraud\\w*|roubad\\w*|rigged|stolen|manipula\\w*",
-  "pede ajuda, sanção ou intervenção": "\\bajud\\w*|\\bhelp\\b|\\bsave\\b|salv[ae]\\w*|san[cç]\\w*|sanction\\w*|tarif\\w*|magnitsky|interven\\w*|socorr\\w*|liberta\\w*"
+  "pede ajuda, sanção ou intervenção": "\\bsos\\b|\\bajud\\w*|\\bhelp\\b|\\bsave\\b|salv[ae]\\w*|san[cç]\\w*|sanction\\w*|tarif\\w*|magnitsky|interven\\w*|socorr\\w*|liberta\\w*"
  },
  "uniao": "cita o Brasil ou a eleição",
  "nota": "X: respostas e menções com lang:pt (idioma detectado pelo X). Instagram: comentários dos posts de Trump e Rubio desde 24/10, português separado por marcadores da língua (regra declarada). Português não prova nacionalidade.",
@@ -36,8 +36,8 @@
      "pct": 24.7
     },
     "pede ajuda, sanção ou intervenção": {
-     "n": 474,
-     "pct": 13.8
+     "n": 509,
+     "pct": 14.8
     },
     "cita o Brasil ou a eleição": {
      "n": 1770,
@@ -239,8 +239,8 @@
       "pct": 26.9
      },
      "pede ajuda, sanção ou intervenção": {
-      "n": 356,
-      "pct": 13.5
+      "n": 381,
+      "pct": 14.4
      },
      "cita o Brasil ou a eleição": {
       "n": 1381,
@@ -842,8 +842,8 @@
       "pct": 15.0
      },
      "pede ajuda, sanção ou intervenção": {
-      "n": 88,
-      "pct": 14.3
+      "n": 98,
+      "pct": 16.0
      },
      "cita o Brasil ou a eleição": {
       "n": 290,
@@ -1186,79 +1186,423 @@
   ]
  },
  "instagram": {
-  "comentarios_lidos": 0,
-  "em_portugues": 0,
-  "pct_em_portugues": null,
+  "comentarios_lidos": 536,
+  "em_portugues": 294,
+  "pct_em_portugues": 54.9,
   "pt": {
-   "n": 0,
+   "n": 294,
    "categorias": {
     "cita o Brasil": {
-     "n": 0,
-     "pct": null
+     "n": 273,
+     "pct": 92.9
     },
     "cita a eleição": {
-     "n": 0,
-     "pct": null
+     "n": 50,
+     "pct": 17.0
     },
     "cita Lula, Bolsonaro ou Flávio": {
-     "n": 0,
-     "pct": null
+     "n": 32,
+     "pct": 10.9
     },
     "cita Moraes, STF ou censura": {
-     "n": 0,
-     "pct": null
+     "n": 19,
+     "pct": 6.5
     },
     "fala em golpe ou fraude": {
-     "n": 0,
-     "pct": null
+     "n": 56,
+     "pct": 19.0
     },
     "pede ajuda, sanção ou intervenção": {
-     "n": 0,
-     "pct": null
+     "n": 190,
+     "pct": 64.6
     },
     "cita o Brasil ou a eleição": {
-     "n": 0,
-     "pct": null
+     "n": 277,
+     "pct": 94.2
     }
    },
-   "por_dia": {},
-   "palavras": []
+   "por_dia": {
+    "2026-10-24": 2,
+    "2026-10-25": 23,
+    "2026-10-26": 228,
+    "2026-10-27": 41
+   },
+   "palavras": [
+    [
+     "sos",
+     147
+    ],
+    [
+     "help",
+     102
+    ],
+    [
+     "brasil",
+     89
+    ],
+    [
+     "brazil",
+     81
+    ],
+    [
+     "please",
+     53
+    ],
+    [
+     "save",
+     38
+    ],
+    [
+     "lula",
+     35
+    ],
+    [
+     "fraud",
+     15
+    ],
+    [
+     "salve",
+     14
+    ],
+    [
+     "trump",
+     14
+    ],
+    [
+     "golpe",
+     13
+    ],
+    [
+     "people",
+     12
+    ],
+    [
+     "brazilian",
+     12
+    ],
+    [
+     "eleições",
+     12
+    ],
+    [
+     "ajude",
+     12
+    ],
+    [
+     "president",
+     11
+    ],
+    [
+     "rubio",
+     10
+    ],
+    [
+     "marco",
+     10
+    ],
+    [
+     "electoral",
+     10
+    ],
+    [
+     "stf",
+     9
+    ],
+    [
+     "estamos",
+     9
+    ],
+    [
+     "ajuda",
+     9
+    ],
+    [
+     "needs",
+     8
+    ],
+    [
+     "coup",
+     8
+    ],
+    [
+     "system",
+     8
+    ],
+    [
+     "country",
+     8
+    ],
+    [
+     "maduro",
+     8
+    ],
+    [
+     "was",
+     8
+    ],
+    [
+     "socorro",
+     8
+    ],
+    [
+     "deus",
+     7
+    ],
+    [
+     "need",
+     7
+    ],
+    [
+     "supreme",
+     7
+    ],
+    [
+     "court",
+     7
+    ],
+    [
+     "eleição",
+     7
+    ],
+    [
+     "ajudem",
+     7
+    ],
+    [
+     "election",
+     7
+    ],
+    [
+     "communist",
+     7
+    ],
+    [
+     "democracy",
+     6
+    ],
+    [
+     "from",
+     6
+    ],
+    [
+     "flávio",
+     6
+    ]
+   ]
   },
   "todos": {
-   "n": 0,
+   "n": 536,
    "categorias": {
     "cita o Brasil": {
-     "n": 0,
-     "pct": null
+     "n": 411,
+     "pct": 76.7
     },
     "cita a eleição": {
-     "n": 0,
-     "pct": null
+     "n": 92,
+     "pct": 17.2
     },
     "cita Lula, Bolsonaro ou Flávio": {
-     "n": 0,
-     "pct": null
+     "n": 67,
+     "pct": 12.5
     },
     "cita Moraes, STF ou censura": {
-     "n": 0,
-     "pct": null
+     "n": 31,
+     "pct": 5.8
     },
     "fala em golpe ou fraude": {
-     "n": 0,
-     "pct": null
+     "n": 93,
+     "pct": 17.4
     },
     "pede ajuda, sanção ou intervenção": {
-     "n": 0,
-     "pct": null
+     "n": 278,
+     "pct": 51.9
     },
     "cita o Brasil ou a eleição": {
-     "n": 0,
-     "pct": null
+     "n": 424,
+     "pct": 79.1
     }
    },
-   "por_dia": {},
-   "palavras": []
+   "por_dia": {
+    "2026-10-24": 10,
+    "2026-10-25": 40,
+    "2026-10-26": 407,
+    "2026-10-27": 79
+   },
+   "palavras": [
+    [
+     "brazil",
+     221
+    ],
+    [
+     "help",
+     169
+    ],
+    [
+     "sos",
+     168
+    ],
+    [
+     "please",
+     146
+    ],
+    [
+     "brasil",
+     92
+    ],
+    [
+     "lula",
+     71
+    ],
+    [
+     "rubio",
+     71
+    ],
+    [
+     "save",
+     64
+    ],
+    [
+     "saves",
+     45
+    ],
+    [
+     "brazilian",
+     36
+    ],
+    [
+     "people",
+     35
+    ],
+    [
+     "electoral",
+     30
+    ],
+    [
+     "coup",
+     29
+    ],
+    [
+     "election",
+     28
+    ],
+    [
+     "court",
+     26
+    ],
+    [
+     "elections",
+     25
+    ],
+    [
+     "fraud",
+     25
+    ],
+    [
+     "supreme",
+     24
+    ],
+    [
+     "from",
+     22
+    ],
+    [
+     "trump",
+     22
+    ],
+    [
+     "president",
+     21
+    ],
+    [
+     "was",
+     19
+    ],
+    [
+     "country",
+     18
+    ],
+    [
+     "marco",
+     17
+    ],
+    [
+     "now",
+     16
+    ],
+    [
+     "who",
+     16
+    ],
+    [
+     "communist",
+     16
+    ],
+    [
+     "maduro",
+     16
+    ],
+    [
+     "golpe",
+     15
+    ],
+    [
+     "were",
+     15
+    ],
+    [
+     "right",
+     15
+    ],
+    [
+     "has",
+     15
+    ],
+    [
+     "needs",
+     14
+    ],
+    [
+     "bolsonaro",
+     14
+    ],
+    [
+     "salve",
+     14
+    ],
+    [
+     "justice",
+     14
+    ],
+    [
+     "stf",
+     13
+    ],
+    [
+     "democracy",
+     13
+    ],
+    [
+     "political",
+     13
+    ],
+    [
+     "their",
+     13
+    ]
+   ]
   },
-  "por_post": []
+  "por_post": [
+   {
+    "perfil": "secrubio",
+    "url": "https://www.instagram.com/p/De4qmY8Cfas/",
+    "publicado_utc": "2026-10-24T17:26:25.000Z",
+    "tipo": "Image",
+    "curtidas": 29596,
+    "comentarios": 5591,
+    "legenda": "Now is the time.",
+    "comentarios_lidos": 536,
+    "em_portugues": 294
+   }
+  ]
  }
 }
