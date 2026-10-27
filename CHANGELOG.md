@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.175 — Caso 012: frente de transnacionalização do bolsonarismo (Allan dos Santos, Paulo Figueiredo, Alexandre Ramagem no YouTube) (2026-10-27) 🔜
+
+- **Pedido (27/10/2026, 03h02):** youtube.com/@allandossantosbr, @PauloFigueiredoShow, @delegadoramagem, "frente Transnacionalização bolsonarismo". YouTube pela API, grátis; nenhuma coleta paga.
+- **O que mudou:** `scripts/caso_canais.py` (genérico, configurado em `data/config/caso_canais.json`) + `caso-canais.yml` (diário, 10h41): canais pelo @, envios desde 20/07/2026, comentários dos vídeos desde 27/09/2026 (até 3 páginas de 100 conversas; vídeos com menos de 3 dias são relidos). Análise: vídeos por semana, visualizações, temas por expressão regular no título e na descrição (EUA/Trump/Rubio; sanções/Magnitsky/tarifas/vistos; exílio/asilo/perseguição; Moraes/STF/censura; eleição/urna/fraude; golpe/8 de janeiro/anistia; Lula/PT; família Bolsonaro; Venezuela/Cuba/América Latina), autores em comum entre canais (contagem e Jaccard), lado no acervo (Lula/Flávio/ambos/nenhum, como no caso 011), série de inscritos. Redes: `rede_canais.gexf`, `rede_canais_autores.gexf` (autores em código) e `rede_canais_temas.gexf` (canais × temas e pessoas citadas). Reaproveita `caso_joice.py` (leitura de vídeos, acervo, códigos).
+- **Teste:** `tests/test_caso_canais.py` (autores em comum, temas, lado no acervo, nada de texto ou autor no público); `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar `caso-canais.yml`, página do caso. A "Gabriela" citada no pedido anterior (Paulo Figueiredo, Allan dos Santos, Gabriela) ainda não foi identificada.
+
 ## C19.174 — Caso 011: Joice Hasselmann e a entrevista à TV 247 (furou a bolha? crescimento do perfil; redes Gephi) (2026-10-27) 🔜
 
 - **Pedido (27/10/2026, 02h46):** caso a partir da entrevista youtube.com/watch?v=jTeWOpW7fg4 (TV 247, 22/10/2026, Leonardo Attuch entrevista Joice Hasselmann, que declara voto em Lula), "recorte de análise de recortes pós data da entrevista", "entender se ela furou ou não a bolha", "o padrão de crescimento do perfil dela pós vídeo", "redes Gephi", com o vídeo 9LLIWExnoK4 ("próprio canal dela") e o post instagram.com/p/Dez0LqMp0Xz. Teto do Instagram: **US$ 3,50** (resposta à pergunta de teto).
