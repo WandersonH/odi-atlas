@@ -1,0 +1,58 @@
+name: Caso 011 (Joice Hasselmann) — YouTube grátis, recortes, bolha e crescimento do canal
+
+# Pedido do responsável (27/10/2026, 02h46). Uma leitura por dia: a série de inscritos do canal cresce a cada execução.
+on:
+  schedule:
+    - cron: "23 13 * * *"   # 10h23 em Brasília
+  workflow_dispatch:
+    inputs:
+      sem_coleta:
+        description: "só refazer análise e redes, sem chamar a API"
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: caso-joice
+  cancel-in-progress: false
+
+jobs:
+  joice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q networkx==3.6.1 numpy==2.3.4
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Coletar e analisar
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          SEM: ${{ inputs.sem_coleta || 'false' }}
+        run: |
+          python scripts/caso_joice.py $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Caso 011::$(echo "$l" | cut -c1-600)"; done < s.txt
+          exit $rc
+      - name: Gravar no privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Caso 011: YouTube (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Gravar no público
+        run: |
+          scripts/commit_push.sh "Caso 011: YouTube (run ${{ github.run_id }})"

@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.174 — Caso 011: Joice Hasselmann e a entrevista à TV 247 (furou a bolha? crescimento do perfil; redes Gephi) (2026-10-27) 🔜
+
+- **Pedido (27/10/2026, 02h46):** caso a partir da entrevista youtube.com/watch?v=jTeWOpW7fg4 (TV 247, 22/10/2026, Leonardo Attuch entrevista Joice Hasselmann, que declara voto em Lula), "recorte de análise de recortes pós data da entrevista", "entender se ela furou ou não a bolha", "o padrão de crescimento do perfil dela pós vídeo", "redes Gephi", com o vídeo 9LLIWExnoK4 ("próprio canal dela") e o post instagram.com/p/Dez0LqMp0Xz. Teto do Instagram: **US$ 3,50** (resposta à pergunta de teto).
+- **YouTube (grátis):** `scripts/caso_joice.py` + `caso-joice.yml` (diário, 10h23): sementes, canal dela (via 9LLIWExnoK4) com todos os envios, recortes desde 22/10 (5 buscas × data e relevância, só com "Joice"/"Hasselmann"), comentários (até 10 páginas de 100 conversas por vídeo; no canal dela, os 10 envios anteriores a 22/10 como linha de base e todos os posteriores).
+- **Bolha:** cada autor é cruzado com o acervo de comentários do Atlas nos canais das campanhas (candidate_id 280002542548 = Lula; 280002551544 = Flávio): lado lula, flavio, ambos ou nenhum; por canal e no canal dela antes × depois de 22/10. Indício, não prova de voto.
+- **Crescimento:** `data/casos/011/canal_serie.json` (inscritos, visualizações e vídeos a cada leitura), envios antes e depois, comentários por dia no canal dela. Histórico de inscritos anterior à primeira leitura: ⛔ a API do YouTube só dá o valor atual.
+- **Redes (Gephi):** `data/casos/011/rede_canais_autores.gexf` (canais × autores em código, com o lado no acervo e âncoras "Acervo Lula"/"Acervo Flávio") e `rede_canais.gexf` (canais × canais, peso = autores em comum). Canais com menos de 10 mil inscritos em código.
+- **Instagram:** `coletar-caso-instagram.yml` caso 011, teto US$ 3,30 (US$ 0,20 ficam para a leitura diária).
+- **Teste:** `tests/test_caso_joice.py` (bolha antes × depois, canais pequenos sem nome, nada de texto ou autor no público, âncoras na rede); `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar `caso-joice.yml`, resultado do Instagram, página.
+
 ## C19.173 — Caso 010: brasileiros nos perfis de Donald Trump e Marco Rubio (X e Instagram, 24 a 27/10/2026) 🔜
 
 - **Pedido:** "queria uma coleta sobre posts de brasileiros no perfil de Donald Trump e Marco Rubio nos últimos 3 dias" (27/10/2026, 01h56) e "adicione o instagram" (01h58). Autorização: X até **US$ 3,00** e Instagram até mais **US$ 2,50** (total US$ 5,50), respostas às perguntas de teto. Conta 1 (APIFY_TOKEN), sem consulta de saldo de contas.
