@@ -9,7 +9,7 @@ on:
       modo:
         description: "teste (1 termo por rede, 10 itens) · carga · complemento (buscas extras do X) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [teste, carga, complemento, frases, posts, so-analises]
+        options: [teste, carga, complemento, frases, posts, rodada2, so-analises]
         default: teste
       caso:
         description: "id do caso (vazio = todos os ativos)"
@@ -76,6 +76,7 @@ jobs:
           if [ "$MODO" = "complemento" ]; then a="--complemento --rede x"; fi
           if [ "$MODO" = "frases" ]; then a="--frases --rede instagram --rede facebook --rede kwai"; fi
           if [ "$MODO" = "posts" ]; then a="--posts --rede instagram"; fi
+          if [ "$MODO" = "rodada2" ]; then a="--rodada 2 --complemento --frases --rede x --rede instagram"; fi
           if [ -n "$CASO" ]; then a="$a --caso $CASO"; fi
           for r in $REDES; do a="$a --rede $r"; done
           python scripts/collect_casos.py $a > f.txt 2>&1; rc=$?
@@ -91,7 +92,7 @@ jobs:
           if [ -d "$ODI_INTERNO_DIR/casos/010" ]; then python scripts/build_caso_perfis_exterior.py --caso 010 >> b.txt 2>&1 || rc=1; fi
           # Bardin (pré-codificação pelo livro de códigos do caso), pedido de 28/10/2026, 00h05
           for c in $(ls data/config | sed -n 's/^livro_codigos_caso\([0-9]*\)\.json$/\1/p'); do
-            if [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi
+            if [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; python scripts/saturacao_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi
           done
           while IFS= read -r l; do echo "::notice title=Casos agregados::$(echo "$l" | cut -c1-600)"; done < b.txt
           exit $rc

@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.188 — Caso 014: rodada 2 de vocabulário e medida de saturação da coleta; resultado dos 4 reels indicados (2026-10-28) 🔜
+
+- **Pedido (28/10/2026, 01h14):** "preciso de uma coleta que me traga uma real ideia desse universo de temática". As plataformas não informam o total (regra 9: ⛔, nunca estimado); o indício de cobertura é a **saturação**: ampliar o vocabulário e medir quanto cada rodada ainda traz de novo.
+- **Reels indicados (C19.187, run 40630952810, US$ 0,0342):** os 4 entraram: De8Bp4DIT_L 5.595.501 reproduções (26/10 00h46 UTC), De-NKzzBQAV 4.157.268, De9jX72KMCI 3.212.202, De-GB7Nptn7 2.472.535; nenhum tinha vindo pela busca por assunto. O leitor de reels não traz seguidores do autor, então aparecem sem nome.
+- **Vocabulário descoberto nos textos já coletados** (contagens no privado, `itens.csv.gz`): hashtags #vocejademitiuumpetistahoje (23), #demitaumptista (24), #demitaospetistas (17), #naocompredepetista (14), #movimentoexcluaospetistas (10), #naocontratepetista (7); frases "compre de petista" (75), "lista de boicote" (63), "amizade com petistas" (33), "vigiar e demitir" (20), "petista evite processo" (10), "demita em silêncio" (10), "empresas de esquerda" (19).
+- **Rodada 2:** 6 buscas novas no X (`complementos_x` com `rodada: 2`), 4 hashtags e 6 assuntos de reels no Instagram (`hashtags_instagram_r2`, `buscas_instagram_r2`), 3 frases novas no TikTok. `collect_casos.py --rodada N` só busca os termos daquela rodada; `casos.yml` modo `rodada2`. Teto do caso continua **US$ 6,00**, redistribuído: X 2,50; Instagram 2,50; Facebook 1,00; Kwai 0 (não devolveu nada).
+- **`scripts/saturacao_caso.py`:** por coleta (rede × momento, dos brutos do privado): lidas no período, novas, % novas, acumulado e por termo; `data/casos/<caso>/saturacao.json`; roda no passo de agregados. Primeira leitura (cópia local): X 02h13 3.378 lidas, 3.314 novas (98,1%); **X 03h12 (rodada com 3 termos novos) 3.558 lidas, 202 novas (5,7%)**; Instagram 03h25 198/196 (99,0%); Facebook 03h25 249/243 (97,6%); 4.160 únicas nos brutos (o TikTok grátis não guarda bruto). Página: tabela de saturação no topo dos gráficos do caso 014.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar `casos.yml` modo rodada2 (014) e ler a saturação.
+
 ## C19.187 — Caso 014: 4 reels indicados pelo responsável (2026-10-28) 🔜
 
 - **Pedido (28/10/2026, 01h10):** links de reels (De9jX72KMCI, De-NKzzBQAV, De-GB7Nptn7, De8Bp4DIT_L; o primeiro veio duas vezes) com "esses entraram". Conferido no privado (`casos/014/itens.csv.gz` e brutos do Instagram): **nenhum dos 4 estava na coleta** (a busca de reels por assunto traz só os primeiros resultados de cada termo).

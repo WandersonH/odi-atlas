@@ -99,6 +99,11 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     validos |= {c["termo"] for c in caso.get("complementos_x", [])} | set(caso.get("buscas_tiktok", []))
     validos |= {f"#{h}" for h in caso.get("hashtags_instagram", [])} | set(caso.get("buscas_facebook", [])) | set(caso.get("buscas_kwai", []))
     validos |= {f"reels: {q}" for q in caso.get("buscas_instagram", [])}
+    for k_, v_ in caso.items():  # listas de rodadas de ampliação (hashtags_instagram_r2, buscas_instagram_r2…)
+        if k_.startswith("hashtags_instagram_r"):
+            validos |= {f"#{h}" for h in v_}
+        if k_.startswith("buscas_instagram_r"):
+            validos |= {f"reels_{k_.rsplit('_', 1)[1]}: {q}" for q in v_}
     if caso.get("posts_instagram"):
         validos.add("indicado pelo responsável")
     itens = [{**r, "termo": "|".join(t for t in r["termo"].split("|") if t in validos)} for r in itens]

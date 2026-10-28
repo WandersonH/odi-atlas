@@ -141,6 +141,10 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
         return []
     if caso.get("_so_frases"):
         # 28/10/2026 (caso 014): buscas por frase no Facebook e no Kwai e hashtags extras no Instagram, sem repetir as hashtags já coletadas
+        suf = f"_r{caso['_rodada']}" if caso.get("_rodada") else ""
+        if rede == "instagram" and suf:  # rodada N: só as listas da rodada (28/10/2026, 01h14)
+            return [(f"#{t}", ATOR["instagram"], {"hashtags": [t], "resultsType": "posts", "resultsLimit": n}) for t in caso.get("hashtags_instagram" + suf, [])] + \
+                   [(f"reels{suf}: {q}", ATOR["instagram_reels"], {"query": q, "maxPages": max(1, -(-n // 12))}) for q in caso.get("buscas_instagram" + suf, [])]
         if rede == "instagram":
             # 28/10/2026, 00h16 ("se você busca os assuntos no insta ele traz vídeos"): busca de reels por assunto (sem filtro de data no ator;
             # o período é aplicado depois, como nas demais redes). ~12 reels por página.
@@ -150,9 +154,12 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
             return [(q, ATOR["facebook"], {"query": q, "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": False}) for q in caso.get("buscas_facebook", [])]
         if rede == "kwai":
             return [(q, ATOR["kwai"], {"searchTerms": [q], "expandSearchWithHashtag": False, "maxItems": n, "postedAfter": d}) for q in caso.get("buscas_kwai", [])]
-        return []
+        if rede != "x" or not caso.get("_so_complemento"):
+            return []
     if rede == "x" and caso.get("_so_complemento"):
-        return [(c["termo"], ATOR["x"], {"searchTerms": [c["busca"]], "maxItems": n, "queryType": "Latest"}) for c in caso.get("complementos_x", [])]
+        rod = caso.get("_rodada")
+        return [(c["termo"], ATOR["x"], {"searchTerms": [c["busca"]], "maxItems": n, "queryType": "Latest"}) for c in caso.get("complementos_x", [])
+                if not rod or c.get("rodada", 1) == rod]
     if rede == "x":
         for t in tags:
             out.append((f"#{t}", ATOR["x"], {"searchTerms": [f"#{t} since:{d}"], "maxItems": n, "queryType": "Latest"}))
@@ -332,6 +339,8 @@ def main(argv=None, executar=None) -> int:
             continue
         if "--complemento" in argv:  # só as buscas complementares do X (ex.: o começo do caso, que a busca "mais recentes" cortou)
             caso = {**caso, "_so_complemento": True}
+        if "--rodada" in argv:  # só os termos de uma rodada de ampliação de vocabulário (28/10/2026)
+            caso = {**caso, "_rodada": int(argv[argv.index("--rodada") + 1])}
         if "--posts" in argv:  # só os posts indicados pelo responsável (28/10/2026)
             caso = {**caso, "_so_posts": True}
         if "--frases" in argv:  # só frases (Facebook, Kwai) e hashtags extras do Instagram (28/10/2026)
