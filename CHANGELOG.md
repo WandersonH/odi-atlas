@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.182 — Caso 014: "Demita um petista", boicote à esquerda e listas de empresas e prestadores (desde 25/10) + números do MPT sobre assédio eleitoral (2026-10-27) 🔜
+
+- **Pedido (27/10/2026, 23h04):** "coleta temporal do dia 25 para cá com 'demita um petista', 'boicote esquerda'; se conseguir traga dados do MPT sobre assédio eleitoral; empresa e prestadores de serviço petista; você tem 6 dólares". **Teto US$ 6,00**, conta 1 (APIFY_TOKEN), sem consulta de saldo.
+- **Divisão do teto (preço de tabela):** X US$ 3,00 (5 hashtags e 5 buscas por frase, até 1.500 por busca; pior caso ~US$ 2,25); Instagram US$ 1,50 (~109 por hashtag); Facebook US$ 1,00 (~73 por hashtag); Kwai US$ 0,50 (~47 por hashtag). TikTok (página pública), Trends, Google Notícias e YouTube grátis. Hashtags: #demitaumpetista, #boicoteesquerda, #boicoteaesquerda, #boicotepetista, #empresaspetistas. Buscas do X: pedidos de demissão; boicote a petistas/esquerda; empresas e prestadores "petistas"; "não contrate"/"lista de petistas"; e o outro lado ("demitido por votar", "assédio eleitoral").
+- **Série temporal:** a coleta paga gera a série hora a hora por rede e por termo (`caso.json`: `eixo_horas_brt`, `serie_por_rede`, `serie_por_termo`), exibida no dossiê de "Casos e análises".
+- **MPT:** `data/casos/014/mpt.json`, cada número com fonte e data de corte (o MPT não publica série aberta): 1.937 denúncias em 2026 (corte 25 ou 26/10), 907 até a véspera do 1º turno, 946 entre os turnos, 59 ações civis públicas, 52 liminares, 53 TACs, SP 350, MG 212, RJ 169; setembro 553 (setembro de 2022: 68); 1º a 19/10: 663. Fontes: CNN Brasil (27/10), A Crítica (27/10), Correio da Manhã (20/10). ⛔ denúncias posteriores a 25/10 ainda não divulgadas.
+- **Privacidade:** nomes de empresas, prestadores e pessoas das listas ficam só no privado; o público recebe contagens.
+- **Página:** seção `caso014` com o quadro do MPT (`montarMpt014`) e `montarCasoBusca('014')`; menu Casos.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; `pedidos()` gera 5 buscas por rede paga e 5 complementos do X.
+- **Pendente:** carga (X, Instagram, Facebook, Kwai, TikTok, Google), complemento do X, `casos-busca` 014; gasto real e números na próxima entrada.
+
 ## C19.181 — Página "Urnas por candidato": presidente por seção eleitoral (seções vencidas, 100%, zero e distribuição) (2026-10-27) 🔜
 
 - **Pedido (27/10/2026, 22h47):** "preciso validar uma informação, então teremos mais uma página: quantas urnas cada candidato teve, todos os percentuais por seção eleitoral".

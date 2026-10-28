@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       caso:
-        description: "id do caso (001, 002, 003, 005, 006, 007, 008, 009 ou 013; vazio = todos)"
+        description: "id do caso (001, 002, 003, 005, 006, 007, 008, 009, 013 ou 014; vazio = todos)"
         default: ""
   schedule:
     - cron: "53 14 * * *"   # todo dia, 11h53 em Brasília
@@ -46,7 +46,7 @@ jobs:
           CASO: ${{ github.event.inputs.caso }}
         run: |
           rc=0
-          for c in ${CASO:-001 002 003 005 006 007 008 009 013}; do
+          for c in ${CASO:-001 002 003 005 006 007 008 009 013 014}; do
             python scripts/collect_caso_busca.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
             # conversas importadas do Apify (X, Instagram) do caso, quando houver: unifica e agrega antes do build do caso
             case "$c" in 006) python scripts/build_caso_x.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1;; esac
