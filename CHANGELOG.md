@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.186 — Caso 014: gráfico de bolhas (cada publicação) e de linhas (publicações por hora e por rede) (2026-10-28) ✅
+
+- **Pedido (28/10/2026, 00h38):** "queria aquele gráfico de publicações de bolhas e um deste de linhas total publicações por rede".
+- **Bolhas** (no modelo da "linha do tempo" das páginas de campanha): uma bolha por publicação, x = hora de publicação, faixa = rede, tamanho = audiência (visualizações, ou curtidas + comentários + compartilhamentos), escala própria de cada rede; cor = bloco da pré-codificação de Bardin (incitação, reação, as duas, "direita apoia direita", outras). `build_bardin_caso.py` grava `pontos` em `bardin.json` (hora, rede, audiência, categorias; conta e link só de contas com 10 mil+ seguidores; nada de texto). Teste atualizado.
+- **Linhas:** publicações por hora em cada rede e total, de `caso.json` (`eixo_horas_brt`, `serie_por_rede`), com marcação de cada dia.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Render local com os dados reais (cópia na pasta temporária; privado sem alteração): 4.407 bolhas, 5 linhas (total, X 3.650, Facebook 298, TikTok 251, Instagram 208), sem erro de JavaScript.
+- **Pendente:** regenerar `bardin.json` no GitHub (`casos.yml` so-analises) para publicar os pontos.
+
 ## C19.185 — Caso 014: Instagram, Facebook e Kwai por frase e hashtags extras (2026-10-28) 🔜
 
 - **Pedido (28/10/2026, 00h14):** "tu não trouxe Kwai, Instagram e Facebook". Na carga, essas redes foram buscadas só pelas hashtags do caso, que quase não são usadas lá: Instagram 12, Facebook 55, Kwai 0.

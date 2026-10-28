@@ -135,12 +135,28 @@ def main(argv=None) -> int:
            "pares": [{"a": a, "b": b, "n": k} for (a, b), k in pares.most_common(15)],
            "exemplos_contas_10mil": exemplos, "amostra_humana": {"arquivo_privado": "casos/%s/codificacao/amostra_bardin_v1.csv" % caso, "publicacoes": n_amostra,
                                                                   "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"},
-           "chd_palavras": analise, "universo": universo(pub),
+           "chd_palavras": analise, "universo": universo(pub), "pontos": pontos(rows),
            "nota": "Pré-codificação automática por indicadores (sugestão, não decisão); várias categorias por publicação; percentuais sobre as publicações lidas, não sobre o universo."}
     (pub / "bardin.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"caso {caso} Bardin: {n} publicações · incitação {out['blocos']['incitacao']['pct']}% · reação {out['blocos']['reacao']['pct']}% · sem categoria "
           f"{out['sem_categoria']['pct']}% · " + " · ".join(f"{c} {v['pct']}%" for c, v in out["categorias"].items()))
     return 0
+
+
+def _num(v):
+    return int(v) if str(v or "").isdigit() else 0
+
+
+def pontos(rows: list[dict]) -> list[list]:
+    """Um ponto por publicação para o gráfico de bolhas (28/10/2026, 00h38: "aquele gráfico de publicações de bolhas"):
+    [hora UTC, rede, audiência, categorias, conta, url]; audiência = visualizações, ou curtidas + comentários + compartilhamentos
+    quando a rede não informa visualizações. Conta e link só de contas com 10 mil+ seguidores; nada de texto."""
+    out = []
+    for r in sorted(rows, key=lambda r: r.get("publicado_em") or ""):
+        aud = _num(r.get("visualizacoes")) or (_num(r.get("curtidas")) + _num(r.get("comentarios")) + _num(r.get("compartilhamentos")))
+        grande = _num(r.get("seguidores")) >= MIN_PUBLICO
+        out.append([(r.get("publicado_em") or "")[:16], r["rede"], aud, sorted(r["_cod"]), r["conta"] if grande else None, r.get("url") if grande else None])
+    return out
 
 
 def _agrupa(rows, chave):

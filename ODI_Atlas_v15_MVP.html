@@ -2741,6 +2741,7 @@ fetch('./data/ia/rotulo.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).th
     <h1>"Demita um petista".<br><em>Pedidos de demissão, boicote e listas de empresas depois do 2º turno, hora a hora.</em></h1>
     <p>Desde 25/10/2026, circulam pedidos para demitir eleitores do PT, boicotar empresas e prestadores de serviço identificados como petistas e listas de estabelecimentos. O caso mede a circulação desde o dia da eleição em cada rede, nas buscas e na imprensa, e reúne os números do Ministério Público do Trabalho sobre assédio eleitoral. Nomes de empresas, prestadores e pessoas citados nas listas não são publicados. A série hora a hora por rede está no dossiê do caso em "Casos e análises".</p></div>
   <div id="cb014Mpt"></div>
+  <div id="cb014Graficos"></div>
   <div id="cb014Bardin"></div>
   <div id="cb014Corpo"></div>
 </section>
@@ -2966,6 +2967,38 @@ function montarBardin014(){const el=document.getElementById('cb014Bardin');if(!e
    ${A.rede_palavras&&typeof blocoRedeCaso==='function'?h2('Rede de palavras')+blocoRedeCaso(A.rede_palavras,'014'):''}
    <p class="yt-cloudnote"><b>Método.</b> ${e(L.metodo)} ${e(L.simetria)} Livro de códigos ${e(L.versao)}: <a href="./data/config/livro_codigos_caso014.json" download>↓ JSON</a>. Amostra para a codificação humana: ${n(AH.publicacoes)} publicações (rede × dia, semente 42), só no repositório privado; ${e(AH.status)}. ${e(B.nota)} <a href="./data/casos/014/bardin.json" download>↓ bardin.json</a></p></div>`;
  }).catch(()=>{el.innerHTML='<p class="yt-cloudnote">⛔ Análise de Bardin ainda não gerada.</p>';});}
+/* Caso 014 (28/10/2026, 00h38): "aquele gráfico de publicações de bolhas e um de linhas do total de publicações por rede".
+   Bolhas: data/casos/014/bardin.json → pontos [hora UTC, rede, audiência, categorias, conta 10 mil+, url 10 mil+].
+   Linhas: data/casos/014/caso.json → eixo_horas_brt e serie_por_rede (hora a hora, Brasília). */
+function montarGraficos014(){const el=document.getElementById('cb014Graficos');if(!el)return;
+ const e=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));const n=v=>v==null?'—':Number(v).toLocaleString('pt-BR');
+ const CR={x:'#172238',facebook:'#1f5fa8',instagram:'#c13584',tiktok:'#00a2a8',kwai:'#ff7a00',X:'#172238',Facebook:'#1f5fa8',Instagram:'#c13584',TikTok:'#00a2a8',Kwai:'#ff7a00'};
+ const ROT={x:'X',facebook:'Facebook',instagram:'Instagram',tiktok:'TikTok',kwai:'Kwai'};
+ const INC=['incita_demissao','boicote_economico','listas_exposicao'],REA=['relato_vitima','denuncia_ilegalidade','ironia_inversao'];
+ const corCat=cs=>{const i=cs.some(c=>INC.includes(c)),r=cs.some(c=>REA.includes(c));return i&&r?'#7a4fa0':i?'#b3261e':r?'#1f8a3b':cs.includes('preferencia_intragrupo')?'#d7a14a':'#9aa3ad';};
+ Promise.all([fetch('./data/casos/014/bardin.json',{cache:'no-store'}).then(r=>r.ok?r.json():null),fetch('./data/casos/014/caso.json',{cache:'no-store'}).then(r=>r.ok?r.json():null)]).then(([B,C])=>{
+  let h='';
+  // linhas
+  if(C&&C.eixo_horas_brt&&C.serie_por_rede){const eixo=C.eixo_horas_brt,S=Object.entries(C.serie_por_rede).filter(([,v])=>v.some(x=>x>0));
+   const tot=eixo.map((_,i)=>S.reduce((a,[,v])=>a+(v[i]||0),0)),mx=Math.max(1,...tot),W=920,H=300,L=46,R=14,T=14,Bm=36,X=i=>L+i*(W-L-R)/Math.max(1,eixo.length-1),Y=v=>T+(1-v/mx)*(H-T-Bm);
+   const path=v=>v.map((y,i)=>`${i?'L':'M'}${X(i).toFixed(1)},${Y(y).toFixed(1)}`).join('');
+   let g='';for(let k=0;k<=4;k++){const v=Math.round(mx*k/4);g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e3e6e8"/><text x="${L-6}" y="${Y(v)+3}" text-anchor="end" font-size="10" font-family="Courier New">${n(v)}</text>`;}
+   eixo.forEach((t,i)=>{if(t.endsWith('T00:00')){g+=`<line x1="${X(i)}" x2="${X(i)}" y1="${T}" y2="${H-Bm}" stroke="#d9d3c4" stroke-dasharray="3 3"/><text x="${X(i)+3}" y="${H-Bm+14}" font-size="10" font-family="Courier New">${t.slice(8,10)}/${t.slice(5,7)}</text>`;}});
+   g+=`<path d="${path(tot)}" fill="none" stroke="#b8b0a0" stroke-width="3"/>`+S.map(([r,v])=>`<path d="${path(v)}" fill="none" stroke="${CR[r]||'#5b7894'}" stroke-width="1.8"><title>${e(r)}</title></path>`).join('');
+   const leg=[['Total','#b8b0a0',tot.reduce((a,b)=>a+b,0)],...S.map(([r,v])=>[r,CR[r]||'#5b7894',v.reduce((a,b)=>a+b,0)])].map(([r,c,t])=>`<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px"><i style="width:14px;height:3px;background:${c};display:inline-block"></i>${e(r)} <small style="color:#69768a">${n(t)}</small></span>`).join('');
+   h+=`<div class="card" style="padding:14px;margin:14px 0"><div class="eyebrow">Publicações por hora · por rede (horário de Brasília)</div><h2 style="font:700 22px Georgia,serif;margin:6px 0">Quando o assunto circulou em cada rede</h2><p style="font-size:13px">${leg}</p><div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:680px" role="img" aria-label="Publicações por hora e por rede">${g}</svg></div><p class="yt-cloudnote">Contagem das publicações lidas pelo Atlas em cada hora, pela data de publicação. Cinza = total. Universo ⛔ desconhecido: as plataformas não informam quantos posts existem com cada termo.</p></div>`;}
+  // bolhas
+  if(B&&B.pontos&&B.pontos.length){const P=B.pontos.filter(p=>p[0]),redes=[...new Set(P.map(p=>p[1]))].sort((a,b)=>P.filter(p=>p[1]===b).length-P.filter(p=>p[1]===a).length);
+   const t0=Date.parse(P[0][0]+'Z'),t1=Date.parse(P[P.length-1][0]+'Z'),W=920,lane=120,H=40+lane*redes.length,L=90,R=14,X=t=>L+(t-t0)/Math.max(1,t1-t0)*(W-L-R),mxR={};P.forEach(p=>{mxR[p[1]]=Math.max(mxR[p[1]]||1,p[2]);});
+   let g='';redes.forEach((r,i)=>{const y0=20+i*lane;g+=`<rect x="${L}" y="${y0}" width="${W-L-R}" height="${lane-8}" fill="${i%2?'#fbf8f1':'#fffdf8'}"/><text x="${L-8}" y="${y0+lane/2}" text-anchor="end" font-size="12" font-family="Georgia" font-weight="700" fill="${CR[r]||'#172238'}">${e(ROT[r]||r)}</text><text x="${L-8}" y="${y0+lane/2+14}" text-anchor="end" font-size="10" font-family="Courier New" fill="#69768a">${n(P.filter(p=>p[1]===r).length)}</text>`;});
+   for(let d=new Date(t0-(t0%864e5)+3*36e5);d.getTime()<=t1;d=new Date(d.getTime()+864e5)){const x=X(d.getTime());if(x>=L)g+=`<line x1="${x}" x2="${x}" y1="14" y2="${H-14}" stroke="#d9d3c4" stroke-dasharray="3 3"/><text x="${x+3}" y="${H-4}" font-size="10" font-family="Courier New">${d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',timeZone:'America/Sao_Paulo'})}</text>`;}
+   P.slice().sort((a,b)=>b[2]-a[2]).forEach((p,k)=>{const i=redes.indexOf(p[1]),y0=20+i*lane,r=2.5+Math.sqrt(p[2]/mxR[p[1]])*22,h0=(k*2654435761%1000)/1000,y=y0+6+r+h0*Math.max(1,lane-20-2*r),x=X(Date.parse(p[0]+'Z'));
+    const nomes=p[3].map(c=>((B.categorias||{})[c]||{}).nome||c).join(', ')||'sem categoria';const tit=`${ROT[p[1]]||p[1]} · ${new Date(p[0]+'Z').toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})} · audiência ${n(p[2])} · ${p[4]?'@'+p[4]:'perfil com menos de 10 mil seguidores'} · ${nomes}`;
+    const c=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="${corCat(p[3])}" fill-opacity=".55" stroke="#fffdf8" stroke-width=".8"><title>${e(tit)}</title></circle>`;g+=p[5]?`<a href="${e(p[5])}" target="_blank" rel="noopener noreferrer">${c}</a>`:c;});
+   const leg=[['Incitação (demissão, boicote, listas)','#b3261e'],['Reação (denúncia, relato, ironia)','#1f8a3b'],['As duas','#7a4fa0'],['"Direita apoia direita"','#d7a14a'],['Outras ou sem categoria','#9aa3ad']].map(([t,c])=>`<span style="display:inline-flex;align-items:center;gap:4px;margin-right:12px"><i style="width:10px;height:10px;border-radius:50%;background:${c};display:inline-block"></i>${t}</span>`).join('');
+   h+=`<div class="card" style="padding:14px;margin:14px 0"><div class="eyebrow">Linha do tempo · cada bolha é uma publicação</div><h2 style="font:700 22px Georgia,serif;margin:6px 0">Cada bolha é um post; o tamanho é a audiência</h2><p style="font-size:13px">${leg}</p><div style="overflow-x:auto"><svg viewBox="0 0 ${W} ${H}" width="100%" style="min-width:680px" role="img" aria-label="Linha do tempo das publicações por rede">${g}</svg></div><p class="yt-cloudnote">${n(P.length)} publicações. Audiência = visualizações, ou curtidas + comentários + compartilhamentos quando a rede não informa visualizações (a escala do tamanho é de cada rede: a maior bolha de cada faixa é o post de maior audiência daquela rede). Cor = categoria da pré-codificação de Bardin (sugestão automática). Passe o mouse para ver a hora, a audiência e as categorias; bolhas de contas com 10 mil+ seguidores abrem o post. Contas menores aparecem sem nome.</p></div>`;}
+  el.innerHTML=h||'<p class="yt-cloudnote">⛔ Gráficos ainda sem dados.</p>';
+ }).catch(()=>{el.innerHTML='<p class="yt-cloudnote">⛔ Gráficos ainda sem dados.</p>';});}
 function montarCasoBusca(caso){const $=id=>document.getElementById(id);if(!$('caso'+caso))return;
 const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nf=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const pc=v=>v==null?'—':v.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
@@ -3039,7 +3072,7 @@ function draw(R){const el=$('cb'+caso+'Corpo');if(!R){el.innerHTML=`<div class="
   box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" class="cs-board" role="img" aria-label="Rede do caso">${sv}</svg><p class="yt-cloudnote">${esc(r.o_que_e)}. Desenho com os ${d.nos.length} nós de maior peso de ${nf(d.total_nos)} (${nf(d.total_arestas)} ligações no arquivo; ${d.comunidades} comunidades). Nós escuros = termos de busca ou hashtags.${ex} <a href="./data/casos/${caso}/${r.gexf||('rede_'+(redeSel==='circulacao'?'circulacao':redeSel==='palavras'?'palavras_comentarios':'respostas_comentarios')+'.gexf')}" download>↓ GEXF para o Gephi</a></p>`;}}}
 function carregar(){if(cache[caso]!==undefined)return draw(cache[caso]);fetch(`./data/casos/${caso}/busca.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(x=>{cache[caso]=x;draw(x);}).catch(()=>draw(null));}
 carregar();}
-montarCasoBusca('005');montarCasoBusca('002');montarCasoBusca('001');montarCasoBusca('003');montarCasoBusca('006');montarCasoBusca('007');montarCasoBusca('008');montarCasoBusca('009');montarCasoBusca('013');montarCasoBusca('014');montarMpt014();montarBardin014();montarCirculacao('009');montarCaso010();montarCaso011();montarCirculacao('011');montarCaso012();
+montarCasoBusca('005');montarCasoBusca('002');montarCasoBusca('001');montarCasoBusca('003');montarCasoBusca('006');montarCasoBusca('007');montarCasoBusca('008');montarCasoBusca('009');montarCasoBusca('013');montarCasoBusca('014');montarMpt014();montarBardin014();montarGraficos014();montarCirculacao('009');montarCaso010();montarCaso011();montarCirculacao('011');montarCaso012();
 </script>
 <section class="panel" id="debate" aria-label="Caderno 05 Debate do 2º turno no Google Trends">
   <div class="paper-ribbon"><span>CADERNO 05 / BUSCAS · DEBATE BAND/ESTADÃO · 2º TURNO</span><span id="dbData">—</span></div>
