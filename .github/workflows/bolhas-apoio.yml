@@ -1,0 +1,61 @@
+name: Bolhas de apoio — declarações de voto (caso 015) e políticos eleitos (TSE)
+
+# Pedido do responsável em 28/10/2026, 15h05 ("bolhas de apoio"). TSE grátis; seguidores dos autores de reels pela conta 1 (teto em casos.json).
+on:
+  workflow_dispatch:
+    inputs:
+      passos:
+        description: "passos separados por espaço: tse perfis montar"
+        default: "tse perfis montar"
+
+concurrency:
+  group: casos
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  bolhas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: python -m unittest discover -s tests
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Bolhas de apoio
+        if: steps.interno.outputs.dir != ''
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          PASSOS: ${{ github.event.inputs.passos }}
+        run: |
+          a=""
+          for p in $PASSOS; do a="$a --$p"; done
+          python scripts/bolhas_apoio.py $a > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Bolhas::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Bolhas de apoio (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Bolhas de apoio (run ${{ github.run_id }})"

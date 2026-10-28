@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.193 — Bolhas de apoio: script, posição dos partidos no 2º turno e workflow (2026-10-28) 🔜
+
+- **O que mudou:** `scripts/bolhas_apoio.py` (passos `--tse`, `--perfis`, `--montar`) e `.github/workflows/bolhas-apoio.yml` (manual, mesmo grupo de concorrência dos casos).
+  - **Declarações:** frase de voto/apoio na primeira pessoa ("meu voto é…", "vou de 13/22", "declaro meu voto…", "fechado com…", "tô com…") no texto da própria conta; negação logo antes anula; os dois lados = ambígua (fora); RT não conta. Só contas com **100 mil+ seguidores** aparecem com nome, link e trecho. Pré-codificação automática; planilha de conferência humana só no privado (`bolhas_apoio/conferencia_declaracoes.csv.gz`).
+  - **Instagram:** a busca de reels não traz seguidores; o passo `--perfis` lê os seguidores dos autores com frase de declaração (apify/instagram-scraper "details", US$ 0,0026 por perfil, dentro dos US$ 0,50 do teto; cada perfil lido uma vez).
+  - **Políticos (TSE, grátis):** eleitos em 2026 para governador, senador, deputado federal, estadual e distrital, mais os governadores do 2º turno (resultado ainda não lido), a partir de `data/tse/candidatos_2026.csv.gz`; contas declaradas ao TSE (X e Instagram) para casar com os autores da coleta; votos de `votacao_candidato_munzona_2026.zip` pelo CKAN do TSE (sem o arquivo: ⛔, a bolha fica sem tamanho).
+  - **Sinal indireto:** `data/config/apoio_partidos_2t.json`, posição oficial de cada partido no 2º turno com fonte (coligação no TSE; O Tempo 08/10, O Sul 09/10, O Povo 14/10/2026). MDB dividido por diretório estadual (10 UFs com Lula, as demais com Flávio); PSD e PSDB neutros; PCO voto nulo; Avante, DC e Cidadania sem posição do partido nas fontes (sem sinal). O sinal indireto não entra na contagem de apoio declarado.
+- **Teste:** `tests/test_bolhas_apoio.py` (frases, negação, ambiguidade, faixas, semana em Brasília, contas do TSE, MDB por UF); `python -m unittest discover -s tests -v` → OK. Execução local de `--montar` sem coleta e sem votos: 1.659 políticos (deputado estadual 1.035, federal 513, senador 54, distrital 24, governador 33 = 21 eleitos no 1º turno + 12 do 2º turno), sinal do partido: Flávio 910, Lula 494, neutro 197, sem fonte 58; 1.483 com conta no X ou Instagram declarada ao TSE.
+- **Pendente:** rodar o workflow depois da coleta do caso 015 (runs 40743018348 e 40743030631) e montar a página.
+
 ## C19.192 — Bolhas de apoio: coleta paga de declarações de voto (X + Instagram, teto US$ 4,00) (2026-10-28) 🔜
 
 - **Pedido (28/10/2026, 15h05):** "seria possível construirmos uma página com essa lógica com nome bolhas de apoio" (referência: quemapoiaquem.com.br). O responsável escolheu as três bases: políticos pelo TSE (grátis), coleta paga X + Instagram e pedir a base ao Quem Apoia Quem; teto **US$ 4,00** (X 1,50; reels do Instagram 2,00; seguidores dos autores 0,50), conta 1, sem consulta de saldo.

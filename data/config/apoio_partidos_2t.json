@@ -1,0 +1,39 @@
+{
+ "titulo": "Posição oficial dos partidos no 2º turno presidencial de 2026 (sinal indireto para a página Bolhas de apoio)",
+ "pedido": "Responsável em 28/10/2026, 15h05: página \"Bolhas de apoio\", base de políticos via TSE (grátis).",
+ "regra": "Sinal indireto: o político é filiado a um partido que declarou apoio no 2º turno. Não é declaração do político e não entra na contagem de apoio declarado. Partido sem posição encontrada nas fontes fica sem sinal (nada é suposto).",
+ "fontes": {
+  "tse_coligacao": {"nome": "TSE, candidaturas 2026 (DS_COMPOSICAO_COLIGACAO da chapa presidencial)", "url": "https://dadosabertos.tse.jus.br/dataset/candidatos-2026"},
+  "otempo_0810": {"nome": "O Tempo, 08/10/2026", "url": "https://www.otempo.com.br/eleicoes/2026/presidentes/2026/10/8/lula-x-flavio-bolsonaro-veja-quais-partidos-ja-declararam-apoio-no-segundo-turno"},
+  "osul_0910": {"nome": "O Sul, 09/10/2026", "url": "https://www.osul.com.br/veja-os-partidos-e-presidenciaveis-que-declararam-apoio-a-flavio-bolsonaro-e-lula-no-segundo-turno/"},
+  "opovo_1410": {"nome": "O Povo, 14/10/2026", "url": "https://www.opovo.com.br/noticias/politica/eleicoes/2026/10/14/quais-partidos-apoiam-flavio-e-quais-sao-lula-no-2-turno.html"}
+ },
+ "partidos": {
+  "PT": {"posicao": "lula", "nota": "partido do candidato; coligação Brasil Pronto pra Mais", "fontes": ["tse_coligacao"]},
+  "PCDOB": {"posicao": "lula", "nota": "Federação Brasil da Esperança, coligação de Lula", "fontes": ["tse_coligacao", "otempo_0810"]},
+  "PV": {"posicao": "lula", "nota": "Federação Brasil da Esperança, coligação de Lula", "fontes": ["tse_coligacao", "otempo_0810"]},
+  "PSB": {"posicao": "lula", "nota": "coligação de Lula", "fontes": ["tse_coligacao", "otempo_0810"]},
+  "PDT": {"posicao": "lula", "nota": "coligação de Lula", "fontes": ["tse_coligacao", "otempo_0810"]},
+  "PSOL": {"posicao": "lula", "nota": "Federação PSOL Rede, coligação de Lula", "fontes": ["tse_coligacao", "otempo_0810"]},
+  "REDE": {"posicao": "lula", "nota": "Federação PSOL Rede, coligação de Lula", "fontes": ["tse_coligacao", "otempo_0810"]},
+  "UP": {"posicao": "lula", "nota": "declarou apoio no 2º turno", "fontes": ["osul_0910", "opovo_1410"]},
+  "PCB": {"posicao": "lula", "nota": "declarou apoio no 2º turno", "fontes": ["osul_0910", "opovo_1410"]},
+  "PSTU": {"posicao": "lula", "nota": "apoio \"crítico\" no 2º turno", "fontes": ["osul_0910", "opovo_1410"]},
+  "PL": {"posicao": "flavio", "nota": "partido do candidato", "fontes": ["tse_coligacao"]},
+  "REPUBLICANOS": {"posicao": "flavio", "nota": "declarou apoio em 07/10", "fontes": ["otempo_0810", "opovo_1410"]},
+  "NOVO": {"posicao": "flavio", "nota": "declarou apoio em 07/10", "fontes": ["otempo_0810", "opovo_1410"]},
+  "PODE": {"posicao": "flavio", "nota": "declarou apoio em 08/10", "fontes": ["osul_0910", "opovo_1410"]},
+  "UNIÃO": {"posicao": "flavio", "nota": "Federação União Progressista (União Brasil + Progressistas)", "fontes": ["otempo_0810", "opovo_1410"]},
+  "PP": {"posicao": "flavio", "nota": "Federação União Progressista (União Brasil + Progressistas)", "fontes": ["otempo_0810", "opovo_1410"]},
+  "MDB": {"posicao": "por_uf", "nota": "dividido por diretório estadual em 13/10: 17 diretórios com Flávio, 10 com Lula", "fontes": ["opovo_1410"],
+          "lula_ufs": ["AM", "AL", "BA", "CE", "MA", "PA", "PE", "PI", "PB", "RO"], "demais_ufs": "flavio"},
+  "PSD": {"posicao": "neutro", "nota": "neutro; filiados liberados (Kassab, 04/10); Caiado apoia Flávio pessoalmente", "fontes": ["otempo_0810", "opovo_1410"]},
+  "PSDB": {"posicao": "neutro", "nota": "sem apoio nacional; filiados liberados", "fontes": ["osul_0910", "opovo_1410"]},
+  "CIDADANIA": {"posicao": "sem_fonte", "nota": "federado ao PSDB; posição própria não encontrada nas fontes", "fontes": []},
+  "PCO": {"posicao": "nulo", "nota": "recomendou voto nulo (12/10)", "fontes": ["opovo_1410"]},
+  "MISSÃO": {"posicao": "neutro", "nota": "sem apoio declarado até 14/10", "fontes": ["opovo_1410"]},
+  "DEMOCRATA": {"posicao": "neutro", "nota": "sem apoio declarado até 14/10", "fontes": ["opovo_1410"]},
+  "AVANTE": {"posicao": "sem_fonte", "nota": "o candidato Augusto Cury apoiou Flávio; posição do partido não informada nas fontes", "fontes": ["opovo_1410"]},
+  "DC": {"posicao": "sem_fonte", "nota": "a candidata Clariana Barão apoiou Flávio; posição do partido não informada nas fontes", "fontes": ["opovo_1410"]}
+ }
+}
