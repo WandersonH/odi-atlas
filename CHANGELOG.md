@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.190 — Totais informados pelas plataformas (universo informado) para os termos do caso 014 (2026-10-28) 🔜
+
+- **Pedido (28/10/2026, 01h29):** "não consegue só o número geral pra termos o tamanho de amostra?" (depois de "vc não coletou o universo", 01h28).
+- **O que existe de número oficial:** só para hashtags (Instagram: posts com a hashtag; TikTok: vídeos e visualizações do desafio), todos os tempos (a plataforma não informa por período), e a estimativa arredondada do YouTube para buscas desde 25/10. **X e Facebook não informam total** (⛔); frases não têm total em nenhuma rede.
+- **O que mudou:** `scripts/contagens_plataforma.py` + `contagens-plataforma.yml` (Instagram pela conta 1 com teto de US$ 0,10, ~US$ 0,0026 por hashtag; TikTok pela página pública, grátis; YouTube pela API, grátis). Saída `data/casos/014/contagens_plataforma.json`. Página: quadro "O número geral que cada plataforma divulga", com o total informado ao lado do que o Atlas leu desde 25/10. Teste `tests/test_contagens_plataforma.py`.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar `contagens-plataforma.yml` (014).
+
 ## C19.189 — Caso 014: rodada 3 de vocabulário, livro de códigos v1.2 ("exclusão do convívio") e mais 1 reel indicado (2026-10-28) 🔜
 
 - **Pedido (28/10/2026, 01h25):** "sim" para a rodada 3 e o livro v1.2; e o reel DfBFuFfOs0Z ("entrou"), conferido: **não estava na coleta**; entra em `posts_instagram` (indicado pelo responsável).
