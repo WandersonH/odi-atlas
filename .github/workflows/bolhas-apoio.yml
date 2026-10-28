@@ -24,8 +24,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Dependências
+        run: |
+          pip install -q networkx==3.6.1 numpy==2.3.4 playwright
+          python -m playwright install --with-deps chromium > /dev/null 2>&1
       - name: Testes
-        run: python -m unittest discover -s tests
+        run: scripts/testes_ci.sh
       - name: Repositório privado
         id: interno
         env:
