@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.183 — Agregado dos casos passa a contar as buscas por frase (X e TikTok); resultado do caso 014 (2026-10-28) ✅
+
+- **Erro encontrado:** `build_casos.py` só aceitava como termo do caso hashtags e @menções; as buscas por frase (complementos do X e buscas do TikTok) eram descartadas do agregado (`caso.json`: série hora a hora, por rede, por termo). Afetava o 003 (1.290 posts do X fora; o agregado mostrava 31), o 013 (TikTok por frase) e o 014 (3.378 posts do X fora; o agregado mostrava 356).
+- **Correção:** os termos válidos incluem `complementos_x[].termo` e `buscas_tiktok`. Teste: `python -m unittest discover -s tests -v` → OK; `build_casos.py` local (cópia na pasta temporária, privado sem alteração): 003 = 1.403 publicações (X 1.290); 014 = 3.670 publicações de 2.719 contas.
+- **Caso 014, coleta (runs 40619073722 carga e 40619581225 complemento, conta 1):** gasto real **US$ 0,7971 de US$ 6,00** (X 0,5270; Instagram 0,1274; Facebook 0,1427; Kwai 0). X: "demitir petista" 1.384; boicote a petistas/esquerda 928; "demitido por votar"/assédio eleitoral 596; empresas e prestadores "petistas" 288; "não contrate"/listas 182; #demitaumpetista 129 (as demais hashtags 0 a 3). Nenhuma busca bateu no limite de 1.500: é o que a busca do X devolveu (universo ⛔ desconhecido: o X não informa total). Instagram 12, Facebook 55, Kwai 0, TikTok 155 (grátis). Série do X por dia (Brasília): 25/10 151; 26/10 1.001; 27/10 2.282 (dia incompleto, coleta às ~23h). Pico: 27/10 9h, 190 publicações na hora; decolagem 25/10 12h.
+- **casos-busca 014 (run 40619076162):** YouTube 102 vídeos (de 129 achados), 3.468.779 visualizações, 6.050 comentários lidos; 160 notícias; 0 checagens; 3 buscas do YouTube com HTTP 429.
+- **Pendente:** regenerar os agregados no GitHub (`casos.yml` modo so-analises); universo × amostra no bloco dos casos de busca.
+
 ## C19.182 — Caso 014: "Demita um petista", boicote à esquerda e listas de empresas e prestadores (desde 25/10) + números do MPT sobre assédio eleitoral (2026-10-27) 🔜
 
 - **Pedido (27/10/2026, 23h04):** "coleta temporal do dia 25 para cá com 'demita um petista', 'boicote esquerda'; se conseguir traga dados do MPT sobre assédio eleitoral; empresa e prestadores de serviço petista; você tem 6 dólares". **Teto US$ 6,00**, conta 1 (APIFY_TOKEN), sem consulta de saldo.
