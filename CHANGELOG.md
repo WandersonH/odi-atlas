@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.191 — Exportar só os casos em PDF (2026-10-28) ✅
+
+- **Pedido (28/10/2026):** "é possível configurar os cases para serem exportados como PDF? O botão lá de cima exporta todo o relatório, queria só as páginas de cases".
+- **O que mudou (`ODI_Atlas_v15_MVP.html`):** botão "↓ Exportar este caso em PDF" logo abaixo da faixa de título de cada caso (13 seções: 001–003, 005–014) e "↓ Exportar todos os casos em PDF" em "Casos e dossiês". O botão abre a impressão do navegador ("Salvar como PDF") com CSS próprio (`body.print-caso`): esconde menu lateral, cabeçalho, abas, chat e os outros painéis; abre os `<details>` fechados; solta rolagens e larguras mínimas; mantém as cores; A4 com margem de 12 mm; uma quebra de página entre casos. Cada caso ganha um cabeçalho de impressão (ODI Atlas, título do caso, data e hora de Brasília da exportação, link `#casoNNN`). O nome sugerido do arquivo é "ODI Atlas - Caso NNN - título". Vídeos e posts incorporados (iframe/video) não entram no PDF. O botão de exportação do topo continua igual.
+- **Teste (realmente executado):** Playwright em servidor local: 14 botões (13 casos + 1 de todos); clique no caso 014 → classe `print-caso`, 1 alvo, 1 cabeçalho, título "ODI Atlas - Caso 014 - DEMITA UM PETISTA"; `afterprint` limpa tudo; sem erro de JS. PDFs gerados com `page.pdf` no modo de impressão: caso 014 = 21 páginas, começa pelo cabeçalho e pela faixa do caso, sem panorama nem capa; gráficos (linha por rede, bolhas) e tabelas renderizados (conferido nas imagens das páginas 1–4); todos os casos = 109 páginas, com os 13 `#casoNNN`. `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** conferir no navegador do responsável (Chrome/Edge/Safari diferem na impressão).
+
 ## C19.190 — Totais informados pelas plataformas (universo informado) para os termos do caso 014 (2026-10-28) 🔜
 
 - **Pedido (28/10/2026, 01h29):** "não consegue só o número geral pra termos o tamanho de amostra?" (depois de "vc não coletou o universo", 01h28).
