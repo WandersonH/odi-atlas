@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.185 — Caso 014: Instagram, Facebook e Kwai por frase e hashtags extras (2026-10-28) 🔜
+
+- **Pedido (28/10/2026, 00h14):** "tu não trouxe Kwai, Instagram e Facebook". Na carga, essas redes foram buscadas só pelas hashtags do caso, que quase não são usadas lá: Instagram 12, Facebook 55, Kwai 0.
+- **O que mudou:** `collect_casos.py` ganha o modo `--frases` (e `casos.yml` o modo `frases`): Facebook e Kwai buscam frases (`buscas_facebook`: demita um petista, boicote petista, direita apoia direita, professor petista, empresas petistas; `buscas_kwai`: as 4 primeiras), Instagram busca hashtags extras (`hashtags_instagram`: #direitaapoiadireita, #boicote, #demitapetista, #boicotepetistas, #comprededireita, #direitacompradedireita; os leitores de Instagram que o Atlas usa não fazem busca por frase). Não repete as hashtags já coletadas. `build_casos.py` conta esses termos no agregado.
+- **Teto:** o que sobra de cada rede dentro dos US$ 6,00 do caso: Instagram até US$ 1,37 (~83 por hashtag), Facebook até US$ 0,86 (~62 por frase), Kwai até US$ 0,50 (~59 por frase).
+- **Teste:** `python -m unittest discover -s tests -v` → OK; `pedidos(..., _so_frases)` gera 6 hashtags no Instagram, 5 frases no Facebook, 4 no Kwai e nada no X e no TikTok.
+- **Pendente:** rodar `casos.yml` modo frases (014).
+
 ## C19.184 — Caso 014: análise de Bardin (livro de códigos, pré-codificação, amostra humana, CHD) e termos #boicote, "professor petista", "direita apoia direita" (2026-10-28) ⚠️
 
 - **Pedidos (28/10/2026):** 00h05 "traga notícias e trend de busca no Trends também; #boicote, professor petista; quero aquela análise que temos de Bardin"; 00h07 "direita apoia direita também é um termo que eles usam". Mesmo teto do caso (US$ 6,00).

@@ -133,6 +133,15 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
     """[(termo, ator, entrada)] de uma rede para o caso."""
     d, tags = caso["desde"], caso.get("hashtags", [])
     out = []
+    if caso.get("_so_frases"):
+        # 28/10/2026 (caso 014): buscas por frase no Facebook e no Kwai e hashtags extras no Instagram, sem repetir as hashtags já coletadas
+        if rede == "instagram":
+            return [(f"#{t}", ATOR["instagram"], {"hashtags": [t], "resultsType": "posts", "resultsLimit": n}) for t in caso.get("hashtags_instagram", [])]
+        if rede == "facebook":
+            return [(q, ATOR["facebook"], {"query": q, "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": False}) for q in caso.get("buscas_facebook", [])]
+        if rede == "kwai":
+            return [(q, ATOR["kwai"], {"searchTerms": [q], "expandSearchWithHashtag": False, "maxItems": n, "postedAfter": d}) for q in caso.get("buscas_kwai", [])]
+        return []
     if rede == "x" and caso.get("_so_complemento"):
         return [(c["termo"], ATOR["x"], {"searchTerms": [c["busca"]], "maxItems": n, "queryType": "Latest"}) for c in caso.get("complementos_x", [])]
     if rede == "x":
@@ -314,6 +323,8 @@ def main(argv=None, executar=None) -> int:
             continue
         if "--complemento" in argv:  # só as buscas complementares do X (ex.: o começo do caso, que a busca "mais recentes" cortou)
             caso = {**caso, "_so_complemento": True}
+        if "--frases" in argv:  # só frases (Facebook, Kwai) e hashtags extras do Instagram (28/10/2026)
+            caso = {**caso, "_so_frases": True}
         pasta = root / "data/casos" / caso["id"]
         pasta.mkdir(parents=True, exist_ok=True)
         priv = (Path(interno) if interno else Path(os.environ.get("RUNNER_TEMP") or tempfile.gettempdir()) / "odi_casos") / "casos" / caso["id"]
