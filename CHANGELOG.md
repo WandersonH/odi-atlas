@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.187 — Caso 014: 4 reels indicados pelo responsável (2026-10-28) 🔜
+
+- **Pedido (28/10/2026, 01h10):** links de reels (De9jX72KMCI, De-NKzzBQAV, De-GB7Nptn7, De8Bp4DIT_L; o primeiro veio duas vezes) com "esses entraram". Conferido no privado (`casos/014/itens.csv.gz` e brutos do Instagram): **nenhum dos 4 estava na coleta** (a busca de reels por assunto traz só os primeiros resultados de cada termo).
+- **O que mudou:** `collect_casos.py` ganha o modo `--posts` (e `casos.yml` o modo `posts`): lê os links de `posts_instagram` do caso com `apify/instagram-reel-scraper` (com compartilhamentos; preço da execução do caso 008: US$ 0,0023 + 0,006 por reel + 0,001 de início, ~US$ 0,04 para os 4), termo "indicado pelo responsável", dentro do teto do Instagram do caso. `norm()` do Instagram passa a ler `sharesCount`. `build_casos.py` conta o termo.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar `casos.yml` modo posts (014).
+
 ## C19.186 — Caso 014: gráfico de bolhas (cada publicação) e de linhas (publicações por hora e por rede) (2026-10-28) ✅
 
 - **Pedido (28/10/2026, 00h38):** "queria aquele gráfico de publicações de bolhas e um deste de linhas total publicações por rede".

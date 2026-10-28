@@ -41,7 +41,7 @@ COLS = ["rede", "item_id", "conta", "nome_conta", "seguidores", "verificada", "p
         "comentarios", "compartilhamentos", "termo", "url", "capa_url", "coletado_em"]
 ATOR = {"x": "xquik~x-tweet-scraper", "instagram": "apify~instagram-hashtag-scraper", "instagram_palavra": "apidojo~instagram-hashtag-scraper",
         "tiktok_apify": "novi~multiple-tiktok-hashtag-scraper", "instagram_perfil": "esdrasdw~instagram-content-scraper",
-        "facebook": "scrapeforge~facebook-search-posts", "instagram_reels": "data-slayer~instagram-search-reels", "kwai": "unfenced-group~kwai-scraper", "tiktok_busca": "apidojo~tiktok-scraper"}
+        "facebook": "scrapeforge~facebook-search-posts", "instagram_reels": "data-slayer~instagram-search-reels", "instagram_post": "apify~instagram-reel-scraper", "kwai": "unfenced-group~kwai-scraper", "tiktok_busca": "apidojo~tiktok-scraper"}
 
 
 def iso(v) -> str:
@@ -101,7 +101,7 @@ def norm(rede: str, x: dict, termo: str, agora: str) -> dict | None:
                         "texto": " ".join(str(g(x, "caption.text", "caption", "text") or "").split()),
                         "visualizacoes": inteiro(g(x, "video.playCount", "videoPlayCount", "playCount", "viewCount", "ig_play_count", "play_count")),
                         "curtidas": inteiro(g(x, "likeCount", "likesCount", "like_count")), "comentarios": inteiro(g(x, "commentCount", "commentsCount", "comment_count")),
-                        "compartilhamentos": inteiro(g(x, "shareCount", "reshareCount", "share_count")), "termo": termo,
+                        "compartilhamentos": inteiro(g(x, "shareCount", "reshareCount", "share_count", "sharesCount")), "termo": termo,
                         "url": g(x, "url") or f"https://www.instagram.com/p/{iid}/", "capa_url": g(x, "image.url", "displayUrl", "thumbnailUrl") or "",
                         "coletado_em": agora}
     if rede == "facebook":
@@ -133,6 +133,12 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
     """[(termo, ator, entrada)] de uma rede para o caso."""
     d, tags = caso["desde"], caso.get("hashtags", [])
     out = []
+    if caso.get("_so_posts"):
+        # 28/10/2026, 01h10: posts indicados pelo responsável (links), lidos um a um pelo leitor de reels, com compartilhamentos
+        if rede == "instagram" and caso.get("posts_instagram"):
+            return [("indicado pelo responsável", ATOR["instagram_post"], {"username": caso["posts_instagram"], "includeSharesCount": True,
+                                                                          "includeTranscript": False, "includeDownloadedVideo": False})]
+        return []
     if caso.get("_so_frases"):
         # 28/10/2026 (caso 014): buscas por frase no Facebook e no Kwai e hashtags extras no Instagram, sem repetir as hashtags já coletadas
         if rede == "instagram":
@@ -326,6 +332,8 @@ def main(argv=None, executar=None) -> int:
             continue
         if "--complemento" in argv:  # só as buscas complementares do X (ex.: o começo do caso, que a busca "mais recentes" cortou)
             caso = {**caso, "_so_complemento": True}
+        if "--posts" in argv:  # só os posts indicados pelo responsável (28/10/2026)
+            caso = {**caso, "_so_posts": True}
         if "--frases" in argv:  # só frases (Facebook, Kwai) e hashtags extras do Instagram (28/10/2026)
             caso = {**caso, "_so_frases": True}
         pasta = root / "data/casos" / caso["id"]

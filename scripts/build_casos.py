@@ -99,6 +99,8 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     validos |= {c["termo"] for c in caso.get("complementos_x", [])} | set(caso.get("buscas_tiktok", []))
     validos |= {f"#{h}" for h in caso.get("hashtags_instagram", [])} | set(caso.get("buscas_facebook", [])) | set(caso.get("buscas_kwai", []))
     validos |= {f"reels: {q}" for q in caso.get("buscas_instagram", [])}
+    if caso.get("posts_instagram"):
+        validos.add("indicado pelo responsável")
     itens = [{**r, "termo": "|".join(t for t in r["termo"].split("|") if t in validos)} for r in itens]
     itens = [r for r in itens if r["termo"]]
     itens.sort(key=lambda r: r["publicado_em"])
