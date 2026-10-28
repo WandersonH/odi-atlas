@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.192 — Bolhas de apoio: coleta paga de declarações de voto (X + Instagram, teto US$ 4,00) (2026-10-28) 🔜
+
+- **Pedido (28/10/2026, 15h05):** "seria possível construirmos uma página com essa lógica com nome bolhas de apoio" (referência: quemapoiaquem.com.br). O responsável escolheu as três bases: políticos pelo TSE (grátis), coleta paga X + Instagram e pedir a base ao Quem Apoia Quem; teto **US$ 4,00** (X 1,50; reels do Instagram 2,00; seguidores dos autores 0,50), conta 1, sem consulta de saldo.
+- **O que mudou:** caso `015` (`bolhas-de-apoio`) em `data/config/casos.json`: 6 buscas no X de 01/08 a 25/10/2026 (`since:2026-08-01 until:2026-10-26 lang:pt`), por frases de declaração de voto ou apoio a Lula e a Flávio, 2º turno e voto nulo/branco, com curtidas mínimas (`min_faves` 200 a 1.000) e busca "Top" para chegar a perfis grandes; 8 buscas de reels no Instagram (sem filtro de data no ator; o período é aplicado depois). `collect_casos.py`: os complementos do X aceitam `tipo_busca` (padrão "Latest", como antes).
+- **Amostra (regra 9):** o universo de figuras públicas que declararam voto é ⛔ desconhecido (nenhuma plataforma informa). O critério da amostra é a busca por frase com curtidas mínimas; isso favorece publicações com mais alcance e deixa de fora declarações com outras palavras.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; simulação de `pedidos`: X 6 buscas × 1.500 itens (máx. US$ 1,35), Instagram 8 buscas × 8 páginas (máx. US$ 1,88).
+- **Pendente:** rodar a coleta (`casos.yml`, modos `complemento` e `frases`, caso 015), ler os seguidores dos autores dos reels, a base de políticos do TSE e a página.
+
 ## C19.191 — Exportar só os casos em PDF (2026-10-28) ✅
 
 - **Pedido (28/10/2026):** "é possível configurar os cases para serem exportados como PDF? O botão lá de cima exporta todo o relatório, queria só as páginas de cases".

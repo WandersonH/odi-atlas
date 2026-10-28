@@ -738,6 +738,86 @@
    "hashtags_instagram_r3": [
     "demitapetistas"
    ]
+  },
+  {
+   "id": "015",
+   "slug": "bolhas-de-apoio",
+   "titulo": "Bolhas de apoio: quem declarou voto no 2º turno",
+   "tipo": "declarações públicas de apoio",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-08-01",
+   "aba": "bolhasApoio",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 28/10/2026, 15h05: \"seria possível construirmos uma página com essa lógica com nome bolhas de apoio\" (referência: quemapoiaquem.com.br); escolheu as três bases (políticos pelo TSE, coleta paga X + Instagram e pedir a base ao Quem Apoia Quem) e o teto de US$ 4,00 (X 1,50; Instagram 2,00 para a busca de reels; 0,50 para ler os seguidores dos autores), conta 1, sem consulta de saldo.",
+   "descricao": "Declarações públicas de voto ou apoio a Lula ou a Flávio Bolsonaro no 2º turno de 2026, feitas por perfis com 100 mil seguidores ou mais, entre 01/08 e 25/10/2026, com o link de cada publicação como prova. Não é pesquisa eleitoral e não mede intenção de voto.",
+   "maximo_por_termo": 1500,
+   "teto_usd": {
+    "x": 1.5,
+    "instagram": 2.0,
+    "facebook": 0.0,
+    "kwai": 0.0
+   },
+   "complementos_x": [
+    {
+     "termo": "declarou voto em Lula",
+     "busca": "(\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-08-01 until:2026-10-26 lang:pt",
+     "motivo": "declaração pública de voto ou apoio (busca Top, curtidas mínimas para chegar a perfis grandes)",
+     "rodada": 1,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou apoio a Lula",
+     "busca": "(\"declaro meu voto\" OR \"declaro apoio\" OR \"declaro meu apoio\" OR \"fechado com Lula\" OR \"tô com Lula\" OR \"estou com Lula\" OR \"#Lula13\") Lula min_faves:300 since:2026-08-01 until:2026-10-26 lang:pt",
+     "motivo": "declaração pública de voto ou apoio (busca Top, curtidas mínimas para chegar a perfis grandes)",
+     "rodada": 1,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou voto em Flávio",
+     "busca": "(\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-08-01 until:2026-10-26 lang:pt",
+     "motivo": "declaração pública de voto ou apoio (busca Top, curtidas mínimas para chegar a perfis grandes)",
+     "rodada": 1,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou apoio a Flávio",
+     "busca": "(\"declaro meu voto\" OR \"declaro apoio\" OR \"declaro meu apoio\" OR \"fechado com Flávio\" OR \"tô com Flávio\" OR \"estou com Flávio\" OR \"#Flavio22\" OR \"#FlavioPresidente\") (Flávio OR Flavio) min_faves:300 since:2026-08-01 until:2026-10-26 lang:pt",
+     "motivo": "declaração pública de voto ou apoio (busca Top, curtidas mínimas para chegar a perfis grandes)",
+     "rodada": 1,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "2º turno: voto e apoio",
+     "busca": "\"segundo turno\" (\"meu voto\" OR \"declaro\" OR \"apoio\") (Lula OR Flávio OR Flavio) min_faves:1000 since:2026-08-01 until:2026-10-26 lang:pt",
+     "motivo": "declaração pública de voto ou apoio (busca Top, curtidas mínimas para chegar a perfis grandes)",
+     "rodada": 1,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "nulo, branco ou nenhum",
+     "busca": "(\"voto nulo\" OR \"anular meu voto\" OR \"vou anular\" OR \"voto em branco\" OR \"nem Lula nem Flávio\" OR \"não voto em nenhum\") min_faves:300 since:2026-08-01 until:2026-10-26 lang:pt",
+     "motivo": "declaração pública de voto ou apoio (busca Top, curtidas mínimas para chegar a perfis grandes)",
+     "rodada": 1,
+     "tipo_busca": "Top"
+    }
+   ],
+   "buscas_instagram": [
+    "meu voto é Lula",
+    "vou de 13 Lula",
+    "declaro meu voto Lula",
+    "meu voto é Flávio Bolsonaro",
+    "vou de 22 Flávio",
+    "declaro meu voto Flávio Bolsonaro",
+    "segundo turno Lula ou Flávio",
+    "vou anular meu voto"
+   ],
+   "perfis_teto_usd": 0.5,
+   "min_seguidores_bolha": 100000,
+   "redes_previstas": [
+    "X",
+    "Instagram"
+   ]
   }
  ],
  "segredos_por_rede": {

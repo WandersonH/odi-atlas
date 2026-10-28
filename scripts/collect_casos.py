@@ -158,7 +158,7 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
             return []
     if rede == "x" and caso.get("_so_complemento"):
         rod = caso.get("_rodada")
-        return [(c["termo"], ATOR["x"], {"searchTerms": [c["busca"]], "maxItems": n, "queryType": "Latest"}) for c in caso.get("complementos_x", [])
+        return [(c["termo"], ATOR["x"], {"searchTerms": [c["busca"]], "maxItems": n, "queryType": c.get("tipo_busca", "Latest")}) for c in caso.get("complementos_x", [])
                 if not rod or c.get("rodada", 1) == rod]
     if rede == "x":
         for t in tags:
