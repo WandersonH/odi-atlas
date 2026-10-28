@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.184 — Caso 014: análise de Bardin (livro de códigos, pré-codificação, amostra humana, CHD) e termos #boicote, "professor petista", "direita apoia direita" (2026-10-28) ⚠️
+
+- **Pedidos (28/10/2026):** 00h05 "traga notícias e trend de busca no Trends também; #boicote, professor petista; quero aquela análise que temos de Bardin"; 00h07 "direita apoia direita também é um termo que eles usam". Mesmo teto do caso (US$ 6,00).
+- **Livro de códigos** `data/config/livro_codigos_caso014.json` (v1.1), no desenho do caderno 02: 14 categorias com definição, indicadores e exclusões — incitação à demissão, boicote econômico, listas e exposição, preferência intragrupo ("direita apoia direita"), alvos (educação, saúde, comércio e prestadores, servidores), desumanização e insulto, justificativa da punição, relato de vítima, denúncia e enquadramento legal, ironia ou inversão, regionalismo.
+- **`scripts/build_bardin_caso.py`:** pré-codificação por presença/ausência (sugestão, não decisão); percentuais no total, por rede, por termo e por dia; blocos incitação × reação; pares de categorias; exemplos só de contas com 10 mil+ seguidores; CHD de Reinert e rede de palavras (`comentarios_caso.analisar`, amostra fixa); amostra de 200 publicações (rede × dia, semente 42) para 2 codificadores, **gerada uma vez e nunca sobrescrita, só no privado**, com a pré-codificação em arquivo separado; universo × amostra por rede e termo (regra 9). Roda no passo de agregados de `casos.yml` para todo caso com livro de códigos. Teste `tests/test_build_bardin_caso.py`.
+- **Primeira rodada (local, cópia dos dados de 27/10, livro v1.0):** 3.670 publicações; incitação 74,4% (2.730), reação 22,6% (830), as duas 8,6%, sem categoria 6,2%; incitação à demissão 47,5%; alvo comércio e prestadores 33,9%; boicote 31,5%; denúncia e enquadramento legal 20,4%; listas 7,4%; educação 0,7%. Incitação à demissão por dia: 25/10 12,8%, 26/10 50,0%, 27/10 48,9%; denúncia: 25/10 48,7%, 26/10 14,2%, 27/10 21,0%. Os números oficiais saem da rodada no GitHub com o livro v1.1.
+- **Termos novos:** X `#boicote` (no contexto do caso), "professor petista" (e variações), "direita apoia direita"/#direitaapoiadireita; TikTok "professor petista" e "direita apoia direita"; Trends com os 5 termos (demita um petista, boicote petista, professor petista, direita apoia direita, assédio eleitoral); notícias e YouTube com os dois termos novos.
+- **Página:** bloco "Análise de conteúdo · Bardin + CHD de Reinert" no caso 014 (`montarBardin014`). Render local sem erro de JavaScript.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** complemento do X e carga grátis (TikTok, Google) do 014 no GitHub; codificação humana da amostra (2 codificadores, kappa).
+
 ## C19.183 — Agregado dos casos passa a contar as buscas por frase (X e TikTok); resultado do caso 014 (2026-10-28) ✅
 
 - **Erro encontrado:** `build_casos.py` só aceitava como termo do caso hashtags e @menções; as buscas por frase (complementos do X e buscas do TikTok) eram descartadas do agregado (`caso.json`: série hora a hora, por rede, por termo). Afetava o 003 (1.290 posts do X fora; o agregado mostrava 31), o 013 (TikTok por frase) e o 014 (3.378 posts do X fora; o agregado mostrava 356).

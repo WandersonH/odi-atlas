@@ -1,0 +1,317 @@
+{
+ "titulo": "Livro de códigos — caso 014: \"demita um petista\", boicote e listas depois do 2º turno (ODI Atlas)",
+ "versao": "1.1 (2026-10-28) — nova categoria 'preferência intragrupo' (pedido de 28/10, 00h07); 'só compre de' e 'compre de quem' passam do boicote para ela",
+ "pedido": "Responsável em 28/10/2026, 00h05: \"quero aquela análise que temos de Bardin\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no mesmo desenho do livro de códigos do caderno 02: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "As categorias valem para os dois lados: incitação (pedir demissão, boicote, listas) e reação (denúncia, relato de vítima, ironia/inversão) são codificadas separadamente; nenhuma categoria mede posição ideológica de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "categorias": {
+  "incita_demissao": {
+   "nome": "Incitação à demissão",
+   "definicao": "Pede, defende ou anuncia demitir, não contratar ou dispensar alguém por ter votado no PT/Lula ou ser de esquerda.",
+   "indicadores": [
+    "demita",
+    "demitam",
+    "demitir",
+    "demite",
+    "demiti",
+    "demitirei",
+    "demitindo",
+    "mandar embora",
+    "mandei embora",
+    "manda embora",
+    "rua para",
+    "olho da rua",
+    "nao contrate",
+    "nao contrato",
+    "nao contratar",
+    "nao vou contratar",
+    "dispensar",
+    "dispensei",
+    "justa causa"
+   ],
+   "excluir_trechos": [
+    "fui demitido",
+    "fui demitida",
+    "foi demitido",
+    "foi demitida",
+    "demitido por votar",
+    "demitida por votar",
+    "assedio eleitoral"
+   ]
+  },
+  "boicote_economico": {
+   "nome": "Boicote econômico",
+   "definicao": "Chama a não comprar, não consumir, não frequentar ou cancelar serviço de empresas, comércios ou profissionais identificados como petistas/de esquerda.",
+   "indicadores": [
+    "boicote*",
+    "boicotar",
+    "boicotem",
+    "nao compre",
+    "nao comprem",
+    "nao compro",
+    "nao consuma",
+    "nao frequente",
+    "cancelar",
+    "cancelei",
+    "nao gaste",
+    "dinheiro na mao de"
+   ],
+   "excluir_trechos": [
+    "boicote ao bolsonaro",
+    "boicote bolsonarista"
+   ]
+  },
+  "listas_exposicao": {
+   "nome": "Listas e exposição",
+   "definicao": "Menciona, pede, compartilha ou anuncia listas de empresas, profissionais ou pessoas petistas; expõe nomes, marca perfis ou pede para identificar.",
+   "indicadores": [
+    "lista*",
+    "expor",
+    "exponham",
+    "exposto*",
+    "marquem",
+    "marca ai",
+    "printa",
+    "print",
+    "nomes",
+    "quem votou",
+    "identificar",
+    "descobrir quem"
+   ],
+   "excluir_trechos": [
+    "lista de presenca",
+    "lista de compras"
+   ]
+  },
+  "alvo_educacao": {
+   "nome": "Alvo: professores e escola",
+   "definicao": "O alvo da demissão, do boicote ou da exposição é professor, escola, universidade ou educação.",
+   "indicadores": [
+    "professor*",
+    "professora*",
+    "escola*",
+    "colegio",
+    "faculdade",
+    "universidade",
+    "doutrinacao",
+    "doutrinador*",
+    "sala de aula"
+   ],
+   "excluir_trechos": []
+  },
+  "alvo_saude": {
+   "nome": "Alvo: profissionais de saúde",
+   "definicao": "O alvo é médico, dentista, enfermeiro, psicólogo, clínica ou outro profissional de saúde.",
+   "indicadores": [
+    "medico*",
+    "medica*",
+    "dentista*",
+    "enfermeir*",
+    "psicolog*",
+    "clinica",
+    "consultorio",
+    "hospital"
+   ],
+   "excluir_trechos": []
+  },
+  "alvo_comercio_servicos": {
+   "nome": "Alvo: empresas, comércio e prestadores",
+   "definicao": "O alvo é empresa, loja, comércio, restaurante, marca ou prestador de serviço (eletricista, diarista, advogado, etc.).",
+   "indicadores": [
+    "empresa*",
+    "empresario*",
+    "loja*",
+    "comercio*",
+    "restaurante*",
+    "padaria*",
+    "mercado*",
+    "marca*",
+    "prestador*",
+    "prestadores de servico",
+    "servico*",
+    "advogad*",
+    "eletricista",
+    "diarista",
+    "autonomo*",
+    "cliente*",
+    "empregado*",
+    "funcionario*",
+    "patrao",
+    "patroa",
+    "chefe"
+   ],
+   "excluir_trechos": []
+  },
+  "alvo_servidor": {
+   "nome": "Alvo: servidores públicos",
+   "definicao": "O alvo é servidor público, concursado ou funcionário de órgão público.",
+   "indicadores": [
+    "servidor publico",
+    "servidores publicos",
+    "servidor*",
+    "concursad*",
+    "funcionario publico",
+    "funcionalismo",
+    "exonera*"
+   ],
+   "excluir_trechos": []
+  },
+  "desumanizacao_insulto": {
+   "nome": "Desumanização e insulto",
+   "definicao": "Rotula o grupo-alvo com insulto, animalização ou termo de desprezo.",
+   "indicadores": [
+    "petralha*",
+    "esquerdopata*",
+    "parasita*",
+    "vagabundo*",
+    "vagabunda*",
+    "lixo",
+    "verme*",
+    "rato*",
+    "escoria",
+    "comunista*",
+    "mamadeira",
+    "militonto*",
+    "jumento*",
+    "burro*",
+    "gado"
+   ],
+   "excluir_trechos": []
+  },
+  "justifica_punicao": {
+   "nome": "Justificativa da punição",
+   "definicao": "Justifica a sanção como merecida ou consequência do voto (\"agora aguenta\", \"faz o L\", \"quem votou que pague\").",
+   "indicadores": [
+    "agora aguenta",
+    "faz o l",
+    "fez o l",
+    "fizeram o l",
+    "quem votou",
+    "colhe o que planta",
+    "colher o que plantou",
+    "bem feito",
+    "merece",
+    "merecem",
+    "pague",
+    "paguem",
+    "escolheram",
+    "pediram"
+   ],
+   "excluir_trechos": []
+  },
+  "relato_vitima": {
+   "nome": "Relato de vítima",
+   "definicao": "Relata ter sido demitido, ameaçado, boicotado ou exposto por voto ou posição política (primeira pessoa ou de alguém próximo).",
+   "indicadores": [
+    "fui demitido",
+    "fui demitida",
+    "me demitiu",
+    "me demitiram",
+    "perdi o emprego",
+    "perdi clientes",
+    "fui ameacado",
+    "fui ameacada",
+    "fui exposto",
+    "fui exposta",
+    "minha mae foi",
+    "meu pai foi",
+    "foi demitido",
+    "foi demitida",
+    "demitido por votar",
+    "demitida por votar"
+   ],
+   "excluir_trechos": []
+  },
+  "denuncia_ilegalidade": {
+   "nome": "Denúncia e enquadramento legal",
+   "definicao": "Classifica a prática como crime, assédio eleitoral ou discriminação; cita MPT, Justiça do Trabalho, polícia, processo ou orienta a denunciar.",
+   "indicadores": [
+    "crime",
+    "criminoso*",
+    "assedio eleitoral",
+    "assedio",
+    "mpt",
+    "ministerio publico",
+    "justica do trabalho",
+    "denuncie",
+    "denunciar",
+    "denuncia",
+    "processo",
+    "processar",
+    "indenizacao",
+    "ilegal",
+    "discriminacao",
+    "intolerancia",
+    "fascis*",
+    "perseguicao"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_inversao": {
+   "nome": "Ironia ou inversão",
+   "definicao": "Usa a campanha de forma irônica ou a inverte contra o outro lado (ex.: \"demita um bolsonarista\", \"então ninguém compra de...\").",
+   "indicadores": [
+    "demita um bolsonarista",
+    "boicote bolsonarista",
+    "demitir bolsonarista",
+    "kkk",
+    "kkkk",
+    "rsrs",
+    "ironia",
+    "imagina se fosse"
+   ],
+   "excluir_trechos": []
+  },
+  "regionalismo": {
+   "nome": "Regionalismo e xenofobia",
+   "definicao": "Associa o voto ou o alvo a região ou origem (Nordeste, nordestinos), com ou sem hostilidade.",
+   "indicadores": [
+    "nordeste",
+    "nordestino*",
+    "nordestina*",
+    "paraiba*",
+    "baiano*",
+    "bahia",
+    "separatis*",
+    "sul e sudeste"
+   ],
+   "excluir_trechos": []
+  },
+  "preferencia_intragrupo": {
+   "nome": "Preferência intragrupo (\"direita apoia direita\")",
+   "definicao": "Chama a comprar, contratar, consumir ou prestigiar só quem é de direita/conservador; o lado positivo do boicote.",
+   "indicadores": [
+    "direita apoia direita",
+    "direitaapoiadireita",
+    "so compre de",
+    "compre de quem",
+    "compre so de",
+    "contrate quem",
+    "apoie quem",
+    "prestigie",
+    "comercio conservador",
+    "comercios conservadores",
+    "empresa conservadora",
+    "empresas conservadoras",
+    "empresas de direita",
+    "empresario de direita",
+    "negocio de direita",
+    "lojas de direita",
+    "direita compra de direita"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

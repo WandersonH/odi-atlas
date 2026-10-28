@@ -87,6 +87,10 @@ jobs:
         run: |
           python scripts/build_casos.py > b.txt 2>&1; rc=$?
           if [ -d "$ODI_INTERNO_DIR/casos/010" ]; then python scripts/build_caso_perfis_exterior.py --caso 010 >> b.txt 2>&1 || rc=1; fi
+          # Bardin (pré-codificação pelo livro de códigos do caso), pedido de 28/10/2026, 00h05
+          for c in $(ls data/config | sed -n 's/^livro_codigos_caso\([0-9]*\)\.json$/\1/p'); do
+            if [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi
+          done
           while IFS= read -r l; do echo "::notice title=Casos agregados::$(echo "$l" | cut -c1-600)"; done < b.txt
           exit $rc
       - name: Gravar no repositório privado
