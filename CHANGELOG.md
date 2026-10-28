@@ -10,7 +10,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Fonte:** TSE, Dados Abertos, votação por seção (`votacao_secao_2026_BR.zip`, presidente, com NR_TURNO). Seção = urna.
 - **O que mudou:** `scripts/collect_secoes_presidente.py` (por seção: votos de cada candidato, brancos 95, nulos 96, válidos e % nos válidos; vencedor ou empate; seções com 100% e com zero votos; distribuição em faixas de 10 pontos; por UF). Saídas: `data/tse/secoes/presidente_<turno>t_resumo.json` e `presidente_<turno>t_secoes.csv.gz` (todas as seções, para conferência; dados abertos do TSE, sem dado pessoal). Sem o arquivo ou sem o turno: ⛔ com o motivo, nada estimado. `tse-secoes-presidente.yml` (diário 09h11; baixa o arquivo uma vez para os dois turnos). Página `urnas` no Panorama, logo depois do resultado do 2º turno, com seletor de turno e o bloco universo × amostra (todas as seções = 100%).
 - **Teste:** `tests/test_collect_secoes_presidente.py` (vencedor, empate, zero, 100%, soma de votos, brancos; ⛔ quando o turno não está no arquivo); `python -m unittest discover -s tests -v` → OK. Render local com arquivo sintético na pasta temporária (não publicado), sem erro de JavaScript.
-- **Pendente:** primeira leitura real (`tse-secoes-presidente.yml`); se o TSE ainda não publicou o 2º turno por seção, a página mostra ⛔ até lá.
+- **Primeira leitura real (run 40617498861):** arquivo do TSE publicado (241.891.087 bytes; linhas: 3.800.511 do 1º turno e 1.931.103 do 2º). **2º turno:** 499.205 seções; Lula venceu 250.935 (50,27%), Flávio 246.115 (49,30%), 2.155 empates; Lula teve 100% dos válidos em 106 seções e zero votos em 4; Flávio teve 100% em 4 e zero em 106. A soma das seções bate com o total oficial do TSE: Lula 64.256.232 e Flávio 59.826.041 votos (os mesmos de `data/tse/segundo_turno/resultado.json`). **1º turno:** 499.206 seções; Flávio venceu 278.742 (55,84%), Lula 218.309 (43,73%), Caiado 6, 2.149 empates.
+- **Pendente:** nenhum para a página; a leitura diária continua (o TSE pode republicar o arquivo).
 
 ## C19.180 — Caso 013: "Onde está Flávio?" e "Flávio fugiu" (buscas, notícias, YouTube e TikTok, grátis) (2026-10-27) 🔜
 
@@ -18,7 +19,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Contexto (fontes):** a acusação já circulou na viagem a Lisboa (DGABC, 19/07/2025) e na viagem aos EUA (DCM, 25/05/2026); #ondeestaoflavio apareceu 84 vezes nos comentários do reel da Joice Hasselmann (caso 011).
 - **O que mudou:** caso 013 em `data/config/casos.json` (coletar: sim, sem teto pago; TikTok pela página pública com #ondeestaflavio, #ondeestaoflavio, #flaviofugiu, #cadeoflavio e 3 buscas por frase; Trends e Google Notícias desde 24/10) e em `collect_caso_busca.py` (Trends 7 dias, 1 mês e 12 meses; YouTube desde 24/10 com filtro de título; notícias de 7 dias; checagens). `casos-busca.yml` inclui o 013. Página: seção `caso013` (`montarCasoBusca('013')`), menu Casos.
 - **Teste:** `python -m unittest discover -s tests -v` → OK.
-- **Pendente:** rodar `casos-busca.yml` (013) e `casos.yml` (carga, 013, TikTok e Google); universo × amostra (regra 9) no bloco do caso.
+- **Primeira coleta:** `casos-busca.yml` run 40617220536: YouTube 63 vídeos sobre o caso (de 160 achados) com 17.190.601 visualizações e 9.085 comentários lidos; 247 notícias; 5 checagens; Trends nas 3 janelas; 3 buscas do YouTube com HTTP 429. `casos.yml` run 40617218198: TikTok 166 publicações de 154 contas (página pública, grátis).
+- **Pendente:** universo × amostra (regra 9) no bloco dos casos de busca (001 a 009 e 013).
 
 ## C19.179 — Universo × amostra nos casos 010, 011 e 012; regra 9 no CLAUDE.md (2026-10-27) ✅
 
