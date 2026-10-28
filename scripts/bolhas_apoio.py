@@ -99,7 +99,7 @@ def handle(url: str, plataforma: str) -> str | None:
     dom = {"x": r"(?:x|twitter)\.com/", "instagram": r"instagram\.com/"}[plataforma]
     m = re.search(dom + r"@?([a-z0-9_.]+)", u)
     h = m.group(1).strip(".") if m else None
-    return h if h and h not in ("p", "reel", "explore", "home", "intent", "share", "hashtag", "i") else None
+    return h if h and h not in ("p", "reel", "reels", "explore", "home", "intent", "share", "hashtag", "i", "channel", "stories", "tv", "accounts", "search") else None
 
 
 # ---------------------------------------------------------------- TSE
@@ -185,7 +185,8 @@ def politicos(root: Path, priv: Path, cfg: dict) -> tuple[list[dict], dict]:
                     "declarou": None})
     universo = Counter(p["cargo"] for p in out)
     return out, {"universo_por_cargo": dict(universo), "fonte": "TSE, candidaturas 2026 (data/tse/candidatos_2026.csv.gz) e redes declaradas ao TSE",
-                 "votos": vman.get("status") or "⛔ votos por candidato ainda não lidos do TSE"}
+                 "votos": ("ok" if vman.get("status") == "ok" else vman.get("status") or "⛔ votos por candidato ainda não lidos do TSE"),
+                 "votos_fonte": vman.get("fonte"), "votos_lido_em_utc": vman.get("lido_em_utc")}
 
 
 # ---------------------------------------------------------------- coleta (caso 015)
@@ -280,16 +281,26 @@ def montar(root: Path, priv: Path, caso: dict) -> dict:
         k = (rede, (r["conta"] or "").lower())
         a = autores.setdefault(k, {"rede": rede, "conta": r["conta"], "nome": nome, "seguidores": seg, "verificada": r.get("verificada"), "provas": []})
         a["seguidores"] = max(a["seguidores"], seg)
-        a["provas"].append({"lado": lado, "data": (r.get("publicado_em") or "")[:10], "url": r["url"], "trecho": ach.get(lado, "")[:200],
+        a["provas"].append({"lado": lado, "data": (r.get("publicado_em") or "")[:10], "url": r["url"], "trecho": re.sub(r"\s+", " ", txt).strip()[:280],
                             "curtidas": int(r["curtidas"]) if str(r.get("curtidas") or "").isdigit() else None,
                             "visualizacoes": int(r["visualizacoes"]) if str(r.get("visualizacoes") or "").isdigit() else None})
-    pessoas = []
+    cf_arq = root / "data/config/bolhas_conferencia.json"
+    cf = json.loads(cf_arq.read_text(encoding="utf-8")) if cf_arq.exists() else {"contas": {}}
+    pessoas, excluidas, aguardando = [], Counter(), Counter()
     for a in autores.values():
         lados = {p["lado"] for p in a["provas"]}
-        lado = "ambiguo" if {"lula", "flavio"} <= lados else ("lula" if "lula" in lados else "flavio" if "flavio" in lados else "nulo")
-        a["provas"].sort(key=lambda p: p["data"])
-        a.update(lado=lado, primeira=a["provas"][0]["data"], faixa=faixa(a["seguidores"]), provas=a["provas"][:5], n_provas=len(a["provas"]),
-                 conferencia="pendente (pré-codificação automática por frase)")
+        auto = "ambiguo" if {"lula", "flavio"} <= lados else ("lula" if "lula" in lados else "flavio" if "flavio" in lados else "nulo")
+        dec = cf["contas"].get(f"{a['rede']}:{a['conta']}")
+        if not dec:
+            aguardando[auto] += 1
+            continue
+        if dec["decisao"] not in ("lula", "flavio"):
+            excluidas[dec.get("motivo") or "excluída"] += 1
+            continue
+        lado = dec["decisao"]
+        a["provas"] = sorted((p for p in a["provas"] if p["lado"] == lado), key=lambda p: p["data"]) or a["provas"]
+        a.update(lado=lado, lado_automatico=auto, primeira=a["provas"][0]["data"], faixa=faixa(a["seguidores"]), provas=a["provas"][:5],
+                 n_provas=len(a["provas"]), conferencia=cf.get("por", "conferida"))
         pessoas.append(a)
     pessoas.sort(key=lambda a: -a["seguidores"])
     # políticos que declararam pela própria conta
@@ -316,14 +327,16 @@ def montar(root: Path, priv: Path, caso: dict) -> dict:
            "referencia": {"nome": "Quem apoia quem", "url": "https://quemapoiaquem.com.br/", "nota": "base curada por Allan Hert/Hertwave; não reproduzida aqui (pedido de dados enviado à parte)"},
            "periodo": {"desde": caso["desde"], "ate": "2026-10-25"},
            "regras": {"min_seguidores": MIN_SEG, "declaracao": "frase de voto ou apoio na primeira pessoa no texto da própria conta; negação logo antes anula; os dois lados = ambígua (fora); republicação não conta",
-                      "conferencia": "pré-codificação automática; conferência humana pendente (planilha no privado)",
+                      "conferencia": "frase encontrada automaticamente e conta conferida por leitura do texto completo (data/config/bolhas_conferencia.json); conferência humana pendente (planilha no privado)",
                       "nao_e": "não é pesquisa eleitoral e não mede intenção de voto"},
            "universo": {"figuras_publicas": None, "fonte": "⛔ nenhuma plataforma informa quantos perfis com 100 mil+ seguidores declararam voto",
                         "amostra": "busca por frase no X (Top, curtidas mínimas, 01/08 a 25/10) e busca de reels no Instagram (sem filtro de data no buscador)"},
            "coleta": {"por_rede": {k: dict(v) for k, v in por_rede.items()}, "buscas": man_col, "perfis_instagram_lidos": len(perfis),
                       "perfis_instagram_runs": pman_ig.get("runs", [])},
            "totais": {"pessoas": len(pessoas), "lula": sum(1 for a in pessoas if a["lado"] == "lula"), "flavio": sum(1 for a in pessoas if a["lado"] == "flavio"),
-                      "nulo": sum(1 for a in pessoas if a["lado"] == "nulo"), "ambiguo": sum(1 for a in pessoas if a["lado"] == "ambiguo")},
+                      "marcadas_pela_frase": len(autores), "excluidas_na_conferencia": sum(excluidas.values()), "aguardando_conferencia": sum(aguardando.values())},
+           "conferencia": {"criterio": cf.get("criterio"), "por": cf.get("por"), "feita_em": cf.get("feita_em"), "excluidas_por_motivo": dict(excluidas.most_common()),
+                           "aguardando_por_lado_automatico": dict(aguardando)},
            "por_faixa": {f: {l: sum(1 for a in dec if a["faixa"] == f and a["lado"] == l) for l in ("lula", "flavio")} for _, f in FAIXAS},
            "por_semana": [{"semana": s, "lula": c["lula"], "flavio": c["flavio"]} for s, c in sorted(sem.items()) if s],
            "pessoas": pessoas,

@@ -29,6 +29,7 @@ class TestClassificar(unittest.TestCase):
         self.assertEqual(b.handle("https://www.instagram.com/fulano_x/?hl=pt", "instagram"), "fulano_x")
         self.assertEqual(b.handle("HTTPS://X.COM/@Fulano", "x"), "fulano")
         self.assertIsNone(b.handle("https://www.instagram.com/p/abc/", "instagram"))
+        self.assertIsNone(b.handle("https://www.instagram.com/channel/AbC", "instagram"))
 
     def test_sinal_mdb_por_uf(self):
         cfg = {"partidos": {"MDB": {"posicao": "por_uf", "nota": "", "fontes": [], "lula_ufs": ["BA"], "demais_ufs": "flavio"}}}
