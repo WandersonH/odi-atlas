@@ -1,74 +1,149 @@
 {
  "caso": "014",
  "titulo": "\"Demita um petista\" e boicote à esquerda depois do 2º turno",
- "run_started_utc": "2026-10-28T04:31:17Z",
+ "run_started_utc": "2026-10-28T04:34:18Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-25",
  "redes": [
   {
-   "rede": "instagram",
-   "teto_usd": 2.5,
-   "gasto_antes_usd": 1.6961,
-   "teto_execucao_usd": 0.8039,
-   "termos": [
-    {
-     "termo": "indicado pelo responsável",
-     "ator": "apify/instagram-reel-scraper",
-     "itens": 5,
-     "lidos": 5,
-     "no_periodo": 5,
-     "no_limite": false,
-     "run": "H3hS2ptdgqgHO7dCE",
-     "custo_usd": 0.0425,
-     "erro": null,
-     "chaves_1o_item": [
-      "alt",
-      "audioUrl",
-      "caption",
-      "childPosts",
-      "commentsCount",
-      "dimensionsHeight",
-      "dimensionsWidth",
-      "displayUrl",
-      "firstComment",
-      "hashtags",
-      "id",
-      "images",
-      "inputUrl",
-      "isCommentsDisabled",
-      "isPinned",
-      "latestComments",
-      "likesCount",
-      "mentions",
-      "musicInfo",
-      "originalHeight",
-      "originalWidth",
-      "ownerFullName",
-      "ownerId",
-      "ownerUsername",
-      "paidPartnership",
-      "productType",
-      "sharesCount",
-      "shortCode",
-      "timestamp",
-      "type",
-      "url",
-      "videoDuration",
-      "videoPlayCount",
-      "videoUrl",
-      "videoViewCount"
-     ],
-     "mais_antigo": "2026-10-26T00:46:14Z"
+   "rede": "tiktok",
+   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
+   "termos": {
+    "demitaumpetista": {
+     "lado": "caso",
+     "respostas_api": 2,
+     "videos": 59,
+     "contas": 56,
+     "erro": null
+    },
+    "boicoteesquerda": {
+     "lado": "caso",
+     "respostas_api": 2,
+     "videos": 59,
+     "contas": 57,
+     "erro": null
+    },
+    "boicoteaesquerda": {
+     "lado": "caso",
+     "respostas_api": 2,
+     "videos": 59,
+     "contas": 56,
+     "erro": null
+    },
+    "boicotepetista": {
+     "lado": "caso",
+     "respostas_api": 2,
+     "videos": 59,
+     "contas": 56,
+     "erro": null
+    },
+    "empresaspetistas": {
+     "lado": "caso",
+     "respostas_api": 2,
+     "videos": 57,
+     "contas": 57,
+     "erro": null
+    },
+    "direitaapoiadireita": {
+     "lado": "caso",
+     "respostas_api": 2,
+     "videos": 59,
+     "contas": 54,
+     "erro": null
+    },
+    "demita um petista": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "boicote esquerda": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "empresas petistas": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "boicote petista": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "professor petista": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "direita apoia direita": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "não compre de petista": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "lista de boicote": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "demitir petista": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "não ajude nenhum petista": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "demitir petista gostoso": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
     }
-   ],
-   "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 91,
-   "custo_usd": 0.0425,
+   },
+   "custo_usd": 0.0,
    "status": "ok",
-   "itens_no_periodo": 5
+   "itens_no_periodo": 179
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_pontos": 169,
+   "noticias": 129,
+   "status": "ok",
+   "itens_no_periodo": 0
   }
  ],
- "itens_acumulados": 6908,
- "custo_usd": 0.0425
+ "itens_acumulados": 6939,
+ "custo_usd": 0.0
 }
