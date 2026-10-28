@@ -1,0 +1,41 @@
+name: TSE — presidente por seção eleitoral (urnas vencidas e percentuais; Dados Abertos, grátis)
+
+# Pedido do responsável (27/10/2026, 22h47). Diário até o TSE publicar o 2º turno por seção; sem o arquivo, registra ⛔.
+on:
+  schedule:
+    - cron: "11 12 * * *"   # 09h11 em Brasília
+  workflow_dispatch:
+    inputs:
+      turno:
+        description: "turno (1 ou 2; vazio = os dois)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tse-secoes-presidente
+  cancel-in-progress: false
+
+jobs:
+  secoes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ler e contar
+        env:
+          TURNOS: ${{ inputs.turno || '1 2' }}
+        run: |
+          rc=0; : > s.txt
+          # baixa uma vez para os dois turnos; se o TSE ainda não publicou, o script registra ⛔ com o código HTTP
+          if curl -sSfL --retry 3 -o "$RUNNER_TEMP/v.zip" "https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_secao/votacao_secao_2026_BR.zip"; then A="--arquivo $RUNNER_TEMP/v.zip"; else A=""; fi
+          for t in $TURNOS; do python scripts/collect_secoes_presidente.py --turno "$t" $A >> s.txt 2>&1 || rc=1; done
+          while IFS= read -r l; do echo "::notice title=Seções::$(echo "$l" | cut -c1-700)"; done < s.txt
+          exit $rc
+      - name: Gravar
+        run: |
+          scripts/commit_push.sh "TSE: presidente por seção (run ${{ github.run_id }})"

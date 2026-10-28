@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.181 — Página "Urnas por candidato": presidente por seção eleitoral (seções vencidas, 100%, zero e distribuição) (2026-10-27) 🔜
+
+- **Pedido (27/10/2026, 22h47):** "preciso validar uma informação, então teremos mais uma página: quantas urnas cada candidato teve, todos os percentuais por seção eleitoral".
+- **Fonte:** TSE, Dados Abertos, votação por seção (`votacao_secao_2026_BR.zip`, presidente, com NR_TURNO). Seção = urna.
+- **O que mudou:** `scripts/collect_secoes_presidente.py` (por seção: votos de cada candidato, brancos 95, nulos 96, válidos e % nos válidos; vencedor ou empate; seções com 100% e com zero votos; distribuição em faixas de 10 pontos; por UF). Saídas: `data/tse/secoes/presidente_<turno>t_resumo.json` e `presidente_<turno>t_secoes.csv.gz` (todas as seções, para conferência; dados abertos do TSE, sem dado pessoal). Sem o arquivo ou sem o turno: ⛔ com o motivo, nada estimado. `tse-secoes-presidente.yml` (diário 09h11; baixa o arquivo uma vez para os dois turnos). Página `urnas` no Panorama, logo depois do resultado do 2º turno, com seletor de turno e o bloco universo × amostra (todas as seções = 100%).
+- **Teste:** `tests/test_collect_secoes_presidente.py` (vencedor, empate, zero, 100%, soma de votos, brancos; ⛔ quando o turno não está no arquivo); `python -m unittest discover -s tests -v` → OK. Render local com arquivo sintético na pasta temporária (não publicado), sem erro de JavaScript.
+- **Pendente:** primeira leitura real (`tse-secoes-presidente.yml`); se o TSE ainda não publicou o 2º turno por seção, a página mostra ⛔ até lá.
+
 ## C19.180 — Caso 013: "Onde está Flávio?" e "Flávio fugiu" (buscas, notícias, YouTube e TikTok, grátis) (2026-10-27) 🔜
 
 - **Pedido (27/10/2026, 22h45):** "novo case buscas google e notícia fuga Flávio, 'Onde está Flávio?' e 'Flávio fugiu'; se conseguir coletar algo em redes pode coletar grátis". Nenhuma coleta paga.
