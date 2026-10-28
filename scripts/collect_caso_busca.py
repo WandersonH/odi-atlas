@@ -86,6 +86,14 @@ CASOS = {
             "noticias": ["PM Piracicaba camisetas PT", "presos camiseta Lula PM", "Derrite camisetas PT", "PT denúncia PM camisetas Lula",
                          "jovens presos camiseta Lula", "PM camiseta Lula Piracicaba"], "janela_noticias": "3d",
             "checagens": ["camisetas PT Piracicaba", "PM presos camiseta Lula"], "arquivo_web": ["https://www.instagram.com/reel/DewwdGCR_Qn/"]},
+    # 27/10 (22h45): "Onde está Flávio?" e "Flávio fugiu" depois do 2º turno; Trends de 12 meses para comparar com jul/2025 e mai/2026
+    "013": {"variantes": ["onde está flávio", "flávio fugiu", "flávio bolsonaro fugiu", "cadê o flávio"],
+            "controles": ["Flávio Bolsonaro", "Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
+            "youtube": ["onde está Flávio Bolsonaro", "Flávio Bolsonaro fugiu", "Flávio Bolsonaro fuga", "cadê o Flávio Bolsonaro", "Flávio Bolsonaro sumiu"],
+            "desde_yt": "2026-10-24T00:00:00Z", "rx_titulo": r"fug|onde est|cad[eê]|paradeiro|sumi|exterior|\beua\b|estados unidos|europa|lisboa|miami|asilo",
+            "rx_atributo": r"fl[aá]vio",
+            "noticias": ["\"onde está Flávio\"", "Flávio Bolsonaro fugiu", "Flávio Bolsonaro paradeiro", "Flávio Bolsonaro viagem exterior", "Flávio Bolsonaro sumiu"],
+            "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro fugiu", "Flávio Bolsonaro fuga"], "arquivo_web": []},
     # 26/10 (01h41): reel de Nikolas Ferreira "O Nordeste que foi esquecido." (20/10/2026); termos iniciais, revisar com a transcrição
     "009": {"variantes": ["Nordeste esquecido", "Nikolas Nordeste", "Nikolas Ferreira Nordeste vídeo"],
             "controles": ["Nordeste", "Nikolas Ferreira"], "janelas": ["now 7-d", "today 1-m"],

@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.180 — Caso 013: "Onde está Flávio?" e "Flávio fugiu" (buscas, notícias, YouTube e TikTok, grátis) (2026-10-27) 🔜
+
+- **Pedido (27/10/2026, 22h45):** "novo case buscas google e notícia fuga Flávio, 'Onde está Flávio?' e 'Flávio fugiu'; se conseguir coletar algo em redes pode coletar grátis". Nenhuma coleta paga.
+- **Contexto (fontes):** a acusação já circulou na viagem a Lisboa (DGABC, 19/07/2025) e na viagem aos EUA (DCM, 25/05/2026); #ondeestaoflavio apareceu 84 vezes nos comentários do reel da Joice Hasselmann (caso 011).
+- **O que mudou:** caso 013 em `data/config/casos.json` (coletar: sim, sem teto pago; TikTok pela página pública com #ondeestaflavio, #ondeestaoflavio, #flaviofugiu, #cadeoflavio e 3 buscas por frase; Trends e Google Notícias desde 24/10) e em `collect_caso_busca.py` (Trends 7 dias, 1 mês e 12 meses; YouTube desde 24/10 com filtro de título; notícias de 7 dias; checagens). `casos-busca.yml` inclui o 013. Página: seção `caso013` (`montarCasoBusca('013')`), menu Casos.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar `casos-busca.yml` (013) e `casos.yml` (carga, 013, TikTok e Google); universo × amostra (regra 9) no bloco do caso.
+
 ## C19.179 — Universo × amostra nos casos 010, 011 e 012; regra 9 no CLAUDE.md (2026-10-27) ✅
 
 - **Pedido (27/10/2026, 03h24):** "é sempre importante ter o universo e qual o real tamanho da amostra que temos". Entra como regra 9 do `CLAUDE.md`.
