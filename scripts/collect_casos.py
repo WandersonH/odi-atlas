@@ -41,7 +41,7 @@ COLS = ["rede", "item_id", "conta", "nome_conta", "seguidores", "verificada", "p
         "comentarios", "compartilhamentos", "termo", "url", "capa_url", "coletado_em"]
 ATOR = {"x": "xquik~x-tweet-scraper", "instagram": "apify~instagram-hashtag-scraper", "instagram_palavra": "apidojo~instagram-hashtag-scraper",
         "tiktok_apify": "novi~multiple-tiktok-hashtag-scraper", "instagram_perfil": "esdrasdw~instagram-content-scraper",
-        "facebook": "scrapeforge~facebook-search-posts", "kwai": "unfenced-group~kwai-scraper", "tiktok_busca": "apidojo~tiktok-scraper"}
+        "facebook": "scrapeforge~facebook-search-posts", "instagram_reels": "data-slayer~instagram-search-reels", "kwai": "unfenced-group~kwai-scraper", "tiktok_busca": "apidojo~tiktok-scraper"}
 
 
 def iso(v) -> str:
@@ -98,10 +98,10 @@ def norm(rede: str, x: dict, termo: str, agora: str) -> dict | None:
                         "seguidores": inteiro(g(x, "owner.followerCount", "owner.followersCount", "owner.follower_count")),
                         "verificada": int(bool(g(x, "owner.isVerified", "owner.is_verified"))),
                         "publicado_em": iso(g(x, "createdAt", "timestamp", "takenAt", "taken_at")),
-                        "texto": " ".join(str(g(x, "caption", "caption.text", "text") or "").split()),
-                        "visualizacoes": inteiro(g(x, "video.playCount", "videoPlayCount", "playCount", "viewCount")),
-                        "curtidas": inteiro(g(x, "likeCount", "likesCount")), "comentarios": inteiro(g(x, "commentCount", "commentsCount")),
-                        "compartilhamentos": inteiro(g(x, "shareCount", "reshareCount")), "termo": termo,
+                        "texto": " ".join(str(g(x, "caption.text", "caption", "text") or "").split()),
+                        "visualizacoes": inteiro(g(x, "video.playCount", "videoPlayCount", "playCount", "viewCount", "ig_play_count", "play_count")),
+                        "curtidas": inteiro(g(x, "likeCount", "likesCount", "like_count")), "comentarios": inteiro(g(x, "commentCount", "commentsCount", "comment_count")),
+                        "compartilhamentos": inteiro(g(x, "shareCount", "reshareCount", "share_count")), "termo": termo,
                         "url": g(x, "url") or f"https://www.instagram.com/p/{iid}/", "capa_url": g(x, "image.url", "displayUrl", "thumbnailUrl") or "",
                         "coletado_em": agora}
     if rede == "facebook":
@@ -136,7 +136,10 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
     if caso.get("_so_frases"):
         # 28/10/2026 (caso 014): buscas por frase no Facebook e no Kwai e hashtags extras no Instagram, sem repetir as hashtags já coletadas
         if rede == "instagram":
-            return [(f"#{t}", ATOR["instagram"], {"hashtags": [t], "resultsType": "posts", "resultsLimit": n}) for t in caso.get("hashtags_instagram", [])]
+            # 28/10/2026, 00h16 ("se você busca os assuntos no insta ele traz vídeos"): busca de reels por assunto (sem filtro de data no ator;
+            # o período é aplicado depois, como nas demais redes). ~12 reels por página.
+            return [(f"#{t}", ATOR["instagram"], {"hashtags": [t], "resultsType": "posts", "resultsLimit": n}) for t in caso.get("hashtags_instagram", [])] + \
+                   [(f"reels: {q}", ATOR["instagram_reels"], {"query": q, "maxPages": max(1, -(-n // 12))}) for q in caso.get("buscas_instagram", [])]
         if rede == "facebook":
             return [(q, ATOR["facebook"], {"query": q, "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": False}) for q in caso.get("buscas_facebook", [])]
         if rede == "kwai":
