@@ -31,7 +31,7 @@ from corpus_populismo import compilar, precodificar  # noqa: E402
 from net import now_utc  # noqa: E402
 
 MIN_PUBLICO = 10000
-INCITACAO = ("incita_demissao", "boicote_economico", "listas_exposicao")
+INCITACAO = ("incita_demissao", "boicote_economico", "listas_exposicao", "exclusao_convivio")
 REACAO = ("relato_vitima", "denuncia_ilegalidade", "ironia_inversao")
 SEMENTE, N_AMOSTRA = 42, 200
 

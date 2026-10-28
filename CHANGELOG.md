@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.189 — Caso 014: rodada 3 de vocabulário, livro de códigos v1.2 ("exclusão do convívio") e mais 1 reel indicado (2026-10-28) 🔜
+
+- **Pedido (28/10/2026, 01h25):** "sim" para a rodada 3 e o livro v1.2; e o reel DfBFuFfOs0Z ("entrou"), conferido: **não estava na coleta**; entra em `posts_instagram` (indicado pelo responsável).
+- **Rodada 3 (termos com 10+ ocorrências nos 2.823 textos da rodada 2):** X: "compre nada de petista"/"ignore e boicote"/"boicote essa raça esquerdista"; "demitir petista é gostoso"/"devagarzinho"/#demitapetistas; petralha/ptralha + demitir/boicote/contratar/comprar/lista; "empresários de direita" + demitam. Instagram: #demitapetistas e reels "não ajude nenhum petista", "demita os petistas", "boicote esquerdista", "petralha demitir". TikTok (grátis): "não ajude nenhum petista", "demitir petista gostoso". `casos.yml` modo `rodada3`.
+- **Livro de códigos v1.2:** categoria nova "exclusão do convívio" (não ajudar, amizade/relacionamento, não trabalhar junto, ignorar, bloquear, afastar), contada no bloco de incitação; "devagarzinho" e "demitir petista é gostoso" na incitação à demissão. Página: legenda e cor das bolhas incluem a categoria.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; `pedidos(--rodada 3)` gera 4 buscas no X e 5 no Instagram.
+- **Pendente:** rodar rodada 3, posts indicados e TikTok; ler a saturação.
+
 ## C19.188 — Caso 014: rodada 2 de vocabulário e medida de saturação da coleta; resultado dos 4 reels indicados (2026-10-28) 🔜
 
 - **Pedido (28/10/2026, 01h14):** "preciso de uma coleta que me traga uma real ideia desse universo de temática". As plataformas não informam o total (regra 9: ⛔, nunca estimado); o indício de cobertura é a **saturação**: ampliar o vocabulário e medir quanto cada rodada ainda traz de novo.

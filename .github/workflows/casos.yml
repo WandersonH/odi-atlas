@@ -9,7 +9,7 @@ on:
       modo:
         description: "teste (1 termo por rede, 10 itens) · carga · complemento (buscas extras do X) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [teste, carga, complemento, frases, posts, rodada2, so-analises]
+        options: [teste, carga, complemento, frases, posts, rodada2, rodada3, so-analises]
         default: teste
       caso:
         description: "id do caso (vazio = todos os ativos)"
@@ -77,6 +77,7 @@ jobs:
           if [ "$MODO" = "frases" ]; then a="--frases --rede instagram --rede facebook --rede kwai"; fi
           if [ "$MODO" = "posts" ]; then a="--posts --rede instagram"; fi
           if [ "$MODO" = "rodada2" ]; then a="--rodada 2 --complemento --frases --rede x --rede instagram"; fi
+          if [ "$MODO" = "rodada3" ]; then a="--rodada 3 --complemento --frases --rede x --rede instagram"; fi
           if [ -n "$CASO" ]; then a="$a --caso $CASO"; fi
           for r in $REDES; do a="$a --rede $r"; done
           python scripts/collect_casos.py $a > f.txt 2>&1; rc=$?
