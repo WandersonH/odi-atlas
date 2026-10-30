@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.198 — Caso 014: lacuna depois de 28/10, atualização e leitura diária até 15/11 (2026-10-29) 🔜
+
+- **Pergunta (29/10/2026, 22h21):** "demita um petista foi coletado certinho?". Conferência nos manifestos: **X, Instagram e Facebook pararam em 28/10 por volta de 04h UTC** (última publicação lida no X: 28/10 04h15 UTC); depois disso só o TikTok e o Google (diários, grátis) continuaram. A saturação do X não foi alcançada (55,1% de novas na rodada 3), Kwai devolveu 0, X e Facebook sem universo (⛔), o Instagram chegou ao limite pedido. Gasto do caso: US$ 4,0854 de 6,00.
+- **O que mudou:** rodada 4 do X (6 buscas centrais desde 28/10: demitir petista, boicote, empresas e prestadores, #boicote, "não compre de petista", petralha) dentro do que sobrou do teto do X (US$ 0,94, com reserva diária de 0,51); leitura diária das mesmas 6 buscas até 15/11 (US$ 0,03 por dia); nova passada de Instagram e Facebook (modo `frases`) no que sobrou desses tetos (0,76 e 0,21). `casos.yml`: modo `rodada4`.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; `pedidos` gera 6 buscas na rodada 4 e 6 na leitura diária.
+
 ## C19.197 — Páginas dos casos 016 e 017, dossiê das cartas e livro de códigos do caso 016 (2026-10-29) ⚠️ (coleta em andamento)
 
 - **Página (`ODI_Atlas_v15_MVP.html`, Casos):** caso 016 "Queime seu título" (gráficos por hora e por rede, bolhas por publicação e pré-codificação quando o Bardin rodar, buscas/YouTube/notícias/TikTok pelo bloco padrão) e caso 017 "As cartas de Flávio" (dossiê: as três versões lado a lado com as imagens guardadas, comparação palavra a palavra, divergências entre as fontes, checagens, linha do tempo na imprensa, curtidas e respostas de cada versão a cada leitura). `montarGraficos014` virou `montarGraficosCaso(id)` (legenda e data inicial vêm do caso; o 014 continua igual).

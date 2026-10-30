@@ -501,7 +501,7 @@
    "desde": "2026-10-25",
    "aba": "caso014",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 27/10/2026, 23h04: \"coleta temporal do dia 25 para cá com 'demita um petista', 'boicote esquerda'; se conseguir traga dados do MPT sobre assédio eleitoral; empresa e prestadores de serviço petista; você tem 6 dólares\". Teto US$ 6,00 (X 3,00; Instagram 1,50; Facebook 1,00; Kwai 0,50), conta 1, sem consulta de saldo. Em 28/10, 00h05 e 00h07: incluir #boicote, \"professor petista\" e \"direita apoia direita\" (mesmo teto). Em 28/10, 00h14 (\"tu não trouxe Kwai, Instagram e Facebook\"): frases no Facebook e no Kwai e hashtags extras no Instagram, dentro do que resta do teto de cada rede. 00h16: busca de reels do Instagram por assunto (data-slayer/instagram-search-reels), no mesmo teto do Instagram. 01h10: 4 reels indicados pelo responsável (\"esses entraram\"), lidos pelo leitor de reels no teto do Instagram. 01h14 (\"preciso de uma coleta que me traga uma real ideia desse universo\"): rodada 2 com vocabulário descoberto nos textos; teto do caso continua US$ 6,00, redistribuído (X 2,50; Instagram 2,50; Facebook 1,00; Kwai 0, que não devolveu nada). 01h25: \"sim\" para a rodada 3 e o livro v1.2; mais 1 reel indicado (DfBFuFfOs0Z).",
+   "autorizacao": "Responsável em 27/10/2026, 23h04: \"coleta temporal do dia 25 para cá com 'demita um petista', 'boicote esquerda'; se conseguir traga dados do MPT sobre assédio eleitoral; empresa e prestadores de serviço petista; você tem 6 dólares\". Teto US$ 6,00 (X 3,00; Instagram 1,50; Facebook 1,00; Kwai 0,50), conta 1, sem consulta de saldo. Em 28/10, 00h05 e 00h07: incluir #boicote, \"professor petista\" e \"direita apoia direita\" (mesmo teto). Em 28/10, 00h14 (\"tu não trouxe Kwai, Instagram e Facebook\"): frases no Facebook e no Kwai e hashtags extras no Instagram, dentro do que resta do teto de cada rede. 00h16: busca de reels do Instagram por assunto (data-slayer/instagram-search-reels), no mesmo teto do Instagram. 01h10: 4 reels indicados pelo responsável (\"esses entraram\"), lidos pelo leitor de reels no teto do Instagram. 01h14 (\"preciso de uma coleta que me traga uma real ideia desse universo\"): rodada 2 com vocabulário descoberto nos textos; teto do caso continua US$ 6,00, redistribuído (X 2,50; Instagram 2,50; Facebook 1,00; Kwai 0, que não devolveu nada). 01h25: \"sim\" para a rodada 3 e o livro v1.2; mais 1 reel indicado (DfBFuFfOs0Z). Em 29/10/2026, 21h5x (\"quando pergunto das completas é de todas ... vamos acompanhar até dia 15/11\") e 22h21 (\"demita um petista foi coletado certinho?\"): atualização desde 28/10 e leitura diária do X até 15/11, dentro do que sobrou do teto de US$ 6,00 (X: reserva diária 0,51, US$ 0,03 por dia).",
    "descricao": "Depois do 2º turno (25/10/2026), circulam pedidos para demitir eleitores do PT, boicotar empresas e prestadores de serviço identificados como petistas e listas de estabelecimentos. O caso mede a circulação hora a hora desde 25/10 nas redes, nas buscas e na imprensa, e reúne os números do Ministério Público do Trabalho sobre assédio eleitoral. Nomes de empresas, prestadores e pessoas citados nas listas não são publicados.",
    "hashtags": [
     "demitaumpetista",
@@ -668,6 +668,42 @@
      "busca": "(\"empresários de direita\" OR \"empresarios de direita\" OR \"empresário de direita\" OR \"empresario de direita\") (demitam OR demitir OR demita OR demite) since:2026-10-25",
      "motivo": "rodada 3 (28/10/2026, 01h25, \"sim\"): termos com 10+ ocorrências nos textos da rodada 2",
      "rodada": 3
+    },
+    {
+     "termo": "r4 (desde 28/10): demitir petista",
+     "busca": "(\"demita um petista\" OR \"demitir petista\" OR \"demitam os petistas\" OR \"demite petista\" OR \"demitir os petistas\" OR \"demiti um petista\") since:2026-10-28",
+     "motivo": "lacuna de 29/10: X, Instagram e Facebook pararam em 28/10 04h; atualização dentro do que sobrou do teto do caso",
+     "rodada": 4
+    },
+    {
+     "termo": "r4 (desde 28/10): boicote petista/esquerda",
+     "busca": "boicote (petista OR petistas OR esquerda OR esquerdistas OR esquerdopatas) since:2026-10-28",
+     "motivo": "lacuna de 29/10: X, Instagram e Facebook pararam em 28/10 04h; atualização dentro do que sobrou do teto do caso",
+     "rodada": 4
+    },
+    {
+     "termo": "r4 (desde 28/10): empresas e prestadores petistas",
+     "busca": "(\"empresa petista\" OR \"empresas petistas\" OR \"prestador petista\" OR \"prestadores petistas\" OR \"loja petista\" OR \"lojas petistas\" OR \"comércio petista\" OR \"médico petista\" OR \"dentista petista\") since:2026-10-28",
+     "motivo": "lacuna de 29/10: X, Instagram e Facebook pararam em 28/10 04h; atualização dentro do que sobrou do teto do caso",
+     "rodada": 4
+    },
+    {
+     "termo": "r4 (desde 28/10): #boicote",
+     "busca": "#boicote (petista OR petistas OR esquerda OR lula OR PT OR comunista OR comunistas OR empresa OR empresas OR loja) since:2026-10-28",
+     "motivo": "lacuna de 29/10: X, Instagram e Facebook pararam em 28/10 04h; atualização dentro do que sobrou do teto do caso",
+     "rodada": 4
+    },
+    {
+     "termo": "r4 (desde 28/10): r2: não compre de petista",
+     "busca": "(\"não compre de petista\" OR \"nao compre de petista\" OR \"não comprem de petistas\" OR \"nao comprem de petistas\" OR #naocompredepetista OR \"compre de petista\") since:2026-10-28",
+     "motivo": "lacuna de 29/10: X, Instagram e Facebook pararam em 28/10 04h; atualização dentro do que sobrou do teto do caso",
+     "rodada": 4
+    },
+    {
+     "termo": "r4 (desde 28/10): r3: petralha",
+     "busca": "(petralha OR petralhas OR ptralha OR ptralhas) (demitir OR demita OR demitam OR boicote OR contratar OR contrate OR contrata OR compre OR lista) since:2026-10-28",
+     "motivo": "lacuna de 29/10: X, Instagram e Facebook pararam em 28/10 04h; atualização dentro do que sobrou do teto do caso",
+     "rodada": 4
     }
    ],
    "redes_previstas": [
@@ -737,7 +773,40 @@
    ],
    "hashtags_instagram_r3": [
     "demitapetistas"
-   ]
+   ],
+   "diario_x": [
+    {
+     "termo": "demitir petista",
+     "busca": "(\"demita um petista\" OR \"demitir petista\" OR \"demitam os petistas\" OR \"demite petista\" OR \"demitir os petistas\" OR \"demiti um petista\") since:{desde}"
+    },
+    {
+     "termo": "boicote petista/esquerda",
+     "busca": "boicote (petista OR petistas OR esquerda OR esquerdistas OR esquerdopatas) since:{desde}"
+    },
+    {
+     "termo": "empresas e prestadores petistas",
+     "busca": "(\"empresa petista\" OR \"empresas petistas\" OR \"prestador petista\" OR \"prestadores petistas\" OR \"loja petista\" OR \"lojas petistas\" OR \"comércio petista\" OR \"médico petista\" OR \"dentista petista\") since:{desde}"
+    },
+    {
+     "termo": "#boicote",
+     "busca": "#boicote (petista OR petistas OR esquerda OR lula OR PT OR comunista OR comunistas OR empresa OR empresas OR loja) since:{desde}"
+    },
+    {
+     "termo": "r2: não compre de petista",
+     "busca": "(\"não compre de petista\" OR \"nao compre de petista\" OR \"não comprem de petistas\" OR \"nao comprem de petistas\" OR #naocompredepetista OR \"compre de petista\") since:{desde}"
+    },
+    {
+     "termo": "r3: petralha",
+     "busca": "(petralha OR petralhas OR ptralha OR ptralhas) (demitir OR demita OR demitam OR boicote OR contratar OR contrate OR contrata OR compre OR lista) since:{desde}"
+    }
+   ],
+   "diario_ate": "2026-11-15",
+   "teto_diario_usd": {
+    "x": 0.03
+   },
+   "reserva_diaria_usd": {
+    "x": 0.51
+   }
   },
   {
    "id": "015",
