@@ -1,0 +1,51 @@
+{
+ "caso": "002",
+ "titulo": "Consulta depreciativa associada a um candidato no Google (\"onde mora/nasceu o ladrão\")",
+ "run_started_utc": "2026-10-30T17:01:42Z",
+ "modo": "carga",
+ "privado": true,
+ "desde": "2022-01-01",
+ "redes": [
+  {
+   "rede": "tiktok",
+   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
+   "termos": {
+    "ondemoraoladrao": {
+     "lado": "caso",
+     "respostas_api": 0,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "ondenasceuoladrao": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "quantosanostemoladrao": {
+     "lado": "caso",
+     "respostas_api": 0,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    }
+   },
+   "custo_usd": 0.0,
+   "status": "⛔ nenhum vídeo lido",
+   "itens_no_periodo": 0
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_pontos": 168,
+   "noticias": 0,
+   "status": "ok",
+   "itens_no_periodo": 0
+  }
+ ],
+ "itens_acumulados": 212,
+ "custo_usd": 0.0
+}
