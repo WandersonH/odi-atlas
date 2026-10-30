@@ -10,6 +10,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **O que mudou:** o post entra em `posts_instagram` do caso 014, que é recoletado no modo "posts" (Apify instagram-reel-scraper, ~US$ 0,0085 por post). O gasto fica dentro do teto do caso (US$ 6; gasto anterior US$ 5,8087).
 - **1ª tentativa (run 41142494265):** ⛔ não coletou nada (US$ 0): o teto do Instagram no caso (US$ 2,50) já estava esgotado (gasto US$ 2,6694), e o total do caso estava em US$ 5,8087 de US$ 6.
 - **Autorização do responsável (30/10, 20h):** subir o teto do caso para **US$ 6,10**. Novos tetos por rede: Instagram 2,70 e X 2,236; o Facebook já gastou 1,1639. A soma máxima fica em US$ 6,10.
+- **2ª tentativa (run 41147268562):** ⛔ US$ 0. O coletor exige folga para pelo menos 5 itens por termo (US$ 0,0425), e a folga era de US$ 0,0306. Tetos refeitos dentro dos mesmos US$ 6,10: Instagram 2,72 e X 2,216. Também entrou o reel DfGDsBFoQ0K, indicado às 20h55.
 - **Ajuste em `collect_casos.py`:** a nova chave `posts_instagram_pendentes` faz o modo "posts" coletar só os indicados que ainda faltam, sem pagar de novo pelos 5 anteriores.
 - **Teste:** `python -m unittest discover -s tests -v` → OK. O resultado da coleta vai para a próxima entrada.
 
