@@ -130,7 +130,7 @@ def buscar(key: str, cfg: dict, agora: str) -> list[dict]:
             reg = {"lingua": L["codigo"], "consulta": consulta, "lido_em_utc": agora, "total_informado": None, "lidos": 0, "ids": [], "erro": None}
             token = None
             for _ in range(int(L.get("paginas", cfg.get("paginas", 1)))):
-                q = dict(part="snippet", q=consulta, type="video", maxResults=50, order="viewCount", publishedAfter=cfg["desde"],
+                q = dict(part="snippet", q=consulta, type="video", maxResults=50, order=cfg.get("ordem", "relevance"), publishedAfter=cfg["desde"],
                          relevanceLanguage=L["codigo"], key=key)
                 if token:
                     q["pageToken"] = token
@@ -149,7 +149,8 @@ def buscar(key: str, cfg: dict, agora: str) -> list[dict]:
                 if not token:
                     break
             out.append(reg)
-            if reg["erro"] == "quotaExceeded":
+            if reg["erro"] in ("quotaExceeded", "HTTP 429"):  # cota ou limite de taxa: não insistir nas próximas consultas
+                ERROS.append("busca interrompida: " + reg["erro"])
                 return out
     return out
 
@@ -358,7 +359,7 @@ def analisar(cfg: dict, estado: dict, priv: Path, pub: Path, agora: str) -> dict
     cons = [{k: c[k] for k in ("lingua", "consulta", "lido_em_utc", "total_informado", "lidos", "erro")} |
             {"pct": round(100 * c["lidos"] / c["total_informado"], 2) if c.get("total_informado") else None,
              "fonte_universo": "pageInfo.totalResults da busca do YouTube (estimativa informada pela própria API)",
-             "criterio": "vídeos publicados desde " + cfg["desde"][:10] + ", ordenados por visualizações; 50 por página"}
+             "criterio": "vídeos publicados desde " + cfg["desde"][:10] + ", ordem " + {"relevance": "de relevância do YouTube na língua da busca", "viewCount": "por visualizações"}.get(cfg.get("ordem", "relevance"), cfg.get("ordem", "")) + "; 50 por página"}
             for c in ult.values()]
     semanas = defaultdict(Counter)
     for x in vids:

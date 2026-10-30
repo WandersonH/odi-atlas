@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.209 — Caso 019: 1º run parcial (cota do YouTube) e ajuste da ordem da busca (2026-10-30) ⚠️
+
+- **Run 41131739694 (dispatch):** a busca recebeu HTTP 429 (limite da API do YouTube) em 19 das 20 consultas. Só uma página saiu, a de "Lula Flavio Bolsonaro election" em inglês: universo informado 1.000.000 (o teto que a API informa, ou seja, ≥ 1 milhão), 50 lidos.
+  - Desses 50, 49 eram vídeos em português ou de canais do Brasil, contados à parte. Só 1 é "do mundo": "Brazil Elections 2026: Last Week Tonight with John Oliver" (4.887.413 visualizações; país do canal ⛔ não declarado).
+  - Comentários desse vídeo: 356 lidos. Língua: inglês 236, indeterminada 65, português 50, espanhol 2, alemão 2, francês 1.
+- **Ajustes:**
+  - A busca passa a usar a ordem de relevância na língua da busca (`ordem` no config), porque por visualizações os vídeos brasileiros dominam até a busca em inglês.
+  - A coleta para na primeira resposta 429, sem insistir nas outras consultas.
+  - Na página, o universo de 1.000.000 aparece como "≥ 1.000.000 (teto que a API informa)".
+- **Próximo:** o run agendado de 31/10, às 05h43, roda depois da renovação da cota.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.208 — Caso 019 "Como o mundo viu": a eleição no YouTube em 18 línguas, por continente e país, com rede de comentários por língua (2026-10-30) 🔜
 
 - **Pedido (30/10/2026):** "assim como fizemos a página do debate, uma análise de como o mundo viu nossas eleições: visão por continente e país; coleta de conteúdo no YouTube em outras línguas, com rede de comentários por língua materna".
