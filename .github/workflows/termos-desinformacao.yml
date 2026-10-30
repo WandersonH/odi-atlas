@@ -1,0 +1,43 @@
+name: Termos — fake news, deepfake e cheapfake fora da academia (Trends e acervo, grátis)
+
+# Pedido do responsável em 30/10/2026, 09h27 (artigo "Da notícia falsa ao conteúdo sintético").
+on:
+  schedule:
+    - cron: "29 15 * * 1"   # toda segunda, 12h29 em Brasília
+  workflow_dispatch:
+
+concurrency:
+  group: termos-desinformacao
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  termos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Trends e acervo
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/termos_desinformacao.py --trends --corpus > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Termos::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Termos de desinformação (run ${{ github.run_id }})"

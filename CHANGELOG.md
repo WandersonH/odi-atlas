@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.201 — "Fake news, deepfake, cheapfake": os termos fora da academia (Trends e acervo do Atlas) (2026-10-30) 🔜
+
+- **Pedido (30/10/2026, 09h27):** "comparar o uso dos termos fora da academia com a recepção acadêmica que o artigo reconstrói: a frequência de 'fake news', 'deepfake' e 'cheapfake' no Google Trends desde 2017 e nos comentários coletados pelo Atlas" (artigo "Da notícia falsa ao conteúdo sintético", em preparação).
+- **O que mudou:** `scripts/termos_desinformacao.py` + `termos-desinformacao.yml` (manual e toda segunda, grátis). Trends: Brasil e mundo, 2017-01-01 até hoje, por mês, duas consultas com "fake news" como âncora (acadêmicos: fake news, deepfake, cheapfake, shallowfake, desinformação; populares: fake news, notícia falsa, montagem, inteligência artificial, deep fake). Acervo: todos os textos do privado (comentários aos posts das campanhas no YouTube, Facebook, TikTok, Instagram e X; posts do Kwai; publicações e comentários dos casos), deduplicados, contados por grupo de expressão (termos acadêmicos; nomes populares: "fake" sozinho, "montagem/editado/fora de contexto", atribuição a IA, notícia falsa, desinformação; "inteligência artificial" como tema à parte), por mês e por corpus × rede, com o total de textos como denominador. Público: só contagens (`data/termos/desinformacao.json`). Marcos acadêmicos do artigo em `data/config/marcos_termos_desinformacao.json` (ano, quando o artigo só dá o ano). Página: Buscas → "Fake news, deepfake, cheapfake".
+- **Teste local (privado, 30/10/2026):** 1.234.385 textos lidos (maio/2017 a out/2026; 5.327 sem data): fake news 1.960 (15,88 a cada 10 mil), "fake" sozinho 1.154 (9,35), atribuição a IA 317 (2,57), desinformação 249 (2,02), inteligência artificial como tema 183 (1,48), montagem/editado/fora de contexto 175 (1,42), notícia falsa 60 (0,49), **deepfake 5 (0,04)**, **cheapfake 0**. Precisão conferida por amostra de trechos (só no privado): ajustados "fakes news" (conta como fake news) e "inteligência artificial" (tema, não atribuição). `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar o workflow (Trends só roda no GitHub) e conferir a página.
+
 ## C19.200 — Caso 014: ação do MPT contra a Meta e preservação da mídia de Instagram e Facebook (2026-10-30) 🔜
 
 - **Pedido (30/10/2026, 00h08):** "conseguimos pegar os 12 posts dentro do MPT e ver se temos eles antes que saiam do ar" (https://canaltech.com.br/mercado/mpt-pede-r-50-milhoes-da-meta-por-posts-que-incentivam-demissao-pelo-voto/).
