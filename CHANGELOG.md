@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.199 — Fechamento das cargas de 30/10 (casos 014, 016, 017) e gasto (2026-10-30) ✅ (acompanhamento diário segue até 15/11)
+
+- **Caso 014, Instagram e Facebook (modo `frases`):** Instagram 340 → 418, Facebook 298 → 367; caso com **8.637 publicações** (X 7.369, TikTok 483, Instagram 418, Facebook 367, Kwai 0). Gasto do caso: US$ 5,8087 de 6,00 (resta a reserva da leitura diária do X).
+- **Caso 017, rodada 2 (`from:realpfigueiredo` desde 28/10):** 1 post devolvido; o post apagado com a versão de 1889 não volta na busca do X (⛔ confirmado). Caso com 4.647 publicações (X 4.408, Instagram 108, Facebook 131).
+- **Gasto dos casos novos (teto US$ 8,00 até 15/11):** 016 US$ 0,5552; 017 US$ 1,4509 (buscas) + US$ 0,4506 (posts e comentários do perfil de Flávio no Instagram, runs Co1N1uilVGCFVcCUe e 59a1us9RaItL2qfiT) = **US$ 2,4567**, sem contar as leituras diárias (até US$ 0,06 por caso por dia) e a contagem de hashtags do 016 (teto 0,10).
+- **Caso 015:** gasto US$ 2,1393 (teto 4,00).
+- **Teste:** só dados e registro; `python -m unittest discover -s tests -v` → OK.
+
 ## C19.198 — Caso 014: lacuna depois de 28/10, atualização e leitura diária até 15/11 (2026-10-29) 🔜
 
 - **Pergunta (29/10/2026, 22h21):** "demita um petista foi coletado certinho?". Conferência nos manifestos: **X, Instagram e Facebook pararam em 28/10 por volta de 04h UTC** (última publicação lida no X: 28/10 04h15 UTC); depois disso só o TikTok e o Google (diários, grátis) continuaram. A saturação do X não foi alcançada (55,1% de novas na rodada 3), Kwai devolveu 0, X e Facebook sem universo (⛔), o Instagram chegou ao limite pedido. Gasto do caso: US$ 4,0854 de 6,00.
