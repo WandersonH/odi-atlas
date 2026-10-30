@@ -24,6 +24,7 @@ import json
 import os
 import re
 import sys
+import time
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -159,8 +160,19 @@ def trends() -> dict:
     for geo, rotulo in (("BR", "Brasil"), ("", "Mundo")):
         for q in TRENDS_CONSULTAS:
             reg = {"id": q["id"], "geo": rotulo, "termos": q["termos"], "pontos": None}
+            for tentativa in range(3):  # o Trends devolve 429 em rajadas: espera e tenta de novo
+                try:
+                    ws = {w["id"]: w for w in t.explore(q["termos"], janela, geo)}
+                    break
+                except Exception as e:  # noqa: BLE001
+                    if tentativa == 2 or "429" not in str(e):
+                        reg["erro"] = f"{type(e).__name__}: {str(e)[:160]}"
+                        break
+                    time.sleep(90 * (tentativa + 1))
+            if "erro" in reg:
+                out["consultas"].append(reg)
+                continue
             try:
-                ws = {w["id"]: w for w in t.explore(q["termos"], janela, geo)}
                 ts = t.widget("multiline", ws["TIMESERIES"])
                 reg["pontos"] = [{"mes": dt.datetime.fromtimestamp(int(p["time"]), dt.timezone.utc).strftime("%Y-%m"),
                                   "v": dict(zip(q["termos"], p.get("value") or []))} for p in ts["default"]["timelineData"]]
@@ -180,7 +192,7 @@ def main(argv=None) -> int:
                grupos={k: {"nome": v["nome"], "tipo": v["tipo"]} for k, v in GRUPOS.items()})
     if "--trends" in argv:
         out["trends"] = {**trends(), "lido_em_utc": now_utc(),
-                         "aviso": "Google Trends: índice 0–100 relativo ao maior ponto de cada consulta (não é volume). \"fake news\" aparece nas duas consultas como âncora; termos sem volume suficiente aparecem como 0. Universo de buscas ⛔ (o Google não informa)."}
+                         "aviso": "Google Trends: índice 0–100 relativo ao maior ponto de cada consulta (não é volume). \"fake news\" aparece nas duas consultas como âncora; termos sem volume suficiente aparecem como 0. \"Montagem\" e \"inteligência artificial\" são palavras de uso geral: a busca não separa o sentido de manipulação. Universo de buscas ⛔ (o Google não informa)."}
         for c in out["trends"]["consultas"]:
             print(f"trends {c['geo']} {c['id']}: {len(c['pontos'] or [])} meses {c.get('erro', '')}")
     if "--corpus" in argv:
