@@ -9,7 +9,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Pedido (30/10/2026, 10h17):** na página "A frente de fora" (caso 012), "quero uma linha do tempo de vídeos no período eleitoral".
 - **O que mudou:** `caso_canais.py` passa a publicar a lista de vídeos do período (id, canal, data, título, visualizações, curtidas, comentários e temas pelo título/descrição; canais públicos de figuras públicas, sem dado de pessoa comum). Página: bloco "Os vídeos dos três canais, do início da campanha ao pós-eleição", uma faixa por canal, uma bolha por vídeo (tamanho = visualizações, cor = primeiro tema da lista), período eleitoral (16/08 a 25/10) em destaque e marcos (início da propaganda, 1º turno 04/10, 2º turno 25/10, carta de Flávio 28/10), link de cada vídeo; tabela dos 15 mais vistos do período eleitoral. Universo = todos os envios dos canais desde 20/07 (lidos inteiros pela API).
 - **Teste:** `python -m unittest discover -s tests -v` → OK.
-- **Pendente:** rodar `caso-canais.yml` (grátis) para gerar a lista e conferir a página.
+- **Execução (run 41062209976, grátis):** 188 vídeos desde 19/07 (Paulo Figueiredo Show 148, Delegado Ramagem 26, Allan dos Santos 14); no período eleitoral (16/08 a 25/10), 135 vídeos e 19.174.673 visualizações; os mais vistos: "Edição Especial - Eleições 2026" de 25/10 (2.207.949) e de 04/10 (1.149.410), ambos do Paulo Figueiredo Show. Página conferida no Chromium local (188 bolhas, faixas com altura proporcional ao número de vídeos, rótulos dos marcos em três linhas), sem erro de JavaScript e sem rolagem horizontal em 390 px.
 
 ## C19.201 — "Fake news, deepfake, cheapfake": os termos fora da academia (Trends e acervo do Atlas) (2026-10-30) 🔜
 
