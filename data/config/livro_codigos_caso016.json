@@ -1,0 +1,31 @@
+{
+ "titulo": "Livro de códigos — caso 016: \"queime seu título\" depois do 2º turno (ODI Atlas)",
+ "versao": "1.0 (2026-10-29)",
+ "pedido": "Responsável em 29/10/2026, 21h51: \"queime o título, fogo título, destrua seu título: aqui basicamente quero ver volume de publicações pós 24/10\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho do livro do caso 014: unidade de registro = cada publicação; presença/ausência; várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas (kappa de Cohen).",
+ "simetria": "Chamado/relato e reação são codificados separadamente; nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {"0": "ausente", "1": "presente", "UC": "incerto"},
+ "amostra_humana": {"tamanho": 200, "estratos": "rede × dia de publicação, proporcional, semente fixa 42", "codificadores": 2, "regra": "Codificadores independentes, sem ver a pré-codificação. Amostra gerada uma vez, só no repositório privado."},
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {"incitacao": ["chamado_destruir", "relato_ato"], "reacao": ["reacao_critica", "informacao_legal", "ironia_humor"]},
+ "categorias": {
+  "chamado_destruir": {"nome": "Chamado para queimar ou destruir o título", "definicao": "Pede ou incentiva queimar, rasgar, destruir ou jogar fora o título de eleitor.",
+   "indicadores": ["queime seu titulo", "queimem seus titulos", "queimem o titulo", "queimem", "queime o seu titulo", "destrua seu titulo", "destruam seus titulos", "destruam", "rasgue seu titulo", "rasguem", "taca fogo no titulo", "tacar fogo no titulo", "fogo no titulo", "bota fogo no titulo", "joguem fora o titulo", "jogue fora seu titulo", "queimeseutitulo", "destruaseutitulo", "fogonotitulo", "queimeotitulo"],
+   "excluir_trechos": ["nao queime", "nao queimem", "nao destrua", "nao rasgue"]},
+  "relato_ato": {"nome": "Relato ou registro de quem queimou/destruiu", "definicao": "Mostra ou relata a própria pessoa (ou alguém) queimando, rasgando ou destruindo o título.",
+   "indicadores": ["queimei meu titulo", "queimei o meu titulo", "queimei o titulo", "rasguei meu titulo", "rasguei o titulo", "destrui meu titulo", "queimando meu titulo", "queimando o titulo", "queimou o titulo", "queimou seu titulo", "queimaram o titulo", "rasgando o titulo", "rasgando titulo", "queimando titulo"],
+   "excluir_trechos": []},
+  "descredito_voto": {"nome": "Descrédito do voto ou da eleição", "definicao": "Diz que votar não adianta, que a eleição foi fraudada ou que não vota mais.",
+   "indicadores": ["nunca mais voto", "nao voto mais", "nao vou votar mais", "nunca mais vou votar", "voto nao adianta", "votar nao adianta", "nao adianta votar", "fraude", "fraudada", "roubada", "roubaram", "urna", "urnas", "eleicao roubada", "sistema"],
+   "excluir_trechos": []},
+  "reacao_critica": {"nome": "Crítica ou deboche de quem queima", "definicao": "Critica, ridiculariza ou lamenta o gesto de queimar/destruir o título.",
+   "indicadores": ["ridiculo", "ridicula", "patetico", "vergonha", "chorando", "choro", "chora", "mimimi", "birra", "mal perdedor", "nao sabe perder", "so papel", "e so um papel", "nao adianta queimar", "queimar o titulo nao", "idiota", "burro", "burrice"],
+   "excluir_trechos": []},
+  "informacao_legal": {"nome": "Informação sobre consequências legais ou práticas", "definicao": "Explica que o título é documento, que existe e-Título/segunda via, multa ou crime, ou que a obrigação de votar continua.",
+   "indicadores": ["segunda via", "e-titulo", "e titulo", "titulo digital", "multa", "crime", "crime eleitoral", "justica eleitoral", "cartorio eleitoral", "continua obrigado", "obrigatorio", "cancelado", "cancelamento", "biometria", "tse"],
+   "excluir_trechos": []},
+  "ironia_humor": {"nome": "Ironia ou humor", "definicao": "Marca de riso ou ironia na publicação.",
+   "indicadores": ["kkk*", "rsrs*", "hahaha*", "kakaka*"],
+   "excluir_trechos": []}
+ }
+}

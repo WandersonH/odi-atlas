@@ -99,9 +99,11 @@ def main(argv=None) -> int:
     por_termo = {t: {"n": len(rs), "categorias": grupos(rs)} for t, rs in sorted(_agrupa_multi(rows).items())}
     por_dia = {d: {"n": len(rs), "categorias": grupos(rs)} for d, rs in sorted(_agrupa(rows, lambda r: r["dia"]).items())}
     pares = Counter(p for r in rows for p in combinations(sorted(r["_cod"]), 2))
-    inc = sum(1 for r in rows if any(c in r["_cod"] for c in INCITACAO))
-    rea = sum(1 for r in rows if any(c in r["_cod"] for c in REACAO))
-    ambos = sum(1 for r in rows if any(c in r["_cod"] for c in INCITACAO) and any(c in r["_cod"] for c in REACAO))
+    blk = livro.get("blocos") or {}
+    INC, REA = tuple(blk.get("incitacao") or INCITACAO), tuple(blk.get("reacao") or REACAO)
+    inc = sum(1 for r in rows if any(c in r["_cod"] for c in INC))
+    rea = sum(1 for r in rows if any(c in r["_cod"] for c in REA))
+    ambos = sum(1 for r in rows if any(c in r["_cod"] for c in INC) and any(c in r["_cod"] for c in REA))
     nenhuma = sum(1 for r in rows if not r["_cod"])
     exemplos = {c: [{"rede": r["rede"], "conta": r["conta"], "seguidores": int(r["seguidores"]), "data": r["publicado_em"][:10], "url": r["url"], "trecho": r["_cod"][c][:160]}
                     for r in sorted(rows, key=lambda r: -int(r["seguidores"] or 0)) if c in r["_cod"] and str(r.get("seguidores") or "").isdigit()
@@ -129,7 +131,7 @@ def main(argv=None) -> int:
     out = {"caso": caso, "gerado_em_utc": now_utc(), "livro": {k: livro[k] for k in ("titulo", "versao", "metodo", "simetria", "amostra_humana", "regra_exclusao")},
            "categorias": {c: {"nome": livro["categorias"][c]["nome"], "definicao": livro["categorias"][c]["definicao"], "n": tot.get(c, 0), "pct": pct(tot.get(c, 0), n)} for c in cats},
            "publicacoes": n, "sem_categoria": {"n": nenhuma, "pct": pct(nenhuma, n)},
-           "blocos": {"incitacao": {"categorias": INCITACAO, "n": inc, "pct": pct(inc, n)}, "reacao": {"categorias": REACAO, "n": rea, "pct": pct(rea, n)},
+           "blocos": {"incitacao": {"categorias": INC, "n": inc, "pct": pct(inc, n)}, "reacao": {"categorias": REA, "n": rea, "pct": pct(rea, n)},
                       "os_dois": {"n": ambos, "pct": pct(ambos, n)}},
            "por_rede": por_rede, "por_termo": por_termo, "por_dia": por_dia,
            "pares": [{"a": a, "b": b, "n": k} for (a, b), k in pares.most_common(15)],

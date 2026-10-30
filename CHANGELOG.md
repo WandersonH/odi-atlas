@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.197 — Páginas dos casos 016 e 017, dossiê das cartas e livro de códigos do caso 016 (2026-10-29) ⚠️ (coleta em andamento)
+
+- **Página (`ODI_Atlas_v15_MVP.html`, Casos):** caso 016 "Queime seu título" (gráficos por hora e por rede, bolhas por publicação e pré-codificação quando o Bardin rodar, buscas/YouTube/notícias/TikTok pelo bloco padrão) e caso 017 "As cartas de Flávio" (dossiê: as três versões lado a lado com as imagens guardadas, comparação palavra a palavra, divergências entre as fontes, checagens, linha do tempo na imprensa, curtidas e respostas de cada versão a cada leitura). `montarGraficos014` virou `montarGraficosCaso(id)` (legenda e data inicial vêm do caso; o 014 continua igual).
+- **Dossiê (`data/casos/017/dossie.json`, montado à mão a partir de fontes com link):** versão 1 (brasão de 1889, post de @realpfigueiredo apagado; ⛔ sem o arquivo, só reproduções da imprensa); versão 2 (X, 17h19, conferida); versão 3 (edição no X, 17h41, conferida). Checagens: Lupa 28/10 19h32 (11 afirmações: 4 falso, 6 falta contexto, 1 insustentável) e Aos Fatos 26/10 (pronunciamento de 25/10). Repercussão: pedido de investigação à PF por 10 advogados (art. 296 do Código Penal), Migalhas, Paulo Figueiredo atribuindo os erros ao ChatGPT, pedido do Departamento de Estado relatado por GloboNews/UOL com fontes não identificadas, Valdemar ("Não gostei").
+- **`carta_versoes.py`:** grava `versoes_historico.csv` (curtidas e respostas de cada versão a cada leitura, até 15/11).
+- **Livro de códigos do caso 016 (v1.0):** chamado para destruir o título; relato do ato; descrédito do voto; crítica/deboche; informação legal ou prática (e-Título, segunda via, multa); ironia/humor. `build_bardin_caso.py` lê os blocos do livro (`blocos`), em vez de usar só os do caso 014.
+- **Coleta até agora (caso 016):** X 4 buscas, 628 itens, **514 publicações desde 24/10** (nenhuma busca chegou ao limite de 1.472: é tudo o que a busca do X devolveu); Instagram 56 (as 3 hashtags não existem; reels "queime seu título" trouxe 35, só 6 no período); Facebook 62 (runs 40983016964 e 40983087682). Caso 017: YouTube e notícias lidos (casos-busca); Instagram de @flaviobolsonaro: "Empty or private data" para posts desde 27/10 (run 40982974378, US$ 0,0026), nova leitura desde 20/10 em andamento.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; páginas dos casos 016, 017 e 014 no Chromium local sem erro de JavaScript; 017 sem rolagem horizontal em 390 px.
+- **Pendente:** terminar as cargas (X e Instagram/Facebook do 017, rodada 2 do 015, TikTok), rodar Bardin e saturação do 016, conferir os números finais.
+
 ## C19.196 — Caso 017: as três versões da carta (imprensa, X às 17h19, X editado às 17h41) (2026-10-29) 🔜
 
 - **Primeira leitura (run do `caso-cartas.yml` em 29/10, grátis):** a cadeia de edição do X tem **2 versões**: 2115538982012682337 (28/10, 20h19 UTC = 17h19 de Brasília; 22.675 curtidas e 4.286 respostas na leitura) e 2115544562219315474 (20h41 UTC = 17h41; 253.042 curtidas e 36.236 respostas), 3 imagens cada (`data/casos/017/midia/`). Internet Archive: 0 capturas dos dois endereços.

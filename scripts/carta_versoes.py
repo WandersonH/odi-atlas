@@ -168,6 +168,14 @@ def main(argv=None) -> int:
            "fonte": "X, endpoint público de incorporação (cdn.syndication.twimg.com) e Internet Archive (CDX)", "ids_pedidos": ids, "versoes": versoes,
            "nota": "No X, cada edição de um post ganha um id novo; o endpoint informa a cadeia (edit_tweet_ids). Versões apagadas ou restritas ficam ⛔."}
     DEST.mkdir(parents=True, exist_ok=True)
+    hist = DEST / "versoes_historico.csv"  # uma linha por leitura e versão: curtidas e respostas no tempo (acompanhamento até 15/11)
+    novo = not hist.exists()
+    with open(hist, "a", encoding="utf-8") as f:
+        if novo:
+            f.write("lido_em_utc;id;status;curtidas;respostas\n")
+        for v in versoes:
+            if v["id"] != "imprensa":
+                f.write(f"{out['gerado_em_utc']};{v['id']};{v['status'][:40]};{v.get('curtidas') or ''};{v.get('respostas') or ''}\n")
     (DEST / "versoes.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for v in versoes:
         print(f"versão {v['id']}: {v['status']} · {v.get('criado_em_utc')} · imagens {len(v.get('imagens') or [])} · capturas {len(v.get('arquivo_internet_archive') or [])} · "
