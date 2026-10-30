@@ -1,0 +1,40 @@
+name: Caso 017 — versões da carta de Flávio no X e capturas do Internet Archive (grátis)
+
+# Pedido do responsável em 29/10/2026, 21h51 ("a carta de Flávio teve 3 versões ... se conseguirmos as 2 outras versões"); acompanhar até 15/11.
+on:
+  schedule:
+    - cron: "37 13 * * *"   # todo dia, 10h37 em Brasília (registra edição nova, versão apagada ou captura nova)
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "ids de posts do X separados por espaço (vazio = o post indicado)"
+        default: ""
+
+concurrency:
+  group: caso-cartas
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  versoes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Versões
+        env:
+          IDS: ${{ github.event.inputs.ids }}
+        run: |
+          if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
+          python scripts/carta_versoes.py $IDS > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Cartas::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Caso 017 - versões da carta (run ${{ github.run_id }})"

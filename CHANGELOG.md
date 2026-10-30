@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.195 — Casos 016 ("queime seu título") e 017 (cartas de Flávio), leitura diária do X até 15/11 e lacunas das Bolhas (2026-10-29) 🔜
+
+- **Pedidos (29/10/2026, 21h51):** "queime o título, fogo título, destrua seu título: aqui basicamente quero ver volume de publicações pós 24/10"; "cartas e suas versões: a carta de Flávio teve 3 versões, quero um dossiê completo de mídia e, se conseguirmos, as 2 outras versões ... todas as redes, notícias e checagens; ele começa se autoproclamando presidente e na última versão entra como líder" (post https://x.com/flaviobolsonaro/status/2115538982012682337); "quando pergunto das completas é de todas ... vamos acompanhar até dia 15/11". Teto escolhido: **US$ 8,00 para os dois casos até 15/11** ("carga inicial completa e leitura diária só no X").
+- **Caso 016** (`casos.json`): desde 24/10; X 4 buscas (queimar, fogo, destruir/rasgar, "título de eleitor" + queimar/rasgar/lixo); Instagram 3 hashtags + 4 buscas de reels; Facebook 3 frases; TikTok 4 buscas e 3 hashtags (grátis); Trends, Google Notícias, YouTube e checagens (grátis, `collect_caso_busca.py`). Teto: X 1,95 (carga até ~0,88 + reserva diária 1,02), Instagram 1,00, Facebook 0,50.
+- **Caso 017:** desde 27/10; X 5 buscas (posts de @flaviobolsonaro, respostas ao post, citações, "carta" + presidente eleito/líder/versão, "Flávio presidente eleito/líder do Brasil"); Instagram e Facebook 3 frases; posts e comentários do perfil de Flávio no Instagram (`coletar_caso_perfis_instagram.py`, teto 0,50); TikTok, Trends, notícias e checagens (Aos Fatos, Lupa, Estadão Verifica, Fato ou Fake, Comprova) grátis. Teto: X 2,05 (carga ~0,98 + reserva diária 1,02), Instagram 0,60, Facebook 0,40, perfil 0,50. **Soma dos tetos dos dois casos: US$ 7,00 (abaixo dos 8,00).**
+- **Versões da carta:** `scripts/carta_versoes.py` + `caso-cartas.yml` (diário até 15/11, grátis): endpoint público de incorporação do X (cadeia de edição `edit_tweet_ids`, texto, imagens) e capturas do Internet Archive; imagens em `data/casos/017/midia/`. Sem resposta: ⛔.
+- **Leitura diária do X até 15/11:** `collect_casos.py --diario` (só casos com `diario_x`, até `diario_ate`), desde dois dias antes, teto de US$ 0,06 por caso por dia dentro do teto do caso; a carga inicial não gasta a reserva diária (`reserva_diaria_usd`). Roda no agendamento diário do `casos.yml` e no modo manual `diario`.
+- **Lacunas das Bolhas (caso 015):** a busca "voto em Lula" bateu no limite; rodada 2 fatia "voto em Lula" e "voto em Flávio" por mês (ago, set, out) dentro do que sobrou do teto do caso (US$ 0,77 no X); TikTok por frase (grátis). YouTube ainda não entra nas bolhas.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; simulação de `pedidos`: 016 X 4×1.472 (máx. US$ 0,88), Instagram 7×52 (0,95), Facebook 3×61 (0,47), diário X 4×95 (0,06); 017 X 5×1.300 (0,98), Instagram 3×74 (0,57), Facebook 3×48 (0,37), diário X 5×76 (0,06); 015 rodada 2: 6 buscas.
+- **Pendente:** rodar as cargas, as versões, as páginas dos casos 016 e 017.
+
 ## C19.194 — Página "Bolhas de apoio" e conferência das contas marcadas (2026-10-28) ✅ (conferência humana pendente)
 
 - **Pedido (28/10/2026, 15h05):** página "Bolhas de apoio" com a lógica do quemapoiaquem.com.br.

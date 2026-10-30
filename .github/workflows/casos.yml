@@ -9,7 +9,7 @@ on:
       modo:
         description: "teste (1 termo por rede, 10 itens) · carga · complemento (buscas extras do X) · so-analises (sem coleta, sem custo)"
         type: choice
-        options: [teste, carga, complemento, frases, posts, rodada2, rodada3, so-analises]
+        options: [teste, carga, complemento, frases, posts, rodada2, rodada3, diario, so-analises]
         default: teste
       caso:
         description: "id do caso (vazio = todos os ativos)"
@@ -80,7 +80,10 @@ jobs:
           if [ "$MODO" = "rodada3" ]; then a="--rodada 3 --complemento --frases --rede x --rede instagram"; fi
           if [ -n "$CASO" ]; then a="$a --caso $CASO"; fi
           for r in $REDES; do a="$a --rede $r"; done
+          if [ "$MODO" = "diario" ]; then a="--diario --rede x"; fi
           python scripts/collect_casos.py $a > f.txt 2>&1; rc=$?
+          # leitura diária do X dos casos com "diario_x" até "diario_ate" (pedido de 29/10/2026: acompanhar até 15/11), teto diário por caso
+          if [ "${{ github.event_name }}" = "schedule" ]; then python scripts/collect_casos.py --diario --rede x >> f.txt 2>&1 || true; fi
           while IFS= read -r l; do echo "::notice title=Casos::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Agregados da página

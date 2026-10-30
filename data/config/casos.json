@@ -749,7 +749,7 @@
    "desde": "2026-08-01",
    "aba": "bolhasApoio",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 28/10/2026, 15h05: \"seria possível construirmos uma página com essa lógica com nome bolhas de apoio\" (referência: quemapoiaquem.com.br); escolheu as três bases (políticos pelo TSE, coleta paga X + Instagram e pedir a base ao Quem Apoia Quem) e o teto de US$ 4,00 (X 1,50; Instagram 2,00 para a busca de reels; 0,50 para ler os seguidores dos autores), conta 1, sem consulta de saldo.",
+   "autorizacao": "Responsável em 28/10/2026, 15h05: \"seria possível construirmos uma página com essa lógica com nome bolhas de apoio\" (referência: quemapoiaquem.com.br); escolheu as três bases (políticos pelo TSE, coleta paga X + Instagram e pedir a base ao Quem Apoia Quem) e o teto de US$ 4,00 (X 1,50; Instagram 2,00 para a busca de reels; 0,50 para ler os seguidores dos autores), conta 1, sem consulta de saldo. Em 29/10/2026, 21h51 (\"quando pergunto das completas é de todas\"): fechar as lacunas dentro do que sobrou deste teto (X por mês) e TikTok grátis.",
    "descricao": "Declarações públicas de voto ou apoio a Lula ou a Flávio Bolsonaro no 2º turno de 2026, feitas por perfis com 100 mil seguidores ou mais, entre 01/08 e 25/10/2026, com o link de cada publicação como prova. Não é pesquisa eleitoral e não mede intenção de voto.",
    "maximo_por_termo": 1500,
    "teto_usd": {
@@ -800,6 +800,48 @@
      "motivo": "declaração pública de voto ou apoio (busca Top, curtidas mínimas para chegar a perfis grandes)",
      "rodada": 1,
      "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou voto em Lula (ago)",
+     "busca": "(\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-08-01 until:2026-09-01 lang:pt",
+     "motivo": "lacuna de 29/10: a busca do período inteiro bateu no limite; fatiada por mês",
+     "rodada": 2,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou voto em Lula (set)",
+     "busca": "(\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-09-01 until:2026-10-01 lang:pt",
+     "motivo": "lacuna de 29/10: a busca do período inteiro bateu no limite; fatiada por mês",
+     "rodada": 2,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou voto em Lula (out)",
+     "busca": "(\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-10-01 until:2026-10-26 lang:pt",
+     "motivo": "lacuna de 29/10: a busca do período inteiro bateu no limite; fatiada por mês",
+     "rodada": 2,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou voto em Flávio (ago)",
+     "busca": "(\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-08-01 until:2026-09-01 lang:pt",
+     "motivo": "lacuna de 29/10: a busca do período inteiro bateu no limite; fatiada por mês",
+     "rodada": 2,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou voto em Flávio (set)",
+     "busca": "(\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-09-01 until:2026-10-01 lang:pt",
+     "motivo": "lacuna de 29/10: a busca do período inteiro bateu no limite; fatiada por mês",
+     "rodada": 2,
+     "tipo_busca": "Top"
+    },
+    {
+     "termo": "declarou voto em Flávio (out)",
+     "busca": "(\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-10-01 until:2026-10-26 lang:pt",
+     "motivo": "lacuna de 29/10: a busca do período inteiro bateu no limite; fatiada por mês",
+     "rodada": 2,
+     "tipo_busca": "Top"
     }
    ],
    "buscas_instagram": [
@@ -817,6 +859,270 @@
    "redes_previstas": [
     "X",
     "Instagram"
+   ],
+   "buscas_tiktok": [
+    "meu voto é Lula",
+    "meu voto é Flávio",
+    "vou de 13",
+    "vou de 22",
+    "declaro meu voto"
+   ],
+   "rolagens_tiktok": 20
+  },
+  {
+   "id": "016",
+   "slug": "queime-seu-titulo",
+   "titulo": "\"Queime seu título\": chamados para queimar ou destruir o título de eleitor depois do 2º turno",
+   "tipo": "ataque à participação eleitoral",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-10-24",
+   "aba": "caso016",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 29/10/2026, 21h51 (\"temos casos novos\"; \"gaste o quanto for necessário\"; \"vamos acompanhar até dia 15/11\") e 21h5x: teto de US$ 8,00 para os casos 016 e 017 juntos até 15/11 (\"carga inicial completa e leitura diária só no X\"), conta 1, sem consulta de saldo. Caso 016: X 1,95 (carga até 0,93 + reserva diária 1,02), Instagram 1,00, Facebook 0,50.",
+   "descricao": "Depois do 2º turno (25/10/2026), circulam vídeos e chamados para queimar, rasgar ou destruir o título de eleitor. O caso mede o volume de publicações desde 24/10 em cada rede, nas buscas e na imprensa. Pessoas comuns que aparecem nos vídeos não são identificadas.",
+   "hashtags": [
+    "queimeseutitulo",
+    "destruaseutitulo",
+    "queimeotitulo"
+   ],
+   "buscas_tiktok": [
+    "queimando título de eleitor",
+    "queime seu título",
+    "destrua seu título",
+    "fogo no título de eleitor"
+   ],
+   "rolagens_tiktok": 20,
+   "termos_trends": [
+    "queimar título",
+    "destruir título de eleitor",
+    "título de eleitor"
+   ],
+   "termos_noticias": [
+    "queimar título de eleitor",
+    "queima título eleitoral",
+    "destruir título de eleitor",
+    "rasgar título de eleitor"
+   ],
+   "filtro_titulo_noticias": [
+    "título",
+    "titulo"
+   ],
+   "maximo_por_termo": 1500,
+   "teto_usd": {
+    "x": 1.95,
+    "instagram": 1.0,
+    "facebook": 0.5,
+    "kwai": 0.0
+   },
+   "reserva_diaria_usd": {
+    "x": 1.02
+   },
+   "teto_diario_usd": {
+    "x": 0.06
+   },
+   "diario_ate": "2026-11-15",
+   "complementos_x": [
+    {
+     "termo": "queimar o título",
+     "busca": "(\"queime seu título\" OR \"queimem seus títulos\" OR \"queimem o título\" OR \"queimar o título\" OR \"queimar meu título\" OR \"queimei meu título\" OR \"queimando o título\" OR \"queimando meu título\" OR \"queimou o título\" OR \"queime seu titulo\" OR \"queimar o titulo\") since:2026-10-24",
+     "motivo": "chamados e relatos de queimar/destruir o título",
+     "rodada": 1
+    },
+    {
+     "termo": "fogo no título",
+     "busca": "(\"fogo no título\" OR \"fogo no titulo\" OR \"fogo no meu título\" OR \"tacar fogo no título\" OR \"taca fogo no título\" OR \"botar fogo no título\" OR #queimeseutitulo OR #fogonotitulo OR #queimeotitulo) since:2026-10-24",
+     "motivo": "chamados e relatos de queimar/destruir o título",
+     "rodada": 1
+    },
+    {
+     "termo": "destruir ou rasgar o título",
+     "busca": "(\"destrua seu título\" OR \"destruam seus títulos\" OR \"destruir o título\" OR \"destruí meu título\" OR \"rasgue seu título\" OR \"rasguem seus títulos\" OR \"rasguei meu título\" OR \"rasgar o título\" OR \"jogue fora seu título\" OR \"destrua seu titulo\" OR #destruaseutitulo) since:2026-10-24",
+     "motivo": "chamados e relatos de queimar/destruir o título",
+     "rodada": 1
+    },
+    {
+     "termo": "título de eleitor + queimar/rasgar/lixo",
+     "busca": "(\"título de eleitor\" OR \"titulo de eleitor\") (queimar OR queimei OR queimando OR queimem OR queime OR rasgar OR rasguei OR rasguem OR destruir OR destruí OR fogo OR lixo) since:2026-10-24",
+     "motivo": "chamados e relatos de queimar/destruir o título",
+     "rodada": 1
+    }
+   ],
+   "diario_x": [
+    {
+     "termo": "queimar o título",
+     "busca": "(\"queime seu título\" OR \"queimem seus títulos\" OR \"queimem o título\" OR \"queimar o título\" OR \"queimar meu título\" OR \"queimei meu título\" OR \"queimando o título\" OR \"queimando meu título\" OR \"queimou o título\" OR \"queime seu titulo\" OR \"queimar o titulo\") since:{desde}"
+    },
+    {
+     "termo": "fogo no título",
+     "busca": "(\"fogo no título\" OR \"fogo no titulo\" OR \"fogo no meu título\" OR \"tacar fogo no título\" OR \"taca fogo no título\" OR \"botar fogo no título\" OR #queimeseutitulo OR #fogonotitulo OR #queimeotitulo) since:{desde}"
+    },
+    {
+     "termo": "destruir ou rasgar o título",
+     "busca": "(\"destrua seu título\" OR \"destruam seus títulos\" OR \"destruir o título\" OR \"destruí meu título\" OR \"rasgue seu título\" OR \"rasguem seus títulos\" OR \"rasguei meu título\" OR \"rasgar o título\" OR \"jogue fora seu título\" OR \"destrua seu titulo\" OR #destruaseutitulo) since:{desde}"
+    },
+    {
+     "termo": "título de eleitor + queimar/rasgar/lixo",
+     "busca": "(\"título de eleitor\" OR \"titulo de eleitor\") (queimar OR queimei OR queimando OR queimem OR queime OR rasgar OR rasguei OR rasguem OR destruir OR destruí OR fogo OR lixo) since:{desde}"
+    }
+   ],
+   "hashtags_instagram": [
+    "queimeseutitulo",
+    "destruaseutitulo",
+    "fogonotitulo"
+   ],
+   "buscas_instagram": [
+    "queimando título de eleitor",
+    "queime seu título",
+    "destrua seu título",
+    "rasgando título de eleitor"
+   ],
+   "buscas_facebook": [
+    "queime seu título",
+    "destrua seu título",
+    "queimando título de eleitor"
+   ],
+   "buscas_kwai": [],
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "Facebook",
+    "TikTok"
+   ]
+  },
+  {
+   "id": "017",
+   "slug": "cartas-de-flavio",
+   "titulo": "As cartas de Flávio Bolsonaro: de \"verdadeiro presidente eleito\" a \"líder do Brasil\"",
+   "tipo": "contestação do resultado",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-10-27",
+   "aba": "caso017",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 29/10/2026, 21h51 (\"temos casos novos\"; \"gaste o quanto for necessário\"; \"vamos acompanhar até dia 15/11\") e 21h5x: teto de US$ 8,00 para os casos 016 e 017 juntos até 15/11 (\"carga inicial completa e leitura diária só no X\"), conta 1, sem consulta de saldo. Caso 017: X 2,05 (carga até 1,03 + reserva diária 1,02), Instagram 0,60 (reels por assunto), Facebook 0,40; posts e comentários do perfil de Flávio no Instagram 0,50 (coletar_caso_perfis_instagram.py). Versões no X e arquivo: grátis.",
+   "descricao": "Depois de viajar aos EUA, Flávio Bolsonaro divulgou uma carta em que se dizia o \"verdadeiro presidente eleito do Brasil\"; a nota foi editada e, na última versão, ele aparece como \"líder do Brasil\". O caso reúne as versões, os posts dele nas redes, a circulação, as respostas, a imprensa e as checagens.",
+   "post_indicado": "https://x.com/flaviobolsonaro/status/2115538982012682337",
+   "hashtags": [],
+   "buscas_tiktok": [
+    "carta Flávio Bolsonaro",
+    "Flávio presidente eleito",
+    "Flávio líder do Brasil"
+   ],
+   "rolagens_tiktok": 20,
+   "termos_trends": [
+    "carta Flávio Bolsonaro",
+    "Flávio presidente eleito",
+    "Flávio líder do Brasil"
+   ],
+   "termos_noticias": [
+    "carta Flávio Bolsonaro",
+    "Flávio \"presidente eleito\" carta",
+    "Flávio \"líder do Brasil\"",
+    "carta Flávio versões",
+    "site:aosfatos.org Flávio",
+    "site:lupa.uol.com.br Flávio",
+    "site:estadao.com.br/estadao-verifica Flávio",
+    "site:g1.globo.com/fato-ou-fake Flávio",
+    "Comprova Flávio carta",
+    "checagem carta Flávio Bolsonaro"
+   ],
+   "filtro_titulo_noticias": [
+    "carta",
+    "eleito",
+    "líder",
+    "lider",
+    "versão",
+    "versões",
+    "nota",
+    "exílio",
+    "exilio",
+    "eua"
+   ],
+   "maximo_por_termo": 1300,
+   "teto_usd": {
+    "x": 2.05,
+    "instagram": 0.6,
+    "facebook": 0.4,
+    "kwai": 0.0
+   },
+   "reserva_diaria_usd": {
+    "x": 1.02
+   },
+   "teto_diario_usd": {
+    "x": 0.06
+   },
+   "diario_ate": "2026-11-15",
+   "complementos_x": [
+    {
+     "termo": "posts de Flávio",
+     "busca": "from:flaviobolsonaro since:2026-10-27",
+     "motivo": "versões, posts de Flávio e reação à carta",
+     "rodada": 1
+    },
+    {
+     "termo": "respostas ao post da carta",
+     "busca": "conversation_id:2115538982012682337 since:2026-10-27",
+     "motivo": "versões, posts de Flávio e reação à carta",
+     "rodada": 1
+    },
+    {
+     "termo": "citações e links do post",
+     "busca": "(url:2115538982012682337 OR quoted_tweet_id:2115538982012682337) since:2026-10-27",
+     "motivo": "versões, posts de Flávio e reação à carta",
+     "rodada": 1
+    },
+    {
+     "termo": "carta: presidente eleito × líder",
+     "busca": "(carta OR nota) (Flávio OR Flavio OR @flaviobolsonaro) (\"presidente eleito\" OR \"verdadeiro presidente\" OR \"líder do Brasil\" OR \"lider do Brasil\" OR versão OR versões OR editou OR apagou) since:2026-10-27",
+     "motivo": "versões, posts de Flávio e reação à carta",
+     "rodada": 1
+    },
+    {
+     "termo": "Flávio presidente eleito / líder",
+     "busca": "(\"Flávio presidente eleito\" OR \"Flavio presidente eleito\" OR \"verdadeiro presidente eleito\" OR \"Flávio líder do Brasil\" OR \"presidente no exílio\" OR #FlavioPresidenteEleito) since:2026-10-27",
+     "motivo": "versões, posts de Flávio e reação à carta",
+     "rodada": 1
+    }
+   ],
+   "diario_x": [
+    {
+     "termo": "posts de Flávio",
+     "busca": "from:flaviobolsonaro since:{desde}"
+    },
+    {
+     "termo": "respostas ao post da carta",
+     "busca": "conversation_id:2115538982012682337 since:{desde}"
+    },
+    {
+     "termo": "citações e links do post",
+     "busca": "(url:2115538982012682337 OR quoted_tweet_id:2115538982012682337) since:{desde}"
+    },
+    {
+     "termo": "carta: presidente eleito × líder",
+     "busca": "(carta OR nota) (Flávio OR Flavio OR @flaviobolsonaro) (\"presidente eleito\" OR \"verdadeiro presidente\" OR \"líder do Brasil\" OR \"lider do Brasil\" OR versão OR versões OR editou OR apagou) since:{desde}"
+    },
+    {
+     "termo": "Flávio presidente eleito / líder",
+     "busca": "(\"Flávio presidente eleito\" OR \"Flavio presidente eleito\" OR \"verdadeiro presidente eleito\" OR \"Flávio líder do Brasil\" OR \"presidente no exílio\" OR #FlavioPresidenteEleito) since:{desde}"
+    }
+   ],
+   "buscas_instagram": [
+    "carta Flávio Bolsonaro",
+    "Flávio presidente eleito",
+    "Flávio líder do Brasil"
+   ],
+   "buscas_facebook": [
+    "carta Flávio Bolsonaro",
+    "Flávio presidente eleito",
+    "Flávio líder do Brasil"
+   ],
+   "perfis_teto_usd": 0.5,
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "Facebook",
+    "TikTok"
    ]
   }
  ],

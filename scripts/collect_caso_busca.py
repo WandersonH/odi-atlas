@@ -104,6 +104,22 @@ CASOS = {
             "rx_atributo": r"fl[aá]vio",
             "noticias": ["\"onde está Flávio\"", "Flávio Bolsonaro fugiu", "Flávio Bolsonaro paradeiro", "Flávio Bolsonaro viagem exterior", "Flávio Bolsonaro sumiu"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro fugiu", "Flávio Bolsonaro fuga"], "arquivo_web": []},
+    # 29/10/2026 (21h51): "queime o título", "fogo no título", "destrua seu título": volume depois de 24/10
+    "016": {"variantes": ["queimar título de eleitor", "queimar título", "destruir título de eleitor", "rasgar título de eleitor"],
+            "controles": ["título de eleitor", "Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
+            "youtube": ["queimando título de eleitor", "queime seu título", "destrua seu título de eleitor", "queimou título de eleitor", "rasgando título de eleitor"],
+            "desde_yt": "2026-10-24T00:00:00Z", "rx_titulo": r"t[ií]tulo",
+            "rx_atributo": r"queim|fogo|destr|rasg|lixo",
+            "noticias": ["queimar título de eleitor", "queima título eleitoral", "destruir título de eleitor", "rasgar título de eleitor"],
+            "janela_noticias": "7d", "checagens": ["queimar título de eleitor", "destruir título de eleitor"], "arquivo_web": []},
+    # 29/10/2026 (21h51): as versões da carta de Flávio ("verdadeiro presidente eleito" → "líder do Brasil"), mídia e checagens
+    "017": {"variantes": ["carta Flávio Bolsonaro", "Flávio presidente eleito", "Flávio líder do Brasil", "Flávio Bolsonaro EUA"],
+            "controles": ["Flávio Bolsonaro", "Lula"], "janelas": ["now 7-d", "today 1-m"],
+            "youtube": ["carta Flávio Bolsonaro", "Flávio Bolsonaro presidente eleito carta", "Flávio Bolsonaro líder do Brasil", "Flávio Bolsonaro carta EUA"],
+            "desde_yt": "2026-10-27T00:00:00Z", "rx_titulo": r"carta|nota|eleito|l[ií]der|vers|exterior|\beua\b|estados unidos|ex[ií]lio",
+            "rx_atributo": r"fl[aá]vio",
+            "noticias": ["carta Flávio Bolsonaro", "Flávio \"presidente eleito\" carta", "Flávio \"líder do Brasil\"", "carta Flávio versões", "Flávio Bolsonaro carta EUA"],
+            "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro carta", "Flávio Bolsonaro presidente eleito"], "arquivo_web": []},
     # 26/10 (01h41): reel de Nikolas Ferreira "O Nordeste que foi esquecido." (20/10/2026); termos iniciais, revisar com a transcrição
     "009": {"variantes": ["Nordeste esquecido", "Nikolas Nordeste", "Nikolas Ferreira Nordeste vídeo"],
             "controles": ["Nordeste", "Nikolas Ferreira"], "janelas": ["now 7-d", "today 1-m"],

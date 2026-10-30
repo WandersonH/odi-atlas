@@ -133,6 +133,13 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
     """[(termo, ator, entrada)] de uma rede para o caso."""
     d, tags = caso["desde"], caso.get("hashtags", [])
     out = []
+    if caso.get("_diario"):
+        # leitura diária (29/10/2026: "vamos acompanhar até dia 15/11"): só o X, desde dois dias antes, mais recentes primeiro
+        if rede != "x":
+            return []
+        d2 = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=2)).strftime("%Y-%m-%d")
+        return [(f"diário: {q['termo']}", ATOR["x"], {"searchTerms": [q["busca"].replace("{desde}", max(d2, d))], "maxItems": n, "queryType": "Latest"})
+                for q in caso.get("diario_x", [])]
     if caso.get("_so_posts"):
         # 28/10/2026, 01h10: posts indicados pelo responsável (links), lidos um a um pelo leitor de reels, com compartilhamentos
         if rede == "instagram" and caso.get("posts_instagram"):
@@ -254,6 +261,10 @@ def paga(rede: str, caso: dict, cfg: dict, pasta: Path, teste: bool, agora: str,
     ja = round(sum(float(m.get("custo_usd") or 0) for f in pasta.glob("manifesto-*.json")
                    for m in [json.loads(f.read_text(encoding="utf-8"))] for m in m.get("redes", []) if m.get("rede") == rede), 4)
     teto = round(min(caso["teto_usd"][rede] - ja, cfg["teto_teste_usd"]) if teste else caso["teto_usd"][rede] - ja, 4)
+    if caso.get("_diario"):  # teto de cada leitura diária, dentro do teto total da rede
+        teto = round(min(teto, caso.get("teto_diario_usd", {}).get(rede, 0.0)), 4)
+    elif caso.get("reserva_diaria_usd", {}).get(rede):  # a carga não gasta a reserva da leitura diária
+        teto = round(teto - caso["reserva_diaria_usd"][rede], 4)
     man = {"rede": rede, "teto_usd": caso["teto_usd"][rede], "gasto_antes_usd": ja, "teto_execucao_usd": teto, "termos": []}
     if teto < 0.02:
         return [], {**man, "custo_usd": 0.0, "status": "⛔ teto da rede esgotado"}
@@ -343,6 +354,11 @@ def main(argv=None, executar=None) -> int:
             caso = {**caso, "_rodada": int(argv[argv.index("--rodada") + 1])}
         if "--posts" in argv:  # só os posts indicados pelo responsável (28/10/2026)
             caso = {**caso, "_so_posts": True}
+        if "--diario" in argv:  # leitura diária do X até a data do caso (29/10/2026)
+            hoje = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=3)).strftime("%Y-%m-%d")
+            if not caso.get("diario_x") or hoje > caso.get("diario_ate", ""):
+                continue
+            caso = {**caso, "_diario": True}
         if "--frases" in argv:  # só frases (Facebook, Kwai) e hashtags extras do Instagram (28/10/2026)
             caso = {**caso, "_so_frases": True}
         pasta = root / "data/casos" / caso["id"]
