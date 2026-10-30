@@ -1,51 +1,76 @@
 {
  "caso": "017",
  "titulo": "As cartas de Flávio Bolsonaro: de \"verdadeiro presidente eleito\" a \"líder do Brasil\"",
- "run_started_utc": "2026-10-30T01:27:27Z",
+ "run_started_utc": "2026-10-30T01:51:50Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-27",
  "redes": [
   {
-   "rede": "tiktok",
-   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
-   "termos": {
-    "carta Flávio Bolsonaro": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "Flávio presidente eleito": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "Flávio líder do Brasil": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+   "rede": "x",
+   "teto_usd": 2.05,
+   "gasto_antes_usd": 0.7056,
+   "teto_execucao_usd": 0.3244,
+   "termos": [
+    {
+     "termo": "posts de Paulo Figueiredo",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 1,
+     "lidos": 1,
+     "no_periodo": 1,
+     "no_limite": false,
+     "run": "cMs5doYUTwTRWif2W",
+     "custo_usd": 0.00015,
+     "erro": null,
+     "chaves_1o_item": [
+      "author",
+      "bookmarkCount",
+      "card",
+      "conversationId",
+      "createdAt",
+      "displayTextRange",
+      "edit",
+      "entities",
+      "id",
+      "isNoteTweet",
+      "isPinned",
+      "isQuoteStatus",
+      "isReply",
+      "isRetweet",
+      "isTranslatable",
+      "lang",
+      "likeCount",
+      "possiblySensitive",
+      "quoteCount",
+      "replyCount",
+      "retweetCount",
+      "text",
+      "type",
+      "url",
+      "viewCount",
+      "viewState"
+     ],
+     "mais_antigo": "2026-10-28T18:04:27Z"
     }
-   },
-   "custo_usd": 0.0,
-   "status": "⛔ nenhum vídeo lido",
-   "itens_no_periodo": 0
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 1300,
+   "custo_usd": 0.0001,
+   "status": "ok",
+   "itens_no_periodo": 1
   },
   {
-   "rede": "google",
-   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "rede": "instagram",
+   "teto_usd": 0.6,
+   "gasto_antes_usd": 0.3875,
+   "teto_execucao_usd": 0.2125,
+   "termos": [],
+   "conta": "APIFY_TOKEN",
    "custo_usd": 0.0,
-   "trends_pontos": 169,
-   "noticias": 279,
-   "status": "ok",
+   "status": "sem termos para esta rede",
    "itens_no_periodo": 0
   }
  ],
- "itens_acumulados": 4646,
- "custo_usd": 0.0
+ "itens_acumulados": 4647,
+ "custo_usd": 0.0001
 }
