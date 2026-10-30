@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.210 — Caso 014: post do Instagram indicado pelo responsável (2026-10-30) 🔜
+
+- **Pergunta (30/10/2026, 20h04):** "https://www.instagram.com/p/De-opHIydZp/ coletamos em 'Demita um petista'?". **Não.** O código do post (De-opHIydZp) não aparece em nenhum bruto do caso 014 (8 coletas do Instagram), nem na lista de itens, nem no manifesto de preservação, nem nos dados dos outros casos (busca em todo o repositório privado e em `data/`).
+- **O que mudou:** o post entra em `posts_instagram` do caso 014, que é recoletado no modo "posts" (Apify instagram-reel-scraper, ~US$ 0,0085 por post). O gasto fica dentro do teto do caso (US$ 6; gasto anterior US$ 5,8087).
+- **Teste:** `python -m unittest discover -s tests -v` → OK. O resultado da coleta vai para a próxima entrada.
+
 ## C19.209 — Caso 019: 1º run parcial (cota do YouTube) e ajuste da ordem da busca (2026-10-30) ⚠️
 
 - **Run 41131739694 (dispatch):** a busca recebeu HTTP 429 (limite da API do YouTube) em 19 das 20 consultas. Só uma página saiu, a de "Lula Flavio Bolsonaro election" em inglês: universo informado 1.000.000 (o teto que a API informa, ou seja, ≥ 1 milhão), 50 lidos.
