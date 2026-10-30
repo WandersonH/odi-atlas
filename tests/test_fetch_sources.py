@@ -66,6 +66,12 @@ class TestExtract(unittest.TestCase):
         self.assertEqual(st["rows_written"], 2)
         self.assertEqual(st["files"][0]["rows_read"], 4)
 
+    def test_segundo_turno(self):
+        d, zp = self.build({"votacao_candidato_munzona_2022_SP.csv": [SP, SP2, SP_T2, SP_DEP]})
+        st = fs.extract_presidente_1t(zp, d / "out2.csv.gz", turno="2")
+        self.assertEqual(self.read(d / "out2.csv.gz")[1:], [SP_T2])
+        self.assertEqual((st["rows_written"], st["turno"]), (1, "2"))
+
     def test_dedup_between_br_and_uf_files(self):
         d, zp = self.build({"votacao_candidato_munzona_2022_BR.csv": [SP, SP2, RJ],
                             "votacao_candidato_munzona_2022_SP.csv": [SP, SP2],

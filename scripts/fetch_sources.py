@@ -67,8 +67,11 @@ def _decode_lines(raw: io.BufferedIOBase):
     return io.TextIOWrapper(raw, encoding="latin-1", newline="")
 
 
-def extract_presidente_1t(zip_path: Path, out_gz: Path) -> dict:
-    """Copia, sem alterar colunas, as linhas de Presidente/1º turno de todos os CSVs do ZIP.
+def extract_presidente_1t(zip_path: Path, out_gz: Path, turno: str = "1") -> dict:
+    """Copia, sem alterar colunas, as linhas de Presidente/1º turno (ou do turno pedido) de todos os CSVs do ZIP.
+
+    turno="2" grava o recorte do 2º turno (C19.206); as chaves de estatística mantêm o nome histórico
+    "rows_presidente_1t" para não quebrar manifestos antigos, e "turno" diz qual turno foi lido.
 
     Deduplica por (SG_UF, CD_MUNICIPIO, NR_ZONA, candidato) entre arquivos:
     se o ZIP trouxer um arquivo nacional e arquivos por UF, a mesma linha
@@ -104,7 +107,7 @@ def extract_presidente_1t(zip_path: Path, out_gz: Path) -> dict:
                 ix = {c: header.index(c) for c in REQUIRED + (cand_col,)}
                 for row in rd:
                     fstat["rows_read"] += 1
-                    if row[ix["CD_CARGO"]].strip() != "1" or row[ix["NR_TURNO"]].strip() != "1":
+                    if row[ix["CD_CARGO"]].strip() != "1" or row[ix["NR_TURNO"]].strip() != turno:
                         continue
                     fstat["rows_presidente_1t"] += 1
                     key = (row[ix["SG_UF"]], row[ix["CD_MUNICIPIO"]], row[ix["NR_ZONA"]], row[ix[cand_col]])
@@ -122,6 +125,7 @@ def extract_presidente_1t(zip_path: Path, out_gz: Path) -> dict:
                     uf = row[ix["SG_UF"]]
                     stats["rows_by_uf"][uf] = stats["rows_by_uf"].get(uf, 0) + 1
             stats["files"].append(fstat)
+    stats["turno"] = turno
     stats["output"] = str(out_gz)
     stats["output_sha256"] = hashlib.sha256(out_gz.read_bytes()).hexdigest()
     return stats
@@ -209,6 +213,20 @@ def run(args) -> int:
                 manifest["blocked"].append(f"TSE {year}: linhas duplicadas com valores diferentes (ver extract.duplicate_conflicts)")
             if entry["extract"]["rows_written"] == 0:
                 manifest["blocked"].append(f"TSE {year}: nenhuma linha de Presidente/1º turno no arquivo")
+            # 2º turno (C19.206): mesmo arquivo do TSE; gravado só se houver linhas (ano sem 2º turno = registro, não bloqueio)
+            try:
+                tmp = root / "data" / "tse" / f".presidente_2t_{year}_munzona.tmp.csv.gz"
+                x2 = extract_presidente_1t(zpath, tmp, turno="2")
+                if x2["rows_written"]:
+                    final = root / "data" / "tse" / f"presidente_2t_{year}_munzona.csv.gz"
+                    tmp.replace(final)
+                    x2["output"] = str(final)
+                else:
+                    tmp.unlink(missing_ok=True)
+                    x2["nota"] = "nenhuma linha de Presidente/2º turno neste arquivo do TSE"
+                entry["extract_2t"] = x2
+            except Exception as e2:  # o 2º turno não bloqueia o 1º
+                entry["extract_2t"] = {"status": "erro", "error": f"{type(e2).__name__}: {e2}"}
             entry["status"] = "ok"
         except Exception as e:  # registra e segue para os demais anos
             entry["status"] = "erro"

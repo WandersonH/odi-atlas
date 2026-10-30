@@ -55,13 +55,13 @@ def load_exceptions(path: Path):
     return {(r["uf"], r["cd_municipio_tse"]): r for r in csv.DictReader(open(path, encoding="utf-8"), delimiter=";")}
 
 
-def build_year(year: str, by_name, by_code, exc, root: Path):
-    src = root / "data" / "tse" / f"presidente_1t_{year}_munzona.csv.gz"
+def build_year(year: str, by_name, by_code, exc, root: Path, turno: str = "1"):
+    src = root / "data" / "tse" / f"presidente_{turno}t_{year}_munzona.csv.gz"
     mun = defaultdict(lambda: {"validos": 0, "cand": defaultdict(int), "nome_tse": None})
     names, raw_uf, exterior = {}, defaultdict(int), defaultdict(int)
     for r in csv.DictReader(gzip.open(src, "rt", encoding="utf-8"), delimiter=";"):
-        if r["CD_CARGO"] != "1" or r["NR_TURNO"] != "1":
-            raise ValueError(f"{src.name}: linha fora de Presidente/1º turno")
+        if r["CD_CARGO"] != "1" or r["NR_TURNO"] != turno:
+            raise ValueError(f"{src.name}: linha fora de Presidente/{turno}º turno")
         v = int(r["QT_VOTOS_NOMINAIS_VALIDOS"])
         nr = r["NR_CANDIDATO"]
         names[nr] = r["NM_URNA_CANDIDATO"]
@@ -106,6 +106,76 @@ def build_year(year: str, by_name, by_code, exc, root: Path):
     return table, dict(sorted(names.items())), diag
 
 
+def build_2t_resultados(by_code, root: Path):
+    """2º turno de 2026 enquanto o arquivo de dados abertos (munzona) não traz o 2º turno: lê a totalização oficial
+    por município já gravada em data/tse/segundo_turno/municipios.json (resultados.tse.jus.br, um JSON por município).
+    Mesmo formato do build_year; a correspondência IBGE é a que o TSE publica no próprio arquivo (conferida contra a malha)."""
+    f = root / "data" / "tse" / "segundo_turno" / "municipios.json"
+    if not f.exists():
+        return None
+    d = json.loads(f.read_text(encoding="utf-8"))
+    table, unmapped, used, parcial = {}, [], set(), []
+    tot = defaultdict(int)
+    for cd, m in (d.get("m") or {}).items():
+        if m.get("uf") == "ZZ":
+            continue
+        ibge = str(m.get("ibge") or "")
+        if ibge not in by_code or by_code[ibge][0] != m.get("uf") or ibge in used:
+            unmapped.append({"uf": m.get("uf"), "cd_municipio_tse": cd, "nome_tse": m.get("nome")})
+            continue
+        used.add(ibge)
+        if float(m.get("pst") or 0) < 100:
+            parcial.append(ibge)
+        nome = by_code[ibge][1]
+        l, fl = int(m.get("l") or 0), int(m.get("f") or 0)
+        tot["13"] += l
+        tot["22"] += fl
+        table[f"{m['uf']}|{norm(nome)}"] = {"uf": m["uf"], "municipio": nome, "ibge": ibge, "cd_municipio_tse": cd, "nome_tse": m.get("nome"),
+                                            "validos_nominais": l + fl, "candidatos": {"13": l, "22": fl}}
+    diag = {"fonte": "data/tse/segundo_turno/municipios.json (" + str(d.get("fonte_2t")) + ")", "lido_em_utc": d.get("lido_em_utc"),
+            "municipios": len(table), "sem_correspondencia": unmapped, "municipios_com_totalizacao_parcial": len(parcial),
+            "validos_brasil_sem_exterior": sum(tot.values()), "totais_brasil_sem_exterior": dict(tot)}
+    return table, {"13": "LULA", "22": "FLÁVIO BOLSONARO"}, diag
+
+
+def build_segundo_turno(by_name, by_code, exc, root: Path) -> dict:
+    """data/elections_2t.json: Presidente, 2º turno, por município (2022 e 2026), no mesmo formato do elections.json."""
+    out = {"schema_version": 1, "status": "ok", "turno": 2, "years": {}, "candidates": {}, "diagnostics": {"sources": {}, "blocked": []},
+           "generated_at_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+           "source": {"electoral": "TSE · votacao_candidato_munzona (2º turno, Presidente); 2026, enquanto os dados abertos não trazem o 2º turno: "
+                                   "totalização oficial por município (resultados.tse.jus.br)",
+                      "geographic": "IBGE · malha municipal 2025 (BR_Municipios_2025)",
+                      "nota": "No 2º turno, válidos = votos nos dois candidatos. 2022: Lula (13) × Jair Bolsonaro (22); 2026: Lula (13) × Flávio Bolsonaro (22)."}}
+    for year in ("2022", "2026"):
+        try:
+            if (root / "data" / "tse" / f"presidente_2t_{year}_munzona.csv.gz").exists():
+                res = build_year(year, by_name, by_code, exc, root, turno="2")
+            elif year == "2026":
+                res = build_2t_resultados(by_code, root)
+            else:
+                res = None
+        except Exception as e:  # noqa: BLE001
+            out["diagnostics"]["blocked"].append(f"{year}: {type(e).__name__}: {e}")
+            continue
+        if not res:
+            out["diagnostics"]["blocked"].append(f"{year}: ⛔ recorte do 2º turno ausente (data/tse/presidente_2t_{year}_munzona.csv.gz)")
+            continue
+        table, names, diag = res
+        out["years"][year], out["candidates"][year], out["diagnostics"]["sources"][year] = table, names, diag
+        if diag["sem_correspondencia"]:
+            out["diagnostics"]["blocked"].append(f"{year}: {len(diag['sem_correspondencia'])} município(s) sem correspondência IBGE")
+        if diag.get("divergencias_por_uf"):
+            out["diagnostics"]["blocked"].append(f"{year}: soma municipal diverge do recorte bruto em {list(diag['divergencias_por_uf'])}")
+    if out["diagnostics"]["blocked"]:
+        out["status"] = "parcial" if out["years"] else "bloqueado"
+    (root / "data" / "elections_2t.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    for y, d in out["diagnostics"]["sources"].items():
+        print("2º turno", y, "municípios", d["municipios"], "| sem correspondência", len(d["sem_correspondencia"]),
+              "| válidos BR", d["validos_brasil_sem_exterior"], "| 13:", d["totais_brasil_sem_exterior"].get("13"), "| 22:", d["totais_brasil_sem_exterior"].get("22"))
+    print("2º turno status", out["status"], out["diagnostics"]["blocked"])
+    return out
+
+
 def main(argv=None) -> int:
     root = Path(argv[0]) if argv else ROOT
     by_name, by_code = load_ibge(root / "data" / "ibge" / "municipios_malha_2025.csv")
@@ -125,6 +195,7 @@ def main(argv=None) -> int:
         if diag["divergencias_por_uf"]:
             blocked.append(f"{year}: soma municipal diverge do recorte bruto em {list(diag['divergencias_por_uf'])}")
     out["diagnostics"]["blocked"] = blocked
+    build_segundo_turno(by_name, by_code, exc, root)
     if blocked:
         out["status"] = "bloqueado"
     (root / "data" / "elections.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
