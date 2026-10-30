@@ -4,6 +4,29 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.207 — 2º turno de 2022 no mapa; caso 018 com a carga paga; caso 012: a coleta não parou em 25/10 (2026-10-30) ✅
+
+- **Mapa (P1, run 41127913421):** o arquivo de dados abertos do TSE já traz o 2º turno dos dois anos. Recortes gravados: `presidente_2t_2022_munzona.csv.gz` (12.566 linhas) e `presidente_2t_2026_munzona.csv.gz` (12.584 linhas). `data/elections_2t.json` (status ok, 0 municípios sem correspondência IBGE):
+  - 2022: 5.570 municípios; válidos no Brasil sem exterior 118.254.184 (13: 60.193.094; 22: 58.061.090); exterior 298.169.
+  - 2026: 5.571 municípios; válidos 123.710.622 (13: 64.056.078; 22: 59.654.544); exterior 371.651. Os totais batem exatamente com a totalização por município usada em C19.206 (`segundo_turno/municipios.json`), que fica só como reserva.
+  - O 1º turno (`elections.json`) foi regenerado pelo mesmo run e saiu idêntico (conferido: só o horário de geração mudou).
+  - Chromium local: 2º turno 2022 com 5.570 municípios, Lula 50,90% dos válidos, 3.125 municípios em 1º lugar; variação 2022 → 2026 e 1º → 2º turno 2022 desenhadas; 1 município cinza em 2022 (criado depois, sem votação em 2022); sem erros.
+- **Caso 018, carga inicial (runs 41124986285, 41125224756, 41125561516, 41126612778):** 1.547 publicações desde 24/10, de 1.120 contas.
+  - X: 1.374 publicações, 948 contas.
+    - Haddad boicote/Davos: 1.218.
+    - Carol De Toni (respostas e citações): 36.
+    - Greve em Sergipe: 8.
+    - Corte de R$ 6 bi: 118.
+  - Instagram: 102 publicações (reels por busca e os 5 indicados).
+  - Facebook: 71 publicações.
+  - TikTok: ⛔ 0 vídeos (a página pública não devolveu vídeos para as 4 buscas).
+  - Universo da plataforma: ⛔ não informado para as buscas; a amostra é tudo o que as buscas devolveram, e nenhuma bateu no limite.
+- **Caso 012 ("A frente de fora"):** pergunta do responsável (30/10, 18h13): "esse caso parou a coleta em 25/10 por quê?". **Não parou:**
+  - `caso-canais.yml` roda todo dia; os últimos runs ficaram ok em 27, 28, 29 e 30/10.
+  - Vídeo mais recente lido: 29/10. Comentários lidos até 30/10. Inscritos lidos todo dia desde 27/10.
+  - O "25/10" é o fim do período eleitoral destacado na linha do tempo e na tabela dos 15 mais vistos. A página agora diz isso, com a data da última leitura.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.206 — Mapa "O voto, no território": 2º turno 2022 e 2026, 1º × 2º turno; e download PNG/JPG de todos os gráficos (2026-10-30) ⚠️
 
 - **Pedidos (30/10/2026):** "nessa página precisa incluir os 2 filtros de pleito de 2º turno 2022 e 2026; se conseguirmos ter um mapa que compara primeiro e 2º turno também seria excelente" e (17h55) "adicione em todos os grafos a opção de download do grafo em png ou jpg".
