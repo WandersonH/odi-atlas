@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.196 — Caso 017: as três versões da carta (imprensa, X às 17h19, X editado às 17h41) (2026-10-29) 🔜
+
+- **Primeira leitura (run do `caso-cartas.yml` em 29/10, grátis):** a cadeia de edição do X tem **2 versões**: 2115538982012682337 (28/10, 20h19 UTC = 17h19 de Brasília; 22.675 curtidas e 4.286 respostas na leitura) e 2115544562219315474 (20h41 UTC = 17h41; 253.042 curtidas e 36.236 respostas), 3 imagens cada (`data/casos/017/midia/`). Internet Archive: 0 capturas dos dois endereços.
+- **O que muda no X (OCR local das imagens, Tesseract 5, português, conferido nas imagens):** "Dirijo-me … como o **verdadeiro presidente do Brasil**" → "como o **líder do Brasil**"; "que eu sou o **presidente eleito**" → "que eu sou o **líder**". O resto do texto é igual (só a quebra de páginas muda); o brasão das duas versões do X é o atual ("República Federativa do Brasil").
+- **A terceira versão não está no X:** segundo a imprensa, a primeira foi um PDF enviado a jornalistas por Paulo Figueiredo, com o brasão de 1889 ("Estados Unidos do Brazil") e "verdadeiro presidente eleito"; o Congresso em Foco publicou esse PDF. `carta_versoes.py` passa a baixar o PDF da imprensa como versão 0, extrair o texto (pdftotext) e, para cada versão, o texto da carta (OCR) e as mudanças em relação à anterior (palavra a palavra). O workflow instala Tesseract e poppler. Teste `tests/test_carta_versoes.py`.
+- **Pendente:** rodar de novo e conferir o PDF; posts de Flávio nas outras redes; página do caso.
+
 ## C19.195 — Casos 016 ("queime seu título") e 017 (cartas de Flávio), leitura diária do X até 15/11 e lacunas das Bolhas (2026-10-29) 🔜
 
 - **Pedidos (29/10/2026, 21h51):** "queime o título, fogo título, destrua seu título: aqui basicamente quero ver volume de publicações pós 24/10"; "cartas e suas versões: a carta de Flávio teve 3 versões, quero um dossiê completo de mídia e, se conseguirmos, as 2 outras versões ... todas as redes, notícias e checagens; ele começa se autoproclamando presidente e na última versão entra como líder" (post https://x.com/flaviobolsonaro/status/2115538982012682337); "quando pergunto das completas é de todas ... vamos acompanhar até dia 15/11". Teto escolhido: **US$ 8,00 para os dois casos até 15/11** ("carga inicial completa e leitura diária só no X").

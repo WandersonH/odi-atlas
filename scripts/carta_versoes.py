@@ -84,6 +84,45 @@ def arquivo(tid: str) -> list[dict]:
     return out
 
 
+PDF_IMPRENSA = {"url": "https://static.congressoemfoco.com.br/2026/10/28/attachment/2026/10/28/197ae4_carta1.pdf",
+                "fonte": "Congresso em Foco, \"Em carta, Flávio Bolsonaro se diz verdadeiro presidente do Brasil\" (28/10/2026, 17h19)",
+                "pagina": "https://www.congressoemfoco.com.br/noticia/129618/em-carta-flavio-bolsonaro-se-diz-verdadeiro-presidente-do-brasil",
+                "nota": "Versão distribuída a jornalistas antes do post no X (segundo Band, ICL e Jornal do Comércio, enviada por Paulo Figueiredo); não está na cadeia de edição do X."}
+
+
+def texto_imagens(arqs: list[Path]) -> str | None:
+    """OCR (Tesseract, português) das páginas da carta; None se o Tesseract não estiver instalado."""
+    import shutil
+    import subprocess
+    if not shutil.which("tesseract"):
+        return None
+    partes = []
+    for a in arqs:
+        r = subprocess.run(["tesseract", str(a), "-", "-l", "por"], capture_output=True, text=True, timeout=120)
+        partes.append(r.stdout)
+    return "\n".join(partes)
+
+
+def texto_pdf(arq: Path) -> str | None:
+    import shutil
+    import subprocess
+    if not shutil.which("pdftotext"):
+        return None
+    return subprocess.run(["pdftotext", "-layout", str(arq), "-"], capture_output=True, text=True, timeout=120).stdout
+
+
+def diferencas(a: str, b: str) -> list[dict]:
+    """Trechos que mudam de uma versão para a outra (palavra a palavra, com 8 palavras de contexto)."""
+    import difflib
+    import re
+    pa, pb = re.sub(r"\s+", " ", a or "").split(" "), re.sub(r"\s+", " ", b or "").split(" ")
+    out = []
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, pa, pb, autojunk=False).get_opcodes():
+        if op != "equal":
+            out.append({"tipo": op, "antes": " ".join(pa[i1:i2]), "depois": " ".join(pb[j1:j2]), "contexto": " ".join(pa[max(0, i1 - 8):i1])})
+    return out
+
+
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else list(argv)
     ids = [a for a in argv if a.isdigit()] or ["2115538982012682337"]
@@ -110,14 +149,29 @@ def main(argv=None) -> int:
             except Exception as e:  # noqa: BLE001
                 v.setdefault("erros_imagem", []).append(f"{u}: {type(e).__name__}")
     versoes.sort(key=lambda v: v.get("criado_em_utc") or "9")
+    for v in versoes:
+        v["origem"] = "post no X (@flaviobolsonaro)"
+        v["texto_carta"] = texto_imagens([DEST / x for x in v.get("imagens_locais") or []])
+    # versão distribuída à imprensa antes do post (PDF)
+    imp = {"id": "imprensa", "origem": "PDF distribuído a jornalistas", **PDF_IMPRENSA, "status": "ok"}
+    try:
+        download(PDF_IMPRENSA["url"], DEST / "midia" / "versao_imprensa.pdf", timeout=60)
+        imp["arquivo_local"] = "midia/versao_imprensa.pdf"
+        imp["texto_carta"] = texto_pdf(DEST / "midia" / "versao_imprensa.pdf")
+    except Exception as e:  # noqa: BLE001
+        imp["status"] = f"⛔ {type(e).__name__}: {str(e)[:160]}"
+    versoes = [imp] + versoes
+    for ant, v in zip(versoes, versoes[1:]):
+        if ant.get("texto_carta") and v.get("texto_carta"):
+            v["mudancas_em_relacao_a_anterior"] = diferencas(ant["texto_carta"], v["texto_carta"])
     out = {"gerado_em_utc": now_utc(), "pedido": "Responsável em 29/10/2026, 21h51: \"a carta de Flávio teve 3 versões; quero um dossiê completo de mídia e, se conseguirmos, as 2 outras versões\"",
            "fonte": "X, endpoint público de incorporação (cdn.syndication.twimg.com) e Internet Archive (CDX)", "ids_pedidos": ids, "versoes": versoes,
            "nota": "No X, cada edição de um post ganha um id novo; o endpoint informa a cadeia (edit_tweet_ids). Versões apagadas ou restritas ficam ⛔."}
     DEST.mkdir(parents=True, exist_ok=True)
     (DEST / "versoes.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for v in versoes:
-        print(f"versão {v['id']}: {v['status']} · {v.get('criado_em_utc')} · imagens {len(v.get('imagens') or [])} · capturas {len(v['arquivo_internet_archive'])} · "
-              f"cadeia {(v.get('edicao') or {}).get('ids')} · {(v.get('texto') or '')[:160]!r}")
+        print(f"versão {v['id']}: {v['status']} · {v.get('criado_em_utc')} · imagens {len(v.get('imagens') or [])} · capturas {len(v.get('arquivo_internet_archive') or [])} · "
+              f"cadeia {(v.get('edicao') or {}).get('ids')} · mudanças {[(m['antes'], m['depois']) for m in v.get('mudancas_em_relacao_a_anterior') or []][:8]}")
     return 0
 
 
