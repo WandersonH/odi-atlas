@@ -1,0 +1,69 @@
+name: Preservar mídia de Instagram e Facebook de um caso (grátis, só no privado)
+
+# Pedido do responsável em 30/10/2026, 00h08 (posts da ação do MPT contra a Meta podem sair do ar em 24 h).
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        default: "014"
+      maximo:
+        description: "máximo de publicações por execução (as mais curtidas primeiro)"
+        default: "600"
+
+concurrency:
+  group: casos
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  preservar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Preservar
+        id: pres
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/preservar_midia.py --caso "${{ inputs.caso }}" --max "${{ inputs.maximo }}" > f.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Preservação::$(echo "$l" | cut -c1-900)"; done < f.txt
+          exit $rc
+      - name: Anexar o pacote a uma release do repositório privado
+        if: steps.pres.outputs.pacote != ''
+        env:
+          GH_TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+          PACOTE: ${{ steps.pres.outputs.pacote }}
+        run: |
+          tag="preservacao-caso${{ inputs.caso }}"
+          gh release view "$tag" -R WandersonH/odi-atlas-interno > /dev/null 2>&1 || gh release create "$tag" -R WandersonH/odi-atlas-interno --title "Preservação de mídia, caso ${{ inputs.caso }}" --notes "Cópias de vídeos e imagens de Instagram e Facebook do caso, para conferência (pedido de 30/10/2026). Só no privado."
+          gh release upload "$tag" "$PACOTE" -R WandersonH/odi-atlas-interno --clobber
+          echo "::notice title=Preservação::pacote $(basename "$PACOTE") ($(du -h "$PACOTE" | cut -f1)) anexado à release $tag"
+          rm -f "$PACOTE"
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          rm -f casos/*/preservacao/*.tar
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Preservação de mídia (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Preservação de mídia (run ${{ github.run_id }})"

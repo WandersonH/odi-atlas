@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.200 — Caso 014: ação do MPT contra a Meta e preservação da mídia de Instagram e Facebook (2026-10-30) 🔜
+
+- **Pedido (30/10/2026, 00h08):** "conseguimos pegar os 12 posts dentro do MPT e ver se temos eles antes que saiam do ar" (https://canaltech.com.br/mercado/mpt-pede-r-50-milhoes-da-meta-por-posts-que-incentivam-demissao-pelo-voto/).
+- **O que a imprensa diz (29/10/2026):** ação civil pública do MPT contra a Meta, R$ 50 milhões por danos morais coletivos, posts que incentivam vigiar, expor e demitir trabalhadores pelo voto (Instagram e Facebook; Banda B cita também Threads); decisão da 77ª Vara do Trabalho de São Paulo (TRT-2), juiz Bruno José Perusso, manda a Meta tirar do ar em 24 h "as publicações indicadas pelo MPT" (Metrópoles, 29/10 23h03). **Nenhuma das reportagens lidas (Canaltech, Metrópoles, IstoÉ, Gazeta do Paraná, Banda B, Revista Fórum) publica a lista, o número de posts, os perfis, os links ou o número do processo**; só "quatro conteúdos de um perfil verificado com 3,8 milhões de seguidores somavam mais de 2 milhões de curtidas". O número 12 não aparece nessas fontes (⛔ não confirmado).
+- **Conferência no acervo do caso 014:** nenhuma conta com 3,5–4,6 milhões de seguidores entre as publicações do Instagram e do Facebook com seguidores lidos; os reels vêm da busca sem seguidores, então o perfil da ação não pode ser identificado só com o que temos.
+- **Preservação (`scripts/preservar_midia.py` + `preservar-midia.yml`, grátis):** baixa vídeo e imagem de TODAS as publicações de Instagram e Facebook do caso no período (785 no acervo), das mais curtidas para as menos, a partir dos endereços que a coleta devolveu (assinados; vencidos ficam ⛔ registrados), com SHA-256; arquivos só no privado (pacote .tar anexado à release `preservacao-caso014` do repositório privado), manifesto em `casos/014/preservacao/`; público só contagens (`data/casos/014/preservacao.json`). Teste local: o script lê os 785 posts e as mídias de todos (o download só funciona no GitHub).
+- **Pendente:** rodar; conferir quantos endereços ainda valiam; identificar as publicações da ação (petição ou lista do MPT).
+
 ## C19.199 — Fechamento das cargas de 30/10 (casos 014, 016, 017) e gasto (2026-10-30) ✅ (acompanhamento diário segue até 15/11)
 
 - **Caso 014, Instagram e Facebook (modo `frases`):** Instagram 340 → 418, Facebook 298 → 367; caso com **8.637 publicações** (X 7.369, TikTok 483, Instagram 418, Facebook 367, Kwai 0). Gasto do caso: US$ 5,8087 de 6,00 (resta a reserva da leitura diária do X).
