@@ -9,6 +9,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Pergunta (29/10/2026, 22h21):** "demita um petista foi coletado certinho?". Conferência nos manifestos: **X, Instagram e Facebook pararam em 28/10 por volta de 04h UTC** (última publicação lida no X: 28/10 04h15 UTC); depois disso só o TikTok e o Google (diários, grátis) continuaram. A saturação do X não foi alcançada (55,1% de novas na rodada 3), Kwai devolveu 0, X e Facebook sem universo (⛔), o Instagram chegou ao limite pedido. Gasto do caso: US$ 4,0854 de 6,00.
 - **O que mudou:** rodada 4 do X (6 buscas centrais desde 28/10: demitir petista, boicote, empresas e prestadores, #boicote, "não compre de petista", petralha) dentro do que sobrou do teto do X (US$ 0,94, com reserva diária de 0,51); leitura diária das mesmas 6 buscas até 15/11 (US$ 0,03 por dia); nova passada de Instagram e Facebook (modo `frases`) no que sobrou desses tetos (0,76 e 0,21). `casos.yml`: modo `rodada4`.
 - **Teste:** `python -m unittest discover -s tests -v` → OK; `pedidos` gera 6 buscas na rodada 4 e 6 na leitura diária.
+- **Página:** no quadro "O número geral que cada plataforma divulga", a linha do YouTube passa a dizer a data de início do próprio caso (antes: sempre "desde 25/10"). Contagens do caso 016 (run do `contagens-plataforma.yml` de 30/10): as 4 hashtags sem total no Instagram e no TikTok (inexistentes ou bloqueio) e o YouTube recusou as 4 consultas (HTTPError): ⛔.
+- **Rodada 4 (run 40986666991):** 1.389 itens, X do caso 014 passa de 6.019 para 7.369 publicações (8.490 no caso); "demitir petista" e "boicote petista/esquerda" chegaram ao limite de 455.
 
 ## C19.197 — Páginas dos casos 016 e 017, dossiê das cartas e livro de códigos do caso 016 (2026-10-29) ⚠️ (coleta em andamento)
 
