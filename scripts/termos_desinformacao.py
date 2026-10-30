@@ -45,8 +45,11 @@ GRUPOS = {
     "ia": {"nome": "atribuição a IA (\"feito com IA\", \"isso é IA\")", "tipo": "popular",
            "rx": r"(feito|feita|gerado|gerada|criado|criada|fizeram|fez) (com|por|na|de) ia|(video|imagem|foto|audio|voz) (de|com|feito com|feita com) ia|(isso|isto|essa|esse) (e|foi) ia\b|\bia\b (fez|faz|criou|gerou)|\bchat ?gpt\b"},
     "ia_tema": {"nome": "inteligência artificial (tema)", "tipo": "contexto", "rx": r"inteligencia artificial"},
-    "montagem": {"nome": "montagem / editado / fora de contexto", "tipo": "popular",
-                 "rx": r"montage(m|ns)|video editado|foi editado|editaram|editado pra|fora de contexto|descontextualizad|cortaram o video|video cortado|corte malicioso|recortad"},
+    "montagem": {"nome": "montagem", "tipo": "popular", "rx": r"montage(m|ns)"},
+    "fora_de_contexto": {"nome": "fora de contexto / notícia antiga", "tipo": "popular",
+                         "rx": r"fora de contexto|descontextualizad|tirad[oa] de contexto|(reportagem|noticia|materia) (e )?(antig[oa]|velh[oa])|nao e atual"},
+    "editado": {"nome": "editado / cortado / acelerado", "tipo": "popular",
+                "rx": r"video editado|foi editado|editaram|editado pra|cortaram o video|video cortado|corte malicioso|recortad|acelerad[oa] o video|video acelerado|desacelerad"},
 }
 RX = {k: re.compile(r"(?<![a-z0-9])(?:" + v["rx"] + r")") for k, v in GRUPOS.items()}
 

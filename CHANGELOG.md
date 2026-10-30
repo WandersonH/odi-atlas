@@ -9,6 +9,13 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Pergunta (30/10/2026, 11h52):** "tu atualizou o número de denúncias Pardal?". **Não:** o último dado é a geração do TSE de 26/10 16h00 (lido em 27/10 00h05 UTC, run 40424037765): 83.253 denúncias (1º turno 71.783; 2º turno 11.470). As execuções diárias de 28, 29 e 30/10 (40606038384, 40793875524, 40979352901) **falharam no passo de testes**: `ModuleNotFoundError: No module named 'numpy'` (testes dos casos 011 e 012 importam numpy/networkx, e os workflows mais antigos não instalavam essas bibliotecas). O mesmo erro parou, desde 27–29/10, `checagens`, `trends`, `coletas-gov`, `tse-alienacao`, `seguidores-meta`, `rotulo-ia` e `debate-youtube`.
 - **Correção:** `scripts/testes_ci.sh` instala numpy 2.3.4 e networkx 3.6.1 quando faltam; `p1-fontes.yml` passa a usar o mesmo script. Nenhum dado foi apagado; as coletas voltam a partir da próxima execução (as grátis são rodadas de novo agora).
 - **Teste:** `scripts/testes_ci.sh` → OK.
+- **Pardal atualizado (run 41075753799):** geração do TSE de 30/10/2026 09h00: **83.248 denúncias** (1º turno 71.781; 2º turno 11.467) — 5 a menos que na leitura de 26/10 (83.253; 1º turno 71.783, 2º turno 11.470): o TSE revisou o arquivo (registros retirados ou reclassificados; o Atlas guarda as duas leituras em `historico.csv`). `checagens` voltou a rodar com sucesso; `trends` e `tse-alienacao` relançados.
+
+## C19.204 — Termos: "montagem" separada de "fora de contexto" e de "editado" (2026-10-30) ✅
+
+- **Pedido (30/10/2026, 11h52):** "gosto da abordagem" (separar o grupo "montagem / editado / fora de contexto", proposta das 10h47), com o exemplo das reportagens de 2024 que circularam como atuais depois do 2º turno.
+- **O que mudou:** `termos_desinformacao.py` troca o grupo por três: "montagem"; "fora de contexto / notícia antiga" (fora de/tirado de contexto, descontextualizado, "não é atual", notícia/reportagem/matéria antiga ou velha); "editado / cortado / acelerado". Página: novas cores, colunas e linhas. Um primeiro desenho com "vídeo/foto antigo" e "é de 20xx" foi descartado na conferência por amostra (muitos usos sem relação: "vídeo antigo seu", "parece vídeo de 2019").
+- **Teste local (privado):** montagem 132 (1,07 a cada 10 mil textos); fora de contexto / notícia antiga 41 (0,33); editado / cortado / acelerado 17 (0,14); demais grupos iguais. `python -m unittest discover -s tests -v` → OK.
 
 ## C19.202 — Caso 012: linha do tempo dos vídeos no período eleitoral (2026-10-30) 🔜
 
