@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.203 — Coletas diárias paradas desde 27/10 (testes sem numpy) e Pardal desatualizado (2026-10-30) ✅
+
+- **Pergunta (30/10/2026, 11h52):** "tu atualizou o número de denúncias Pardal?". **Não:** o último dado é a geração do TSE de 26/10 16h00 (lido em 27/10 00h05 UTC, run 40424037765): 83.253 denúncias (1º turno 71.783; 2º turno 11.470). As execuções diárias de 28, 29 e 30/10 (40606038384, 40793875524, 40979352901) **falharam no passo de testes**: `ModuleNotFoundError: No module named 'numpy'` (testes dos casos 011 e 012 importam numpy/networkx, e os workflows mais antigos não instalavam essas bibliotecas). O mesmo erro parou, desde 27–29/10, `checagens`, `trends`, `coletas-gov`, `tse-alienacao`, `seguidores-meta`, `rotulo-ia` e `debate-youtube`.
+- **Correção:** `scripts/testes_ci.sh` instala numpy 2.3.4 e networkx 3.6.1 quando faltam; `p1-fontes.yml` passa a usar o mesmo script. Nenhum dado foi apagado; as coletas voltam a partir da próxima execução (as grátis são rodadas de novo agora).
+- **Teste:** `scripts/testes_ci.sh` → OK.
+
 ## C19.202 — Caso 012: linha do tempo dos vídeos no período eleitoral (2026-10-30) 🔜
 
 - **Pedido (30/10/2026, 10h17):** na página "A frente de fora" (caso 012), "quero uma linha do tempo de vídeos no período eleitoral".
