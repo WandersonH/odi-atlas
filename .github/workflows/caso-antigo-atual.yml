@@ -1,0 +1,56 @@
+name: Caso 018 — antigo como atual (na época × agora; YouTube, Trends e notícias grátis; X da época uma vez)
+
+# Pedido do responsável em 30/10/2026, 17h33; acompanhamento até 15/11.
+on:
+  schedule:
+    - cron: "17 14 * * *"   # todo dia, 11h17 em Brasília
+  workflow_dispatch:
+
+concurrency:
+  group: caso-antigo-atual
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  caso018:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Na época × agora
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
+          python scripts/caso_antigo_atual.py > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Caso 018::$(echo "$l" | cut -c1-900)"; done < s.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Caso 018 (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Caso 018: na época × agora (run ${{ github.run_id }})"

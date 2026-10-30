@@ -1199,6 +1199,193 @@
     "Facebook",
     "TikTok"
    ]
+  },
+  {
+   "id": "018",
+   "slug": "antigo-como-atual",
+   "titulo": "Antigo como atual: falas, vídeos e reportagens antigas recirculadas depois do 2º turno",
+   "tipo": "recontextualização (cheapfake sem montagem)",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-10-24",
+   "aba": "caso018",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 30/10/2026, 17h33 (\"vamos add 2 case ... esses 3 são mesmo tipo de caso; quero acompanhar a veiculação por canal e a visão antes e depois\") e 17h3x: um caso com três episódios (sugestão do Atlas), teto de US$ 5,00 até 15/11 (X 2,00 com reserva diária 0,80; Instagram 1,50; Facebook 0,50; X \"na época\" 0,35; reserva 0,65), conta 1, sem consulta de saldo.",
+   "descricao": "Depois do 2º turno (25/10/2026), conteúdos antigos voltaram a circular como se fossem atuais: a fala de Fernando Haddad em Davos (janeiro de 2023) sobre não comprar de empresas sem compromisso social, usada contra as denúncias de listas de boicote a petistas; um vídeo de greve de professores em Sergipe apresentado como reação a corte na educação; e uma reportagem da CNN de julho de 2024 sobre congelamento de gastos apresentada como corte de R$ 6 bilhões depois da eleição. O caso compara a circulação na época e agora, por canal.",
+   "episodios": {
+    "A": {
+     "titulo": "Haddad em Davos (janeiro de 2023) e o boicote",
+     "videos_youtube": [
+      "93cZU_d-KAg",
+      "qjmwYUs676E"
+     ],
+     "janela_epoca": [
+      "2023-01-15",
+      "2023-02-28"
+     ],
+     "fontes": [
+      {
+       "nome": "HojeMais",
+       "url": "https://www.hojemais.com.br/tres-lagoas/noticia/cotidiano/haddad-defendeu-boicote-entenda-a-fala-que-circula-na-internet"
+      },
+      {
+       "nome": "Gazeta do Povo",
+       "url": "https://www.gazetadopovo.com.br/republica/esquerda-critica-boicotes-a-petistas-mas-ja-promoveu-campanhas-contra-empresas-e-jornais/"
+      },
+      {
+       "nome": "Pleno News",
+       "url": "https://pleno.news/brasil/politica-nacional/haddad-ja-defendeu-boicote-a-empresas-pro-bolsonaro-assista.html"
+      },
+      {
+       "nome": "post de Carol De Toni no X",
+       "url": "https://x.com/CarolDeToni/status/2116251466734436605"
+      }
+     ]
+    },
+    "B": {
+     "titulo": "Greve de professores em Sergipe como reação a corte na educação",
+     "janela_epoca": null,
+     "fontes": [
+      {
+       "nome": "UOL Confere, 29/10/2026",
+       "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/29/desinformacao-falso-video-greve-professores-sergipe-corte-educacao-eleicoes.ghtm"
+      }
+     ]
+    },
+    "C": {
+     "titulo": "Reportagem da CNN de julho de 2024 como corte de R$ 6 bilhões",
+     "janela_epoca": [
+      "2024-07-29",
+      "2024-08-15"
+     ],
+     "fontes": [
+      {
+       "nome": "Lupa, 29/10/2026",
+       "url": "https://www.agencialupa.org/jornalismo/2026/10/29/reportagem-que-mostra-cortes-na-saude-e-educacao-nao-e-atual-video-e-de-2024/"
+      },
+      {
+       "nome": "Boatos.org, 28/10/2026",
+       "url": "https://www.boatos.org/politica/lula-cortou-r-6-bilhoes-da-saude-e-educacao-apos-as-eleicoes-de-2026.html"
+      }
+     ]
+    }
+   },
+   "hashtags": [],
+   "buscas_tiktok": [
+    "Haddad boicote",
+    "Haddad Davos",
+    "greve professores Sergipe",
+    "Lula cortou saúde educação"
+   ],
+   "rolagens_tiktok": 20,
+   "termos_trends": [
+    "Haddad boicote",
+    "Haddad Davos",
+    "Lula corte saúde"
+   ],
+   "termos_noticias": [
+    "Haddad boicote Davos",
+    "Haddad \"palito de fósforo\"",
+    "greve professores Sergipe vídeo",
+    "Lula corte 6 bilhões saúde educação",
+    "vídeo antigo checagem"
+   ],
+   "filtro_titulo_noticias": [
+    "haddad",
+    "boicote",
+    "davos",
+    "greve",
+    "sergipe",
+    "corte",
+    "bilh",
+    "antig",
+    "2024",
+    "2023"
+   ],
+   "maximo_por_termo": 1500,
+   "teto_usd": {
+    "x": 2.0,
+    "instagram": 1.5,
+    "facebook": 0.5,
+    "kwai": 0.0
+   },
+   "reserva_diaria_usd": {
+    "x": 0.8
+   },
+   "teto_diario_usd": {
+    "x": 0.05
+   },
+   "diario_ate": "2026-11-15",
+   "complementos_x": [
+    {
+     "termo": "A agora: Haddad boicote/Davos",
+     "busca": "Haddad (boicote OR boicotar OR boicotem OR \"palito de fósforo\" OR \"palito de fosforo\" OR Davos OR \"não compro\") since:2026-10-25",
+     "motivo": "episódio A",
+     "rodada": 1
+    },
+    {
+     "termo": "A agora: post de Carol De Toni (respostas e citações)",
+     "busca": "(conversation_id:2116251466734436605 OR url:2116251466734436605 OR quoted_tweet_id:2116251466734436605)",
+     "motivo": "episódio A",
+     "rodada": 1
+    },
+    {
+     "termo": "B agora: greve de professores em Sergipe",
+     "busca": "(greve OR professores OR professoras) Sergipe (corte OR cortes OR Lula OR educação OR eleição) since:2026-10-25",
+     "motivo": "episódio B",
+     "rodada": 1
+    },
+    {
+     "termo": "C agora: corte de R$ 6 bilhões na saúde e educação",
+     "busca": "(\"6 bilhões\" OR \"6 bi\" OR \"15 bilhões\" OR \"5,9 bilhões\") (saúde OR educação) (corte OR cortou OR cortar OR cortes OR congelamento OR congelou) since:2026-10-25",
+     "motivo": "episódio C",
+     "rodada": 1
+    }
+   ],
+   "diario_x": [
+    {
+     "termo": "A agora: Haddad boicote/Davos",
+     "busca": "Haddad (boicote OR boicotar OR boicotem OR \"palito de fósforo\" OR \"palito de fosforo\" OR Davos OR \"não compro\") since:{desde}"
+    },
+    {
+     "termo": "A agora: post de Carol De Toni (respostas e citações)",
+     "busca": "(conversation_id:2116251466734436605 OR url:2116251466734436605 OR quoted_tweet_id:2116251466734436605)"
+    },
+    {
+     "termo": "B agora: greve de professores em Sergipe",
+     "busca": "(greve OR professores OR professoras) Sergipe (corte OR cortes OR Lula OR educação OR eleição) since:{desde}"
+    },
+    {
+     "termo": "C agora: corte de R$ 6 bilhões na saúde e educação",
+     "busca": "(\"6 bilhões\" OR \"6 bi\" OR \"15 bilhões\" OR \"5,9 bilhões\") (saúde OR educação) (corte OR cortou OR cortar OR cortes OR congelamento OR congelou) since:{desde}"
+    }
+   ],
+   "posts_instagram": [
+    "https://www.instagram.com/reel/DfHNGsluap8/",
+    "https://www.instagram.com/reel/DfIVXXFsMjM/",
+    "https://www.instagram.com/reel/DfH0zXWx9qI/",
+    "https://www.instagram.com/reel/DfHU1HPJLu-/",
+    "https://www.instagram.com/p/DfH6-KTF250/"
+   ],
+   "buscas_instagram": [
+    "Haddad boicote Davos",
+    "Haddad palito de fósforo",
+    "Lula cortou saúde educação"
+   ],
+   "buscas_facebook": [
+    "Haddad boicote",
+    "Lula cortou 6 bilhões saúde educação",
+    "greve professores Sergipe corte"
+   ],
+   "buscas_kwai": [],
+   "teto_epoca_x_usd": 0.35,
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "Facebook",
+    "TikTok",
+    "YouTube"
+   ]
   }
  ],
  "segredos_por_rede": {

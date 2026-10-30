@@ -11,6 +11,15 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Teste:** `scripts/testes_ci.sh` → OK.
 - **Pardal atualizado (run 41075753799):** geração do TSE de 30/10/2026 09h00: **83.248 denúncias** (1º turno 71.781; 2º turno 11.467) — 5 a menos que na leitura de 26/10 (83.253; 1º turno 71.783, 2º turno 11.470): o TSE revisou o arquivo (registros retirados ou reclassificados; o Atlas guarda as duas leituras em `historico.csv`). `checagens` voltou a rodar com sucesso; `trends` e `tse-alienacao` relançados.
 
+## C19.205 — Caso 018 "Antigo como atual": três episódios, na época × agora (2026-10-30) 🔜
+
+- **Pedido (30/10/2026, 17h33):** Haddad em Davos (vídeos 93cZU_d-KAg e qjmwYUs676E; "os vídeos dessa data devem trazer a visão do vídeo naquele momento"), vídeo de greve de professores em Sergipe (UOL Confere, 29/10) e reportagem da CNN de 2024 como corte de R$ 6 bilhões (Boatos.org, 28/10); "esses 3 são mesmo tipo de caso; quero acompanhar a veiculação por canal e a visão antes e depois; juntamos tudo em um ou criamos 3 casos?". Sugestão aceita: **um caso com três episódios**. Teto: **US$ 5,00 até 15/11**.
+- **Coleta de agora (`casos.json`, caso 018, desde 24/10):** X 4 buscas (Haddad + boicote/Davos/"palito de fósforo"; respostas e citações do post de Carol De Toni; greve de professores em Sergipe; corte de R$ 6/15 bilhões em saúde e educação), leitura diária do X até 15/11 (US$ 0,05/dia, reserva 0,80); Instagram: 5 posts indicados (com compartilhamentos) e 3 buscas de reels; Facebook 3 frases; TikTok 4 buscas (grátis). Tetos: X 2,00, Instagram 1,50, Facebook 0,50, X da época 0,35.
+- **Na época × agora (`scripts/caso_antigo_atual.py` + `caso-antigo-atual.yml`, diário até 15/11):** o YouTube não informa visualizações passadas; a época é reconstruída pelo que tem data: comentários dos vídeos originais por mês (na época × desde 25/10; textos só no privado), vídeos publicados em cada janela (época: 15/01–28/02/2023 e 29/07–15/08/2024; agora: desde 25/10/2026), Google Trends semanal desde 2023, Google Notícias por janela e o X na janela da época (lido uma vez, pago, dentro do teto). Saída `data/casos/018/antes_depois.json`.
+- **Página:** Casos → "Antigo como atual": por episódio, colunas "na época" × "agora", vídeos originais com comentários por mês, vídeos do tema publicados desde 25/10, Trends desde 2023 e os gráficos por rede do caso.
+- **Limite:** o UOL Confere não pôde ser lido pelo Atlas (site bloqueado para a ferramenta de leitura): a data de origem do vídeo de Sergipe fica ⛔ até ser confirmada.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.204 — Termos: "montagem" separada de "fora de contexto" e de "editado" (2026-10-30) ✅
 
 - **Pedido (30/10/2026, 11h52):** "gosto da abordagem" (separar o grupo "montagem / editado / fora de contexto", proposta das 10h47), com o exemplo das reportagens de 2024 que circularam como atuais depois do 2º turno.
