@@ -142,8 +142,10 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
                 for q in caso.get("diario_x", [])]
     if caso.get("_so_posts"):
         # 28/10/2026, 01h10: posts indicados pelo responsável (links), lidos um a um pelo leitor de reels, com compartilhamentos
-        if rede == "instagram" and caso.get("posts_instagram"):
-            return [("indicado pelo responsável", ATOR["instagram_post"], {"username": caso["posts_instagram"], "includeSharesCount": True,
+        # posts_instagram_pendentes (30/10/2026): só os indicados ainda não coletados, sem pagar de novo pelos anteriores
+        lista = caso.get("posts_instagram_pendentes") or caso.get("posts_instagram")
+        if rede == "instagram" and lista:
+            return [("indicado pelo responsável", ATOR["instagram_post"], {"username": lista, "includeSharesCount": True,
                                                                           "includeTranscript": False, "includeDownloadedVideo": False})]
         return []
     if caso.get("_so_frases"):
