@@ -1,0 +1,62 @@
+name: Caso 019 — como o mundo viu a eleição (YouTube em outras línguas; grátis, YouTube Data API)
+
+# Pedido do responsável em 30/10/2026; acompanhamento até 15/11. Cota estimada por execução: ~2.100 unidades
+# (20 buscas × 100, mais vídeos, canais e comentários); roda logo depois da renovação diária da cota (00h no Pacífico).
+on:
+  schedule:
+    - cron: "43 8 * * *"   # todo dia, 05h43 em Brasília
+  workflow_dispatch:
+    inputs:
+      sem_coleta:
+        description: "só reanalisar o que já foi coletado (não gasta cota)"
+        type: boolean
+        default: false
+
+concurrency:
+  group: caso-mundo
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  caso019:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Coletar e analisar
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          SEM: ${{ inputs.sem_coleta || 'false' }}
+        run: |
+          if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
+          python scripts/caso_mundo.py $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=Caso 019::$(echo "$l" | cut -c1-900)"; done < s.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Caso 019 (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Caso 019: como o mundo viu (run ${{ github.run_id }})"

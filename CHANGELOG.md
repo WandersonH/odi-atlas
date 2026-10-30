@@ -4,6 +4,27 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.208 — Caso 019 "Como o mundo viu": a eleição no YouTube em 18 línguas, por continente e país, com rede de comentários por língua (2026-10-30) 🔜
+
+- **Pedido (30/10/2026):** "assim como fizemos a página do debate, uma análise de como o mundo viu nossas eleições: visão por continente e país; coleta de conteúdo no YouTube em outras línguas, com rede de comentários por língua materna".
+- **Coleta (`scripts/caso_mundo.py`, `data/config/caso_mundo.json`, `caso-mundo.yml`, diária às 05h43 até 15/11; grátis, YouTube Data API):**
+  - Busca: 20 consultas em 18 línguas, vídeos publicados desde 16/08, por visualizações. Universo = `pageInfo.totalResults` informado pela API.
+  - Filtro de pertinência: o título ou a descrição cita Brasil, Lula ou Flávio/Bolsonaro.
+  - País = o que o canal declara; vem daí o continente. Vídeos em português ou de canais do Brasil são contados à parte.
+  - Comentários: dos 8 vídeos mais vistos de cada língua, com a língua de cada comentário identificada por py3langid 0.3.0. Um comentário fica "indeterminado" se tiver menos de 20 letras ou confiança abaixo de 0,90.
+  - A página avisa que língua materna não é observável: o que se mede é a língua em que o comentário foi escrito.
+  - Cota estimada: cerca de 2.100 unidades por dia.
+  - Privado: estado e comentários (texto e autor). Público: `data/casos/019/mundo.json`, `rede_linguas.gexf` e `rede_canais_linguas.gexf`. Nome de canal só aparece com 10 mil inscritos ou mais.
+- **Página:** Casos → "Como o mundo viu".
+  - Cartões de resumo e a tabela universo × lidos × % por busca.
+  - Continentes, com quantos vídeos citam Lula e quantos citam Flávio (Lula primeiro).
+  - Série semanal por continente e os 30 países.
+  - Rede língua do vídeo → língua do comentário, com a matriz em % e o universo × amostra dos comentários.
+  - Os 25 vídeos mais vistos e os arquivos para o Gephi.
+- **Teste:** `tests/test_caso_mundo.py` (continentes sem código repetido, pertinência, menções, identificação de língua) e `python -m unittest discover -s tests -v` → OK. Análise rodada com dados sintéticos e página conferida no Chromium com esses dados interceptados (não publicados), sem erros.
+- **Pendente ⛔:** nenhum dado real ainda. A cota do YouTube de hoje acabou (429 em 30/10), então o primeiro run vai para depois da renovação. O resultado entra na próxima entrada.
+- `scripts/testes_ci.sh` instala py3langid 0.3.0 quando falta.
+
 ## C19.207 — 2º turno de 2022 no mapa; caso 018 com a carga paga; caso 012: a coleta não parou em 25/10 (2026-10-30) ✅
 
 - **Mapa (P1, run 41127913421):** o arquivo de dados abertos do TSE já traz o 2º turno dos dois anos. Recortes gravados: `presidente_2t_2022_munzona.csv.gz` (12.566 linhas) e `presidente_2t_2026_munzona.csv.gz` (12.584 linhas). `data/elections_2t.json` (status ok, 0 municípios sem correspondência IBGE):
