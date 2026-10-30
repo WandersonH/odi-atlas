@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.202 — Caso 012: linha do tempo dos vídeos no período eleitoral (2026-10-30) 🔜
+
+- **Pedido (30/10/2026, 10h17):** na página "A frente de fora" (caso 012), "quero uma linha do tempo de vídeos no período eleitoral".
+- **O que mudou:** `caso_canais.py` passa a publicar a lista de vídeos do período (id, canal, data, título, visualizações, curtidas, comentários e temas pelo título/descrição; canais públicos de figuras públicas, sem dado de pessoa comum). Página: bloco "Os vídeos dos três canais, do início da campanha ao pós-eleição", uma faixa por canal, uma bolha por vídeo (tamanho = visualizações, cor = primeiro tema da lista), período eleitoral (16/08 a 25/10) em destaque e marcos (início da propaganda, 1º turno 04/10, 2º turno 25/10, carta de Flávio 28/10), link de cada vídeo; tabela dos 15 mais vistos do período eleitoral. Universo = todos os envios dos canais desde 20/07 (lidos inteiros pela API).
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+- **Pendente:** rodar `caso-canais.yml` (grátis) para gerar a lista e conferir a página.
+
 ## C19.201 — "Fake news, deepfake, cheapfake": os termos fora da academia (Trends e acervo do Atlas) (2026-10-30) 🔜
 
 - **Pedido (30/10/2026, 09h27):** "comparar o uso dos termos fora da academia com a recepção acadêmica que o artigo reconstrói: a frequência de 'fake news', 'deepfake' e 'cheapfake' no Google Trends desde 2017 e nos comentários coletados pelo Atlas" (artigo "Da notícia falsa ao conteúdo sintético", em preparação).

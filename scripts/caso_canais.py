@@ -242,7 +242,11 @@ def analisar(caso: str, cfg: dict, dados: dict, priv: Path, interno: Path, pub: 
         circ["o_que_e"] = "canais ligados aos temas dos seus vídeos (título e descrição); peso = visualizações dos vídeos com o tema"
     return {"caso": caso, "gerado_em_utc": now_utc(), "titulo": cfg["titulo"],
             "comentarios_analise": analise, "universo": universo, "temas_comentarios_por_canal": temas_comentarios_por_canal, "circulacao": circ, "desde": cfg["desde"], "comentarios_desde": cfg["comentarios_desde"],
-            "producao": prod, "publico": publico, "pares": pares, "autores_total": len(todos), "autores_em_todos_os_canais": len(em_todos),
+            "producao": prod, "publico": publico,
+            # linha do tempo dos vídeos (30/10/2026, 10h17: "nessa página quero uma linha do tempo de vídeos no período eleitoral")
+            "videos": [{"id": v["id"], "canal": nome.get(v["canal_id"], v["canal_id"]), "publicado_em": v["publicado_em"], "titulo": v["titulo"],
+                        "visualizacoes": v.get("visualizacoes"), "curtidas": v.get("curtidas"), "comentarios": v.get("comentarios"),
+                        "temas": [t for t, rx in TEMAS.items() if re.search(rx, f"{v['titulo']} {v['descricao']}", re.I)]} for v in envios], "pares": pares, "autores_total": len(todos), "autores_em_todos_os_canais": len(em_todos),
             "comentarios_total": len(rows), "acervo_autores": len(lados), "serie": serie, "temas_regex": TEMAS,
             "redes": {"canais": len(cn), "canais_autores": len(nos), "canais_temas": len(nt)},
             "nota": "Lado no acervo: o autor já comentou (desde a pré-campanha) em vídeos dos canais da campanha de Lula, de Flávio, dos dois ou de nenhum. "
