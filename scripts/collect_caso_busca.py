@@ -92,8 +92,12 @@ CASOS = {
             "youtube": ["demita um petista", "demitir petista", "boicote empresas petistas", "lista de empresas petistas", "demitido por votar em Lula", "assédio eleitoral eleição 2026",
                         "professor petista", "direita apoia direita"],
             "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"demit|demiss|boicot|lista|ass[eé]dio|persegu|empresa|prestador|patr[aã]o|funcion[aá]ri|professor|direita apoia",
+            # 30/10/2026, 22h45: "vamos adicionar aqui as buscas relativas a assédio eleitoral" — grupo próprio, com janela 2022 → 2026
+            "grupos_extra": {"assedio": {"titulo": "Buscas sobre assédio eleitoral",
+                                         "termos": ["assédio eleitoral", "denunciar assédio eleitoral", "demitido por votar", "denúncia MPT", "assédio eleitoral no trabalho"],
+                                         "janelas": ["now 7-d", "today 1-m", "today 12-m", "2022-08-01 2026-10-31"]}},
             "rx_atributo": r"petist|\bpt\b|lula|esquerd|direita|elei|vot",
-            "noticias": ["\"demita um petista\"", "boicote empresas petistas", "demitido por votar em Lula", "assédio eleitoral MPT", "listas de empresas petistas", "demissão eleitor petista",
+            "noticias": ["\"demita um petista\"", "boicote empresas petistas", "demitido por votar em Lula", "assédio eleitoral MPT", "denúncias de assédio eleitoral", "assédio eleitoral demissão", "listas de empresas petistas", "demissão eleitor petista",
                          "\"professor petista\"", "\"direita apoia direita\""],
             "janela_noticias": "7d", "checagens": ["demita um petista", "lista empresas petistas boicote"], "arquivo_web": []},
     # 27/10 (22h45): "Onde está Flávio?" e "Flávio fugiu" depois do 2º turno; Trends de 12 meses para comparar com jul/2025 e mai/2026
@@ -171,9 +175,14 @@ def trends() -> dict:
     from collect_trends_agora import relacionados
     t = Trends(pause=4)
     out = {}
-    for nome, termos in (("variantes", VARIANTES), ("controles", CONTROLES)):
+    extras = CASOS[CASO].get("grupos_extra") or {}
+    grupos = [("variantes", VARIANTES, JANELAS), ("controles", CONTROLES, JANELAS)] + \
+             [(k, v["termos"], v.get("janelas", JANELAS)) for k, v in extras.items()]
+    for nome, termos, janelas in grupos:
         g = {"termos": termos}
-        for jan in JANELAS:
+        if nome in extras:
+            g["titulo"] = extras[nome].get("titulo")
+        for jan in janelas:
             try:
                 ws = {w["id"]: w for w in t.explore(termos, jan, "BR")}
                 ts = t.widget("multiline", ws["TIMESERIES"])
@@ -195,7 +204,7 @@ def trends() -> dict:
             except Exception as e:  # noqa: BLE001
                 ERROS.append(f"trends {nome} {jan}: {type(e).__name__}: {str(e)[:120]}")
         out[nome] = g
-        print(f"trends {nome}: janelas lidas {[j for j in JANELAS if j in g]}")
+        print(f"trends {nome}: janelas lidas {[j for j in janelas if j in g]}")
     out["aviso"] = ("0 a 100, relativo ao pico dentro de cada consulta (variantes e controles são consultas separadas; o termo "
                     "'onde mora o ladrão' está nas duas como âncora). Interesse relativo não diz a quem as pessoas se referiam.")
     return out

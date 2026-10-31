@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.217 — Caso 014: buscas sobre assédio eleitoral (2026-10-30) 🔜
+
+- **Pedido (30/10/2026, 22h45):** "vamos adicionar aqui as buscas relativas a assédio eleitoral".
+- **Coleta (`collect_caso_busca.py`, grátis):**
+  - Novo grupo de Google Trends `assedio`, com cinco termos na mesma consulta: "assédio eleitoral", "denunciar assédio eleitoral", "demitido por votar", "denúncia MPT" e "assédio eleitoral no trabalho".
+  - Janelas de 7 dias, 30 dias, 12 meses (UFs e consultas relacionadas) e 2022 → 2026. A última compara o pico das eleições de 2022 com o de 2026 na mesma escala.
+  - Novos termos no Google Notícias: "denúncias de assédio eleitoral" e "assédio eleitoral demissão".
+  - Grupos extras agora valem para qualquer caso (`grupos_extra`).
+- **Página:** novo bloco no caso 014, com as janelas, a tabela 2022 × 2026, as UFs e as consultas relacionadas.
+  - Universo de buscas: ⛔ o Google não informa; o Trends é interesse relativo.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Os dados reais entram com o run das buscas do caso, na próxima entrada.
+
 ## C19.216 — Caso 018: circulação e comentários na época × depois da eleição; caso 019: bolhas dos canais; caso 019 com sentimento (2026-10-30) ✅
 
 - **Caso 018, pedido (30/10/2026, 22h32):** "eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições".

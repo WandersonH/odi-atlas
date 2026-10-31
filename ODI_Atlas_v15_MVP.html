@@ -2940,7 +2940,7 @@ fetch('./data/ia/rotulo.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).th
   <div class="intro odi-map-hero"><div class="eyebrow">Caso 014 · X · Instagram · Facebook · Kwai · TikTok · Google · imprensa · MPT</div>
     <h1>"Demita um petista".<br><em>Pedidos de demissão, boicote e listas de empresas depois do 2º turno, hora a hora.</em></h1>
     <p>Desde 25/10/2026, circulam pedidos para demitir eleitores do PT, boicotar empresas e prestadores de serviço identificados como petistas e listas de estabelecimentos. O caso mede a circulação desde o dia da eleição em cada rede, nas buscas e na imprensa, e reúne os números do Ministério Público do Trabalho sobre assédio eleitoral. Nomes de empresas, prestadores e pessoas citados nas listas não são publicados. A série hora a hora por rede está no dossiê do caso em "Casos e análises".</p></div>
-  <div id="cb014Mpt"></div><div id="cb014Candidatos"></div>
+  <div id="cb014Mpt"></div><div id="cb014Candidatos"></div><div id="cb014Assedio"></div>
   <div id="cb014Graficos"></div>
   <div id="cb014Bardin"></div>
   <div id="cb014Corpo"></div>
@@ -3205,6 +3205,30 @@ function montarCaso012(){const el=document.getElementById('cb012Corpo');if(!el)r
   const d=document.getElementById('cb012Data');if(d)d.textContent='atualizado '+dt(R.gerado_em_utc);
  }).catch(()=>{el.innerHTML='<p class="yt-cloudnote">⛔ Coleta do caso 012 ainda não disponível.</p>';});
 }
+/* Caso 014 (30/10/2026, 22h45): "vamos adicionar aqui as buscas relativas a assédio eleitoral" (data/casos/014/busca.json, trends.assedio). */
+function montarAssedio014(){const el=document.getElementById('cb014Assedio');if(!el)return;
+ const e=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const CO=['#b3261e','#172238','#297de2','#d7a14a','#1f8a3b'];
+ fetch('./data/casos/014/busca.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(B=>{const g=(B.trends||{}).assedio;
+  if(!g){el.innerHTML=`<div class="card" style="padding:12px 14px;margin:14px 0"><div class="eyebrow">Google Trends · assédio eleitoral</div><div class="odi-signal">⛔ Buscas sobre assédio eleitoral ainda não lidas (entram na próxima coleta de buscas do caso).</div></div>`;return;}
+  const JAN=[['now 7-d','7 dias'],['today 1-m','30 dias'],['today 12-m','12 meses'],['2022-08-01 2026-10-31','2022 → 2026']].filter(([k])=>(g[k]||[]).length);let jan=JAN.length?JAN[JAN.length-1][0]:null;
+  const linha=pts=>{if(!pts||!pts.length)return '<p class="yt-cloudnote">⛔ sem pontos nesta janela.</p>';const W=760,H=220,L=34,B2=190,X=i=>L+i*(W-L-10)/Math.max(1,pts.length-1),Y=v=>B2-v/100*(B2-15);
+   let s=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto" role="img" aria-label="Interesse de busca">`;[0,50,100].forEach(v=>s+=`<line x1="${L}" x2="${W-10}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e8edf3"/><text x="${L-5}" y="${Y(v)+4}" font-size="10" text-anchor="end" fill="#667078">${v}</text>`);
+   g.termos.forEach((tm,j)=>{s+=`<polyline points="${pts.map((p,i)=>X(i)+','+Y(p.v[tm]||0)).join(' ')}" fill="none" stroke="${CO[j%5]}" stroke-width="2"/>`;});
+   [0,Math.floor(pts.length/2),pts.length-1].forEach(i=>s+=`<text x="${X(i)}" y="${B2+16}" font-size="10" text-anchor="middle" fill="#667078">${new Date(pts[i].t).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'})}</text>`);
+   pts.forEach((p,i)=>{const tt=g.termos.map(tm=>tm+': '+(p.v[tm]||0)).join(' · ');s+=`<rect x="${X(i)-2}" y="15" width="4" height="${B2-15}" fill="transparent"><title>${new Date(p.t).toLocaleString('pt-BR')} · ${e(tt)}</title></rect>`;});return s+'</svg>';};
+  const picos=pts=>g.termos.map(tm=>{let m=null;(pts||[]).forEach(p=>{if(!m||(p.v[tm]||0)>(m.v[tm]||0))m=p;});return m&&(m.v[tm]||0)>0?`${e(tm)}: pico em ${new Date(m.t).toLocaleDateString('pt-BR')}`:`${e(tm)}: sem interesse medido`;}).join(' · ');
+  const comp=(()=>{const P=g['2022-08-01 2026-10-31'];if(!P)return '';const mx=(a,b,tm)=>Math.max(0,...P.filter(p=>p.t.slice(0,10)>=a&&p.t.slice(0,10)<=b).map(p=>p.v[tm]||0));
+   return `<div style="overflow-x:auto"><table class="db-tab" style="width:100%;font-size:12.5px"><thead><tr><th>Termo</th><th style="text-align:right">Máximo em out–nov/2022</th><th style="text-align:right">Máximo em out/2026</th></tr></thead><tbody>${g.termos.map(tm=>`<tr><td>${e(tm)}</td><td style="text-align:right">${mx('2022-10-01','2022-11-30',tm)}</td><td style="text-align:right"><b>${mx('2026-10-01','2026-10-31',tm)}</b></td></tr>`).join('')}</tbody></table></div><p class="yt-cloudnote">Na mesma consulta (2022 → 2026, pontos semanais), 0 a 100 relativo ao maior ponto do período inteiro; por isso 2022 e 2026 são comparáveis entre si.</p>`;})();
+  const draw=()=>{const ufs=(g.uf_12m||[]).filter(u=>(u.v['assédio eleitoral']||0)>0).sort((a,b)=>(b.v['assédio eleitoral']||0)-(a.v['assédio eleitoral']||0)).slice(0,10);
+   el.innerHTML=`<div class="card" style="padding:12px 14px;margin:14px 0"><div class="eyebrow">Google Trends · buscas sobre assédio eleitoral</div><h2 style="font:700 22px Georgia,serif;margin:6px 0">O que as pessoas procuraram sobre assédio eleitoral</h2>
+   <div class="pt-chips" role="group">${JAN.map(([k,r])=>`<button type="button" data-j="${k}" aria-pressed="${k===jan}">${r}</button>`).join('')}</div>
+   <div style="font-size:12px;margin:6px 0">${g.termos.map((tm,j)=>`<span style="margin-right:12px"><span style="display:inline-block;width:12px;height:3px;background:${CO[j%5]};vertical-align:middle"></span> ${e(tm)}</span>`).join('')}</div>${linha(g[jan])}<p class="yt-cloudnote">${picos(g[jan])}</p>${comp}
+   ${ufs.length?`<p class="yt-cloudnote"><b>UFs com mais interesse em "assédio eleitoral" (12 meses, 0 a 100):</b> ${ufs.map(u=>`${e(u.uf)} ${u.v['assédio eleitoral']}`).join(' · ')}</p>`:''}
+   ${g.relacionados_12m?`<p class="yt-cloudnote"><b>Consultas relacionadas (12 meses):</b><br>${Object.entries(g.relacionados_12m).map(([tm,ls])=>`${e(tm)}: ${Object.values(ls).flat().slice(0,8).map(x=>e(x.texto)).join(' · ')||'—'}`).join('<br>')}</p>`:''}
+   <p class="yt-cloudnote">Google Trends, Brasil, interesse relativo (0 a 100, ao pico de cada consulta); não é número de buscas: o universo de buscas o Google não informa (⛔). Os cinco termos estão na mesma consulta e podem ser comparados entre si. Termos: ${g.termos.map(e).join(', ')}.</p></div>`;
+   el.querySelectorAll('[data-j]').forEach(b=>b.addEventListener('click',()=>{jan=b.dataset.j;draw();}));};
+  draw();}).catch(()=>{el.innerHTML='';});}
 /* Caso 014 (30/10/2026, 20h55): "cruzamento com as redes de candidato pra sinalizar candidatos e legendas que faltam sobre o tema, em apoio ou crítica" (data/casos/014/candidatos.json). */
 function montarCandidatos014(){const el=document.getElementById('cb014Candidatos');if(!el)return;
  const e=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));const n=v=>v==null?'—':Number(v).toLocaleString('pt-BR');const dbr=s=>s?String(s).slice(0,10).split('-').reverse().join('/'):'—';
@@ -3573,7 +3597,7 @@ function draw(R){const el=$('cb'+caso+'Corpo');if(!R){el.innerHTML=`<div class="
   box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="100%" class="cs-board" role="img" aria-label="Rede do caso">${sv}</svg><p class="yt-cloudnote">${esc(r.o_que_e)}. Desenho com os ${d.nos.length} nós de maior peso de ${nf(d.total_nos)} (${nf(d.total_arestas)} ligações no arquivo; ${d.comunidades} comunidades). Nós escuros = termos de busca ou hashtags.${ex} <a href="./data/casos/${caso}/${r.gexf||('rede_'+(redeSel==='circulacao'?'circulacao':redeSel==='palavras'?'palavras_comentarios':'respostas_comentarios')+'.gexf')}" download>↓ GEXF para o Gephi</a></p>`;}}}
 function carregar(){if(cache[caso]!==undefined)return draw(cache[caso]);fetch(`./data/casos/${caso}/busca.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(x=>{cache[caso]=x;draw(x);}).catch(()=>draw(null));}
 carregar();}
-montarCasoBusca('005');montarCasoBusca('002');montarCasoBusca('001');montarCasoBusca('003');montarCasoBusca('006');montarCasoBusca('007');montarCasoBusca('008');montarCasoBusca('009');montarCasoBusca('013');montarCasoBusca('014');montarCasoBusca('016');montarCasoBusca('017');montarCasoBusca('020');montarSerp020();montarGraficosCaso('020');montarDossie017();montarCaso018();montarComparacao018();montarCaso019();montarGraficosCaso('018');montarMpt014();montarCandidatos014();montarBardin014();montarGraficosCaso('014');montarGraficosCaso('016');montarGraficosCaso('017');montarCirculacao('009');montarCaso010();montarCaso011();montarCirculacao('011');montarCaso012();montarLinha012();
+montarCasoBusca('005');montarCasoBusca('002');montarCasoBusca('001');montarCasoBusca('003');montarCasoBusca('006');montarCasoBusca('007');montarCasoBusca('008');montarCasoBusca('009');montarCasoBusca('013');montarCasoBusca('014');montarCasoBusca('016');montarCasoBusca('017');montarCasoBusca('020');montarSerp020();montarGraficosCaso('020');montarDossie017();montarCaso018();montarComparacao018();montarCaso019();montarGraficosCaso('018');montarMpt014();montarCandidatos014();montarAssedio014();montarBardin014();montarGraficosCaso('014');montarGraficosCaso('016');montarGraficosCaso('017');montarCirculacao('009');montarCaso010();montarCaso011();montarCirculacao('011');montarCaso012();montarLinha012();
 </script>
 <section class="panel" id="debate" aria-label="Caderno 05 Debate do 2º turno no Google Trends">
   <div class="paper-ribbon"><span>CADERNO 05 / BUSCAS · DEBATE BAND/ESTADÃO · 2º TURNO</span><span id="dbData">—</span></div>
