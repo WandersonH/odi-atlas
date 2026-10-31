@@ -4,6 +4,24 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.223 — Casos 021 e 022: resultados da carga; leitura do X em dobro corrigida (2026-10-31) ✅
+
+- **Caso 021, fatias mensais no X (run 41243030739):**
+  - jul 531, ago 514, set 650, out até 24 609. Nenhuma fatia bateu no limite, então nesses meses a amostra é tudo o que a busca devolveu.
+  - **Total do caso: 4.671 publicações de 1.829 contas.** X 4.420 (12,3 milhões de visualizações); Instagram 97; Facebook 154; TikTok ⛔ 0.
+  - Gasto: US$ 2,3789 de US$ 3,80.
+  - **Erro meu:** o modo `rodada2` já passa `--rede x`, e eu também mandei "x" na entrada. O X foi lido duas vezes na mesma execução, a cópia custou US$ 0,3448 e os itens foram deduplicados. Correção em `collect_casos.py`: a lista de redes não aceita repetição.
+- **Caso 022 ("Relatório Pericial Independente"), carga (runs 41243445796, 41243812447 e 41244153041):** **3.351 publicações de 2.704 contas desde 28/10.** Gasto US$ 1,5298 de US$ 3,80.
+  - X: 3.110 publicações, 13.907.996 visualizações.
+    - Busca do relatório (17h, biometria, Benford): 1.081.
+    - Posts de @JoeyMannarino sobre o Brasil desde 01/10: 51.
+    - Menções a Joey Mannarino e o Brasil: 2.000, **no limite** (as mais recentes).
+  - Instagram: 108 publicações, 32.265.157 visualizações (reels "Joey Mannarino Brasil" 35; "relatório pericial independente" 27).
+  - Facebook: 133. TikTok: ⛔ 0.
+  - Pico: 29/10, 18h (horário de Brasília), com 220 publicações na hora.
+  - Notícias: 96. YouTube: ⛔ 429 (cota).
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.222 — Caso 021: primeira carga e fatias mensais no X; caso 022 "Relatório Pericial Independente"; caso 019: série diária (2026-10-31) 🔜
 
 - **Caso 021 ("O Sul é meu país"), carga: 3.266 publicações de 1.670 contas desde 01/07.** Custo US$ 1,6906 de US$ 3,80. Manifestos 20261031T205925Z, 20261031T210441Z e 20261031T210945Z.

@@ -342,7 +342,8 @@ def main(argv=None, executar=None) -> int:
     cfg = json.loads((root / "data/config/casos.json").read_text(encoding="utf-8"))
     teste = "--teste" in argv
     so = [argv[i + 1] for i, a in enumerate(argv) if a == "--caso"]
-    redes = [argv[i + 1] for i, a in enumerate(argv) if a == "--rede"] or list(REDES)
+    # sem repetição: em 31/10/2026 o modo rodada2 (que já passa --rede x) + a entrada "x" leram o X duas vezes (US$ 0,34 a mais)
+    redes = list(dict.fromkeys(argv[i + 1] for i, a in enumerate(argv) if a == "--rede")) or list(REDES)
     agora = now_utc()
     interno = os.environ.get("ODI_INTERNO_DIR")
     usadas: set[str] = set()
