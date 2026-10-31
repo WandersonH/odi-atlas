@@ -1602,6 +1602,30 @@
      "busca": "((plebiscito OR \"consulta popular\" OR referendo) (\"separar o sul\" OR \"separação do sul\" OR \"região sul\" OR \"sul do brasil\") (separa OR separação OR independência OR país)) since:2026-07-01",
      "motivo": "plebiscitos e consultas",
      "rodada": 1
+    },
+    {
+     "termo": "O Sul é meu país (jul)",
+     "busca": "(\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-07-01 until:2026-08-01",
+     "motivo": "31/10/2026: a busca única bateu no limite de 3.000 (as mais recentes); fatias mensais cobrem a pré-campanha e a campanha",
+     "rodada": 2
+    },
+    {
+     "termo": "O Sul é meu país (ago)",
+     "busca": "(\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-08-01 until:2026-09-01",
+     "motivo": "31/10/2026: a busca única bateu no limite de 3.000 (as mais recentes); fatias mensais cobrem a pré-campanha e a campanha",
+     "rodada": 2
+    },
+    {
+     "termo": "O Sul é meu país (set)",
+     "busca": "(\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-09-01 until:2026-10-01",
+     "motivo": "31/10/2026: a busca única bateu no limite de 3.000 (as mais recentes); fatias mensais cobrem a pré-campanha e a campanha",
+     "rodada": 2
+    },
+    {
+     "termo": "O Sul é meu país (out até 24)",
+     "busca": "(\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-10-01 until:2026-10-25",
+     "motivo": "31/10/2026: a busca única bateu no limite de 3.000 (as mais recentes); fatias mensais cobrem a pré-campanha e a campanha",
+     "rodada": 2
     }
    ],
    "diario_x": [
@@ -1628,6 +1652,134 @@
     "plebiscito separação sul"
    ],
    "buscas_kwai": [],
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "Facebook",
+    "TikTok",
+    "YouTube",
+    "Google"
+   ]
+  },
+  {
+   "id": "022",
+   "slug": "relatorio-pericial-independente",
+   "titulo": "\"Relatório Pericial Independente\": documento apócrifo que alega fraude no 2º turno",
+   "tipo": "desinformação sobre a integridade eleitoral",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-10-28",
+   "aba": "caso022",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 31/10/2026, 18h06 (\"relatório pericial independente Joey Marino, próximo caso\") e 18h1x: teto US$ 4,00 (\"carga nas 3 redes, posts de Joey Mannarino sobre o Brasil e leitura diária no X\"), conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis.",
+   "descricao": "Documento de quatro a sete páginas, sem autor, intitulado \"Relatório Pericial Independente — Eleições 2026\" e datado de 28/10/2026, alega fraude no 2º turno: votos depois das 17h, habilitações sem biometria, seções unânimes, Lei de Benford e indisponibilidade de boletins. Circulou no X e no Instagram (prints atribuídos à conta do comentarista americano Joey Mannarino). A Justiça Eleitoral (Fato ou Boato, 28/10) e a Lupa (30/10) classificaram as alegações como falsas ou sem contexto: foram 34.393 votos depois das 17h, para uma diferença de 4.430.191 votos. O caso mede a circulação desde 28/10 em cada rede, as buscas, a imprensa e as checagens.",
+   "hashtags": [
+    "relatoriopericial",
+    "fraudeeleitoral2026",
+    "relatoriopericialindependente"
+   ],
+   "buscas_tiktok": [
+    "relatório pericial eleição",
+    "fraude urna 2026",
+    "votos depois das 17h",
+    "votos sem biometria"
+   ],
+   "rolagens_tiktok": 20,
+   "termos_trends": [
+    "relatório pericial",
+    "votos sem biometria",
+    "lei de Benford"
+   ],
+   "termos_noticias": [
+    "\"relatório pericial independente\"",
+    "relatório apócrifo fraude eleição",
+    "votos após 17h TSE",
+    "votos sem biometria segundo turno",
+    "Joey Mannarino Lula"
+   ],
+   "filtro_titulo_noticias": [
+    "relatório",
+    "relatorio",
+    "pericial",
+    "17h",
+    "biometria",
+    "Benford",
+    "fraude",
+    "Mannarino",
+    "apócrifo"
+   ],
+   "maximo_por_termo": 2000,
+   "teto_usd": {
+    "x": 1.8,
+    "instagram": 1.4,
+    "facebook": 0.6,
+    "kwai": 0.0
+   },
+   "reserva_diaria_usd": {
+    "x": 0.5
+   },
+   "teto_diario_usd": {
+    "x": 0.04
+   },
+   "diario_ate": "2026-11-15",
+   "complementos_x": [
+    {
+     "termo": "Relatório pericial / 17h / biometria / Benford",
+     "busca": "(\"relatório pericial\" OR \"relatorio pericial\" OR \"laudo pericial independente\" OR \"perícia independente\" OR \"votos após as 17h\" OR \"votos depois das 17h\" OR \"votos sem biometria\" OR \"sem biometria\" urna OR \"lei de Benford\" OR #relatoriopericial OR #fraudeeleitoral2026) since:2026-10-28",
+     "motivo": "o caso",
+     "rodada": 1
+    },
+    {
+     "termo": "posts de Joey Mannarino sobre o Brasil",
+     "busca": "from:JoeyMannarino (Brazil OR Brasil OR Lula OR Bolsonaro OR Brazilian OR Moraes OR election) since:2026-10-01",
+     "motivo": "conta citada como divulgadora dos prints",
+     "rodada": 1
+    },
+    {
+     "termo": "menções a Joey Mannarino e o Brasil",
+     "busca": "(JoeyMannarino OR \"Joey Mannarino\") (Brasil OR Brazil OR Lula OR fraude OR relatório) since:2026-10-25",
+     "motivo": "repercussão da conta no Brasil",
+     "rodada": 1
+    }
+   ],
+   "diario_x": [
+    {
+     "termo": "Relatório pericial / 17h / biometria / Benford",
+     "busca": "(\"relatório pericial\" OR \"relatorio pericial\" OR \"laudo pericial independente\" OR \"perícia independente\" OR \"votos após as 17h\" OR \"votos depois das 17h\" OR \"votos sem biometria\" OR \"sem biometria\" urna OR \"lei de Benford\" OR #relatoriopericial OR #fraudeeleitoral2026) since:{desde}"
+    }
+   ],
+   "hashtags_instagram": [
+    "relatoriopericial",
+    "fraudeeleitoral2026",
+    "fraudenaseleicoes"
+   ],
+   "buscas_instagram": [
+    "relatório pericial independente",
+    "fraude eleição 2026",
+    "votos depois das 17h",
+    "votos sem biometria",
+    "Joey Mannarino Brasil"
+   ],
+   "buscas_facebook": [
+    "relatório pericial independente",
+    "votos depois das 17h fraude",
+    "votos sem biometria urna"
+   ],
+   "buscas_kwai": [],
+   "refutacoes": [
+    {
+     "fonte": "Justiça Eleitoral, Fato ou Boato, 28/10/2026",
+     "url": "https://www.justicaeleitoral.jus.br/fato-ou-boato/checagens/2026/relatorio-apocrifo-distorce-dados-para-sugerir-fraude-nas-eleicoes-2026"
+    },
+    {
+     "fonte": "Lupa, 30/10/2026",
+     "url": "https://www.agencialupa.org/eleicoes/2026/10/30/documento-falso-distorce-dados-do-tse-para-alegar-fraude-na-eleicao-presidencial-de-2026/"
+    },
+    {
+     "fonte": "Repositório público de conferência reproduzível (Oz1el/auditoria-eleitoral-2026, versão de 29/10/2026)",
+     "url": "https://github.com/Oz1el/auditoria-eleitoral-2026"
+    }
+   ],
    "redes_previstas": [
     "X",
     "Instagram",

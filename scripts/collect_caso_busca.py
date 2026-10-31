@@ -124,6 +124,14 @@ CASOS = {
             "rx_atributo": r"fl[aá]vio",
             "noticias": ["carta Flávio Bolsonaro", "Flávio \"presidente eleito\" carta", "Flávio \"líder do Brasil\"", "carta Flávio versões", "Flávio Bolsonaro carta EUA"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro carta", "Flávio Bolsonaro presidente eleito"], "arquivo_web": []},
+    # 31/10 (18h06): "Relatório Pericial Independente" (apócrifo, fraude no 2º turno); prints atribuídos a Joey Mannarino
+    "022": {"variantes": ["relatório pericial", "votos sem biometria", "fraude eleição", "lei de Benford"],
+            "controles": ["urna eletrônica"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
+            "youtube": ["relatório pericial independente eleição 2026", "votos depois das 17h fraude", "votos sem biometria urna", "Lei de Benford eleição Brasil", "Joey Mannarino Brazil"],
+            "desde_yt": "2026-10-28T00:00:00Z", "rx_titulo": r"relat[oó]rio|pericia|17\s?h|biometr|benford|fraud|urna|mannarino",
+            "rx_atributo": r"elei|urna|vot|tse|lula|fl[aá]vio|bolsonar|brazil|brasil",
+            "noticias": ["\"relatório pericial independente\"", "relatório apócrifo fraude eleição", "votos após 17h TSE", "votos sem biometria segundo turno", "Joey Mannarino Lula"],
+            "janela_noticias": "7d", "checagens": ["relatório pericial independente", "votos depois das 17h", "votos sem biometria"], "arquivo_web": []},
     # 31/10 (17h54): "O Sul é meu país" — separatismo do Sul; janela de 5 anos para comparar com o Plebisul (2016/2017)
     "021": {"variantes": ["o sul é meu país", "separação do sul", "plebisul", "sul independente"],
             "controles": ["separatismo"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],

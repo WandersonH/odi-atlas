@@ -4,6 +4,30 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.222 — Caso 021: primeira carga e fatias mensais no X; caso 022 "Relatório Pericial Independente"; caso 019: série diária (2026-10-31) 🔜
+
+- **Caso 021 ("O Sul é meu país"), carga: 3.266 publicações de 1.670 contas desde 01/07.** Custo US$ 1,6906 de US$ 3,80. Manifestos 20261031T205925Z, 20261031T210441Z e 20261031T210945Z.
+  - X: 3.015 publicações; 5.863.898 visualizações.
+    - A busca principal **bateu no limite de 3.000**: as mais recentes. A pré-campanha e a campanha ficaram sub-representadas.
+    - Correção: rodada 2 com fatias mensais (jul, ago, set e out até 24), dentro do teto do X.
+  - Instagram: 97 publicações, 14.831.752 visualizações. Facebook: 154. TikTok: ⛔ 0.
+  - Pico: 26/10, 20h (horário de Brasília), com 93 publicações na hora.
+  - Google Trends, 5 anos:
+    - "separação do sul": pico 57 em 25/10/2026, maior que o de 2024 (42).
+    - "o sul é meu país": 40 em 30/10/2022 e 35 em 25/10/2026.
+    - "sul independente": máximo em set/2022.
+  - Google Notícias: 99 notícias.
+  - YouTube: ⛔ 429 (cota diária do Atlas esgotada por outras coletas).
+- **Caso 022, pedido (31/10/2026, 18h06):** "relatório pericial independente Joey Marino, próximo caso". Teto US$ 4,00, aprovado às 18h1x.
+  - O nome certo é Joey Mannarino (@JoeyMannarino). O relatório é apócrifo, e a atribuição dos prints à conta dele vem do repositório público de conferência (o próprio repositório diz que não é verificação de autoria).
+  - Coleta desde 28/10, com X, Instagram e Facebook pagos e os grátis. No X, também os posts de @JoeyMannarino sobre o Brasil desde 01/10 e as menções a ele.
+  - Página com o quadro das checagens: Justiça Eleitoral (28/10) e Lupa (30/10). O repositório Oz1el/auditoria-eleitoral-2026 informa 499.207 boletins e 128.236.074 votos reconstruídos, com totais iguais aos oficiais; esse resultado é declarado pelo projeto, não verificado pelo Atlas.
+- **Caso 019, pergunta (31/10, 18h16):** "por que aqui parou no dia 26?".
+  - **Não parou:** os dados vão até 31/10 (vídeo mais recente de 31/10, 12h00 UTC; comentários até 31/10).
+  - A barra semanal tinha o rótulo "26/10" para a semana de 26/10 a 01/11, e isso parecia o fim da coleta.
+  - Agora o gráfico é diário, de 16/08 até o dia da última leitura. A nota explica o pico de 26/10 (360 vídeos, o dia seguinte ao 2º turno).
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Chromium local: gráfico diário renderizado, sem erros.
+
 ## C19.221 — Caso 019: primeira coleta completa (2026-10-31) ✅
 
 - **Run agendado de 31/10 (14h45 UTC):** 896 vídeos achados e pertinentes ou não.
