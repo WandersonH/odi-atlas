@@ -259,6 +259,9 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
                 limite.add(ROTULO[m["rede"]])
     g = json.loads((pasta / "google.json").read_text(encoding="utf-8")) if (pasta / "google.json").exists() else {}
     noticias = g.get("noticias") or []
+    if caso.get("mascarar_regex"):
+        _m = re.compile(caso["mascarar_regex"], re.I)
+        noticias = [{**n, "titulo": _m.sub("[menino]", n.get("titulo") or "")} for n in noticias]
     man = json.loads((pasta / "manifesto_latest.json").read_text(encoding="utf-8")) if (pasta / "manifesto_latest.json").exists() else {}
     metodo = [{"rede": ROTULO.get(m.get("rede"), "Google" if m.get("rede") == "google" else m.get("rede")), "ferramenta": m.get("ferramenta") or ", ".join(sorted({t.get("ator", "") for t in m.get("termos", []) if isinstance(t, dict)})),
                "status": m.get("status"), "itens_pedidos_por_termo": m.get("itens_pedidos_por_termo"),

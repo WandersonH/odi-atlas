@@ -18,7 +18,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Vários resultados vêm como links de redirecionamento do Google (`google.com/goto`). O domínio agora sai do endereço exibido; na 1ª leitura ficou marcado como ⛔ não informado.
 - **Proteção da criança:** a 1ª leitura do ranking e o `caso.json` publicavam títulos e legendas com o nome do menino.
   - Corrigido: `mascarar_regex` troca o nome por "[menino]" no ranking, na galeria e nas palavras do caso.
-  - Publicações de redes sociais no ranking ficam sem link (`serp_ocultar_links_redes`).
+  - Publicações de redes sociais no ranking ficam sem link (`serp_ocultar_links_redes`). Títulos de notícias do caso também são mascarados.
   - Pela regra 8, nada foi apagado: a cópia original da 1ª leitura foi movida para o repositório privado (`casos/020/serp_publico_original_20261031T0022Z.json`). O histórico do git não foi reescrito.
 - **Teste:** `python -m unittest discover -s tests -v` → OK.
 
