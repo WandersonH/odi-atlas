@@ -4,6 +4,25 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.221 — Caso 019: primeira coleta completa (2026-10-31) ✅
+
+- **Run agendado de 31/10 (14h45 UTC):** 896 vídeos achados e pertinentes ou não.
+  - **771 do mundo**, fora do português e de canais do Brasil.
+  - 125 em português ou de canais do Brasil, contados à parte.
+- **Por continente (vídeos):** Ásia 292, Europa 199, América do Norte/Central/Caribe 153, América do Sul 88, Oceania 4, África 1. País ⛔ não informado: 34.
+- **Por país (visualizações):** EUA 9,2 milhões (128 vídeos); Argentina 5,8 milhões; Japão 4,6 milhões; México 4,4 milhões; Índia 4,0 milhões; Coreia do Sul 3,8 milhões; Reino Unido 3,6 milhões.
+- **Por língua:** inglês 222 vídeos (23,5 milhões de visualizações); espanhol 160 (20,9 milhões); japonês 45; coreano 49; hindi 16; francês 47; árabe 44.
+- **Mais visto:** Last Week Tonight (John Oliver), 4.895.433. Depois: NHK/Japão, 2,7 milhões; transmissão do México, 1,7 milhão; Índia, 1,6 milhão.
+- **Comentários: 9.898 lidos.**
+  - Língua indeterminada: 3.432.
+  - Vídeos em inglês 1.913; japonês 1.639; coreano 1.433; francês 1.174; espanhol 879.
+  - Universo e amostra por língua estão na página.
+- **Sentimento:** 4.180 comentários classificados (todos os elegíveis). 56,3% negativos, 16,9% neutros e 26,8% positivos.
+  - Que citam Lula (667): 64,2% negativos e 25,2% positivos.
+  - Que citam Flávio/Bolsonaro (475): 77,5% negativos e 10,3% positivos.
+- **Bardin:** 42,9% dos 4.048 comentários cobertos têm alguma categoria. EUA/Trump 11,9%, humor 9,1%, corrupção 6,3%, comunismo/esquerda 6,2%, democracia 5,9%.
+- **Teste:** o run passou pelos testes do CI → OK.
+
 ## C19.220 — Google Trends do caderno parado desde 27/10 (tópico de Flávio virou "Senador") (2026-10-31) ✅
 
 - **Pergunta (31/10/2026, 17h56):** "coletas diárias rolaram todas, né?". Conferi a última execução de cada workflow agendado: 41 de 43 ok hoje.
