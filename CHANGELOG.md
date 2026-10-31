@@ -4,6 +4,33 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.216 — Caso 018: circulação e comentários na época × depois da eleição; caso 019: bolhas dos canais; caso 019 com sentimento (2026-10-30) ✅
+
+- **Caso 018, pedido (30/10/2026, 22h32):** "eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições".
+  - Novo `scripts/caso018_comparacao.py`, rodado todo dia no `caso-antigo-atual.yml` com o modelo de sentimento.
+  - Por episódio, os dois períodos passam pelo mesmo filtro de pertinência e são comparados em: publicações, contas, visualizações, curtidas, respostas recebidas, pico, dias até metade, curva por dia desde o dia 0, contas de 10 mil+ e contas presentes nos dois períodos.
+  - Também: palavras típicas de cada período, comentários do vídeo original do YouTube (época × depois de 25/10) e sentimento (pysentimiento/bertweet-pt-sentiment).
+  - Instagram e Facebook não têm busca retroativa: ⛔ na época.
+- **Prévia local, com os dados do privado e sem sentimento:**
+  - **Episódio A (Haddad em Davos):**
+    - X na época: 789 publicações e 559 contas, pico em 17/01/2023 (273). Contas de 10 mil+ eram sobretudo imprensa (GloboNews, CNN Brasil, UOL, Metrópoles...).
+    - X agora: 1.144 publicações e 779 contas, pico em 29/10/2026 (462). Contas de 10 mil+ são perfis pessoais e partidários.
+    - Instagram agora: 89 publicações, 7.950.830 visualizações. Facebook agora: 21.
+    - 12 contas publicaram nos dois períodos.
+    - Palavras típicas da época: "davos", "marina", "reforma", "fiscal". De agora: "boicote", "palito", "fósforo", "listas".
+    - Vídeo original no YouTube: 734 comentários na época e 0 depois de 25/10.
+  - **Episódio C (CNN, julho de 2024):** X na época 72, agora 111. Instagram agora 2; Facebook agora 19. Nenhuma conta nos dois períodos. Palavras típicas da época: "congelamento", "orçamento", "PAC". De agora: "cortou", "fake", "news".
+  - **Episódio B (greve em Sergipe):** a época é ⛔, porque a data de origem não foi confirmada (UOL Confere bloqueado para leitura). X agora: 4; Facebook agora: 5.
+  - Os números publicados saem do workflow (run na próxima entrada); a prévia local não foi publicada.
+- **Reel indicado DdbmiEmoCrr** (30/10, 22h32): entra em `posts_instagram` do caso 018 e é coletado no modo "posts".
+- **Caso 019:**
+  - Sentimento (run 41155649768, sem coleta): 291 de 291 comentários elegíveis classificados. 55,3% negativos, 23,0% neutros e 21,6% positivos.
+    - Que citam Lula (27): 70,4% negativos.
+    - Que citam Flávio/Bolsonaro (29): 75,9% negativos.
+    - O tom não diz a quem se dirige.
+  - Novo bloco de bolhas: cada bolha é um canal, com tamanho = visualizações e cor = continente (pedido de 30/10, 22h31: "coloque bolhas, redes também").
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Chromium local: comparação do 018 e bolhas do 019 renderizadas, sem erros.
+
 ## C19.215 — Caso 019: comentários, Gephi, linha do tempo, IRaMuTeQ, sentimento e Bardin (2026-10-30) ⚠️
 
 - **Pedido (30/10/2026, 22h25):** "parece incompleta: cadê os comentários, o Gephi, linha do tempo dos vídeos, IRaMuTeQ, sentimento e Bardin".

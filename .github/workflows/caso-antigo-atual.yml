@@ -24,6 +24,10 @@ jobs:
           python-version: "3.12"
       - name: Testes
         run: scripts/testes_ci.sh
+      - name: Modelo de sentimento (CPU)
+        run: |
+          pip install -q torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -q transformers==5.20.0 emoji==2.16.0
       - name: Repositório privado
         id: interno
         env:
@@ -39,6 +43,7 @@ jobs:
         run: |
           if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
           python scripts/caso_antigo_atual.py > s.txt 2>&1; rc=$?
+          python scripts/caso018_comparacao.py >> s.txt 2>&1 || rc=1
           while IFS= read -r l; do echo "::notice title=Caso 018::$(echo "$l" | cut -c1-900)"; done < s.txt
           exit $rc
       - name: Gravar no repositório privado
