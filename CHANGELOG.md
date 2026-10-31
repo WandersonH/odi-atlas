@@ -14,7 +14,17 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Grupos extras agora valem para qualquer caso (`grupos_extra`).
 - **Página:** novo bloco no caso 014, com as janelas, a tabela 2022 × 2026, as UFs e as consultas relacionadas.
   - Universo de buscas: ⛔ o Google não informa; o Trends é interesse relativo.
-- **Teste:** `python -m unittest discover -s tests -v` → OK. Os dados reais entram com o run das buscas do caso, na próxima entrada.
+- **Resultado (run 41157081207):** todas as janelas lidas.
+  - Na consulta 2022 → 2026, pontos semanais, 0 a 100 sobre o período inteiro:
+    - "assédio eleitoral": máximo 100 em out–nov/2022 e 84 em out/2026.
+    - "assédio eleitoral no trabalho": 10 em 2022, 16 em 2026.
+    - "demitido por votar": 0 em 2022, 7 em 2026.
+    - "denúncia MPT": 0 em 2022, 4 em 2026.
+    - "denunciar assédio eleitoral": 6 em 2022, 4 em 2026.
+  - Consultas relacionadas a "assédio eleitoral" (12 meses): "no trabalho", "o que é", "no ambiente de trabalho", "é crime", "denunciar".
+  - A distribuição por UF foi tirada do bloco: com cinco termos na consulta, o Google devolve a participação de cada termo entre os cinco em cada UF ("assédio eleitoral" = 100 em quase todas), o que não mede interesse.
+  - O YouTube continua em 429 (cota).
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Chromium local: bloco renderizado.
 
 ## C19.216 — Caso 018: circulação e comentários na época × depois da eleição; caso 019: bolhas dos canais; caso 019 com sentimento (2026-10-30) ✅
 

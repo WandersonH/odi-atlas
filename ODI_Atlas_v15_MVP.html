@@ -3224,7 +3224,7 @@ function montarAssedio014(){const el=document.getElementById('cb014Assedio');if(
    el.innerHTML=`<div class="card" style="padding:12px 14px;margin:14px 0"><div class="eyebrow">Google Trends · buscas sobre assédio eleitoral</div><h2 style="font:700 22px Georgia,serif;margin:6px 0">O que as pessoas procuraram sobre assédio eleitoral</h2>
    <div class="pt-chips" role="group">${JAN.map(([k,r])=>`<button type="button" data-j="${k}" aria-pressed="${k===jan}">${r}</button>`).join('')}</div>
    <div style="font-size:12px;margin:6px 0">${g.termos.map((tm,j)=>`<span style="margin-right:12px"><span style="display:inline-block;width:12px;height:3px;background:${CO[j%5]};vertical-align:middle"></span> ${e(tm)}</span>`).join('')}</div>${linha(g[jan])}<p class="yt-cloudnote">${picos(g[jan])}</p>${comp}
-   ${ufs.length?`<p class="yt-cloudnote"><b>UFs com mais interesse em "assédio eleitoral" (12 meses, 0 a 100):</b> ${ufs.map(u=>`${e(u.uf)} ${u.v['assédio eleitoral']}`).join(' · ')}</p>`:''}
+
    ${g.relacionados_12m?`<p class="yt-cloudnote"><b>Consultas relacionadas (12 meses):</b><br>${Object.entries(g.relacionados_12m).map(([tm,ls])=>`${e(tm)}: ${Object.values(ls).flat().slice(0,8).map(x=>e(x.texto)).join(' · ')||'—'}`).join('<br>')}</p>`:''}
    <p class="yt-cloudnote">Google Trends, Brasil, interesse relativo (0 a 100, ao pico de cada consulta); não é número de buscas: o universo de buscas o Google não informa (⛔). Os cinco termos estão na mesma consulta e podem ser comparados entre si. Termos: ${g.termos.map(e).join(', ')}.</p></div>`;
    el.querySelectorAll('[data-j]').forEach(b=>b.addEventListener('click',()=>{jan=b.dataset.j;draw();}));};
