@@ -1406,6 +1406,126 @@
     "YouTube"
    ],
    "descricao": "Vídeos sobre a eleição publicados desde 16/08/2026 em 18 línguas, com país declarado pelo canal e continente; comentários dos vídeos mais vistos de cada língua classificados pela língua em que foram escritos (rede língua do vídeo → língua do comentário). Coleta diária grátis pela YouTube Data API até 15/11 (workflow caso-mundo.yml)."
+  },
+  {
+   "id": "020",
+   "slug": "menino-das-balas",
+   "titulo": "O menino que vendia balas: criança constrangida por dizer que votava em Lula, em Fortaleza",
+   "tipo": "intolerância política contra criança",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-10-28",
+   "aba": "caso020",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 30/10/2026, 20h58: \"novo caso ... limite 4 dólares, todas as redes, trends; o foco de tudo foi no Insta; traga notícias e resultados ranqueados na busca\". Conta 1 (APIFY_TOKEN), sem consulta de saldo. Tetos: Instagram 2,00 (foco); X 1,10 (carga até 0,60 + reserva diária 0,50 até 15/11); Facebook 0,45; busca do Google (ranking) 0,30; Kwai 0; TikTok, Trends, YouTube e notícias grátis. Soma US$ 3,85.",
+   "descricao": "Em 28/10/2026, uma influenciadora bolsonarista (Valéria Diniz, cerca de 70 mil seguidores na conta anterior) publicou um vídeo em que manda um menino que vendia balas na Beira-Mar de Fortaleza \"fazer o L\" e se recusa a comprar dele por ele dizer que o voto da família é de Lula. O vídeo viralizou, a conta dela saiu do ar e houve mobilização de doações e um pedido para o menino subir a rampa com Lula na posse. O caso mede a circulação desde 28/10 em todas as redes (foco no Instagram), as buscas, a imprensa e os resultados que o Google mostra no topo. O menino é criança: o Atlas não publica imagem nem o perfil dele, e não guarda a mídia dos vídeos; pessoas comuns não são identificadas.",
+   "protecao_crianca": "Sem imagem nem conta do menino na página (contas_ocultas_regex: a conta dele nunca aparece pelo nome nas listas públicas); o apelido usado pela imprensa só aparece como termo de busca; sem preservação de mídia; comentários apenas no repositório privado.",
+   "hashtags": [
+    "matheusdosbombons",
+    "valeriadiniz",
+    "meninodosbombons"
+   ],
+   "buscas_tiktok": [
+    "Matheus dos Bombons",
+    "Valéria Diniz",
+    "menino balas Fortaleza Lula",
+    "influenciadora menino fazer o L"
+   ],
+   "rolagens_tiktok": 20,
+   "termos_trends": [
+    "Matheus dos Bombons",
+    "Valéria Diniz",
+    "menino balas Fortaleza"
+   ],
+   "termos_noticias": [
+    "Matheus dos Bombons",
+    "Valéria Diniz",
+    "menino balas Fortaleza Lula",
+    "influenciadora menino fazer o L",
+    "menino bombons rampa Lula"
+   ],
+   "filtro_titulo_noticias": [
+    "menino",
+    "bombo",
+    "bala",
+    "Valéria",
+    "Valeria",
+    "Diniz",
+    "criança",
+    "crianca",
+    "fazer o L",
+    "rampa"
+   ],
+   "maximo_por_termo": 1500,
+   "teto_usd": {
+    "x": 1.1,
+    "instagram": 2.0,
+    "facebook": 0.45,
+    "kwai": 0.0,
+    "google_serp": 0.3
+   },
+   "reserva_diaria_usd": {
+    "x": 0.5
+   },
+   "teto_diario_usd": {
+    "x": 0.04
+   },
+   "diario_ate": "2026-11-15",
+   "teto_serp_por_leitura_usd": 0.03,
+   "complementos_x": [
+    {
+     "termo": "menino das balas / Valéria Diniz",
+     "busca": "(\"Matheus dos Bombons\" OR \"menino dos bombons\" OR \"Valéria Diniz\" OR \"Valeria Diniz\" OR \"@valeriadiniz\" OR (\"vendia balas\" Lula) OR (\"vendendo balas\" Lula) OR (\"faz o L\" menino) OR (\"fazer o L\" menino) OR (\"menino autista\" Lula)) since:2026-10-28",
+     "motivo": "o caso",
+     "rodada": 1
+    },
+    {
+     "termo": "rampa / posse com o menino",
+     "busca": "((\"Matheus\" OR menino) (rampa OR posse) (Lula OR Janones) (bombons OR balas OR Fortaleza)) since:2026-10-28",
+     "motivo": "mobilização para levar o menino à posse",
+     "rodada": 1
+    }
+   ],
+   "diario_x": [
+    {
+     "termo": "menino das balas / Valéria Diniz",
+     "busca": "(\"Matheus dos Bombons\" OR \"menino dos bombons\" OR \"Valéria Diniz\" OR \"Valeria Diniz\" OR \"@valeriadiniz\" OR (\"vendia balas\" Lula) OR (\"vendendo balas\" Lula) OR (\"faz o L\" menino) OR (\"fazer o L\" menino) OR (\"menino autista\" Lula)) since:{desde}"
+    }
+   ],
+   "hashtags_instagram": [
+    "matheusdosbombons",
+    "valeriadiniz",
+    "meninodosbombons"
+   ],
+   "buscas_instagram": [
+    "Matheus dos Bombons",
+    "Valéria Diniz",
+    "menino balas Fortaleza",
+    "menino fazer o L",
+    "menino bombons Lula rampa"
+   ],
+   "buscas_facebook": [
+    "Matheus dos Bombons",
+    "Valéria Diniz menino",
+    "menino balas Fortaleza Lula"
+   ],
+   "buscas_kwai": [],
+   "buscas_google_serp": [
+    "Matheus dos Bombons",
+    "Valéria Diniz",
+    "menino balas Fortaleza Lula",
+    "influenciadora menino fazer o L",
+    "Matheus Fortaleza Lula rampa"
+   ],
+   "redes_previstas": [
+    "Instagram",
+    "X",
+    "TikTok",
+    "Facebook",
+    "YouTube",
+    "Google"
+   ],
+   "contas_ocultas_regex": "matheus.{0,12}bomb|bomb.{0,12}matheus|meninodosbombons"
   }
  ],
  "segredos_por_rede": {

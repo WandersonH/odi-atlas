@@ -4,6 +4,30 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.212 — Caso 020 "O menino que vendia balas" (Fortaleza): todas as redes, Trends, notícias e ranking da busca do Google (2026-10-30) 🔜
+
+- **Pedido (30/10/2026, 20h58):** "novo caso usando as keywords Matheus Fortaleza, menino ... recriminado por falar que votava no Lula enquanto vendia balas; isto se iniciou com um post da Valéria Diniz; limite 4 dólares; todas as redes, trends; o foco de tudo foi no Insta; traga notícias e resultados ranqueados na busca relacionados a ele".
+- **Fatos de partida (imprensa):**
+  - Vídeo de Valéria Diniz, viral na noite de 28/10. Ela manda o menino "fazer o L" e se recusa a comprar dele; a conta anterior tinha cerca de 70 mil seguidores, saiu do ar, e ela pediu desculpas em conta nova (Metrópoles, 29/10).
+  - O menino tem 9 anos e vende bombons na Beira-Mar.
+  - Houve mobilização para ele subir a rampa com Lula, com André Janones citado (GCMais, 29/10).
+- **Coleta (`casos.json` caso 020, desde 28/10; conta 1, teto US$ 3,85 dos US$ 4,00 autorizados):**
+  - Instagram (foco), US$ 2,00: 3 hashtags e 5 buscas de reels.
+  - X, US$ 1,10: carga até US$ 0,60, mais 2 buscas complementares e uma leitura diária até 15/11 com reserva de US$ 0,50.
+  - Facebook, US$ 0,45: 3 buscas.
+  - TikTok, Google Trends, Google Notícias, YouTube e checagens: grátis (`collect_caso_busca.py`, caso 020).
+- **Ranking da busca do Google (novo: `scripts/serp_caso.py` + `caso-serp.yml`, diário às 09h29 até 15/11):**
+  - Apify google-search-scraper (a loja informa a partir de US$ 1,80 por 1.000 páginas), US$ 0,30 no total e até US$ 0,03 por leitura.
+  - 5 consultas, primeira página (10 resultados), Brasil, português, sem login.
+  - Guarda posição, título, domínio, o carrossel de notícias, as buscas relacionadas e o "as pessoas também perguntam". Mostra a posição de cada resultado nas leituras anteriores.
+  - Universo: o total que o Google informa por consulta.
+- **Proteção da criança:**
+  - A página não publica imagem nem o perfil do menino. A conta dele nunca aparece pelo nome nas listas públicas, mesmo com 10 mil+ seguidores (`contas_ocultas_regex` em `build_casos.py`).
+  - Não há preservação de mídia, e os comentários ficam só no privado.
+  - O apelido usado pela imprensa aparece só como termo de busca.
+- **Página:** Casos → "O menino que vendia balas", com aviso de proteção, ranking do Google, gráficos e blocos de busca (Trends, notícias, YouTube).
+- **Teste:** `tests/test_serp_caso.py` e `python -m unittest discover -s tests -v` → 265 OK. Resultados reais na próxima entrada.
+
 ## C19.211 — Caso 014: posts indicados coletados, cruzamento com candidatos (TSE) e novos números do MPT (2026-10-30) ✅
 
 - **Posts indicados (run 41147268562 → 3ª tentativa, manifesto 20261031T000100Z):** 2 de 2 coletados, US$ 0,0176. Total do caso: US$ 5,8263, dentro do teto autorizado de US$ 6,10.

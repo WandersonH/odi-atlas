@@ -113,8 +113,12 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     ativ = Counter((r["rede"], r["conta"]) for r in itens if r["conta"])
     codigo = {k: f"C{i:04d}" for i, (k, _) in enumerate(ativ.most_common(), 1)}
 
+    oculta = re.compile(caso["contas_ocultas_regex"], re.I) if caso.get("contas_ocultas_regex") else None
+
     def publico(r) -> str | None:
         k = (r["rede"], r["conta"].lower())
+        if oculta and (oculta.search(r["conta"] or "") or oculta.search(r.get("nome_conta") or "")):
+            return None  # proteção de criança (caso 020): a conta nunca aparece pelo nome, mesmo com 10 mil+ seguidores
         if k in dec:
             return f"@{r['conta']} · perfil de {dec[k]}"
         if num(r.get("seguidores")) >= minimo or str(r.get("verificada")) == "1":

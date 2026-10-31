@@ -1,0 +1,42 @@
+name: Busca do Google ranqueada (casos com buscas_google_serp; Apify, teto por caso)
+
+# Pedido do responsável em 30/10/2026, 20h58 (caso 020): "traga notícias e resultados ranqueados na busca". Um retrato por dia até 15/11.
+on:
+  schedule:
+    - cron: "29 12 * * *"   # todo dia, 09h29 em Brasília
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        default: "020"
+
+concurrency:
+  group: caso-serp
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  serp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Ler o ranking
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
+          python scripts/serp_caso.py --caso ${{ inputs.caso || '020' }} > s.txt 2>&1; rc=$?
+          while IFS= read -r l; do echo "::notice title=SERP::$(echo "$l" | cut -c1-900)"; done < s.txt
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Busca do Google ranqueada (run ${{ github.run_id }})"

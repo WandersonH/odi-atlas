@@ -120,6 +120,15 @@ CASOS = {
             "rx_atributo": r"fl[aá]vio",
             "noticias": ["carta Flávio Bolsonaro", "Flávio \"presidente eleito\" carta", "Flávio \"líder do Brasil\"", "carta Flávio versões", "Flávio Bolsonaro carta EUA"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro carta", "Flávio Bolsonaro presidente eleito"], "arquivo_web": []},
+    # 30/10 (20h58): menino que vendia balas em Fortaleza constrangido por influenciadora por dizer que votava em Lula
+    # (vídeo de Valéria Diniz, 28/10). Criança: o Atlas não publica imagem nem o perfil dele; o apelido da imprensa só como termo de busca.
+    "020": {"variantes": ["Matheus dos Bombons", "Valéria Diniz", "menino balas Fortaleza", "menino fazer o L"],
+            "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m"],
+            "youtube": ["Matheus dos Bombons", "Valéria Diniz menino balas", "menino balas Fortaleza Lula", "influenciadora menino fazer o L Fortaleza"],
+            "desde_yt": "2026-10-28T00:00:00Z", "rx_titulo": r"bombo|bala|menino|crian|val[eé]ria|diniz|fortaleza|fazer o l|rampa",
+            "rx_atributo": r"lula|bolsonar|influenc|val[eé]ria|diniz|janones|rampa|posse",
+            "noticias": ["Matheus dos Bombons", "Valéria Diniz menino", "menino balas Fortaleza Lula", "influenciadora menino fazer o L", "menino autista bombons Lula rampa"],
+            "janela_noticias": "7d", "checagens": ["menino balas Fortaleza", "Valéria Diniz"], "arquivo_web": []},
     # 26/10 (01h41): reel de Nikolas Ferreira "O Nordeste que foi esquecido." (20/10/2026); termos iniciais, revisar com a transcrição
     "009": {"variantes": ["Nordeste esquecido", "Nikolas Nordeste", "Nikolas Ferreira Nordeste vídeo"],
             "controles": ["Nordeste", "Nikolas Ferreira"], "janelas": ["now 7-d", "today 1-m"],
