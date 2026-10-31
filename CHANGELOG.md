@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.220 — Google Trends do caderno parado desde 27/10 (tópico de Flávio virou "Senador") (2026-10-31) ✅
+
+- **Pergunta (31/10/2026, 17h56):** "coletas diárias rolaram todas, né?". Conferi a última execução de cada workflow agendado: 41 de 43 ok hoje.
+- **⛔ `trends.yml` (Google Trends do caderno):** falha em todas as execuções desde 27/10 16h50 UTC.
+  - De 27 a 29/10, os testes falhavam por falta de numpy e networkx (corrigido em C19.203).
+  - Desde 30/10, o Google passou a descrever o tópico de Flávio Bolsonaro como "Senador", não mais candidato a Presidente. O coletor não aceita cair na palavra solta e bloqueava.
+  - Correção: `data/config/trends.json` aceita "Presidente" ou "Senador" para Flávio, e o manifesto registra o tipo do tópico em cada leitura.
+  - O que se recupera: as janelas de 7 dias, 90 dias e 12 meses, que o Google devolve para trás.
+  - O que fica ⛔: os retratos de 24 horas de 27 a 31/10, que não podem ser lidos depois.
+- **⛔ `coletas-gov.yml` (semanal, segundas):** a de 26/10 falhou por tempo esgotado no catálogo do SIDRA/IBGE (rede, não código). Reexecutada agora.
+- Demais workflows diários de 31/10 ok: casos, caso-mundo, caso-serp, caso-antigo-atual, caso-cartas, caso-canais, caso-joice, comentários, seguidores, TSE, X, Instagram, Facebook, Kwai, TikTok, WhatsApp, sentimento, rótulo de IA, checagens e Trends "agora".
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.219 — Caso 021 "O Sul é meu país" (2026-10-31) 🔜
 
 - **Pedido (31/10/2026, 17h54):** "o Sul é meu país, busca no período pré-eleitoral até o momento"; teto US$ 4,00 aprovado na mesma hora.
