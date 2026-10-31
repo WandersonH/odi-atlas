@@ -1,0 +1,1043 @@
+{
+ "caso": "018",
+ "gerado_em_utc": "2026-10-31T01:48:41Z",
+ "corte_pos_eleicao": "2026-10-25",
+ "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
+ "episodios": {
+  "A": {
+   "x_epoca": {
+    "publicacoes": 789,
+    "contas": 559,
+    "visualizacoes": 7480469,
+    "curtidas": 225869,
+    "respostas_recebidas": 18550,
+    "compartilhamentos": 50220,
+    "primeiro_dia": "2023-01-15",
+    "ultimo_dia": "2023-02-27",
+    "pico": {
+     "dia": "2023-01-17",
+     "publicacoes": 273
+    },
+    "dias_ate_metade": 2,
+    "serie_desde_dia0": [
+     15,
+     121,
+     273,
+     224,
+     68,
+     35,
+     8,
+     3,
+     5,
+     11,
+     4,
+     2,
+     1,
+     1,
+     1,
+     0,
+     3,
+     1,
+     1,
+     0,
+     0,
+     1,
+     1,
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     1,
+     1,
+     0,
+     1,
+     1,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     2
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "RubinhoNunes",
+      "seguidores": 196584,
+      "publicacoes": 12
+     },
+     {
+      "rede": "x",
+      "conta": "CNNBrasil",
+      "seguidores": 3284947,
+      "publicacoes": 12
+     },
+     {
+      "rede": "x",
+      "conta": "GloboNews",
+      "seguidores": 5703869,
+      "publicacoes": 12
+     },
+     {
+      "rede": "x",
+      "conta": "CNNEconomia",
+      "seguidores": 301913,
+      "publicacoes": 11
+     },
+     {
+      "rede": "x",
+      "conta": "Metropoles",
+      "seguidores": 1755102,
+      "publicacoes": 8
+     },
+     {
+      "rede": "x",
+      "conta": "JovemPanNews",
+      "seguidores": 2496467,
+      "publicacoes": 8
+     },
+     {
+      "rede": "x",
+      "conta": "leiamoneytimes",
+      "seguidores": 207782,
+      "publicacoes": 7
+     },
+     {
+      "rede": "x",
+      "conta": "BandJornalismo",
+      "seguidores": 1019236,
+      "publicacoes": 7
+     },
+     {
+      "rede": "x",
+      "conta": "palmeriodoria",
+      "seguidores": 97193,
+      "publicacoes": 6
+     },
+     {
+      "rede": "x",
+      "conta": "jornal_cultura",
+      "seguidores": 204571,
+      "publicacoes": 6
+     },
+     {
+      "rede": "x",
+      "conta": "ColunaCH",
+      "seguidores": 86816,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "ATROMBETA3",
+      "seguidores": 149361,
+      "publicacoes": 5
+     }
+    ],
+    "respostas_entre_publicacoes": 148
+   },
+   "x_agora": {
+    "publicacoes": 1144,
+    "contas": 779,
+    "visualizacoes": 1211930,
+    "curtidas": 77881,
+    "respostas_recebidas": 3005,
+    "compartilhamentos": 25495,
+    "primeiro_dia": "2026-10-26",
+    "ultimo_dia": "2026-10-30",
+    "pico": {
+     "dia": "2026-10-29",
+     "publicacoes": 462
+    },
+    "dias_ate_metade": 3,
+    "serie_desde_dia0": [
+     1,
+     55,
+     166,
+     462,
+     460
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "mineirotchotcho",
+      "seguidores": 13825,
+      "publicacoes": 6
+     },
+     {
+      "rede": "x",
+      "conta": "rodrigolima",
+      "seguidores": 83223,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "edivaldocmachad",
+      "seguidores": 71763,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "analelis",
+      "seguidores": 16544,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "luizlima10",
+      "seguidores": 13115,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "JoseValegerio",
+      "seguidores": 17221,
+      "publicacoes": 3
+     },
+     {
+      "rede": "x",
+      "conta": "jornalrazao",
+      "seguidores": 116615,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "O_PontoX",
+      "seguidores": 12239,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "damadanoite14",
+      "seguidores": 98251,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "wallaceolive_r",
+      "seguidores": 10071,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "teresinhalopes",
+      "seguidores": 37491,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "evamanaos",
+      "seguidores": 33635,
+      "publicacoes": 2
+     }
+    ]
+   },
+   "instagram_agora": {
+    "publicacoes": 89,
+    "contas": 89,
+    "visualizacoes": 7950830,
+    "curtidas": 443243,
+    "respostas_recebidas": 36611,
+    "compartilhamentos": 212933,
+    "primeiro_dia": "2026-10-27",
+    "ultimo_dia": "2026-10-30",
+    "pico": {
+     "dia": "2026-10-30",
+     "publicacoes": 60
+    },
+    "dias_ate_metade": 3,
+    "serie_desde_dia0": [
+     1,
+     3,
+     25,
+     60
+    ],
+    "contas_10mil": []
+   },
+   "facebook_agora": {
+    "publicacoes": 21,
+    "contas": 21,
+    "visualizacoes": 0,
+    "curtidas": 13489,
+    "respostas_recebidas": 2237,
+    "compartilhamentos": 20532,
+    "primeiro_dia": "2026-10-28",
+    "ultimo_dia": "2026-10-30",
+    "pico": {
+     "dia": "2026-10-30",
+     "publicacoes": 15
+    },
+    "dias_ate_metade": 2,
+    "serie_desde_dia0": [
+     1,
+     5,
+     15
+    ],
+    "contas_10mil": []
+   },
+   "epoca_instagram_facebook": "⛔ sem busca retroativa no Instagram e no Facebook",
+   "janela_epoca": [
+    "2023-01-15",
+    "2023-02-28"
+   ],
+   "filtro_pertinencia": "haddad.{0,200}(boicot|davos|palito|n[aã]o compr)|(boicot|davos|palito|n[aã]o compr).{0,200}haddad",
+   "contas_nos_dois_periodos": 12,
+   "contas_10mil_nos_dois": [
+    [
+     "o_antagonista",
+     1895641
+    ],
+    [
+     "mspbra",
+     449520
+    ],
+    [
+     "BlogdoBG",
+     128119
+    ],
+    [
+     "DepSostenes",
+     111898
+    ],
+    [
+     "ColunaCH",
+     86815
+    ],
+    [
+     "paulazanelli",
+     82013
+    ],
+    [
+     "PlenoNews",
+     49553
+    ],
+    [
+     "LidiaConta",
+     28564
+    ],
+    [
+     "andrepiedade1",
+     21038
+    ],
+    [
+     "wallaceolive_r",
+     10071
+    ]
+   ],
+   "palavras_tipicas": {
+    "epoca": [
+     [
+      "marina",
+      221
+     ],
+     [
+      "davos",
+      587
+     ],
+     [
+      "reforma",
+      48
+     ],
+     [
+      "fiscal",
+      61
+     ],
+     [
+      "guedes",
+      33
+     ],
+     [
+      "silva",
+      122
+     ],
+     [
+      "semestre",
+      26
+     ],
+     [
+      "tributária",
+      36
+     ],
+     [
+      "fome",
+      41
+     ],
+     [
+      "brasil",
+      192
+     ],
+     [
+      "diz",
+      97
+     ],
+     [
+      "ministra",
+      33
+     ],
+     [
+      "evento",
+      18
+     ],
+     [
+      "passando",
+      26
+     ],
+     [
+      "participam",
+      17
+     ]
+    ],
+    "agora": [
+     [
+      "giants",
+      136
+     ],
+     [
+      "boicote",
+      928
+     ],
+     [
+      "fósforo",
+      161
+     ],
+     [
+      "protocolo",
+      63
+     ],
+     [
+      "sleeping",
+      107
+     ],
+     [
+      "palito",
+      166
+     ],
+     [
+      "listas",
+      72
+     ],
+     [
+      "compromissos",
+      42
+     ],
+     [
+      "polícia",
+      41
+     ],
+     [
+      "escolher",
+      41
+     ],
+     [
+      "investigação",
+      39
+     ],
+     [
+      "janeiro",
+      91
+     ],
+     [
+      "perseguição",
+      37
+     ],
+     [
+      "liberdade",
+      65
+     ],
+     [
+      "pregou",
+      51
+     ]
+    ]
+   },
+   "youtube_comentarios": {
+    "videos": [
+     "qjmwYUs676E",
+     "93cZU_d-KAg"
+    ],
+    "lidos": 743,
+    "na_janela_da_epoca": 734,
+    "depois_de_25_10_2026": 0,
+    "por_mes": {
+     "2023-01": 732,
+     "2023-02": 2,
+     "2023-03": 1,
+     "2023-04": 3,
+     "2023-09": 1,
+     "2024-01": 4
+    },
+    "palavras_tipicas": {
+     "epoca": [],
+     "depois": [
+      [
+       "vejo",
+       0
+      ],
+      [
+       "olha",
+       0
+      ],
+      [
+       "números",
+       0
+      ],
+      [
+       "passam",
+       0
+      ],
+      [
+       "diferente",
+       0
+      ],
+      [
+       "mentirosa",
+       0
+      ],
+      [
+       "vergonha",
+       0
+      ],
+      [
+       "dessa",
+       0
+      ],
+      [
+       "nação",
+       0
+      ],
+      [
+       "salles",
+       0
+      ]
+     ]
+    }
+   },
+   "sentimento": {
+    "yt_epoca": {
+     "n": 733,
+     "NEG": 49.9,
+     "NEU": 24.8,
+     "POS": 25.2
+    },
+    "yt_depois": {
+     "n": 0,
+     "NEG": null,
+     "NEU": null,
+     "POS": null
+    },
+    "x_epoca": {
+     "n": 789,
+     "NEG": 34.2,
+     "NEU": 59.6,
+     "POS": 6.2
+    },
+    "x_agora": {
+     "n": 1144,
+     "NEG": 47.6,
+     "NEU": 50.0,
+     "POS": 2.4
+    },
+    "instagram_agora": {
+     "n": 89,
+     "NEG": 21.3,
+     "NEU": 76.4,
+     "POS": 2.2
+    },
+    "facebook_agora": {
+     "n": 21,
+     "NEG": 23.8,
+     "NEU": 66.7,
+     "POS": 9.5
+    }
+   }
+  },
+  "B": {
+   "x_epoca": null,
+   "x_agora": {
+    "publicacoes": 4,
+    "contas": 4,
+    "visualizacoes": 119,
+    "curtidas": 3,
+    "respostas_recebidas": 2,
+    "compartilhamentos": 0,
+    "primeiro_dia": "2026-10-29",
+    "ultimo_dia": "2026-10-30",
+    "pico": {
+     "dia": "2026-10-29",
+     "publicacoes": 3
+    },
+    "dias_ate_metade": 0,
+    "serie_desde_dia0": [
+     3,
+     1
+    ],
+    "contas_10mil": []
+   },
+   "instagram_agora": {
+    "publicacoes": 0,
+    "contas": 0,
+    "visualizacoes": 0,
+    "curtidas": 0,
+    "respostas_recebidas": 0,
+    "compartilhamentos": 0,
+    "primeiro_dia": null,
+    "ultimo_dia": null,
+    "pico": null,
+    "dias_ate_metade": null,
+    "serie_desde_dia0": [],
+    "contas_10mil": []
+   },
+   "facebook_agora": {
+    "publicacoes": 5,
+    "contas": 5,
+    "visualizacoes": 0,
+    "curtidas": 144,
+    "respostas_recebidas": 117,
+    "compartilhamentos": 70,
+    "primeiro_dia": "2026-10-28",
+    "ultimo_dia": "2026-10-30",
+    "pico": {
+     "dia": "2026-10-30",
+     "publicacoes": 3
+    },
+    "dias_ate_metade": 2,
+    "serie_desde_dia0": [
+     1,
+     1,
+     3
+    ],
+    "contas_10mil": []
+   },
+   "epoca_instagram_facebook": "⛔ sem busca retroativa no Instagram e no Facebook",
+   "janela_epoca": null,
+   "filtro_pertinencia": "greve.{0,200}(sergipe|professor)|(sergipe|professor).{0,200}greve",
+   "sentimento": {
+    "x_epoca": {
+     "n": 0,
+     "NEG": null,
+     "NEU": null,
+     "POS": null
+    },
+    "x_agora": {
+     "n": 4,
+     "NEG": 50.0,
+     "NEU": 50.0,
+     "POS": 0.0
+    },
+    "instagram_agora": {
+     "n": 0,
+     "NEG": null,
+     "NEU": null,
+     "POS": null
+    },
+    "facebook_agora": {
+     "n": 5,
+     "NEG": 20.0,
+     "NEU": 80.0,
+     "POS": 0.0
+    }
+   }
+  },
+  "C": {
+   "x_epoca": {
+    "publicacoes": 72,
+    "contas": 67,
+    "visualizacoes": 485584,
+    "curtidas": 11459,
+    "respostas_recebidas": 1554,
+    "compartilhamentos": 3464,
+    "primeiro_dia": "2024-07-31",
+    "ultimo_dia": "2024-08-14",
+    "pico": {
+     "dia": "2024-07-31",
+     "publicacoes": 38
+    },
+    "dias_ate_metade": 0,
+    "serie_desde_dia0": [
+     38,
+     10,
+     1,
+     4,
+     1,
+     3,
+     6,
+     3,
+     0,
+     1,
+     1,
+     0,
+     0,
+     2,
+     2
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "jonesmanoel_PE",
+      "seguidores": 503262,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "MelesproSilva",
+      "seguidores": 13300,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "freire_roberto",
+      "seguidores": 83526,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "ocafezinho",
+      "seguidores": 87859,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "cirogomes",
+      "seguidores": 1574333,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "UFMAoficial",
+      "seguidores": 22561,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "jackry49",
+      "seguidores": 13376,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "ColunaCH",
+      "seguidores": 86816,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "Jakelyneloiola_",
+      "seguidores": 176831,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "TumultoBR",
+      "seguidores": 354178,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "fernaolmesquita",
+      "seguidores": 144692,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "UOLEconomia",
+      "seguidores": 337734,
+      "publicacoes": 1
+     }
+    ],
+    "respostas_entre_publicacoes": 5
+   },
+   "x_agora": {
+    "publicacoes": 111,
+    "contas": 97,
+    "visualizacoes": 6492837,
+    "curtidas": 74202,
+    "respostas_recebidas": 1908,
+    "compartilhamentos": 4681,
+    "primeiro_dia": "2026-10-25",
+    "ultimo_dia": "2026-10-30",
+    "pico": {
+     "dia": "2026-10-27",
+     "publicacoes": 34
+    },
+    "dias_ate_metade": 3,
+    "serie_desde_dia0": [
+     6,
+     0,
+     34,
+     33,
+     31,
+     7
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "thaixkronbauer",
+      "seguidores": 21943,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "OVeiodoCabare",
+      "seguidores": 15546,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "deneuverse",
+      "seguidores": 10217,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "desireerugani",
+      "seguidores": 205829,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "Berlusconnii",
+      "seguidores": 14757,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "aosfatos",
+      "seguidores": 263826,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "Fernanda_CidL",
+      "seguidores": 74477,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "demetera2",
+      "seguidores": 13552,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "AfpChecamos",
+      "seguidores": 22098,
+      "publicacoes": 1
+     }
+    ]
+   },
+   "instagram_agora": {
+    "publicacoes": 2,
+    "contas": 2,
+    "visualizacoes": 1862333,
+    "curtidas": 68708,
+    "respostas_recebidas": 9130,
+    "compartilhamentos": 48224,
+    "primeiro_dia": "2026-10-27",
+    "ultimo_dia": "2026-10-29",
+    "pico": {
+     "dia": "2026-10-27",
+     "publicacoes": 1
+    },
+    "dias_ate_metade": 0,
+    "serie_desde_dia0": [
+     1,
+     0,
+     1
+    ],
+    "contas_10mil": []
+   },
+   "facebook_agora": {
+    "publicacoes": 19,
+    "contas": 19,
+    "visualizacoes": 0,
+    "curtidas": 2566,
+    "respostas_recebidas": 1675,
+    "compartilhamentos": 1210,
+    "primeiro_dia": "2026-10-24",
+    "ultimo_dia": "2026-10-30",
+    "pico": {
+     "dia": "2026-10-30",
+     "publicacoes": 11
+    },
+    "dias_ate_metade": 6,
+    "serie_desde_dia0": [
+     1,
+     0,
+     0,
+     3,
+     1,
+     3,
+     11
+    ],
+    "contas_10mil": []
+   },
+   "epoca_instagram_facebook": "⛔ sem busca retroativa no Instagram e no Facebook",
+   "janela_epoca": [
+    "2024-07-29",
+    "2024-08-15"
+   ],
+   "filtro_pertinencia": "(bilh|congel|bloquei|corte|cortou|cortar).{0,200}(sa[uú]de|educa)|(sa[uú]de|educa).{0,200}(bilh|congel|bloquei|corte|cortou|cortar)",
+   "contas_nos_dois_periodos": 0,
+   "contas_10mil_nos_dois": [],
+   "palavras_tipicas": {
+    "epoca": [
+     [
+      "congelamento",
+      31
+     ],
+     [
+      "pac",
+      14
+     ],
+     [
+      "orçamento",
+      42
+     ],
+     [
+      "decreto",
+      11
+     ],
+     [
+      "pastas",
+      8
+     ],
+     [
+      "meta",
+      12
+     ],
+     [
+      "cidades",
+      27
+     ],
+     [
+      "foram",
+      14
+     ],
+     [
+      "bloqueio",
+      14
+     ],
+     [
+      "bloqueia",
+      7
+     ],
+     [
+      "governo",
+      56
+     ],
+     [
+      "ministério",
+      25
+     ],
+     [
+      "arcabouço",
+      6
+     ],
+     [
+      "afetadas",
+      6
+     ],
+     [
+      "equilibrar",
+      6
+     ]
+    ],
+    "agora": [
+     [
+      "cortou",
+      46
+     ],
+     [
+      "cortar",
+      31
+     ],
+     [
+      "news",
+      14
+     ],
+     [
+      "fake",
+      13
+     ],
+     [
+      "verdade",
+      12
+     ],
+     [
+      "saude",
+      12
+     ],
+     [
+      "caso",
+      12
+     ],
+     [
+      "reduzir",
+      11
+     ],
+     [
+      "sancionou",
+      11
+     ],
+     [
+      "falar",
+      10
+     ],
+     [
+      "piso",
+      10
+     ],
+     [
+      "complementar",
+      10
+     ],
+     [
+      "senado",
+      10
+     ],
+     [
+      "greve",
+      10
+     ],
+     [
+      "dilma",
+      10
+     ]
+    ]
+   },
+   "sentimento": {
+    "x_epoca": {
+     "n": 72,
+     "NEG": 23.6,
+     "NEU": 76.4,
+     "POS": 0.0
+    },
+    "x_agora": {
+     "n": 111,
+     "NEG": 54.1,
+     "NEU": 44.1,
+     "POS": 1.8
+    },
+    "instagram_agora": {
+     "n": 2,
+     "NEG": 50.0,
+     "NEU": 50.0,
+     "POS": 0.0
+    },
+    "facebook_agora": {
+     "n": 19,
+     "NEG": 15.8,
+     "NEU": 84.2,
+     "POS": 0.0
+    }
+   }
+  }
+ },
+ "sentimento_modelo": "pysentimiento/bertweet-pt-sentiment (o mesmo dos comentários do Atlas; textos em português)",
+ "sentimento_erro": null
+}
