@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.218 — Caso 018: comparação publicada com sentimento; reel DdbmiEmoCrr coletado (2026-10-31) ✅
+
+- **Run 41156169201 (`caso-antigo-atual.yml`):** `data/casos/018/comparacao.json` publicado, com sentimento (pysentimiento/bertweet-pt-sentiment).
+- **Episódio A (Haddad em Davos):**
+  - Tom no X: na época 34,2% negativo, 59,6% neutro e 6,2% positivo (n 789). Agora 47,6% negativo, 50,0% neutro e 2,4% positivo (n 1.144).
+  - Instagram agora: 21,3% negativo (n 89). Facebook agora: 23,8% negativo (n 21).
+  - Comentários do vídeo original no YouTube: na época 49,9% negativos (n 733); depois de 25/10, nenhum comentário.
+- **Episódio C (CNN, 2024):** tom no X: na época 23,6% negativo (n 72); agora 54,1% negativo (n 111).
+- **Episódio B (greve em Sergipe):** agora, X n 4 e Facebook n 5. A época continua ⛔.
+- **Reel DdbmiEmoCrr:** coletado (aparece no bruto do Instagram do caso 018).
+- **Teste:** o run passou pelos testes do CI (`scripts/testes_ci.sh`) → OK.
+
 ## C19.217 — Caso 014: buscas sobre assédio eleitoral (2026-10-30) 🔜
 
 - **Pedido (30/10/2026, 22h45):** "vamos adicionar aqui as buscas relativas a assédio eleitoral".
