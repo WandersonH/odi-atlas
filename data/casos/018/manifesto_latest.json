@@ -1,78 +1,58 @@
 {
  "caso": "018",
  "titulo": "Antigo como atual: falas, vídeos e reportagens antigas recirculadas depois do 2º turno",
- "run_started_utc": "2026-10-31T01:35:09Z",
+ "run_started_utc": "2026-10-31T16:05:27Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-24",
  "redes": [
   {
-   "rede": "instagram",
-   "teto_usd": 1.5,
-   "gasto_antes_usd": 0.4,
-   "teto_execucao_usd": 1.1,
-   "termos": [
-    {
-     "termo": "indicado pelo responsável",
-     "ator": "apify/instagram-reel-scraper",
-     "itens": 1,
-     "lidos": 1,
-     "no_periodo": 0,
-     "no_limite": false,
-     "run": "c4yCRrzGhRYhPIhfC",
-     "custo_usd": 0.0093,
-     "erro": null,
-     "chaves_1o_item": [
-      "alt",
-      "audioUrl",
-      "caption",
-      "childPosts",
-      "coauthorProducers",
-      "commentsCount",
-      "dimensionsHeight",
-      "dimensionsWidth",
-      "displayUrl",
-      "firstComment",
-      "hashtags",
-      "id",
-      "images",
-      "inputUrl",
-      "isCommentsDisabled",
-      "isPinned",
-      "latestComments",
-      "likesCount",
-      "locationId",
-      "locationName",
-      "mentions",
-      "musicInfo",
-      "originalHeight",
-      "originalWidth",
-      "ownerFullName",
-      "ownerId",
-      "ownerUsername",
-      "paidPartnership",
-      "productType",
-      "sharesCount",
-      "shortCode",
-      "taggedUsers",
-      "timestamp",
-      "type",
-      "url",
-      "videoDuration",
-      "videoPlayCount",
-      "videoUrl",
-      "videoViewCount"
-     ],
-     "mais_antigo": null
+   "rede": "tiktok",
+   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
+   "termos": {
+    "Haddad boicote": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "Haddad Davos": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "greve professores Sergipe": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "Lula cortou saúde educação": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
     }
-   ],
-   "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 125,
-   "custo_usd": 0.0093,
-   "status": "⛔ nada no período",
+   },
+   "custo_usd": 0.0,
+   "status": "⛔ nenhum vídeo lido",
+   "itens_no_periodo": 0
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_pontos": 169,
+   "noticias": 17,
+   "status": "ok",
    "itens_no_periodo": 0
   }
  ],
  "itens_acumulados": 1547,
- "custo_usd": 0.0093
+ "custo_usd": 0.0
 }
