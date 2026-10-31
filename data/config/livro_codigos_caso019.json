@@ -1,0 +1,27 @@
+{
+ "caso": "019",
+ "o_que_e": "Livro de códigos multilíngue (análise de conteúdo categorial, Bardin) para os comentários de vídeos estrangeiros sobre a eleição brasileira. Pré-codificação por dicionário (expressões em inglês, espanhol, português, francês, alemão e italiano); um comentário pode ter várias categorias; comentários em outras escritas (árabe, chinês, japonês, russo...) ficam fora da pré-codificação e são informados à parte. A conferência humana de uma amostra é o passo seguinte (Bardin: pré-análise → exploração → inferência).",
+ "linguas_cobertas": ["en", "es", "pt", "fr", "de", "it"],
+ "categorias": {
+  "fraude": {"nome": "Fraude, urnas e eleição roubada", "definicao": "diz ou discute que a eleição foi fraudada, roubada ou manipulada; urnas eletrônicas",
+             "regex": "\\bfraud\\w*|\\brigged\\b|\\bstolen\\b|steal|\\bfraude\\w*|robad[ao]s?|roubad[ao]s?|\\bvol[ée]e?\\b|truqu\\w*|manipul\\w*|\\burnas?\\b|voting machines?|electronic vot\\w*|wahlbetrug|gef[äa]lscht|\\bbrogli\\w*|truccat\\w*"},
+  "democracia": {"nome": "Democracia e instituições", "definicao": "democracia, ditadura, Justiça Eleitoral, STF, Moraes, Estado de direito",
+                 "regex": "democra\\w*|dictator\\w*|dictadur\\w*|ditadur\\w*|dictature|diktatur|dittatur\\w*|supreme court|\\bstf\\b|\\btse\\b|moraes|xand[aã]o|tribunal|rule of law|estado de derecho|estado de direito|\\bcorte\\b|richter|giudic\\w*"},
+  "esquerda_comunismo": {"nome": "Comunismo, socialismo e esquerda", "definicao": "rótulos de comunismo, socialismo, esquerda ou marxismo",
+                         "regex": "communis\\w*|comunis\\w*|socialis\\w*|kommunis\\w*|sozialis\\w*|marxis\\w*|\\bleft(ist|ists)?\\b|izquierd\\w*|esquerd\\w*|gauche|\\blinke\\w*|sinistr\\w*|\\breds?\\b|commie"},
+  "corrupcao_crime": {"nome": "Corrupção, crime e prisão", "definicao": "corrupção, ladrão, criminoso, prisão, Lava Jato",
+                      "regex": "corrupt\\w*|corrup\\w*|korrupt\\w*|ladr[oã]\\w*|thief|thieves|crook|criminal\\w*|crimin\\w*|\\bjail\\w*|prison\\w*|c[aá]rcel|pris[aã]o|\\bpreso\\b|convict\\w*|condenad\\w*|lava jato|car wash|verbrecher|gefängnis|ladro"},
+  "eua_trump": {"nome": "EUA, Trump e relações externas", "definicao": "Estados Unidos, Trump, Rubio, tarifas, sanções, geopolítica",
+                "regex": "\\btrump\\w*|\\busa\\b|\\bu\\.?s\\.?a?\\b|america\\w*|estados unidos|[ée]tats-unis|vereinigte staaten|stati uniti|\\brubio\\b|tariff\\w*|aranc\\w*|tarif\\w*|\\bzöll\\w*|\\bdazi\\b|sanction\\w*|sanci[oó]n\\w*|san[cç][õo]es|\\bbrics\\b|china|russia|rusia|r[uú]ssia"},
+  "outro_pais": {"nome": "Comparação com o próprio país", "definicao": "compara com o próprio país ou cita outro país da região",
+                 "regex": "my country|our country|in my country|mi pa[ií]s|nuestro pa[ií]s|en mi pa[ií]s|meu pa[ií]s|nosso pa[ií]s|mon pays|notre pays|mein land|unser land|il mio paese|nel mio paese|same (thing|here)|lo mismo (que|aqu[ií])|argentin\\w*|m[ée]xic\\w*|colombi\\w*|venezuel\\w*|chile\\w*|per[uú]\\b|bolivi\\w*|ecuador|cuba\\w*|nicaragu\\w*|\\bmilei\\b|maduro|\\bpetro\\b|bukele|portugal|espa[ñn]a|\\bspain\\b|\\bindia\\b"},
+  "midia": {"nome": "Mídia, censura e redes", "definicao": "imprensa, propaganda, censura, fake news, plataformas",
+            "regex": "\\bmedia\\b|m[ée]dia|\\bpress\\b|prensa|imprensa|\\bpresse\\b|propagand\\w*|censor\\w*|censur\\w*|zensur|fake news|disinformation|desinformaci[oó]n|desinforma[cç][aã]o|big tech|youtube|twitter|\\bx\\.com\\b|\\bmusk\\b"},
+  "religiao": {"nome": "Religião", "definicao": "Deus, Jesus, oração, bênção",
+               "regex": "\\bgod\\b|\\bdios\\b|\\bdeus\\b|\\bdieu\\b|\\bgott\\b|\\bdio\\b|jes[uú]s|christ\\w*|crist\\w*|\\bpray\\w*|\\bor(ar|ação|amos)\\b|\\bbless\\w*|bendig\\w*|aben[cç]o\\w*|\\bamen\\b|am[ée]m|\\bbiblia|bible"},
+  "economia": {"nome": "Economia, pobreza e fome", "definicao": "economia, inflação, moeda, mercado, pobreza, fome, impostos",
+               "regex": "econom\\w*|[oö]konom\\w*|inflat\\w*|inflaci[oó]n|infla[cç][aã]o|\\bdollar\\w*|d[oó]lar\\w*|\\breal\\b|market\\w*|mercad\\w*|poverty|pobreza|povert[àa]|hunger|hambre|\\bfome\\b|\\bfaim\\b|\\btax\\w*|impuest\\w*|impost\\w*|\\bjobs?\\b|emplo\\w*|empleo|emprego"},
+  "humor": {"nome": "Humor e ironia", "definicao": "risada, deboche ou ironia explícita",
+            "regex": "\\blol\\b|\\blmao\\b|\\bhaha\\w*|\\bjaja\\w*|\\bkkk+\\b|\\bmdr\\b|😂|🤣|😆|🤡|\\bxd\\b"}
+ }
+}

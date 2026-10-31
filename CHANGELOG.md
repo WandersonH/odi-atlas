@@ -4,6 +4,29 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.215 — Caso 019: comentários, Gephi, linha do tempo, IRaMuTeQ, sentimento e Bardin (2026-10-30) ⚠️
+
+- **Pedido (30/10/2026, 22h25):** "parece incompleta: cadê os comentários, o Gephi, linha do tempo dos vídeos, IRaMuTeQ, sentimento e Bardin".
+- **Novo `scripts/caso_mundo_textos.py`**, chamado por `caso_mundo.py` em toda execução:
+  - **Rede de palavras:** só línguas de escrita latina (en, es, pt, fr, de, it), com palavras vazias de cada língua; cor = língua dominante da palavra.
+  - **Rede de respostas:** autores aparecem por código.
+  - **CHD de Reinert:** por língua, a partir de 100 comentários.
+  - **IRaMuTeQ:** um corpus por língua no privado, com as variáveis *lingvideo_, *lingcom_, *cont_, *pais_, *video_ e *tipo_.
+  - **Bardin:** pré-codificação por dicionário multilíngue, com 10 categorias (`data/config/livro_codigos_caso019.json`).
+  - **Sentimento:** modelo multilíngue cardiffnlp/twitter-xlm-roberta-base-sentiment (8 línguas), com cache no privado. Na página, o resultado aparece também por menção (Lula primeiro), por língua e por continente.
+  - **Comentários por dia**, pela língua em que foram escritos.
+  - Árabe, chinês, japonês, coreano e russo ficam ⛔ nas palavras, nas classes e no Bardin: precisam de segmentação própria, e a página avisa.
+- **Página:** novos blocos de linha do tempo dos vídeos (bolhas por continente), as duas redes desenhadas (com GEXF), classes, corpus, Bardin, sentimento e comentários por dia.
+- **Teste local com a amostra real do privado (só o vídeo já coletado, 356 comentários):**
+  - Rede de palavras com 291 comentários em línguas latinas.
+  - Rede de respostas: 279 autores e 249 respostas.
+  - CHD em inglês: 6 classes, 224 de 236 comentários classificados (94,9%).
+  - Bardin: 40,5% com alguma categoria. EUA/Trump 43, humor 29, corrupção 23, democracia 20, comunismo 15.
+  - Sentimento local ⛔: o modelo não está instalado aqui. O workflow passa a instalar torch (CPU) e transformers.
+  - Os arquivos públicos serão gerados pelo próprio workflow; o teste local não foi publicado.
+- **Por que a página mostra HTTP 429:** a cota diária da API do YouTube acabou em 30/10. A coleta de 31/10, às 05h43, roda depois da renovação. A reanálise sem coleta (`sem_coleta`) não gasta cota e roda o sentimento já agora.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Chromium local: todos os blocos renderizados, sem erros.
+
 ## C19.214 — Caso 020: reels do Instagram, ranking do Google e proteção do nome da criança nos dados públicos (2026-10-31) ✅
 
 - **Reels do Instagram (modo "frases", manifesto 20261031T002207Z, US$ 0,8542):**

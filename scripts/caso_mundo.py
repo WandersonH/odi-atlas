@@ -367,6 +367,8 @@ def analisar(cfg: dict, estado: dict, priv: Path, pub: Path, agora: str) -> dict
             import datetime as dt
             d = dt.date.fromisoformat(x["publicado_em"][:10])
             semanas[(d - dt.timedelta(days=d.weekday())).isoformat()][x["continente"]] += 1
+    from caso_mundo_textos import analisar_textos
+    textos = analisar_textos(acervo, vids, priv, pub, Path("data/config/livro_codigos_caso019.json"))
     out = {"caso": "019", "gerado_em_utc": agora, "desde": cfg["desde"], "linguas_consultadas": [L["codigo"] for L in cfg["linguas"]],
            "nomes_lingua": NOMES_LINGUA, "consultas": cons,
            "videos_achados": len(estado.get("videos", {})), "nao_pertinentes": nao_pert, "em_portugues_ou_canal_brasileiro": len(fora_pt),
@@ -380,6 +382,7 @@ def analisar(cfg: dict, estado: dict, priv: Path, pub: Path, agora: str) -> dict
            "metodo": ("Língua do comentário = identificação automática (py3langid 0.3.0, 26 línguas, nomes próprios removidos, 20+ letras e confiança "
                       "≥ 0,90; o resto é 'indeterminado'). Não é a língua materna de quem escreve, que não é observável. País = o que o canal declara "
                       "no YouTube. Vídeos em português ou de canais do Brasil ficam fora das contagens do 'mundo' e são informados à parte."),
+           "analises": textos,
            "erros": ERROS[-40:]}
     (pub / "mundo.json").write_text(json.dumps(out, ensure_ascii=False, indent=0), encoding="utf-8")
     return out
