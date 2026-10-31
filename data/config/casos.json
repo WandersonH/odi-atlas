@@ -1532,6 +1532,110 @@
    "contas_ocultas_regex": "matheus.{0,12}bomb|bomb.{0,12}matheus|meninodosbombons",
    "mascarar_regex": "\\bmat(h)?eus(\\s+dos\\s+bombons)?\\b|#?matheusdosbombons|#?meninodosbombons",
    "serp_ocultar_links_redes": true
+  },
+  {
+   "id": "021",
+   "slug": "o-sul-e-meu-pais",
+   "titulo": "\"O Sul é meu país\": separatismo do Sul na campanha e depois da eleição",
+   "tipo": "separatismo e ataque à unidade nacional",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-07-01",
+   "aba": "caso021",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 31/10/2026, 17h54: \"o Sul é meu país, busca no período pré-eleitoral até o momento\"; teto US$ 4,00 (\"carga desde o pré-eleitoral nas 3 redes e leitura diária só no X até 15/11\"), conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis. Soma US$ 3,80.",
+   "descricao": "O movimento \"O Sul é meu país\" defende a separação do Paraná, de Santa Catarina e do Rio Grande do Sul. Em 2026 o tema voltou na pré-campanha (governador de Santa Catarina falando em \"passar a trena\" e separar o Sul, julho), com consulta popular informal em agosto e, depois do 2º turno, com proposta de plebiscito de um deputado do PL (26/10). O caso mede o volume de publicações desde 01/07/2026 (pré-campanha) até hoje em cada rede, as buscas no Google desde 2021 (para comparar com o Plebisul de 2016 e 2017, na janela de 5 anos), a imprensa e as checagens. Pessoas comuns não são identificadas.",
+   "hashtags": [
+    "osulemeupais",
+    "plebisul",
+    "sulindependente",
+    "separaosul"
+   ],
+   "buscas_tiktok": [
+    "o sul é meu país",
+    "separação do sul",
+    "plebisul",
+    "independência do sul"
+   ],
+   "rolagens_tiktok": 20,
+   "termos_trends": [
+    "o sul é meu país",
+    "separação do sul",
+    "plebisul"
+   ],
+   "termos_noticias": [
+    "\"o sul é meu país\"",
+    "separação do sul",
+    "plebisul",
+    "separatismo sul Brasil",
+    "plebiscito separar o sul"
+   ],
+   "filtro_titulo_noticias": [
+    "sul",
+    "separa",
+    "plebis",
+    "independ"
+   ],
+   "maximo_por_termo": 3000,
+   "teto_usd": {
+    "x": 1.8,
+    "instagram": 1.4,
+    "facebook": 0.6,
+    "kwai": 0.0
+   },
+   "reserva_diaria_usd": {
+    "x": 0.5
+   },
+   "teto_diario_usd": {
+    "x": 0.04
+   },
+   "diario_ate": "2026-11-15",
+   "complementos_x": [
+    {
+     "termo": "O Sul é meu país / separação do Sul",
+     "busca": "(\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-07-01",
+     "motivo": "o caso, desde a pré-campanha",
+     "rodada": 1
+    },
+    {
+     "termo": "plebiscito / consulta sobre o Sul",
+     "busca": "((plebiscito OR \"consulta popular\" OR referendo) (\"separar o sul\" OR \"separação do sul\" OR \"região sul\" OR \"sul do brasil\") (separa OR separação OR independência OR país)) since:2026-07-01",
+     "motivo": "plebiscitos e consultas",
+     "rodada": 1
+    }
+   ],
+   "diario_x": [
+    {
+     "termo": "O Sul é meu país / separação do Sul",
+     "busca": "(\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:{desde}"
+    }
+   ],
+   "hashtags_instagram": [
+    "osulemeupais",
+    "plebisul",
+    "sulindependente"
+   ],
+   "buscas_instagram": [
+    "o sul é meu país",
+    "separação do sul",
+    "plebisul",
+    "independência do sul",
+    "separatismo sul"
+   ],
+   "buscas_facebook": [
+    "o sul é meu país",
+    "separar o sul do Brasil",
+    "plebiscito separação sul"
+   ],
+   "buscas_kwai": [],
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "Facebook",
+    "TikTok",
+    "YouTube",
+    "Google"
+   ]
   }
  ],
  "segredos_por_rede": {

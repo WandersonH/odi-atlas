@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.219 — Caso 021 "O Sul é meu país" (2026-10-31) 🔜
+
+- **Pedido (31/10/2026, 17h54):** "o Sul é meu país, busca no período pré-eleitoral até o momento"; teto US$ 4,00 aprovado na mesma hora.
+- **Coleta (`casos.json` caso 021, desde 01/07/2026; conta 1, US$ 3,80 dos 4,00):**
+  - Por que 01/07: a pré-campanha inclui a fala do governador de Santa Catarina (julho) e a consulta informal (agosto).
+  - X, US$ 1,80: 2 buscas complementares e leitura diária até 15/11, com reserva de US$ 0,50.
+  - Instagram, US$ 1,40: 3 hashtags e 5 buscas de reels.
+  - Facebook, US$ 0,60: 3 buscas.
+  - TikTok, Trends, Google Notícias (125 dias), YouTube e checagens: grátis (`collect_caso_busca.py` caso 021). O Trends inclui a janela de 5 anos, para comparar com o Plebisul de 2016 e 2017.
+- **Página:** Casos → "O Sul é meu país".
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Resultados na próxima entrada.
+
 ## C19.218 — Caso 018: comparação publicada com sentimento; reel DdbmiEmoCrr coletado (2026-10-31) ✅
 
 - **Run 41156169201 (`caso-antigo-atual.yml`):** `data/casos/018/comparacao.json` publicado, com sentimento (pysentimiento/bertweet-pt-sentiment).
