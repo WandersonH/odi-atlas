@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-influenciadores-youtube",
-  "run_started_utc": "2026-10-30T16:44:42Z",
+  "run_started_utc": "2026-10-31T15:47:05Z",
   "config": {
     "nota": "Canais do YouTube (fora das campanhas) que publicaram vídeos citando Lula ou Flávio Bolsonaro. 'Cita' não quer dizer 'apoia': o vídeo pode ser a favor, contra ou neutro. Só entram canais públicos com min_inscritos ou mais (perfil de influenciador/veículo, não pessoa comum).",
     "desde": "2026-08-16",
@@ -119,7 +119,7 @@
       "candidato": "Lula",
       "q": "Lula",
       "ordem": "viewCount",
-      "desde": "2026-10-23T16:44:42Z",
+      "desde": "2026-10-24T15:47:05Z",
       "paginas": 2,
       "videos": 100
     },
@@ -127,7 +127,7 @@
       "candidato": "Lula",
       "q": "Lula",
       "ordem": "date",
-      "desde": "2026-10-27T16:44:42Z",
+      "desde": "2026-10-28T15:47:05Z",
       "paginas": 4,
       "videos": 200
     },
@@ -137,42 +137,46 @@
       "ordem": "viewCount",
       "desde": "2026-08-16T00:00:00Z",
       "paginas": 4,
-      "videos": 200
+      "videos": 0
     },
     {
       "candidato": "Flávio Bolsonaro",
       "q": "Flávio Bolsonaro",
       "ordem": "viewCount",
-      "desde": "2026-10-23T16:44:42Z",
+      "desde": "2026-10-24T15:47:05Z",
       "paginas": 2,
-      "videos": 100
+      "videos": 0
     },
     {
       "candidato": "Flávio Bolsonaro",
       "q": "Flávio Bolsonaro",
       "ordem": "date",
-      "desde": "2026-10-27T16:44:42Z",
+      "desde": "2026-10-28T15:47:05Z",
       "paginas": 4,
-      "videos": 200
+      "videos": 0
     }
   ],
   "blocked": [],
-  "warnings": [],
+  "warnings": [
+    "busca 'Flávio Bolsonaro' viewCount: HTTPError: HTTP Error 429: Too Many Requests",
+    "busca 'Flávio Bolsonaro' viewCount: HTTPError: HTTP Error 429: Too Many Requests",
+    "busca 'Flávio Bolsonaro' date: HTTPError: HTTP Error 429: Too Many Requests"
+  ],
   "status": "ok",
-  "cota_usada": 2042,
-  "videos_retornados": 817,
-  "videos_detalhados": 817,
-  "videos_acumulados": 6229,
-  "videos_validos": 5938,
+  "cota_usada": 1835,
+  "videos_retornados": 431,
+  "videos_detalhados": 431,
+  "videos_acumulados": 6427,
+  "videos_validos": 6132,
   "exclusoes": {
+    "categoria 20": 42,
+    "canal de campanha (declarado ao TSE)": 106,
+    "sem menção no título/descrição": 16,
+    "termo de exclusão": 5,
     "categoria 10": 68,
     "categoria 26": 12,
-    "categoria 20": 38,
-    "canal de campanha (declarado ao TSE)": 106,
-    "categoria 17": 46,
-    "sem menção no título/descrição": 16,
-    "termo de exclusão": 5
+    "categoria 17": 46
   },
-  "canais_validos": 1210,
-  "canais_com_dados": 1210
+  "canais_validos": 1273,
+  "canais_com_dados": 1273
 }
