@@ -4,6 +4,24 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.214 — Caso 020: reels do Instagram, ranking do Google e proteção do nome da criança nos dados públicos (2026-10-31) ✅
+
+- **Reels do Instagram (modo "frases", manifesto 20261031T002207Z, US$ 0,8542):**
+  - Buscas: "Matheus dos Bombons" 40; "menino balas Fortaleza" 50; "menino fazer o L" 40; "menino bombons Lula rampa" 46; "Valéria Diniz" 0.
+  - Facebook: 31 + 30 + 33.
+  - Este modo também repetiu as 3 hashtags do Instagram, ao custo de US$ 0,1456 a mais.
+  - **Total do caso: 539 publicações de 458 contas.** X 219; Instagram 182 (60.315.494 visualizações, 4.433.563 curtidas); Facebook 138; TikTok ⛔ 0.
+  - Universo nas plataformas: ⛔ não informado.
+  - Gasto do caso: US$ 1,1939 de US$ 3,85, contando o ranking do Google.
+- **Ranking do Google (1ª leitura, 31/10 00h22 UTC, US$ 0,005):** 5 consultas, 9 a 10 resultados orgânicos cada.
+  - A API não informou o universo (total de resultados): ⛔.
+  - Vários resultados vêm como links de redirecionamento do Google (`google.com/goto`). O domínio agora sai do endereço exibido; na 1ª leitura ficou marcado como ⛔ não informado.
+- **Proteção da criança:** a 1ª leitura do ranking e o `caso.json` publicavam títulos e legendas com o nome do menino.
+  - Corrigido: `mascarar_regex` troca o nome por "[menino]" no ranking, na galeria e nas palavras do caso.
+  - Publicações de redes sociais no ranking ficam sem link (`serp_ocultar_links_redes`).
+  - Pela regra 8, nada foi apagado: a cópia original da 1ª leitura foi movida para o repositório privado (`casos/020/serp_publico_original_20261031T0022Z.json`). O histórico do git não foi reescrito.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.213 — Caso 020: primeira carga e ajuste do ranking do Google (2026-10-31) ⚠️
 
 - **Carga (manifestos 20261031T001215Z e 20261031T001837Z): 323 publicações de 272 contas desde 28/10.** Custo US$ 0,3347.

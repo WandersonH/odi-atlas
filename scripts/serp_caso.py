@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import urllib.parse
 from pathlib import Path
@@ -25,6 +26,17 @@ ATOR = "apify~google-search-scraper"
 
 def dominio(u: str) -> str:
     return urllib.parse.urlparse(u or "").netloc.lower().removeprefix("www.")
+
+
+def dominio_de(o: dict) -> str:
+    """Domínio do resultado; links de redirecionamento do Google (google.com/goto) usam o endereço exibido."""
+    d = dominio(o.get("url"))
+    if d in ("google.com", "google.com.br") and o.get("displayedUrl"):
+        d = dominio(o["displayedUrl"].split(" ")[0] if o["displayedUrl"].startswith("http") else "https://" + o["displayedUrl"].split(" ")[0])
+    return d
+
+
+REDES_SOCIAIS = ("instagram.com", "facebook.com", "tiktok.com", "youtube.com", "kwai.com", "x.com", "twitter.com", "threads.net", "fb.watch", "youtu.be")
 
 
 def gasto_antes(pasta: Path) -> float:
@@ -77,13 +89,22 @@ def main(argv=None, executar=None) -> int:
     for it in items or []:
         q = (it.get("searchQuery") or {}).get("term") or it.get("query")
         org = it.get("organicResults") or []
+        mas = re.compile(caso["mascarar_regex"], re.I) if caso.get("mascarar_regex") else None
+        M = (lambda t: mas.sub("[menino]", t or "") if mas else (t or ""))  # noqa: E731
+        ocultar = bool(caso.get("serp_ocultar_links_redes"))
+
+        def link(o):
+            dm = dominio_de(o)
+            if ocultar and any(dm == r or dm.endswith("." + r) for r in REDES_SOCIAIS):
+                return None  # proteção de criança: publicação em rede social com o menino não ganha link na página
+            return o.get("url")
         res.append({"consulta": q, "total_informado": (it.get("searchQuery") or {}).get("resultsTotal") or it.get("resultsTotal"),
-                    "resultados": [{"posicao": o.get("position"), "titulo": o.get("title"), "url": o.get("url"), "dominio": dominio(o.get("url")),
-                                    "descricao": (o.get("description") or "")[:300], "data": o.get("date")} for o in org],
-                    "noticias_destaque": [{"titulo": n.get("title"), "url": n.get("url"), "veiculo": n.get("source") or n.get("siteName"), "data": n.get("date")}
+                    "resultados": [{"posicao": o.get("position"), "titulo": M(o.get("title")), "url": link(o), "dominio": dominio_de(o),
+                                    "descricao": M((o.get("description") or "")[:300]), "data": o.get("date")} for o in org],
+                    "noticias_destaque": [{"titulo": M(n.get("title")), "url": n.get("url"), "veiculo": n.get("source") or n.get("siteName"), "data": n.get("date")}
                                           for n in (it.get("topStories") or [])][:10],
-                    "relacionadas": [r.get("title") for r in (it.get("relatedQueries") or [])][:10],
-                    "pessoas_tambem_perguntam": [r.get("question") for r in (it.get("peopleAlsoAsk") or [])][:8]})
+                    "relacionadas": [M(r.get("title")) for r in (it.get("relatedQueries") or [])][:10],
+                    "pessoas_tambem_perguntam": [M(r.get("question")) for r in (it.get("peopleAlsoAsk") or [])][:8]})
     acervo["leituras"].append({"lido_em_utc": agora, "custo_usd": round(float(custo or 0), 4), "erro": erro, "consultas": res})
     acervo.update(atualizado_em_utc=agora, ferramenta=f"Apify {ATOR}, Brasil, português, 1 página por consulta",
                   universo="Total de resultados que o Google informa por consulta (estimativa do próprio Google), quando o coletor devolve; "

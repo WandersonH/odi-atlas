@@ -108,6 +108,9 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
         validos.add("indicado pelo responsável")
     itens = [{**r, "termo": "|".join(t for t in r["termo"].split("|") if t in validos)} for r in itens]
     itens = [r for r in itens if r["termo"]]
+    if caso.get("mascarar_regex"):  # proteção de criança (caso 020): o nome não sai nos textos públicos (galeria, palavras)
+        mascara = re.compile(caso["mascarar_regex"], re.I)
+        itens = [{**r, "texto": mascara.sub("[menino]", r["texto"] or "")} for r in itens]
     itens.sort(key=lambda r: r["publicado_em"])
     # quem aparece com nome
     ativ = Counter((r["rede"], r["conta"]) for r in itens if r["conta"])
