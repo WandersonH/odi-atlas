@@ -4,6 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.213 — Caso 020: primeira carga e ajuste do ranking do Google (2026-10-31) ⚠️
+
+- **Carga (manifestos 20261031T001215Z e 20261031T001837Z): 323 publicações de 272 contas desde 28/10.** Custo US$ 0,3347.
+  - X: 219 publicações; 3.039.376 visualizações; 123.931 curtidas. Hashtags: 2. Busca do caso: 206. Rampa/posse: 15.
+  - Instagram: 44 publicações por hashtag (#matheusdosbombons 35; #valeriadiniz 10 no período; #meninodosbombons 1); 160.191 curtidas.
+  - Facebook: 60 publicações; 137.982 curtidas.
+  - TikTok: ⛔ 0 vídeos (a página pública não devolveu vídeos).
+  - Google Notícias: 70 notícias. Trends: ok.
+  - Pico: 29/10, 22h (horário de Brasília), com 22 publicações na hora.
+  - As buscas de reels do Instagram, que são o foco do caso, rodam no modo "frases", disparado em seguida.
+- **Ranking do Google:** ⛔ na 1ª leitura. A Apify recusou porque este ator exige `maxTotalChargeUsd` de pelo menos US$ 0,50 (HTTP 400).
+  - Correção: o pedido vai com o mínimo de US$ 0,50, mas só se a estimativa máxima pela própria entrada couber no que resta do teto. A estimativa é 5 consultas × 1 página × US$ 0,005 = US$ 0,025, dentro dos US$ 0,30 do caso.
+  - Os erros agora registram o código HTTP.
+- **Universo de publicações nas redes:** ⛔ não informado; os números valem para o que as buscas devolveram.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.212 — Caso 020 "O menino que vendia balas" (Fortaleza): todas as redes, Trends, notícias e ranking da busca do Google (2026-10-30) 🔜
 
 - **Pedido (30/10/2026, 20h58):** "novo caso usando as keywords Matheus Fortaleza, menino ... recriminado por falar que votava no Lula enquanto vendia balas; isto se iniciou com um post da Valéria Diniz; limite 4 dólares; todas as redes, trends; o foco de tudo foi no Insta; traga notícias e resultados ranqueados na busca relacionados a ele".

@@ -61,12 +61,18 @@ def main(argv=None, executar=None) -> int:
         executar = lambda pl, c: run_actor(token, ATOR, pl, c)  # noqa: E731
     payload = {"queries": "\n".join(consultas), "countryCode": "br", "languageCode": "pt-BR", "maxPagesPerQuery": 1,
                "mobileResults": False, "saveHtml": False, "saveHtmlToKeyValueStore": False, "includeUnfilteredResults": False}
+    # A Apify exige maxTotalChargeUsd ≥ US$ 0,50 para este ator (erro 400 em 31/10/2026). O gasto real é limitado pela entrada:
+    # 1 página por consulta × até US$ 0,005 por página (maior preço de tabela) = estimativa máxima abaixo, que precisa caber no teto.
+    estimativa = round(len(consultas) * 0.005, 4)
+    if estimativa > cap:
+        print(f"⛔ estimativa máxima US$ {estimativa} acima do que resta do teto (US$ {cap})")
+        return 0
     try:
-        run, items = executar(payload, cap)
+        run, items = executar(payload, max(cap, 0.5))
         custo = custo_run(run) if run else 0.0
         erro = None if (run or {}).get("status") == "SUCCEEDED" else (run or {}).get("status")
     except Exception as e:  # noqa: BLE001
-        run, items, custo, erro = None, [], 0.0, f"{type(e).__name__}"
+        run, items, custo, erro = None, [], 0.0, f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
     res = []
     for it in items or []:
         q = (it.get("searchQuery") or {}).get("term") or it.get("query")
