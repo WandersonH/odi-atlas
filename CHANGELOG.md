@@ -4,6 +4,28 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.211 — Caso 014: posts indicados coletados, cruzamento com candidatos (TSE) e novos números do MPT (2026-10-30) ✅
+
+- **Posts indicados (run 41147268562 → 3ª tentativa, manifesto 20261031T000100Z):** 2 de 2 coletados, US$ 0,0176. Total do caso: US$ 5,8263, dentro do teto autorizado de US$ 6,10.
+  - De-opHIydZp: @nikolasferreirabr, 27/10 01h04; legenda "👍🏻"; 779.047 curtidas; 56.282 comentários.
+  - DfGDsBFoQ0K: @zetrovaodeputado, 29/10 22h17; 864.528 visualizações; 120.278 curtidas; 12.073 comentários.
+  - Comentários desses dois posts: o coletor devolve 9 de cada (os mais recentes). Universo: 56.282 e 12.073 comentários, segundo o Instagram, ou seja, 0,02% e 0,07%.
+- **Cruzamento com as redes declaradas ao TSE (`scripts/caso_candidatos.py`, grátis):** 34.534 contas declaradas por 15.943 candidatos. Cruzadas com as 8.639 publicações do caso, dão **42 publicações de 35 candidatos de 13 partidos**.
+  - Posição lida no texto pelo Claude (IA), com conferência humana pendente: `data/config/candidatos_posicao_caso014.json`.
+  - Apoio: 8 candidatos (PL 3, NOVO 3, PP 1, UNIÃO 1).
+  - Crítica: 18 candidatos (PT 5, PSOL 3, PSB 3, PSD 2, PV, MDB, PDT, REPUBLICANOS).
+  - Os demais 9: ambígua, sem posição no texto (vídeo sem legenda, como o de Nikolas Ferreira) ou outro tema.
+  - **17 partidos sem nenhuma publicação de candidato na amostra:** PODE, PSDB, AVANTE, DC, MOBILIZA, MISSÃO, SOLIDARIEDADE, PRD, AGIR, DEMOCRATA, REDE, UP, CIDADANIA, PCO, PSTU, PCB, PRTB.
+  - Citadas pela imprensa e fora da amostra: Índia Armaleu (PL-RJ) e Jéssica Ramos Moreno (PL-PR), deputadas estaduais eleitas (A Crítica, 27/10).
+  - A página avisa que o universo é ⛔ e que ausência na amostra não é prova de silêncio.
+- **MPT (`data/casos/014/mpt.json`):**
+  - 3.290 denúncias de assédio eleitoral até 28/10, das quais 1.353 depois do resultado e 2.471 em outubro (CartaCapital, 28/10, dados do MPT).
+  - "Cerca de 1.140" nos três dias depois do 2º turno, segundo o ministro Luiz Marinho (SP Rio+, 29/10).
+  - Os dois números ficam registrados com fonte e corte, sem escolher entre eles.
+  - Medidas do MTE de 28/10: força-tarefa, restrição de crédito a empresas condenadas, "lista suja" em estudo e alerta na Carteira de Trabalho Digital.
+- **Buscas de "assédio eleitoral":** já estavam no caso, no Google Trends (série horária de 7 dias) e no Google Notícias ("assédio eleitoral MPT").
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Chromium local: bloco de candidatos e nota do MPT renderizados, sem erros.
+
 ## C19.210 — Caso 014: post do Instagram indicado pelo responsável (2026-10-30) 🔜
 
 - **Pergunta (30/10/2026, 20h04):** "https://www.instagram.com/p/De-opHIydZp/ coletamos em 'Demita um petista'?". **Não.** O código do post (De-opHIydZp) não aparece em nenhum bruto do caso 014 (8 coletas do Instagram), nem na lista de itens, nem no manifesto de preservação, nem nos dados dos outros casos (busca em todo o repositório privado e em `data/`).
