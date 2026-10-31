@@ -1,0 +1,160 @@
+{
+ "caso": "022",
+ "titulo": "\"Relatório Pericial Independente\": documento apócrifo que alega fraude no 2º turno",
+ "run_started_utc": "2026-10-31T21:25:43Z",
+ "modo": "carga",
+ "privado": true,
+ "desde": "2026-10-28",
+ "redes": [
+  {
+   "rede": "tiktok",
+   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
+   "termos": {
+    "relatoriopericial": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "fraudeeleitoral2026": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "relatoriopericialindependente": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "relatório pericial eleição": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "fraude urna 2026": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "votos depois das 17h": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "votos sem biometria": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    }
+   },
+   "custo_usd": 0.0,
+   "status": "⛔ nenhum vídeo lido",
+   "itens_no_periodo": 0
+  },
+  {
+   "rede": "x",
+   "teto_usd": 1.8,
+   "gasto_antes_usd": 0,
+   "teto_execucao_usd": 1.3,
+   "termos": [
+    {
+     "termo": "#relatoriopericial",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 0,
+     "lidos": 0,
+     "no_periodo": 0,
+     "no_limite": false,
+     "run": "orDPhE4Pv0VK6bVCH",
+     "custo_usd": 0.0001,
+     "erro": null,
+     "chaves_1o_item": null,
+     "mais_antigo": null
+    },
+    {
+     "termo": "#fraudeeleitoral2026",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 1,
+     "lidos": 1,
+     "no_periodo": 1,
+     "no_limite": false,
+     "run": "h6VHXmegeesnUAbgu",
+     "custo_usd": 0.00015,
+     "erro": null,
+     "chaves_1o_item": [
+      "author",
+      "bookmarkCount",
+      "conversationId",
+      "createdAt",
+      "displayTextRange",
+      "edit",
+      "entities",
+      "id",
+      "isNoteTweet",
+      "isPinned",
+      "isQuoteStatus",
+      "isReply",
+      "isRetweet",
+      "isTranslatable",
+      "lang",
+      "likeCount",
+      "quoteCount",
+      "quotedTweetId",
+      "quotedTweetPermalink",
+      "quoted_tweet",
+      "replyCount",
+      "retweetCount",
+      "text",
+      "textHighlights",
+      "type",
+      "url",
+      "viewCount",
+      "viewState"
+     ],
+     "mais_antigo": "2026-10-30T15:02:30Z"
+    },
+    {
+     "termo": "#relatoriopericialindependente",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 0,
+     "lidos": 0,
+     "no_periodo": 0,
+     "no_limite": false,
+     "run": "cltDI8eAEnFxgA2Te",
+     "custo_usd": 0.0001,
+     "erro": null,
+     "chaves_1o_item": null,
+     "mais_antigo": null
+    }
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 2000,
+   "custo_usd": 0.0003,
+   "status": "ok",
+   "itens_no_periodo": 1
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_pontos": 169,
+   "noticias": 54,
+   "status": "ok",
+   "itens_no_periodo": 0
+  }
+ ],
+ "itens_acumulados": 1,
+ "custo_usd": 0.0003
+}
