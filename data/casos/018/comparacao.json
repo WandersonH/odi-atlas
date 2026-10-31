@@ -1,6 +1,6 @@
 {
  "caso": "018",
- "gerado_em_utc": "2026-10-31T01:48:41Z",
+ "gerado_em_utc": "2026-10-31T18:39:41Z",
  "corte_pos_eleicao": "2026-10-25",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -388,7 +388,7 @@
       26
      ],
      [
-      "participam",
+      "brasileiras",
       17
      ]
     ],
@@ -426,11 +426,11 @@
       42
      ],
      [
-      "polícia",
+      "escolher",
       41
      ],
      [
-      "escolher",
+      "polícia",
       41
      ],
      [
@@ -475,43 +475,43 @@
      "epoca": [],
      "depois": [
       [
-       "vejo",
+       "bolsonaro",
        0
       ],
       [
-       "olha",
+       "abençoe",
        0
       ],
       [
-       "números",
+       "hora",
        0
       ],
       [
-       "passam",
+       "coisas",
        0
       ],
       [
-       "diferente",
+       "frente",
        0
       ],
       [
-       "mentirosa",
+       "piada",
        0
       ],
       [
-       "vergonha",
+       "moral",
        0
       ],
       [
-       "dessa",
+       "prefeito",
        0
       ],
       [
-       "nação",
+       "kkkkkk",
        0
       ],
       [
-       "salles",
+       "ouvir",
        0
       ]
      ]
@@ -915,11 +915,11 @@
       27
      ],
      [
-      "foram",
+      "bloqueio",
       14
      ],
      [
-      "bloqueio",
+      "foram",
       14
      ],
      [
@@ -935,15 +935,15 @@
       25
      ],
      [
-      "arcabouço",
+      "afetados",
+      6
+     ],
+     [
+      "atingidos",
       6
      ],
      [
       "afetadas",
-      6
-     ],
-     [
-      "equilibrar",
       6
      ]
     ],
@@ -965,15 +965,15 @@
       13
      ],
      [
-      "verdade",
-      12
-     ],
-     [
       "saude",
       12
      ],
      [
       "caso",
+      12
+     ],
+     [
+      "verdade",
       12
      ],
      [
@@ -985,15 +985,7 @@
       11
      ],
      [
-      "falar",
-      10
-     ],
-     [
       "piso",
-      10
-     ],
-     [
-      "complementar",
       10
      ],
      [
@@ -1005,7 +997,15 @@
       10
      ],
      [
+      "gás",
+      10
+     ],
+     [
       "dilma",
+      10
+     ],
+     [
+      "paulo",
       10
      ]
     ]
