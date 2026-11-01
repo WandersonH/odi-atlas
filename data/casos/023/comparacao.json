@@ -1,0 +1,820 @@
+{
+ "caso": "023",
+ "gerado_em_utc": "2026-11-01T19:07:51Z",
+ "corte_pos_eleicao": "2026-10-28",
+ "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
+ "episodios": {
+  "2018": {
+   "x_epoca": {
+    "publicacoes": 891,
+    "contas": 743,
+    "visualizacoes": 0,
+    "curtidas": 15279,
+    "respostas_recebidas": 1728,
+    "compartilhamentos": 5044,
+    "primeiro_dia": "2018-06-03",
+    "ultimo_dia": "2018-06-05",
+    "pico": {
+     "dia": "2018-06-04",
+     "publicacoes": 438
+    },
+    "dias_ate_metade": 1,
+    "serie_desde_dia0": [
+     259,
+     438,
+     194
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "bandnewstv",
+      "seguidores": 446124,
+      "publicacoes": 8
+     },
+     {
+      "rede": "x",
+      "conta": "gazetadopovo",
+      "seguidores": 786681,
+      "publicacoes": 6
+     },
+     {
+      "rede": "x",
+      "conta": "GloboNews",
+      "seguidores": 5704023,
+      "publicacoes": 6
+     },
+     {
+      "rede": "x",
+      "conta": "BandJornalismo",
+      "seguidores": 1019660,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "g1",
+      "seguidores": 14080913,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "infomoney",
+      "seguidores": 655553,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "MirandaSa_",
+      "seguidores": 34589,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "Sen_Cristovam",
+      "seguidores": 634297,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "g1economia",
+      "seguidores": 310660,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "rosedbarros",
+      "seguidores": 232816,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "revistavoto",
+      "seguidores": 26679,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "portoalegre24h",
+      "seguidores": 222079,
+      "publicacoes": 4
+     }
+    ],
+    "respostas_entre_publicacoes": 73
+   },
+   "x_agora": {
+    "publicacoes": 269,
+    "contas": 246,
+    "visualizacoes": 1117478,
+    "curtidas": 29141,
+    "respostas_recebidas": 2055,
+    "compartilhamentos": 3844,
+    "primeiro_dia": "2026-10-28",
+    "ultimo_dia": "2026-11-01",
+    "pico": {
+     "dia": "2026-10-31",
+     "publicacoes": 128
+    },
+    "dias_ate_metade": 3,
+    "serie_desde_dia0": [
+     37,
+     10,
+     43,
+     128,
+     51
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "Saray_sandrac",
+      "seguidores": 77194,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "sempacienciamah",
+      "seguidores": 53477,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "Rudriguo",
+      "seguidores": 16834,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "thairizard",
+      "seguidores": 21808,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "FtimaPesso2719",
+      "seguidores": 63061,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "CENTRALDOFLAV",
+      "seguidores": 38488,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "iane_menezes",
+      "seguidores": 53217,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "ThayzzySmith",
+      "seguidores": 92465,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "GalvaoLaizah",
+      "seguidores": 31413,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "Haaaysb",
+      "seguidores": 53716,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "george1BR2",
+      "seguidores": 23819,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "WanderValero",
+      "seguidores": 68435,
+      "publicacoes": 1
+     }
+    ]
+   },
+   "instagram_agora": {
+    "publicacoes": 127,
+    "contas": 118,
+    "visualizacoes": 15725467,
+    "curtidas": 956747,
+    "respostas_recebidas": 92619,
+    "compartilhamentos": 820190,
+    "primeiro_dia": "2026-10-30",
+    "ultimo_dia": "2026-11-01",
+    "pico": {
+     "dia": "2026-10-31",
+     "publicacoes": 92
+    },
+    "dias_ate_metade": 1,
+    "serie_desde_dia0": [
+     9,
+     92,
+     26
+    ],
+    "contas_10mil": []
+   },
+   "facebook_agora": {
+    "publicacoes": 75,
+    "contas": 71,
+    "visualizacoes": 0,
+    "curtidas": 24592,
+    "respostas_recebidas": 9751,
+    "compartilhamentos": 3835,
+    "primeiro_dia": "2026-10-30",
+    "ultimo_dia": "2026-11-01",
+    "pico": {
+     "dia": "2026-10-31",
+     "publicacoes": 48
+    },
+    "dias_ate_metade": 1,
+    "serie_desde_dia0": [
+     6,
+     48,
+     21
+    ],
+    "contas_10mil": []
+   },
+   "epoca_instagram_facebook": "⛔ sem busca retroativa no Instagram e no Facebook",
+   "janela_epoca": [
+    "2018-05-18",
+    "2018-06-05"
+   ],
+   "filtro_pertinencia": "caminhoneir|grevedoscaminhoneiros",
+   "titulo": "Greve dos caminhoneiros de maio de 2018",
+   "contas_nos_dois_periodos": 2,
+   "contas_10mil_nos_dois": [
+    [
+     "Rudriguo",
+     16834
+    ],
+    [
+     "Rudriguo",
+     16833
+    ]
+   ],
+   "palavras_tipicas": {
+    "epoca": [
+     [
+      "durante",
+      69
+     ],
+     [
+      "amanhã",
+      16
+     ],
+     [
+      "segunda",
+      24
+     ],
+     [
+      "aula",
+      14
+     ],
+     [
+      "feriado",
+      12
+     ],
+     [
+      "ministro",
+      12
+     ],
+     [
+      "desta",
+      11
+     ],
+     [
+      "parente",
+      11
+     ],
+     [
+      "aulas",
+      11
+     ],
+     [
+      "copa",
+      10
+     ],
+     [
+      "lição",
+      10
+     ],
+     [
+      "bilhões",
+      10
+     ],
+     [
+      "análise",
+      9
+     ],
+     [
+      "pedro",
+      9
+     ],
+     [
+      "junho",
+      9
+     ]
+    ],
+    "agora": [
+     [
+      "novembro",
+      188
+     ],
+     [
+      "categoria",
+      134
+     ],
+     [
+      "confirmação",
+      99
+     ],
+     [
+      "custos",
+      129
+     ],
+     [
+      "adesão",
+      92
+     ],
+     [
+      "mobilização",
+      146
+     ],
+     [
+      "redes",
+      145
+     ],
+     [
+      "quinta",
+      111
+     ],
+     [
+      "poderá",
+      77
+     ],
+     [
+      "sociais",
+      134
+     ],
+     [
+      "possível",
+      145
+     ],
+     [
+      "fretes",
+      89
+     ],
+     [
+      "profissionais",
+      64
+     ],
+     [
+      "nacional",
+      176
+     ],
+     [
+      "indeterminado",
+      60
+     ]
+    ]
+   },
+   "sentimento": {
+    "x_epoca": {
+     "n": 891,
+     "NEG": 31.8,
+     "NEU": 63.0,
+     "POS": 5.3
+    },
+    "x_agora": {
+     "n": 269,
+     "NEG": 31.2,
+     "NEU": 66.9,
+     "POS": 1.9
+    },
+    "instagram_agora": {
+     "n": 127,
+     "NEG": 3.9,
+     "NEU": 94.5,
+     "POS": 1.6
+    },
+    "facebook_agora": {
+     "n": 75,
+     "NEG": 4.0,
+     "NEU": 94.7,
+     "POS": 1.3
+    }
+   }
+  },
+  "2022": {
+   "x_epoca": {
+    "publicacoes": 646,
+    "contas": 508,
+    "visualizacoes": 0,
+    "curtidas": 170368,
+    "respostas_recebidas": 7128,
+    "compartilhamentos": 31281,
+    "primeiro_dia": "2022-11-18",
+    "ultimo_dia": "2022-11-20",
+    "pico": {
+     "dia": "2022-11-18",
+     "publicacoes": 404
+    },
+    "dias_ate_metade": 0,
+    "serie_desde_dia0": [
+     404,
+     170,
+     72
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "FalaWillTV",
+      "seguidores": 35319,
+      "publicacoes": 11
+     },
+     {
+      "rede": "x",
+      "conta": "rodovias_parana",
+      "seguidores": 13052,
+      "publicacoes": 10
+     },
+     {
+      "rede": "x",
+      "conta": "programapanico",
+      "seguidores": 8333532,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "JornalDaCidadeO",
+      "seguidores": 771698,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "SigaGazetaBR",
+      "seguidores": 516314,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "blogdejamildo",
+      "seguidores": 90887,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "JovemPanNews",
+      "seguidores": 2497565,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "jc_pe",
+      "seguidores": 440557,
+      "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "congressoemfoco",
+      "seguidores": 260893,
+      "publicacoes": 3
+     },
+     {
+      "rede": "x",
+      "conta": "rosedbarros",
+      "seguidores": 232816,
+      "publicacoes": 3
+     },
+     {
+      "rede": "x",
+      "conta": "ATROMBETA3",
+      "seguidores": 149500,
+      "publicacoes": 3
+     },
+     {
+      "rede": "x",
+      "conta": "agoranoticiasbr",
+      "seguidores": 48914,
+      "publicacoes": 3
+     }
+    ],
+    "respostas_entre_publicacoes": 149
+   },
+   "x_agora": {
+    "publicacoes": 269,
+    "contas": 246,
+    "visualizacoes": 1117478,
+    "curtidas": 29141,
+    "respostas_recebidas": 2055,
+    "compartilhamentos": 3844,
+    "primeiro_dia": "2026-10-28",
+    "ultimo_dia": "2026-11-01",
+    "pico": {
+     "dia": "2026-10-31",
+     "publicacoes": 128
+    },
+    "dias_ate_metade": 3,
+    "serie_desde_dia0": [
+     37,
+     10,
+     43,
+     128,
+     51
+    ],
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "Saray_sandrac",
+      "seguidores": 77194,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "sempacienciamah",
+      "seguidores": 53477,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "Rudriguo",
+      "seguidores": 16834,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "thairizard",
+      "seguidores": 21808,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "FtimaPesso2719",
+      "seguidores": 63061,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "CENTRALDOFLAV",
+      "seguidores": 38488,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "iane_menezes",
+      "seguidores": 53217,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "ThayzzySmith",
+      "seguidores": 92465,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "GalvaoLaizah",
+      "seguidores": 31413,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "Haaaysb",
+      "seguidores": 53716,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "george1BR2",
+      "seguidores": 23819,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "WanderValero",
+      "seguidores": 68435,
+      "publicacoes": 1
+     }
+    ]
+   },
+   "instagram_agora": {
+    "publicacoes": 127,
+    "contas": 118,
+    "visualizacoes": 15725467,
+    "curtidas": 956747,
+    "respostas_recebidas": 92619,
+    "compartilhamentos": 820190,
+    "primeiro_dia": "2026-10-30",
+    "ultimo_dia": "2026-11-01",
+    "pico": {
+     "dia": "2026-10-31",
+     "publicacoes": 92
+    },
+    "dias_ate_metade": 1,
+    "serie_desde_dia0": [
+     9,
+     92,
+     26
+    ],
+    "contas_10mil": []
+   },
+   "facebook_agora": {
+    "publicacoes": 75,
+    "contas": 71,
+    "visualizacoes": 0,
+    "curtidas": 24592,
+    "respostas_recebidas": 9751,
+    "compartilhamentos": 3835,
+    "primeiro_dia": "2026-10-30",
+    "ultimo_dia": "2026-11-01",
+    "pico": {
+     "dia": "2026-10-31",
+     "publicacoes": 48
+    },
+    "dias_ate_metade": 1,
+    "serie_desde_dia0": [
+     6,
+     48,
+     21
+    ],
+    "contas_10mil": []
+   },
+   "epoca_instagram_facebook": "⛔ sem busca retroativa no Instagram e no Facebook",
+   "janela_epoca": [
+    "2022-10-30",
+    "2022-11-20"
+   ],
+   "filtro_pertinencia": "caminhoneir|grevedoscaminhoneiros",
+   "titulo": "Bloqueios de caminhoneiros depois da eleição de 2022",
+   "contas_nos_dois_periodos": 2,
+   "contas_10mil_nos_dois": [
+    [
+     "Rudriguo",
+     16834
+    ],
+    [
+     "Rudriguo",
+     16833
+    ]
+   ],
+   "palavras_tipicas": {
+    "epoca": [
+     [
+      "stf",
+      43
+     ],
+     [
+      "bloqueio",
+      74
+     ],
+     [
+      "bloquear",
+      32
+     ],
+     [
+      "federais",
+      29
+     ],
+     [
+      "ffaa",
+      28
+     ],
+     [
+      "moraes",
+      27
+     ],
+     [
+      "glo",
+      27
+     ],
+     [
+      "grevegeral",
+      27
+     ],
+     [
+      "voltam",
+      26
+     ],
+     [
+      "prf",
+      38
+     ],
+     [
+      "manifestacao",
+      24
+     ],
+     [
+      "censuradotse",
+      24
+     ],
+     [
+      "rodovia",
+      24
+     ],
+     [
+      "resistenciacivilbrasil",
+      24
+     ],
+     [
+      "megamanifestacao",
+      24
+     ]
+    ],
+    "agora": [
+     [
+      "custos",
+      129
+     ],
+     [
+      "diesel",
+      174
+     ],
+     [
+      "novembro",
+      188
+     ],
+     [
+      "confirmação",
+      99
+     ],
+     [
+      "preço",
+      132
+     ],
+     [
+      "nacional",
+      176
+     ],
+     [
+      "combustíveis",
+      114
+     ],
+     [
+      "abastecimento",
+      113
+     ],
+     [
+      "mobilização",
+      146
+     ],
+     [
+      "quinta",
+      111
+     ],
+     [
+      "caso",
+      75
+     ],
+     [
+      "redes",
+      145
+     ],
+     [
+      "regiões",
+      71
+     ],
+     [
+      "impactos",
+      70
+     ],
+     [
+      "possível",
+      145
+     ]
+    ]
+   },
+   "sentimento": {
+    "x_epoca": {
+     "n": 646,
+     "NEG": 36.2,
+     "NEU": 58.5,
+     "POS": 5.3
+    },
+    "x_agora": {
+     "n": 269,
+     "NEG": 31.2,
+     "NEU": 66.9,
+     "POS": 1.9
+    },
+    "instagram_agora": {
+     "n": 127,
+     "NEG": 3.9,
+     "NEU": 94.5,
+     "POS": 1.6
+    },
+    "facebook_agora": {
+     "n": 75,
+     "NEG": 4.0,
+     "NEU": 94.7,
+     "POS": 1.3
+    }
+   }
+  }
+ },
+ "sentimento_modelo": "pysentimiento/bertweet-pt-sentiment (o mesmo dos comentários do Atlas; textos em português)",
+ "sentimento_erro": null
+}
