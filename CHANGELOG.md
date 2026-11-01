@@ -13,6 +13,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - ⛔ A coleta paga não trouxe transcrição: a etapa paga do Apify cobre até cerca de 6 minutos e a live tem cerca de 17.
   - Novo `transcrever_midia_caso.py` + `transcrever-caso.yml`, grátis: baixa o vídeo pelo link do CDN registrado na coleta e transcreve com faster-whisper (modelo medium, português, CPU), com tempo de cada trecho e sem edição.
   - Público: `data/casos/024/transcricao.json` (autor é figura pública). Privado: áudio, SRT e JSON. O vídeo inteiro passa de 100 MB e fica fora do git.
+  - Página do caso 024: bloco "O que foi dito no vídeo", com busca na fala e destaque de termos (2030, Moraes, passaporte...). Testado no Chromium com dados simulados, não publicados.
 - **Caso 021, pedido (01/11, 17h25):** "movimento separatista, essa palavra deveria constar no caso".
   - Título e texto da página passam a dizer "movimento separatista".
   - Rodada 3: X ("movimento separatista"/separatistas/separatismo + Sul e estados) e Instagram (2 buscas e #movimentoseparatista).
