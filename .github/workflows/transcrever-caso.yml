@@ -30,7 +30,7 @@ jobs:
       - name: Dependências
         run: |
           sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg >/dev/null
-          pip install -q faster-whisper==1.1.1
+          pip install -q faster-whisper==1.1.1 requests==2.32.3
           python -c "import faster_whisper; print('faster-whisper', faster_whisper.__version__)" 2>&1 | tail -n 3 | while IFS= read -r l; do echo "::warning title=Importação::$l"; done
       - uses: actions/cache@v4
         with:
