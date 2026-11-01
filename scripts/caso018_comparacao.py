@@ -124,19 +124,27 @@ def dist(rot: list[str]) -> dict:
 
 
 def main(argv=None) -> int:
+    """--caso 023 (01/11/2026): mesmo método para outro caso; episódios, filtros e corte vêm de casos.json → "comparacao"."""
+    argv = sys.argv[1:] if argv is None else list(argv)
+    caso_id = argv[argv.index("--caso") + 1] if "--caso" in argv else "018"
     interno = os.environ.get("ODI_INTERNO_DIR")
     if not interno:
         print("⛔ ODI_INTERNO_DIR ausente")
         return 1
-    priv = Path(interno) / "casos" / "018"
+    priv = Path(interno) / "casos" / caso_id
     agora_rows = list(csv.DictReader(gzip.open(priv / "itens.csv.gz", "rt", encoding="utf-8"), delimiter=";")) if (priv / "itens.csv.gz").exists() else []
     yt = list(csv.DictReader(gzip.open(priv / "youtube_comentarios.csv.gz", "rt", encoding="utf-8"), delimiter=";")) if (priv / "youtube_comentarios.csv.gz").exists() else []
-    cfg = next(c for c in json.loads(Path("data/config/casos.json").read_text(encoding="utf-8"))["casos"] if c["id"] == "018")
+    cfg = next(c for c in json.loads(Path("data/config/casos.json").read_text(encoding="utf-8"))["casos"] if c["id"] == caso_id)
     janelas = {k: (v or {}).get("janela_epoca") for k, v in (cfg.get("episodios") or {}).items()}
-    out = {"caso": "018", "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "corte_pos_eleicao": CORTE,
+    eps, corte = EP, CORTE
+    if caso_id != "018":
+        cmp_ = cfg["comparacao"]
+        eps, corte = cmp_["episodios"], cmp_.get("corte", CORTE)
+        janelas = {k: v.get("janela_epoca") for k, v in eps.items()}
+    out = {"caso": caso_id, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "corte_pos_eleicao": corte,
            "metodo": __doc__.split("\n\n")[1].strip(), "episodios": {}}
     textos_sent, por_ep_ids = {}, {}
-    for ep, e in EP.items():
+    for ep, e in eps.items():
         rx = re.compile(e["pertinente"], re.I | re.S)
         epoca = []
         f = priv / f"x_epoca_{ep}.jsonl.gz"
@@ -152,7 +160,7 @@ def main(argv=None) -> int:
         dep = {"x_epoca": resumo(epoca) if f.exists() else None, "x_agora": resumo(ag_x),
                "instagram_agora": resumo([r for r in ag if r["rede"] == "instagram"]), "facebook_agora": resumo([r for r in ag if r["rede"] == "facebook"]),
                "epoca_instagram_facebook": "⛔ sem busca retroativa no Instagram e no Facebook",
-               "janela_epoca": janelas.get(ep), "filtro_pertinencia": e["pertinente"]}
+               "janela_epoca": janelas.get(ep), "filtro_pertinencia": e["pertinente"], "titulo": e.get("titulo")}
         if f.exists():
             dep["x_epoca"]["respostas_entre_publicacoes"] = sum(1 for r in epoca if r.get("resposta"))
             contas_a = {(r["conta"] or "").lower() for r in epoca}
@@ -162,11 +170,11 @@ def main(argv=None) -> int:
             ta, tb = tipicas([r["texto"] for r in epoca], [r["texto"] for r in ag])
             dep["palavras_tipicas"] = {"epoca": ta, "agora": tb}
         # YouTube: comentários datados dos vídeos originais, na janela da época × depois do corte
-        if e["youtube"]:
+        if e.get("youtube"):
             cs = [c for c in yt if c["video_id"] in e["youtube"]]
             jn = janelas.get(ep) or [None, None]
             na_epoca = [c for c in cs if jn[0] and jn[0] <= c["publicado_em"][:10] <= (jn[1] or "9999")]
-            depois = [c for c in cs if c["publicado_em"][:10] >= CORTE]
+            depois = [c for c in cs if c["publicado_em"][:10] >= corte]
             meses = Counter(c["publicado_em"][:7] for c in cs)
             dep["youtube_comentarios"] = {"videos": e["youtube"], "lidos": len(cs), "na_janela_da_epoca": len(na_epoca), "depois_de_25_10_2026": len(depois),
                                           "por_mes": dict(sorted(meses.items())), "palavras_tipicas": dict(zip(("epoca", "depois"), tipicas([c["texto"] for c in na_epoca], [c["texto"] for c in depois], 10)))}
@@ -190,10 +198,10 @@ def main(argv=None) -> int:
         out["episodios"][ep].setdefault("sentimento", {})[nome] = dist([rot[i] for i in ids if i in rot])
     out["sentimento_modelo"] = "pysentimiento/bertweet-pt-sentiment (o mesmo dos comentários do Atlas; textos em português)"
     out["sentimento_erro"] = erro
-    Path("data/casos/018/comparacao.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    Path(f"data/casos/{caso_id}/comparacao.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for ep, d in out["episodios"].items():
         xe, xa = d.get("x_epoca") or {}, d["x_agora"]
-        print(f"018 {ep}: X época {xe.get('publicacoes')} pub · {xe.get('contas')} contas · pico {xe.get('pico')} | X agora {xa['publicacoes']} · "
+        print(f"{caso_id} {ep}: X época {xe.get('publicacoes')} pub · {xe.get('contas')} contas · pico {xe.get('pico')} | X agora {xa['publicacoes']} · "
               f"IG agora {d['instagram_agora']['publicacoes']} · FB agora {d['facebook_agora']['publicacoes']} · contas nos dois {d.get('contas_nos_dois_periodos')}")
     print("sentimento:", erro or "ok")
     return 0

@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.224 — Caso 023 "Greve dos caminhoneiros 5/11" (época × agora) e YouTube pendente dos casos (2026-11-01) 🔜
+
+- **Pedidos:**
+  - 31/10/2026, 18h49: "novo case greve dos caminhoneiros 5/11; é bem similar àqueles casos de matérias antigas recirculando", com o reel DfKs_uvRqXV e o vídeo dfXr6kAy_5Q. Teto US$ 3,00 ("X das épocas só 2018 e 2022").
+  - 31/10, 18h49: "colha amanhã então", a coleta do YouTube que ficou em 429.
+  - 01/11, 15h39: "coleta o YouTube que tinha ficado faltando".
+- **YouTube pendente:** buscas dos casos 022, 021, 020 e 014 e o caso 018 despachados de novo hoje. Resultado na próxima entrada.
+- **Caso 023 (`casos.json`, desde 28/10; conta 1, US$ 2,90 dos 3,00):**
+  - X, US$ 1,10: 2 buscas e leitura diária até 15/11, com reserva de US$ 0,45.
+  - Instagram, US$ 1,05: hashtags, 3 buscas de reels e o reel indicado.
+  - Facebook, US$ 0,45: 2 buscas.
+  - **X das épocas, US$ 0,30, lido uma vez:** greve de maio de 2018 (18/05 a 05/06/2018) e bloqueios depois da eleição de 2022 (30/10 a 20/11/2022).
+  - Grátis: TikTok, Trends (5 anos, 12 meses e 7 dias), notícias, checagens e YouTube. O vídeo indicado entra sempre, pela nova chave `youtube_indicados` em `collect_caso_busca.py`.
+- **Generalização:**
+  - `caso018_comparacao.py --caso <id>` lê episódios, filtros e corte de `casos.json → comparacao`.
+  - Novo `x_epoca_caso.py`: busca do X na janela da época, uma vez por episódio.
+  - Novo `caso-epocas.yml`: diário até 15/11, com sentimento.
+  - Página: a mesma comparação do caso 018 no caso 023.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Chromium local: o caso 018 continua igual e o caso 023 carrega sem erros.
+
 ## C19.223 — Casos 021 e 022: resultados da carga; leitura do X em dobro corrigida (2026-10-31) ✅
 
 - **Caso 021, fatias mensais no X (run 41243030739):**

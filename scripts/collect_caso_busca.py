@@ -124,6 +124,15 @@ CASOS = {
             "rx_atributo": r"fl[aá]vio",
             "noticias": ["carta Flávio Bolsonaro", "Flávio \"presidente eleito\" carta", "Flávio \"líder do Brasil\"", "carta Flávio versões", "Flávio Bolsonaro carta EUA"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro carta", "Flávio Bolsonaro presidente eleito"], "arquivo_web": []},
+    # 01/11 (15h39): greve dos caminhoneiros em 5/11 e vídeos/reportagens antigas recirculadas como atuais
+    "023": {"variantes": ["greve dos caminhoneiros", "greve caminhoneiros 5 de novembro", "paralisação caminhoneiros", "caminhoneiros"],
+            "controles": ["diesel"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],
+            "youtube": ["greve dos caminhoneiros 5 de novembro", "greve dos caminhoneiros 2026", "paralisação caminhoneiros novembro", "caminhoneiros greve vídeo antigo"],
+            "youtube_indicados": ["dfXr6kAy_5Q"],
+            "desde_yt": "2026-10-28T00:00:00Z", "rx_titulo": r"caminhoneir|greve|paralisa|bloquei",
+            "rx_atributo": r"caminhoneir|rodovia|diesel|frete|greve|novembro|5/11",
+            "noticias": ["greve dos caminhoneiros 5 de novembro", "greve caminhoneiros novembro 2026", "vídeo antigo greve caminhoneiros", "paralisação caminhoneiros boato"],
+            "janela_noticias": "7d", "checagens": ["greve dos caminhoneiros", "vídeo antigo caminhoneiros"], "arquivo_web": []},
     # 31/10 (18h06): "Relatório Pericial Independente" (apócrifo, fraude no 2º turno); prints atribuídos a Joey Mannarino
     "022": {"variantes": ["relatório pericial", "votos sem biometria", "fraude eleição", "lei de Benford"],
             "controles": ["urna eletrônica"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
@@ -260,6 +269,8 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
             token = d.get("nextPageToken")
             if not token:
                 break
+    for vid in CASOS[CASO].get("youtube_indicados") or []:  # 01/11/2026: vídeos indicados pelo responsável entram sempre
+        ids.setdefault(vid, "indicado pelo responsável")
     vids = []
     lista = list(ids)
     for i in range(0, len(lista), 50):
@@ -271,7 +282,7 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
         for it in d.get("items", []):
             sn, st = it["snippet"], it.get("statistics", {})
             txt = f"{sn.get('title', '')} {sn.get('description', '')[:300]}"
-            if not (RX_TITULO.search(txt) and RX_ATRIBUTO.search(txt)):
+            if ids[it["id"]] != "indicado pelo responsável" and not (RX_TITULO.search(txt) and RX_ATRIBUTO.search(txt)):
                 continue
             n = lambda k: int(st[k]) if str(st.get(k, "")).isdigit() else None  # noqa: E731
             vids.append({"id": it["id"], "titulo": sn.get("title"), "canal": sn.get("channelTitle"), "canal_id": sn.get("channelId"),

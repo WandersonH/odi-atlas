@@ -1788,6 +1788,167 @@
     "YouTube",
     "Google"
    ]
+  },
+  {
+   "id": "023",
+   "slug": "greve-caminhoneiros-5-11",
+   "titulo": "Greve dos caminhoneiros em 5/11: convocação e vídeos antigos recirculados como atuais",
+   "tipo": "recontextualização (cheapfake sem montagem) e mobilização",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "desde": "2026-10-28",
+   "aba": "caso023",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 31/10/2026, 18h49 (\"novo case greve dos caminhoneiros 5/11; é bem similar àqueles casos de matérias antigas recirculando\") e 31/10, 18h5x: teto US$ 3,00 (\"carga menor; X das épocas só 2018 e 2022\"), conta 1. X 1,10 (carga até 0,65 + reserva diária 0,45 até 15/11), Instagram 1,05, Facebook 0,45, X das épocas 0,30 (lido uma vez). Soma US$ 2,90. TikTok, Trends, notícias e YouTube grátis.",
+   "descricao": "Circula nas redes a convocação de uma greve nacional de caminhoneiros para 5/11/2026, sem confirmação de entidades nacionais (DCI e Brasil do Trecho, 31/10). Como em 2021 e 2022, vídeos e reportagens de greves e bloqueios anteriores (a greve de maio de 2018 e os bloqueios depois da eleição de 2022) costumam voltar como se fossem atuais. O caso mede a circulação desde 28/10 em todas as redes e compara com a circulação na época de 2018 e de 2022 (busca do X na janela de cada época), além de buscas, imprensa e checagens. Pessoas comuns não são identificadas.",
+   "hashtags": [
+    "grevedoscaminhoneiros",
+    "grevecaminhoneiros",
+    "caminhoneirosparados"
+   ],
+   "buscas_tiktok": [
+    "greve dos caminhoneiros 5 de novembro",
+    "greve caminhoneiros 2026",
+    "paralisação caminhoneiros"
+   ],
+   "rolagens_tiktok": 20,
+   "termos_trends": [
+    "greve dos caminhoneiros",
+    "paralisação caminhoneiros",
+    "diesel"
+   ],
+   "termos_noticias": [
+    "greve dos caminhoneiros 5 de novembro",
+    "greve caminhoneiros novembro 2026",
+    "vídeo antigo greve caminhoneiros",
+    "paralisação caminhoneiros boato"
+   ],
+   "filtro_titulo_noticias": [
+    "caminhoneir",
+    "greve",
+    "paralisa"
+   ],
+   "maximo_por_termo": 2000,
+   "teto_usd": {
+    "x": 1.1,
+    "instagram": 1.05,
+    "facebook": 0.45,
+    "kwai": 0.0
+   },
+   "reserva_diaria_usd": {
+    "x": 0.45
+   },
+   "teto_diario_usd": {
+    "x": 0.03
+   },
+   "diario_ate": "2026-11-15",
+   "teto_epoca_x_usd": 0.3,
+   "maximo_epoca": 1500,
+   "complementos_x": [
+    {
+     "termo": "greve dos caminhoneiros 5/11",
+     "busca": "(\"greve dos caminhoneiros\" OR \"greve de caminhoneiros\" OR \"greve caminhoneiros\" OR \"paralisação dos caminhoneiros\" OR \"paralisação de caminhoneiros\" OR #grevedoscaminhoneiros OR #grevecaminhoneiros OR (caminhoneiros (\"dia 5\" OR \"5/11\" OR \"5 de novembro\"))) since:2026-10-28",
+     "motivo": "o caso",
+     "rodada": 1
+    },
+    {
+     "termo": "vídeo antigo / não é atual",
+     "busca": "(caminhoneiros (\"vídeo antigo\" OR \"video antigo\" OR \"é de 2018\" OR \"é de 2022\" OR \"não é atual\" OR \"nao e atual\" OR fake OR boato)) since:2026-10-28",
+     "motivo": "recirculação e checagens",
+     "rodada": 1
+    }
+   ],
+   "diario_x": [
+    {
+     "termo": "greve dos caminhoneiros 5/11",
+     "busca": "(\"greve dos caminhoneiros\" OR \"greve de caminhoneiros\" OR \"greve caminhoneiros\" OR \"paralisação dos caminhoneiros\" OR \"paralisação de caminhoneiros\" OR #grevedoscaminhoneiros OR #grevecaminhoneiros OR (caminhoneiros (\"dia 5\" OR \"5/11\" OR \"5 de novembro\"))) since:{desde}"
+    }
+   ],
+   "hashtags_instagram": [
+    "grevedoscaminhoneiros",
+    "grevecaminhoneiros"
+   ],
+   "buscas_instagram": [
+    "greve dos caminhoneiros 5 de novembro",
+    "greve caminhoneiros 2026",
+    "paralisação caminhoneiros"
+   ],
+   "buscas_facebook": [
+    "greve dos caminhoneiros 5 de novembro",
+    "paralisação caminhoneiros novembro"
+   ],
+   "buscas_kwai": [],
+   "posts_instagram": [
+    "https://www.instagram.com/reel/DfKs_uvRqXV/"
+   ],
+   "posts_instagram_pendentes": [
+    "https://www.instagram.com/reel/DfKs_uvRqXV/"
+   ],
+   "comparacao": {
+    "corte": "2026-10-28",
+    "episodios": {
+     "2018": {
+      "titulo": "Greve dos caminhoneiros de maio de 2018",
+      "janela_epoca": [
+       "2018-05-18",
+       "2018-06-05"
+      ],
+      "x_epoca": "(\"greve dos caminhoneiros\" OR \"greve caminhoneiros\" OR \"paralisação dos caminhoneiros\" OR #grevedoscaminhoneiros) since:2018-05-18 until:2018-06-06 lang:pt",
+      "pertinente": "caminhoneir|grevedoscaminhoneiros",
+      "termos_agora": [
+       "greve dos caminhoneiros",
+       "greve caminhoneiros",
+       "paralisação",
+       "#grevedos",
+       "#grevecaminhoneiros",
+       "vídeo antigo",
+       "indicado"
+      ]
+     },
+     "2022": {
+      "titulo": "Bloqueios de caminhoneiros depois da eleição de 2022",
+      "janela_epoca": [
+       "2022-10-30",
+       "2022-11-20"
+      ],
+      "x_epoca": "(caminhoneiros (bloqueio OR bloqueios OR bloqueiam OR greve OR paralisação OR rodovia OR rodovias)) since:2022-10-30 until:2022-11-21 lang:pt",
+      "pertinente": "caminhoneir|grevedoscaminhoneiros",
+      "termos_agora": [
+       "greve dos caminhoneiros",
+       "greve caminhoneiros",
+       "paralisação",
+       "#grevedos",
+       "#grevecaminhoneiros",
+       "vídeo antigo",
+       "indicado"
+      ]
+     }
+    }
+   },
+   "episodios": {
+    "2018": {
+     "titulo": "Greve dos caminhoneiros de maio de 2018",
+     "janela_epoca": [
+      "2018-05-18",
+      "2018-06-05"
+     ]
+    },
+    "2022": {
+     "titulo": "Bloqueios de caminhoneiros depois da eleição de 2022",
+     "janela_epoca": [
+      "2022-10-30",
+      "2022-11-20"
+     ]
+    }
+   },
+   "redes_previstas": [
+    "X",
+    "Instagram",
+    "Facebook",
+    "TikTok",
+    "YouTube",
+    "Google"
+   ]
   }
  ],
  "segredos_por_rede": {

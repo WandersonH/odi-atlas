@@ -1,0 +1,66 @@
+name: Casos de conteúdo antigo recirculado — época × agora (X da época uma vez; comparação diária com sentimento)
+
+# Generaliza o caso 018 para outros casos (01/11/2026: caso 023, greve dos caminhoneiros). Acompanhamento até 15/11.
+on:
+  schedule:
+    - cron: "37 15 * * *"   # todo dia, 12h37 em Brasília (depois da coleta diária dos casos)
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        default: "023"
+
+concurrency:
+  group: caso-epocas
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  epocas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Modelo de sentimento (CPU)
+        run: |
+          pip install -q torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -q transformers==5.20.0 emoji==2.16.0
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Época × agora
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          CASO: ${{ inputs.caso || '023' }}
+        run: |
+          if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
+          rc=0
+          python scripts/x_epoca_caso.py --caso "$CASO" > s.txt 2>&1 || rc=1
+          python scripts/caso018_comparacao.py --caso "$CASO" >> s.txt 2>&1 || rc=1
+          while IFS= read -r l; do echo "::notice title=Caso $CASO::$(echo "$l" | cut -c1-900)"; done < s.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Caso ${{ inputs.caso || '023' }}: época × agora (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Caso ${{ inputs.caso || '023' }}: época × agora (run ${{ github.run_id }})"
