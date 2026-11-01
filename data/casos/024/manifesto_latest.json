@@ -1,70 +1,26 @@
 {
  "caso": "024",
  "titulo": "\"Antes de 2030\": o primeiro vídeo de Flávio Bolsonaro nos EUA",
- "run_started_utc": "2026-11-01T20:22:13Z",
+ "run_started_utc": "2026-11-01T20:26:41Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-31",
  "redes": [
   {
-   "rede": "tiktok",
-   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
-   "termos": {
-    "flaviobolsonaro": {
-     "lado": "caso",
-     "respostas_api": 1,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "flavio2030": {
-     "lado": "caso",
-     "respostas_api": 1,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "Flávio Bolsonaro EUA": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "Flávio Bolsonaro live": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "Flávio Bolsonaro 2030": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    }
-   },
-   "custo_usd": 0.0,
-   "status": "⛔ nenhum vídeo lido",
-   "itens_no_periodo": 0
-  },
-  {
    "rede": "x",
    "teto_usd": 1.05,
-   "gasto_antes_usd": 0,
-   "teto_execucao_usd": 0.6,
+   "gasto_antes_usd": 0.0299,
+   "teto_execucao_usd": 0.5701,
    "termos": [
     {
-     "termo": "#flaviobolsonaro",
+     "termo": "vídeo de Flávio nos EUA / 2030",
      "ator": "xquik/x-tweet-scraper",
-     "itens": 198,
-     "lidos": 198,
-     "no_periodo": 198,
-     "no_limite": false,
-     "run": "h4E7lhglMfyRORmCC",
-     "custo_usd": 0.0297,
+     "itens": 2500,
+     "lidos": 2500,
+     "no_periodo": 2500,
+     "no_limite": true,
+     "run": "7bp4KXgxOSdklFEOO",
+     "custo_usd": 0.375,
      "erro": null,
      "chaves_1o_item": [
       "author",
@@ -83,8 +39,6 @@
       "isTranslatable",
       "lang",
       "likeCount",
-      "media",
-      "possiblySensitive",
       "quoteCount",
       "replyCount",
       "retweetCount",
@@ -95,68 +49,16 @@
       "viewCount",
       "viewState"
      ],
-     "mais_antigo": "2026-10-31T00:00:43Z"
-    },
-    {
-     "termo": "#flavio2030",
-     "ator": "xquik/x-tweet-scraper",
-     "itens": 1,
-     "lidos": 1,
-     "no_periodo": 1,
-     "no_limite": false,
-     "run": "PDJj6XGv8NIAGSF2U",
-     "custo_usd": 0.00015,
-     "erro": null,
-     "chaves_1o_item": [
-      "author",
-      "bookmarkCount",
-      "conversationId",
-      "createdAt",
-      "displayTextRange",
-      "edit",
-      "entities",
-      "id",
-      "inReplyToId",
-      "inReplyToUserId",
-      "inReplyToUsername",
-      "isNoteTweet",
-      "isPinned",
-      "isQuoteStatus",
-      "isReply",
-      "isRetweet",
-      "isTranslatable",
-      "lang",
-      "likeCount",
-      "quoteCount",
-      "replyCount",
-      "retweetCount",
-      "source",
-      "text",
-      "textHighlights",
-      "type",
-      "url",
-      "viewCount",
-      "viewState"
-     ],
-     "mais_antigo": "2026-10-31T17:40:14Z"
+     "mais_antigo": "2026-11-01T01:57:55Z"
     }
    ],
    "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 1900,
-   "custo_usd": 0.0299,
+   "itens_pedidos_por_termo": 2500,
+   "custo_usd": 0.375,
    "status": "ok",
-   "itens_no_periodo": 199
-  },
-  {
-   "rede": "google",
-   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
-   "custo_usd": 0.0,
-   "trends_pontos": 169,
-   "noticias": 192,
-   "status": "ok",
-   "itens_no_periodo": 0
+   "itens_no_periodo": 2500
   }
  ],
- "itens_acumulados": 199,
- "custo_usd": 0.0299
+ "itens_acumulados": 2680,
+ "custo_usd": 0.375
 }
