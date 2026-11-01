@@ -57,7 +57,10 @@ LUGARES = [  # (código, expressão); todos os que casarem contam. Revisado em 0
     ("BR", rf"\bbra[sz]il\w*|\bbrasileir\w*|\b({UF})\b"),
     ("US", r"(?-i:\bUSA\b|\bU\.S\.A?\b)|\beua\b|estados unidos|united states|\bflorida\b|\bmiami\b|\borlando\b|\btexas\b|\bcalifornia\b"
            r"|new york|\bnyc\b|\bboston\b|new jersey|massachusetts|\batlanta\b|\bchicago\b|los angeles|\bohio\b|\barizona\b|\bvirginia\b"
-           r"|washington,? d\.?c|\bseattle\b|\bdallas\b|\bhouston\b|\bdenver\b|\butah\b|\bnevada\b|las vegas|pennsylvania|(north|south) carolina|tennessee|michigan"),
+           r"|washington,? d\.?c|\bseattle\b|\bdallas\b|\bhouston\b|\bdenver\b|\butah\b|\bnevada\b|las vegas|pennsylvania|(north|south) carolina|tennessee|michigan"
+           r"|\balabama\b|\balaska\b|\barkansas\b|\bcolorado\b|connecticut|\bdelaware\b|\bhawai|\bidaho\b|\billinois\b|\bindiana\b|\biowa\b|\bkansas\b"
+           r"|kentucky|louisiana|\bmaine\b|maryland|minnesota|mississippi|missouri|\bmontana\b|nebraska|new hampshire|new mexico|(north|south) dakota|oklahoma"
+           r"|\boregon\b|rhode island|\bvermont\b|west virginia|wisconsin|wyoming|philadelphia|san francisco|san diego|\bbaltimore\b|\batlanta\b|\bportland\b"),
     ("PT", r"\bportugal\b|\blisboa\b|\blisbon\b"),
     ("GB", r"\blondon\b|\blondres\b|united kingdom|\bengland\b|\bscotland\b|(?-i:\bUK\b)|reino unido"),
     ("CA", r"\bcanad[aá]\b|\btoronto\b|\bvancouver\b|\bmontr[eé]al\b"),
@@ -72,13 +75,15 @@ LUGARES = [  # (código, expressão); todos os que casarem contam. Revisado em 0
     ("IE", r"\birlanda\b|\bireland\b|\bdublin\b"),
 ]
 LUGARES = [(c, re.compile(r, re.I)) for c, r in LUGARES]
+# bandeiras usadas como causa política nas bios (Palestina, Israel, Ucrânia, União Europeia, ONU): não indicam onde a pessoa está
+SIMBOLOS = {"PS", "IL", "UA", "EU", "UN"}
 BANDEIRA = re.compile("[\U0001F1E6-\U0001F1FF]{2}")
 CLASSES = ["Brasil", "Brasil + outro país", "outro país", "outra língua, país não declarado", "sem sinal"]
 
 
 def bandeiras(s: str) -> set[str]:
     b = {"".join(chr(ord(c) - 0x1F1E6 + 65) for c in m) for m in BANDEIRA.findall(s or "")}
-    return {"US" if x == "UM" else x for x in b}
+    return {"US" if x == "UM" else x for x in b} - SIMBOLOS
 
 
 def lugares(s: str) -> set[str]:
@@ -206,12 +211,13 @@ def main(argv: list[str]) -> int:
                          "lingua_texto": s["lingua_texto"] or "não identificada",
                          "pais": ",".join(sorted((set(s["lugares"]) | (set() if classe(s) == "Brasil" else set(s["bandeiras"]))) - {"BR"})) or None,
                          "bandeira_fora_com_br": classe(s) == "Brasil" and bool(set(s["bandeiras"]) - {"BR"}),
-                         "repost": rt, "tem_bruto": bool(raw)})
+                         "repost": rt, "tem_bruto": bool(raw), "url": it["url"]})
     out = {"caso": caso, "gerado_em_utc": now_utc(), "desde": cfg["desde"],
            "metodo": __doc__.split("Lê só o privado")[0].strip(),
            "publicacoes_lidas": len(vistos), "contas_lidas": len({(r["rede"], r["conta"]) for r in regs}),
            "aviso": ("Origem inferida por sinais que o perfil declara; não é o país real de quem posta. Percentuais valem para a amostra lida, "
-                     "não para tudo o que circulou. Uma publicação que cita as duas hashtags conta nos dois lados."),
+                     "não para tudo o que circulou. Usar a hashtag não é apoiar a causa: quem critica a campanha também a usa. "
+                     "Uma publicação que cita as duas hashtags conta nos dois lados."),
            "lados": {}}
     for lado in [*LADOS, "sem a hashtag no texto"]:
         rl = [r for r in regs if r["lado"] == lado]
@@ -237,6 +243,11 @@ def main(argv: list[str]) -> int:
             "por_dia": [{"dia": d, **{c: sum(1 for r in rl if r["dia"] == d and r["classe"] == c) for c in CLASSES}} for d in dias],
             "contas_10mil": [{"rede": k[0], "conta": k[1], "publicacoes": n, "seguidores": info[k][0], "classe": info[k][1], "pais_fora": info[k][2]}
                              for k, n in top.most_common(25)],
+            "visualizacoes_total": sum(r["visualizacoes"] for r in rl),
+            "maior_alcance": [{"rede": r["rede"], "conta": r["conta"] if (r["seguidores"] or 0) >= MIN_PUBLICO else None, "seguidores": r["seguidores"],
+                               "visualizacoes": r["visualizacoes"], "pct_visualizacoes": pct(r["visualizacoes"], sum(x["visualizacoes"] for x in rl)),
+                               "classe": r["classe"], "lingua_texto": r["lingua_texto"], "dia": r["dia"], "url": r["url"] if (r["seguidores"] or 0) >= MIN_PUBLICO else None}
+                              for r in sorted(rl, key=lambda r: r["visualizacoes"], reverse=True)[:10]],
         }
     # universo × amostra (regra 9): o X não informa o total; os manifestos dizem quanto foi pedido e lido por busca
     uni = []

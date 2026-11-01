@@ -4,6 +4,43 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.235 — Caso 025: primeira leitura (2026-11-01) ⚠️
+
+- **Coleta:**
+  - Carga, run 41352324641:
+    - Instagram #DeportTheBolsonaros: 170 itens (o limite pedido).
+    - Instagram #BraziliansStandWithFlavio: 48 itens, 41 no período.
+    - Instagram #BrasiliansStandWithFlavio: 1 item, 0 no período.
+    - Facebook #DeportTheBolsonaros: 14 itens.
+    - ⛔ TikTok: 0 vídeos. A página pública não devolveu vídeos.
+  - Complemento do X, run 41352928562: 6.057 itens nesta coleta, 6.346 acumulados no caso.
+    - Fatias diárias de #DeportTheBolsonaros: 25/10 0 · 26/10 2 · 27/10 571 · de 28/10 a 01/11, 914 por dia.
+    - #BrasiliansStandWithFlavio: 914.
+    - Os 914 são o limite pedido por busca, então de 28/10 a 01/11 e na busca de #BrasiliansStandWithFlavio a amostra são os mais recentes de cada dia.
+- **Origem** (`caso_origem.py`, sobre o privado em 01/11, ~22h UTC):
+  - **#DeportTheBolsonaros:** 5.331 publicações de 2.183 contas.
+    - Por publicações: 65,8% Brasil · 1,4% Brasil + outro país · 2,5% outro país · 6,3% outra língua com país não declarado · 24,0% sem sinal.
+    - Por visualizações: 13,8% Brasil · 69,3% outro país · 15,5% outra língua.
+    - Um único post de @isaiahrmartin (185 mil seguidores, perfil que declara Maryland, 27/10) tem 1.758.294 visualizações, 68,7% das 2.560.595 visualizações do lado na amostra. @JoeyMannarino tem 11,1%.
+    - Por dia, a hashtag aparece em 27/10.
+  - **#BrasiliansStandWithFlavio:** 1.019 publicações de 381 contas.
+    - Por publicações: 53,2% Brasil · 4,9% Brasil + outro país · 1,9% outro país · 11,9% outra língua · 28,2% sem sinal.
+    - Concentrada em 31/10 e 01/11.
+- **Ajustes do método:**
+  - As bandeiras 🇵🇸 🇮🇱 🇺🇦 🇪🇺 🇺🇳 deixam de indicar país, porque são causa política.
+  - Os 50 estados dos EUA entram na lista de lugares (Maryland ficava de fora).
+  - Novo bloco com as publicações de maior alcance. Contas com menos de 10 mil seguidores aparecem sem nome.
+  - Novo aviso: usar a hashtag não é apoiar a causa.
+- **Universo:** ⛔ o X e o Instagram não informam o total de publicações com as hashtags. A tabela "universo × amostra" está na página.
+- **Teste:**
+  - `python -m unittest discover -s tests` OK.
+  - Página renderizada no Playwright com o `origem.json` gerado localmente, sem erros de JavaScript.
+  - O `origem.json` público é regenerado pelo modo `so-analises` (próxima run).
+- **⛔ Pendente:**
+  - Trends no mundo e YouTube: run de casos-busca. O YouTube tende a dar HTTP 429 até a renovação da cota, às 07:00 UTC.
+  - Buscas por frase no Instagram e no Facebook (modo `frases`): ainda não rodadas.
+  - Revisão humana das classes.
+
 ## C19.234 — Caso 025: #DeportTheBolsonaros × #BrasiliansStandWithFlavio (configuração e coleta) (2026-11-01) 🔜
 
 - **Pedido do responsável** (01/11, 18h26): medir quanto veio do Brasil e quanto de outros países, nas buscas e nas redes. Teto de US$ 4,00, coleta desde 25/10, conta 1.
