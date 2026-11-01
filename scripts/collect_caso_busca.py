@@ -128,6 +128,16 @@ CASOS = {
             "rx_atributo": r"fl[aá]vio",
             "noticias": ["carta Flávio Bolsonaro", "Flávio \"presidente eleito\" carta", "Flávio \"líder do Brasil\"", "carta Flávio versões", "Flávio Bolsonaro carta EUA"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro carta", "Flávio Bolsonaro presidente eleito"], "arquivo_web": []},
+    # 01/11 (18h26): #DeportTheBolsonaros × #BrasiliansStandWithFlavio: quanto veio do Brasil e quanto de outros países.
+    # Trends no mundo inteiro (geo vazio), com o mapa por país em cada janela; YouTube sem região nem língua.
+    "025": {"variantes": ["deport Bolsonaro", "Flávio Bolsonaro Miami", "Flavio Bolsonaro", "DeportTheBolsonaros"],
+            "controles": ["Bolsonaro"], "janelas": ["now 7-d", "today 1-m"], "geo_trends": "", "paises_trends": True,
+            "youtube": ["DeportTheBolsonaros", "deport Bolsonaro", "deport Flavio Bolsonaro Miami", "Brazilians stand with Flavio", "deportem os Bolsonaros"],
+            "youtube_mundo": True,
+            "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"deport|bolsonar|fl[aá]vio",
+            "rx_atributo": r"deport|miami|eua|\busa?\b|estados unidos|united states|ice|trump|stand|asyl|asilo|ex[ií]l",
+            "noticias": ["DeportTheBolsonaros", "\"deportem os Bolsonaros\"", "Flávio Bolsonaro deportação EUA", "deport Bolsonaro Miami", "BrasiliansStandWithFlavio"],
+            "janela_noticias": "7d", "checagens": ["deportação Flávio Bolsonaro", "DeportTheBolsonaros"], "arquivo_web": []},
     # 01/11 (17h16): primeiro vídeo de Flávio Bolsonaro nos EUA (live no Instagram, 31/10)
     "024": {"variantes": ["Flávio Bolsonaro", "Flávio Bolsonaro EUA", "Flávio Bolsonaro 2030", "Flávio Bolsonaro live"],
             "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
@@ -221,10 +231,17 @@ def trends() -> dict:
             g["titulo"] = extras[nome].get("titulo")
         for jan in janelas:
             try:
-                ws = {w["id"]: w for w in t.explore(termos, jan, "BR")}
+                geo_t = CASOS[CASO].get("geo_trends", "BR")  # 01/11/2026 (caso 025): "" = mundo inteiro
+                ws = {w["id"]: w for w in t.explore(termos, jan, geo_t)}
                 ts = t.widget("multiline", ws["TIMESERIES"])
                 g[jan] = [{"t": dt.datetime.fromtimestamp(int(p["time"]), dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                            "v": dict(zip(termos, p.get("value") or []))} for p in ts["default"]["timelineData"]]
+                if CASOS[CASO].get("paises_trends"):  # interesse por país em cada janela (caso 025)
+                    gw = next((w for k, w in ws.items() if k.startswith("GEO_MAP")), None)
+                    if gw:
+                        gm = t.widget("comparedgeo", gw)
+                        g["paises_" + jan] = [{"pais": r.get("geoCode"), "nome": r.get("geoName"), "v": dict(zip(termos, r.get("value") or []))}
+                                              for r in gm["default"]["geoMapData"] if any(r.get("value") or [])]
                 if jan == "today 12-m":
                     geo = next((w for k, w in ws.items() if k.startswith("GEO_MAP")), None)
                     if geo:
@@ -267,8 +284,9 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
     for q in BUSCAS_YT:
         token = None
         for _ in range(2):
-            p = {"part": "snippet", "q": f'"{q}"' if CASO == "002" else q, "type": "video", "maxResults": 50, "publishedAfter": DESDE_YT, "regionCode": "BR",
-                 "relevanceLanguage": "pt", "key": key}
+            p = {"part": "snippet", "q": f'"{q}"' if CASO == "002" else q, "type": "video", "maxResults": 50, "publishedAfter": DESDE_YT, "key": key}
+            if not CASOS[CASO].get("youtube_mundo"):  # 01/11/2026 (caso 025): sem região nem língua, para achar vídeos de fora
+                p.update({"regionCode": "BR", "relevanceLanguage": "pt"})
             if token:
                 p["pageToken"] = token
             try:
@@ -299,19 +317,22 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
             n = lambda k: int(st[k]) if str(st.get(k, "")).isdigit() else None  # noqa: E731
             vids.append({"id": it["id"], "titulo": sn.get("title"), "canal": sn.get("channelTitle"), "canal_id": sn.get("channelId"),
                          "publicado_em": sn.get("publishedAt"), "visualizacoes": n("viewCount"), "curtidas": n("likeCount"),
-                         "comentarios": n("commentCount"), "consulta": ids[it["id"]], "descricao": (sn.get("description") or "")[:300]})
+                         "comentarios": n("commentCount"), "consulta": ids[it["id"]], "descricao": (sn.get("description") or "")[:300],
+                         "idioma_declarado": sn.get("defaultAudioLanguage") or sn.get("defaultLanguage")})
     canais = list({v["canal_id"] for v in vids})
-    inscritos = {}
+    inscritos, pais_canal = {}, {}
     for i in range(0, len(canais), 50):
         try:
-            d = yt("channels", part="statistics", id=",".join(canais[i:i + 50]), key=key)
+            d = yt("channels", part="statistics,snippet", id=",".join(canais[i:i + 50]), key=key)
             for it in d.get("items", []):
+                pais_canal[it["id"]] = (it.get("snippet", {}).get("country") or "").upper() or None  # país declarado pelo canal (01/11/2026)
                 s = it.get("statistics", {})
                 inscritos[it["id"]] = int(s["subscriberCount"]) if str(s.get("subscriberCount", "")).isdigit() else None
         except RuntimeError as e:
             ERROS.append(f"youtube canais: {e}")
     for v in vids:
         v["inscritos"] = inscritos.get(v["canal_id"])
+        v["pais_canal"] = pais_canal.get(v["canal_id"])
     vids.sort(key=lambda v: v["visualizacoes"] or 0, reverse=True)
     rows = []
     for v in [x for x in vids if (x["comentarios"] or 0) > 0][:TOP_COMENTARIOS]:

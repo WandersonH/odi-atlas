@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.234 — Caso 025: #DeportTheBolsonaros × #BrasiliansStandWithFlavio (configuração e coleta) (2026-11-01) 🔜
+
+- **Pedido do responsável** (01/11, 18h26): medir quanto veio do Brasil e quanto de outros países, nas buscas e nas redes. Teto de US$ 4,00, coleta desde 25/10, conta 1.
+- **Divisão do teto:**
+  - X: até US$ 1,30 na carga mais US$ 0,50 de reserva para a leitura diária até 15/11.
+  - Instagram: US$ 1,40.
+  - Facebook: US$ 0,60.
+  - TikTok, Trends, notícias e YouTube são grátis.
+- **X:** nove fatias diárias (25/10 a 01/11) do grupo #DeportTheBolsonaros e variações em inglês, mais uma busca do grupo #BrasiliansStandWithFlavio com as duas grafias. A fatia diária evita que a busca traga só os mais recentes.
+- **Trends:** pela primeira vez no mundo inteiro (`geo_trends: ""`), com o interesse por país em cada janela (`paises_<janela>`).
+  - O Trends dá interesse relativo, normalizado pelo volume de buscas de cada país. Não é parcela do volume mundial.
+- **YouTube:** busca sem região e sem língua (`youtube_mundo`). Passa a guardar o país declarado pelo canal e a língua declarada do áudio.
+- **Origem:** nenhuma rede informa o país de quem posta, então a origem será inferida por sinais declarados (análise a seguir). O universo do X é ⛔: a plataforma não informa o total de posts com a hashtag.
+- **Contexto (fonte):** a Revista Fórum relata o uso da hashtag depois da chegada de Flávio a Miami, na quarta-feira (28/10). A matéria não traz números.
+- **Teste:** `python -m unittest discover -s tests` OK (265 testes).
+- **⛔ Pendente:** a coleta (as runs entram na próxima entrada), a análise de origem e a seção da página.
+
 ## C19.233 — Transcrição do caso 024 publicada; leitura diária do X funcionando; caso 014 com a nova tag (2026-11-01) ⚠️
 
 - **✅ Transcrição do caso 024** (primeiro vídeo de Flávio nos EUA).
