@@ -151,7 +151,7 @@ def chd_debate(segmentos: list[dict]) -> dict | None:
                         "formas": [[voc[j], round(float(ch[j]), 1)] for j in idx], "oradores": quem,
                         "trechos": [{"orador": ORADORES[segs[i]["orador"]], "ini": segs[i]["ini"], "trecho": " ".join(segs[i]["texto"].split()[:25]) + "…"} for i in linhas]})
     return {"segmentos": len(segs), "classificados": int(ok.sum()), "pct_classificados": round(100 * ok.sum() / len(segs), 1),
-            "classes": classes, "arvore": arvore,
+            "classes": classes, "arvore": arvore, "aproveitamento": cr.aproveitamento(rot, len(segs)),
             "nota": "CHD de Reinert do Atlas (chd_reinert.py): sem lematização e com classificação simples; confira no IRaMuTeQ com o corpus do privado. Os nomes das classes são dados por quem lê as formas e os trechos."}
 
 

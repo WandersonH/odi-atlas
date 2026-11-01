@@ -119,32 +119,53 @@ def dividir(X: np.ndarray, max_iter: int = 30, min_lado: int = 1) -> tuple[np.nd
     return A, melhor
 
 
-def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE):
-    """Devolve (rótulo de classe por linha, árvore de divisões). Linhas sem forma ativa ficam com −1."""
+APROVEITAMENTO_MIN = 75.0  # % de segmentos classificados; Camargo & Justo (2013), citado em Amaral-Rosa (2019, Rev Esc Enferm USP 53:e03468)
+
+
+def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: int | None = None):
+    """Devolve (rótulo de classe por linha, árvore de divisões). Linhas sem forma ativa ou em grupo eliminado ficam com −1.
+
+    01/11/2026 (correção): o corte de cada divisão é o de maior χ², SEM piso de tamanho (antes o piso era imposto no corte e
+    empurrava o corte extremo até o mínimo: várias classes saíam com exatamente o tamanho mínimo, efeito da regra e não do corpus).
+    Agora, como no rainette (min_split_members) e no IRaMuTeQ (tamanho mínimo de classe): um grupo só é dividido se tiver 2× o
+    mínimo; um grupo que sai da divisão com menos que o mínimo não vira classe (fica na árvore como "eliminado" e seus segmentos
+    ficam não classificados). A divisão continua pela maior classe até haver k classes ou até max_divisoes (padrão 4k)."""
     ativos = np.where(X.sum(1) > 0)[0]
-    classes = [ativos]
     arvore = [{"id": 0, "n": int(len(ativos)), "filhos": None}]
     folhas = {0: ativos}
     prox = 1
-    indivisiveis = set()
-    while len(folhas) < k:
-        candidatas = [c for c in folhas if c not in indivisiveis and len(folhas[c]) >= 2 * min_classe]
+    indivisiveis, eliminados = set(), set()
+    divisoes, limite = 0, max_divisoes or 4 * k
+    while len([f for f in folhas if f not in eliminados]) < k and divisoes < limite:
+        candidatas = [c for c in folhas if c not in indivisiveis and c not in eliminados and len(folhas[c]) >= 2 * min_classe]
         if not candidatas:
             break
         cid = max(candidatas, key=lambda c: (len(folhas[c]), -c))
         linhas = folhas[cid]
         sub = X[linhas]
         sub = sub[:, sub.sum(0) > 0]
-        A, ch = dividir(sub, min_lado=min_classe)
-        ga, gb = linhas[A], linhas[~A]
-        if min(len(ga), len(gb)) < min_classe:
-            indivisiveis.add(cid)  # não divide: passa a vez para a próxima maior (como no rainette)
+        if sub.shape[1] < 2:
+            indivisiveis.add(cid)
             continue
+        try:
+            A, ch = dividir(sub, min_lado=1)
+        except np.linalg.LinAlgError:
+            indivisiveis.add(cid)
+            continue
+        ga, gb = linhas[A], linhas[~A]
+        if not len(ga) or not len(gb):
+            indivisiveis.add(cid)
+            continue
+        divisoes += 1
         del folhas[cid]
         folhas[prox], folhas[prox + 1] = ga, gb
         no = next(n for n in arvore if n["id"] == cid)
         no["filhos"], no["chi2"] = [prox, prox + 1], round(ch, 1)
-        arvore += [{"id": prox, "n": int(len(ga)), "filhos": None}, {"id": prox + 1, "n": int(len(gb)), "filhos": None}]
+        for i, g in ((prox, ga), (prox + 1, gb)):
+            arvore.append({"id": i, "n": int(len(g)), "filhos": None})
+            if len(g) < min_classe:
+                eliminados.add(i)
+                arvore[-1]["eliminado"] = True
         prox += 2
     rot = np.full(X.shape[0], -1)
     # numera as classes finais na ordem da árvore (da esquerda para a direita), como no dendrograma
@@ -155,15 +176,23 @@ def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE):
         if no["filhos"]:
             for f in no["filhos"]:
                 visita(f)
-        else:
+        elif i not in eliminados:
             ordem_folhas.append(i)
     visita(0)
     mapa = {f: n + 1 for n, f in enumerate(ordem_folhas)}
     for f, linhas in folhas.items():
-        rot[linhas] = mapa[f]
+        if f in mapa:
+            rot[linhas] = mapa[f]
     for no in arvore:
         no["classe"] = mapa.get(no["id"])
     return rot, arvore
+
+
+def aproveitamento(rot: np.ndarray, n_segmentos: int) -> dict:
+    """Taxa de segmentos classificados e o teste do mínimo de 75% (Camargo & Justo, 2013)."""
+    pct = round(100 * int((rot > 0).sum()) / max(1, n_segmentos), 1)
+    return {"pct_classificados": pct, "minimo_pct": APROVEITAMENTO_MIN, "atinge_minimo": pct >= APROVEITAMENTO_MIN,
+            "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468"}
 
 
 def chi2_assoc(dentro: np.ndarray, total: np.ndarray, n_dentro: int, n: int) -> np.ndarray:
@@ -228,14 +257,14 @@ def main(argv=None) -> int:
                         "candidatos": var, "segmentos_caracteristicos": segs, "nome": None})
     out = {"schema_version": 1, "gerado_em_utc": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "metodo": (f"CHD de Reinert (implementação própria em Python/numpy, classificação simples): {K} classes no máximo, "
-                      f"formas com {MIN_FREQ}+ segmentos, classe mínima de {int(MIN_CLASSE_PCT*100)}% dos segmentos (teste de sensibilidade com 3%, 5% e 8% registrado), formas características com χ² ≥ {CHI_CRIT} (p < 0,05). "
+                      f"formas com {MIN_FREQ}+ segmentos, classe mínima de {int(MIN_CLASSE_PCT*100)}% dos segmentos (grupo menor que isso não vira classe e fica não classificado; teste de sensibilidade com 3%, 5% e 8% registrado), aproveitamento mínimo de {APROVEITAMENTO_MIN:.0f}% dos segmentos (Camargo & Justo, 2013), formas características com χ² ≥ {CHI_CRIT} (p < 0,05). "
                       "Sem lematização. Os nomes das classes devem ser dados pelo pesquisador. Conferir no IRaMuTeQ com o corpus exportado."),
            "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
            "sensibilidade": sens,
            "nota_sensibilidade": "Com classe mínima de 3% ou 5%, várias classes se formam por nomes próprios de convidados (ex.: Dani Marques, Jeffrey Chiquini), sem leitura temática; 8% foi adotado por isso. As três versões ficam registradas aqui.",
            "segmentos_total": len(linhas), "segmentos_classificados": n,
            "pct_classificados": round(100 * n / max(1, len(linhas)), 1), "formas_ativas": len(voc),
-           "arvore": arvore, "classes": classes}
+           "arvore": arvore, "classes": classes, "aproveitamento": aproveitamento(rot, len(linhas))}
     out["plataforma"] = plat
     pl.caminho(root, plat, "chd").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"CHD [{plat}]: {len(linhas)} segmentos, {n} classificados ({out['pct_classificados']}%), {len(voc)} formas, {len(classes)} classes")

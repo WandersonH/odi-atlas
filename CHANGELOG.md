@@ -4,6 +4,33 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.237 — CHD de Reinert: correção do corte forçado no tamanho mínimo (ramo `chd-correcao`, não publicado) 🔜
+
+- **Defeito:** em quase todas as análises de classes, várias classes tinham exatamente o tamanho mínimo.
+  - Exemplos: caso 020 com 217 · 1.639 · 1.507 · 217 · 559 · 217; caso 014 com 384 · 2.367 · 3.795 · 384 · 384 · 384; caso 006 com 859 ×4.
+  - Causa: o maior χ² separa um punhado de segmentos com vocabulário exclusivo (corte livre na raiz: X 20 de 4.812, TikTok 2 de 2.101), e `dividir(min_lado=…)` empurrava esse corte até o piso.
+- **Correção** (`chd_reinert.chd`):
+  - O corte agora é livre.
+  - Grupo menor que o mínimo não vira classe: fica "eliminado" na árvore e seus segmentos ficam não classificados, como no `rainette` (`min_split_members`) e no IRaMuTeQ.
+  - Limite de divisões configurável.
+  - Novo `aproveitamento()`, com o mínimo de 75% de segmentos classificados (Camargo & Justo, 2013, citado em Amaral-Rosa, 2019).
+  - Árvore e aproveitamento passam a sair em todas as análises: casos, mundo, comentários, notícias e debate.
+- **Teste:**
+  - `tests/test_chd_correcao.py`, com 3 testes: corpus sintético com 3 temas e 4 cópias isoladas.
+  - `python -m unittest discover -s tests` OK.
+- **Sensibilidade no corpus do YouTube** (rodada local, arquivos não publicados):
+
+  | Classe mínima | Divisões | Classes (segmentos) | Aproveitamento |
+  |---|---|---|---|
+  | 8% | 24 | 1.202 · 356 | 73,6% |
+  | 8% | 80 | 4 classes | 51,8% |
+  | 5% | 80 | 6 classes | 75,9% |
+  | 3% | 80 | 6 classes | 83,5% |
+
+- **⛔ Pendente:**
+  - Decisão do responsável sobre a regra fixa proposta: 5%, até 60 divisões, mínimo de 75%.
+  - Até a decisão, o ramo não vai para a `main` e as análises publicadas ficam como estão.
+
 ## C19.236 — Caso 025: frases no Instagram e no Facebook, Trends por país e visualizações separadas por rede (2026-11-01) ⚠️
 
 - **Frases** (run 41353513061, modo `frases`):

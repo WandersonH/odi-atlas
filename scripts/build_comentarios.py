@@ -104,7 +104,7 @@ def chd_candidato(textos: list[str], ids: list[str], semente: int = SEMENTE) -> 
     X = X.astype(np.float32)
     ativos = int((X.sum(1) > 0).sum())
     mc = max(chd.MIN_CLASSE, int(chd.MIN_CLASSE_PCT * ativos))
-    rot, _ = chd.chd(X, min_classe=mc)
+    rot, arvore = chd.chd(X, min_classe=mc)
     cl = rot > 0
     n = int(cl.sum())
     tot = X[cl].sum(0)
@@ -120,7 +120,8 @@ def chd_candidato(textos: list[str], ids: list[str], semente: int = SEMENTE) -> 
         sc = sorted(((sum(peso.get(j, 0) for j in np.nonzero(X[i])[0]), i) for i in np.where(m)[0]), reverse=True)[:8]
         privados += [{"classe": int(k), "comment_id": ids[idx[i]], "texto": segs[i][:400], "score": round(float(s), 1)} for s, i in sc]
     return {"amostra": len(idx), "classificados": n, "pct_classificados": round(100 * n / len(idx), 1),
-            "formas_ativas": len(voc), "min_classe": mc, "classes": classes}, privados
+            "formas_ativas": len(voc), "min_classe": mc, "classes": classes, "arvore": arvore,
+            "aproveitamento": chd.aproveitamento(rot, len(idx))}, privados
 
 
 def amostra_humana(rows: list[dict], n: int, semente: int = SEMENTE) -> list[dict]:
