@@ -4869,10 +4869,10 @@ if(sec.classList.contains('active'))carregar();
 const sec=document.getElementById('gTrends');if(!sec)return;
 const COR={'Lula':'#c8102e','Flávio Bolsonaro':'#1f8a3b','Augusto Cury':'#b8862e','Renan Santos':'#5b7894','Ronaldo Caiado':'#7a4d8c'};
 const NOME_GRUPO={segundo_turno_topicos:'Lula × Flávio · tópicos',primeiro_turno_5_topicos:'5 mais votados no 1º turno · tópicos',segundo_turno_palavras:'Lula × Flávio · palavras soltas'};
-const NOME_PER={'now 1-d':'Últimas 24 horas (a cada 8 minutos)','now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)','eleitoral':'Período eleitoral · convenções (20/07) → 2º turno (25/10), por dia'};
+const NOME_PER={'now 1-d':'Últimas 24 horas (a cada 8 minutos)','now 7-d':'Últimos 7 dias (por hora)','today 3-m':'Últimos 3 meses (por dia)','eleitoral':'Período eleitoral · convenções (20/07) → 2º turno (25/10), por dia','campanha_e_depois':'Campanha e depois · convenções (20/07) → hoje, por dia (2º turno em 25/10)'};
 const MARCOS=[['2026-07-20','Convenções'],['2026-08-16','Início da campanha'],['2026-10-04','1º turno'],['2026-10-25','2º turno']];
 const GRADE={RR:[2,0],AP:[4,0],AM:[1,1],PA:[3,1],MA:[4,1],CE:[5,1],RN:[6,1],AC:[0,2],RO:[1,2],MT:[2,2],TO:[3,2],PI:[4,2],PE:[5,2],PB:[6,2],MS:[2,3],GO:[3,3],DF:[4,3],BA:[5,3],AL:[6,3],PR:[2,4],SP:[3,4],MG:[4,4],ES:[5,4],SE:[6,4],SC:[2,5],RJ:[4,5],RS:[2,6]};
-let D=null,grupo='segundo_turno_topicos',periodo='eleitoral',relTipo='consultas',vegModo='orig',bloco='15',feito=false;
+let D=null,grupo='segundo_turno_topicos',periodo='campanha_e_depois',relTipo='consultas',vegModo='orig',bloco='15',feito=false;
 const $=id=>document.getElementById(id);
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cor=t=>COR[t]||'#3c4a58';
@@ -4881,8 +4881,8 @@ const fmtT=(iso,h)=>{const d=new Date(iso);if(h==='min')return d.toLocaleTimeStr
 function mix(a,b,f){const p=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));const A=p(a),B=p(b);return 'rgb('+A.map((v,i)=>Math.round(B[i]+(v-B[i])*f)).join(',')+')';}
 function chips(){const grupos=[...new Set(D.consultas.map(c=>c.grupo))];
 $('gtGrupo').innerHTML=grupos.map(g=>`<button class="yt-chip" data-g="${g}" aria-pressed="${g===grupo}">${esc(NOME_GRUPO[g]||g)}</button>`).join('');
-const pers=['eleitoral','today 3-m','now 7-d','now 1-d'].filter(p=>D.consultas.some(c=>c.periodo===p));if(!pers.includes(periodo))periodo=pers[0]||'now 7-d';
-$('gtPeriodo').innerHTML=pers.map(p=>`<button class="yt-chip" data-p="${p}" aria-pressed="${p===periodo}">${p==='now 1-d'?'24 horas':p==='now 7-d'?'7 dias':p==='today 3-m'?'3 meses':'Período eleitoral'}</button>`).join('');
+const pers=['campanha_e_depois','eleitoral','today 3-m','now 7-d','now 1-d'].filter(p=>D.consultas.some(c=>c.periodo===p));if(!pers.includes(periodo))periodo=pers[0]||'now 7-d';
+$('gtPeriodo').innerHTML=pers.map(p=>`<button class="yt-chip" data-p="${p}" aria-pressed="${p===periodo}">${p==='now 1-d'?'24 horas':p==='now 7-d'?'7 dias':p==='today 3-m'?'3 meses':p==='campanha_e_depois'?'Campanha e depois (até hoje)':'Período eleitoral (até 25/10)'}</button>`).join('');
 $('gtGrupo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{grupo=b.dataset.g;render();}));
 $('gtPeriodo').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{periodo=b.dataset.p;render();}));}
 function resumo(c){const n=c.termos.length;const comp=c.serie.filter(p=>!p.parcial);

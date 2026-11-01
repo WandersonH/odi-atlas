@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.226 — Google Trends: período "campanha e depois" (até hoje) (2026-11-01) 🔜
+
+- **Pergunta (01/11/2026, 17h07):** "o gráfico de Trends parou em 25/10".
+  - A coleta não parou: a leitura de 01/11, 17h14 UTC, está ok.
+  - O gráfico abria no "período eleitoral", que por definição vai das convenções (20/07) ao 2º turno (25/10). Por isso terminava em 25/10.
+- **O que mudou:**
+  - Novo período `campanha_e_depois`, das convenções até o dia da coleta, por dia. Agora é o que abre por padrão.
+  - O "período eleitoral" continua fixo (20/07–25/10), com o rótulo "até 25/10".
+  - Nova fase "Depois do 2º turno" (26/10 em diante) no método do nível vegetativo.
+  - Consultas relacionadas também nesse período.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. O dado novo sai na próxima coleta do Trends, disparada agora.
+
 ## C19.225 — Caso 023: primeira carga; épocas por dia; YouTube dos casos de novo em 429 e cota redistribuída (2026-11-01) ⚠️
 
 - **Caso 023, carga: 487 publicações de 440 contas desde 28/10.** Custo US$ 0,8666; X das épocas US$ 0,1236; total US$ 0,9902 de US$ 2,90.

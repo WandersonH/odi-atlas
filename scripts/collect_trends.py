@@ -141,10 +141,12 @@ def write_related(itens: list[tuple[str, str, dict]], path: Path) -> int:
 def resolver_periodo(periodo: str, cfg: dict, hoje: str | None = None) -> str:
     """'eleitoral' = das convenções partidárias até o 2º turno (ou até hoje, se antes): 'AAAA-MM-DD AAAA-MM-DD'.
     Outros valores ('now 7-d', 'today 3-m') vão direto para o Trends."""
-    if periodo != "eleitoral":
+    if periodo not in ("eleitoral", "campanha_e_depois"):
         return periodo
     e = cfg["periodo_eleitoral"]
     hoje = hoje or time.strftime("%Y-%m-%d", time.gmtime())
+    if periodo == "campanha_e_depois":  # 01/11/2026: das convenções até hoje, com o pós-eleição
+        return f"{e['inicio']} {hoje}"
     return f"{e['inicio']} {min(hoje, e['fim'])}"
 
 
