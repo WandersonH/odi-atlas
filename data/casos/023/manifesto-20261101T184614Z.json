@@ -1,0 +1,152 @@
+{
+ "caso": "023",
+ "titulo": "Greve dos caminhoneiros em 5/11: convocação e vídeos antigos recirculados como atuais",
+ "run_started_utc": "2026-11-01T18:46:14Z",
+ "modo": "carga",
+ "privado": true,
+ "desde": "2026-10-28",
+ "redes": [
+  {
+   "rede": "tiktok",
+   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
+   "termos": {
+    "grevedoscaminhoneiros": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "grevecaminhoneiros": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "caminhoneirosparados": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "greve dos caminhoneiros 5 de novembro": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "greve caminhoneiros 2026": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "paralisação caminhoneiros": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    }
+   },
+   "custo_usd": 0.0,
+   "status": "⛔ nenhum vídeo lido",
+   "itens_no_periodo": 0
+  },
+  {
+   "rede": "x",
+   "teto_usd": 1.1,
+   "gasto_antes_usd": 0,
+   "teto_execucao_usd": 0.65,
+   "termos": [
+    {
+     "termo": "#grevedoscaminhoneiros",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 4,
+     "lidos": 4,
+     "no_periodo": 4,
+     "no_limite": false,
+     "run": "zKVdiWMg40J3l2wJe",
+     "custo_usd": 0.0006,
+     "erro": null,
+     "chaves_1o_item": [
+      "author",
+      "bookmarkCount",
+      "conversationId",
+      "createdAt",
+      "displayTextRange",
+      "edit",
+      "entities",
+      "id",
+      "isNoteTweet",
+      "isPinned",
+      "isQuoteStatus",
+      "isReply",
+      "isRetweet",
+      "isTranslatable",
+      "lang",
+      "likeCount",
+      "media",
+      "possiblySensitive",
+      "quoteCount",
+      "replyCount",
+      "retweetCount",
+      "text",
+      "textHighlights",
+      "type",
+      "url",
+      "viewCount",
+      "viewState"
+     ],
+     "mais_antigo": "2026-10-31T15:05:20Z"
+    },
+    {
+     "termo": "#grevecaminhoneiros",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 0,
+     "lidos": 0,
+     "no_periodo": 0,
+     "no_limite": false,
+     "run": "nfyoBjtd9rSqwJn9e",
+     "custo_usd": 0.0001,
+     "erro": null,
+     "chaves_1o_item": null,
+     "mais_antigo": null
+    },
+    {
+     "termo": "#caminhoneirosparados",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 0,
+     "lidos": 0,
+     "no_periodo": 0,
+     "no_limite": false,
+     "run": "UcZEZJjPzXatATZpw",
+     "custo_usd": 0.0001,
+     "erro": null,
+     "chaves_1o_item": null,
+     "mais_antigo": null
+    }
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 1372,
+   "custo_usd": 0.0008,
+   "status": "ok",
+   "itens_no_periodo": 4
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_pontos": 169,
+   "noticias": 30,
+   "status": "ok",
+   "itens_no_periodo": 0
+  }
+ ],
+ "itens_acumulados": 4,
+ "custo_usd": 0.0008
+}
