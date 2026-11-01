@@ -48,7 +48,7 @@ jobs:
         run: |
           python scripts/arquivar_midia_caso.py --caso "${{ inputs.caso }}" > t.txt 2>&1 || true
           python scripts/transcrever_midia_caso.py --caso "${{ inputs.caso }}" --modelo "${{ inputs.modelo }}" >> t.txt 2>&1; rc=$?
-          while IFS= read -r l; do echo "::notice title=Transcrição::$(echo "$l" | cut -c1-400)"; done < t.txt
+          grep -v "^ *$" t.txt | tr '\r' '\n' | tail -n 25 | while IFS= read -r l; do echo "::warning title=Transcrição::$(echo "$l" | cut -c1-300)"; done
           exit $rc
       - name: Gravar no repositório privado (sem o vídeo, que passa de 100 MB)
         if: always()
