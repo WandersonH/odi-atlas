@@ -1,134 +1,134 @@
 {
  "caso": "025",
- "gerado_em_utc": "2026-11-01T21:40:05Z",
+ "gerado_em_utc": "2026-11-01T21:48:52Z",
  "desde": "2026-10-25",
  "metodo": "Origem das publicações de um caso: quanto veio de perfis com sinais do Brasil e quanto de outros países.\n\nPedido do responsável (01/11/2026, 18h26), caso 025: \"#DeportTheBolsonaros, vamos entender quanto veio do Brasil e quanto veio de\noutros países, buscas e redes, #BrasiliansStandWithFlavio\".\n\nNenhuma rede informa o país de quem posta. A origem é inferida por sinais que o próprio perfil declara, e a regra é publicada na página:\n  1. língua do texto: a que a rede marca (X: `lang`; Instagram: `original_lang_for_translations`) ou, sem ela, a do py3langid sobre o\n     texto sem @menções, links e hashtags (só com 20+ letras);\n  2. língua da bio (X: `profileDescriptionLanguage`);\n  3. bandeiras no nome e na bio (pares de indicadores regionais, ex. 🇧🇷 → BR). 🇺🇸 e 🇮🇱 ao lado da 🇧🇷 são símbolo político comum\n     no Brasil: com outro sinal do Brasil, bandeira estrangeira não muda a classe (fica contada à parte);\n  4. lugares escritos no nome, na bio e no local da publicação (lista LUGARES, abaixo).\nClasses (por publicação, pelos sinais do autor):\n  - \"Brasil\": algum sinal do Brasil (português no texto ou na bio, 🇧🇷, lugar brasileiro) e nenhum de outro país;\n  - \"Brasil + outro país\": sinal do Brasil e um lugar de outro país escrito no perfil (ex.: brasileiro que declara morar na Flórida);\n  - \"outro país\": país declarado que não é o Brasil, sem sinal do Brasil;\n  - \"outra língua, país não declarado\": texto ou bio em outra língua, sem país declarado;\n  - \"sem sinal\": nada disso (ex.: post só com a hashtag e sem bio).\nPortuguês conta como sinal do Brasil; quem declara Portugal (🇵🇹 ou o nome) vai para \"outro país\". Língua não é nacionalidade: há\nbrasileiros que escrevem em inglês para alcançar americanos; por isso a página mostra também a língua do texto, separada.",
- "publicacoes_lidas": 6346,
- "contas_lidas": 2560,
- "aviso": "Origem inferida por sinais que o perfil declara; não é o país real de quem posta. Percentuais valem para a amostra lida, não para tudo o que circulou. Uma publicação que cita as duas hashtags conta nos dois lados.",
+ "publicacoes_lidas": 6541,
+ "contas_lidas": 2723,
+ "aviso": "Origem inferida por sinais que o perfil declara; não é o país real de quem posta. Percentuais valem para a amostra lida, não para tudo o que circulou. Usar a hashtag não é apoiar a causa: quem critica a campanha também a usa. Uma publicação que cita as duas hashtags conta nos dois lados.",
  "lados": {
   "#DeportTheBolsonaros": {
-   "publicacoes": 5331,
-   "contas": 2183,
+   "publicacoes": 5490,
+   "contas": 2323,
    "reposts_x": 0,
-   "brasil_com_bandeira_de_outro_pais": 237,
+   "brasil_com_bandeira_de_outro_pais": 176,
    "sem_dado_do_autor": 0,
    "por_classe": [
     {
      "valor": "Brasil",
-     "publicacoes": 3512,
-     "pct": 65.9,
-     "contas": 1426,
-     "visualizacoes": 353013,
-     "pct_visualizacoes": 13.8
+     "publicacoes": 3581,
+     "pct": 65.2,
+     "contas": 1488,
+     "visualizacoes": 32476554,
+     "pct_visualizacoes": 81.9
     },
     {
      "valor": "Brasil + outro país",
-     "publicacoes": 69,
-     "pct": 1.3,
-     "contas": 31,
-     "visualizacoes": 1754,
-     "pct_visualizacoes": 0.1
+     "publicacoes": 75,
+     "pct": 1.4,
+     "contas": 37,
+     "visualizacoes": 260012,
+     "pct_visualizacoes": 0.7
     },
     {
      "valor": "outro país",
-     "publicacoes": 147,
-     "pct": 2.8,
-     "contas": 63,
-     "visualizacoes": 24655,
-     "pct_visualizacoes": 1.0
+     "publicacoes": 133,
+     "pct": 2.4,
+     "contas": 61,
+     "visualizacoes": 1776061,
+     "pct_visualizacoes": 4.5
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 323,
-     "pct": 6.1,
-     "contas": 152,
-     "visualizacoes": 2146234,
-     "pct_visualizacoes": 83.8
+     "publicacoes": 384,
+     "pct": 7.0,
+     "contas": 197,
+     "visualizacoes": 5111626,
+     "pct_visualizacoes": 12.9
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 1280,
+     "publicacoes": 1317,
      "pct": 24.0,
-     "contas": 577,
-     "visualizacoes": 34939,
-     "pct_visualizacoes": 1.4
+     "contas": 610,
+     "visualizacoes": 42960,
+     "pct_visualizacoes": 0.1
     }
    ],
    "por_classe_sem_reposts": [
     {
      "valor": "Brasil",
-     "publicacoes": 3512,
-     "pct": 65.9,
-     "contas": 1426,
-     "visualizacoes": 353013,
-     "pct_visualizacoes": 13.8
+     "publicacoes": 3581,
+     "pct": 65.2,
+     "contas": 1488,
+     "visualizacoes": 32476554,
+     "pct_visualizacoes": 81.9
     },
     {
      "valor": "Brasil + outro país",
-     "publicacoes": 69,
-     "pct": 1.3,
-     "contas": 31,
-     "visualizacoes": 1754,
-     "pct_visualizacoes": 0.1
+     "publicacoes": 75,
+     "pct": 1.4,
+     "contas": 37,
+     "visualizacoes": 260012,
+     "pct_visualizacoes": 0.7
     },
     {
      "valor": "outro país",
-     "publicacoes": 147,
-     "pct": 2.8,
-     "contas": 63,
-     "visualizacoes": 24655,
-     "pct_visualizacoes": 1.0
+     "publicacoes": 133,
+     "pct": 2.4,
+     "contas": 61,
+     "visualizacoes": 1776061,
+     "pct_visualizacoes": 4.5
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 323,
-     "pct": 6.1,
-     "contas": 152,
-     "visualizacoes": 2146234,
-     "pct_visualizacoes": 83.8
+     "publicacoes": 384,
+     "pct": 7.0,
+     "contas": 197,
+     "visualizacoes": 5111626,
+     "pct_visualizacoes": 12.9
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 1280,
+     "publicacoes": 1317,
      "pct": 24.0,
-     "contas": 577,
-     "visualizacoes": 34939,
-     "pct_visualizacoes": 1.4
+     "contas": 610,
+     "visualizacoes": 42960,
+     "pct_visualizacoes": 0.1
     }
    ],
    "por_lingua_texto": [
     {
      "valor": "não identificada",
-     "publicacoes": 3974,
-     "pct": 74.5,
-     "contas": 1647,
-     "visualizacoes": 240079,
-     "pct_visualizacoes": 9.4
+     "publicacoes": 4011,
+     "pct": 73.1,
+     "contas": 1680,
+     "visualizacoes": 248092,
+     "pct_visualizacoes": 0.6
     },
     {
      "valor": "pt",
-     "publicacoes": 774,
-     "pct": 14.5,
-     "contas": 441,
-     "visualizacoes": 111292,
-     "pct_visualizacoes": 4.3
+     "publicacoes": 845,
+     "pct": 15.4,
+     "contas": 505,
+     "visualizacoes": 32427225,
+     "pct_visualizacoes": 81.7
     },
     {
      "valor": "en",
-     "publicacoes": 432,
-     "pct": 8.1,
-     "contas": 245,
-     "visualizacoes": 2183389,
-     "pct_visualizacoes": 85.3
+     "publicacoes": 481,
+     "pct": 8.8,
+     "contas": 291,
+     "visualizacoes": 6966061,
+     "pct_visualizacoes": 17.6
     },
     {
      "valor": "es",
-     "publicacoes": 123,
+     "publicacoes": 125,
      "pct": 2.3,
-     "contas": 78,
+     "contas": 79,
      "visualizacoes": 24351,
-     "pct_visualizacoes": 1.0
+     "pct_visualizacoes": 0.1
     },
     {
      "valor": "it",
@@ -197,84 +197,76 @@
    ],
    "por_pais_declarado_fora": [
     {
-     "valor": "PT",
-     "publicacoes": 45,
-     "pct": 20.8,
-     "contas": 9,
-     "visualizacoes": 541,
-     "pct_visualizacoes": 2.0
+     "valor": "US",
+     "publicacoes": 50,
+     "pct": 24.0,
+     "contas": 29,
+     "visualizacoes": 2027502,
+     "pct_visualizacoes": 99.6
     },
     {
-     "valor": "US",
-     "publicacoes": 42,
-     "pct": 19.4,
-     "contas": 22,
-     "visualizacoes": 9486,
-     "pct_visualizacoes": 35.9
+     "valor": "PT",
+     "publicacoes": 46,
+     "pct": 22.1,
+     "contas": 10,
+     "visualizacoes": 541,
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "GB",
-     "publicacoes": 23,
-     "pct": 10.6,
-     "contas": 9,
-     "visualizacoes": 1092,
-     "pct_visualizacoes": 4.1
-    },
-    {
-     "valor": "PS",
-     "publicacoes": 15,
-     "pct": 6.9,
-     "contas": 3,
-     "visualizacoes": 237,
-     "pct_visualizacoes": 0.9
+     "publicacoes": 24,
+     "pct": 11.5,
+     "contas": 10,
+     "visualizacoes": 1106,
+     "pct_visualizacoes": 0.1
     },
     {
      "valor": "ES",
      "publicacoes": 13,
-     "pct": 6.0,
+     "pct": 6.2,
      "contas": 5,
      "visualizacoes": 205,
-     "pct_visualizacoes": 0.8
+     "pct_visualizacoes": 0.0
     },
     {
-     "valor": "DE,EU,IT,PS",
+     "valor": "DE,IT",
      "publicacoes": 13,
-     "pct": 6.0,
+     "pct": 6.2,
      "contas": 1,
      "visualizacoes": 493,
-     "pct_visualizacoes": 1.9
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "FR",
-     "publicacoes": 10,
-     "pct": 4.6,
-     "contas": 7,
-     "visualizacoes": 285,
-     "pct_visualizacoes": 1.1
+     "publicacoes": 11,
+     "pct": 5.3,
+     "contas": 8,
+     "visualizacoes": 288,
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "CA",
      "publicacoes": 10,
-     "pct": 4.6,
+     "pct": 4.8,
      "contas": 6,
      "visualizacoes": 102,
-     "pct_visualizacoes": 0.4
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "AR",
      "publicacoes": 6,
-     "pct": 2.8,
+     "pct": 2.9,
      "contas": 2,
      "visualizacoes": 48,
-     "pct_visualizacoes": 0.2
+     "pct_visualizacoes": 0.0
     },
     {
-     "valor": "IE,IT,UA,US",
+     "valor": "IE,IT,US",
      "publicacoes": 6,
-     "pct": 2.8,
+     "pct": 2.9,
      "contas": 1,
      "visualizacoes": 28,
-     "pct_visualizacoes": 0.1
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "JP",
@@ -282,7 +274,7 @@
      "pct": 1.9,
      "contas": 3,
      "visualizacoes": 276,
-     "pct_visualizacoes": 1.0
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "AT",
@@ -290,30 +282,38 @@
      "pct": 1.4,
      "contas": 1,
      "visualizacoes": 141,
-     "pct_visualizacoes": 0.5
-    },
-    {
-     "valor": "UA,US",
-     "publicacoes": 2,
-     "pct": 0.9,
-     "contas": 1,
-     "visualizacoes": 323,
-     "pct_visualizacoes": 1.2
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "IE",
      "publicacoes": 2,
-     "pct": 0.9,
+     "pct": 1.0,
      "contas": 1,
      "visualizacoes": 53,
-     "pct_visualizacoes": 0.2
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "YE",
      "publicacoes": 2,
-     "pct": 0.9,
+     "pct": 1.0,
      "contas": 2,
      "visualizacoes": 57,
+     "pct_visualizacoes": 0.0
+    },
+    {
+     "valor": "DE",
+     "publicacoes": 2,
+     "pct": 1.0,
+     "contas": 1,
+     "visualizacoes": 4,
+     "pct_visualizacoes": 0.0
+    },
+    {
+     "valor": "DE,IN,US",
+     "publicacoes": 1,
+     "pct": 0.5,
+     "contas": 1,
+     "visualizacoes": 4152,
      "pct_visualizacoes": 0.2
     }
    ],
@@ -321,17 +321,17 @@
     "facebook": [
      {
       "valor": "Brasil",
-      "publicacoes": 9,
-      "pct": 56.2,
-      "contas": 9,
+      "publicacoes": 35,
+      "pct": 36.8,
+      "contas": 34,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      },
      {
       "valor": "Brasil + outro país",
-      "publicacoes": 0,
-      "pct": 0.0,
-      "contas": 0,
+      "publicacoes": 1,
+      "pct": 1.1,
+      "contas": 1,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      },
@@ -345,17 +345,17 @@
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 1,
-      "pct": 6.2,
-      "contas": 1,
+      "publicacoes": 22,
+      "pct": 23.2,
+      "contas": 21,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 6,
-      "pct": 37.5,
-      "contas": 6,
+      "publicacoes": 37,
+      "pct": 38.9,
+      "contas": 34,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      }
@@ -363,84 +363,84 @@
     "instagram": [
      {
       "valor": "Brasil",
-      "publicacoes": 64,
-      "pct": 37.4,
-      "contas": 37,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 110,
+      "pct": 43.8,
+      "contas": 77,
+      "visualizacoes": 32123560,
+      "pct_visualizacoes": 86.6
      },
      {
       "valor": "Brasil + outro país",
-      "publicacoes": 2,
-      "pct": 1.2,
-      "contas": 2,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 4,
+      "pct": 1.6,
+      "contas": 4,
+      "visualizacoes": 258239,
+      "pct_visualizacoes": 0.7
      },
      {
       "valor": "outro país",
-      "publicacoes": 2,
+      "publicacoes": 3,
       "pct": 1.2,
-      "contas": 2,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "contas": 3,
+      "visualizacoes": 1145,
+      "pct_visualizacoes": 0.0
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 5,
-      "pct": 2.9,
-      "contas": 5,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 31,
+      "pct": 12.4,
+      "contas": 28,
+      "visualizacoes": 4715661,
+      "pct_visualizacoes": 12.7
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 98,
-      "pct": 57.3,
-      "contas": 60,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 103,
+      "pct": 41.0,
+      "contas": 64,
+      "visualizacoes": 8013,
+      "pct_visualizacoes": 0.0
      }
     ],
     "x": [
      {
       "valor": "Brasil",
-      "publicacoes": 3439,
-      "pct": 66.9,
-      "contas": 1380,
-      "visualizacoes": 353013,
+      "publicacoes": 3436,
+      "pct": 66.8,
+      "contas": 1377,
+      "visualizacoes": 352994,
       "pct_visualizacoes": 13.8
      },
      {
       "valor": "Brasil + outro país",
-      "publicacoes": 67,
-      "pct": 1.3,
-      "contas": 29,
-      "visualizacoes": 1754,
+      "publicacoes": 70,
+      "pct": 1.4,
+      "contas": 32,
+      "visualizacoes": 1773,
       "pct_visualizacoes": 0.1
      },
      {
       "valor": "outro país",
-      "publicacoes": 145,
-      "pct": 2.8,
-      "contas": 61,
-      "visualizacoes": 24655,
-      "pct_visualizacoes": 1.0
+      "publicacoes": 130,
+      "pct": 2.5,
+      "contas": 58,
+      "visualizacoes": 1774916,
+      "pct_visualizacoes": 69.3
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 317,
-      "pct": 6.2,
-      "contas": 146,
-      "visualizacoes": 2146234,
-      "pct_visualizacoes": 83.8
+      "publicacoes": 331,
+      "pct": 6.4,
+      "contas": 148,
+      "visualizacoes": 395965,
+      "pct_visualizacoes": 15.5
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 1176,
+      "publicacoes": 1177,
       "pct": 22.9,
-      "contas": 511,
-      "visualizacoes": 34939,
+      "contas": 512,
+      "visualizacoes": 34947,
       "pct_visualizacoes": 1.4
      }
     ]
@@ -448,67 +448,67 @@
    "por_dia": [
     {
      "dia": "2026-10-25",
-     "Brasil": 0,
+     "Brasil": 1,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 1,
+     "outra língua, país não declarado": 2,
      "sem sinal": 0
     },
     {
      "dia": "2026-10-26",
-     "Brasil": 1,
+     "Brasil": 2,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 0,
+     "outra língua, país não declarado": 1,
      "sem sinal": 1
     },
     {
      "dia": "2026-10-27",
-     "Brasil": 374,
+     "Brasil": 378,
      "Brasil + outro país": 13,
      "outro país": 20,
-     "outra língua, país não declarado": 106,
+     "outra língua, país não declarado": 113,
      "sem sinal": 59
     },
     {
      "dia": "2026-10-28",
-     "Brasil": 648,
+     "Brasil": 653,
      "Brasil + outro país": 8,
-     "outro país": 22,
-     "outra língua, país não declarado": 51,
-     "sem sinal": 185
+     "outro país": 14,
+     "outra língua, país não declarado": 73,
+     "sem sinal": 189
     },
     {
      "dia": "2026-10-29",
-     "Brasil": 635,
-     "Brasil + outro país": 9,
+     "Brasil": 662,
+     "Brasil + outro país": 10,
      "outro país": 15,
-     "outra língua, país não declarado": 30,
-     "sem sinal": 228
+     "outra língua, país não declarado": 41,
+     "sem sinal": 237
     },
     {
      "dia": "2026-10-30",
-     "Brasil": 628,
-     "Brasil + outro país": 3,
-     "outro país": 14,
-     "outra língua, país não declarado": 52,
-     "sem sinal": 220
+     "Brasil": 638,
+     "Brasil + outro país": 4,
+     "outro país": 9,
+     "outra língua, país não declarado": 63,
+     "sem sinal": 229
     },
     {
      "dia": "2026-10-31",
-     "Brasil": 582,
-     "Brasil + outro país": 21,
+     "Brasil": 593,
+     "Brasil + outro país": 23,
      "outro país": 52,
-     "outra língua, país não declarado": 38,
-     "sem sinal": 228
+     "outra língua, país não declarado": 43,
+     "sem sinal": 234
     },
     {
      "dia": "2026-11-01",
-     "Brasil": 644,
-     "Brasil + outro país": 15,
-     "outro país": 24,
-     "outra língua, país não declarado": 45,
-     "sem sinal": 359
+     "Brasil": 654,
+     "Brasil + outro país": 17,
+     "outro país": 23,
+     "outra língua, país não declarado": 48,
+     "sem sinal": 368
     }
    ],
    "contas_10mil": [
@@ -646,7 +646,7 @@
      "publicacoes": 2,
      "seguidores": 29316,
      "classe": "outro país",
-     "pais_fora": "UA,US"
+     "pais_fora": "US"
     },
     {
      "rede": "x",
@@ -669,8 +669,8 @@
      "conta": "isaiahrmartin",
      "publicacoes": 1,
      "seguidores": 185067,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
+     "classe": "outro país",
+     "pais_fora": "US"
     },
     {
      "rede": "x",
@@ -709,133 +709,246 @@
      "conta": "emptywheel",
      "publicacoes": 1,
      "seguidores": 294573,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    }
+   ],
+   "visualizacoes_total": 39667213,
+   "maior_alcance": [
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 8813099,
+     "pct_visualizacoes": 22.2,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-26",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 7216942,
+     "pct_visualizacoes": 18.2,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 3334727,
+     "pct_visualizacoes": 8.4,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 2920532,
+     "pct_visualizacoes": 7.4,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 2845943,
+     "pct_visualizacoes": 7.2,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-28",
+     "url": null
+    },
+    {
+     "rede": "x",
+     "conta": "isaiahrmartin",
+     "seguidores": 185067,
+     "visualizacoes": 1758294,
+     "pct_visualizacoes": 4.4,
      "classe": "outro país",
-     "pais_fora": "EU"
+     "lingua_texto": "en",
+     "dia": "2026-10-27",
+     "url": "https://x.com/isaiahrmartin/status/2115148031565988285"
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 1670851,
+     "pct_visualizacoes": 4.2,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 1501510,
+     "pct_visualizacoes": 3.8,
+     "classe": "outra língua, país não declarado",
+     "lingua_texto": "en",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 1080666,
+     "pct_visualizacoes": 2.7,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-31",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 1027862,
+     "pct_visualizacoes": 2.6,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-27",
+     "url": null
     }
    ]
   },
   "#BrasiliansStandWithFlavio": {
-   "publicacoes": 1019,
-   "contas": 381,
+   "publicacoes": 1055,
+   "contas": 404,
    "reposts_x": 0,
    "brasil_com_bandeira_de_outro_pais": 46,
    "sem_dado_do_autor": 0,
    "por_classe": [
     {
      "valor": "Brasil",
-     "publicacoes": 542,
+     "publicacoes": 561,
      "pct": 53.2,
-     "contas": 230,
-     "visualizacoes": 24736,
-     "pct_visualizacoes": 44.3
+     "contas": 244,
+     "visualizacoes": 5188055,
+     "pct_visualizacoes": 98.9
     },
     {
      "valor": "Brasil + outro país",
-     "publicacoes": 50,
-     "pct": 4.9,
-     "contas": 17,
-     "visualizacoes": 6241,
-     "pct_visualizacoes": 11.2
+     "publicacoes": 53,
+     "pct": 5.0,
+     "contas": 20,
+     "visualizacoes": 31803,
+     "pct_visualizacoes": 0.6
     },
     {
      "valor": "outro país",
      "publicacoes": 19,
-     "pct": 1.9,
+     "pct": 1.8,
      "contas": 14,
      "visualizacoes": 296,
-     "pct_visualizacoes": 0.5
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 121,
-     "pct": 11.9,
-     "contas": 24,
-     "visualizacoes": 20559,
-     "pct_visualizacoes": 36.8
+     "publicacoes": 127,
+     "pct": 12.0,
+     "contas": 28,
+     "visualizacoes": 23916,
+     "pct_visualizacoes": 0.5
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 287,
-     "pct": 28.2,
-     "contas": 117,
-     "visualizacoes": 4003,
-     "pct_visualizacoes": 7.2
+     "publicacoes": 295,
+     "pct": 28.0,
+     "contas": 121,
+     "visualizacoes": 4170,
+     "pct_visualizacoes": 0.1
     }
    ],
    "por_classe_sem_reposts": [
     {
      "valor": "Brasil",
-     "publicacoes": 542,
+     "publicacoes": 561,
      "pct": 53.2,
-     "contas": 230,
-     "visualizacoes": 24736,
-     "pct_visualizacoes": 44.3
+     "contas": 244,
+     "visualizacoes": 5188055,
+     "pct_visualizacoes": 98.9
     },
     {
      "valor": "Brasil + outro país",
-     "publicacoes": 50,
-     "pct": 4.9,
-     "contas": 17,
-     "visualizacoes": 6241,
-     "pct_visualizacoes": 11.2
+     "publicacoes": 53,
+     "pct": 5.0,
+     "contas": 20,
+     "visualizacoes": 31803,
+     "pct_visualizacoes": 0.6
     },
     {
      "valor": "outro país",
      "publicacoes": 19,
-     "pct": 1.9,
+     "pct": 1.8,
      "contas": 14,
      "visualizacoes": 296,
-     "pct_visualizacoes": 0.5
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 121,
-     "pct": 11.9,
-     "contas": 24,
-     "visualizacoes": 20559,
-     "pct_visualizacoes": 36.8
+     "publicacoes": 127,
+     "pct": 12.0,
+     "contas": 28,
+     "visualizacoes": 23916,
+     "pct_visualizacoes": 0.5
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 287,
-     "pct": 28.2,
-     "contas": 117,
-     "visualizacoes": 4003,
-     "pct_visualizacoes": 7.2
+     "publicacoes": 295,
+     "pct": 28.0,
+     "contas": 121,
+     "visualizacoes": 4170,
+     "pct_visualizacoes": 0.1
     }
    ],
    "por_lingua_texto": [
     {
      "valor": "não identificada",
-     "publicacoes": 662,
-     "pct": 65.0,
-     "contas": 281,
-     "visualizacoes": 16680,
-     "pct_visualizacoes": 29.9
+     "publicacoes": 670,
+     "pct": 63.5,
+     "contas": 285,
+     "visualizacoes": 16847,
+     "pct_visualizacoes": 0.3
     },
     {
      "valor": "pt",
-     "publicacoes": 234,
-     "pct": 23.0,
-     "contas": 108,
-     "visualizacoes": 17162,
-     "pct_visualizacoes": 30.7
+     "publicacoes": 256,
+     "pct": 24.3,
+     "contas": 125,
+     "visualizacoes": 5206043,
+     "pct_visualizacoes": 99.2
     },
     {
      "valor": "en",
-     "publicacoes": 101,
-     "pct": 9.9,
-     "contas": 30,
-     "visualizacoes": 21648,
-     "pct_visualizacoes": 38.8
+     "publicacoes": 107,
+     "pct": 10.1,
+     "contas": 34,
+     "visualizacoes": 25005,
+     "pct_visualizacoes": 0.5
     },
     {
      "valor": "es",
      "publicacoes": 12,
-     "pct": 1.2,
+     "pct": 1.1,
      "contas": 8,
      "visualizacoes": 241,
-     "pct_visualizacoes": 0.4
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "lt",
@@ -843,7 +956,7 @@
      "pct": 0.3,
      "contas": 1,
      "visualizacoes": 43,
-     "pct_visualizacoes": 0.1
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "fr",
@@ -851,7 +964,7 @@
      "pct": 0.2,
      "contas": 2,
      "visualizacoes": 45,
-     "pct_visualizacoes": 0.1
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "ko",
@@ -897,40 +1010,40 @@
    "por_pais_declarado_fora": [
     {
      "valor": "US",
-     "publicacoes": 46,
-     "pct": 66.7,
-     "contas": 20,
-     "visualizacoes": 6185,
-     "pct_visualizacoes": 94.6
+     "publicacoes": 50,
+     "pct": 69.4,
+     "contas": 24,
+     "visualizacoes": 25449,
+     "pct_visualizacoes": 79.3
     },
     {
      "valor": "AR",
      "publicacoes": 7,
-     "pct": 10.1,
+     "pct": 9.7,
      "contas": 1,
      "visualizacoes": 140,
-     "pct_visualizacoes": 2.1
+     "pct_visualizacoes": 0.4
     },
     {
      "valor": "NP,US",
      "publicacoes": 6,
-     "pct": 8.7,
+     "pct": 8.3,
      "contas": 1,
      "visualizacoes": 96,
-     "pct_visualizacoes": 1.5
+     "pct_visualizacoes": 0.3
     },
     {
-     "valor": "IL,US",
+     "valor": "ES",
      "publicacoes": 2,
-     "pct": 2.9,
+     "pct": 2.8,
      "contas": 2,
-     "visualizacoes": 58,
-     "pct_visualizacoes": 0.9
+     "visualizacoes": 25,
+     "pct_visualizacoes": 0.1
     },
     {
      "valor": "DE",
      "publicacoes": 2,
-     "pct": 2.9,
+     "pct": 2.8,
      "contas": 1,
      "visualizacoes": 3,
      "pct_visualizacoes": 0.0
@@ -938,18 +1051,18 @@
     {
      "valor": "FR",
      "publicacoes": 2,
-     "pct": 2.9,
+     "pct": 2.8,
      "contas": 1,
      "visualizacoes": 17,
-     "pct_visualizacoes": 0.3
+     "pct_visualizacoes": 0.1
     },
     {
-     "valor": "ES",
+     "valor": "AR,EA,IT,PT",
      "publicacoes": 1,
      "pct": 1.4,
      "contas": 1,
-     "visualizacoes": 19,
-     "pct_visualizacoes": 0.3
+     "visualizacoes": 6356,
+     "pct_visualizacoes": 19.8
     },
     {
      "valor": "GB,IT",
@@ -957,32 +1070,24 @@
      "pct": 1.4,
      "contas": 1,
      "visualizacoes": 9,
-     "pct_visualizacoes": 0.1
+     "pct_visualizacoes": 0.0
     },
     {
-     "valor": "IL,IT,US",
+     "valor": "IT,US",
      "publicacoes": 1,
      "pct": 1.4,
      "contas": 1,
      "visualizacoes": 4,
-     "pct_visualizacoes": 0.1
-    },
-    {
-     "valor": "ES,IL",
-     "publicacoes": 1,
-     "pct": 1.4,
-     "contas": 1,
-     "visualizacoes": 6,
-     "pct_visualizacoes": 0.1
+     "pct_visualizacoes": 0.0
     }
    ],
    "por_rede": {
     "facebook": [
      {
       "valor": "Brasil",
-      "publicacoes": 25,
-      "pct": 39.1,
-      "contas": 25,
+      "publicacoes": 26,
+      "pct": 34.7,
+      "contas": 26,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      },
@@ -997,24 +1102,24 @@
      {
       "valor": "outro país",
       "publicacoes": 1,
-      "pct": 1.6,
+      "pct": 1.3,
       "contas": 1,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 6,
-      "pct": 9.4,
-      "contas": 4,
+      "publicacoes": 9,
+      "pct": 12.0,
+      "contas": 5,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 32,
-      "pct": 50.0,
-      "contas": 27,
+      "publicacoes": 39,
+      "pct": 52.0,
+      "contas": 30,
       "visualizacoes": 0,
       "pct_visualizacoes": null
      }
@@ -1022,43 +1127,43 @@
     "instagram": [
      {
       "valor": "Brasil",
-      "publicacoes": 12,
-      "pct": 29.3,
-      "contas": 10,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 30,
+      "pct": 45.5,
+      "contas": 23,
+      "visualizacoes": 5163319,
+      "pct_visualizacoes": 99.4
      },
      {
       "valor": "Brasil + outro país",
-      "publicacoes": 0,
-      "pct": 0.0,
-      "contas": 0,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 3,
+      "pct": 4.5,
+      "contas": 3,
+      "visualizacoes": 25562,
+      "pct_visualizacoes": 0.5
      },
      {
       "valor": "outro país",
       "publicacoes": 1,
-      "pct": 2.4,
+      "pct": 1.5,
       "contas": 1,
       "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "pct_visualizacoes": 0.0
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 0,
-      "pct": 0.0,
-      "contas": 0,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 3,
+      "pct": 4.5,
+      "contas": 3,
+      "visualizacoes": 3357,
+      "pct_visualizacoes": 0.1
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 28,
-      "pct": 68.3,
-      "contas": 24,
-      "visualizacoes": 0,
-      "pct_visualizacoes": null
+      "publicacoes": 29,
+      "pct": 43.9,
+      "contas": 25,
+      "visualizacoes": 167,
+      "pct_visualizacoes": 0.0
      }
     ],
     "x": [
@@ -1106,16 +1211,24 @@
    },
    "por_dia": [
     {
+     "dia": "2026-10-24",
+     "Brasil": 0,
+     "Brasil + outro país": 0,
+     "outro país": 0,
+     "outra língua, país não declarado": 0,
+     "sem sinal": 1
+    },
+    {
      "dia": "2026-10-25",
      "Brasil": 4,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 0,
+     "outra língua, país não declarado": 2,
      "sem sinal": 2
     },
     {
      "dia": "2026-10-26",
-     "Brasil": 3,
+     "Brasil": 5,
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 1,
@@ -1123,7 +1236,7 @@
     },
     {
      "dia": "2026-10-27",
-     "Brasil": 1,
+     "Brasil": 2,
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 0,
@@ -1131,32 +1244,32 @@
     },
     {
      "dia": "2026-10-28",
-     "Brasil": 3,
+     "Brasil": 4,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 0,
+     "outra língua, país não declarado": 1,
      "sem sinal": 1
     },
     {
      "dia": "2026-10-29",
-     "Brasil": 5,
-     "Brasil + outro país": 0,
+     "Brasil": 9,
+     "Brasil + outro país": 1,
      "outro país": 0,
-     "outra língua, país não declarado": 1,
-     "sem sinal": 3
+     "outra língua, país não declarado": 2,
+     "sem sinal": 6
     },
     {
      "dia": "2026-10-30",
-     "Brasil": 10,
-     "Brasil + outro país": 0,
+     "Brasil": 16,
+     "Brasil + outro país": 1,
      "outro país": 2,
-     "outra língua, país não declarado": 0,
-     "sem sinal": 21
+     "outra língua, país não declarado": 1,
+     "sem sinal": 23
     },
     {
      "dia": "2026-10-31",
-     "Brasil": 306,
-     "Brasil + outro país": 38,
+     "Brasil": 311,
+     "Brasil + outro país": 39,
      "outro país": 15,
      "outra língua, país não declarado": 68,
      "sem sinal": 161
@@ -1166,8 +1279,8 @@
      "Brasil": 210,
      "Brasil + outro país": 12,
      "outro país": 2,
-     "outra língua, país não declarado": 51,
-     "sem sinal": 99
+     "outra língua, país não declarado": 52,
+     "sem sinal": 101
     }
    ],
    "contas_10mil": [
@@ -1241,7 +1354,7 @@
      "publicacoes": 1,
      "seguidores": 15668,
      "classe": "Brasil + outro país",
-     "pais_fora": "IL,US"
+     "pais_fora": "US"
     },
     {
      "rede": "x",
@@ -1306,6 +1419,119 @@
      "seguidores": 29985,
      "classe": "Brasil",
      "pais_fora": null
+    }
+   ],
+   "visualizacoes_total": 5248240,
+   "maior_alcance": [
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 3543283,
+     "pct_visualizacoes": 67.5,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-27",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 977040,
+     "pct_visualizacoes": 18.6,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 210464,
+     "pct_visualizacoes": 4.0,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-31",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 178093,
+     "pct_visualizacoes": 3.4,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-30",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 141415,
+     "pct_visualizacoes": 2.7,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-28",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 38501,
+     "pct_visualizacoes": 0.7,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-30",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 38088,
+     "pct_visualizacoes": 0.7,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 16693,
+     "pct_visualizacoes": 0.3,
+     "classe": "Brasil",
+     "lingua_texto": "pt",
+     "dia": "2026-10-26",
+     "url": null
+    },
+    {
+     "rede": "instagram",
+     "conta": null,
+     "seguidores": null,
+     "visualizacoes": 13446,
+     "pct_visualizacoes": 0.3,
+     "classe": "Brasil + outro país",
+     "lingua_texto": "pt",
+     "dia": "2026-10-29",
+     "url": null
+    },
+    {
+     "rede": "x",
+     "conta": null,
+     "seguidores": 7925,
+     "visualizacoes": 13210,
+     "pct_visualizacoes": 0.3,
+     "classe": "outra língua, país não declarado",
+     "lingua_texto": "en",
+     "dia": "2026-10-31",
+     "url": null
     }
    ]
   }
@@ -1490,6 +1716,138 @@
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
    "manifesto": "manifesto-20261101T213817Z.json"
+  },
+  {
+   "rede": "instagram",
+   "termo": "#deportthebolsonaros",
+   "lidos": 43,
+   "no_periodo": 43,
+   "pedidos": 43,
+   "bateu_no_limite": true,
+   "mais_antigo": "2026-10-27T21:29:33Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "instagram",
+   "termo": "#brasiliansstandwithflavio",
+   "lidos": 1,
+   "no_periodo": 0,
+   "pedidos": 43,
+   "bateu_no_limite": false,
+   "mais_antigo": null,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "instagram",
+   "termo": "#braziliansstandwithflavio",
+   "lidos": 43,
+   "no_periodo": 37,
+   "pedidos": 43,
+   "bateu_no_limite": true,
+   "mais_antigo": "2026-10-28T16:09:41Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: DeportTheBolsonaros",
+   "lidos": 36,
+   "no_periodo": 36,
+   "pedidos": 43,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-25T11:36:34Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: deport Bolsonaro",
+   "lidos": 29,
+   "no_periodo": 29,
+   "pedidos": 43,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-26T12:54:26Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: Brazilians stand with Flavio",
+   "lidos": 29,
+   "no_periodo": 25,
+   "pedidos": 43,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-25T22:44:44Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: deportem os Bolsonaros",
+   "lidos": 21,
+   "no_periodo": 18,
+   "pedidos": 43,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-26T00:20:04Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "facebook",
+   "termo": "DeportTheBolsonaros",
+   "lidos": 18,
+   "no_periodo": 18,
+   "pedidos": 36,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-26T03:24:21Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "facebook",
+   "termo": "deport Bolsonaro",
+   "lidos": 32,
+   "no_periodo": 32,
+   "pedidos": 36,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-27T13:28:03Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "facebook",
+   "termo": "BrasiliansStandWithFlavio",
+   "lidos": 22,
+   "no_periodo": 22,
+   "pedidos": 36,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-25T01:19:05Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
+  },
+  {
+   "rede": "facebook",
+   "termo": "deportem os Bolsonaros",
+   "lidos": 30,
+   "no_periodo": 30,
+   "pedidos": 36,
+   "bateu_no_limite": false,
+   "mais_antigo": "2026-10-28T03:34:47Z",
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261101T214531Z.json"
   }
  ]
 }
