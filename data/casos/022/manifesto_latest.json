@@ -1,79 +1,67 @@
 {
  "caso": "022",
  "titulo": "\"Relatório Pericial Independente\": documento apócrifo que alega fraude no 2º turno",
- "run_started_utc": "2026-11-01T17:07:32Z",
+ "run_started_utc": "2026-11-01T20:58:17Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-28",
  "redes": [
   {
-   "rede": "tiktok",
-   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
-   "termos": {
-    "relatoriopericial": {
-     "lado": "caso",
-     "respostas_api": 1,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "fraudeeleitoral2026": {
-     "lado": "caso",
-     "respostas_api": 1,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "relatoriopericialindependente": {
-     "lado": "caso",
-     "respostas_api": 1,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "relatório pericial eleição": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "fraude urna 2026": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "votos depois das 17h": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "votos sem biometria": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+   "rede": "x",
+   "teto_usd": 1.8,
+   "gasto_antes_usd": 0.4881,
+   "teto_execucao_usd": 0.04,
+   "termos": [
+    {
+     "termo": "diário: Relatório pericial / 17h / biometria / Benford",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 253,
+     "lidos": 253,
+     "no_periodo": 253,
+     "no_limite": true,
+     "run": "eYH4CYrYEhsCuATVH",
+     "custo_usd": 0.03795,
+     "erro": null,
+     "chaves_1o_item": [
+      "author",
+      "bookmarkCount",
+      "conversationId",
+      "createdAt",
+      "displayTextRange",
+      "edit",
+      "entities",
+      "id",
+      "inReplyToId",
+      "inReplyToUserId",
+      "inReplyToUsername",
+      "isNoteTweet",
+      "isPinned",
+      "isQuoteStatus",
+      "isReply",
+      "isRetweet",
+      "isTranslatable",
+      "lang",
+      "likeCount",
+      "quoteCount",
+      "replyCount",
+      "retweetCount",
+      "text",
+      "textHighlights",
+      "type",
+      "url",
+      "viewCount",
+      "viewState"
+     ],
+     "mais_antigo": "2026-10-30T17:30:18Z"
     }
-   },
-   "custo_usd": 0.0,
-   "status": "⛔ nenhum vídeo lido",
-   "itens_no_periodo": 0
-  },
-  {
-   "rede": "google",
-   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
-   "custo_usd": 0.0,
-   "trends_pontos": 169,
-   "noticias": 53,
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 253,
+   "custo_usd": 0.0379,
    "status": "ok",
-   "itens_no_periodo": 0
+   "itens_no_periodo": 253
   }
  ],
- "itens_acumulados": 3351,
- "custo_usd": 0.0
+ "itens_acumulados": 3430,
+ "custo_usd": 0.0379
 }
