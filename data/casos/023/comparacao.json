@@ -1,40 +1,104 @@
 {
  "caso": "023",
- "gerado_em_utc": "2026-11-01T19:07:51Z",
+ "gerado_em_utc": "2026-11-01T19:18:07Z",
  "corte_pos_eleicao": "2026-10-28",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
   "2018": {
    "x_epoca": {
-    "publicacoes": 891,
-    "contas": 743,
+    "publicacoes": 1247,
+    "contas": 952,
     "visualizacoes": 0,
-    "curtidas": 15279,
-    "respostas_recebidas": 1728,
-    "compartilhamentos": 5044,
-    "primeiro_dia": "2018-06-03",
+    "curtidas": 220220,
+    "respostas_recebidas": 14827,
+    "compartilhamentos": 108925,
+    "primeiro_dia": "2018-05-18",
     "ultimo_dia": "2018-06-05",
     "pico": {
      "dia": "2018-06-04",
      "publicacoes": 438
     },
-    "dias_ate_metade": 1,
+    "dias_ate_metade": 17,
     "serie_desde_dia0": [
-     259,
+     1,
+     6,
+     20,
+     25,
+     25,
+     24,
+     25,
+     25,
+     25,
+     25,
+     25,
+     25,
+     25,
+     25,
+     25,
+     25,
+     260,
      438,
-     194
+     198
     ],
     "contas_10mil": [
      {
       "rede": "x",
       "conta": "bandnewstv",
-      "seguidores": 446124,
-      "publicacoes": 8
+      "seguidores": 446125,
+      "publicacoes": 13
+     },
+     {
+      "rede": "x",
+      "conta": "BandJornalismo",
+      "seguidores": 1019668,
+      "publicacoes": 11
      },
      {
       "rede": "x",
       "conta": "gazetadopovo",
-      "seguidores": 786681,
+      "seguidores": 786685,
+      "publicacoes": 10
+     },
+     {
+      "rede": "x",
+      "conta": "JornalOGlobo",
+      "seguidores": 6523054,
+      "publicacoes": 9
+     },
+     {
+      "rede": "x",
+      "conta": "rosedbarros",
+      "seguidores": 232816,
+      "publicacoes": 8
+     },
+     {
+      "rede": "x",
+      "conta": "radiobandnewsfm",
+      "seguidores": 1346476,
+      "publicacoes": 8
+     },
+     {
+      "rede": "x",
+      "conta": "folha",
+      "seguidores": 8221747,
+      "publicacoes": 7
+     },
+     {
+      "rede": "x",
+      "conta": "g1",
+      "seguidores": 14080921,
+      "publicacoes": 7
+     },
+     {
+      "rede": "x",
+      "conta": "UOL",
+      "seguidores": 2761120,
+      "publicacoes": 6
+     },
+     {
+      "rede": "x",
+      "conta": "bandplay",
+      "seguidores": 78317,
       "publicacoes": 6
      },
      {
@@ -45,60 +109,12 @@
      },
      {
       "rede": "x",
-      "conta": "BandJornalismo",
-      "seguidores": 1019660,
-      "publicacoes": 5
-     },
-     {
-      "rede": "x",
-      "conta": "g1",
-      "seguidores": 14080913,
-      "publicacoes": 5
-     },
-     {
-      "rede": "x",
-      "conta": "infomoney",
-      "seguidores": 655553,
-      "publicacoes": 5
-     },
-     {
-      "rede": "x",
-      "conta": "MirandaSa_",
-      "seguidores": 34589,
-      "publicacoes": 5
-     },
-     {
-      "rede": "x",
-      "conta": "Sen_Cristovam",
-      "seguidores": 634297,
-      "publicacoes": 5
-     },
-     {
-      "rede": "x",
       "conta": "g1economia",
       "seguidores": 310660,
-      "publicacoes": 4
-     },
-     {
-      "rede": "x",
-      "conta": "rosedbarros",
-      "seguidores": 232816,
-      "publicacoes": 4
-     },
-     {
-      "rede": "x",
-      "conta": "revistavoto",
-      "seguidores": 26679,
-      "publicacoes": 4
-     },
-     {
-      "rede": "x",
-      "conta": "portoalegre24h",
-      "seguidores": 222079,
-      "publicacoes": 4
+      "publicacoes": 5
      }
     ],
-    "respostas_entre_publicacoes": 73
+    "respostas_entre_publicacoes": 84
    },
    "x_agora": {
     "publicacoes": 269,
@@ -259,74 +275,70 @@
    "palavras_tipicas": {
     "epoca": [
      [
-      "durante",
-      69
-     ],
-     [
       "amanhã",
-      16
-     ],
-     [
-      "segunda",
       24
      ],
      [
+      "durante",
+      80
+     ],
+     [
+      "parente",
+      23
+     ],
+     [
+      "segunda",
+      35
+     ],
+     [
+      "pedro",
+      20
+     ],
+     [
       "aula",
+      17
+     ],
+     [
+      "petroleiros",
+      16
+     ],
+     [
+      "globo",
+      16
+     ],
+     [
+      "ministro",
+      16
+     ],
+     [
+      "via",
+      35
+     ],
+     [
+      "desta",
       14
      ],
      [
       "feriado",
-      12
+      13
      ],
      [
-      "ministro",
-      12
-     ],
-     [
-      "desta",
-      11
-     ],
-     [
-      "parente",
-      11
+      "vivo",
+      13
      ],
      [
       "aulas",
-      11
+      13
      ],
      [
-      "copa",
-      10
-     ],
-     [
-      "lição",
-      10
-     ],
-     [
-      "bilhões",
-      10
-     ],
-     [
-      "análise",
-      9
-     ],
-     [
-      "pedro",
-      9
-     ],
-     [
-      "junho",
-      9
+      "paulo",
+      29
      ]
     ],
     "agora": [
      [
       "novembro",
       188
-     ],
-     [
-      "categoria",
-      134
      ],
      [
       "confirmação",
@@ -337,27 +349,11 @@
       129
      ],
      [
-      "adesão",
-      92
-     ],
-     [
       "mobilização",
       146
      ],
      [
-      "redes",
-      145
-     ],
-     [
-      "quinta",
-      111
-     ],
-     [
-      "poderá",
-      77
-     ],
-     [
-      "sociais",
+      "categoria",
       134
      ],
      [
@@ -365,29 +361,49 @@
       145
      ],
      [
+      "adesão",
+      92
+     ],
+     [
       "fretes",
       89
      ],
      [
-      "profissionais",
-      64
+      "redes",
+      145
+     ],
+     [
+      "landim",
+      60
+     ],
+     [
+      "wallace",
+      60
+     ],
+     [
+      "sociais",
+      134
      ],
      [
       "nacional",
       176
      ],
      [
-      "indeterminado",
-      60
+      "piso",
+      59
+     ],
+     [
+      "abrava",
+      59
      ]
     ]
    },
    "sentimento": {
     "x_epoca": {
-     "n": 891,
-     "NEG": 31.8,
-     "NEU": 63.0,
-     "POS": 5.3
+     "n": 1247,
+     "NEG": 28.9,
+     "NEU": 66.3,
+     "POS": 4.7
     },
     "x_agora": {
      "n": 269,
@@ -411,23 +427,42 @@
   },
   "2022": {
    "x_epoca": {
-    "publicacoes": 646,
-    "contas": 508,
+    "publicacoes": 1025,
+    "contas": 745,
     "visualizacoes": 0,
-    "curtidas": 170368,
-    "respostas_recebidas": 7128,
-    "compartilhamentos": 31281,
-    "primeiro_dia": "2022-11-18",
+    "curtidas": 329696,
+    "respostas_recebidas": 14607,
+    "compartilhamentos": 70995,
+    "primeiro_dia": "2022-10-30",
     "ultimo_dia": "2022-11-20",
     "pico": {
      "dia": "2022-11-18",
-     "publicacoes": 404
+     "publicacoes": 417
     },
-    "dias_ate_metade": 0,
+    "dias_ate_metade": 19,
     "serie_desde_dia0": [
-     404,
-     170,
-     72
+     16,
+     20,
+     20,
+     19,
+     19,
+     20,
+     19,
+     19,
+     18,
+     18,
+     20,
+     20,
+     19,
+     20,
+     20,
+     20,
+     20,
+     12,
+     20,
+     417,
+     172,
+     77
     ],
     "contas_10mil": [
      {
@@ -444,8 +479,44 @@
      },
      {
       "rede": "x",
+      "conta": "JovemPanNews",
+      "seguidores": 2497567,
+      "publicacoes": 8
+     },
+     {
+      "rede": "x",
+      "conta": "UOLNoticias",
+      "seguidores": 5052526,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "SigaGazetaBR",
+      "seguidores": 516314,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "blogdejamildo",
+      "seguidores": 90887,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "jc_pe",
+      "seguidores": 440557,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
       "conta": "programapanico",
       "seguidores": 8333532,
+      "publicacoes": 5
+     },
+     {
+      "rede": "x",
+      "conta": "balancogeral",
+      "seguidores": 877189,
       "publicacoes": 5
      },
      {
@@ -456,54 +527,18 @@
      },
      {
       "rede": "x",
-      "conta": "SigaGazetaBR",
-      "seguidores": 516314,
+      "conta": "camarotedacpi",
+      "seguidores": 171029,
       "publicacoes": 4
      },
      {
       "rede": "x",
-      "conta": "blogdejamildo",
-      "seguidores": 90887,
+      "conta": "Conservadora191",
+      "seguidores": 96479,
       "publicacoes": 4
-     },
-     {
-      "rede": "x",
-      "conta": "JovemPanNews",
-      "seguidores": 2497565,
-      "publicacoes": 4
-     },
-     {
-      "rede": "x",
-      "conta": "jc_pe",
-      "seguidores": 440557,
-      "publicacoes": 4
-     },
-     {
-      "rede": "x",
-      "conta": "congressoemfoco",
-      "seguidores": 260893,
-      "publicacoes": 3
-     },
-     {
-      "rede": "x",
-      "conta": "rosedbarros",
-      "seguidores": 232816,
-      "publicacoes": 3
-     },
-     {
-      "rede": "x",
-      "conta": "ATROMBETA3",
-      "seguidores": 149500,
-      "publicacoes": 3
-     },
-     {
-      "rede": "x",
-      "conta": "agoranoticiasbr",
-      "seguidores": 48914,
-      "publicacoes": 3
      }
     ],
-    "respostas_entre_publicacoes": 149
+    "respostas_entre_publicacoes": 220
    },
    "x_agora": {
     "publicacoes": 269,
@@ -665,63 +700,63 @@
     "epoca": [
      [
       "stf",
-      43
-     ],
-     [
-      "bloqueio",
-      74
-     ],
-     [
-      "bloquear",
-      32
-     ],
-     [
-      "federais",
-      29
-     ],
-     [
-      "ffaa",
-      28
-     ],
-     [
-      "moraes",
-      27
-     ],
-     [
-      "glo",
-      27
+      128
      ],
      [
       "grevegeral",
-      27
+      108
      ],
      [
-      "voltam",
-      26
-     ],
-     [
-      "prf",
-      38
+      "glo",
+      106
      ],
      [
       "manifestacao",
-      24
+      103
+     ],
+     [
+      "liberdadedeexpressao",
+      103
      ],
      [
       "censuradotse",
-      24
-     ],
-     [
-      "rodovia",
-      24
+      103
      ],
      [
       "resistenciacivilbrasil",
-      24
+      102
+     ],
+     [
+      "ffaa",
+      102
+     ],
+     [
+      "brazilian",
+      94
+     ],
+     [
+      "fraude",
+      105
+     ],
+     [
+      "tsecadêmeuvoto",
+      55
+     ],
+     [
+      "bloqueio",
+      109
      ],
      [
       "megamanifestacao",
-      24
+      41
+     ],
+     [
+      "rodovia",
+      40
+     ],
+     [
+      "prf",
+      56
      ]
     ],
     "agora": [
@@ -734,40 +769,20 @@
       174
      ],
      [
-      "novembro",
-      188
-     ],
-     [
       "confirmação",
       99
+     ],
+     [
+      "novembro",
+      188
      ],
      [
       "preço",
       132
      ],
      [
-      "nacional",
-      176
-     ],
-     [
-      "combustíveis",
-      114
-     ],
-     [
-      "abastecimento",
-      113
-     ],
-     [
       "mobilização",
       146
-     ],
-     [
-      "quinta",
-      111
-     ],
-     [
-      "caso",
-      75
      ],
      [
       "redes",
@@ -782,17 +797,37 @@
       70
      ],
      [
-      "possível",
-      145
+      "adesão",
+      92
+     ],
+     [
+      "nacional",
+      176
+     ],
+     [
+      "diferentes",
+      66
+     ],
+     [
+      "sociais",
+      134
+     ],
+     [
+      "fretes",
+      89
+     ],
+     [
+      "abastecimento",
+      113
      ]
     ]
    },
    "sentimento": {
     "x_epoca": {
-     "n": 646,
-     "NEG": 36.2,
-     "NEU": 58.5,
-     "POS": 5.3
+     "n": 1025,
+     "NEG": 37.3,
+     "NEU": 58.2,
+     "POS": 4.5
     },
     "x_agora": {
      "n": 269,
