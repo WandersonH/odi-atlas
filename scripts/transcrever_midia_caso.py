@@ -53,7 +53,10 @@ def main(argv=None) -> int:
     from faster_whisper import WhisperModel
     import faster_whisper
     wm = WhisperModel(modelo, device="cpu", compute_type="int8", cpu_threads=os.cpu_count() or 2)
-    segs, info = wm.transcribe(str(audio), language="pt", vad_filter=True, beam_size=5, condition_on_previous_text=True)
+    # áudio decodificado pelo ffmpeg (16 kHz, mono, float32): evita o PyAV, cuja versão nova recusa um parâmetro do faster-whisper 1.1.1 (01/11/2026)
+    import numpy as np
+    pcm = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(audio), "-f", "f32le", "-ac", "1", "-ar", "16000", "-"], check=True, capture_output=True).stdout
+    segs, info = wm.transcribe(np.frombuffer(pcm, dtype=np.float32), language="pt", vad_filter=True, beam_size=5, condition_on_previous_text=True)
     trechos = [{"inicio": round(s.start, 2), "fim": round(s.end, 2), "tempo": hms(s.start), "texto": s.text.strip()} for s in segs]
     with open(m / "transcricao.srt", "w", encoding="utf-8") as f:
         for i, t in enumerate(trechos, 1):
