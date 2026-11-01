@@ -4,6 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.228 — Caso 024: post coletado e transcrição da live; caso 021: "movimento separatista" (2026-11-01) 🔜
+
+- **Caso 024, post do Instagram (run 41346334746):**
+  - Números lidos em 01/11, 20h21 UTC: 44.216.269 reproduções, 5.273.770 curtidas, 789.961 comentários.
+  - 400 comentários coletados, de 789.961 que o Instagram informa (0,05%); ordem "popular". Seguidores do autor lidos. Custo US$ 0,5278 de 0,95.
+- **Transcrição, pedido (01/11, 17h23):** "quero a transcrição desse vídeo do Flávio, como fizemos no caso do Nikolas no Nordeste".
+  - ⛔ A coleta paga não trouxe transcrição: a etapa paga do Apify cobre até cerca de 6 minutos e a live tem cerca de 17.
+  - Novo `transcrever_midia_caso.py` + `transcrever-caso.yml`, grátis: baixa o vídeo pelo link do CDN registrado na coleta e transcreve com faster-whisper (modelo medium, português, CPU), com tempo de cada trecho e sem edição.
+  - Público: `data/casos/024/transcricao.json` (autor é figura pública). Privado: áudio, SRT e JSON. O vídeo inteiro passa de 100 MB e fica fora do git.
+- **Caso 021, pedido (01/11, 17h25):** "movimento separatista, essa palavra deveria constar no caso".
+  - Título e texto da página passam a dizer "movimento separatista".
+  - Rodada 3: X ("movimento separatista"/separatistas/separatismo + Sul e estados) e Instagram (2 buscas e #movimentoseparatista).
+  - Trends: "movimento separatista" substitui "plebisul" na lista do caso, e entra como 5ª variante nas buscas do caso.
+  - Notícias e YouTube com "movimento separatista sul".
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.227 — Termos: Gephi de circulação; caso 024 "Antes de 2030" (primeiro vídeo de Flávio nos EUA) (2026-11-01) 🔜
 
 - **Termos, pergunta (01/11/2026, 17h10):** "essa página me parece pouco explorada, cadê o Gephi de circulação".

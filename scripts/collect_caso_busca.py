@@ -150,12 +150,12 @@ CASOS = {
             "noticias": ["\"relatório pericial independente\"", "relatório apócrifo fraude eleição", "votos após 17h TSE", "votos sem biometria segundo turno", "Joey Mannarino Lula"],
             "janela_noticias": "7d", "checagens": ["relatório pericial independente", "votos depois das 17h", "votos sem biometria"], "arquivo_web": []},
     # 31/10 (17h54): "O Sul é meu país" — separatismo do Sul; janela de 5 anos para comparar com o Plebisul (2016/2017)
-    "021": {"variantes": ["o sul é meu país", "separação do sul", "plebisul", "sul independente"],
+    "021": {"variantes": ["o sul é meu país", "separação do sul", "plebisul", "sul independente", "movimento separatista"],
             "controles": ["separatismo"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],
-            "youtube": ["O Sul é meu país", "separação do Sul do Brasil", "plebiscito separar o Sul", "Plebisul 2026", "independência do Sul"],
+            "youtube": ["O Sul é meu país", "separação do Sul do Brasil", "plebiscito separar o Sul", "Plebisul 2026", "independência do Sul", "movimento separatista Sul"],
             "desde_yt": "2026-07-01T00:00:00Z", "rx_titulo": r"sul|separa|plebis|independ",
             "rx_atributo": r"sul|separa|brasil|plebis|pa[ií]s|independ",
-            "noticias": ["\"o sul é meu país\"", "separação do sul", "plebisul", "separatismo sul Brasil", "plebiscito separar o sul"],
+            "noticias": ["\"o sul é meu país\"", "separação do sul", "plebisul", "separatismo sul Brasil", "plebiscito separar o sul", "movimento separatista sul"],
             "janela_noticias": "125d", "checagens": ["separação do sul", "o sul é meu país"], "arquivo_web": []},
     # 30/10 (20h58): menino que vendia balas em Fortaleza constrangido por influenciadora por dizer que votava em Lula
     # (vídeo de Valéria Diniz, 28/10). Criança: o Atlas não publica imagem nem o perfil dele; o apelido da imprensa só como termo de busca.
