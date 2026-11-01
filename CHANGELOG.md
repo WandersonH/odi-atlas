@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.225 — Caso 023: primeira carga; épocas por dia; YouTube dos casos de novo em 429 e cota redistribuída (2026-11-01) ⚠️
+
+- **Caso 023, carga: 487 publicações de 440 contas desde 28/10.** Custo US$ 0,8666; X das épocas US$ 0,1236; total US$ 0,9902 de US$ 2,90.
+  - X: 283 publicações, 1.122.228 visualizações.
+  - Instagram: 127 publicações, 15.725.467 visualizações. Inclui o reel indicado.
+  - Facebook: 77. TikTok: ⛔ 0.
+  - Pico: 31/10, 12h (horário de Brasília), com 35 publicações na hora.
+- **X das épocas (busca única, ordem "mais recentes"):** 2018 com 900 de 900 pedidos e 2022 com 674 de 674, **as duas no limite**.
+  - Por isso a amostra cobriu só os últimos dias de cada janela (03 a 05/06/2018 e 18 a 20/11/2022), não a época inteira. Os picos e as curvas da época ficam enviesados.
+  - Correção: complemento com uma busca por dia ("mais relevantes"), 25 por dia em 2018 (19 dias) e 20 por dia em 2022 (22 dias), em arquivo à parte. A busca original é mantida; a comparação junta os dois, sem repetir.
+- **Prévia da comparação (só com a busca única, enviesada):**
+  - Palavras típicas de 2022: "bloqueio", "STF", "Moraes", "FFAA", "GLO", "PRF". De agora: "diesel", "custos", "confirmação", "mobilização", "possível".
+  - Tom no X: 2022 com 36,2% negativo; agora 31,2%. No Instagram e no Facebook agora, cerca de 95% neutro.
+- **YouTube pendente (casos 014, 018, 020, 021, 022 e 023):** ⛔ de novo HTTP 429 às 18h41–19h05 UTC. A cota diária já tinha acabado nas coletas da manhã, e o agendamento do GitHub chega a atrasar 6 horas (o caso 019, marcado para 08h43 UTC, rodou às 15h28).
+  - Redistribuição:
+    - `casos-busca.yml` passa para 07h17 UTC e `caso-antigo-atual.yml` para 07h47 UTC, logo depois da renovação da cota (07h UTC).
+    - `debate-youtube.yml` vira semanal (debates encerrados).
+    - O caso 019 faz as 20 buscas (~2.000 unidades) em dias alternados; nos outros dias só atualiza números e comentários.
+- **Teste:** `python -m unittest discover -s tests -v` → OK.
+
 ## C19.224 — Caso 023 "Greve dos caminhoneiros 5/11" (época × agora) e YouTube pendente dos casos (2026-11-01) 🔜
 
 - **Pedidos:**

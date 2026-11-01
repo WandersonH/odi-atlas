@@ -146,13 +146,16 @@ def main(argv=None) -> int:
     textos_sent, por_ep_ids = {}, {}
     for ep, e in eps.items():
         rx = re.compile(e["pertinente"], re.I | re.S)
-        epoca = []
+        epoca, vistos = [], set()
         f = priv / f"x_epoca_{ep}.jsonl.gz"
-        if f.exists():
-            for l in gzip.open(f, "rt", encoding="utf-8"):
+        for ff in (f, priv / f"x_epoca_{ep}_dias.jsonl.gz"):  # busca única + complemento por dia (01/11/2026), sem repetir
+            if not ff.exists():
+                continue
+            for l in gzip.open(ff, "rt", encoding="utf-8"):
                 x = json.loads(l)
                 r = norm("x", x, f"época {ep}", "")
-                if r and rx.search(r["texto"]):
+                if r and r["item_id"] not in vistos and rx.search(r["texto"]):
+                    vistos.add(r["item_id"])
                     r["resposta"] = bool(x.get("isReply"))
                     epoca.append(r)
         ag = [r for r in agora_rows if any(t.lower() in (r["termo"] or "").lower() for t in e["termos_agora"]) and rx.search(r["texto"] or "")]

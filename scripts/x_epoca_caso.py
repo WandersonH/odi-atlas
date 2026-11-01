@@ -55,6 +55,40 @@ def main(argv=None, executar=None) -> int:
                             "no_limite": len(itens or []) >= n, "custo_usd": gasto, "em_utc": now_utc()})
         man["gasto_usd"] = round(man["gasto_usd"] + gasto, 4)
         print(f"caso {caso_id} X época {ep}: {len(itens or [])} de {n} pedidos · US$ {gasto}")
+    # 01/11/2026: a busca única da época bateu no limite e, por vir das mais recentes, cobriu só os 2 ou 3 últimos dias da janela.
+    # Complemento por dia ("x_epoca_por_dia": n): n publicações de cada dia da janela, gravadas à parte (x_epoca_<ep>_dias.jsonl.gz);
+    # a busca única original é mantida.
+    import datetime as _dt
+    for ep, e in caso["comparacao"]["episodios"].items():
+        n_dia = int(e.get("x_epoca_por_dia") or 0)
+        if not n_dia or any(r["episodio"] == f"{ep}_dias" for r in man["runs"]) or executar is None:
+            continue
+        base = e["x_epoca"].split(" since:")[0]
+        lingua = " lang:pt" if "lang:pt" in e["x_epoca"] else ""
+        d0, d1 = (_dt.date.fromisoformat(x) for x in e["janela_epoca"])
+        dias = [(d0 + _dt.timedelta(days=i)) for i in range((d1 - d0).days + 1)]
+        custo_max = round(len(dias) * n_dia * 0.00015 * 1.3, 4)
+        if man["gasto_usd"] + custo_max > teto:
+            print(f"⛔ X época {ep} por dia: não cabe no teto (gasto {man['gasto_usd']} + até {custo_max} > {teto})")
+            continue
+        itens_tot, gasto_tot, runs = [], 0.0, []
+        for d in dias:
+            q = f"{base} since:{d.isoformat()} until:{(d + _dt.timedelta(days=1)).isoformat()}{lingua}"
+            try:
+                run, itens = executar({"searchTerms": [q], "maxItems": n_dia, "queryType": "Top"}, round(0.00015 * n_dia * 1.3 + 0.02, 4))
+            except Exception as ex:  # noqa: BLE001
+                print(f"⛔ X época {ep} {d}: {type(ex).__name__}")
+                continue
+            itens_tot += itens or []
+            gasto_tot += float((run or {}).get("usageTotalUsd") or 0) or round(0.00015 * len(itens or []), 4)
+            runs.append((run or {}).get("id"))
+        with gzip.open(priv / f"x_epoca_{ep}_dias.jsonl.gz", "wt", encoding="utf-8") as f:
+            for x in itens_tot:
+                f.write(json.dumps(x, ensure_ascii=False) + "\n")
+        man["runs"].append({"episodio": f"{ep}_dias", "busca": f"{base} · 1 busca por dia ({len(dias)} dias, {n_dia} por dia, mais relevantes)",
+                            "run": runs, "pedidos": n_dia * len(dias), "itens": len(itens_tot), "custo_usd": round(gasto_tot, 4), "em_utc": now_utc()})
+        man["gasto_usd"] = round(man["gasto_usd"] + gasto_tot, 4)
+        print(f"caso {caso_id} X época {ep} por dia: {len(itens_tot)} itens em {len(dias)} dias · US$ {round(gasto_tot, 4)}")
     man_f.write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8")
     pub = Path("data/casos") / caso_id
     pub.mkdir(parents=True, exist_ok=True)

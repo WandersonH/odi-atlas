@@ -8,7 +8,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: "37 9 * * *"   # 1 vez por dia (06h37 em Brasília); a cada 6 h gastava ~8.800 unidades/dia da cota do YouTube
+    - cron: "37 9 * * 1"   # 01/11/2026: semanal (segundas, 06h37); debates encerrados e a cota diária do YouTube faltava para os casos
     - cron: "45 3 24 10 *" # noite do debate da Globo: 24/10, 00h45 em Brasília (o coletor ignora antes do início)
 
 permissions:

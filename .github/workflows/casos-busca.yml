@@ -7,7 +7,7 @@ on:
         description: "id do caso (001, 002, 003, 005, 006, 007, 008, 009, 013, 014, 016, 017, 020, 021, 022 ou 023; vazio = todos)"
         default: ""
   schedule:
-    - cron: "53 14 * * *"   # todo dia, 11h53 em Brasília
+    - cron: "17 7 * * *"   # 01/11/2026: todo dia, 04h17 em Brasília, logo depois da renovação da cota do YouTube (07h UTC); às 11h53 ela já tinha acabado
 
 permissions:
   contents: write

@@ -234,7 +234,15 @@ def lingua_video(v: dict, lingua_consulta: str) -> tuple[str, str]:
 
 
 def coletar(cfg: dict, key: str, estado: dict, priv: Path, agora: str) -> None:
-    consultas = buscar(key, cfg, agora)
+    import datetime as _dt
+    # 01/11/2026: as 20 buscas (~2.000 unidades) rodam em dias alternados para sobrar cota do YouTube aos casos;
+    # nos outros dias o caso só atualiza números dos vídeos já achados e comentários (poucas unidades)
+    dia = _dt.date.fromisoformat(agora[:10]).timetuple().tm_yday
+    if cfg.get("buscas_dias_alternados") and dia % 2 == 1:
+        consultas = []
+        ERROS.append(f"buscas puladas hoje (dias alternados, dia {dia} do ano); números e comentários atualizados")
+    else:
+        consultas = buscar(key, cfg, agora)
     estado.setdefault("consultas", []).extend({k: v for k, v in c.items() if k != "ids"} for c in consultas)
     achados = estado.setdefault("achados", {})  # id -> {linguas_consulta: [...], primeira_vez}
     for c in consultas:
