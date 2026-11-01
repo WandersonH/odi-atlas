@@ -4,6 +4,32 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.230 — Termos: rede de circulação publicada; caso 024: primeira carga (2026-11-01) ✅
+
+- **Termos:** o run 1 de `termos-desinformacao.yml` (01/11, 20h20 UTC) falhou no passo do acervo. Esse workflow não instalava networkx, que o desenho da rede passou a usar. Corrigido: agora ele roda `scripts/testes_ci.sh`.
+  - Publicação a partir de execução local, com o mesmo código e o acervo privado do dia: `ODI_INTERNO_DIR=<privado> python scripts/termos_desinformacao.py --corpus`. Foram 1.275.695 textos lidos.
+    - fake news 2.077 (16,28 a cada 10 mil)
+    - "fake" sozinho 1.226
+    - atribuição a IA 354
+    - desinformação 272
+    - montagem 135
+    - notícia falsa 69
+    - fora de contexto 61
+    - editado 19
+    - deepfake 5
+    - cheapfake 0
+  - Rede: 112 nós e 271 ligações no GEXF.
+  - Alvos mais citados junto de "fake news": Flávio/Bolsonaro 699 (34%), Lula 547 (26%), PT e esquerda 406 (20%), direita e bolsonarismo 275 (13%).
+  - Desenho em colunas (redes | termos | alvos, e casos embaixo), porque o layout de forças embolava o centro. As contas públicas saem do desenho e vão para uma lista; continuam no GEXF.
+- **Caso 024, carga (manifestos 20261101T202213Z, 20261101T202641Z e 20261101T203100Z): 2.898 publicações de 2.301 contas desde 31/10.**
+  - X: 2.680 publicações, 4.095.554 visualizações. A busca principal **bateu no limite de 2.500** (as mais recentes).
+  - Instagram: 117 publicações, 24.408.243 visualizações. Facebook: 101. TikTok: ⛔ 0.
+  - Pico: 01/11, 11h (horário de Brasília), com 214 publicações na hora.
+  - Notícias: 212; checagens: 4. YouTube: ⛔ 429.
+  - Comentários do post: 374 únicos de 401 brutos.
+  - Gasto: redes US$ 1,0897 + post US$ 0,5278 = US$ 1,6175 de US$ 2,95.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Chromium local: rede dos termos renderizada, sem erros.
+
 ## C19.229 — Caso 014: nova tag "não contrate quem odeia os empresários" (2026-11-01) 🔜
 
 - **Pedido (01/11/2026, 17h33):** "Demita um petista tem uma nova tag: não contrate quem odeia os empresários". Teto do caso sobe de US$ 6,10 para **US$ 6,80**, autorizado às 17h3x.

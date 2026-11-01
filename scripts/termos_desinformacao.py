@@ -191,7 +191,16 @@ def corpus(priv: Path) -> dict:
         cn[f"termo:{b}"]["n"] += w
     co_ar = {(f"termo:{a}", f"termo:{b}"): w for (a, b), w in cooc.items()}
     gexf(cn, co_ar, Path("data/termos/rede_coocorrencia.gexf"))
-    rede_c = {"desenho": _desenho(nos, Counter(circ), 110), "total_nos": len(nos), "total_arestas": len(circ),
+    # desenho sem as contas (deixavam o centro ilegível); as contas ficam no GEXF e numa lista à parte
+    sem_conta = Counter({k: w for k, w in circ.items() if not k[0].startswith("conta:")})
+    contas = Counter()
+    contas_termos = defaultdict(Counter)
+    for (a, b), w in circ.items():
+        if a.startswith("conta:"):
+            contas[a] += w
+            contas_termos[a][GRUPOS[b.split(":", 1)[1]]["nome"]] += w
+    rede_c = {"desenho": _desenho({k: v for k, v in nos.items() if not k.startswith("conta:")}, sem_conta, 60), "total_nos": len(nos), "total_arestas": len(circ),
+              "contas_publicas": [{"conta": k.split(":", 1)[1], "textos": v, "termos": dict(contas_termos[k].most_common())} for k, v in contas.most_common(25)],
               "alvos": {k: dict(v) for k, v in alvos_m.items()},
               "nota": "Ligações: termo × rede (onde o texto foi lido), termo × caso do Atlas, termo × alvo citado no mesmo texto (Lula, Flávio/Bolsonaro, "
                       "TSE/urna, STF/Moraes, imprensa, PT/esquerda, direita/bolsonarismo, IA/inteligência artificial) e conta pública (10 mil+ seguidores, "
