@@ -76,10 +76,10 @@ jobs:
           if [ "$MODO" = "complemento" ]; then a="--complemento --rede x"; fi
           if [ "$MODO" = "frases" ]; then a="--frases --rede instagram --rede facebook --rede kwai"; fi
           if [ "$MODO" = "posts" ]; then a="--posts --rede instagram"; fi
-          if [ "$MODO" = "rodada2" ]; then a="--rodada 2 --complemento --frases --rede x --rede instagram"; fi
-          if [ "$MODO" = "rodada3" ]; then a="--rodada 3 --complemento --frases --rede x --rede instagram"; fi
+          if [ "$MODO" = "rodada2" ]; then a="--rodada 2 --complemento --frases"; [ -z "$REDES" ] && a="$a --rede x --rede instagram"; fi  # 01/11/2026: com redes na entrada, só elas
+          if [ "$MODO" = "rodada3" ]; then a="--rodada 3 --complemento --frases"; [ -z "$REDES" ] && a="$a --rede x --rede instagram"; fi  # 01/11/2026: com redes na entrada, só elas
           if [ "$MODO" = "rodada4" ]; then a="--rodada 4 --complemento --rede x"; fi
-          if [ "$MODO" = "rodada5" ]; then a="--rodada 5 --complemento --frases --rede x --rede instagram --rede facebook"; fi
+          if [ "$MODO" = "rodada5" ]; then a="--rodada 5 --complemento --frases"; [ -z "$REDES" ] && a="$a --rede x --rede instagram --rede facebook"; fi  # 01/11/2026: com redes na entrada, só elas
           if [ -n "$CASO" ]; then a="$a --caso $CASO"; fi
           for r in $REDES; do a="$a --rede $r"; done
           if [ "$MODO" = "diario" ]; then a="--diario --rede x"; fi

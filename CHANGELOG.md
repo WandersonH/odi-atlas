@@ -4,6 +4,25 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.232 — Leitura diária do X dos casos nunca rodou (bash -e); casos 021 e 014: rodadas novas (2026-11-01) ⚠️
+
+- **⛔ Leitura diária do X (casos 014, 016 a 024):** não há nenhum manifesto de leitura diária desde que foi configurada (29/10).
+  - Causa: no agendamento, a primeira coleta (TikTok e Google) sai com erro quando o TikTok não devolve vídeos, e, com `bash -e`, o passo terminava antes da linha da leitura diária. É o mesmo defeito corrigido em C19.231.
+  - A partir da próxima execução a leitura diária roda.
+  - Recuperação agora: execução manual do modo `diario`, que lê os 2 dias anteriores.
+  - O que fica ⛔: o que só a leitura diária teria captado antes de 30/10; as cargas e as rodadas cobrem o período com as buscas do caso.
+- **Caso 021, rodada 3 "movimento separatista" (manifesto 20261101T204100Z, US$ 0,4934):**
+  - X: 925 publicações, **no limite**.
+  - Instagram: #movimentoseparatista 3; reels "movimento separatista sul" 22 e "separatistas do sul" 24.
+  - Total do caso: 5.591 publicações de 2.470 contas.
+  - YouTube: ⛔ 429.
+- **Caso 014, rodada 5 "não contrate quem odeia os empresários" (manifesto 20261101T204622Z, US$ 0,1138):**
+  - Facebook: 41 publicações.
+  - Instagram: ⛔ 0. A hashtag e a busca de reels não devolveram nada no período.
+  - X: ⛔ não rodou. A reserva da leitura diária (US$ 0,51) deixava o teto da execução negativo.
+  - Correção: reserva do X de 0,42 (0,03 × 14 dias até 15/11), e o X da rodada 5 é reexecutado sozinho. `casos.yml`: nas rodadas, se a entrada traz redes, só elas rodam, sem repetir o Instagram e o Facebook.
+- **Teste:** `python -m unittest discover -s tests -v` → OK; YAML válido.
+
 ## C19.231 — Workflows: a saída de erro nunca aparecia (bash do Actions com -e) (2026-11-01) ✅
 
 - **O que se viu:** a transcrição do caso 024 (runs de 01/11, 20h27 e 21h0x UTC) e a rodada de termos de 01/11 falharam sem nenhuma linha de diagnóstico.
