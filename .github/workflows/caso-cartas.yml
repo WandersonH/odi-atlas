@@ -33,7 +33,7 @@ jobs:
           IDS: ${{ github.event.inputs.ids }}
         run: |
           if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
-          python scripts/carta_versoes.py $IDS > f.txt 2>&1; rc=$?
+          rc=0; python scripts/carta_versoes.py $IDS > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Cartas::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Commitar

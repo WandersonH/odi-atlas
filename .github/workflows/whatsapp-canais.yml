@@ -25,7 +25,7 @@ jobs:
       - name: Coletar
         continue-on-error: true
         run: |
-          python scripts/collect_whatsapp_canais.py > f.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_whatsapp_canais.py > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=WhatsApp::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Commitar

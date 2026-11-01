@@ -42,7 +42,7 @@ jobs:
           META_AD_LIBRARY_TOKEN: ${{ secrets.META_AD_LIBRARY_TOKEN }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/collect_meta_anuncios.py > meta.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_meta_anuncios.py > meta.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Meta anúncios::$l"; done < meta.txt
           exit $rc
       - name: Gravar bruto no repositório privado

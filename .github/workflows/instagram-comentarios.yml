@@ -46,7 +46,7 @@ jobs:
           MODO: ${{ github.event_name == 'schedule' && 'diario' || github.event.inputs.modo }}
         run: |
           case "$MODO" in diario) a="--diario";; carga) a="--carga";; respostas) a="--respostas";; *) echo "modo desconhecido: $MODO"; exit 1;; esac
-          python scripts/collect_comentarios_instagram.py $a > k.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_comentarios_instagram.py $a > k.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Instagram comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc
       - name: Análise (mesmas regras do YouTube; só agregados no público)

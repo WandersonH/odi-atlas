@@ -54,7 +54,7 @@ jobs:
           case "$ETAPA" in *build*) a="$a --build";; esac
           if [ -n "${{ github.event.inputs.limite_tiktok }}" ]; then a="$a --limite-tiktok ${{ github.event.inputs.limite_tiktok }}"; fi
           if [ -n "${{ github.event.inputs.limite_instagram }}" ]; then a="$a --limite-instagram ${{ github.event.inputs.limite_instagram }}"; fi
-          python scripts/collect_busca_ia.py $a > s.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_busca_ia.py $a > s.txt 2>&1 || rc=$?
           tail -n 30 s.txt | while IFS= read -r l; do echo "::notice title=Busca IA::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Gravar no repositório privado

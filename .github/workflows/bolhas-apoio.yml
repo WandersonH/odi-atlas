@@ -47,7 +47,7 @@ jobs:
         run: |
           a=""
           for p in $PASSOS; do a="$a --$p"; done
-          python scripts/bolhas_apoio.py $a > f.txt 2>&1; rc=$?
+          rc=0; python scripts/bolhas_apoio.py $a > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Bolhas::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Gravar no repositório privado

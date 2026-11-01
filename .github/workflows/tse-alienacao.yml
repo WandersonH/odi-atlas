@@ -34,7 +34,7 @@ jobs:
         env:
           TURNO: ${{ github.event_name == 'schedule' && '2' || inputs.turno }}
         run: |
-          python scripts/collect_alienacao.py --turno "$TURNO" > s.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_alienacao.py --turno "$TURNO" > s.txt 2>&1 || rc=$?
           tail -n 4 s.txt | while IFS= read -r l; do echo "::notice title=Alienação::$(echo "$l" | cut -c1-900)"; done
           exit $rc
       - name: Commitar

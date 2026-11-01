@@ -29,7 +29,7 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
-          python scripts/contagens_plataforma.py --caso "${{ inputs.caso }}" > s.txt 2>&1; rc=$?
+          rc=0; python scripts/contagens_plataforma.py --caso "${{ inputs.caso }}" > s.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Contagens::$(echo "$l" | cut -c1-900)"; done < s.txt
           exit $rc
       - name: Gravar

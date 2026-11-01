@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.231 — Workflows: a saída de erro nunca aparecia (bash do Actions com -e) (2026-11-01) ✅
+
+- **O que se viu:** a transcrição do caso 024 (runs de 01/11, 20h27 e 21h0x UTC) e a rodada de termos de 01/11 falharam sem nenhuma linha de diagnóstico.
+- **Causa:** o GitHub Actions roda os passos com `bash -e`. No padrão `python ... > f.txt 2>&1; rc=$?`, um erro do Python encerra o passo na hora, antes de ler `rc` e de publicar a saída como anotação. Os logs completos não são acessíveis daqui.
+- **Correção:** em 46 workflows (56 linhas), o padrão vira `rc=0; python ... 2>&1 || rc=$?`.
+  - Quem falha continua falhando, mas agora mostra as últimas linhas.
+  - Nenhum passo zera uma falha anterior: conferido bloco a bloco.
+  - A transcrição publica as 25 últimas linhas como aviso.
+- **Teste:** YAML de todos os workflows válido; `python -m unittest discover -s tests -v` → OK.
+
 ## C19.230 — Termos: rede de circulação publicada; caso 024: primeira carga (2026-11-01) ✅
 
 - **Termos:** o run 1 de `termos-desinformacao.yml` (01/11, 20h20 UTC) falhou no passo do acervo. Esse workflow não instalava networkx, que o desenho da rede passou a usar. Corrigido: agora ele roda `scripts/testes_ci.sh`.

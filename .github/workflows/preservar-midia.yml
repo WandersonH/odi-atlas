@@ -39,7 +39,7 @@ jobs:
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/preservar_midia.py --caso "${{ inputs.caso }}" --max "${{ inputs.maximo }}" > f.txt 2>&1; rc=$?
+          rc=0; python scripts/preservar_midia.py --caso "${{ inputs.caso }}" --max "${{ inputs.maximo }}" > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Preservação::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Anexar o pacote a uma release do repositório privado

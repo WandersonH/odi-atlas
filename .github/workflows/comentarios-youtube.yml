@@ -65,7 +65,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/collect_comentarios_youtube_completo.py > cc.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_comentarios_youtube_completo.py > cc.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Comentários YouTube completo::$(echo "$l" | cut -c1-400)"; done < cc.txt
           exit $rc
       - name: Caderno 04 — análise agregada por candidato

@@ -35,7 +35,7 @@ jobs:
           APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
         run: |
-          python scripts/verificar_contas_apify.py > c.txt 2>&1; rc=$?
+          rc=0; python scripts/verificar_contas_apify.py > c.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Apify contas::$(echo "$l" | cut -c1-400)"; done < c.txt
           exit $rc
       - name: Commitar

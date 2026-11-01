@@ -66,7 +66,7 @@ jobs:
         run: |
           # diário (agendado ou manual sem opção): conta 1, US$ 0,11/dia (autorização de 23/10/2026); a conta 2 passou a recusar (HTTP 401)
           if [ "$HISTORICO" = "true" ]; then a="--historico"; elif [ "$TESTE" = "true" ]; then a="--teste"; else a="--conta1"; fi
-          python scripts/collect_kwai_apify.py $a > k.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_kwai_apify.py $a > k.txt 2>&1 || rc=$?
           # vídeos novos de @Lulaoficial (o ator acima não lista esta conta): conta 1, US$ 0,04/dia
           if [ "$a" = "--conta1" ] && [ -n "$ODI_INTERNO_DIR" ]; then python scripts/collect_comentarios_kwai.py --conta1 --videos-lula --diario >> k.txt 2>&1 || rc=1; fi
           while IFS= read -r l; do echo "::notice title=Kwai::$(echo "$l" | cut -c1-900)"; done < k.txt
@@ -76,7 +76,7 @@ jobs:
         continue-on-error: true
         run: |
           pip install -q pillow==11.3.0
-          python scripts/build_miniaturas_kwai.py > m.txt 2>&1; rc=$?
+          rc=0; python scripts/build_miniaturas_kwai.py > m.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Kwai miniaturas::$(echo "$l" | cut -c1-400)"; done < m.txt
           exit $rc
       - name: Conteúdo por tema (mesmas regras do TikTok)

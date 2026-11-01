@@ -33,7 +33,7 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: |
           if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
-          python scripts/serp_caso.py --caso ${{ inputs.caso || '020' }} > s.txt 2>&1; rc=$?
+          rc=0; python scripts/serp_caso.py --caso ${{ inputs.caso || '020' }} > s.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=SERP::$(echo "$l" | cut -c1-900)"; done < s.txt
           exit $rc
       - name: Commitar

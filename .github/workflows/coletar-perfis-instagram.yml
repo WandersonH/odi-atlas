@@ -45,7 +45,7 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/coletar_caso_perfis_instagram.py --caso "${{ inputs.caso }}" --perfis "${{ inputs.perfis }}" --desde "${{ inputs.desde }}" --teto "${{ inputs.teto }}" > s.txt 2>&1; rc=$?
+          rc=0; python scripts/coletar_caso_perfis_instagram.py --caso "${{ inputs.caso }}" --perfis "${{ inputs.perfis }}" --desde "${{ inputs.desde }}" --teto "${{ inputs.teto }}" > s.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Instagram do caso::$(echo "$l" | cut -c1-500)"; done < s.txt
           exit $rc
       - name: Análise do caso (só agregados no público)

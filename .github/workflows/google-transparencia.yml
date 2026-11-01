@@ -30,7 +30,7 @@ jobs:
         id: coleta
         continue-on-error: true
         run: |
-          python scripts/collect_google_transparencia.py > g.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_google_transparencia.py > g.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Google Transparência::$(echo "$l" | cut -c1-400)"; done < g.txt
           exit $rc
       - name: Commitar

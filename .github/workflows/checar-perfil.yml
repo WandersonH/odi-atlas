@@ -35,7 +35,7 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/checar_seguidores_perfil.py --caso "${{ inputs.caso }}" --rede "${{ inputs.rede }}" > s.txt 2>&1; rc=$?
+          rc=0; python scripts/checar_seguidores_perfil.py --caso "${{ inputs.caso }}" --rede "${{ inputs.rede }}" > s.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Perfil::$l"; done < s.txt
           exit $rc
       - name: Gravar no repositório privado

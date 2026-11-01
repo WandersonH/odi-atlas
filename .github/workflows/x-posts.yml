@@ -63,7 +63,7 @@ jobs:
           MODO: ${{ github.event_name == 'schedule' && 'diario-conta1' || github.event.inputs.modo }}
         run: |
           case "$MODO" in teste) a="--teste";; lacuna-conta1) a="--conta1";; diario-conta1) a="--conta1 --diario";; *) a="";; esac
-          python scripts/collect_x_posts.py $a > f.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_x_posts.py $a > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=X::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Miniaturas (a URL da capa expira; logo após a coleta)
@@ -71,7 +71,7 @@ jobs:
         continue-on-error: true
         run: |
           pip install -q pillow==11.3.0
-          python scripts/build_miniaturas_kwai.py --x > m.txt 2>&1; rc=$?
+          rc=0; python scripts/build_miniaturas_kwai.py --x > m.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=X miniaturas::$(echo "$l" | cut -c1-400)"; done < m.txt
           exit $rc
       - name: Conteúdo por tema e análises (mesmas regras do TikTok e do Kwai)

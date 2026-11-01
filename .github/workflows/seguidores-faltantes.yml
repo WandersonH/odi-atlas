@@ -52,7 +52,7 @@ jobs:
           APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
         run: |
           if [ "$CONTA1" = "sim" ]; then args="--conta1 --teto ${TETO}"; else args=""; fi
-          python scripts/collect_seguidores_faltantes.py $args > f.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_seguidores_faltantes.py $args > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Seguidores faltantes::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Resumo da IA

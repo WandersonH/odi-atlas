@@ -61,7 +61,7 @@ jobs:
           MODO: ${{ github.event.inputs.modo }}
         run: |
           case "$MODO" in teste) a="--teste";; videos-lula) a="--videos-lula";; conta1-videos-lula) a="--conta1 --videos-lula";; conta1-carga) a="--conta1";; teste-nataniel) a="--teste --nataniel";; carga-nataniel) a="--nataniel";; *) a="";; esac
-          python scripts/collect_comentarios_kwai.py $a > k.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_comentarios_kwai.py $a > k.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Kwai comentários::$(echo "$l" | cut -c1-900)"; done < k.txt
           exit $rc
       - name: Vídeos novos no acervo do Kwai — capas, temas e análises

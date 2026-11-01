@@ -41,7 +41,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           SEM: ${{ inputs.sem_coleta || 'false' }}
         run: |
-          python scripts/caso_canais.py --caso 012 $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1; rc=$?
+          rc=0; python scripts/caso_canais.py --caso 012 $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Caso 012::$(echo "$l" | cut -c1-600)"; done < s.txt
           exit $rc
       - name: Gravar no privado

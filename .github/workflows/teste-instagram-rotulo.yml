@@ -22,7 +22,7 @@ jobs:
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: |
-          python scripts/teste_instagram_rotulo.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
+          rc=0; python scripts/teste_instagram_rotulo.py > "$RUNNER_TEMP/s.txt" 2>&1 || rc=$?
           tail -n 5 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Instagram rótulo IA::$(echo "$l" | cut -c1-500)"; done
           exit $rc
       - name: Commitar

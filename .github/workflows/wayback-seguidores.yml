@@ -23,7 +23,7 @@ jobs:
       - name: Coletar
         continue-on-error: true
         run: |
-          python scripts/collect_wayback_seguidores.py > f.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_wayback_seguidores.py > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Wayback::$(echo "$l" | cut -c1-600)"; done < f.txt
           exit $rc
       - name: Commitar

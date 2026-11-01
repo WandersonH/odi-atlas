@@ -52,7 +52,7 @@ jobs:
           SEM: ${{ inputs.sem_coleta || 'false' }}
         run: |
           if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
-          python scripts/caso_mundo.py $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1; rc=$?
+          rc=0; python scripts/caso_mundo.py $([ "$SEM" = "true" ] && echo --sem-coleta) > s.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Caso 019::$(echo "$l" | cut -c1-900)"; done < s.txt
           exit $rc
       - name: Gravar no repositório privado

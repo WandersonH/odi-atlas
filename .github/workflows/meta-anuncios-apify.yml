@@ -52,7 +52,7 @@ jobs:
           TESTE: ${{ github.event.inputs.teste }}
         run: |
           if [ "$TESTE" = "true" ]; then a="--teste"; else a=""; fi
-          python scripts/collect_meta_anuncios_apify.py $a > m.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_meta_anuncios_apify.py $a > m.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Meta via Apify::$(echo "$l" | cut -c1-900)"; done < m.txt
           exit $rc
       - name: Criativos com miniatura (maiores alcances)
@@ -62,7 +62,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
           pip install -q pillow==11.3.0
-          python scripts/build_criativos_meta.py > c.txt 2>&1; rc=$?
+          rc=0; python scripts/build_criativos_meta.py > c.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Criativos Meta::$l"; done < c.txt
           exit $rc
       - name: Gravar bruto no repositório privado

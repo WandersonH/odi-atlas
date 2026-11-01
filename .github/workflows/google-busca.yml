@@ -43,7 +43,7 @@ jobs:
         env:
           DESDE: ${{ github.event.inputs.desde }}
         run: |
-          if [ -n "$DESDE" ]; then python scripts/collect_google_noticias_diario.py --desde "$DESDE"; else python scripts/collect_google_noticias_diario.py; fi > diario.txt 2>&1; rc=$?
+          rc=0; if [ -n "$DESDE" ]; then python scripts/collect_google_noticias_diario.py --desde "$DESDE"; else python scripts/collect_google_noticias_diario.py; fi > diario.txt 2>&1 || rc=$?
           echo "::notice title=Google Notícias por dia::$(tail -n 1 diario.txt)"
           exit $rc
       - name: Universo das notícias — nuvem, CHD, rede (Gephi), corpus (IRaMuTeQ) · período todo, 7 dias e 24 horas
@@ -51,7 +51,7 @@ jobs:
         run: |
           if true; then  # a cada execução: os recortes de 7 dias e 24 horas precisam estar atualizados
             pip install -q networkx==3.6.1 numpy==2.3.4
-            python scripts/build_noticias_texto.py > texto.txt 2>&1; rc=$?
+            rc=0; python scripts/build_noticias_texto.py > texto.txt 2>&1 || rc=$?
             while IFS= read -r l; do echo "::notice title=Universo das notícias::$l"; done < texto.txt
             exit $rc
           fi

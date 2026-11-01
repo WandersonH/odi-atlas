@@ -54,7 +54,7 @@ jobs:
           MODO: ${{ github.event.inputs.modo }}
         run: |
           if [ "$MODO" = "teste" ]; then a="--teste"; else a=""; fi
-          python scripts/collect_socialblade.py $a > f.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_socialblade.py $a > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Social Blade::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Gravar bruto no repositório privado

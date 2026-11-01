@@ -23,7 +23,7 @@ jobs:
           python-version: "3.12"
       - name: Coletar
         run: |
-          python scripts/collect_x_trends.py > t.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_x_trends.py > t.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=X trends::$(echo "$l" | cut -c1-400)"; done < t.txt
           exit $rc
       - name: Commitar

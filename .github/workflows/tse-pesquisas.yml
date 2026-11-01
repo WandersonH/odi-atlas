@@ -35,7 +35,7 @@ jobs:
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/collect_tse_pesquisas.py > "$RUNNER_TEMP/s.txt" 2>&1; rc=$?
+          rc=0; python scripts/collect_tse_pesquisas.py > "$RUNNER_TEMP/s.txt" 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=TSE pesquisas/denúncias::$(echo "$l" | cut -c1-1800)"; done < "$RUNNER_TEMP/s.txt"
           exit $rc
       - name: Gravar no repositório privado

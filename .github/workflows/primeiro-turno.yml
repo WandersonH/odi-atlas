@@ -63,14 +63,14 @@ jobs:
           a=""
           if [ "$MODO" = "teste" ]; then a="--teste"; fi
           for r in $REDES; do a="$a --rede $r"; done
-          python scripts/collect_primeiro_turno.py $a > f.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_primeiro_turno.py $a > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=1º turno::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Resumo por chapa
         if: always()
         continue-on-error: true
         run: |
-          python scripts/build_primeiro_turno.py > b.txt 2>&1; rc=$?
+          rc=0; python scripts/build_primeiro_turno.py > b.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=1º turno resumo::$(echo "$l" | cut -c1-600)"; done < b.txt
           exit $rc
       - name: Gravar bruto no repositório privado

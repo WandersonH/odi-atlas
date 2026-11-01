@@ -42,7 +42,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
           if [ "$(TZ=America/Sao_Paulo date +%F)" \> "2026-11-15" ] && [ "${{ github.event_name }}" = "schedule" ]; then echo "acompanhamento encerrado em 15/11"; exit 0; fi
-          python scripts/caso_antigo_atual.py > s.txt 2>&1; rc=$?
+          rc=0; python scripts/caso_antigo_atual.py > s.txt 2>&1 || rc=$?
           python scripts/caso018_comparacao.py >> s.txt 2>&1 || rc=1
           while IFS= read -r l; do echo "::notice title=Caso 018::$(echo "$l" | cut -c1-900)"; done < s.txt
           exit $rc

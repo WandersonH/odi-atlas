@@ -83,7 +83,7 @@ jobs:
           if [ -n "$CASO" ]; then a="$a --caso $CASO"; fi
           for r in $REDES; do a="$a --rede $r"; done
           if [ "$MODO" = "diario" ]; then a="--diario --rede x"; fi
-          python scripts/collect_casos.py $a > f.txt 2>&1; rc=$?
+          rc=0; python scripts/collect_casos.py $a > f.txt 2>&1 || rc=$?
           # leitura diária do X dos casos com "diario_x" até "diario_ate" (pedido de 29/10/2026: acompanhar até 15/11), teto diário por caso
           if [ "${{ github.event_name }}" = "schedule" ]; then python scripts/collect_casos.py --diario --rede x >> f.txt 2>&1 || true; fi
           while IFS= read -r l; do echo "::notice title=Casos::$(echo "$l" | cut -c1-900)"; done < f.txt
@@ -94,7 +94,7 @@ jobs:
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          python scripts/build_casos.py > b.txt 2>&1; rc=$?
+          rc=0; python scripts/build_casos.py > b.txt 2>&1 || rc=$?
           if [ -d "$ODI_INTERNO_DIR/casos/010" ]; then python scripts/build_caso_perfis_exterior.py --caso 010 >> b.txt 2>&1 || rc=1; fi
           # Bardin (pré-codificação pelo livro de códigos do caso), pedido de 28/10/2026, 00h05
           for c in $(ls data/config | sed -n 's/^livro_codigos_caso\([0-9]*\)\.json$/\1/p'); do
