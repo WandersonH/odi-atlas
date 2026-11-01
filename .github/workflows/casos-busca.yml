@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       caso:
-        description: "id do caso (001, 002, 003, 005, 006, 007, 008, 009, 013, 014, 016, 017, 020, 021, 022 ou 023; vazio = todos)"
+        description: "id do caso (001, 002, 003, 005, 006, 007, 008, 009, 013, 014, 016, 017, 020, 021, 022, 023 ou 024; vazio = todos)"
         default: ""
   schedule:
     - cron: "17 7 * * *"   # 01/11/2026: todo dia, 04h17 em Brasília, logo depois da renovação da cota do YouTube (07h UTC); às 11h53 ela já tinha acabado
@@ -46,11 +46,11 @@ jobs:
           CASO: ${{ github.event.inputs.caso }}
         run: |
           rc=0
-          for c in ${CASO:-001 002 003 005 006 007 008 009 013 014 016 017 020 021 022 023}; do
+          for c in ${CASO:-001 002 003 005 006 007 008 009 013 014 016 017 020 021 022 023 024}; do
             python scripts/collect_caso_busca.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
             # conversas importadas do Apify (X, Instagram) do caso, quando houver: unifica e agrega antes do build do caso
             case "$c" in 006) python scripts/build_caso_x.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1;; esac
-            case "$c" in 007|008|009) python scripts/build_caso_instagram.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1;; esac
+            case "$c" in 007|008|009|024) python scripts/build_caso_instagram.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1;; esac
             python scripts/build_caso_busca.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
           done
           tail -n 12 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Casos de busca::$(echo "$l" | cut -c1-400)"; done

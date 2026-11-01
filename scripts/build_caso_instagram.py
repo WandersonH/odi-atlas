@@ -72,7 +72,19 @@ CASOS = {
                 "elogia Nikolas": r"nikolas|parab[eé]ns|orgulho|verdade|disse tudo|falou tudo",
             },
             "nota_coleta": "Coleta nova do Atlas no Apify em 26/10/2026 (conta 1, teto autorizado de US$ 3,50), comentários unificados por id.",
-            "marco": "início do caso"},
+            "marco": "início do caso"},    # 01/11/2026 (17h16): primeiro vídeo de Flávio Bolsonaro nos EUA (live no Instagram, 31/10/2026); teto do caso US$ 3,00
+    "024": {"shortcode": "DfI1WaujjI_",
+            "titulo": "Primeiro vídeo de Flávio Bolsonaro nos EUA (live no Instagram, 31/10/2026)",
+            "categorias": {
+                "apoia Flávio ou pede volta": r"for[cç]a|estamos (juntos|com voc)|volta|presidente fl|deus (te )?(aben|proteja|guarde)|m[ií]to|orgulho|herói|\b22\b|fl[aá]vio presidente",
+                "chama de fuga ou covardia": r"fug|fujao|fugiu|covard|arreg|abandon|correu|miami|disney",
+                "ataca Lula, STF ou Moraes": r"ladr[aã]o|bandid|lula|moraes|xand|\bstf\b|ditadura|ditador|persegu",
+                "fala em fraude ou golpe": r"fraud|roubad|golpe|urna|interven|militar|ffaa|forças armadas",
+                "cita EUA ou Trump": r"\beua\b|estados unidos|america|trump|rubio|asilo|exil",
+                "cita 2030 ou nova eleição": r"2030|antes de|pr[oó]xima elei|candidat|voltar a disputar",
+            },
+            "nota_coleta": "Coleta nova do Atlas no Apify (conta 1, dentro do teto do caso de US$ 3,00), comentários unificados por id.",
+            "marco": "live de 31/10/2026"},
 }
 CAMPOS = ["id", "criado_em_utc", "texto", "curtidas", "respostas", "autor_id", "autor_usuario", "autor_nome", "autor_verificado", "runs"]
 

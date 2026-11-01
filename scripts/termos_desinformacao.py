@@ -80,6 +80,18 @@ def mes(v) -> str | None:
         return None
 
 
+ALVOS = {k: re.compile(v) for k, v in {
+    "Lula": r"\blula\w*|\blulinha\b|\bpresidente lula",
+    "Flávio/Bolsonaro": r"\bflavio\b|bolsonar\w*",
+    "TSE e urna": r"\btse\b|\burnas?\b|justica eleitoral|eleicao fraudada|apuracao",
+    "STF e Moraes": r"\bstf\b|moraes|xandao|supremo",
+    "Imprensa": r"\bglobo\w*|imprensa|\bmidia\b|jornalis\w*|\bcnn\b|folha|estadao|band\b|record\b|sbt\b",
+    "PT e esquerda": r"\bpt\b|petist\w*|esquerd\w*|comunis\w*",
+    "Direita e bolsonarismo": r"\bdireita\b|bolsonarist\w*|\bpl\b|extrema direita",
+    "IA": r"inteligencia artificial|\bia\b|\bai\b|chatgpt|gerad\w* por",
+}.items()}
+
+
 def grupos_no(texto: str) -> list[str]:
     t = norm(texto or "")
     return [k for k, r in RX.items() if r.search(t)]
@@ -91,29 +103,31 @@ def fontes(priv: Path):
         f = priv / rede / "comentarios" / "comentarios.csv.gz"
         if f.exists():
             for r in csv.DictReader(gzip.open(f, "rt", encoding="utf-8"), delimiter=";"):
-                yield "comentarios_campanhas", rede, r.get("comment_id"), r.get("texto"), r.get("publicado_em")
+                yield "comentarios_campanhas", rede, r.get("comment_id"), r.get("texto"), r.get("publicado_em"), None
     for f in sorted((priv / "instagram" / "comentarios").glob("apify_*.jsonl.gz")):
         for linha in gzip.open(f, "rt", encoding="utf-8"):
             x = json.loads(linha)
-            yield "comentarios_campanhas", "instagram", x.get("id") or x.get("comment_id"), x.get("text"), x.get("created_at_utc") or x.get("created_at")
+            yield "comentarios_campanhas", "instagram", x.get("id") or x.get("comment_id"), x.get("text"), x.get("created_at_utc") or x.get("created_at"), None
     for f in sorted((priv / "x" / "respostas").glob("*.jsonl.gz")):
         for linha in gzip.open(f, "rt", encoding="utf-8"):
             x = json.loads(linha)
-            yield "comentarios_campanhas", "x", x.get("id"), x.get("text"), x.get("createdAt")
+            yield "comentarios_campanhas", "x", x.get("id"), x.get("text"), x.get("createdAt"), None
     for f in sorted((priv / "kwai" / "comentarios").glob("*.jsonl.gz")):
         for linha in gzip.open(f, "rt", encoding="utf-8"):
             x = json.loads(linha)
-            yield "posts_kwai", "kwai", x.get("id"), " ".join(str(x.get(k) or "") for k in ("caption", "transcript")), x.get("createTime")
+            yield "posts_kwai", "kwai", x.get("id"), " ".join(str(x.get(k) or "") for k in ("caption", "transcript")), x.get("createTime"), None
     for d in sorted((priv / "casos").glob("*")):
         f = d / "itens.csv.gz"
         if f.exists():
             for r in csv.DictReader(gzip.open(f, "rt", encoding="utf-8"), delimiter=";"):
-                yield "casos_publicacoes", r.get("rede"), f"{d.name}:{r.get('item_id')}", r.get("texto"), r.get("publicado_em")
+                seg = int(r["seguidores"]) if str(r.get("seguidores") or "").isdigit() else 0
+                conta = f"{r.get('rede')}:@{r.get('conta')}" if seg >= 10000 and r.get("conta") else None
+                yield "casos_publicacoes", r.get("rede"), f"{d.name}:{r.get('item_id')}", r.get("texto"), r.get("publicado_em"), conta
         for nome, rede in (("youtube_comentarios.csv.gz", "youtube"), ("instagram_comentarios.csv.gz", "instagram")):
             f = d / nome
             if f.exists():
                 for r in csv.DictReader(gzip.open(f, "rt", encoding="utf-8"), delimiter=";"):
-                    yield "casos_comentarios", rede, r.get("comment_id") or r.get("id"), r.get("texto") or r.get("text"), r.get("publicado_em") or r.get("created_at")
+                    yield "casos_comentarios", rede, r.get("comment_id") or r.get("id"), r.get("texto") or r.get("text"), r.get("publicado_em") or r.get("created_at"), None
 
 
 def corpus(priv: Path) -> dict:
@@ -123,7 +137,10 @@ def corpus(priv: Path) -> dict:
     por_rede = defaultdict(Counter)         # (corpus, rede) -> grupo
     cooc = Counter()
     sem_data = 0
-    for corp, rede, iid, texto, data in fontes(priv):
+    # 01/11/2026, pedido: "cadê o Gephi de circulação" — termo × rede, termo × caso, termo × alvo citado no mesmo texto, conta pública (10 mil+) × termo
+    circ = Counter()
+    alvos_m = defaultdict(Counter)
+    for corp, rede, iid, texto, data, conta in fontes(priv):
         k = (corp, rede, str(iid) if iid else norm(texto or "")[:200])
         if k in vistos or not (texto or "").strip():
             continue
@@ -143,11 +160,45 @@ def corpus(priv: Path) -> dict:
             for b in g:
                 if a < b:
                     cooc[(a, b)] += 1
+        if g:
+            alvos = [k for k, rx in ALVOS.items() if rx.search(norm(texto))]
+            caso = str(iid).split(":")[0] if corp.startswith("casos") and ":" in str(iid) else None
+            for x in g:
+                circ[(f"termo:{x}", f"rede:{rede}")] += 1
+                if caso:
+                    circ[(f"termo:{x}", f"caso:{caso}")] += 1
+                for al in alvos:
+                    circ[(f"termo:{x}", f"alvo:{al}")] += 1
+                    alvos_m[x][al] += 1
+                if conta:
+                    circ[(f"conta:{conta}", f"termo:{x}")] += 1
     n = sum(total.values())
     tot_g = Counter()
     for c in por_rede.values():
         tot_g.update(c)
-    return {"textos_lidos": n, "sem_data": sem_data,
+    from redes_caso import _desenho, gexf
+    nos = {}
+    for (a, b), w in circ.items():
+        for k in (a, b):
+            tipo, nome = k.split(":", 1)
+            rot = GRUPOS[nome]["nome"] if tipo == "termo" else nome
+            nos.setdefault(k, {"rotulo": rot, "tipo": tipo, "n": 0})["n"] += w
+    Path("data/termos").mkdir(parents=True, exist_ok=True)
+    gexf(nos, dict(circ), Path("data/termos/rede_circulacao.gexf"))
+    cn = {f"termo:{k}": {"rotulo": v["nome"], "tipo": "termo", "n": 0} for k, v in GRUPOS.items()}
+    for (a, b), w in cooc.items():
+        cn[f"termo:{a}"]["n"] += w
+        cn[f"termo:{b}"]["n"] += w
+    co_ar = {(f"termo:{a}", f"termo:{b}"): w for (a, b), w in cooc.items()}
+    gexf(cn, co_ar, Path("data/termos/rede_coocorrencia.gexf"))
+    rede_c = {"desenho": _desenho(nos, Counter(circ), 110), "total_nos": len(nos), "total_arestas": len(circ),
+              "alvos": {k: dict(v) for k, v in alvos_m.items()},
+              "nota": "Ligações: termo × rede (onde o texto foi lido), termo × caso do Atlas, termo × alvo citado no mesmo texto (Lula, Flávio/Bolsonaro, "
+                      "TSE/urna, STF/Moraes, imprensa, PT/esquerda, direita/bolsonarismo, IA/inteligência artificial) e conta pública (10 mil+ seguidores, "
+                      "publicações dos casos) × termo. Peso = textos. Alvo é co-ocorrência no mesmo texto, não quer dizer que o termo foi dirigido ao alvo."}
+    return {"rede_circulacao": rede_c,
+            "coocorrencias_todas": [{"a": a, "b": b, "textos": v} for (a, b), v in cooc.most_common()],
+            "textos_lidos": n, "sem_data": sem_data,
             "por_corpus_rede": [{"corpus": c, "rede": r, "textos": t, "grupos": dict(por_rede[(c, r)])} for (c, r), t in sorted(total.items())],
             "totais": {k: {"textos": tot_g.get(k, 0), "por_10_mil": round(1e4 * tot_g.get(k, 0) / n, 2) if n else None} for k in GRUPOS},
             "por_mes": [{"mes": m, "textos": c["_textos"], **{k: c.get(k, 0) for k in GRUPOS}} for m, c in sorted(por_mes.items())],

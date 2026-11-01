@@ -4,6 +4,27 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.227 — Termos: Gephi de circulação; caso 024 "Antes de 2030" (primeiro vídeo de Flávio nos EUA) (2026-11-01) 🔜
+
+- **Termos, pergunta (01/11/2026, 17h10):** "essa página me parece pouco explorada, cadê o Gephi de circulação".
+  - `termos_desinformacao.py --corpus` passa a montar a rede de circulação, com ligações:
+    - termo × rede onde o texto foi lido;
+    - termo × caso do Atlas;
+    - termo × alvo citado no mesmo texto (Lula, Flávio/Bolsonaro, TSE e urna, STF e Moraes, imprensa, PT e esquerda, direita e bolsonarismo, IA);
+    - conta pública (10 mil+ seguidores, publicações dos casos) × termo.
+  - Arquivos: `data/termos/rede_circulacao.gexf` e `rede_coocorrencia.gexf`.
+  - Página: rede desenhada, matriz termo × alvo (n e %) e termos usados juntos.
+  - "Alvo" é co-ocorrência no mesmo texto, não direção do termo; a página avisa.
+- **Caso 024, pedido (01/11/2026, 17h16):** "primeiro vídeo Flávio EUA, https://www.instagram.com/p/DfI1WaujjI_/; deixo a manchete por você". Teto US$ 3,00, aprovado às 17h2x.
+  - Manchete: "Antes de 2030". Subtítulo: "De Miami, o primeiro vídeo de Flávio fora do Brasil: a versão dele da saída, o alvo em Moraes e a promessa de voltar antes do fim do mandato de Lula".
+  - Fatos da imprensa: live de cerca de 17 minutos em 31/10; "não em 2030, mas antes"; críticas a Moraes e à apreensão dos passaportes; saída pela Argentina rumo a Miami em 27/10 (El Destape, 31/10). A palavra "golpe" do título daquela reportagem não aparece nas falas citadas, então o Atlas não a usa.
+  - **Coleta:**
+    - Post do Instagram: números, até 400 comentários, transcrição da fala e seguidores do autor, US$ 0,95 (`coletar-caso-instagram.yml`; análise em `build_caso_instagram.py` caso 024).
+    - X, US$ 1,05: busca desde 31/10 e leitura diária até 15/11.
+    - Instagram (buscas) US$ 0,60; Facebook US$ 0,35.
+    - Grátis: TikTok, Trends, notícias e YouTube.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Resultados na próxima entrada.
+
 ## C19.226 — Google Trends: período "campanha e depois" (até hoje) (2026-11-01) 🔜
 
 - **Pergunta (01/11/2026, 17h07):** "o gráfico de Trends parou em 25/10".

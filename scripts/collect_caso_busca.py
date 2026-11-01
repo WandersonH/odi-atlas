@@ -124,6 +124,14 @@ CASOS = {
             "rx_atributo": r"fl[aá]vio",
             "noticias": ["carta Flávio Bolsonaro", "Flávio \"presidente eleito\" carta", "Flávio \"líder do Brasil\"", "carta Flávio versões", "Flávio Bolsonaro carta EUA"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro carta", "Flávio Bolsonaro presidente eleito"], "arquivo_web": []},
+    # 01/11 (17h16): primeiro vídeo de Flávio Bolsonaro nos EUA (live no Instagram, 31/10)
+    "024": {"variantes": ["Flávio Bolsonaro", "Flávio Bolsonaro EUA", "Flávio Bolsonaro 2030", "Flávio Bolsonaro live"],
+            "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
+            "youtube": ["Flávio Bolsonaro vídeo EUA", "Flávio Bolsonaro live Estados Unidos", "Flávio Bolsonaro antes de 2030", "Flávio Bolsonaro Miami"],
+            "desde_yt": "2026-10-31T00:00:00Z", "rx_titulo": r"fl[aá]vio|bolsonaro",
+            "rx_atributo": r"eua|estados unidos|miami|live|v[ií]deo|2030|sa[ií]da|fuga|exterior|moraes",
+            "noticias": ["Flávio Bolsonaro vídeo EUA", "Flávio Bolsonaro live Instagram", "Flávio Bolsonaro antes de 2030", "Flávio Bolsonaro primeiro vídeo Estados Unidos"],
+            "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro vídeo EUA", "Flávio Bolsonaro 2030"], "arquivo_web": []},
     # 01/11 (15h39): greve dos caminhoneiros em 5/11 e vídeos/reportagens antigas recirculadas como atuais
     "023": {"variantes": ["greve dos caminhoneiros", "greve caminhoneiros 5 de novembro", "paralisação caminhoneiros", "caminhoneiros"],
             "controles": ["diesel"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],
