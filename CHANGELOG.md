@@ -22,6 +22,11 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
     - `casos-busca.yml` passa para 07h17 UTC e `caso-antigo-atual.yml` para 07h47 UTC, logo depois da renovação da cota (07h UTC).
     - `debate-youtube.yml` vira semanal (debates encerrados).
     - O caso 019 faz as 20 buscas (~2.000 unidades) em dias alternados; nos outros dias só atualiza números e comentários.
+- **Complemento por dia (run 41340618304):** 2018 com 427 itens em 19 dias; 2022 com 432 em 22 dias. Custo US$ 0,0049; total das épocas US$ 0,1285 de 0,30.
+  - Agora a amostra da época vai de 18/05 a 05/06/2018 (1.247 publicações pertinentes) e de 30/10 a 20/11/2022 (1.025).
+  - Tom no X: 2018 com 28,9% negativo; 2022 com 37,3%; agora 31,2%.
+  - Palavras típicas de 2022: "STF", "#grevegeral", "GLO", "#censuradotse", "FFAA", "fraude".
+  - A curva e o pico da época continuam mostrando a amostra, não o volume real. A página agora avisa isso em cada época.
 - **Teste:** `python -m unittest discover -s tests -v` → OK.
 
 ## C19.224 — Caso 023 "Greve dos caminhoneiros 5/11" (época × agora) e YouTube pendente dos casos (2026-11-01) 🔜

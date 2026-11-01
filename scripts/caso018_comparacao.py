@@ -164,6 +164,10 @@ def main(argv=None) -> int:
                "instagram_agora": resumo([r for r in ag if r["rede"] == "instagram"]), "facebook_agora": resumo([r for r in ag if r["rede"] == "facebook"]),
                "epoca_instagram_facebook": "⛔ sem busca retroativa no Instagram e no Facebook",
                "janela_epoca": janelas.get(ep), "filtro_pertinencia": e["pertinente"], "titulo": e.get("titulo")}
+        if (priv / f"x_epoca_{ep}_dias.jsonl.gz").exists():
+            dep["aviso_epoca"] = ("Amostra da época = busca única no limite (as mais recentes, concentradas nos últimos dias da janela) + uma quantidade "
+                                  "fixa por dia (as mais relevantes). A curva e o pico da época mostram a amostra, não o volume real daquela época (⛔ não "
+                                  "informado pela plataforma).")
         if f.exists():
             dep["x_epoca"]["respostas_entre_publicacoes"] = sum(1 for r in epoca if r.get("resposta"))
             contas_a = {(r["conta"] or "").lower() for r in epoca}
