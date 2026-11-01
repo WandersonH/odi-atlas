@@ -19,7 +19,21 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - **Origem:** nenhuma rede informa o país de quem posta, então a origem será inferida por sinais declarados (análise a seguir). O universo do X é ⛔: a plataforma não informa o total de posts com a hashtag.
 - **Contexto (fonte):** a Revista Fórum relata o uso da hashtag depois da chegada de Flávio a Miami, na quarta-feira (28/10). A matéria não traz números.
 - **Teste:** `python -m unittest discover -s tests` OK (265 testes).
-- **⛔ Pendente:** a coleta (as runs entram na próxima entrada), a análise de origem e a seção da página.
+- **Análise de origem** (`scripts/caso_origem.py`, gera `data/casos/025/origem.json`):
+  - **Sinais usados:** língua do texto, língua da bio, bandeiras e lugares escritos no nome, na bio e no campo de localização do perfil no X.
+  - **Classes:** Brasil · Brasil + outro país · outro país · outra língua com país não declarado · sem sinal.
+  - **Resultados:** por publicações e por visualizações, por rede, por dia, por língua, por país declarado e pelas contas com 10 mil+ seguidores.
+  - **Universo × amostra:** sai dos manifestos.
+  - Roda no passo de agregados de `casos.yml` quando o privado tem o caso.
+- **Regras revisadas numa amostra de bios do caso 014:**
+  - Davam falso lugar e foram retirados ou restringidos: "usa" (o verbo), "Israel" (declaração política), Barcelona, Roma, Porto, Geórgia, Carolina, "pará" sem acento, e Santos, Natal, Vitória, Salvador e Belém.
+  - Bandeiras 🇺🇸 e 🇮🇱 ao lado da 🇧🇷 não mudam a classe. São símbolo político comum e ficam contadas à parte.
+- **Teste local nos dados do caso 014** (só para validar o código; o arquivo não foi publicado): 8.866 publicações. Pela origem provável, 89,3% Brasil, 5,7% Brasil + outro país e 0,1% outro país. 7.121 de 13.357 itens brutos do X têm o campo de localização preenchido.
+- **Página:** nova seção `caso025` com a função `montarOrigem025`.
+  - Mostra barras por hashtag, linha do tempo diária, tabelas por rede, língua e país, as contas com 10 mil+ seguidores, universo × amostra e o método.
+  - Também traz o Trends por país e o YouTube por país declarado do canal.
+  - Teste: renderizada no Playwright com os dados de teste, sem erros de JavaScript.
+- **⛔ Pendente:** as runs da coleta (carga, complemento do X e busca), que entram na próxima entrada.
 
 ## C19.233 — Transcrição do caso 024 publicada; leitura diária do X funcionando; caso 014 com a nova tag (2026-11-01) ⚠️
 
