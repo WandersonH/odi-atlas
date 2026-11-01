@@ -142,9 +142,11 @@ def classe(s: dict) -> str:
     return "sem sinal"
 
 
-def lados(texto: str, termo: str) -> list[str]:
+def lados(texto: str, termo: str, rede: str = "x") -> list[str]:
     out = [k for k, rx in LADOS.items() if rx.search(texto or "")]
-    if not out:  # o texto pode não repetir a hashtag (busca casou com outra grafia): vale a busca que trouxe o item
+    # sem a hashtag no texto, vale a busca que trouxe o item só quando a busca garante o termo (X, feed da hashtag no Instagram);
+    # a busca de reels por frase devolve vídeos parecidos sem o termo (01/11/2026: reels de 26/10, antes da hashtag existir)
+    if not out and (rede == "x" or (termo or "").startswith("#")):
         out = [k for k, rx in LADOS.items() if rx.search(termo or "") or k.lower() in (termo or "").lower()]
     return out or ["sem a hashtag no texto"]
 
@@ -205,7 +207,7 @@ def main(argv: list[str]) -> int:
         s = sinais(it["rede"], raw, it["texto"])
         seg = int(it["seguidores"]) if str(it["seguidores"]).isdigit() else None
         rt = bool(raw.get("isRetweet")) or (it["rede"] == "x" and (it["texto"] or "").startswith("RT @"))
-        for lado in lados(it["texto"], it["termo"]):
+        for lado in lados(it["texto"], it["termo"], it["rede"]):
             regs.append({"rede": it["rede"], "conta": it["conta"], "seguidores": seg, "lado": lado, "dia": dia_brt(it["publicado_em"] or ""),
                          "visualizacoes": int(it["visualizacoes"]) if str(it["visualizacoes"]).isdigit() else 0, "classe": classe(s),
                          "lingua_texto": s["lingua_texto"] or "não identificada",
@@ -243,11 +245,15 @@ def main(argv: list[str]) -> int:
             "por_dia": [{"dia": d, **{c: sum(1 for r in rl if r["dia"] == d and r["classe"] == c) for c in CLASSES}} for d in dias],
             "contas_10mil": [{"rede": k[0], "conta": k[1], "publicacoes": n, "seguidores": info[k][0], "classe": info[k][1], "pais_fora": info[k][2]}
                              for k, n in top.most_common(25)],
-            "visualizacoes_total": sum(r["visualizacoes"] for r in rl),
-            "maior_alcance": [{"rede": r["rede"], "conta": r["conta"] if (r["seguidores"] or 0) >= MIN_PUBLICO else None, "seguidores": r["seguidores"],
-                               "visualizacoes": r["visualizacoes"], "pct_visualizacoes": pct(r["visualizacoes"], sum(x["visualizacoes"] for x in rl)),
-                               "classe": r["classe"], "lingua_texto": r["lingua_texto"], "dia": r["dia"], "url": r["url"] if (r["seguidores"] or 0) >= MIN_PUBLICO else None}
-                              for r in sorted(rl, key=lambda r: r["visualizacoes"], reverse=True)[:10]],
+            # visualizações não se somam entre redes (X conta exibições; Instagram, reproduções): tudo por rede
+            "visualizacoes_por_rede": {rd: sum(r["visualizacoes"] for r in rl if r["rede"] == rd) for rd in sorted({r["rede"] for r in rl})},
+            "maior_alcance": {rd: [{"conta": r["conta"] if (r["seguidores"] or 0) >= MIN_PUBLICO else None, "seguidores": r["seguidores"],
+                                    "visualizacoes": r["visualizacoes"],
+                                    "pct_visualizacoes": pct(r["visualizacoes"], sum(x["visualizacoes"] for x in rl if x["rede"] == rd)),
+                                    "classe": r["classe"], "lingua_texto": r["lingua_texto"], "dia": r["dia"],
+                                    "url": r["url"] if (r["seguidores"] or 0) >= MIN_PUBLICO else None}
+                                   for r in sorted([x for x in rl if x["rede"] == rd], key=lambda r: r["visualizacoes"], reverse=True)[:8] if r["visualizacoes"]]
+                              for rd in sorted({r["rede"] for r in rl})},
         }
     # universo × amostra (regra 9): o X não informa o total; os manifestos dizem quanto foi pedido e lido por busca
     uni = []

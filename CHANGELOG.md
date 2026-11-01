@@ -4,6 +4,36 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.236 — Caso 025: frases no Instagram e no Facebook, Trends por país e visualizações separadas por rede (2026-11-01) ⚠️
+
+- **Frases** (run 41353513061, modo `frases`):
+  - Instagram, reels: "DeportTheBolsonaros" 36 · "deport Bolsonaro" 29 · "Brazilians stand with Flavio" 25 · "deportem os Bolsonaros" 18.
+  - Instagram, feed da hashtag: #deportthebolsonaros 43 · #braziliansstandwithflavio 37 · #brasiliansstandwithflavio 0.
+  - Facebook: "deport Bolsonaro" 32 · "BrasiliansStandWithFlavio" 22 · "DeportTheBolsonaros" 18.
+  - Todos são itens no período.
+- **Correção:** a busca de reels por frase devolve vídeos parecidos sem o termo, entre eles um reel de 26/10, antes de a hashtag existir, com 8,8 milhões de reproduções.
+  - Sem a hashtag ou a frase no texto, o item só entra num lado quando a busca garante o termo: no X ou no feed da hashtag do Instagram.
+  - Os outros ficam em "sem a hashtag no texto" (43 itens) e não entram nos percentuais dos lados.
+- **Correção:** as visualizações não se somam mais entre redes. No X são exibições do post e no Instagram, reproduções do vídeo. A soma tinha levado a parcela "Brasil" de 13,8% para 81,9%.
+  - O bloco de maior alcance agora é por rede.
+  - A tabela principal mostra o percentual das exibições do X.
+- **Origem, nova leitura local do privado** (o arquivo público é regenerado pelo modo `so-analises`):
+  - **#DeportTheBolsonaros:** 5.458 publicações de 2.293 contas.
+    - Por publicações: 65,4% Brasil · 1,4% Brasil + outro país · 2,4% outro país · 6,7% outra língua · 24,1% sem sinal.
+    - Exibições no X (2.560.595): 13,8% Brasil · 69,3% outro país · 15,5% outra língua. Um post de @isaiahrmartin (perfil que declara Maryland) tem 68,7% delas.
+    - Reproduções no Instagram (22.987.745): 81,2% Brasil.
+  - **#BrasiliansStandWithFlavio:** 1.044 publicações de 396 contas.
+    - Por publicações: 53,4% Brasil · 5,1% Brasil + outro país · 1,8% outro país · 11,7% outra língua · 28,1% sem sinal.
+    - Reproduções no Instagram (4.833.264): 99,4% Brasil.
+- **Trends no mundo, termo único** (casos-busca, run disparada depois de C19.235):
+  - "Flavio Bolsonaro" nos últimos 7 dias, 20 países com dado: Brasil 100 · Portugal 19 · Uruguai 15 · Argentina 11 · Paraguai 10.
+  - "deport Bolsonaro" nos últimos 7 dias: só Brasil 100 e Estados Unidos 5.
+  - Nos últimos 30 dias, "deport Bolsonaro" dá Brunei 100 e Maurício 56: volume ínfimo, e a página usa a janela de 7 dias.
+- **⛔ YouTube:** HTTP 429.
+- **Teste:**
+  - `python -m unittest discover -s tests` OK.
+  - Playwright com o `origem.json` local: sem erros de JavaScript, depois de corrigir `rotRede` usado antes da declaração.
+
 ## C19.235 — Caso 025: primeira leitura (2026-11-01) ⚠️
 
 - **Coleta:**
