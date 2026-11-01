@@ -4,15 +4,30 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.233 — Transcrição do caso 024: instalação corrigida (2026-11-01) ⚠️
+## C19.233 — Transcrição do caso 024 publicada; leitura diária do X funcionando; caso 014 com a nova tag (2026-11-01) ⚠️
 
-- **Falhas anteriores:** a run 41349140593 falhou no passo "Dependências": o pin `av==14.4.0` não instalava. Na run 41348420721 o erro era o PyAV ao ler o áudio.
-- **Correção:**
-  - O pin do `av` foi removido. O áudio já é decodificado pelo ffmpeg (PCM 16 kHz), então o PyAV não é mais usado na leitura.
-  - A saída do pip agora aparece nas anotações.
-  - A gravação no privado só roda se o clone existir.
-- **Teste:** `python -m unittest discover -s tests` OK (local).
-- **⛔ Pendente:** a nova execução de `transcrever-caso.yml` (caso 024, medium) e a publicação de `data/casos/024/transcricao.json`.
+- **✅ Transcrição do caso 024** (primeiro vídeo de Flávio nos EUA).
+  - Run 41349426930.
+  - Vídeo baixado do Instagram pelos links do CDN da coleta (`arquivar_midia_caso.py`).
+  - faster-whisper 1.1.1, modelo medium int8, português, filtro de voz.
+  - Duração 16:59, 1.014,4 s de fala, 2.878 palavras, 277 trechos.
+  - Saída em `data/casos/024/transcricao.json`, com o sha256 do áudio e do vídeo. A srt e o json completo estão no privado.
+  - A frase da manchete foi conferida no trecho de 15:32: "eu não tô falando de 2030 não, eu tô falando de antes disso".
+- **Por que falhava:**
+  - Run 41348420721: o PyAV dava erro ao ler o áudio.
+  - Run 41349140593: o passo "Dependências" falhou por causa do pin `av==14.4.0`.
+  - **Correção:** o pin foi removido, já que o áudio agora vem do ffmpeg em PCM de 16 kHz. A saída do pip passou a aparecer nas anotações, e a gravação no privado só roda quando o clone existe.
+- **✅ Leitura diária do X (correção do C19.232):** a run 41349425698 do modo `diario` terminou com sucesso.
+  - Caso 014: 162 itens nesta coleta, 8.866 acumulados.
+  - As anotações mostram só cerca de 10 linhas, então os outros casos estão nos manifestos.
+- **Caso 014, tag "não contrate quem odeia os empresários":**
+  - Facebook: 41 itens (run 41348426366).
+  - Instagram: 0 itens (reels r5 e hashtag).
+  - X: 28 itens, dos 447 pedidos (run 41349092639).
+- **⛔ YouTube do caso 014** (casos-busca 41348915980): HTTP 429, cota diária esgotada. Fica para depois da renovação, às 07:00 UTC.
+- **Teste:**
+  - `python -m unittest discover -s tests` OK.
+  - Página aberta localmente no Playwright, seção #caso024: o bloco da transcrição aparece, sem erros de JavaScript.
 
 ## C19.232 — Leitura diária do X dos casos nunca rodou (bash -e); casos 021 e 014: rodadas novas (2026-11-01) ⚠️
 
