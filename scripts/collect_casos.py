@@ -160,7 +160,9 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
             return [(f"#{t}", ATOR["instagram"], {"hashtags": [t], "resultsType": "posts", "resultsLimit": n}) for t in caso.get("hashtags_instagram", [])] + \
                    [(f"reels: {q}", ATOR["instagram_reels"], {"query": q, "maxPages": max(1, -(-n // 12))}) for q in caso.get("buscas_instagram", [])]
         if rede == "facebook":
-            return [(q, ATOR["facebook"], {"query": q, "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": False}) for q in caso.get("buscas_facebook", [])]
+            # rodada N (01/11/2026): só a lista da rodada, sem repetir as frases já coletadas
+            fb = caso.get("buscas_facebook" + suf, []) if suf else caso.get("buscas_facebook", [])
+            return [(q, ATOR["facebook"], {"query": q, "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": False}) for q in fb]
         if rede == "kwai":
             return [(q, ATOR["kwai"], {"searchTerms": [q], "expandSearchWithHashtag": False, "maxItems": n, "postedAfter": d}) for q in caso.get("buscas_kwai", [])]
         if rede != "x" or not caso.get("_so_complemento"):

@@ -4,6 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.229 — Caso 014: nova tag "não contrate quem odeia os empresários" (2026-11-01) 🔜
+
+- **Pedido (01/11/2026, 17h33):** "Demita um petista tem uma nova tag: não contrate quem odeia os empresários". Teto do caso sobe de US$ 6,10 para **US$ 6,80**, autorizado às 17h3x.
+  - Novos tetos por rede: X 2,466; Instagram 3,02; Facebook 1,314. O Facebook já tinha gasto 1,1639.
+- **Coleta (rodada 5, desde 25/10):**
+  - X: frase com variações e hashtags. A frase entra também na leitura diária até 15/11.
+  - Instagram: #naocontratequemodeiaosempresarios e busca de reels.
+  - Facebook: busca da frase.
+  - Grátis: TikTok, Google Notícias e Trends. No Trends, grupo próprio: a nova tag × "demita um petista" × "boicote petista", em 7 e 30 dias.
+- **Ajustes no código:**
+  - Novo modo `rodada5` em `casos.yml` (X, Instagram e Facebook).
+  - No modo "frases" com rodada, o Facebook usa só a lista da rodada (`buscas_facebook_rN`) e não repete as frases já coletadas.
+- **Teste:** `python -m unittest discover -s tests -v` → OK. Resultados na próxima entrada.
+
 ## C19.228 — Caso 024: post coletado e transcrição da live; caso 021: "movimento separatista" (2026-11-01) 🔜
 
 - **Caso 024, post do Instagram (run 41346334746):**

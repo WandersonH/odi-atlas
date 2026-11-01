@@ -95,9 +95,13 @@ CASOS = {
             # 30/10/2026, 22h45: "vamos adicionar aqui as buscas relativas a assédio eleitoral" — grupo próprio, com janela 2022 → 2026
             "grupos_extra": {"assedio": {"titulo": "Buscas sobre assédio eleitoral",
                                          "termos": ["assédio eleitoral", "denunciar assédio eleitoral", "demitido por votar", "denúncia MPT", "assédio eleitoral no trabalho"],
-                                         "janelas": ["now 7-d", "today 1-m", "today 12-m", "2022-08-01 2026-10-31"]}},
+                                         "janelas": ["now 7-d", "today 1-m", "today 12-m", "2022-08-01 2026-10-31"]},
+                            # 01/11/2026, 17h33: nova tag do caso
+                            "nova_tag": {"titulo": "\"Não contrate quem odeia os empresários\" × \"demita um petista\"",
+                                         "termos": ["não contrate quem odeia os empresários", "demita um petista", "boicote petista"],
+                                         "janelas": ["now 7-d", "today 1-m"]}},
             "rx_atributo": r"petist|\bpt\b|lula|esquerd|direita|elei|vot",
-            "noticias": ["\"demita um petista\"", "boicote empresas petistas", "demitido por votar em Lula", "assédio eleitoral MPT", "denúncias de assédio eleitoral", "assédio eleitoral demissão", "listas de empresas petistas", "demissão eleitor petista",
+            "noticias": ["\"demita um petista\"", "\"não contrate quem odeia os empresários\"", "boicote empresas petistas", "demitido por votar em Lula", "assédio eleitoral MPT", "denúncias de assédio eleitoral", "assédio eleitoral demissão", "listas de empresas petistas", "demissão eleitor petista",
                          "\"professor petista\"", "\"direita apoia direita\""],
             "janela_noticias": "7d", "checagens": ["demita um petista", "lista empresas petistas boicote"], "arquivo_web": []},
     # 27/10 (22h45): "Onde está Flávio?" e "Flávio fugiu" depois do 2º turno; Trends de 12 meses para comparar com jul/2025 e mai/2026
