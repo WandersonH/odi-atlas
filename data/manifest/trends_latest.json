@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-11-01T17:14:28Z",
+  "run_started_utc": "2026-11-01T20:09:23Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -9,7 +9,8 @@
       "now 1-d",
       "now 7-d",
       "today 3-m",
-      "eleitoral"
+      "eleitoral",
+      "campanha_e_depois"
     ],
     "pausa_segundos": 5,
     "grupos": [
@@ -87,7 +88,8 @@
       "periodos": [
         "eleitoral",
         "now 7-d",
-        "now 1-d"
+        "now 1-d",
+        "campanha_e_depois"
       ],
       "nota": "Consultas e assuntos relacionados de cada candidato (listas 'principais' e 'em alta'), como etapa exploratória do método: revelam como o público formula a busca e que termos associa ao candidato, e orientam as strings de busca das coletas (ex.: comentários, influenciadores). 'Em alta' mostra o crescimento no período ('Aumento repentino' = mais de 5.000%)."
     },
@@ -121,12 +123,21 @@
         "rotulo": "2º turno",
         "de": "2026-10-05",
         "ate": "2026-10-25"
+      },
+      {
+        "id": "pos",
+        "rotulo": "Depois do 2º turno",
+        "de": "2026-10-26",
+        "ate": "2026-12-31"
       }
     ],
     "ordem_nota": "Ordem fixa em todo o Atlas: Lula primeiro por ser o candidato à reeleição (atual presidente); não indica preferência. A ordem dos termos não altera os índices do Google Trends (a escala é comum à consulta).",
     "notas": [
       "31/10/2026: depois da eleição o Google passou a descrever o tópico de Flávio Bolsonaro como 'Senador' (não mais candidato a Presidente) e a coleta parou em 30/10 (tópico não encontrado). Aceita 'Presidente' ou 'Senador'; o manifesto registra o tipo e o identificador (mid) usados em cada leitura."
-    ]
+    ],
+    "periodo_campanha_e_depois": {
+      "nota": "01/11/2026, pedido do responsável (\"o gráfico de trends parou em 25/10\"): das convenções (20/07) até o dia da coleta, por dia, incluindo o pós-eleição. O 'período eleitoral' continua fixo em 20/07–25/10."
+    }
   },
   "aviso_metodologico": "Valores 0-100 relativos dentro de cada consulta (grupo x período). Não são volumes; não compare entre consultas diferentes.",
   "consultas": [
@@ -157,7 +168,7 @@
       "geo": "BR",
       "serie_pontos": 180,
       "uf_linhas": 27,
-      "relacionados_linhas": 60,
+      "relacionados_linhas": 73,
       "status": "ok"
     },
     {
@@ -187,7 +198,7 @@
       "geo": "BR",
       "serie_pontos": 169,
       "uf_linhas": 27,
-      "relacionados_linhas": 79,
+      "relacionados_linhas": 91,
       "status": "ok"
     },
     {
@@ -245,6 +256,36 @@
       "janela_trends": "2026-07-20 2026-10-25",
       "geo": "BR",
       "serie_pontos": 98,
+      "uf_linhas": 27,
+      "relacionados_linhas": 100,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Senador"
+        }
+      ],
+      "periodo": "campanha_e_depois",
+      "janela_trends": "2026-07-20 2026-11-01",
+      "geo": "BR",
+      "serie_pontos": 105,
       "uf_linhas": 27,
       "relacionados_linhas": 100,
       "status": "ok"
@@ -454,6 +495,57 @@
       "status": "ok"
     },
     {
+      "grupo": "primeiro_turno_5_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro",
+        "Augusto Cury",
+        "Renan Santos",
+        "Ronaldo Caiado"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Senador"
+        },
+        {
+          "rotulo": "Augusto Cury",
+          "consulta": "/m/07s813b",
+          "modo": "topico",
+          "topico_titulo": "Augusto Cury",
+          "topico_tipo": "Médico e psiquiatra brasileiro"
+        },
+        {
+          "rotulo": "Renan Santos",
+          "consulta": "Renan Santos",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Ronaldo Caiado",
+          "consulta": "/m/04fw8x8",
+          "modo": "topico",
+          "topico_titulo": "Ronaldo Caiado",
+          "topico_tipo": "Candidato a presidente do Brasil"
+        }
+      ],
+      "periodo": "campanha_e_depois",
+      "janela_trends": "2026-07-20 2026-11-01",
+      "geo": "BR",
+      "serie_pontos": 105,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
       "grupo": "segundo_turno_palavras",
       "termos": [
         "Lula",
@@ -552,9 +644,34 @@
       "serie_pontos": 98,
       "uf_linhas": 27,
       "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_palavras",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "Lula",
+          "modo": "palavra"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "Flávio Bolsonaro",
+          "modo": "palavra"
+        }
+      ],
+      "periodo": "campanha_e_depois",
+      "janela_trends": "2026-07-20 2026-11-01",
+      "geo": "BR",
+      "serie_pontos": 105,
+      "uf_linhas": 27,
+      "status": "ok"
     }
   ],
   "blocked": [],
-  "run_finished_utc": "2026-11-01T17:18:50Z",
+  "run_finished_utc": "2026-11-01T20:14:47Z",
   "status": "ok"
 }
