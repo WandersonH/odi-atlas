@@ -163,7 +163,8 @@ def classes(textos: list[str], anos: list[str]) -> dict | None:
         return None
     X, voc = cr.matriz(textos)
     n_at = int((X.sum(1) > 0).sum())
-    rot, arvore = cr.chd(X, k=6, min_classe=max(cr.MIN_CLASSE, int(0.05 * n_at)))
+    mc = max(cr.MIN_CLASSE, int(0.05 * n_at))
+    rot, arvore = cr.chd(X, k=6, min_classe=mc)
     ok = rot > 0
     if not ok.any():
         return None
@@ -178,6 +179,7 @@ def classes(textos: list[str], anos: list[str]) -> dict | None:
                     "formas": [[voc[j], round(float(ch[j]), 1)] for j in idx],
                     "por_ano": {a: int((m & (anos == a)).sum()) for a in sorted(set(anos.tolist()))}})
     return {"comentarios": len(textos), "classificados": int(ok.sum()), "pct_classificados": round(100 * ok.sum() / len(textos), 1), "classes": out,
+            "arvore": arvore, "min_classe": mc, "aproveitamento": cr.aproveitamento(rot, len(textos)),
             "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados "
                     "por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado."}
 
