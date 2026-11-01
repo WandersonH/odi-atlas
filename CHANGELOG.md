@@ -36,8 +36,13 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - `python -m unittest discover -s tests` OK.
   - Página renderizada no Playwright com o `origem.json` gerado localmente, sem erros de JavaScript.
   - O `origem.json` público é regenerado pelo modo `so-analises` (próxima run).
+- **Trends no mundo** (casos-busca, run 41353316707):
+  - Na consulta conjunta dos 4 termos, "Flavio Bolsonaro" tem 100% da divisão em todos os países com dado: 6 países nos últimos 7 dias, 4 nos últimos 30.
+  - "deport Bolsonaro", "Flávio Bolsonaro Miami" e "DeportTheBolsonaros" ficam com 0: busca-se o nome, não a hashtag.
+  - Como o mapa de uma consulta com vários termos só divide cada país entre eles, entram duas consultas de termo único ("Flavio Bolsonaro" e "deport Bolsonaro") para medir o interesse por país. A página usa só essas duas.
+- ⛔ YouTube: HTTP 429 (cota diária esgotada).
 - **⛔ Pendente:**
-  - Trends no mundo e YouTube: run de casos-busca. O YouTube tende a dar HTTP 429 até a renovação da cota, às 07:00 UTC.
+  - Trends de termo único e YouTube: nova run de casos-busca. O YouTube tende a dar HTTP 429 até a renovação da cota, às 07:00 UTC.
   - Buscas por frase no Instagram e no Facebook (modo `frases`): ainda não rodadas.
   - Revisão humana das classes.
 

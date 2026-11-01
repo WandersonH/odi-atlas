@@ -132,6 +132,9 @@ CASOS = {
     # Trends no mundo inteiro (geo vazio), com o mapa por país em cada janela; YouTube sem região nem língua.
     "025": {"variantes": ["deport Bolsonaro", "Flávio Bolsonaro Miami", "Flavio Bolsonaro", "DeportTheBolsonaros"],
             "controles": ["Bolsonaro"], "janelas": ["now 7-d", "today 1-m"], "geo_trends": "", "paises_trends": True,
+            # com vários termos, o mapa por país dá a divisão entre os termos; com um termo só, o interesse por país (0 a 100)
+            "grupos_extra": {"nome_mundo": {"titulo": "\"Flavio Bolsonaro\" no mundo (interesse por país)", "termos": ["Flavio Bolsonaro"]},
+                             "deport_mundo": {"titulo": "\"deport Bolsonaro\" no mundo (interesse por país)", "termos": ["deport Bolsonaro"]}},
             "youtube": ["DeportTheBolsonaros", "deport Bolsonaro", "deport Flavio Bolsonaro Miami", "Brazilians stand with Flavio", "deportem os Bolsonaros"],
             "youtube_mundo": True,
             "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"deport|bolsonar|fl[aá]vio",
