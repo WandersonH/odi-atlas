@@ -30,7 +30,9 @@ jobs:
       - name: Dependências
         run: |
           sudo apt-get -qq update && sudo apt-get -qq install -y ffmpeg >/dev/null
-          pip install -q faster-whisper==1.1.1 requests==2.32.3 "av==14.4.0"
+          rc=0; pip install -q faster-whisper==1.1.1 requests==2.32.3 numpy > p.txt 2>&1 || rc=$?  # 01/11/2026: o pin av==14.4.0 quebrava a instalação; o áudio agora vem do ffmpeg
+          tail -n 4 p.txt | while IFS= read -r l; do echo "::warning title=pip::$(echo "$l" | cut -c1-300)"; done
+          [ $rc -eq 0 ] || exit $rc
           python -c "import faster_whisper; print('faster-whisper', faster_whisper.__version__)" 2>&1 | tail -n 3 | while IFS= read -r l; do echo "::warning title=Importação::$l"; done
       - uses: actions/cache@v4
         with:
@@ -52,7 +54,7 @@ jobs:
           grep -v "^ *$" t.txt | tr '\r' '\n' | grep -v "^ *$" | tail -n 4 | while IFS= read -r l; do echo "::warning title=Transcrição::$(echo "$l" | cut -c1-300)"; done
           exit $rc
       - name: Gravar no repositório privado (sem o vídeo, que passa de 100 MB)
-        if: always()
+        if: always() && steps.interno.outputs.dir != ''
         run: |
           cd "${{ steps.interno.outputs.dir }}"
           git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"

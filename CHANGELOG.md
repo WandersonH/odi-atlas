@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.233 — Transcrição do caso 024: instalação corrigida (2026-11-01) ⚠️
+
+- **Falhas anteriores:** a run 41349140593 falhou no passo "Dependências": o pin `av==14.4.0` não instalava. Na run 41348420721 o erro era o PyAV ao ler o áudio.
+- **Correção:**
+  - O pin do `av` foi removido. O áudio já é decodificado pelo ffmpeg (PCM 16 kHz), então o PyAV não é mais usado na leitura.
+  - A saída do pip agora aparece nas anotações.
+  - A gravação no privado só roda se o clone existir.
+- **Teste:** `python -m unittest discover -s tests` OK (local).
+- **⛔ Pendente:** a nova execução de `transcrever-caso.yml` (caso 024, medium) e a publicação de `data/casos/024/transcricao.json`.
+
 ## C19.232 — Leitura diária do X dos casos nunca rodou (bash -e); casos 021 e 014: rodadas novas (2026-11-01) ⚠️
 
 - **⛔ Leitura diária do X (casos 014, 016 a 024):** não há nenhum manifesto de leitura diária desde que foi configurada (29/10).
