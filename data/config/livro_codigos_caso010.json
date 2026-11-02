@@ -1,0 +1,254 @@
+{
+ "titulo": "Livro de códigos — caso 010: brasileiros nos perfis de Donald Trump e Marco Rubio (24 a 27/10/2026) (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação ou comentário (texto, sem links); codificação por presença/ausência, várias categorias por unidade. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "A alegação de fraude, o pedido de intervenção estrangeira e o ataque às instituições ficam no bloco da incitação; a crítica de soberania, a defesa do resultado e o humor ficam na reação; insulto e notícia valem para qualquer lado. Português não prova nacionalidade. Nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede/fonte × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto (na ordem da lista).",
+ "blocos": {
+  "incitacao": [
+   "alegacao_fraude",
+   "pedido_intervencao",
+   "ataque_instituicoes"
+  ],
+  "reacao": [
+   "critica_soberania",
+   "defende_resultado",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "alegacao_fraude": {
+   "nome": "Alegação de fraude ou golpe eleitoral",
+   "definicao": "Afirma que a eleição foi fraudada, roubada ou que houve golpe nas urnas (em português ou inglês).",
+   "indicadores": [
+    "fraude*",
+    "fraudad*",
+    "fraud",
+    "fraude eleitoral",
+    "eleicao roubada",
+    "eleicoes roubadas",
+    "roubaram",
+    "roubados",
+    "votos roubados",
+    "rigged",
+    "stolen",
+    "stolen election",
+    "golpe nas eleicoes",
+    "golpe nas urnas",
+    "golpe eleitoral",
+    "golpe no brasil",
+    "dando um golpe",
+    "deu o golpe",
+    "deram o golpe",
+    "golpe da esquerda",
+    "urnas fraudadas",
+    "urna fraudada",
+    "manipulacao",
+    "manipularam",
+    "coup",
+    "anulacao da eleicao",
+    "anulacao das eleicoes",
+    "#anulacaodaeleicaoja"
+   ],
+   "excluir_trechos": [
+    "nao houve fraude",
+    "sem fraude",
+    "nao teve fraude",
+    "nao existe fraude",
+    "fraude e o",
+    "golpe e o",
+    "golpe de 8 de janeiro",
+    "golpista*"
+   ]
+  },
+  "pedido_intervencao": {
+   "nome": "Pedido de ajuda, sanção ou intervenção estrangeira",
+   "definicao": "Pede aos EUA, a Trump ou a Rubio ajuda, sanções, tarifas, Magnitsky, intervenção ou \"salvação\" do Brasil.",
+   "indicadores": [
+    "help",
+    "help brazil",
+    "save brazil",
+    "sos",
+    "socorro",
+    "nos ajude",
+    "ajude o brasil",
+    "ajudem o brasil",
+    "ajude nos",
+    "salve o brasil",
+    "salvem o brasil",
+    "liberte o brasil",
+    "libertem o brasil",
+    "sancao",
+    "sancoes",
+    "sanction*",
+    "magnitsky",
+    "intervencao",
+    "intervenha",
+    "intervene",
+    "precisamos de voces",
+    "precisamos de ajuda",
+    "we need",
+    "venha nos",
+    "nao nos abandone"
+   ],
+   "excluir_trechos": []
+  },
+  "ataque_instituicoes": {
+   "nome": "Ataque ao STF, ao TSE e acusação de ditadura ou censura",
+   "definicao": "Desqualifica STF, TSE ou ministros; fala em ditadura, censura, regime ou \"advogado do Lula\" no tribunal.",
+   "indicadores": [
+    "ditadura",
+    "ditador*",
+    "dictator*",
+    "dictatorship",
+    "censura",
+    "censorship",
+    "regime",
+    "xandao",
+    "advogado do lula",
+    "ex advogado",
+    "ditadura do judiciario",
+    "ditadura da toga",
+    "supremo ditador",
+    "tse fraudou",
+    "stf fraudou",
+    "tribunal de excecao",
+    "juristocracia",
+    "prorrogou o horario",
+    "prorrogou a votacao",
+    "prorrogou as eleicoes",
+    "trava as eleicoes"
+   ],
+   "excluir_trechos": [
+    "ditadura militar"
+   ]
+  },
+  "critica_soberania": {
+   "nome": "Crítica de soberania (\"traidor\", \"vira-lata\")",
+   "definicao": "Critica quem pede interferência estrangeira: traição à pátria, entreguismo, complexo de vira-lata, \"quintal dos EUA\".",
+   "indicadores": [
+    "soberania",
+    "traidor*",
+    "traidores da patria",
+    "traicao a patria",
+    "entreguista*",
+    "vira lata",
+    "complexo de vira lata",
+    "quintal",
+    "colonia",
+    "lambe bota*",
+    "lambe botas",
+    "capacho*",
+    "patriota de",
+    "patriotario*",
+    "bandeira dos eua",
+    "bandeira americana",
+    "pedindo intervencao"
+   ],
+   "excluir_trechos": []
+  },
+  "defende_resultado": {
+   "nome": "Defesa do resultado e da democracia",
+   "definicao": "Defende a lisura das urnas ou o resultado, diz que o outro lado perdeu, chama de golpistas os que contestam.",
+   "indicadores": [
+    "perderam",
+    "aceita que doi menos",
+    "chora",
+    "chorando",
+    "choro",
+    "eleicao limpa",
+    "urnas seguras",
+    "urna e segura",
+    "nao houve fraude",
+    "sem fraude",
+    "democracia venceu",
+    "respeitem o resultado",
+    "resultado das urnas",
+    "8 de janeiro",
+    "mal perdedor",
+    "nao sabe perder"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, ironia ou deboche na publicação (o alvo do humor é decidido pelo codificador humano).",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "huahua*",
+    "ironia",
+    "piada",
+    "palhacada"
+   ],
+   "excluir_trechos": []
+  },
+  "insulto_ofensa": {
+   "nome": "Insulto ou ofensa (qualquer alvo)",
+   "definicao": "Xingamento ou termo de desprezo contra qualquer alvo (Trump, Rubio, Lula, ministros, eleitores, outros comentaristas).",
+   "indicadores": [
+    "filho da puta",
+    "fdp",
+    "tomar no cu",
+    "vai tomar",
+    "merda",
+    "porra",
+    "caralho",
+    "puta",
+    "lixo",
+    "verme",
+    "vermes",
+    "vagabundo*",
+    "vagabunda*",
+    "bandido*",
+    "ladrao",
+    "ladroes",
+    "pedofilo*",
+    "canalha*",
+    "safado*",
+    "bolsominion*",
+    "petralha*",
+    "esquerdopata*",
+    "gado"
+   ],
+   "excluir_trechos": []
+  },
+  "informacao_noticia": {
+   "nome": "Informação ou notícia",
+   "definicao": "Relata de modo informativo o que Trump, Rubio, o Departamento de Estado ou a imprensa disseram sobre a eleição.",
+   "indicadores": [
+    "segundo a",
+    "segundo o",
+    "de acordo com",
+    "reportagem",
+    "noticia",
+    "declarou",
+    "afirmou",
+    "anunciou",
+    "comunicado",
+    "departamento de estado",
+    "secretario de estado",
+    "parabeniza*",
+    "parabenizou",
+    "congratulat*",
+    "reconhece o resultado",
+    "reconheceu"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

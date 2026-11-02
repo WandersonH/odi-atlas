@@ -1,0 +1,293 @@
+{
+ "titulo": "Livro de códigos — caso 007: \"Lula amassa a bandeira\" (fake news do dia da eleição) (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação ou comentário (texto, sem links); codificação por presença/ausência, várias categorias por unidade. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "A acusação (Lula amassou/jogou a bandeira) e a reação (desmentido do contexto, denúncia de desinformação, comparação e humor) são codificadas separadamente; insulto e pedido de voto valem para qualquer alvo e qualquer candidato. Nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede/fonte × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto (na ordem da lista).",
+ "blocos": {
+  "incitacao": [
+   "acusa_desrespeito_bandeira",
+   "ultraje_patriotico",
+   "pede_punicao"
+  ],
+  "reacao": [
+   "desmentido_contexto",
+   "denuncia_desinformacao",
+   "comparacao_inversao",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "acusa_desrespeito_bandeira": {
+   "nome": "Acusação de desrespeito à bandeira",
+   "definicao": "Afirma ou repete que Lula amassou, jogou no chão ou desrespeitou a bandeira (a alegação do caso, falsa segundo a AFP Checamos).",
+   "indicadores": [
+    "amassou a bandeira",
+    "amassa a bandeira",
+    "amassando a bandeira",
+    "amassou",
+    "amassa a",
+    "amassando",
+    "bandeira amassada",
+    "amassou e jogou",
+    "jogou no chao",
+    "joga no chao",
+    "jogar no chao",
+    "jogando no chao",
+    "jogou a bandeira",
+    "jogar a bandeira",
+    "bandeira no chao",
+    "jogou sim",
+    "amassou sim",
+    "desrespeitou a bandeira",
+    "desrespeito a bandeira",
+    "desrespeito com a bandeira",
+    "desrespeitando a bandeira",
+    "falta de respeito",
+    "nao tem respeito",
+    "nao respeita a bandeira",
+    "nao respeita o brasil",
+    "odeia o brasil",
+    "odeia a bandeira",
+    "nao gosta do brasil",
+    "nao gosta da bandeira"
+   ],
+   "excluir_trechos": [
+    "nao jogou a bandeira no chao",
+    "nao jogou no chao",
+    "nao jogou a bandeira",
+    "nao jogou",
+    "nao amassou a bandeira",
+    "nao amassou",
+    "nao amassa",
+    "jogou para o fotografo",
+    "jogou pro fotografo"
+   ]
+  },
+  "ultraje_patriotico": {
+   "nome": "Ultraje patriótico",
+   "definicao": "Enquadra o episódio pela honra dos símbolos nacionais e da pátria (\"nossa bandeira\", \"jamais será vermelha\", símbolo sagrado).",
+   "indicadores": [
+    "nossa bandeira",
+    "simbolo nacional",
+    "simbolos nacionais",
+    "simbolo da patria",
+    "simbolo do brasil",
+    "simbolo maior",
+    "bandeira nacional",
+    "bandeira e sagrada",
+    "sagrada",
+    "patria",
+    "amor a patria",
+    "jamais sera vermelha",
+    "nunca sera vermelha",
+    "verde e amarel*",
+    "verde amarel*"
+   ],
+   "excluir_trechos": [
+    "traidor da patria",
+    "traidores da patria",
+    "traidor da patria brasileira",
+    "bandeira americana",
+    "bandeira dos eua"
+   ]
+  },
+  "pede_punicao": {
+   "nome": "Pedido de punição ou criminalização",
+   "definicao": "Diz que o gesto é crime, pede prisão, cassação, impeachment ou aplicação da lei dos símbolos.",
+   "indicadores": [
+    "isso e crime",
+    "e crime",
+    "crime contra",
+    "ultraje a simbolo",
+    "lei dos simbolos",
+    "lei 5700",
+    "lei 5 700",
+    "tem que ser preso",
+    "deveria ser preso",
+    "ser preso",
+    "vai preso",
+    "cadeia",
+    "prisao",
+    "impeachment",
+    "cassar",
+    "cassacao",
+    "inelegivel"
+   ],
+   "excluir_trechos": [
+    "fake news e crime",
+    "mentir e crime",
+    "desinformacao e crime",
+    "espalhar mentira e crime",
+    "bolsonaro preso",
+    "bolsonaro esta preso",
+    "bolsonaro na cadeia"
+   ]
+  },
+  "desmentido_contexto": {
+   "nome": "Desmentido pelo contexto",
+   "definicao": "Corrige a alegação com o contexto do vídeo: Lula entregou ou passou a bandeira ao fotógrafo, não a jogou; vídeo cortado; cita checagem.",
+   "indicadores": [
+    "nao jogou",
+    "nao amassou",
+    "entregou a bandeira",
+    "entregou para",
+    "entregou pro",
+    "entregou ao",
+    "entregou",
+    "deu para o fotografo",
+    "deu pro fotografo",
+    "passou para o fotografo",
+    "passou pro fotografo",
+    "fotografo",
+    "video completo",
+    "video inteiro",
+    "outro angulo",
+    "video cortado",
+    "cortaram o video",
+    "fora de contexto",
+    "checagem",
+    "checamos",
+    "afp",
+    "lupa",
+    "aos fatos",
+    "estadao verifica",
+    "fato ou fake"
+   ],
+   "excluir_trechos": []
+  },
+  "denuncia_desinformacao": {
+   "nome": "Denúncia de desinformação",
+   "definicao": "Classifica o post como fake news, mentira, montagem ou manipulação; critica quem espalha ou orienta denunciar.",
+   "indicadores": [
+    "fake news",
+    "e fake",
+    "fake",
+    "e mentira",
+    "mentira",
+    "montagem",
+    "manipulacao",
+    "video manipulado",
+    "editado",
+    "desinformacao",
+    "espalhar mentira",
+    "espalhando mentira",
+    "espalham mentira",
+    "acredita em tudo",
+    "denuncie",
+    "denunciem",
+    "denunciar",
+    "fake news e crime"
+   ],
+   "excluir_trechos": [
+    "fala a verdade e fake",
+    "nao e fake",
+    "nao e mentira",
+    "nao e montagem"
+   ]
+  },
+  "comparacao_inversao": {
+   "nome": "Comparação e inversão (\"e se fosse...\")",
+   "definicao": "Compara com o outro lado ou inverte a acusação, em qualquer direção (\"se fosse o Bolsonaro\", continência à bandeira dos EUA, \"e o Flávio?\").",
+   "indicadores": [
+    "se fosse o bolsonaro",
+    "se fosse bolsonaro",
+    "se fosse o flavio",
+    "se fosse o lula",
+    "imagina se fosse",
+    "e se fosse",
+    "continencia",
+    "bandeira americana",
+    "bandeira dos eua",
+    "bandeira dos estados unidos",
+    "bandeira de israel",
+    "dois pesos"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, ironia ou deboche na publicação (o alvo do humor é decidido pelo codificador humano).",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "huahua*",
+    "ironia",
+    "piada",
+    "palhacada"
+   ],
+   "excluir_trechos": []
+  },
+  "insulto_desumanizacao": {
+   "nome": "Insulto e desumanização (qualquer alvo)",
+   "definicao": "Rotula pessoa ou grupo com insulto, xingamento ou termo de desprezo, qualquer que seja o alvo (Lula, Flávio, eleitores, autor do post).",
+   "indicadores": [
+    "vagabundo*",
+    "vagabunda*",
+    "bandido*",
+    "safado*",
+    "canalha*",
+    "ladrao",
+    "ladroes",
+    "cachaceiro*",
+    "pilantra*",
+    "corrupto*",
+    "ordinario*",
+    "fdp",
+    "filho da puta",
+    "lixo",
+    "verme",
+    "vermes",
+    "nove dedos",
+    "9 dedos",
+    "descondenado*",
+    "cretino*",
+    "imbecil*",
+    "idiota*",
+    "gado",
+    "bolsominion*",
+    "petralha*",
+    "esquerdopata*",
+    "miliciano*",
+    "familicia"
+   ],
+   "excluir_trechos": []
+  },
+  "chamado_voto": {
+   "nome": "Pedido de voto ou torcida eleitoral (qualquer candidato)",
+   "definicao": "Pede voto, faz contagem ou grito de torcida para qualquer candidato (13 ou 22) ou \"fora\" para qualquer um.",
+   "indicadores": [
+    "lula 13",
+    "bora lula",
+    "e 13",
+    "13 13",
+    "vote 13",
+    "fora lula",
+    "flavio 22",
+    "bolsonaro 22",
+    "22 flavio",
+    "e 22",
+    "22 22",
+    "vote 22",
+    "fora flavio",
+    "fora bolsonaro",
+    "dia 25"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

@@ -1,0 +1,302 @@
+{
+ "titulo": "Livro de códigos — caso 017: as cartas de Flávio Bolsonaro, de \"verdadeiro presidente eleito\" a \"líder do Brasil\" (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho do livro do caso 014: unidade de registro = cada publicação (texto do post, sem links; inclui respostas e citações do post da carta); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão), comparados depois de normalizar o texto (minúsculas, sem acentos, termo inteiro; '*' = prefixo); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Adesão à carta e alegação de fraude (incitação) são codificadas separadamente da denúncia de golpismo, do desmentido e da ironia (reação). Insulto é codificado venha de que lado vier. A simples menção à fórmula \"verdadeiro presidente eleito\" não é adesão: notícia e crítica a citam o tempo todo; por isso a fórmula fica em 'Menção à autoproclamação' (neutra) e a adesão exige expressão de apoio. Nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "incitacao": [
+   "adesao_carta",
+   "alegacao_fraude"
+  ],
+  "reacao": [
+   "denuncia_golpismo",
+   "desmentido_checagem",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "mencao_autoproclamacao": {
+   "nome": "Menção à autoproclamação",
+   "definicao": "Cita a fórmula da carta (\"verdadeiro presidente\", \"presidente eleito\", \"líder do Brasil\", \"dirijo-me ao povo brasileiro\"), seja para apoiar, noticiar ou criticar.",
+   "indicadores": [
+    "verdadeiro presidente",
+    "verdadeiro presidente eleito",
+    "presidente eleito",
+    "lider do brasil",
+    "sou o lider",
+    "se declara presidente",
+    "se declarou presidente",
+    "se declara verdadeiro",
+    "dirijo me ao povo",
+    "comunidade internacional",
+    "carta a nacao",
+    "carta a nacao brasileira",
+    "autoproclam*"
+   ],
+   "excluir_trechos": [
+    "presidente eleito lula",
+    "lula presidente eleito",
+    "lula foi eleito"
+   ]
+  },
+  "adesao_carta": {
+   "nome": "Adesão à carta ou a Flávio como presidente",
+   "definicao": "Apoia a carta ou trata Flávio como presidente/líder legítimo (\"meu presidente\", \"presidente legítimo\", \"estamos com você\").",
+   "indicadores": [
+    "meu presidente",
+    "nosso presidente",
+    "presidente legitimo",
+    "legitimo presidente",
+    "o verdadeiro presidente e flavio",
+    "presidente flavio",
+    "#flaviopresidente",
+    "flavio presidente",
+    "estamos com voce",
+    "estamos juntos",
+    "conte comigo",
+    "deus abencoe",
+    "deus te abencoe",
+    "parabens senador",
+    "parabens flavio",
+    "forca flavio",
+    "orgulho",
+    "nosso lider",
+    "meu lider",
+    "reconhecemos"
+   ],
+   "excluir_trechos": [
+    "nao e meu presidente",
+    "nao e o meu presidente",
+    "nunca sera meu presidente",
+    "nao e nosso presidente"
+   ]
+  },
+  "alegacao_fraude": {
+   "nome": "Alegação de fraude eleitoral",
+   "definicao": "Afirma ou repete que houve fraude, eleição roubada, urnas manipuladas ou atuação ilegítima do TSE/STF no resultado.",
+   "indicadores": [
+    "fraude eleitoral",
+    "fraude",
+    "fraudad*",
+    "eleicao roubada",
+    "roubaram",
+    "roubada",
+    "urnas manipuladas",
+    "manipulad*",
+    "ex advogado do lula",
+    "atuacao ilegitima",
+    "ilegitim*",
+    "nao reconheco",
+    "nao reconhecemos",
+    "resultado nao"
+   ],
+   "excluir_trechos": [
+    "sem apresentar provas",
+    "sem provas de fraude",
+    "nao houve fraude",
+    "suposta fraude",
+    "alegacao de fraude",
+    "alegada fraude",
+    "nao teve fraude",
+    "acusa fraude sem"
+   ]
+  },
+  "referencia_externa": {
+   "nome": "Referência externa: EUA, Trump, Milei",
+   "definicao": "Menciona Trump, Milei, governo dos EUA, Rubio ou \"comunidade internacional\" (como apoio, plateia ou destino da carta, ou para criticar o apelo ao exterior).",
+   "indicadores": [
+    "trump",
+    "donald trump",
+    "milei",
+    "javier milei",
+    "rubio",
+    "casa branca",
+    "departamento de estado",
+    "governo americano",
+    "estados unidos",
+    "eua",
+    "comunidade internacional",
+    "povo americano",
+    "terra de liberdades",
+    "sancoes",
+    "sancao"
+   ],
+   "excluir_trechos": [
+    "estados unidos do brazil",
+    "estados unidos do brasil"
+   ]
+  },
+  "versoes_edicao": {
+   "nome": "Versões, edição e brasão",
+   "definicao": "Trata das versões da carta, da troca de \"presidente\" por \"líder\", do post editado/apagado ou do brasão de 1889 (\"Estados Unidos do Brazil\").",
+   "indicadores": [
+    "primeira versao",
+    "segunda versao",
+    "nova versao",
+    "versao",
+    "versoes",
+    "editou",
+    "editada",
+    "editado",
+    "edicao",
+    "apagou",
+    "apagado",
+    "apagada",
+    "brasao",
+    "estados unidos do brazil",
+    "brazil com z",
+    "trocou",
+    "por lider",
+    "para lider",
+    "mudou para",
+    "recuou",
+    "recuo",
+    "corrigiu"
+   ],
+   "excluir_trechos": []
+  },
+  "denuncia_golpismo": {
+   "nome": "Denúncia de golpismo ou crime",
+   "definicao": "Classifica a carta como golpista, crime, atentado à democracia ou falsidade; cita PF, PGR, denúncia, cassação ou prisão.",
+   "indicadores": [
+    "carta golpista",
+    "golpista*",
+    "golpe",
+    "tentativa de golpe",
+    "crime",
+    "crime contra",
+    "fe publica",
+    "sedicao",
+    "insurreicao",
+    "atentado",
+    "estado democratico",
+    "denunciado",
+    "denuncia",
+    "denunciar",
+    "pf",
+    "policia federal",
+    "pgr",
+    "procuradoria",
+    "cassacao",
+    "cassar",
+    "prisao",
+    "preso",
+    "prendam",
+    "conselho de etica",
+    "inelegivel"
+   ],
+   "excluir_trechos": []
+  },
+  "desmentido_checagem": {
+   "nome": "Desmentido e checagem",
+   "definicao": "Contesta a alegação: sem provas, não houve fraude, Flávio perdeu, resultado confirmado pelo TSE; cita checagem.",
+   "indicadores": [
+    "sem apresentar provas",
+    "sem provas",
+    "nao houve fraude",
+    "nao teve fraude",
+    "suposta fraude",
+    "fake",
+    "fake news",
+    "falso",
+    "falsa",
+    "mentira*",
+    "checagem",
+    "aos fatos",
+    "lupa",
+    "fato ou fake",
+    "candidato derrotado",
+    "derrotado",
+    "perdeu a eleicao",
+    "perdeu nas urnas",
+    "resultado das urnas",
+    "milhoes de votos",
+    "tse confirmou",
+    "nao ha provas"
+   ],
+   "excluir_trechos": []
+  },
+  "desqualificacao": {
+   "nome": "Desqualificação e insulto",
+   "definicao": "Rotula a pessoa com insulto ou desprezo, venha de que lado vier (fujão, covarde, traidor, bandido, ladrão, lixo).",
+   "indicadores": [
+    "fujao",
+    "covarde*",
+    "frouxo*",
+    "traidor*",
+    "bandido*",
+    "ladrao",
+    "ladroes",
+    "vagabundo*",
+    "lixo",
+    "verme*",
+    "rato*",
+    "canalha*",
+    "descondenado",
+    "petralha*",
+    "esquerdopata*",
+    "bolsominion*",
+    "gado"
+   ],
+   "excluir_trechos": []
+  },
+  "informacao_noticia": {
+   "nome": "Informação e notícia",
+   "definicao": "Formato de notícia (\"divulgou uma carta\", \"nesta quarta-feira\", \"afirmou que\", \"segundo\").",
+   "indicadores": [
+    "divulgou uma carta",
+    "publicou uma carta",
+    "carta divulgada",
+    "divulgada por",
+    "nesta quarta feira",
+    "quarta feira 28",
+    "afirmou que",
+    "disse que",
+    "diz que",
+    "segundo o",
+    "segundo a",
+    "de acordo com",
+    "em nota",
+    "valdemar",
+    "valdemar costa neto",
+    "reportagem"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, deboche ou ironia na publicação, venha de que lado vier. A direção da ironia (contra quem) é decidida pelo codificador humano.",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "ironia",
+    "piada",
+    "palhacada",
+    "comedia",
+    "meme*",
+    "presidente de miami",
+    "presidente da disney",
+    "delirio",
+    "surto",
+    "imperador",
+    "rei do"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

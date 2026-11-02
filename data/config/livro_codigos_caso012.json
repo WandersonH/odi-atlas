@@ -1,0 +1,271 @@
+{
+ "titulo": "Livro de códigos — caso 012: frente de transnacionalização do bolsonarismo (Allan dos Santos, Paulo Figueiredo, Alexandre Ramagem) no YouTube (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho do livro do caso 014: unidade de registro = cada vídeo (título + descrição útil, sem links) dos canais @allandossantosbr, @PauloFigueiredoShow e @delegadoramagem, e cada comentário (texto) nesses vídeos; codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão), comparados depois de normalizar o texto (minúsculas, sem acentos, termo inteiro; '*' = prefixo); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "As categorias descrevem o que o texto diz, não quem o publica: a narrativa dos canais (pressão externa, perseguição/exílio, ataque ao STF, fraude, anistia) e a reação a ela (crítica e denúncia, desmentido, ironia) são codificadas separadamente, e um mesmo texto pode ter as duas. 'Endosso aos canais' e 'Crítica e denúncia' são espelho uma da outra. Nenhuma categoria mede a posição ideológica de quem comenta.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "incitacao": [
+   "pressao_externa",
+   "perseguicao_exilio",
+   "ataque_stf_moraes",
+   "fraude_eleitoral",
+   "anistia_8_janeiro",
+   "endosso_canal"
+  ],
+  "reacao": [
+   "critica_denuncia",
+   "desmentido_checagem",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "pressao_externa": {
+   "nome": "Pressão externa: EUA, Trump, Rubio e sanções",
+   "definicao": "Apresenta governo dos EUA, Trump, Rubio, sanções, tarifas, Lei Magnitsky ou cancelamento de vistos como resposta ou ameaça a autoridades brasileiras.",
+   "indicadores": [
+    "trump",
+    "donald trump",
+    "rubio",
+    "marco rubio",
+    "casa branca",
+    "white house",
+    "departamento de estado",
+    "governo americano",
+    "governo trump",
+    "sancao",
+    "sancoes",
+    "sancionad*",
+    "magnitsky",
+    "tarifa*",
+    "tarifaco",
+    "vistos cancelados",
+    "cancelar vistos",
+    "revogar vistos",
+    "visto revogado",
+    "visto cancelado",
+    "intervencao americana"
+   ],
+   "excluir_trechos": [
+    "sancao da lei",
+    "sancionou a lei",
+    "sancionada a lei"
+   ]
+  },
+  "perseguicao_exilio": {
+   "nome": "Perseguição, exílio e asilo",
+   "definicao": "Descreve os canais, a família Bolsonaro ou aliados como perseguidos, exilados, presos políticos ou censurados; fala em ditadura ou asilo.",
+   "indicadores": [
+    "perseguido*",
+    "perseguida*",
+    "perseguicao politica",
+    "perseguicao",
+    "exilado*",
+    "exilada*",
+    "exilio",
+    "asilo",
+    "asilo politico",
+    "preso politico",
+    "presos politicos",
+    "presa politica",
+    "refugiado*",
+    "ditadura",
+    "ditadura do judiciario",
+    "censura",
+    "censurado*",
+    "censurada*"
+   ],
+   "excluir_trechos": [
+    "perseguicao a petistas",
+    "ditadura militar"
+   ]
+  },
+  "ataque_stf_moraes": {
+   "nome": "Ataque ao STF e a Alexandre de Moraes",
+   "definicao": "Ataca, ridiculariza ou acusa o STF, Alexandre de Moraes ou outros ministros (\"Xandão\", \"toga\", \"ditadura da toga\").",
+   "indicadores": [
+    "xandao",
+    "moraes",
+    "alexandre de moraes",
+    "stf",
+    "supremo",
+    "ministros do stf",
+    "toga",
+    "togados",
+    "careca",
+    "juristocracia",
+    "ativismo judicial",
+    "impeachment de moraes",
+    "fora moraes",
+    "fora xandao"
+   ],
+   "excluir_trechos": []
+  },
+  "fraude_eleitoral": {
+   "nome": "Fraude eleitoral e urnas",
+   "definicao": "Afirma ou sugere que a eleição foi fraudada, roubada ou manipulada; desconfia das urnas, do TSE ou da contagem.",
+   "indicadores": [
+    "fraude*",
+    "fraudad*",
+    "eleicao roubada",
+    "roubaram a eleicao",
+    "roubaram",
+    "urna eletronica",
+    "urnas eletronicas",
+    "urnas",
+    "contagem dos votos",
+    "codigo fonte",
+    "voto impresso",
+    "auditoria",
+    "manipulad*",
+    "sistema podre"
+   ],
+   "excluir_trechos": [
+    "nao houve fraude",
+    "sem provas de fraude",
+    "nao teve fraude",
+    "sem fraude",
+    "nenhuma fraude"
+   ]
+  },
+  "anistia_8_janeiro": {
+   "nome": "Anistia, golpe e 8 de janeiro",
+   "definicao": "Defende anistia aos condenados pelo 8 de janeiro ou trata a trama golpista como invenção (\"não houve golpe\").",
+   "indicadores": [
+    "anistia",
+    "anistia ja",
+    "anistia ampla",
+    "8 de janeiro",
+    "8 1",
+    "patriotas presos",
+    "presos do 8",
+    "nao houve golpe",
+    "golpe imaginario",
+    "golpe de batom",
+    "senhoras presas",
+    "intervencao militar",
+    "forcas armadas"
+   ],
+   "excluir_trechos": [
+    "sem anistia"
+   ]
+  },
+  "endosso_canal": {
+   "nome": "Endosso aos canais e mobilização",
+   "definicao": "Elogia, agradece ou abençoa o apresentador ou o canal, ou chama a compartilhar e apoiar (lado positivo; espelho de 'Crítica e denúncia').",
+   "indicadores": [
+    "parabens paulo",
+    "parabens allan",
+    "parabens ramagem",
+    "parabens delegado",
+    "obrigado paulo",
+    "obrigado allan",
+    "deus te abencoe",
+    "deus abencoe",
+    "deus os abencoe",
+    "pelo seu trabalho",
+    "seu trabalho",
+    "excelente trabalho",
+    "continue assim",
+    "estamos juntos",
+    "forca paulo",
+    "forca allan",
+    "forca ramagem",
+    "compartilhem",
+    "inscreva se",
+    "melhor canal",
+    "voce e o cara"
+   ],
+   "excluir_trechos": []
+  },
+  "critica_denuncia": {
+   "nome": "Crítica e denúncia aos canais",
+   "definicao": "Critica os apresentadores ou a atuação a partir dos EUA: foragido, fugitivo, traidor da pátria, entreguista, golpista; pede extradição, prisão ou \"sem anistia\".",
+   "indicadores": [
+    "foragido*",
+    "foragida*",
+    "fugitivo*",
+    "fujao",
+    "fujoes",
+    "traidor da patria",
+    "traidores da patria",
+    "traidor do brasil",
+    "traidores do brasil",
+    "traidor da nacao",
+    "lesa patria",
+    "entreguista*",
+    "vira lata*",
+    "extradicao",
+    "extraditado",
+    "extraditar",
+    "golpista*",
+    "sem anistia",
+    "covarde*",
+    "patriota de miami",
+    "patriotas de miami",
+    "vendeu o pais",
+    "contra o brasil",
+    "pede asilo e",
+    "mamando nos eua"
+   ],
+   "excluir_trechos": []
+  },
+  "desmentido_checagem": {
+   "nome": "Desmentido e checagem",
+   "definicao": "Contesta uma afirmação como falsa, sem provas ou desinformação; cita checagem, imprensa ou decisão que a desmente.",
+   "indicadores": [
+    "fake news",
+    "e fake",
+    "mentira*",
+    "mentiroso*",
+    "mentirosa*",
+    "desinformacao",
+    "desinformar",
+    "checagem",
+    "sem provas",
+    "nao houve fraude",
+    "nao teve fraude",
+    "fato ou fake",
+    "aos fatos",
+    "agencia lupa",
+    "boato",
+    "falso",
+    "falsa"
+   ],
+   "excluir_trechos": [
+    "fake news do stf",
+    "inquerito das fake news",
+    "inquerito da fake news",
+    "lei das fake news"
+   ]
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, deboche ou ironia na publicação, venha de que lado vier. A direção da ironia (contra quem) é decidida pelo codificador humano.",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "ironia",
+    "piada",
+    "palhacada",
+    "comedia",
+    "meme*"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

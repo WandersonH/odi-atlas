@@ -34,6 +34,7 @@ MIN_PUBLICO = 10000
 INCITACAO = ("incita_demissao", "boicote_economico", "listas_exposicao", "exclusao_convivio")
 REACAO = ("relato_vitima", "denuncia_ilegalidade", "ironia_inversao")
 SEMENTE, N_AMOSTRA = 42, 200
+VERSAO_AMOSTRA = "v2"
 
 
 def pct(n, d):
@@ -41,15 +42,31 @@ def pct(n, d):
 
 
 def amostra(rows: list[dict], n: int) -> list[dict]:
+    """Amostra estratificada rede × dia, proporcional, com exatamente min(n, N) itens.
+
+    01/11/2026 (revisão do segundo par): a versão anterior dava ao menos 1 item a cada estrato e, quando a soma passava de n,
+    cortava pelo fim da ordem (rede, data) — o corte caía sempre sobre a última rede em ordem alfabética (X) e os dias finais.
+    Agora: cotas pelo maior resto (Hamilton), sorteio dentro do estrato com semente fixa; estrato pequeno pode ficar sem item
+    quando há mais estratos que n (fica registrado no arquivo de cotas)."""
     estratos = defaultdict(list)
     for r in rows:
         estratos[(r["rede"], r["dia"])].append(r)
-    rnd, out = random.Random(SEMENTE), []
-    for k in sorted(estratos):
-        g = estratos[k]
-        q = max(1, round(n * len(g) / len(rows)))
-        out += rnd.sample(g, min(q, len(g)))
-    return sorted(out, key=lambda r: (r["rede"], r["publicado_em"]))[:n] if len(out) > n else out
+    total = len(rows)
+    n = min(n, total)
+    if not n:
+        return []
+    chaves = sorted(estratos)
+    brutas = {k: n * len(estratos[k]) / total for k in chaves}
+    cotas = {k: int(brutas[k]) for k in chaves}
+    rnd = random.Random(SEMENTE)
+    resto = n - sum(cotas.values())
+    desempate = {k: rnd.random() for k in chaves}
+    for k in sorted(chaves, key=lambda k: (-(brutas[k] - cotas[k]), desempate[k]))[:resto]:
+        cotas[k] += 1
+    out = []
+    for k in chaves:
+        out += rnd.sample(estratos[k], min(cotas[k], len(estratos[k])))
+    return sorted(out, key=lambda r: (r["rede"], r["publicado_em"]))
 
 
 def universo(pub: Path) -> list[dict]:
@@ -111,7 +128,8 @@ def main(argv=None) -> int:
     # amostra humana: uma vez, só no privado
     cod_dir = priv / "codificacao"
     cod_dir.mkdir(parents=True, exist_ok=True)
-    plan = cod_dir / "amostra_bardin_v1.csv"
+    # v2 (01/11/2026): nova regra de cotas (ver amostra()); a v1, se existir, fica guardada e não é sobrescrita
+    plan = cod_dir / f"amostra_bardin_{VERSAO_AMOSTRA}.csv"
     if not plan.exists():
         am = amostra(rows, N_AMOSTRA)
         with open(plan, "w", encoding="utf-8", newline="") as f:
@@ -119,7 +137,7 @@ def main(argv=None) -> int:
             w.writerow(["id", "rede", "dia", "url", "texto", *cats, "observacao", "codificador"])
             for r in am:
                 w.writerow([f"{r['rede']}:{r['item_id']}", r["rede"], r["dia"], r["url"], r["texto"], *[""] * len(cats), "", ""])
-        with open(cod_dir / "amostra_bardin_v1_precodificacao.csv", "w", encoding="utf-8", newline="") as f:
+        with open(cod_dir / f"amostra_bardin_{VERSAO_AMOSTRA}_precodificacao.csv", "w", encoding="utf-8", newline="") as f:
             w = csv.writer(f, delimiter=";")
             w.writerow(["id", *cats])
             for r in am:
@@ -135,7 +153,7 @@ def main(argv=None) -> int:
                       "os_dois": {"n": ambos, "pct": pct(ambos, n)}},
            "por_rede": por_rede, "por_termo": por_termo, "por_dia": por_dia,
            "pares": [{"a": a, "b": b, "n": k} for (a, b), k in pares.most_common(15)],
-           "exemplos_contas_10mil": exemplos, "amostra_humana": {"arquivo_privado": "casos/%s/codificacao/amostra_bardin_v1.csv" % caso, "publicacoes": n_amostra,
+           "exemplos_contas_10mil": exemplos, "amostra_humana": {"arquivo_privado": "casos/%s/codificacao/amostra_bardin_%s.csv" % (caso, VERSAO_AMOSTRA), "publicacoes": n_amostra,
                                                                   "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"},
            "chd_palavras": analise, "universo": universo(pub), "pontos": pontos(rows),
            "nota": "Pré-codificação automática por indicadores (sugestão, não decisão); várias categorias por publicação; percentuais sobre as publicações lidas, não sobre o universo."}

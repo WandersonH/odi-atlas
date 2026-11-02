@@ -56,7 +56,7 @@ class TestBardin(unittest.TestCase):
             self.assertEqual(len(b["pontos"]), 4)
             self.assertNotIn("fulano", json.dumps(b["pontos"]))
             self.assertIn("beltrano", json.dumps(b["pontos"]))
-            plan = priv / "casos/014/codificacao/amostra_bardin_v1.csv"
+            plan = priv / "casos/014/codificacao/amostra_bardin_v2.csv"
             self.assertTrue(plan.exists())
             antes = plan.read_text(encoding="utf-8")
             os.chdir(pub)

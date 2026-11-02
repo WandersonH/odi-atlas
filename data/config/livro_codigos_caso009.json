@@ -1,0 +1,282 @@
+{
+ "titulo": "Livro de códigos — caso 009: \"O Nordeste que foi esquecido\" (reel de Nikolas Ferreira) (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação ou comentário (texto, sem links); codificação por presença/ausência, várias categorias por unidade. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "A tese do reel (Nordeste abandonado, culpa do PT, apoio ao vídeo) e o preconceito regional ficam no bloco da incitação; a contestação, a denúncia de exploração da pobreza ou de xenofobia, o desmentido e o humor ficam na reação. Identidade nordestina e insulto valem para qualquer lado. Nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede/fonte × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto (na ordem da lista).",
+ "blocos": {
+  "incitacao": [
+   "abandono_nordeste",
+   "culpa_pt_nordeste",
+   "apoio_video",
+   "preconceito_regional"
+  ],
+  "reacao": [
+   "contesta_abandono",
+   "denuncia_exploracao",
+   "desmentido_manipulacao",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "abandono_nordeste": {
+   "nome": "Tese do abandono do Nordeste",
+   "definicao": "Afirma ou repete que o Nordeste foi esquecido ou abandonado; cita pobreza, seca, falta de água ou \"a realidade do Nordeste\".",
+   "indicadores": [
+    "nordeste esquecido",
+    "foi esquecido",
+    "esquecido",
+    "abandonado*",
+    "abandono",
+    "pobreza",
+    "miseria",
+    "falta de agua",
+    "sem agua",
+    "seca",
+    "passando fome",
+    "fome",
+    "realidade do nordeste",
+    "a realidade do nordeste"
+   ],
+   "excluir_trechos": [
+    "nao foi esquecido",
+    "nunca foi esquecido",
+    "nao esta esquecido",
+    "nao e esquecido"
+   ]
+  },
+  "culpa_pt_nordeste": {
+   "nome": "Culpa do PT e voto de cabresto",
+   "definicao": "Atribui o abandono ao PT, diz que o Nordeste é curral eleitoral, dependente de assistência, ou anuncia a \"despetização\".",
+   "indicadores": [
+    "20 anos de pt",
+    "20 anos",
+    "pt abandonou",
+    "curral",
+    "curral eleitoral",
+    "cabresto",
+    "voto de cabresto",
+    "esmola",
+    "bolsa familia",
+    "dependencia",
+    "dependente*",
+    "massa de manobra",
+    "manipulados",
+    "despetetizado",
+    "despetizado",
+    "despetizar",
+    "despetetizar",
+    "nordeste acordou",
+    "acorda nordeste",
+    "nordeste vai virar",
+    "nordeste virou"
+   ],
+   "excluir_trechos": []
+  },
+  "apoio_video": {
+   "nome": "Apoio ao vídeo e ao autor",
+   "definicao": "Elogia o vídeo ou o autor, diz que ele \"falou a verdade\", pede para não calar ou compartilhar.",
+   "indicadores": [
+    "parabens nikolas",
+    "parabens nicolas",
+    "parabens deputado",
+    "falou a verdade",
+    "falou tudo",
+    "disse tudo",
+    "video perfeito",
+    "melhor video",
+    "que video",
+    "nao calem",
+    "compartilhem",
+    "chorei",
+    "video emocionante",
+    "me emocionei",
+    "obrigado nikolas",
+    "obrigado nicolas",
+    "pia de ouro"
+   ],
+   "excluir_trechos": []
+  },
+  "preconceito_regional": {
+   "nome": "Preconceito regional e xenofobia",
+   "definicao": "Hostiliza ou estereotipa nordestinos ou o voto da região (burros, ignorantes, \"vota por esmola\", separatismo).",
+   "indicadores": [
+    "nordestino burro",
+    "nordestinos burros",
+    "povo burro",
+    "povo ignorante",
+    "nordestino ignorante",
+    "nordestinos ignorantes",
+    "povo analfabeto",
+    "nordestino analfabeto",
+    "nordestinos analfabetos",
+    "baianada",
+    "separa o nordeste",
+    "separatis*",
+    "sul e sudeste",
+    "sul sustenta",
+    "nordeste vota",
+    "vota no lula por",
+    "vende o voto",
+    "vendem o voto",
+    "povo sem cultura"
+   ],
+   "excluir_trechos": []
+  },
+  "contesta_abandono": {
+   "nome": "Contestação do abandono",
+   "definicao": "Contesta a tese com políticas, dados ou lembranças (transposição, Luz para Todos, crescimento) ou pergunta o que o autor ou o governo Bolsonaro fez pelo Nordeste.",
+   "indicadores": [
+    "nao foi esquecido",
+    "nunca foi esquecido",
+    "transposicao",
+    "luz para todos",
+    "minha casa minha vida",
+    "nordeste cresceu",
+    "o nordeste cresceu",
+    "o que ele fez pelo nordeste",
+    "o que fez pelo nordeste",
+    "nunca fez nada",
+    "bolsonaro esqueceu",
+    "governo bolsonaro",
+    "4 anos de bolsonaro",
+    "quatro anos de bolsonaro",
+    "deputado de minas",
+    "nunca pisou",
+    "nem conhece o nordeste"
+   ],
+   "excluir_trechos": []
+  },
+  "denuncia_exploracao": {
+   "nome": "Denúncia de exploração da pobreza ou de xenofobia",
+   "definicao": "Critica o uso da pobreza ou do sofrimento como propaganda, acusa preconceito ou xenofobia, pede respeito ao Nordeste.",
+   "indicadores": [
+    "xenofob*",
+    "preconceito*",
+    "explorar a pobreza",
+    "explorando a pobreza",
+    "explora a pobreza",
+    "exploracao",
+    "usar a pobreza",
+    "usando a pobreza",
+    "usa a pobreza",
+    "usando o sofrimento",
+    "sensacionalis*",
+    "oportunis*",
+    "respeite o nordeste",
+    "respeita o nordeste",
+    "respeitem o nordeste",
+    "respeito com o nordeste",
+    "tiro no pe"
+   ],
+   "excluir_trechos": []
+  },
+  "desmentido_manipulacao": {
+   "nome": "Desmentido ou acusação de manipulação",
+   "definicao": "Diz que o vídeo é falso, encenado, roteirizado, editado ou usa atores; cita checagem ou a retirada por direitos autorais.",
+   "indicadores": [
+    "fake",
+    "fake news",
+    "mentira",
+    "mentiroso*",
+    "encenad*",
+    "encenacao",
+    "atores",
+    "atriz",
+    "roteiro*",
+    "editado",
+    "manipula*",
+    "checagem",
+    "bastidor*"
+   ],
+   "excluir_trechos": [
+    "nao e fake",
+    "nao e mentira"
+   ]
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, ironia ou deboche na publicação (o alvo do humor é decidido pelo codificador humano).",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "huahua*",
+    "ironia",
+    "piada",
+    "palhacada"
+   ],
+   "excluir_trechos": []
+  },
+  "identidade_nordestina": {
+   "nome": "Identidade nordestina declarada (qualquer lado)",
+   "definicao": "Quem comenta se declara nordestino, do Nordeste ou de um estado da região (vale para quem apoia e para quem contesta).",
+   "indicadores": [
+    "sou nordestino",
+    "sou nordestina",
+    "sou do nordeste",
+    "sou da bahia",
+    "sou baiano",
+    "sou baiana",
+    "sou paraibano",
+    "sou paraibana",
+    "sou pernambucano",
+    "sou pernambucana",
+    "sou cearense",
+    "sou potiguar",
+    "sou alagoano",
+    "sou alagoana",
+    "sou sergipano",
+    "sou sergipana",
+    "sou piauiense",
+    "sou maranhense",
+    "aqui no nordeste",
+    "moro no nordeste",
+    "nasci no nordeste"
+   ],
+   "excluir_trechos": []
+  },
+  "insulto_desumanizacao": {
+   "nome": "Insulto e desumanização (qualquer alvo)",
+   "definicao": "Rotula pessoa ou grupo com insulto ou termo de desprezo, qualquer que seja o alvo (autor do vídeo, políticos, eleitores, nordestinos).",
+   "indicadores": [
+    "chupetinha",
+    "vagabundo*",
+    "vagabunda*",
+    "bandido*",
+    "safado*",
+    "canalha*",
+    "ladrao",
+    "ladroes",
+    "lixo",
+    "verme",
+    "vermes",
+    "fdp",
+    "filho da puta",
+    "gado",
+    "bolsominion*",
+    "petralha*",
+    "esquerdopata*",
+    "miliciano*",
+    "familicia",
+    "idiota*",
+    "imbecil*",
+    "otario*"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

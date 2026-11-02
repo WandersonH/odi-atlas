@@ -1,0 +1,255 @@
+{
+ "titulo": "Livro de códigos — caso 011: Joice Hasselmann declara voto em Lula (TV 247, 22/10/2026) (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação ou comentário (texto, sem links); codificação por presença/ausência, várias categorias por unidade. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "No bloco da incitação ficam os ataques (a Joice, por traição/oportunismo ou com insulto de gênero) e a repetição da acusação de agressão contra Bolsonaro; na reação ficam o apoio a ela, o descrédito da acusação, a defesa de uma frente pela democracia e o humor. Insulto e pedido de voto valem para qualquer lado. Nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede/fonte × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto (na ordem da lista).",
+ "blocos": {
+  "incitacao": [
+   "ataque_traicao",
+   "misoginia",
+   "acusacao_agressao"
+  ],
+  "reacao": [
+   "apoio_joice",
+   "descredito_acusacao",
+   "frente_democratica",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "ataque_traicao": {
+   "nome": "Ataque por traição ou oportunismo",
+   "definicao": "Acusa Joice de traição, oportunismo, troca de lado por dinheiro ou cargo, ou desqualifica a relevância dela.",
+   "indicadores": [
+    "traira",
+    "traidora",
+    "traidor*",
+    "traicao",
+    "vira casaca",
+    "mudou de lado",
+    "trocou de lado",
+    "oportunista*",
+    "interesseira",
+    "comprada",
+    "se vendeu",
+    "vendida",
+    "quanto recebeu",
+    "quanto pagaram",
+    "queria um cargo",
+    "queria cargo",
+    "quer um cargo",
+    "quer cargo",
+    "por um cargo",
+    "atras de cargo",
+    "boquinha",
+    "mamata",
+    "nao ganha nem",
+    "sindica",
+    "irrelevante",
+    "flopou",
+    "ninguem liga"
+   ],
+   "excluir_trechos": [
+    "traidor da patria",
+    "traidores da patria",
+    "traidor da nacao"
+   ]
+  },
+  "misoginia": {
+   "nome": "Insulto de gênero ou ao corpo",
+   "definicao": "Ataca Joice (ou outra mulher) com insulto ligado a gênero, aparência ou sanidade (\"louca\", \"peppa\", \"porca\").",
+   "indicadores": [
+    "peppa",
+    "porca",
+    "louca",
+    "vaca",
+    "piranha",
+    "vagabunda",
+    "mal amada",
+    "gorda",
+    "baranga",
+    "histerica",
+    "desequilibrada",
+    "barraqueira",
+    "mulher louca",
+    "essa louca"
+   ],
+   "excluir_trechos": []
+  },
+  "acusacao_agressao": {
+   "nome": "Repetição da acusação de agressão",
+   "definicao": "Repete ou amplifica a acusação de que Bolsonaro (ou o entorno) mandou agredi-la em 2021.",
+   "indicadores": [
+    "mandou agredir",
+    "mandou bater",
+    "mandou espancar",
+    "bolsonaro mandou",
+    "agredida",
+    "agrediram",
+    "agressao",
+    "espancada",
+    "espancaram",
+    "gabinete do odio",
+    "mandaram bater",
+    "foi agredida"
+   ],
+   "excluir_trechos": [
+    "caiu da escada",
+    "espancada por quem",
+    "agredida por quem"
+   ]
+  },
+  "apoio_joice": {
+   "nome": "Apoio e acolhimento",
+   "definicao": "Elogia a coragem ou a decisão de Joice, dá boas-vindas, diz \"antes tarde do que nunca\" ou que respeita a mudança.",
+   "indicadores": [
+    "parabens joice",
+    "parabens joyce",
+    "parabens pela coragem",
+    "coragem",
+    "corajosa",
+    "antes tarde",
+    "bem vinda",
+    "seja bem vinda",
+    "admiro",
+    "admiracao",
+    "respeito sua",
+    "respeito a joice",
+    "que bom que",
+    "ainda bem que",
+    "deus te proteja",
+    "deus te abencoe",
+    "orgulho"
+   ],
+   "excluir_trechos": []
+  },
+  "descredito_acusacao": {
+   "nome": "Descrédito da acusação",
+   "definicao": "Diz que a acusação de agressão é mentira ou invenção, que ela caiu sozinha, pede prova.",
+   "indicadores": [
+    "mentirosa",
+    "caiu da escada",
+    "caiu sozinha",
+    "ela caiu",
+    "caiu no banheiro",
+    "inventou",
+    "invencao",
+    "cade a prova",
+    "sem prova",
+    "nao provou",
+    "mostra a prova",
+    "conversa fiada",
+    "teatro",
+    "vitimismo",
+    "se fazendo de vitima",
+    "homem invisivel",
+    "quem te bateu",
+    "espancada por quem",
+    "agredida por quem"
+   ],
+   "excluir_trechos": [
+    "caiu a ficha",
+    "caiu na real",
+    "caiu a mascara"
+   ]
+  },
+  "frente_democratica": {
+   "nome": "Frente pela democracia (\"direita e esquerda\")",
+   "definicao": "Enquadra o voto como defesa da democracia acima de ideologia, união de direita e esquerda contra o bolsonarismo.",
+   "indicadores": [
+    "viva a democracia",
+    "defesa da democracia",
+    "vitoria da democracia",
+    "juntos pela democracia",
+    "direita e esquerda",
+    "nao e sobre direita",
+    "acima de ideologia",
+    "acima das ideologias",
+    "frente ampla",
+    "contra o bolsonarismo",
+    "contra o fascismo",
+    "contra a extrema direita"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, ironia ou deboche na publicação (o alvo do humor é decidido pelo codificador humano).",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "huahua*",
+    "ironia",
+    "piada",
+    "palhacada"
+   ],
+   "excluir_trechos": []
+  },
+  "insulto_desumanizacao": {
+   "nome": "Insulto e desumanização (qualquer alvo)",
+   "definicao": "Insulto ou termo de desprezo contra qualquer alvo que não seja de gênero (Bolsonaro, família, Lula, eleitores).",
+   "indicadores": [
+    "vagabundo*",
+    "bandido*",
+    "safado*",
+    "canalha*",
+    "ladrao",
+    "ladroes",
+    "lixo",
+    "verme",
+    "vermes",
+    "fdp",
+    "filho da puta",
+    "miliciano*",
+    "familicia",
+    "rachadinha",
+    "gado",
+    "bolsominion*",
+    "petralha*",
+    "esquerdopata*",
+    "idiota*",
+    "imbecil*",
+    "cretino*"
+   ],
+   "excluir_trechos": []
+  },
+  "chamado_voto": {
+   "nome": "Pedido de voto ou torcida eleitoral (qualquer candidato)",
+   "definicao": "Pede voto ou faz torcida para qualquer candidato (13 ou 22) ou \"fora\" para qualquer um.",
+   "indicadores": [
+    "lula 13",
+    "bora lula",
+    "e 13",
+    "13 13",
+    "vote 13",
+    "votar no lula",
+    "fora lula",
+    "flavio 22",
+    "bolsonaro 22",
+    "22 flavio",
+    "e 22",
+    "22 22",
+    "vote 22",
+    "fora flavio",
+    "fora bolsonaro",
+    "dia 25"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

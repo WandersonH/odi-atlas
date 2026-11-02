@@ -1,0 +1,308 @@
+{
+ "titulo": "Livro de códigos — caso 008: camisetas do PT em Piracicaba (reel de Derrite e acusação contra a PM) (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação ou comentário (texto, sem links); codificação por presença/ausência, várias categorias por unidade. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "A narrativa do reel (detidos como eleitores do PT, elogio à ação policial, descrédito da denúncia) e a reação (denúncia de armação ou abuso, pedido de investigação, crítica ao uso político da polícia, humor) são codificadas separadamente; insulto, notícia e pedido de voto valem para qualquer lado. Nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede/fonte × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto (na ordem da lista).",
+ "blocos": {
+  "incitacao": [
+   "associa_pt_crime",
+   "apoio_policia",
+   "descredita_denuncia"
+  ],
+  "reacao": [
+   "denuncia_armacao",
+   "pede_investigacao",
+   "critica_uso_politico",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "associa_pt_crime": {
+   "nome": "Associação entre PT/eleitores de Lula e crime",
+   "definicao": "Liga os detidos, o PT ou o eleitorado de Lula a crime ou bandidagem (\"bandido vota no PT\", \"uniforme\", \"faz o L\").",
+   "indicadores": [
+    "bandido vota",
+    "bandidos votam",
+    "bandido vota no lula",
+    "eleitor do lula",
+    "eleitores do lula",
+    "eleitorado do lula",
+    "eleitores do pt",
+    "eleitor do pt",
+    "uniforme do pt",
+    "uniforme do lula",
+    "uniforme",
+    "uniformizado*",
+    "base eleitoral",
+    "bandido de estimacao",
+    "companheiros",
+    "faz o l",
+    "fez o l",
+    "fizeram o l",
+    "pt e bandido",
+    "partido do crime",
+    "camisa do crime",
+    "votam no lula",
+    "vota no lula",
+    "painho"
+   ],
+   "excluir_trechos": [
+    "uniforme da policia",
+    "uniforme da pm",
+    "uniforme policial",
+    "cameras no uniforme",
+    "camera no uniforme",
+    "camera do uniforme"
+   ]
+  },
+  "apoio_policia": {
+   "nome": "Apoio à ação policial",
+   "definicao": "Elogia ou defende a polícia, o secretário ou a operação; inclui apoio a violência policial.",
+   "indicadores": [
+    "parabens aos policiais",
+    "parabens a policia",
+    "parabens policia",
+    "parabens a pm",
+    "parabens pm",
+    "parabens derrite",
+    "parabens ao derrite",
+    "bom trabalho",
+    "otimo trabalho",
+    "excelente trabalho",
+    "orgulho da pm",
+    "orgulho da policia",
+    "herois",
+    "heroi",
+    "policia de verdade",
+    "bandido bom",
+    "cpf cancelado",
+    "tolerancia zero",
+    "lugar de bandido"
+   ],
+   "excluir_trechos": []
+  },
+  "descredita_denuncia": {
+   "nome": "Descrédito da denúncia de abuso",
+   "definicao": "Ridiculariza ou nega a acusação contra a PM, retrata os detidos como falsas vítimas (\"vítimas da sociedade\", \"coitadinhos\").",
+   "indicadores": [
+    "vitimas da sociedade",
+    "vitima da sociedade",
+    "coitadinho*",
+    "coitados",
+    "pobres meninos",
+    "anjinho*",
+    "santinho*",
+    "agora a culpa e da policia",
+    "ninguem obrigou",
+    "narrativa",
+    "desculpa esfarrapada",
+    "defensor de bandido",
+    "defende bandido",
+    "defendendo bandido",
+    "passar pano"
+   ],
+   "excluir_trechos": []
+  },
+  "denuncia_armacao": {
+   "nome": "Denúncia de armação ou abuso policial",
+   "definicao": "Afirma ou repete que policiais obrigaram os jovens a vestir as camisetas, que houve armação, montagem ou agressão.",
+   "indicadores": [
+    "obrigaram",
+    "obrigados a",
+    "obrigando",
+    "obrigou",
+    "forcaram",
+    "forcados",
+    "armacao",
+    "armaram",
+    "armado",
+    "montagem",
+    "plantaram",
+    "encenacao",
+    "teatro",
+    "forjad*",
+    "forjaram",
+    "mandaram vestir",
+    "fizeram vestir",
+    "colocaram a camisa",
+    "colocaram as camisetas",
+    "batendo nos",
+    "abuso de autoridade",
+    "abuso policial",
+    "tortura*",
+    "agredi*",
+    "espancad*",
+    "fake news",
+    "e fake",
+    "fake"
+   ],
+   "excluir_trechos": [
+    "crime organizado",
+    "assalto armado",
+    "roubo armado",
+    "crime armado"
+   ]
+  },
+  "pede_investigacao": {
+   "nome": "Pedido de investigação ou enquadramento legal",
+   "definicao": "Pede investigação, punição ou afastamento; classifica como crime eleitoral; cita MP, corregedoria, TSE, Justiça Eleitoral.",
+   "indicadores": [
+    "tem que investigar",
+    "investigar",
+    "investigacao",
+    "investiguem",
+    "apurar",
+    "apuracao",
+    "corregedoria",
+    "ministerio publico",
+    "mp",
+    "tse",
+    "justica eleitoral",
+    "crime eleitoral",
+    "denuncia",
+    "denunciar",
+    "punicao",
+    "punidos",
+    "afastamento",
+    "afastados",
+    "exonera*",
+    "cassacao",
+    "cassar"
+   ],
+   "excluir_trechos": []
+  },
+  "critica_uso_politico": {
+   "nome": "Crítica ao uso político da polícia",
+   "definicao": "Critica o uso da polícia ou da operação para campanha (\"polícia do Tarcísio\", milícia, jogo sujo, desespero).",
+   "indicadores": [
+    "uso politico",
+    "usar a policia",
+    "usando a policia",
+    "policia politica",
+    "policia partidaria",
+    "policia do tarcisio",
+    "policia do derrite",
+    "jogo sujo",
+    "campanha suja",
+    "propaganda eleitoral",
+    "estado policial",
+    "milicia",
+    "desespero",
+    "ditadura"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, ironia ou deboche na publicação (o alvo do humor é decidido pelo codificador humano).",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "huahua*",
+    "ironia",
+    "piada",
+    "palhacada"
+   ],
+   "excluir_trechos": []
+  },
+  "insulto_desumanizacao": {
+   "nome": "Insulto e desumanização (qualquer alvo)",
+   "definicao": "Rotula pessoa ou grupo com insulto ou termo de desprezo, qualquer que seja o alvo (detidos, policiais, políticos, eleitores).",
+   "indicadores": [
+    "vagabundo*",
+    "vagabunda*",
+    "bandido*",
+    "marginal*",
+    "safado*",
+    "canalha*",
+    "ladrao",
+    "ladroes",
+    "lixo",
+    "verme",
+    "vermes",
+    "escoria",
+    "fdp",
+    "filho da puta",
+    "miliciano*",
+    "familicia",
+    "gado",
+    "bolsominion*",
+    "petralha*",
+    "esquerdopata*",
+    "criminoso*",
+    "nazista*",
+    "fascista*"
+   ],
+   "excluir_trechos": [
+    "bandido de estimacao",
+    "defensor de bandido",
+    "defende bandido",
+    "defendendo bandido",
+    "bandido vota",
+    "bandidos votam",
+    "bandido bom",
+    "lugar de bandido"
+   ]
+  },
+  "informacao_noticia": {
+   "nome": "Informação ou notícia",
+   "definicao": "Relata o fato de modo informativo: detenção, nota da SSP ou da PM, reportagem, pedido do PT.",
+   "indicadores": [
+    "segundo a",
+    "reportagem",
+    "noticia",
+    "nota da",
+    "em nota",
+    "ssp",
+    "secretaria da seguranca",
+    "secretaria de seguranca",
+    "boletim de ocorrencia",
+    "foram detidos",
+    "detidos",
+    "apreendid*",
+    "pt pediu",
+    "pt aciona",
+    "pt pede"
+   ],
+   "excluir_trechos": []
+  },
+  "chamado_voto": {
+   "nome": "Pedido de voto ou torcida eleitoral (qualquer candidato)",
+   "definicao": "Pede voto ou faz torcida para qualquer candidato (13 ou 22) ou \"fora\" para qualquer um.",
+   "indicadores": [
+    "lula 13",
+    "bora lula",
+    "e 13",
+    "13 13",
+    "vote 13",
+    "fora lula",
+    "flavio 22",
+    "bolsonaro 22",
+    "22 flavio",
+    "e 22",
+    "22 22",
+    "vote 22",
+    "fora flavio",
+    "fora bolsonaro",
+    "fora tarcisio",
+    "dia 25"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

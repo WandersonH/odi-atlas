@@ -4,6 +4,30 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.241 — Livros de códigos (rascunho 0.1) para 21 casos e correção da amostra da codificação humana do Bardin (2026-11-01) ⚠️
+
+- **Livros de códigos:** decisão do responsável de "um livro por caso" (21h3x).
+  - 21 rascunhos em `data/config/livro_codigos_caso<id>.json`: 001, 002, 003, 005, 006, 007, 008, 009, 010, 011, 012, 013, 015, 017, 018, 020, 021, 022, 023, 024 e 025.
+  - Mesmo esquema dos livros 014 e 016, com 8 a 10 categorias simétricas: a narrativa e a reação, com informação/notícia e ironia/humor.
+  - Versão "0.1 — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer".
+  - Cada livro foi testado no corpus privado de cada caso. Os percentuais valem para a amostra lida.
+  - Casos com corpus fraco ou ruidoso:
+    - **021:** 41,6% dos itens sem nenhum termo do caso; a coleta do X trouxe ruído.
+    - **022:** 1.757 respostas a Joey Mannarino sem tema eleitoral.
+    - **002:** 24,5% fora do escopo (músicas).
+    - **006:** ainda sem `itens.csv.gz`, testado nos posts indicados do X.
+    - **007, 008, 009, 011 e 012:** testados nos comentários; precisam de novo teste quando chegar a coleta por termo (C19.240).
+  - Com os livros no repositório, o passo de agregados de `casos.yml` passa a gerar o Bardin desses casos. É pré-codificação, e a página continua com "⛔ validação humana pendente".
+  - Nenhum texto ou nome de pessoa comum entrou nos livros.
+- **Amostra da codificação humana** (revisão do segundo par, 01/11, 21h46, confirmada no código):
+  - **O defeito:** `amostra()` dava ao menos 1 item por estrato rede × dia e, quando a soma passava de 200, cortava pelo fim da ordem (rede, data).
+  - **Onde aconteceu:** nos casos 014 (29 estratos, cotas somando 209) e 016 (26 estratos, 203). O corte caía sobre o X e os dias finais.
+  - **Deriva por coleta posterior:** a amostra v1 do 014 foi tirada antes das rodadas de Facebook e Instagram. Ela tem X 93,0%, Facebook 1,5% e Instagram 1,0%; o corpus de hoje tem X 85,2%, Facebook 4,6% e Instagram 4,7%.
+  - **Correção:** cotas pelo maior resto (Hamilton) e sorteio com semente 42, com tamanho exato.
+  - A nova amostra é a `amostra_bardin_v2.csv`. A v1 (ainda não codificada) fica guardada e não é sobrescrita.
+  - Testes novos em `tests/test_bardin_amostra.py`.
+- **Teste:** `python -m unittest discover -s tests` OK (271 testes).
+
 ## C19.240 — Padronização, passo 2: coleta por termo em 8 casos sem redes (teto de US$ 2,00 por caso) (2026-11-01) 🔜
 
 - **Decisões do responsável** (01/11, 21h3x):

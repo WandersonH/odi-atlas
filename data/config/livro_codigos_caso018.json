@@ -1,0 +1,266 @@
+{
+ "titulo": "Livro de códigos — caso 018: antigo como atual — falas, vídeos e reportagens antigas recirculadas depois do 2º turno (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho do livro do caso 014: unidade de registro = cada publicação (texto do post, sem links; inclui respostas e citações do post de Carol De Toni); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão), comparados depois de normalizar o texto (minúsculas, sem acentos, termo inteiro; '*' = prefixo); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Três episódios (A: fala de Haddad em Davos, jan/2023; B: greve de professores em Sergipe; C: reportagem da CNN de jul/2024 sobre congelamento de gastos). As categorias separam quem apresenta o conteúdo antigo como atual ou o usa como equivalência (incitação) de quem situa a data, desmente, critica a equivalência ou ironiza (reação). As categorias de episódio (Sergipe, corte de R$ 6 bi) só dizem de qual episódio o texto trata. Nenhuma categoria mede a posição política de quem publica.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "incitacao": [
+   "cita_fala_haddad",
+   "equivalencia_hipocrisia",
+   "alegacao_corte"
+  ],
+  "reacao": [
+   "contexto_temporal",
+   "desmentido_checagem",
+   "critica_equivalencia",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "cita_fala_haddad": {
+   "nome": "Episódio A: atribui a Haddad a defesa do boicote",
+   "definicao": "Reproduz ou atribui a Haddad a fala de Davos (\"não compro nem um palito de fósforo\"; \"Haddad defendeu/pediu boicote\").",
+   "indicadores": [
+    "palito de fosforo",
+    "nem um palito",
+    "nao compro nem",
+    "haddad defendeu",
+    "haddad pediu",
+    "haddad pregou",
+    "haddad sugeriu",
+    "haddad falou",
+    "haddad disse",
+    "o proprio haddad",
+    "foi o haddad",
+    "quando o haddad",
+    "protocolo haddad",
+    "#protocolohaddad",
+    "compromisso com essas questoes",
+    "compromissos com essas questoes",
+    "defendeu boicote",
+    "pediu boicote",
+    "pregou boicote",
+    "sugeriu boicote",
+    "davos",
+    "forum economico mundial"
+   ],
+   "excluir_trechos": []
+  },
+  "equivalencia_hipocrisia": {
+   "nome": "Equivalência ou acusação de hipocrisia",
+   "definicao": "Usa o conteúdo antigo para dizer que o outro lado fez o mesmo e agora reclama (\"agora é crime?\", \"dois pesos\", Sleeping Giants).",
+   "indicadores": [
+    "agora e crime",
+    "agora nao pode",
+    "agora pode",
+    "dois pesos",
+    "duas medidas",
+    "hipocrisia",
+    "hipocrita*",
+    "quando e a esquerda",
+    "quando e o pt",
+    "a mesma coisa",
+    "fizeram o mesmo",
+    "sleeping giants",
+    "sleep giants",
+    "boicote do bem",
+    "so vale",
+    "seletiv*",
+    "a esquerda inventou",
+    "esquerda sempre fez",
+    "boicote nao e crime",
+    "nao e crime",
+    "so se torna crime"
+   ],
+   "excluir_trechos": [
+    "nao e a mesma coisa",
+    "nao e o mesmo"
+   ]
+  },
+  "alegacao_corte": {
+   "nome": "Episódio C: alega corte de R$ 6 bilhões",
+   "definicao": "Afirma que Lula/o governo cortou R$ 6 bilhões da saúde e da educação depois da eleição.",
+   "indicadores": [
+    "cortou 6 bilhoes",
+    "corte de 6 bilhoes",
+    "cortar 6 bilhoes",
+    "corta 6 bilhoes",
+    "6 bilhoes da saude",
+    "6 bilhoes da educacao",
+    "r 6 bilhoes",
+    "corte na saude",
+    "corte na educacao",
+    "cortes na saude",
+    "cortes na educacao",
+    "lula cortou",
+    "cortou da saude",
+    "cortou da educacao",
+    "tirou da saude",
+    "tirou da educacao"
+   ],
+   "excluir_trechos": [
+    "nao cortou",
+    "nao houve corte"
+   ]
+  },
+  "episodio_greve_sergipe": {
+   "nome": "Episódio B: greve de professores em Sergipe",
+   "definicao": "Trata do vídeo da greve de professores em Sergipe (apresentado como reação a corte).",
+   "indicadores": [
+    "greve",
+    "grevistas",
+    "professores protestam",
+    "protesto de professores",
+    "sergipe",
+    "aracaju",
+    "sintese"
+   ],
+   "excluir_trechos": []
+  },
+  "contexto_temporal": {
+   "nome": "Situa a data (é antigo)",
+   "definicao": "Diz que o conteúdo é antigo, de outra época ou fora de contexto (janeiro de 2023, julho de 2024).",
+   "indicadores": [
+    "janeiro de 2023",
+    "em 2023",
+    "de 2023",
+    "julho de 2024",
+    "em 2024",
+    "de 2024",
+    "video antigo",
+    "fala antiga",
+    "reportagem antiga",
+    "noticia antiga",
+    "conteudo antigo",
+    "e antigo",
+    "e antiga",
+    "fora de contexto",
+    "descontextualizad*",
+    "tirado de contexto",
+    "na epoca",
+    "na ocasiao",
+    "ha tres anos",
+    "ha dois anos",
+    "voltou a circular",
+    "voltou a repercutir"
+   ],
+   "excluir_trechos": []
+  },
+  "desmentido_checagem": {
+   "nome": "Desmentido e checagem",
+   "definicao": "Diz que é falso ou enganoso, cita checagem, ou explica o que de fato aconteceu (congelamento/bloqueio, não corte).",
+   "indicadores": [
+    "fake",
+    "fake news",
+    "falso",
+    "falsa",
+    "enganoso",
+    "enganosa",
+    "mentira*",
+    "checagem",
+    "aos fatos",
+    "lupa",
+    "fato ou fake",
+    "estadao verifica",
+    "comprova",
+    "nao e verdade",
+    "congelamento",
+    "congelou",
+    "bloqueio",
+    "contingenciamento",
+    "nao cortou",
+    "nao houve corte",
+    "entenda"
+   ],
+   "excluir_trechos": [
+    "fake news do stf"
+   ]
+  },
+  "critica_equivalencia": {
+   "nome": "Crítica à equivalência e denúncia das listas",
+   "definicao": "Diz que boicote de consumidor não é o mesmo que listas, demissão ou perseguição de pessoas; enquadra as listas como crime (MPT, PGR, PF).",
+   "indicadores": [
+    "nao e a mesma coisa",
+    "nao e o mesmo",
+    "e diferente",
+    "falsa equivalencia",
+    "nada a ver",
+    "liberdade de escolha",
+    "escolher onde",
+    "direito de escolher",
+    "listas de",
+    "lista de",
+    "demissao",
+    "demitir",
+    "perseguicao",
+    "perseguir pessoas",
+    "crime",
+    "e crime",
+    "assedio",
+    "ministerio publico do trabalho",
+    "mpt",
+    "pgr",
+    "procuradoria geral",
+    "policia federal"
+   ],
+   "excluir_trechos": [
+    "agora e crime",
+    "nao e crime",
+    "so se torna crime",
+    "crime de responsabilidade"
+   ]
+  },
+  "informacao_noticia": {
+   "nome": "Informação e notícia",
+   "definicao": "Formato de notícia ou explicação (\"voltou a circular\", \"segundo\", \"afirmou que\", nome de veículo).",
+   "indicadores": [
+    "segundo o",
+    "segundo a",
+    "de acordo com",
+    "afirmou que",
+    "disse que",
+    "em nota",
+    "reportagem",
+    "cnn",
+    "metropoles",
+    "gazeta do povo",
+    "pleno news",
+    "g1",
+    "folha",
+    "uol",
+    "estadao",
+    "entenda"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, deboche ou ironia na publicação, venha de que lado vier. A direção da ironia (contra quem) é decidida pelo codificador humano.",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "ironia",
+    "piada",
+    "palhacada",
+    "comedia",
+    "meme*"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

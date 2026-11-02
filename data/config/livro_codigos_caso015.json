@@ -1,0 +1,286 @@
+{
+ "titulo": "Livro de códigos — caso 015: bolhas de apoio — quem declarou voto no 2º turno (ODI Atlas)",
+ "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 01/11/2026, 21h3x: padronização dos casos, \"um livro por caso\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho do livro do caso 014: unidade de registro = cada publicação (texto/legenda do post, sem links) de perfis com 100 mil seguidores ou mais; codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão), comparados depois de normalizar o texto (minúsculas, sem acentos, termo inteiro; '*' = prefixo); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Este caso não é de desinformação: é declaração pública de voto. Por isso o bloco 'incitacao' é usado, por padronização do esquema, para as DECLARAÇÕES (de voto, de apoio, de voto nulo/branco e de mudança de voto), e o bloco 'reacao' para a CRÍTICA, a CONTESTAÇÃO e a IRONIA dirigidas a declarações. As categorias de declaração são espelho exato uma da outra (Lula × Flávio, mesmos tipos de expressão, com o número do candidato trocado); 'voto contra' e 'justificativa' juntam o vocabulário dos dois lados numa só categoria. A codificação diz o que o texto declara, não o lado de quem publica, e não mede intenção de voto.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "incitacao": [
+   "declara_voto_lula",
+   "declara_voto_flavio",
+   "nulo_branco_nenhum",
+   "mudanca_voto"
+  ],
+  "reacao": [
+   "critica_contestacao",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "declara_voto_lula": {
+   "nome": "Declaração de voto ou apoio a Lula",
+   "definicao": "Declara voto, apoio ou \"estou com\" Lula (13) no 2º turno, ou pede voto nele.",
+   "indicadores": [
+    "voto no lula",
+    "votar no lula",
+    "voto em lula",
+    "votar em lula",
+    "meu voto e lula",
+    "meu voto e do lula",
+    "estou com lula",
+    "estou com o lula",
+    "to com lula",
+    "to com o lula",
+    "vou de lula",
+    "vou de 13",
+    "voto 13",
+    "eu voto 13",
+    "lula 13",
+    "#lula13",
+    "apoio a lula",
+    "apoio ao lula",
+    "declara apoio a lula",
+    "declaro meu voto no lula",
+    "confio meu voto",
+    "reeleger lula",
+    "#lulamelhordahistoria",
+    "#lulameupresidente",
+    "#lulapresidente",
+    "fechado com lula"
+   ],
+   "excluir_trechos": [
+    "nao voto no lula",
+    "nunca voto no lula",
+    "nao vou votar no lula",
+    "jamais votaria no lula",
+    "nao voto em lula"
+   ]
+  },
+  "declara_voto_flavio": {
+   "nome": "Declaração de voto ou apoio a Flávio Bolsonaro",
+   "definicao": "Declara voto, apoio ou \"estou com\" Flávio Bolsonaro (22) no 2º turno, ou pede voto nele.",
+   "indicadores": [
+    "voto no flavio",
+    "votar no flavio",
+    "voto em flavio",
+    "votar em flavio",
+    "meu voto e flavio",
+    "meu voto e do flavio",
+    "estou com flavio",
+    "estou com o flavio",
+    "to com flavio",
+    "to com o flavio",
+    "vou de flavio",
+    "vou de 22",
+    "voto 22",
+    "eu voto 22",
+    "flavio 22",
+    "bolsonaro 22",
+    "#flavio22",
+    "apoio a flavio",
+    "apoio ao flavio",
+    "declara apoio a flavio",
+    "declaro meu voto no flavio",
+    "eleger flavio",
+    "#flaviopresidente",
+    "#flavio22presidente",
+    "fechado com flavio"
+   ],
+   "excluir_trechos": [
+    "nao voto no flavio",
+    "nunca voto no flavio",
+    "nao vou votar no flavio",
+    "jamais votaria no flavio",
+    "nao voto em flavio"
+   ]
+  },
+  "nulo_branco_nenhum": {
+   "nome": "Voto nulo, branco ou em nenhum",
+   "definicao": "Declara que vai anular, votar em branco, não votar ou não apoiar nenhum dos dois.",
+   "indicadores": [
+    "voto nulo",
+    "votar nulo",
+    "vou anular",
+    "anular meu voto",
+    "anular o voto",
+    "anulo",
+    "voto em branco",
+    "votar em branco",
+    "voto branco",
+    "nenhum dos dois",
+    "nem lula nem flavio",
+    "nem flavio nem lula",
+    "nao voto em nenhum",
+    "nao vou votar",
+    "#votonulo",
+    "abstencao",
+    "nao vou apoiar nenhum"
+   ],
+   "excluir_trechos": [
+    "nao vou votar no",
+    "nao vou votar em"
+   ]
+  },
+  "mudanca_voto": {
+   "nome": "Mudança ou virada de voto",
+   "definicao": "Conta que votou em outro no 1º turno, que mudou de ideia ou que \"não precisa me convencer\" — o percurso até a declaração.",
+   "indicadores": [
+    "ia votar",
+    "eu ia votar",
+    "votei no renan",
+    "votei em renan",
+    "no primeiro turno votei",
+    "no 1o turno votei",
+    "mudei meu voto",
+    "mudei de voto",
+    "mudei de ideia",
+    "agora vou de",
+    "nao precisa me convencer",
+    "me convenceu",
+    "me convenceram",
+    "vou mudar meu voto",
+    "virei voto",
+    "decidi meu voto"
+   ],
+   "excluir_trechos": []
+  },
+  "voto_contra": {
+   "nome": "Voto contra o outro (rejeição)",
+   "definicao": "Justifica a declaração pela rejeição ao adversário: \"contra o PT\", \"contra o bolsonarismo\", \"qualquer um menos\", \"nunca votaria\".",
+   "indicadores": [
+    "contra o lula",
+    "contra o pt",
+    "contra o flavio",
+    "contra bolsonaro",
+    "contra o bolsonarismo",
+    "contra a extrema direita",
+    "contra a esquerda",
+    "qualquer um menos",
+    "nunca votaria",
+    "jamais votaria",
+    "nao voto no lula",
+    "nao voto no flavio",
+    "nao voto em lula",
+    "nao voto em flavio",
+    "antipetismo",
+    "antibolsonarismo",
+    "fora lula",
+    "fora bolsonaro",
+    "fora pt",
+    "#forabolsonaros",
+    "#foralula",
+    "voto util"
+   ],
+   "excluir_trechos": []
+  },
+  "justificativa": {
+   "nome": "Justificativa e pauta",
+   "definicao": "Explica o voto por uma pauta ou valor (democracia, economia, escala 6x1, família, Deus, liberdade, corrupção, segurança), dos dois lados.",
+   "indicadores": [
+    "democracia",
+    "pela democracia",
+    "escala 6x1",
+    "fim da escala",
+    "6x1",
+    "economia",
+    "emprego*",
+    "salario minimo",
+    "pela familia",
+    "a familia brasileira",
+    "familias brasileiras",
+    "deus patria",
+    "liberdade",
+    "liberdade de expressao",
+    "corrupcao",
+    "seguranca",
+    "soberania",
+    "futuro do brasil",
+    "o futuro",
+    "bolsa familia",
+    "imposto*",
+    "valores cristaos"
+   ],
+   "excluir_trechos": []
+  },
+  "critica_contestacao": {
+   "nome": "Crítica ou contestação a quem declarou",
+   "definicao": "Critica, lamenta ou contesta a declaração de alguém (decepção, deixar de seguir, \"isentão\", \"vendido\"), venha de que lado vier.",
+   "indicadores": [
+    "decepcao",
+    "decepcionad*",
+    "deixei de seguir",
+    "parei de seguir",
+    "perdeu um seguidor",
+    "unfollow",
+    "vergonha",
+    "lamentavel",
+    "isentao",
+    "isento*",
+    "em cima do muro",
+    "vendido*",
+    "vendida*",
+    "comprado*",
+    "cancelad*",
+    "quanto te pagaram",
+    "quanto recebeu",
+    "hipocrita*",
+    "hipocrisia",
+    "mudou de lado",
+    "traidor*"
+   ],
+   "excluir_trechos": [
+    "voto nao se vende"
+   ]
+  },
+  "informacao_noticia": {
+   "nome": "Informação e notícia sobre declarações",
+   "definicao": "Formato de notícia ou registro de terceiro (\"declara apoio\", \"declarou voto\", \"anuncia apoio\", \"disse que\").",
+   "indicadores": [
+    "declara apoio",
+    "declarou apoio",
+    "declara voto",
+    "declarou voto",
+    "declarando voto",
+    "anuncia apoio",
+    "anunciou apoio",
+    "disse que",
+    "afirmou que",
+    "em entrevista",
+    "segundo o",
+    "segundo a",
+    "de acordo com",
+    "manifestou apoio",
+    "apoio declarado"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, deboche ou ironia na publicação, venha de que lado vier. A direção da ironia (contra quem) é decidida pelo codificador humano.",
+   "indicadores": [
+    "kkk*",
+    "rsrs*",
+    "hahaha*",
+    "kakaka*",
+    "ironia",
+    "piada",
+    "palhacada",
+    "comedia",
+    "meme*"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}
