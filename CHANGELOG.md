@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.259 — Classes lematizadas dos comentários: casos 001 e 002 (reconstrução em andamento) (2026-11-02) ⚠️
+
+- `data/casos/001/busca.json` e `002/busca.json` foram regenerados por `scripts/build_caso_busca.py`, com lematização (dicionário do IRaMuTeQ), passo 3 e a regra dos 75%. Os GEXF de 002 e 003 também.
+- **001:** 7.511 comentários, 76,9% classificados, 8 classes terminais. Atinge o mínimo de 75%.
+- **002:** 173 comentários, 41,6% classificados, 3 classes. ⛔ **Não atinge o mínimo de 75%**: o corpus é pequeno demais para uma CHD estável. O JSON marca `atinge_minimo: false`, e a página deve ler essas classes como indicativas.
+- **003:** só os GEXF entraram; o `busca.json` do 003 e os demais casos (005–025) seguem na reconstrução local (script `regen_casos.sh`) e entram em outra entrada.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.258 — Caso 026, janonismo: "Exército do Lula" na eleição, repercussão no mundo e canais copiados (2026-11-02) ⚠️
 
 - **Por quê:** pedido do responsável (02/11, 01h38): "vamos criar mais um case, janonismo… o efeito dele durante as eleições, quero uma busca geral mundial do efeito e acompanhar o crescimento de grupos que surgiram em alguns países". Ele também indicou a matéria do g1 de 28/10 e o link do canal francês.

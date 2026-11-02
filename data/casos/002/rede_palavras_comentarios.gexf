@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gexf xmlns="http://gexf.net/1.3" version="1.3">
 <graph defaultedgetype="undirected">
-<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/></attributes>
+<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="ladrao" label="ladrao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="15"/></attvalues></node>
-<node id="realmente" label="realmente"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="sabe" label="sabe"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/></attvalues></node>
-<node id="brasil" label="brasil"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="kkk" label="kkk"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/></attvalues></node>
-<node id="kkkk" label="kkkk"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/></attvalues></node>
-<node id="teste" label="teste"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/></attvalues></node>
-<node id="kkkkk" label="kkkkk"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/></attvalues></node>
-<node id="perguntei" label="perguntei"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/></attvalues></node>
-<node id="google" label="google"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="25"/></attvalues></node>
-<node id="kkkkkkkk" label="kkkkkkkk"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="boa" label="boa"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/></attvalues></node>
-<node id="kkkkkk" label="kkkkkk"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/></attvalues></node>
-<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/></attvalues></node>
-<node id="verdade" label="verdade"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/></attvalues></node>
-<node id="fiz" label="fiz"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/></attvalues></node>
+<node id="google" label="google"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="25"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="perguntar" label="perguntar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="teste" label="teste"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="so" label="so"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="bom" label="bom"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="coisa" label="coisa"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="falar" label="falar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="estar" label="estar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G7"/></attvalues></node>
+<node id="risada" label="risada"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="42"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="mesmo" label="mesmo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="brasil" label="brasil"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="saber" label="saber"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="ladrao" label="ladrao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="15"/><attvalue for="2" value="G3"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="google" target="kkkkk" weight="3"/>
-<edge id="1" source="google" target="perguntei" weight="3"/>
-<edge id="2" source="google" target="sabe" weight="9"/>
-<edge id="3" source="brasil" target="ladrao" weight="4"/>
-<edge id="4" source="fiz" target="ladrao" weight="3"/>
-<edge id="5" source="fiz" target="lula" weight="3"/>
-<edge id="6" source="fiz" target="teste" weight="3"/>
-<edge id="7" source="google" target="ladrao" weight="4"/>
-<edge id="8" source="google" target="lula" weight="3"/>
-<edge id="9" source="ladrao" target="lula" weight="6"/>
-<edge id="10" source="ladrao" target="sabe" weight="3"/>
+<edge id="0" source="google" target="perguntar" weight="3"/>
+<edge id="1" source="google" target="risada" weight="7"/>
+<edge id="2" source="google" target="saber" weight="9"/>
+<edge id="3" source="risada" target="saber" weight="3"/>
+<edge id="4" source="brasil" target="ladrao" weight="4"/>
+<edge id="5" source="google" target="ladrao" weight="4"/>
+<edge id="6" source="google" target="lula" weight="3"/>
+<edge id="7" source="ladrao" target="lula" weight="6"/>
+<edge id="8" source="ladrao" target="risada" weight="5"/>
+<edge id="9" source="risada" target="teste" weight="3"/>
+<edge id="10" source="coisa" target="mesmo" weight="4"/>
+<edge id="11" source="coisa" target="perguntar" weight="3"/>
+<edge id="12" source="ladrao" target="saber" weight="3"/>
 </edges>
 </graph>
 </gexf>
