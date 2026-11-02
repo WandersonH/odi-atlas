@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.311 — Kwai: hashtag vai no campo de hashtag do ator; teste do 029 e perfis do TSE coletados (2026-11-02) ⚠️
+
+- Teste Kwai no caso 029 (run 41518724122, modo teste, US$ 0,05 de teto): "#xenofobia" como palavra de busca com postedAfter 25/10 → 0 itens, US$ 0,00.
+- Esquema do ator unfenced-group~kwai-scraper (diag-atores-tiktok, grátis): tem "hashtags" (feed da hashtag, "vai bem mais fundo que a busca por palavra"; a busca por palavra para em ~20 vídeos) e "postedAfter" (vídeo fora do período não é cobrado). O coletor mandava a hashtag como palavra de busca. Agora: hashtags do caso no campo "hashtags"; frases do caso (buscas_kwai ou, na falta, as da busca do TikTok) como palavra de busca completada pela hashtag.
+- Perfil do TSE (run 41517438483 de `tse-perfil.yml`): eleitorado 2026 com 11.046.845 linhas, 158.745.463 eleitores (141.301.540 com biometria; 1.970.165 com deficiência; 38.472 com nome social), 5.757 municípios, dimensões gênero, estado civil, faixa etária, escolaridade, raça/cor, identidade de gênero, quilombola, intérprete de Libras. Comparecimento e abstenção: 11.060.908 linhas, só o 1º turno no arquivo publicado em 21/10 (aptos 158.745.463; comparecimento 125.277.230; abstenção 33.468.233), dimensões inclusive grupo e idioma indígena. Saída em `data/tse/perfil/`.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.310 — TikTok e Kwai pagos em todos os casos: teto total de US$ 10 (2026-11-02) 🔜
 
 - Autorização do responsável (02/11/2026, 17h22), sobre a ficha "TikTok ⛔ não coletada · coleta paga ainda não feita · Kwai 0 publicações": "resolve essa merda vc tem 10 dolares".

@@ -199,8 +199,11 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
             out.append((f"#{t}", ATOR["facebook"], {"query": f"#{t}", "search_type": "posts", "max_results": n, "start_date": d, "recent_posts": False}))
     elif rede == "kwai":
         for t in tags:
-            # o feed da hashtag não trouxe nada desde 16/10 (run 39132035304); busca por palavra completada com o feed da hashtag
-            out.append((f"#{t}", ATOR["kwai"], {"searchTerms": [t], "expandSearchWithHashtag": True, "maxItems": n, "postedAfter": d}))
+            # 02/11/2026: o esquema do ator (diag-atores-tiktok) tem o campo "hashtags" (feed da hashtag, "vai bem mais fundo que a
+            # busca por palavra") e "postedAfter" (vídeo fora do período não é cobrado); antes a hashtag ia como palavra de busca
+            out.append((f"#{t}", ATOR["kwai"], {"hashtags": [t], "maxItems": n, "postedAfter": d}))
+        for q in caso.get("buscas_kwai") or caso.get("buscas_tiktok") or []:  # frases do caso (as mesmas da busca do TikTok)
+            out.append((q, ATOR["kwai"], {"searchTerms": [q], "expandSearchWithHashtag": True, "maxItems": n, "postedAfter": d}))
     elif rede == "tiktok":
         # 02/11/2026: sem filtro, a busca do apidojo devolveu vídeos de maio (teste no 006). O esquema do ator (run 41501163374)
         # tem dateRange (filtro de data da busca do TikTok) e sortType DATE_POSTED: mais recentes primeiro, na janela do caso.
