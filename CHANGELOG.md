@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.250 — Corpus do YouTube com estabilidade e similitude (2026-11-02) ⚠️
+
+- `data/corpus/chd_reinert.json` foi regenerado com a CHD de C19.248, que inclui o passo 3, a estabilidade e a similitude.
+  - **Classes:** 4, com 414 · 559 · 290 · 340 segmentos e aproveitamento de 75,7%.
+  - **Estabilidade:** associação fraca entre as duas metades do vocabulário.
+  - **Similitude:** 100 formas, também em `data/corpus/similitude_youtube.gexf`.
+- As outras cinco redes seguem na regeneração local.
+- **Teste:** `python -m unittest discover -s tests` OK.
+
 ## C19.249 — Exportação para o NodeXL no modelo do responsável (.xlsx com métricas e grupos) (2026-11-02) ✅
 
 - **Modelo:** `node_vacina_2.xlsx`, enviado às 00h34.
