@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.280 — Classes lematizadas do caso 024 (reconstrução automática, commit por caso) (2026-11-02) ⚠️
+
+- `data/casos/024/busca.json` reconstruído com a CHD nova (lematização, passo 3, regra dos 75%; 1º fator aleatorizado) em 0 s. Comentários: 374; classificados: 60,7%; classes terminais: None; segmentos por classe: [14, 119, 46, 14, 11, 23]; atinge o mínimo de 75%: ⛔ não.
+- Teste: `python -m unittest discover -s tests` roda antes do commit; se falhar, não há commit.
+
 ## C19.279 — Classes lematizadas do caso 023 (reconstrução automática, commit por caso) (2026-11-02) ⚠️
 
 - `data/casos/023/busca.json` reconstruído com a CHD nova (lematização, passo 3, regra dos 75%; 1º fator aleatorizado) em 37 s. Comentários: 3.255; classificados: 76,9%; classes terminais: 6; segmentos por classe: [833, 298, 431, 151, 501, 290]; atinge o mínimo de 75%: sim.
