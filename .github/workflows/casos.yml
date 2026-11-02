@@ -100,6 +100,8 @@ jobs:
           if [ -f "$ODI_INTERNO_DIR/casos/025/itens.csv.gz" ]; then python scripts/caso_origem.py --caso 025 >> b.txt 2>&1 || rc=1; fi
           # quem dissemina: perfis declarados ao TSE × publicações do caso, partidos, postagens (pedido de 02/11/2026, 15h57)
           python scripts/build_atores_caso.py >> b.txt 2>&1 || rc=1
+          # YouTube e redes vazias na linha do tempo de bolhas (pedido de 02/11/2026, 16h32)
+          python scripts/build_bolhas_extra.py >> b.txt 2>&1 || rc=1
           # Bardin (pré-codificação pelo livro de códigos do caso), pedido de 28/10/2026, 00h05
           for c in $(ls data/config | sed -n 's/^livro_codigos_caso\([0-9]*\)\.json$/\1/p'); do
             if [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; python scripts/saturacao_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi

@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.303 — Linha do tempo de bolhas: YouTube e redes sem publicações (Kwai) passam a aparecer (2026-11-02) ⚠️
+
+- Pergunta do responsável (02/11/2026, 16h32, print do caso 016): "porque vc não incluiu o youtube e kwai aqui nesses gráficos?".
+- Causa: o gráfico só desenhava as redes com pontos em `bardin.json`, que vêm das publicações coletadas por termo (X, Instagram, Facebook, TikTok, Kwai). Os vídeos do YouTube ficam em outra coleta (busca do caso, privado `busca_coleta.json`), e uma rede sem nenhuma publicação sumia em vez de aparecer vazia. No Kwai, o motivo aparecia como "⛔ teto da rede esgotado", mas o teto do Kwai é US$ 0,00 em todos os casos conferidos (014, 016, 029 em `data/config/casos.json`): nunca houve verba autorizada; nas rodadas antigas com verba (014, 28/10) o ator devolveu 0 itens.
+- O quê: novo `scripts/build_bolhas_extra.py` grava `data/casos/<id>/bolhas_extra.json` com os vídeos do YouTube do período (hora, visualizações; canal e link só com 10 mil+ inscritos) e a situação das redes coletadas sem publicação (com o teto do caso). A página junta os vídeos como faixa "YouTube" (cinza: vídeos não passam pela pré-codificação; tamanho = visualizações) e desenha a faixa vazia com o motivo. Roda também no passo de agregados do `casos.yml`.
+- Números (clone do privado de 02/11 ~16h): vídeos do YouTube no período, por caso: 001 173, 002 22, 003 214, 005 254, 006 340, 007 107, 008 75, 009 148, 013 253, 014 127, 016 16, 017 83, 020 47, 023 53; 0 em 021, 022, 024, 025, 027–031 (busca do YouTube sem vídeos no período ou ainda presa na cota); sem busca do YouTube no privado: 010, 011, 012, 015, 018, 019. Kwai sem publicações em 26 dos 29 casos.
+- Teste: `python -m unittest discover -s tests` OK; caso 016 aberto no Chromium: faixas X 559, Facebook 62, Instagram 56, YouTube 16, TikTok 5 e Kwai 0 com o motivo; sem erro de JS.
+- Pendente: verba para o Kwai depende de autorização do responsável (valor por caso).
+
 ## C19.302 — Caso 002: 12 execuções da bateria de consultas ao Google registradas (2026-11-02) ⚠️
 
 - Origem: 12 capturas de tela enviadas pelo responsável em 02/11/2026, 16h15 ("case 02"), do Google com Visão geral criada por IA e de uma conversa de seguimento no modo IA.
