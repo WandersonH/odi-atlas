@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.292 — Intolerância na página de cada caso, com arquivos para baixar e conferir (casos 014, 021, 022) (2026-11-02) ⚠️
+
+- Pedido do responsável (02/11/2026, 15h19): "queria que intolerância já tivesse disponível pra pessoa baixar o arquivo e conferir como fizemos com todo resto". Substitui a regra da proposta de só exibir depois da validação: o bloco sai marcado "⚠️ triagem automática, não validada".
+- Novo `scripts/intolerancia_publico.py` (não roda modelo; reorganiza os escores já calculados): grava `data/casos/<id>/intolerancia_escores.csv` (uma linha por texto: rede, tipo, dia, escore de cada rótulo, marcação pelo limiar 0,5; sem texto, sem id e sem conta) e `intolerancia_resumo.csv` (modelo × rede × rótulo), e acrescenta "arquivos" no `intolerancia.json`. Passa a rodar no `intolerancia.yml` depois da triagem.
+- Rodado localmente nos escores do run 41406452552: 014 = 15.724 linhas, 021 = 5.478, 022 = 3.316; somando a coluna "marcado" do arquivo, a ofensividade dá 5.879 / 1.845 / 1.147, igual ao JSON (C19.290).
+- Página: o dossiê de cada caso com `intolerancia.json` ganha o bloco "INTOLERÂNCIA · TRIAGEM AUTOMÁTICA" com universo (⛔), amostra lida por rede, como foi tirada, critério, tabelas dos dois modelos, links de download e situação da validação (textos da amostra só no privado).
+- Teste: `tests/test_intolerancia_publico.py` (sem texto nem id no arquivo público; contagem reproduz); `python -m unittest discover -s tests` OK; página aberta no Chromium (caso 021): bloco renderizado, 3 links, sem erro de JS, sem rolagem lateral a 390 px.
+- Pendente: ⛔ codificação humana da amostra (duas pessoas, kappa ≥ 0,61); demais casos dependem de rodar `intolerancia.yml` neles.
+
 ## C19.291 — Casos 028 a 031: coleta concluída sem TikTok; aviso do Google Trends corrigido (2026-11-02) ⚠️
 
 - Coletas (filas fila12/fila13, `casos.yml`, todas com sucesso): 028 runs 41411818419, 41414109423, 41415484231; 031 runs 41417442448, 41419406363, 41422191731; 029 runs 41424557273, 41427106321, 41429688827; 030 runs 41432276871, 41433985889, 41436760165. Sem TikTok (ver C19.289).

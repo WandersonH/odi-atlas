@@ -2438,13 +2438,31 @@ function caso(c,p){const mz=c.marco_zero&&c.marco_zero.geral;const bn=REDES.map(
   <p class="yt-cloudnote"><a href="./data/casos/${esc(c.id)}/caso.json" download>↓ Agregados do caso (JSON)</a></p></div>`;}
 /* 02/11/2026 · Pedido do responsável ("uma mostra resumo, outras manda pro caso detalhado"): toda ficha abre a página do caso, e o
    dossiê (antes só no índice, e só para 001, 002, 003 e 005) vai para o topo de cada página de caso que tem caso.json. */
+/* Intolerância (02/11/2026, 15h19: "queria que intolerância já tivesse disponível pra pessoa baixar o arquivo e conferir"):
+   triagem automática por modelo, NÃO validada; universo ⛔; arquivos sem texto, sem id e sem conta. */
+const ROT={True:'ofensivo',Sexism:'sexismo',Homophobia:'homofobia',Racism:'racismo',Ideology:'ideologia',Body:'corpo'};const RD={x:'X',instagram:'Instagram',facebook:'Facebook',tiktok:'TikTok',youtube:'YouTube (comentários)',kwai:'Kwai'};
+const pc=v=>v==null?'—':String(v).replace('.',',')+'%';
+function intol(I,id){const L=I.lidos||{},A=I.arquivos||{},V=I.validacao||{};let h='';
+ Object.entries(I.modelos||{}).forEach(([nome,m])=>{if(!m.total){h+=`<p class="yt-cloudnote">⛔ ${esc(nome)}: ${esc(m.erro||m.motivo||'modelo não carregou')}</p>`;return;}
+  const rs=(m.rotulos_contados_como_sinal||[]),multi=rs.length>1;
+  h+=`<h4 style="margin:14px 0 4px">${nome==='ofensividade_hatebr'?'Linguagem ofensiva':'Discurso de ódio, por alvo'} <small class="muted">· <code>${esc(m.modelo)}</code></small></h4><p class="yt-cloudnote">${esc(m.descricao)}</p>
+  <div class="db-scroll"><table class="db-tab"><thead><tr><th>Rede</th><th>Lidos</th><th>Marcados</th><th>%</th>${multi?rs.map(r=>`<th>${esc(ROT[r]||r)}</th>`).join(''):''}</tr></thead><tbody>
+  ${Object.entries(m.por_rede).map(([r,t])=>`<tr><td>${esc(RD[r]||r)}</td><td class="n">${fmt(t.lidos)}</td><td class="n">${fmt(t.sinalizados_algum_rotulo)}</td><td class="n">${pc(t.pct_algum)}</td>${multi?rs.map(x=>`<td class="n">${pc((t.por_rotulo[x]||{}).pct)}</td>`).join(''):''}</tr>`).join('')}
+  <tr><td><b>Total</b></td><td class="n">${fmt(m.total.lidos)}</td><td class="n">${fmt(m.total.sinalizados)}</td><td class="n">${pc(m.total.pct)}</td>${multi?rs.map(()=>'<td></td>').join(''):''}</tr></tbody></table></div>`;});
+ const arq=A.escores?`<p class="yt-cloudnote"><b>Baixar e conferir:</b> <a href="./${esc(A.escores)}" download>↓ Escores por texto (CSV, ${fmt(A.linhas_escores)} linhas)</a> · <a href="./${esc(A.resumo)}" download>↓ Tabela resumo (CSV)</a> · <a href="./data/casos/${id}/intolerancia.json" download>↓ JSON com método</a>. ${esc(A.nota||'')}</p>`:`<p class="yt-cloudnote"><a href="./data/casos/${id}/intolerancia.json" download>↓ JSON com método</a> · ⛔ escores por texto ainda não gerados.</p>`;
+ return `<details class="cs-dossie-box" open><summary><b>INTOLERÂNCIA · TRIAGEM AUTOMÁTICA</b><span>⚠️ não validada · gerada em ${br(I.gerado_em_utc)}</span></summary>
+  <div class="odi-signal">${esc(I.aviso||'')}</div>
+  <p class="yt-cloudnote"><b>Universo:</b> ${esc(I.universo||'⛔ desconhecido')}. <b>Amostra lida:</b> ${fmt(L.textos_unicos)} textos únicos com 3 palavras ou mais (${Object.entries(L.por_rede||{}).map(([r,n])=>esc(RD[r]||r)+' '+fmt(n)).join(' · ')}). <b>Como foi tirada:</b> todas as publicações coletadas do caso por termo, mais os comentários do YouTube quando há; textos repetidos contam uma vez. <b>Critério:</b> o texto é marcado quando o escore do modelo num rótulo de ofensa ou ódio é ≥ ${String(I.limiar).replace('.',',')}. Os percentuais valem só para essa amostra.</p>
+  ${h}${arq}
+  <p class="yt-cloudnote"><b>Validação:</b> ${esc(V.situacao||'⛔ pendente')}${V.amostra?` · amostra de ${esc(V.amostra)} textos${V.desenho?' ('+esc(V.desenho)+')':''}`:''}. Os textos dessa amostra ficam só no repositório privado.</p></details>`;}
 const FEITOS=new Set();
 async function dossie(id,host){const meta=IDX.casos.find(c=>c.id===id);if(!meta||!host)return;const p='ds'+id;
  const volta='<p class="cs-volta"><a href="#" data-aba="casos">← todos os casos</a></p>';
  if(!meta.arquivo){host.innerHTML=volta+'<p class="yt-cloudnote">Este caso não tem coleta por termo nas redes (dossiê): as análises dele estão abaixo.</p>';ligar(host);return;}
  host.innerHTML=volta+'<div class="odi-signal">Carregando o dossiê do caso…</div>';const c=await J('./'+meta.arquivo);
  if(!c){host.innerHTML=volta+'<div class="odi-signal">⛔ Falha ao ler o dossiê do caso.</div>';ligar(host);return;}
- host.innerHTML=volta+`<details class="cs-dossie-box" open><summary><b>DOSSIÊ DO CASO · REDES</b><span>coleta de ${br(c.coletado_em)} · ${fmt(c.publicacoes)} publicações de ${fmt(c.contas)} contas</span></summary>${caso(c,p)}</details><div class="cs-sec"><b>ANÁLISES DO CASO</b><span></span></div>`;
+ host.innerHTML=volta+`<details class="cs-dossie-box" open><summary><b>DOSSIÊ DO CASO · REDES</b><span>coleta de ${br(c.coletado_em)} · ${fmt(c.publicacoes)} publicações de ${fmt(c.contas)} contas</span></summary>${caso(c,p)}</details><div class="cs-sec"><b>ANÁLISES DO CASO</b><span></span></div><div id="${p}Intol"></div>`;
+ J(`./data/casos/${id}/intolerancia.json`).then(I=>{const el=$(p+'Intol');if(el&&I)el.innerHTML=intol(I,id);});
  let fr='Todas';linha(p+'Linha',c,fr);
  $(p+'Rede').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{fr=b.dataset.v;$(p+'Rede').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));linha(p+'Linha',c,fr);}));
  if(BUSCA.has(c.id)&&$(p+'Jan')){janBusca=JAN0[c.id]||'today 12-m';$(p+'Jan').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===janBusca)));const B=await J(`./data/casos/${c.id}/busca.json`);const desenhar=()=>linhaBusca($(p+'Trends'),B&&B.trends);desenhar();
