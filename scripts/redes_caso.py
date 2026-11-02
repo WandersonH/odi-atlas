@@ -157,7 +157,12 @@ def respostas(rows: list[dict]) -> tuple[dict, dict, dict]:
     return nos, dict(ar), {**resumo, "desenho": _desenho(nos, ar, 150)}
 
 
-def classes(textos: list[str], anos: list[str]) -> dict | None:
+ULTIMOS_ROTULOS: list[int] = []
+
+
+def classes(textos: list[str], anos: list[str], grupos: list[str] | None = None, rotulo_grupo: str | None = None) -> dict | None:
+    """CHD; com `grupos` (um rótulo por texto: canal, rede, época, língua…), cada classe traz a composição por grupo e o χ² de associação
+    (01/11/2026: formato único com gráfico, pedido do responsável)."""
     import numpy as np
     if len(textos) < 100:
         return None
@@ -165,6 +170,8 @@ def classes(textos: list[str], anos: list[str]) -> dict | None:
     n_at = int((X.sum(1) > 0).sum())
     mc = max(cr.MIN_CLASSE, int(0.05 * n_at))
     rot, arvore = cr.chd(X, k=6, min_classe=mc)
+    global ULTIMOS_ROTULOS
+    ULTIMOS_ROTULOS = rot.tolist()  # classe do Atlas por texto, na ordem recebida (para comparar com o IRaMuTeQ; vai só para o privado)
     ok = rot > 0
     if not ok.any():
         return None
@@ -178,8 +185,19 @@ def classes(textos: list[str], anos: list[str]) -> dict | None:
         out.append({"classe": int(k), "segmentos": int(m.sum()), "pct": round(100 * m.sum() / ok.sum(), 1),
                     "formas": [[voc[j], round(float(ch[j]), 1)] for j in idx],
                     "por_ano": {a: int((m & (anos == a)).sum()) for a in sorted(set(anos.tolist()))}})
+        if grupos is not None:
+            gr = np.array(grupos)
+            comp = {}
+            for g in sorted(set(gr[ok].tolist())):
+                em = (gr == g) & ok
+                dentro = int((m & em).sum())
+                vch = cr.chi2_assoc(np.array([float(dentro)]), np.array([float(em.sum())]), int(m.sum()), int(ok.sum()))[0]
+                comp[g] = {"n": dentro, "pct_da_classe": round(100 * dentro / m.sum(), 1),
+                           "pct_do_grupo": round(100 * dentro / max(1, int(em.sum())), 1), "chi2": round(float(vch), 1)}
+            out[-1]["por_grupo"] = comp
     return {"comentarios": len(textos), "classificados": int(ok.sum()), "pct_classificados": round(100 * ok.sum() / len(textos), 1), "classes": out,
             "arvore": arvore, "min_classe": mc, "aproveitamento": cr.aproveitamento(rot, len(textos)),
+            "variavel": rotulo_grupo if grupos is not None else None,
             "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados "
                     "por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado."}
 

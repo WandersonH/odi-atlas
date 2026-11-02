@@ -125,8 +125,25 @@ def redes(caso: str, c: dict, pv: Path, pasta: Path, vids: set) -> tuple[dict, d
             n, a, r = rc.respostas(rows)
             rc.gexf(n, a, pasta / "rede_respostas_comentarios.gexf", dirigida=True)
             out["respostas"] = {**r, "o_que_e": "quem responde a quem nos comentários; autores sempre como código (A0001…)"}
-            cls = rc.classes(textos, [(r.get("publicado_em") or "0000")[:4] for r in rows])
+            # variável do gráfico das classes: canal do vídeo comentado (os 4 com mais comentários; canal com menos de 10 mil inscritos
+            # não é nomeado). 01/11/2026, formato único das classes
+            vs = {v["id"]: v for v in (c.get("youtube") or {}).get("videos", [])}
+            nome = lambda v: (v.get("canal") if (v.get("inscritos") or 0) >= 10000 else "canais com menos de 10 mil inscritos") if v else "vídeo sem dado"  # noqa: E731
+            canais = [nome(vs.get(r["video_id"])) for r in rows]
+            top = {k for k, _ in Counter(canais).most_common(4)}
+            canais = [k if k in top else "outros canais" for k in canais]
+            cls = rc.classes(textos, [(r.get("publicado_em") or "0000")[:4] for r in rows], canais, "canal do vídeo comentado")
             (pv / "corpus_iramuteq_comentarios.txt").write_text(rc.corpus_iramuteq(rows), encoding="utf-8")
+            # 01/11/2026: classe do Atlas por comentário, na ordem do corpus do IRaMuTeQ (comentários sem texto ficam fora dos dois)
+            if cls and len(rc.ULTIMOS_ROTULOS) == len(rows):
+                with gzip.open(pv / "classes_atlas_por_comentario.csv.gz", "wt", encoding="utf-8", newline="") as fh:
+                    w = csv.writer(fh, delimiter=";")
+                    w.writerow(["texto_no_corpus_iramuteq", "comment_id", "video_id", "classe_atlas"])
+                    k = 0
+                    for r, cl in zip(rows, rc.ULTIMOS_ROTULOS):
+                        tem = bool(re.sub(r"[*\-$]", " ", r.get("texto") or "").strip())
+                        k += tem
+                        w.writerow([k if tem else "", r.get("comment_id", ""), r.get("video_id", ""), cl if cl > 0 else "não classificado"])
     except Exception as e:  # noqa: BLE001 — sem numpy/networkx a coleta não cai
         out["erro"] = f"{type(e).__name__}: {str(e)[:200]}"
     return out, cls

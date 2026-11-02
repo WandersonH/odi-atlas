@@ -38,7 +38,7 @@ import plataformas as pl  # noqa: E402
 K = 6
 MIN_FREQ = 3
 MIN_CLASSE = 10
-MIN_CLASSE_PCT = 0.08  # classe mínima = 8% dos segmentos (ver 'sensibilidade' no JSON)
+MIN_CLASSE_PCT = 0.05  # 01/11/2026: regra única do Atlas (era 8% no corpus principal); 3%, 5% e 8% ficam na sensibilidade
 SENSIBILIDADE = (0.03, 0.05, 0.08)
 CHI_CRIT = 3.84
 STOP_EXTRA = set(bc.norm("""tudo todos esse essa isso aqui ali hoje agora sobre para pelo pela pelos pelas mais menos muito
@@ -129,13 +129,13 @@ def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: i
     empurrava o corte extremo até o mínimo: várias classes saíam com exatamente o tamanho mínimo, efeito da regra e não do corpus).
     Agora, como no rainette (min_split_members) e no IRaMuTeQ (tamanho mínimo de classe): um grupo só é dividido se tiver 2× o
     mínimo; um grupo que sai da divisão com menos que o mínimo não vira classe (fica na árvore como "eliminado" e seus segmentos
-    ficam não classificados). A divisão continua pela maior classe até haver k classes ou até max_divisoes (padrão 4k)."""
+    ficam não classificados). A divisão continua pela maior classe até haver k classes ou até max_divisoes (padrão 10k)."""
     ativos = np.where(X.sum(1) > 0)[0]
     arvore = [{"id": 0, "n": int(len(ativos)), "filhos": None}]
     folhas = {0: ativos}
     prox = 1
     indivisiveis, eliminados = set(), set()
-    divisoes, limite = 0, max_divisoes or 4 * k
+    divisoes, limite = 0, max_divisoes or 10 * k  # 01/11/2026: regra única, até 10 divisões por classe pedida
     while len([f for f in folhas if f not in eliminados]) < k and divisoes < limite:
         candidatas = [c for c in folhas if c not in indivisiveis and c not in eliminados and len(folhas[c]) >= 2 * min_classe]
         if not candidatas:
@@ -192,7 +192,9 @@ def aproveitamento(rot: np.ndarray, n_segmentos: int) -> dict:
     """Taxa de segmentos classificados e o teste do mínimo de 75% (Camargo & Justo, 2013)."""
     pct = round(100 * int((rot > 0).sum()) / max(1, n_segmentos), 1)
     return {"pct_classificados": pct, "minimo_pct": APROVEITAMENTO_MIN, "atinge_minimo": pct >= APROVEITAMENTO_MIN,
-            "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468"}
+            "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
+            "regra": "classe mínima de 5% dos segmentos ativos (mín. 10), até 10 divisões por classe pedida, grupo menor que o mínimo fica não classificado",
+            "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"}
 
 
 def chi2_assoc(dentro: np.ndarray, total: np.ndarray, n_dentro: int, n: int) -> np.ndarray:
@@ -261,12 +263,19 @@ def main(argv=None) -> int:
                       "Sem lematização. Os nomes das classes devem ser dados pelo pesquisador. Conferir no IRaMuTeQ com o corpus exportado."),
            "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
            "sensibilidade": sens,
-           "nota_sensibilidade": "Com classe mínima de 3% ou 5%, várias classes se formam por nomes próprios de convidados (ex.: Dani Marques, Jeffrey Chiquini), sem leitura temática; 8% foi adotado por isso. As três versões ficam registradas aqui.",
+           "nota_sensibilidade": "Regra única do Atlas desde 01/11/2026: classe mínima de 5%, até 60 divisões, aproveitamento mínimo de 75%. Antes, com o corte forçado no mínimo, 8% tinha sido adotado aqui porque 3% e 5% formavam classes por nomes próprios; as três versões ficam registradas para comparação. Aguardando conferência no IRaMuTeQ.",
            "segmentos_total": len(linhas), "segmentos_classificados": n,
            "pct_classificados": round(100 * n / max(1, len(linhas)), 1), "formas_ativas": len(voc),
            "arvore": arvore, "classes": classes, "aproveitamento": aproveitamento(rot, len(linhas))}
     out["plataforma"] = plat
     pl.caminho(root, plat, "chd").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    # 01/11/2026: classe do Atlas por segmento, na ordem do arquivo de segmentos, para comparar com o IRaMuTeQ (candidatos: dado público)
+    saida = pl.caminho(root, plat, "chd").with_name(f"{plat}_classes_atlas_por_segmento.csv")
+    with open(saida, "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh)
+        w.writerow(["linha_no_arquivo_de_segmentos", "video_id", "cand", "classe_atlas"])
+        for i, (l, cl) in enumerate(zip(linhas, rot.tolist()), 1):
+            w.writerow([i, l.get("video_id", ""), l.get("cand", ""), cl if cl > 0 else "não classificado"])
     print(f"CHD [{plat}]: {len(linhas)} segmentos, {n} classificados ({out['pct_classificados']}%), {len(voc)} formas, {len(classes)} classes")
     for c in classes:
         print(f"  classe {c['classe']} ({c['pct']}%): " + ", ".join(f[0] for f in c["formas"][:10])

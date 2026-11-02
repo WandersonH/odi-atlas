@@ -4,6 +4,35 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.238 — CHD corrigida no ar, formato único das classes com gráfico, redes também para o NodeXL (2026-11-01) ⚠️
+
+- **Decisão do responsável** (01/11, 21h02): validar uma vez só no IRaMuTeQ, já na versão corrigida. O ramo `chd-correcao` (C19.237) entrou na `main`.
+- **Regra única do Atlas:**
+  - Classe mínima de 5% dos segmentos ativos (mínimo de 10).
+  - Até 10 divisões por classe pedida (60 para 6 classes).
+  - Grupo menor que o mínimo fica não classificado.
+  - Aproveitamento mínimo de 75% (Camargo & Justo, 2013): abaixo disso, ⛔ "não interpretar".
+  - Toda análise sai com "⛔ conferência no IRaMuTeQ pendente".
+  - O corpus principal passou de 8% para 5% de classe mínima. A nota de sensibilidade explica.
+- **Formato único na página** (`odiChdHtml`):
+  - Mostra o aviso de aproveitamento, o dendrograma (sem os grupos eliminados), a barra da variável em cada classe com o χ² de associação e as formas em tamanho proporcional ao χ².
+  - Aplicado a: casos (comentários do YouTube; variável = canal do vídeo, com os 4 canais de mais comentários nomeados se tiverem 10 mil+ inscritos), comentários dos candidatos nas 5 redes, imprensa, caso 019 (por língua), análise Bardin + CHD e debate (variável = orador).
+  - Os 6 painéis do corpus dos candidatos ganharam a árvore podada e o aviso de aproveitamento, com links para o corpus do IRaMuTeQ e para a classe do Atlas por segmento.
+- **Para a validação:**
+  - `chd_reinert.py` escreve `data/corpus/<rede>_classes_atlas_por_segmento.csv`: a classe do Atlas por segmento, na ordem do arquivo de segmentos. São candidatos, dado público.
+  - `build_caso_busca.py` escreve no privado `casos/<id>/classes_atlas_por_comentario.csv.gz`, na ordem do `corpus_iramuteq_comentarios.txt`.
+- **NodeXL** (pedido das 21h04): cada link de rede em GEXF ganhou ao lado "GraphML" e "NodeXL arestas / vértices (CSV)", convertidos no navegador a partir do GEXF publicado.
+  - Conversão em arquivo: `scripts/exportar_redes.py`.
+  - Gerar os arquivos no repositório somaria 157 MB aos 106 MB de GEXF. Testei, movi o resultado para fora do repositório e não publiquei.
+  - Teste: GraphML gerado no navegador de `data/casos/020/rede_palavras_comentarios.gexf` lido pelo networkx com 1.251 nós e 7.832 arestas, iguais ao GEXF; 66 links de rede ganharam a conversão.
+- **Dados regenerados nesta entrada:**
+  - `data/corpus/chd_reinert.json` (YouTube): 6 classes (140 · 389 · 417 · 187 · 356 · 118), aproveitamento de 75,9%.
+  - `data/casos/020/busca.json`: 4 classes (945 · 840 · 1.360 · 322), aproveitamento de 75,8%. Antes eram 6 classes, três delas com 217.
+  - As outras redes e os outros casos são regenerados pelas rotinas (casos-busca disparado em seguida; redes do corpus em processamento local).
+- **Teste:**
+  - `python -m unittest discover -s tests` OK.
+  - Playwright: casos 020, 019 e 014, painel do YouTube, debate e comentários sem erros de JavaScript. Bloco de classes do caso 020 conferido em captura de tela.
+
 ## C19.237 — CHD de Reinert: correção do corte forçado no tamanho mínimo (ramo `chd-correcao`, não publicado) 🔜
 
 - **Defeito:** em quase todas as análises de classes, várias classes tinham exatamente o tamanho mínimo.
