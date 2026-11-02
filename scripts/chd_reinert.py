@@ -14,7 +14,8 @@ Procedimento (Reinert, 1983/1990; o mesmo descrito no IRaMuTeQ e no pacote R rai
   3. Cada classe final é descrita pelas formas e variáveis com qui-quadrado positivo e significativo
      (χ² ≥ 3,84; p < 0,05), e pelos segmentos mais característicos.
 
-Diferenças em relação ao IRaMuTeQ (declaradas): desde 01/11/2026 a lematização usa o mesmo dicionário do IRaMuTeQ
+Passo 3 de cada bipartição (desde 01/11/2026): as formas específicas de uma classe são retiradas da outra (Ratinaud & Marchand,
+2012). Diferenças em relação ao IRaMuTeQ (declaradas): desde 01/11/2026 a lematização usa o mesmo dicionário do IRaMuTeQ
 (lexique_pt.txt), mas a escolha de formas ativas é uma aproximação; classificação simples (o IRaMuTeQ por padrão faz a dupla e pode deixar segmentos não classificados).
 Por isso o corpus também é exportado no formato do IRaMuTeQ, para conferência no programa de referência.
 Os NOMES das classes são dados pelo pesquisador, lendo formas e segmentos (como em Montuori Fernandes, 2022).
@@ -44,6 +45,7 @@ MIN_CLASSE = 10
 MIN_CLASSE_PCT = 0.05  # 01/11/2026: regra única do Atlas (era 8% no corpus principal); 3%, 5% e 8% ficam na sensibilidade
 SENSIBILIDADE = (0.03, 0.05, 0.08)
 CHI_CRIT = 3.84
+CC_TEST = 0.3  # rainette (Barnier & Privé): coeficiente de contingência para o passo 3 da bipartição
 STOP_EXTRA = set(bc.norm("""tudo todos esse essa isso aqui ali hoje agora sobre para pelo pela pelos pelas mais menos muito
 muita como quando onde porque entao tambem ainda ja so voce voces nos eles elas ele ela seu sua seus suas nosso nossa
 ser estar ter fazer vai vamos foi sao esta estao tem pode podem deve vez cada outro outra mesmo bem sim nao
@@ -185,6 +187,7 @@ def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: i
     ativos = np.where(X.sum(1) > 0)[0]
     arvore = [{"id": 0, "n": int(len(ativos)), "filhos": None}]
     folhas = {0: ativos}
+    colunas = {0: np.arange(X.shape[1])}  # formas em jogo em cada grupo (passo 3 de Reinert, abaixo)
     prox = 1
     indivisiveis, eliminados = set(), set()
     divisoes, limite = 0, max_divisoes or 10 * k  # 01/11/2026: regra única, até 10 divisões por classe pedida
@@ -194,9 +197,13 @@ def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: i
             break
         cid = max(candidatas, key=lambda c: (len(folhas[c]), -c))
         linhas = folhas[cid]
-        sub = X[linhas]
-        sub = sub[:, sub.sum(0) > 0]
-        if sub.shape[1] < 2:
+        cols = colunas[cid]
+        sub = X[np.ix_(linhas, cols)]
+        vivas = sub.sum(0) > 0
+        cols, sub = cols[vivas], sub[:, vivas]
+        com_forma = sub.sum(1) > 0  # segmento que ficou sem nenhuma forma em jogo (passo 3) não é classificável neste ramo
+        linhas, sub = linhas[com_forma], sub[com_forma]
+        if sub.shape[1] < 2 or len(linhas) < 2:
             indivisiveis.add(cid)
             continue
         try:
@@ -209,6 +216,13 @@ def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: i
             indivisiveis.add(cid)
             continue
         divisoes += 1
+        # passo 3 da bipartição de Reinert (Ratinaud & Marchand, 2012, §2.1): as formas específicas de uma classe são retiradas da
+        # outra nas divisões seguintes. Critério de "específica" do rainette (cc_test): coeficiente de contingência
+        # √(χ²/(χ²+n)) > 0,3 — com χ² ≥ 3,84 sobravam segmentos sem forma e o aproveitamento caía (teste de 02/11/2026)
+        ca, cb = sub[A].sum(0), sub[~A].sum(0)
+        ch_a = chi2_assoc(ca, ca + cb, int(A.sum()), len(A))
+        cc = np.sign(ch_a) * np.sqrt(np.abs(ch_a) / (np.abs(ch_a) + len(A)))
+        colunas[prox], colunas[prox + 1] = cols[cc > -CC_TEST], cols[cc < CC_TEST]
         del folhas[cid]
         folhas[prox], folhas[prox + 1] = ga, gb
         no = next(n for n in arvore if n["id"] == cid)
@@ -299,6 +313,85 @@ def chd_iramuteq(X: np.ndarray, min_classe: int = MIN_CLASSE, k_max: int = K, k_
                          "regra": " ".join(chd_iramuteq.__doc__.split("Devolve")[0].split())}
 
 
+def _ari(a: np.ndarray, b: np.ndarray) -> float:
+    """Índice de Rand ajustado (Hubert & Arabie, 1985) entre duas partições dos mesmos segmentos."""
+    from math import comb
+    _, ia = np.unique(a, return_inverse=True)
+    _, ib = np.unique(b, return_inverse=True)
+    t = np.zeros((ia.max() + 1, ib.max() + 1), dtype=np.int64)
+    np.add.at(t, (ia, ib), 1)
+    sc = sum(comb(int(v), 2) for v in t.ravel())
+    sa = sum(comb(int(v), 2) for v in t.sum(1))
+    sb = sum(comb(int(v), 2) for v in t.sum(0))
+    n2 = comb(len(a), 2)
+    esp = sa * sb / n2 if n2 else 0
+    mx = (sa + sb) / 2
+    return round((sc - esp) / (mx - esp), 3) if mx != esp else 1.0
+
+
+def _cruzar(a: np.ndarray, b: np.ndarray) -> dict:
+    """Tabela de contingência entre duas partições: χ², graus de liberdade, p, V de Cramér, resíduos padronizados > 1,96."""
+    ka, kb = sorted(set(a.tolist())), sorted(set(b.tolist()))
+    t = np.array([[int(((a == i) & (b == j)).sum()) for j in kb] for i in ka], dtype=float)
+    n = t.sum()
+    esp = np.outer(t.sum(1), t.sum(0)) / n
+    with np.errstate(divide="ignore", invalid="ignore"):
+        chi = float(np.nansum((t - esp) ** 2 / esp))
+        res = (t - esp) / np.sqrt(esp)
+    gl = (len(ka) - 1) * (len(kb) - 1)
+    try:
+        from scipy.stats import chi2 as _c
+        p = float(_c.sf(chi, gl))
+    except Exception:  # noqa: BLE001 — sem scipy: aproximação de Wilson-Hilferty
+        import math
+        z = ((chi / gl) ** (1 / 3) - (1 - 2 / (9 * gl))) / math.sqrt(2 / (9 * gl)) if gl else 0
+        p = 0.5 * math.erfc(z / math.sqrt(2))
+    v = (chi / (n * max(1, min(len(ka), len(kb)) - 1))) ** 0.5 if n else 0
+    return {"segmentos": int(n), "chi2": round(chi, 1), "gl": gl, "p": float(f"{p:.3g}"), "v_cramer": round(float(v), 3),
+            "celulas_acima_do_esperado": int((res > 1.96).sum()), "celulas": int(res.size),
+            "tabela": t.astype(int).tolist(), "linhas": ka, "colunas": kb}
+
+
+def estabilidade(X: np.ndarray, min_classe: int, rot_principal: np.ndarray, n_textos: int | None = None) -> dict:
+    """Teste de estabilidade dos "mundos lexicais" (Reinert, 2008), no desenho de Ratinaud & Marchand (2012): a mesma CHD, com os
+    mesmos parâmetros, sobre a metade mais frequente das formas ativas e, separadamente, sobre a metade menos frequente; as duas
+    partições são cruzadas (tabela de contingência, χ², V de Cramér, índice de Rand ajustado) e cada uma é comparada com a partição
+    principal. Partições dependentes (χ² significativo) indicam que as classes não dependem de um punhado de palavras."""
+    ordem = np.argsort(-X.sum(0), kind="stable")
+    meio = len(ordem) // 2
+    out = {"metodo": " ".join(estabilidade.__doc__.split()), "formas_frequentes": int(meio), "formas_menos_frequentes": int(len(ordem) - meio)}
+    rots = {}
+    for nome, cols in (("frequentes", ordem[:meio]), ("menos_frequentes", ordem[meio:])):
+        r, _, info = chd_iramuteq(X[:, cols], min_classe=min_classe, n_textos=n_textos or X.shape[0])
+        rots[nome] = r
+        out[nome] = {"classes": int(r.max()) if r.max() > 0 else 0, "aproveitamento_pct": round(100 * float((r > 0).sum()) / max(1, n_textos or X.shape[0]), 1),
+                     "classes_terminais": info.get("classes_terminais")}
+    ok = (rots["frequentes"] > 0) & (rots["menos_frequentes"] > 0)
+    if ok.sum() >= 20 and len(set(rots["frequentes"][ok].tolist())) > 1 and len(set(rots["menos_frequentes"][ok].tolist())) > 1:
+        out["frequentes_x_menos_frequentes"] = {**_cruzar(rots["frequentes"][ok], rots["menos_frequentes"][ok]),
+                                                "rand_ajustado": _ari(rots["frequentes"][ok], rots["menos_frequentes"][ok])}
+    for nome in rots:
+        m = (rots[nome] > 0) & (rot_principal > 0)
+        if m.sum() >= 20 and len(set(rots[nome][m].tolist())) > 1:
+            out[f"principal_x_{nome}"] = {"segmentos": int(m.sum()), "rand_ajustado": _ari(rot_principal[m], rots[nome][m]),
+                                         "v_cramer": _cruzar(rot_principal[m], rots[nome][m])["v_cramer"]}
+    x = out.get("frequentes_x_menos_frequentes")
+    if not x:
+        out["leitura"] = "⛔ partições insuficientes para cruzar"
+    else:
+        v = x["v_cramer"]
+        forca = "desprezível" if v < 0.1 else "fraca" if v < 0.3 else "moderada" if v < 0.5 else "forte"
+        baixo = [f"{k.replace('_', ' ')} classifica só {out[k]['aproveitamento_pct']}%" for k in ("frequentes", "menos_frequentes")
+                 if out[k]["aproveitamento_pct"] < APROVEITAMENTO_MIN]
+        out["forca"] = forca
+        out["leitura"] = ((f"dependentes (χ² = {x['chi2']}, gl = {x['gl']}, p {'< 0,001' if x['p'] < 0.001 else '= ' + str(x['p'])}), "
+                           f"com associação {forca} (V de Cramér {x['v_cramer']}; Rand ajustado {x['rand_ajustado']})")
+                          if x["p"] < 0.05 else f"independentes (p = {x['p']}): as classes dependem do vocabulário escolhido") + \
+                         (". Teste limitado: " + "; ".join(baixo) + " dos segmentos (vocabulário esparso)" if baixo else "") + \
+                         ". Faixas do V de Cramér (convenção usual): < 0,1 desprezível; 0,1–0,3 fraca; 0,3–0,5 moderada; ≥ 0,5 forte."
+    return out
+
+
 def aproveitamento(rot: np.ndarray, n_segmentos: int) -> dict:
     """Taxa de segmentos classificados e o teste do mínimo de 75% (Camargo & Justo, 2013)."""
     pct = round(100 * int((rot > 0).sum()) / max(1, n_segmentos), 1)
@@ -341,6 +434,7 @@ def main(argv=None) -> int:
             resumo.append({"classe": k, "pct": round(100 * m.sum() / ok.sum(), 1), "formas": [voc[j] for j in np.argsort(-ch)[:8]]})
         sens.append({"min_classe_pct": pct, "min_classe": max(MIN_CLASSE, int(pct * n_ativos)), "classes": resumo})
     rot, arvore, escolha_k = chd_iramuteq(X, min_classe=mc, n_textos=len(linhas))
+    estab = estabilidade(X, mc, rot, len(linhas))
     cl = rot > 0
     n = int(cl.sum())
     Xc, rc = X[cl], rot[cl]
@@ -372,13 +466,22 @@ def main(argv=None) -> int:
            "metodo": (f"CHD de Reinert (implementação própria em Python/numpy, classificação simples): {K} classes no máximo, "
                       f"formas com {MIN_FREQ}+ segmentos, classe mínima de {int(MIN_CLASSE_PCT*100)}% dos segmentos (grupo menor que isso não vira classe e fica não classificado; teste de sensibilidade com 3%, 5% e 8% registrado), aproveitamento mínimo de {APROVEITAMENTO_MIN:.0f}% dos segmentos (Camargo & Justo, 2013), formas características com χ² ≥ {CHI_CRIT} (p < 0,05). "
                       "Sem lematização. Os nomes das classes devem ser dados pelo pesquisador. Conferir no IRaMuTeQ com o corpus exportado."),
-           "lematizacao": lematizacao(), "escolha_classes": escolha_k, "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
+           "lematizacao": lematizacao(), "escolha_classes": escolha_k, "estabilidade": estab, "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
            "sensibilidade": sens,
            "nota_sensibilidade": "Regra única do Atlas desde 01/11/2026: classe mínima de 5%, até 60 divisões, aproveitamento mínimo de 75%. Antes, com o corte forçado no mínimo, 8% tinha sido adotado aqui porque 3% e 5% formavam classes por nomes próprios; as três versões ficam registradas para comparação. Aguardando conferência no IRaMuTeQ.",
            "segmentos_total": len(linhas), "segmentos_classificados": n,
            "pct_classificados": round(100 * n / max(1, len(linhas)), 1), "formas_ativas": len(voc),
            "arvore": arvore, "classes": classes, "aproveitamento": aproveitamento(rot, len(linhas))}
     out["plataforma"] = plat
+    # 02/11/2026: análise de similitude (ADS) do mesmo corpus, variável = candidato (scripts/similitude.py)
+    try:
+        import similitude as sim
+        res = sim.ads(X, voc, [l["cand"] for l in linhas])
+        if res:
+            out["similitude"] = res
+            sim.gexf(res, pl.caminho(root, plat, "chd").with_name(f"similitude_{plat}.gexf"))
+    except Exception as e:  # noqa: BLE001 — sem networkx a CHD sai do mesmo jeito
+        out["similitude"] = {"erro": f"{type(e).__name__}: {str(e)[:120]}"}
     pl.caminho(root, plat, "chd").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     # 01/11/2026: classe do Atlas por segmento, na ordem do arquivo de segmentos, para comparar com o IRaMuTeQ (candidatos: dado público)
     saida = pl.caminho(root, plat, "chd").with_name(f"{plat}_classes_atlas_por_segmento.csv")

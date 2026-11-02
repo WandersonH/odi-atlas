@@ -57,3 +57,16 @@ class TestRegraIramuteq(unittest.TestCase):
         self.assertGreaterEqual(pct, 75.0)
         self.assertEqual(len(set(rot[rot > 0].tolist())), max(rot.tolist()))
         self.assertTrue(info["tentativas"])
+
+
+class TestEstabilidadeSimilitude(unittest.TestCase):
+    def test_estabilidade_e_ads(self):
+        import similitude as sim
+        X, voc = cr.matriz(corpus())
+        rot, _, _ = cr.chd_iramuteq(X, min_classe=24, n_textos=X.shape[0])
+        e = cr.estabilidade(X, 24, rot, X.shape[0])
+        self.assertIn("leitura", e)
+        self.assertEqual(cr._ari(rot, rot), 1.0)
+        r = sim.ads(X, voc, ["a"] * 120 + ["b"] * 124, top=15)
+        self.assertEqual(len(r["arestas"]), len(r["nos"]) - 1 if r["comunidades"] <= 1 else len(r["arestas"]))
+        self.assertTrue(all(n["id"] in voc for n in r["nos"]))

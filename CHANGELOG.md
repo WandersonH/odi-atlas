@@ -4,6 +4,31 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.248 — Estabilidade das classes, análise de similitude e passo 3 da bipartição de Reinert (2026-11-02) ⚠️
+
+- **Pedido do responsável:** "acho importante" (00h21), sobre as duas propostas tiradas do material do IRaMuTeQ.
+- **Passo 3 da bipartição de Reinert** (Ratinaud & Marchand, 2012, §2.1, que faltava na CHD do Atlas): depois de cada divisão, as formas específicas de um lado saem das divisões seguintes do outro lado.
+  - O critério de "específica" é o do rainette: coeficiente de contingência √(χ²/(χ²+n)) > 0,3.
+  - Também testei χ² ≥ 3,84: segmentos ficavam sem forma e o aproveitamento do corpus do YouTube caía para 62,4%. O teste foi registrado e o critério, abandonado.
+  - Segmento sem nenhuma forma em jogo num ramo fica não classificado.
+- **Teste de estabilidade** (`chd_reinert.estabilidade`, no desenho de Ratinaud & Marchand, 2012):
+  - A mesma CHD roda sobre a metade mais frequente das formas e, separadamente, sobre a menos frequente.
+  - As duas partições são cruzadas: χ², gl, p, V de Cramér, Rand ajustado e células acima do esperado.
+  - Cada metade também é comparada com a partição principal.
+  - A leitura diz a força da associação pelas faixas usuais do V e avisa quando uma metade classifica menos de 75%.
+- **Análise de similitude** (`scripts/similitude.py`, Marchand & Ratinaud, 2012):
+  - Coocorrência das 100 formas mais frequentes, com árvore máxima.
+  - Cada forma recebe o candidato em que é específica (χ² ≥ 3,84); as outras ficam como parte comum.
+  - Saída em GEXF (`data/corpus/similitude_<rede>.gexf`) e desenho na página.
+- **Página:** os seis painéis do corpus ganharam "Estabilidade das classes" e "Análise de similitude" (`odiChdExtras`).
+- **Corpus do YouTube** (rodada local):
+  - Com o passo 3, a regra dos 75% escolheu 4 classes terminais: 414 · 559 · 290 · 340 segmentos, aproveitamento de 75,7%. Com 6 classes seriam 47,0%.
+  - Estabilidade: as metades são **dependentes** (χ² = 38,0, gl = 10, p < 0,001), mas a associação é **fraca** (V = 0,22; Rand ajustado 0,02).
+  - A metade menos frequente classifica só 22,7% dos segmentos, porque o vocabulário fica esparso; o teste é limitado neste corpus pequeno.
+  - Partição principal × metade frequente: Rand ajustado 0,509 e V 0,754.
+- **Teste:** `python -m unittest discover -s tests` OK, com testes novos de estabilidade e similitude.
+- **Pendente:** regenerar o corpus das seis redes (rodando localmente) e as análises dos casos pelas rotinas.
+
 ## C19.247 — Corpus dos candidatos com as regras do IRaMuTeQ: TikTok, Kwai, Facebook e Instagram (2026-11-01) ⚠️
 
 Regeneração local terminada; todas as redes lematizadas. Classes em segmentos, com o aproveitamento:
