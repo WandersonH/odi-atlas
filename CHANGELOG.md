@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.293 — Diagnóstico grátis dos atores do TikTok: esquema de entrada (filtro de data por hashtag) (2026-11-02) ⛔
+
+- Por quê: a série "Vídeos por hashtag · TikTok" está em 0 desde 30/10 (página pública não entrega mais vídeos) e o ator pago testado (apidojo~tiktok-scraper, C19.289) devolveu vídeos de maio. O responsável perguntou (02/11, 15h28) por que o crédito da conta 1 não resolveu.
+- O quê: `scripts/diag_atores_tiktok.py` + `.github/workflows/diag-atores-tiktok.yml` leem só o esquema de entrada (GET na API da Apify, sem rodar ator, sem custo) de 5 atores e listam campos de data, ordenação e hashtag.
+- Teste: resultado no run registrado na próxima entrada.
+
 ## C19.292 — Intolerância na página de cada caso, com arquivos para baixar e conferir (casos 014, 021, 022) (2026-11-02) ⚠️
 
 - Pedido do responsável (02/11/2026, 15h19): "queria que intolerância já tivesse disponível pra pessoa baixar o arquivo e conferir como fizemos com todo resto". Substitui a regra da proposta de só exibir depois da validação: o bloco sai marcado "⚠️ triagem automática, não validada".

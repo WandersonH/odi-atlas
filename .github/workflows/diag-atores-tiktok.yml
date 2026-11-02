@@ -1,0 +1,20 @@
+name: Diagnóstico — esquema de entrada dos atores do TikTok (grátis)
+
+# 02/11/2026: achar o filtro de data por hashtag nos atores pagos. Só lê o esquema (GET); não roda ator, não grava nada.
+on:
+  workflow_dispatch:
+    inputs:
+      atores:
+        default: "apidojo~tiktok-scraper clockworks~tiktok-scraper clockworks~tiktok-hashtag-scraper novi~multiple-tiktok-hashtag-scraper apidojo~tiktok-hashtag-scraper"
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          python scripts/diag_atores_tiktok.py ${{ github.event.inputs.atores }} | tee "$RUNNER_TEMP/d.txt"
+          while IFS= read -r l; do echo "::notice title=Atores TikTok::$(echo "$l" | cut -c1-500)"; done < "$RUNNER_TEMP/d.txt"
