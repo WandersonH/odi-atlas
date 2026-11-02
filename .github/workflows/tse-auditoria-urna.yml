@@ -34,4 +34,5 @@ jobs:
           exit $rc
       - name: Commitar
         if: always()
-        run: scripts/commit_push.sh "TSE: auditoria da urna, 2º turno (run ${{ github.run_id }})"
+        run: |
+          scripts/commit_push.sh "TSE: auditoria da urna, 2º turno (run ${{ github.run_id }})"
