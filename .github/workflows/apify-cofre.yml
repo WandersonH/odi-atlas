@@ -1,0 +1,75 @@
+name: Cofre das coletas da Apify (confere e guarda antes de a Apify apagar)
+
+# Pedido do responsável em 02/11/2026, 00h51: guardar no privado toda coleta das contas antes dos 30 dias de retenção da Apify.
+on:
+  schedule:
+    - cron: "37 9 * * *"   # todo dia, 06h37 em Brasília
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "conferir (só lista) ou guardar (baixa o que falta)"
+        type: choice
+        options: [guardar, conferir]
+        default: guardar
+      dias:
+        description: "quantos dias para trás"
+        default: "40"
+
+concurrency:
+  group: apify-cofre
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  cofre:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Conferir e guardar
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          MODO: ${{ github.event_name == 'schedule' && 'guardar' || github.event.inputs.modo }}
+          DIAS: ${{ github.event.inputs.dias || '40' }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_TOKEN_2: ${{ secrets.APIFY_TOKEN_2 }}
+          APIFY_TOKEN_3: ${{ secrets.APIFY_TOKEN_3 }}
+          APIFY_TOKEN_4: ${{ secrets.APIFY_TOKEN_4 }}
+          APIFY_TOKEN_5: ${{ secrets.APIFY_TOKEN_5 }}
+          APIFY_TOKEN_6: ${{ secrets.APIFY_TOKEN_6 }}
+          APIFY_TOKEN_7: ${{ secrets.APIFY_TOKEN_7 }}
+          APIFY_TOKEN_8: ${{ secrets.APIFY_TOKEN_8 }}
+          APIFY_TOKEN_9: ${{ secrets.APIFY_TOKEN_9 }}
+          APIFY_TOKEN_10: ${{ secrets.APIFY_TOKEN_10 }}
+          APIFY_TOKEN_11: ${{ secrets.APIFY_TOKEN_11 }}
+          APIFY_TOKEN_12: ${{ secrets.APIFY_TOKEN_12 }}
+          APIFY_TOKEN_13: ${{ secrets.APIFY_TOKEN_13 }}
+          APIFY_TOKEN_14: ${{ secrets.APIFY_TOKEN_14 }}
+          APIFY_TOKEN_15: ${{ secrets.APIFY_TOKEN_15 }}
+          APIFY_TOKEN_FL: ${{ secrets.APIFY_TOKEN_FL }}
+        run: |
+          a="--dias $DIAS"; [ "$MODO" = "guardar" ] && a="$a --guardar"
+          rc=0; python scripts/apify_cofre.py $a > c.txt 2>&1 || rc=$?
+          while IFS= read -r l; do echo "::notice title=Cofre Apify::$(echo "$l" | cut -c1-400)"; done < c.txt
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A apify_cofre
+          git diff --cached --quiet || git commit -q -m "Cofre Apify (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1

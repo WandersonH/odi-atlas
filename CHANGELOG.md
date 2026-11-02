@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.252 — Cofre das coletas da Apify: confere e guarda no privado antes dos 30 dias de retenção (2026-11-02) 🔜
+
+- **Pedido do responsável** (00h51): verificar se todas as coletas feitas nas contas estão armazenadas, porque algumas vão vencer os 30 dias de armazenamento da Apify.
+- **`scripts/apify_cofre.py`**, para cada conta (16 segredos; o token nunca é impresso):
+  - lista as execuções dos últimos 40 dias;
+  - marca se o id de cada execução aparece num manifesto do repositório público;
+  - marca se o conjunto de dados já está no cofre privado (`apify_cofre/indice.csv`);
+  - com `--guardar`, baixa os itens de toda execução fora do cofre para `apify_cofre/<conta>/<data>_<ator>_<execução>.jsonl.gz`.
+  - Nunca apaga nem sobrescreve, e não registra custo.
+- **Workflow `apify-cofre.yml`:** manual (conferir ou guardar) e diário, às 06h37 (Brasília), no modo guardar.
+- **Teste:** `python -m unittest discover -s tests` OK. O YAML foi validado.
+- **⛔ Pendente:** a primeira execução (conferir e depois guardar), com os números de cada conta.
+
 ## C19.251 — Todas as redes desenhadas na página passam a ser exploráveis (2026-11-02) ✅
 
 - **Pedido do responsável** (00h49): "alguns gráficos do Gephi permitem interações; outros são travados, não permitem exploração, parece incompleto".
