@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.301 — Auditoria da urna do 2º turno: resultado nacional e bloco no caso 022 (2026-11-02) ⚠️
+
+- Runs: 41507421986 (teste AC: comparecimento 453.654, igual ao de `data/tse/alienacao/2t/resumo.json`) e 41507645183 (todas as UFs) de `tse-auditoria-urna.yml`. Saída `data/tse/auditoria_urna/2t/resumo.json` e `municipios.csv`.
+- Universo (todas as seções com BU no catálogo; RR ⛔: o BU do 2º turno não está listado no catálogo do TSE): 496.378 seções no Brasil + 1.308 no exterior; comparecimento 127.546.034 de 157.427.279 aptos (sem exterior e sem RR).
+- Eleitores liberados pelo mesário sem a digital (QT_ELEI_BIOM_SEM_HABILITACAO): 8.619.842, 6,76% do comparecimento (de 4,50% no DF a 9,00% no PI; 0 no exterior). É o número que circula como "8 milhões de votos sem biometria" no caso 022; no BU ele é o procedimento de liberação quando a digital não é reconhecida.
+- Correlação por seção entre % sem digital e % de Lula (Lula + Flávio): 0,066 no Brasil; por UF de −0,156 (RS) a 0,463 (AL). Ressalva no JSON e na página: correlação não indica causa.
+- Encerramento das seções (hora local): antes das 17h 30.506 (UFs com fuso diferente); 17h00–17h29 458.274; 17h30–17h59 512; 18h00–18h59 744; 19h ou depois 6.342 (RJ 2.805, SP 1.571, BA 936, PE 657); motivo não verificado.
+- Correspondência efetivada: 499.207 urnas; 2.715 com urna efetivada diferente da esperada; TP_DIVERGENCIA "C" em 2.671; votos de sistema de apuração em 29 seções e BU por recuperação de dados (RED) em 16.
+- Página: no caso 022, bloco "O que o TSE publica sobre as urnas do 2º turno" (antes de "Quem dissemina") com universo, os três números, horários, tabela por UF e downloads. Aberta no Chromium: renderiza, sem erro de JS, sem rolagem lateral a 390 px.
+- Teste: `python -m unittest discover -s tests` OK.
+- Pendente: RR (aguarda o TSE listar o BU do 2º turno); o significado exato do tipo "C" de divergência está no leia-me do TSE e não foi lido ainda; comparecimento por perfil e perfil do eleitorado por município.
+
 ## C19.300 — Auditoria da urna do 2º turno com os dados do TSE (caso 022): coletor (2026-11-02) 🔜
 
 - Resultado da sonda C19.298 (run 41506429826): correspondências esperadas e efetivadas do 2º turno publicadas em 24, 25 e 26/10 (0,4 a 3,1 MB por UF; no AC, 2.270 urnas e TP_DIVERGENCIA "C" em 4); boletim de urna do 2º turno com 143,9 MB no total (1º turno: 5.077,5 MB), com as colunas QT_ELEI_BIOM_SEM_HABILITACAO, DT_ABERTURA e DT_ENCERRAMENTO, que testam diretamente as alegações do caso 022 ("votos sem biometria", "17h"); arquivos transmitidos para totalização com 136,7 MB (ZZ) a 25.758,1 MB (SP) por UF, fora do alcance do Actions; logs Gedai do 2º turno com 344,7 MB; comparecimento e abstenção por perfil com 229,2 MB; perfil do eleitorado com 408,5 MB (e por seção, de 5,5 MB em RR a 630,7 MB em SP).
