@@ -1,0 +1,37 @@
+name: TSE — auditoria da urna, 2º turno (boletim de urna e correspondência efetivada; grátis)
+
+# 02/11/2026: caso 022. Só agregados públicos (data/tse/auditoria_urna/2t). Dado fixo depois do turno: roda à mão.
+on:
+  workflow_dispatch:
+    inputs:
+      ufs:
+        description: "UFs separadas por espaço (vazio = todas, incluindo ZZ)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tse-auditoria-urna
+  cancel-in-progress: false
+
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Testes
+        run: scripts/testes_ci.sh
+      - name: Coletar e agregar
+        continue-on-error: true
+        run: |
+          rc=0; python scripts/collect_tse_auditoria_urna.py ${{ inputs.ufs }} > s.txt 2>&1 || rc=$?
+          tail -n 40 s.txt | while IFS= read -r l; do echo "::notice title=Auditoria da urna::$(echo "$l" | cut -c1-900)"; done
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: scripts/commit_push.sh "TSE: auditoria da urna, 2º turno (run ${{ github.run_id }})"

@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.300 — Auditoria da urna do 2º turno com os dados do TSE (caso 022): coletor (2026-11-02) 🔜
+
+- Resultado da sonda C19.298 (run 41506429826): correspondências esperadas e efetivadas do 2º turno publicadas em 24, 25 e 26/10 (0,4 a 3,1 MB por UF; no AC, 2.270 urnas e TP_DIVERGENCIA "C" em 4); boletim de urna do 2º turno com 143,9 MB no total (1º turno: 5.077,5 MB), com as colunas QT_ELEI_BIOM_SEM_HABILITACAO, DT_ABERTURA e DT_ENCERRAMENTO, que testam diretamente as alegações do caso 022 ("votos sem biometria", "17h"); arquivos transmitidos para totalização com 136,7 MB (ZZ) a 25.758,1 MB (SP) por UF, fora do alcance do Actions; logs Gedai do 2º turno com 344,7 MB; comparecimento e abstenção por perfil com 229,2 MB; perfil do eleitorado com 408,5 MB (e por seção, de 5,5 MB em RR a 630,7 MB em SP).
+- Novo `scripts/collect_tse_auditoria_urna.py` + `tse-auditoria-urna.yml` (manual, grátis): para cada UF, o boletim de urna e a correspondência efetivada mais recentes do 2º turno; agrega por Brasil, UF e município: seções, aptos, comparecimento, eleitores liberados sem biometria (% do comparecimento), votos de Lula e Flávio, horário de encerramento por faixa, correlação por seção entre % sem biometria e % de Lula (com a ressalva de que correlação não é causa) e divergências de correspondência. Saída pública só agregada: `data/tse/auditoria_urna/2t/resumo.json` e `municipios.csv`.
+- Teste: `tests/test_tse_auditoria_urna.py`; `python -m unittest discover -s tests` OK. Primeiro run registrado na próxima entrada.
+
 ## C19.299 — Caso 022: publicações que citam mesários (só contagens) (2026-11-02) ⚠️
 
 - Alternativa ao cruzamento com a lista de mesários (ver C19.298): `scripts/caso_mesarios.py` conta, no texto das publicações já coletadas do caso 022, quantas citam mesários e quantas são de quem se declara mesário ("sou/fui/trabalhei como mesário" etc.). Saída pública `data/casos/022/mesarios.json`, só números.
