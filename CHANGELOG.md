@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.319 — Caso 032 (Revelando): primeira leitura (2026-11-02) ⚠️
+
+- Runs 41544395905 (coleta) e 41547538919 (análise) de `caso-revelando.yml`, grátis; cota do YouTube ainda disponível, sem erro.
+- Canal REVELANDO: 719.000 inscritos e 29.558.267 visualizações em 02/11 (API); criado em 03/08/2026; 116 vídeos, todos lidos (1º envio 11/09, último 24/10). Capturas do Internet Archive: 409K (10/10), 421K (12/10), 455K (13–14/10), 463K (16/10) → 719K hoje (+256 mil em 17 dias; série diária do Atlas começa hoje). Por mês: setembro 33 vídeos e 12,5 mi de visualizações; outubro 83 vídeos e 17,1 mi.
+- Episódios mais vistos (hoje): Ep 2 "Grandes Igrejas, Master Negócios" (Porchat) 6,2 mi; Ep 7 "República dos Laranjas" 3,1 mi; Ep 5 "A Guerra à Santa" (Juliette) 2,5 mi; Ep 6 "Pátria Submissa" (Wagner Moura) 2,5 mi; Ep 8 "Flavinho De Papai" (MC Cabelinho) 1,7 mi.
+- Bolha (universo: 161.709 comentários informados; lidos 22.609 = 14%, de 14.654 autores): 29,5% dos autores já tinham comentado em canais de Lula, 0,9% em canais de Flávio, 0,9% nos dois, 68,7% fora do acervo. Só nos episódios completos: Lula 16,8%, Flávio 0,8%. Para comparar, o acervo inteiro tem 59,1% Lula e 39,1% Flávio: a parcela de Flávio aqui é cerca de 40× menor que a do acervo; a hipótese do responsável ("bolha da esquerda") é compatível com o dado, com a ressalva de que 2 em cada 3 autores não estão no acervo. Por mês: setembro Lula 39,3%; outubro 28,7%. Autores que comentaram em 5+ vídeos: 335.
+- Trends: assunto de cada episódio completo (11 títulos, sem nome do convidado; versões em Libras e cortes fora): busca por título é fraca ("A Guerra à Santa" máx. 11 em 7 dias; "Caso Ana Clara" 100). Interesse relativo, ambíguo.
+- Página: aba "Revelando (Calma Urgente)" aberta no Chromium, sem erro de JS, sem rolagem lateral a 390 px.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.318 — Caso 032: "Revelando" (Calma Urgente), análise como a do caso 011 (2026-11-02) 🔜
 
 - Pedido do responsável (02/11/2026, 20h12): "quero a análise como caso da Joice, e uma análise geral por episódio e buscas [dos] assuntos abordados; crescimento também deve ser abordado; esse canal estava na bolha da esquerda". Redes do projeto: YouTube @revelando_br, Instagram @revelando.brasil, X @revelandobr, TikTok @revelando.br, Kwai.

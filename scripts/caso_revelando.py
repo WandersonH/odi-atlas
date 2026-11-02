@@ -65,7 +65,7 @@ RX_EPISODIO = re.compile(r"\bEp\.?\s*#?\s*\d+|#\s*Ep\.?\s*\d+|\bepis[oó]dio\s*\
 
 def e_episodio(titulo: str) -> bool:
     """Episódio completo (título com "Ep #N"); o resto são cortes, teasers e vídeos avulsos."""
-    return bool(RX_EPISODIO.search(titulo or "")) and not re.search(r"\bteaser\b|\bcorte\b|\btrailer\b", titulo or "", re.I)
+    return bool(RX_EPISODIO.search(titulo or "")) and not re.search(r"\bteaser\b|\bcorte\b|\btrailer\b|\blibras\b", titulo or "", re.I)
 
 
 def assunto(titulo: str) -> str:
