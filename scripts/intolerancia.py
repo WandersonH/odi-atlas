@@ -60,7 +60,7 @@ def classificar(textos: list[str], modelo: str) -> tuple[list[dict], dict]:
     import torch
     tok = AutoTokenizer.from_pretrained(modelo)
     mod = AutoModelForSequenceClassification.from_pretrained(modelo).eval()
-    rot = {int(k): v for k, v in mod.config.id2label.items()}
+    rot = {int(k): str(v) for k, v in mod.config.id2label.items()}  # o modelo do HateBR usa True/False (booleanos) como rótulo
     multi = mod.config.problem_type == "multi_label_classification"
     out = []
     with torch.inference_mode():
@@ -74,7 +74,7 @@ def classificar(textos: list[str], modelo: str) -> tuple[list[dict], dict]:
 
 def positivo(rotulo: str) -> bool:
     """Rótulo que indica ofensa/ódio (o oposto de 'não ofensivo', 'LABEL_0', 'non-hateful' etc.)."""
-    r = rotulo.lower()
+    r = str(rotulo).lower()
     return not (r in ("label_0", "0", "false") or r.startswith(("non", "não", "nao", "not")) or "non-" in r or "neutral" in r)
 
 
@@ -122,8 +122,16 @@ def main(argv: list[str]) -> int:
                "modelos": {}}
         esc = {r["id"]: {"rede": r["rede"]} for r in unicos}
         for nome, mid, desc in MODELOS:
+            cache = priv / "intolerancia" / f"cache_{nome}.json.gz"  # 02/11/2026: a 1ª rodada perdeu ~2 h de CPU num erro depois do modelo
             try:
-                ps, info = classificar([r["texto"] for r in unicos], mid)
+                guardado = json.loads(gzip.open(cache, "rt", encoding="utf-8").read()) if cache.exists() else None
+                if guardado and guardado.get("ids") == [r["id"] for r in unicos]:
+                    ps, info = guardado["ps"], guardado["info"]
+                else:
+                    ps, info = classificar([r["texto"] for r in unicos], mid)
+                    cache.parent.mkdir(parents=True, exist_ok=True)
+                    with gzip.open(cache, "wt", encoding="utf-8") as fh:
+                        fh.write(json.dumps({"ids": [r["id"] for r in unicos], "ps": ps, "info": info}))
             except Exception as e:  # noqa: BLE001
                 res["modelos"][nome] = {"modelo": mid, "situacao": f"⛔ não carregou: {type(e).__name__}: {str(e)[:160]}"}
                 print(nome, res["modelos"][nome]["situacao"])

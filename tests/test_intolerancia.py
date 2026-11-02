@@ -11,6 +11,8 @@ class TestIntolerancia(unittest.TestCase):
     def test_rotulo_positivo(self):
         for r in ("LABEL_1", "Offensive", "Sexism", "Racism", "Ideology"):
             self.assertTrue(it.positivo(r), r)
+        self.assertTrue(it.positivo(True))   # rótulos booleanos (modelo do HateBR, run 41394802823)
+        self.assertFalse(it.positivo(False))
         for r in ("LABEL_0", "Non-Offensive", "non-hateful", "não ofensivo", "Neutral"):
             self.assertFalse(it.positivo(r), r)
 

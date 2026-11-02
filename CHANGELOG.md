@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.288 — Intolerância: correção do piloto (rótulos booleanos do modelo do HateBR) e cache dos escores (2026-11-02) ⛔→⚠️
+
+- **O que aconteceu:** o primeiro run do piloto (41394802823) leu 16.157 textos do caso 014 (15.724 únicos) e passou cerca de 1 h 50 classificando com o modelo de ofensividade. Depois disso, falhou com `AttributeError: 'bool' object has no attribute 'lower'`: o modelo `ruanchaves/bert-large-portuguese-cased-hatebr` usa `True`/`False` (booleanos) como rótulos. Nada foi gravado; nenhum número foi publicado.
+- **Correção em `scripts/intolerancia.py`:**
+  - Os rótulos são convertidos em texto, e `positivo()` aceita booleanos (`True` = sinal).
+  - Os escores de cada modelo são guardados num cache no privado (`intolerancia/cache_<modelo>.json.gz`), para que uma falha posterior não exija reclassificar.
+- **Teste executado:** `tests/test_intolerancia.py` com os rótulos booleanos; `python -m unittest discover -s tests`: OK.
+- **Pendente:** novo run do piloto (014, 021, 022), acionado depois deste commit.
+
 ## C19.287 — Correção do registro C19.280 (caso 024) e resumo da reconstrução lematizada (2026-11-02) ⚠️
 
 - **Correção:** a entrada automática C19.280 diz que o `busca.json` do 024 foi "reconstruído com a CHD nova". Não foi. O caso não tem comentários do YouTube nesta coleta (0 vídeos), então a etapa de classes não rodou, e as classes que ficaram são as antigas: 374 comentários, 60,7%, 6 classes, sem `escolha_classes`, abaixo do mínimo de 75%. Elas precisam ser refeitas quando o YouTube do caso voltar a ser coletado.
