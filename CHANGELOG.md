@@ -4,6 +4,30 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.287 — Correção do registro C19.280 (caso 024) e resumo da reconstrução lematizada (2026-11-02) ⚠️
+
+- **Correção:** a entrada automática C19.280 diz que o `busca.json` do 024 foi "reconstruído com a CHD nova". Não foi. O caso não tem comentários do YouTube nesta coleta (0 vídeos), então a etapa de classes não rodou, e as classes que ficaram são as antigas: 374 comentários, 60,7%, 6 classes, sem `escolha_classes`, abaixo do mínimo de 75%. Elas precisam ser refeitas quando o YouTube do caso voltar a ser coletado.
+- **Resumo da reconstrução (C19.268–C19.286), conferido arquivo a arquivo:**
+
+| Caso | Comentários | Classificados | Classes |
+|---|---|---|---|
+| 001 | 7.511 | 76,9% | 8 |
+| 002 | 173 | 41,6% ⛔ | 3 |
+| 003 | 8.080 | 84,8% | 4 |
+| 005 | 18.571 | 81,1% | 9 |
+| 006 | 18.224 | 84,3% | 9 |
+| 007 | 6.242 | 83,3% | 7 |
+| 008 | 8.814 | 82,6% | 4 |
+| 009 | 10.869 | 81,7% | 7 |
+| 013 | 8.142 | 84,4% | 4 |
+| 014 | 8.100 | 83,8% | 3 |
+| 017 | 8.246 | 75,1% | 5 |
+| 020 | 4.574 | 82,6% | 6 |
+| 023 | 3.255 | 76,9% | 6 |
+
+- **Sem classes de comentários do YouTube:** 016, 021, 022, 025, 027, 028, 029, 030 e 031. Os arquivos de antes também não tinham classes, então nada foi perdido. Nesses casos a cota do YouTube estava esgotada (erro 429) ou o caso ainda não tinha vídeos coletados. A CHD das publicações (`bardin.json`) é outra frente.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.286 — Classes lematizadas do caso 031 (reconstrução automática, commit por caso) (2026-11-02) ⚠️
 
 - `data/casos/031/busca.json` reconstruído em 0 s; ⛔ sem classes (corpus de comentários insuficiente ou ausente).
