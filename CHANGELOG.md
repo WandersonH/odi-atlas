@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.263 — Reconstrução lematizada dos casos: GEXF do 006 (em andamento) (2026-11-02) ⚠️
+
+- `data/casos/006/rede_*.gexf` foram regravados pela reconstrução local (`build_caso_busca.py`, lematização e passo 3). O `busca.json` do 006 entra quando o caso terminar.
+- A saída da reconstrução para o 005 registrou 18.571 comentários e 94,1% classificados, em 6 classes. O `busca.json` do 005 no repositório não mudou em relação ao último commit; isso será conferido no fim da reconstrução, antes de publicar o número.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.262 — Frente de intolerância: proposta aprovada e piloto da triagem (014, 021, 022) (2026-11-02) ⚠️
 
 - **Por quê:** o responsável pediu (02/11, 02h20–02h28) uma avaliação de recursos de discurso de ódio para os casos ("o observatório é focado em intolerância e desinformação") e a proposta. Depois aprovou (02h29): "pode aplicar". A proposta está no doc "Proposta: frente de intolerância e desinformação nos casos do ODI Atlas".
