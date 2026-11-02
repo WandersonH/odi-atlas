@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.267 — Reconstrução lematizada dos casos: 005, 006 e 007 estouraram o tempo; GEXF do 007 (2026-11-02) ⛔
+
+- **Problema:** a reconstrução local (`build_caso_busca.py` por caso, limite de 25 minutos) **não terminou** nos casos 005, 006 e 007. Os logs ficaram vazios, e cada caso parou exatamente no limite (02h03 → 02h28 → 02h53). Os `busca.json` desses casos continuam os da coleta de 31/10, no formato antigo, sem lematização, sem passo 3 e sem a regra dos 75%.
+- **Correção de registro:** na C19.263, os números do 005 (18.571 comentários, 94,1%) foram lidos do arquivo antigo, não da reconstrução. O mesmo vale para o 006 (18.224; 94,3%). As classes do 006 nesse arquivo têm quatro grupos de exatamente 859 segmentos: é o artefato do piso de classe mínima já corrigido no código novo. Ainda não foi republicado.
+- **O que entrou:** só os GEXF do 007, gravados antes da etapa de classes.
+- A reconstrução local foi interrompida. O próximo passo é medir onde a CHD nova gasta o tempo nos corpora de ~18 mil comentários, antes de rodar de novo.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.266 — Caso 028: ameaças a indígenas no Mato Grosso do Sul depois do 2º turno e a reação #ProtejamNossosPovosIndígenas (2026-11-02) ⚠️
 
 - **Por quê:** o responsável (02/11, 02h53–02h54) enviou a matéria do g1 de 27/10, citou os grupos ("Exército povos indígenas", "protejam povos indígenas", "também foi criado grupo de Whats") e mandou o link do canal.
