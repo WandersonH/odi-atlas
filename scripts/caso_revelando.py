@@ -70,7 +70,8 @@ def e_episodio(titulo: str) -> bool:
 
 def assunto(titulo: str) -> str:
     """Assunto do episódio para o Trends: o título sem a marca, o número do episódio, o convidado (", com …") e a pontuação."""
-    t = re.sub(r"\bREVELANDO\b|#\d+|\bEP\.?\s*\d+|\bepis[oó]dio\s*\d+|\bparte\s*\d+|,?\s+com\s+[A-ZÁ-Ú][^|—–:]*$", " ", titulo or "", flags=re.I)
+    t = re.sub(r"\bREVELANDO\b|#\d+|\bEP\.?\s*\d+|\bepis[oó]dio\s*\d+|\bparte\s*\d+", " ", titulo or "", flags=re.I)
+    t = re.sub(r",?\s+com\s+(?:o |a |general |pastor |padre |dr\.? )?[A-ZÁ-Ú][^|—–:]*?(?=\s*[|—–]|\s*$)", " ", t)  # convidado (", com Fulano")
     partes = [p.strip(" .,:;—–-|!?\"'“”‘’") for p in re.split(r"[|—–]|\s-\s|\s:\s|:\s", t)]
     partes = [p for p in partes if len(p.split()) >= 2] or [t]
     t = re.sub(r"[\"'“”‘’!?]", "", partes[0]).strip(" .,:;-")  # a primeira parte com 2+ palavras: costuma ser a manchete
