@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2026-11-02">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="tipo" type="string" />
+      <attribute id="1" title="candidato" type="string" />
+      <attribute id="2" title="marcacoes_recebidas" type="long" />
+    </attributes>
+    <nodes>
+      <node id="lulaoficial" label="@lulaoficial">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="17.618950038622252" />
+        <viz:position x="403.1" y="-415.1" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="campanha" />
+          <attvalue for="1" value="Lula" />
+          <attvalue for="2" value="5" />
+        </attvalues>
+      </node>
+      <node id="geraldoalckmin_" label="@geraldoalckmin_">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="13.937253933193773" />
+        <viz:position x="643.1" y="-474.2" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="campanha" />
+          <attvalue for="1" value="Lula" />
+          <attvalue for="2" value="0" />
+        </attvalues>
+      </node>
+      <node id="brasilcomlula" label="@brasilcomlula">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="9.0" />
+        <viz:position x="240.9" y="-60.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="campanha" />
+          <attvalue for="1" value="Lula" />
+          <attvalue for="2" value="0" />
+        </attvalues>
+      </node>
+      <node id="vovoze_oficial" label="@vovoze_oficial">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="9.0" />
+        <viz:position x="40.0" y="-505.3" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="marcada" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="1" />
+        </attvalues>
+      </node>
+      <node id="ricardostuckert" label="@ricardostuckert">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="15.486832980505138" />
+        <viz:position x="413.0" y="-549.8" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="marcada" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="10" />
+        </attvalues>
+      </node>
+      <node id="andrejanones" label="@andrejanones">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="9.0" />
+        <viz:position x="891.6" y="-760.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="marcada" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="1" />
+        </attvalues>
+      </node>
+      <node id="lualckmin" label="@lualckmin">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="9.0" />
+        <viz:position x="960.0" y="-291.9" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="marcada" />
+          <attvalue for="1" value="" />
+          <attvalue for="2" value="1" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="lulaoficial" target="vovoze_oficial" id="0" weight="1" />
+      <edge source="lulaoficial" target="ricardostuckert" id="1" weight="9" />
+      <edge source="geraldoalckmin_" target="lulaoficial" id="2" weight="4" />
+      <edge source="geraldoalckmin_" target="andrejanones" id="3" weight="1" />
+      <edge source="geraldoalckmin_" target="lualckmin" id="4" weight="1" />
+      <edge source="geraldoalckmin_" target="ricardostuckert" id="5" weight="1" />
+      <edge source="brasilcomlula" target="lulaoficial" id="6" weight="1" />
+    </edges>
+  </graph>
+</gexf>
