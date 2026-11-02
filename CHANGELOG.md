@@ -11,6 +11,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `scripts/canais_whatsapp.py`: anexa a série anterior de cada canal que o painel já lia (`data/whatsapp/seguidores.csv` e `seguidores_horario.csv`), com a fonte em cada ponto: 59 leituras do Exército do Lula e 56 da Tropa do Flávio.
   - Primeira leitura do Exército do Lula no painel: 4,6 mi, em 16/10. O painel registra 10 mi de 23/10 a 01/11.
 - Página do 026: a curva junta as duas séries. Novo aviso: o WhatsApp arredonda ("10 mi"), e acima disso a curva fica plana mesmo que o canal cresça.
+- Primeira leitura no workflow (run de 02/11, 02h42 BRT): 7 de 7 canais lidos — Exército do Lula "10M", Tropa do Flávio "1.9M", L'équipe de Mélenchon "169K", Ejército del Peronismo "68K", La Fuerza de la Gente "46K", Ejército de Petro "7.2K", Ejército de Lula LATAM "25". Ajustes do gráfico: 8 cores (o 7º canal repetia o vermelho do 1º) e margem para o rótulo "10.000.000".
 - **Teste:** a leitura local não alcança o WhatsApp (URLError): o arquivo de leituras local foi descartado sem commit, e a leitura real roda no workflow. `python -m unittest discover -s tests`: OK.
 
 ## C19.263 — Reconstrução lematizada dos casos: GEXF do 006 (em andamento) (2026-11-02) ⚠️
