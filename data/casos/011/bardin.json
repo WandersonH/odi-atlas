@@ -1,0 +1,8379 @@
+{
+ "caso": "011",
+ "gerado_em_utc": "2026-11-02T04:49:53Z",
+ "livro": {
+  "titulo": "Livro de códigos — caso 011: Joice Hasselmann declara voto em Lula (TV 247, 22/10/2026) (ODI Atlas)",
+  "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+  "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação ou comentário (texto, sem links); codificação por presença/ausência, várias categorias por unidade. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+  "simetria": "No bloco da incitação ficam os ataques (a Joice, por traição/oportunismo ou com insulto de gênero) e a repetição da acusação de agressão contra Bolsonaro; na reação ficam o apoio a ela, o descrédito da acusação, a defesa de uma frente pela democracia e o humor. Insulto e pedido de voto valem para qualquer lado. Nenhuma categoria mede a posição política de quem publica.",
+  "amostra_humana": {
+   "tamanho": 200,
+   "estratos": "rede/fonte × dia de publicação, proporcional, semente fixa 42",
+   "codificadores": 2,
+   "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+  },
+  "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto (na ordem da lista)."
+ },
+ "categorias": {
+  "ataque_traicao": {
+   "nome": "Ataque por traição ou oportunismo",
+   "definicao": "Acusa Joice de traição, oportunismo, troca de lado por dinheiro ou cargo, ou desqualifica a relevância dela.",
+   "n": 2,
+   "pct": 0.8
+  },
+  "misoginia": {
+   "nome": "Insulto de gênero ou ao corpo",
+   "definicao": "Ataca Joice (ou outra mulher) com insulto ligado a gênero, aparência ou sanidade (\"louca\", \"peppa\", \"porca\").",
+   "n": 1,
+   "pct": 0.4
+  },
+  "acusacao_agressao": {
+   "nome": "Repetição da acusação de agressão",
+   "definicao": "Repete ou amplifica a acusação de que Bolsonaro (ou o entorno) mandou agredi-la em 2021.",
+   "n": 17,
+   "pct": 6.4
+  },
+  "apoio_joice": {
+   "nome": "Apoio e acolhimento",
+   "definicao": "Elogia a coragem ou a decisão de Joice, dá boas-vindas, diz \"antes tarde do que nunca\" ou que respeita a mudança.",
+   "n": 4,
+   "pct": 1.5
+  },
+  "descredito_acusacao": {
+   "nome": "Descrédito da acusação",
+   "definicao": "Diz que a acusação de agressão é mentira ou invenção, que ela caiu sozinha, pede prova.",
+   "n": 0,
+   "pct": 0.0
+  },
+  "frente_democratica": {
+   "nome": "Frente pela democracia (\"direita e esquerda\")",
+   "definicao": "Enquadra o voto como defesa da democracia acima de ideologia, união de direita e esquerda contra o bolsonarismo.",
+   "n": 35,
+   "pct": 13.2
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, ironia ou deboche na publicação (o alvo do humor é decidido pelo codificador humano).",
+   "n": 0,
+   "pct": 0.0
+  },
+  "insulto_desumanizacao": {
+   "nome": "Insulto e desumanização (qualquer alvo)",
+   "definicao": "Insulto ou termo de desprezo contra qualquer alvo que não seja de gênero (Bolsonaro, família, Lula, eleitores).",
+   "n": 22,
+   "pct": 8.3
+  },
+  "chamado_voto": {
+   "nome": "Pedido de voto ou torcida eleitoral (qualquer candidato)",
+   "definicao": "Pede voto ou faz torcida para qualquer candidato (13 ou 22) ou \"fora\" para qualquer um.",
+   "n": 37,
+   "pct": 14.0
+  }
+ },
+ "publicacoes": 265,
+ "sem_categoria": {
+  "n": 165,
+  "pct": 62.3
+ },
+ "blocos": {
+  "incitacao": {
+   "categorias": [
+    "ataque_traicao",
+    "misoginia",
+    "acusacao_agressao"
+   ],
+   "n": 19,
+   "pct": 7.2
+  },
+  "reacao": {
+   "categorias": [
+    "apoio_joice",
+    "descredito_acusacao",
+    "frente_democratica",
+    "ironia_humor"
+   ],
+   "n": 39,
+   "pct": 14.7
+  },
+  "os_dois": {
+   "n": 4,
+   "pct": 1.5
+  }
+ },
+ "por_rede": {
+  "facebook": {
+   "n": 105,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 1,
+     "pct": 1.0
+    },
+    "misoginia": {
+     "n": 1,
+     "pct": 1.0
+    },
+    "acusacao_agressao": {
+     "n": 3,
+     "pct": 2.9
+    },
+    "apoio_joice": {
+     "n": 3,
+     "pct": 2.9
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 9,
+     "pct": 8.6
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 10,
+     "pct": 9.5
+    },
+    "chamado_voto": {
+     "n": 13,
+     "pct": 12.4
+    }
+   }
+  },
+  "instagram": {
+   "n": 160,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 1,
+     "pct": 0.6
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 14,
+     "pct": 8.8
+    },
+    "apoio_joice": {
+     "n": 1,
+     "pct": 0.6
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 26,
+     "pct": 16.2
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 12,
+     "pct": 7.5
+    },
+    "chamado_voto": {
+     "n": 24,
+     "pct": 15.0
+    }
+   }
+  }
+ },
+ "por_termo": {
+  "facebook · Joice Hasselmann Lula": {
+   "n": 55,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 1,
+     "pct": 1.8
+    },
+    "misoginia": {
+     "n": 1,
+     "pct": 1.8
+    },
+    "acusacao_agressao": {
+     "n": 1,
+     "pct": 1.8
+    },
+    "apoio_joice": {
+     "n": 3,
+     "pct": 5.5
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 7,
+     "pct": 12.7
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 5,
+     "pct": 9.1
+    },
+    "chamado_voto": {
+     "n": 11,
+     "pct": 20.0
+    }
+   }
+  },
+  "facebook · Joice Hasselmann TV 247": {
+   "n": 53,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 2,
+     "pct": 3.8
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 3,
+     "pct": 5.7
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 5,
+     "pct": 9.4
+    },
+    "chamado_voto": {
+     "n": 2,
+     "pct": 3.8
+    }
+   }
+  },
+  "instagram · #joicehasselmann": {
+   "n": 56,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 7,
+     "pct": 12.5
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 8,
+     "pct": 14.3
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 6,
+     "pct": 10.7
+    },
+    "chamado_voto": {
+     "n": 3,
+     "pct": 5.4
+    }
+   }
+  },
+  "instagram · reels: Joice Hasselmann Lula": {
+   "n": 78,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 1,
+     "pct": 1.3
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 4,
+     "pct": 5.1
+    },
+    "apoio_joice": {
+     "n": 1,
+     "pct": 1.3
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 15,
+     "pct": 19.2
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 6,
+     "pct": 7.7
+    },
+    "chamado_voto": {
+     "n": 17,
+     "pct": 21.8
+    }
+   }
+  },
+  "instagram · reels: Joice Hasselmann voto": {
+   "n": 70,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 1,
+     "pct": 1.4
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 5,
+     "pct": 7.1
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 13,
+     "pct": 18.6
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 1,
+     "pct": 1.4
+    },
+    "chamado_voto": {
+     "n": 12,
+     "pct": 17.1
+    }
+   }
+  }
+ },
+ "por_dia": {
+  "2026-10-21": {
+   "n": 2,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-22": {
+   "n": 87,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 1,
+     "pct": 1.1
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 3,
+     "pct": 3.4
+    },
+    "apoio_joice": {
+     "n": 3,
+     "pct": 3.4
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 17,
+     "pct": 19.5
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 10,
+     "pct": 11.5
+    },
+    "chamado_voto": {
+     "n": 18,
+     "pct": 20.7
+    }
+   }
+  },
+  "2026-10-23": {
+   "n": 101,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 1,
+     "pct": 1.0
+    },
+    "misoginia": {
+     "n": 1,
+     "pct": 1.0
+    },
+    "acusacao_agressao": {
+     "n": 11,
+     "pct": 10.9
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 13,
+     "pct": 12.9
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 7,
+     "pct": 6.9
+    },
+    "chamado_voto": {
+     "n": 14,
+     "pct": 13.9
+    }
+   }
+  },
+  "2026-10-24": {
+   "n": 46,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 3,
+     "pct": 6.5
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 4,
+     "pct": 8.7
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 4,
+     "pct": 8.7
+    },
+    "chamado_voto": {
+     "n": 5,
+     "pct": 10.9
+    }
+   }
+  },
+  "2026-10-25": {
+   "n": 9,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-26": {
+   "n": 7,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_joice": {
+     "n": 1,
+     "pct": 14.3
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 1,
+     "pct": 14.3
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-27": {
+   "n": 9,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-28": {
+   "n": 2,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-29": {
+   "n": 2,
+   "categorias": {
+    "ataque_traicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "misoginia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_agressao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_joice": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredito_acusacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "frente_democratica": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  }
+ },
+ "pares": [
+  {
+   "a": "frente_democratica",
+   "b": "insulto_desumanizacao",
+   "n": 4
+  },
+  {
+   "a": "acusacao_agressao",
+   "b": "frente_democratica",
+   "n": 4
+  },
+  {
+   "a": "chamado_voto",
+   "b": "frente_democratica",
+   "n": 3
+  },
+  {
+   "a": "chamado_voto",
+   "b": "insulto_desumanizacao",
+   "n": 2
+  },
+  {
+   "a": "acusacao_agressao",
+   "b": "chamado_voto",
+   "n": 2
+  },
+  {
+   "a": "acusacao_agressao",
+   "b": "insulto_desumanizacao",
+   "n": 2
+  },
+  {
+   "a": "apoio_joice",
+   "b": "insulto_desumanizacao",
+   "n": 1
+  },
+  {
+   "a": "ataque_traicao",
+   "b": "chamado_voto",
+   "n": 1
+  },
+  {
+   "a": "acusacao_agressao",
+   "b": "misoginia",
+   "n": 1
+  }
+ ],
+ "exemplos_contas_10mil": {
+  "ataque_traicao": [],
+  "misoginia": [],
+  "acusacao_agressao": [],
+  "apoio_joice": [],
+  "descredito_acusacao": [],
+  "frente_democratica": [],
+  "ironia_humor": [],
+  "insulto_desumanizacao": [],
+  "chamado_voto": []
+ },
+ "amostra_humana": {
+  "arquivo_privado": "casos/011/codificacao/amostra_bardin_v2.csv",
+  "publicacoes": 200,
+  "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"
+ },
+ "chd_palavras": {
+  "comentarios": 265,
+  "autores": 242,
+  "respostas": 0,
+  "por_dia": {
+   "2026-10-21": 2,
+   "2026-10-22": 87,
+   "2026-10-23": 101,
+   "2026-10-24": 46,
+   "2026-10-25": 9,
+   "2026-10-26": 7,
+   "2026-10-27": 9,
+   "2026-10-28": 2,
+   "2026-10-29": 2
+  },
+  "temas": {},
+  "temas_regex": {},
+  "palavras": [
+   [
+    "joice",
+    436
+   ],
+   [
+    "bolsonaro",
+    390
+   ],
+   [
+    "lula",
+    351
+   ],
+   [
+    "hasselmann",
+    292
+   ],
+   [
+    "voto",
+    182
+   ],
+   [
+    "flávio",
+    167
+   ],
+   [
+    "deputada",
+    144
+   ],
+   [
+    "democracia",
+    139
+   ],
+   [
+    "segundo",
+    115
+   ],
+   [
+    "brasil",
+    108
+   ],
+   [
+    "afirmou",
+    100
+   ],
+   [
+    "turno",
+    94
+   ],
+   [
+    "joicehasselmann",
+    90
+   ],
+   [
+    "eleições",
+    89
+   ],
+   [
+    "federal",
+    88
+   ],
+   [
+    "governo",
+    86
+   ],
+   [
+    "jair",
+    84
+   ],
+   [
+    "vídeo",
+    84
+   ],
+   [
+    "declarou",
+    82
+   ],
+   [
+    "presidente",
+    81
+   ],
+   [
+    "família",
+    80
+   ],
+   [
+    "entrevista",
+    78
+   ],
+   [
+    "contra",
+    75
+   ],
+   [
+    "jornalista",
+    70
+   ],
+   [
+    "oposição",
+    64
+   ],
+   [
+    "após",
+    59
+   ],
+   [
+    "dentro",
+    59
+   ],
+   [
+    "política",
+    56
+   ],
+   [
+    "domingo",
+    53
+   ],
+   [
+    "bolsonarismo",
+    53
+   ],
+   [
+    "líder",
+    51
+   ],
+   [
+    "fez",
+    50
+   ],
+   [
+    "decisão",
+    50
+   ],
+   [
+    "parlamentar",
+    50
+   ],
+   [
+    "redes",
+    49
+   ],
+   [
+    "político",
+    48
+   ],
+   [
+    "eleição",
+    48
+   ],
+   [
+    "declara",
+    48
+   ],
+   [
+    "declaração",
+    45
+   ],
+   [
+    "senador",
+    44
+   ]
+  ],
+  "rede_palavras": {
+   "desenho": {
+    "nos": [
+     {
+      "id": "relembrar",
+      "rotulo": "relembrar",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 0,
+      "x": 0.2672,
+      "y": 0.8433
+     },
+     {
+      "id": "preso",
+      "rotulo": "preso",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 1,
+      "x": 1.7066,
+      "y": 0.571
+     },
+     {
+      "id": "afirmar",
+      "rotulo": "afirmar",
+      "tipo": "palavra",
+      "n": 97,
+      "grupo": 0,
+      "x": 1.0734,
+      "y": 1.0718
+     },
+     {
+      "id": "lado",
+      "rotulo": "lado",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 1,
+      "x": 2.0,
+      "y": 1.0757
+     },
+     {
+      "id": "rede",
+      "rotulo": "rede",
+      "tipo": "palavra",
+      "n": 46,
+      "grupo": 0,
+      "x": 1.2327,
+      "y": 1.4689
+     },
+     {
+      "id": "inacio",
+      "rotulo": "inacio",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 0,
+      "x": 0.5381,
+      "y": 1.2012
+     },
+     {
+      "id": "luiz",
+      "rotulo": "luiz",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 0,
+      "x": 0.5719,
+      "y": 1.3688
+     },
+     {
+      "id": "voto",
+      "rotulo": "voto",
+      "tipo": "palavra",
+      "n": 124,
+      "grupo": 1,
+      "x": 1.0769,
+      "y": 1.0886
+     },
+     {
+      "id": "aliar",
+      "rotulo": "aliar",
+      "tipo": "palavra",
+      "n": 36,
+      "grupo": 0,
+      "x": 0.6961,
+      "y": 0.4737
+     },
+     {
+      "id": "pais",
+      "rotulo": "pais",
+      "tipo": "palavra",
+      "n": 33,
+      "grupo": 1,
+      "x": 1.3434,
+      "y": 1.7285
+     },
+     {
+      "id": "direito",
+      "rotulo": "direito",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 1,
+      "x": 1.9068,
+      "y": 0.4677
+     },
+     {
+      "id": "deixar",
+      "rotulo": "deixar",
+      "tipo": "palavra",
+      "n": 30,
+      "grupo": 1,
+      "x": 1.7462,
+      "y": 1.3178
+     },
+     {
+      "id": "tentar",
+      "rotulo": "tentar",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 1,
+      "x": 0.0291,
+      "y": 0.949
+     },
+     {
+      "id": "romper",
+      "rotulo": "romper",
+      "tipo": "palavra",
+      "n": 28,
+      "grupo": 0,
+      "x": 0.9526,
+      "y": 1.7147
+     },
+     {
+      "id": "declarar",
+      "rotulo": "declarar",
+      "tipo": "palavra",
+      "n": 119,
+      "grupo": 1,
+      "x": 1.0807,
+      "y": 0.7499
+     },
+     {
+      "id": "votar",
+      "rotulo": "votar",
+      "tipo": "palavra",
+      "n": 71,
+      "grupo": 1,
+      "x": 1.1821,
+      "y": 0.6947
+     },
+     {
+      "id": "ex",
+      "rotulo": "ex",
+      "tipo": "palavra",
+      "n": 131,
+      "grupo": 1,
+      "x": 0.8581,
+      "y": 1.0168
+     },
+     {
+      "id": "domingo",
+      "rotulo": "domingo",
+      "tipo": "palavra",
+      "n": 48,
+      "grupo": 1,
+      "x": 1.4889,
+      "y": 1.2345
+     },
+     {
+      "id": "feira",
+      "rotulo": "feira",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 0,
+      "x": 0.6505,
+      "y": 1.5462
+     },
+     {
+      "id": "camara",
+      "rotulo": "camara",
+      "tipo": "palavra",
+      "n": 30,
+      "grupo": 1,
+      "x": 1.5358,
+      "y": 1.081
+     },
+     {
+      "id": "politica",
+      "rotulo": "politica",
+      "tipo": "palavra",
+      "n": 32,
+      "grupo": 0,
+      "x": 0.9695,
+      "y": 0.2508
+     },
+     {
+      "id": "acusacao",
+      "rotulo": "acusacao",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 0,
+      "x": 0.5298,
+      "y": 0.6181
+     },
+     {
+      "id": "seguir",
+      "rotulo": "seguir",
+      "tipo": "palavra",
+      "n": 27,
+      "grupo": 1,
+      "x": 1.5119,
+      "y": 0.4986
+     },
+     {
+      "id": "decisao",
+      "rotulo": "decisao",
+      "tipo": "palavra",
+      "n": 45,
+      "grupo": 0,
+      "x": 0.6948,
+      "y": 0.6881
+     },
+     {
+      "id": "flavio",
+      "rotulo": "flavio",
+      "tipo": "palavra",
+      "n": 103,
+      "grupo": 1,
+      "x": 1.2596,
+      "y": 1.0254
+     },
+     {
+      "id": "social",
+      "rotulo": "social",
+      "tipo": "palavra",
+      "n": 40,
+      "grupo": 0,
+      "x": 0.7441,
+      "y": 0.663
+     },
+     {
+      "id": "joice",
+      "rotulo": "joice",
+      "tipo": "palavra",
+      "n": 214,
+      "grupo": 1,
+      "x": 0.9886,
+      "y": 0.9619
+     },
+     {
+      "id": "congresso",
+      "rotulo": "congresso",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 0,
+      "x": 1.5453,
+      "y": 1.4299
+     },
+     {
+      "id": "lider",
+      "rotulo": "lider",
+      "tipo": "palavra",
+      "n": 48,
+      "grupo": 1,
+      "x": 1.3572,
+      "y": 0.849
+     },
+     {
+      "id": "hasselmann",
+      "rotulo": "hasselmann",
+      "tipo": "palavra",
+      "n": 212,
+      "grupo": 1,
+      "x": 0.9872,
+      "y": 0.9737
+     },
+     {
+      "id": "dizer",
+      "rotulo": "dizer",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 0,
+      "x": 1.69,
+      "y": 1.1472
+     },
+     {
+      "id": "bolsonarista",
+      "rotulo": "bolsonarista",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 1,
+      "x": 0.5569,
+      "y": 1.9958
+     },
+     {
+      "id": "anunciar",
+      "rotulo": "anunciar",
+      "tipo": "palavra",
+      "n": 33,
+      "grupo": 0,
+      "x": 0.996,
+      "y": 1.4488
+     },
+     {
+      "id": "turno",
+      "rotulo": "turno",
+      "tipo": "palavra",
+      "n": 80,
+      "grupo": 0,
+      "x": 1.1857,
+      "y": 1.0202
+     },
+     {
+      "id": "grupo",
+      "rotulo": "grupo",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 0,
+      "x": 1.3233,
+      "y": 1.454
+     },
+     {
+      "id": "presidencial",
+      "rotulo": "presidencial",
+      "tipo": "palavra",
+      "n": 37,
+      "grupo": 0,
+      "x": 0.7725,
+      "y": 1.5897
+     },
+     {
+      "id": "entrevista",
+      "rotulo": "entrevista",
+      "tipo": "palavra",
+      "n": 55,
+      "grupo": 1,
+      "x": 0.4927,
+      "y": 0.749
+     },
+     {
+      "id": "critica",
+      "rotulo": "critica",
+      "tipo": "palavra",
+      "n": 27,
+      "grupo": 0,
+      "x": 1.2487,
+      "y": 0.3866
+     },
+     {
+      "id": "jair",
+      "rotulo": "jair",
+      "tipo": "palavra",
+      "n": 70,
+      "grupo": 0,
+      "x": 0.7649,
+      "y": 1.0267
+     },
+     {
+      "id": "deputado",
+      "rotulo": "deputado",
+      "tipo": "palavra",
+      "n": 114,
+      "grupo": 1,
+      "x": 0.911,
+      "y": 1.1002
+     },
+     {
+      "id": "democratico",
+      "rotulo": "democratico",
+      "tipo": "palavra",
+      "n": 33,
+      "grupo": 0,
+      "x": 1.5016,
+      "y": 0.7109
+     },
+     {
+      "id": "perder",
+      "rotulo": "perder",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 1,
+      "x": 1.6567,
+      "y": 1.646
+     },
+     {
+      "id": "criticar",
+      "rotulo": "criticar",
+      "tipo": "palavra",
+      "n": 24,
+      "grupo": 0,
+      "x": 0.1258,
+      "y": 1.1988
+     },
+     {
+      "id": "falar",
+      "rotulo": "falar",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 1,
+      "x": 0.5159,
+      "y": 0.2767
+     },
+     {
+      "id": "conhecer",
+      "rotulo": "conhecer",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 1,
+      "x": 1.6646,
+      "y": 0.8109
+     },
+     {
+      "id": "parlamentar",
+      "rotulo": "parlamentar",
+      "tipo": "palavra",
+      "n": 45,
+      "grupo": 0,
+      "x": 0.5353,
+      "y": 0.9384
+     },
+     {
+      "id": "publicar",
+      "rotulo": "publicar",
+      "tipo": "palavra",
+      "n": 40,
+      "grupo": 0,
+      "x": 0.671,
+      "y": 1.3409
+     },
+     {
+      "id": "jornalista",
+      "rotulo": "jornalista",
+      "tipo": "palavra",
+      "n": 61,
+      "grupo": 0,
+      "x": 0.6984,
+      "y": 0.9055
+     },
+     {
+      "id": "pt",
+      "rotulo": "pt",
+      "tipo": "palavra",
+      "n": 72,
+      "grupo": 0,
+      "x": 1.0096,
+      "y": 1.3086
+     },
+     {
+      "id": "video",
+      "rotulo": "video",
+      "tipo": "palavra",
+      "n": 74,
+      "grupo": 0,
+      "x": 1.2692,
+      "y": 0.7915
+     },
+     {
+      "id": "caso",
+      "rotulo": "caso",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 1,
+      "x": 1.1213,
+      "y": 0.0758
+     },
+     {
+      "id": "assistir",
+      "rotulo": "assistir",
+      "tipo": "palavra",
+      "n": 29,
+      "grupo": 1,
+      "x": 1.6125,
+      "y": 0.1764
+     },
+     {
+      "id": "bolsonarismo",
+      "rotulo": "bolsonarismo",
+      "tipo": "palavra",
+      "n": 41,
+      "grupo": 1,
+      "x": 1.5711,
+      "y": 0.9387
+     },
+     {
+      "id": "tv",
+      "rotulo": "tv",
+      "tipo": "palavra",
+      "n": 42,
+      "grupo": 1,
+      "x": 0.3278,
+      "y": 1.2915
+     },
+     {
+      "id": "ano",
+      "rotulo": "ano",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 1,
+      "x": 1.1138,
+      "y": 1.8697
+     },
+     {
+      "id": "bolsonaro",
+      "rotulo": "bolsonaro",
+      "tipo": "palavra",
+      "n": 172,
+      "grupo": 1,
+      "x": 1.0189,
+      "y": 0.9226
+     },
+     {
+      "id": "pl",
+      "rotulo": "pl",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 0,
+      "x": 0.8623,
+      "y": 1.4855
+     },
+     {
+      "id": "oposicao",
+      "rotulo": "oposicao",
+      "tipo": "palavra",
+      "n": 50,
+      "grupo": 0,
+      "x": 1.1398,
+      "y": 1.3429
+     },
+     {
+      "id": "historico",
+      "rotulo": "historico",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 0,
+      "x": 0.78,
+      "y": 0.2333
+     },
+     {
+      "id": "matar",
+      "rotulo": "matar",
+      "tipo": "palavra",
+      "n": 32,
+      "grupo": 1,
+      "x": 0.289,
+      "y": 0.4435
+     },
+     {
+      "id": "principal",
+      "rotulo": "principal",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 0,
+      "x": 0.3403,
+      "y": 0.8979
+     },
+     {
+      "id": "eleicao",
+      "rotulo": "eleicao",
+      "tipo": "palavra",
+      "n": 72,
+      "grupo": 0,
+      "x": 0.8724,
+      "y": 1.2199
+     },
+     {
+      "id": "declaracao",
+      "rotulo": "declaracao",
+      "tipo": "palavra",
+      "n": 56,
+      "grupo": 0,
+      "x": 1.2393,
+      "y": 1.3068
+     },
+     {
+      "id": "governo",
+      "rotulo": "governo",
+      "tipo": "palavra",
+      "n": 65,
+      "grupo": 1,
+      "x": 1.3203,
+      "y": 1.1011
+     },
+     {
+      "id": "dia",
+      "rotulo": "dia",
+      "tipo": "palavra",
+      "n": 37,
+      "grupo": 1,
+      "x": 1.8441,
+      "y": 0.8614
+     },
+     {
+      "id": "apoio",
+      "rotulo": "apoio",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 0,
+      "x": 0.3748,
+      "y": 0.5857
+     },
+     {
+      "id": "senador",
+      "rotulo": "senador",
+      "tipo": "palavra",
+      "n": 37,
+      "grupo": 0,
+      "x": 1.1489,
+      "y": 1.587
+     },
+     {
+      "id": "voltar",
+      "rotulo": "voltar",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 0,
+      "x": 0.9253,
+      "y": 1.5723
+     },
+     {
+      "id": "continuar",
+      "rotulo": "continuar",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 0,
+      "x": 0.2838,
+      "y": 1.2637
+     },
+     {
+      "id": "considerar",
+      "rotulo": "considerar",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 0,
+      "x": 0.3539,
+      "y": 1.1944
+     },
+     {
+      "id": "politico",
+      "rotulo": "politico",
+      "tipo": "palavra",
+      "n": 53,
+      "grupo": 0,
+      "x": 0.8969,
+      "y": 0.6088
+     },
+     {
+      "id": "defesa",
+      "rotulo": "defesa",
+      "tipo": "palavra",
+      "n": 27,
+      "grupo": 0,
+      "x": 0.3669,
+      "y": 1.5221
+     },
+     {
+      "id": "silva",
+      "rotulo": "silva",
+      "tipo": "palavra",
+      "n": 40,
+      "grupo": 0,
+      "x": 0.5009,
+      "y": 1.0499
+     },
+     {
+      "id": "familia",
+      "rotulo": "familia",
+      "tipo": "palavra",
+      "n": 55,
+      "grupo": 1,
+      "x": 1.159,
+      "y": 0.5432
+     },
+     {
+      "id": "representar",
+      "rotulo": "representar",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 1,
+      "x": 1.406,
+      "y": 0.3232
+     },
+     {
+      "id": "lula",
+      "rotulo": "lula",
+      "tipo": "palavra",
+      "n": 167,
+      "grupo": 1,
+      "x": 0.9845,
+      "y": 0.9411
+     },
+     {
+      "id": "presidente",
+      "rotulo": "presidente",
+      "tipo": "palavra",
+      "n": 60,
+      "grupo": 0,
+      "x": 0.8837,
+      "y": 0.698
+     },
+     {
+      "id": "brasil",
+      "rotulo": "brasil",
+      "tipo": "palavra",
+      "n": 59,
+      "grupo": 1,
+      "x": 1.0671,
+      "y": 0.4944
+     },
+     {
+      "id": "federal",
+      "rotulo": "federal",
+      "tipo": "palavra",
+      "n": 75,
+      "grupo": 0,
+      "x": 0.8787,
+      "y": 1.1455
+     },
+     {
+      "id": "democracia",
+      "rotulo": "democracia",
+      "tipo": "palavra",
+      "n": 79,
+      "grupo": 0,
+      "x": 1.2017,
+      "y": 0.8353
+     }
+    ],
+    "arestas": [
+     [
+      "relembrar",
+      "afirmar",
+      23
+     ],
+     [
+      "relembrar",
+      "anunciar",
+      7
+     ],
+     [
+      "relembrar",
+      "bolsonarismo",
+      7
+     ],
+     [
+      "relembrar",
+      "bolsonaro",
+      25
+     ],
+     [
+      "relembrar",
+      "congresso",
+      6
+     ],
+     [
+      "relembrar",
+      "considerar",
+      6
+     ],
+     [
+      "relembrar",
+      "continuar",
+      11
+     ],
+     [
+      "relembrar",
+      "decisao",
+      13
+     ],
+     [
+      "relembrar",
+      "declarar",
+      22
+     ],
+     [
+      "relembrar",
+      "defesa",
+      7
+     ],
+     [
+      "relembrar",
+      "democracia",
+      14
+     ],
+     [
+      "relembrar",
+      "democratico",
+      12
+     ],
+     [
+      "relembrar",
+      "deputado",
+      25
+     ],
+     [
+      "relembrar",
+      "dizer",
+      7
+     ],
+     [
+      "relembrar",
+      "domingo",
+      9
+     ],
+     [
+      "relembrar",
+      "eleicao",
+      16
+     ],
+     [
+      "relembrar",
+      "entrevista",
+      8
+     ],
+     [
+      "relembrar",
+      "ex",
+      25
+     ],
+     [
+      "relembrar",
+      "falar",
+      8
+     ],
+     [
+      "relembrar",
+      "federal",
+      18
+     ],
+     [
+      "relembrar",
+      "feira",
+      8
+     ],
+     [
+      "relembrar",
+      "governo",
+      13
+     ],
+     [
+      "relembrar",
+      "grupo",
+      13
+     ],
+     [
+      "relembrar",
+      "hasselmann",
+      25
+     ],
+     [
+      "relembrar",
+      "inacio",
+      11
+     ],
+     [
+      "relembrar",
+      "jair",
+      18
+     ],
+     [
+      "relembrar",
+      "joice",
+      25
+     ],
+     [
+      "relembrar",
+      "jornalista",
+      13
+     ],
+     [
+      "relembrar",
+      "lider",
+      7
+     ],
+     [
+      "relembrar",
+      "luiz",
+      11
+     ],
+     [
+      "relembrar",
+      "lula",
+      21
+     ],
+     [
+      "relembrar",
+      "matar",
+      8
+     ],
+     [
+      "relembrar",
+      "oposicao",
+      14
+     ],
+     [
+      "relembrar",
+      "parlamentar",
+      14
+     ],
+     [
+      "relembrar",
+      "perder",
+      6
+     ],
+     [
+      "relembrar",
+      "politica",
+      9
+     ],
+     [
+      "relembrar",
+      "politico",
+      11
+     ],
+     [
+      "relembrar",
+      "presidente",
+      16
+     ],
+     [
+      "relembrar",
+      "principal",
+      8
+     ],
+     [
+      "relembrar",
+      "pt",
+      19
+     ],
+     [
+      "relembrar",
+      "publicar",
+      9
+     ],
+     [
+      "relembrar",
+      "rede",
+      10
+     ],
+     [
+      "relembrar",
+      "romper",
+      6
+     ],
+     [
+      "relembrar",
+      "silva",
+      12
+     ],
+     [
+      "relembrar",
+      "social",
+      10
+     ],
+     [
+      "relembrar",
+      "tentar",
+      6
+     ],
+     [
+      "relembrar",
+      "turno",
+      18
+     ],
+     [
+      "relembrar",
+      "tv",
+      5
+     ],
+     [
+      "relembrar",
+      "video",
+      14
+     ],
+     [
+      "relembrar",
+      "voltar",
+      8
+     ],
+     [
+      "relembrar",
+      "votar",
+      9
+     ],
+     [
+      "relembrar",
+      "voto",
+      19
+     ],
+     [
+      "relembrar",
+      "ano",
+      6
+     ],
+     [
+      "relembrar",
+      "camara",
+      3
+     ],
+     [
+      "relembrar",
+      "criticar",
+      6
+     ],
+     [
+      "relembrar",
+      "declaracao",
+      10
+     ],
+     [
+      "relembrar",
+      "deixar",
+      7
+     ],
+     [
+      "relembrar",
+      "flavio",
+      14
+     ],
+     [
+      "relembrar",
+      "representar",
+      3
+     ],
+     [
+      "relembrar",
+      "seguir",
+      7
+     ],
+     [
+      "relembrar",
+      "senador",
+      7
+     ],
+     [
+      "relembrar",
+      "apoio",
+      8
+     ],
+     [
+      "relembrar",
+      "critica",
+      4
+     ],
+     [
+      "relembrar",
+      "familia",
+      5
+     ],
+     [
+      "relembrar",
+      "historico",
+      5
+     ],
+     [
+      "relembrar",
+      "preso",
+      3
+     ],
+     [
+      "relembrar",
+      "aliar",
+      10
+     ],
+     [
+      "relembrar",
+      "pl",
+      7
+     ],
+     [
+      "relembrar",
+      "dia",
+      4
+     ],
+     [
+      "relembrar",
+      "presidencial",
+      10
+     ],
+     [
+      "relembrar",
+      "acusacao",
+      8
+     ],
+     [
+      "relembrar",
+      "brasil",
+      5
+     ],
+     [
+      "relembrar",
+      "caso",
+      3
+     ],
+     [
+      "relembrar",
+      "bolsonarista",
+      3
+     ],
+     [
+      "preso",
+      "assistir",
+      7
+     ],
+     [
+      "preso",
+      "bolsonaro",
+      26
+     ],
+     [
+      "preso",
+      "brasil",
+      14
+     ],
+     [
+      "preso",
+      "declarar",
+      24
+     ],
+     [
+      "preso",
+      "democracia",
+      16
+     ],
+     [
+      "preso",
+      "democratico",
+      7
+     ],
+     [
+      "preso",
+      "domingo",
+      15
+     ],
+     [
+      "preso",
+      "familia",
+      15
+     ],
+     [
+      "preso",
+      "flavio",
+      26
+     ],
+     [
+      "preso",
+      "hasselmann",
+      25
+     ],
+     [
+      "preso",
+      "joice",
+      26
+     ],
+     [
+      "preso",
+      "lado",
+      8
+     ],
+     [
+      "preso",
+      "lula",
+      23
+     ],
+     [
+      "preso",
+      "oposicao",
+      13
+     ],
+     [
+      "preso",
+      "representar",
+      8
+     ],
+     [
+      "preso",
+      "turno",
+      17
+     ],
+     [
+      "preso",
+      "video",
+      15
+     ],
+     [
+      "preso",
+      "voltar",
+      9
+     ],
+     [
+      "preso",
+      "votar",
+      10
+     ],
+     [
+      "preso",
+      "voto",
+      20
+     ],
+     [
+      "preso",
+      "dia",
+      9
+     ],
+     [
+      "preso",
+      "matar",
+      6
+     ],
+     [
+      "preso",
+      "aliar",
+      6
+     ],
+     [
+      "preso",
+      "ex",
+      19
+     ],
+     [
+      "preso",
+      "jair",
+      12
+     ],
+     [
+      "preso",
+      "principal",
+      5
+     ],
+     [
+      "preso",
+      "pt",
+      11
+     ],
+     [
+      "preso",
+      "afirmar",
+      16
+     ],
+     [
+      "preso",
+      "apoio",
+      5
+     ],
+     [
+      "preso",
+      "considerar",
+      4
+     ],
+     [
+      "preso",
+      "continuar",
+      3
+     ],
+     [
+      "preso",
+      "critica",
+      5
+     ],
+     [
+      "preso",
+      "decisao",
+      13
+     ],
+     [
+      "preso",
+      "declaracao",
+      7
+     ],
+     [
+      "preso",
+      "deixar",
+      7
+     ],
+     [
+      "preso",
+      "deputado",
+      16
+     ],
+     [
+      "preso",
+      "dizer",
+      5
+     ],
+     [
+      "preso",
+      "eleicao",
+      14
+     ],
+     [
+      "preso",
+      "federal",
+      14
+     ],
+     [
+      "preso",
+      "governo",
+      6
+     ],
+     [
+      "preso",
+      "historico",
+      3
+     ],
+     [
+      "preso",
+      "inacio",
+      7
+     ],
+     [
+      "preso",
+      "jornalista",
+      9
+     ],
+     [
+      "preso",
+      "luiz",
+      7
+     ],
+     [
+      "preso",
+      "parlamentar",
+      7
+     ],
+     [
+      "preso",
+      "presidente",
+      8
+     ],
+     [
+      "preso",
+      "publicar",
+      9
+     ],
+     [
+      "preso",
+      "rede",
+      7
+     ],
+     [
+      "preso",
+      "senador",
+      13
+     ],
+     [
+      "preso",
+      "silva",
+      8
+     ],
+     [
+      "preso",
+      "social",
+      6
+     ],
+     [
+      "preso",
+      "anunciar",
+      6
+     ],
+     [
+      "preso",
+      "pais",
+      6
+     ],
+     [
+      "preso",
+      "camara",
+      6
+     ],
+     [
+      "preso",
+      "conhecer",
+      4
+     ],
+     [
+      "preso",
+      "feira",
+      7
+     ],
+     [
+      "preso",
+      "grupo",
+      5
+     ],
+     [
+      "preso",
+      "lider",
+      6
+     ],
+     [
+      "preso",
+      "politico",
+      7
+     ],
+     [
+      "preso",
+      "bolsonarismo",
+      4
+     ],
+     [
+      "preso",
+      "defesa",
+      3
+     ],
+     [
+      "preso",
+      "perder",
+      3
+     ],
+     [
+      "preso",
+      "pl",
+      9
+     ],
+     [
+      "preso",
+      "acusacao",
+      9
+     ],
+     [
+      "preso",
+      "presidencial",
+      5
+     ],
+     [
+      "preso",
+      "bolsonarista",
+      3
+     ],
+     [
+      "preso",
+      "caso",
+      6
+     ],
+     [
+      "preso",
+      "entrevista",
+      5
+     ],
+     [
+      "preso",
+      "tv",
+      4
+     ],
+     [
+      "preso",
+      "seguir",
+      5
+     ],
+     [
+      "afirmar",
+      "acusacao",
+      32
+     ],
+     [
+      "afirmar",
+      "anunciar",
+      28
+     ],
+     [
+      "afirmar",
+      "bolsonarismo",
+      28
+     ],
+     [
+      "afirmar",
+      "bolsonaro",
+      95
+     ],
+     [
+      "afirmar",
+      "camara",
+      20
+     ],
+     [
+      "afirmar",
+      "conhecer",
+      20
+     ],
+     [
+      "afirmar",
+      "considerar",
+      21
+     ],
+     [
+      "afirmar",
+      "critica",
+      19
+     ],
+     [
+      "afirmar",
+      "criticar",
+      18
+     ],
+     [
+      "afirmar",
+      "decisao",
+      39
+     ],
+     [
+      "afirmar",
+      "declaracao",
+      42
+     ],
+     [
+      "afirmar",
+      "democracia",
+      57
+     ],
+     [
+      "afirmar",
+      "deputado",
+      84
+     ],
+     [
+      "afirmar",
+      "direito",
+      13
+     ],
+     [
+      "afirmar",
+      "domingo",
+      28
+     ],
+     [
+      "afirmar",
+      "eleicao",
+      58
+     ],
+     [
+      "afirmar",
+      "ex",
+      87
+     ],
+     [
+      "afirmar",
+      "familia",
+      34
+     ],
+     [
+      "afirmar",
+      "federal",
+      60
+     ],
+     [
+      "afirmar",
+      "flavio",
+      64
+     ],
+     [
+      "afirmar",
+      "governo",
+      44
+     ],
+     [
+      "afirmar",
+      "grupo",
+      26
+     ],
+     [
+      "afirmar",
+      "hasselmann",
+      95
+     ],
+     [
+      "afirmar",
+      "historico",
+      17
+     ],
+     [
+      "afirmar",
+      "inacio",
+      31
+     ],
+     [
+      "afirmar",
+      "jair",
+      57
+     ],
+     [
+      "afirmar",
+      "joice",
+      97
+     ],
+     [
+      "afirmar",
+      "jornalista",
+      40
+     ],
+     [
+      "afirmar",
+      "lider",
+      31
+     ],
+     [
+      "afirmar",
+      "luiz",
+      31
+     ],
+     [
+      "afirmar",
+      "lula",
+      81
+     ],
+     [
+      "afirmar",
+      "parlamentar",
+      38
+     ],
+     [
+      "afirmar",
+      "pl",
+      34
+     ],
+     [
+      "afirmar",
+      "politica",
+      19
+     ],
+     [
+      "afirmar",
+      "politico",
+      38
+     ],
+     [
+      "afirmar",
+      "presidencial",
+      30
+     ],
+     [
+      "afirmar",
+      "presidente",
+      47
+     ],
+     [
+      "afirmar",
+      "pt",
+      57
+     ],
+     [
+      "afirmar",
+      "rede",
+      32
+     ],
+     [
+      "afirmar",
+      "romper",
+      23
+     ],
+     [
+      "afirmar",
+      "senador",
+      30
+     ],
+     [
+      "afirmar",
+      "silva",
+      33
+     ],
+     [
+      "afirmar",
+      "social",
+      28
+     ],
+     [
+      "afirmar",
+      "turno",
+      62
+     ],
+     [
+      "afirmar",
+      "video",
+      47
+     ],
+     [
+      "afirmar",
+      "voltar",
+      25
+     ],
+     [
+      "afirmar",
+      "votar",
+      40
+     ],
+     [
+      "afirmar",
+      "voto",
+      63
+     ],
+     [
+      "afirmar",
+      "continuar",
+      22
+     ],
+     [
+      "afirmar",
+      "declarar",
+      70
+     ],
+     [
+      "afirmar",
+      "publicar",
+      32
+     ],
+     [
+      "afirmar",
+      "seguir",
+      20
+     ],
+     [
+      "afirmar",
+      "congresso",
+      21
+     ],
+     [
+      "afirmar",
+      "defesa",
+      22
+     ],
+     [
+      "afirmar",
+      "democratico",
+      25
+     ],
+     [
+      "afirmar",
+      "dizer",
+      26
+     ],
+     [
+      "afirmar",
+      "entrevista",
+      31
+     ],
+     [
+      "afirmar",
+      "falar",
+      18
+     ],
+     [
+      "afirmar",
+      "feira",
+      27
+     ],
+     [
+      "afirmar",
+      "matar",
+      16
+     ],
+     [
+      "afirmar",
+      "oposicao",
+      37
+     ],
+     [
+      "afirmar",
+      "perder",
+      17
+     ],
+     [
+      "afirmar",
+      "principal",
+      22
+     ],
+     [
+      "afirmar",
+      "tentar",
+      17
+     ],
+     [
+      "afirmar",
+      "tv",
+      18
+     ],
+     [
+      "afirmar",
+      "ano",
+      17
+     ],
+     [
+      "afirmar",
+      "dia",
+      18
+     ],
+     [
+      "afirmar",
+      "lado",
+      13
+     ],
+     [
+      "afirmar",
+      "aliar",
+      26
+     ],
+     [
+      "afirmar",
+      "deixar",
+      22
+     ],
+     [
+      "afirmar",
+      "representar",
+      16
+     ],
+     [
+      "afirmar",
+      "apoio",
+      21
+     ],
+     [
+      "afirmar",
+      "brasil",
+      35
+     ],
+     [
+      "afirmar",
+      "assistir",
+      9
+     ],
+     [
+      "afirmar",
+      "pais",
+      15
+     ],
+     [
+      "afirmar",
+      "caso",
+      19
+     ],
+     [
+      "afirmar",
+      "bolsonarista",
+      9
+     ],
+     [
+      "lado",
+      "bolsonarismo",
+      7
+     ],
+     [
+      "lado",
+      "declarar",
+      17
+     ],
+     [
+      "lado",
+      "deixar",
+      3
+     ],
+     [
+      "lado",
+      "democracia",
+      14
+     ],
+     [
+      "lado",
+      "direito",
+      5
+     ],
+     [
+      "lado",
+      "domingo",
+      10
+     ],
+     [
+      "lado",
+      "hasselmann",
+      21
+     ],
+     [
+      "lado",
+      "joice",
+      22
+     ],
+     [
+      "lado",
+      "lula",
+      20
+     ],
+     [
+      "lado",
+      "votar",
+      15
+     ],
+     [
+      "lado",
+      "voto",
+      16
+     ],
+     [
+      "lado",
+      "assistir",
+      7
+     ],
+     [
+      "lado",
+      "bolsonaro",
+      18
+     ],
+     [
+      "lado",
+      "brasil",
+      9
+     ],
+     [
+      "lado",
+      "democratico",
+      5
+     ],
+     [
+      "lado",
+      "familia",
+      11
+     ],
+     [
+      "lado",
+      "flavio",
+      15
+     ],
+     [
+      "lado",
+      "oposicao",
+      11
+     ],
+     [
+      "lado",
+      "representar",
+      5
+     ],
+     [
+      "lado",
+      "turno",
+      14
+     ],
+     [
+      "lado",
+      "video",
+      13
+     ],
+     [
+      "lado",
+      "voltar",
+      6
+     ],
+     [
+      "lado",
+      "ano",
+      3
+     ],
+     [
+      "lado",
+      "deputado",
+      13
+     ],
+     [
+      "lado",
+      "dia",
+      7
+     ],
+     [
+      "lado",
+      "ex",
+      14
+     ],
+     [
+      "lado",
+      "jornalista",
+      7
+     ],
+     [
+      "lado",
+      "presidente",
+      9
+     ],
+     [
+      "lado",
+      "tentar",
+      3
+     ],
+     [
+      "lado",
+      "congresso",
+      5
+     ],
+     [
+      "lado",
+      "critica",
+      7
+     ],
+     [
+      "lado",
+      "declaracao",
+      4
+     ],
+     [
+      "lado",
+      "dizer",
+      9
+     ],
+     [
+      "lado",
+      "eleicao",
+      8
+     ],
+     [
+      "lado",
+      "falar",
+      3
+     ],
+     [
+      "lado",
+      "federal",
+      10
+     ],
+     [
+      "lado",
+      "governo",
+      12
+     ],
+     [
+      "lado",
+      "historico",
+      5
+     ],
+     [
+      "lado",
+      "inacio",
+      5
+     ],
+     [
+      "lado",
+      "jair",
+      9
+     ],
+     [
+      "lado",
+      "lider",
+      9
+     ],
+     [
+      "lado",
+      "luiz",
+      5
+     ],
+     [
+      "lado",
+      "parlamentar",
+      4
+     ],
+     [
+      "lado",
+      "pl",
+      6
+     ],
+     [
+      "lado",
+      "presidencial",
+      4
+     ],
+     [
+      "lado",
+      "principal",
+      4
+     ],
+     [
+      "lado",
+      "pt",
+      11
+     ],
+     [
+      "lado",
+      "publicar",
+      7
+     ],
+     [
+      "lado",
+      "rede",
+      7
+     ],
+     [
+      "lado",
+      "senador",
+      3
+     ],
+     [
+      "lado",
+      "silva",
+      6
+     ],
+     [
+      "lado",
+      "social",
+      5
+     ],
+     [
+      "lado",
+      "aliar",
+      4
+     ],
+     [
+      "lado",
+      "anunciar",
+      6
+     ],
+     [
+      "lado",
+      "camara",
+      9
+     ],
+     [
+      "lado",
+      "conhecer",
+      5
+     ],
+     [
+      "lado",
+      "decisao",
+      5
+     ],
+     [
+      "lado",
+      "feira",
+      4
+     ],
+     [
+      "lado",
+      "grupo",
+      5
+     ],
+     [
+      "lado",
+      "pais",
+      6
+     ],
+     [
+      "lado",
+      "politico",
+      7
+     ],
+     [
+      "lado",
+      "considerar",
+      3
+     ],
+     [
+      "lado",
+      "continuar",
+      3
+     ],
+     [
+      "lado",
+      "politica",
+      3
+     ],
+     [
+      "lado",
+      "criticar",
+      4
+     ],
+     [
+      "lado",
+      "perder",
+      3
+     ],
+     [
+      "rede",
+      "acusacao",
+      8
+     ],
+     [
+      "rede",
+      "anunciar",
+      15
+     ],
+     [
+      "rede",
+      "bolsonarismo",
+      12
+     ],
+     [
+      "rede",
+      "bolsonaro",
+      39
+     ],
+     [
+      "rede",
+      "camara",
+      10
+     ],
+     [
+      "rede",
+      "conhecer",
+      13
+     ],
+     [
+      "rede",
+      "considerar",
+      12
+     ],
+     [
+      "rede",
+      "critica",
+      17
+     ],
+     [
+      "rede",
+      "criticar",
+      11
+     ],
+     [
+      "rede",
+      "decisao",
+      19
+     ],
+     [
+      "rede",
+      "declaracao",
+      18
+     ],
+     [
+      "rede",
+      "democracia",
+      26
+     ],
+     [
+      "rede",
+      "deputado",
+      36
+     ],
+     [
+      "rede",
+      "direito",
+      6
+     ],
+     [
+      "rede",
+      "domingo",
+      17
+     ],
+     [
+      "rede",
+      "eleicao",
+      26
+     ],
+     [
+      "rede",
+      "ex",
+      37
+     ],
+     [
+      "rede",
+      "familia",
+      13
+     ],
+     [
+      "rede",
+      "federal",
+      34
+     ],
+     [
+      "rede",
+      "flavio",
+      26
+     ],
+     [
+      "rede",
+      "governo",
+      24
+     ],
+     [
+      "rede",
+      "grupo",
+      16
+     ],
+     [
+      "rede",
+      "hasselmann",
+      44
+     ],
+     [
+      "rede",
+      "historico",
+      12
+     ],
+     [
+      "rede",
+      "inacio",
+      20
+     ],
+     [
+      "rede",
+      "jair",
+      22
+     ],
+     [
+      "rede",
+      "joice",
+      45
+     ],
+     [
+      "rede",
+      "jornalista",
+      20
+     ],
+     [
+      "rede",
+      "lider",
+      16
+     ],
+     [
+      "rede",
+      "luiz",
+      20
+     ],
+     [
+      "rede",
+      "lula",
+      39
+     ],
+     [
+      "rede",
+      "parlamentar",
+      22
+     ],
+     [
+      "rede",
+      "pl",
+      17
+     ],
+     [
+      "rede",
+      "politica",
+      11
+     ],
+     [
+      "rede",
+      "politico",
+      21
+     ],
+     [
+      "rede",
+      "presidencial",
+      15
+     ],
+     [
+      "rede",
+      "presidente",
+      28
+     ],
+     [
+      "rede",
+      "pt",
+      28
+     ],
+     [
+      "rede",
+      "romper",
+      14
+     ],
+     [
+      "rede",
+      "senador",
+      16
+     ],
+     [
+      "rede",
+      "silva",
+      20
+     ],
+     [
+      "rede",
+      "social",
+      40
+     ],
+     [
+      "rede",
+      "turno",
+      28
+     ],
+     [
+      "rede",
+      "video",
+      28
+     ],
+     [
+      "rede",
+      "voltar",
+      13
+     ],
+     [
+      "rede",
+      "votar",
+      22
+     ],
+     [
+      "rede",
+      "voto",
+      26
+     ],
+     [
+      "rede",
+      "continuar",
+      8
+     ],
+     [
+      "rede",
+      "declarar",
+      33
+     ],
+     [
+      "rede",
+      "publicar",
+      28
+     ],
+     [
+      "rede",
+      "seguir",
+      7
+     ],
+     [
+      "rede",
+      "congresso",
+      11
+     ],
+     [
+      "rede",
+      "defesa",
+      9
+     ],
+     [
+      "rede",
+      "democratico",
+      15
+     ],
+     [
+      "rede",
+      "dizer",
+      16
+     ],
+     [
+      "rede",
+      "entrevista",
+      5
+     ],
+     [
+      "rede",
+      "falar",
+      7
+     ],
+     [
+      "rede",
+      "feira",
+      16
+     ],
+     [
+      "rede",
+      "matar",
+      3
+     ],
+     [
+      "rede",
+      "oposicao",
+      19
+     ],
+     [
+      "rede",
+      "perder",
+      7
+     ],
+     [
+      "rede",
+      "principal",
+      9
+     ],
+     [
+      "rede",
+      "tentar",
+      4
+     ],
+     [
+      "rede",
+      "tv",
+      5
+     ],
+     [
+      "rede",
+      "aliar",
+      9
+     ],
+     [
+      "rede",
+      "dia",
+      5
+     ],
+     [
+      "rede",
+      "ano",
+      9
+     ],
+     [
+      "rede",
+      "deixar",
+      5
+     ],
+     [
+      "rede",
+      "representar",
+      8
+     ],
+     [
+      "rede",
+      "assistir",
+      5
+     ],
+     [
+      "rede",
+      "pais",
+      11
+     ],
+     [
+      "rede",
+      "apoio",
+      8
+     ],
+     [
+      "rede",
+      "brasil",
+      12
+     ],
+     [
+      "inacio",
+      "acusacao",
+      13
+     ],
+     [
+      "inacio",
+      "anunciar",
+      13
+     ],
+     [
+      "inacio",
+      "bolsonarismo",
+      13
+     ],
+     [
+      "inacio",
+      "bolsonaro",
+      35
+     ],
+     [
+      "inacio",
+      "camara",
+      11
+     ],
+     [
+      "inacio",
+      "conhecer",
+      7
+     ],
+     [
+      "inacio",
+      "considerar",
+      12
+     ],
+     [
+      "inacio",
+      "critica",
+      13
+     ],
+     [
+      "inacio",
+      "criticar",
+      8
+     ],
+     [
+      "inacio",
+      "decisao",
+      19
+     ],
+     [
+      "inacio",
+      "declaracao",
+      18
+     ],
+     [
+      "inacio",
+      "democracia",
+      26
+     ],
+     [
+      "inacio",
+      "deputado",
+      37
+     ],
+     [
+      "inacio",
+      "direito",
+      4
+     ],
+     [
+      "inacio",
+      "domingo",
+      13
+     ],
+     [
+      "inacio",
+      "eleicao",
+      28
+     ],
+     [
+      "inacio",
+      "ex",
+      37
+     ],
+     [
+      "inacio",
+      "familia",
+      12
+     ],
+     [
+      "inacio",
+      "federal",
+      35
+     ],
+     [
+      "inacio",
+      "flavio",
+      24
+     ],
+     [
+      "inacio",
+      "governo",
+      19
+     ],
+     [
+      "inacio",
+      "grupo",
+      15
+     ],
+     [
+      "inacio",
+      "hasselmann",
+      38
+     ],
+     [
+      "inacio",
+      "historico",
+      12
+     ],
+     [
+      "inacio",
+      "jair",
+      27
+     ],
+     [
+      "inacio",
+      "joice",
+      38
+     ],
+     [
+      "inacio",
+      "jornalista",
+      31
+     ],
+     [
+      "inacio",
+      "lider",
+      11
+     ],
+     [
+      "inacio",
+      "luiz",
+      38
+     ],
+     [
+      "inacio",
+      "lula",
+      38
+     ],
+     [
+      "inacio",
+      "parlamentar",
+      24
+     ],
+     [
+      "inacio",
+      "pl",
+      22
+     ],
+     [
+      "inacio",
+      "politica",
+      11
+     ],
+     [
+      "inacio",
+      "politico",
+      19
+     ],
+     [
+      "inacio",
+      "presidencial",
+      22
+     ],
+     [
+      "inacio",
+      "presidente",
+      30
+     ],
+     [
+      "inacio",
+      "pt",
+      31
+     ],
+     [
+      "inacio",
+      "romper",
+      15
+     ],
+     [
+      "inacio",
+      "senador",
+      15
+     ],
+     [
+      "inacio",
+      "silva",
+      38
+     ],
+     [
+      "inacio",
+      "social",
+      18
+     ],
+     [
+      "inacio",
+      "turno",
+      31
+     ],
+     [
+      "inacio",
+      "video",
+      21
+     ],
+     [
+      "inacio",
+      "voltar",
+      9
+     ],
+     [
+      "inacio",
+      "votar",
+      18
+     ],
+     [
+      "inacio",
+      "voto",
+      31
+     ],
+     [
+      "inacio",
+      "congresso",
+      7
+     ],
+     [
+      "inacio",
+      "continuar",
+      10
+     ],
+     [
+      "inacio",
+      "declarar",
+      34
+     ],
+     [
+      "inacio",
+      "defesa",
+      11
+     ],
+     [
+      "inacio",
+      "democratico",
+      10
+     ],
+     [
+      "inacio",
+      "dizer",
+      11
+     ],
+     [
+      "inacio",
+      "entrevista",
+      12
+     ],
+     [
+      "inacio",
+      "falar",
+      6
+     ],
+     [
+      "inacio",
+      "feira",
+      16
+     ],
+     [
+      "inacio",
+      "matar",
+      8
+     ],
+     [
+      "inacio",
+      "oposicao",
+      18
+     ],
+     [
+      "inacio",
+      "principal",
+      14
+     ],
+     [
+      "inacio",
+      "publicar",
+      21
+     ],
+     [
+      "inacio",
+      "tentar",
+      5
+     ],
+     [
+      "inacio",
+      "tv",
+      10
+     ],
+     [
+      "inacio",
+      "aliar",
+      16
+     ],
+     [
+      "inacio",
+      "dia",
+      5
+     ],
+     [
+      "inacio",
+      "ano",
+      5
+     ],
+     [
+      "inacio",
+      "deixar",
+      6
+     ],
+     [
+      "inacio",
+      "representar",
+      8
+     ],
+     [
+      "inacio",
+      "seguir",
+      9
+     ],
+     [
+      "inacio",
+      "apoio",
+      10
+     ],
+     [
+      "inacio",
+      "brasil",
+      10
+     ],
+     [
+      "inacio",
+      "pais",
+      6
+     ],
+     [
+      "inacio",
+      "bolsonarista",
+      6
+     ],
+     [
+      "inacio",
+      "caso",
+      4
+     ],
+     [
+      "luiz",
+      "acusacao",
+      13
+     ],
+     [
+      "luiz",
+      "anunciar",
+      13
+     ],
+     [
+      "luiz",
+      "bolsonarismo",
+      13
+     ],
+     [
+      "luiz",
+      "bolsonaro",
+      35
+     ],
+     [
+      "luiz",
+      "camara",
+      11
+     ],
+     [
+      "luiz",
+      "conhecer",
+      7
+     ],
+     [
+      "luiz",
+      "considerar",
+      12
+     ],
+     [
+      "luiz",
+      "critica",
+      13
+     ],
+     [
+      "luiz",
+      "criticar",
+      8
+     ],
+     [
+      "luiz",
+      "decisao",
+      19
+     ],
+     [
+      "luiz",
+      "declaracao",
+      18
+     ],
+     [
+      "luiz",
+      "democracia",
+      26
+     ],
+     [
+      "luiz",
+      "deputado",
+      37
+     ],
+     [
+      "luiz",
+      "direito",
+      4
+     ],
+     [
+      "luiz",
+      "domingo",
+      13
+     ],
+     [
+      "luiz",
+      "eleicao",
+      28
+     ],
+     [
+      "luiz",
+      "ex",
+      37
+     ],
+     [
+      "luiz",
+      "familia",
+      12
+     ],
+     [
+      "luiz",
+      "federal",
+      35
+     ],
+     [
+      "luiz",
+      "flavio",
+      24
+     ],
+     [
+      "luiz",
+      "governo",
+      19
+     ],
+     [
+      "luiz",
+      "grupo",
+      15
+     ],
+     [
+      "luiz",
+      "hasselmann",
+      38
+     ],
+     [
+      "luiz",
+      "historico",
+      12
+     ],
+     [
+      "luiz",
+      "jair",
+      27
+     ],
+     [
+      "luiz",
+      "joice",
+      38
+     ],
+     [
+      "luiz",
+      "jornalista",
+      31
+     ],
+     [
+      "luiz",
+      "lider",
+      11
+     ],
+     [
+      "luiz",
+      "lula",
+      38
+     ],
+     [
+      "luiz",
+      "parlamentar",
+      24
+     ],
+     [
+      "luiz",
+      "pl",
+      22
+     ],
+     [
+      "luiz",
+      "politica",
+      11
+     ],
+     [
+      "luiz",
+      "politico",
+      19
+     ],
+     [
+      "luiz",
+      "presidencial",
+      22
+     ],
+     [
+      "luiz",
+      "presidente",
+      30
+     ],
+     [
+      "luiz",
+      "pt",
+      31
+     ],
+     [
+      "luiz",
+      "romper",
+      15
+     ],
+     [
+      "luiz",
+      "senador",
+      15
+     ],
+     [
+      "luiz",
+      "silva",
+      38
+     ],
+     [
+      "luiz",
+      "social",
+      18
+     ],
+     [
+      "luiz",
+      "turno",
+      31
+     ],
+     [
+      "luiz",
+      "video",
+      21
+     ],
+     [
+      "luiz",
+      "voltar",
+      9
+     ],
+     [
+      "luiz",
+      "votar",
+      18
+     ],
+     [
+      "luiz",
+      "voto",
+      31
+     ],
+     [
+      "luiz",
+      "congresso",
+      7
+     ],
+     [
+      "luiz",
+      "continuar",
+      10
+     ],
+     [
+      "luiz",
+      "declarar",
+      34
+     ],
+     [
+      "luiz",
+      "defesa",
+      11
+     ],
+     [
+      "luiz",
+      "democratico",
+      10
+     ],
+     [
+      "luiz",
+      "dizer",
+      11
+     ],
+     [
+      "luiz",
+      "entrevista",
+      12
+     ],
+     [
+      "luiz",
+      "falar",
+      6
+     ],
+     [
+      "luiz",
+      "feira",
+      16
+     ],
+     [
+      "luiz",
+      "matar",
+      8
+     ],
+     [
+      "luiz",
+      "oposicao",
+      18
+     ],
+     [
+      "luiz",
+      "principal",
+      14
+     ],
+     [
+      "luiz",
+      "publicar",
+      21
+     ],
+     [
+      "luiz",
+      "tentar",
+      5
+     ],
+     [
+      "luiz",
+      "tv",
+      10
+     ],
+     [
+      "luiz",
+      "aliar",
+      16
+     ],
+     [
+      "luiz",
+      "dia",
+      5
+     ],
+     [
+      "luiz",
+      "ano",
+      5
+     ],
+     [
+      "luiz",
+      "deixar",
+      6
+     ],
+     [
+      "luiz",
+      "representar",
+      8
+     ],
+     [
+      "luiz",
+      "seguir",
+      9
+     ],
+     [
+      "luiz",
+      "apoio",
+      10
+     ],
+     [
+      "luiz",
+      "brasil",
+      10
+     ],
+     [
+      "luiz",
+      "pais",
+      6
+     ],
+     [
+      "luiz",
+      "bolsonarista",
+      6
+     ],
+     [
+      "luiz",
+      "caso",
+      4
+     ],
+     [
+      "voto",
+      "acusacao",
+      21
+     ],
+     [
+      "voto",
+      "anunciar",
+      26
+     ],
+     [
+      "voto",
+      "bolsonarismo",
+      25
+     ],
+     [
+      "voto",
+      "bolsonaro",
+      103
+     ],
+     [
+      "voto",
+      "camara",
+      22
+     ],
+     [
+      "voto",
+      "conhecer",
+      16
+     ],
+     [
+      "voto",
+      "considerar",
+      19
+     ],
+     [
+      "voto",
+      "critica",
+      12
+     ],
+     [
+      "voto",
+      "criticar",
+      16
+     ],
+     [
+      "voto",
+      "decisao",
+      36
+     ],
+     [
+      "voto",
+      "declaracao",
+      33
+     ],
+     [
+      "voto",
+      "democracia",
+      56
+     ],
+     [
+      "voto",
+      "deputado",
+      70
+     ],
+     [
+      "voto",
+      "direito",
+      11
+     ],
+     [
+      "voto",
+      "domingo",
+      36
+     ],
+     [
+      "voto",
+      "eleicao",
+      45
+     ],
+     [
+      "voto",
+      "ex",
+      80
+     ],
+     [
+      "voto",
+      "familia",
+      36
+     ],
+     [
+      "voto",
+      "federal",
+      49
+     ],
+     [
+      "voto",
+      "flavio",
+      60
+     ],
+     [
+      "voto",
+      "governo",
+      45
+     ],
+     [
+      "voto",
+      "grupo",
+      23
+     ],
+     [
+      "voto",
+      "hasselmann",
+      121
+     ],
+     [
+      "voto",
+      "historico",
+      17
+     ],
+     [
+      "voto",
+      "jair",
+      46
+     ],
+     [
+      "voto",
+      "joice",
+      123
+     ],
+     [
+      "voto",
+      "jornalista",
+      43
+     ],
+     [
+      "voto",
+      "lider",
+      31
+     ],
+     [
+      "voto",
+      "lula",
+      113
+     ],
+     [
+      "voto",
+      "parlamentar",
+      28
+     ],
+     [
+      "voto",
+      "pl",
+      26
+     ],
+     [
+      "voto",
+      "politica",
+      18
+     ],
+     [
+      "voto",
+      "politico",
+      31
+     ],
+     [
+      "voto",
+      "presidencial",
+      22
+     ],
+     [
+      "voto",
+      "presidente",
+      35
+     ],
+     [
+      "voto",
+      "pt",
+      53
+     ],
+     [
+      "voto",
+      "romper",
+      21
+     ],
+     [
+      "voto",
+      "senador",
+      18
+     ],
+     [
+      "voto",
+      "silva",
+      33
+     ],
+     [
+      "voto",
+      "social",
+      22
+     ],
+     [
+      "voto",
+      "turno",
+      58
+     ],
+     [
+      "voto",
+      "video",
+      46
+     ],
+     [
+      "voto",
+      "voltar",
+      20
+     ],
+     [
+      "voto",
+      "votar",
+      37
+     ],
+     [
+      "voto",
+      "declarar",
+      98
+     ],
+     [
+      "voto",
+      "deixar",
+      14
+     ],
+     [
+      "voto",
+      "assistir",
+      15
+     ],
+     [
+      "voto",
+      "brasil",
+      29
+     ],
+     [
+      "voto",
+      "democratico",
+      27
+     ],
+     [
+      "voto",
+      "oposicao",
+      40
+     ],
+     [
+      "voto",
+      "representar",
+      12
+     ],
+     [
+      "voto",
+      "congresso",
+      14
+     ],
+     [
+      "voto",
+      "continuar",
+      20
+     ],
+     [
+      "voto",
+      "defesa",
+      22
+     ],
+     [
+      "voto",
+      "dizer",
+      20
+     ],
+     [
+      "voto",
+      "entrevista",
+      27
+     ],
+     [
+      "voto",
+      "falar",
+      14
+     ],
+     [
+      "voto",
+      "feira",
+      23
+     ],
+     [
+      "voto",
+      "matar",
+      24
+     ],
+     [
+      "voto",
+      "perder",
+      15
+     ],
+     [
+      "voto",
+      "principal",
+      20
+     ],
+     [
+      "voto",
+      "publicar",
+      26
+     ],
+     [
+      "voto",
+      "tentar",
+      20
+     ],
+     [
+      "voto",
+      "tv",
+      19
+     ],
+     [
+      "voto",
+      "dia",
+      25
+     ],
+     [
+      "voto",
+      "aliar",
+      24
+     ],
+     [
+      "voto",
+      "ano",
+      16
+     ],
+     [
+      "voto",
+      "seguir",
+      19
+     ],
+     [
+      "voto",
+      "pais",
+      15
+     ],
+     [
+      "voto",
+      "apoio",
+      17
+     ],
+     [
+      "voto",
+      "caso",
+      9
+     ],
+     [
+      "voto",
+      "bolsonarista",
+      12
+     ],
+     [
+      "aliar",
+      "assistir",
+      3
+     ],
+     [
+      "aliar",
+      "bolsonaro",
+      34
+     ],
+     [
+      "aliar",
+      "declarar",
+      29
+     ],
+     [
+      "aliar",
+      "dia",
+      4
+     ],
+     [
+      "aliar",
+      "ex",
+      33
+     ],
+     [
+      "aliar",
+      "flavio",
+      18
+     ],
+     [
+      "aliar",
+      "hasselmann",
+      35
+     ],
+     [
+      "aliar",
+      "jair",
+      22
+     ],
+     [
+      "aliar",
+      "joice",
+      35
+     ],
+     [
+      "aliar",
+      "lula",
+      32
+     ],
+     [
+      "aliar",
+      "oposicao",
+      13
+     ],
+     [
+      "aliar",
+      "principal",
+      7
+     ],
+     [
+      "aliar",
+      "pt",
+      25
+     ],
+     [
+      "aliar",
+      "video",
+      13
+     ],
+     [
+      "aliar",
+      "acusacao",
+      10
+     ],
+     [
+      "aliar",
+      "bolsonarismo",
+      7
+     ],
+     [
+      "aliar",
+      "criticar",
+      6
+     ],
+     [
+      "aliar",
+      "declaracao",
+      14
+     ],
+     [
+      "aliar",
+      "deputado",
+      26
+     ],
+     [
+      "aliar",
+      "domingo",
+      8
+     ],
+     [
+      "aliar",
+      "familia",
+      11
+     ],
+     [
+      "aliar",
+      "jornalista",
+      14
+     ],
+     [
+      "aliar",
+      "parlamentar",
+      8
+     ],
+     [
+      "aliar",
+      "pl",
+      10
+     ],
+     [
+      "aliar",
+      "presidencial",
+      10
+     ],
+     [
+      "aliar",
+      "silva",
+      16
+     ],
+     [
+      "aliar",
+      "social",
+      9
+     ],
+     [
+      "aliar",
+      "turno",
+      25
+     ],
+     [
+      "aliar",
+      "votar",
+      11
+     ],
+     [
+      "aliar",
+      "anunciar",
+      10
+     ],
+     [
+      "aliar",
+      "brasil",
+      12
+     ],
+     [
+      "aliar",
+      "democracia",
+      19
+     ],
+     [
+      "aliar",
+      "pais",
+      6
+     ],
+     [
+      "aliar",
+      "publicar",
+      12
+     ],
+     [
+      "aliar",
+      "camara",
+      6
+     ],
+     [
+      "aliar",
+      "conhecer",
+      6
+     ],
+     [
+      "aliar",
+      "critica",
+      7
+     ],
+     [
+      "aliar",
+      "decisao",
+      13
+     ],
+     [
+      "aliar",
+      "democratico",
+      14
+     ],
+     [
+      "aliar",
+      "direito",
+      7
+     ],
+     [
+      "aliar",
+      "dizer",
+      5
+     ],
+     [
+      "aliar",
+      "federal",
+      20
+     ],
+     [
+      "aliar",
+      "feira",
+      13
+     ],
+     [
+      "aliar",
+      "governo",
+      11
+     ],
+     [
+      "aliar",
+      "grupo",
+      9
+     ],
+     [
+      "aliar",
+      "lider",
+      7
+     ],
+     [
+      "aliar",
+      "politico",
+      15
+     ],
+     [
+      "aliar",
+      "presidente",
+      18
+     ],
+     [
+      "aliar",
+      "representar",
+      3
+     ],
+     [
+      "aliar",
+      "voltar",
+      8
+     ],
+     [
+      "aliar",
+      "politica",
+      7
+     ],
+     [
+      "aliar",
+      "falar",
+      4
+     ],
+     [
+      "aliar",
+      "considerar",
+      5
+     ],
+     [
+      "aliar",
+      "eleicao",
+      16
+     ],
+     [
+      "aliar",
+      "historico",
+      4
+     ],
+     [
+      "aliar",
+      "apoio",
+      9
+     ],
+     [
+      "aliar",
+      "continuar",
+      6
+     ],
+     [
+      "aliar",
+      "defesa",
+      10
+     ],
+     [
+      "aliar",
+      "entrevista",
+      9
+     ],
+     [
+      "aliar",
+      "matar",
+      4
+     ],
+     [
+      "aliar",
+      "seguir",
+      6
+     ],
+     [
+      "aliar",
+      "tentar",
+      6
+     ],
+     [
+      "aliar",
+      "tv",
+      6
+     ],
+     [
+      "aliar",
+      "bolsonarista",
+      5
+     ],
+     [
+      "aliar",
+      "caso",
+      5
+     ],
+     [
+      "aliar",
+      "senador",
+      5
+     ],
+     [
+      "aliar",
+      "deixar",
+      4
+     ],
+     [
+      "aliar",
+      "ano",
+      3
+     ],
+     [
+      "aliar",
+      "romper",
+      4
+     ],
+     [
+      "aliar",
+      "perder",
+      3
+     ],
+     [
+      "pais",
+      "anunciar",
+      7
+     ],
+     [
+      "pais",
+      "assistir",
+      5
+     ],
+     [
+      "pais",
+      "bolsonarismo",
+      6
+     ],
+     [
+      "pais",
+      "bolsonaro",
+      23
+     ],
+     [
+      "pais",
+      "conhecer",
+      6
+     ],
+     [
+      "pais",
+      "decisao",
+      7
+     ],
+     [
+      "pais",
+      "declarar",
+      14
+     ],
+     [
+      "pais",
+      "defesa",
+      3
+     ],
+     [
+      "pais",
+      "democracia",
+      14
+     ],
+     [
+      "pais",
+      "deputado",
+      23
+     ],
+     [
+      "pais",
+      "eleicao",
+      12
+     ],
+     [
+      "pais",
+      "ex",
+      23
+     ],
+     [
+      "pais",
+      "federal",
+      15
+     ],
+     [
+      "pais",
+      "governo",
+      9
+     ],
+     [
+      "pais",
+      "hasselmann",
+      32
+     ],
+     [
+      "pais",
+      "joice",
+      30
+     ],
+     [
+      "pais",
+      "lider",
+      10
+     ],
+     [
+      "pais",
+      "lula",
+      20
+     ],
+     [
+      "pais",
+      "perder",
+      6
+     ],
+     [
+      "pais",
+      "publicar",
+      15
+     ],
+     [
+      "pais",
+      "romper",
+      3
+     ],
+     [
+      "pais",
+      "social",
+      10
+     ],
+     [
+      "pais",
+      "video",
+      18
+     ],
+     [
+      "pais",
+      "dizer",
+      6
+     ],
+     [
+      "pais",
+      "direito",
+      6
+     ],
+     [
+      "pais",
+      "grupo",
+      6
+     ],
+     [
+      "pais",
+      "jornalista",
+      5
+     ],
+     [
+      "pais",
+      "politico",
+      12
+     ],
+     [
+      "pais",
+      "brasil",
+      20
+     ],
+     [
+      "pais",
+      "declaracao",
+      10
+     ],
+     [
+      "pais",
+      "flavio",
+      21
+     ],
+     [
+      "pais",
+      "jair",
+      7
+     ],
+     [
+      "pais",
+      "camara",
+      5
+     ],
+     [
+      "pais",
+      "critica",
+      8
+     ],
+     [
+      "pais",
+      "democratico",
+      4
+     ],
+     [
+      "pais",
+      "domingo",
+      8
+     ],
+     [
+      "pais",
+      "familia",
+      6
+     ],
+     [
+      "pais",
+      "feira",
+      10
+     ],
+     [
+      "pais",
+      "oposicao",
+      7
+     ],
+     [
+      "pais",
+      "presidente",
+      9
+     ],
+     [
+      "pais",
+      "pt",
+      11
+     ],
+     [
+      "pais",
+      "representar",
+      7
+     ],
+     [
+      "pais",
+      "turno",
+      9
+     ],
+     [
+      "pais",
+      "voltar",
+      3
+     ],
+     [
+      "pais",
+      "votar",
+      9
+     ],
+     [
+      "pais",
+      "dia",
+      7
+     ],
+     [
+      "pais",
+      "apoio",
+      7
+     ],
+     [
+      "pais",
+      "considerar",
+      4
+     ],
+     [
+      "pais",
+      "parlamentar",
+      8
+     ],
+     [
+      "pais",
+      "politica",
+      5
+     ],
+     [
+      "pais",
+      "presidencial",
+      8
+     ],
+     [
+      "pais",
+      "silva",
+      6
+     ],
+     [
+      "pais",
+      "acusacao",
+      3
+     ],
+     [
+      "pais",
+      "deixar",
+      10
+     ],
+     [
+      "pais",
+      "pl",
+      9
+     ]
+    ],
+    "total_nos": 401,
+    "total_arestas": 19266,
+    "comunidades": 2
+   },
+   "gexf": "rede_palavras_comentarios_posts.gexf",
+   "o_que_e": "palavras que aparecem juntas no mesmo comentário (3+ vezes); cor = comunidade"
+  },
+  "classes": {
+   "comentarios": 265,
+   "classificados": 206,
+   "pct_classificados": 77.7,
+   "classes": [
+    {
+     "classe": 1,
+     "segmentos": 44,
+     "pct": 21.4,
+     "formas": [
+      [
+       "luiz",
+       53.3
+      ],
+      [
+       "inacio",
+       53.3
+      ],
+      [
+       "pt",
+       49.6
+      ],
+      [
+       "silva",
+       48.5
+      ],
+      [
+       "presidente",
+       44.0
+      ],
+      [
+       "jornalista",
+       40.5
+      ],
+      [
+       "federal",
+       39.9
+      ],
+      [
+       "social",
+       37.5
+      ],
+      [
+       "rede",
+       35.2
+      ],
+      [
+       "deputado",
+       33.4
+      ],
+      [
+       "turno",
+       30.9
+      ],
+      [
+       "pl",
+       30.7
+      ],
+      [
+       "trajetoria",
+       29.1
+      ],
+      [
+       "pior",
+       26.7
+      ],
+      [
+       "antigo",
+       25.5
+      ]
+     ],
+     "por_ano": {
+      "2026": 44
+     }
+    },
+    {
+     "classe": 2,
+     "segmentos": 17,
+     "pct": 8.3,
+     "formas": [
+      [
+       "compartilhar",
+       31.7
+      ],
+      [
+       "golpista",
+       27.9
+      ],
+      [
+       "comentar",
+       26.5
+      ],
+      [
+       "opiniao",
+       24.5
+      ],
+      [
+       "confundir",
+       22.5
+      ],
+      [
+       "ampliar",
+       22.5
+      ],
+      [
+       "debatepolitico",
+       22.5
+      ],
+      [
+       "envolvido",
+       22.5
+      ],
+      [
+       "maneira",
+       22.5
+      ],
+      [
+       "articulacao",
+       22.5
+      ],
+      [
+       "perpetuo",
+       22.5
+      ],
+      [
+       "eleicoes",
+       22.5
+      ],
+      [
+       "gerar",
+       22.5
+      ],
+      [
+       "prioridade",
+       22.5
+      ],
+      [
+       "debate",
+       21.5
+      ]
+     ],
+     "por_ano": {
+      "2026": 17
+     }
+    },
+    {
+     "classe": 3,
+     "segmentos": 26,
+     "pct": 12.6,
+     "formas": [
+      [
+       "tentar",
+       91.0
+      ],
+      [
+       "attuch",
+       47.1
+      ],
+      [
+       "matar",
+       46.8
+      ],
+      [
+       "leonardo",
+       42.8
+      ],
+      [
+       "agressao",
+       33.0
+      ],
+      [
+       "conceder",
+       28.2
+      ],
+      [
+       "tornar",
+       28.2
+      ],
+      [
+       "titulo",
+       28.2
+      ],
+      [
+       "defesa",
+       23.8
+      ],
+      [
+       "divergencia",
+       22.9
+      ],
+      [
+       "participar",
+       22.7
+      ],
+      [
+       "entrevista",
+       21.5
+      ],
+      [
+       "exibir",
+       21.1
+      ],
+      [
+       "sofrer",
+       19.9
+      ],
+      [
+       "explicar",
+       16.5
+      ]
+     ],
+     "por_ano": {
+      "2026": 26
+     }
+    },
+    {
+     "classe": 4,
+     "segmentos": 59,
+     "pct": 28.6,
+     "formas": [
+      [
+       "miliciano",
+       33.1
+      ],
+      [
+       "faccao",
+       18.1
+      ],
+      [
+       "roubo",
+       16.7
+      ],
+      [
+       "permanencia",
+       15.4
+      ],
+      [
+       "mentira",
+       13.6
+      ],
+      [
+       "violencia",
+       13.6
+      ],
+      [
+       "ideia",
+       11.8
+      ],
+      [
+       "processo",
+       11.8
+      ],
+      [
+       "decisivo",
+       11.5
+      ],
+      [
+       "expor",
+       11.5
+      ],
+      [
+       "decada",
+       11.1
+      ],
+      [
+       "pedir",
+       11.1
+      ],
+      [
+       "empilhar",
+       10.2
+      ],
+      [
+       "criminoso",
+       9.0
+      ],
+      [
+       "refletir",
+       8.8
+      ]
+     ],
+     "por_ano": {
+      "2026": 59
+     }
+    },
+    {
+     "classe": 5,
+     "segmentos": 35,
+     "pct": 17.0,
+     "formas": [
+      [
+       "preto",
+       46.0
+      ],
+      [
+       "kids",
+       46.0
+      ],
+      [
+       "apartamento",
+       40.7
+      ],
+      [
+       "assassinato",
+       30.2
+      ],
+      [
+       "acusar",
+       29.6
+      ],
+      [
+       "queda",
+       25.6
+      ],
+      [
+       "atentado",
+       25.0
+      ],
+      [
+       "brasilia",
+       25.0
+      ],
+      [
+       "casa",
+       25.0
+      ],
+      [
+       "contar",
+       24.7
+      ],
+      [
+       "julho",
+       24.3
+      ],
+      [
+       "concluir",
+       22.3
+      ],
+      [
+       "civil",
+       22.3
+      ],
+      [
+       "policia",
+       21.2
+      ],
+      [
+       "joyce",
+       20.9
+      ]
+     ],
+     "por_ano": {
+      "2026": 35
+     }
+    },
+    {
+     "classe": 6,
+     "segmentos": 25,
+     "pct": 12.1,
+     "formas": [
+      [
+       "jato",
+       83.6
+      ],
+      [
+       "florida",
+       76.1
+      ],
+      [
+       "estado",
+       68.1
+      ],
+      [
+       "fretar",
+       68.1
+      ],
+      [
+       "unido",
+       59.8
+      ],
+      [
+       "derrotar",
+       52.5
+      ],
+      [
+       "fugir",
+       44.7
+      ],
+      [
+       "deixar",
+       39.3
+      ],
+      [
+       "fuga",
+       37.1
+      ],
+      [
+       "caso",
+       30.9
+      ],
+      [
+       "eduardo",
+       30.8
+      ],
+      [
+       "viagem",
+       29.5
+      ],
+      [
+       "irmao",
+       29.5
+      ],
+      [
+       "fretamento",
+       29.5
+      ],
+      [
+       "viajar",
+       29.5
+      ]
+     ],
+     "por_ano": {
+      "2026": 25
+     }
+    }
+   ],
+   "arvore": [
+    {
+     "id": 0,
+     "n": 242,
+     "filhos": [
+      1,
+      2
+     ],
+     "chi2": 3325.2,
+     "classe": null
+    },
+    {
+     "id": 1,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 2,
+     "n": 238,
+     "filhos": [
+      3,
+      4
+     ],
+     "chi2": 2977.9,
+     "classe": null
+    },
+    {
+     "id": 3,
+     "n": 235,
+     "filhos": [
+      5,
+      6
+     ],
+     "chi2": 2392.1,
+     "classe": null
+    },
+    {
+     "id": 4,
+     "n": 3,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 5,
+     "n": 168,
+     "filhos": [
+      7,
+      8
+     ],
+     "chi2": 2226.2,
+     "classe": null
+    },
+    {
+     "id": 6,
+     "n": 67,
+     "filhos": [
+      25,
+      26
+     ],
+     "chi2": 1140.3,
+     "classe": null
+    },
+    {
+     "id": 7,
+     "n": 166,
+     "filhos": [
+      9,
+      10
+     ],
+     "chi2": 1839.6,
+     "classe": null
+    },
+    {
+     "id": 8,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 9,
+     "n": 162,
+     "filhos": [
+      11,
+      12
+     ],
+     "chi2": 1654.6,
+     "classe": null
+    },
+    {
+     "id": 10,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 11,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 12,
+     "n": 161,
+     "filhos": [
+      13,
+      14
+     ],
+     "chi2": 1615.9,
+     "classe": null
+    },
+    {
+     "id": 13,
+     "n": 157,
+     "filhos": [
+      15,
+      16
+     ],
+     "chi2": 1550.8,
+     "classe": null
+    },
+    {
+     "id": 14,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 15,
+     "n": 155,
+     "filhos": [
+      17,
+      18
+     ],
+     "chi2": 1369.9,
+     "classe": null
+    },
+    {
+     "id": 16,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 17,
+     "n": 148,
+     "filhos": [
+      19,
+      20
+     ],
+     "chi2": 1534.0,
+     "classe": null
+    },
+    {
+     "id": 18,
+     "n": 7,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 19,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 20,
+     "n": 146,
+     "filhos": [
+      21,
+      22
+     ],
+     "chi2": 1262.4,
+     "classe": null
+    },
+    {
+     "id": 21,
+     "n": 87,
+     "filhos": [
+      23,
+      24
+     ],
+     "chi2": 916.4,
+     "classe": null
+    },
+    {
+     "id": 22,
+     "n": 59,
+     "filhos": null,
+     "classe": 4
+    },
+    {
+     "id": 23,
+     "n": 61,
+     "filhos": [
+      29,
+      30
+     ],
+     "chi2": 745.2,
+     "classe": null
+    },
+    {
+     "id": 24,
+     "n": 26,
+     "filhos": null,
+     "classe": 3
+    },
+    {
+     "id": 25,
+     "n": 66,
+     "filhos": [
+      27,
+      28
+     ],
+     "chi2": 1009.5,
+     "classe": null
+    },
+    {
+     "id": 26,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 27,
+     "n": 60,
+     "filhos": [
+      31,
+      32
+     ],
+     "chi2": 950.0,
+     "classe": null
+    },
+    {
+     "id": 28,
+     "n": 6,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 29,
+     "n": 44,
+     "filhos": null,
+     "classe": 1
+    },
+    {
+     "id": 30,
+     "n": 17,
+     "filhos": null,
+     "classe": 2
+    },
+    {
+     "id": 31,
+     "n": 35,
+     "filhos": null,
+     "classe": 5
+    },
+    {
+     "id": 32,
+     "n": 25,
+     "filhos": null,
+     "classe": 6
+    }
+   ],
+   "min_classe": 12,
+   "escolha_classes": {
+    "classes_terminais": 6,
+    "tentativas": [
+     {
+      "classes_terminais": 7,
+      "aproveitamento_pct": 64.2
+     },
+     {
+      "classes_terminais": 6,
+      "aproveitamento_pct": 77.7
+     },
+     {
+      "classes_terminais": 5,
+      "aproveitamento_pct": 77.7
+     },
+     {
+      "classes_terminais": 4,
+      "aproveitamento_pct": 80.4
+     },
+     {
+      "classes_terminais": 3,
+      "aproveitamento_pct": 80.4
+     }
+    ],
+    "regra": "CHD com a regra do tutorial do IRaMuTeQ (Camargo & Justo, 2021, p. 31): começa com 10 classes terminais e, se a CHD não retiver 75% dos segmentos, muda o número de classes terminais e refaz. Regra fixa do Atlas, declarada antes de ver o resultado (01/11/2026): de 10 para baixo (10, 9, …, 3), a primeira partição com aproveitamento ≥ 75%; nenhuma → a de maior aproveitamento, marcada ⛔. Como as divisões são sempre as mesmas (a maior classe é dividida primeiro), as partições de 10 a 3 saem de uma só CHD."
+   },
+   "aproveitamento": {
+    "pct_classificados": 77.7,
+    "minimo_pct": 75.0,
+    "atinge_minimo": true,
+    "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
+    "regra": "10 classes terminais (padrão do IRaMuTeQ), reduzidas uma a uma até o aproveitamento chegar a 75% (tutorial do IRaMuTeQ, p. 31); classe mínima de 5% dos segmentos ativos (mín. 10); grupo menor que o mínimo fica não classificado; formas ativas: nomes, verbos, adjetivos e não reconhecidas (lematizadas pelo dicionário do IRaMuTeQ); frequência mínima 2; até 3.000 formas",
+    "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"
+   },
+   "variavel": null,
+   "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado.",
+   "amostra": {
+    "comentarios": 265,
+    "de": 265,
+    "semente": 42
+   }
+  },
+  "erro_redes": "KeyError: 'video_id'"
+ },
+ "universo": [
+  {
+   "rede": "instagram",
+   "termo": "#joicehasselmann",
+   "lidos_no_periodo": 56,
+   "coletas": 1,
+   "bateu_no_limite": true,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "a busca chegou ao limite pedido: há mais publicações do que as lidas"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: Joice Hasselmann Lula",
+   "lidos_no_periodo": 78,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: Joice Hasselmann voto",
+   "lidos_no_periodo": 70,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "facebook",
+   "termo": "Joice Hasselmann Lula",
+   "lidos_no_periodo": 55,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "facebook",
+   "termo": "Joice Hasselmann TV 247",
+   "lidos_no_periodo": 53,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  }
+ ],
+ "pontos": [
+  [
+   "2026-10-22T00:02",
+   "facebook",
+   17,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T01:33",
+   "instagram",
+   80388,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T12:11",
+   "instagram",
+   21601,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:34",
+   "facebook",
+   37,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:50",
+   "instagram",
+   283,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:53",
+   "instagram",
+   1642185,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:02",
+   "facebook",
+   13,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:03",
+   "instagram",
+   6609543,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:04",
+   "instagram",
+   278,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:04",
+   "facebook",
+   27,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:05",
+   "instagram",
+   3722,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:09",
+   "facebook",
+   33,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:18",
+   "instagram",
+   275986,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:20",
+   "instagram",
+   1660361,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:22",
+   "instagram",
+   677,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:22",
+   "instagram",
+   1720,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:27",
+   "instagram",
+   514723,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:30",
+   "facebook",
+   439,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:32",
+   "facebook",
+   278,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:32",
+   "facebook",
+   5,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:35",
+   "instagram",
+   3091,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:43",
+   "instagram",
+   146557,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:43",
+   "facebook",
+   2,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:46",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:47",
+   "instagram",
+   361124,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:50",
+   "facebook",
+   8,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:54",
+   "facebook",
+   507,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:54",
+   "instagram",
+   2175,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:55",
+   "instagram",
+   11500682,
+   [
+    "frente_democratica",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:55",
+   "instagram",
+   52129,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:56",
+   "facebook",
+   3,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:06",
+   "facebook",
+   2,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:08",
+   "facebook",
+   4,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:21",
+   "instagram",
+   536059,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:23",
+   "instagram",
+   206,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:28",
+   "facebook",
+   4,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:37",
+   "instagram",
+   81021,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:51",
+   "instagram",
+   480,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:53",
+   "facebook",
+   6,
+   [
+    "apoio_joice"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:53",
+   "instagram",
+   7682,
+   [
+    "chamado_voto",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:54",
+   "facebook",
+   10,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:57",
+   "facebook",
+   133,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:59",
+   "instagram",
+   8260285,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:59",
+   "instagram",
+   189,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:07",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:09",
+   "instagram",
+   5225,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:16",
+   "instagram",
+   82421,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:21",
+   "instagram",
+   2009,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:27",
+   "facebook",
+   50,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:30",
+   "instagram",
+   7,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:32",
+   "facebook",
+   736,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:39",
+   "facebook",
+   6,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:44",
+   "instagram",
+   23840,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:45",
+   "instagram",
+   799,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:46",
+   "instagram",
+   977,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:47",
+   "instagram",
+   26173,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:55",
+   "instagram",
+   67,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:59",
+   "instagram",
+   8,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:00",
+   "instagram",
+   4771,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:09",
+   "facebook",
+   9,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:22",
+   "instagram",
+   41482,
+   [
+    "acusacao_agressao",
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:22",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:32",
+   "instagram",
+   846308,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:36",
+   "facebook",
+   59,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:39",
+   "facebook",
+   82,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:40",
+   "instagram",
+   292,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T00:55",
+   "instagram",
+   7147,
+   [
+    "chamado_voto",
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:00",
+   "instagram",
+   3584,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:06",
+   "instagram",
+   31,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:15",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:17",
+   "instagram",
+   75,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:17",
+   "instagram",
+   29214,
+   [
+    "frente_democratica",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:18",
+   "instagram",
+   107,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:19",
+   "instagram",
+   29286,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:23",
+   "instagram",
+   4234,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:29",
+   "facebook",
+   6,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:42",
+   "instagram",
+   79852,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:47",
+   "instagram",
+   5335,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:48",
+   "facebook",
+   2,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:55",
+   "facebook",
+   29,
+   [
+    "ataque_traicao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:56",
+   "facebook",
+   16,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:06",
+   "instagram",
+   3271,
+   [
+    "apoio_joice",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:06",
+   "instagram",
+   369128,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:14",
+   "instagram",
+   5004,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:16",
+   "facebook",
+   6,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:25",
+   "instagram",
+   23553,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:33",
+   "instagram",
+   6265,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:37",
+   "facebook",
+   31,
+   [
+    "apoio_joice"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:46",
+   "instagram",
+   6290,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T03:03",
+   "instagram",
+   40,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T03:55",
+   "instagram",
+   124,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T04:07",
+   "instagram",
+   28645,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T04:09",
+   "instagram",
+   56,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T04:41",
+   "instagram",
+   2924,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T05:31",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T06:40",
+   "instagram",
+   4546,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T09:26",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T09:28",
+   "instagram",
+   81589,
+   [
+    "chamado_voto",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T09:28",
+   "facebook",
+   1,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T10:05",
+   "instagram",
+   1400,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T10:06",
+   "instagram",
+   219,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T10:31",
+   "instagram",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T10:35",
+   "instagram",
+   0,
+   [
+    "frente_democratica",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T10:39",
+   "facebook",
+   4,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T10:58",
+   "instagram",
+   256633,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T11:15",
+   "instagram",
+   4773,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T11:21",
+   "instagram",
+   28092,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T11:34",
+   "facebook",
+   19,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T11:47",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T11:55",
+   "instagram",
+   841803,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:00",
+   "instagram",
+   1820,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:10",
+   "instagram",
+   1993,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:13",
+   "instagram",
+   8,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:14",
+   "instagram",
+   8,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:20",
+   "instagram",
+   6034,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:30",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:34",
+   "instagram",
+   60,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T12:54",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T13:01",
+   "instagram",
+   58904,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T13:31",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T13:53",
+   "instagram",
+   4529,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T13:53",
+   "facebook",
+   61,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T14:06",
+   "instagram",
+   108506,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T14:11",
+   "instagram",
+   580,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T14:54",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:00",
+   "instagram",
+   16923,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:00",
+   "instagram",
+   185,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:04",
+   "instagram",
+   505,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:09",
+   "instagram",
+   1530830,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:13",
+   "facebook",
+   7,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:47",
+   "instagram",
+   101,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:49",
+   "facebook",
+   50,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T16:14",
+   "instagram",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T16:22",
+   "instagram",
+   437,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T16:33",
+   "instagram",
+   6,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T16:43",
+   "instagram",
+   186,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T16:50",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T17:02",
+   "instagram",
+   417,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T17:53",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:18",
+   "facebook",
+   218,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:30",
+   "instagram",
+   335,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:30",
+   "instagram",
+   500,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:41",
+   "instagram",
+   1089930,
+   [
+    "acusacao_agressao",
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:43",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:17",
+   "instagram",
+   2423608,
+   [
+    "acusacao_agressao",
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:19",
+   "instagram",
+   1468,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:25",
+   "instagram",
+   109,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:27",
+   "instagram",
+   2195751,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:31",
+   "instagram",
+   1174366,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:31",
+   "instagram",
+   953,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:32",
+   "instagram",
+   1674189,
+   [
+    "ataque_traicao",
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:35",
+   "instagram",
+   1,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:45",
+   "facebook",
+   13,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T20:09",
+   "facebook",
+   3,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T20:12",
+   "facebook",
+   1,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T20:19",
+   "facebook",
+   2,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T20:22",
+   "instagram",
+   10,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T20:23",
+   "facebook",
+   5,
+   [
+    "chamado_voto",
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T20:28",
+   "instagram",
+   134874,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T20:28",
+   "instagram",
+   22959,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:11",
+   "instagram",
+   64038,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:29",
+   "instagram",
+   64,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:30",
+   "facebook",
+   530,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:42",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:53",
+   "instagram",
+   472,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:57",
+   "instagram",
+   3968,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:58",
+   "instagram",
+   167999,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:05",
+   "facebook",
+   35,
+   [
+    "acusacao_agressao",
+    "misoginia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:16",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:24",
+   "instagram",
+   56,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:30",
+   "instagram",
+   3764,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:36",
+   "instagram",
+   1229418,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:40",
+   "instagram",
+   15,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:41",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:00",
+   "facebook",
+   26,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:13",
+   "instagram",
+   1167,
+   [
+    "acusacao_agressao",
+    "frente_democratica",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:15",
+   "facebook",
+   6,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:22",
+   "instagram",
+   80596,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:35",
+   "instagram",
+   164357,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:43",
+   "instagram",
+   348333,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:45",
+   "facebook",
+   7,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:45",
+   "instagram",
+   3,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T00:07",
+   "facebook",
+   1241,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T00:16",
+   "instagram",
+   621404,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T00:34",
+   "instagram",
+   8234,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T01:49",
+   "facebook",
+   1,
+   [
+    "acusacao_agressao",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T01:50",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T02:13",
+   "instagram",
+   18585,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T02:46",
+   "instagram",
+   11,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T02:47",
+   "instagram",
+   2,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:15",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:46",
+   "instagram",
+   24,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T05:23",
+   "facebook",
+   12,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T05:50",
+   "instagram",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T08:49",
+   "instagram",
+   22558,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T09:02",
+   "facebook",
+   565,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T09:48",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:35",
+   "facebook",
+   6,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:57",
+   "facebook",
+   5,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:49",
+   "instagram",
+   110,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:54",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:00",
+   "facebook",
+   18,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:00",
+   "instagram",
+   1,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:01",
+   "instagram",
+   7821,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:12",
+   "facebook",
+   7,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:33",
+   "instagram",
+   4452,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:41",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:43",
+   "facebook",
+   7,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:57",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T14:00",
+   "instagram",
+   605,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T14:13",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T14:53",
+   "instagram",
+   17,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:14",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:16",
+   "facebook",
+   2,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:23",
+   "instagram",
+   137,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T16:26",
+   "instagram",
+   471081,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T16:40",
+   "facebook",
+   10,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T16:51",
+   "instagram",
+   181794,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:10",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:45",
+   "instagram",
+   49079,
+   [
+    "acusacao_agressao",
+    "chamado_voto",
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:55",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T18:34",
+   "instagram",
+   11033,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T20:18",
+   "facebook",
+   3,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T20:51",
+   "facebook",
+   2,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T21:48",
+   "facebook",
+   21,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T22:09",
+   "instagram",
+   7933,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T22:28",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T22:43",
+   "facebook",
+   161,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T22:46",
+   "facebook",
+   4,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T23:02",
+   "instagram",
+   3149,
+   [
+    "acusacao_agressao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T00:37",
+   "facebook",
+   17,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T01:00",
+   "instagram",
+   191,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T01:06",
+   "instagram",
+   13,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T01:14",
+   "facebook",
+   27000,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T01:27",
+   "instagram",
+   285618,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T02:08",
+   "instagram",
+   851,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T08:35",
+   "facebook",
+   409,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T09:29",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T10:00",
+   "instagram",
+   10387,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T16:03",
+   "facebook",
+   9,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T16:25",
+   "facebook",
+   6,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T18:01",
+   "instagram",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T23:43",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T01:15",
+   "instagram",
+   179103,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T02:17",
+   "facebook",
+   7,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T03:47",
+   "instagram",
+   3879,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T08:39",
+   "instagram",
+   3760,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T09:26",
+   "instagram",
+   29467,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T10:24",
+   "instagram",
+   78,
+   [
+    "frente_democratica"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T11:32",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T12:32",
+   "instagram",
+   1223,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T16:09",
+   "facebook",
+   1,
+   [
+    "apoio_joice"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T15:07",
+   "instagram",
+   1616,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T15:32",
+   "instagram",
+   371156,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T16:02",
+   "instagram",
+   642,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:49",
+   "instagram",
+   160640,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:54",
+   "instagram",
+   302250,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T22:09",
+   "instagram",
+   437,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T23:59",
+   "instagram",
+   26309,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T00:27",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T01:10",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T21:12",
+   "facebook",
+   4,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T02:28",
+   "facebook",
+   3,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T13:33",
+   "instagram",
+   300,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T15:57",
+   "instagram",
+   2186,
+   [],
+   null,
+   null
+  ]
+ ],
+ "nota": "Pré-codificação automática por indicadores (sugestão, não decisão); várias categorias por publicação; percentuais sobre as publicações lidas, não sobre o universo."
+}
