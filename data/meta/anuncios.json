@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-11-01T18:09:59Z",
+ "coletado_em_utc": "2026-11-02T21:58:08Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -12,27 +12,27 @@
    "lidos_nesta_execucao": 900,
    "limite_da_coleta": 900,
    "no_limite": true,
-   "anuncios": 5007,
-   "paginas": 1442,
+   "anuncios": 5255,
+   "paginas": 1491,
    "gasto": {
-    "min": 10219700,
+    "min": 10227500,
     "max": null,
-    "faixas_abertas": 2271
+    "faixas_abertas": 2430
    },
    "impressoes": {
-    "min": 748926100,
+    "min": 750930300,
     "max": null,
-    "faixas_abertas": 2592
+    "faixas_abertas": 2751
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 4923,
-    "facebook": 4347,
-    "audience_network": 1421,
-    "threads": 1195,
-    "whatsapp": 338,
+    "instagram": 5169,
+    "facebook": 4571,
+    "audience_network": 1524,
+    "threads": 1305,
+    "whatsapp": 353,
     "messenger": 64
    },
    "fases": [
@@ -53,11 +53,11 @@
      "rotulo": "Campanha do 1º turno",
      "de": "2026-08-16",
      "ate": "2026-10-04",
-     "anuncios": 502,
+     "anuncios": 504,
      "gasto": {
-      "min": 4539300,
+      "min": 4540300,
       "max": null,
-      "faixas_abertas": 226
+      "faixas_abertas": 227
      }
     },
     {
@@ -65,21 +65,33 @@
      "rotulo": "2º turno",
      "de": "2026-10-05",
      "ate": "2026-10-25",
-     "anuncios": 2538,
+     "anuncios": 2544,
      "gasto": {
-      "min": 4691100,
+      "min": 4692500,
       "max": null,
-      "faixas_abertas": 870
+      "faixas_abertas": 873
+     }
+    },
+    {
+     "id": "pos",
+     "rotulo": "Depois do 2º turno",
+     "de": "2026-10-26",
+     "ate": "2026-12-31",
+     "anuncios": 1731,
+     "gasto": {
+      "min": 40800,
+      "max": null,
+      "faixas_abertas": 1192
      }
     }
    ],
    "fora_das_fases": {
-    "anuncios": 1753,
+    "anuncios": 262,
     "sem_data": 0,
     "gasto": {
-     "min": 450200,
+     "min": 414800,
      "max": null,
-     "faixas_abertas": 1130
+     "faixas_abertas": 93
     }
    },
    "regioes_gasto_min_estimado": [],
@@ -200,12 +212,12 @@
      "pagina": "Edinho Silva",
      "anuncios": 43,
      "gasto": {
-      "min": 155700,
-      "max": 179086,
+      "min": 156300,
+      "max": 179686,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 17935000,
+      "min": 18140000,
       "max": null,
       "faixas_abertas": 9
      },
@@ -549,30 +561,30 @@
    "candidato": "Flávio Bolsonaro",
    "termo": "Flávio Bolsonaro",
    "paginas_api": null,
-   "lidos_nesta_execucao": 236,
+   "lidos_nesta_execucao": 198,
    "limite_da_coleta": 900,
    "no_limite": false,
-   "anuncios": 3284,
-   "paginas": 669,
+   "anuncios": 3310,
+   "paginas": 677,
    "gasto": {
-    "min": 17164500,
+    "min": 17167500,
     "max": null,
-    "faixas_abertas": 174
+    "faixas_abertas": 179
    },
    "impressoes": {
-    "min": 616977100,
+    "min": 617637700,
     "max": null,
-    "faixas_abertas": 471
+    "faixas_abertas": 476
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 3168,
-    "facebook": 2578,
-    "audience_network": 99,
-    "threads": 82,
-    "whatsapp": 69,
+    "instagram": 3192,
+    "facebook": 2583,
+    "audience_network": 100,
+    "threads": 83,
+    "whatsapp": 70,
     "messenger": 2
    },
    "fases": [
@@ -607,19 +619,31 @@
      "ate": "2026-10-25",
      "anuncios": 2365,
      "gasto": {
-      "min": 10488200,
+      "min": 10489100,
       "max": null,
       "faixas_abertas": 79
+     }
+    },
+    {
+     "id": "pos",
+     "rotulo": "Depois do 2º turno",
+     "de": "2026-10-26",
+     "ate": "2026-12-31",
+     "anuncios": 442,
+     "gasto": {
+      "min": 23800,
+      "max": null,
+      "faixas_abertas": 94
      }
     }
    ],
    "fora_das_fases": {
-    "anuncios": 524,
+    "anuncios": 108,
     "sem_data": 0,
     "gasto": {
-     "min": 196800,
-     "max": null,
-     "faixas_abertas": 89
+     "min": 175100,
+     "max": 217347,
+     "faixas_abertas": 0
     }
    },
    "regioes_gasto_min_estimado": [],
@@ -791,14 +815,14 @@
     {
      "page_id": "800191420076446",
      "pagina": "Paulo Mansur",
-     "anuncios": 15,
+     "anuncios": 16,
      "gasto": {
-      "min": 130700,
-      "max": 153893,
+      "min": 131600,
+      "max": 154892,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 4005000,
+      "min": 4075000,
       "max": null,
       "faixas_abertas": 3
      },
@@ -1087,24 +1111,24 @@
  "erros": {},
  "modo": "diário",
  "teto_usd": 0.3,
- "gasto_mes_antes_usd": 0.0,
+ "gasto_mes_antes_usd": 0.1563,
  "runs_apify": [
   {
    "consulta": "lula",
-   "id": "cH4ODuAOzuadEjPZT",
+   "id": "i7bjRZzRwChlFDRWa",
    "status": "SUCCEEDED",
-   "custo_usd": 0.1287,
+   "custo_usd": 0.135,
    "itens": 900
   },
   {
    "consulta": "flavio",
-   "id": "9eHBpJXLWUqKqgCMX",
+   "id": "B105dfjQqiJmx7kle",
    "status": "SUCCEEDED",
-   "custo_usd": 0.0276,
-   "itens": 236
+   "custo_usd": 0.0216,
+   "itens": 198
   }
  ],
- "janela_desta_execucao": "2026-10-31",
+ "janela_desta_execucao": "2026-11-01",
  "status": "ok",
- "custo_usd": 0.1563
+ "custo_usd": 0.15660000000000002
 }
