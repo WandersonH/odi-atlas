@@ -4,6 +4,20 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.246 — Corpus dos candidatos regenerado com as regras do IRaMuTeQ: YouTube e X (2026-11-01) ⚠️
+
+- **YouTube:** 6 classes terminais, escolhidas pela regra dos 75%.
+  - Classes: 262 · 522 · 147 · 272 · 127 · 320 segmentos.
+  - Aproveitamento de 77,9%.
+  - Lematizado.
+- **X:** 10 classes terminais, porque com 10 o aproveitamento já passa de 75%.
+  - Classes: 494 · 263 · 528 · 256 · 624 · 386 · 286 · 383 · 636 · 256 segmentos.
+  - Aproveitamento de 84,6%, com classe mínima de 241.
+  - Lematizado.
+- **Classe do Atlas por segmento:** `data/corpus/{youtube,x,instagram}_classes_atlas_por_segmento.csv`.
+- **⚠️ Ainda nas regras anteriores** (C19.238: sem lematização e com 6 classes): Instagram, TikTok, Kwai e Facebook. A regeneração local continua e entra na próxima entrada.
+- **Teste:** `python -m unittest discover -s tests` OK.
+
 ## C19.245 — CHD alinhada ao padrão do IRaMuTeQ pelo tutorial: 10 classes terminais, regra dos 75%, formas ativas (2026-11-01) ⚠️
 
 - **Material enviado pelo responsável** (01/11, 22h10):
