@@ -108,7 +108,7 @@ def qualidade(root: Path, s: dict, r: dict) -> dict:
         cheias = [b for b in buscas if b.get("pedido") and b.get("itens") is not None and int(b["itens"]) >= int(b["pedido"])]
         if cheias:
             probs.append(f"{len(cheias)} de {len(buscas)} buscas bateram no limite pedido: a coleta é amostra dos mais recentes, não o total")
-        for k in ("registros_desta_coleta", "respostas_novas", "itens_novos", "novos"):
+        for k in ("registros_desta_coleta", "respostas_novas", "itens_novos", "novos", "videos_desta_coleta"):  # 02/11/2026: TikTok por hashtag
             if k in m and str(m[k]).isdigit() and int(m[k]) == 0:
                 probs.append(f"0 registros novos ({k})")
     return {"qualidade": "⚠️ " + "; ".join(probs) if probs else "sem problema detectável nos arquivos", **info}

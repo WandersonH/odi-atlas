@@ -195,7 +195,8 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
         for q in caso.get("buscas_tiktok", []):  # busca por frase (como a caixa de busca do TikTok)
             out.append((q, ATOR["tiktok_busca"], {"keywords": [q], "maxItems": n}))
         for t in tags:
-            out.append((f"#{t}", ATOR["tiktok_apify"], {"hashtags": [t], "region": "BR", "limit": n}))
+            # 02/11/2026: o ator novi devolveu 0 itens por hashtag (caso 001, 29/10 a 01/11); a busca do apidojo com "#hashtag"
+            out.append((f"#{t}", ATOR["tiktok_busca"], {"keywords": [f"#{t}"], "maxItems": n}))
     return out
 
 

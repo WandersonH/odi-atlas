@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.260 — TikTok de volta ao padrão dos casos (pago, US$ 1,00 por caso) · falha silenciosa da coleta grátis exposta no painel · caso 026 no padrão completo (2026-11-02) ⚠️
+
+- **Problema:** desde 30/10, a coleta grátis do TikTok pela página pública da hashtag lê 0 vídeos em todos os casos e no painel de hashtags. O workflow terminava com "sucesso", e o painel de saúde não acompanhava essa série. Nos manifestos dos casos, a última leitura com vídeos foi a de 29/10, 17h26 UTC. Desde a de 30/10, 17h01, nenhuma trouxe vídeos. A busca por frase nunca trouxe vídeos.
+- **Diagnóstico:** `scripts/diag_tiktok.py` e `diag-tiktok.yml`, só leitura, run 41392136539. A página carrega e a resposta `/api/challenge/item_list/` vem com HTTP 200 e **0 bytes**: o TikTok passou a entregar a lista vazia ao navegador automático sem login.
+- **Decisão do responsável** (02/11, 02h1x): TikTok pago, "US$ 1,00 por caso", conta 1, sem consulta de saldo. Também: o caso 026 entra no padrão completo, "US$ 2,00 + TikTok". Antes, ele (02h09): "eu não pedi pra padronizar os cases contendo todas as frentes… trends, tiktok, fatos é um padrão".
+- **O que mudou:**
+  - `data/config/casos.json`: `teto_usd.tiktok` = gasto anterior + 1,00 (o gasto anterior, lido nos manifestos, foi 0 em todos) e `segredo: APIFY_TOKEN` em todos os casos. Buscas de TikTok novas no 010 e no 026.
+  - Caso 026: `coletar: true`; X 0,90, Instagram 0,70, Facebook 0,40, TikTok 1,00; termos para X, Instagram e Facebook.
+  - `scripts/collect_casos.py`: hashtag do TikTok pela busca do `apidojo~tiktok-scraper` ("#hashtag"). O ator novi devolveu 0 no caso 001 entre 29/10 e 01/11.
+  - Painel de saúde: nova série "Vídeos por hashtag · TikTok", que aparece ⛔ atrasada. `videos_desta_coleta = 0` passa a contar como ressalva de qualidade.
+- **Teste executado:** `python -m unittest discover -s tests`: OK; `test_casos` atualizado para o ator novo. `build_saude_coleta.py`: 18 de 19 séries em dia, TikTok por hashtag ⛔.
+- **Pendente:** teste pago no caso 006 (modo teste, até US$ 0,05) antes da carga dos demais. O resultado entra na próxima entrada.
+
 ## C19.259 — Classes lematizadas dos comentários: casos 001 e 002 (reconstrução em andamento) (2026-11-02) ⚠️
 
 - `data/casos/001/busca.json` e `002/busca.json` foram regenerados por `scripts/build_caso_busca.py`, com lematização (dicionário do IRaMuTeQ), passo 3 e a regra dos 75%. Os GEXF de 002 e 003 também.

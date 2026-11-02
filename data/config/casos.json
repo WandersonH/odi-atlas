@@ -84,7 +84,7 @@
    "maximo_por_termo": 6000,
    "teto_usd": {
     "x": 2.4,
-    "tiktok": 1.1,
+    "tiktok": 1.0,
     "instagram": 1.25,
     "facebook": 0.65,
     "kwai": 0.4
@@ -109,7 +109,9 @@
    "lacunas": [],
    "nota_x": "X lido por janelas de horário até cada janela vir abaixo do limite (carga de 18/10 e complementos: runs 39132035304, 39132855716, 39133523009, 39133657951, 39133785803, 39161034090, 39161280098). Todas as janelas de #brasilinteiro e #verdeeamarelo desde 16/10 fecharam abaixo do limite, mas a busca do X não garante devolver tudo: os números são posts lidos, não o total oficial.",
    "correcao_termos": "18/10, 16h54: o usuário corrigiu — o caso são duas hashtags (#brasilinteiro e #verdeeamarelo); @verdeeamarelo não faz parte. Publicações trazidas só pela busca de @verdeeamarelo saem dos agregados (o bruto continua no privado).",
-   "autorizacao_cross": "Usuário em 18/10/2026, 17h2x: \"+ US$ 3,50\" para medir o cross entre redes no caso 1 (TikTok ~1.000 vídeos, Instagram ~400 posts, Facebook ~200, Kwai ~100). Teto do caso: US$ 3 + 3,50 = 6,50; tetos por rede somam 5,80."
+   "autorizacao_cross": "Usuário em 18/10/2026, 17h2x: \"+ US$ 3,50\" para medir o cross entre redes no caso 1 (TikTok ~1.000 vídeos, Instagram ~400 posts, Facebook ~200, Kwai ~100). Teto do caso: US$ 3 + 3,50 = 6,50; tetos por rede somam 5,80.",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": " · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539)."
   },
   {
    "id": "002",
@@ -143,7 +145,12 @@
    ],
    "busca": "collect_caso_busca.py --caso 002",
    "historico": "Dossiê de 18/10 aguardando data e termos; ativado em 20/10, 12h45, pelo usuário, com o escopo grátis (Trends, YouTube, imprensa, checagens, arquivo de 2022) e a bateria manual de consultas.",
-   "busca_google": true
+   "busca_google": true,
+   "teto_usd": {
+    "tiktok": 1.0
+   },
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": " · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539)."
   },
   {
    "id": "003",
@@ -185,7 +192,7 @@
     "apostas"
    ],
    "maximo_por_termo": 3000,
-   "autorizacao": "Usuário em 19/10/2026, 19h11–19h12: começar pelo TikTok; a conta APIFY_TOKEN_FL foi informada mas o usuário disse em seguida que ela já está bloqueada e pediu a coleta na versão gratuita (página pública do TikTok, sem login). Nenhuma chamada foi feita com APIFY_TOKEN_FL.",
+   "autorizacao": "Usuário em 19/10/2026, 19h11–19h12: começar pelo TikTok; a conta APIFY_TOKEN_FL foi informada mas o usuário disse em seguida que ela já está bloqueada e pediu a coleta na versão gratuita (página pública do TikTok, sem login). Nenhuma chamada foi feita com APIFY_TOKEN_FL. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "rolagens_tiktok": 25,
    "redes_previstas": [
     "todas as redes",
@@ -201,7 +208,8 @@
     "x": 1.8,
     "instagram": 1.3,
     "facebook": 0.52,
-    "kwai": 0.4
+    "kwai": 0.4,
+    "tiktok": 1.0
    },
    "autorizacao_paga": "Responsável em 27/10/2026, 03h05: \"colete o caso flamengo do primeiro turno, quanto precisa\"; teto escolhido US$ 4,00 (X 1,80; Instagram 1,30; Facebook 0,52; Kwai 0,40), conta 1 (APIFY_TOKEN), sem consulta de saldo de contas.",
    "complementos_x": [
@@ -270,7 +278,12 @@
    ],
    "busca": "collect_caso_busca.py --caso 005",
    "historico": "Criado em 20/10/2026, 12h46, a pedido do usuário (\"caso Ana Clara\": buscas, vídeos do YouTube e alcance total; citado por Lula no debate).",
-   "busca_google": true
+   "busca_google": true,
+   "teto_usd": {
+    "tiktok": 1.0
+   },
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": " · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539)."
   },
   {
    "id": "006",
@@ -290,7 +303,7 @@
    ],
    "desde": "2026-05-28",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis.",
+   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "hashtags": [],
    "buscas_tiktok": [
     "PCC terrorista Rubio",
@@ -317,7 +330,8 @@
     "x": 0.9,
     "instagram": 0.7,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -358,7 +372,7 @@
    ],
    "desde": "2026-10-03",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis.",
+   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "hashtags": [],
    "buscas_tiktok": [
     "Lula amassa bandeira",
@@ -385,7 +399,8 @@
     "x": 0.9,
     "instagram": 0.7,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -426,7 +441,7 @@
    ],
    "desde": "2026-10-21",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis.",
+   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "hashtags": [],
    "buscas_tiktok": [
     "camisetas PT Piracicaba",
@@ -453,7 +468,8 @@
     "x": 0.9,
     "instagram": 0.7,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -494,7 +510,7 @@
    ],
    "desde": "2026-10-20",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis.",
+   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "hashtags": [],
    "buscas_tiktok": [
     "Nikolas Nordeste esquecido",
@@ -520,7 +536,8 @@
     "x": 0.9,
     "instagram": 0.7,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -553,7 +570,7 @@
    "desde": "2026-10-24",
    "aba": "caso010",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 27/10/2026, 01h56: \"queria uma coleta sobre posts de brasileiros no perfil de Donald Trump e Marco Rubio nos últimos 3 dias\"; teto escolhido para o X: US$ 3,00 (01h5x). Instagram: \"adicione o instagram\" (01h58), teto adicional US$ 2,50. Conta 1 (APIFY_TOKEN), sem consulta de saldo.",
+   "autorizacao": "Responsável em 27/10/2026, 01h56: \"queria uma coleta sobre posts de brasileiros no perfil de Donald Trump e Marco Rubio nos últimos 3 dias\"; teto escolhido para o X: US$ 3,00 (01h5x). Instagram: \"adicione o instagram\" (01h58), teto adicional US$ 2,50. Conta 1 (APIFY_TOKEN), sem consulta de saldo. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Respostas e menções em português aos perfis de Donald Trump (@realDonaldTrump) e Marco Rubio (@marcorubio, @SecRubio) no X e comentários nos posts deles no Instagram, de 24/10/2026 (véspera do 2º turno) a 27/10. O filtro de idioma do X (lang:pt) inclui portugueses e outros lusófonos; a página trata o conjunto como \"em português\", não como prova de nacionalidade.",
    "hashtags": [],
    "termos_trends": [
@@ -568,7 +585,8 @@
    ],
    "maximo_por_termo": 6000,
    "teto_usd": {
-    "x": 3.0
+    "x": 3.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -602,6 +620,11 @@
     "Instagram",
     "Google",
     "imprensa"
+   ],
+   "buscas_tiktok": [
+    "Trump Brasil Lula",
+    "Rubio Brasil Lula",
+    "brasileiros Trump comentários"
    ]
   },
   {
@@ -612,7 +635,7 @@
    "rotulo_tipo": "em análise",
    "coletar": true,
    "aba": "caso011",
-   "autorizacao": "Responsável em 27/10/2026, 02h46 (pedido) e teto do Instagram US$ 3,50 (resposta à pergunta de teto). YouTube pela API, grátis. · Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis.",
+   "autorizacao": "Responsável em 27/10/2026, 02h46 (pedido) e teto do Instagram US$ 3,50 (resposta à pergunta de teto). YouTube pela API, grátis. · Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Entrevista de Joice Hasselmann a Leonardo Attuch (TV 247, 22/10/2026), em que declara voto em Lula e diz que Bolsonaro mandou agredi-la em 2021. O caso mede se os recortes da entrevista e o canal dela alcançaram públicos de fora da bolha dela (cruzando quem comenta com o acervo de comentários nas campanhas) e o crescimento do perfil depois do vídeo. Redes para o Gephi.",
    "redes_previstas": [
     "tiktok",
@@ -645,7 +668,8 @@
     "x": 0.9,
     "instagram": 0.7,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -686,7 +710,7 @@
    ],
    "desde": "2026-07-20",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis.",
+   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "hashtags": [],
    "buscas_tiktok": [
     "Allan dos Santos",
@@ -717,7 +741,8 @@
     "x": 0.9,
     "instagram": 0.7,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -748,7 +773,7 @@
    "rotulo_tipo": "em análise",
    "coletar": true,
    "aba": "caso013",
-   "autorizacao": "Responsável em 27/10/2026, 22h45: \"novo case buscas google e notícia fuga flavio, 'Onde está Flávio?' e 'Flávio fugiu'; se conseguir coletar algo em redes pode coletar grátis\". Só coleta gratuita (Trends, Google Notícias, YouTube pela API, TikTok pela página pública); nenhuma coleta paga.",
+   "autorizacao": "Responsável em 27/10/2026, 22h45: \"novo case buscas google e notícia fuga flavio, 'Onde está Flávio?' e 'Flávio fugiu'; se conseguir coletar algo em redes pode coletar grátis\". Só coleta gratuita (Trends, Google Notícias, YouTube pela API, TikTok pela página pública); nenhuma coleta paga. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Depois da derrota no 2º turno (25/10/2026), circulam as perguntas \"Onde está Flávio?\" e a afirmação \"Flávio fugiu\". O caso mede o interesse de busca, as notícias, os vídeos e os posts públicos do TikTok, e compara com episódios anteriores da mesma acusação (viagem a Lisboa em julho de 2025; viagem aos EUA em maio de 2026). O Atlas não afirma nem nega a fuga: registra o que circula e o que a imprensa e as agências publicam.",
    "fonte_contexto": [
     {
@@ -804,7 +829,11 @@
     "imprensa",
     "YouTube",
     "TikTok"
-   ]
+   ],
+   "teto_usd": {
+    "tiktok": 1.0
+   },
+   "segredo": "APIFY_TOKEN"
   },
   {
    "id": "014",
@@ -816,7 +845,7 @@
    "desde": "2026-10-25",
    "aba": "caso014",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 27/10/2026, 23h04: \"coleta temporal do dia 25 para cá com 'demita um petista', 'boicote esquerda'; se conseguir traga dados do MPT sobre assédio eleitoral; empresa e prestadores de serviço petista; você tem 6 dólares\". Teto US$ 6,00 (X 3,00; Instagram 1,50; Facebook 1,00; Kwai 0,50), conta 1, sem consulta de saldo. Em 28/10, 00h05 e 00h07: incluir #boicote, \"professor petista\" e \"direita apoia direita\" (mesmo teto). Em 28/10, 00h14 (\"tu não trouxe Kwai, Instagram e Facebook\"): frases no Facebook e no Kwai e hashtags extras no Instagram, dentro do que resta do teto de cada rede. 00h16: busca de reels do Instagram por assunto (data-slayer/instagram-search-reels), no mesmo teto do Instagram. 01h10: 4 reels indicados pelo responsável (\"esses entraram\"), lidos pelo leitor de reels no teto do Instagram. 01h14 (\"preciso de uma coleta que me traga uma real ideia desse universo\"): rodada 2 com vocabulário descoberto nos textos; teto do caso continua US$ 6,00, redistribuído (X 2,50; Instagram 2,50; Facebook 1,00; Kwai 0, que não devolveu nada). 01h25: \"sim\" para a rodada 3 e o livro v1.2; mais 1 reel indicado (DfBFuFfOs0Z). Em 29/10/2026, 21h5x (\"quando pergunto das completas é de todas ... vamos acompanhar até dia 15/11\") e 22h21 (\"demita um petista foi coletado certinho?\"): atualização desde 28/10 e leitura diária do X até 15/11, dentro do que sobrou do teto de US$ 6,00 (X: reserva diária 0,51, US$ 0,03 por dia).",
+   "autorizacao": "Responsável em 27/10/2026, 23h04: \"coleta temporal do dia 25 para cá com 'demita um petista', 'boicote esquerda'; se conseguir traga dados do MPT sobre assédio eleitoral; empresa e prestadores de serviço petista; você tem 6 dólares\". Teto US$ 6,00 (X 3,00; Instagram 1,50; Facebook 1,00; Kwai 0,50), conta 1, sem consulta de saldo. Em 28/10, 00h05 e 00h07: incluir #boicote, \"professor petista\" e \"direita apoia direita\" (mesmo teto). Em 28/10, 00h14 (\"tu não trouxe Kwai, Instagram e Facebook\"): frases no Facebook e no Kwai e hashtags extras no Instagram, dentro do que resta do teto de cada rede. 00h16: busca de reels do Instagram por assunto (data-slayer/instagram-search-reels), no mesmo teto do Instagram. 01h10: 4 reels indicados pelo responsável (\"esses entraram\"), lidos pelo leitor de reels no teto do Instagram. 01h14 (\"preciso de uma coleta que me traga uma real ideia desse universo\"): rodada 2 com vocabulário descoberto nos textos; teto do caso continua US$ 6,00, redistribuído (X 2,50; Instagram 2,50; Facebook 1,00; Kwai 0, que não devolveu nada). 01h25: \"sim\" para a rodada 3 e o livro v1.2; mais 1 reel indicado (DfBFuFfOs0Z). Em 29/10/2026, 21h5x (\"quando pergunto das completas é de todas ... vamos acompanhar até dia 15/11\") e 22h21 (\"demita um petista foi coletado certinho?\"): atualização desde 28/10 e leitura diária do X até 15/11, dentro do que sobrou do teto de US$ 6,00 (X: reserva diária 0,51, US$ 0,03 por dia). · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Depois do 2º turno (25/10/2026), circulam pedidos para demitir eleitores do PT, boicotar empresas e prestadores de serviço identificados como petistas e listas de estabelecimentos. O caso mede a circulação hora a hora desde 25/10 nas redes, nas buscas e na imprensa, e reúne os números do Ministério Público do Trabalho sobre assédio eleitoral. Nomes de empresas, prestadores e pessoas citados nas listas não são publicados.",
    "hashtags": [
     "demitaumpetista",
@@ -875,7 +904,8 @@
     "x": 2.466,
     "instagram": 3.02,
     "facebook": 1.314,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -1161,14 +1191,15 @@
    "desde": "2026-08-01",
    "aba": "bolhasApoio",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 28/10/2026, 15h05: \"seria possível construirmos uma página com essa lógica com nome bolhas de apoio\" (referência: quemapoiaquem.com.br); escolheu as três bases (políticos pelo TSE, coleta paga X + Instagram e pedir a base ao Quem Apoia Quem) e o teto de US$ 4,00 (X 1,50; Instagram 2,00 para a busca de reels; 0,50 para ler os seguidores dos autores), conta 1, sem consulta de saldo. Em 29/10/2026, 21h51 (\"quando pergunto das completas é de todas\"): fechar as lacunas dentro do que sobrou deste teto (X por mês) e TikTok grátis.",
+   "autorizacao": "Responsável em 28/10/2026, 15h05: \"seria possível construirmos uma página com essa lógica com nome bolhas de apoio\" (referência: quemapoiaquem.com.br); escolheu as três bases (políticos pelo TSE, coleta paga X + Instagram e pedir a base ao Quem Apoia Quem) e o teto de US$ 4,00 (X 1,50; Instagram 2,00 para a busca de reels; 0,50 para ler os seguidores dos autores), conta 1, sem consulta de saldo. Em 29/10/2026, 21h51 (\"quando pergunto das completas é de todas\"): fechar as lacunas dentro do que sobrou deste teto (X por mês) e TikTok grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Declarações públicas de voto ou apoio a Lula ou a Flávio Bolsonaro no 2º turno de 2026, feitas por perfis com 100 mil seguidores ou mais, entre 01/08 e 25/10/2026, com o link de cada publicação como prova. Não é pesquisa eleitoral e não mede intenção de voto.",
    "maximo_por_termo": 1500,
    "teto_usd": {
     "x": 1.5,
     "instagram": 2.0,
     "facebook": 0.0,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -1291,7 +1322,7 @@
    "desde": "2026-10-24",
    "aba": "caso016",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 29/10/2026, 21h51 (\"temos casos novos\"; \"gaste o quanto for necessário\"; \"vamos acompanhar até dia 15/11\") e 21h5x: teto de US$ 8,00 para os casos 016 e 017 juntos até 15/11 (\"carga inicial completa e leitura diária só no X\"), conta 1, sem consulta de saldo. Caso 016: X 1,95 (carga até 0,93 + reserva diária 1,02), Instagram 1,00, Facebook 0,50.",
+   "autorizacao": "Responsável em 29/10/2026, 21h51 (\"temos casos novos\"; \"gaste o quanto for necessário\"; \"vamos acompanhar até dia 15/11\") e 21h5x: teto de US$ 8,00 para os casos 016 e 017 juntos até 15/11 (\"carga inicial completa e leitura diária só no X\"), conta 1, sem consulta de saldo. Caso 016: X 1,95 (carga até 0,93 + reserva diária 1,02), Instagram 1,00, Facebook 0,50. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Depois do 2º turno (25/10/2026), circulam vídeos e chamados para queimar, rasgar ou destruir o título de eleitor. O caso mede o volume de publicações desde 24/10 em cada rede, nas buscas e na imprensa. Pessoas comuns que aparecem nos vídeos não são identificadas.",
    "hashtags": [
     "queimeseutitulo",
@@ -1325,7 +1356,8 @@
     "x": 1.95,
     "instagram": 1.0,
     "facebook": 0.5,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 1.02
@@ -1412,7 +1444,7 @@
    "desde": "2026-10-27",
    "aba": "caso017",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 29/10/2026, 21h51 (\"temos casos novos\"; \"gaste o quanto for necessário\"; \"vamos acompanhar até dia 15/11\") e 21h5x: teto de US$ 8,00 para os casos 016 e 017 juntos até 15/11 (\"carga inicial completa e leitura diária só no X\"), conta 1, sem consulta de saldo. Caso 017: X 2,05 (carga até 1,03 + reserva diária 1,02), Instagram 0,60 (reels por assunto), Facebook 0,40; posts e comentários do perfil de Flávio no Instagram 0,50 (coletar_caso_perfis_instagram.py). Versões no X e arquivo: grátis.",
+   "autorizacao": "Responsável em 29/10/2026, 21h51 (\"temos casos novos\"; \"gaste o quanto for necessário\"; \"vamos acompanhar até dia 15/11\") e 21h5x: teto de US$ 8,00 para os casos 016 e 017 juntos até 15/11 (\"carga inicial completa e leitura diária só no X\"), conta 1, sem consulta de saldo. Caso 017: X 2,05 (carga até 1,03 + reserva diária 1,02), Instagram 0,60 (reels por assunto), Facebook 0,40; posts e comentários do perfil de Flávio no Instagram 0,50 (coletar_caso_perfis_instagram.py). Versões no X e arquivo: grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Depois de viajar aos EUA, Flávio Bolsonaro divulgou uma carta em que se dizia o \"verdadeiro presidente eleito do Brasil\"; a nota foi editada e, na última versão, ele aparece como \"líder do Brasil\". O caso reúne as versões, os posts dele nas redes, a circulação, as respostas, a imprensa e as checagens.",
    "post_indicado": "https://x.com/flaviobolsonaro/status/2115538982012682337",
    "hashtags": [],
@@ -1456,7 +1488,8 @@
     "x": 2.05,
     "instagram": 0.6,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 1.02
@@ -1553,7 +1586,7 @@
    "desde": "2026-10-24",
    "aba": "caso018",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 30/10/2026, 17h33 (\"vamos add 2 case ... esses 3 são mesmo tipo de caso; quero acompanhar a veiculação por canal e a visão antes e depois\") e 17h3x: um caso com três episódios (sugestão do Atlas), teto de US$ 5,00 até 15/11 (X 2,00 com reserva diária 0,80; Instagram 1,50; Facebook 0,50; X \"na época\" 0,35; reserva 0,65), conta 1, sem consulta de saldo.",
+   "autorizacao": "Responsável em 30/10/2026, 17h33 (\"vamos add 2 case ... esses 3 são mesmo tipo de caso; quero acompanhar a veiculação por canal e a visão antes e depois\") e 17h3x: um caso com três episódios (sugestão do Atlas), teto de US$ 5,00 até 15/11 (X 2,00 com reserva diária 0,80; Instagram 1,50; Facebook 0,50; X \"na época\" 0,35; reserva 0,65), conta 1, sem consulta de saldo. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Depois do 2º turno (25/10/2026), conteúdos antigos voltaram a circular como se fossem atuais: a fala de Fernando Haddad em Davos (janeiro de 2023) sobre não comprar de empresas sem compromisso social, usada contra as denúncias de listas de boicote a petistas; um vídeo de greve de professores em Sergipe apresentado como reação a corte na educação; e uma reportagem da CNN de julho de 2024 sobre congelamento de gastos apresentada como corte de R$ 6 bilhões depois da eleição. O caso compara a circulação na época e agora, por canal.",
    "episodios": {
     "A": {
@@ -1650,7 +1683,8 @@
     "x": 2.0,
     "instagram": 1.5,
     "facebook": 0.5,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 0.8
@@ -1752,7 +1786,7 @@
    "descricao": "Vídeos sobre a eleição publicados desde 16/08/2026 em 18 línguas, com país declarado pelo canal e continente; comentários dos vídeos mais vistos de cada língua classificados pela língua em que foram escritos (rede língua do vídeo → língua do comentário). Coleta diária grátis pela YouTube Data API até 15/11 (workflow caso-mundo.yml).",
    "desde": "2026-10-20",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis.",
+   "autorizacao": "Responsável em 01/11/2026, 21h3x (padronização dos casos): \"US$ 2,00 por caso\" para dar redes aos casos sem coleta por termo; conta 1, sem consulta de saldo. X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "hashtags": [],
    "buscas_tiktok": [
     "Brazil election",
@@ -1775,7 +1809,8 @@
     "x": 0.9,
     "instagram": 0.7,
     "facebook": 0.4,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "complementos_x": [
     {
@@ -1808,7 +1843,7 @@
    "desde": "2026-10-28",
    "aba": "caso020",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 30/10/2026, 20h58: \"novo caso ... limite 4 dólares, todas as redes, trends; o foco de tudo foi no Insta; traga notícias e resultados ranqueados na busca\". Conta 1 (APIFY_TOKEN), sem consulta de saldo. Tetos: Instagram 2,00 (foco); X 1,10 (carga até 0,60 + reserva diária 0,50 até 15/11); Facebook 0,45; busca do Google (ranking) 0,30; Kwai 0; TikTok, Trends, YouTube e notícias grátis. Soma US$ 3,85.",
+   "autorizacao": "Responsável em 30/10/2026, 20h58: \"novo caso ... limite 4 dólares, todas as redes, trends; o foco de tudo foi no Insta; traga notícias e resultados ranqueados na busca\". Conta 1 (APIFY_TOKEN), sem consulta de saldo. Tetos: Instagram 2,00 (foco); X 1,10 (carga até 0,60 + reserva diária 0,50 até 15/11); Facebook 0,45; busca do Google (ranking) 0,30; Kwai 0; TikTok, Trends, YouTube e notícias grátis. Soma US$ 3,85. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Em 28/10/2026, uma influenciadora bolsonarista (Valéria Diniz, cerca de 70 mil seguidores na conta anterior) publicou um vídeo em que manda um menino que vendia balas na Beira-Mar de Fortaleza \"fazer o L\" e se recusa a comprar dele por ele dizer que o voto da família é de Lula. O vídeo viralizou, a conta dela saiu do ar e houve mobilização de doações e um pedido para o menino subir a rampa com Lula na posse. O caso mede a circulação desde 28/10 em todas as redes (foco no Instagram), as buscas, a imprensa e os resultados que o Google mostra no topo. O menino é criança: o Atlas não publica imagem nem o perfil dele, e não guarda a mídia dos vídeos; pessoas comuns não são identificadas.",
    "protecao_crianca": "Sem imagem nem conta do menino na página (contas_ocultas_regex: a conta dele nunca aparece pelo nome nas listas públicas); o apelido usado pela imprensa só aparece como termo de busca; sem preservação de mídia; comentários apenas no repositório privado.",
    "hashtags": [
@@ -1853,7 +1888,8 @@
     "instagram": 2.0,
     "facebook": 0.45,
     "kwai": 0.0,
-    "google_serp": 0.3
+    "google_serp": 0.3,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 0.5
@@ -1930,7 +1966,7 @@
    "desde": "2026-07-01",
    "aba": "caso021",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 31/10/2026, 17h54: \"o Sul é meu país, busca no período pré-eleitoral até o momento\"; teto US$ 4,00 (\"carga desde o pré-eleitoral nas 3 redes e leitura diária só no X até 15/11\"), conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis. Soma US$ 3,80.",
+   "autorizacao": "Responsável em 31/10/2026, 17h54: \"o Sul é meu país, busca no período pré-eleitoral até o momento\"; teto US$ 4,00 (\"carga desde o pré-eleitoral nas 3 redes e leitura diária só no X até 15/11\"), conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis. Soma US$ 3,80. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "O movimento \"O Sul é meu país\" defende a separação do Paraná, de Santa Catarina e do Rio Grande do Sul. Em 2026 o tema voltou na pré-campanha (governador de Santa Catarina falando em \"passar a trena\" e separar o Sul, julho), com consulta popular informal em agosto e, depois do 2º turno, com proposta de plebiscito de um deputado do PL (26/10). O caso mede o volume de publicações desde 01/07/2026 (pré-campanha) até hoje em cada rede, as buscas no Google desde 2021 (para comparar com o Plebisul de 2016 e 2017, na janela de 5 anos), a imprensa e as checagens. Pessoas comuns não são identificadas.",
    "hashtags": [
     "osulemeupais",
@@ -1969,7 +2005,8 @@
     "x": 1.8,
     "instagram": 1.4,
     "facebook": 0.6,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 0.5
@@ -2072,7 +2109,7 @@
    "desde": "2026-10-28",
    "aba": "caso022",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 31/10/2026, 18h06 (\"relatório pericial independente Joey Marino, próximo caso\") e 18h1x: teto US$ 4,00 (\"carga nas 3 redes, posts de Joey Mannarino sobre o Brasil e leitura diária no X\"), conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis.",
+   "autorizacao": "Responsável em 31/10/2026, 18h06 (\"relatório pericial independente Joey Marino, próximo caso\") e 18h1x: teto US$ 4,00 (\"carga nas 3 redes, posts de Joey Mannarino sobre o Brasil e leitura diária no X\"), conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Documento de quatro a sete páginas, sem autor, intitulado \"Relatório Pericial Independente — Eleições 2026\" e datado de 28/10/2026, alega fraude no 2º turno: votos depois das 17h, habilitações sem biometria, seções unânimes, Lei de Benford e indisponibilidade de boletins. Circulou no X e no Instagram (prints atribuídos à conta do comentarista americano Joey Mannarino). A Justiça Eleitoral (Fato ou Boato, 28/10) e a Lupa (30/10) classificaram as alegações como falsas ou sem contexto: foram 34.393 votos depois das 17h, para uma diferença de 4.430.191 votos. O caso mede a circulação desde 28/10 em cada rede, as buscas, a imprensa e as checagens.",
    "hashtags": [
     "relatoriopericial",
@@ -2114,7 +2151,8 @@
     "x": 1.8,
     "instagram": 1.4,
     "facebook": 0.6,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 0.5
@@ -2200,7 +2238,7 @@
    "desde": "2026-10-28",
    "aba": "caso023",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 31/10/2026, 18h49 (\"novo case greve dos caminhoneiros 5/11; é bem similar àqueles casos de matérias antigas recirculando\") e 31/10, 18h5x: teto US$ 3,00 (\"carga menor; X das épocas só 2018 e 2022\"), conta 1. X 1,10 (carga até 0,65 + reserva diária 0,45 até 15/11), Instagram 1,05, Facebook 0,45, X das épocas 0,30 (lido uma vez). Soma US$ 2,90. TikTok, Trends, notícias e YouTube grátis.",
+   "autorizacao": "Responsável em 31/10/2026, 18h49 (\"novo case greve dos caminhoneiros 5/11; é bem similar àqueles casos de matérias antigas recirculando\") e 31/10, 18h5x: teto US$ 3,00 (\"carga menor; X das épocas só 2018 e 2022\"), conta 1. X 1,10 (carga até 0,65 + reserva diária 0,45 até 15/11), Instagram 1,05, Facebook 0,45, X das épocas 0,30 (lido uma vez). Soma US$ 2,90. TikTok, Trends, notícias e YouTube grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Circula nas redes a convocação de uma greve nacional de caminhoneiros para 5/11/2026, sem confirmação de entidades nacionais (DCI e Brasil do Trecho, 31/10). Como em 2021 e 2022, vídeos e reportagens de greves e bloqueios anteriores (a greve de maio de 2018 e os bloqueios depois da eleição de 2022) costumam voltar como se fossem atuais. O caso mede a circulação desde 28/10 em todas as redes e compara com a circulação na época de 2018 e de 2022 (busca do X na janela de cada época), além de buscas, imprensa e checagens. Pessoas comuns não são identificadas.",
    "hashtags": [
     "grevedoscaminhoneiros",
@@ -2234,7 +2272,8 @@
     "x": 1.1,
     "instagram": 1.05,
     "facebook": 0.45,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 0.45
@@ -2363,7 +2402,7 @@
    "desde": "2026-10-31",
    "aba": "caso024",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 17h16 (\"primeiro vídeo Flávio EUA ... deixo a manchete por você\") e 17h2x: teto US$ 3,00, conta 1. Post e comentários do Instagram 0,95 (até 400 comentários, transcrição da fala e seguidores do autor); X 1,05 (carga até 0,60 + reserva diária 0,45 até 15/11); Instagram (buscas) 0,60; Facebook 0,35. Soma US$ 2,95.",
+   "autorizacao": "Responsável em 01/11/2026, 17h16 (\"primeiro vídeo Flávio EUA ... deixo a manchete por você\") e 17h2x: teto US$ 3,00, conta 1. Post e comentários do Instagram 0,95 (até 400 comentários, transcrição da fala e seguidores do autor); X 1,05 (carga até 0,60 + reserva diária 0,45 até 15/11); Instagram (buscas) 0,60; Facebook 0,35. Soma US$ 2,95. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Em 31/10/2026, seis dias depois do 2º turno e quatro depois de deixar o Brasil (saída pela Argentina para Miami, segundo a imprensa), Flávio Bolsonaro fez sua primeira live no Instagram a partir dos EUA (cerca de 17 minutos): apresentou sua versão da saída (\"saí pelo Brasil\"), criticou Alexandre de Moraes e a apreensão dos passaportes e disse que pode voltar a disputar a Presidência antes de 2030. O caso mede quem assistiu e comentou o vídeo e como ele circulou desde 31/10 em todas as redes, nas buscas e na imprensa. Pessoas comuns não são identificadas.",
    "hashtags": [
     "flaviobolsonaro",
@@ -2394,7 +2433,8 @@
     "x": 1.05,
     "instagram": 0.6,
     "facebook": 0.35,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "teto_post_instagram_usd": 0.95,
    "reserva_diaria_usd": {
@@ -2450,7 +2490,7 @@
    "desde": "2026-10-25",
    "aba": "caso025",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 01/11/2026, 18h26 (\"#DeportTheBolsonaros, vamos entender quanto veio do Brasil e quanto veio de outros países, buscas e redes, #BrasiliansStandWithFlavio\") e 18h3x: teto US$ 4,00, desde 25/10, conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis.",
+   "autorizacao": "Responsável em 01/11/2026, 18h26 (\"#DeportTheBolsonaros, vamos entender quanto veio do Brasil e quanto veio de outros países, buscas e redes, #BrasiliansStandWithFlavio\") e 18h3x: teto US$ 4,00, desde 25/10, conta 1, sem consulta de saldo. X 1,80 (carga até 1,30 + reserva diária 0,50), Instagram 1,40, Facebook 0,60; TikTok, Trends, notícias e YouTube grátis. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539).",
    "descricao": "Depois da chegada de Flávio Bolsonaro a Miami (quarta, 28/10/2026), a hashtag #DeportTheBolsonaros passou a circular no X pedindo a deportação dele e de familiares dos EUA; do outro lado, #BrasiliansStandWithFlavio. O caso mede, desde 25/10, quanto de cada hashtag veio de perfis com sinais do Brasil e quanto de outros países, em cada rede e nas buscas do Google por país. Nenhuma rede informa o país de quem posta: a origem é inferida por sinais declarados (língua do texto, língua da bio, bandeiras e lugares no nome e na bio), e o que não tem sinal fica como indeterminado.",
    "hashtags": [
     "DeportTheBolsonaros",
@@ -2488,7 +2528,8 @@
     "x": 1.8,
     "instagram": 1.4,
     "facebook": 0.6,
-    "kwai": 0.0
+    "kwai": 0.0,
+    "tiktok": 1.0
    },
    "reserva_diaria_usd": {
     "x": 0.5
@@ -2597,17 +2638,23 @@
    "titulo": "Janonismo: o \"Exército do Lula\" na eleição e os canais que o copiaram no mundo",
    "tipo": "mobilização digital transnacional",
    "rotulo_tipo": "em análise",
-   "coletar": false,
+   "coletar": true,
    "aba": "caso026",
-   "autorizacao": "Responsável em 02/11/2026, 01h38 (\"vamos criar mais um case, janonismo… o efeito dele durante as eleições, uma busca geral mundial do efeito e acompanhar o crescimento de grupos que surgiram em alguns países\"). Só fontes grátis (Google Trends, Google Notícias, YouTube, checagens, páginas públicas dos canais do WhatsApp). Coleta paga nas redes: ⛔ teto ainda não autorizado.",
+   "autorizacao": "Responsável em 02/11/2026, 01h38 (\"vamos criar mais um case, janonismo… o efeito dele durante as eleições, uma busca geral mundial do efeito e acompanhar o crescimento de grupos que surgiram em alguns países\"). Só fontes grátis (Google Trends, Google Notícias, YouTube, checagens, páginas públicas dos canais do WhatsApp). Coleta paga nas redes: ⛔ teto ainda não autorizado. · Responsável em 02/11/2026, 02h1x: TikTok pago (apidojo/tiktok-scraper), US$ 1,00 por caso, conta 1, sem consulta de saldo — a coleta grátis pela página pública devolve lista vazia desde 30/10 (diagnóstico, run 41392136539). · Responsável em 02/11/2026, 02h1x: caso 026 no padrão completo, \"US$ 2,00 + TikTok\": X 0,90, Instagram 0,70, Facebook 0,40, TikTok 1,00; conta 1, sem consulta de saldo.",
    "descricao": "André Janones criou em 5/10/2026, um dia depois do 1º turno, o canal de WhatsApp \"Exército do Lula\", com missões diárias para os seguidores (compartilhar vídeos, subir hashtags, responder a adversários). Depois do 2º turno (25/10), ativistas criaram canais inspirados nele na França (\"L'équipe de Mélenchon officielle\"), na Espanha (\"La Fuerza de la Gente\") e na Argentina (\"Ejército del Peronismo\"), entre outros. O caso mede o efeito durante a eleição (buscas, imprensa e vídeos no Brasil), a repercussão no mundo (buscas por país, imprensa em outras línguas) e o crescimento dos canais, lido todo dia na página pública de cada um.",
    "redes_previstas": [
+    "tiktok",
+    "x",
+    "instagram",
+    "facebook",
     "google",
     "youtube",
     "whatsapp"
    ],
    "desde": "2026-10-05",
-   "hashtags": [],
+   "hashtags": [
+    "exercitodolula"
+   ],
    "termos_trends": [
     "Janones",
     "Exército do Lula"
@@ -2786,7 +2833,46 @@
     "https://wha.tools/es/blog/exercito-do-lula-whatsapp-channel",
     "https://www.metropoles.com/minas-gerais/janones-vira-general-de-lula-e-ganha-holofotes-na-imprensa-internacional",
     "https://g1.globo.com/mundo/noticia/2026/10/28/inspirados-no-exercito-do-lula-de-janones-ativistas-criam-canais-na-franca-espanha-e-argentina.ghtml"
-   ]
+   ],
+   "teto_usd": {
+    "tiktok": 1.0,
+    "x": 0.9,
+    "instagram": 0.7,
+    "facebook": 0.4,
+    "kwai": 0.0
+   },
+   "segredo": "APIFY_TOKEN",
+   "buscas_tiktok": [
+    "Exército do Lula",
+    "Janones WhatsApp",
+    "Janones general Lula",
+    "Ejército de Lula",
+    "Ejército del Peronismo",
+    "La Fuerza de la Gente"
+   ],
+   "complementos_x": [
+    {
+     "termo": "o caso (busca por termo)",
+     "busca": "(\"Exército do Lula\" OR \"Exercito do Lula\" OR #ExercitoDoLula OR \"Ejército de Lula\" OR \"Ejército del Peronismo\" OR \"La Fuerza de la Gente\" OR \"armée de Lula\" OR (Janones (WhatsApp OR canal OR general OR exército))) since:2026-10-05",
+     "motivo": "padronização dos casos: coleta por termo",
+     "rodada": 1
+    }
+   ],
+   "hashtags_instagram": [
+    "exercitodolula",
+    "janones"
+   ],
+   "buscas_instagram": [
+    "Exército do Lula",
+    "Janones WhatsApp"
+   ],
+   "buscas_facebook": [
+    "Exército do Lula",
+    "Janones WhatsApp canal",
+    "Ejército de Lula"
+   ],
+   "buscas_kwai": [],
+   "maximo_por_termo": 2000
   }
  ],
  "segredos_por_rede": {

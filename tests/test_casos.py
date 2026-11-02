@@ -17,7 +17,8 @@ class TestCasos(unittest.TestCase):
         caso = cfg["casos"][0]
         self.assertEqual([t for t, _, _ in cc.pedidos("x", caso, 5)], ["#brasilinteiro", "#verdeeamarelo"])   # duas hashtags (correção do usuário, 18/10)
         self.assertEqual(cc.pedidos("instagram", caso, 5)[0][2]["hashtags"], ["brasilinteiro"])
-        self.assertEqual(cc.pedidos("tiktok", caso, 5)[0][1], "novi~multiple-tiktok-hashtag-scraper")
+        tt = cc.pedidos("tiktok", caso, 5)[0]  # 02/11/2026: hashtag pela busca do apidojo (o ator novi devolvia 0)
+        self.assertEqual((tt[1], tt[2]["keywords"]), ("apidojo~tiktok-scraper", ["#brasilinteiro"]))
         r = cc.norm("tiktok", {"id": "7", "desc": "oi #brasilinteiro", "createTime": 1760670000, "author": {"uniqueId": "fulana"},
                                "authorStats": {"followerCount": 20000}, "stats": {"playCount": 100}}, "#brasilinteiro", "agora")
         self.assertEqual((r["conta"], r["seguidores"], r["visualizacoes"], r["url"]), ("fulana", 20000, 100, "https://www.tiktok.com/@fulana/video/7"))
