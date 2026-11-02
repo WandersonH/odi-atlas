@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.265 — Caso 027: voto distrital misto (2026-11-02) ⚠️
+
+- **Por quê:** pedido do responsável (02/11, 02h44): "precisamos de um case abordando o assunto voto distrital".
+- **Contexto, com fonte:** Hugo Motta articula uma PEC do distrital misto, com transição pelo distritão em 2030 e adoção a partir de 2034. O PL é contra. O debate voltou com as votações de Nikolas Ferreira e Lucas Pavanato, acima de 3 milhões cada (Diário ESP e Gazeta Brasil, 01/11/2026). O número da PEC ainda não foi informado.
+- **Padrão completo:**
+  - `data/config/casos.json`: redes desde 26/10 com os tetos do padrão (X 0,90, Instagram 0,70, Facebook 0,40, TikTok 1,00; conta 1).
+  - `scripts/collect_caso_busca.py`: Trends de 5 anos, 12 meses e 7 dias com estados, para comparar com 2015/2017; YouTube, notícias e checagens.
+  - `data/config/livro_codigos_caso027.json`: livro de códigos v0.1, rascunho com 9 categorias em três blocos (a favor, contra, transversal). ⛔ Revisão do responsável pendente.
+  - Aba `caso027`; o caso entra no índice e no laço diário de `casos-busca.yml`.
+- **Teste:** `python -m unittest discover -s tests`: OK; `build_casos.py` (sem o privado) lista o 027 com a aba própria.
+- **Pendente:** as coletas acionadas depois deste commit (busca grátis; redes pagas na fila de `casos.yml`). Os números entram na próxima entrada.
+
 ## C19.264 — Caso 026: o "Exército do Lula" entra na leitura dos canais, com a série do painel WhatsApp desde 15/10 (2026-11-02) ⚠️
 
 - **Erro corrigido:** na C19.258, o link do "Exército do Lula" foi dado como "não localizado". O canal já é lido pelo painel WhatsApp do Atlas desde 15/10, com o link enviado pelo próprio responsável (`data/config/whatsapp_canais.json`, id 0029VbCbRfD7tkj88k3soZ0Y). O responsável apontou o erro (02/11, 02h40).

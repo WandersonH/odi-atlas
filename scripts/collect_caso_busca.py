@@ -152,6 +152,14 @@ CASOS = {
             "janela_noticias": "14d", "checagens": ["Brazil election 2026"], "arquivo_web": []},
     # 01/11 (18h26): #DeportTheBolsonaros × #BrasiliansStandWithFlavio: quanto veio do Brasil e quanto de outros países.
     # Trends no mundo inteiro (geo vazio), com o mapa por país em cada janela; YouTube sem região nem língua.
+    # 02/11 (02h44): voto distrital misto (PEC articulada por Hugo Motta; transição pelo distritão em 2030); 5 anos para comparar com 2015/2017
+    "027": {"variantes": ["voto distrital", "distrital misto", "distritão"],
+            "controles": ["reforma política"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],
+            "youtube": ["voto distrital misto", "distritão 2030", "Hugo Motta voto distrital", "voto distrital Nikolas Ferreira", "PEC voto distrital"],
+            "desde_yt": "2026-10-26T00:00:00Z", "rx_titulo": r"distrit",
+            "rx_atributo": r"distrit|motta|pec|c[aâ]mara|nikolas|pavanato|reforma|eleitora|puxador|deputad",
+            "noticias": ["\"voto distrital\"", "\"distrital misto\"", "distritão PEC", "Hugo Motta voto distrital", "voto distrital Nikolas Pavanato"],
+            "janela_noticias": "30d", "checagens": ["voto distrital", "distritão"], "arquivo_web": []},
     # 02/11 (01h38): janonismo — "Exército do Lula" (Janones) na eleição, repercussão no mundo e canais copiados em outros países
     "026": {"variantes": ["Janones", "Exército do Lula", "André Janones"],
             "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"], "geo_trends": "", "paises_trends": True,

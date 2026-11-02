@@ -1,0 +1,168 @@
+{
+ "titulo": "Livro de códigos — caso 027: voto distrital misto, a reação aos \"puxadores de voto\" depois da eleição (ODI Atlas)",
+ "versao": "0.1 (2026-11-02) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 02/11/2026, 02h44: \"precisamos de um case abordando o assunto voto distrital\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014, 016 e 021: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Argumentos a favor e contra a mudança são codificados separadamente; nenhuma categoria mede a posição política de quem publica. A menção a Nikolas Ferreira, Lucas Pavanato ou outro puxador é codificada à parte, sem juízo de lado. Alegação factual sobre o que muda (\"acaba o voto\", \"vale já em 2028\") é marcada para conferência humana contra o texto da proposta; o indicador não decide se é falsa.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "a_favor": [
+   "representacao_local",
+   "contra_puxadores",
+   "custo_campanha"
+  ],
+  "contra": [
+   "casuismo_contra_direita",
+   "perda_proporcionalidade",
+   "golpe_fraude"
+  ],
+  "transversal": [
+   "personalizacao_puxadores",
+   "alegacao_sobre_regras",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "representacao_local": {
+   "nome": "Aproximar eleito e região",
+   "definicao": "Defende o distrital (ou misto) porque o eleitor saberia quem é o seu deputado, cobraria mais de perto, a região teria representante.",
+   "indicadores": [
+    "meu deputado",
+    "deputado do meu distrito",
+    "representante da regiao",
+    "representante do bairro",
+    "cobrar o deputado",
+    "aproxima o eleitor",
+    "representacao local"
+   ],
+   "excluir_trechos": []
+  },
+  "contra_puxadores": {
+   "nome": "Contra os puxadores de voto",
+   "definicao": "Apoia a mudança para acabar com o efeito de quem, com votação muito alta, elege outros do partido (\"puxador\", \"quociente\").",
+   "indicadores": [
+    "puxador",
+    "puxadores",
+    "puxa voto",
+    "elege junto",
+    "quociente eleitoral",
+    "efeito tiririca",
+    "carrega deputado"
+   ],
+   "excluir_trechos": []
+  },
+  "custo_campanha": {
+   "nome": "Campanha mais barata",
+   "definicao": "Argumenta que o distrital reduz o custo ou a área da campanha.",
+   "indicadores": [
+    "campanha mais barata",
+    "reduz o custo",
+    "barateia",
+    "menos dinheiro de campanha",
+    "fundo eleitoral"
+   ],
+   "excluir_trechos": []
+  },
+  "casuismo_contra_direita": {
+   "nome": "Mudança feita contra um grupo",
+   "definicao": "Diz que a proposta é casuísmo, feita para barrar a direita, o PL, Nikolas ou Pavanato, ou para proteger o Centrão.",
+   "indicadores": [
+    "casuismo",
+    "casuistico",
+    "contra a direita",
+    "contra o pl",
+    "contra o nikolas",
+    "contra o pavanato",
+    "pra barrar",
+    "para barrar",
+    "medo do nikolas",
+    "medo da direita",
+    "mudar a regra do jogo",
+    "regra do jogo"
+   ],
+   "excluir_trechos": []
+  },
+  "perda_proporcionalidade": {
+   "nome": "Perda de representação de minorias e pequenos partidos",
+   "definicao": "Critica a mudança porque reduziria a representação proporcional, de minorias, de mulheres ou de partidos menores.",
+   "indicadores": [
+    "minorias",
+    "partidos pequenos",
+    "partido pequeno",
+    "proporcionalidade",
+    "representacao das mulheres",
+    "sub-representacao",
+    "distritao e pior",
+    "distritao favorece"
+   ],
+   "excluir_trechos": []
+  },
+  "golpe_fraude": {
+   "nome": "Mudança chamada de golpe ou fraude",
+   "definicao": "Chama a proposta de golpe, fraude ou manobra contra o eleitor. A categoria registra o enquadramento; não avalia se procede.",
+   "indicadores": [
+    "golpe",
+    "fraude",
+    "manobra",
+    "rasgar a constituicao",
+    "contra o povo",
+    "roubar o voto"
+   ],
+   "excluir_trechos": [
+    "golpe de estado de 8 de janeiro"
+   ]
+  },
+  "personalizacao_puxadores": {
+   "nome": "Menção a puxadores identificados",
+   "definicao": "Cita nominalmente Nikolas Ferreira, Lucas Pavanato ou outro campeão de votos ao discutir a mudança.",
+   "indicadores": [
+    "nikolas",
+    "pavanato",
+    "3 milhoes de votos",
+    "tres milhoes de votos",
+    "mais votado"
+   ],
+   "excluir_trechos": []
+  },
+  "alegacao_sobre_regras": {
+   "nome": "Afirmação sobre o que a proposta muda",
+   "definicao": "Afirma o que muda, quando vale ou quem decide (\"vale em 2028\", \"acaba o voto em partido\", \"o eleitor não escolhe mais\"). Marcada para conferência humana contra o texto da proposta; o indicador não decide se é falsa.",
+   "indicadores": [
+    "vale em",
+    "vai valer",
+    "a partir de 2030",
+    "a partir de 2034",
+    "em 2028",
+    "acaba o voto",
+    "nao vai mais votar",
+    "dois votos",
+    "lista partidaria",
+    "lista fechada"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Trata o tema com piada, meme ou ironia explícita.",
+   "indicadores": [
+    "kkk",
+    "rsrs",
+    "hahaha",
+    "piada",
+    "meme"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}
