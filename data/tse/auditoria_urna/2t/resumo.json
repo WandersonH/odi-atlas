@@ -1,0 +1,89 @@
+{
+ "schema_version": 1,
+ "turno": 2,
+ "gerado_em_utc": "2026-11-02T19:11:13Z",
+ "caso": "022",
+ "pedido": "Responsável, 02/11/2026, 15h57: incorporar os dados de auditoria da urna do TSE (caso 022).",
+ "fontes": {
+  "boletim_de_urna": "https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna",
+  "correspondencia": "https://dadosabertos.tse.jus.br/dataset/resultados-2026-correspondencias-esperadas-e-efetivadas-2-turno",
+  "arquivos": {
+   "boletim_de_urna": {
+    "AC": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_2t_AC_261020260742.zip"
+   },
+   "correspondencia_efetivada": {
+    "AC": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/correspefet/CEFT_2t_AC_261020261201.zip"
+   }
+  }
+ },
+ "universo": "todas as seções com boletim de urna publicado pelo TSE no 2º turno (cargo Presidente); é o universo, não amostra",
+ "definicoes": {
+  "sem_biometria": "QT_ELEI_BIOM_SEM_HABILITACAO: eleitores com biometria cadastrada liberados pelo mesário sem a digital (procedimento previsto quando a digital não é reconhecida)",
+  "encerramento": "horário de encerramento gravado no boletim (hora local da urna)",
+  "correlacao": "Pearson entre % sem biometria e % de Lula nos votos de Lula + Flávio, por seção; correlação não indica causa (a cobertura biométrica e o voto variam juntos por região, idade e escolaridade)"
+ },
+ "brasil_sem_exterior": {
+  "secoes": 2270,
+  "aptos": 613715,
+  "comparecimento": 453654,
+  "sem_biometria": 22654,
+  "lula_13": 144513,
+  "flavio_22": 287715,
+  "brancos_95": 5016,
+  "nulos_96": 16410,
+  "pct_sem_biometria_do_comparecimento": 4.99,
+  "pct_lula_validos": 33.43,
+  "encerramento_das_secoes": {
+   "antes das 17h": 2269,
+   "17h00–17h29": 1
+  }
+ },
+ "exterior_ZZ": {
+  "pct_sem_biometria_do_comparecimento": null,
+  "pct_lula_validos": null,
+  "encerramento_das_secoes": {}
+ },
+ "correlacao_secao_sem_biometria_x_lula": {
+  "brasil": 0.096,
+  "por_uf": {
+   "AC": 0.096
+  }
+ },
+ "ufs": {
+  "AC": {
+   "secoes": 2270,
+   "aptos": 613715,
+   "comparecimento": 453654,
+   "sem_biometria": 22654,
+   "lula_13": 144513,
+   "flavio_22": 287715,
+   "brancos_95": 5016,
+   "nulos_96": 16410,
+   "pct_sem_biometria_do_comparecimento": 4.99,
+   "pct_lula_validos": 33.43,
+   "encerramento_das_secoes": {
+    "antes das 17h": 2269,
+    "17h00–17h29": 1
+   }
+  }
+ },
+ "correspondencia_efetivada": {
+  "total": {
+   "urnas": 2270,
+   "divergencia_nenhuma": 2266,
+   "origem_Urna Eletrônica": 2270,
+   "divergencia_C": 4,
+   "urna_trocada": 5
+  },
+  "por_uf": {
+   "AC": {
+    "urnas": 2270,
+    "divergencia_nenhuma": 2266,
+    "origem_Urna Eletrônica": 2270,
+    "divergencia_C": 4,
+    "urna_trocada": 5
+   }
+  }
+ },
+ "lacunas": []
+}
