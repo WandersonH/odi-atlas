@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.255 — Corpus do Facebook com o passo 3, estabilidade e similitude (2026-11-02) ⚠️
+
+- **Facebook:** 7 classes, 87,9% dos segmentos classificados. Segmentos: 584 · 346 · 200 · 472 · 141 · 337 · 154.
+- **Estabilidade:** fraca.
+- **Similitude:** também em `data/corpus/similitude_facebook.gexf`.
+- **Pendente:** o Instagram segue na regeneração local.
+
 ## C19.254 — Redes exploráveis no mesmo formato da rede do YouTube (2026-11-02) ✅
 
 - **Pedido do responsável** (01h02): "não era pra travar, era pra deixar como a do YouTube".
