@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
     inputs:
       caso:
-        description: "id do caso"
-        default: "026"
+        description: "ids dos casos, separados por espaço"
+        default: "026 028"
   schedule:
     - cron: "41 */6 * * *"   # a cada 6 horas: os canais cresceram dezenas de milhares por dia na semana do 2º turno
 
@@ -29,7 +29,7 @@ jobs:
           python-version: "3.12"
       - name: Ler os canais
         run: |
-          python scripts/canais_whatsapp.py --caso "${{ github.event.inputs.caso || '026' }}" | tee "$RUNNER_TEMP/s.txt"
+          for c in ${{ github.event.inputs.caso || '026 028' }}; do python scripts/canais_whatsapp.py --caso "$c"; done | tee "$RUNNER_TEMP/s.txt"
           while IFS= read -r l; do echo "::notice title=Canais do WhatsApp::$(echo "$l" | cut -c1-300)"; done < "$RUNNER_TEMP/s.txt"
       - name: Commitar
         if: always()

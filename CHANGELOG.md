@@ -4,6 +4,25 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.266 — Caso 028: ameaças a indígenas no Mato Grosso do Sul depois do 2º turno e a reação #ProtejamNossosPovosIndígenas (2026-11-02) ⚠️
+
+- **Por quê:** o responsável (02/11, 02h53–02h54) enviou a matéria do g1 de 27/10, citou os grupos ("Exército povos indígenas", "protejam povos indígenas", "também foi criado grupo de Whats") e mandou o link do canal.
+- **Contexto, com fonte:**
+  - Ameaças a Guarani e Kaiowá depois de 25/10, entre elas a de envenenar a água da aldeia Sassoró (Tacuru), em áudios que circularam no WhatsApp. Funai e MPI acionaram a PF (O Tempo, 29/10), e a PF ouviu ao menos dois suspeitos. A Força Nacional foi a três aldeias (Revista Fórum, 01/11). A Rádio Yandê grafa "Mossoró"; o Atlas segue O Tempo e Fórum ("Sassoró").
+  - Canal "Exército dos Povos Indígenas", criado em 28/10 e inspirado no Exército do Lula (CartaCapital, 29/10). A matéria cita "mais de 90 mil" no WhatsApp e "mais de 200 mil" no Instagram, sem data de medição; o número fica como da imprensa.
+  - Hashtag #ProtejamNossosPovosIndígenas (Rádio Yandê, 29/10).
+- **Padrão completo:**
+  - Redes desde 25/10, com os tetos do padrão; o perfil @exercitodospovosindigenas entra na coleta do Instagram.
+  - Trends de 5 anos, 12 meses e 7 dias; YouTube, notícias e checagens.
+  - Livro de códigos v0.1 em rascunho: hostilidade (desumanização e racismo, ameaça, culpar indígenas pelo resultado, minimizar) × reação (denúncia, mobilização, cobrança às autoridades, memória). ⛔ Revisão pendente.
+  - Leitura do canal a cada 6 horas.
+  - Aba `caso028`.
+- **Privacidade:** o Atlas não publica nem transcreve os áudios e não nomeia suspeitos.
+- **Caso 026:** o "Exército dos Povos Indígenas" entra também na lista de canais inspirados no Exército do Lula.
+- **Página:** o bloco de canais virou componente por caso (`montarCanais(id)`); o workflow `canais-whatsapp.yml` lê 026 e 028.
+- **Teste:** `python -m unittest discover -s tests`: OK; o YAML do workflow foi validado.
+- **Pendente:** os números das coletas acionadas depois deste commit.
+
 ## C19.265 — Caso 027: voto distrital misto (2026-11-02) ⚠️
 
 - **Por quê:** pedido do responsável (02/11, 02h44): "precisamos de um case abordando o assunto voto distrital".

@@ -1,0 +1,161 @@
+{
+ "titulo": "Livro de códigos — caso 028: violência contra indígenas no Mato Grosso do Sul depois do 2º turno e a reação #ProtejamNossosPovosIndígenas (ODI Atlas)",
+ "versao": "0.1 (2026-11-02) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 02/11/2026, 02h53–02h54 (matéria do g1 de 27/10, grupos criados e canal \"Exército dos Povos Indígenas\").",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Hostilidade e reação são codificadas separadamente; nenhuma categoria mede a posição política de quem publica. Reproduzir um insulto para denunciá-lo é 'denuncia', não 'desumanizacao' — decisão humana. Os áudios atribuídos a suspeitos não são publicados nem transcritos pelo Atlas; suspeitos não identificados oficialmente não são nomeados.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "hostilidade": [
+   "desumanizacao_racismo",
+   "ameaca_violencia",
+   "culpabilizacao_eleitoral",
+   "minimizacao_negacao"
+  ],
+  "reacao": [
+   "denuncia_violencia",
+   "solidariedade_mobilizacao",
+   "cobranca_autoridades",
+   "memoria_historica"
+  ]
+ },
+ "categorias": {
+  "desumanizacao_racismo": {
+   "nome": "Desumanização e racismo contra indígenas",
+   "definicao": "Chama indígenas de praga, capeta, bicho, vagabundo, bugre ou usa estereótipo racista (\"Pocahontas\", \"índio de celular\").",
+   "indicadores": [
+    "praga",
+    "pragas",
+    "capeta",
+    "capetas",
+    "bugre",
+    "bugres",
+    "pocahontas",
+    "indio vagabundo",
+    "indio de celular",
+    "indio de iphone",
+    "selvagem",
+    "selvagens"
+   ],
+   "excluir_trechos": []
+  },
+  "ameaca_violencia": {
+   "nome": "Ameaça ou defesa de violência",
+   "definicao": "Ameaça, defende ou celebra agressão, atropelamento, envenenamento ou morte de indígenas.",
+   "indicadores": [
+    "veneno na agua",
+    "envenenar",
+    "atropelar",
+    "matar indio",
+    "tem que matar",
+    "passar por cima",
+    "sumir com"
+   ],
+   "excluir_trechos": [
+    "denuncia",
+    "denunciou",
+    "investiga",
+    "pf apura"
+   ]
+  },
+  "culpabilizacao_eleitoral": {
+   "nome": "Culpar indígenas pelo resultado",
+   "definicao": "Atribui a vitória de Lula aos indígenas ou à aldeia e defende retaliação (\"votaram no Lula, agora...\").",
+   "indicadores": [
+    "votaram no lula",
+    "voto indigena",
+    "aldeia votou",
+    "culpa dos indios",
+    "agora aguenta",
+    "que o lula ajude"
+   ],
+   "excluir_trechos": []
+  },
+  "minimizacao_negacao": {
+   "nome": "Minimizar ou negar",
+   "definicao": "Trata as ameaças como mal-entendido, brincadeira, invenção ou armação.",
+   "indicadores": [
+    "mal-entendido",
+    "mal entendido",
+    "brincadeira",
+    "armacao",
+    "fake",
+    "inventaram",
+    "exagero",
+    "narrativa"
+   ],
+   "excluir_trechos": []
+  },
+  "denuncia_violencia": {
+   "nome": "Denúncia da violência",
+   "definicao": "Relata ou denuncia ameaças, agressões, atropelamentos, envenenamento ou racismo contra indígenas.",
+   "indicadores": [
+    "denuncia",
+    "ameacas",
+    "ameacados",
+    "atropelamento",
+    "envenenamento",
+    "racismo",
+    "violencia contra indigenas",
+    "ataque a aldeia",
+    "ataques"
+   ],
+   "excluir_trechos": []
+  },
+  "solidariedade_mobilizacao": {
+   "nome": "Solidariedade e mobilização",
+   "definicao": "Convoca apoio, compartilhamento, entrada em canal ou uso da hashtag (#ProtejamNossosPovosIndígenas, \"Exército dos Povos Indígenas\").",
+   "indicadores": [
+    "protejam nossos povos",
+    "protejamnossospovosindigenas",
+    "exercito dos povos indigenas",
+    "exercitodospovosindigenas",
+    "entre no canal",
+    "compartilhe",
+    "somos todos"
+   ],
+   "excluir_trechos": []
+  },
+  "cobranca_autoridades": {
+   "nome": "Cobrança às autoridades",
+   "definicao": "Cobra ou registra ação de PF, MPF, Funai, MPI, Força Nacional, governo ou prefeitura.",
+   "indicadores": [
+    "policia federal",
+    "pf",
+    "mpf",
+    "funai",
+    "ministerio dos povos indigenas",
+    "forca nacional",
+    "prefeitura",
+    "investigacao",
+    "inquerito",
+    "punicao"
+   ],
+   "excluir_trechos": []
+  },
+  "memoria_historica": {
+   "nome": "Memória e histórico",
+   "definicao": "Liga o caso a violências anteriores contra Guarani e Kaiowá ou à campanha #SomosTodosGuaraniKaiowá (2012).",
+   "indicadores": [
+    "somos todos guarani kaiowa",
+    "somostodosguaranikaiowa",
+    "historia se repete",
+    "2012",
+    "marco temporal",
+    "retomada"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}
