@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.256 — Redes do caso 001 com a comunidade de Clauset-Newman-Moore (2026-11-02) ⚠️
+
+- `data/casos/001/rede_*.gexf` foram regenerados pela reconstrução local dos casos, que está em andamento. Os nós ganharam o atributo "comunidade", que é o agrupamento padrão do NodeXL (ver C19.249).
+- A análise de classes dos casos, lematizada, entra na próxima entrada, quando a reconstrução terminar.
+
 ## C19.255 — Corpus do Facebook com o passo 3, estabilidade e similitude (2026-11-02) ⚠️
 
 - **Facebook:** 7 classes, 87,9% dos segmentos classificados. Segmentos: 584 · 346 · 200 · 472 · 141 · 337 · 154.
