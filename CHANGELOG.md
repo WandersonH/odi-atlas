@@ -4,6 +4,36 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.239 — Padronização dos casos, passo 1: matriz real caso × análise; Trends por estado e checagens nos casos que não tinham (2026-11-01) ⚠️
+
+- **Pedido do responsável** (01/11, 21h28): começar pelos casos sem o padrão completo, que são redes, Bardin, CHD, Trends por estado e checagens.
+- **Matriz lida dos arquivos publicados** (`scripts/matriz_casos.py` → `data/casos/matriz.json`):
+  - Só 014 e 016 estão completos.
+  - **Bardin** falta em 23 de 25 casos. Só existe com livro de códigos: 014, 016 e o 019, dentro do `mundo.json`.
+  - **CHD sobre as publicações** só existe em 014 e 016. Nos outros, a CHD é sobre os comentários do YouTube.
+  - **Sem CHD nenhuma:** 004, 010, 011, 012, 015, 018, 021, 022 e 025.
+  - **Sem Trends por estado:** 004, 008, 009, 010, 011, 012, 015, 017, 018, 019 e 020.
+  - **Sem coleta de publicações por termo:** 004, 011, 012 e 019. Os casos 006 a 009 só têm os posts indicados (`x.json` e `instagram.json`).
+- **Correções à auditoria recebida:**
+  - Casos 006 a 009 têm coleta do X ou do Instagram.
+  - O caso 019 tem classes, Bardin e sentimento no `mundo.json`.
+  - As respostas aos candidatos no X rodaram de 26/10 a 01/11. O que falhou em C19.232 foi a leitura diária dos casos.
+- **Mudanças:**
+  - Janela de 12 meses (o mapa por estado do Trends) em 008, 009, 017 e 020.
+  - Novas entradas da busca para 010, 011, 012, 018 (Trends por estado, imprensa, checagens) e 019 (Trends no mundo, por país), com `sem_youtube`: o YouTube deles é lido pelos coletores próprios. São os casos 010, 011, 012, 018 e 019 no laço de `casos-busca.yml`.
+  - O 015 (bolhas de apoio) e o 004 (dossiê, sem coleta) ficam fora: não são episódios de circulação.
+- **Corpus dos candidatos regenerado com a CHD corrigida (C19.238):**
+  - X: 6 classes, 91,4% de aproveitamento.
+  - TikTok: 6 classes, 82,9%.
+  - Kwai: 6 classes, 78,9%.
+  - Facebook: 6 classes, 84,5%.
+  - Classe do Atlas por segmento em `data/corpus/<rede>_classes_atlas_por_segmento.csv` (TikTok, Kwai e Facebook). YouTube e X na próxima rodada.
+  - Instagram ainda processando.
+- **Teste:** `python -m unittest discover -s tests` OK.
+- **⛔ Pendente:**
+  - Bardin dos 23 casos: precisa de livro de códigos, decisão do responsável.
+  - Coleta paga de 004, 011, 012, 019 e da busca por termo de 006 a 009: precisa de teto autorizado.
+
 ## C19.238 — CHD corrigida no ar, formato único das classes com gráfico, redes também para o NodeXL (2026-11-01) ⚠️
 
 - **Decisão do responsável** (01/11, 21h02): validar uma vez só no IRaMuTeQ, já na versão corrigida. O ramo `chd-correcao` (C19.237) entrou na `main`.

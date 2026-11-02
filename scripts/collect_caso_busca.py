@@ -77,7 +77,7 @@ CASOS = {
             "checagens": ["Lula amassa bandeira", "Lula bandeira do Brasil amassada"], "arquivo_web": []},
     # 22/10 (18h48): reel do Instagram sobre camisas do PT em Piracicaba (21–22/10) e a denúncia do PT em 22/10
     "008": {"variantes": ["camisetas PT Piracicaba", "PM camiseta Lula presos", "Piracicaba camiseta Lula", "Derrite camisetas PT"],
-            "controles": ["Piracicaba", "camiseta Lula"], "janelas": ["now 7-d", "today 1-m"],
+            "controles": ["Piracicaba", "camiseta Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
             "youtube": ["PM camisetas PT Piracicaba", "presos camiseta Lula Piracicaba", "PM obriga presos camiseta Lula", "Derrite camisetas PT",
                         "PT denúncia PM camisetas", "policiais camiseta Lula militantes"],
             "desde_yt": "2026-10-21T00:00:00Z", "rx_titulo": r"camis",
@@ -122,12 +122,34 @@ CASOS = {
             "janela_noticias": "7d", "checagens": ["queimar título de eleitor", "destruir título de eleitor"], "arquivo_web": []},
     # 29/10/2026 (21h51): as versões da carta de Flávio ("verdadeiro presidente eleito" → "líder do Brasil"), mídia e checagens
     "017": {"variantes": ["carta Flávio Bolsonaro", "Flávio presidente eleito", "Flávio líder do Brasil", "Flávio Bolsonaro EUA"],
-            "controles": ["Flávio Bolsonaro", "Lula"], "janelas": ["now 7-d", "today 1-m"],
+            "controles": ["Flávio Bolsonaro", "Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
             "youtube": ["carta Flávio Bolsonaro", "Flávio Bolsonaro presidente eleito carta", "Flávio Bolsonaro líder do Brasil", "Flávio Bolsonaro carta EUA"],
             "desde_yt": "2026-10-27T00:00:00Z", "rx_titulo": r"carta|nota|eleito|l[ií]der|vers|exterior|\beua\b|estados unidos|ex[ií]lio",
             "rx_atributo": r"fl[aá]vio",
             "noticias": ["carta Flávio Bolsonaro", "Flávio \"presidente eleito\" carta", "Flávio \"líder do Brasil\"", "carta Flávio versões", "Flávio Bolsonaro carta EUA"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro carta", "Flávio Bolsonaro presidente eleito"], "arquivo_web": []},
+    # 01/11/2026 (21h28, padronização dos casos): Trends por estado, imprensa e checagens para os casos com coletor próprio.
+    # O YouTube desses casos já é lido pelos coletores deles (caso_joice, caso_canais, caso_mundo) ou não se aplica: sem_youtube.
+    "010": {"variantes": ["Trump Brasil", "Rubio Brasil", "Trump Lula", "Rubio Lula"], "controles": ["Trump"],
+            "janelas": ["now 7-d", "today 1-m", "today 12-m"], "youtube": None, "sem_youtube": True, "desde_yt": "2026-10-24T00:00:00Z",
+            "rx_titulo": r"trump|rubio", "rx_atributo": r"brasil|lula|elei", "noticias": ["Trump eleição Brasil", "Rubio eleição Brasil", "Trump Lula", "Rubio Lula"],
+            "janela_noticias": "14d", "checagens": ["Trump Lula eleição", "Rubio Brasil eleição"], "arquivo_web": []},
+    "011": {"variantes": ["Joice Hasselmann", "Joice Hasselmann Lula", "Joice TV 247"], "controles": ["Lula"],
+            "janelas": ["now 7-d", "today 1-m", "today 12-m"], "youtube": None, "sem_youtube": True, "desde_yt": "2026-10-22T00:00:00Z",
+            "rx_titulo": r"joice", "rx_atributo": r"lula|vot|247|elei", "noticias": ["Joice Hasselmann Lula", "Joice Hasselmann voto", "Joice Hasselmann TV 247"],
+            "janela_noticias": "14d", "checagens": ["Joice Hasselmann Lula"], "arquivo_web": []},
+    "012": {"variantes": ["Allan dos Santos", "Paulo Figueiredo", "Eduardo Bolsonaro EUA"], "controles": ["Bolsonaro"],
+            "janelas": ["now 7-d", "today 1-m", "today 12-m"], "youtube": None, "sem_youtube": True, "desde_yt": "2026-07-01T00:00:00Z",
+            "rx_titulo": r"allan|figueiredo|eduardo", "rx_atributo": r"eua|exterior|elei|lula|bolsonar", "noticias": ["Allan dos Santos eleição", "Paulo Figueiredo eleição", "Eduardo Bolsonaro EUA eleição"],
+            "janela_noticias": "30d", "checagens": ["Allan dos Santos", "Paulo Figueiredo", "Eduardo Bolsonaro"], "arquivo_web": []},
+    "018": {"variantes": ["Haddad boicote", "Haddad Davos", "Lula corte saúde"], "controles": ["Haddad"],
+            "janelas": ["now 7-d", "today 1-m", "today 12-m"], "youtube": None, "sem_youtube": True, "desde_yt": "2026-10-24T00:00:00Z",
+            "rx_titulo": r"haddad|lula", "rx_atributo": r"boicot|davos|sa[uú]de|corte|antig", "noticias": ["Haddad boicote Davos", "Haddad \"palito de fósforo\"", "Lula corte 6 bilhões saúde educação", "vídeo antigo checagem eleição"],
+            "janela_noticias": "14d", "checagens": ["Haddad boicote", "Haddad Davos", "Lula corte saúde"], "arquivo_web": []},
+    "019": {"variantes": ["Brazil election", "Lula election", "Bolsonaro"], "controles": ["Brazil"],
+            "janelas": ["now 7-d", "today 1-m"], "geo_trends": "", "paises_trends": True, "youtube": None, "sem_youtube": True, "desde_yt": "2026-10-01T00:00:00Z",
+            "rx_titulo": r"brazil|brasil|lula|bolsonaro", "rx_atributo": r"elect|elei|vot", "noticias": ["Brazil election 2026 Lula", "eleição Brasil imprensa internacional"],
+            "janela_noticias": "14d", "checagens": ["Brazil election 2026"], "arquivo_web": []},
     # 01/11 (18h26): #DeportTheBolsonaros × #BrasiliansStandWithFlavio: quanto veio do Brasil e quanto de outros países.
     # Trends no mundo inteiro (geo vazio), com o mapa por país em cada janela; YouTube sem região nem língua.
     "025": {"variantes": ["deport Bolsonaro", "Flávio Bolsonaro Miami", "Flavio Bolsonaro", "DeportTheBolsonaros"],
@@ -177,7 +199,7 @@ CASOS = {
     # 30/10 (20h58): menino que vendia balas em Fortaleza constrangido por influenciadora por dizer que votava em Lula
     # (vídeo de Valéria Diniz, 28/10). Criança: o Atlas não publica imagem nem o perfil dele; o apelido da imprensa só como termo de busca.
     "020": {"variantes": ["Matheus dos Bombons", "Valéria Diniz", "menino balas Fortaleza", "menino fazer o L"],
-            "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m"],
+            "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
             "youtube": ["Matheus dos Bombons", "Valéria Diniz menino balas", "menino balas Fortaleza Lula", "influenciadora menino fazer o L Fortaleza"],
             "desde_yt": "2026-10-28T00:00:00Z", "rx_titulo": r"bombo|bala|menino|crian|val[eé]ria|diniz|fortaleza|fazer o l|rampa",
             "rx_atributo": r"lula|bolsonar|influenc|val[eé]ria|diniz|janones|rampa|posse",
@@ -185,7 +207,7 @@ CASOS = {
             "janela_noticias": "7d", "checagens": ["menino balas Fortaleza", "Valéria Diniz"], "arquivo_web": []},
     # 26/10 (01h41): reel de Nikolas Ferreira "O Nordeste que foi esquecido." (20/10/2026); termos iniciais, revisar com a transcrição
     "009": {"variantes": ["Nordeste esquecido", "Nikolas Nordeste", "Nikolas Ferreira Nordeste vídeo"],
-            "controles": ["Nordeste", "Nikolas Ferreira"], "janelas": ["now 7-d", "today 1-m"],
+            "controles": ["Nordeste", "Nikolas Ferreira"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
             "youtube": ["Nikolas Ferreira Nordeste esquecido", "Nikolas Ferreira vídeo Nordeste", "Nordeste que foi esquecido Nikolas"],
             "desde_yt": "2026-10-20T00:00:00Z", "rx_titulo": r"nordest",
             "rx_atributo": r"nikolas|v[ií]deo|esquecid|lula|elei|vot",
@@ -422,7 +444,7 @@ def main(argv=None) -> int:
                         dados.setdefault("reaproveitado", {})[k] = (velho.get(g) or {}).get("lido_em") or json.loads(ant.read_text(encoding="utf-8")).get("coletado_em_utc")
                 dados.setdefault("lido_em", agora)
     rows = []
-    if key and "--sem-youtube" not in argv:
+    if key and "--sem-youtube" not in argv and not CASOS[CASO].get("sem_youtube"):
         out["youtube"], rows = youtube(key, agora)
         # a busca do YouTube devolve conjuntos diferentes a cada dia: um vídeo já encontrado continua no caso (com os números da
         # última leitura e a data em que foi visto pela última vez), desde que ainda passe no filtro atual
