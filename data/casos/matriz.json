@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-02T00:28:59Z",
+ "gerado_em_utc": "2026-11-02T05:09:23Z",
  "criterio": "Matriz caso × análise do padrão completo, lida dos arquivos publicados (não da configuração).\n\nPedido do responsável (01/11/2026, 21h28): começar a padronização pelos casos sem o padrão completo. O padrão completo, como\ndefinido na auditoria de 01/11: (R) publicações coletadas por termo/hashtag nas redes · (B) Bardin com livro de códigos ·\n(H) classes (CHD de Reinert) · (T) Google Trends por estado · (K) busca de checagens.",
  "casos": [
   {
@@ -16,16 +16,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -34,12 +35,10 @@
    },
    "K": {
     "ok": true,
-    "achadas": 1
+    "achadas": 2
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -53,16 +52,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -73,10 +73,8 @@
     "ok": true,
     "achadas": 0
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -94,16 +92,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -114,10 +113,8 @@
     "ok": true,
     "achadas": 1
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -168,16 +165,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -188,10 +186,8 @@
     "ok": true,
     "achadas": 1
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -199,21 +195,26 @@
    "titulo": "PCC e CV como organizações terroristas (post de Marco Rubio)",
    "R": {
     "ok": true,
-    "fonte": "x.json (posts indicados, sem busca por termo)",
-    "detalhe": {}
+    "fonte": "caso.json → redes",
+    "detalhe": {
+     "X": 3000,
+     "Instagram": 97,
+     "Facebook": 31
+    }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
      "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)",
      "x.json → classes"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -224,10 +225,8 @@
     "ok": true,
     "achadas": 4
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -235,21 +234,26 @@
    "titulo": "\"Lula amassa a bandeira\" (fake news do dia da eleição)",
    "R": {
     "ok": true,
-    "fonte": "instagram.json (posts indicados, sem busca por termo)",
-    "detalhe": {}
+    "fonte": "caso.json → redes",
+    "detalhe": {
+     "X": 94,
+     "Instagram": 78,
+     "Facebook": 93
+    }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
      "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)",
      "instagram.json → classes"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -260,10 +264,8 @@
     "ok": true,
     "achadas": 3
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -271,21 +273,26 @@
    "titulo": "Camisetas do PT em Piracicaba (reel de Derrite e acusação contra a PM)",
    "R": {
     "ok": true,
-    "fonte": "instagram.json (posts indicados, sem busca por termo)",
-    "detalhe": {}
+    "fonte": "caso.json → redes",
+    "detalhe": {
+     "X": 73,
+     "Instagram": 158,
+     "Facebook": 75
+    }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
      "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)",
      "instagram.json → classes"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": false,
@@ -297,7 +304,6 @@
     "achadas": 0
    },
    "falta": [
-    "Bardin",
     "Trends por estado"
    ],
    "completo": false,
@@ -308,21 +314,26 @@
    "titulo": "\"O Nordeste que foi esquecido\" (reel de Nikolas Ferreira)",
    "R": {
     "ok": true,
-    "fonte": "instagram.json (posts indicados, sem busca por termo)",
-    "detalhe": {}
+    "fonte": "caso.json → redes",
+    "detalhe": {
+     "X": 3000,
+     "Instagram": 121,
+     "Facebook": 97
+    }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
      "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)",
      "instagram.json → classes"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": false,
@@ -334,7 +345,6 @@
     "achadas": 2
    },
    "falta": [
-    "Bardin",
     "Trends por estado"
    ],
    "completo": false,
@@ -351,14 +361,16 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
-    "ok": false,
-    "fonte": [],
-    "sobre_publicacoes": false
+    "ok": true,
+    "fonte": [
+     "bardin.json → chd_palavras (publicações)"
+    ],
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": false,
@@ -370,8 +382,6 @@
     "achadas": null
    },
    "falta": [
-    "Bardin",
-    "CHD",
     "Trends por estado",
     "checagens"
    ],
@@ -389,7 +399,7 @@
    "B": {
     "ok": false,
     "fonte": null,
-    "livro": false
+    "livro": true
    },
    "H": {
     "ok": false,
@@ -426,7 +436,7 @@
    "B": {
     "ok": false,
     "fonte": null,
-    "livro": false
+    "livro": true
    },
    "H": {
     "ok": false,
@@ -463,16 +473,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -483,10 +494,8 @@
     "ok": true,
     "achadas": 4
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -540,14 +549,16 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
-    "ok": false,
-    "fonte": [],
-    "sobre_publicacoes": false
+    "ok": true,
+    "fonte": [
+     "bardin.json → chd_palavras (publicações)"
+    ],
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": false,
@@ -559,8 +570,6 @@
     "achadas": null
    },
    "falta": [
-    "Bardin",
-    "CHD",
     "Trends por estado",
     "checagens"
    ],
@@ -618,16 +627,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": false,
@@ -639,7 +649,6 @@
     "achadas": 4
    },
    "falta": [
-    "Bardin",
     "Trends por estado"
    ],
    "completo": false,
@@ -658,14 +667,16 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
-    "ok": false,
-    "fonte": [],
-    "sobre_publicacoes": false
+    "ok": true,
+    "fonte": [
+     "bardin.json → chd_palavras (publicações)"
+    ],
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": false,
@@ -677,8 +688,6 @@
     "achadas": null
    },
    "falta": [
-    "Bardin",
-    "CHD",
     "Trends por estado",
     "checagens"
    ],
@@ -735,16 +744,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": false,
@@ -756,7 +766,6 @@
     "achadas": 0
    },
    "falta": [
-    "Bardin",
     "Trends por estado"
    ],
    "completo": false,
@@ -775,14 +784,16 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
-    "ok": false,
-    "fonte": [],
-    "sobre_publicacoes": false
+    "ok": true,
+    "fonte": [
+     "bardin.json → chd_palavras (publicações)"
+    ],
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -793,11 +804,8 @@
     "ok": true,
     "achadas": 1
    },
-   "falta": [
-    "Bardin",
-    "CHD"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -813,14 +821,16 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
-    "ok": false,
-    "fonte": [],
-    "sobre_publicacoes": false
+    "ok": true,
+    "fonte": [
+     "bardin.json → chd_palavras (publicações)"
+    ],
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -831,11 +841,8 @@
     "ok": true,
     "achadas": 5
    },
-   "falta": [
-    "Bardin",
-    "CHD"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -851,16 +858,17 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
-     "busca.json → classes (comentários do YouTube)"
+     "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -871,10 +879,8 @@
     "ok": true,
     "achadas": 34
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -890,17 +896,18 @@
     }
    },
    "B": {
-    "ok": false,
-    "fonte": null,
-    "livro": false
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
    },
    "H": {
     "ok": true,
     "fonte": [
      "busca.json → classes (comentários do YouTube)",
+     "bardin.json → chd_palavras (publicações)",
      "instagram.json → classes"
     ],
-    "sobre_publicacoes": false
+    "sobre_publicacoes": true
    },
    "T": {
     "ok": true,
@@ -911,10 +918,8 @@
     "ok": true,
     "achadas": 4
    },
-   "falta": [
-    "Bardin"
-   ],
-   "completo": false,
+   "falta": [],
+   "completo": true,
    "pasta_existe": true
   },
   {
@@ -928,6 +933,39 @@
      "Instagram": 316,
      "Facebook": 168
     }
+   },
+   "B": {
+    "ok": true,
+    "fonte": "bardin.json",
+    "livro": true
+   },
+   "H": {
+    "ok": true,
+    "fonte": [
+     "bardin.json → chd_palavras (publicações)"
+    ],
+    "sobre_publicacoes": true
+   },
+   "T": {
+    "ok": true,
+    "fonte": "busca.json → trends.variantes",
+    "trends_sem_estado": false
+   },
+   "K": {
+    "ok": true,
+    "achadas": 0
+   },
+   "falta": [],
+   "completo": true,
+   "pasta_existe": true
+  },
+  {
+   "caso": "026",
+   "titulo": "Janonismo: o \"Exército do Lula\" na eleição e os canais que o copiaram no mundo",
+   "R": {
+    "ok": false,
+    "fonte": "caso.json → redes",
+    "detalhe": {}
    },
    "B": {
     "ok": false,
@@ -946,9 +984,10 @@
    },
    "K": {
     "ok": true,
-    "achadas": 0
+    "achadas": 35
    },
    "falta": [
+    "redes",
     "Bardin",
     "CHD"
    ],
@@ -957,32 +996,33 @@
   }
  ],
  "completos": [
-  "014",
-  "016"
- ],
- "incompletos": [
   "001",
   "002",
   "003",
-  "004",
   "005",
   "006",
   "007",
-  "008",
-  "009",
-  "010",
-  "011",
-  "012",
   "013",
-  "015",
-  "017",
-  "018",
-  "019",
-  "020",
+  "014",
+  "016",
   "021",
   "022",
   "023",
   "024",
   "025"
+ ],
+ "incompletos": [
+  "004",
+  "008",
+  "009",
+  "010",
+  "011",
+  "012",
+  "015",
+  "017",
+  "018",
+  "019",
+  "020",
+  "026"
  ]
 }

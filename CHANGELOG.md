@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.261 — Classes lematizadas dos comentários: caso 003 (reconstrução em andamento) (2026-11-02) ⚠️
+
+- `data/casos/003/busca.json` foi regenerado por `scripts/build_caso_busca.py`, com lematização, passo 3 e a regra dos 75%.
+  - 8.080 comentários, 84,8% classificados, 4 classes terminais (1.761, 1.940, 950 e 2.200 segmentos). Atinge o mínimo de 75%.
+- Os GEXF do 005 e o `data/casos/matriz.json` foram regravados pela mesma reconstrução.
+- Os casos 005–025 seguem em reconstrução local.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.260 — TikTok de volta ao padrão dos casos (pago, US$ 1,00 por caso) · falha silenciosa da coleta grátis exposta no painel · caso 026 no padrão completo (2026-11-02) ⚠️
 
 - **Problema:** desde 30/10, a coleta grátis do TikTok pela página pública da hashtag lê 0 vídeos em todos os casos e no painel de hashtags. O workflow terminava com "sucesso", e o painel de saúde não acompanhava essa série. Nos manifestos dos casos, a última leitura com vídeos foi a de 29/10, 17h26 UTC. Desde a de 30/10, 17h01, nenhuma trouxe vídeos. A busca por frase nunca trouxe vídeos.
