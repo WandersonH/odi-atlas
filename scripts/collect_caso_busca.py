@@ -519,8 +519,27 @@ def main(argv=None) -> int:
                         dados.setdefault("reaproveitado", {})[k] = (velho.get(g) or {}).get("lido_em") or json.loads(ant.read_text(encoding="utf-8")).get("coletado_em_utc")
                 dados.setdefault("lido_em", agora)
     rows = []
-    if key and "--sem-youtube" not in argv and not CASOS[CASO].get("sem_youtube"):
+    # 02/11/2026 ("as coletas de youtube foram todas feitas?"): a cota diária do YouTube (10 mil unidades, uma busca = 100) acabava
+    # antes dos casos do fim da fila (021–031 com HTTP 429 em todas as buscas). Caso com vídeos lidos há menos de YT_INTERVALO_H horas
+    # reaproveita a leitura anterior e não gasta cota; quem nunca teve vídeo vai primeiro.
+    ant0 = priv_dir() / "busca_coleta.json"
+    velho0 = json.loads(ant0.read_text(encoding="utf-8")) if ant0.exists() else {}
+    yt_lido = (velho0.get("youtube") or {}).get("lido_em") or (velho0.get("coletado_em_utc") if (velho0.get("youtube") or {}).get("videos") else None)
+    recente = False
+    if yt_lido and (velho0.get("youtube") or {}).get("videos"):
+        try:
+            idade = (dt.datetime.strptime(agora[:19], "%Y-%m-%dT%H:%M:%S") - dt.datetime.strptime(yt_lido[:19], "%Y-%m-%dT%H:%M:%S")).total_seconds() / 3600
+            recente = idade < float(os.environ.get("YT_INTERVALO_H", "48"))
+        except ValueError:
+            pass
+    if recente and "--forcar-youtube" not in argv:
+        out["youtube"] = {**velho0["youtube"], "reaproveitado_de": yt_lido}
+        rows = []
+        print(f"youtube: leitura de {yt_lido} reaproveitada (menos de {os.environ.get('YT_INTERVALO_H', '48')} h; poupa a cota)")
+    elif key and "--sem-youtube" not in argv and not CASOS[CASO].get("sem_youtube"):
         out["youtube"], rows = youtube(key, agora)
+        if out["youtube"].get("videos"):
+            out["youtube"]["lido_em"] = agora
         # a busca do YouTube devolve conjuntos diferentes a cada dia: um vídeo já encontrado continua no caso (com os números da
         # última leitura e a data em que foi visto pela última vez), desde que ainda passe no filtro atual
         ant = priv_dir() / "busca_coleta.json"

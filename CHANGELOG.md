@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.313 — YouTube dos casos: 10 casos sem vídeos por falta de cota; fila reordenada e reaproveitamento de leitura recente (2026-11-02) ⚠️
+
+- Pergunta do responsável (02/11/2026, 18h07): "as coletas de youtube foram todas feitas?". Não. Conferido no privado (`casos/<id>/busca_coleta.json`): 021, 022, 024, 025, 026, 027, 028, 029, 030 e 031 com 0 vídeos e "HTTP 429" em todas as buscas do YouTube (coletas de 01/11 18h42 a 02/11 06h36); 016 com 16 vídeos e um 429; 010, 011, 012, 015, 018 e 019 sem coleta de busca do caso (esses casos têm coletores próprios).
+- Causa: a cota diária da chave do YouTube (10 mil unidades; cada busca custa 100) é dividida por 11 workflows; a fila diária de `casos-busca.yml` (04h17) começava pelos casos antigos e esgotava a cota antes dos novos.
+- O quê: fila reordenada (casos sem YouTube primeiro); `collect_caso_busca.py` reaproveita a leitura do YouTube de menos de 48 h (`YT_INTERVALO_H`) em vez de buscar de novo (marca "reaproveitado_de"; `--forcar-youtube` ignora). Vídeos novos e comentários de casos antigos passam a ser lidos a cada 2 dias.
+- Teste: `python -m unittest discover -s tests` OK. Próxima coleta: 03/11, 04h17, logo depois da renovação da cota.
+
 ## C19.312 — "Cruzamento com as redes declaradas ao TSE" (candidatos e partidos a favor ou contra) em todos os casos (2026-11-02) ⚠️
 
 - Pedido do responsável (02/11/2026, 17h32, print do bloco do caso 014): "quero essa área aplicada a todos os casos".
