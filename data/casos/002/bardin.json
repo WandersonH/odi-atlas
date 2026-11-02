@@ -1,6 +1,6 @@
 {
  "caso": "002",
- "gerado_em_utc": "2026-11-02T02:28:52Z",
+ "gerado_em_utc": "2026-11-02T02:58:11Z",
  "livro": {
   "titulo": "Livro de códigos — caso 002: consulta depreciativa associada a um candidato no Google (\"onde mora/nasceu o ladrão\") (ODI Atlas)",
   "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
@@ -6316,80 +6316,6 @@
    "classes": [
     {
      "classe": 1,
-     "segmentos": 22,
-     "pct": 21.0,
-     "formas": [
-      [
-       "nascer",
-       16.1
-      ],
-      [
-       "cidade",
-       15.7
-      ],
-      [
-       "origem",
-       15.7
-      ],
-      [
-       "lampiao",
-       15.7
-      ],
-      [
-       "historia",
-       11.7
-      ],
-      [
-       "grande",
-       11.7
-      ],
-      [
-       "existir",
-       11.7
-      ],
-      [
-       "brasileiro",
-       11.7
-      ],
-      [
-       "museu",
-       11.7
-      ],
-      [
-       "rei",
-       11.7
-      ],
-      [
-       "ver",
-       11.1
-      ],
-      [
-       "contar",
-       7.7
-      ],
-      [
-       "crescer",
-       7.7
-      ],
-      [
-       "comecar",
-       7.7
-      ],
-      [
-       "bom",
-       7.7
-      ]
-     ],
-     "por_ano": {
-      "2022": 0,
-      "2023": 2,
-      "2024": 2,
-      "2025": 4,
-      "2026": 14
-     }
-    },
-    {
-     "classe": 2,
      "segmentos": 65,
      "pct": 61.9,
      "formas": [
@@ -6407,7 +6333,7 @@
      }
     },
     {
-     "classe": 3,
+     "classe": 2,
      "segmentos": 18,
      "pct": 17.1,
      "formas": [
@@ -6479,6 +6405,80 @@
       "2025": 0,
       "2026": 14
      }
+    },
+    {
+     "classe": 3,
+     "segmentos": 22,
+     "pct": 21.0,
+     "formas": [
+      [
+       "nascer",
+       16.1
+      ],
+      [
+       "cidade",
+       15.7
+      ],
+      [
+       "origem",
+       15.7
+      ],
+      [
+       "lampiao",
+       15.7
+      ],
+      [
+       "historia",
+       11.7
+      ],
+      [
+       "grande",
+       11.7
+      ],
+      [
+       "existir",
+       11.7
+      ],
+      [
+       "brasileiro",
+       11.7
+      ],
+      [
+       "museu",
+       11.7
+      ],
+      [
+       "rei",
+       11.7
+      ],
+      [
+       "ver",
+       11.1
+      ],
+      [
+       "contar",
+       7.7
+      ],
+      [
+       "crescer",
+       7.7
+      ],
+      [
+       "comecar",
+       7.7
+      ],
+      [
+       "bom",
+       7.7
+      ]
+     ],
+     "por_ano": {
+      "2022": 0,
+      "2023": 2,
+      "2024": 2,
+      "2025": 4,
+      "2026": 14
+     }
     }
    ],
    "arvore": [
@@ -6494,19 +6494,19 @@
     },
     {
      "id": 1,
-     "n": 2,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 2,
      "n": 130,
      "filhos": [
       3,
       4
      ],
      "chi2": 455.0,
+     "classe": null
+    },
+    {
+     "id": 2,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
      "classe": null
     },
     {
@@ -6562,12 +6562,6 @@
     },
     {
      "id": 9,
-     "n": 22,
-     "filhos": null,
-     "classe": 1
-    },
-    {
-     "id": 10,
      "n": 94,
      "filhos": [
       11,
@@ -6575,6 +6569,12 @@
      ],
      "chi2": 174.6,
      "classe": null
+    },
+    {
+     "id": 10,
+     "n": 22,
+     "filhos": null,
+     "classe": 3
     },
     {
      "id": 11,
@@ -6631,13 +6631,13 @@
      "id": 17,
      "n": 65,
      "filhos": null,
-     "classe": 2
+     "classe": 1
     },
     {
      "id": 18,
      "n": 18,
      "filhos": null,
-     "classe": 3
+     "classe": 2
     }
    ],
    "min_classe": 10,
