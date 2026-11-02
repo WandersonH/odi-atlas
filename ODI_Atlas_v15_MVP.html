@@ -2226,11 +2226,11 @@ let feito=false;new MutationObserver(()=>{if(sec.classList.contains('active')&&!
 .pt1-num{font:700 15px 'Courier New',monospace}.pt1-bar{display:grid;grid-template-columns:170px 1fr 90px;gap:8px;align-items:center;font-size:12px;margin:4px 0}.pt1-bar i{display:block;height:12px;background:#5b7894}
 .pt1-scroll{overflow-x:auto}
 .rt-sel{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:8px 0}.rt-sel select{padding:6px 8px;border:1px solid #172238;background:#fffdf8;max-width:100%}
-.cs-idx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0 22px}
+.cs-idx{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:18px 0 22px}
 .cs-ficha{background:#fffdf8;border:1px solid #d9d3c4;padding:14px 14px 12px;position:relative;box-shadow:3px 3px 0 #e4ddcc;text-align:left;cursor:pointer;color:#172238;font:inherit}
 .cs-ficha[aria-pressed="true"]{outline:2px solid #172238}.cs-ficha .num{font:700 30px 'Courier New',monospace;color:#b3261e;line-height:1}
 .cs-ficha h3{font:700 16px/1.2 Georgia,serif;margin:8px 0 6px}.cs-ficha .meta{font:11px 'Courier New',monospace;color:#5d6a76}
-.cs-ficha .tag{position:absolute;top:12px;right:12px;border:1px solid #172238;font:700 9px 'Courier New',monospace;padding:2px 5px;text-transform:uppercase}
+.cs-ficha .tag{border:1px solid #172238;font:700 9px 'Courier New',monospace;padding:2px 5px;text-transform:uppercase;max-width:60%;overflow-wrap:anywhere;text-align:right}.cs-ficha{display:flex;flex-direction:column;min-width:0}.cs-ficha:disabled{cursor:default;opacity:.6}.cs-ficha:not(:disabled):hover{box-shadow:5px 5px 0 #d7cdb5;transform:translate(-1px,-1px)}.cs-ficha-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.cs-ficha h3{overflow-wrap:anywhere}.cs-ficha .meta{display:flex;flex-direction:column;gap:2px;overflow-wrap:anywhere;flex:1}.cs-ficha .meta small{margin-top:4px;color:#69768a}.cs-abrir{margin-top:10px;font:700 11px 'Courier New',monospace;color:#b3261e;letter-spacing:.04em}.cs-mais summary{cursor:pointer;font:11px 'Courier New',monospace;color:#b3261e;margin-top:4px}.cs-volta{margin:10px 0 0;font:12px 'Courier New',monospace}.cs-volta a{color:#172238}.cs-dossie-box{margin:12px 0 18px}.cs-dossie-box>summary{cursor:pointer;display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;border-top:2px solid #172238;border-bottom:1px solid #d9d3c4;padding:8px 0;font:12px 'Courier New',monospace;color:#5d6a76}.cs-dossie-box>summary b{color:#172238;letter-spacing:.08em}
 .cs-dossie{display:grid;grid-template-columns:1.15fr .85fr;background:#fffdf8;border:1px solid #172238;margin-bottom:16px}
 .cs-dossie .l{padding:20px 22px;border-right:1px solid #172238}.cs-dossie .r{padding:16px 18px;background:repeating-linear-gradient(0deg,transparent 0 27px,#efe9db 27px 28px)}
 .cs-casenum{display:flex;align-items:baseline;gap:14px}.cs-casenum b{font:700 56px 'Courier New',monospace;color:#b3261e;line-height:.9}.cs-casenum span{font:700 11px 'Courier New',monospace;letter-spacing:.1em;text-transform:uppercase}
@@ -2249,7 +2249,7 @@ let feito=false;new MutationObserver(()=>{if(sec.classList.contains('active')&&!
 .cs-words span{display:inline-block;margin:2px 6px;font-family:Georgia,serif;color:#172238}
 .cs-tab{width:100%;border-collapse:collapse;font:12px 'Courier New',monospace}.cs-tab td{padding:5px 4px;border-bottom:1px dotted #d9d3c4;vertical-align:top}.cs-tab td:last-child{text-align:right;white-space:nowrap}
 .cs-board{background:#efe7d6;border:1px solid #172238}.cs-grid2>*,.cs-gal>*,.cs-bn>*{min-width:0}.cs-news td:last-child{white-space:normal;text-align:left}.cs-news td:first-child{white-space:nowrap}
-@media(max-width:900px){.cs-idx{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-dossie,.cs-grid2{grid-template-columns:1fr}.cs-dossie .l{border-right:0;border-bottom:1px solid #172238}.cs-bn{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-gal{grid-template-columns:repeat(2,minmax(0,1fr))}.pt1-bar{grid-template-columns:110px 1fr 70px}}
+@media(max-width:900px){.cs-idx{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}.cs-dossie,.cs-grid2{grid-template-columns:1fr}.cs-dossie .l{border-right:0;border-bottom:1px solid #172238}.cs-bn{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-gal{grid-template-columns:repeat(2,minmax(0,1fr))}.pt1-bar{grid-template-columns:110px 1fr 70px}}
 </style>
 
 <section class="panel" id="primeiroTurno" aria-label="Caderno 01 Todas as chapas do 1º turno">
@@ -2351,10 +2351,10 @@ Promise.all([T('./data/seguidores/socialblade_historico.csv'),T('./data/seguidor
   <div class="paper-ribbon"><span>CADERNO 08 / CASOS E ANÁLISES</span><span id="csData">—</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Hashtags, menções e termos · todas as redes · Google</div>
     <h1>Casos e análises.<br><em>Como uma fala, uma busca ou um movimento circulam.</em></h1>
-    <p>Cada caso é um dossiê: de onde partiu, números por rede, a curva de circulação hora a hora, quem puxou, as peças de maior alcance, as palavras que aparecem e o quadro de ligações entre quem publicou. Fonte e data em cada bloco.</p></div>
+    <p>Escolha um caso: todos abrem a mesma página detalhada. No topo dela fica o dossiê (de onde partiu, números por rede, circulação hora a hora, quem puxou, peças de maior alcance, palavras, quadro de ligações e método); abaixo, as análises do caso (Google, YouTube, Bardin, classes, checagens). Fonte e data em cada bloco.</p></div>
   <div class="pt-aviso"><strong>Privacidade.</strong> O caso reúne publicações de qualquer pessoa. Só aparecem com nome os perfis declarados ao TSE e contas com 10 mil seguidores ou mais (ou com selo); as demais aparecem como código (C0001…), sem texto nem link. Os textos completos ficam no repositório privado do Observatório.</div>
   <div class="cs-idx" id="csIdx" role="group" aria-label="Casos"></div>
-  <div id="csCaso"><div class="odi-signal">Aguardando leitura.</div></div>
+  <div id="csCaso"></div>
 </section>
 <script>
 /* Casos e análises: data/casos/indice.json e data/casos/<id>/caso.json (agregados) */
@@ -2372,10 +2372,11 @@ function linhaBusca(el,T){const g=(T&&T.variantes)||{},pts=g[janBusca],termos=g.
  termos.forEach((t,k)=>{sv+=`<polyline fill="none" stroke="${CORB[k%CORB.length]}" stroke-width="${k?1.6:2.4}" points="${pts.map((p,i)=>X(i)+','+Y(p.v[t])).join(' ')}"/>`;});
  sv+=[0,Math.floor(n/2),n-1].map(i=>`<text x="${X(i)}" y="${H-8}" text-anchor="middle" font-size="10" font-family="Courier New">${br(pts[i].t)}</text>`).join('');
  el.innerHTML=`<div style="display:flex;gap:12px;flex-wrap:wrap;font-size:11.5px;margin:4px 0">${termos.map((t,k)=>`<span><i style="display:inline-block;width:12px;height:3px;background:${CORB[k%CORB.length]};margin-right:4px;vertical-align:middle"></i>${esc(t)}</span>`).join('')}</div><svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Interesse de busca no Google">${sv}</svg>`;}
-function fichas(){$('csIdx').innerHTML=IDX.casos.map(c=>`<button type="button" class="cs-ficha" data-id="${esc(c.id)}" aria-pressed="${c.id===atual}"><span class="tag">${esc(c.tipo||'')}</span><div class="num">${esc(c.id)}</div><h3>${esc(c.titulo)}</h3><div class="meta">${(()=>{const r=c.resumo,p=[];if(r){if(r.youtube_videos!=null)p.push(`YouTube ${fmt(r.youtube_videos)} vídeos`);(r.conversas||[]).forEach(v=>{if(v.comentarios)p.push(`${esc(v.plataforma)} ${fmt(v.comentarios)} ${v.plataforma==='X'?'posts':'comentários'}`);});if(r.noticias)p.push(`${fmt(r.noticias)} notícias`);if(r.checagens)p.push(`${fmt(r.checagens)} ${r.checagens===1?'checagem':'checagens'}`);}
-   if(c.estado==='coletado'&&c.publicacoes)p.push(`redes: ${fmt(c.publicacoes)} publicações${c.coleta_redes_em?` (coleta de ${br(c.coleta_redes_em)})`:''}`);
-   return (p.length?p.join(' · '):esc(c.estado))+(r&&r.coletado_em_utc?`<br><small>atualizado em ${br(r.coletado_em_utc)}</small>`:'');})()}<br>${esc((c.redes_previstas||['TikTok','Instagram','X','Kwai','Facebook','Google']).join(' · '))}</div></button>`).join('');
- $('csIdx').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>abrir(b.dataset.id)));}
+function abaDe(c){return c.aba||('caso'+c.id);}
+function fichas(){$('csIdx').innerHTML=IDX.casos.map(c=>{const r=c.resumo,p=[];if(c.publicacoes)p.push(`redes: ${fmt(c.publicacoes)} publicações`);if(r){if(r.youtube_videos!=null)p.push(`YouTube: ${fmt(r.youtube_videos)} vídeos`);if(r.noticias)p.push(`${fmt(r.noticias)} notícias`);if(r.checagens)p.push(`${fmt(r.checagens)} ${r.checagens===1?'checagem':'checagens'}`);}
+  const em=(r&&r.coletado_em_utc)||c.coleta_redes_em;const tem=!!document.getElementById(abaDe(c));
+  return `<button type="button" class="cs-ficha" data-id="${esc(c.id)}"${tem?'':' disabled'}><div class="cs-ficha-top"><span class="num">${esc(c.id)}</span><span class="tag">${esc(c.tipo||'')}</span></div><h3>${esc(c.titulo)}</h3><div class="meta">${p.length?p.map(x=>`<span>${x}</span>`).join(''):`<span>${esc(c.estado)}</span>`}${em?`<small>atualizado em ${br(em)}</small>`:''}</div><span class="cs-abrir">${tem?'abrir o caso →':'⛔ página ainda não montada'}</span></button>`;}).join('');
+ $('csIdx').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const c=IDX.casos.find(x=>x.id===b.dataset.id);if(c&&typeof setTab==='function'){setTab(abaDe(c));window.scrollTo(0,0);}}));}
 function pendente(c){return `<div class="cs-dossie"><div class="l"><div class="cs-casenum"><b>${esc(c.id)}</b><span>Dossiê · ${esc(c.tipo||'')}</span></div><h2>${esc(c.titulo)}</h2><p style="color:#5d6a76">${esc(c.descricao||'')}</p>
  <dl class="cs-kv"><dt>Estado</dt><dd>⛔ ${esc(c.estado)}</dd>${c.janela_indicada?`<dt>Janela indicada</dt><dd>${esc(c.janela_indicada)}</dd>`:''}<dt>Redes previstas</dt><dd>${esc((c.redes_previstas||[]).join(' · '))}</dd></dl><span class="cs-stamp">sem coleta</span></div>
  <div class="r"><div class="eyebrow">O que falta</div><p style="font-size:13px">Confirmar a data do marco zero e os termos exatos (hashtags, frase, perfis). Depois disso, a coleta paga precisa de teto autorizado. Nenhum número é mostrado antes da coleta.</p></div></div>`;}
@@ -2396,31 +2397,32 @@ function rede(c){const d=c.rede_desenho;if(!d||!d.nos.length)return '<p class="y
  s+=d.nos.map(n=>{const r=3+9*Math.sqrt(n.n/mx);const cor=n.tipo==='hashtag'?'#d7a14a':n.tipo.startsWith('conta oficial')?'#c8102e':'#172238';const rot=n.tipo==='hashtag'||n.n>=mx*.25||n.tipo.startsWith('conta oficial');
   return `<circle cx="${X(n.x)}" cy="${Y(n.y)}" r="${r}" fill="${cor}" fill-opacity=".85"><title>${esc(n.rotulo)} · ${n.n} publicações</title></circle>${rot?`<text x="${X(n.x)+r+2}" y="${Y(n.y)+3}" font-size="9.5" font-family="Courier New" fill="#172238">${esc(String(n.rotulo).slice(0,28))}</text>`:''}`;}).join('');
  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Contas e hashtags do caso" class="cs-board">${s}</svg><p class="yt-cloudnote"><span style="color:#d7a14a">●</span> hashtag · <span style="color:#172238">●</span> conta · <span style="color:#c8102e">●</span> perfil declarado ao TSE. Nó = conta ou hashtag; ligação = a conta publicou com a hashtag (ou mencionou um perfil declarado). Desenho com as 35 contas e 25 hashtags mais ativas; o arquivo do Gephi tem tudo.</p>`;}
-function caso(c){const mz=c.marco_zero&&c.marco_zero.geral;const bn=REDES.map(r=>{const x=c.redes[r]||{};const alc=x.visualizacoes?`${k(x.visualizacoes)} visualizações`:x.curtidas?`${k(x.curtidas)} curtidas`:'sem métrica de alcance';if(x.coletada===false)return `<div><small>${r}</small><strong>⛔</strong><i>não coletada</i><i>coleta paga ainda não feita</i></div>`;return `<div><small>${r}</small><strong>${x.no_limite?'≥ ':''}${fmt(x.publicacoes)}</strong><i>publicações · ${fmt(x.contas)} contas</i><i>${alc}</i></div>`;}).join('');
+function caso(c,p){const mz=c.marco_zero&&c.marco_zero.geral;const bn=REDES.map(r=>{const x=c.redes[r]||{};const alc=x.visualizacoes?`${k(x.visualizacoes)} visualizações`:x.curtidas?`${k(x.curtidas)} curtidas`:'sem métrica de alcance';if(x.coletada===false)return `<div><small>${r}</small><strong>⛔</strong><i>não coletada</i><i>coleta paga ainda não feita</i></div>`;return `<div><small>${r}</small><strong>${x.no_limite?'≥ ':''}${fmt(x.publicacoes)}</strong><i>publicações · ${fmt(x.contas)} contas</i><i>${alc}</i></div>`;}).join('');
  const g=c.google||{};const tr=g.trends;const trPico=tr&&tr.pontos?Math.max(0,...tr.pontos.map(p=>p.v[tr.termos[0]]||0)):null;
  const tl=[mz?`<li>${hb(mz.hora_brt)} — 1ª publicação localizada (${esc(mz.rede)} · ${esc(mz.conta)})</li>`:''];
  for(const [r,m] of Object.entries((c.marco_zero||{}).por_rede||{}))if(m&&mz&&m.hora_brt!==mz.hora_brt)tl.push(`<li>${hb(m.hora_brt)} — ${(c.redes[r]||{}).no_limite?'1ª lida no':'chega ao'} ${esc(r)} (${esc(m.conta)})${(c.redes[r]||{}).no_limite?' ⚠ coleta no limite: o começo nesta rede pode estar fora':''}</li>`);
  if(c.decolagem)tl.push(`<li>${hb(c.decolagem.hora_brt)} — decolagem: ${fmt(c.decolagem.publicacoes)} publicações na hora</li>`);if(c.pico&&c.pico.hora_brt)tl.push(`<li>${hb(c.pico.hora_brt)} — pico: ${fmt(c.pico.publicacoes)} publicações na hora</li>`);
  if(g.primeira_noticia)tl.push(`<li>${br(g.primeira_noticia.data_publicacao)} — 1º título no Google Notícias (${esc(g.primeira_noticia.veiculo)})</li>`);
  const tls=tl.filter(Boolean).sort((a,b)=>{const p=s=>{const m=s.match(/<li>(\d\d)\/(\d\d)(?: (\d\d)h)?/);return m?m[2]+m[1]+(m[3]||'99'):'';};return p(a).localeCompare(p(b));}).join('');
- const termo=Object.entries((c.marco_zero||{}).por_termo||{}).map(([t,m])=>`${esc(t)}: ${m?`${hb(m.hora_brt)} · ${esc(m.rede)}`:'—'}`).join('<br>');
+ const dobra=(arr,sep,n=6)=>arr.length<=n+2?arr.join(sep):`${arr.slice(0,n).join(sep)}<details class="cs-mais"><summary>ver todos (${arr.length})</summary>${arr.slice(n).join(sep)}</details>`;
+ const termo=dobra(Object.entries((c.marco_zero||{}).por_termo||{}).sort((x,y)=>String((x[1]||{}).hora_brt||'9').localeCompare(String((y[1]||{}).hora_brt||'9'))).map(([t,m])=>`${esc(t)}: ${m?`${hb(m.hora_brt)} · ${esc(m.rede)}`:'—'}`),'<br>');
  const quem=(arr,f)=>arr.length?`<table class="cs-tab">${arr.map((x,i)=>`<tr><td>${i+1}º</td><td>${esc(x.conta)} <span style="color:#69768a">· ${esc(x.rede)}</span></td><td>${f(x)}</td></tr>`).join('')}</table>`:'<p class="yt-cloudnote">—</p>';
  const gal=c.galeria.length?c.galeria.map(p=>`<a class="cs-post" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none"><div class="bar" style="background:${p.declarado_tse?'#c8102e':COR[p.rede]||'#7a6a2a'}"></div><div class="tx"><b>${esc(p.rede)} · ${esc(p.conta)} · ${hb(p.hora_brt)}</b>${esc(p.texto)}</div><div class="tx mono">${p.visualizacoes?k(p.visualizacoes)+' visualizações':''}${p.curtidas?' · '+k(p.curtidas)+' curtidas':''}${p.compartilhamentos?' · '+k(p.compartilhamentos)+' compart.':''}</div></a>`).join(''):'<p class="yt-cloudnote">Nenhuma peça de conta pública (perfil do TSE ou 10 mil+ seguidores) nesta coleta.</p>';
  const mxw=Math.max(1,...(c.palavras||[]).map(p=>p[1]));const pal=(c.palavras||[]).slice(0,45).map(([w,n])=>`<span style="font-size:${11+15*Math.sqrt(n/mxw)}px" title="${fmt(n)} publicações">${esc(w)}</span>`).join('');
  const arq=c.rede_arquivos;const met=(c.metodo||[]).map(m=>`<li><b>${esc(m.rede)}</b>: ${esc(m.ferramenta||'')} · ${esc(m.status||'')}${m.itens_pedidos_por_termo?` · até ${fmt(m.itens_pedidos_por_termo)} itens por termo`:''}${(m.termos_no_limite||[]).length?` · <b>no limite</b> (o total real é maior): ${m.termos_no_limite.map(esc).join(', ')}`:''}</li>`).join('');
  return `<div class="cs-dossie"><div class="l"><div class="cs-casenum"><b>${esc(c.id)}</b><span>Dossiê · ${esc(c.tipo||'')}</span></div><h2>${esc(c.titulo)}</h2><p style="color:#5d6a76;margin:0 0 10px">${esc(c.descricao||'')}</p>
-  <dl class="cs-kv"><dt>Marco zero</dt><dd>${mz?`${hb(mz.hora_brt)} · ${esc(mz.rede)} · ${mz.url?`<a href="${esc(mz.url)}" target="_blank" rel="noopener noreferrer">${esc(mz.conta)} ↗</a>`:esc(mz.conta)}`:'—'}</dd><dt>Decolagem</dt><dd>${c.decolagem?`${hb(c.decolagem.hora_brt)} · ${fmt(c.decolagem.publicacoes)} publicações na hora (${esc(c.decolagem.criterio)})`:'—'}</dd><dt>Primeira vez por termo</dt><dd>${termo||'—'}</dd><dt>Janela</dt><dd>desde ${br(c.desde)} · coleta de ${br(c.coletado_em)}</dd><dt>Termos</dt><dd>${c.termos.map(esc).join(' · ')}</dd><dt>Total</dt><dd>${fmt(c.publicacoes)} publicações de ${fmt(c.contas)} contas</dd></dl>
+  <dl class="cs-kv"><dt>Marco zero</dt><dd>${mz?`${hb(mz.hora_brt)} · ${esc(mz.rede)} · ${mz.url?`<a href="${esc(mz.url)}" target="_blank" rel="noopener noreferrer">${esc(mz.conta)} ↗</a>`:esc(mz.conta)}`:'—'}</dd><dt>Decolagem</dt><dd>${c.decolagem?`${hb(c.decolagem.hora_brt)} · ${fmt(c.decolagem.publicacoes)} publicações na hora (${esc(c.decolagem.criterio)})`:'—'}</dd><dt>Primeira vez por termo</dt><dd>${termo||'—'}</dd><dt>Janela</dt><dd>desde ${br(c.desde)} · coleta de ${br(c.coletado_em)}</dd><dt>Termos</dt><dd>${dobra(c.termos.map(esc),' · ',10)}</dd><dt>Total</dt><dd>${fmt(c.publicacoes)} publicações de ${fmt(c.contas)} contas</dd></dl>
   ${c.aviso_termos?`<p class="yt-cloudnote" style="margin-top:10px">⚠ ${esc(c.aviso_termos)}</p>`:''}<span class="cs-stamp">fontes e datas em cada bloco</span></div>
   <div class="r"><div class="eyebrow">Linha do tempo do caso</div><ol class="cs-tl">${tls||'<li>—</li>'}</ol><p class="yt-cloudnote">Horário de Brasília. "Marco zero" é a primeira publicação com o termo que a coleta encontrou: não necessariamente a primeira que existiu, e pode ser uso sem relação com o caso (hashtags comuns aparecem em outros assuntos) — confira a peça. A "decolagem" marca quando o volume começa de fato.</p></div></div>
  <div class="cs-sec"><b>01 · NÚMEROS POR REDE</b><span></span></div>
  <div class="cs-bn">${bn}<div><small>Google</small><strong>${trPico==null?'—':trPico}</strong><i>Trends: pico do índice (0–100)</i><i>${tr?esc(tr.termos[0]):'⛔ sem série'}</i></div><div><small>Imprensa</small><strong>${fmt(g.noticias)}</strong><i>títulos · ${fmt(g.veiculos)} veículos</i><i>Google Notícias</i></div></div>
  <div class="cs-grid2"><div class="card">${BUSCA.has(c.id)?`<div class="eyebrow">02 · Google Trends · interesse de busca</div><h2 class="tk-h2">Quanto se procurou no Google</h2>
-   <div class="pt-chips" id="csJan">${[['today 5-y','5 anos'],['today 12-m','12 meses'],['now 7-d','7 dias']].map(([v,r])=>`<button type="button" data-v="${v}" aria-pressed="${v===janBusca}">${r}</button>`).join('')}</div>
-   <div id="csTrends"><p class="yt-cloudnote">Carregando a série do Google Trends…</p></div>
+   <div class="pt-chips" id="${p}Jan">${[['today 5-y','5 anos'],['today 12-m','12 meses'],['now 7-d','7 dias']].map(([v,r])=>`<button type="button" data-v="${v}" aria-pressed="${v===janBusca}">${r}</button>`).join('')}</div>
+   <div id="${p}Trends"><p class="yt-cloudnote">Carregando a série do Google Trends…</p></div>
    <p class="yt-cloudnote">Caso que se mede pela busca no Google: a linha é o interesse de busca de cada variante (0–100, relativo ao pico na janela). Série completa, estados e consultas relacionadas na <a href="#" data-aba="caso${esc(c.id)}">página do caso ↗</a>.</p>
    <details><summary class="yt-cloudnote" style="cursor:pointer">Circulação nas redes, hora a hora (gráfico secundário)</summary>`:`<div class="eyebrow">02 · Circulação hora a hora</div><h2 class="tk-h2">Do primeiro post ao pico</h2>`}
-   <div class="pt-chips" id="csRede">${['Todas',...REDES].map(r=>`<button type="button" data-v="${r}" aria-pressed="${r===filtroRede}">${r}</button>`).join('')}</div>
-   <svg id="csLinha" viewBox="0 0 640 210" width="100%" role="img" aria-label="Publicações por hora"></svg>
+   <div class="pt-chips" id="${p}Rede">${['Todas',...REDES].map(r=>`<button type="button" data-v="${r}" aria-pressed="${r===filtroRede}">${r}</button>`).join('')}</div>
+   <svg id="${p}Linha" viewBox="0 0 640 210" width="100%" role="img" aria-label="Publicações por hora"></svg>
    <p class="yt-cloudnote">— publicações por hora · <span style="color:#297de2">- - -</span> Google Trends (${tr?esc(tr.termos[0]):'sem série'}, 0–100, mesma janela) · <span style="color:#b3261e">●</span> marco zero. Tempo até o pico: ${c.pico&&c.pico.horas_desde_marco_zero!=null?fmt(c.pico.horas_desde_marco_zero)+' h':'—'} · meia-vida: ${c.pico&&c.pico.meia_vida_horas!=null?fmt(c.pico.meia_vida_horas)+' h':'ainda não caiu à metade'}.</p>${BUSCA.has(c.id)?'</details>':''}${(c.lacunas||[]).length?`<p class="yt-cloudnote"><b>⚠ Lacunas conhecidas:</b> ${c.lacunas.map(l=>`${esc(l.rede)} ${esc(l.termo)} ${l.de?hb(l.de)+'–':'até '}${hb(l.ate)}: ${esc(l.motivo)}`).join(' · ')}</p>`:''}${c.nota_x?`<p class="yt-cloudnote">${esc(c.nota_x)}</p>`:''}</div>
   <div class="card"><div class="eyebrow">03 · Quem puxou</div><h2 class="tk-h2">Primeiros e maiores</h2><div class="eyebrow" style="margin-top:6px">Primeiras contas</div>${quem(c.primeiros.slice(0,6),x=>hb(x.hora_brt))}
    <div class="eyebrow" style="margin-top:10px">Maior alcance</div>${quem(c.maiores.slice(0,6),x=>x.visualizacoes?k(x.visualizacoes)+' vis.':k(x.interacoes)+' int.')}<p class="yt-cloudnote">Contas pequenas aparecem como código.</p></div></div>
@@ -2434,15 +2436,28 @@ function caso(c){const mz=c.marco_zero&&c.marco_zero.geral;const bn=REDES.map(r=
  <div class="cs-sec"><b>07 · MÉTODO E LIMITES</b><span></span></div>
  <div class="card" style="font-size:13px;color:#5d6a76"><ul>${met}</ul><p>${esc(c.privacidade||'')}</p><p>O que não é coberto: WhatsApp privado e buscas por voz (sem fonte pública). Cada rede devolve só parte do que existe; "no limite" quer dizer que a coleta parou no máximo pedido. Os números são da coleta de ${br(c.coletado_em)} e mudam a cada nova coleta.</p>
   <p class="yt-cloudnote"><a href="./data/casos/${esc(c.id)}/caso.json" download>↓ Agregados do caso (JSON)</a></p></div>`;}
-async function abrir(id){const meta0=IDX.casos.find(c=>c.id===id);if(meta0&&meta0.aba&&typeof setTab==='function'){setTab(meta0.aba);return;}atual=id;fichas();const meta=IDX.casos.find(c=>c.id===id);if(!meta)return;
- if(meta.estado!=='coletado'){$('csCaso').innerHTML=pendente(meta);return;}
- $('csCaso').innerHTML='<div class="odi-signal">Carregando o caso…</div>';const c=await J('./'+meta.arquivo);if(!c){$('csCaso').innerHTML='<div class="odi-signal">⛔ Falha ao ler o caso.</div>';return;}
- $('csData').textContent='COLETA DAS REDES DE '+br(c.coletado_em);$('csCaso').innerHTML=caso(c);linha('csLinha',c,filtroRede);
- $('csRede').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{filtroRede=b.dataset.v;$('csRede').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));linha('csLinha',c,filtroRede);}));
- if(BUSCA.has(c.id)){if(!abrir.jan||abrir.jan!==c.id){janBusca=JAN0[c.id]||'today 12-m';abrir.jan=c.id;$('csJan').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===janBusca)));}const B=await J(`./data/casos/${c.id}/busca.json`);const desenhar=()=>linhaBusca($('csTrends'),B&&B.trends);desenhar();
-  $('csJan').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{janBusca=b.dataset.v;$('csJan').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));desenhar();}));}
- $('csCaso').querySelectorAll('[data-aba]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setTab(a.dataset.aba);}));}
-J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class="odi-signal">⛔ Índice de casos ainda não gerado.</div>';return;}d.casos=d.casos.filter(c=>!String(c.estado||'').startsWith('unido'));/* 004 unido ao 003 (22/10/2026): não aparece como cartão próprio */IDX=d;abrir((d.casos.find(c=>c.estado==='coletado')||d.casos[0]).id);});})();
+/* 02/11/2026 · Pedido do responsável ("uma mostra resumo, outras manda pro caso detalhado"): toda ficha abre a página do caso, e o
+   dossiê (antes só no índice, e só para 001, 002, 003 e 005) vai para o topo de cada página de caso que tem caso.json. */
+const FEITOS=new Set();
+async function dossie(id,host){const meta=IDX.casos.find(c=>c.id===id);if(!meta||!host)return;const p='ds'+id;
+ const volta='<p class="cs-volta"><a href="#" data-aba="casos">← todos os casos</a></p>';
+ if(!meta.arquivo){host.innerHTML=volta+'<p class="yt-cloudnote">Este caso não tem coleta por termo nas redes (dossiê): as análises dele estão abaixo.</p>';ligar(host);return;}
+ host.innerHTML=volta+'<div class="odi-signal">Carregando o dossiê do caso…</div>';const c=await J('./'+meta.arquivo);
+ if(!c){host.innerHTML=volta+'<div class="odi-signal">⛔ Falha ao ler o dossiê do caso.</div>';ligar(host);return;}
+ host.innerHTML=volta+`<details class="cs-dossie-box" open><summary><b>DOSSIÊ DO CASO · REDES</b><span>coleta de ${br(c.coletado_em)} · ${fmt(c.publicacoes)} publicações de ${fmt(c.contas)} contas</span></summary>${caso(c,p)}</details><div class="cs-sec"><b>ANÁLISES DO CASO</b><span></span></div>`;
+ let fr='Todas';linha(p+'Linha',c,fr);
+ $(p+'Rede').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{fr=b.dataset.v;$(p+'Rede').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));linha(p+'Linha',c,fr);}));
+ if(BUSCA.has(c.id)&&$(p+'Jan')){janBusca=JAN0[c.id]||'today 12-m';$(p+'Jan').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.v===janBusca)));const B=await J(`./data/casos/${c.id}/busca.json`);const desenhar=()=>linhaBusca($(p+'Trends'),B&&B.trends);desenhar();
+  $(p+'Jan').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{janBusca=b.dataset.v;$(p+'Jan').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));desenhar();}));}
+ ligar(host);}
+function ligar(host){host.querySelectorAll('[data-aba]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();if(a.dataset.aba!==host.closest('.panel')?.id){setTab(a.dataset.aba);window.scrollTo(0,0);}}));}
+function montarSe(sec){if(!IDX||!sec||FEITOS.has(sec.id))return;const c=IDX.casos.find(x=>abaDe(x)===sec.id);if(!c)return;FEITOS.add(sec.id);
+ let host=sec.querySelector(':scope > .cs-host');if(!host){host=document.createElement('div');host.className='cs-host';const ref=sec.querySelector(':scope > .intro')||sec.querySelector(':scope > .caso-pdf-bar')||sec.querySelector(':scope > .paper-ribbon');if(ref)ref.after(host);else sec.prepend(host);}
+ return dossie(c.id,host);}
+J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class="odi-signal">⛔ Índice de casos ainda não gerado.</div>';return;}d.casos=d.casos.filter(c=>!String(c.estado||'').startsWith('unido'));/* 004 unido ao 003 (22/10/2026): não aparece como cartão próprio */IDX=d;fichas();$('csData').textContent=d.casos.length+' CASOS';
+ const obs=new MutationObserver(ms=>ms.forEach(m=>{if(m.target.classList.contains('active'))montarSe(m.target);}));
+ d.casos.forEach(c=>{const sec=$(abaDe(c));if(sec){obs.observe(sec,{attributes:true,attributeFilter:['class']});if(sec.classList.contains('active'))montarSe(sec);}});
+ window.odiDossieCaso=montarSe;});})();
 </script>
 
 <style>
@@ -3059,7 +3074,7 @@ fetch('./data/ia/rotulo.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).th
   <div class="paper-ribbon"><span>CADERNO 08 / CASOS · #BRASILINTEIRO E #VERDEEAMARELO</span><span id="cb001Data">—</span></div>
   <div class="intro odi-map-hero"><div class="eyebrow">Caso 001 · Google Trends · YouTube · checagens · redes</div>
     <h1>#brasilinteiro e #verdeeamarelo.<br><em>Buscas, vídeos e checagens do movimento.</em></h1>
-    <p>O padrão de análise dos casos aplicado ao caso 001: interesse no Google, vídeos do YouTube com o alcance somado, comentários, rede de circulação, imprensa e checagens. O dossiê com X, TikTok, Instagram e Facebook está em "Casos e dossiês".</p></div>
+    <p>O padrão de análise dos casos aplicado ao caso 001: interesse no Google, vídeos do YouTube com o alcance somado, comentários, rede de circulação, imprensa e checagens. O dossiê com X, TikTok, Instagram e Facebook está logo abaixo.</p></div>
   <div id="cb001Corpo"></div>
 </section>
 <section class="panel" id="caso003" aria-label="Caderno 08 Caso 003">
@@ -6840,7 +6855,7 @@ window.addEventListener('hashchange',ir);if(document.readyState==='complete')ir(
   const rib=sec.querySelector('.paper-ribbon');if(rib)rib.after(bar);else sec.prepend(bar);});
  const idx=document.getElementById('casos');
  if(idx){const bar=document.createElement('div');bar.className='caso-pdf-bar';bar.innerHTML='<button type="button">↓ Exportar todos os casos em PDF</button>';
-  bar.querySelector('button').addEventListener('click',()=>imprimir(casos(),'ODI Atlas - Casos'));
+  bar.querySelector('button').addEventListener('click',()=>Promise.all(casos().map(sec=>window.odiDossieCaso?window.odiDossieCaso(sec):null)).then(()=>imprimir(casos(),'ODI Atlas - Casos')));
   const rib=idx.querySelector('.paper-ribbon');if(rib)rib.after(bar);else idx.prepend(bar);}
 })();
 </script>

@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.257 — Casos: toda ficha abre a página do caso, com o dossiê no topo · corpus do Instagram com passo 3, estabilidade e similitude (2026-11-02) ⚠️
+
+- **Por quê:** o responsável (02/11): "essas telas tá bem zoada, uma mostra resumo, outras manda pro caso detalhado". No índice "Casos e dossiês", as fichas de 001, 002, 003 e 005 abriam o dossiê ali mesmo (sem `aba` em `casos.json`), e as demais pulavam para a página do caso — onde o dossiê não aparecia.
+- **O que mudou em `ODI_Atlas_v15_MVP.html`:**
+  - O índice agora só tem as fichas. Toda ficha abre a página do caso: `aba` do índice ou `caso<id>`. O 015 abre `bolhasApoio`.
+  - O dossiê (marco zero, números por rede, circulação hora a hora, quem puxou, galeria, palavras, ligações, método) virou um componente com ids por prefixo (`ds<id>…`). Ele é montado no topo de cada página de caso que tem `caso.json`, quando a página é aberta. Fica num bloco recolhível "Dossiê do caso · redes"; abaixo vem "Análises do caso". 011, 012 e 019 não têm coleta por termo nas redes e dizem isso.
+  - Cada página ganhou "← todos os casos".
+  - Fichas: grade `auto-fill` (sem texto cortado), etiqueta fora do título, "abrir o caso →".
+  - Listas longas de termos e de "primeira vez por termo" ficam recolhidas ("ver todos (N)"); a primeira vez por termo agora vem em ordem de horário.
+  - "Exportar todos os casos em PDF" monta os dossiês antes de imprimir.
+- **Corpus do Instagram** (`data/corpus/chd_reinert_instagram.json`, `instagram_classes_atlas_por_segmento.csv`, novo `similitude_instagram.gexf`), gerado por `scripts/chd_reinert.py` com lematização, passo 3, regra dos 75%, estabilidade e similitude:
+  - 10.255 segmentos, dos quais 7.870 classificados (76,7%), em 10 classes.
+  - Estabilidade fraca: a metade menos frequente do vocabulário gera 3 classes com 30,8% de aproveitamento (ARI com a principal 0,014); a metade frequente, ARI 0,557.
+  - Similitude: 100 formas, 6 comunidades.
+- **Teste executado:**
+  - Playwright (Chromium) no servidor local: 24 fichas, nenhuma desabilitada. Clicando em cada uma, a página certa fica ativa. 21 páginas com dossiê e curva desenhada; 011, 012 e 019 com o aviso. "← todos os casos" volta ao índice. Nenhum erro de JavaScript.
+  - Capturas em 1280 px e 390 px.
+  - `python -m unittest discover -s tests`: OK.
+- **Pendente:** a reconstrução das classes dos casos (lematizada) segue em andamento e entra em outra entrada. A conferência no IRaMuTeQ é do responsável (⛔ pendente).
+
 ## C19.256 — Redes do caso 001 com a comunidade de Clauset-Newman-Moore (2026-11-02) ⚠️
 
 - `data/casos/001/rede_*.gexf` foram regenerados pela reconstrução local dos casos, que está em andamento. Os nós ganharam o atributo "comunidade", que é o agrupamento padrão do NodeXL (ver C19.249).
