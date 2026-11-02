@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.304 — Linha do tempo dos casos usa também o Kwai e o TikTok que o Atlas já coleta (2026-11-02) ⚠️
+
+- Pedido do responsável (02/11/2026, 16h38): "Kwai vc tá coletando ele mesmo".
+- O quê: `scripts/build_bolhas_extra.py` passa a ler, sem custo novo, os vídeos que o Atlas já coleta por outros caminhos: perfis das campanhas no Kwai (`data/kwai/videos.csv.gz`, kwai.yml diário; 2.247 vídeos, 29 desde 24/10, último de 30/10), perfis das campanhas no TikTok (`data/tiktok/videos.csv.gz`) e a série "Vídeos por hashtag" do TikTok (privado `tiktok/hashtags/videos_todos.csv.gz`). Entra no caso o vídeo do período cujo texto contém todas as palavras de um termo do caso (sem acento; "#" exige a hashtag; "+" e "/" viram E e OU; termos genéricos como "o caso (busca por termo)" ficam fora). Contas nomeadas: perfis das campanhas (declarados) e contas com 10 mil+ seguidores.
+- Resultado (por caso, vídeos que citam termo do caso): Kwai das campanhas 0 em todos os casos (os 3 perfis monitorados não usam os termos dos casos); TikTok das campanhas 3 no 015; série de hashtags do TikTok: 001 2, 005 1, 009 9, 010 1, 011 4, 013 5, 014 63, 015 95, 017 49, 018 1, 019 58, 021 1, 023 11, 024 98, 025 4, 028 10, 029 22, 031 4. No 024, 95 dos 98 entram pelo termo "#flaviobolsonaro", que é também hashtag da própria série (o termo do caso é amplo).
+- Página: esses vídeos entram nas faixas TikTok e Kwai da linha do tempo (cinza, sem pré-codificação), com nota de fonte e contagem; a faixa vazia do Kwai diz quantos vídeos das campanhas houve no período e quantos citam termo do caso. Casos 029 e 016 abertos no Chromium, sem erro de JS.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.303 — Linha do tempo de bolhas: YouTube e redes sem publicações (Kwai) passam a aparecer (2026-11-02) ⚠️
 
 - Pergunta do responsável (02/11/2026, 16h32, print do caso 016): "porque vc não incluiu o youtube e kwai aqui nesses gráficos?".
