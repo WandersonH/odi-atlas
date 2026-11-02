@@ -1,0 +1,26 @@
+name: Diagnóstico — TikTok grátis (páginas de hashtag e busca)
+
+# 02/11/2026: as páginas de hashtag devolvem 0 vídeos desde 30/10. Só diagnóstico: não grava nada.
+on:
+  workflow_dispatch:
+    inputs:
+      hashtag:
+        default: "lula"
+      busca:
+        default: "Lula"
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          pip install -q playwright
+          python -m playwright install --with-deps chromium > /dev/null 2>&1
+      - run: |
+          python scripts/diag_tiktok.py "${{ github.event.inputs.hashtag }}" "${{ github.event.inputs.busca }}" | tee "$RUNNER_TEMP/d.txt"
+          while IFS= read -r l; do echo "::notice title=TikTok::$(echo "$l" | cut -c1-400)"; done < "$RUNNER_TEMP/d.txt"
