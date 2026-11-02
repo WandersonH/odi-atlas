@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.299 — Caso 022: publicações que citam mesários (só contagens) (2026-11-02) ⚠️
+
+- Alternativa ao cruzamento com a lista de mesários (ver C19.298): `scripts/caso_mesarios.py` conta, no texto das publicações já coletadas do caso 022, quantas citam mesários e quantas são de quem se declara mesário ("sou/fui/trabalhei como mesário" etc.). Saída pública `data/casos/022/mesarios.json`, só números.
+- Resultado (clone do privado de 02/11 ~16h; universo ⛔ desconhecido): 3.430 publicações lidas; 102 citam mesário (2,97%: X 68, Facebook 22, Instagram 12); 3 autodeclaradas (X 2, Facebook 1), conferidas à mão: as 3 são de fato pessoas dizendo que foram mesárias (uma levanta suspeita sobre o relatório, duas explicam o procedimento da biometria). Um primeiro padrão mais largo pegava "colocar como mesário" e foi estreitado.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.298 — Sonda dos conjuntos do TSE 2026 ainda não incorporados; mesários fora (2026-11-02) 🔜
 
 - Pedido do responsável (02/11/2026, 15h57): "pode aplicar", sobre a lista de 12 conjuntos do TSE/AGEL "Ano 2026" (auditoria da urna para o caso 022, comparecimento por perfil, perfil do eleitorado), "só se podemos cruzar se eles postaram em algum momento mesários".
