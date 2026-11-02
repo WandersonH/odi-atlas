@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.315 — Caso 017: produção da carta com IA (ChatGPT / GPT-6), o que a imprensa apurou e o que o Atlas pôde verificar (2026-11-02) ⚠️
+
+- Enviado pelo responsável (02/11/2026, 19h19): Poder360, "Carta de Flávio Bolsonaro foi redigida com ajuda do ChatGPT"; "aqui temos pdf de cada versão".
+- Apurado (fontes lidas): Metrópoles (28/10, 19h23) leu nas Content Credentials do PDF, via Adobe Content Authenticity, o uso do modelo GPT-6 na exportação do arquivo, frisando que isso não prova que a IA escreveu o texto; Brasil 247 (28/10, 20h17) repercutiu; Paulo Figueiredo (29/10, no X; Reuters via Money Times, 30/10) disse que Eduardo Bolsonaro usou o ChatGPT para finalizar a carta e atribuiu à IA o brasão errado e a volta do "presidente eleito". ⛔ A página do Poder360 recusou a leitura automática; data e detalhes dela não conferidos.
+- Verificação própria: o único PDF do Atlas (`data/casos/017/midia/versao_imprensa.pdf`, cópia do Congresso em Foco) foi regravado pelo iLovePDF (Producer "iLovePDF", ModDate 28/10 20h21 UTC) e não tem XMP nem C2PA: ⛔ não dá para confirmar as Content Credentials nesta cópia. Faltam os PDFs originais de cada versão.
+- Página: bloco "Produção da carta · IA e metadados" no dossiê do 017 (`data/casos/017/producao.json`, com fontes e datas). Termos novos no caso: busca no X sobre carta + ChatGPT/GPT-6/brasão (rodada 3) e dois termos de notícias. Aberto no Chromium sem erro de JS.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.314 — O que gastou a cota do YouTube em 02/11 e correção do horário das coletas (2026-11-02) ⚠️
 
 - Pergunta do responsável (02/11/2026, 18h13): "o que tá consumindo toda nossa cota hoje?". Levantamento pelos runs do dia e pelo código (busca = 100 unidades por página; cota diária 10.000):

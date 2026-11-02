@@ -1,0 +1,23 @@
+{
+ "gerado_em_utc": "2026-11-02T22:30:00Z",
+ "pedido": "Responsável, 02/11/2026, 19h19: link do Poder360 (\"Carta de Flávio Bolsonaro foi redigida com ajuda do ChatGPT\"), \"cartas bolso\"; \"aqui temos pdf de cada versão\".",
+ "o_que_e": "Como a carta foi produzida, segundo a imprensa e segundo os próprios aliados; e o que o Atlas conseguiu ou não verificar no arquivo.",
+ "linha": [
+  {"quando": "2026-10-28 (tarde)", "fato": "Carta distribuída à imprensa em PDF; 1ª versão com brasão antigo (\"Estados Unidos do Brazil\", vigente até 1967) e \"verdadeiro presidente eleito\".", "fonte": "Metrópoles (coluna Andreza Matais, por Andre Shalders), 28/10/2026, 19h23", "url": "https://www.metropoles.com/colunas/andreza-matais/ferramenta-da-adobe-aponta-que-pdf-da-carta-de-flavio-foi-gerado-no-chatgpt"},
+  {"quando": "2026-10-28, 19h23", "fato": "A ferramenta Adobe Content Authenticity lê nas Content Credentials do PDF o uso do modelo GPT-6 (OpenAI) na exportação do arquivo. A própria reportagem frisa: isso mostra que a IA exportou o PDF, não que escreveu o texto.", "fonte": "Metrópoles, 28/10/2026, 19h23", "url": "https://www.metropoles.com/colunas/andreza-matais/ferramenta-da-adobe-aponta-que-pdf-da-carta-de-flavio-foi-gerado-no-chatgpt"},
+  {"quando": "2026-10-28, 20h17", "fato": "Brasil 247 repercute o achado do Metrópoles.", "fonte": "Brasil 247, 28/10/2026, 20h17", "url": "https://www.brasil247.com/brasil/ferramenta-aponta-uso-do-chatgpt-para-gerar-pdf-de-carta-golpista-de-flavio-bolsonaro/"},
+  {"quando": "2026-10-29", "fato": "Paulo Figueiredo, no X, diz que Eduardo Bolsonaro usou o ChatGPT para finalizar a carta; atribui à IA o brasão errado e a volta de uma versão anterior com \"presidente eleito\"; diz que a carta teve várias versões preliminares e várias mãos e que os erros só foram notados depois da distribuição à imprensa.", "fonte": "Money Times, a partir da Reuters, 30/10/2026", "url": "https://www.moneytimes.com.br/desinteligencia-artificial-paulo-figueiredo-culpa-chatgpt-por-carta-que-flavio-bolsonario-seria-o-presidente-eleito-fets/"},
+  {"quando": "2026-10-29 ou depois", "fato": "Poder360: \"Carta de Flávio Bolsonaro foi redigida com ajuda do ChatGPT\". ⛔ A página recusou a leitura automática do Atlas (erro do lado do site); data e detalhes não conferidos.", "fonte": "Poder360", "url": "https://www.poder360.com.br/poder-eleicoes-2026/carta-de-flavio-bolsonaro-foi-redigida-com-ajuda-do-chatgpt/"}
+ ],
+ "verificacao_do_atlas": {
+  "arquivo": "data/casos/017/midia/versao_imprensa.pdf (cópia publicada pelo Congresso em Foco em 28/10/2026, 17h19)",
+  "resultado": "⛔ Não dá para verificar nesta cópia: o PDF foi regravado pelo iLovePDF (Producer \"iLovePDF\", ModDate 28/10/2026 20h21 UTC), que não preserva Content Credentials nem metadados de origem. Sem XMP, sem C2PA, sem Creator.",
+  "o_que_falta": "Os PDFs originais de cada versão, como foram distribuídos (não a cópia reexportada por um veículo). Com eles, o Atlas lê as Content Credentials localmente e guarda o hash SHA-256 de cada arquivo.",
+  "cuidado": "Content Credentials dizem qual ferramenta gerou ou exportou o arquivo; não dizem quem escreveu o texto nem se o texto foi gerado por IA."
+ },
+ "versoes_segundo_a_imprensa": [
+  {"n": 1, "marca": "brasão \"Estados Unidos do Brazil\" + \"verdadeiro presidente eleito\"", "situacao": "apagada; ⛔ sem o arquivo no Atlas"},
+  {"n": 2, "marca": "brasão atual + \"verdadeiro presidente eleito\"", "situacao": "post do X 2115538982012682337 (imagens guardadas) e PDF do Congresso em Foco (regravado)"},
+  {"n": 3, "marca": "\"líder do Brasil\" no lugar de \"presidente eleito\"", "situacao": "post do X 2115544562219315474 (imagens guardadas)"}
+ ]
+}
