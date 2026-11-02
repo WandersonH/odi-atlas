@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.290 — Intolerância: resultado do piloto nos casos 014, 021 e 022 (triagem automática, não validada) (2026-11-02) ⚠️
+
+- O que: registro do run 41406452552 (`intolerancia.yml`, commit 583d0774), que gerou `data/casos/{014,021,022}/intolerancia.json` (estado "processado") e, no privado, `casos/<id>/intolerancia/` (escores, caches e `amostra_validacao_v1.csv` com 200 textos: 100 marcados e 100 não marcados pelo modelo de ofensividade, chave em arquivo separado).
+- Universo: ⛔ desconhecido (as plataformas não informam o total por termo). Lidos (textos únicos com 3+ palavras): 014 = 15.724; 021 = 5.478; 022 = 3.316. Percentuais valem só para essa amostra.
+- Ofensividade (ruanchaves/bert-large-portuguese-cased-hatebr, limiar 0,5): 014 = 5.879 de 15.724 (37,4%); 021 = 1.845 de 5.478 (33,7%); 022 = 1.147 de 3.316 (34,6%). No X: 41,7% / 35,1% / 35,9%; Facebook e Instagram bem menores (021: 5,8% e 8,7%; 022: 10,7% e 19,4%; 014: 30,7% e 28,1%).
+- Ódio com alvo (pysentimiento/bertabaporu-pt-hate-speech): 014 = 139 (0,9%); 021 = 288 (5,3%, quase todo no X: sexismo 4,1%, homofobia 1,2%); 022 = 16 (0,5%).
+- Por que: pedido do responsável de 02/11/2026 ("pode aplicar") sobre a proposta da frente de intolerância.
+- Teste: run 41406452552 concluído com sucesso; `python -m unittest discover -s tests` antes deste commit.
+- Pendente: ⛔ codificação humana da amostra (duas pessoas, kappa ≥ 0,61) antes de qualquer exibição na página; o modelo de ofensividade foi treinado em comentários do Instagram em perfis de políticos, por isso a taxa alta no X pode ser viés do modelo e só a validação dirá.
+
 ## C19.289 — TikTok pago: teste no 006 revelou campos sem leitura e vídeos fora do período; TikTok fora da rodada diária até haver filtro de data (2026-11-02) ⚠️
 
 - **Teste pago no 006** (run 41399639126, modo teste): 10 itens para o termo "PCC terrorista Rubio", custo de US$ 0,01 (manifesto do caso). Dois problemas:
