@@ -43,12 +43,27 @@ def _layout(G, peso="weight") -> dict:
 
 def gexf(nos: dict, arestas: dict, caminho: Path, dirigida: bool = False) -> None:
     esc = lambda s: str(s).replace("&", "&amp;").replace("<", "&lt;").replace('"', "&quot;")  # noqa: E731
+    # 02/11/2026: comunidade por Clauset-Newman-Moore (networkx.greedy_modularity_communities), o agrupamento padrão do NodeXL
+    # (Groups › Group by Cluster), para que a exportação ao NodeXL traga os mesmos grupos
+    com = {}
+    try:
+        import networkx as nx
+        H = nx.Graph()
+        H.add_nodes_from(nos)
+        for (a, b), w in arestas.items():
+            if a != b and a in nos and b in nos:
+                H.add_edge(a, b, weight=(H[a][b]["weight"] + w) if H.has_edge(a, b) else w)
+        if H.number_of_edges():
+            com = {n: f"G{i + 1}" for i, c in enumerate(nx.community.greedy_modularity_communities(H, weight="weight")) for n in c}
+    except Exception:  # noqa: BLE001
+        com = {}
     l = ['<?xml version="1.0" encoding="UTF-8"?>', '<gexf xmlns="http://gexf.net/1.3" version="1.3">',
          f'<graph defaultedgetype="{"directed" if dirigida else "undirected"}">',
-         '<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/></attributes>', "<nodes>"]
+         '<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/>'
+         '<attribute id="2" title="comunidade" type="string"/></attributes>', "<nodes>"]
     for k, v in nos.items():
         l.append(f'<node id="{esc(k)}" label="{esc(v.get("rotulo", k))}"><attvalues><attvalue for="0" value="{esc(v.get("tipo", ""))}"/>'
-                 f'<attvalue for="1" value="{v.get("n", 0)}"/></attvalues></node>')
+                 f'<attvalue for="1" value="{v.get("n", 0)}"/><attvalue for="2" value="{esc(com.get(k, "sem ligação"))}"/></attvalues></node>')
     l.append("</nodes><edges>")
     for i, ((a, b), w) in enumerate(arestas.items()):
         l.append(f'<edge id="{i}" source="{esc(a)}" target="{esc(b)}" weight="{w}"/>')

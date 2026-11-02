@@ -4,6 +4,33 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.249 — Exportação para o NodeXL no modelo do responsável (.xlsx com métricas e grupos) (2026-11-02) ✅
+
+- **Modelo:** `node_vacina_2.xlsx`, enviado às 00h34.
+  - Planilhas: Edges, Vertices, Groups, Group Vertices, Overall Metrics (além de Misc e Export Options).
+  - Cabeçalho em duas linhas: a categoria (Visual Properties, Labels, Graph Metrics, Other Columns) e depois a coluna.
+- **Página:** cada rede em GEXF ganhou "↓ NodeXL (.xlsx)", ao lado do GraphML e dos CSV.
+  - A pasta de trabalho segue as colunas do modelo.
+  - **Vertices:** Degree, In-Degree, Out-Degree, Betweenness, Closeness, Eigenvector, PageRank, Clustering Coefficient e Reciprocated Vertex Pair Ratio, mais os atributos do GEXF e o id original.
+  - **Edges:** Reciprocated? e Edge Weight.
+  - **Groups e Group Vertices:** os grupos da rede.
+  - **Overall Metrics:** tipo do grafo, vértices, arestas únicas e duplicadas, laços, componentes e densidade.
+  - Uma planilha "Leia-me (Atlas)" dá a definição de cada métrica e diz como abrir no NodeXL (Import › From Open Workbook).
+  - O .xlsx é escrito no navegador, sem biblioteca externa: zip sem compressão e células de texto inline.
+- **Grupos:**
+  - Os GEXF de `redes_caso.gexf` (redes dos casos) ganharam o atributo "comunidade", calculado pelo método Clauset-Newman-Moore (`networkx.greedy_modularity_communities`), que é o agrupamento padrão do NodeXL.
+  - GEXF sem atributo útil recebem comunidades por propagação de rótulos (Raghavan, Albert & Kumara, 2007), com o aviso na planilha.
+- **Teste:** pastas de trabalho geradas no navegador (Playwright) para `data/casos/020/rede_palavras_comentarios.gexf` (1.251 vértices, não dirigida) e `rede_respostas_comentarios.gexf` (985 vértices, dirigida), lidas no openpyxl e comparadas com o networkx:
+  - intermediação, agrupamento local e grau iguais nos 1.251 e nos 985 vértices;
+  - 7.832 e 827 arestas, iguais aos GEXF;
+  - 66 redes da página com o link;
+  - nenhum erro de JavaScript.
+- **Limites, escritos na planilha:**
+  - Intermediação e proximidade só até 3.000 vértices. Acima disso, Graph Metrics no NodeXL.
+  - As normalizações do PageRank e do autovetor podem diferir das do NodeXL, que recalcula ao abrir.
+  - As planilhas não são as tabelas do Excel do modelo.
+- **Teste da suíte:** `python -m unittest discover -s tests` OK.
+
 ## C19.248 — Estabilidade das classes, análise de similitude e passo 3 da bipartição de Reinert (2026-11-02) ⚠️
 
 - **Pedido do responsável:** "acho importante" (00h21), sobre as duas propostas tiradas do material do IRaMuTeQ.

@@ -6876,15 +6876,85 @@ async function converter(href,modo,btn){const t0=btn.textContent;btn.textContent
   const pasta=href.replace(/^\.\/data\//,'').split('/').slice(0,-1).join('_');const nome=(pasta?pasta+'_':'')+base;
   if(modo==='graphml')baixar(nome+'.graphml',graphml(G),'application/xml');
   else if(modo==='arestas')baixar(nome+'_nodexl_arestas.csv',arestas(G),'text/csv');
+  else if(modo==='xlsx'){const u=URL.createObjectURL(nodexlXlsx(G,href));const l=document.createElement('a');l.href=u;l.download=nome+'_nodexl.xlsx';document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),3000);}
   else baixar(nome+'_nodexl_vertices.csv',vertices(G),'text/csv');}
  catch(e){btn.textContent='⛔ falhou';setTimeout(()=>btn.textContent=t0,2500);return;}btn.textContent=t0;}
 function anexar(raiz){(raiz||document).querySelectorAll('a[href$=".gexf"]:not([data-odi-nodexl])').forEach(a=>{a.setAttribute('data-odi-nodexl','1');
  const s=document.createElement('span');s.className='odi-nodexl';s.style.cssText='display:inline-flex;gap:6px;margin-left:8px;flex-wrap:wrap;font-size:12px';
- [['graphml','↓ GraphML (NodeXL, Cytoscape)'],['arestas','↓ NodeXL arestas (CSV)'],['vertices','↓ NodeXL vértices (CSV)']].forEach(([m,t])=>{const b=document.createElement('a');b.href='#';b.textContent=t;b.style.cssText='color:inherit;text-decoration:underline';b.title='Convertido no navegador a partir do GEXF publicado';b.addEventListener('click',ev=>{ev.preventDefault();converter(a.getAttribute('href'),m,b);});s.appendChild(b);});
+ [['xlsx','↓ NodeXL (.xlsx)'],['graphml','↓ GraphML (NodeXL, Cytoscape)'],['arestas','↓ NodeXL arestas (CSV)'],['vertices','↓ NodeXL vértices (CSV)']].forEach(([m,t])=>{const b=document.createElement('a');b.href='#';b.textContent=t;b.style.cssText='color:inherit;text-decoration:underline';b.title='Convertido no navegador a partir do GEXF publicado';b.addEventListener('click',ev=>{ev.preventDefault();converter(a.getAttribute('href'),m,b);});s.appendChild(b);});
  a.insertAdjacentElement('afterend',s);});}
 const go=()=>{anexar();new MutationObserver(ms=>{if(ms.some(m=>m.addedNodes.length))anexar();}).observe(document.body,{childList:true,subtree:true});};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
-window.odiGexfParaNodexl={ler,graphml,arestas,vertices};
+/* 02/11/2026 · Pasta de trabalho do NodeXL (.xlsx) no modelo enviado pelo responsável (node_vacina_2.xlsx): planilhas Edges,
+   Vertices, Groups, Group Vertices e Overall Metrics, com a 1ª linha de categorias e a 2ª de colunas, como no modelo. Métricas
+   calculadas aqui (definições na planilha "Leia-me (Atlas)"); xlsx escrito no navegador, sem biblioteca externa (zip sem compressão). */
+const XE=v=>String(v==null?'':v).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CRC=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0;}return b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=t[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0;};})();
+function zip(files){const enc=new TextEncoder();const partes=[],central=[];let off=0;
+ for(const [nome,txt] of files){const nb=enc.encode(nome),db=enc.encode(txt),crc=CRC(db);
+  const h=new DataView(new ArrayBuffer(30));h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(8,0,true);h.setUint32(14,crc,true);h.setUint32(18,db.length,true);h.setUint32(22,db.length,true);h.setUint16(26,nb.length,true);
+  partes.push(new Uint8Array(h.buffer),nb,db);
+  const c=new DataView(new ArrayBuffer(46));c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint32(16,crc,true);c.setUint32(20,db.length,true);c.setUint32(24,db.length,true);c.setUint16(28,nb.length,true);c.setUint32(42,off,true);
+  central.push(new Uint8Array(c.buffer),nb);off+=30+nb.length+db.length;}
+ const tam=central.reduce((a,x)=>a+x.length,0);const f=new DataView(new ArrayBuffer(22));f.setUint32(0,0x06054b50,true);f.setUint16(8,files.length,true);f.setUint16(10,files.length,true);f.setUint32(12,tam,true);f.setUint32(16,off,true);
+ return new Blob([...partes,...central,new Uint8Array(f.buffer)],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});}
+function xlsx(abas){const col=i=>{let s='';i++;while(i){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;};
+ const folha=rows=>`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>${rows.map((r,i)=>`<row r="${i+1}">${r.map((v,j)=>v==null||v===''?'':typeof v==='number'&&isFinite(v)?`<c r="${col(j)}${i+1}"><v>${v}</v></c>`:`<c r="${col(j)}${i+1}" t="inlineStr"><is><t xml:space="preserve">${XE(v)}</t></is></c>`).join('')}</row>`).join('')}</sheetData></worksheet>`;
+ const files=[['[Content_Types].xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>${abas.map((_,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')}</Types>`],
+  ['_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'],
+  ['xl/workbook.xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${abas.map((a,i)=>`<sheet name="${XE(a.nome)}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join('')}</sheets></workbook>`],
+  ['xl/_rels/workbook.xml.rels',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${abas.map((_,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join('')}</Relationships>`],
+  ...abas.map((a,i)=>[`xl/worksheets/sheet${i+1}.xml`,folha(a.linhas)])];
+ return zip(files);}
+function metricas(G){const ids=G.nos.map(n=>n.id),ix={};ids.forEach((v,i)=>ix[v]=i);const N=ids.length;
+ const und=Array.from({length:N},()=>new Set()),out=Array.from({length:N},()=>new Set()),inn=Array.from({length:N},()=>new Set());let laços=0;const pares=new Map();
+ G.ar.forEach(e=>{const a=ix[e.s],b=ix[e.t];if(a==null||b==null)return;if(a===b){laços++;return;}und[a].add(b);und[b].add(a);out[a].add(b);inn[b].add(a);const k=G.dirigido?a+'>'+b:(a<b?a+'-'+b:b+'-'+a);pares.set(k,(pares.get(k)||0)+1);});
+ const grau=und.map(s=>s.size),gin=G.dirigido?inn.map(s=>s.size):grau.map(()=>''),gout=G.dirigido?out.map(s=>s.size):grau.map(()=>'');
+ // componentes
+ const comp=new Int32Array(N).fill(-1);let nc=0;for(let i=0;i<N;i++)if(comp[i]<0){const q=[i];comp[i]=nc;while(q.length){const v=q.pop();und[v].forEach(w=>{if(comp[w]<0){comp[w]=nc;q.push(w);}});}nc++;}
+ const tamc=new Array(nc).fill(0);for(let i=0;i<N;i++)tamc[comp[i]]++;
+ // intermediação e proximidade (Brandes, sem peso, grafo como não dirigido) até 3.000 vértices
+ let bet=null,clo=null;if(N<=3000){bet=new Float64Array(N);clo=new Float64Array(N);const viz=und.map(s=>[...s]);
+  for(let s=0;s<N;s++){const P=Array.from({length:N},()=>[]),sig=new Float64Array(N),d=new Int32Array(N).fill(-1),S=[];sig[s]=1;d[s]=0;const q=[s];let h=0,soma=0;
+   while(h<q.length){const v=q[h++];S.push(v);soma+=d[v];for(const w of viz[v]){if(d[w]<0){d[w]=d[v]+1;q.push(w);}if(d[w]===d[v]+1){sig[w]+=sig[v];P[w].push(v);}}}
+   clo[s]=soma>0?1/soma:0;const del=new Float64Array(N);while(S.length){const w=S.pop();for(const v of P[w])del[v]+=sig[v]/sig[w]*(1+del[w]);if(w!==s)bet[w]+=del[w];}}
+  for(let i=0;i<N;i++)bet[i]/=2;}
+ // autovetor (potência, soma = 1) e PageRank (d = 0,85, média = 1)
+ let ev=new Float64Array(N).fill(1/Math.max(1,N));for(let it=0;it<100;it++){const nv=new Float64Array(N);for(let v=0;v<N;v++)und[v].forEach(w=>nv[w]+=ev[v]);let t=0;for(let i=0;i<N;i++)t+=nv[i];if(!t)break;for(let i=0;i<N;i++)nv[i]/=t;ev=nv;}
+ const viz2=G.dirigido?out:und;let pr=new Float64Array(N).fill(1);for(let it=0;it<60;it++){const np_=new Float64Array(N).fill(0.15);let pend=0;for(let v=0;v<N;v++){const o=viz2[v].size;if(!o){pend+=pr[v];continue;}viz2[v].forEach(w=>np_[w]+=0.85*pr[v]/o);}for(let i=0;i<N;i++)np_[i]+=0.85*pend/Math.max(1,N);pr=np_;}
+ const cc=und.map((s,v)=>{const a=[...s],k=a.length;if(k<2)return 0;let t=0;for(let i=0;i<k;i++)for(let j=i+1;j<k;j++)if(und[a[i]].has(a[j]))t++;return t/(k*(k-1)/2);});
+ const recV=und.map((s,v)=>{if(!G.dirigido||!s.size)return '';let r=0;s.forEach(w=>{if(out[v].has(w)&&out[w].has(v))r++;});return r/s.size;});
+ const dup=G.ar.length-pares.size-laços;let maxc=0,arc=0;tamc.forEach((t,i)=>{if(t>maxc){maxc=t;arc=i;}});const arMax=G.ar.filter(e=>comp[ix[e.s]]===arc).length;
+ return {ids,ix,grau,gin,gout,bet,clo,ev,pr,cc,recV,comp,nc,tamc,laços,dup,unicas:pares.size,maxc,arMax,dens:N>1?(G.dirigido?pares.size/(N*(N-1)):2*pares.size/(N*(N-1))):0};}
+function nodexlXlsx(G,nome){const M=metricas(G);const r6=v=>v===''||v==null?'':Math.round(v*1e6)/1e6;
+ let chaveGrupo=['comunidade','community','modularity_class','grupo','classe','tipo'].map(x=>Object.entries(G.atr.node).find(([k,tt])=>tt.toLowerCase()===x)).find(Boolean);
+ if(chaveGrupo&&new Set(G.nos.map(n=>n.a[chaveGrupo[0]])).size<2)chaveGrupo=null;
+ // sem atributo útil: comunidades por propagação de rótulos (Raghavan, Albert & Kumara, 2007), ordem fixa, rótulo de menor índice no empate
+ let lp=null;if(!chaveGrupo){const viz=G.nos.map(()=>[]);G.ar.forEach(e=>{const a=M.ix[e.s],b=M.ix[e.t];if(a!=null&&b!=null&&a!==b){viz[a].push(b);viz[b].push(a);}});
+  lp=G.nos.map((_,i)=>i);for(let it=0;it<30;it++){let mud=0;for(let v=0;v<lp.length;v++){if(!viz[v].length)continue;const c={};viz[v].forEach(w=>c[lp[w]]=(c[lp[w]]||0)+1);let best=lp[v],bc=c[lp[v]]||0;for(const k in c){const kk=+k;if(c[k]>bc||(c[k]===bc&&kk<best)){best=kk;bc=c[k];}}if(best!==lp[v]){lp[v]=best;mud++;}}if(!mud)break;}}
+ const grupoDe=(n,i)=>chaveGrupo?(n.a[chaveGrupo[0]]||'sem grupo'):'comunidade '+lp[i];
+ const ea=Object.keys(G.atr.edge),na=Object.keys(G.atr.node);
+ const edges=[['','','Visual Properties','','','','','Labels','','','Graph Metrics','Do Not Edit','','Other Columns'],
+  ['Vertex 1','Vertex 2','Color','Width','Style','Opacity','Visibility','Label','Label Text Color','Label Font Size','Reciprocated?','ID','Dynamic Filter','Add Your Own Columns Here','Edge Weight',...ea.map(k=>G.atr.edge[k])]];
+ const lab={};G.nos.forEach(n=>lab[n.id]=n.label);
+ G.ar.forEach((e,i)=>{const a=M.ix[e.s],b=M.ix[e.t];const rec=G.dirigido&&a!=null&&b!=null&&G.ar.some(x=>x.s===e.t&&x.t===e.s);
+  edges.push([lab[e.s]??e.s,lab[e.t]??e.t,'','','','','','','','',G.dirigido?(rec?'Yes':'No'):'',i+3,'','',Number(e.w)||e.w,...ea.map(k=>e.a[k]??'')]);});
+ const vert=[['','Visual Properties','','','','','','Labels','','','','Layout','','','','','','Graph Metrics','','','','','','','','','Do Not Edit','','Other Columns'],
+  ['Vertex','Color','Shape','Size','Opacity','Image File','Visibility','Label','Label Fill Color','Label Position','Tooltip','Layout Order','X','Y','Locked?','Polar R','Polar Angle','Degree','In-Degree','Out-Degree','Betweenness Centrality','Closeness Centrality','Eigenvector Centrality','PageRank','Clustering Coefficient','Reciprocated Vertex Pair Ratio','ID','Dynamic Filter','Add Your Own Columns Here','Id no GEXF',...na.map(k=>G.atr.node[k])]];
+ G.nos.forEach((n,i)=>{vert.push([n.label,'','','','','','',n.label,'','',n.label,'','','','','','',G.dirigido?'':M.grau[i],G.dirigido?M.gin[i]:'',G.dirigido?M.gout[i]:'',M.bet?r6(M.bet[i]):'',M.clo?r6(M.clo[i]):'',r6(M.ev[i]),r6(M.pr[i]),r6(M.cc[i]),r6(M.recV[i]),i+3,'','',n.id,...na.map(k=>n.a[k]??'')]);});
+ const grupos={};G.nos.forEach((n,i)=>{const g=grupoDe(n,i);(grupos[g]=grupos[g]||[]).push(i);});
+ const gs=Object.keys(grupos).sort((a,b)=>grupos[b].length-grupos[a].length);
+ const groups=[['','Visual Properties','','','','Labels','Layout','','Do Not Edit','','Graph Metrics'],['Group','Vertex Color','Vertex Shape','Visibility','Collapsed?','Label','Collapsed X','Collapsed Y','ID','Collapsed Properties','Vertices','Unique Edges','Graph Density']];
+ gs.forEach((g,k)=>{const set=new Set(grupos[g]);let ue=0;G.ar.forEach(e=>{if(set.has(M.ix[e.s])&&set.has(M.ix[e.t]))ue++;});const nv=set.size;groups.push(['G'+(k+1),'','','','',String(g),'','',k+3,'',nv,ue,nv>1?r6((G.dirigido?1:2)*ue/(nv*(nv-1))):'']);});
+ const gv=[['Group','Vertex','Vertex ID']];gs.forEach((g,k)=>grupos[g].forEach(i=>gv.push(['G'+(k+1),G.nos[i].label,i+3])));
+ const om=[['Graph Metric','Value'],['Graph Type',G.dirigido?'Directed':'Undirected'],['',''],['Vertices',G.nos.length],['',''],['Unique Edges',M.unicas],['Edges With Duplicates',M.dup],['Total Edges',G.ar.length],['',''],['Self-Loops',M.laços],['',''],['Connected Components',M.nc],['Single-Vertex Connected Components',M.tamc.filter(t=>t===1).length],['Maximum Vertices in a Connected Component',M.maxc],['Maximum Edges in a Connected Component',M.arMax],['',''],['Graph Density',r6(M.dens)]];
+ const leia=[['Leia-me (ODI Atlas)'],['Pasta de trabalho no formato do NodeXL (modelo enviado pelo responsável em 02/11/2026), gerada no navegador a partir do GEXF publicado no Atlas: '+nome],
+  ['Para abrir no NodeXL: com esta pasta aberta no Excel, use NodeXL › Import › From Open Workbook, ou copie as colunas Vertex 1, Vertex 2 e Edge Weight para a planilha Edges do modelo do NodeXL. As planilhas são tabelas simples (sem as tabelas do Excel que o modelo usa).'],
+  ['Métricas calculadas aqui, sem peso nas arestas e com o grafo tratado como não dirigido para intermediação, proximidade, autovetor e agrupamento: Degree = vizinhos distintos; In/Out-Degree só em grafo dirigido; Betweenness = Brandes, pares não ordenados; Closeness = 1 / soma das distâncias aos vértices alcançáveis; Eigenvector = iteração de potência, soma 1; PageRank = d 0,85, média 1; Clustering = coeficiente local. Intermediação e proximidade só até 3.000 vértices (acima disso, use Graph Metrics no NodeXL). Os valores podem diferir dos do NodeXL nas normalizações; o NodeXL recalcula ao abrir.'],
+  ['Grupos: '+(chaveGrupo?'atributo "'+chaveGrupo[1]+'" do GEXF'+(chaveGrupo[1]==='comunidade'?' (Clauset-Newman-Moore, o mesmo agrupamento padrão do NodeXL, calculado pelo Atlas)':''):'comunidades por propagação de rótulos (Raghavan, Albert & Kumara, 2007), calculadas aqui; o NodeXL usa por padrão Clauset-Newman-Moore (Groups › Group by Cluster), que pode dar grupos diferentes')],
+  ['Perfis com menos de 10 mil seguidores aparecem só como código, como no GEXF.']];
+ return xlsx([{nome:'Edges',linhas:edges},{nome:'Vertices',linhas:vert},{nome:'Groups',linhas:groups},{nome:'Group Vertices',linhas:gv},{nome:'Overall Metrics',linhas:om},{nome:'Leia-me (Atlas)',linhas:leia}]);}
+window.odiGexfParaNodexl={ler,graphml,arestas,vertices,nodexlXlsx,metricas};
 })();
 /* 01/11/2026 · Estado da evidência em cada painel: coletado → processado → validado → interpretável (revisão do segundo par,
    aprovada pelo responsável às 21h56). Lê data/config/estado_evidencia.json; painel sem entrada própria recebe o padrão. */
