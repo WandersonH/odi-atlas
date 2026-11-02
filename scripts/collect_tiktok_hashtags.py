@@ -218,7 +218,7 @@ def main(argv=None) -> int:
     gravar(pub / "videos.csv.gz", publico)
     contas = {r["conta"]: r for r in todos}
     man = {"schema_version": 1, "run_started_utc": agora, "modo": "interno" if d else "efemero",
-           "fonte": ("busca do TikTok por #hashtag via Apify (apidojo/tiktok-scraper), mais recentes primeiro, filtro de data "
+           "fonte": ("busca do TikTok por #hashtag via Apify (apidojo/tiktok-scraper), filtro de data do TikTok "
                      f"{pago['dateRange']}; {pago['videos_pedidos_por_hashtag']} vídeos pedidos por hashtag") if pago else
                     "páginas públicas de hashtag do TikTok, navegador headless sem login",
            "universo": "⛔ desconhecido: o TikTok não informa quantos vídeos cada hashtag tem no período",

@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.296 — Primeira coleta paga da série "Vídeos por hashtag · TikTok" (2026-11-02) ✅
+
+- Run 41503971434 (`tiktok-hashtags.yml`, conta 1, apidojo~tiktok-scraper, dateRange THIS_WEEK): 1.049 vídeos novos nas 14 hashtags (de 5 em #bloquinho22 a 100 em #exercitodolula, #lulapresidente, #flaviobolsonaro e #flaviopresidente), todos publicados desde 26/10/2026 (o mais antigo por hashtag, em `data/tiktok/hashtags/manifesto_latest.json`). Acumulado: 7.019 vídeos de 4.859 contas (2.153 com 10 mil+ seguidores); 4.146 vídeos no arquivo público. Universo: ⛔ desconhecido (o TikTok não informa o total por hashtag).
+- Correção de texto: o manifesto dizia "mais recentes primeiro"; o teste do 029 (C19.295) mostrou que a ordem por data não é respeitada, então a fonte agora diz só "filtro de data do TikTok".
+- Teste: run acima concluído com sucesso; `python -m unittest discover -s tests` OK.
+
 ## C19.295 — TikTok de volta: filtro de data confirmado; série "Vídeos por hashtag" passa a usar a conta 1 (teto US$ 20/mês) (2026-11-02) ⚠️
 
 - Teste real (run 41501506012, caso 029, modo teste, 10 itens, termo "nordeste câncer do Brasil", dateRange THIS_MONTH): os 10 vídeos são de 05/10 a 28/10/2026 (bruto `casos/029/bruto_tiktok_20261102T183405Z.jsonl.gz`, privado), contra 10 de 10 de maio sem o filtro (C19.289). 1 dos 10 cai no período do caso (desde 25/10); os demais são da onda do 1º turno. `sortType: DATE_POSTED` não pôs os vídeos em ordem de data (vieram misturados): o que vale é o filtro de janela, e o corte pelo "desde" do caso continua no código.
