@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.278 — Classes lematizadas do caso 022 (reconstrução automática, commit por caso) (2026-11-02) ⚠️
+
+- `data/casos/022/busca.json` reconstruído em 1 s; ⛔ sem classes (corpus de comentários insuficiente ou ausente).
+- Teste: `python -m unittest discover -s tests` roda antes do commit; se falhar, não há commit.
+
 ## C19.277 — Classes lematizadas do caso 021 (reconstrução automática, commit por caso) (2026-11-02) ⚠️
 
 - `data/casos/021/busca.json` reconstruído em 1 s; ⛔ sem classes (corpus de comentários insuficiente ou ausente).
