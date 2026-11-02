@@ -1,7 +1,7 @@
 {
  "caso": "007",
  "titulo": "\"Lula amassa a bandeira\" (fake news do dia da eleição)",
- "gerado_em_utc": "2026-11-02T21:35:47Z",
+ "gerado_em_utc": "2026-11-02T22:26:04Z",
  "pedido": "Responsável, 02/11/2026, 15h57: quais principais atores políticos, partidos e postagens ajudam a disseminar cada caso.",
  "universo": {
   "perfis_declarados_por_rede": {
@@ -15,9 +15,9 @@
   "nota": "Universo de atores políticos = perfis declarados ao TSE por todas as candidaturas de 2026, nas redes cruzadas. O universo de publicações do caso é ⛔ desconhecido (as plataformas não informam o total por termo)."
  },
  "amostra": {
-  "publicacoes_lidas": 606,
+  "publicacoes_lidas": 789,
   "por_rede": {
-   "tiktok": 341,
+   "tiktok": 524,
    "facebook": 93,
    "x": 94,
    "instagram": 78
@@ -26,15 +26,15 @@
   "facebook": "⛔ não cruzado: a coleta do Facebook traz o nome do autor, não o endereço do perfil"
  },
  "resumo": {
-  "candidaturas_no_caso": 12,
-  "perfis_de_candidaturas_no_caso": 12,
-  "publicacoes_de_candidaturas": 12,
-  "pct_publicacoes_de_candidaturas": 1.98,
-  "contas_10mil_nao_candidatas": 149,
-  "publicacoes_de_contas_10mil": 156,
-  "pct_publicacoes_de_contas_10mil": 25.74,
+  "candidaturas_no_caso": 13,
+  "perfis_de_candidaturas_no_caso": 13,
+  "publicacoes_de_candidaturas": 13,
+  "pct_publicacoes_de_candidaturas": 1.65,
+  "contas_10mil_nao_candidatas": 225,
+  "publicacoes_de_contas_10mil": 242,
+  "pct_publicacoes_de_contas_10mil": 30.67,
   "publicacoes_de_candidaturas_por_posicao_do_partido_2t": {
-   "lula": 8,
+   "lula": 9,
    "flavio": 3,
    "sem_fonte": 1
   }
@@ -42,6 +42,22 @@
  "criterio_nomeacao": "Nomeadas: candidaturas (perfil público declarado ao TSE) e contas com 10 mil+ seguidores. Demais contas só nas contagens.",
  "metodo": "Cruzamento exato da conta da publicação com o perfil declarado ao TSE na mesma rede (minúsculas, sem @). Partido e cargo vêm da candidatura; posição no 2º turno é a do partido (data/config/apoio_partidos_2t.json), não do candidato. Interações = curtidas + comentários + compartilhamentos informados pela plataforma na coleta.",
  "partidos": [
+  {
+   "partido": "PT",
+   "candidaturas": 6,
+   "publicacoes": 6,
+   "visualizacoes": 5885455,
+   "interacoes": 1605060,
+   "posicao_2t": "lula",
+   "nomes": [
+    "Natália Bonavides",
+    "Jade Romero",
+    "Maria Do Rosario",
+    "Lula",
+    "Elida Miranda"
+   ],
+   "pct_publicacoes_do_caso": 0.76
+  },
   {
    "partido": "PSOL",
    "candidaturas": 1,
@@ -52,37 +68,21 @@
    "nomes": [
     "Erika Hilton"
    ],
-   "pct_publicacoes_do_caso": 0.17
+   "pct_publicacoes_do_caso": 0.13
   },
   {
    "partido": "PL",
    "candidaturas": 3,
    "publicacoes": 3,
-   "visualizacoes": 2665694,
-   "interacoes": 425263,
+   "visualizacoes": 2666135,
+   "interacoes": 425285,
    "posicao_2t": "flavio",
    "nomes": [
     "Renato Bolsonaro",
     "Mario Frias",
     "A Alex Brasil"
    ],
-   "pct_publicacoes_do_caso": 0.5
-  },
-  {
-   "partido": "PT",
-   "candidaturas": 5,
-   "publicacoes": 5,
-   "visualizacoes": 757758,
-   "interacoes": 107251,
-   "posicao_2t": "lula",
-   "nomes": [
-    "Jade Romero",
-    "Maria Do Rosario",
-    "Lula",
-    "Elida Miranda",
-    "Pimenta"
-   ],
-   "pct_publicacoes_do_caso": 0.83
+   "pct_publicacoes_do_caso": 0.38
   },
   {
    "partido": "PCDOB",
@@ -94,7 +94,7 @@
    "nomes": [
     "Emerson Osasco"
    ],
-   "pct_publicacoes_do_caso": 0.17
+   "pct_publicacoes_do_caso": 0.13
   },
   {
    "partido": "PDT",
@@ -106,7 +106,7 @@
    "nomes": [
     "Mirelle Buêno"
    ],
-   "pct_publicacoes_do_caso": 0.17
+   "pct_publicacoes_do_caso": 0.13
   },
   {
    "partido": "AVANTE",
@@ -118,10 +118,32 @@
    "nomes": [
     "Coronel Menezes"
    ],
-   "pct_publicacoes_do_caso": 0.17
+   "pct_publicacoes_do_caso": 0.13
   }
  ],
  "atores": [
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "nataliabonavides",
+   "nome": "Natália Bonavides",
+   "numero": "1311",
+   "partido": "PT",
+   "cargo": "Deputado Federal",
+   "uf": "RN",
+   "situacao": "ELEITO POR QP",
+   "posicao_partido_2t": "lula",
+   "seguidores": 169781,
+   "publicacoes": 1,
+   "visualizacoes": 5127697,
+   "interacoes": 1497809,
+   "primeira": "2026-10-23T22:21:59Z",
+   "ultima": "2026-10-23T22:21:59Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@nataliabonavides/video/7699992057498062101"
+  },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "TikTok",
@@ -147,6 +169,29 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "brasil_2217",
+   "nome": "🇧🇷",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 95198,
+   "publicacoes": 2,
+   "visualizacoes": 6321634,
+   "interacoes": 1201852,
+   "primeira": "2026-10-04T20:05:58Z",
+   "ultima": "2026-10-24T14:20:30Z",
+   "termos": [
+    "Lula amassa bandeira",
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@brasil_2217/video/7700239073058835719"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "maracedits",
    "nome": "𝗠𝗔𝗥𝗔𝗖",
    "numero": null,
@@ -167,6 +212,28 @@
    "top_url": "https://www.tiktok.com/@maracedits/video/7698189217091915025"
   },
   {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "cnn",
+   "nome": "CNN",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 16498753,
+   "publicacoes": 1,
+   "visualizacoes": 2725701,
+   "interacoes": 508422,
+   "primeira": "2026-10-26T08:12:55Z",
+   "ultima": "2026-10-26T08:12:55Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@cnn/video/7700886337313869070"
+  },
+  {
    "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "TikTok",
    "conta": "renatobolsonaro",
@@ -177,10 +244,10 @@
    "uf": "SP",
    "situacao": "ELEITO POR QP",
    "posicao_partido_2t": "flavio",
-   "seguidores": 177316,
+   "seguidores": 177329,
    "publicacoes": 1,
-   "visualizacoes": 2437420,
-   "interacoes": 408910,
+   "visualizacoes": 2437861,
+   "interacoes": 408932,
    "primeira": "2026-10-24T02:23:14Z",
    "ultima": "2026-10-24T02:23:14Z",
    "termos": [
@@ -213,6 +280,28 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "lulinhazeu00",
+   "nome": "KYZORA",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 95465,
+   "publicacoes": 1,
+   "visualizacoes": 3731503,
+   "interacoes": 375717,
+   "primeira": "2026-10-21T21:31:58Z",
+   "ultima": "2026-10-21T21:31:58Z",
+   "termos": [
+    "Lula amassa bandeira"
+   ],
+   "top_url": "https://www.tiktok.com/@lulinhazeu00/video/7699237004785011989"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "coelho.neto.360",
    "nome": "Coelho Neto 360",
    "numero": null,
@@ -221,14 +310,14 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 28842,
+   "seguidores": 28845,
    "publicacoes": 1,
-   "visualizacoes": 1916304,
-   "interacoes": 341919,
+   "visualizacoes": 1917349,
+   "interacoes": 341997,
    "primeira": "2026-10-27T22:21:16Z",
    "ultima": "2026-10-27T22:21:16Z",
    "termos": [
-    "Lula amassa bandeira"
+    "Lula amassa bandeira|Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@coelho.neto.360/video/7701476194608336149"
   },
@@ -253,6 +342,50 @@
     "Lula amassa bandeira"
    ],
    "top_url": "https://www.tiktok.com/@dudumatiis/video/7698764609821478152"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "portal.das.fifi",
+   "nome": "Marina Andrade | Moda & Casa",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 74144,
+   "publicacoes": 1,
+   "visualizacoes": 1581491,
+   "interacoes": 323726,
+   "primeira": "2026-10-26T01:41:36Z",
+   "ultima": "2026-10-26T01:41:36Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@portal.das.fifi/video/7700785677860048135"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "melissaatokarski",
+   "nome": "melissaatokarski",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 79478,
+   "publicacoes": 1,
+   "visualizacoes": 1822622,
+   "interacoes": 306659,
+   "primeira": "2026-10-24T03:22:59Z",
+   "ultima": "2026-10-24T03:22:59Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@melissaatokarski/video/7700069650477944070"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -289,14 +422,36 @@
    "posicao_partido_2t": null,
    "seguidores": 25676,
    "publicacoes": 1,
-   "visualizacoes": 633559,
-   "interacoes": 280732,
+   "visualizacoes": 633594,
+   "interacoes": 280735,
    "primeira": "2026-10-19T23:41:41Z",
    "ultima": "2026-10-19T23:41:41Z",
    "termos": [
-    "Lula amassa bandeira"
+    "Lula amassa bandeira|Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@__laralves/video/7698528267179019541"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "terragora",
+   "nome": "Terra",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1661272,
+   "publicacoes": 1,
+   "visualizacoes": 1512365,
+   "interacoes": 267921,
+   "primeira": "2026-10-25T00:42:09Z",
+   "ultima": "2026-10-25T00:42:09Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@terragora/video/7700399239376997650"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -353,10 +508,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 25856,
+   "seguidores": 25860,
    "publicacoes": 1,
-   "visualizacoes": 1744313,
-   "interacoes": 194753,
+   "visualizacoes": 1744378,
+   "interacoes": 194751,
    "primeira": "2026-10-18T23:09:26Z",
    "ultima": "2026-10-18T23:09:26Z",
    "termos": [
@@ -397,14 +552,15 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 3963007,
-   "publicacoes": 1,
-   "visualizacoes": 680848,
-   "interacoes": 160960,
+   "seguidores": 3963193,
+   "publicacoes": 2,
+   "visualizacoes": 723516,
+   "interacoes": 170243,
    "primeira": "2026-10-26T09:05:33Z",
-   "ultima": "2026-10-26T09:05:33Z",
+   "ultima": "2026-10-26T21:53:12Z",
    "termos": [
-    "Lula amassa bandeira"
+    "Lula amassa bandeira",
+    "Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@nytimes/video/7700899812962520334"
   },
@@ -455,6 +611,73 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "murinzoca",
+   "nome": "Isabela Amorim",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 21394,
+   "publicacoes": 1,
+   "visualizacoes": 611107,
+   "interacoes": 137516,
+   "primeira": "2026-10-19T02:59:41Z",
+   "ultima": "2026-10-19T02:59:41Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@murinzoca/video/7698208194757201159"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "jeffinhosantosof",
+   "nome": "jeffinhosantosof",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 12263,
+   "publicacoes": 1,
+   "visualizacoes": 357950,
+   "interacoes": 124814,
+   "primeira": "2026-10-26T02:28:04Z",
+   "ultima": "2026-10-26T02:28:04Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@jeffinhosantosof/video/7700797656854990100"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "metropolesoficial",
+   "nome": "Metrópoles Oficial",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 18000575,
+   "publicacoes": 3,
+   "visualizacoes": 1172843,
+   "interacoes": 122388,
+   "primeira": "2026-10-06T19:32:26Z",
+   "ultima": "2026-10-24T21:22:04Z",
+   "termos": [
+    "Lula amassa bandeira",
+    "Lula amassa bandeira|Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@metropolesoficial/video/7700258076196211986"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "ptsaopaulo",
    "nome": "PT São Paulo",
    "numero": null,
@@ -463,9 +686,9 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 1297873,
+   "seguidores": 1298071,
    "publicacoes": 1,
-   "visualizacoes": 865136,
+   "visualizacoes": 865165,
    "interacoes": 115410,
    "primeira": "2026-10-11T21:33:55Z",
    "ultima": "2026-10-11T21:33:55Z",
@@ -485,16 +708,38 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 14321,
+   "seguidores": 14323,
    "publicacoes": 1,
-   "visualizacoes": 284806,
-   "interacoes": 108130,
+   "visualizacoes": 285113,
+   "interacoes": 108188,
    "primeira": "2026-10-29T01:14:44Z",
    "ultima": "2026-10-29T01:14:44Z",
    "termos": [
-    "Lula amassa bandeira"
+    "Lula amassa bandeira|Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@pamyuopinioes/video/7701891650578025729"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "loopsider",
+   "nome": "Loopsider",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1762931,
+   "publicacoes": 1,
+   "visualizacoes": 635186,
+   "interacoes": 108059,
+   "primeira": "2026-10-26T13:50:18Z",
+   "ultima": "2026-10-26T13:50:18Z",
+   "termos": [
+    "Lula amassa bandeira"
+   ],
+   "top_url": "https://www.tiktok.com/@loopsider/video/7700973487929707798"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -543,6 +788,28 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "kdrayy5",
+   "nome": "Ray ౨ৎ",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 38095,
+   "publicacoes": 1,
+   "visualizacoes": 386404,
+   "interacoes": 103133,
+   "primeira": "2026-10-24T21:30:25Z",
+   "ultima": "2026-10-24T21:30:25Z",
+   "termos": [
+    "Lula amassa bandeira"
+   ],
+   "top_url": "https://www.tiktok.com/@kdrayy5/video/7700349855058726145"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "vivonomeuritmo",
    "nome": "No Meu Ritmo",
    "numero": null,
@@ -583,6 +850,28 @@
     "Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@samuvr7/video/7694815142332091666"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "institutolula",
+   "nome": "Instituto Lula",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1898739,
+   "publicacoes": 1,
+   "visualizacoes": 801694,
+   "interacoes": 99953,
+   "primeira": "2026-10-25T00:11:33Z",
+   "ultima": "2026-10-25T00:11:33Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@institutolula/video/7700391362234993928"
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -683,15 +972,15 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 255236,
+   "seguidores": 254570,
    "publicacoes": 2,
-   "visualizacoes": 421366,
+   "visualizacoes": 421372,
    "interacoes": 65153,
    "primeira": "2026-10-09T13:22:18Z",
    "ultima": "2026-10-11T19:45:00Z",
    "termos": [
     "Lula bandeira amassada",
-    "Lula amassa bandeira"
+    "Lula amassa bandeira|Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@poptimebra/video/7695494476600446228"
   },
@@ -706,10 +995,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 1493690,
+   "seguidores": 1493839,
    "publicacoes": 1,
-   "visualizacoes": 265113,
-   "interacoes": 61042,
+   "visualizacoes": 265200,
+   "interacoes": 61058,
    "primeira": "2026-10-26T00:39:06Z",
    "ultima": "2026-10-26T00:39:06Z",
    "termos": [
@@ -738,6 +1027,28 @@
     "Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@joaorostand/video/7695468042070936852"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "m6info_",
+   "nome": "M6 Info",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 2658174,
+   "publicacoes": 1,
+   "visualizacoes": 1188122,
+   "interacoes": 47319,
+   "primeira": "2026-10-07T12:43:53Z",
+   "ultima": "2026-10-07T12:43:53Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@m6info_/video/7693905727068376342"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -808,28 +1119,6 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
-   "conta": "brasil_2217",
-   "nome": "🇧🇷",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 95168,
-   "publicacoes": 1,
-   "visualizacoes": 224218,
-   "interacoes": 39368,
-   "primeira": "2026-10-04T20:05:58Z",
-   "ultima": "2026-10-04T20:05:58Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@brasil_2217/video/7692906397813574918"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
    "conta": "edicao_brasil",
    "nome": "Salve a constituição 🇧🇷",
    "numero": null,
@@ -838,10 +1127,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 41816,
+   "seguidores": 41857,
    "publicacoes": 1,
-   "visualizacoes": 187229,
-   "interacoes": 38855,
+   "visualizacoes": 187355,
+   "interacoes": 38869,
    "primeira": "2026-10-27T18:12:16Z",
    "ultima": "2026-10-27T18:12:16Z",
    "termos": [
@@ -904,9 +1193,9 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 56016,
+   "seguidores": 56015,
    "publicacoes": 1,
-   "visualizacoes": 957231,
+   "visualizacoes": 957240,
    "interacoes": 33714,
    "primeira": "2026-10-05T16:25:39Z",
    "ultima": "2026-10-05T16:25:39Z",
@@ -914,6 +1203,72 @@
     "Lula amassa bandeira"
    ],
    "top_url": "https://www.tiktok.com/@brasil.rj1/video/7693220726454635796"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "alexandrrrrrrrrr_",
+   "nome": "alexandr ☆",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 32301,
+   "publicacoes": 1,
+   "visualizacoes": 178090,
+   "interacoes": 32062,
+   "primeira": "2026-10-26T08:38:50Z",
+   "ultima": "2026-10-26T08:38:50Z",
+   "termos": [
+    "Lula amassa bandeira"
+   ],
+   "top_url": "https://www.tiktok.com/@alexandrrrrrrrrr_/video/7700893208443620641"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "pilhadobrasil.cortes",
+   "nome": "Pilhado [cortes] Br",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 171248,
+   "publicacoes": 1,
+   "visualizacoes": 256712,
+   "interacoes": 30872,
+   "primeira": "2026-10-10T13:56:37Z",
+   "ultima": "2026-10-10T13:56:37Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@pilhadobrasil.cortes/video/7695037747035196679"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "storiesdoranchodomaia",
+   "nome": "user06593689721",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 27720,
+   "publicacoes": 1,
+   "visualizacoes": 219073,
+   "interacoes": 28018,
+   "primeira": "2026-10-31T11:34:46Z",
+   "ultima": "2026-10-31T11:34:46Z",
+   "termos": [
+    "Lula amassa bandeira"
+   ],
+   "top_url": "https://www.tiktok.com/@storiesdoranchodomaia/video/7702793971076042006"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -926,10 +1281,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 182522,
+   "seguidores": 182564,
    "publicacoes": 1,
-   "visualizacoes": 294423,
-   "interacoes": 26053,
+   "visualizacoes": 294462,
+   "interacoes": 26056,
    "primeira": "2026-10-04T18:26:54Z",
    "ultima": "2026-10-04T18:26:54Z",
    "termos": [
@@ -962,24 +1317,69 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
-   "conta": "metropolesoficial",
-   "nome": "Metrópoles Oficial",
+   "conta": "kennedlages1",
+   "nome": "𝐋𝐀𝐆𝐄𝐒 🇧🇷🇨🇵🇬🇫🇺🇲",
    "numero": null,
    "partido": null,
    "cargo": null,
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 18000575,
+   "seguidores": 351946,
+   "publicacoes": 4,
+   "visualizacoes": 372574,
+   "interacoes": 24676,
+   "primeira": "2026-10-04T18:24:33Z",
+   "ultima": "2026-10-12T01:34:07Z",
+   "termos": [
+    "Lula bandeira amassada",
+    "Lula amassa bandeira|Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@kennedlages1/video/7695541921275481365"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "user8250099780658",
+   "nome": "user8250099780658",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 15897,
    "publicacoes": 1,
-   "visualizacoes": 326509,
-   "interacoes": 23273,
-   "primeira": "2026-10-06T19:32:26Z",
-   "ultima": "2026-10-06T19:32:26Z",
+   "visualizacoes": 190227,
+   "interacoes": 24142,
+   "primeira": "2026-11-01T01:08:11Z",
+   "ultima": "2026-11-01T01:08:11Z",
    "termos": [
     "Lula amassa bandeira"
    ],
-   "top_url": "https://www.tiktok.com/@metropolesoficial/video/7693639915346676998"
+   "top_url": "https://www.tiktok.com/@user8250099780658/video/7703003556621716756"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "sobreabc",
+   "nome": "SOBRE ABC",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 135100,
+   "publicacoes": 1,
+   "visualizacoes": 266906,
+   "interacoes": 22371,
+   "primeira": "2026-10-14T21:43:32Z",
+   "ultima": "2026-10-14T21:43:32Z",
+   "termos": [
+    "Lula bandeira amassada"
+   ],
+   "top_url": "https://www.tiktok.com/@sobreabc/video/7696642404715089172"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -992,14 +1392,14 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 73993,
+   "seguidores": 74000,
    "publicacoes": 1,
-   "visualizacoes": 278935,
+   "visualizacoes": 278939,
    "interacoes": 21787,
    "primeira": "2026-10-04T21:59:49Z",
    "ultima": "2026-10-04T21:59:49Z",
    "termos": [
-    "Lula amassa bandeira"
+    "Lula amassa bandeira|Lula bandeira amassada"
    ],
    "top_url": "https://www.tiktok.com/@otarianonews/video/7692935727088225588"
   },
@@ -1014,9 +1414,9 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 113734,
+   "seguidores": 113749,
    "publicacoes": 1,
-   "visualizacoes": 219860,
+   "visualizacoes": 219869,
    "interacoes": 21001,
    "primeira": "2026-10-24T23:37:16Z",
    "ultima": "2026-10-24T23:37:16Z",
@@ -1028,425 +1428,40 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
-   "conta": "animais1286",
-   "nome": "Animais",
+   "conta": "user2763194658539",
+   "nome": "user2763194658539",
    "numero": null,
    "partido": null,
    "cargo": null,
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 17860,
+   "seguidores": 16072,
    "publicacoes": 1,
-   "visualizacoes": 214561,
-   "interacoes": 16765,
-   "primeira": "2026-11-01T17:42:37Z",
-   "ultima": "2026-11-01T17:42:37Z",
+   "visualizacoes": 121246,
+   "interacoes": 18238,
+   "primeira": "2026-10-30T11:01:21Z",
+   "ultima": "2026-10-30T11:01:21Z",
    "termos": [
     "Lula amassa bandeira"
    ],
-   "top_url": "https://www.tiktok.com/@animais1286/video/7703259850108570898"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "boscofoz",
-   "nome": "BOSCO FOZ VEREADOR",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 18117,
-   "publicacoes": 1,
-   "visualizacoes": 219677,
-   "interacoes": 16326,
-   "primeira": "2026-10-04T17:22:04Z",
-   "ultima": "2026-10-04T17:22:04Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@boscofoz/video/7692864176770780424"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "mariofriasoficial",
-   "nome": "Mario Frias",
-   "numero": "2208",
-   "partido": "PL",
-   "cargo": "Deputado Federal",
-   "uf": "SP",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "flavio",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 217944,
-   "interacoes": 15980,
-   "primeira": "2026-10-11T23:59:39Z",
-   "ultima": "2026-10-11T23:59:39Z",
-   "termos": [
-    "reels: Lula amassa bandeira"
-   ],
-   "top_url": "https://www.instagram.com/p/DeX5PL3O5Wf/"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "worldgeopolitics.s",
-   "nome": "The Brazil Post| 🇧🇷",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 33627,
-   "publicacoes": 1,
-   "visualizacoes": 104617,
-   "interacoes": 15282,
-   "primeira": "2026-10-11T23:22:03Z",
-   "ultima": "2026-10-11T23:22:03Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@worldgeopolitics.s/video/7695554510705462536"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "CamargoDireita",
-   "nome": "Sérgio Camargo",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 339856,
-   "publicacoes": 2,
-   "visualizacoes": 85332,
-   "interacoes": 14182,
-   "primeira": "2026-10-04T16:53:01Z",
-   "ultima": "2026-10-12T17:03:07Z",
-   "termos": [
-    "o caso (busca por termo)"
-   ],
-   "top_url": "https://x.com/CamargoDireita/status/2106789699280920826"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "biiaa.ferreiira8",
-   "nome": "biiaa.ferreiira8",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 27234,
-   "publicacoes": 1,
-   "visualizacoes": 166062,
-   "interacoes": 12813,
-   "primeira": "2026-10-04T17:40:40Z",
-   "ultima": "2026-10-04T17:40:40Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@biiaa.ferreiira8/video/7692868969824341268"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "mattxzk10",
-   "nome": "Mattxzk",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 75606,
-   "publicacoes": 1,
-   "visualizacoes": 91976,
-   "interacoes": 12671,
-   "primeira": "2026-10-23T15:30:07Z",
-   "ultima": "2026-10-23T15:30:07Z",
-   "termos": [
-    "Lula bandeira amassada"
-   ],
-   "top_url": "https://www.tiktok.com/@mattxzk10/video/7699885950867983637"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "maksilon",
-   "nome": "Bragança.MG🇧🇷🇺🇸Florida🏖️",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 502041,
-   "publicacoes": 1,
-   "visualizacoes": 181394,
-   "interacoes": 12615,
-   "primeira": "2026-10-04T16:36:14Z",
-   "ultima": "2026-10-04T16:36:14Z",
-   "termos": [
-    "Lula amassa bandeira|Lula bandeira amassada"
-   ],
-   "top_url": "https://www.tiktok.com/@maksilon/video/7692852309407059214"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "astropontes",
-   "nome": "Astronauta Marcos Pontes",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 71056,
-   "publicacoes": 1,
-   "visualizacoes": 113222,
-   "interacoes": 11343,
-   "primeira": "2026-10-07T11:00:00Z",
-   "ultima": "2026-10-07T11:00:00Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@astropontes/video/7693661516259757319"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "eugabeu",
-   "nome": "GABEU",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 477466,
-   "publicacoes": 1,
-   "visualizacoes": 70657,
-   "interacoes": 10703,
-   "primeira": "2026-10-07T11:23:44Z",
-   "ultima": "2026-10-07T11:23:44Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@eugabeu/video/7693885097459698964"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "luamboer",
-   "nome": "luamboer",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 121641,
-   "publicacoes": 1,
-   "visualizacoes": 116764,
-   "interacoes": 10096,
-   "primeira": "2026-10-04T16:46:05Z",
-   "ultima": "2026-10-04T16:46:05Z",
-   "termos": [
-    "Lula bandeira amassada"
-   ],
-   "top_url": "https://www.tiktok.com/@luamboer/video/7692854893605834004"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "mesadafofoca",
-   "nome": "mesadafofoca",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 377690,
-   "publicacoes": 1,
-   "visualizacoes": 110818,
-   "interacoes": 9645,
-   "primeira": "2026-11-02T15:39:59Z",
-   "ultima": "2026-11-02T15:39:59Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@mesadafofoca/video/7703599303582911750"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "g1",
-   "nome": "g1",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 13742007,
-   "publicacoes": 1,
-   "visualizacoes": 187484,
-   "interacoes": 8295,
-   "primeira": "2026-10-06T12:17:46Z",
-   "ultima": "2026-10-06T12:17:46Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@g1/video/7693527823213972737"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "popzone.brr",
-   "nome": "POPZone",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 307884,
-   "publicacoes": 1,
-   "visualizacoes": 171987,
-   "interacoes": 7954,
-   "primeira": "2026-10-12T01:52:35Z",
-   "ultima": "2026-10-12T01:52:35Z",
-   "termos": [
-    "Lula bandeira amassada"
-   ],
-   "top_url": "https://www.tiktok.com/@popzone.brr/video/7695593327713881364"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "amirellebueno",
-   "nome": "Mirelle Buêno",
-   "numero": "12888",
-   "partido": "PDT",
-   "cargo": "Deputado Estadual",
-   "uf": "SP",
-   "situacao": "NÃO ELEITO",
-   "posicao_partido_2t": "lula",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 78852,
-   "interacoes": 6141,
-   "primeira": "2026-10-25T00:19:31Z",
-   "ultima": "2026-10-25T00:19:31Z",
-   "termos": [
-    "reels: Lula bandeira amassada"
-   ],
-   "top_url": "https://www.instagram.com/p/De5YXxaRILZ/"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "jonathanrosa88",
-   "nome": "Jonathan Rosa",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 54133,
-   "publicacoes": 1,
-   "visualizacoes": 71354,
-   "interacoes": 6059,
-   "primeira": "2026-10-04T19:06:48Z",
-   "ultima": "2026-10-04T19:06:48Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@jonathanrosa88/video/7692891160611720456"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "noahnailo",
-   "nome": "Noah Nailo",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 330191,
-   "publicacoes": 2,
-   "visualizacoes": 69809,
-   "interacoes": 5954,
-   "primeira": "2026-10-10T17:14:41Z",
-   "ultima": "2026-10-12T02:08:52Z",
-   "termos": [
-    "Lula amassa bandeira",
-    "Lula bandeira amassada"
-   ],
-   "top_url": "https://www.tiktok.com/@noahnailo/video/7695088781455658248"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "gifrateschi_",
-   "nome": "Gi Frateschi",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 129954,
-   "publicacoes": 1,
-   "visualizacoes": 47058,
-   "interacoes": 5743,
-   "primeira": "2026-10-11T20:30:50Z",
-   "ultima": "2026-10-11T20:30:50Z",
-   "termos": [
-    "Lula bandeira amassada"
-   ],
-   "top_url": "https://www.tiktok.com/@gifrateschi_/video/7695510398379822356"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "gcmais.com.br",
-   "nome": "Portal GCMAIS",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 113555,
-   "publicacoes": 1,
-   "visualizacoes": 32868,
-   "interacoes": 5606,
-   "primeira": "2026-11-02T13:43:54Z",
-   "ultima": "2026-11-02T13:43:54Z",
-   "termos": [
-    "Lula amassa bandeira"
-   ],
-   "top_url": "https://www.tiktok.com/@gcmais.com.br/video/7703569428436241685"
+   "top_url": "https://www.tiktok.com/@user2763194658539/video/7702414282406841620"
   }
  ],
- "atores_total": 161,
+ "atores_total": 238,
  "postagens": [
+  {
+   "rede": "TikTok",
+   "conta": "nataliabonavides",
+   "nome": "Natália Bonavides",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PT",
+   "url": "https://www.tiktok.com/@nataliabonavides/video/7699992057498062101",
+   "texto": "Hoje tem show de @LulaOficial no #DebateGlobo e a gente vai EXPLODIR nossas redes sociais desmentindo o miliciano e mostrando ao Brasil que Lula é o melhor para o povo.",
+   "publicado_em": "2026-10-23T22:21:59Z",
+   "interacoes": 1497809,
+   "visualizacoes": 5127697
+  },
   {
    "rede": "TikTok",
    "conta": "erikahiltonsp",
@@ -1458,6 +1473,18 @@
    "publicado_em": "2026-10-25T00:58:19Z",
    "interacoes": 1345556,
    "visualizacoes": 4179260
+  },
+  {
+   "rede": "TikTok",
+   "conta": "brasil_2217",
+   "nome": "🇧🇷",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@brasil_2217/video/7700239073058835719",
+   "texto": "Lula só afundou o Brasil #fy#fyp#foryou#vaiprofycaramba #creatorsearchinsights",
+   "publicado_em": "2026-10-24T14:20:30Z",
+   "interacoes": 1162484,
+   "visualizacoes": 6097416
   },
   {
    "rede": "TikTok",
@@ -1473,6 +1500,18 @@
   },
   {
    "rede": "TikTok",
+   "conta": "cnn",
+   "nome": "CNN",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@cnn/video/7700886337313869070",
+   "texto": "Brazilian President Luiz Inácio Lula da Silva won reelection Sunday, defeating Senator Flávio Bolsonaro, an ally of US President Donald Trump, in a razor-thin runoff election that capped a deeply polarized presidential race. CNN’s Julia Vargas Jones reports. #cnn #news #brazil",
+   "publicado_em": "2026-10-26T08:12:55Z",
+   "interacoes": 508422,
+   "visualizacoes": 2725701
+  },
+  {
+   "rede": "TikTok",
    "conta": "renatobolsonaro",
    "nome": "Renato Bolsonaro",
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -1480,8 +1519,8 @@
    "url": "https://www.tiktok.com/@renatobolsonaro/video/7700054241943047432",
    "texto": "Pergunte pro Google! Essa é a resposta do atual presidente do Brasil, não sabe responder uma pergunta.",
    "publicado_em": "2026-10-24T02:23:14Z",
-   "interacoes": 408910,
-   "visualizacoes": 2437420
+   "interacoes": 408932,
+   "visualizacoes": 2437861
   },
   {
    "rede": "TikTok",
@@ -1497,6 +1536,18 @@
   },
   {
    "rede": "TikTok",
+   "conta": "lulinhazeu00",
+   "nome": "KYZORA",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@lulinhazeu00/video/7699237004785011989",
+   "texto": "#amizade #lula #politica #meme",
+   "publicado_em": "2026-10-21T21:31:58Z",
+   "interacoes": 375717,
+   "visualizacoes": 3731503
+  },
+  {
+   "rede": "TikTok",
    "conta": "coelho.neto.360",
    "nome": "Coelho Neto 360",
    "tipo": "conta com 10 mil+ seguidores",
@@ -1504,8 +1555,32 @@
    "url": "https://www.tiktok.com/@coelho.neto.360/video/7701476194608336149",
    "texto": "Aniversário do Lula",
    "publicado_em": "2026-10-27T22:21:16Z",
-   "interacoes": 341919,
-   "visualizacoes": 1916304
+   "interacoes": 341997,
+   "visualizacoes": 1917349
+  },
+  {
+   "rede": "TikTok",
+   "conta": "portal.das.fifi",
+   "nome": "Marina Andrade | Moda & Casa",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@portal.das.fifi/video/7700785677860048135",
+   "texto": "#lula",
+   "publicado_em": "2026-10-26T01:41:36Z",
+   "interacoes": 323726,
+   "visualizacoes": 1581491
+  },
+  {
+   "rede": "TikTok",
+   "conta": "melissaatokarski",
+   "nome": "melissaatokarski",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@melissaatokarski/video/7700069650477944070",
+   "texto": "vídeo importantíssimo #lula #debatenaglobo #flaviomiliciano",
+   "publicado_em": "2026-10-24T03:22:59Z",
+   "interacoes": 306659,
+   "visualizacoes": 1822622
   },
   {
    "rede": "TikTok",
@@ -1528,8 +1603,20 @@
    "url": "https://www.tiktok.com/@__laralves/video/7698528267179019541",
    "texto": "JUROOOOOOOIII BOTA PRA BRILHAR #lula #lulapresidente #fyp",
    "publicado_em": "2026-10-19T23:41:41Z",
-   "interacoes": 280732,
-   "visualizacoes": 633559
+   "interacoes": 280735,
+   "visualizacoes": 633594
+  },
+  {
+   "rede": "TikTok",
+   "conta": "terragora",
+   "nome": "Terra",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@terragora/video/7700399239376997650",
+   "texto": "Luiz Inácio Lula da Silva (PT) encerrou neste sábado (24) sua última campanha presidencial com uma caminhada pela Avenida Paulista, em São Paulo. Aos 80 anos, o presidente reuniu um ‘mar vermelho’ de apoiadores e lideranças políticas antes do segundo turno. Segundo a GloboNews, p",
+   "publicado_em": "2026-10-25T00:42:09Z",
+   "interacoes": 267921,
+   "visualizacoes": 1512365
   },
   {
    "rede": "TikTok",
@@ -1542,90 +1629,6 @@
    "publicado_em": "2026-10-15T18:11:10Z",
    "interacoes": 233915,
    "visualizacoes": 962664
-  },
-  {
-   "rede": "TikTok",
-   "conta": "plnacional_",
-   "nome": "plnacional_",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@plnacional_/video/7700063864142220564",
-   "texto": "A boca fala do que o coração está cheio. Ele sabe o que diz e sabe o que quer fazer! Enquanto a gente fala em proteger as família, Lula quer acabar com a Polícia! 🚨 Não podemos deixar o nosso país continuar nas mãos do PT. Domingo é a nossa grande oportunidade de escolher um novo",
-   "publicado_em": "2026-10-24T03:00:35Z",
-   "interacoes": 223822,
-   "visualizacoes": 2169064
-  },
-  {
-   "rede": "TikTok",
-   "conta": "dudumatiis",
-   "nome": "Dudu Matis ✨",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@dudumatiis/video/7698764609821478152",
-   "texto": "Sente a paz nesse lugar 😂créditos @iacomdeive #lula #lulapresidente #bolsonaro #flaviobolsonaro",
-   "publicado_em": "2026-10-20T14:58:49Z",
-   "interacoes": 205943,
-   "visualizacoes": 3836063
-  },
-  {
-   "rede": "TikTok",
-   "conta": "valdir.tei",
-   "nome": "Valdir Teixeira",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@valdir.tei/video/7698148869615422727",
-   "texto": "#lulapresidente2026 #UFABC #TRABALHADORES #estudantes #lula13",
-   "publicado_em": "2026-10-18T23:09:26Z",
-   "interacoes": 194753,
-   "visualizacoes": 1744313
-  },
-  {
-   "rede": "TikTok",
-   "conta": "moreperfectunion",
-   "nome": "More Perfect Union",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@moreperfectunion/video/7701028502430092558",
-   "texto": "Scenes from Brazil after progressive Lula da Silva defeats far-right Trump ally, Flávio Bolsonaro",
-   "publicado_em": "2026-10-26T17:23:43Z",
-   "interacoes": 175834,
-   "visualizacoes": 877213
-  },
-  {
-   "rede": "TikTok",
-   "conta": "nytimes",
-   "nome": "The New York Times",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@nytimes/video/7700899812962520334",
-   "texto": "Brazilian voters on Sunday handed the leftist president, Luiz Inácio Lula da Silva, a fourth term in office and a surprise victory over Flávio Bolsonaro, his right-wing challenger, in a striking rebuke to a conservative surge sweeping Latin America. #brazil #election",
-   "publicado_em": "2026-10-26T09:05:33Z",
-   "interacoes": 160960,
-   "visualizacoes": 680848
-  },
-  {
-   "rede": "TikTok",
-   "conta": "anael_chavexx",
-   "nome": "Anael chaves",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@anael_chavexx/video/7700751299708456212",
-   "texto": "#lula #fyyyy #presidente #virou #viral",
-   "publicado_em": "2026-10-25T23:28:18Z",
-   "interacoes": 141543,
-   "visualizacoes": 491360
-  },
-  {
-   "rede": "TikTok",
-   "conta": "tmcnewsbr",
-   "nome": "TMC",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@tmcnewsbr/video/7695003879691275541",
-   "texto": "BANDEIRA DOS EUA É QUEIMADA DURANTE ATO EM BELO HORIZONTE 🇺🇸 Uma bandeira dos Estados Unidos foi incendiada durante uma manifestação de apoiadores do presidente Lula, no centro de Belo Horizonte, em Minas Gerais. A cena foi registrada em vídeo e divulgada nas redes sociais. O ato",
-   "publicado_em": "2026-10-10T11:45:03Z",
-   "interacoes": 138474,
-   "visualizacoes": 1250587
   }
  ],
  "arquivos": {

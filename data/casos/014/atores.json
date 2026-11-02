@@ -1,7 +1,7 @@
 {
  "caso": "014",
  "titulo": "\"Demita um petista\" e boicote à esquerda depois do 2º turno",
- "gerado_em_utc": "2026-11-02T21:35:48Z",
+ "gerado_em_utc": "2026-11-02T22:26:04Z",
  "pedido": "Responsável, 02/11/2026, 15h57: quais principais atores políticos, partidos e postagens ajudam a disseminar cada caso.",
  "universo": {
   "perfis_declarados_por_rede": {
@@ -15,9 +15,9 @@
   "nota": "Universo de atores políticos = perfis declarados ao TSE por todas as candidaturas de 2026, nas redes cruzadas. O universo de publicações do caso é ⛔ desconhecido (as plataformas não informam o total por termo)."
  },
  "amostra": {
-  "publicacoes_lidas": 9099,
+  "publicacoes_lidas": 9165,
   "por_rede": {
-   "tiktok": 603,
+   "tiktok": 669,
    "facebook": 408,
    "x": 7668,
    "instagram": 420
@@ -27,14 +27,14 @@
  },
  "resumo": {
   "candidaturas_no_caso": 40,
-  "perfis_de_candidaturas_no_caso": 42,
-  "publicacoes_de_candidaturas": 47,
+  "perfis_de_candidaturas_no_caso": 43,
+  "publicacoes_de_candidaturas": 48,
   "pct_publicacoes_de_candidaturas": 0.52,
-  "contas_10mil_nao_candidatas": 588,
-  "publicacoes_de_contas_10mil": 781,
-  "pct_publicacoes_de_contas_10mil": 8.58,
+  "contas_10mil_nao_candidatas": 616,
+  "publicacoes_de_contas_10mil": 816,
+  "pct_publicacoes_de_contas_10mil": 8.9,
   "publicacoes_de_candidaturas_por_posicao_do_partido_2t": {
-   "flavio": 23,
+   "flavio": 24,
    "neutro": 3,
    "lula": 20,
    "sem_fonte": 1
@@ -44,11 +44,24 @@
  "metodo": "Cruzamento exato da conta da publicação com o perfil declarado ao TSE na mesma rede (minúsculas, sem @). Partido e cargo vêm da candidatura; posição no 2º turno é a do partido (data/config/apoio_partidos_2t.json), não do candidato. Interações = curtidas + comentários + compartilhamentos informados pela plataforma na coleta.",
  "partidos": [
   {
+   "partido": "PP",
+   "candidaturas": 2,
+   "publicacoes": 3,
+   "visualizacoes": 10886401,
+   "interacoes": 1718015,
+   "posicao_2t": "flavio",
+   "nomes": [
+    "Victor Ruiz",
+    "Sancler Mello"
+   ],
+   "pct_publicacoes_do_caso": 0.03
+  },
+  {
    "partido": "PL",
    "candidaturas": 8,
    "publicacoes": 9,
-   "visualizacoes": 3726919,
-   "interacoes": 1514819,
+   "visualizacoes": 3727056,
+   "interacoes": 1514846,
    "posicao_2t": "flavio",
    "nomes": [
     "Nikolas Ferreira",
@@ -58,19 +71,6 @@
     "Saionara Mondiale"
    ],
    "pct_publicacoes_do_caso": 0.1
-  },
-  {
-   "partido": "PP",
-   "candidaturas": 2,
-   "publicacoes": 2,
-   "visualizacoes": 8704447,
-   "interacoes": 1343757,
-   "posicao_2t": "flavio",
-   "nomes": [
-    "Victor Ruiz",
-    "Sancler Mello"
-   ],
-   "pct_publicacoes_do_caso": 0.02
   },
   {
    "partido": "MDB",
@@ -88,8 +88,8 @@
    "partido": "PSD",
    "candidaturas": 2,
    "publicacoes": 3,
-   "visualizacoes": 2328090,
-   "interacoes": 409927,
+   "visualizacoes": 2328445,
+   "interacoes": 409992,
    "posicao_2t": "neutro",
    "nomes": [
     "Rachel Sheherazade",
@@ -101,8 +101,8 @@
    "partido": "NOVO",
    "candidaturas": 6,
    "publicacoes": 8,
-   "visualizacoes": 2627853,
-   "interacoes": 378892,
+   "visualizacoes": 2629066,
+   "interacoes": 379004,
    "posicao_2t": "flavio",
    "nomes": [
     "Guilherme Kilter",
@@ -141,8 +141,8 @@
    "partido": "PSB",
    "candidaturas": 5,
    "publicacoes": 5,
-   "visualizacoes": 344705,
-   "interacoes": 41988,
+   "visualizacoes": 344874,
+   "interacoes": 42003,
    "posicao_2t": "lula",
    "nomes": [
     "Jornalista Tiago Santos",
@@ -326,6 +326,28 @@
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "victorruizsp",
+   "nome": "Victor Ruiz",
+   "numero": "1133",
+   "partido": "PP",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "situacao": "SUPLENTE",
+   "posicao_partido_2t": "flavio",
+   "seguidores": 1212963,
+   "publicacoes": 1,
+   "visualizacoes": 2181954,
+   "interacoes": 374258,
+   "primeira": "2026-10-26T03:09:19Z",
+   "ultima": "2026-10-26T03:09:19Z",
+   "termos": [
+    "#demitaumpetista|demita um petista"
+   ],
+   "top_url": "https://www.tiktok.com/@victorruizsp/video/7700808278913207560"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "Instagram",
    "conta": "rachelsherazade",
    "nome": "Rachel Sheherazade",
@@ -379,14 +401,13 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 53649,
+   "seguidores": 53747,
    "publicacoes": 2,
-   "visualizacoes": 1501621,
-   "interacoes": 250117,
+   "visualizacoes": 1505441,
+   "interacoes": 250677,
    "primeira": "2026-10-28T02:11:42Z",
    "ultima": "2026-11-01T02:48:52Z",
    "termos": [
-    "#direitaapoiadireita",
     "#direitaapoiadireita|direita apoia direita"
    ],
    "top_url": "https://www.tiktok.com/@giselehespanhol/video/7701535602851794196"
@@ -446,10 +467,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 41983,
+   "seguidores": 42011,
    "publicacoes": 2,
-   "visualizacoes": 1152278,
-   "interacoes": 162282,
+   "visualizacoes": 1152315,
+   "interacoes": 162284,
    "primeira": "2026-10-26T01:38:23Z",
    "ultima": "2026-10-26T20:12:22Z",
    "termos": [
@@ -513,14 +534,14 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 21826,
+   "seguidores": 21840,
    "publicacoes": 1,
-   "visualizacoes": 1092490,
-   "interacoes": 143184,
+   "visualizacoes": 1095394,
+   "interacoes": 143521,
    "primeira": "2026-10-28T21:38:21Z",
    "ultima": "2026-10-28T21:38:21Z",
    "termos": [
-    "#boicotepetista|boicote petista"
+    "#boicotepetista|boicote petista|não compre de petista"
    ],
    "top_url": "https://www.tiktok.com/@cadetenews/video/7701836234041068807"
   },
@@ -601,15 +622,17 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 17999629,
-   "publicacoes": 4,
-   "visualizacoes": 1212431,
-   "interacoes": 120852,
+   "seguidores": 18001352,
+   "publicacoes": 5,
+   "visualizacoes": 1283943,
+   "interacoes": 123657,
    "primeira": "2026-10-28T16:01:06Z",
    "ultima": "2026-11-01T20:32:27Z",
    "termos": [
+    "#demitaumpetista|demitir petista|demitir petista gostoso",
     "#boicotepetista",
-    "#demitaumpetista",
+    "boicote petista",
+    "#boicotepetista|boicote petista",
     "direita apoia direita"
    ],
    "top_url": "https://www.tiktok.com/@metropolesoficial/video/7703303597345295624"
@@ -625,17 +648,61 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 154481,
+   "seguidores": 154493,
    "publicacoes": 2,
-   "visualizacoes": 629499,
-   "interacoes": 110907,
+   "visualizacoes": 629532,
+   "interacoes": 110912,
    "primeira": "2026-10-26T15:46:13Z",
    "ultima": "2026-10-26T19:18:39Z",
    "termos": [
-    "#demitaumpetista|demita um petista",
+    "#demitaumpetista|#empresaspetistas|demita um petista|demitir petista|demitir petista gostoso",
     "#demitaumpetista"
    ],
    "top_url": "https://www.tiktok.com/@o_lorrana/video/7701003358966598932"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "danielolartte",
+   "nome": "@DanielOlartte",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 23987,
+   "publicacoes": 1,
+   "visualizacoes": 297457,
+   "interacoes": 107678,
+   "primeira": "2026-10-27T20:40:52Z",
+   "ultima": "2026-10-27T20:40:52Z",
+   "termos": [
+    "lista de boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@danielolartte/video/7701450357313948946"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "politicaemfocobrs",
+   "nome": "Politica em Foco",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 21004,
+   "publicacoes": 1,
+   "visualizacoes": 553615,
+   "interacoes": 98975,
+   "primeira": "2026-11-02T07:33:09Z",
+   "ultima": "2026-11-02T07:33:09Z",
+   "termos": [
+    "lista de boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@politicaemfocobrs/video/7703473827942026514"
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -648,16 +715,38 @@
    "uf": "SP",
    "situacao": "SUPLENTE",
    "posicao_partido_2t": "neutro",
-   "seguidores": 457483,
+   "seguidores": 457539,
    "publicacoes": 1,
-   "visualizacoes": 372628,
-   "interacoes": 84818,
+   "visualizacoes": 372983,
+   "interacoes": 84883,
    "primeira": "2026-10-27T20:23:45Z",
    "ultima": "2026-10-27T20:23:45Z",
    "termos": [
     "#boicoteesquerda|#boicotepetista"
    ],
    "top_url": "https://www.tiktok.com/@rachelsherazade/video/7701445937754869013"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "graciele2308",
+   "nome": "Doce Cacau",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 34612,
+   "publicacoes": 1,
+   "visualizacoes": 320131,
+   "interacoes": 84557,
+   "primeira": "2026-10-31T00:16:51Z",
+   "ultima": "2026-10-31T00:16:51Z",
+   "termos": [
+    "lista de boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@graciele2308/video/7702619231661182215"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -780,10 +869,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 2738379,
+   "seguidores": 2736687,
    "publicacoes": 3,
-   "visualizacoes": 705943,
-   "interacoes": 71146,
+   "visualizacoes": 705991,
+   "interacoes": 71148,
    "primeira": "2026-10-27T13:39:18Z",
    "ultima": "2026-10-28T00:09:51Z",
    "termos": [
@@ -796,6 +885,28 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "valdomingues12",
+   "nome": "Valéria 🌿",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 632809,
+   "publicacoes": 1,
+   "visualizacoes": 490103,
+   "interacoes": 66552,
+   "primeira": "2026-11-01T12:36:17Z",
+   "ultima": "2026-11-01T12:36:17Z",
+   "termos": [
+    "boicote petista"
+   ],
+   "top_url": "https://www.tiktok.com/@valdomingues12/video/7703180919099755794"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "highnotes2021",
    "nome": "HIGH NOTES",
    "numero": null,
@@ -804,10 +915,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 44725,
+   "seguidores": 44754,
    "publicacoes": 1,
-   "visualizacoes": 344870,
-   "interacoes": 64258,
+   "visualizacoes": 350229,
+   "interacoes": 64949,
    "primeira": "2026-10-31T18:48:36Z",
    "ultima": "2026-10-31T18:48:36Z",
    "termos": [
@@ -893,14 +1004,14 @@
    "uf": "PR",
    "situacao": "ELEITO",
    "posicao_partido_2t": "flavio",
-   "seguidores": 698014,
+   "seguidores": 698087,
    "publicacoes": 1,
-   "visualizacoes": 518655,
-   "interacoes": 54867,
+   "visualizacoes": 519868,
+   "interacoes": 54979,
    "primeira": "2026-10-30T20:34:55Z",
    "ultima": "2026-10-30T20:34:55Z",
    "termos": [
-    "#boicoteaesquerda|demitir petista"
+    "#boicoteaesquerda|#boicoteesquerda|boicote esquerda|demitir petista"
    ],
    "top_url": "https://www.tiktok.com/@deltandallagnol/video/7702562090669591828"
   },
@@ -925,6 +1036,28 @@
     "#demitaumpetista"
    ],
    "top_url": "https://www.tiktok.com/@podernofoco.news/video/7701655437959023924"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "londrinenses",
+   "nome": "Londrinenses",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 100285,
+   "publicacoes": 1,
+   "visualizacoes": 211223,
+   "interacoes": 52958,
+   "primeira": "2026-10-30T00:57:59Z",
+   "ultima": "2026-10-30T00:57:59Z",
+   "termos": [
+    "lista de boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@londrinenses/video/7702258762924477704"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -969,6 +1102,51 @@
     "#empresaspetistas"
    ],
    "top_url": "https://www.tiktok.com/@ilhanews/video/7700452930071186706"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "marianafaloppa",
+   "nome": "Mariana Faloppa Advogada",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 352172,
+   "publicacoes": 1,
+   "visualizacoes": 391322,
+   "interacoes": 49534,
+   "primeira": "2026-10-26T23:26:40Z",
+   "ultima": "2026-10-26T23:26:40Z",
+   "termos": [
+    "demitir petista gostoso"
+   ],
+   "top_url": "https://www.tiktok.com/@marianafaloppa/video/7701121997757025557"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "leomarcondesoficial",
+   "nome": "Léo Marcondes",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 498791,
+   "publicacoes": 2,
+   "visualizacoes": 604697,
+   "interacoes": 44539,
+   "primeira": "2026-10-26T22:15:31Z",
+   "ultima": "2026-10-26T22:41:22Z",
+   "termos": [
+    "#demitaumpetista|demita um petista",
+    "não contrate quem odeia os empresários"
+   ],
+   "top_url": "https://www.tiktok.com/@leomarcondesoficial/video/7701103671022587142"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -1037,6 +1215,28 @@
    "top_url": "https://www.tiktok.com/@kimberlly.advogada/video/7701157562627951892"
   },
   {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "anacarolinnee_fs24",
+   "nome": "Anacarolinne_fs",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 196081,
+   "publicacoes": 1,
+   "visualizacoes": 323371,
+   "interacoes": 42390,
+   "primeira": "2026-10-26T15:56:27Z",
+   "ultima": "2026-10-26T15:56:27Z",
+   "termos": [
+    "#demitaumpetista|não compre de petista"
+   ],
+   "top_url": "https://www.tiktok.com/@anacarolinnee_fs24/video/7701005992175144212"
+  },
+  {
    "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "TikTok",
    "conta": "requiaofilho",
@@ -1092,14 +1292,14 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 317584,
+   "seguidores": 317677,
    "publicacoes": 1,
-   "visualizacoes": 296704,
-   "interacoes": 40606,
+   "visualizacoes": 296973,
+   "interacoes": 40673,
    "primeira": "2026-10-28T22:16:58Z",
    "ultima": "2026-10-28T22:16:58Z",
    "termos": [
-    "#demitaumpetista"
+    "#demitaumpetista|demitir petista"
    ],
    "top_url": "https://www.tiktok.com/@narealpolitica/video/7701846194066066709"
   },
@@ -1146,28 +1346,6 @@
     "r4 (desde 28/10): r2: não compre de petista"
    ],
    "top_url": "https://x.com/RaimundoDante/status/2115735412907855916"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "leomarcondesoficial",
-   "nome": "Léo Marcondes",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 493900,
-   "publicacoes": 1,
-   "visualizacoes": 374000,
-   "interacoes": 35795,
-   "primeira": "2026-10-26T22:15:31Z",
-   "ultima": "2026-10-26T22:15:31Z",
-   "termos": [
-    "#demitaumpetista"
-   ],
-   "top_url": "https://www.tiktok.com/@leomarcondesoficial/video/7701103671022587142"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -1291,38 +1469,16 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 141511,
+   "seguidores": 141518,
    "publicacoes": 1,
-   "visualizacoes": 154500,
-   "interacoes": 25471,
+   "visualizacoes": 154535,
+   "interacoes": 25479,
    "primeira": "2026-10-29T03:03:52Z",
    "ultima": "2026-10-29T03:03:52Z",
    "termos": [
     "#boicotepetista"
    ],
    "top_url": "https://www.tiktok.com/@nathalia.mp4/video/7701920109639519508"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "anacarolinnee_fs24",
-   "nome": "Anacarolinne_fs",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 179100,
-   "publicacoes": 1,
-   "visualizacoes": 191900,
-   "interacoes": 25062,
-   "primeira": "2026-10-26T15:56:27Z",
-   "ultima": "2026-10-26T15:56:27Z",
-   "termos": [
-    "#demitaumpetista"
-   ],
-   "top_url": "https://www.tiktok.com/@anacarolinnee_fs24/video/7701005992175144212"
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -1379,10 +1535,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 156440,
+   "seguidores": 156459,
    "publicacoes": 1,
-   "visualizacoes": 337322,
-   "interacoes": 22428,
+   "visualizacoes": 338314,
+   "interacoes": 22488,
    "primeira": "2026-10-29T20:15:42Z",
    "ultima": "2026-10-29T20:15:42Z",
    "termos": [
@@ -1392,185 +1548,28 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "FORMULALECLRC",
-   "nome": "lulu monegata",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 12018,
-   "publicacoes": 2,
-   "visualizacoes": 90474,
-   "interacoes": 21830,
-   "primeira": "2026-10-27T10:31:28Z",
-   "ultima": "2026-10-27T11:27:13Z",
-   "termos": [
-    "boicote petista/esquerda|r2: listas e boicote a estabelecimentos",
-    "demitido por votar / assédio eleitoral"
-   ],
-   "top_url": "https://x.com/FORMULALECLRC/status/2115028599732670832"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "rafaelgloves",
-   "nome": "Rafael Gloves 🥊",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 215591,
-   "publicacoes": 2,
-   "visualizacoes": 202405,
-   "interacoes": 21404,
-   "primeira": "2026-10-27T02:59:43Z",
-   "ultima": "2026-10-27T03:14:15Z",
-   "termos": [
-    "boicote petista/esquerda",
-    "r2: preferência por empresas de direita"
-   ],
-   "top_url": "https://x.com/rafaelgloves/status/2114918570387816643"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
-   "conta": "pontopoliticooficial",
-   "nome": "Ponto Político",
+   "conta": "flagra.news",
+   "nome": "flagra.news",
    "numero": null,
    "partido": null,
    "cargo": null,
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 1100000,
+   "seguidores": 45670,
    "publicacoes": 1,
-   "visualizacoes": 323200,
-   "interacoes": 21213,
-   "primeira": "2026-10-27T20:05:58Z",
-   "ultima": "2026-10-27T20:05:58Z",
-   "termos": [
-    "#empresaspetistas"
-   ],
-   "top_url": "https://www.tiktok.com/@pontopoliticooficial/video/7701441348141993236"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "TikTok",
-   "conta": "pabloalmeidabr",
-   "nome": "Pablo Almeida",
-   "numero": "22111",
-   "partido": "PL",
-   "cargo": "Deputado Estadual",
-   "uf": "MG",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 160471,
-   "publicacoes": 1,
-   "visualizacoes": 88387,
-   "interacoes": 20866,
-   "primeira": "2026-10-30T18:25:05Z",
-   "ultima": "2026-10-30T18:25:05Z",
+   "visualizacoes": 189125,
+   "interacoes": 22381,
+   "primeira": "2026-10-31T11:20:31Z",
+   "ultima": "2026-10-31T11:20:31Z",
    "termos": [
     "#boicoteesquerda"
    ],
-   "top_url": "https://www.tiktok.com/@pabloalmeidabr/video/7702528626482367765"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "digiteioficial",
-   "nome": "𝑫𝒊𝒈𝒊𝒕𝒆𝒊",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 95955,
-   "publicacoes": 2,
-   "visualizacoes": 354472,
-   "interacoes": 20611,
-   "primeira": "2026-10-26T21:53:05Z",
-   "ultima": "2026-10-26T23:44:12Z",
-   "termos": [
-    "#empresaspetistas",
-    "não ajude nenhum petista"
-   ],
-   "top_url": "https://www.tiktok.com/@digiteioficial/video/7701097863434259732"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "mariananegri.13",
-   "nome": "Mariana Negri",
-   "numero": "1367",
-   "partido": "PT",
-   "cargo": "Deputado Federal",
-   "uf": "SP",
-   "situacao": "SUPLENTE",
-   "posicao_partido_2t": "lula",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 115579,
-   "interacoes": 20563,
-   "primeira": "2026-10-27T21:06:59Z",
-   "ultima": "2026-10-27T21:06:59Z",
-   "termos": [
-    "reels_r2: demitir petista"
-   ],
-   "top_url": "https://www.instagram.com/p/DfAx8eEOR38/"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "brasildesvendado_",
-   "nome": "brasildesvendado_",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 13757,
-   "publicacoes": 1,
-   "visualizacoes": 107508,
-   "interacoes": 20075,
-   "primeira": "2026-11-01T21:08:07Z",
-   "ultima": "2026-11-01T21:08:07Z",
-   "termos": [
-    "direita apoia direita"
-   ],
-   "top_url": "https://www.tiktok.com/@brasildesvendado_/video/7703312803188264225"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "JefinhoMenes",
-   "nome": "Jéferfon Menezes",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 80141,
-   "publicacoes": 1,
-   "visualizacoes": 107053,
-   "interacoes": 19975,
-   "primeira": "2026-10-27T00:32:08Z",
-   "ultima": "2026-10-27T00:32:08Z",
-   "termos": [
-    "demitir petista"
-   ],
-   "top_url": "https://x.com/JefinhoMenes/status/2114877773063848140"
+   "top_url": "https://www.tiktok.com/@flagra.news/video/7702790309054401812"
   }
  ],
- "atores_total": 630,
+ "atores_total": 659,
  "postagens": [
   {
    "rede": "Instagram",
@@ -1621,6 +1620,18 @@
    "visualizacoes": 2473688
   },
   {
+   "rede": "TikTok",
+   "conta": "victorruizsp",
+   "nome": "Victor Ruiz",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PP",
+   "url": "https://www.tiktok.com/@victorruizsp/video/7700808278913207560",
+   "texto": "CAMPANHA: DEMITA UM PETISTA",
+   "publicado_em": "2026-10-26T03:09:19Z",
+   "interacoes": 374258,
+   "visualizacoes": 2181954
+  },
+  {
    "rede": "Instagram",
    "conta": "rachelsherazade",
    "nome": "Rachel Sheherazade",
@@ -1653,8 +1664,8 @@
    "url": "https://www.tiktok.com/@giselehespanhol/video/7701535602851794196",
    "texto": "🇧🇷 ATENÇÃO, EMPRESÁRIOS DE DIREITA! Criamos o grupo Direita Ajuda Direita, uma rede nacional para conectar empresários, comerciantes e profissionais de direita de todo o Brasil! A ideia é divulgar nossos negócios, indicar profissionais, compartilhar informações sobre economia e f",
    "publicado_em": "2026-10-28T02:11:42Z",
-   "interacoes": 239863,
-   "visualizacoes": 1408624
+   "interacoes": 240423,
+   "visualizacoes": 1412444
   },
   {
    "rede": "Instagram",
@@ -1701,8 +1712,8 @@
    "url": "https://www.tiktok.com/@cadetenews/video/7701836234041068807",
    "texto": "🚨🇧🇷 A HIPERPOLARIZAÇÃO CHEGOU AO BOLSO DOS BRASILEIROS! 💰⚡ O boicote antipetista levanta uma discussão que divide opiniões: é legítimo deixar de contratar alguém ou comprar de uma empresa por causa de posicionamento político? 🤔 De um lado, há quem defenda a liberdade de escolher ",
    "publicado_em": "2026-10-28T21:38:21Z",
-   "interacoes": 143184,
-   "visualizacoes": 1092490
+   "interacoes": 143521,
+   "visualizacoes": 1095394
   },
   {
    "rede": "TikTok",
@@ -1739,18 +1750,6 @@
    "publicado_em": "2026-10-25T21:45:59Z",
    "interacoes": 134515,
    "visualizacoes": 555100
-  },
-  {
-   "rede": "Instagram",
-   "conta": "lintzfelipe",
-   "nome": "Felipe Lintz",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://www.instagram.com/p/De-QTIFOsbQ/",
-   "texto": "Brasileiros petistas podem ser EXPULSOS de Portugal",
-   "publicado_em": "2026-10-26T21:33:06Z",
-   "interacoes": 128408,
-   "visualizacoes": 323762
   }
  ],
  "arquivos": {

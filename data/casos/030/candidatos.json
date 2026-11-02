@@ -1,16 +1,41 @@
 {
  "caso": "030",
- "gerado_em": "2026-11-02T20:51:49Z",
+ "gerado_em": "2026-11-02T22:26:25Z",
  "fonte_contas": "TSE, redes sociais declaradas pelos candidatos de 2026 (data/tse/redes_sociais_candidatos_2026.csv.gz)",
  "universo": {
-  "publicacoes_do_caso": 1342,
+  "publicacoes_do_caso": 1725,
   "contas_declaradas": 34320,
   "candidatos_com_conta": 15944,
   "nota": "Universo de publicações sobre o tema nas plataformas: ⛔ não informado. A amostra é o que as buscas do caso devolveram; candidato ausente aqui pode ter falado do tema com outras palavras ou em outra conta."
  },
- "publicacoes_de_candidatos": 0,
- "candidatos": [],
- "por_partido": {},
+ "publicacoes_de_candidatos": 1,
+ "candidatos": [
+  {
+   "candidato": "JORNALISTA TIAGO SANTOS",
+   "partido": "PSB",
+   "cargo": "DEPUTADO FEDERAL",
+   "uf": "SP",
+   "situacao": "SUPLENTE",
+   "posicao": "nao_codificada",
+   "publicacoes": [
+    {
+     "rede": "tiktok",
+     "conta": "jornalistatiagosantos",
+     "url": "https://www.tiktok.com/@jornalistatiagosantos/video/7703668259371060500",
+     "publicado_em": "2026-11-02T20:07:29Z",
+     "curtidas": 661,
+     "trecho": "Bolsonaristas estão cumprindo a promessa de ir morar no Paraguai",
+     "posicao": "nao_codificada"
+    }
+   ]
+  }
+ ],
+ "por_partido": {
+  "PSB": {
+   "nao_codificada": 1,
+   "candidatos_2026": 965
+  }
+ },
  "partidos_sem_publicacao_na_amostra": [
   {
    "partido": "PL",
@@ -51,10 +76,6 @@
   {
    "partido": "AVANTE",
    "candidatos_2026": 980
-  },
-  {
-   "partido": "PSB",
-   "candidatos_2026": 965
   },
   {
    "partido": "UNIÃO",
@@ -142,5 +163,7 @@
   "outro_tema": "achada pelas buscas, mas trata de outro assunto"
  },
  "codificacao": "⛔ Posição das publicações ainda não codificada neste caso.",
- "faltam_codificar": []
+ "faltam_codificar": [
+  "tiktok:7703668259371060500"
+ ]
 }

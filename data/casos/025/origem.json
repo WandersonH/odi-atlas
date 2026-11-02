@@ -1,26 +1,26 @@
 {
  "caso": "025",
- "gerado_em_utc": "2026-11-02T21:35:46Z",
+ "gerado_em_utc": "2026-11-02T22:26:02Z",
  "desde": "2026-10-25",
  "metodo": "Origem das publicações de um caso: quanto veio de perfis com sinais do Brasil e quanto de outros países.\n\nPedido do responsável (01/11/2026, 18h26), caso 025: \"#DeportTheBolsonaros, vamos entender quanto veio do Brasil e quanto veio de\noutros países, buscas e redes, #BrasiliansStandWithFlavio\".\n\nNenhuma rede informa o país de quem posta. A origem é inferida por sinais que o próprio perfil declara, e a regra é publicada na página:\n  1. língua do texto: a que a rede marca (X: `lang`; Instagram: `original_lang_for_translations`) ou, sem ela, a do py3langid sobre o\n     texto sem @menções, links e hashtags (só com 20+ letras);\n  2. língua da bio (X: `profileDescriptionLanguage`);\n  3. bandeiras no nome e na bio (pares de indicadores regionais, ex. 🇧🇷 → BR). 🇺🇸 e 🇮🇱 ao lado da 🇧🇷 são símbolo político comum\n     no Brasil: com outro sinal do Brasil, bandeira estrangeira não muda a classe (fica contada à parte);\n  4. lugares escritos no nome, na bio e no local da publicação (lista LUGARES, abaixo).\nClasses (por publicação, pelos sinais do autor):\n  - \"Brasil\": algum sinal do Brasil (português no texto ou na bio, 🇧🇷, lugar brasileiro) e nenhum de outro país;\n  - \"Brasil + outro país\": sinal do Brasil e um lugar de outro país escrito no perfil (ex.: brasileiro que declara morar na Flórida);\n  - \"outro país\": país declarado que não é o Brasil, sem sinal do Brasil;\n  - \"outra língua, país não declarado\": texto ou bio em outra língua, sem país declarado;\n  - \"sem sinal\": nada disso (ex.: post só com a hashtag e sem bio).\nPortuguês conta como sinal do Brasil; quem declara Portugal (🇵🇹 ou o nome) vai para \"outro país\". Língua não é nacionalidade: há\nbrasileiros que escrevem em inglês para alcançar americanos; por isso a página mostra também a língua do texto, separada.",
- "publicacoes_lidas": 7035,
- "contas_lidas": 2976,
+ "publicacoes_lidas": 7189,
+ "contas_lidas": 3085,
  "aviso": "Origem inferida por sinais que o perfil declara; não é o país real de quem posta. Percentuais valem para a amostra lida, não para tudo o que circulou. Usar a hashtag não é apoiar a causa: quem critica a campanha também a usa. Uma publicação que cita as duas hashtags conta nos dois lados.",
  "lados": {
   "#DeportTheBolsonaros": {
-   "publicacoes": 5706,
-   "contas": 2423,
+   "publicacoes": 5774,
+   "contas": 2473,
    "reposts_x": 0,
    "brasil_com_bandeira_de_outro_pais": 178,
    "sem_dado_do_autor": 0,
    "por_classe": [
     {
      "valor": "Brasil",
-     "publicacoes": 3692,
-     "pct": 64.7,
-     "contas": 1526,
-     "visualizacoes": 21269748,
-     "pct_visualizacoes": 66.1
+     "publicacoes": 3710,
+     "pct": 64.3,
+     "contas": 1541,
+     "visualizacoes": 21694910,
+     "pct_visualizacoes": 62.5
     },
     {
      "valor": "Brasil + outro país",
@@ -28,7 +28,7 @@
      "pct": 1.3,
      "contas": 37,
      "visualizacoes": 260012,
-     "pct_visualizacoes": 0.8
+     "pct_visualizacoes": 0.7
     },
     {
      "valor": "outro país",
@@ -36,33 +36,33 @@
      "pct": 2.3,
      "contas": 61,
      "visualizacoes": 1776061,
-     "pct_visualizacoes": 5.5
+     "pct_visualizacoes": 5.1
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 386,
-     "pct": 6.8,
-     "contas": 195,
-     "visualizacoes": 4573079,
-     "pct_visualizacoes": 14.2
+     "publicacoes": 404,
+     "pct": 7.0,
+     "contas": 211,
+     "visualizacoes": 6547678,
+     "pct_visualizacoes": 18.9
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 1420,
-     "pct": 24.9,
-     "contas": 675,
-     "visualizacoes": 4290486,
-     "pct_visualizacoes": 13.3
+     "publicacoes": 1452,
+     "pct": 25.1,
+     "contas": 696,
+     "visualizacoes": 4445509,
+     "pct_visualizacoes": 12.8
     }
    ],
    "por_classe_sem_reposts": [
     {
      "valor": "Brasil",
-     "publicacoes": 3692,
-     "pct": 64.7,
-     "contas": 1526,
-     "visualizacoes": 21269748,
-     "pct_visualizacoes": 66.1
+     "publicacoes": 3710,
+     "pct": 64.3,
+     "contas": 1541,
+     "visualizacoes": 21694910,
+     "pct_visualizacoes": 62.5
     },
     {
      "valor": "Brasil + outro país",
@@ -70,7 +70,7 @@
      "pct": 1.3,
      "contas": 37,
      "visualizacoes": 260012,
-     "pct_visualizacoes": 0.8
+     "pct_visualizacoes": 0.7
     },
     {
      "valor": "outro país",
@@ -78,64 +78,64 @@
      "pct": 2.3,
      "contas": 61,
      "visualizacoes": 1776061,
-     "pct_visualizacoes": 5.5
+     "pct_visualizacoes": 5.1
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 386,
-     "pct": 6.8,
-     "contas": 195,
-     "visualizacoes": 4573079,
-     "pct_visualizacoes": 14.2
+     "publicacoes": 404,
+     "pct": 7.0,
+     "contas": 211,
+     "visualizacoes": 6547678,
+     "pct_visualizacoes": 18.9
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 1420,
-     "pct": 24.9,
-     "contas": 675,
-     "visualizacoes": 4290486,
-     "pct_visualizacoes": 13.3
+     "publicacoes": 1452,
+     "pct": 25.1,
+     "contas": 696,
+     "visualizacoes": 4445509,
+     "pct_visualizacoes": 12.8
     }
    ],
    "por_lingua_texto": [
     {
      "valor": "não identificada",
-     "publicacoes": 4176,
-     "pct": 73.2,
-     "contas": 1758,
-     "visualizacoes": 4495704,
-     "pct_visualizacoes": 14.0
+     "publicacoes": 4208,
+     "pct": 72.9,
+     "contas": 1779,
+     "visualizacoes": 4650727,
+     "pct_visualizacoes": 13.4
     },
     {
      "valor": "pt",
-     "publicacoes": 880,
-     "pct": 15.4,
-     "contas": 532,
-     "visualizacoes": 21223511,
-     "pct_visualizacoes": 66.0
+     "publicacoes": 898,
+     "pct": 15.6,
+     "contas": 547,
+     "visualizacoes": 21648673,
+     "pct_visualizacoes": 62.3
     },
     {
      "valor": "en",
-     "publicacoes": 492,
-     "pct": 8.6,
-     "contas": 285,
-     "visualizacoes": 6390596,
-     "pct_visualizacoes": 19.9
+     "publicacoes": 509,
+     "pct": 8.8,
+     "contas": 300,
+     "visualizacoes": 8335115,
+     "pct_visualizacoes": 24.0
     },
     {
      "valor": "es",
      "publicacoes": 128,
      "pct": 2.2,
      "contas": 82,
-     "visualizacoes": 39888,
-     "pct_visualizacoes": 0.1
+     "visualizacoes": 61276,
+     "pct_visualizacoes": 0.2
     },
     {
      "valor": "cs",
      "publicacoes": 3,
      "pct": 0.1,
      "contas": 3,
-     "visualizacoes": 18947,
+     "visualizacoes": 18952,
      "pct_visualizacoes": 0.1
     },
     {
@@ -405,11 +405,11 @@
     "tiktok": [
      {
       "valor": "Brasil",
-      "publicacoes": 25,
-      "pct": 20.5,
-      "contas": 25,
-      "visualizacoes": 2253546,
-      "pct_visualizacoes": 34.0
+      "publicacoes": 43,
+      "pct": 22.6,
+      "contas": 40,
+      "visualizacoes": 2678708,
+      "pct_visualizacoes": 29.2
      },
      {
       "valor": "Brasil + outro país",
@@ -429,19 +429,19 @@
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 14,
-      "pct": 11.5,
-      "contas": 14,
-      "visualizacoes": 119008,
-      "pct_visualizacoes": 1.8
+      "publicacoes": 32,
+      "pct": 16.8,
+      "contas": 30,
+      "visualizacoes": 2093607,
+      "pct_visualizacoes": 22.8
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 83,
-      "pct": 68.0,
-      "contas": 57,
-      "visualizacoes": 4247476,
-      "pct_visualizacoes": 64.2
+      "publicacoes": 115,
+      "pct": 60.5,
+      "contas": 78,
+      "visualizacoes": 4402499,
+      "pct_visualizacoes": 48.0
      }
     ],
     "x": [
@@ -506,43 +506,43 @@
     },
     {
      "dia": "2026-10-27",
-     "Brasil": 375,
+     "Brasil": 376,
      "Brasil + outro país": 13,
      "outro país": 20,
-     "outra língua, país não declarado": 107,
+     "outra língua, país não declarado": 113,
      "sem sinal": 59
     },
     {
      "dia": "2026-10-28",
-     "Brasil": 654,
+     "Brasil": 655,
      "Brasil + outro país": 8,
      "outro país": 14,
-     "outra língua, país não declarado": 71,
-     "sem sinal": 197
+     "outra língua, país não declarado": 80,
+     "sem sinal": 202
     },
     {
      "dia": "2026-10-29",
-     "Brasil": 667,
+     "Brasil": 672,
      "Brasil + outro país": 10,
      "outro país": 15,
-     "outra língua, país não declarado": 40,
-     "sem sinal": 256
+     "outra língua, país não declarado": 43,
+     "sem sinal": 266
     },
     {
      "dia": "2026-10-30",
-     "Brasil": 647,
+     "Brasil": 651,
      "Brasil + outro país": 4,
      "outro país": 9,
      "outra língua, país não declarado": 65,
-     "sem sinal": 241
+     "sem sinal": 244
     },
     {
      "dia": "2026-10-31",
-     "Brasil": 595,
+     "Brasil": 596,
      "Brasil + outro país": 23,
      "outro país": 52,
      "outra língua, país não declarado": 44,
-     "sem sinal": 255
+     "sem sinal": 256
     },
     {
      "dia": "2026-11-01",
@@ -550,15 +550,15 @@
      "Brasil + outro país": 17,
      "outro país": 23,
      "outra língua, país não declarado": 49,
-     "sem sinal": 377
+     "sem sinal": 380
     },
     {
      "dia": "2026-11-02",
-     "Brasil": 98,
+     "Brasil": 104,
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 9,
-     "sem sinal": 34
+     "sem sinal": 44
     }
    ],
    "contas_10mil": [
@@ -627,6 +627,14 @@
      "pais_fora": null
     },
     {
+     "rede": "tiktok",
+     "conta": "marcossilveira86",
+     "publicacoes": 7,
+     "seguidores": 25047,
+     "classe": "sem sinal",
+     "pais_fora": null
+    },
+    {
      "rede": "x",
      "conta": "Leila_Argollo",
      "publicacoes": 7,
@@ -640,14 +648,6 @@
      "publicacoes": 6,
      "seguidores": 11037,
      "classe": "Brasil",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "marcossilveira86",
-     "publicacoes": 5,
-     "seguidores": 25047,
-     "classe": "sem sinal",
      "pais_fora": null
     },
     {
@@ -678,7 +678,7 @@
      "rede": "tiktok",
      "conta": "isaiahrmartin",
      "publicacoes": 3,
-     "seguidores": 1494223,
+     "seguidores": 1494387,
      "classe": "sem sinal",
      "pais_fora": null
     },
@@ -702,7 +702,7 @@
      "rede": "tiktok",
      "conta": "ciceroalexandree",
      "publicacoes": 3,
-     "seguidores": 113071,
+     "seguidores": 113309,
      "classe": "sem sinal",
      "pais_fora": null
     },
@@ -724,9 +724,33 @@
     },
     {
      "rede": "tiktok",
+     "conta": "aljazeeraenglish",
+     "publicacoes": 2,
+     "seguidores": 16759968,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "ofofoquinho",
+     "publicacoes": 2,
+     "seguidores": 450245,
+     "classe": "Brasil",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "bbcnews",
+     "publicacoes": 2,
+     "seguidores": 16625716,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
      "conta": "joshtheprogressive",
      "publicacoes": 2,
-     "seguidores": 338839,
+     "seguidores": 338851,
      "classe": "sem sinal",
      "pais_fora": null
     },
@@ -734,31 +758,7 @@
      "rede": "tiktok",
      "conta": "renataguiducci",
      "publicacoes": 2,
-     "seguidores": 69234,
-     "classe": "sem sinal",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "marcosantonio0437",
-     "publicacoes": 2,
-     "seguidores": 64802,
-     "classe": "sem sinal",
-     "pais_fora": null
-    },
-    {
-     "rede": "x",
-     "conta": "joaquimmonstrao",
-     "publicacoes": 2,
-     "seguidores": 102338,
-     "classe": "Brasil",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "faby.ac3",
-     "publicacoes": 2,
-     "seguidores": 15067,
+     "seguidores": 69541,
      "classe": "sem sinal",
      "pais_fora": null
     }
@@ -766,7 +766,7 @@
    "visualizacoes_por_rede": {
     "facebook": 0,
     "instagram": 22987745,
-    "tiktok": 6620030,
+    "tiktok": 9174814,
     "x": 2561611
    },
    "maior_alcance": {
@@ -856,9 +856,9 @@
     "tiktok": [
      {
       "conta": "leonelradde",
-      "seguidores": 897097,
-      "visualizacoes": 1594620,
-      "pct_visualizacoes": 24.1,
+      "seguidores": 897254,
+      "visualizacoes": 1598783,
+      "pct_visualizacoes": 17.4,
       "classe": "Brasil",
       "lingua_texto": "pt",
       "dia": "2026-10-29",
@@ -866,9 +866,9 @@
      },
      {
       "conta": "isaiahrmartin",
-      "seguidores": 1494223,
-      "visualizacoes": 1150049,
-      "pct_visualizacoes": 17.4,
+      "seguidores": 1494387,
+      "visualizacoes": 1153850,
+      "pct_visualizacoes": 12.6,
       "classe": "sem sinal",
       "lingua_texto": "não identificada",
       "dia": "2026-10-28",
@@ -876,9 +876,9 @@
      },
      {
       "conta": "isaiahrmartin",
-      "seguidores": 1494223,
-      "visualizacoes": 594218,
-      "pct_visualizacoes": 9.0,
+      "seguidores": 1494387,
+      "visualizacoes": 596646,
+      "pct_visualizacoes": 6.5,
       "classe": "sem sinal",
       "lingua_texto": "não identificada",
       "dia": "2026-10-30",
@@ -888,7 +888,7 @@
       "conta": "ciceroalexandree",
       "seguidores": 113071,
       "visualizacoes": 592228,
-      "pct_visualizacoes": 8.9,
+      "pct_visualizacoes": 6.5,
       "classe": "sem sinal",
       "lingua_texto": "não identificada",
       "dia": "2026-10-31",
@@ -896,43 +896,43 @@
      },
      {
       "conta": "aaronparnas1",
-      "seguidores": 5673891,
-      "visualizacoes": 471875,
-      "pct_visualizacoes": 7.1,
+      "seguidores": 5674065,
+      "visualizacoes": 471948,
+      "pct_visualizacoes": 5.1,
       "classe": "sem sinal",
       "lingua_texto": "não identificada",
       "dia": "2026-10-28",
       "url": "https://www.tiktok.com/@aaronparnas1/video/7701786134103264526"
      },
      {
+      "conta": "cbseveningnews",
+      "seguidores": 3479488,
+      "visualizacoes": 389125,
+      "pct_visualizacoes": 4.2,
+      "classe": "outra língua, país não declarado",
+      "lingua_texto": "en",
+      "dia": "2026-10-27",
+      "url": "https://www.tiktok.com/@cbseveningnews/video/7701507607055387918"
+     },
+     {
       "conta": "leonardo.stoppa",
-      "seguidores": 201692,
-      "visualizacoes": 305514,
-      "pct_visualizacoes": 4.6,
+      "seguidores": 201698,
+      "visualizacoes": 305639,
+      "pct_visualizacoes": 3.3,
       "classe": "sem sinal",
       "lingua_texto": "não identificada",
       "dia": "2026-10-29",
       "url": "https://www.tiktok.com/@leonardo.stoppa/video/7702123272598572294"
      },
      {
-      "conta": "hailtonfdesa_oficial",
-      "seguidores": 78275,
-      "visualizacoes": 275329,
-      "pct_visualizacoes": 4.2,
-      "classe": "sem sinal",
-      "lingua_texto": "não identificada",
-      "dia": "2026-11-01",
-      "url": "https://www.tiktok.com/@hailtonfdesa_oficial/video/7703364935417384200"
-     },
-     {
-      "conta": "marcosantonio0437",
-      "seguidores": 64802,
-      "visualizacoes": 243204,
-      "pct_visualizacoes": 3.7,
-      "classe": "sem sinal",
-      "lingua_texto": "não identificada",
-      "dia": "2026-10-29",
-      "url": "https://www.tiktok.com/@marcosantonio0437/video/7702228124892679425"
+      "conta": "thiagogardinali",
+      "seguidores": 54853,
+      "visualizacoes": 300645,
+      "pct_visualizacoes": 3.3,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-30",
+      "url": "https://www.tiktok.com/@thiagogardinali/video/7702335303335349525"
      }
     ],
     "x": [
@@ -1020,143 +1020,143 @@
    }
   },
   "#BrasiliansStandWithFlavio": {
-   "publicacoes": 1253,
-   "contas": 484,
+   "publicacoes": 1319,
+   "contas": 533,
    "reposts_x": 0,
    "brasil_com_bandeira_de_outro_pais": 50,
    "sem_dado_do_autor": 0,
    "por_classe": [
     {
      "valor": "Brasil",
-     "publicacoes": 628,
-     "pct": 50.1,
-     "contas": 261,
-     "visualizacoes": 5963157,
-     "pct_visualizacoes": 61.0
+     "publicacoes": 649,
+     "pct": 49.2,
+     "contas": 276,
+     "visualizacoes": 16685174,
+     "pct_visualizacoes": 57.3
     },
     {
      "valor": "Brasil + outro país",
      "publicacoes": 57,
-     "pct": 4.5,
+     "pct": 4.3,
      "contas": 21,
      "visualizacoes": 31891,
-     "pct_visualizacoes": 0.3
+     "pct_visualizacoes": 0.1
     },
     {
      "valor": "outro país",
      "publicacoes": 20,
-     "pct": 1.6,
+     "pct": 1.5,
      "contas": 14,
      "visualizacoes": 348,
      "pct_visualizacoes": 0.0
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 164,
-     "pct": 13.1,
-     "contas": 53,
-     "visualizacoes": 2571845,
-     "pct_visualizacoes": 26.3
+     "publicacoes": 194,
+     "pct": 14.7,
+     "contas": 75,
+     "visualizacoes": 10568210,
+     "pct_visualizacoes": 36.3
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 384,
-     "pct": 30.6,
-     "contas": 159,
-     "visualizacoes": 1210170,
-     "pct_visualizacoes": 12.4
+     "publicacoes": 399,
+     "pct": 30.3,
+     "contas": 171,
+     "visualizacoes": 1842124,
+     "pct_visualizacoes": 6.3
     }
    ],
    "por_classe_sem_reposts": [
     {
      "valor": "Brasil",
-     "publicacoes": 628,
-     "pct": 50.1,
-     "contas": 261,
-     "visualizacoes": 5963157,
-     "pct_visualizacoes": 61.0
+     "publicacoes": 649,
+     "pct": 49.2,
+     "contas": 276,
+     "visualizacoes": 16685174,
+     "pct_visualizacoes": 57.3
     },
     {
      "valor": "Brasil + outro país",
      "publicacoes": 57,
-     "pct": 4.5,
+     "pct": 4.3,
      "contas": 21,
      "visualizacoes": 31891,
-     "pct_visualizacoes": 0.3
+     "pct_visualizacoes": 0.1
     },
     {
      "valor": "outro país",
      "publicacoes": 20,
-     "pct": 1.6,
+     "pct": 1.5,
      "contas": 14,
      "visualizacoes": 348,
      "pct_visualizacoes": 0.0
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 164,
-     "pct": 13.1,
-     "contas": 53,
-     "visualizacoes": 2571845,
-     "pct_visualizacoes": 26.3
+     "publicacoes": 194,
+     "pct": 14.7,
+     "contas": 75,
+     "visualizacoes": 10568210,
+     "pct_visualizacoes": 36.3
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 384,
-     "pct": 30.6,
-     "contas": 159,
-     "visualizacoes": 1210170,
-     "pct_visualizacoes": 12.4
+     "publicacoes": 399,
+     "pct": 30.3,
+     "contas": 171,
+     "visualizacoes": 1842124,
+     "pct_visualizacoes": 6.3
     }
    ],
    "por_lingua_texto": [
     {
      "valor": "não identificada",
-     "publicacoes": 779,
-     "pct": 62.2,
-     "contas": 327,
-     "visualizacoes": 1223203,
-     "pct_visualizacoes": 12.5
+     "publicacoes": 794,
+     "pct": 60.2,
+     "contas": 339,
+     "visualizacoes": 1855157,
+     "pct_visualizacoes": 6.4
     },
     {
      "valor": "pt",
-     "publicacoes": 302,
-     "pct": 24.1,
-     "contas": 139,
-     "visualizacoes": 5980851,
-     "pct_visualizacoes": 61.2
+     "publicacoes": 323,
+     "pct": 24.5,
+     "contas": 154,
+     "visualizacoes": 16702868,
+     "pct_visualizacoes": 57.3
     },
     {
      "valor": "en",
-     "publicacoes": 133,
-     "pct": 10.6,
-     "contas": 51,
-     "visualizacoes": 1899548,
-     "pct_visualizacoes": 19.4
+     "publicacoes": 160,
+     "pct": 12.1,
+     "contas": 70,
+     "visualizacoes": 9259645,
+     "pct_visualizacoes": 31.8
     },
     {
      "valor": "es",
-     "publicacoes": 18,
+     "publicacoes": 19,
      "pct": 1.4,
-     "contas": 13,
-     "visualizacoes": 361423,
-     "pct_visualizacoes": 3.7
+     "contas": 14,
+     "visualizacoes": 995553,
+     "pct_visualizacoes": 3.4
     },
     {
      "valor": "fr",
      "publicacoes": 8,
      "pct": 0.6,
      "contas": 4,
-     "visualizacoes": 276874,
-     "pct_visualizacoes": 2.8
+     "visualizacoes": 276887,
+     "pct_visualizacoes": 1.0
     },
     {
      "valor": "it",
      "publicacoes": 3,
      "pct": 0.2,
      "contas": 3,
-     "visualizacoes": 12190,
-     "pct_visualizacoes": 0.1
+     "visualizacoes": 12197,
+     "pct_visualizacoes": 0.0
     },
     {
      "valor": "lt",
@@ -1167,20 +1167,28 @@
      "pct_visualizacoes": 0.0
     },
     {
+     "valor": "zh",
+     "publicacoes": 2,
+     "pct": 0.2,
+     "contas": 2,
+     "visualizacoes": 1568,
+     "pct_visualizacoes": 0.0
+    },
+    {
+     "valor": "de",
+     "publicacoes": 1,
+     "pct": 0.1,
+     "contas": 1,
+     "visualizacoes": 1222,
+     "pct_visualizacoes": 0.0
+    },
+    {
      "valor": "si",
      "publicacoes": 1,
      "pct": 0.1,
      "contas": 1,
      "visualizacoes": 22589,
-     "pct_visualizacoes": 0.2
-    },
-    {
-     "valor": "zh",
-     "publicacoes": 1,
-     "pct": 0.1,
-     "contas": 1,
-     "visualizacoes": 672,
-     "pct_visualizacoes": 0.0
+     "pct_visualizacoes": 0.1
     },
     {
      "valor": "ko",
@@ -1196,14 +1204,6 @@
      "pct": 0.1,
      "contas": 1,
      "visualizacoes": 0,
-     "pct_visualizacoes": 0.0
-    },
-    {
-     "valor": "et",
-     "publicacoes": 1,
-     "pct": 0.1,
-     "contas": 1,
-     "visualizacoes": 7,
      "pct_visualizacoes": 0.0
     }
    ],
@@ -1377,11 +1377,11 @@
     "tiktok": [
      {
       "valor": "Brasil",
-      "publicacoes": 16,
-      "pct": 19.3,
-      "contas": 16,
-      "visualizacoes": 1131881,
-      "pct_visualizacoes": 23.2
+      "publicacoes": 37,
+      "pct": 24.8,
+      "contas": 31,
+      "visualizacoes": 11853898,
+      "pct_visualizacoes": 48.9
      },
      {
       "valor": "Brasil + outro país",
@@ -1401,19 +1401,19 @@
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 29,
-      "pct": 34.9,
-      "contas": 28,
-      "visualizacoes": 2549434,
-      "pct_visualizacoes": 52.2
+      "publicacoes": 59,
+      "pct": 39.6,
+      "contas": 50,
+      "visualizacoes": 10545799,
+      "pct_visualizacoes": 43.5
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 38,
-      "pct": 45.8,
-      "contas": 38,
-      "visualizacoes": 1205736,
-      "pct_visualizacoes": 24.7
+      "publicacoes": 53,
+      "pct": 35.6,
+      "contas": 50,
+      "visualizacoes": 1837690,
+      "pct_visualizacoes": 7.6
      }
     ],
     "x": [
@@ -1470,7 +1470,7 @@
     },
     {
      "dia": "2026-10-25",
-     "Brasil": 4,
+     "Brasil": 8,
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 1,
@@ -1481,64 +1481,64 @@
      "Brasil": 4,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 5,
+     "outra língua, país não declarado": 10,
      "sem sinal": 0
     },
     {
      "dia": "2026-10-27",
-     "Brasil": 2,
+     "Brasil": 5,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 5,
-     "sem sinal": 0
+     "outra língua, país não declarado": 12,
+     "sem sinal": 1
     },
     {
      "dia": "2026-10-28",
-     "Brasil": 6,
+     "Brasil": 9,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 11,
-     "sem sinal": 4
+     "outra língua, país não declarado": 26,
+     "sem sinal": 6
     },
     {
      "dia": "2026-10-29",
-     "Brasil": 11,
+     "Brasil": 12,
      "Brasil + outro país": 1,
      "outro país": 0,
-     "outra língua, país não declarado": 2,
-     "sem sinal": 10
+     "outra língua, país não declarado": 5,
+     "sem sinal": 12
     },
     {
      "dia": "2026-10-30",
-     "Brasil": 17,
+     "Brasil": 20,
      "Brasil + outro país": 1,
      "outro país": 2,
      "outra língua, país não declarado": 3,
-     "sem sinal": 27
+     "sem sinal": 30
     },
     {
      "dia": "2026-10-31",
-     "Brasil": 313,
+     "Brasil": 315,
      "Brasil + outro país": 39,
      "outro país": 15,
      "outra língua, país não declarado": 71,
-     "sem sinal": 174
+     "sem sinal": 177
     },
     {
      "dia": "2026-11-01",
-     "Brasil": 212,
+     "Brasil": 215,
      "Brasil + outro país": 12,
      "outro país": 2,
      "outra língua, país não declarado": 52,
-     "sem sinal": 103
+     "sem sinal": 104
     },
     {
      "dia": "2026-11-02",
-     "Brasil": 59,
+     "Brasil": 61,
      "Brasil + outro país": 4,
      "outro país": 1,
      "outra língua, país não declarado": 14,
-     "sem sinal": 59
+     "sem sinal": 62
     }
    ],
    "contas_10mil": [
@@ -1567,6 +1567,14 @@
      "pais_fora": null
     },
     {
+     "rede": "tiktok",
+     "conta": "bbcnews",
+     "publicacoes": 5,
+     "seguidores": 16625716,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
      "rede": "x",
      "conta": "dlrodrigues76",
      "publicacoes": 5,
@@ -1576,10 +1584,66 @@
     },
     {
      "rede": "tiktok",
+     "conta": "jornaloglobo",
+     "publicacoes": 3,
+     "seguidores": 917544,
+     "classe": "Brasil",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
      "conta": "aljazeeraenglish",
-     "publicacoes": 2,
+     "publicacoes": 3,
      "seguidores": 16758441,
      "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "ajplus",
+     "publicacoes": 2,
+     "seguidores": 2171804,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "alarabiya_eng",
+     "publicacoes": 2,
+     "seguidores": 746774,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "jovempannews",
+     "publicacoes": 2,
+     "seguidores": 6346791,
+     "classe": "Brasil",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "pbsnews",
+     "publicacoes": 2,
+     "seguidores": 3296424,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "metropolesoficial",
+     "publicacoes": 2,
+     "seguidores": 18001451,
+     "classe": "Brasil",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "sbtnews",
+     "publicacoes": 2,
+     "seguidores": 4513810,
+     "classe": "Brasil",
      "pais_fora": null
     },
     {
@@ -1594,8 +1658,16 @@
      "rede": "tiktok",
      "conta": "nickshirleyy",
      "publicacoes": 1,
-     "seguidores": 1604462,
+     "seguidores": 1604466,
      "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "exame",
+     "publicacoes": 1,
+     "seguidores": 390742,
+     "classe": "Brasil",
      "pais_fora": null
     },
     {
@@ -1608,9 +1680,33 @@
     },
     {
      "rede": "tiktok",
+     "conta": "9news",
+     "publicacoes": 1,
+     "seguidores": 2143287,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "cnn",
+     "publicacoes": 1,
+     "seguidores": 16499002,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
      "conta": "moreperfectunion",
      "publicacoes": 1,
-     "seguidores": 1445913,
+     "seguidores": 1446012,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "reverendjordanwells",
+     "publicacoes": 1,
+     "seguidores": 31473,
      "classe": "outra língua, país não declarado",
      "pais_fora": null
     },
@@ -1645,108 +1741,12 @@
      "seguidores": 15169,
      "classe": "outra língua, país não declarado",
      "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "thotline_news",
-     "publicacoes": 1,
-     "seguidores": 156345,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "dailymail",
-     "publicacoes": 1,
-     "seguidores": 27100765,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "skynews",
-     "publicacoes": 1,
-     "seguidores": 11455284,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "parismatch",
-     "publicacoes": 1,
-     "seguidores": 7876403,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "alarabiya_eng",
-     "publicacoes": 1,
-     "seguidores": 746774,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "m6info_",
-     "publicacoes": 1,
-     "seguidores": 2658116,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "bbcnewsmundo",
-     "publicacoes": 1,
-     "seguidores": 3451975,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "allysammarco",
-     "publicacoes": 1,
-     "seguidores": 28760,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "loolglobalnews",
-     "publicacoes": 1,
-     "seguidores": 22170,
-     "classe": "Brasil",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "davidwontshutup",
-     "publicacoes": 1,
-     "seguidores": 129275,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "michaelwilber",
-     "publicacoes": 1,
-     "seguidores": 45412,
-     "classe": "sem sinal",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "tiratchurun",
-     "publicacoes": 1,
-     "seguidores": 35714,
-     "classe": "sem sinal",
-     "pais_fora": null
     }
    ],
    "visualizacoes_por_rede": {
     "facebook": 0,
     "instagram": 4833264,
-    "tiktok": 4887051,
+    "tiktok": 24237387,
     "x": 57096
    },
    "maior_alcance": {
@@ -1835,84 +1835,84 @@
     ],
     "tiktok": [
      {
+      "conta": "sbtnews",
+      "seguidores": 4513810,
+      "visualizacoes": 4666339,
+      "pct_visualizacoes": 19.3,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-28",
+      "url": "https://www.tiktok.com/@sbtnews/video/7701814933884833076"
+     },
+     {
+      "conta": "cnn",
+      "seguidores": 16499002,
+      "visualizacoes": 2725887,
+      "pct_visualizacoes": 11.2,
+      "classe": "outra língua, país não declarado",
+      "lingua_texto": "en",
+      "dia": "2026-10-26",
+      "url": "https://www.tiktok.com/@cnn/video/7700886337313869070"
+     },
+     {
+      "conta": "exame",
+      "seguidores": 390742,
+      "visualizacoes": 2065507,
+      "pct_visualizacoes": 8.5,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-25",
+      "url": "https://www.tiktok.com/@exame/video/7700788950301936903"
+     },
+     {
+      "conta": "9news",
+      "seguidores": 2143287,
+      "visualizacoes": 1305869,
+      "pct_visualizacoes": 5.4,
+      "classe": "outra língua, país não declarado",
+      "lingua_texto": "en",
+      "dia": "2026-10-26",
+      "url": "https://www.tiktok.com/@9news/video/7700877473306774805"
+     },
+     {
+      "conta": "metropolesoficial",
+      "seguidores": 18001453,
+      "visualizacoes": 1028414,
+      "pct_visualizacoes": 4.2,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-27",
+      "url": "https://www.tiktok.com/@metropolesoficial/video/7701448216683744533"
+     },
+     {
+      "conta": "bbcnews",
+      "seguidores": 16625717,
+      "visualizacoes": 926296,
+      "pct_visualizacoes": 3.8,
+      "classe": "outra língua, país não declarado",
+      "lingua_texto": "en",
+      "dia": "2026-10-26",
+      "url": "https://www.tiktok.com/@bbcnews/video/7700817814378024214"
+     },
+     {
+      "conta": "jovempannews",
+      "seguidores": 6352718,
+      "visualizacoes": 886032,
+      "pct_visualizacoes": 3.7,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-27",
+      "url": "https://www.tiktok.com/@jovempannews/video/7701397093264395540"
+     },
+     {
       "conta": "moreperfectunion",
-      "seguidores": 1445913,
-      "visualizacoes": 877779,
-      "pct_visualizacoes": 18.0,
+      "seguidores": 1446012,
+      "visualizacoes": 879356,
+      "pct_visualizacoes": 3.6,
       "classe": "outra língua, país não declarado",
       "lingua_texto": "en",
       "dia": "2026-10-26",
       "url": "https://www.tiktok.com/@moreperfectunion/video/7701028502430092558"
-     },
-     {
-      "conta": null,
-      "seguidores": 7531,
-      "visualizacoes": 371821,
-      "pct_visualizacoes": 7.6,
-      "classe": "Brasil",
-      "lingua_texto": "pt",
-      "dia": "2026-10-28",
-      "url": null
-     },
-     {
-      "conta": "estadodoparanews",
-      "seguidores": 307617,
-      "visualizacoes": 368292,
-      "pct_visualizacoes": 7.5,
-      "classe": "Brasil",
-      "lingua_texto": "pt",
-      "dia": "2026-11-01",
-      "url": "https://www.tiktok.com/@estadodoparanews/video/7703373875475795208"
-     },
-     {
-      "conta": "bbcnewsmundo",
-      "seguidores": 3451975,
-      "visualizacoes": 354972,
-      "pct_visualizacoes": 7.3,
-      "classe": "outra língua, país não declarado",
-      "lingua_texto": "es",
-      "dia": "2026-10-28",
-      "url": "https://www.tiktok.com/@bbcnewsmundo/video/7701765285338025222"
-     },
-     {
-      "conta": "aljazeeraenglish",
-      "seguidores": 16758441,
-      "visualizacoes": 337903,
-      "pct_visualizacoes": 6.9,
-      "classe": "outra língua, país não declarado",
-      "lingua_texto": "en",
-      "dia": "2026-10-26",
-      "url": "https://www.tiktok.com/@aljazeeraenglish/video/7700911433772469534"
-     },
-     {
-      "conta": "brasilsempre_22",
-      "seguidores": 131275,
-      "visualizacoes": 289747,
-      "pct_visualizacoes": 5.9,
-      "classe": "sem sinal",
-      "lingua_texto": "não identificada",
-      "dia": "2026-10-29",
-      "url": "https://www.tiktok.com/@brasilsempre_22/video/7702142878138518816"
-     },
-     {
-      "conta": "tiratchurun",
-      "seguidores": 35714,
-      "visualizacoes": 271518,
-      "pct_visualizacoes": 5.6,
-      "classe": "sem sinal",
-      "lingua_texto": "não identificada",
-      "dia": "2026-10-28",
-      "url": "https://www.tiktok.com/@tiratchurun/video/7701847170072333600"
-     },
-     {
-      "conta": "emareps_",
-      "seguidores": 182663,
-      "visualizacoes": 263665,
-      "pct_visualizacoes": 5.4,
-      "classe": "Brasil",
-      "lingua_texto": "pt",
-      "dia": "2026-11-02",
-      "url": "https://www.tiktok.com/@emareps_/video/7703564891931675956"
      }
     ],
     "x": [
@@ -2000,19 +2000,19 @@
    }
   },
   "sem a hashtag no texto": {
-   "publicacoes": 81,
-   "contas": 81,
+   "publicacoes": 108,
+   "contas": 107,
    "reposts_x": 0,
    "brasil_com_bandeira_de_outro_pais": 0,
    "sem_dado_do_autor": 0,
    "por_classe": [
     {
      "valor": "Brasil",
-     "publicacoes": 28,
-     "pct": 34.6,
-     "contas": 28,
-     "visualizacoes": 15974850,
-     "pct_visualizacoes": 78.4
+     "publicacoes": 40,
+     "pct": 37.0,
+     "contas": 40,
+     "visualizacoes": 18254565,
+     "pct_visualizacoes": 80.4
     },
     {
      "valor": "Brasil + outro país",
@@ -2032,29 +2032,29 @@
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 39,
-     "pct": 48.1,
-     "contas": 39,
-     "visualizacoes": 3573751,
-     "pct_visualizacoes": 17.5
+     "publicacoes": 42,
+     "pct": 38.9,
+     "contas": 41,
+     "visualizacoes": 3508975,
+     "pct_visualizacoes": 15.5
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 14,
-     "pct": 17.3,
-     "contas": 14,
-     "visualizacoes": 830163,
+     "publicacoes": 26,
+     "pct": 24.1,
+     "contas": 26,
+     "visualizacoes": 940580,
      "pct_visualizacoes": 4.1
     }
    ],
    "por_classe_sem_reposts": [
     {
      "valor": "Brasil",
-     "publicacoes": 28,
-     "pct": 34.6,
-     "contas": 28,
-     "visualizacoes": 15974850,
-     "pct_visualizacoes": 78.4
+     "publicacoes": 40,
+     "pct": 37.0,
+     "contas": 40,
+     "visualizacoes": 18254565,
+     "pct_visualizacoes": 80.4
     },
     {
      "valor": "Brasil + outro país",
@@ -2074,61 +2074,61 @@
     },
     {
      "valor": "outra língua, país não declarado",
-     "publicacoes": 39,
-     "pct": 48.1,
-     "contas": 39,
-     "visualizacoes": 3573751,
-     "pct_visualizacoes": 17.5
+     "publicacoes": 42,
+     "pct": 38.9,
+     "contas": 41,
+     "visualizacoes": 3508975,
+     "pct_visualizacoes": 15.5
     },
     {
      "valor": "sem sinal",
-     "publicacoes": 14,
-     "pct": 17.3,
-     "contas": 14,
-     "visualizacoes": 830163,
+     "publicacoes": 26,
+     "pct": 24.1,
+     "contas": 26,
+     "visualizacoes": 940580,
      "pct_visualizacoes": 4.1
     }
    ],
    "por_lingua_texto": [
     {
      "valor": "en",
-     "publicacoes": 37,
-     "pct": 45.7,
-     "contas": 37,
-     "visualizacoes": 2162620,
-     "pct_visualizacoes": 10.6
+     "publicacoes": 41,
+     "pct": 38.0,
+     "contas": 40,
+     "visualizacoes": 2448559,
+     "pct_visualizacoes": 10.8
     },
     {
      "valor": "pt",
-     "publicacoes": 27,
-     "pct": 33.3,
-     "contas": 27,
-     "visualizacoes": 15971634,
-     "pct_visualizacoes": 78.4
+     "publicacoes": 39,
+     "pct": 36.1,
+     "contas": 39,
+     "visualizacoes": 18251349,
+     "pct_visualizacoes": 80.4
     },
     {
      "valor": "não identificada",
-     "publicacoes": 14,
-     "pct": 17.3,
-     "contas": 14,
-     "visualizacoes": 830163,
+     "publicacoes": 26,
+     "pct": 24.1,
+     "contas": 26,
+     "visualizacoes": 940580,
      "pct_visualizacoes": 4.1
     },
     {
-     "valor": "es",
-     "publicacoes": 2,
-     "pct": 2.5,
-     "contas": 2,
-     "visualizacoes": 1413453,
-     "pct_visualizacoes": 6.9
+     "valor": "si",
+     "publicacoes": 1,
+     "pct": 0.9,
+     "contas": 1,
+     "visualizacoes": 284223,
+     "pct_visualizacoes": 1.3
     },
     {
-     "valor": "zh",
+     "valor": "es",
      "publicacoes": 1,
-     "pct": 1.2,
+     "pct": 0.9,
      "contas": 1,
-     "visualizacoes": 894,
-     "pct_visualizacoes": 0.0
+     "visualizacoes": 779409,
+     "pct_visualizacoes": 3.4
     }
    ],
    "por_pais_declarado_fora": [],
@@ -2220,11 +2220,11 @@
     "tiktok": [
      {
       "valor": "Brasil",
-      "publicacoes": 14,
-      "pct": 36.8,
-      "contas": 14,
-      "visualizacoes": 2155982,
-      "pct_visualizacoes": 36.5
+      "publicacoes": 26,
+      "pct": 40.0,
+      "contas": 26,
+      "visualizacoes": 4435697,
+      "pct_visualizacoes": 53.9
      },
      {
       "valor": "Brasil + outro país",
@@ -2244,26 +2244,26 @@
      },
      {
       "valor": "outra língua, país não declarado",
-      "publicacoes": 15,
-      "pct": 39.5,
-      "contas": 15,
-      "visualizacoes": 2914605,
-      "pct_visualizacoes": 49.4
+      "publicacoes": 18,
+      "pct": 27.7,
+      "contas": 17,
+      "visualizacoes": 2849829,
+      "pct_visualizacoes": 34.6
      },
      {
       "valor": "sem sinal",
-      "publicacoes": 9,
-      "pct": 23.7,
-      "contas": 9,
-      "visualizacoes": 830163,
-      "pct_visualizacoes": 14.1
+      "publicacoes": 21,
+      "pct": 32.3,
+      "contas": 21,
+      "visualizacoes": 940580,
+      "pct_visualizacoes": 11.4
      }
     ]
    },
    "por_dia": [
     {
      "dia": "2026-10-24",
-     "Brasil": 0,
+     "Brasil": 1,
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 0,
@@ -2275,18 +2275,26 @@
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 3,
-     "sem sinal": 0
+     "sem sinal": 4
     },
     {
      "dia": "2026-10-26",
      "Brasil": 4,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 3,
+     "outra língua, país não declarado": 5,
      "sem sinal": 0
     },
     {
      "dia": "2026-10-27",
+     "Brasil": 6,
+     "Brasil + outro país": 0,
+     "outro país": 0,
+     "outra língua, país não declarado": 10,
+     "sem sinal": 2
+    },
+    {
+     "dia": "2026-10-28",
      "Brasil": 5,
      "Brasil + outro país": 0,
      "outro país": 0,
@@ -2294,36 +2302,28 @@
      "sem sinal": 1
     },
     {
-     "dia": "2026-10-28",
-     "Brasil": 2,
-     "Brasil + outro país": 0,
-     "outro país": 0,
-     "outra língua, país não declarado": 11,
-     "sem sinal": 1
-    },
-    {
      "dia": "2026-10-29",
-     "Brasil": 2,
+     "Brasil": 4,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 6,
-     "sem sinal": 5
+     "outra língua, país não declarado": 7,
+     "sem sinal": 6
     },
     {
      "dia": "2026-10-30",
-     "Brasil": 5,
+     "Brasil": 7,
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 1,
-     "sem sinal": 3
+     "sem sinal": 4
     },
     {
      "dia": "2026-10-31",
      "Brasil": 4,
      "Brasil + outro país": 0,
      "outro país": 0,
-     "outra língua, país não declarado": 1,
-     "sem sinal": 0
+     "outra língua, país não declarado": 2,
+     "sem sinal": 2
     },
     {
      "dia": "2026-11-01",
@@ -2335,14 +2335,38 @@
     },
     {
      "dia": "2026-11-02",
-     "Brasil": 5,
+     "Brasil": 8,
      "Brasil + outro país": 0,
      "outro país": 0,
      "outra língua, país não declarado": 0,
-     "sem sinal": 0
+     "sem sinal": 3
     }
    ],
    "contas_10mil": [
+    {
+     "rede": "tiktok",
+     "conta": "nytimes",
+     "publicacoes": 2,
+     "seguidores": 3963262,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "nickshirleyy",
+     "publicacoes": 1,
+     "seguidores": 1604466,
+     "classe": "Brasil",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "reginaceliagzarelli",
+     "publicacoes": 1,
+     "seguidores": 85544,
+     "classe": "sem sinal",
+     "pais_fora": null
+    },
     {
      "rede": "tiktok",
      "conta": "anamaiast",
@@ -2369,17 +2393,17 @@
     },
     {
      "rede": "tiktok",
-     "conta": "reverendjordanwells",
+     "conta": "widzworldtv509",
      "publicacoes": 1,
-     "seguidores": 31473,
+     "seguidores": 23362,
      "classe": "outra língua, país não declarado",
      "pais_fora": null
     },
     {
      "rede": "tiktok",
-     "conta": "alarabiya_eng",
+     "conta": "viicky.am",
      "publicacoes": 1,
-     "seguidores": 746773,
+     "seguidores": 56194,
      "classe": "outra língua, país não declarado",
      "pais_fora": null
     },
@@ -2403,31 +2427,7 @@
      "rede": "tiktok",
      "conta": "c4news",
      "publicacoes": 1,
-     "seguidores": 3502159,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "maltiempo3",
-     "publicacoes": 1,
-     "seguidores": 71391,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "cbseveningnews",
-     "publicacoes": 1,
-     "seguidores": 3480052,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "itvnews",
-     "publicacoes": 1,
-     "seguidores": 6056193,
+     "seguidores": 3502201,
      "classe": "outra língua, país não declarado",
      "pais_fora": null
     },
@@ -2441,6 +2441,14 @@
     },
     {
      "rede": "tiktok",
+     "conta": "thedabblingchick",
+     "publicacoes": 1,
+     "seguidores": 178179,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
      "conta": "matt.william660",
      "publicacoes": 1,
      "seguidores": 10674,
@@ -2449,10 +2457,10 @@
     },
     {
      "rede": "tiktok",
-     "conta": "jusnene",
+     "conta": "tmcnewsbr",
      "publicacoes": 1,
-     "seguidores": 538521,
-     "classe": "sem sinal",
+     "seguidores": 843919,
+     "classe": "Brasil",
      "pais_fora": null
     },
     {
@@ -2460,14 +2468,6 @@
      "conta": "deffnotantt",
      "publicacoes": 1,
      "seguidores": 414384,
-     "classe": "outra língua, país não declarado",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "lbc",
-     "publicacoes": 1,
-     "seguidores": 1476387,
      "classe": "outra língua, país não declarado",
      "pais_fora": null
     },
@@ -2489,10 +2489,42 @@
     },
     {
      "rede": "tiktok",
+     "conta": "nbcwashington",
+     "publicacoes": 1,
+     "seguidores": 722392,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "carlosmartinsgestor",
+     "publicacoes": 1,
+     "seguidores": 10060,
+     "classe": "Brasil",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "aljazeeraenglish",
+     "publicacoes": 1,
+     "seguidores": 16758900,
+     "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
      "conta": "theredheadprogressive",
      "publicacoes": 1,
      "seguidores": 11003,
      "classe": "outra língua, país não declarado",
+     "pais_fora": null
+    },
+    {
+     "rede": "tiktok",
+     "conta": "correiagjjc",
+     "publicacoes": 1,
+     "seguidores": 51491,
+     "classe": "sem sinal",
      "pais_fora": null
     },
     {
@@ -2505,41 +2537,9 @@
     },
     {
      "rede": "tiktok",
-     "conta": "wilker.mudo",
+     "conta": "lasianeo",
      "publicacoes": 1,
-     "seguidores": 22689,
-     "classe": "sem sinal",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "mariaferreirad167",
-     "publicacoes": 1,
-     "seguidores": 57937,
-     "classe": "Brasil",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "narealpolitica",
-     "publicacoes": 1,
-     "seguidores": 317596,
-     "classe": "Brasil",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "hoje.na.geopolitica",
-     "publicacoes": 1,
-     "seguidores": 56811,
-     "classe": "sem sinal",
-     "pais_fora": null
-    },
-    {
-     "rede": "tiktok",
-     "conta": "marlenemiranda274",
-     "publicacoes": 1,
-     "seguidores": 17207,
+     "seguidores": 10585,
      "classe": "sem sinal",
      "pais_fora": null
     }
@@ -2547,7 +2547,7 @@
    "visualizacoes_por_rede": {
     "facebook": 0,
     "instagram": 14478014,
-    "tiktok": 5900750
+    "tiktok": 8226106
    },
    "maior_alcance": {
     "facebook": [],
@@ -2635,10 +2635,20 @@
     ],
     "tiktok": [
      {
+      "conta": "carlosmartinsgestor",
+      "seguidores": 10060,
+      "visualizacoes": 1268019,
+      "pct_visualizacoes": 15.4,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-28",
+      "url": "https://www.tiktok.com/@carlosmartinsgestor/video/7701872375767272756"
+     },
+     {
       "conta": "esquerdaav",
       "seguidores": 307936,
       "visualizacoes": 867999,
-      "pct_visualizacoes": 14.7,
+      "pct_visualizacoes": 10.6,
       "classe": "Brasil",
       "lingua_texto": "pt",
       "dia": "2026-10-27",
@@ -2648,71 +2658,61 @@
       "conta": "imelinoee",
       "seguidores": 265728,
       "visualizacoes": 779409,
-      "pct_visualizacoes": 13.2,
+      "pct_visualizacoes": 9.5,
       "classe": "outra língua, país não declarado",
       "lingua_texto": "es",
       "dia": "2026-10-28",
       "url": "https://www.tiktok.com/@imelinoee/video/7701826463800020244"
      },
      {
-      "conta": "maltiempo3",
-      "seguidores": 71391,
-      "visualizacoes": 634044,
-      "pct_visualizacoes": 10.7,
+      "conta": "nytimes",
+      "seguidores": 3963262,
+      "visualizacoes": 680925,
+      "pct_visualizacoes": 8.3,
       "classe": "outra língua, país não declarado",
-      "lingua_texto": "es",
-      "dia": "2026-10-27",
-      "url": "https://www.tiktok.com/@maltiempo3/video/7701490534086495508"
+      "lingua_texto": "en",
+      "dia": "2026-10-26",
+      "url": "https://www.tiktok.com/@nytimes/video/7700899812962520334"
+     },
+     {
+      "conta": null,
+      "seguidores": 3819,
+      "visualizacoes": 429715,
+      "pct_visualizacoes": 5.2,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-30",
+      "url": null
+     },
+     {
+      "conta": "nickshirleyy",
+      "seguidores": 1604466,
+      "visualizacoes": 412088,
+      "pct_visualizacoes": 5.0,
+      "classe": "Brasil",
+      "lingua_texto": "pt",
+      "dia": "2026-10-24",
+      "url": "https://www.tiktok.com/@nickshirleyy/video/7700396766344121613"
      },
      {
       "conta": "hoje.na.geopolitica",
       "seguidores": 56811,
       "visualizacoes": 407266,
-      "pct_visualizacoes": 6.9,
+      "pct_visualizacoes": 5.0,
       "classe": "sem sinal",
       "lingua_texto": "não identificada",
       "dia": "2026-10-30",
       "url": "https://www.tiktok.com/@hoje.na.geopolitica/video/7702593640069172501"
      },
      {
-      "conta": "cbseveningnews",
-      "seguidores": 3480052,
-      "visualizacoes": 388993,
-      "pct_visualizacoes": 6.6,
-      "classe": "outra língua, país não declarado",
-      "lingua_texto": "en",
-      "dia": "2026-10-27",
-      "url": "https://www.tiktok.com/@cbseveningnews/video/7701507607055387918"
-     },
-     {
       "conta": "narealpolitica",
-      "seguidores": 317596,
-      "visualizacoes": 377511,
-      "pct_visualizacoes": 6.4,
+      "seguidores": 317692,
+      "visualizacoes": 378961,
+      "pct_visualizacoes": 4.6,
       "classe": "Brasil",
       "lingua_texto": "pt",
       "dia": "2026-10-30",
       "url": "https://www.tiktok.com/@narealpolitica/video/7702587759260667156"
-     },
-     {
-      "conta": "metropolitanafm",
-      "seguidores": 1901950,
-      "visualizacoes": 355810,
-      "pct_visualizacoes": 6.0,
-      "classe": "Brasil",
-      "lingua_texto": "pt",
-      "dia": "2026-10-26",
-      "url": "https://www.tiktok.com/@metropolitanafm/video/7701095500145020178"
-     },
-     {
-      "conta": "ergarotv",
-      "seguidores": 796570,
-      "visualizacoes": 293672,
-      "pct_visualizacoes": 5.0,
-      "classe": "Brasil",
-      "lingua_texto": "pt",
-      "dia": "2026-11-02",
-      "url": "https://www.tiktok.com/@ergarotv/video/7703583686469405970"
      }
     ]
    }
@@ -3035,37 +3035,37 @@
    "rede": "tiktok",
    "termo": "DeportTheBolsonaros",
    "lidos": 64,
-   "no_periodo": 64,
+   "no_periodo": 63,
    "pedidos": 64,
    "bateu_no_limite": true,
-   "mais_antigo": "2026-10-28T08:17:24Z",
+   "mais_antigo": "2026-10-26T09:05:33Z",
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T210119Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
   },
   {
    "rede": "tiktok",
    "termo": "deport Bolsonaro",
    "lidos": 64,
-   "no_periodo": 62,
+   "no_periodo": 63,
    "pedidos": 64,
    "bateu_no_limite": true,
-   "mais_antigo": "2026-10-26T21:43:52Z",
+   "mais_antigo": "2026-10-27T19:39:28Z",
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T210119Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
   },
   {
    "rede": "tiktok",
    "termo": "Brazilians stand with Flavio",
    "lidos": 64,
-   "no_periodo": 43,
+   "no_periodo": 45,
    "pedidos": 64,
    "bateu_no_limite": true,
-   "mais_antigo": "2026-10-26T04:29:17Z",
+   "mais_antigo": "2026-10-25T00:32:39Z",
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T210119Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
   },
   {
    "rede": "tiktok",
@@ -3074,10 +3074,10 @@
    "no_periodo": 63,
    "pedidos": 64,
    "bateu_no_limite": true,
-   "mais_antigo": "2026-10-27T22:26:51Z",
+   "mais_antigo": "2026-10-27T21:48:20Z",
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T210119Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
   },
   {
    "rede": "tiktok",
@@ -3086,46 +3086,94 @@
    "no_periodo": 46,
    "pedidos": 64,
    "bateu_no_limite": true,
-   "mais_antigo": "2026-10-25T02:42:43Z",
+   "mais_antigo": "2026-10-25T19:16:33Z",
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T210119Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
   },
   {
    "rede": "tiktok",
    "termo": "#BraziliansStandWithFlavio",
    "lidos": 64,
-   "no_periodo": 62,
+   "no_periodo": 49,
    "pedidos": 64,
    "bateu_no_limite": true,
-   "mais_antigo": "2026-10-25T13:33:34Z",
+   "mais_antigo": "2026-10-25T02:42:43Z",
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T210119Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
   },
   {
-   "rede": "x",
-   "termo": "diário: #DeportTheBolsonaros",
-   "lidos": 126,
-   "no_periodo": 126,
-   "pedidos": 126,
-   "bateu_no_limite": true,
-   "mais_antigo": "2026-11-02T20:53:30Z",
+   "rede": "kwai",
+   "termo": "#DeportTheBolsonaros",
+   "lidos": 0,
+   "no_periodo": 0,
+   "pedidos": 7,
+   "bateu_no_limite": false,
+   "mais_antigo": null,
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T213304Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
   },
   {
-   "rede": "x",
-   "termo": "diário: #BrasiliansStandWithFlavio",
-   "lidos": 126,
-   "no_periodo": 126,
-   "pedidos": 126,
-   "bateu_no_limite": true,
-   "mais_antigo": "2026-11-02T13:59:50Z",
+   "rede": "kwai",
+   "termo": "#BrasiliansStandWithFlavio",
+   "lidos": 0,
+   "no_periodo": 0,
+   "pedidos": 7,
+   "bateu_no_limite": false,
+   "mais_antigo": null,
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
-   "manifesto": "manifesto-20261102T213304Z.json"
+   "manifesto": "manifesto-20261102T215628Z.json"
+  },
+  {
+   "rede": "kwai",
+   "termo": "#BraziliansStandWithFlavio",
+   "lidos": 0,
+   "no_periodo": 0,
+   "pedidos": 7,
+   "bateu_no_limite": false,
+   "mais_antigo": null,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261102T215628Z.json"
+  },
+  {
+   "rede": "kwai",
+   "termo": "DeportTheBolsonaros",
+   "lidos": 0,
+   "no_periodo": 0,
+   "pedidos": 7,
+   "bateu_no_limite": false,
+   "mais_antigo": null,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261102T215628Z.json"
+  },
+  {
+   "rede": "kwai",
+   "termo": "deport Bolsonaro",
+   "lidos": 0,
+   "no_periodo": 0,
+   "pedidos": 7,
+   "bateu_no_limite": false,
+   "mais_antigo": null,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261102T215628Z.json"
+  },
+  {
+   "rede": "kwai",
+   "termo": "Brazilians stand with Flavio",
+   "lidos": 0,
+   "no_periodo": 0,
+   "pedidos": 7,
+   "bateu_no_limite": false,
+   "mais_antigo": null,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "manifesto": "manifesto-20261102T215628Z.json"
   }
  ]
 }

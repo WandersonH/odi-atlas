@@ -1,15 +1,34 @@
 {
  "caso": "023",
- "gerado_em": "2026-11-02T20:51:42Z",
+ "gerado_em": "2026-11-02T22:26:20Z",
  "fonte_contas": "TSE, redes sociais declaradas pelos candidatos de 2026 (data/tse/redes_sociais_candidatos_2026.csv.gz)",
  "universo": {
-  "publicacoes_do_caso": 507,
+  "publicacoes_do_caso": 857,
   "contas_declaradas": 34320,
   "candidatos_com_conta": 15944,
   "nota": "Universo de publicações sobre o tema nas plataformas: ⛔ não informado. A amostra é o que as buscas do caso devolveram; candidato ausente aqui pode ter falado do tema com outras palavras ou em outra conta."
  },
- "publicacoes_de_candidatos": 2,
+ "publicacoes_de_candidatos": 4,
  "candidatos": [
+  {
+   "candidato": "TOMIO YANO",
+   "partido": "MDB",
+   "cargo": "DEPUTADO FEDERAL",
+   "uf": "SP",
+   "situacao": "SUPLENTE",
+   "posicao": "nao_codificada",
+   "publicacoes": [
+    {
+     "rede": "tiktok",
+     "conta": "tomioyano",
+     "url": "https://www.tiktok.com/@tomioyano/video/7702971713247612180",
+     "publicado_em": "2026-10-31T23:04:30Z",
+     "curtidas": 249,
+     "trecho": "GREVE DOS CAMINHONEIROS",
+     "posicao": "nao_codificada"
+    }
+   ]
+  },
   {
    "candidato": "LUIZ JUNIOR",
    "partido": "PL",
@@ -47,19 +66,42 @@
      "posicao": "apoio"
     }
    ]
+  },
+  {
+   "candidato": "CARLOS KAN",
+   "partido": "PODE",
+   "cargo": "DEPUTADO ESTADUAL",
+   "uf": "MT",
+   "situacao": "SUPLENTE",
+   "posicao": "nao_codificada",
+   "publicacoes": [
+    {
+     "rede": "tiktok",
+     "conta": "kan.carlos",
+     "url": "https://www.tiktok.com/@kan.carlos/video/7702962670105824533",
+     "publicado_em": "2026-10-31T22:29:25Z",
+     "curtidas": 95,
+     "trecho": "",
+     "posicao": "nao_codificada"
+    }
+   ]
   }
  ],
  "por_partido": {
   "PL": {
    "apoio": 2,
    "candidatos_2026": 1647
+  },
+  "MDB": {
+   "nao_codificada": 1,
+   "candidatos_2026": 1420
+  },
+  "PODE": {
+   "nao_codificada": 1,
+   "candidatos_2026": 1237
   }
  },
  "partidos_sem_publicacao_na_amostra": [
-  {
-   "partido": "MDB",
-   "candidatos_2026": 1420
-  },
   {
    "partido": "NOVO",
    "candidatos_2026": 1309
@@ -67,10 +109,6 @@
   {
    "partido": "REPUBLICANOS",
    "candidatos_2026": 1309
-  },
-  {
-   "partido": "PODE",
-   "candidatos_2026": 1237
   },
   {
    "partido": "PSD",
@@ -182,5 +220,8 @@
   "outro_tema": "achada pelas buscas, mas trata de outro assunto"
  },
  "codificacao": "Posição das publicações de candidatos de 2026 (contas declaradas ao TSE) achadas no caso 023, lida no texto da publicação. Codificação feita pelo Claude (IA) em 02/11/2026 a pedido do responsável (\"quero essa área aplicada a todos os casos\"); conferência humana pendente. Vídeos sem texto legível ficam 'sem posição no texto' (o vídeo não foi assistido).",
- "faltam_codificar": []
+ "faltam_codificar": [
+  "tiktok:7702962670105824533",
+  "tiktok:7702971713247612180"
+ ]
 }

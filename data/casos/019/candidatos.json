@@ -1,21 +1,88 @@
 {
  "caso": "019",
- "gerado_em": "2026-11-02T20:51:47Z",
+ "gerado_em": "2026-11-02T22:26:17Z",
  "fonte_contas": "TSE, redes sociais declaradas pelos candidatos de 2026 (data/tse/redes_sociais_candidatos_2026.csv.gz)",
  "universo": {
-  "publicacoes_do_caso": 3284,
+  "publicacoes_do_caso": 3732,
   "contas_declaradas": 34320,
   "candidatos_com_conta": 15944,
   "nota": "Universo de publicações sobre o tema nas plataformas: ⛔ não informado. A amostra é o que as buscas do caso devolveram; candidato ausente aqui pode ter falado do tema com outras palavras ou em outra conta."
  },
- "publicacoes_de_candidatos": 0,
- "candidatos": [],
- "por_partido": {},
- "partidos_sem_publicacao_na_amostra": [
+ "publicacoes_de_candidatos": 3,
+ "candidatos": [
   {
+   "candidato": "FLAVIO BOLSONARO",
    "partido": "PL",
+   "cargo": "PRESIDENTE",
+   "uf": "BR",
+   "situacao": "2º TURNO",
+   "posicao": "nao_codificada",
+   "publicacoes": [
+    {
+     "rede": "tiktok",
+     "conta": "flaviobolsonaro",
+     "url": "https://www.tiktok.com/@flaviobolsonaro/video/7701071697998269702",
+     "publicado_em": "2026-10-26T20:11:24Z",
+     "curtidas": 474906,
+     "trecho": "Peço que assista até o final e compartilhe! #fy #bolsonaro #flaviobolsonaro",
+     "posicao": "nao_codificada"
+    }
+   ]
+  },
+  {
+   "candidato": "TÚLIO GADÊLHA",
+   "partido": "PSD",
+   "cargo": "SENADOR",
+   "uf": "PE",
+   "situacao": "NÃO ELEITO",
+   "posicao": "nao_codificada",
+   "publicacoes": [
+    {
+     "rede": "tiktok",
+     "conta": "tulio.gadelha",
+     "url": "https://www.tiktok.com/@tulio.gadelha/video/7701330134854323489",
+     "publicado_em": "2026-10-27T12:53:56Z",
+     "curtidas": 157695,
+     "trecho": "Meu novo prazer é assistir a esses vídeos das famílias tradicionais brasileiras comemorando a vitória da nossa soberania. Viva!",
+     "posicao": "nao_codificada"
+    }
+   ]
+  },
+  {
+   "candidato": "ERIKA HILTON",
+   "partido": "PSOL",
+   "cargo": "DEPUTADO FEDERAL",
+   "uf": "SP",
+   "situacao": "ELEITO POR QP",
+   "posicao": "nao_codificada",
+   "publicacoes": [
+    {
+     "rede": "tiktok",
+     "conta": "erikahiltonsp",
+     "url": "https://www.tiktok.com/@erikahiltonsp/video/7700403430166170887",
+     "publicado_em": "2026-10-25T00:58:19Z",
+     "curtidas": 1271002,
+     "trecho": "O que fizemos nas últimas 3 semanas não foi campanha. Foi história. Só se faz o que fizemos, na intensidade que fizemos, por amor ao nosso país e pela realização do sonho de um futuro melhor para todos que aqui vivem. Hoje, Lula fez sua últ",
+     "posicao": "nao_codificada"
+    }
+   ]
+  }
+ ],
+ "por_partido": {
+  "PL": {
+   "nao_codificada": 1,
    "candidatos_2026": 1647
   },
+  "PSD": {
+   "nao_codificada": 1,
+   "candidatos_2026": 1134
+  },
+  "PSOL": {
+   "nao_codificada": 1,
+   "candidatos_2026": 799
+  }
+ },
+ "partidos_sem_publicacao_na_amostra": [
   {
    "partido": "MDB",
    "candidatos_2026": 1420
@@ -31,10 +98,6 @@
   {
    "partido": "PODE",
    "candidatos_2026": 1237
-  },
-  {
-   "partido": "PSD",
-   "candidatos_2026": 1134
   },
   {
    "partido": "PDT",
@@ -59,10 +122,6 @@
   {
    "partido": "UNIÃO",
    "candidatos_2026": 846
-  },
-  {
-   "partido": "PSOL",
-   "candidatos_2026": 799
   },
   {
    "partido": "DC",
@@ -142,5 +201,9 @@
   "outro_tema": "achada pelas buscas, mas trata de outro assunto"
  },
  "codificacao": "⛔ Posição das publicações ainda não codificada neste caso.",
- "faltam_codificar": []
+ "faltam_codificar": [
+  "tiktok:7700403430166170887",
+  "tiktok:7701071697998269702",
+  "tiktok:7701330134854323489"
+ ]
 }

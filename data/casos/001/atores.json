@@ -1,7 +1,7 @@
 {
  "caso": "001",
  "titulo": "#brasilinteiro e #verdeeamarelo",
- "gerado_em_utc": "2026-11-02T21:35:47Z",
+ "gerado_em_utc": "2026-11-02T22:26:04Z",
  "pedido": "Responsável, 02/11/2026, 15h57: quais principais atores políticos, partidos e postagens ajudam a disseminar cada caso.",
  "universo": {
   "perfis_declarados_por_rede": {
@@ -15,9 +15,9 @@
   "nota": "Universo de atores políticos = perfis declarados ao TSE por todas as candidaturas de 2026, nas redes cruzadas. O universo de publicações do caso é ⛔ desconhecido (as plataformas não informam o total por termo)."
  },
  "amostra": {
-  "publicacoes_lidas": 11082,
+  "publicacoes_lidas": 11220,
   "por_rede": {
-   "tiktok": 188,
+   "tiktok": 326,
    "x": 10862,
    "instagram": 19,
    "facebook": 13
@@ -26,21 +26,35 @@
   "facebook": "⛔ não cruzado: a coleta do Facebook traz o nome do autor, não o endereço do perfil"
  },
  "resumo": {
-  "candidaturas_no_caso": 26,
-  "perfis_de_candidaturas_no_caso": 26,
-  "publicacoes_de_candidaturas": 26,
-  "pct_publicacoes_de_candidaturas": 0.23,
-  "contas_10mil_nao_candidatas": 240,
-  "publicacoes_de_contas_10mil": 539,
-  "pct_publicacoes_de_contas_10mil": 4.86,
+  "candidaturas_no_caso": 30,
+  "perfis_de_candidaturas_no_caso": 30,
+  "publicacoes_de_candidaturas": 31,
+  "pct_publicacoes_de_candidaturas": 0.28,
+  "contas_10mil_nao_candidatas": 303,
+  "publicacoes_de_contas_10mil": 606,
+  "pct_publicacoes_de_contas_10mil": 5.4,
   "publicacoes_de_candidaturas_por_posicao_do_partido_2t": {
-   "lula": 23,
-   "flavio": 3
+   "flavio": 7,
+   "lula": 24
   }
  },
  "criterio_nomeacao": "Nomeadas: candidaturas (perfil público declarado ao TSE) e contas com 10 mil+ seguidores. Demais contas só nas contagens.",
  "metodo": "Cruzamento exato da conta da publicação com o perfil declarado ao TSE na mesma rede (minúsculas, sem @). Partido e cargo vêm da candidatura; posição no 2º turno é a do partido (data/config/apoio_partidos_2t.json), não do candidato. Interações = curtidas + comentários + compartilhamentos informados pela plataforma na coleta.",
  "partidos": [
+  {
+   "partido": "PL",
+   "candidaturas": 3,
+   "publicacoes": 3,
+   "visualizacoes": 4818455,
+   "interacoes": 624140,
+   "posicao_2t": "flavio",
+   "nomes": [
+    "Capitao Assumçao",
+    "Delegado Caveira",
+    "João Roma"
+   ],
+   "pct_publicacoes_do_caso": 0.03
+  },
   {
    "partido": "PSB",
    "candidaturas": 1,
@@ -54,14 +68,38 @@
    "pct_publicacoes_do_caso": 0.01
   },
   {
-   "partido": "REPUBLICANOS",
+   "partido": "REDE",
    "candidaturas": 1,
    "publicacoes": 1,
-   "visualizacoes": 668809,
-   "interacoes": 99527,
+   "visualizacoes": 1504553,
+   "interacoes": 196972,
+   "posicao_2t": "lula",
+   "nomes": [
+    "André Janones"
+   ],
+   "pct_publicacoes_do_caso": 0.01
+  },
+  {
+   "partido": "REPUBLICANOS",
+   "candidaturas": 1,
+   "publicacoes": 2,
+   "visualizacoes": 719560,
+   "interacoes": 110519,
    "posicao_2t": "flavio",
    "nomes": [
     "Tarcísio"
+   ],
+   "pct_publicacoes_do_caso": 0.02
+  },
+  {
+   "partido": "PODE",
+   "candidaturas": 1,
+   "publicacoes": 1,
+   "visualizacoes": 736777,
+   "interacoes": 60170,
+   "posicao_2t": "flavio",
+   "nomes": [
+    "Sid Peão"
    ],
    "pct_publicacoes_do_caso": 0.01
   },
@@ -101,23 +139,11 @@
    "partido": "PP",
    "candidaturas": 1,
    "publicacoes": 1,
-   "visualizacoes": 248104,
-   "interacoes": 22283,
+   "visualizacoes": 248202,
+   "interacoes": 22288,
    "posicao_2t": "flavio",
    "nomes": [
     "Clarissa Tércio"
-   ],
-   "pct_publicacoes_do_caso": 0.01
-  },
-  {
-   "partido": "PL",
-   "candidaturas": 1,
-   "publicacoes": 1,
-   "visualizacoes": 32700,
-   "interacoes": 4549,
-   "posicao_2t": "flavio",
-   "nomes": [
-    "João Roma"
    ],
    "pct_publicacoes_do_caso": 0.01
   },
@@ -182,6 +208,50 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "deputadairacemavale",
+   "nome": "LULA & ASTRO COMUNICAÇÃO",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 188124,
+   "publicacoes": 1,
+   "visualizacoes": 2523949,
+   "interacoes": 554873,
+   "primeira": "2026-10-26T01:57:20Z",
+   "ultima": "2026-10-26T01:57:20Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@deputadairacemavale/video/7700789717725367573"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "plnacional_",
+   "nome": "plnacional_",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1851736,
+   "publicacoes": 2,
+   "visualizacoes": 3116702,
+   "interacoes": 519799,
+   "primeira": "2026-10-17T15:48:08Z",
+   "ultima": "2026-10-18T17:37:12Z",
+   "termos": [
+    "#verdeeamarelo"
+   ],
+   "top_url": "https://www.tiktok.com/@plnacional_/video/7698063259387186453"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "abi0ner",
    "nome": "Abioner",
    "numero": null,
@@ -222,6 +292,28 @@
     "#brasilinteiro"
    ],
    "top_url": "https://www.tiktok.com/@cnn/video/7700886337313869070"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "capitaoassumcao22",
+   "nome": "Capitao Assumçao",
+   "numero": "22190",
+   "partido": "PL",
+   "cargo": "Deputado Estadual",
+   "uf": "ES",
+   "situacao": "ELEITO POR QP",
+   "posicao_partido_2t": "flavio",
+   "seguidores": 403529,
+   "publicacoes": 1,
+   "visualizacoes": 3812573,
+   "interacoes": 496650,
+   "primeira": "2026-10-28T15:16:44Z",
+   "ultima": "2026-10-28T15:16:44Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@capitaoassumcao22/video/7701737916489288967"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -270,6 +362,28 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "ofofoquinho",
+   "nome": "ofofoquinho",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 450220,
+   "publicacoes": 1,
+   "visualizacoes": 1409900,
+   "interacoes": 348813,
+   "primeira": "2026-10-28T22:39:42Z",
+   "ultima": "2026-10-28T22:39:42Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@ofofoquinho/video/7701852053873757460"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "desimpedidos",
    "nome": "desimpedidos",
    "numero": null,
@@ -288,6 +402,116 @@
     "#brasilinteiro"
    ],
    "top_url": "https://www.tiktok.com/@desimpedidos/video/7700385343425514773"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "bandjornalismo",
+   "nome": "bandjornalismo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 3273378,
+   "publicacoes": 1,
+   "visualizacoes": 5783577,
+   "interacoes": 280995,
+   "primeira": "2026-10-27T23:16:06Z",
+   "ultima": "2026-10-27T23:16:06Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@bandjornalismo/video/7701490383699709191"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "cortesdogentili",
+   "nome": "Cortes do Danilo Gentili",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 14405,
+   "publicacoes": 1,
+   "visualizacoes": 826633,
+   "interacoes": 256015,
+   "primeira": "2026-10-29T23:58:49Z",
+   "ultima": "2026-10-29T23:58:49Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@cortesdogentili/video/7702243541170261269"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "tvcarlinhosmaiaof",
+   "nome": "Carlinhos Maia",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 121789,
+   "publicacoes": 1,
+   "visualizacoes": 2468578,
+   "interacoes": 252404,
+   "primeira": "2026-10-24T19:20:28Z",
+   "ultima": "2026-10-24T19:20:28Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@tvcarlinhosmaiaof/video/7700316370168188167"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "corazondeep",
+   "nome": "Brasilemfoco",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 21248,
+   "publicacoes": 2,
+   "visualizacoes": 834676,
+   "interacoes": 236351,
+   "primeira": "2026-10-24T12:14:24Z",
+   "ultima": "2026-10-25T18:39:23Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@corazondeep/video/7700206573347441921"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "conteudosaficos",
+   "nome": "Emy 💜",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 14904,
+   "publicacoes": 1,
+   "visualizacoes": 797264,
+   "interacoes": 220382,
+   "primeira": "2026-10-28T21:26:28Z",
+   "ultima": "2026-10-28T21:26:28Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@conteudosaficos/video/7701833178968968469"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -312,6 +536,72 @@
    "top_url": "https://www.tiktok.com/@norde_ste/video/7700299439751089415"
   },
   {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "andrejanones",
+   "nome": "André Janones",
+   "numero": "1813",
+   "partido": "REDE",
+   "cargo": "Deputado Federal",
+   "uf": "MG",
+   "situacao": "ELEITO POR QP",
+   "posicao_partido_2t": "lula",
+   "seguidores": 2472284,
+   "publicacoes": 1,
+   "visualizacoes": 1504553,
+   "interacoes": 196972,
+   "primeira": "2026-10-16T19:41:18Z",
+   "ultima": "2026-10-16T19:41:18Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@andrejanones/video/7697353047206415624"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "principeestranho",
+   "nome": "Príncipe estranho",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 32418,
+   "publicacoes": 1,
+   "visualizacoes": 1167285,
+   "interacoes": 183838,
+   "primeira": "2026-10-26T03:53:17Z",
+   "ultima": "2026-10-26T03:53:17Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@principeestranho/video/7700819609091443988"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "jotazzv7",
+   "nome": "Jotazz",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 75099,
+   "publicacoes": 1,
+   "visualizacoes": 869136,
+   "interacoes": 154202,
+   "primeira": "2026-10-28T14:22:38Z",
+   "ultima": "2026-10-28T14:22:38Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@jotazzv7/video/7701723984424914196"
+  },
+  {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
    "conta": "bruna_very",
@@ -332,6 +622,95 @@
     "#verdeeamarelo"
    ],
    "top_url": "https://www.tiktok.com/@bruna_very/video/7697693202714758452"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "delegadocaveira",
+   "nome": "Delegado Caveira",
+   "numero": "2200",
+   "partido": "PL",
+   "cargo": "Deputado Federal",
+   "uf": "PA",
+   "situacao": "ELEITO POR QP",
+   "posicao_partido_2t": "flavio",
+   "seguidores": 434014,
+   "publicacoes": 1,
+   "visualizacoes": 973182,
+   "interacoes": 122941,
+   "primeira": "2026-10-28T00:44:28Z",
+   "ultima": "2026-10-28T00:44:28Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@delegadocaveira/video/7701513135223573767"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "mineserie.1",
+   "nome": "Mineserie.1",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 77335,
+   "publicacoes": 1,
+   "visualizacoes": 921530,
+   "interacoes": 118287,
+   "primeira": "2026-10-20T17:22:30Z",
+   "ultima": "2026-10-20T17:22:30Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@mineserie.1/video/7698801640626851079"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "tarcisiogdf",
+   "nome": "Tarcísio",
+   "numero": "10",
+   "partido": "REPUBLICANOS",
+   "cargo": "Governador",
+   "uf": "SP",
+   "situacao": "ELEITO",
+   "posicao_partido_2t": "flavio",
+   "seguidores": 1340511,
+   "publicacoes": 2,
+   "visualizacoes": 719560,
+   "interacoes": 110519,
+   "primeira": "2026-10-19T12:31:50Z",
+   "ultima": "2026-10-27T17:19:35Z",
+   "termos": [
+    "#verdeeamarelo",
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@tarcisiogdf/video/7701398498729659668"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "fernandomiranda777_",
+   "nome": "Fernando Miranda - Marketing",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 477084,
+   "publicacoes": 1,
+   "visualizacoes": 811894,
+   "interacoes": 103454,
+   "primeira": "2026-10-29T20:58:27Z",
+   "ultima": "2026-10-29T20:58:27Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@fernandomiranda777_/video/7702197061365796114"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -356,26 +735,26 @@
    "top_url": "https://www.tiktok.com/@quelejpereiraa/video/7697657155079425301"
   },
   {
-   "tipo": "candidatura (perfil declarado ao TSE)",
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
-   "conta": "tarcisiogdf",
-   "nome": "Tarcísio",
-   "numero": "10",
-   "partido": "REPUBLICANOS",
-   "cargo": "Governador",
-   "uf": "SP",
-   "situacao": "ELEITO",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 1340479,
+   "conta": "_brasil.de.todos_2",
+   "nome": "Brasil De Todos",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 130610,
    "publicacoes": 1,
-   "visualizacoes": 668809,
-   "interacoes": 99527,
-   "primeira": "2026-10-27T17:19:35Z",
-   "ultima": "2026-10-27T17:19:35Z",
+   "visualizacoes": 432402,
+   "interacoes": 93086,
+   "primeira": "2026-10-17T22:18:36Z",
+   "ultima": "2026-10-17T22:18:36Z",
    "termos": [
     "#brasilinteiro"
    ],
-   "top_url": "https://www.tiktok.com/@tarcisiogdf/video/7701398498729659668"
+   "top_url": "https://www.tiktok.com/@_brasil.de.todos_2/video/7697764714243280135"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -402,6 +781,28 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "eclipseex404",
+   "nome": "Eclipse 404",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 82527,
+   "publicacoes": 1,
+   "visualizacoes": 404026,
+   "interacoes": 69494,
+   "primeira": "2026-10-30T15:59:34Z",
+   "ultima": "2026-10-30T15:59:34Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@eclipseex404/video/7702491118646119698"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "conversapolitica",
    "nome": "Conversa Política",
    "numero": null,
@@ -424,6 +825,94 @@
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "TikTok",
+   "conta": "sinaltv",
+   "nome": "1%",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 23354,
+   "publicacoes": 1,
+   "visualizacoes": 470202,
+   "interacoes": 63663,
+   "primeira": "2026-10-26T22:29:19Z",
+   "ultima": "2026-10-26T22:29:19Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@sinaltv/video/7701107219277810952"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "tiago.mreis",
+   "nome": "Conexão de Direita",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 227499,
+   "publicacoes": 1,
+   "visualizacoes": 547014,
+   "interacoes": 60690,
+   "primeira": "2026-10-30T00:30:02Z",
+   "ultima": "2026-10-30T00:30:02Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@tiago.mreis/video/7702251589754457364"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "siidpeao",
+   "nome": "Sid Peão",
+   "numero": "20080",
+   "partido": "PODE",
+   "cargo": "Deputado Estadual",
+   "uf": "GO",
+   "situacao": "SUPLENTE",
+   "posicao_partido_2t": "flavio",
+   "seguidores": 53405,
+   "publicacoes": 1,
+   "visualizacoes": 736777,
+   "interacoes": 60170,
+   "primeira": "2026-10-16T23:33:51Z",
+   "ultima": "2026-10-16T23:33:51Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@siidpeao/video/7697412987572768016"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "pedrolucasoficial4311",
+   "nome": "Pedro Lucas",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 33401,
+   "publicacoes": 1,
+   "visualizacoes": 525595,
+   "interacoes": 60146,
+   "primeira": "2026-10-31T01:18:16Z",
+   "ultima": "2026-10-31T01:18:16Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@pedrolucasoficial4311/video/7702635061451033863"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
    "conta": "desmistifica.br",
    "nome": "Desmistificando a Política",
    "numero": null,
@@ -432,10 +921,10 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 30601,
+   "seguidores": 30641,
    "publicacoes": 1,
-   "visualizacoes": 301953,
-   "interacoes": 53318,
+   "visualizacoes": 302071,
+   "interacoes": 53329,
    "primeira": "2026-10-21T17:51:32Z",
    "ultima": "2026-10-21T17:51:32Z",
    "termos": [
@@ -498,16 +987,38 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 15972,
+   "seguidores": 16068,
    "publicacoes": 1,
-   "visualizacoes": 384084,
-   "interacoes": 45914,
+   "visualizacoes": 386906,
+   "interacoes": 46221,
    "primeira": "2026-10-29T17:44:28Z",
    "ultima": "2026-10-29T17:44:28Z",
    "termos": [
     "#brasilinteiro"
    ],
    "top_url": "https://www.tiktok.com/@krasybk/video/7702147080101334292"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "ki.000007",
+   "nome": "Ki.007",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 42581,
+   "publicacoes": 1,
+   "visualizacoes": 213717,
+   "interacoes": 45951,
+   "primeira": "2026-10-28T12:14:33Z",
+   "ultima": "2026-10-28T12:14:33Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@ki.000007/video/7701690982823202069"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -574,28 +1085,6 @@
     "#brasilinteiro"
    ],
    "top_url": "https://www.tiktok.com/@ffdghhv0/video/7697581078462139666"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "plnacional_",
-   "nome": "plnacional_",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1400000,
-   "publicacoes": 1,
-   "visualizacoes": 158200,
-   "interacoes": 28344,
-   "primeira": "2026-10-17T15:48:08Z",
-   "ultima": "2026-10-17T15:48:08Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://www.tiktok.com/@plnacional_/video/7697664071117671701"
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -709,6 +1198,28 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "jorgevercillooficial",
+   "nome": "Jorge Vercillo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 126112,
+   "publicacoes": 1,
+   "visualizacoes": 106122,
+   "interacoes": 25570,
+   "primeira": "2026-10-27T14:35:26Z",
+   "ultima": "2026-10-27T14:35:26Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@jorgevercillooficial/video/7701356190843882760"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
    "conta": "iraneidearaujo4",
    "nome": "neide❤️‍🔥✨1️⃣3️⃣⚓🚩",
@@ -752,6 +1263,50 @@
    "top_url": "https://x.com/samuel_deassis/status/2111490905215554034"
   },
   {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "jj.andrade3",
+   "nome": "JJ Andrade",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 22012,
+   "publicacoes": 1,
+   "visualizacoes": 418122,
+   "interacoes": 23030,
+   "primeira": "2026-10-17T14:56:23Z",
+   "ultima": "2026-10-17T14:56:23Z",
+   "termos": [
+    "#verdeeamarelo"
+   ],
+   "top_url": "https://www.tiktok.com/@jj.andrade3/video/7697650740466175252"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "diarioderecife",
+   "nome": "Diário de Recife",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 247525,
+   "publicacoes": 1,
+   "visualizacoes": 289427,
+   "interacoes": 22452,
+   "primeira": "2026-10-25T11:17:00Z",
+   "ultima": "2026-10-25T11:17:00Z",
+   "termos": [
+    "#verdeeamarelo"
+   ],
+   "top_url": "https://www.tiktok.com/@diarioderecife/video/7700562892487134485"
+  },
+  {
    "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "TikTok",
    "conta": "clarissatercio",
@@ -762,16 +1317,38 @@
    "uf": "PE",
    "situacao": "ELEITO POR QP",
    "posicao_partido_2t": "flavio",
-   "seguidores": 139882,
+   "seguidores": 139890,
    "publicacoes": 1,
-   "visualizacoes": 248104,
-   "interacoes": 22283,
+   "visualizacoes": 248202,
+   "interacoes": 22288,
    "primeira": "2026-10-17T20:31:31Z",
    "ultima": "2026-10-17T20:31:31Z",
    "termos": [
     "#verdeeamarelo"
    ],
    "top_url": "https://www.tiktok.com/@clarissatercio/video/7697737099302145287"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "ptbrasil",
+   "nome": "Partido dos Trabalhadores",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 3121454,
+   "publicacoes": 1,
+   "visualizacoes": 95566,
+   "interacoes": 20504,
+   "primeira": "2026-10-18T22:27:56Z",
+   "ultima": "2026-10-18T22:27:56Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@ptbrasil/video/7698138167550954760"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -806,9 +1383,9 @@
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 31874,
+   "seguidores": 31875,
    "publicacoes": 1,
-   "visualizacoes": 127040,
+   "visualizacoes": 127041,
    "interacoes": 17858,
    "primeira": "2026-10-17T16:08:22Z",
    "ultima": "2026-10-17T16:08:22Z",
@@ -816,6 +1393,28 @@
     "#verdeeamarelo"
    ],
    "top_url": "https://www.tiktok.com/@arine_oliveira13/video/7697669292334009621"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "sbtnews",
+   "nome": "SBT News",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 4513306,
+   "publicacoes": 1,
+   "visualizacoes": 227674,
+   "interacoes": 16410,
+   "primeira": "2026-10-26T00:29:07Z",
+   "ultima": "2026-10-26T00:29:07Z",
+   "termos": [
+    "#brasilinteiro"
+   ],
+   "top_url": "https://www.tiktok.com/@sbtnews/video/7700767009608355093"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -875,7 +1474,7 @@
    "posicao_partido_2t": null,
    "seguidores": 24509,
    "publicacoes": 1,
-   "visualizacoes": 94305,
+   "visualizacoes": 94308,
    "interacoes": 15531,
    "primeira": "2026-10-17T23:03:17Z",
    "ultima": "2026-10-17T23:03:17Z",
@@ -883,586 +1482,9 @@
     "#verdeeamarelo"
    ],
    "top_url": "https://www.tiktok.com/@indio.souza47/video/7697776182120566037"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "paginass",
-   "nome": ".",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1381226,
-   "publicacoes": 1,
-   "visualizacoes": 307581,
-   "interacoes": 15199,
-   "primeira": "2026-10-17T17:37:08Z",
-   "ultima": "2026-10-17T17:37:08Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://www.tiktok.com/@paginass/video/7697692170437840144"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "KleberRosa50",
-   "nome": "Kleber  Rosa",
-   "numero": "50500",
-   "partido": "PSOL",
-   "cargo": "Deputado Estadual",
-   "uf": "BA",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "lula",
-   "seguidores": 2790,
-   "publicacoes": 1,
-   "visualizacoes": 57185,
-   "interacoes": 15088,
-   "primeira": "2026-10-17T12:00:03Z",
-   "ultima": "2026-10-17T12:00:03Z",
-   "termos": [
-    "#brasilinteiro|#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/KleberRosa50/status/2111427014766776438"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "naimar_da",
-   "nome": "Nina - 🇧🇷 LULA 2026!",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 25744,
-   "publicacoes": 102,
-   "visualizacoes": 43734,
-   "interacoes": 14084,
-   "primeira": "2026-10-17T12:00:29Z",
-   "ultima": "2026-10-17T13:31:58Z",
-   "termos": [
-    "#brasilinteiro",
-    "#brasilinteiro|#verdeeamarelo",
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/naimar_da/status/2111427123177001161"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "cavalodterno",
-   "nome": "Cavalodeterno",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 16000,
-   "publicacoes": 1,
-   "visualizacoes": 50200,
-   "interacoes": 13456,
-   "primeira": "2026-10-16T16:12:17Z",
-   "ultima": "2026-10-16T16:12:17Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://www.tiktok.com/@cavalodterno/video/7697299212140104978"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "rosamst_",
-   "nome": "Rosa Amorim",
-   "numero": "1303",
-   "partido": "PT",
-   "cargo": "Deputado Federal",
-   "uf": "PE",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "lula",
-   "seguidores": 9879,
-   "publicacoes": 1,
-   "visualizacoes": 39715,
-   "interacoes": 13373,
-   "primeira": "2026-10-17T12:17:44Z",
-   "ultima": "2026-10-17T12:17:44Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://x.com/rosamst_/status/2111431465049166035"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "seraossay",
-   "nome": "yasmim.",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 27439,
-   "publicacoes": 2,
-   "visualizacoes": 89776,
-   "interacoes": 13247,
-   "primeira": "2026-10-17T15:04:13Z",
-   "ultima": "2026-10-17T17:23:55Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://www.tiktok.com/@seraossay/video/7697652760380050706"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "alelecleclec",
-   "nome": "ALEC - EM MODO MILITANTE ⭐️1️⃣3️⃣⭐️",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 46358,
-   "publicacoes": 1,
-   "visualizacoes": 44115,
-   "interacoes": 13201,
-   "primeira": "2026-10-17T12:00:01Z",
-   "ultima": "2026-10-17T12:00:01Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://x.com/alelecleclec/status/2111427008580465059"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "thiagodosreis8",
-   "nome": "Thiago dos Reis",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 999900,
-   "publicacoes": 1,
-   "visualizacoes": 35600,
-   "interacoes": 12750,
-   "primeira": "2026-10-17T14:34:09Z",
-   "ultima": "2026-10-17T14:34:09Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://www.tiktok.com/@thiagodosreis8/video/7697645006923861268"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "soldadosdolula13",
-   "nome": "SOLDADOS do LULA ♥️",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 236460,
-   "publicacoes": 1,
-   "visualizacoes": 57410,
-   "interacoes": 12541,
-   "primeira": "2026-10-23T00:24:07Z",
-   "ultima": "2026-10-23T00:24:07Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://www.tiktok.com/@soldadosdolula13/video/7699652462592019733"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "eurenesilva",
-   "nome": "Rene Silva",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 304526,
-   "publicacoes": 1,
-   "visualizacoes": 32179,
-   "interacoes": 12494,
-   "primeira": "2026-10-17T12:10:45Z",
-   "ultima": "2026-10-17T12:10:45Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/eurenesilva/status/2111429709049610440"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "jfvdeos6",
-   "nome": "JfVídeos",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 20535,
-   "publicacoes": 1,
-   "visualizacoes": 103329,
-   "interacoes": 12340,
-   "primeira": "2026-10-25T01:58:27Z",
-   "ultima": "2026-10-25T01:58:27Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://www.tiktok.com/@jfvdeos6/video/7700418938840124678"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "oicram2016",
-   "nome": "🚩🏴🇧🇷M@rcio🇧🇷🏴🚩",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 22877,
-   "publicacoes": 2,
-   "visualizacoes": 33629,
-   "interacoes": 11182,
-   "primeira": "2026-10-17T12:06:53Z",
-   "ultima": "2026-10-17T13:42:32Z",
-   "termos": [
-    "#verdeeamarelo",
-    "#brasilinteiro"
-   ],
-   "top_url": "https://x.com/oicram2016/status/2111428733835898985"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "somostodosesquerdista",
-   "nome": "HOMENAGEM    AO    PT",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 295000,
-   "publicacoes": 2,
-   "visualizacoes": 32679,
-   "interacoes": 11159,
-   "primeira": "2026-10-17T12:00:33Z",
-   "ultima": "2026-10-18T12:51:18Z",
-   "termos": [
-    "#brasilinteiro|#verdeeamarelo",
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://www.tiktok.com/@somostodosesquerdista/video/7697605431354608897"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "rodrigotuitta",
-   "nome": "Rodrigo",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 13833,
-   "publicacoes": 1,
-   "visualizacoes": 30148,
-   "interacoes": 10845,
-   "primeira": "2026-10-17T12:02:13Z",
-   "ultima": "2026-10-17T12:02:13Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/rodrigotuitta/status/2111427561230393574"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "jonasdiandrade",
-   "nome": "Jonas Di Andrade",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 45773,
-   "publicacoes": 1,
-   "visualizacoes": 30549,
-   "interacoes": 10275,
-   "primeira": "2026-10-17T12:05:07Z",
-   "ultima": "2026-10-17T12:05:07Z",
-   "termos": [
-    "#brasilinteiro|#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/jonasdiandrade/status/2111428289583534425"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "WilliamSiriRJ",
-   "nome": "William Siri",
-   "numero": "50",
-   "partido": "PSOL",
-   "cargo": "Governador",
-   "uf": "RJ",
-   "situacao": "NÃO ELEITO",
-   "posicao_partido_2t": "lula",
-   "seguidores": 10228,
-   "publicacoes": 1,
-   "visualizacoes": 31630,
-   "interacoes": 10174,
-   "primeira": "2026-10-17T12:13:59Z",
-   "ultima": "2026-10-17T12:13:59Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://x.com/WilliamSiriRJ/status/2111430522366746881"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "florapaulita",
-   "nome": "Flora Paulita",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 39630,
-   "publicacoes": 1,
-   "visualizacoes": 30109,
-   "interacoes": 9688,
-   "primeira": "2026-10-17T12:02:03Z",
-   "ultima": "2026-10-17T12:02:03Z",
-   "termos": [
-    "#brasilinteiro|#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/florapaulita/status/2111427516451979331"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "guuysimoes",
-   "nome": "Guy",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 23137,
-   "publicacoes": 1,
-   "visualizacoes": 23081,
-   "interacoes": 9051,
-   "primeira": "2026-10-17T12:30:47Z",
-   "ultima": "2026-10-17T12:30:47Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://x.com/guuysimoes/status/2111434749344616524"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "noticiasc2026",
-   "nome": "NoticiasSC",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 27278,
-   "publicacoes": 1,
-   "visualizacoes": 105220,
-   "interacoes": 9001,
-   "primeira": "2026-10-27T23:37:25Z",
-   "ultima": "2026-10-27T23:37:25Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://www.tiktok.com/@noticiasc2026/video/7701495793525493000"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "xicosa",
-   "nome": "xico sá",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1568514,
-   "publicacoes": 1,
-   "visualizacoes": 25495,
-   "interacoes": 8889,
-   "primeira": "2026-10-18T01:22:51Z",
-   "ultima": "2026-10-18T01:22:51Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/xicosa/status/2111629046559731998"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "mandstu25",
-   "nome": "Amandinha 🇧🇷🚩",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 23258,
-   "publicacoes": 1,
-   "visualizacoes": 25892,
-   "interacoes": 8070,
-   "primeira": "2026-10-17T12:00:51Z",
-   "ultima": "2026-10-17T12:00:51Z",
-   "termos": [
-    "#brasilinteiro|#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/mandstu25/status/2111427215716135040"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "lucasapaulino",
-   "nome": "Lucas Paulino",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 33096,
-   "publicacoes": 1,
-   "visualizacoes": 17789,
-   "interacoes": 6386,
-   "primeira": "2026-10-17T12:05:23Z",
-   "ultima": "2026-10-17T12:05:23Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://x.com/lucasapaulino/status/2111428356487180671"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "popline",
-   "nome": "POPline",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 2604568,
-   "publicacoes": 1,
-   "visualizacoes": 44604,
-   "interacoes": 5527,
-   "primeira": "2026-10-27T14:24:28Z",
-   "ultima": "2026-10-27T14:24:28Z",
-   "termos": [
-    "#verdeeamarelo"
-   ],
-   "top_url": "https://www.tiktok.com/@popline/video/7701353368106683668"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "antoniobarata6483",
-   "nome": "António Barata 🇵🇹",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 12940,
-   "publicacoes": 1,
-   "visualizacoes": 140287,
-   "interacoes": 5474,
-   "primeira": "2026-10-21T17:26:58Z",
-   "ultima": "2026-10-21T17:26:58Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://www.tiktok.com/@antoniobarata6483/video/7699173877179616534"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "TikTok",
-   "conta": "jf_1930",
-   "nome": "jf_1930",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 116300,
-   "publicacoes": 1,
-   "visualizacoes": 109800,
-   "interacoes": 5342,
-   "primeira": "2026-10-16T12:02:00Z",
-   "ultima": "2026-10-16T12:02:00Z",
-   "termos": [
-    "#brasilinteiro"
-   ],
-   "top_url": "https://www.tiktok.com/@jf_1930/video/7697234720924486929"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "JFreiress_",
-   "nome": "Julio Freiress",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 50349,
-   "publicacoes": 3,
-   "visualizacoes": 17564,
-   "interacoes": 5247,
-   "primeira": "2026-10-17T12:04:17Z",
-   "ultima": "2026-10-17T12:08:32Z",
-   "termos": [
-    "#verdeeamarelo",
-    "#brasilinteiro|#verdeeamarelo"
-   ],
-   "top_url": "https://x.com/JFreiress_/status/2111428082527584507"
   }
  ],
- "atores_total": 266,
+ "atores_total": 333,
  "postagens": [
   {
    "rede": "TikTok",
@@ -1490,6 +1512,18 @@
   },
   {
    "rede": "TikTok",
+   "conta": "deputadairacemavale",
+   "nome": "LULA & ASTRO COMUNICAÇÃO",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@deputadairacemavale/video/7700789717725367573",
+   "texto": "#OBRIGADO A TODOS OS BRASILEIROS E EM ESPECIAL...#LULA #BRASIL #PATRIA #TETRA",
+   "publicado_em": "2026-10-26T01:57:20Z",
+   "interacoes": 554873,
+   "visualizacoes": 2523949
+  },
+  {
+   "rede": "TikTok",
    "conta": "abi0ner",
    "nome": "Abioner",
    "tipo": "conta com 10 mil+ seguidores",
@@ -1511,6 +1545,30 @@
    "publicado_em": "2026-10-26T08:12:55Z",
    "interacoes": 508378,
    "visualizacoes": 2725267
+  },
+  {
+   "rede": "TikTok",
+   "conta": "capitaoassumcao22",
+   "nome": "Capitao Assumçao",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PL",
+   "url": "https://www.tiktok.com/@capitaoassumcao22/video/7701737916489288967",
+   "texto": "Operação ALBA A operação que mostrou a total falência da segurança do Brasil e colocou em liberdade o líder que vai estar denunciando em solo americano toda a podridão que se instalou no Brasil: Flávio Bolsonaro.",
+   "publicado_em": "2026-10-28T15:16:44Z",
+   "interacoes": 496650,
+   "visualizacoes": 3812573
+  },
+  {
+   "rede": "TikTok",
+   "conta": "plnacional_",
+   "nome": "plnacional_",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@plnacional_/video/7698063259387186453",
+   "texto": "A vibração verde e amarela arrasta multidões e mostra a força de um Brasil que quer mudança! Você pode fazer parte dessa história e dizer com orgulho: eu sou a geração que libertou o Brasil das garras do PT! VOTE 22, Flávio Bolsonaro Presidente do Brasil! 🇧🇷",
+   "publicado_em": "2026-10-18T17:37:12Z",
+   "interacoes": 491455,
+   "visualizacoes": 2958502
   },
   {
    "rede": "TikTok",
@@ -1538,6 +1596,18 @@
   },
   {
    "rede": "TikTok",
+   "conta": "ofofoquinho",
+   "nome": "ofofoquinho",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@ofofoquinho/video/7701852053873757460",
+   "texto": "📺 SÁTIRA TELEVISIVA E REPERCUSSÃO! Uma montagem que viralizou no ambiente virtual inseriu o rosto do senador Flávio Bolsonaro em uma icônica cena da novela Duas Caras (TV Globo), na qual a personagem Sílvia (interpretada por Alinne Moraes) surta e é internada em uma clínica psiqu",
+   "publicado_em": "2026-10-28T22:39:42Z",
+   "interacoes": 348813,
+   "visualizacoes": 1409900
+  },
+  {
+   "rede": "TikTok",
    "conta": "desimpedidos",
    "nome": "desimpedidos",
    "tipo": "conta com 10 mil+ seguidores",
@@ -1550,99 +1620,51 @@
   },
   {
    "rede": "TikTok",
-   "conta": "norde_ste",
-   "nome": "Nordeste",
+   "conta": "bandjornalismo",
+   "nome": "bandjornalismo",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://www.tiktok.com/@norde_ste/video/7700299439751089415",
-   "texto": "#nordeste #eleicoes2026",
-   "publicado_em": "2026-10-24T18:14:45Z",
-   "interacoes": 199540,
-   "visualizacoes": 1610629
+   "url": "https://www.tiktok.com/@bandjornalismo/video/7701490383699709191",
+   "texto": "Após descumprir ordem do STF para entrega de passaportes, senador teve documentos cancelados; investigação apura suposta fuga do país em direção aos EUA. 📸 Band TV 📲 Leia a matéria completa no site band.com.br #BandJornalismo #BandEleicoes2026",
+   "publicado_em": "2026-10-27T23:16:06Z",
+   "interacoes": 280995,
+   "visualizacoes": 5783577
   },
   {
    "rede": "TikTok",
-   "conta": "bruna_very",
-   "nome": "Bruna Veríssimo",
+   "conta": "cortesdogentili",
+   "nome": "Cortes do Danilo Gentili",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://www.tiktok.com/@bruna_very/video/7697693202714758452",
-   "texto": "Todo mundo de verde e amarelo 🇧🇷🇧🇷",
-   "publicado_em": "2026-10-17T17:41:09Z",
-   "interacoes": 123883,
-   "visualizacoes": 769375
+   "url": "https://www.tiktok.com/@cortesdogentili/video/7702243541170261269",
+   "texto": "DANILO GENTILI VOLTA A VIRALIZAR COM CRÍTICAS AO PT Em um vídeo que voltou a circular nas redes, Danilo Gentili mostra documentos que, segundo ele, seriam exemplos de tentativas de censurar suas críticas a políticos do PT. O humorista relata episódios envolvendo notificações, uma",
+   "publicado_em": "2026-10-29T23:58:49Z",
+   "interacoes": 256015,
+   "visualizacoes": 826633
   },
   {
    "rede": "TikTok",
-   "conta": "quelejpereiraa",
-   "nome": "Quele Pereira",
+   "conta": "tvcarlinhosmaiaof",
+   "nome": "Carlinhos Maia",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://www.tiktok.com/@quelejpereiraa/video/7697657155079425301",
-   "texto": "Famosos de esquerda aderem ao movimento de Janones | Verde e Amarelo | Lula | Eleições 2026 | Bruna Mascarenha | Klara Castanho | Alessandra Negrini | Segundo Turno | #eleicoes2026 #verdeeamarelo #klaracastanho #joaolucas #tiagoiorc",
-   "publicado_em": "2026-10-17T15:21:16Z",
-   "interacoes": 101596,
-   "visualizacoes": 482300
+   "url": "https://www.tiktok.com/@tvcarlinhosmaiaof/video/7700316370168188167",
+   "texto": "#carlinhosmaia #flaviobolsonaro #eleicoes",
+   "publicado_em": "2026-10-24T19:20:28Z",
+   "interacoes": 252404,
+   "visualizacoes": 2468578
   },
   {
    "rede": "TikTok",
-   "conta": "tarcisiogdf",
-   "nome": "Tarcísio",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "REPUBLICANOS",
-   "url": "https://www.tiktok.com/@tarcisiogdf/video/7701398498729659668",
-   "texto": "A eleição passou. O Brasil continua.",
-   "publicado_em": "2026-10-27T17:19:35Z",
-   "interacoes": 99527,
-   "visualizacoes": 668809
-  },
-  {
-   "rede": "X",
-   "conta": "CarolCastroReal",
-   "nome": "* Carol Castro *",
+   "conta": "corazondeep",
+   "nome": "Brasilemfoco",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://x.com/CarolCastroReal/status/2111427154353471773",
-   "texto": "#BrasilInteiro #VerdeEAmarelo https://t.co/Adp0xixyqJ",
-   "publicado_em": "2026-10-17T12:00:36Z",
-   "interacoes": 86058,
-   "visualizacoes": 250955
-  },
-  {
-   "rede": "TikTok",
-   "conta": "conversapolitica",
-   "nome": "Conversa Política",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@conversapolitica/video/7701022870109080840",
-   "texto": "Um dia triste para o Brasil... #politica #flaviobolsonaro #lula #brasil #eleicoes",
-   "publicado_em": "2026-10-26T17:01:58Z",
-   "interacoes": 64050,
-   "visualizacoes": 523007
-  },
-  {
-   "rede": "TikTok",
-   "conta": "desmistifica.br",
-   "nome": "Desmistificando a Política",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://www.tiktok.com/@desmistifica.br/video/7699180208124972309",
-   "texto": "Um plano pra matar o presidente eleito. Ninguém morreu. Então por que tem general condenado a 26 anos? 📌 Em 4 partes: - O que o Punhal Verde e Amarelo previa, segundo a PF - A noite de 15/12/2022 e o \"abortar\" - Quem sabia: acusação e defesa de cada um - Por que tentar o golpe já",
-   "publicado_em": "2026-10-21T17:51:32Z",
-   "interacoes": 53318,
-   "visualizacoes": 301953
-  },
-  {
-   "rede": "X",
-   "conta": "xbzpapi",
-   "nome": "Papi",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/xbzpapi/status/2111430815024349310",
-   "texto": "Chocado que o Janones colocou o Lula, Alckmin e Dona Lu pra fazer trend. Tem que respeitar. #OverdeAmareloENosso #BrasilInteiro #VerdeEAmarelo https://t.co/bS6mZwlxnS",
-   "publicado_em": "2026-10-17T12:15:09Z",
-   "interacoes": 49462,
-   "visualizacoes": 179287
+   "url": "https://www.tiktok.com/@corazondeep/video/7700206573347441921",
+   "texto": "",
+   "publicado_em": "2026-10-24T12:14:24Z",
+   "interacoes": 229495,
+   "visualizacoes": 815973
   }
  ],
  "arquivos": {
