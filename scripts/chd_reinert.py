@@ -132,15 +132,43 @@ def chi2_dois_grupos(a: np.ndarray, tot: np.ndarray) -> float:
     return float(((a - ea) ** 2 / ea).sum() + ((b - eb) ** 2 / eb).sum())
 
 
+SVD_COMPLETA_ATE = 600  # linhas ou colunas: até aqui, SVD completa; acima, SVD aleatorizada (mesmo 1º fator, sem montar a matriz inteira)
+
+
 def primeiro_fator(X: np.ndarray) -> np.ndarray:
-    """Coordenadas das linhas no 1º fator da análise de correspondência."""
+    """Coordenadas das linhas no 1º fator da análise de correspondência.
+
+    02/11/2026: nos corpora de ~18 mil comentários (casos 005, 006), a SVD completa da matriz padronizada levava ~2 s por divisão
+    num corte de 3 mil comentários (perfil: 199 de 232 s) e estourava 25 min no corpus inteiro. Acima de SVD_COMPLETA_ATE, o 1º par
+    singular vem de uma SVD aleatorizada com iterações de potência (Halko, Martinsson & Tropp, 2011) aplicada à matriz padronizada
+    sem montá-la (produtos com P e com r·cᵀ). O sinal do fator é fixado (maior componente em valor absoluto positivo) nos dois
+    caminhos, para o resultado não depender da biblioteca.
+    Achado do teste (corte de 2.774 comentários do caso 005): os dois maiores valores singulares são iguais a 1, o que indica
+    grupos de segmentos sem nenhuma forma em comum com o resto (componentes desconexas). Nesse caso o "1º fator" não é único,
+    nem na SVD completa; com bloco de 30 vetores e 8 iterações, o fator aleatorizado ficou com |cos| 0,999 do da SVD completa."""
     P = X / X.sum()
     r, c = P.sum(1), P.sum(0)
     keep = c > 0
     P, c = P[:, keep], c[keep]
-    S = (P - np.outer(r, c)) / np.sqrt(np.outer(r, c))
-    U, s, _ = np.linalg.svd(S, full_matrices=False)
-    return U[:, 0] * s[0] / np.sqrt(r)
+    sr, sc = np.sqrt(r), np.sqrt(c)
+    if min(P.shape) <= SVD_COMPLETA_ATE:
+        S = (P - np.outer(r, c)) / np.outer(sr, sc)
+        U, s, _ = np.linalg.svd(S, full_matrices=False)
+        u, s0 = U[:, 0], s[0]
+    else:
+        mv = lambda V: (P @ (V / sc[:, None]) - np.outer(r, sc @ V)) / sr[:, None]  # noqa: E731  S @ V
+        rmv = lambda U_: (P.T @ (U_ / sr[:, None]) - np.outer(c, sr @ U_)) / sc[:, None]  # noqa: E731  Sᵀ @ U
+        Q = np.random.default_rng(0).standard_normal((P.shape[1], 30))
+        Q, _ = np.linalg.qr(Q)
+        for _ in range(8):
+            Y, _ = np.linalg.qr(mv(Q))
+            Q, _ = np.linalg.qr(rmv(Y))
+        Y, _ = np.linalg.qr(mv(Q))
+        Ub, s, _ = np.linalg.svd(rmv(Y).T, full_matrices=False)
+        u, s0 = Y @ Ub[:, 0], s[0]
+    if u[np.argmax(np.abs(u))] < 0:
+        u = -u
+    return u * s0 / sr
 
 
 def dividir(X: np.ndarray, max_iter: int = 30, min_lado: int = 1) -> tuple[np.ndarray, float]:

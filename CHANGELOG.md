@@ -4,6 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.268 — CHD mais rápida (1º fator por SVD aleatorizada) e classes lematizadas do caso 005 (2026-11-02) ⚠️
+
+- **Por quê:** a reconstrução de 005–007 estourava 25 minutos (C19.267). Perfil num corte de 3.000 comentários do 005: 199 dos 232 s iam para a SVD completa da matriz padronizada, chamada a cada divisão (`primeiro_fator`, 100 chamadas).
+- **O que mudou:** `scripts/chd_reinert.py` → `primeiro_fator`.
+  - Até 600 linhas ou colunas, segue a SVD completa. Acima disso, o 1º fator vem de uma SVD aleatorizada (Halko, Martinsson & Tropp, 2011: bloco de 30 vetores, 8 iterações de potência, semente fixa), aplicada à matriz sem montá-la.
+  - O sinal do fator é fixado nos dois caminhos.
+- **Medido:**
+  - No corte de 2.774 × 1.847, o 1º fator levou 4,57 s com a SVD completa e 0,27 s com a aleatorizada (bloco de 12; com 30, 0,25 s); |cos| entre os dois de 0,999.
+  - Achado: os dois maiores valores singulares são iguais a 1, o que indica grupos de comentários sem nenhuma forma em comum com o resto. Nesses corpora o "1º fator" não é único nem na SVD completa. Fica registrado na função, e a conferência no IRaMuTeQ segue pendente.
+- **Caso 005** (`data/casos/005/busca.json`), reconstruído em 377 s:
+  - 18.571 comentários, 81,1% classificados, 9 classes terminais. Atinge o mínimo de 75%.
+  - O arquivo anterior (31/10, formato antigo) tinha 94,1% em 6 classes, duas delas com exatamente 874 segmentos, que é o artefato do piso de classe.
+- **Teste:** `python -m unittest discover -s tests`: 283 testes, OK. Os testes da CHD usam matrizes pequenas (caminho da SVD completa).
+- **Pendente:** reconstrução dos demais casos (006 em diante), em andamento.
+
 ## C19.267 — Reconstrução lematizada dos casos: 005, 006 e 007 estouraram o tempo; GEXF do 007 (2026-11-02) ⛔
 
 - **Problema:** a reconstrução local (`build_caso_busca.py` por caso, limite de 25 minutos) **não terminou** nos casos 005, 006 e 007. Os logs ficaram vazios, e cada caso parou exatamente no limite (02h03 → 02h28 → 02h53). Os `busca.json` desses casos continuam os da coleta de 31/10, no formato antigo, sem lematização, sem passo 3 e sem a regra dos 75%.
