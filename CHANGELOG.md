@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.302 — Caso 002: 12 execuções da bateria de consultas ao Google registradas (2026-11-02) ⚠️
+
+- Origem: 12 capturas de tela enviadas pelo responsável em 02/11/2026, 16h15 ("case 02"), do Google com Visão geral criada por IA e de uma conversa de seguimento no modo IA.
+- Registro: `data/casos/002/bateria.csv` (colunas do `bateria_modelo.csv`; ids EXP-20261102-01 a 12); capturas no privado, `casos/002/capturas/EXP-20261102-NN.png` (mostram abas, favoritos e a conta de quem pesquisou, por isso não vão ao público).
+- Contagem (do próprio CSV): grupo A, consultas históricas ("onde nasceu o ladrão", "aonde o ladrão nasceu", "onde o ladrão nasceu", "Google aonde o ladrão nasceu", "onde nasceu o ladrã" e o seguimento "porque me deu essa resposta?"): 9 de 9 identificaram Lula (6 com ressalva de que o termo é usado por críticos, 2 sem ressalva, 1 explicando a associação); a mesma consulta "aonde o ladrão nasceu" saiu 3 vezes com ressalva e 1 sem. Grupo B, controle ("onde nasceu o político corrupto"): pediu o nome, 0 de 1. Grupo C, biográficas ("onde nasceu Lula", "onde nasceu o presidente do Brasil"): 2 de 2, com gov.br como fonte. Fontes mais citadas pela IA no grupo A: Instagram · gustavopetta, Facebook, Wikipedia; resultado orgânico mais frequente: vídeo "Onde nasceu o ladrão? Google responde" (YouTube · Religai).
+- ⚠️ Fora do protocolo da bateria (aba anônima, sem login): sessão com login e extensão de navegador aberta; local não informado; códigos ASS, CON, FON, JUS e RET ⛔ a codificar. Valem como registro, não como execução padronizada.
+- Página: a seção "05 · Bateria de consultas ao Google" do caso 002 lê o CSV e mostra contagem por grupo, tabela das execuções e download. Aberta no Chromium: renderiza sem erro de JS.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.301 — Auditoria da urna do 2º turno: resultado nacional e bloco no caso 022 (2026-11-02) ⚠️
 
 - Runs: 41507421986 (teste AC: comparecimento 453.654, igual ao de `data/tse/alienacao/2t/resumo.json`) e 41507645183 (todas as UFs) de `tse-auditoria-urna.yml`. Saída `data/tse/auditoria_urna/2t/resumo.json` e `municipios.csv`.
