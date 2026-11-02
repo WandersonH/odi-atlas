@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.251 — Todas as redes desenhadas na página passam a ser exploráveis (2026-11-02) ✅
+
+- **Pedido do responsável** (00h49): "alguns gráficos do Gephi permitem interações; outros são travados, não permitem exploração, parece incompleto".
+- **Componente genérico** (`odiRedeViva`): toda rede desenhada como SVG, nos casos, no debate, nos termos, nas análises de classes e na similitude, ganhou:
+  - arrastar e zoom (roda do mouse e botões + e −);
+  - voltar ao enquadramento original e tela cheia;
+  - passar o mouse ou tocar num nó: as ligações dele ficam acesas e o resto apagado, com o nome, o número de ligações e as mais fortes;
+  - clicar num nó para fixar a seleção;
+  - procurar um nó pelo nome.
+- **Como funciona:** a estrutura é lida do próprio desenho. Círculos (ou textos, na similitude) são os nós, e linhas e curvas cujas pontas caem sobre dois nós são as ligações.
+  - Só entra o desenho em que pelo menos metade das linhas liga dois nós; gráficos de barras, séries e dendrogramas ficam de fora.
+  - As redes que já eram interativas (YouTube, campanhas e mapa) ficam como estavam.
+- **Teste** (Playwright, sem erros de JavaScript):
+  - **Redes que ganharam o componente:** caso 020 (1: 90 nós, 93 ligações), caso 019 (3), caso 014 (2), termos de desinformação (1), debate (2) e caso 001 (1).
+  - **No caso 020:** passar o mouse sobre o nó de maior raio acendeu 41 elementos e apagou 146, e o painel mostrou "19 ligações" com as mais fortes. O botão + reduziu o enquadramento de 760 × 440 para 543 × 314.
+- **Teste da suíte:** `python -m unittest discover -s tests` OK.
+
 ## C19.250 — Corpus do YouTube com estabilidade e similitude (2026-11-02) ⚠️
 
 - `data/corpus/chd_reinert.json` foi regenerado com a CHD de C19.248, que inclui o passo 3, a estabilidade e a similitude.
