@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.314 — O que gastou a cota do YouTube em 02/11 e correção do horário das coletas (2026-11-02) ⚠️
+
+- Pergunta do responsável (02/11/2026, 18h13): "o que tá consumindo toda nossa cota hoje?". Levantamento pelos runs do dia e pelo código (busca = 100 unidades por página; cota diária 10.000):
+  - `casos-busca.yml` agendado para 04h17 de Brasília começou só às 14h04 (atraso do agendador do GitHub) e rodou 44 min pelos casos antigos (001, 002, 003, 005, 006, 007, 008, 009, 013; coletas gravadas entre 14h04 e 14h42), 35 consultas com até 2 páginas cada: até cerca de 7.000 unidades, mais comentários.
+  - `caso-mundo.yml` (caso 019, 15h50): 24 páginas de busca em 18 línguas = 2.400 unidades.
+  - `seguidores-youtube.yml` (09h39 e 17h23): 165 unidades cada (`cota_usada` no log).
+  - `caso-antigo-atual.yml` (caso 018, 14h27): buscas e comentários (sem contagem no log).
+  - Às 16h43 o `debate-youtube.yml` já recebia HTTP 429, e o teste do caso 029 às 18h10 também (4 de 4 buscas).
+- Achado: o horário de verão dos EUA acabou em 01/11/2026, e a cota do YouTube passou a renovar às 08h UTC (05h de Brasília). `casos-busca` (07h17 UTC) e `caso-antigo-atual` (07h47 UTC) estavam agendados antes da renovação; passaram para 08h17 e 08h47 UTC.
+- Teste: YAML conferido; `python -m unittest discover -s tests` OK.
+
 ## C19.313 — YouTube dos casos: 10 casos sem vídeos por falta de cota; fila reordenada e reaproveitamento de leitura recente (2026-11-02) ⚠️
 
 - Pergunta do responsável (02/11/2026, 18h07): "as coletas de youtube foram todas feitas?". Não. Conferido no privado (`casos/<id>/busca_coleta.json`): 021, 022, 024, 025, 026, 027, 028, 029, 030 e 031 com 0 vídeos e "HTTP 429" em todas as buscas do YouTube (coletas de 01/11 18h42 a 02/11 06h36); 016 com 16 vídeos e um 429; 010, 011, 012, 015, 018 e 019 sem coleta de busca do caso (esses casos têm coletores próprios).
