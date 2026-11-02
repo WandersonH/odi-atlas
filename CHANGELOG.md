@@ -4,6 +4,19 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.247 — Corpus dos candidatos com as regras do IRaMuTeQ: TikTok, Kwai, Facebook e Instagram (2026-11-01) ⚠️
+
+Regeneração local terminada; todas as redes lematizadas. Classes em segmentos, com o aproveitamento:
+
+- **TikTok:** 9 classes, 81,9%. Segmentos: 114 · 259 · 138 · 141 · 324 · 137 · 236 · 150 · 229.
+- **Kwai:** 10 classes, 80,5%. Segmentos: 59 · 56 · 64 · 108 · 45 · 71 · 62 · 110 · 49 · 82.
+- **Facebook:** 7 classes, 86,5%. Segmentos: 459 · 131 · 421 · 174 · 395 · 487 · 130.
+- **Instagram:** 8 classes, 91,7%. Segmentos: 844 · 1.046 · 863 · 1.130 · 766 · 1.177 · 1.763 · 1.814.
+
+Com o YouTube (6 classes, 77,9%) e o X (10, 84,6%) de C19.246, as seis redes passam de 75%. As tentativas de cada uma ficam em `escolha_classes`, e a classe do Atlas por segmento fica nos CSV `<rede>_classes_atlas_por_segmento.csv`. A conferência no IRaMuTeQ continua ⛔ pendente.
+
+**Teste:** `python -m unittest discover -s tests` OK.
+
 ## C19.246 — Corpus dos candidatos regenerado com as regras do IRaMuTeQ: YouTube e X (2026-11-01) ⚠️
 
 - **YouTube:** 6 classes terminais, escolhidas pela regra dos 75%.
