@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.253 — Corpus de X, TikTok e Kwai com o passo 3, estabilidade e similitude (2026-11-02) ⚠️
+
+Mesma regeneração de C19.250, agora em mais três redes. Classes em segmentos, com o aproveitamento:
+
+- **X:** 10 classes, 83,7%. Segmentos: 640 · 295 · 503 · 242 · 475 · 281 · 380 · 373 · 635 · 246.
+- **TikTok:** 9 classes, 81,6%. Segmentos: 112 · 204 · 178 · 173 · 185 · 219 · 219 · 176 · 256.
+- **Kwai:** 8 classes, 81,3%. Segmentos: 124 · 71 · 78 · 50 · 130 · 52 · 81 · 127.
+
+A estabilidade e a similitude estão nos JSON e em `data/corpus/similitude_<rede>.gexf`. Facebook e Instagram seguem na regeneração local.
+
+**Teste:** `python -m unittest discover -s tests` OK.
+
 ## C19.252 — Cofre das coletas da Apify: confere e guarda no privado antes dos 30 dias de retenção (2026-11-02) 🔜
 
 - **Pedido do responsável** (00h51): verificar se todas as coletas feitas nas contas estão armazenadas, porque algumas vão vencer os 30 dias de armazenamento da Apify.
