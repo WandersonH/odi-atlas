@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.306 — Comparecimento por perfil e perfil do eleitorado 2026 (TSE): coletor (2026-11-02) 🔜
+
+- Pedido do responsável (02/11/2026, 17h10): "terminou isso … comparecimento por perfil (229 MB) e perfil do eleitorado por município (408 MB)?". Não tinha terminado: só a auditoria da urna (C19.300–301) estava pronta.
+- O quê: `scripts/collect_tse_perfil.py` + `tse-perfil.yml` (manual, grátis) baixam `perfil_comparecimento_abstencao_2026.zip` e `perfil_eleitorado_2026.zip` e somam todas as colunas QT_* por turno, por dimensão de perfil (DS_*: gênero, faixa etária, escolaridade etc.), no Brasil, por UF e por município. Saída: `data/tse/perfil/<nome>_2026.json` e `<nome>_2026_municipios.csv`. Universo: o eleitorado inteiro (agregados do TSE).
+- Teste: agregação conferida num zip sintético (2 linhas); `python -m unittest discover -s tests` OK. Primeiro run na próxima entrada.
+
 ## C19.305 — Intolerância em todos os casos: lotes em paralelo (2026-11-02) 🔜
 
 - Pergunta do responsável (02/11/2026, 17h10): "cadê análise de intolerância?". Ela existia só nos 3 casos do piloto (014, 021, 022; C19.290 e C19.292).

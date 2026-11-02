@@ -1,0 +1,36 @@
+name: TSE — comparecimento por perfil e perfil do eleitorado 2026 (agregados, grátis)
+
+# 02/11/2026: dados abertos do TSE (comparecimento-e-abstencao-2026 e eleitorado-2026). Só agregados públicos em data/tse/perfil.
+on:
+  workflow_dispatch:
+    inputs:
+      quais:
+        description: "comparecimento eleitorado (vazio = os dois)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tse-perfil
+  cancel-in-progress: false
+
+jobs:
+  perfil:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Coletar e agregar
+        continue-on-error: true
+        run: |
+          rc=0; python scripts/collect_tse_perfil.py ${{ inputs.quais }} > s.txt 2>&1 || rc=$?
+          tail -n 20 s.txt | while IFS= read -r l; do echo "::notice title=TSE perfil::$(echo "$l" | cut -c1-1500)"; done
+          exit $rc
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "TSE: comparecimento por perfil e perfil do eleitorado (run ${{ github.run_id }})"
