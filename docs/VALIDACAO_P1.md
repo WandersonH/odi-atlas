@@ -50,3 +50,20 @@ O votocruzado é usado **só como prova cruzada**: seus dados não são redistri
 - Brancos, nulos, comparecimento e abstenção (não estão no arquivo de votação nominal).
 - Correspondência TSE ↔ IBGE (P3). O TSE usa código de município próprio.
 - A API de localidades do IBGE falhou por certificado (cadeia incompleta no servidor). A tabela de municípios passou a vir do `.dbf` da malha oficial.
+
+## 2º turno de 2022 e 2026 (conferência de 01/11/2026)
+
+Arquivo do Atlas: `data/elections_2t.json`, campo `diagnostics.sources.<ano>`, somando os municípios do Brasil e o exterior.
+
+| Ano | Candidatura | Atlas | Referência | Resultado |
+|---|---|---|---|---|
+| 2026 | Lula (13) | 64.256.232 | 64.256.232 | ✅ igual |
+| 2026 | Flávio Bolsonaro (22) | 59.826.041 | 59.826.041 | ✅ igual |
+| 2026 | Válidos (13 + 22) | 124.082.273 | 124.082.273 | ✅ igual |
+| 2022 | Lula (13) | 60.345.999 | 60.345.999 | ✅ igual |
+| 2022 | Jair Bolsonaro (22) | 58.206.354 | 58.206.354 | ✅ igual |
+
+- **Referência de 2026:** totais divulgados pelo TSE com 100% das seções apuradas, como reproduzidos pela Brasil 61 (https://brasil61.com/n/lula-e-reeleito-presidente-com-vantagem-no-nordeste-flavio-liderou-no-sul-e-centro-oeste-bras2617371). O texto da matéria traz em um trecho 51,76% para Lula; a tabela e os votos dão 51,79%, que é o que os votos acima produzem (64.256.232 / 124.082.273).
+- **Referência de 2022:** resultado oficial do TSE do 2º turno de 2022, conhecido publicamente. O arquivo do Atlas vem dos dados abertos do TSE (`presidente_2t_2022_munzona.csv.gz`).
+- **Soma por seção** (`data/tse/secoes/presidente_2t_resumo.json`, arquivo `votacao_secao_2026_BR.zip` do TSE, 499.205 seções): Lula 64.256.232, Flávio 59.826.041, brancos 1.430.496, nulos 2.723.305. Os votos são iguais ao arquivo por município e à referência. Brancos e nulos também são iguais à referência (Brasil 61: 1.430.496 e 2.723.305).
+- **⛔ Não coberto:** comparecimento e abstenção do 2º turno.

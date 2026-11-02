@@ -4,6 +4,22 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.243 — 2º turno conferido com o total oficial: votos e seções iguais (2026-11-01) ✅
+
+- **Conferência:** `data/elections_2t.json` (municípios mais exterior) e `data/tse/secoes/presidente_2t_resumo.json` (soma das 499.205 seções do arquivo `votacao_secao_2026_BR.zip` do TSE), comparados com os totais com 100% das seções apuradas.
+- **2026**, nas duas fontes do Atlas:
+  - Lula 64.256.232;
+  - Flávio 59.826.041;
+  - válidos 124.082.273;
+  - brancos 1.430.496 e nulos 2.723.305 (só no arquivo por seção).
+  - Tudo igual à referência (Brasil 61, que reproduz o TSE). O texto da matéria traz 51,76% num trecho; a tabela e os votos dão 51,79%.
+- **2022:** Lula 60.345.999 e Bolsonaro 58.206.354, iguais ao resultado oficial do 2º turno de 2022.
+- **Registro:** nova seção "2º turno" em `docs/VALIDACAO_P1.md`.
+- **Estado da evidência:** "Resultado do 2º turno" e "Urnas por candidato" passaram a **interpretável**, no escopo da contagem de votos. O mapa do eleitorado passou a **validado** nos dois turnos.
+- **⛔ Não coberto:** comparecimento e abstenção do 2º turno.
+- **Correção:** as referências a `VALIDACAO_P1.md` no README e no `estado_evidencia.json` passaram a `docs/VALIDACAO_P1.md`.
+- **Teste:** `python -m unittest discover -s tests` OK.
+
 ## C19.242 — Estado da evidência em cada painel; saúde operacional separada da qualidade da coleta; README atualizado (2026-11-01) ⚠️
 
 - **Pedido do responsável** (01/11, 21h56, "sim"): adotar o que a revisão do segundo par propôs e foi confirmado no código.

@@ -10,7 +10,7 @@ Um sistema de **coleta, processamento, preservação e visualização** sobre a 
 
 | Frente | O que cobre | Onde |
 |---|---|---|
-| Resultados eleitorais | 1º turno 2022 e 2026 por município, conferidos com fonte oficial e independente (`VALIDACAO_P1.md`); 2º turno 2026 por seção | `data/elections*.json`, `data/tse/` |
+| Resultados eleitorais | 1º turno 2022 e 2026 por município, conferidos com fonte oficial e independente (`docs/VALIDACAO_P1.md`); 2º turno 2026 por seção | `data/elections*.json`, `data/tse/` |
 | Comunicação das campanhas (universo A) | Contas declaradas ao TSE das chapas 13 e 22: YouTube, TikTok, Kwai, Instagram, Facebook e X | `data/youtube/`, `data/tiktok/`, `data/kwai/`, `data/instagram/`, `data/facebook/`, `data/x/` |
 | Circulação pública (universo B) | Comentários, respostas, Google Trends, imprensa, checagens, anúncios e 25 casos por termo ou hashtag | `data/*/comentarios/`, `data/trends/`, `data/casos/` |
 | Análise | Livros de códigos (Bardin, pré-codificação), CHD de Reinert própria, redes (GEXF, GraphML e NodeXL), sentimento por modelo | `data/config/livro_codigos_*.json`, `data/corpus/` |

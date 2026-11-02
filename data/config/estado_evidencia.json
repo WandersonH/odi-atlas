@@ -29,23 +29,23 @@
  "paineis": {
   "primeiroTurno": {
    "estado": "interpretavel",
-   "motivo": "votos do 1º turno 2022 e 2026 conferidos: 2022 com o resultado oficial; 2026 com fonte independente, 27/27 UFs e total nacional idênticos (VALIDACAO_P1.md)",
+   "motivo": "votos do 1º turno 2022 e 2026 conferidos: 2022 com o resultado oficial; 2026 com fonte independente, 27/27 UFs e total nacional idênticos (docs/VALIDACAO_P1.md)",
    "escopo": "contagem de votos; não explica por que se votou"
   },
   "electorate": {
    "estado": "validado",
-   "motivo": "1º turno conferido (VALIDACAO_P1.md); correspondência TSE↔IBGE documentada",
-   "falta": "conferência registrada das camadas do 2º turno"
+   "motivo": "1º e 2º turnos conferidos com totais oficiais (docs/VALIDACAO_P1.md); correspondência TSE↔IBGE documentada",
+   "escopo": "geografia do voto agregada por município; não permite inferência sobre eleitores individuais"
   },
   "segundoTurno": {
-   "estado": "processado",
-   "motivo": "arquivos oficiais do TSE lidos com proveniência",
-   "falta": "conferência registrada com o total nacional oficial do 2º turno"
+   "estado": "interpretavel",
+   "motivo": "votos do 2º turno de 2022 e 2026 conferidos com os totais oficiais divulgados: 2026 Lula 64.256.232, Flávio 59.826.041, válidos 124.082.273, iguais (docs/VALIDACAO_P1.md, conferência de 01/11/2026)",
+   "escopo": "contagem de votos por candidatura, brancos e nulos; não explica por que se votou; comparecimento e abstenção não conferidos"
   },
   "urnas": {
-   "estado": "processado",
-   "motivo": "boletins por seção do TSE (run 40617498861)",
-   "falta": "conferência registrada com o total oficial do 2º turno"
+   "estado": "interpretavel",
+   "motivo": "soma das 499.205 seções do 2º turno igual ao total oficial divulgado: Lula 64.256.232, Flávio 59.826.041, brancos 1.430.496, nulos 2.723.305 (docs/VALIDACAO_P1.md, 01/11/2026)",
+   "escopo": "votos por seção; seção com 100% para um lado não é, sozinha, indício de irregularidade"
   },
   "alienacao": {
    "estado": "processado",
