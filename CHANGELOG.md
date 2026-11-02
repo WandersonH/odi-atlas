@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.245 — CHD alinhada ao padrão do IRaMuTeQ pelo tutorial: 10 classes terminais, regra dos 75%, formas ativas (2026-11-01) ⚠️
+
+- **Material enviado pelo responsável** (01/11, 22h10):
+  - Tutorial IRaMuTeQ em português (Camargo & Justo, 22/11/2021, 73 p., digitalizado). O texto foi extraído por OCR (tesseract, português) só para consulta, no scratchpad.
+  - Camargo & Justo (2013), Justo & Camargo (2014, digitalizado), Ratinaud & Marchand (2012), Marchand & Ratinaud (2012), Chartier & Meunier (2011), Lahlou (2012) e Wachelke & Wolter (2011).
+- **O que o tutorial define e o Atlas passou a seguir:**
+  - **Formas ativas** (p. 23): o padrão do IRaMuTeQ, com o advérbio passado de ativo para suplementar. Ficam ativos nomes, verbos, adjetivos e formas não reconhecidas, que são ativas no IRaMuTeQ (p. 25). Com o dicionário, a lista própria de palavras vazias deixou de ser usada: quem decide é a classe gramatical. Tamanho mínimo de 2 letras, para manter siglas como "pt".
+  - **Parâmetros** (p. 30): 10 classes terminais na fase 1, frequência mínima de uma forma = 2 e no máximo 3.000 formas analisadas.
+  - **Regra dos 75%** (p. 31): "No caso de uma CHD anterior que não reteve no mínimo 75% dos ST, aumente ou diminua o valor do número de classes terminais da fase 1 e refaça a CHD."
+    - Regra fixa do Atlas, declarada antes de ver o resultado: de 10 para baixo, a primeira partição com aproveitamento ≥ 75%. Se nenhuma chegar lá, vale a de maior aproveitamento, marcada ⛔.
+    - Todas as tentativas ficam no JSON, no campo `escolha_classes`.
+    - Uma CHD só gera todas as partições, porque as divisões são sempre as mesmas (`chd_iramuteq`).
+  - **Comentários e respostas curtas** seguem a "classificação simples sobre textos", com cada texto como um segmento, que já é o desenho do Atlas.
+- **Resultado no corpus do YouTube** (rodada local):
+  - Com 10 classes terminais, o aproveitamento fica em 55,5%; com 8, 69,5%; com 7, 70,3%.
+  - Com **6**, chega a **77,9%**, e esta é a partição escolhida: 262 · 522 · 147 · 272 · 127 · 320 segmentos.
+  - 1.449 formas ativas.
+- **Teste:** `python -m unittest discover -s tests` OK. Novo teste da regra em `tests/test_chd_correcao.py`.
+- **Pendente:** regenerar as análises com a nova regra (corpus local em seguida; casos e comentários pelas rotinas).
+
 ## C19.244 — Lematização com o dicionário do próprio IRaMuTeQ e risadas normalizadas (2026-11-01) ⚠️
 
 - **Pedido do responsável:** colocar a lematização antes da conferência no IRaMuTeQ, para validar uma vez só. Ele enviou às 22h08 o `lexique_pt.txt` da instalação dele.

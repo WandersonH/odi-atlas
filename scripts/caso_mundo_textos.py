@@ -90,7 +90,7 @@ def classes(textos: list[str], lingua: str) -> dict | None:
                 X[i, idx[t]] = 1
     n_at = int((X.sum(1) > 0).sum())
     mc = max(cr.MIN_CLASSE, int(0.05 * n_at))
-    rot, arvore = cr.chd(X, k=6, min_classe=mc)
+    rot, arvore, escolha_k = cr.chd_iramuteq(X, min_classe=mc, n_textos=len(textos))
     ok = rot > 0
     if not ok.any():
         return None
@@ -103,7 +103,7 @@ def classes(textos: list[str], lingua: str) -> dict | None:
         out.append({"classe": int(k), "segmentos": int(m.sum()), "pct": round(100 * m.sum() / ok.sum(), 1),
                     "formas": [[voc[j], round(float(ch[j]), 1)] for j in js]})
     return {"lingua": lingua, "comentarios": len(textos), "classificados": int(ok.sum()), "pct_classificados": round(100 * ok.sum() / len(textos), 1),
-            "classes": out, "arvore": arvore, "min_classe": mc, "aproveitamento": cr.aproveitamento(rot, len(textos)),
+            "classes": out, "arvore": arvore, "min_classe": mc, "escolha_classes": escolha_k, "aproveitamento": cr.aproveitamento(rot, len(textos)),
             "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento, sem lematização, palavras vazias da língua removidas."}
 
 

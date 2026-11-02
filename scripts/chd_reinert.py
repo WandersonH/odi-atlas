@@ -35,8 +35,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_conteudo as bc  # noqa: E402
 import plataformas as pl  # noqa: E402
 
-K = 6
-MIN_FREQ = 3
+# 01/11/2026: parâmetros alinhados ao padrão do IRaMuTeQ (Tutorial IRaMuTeQ em português, Camargo & Justo, 22/11/2021, enviado
+# pelo responsável): 10 classes terminais na fase 1, frequência mínima de uma forma = 2, no máximo 3.000 formas analisadas.
+K = 10
+MIN_FREQ = 2
+MAX_FORMAS = 3000
 MIN_CLASSE = 10
 MIN_CLASSE_PCT = 0.05  # 01/11/2026: regra única do Atlas (era 8% no corpus principal); 3%, 5% e 8% ficam na sensibilidade
 SENSIBILIDADE = (0.03, 0.05, 0.08)
@@ -53,7 +56,7 @@ ser estar ter fazer vai vamos foi sao esta estao tem pode podem deve vez cada ou
 # reconhecidas; auxiliares (ver_sup), artigos, preposições, pronomes e conjunções ficam de fora. Risadas (kkkk, hahaha, rsrs)
 # viram uma forma só ("risada") aqui e no corpus exportado para o IRaMuTeQ (normalizar_risadas), para os dois verem o mesmo texto.
 LEXICO_ARQ = Path(__file__).resolve().parents[1] / "data/config/lexique_pt.txt"
-ATIVAS = {"nom", "ver", "adj", "adv", "nr"}
+ATIVAS = {"nom", "ver", "adj", "nr"}  # tutorial (p. 23): padrão, com o advérbio passado de ativo para suplementar
 RISADA = re.compile(r"\b(?:k{3,}\w*|(?:ha|he|hi|ah){2,}h?|(?:rs){2,}|(?:kkk+|ksks+|kakaka+)\w*)\b", re.I)
 _LEX: dict | None = None
 
@@ -91,7 +94,12 @@ def tokens(texto: str) -> list[str]:
         if cl.strip() not in ATIVAS:
             continue
         n = bc.norm(lema).strip()
-        if len(n) >= 3 and not n.isdigit() and n not in bc.STOP and n not in STOP_EXTRA and " " not in n:
+        if not n or n.isdigit() or " " in n:
+            continue
+        if lx:  # com o dicionário, quem decide é a classe gramatical, como no IRaMuTeQ (sem lista de palavras vazias própria)
+            if len(n) >= 2:
+                out.append(n)
+        elif len(n) >= 3 and n not in bc.STOP and n not in STOP_EXTRA:
             out.append(n)
     return out
 
@@ -99,7 +107,7 @@ def tokens(texto: str) -> list[str]:
 def matriz(segs: list[str], min_freq: int = MIN_FREQ):
     docs = [set(tokens(s)) for s in segs]
     df = Counter(t for d in docs for t in d)
-    voc = sorted(t for t, n in df.items() if n >= min_freq)
+    voc = sorted(t for t, n in sorted(df.items(), key=lambda x: (-x[1], x[0]))[:MAX_FORMAS] if n >= min_freq)
     idx = {t: i for i, t in enumerate(voc)}
     X = np.zeros((len(docs), len(voc)), dtype=np.float64)
     for i, d in enumerate(docs):
@@ -166,7 +174,7 @@ def dividir(X: np.ndarray, max_iter: int = 30, min_lado: int = 1) -> tuple[np.nd
 APROVEITAMENTO_MIN = 75.0  # % de segmentos classificados; Camargo & Justo (2013), citado em Amaral-Rosa (2019, Rev Esc Enferm USP 53:e03468)
 
 
-def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: int | None = None):
+def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: int | None = None, _estados: dict | None = None):
     """Devolve (rótulo de classe por linha, árvore de divisões). Linhas sem forma ativa ou em grupo eliminado ficam com −1.
 
     01/11/2026 (correção): o corte de cada divisão é o de maior χ², SEM piso de tamanho (antes o piso era imposto no corte e
@@ -211,6 +219,9 @@ def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: i
                 eliminados.add(i)
                 arvore[-1]["eliminado"] = True
         prox += 2
+        if _estados is not None:  # estado da partição a cada nº de classes vivas (para escolher k pelo aproveitamento)
+            vivas = {f: folhas[f] for f in folhas if f not in eliminados}
+            _estados.setdefault(len(vivas), (vivas, len(arvore), set(eliminados)))
     rot = np.full(X.shape[0], -1)
     # numera as classes finais na ordem da árvore (da esquerda para a direita), como no dendrograma
     ordem_folhas = []
@@ -232,12 +243,68 @@ def chd(X: np.ndarray, k: int = K, min_classe: int = MIN_CLASSE, max_divisoes: i
     return rot, arvore
 
 
+def _rotular(X: np.ndarray, arvore: list[dict], folhas: dict, eliminados: set):
+    by = {n["id"]: n for n in arvore}
+    rot = np.full(X.shape[0], -1)
+    ordem = []
+
+    def visita(i):
+        no = by[i]
+        if no["filhos"]:
+            for f in no["filhos"]:
+                visita(f)
+        elif i in folhas:
+            ordem.append(i)
+    visita(0)
+    mapa = {f: n + 1 for n, f in enumerate(ordem)}
+    for f, linhas in folhas.items():
+        rot[linhas] = mapa[f]
+    for no in arvore:
+        no["classe"] = mapa.get(no["id"])
+    return rot
+
+
+def chd_iramuteq(X: np.ndarray, min_classe: int = MIN_CLASSE, k_max: int = K, k_min: int = 3, n_textos: int | None = None):
+    """CHD com a regra do tutorial do IRaMuTeQ (Camargo & Justo, 2021, p. 31): começa com 10 classes terminais e, se a CHD não
+    retiver 75% dos segmentos, muda o número de classes terminais e refaz. Regra fixa do Atlas, declarada antes de ver o resultado
+    (01/11/2026): de 10 para baixo (10, 9, …, 3), a primeira partição com aproveitamento ≥ 75%; nenhuma → a de maior aproveitamento,
+    marcada ⛔. Como as divisões são sempre as mesmas (a maior classe é dividida primeiro), as partições de 10 a 3 saem de uma só CHD.
+    Devolve (rótulos, árvore, informação da escolha com todas as tentativas)."""
+    n_textos = n_textos or X.shape[0]
+    estados: dict = {}
+    rot10, arv10 = chd(X, k=k_max, min_classe=min_classe, _estados=estados)
+    tentativas, escolha = [], None
+    for k in range(k_max, k_min - 1, -1):
+        if k not in estados:
+            continue
+        folhas, n_nos, elim = estados[k]
+        pct = round(100 * sum(len(v) for v in folhas.values()) / max(1, n_textos), 1)
+        tentativas.append({"classes_terminais": k, "aproveitamento_pct": pct})
+        if escolha is None and pct >= APROVEITAMENTO_MIN:
+            escolha = k
+    if escolha is None and tentativas:
+        escolha = max(tentativas, key=lambda t: t["aproveitamento_pct"])["classes_terminais"]
+    if escolha is None:  # nenhuma divisão possível
+        return rot10, arv10, {"classes_terminais": None, "tentativas": [], "regra": chd_iramuteq.__doc__.split("Devolve")[0].strip()}
+    folhas, n_nos, elim = estados[escolha]
+    arvore = [dict(n) for n in arv10[:n_nos]]
+    ids = {n["id"] for n in arvore}
+    for n in arvore:
+        if n.get("filhos") and not set(n["filhos"]) <= ids:
+            n["filhos"] = None
+            n.pop("chi2", None)
+        n.pop("classe", None)
+    rot = _rotular(X, arvore, folhas, elim)
+    return rot, arvore, {"classes_terminais": escolha, "tentativas": tentativas,
+                         "regra": " ".join(chd_iramuteq.__doc__.split("Devolve")[0].split())}
+
+
 def aproveitamento(rot: np.ndarray, n_segmentos: int) -> dict:
     """Taxa de segmentos classificados e o teste do mínimo de 75% (Camargo & Justo, 2013)."""
     pct = round(100 * int((rot > 0).sum()) / max(1, n_segmentos), 1)
     return {"pct_classificados": pct, "minimo_pct": APROVEITAMENTO_MIN, "atinge_minimo": pct >= APROVEITAMENTO_MIN,
             "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
-            "regra": "classe mínima de 5% dos segmentos ativos (mín. 10), até 10 divisões por classe pedida, grupo menor que o mínimo fica não classificado",
+            "regra": "10 classes terminais (padrão do IRaMuTeQ), reduzidas uma a uma até o aproveitamento chegar a 75% (tutorial do IRaMuTeQ, p. 31); classe mínima de 5% dos segmentos ativos (mín. 10); grupo menor que o mínimo fica não classificado; formas ativas: nomes, verbos, adjetivos e não reconhecidas (lematizadas pelo dicionário do IRaMuTeQ); frequência mínima 2; até 3.000 formas",
             "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"}
 
 
@@ -273,7 +340,7 @@ def main(argv=None) -> int:
             ch = chi2_assoc(X[m].sum(0), tot_s, int(m.sum()), int(ok.sum()))
             resumo.append({"classe": k, "pct": round(100 * m.sum() / ok.sum(), 1), "formas": [voc[j] for j in np.argsort(-ch)[:8]]})
         sens.append({"min_classe_pct": pct, "min_classe": max(MIN_CLASSE, int(pct * n_ativos)), "classes": resumo})
-    rot, arvore = chd(X, min_classe=mc)
+    rot, arvore, escolha_k = chd_iramuteq(X, min_classe=mc, n_textos=len(linhas))
     cl = rot > 0
     n = int(cl.sum())
     Xc, rc = X[cl], rot[cl]
@@ -305,7 +372,7 @@ def main(argv=None) -> int:
            "metodo": (f"CHD de Reinert (implementação própria em Python/numpy, classificação simples): {K} classes no máximo, "
                       f"formas com {MIN_FREQ}+ segmentos, classe mínima de {int(MIN_CLASSE_PCT*100)}% dos segmentos (grupo menor que isso não vira classe e fica não classificado; teste de sensibilidade com 3%, 5% e 8% registrado), aproveitamento mínimo de {APROVEITAMENTO_MIN:.0f}% dos segmentos (Camargo & Justo, 2013), formas características com χ² ≥ {CHI_CRIT} (p < 0,05). "
                       "Sem lematização. Os nomes das classes devem ser dados pelo pesquisador. Conferir no IRaMuTeQ com o corpus exportado."),
-           "lematizacao": lematizacao(), "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
+           "lematizacao": lematizacao(), "escolha_classes": escolha_k, "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
            "sensibilidade": sens,
            "nota_sensibilidade": "Regra única do Atlas desde 01/11/2026: classe mínima de 5%, até 60 divisões, aproveitamento mínimo de 75%. Antes, com o corte forçado no mínimo, 8% tinha sido adotado aqui porque 3% e 5% formavam classes por nomes próprios; as três versões ficam registradas para comparação. Aguardando conferência no IRaMuTeQ.",
            "segmentos_total": len(linhas), "segmentos_classificados": n,

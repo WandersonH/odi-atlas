@@ -45,3 +45,15 @@ class TestChdCorrecao(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRegraIramuteq(unittest.TestCase):
+    def test_escolhe_k_pelo_aproveitamento(self):
+        X, _ = cr.matriz(corpus())
+        rot, arvore, info = cr.chd_iramuteq(X, min_classe=24, n_textos=X.shape[0])
+        self.assertIsNotNone(info["classes_terminais"])
+        self.assertLessEqual(info["classes_terminais"], cr.K)
+        pct = cr.aproveitamento(rot, X.shape[0])["pct_classificados"]
+        self.assertGreaterEqual(pct, 75.0)
+        self.assertEqual(len(set(rot[rot > 0].tolist())), max(rot.tolist()))
+        self.assertTrue(info["tentativas"])

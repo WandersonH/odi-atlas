@@ -73,7 +73,7 @@ def chd_titulos(titulos: list[dict], semente: int = SEMENTE) -> dict:
     X = X.astype(np.float32)
     ativos = int((X.sum(1) > 0).sum())
     mc = max(chd.MIN_CLASSE, int(chd.MIN_CLASSE_PCT * ativos))
-    rot, arvore = chd.chd(X, min_classe=mc)
+    rot, arvore, escolha_k = chd.chd_iramuteq(X, min_classe=mc, n_textos=len(idx))
     cl = rot > 0
     n = int(cl.sum())
     tot = X[cl].sum(0)
@@ -91,7 +91,7 @@ def chd_titulos(titulos: list[dict], semente: int = SEMENTE) -> dict:
                                       "dia": titulos[idx[i]]["dia"], "link": titulos[idx[i]]["link"]} for _, i in sc]})
     return {"amostra": len(idx), "classificados": n, "pct_classificados": round(100 * n / len(idx), 1),
             "formas_ativas": len(voc), "min_classe": mc, "classes": classes, "arvore": arvore,
-            "aproveitamento": chd.aproveitamento(rot, len(idx))}
+            "escolha_classes": escolha_k, "aproveitamento": chd.aproveitamento(rot, len(idx))}
 
 
 def rede(docs: list[tuple[str, set]], ids: tuple[str, str]) -> tuple[nx.Graph, dict, dict]:
