@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.271 — Classes lematizadas do caso 009 · GEXF do 013 (reconstrução em andamento) (2026-11-02) ⚠️
+
+- **009:** `busca.json` reconstruído com a CHD nova (lematização, passo 3, regra dos 75%). São 10.869 comentários, 81,7% classificados, 7 classes terminais. Atinge o mínimo.
+- **013:** entraram os GEXF; o `busca.json` segue em reconstrução.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.270 — Três casos novos: 029 xenofobia contra o Nordeste, 030 brasileiros e o Paraguai, 031 "Nota ao Brasil" de Flávio (2026-11-02) ⚠️
 
 - **Pedido do responsável** (02/11, 03h28), com duas imagens de posts do Instagram (@atuarparaguai, fila por documentação paraguaia; @aopontopb, "Nordeste é alvo de 27 milhões de ataques nas redes após eleição").
