@@ -4,6 +4,25 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.254 — Redes exploráveis no mesmo formato da rede do YouTube (2026-11-02) ✅
+
+- **Pedido do responsável** (01h02): "não era pra travar, era pra deixar como a do YouTube".
+- **O que mudou no `odiRedeViva`:** o componente de C19.251 foi refeito com o layout e os estilos da rede do YouTube (`yt-netctl`, `yt-netbody`, `yt-netsvg`, `yt-netside`, `yt-nettable`).
+  - Botões "Rede · Tabela de nós · Tabela de ligações".
+  - Desenho com legenda de cores: clicar numa cor destaca o grupo, e cores em gradiente são avisadas.
+  - Painel lateral "Como ler", que vira a ficha do nó escolhido: ligações e a lista dos vizinhos, clicável, com a força de cada ligação.
+  - Tabelas ordenáveis e filtráveis.
+  - Arrastar, roda do mouse para o zoom (como no YouTube), + e −, voltar ao enquadramento, tela cheia e procurar.
+- **Correções do componente anterior:**
+  - O SVG ainda vazio era marcado como "visto" e nunca mais conferido. Por isso as redes de comentários (YouTube, TikTok, Kwai, Facebook, Instagram), a de imprensa e as de menções das campanhas não tinham ficado exploráveis.
+  - Ligações com seta que terminam antes do nó agora são reconhecidas pelos atributos `data-a` e `data-b` ou com uma tolerância maior.
+  - Quando o desenho é refeito por um filtro, a leitura é refeita.
+- **Teste** (Playwright, todos os cadernos, sem erros de JavaScript):
+  - Todas as redes ficaram exploráveis, inclusive as de comentários (`ycNetT`, `ycNetR`, `tcNet*`, `kcNet*`, `fcNet*`, `icNet*`), as de imprensa (`nuNet`, `nuVe`), as de menções (`tkMen`, `kwMen`, `fbMen`, `igMen`, `twMen`) e as dos casos.
+  - De fora ficam só as séries e dispersões (linhas do tempo) e as redes que já eram interativas.
+  - Na rede de palavras dos comentários do YouTube, o nó "presidente" mostrou 149 ligações com os vizinhos ordenados por força, e a tabela de nós listou 150 linhas.
+- **Teste da suíte:** `python -m unittest discover -s tests` OK.
+
 ## C19.253 — Corpus de X, TikTok e Kwai com o passo 3, estabilidade e similitude (2026-11-02) ⚠️
 
 Mesma regeneração de C19.250, agora em mais três redes. Classes em segmentos, com o aproveitamento:

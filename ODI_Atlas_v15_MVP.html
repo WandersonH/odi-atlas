@@ -6969,64 +6969,96 @@ fetch('./data/config/estado_evidencia.json',{cache:'no-store'}).then(r=>r.ok?r.j
   d.innerHTML=`<b style="font:700 11px 'Courier New',monospace;letter-spacing:.04em;color:#172238">ESTADO DA EVIDÊNCIA</b>${passos}<span style="flex-basis:100%;color:#3b4555">${esc(P.motivo)}${P.escopo?` <b>Escopo:</b> ${esc(P.escopo)}.`:''}${P.falta?` <b style="color:#8a5a00">Falta para avançar:</b> ${esc(P.falta)}.`:''}</span>`;
   const rib=sec.querySelector('.paper-ribbon');if(rib)rib.insertAdjacentElement('afterend',d);else sec.prepend(d);});
 }).catch(()=>{});})();
-/* 02/11/2026 · Toda rede desenhada na página passa a ser explorável, como as redes do YouTube e das campanhas: arrastar, zoom
-   (roda do mouse, botões, toque com dois dedos via botões), passar o mouse ou tocar num nó para ver as ligações, clicar para fixar,
-   procurar um nó pelo nome, tela cheia e voltar ao enquadramento original. Pedido do responsável (00h49): "alguns gráficos do Gephi
-   permitem interações e outros são travados, não permitem exploração". A estrutura (nós e ligações) é lida do próprio desenho:
-   círculos (ou textos, na análise de similitude) são nós; linhas e curvas cujas pontas caem sobre dois nós são ligações. */
+/* 02/11/2026 · Toda rede desenhada na página fica igual à rede do YouTube (caderno de conteúdo): botões "Rede · Tabela de nós ·
+   Tabela de ligações", desenho com legenda de cores (clique numa cor para destacar o grupo), painel lateral "Como ler" que vira a
+   ficha do nó escolhido (ligações, lista clicável dos vizinhos), arrastar e zoom, procurar, tela cheia e voltar ao enquadramento.
+   Pedidos do responsável (00h49 e 01h02): "alguns gráficos do Gephi são travados, não permitem exploração"; "era pra deixar como a do
+   YouTube". A estrutura vem dos atributos data-id / data-a / data-b quando o desenho os tem e, se não, da geometria (círculos ou
+   textos como nós; linhas e curvas com as pontas sobre dois nós como ligações). Quando o desenho é refeito (filtros), refaz-se a leitura. */
 (()=>{'use strict';
 const JA=new Set(['ytNet','ytInf','tkInf','tkNet','kwNet','fbNet','igNet','twNet','odiElectionMap']);
-const st=document.createElement('style');st.textContent='.odi-viva{position:relative}.odi-viva svg{cursor:grab;touch-action:none}.odi-viva svg:active{cursor:grabbing}'+
- '.odi-viva .odi-dim{opacity:.08!important;transition:opacity .12s}.odi-viva .odi-hl{opacity:1!important}.odi-viva .odi-sel{stroke:#111!important;stroke-width:2.5px!important}'+
- '.odi-vbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0;font:12px Arial,sans-serif}.odi-vbar button{font:600 12px/1 Arial,sans-serif;padding:5px 8px;border:1px solid #d9d3c4;background:#fffdf8;cursor:pointer;border-radius:2px}'+
- '.odi-vbar input{padding:4px 6px;border:1px solid #d9d3c4;min-width:160px}.odi-vinfo{font:12.5px/1.45 Arial,sans-serif;background:#faf7ef;border-left:3px solid #297de2;padding:6px 10px;margin:4px 0;min-height:18px}'+
- '.odi-viva:fullscreen{background:#fffdf8;padding:12px;overflow:auto}.odi-viva:fullscreen svg{width:100%!important;height:calc(100vh - 140px)!important;max-width:none!important}';
+const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const st=document.createElement('style');st.textContent='.odi-viva{margin:8px 0}.odi-viva .yt-netsvg svg{width:100%;height:auto;display:block;cursor:grab;touch-action:none}.odi-viva .yt-netsvg svg:active{cursor:grabbing}'+
+ '.odi-viva .odi-dim{opacity:.08!important}.odi-viva .odi-hl{opacity:1!important}.odi-viva .odi-sel{stroke:#111!important;stroke-width:2.5px!important}'+
+ '.odi-viva .odi-ctl{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0 8px}.odi-viva .odi-ctl input{padding:6px 8px;border:1px solid #c9d1d6;background:#fffdf8;font:12px "Courier New",monospace;min-width:170px}'+
+ '.odi-viva .yt-netside{max-height:520px;overflow:auto}.odi-viva .yt-netside a{cursor:pointer;color:#1f5fae;text-decoration:underline}.odi-viva .yt-netlegend span{cursor:pointer;margin-right:8px;white-space:nowrap}'+
+ '.odi-viva table{border-collapse:collapse;width:100%;font:12px Arial,sans-serif}.odi-viva th,.odi-viva td{border-bottom:1px solid #e3e6e8;padding:4px 6px;text-align:left}.odi-viva th{cursor:pointer;font:700 11px "Courier New",monospace;text-transform:uppercase}'+
+ '.odi-viva .yt-tablewrap{max-height:420px;overflow:auto}.odi-viva:fullscreen{background:#fffdf8;padding:14px;overflow:auto}.odi-viva:fullscreen .yt-netsvg svg{height:calc(100vh - 170px)!important}'+
+ '@media(min-width:900px){.odi-viva .yt-netbody{grid-template-columns:minmax(0,1fr) 260px}}';
 document.head.appendChild(st);
 const num=v=>parseFloat(v||'0');
 function pontas(el){if(el.tagName==='line')return [[num(el.getAttribute('x1')),num(el.getAttribute('y1'))],[num(el.getAttribute('x2')),num(el.getAttribute('y2'))]];
  const d=el.getAttribute('d')||'';const ns=(d.match(/-?\d*\.?\d+(?:e-?\d+)?/gi)||[]).map(Number);if(ns.length<4)return null;return [[ns[0],ns[1]],[ns[ns.length-2],ns[ns.length-1]]];}
-function estrutura(svg){const cs=[...svg.querySelectorAll('circle')];let nos=cs.map(c=>({el:c,x:num(c.getAttribute('cx')),y:num(c.getAttribute('cy')),r:num(c.getAttribute('r'))||3}));
+function estrutura(svg){let nos=[...svg.querySelectorAll('circle')].filter(c=>!c.closest('defs')).map(c=>({el:c,id:c.dataset.id,x:num(c.getAttribute('cx')),y:num(c.getAttribute('cy')),r:num(c.getAttribute('r'))||3}));
  const textos=[...svg.querySelectorAll('text')];let soTexto=false;
- if(nos.length<5){const ls=svg.querySelectorAll('line').length;if(textos.length>=5&&ls>=3){nos=textos.map(t=>({el:t,x:num(t.getAttribute('x')),y:num(t.getAttribute('y')),r:6}));soTexto=true;}else return null;}
+ if(nos.length<5){if(textos.length>=5&&svg.querySelectorAll('line').length>=3){nos=textos.map(t=>({el:t,id:t.dataset.id,x:num(t.getAttribute('x')),y:num(t.getAttribute('y')),r:7}));soTexto=true;}else return null;}
  const ed=[...svg.querySelectorAll('line,path')].filter(e=>!e.closest('defs')&&!e.closest('marker'));if(ed.length<3)return null;
- const grade=new Map(),G=20;nos.forEach((n,i)=>{const k=Math.floor(n.x/G)+','+Math.floor(n.y/G);(grade.get(k)||grade.set(k,[]).get(k)).push(i);});
- const perto=([x,y])=>{let best=-1,bd=1e9;for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++){(grade.get((Math.floor(x/G)+dx)+','+(Math.floor(y/G)+dy))||[]).forEach(i=>{const n=nos[i];const d=Math.hypot(n.x-x,n.y-y);if(d<=n.r+3&&d<bd){bd=d;best=i;}});}return best;};
- const ar=[];let ok=0;ed.forEach(e=>{const p=pontas(e);if(!p)return;const a=perto(p[0]),b=perto(p[1]);if(a>=0&&b>=0&&a!==b){ok++;ar.push({el:e,a,b,w:num(e.getAttribute('stroke-width'))||1});}});
- if(ok<3||ok<0.5*ed.filter(e=>e.tagName==='line'||/^M/i.test(e.getAttribute('d')||'')).length)return null;
- // rótulo de cada nó: <title>, texto com o mesmo data-id ou o texto mais próximo
- nos.forEach(n=>{const t=n.el.querySelector('title');let rot=t?t.textContent:'';if(!rot&&soTexto)rot=n.el.textContent;
-  if(!rot){let bd=1e9;textos.forEach(tx=>{const d=Math.hypot(num(tx.getAttribute('x'))-n.x,num(tx.getAttribute('y'))-n.y);if(d<n.r+30&&d<bd){bd=d;rot=tx.textContent;n.txt=tx;}});}
-  n.rot=(rot||'').split('\n')[0].trim();n.viz=[];});
- if(!soTexto)textos.forEach(tx=>{const x=num(tx.getAttribute('x')),y=num(tx.getAttribute('y'));let bi=-1,bd=1e9;nos.forEach((n,i)=>{const d=Math.hypot(n.x-x,n.y-y);if(d<n.r+30&&d<bd){bd=d;bi=i;}});if(bi>=0)(nos[bi].txts=nos[bi].txts||[]).push(tx);});
- ar.forEach((e,i)=>{nos[e.a].viz.push([e.b,e.w,i]);nos[e.b].viz.push([e.a,e.w,i]);});
+ const porId={};nos.forEach((n,i)=>{if(n.id!=null&&!(n.id in porId))porId[n.id]=i;});
+ const grade=new Map(),G=24;nos.forEach((n,i)=>{const k=Math.floor(n.x/G)+','+Math.floor(n.y/G);(grade.get(k)||grade.set(k,[]).get(k)).push(i);});
+ const perto=([x,y])=>{let best=-1,bd=1e9;for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++){(grade.get((Math.floor(x/G)+dx)+','+(Math.floor(y/G)+dy))||[]).forEach(i=>{const n=nos[i];const d=Math.hypot(n.x-x,n.y-y);if(d<=n.r+8&&d<bd){bd=d;best=i;}});}return best;};
+ const ar=[];ed.forEach(e=>{let a=-1,b=-1;if(e.dataset.a!=null&&e.dataset.b!=null&&e.dataset.a in porId&&e.dataset.b in porId){a=porId[e.dataset.a];b=porId[e.dataset.b];}
+  else{const p=pontas(e);if(!p)return;a=perto(p[0]);b=perto(p[1]);}
+  if(a>=0&&b>=0&&a!==b)ar.push({el:e,a,b,w:num(e.getAttribute('stroke-width'))||1});});
+ const linhas=ed.filter(e=>e.tagName==='line'||/^M/i.test(e.getAttribute('d')||'')).length;
+ if(ar.length<3||ar.length<0.5*linhas)return null;
+ nos.forEach(n=>{const t=n.el.querySelector&&n.el.querySelector('title');let rot=t?t.textContent:'';if(!rot&&soTexto)rot=n.el.textContent;if(!rot&&n.id)rot=n.id;
+  if(!rot){let bd=1e9;textos.forEach(tx=>{const d=Math.hypot(num(tx.getAttribute('x'))-n.x,num(tx.getAttribute('y'))-n.y);if(d<n.r+30&&d<bd){bd=d;rot=tx.textContent;}});}
+  n.rot=(rot||'(sem nome)').split('\n')[0].trim();n.viz=[];n.cor=(n.el.getAttribute('fill')&&n.el.getAttribute('fill')!=='none'?n.el.getAttribute('fill'):n.el.getAttribute('stroke'))||(n.el.style&&n.el.style.fill)||'#999';n.txts=[];});
+ if(!soTexto)textos.forEach(tx=>{let bi=-1;if(tx.dataset.id!=null&&tx.dataset.id in porId)bi=porId[tx.dataset.id];else{const x=num(tx.getAttribute('x')),y=num(tx.getAttribute('y'));let bd=1e9;nos.forEach((n,i)=>{const d=Math.hypot(n.x-x,n.y-y);if(d<n.r+30&&d<bd){bd=d;bi=i;}});}if(bi>=0)nos[bi].txts.push(tx);});
+ ar.forEach((e,k)=>{nos[e.a].viz.push([e.b,e.w,k]);nos[e.b].viz.push([e.a,e.w,k]);});
  return {nos,ar,soTexto};}
-function viva(svg){if(svg.dataset.odiViva||JA.has(svg.id)||svg.closest('.odi-viva'))return;const S=estrutura(svg);svg.dataset.odiViva='1';if(!S)return;
- let vb=(svg.getAttribute('viewBox')||'').split(/[\s,]+/).map(Number);if(vb.length!==4||vb.some(isNaN)){const b=svg.getBBox();vb=[b.x,b.y,b.width,b.height];svg.setAttribute('viewBox',vb.join(' '));}
- const vb0=vb.slice();const caixa=document.createElement('div');caixa.className='odi-viva';svg.parentNode.insertBefore(caixa,svg);
- const barra=document.createElement('div');barra.className='odi-vbar';barra.innerHTML='<input type="search" placeholder="Procurar nó (nome)…" aria-label="Procurar nó"><button data-a="mais" title="Aproximar">+</button><button data-a="menos" title="Afastar">−</button><button data-a="reset" title="Enquadramento original">⟲</button><button data-a="cheia" title="Tela cheia">⛶</button><span style="color:#69768a">'+S.nos.length+' nós · '+S.ar.length+' ligações · arraste, use a roda do mouse, passe o mouse ou toque num nó</span>';
- const info=document.createElement('div');info.className='odi-vinfo';info.textContent='Passe o mouse ou toque num nó para ver as ligações; clique para fixar e clique no fundo para soltar.';
- caixa.appendChild(barra);caixa.appendChild(svg);caixa.appendChild(info);
- const aplicar=()=>svg.setAttribute('viewBox',vb.join(' '));const pt=ev=>{const r=svg.getBoundingClientRect();return [vb[0]+(ev.clientX-r.left)/r.width*vb[2],vb[1]+(ev.clientY-r.top)/r.height*vb[3]];};
+function viva(svg){if(JA.has(svg.id)||svg.closest('.odi-viva')||svg.dataset.odiViva==='nao')return;const S0=estrutura(svg);if(!S0)return;
+ const caixa=document.createElement('div');caixa.className='odi-viva yt-net';svg.parentNode.insertBefore(caixa,svg);
+ caixa.innerHTML='<div class="odi-ctl yt-netctl"><span>Ver:</span><button class="yt-chip" data-v="rede" aria-pressed="true">Rede</button><button class="yt-chip" data-v="nos" aria-pressed="false">Tabela de nós</button><button class="yt-chip" data-v="ar" aria-pressed="false">Tabela de ligações</button>'+
+  '<input type="search" placeholder="Procurar nó…" aria-label="Procurar nó"><button class="yt-chip" data-z="mais" title="Aproximar">+</button><button class="yt-chip" data-z="menos" title="Afastar">−</button><button class="yt-chip" data-z="reset" title="Enquadramento original">⟲</button><button class="yt-chip" data-z="cheia" title="Tela cheia">⛶</button></div>'+
+  '<div class="yt-netbody"><div class="yt-netsvg"></div><aside class="yt-netside"></aside></div><div class="yt-nettable" hidden><input type="search" placeholder="Filtrar…" aria-label="Filtrar tabela"><div class="yt-tablewrap"><table></table></div></div>';
+ const box=caixa.querySelector('.yt-netsvg'),side=caixa.querySelector('.yt-netside'),tab=caixa.querySelector('.yt-nettable');box.appendChild(svg);
+ const leg=document.createElement('div');leg.className='yt-netlegend';box.appendChild(leg);
+ let S=S0,vb,vb0,fixo=null,grupo=null,vista='rede',ord=['lig',-1];
+ const lerVB=()=>{let v=(svg.getAttribute('viewBox')||'').split(/[\s,]+/).map(Number);if(v.length!==4||v.some(isNaN)){const b=svg.getBBox();v=[b.x,b.y,b.width||100,b.height||100];}vb=v.slice();vb0=v.slice();svg.setAttribute('viewBox',vb.join(' '));};
+ const aplicar=()=>svg.setAttribute('viewBox',vb.join(' '));
+ const pt=ev=>{const r=svg.getBoundingClientRect();return [vb[0]+(ev.clientX-r.left)/r.width*vb[2],vb[1]+(ev.clientY-r.top)/r.height*vb[3]];};
  const zoom=(k,x,y)=>{x=x??vb[0]+vb[2]/2;y=y??vb[1]+vb[3]/2;const nw=Math.max(vb0[2]/40,Math.min(vb0[2]*3,vb[2]*k)),f=nw/vb[2];vb=[x-(x-vb[0])*f,y-(y-vb[1])*f,nw,vb[3]*f];aplicar();};
  svg.addEventListener('wheel',ev=>{ev.preventDefault();const [x,y]=pt(ev);zoom(ev.deltaY>0?1.2:1/1.2,x,y);},{passive:false});
  let drag=null,moveu=false;svg.addEventListener('pointerdown',ev=>{drag=[ev.clientX,ev.clientY,vb[0],vb[1]];moveu=false;});
- svg.addEventListener('pointermove',ev=>{if(!drag)return;const r=svg.getBoundingClientRect();const dx=ev.clientX-drag[0],dy=ev.clientY-drag[1];if(Math.abs(dx)+Math.abs(dy)>3)moveu=true;vb[0]=drag[2]-dx/r.width*vb[2];vb[1]=drag[3]-dy/r.height*vb[3];aplicar();});
+ svg.addEventListener('pointermove',ev=>{if(!drag)return;const r=svg.getBoundingClientRect();const dx=ev.clientX-drag[0],dy=ev.clientY-drag[1];if(Math.abs(dx)+Math.abs(dy)>3)moveu=true;if(!moveu)return;vb[0]=drag[2]-dx/r.width*vb[2];vb[1]=drag[3]-dy/r.height*vb[3];aplicar();});
  window.addEventListener('pointerup',()=>{drag=null;});
- let fixo=null;const todos=[...svg.querySelectorAll('circle,line,path,text')];
- const foco=i=>{todos.forEach(e=>e.classList.remove('odi-dim','odi-hl','odi-sel'));if(i==null){info.textContent='Passe o mouse ou toque num nó para ver as ligações; clique para fixar e clique no fundo para soltar.';return;}
-  const n=S.nos[i];const vz=new Set([i,...n.viz.map(v=>v[0])]);todos.forEach(e=>e.classList.add('odi-dim'));
-  S.nos.forEach((m,j)=>{if(vz.has(j)){m.el.classList.remove('odi-dim');m.el.classList.add('odi-hl');(m.txts||[]).forEach(t=>{t.classList.remove('odi-dim');t.classList.add('odi-hl');t.removeAttribute('opacity');});if(m.txt){m.txt.classList.remove('odi-dim');}}});
-  n.viz.forEach(([,,k])=>{S.ar[k].el.classList.remove('odi-dim');S.ar[k].el.classList.add('odi-hl');});if(!S.soTexto)n.el.classList.add('odi-sel');
-  const top=[...n.viz].sort((a,b)=>b[1]-a[1]).slice(0,12).map(([j])=>S.nos[j].rot||'(sem nome)');
-  info.innerHTML='<b>'+(n.rot||'(sem nome)').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</b> · '+n.viz.length+' ligação(ões)'+(top.length?'<br><span style="color:#5a6577">Mais fortes (pela espessura da linha): '+top.map(t=>t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))).join(' · ')+'</span>':'');};
- S.nos.forEach((n,i)=>{n.el.style.cursor='pointer';n.el.addEventListener('mouseenter',()=>{if(fixo==null)foco(i);});n.el.addEventListener('mouseleave',()=>{if(fixo==null)foco(null);});
-  n.el.addEventListener('click',ev=>{ev.stopPropagation();if(moveu)return;fixo=fixo===i?null:i;foco(fixo);});});
+ const todos=()=>[...svg.querySelectorAll('circle,line,path,text')];
+ const como='<h4>Como ler</h4><p>Cada ponto é um nó; a linha liga dois nós; a espessura indica a força da ligação. Passe o mouse ou toque num ponto para ver as conexões; clique para fixar. Arraste para mover; roda do mouse ou + e − para o zoom.</p><p class="yt-meta">'+S0.nos.length+' nós · '+S0.ar.length+' ligações</p>';
+ const ficha=i=>{if(i==null){side.innerHTML=como+(grupo?'<p class="yt-meta">Grupo destacado: <i style="display:inline-block;width:9px;height:9px;background:'+esc(grupo)+'"></i> <a data-limpa="1">limpar</a></p>':'');return;}
+  const n=S.nos[i];const vz=[...n.viz].sort((a,b)=>b[1]-a[1]);
+  side.innerHTML='<h4>'+esc(n.rot)+'</h4><p class="yt-meta"><i style="display:inline-block;width:9px;height:9px;background:'+esc(n.cor)+'"></i> '+n.viz.length+' ligação(ões)</p><div class="eyebrow" style="margin-top:8px">Ligado a</div><ol>'+
+   vz.slice(0,25).map(([j,w])=>'<li><a data-no="'+j+'">'+esc(S.nos[j].rot)+'</a> <span class="yt-meta">força '+(Math.round(w*100)/100)+'</span></li>').join('')+'</ol>'+(vz.length>25?'<p class="yt-meta">e mais '+(vz.length-25)+'.</p>':'')+'<p><a data-limpa="1">limpar seleção</a></p>';};
+ const foco=i=>{todos().forEach(e=>e.classList.remove('odi-dim','odi-hl','odi-sel'));
+  if(i==null&&grupo){todos().forEach(e=>e.classList.add('odi-dim'));S.nos.forEach(m=>{if(m.cor===grupo){m.el.classList.replace('odi-dim','odi-hl');m.txts.forEach(t=>t.classList.replace('odi-dim','odi-hl'));}});S.ar.forEach(e=>{if(S.nos[e.a].cor===grupo&&S.nos[e.b].cor===grupo)e.el.classList.replace('odi-dim','odi-hl');});ficha(null);return;}
+  if(i==null){ficha(null);return;}
+  const n=S.nos[i];const vz=new Set([i,...n.viz.map(v=>v[0])]);todos().forEach(e=>e.classList.add('odi-dim'));
+  S.nos.forEach((m,j)=>{if(vz.has(j)){m.el.classList.replace('odi-dim','odi-hl');m.txts.forEach(t=>{t.classList.replace('odi-dim','odi-hl');t.removeAttribute('opacity');});}});
+  n.viz.forEach(([,,k])=>S.ar[k].el.classList.replace('odi-dim','odi-hl'));if(!S.soTexto)n.el.classList.add('odi-sel');ficha(i);};
+ const legenda=()=>{const c={};S.nos.forEach(n=>c[n.cor]=(c[n.cor]||0)+1);const ks=Object.entries(c).sort((a,b)=>b[1]-a[1]);
+  leg.innerHTML=ks.length>12?'<small>cores em gradiente, como no desenho original (passe o mouse sobre um ponto para ver o nó)</small>':ks.length>1?ks.slice(0,12).map(([k,v])=>'<span data-cor="'+esc(k)+'" title="Destacar este grupo"><i style="background:'+esc(k)+'"></i>'+v+'</span>').join('')+'<br><small>cor = grupo do desenho original · clique para destacar</small>':'';};
+ const tabela=()=>{const q=tab.querySelector('input').value.trim().toLowerCase();let cols,rows;
+  if(vista==='nos'){cols=[['rot','Nó'],['lig','Ligações'],['forca','Força total'],['cor','Cor']];rows=S.nos.map((n,i)=>({i,rot:n.rot,lig:n.viz.length,forca:Math.round(n.viz.reduce((a,v)=>a+v[1],0)*100)/100,cor:n.cor})).filter(r=>!q||r.rot.toLowerCase().includes(q));}
+  else{cols=[['a','Nó'],['b','Nó'],['w','Força']];rows=S.ar.map(e=>({a:S.nos[e.a].rot,b:S.nos[e.b].rot,w:Math.round(e.w*100)/100,ia:e.a})).filter(r=>!q||(r.a+' '+r.b).toLowerCase().includes(q));}
+  const [k,d]=ord;if(cols.some(c=>c[0]===k))rows.sort((x,y)=>typeof x[k]==='number'?d*(x[k]-y[k]):d*String(x[k]).localeCompare(String(y[k])));
+  tab.querySelector('table').innerHTML='<thead><tr>'+cols.map(([c,t])=>'<th data-ord="'+c+'">'+t+'</th>').join('')+'</tr></thead><tbody>'+rows.slice(0,1500).map(r=>'<tr>'+cols.map(([c])=>'<td>'+(c==='cor'?'<i style="display:inline-block;width:10px;height:10px;background:'+esc(r.cor)+'"></i>':c==='rot'||c==='a'?'<a data-no="'+(r.i??r.ia)+'">'+esc(r[c])+'</a>':esc(r[c]))+'</td>').join('')+'</tr>').join('')+'</tbody>'+(rows.length>1500?'<caption>mostrando 1.500 de '+rows.length+'</caption>':'');};
+ const ligar=()=>{const N=estrutura(svg);if(!N)return;S=N;S.nos.forEach((n,i)=>{n.el.style.cursor='pointer';n.el.addEventListener('mouseenter',()=>{if(fixo==null)foco(i);});n.el.addEventListener('mouseleave',()=>{if(fixo==null)foco(null);});
+   n.el.addEventListener('click',ev=>{ev.stopPropagation();if(moveu)return;fixo=fixo===i?null:i;foco(fixo);});});legenda();lerVB();fixo=null;foco(null);if(vista!=='rede')tabela();};
  svg.addEventListener('click',()=>{if(moveu)return;fixo=null;foco(null);});
- barra.addEventListener('click',ev=>{const a=ev.target.dataset&&ev.target.dataset.a;if(!a)return;if(a==='mais')zoom(1/1.4);if(a==='menos')zoom(1.4);if(a==='reset'){vb=vb0.slice();aplicar();fixo=null;foco(null);}
-  if(a==='cheia'){if(document.fullscreenElement)document.exitFullscreen();else caixa.requestFullscreen&&caixa.requestFullscreen();}});
- barra.querySelector('input').addEventListener('input',ev=>{const q=ev.target.value.trim().toLowerCase();if(!q){fixo=null;foco(null);return;}
-  const i=S.nos.findIndex(n=>(n.rot||'').toLowerCase().includes(q));if(i<0){info.textContent='Nenhum nó com "'+ev.target.value+'".';return;}
-  fixo=i;foco(i);const n=S.nos[i];const w=vb0[2]/3;vb=[n.x-w/2,n.y-vb0[3]/6,w,vb0[3]/3];aplicar();});}
+ caixa.addEventListener('click',ev=>{const t=ev.target.closest('[data-v],[data-z],[data-no],[data-limpa],[data-cor],[data-ord]');if(!t)return;
+  if(t.dataset.v){vista=t.dataset.v;caixa.querySelectorAll('[data-v]').forEach(b=>b.setAttribute('aria-pressed',String(b===t)));caixa.querySelector('.yt-netbody').hidden=vista!=='rede';tab.hidden=vista==='rede';if(vista!=='rede')tabela();}
+  if(t.dataset.z==='mais')zoom(1/1.4);if(t.dataset.z==='menos')zoom(1.4);if(t.dataset.z==='reset'){vb=vb0.slice();aplicar();fixo=null;grupo=null;foco(null);}
+  if(t.dataset.z==='cheia'){if(document.fullscreenElement)document.exitFullscreen();else caixa.requestFullscreen&&caixa.requestFullscreen();}
+  if(t.dataset.no!=null){const i=+t.dataset.no;if(vista!=='rede')caixa.querySelector('[data-v=rede]').click();fixo=i;foco(i);const n=S.nos[i];const w=vb0[2]/2.5;vb=[n.x-w/2,n.y-vb0[3]/5,w,vb0[3]/2.5];aplicar();}
+  if(t.dataset.limpa){fixo=null;grupo=null;foco(null);}
+  if(t.dataset.cor){grupo=grupo===t.dataset.cor?null:t.dataset.cor;fixo=null;foco(null);}
+  if(t.dataset.ord){ord=[t.dataset.ord,ord[0]===t.dataset.ord?-ord[1]:-1];tabela();}});
+ tab.querySelector('input').addEventListener('input',tabela);
+ caixa.querySelector('.odi-ctl input').addEventListener('input',ev=>{const q=ev.target.value.trim().toLowerCase();if(!q){fixo=null;foco(null);return;}
+  const i=S.nos.findIndex(n=>n.rot.toLowerCase().includes(q));if(i<0){side.innerHTML='<h4>Procurar</h4><p>Nenhum nó com "'+esc(ev.target.value)+'".</p>';return;}
+  fixo=i;foco(i);const n=S.nos[i];const w=vb0[2]/2.5;vb=[n.x-w/2,n.y-vb0[3]/5,w,vb0[3]/2.5];aplicar();});
+ let t=null;new MutationObserver(ms=>{if(ms.some(m=>m.type==='childList'||m.attributeName==='viewBox'&&!svg.dataset.odiAplicando)){if(ms.every(m=>m.type==='attributes'))return;clearTimeout(t);t=setTimeout(ligar,150);}}).observe(svg,{childList:true});
+ ligar();}
 function varrer(r){(r||document).querySelectorAll('svg').forEach(s=>{try{viva(s);}catch(e){}});}
 const go=()=>{varrer();let t=null;new MutationObserver(()=>{clearTimeout(t);t=setTimeout(()=>varrer(),400);}).observe(document.body,{childList:true,subtree:true});};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
