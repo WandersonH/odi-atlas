@@ -1,231 +1,364 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gexf xmlns="http://gexf.net/1.3" version="1.3">
 <graph defaultedgetype="undirected">
-<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/></attributes>
+<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="termo:desinformacao" label="desinformação"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="628"/></attvalues></node>
-<node id="rede:youtube" label="youtube"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="3276"/></attvalues></node>
-<node id="alvo:Lula" label="Lula"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="1081"/></attvalues></node>
-<node id="alvo:Imprensa" label="Imprensa"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="347"/></attvalues></node>
-<node id="termo:ia_tema" label="inteligência artificial (tema)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="640"/></attvalues></node>
-<node id="alvo:IA" label="IA"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="767"/></attvalues></node>
-<node id="termo:fake_news" label="fake news"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="4663"/></attvalues></node>
-<node id="termo:montagem" label="montagem"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="279"/></attvalues></node>
-<node id="alvo:Flávio/Bolsonaro" label="Flávio/Bolsonaro"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="1324"/></attvalues></node>
-<node id="termo:fake" label="&quot;fake&quot; (sozinho)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2239"/></attvalues></node>
-<node id="alvo:PT e esquerda" label="PT e esquerda"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="694"/></attvalues></node>
-<node id="alvo:Direita e bolsonarismo" label="Direita e bolsonarismo"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="456"/></attvalues></node>
-<node id="termo:ia" label="atribuição a IA (&quot;feito com IA&quot;, &quot;isso é IA&quot;)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1088"/></attvalues></node>
-<node id="termo:noticia_falsa" label="notícia falsa"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="152"/></attvalues></node>
-<node id="termo:fora_de_contexto" label="fora de contexto / notícia antiga"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="162"/></attvalues></node>
-<node id="alvo:TSE e urna" label="TSE e urna"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="221"/></attvalues></node>
-<node id="alvo:STF e Moraes" label="STF e Moraes"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="157"/></attvalues></node>
-<node id="termo:editado" label="editado / cortado / acelerado"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="54"/></attvalues></node>
-<node id="termo:deepfake" label="deepfake"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="14"/></attvalues></node>
-<node id="rede:facebook" label="facebook"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="117"/></attvalues></node>
-<node id="rede:tiktok" label="tiktok"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="13"/></attvalues></node>
-<node id="rede:instagram" label="instagram"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="430"/></attvalues></node>
-<node id="rede:x" label="x"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="562"/></attvalues></node>
-<node id="rede:kwai" label="kwai"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="10"/></attvalues></node>
-<node id="caso:001" label="001"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="8"/></attvalues></node>
-<node id="conta:x:@BrasilPost13" label="x:@BrasilPost13"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="caso:002" label="002"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:tiktok:@loyylz.ae" label="tiktok:@loyylz.ae"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:tiktok:@goa1ed.zx" label="tiktok:@goa1ed.zx"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:003" label="003"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="6"/></attvalues></node>
-<node id="conta:x:@MachadoDarlon" label="x:@MachadoDarlon"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@martinFLA81" label="x:@martinFLA81"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@PZeiroNoticias" label="x:@PZeiroNoticias"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:005" label="005"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:tiktok:@poder360" label="tiktok:@poder360"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:010" label="010"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:013" label="013"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:tiktok:@rubinho.politizando" label="tiktok:@rubinho.politizando"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:014" label="014"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="44"/></attvalues></node>
-<node id="conta:x:@odanielscott" label="x:@odanielscott"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Rudriguo" label="x:@Rudriguo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@joao8_32_JB" label="x:@joao8_32_JB"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Girassollaranja" label="x:@Girassollaranja"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@jornalrazao" label="x:@jornalrazao"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:015" label="015"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="54"/></attvalues></node>
-<node id="conta:x:@ProfessorBellei" label="x:@ProfessorBellei"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@izanildo_sabino" label="x:@izanildo_sabino"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:x:@LulaPTnosTrends" label="x:@LulaPTnosTrends"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Alice_inland13" label="x:@Alice_inland13"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@JornalDaCidadeO" label="x:@JornalDaCidadeO"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/></attvalues></node>
-<node id="conta:x:@Chief117Br" label="x:@Chief117Br"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@ColetivoSalaPT" label="x:@ColetivoSalaPT"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:x:@LEME12" label="x:@LEME12"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@JoseMedeirosMT" label="x:@JoseMedeirosMT"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@BlogdoNoblat" label="x:@BlogdoNoblat"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:x:@WagnerThomazoni" label="x:@WagnerThomazoni"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@GaulesMundinho" label="x:@GaulesMundinho"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@mspbra" label="x:@mspbra"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@GugaNoblat" label="x:@GugaNoblat"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@_janoninho_fc" label="x:@_janoninho_fc"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@plnacional_" label="x:@plnacional_"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@RizzoMBL" label="x:@RizzoMBL"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@DaysePirralha" label="x:@DaysePirralha"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@reinaldoazevedo" label="x:@reinaldoazevedo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:x:@Schneid3n" label="x:@Schneid3n"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Fabioeduardo" label="x:@Fabioeduardo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@CLECCIO" label="x:@CLECCIO"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@jotapefaria" label="x:@jotapefaria"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:016" label="016"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="caso:017" label="017"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="76"/></attvalues></node>
-<node id="conta:x:@joaquimrib1801" label="x:@joaquimrib1801"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@NabilBondukiSP" label="x:@NabilBondukiSP"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@recordnews" label="x:@recordnews"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@cesarchiyaya" label="x:@cesarchiyaya"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@TitoGremistazo" label="x:@TitoGremistazo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@depchicoalencar" label="x:@depchicoalencar"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@pfigueiredo08" label="x:@pfigueiredo08"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@amandafaudi" label="x:@amandafaudi"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@rtnoticias_br" label="x:@rtnoticias_br"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@correio" label="x:@correio"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@congressoemfoco" label="x:@congressoemfoco"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Metropoles" label="x:@Metropoles"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@folha" label="x:@folha"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/></attvalues></node>
-<node id="conta:x:@NewsLiberdade" label="x:@NewsLiberdade"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Poder360" label="x:@Poder360"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@sputnik_brasil" label="x:@sputnik_brasil"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:x:@jnascim" label="x:@jnascim"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@portalnsctotal" label="x:@portalnsctotal"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@republiqueBRA" label="x:@republiqueBRA"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:x:@tesoureiros" label="x:@tesoureiros"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:018" label="018"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="39"/></attvalues></node>
-<node id="conta:x:@deneuverse" label="x:@deneuverse"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Berlusconnii" label="x:@Berlusconnii"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@Boatosorg" label="x:@Boatosorg"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@rodrigolima" label="x:@rodrigolima"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@AfpChecamos" label="x:@AfpChecamos"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@renatoesteves" label="x:@renatoesteves"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:020" label="020"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="2"/></attvalues></node>
-<node id="conta:x:@So_Quem_e_Lula" label="x:@So_Quem_e_Lula"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:021" label="021"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="7"/></attvalues></node>
-<node id="caso:022" label="022"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="56"/></attvalues></node>
-<node id="conta:x:@leonardodias" label="x:@leonardodias"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@aosfatos" label="x:@aosfatos"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:023" label="023"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="32"/></attvalues></node>
-<node id="conta:x:@novaes_monteiro" label="x:@novaes_monteiro"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@eusouumdoc" label="x:@eusouumdoc"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@misteriouspavao" label="x:@misteriouspavao"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="caso:024" label="024"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="46"/></attvalues></node>
-<node id="conta:x:@aguiar_dirce" label="x:@aguiar_dirce"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/></attvalues></node>
-<node id="conta:x:@ViniciusCarluci" label="x:@ViniciusCarluci"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@pablopadulax" label="x:@pablopadulax"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
-<node id="conta:x:@bnews_oficial" label="x:@bnews_oficial"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/></attvalues></node>
+<node id="termo:desinformacao" label="desinformação"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="967"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="rede:youtube" label="youtube"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="3332"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="alvo:Lula" label="Lula"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="1363"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="alvo:Imprensa" label="Imprensa"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="477"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="termo:ia_tema" label="inteligência artificial (tema)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="915"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="alvo:IA" label="IA"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="974"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="termo:fake_news" label="fake news"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="5602"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:montagem" label="montagem"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="435"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="alvo:Flávio/Bolsonaro" label="Flávio/Bolsonaro"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="1690"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:fake" label="&quot;fake&quot; (sozinho)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="3100"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="alvo:PT e esquerda" label="PT e esquerda"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="817"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="alvo:Direita e bolsonarismo" label="Direita e bolsonarismo"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="590"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:ia" label="atribuição a IA (&quot;feito com IA&quot;, &quot;isso é IA&quot;)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1543"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="termo:noticia_falsa" label="notícia falsa"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="206"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:fora_de_contexto" label="fora de contexto / notícia antiga"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="233"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="alvo:TSE e urna" label="TSE e urna"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="323"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="alvo:STF e Moraes" label="STF e Moraes"><attvalues><attvalue for="0" value="alvo"/><attvalue for="1" value="271"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="termo:editado" label="editado / cortado / acelerado"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="86"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="termo:deepfake" label="deepfake"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="25"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="rede:facebook" label="facebook"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="143"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="rede:tiktok" label="tiktok"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="153"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="rede:instagram" label="instagram"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="473"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="rede:x" label="x"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="1099"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="rede:kwai" label="kwai"><attvalues><attvalue for="0" value="rede"/><attvalue for="1" value="10"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:001" label="001"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="11"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@BrasilPost13" label="x:@BrasilPost13"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@ofofoquinho" label="tiktok:@ofofoquinho"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@flordeluzmantras" label="tiktok:@flordeluzmantras"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:002" label="002"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="17"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@mxziofc" label="tiktok:@mxziofc"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@rn_bass444x_x" label="tiktok:@rn_bass444x_x"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@_giadinh.huanhoahong" label="tiktok:@_giadinh.huanhoahong"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@vixmusic0" label="tiktok:@vixmusic0"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@brinkzaev2" label="tiktok:@brinkzaev2"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@hype.musicx_official" label="tiktok:@hype.musicx_official"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@loyylz.ae" label="tiktok:@loyylz.ae"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@goa1ed.zx" label="tiktok:@goa1ed.zx"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@ukuknews" label="tiktok:@ukuknews"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@nowfunk" label="tiktok:@nowfunk"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@groozermysicc" label="tiktok:@groozermysicc"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@tmmusics" label="tiktok:@tmmusics"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@kris.tiana.morena" label="tiktok:@kris.tiana.morena"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:003" label="003"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@soberania.viva2" label="tiktok:@soberania.viva2"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@MachadoDarlon" label="x:@MachadoDarlon"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@martinFLA81" label="x:@martinFLA81"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@PZeiroNoticias" label="x:@PZeiroNoticias"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:005" label="005"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="4"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@explicandoocrime" label="tiktok:@explicandoocrime"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@poder360" label="tiktok:@poder360"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@sementesdaresistenciabr" label="tiktok:@sementesdaresistenciabr"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:006" label="006"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="59"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@KriskaCarvalho" label="x:@KriskaCarvalho"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@ArleteCaetum" label="x:@ArleteCaetum"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@AnaliseGeopol" label="x:@AnaliseGeopol"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@CCambara2" label="x:@CCambara2"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@EnockFormiga" label="x:@EnockFormiga"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@AndradeeRoberta" label="x:@AndradeeRoberta"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@JacqueOmuniz" label="x:@JacqueOmuniz"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@damadanoite14" label="x:@damadanoite14"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@cassioolivveira" label="x:@cassioolivveira"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@Saray_sandrac" label="x:@Saray_sandrac"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@JovemPanNews" label="x:@JovemPanNews"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@pierre_160754" label="x:@pierre_160754"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@pamcosta21" label="x:@pamcosta21"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@paulomansur_" label="x:@paulomansur_"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@leonardodias" label="x:@leonardodias"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="11"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@SensoCrtico1" label="x:@SensoCrtico1"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@FlavioBolsonaro" label="x:@FlavioBolsonaro"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@karinamichelin" label="x:@karinamichelin"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@TheIncorrupt_" label="x:@TheIncorrupt_"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@FuriaeTradicao" label="x:@FuriaeTradicao"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@poponze" label="x:@poponze"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@JornalDaCidadeO" label="x:@JornalDaCidadeO"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="12"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:007" label="007"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="18"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@agencialupa" label="tiktok:@agencialupa"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@pilhadobrasil.cortes" label="tiktok:@pilhadobrasil.cortes"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@samiramansureli21" label="tiktok:@samiramansureli21"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:008" label="008"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="14"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@reinaldoazevedo" label="x:@reinaldoazevedo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@So_Quem_e_Lula" label="x:@So_Quem_e_Lula"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:009" label="009"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="244"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@reart.grafica" label="tiktok:@reart.grafica"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@aleestefan" label="x:@aleestefan"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@brunoscarpelli" label="x:@brunoscarpelli"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@thicico" label="x:@thicico"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@taminebb" label="x:@taminebb"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@camilamoreno13_" label="x:@camilamoreno13_"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@cesarbsantos13" label="x:@cesarbsantos13"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@avengerprivate2" label="x:@avengerprivate2"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@fcosblopes" label="x:@fcosblopes"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@CarmilatiRenato" label="x:@CarmilatiRenato"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@NdiaBaptistell3" label="x:@NdiaBaptistell3"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@revistaforum" label="x:@revistaforum"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@jornalnota" label="x:@jornalnota"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@ojornaleirobr" label="x:@ojornaleirobr"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@redscarfx" label="x:@redscarfx"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@Dirceusilva09" label="x:@Dirceusilva09"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@hablasuzzy" label="x:@hablasuzzy"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@_eoantao" label="x:@_eoantao"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@PedroRonchi2" label="x:@PedroRonchi2"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="caso:010" label="010"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="6"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@gtnews.ofc" label="tiktok:@gtnews.ofc"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@vinnycius.ia" label="tiktok:@vinnycius.ia"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="7"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:011" label="011"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="12"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@ocafezinho" label="x:@ocafezinho"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:012" label="012"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="117"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@IceXTruths" label="x:@IceXTruths"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@thenews_br" label="x:@thenews_br"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@lavemowill" label="x:@lavemowill"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@JunitoMBL" label="x:@JunitoMBL"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@DOCENTEMONTEIRO" label="x:@DOCENTEMONTEIRO"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@slpng_giants_pt" label="x:@slpng_giants_pt"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@david_agape_" label="x:@david_agape_"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@allanconta5" label="x:@allanconta5"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@CelsoEduardoLi4" label="x:@CelsoEduardoLi4"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@CanalNaoEsqueco" label="x:@CanalNaoEsqueco"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@delegadoramagem" label="x:@delegadoramagem"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@rafalougon" label="x:@rafalougon"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@YviCarneiro" label="x:@YviCarneiro"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Pri_usabr1" label="x:@Pri_usabr1"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@o_incensuravel" label="x:@o_incensuravel"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@pfigueiredo08" label="x:@pfigueiredo08"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@valterbjunior57" label="x:@valterbjunior57"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@jalinformei" label="x:@jalinformei"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@vlogdomarcone" label="x:@vlogdomarcone"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@rafacouto1988" label="x:@rafacouto1988"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@R38TAO" label="x:@R38TAO"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@ualifiaraujo" label="x:@ualifiaraujo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@MidiaLibre" label="x:@MidiaLibre"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@DanielOpotiguar" label="x:@DanielOpotiguar"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@ViniciusLemosRO" label="x:@ViniciusLemosRO"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@amandafaudi" label="x:@amandafaudi"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@folha" label="x:@folha"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="5"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@noticiasredetv" label="tiktok:@noticiasredetv"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@noticias.urgentes39" label="tiktok:@noticias.urgentes39"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@sputnik_brasil" label="x:@sputnik_brasil"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@republiqueBRA" label="x:@republiqueBRA"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@sbtnews" label="x:@sbtnews"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@opatria1" label="tiktok:@opatria1"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:013" label="013"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="5"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@rubinho.politizando" label="tiktok:@rubinho.politizando"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@carlosmartinsgestor" label="tiktok:@carlosmartinsgestor"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:014" label="014"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="48"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@odanielscott" label="x:@odanielscott"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Rudriguo" label="x:@Rudriguo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@joao8_32_JB" label="x:@joao8_32_JB"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Girassollaranja" label="x:@Girassollaranja"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@jornalrazao" label="x:@jornalrazao"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@metropolesoficial" label="tiktok:@metropolesoficial"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:015" label="015"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="57"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@ProfessorBellei" label="x:@ProfessorBellei"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@izanildo_sabino" label="x:@izanildo_sabino"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@LulaPTnosTrends" label="x:@LulaPTnosTrends"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@Alice_inland13" label="x:@Alice_inland13"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Chief117Br" label="x:@Chief117Br"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@ColetivoSalaPT" label="x:@ColetivoSalaPT"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@LEME12" label="x:@LEME12"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@JoseMedeirosMT" label="x:@JoseMedeirosMT"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@BlogdoNoblat" label="x:@BlogdoNoblat"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@WagnerThomazoni" label="x:@WagnerThomazoni"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@GaulesMundinho" label="x:@GaulesMundinho"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@eanoticia" label="tiktok:@eanoticia"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@mspbra" label="x:@mspbra"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@GugaNoblat" label="x:@GugaNoblat"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@_janoninho_fc" label="x:@_janoninho_fc"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@plnacional_" label="x:@plnacional_"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@RizzoMBL" label="x:@RizzoMBL"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@DaysePirralha" label="x:@DaysePirralha"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Schneid3n" label="x:@Schneid3n"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Fabioeduardo" label="x:@Fabioeduardo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@CLECCIO" label="x:@CLECCIO"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@jotapefaria" label="x:@jotapefaria"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:016" label="016"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@renatoesteves" label="x:@renatoesteves"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:017" label="017"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="94"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@joaquimrib1801" label="x:@joaquimrib1801"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@NabilBondukiSP" label="x:@NabilBondukiSP"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@recordnews" label="x:@recordnews"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@cesarchiyaya" label="x:@cesarchiyaya"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@TitoGremistazo" label="x:@TitoGremistazo"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@depchicoalencar" label="x:@depchicoalencar"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@rtnoticias_br" label="x:@rtnoticias_br"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@correio" label="x:@correio"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@congressoemfoco" label="x:@congressoemfoco"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@Metropoles" label="x:@Metropoles"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@NewsLiberdade" label="x:@NewsLiberdade"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@Poder360" label="x:@Poder360"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@jnascim" label="x:@jnascim"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:tiktok:@leonelradde" label="tiktok:@leonelradde"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@portalnsctotal" label="x:@portalnsctotal"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@tesoureiros" label="x:@tesoureiros"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@palma35d" label="x:@palma35d"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@fatoem1minut" label="tiktok:@fatoem1minut"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="3"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:018" label="018"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="57"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@deneuverse" label="x:@deneuverse"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Berlusconnii" label="x:@Berlusconnii"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@riquinhadadireita" label="tiktok:@riquinhadadireita"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@spacecrisroppa" label="tiktok:@spacecrisroppa"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@Boatosorg" label="x:@Boatosorg"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@rodrigolima" label="x:@rodrigolima"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@AfpChecamos" label="x:@AfpChecamos"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@semredeas" label="tiktok:@semredeas"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@marcosmercante" label="tiktok:@marcosmercante"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:019" label="019"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="43"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@meidastouch" label="tiktok:@meidastouch"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@KenRoth" label="x:@KenRoth"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@aguiar_dirce" label="x:@aguiar_dirce"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="4"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@ayeshaijazkhan" label="x:@ayeshaijazkhan"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@AISafetyMemes" label="x:@AISafetyMemes"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:020" label="020"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="3"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="caso:021" label="021"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="13"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@HiroGallery" label="x:@HiroGallery"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:022" label="022"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="73"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:x:@aosfatos" label="x:@aosfatos"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@thescoop.politics" label="tiktok:@thescoop.politics"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="conta:tiktok:@redetvt" label="tiktok:@redetvt"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@talkey.br" label="tiktok:@talkey.br"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@souapenasV" label="x:@souapenasV"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@kaoschegou" label="tiktok:@kaoschegou"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:023" label="023"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="39"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@mateusatualiza" label="tiktok:@mateusatualiza"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@novaes_monteiro" label="x:@novaes_monteiro"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@eusouumdoc" label="x:@eusouumdoc"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@joicemel123" label="tiktok:@joicemel123"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:x:@misteriouspavao" label="x:@misteriouspavao"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@maismsnoticias" label="tiktok:@maismsnoticias"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:024" label="024"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="59"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@ViniciusCarluci" label="x:@ViniciusCarluci"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@pablopadulax" label="x:@pablopadulax"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="conta:x:@bnews_oficial" label="x:@bnews_oficial"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:025" label="025"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="17"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:026" label="026"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="11"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@nemmaisumgole" label="tiktok:@nemmaisumgole"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@dr.roger1982" label="tiktok:@dr.roger1982"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@aroldo.ucha.news" label="tiktok:@aroldo.ucha.news"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:tiktok:@poderecapital" label="tiktok:@poderecapital"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@trezoitaosincerocortes" label="tiktok:@trezoitaosincerocortes"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="conta:tiktok:@peronchostandup" label="tiktok:@peronchostandup"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:027" label="027"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="22"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:028" label="028"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="24"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="caso:029" label="029"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="23"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="conta:x:@mahcherrys" label="x:@mahcherrys"><attvalues><attvalue for="0" value="conta"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="caso:030" label="030"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="7"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="caso:031" label="031"><attvalues><attvalue for="0" value="caso"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="termo:desinformacao" target="rede:youtube" weight="209"/>
-<edge id="1" source="termo:desinformacao" target="alvo:Lula" weight="96"/>
-<edge id="2" source="termo:desinformacao" target="alvo:Imprensa" weight="38"/>
+<edge id="0" source="termo:desinformacao" target="rede:youtube" weight="213"/>
+<edge id="1" source="termo:desinformacao" target="alvo:Lula" weight="126"/>
+<edge id="2" source="termo:desinformacao" target="alvo:Imprensa" weight="57"/>
 <edge id="3" source="termo:ia_tema" target="rede:youtube" weight="145"/>
-<edge id="4" source="termo:ia_tema" target="alvo:IA" weight="190"/>
-<edge id="5" source="termo:fake_news" target="rede:youtube" weight="1656"/>
-<edge id="6" source="termo:montagem" target="rede:youtube" weight="92"/>
-<edge id="7" source="termo:fake_news" target="alvo:Flávio/Bolsonaro" weight="699"/>
-<edge id="8" source="termo:fake" target="rede:youtube" weight="817"/>
-<edge id="9" source="termo:fake" target="alvo:Flávio/Bolsonaro" weight="284"/>
-<edge id="10" source="termo:fake_news" target="alvo:Lula" weight="547"/>
-<edge id="11" source="termo:fake_news" target="alvo:PT e esquerda" weight="406"/>
-<edge id="12" source="termo:fake_news" target="alvo:IA" weight="146"/>
-<edge id="13" source="termo:fake_news" target="alvo:Imprensa" weight="160"/>
-<edge id="14" source="termo:ia_tema" target="alvo:PT e esquerda" weight="33"/>
-<edge id="15" source="termo:fake_news" target="alvo:Direita e bolsonarismo" weight="275"/>
-<edge id="16" source="termo:fake" target="alvo:Lula" weight="210"/>
-<edge id="17" source="termo:ia" target="rede:youtube" weight="253"/>
-<edge id="18" source="termo:montagem" target="alvo:Lula" weight="30"/>
-<edge id="19" source="termo:montagem" target="alvo:Flávio/Bolsonaro" weight="23"/>
-<edge id="20" source="termo:montagem" target="alvo:PT e esquerda" weight="16"/>
-<edge id="21" source="termo:desinformacao" target="alvo:Direita e bolsonarismo" weight="38"/>
-<edge id="22" source="termo:noticia_falsa" target="rede:youtube" weight="55"/>
-<edge id="23" source="termo:noticia_falsa" target="alvo:Imprensa" weight="12"/>
-<edge id="24" source="termo:ia" target="alvo:Lula" weight="91"/>
-<edge id="25" source="termo:ia" target="alvo:IA" weight="325"/>
-<edge id="26" source="termo:desinformacao" target="alvo:Flávio/Bolsonaro" weight="78"/>
-<edge id="27" source="termo:fora_de_contexto" target="rede:youtube" weight="32"/>
-<edge id="28" source="termo:ia" target="alvo:Flávio/Bolsonaro" weight="124"/>
-<edge id="29" source="termo:ia" target="alvo:Direita e bolsonarismo" weight="24"/>
-<edge id="30" source="termo:ia" target="alvo:TSE e urna" weight="16"/>
-<edge id="31" source="termo:fake" target="alvo:PT e esquerda" weight="141"/>
-<edge id="32" source="termo:fora_de_contexto" target="alvo:Lula" weight="20"/>
-<edge id="33" source="termo:fake_news" target="alvo:TSE e urna" weight="103"/>
-<edge id="34" source="termo:fake_news" target="alvo:STF e Moraes" weight="78"/>
-<edge id="35" source="termo:fake" target="alvo:IA" weight="65"/>
-<edge id="36" source="termo:ia_tema" target="alvo:Lula" weight="64"/>
-<edge id="37" source="termo:desinformacao" target="alvo:IA" weight="7"/>
-<edge id="38" source="termo:ia" target="alvo:Imprensa" weight="24"/>
-<edge id="39" source="termo:fake" target="alvo:TSE e urna" weight="47"/>
+<edge id="4" source="termo:ia_tema" target="alvo:IA" weight="240"/>
+<edge id="5" source="termo:fake_news" target="rede:youtube" weight="1678"/>
+<edge id="6" source="termo:montagem" target="rede:youtube" weight="94"/>
+<edge id="7" source="termo:fake_news" target="alvo:Flávio/Bolsonaro" weight="809"/>
+<edge id="8" source="termo:fake" target="rede:youtube" weight="829"/>
+<edge id="9" source="termo:fake" target="alvo:Flávio/Bolsonaro" weight="392"/>
+<edge id="10" source="termo:fake_news" target="alvo:Lula" weight="633"/>
+<edge id="11" source="termo:fake_news" target="alvo:PT e esquerda" weight="448"/>
+<edge id="12" source="termo:fake_news" target="alvo:IA" weight="173"/>
+<edge id="13" source="termo:fake_news" target="alvo:Imprensa" weight="196"/>
+<edge id="14" source="termo:ia_tema" target="alvo:PT e esquerda" weight="46"/>
+<edge id="15" source="termo:fake_news" target="alvo:Direita e bolsonarismo" weight="327"/>
+<edge id="16" source="termo:fake" target="alvo:Lula" weight="299"/>
+<edge id="17" source="termo:ia" target="rede:youtube" weight="266"/>
+<edge id="18" source="termo:montagem" target="alvo:Lula" weight="43"/>
+<edge id="19" source="termo:montagem" target="alvo:Flávio/Bolsonaro" weight="38"/>
+<edge id="20" source="termo:montagem" target="alvo:PT e esquerda" weight="22"/>
+<edge id="21" source="termo:desinformacao" target="alvo:Direita e bolsonarismo" weight="55"/>
+<edge id="22" source="termo:noticia_falsa" target="rede:youtube" weight="56"/>
+<edge id="23" source="termo:noticia_falsa" target="alvo:Imprensa" weight="15"/>
+<edge id="24" source="termo:ia" target="alvo:Lula" weight="121"/>
+<edge id="25" source="termo:ia" target="alvo:IA" weight="414"/>
+<edge id="26" source="termo:desinformacao" target="alvo:Flávio/Bolsonaro" weight="110"/>
+<edge id="27" source="termo:fora_de_contexto" target="rede:youtube" weight="34"/>
+<edge id="28" source="termo:ia" target="alvo:Flávio/Bolsonaro" weight="182"/>
+<edge id="29" source="termo:ia" target="alvo:Direita e bolsonarismo" weight="38"/>
+<edge id="30" source="termo:ia" target="alvo:TSE e urna" weight="31"/>
+<edge id="31" source="termo:fake" target="alvo:PT e esquerda" weight="158"/>
+<edge id="32" source="termo:fora_de_contexto" target="alvo:Lula" weight="25"/>
+<edge id="33" source="termo:fake_news" target="alvo:TSE e urna" weight="135"/>
+<edge id="34" source="termo:fake_news" target="alvo:STF e Moraes" weight="130"/>
+<edge id="35" source="termo:fake" target="alvo:IA" weight="93"/>
+<edge id="36" source="termo:ia_tema" target="alvo:Lula" weight="84"/>
+<edge id="37" source="termo:desinformacao" target="alvo:IA" weight="13"/>
+<edge id="38" source="termo:ia" target="alvo:Imprensa" weight="41"/>
+<edge id="39" source="termo:fake" target="alvo:TSE e urna" weight="60"/>
 <edge id="40" source="termo:editado" target="rede:youtube" weight="13"/>
-<edge id="41" source="termo:fake" target="alvo:Direita e bolsonarismo" weight="75"/>
-<edge id="42" source="termo:ia_tema" target="alvo:Flávio/Bolsonaro" weight="71"/>
-<edge id="43" source="termo:ia_tema" target="alvo:Direita e bolsonarismo" weight="12"/>
-<edge id="44" source="termo:ia" target="alvo:PT e esquerda" weight="30"/>
-<edge id="45" source="termo:fora_de_contexto" target="alvo:IA" weight="7"/>
-<edge id="46" source="termo:noticia_falsa" target="alvo:Lula" weight="17"/>
-<edge id="47" source="termo:fake" target="alvo:Imprensa" weight="85"/>
-<edge id="48" source="termo:montagem" target="alvo:IA" weight="20"/>
-<edge id="49" source="termo:desinformacao" target="alvo:TSE e urna" weight="25"/>
-<edge id="50" source="termo:fora_de_contexto" target="alvo:Flávio/Bolsonaro" weight="13"/>
-<edge id="51" source="termo:fora_de_contexto" target="alvo:PT e esquerda" weight="13"/>
-<edge id="52" source="termo:fake" target="alvo:STF e Moraes" weight="28"/>
-<edge id="53" source="termo:ia_tema" target="alvo:TSE e urna" weight="10"/>
-<edge id="54" source="termo:noticia_falsa" target="alvo:Flávio/Bolsonaro" weight="19"/>
-<edge id="55" source="termo:noticia_falsa" target="alvo:PT e esquerda" weight="13"/>
-<edge id="56" source="termo:desinformacao" target="alvo:STF e Moraes" weight="7"/>
+<edge id="41" source="termo:fake" target="alvo:Direita e bolsonarismo" weight="107"/>
+<edge id="42" source="termo:ia_tema" target="alvo:Flávio/Bolsonaro" weight="96"/>
+<edge id="43" source="termo:ia_tema" target="alvo:Direita e bolsonarismo" weight="22"/>
+<edge id="44" source="termo:ia" target="alvo:PT e esquerda" weight="42"/>
+<edge id="45" source="termo:fora_de_contexto" target="alvo:IA" weight="8"/>
+<edge id="46" source="termo:noticia_falsa" target="alvo:Lula" weight="23"/>
+<edge id="47" source="termo:fake" target="alvo:Imprensa" weight="106"/>
+<edge id="48" source="termo:montagem" target="alvo:IA" weight="23"/>
+<edge id="49" source="termo:desinformacao" target="alvo:TSE e urna" weight="44"/>
+<edge id="50" source="termo:fora_de_contexto" target="alvo:Flávio/Bolsonaro" weight="19"/>
+<edge id="51" source="termo:fora_de_contexto" target="alvo:PT e esquerda" weight="17"/>
+<edge id="52" source="termo:fake" target="alvo:STF e Moraes" weight="39"/>
+<edge id="53" source="termo:ia_tema" target="alvo:TSE e urna" weight="19"/>
+<edge id="54" source="termo:noticia_falsa" target="alvo:Flávio/Bolsonaro" weight="26"/>
+<edge id="55" source="termo:noticia_falsa" target="alvo:PT e esquerda" weight="14"/>
+<edge id="56" source="termo:desinformacao" target="alvo:STF e Moraes" weight="25"/>
 <edge id="57" source="termo:noticia_falsa" target="alvo:IA" weight="4"/>
-<edge id="58" source="termo:desinformacao" target="alvo:PT e esquerda" weight="38"/>
-<edge id="59" source="termo:editado" target="alvo:Flávio/Bolsonaro" weight="10"/>
-<edge id="60" source="termo:editado" target="alvo:Imprensa" weight="3"/>
-<edge id="61" source="termo:editado" target="alvo:IA" weight="2"/>
-<edge id="62" source="termo:editado" target="alvo:PT e esquerda" weight="4"/>
-<edge id="63" source="termo:editado" target="alvo:Lula" weight="6"/>
-<edge id="64" source="termo:editado" target="alvo:Direita e bolsonarismo" weight="3"/>
-<edge id="65" source="termo:noticia_falsa" target="alvo:Direita e bolsonarismo" weight="8"/>
-<edge id="66" source="termo:montagem" target="alvo:Direita e bolsonarismo" weight="15"/>
-<edge id="67" source="termo:ia" target="alvo:STF e Moraes" weight="7"/>
-<edge id="68" source="termo:noticia_falsa" target="alvo:TSE e urna" weight="2"/>
-<edge id="69" source="termo:montagem" target="alvo:STF e Moraes" weight="7"/>
-<edge id="70" source="termo:ia_tema" target="alvo:STF e Moraes" weight="25"/>
-<edge id="71" source="termo:ia_tema" target="alvo:Imprensa" weight="15"/>
-<edge id="72" source="termo:editado" target="alvo:TSE e urna" weight="3"/>
-<edge id="73" source="termo:editado" target="alvo:STF e Moraes" weight="1"/>
+<edge id="58" source="termo:desinformacao" target="alvo:PT e esquerda" weight="62"/>
+<edge id="59" source="termo:editado" target="alvo:Flávio/Bolsonaro" weight="14"/>
+<edge id="60" source="termo:editado" target="alvo:Imprensa" weight="7"/>
+<edge id="61" source="termo:editado" target="alvo:IA" weight="4"/>
+<edge id="62" source="termo:editado" target="alvo:PT e esquerda" weight="7"/>
+<edge id="63" source="termo:editado" target="alvo:Lula" weight="9"/>
+<edge id="64" source="termo:editado" target="alvo:Direita e bolsonarismo" weight="4"/>
+<edge id="65" source="termo:noticia_falsa" target="alvo:Direita e bolsonarismo" weight="10"/>
+<edge id="66" source="termo:montagem" target="alvo:Direita e bolsonarismo" weight="18"/>
+<edge id="67" source="termo:ia" target="alvo:STF e Moraes" weight="20"/>
+<edge id="68" source="termo:noticia_falsa" target="alvo:TSE e urna" weight="7"/>
+<edge id="69" source="termo:montagem" target="alvo:STF e Moraes" weight="10"/>
+<edge id="70" source="termo:ia_tema" target="alvo:STF e Moraes" weight="36"/>
+<edge id="71" source="termo:ia_tema" target="alvo:Imprensa" weight="29"/>
+<edge id="72" source="termo:editado" target="alvo:TSE e urna" weight="5"/>
+<edge id="73" source="termo:editado" target="alvo:STF e Moraes" weight="2"/>
 <edge id="74" source="termo:deepfake" target="rede:youtube" weight="4"/>
-<edge id="75" source="termo:deepfake" target="alvo:Flávio/Bolsonaro" weight="3"/>
-<edge id="76" source="termo:deepfake" target="alvo:TSE e urna" weight="3"/>
+<edge id="75" source="termo:deepfake" target="alvo:Flávio/Bolsonaro" weight="4"/>
+<edge id="76" source="termo:deepfake" target="alvo:TSE e urna" weight="4"/>
 <edge id="77" source="termo:deepfake" target="alvo:STF e Moraes" weight="1"/>
-<edge id="78" source="termo:fora_de_contexto" target="alvo:Imprensa" weight="5"/>
-<edge id="79" source="termo:fora_de_contexto" target="alvo:Direita e bolsonarismo" weight="6"/>
-<edge id="80" source="termo:ia" target="rede:facebook" weight="12"/>
-<edge id="81" source="termo:ia_tema" target="rede:facebook" weight="7"/>
-<edge id="82" source="termo:fake_news" target="rede:facebook" weight="26"/>
+<edge id="78" source="termo:fora_de_contexto" target="alvo:Imprensa" weight="12"/>
+<edge id="79" source="termo:fora_de_contexto" target="alvo:Direita e bolsonarismo" weight="8"/>
+<edge id="80" source="termo:ia" target="rede:facebook" weight="16"/>
+<edge id="81" source="termo:ia_tema" target="rede:facebook" weight="8"/>
+<edge id="82" source="termo:fake_news" target="rede:facebook" weight="35"/>
 <edge id="83" source="termo:montagem" target="rede:facebook" weight="14"/>
-<edge id="84" source="termo:fake" target="rede:facebook" weight="27"/>
-<edge id="85" source="termo:desinformacao" target="rede:facebook" weight="15"/>
+<edge id="84" source="termo:fake" target="rede:facebook" weight="31"/>
+<edge id="85" source="termo:desinformacao" target="rede:facebook" weight="22"/>
 <edge id="86" source="termo:noticia_falsa" target="rede:facebook" weight="6"/>
 <edge id="87" source="termo:fora_de_contexto" target="rede:facebook" weight="9"/>
-<edge id="88" source="termo:editado" target="rede:facebook" weight="1"/>
-<edge id="89" source="termo:fake" target="rede:tiktok" weight="4"/>
-<edge id="90" source="termo:fake_news" target="rede:tiktok" weight="3"/>
+<edge id="88" source="termo:editado" target="rede:facebook" weight="2"/>
+<edge id="89" source="termo:fake" target="rede:tiktok" weight="16"/>
+<edge id="90" source="termo:fake_news" target="rede:tiktok" weight="45"/>
 <edge id="91" source="termo:noticia_falsa" target="rede:instagram" weight="5"/>
-<edge id="92" source="termo:ia_tema" target="rede:instagram" weight="9"/>
-<edge id="93" source="termo:fake_news" target="rede:instagram" weight="124"/>
-<edge id="94" source="termo:desinformacao" target="rede:instagram" weight="12"/>
-<edge id="95" source="termo:fake" target="rede:instagram" weight="257"/>
-<edge id="96" source="termo:montagem" target="rede:instagram" weight="9"/>
-<edge id="97" source="termo:fake" target="rede:x" weight="121"/>
-<edge id="98" source="termo:fake_news" target="rede:x" weight="262"/>
-<edge id="99" source="termo:desinformacao" target="rede:x" weight="34"/>
-<edge id="100" source="termo:ia" target="rede:x" weight="79"/>
-<edge id="101" source="termo:ia_tema" target="rede:x" weight="26"/>
-<edge id="102" source="termo:montagem" target="rede:x" weight="17"/>
-<edge id="103" source="termo:montagem" target="alvo:Imprensa" weight="4"/>
-<edge id="104" source="termo:noticia_falsa" target="rede:x" weight="3"/>
-<edge id="105" source="termo:fora_de_contexto" target="rede:x" weight="15"/>
-<edge id="106" source="termo:fora_de_contexto" target="alvo:TSE e urna" weight="3"/>
-<edge id="107" source="termo:fora_de_contexto" target="alvo:STF e Moraes" weight="2"/>
-<edge id="108" source="termo:editado" target="rede:x" weight="4"/>
-<edge id="109" source="termo:deepfake" target="rede:x" weight="1"/>
+<edge id="92" source="termo:ia_tema" target="rede:instagram" weight="17"/>
+<edge id="93" source="termo:fake_news" target="rede:instagram" weight="132"/>
+<edge id="94" source="termo:desinformacao" target="rede:instagram" weight="22"/>
+<edge id="95" source="termo:fake" target="rede:instagram" weight="258"/>
+<edge id="96" source="termo:montagem" target="rede:instagram" weight="12"/>
+<edge id="97" source="termo:fake" target="rede:x" weight="357"/>
+<edge id="98" source="termo:fake_news" target="rede:x" weight="415"/>
+<edge id="99" source="termo:desinformacao" target="rede:x" weight="75"/>
+<edge id="100" source="termo:ia" target="rede:x" weight="124"/>
+<edge id="101" source="termo:ia_tema" target="rede:x" weight="51"/>
+<edge id="102" source="termo:montagem" target="rede:x" weight="32"/>
+<edge id="103" source="termo:montagem" target="alvo:Imprensa" weight="13"/>
+<edge id="104" source="termo:noticia_falsa" target="rede:x" weight="11"/>
+<edge id="105" source="termo:fora_de_contexto" target="rede:x" weight="23"/>
+<edge id="106" source="termo:fora_de_contexto" target="alvo:TSE e urna" weight="6"/>
+<edge id="107" source="termo:fora_de_contexto" target="alvo:STF e Moraes" weight="3"/>
+<edge id="108" source="termo:editado" target="rede:x" weight="9"/>
+<edge id="109" source="termo:deepfake" target="rede:x" weight="2"/>
 <edge id="110" source="termo:fake_news" target="rede:kwai" weight="6"/>
 <edge id="111" source="termo:ia_tema" target="rede:kwai" weight="2"/>
 <edge id="112" source="termo:desinformacao" target="rede:kwai" weight="1"/>
@@ -235,158 +368,407 @@
 <edge id="116" source="conta:x:@BrasilPost13" target="termo:fake_news" weight="1"/>
 <edge id="117" source="termo:fake" target="caso:001" weight="1"/>
 <edge id="118" source="conta:x:@BrasilPost13" target="termo:fake" weight="1"/>
-<edge id="119" source="termo:montagem" target="caso:001" weight="1"/>
-<edge id="120" source="termo:montagem" target="rede:tiktok" weight="2"/>
-<edge id="121" source="termo:montagem" target="caso:002" weight="2"/>
-<edge id="122" source="conta:tiktok:@loyylz.ae" target="termo:montagem" weight="1"/>
-<edge id="123" source="conta:tiktok:@goa1ed.zx" target="termo:montagem" weight="1"/>
-<edge id="124" source="termo:montagem" target="caso:003" weight="3"/>
-<edge id="125" source="termo:montagem" target="alvo:TSE e urna" weight="9"/>
-<edge id="126" source="termo:fora_de_contexto" target="caso:003" weight="2"/>
-<edge id="127" source="conta:x:@MachadoDarlon" target="termo:fora_de_contexto" weight="1"/>
-<edge id="128" source="termo:fake_news" target="caso:003" weight="1"/>
-<edge id="129" source="conta:x:@martinFLA81" target="termo:fora_de_contexto" weight="1"/>
-<edge id="130" source="conta:x:@PZeiroNoticias" target="termo:montagem" weight="1"/>
-<edge id="131" source="termo:ia" target="rede:tiktok" weight="2"/>
-<edge id="132" source="termo:ia" target="caso:005" weight="1"/>
-<edge id="133" source="conta:tiktok:@poder360" target="termo:ia" weight="1"/>
-<edge id="134" source="termo:deepfake" target="alvo:Imprensa" weight="1"/>
-<edge id="135" source="termo:deepfake" target="alvo:IA" weight="1"/>
-<edge id="136" source="termo:editado" target="rede:instagram" weight="1"/>
-<edge id="137" source="termo:ia" target="rede:instagram" weight="8"/>
-<edge id="138" source="termo:fake_news" target="caso:010" weight="1"/>
-<edge id="139" source="termo:ia_tema" target="rede:tiktok" weight="1"/>
-<edge id="140" source="termo:ia_tema" target="caso:013" weight="1"/>
-<edge id="141" source="conta:tiktok:@rubinho.politizando" target="termo:ia_tema" weight="1"/>
-<edge id="142" source="termo:ia" target="caso:013" weight="1"/>
-<edge id="143" source="termo:fake_news" target="caso:014" weight="19"/>
-<edge id="144" source="termo:fake" target="caso:014" weight="12"/>
-<edge id="145" source="termo:desinformacao" target="caso:014" weight="5"/>
-<edge id="146" source="conta:x:@odanielscott" target="termo:fake_news" weight="1"/>
-<edge id="147" source="termo:montagem" target="caso:014" weight="1"/>
-<edge id="148" source="conta:x:@Rudriguo" target="termo:montagem" weight="1"/>
-<edge id="149" source="conta:x:@joao8_32_JB" target="termo:fake_news" weight="1"/>
-<edge id="150" source="termo:ia" target="caso:014" weight="5"/>
-<edge id="151" source="conta:x:@Girassollaranja" target="termo:fake_news" weight="1"/>
-<edge id="152" source="conta:x:@jornalrazao" target="termo:ia" weight="1"/>
-<edge id="153" source="termo:desinformacao" target="rede:tiktok" weight="1"/>
-<edge id="154" source="termo:fora_de_contexto" target="rede:instagram" weight="5"/>
-<edge id="155" source="termo:fora_de_contexto" target="caso:014" weight="2"/>
-<edge id="156" source="termo:fake_news" target="caso:015" weight="32"/>
-<edge id="157" source="conta:x:@ProfessorBellei" target="termo:fake_news" weight="1"/>
-<edge id="158" source="conta:x:@izanildo_sabino" target="termo:fake_news" weight="2"/>
-<edge id="159" source="termo:ia" target="caso:015" weight="6"/>
-<edge id="160" source="termo:desinformacao" target="caso:015" weight="4"/>
-<edge id="161" source="conta:x:@LulaPTnosTrends" target="termo:desinformacao" weight="1"/>
-<edge id="162" source="conta:x:@Alice_inland13" target="termo:fake_news" weight="1"/>
-<edge id="163" source="termo:montagem" target="caso:015" weight="4"/>
-<edge id="164" source="conta:x:@JornalDaCidadeO" target="termo:montagem" weight="2"/>
-<edge id="165" source="conta:x:@Chief117Br" target="termo:fake_news" weight="1"/>
-<edge id="166" source="termo:fake" target="caso:015" weight="4"/>
-<edge id="167" source="conta:x:@ColetivoSalaPT" target="termo:fake_news" weight="2"/>
-<edge id="168" source="conta:x:@LEME12" target="termo:fake_news" weight="1"/>
-<edge id="169" source="conta:x:@JoseMedeirosMT" target="termo:fake_news" weight="1"/>
-<edge id="170" source="conta:x:@BlogdoNoblat" target="termo:fake_news" weight="1"/>
-<edge id="171" source="conta:x:@WagnerThomazoni" target="termo:fake_news" weight="1"/>
-<edge id="172" source="conta:x:@GaulesMundinho" target="termo:fake" weight="1"/>
-<edge id="173" source="termo:noticia_falsa" target="caso:015" weight="1"/>
-<edge id="174" source="termo:ia_tema" target="caso:015" weight="1"/>
-<edge id="175" source="conta:x:@mspbra" target="termo:fake_news" weight="1"/>
-<edge id="176" source="conta:x:@GugaNoblat" target="termo:desinformacao" weight="1"/>
-<edge id="177" source="termo:fora_de_contexto" target="caso:015" weight="2"/>
-<edge id="178" source="conta:x:@JornalDaCidadeO" target="termo:fora_de_contexto" weight="1"/>
-<edge id="179" source="conta:x:@_janoninho_fc" target="termo:fake_news" weight="1"/>
-<edge id="180" source="conta:x:@plnacional_" target="termo:fake_news" weight="1"/>
-<edge id="181" source="conta:x:@RizzoMBL" target="termo:fake_news" weight="1"/>
-<edge id="182" source="conta:x:@DaysePirralha" target="termo:fake_news" weight="1"/>
-<edge id="183" source="conta:x:@JornalDaCidadeO" target="termo:fake" weight="1"/>
-<edge id="184" source="conta:x:@reinaldoazevedo" target="termo:fake_news" weight="1"/>
-<edge id="185" source="conta:x:@reinaldoazevedo" target="termo:montagem" weight="1"/>
-<edge id="186" source="conta:x:@Schneid3n" target="termo:fake_news" weight="1"/>
-<edge id="187" source="conta:x:@Fabioeduardo" target="termo:fake_news" weight="1"/>
-<edge id="188" source="conta:x:@CLECCIO" target="termo:fake_news" weight="1"/>
-<edge id="189" source="conta:x:@jotapefaria" target="termo:ia" weight="1"/>
-<edge id="190" source="termo:fake_news" target="caso:016" weight="1"/>
-<edge id="191" source="termo:fake" target="caso:016" weight="1"/>
-<edge id="192" source="termo:ia" target="caso:017" weight="35"/>
-<edge id="193" source="termo:fake_news" target="caso:017" weight="16"/>
-<edge id="194" source="termo:fake" target="caso:017" weight="9"/>
-<edge id="195" source="conta:x:@BlogdoNoblat" target="termo:fake" weight="1"/>
-<edge id="196" source="termo:ia_tema" target="caso:017" weight="15"/>
-<edge id="197" source="termo:editado" target="caso:017" weight="1"/>
-<edge id="198" source="conta:x:@joaquimrib1801" target="termo:ia" weight="1"/>
-<edge id="199" source="conta:x:@NabilBondukiSP" target="termo:ia" weight="1"/>
-<edge id="200" source="conta:x:@recordnews" target="termo:ia_tema" weight="1"/>
-<edge id="201" source="conta:x:@cesarchiyaya" target="termo:ia" weight="1"/>
-<edge id="202" source="conta:x:@TitoGremistazo" target="termo:ia" weight="1"/>
-<edge id="203" source="conta:x:@depchicoalencar" target="termo:fake_news" weight="1"/>
-<edge id="204" source="conta:x:@pfigueiredo08" target="termo:ia" weight="1"/>
-<edge id="205" source="conta:x:@amandafaudi" target="termo:ia_tema" weight="1"/>
-<edge id="206" source="conta:x:@rtnoticias_br" target="termo:ia" weight="1"/>
-<edge id="207" source="conta:x:@correio" target="termo:ia_tema" weight="1"/>
-<edge id="208" source="conta:x:@congressoemfoco" target="termo:ia" weight="1"/>
-<edge id="209" source="conta:x:@Metropoles" target="termo:ia" weight="1"/>
-<edge id="210" source="conta:x:@folha" target="termo:ia" weight="2"/>
-<edge id="211" source="conta:x:@NewsLiberdade" target="termo:ia" weight="1"/>
-<edge id="212" source="conta:x:@Poder360" target="termo:ia" weight="1"/>
-<edge id="213" source="conta:x:@folha" target="termo:ia_tema" weight="1"/>
-<edge id="214" source="conta:x:@sputnik_brasil" target="termo:ia" weight="1"/>
-<edge id="215" source="conta:x:@sputnik_brasil" target="termo:ia_tema" weight="1"/>
-<edge id="216" source="conta:x:@jnascim" target="termo:ia" weight="1"/>
-<edge id="217" source="conta:x:@portalnsctotal" target="termo:ia" weight="1"/>
-<edge id="218" source="conta:x:@republiqueBRA" target="termo:ia" weight="1"/>
-<edge id="219" source="conta:x:@republiqueBRA" target="termo:ia_tema" weight="1"/>
-<edge id="220" source="conta:x:@tesoureiros" target="termo:ia" weight="1"/>
-<edge id="221" source="termo:fake_news" target="caso:018" weight="21"/>
-<edge id="222" source="conta:x:@deneuverse" target="termo:fake_news" weight="1"/>
-<edge id="223" source="termo:fora_de_contexto" target="caso:018" weight="8"/>
-<edge id="224" source="conta:x:@Berlusconnii" target="termo:fake_news" weight="1"/>
-<edge id="225" source="termo:noticia_falsa" target="caso:018" weight="1"/>
-<edge id="226" source="conta:x:@Boatosorg" target="termo:fora_de_contexto" weight="1"/>
-<edge id="227" source="termo:editado" target="caso:018" weight="1"/>
-<edge id="228" source="termo:fake" target="caso:018" weight="3"/>
-<edge id="229" source="conta:x:@rodrigolima" target="termo:fake" weight="1"/>
-<edge id="230" source="conta:x:@AfpChecamos" target="termo:fora_de_contexto" weight="1"/>
-<edge id="231" source="termo:desinformacao" target="caso:018" weight="1"/>
-<edge id="232" source="conta:x:@renatoesteves" target="termo:fake_news" weight="1"/>
-<edge id="233" source="termo:ia" target="caso:018" weight="4"/>
-<edge id="234" source="termo:fake" target="caso:020" weight="2"/>
-<edge id="235" source="conta:x:@So_Quem_e_Lula" target="termo:fake" weight="1"/>
-<edge id="236" source="termo:fake" target="caso:021" weight="3"/>
-<edge id="237" source="termo:ia" target="caso:021" weight="2"/>
-<edge id="238" source="termo:desinformacao" target="caso:021" weight="1"/>
-<edge id="239" source="termo:fake_news" target="caso:021" weight="1"/>
-<edge id="240" source="termo:fake" target="caso:022" weight="17"/>
-<edge id="241" source="termo:fake_news" target="caso:022" weight="22"/>
-<edge id="242" source="conta:x:@leonardodias" target="termo:fake_news" weight="1"/>
-<edge id="243" source="termo:ia" target="caso:022" weight="6"/>
-<edge id="244" source="conta:x:@aosfatos" target="termo:fake" weight="1"/>
-<edge id="245" source="termo:desinformacao" target="caso:022" weight="9"/>
-<edge id="246" source="termo:montagem" target="caso:022" weight="1"/>
-<edge id="247" source="termo:ia_tema" target="caso:022" weight="1"/>
-<edge id="248" source="termo:fake_news" target="caso:023" weight="10"/>
-<edge id="249" source="termo:fake" target="caso:023" weight="5"/>
-<edge id="250" source="termo:fora_de_contexto" target="caso:023" weight="11"/>
-<edge id="251" source="conta:x:@novaes_monteiro" target="termo:fake_news" weight="1"/>
-<edge id="252" source="termo:noticia_falsa" target="caso:023" weight="3"/>
-<edge id="253" source="conta:x:@eusouumdoc" target="termo:noticia_falsa" weight="1"/>
-<edge id="254" source="termo:ia" target="caso:023" weight="3"/>
-<edge id="255" source="conta:x:@misteriouspavao" target="termo:fake_news" weight="1"/>
-<edge id="256" source="termo:noticia_falsa" target="caso:024" weight="1"/>
-<edge id="257" source="termo:noticia_falsa" target="alvo:STF e Moraes" weight="1"/>
-<edge id="258" source="termo:fake_news" target="caso:024" weight="16"/>
-<edge id="259" source="termo:fake" target="caso:024" weight="12"/>
-<edge id="260" source="termo:desinformacao" target="caso:024" weight="6"/>
-<edge id="261" source="termo:ia_tema" target="caso:024" weight="4"/>
-<edge id="262" source="conta:x:@aguiar_dirce" target="termo:fake" weight="2"/>
-<edge id="263" source="termo:fora_de_contexto" target="caso:024" weight="1"/>
-<edge id="264" source="conta:x:@aguiar_dirce" target="termo:fora_de_contexto" weight="1"/>
-<edge id="265" source="termo:editado" target="caso:024" weight="1"/>
-<edge id="266" source="termo:ia" target="caso:024" weight="4"/>
-<edge id="267" source="conta:x:@ViniciusCarluci" target="termo:ia" weight="1"/>
-<edge id="268" source="conta:x:@pablopadulax" target="termo:ia_tema" weight="1"/>
-<edge id="269" source="termo:montagem" target="caso:024" weight="1"/>
-<edge id="270" source="conta:x:@bnews_oficial" target="termo:desinformacao" weight="1"/>
+<edge id="119" source="termo:montagem" target="caso:001" weight="2"/>
+<edge id="120" source="termo:ia_tema" target="rede:tiktok" weight="17"/>
+<edge id="121" source="termo:ia_tema" target="caso:001" weight="2"/>
+<edge id="122" source="termo:montagem" target="rede:tiktok" weight="23"/>
+<edge id="123" source="conta:tiktok:@ofofoquinho" target="termo:montagem" weight="2"/>
+<edge id="124" source="conta:tiktok:@flordeluzmantras" target="termo:ia_tema" weight="1"/>
+<edge id="125" source="termo:montagem" target="caso:002" weight="15"/>
+<edge id="126" source="conta:tiktok:@mxziofc" target="termo:montagem" weight="2"/>
+<edge id="127" source="conta:tiktok:@rn_bass444x_x" target="termo:montagem" weight="1"/>
+<edge id="128" source="conta:tiktok:@_giadinh.huanhoahong" target="termo:montagem" weight="1"/>
+<edge id="129" source="conta:tiktok:@vixmusic0" target="termo:montagem" weight="1"/>
+<edge id="130" source="conta:tiktok:@brinkzaev2" target="termo:montagem" weight="1"/>
+<edge id="131" source="conta:tiktok:@hype.musicx_official" target="termo:montagem" weight="1"/>
+<edge id="132" source="conta:tiktok:@loyylz.ae" target="termo:montagem" weight="1"/>
+<edge id="133" source="conta:tiktok:@goa1ed.zx" target="termo:montagem" weight="1"/>
+<edge id="134" source="termo:fake" target="caso:002" weight="1"/>
+<edge id="135" source="conta:tiktok:@ukuknews" target="termo:fake" weight="1"/>
+<edge id="136" source="conta:tiktok:@nowfunk" target="termo:montagem" weight="1"/>
+<edge id="137" source="conta:tiktok:@groozermysicc" target="termo:montagem" weight="1"/>
+<edge id="138" source="conta:tiktok:@tmmusics" target="termo:montagem" weight="1"/>
+<edge id="139" source="termo:fake_news" target="caso:002" weight="1"/>
+<edge id="140" source="conta:tiktok:@kris.tiana.morena" target="termo:fake_news" weight="1"/>
+<edge id="141" source="termo:montagem" target="caso:003" weight="4"/>
+<edge id="142" source="termo:montagem" target="alvo:TSE e urna" weight="12"/>
+<edge id="143" source="conta:tiktok:@soberania.viva2" target="termo:montagem" weight="1"/>
+<edge id="144" source="termo:fora_de_contexto" target="caso:003" weight="2"/>
+<edge id="145" source="conta:x:@MachadoDarlon" target="termo:fora_de_contexto" weight="1"/>
+<edge id="146" source="termo:fake_news" target="caso:003" weight="1"/>
+<edge id="147" source="conta:x:@martinFLA81" target="termo:fora_de_contexto" weight="1"/>
+<edge id="148" source="conta:x:@PZeiroNoticias" target="termo:montagem" weight="1"/>
+<edge id="149" source="termo:ia_tema" target="caso:005" weight="1"/>
+<edge id="150" source="conta:tiktok:@explicandoocrime" target="termo:ia_tema" weight="1"/>
+<edge id="151" source="termo:montagem" target="caso:005" weight="1"/>
+<edge id="152" source="termo:ia" target="rede:tiktok" weight="25"/>
+<edge id="153" source="termo:ia" target="caso:005" weight="1"/>
+<edge id="154" source="conta:tiktok:@poder360" target="termo:ia" weight="1"/>
+<edge id="155" source="termo:fake_news" target="caso:005" weight="1"/>
+<edge id="156" source="conta:tiktok:@sementesdaresistenciabr" target="termo:fake_news" weight="1"/>
+<edge id="157" source="termo:deepfake" target="alvo:Imprensa" weight="1"/>
+<edge id="158" source="termo:deepfake" target="alvo:IA" weight="2"/>
+<edge id="159" source="termo:montagem" target="caso:006" weight="3"/>
+<edge id="160" source="conta:x:@KriskaCarvalho" target="termo:montagem" weight="1"/>
+<edge id="161" source="termo:fake" target="caso:006" weight="8"/>
+<edge id="162" source="conta:x:@ArleteCaetum" target="termo:fake" weight="1"/>
+<edge id="163" source="termo:ia" target="caso:006" weight="8"/>
+<edge id="164" source="conta:x:@ArleteCaetum" target="termo:ia" weight="1"/>
+<edge id="165" source="conta:x:@ArleteCaetum" target="termo:montagem" weight="1"/>
+<edge id="166" source="termo:desinformacao" target="caso:006" weight="11"/>
+<edge id="167" source="conta:x:@AnaliseGeopol" target="termo:desinformacao" weight="1"/>
+<edge id="168" source="conta:x:@CCambara2" target="termo:fake" weight="1"/>
+<edge id="169" source="termo:fake_news" target="caso:006" weight="12"/>
+<edge id="170" source="conta:x:@EnockFormiga" target="termo:fake_news" weight="1"/>
+<edge id="171" source="conta:x:@AndradeeRoberta" target="termo:desinformacao" weight="1"/>
+<edge id="172" source="conta:x:@JacqueOmuniz" target="termo:fake" weight="1"/>
+<edge id="173" source="conta:x:@MachadoDarlon" target="termo:fake_news" weight="2"/>
+<edge id="174" source="conta:x:@damadanoite14" target="termo:fake_news" weight="1"/>
+<edge id="175" source="conta:x:@cassioolivveira" target="termo:fake" weight="1"/>
+<edge id="176" source="conta:x:@Saray_sandrac" target="termo:fake" weight="1"/>
+<edge id="177" source="termo:ia_tema" target="caso:006" weight="13"/>
+<edge id="178" source="conta:x:@JovemPanNews" target="termo:ia_tema" weight="1"/>
+<edge id="179" source="conta:x:@pierre_160754" target="termo:desinformacao" weight="2"/>
+<edge id="180" source="conta:x:@pamcosta21" target="termo:fake_news" weight="1"/>
+<edge id="181" source="conta:x:@pamcosta21" target="termo:desinformacao" weight="1"/>
+<edge id="182" source="conta:x:@paulomansur_" target="termo:desinformacao" weight="1"/>
+<edge id="183" source="conta:x:@leonardodias" target="termo:ia_tema" weight="5"/>
+<edge id="184" source="termo:deepfake" target="caso:006" weight="1"/>
+<edge id="185" source="termo:deepfake" target="alvo:PT e esquerda" weight="1"/>
+<edge id="186" source="termo:deepfake" target="alvo:Direita e bolsonarismo" weight="1"/>
+<edge id="187" source="conta:x:@SensoCrtico1" target="termo:deepfake" weight="1"/>
+<edge id="188" source="conta:x:@FlavioBolsonaro" target="termo:desinformacao" weight="1"/>
+<edge id="189" source="termo:fora_de_contexto" target="caso:006" weight="3"/>
+<edge id="190" source="conta:x:@EnockFormiga" target="termo:fora_de_contexto" weight="1"/>
+<edge id="191" source="conta:x:@karinamichelin" target="termo:ia_tema" weight="1"/>
+<edge id="192" source="conta:x:@cassioolivveira" target="termo:fake_news" weight="1"/>
+<edge id="193" source="conta:x:@leonardodias" target="termo:ia" weight="5"/>
+<edge id="194" source="conta:x:@TheIncorrupt_" target="termo:ia_tema" weight="1"/>
+<edge id="195" source="conta:x:@FuriaeTradicao" target="termo:fake_news" weight="1"/>
+<edge id="196" source="conta:x:@poponze" target="termo:fake" weight="1"/>
+<edge id="197" source="conta:x:@JornalDaCidadeO" target="termo:ia_tema" weight="2"/>
+<edge id="198" source="termo:fake_news" target="caso:007" weight="11"/>
+<edge id="199" source="termo:fake" target="caso:007" weight="3"/>
+<edge id="200" source="termo:ia" target="caso:007" weight="1"/>
+<edge id="201" source="termo:desinformacao" target="caso:007" weight="1"/>
+<edge id="202" source="conta:tiktok:@agencialupa" target="termo:fake" weight="1"/>
+<edge id="203" source="conta:tiktok:@pilhadobrasil.cortes" target="termo:fake_news" weight="1"/>
+<edge id="204" source="termo:ia_tema" target="caso:007" weight="1"/>
+<edge id="205" source="termo:montagem" target="caso:007" weight="1"/>
+<edge id="206" source="conta:tiktok:@samiramansureli21" target="termo:fake_news" weight="2"/>
+<edge id="207" source="termo:editado" target="rede:instagram" weight="1"/>
+<edge id="208" source="termo:fake_news" target="caso:008" weight="6"/>
+<edge id="209" source="conta:x:@reinaldoazevedo" target="termo:fake_news" weight="2"/>
+<edge id="210" source="termo:montagem" target="caso:008" weight="3"/>
+<edge id="211" source="conta:x:@reinaldoazevedo" target="termo:montagem" weight="2"/>
+<edge id="212" source="termo:desinformacao" target="caso:008" weight="3"/>
+<edge id="213" source="conta:x:@So_Quem_e_Lula" target="termo:desinformacao" weight="1"/>
+<edge id="214" source="termo:ia_tema" target="caso:008" weight="2"/>
+<edge id="215" source="termo:ia" target="rede:instagram" weight="19"/>
+<edge id="216" source="termo:ia_tema" target="caso:009" weight="3"/>
+<edge id="217" source="conta:tiktok:@reart.grafica" target="termo:ia_tema" weight="1"/>
+<edge id="218" source="termo:editado" target="caso:009" weight="3"/>
+<edge id="219" source="termo:fake_news" target="caso:009" weight="45"/>
+<edge id="220" source="termo:fake" target="caso:009" weight="176"/>
+<edge id="221" source="termo:desinformacao" target="caso:009" weight="3"/>
+<edge id="222" source="termo:ia" target="caso:009" weight="11"/>
+<edge id="223" source="conta:x:@aleestefan" target="termo:fake" weight="1"/>
+<edge id="224" source="conta:x:@brunoscarpelli" target="termo:fake" weight="1"/>
+<edge id="225" source="conta:x:@thicico" target="termo:fake" weight="1"/>
+<edge id="226" source="conta:x:@taminebb" target="termo:fake" weight="1"/>
+<edge id="227" source="conta:x:@camilamoreno13_" target="termo:fake" weight="1"/>
+<edge id="228" source="termo:montagem" target="caso:009" weight="2"/>
+<edge id="229" source="conta:x:@cesarbsantos13" target="termo:fake" weight="1"/>
+<edge id="230" source="conta:x:@avengerprivate2" target="termo:fake" weight="1"/>
+<edge id="231" source="conta:x:@fcosblopes" target="termo:fake" weight="1"/>
+<edge id="232" source="conta:x:@CarmilatiRenato" target="termo:fake" weight="1"/>
+<edge id="233" source="conta:x:@NdiaBaptistell3" target="termo:fake" weight="3"/>
+<edge id="234" source="conta:x:@revistaforum" target="termo:fake" weight="1"/>
+<edge id="235" source="conta:x:@jornalnota" target="termo:desinformacao" weight="1"/>
+<edge id="236" source="conta:x:@ojornaleirobr" target="termo:fake_news" weight="1"/>
+<edge id="237" source="conta:x:@redscarfx" target="termo:ia" weight="1"/>
+<edge id="238" source="conta:x:@Dirceusilva09" target="termo:fake" weight="1"/>
+<edge id="239" source="conta:x:@hablasuzzy" target="termo:ia_tema" weight="1"/>
+<edge id="240" source="conta:x:@_eoantao" target="termo:fake_news" weight="2"/>
+<edge id="241" source="conta:x:@JornalDaCidadeO" target="termo:desinformacao" weight="2"/>
+<edge id="242" source="termo:fora_de_contexto" target="caso:009" weight="1"/>
+<edge id="243" source="conta:x:@PedroRonchi2" target="termo:fake" weight="1"/>
+<edge id="244" source="termo:desinformacao" target="rede:tiktok" weight="16"/>
+<edge id="245" source="termo:desinformacao" target="caso:010" weight="1"/>
+<edge id="246" source="termo:fake_news" target="caso:010" weight="3"/>
+<edge id="247" source="conta:tiktok:@gtnews.ofc" target="termo:fake_news" weight="1"/>
+<edge id="248" source="termo:ia_tema" target="caso:010" weight="1"/>
+<edge id="249" source="termo:ia" target="caso:010" weight="1"/>
+<edge id="250" source="conta:tiktok:@vinnycius.ia" target="termo:ia" weight="7"/>
+<edge id="251" source="termo:fake" target="caso:011" weight="3"/>
+<edge id="252" source="termo:fake_news" target="caso:011" weight="3"/>
+<edge id="253" source="conta:x:@ocafezinho" target="termo:fake_news" weight="1"/>
+<edge id="254" source="termo:desinformacao" target="caso:011" weight="3"/>
+<edge id="255" source="conta:x:@ocafezinho" target="termo:desinformacao" weight="1"/>
+<edge id="256" source="termo:ia" target="caso:011" weight="3"/>
+<edge id="257" source="termo:fake_news" target="caso:012" weight="53"/>
+<edge id="258" source="termo:fake" target="caso:012" weight="10"/>
+<edge id="259" source="termo:desinformacao" target="caso:012" weight="17"/>
+<edge id="260" source="conta:x:@IceXTruths" target="termo:desinformacao" weight="1"/>
+<edge id="261" source="termo:ia" target="caso:012" weight="15"/>
+<edge id="262" source="termo:montagem" target="caso:012" weight="6"/>
+<edge id="263" source="conta:x:@JovemPanNews" target="termo:montagem" weight="1"/>
+<edge id="264" source="conta:x:@thenews_br" target="termo:montagem" weight="1"/>
+<edge id="265" source="conta:x:@lavemowill" target="termo:fake_news" weight="1"/>
+<edge id="266" source="conta:x:@lavemowill" target="termo:desinformacao" weight="1"/>
+<edge id="267" source="conta:x:@JunitoMBL" target="termo:fake_news" weight="1"/>
+<edge id="268" source="conta:x:@DOCENTEMONTEIRO" target="termo:fake_news" weight="1"/>
+<edge id="269" source="conta:x:@slpng_giants_pt" target="termo:desinformacao" weight="1"/>
+<edge id="270" source="conta:x:@slpng_giants_pt" target="termo:ia" weight="1"/>
+<edge id="271" source="conta:x:@david_agape_" target="termo:fake_news" weight="1"/>
+<edge id="272" source="conta:x:@allanconta5" target="termo:ia" weight="1"/>
+<edge id="273" source="conta:x:@CelsoEduardoLi4" target="termo:fake_news" weight="1"/>
+<edge id="274" source="conta:x:@CanalNaoEsqueco" target="termo:fake_news" weight="1"/>
+<edge id="275" source="conta:x:@delegadoramagem" target="termo:fake_news" weight="3"/>
+<edge id="276" source="conta:x:@rafalougon" target="termo:fake_news" weight="1"/>
+<edge id="277" source="conta:x:@YviCarneiro" target="termo:fake_news" weight="1"/>
+<edge id="278" source="conta:x:@Pri_usabr1" target="termo:fake_news" weight="2"/>
+<edge id="279" source="conta:x:@o_incensuravel" target="termo:fake_news" weight="2"/>
+<edge id="280" source="conta:x:@o_incensuravel" target="termo:desinformacao" weight="1"/>
+<edge id="281" source="conta:x:@pfigueiredo08" target="termo:ia" weight="2"/>
+<edge id="282" source="conta:x:@JornalDaCidadeO" target="termo:fake_news" weight="4"/>
+<edge id="283" source="conta:x:@valterbjunior57" target="termo:desinformacao" weight="1"/>
+<edge id="284" source="termo:ia_tema" target="caso:012" weight="9"/>
+<edge id="285" source="conta:x:@jalinformei" target="termo:fake" weight="1"/>
+<edge id="286" source="termo:noticia_falsa" target="caso:012" weight="5"/>
+<edge id="287" source="termo:noticia_falsa" target="alvo:STF e Moraes" weight="5"/>
+<edge id="288" source="conta:x:@vlogdomarcone" target="termo:desinformacao" weight="1"/>
+<edge id="289" source="conta:x:@delegadoramagem" target="termo:desinformacao" weight="1"/>
+<edge id="290" source="conta:x:@rafacouto1988" target="termo:noticia_falsa" weight="2"/>
+<edge id="291" source="conta:x:@rafacouto1988" target="termo:desinformacao" weight="2"/>
+<edge id="292" source="conta:x:@allanconta5" target="termo:fake_news" weight="1"/>
+<edge id="293" source="termo:editado" target="caso:012" weight="1"/>
+<edge id="294" source="conta:x:@R38TAO" target="termo:fake_news" weight="1"/>
+<edge id="295" source="conta:x:@ualifiaraujo" target="termo:fake_news" weight="1"/>
+<edge id="296" source="termo:fora_de_contexto" target="caso:012" weight="1"/>
+<edge id="297" source="conta:x:@MidiaLibre" target="termo:fake_news" weight="1"/>
+<edge id="298" source="conta:x:@DanielOpotiguar" target="termo:fake_news" weight="1"/>
+<edge id="299" source="conta:x:@ViniciusLemosRO" target="termo:desinformacao" weight="1"/>
+<edge id="300" source="conta:x:@amandafaudi" target="termo:ia_tema" weight="2"/>
+<edge id="301" source="conta:x:@folha" target="termo:ia" weight="3"/>
+<edge id="302" source="conta:x:@folha" target="termo:ia_tema" weight="2"/>
+<edge id="303" source="conta:tiktok:@noticiasredetv" target="termo:ia_tema" weight="1"/>
+<edge id="304" source="conta:tiktok:@noticias.urgentes39" target="termo:ia" weight="1"/>
+<edge id="305" source="conta:x:@sputnik_brasil" target="termo:ia" weight="2"/>
+<edge id="306" source="conta:x:@sputnik_brasil" target="termo:ia_tema" weight="2"/>
+<edge id="307" source="conta:x:@republiqueBRA" target="termo:ia" weight="2"/>
+<edge id="308" source="conta:x:@republiqueBRA" target="termo:ia_tema" weight="2"/>
+<edge id="309" source="conta:x:@sbtnews" target="termo:ia" weight="1"/>
+<edge id="310" source="conta:tiktok:@opatria1" target="termo:fake_news" weight="3"/>
+<edge id="311" source="termo:ia_tema" target="caso:013" weight="2"/>
+<edge id="312" source="conta:tiktok:@rubinho.politizando" target="termo:ia_tema" weight="1"/>
+<edge id="313" source="termo:ia" target="caso:013" weight="2"/>
+<edge id="314" source="conta:tiktok:@carlosmartinsgestor" target="termo:ia_tema" weight="2"/>
+<edge id="315" source="termo:fake_news" target="caso:013" weight="1"/>
+<edge id="316" source="termo:fake_news" target="caso:014" weight="21"/>
+<edge id="317" source="termo:fake" target="caso:014" weight="12"/>
+<edge id="318" source="termo:desinformacao" target="caso:014" weight="6"/>
+<edge id="319" source="conta:x:@odanielscott" target="termo:fake_news" weight="1"/>
+<edge id="320" source="termo:montagem" target="caso:014" weight="1"/>
+<edge id="321" source="conta:x:@Rudriguo" target="termo:montagem" weight="1"/>
+<edge id="322" source="conta:x:@joao8_32_JB" target="termo:fake_news" weight="1"/>
+<edge id="323" source="termo:ia" target="caso:014" weight="6"/>
+<edge id="324" source="conta:x:@Girassollaranja" target="termo:fake_news" weight="1"/>
+<edge id="325" source="conta:x:@jornalrazao" target="termo:ia" weight="1"/>
+<edge id="326" source="termo:fora_de_contexto" target="rede:instagram" weight="7"/>
+<edge id="327" source="termo:fora_de_contexto" target="caso:014" weight="2"/>
+<edge id="328" source="conta:tiktok:@metropolesoficial" target="termo:fake_news" weight="1"/>
+<edge id="329" source="termo:fake_news" target="caso:015" weight="34"/>
+<edge id="330" source="conta:x:@ProfessorBellei" target="termo:fake_news" weight="1"/>
+<edge id="331" source="termo:fake" target="caso:015" weight="5"/>
+<edge id="332" source="conta:x:@izanildo_sabino" target="termo:fake_news" weight="2"/>
+<edge id="333" source="termo:ia" target="caso:015" weight="6"/>
+<edge id="334" source="termo:desinformacao" target="caso:015" weight="4"/>
+<edge id="335" source="conta:x:@LulaPTnosTrends" target="termo:desinformacao" weight="1"/>
+<edge id="336" source="conta:x:@Alice_inland13" target="termo:fake_news" weight="1"/>
+<edge id="337" source="termo:montagem" target="caso:015" weight="4"/>
+<edge id="338" source="conta:x:@JornalDaCidadeO" target="termo:montagem" weight="2"/>
+<edge id="339" source="conta:x:@Chief117Br" target="termo:fake_news" weight="1"/>
+<edge id="340" source="conta:x:@ColetivoSalaPT" target="termo:fake_news" weight="2"/>
+<edge id="341" source="conta:x:@LEME12" target="termo:fake_news" weight="1"/>
+<edge id="342" source="conta:x:@JoseMedeirosMT" target="termo:fake_news" weight="1"/>
+<edge id="343" source="conta:x:@BlogdoNoblat" target="termo:fake_news" weight="1"/>
+<edge id="344" source="conta:x:@WagnerThomazoni" target="termo:fake_news" weight="1"/>
+<edge id="345" source="conta:x:@GaulesMundinho" target="termo:fake" weight="1"/>
+<edge id="346" source="conta:tiktok:@eanoticia" target="termo:fake_news" weight="1"/>
+<edge id="347" source="termo:noticia_falsa" target="caso:015" weight="1"/>
+<edge id="348" source="termo:ia_tema" target="caso:015" weight="1"/>
+<edge id="349" source="conta:x:@mspbra" target="termo:fake_news" weight="1"/>
+<edge id="350" source="conta:x:@GugaNoblat" target="termo:desinformacao" weight="1"/>
+<edge id="351" source="termo:fora_de_contexto" target="caso:015" weight="2"/>
+<edge id="352" source="conta:x:@JornalDaCidadeO" target="termo:fora_de_contexto" weight="1"/>
+<edge id="353" source="conta:x:@_janoninho_fc" target="termo:fake_news" weight="1"/>
+<edge id="354" source="conta:x:@plnacional_" target="termo:fake_news" weight="1"/>
+<edge id="355" source="conta:x:@RizzoMBL" target="termo:fake_news" weight="1"/>
+<edge id="356" source="conta:x:@DaysePirralha" target="termo:fake_news" weight="1"/>
+<edge id="357" source="conta:x:@JornalDaCidadeO" target="termo:fake" weight="1"/>
+<edge id="358" source="conta:x:@Schneid3n" target="termo:fake_news" weight="1"/>
+<edge id="359" source="conta:x:@Fabioeduardo" target="termo:fake_news" weight="1"/>
+<edge id="360" source="conta:x:@CLECCIO" target="termo:fake_news" weight="1"/>
+<edge id="361" source="conta:x:@jotapefaria" target="termo:ia" weight="1"/>
+<edge id="362" source="termo:fake_news" target="caso:016" weight="2"/>
+<edge id="363" source="termo:fake" target="caso:016" weight="1"/>
+<edge id="364" source="conta:x:@renatoesteves" target="termo:fake_news" weight="2"/>
+<edge id="365" source="termo:montagem" target="caso:017" weight="2"/>
+<edge id="366" source="termo:ia" target="caso:017" weight="45"/>
+<edge id="367" source="termo:fake_news" target="caso:017" weight="16"/>
+<edge id="368" source="termo:fake" target="caso:017" weight="10"/>
+<edge id="369" source="conta:x:@BlogdoNoblat" target="termo:fake" weight="1"/>
+<edge id="370" source="termo:ia_tema" target="caso:017" weight="18"/>
+<edge id="371" source="termo:editado" target="caso:017" weight="1"/>
+<edge id="372" source="conta:x:@joaquimrib1801" target="termo:ia" weight="1"/>
+<edge id="373" source="conta:x:@NabilBondukiSP" target="termo:ia" weight="1"/>
+<edge id="374" source="conta:x:@recordnews" target="termo:ia_tema" weight="1"/>
+<edge id="375" source="conta:x:@cesarchiyaya" target="termo:ia" weight="1"/>
+<edge id="376" source="conta:x:@TitoGremistazo" target="termo:ia" weight="1"/>
+<edge id="377" source="conta:x:@depchicoalencar" target="termo:fake_news" weight="1"/>
+<edge id="378" source="conta:x:@rtnoticias_br" target="termo:ia" weight="1"/>
+<edge id="379" source="conta:x:@correio" target="termo:ia_tema" weight="1"/>
+<edge id="380" source="conta:x:@congressoemfoco" target="termo:ia" weight="1"/>
+<edge id="381" source="conta:x:@Metropoles" target="termo:ia" weight="1"/>
+<edge id="382" source="conta:x:@NewsLiberdade" target="termo:ia" weight="1"/>
+<edge id="383" source="conta:x:@Poder360" target="termo:ia" weight="1"/>
+<edge id="384" source="conta:x:@jnascim" target="termo:ia" weight="1"/>
+<edge id="385" source="conta:tiktok:@leonelradde" target="termo:ia" weight="2"/>
+<edge id="386" source="conta:x:@portalnsctotal" target="termo:ia" weight="1"/>
+<edge id="387" source="conta:x:@tesoureiros" target="termo:ia" weight="1"/>
+<edge id="388" source="conta:x:@Fabioeduardo" target="termo:ia" weight="1"/>
+<edge id="389" source="conta:x:@BlogdoNoblat" target="termo:ia" weight="1"/>
+<edge id="390" source="termo:desinformacao" target="caso:017" weight="1"/>
+<edge id="391" source="conta:x:@palma35d" target="termo:desinformacao" weight="1"/>
+<edge id="392" source="termo:fora_de_contexto" target="rede:tiktok" weight="7"/>
+<edge id="393" source="termo:fora_de_contexto" target="caso:017" weight="1"/>
+<edge id="394" source="conta:tiktok:@fatoem1minut" target="termo:fora_de_contexto" weight="3"/>
+<edge id="395" source="termo:desinformacao" target="caso:018" weight="6"/>
+<edge id="396" source="termo:fake_news" target="caso:018" weight="29"/>
+<edge id="397" source="conta:x:@deneuverse" target="termo:fake_news" weight="1"/>
+<edge id="398" source="termo:fora_de_contexto" target="caso:018" weight="9"/>
+<edge id="399" source="conta:x:@Berlusconnii" target="termo:fake_news" weight="1"/>
+<edge id="400" source="conta:tiktok:@riquinhadadireita" target="termo:fake_news" weight="1"/>
+<edge id="401" source="conta:tiktok:@spacecrisroppa" target="termo:fake_news" weight="1"/>
+<edge id="402" source="termo:noticia_falsa" target="caso:018" weight="1"/>
+<edge id="403" source="conta:x:@Boatosorg" target="termo:fora_de_contexto" weight="1"/>
+<edge id="404" source="termo:editado" target="caso:018" weight="1"/>
+<edge id="405" source="termo:fake" target="caso:018" weight="6"/>
+<edge id="406" source="conta:x:@rodrigolima" target="termo:fake" weight="1"/>
+<edge id="407" source="conta:x:@AfpChecamos" target="termo:fora_de_contexto" weight="1"/>
+<edge id="408" source="termo:ia" target="caso:018" weight="5"/>
+<edge id="409" source="conta:tiktok:@semredeas" target="termo:fake_news" weight="1"/>
+<edge id="410" source="conta:tiktok:@semredeas" target="termo:fora_de_contexto" weight="1"/>
+<edge id="411" source="conta:tiktok:@marcosmercante" target="termo:fake_news" weight="1"/>
+<edge id="412" source="termo:deepfake" target="rede:tiktok" weight="1"/>
+<edge id="413" source="termo:deepfake" target="caso:019" weight="1"/>
+<edge id="414" source="conta:tiktok:@meidastouch" target="termo:deepfake" weight="1"/>
+<edge id="415" source="termo:fake" target="caso:019" weight="26"/>
+<edge id="416" source="conta:tiktok:@meidastouch" target="termo:fake" weight="1"/>
+<edge id="417" source="termo:ia" target="caso:019" weight="3"/>
+<edge id="418" source="conta:x:@KenRoth" target="termo:ia" weight="1"/>
+<edge id="419" source="termo:fake_news" target="caso:019" weight="9"/>
+<edge id="420" source="termo:desinformacao" target="caso:019" weight="2"/>
+<edge id="421" source="conta:x:@aguiar_dirce" target="termo:fake" weight="3"/>
+<edge id="422" source="termo:noticia_falsa" target="caso:019" weight="2"/>
+<edge id="423" source="conta:x:@ayeshaijazkhan" target="termo:fake_news" weight="1"/>
+<edge id="424" source="conta:x:@AISafetyMemes" target="termo:fake" weight="1"/>
+<edge id="425" source="conta:x:@AISafetyMemes" target="termo:ia" weight="1"/>
+<edge id="426" source="termo:fake" target="caso:020" weight="2"/>
+<edge id="427" source="conta:x:@So_Quem_e_Lula" target="termo:fake" weight="1"/>
+<edge id="428" source="termo:ia" target="caso:020" weight="1"/>
+<edge id="429" source="termo:fake" target="caso:021" weight="3"/>
+<edge id="430" source="termo:ia" target="caso:021" weight="6"/>
+<edge id="431" source="termo:desinformacao" target="caso:021" weight="1"/>
+<edge id="432" source="termo:ia_tema" target="caso:021" weight="2"/>
+<edge id="433" source="conta:x:@HiroGallery" target="termo:ia_tema" weight="1"/>
+<edge id="434" source="termo:fake_news" target="caso:021" weight="1"/>
+<edge id="435" source="termo:fake" target="caso:022" weight="21"/>
+<edge id="436" source="termo:fake_news" target="caso:022" weight="28"/>
+<edge id="437" source="conta:x:@leonardodias" target="termo:fake_news" weight="1"/>
+<edge id="438" source="termo:ia" target="caso:022" weight="8"/>
+<edge id="439" source="termo:desinformacao" target="caso:022" weight="10"/>
+<edge id="440" source="termo:ia_tema" target="caso:022" weight="3"/>
+<edge id="441" source="conta:x:@aosfatos" target="termo:fake" weight="1"/>
+<edge id="442" source="termo:montagem" target="caso:022" weight="2"/>
+<edge id="443" source="conta:tiktok:@thescoop.politics" target="termo:fake" weight="1"/>
+<edge id="444" source="conta:tiktok:@redetvt" target="termo:fake_news" weight="1"/>
+<edge id="445" source="conta:tiktok:@talkey.br" target="termo:fake_news" weight="1"/>
+<edge id="446" source="termo:fora_de_contexto" target="caso:022" weight="1"/>
+<edge id="447" source="conta:x:@souapenasV" target="termo:montagem" weight="1"/>
+<edge id="448" source="conta:tiktok:@kaoschegou" target="termo:ia_tema" weight="1"/>
+<edge id="449" source="termo:fake_news" target="caso:023" weight="13"/>
+<edge id="450" source="termo:fake" target="caso:023" weight="6"/>
+<edge id="451" source="termo:fora_de_contexto" target="caso:023" weight="13"/>
+<edge id="452" source="conta:tiktok:@mateusatualiza" target="termo:fake_news" weight="1"/>
+<edge id="453" source="termo:desinformacao" target="caso:023" weight="1"/>
+<edge id="454" source="conta:x:@novaes_monteiro" target="termo:fake_news" weight="1"/>
+<edge id="455" source="termo:noticia_falsa" target="caso:023" weight="3"/>
+<edge id="456" source="conta:x:@eusouumdoc" target="termo:noticia_falsa" weight="1"/>
+<edge id="457" source="termo:ia" target="caso:023" weight="3"/>
+<edge id="458" source="conta:tiktok:@joicemel123" target="termo:fake_news" weight="1"/>
+<edge id="459" source="conta:x:@misteriouspavao" target="termo:fake_news" weight="1"/>
+<edge id="460" source="conta:tiktok:@maismsnoticias" target="termo:fora_de_contexto" weight="1"/>
+<edge id="461" source="termo:fake_news" target="caso:024" weight="20"/>
+<edge id="462" source="termo:desinformacao" target="caso:024" weight="9"/>
+<edge id="463" source="termo:ia" target="caso:024" weight="5"/>
+<edge id="464" source="termo:ia_tema" target="caso:024" weight="5"/>
+<edge id="465" source="termo:noticia_falsa" target="caso:024" weight="1"/>
+<edge id="466" source="termo:fake" target="caso:024" weight="14"/>
+<edge id="467" source="termo:fora_de_contexto" target="caso:024" weight="2"/>
+<edge id="468" source="conta:x:@aguiar_dirce" target="termo:fora_de_contexto" weight="1"/>
+<edge id="469" source="termo:editado" target="caso:024" weight="1"/>
+<edge id="470" source="conta:x:@ViniciusCarluci" target="termo:ia" weight="1"/>
+<edge id="471" source="conta:x:@pablopadulax" target="termo:ia_tema" weight="1"/>
+<edge id="472" source="termo:montagem" target="caso:024" weight="2"/>
+<edge id="473" source="conta:x:@bnews_oficial" target="termo:desinformacao" weight="1"/>
+<edge id="474" source="conta:x:@ocafezinho" target="termo:montagem" weight="1"/>
+<edge id="475" source="termo:ia" target="caso:025" weight="9"/>
+<edge id="476" source="termo:ia_tema" target="caso:025" weight="2"/>
+<edge id="477" source="termo:fake_news" target="caso:025" weight="3"/>
+<edge id="478" source="termo:montagem" target="caso:025" weight="1"/>
+<edge id="479" source="termo:desinformacao" target="caso:025" weight="2"/>
+<edge id="480" source="termo:fake_news" target="caso:026" weight="5"/>
+<edge id="481" source="conta:tiktok:@nemmaisumgole" target="termo:fake_news" weight="1"/>
+<edge id="482" source="termo:noticia_falsa" target="rede:tiktok" weight="3"/>
+<edge id="483" source="termo:noticia_falsa" target="caso:026" weight="3"/>
+<edge id="484" source="conta:tiktok:@dr.roger1982" target="termo:fake_news" weight="1"/>
+<edge id="485" source="termo:desinformacao" target="caso:026" weight="3"/>
+<edge id="486" source="conta:tiktok:@aroldo.ucha.news" target="termo:desinformacao" weight="1"/>
+<edge id="487" source="conta:tiktok:@poderecapital" target="termo:noticia_falsa" weight="1"/>
+<edge id="488" source="conta:tiktok:@metropolesoficial" target="termo:desinformacao" weight="1"/>
+<edge id="489" source="conta:tiktok:@trezoitaosincerocortes" target="termo:fake_news" weight="1"/>
+<edge id="490" source="conta:tiktok:@peronchostandup" target="termo:fake_news" weight="1"/>
+<edge id="491" source="conta:tiktok:@metropolesoficial" target="termo:noticia_falsa" weight="1"/>
+<edge id="492" source="termo:desinformacao" target="caso:027" weight="5"/>
+<edge id="493" source="termo:ia" target="caso:027" weight="3"/>
+<edge id="494" source="termo:fake_news" target="caso:027" weight="13"/>
+<edge id="495" source="termo:fake" target="caso:027" weight="1"/>
+<edge id="496" source="termo:fora_de_contexto" target="caso:028" weight="3"/>
+<edge id="497" source="termo:desinformacao" target="caso:028" weight="8"/>
+<edge id="498" source="termo:ia" target="caso:028" weight="3"/>
+<edge id="499" source="termo:ia_tema" target="caso:028" weight="3"/>
+<edge id="500" source="termo:fake_news" target="caso:028" weight="4"/>
+<edge id="501" source="termo:montagem" target="caso:028" weight="1"/>
+<edge id="502" source="termo:fake" target="caso:028" weight="2"/>
+<edge id="503" source="termo:ia" target="caso:029" weight="3"/>
+<edge id="504" source="termo:montagem" target="caso:029" weight="2"/>
+<edge id="505" source="conta:tiktok:@metropolesoficial" target="termo:montagem" weight="1"/>
+<edge id="506" source="termo:ia_tema" target="caso:029" weight="2"/>
+<edge id="507" source="termo:fake" target="caso:029" weight="5"/>
+<edge id="508" source="termo:editado" target="caso:029" weight="2"/>
+<edge id="509" source="termo:fake_news" target="caso:029" weight="6"/>
+<edge id="510" source="termo:fora_de_contexto" target="caso:029" weight="2"/>
+<edge id="511" source="conta:x:@mahcherrys" target="termo:fake_news" weight="1"/>
+<edge id="512" source="termo:desinformacao" target="caso:029" weight="1"/>
+<edge id="513" source="termo:fake_news" target="caso:030" weight="2"/>
+<edge id="514" source="termo:ia" target="caso:030" weight="1"/>
+<edge id="515" source="termo:fake" target="caso:030" weight="2"/>
+<edge id="516" source="termo:ia_tema" target="caso:030" weight="2"/>
+<edge id="517" source="termo:fake_news" target="caso:031" weight="3"/>
+<edge id="518" source="termo:ia" target="caso:031" weight="1"/>
+<edge id="519" source="termo:fora_de_contexto" target="caso:031" weight="1"/>
 </edges>
 </graph>
 </gexf>
