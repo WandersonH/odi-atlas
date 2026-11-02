@@ -11,7 +11,7 @@ Para cada conta (segredos APIFY_TOKEN, APIFY_TOKEN_2 … APIFY_TOKEN_15, APIFY_T
   4. com --guardar, baixa os itens de toda execução ainda fora do cofre (GET /datasets/<id>/items) para
      apify_cofre/<conta>/<data>_<ator>_<execução>.jsonl.gz, sem alterar nada do que já existe (nunca apaga nem sobrescreve).
 Saída: apify_cofre/relatorio.json e indice.csv no privado (ids de execução, ator, data, nº de itens, situação). Não registra
-custo. Sem --guardar, só confere. Uso: python scripts/apify_cofre.py [--guardar] [--dias 40]
+custo. Sem --guardar, só confere. Uso: python scripts/apify_cofre.py [--guardar] [--dias 40] [--max 250]
 """
 from __future__ import annotations
 
@@ -76,6 +76,8 @@ def nome_ator(token: str, act_id: str, cache: dict) -> str:
 def main(argv: list[str]) -> int:
     guardar = "--guardar" in argv
     dias = int(argv[argv.index("--dias") + 1]) if "--dias" in argv else 40
+    maximo = int(argv[argv.index("--max") + 1]) if "--max" in argv else 250  # por execução do workflow: cada lote vira um commit
+    baixadas = 0
     priv = Path(os.environ.get("ODI_INTERNO_DIR", "")) / "apify_cofre"
     if not os.environ.get("ODI_INTERNO_DIR"):
         print("⛔ ODI_INTERNO_DIR ausente: o cofre fica só no repositório privado")
@@ -99,11 +101,11 @@ def main(argv: list[str]) -> int:
             rel["contas"].append({"conta": conta, "situacao": "segredo ausente neste workflow"})
             continue
         try:
-            runs = execucoes(tok, desde)
+            runs = sorted(execucoes(tok, desde), key=lambda r: str(r.get("startedAt")))  # as mais antigas (mais perto de vencer) primeiro
         except Exception as e:  # noqa: BLE001 — a mensagem pode ter a URL, nunca o token (vai no cabeçalho)
             rel["contas"].append({"conta": conta, "situacao": f"⛔ erro ao listar: {type(e).__name__} {getattr(e, 'code', '')}"})
             continue
-        c = {"conta": conta, "execucoes": len(runs), "com_itens": 0, "no_manifesto": 0, "ja_no_cofre": 0, "guardadas_agora": 0,
+        c = {"conta": conta, "execucoes": len(runs), "itens": 0, "faltam_no_cofre": 0, "com_itens": 0, "no_manifesto": 0, "ja_no_cofre": 0, "guardadas_agora": 0,
              "sem_itens": 0, "falhas": [], "vencem_em_7_dias_fora_do_cofre": 0}
         for r in runs:
             rid, ds = r["id"], r.get("defaultDatasetId")
@@ -118,6 +120,7 @@ def main(argv: list[str]) -> int:
                 c["sem_itens"] += 1
                 continue
             c["com_itens"] += 1
+            c["itens"] += n
             no_man = rid in conhecidos
             c["no_manifesto"] += no_man
             if rid in indice and indice[rid].get("arquivo"):
@@ -125,7 +128,8 @@ def main(argv: list[str]) -> int:
                 continue
             if RETENCAO_DIAS - idade <= 7:
                 c["vencem_em_7_dias_fora_do_cofre"] += 1
-            if not guardar:
+            if not guardar or baixadas >= maximo:
+                c["faltam_no_cofre"] += 1
                 continue
             ator = nome_ator(tok, r.get("actId", ""), atores)
             nome = f"{ini[:10]}_{re.sub(r'[^A-Za-z0-9_-]', '-', ator)[:60]}_{rid}.jsonl.gz"
@@ -151,6 +155,7 @@ def main(argv: list[str]) -> int:
                                 break
                     tmp.rename(dest)
                     c["guardadas_agora"] += 1
+                    baixadas += 1
                 except Exception as e:  # noqa: BLE001
                     c["falhas"].append(f"{rid}: {type(e).__name__} {getattr(e, 'code', '')}")
                     continue
@@ -164,7 +169,7 @@ def main(argv: list[str]) -> int:
         for r in sorted(indice.values(), key=lambda r: r["inicio_utc"]):
             w.writerow({k: r.get(k, "") for k in campos})
     tot = {k: sum(c.get(k, 0) for c in rel["contas"] if isinstance(c.get(k), int)) for k in
-           ("execucoes", "com_itens", "no_manifesto", "ja_no_cofre", "guardadas_agora", "sem_itens", "vencem_em_7_dias_fora_do_cofre")}
+           ("execucoes", "itens", "com_itens", "no_manifesto", "ja_no_cofre", "guardadas_agora", "faltam_no_cofre", "sem_itens", "vencem_em_7_dias_fora_do_cofre")}
     rel["total"] = tot
     (priv / "relatorio.json").write_text(json.dumps(rel, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"cofre Apify ({rel['modo']}, {dias} dias): {tot}")
