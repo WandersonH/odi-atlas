@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.312 — "Cruzamento com as redes declaradas ao TSE" (candidatos e partidos a favor ou contra) em todos os casos (2026-11-02) ⚠️
+
+- Pedido do responsável (02/11/2026, 17h32, print do bloco do caso 014): "quero essa área aplicada a todos os casos".
+- O quê: `scripts/caso_candidatos.py` roda em qualquer caso (sem arquivo de posição, tudo fica "não codificada") e ganhou `--exportar` (lista das publicações de candidatos com texto, só em rascunho fora do repositório). A página monta o mesmo bloco do 014 no dossiê de cada caso (`montarCandidatosCaso`), com atalho no topo ("Candidatos e partidos: a favor ou contra"). Roda também no passo de agregados do `casos.yml`, para cada caso com itens no privado.
+- Posição de cada publicação (apoio, crítica, ambígua, sem texto, outro tema), lida só no texto pelo Claude (IA) em 02/11/2026, em 23 casos (`data/config/candidatos_posicao_caso<id>.json`, com definições de apoio e crítica próprias de cada caso); conferência humana pendente. 001: 20 publicações (apoio 18, outro tema 2); 006: 140 (apoio 99, crítica 19, ambígua 16, outro tema 6); 009: 11 (crítica 7); 012: 23 (apoio 9, crítica 9); 015: 273 (apoio 223 — "apoio" aqui junta declarações de voto em Lula e em Flávio, sem separar o lado —, crítica 15, ambígua 15, outro tema 16, sem texto 4); 017: 47 (apoio 9, crítica 30); 018: 18 (apoio 16); 024: 13 (outro tema 10); 027: 11 (crítica 7); 031: 7 (apoio 6); demais casos com 1 a 15. Casos sem nenhuma publicação de candidato na amostra: 010, 016, 019, 029, 030.
+- Pontos para a conferência humana: ironia ficou "ambígua" mesmo quando parece crítica (009, 013); publicações que só repetem o título ficaram "sem texto" (017, 031); nos casos de dois lados (025, 028, 005, 008) a definição de "apoio" está escrita no arquivo; no 021 e no 006/015 há ids repetidos (publicação conjunta ou linha duplicada no export).
+- Teste: `python -m unittest discover -s tests` OK; casos 006 e 029 abertos no Chromium (006: PL 35 candidatos, 33 apoio; PT 10, 8 crítica; 029: nenhum partido com publicação), sem erro de JS.
+
 ## C19.311 — Kwai: hashtag vai no campo de hashtag do ator; teste do 029 e perfis do TSE coletados (2026-11-02) ⚠️
 
 - Teste Kwai no caso 029 (run 41518724122, modo teste, US$ 0,05 de teto): "#xenofobia" como palavra de busca com postedAfter 25/10 → 0 itens, US$ 0,00.

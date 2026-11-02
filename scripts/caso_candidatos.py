@@ -38,6 +38,10 @@ def perfil(url: str) -> str | None:
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else list(argv)
     caso = argv[argv.index("--caso") + 1] if "--caso" in argv else "014"
+    if "--exportar" in argv:  # lista das publicações de candidatos para codificar (só no privado/rascunho; tem texto)
+        exportar = argv[argv.index("--exportar") + 1]
+    else:
+        exportar = None
     interno = os.environ.get("ODI_INTERNO_DIR") or str(Path(__file__).resolve().parents[2] / "odi-atlas-interno")
     raiz = Path(".")
     cand = {r["SQ_CANDIDATO"]: r for r in csv.DictReader(gzip.open(raiz / "data/tse/candidatos_2026.csv.gz", "rt", encoding="utf-8", errors="replace"), delimiter=";")}
@@ -47,7 +51,13 @@ def main(argv=None) -> int:
         h = rede and perfil(r["DS_URL"])
         if h:
             contas[(rede, h)].add(r["SQ_CANDIDATO"])
-    pos_cfg = json.loads((raiz / f"data/config/candidatos_posicao_caso{caso}.json").read_text(encoding="utf-8"))
+    cfg_p = raiz / f"data/config/candidatos_posicao_caso{caso}.json"
+    # 02/11/2026, 17h32 ("quero essa área aplicada a todos os casos"): caso sem posição codificada roda igual, com tudo "não codificada"
+    pos_cfg = json.loads(cfg_p.read_text(encoding="utf-8")) if cfg_p.exists() else {
+        "por_item": {}, "categorias": {"apoio": "apoia, reforça ou espalha a ideia central do caso", "critica": "critica, desmente ou denuncia a ideia central do caso",
+                                       "ambigua": "ironia ou posição que o texto não permite fixar", "sem_texto": "sem posição no texto",
+                                       "outro_tema": "achada pelas buscas, mas trata de outro assunto"},
+        "o_que_e": "⛔ Posição das publicações ainda não codificada neste caso."}
     POS = pos_cfg["por_item"]
     itens = list(csv.DictReader(gzip.open(Path(interno) / "casos" / caso / "itens.csv.gz", "rt", encoding="utf-8"), delimiter=";"))
     pubs, por_cand = [], defaultdict(list)
@@ -63,6 +73,17 @@ def main(argv=None) -> int:
                                  "curtidas": int(i["curtidas"]) if str(i.get("curtidas") or "").isdigit() else None,
                                  "trecho": (i.get("texto") or "")[:240], "posicao": POS.get(k, "nao_codificada")})
     faltam_codigo = sorted({k for k in pubs if k not in POS})
+    if exportar:
+        txt = {f"{i['rede']}:{i['item_id']}": i for i in itens}
+        with open(exportar, "w", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, delimiter=";")
+            w.writerow(["id", "conta", "candidato", "partido", "publicado_em", "texto"])
+            for sq, ps in por_cand.items():
+                for p_ in ps:
+                    k = f"{p_['rede']}:{[i for i in itens if i['url'] == p_['url']][0]['item_id']}" if p_["url"] else None
+                    if k and k not in POS:
+                        w.writerow([k, p_["conta"], cand.get(sq, {}).get("NM_URNA_CANDIDATO"), cand.get(sq, {}).get("SG_PARTIDO"), p_["publicado_em"],
+                                    " ".join((txt[k].get("texto") or "").split())[:1200]])
     linhas = []
     for sq, ps in por_cand.items():
         c = cand.get(sq, {})

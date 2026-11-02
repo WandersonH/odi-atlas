@@ -2487,8 +2487,9 @@ async function dossie(id,host){const meta=IDX.casos.find(c=>c.id===id);if(!meta|
  if(!meta.arquivo){host.innerHTML=volta+'<p class="yt-cloudnote">Este caso não tem coleta por termo nas redes (dossiê): as análises dele estão abaixo.</p>';ligar(host);return;}
  host.innerHTML=volta+'<div class="odi-signal">Carregando o dossiê do caso…</div>';const c=await J('./'+meta.arquivo);
  if(!c){host.innerHTML=volta+'<div class="odi-signal">⛔ Falha ao ler o dossiê do caso.</div>';ligar(host);return;}
- const atalhos=`<p class="cs-volta" style="margin-top:-4px">Neste caso: <a href="#" data-ir="${p}Atores">Quem dissemina · atores políticos e partidos</a> · <a href="#" data-ir="${p}Intol">Intolerância</a></p>`;
- host.innerHTML=volta+atalhos+`<details class="cs-dossie-box" open><summary><b>DOSSIÊ DO CASO · REDES</b><span>coleta de ${br(c.coletado_em)} · ${fmt(c.publicacoes)} publicações de ${fmt(c.contas)} contas</span></summary>${caso(c,p)}</details><div class="cs-sec"><b>ANÁLISES DO CASO</b><span></span></div><div id="${p}Atores"></div><div id="${p}Intol"></div>`;
+ const atalhos=`<p class="cs-volta" style="margin-top:-4px">Neste caso: <a href="#" data-ir="${p}Cand">Candidatos e partidos: a favor ou contra</a> · <a href="#" data-ir="${p}Atores">Quem dissemina · atores políticos e partidos</a> · <a href="#" data-ir="${p}Intol">Intolerância</a></p>`;
+ host.innerHTML=volta+atalhos+`<details class="cs-dossie-box" open><summary><b>DOSSIÊ DO CASO · REDES</b><span>coleta de ${br(c.coletado_em)} · ${fmt(c.publicacoes)} publicações de ${fmt(c.contas)} contas</span></summary>${caso(c,p)}</details><div class="cs-sec"><b>ANÁLISES DO CASO</b><span></span></div><div id="${p}Cand"></div><div id="${p}Atores"></div><div id="${p}Intol"></div>`;
+ if(id!=='014'&&typeof montarCandidatosCaso==='function')montarCandidatosCaso(id,$(p+'Cand'));
  if(id==='022')J('./data/tse/auditoria_urna/2t/resumo.json').then(U=>{const el=$(p+'Atores');if(el&&U)el.insertAdjacentHTML('beforebegin',urnaHtml(U));});
  J(`./data/casos/${id}/atores.json`).then(A=>{const el=$(p+'Atores');if(el&&A)el.innerHTML=atoresHtml(A,id);});
  J(`./data/casos/${id}/intolerancia.json`).then(I=>{const el=$(p+'Intol');if(el)el.innerHTML=I?intol(I,id):'<details class="cs-dossie-box" open><summary><b>INTOLERÂNCIA · TRIAGEM AUTOMÁTICA</b><span>⛔ ainda não gerada</span></summary><p class="yt-cloudnote">A triagem automática de linguagem ofensiva e discurso de ódio deste caso ainda não foi gerada (processamento em lotes disparado em 02/11/2026). Quando terminar, aparecem aqui as tabelas e os arquivos para baixar.</p></details>';});
@@ -3394,12 +3395,14 @@ function montarAssedio014(){const el=document.getElementById('cb014Assedio');if(
    el.querySelectorAll('[data-j]').forEach(b=>b.addEventListener('click',()=>{jan=b.dataset.j;draw();}));};
   draw();}).catch(()=>{el.innerHTML='';});}
 /* Caso 014 (30/10/2026, 20h55): "cruzamento com as redes de candidato pra sinalizar candidatos e legendas que faltam sobre o tema, em apoio ou crítica" (data/casos/014/candidatos.json). */
-function montarCandidatos014(){const el=document.getElementById('cb014Candidatos');if(!el)return;
+function montarCandidatos014(){montarCandidatosCaso('014',document.getElementById('cb014Candidatos'));}
+/* 02/11/2026, 17h32: "quero essa área aplicada a todos os casos" — mesmo bloco do 014 para qualquer caso com data/casos/<id>/candidatos.json */
+function montarCandidatosCaso(id,el){if(!el)return;
  const e=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));const n=v=>v==null?'—':Number(v).toLocaleString('pt-BR');const dbr=s=>s?String(s).slice(0,10).split('-').reverse().join('/'):'—';
  const COR={apoio:'#b3261e',critica:'#1f8a3b',as_duas:'#6b4fa0',ambigua:'#d7a14a',sem_texto:'#8a8f96',outro_tema:'#c9ced4',nao_codificada:'#c9ced4'};
  const ROT={apoio:'apoio',critica:'crítica',as_duas:'apoio e crítica',ambigua:'ambígua',sem_texto:'sem posição no texto',outro_tema:'outro tema',nao_codificada:'não codificada'};
- fetch('./data/casos/014/candidatos.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(D=>{
-  const P=D.por_partido||{},ord=['apoio','critica','as_duas','ambigua','sem_texto','outro_tema'];
+ fetch('./data/casos/'+id+'/candidatos.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(D=>{
+  const P=D.por_partido||{},ord=['apoio','critica','as_duas','ambigua','sem_texto','outro_tema','nao_codificada'];
   const barra=x=>{const t=ord.reduce((a,k)=>a+(x[k]||0),0)||1;return `<div style="display:flex;height:12px;min-width:120px">${ord.map(k=>x[k]?`<div title="${ROT[k]}: ${x[k]}" style="width:${100*x[k]/t}%;background:${COR[k]}"></div>`:'').join('')}</div>`;};
   const tabP=`<div style="overflow-x:auto"><table class="db-tab" style="width:100%;font-size:13px"><thead><tr><th>Partido</th><th style="text-align:right">Candidatos na amostra</th><th style="text-align:right;color:${COR.apoio}">Apoio</th><th style="text-align:right;color:${COR.critica}">Crítica</th><th style="text-align:right">Outros</th><th></th><th style="text-align:right">Candidatos em 2026</th></tr></thead><tbody>${Object.entries(P).map(([p,x])=>{const t=ord.reduce((a,k)=>a+(x[k]||0),0);return `<tr><td><b>${e(p)}</b></td><td style="text-align:right">${n(t)}</td><td style="text-align:right">${n(x.apoio||0)}</td><td style="text-align:right">${n(x.critica||0)}</td><td style="text-align:right">${n(t-(x.apoio||0)-(x.critica||0))}</td><td>${barra(x)}</td><td style="text-align:right">${n(x.candidatos_2026)}</td></tr>`;}).join('')}</tbody></table></div>`;
   const falta=(D.partidos_sem_publicacao_na_amostra||[]).map(x=>`<span style="display:inline-block;border:1px solid #d8dcd9;padding:2px 7px;margin:2px;font-size:12px">${e(x.partido)} <small style="color:#69768a">${n(x.candidatos_2026)}</small></span>`).join('');
