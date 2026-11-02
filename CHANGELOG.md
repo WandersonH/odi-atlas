@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.294 — TikTok pago com filtro de data: dateRange + sortType DATE_POSTED (2026-11-02) ⚠️
+
+- Achado do diagnóstico grátis C19.293 (run 41501163374): o ator apidojo~tiktok-scraper tem `dateRange` (THIS_WEEK, THIS_MONTH, LAST_THREE_MONTHS, LAST_SIX_MONTHS…) e `sortType` (DATE_POSTED), que o teste de C19.289 não passava; por isso vieram vídeos de maio. clockworks~tiktok-scraper tem filtro equivalente cobrado à parte (videoSearchDateFilter, videoSearchSorting); clockworks~tiktok-hashtag-scraper e novi não têm filtro de data.
+- O quê: `scripts/collect_casos.py` passa `sortType: DATE_POSTED` e a menor `dateRange` que cobre o "desde" do caso (`janela_tiktok`). Teste novo em `tests/test_casos.py`.
+- Teste real: run de teste (10 itens) registrado na próxima entrada; TikTok continua fora da rodada diária até o teste mostrar vídeos do período.
+
 ## C19.293 — Diagnóstico grátis dos atores do TikTok: esquema de entrada (filtro de data por hashtag) (2026-11-02) ⛔
 
 - Por quê: a série "Vídeos por hashtag · TikTok" está em 0 desde 30/10 (página pública não entrega mais vídeos) e o ator pago testado (apidojo~tiktok-scraper, C19.289) devolveu vídeos de maio. O responsável perguntou (02/11, 15h28) por que o crédito da conta 1 não resolveu.

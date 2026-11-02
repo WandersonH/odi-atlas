@@ -19,6 +19,11 @@ class TestCasos(unittest.TestCase):
         self.assertEqual(cc.pedidos("instagram", caso, 5)[0][2]["hashtags"], ["brasilinteiro"])
         tt = cc.pedidos("tiktok", caso, 5)[0]  # 02/11/2026: hashtag pela busca do apidojo (o ator novi devolvia 0)
         self.assertEqual((tt[1], tt[2]["keywords"]), ("apidojo~tiktok-scraper", ["#brasilinteiro"]))
+        self.assertEqual(tt[2]["sortType"], "DATE_POSTED")  # 02/11/2026: sem isso vinham vídeos de maio
+        self.assertIn(tt[2]["dateRange"], ("THIS_WEEK", "THIS_MONTH", "LAST_THREE_MONTHS", "LAST_SIX_MONTHS", "ALL_TIME"))
+        import datetime as _dt
+        self.assertEqual(cc.janela_tiktok("2026-10-30", _dt.date(2026, 11, 2)), "THIS_WEEK")
+        self.assertEqual(cc.janela_tiktok("2026-10-01", _dt.date(2026, 11, 2)), "LAST_THREE_MONTHS")
         r = cc.norm("tiktok", {"id": "7", "desc": "oi #brasilinteiro", "createTime": 1760670000, "author": {"uniqueId": "fulana"},
                                "authorStats": {"followerCount": 20000}, "stats": {"playCount": 100}}, "#brasilinteiro", "agora")
         self.assertEqual((r["conta"], r["seguidores"], r["visualizacoes"], r["url"]), ("fulana", 20000, 100, "https://www.tiktok.com/@fulana/video/7"))

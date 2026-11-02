@@ -129,6 +129,16 @@ def norm(rede: str, x: dict, termo: str, agora: str) -> dict | None:
     raise ValueError(rede)
 
 
+def janela_tiktok(desde: str, hoje: dt.date | None = None) -> str:
+    """Menor janela do filtro de data da busca do TikTok (apidojo: dateRange) que cobre o caso desde 'desde'."""
+    hoje = hoje or dt.datetime.now(dt.timezone.utc).date()
+    dias = (hoje - dt.date.fromisoformat(desde[:10])).days
+    for lim, nome in ((7, "THIS_WEEK"), (31, "THIS_MONTH"), (92, "LAST_THREE_MONTHS"), (183, "LAST_SIX_MONTHS")):
+        if dias <= lim:
+            return nome
+    return "ALL_TIME"
+
+
 def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
     """[(termo, ator, entrada)] de uma rede para o caso."""
     d, tags = caso["desde"], caso.get("hashtags", [])
@@ -192,11 +202,14 @@ def pedidos(rede: str, caso: dict, n: int) -> list[tuple[str, str, dict]]:
             # o feed da hashtag não trouxe nada desde 16/10 (run 39132035304); busca por palavra completada com o feed da hashtag
             out.append((f"#{t}", ATOR["kwai"], {"searchTerms": [t], "expandSearchWithHashtag": True, "maxItems": n, "postedAfter": d}))
     elif rede == "tiktok":
+        # 02/11/2026: sem filtro, a busca do apidojo devolveu vídeos de maio (teste no 006). O esquema do ator (run 41501163374)
+        # tem dateRange (filtro de data da busca do TikTok) e sortType DATE_POSTED: mais recentes primeiro, na janela do caso.
+        filtro = {"dateRange": janela_tiktok(d), "sortType": "DATE_POSTED"}
         for q in caso.get("buscas_tiktok", []):  # busca por frase (como a caixa de busca do TikTok)
-            out.append((q, ATOR["tiktok_busca"], {"keywords": [q], "maxItems": n}))
+            out.append((q, ATOR["tiktok_busca"], {"keywords": [q], "maxItems": n, **filtro}))
         for t in tags:
             # 02/11/2026: o ator novi devolveu 0 itens por hashtag (caso 001, 29/10 a 01/11); a busca do apidojo com "#hashtag"
-            out.append((f"#{t}", ATOR["tiktok_busca"], {"keywords": [f"#{t}"], "maxItems": n}))
+            out.append((f"#{t}", ATOR["tiktok_busca"], {"keywords": [f"#{t}"], "maxItems": n, **filtro}))
     return out
 
 
