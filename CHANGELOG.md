@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.318 — Caso 032: "Revelando" (Calma Urgente), análise como a do caso 011 (2026-11-02) 🔜
+
+- Pedido do responsável (02/11/2026, 20h12): "quero a análise como caso da Joice, e uma análise geral por episódio e buscas [dos] assuntos abordados; crescimento também deve ser abordado; esse canal estava na bolha da esquerda". Redes do projeto: YouTube @revelando_br, Instagram @revelando.brasil, X @revelandobr, TikTok @revelando.br, Kwai.
+- O quê: `scripts/caso_revelando.py` + `caso-revelando.yml` (diário, 11h11; grátis): canal pela API do YouTube (forHandle), todos os episódios com detalhes, comentários (até 500 conversas por episódio), lado de cada autor no acervo do Atlas (Lula × Flávio; total, por episódio e por mês), série de inscritos (um ponto por dia) e capturas do Internet Archive quando houver, episódios e visualizações por mês, temas dos comentários, rede episódios × autores (GEXF) e Google Trends (12 meses e 7 dias, Brasil) do assunto de cada episódio (título limpo, 5 por consulta). Texto e autor só no privado.
+- Página: nova aba "Revelando (Calma Urgente)" no grupo Casos (CSS, navegação, CTX não necessário); caso registrado em `data/config/casos.json` com teto US$ 0 em todas as redes pagas (nada autorizado).
+- Teste: `python -m unittest discover -s tests` OK; primeira leitura disparada; números na próxima entrada.
+
 ## C19.317 — TikTok pago em todos os casos: 13.198 vídeos; gasto US$ 10,01 (2× o previsto, por falha no teto cumulativo); Kwai 0 (2026-11-02) ⚠️
 
 - Autorização: C19.310 ("resolve essa merda vc tem 10 dolares"; "essa verba é pra tudo, não só pra um caso").
