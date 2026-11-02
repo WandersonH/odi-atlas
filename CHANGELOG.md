@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.298 — Sonda dos conjuntos do TSE 2026 ainda não incorporados; mesários fora (2026-11-02) 🔜
+
+- Pedido do responsável (02/11/2026, 15h57): "pode aplicar", sobre a lista de 12 conjuntos do TSE/AGEL "Ano 2026" (auditoria da urna para o caso 022, comparecimento por perfil, perfil do eleitorado), "só se podemos cruzar se eles postaram em algum momento mesários".
+- O quê: `scripts/sonda_tse_auditoria.py` + `sonda-tse-auditoria.yml` listam os recursos (tamanho por HEAD) de correspondências esperadas e efetivadas (1º e 2º turno), boletim de urna, arquivos transmitidos, logs das urnas (2º turno), comparecimento e abstenção e eleitorado, e abrem os arquivos de até 120 MB só para ler colunas e contagens. Grátis; o ambiente desta sessão não acessa o TSE, por isso roda no Actions.
+- Mesários: não incorporados. Cruzar a lista de mesários convocados com contas de redes sociais identificaria pessoas comuns uma a uma (regra do projeto: pessoa comum só em contagem, e texto e autor só no privado), e um cruzamento por nome geraria acertos falsos. Alternativa registrada: contar, no caso 022, publicações em que o autor se declara mesário, só em agregado.
+- Teste: resultado do run na próxima entrada.
+
 ## C19.297 — Quem dissemina: atores políticos, partidos e postagens em todos os casos (2026-11-02) ⚠️
 
 - Pedido do responsável (02/11/2026, 15h57): "Em todos casos quero uma análise de quais principais atores políticos, partidos e postagens pra entendermos quem ajuda a disseminar o que, temos tudo declarado".
