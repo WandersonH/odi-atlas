@@ -1,0 +1,30 @@
+name: Caso 017 — PDFs originais da carta (hash, metadados, Content Credentials, diferenças)
+
+# 02/11/2026, 19h33: os três PDFs do Poder360. Grátis; roda no Actions porque o ambiente de trabalho não alcança o site.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pdfs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: |
+          sudo apt-get install -y -q poppler-utils > /dev/null
+          pip install -q c2pa-python || echo "::warning::c2pa-python não instalou; só presença do manifesto"
+      - name: Ler os PDFs
+        run: |
+          python scripts/carta_pdfs_017.py | tee "$RUNNER_TEMP/s.txt"
+          while IFS= read -r l; do echo "::notice title=Carta 017::$(echo "$l" | cut -c1-900)"; done < "$RUNNER_TEMP/s.txt"
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Caso 017: PDFs da carta (run ${{ github.run_id }})"
