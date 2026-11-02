@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.305 — Intolerância em todos os casos: lotes em paralelo (2026-11-02) 🔜
+
+- Pergunta do responsável (02/11/2026, 17h10): "cadê análise de intolerância?". Ela existia só nos 3 casos do piloto (014, 021, 022; C19.290 e C19.292).
+- O quê: `intolerancia.yml` passa a aceitar lotes em paralelo (grupo de concorrência por lote). Disparados 12 lotes com os outros 26 casos que têm publicações (258.004 textos brutos no privado, publicações + comentários do YouTube; contagem do clone de 02/11 ~17h), de 2,3 mil a 48 mil textos por lote. Cada lote grava `data/casos/<id>/intolerancia.json`, `intolerancia_escores.csv` e `intolerancia_resumo.csv`, e a amostra de validação no privado.
+- Teste: runs registrados na próxima entrada.
+
 ## C19.304 — Linha do tempo dos casos usa também o Kwai e o TikTok que o Atlas já coleta (2026-11-02) ⚠️
 
 - Pedido do responsável (02/11/2026, 16h38): "Kwai vc tá coletando ele mesmo".

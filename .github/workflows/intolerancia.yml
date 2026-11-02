@@ -1,6 +1,6 @@
 name: Intolerância nos casos — triagem automática (piloto, grátis)
 
-# 02/11/2026: piloto da frente de intolerância (casos 014, 021, 022). Modelos públicos do Hugging Face na CPU do runner.
+# 02/11/2026: piloto da frente de intolerância (casos 014, 021, 022); 17h10: estendida a todos os casos com publicações. Modelos públicos do Hugging Face na CPU do runner.
 # Escores e amostra de validação só no repositório privado; no público, data/casos/<id>/intolerancia.json (contagens).
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: intolerancia
+  group: intolerancia-${{ github.event.inputs.casos }}   # 02/11/2026: lotes de casos em paralelo (um grupo por lote)
   cancel-in-progress: false
 
 jobs:
