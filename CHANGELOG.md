@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.272 — Classes lematizadas do caso 013 · GEXF do 014 (reconstrução em andamento) (2026-11-02) ⚠️
+
+- **013:** `busca.json` reconstruído com a CHD nova. São 8.142 comentários, 84,4% classificados, 4 classes terminais (559, 4.130, 1.201 e 979 segmentos). Atinge o mínimo de 75%.
+- **014:** entraram os GEXF; o `busca.json` segue em reconstrução.
+- A partir do 014, a reconstrução local passa a fazer o commit de cada caso ao terminar. Cada commit roda os testes e cria uma entrada aqui com os números lidos do próprio `busca.json`.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.271 — Classes lematizadas do caso 009 · GEXF do 013 (reconstrução em andamento) (2026-11-02) ⚠️
 
 - **009:** `busca.json` reconstruído com a CHD nova (lematização, passo 3, regra dos 75%). São 10.869 comentários, 81,7% classificados, 7 classes terminais. Atinge o mínimo.
