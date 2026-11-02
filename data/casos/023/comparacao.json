@@ -1,6 +1,6 @@
 {
  "caso": "023",
- "gerado_em_utc": "2026-11-01T19:22:02Z",
+ "gerado_em_utc": "2026-11-02T23:14:48Z",
  "corte_pos_eleicao": "2026-10-28",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -117,14 +117,14 @@
     "respostas_entre_publicacoes": 84
    },
    "x_agora": {
-    "publicacoes": 269,
-    "contas": 246,
-    "visualizacoes": 1117478,
-    "curtidas": 29141,
-    "respostas_recebidas": 2055,
-    "compartilhamentos": 3844,
+    "publicacoes": 341,
+    "contas": 310,
+    "visualizacoes": 1716620,
+    "curtidas": 41212,
+    "respostas_recebidas": 3124,
+    "compartilhamentos": 5201,
     "primeiro_dia": "2026-10-28",
-    "ultimo_dia": "2026-11-01",
+    "ultimo_dia": "2026-11-02",
     "pico": {
      "dia": "2026-10-31",
      "publicacoes": 128
@@ -135,9 +135,16 @@
      10,
      43,
      128,
-     51
+     86,
+     37
     ],
     "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "TAbreu24",
+      "seguidores": 18034,
+      "publicacoes": 3
+     },
      {
       "rede": "x",
       "conta": "Saray_sandrac",
@@ -147,13 +154,13 @@
      {
       "rede": "x",
       "conta": "sempacienciamah",
-      "seguidores": 53477,
+      "seguidores": 53605,
       "publicacoes": 2
      },
      {
       "rede": "x",
       "conta": "Rudriguo",
-      "seguidores": 16834,
+      "seguidores": 16872,
       "publicacoes": 2
      },
      {
@@ -189,25 +196,19 @@
      {
       "rede": "x",
       "conta": "GalvaoLaizah",
-      "seguidores": 31413,
+      "seguidores": 31415,
       "publicacoes": 1
      },
      {
       "rede": "x",
       "conta": "Haaaysb",
-      "seguidores": 53716,
+      "seguidores": 53719,
       "publicacoes": 1
      },
      {
       "rede": "x",
       "conta": "george1BR2",
-      "seguidores": 23819,
-      "publicacoes": 1
-     },
-     {
-      "rede": "x",
-      "conta": "WanderValero",
-      "seguidores": 68435,
+      "seguidores": 23818,
       "publicacoes": 1
      }
     ]
@@ -266,11 +267,7 @@
    "contas_10mil_nos_dois": [
     [
      "Rudriguo",
-     16834
-    ],
-    [
-     "Rudriguo",
-     16833
+     16872
     ]
    ],
    "palavras_tipicas": {
@@ -280,20 +277,20 @@
       24
      ],
      [
-      "durante",
-      80
-     ],
-     [
       "parente",
       23
      ],
      [
-      "segunda",
-      35
-     ],
-     [
       "pedro",
       20
+     ],
+     [
+      "durante",
+      80
+     ],
+     [
+      "segunda",
+      35
      ],
      [
       "aula",
@@ -304,98 +301,98 @@
       16
      ],
      [
-      "globo",
-      16
-     ],
-     [
-      "ministro",
-      16
-     ],
-     [
-      "via",
-      35
-     ],
-     [
-      "desta",
-      14
+      "vivo",
+      13
      ],
      [
       "feriado",
       13
      ],
      [
-      "vivo",
-      13
+      "pesquisa",
+      12
      ],
      [
-      "aulas",
-      13
+      "metade",
+      12
      ],
      [
-      "paulo",
-      29
+      "correios",
+      12
+     ],
+     [
+      "temer",
+      48
+     ],
+     [
+      "saída",
+      10
+     ],
+     [
+      "bilhão",
+      10
      ]
     ],
     "agora": [
      [
       "novembro",
-      188
+      230
      ],
      [
       "confirmação",
-      99
-     ],
-     [
-      "custos",
-      129
-     ],
-     [
-      "mobilização",
-      146
+      116
      ],
      [
       "categoria",
-      134
+      165
+     ],
+     [
+      "custos",
+      148
      ],
      [
       "possível",
-      145
+      181
+     ],
+     [
+      "mobilização",
+      164
      ],
      [
       "adesão",
-      92
+      102
      ],
      [
       "fretes",
-      89
+      101
      ],
      [
       "redes",
-      145
-     ],
-     [
-      "landim",
-      60
-     ],
-     [
-      "wallace",
-      60
-     ],
-     [
-      "sociais",
-      134
-     ],
-     [
-      "nacional",
       176
      ],
      [
       "abrava",
-      59
+      73
      ],
      [
-      "piso",
-      59
+      "wallace",
+      72
+     ],
+     [
+      "landim",
+      72
+     ],
+     [
+      "quinta",
+      137
+     ],
+     [
+      "nacional",
+      218
+     ],
+     [
+      "sociais",
+      162
      ]
     ]
    },
@@ -407,10 +404,10 @@
      "POS": 4.7
     },
     "x_agora": {
-     "n": 269,
-     "NEG": 31.2,
-     "NEU": 66.9,
-     "POS": 1.9
+     "n": 341,
+     "NEG": 31.4,
+     "NEU": 66.3,
+     "POS": 2.3
     },
     "instagram_agora": {
      "n": 127,
@@ -542,14 +539,14 @@
     "respostas_entre_publicacoes": 220
    },
    "x_agora": {
-    "publicacoes": 269,
-    "contas": 246,
-    "visualizacoes": 1117478,
-    "curtidas": 29141,
-    "respostas_recebidas": 2055,
-    "compartilhamentos": 3844,
+    "publicacoes": 341,
+    "contas": 310,
+    "visualizacoes": 1716620,
+    "curtidas": 41212,
+    "respostas_recebidas": 3124,
+    "compartilhamentos": 5201,
     "primeiro_dia": "2026-10-28",
-    "ultimo_dia": "2026-11-01",
+    "ultimo_dia": "2026-11-02",
     "pico": {
      "dia": "2026-10-31",
      "publicacoes": 128
@@ -560,9 +557,16 @@
      10,
      43,
      128,
-     51
+     86,
+     37
     ],
     "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "TAbreu24",
+      "seguidores": 18034,
+      "publicacoes": 3
+     },
      {
       "rede": "x",
       "conta": "Saray_sandrac",
@@ -572,13 +576,13 @@
      {
       "rede": "x",
       "conta": "sempacienciamah",
-      "seguidores": 53477,
+      "seguidores": 53605,
       "publicacoes": 2
      },
      {
       "rede": "x",
       "conta": "Rudriguo",
-      "seguidores": 16834,
+      "seguidores": 16872,
       "publicacoes": 2
      },
      {
@@ -614,25 +618,19 @@
      {
       "rede": "x",
       "conta": "GalvaoLaizah",
-      "seguidores": 31413,
+      "seguidores": 31415,
       "publicacoes": 1
      },
      {
       "rede": "x",
       "conta": "Haaaysb",
-      "seguidores": 53716,
+      "seguidores": 53719,
       "publicacoes": 1
      },
      {
       "rede": "x",
       "conta": "george1BR2",
-      "seguidores": 23819,
-      "publicacoes": 1
-     },
-     {
-      "rede": "x",
-      "conta": "WanderValero",
-      "seguidores": 68435,
+      "seguidores": 23818,
       "publicacoes": 1
      }
     ]
@@ -691,26 +689,18 @@
    "contas_10mil_nos_dois": [
     [
      "Rudriguo",
-     16834
-    ],
-    [
-     "Rudriguo",
-     16833
+     16872
     ]
    ],
    "palavras_tipicas": {
     "epoca": [
      [
-      "stf",
-      128
-     ],
-     [
-      "grevegeral",
-      108
-     ],
-     [
       "glo",
       106
+     ],
+     [
+      "liberdadedeexpressao",
+      103
      ],
      [
       "manifestacao",
@@ -718,10 +708,6 @@
      ],
      [
       "censuradotse",
-      103
-     ],
-     [
-      "liberdadedeexpressao",
       103
      ],
      [
@@ -735,6 +721,14 @@
      [
       "brazilian",
       94
+     ],
+     [
+      "stf",
+      128
+     ],
+     [
+      "grevegeral",
+      108
      ],
      [
       "fraude",
@@ -764,63 +758,63 @@
     "agora": [
      [
       "custos",
-      129
+      148
      ],
      [
       "diesel",
-      174
+      225
      ],
      [
       "confirmação",
-      99
+      116
      ],
      [
       "novembro",
-      188
+      230
      ],
      [
       "preço",
-      132
-     ],
-     [
-      "mobilização",
-      146
+      157
      ],
      [
       "redes",
-      145
-     ],
-     [
-      "regiões",
-      71
-     ],
-     [
-      "impactos",
-      70
-     ],
-     [
-      "adesão",
-      92
-     ],
-     [
-      "nacional",
       176
      ],
      [
-      "diferentes",
-      66
+      "impactos",
+      82
+     ],
+     [
+      "nacional",
+      218
+     ],
+     [
+      "mobilização",
+      164
+     ],
+     [
+      "possível",
+      181
      ],
      [
       "sociais",
-      134
+      162
      ],
      [
-      "fretes",
-      89
+      "quinta",
+      137
+     ],
+     [
+      "regiões",
+      76
      ],
      [
       "abastecimento",
-      113
+      134
+     ],
+     [
+      "adesão",
+      102
      ]
     ]
    },
@@ -832,10 +826,10 @@
      "POS": 4.5
     },
     "x_agora": {
-     "n": 269,
-     "NEG": 31.2,
-     "NEU": 66.9,
-     "POS": 1.9
+     "n": 341,
+     "NEG": 31.4,
+     "NEU": 66.3,
+     "POS": 2.3
     },
     "instagram_agora": {
      "n": 127,
