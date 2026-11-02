@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.273 — Classes lematizadas do caso 014 (reconstrução automática, commit por caso) (2026-11-02) ⚠️
+
+- `data/casos/014/busca.json` reconstruído com a CHD nova (lematização, passo 3, regra dos 75%; 1º fator aleatorizado) em 241 s. Comentários: 8.100; classificados: 83,8%; classes terminais: 3; segmentos por classe: [1179, 2360, 3248]; atinge o mínimo de 75%: sim.
+- Teste: `python -m unittest discover -s tests` roda antes do commit; se falhar, não há commit.
+
 ## C19.272 — Classes lematizadas do caso 013 · GEXF do 014 (reconstrução em andamento) (2026-11-02) ⚠️
 
 - **013:** `busca.json` reconstruído com a CHD nova. São 8.142 comentários, 84,4% classificados, 4 classes terminais (559, 4.130, 1.201 e 979 segmentos). Atinge o mínimo de 75%.
