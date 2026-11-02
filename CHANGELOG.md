@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.307 — Atalhos no topo de cada caso para "Quem dissemina" e "Intolerância" (2026-11-02) ✅
+
+- Perguntas do responsável (02/11/2026, 17h10): "não vi análise de partido nos cases, tu implantou?" e "cadê análise de intolerância?". Os blocos existiam (C19.292 e C19.297), mas ficavam abaixo do dossiê inteiro, sem atalho, e a intolerância só aparecia nos 3 casos do piloto.
+- O quê: no topo de cada caso, "Neste caso: Quem dissemina · atores políticos e partidos · Intolerância" (rola até o bloco). Caso sem intolerância gerada mostra o bloco com "⛔ ainda não gerada" em vez de nada; caso sem atores.json mostra aviso.
+- Teste: caso 029 aberto no Chromium: atalhos aparecem, o clique leva ao bloco, sem erro de JS; `python -m unittest discover -s tests` OK.
+
 ## C19.306 — Comparecimento por perfil e perfil do eleitorado 2026 (TSE): coletor (2026-11-02) 🔜
 
 - Pedido do responsável (02/11/2026, 17h10): "terminou isso … comparecimento por perfil (229 MB) e perfil do eleitorado por município (408 MB)?". Não tinha terminado: só a auditoria da urna (C19.300–301) estava pronta.
