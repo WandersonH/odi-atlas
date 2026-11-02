@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.289 — TikTok pago: teste no 006 revelou campos sem leitura e vídeos fora do período; TikTok fora da rodada diária até haver filtro de data (2026-11-02) ⚠️
+
+- **Teste pago no 006** (run 41399639126, modo teste): 10 itens para o termo "PCC terrorista Rubio", custo de US$ 0,01 (manifesto do caso). Dois problemas:
+  1. O ator `apidojo~tiktok-scraper` usa outro esquema (`channel.username`, `channel.followers`, `uploadedAt`, `title`, `views`, `likes`, `postPage`), e o normalizador não lia esses campos. Conta, data, texto e métricas ficaram vazios. Sem data, o filtro de período deixou passar os 10 itens.
+  2. Com a data corrigida, **os 10 vídeos são de maio de 2026** (29/05), fora do período do caso (desde 25/10). A busca por palavra do ator não filtra por data, e a entrada dele para isso não pôde ser conferida daqui (a API da Apify não é alcançável deste ambiente).
+- **O que mudou:**
+  - `scripts/collect_casos.py` → `norm("tiktok")` lê os campos `channel.*`, `uploadedAt`, `title`, `views`, `likes`, `comments`, `shares` e `postPage`. Conferido nos itens brutos do teste: conta, seguidores, data, visualizações e URL lidos.
+  - `.github/workflows/casos.yml`: a rodada diária automática (08h17) volta a ser **só Google**. O TikTok pago fica fora até haver um filtro de data confirmado, para que o teto de US$ 1,00 por caso não seja gasto em vídeos antigos. As coletas dos casos 028 a 031 serão disparadas sem TikTok.
+- **Registro:** os 10 itens do teste entraram no `itens.csv.gz` privado do 006 com os campos vazios. O bruto deles está guardado (`bruto_tiktok_20261102T062518Z.jsonl.gz`) e permite renormalizar sem nova coleta. Pendente.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.288 — Intolerância: correção do piloto (rótulos booleanos do modelo do HateBR) e cache dos escores (2026-11-02) ⛔→⚠️
 
 - **O que aconteceu:** o primeiro run do piloto (41394802823) leu 16.157 textos do caso 014 (15.724 únicos) e passou cerca de 1 h 50 classificando com o modelo de ofensividade. Depois disso, falhou com `AttributeError: 'bool' object has no attribute 'lower'`: o modelo `ruanchaves/bert-large-portuguese-cased-hatebr` usa `True`/`False` (booleanos) como rótulos. Nada foi gravado; nenhum número foi publicado.

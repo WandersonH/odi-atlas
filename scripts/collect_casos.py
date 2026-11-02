@@ -78,18 +78,18 @@ def norm(rede: str, x: dict, termo: str, agora: str) -> dict | None:
                         "capa_url": "", "coletado_em": agora}
     if rede == "tiktok":
         iid = g(x, "id", "aweme_id", "video_id", "videoId")
-        conta = g(x, "author.uniqueId", "author.unique_id", "authorMeta.name", "author.username", "author")
+        conta = g(x, "author.uniqueId", "author.unique_id", "authorMeta.name", "author.username", "channel.username", "author")  # channel.*: apidojo~tiktok-scraper (02/11/2026)
         conta = conta if isinstance(conta, str) else ""
-        return iid and {"rede": rede, "item_id": str(iid), "conta": conta, "nome_conta": g(x, "author.nickname", "authorMeta.nickName") or "",
-                        "seguidores": inteiro(g(x, "authorStats.followerCount", "author.follower_count", "authorMeta.fans", "author.followerCount")),
-                        "verificada": int(bool(g(x, "author.verified", "authorMeta.verified"))),
-                        "publicado_em": iso(g(x, "createTime", "create_time", "createTimeISO", "timestamp")),
-                        "texto": " ".join(str(g(x, "desc", "text", "description") or "").split()),
-                        "visualizacoes": inteiro(g(x, "stats.playCount", "statistics.play_count", "playCount")),
-                        "curtidas": inteiro(g(x, "stats.diggCount", "statistics.digg_count", "diggCount")),
-                        "comentarios": inteiro(g(x, "stats.commentCount", "statistics.comment_count", "commentCount")),
-                        "compartilhamentos": inteiro(g(x, "stats.shareCount", "statistics.share_count", "shareCount")), "termo": termo,
-                        "url": g(x, "webVideoUrl", "share_url", "url") or (f"https://www.tiktok.com/@{conta}/video/{iid}" if conta else ""),
+        return iid and {"rede": rede, "item_id": str(iid), "conta": conta, "nome_conta": g(x, "author.nickname", "authorMeta.nickName", "channel.name") or "",
+                        "seguidores": inteiro(g(x, "authorStats.followerCount", "author.follower_count", "authorMeta.fans", "author.followerCount", "channel.followers")),
+                        "verificada": int(bool(g(x, "author.verified", "authorMeta.verified", "channel.verified"))),
+                        "publicado_em": iso(g(x, "createTime", "create_time", "createTimeISO", "timestamp", "uploadedAt", "uploadedAtFormatted")),
+                        "texto": " ".join(str(g(x, "desc", "text", "description", "title") or "").split()),
+                        "visualizacoes": inteiro(g(x, "stats.playCount", "statistics.play_count", "playCount", "views")),
+                        "curtidas": inteiro(g(x, "stats.diggCount", "statistics.digg_count", "diggCount", "likes")),
+                        "comentarios": inteiro(g(x, "stats.commentCount", "statistics.comment_count", "commentCount", "comments")),
+                        "compartilhamentos": inteiro(g(x, "stats.shareCount", "statistics.share_count", "shareCount", "shares")), "termo": termo,
+                        "url": g(x, "webVideoUrl", "share_url", "url", "postPage") or (f"https://www.tiktok.com/@{conta}/video/{iid}" if conta else ""),
                         "capa_url": "", "coletado_em": agora}
     if rede == "instagram":
         iid = g(x, "code", "shortCode", "shortcode", "id")
