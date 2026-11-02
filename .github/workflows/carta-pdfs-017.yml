@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
       - name: Dependências
         run: |
-          sudo apt-get install -y -q poppler-utils > /dev/null
+          sudo apt-get install -y -q poppler-utils tesseract-ocr tesseract-ocr-por > /dev/null
           pip install -q c2pa-python || echo "::warning::c2pa-python não instalou; só presença do manifesto"
       - name: Ler os PDFs
         run: |

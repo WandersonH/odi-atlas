@@ -41,11 +41,24 @@ def pdfinfo(p: Path) -> dict:
     return {k.strip(): v.strip() for k, v in (l.split(":", 1) for l in out.splitlines() if ":" in l)}
 
 
-def texto(p: Path) -> str:
+def texto(p: Path) -> tuple[str, str]:
+    """(texto, como): texto embutido; se o PDF for só imagem (v3), OCR com tesseract em português."""
     try:
-        return subprocess.run(["pdftotext", "-layout", str(p), "-"], capture_output=True, text=True, timeout=120).stdout
+        t = subprocess.run(["pdftotext", "-layout", str(p), "-"], capture_output=True, text=True, timeout=120).stdout
     except Exception:  # noqa: BLE001
-        return ""
+        t = ""
+    if len(t.split()) >= 30:
+        return t, "texto embutido no PDF"
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        try:
+            subprocess.run(["pdftoppm", "-r", "200", "-png", str(p), f"{d}/pg"], check=True, timeout=300)
+            partes = []
+            for img in sorted(Path(d).glob("pg*.png")):
+                partes.append(subprocess.run(["tesseract", str(img), "-", "-l", "por", "--psm", "4"], capture_output=True, text=True, timeout=300).stdout)
+            return "\n".join(partes), "OCR (tesseract, por) — PDF só com imagens"
+        except Exception as e:  # noqa: BLE001
+            return t, f"⛔ sem texto embutido e OCR falhou ({type(e).__name__})"
 
 
 def metadados_brutos(b: bytes) -> dict:
@@ -107,21 +120,25 @@ def main() -> int:
         reg["pdfinfo"] = {k: info[k] for k in ("Producer", "Creator", "CreationDate", "ModDate", "Pages", "Title", "Author", "PDF version", "Metadata Stream") if k in info}
         reg["metadados"] = metadados_brutos(b)
         reg["content_credentials"] = c2pa(p)
-        t = texto(p)
+        t, como = texto(p)
         (MIDIA / f"carta_v{n}.txt").write_text(t, encoding="utf-8")
         textos[n] = t
         tl = t.lower()
-        reg["texto"] = {"caracteres": len(t), "palavras": len(t.split()), "presidente_eleito": tl.count("presidente eleito"),
+        reg["imagens"] = subprocess.run(["pdfimages", "-list", str(p)], capture_output=True, text=True, timeout=60).stdout.count("image")
+        reg["texto"] = {"como": como, "caracteres": len(t), "palavras": len(t.split()), "presidente_eleito": tl.count("presidente eleito"),
                         "lider_do_brasil": tl.count("líder do brasil") + tl.count("lider do brasil"), "brazil": tl.count("brazil"),
                         "fraude": tl.count("fraude"), "sha256_texto": hashlib.sha256(t.encode()).hexdigest()}
         out["versoes"].append(reg)
     out["diferencas"] = []
     ns = sorted(textos)
     for a, b_ in zip(ns, ns[1:]):
-        la, lb = [l.strip() for l in textos[a].splitlines() if l.strip()], [l.strip() for l in textos[b_].splitlines() if l.strip()]
+        norm = lambda t: [re.sub(r"\s+", " ", l).strip() for l in t.splitlines() if l.strip()]  # noqa: E731
+        la, lb = norm(textos[a]), norm(textos[b_])
         d = [l for l in difflib.unified_diff(la, lb, lineterm="", n=0) if l[:1] in "+-" and l[:3] not in ("+++", "---")]
+        sm = difflib.SequenceMatcher(None, " ".join(la), " ".join(lb))
         out["diferencas"].append({"de": a, "para": b_, "linhas_removidas": sum(1 for l in d if l[0] == "-"), "linhas_acrescentadas": sum(1 for l in d if l[0] == "+"),
-                                  "trechos": d[:40], "texto_identico": textos[a] == textos[b_]})
+                                  "semelhanca_do_texto": round(sm.ratio(), 4), "trechos": d[:60], "texto_identico": textos[a] == textos[b_],
+                                  "aviso": "a versão comparada por OCR pode ter erros de leitura; compare pelos trechos" if "OCR" in (out["versoes"][b_ - 1].get("texto") or {}).get("como", "") else None})
     out["nota"] = ("Content Credentials e metadados dizem qual ferramenta gerou ou exportou o arquivo, não quem escreveu o texto. "
                    "Os PDFs são a versão que o Poder360 hospeda; se o veículo regravou o arquivo, as credenciais originais podem ter sido perdidas.")
     (ROOT / "data/casos/017/pdfs.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
