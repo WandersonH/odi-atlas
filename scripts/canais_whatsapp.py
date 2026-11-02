@@ -72,6 +72,19 @@ def main(argv: list[str]) -> int:
     dados.update({"metodo": " ".join(__doc__.split("Uso:")[0].split()), "canais": canais,
                   "segundo_a_imprensa": cfg.get("canais_whatsapp_imprensa") or [], "pendentes": cfg.get("canais_whatsapp_pendentes") or [],
                   "atualizado_em_utc": agora})
+    # 02/11/2026: canais que o painel WhatsApp do Atlas já lia (data/whatsapp, desde 15/10) trazem a série anterior,
+    # com a fonte; o painel guarda o texto que a página mostrava ("10 mi seguidores")
+    hist = {}
+    for nome_arq in ("seguidores.csv", "seguidores_horario.csv"):
+        p = ROOT / "data/whatsapp" / nome_arq
+        if p.exists():
+            import csv
+            for r in csv.DictReader(open(p, encoding="utf-8"), delimiter=";"):
+                hist.setdefault(r["canal_id"], {})[r.get("coletado_em_utc") or r["data"]] = {
+                    "lido_em_utc": r.get("coletado_em_utc") or (r["data"] + "T12:00:00Z"), "seguidores": int(r["seguidores"]) if r["seguidores"].isdigit() else None,
+                    "seguidores_texto": r.get("texto_original"), "fonte": f"painel WhatsApp do Atlas (data/whatsapp/{nome_arq})"}
+    dados["historico_painel"] = {c["nome"]: sorted(hist[c["link"].rstrip("/").rsplit("/", 1)[-1]].values(), key=lambda x: x["lido_em_utc"])
+                                 for c in canais if c["link"].rstrip("/").rsplit("/", 1)[-1] in hist}
     falhas = 0
     for c in canais:
         reg = {"lido_em_utc": agora, "canal": c["nome"], "link": c["link"]}

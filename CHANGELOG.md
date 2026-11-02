@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.264 — Caso 026: o "Exército do Lula" entra na leitura dos canais, com a série do painel WhatsApp desde 15/10 (2026-11-02) ⚠️
+
+- **Erro corrigido:** na C19.258, o link do "Exército do Lula" foi dado como "não localizado". O canal já é lido pelo painel WhatsApp do Atlas desde 15/10, com o link enviado pelo próprio responsável (`data/config/whatsapp_canais.json`, id 0029VbCbRfD7tkj88k3soZ0Y). O responsável apontou o erro (02/11, 02h40).
+- `data/config/casos.json` (026): entram "Exército do Lula" e "Tropa do Flávio" (link declarado ao TSE pela chapa 22, também lido pelo painel). A pendência foi removida.
+- `scripts/canais_whatsapp.py`: anexa a série anterior de cada canal que o painel já lia (`data/whatsapp/seguidores.csv` e `seguidores_horario.csv`), com a fonte em cada ponto: 59 leituras do Exército do Lula e 56 da Tropa do Flávio.
+  - Primeira leitura do Exército do Lula no painel: 4,6 mi, em 16/10. O painel registra 10 mi de 23/10 a 01/11.
+- Página do 026: a curva junta as duas séries. Novo aviso: o WhatsApp arredonda ("10 mi"), e acima disso a curva fica plana mesmo que o canal cresça.
+- **Teste:** a leitura local não alcança o WhatsApp (URLError): o arquivo de leituras local foi descartado sem commit, e a leitura real roda no workflow. `python -m unittest discover -s tests`: OK.
+
 ## C19.263 — Reconstrução lematizada dos casos: GEXF do 006 (em andamento) (2026-11-02) ⚠️
 
 - `data/casos/006/rede_*.gexf` foram regravados pela reconstrução local (`build_caso_busca.py`, lematização e passo 3). O `busca.json` do 006 entra quando o caso terminar.
