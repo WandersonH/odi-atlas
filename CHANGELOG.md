@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.308 — Caso 026: mais um canal de WhatsApp inspirado no Exército do Lula (2026-11-02) 🔜
+
+- Enviado pelo responsável (02/11/2026, 17h15): https://whatsapp.com/channel/0029VbEZEveFSAsyxGG4Wp0n ("mais um grupo inspirado em janones"; o link veio com fbclid, removido).
+- O quê: canal acrescentado a `data/config/casos.json` → 026 → `canais_whatsapp` (nome e país a confirmar pela leitura da página pública). Leitura disparada em `canais-whatsapp.yml`; resultado na próxima entrada.
+
 ## C19.307 — Atalhos no topo de cada caso para "Quem dissemina" e "Intolerância" (2026-11-02) ✅
 
 - Perguntas do responsável (02/11/2026, 17h10): "não vi análise de partido nos cases, tu implantou?" e "cadê análise de intolerância?". Os blocos existiam (C19.292 e C19.297), mas ficavam abaixo do dossiê inteiro, sem atalho, e a intolerância só aparecia nos 3 casos do piloto.
