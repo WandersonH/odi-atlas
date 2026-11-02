@@ -1,6 +1,6 @@
 {
  "caso": "002",
- "gerado_em_utc": "2026-11-02T00:55:23Z",
+ "gerado_em_utc": "2026-11-02T01:38:52Z",
  "livro": {
   "titulo": "Livro de códigos — caso 002: consulta depreciativa associada a um candidato no Google (\"onde mora/nasceu o ladrão\") (ODI Atlas)",
   "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
@@ -6126,35 +6126,35 @@
       "tipo": "palavra",
       "n": 9,
       "grupo": 0,
-      "x": 0.5522,
-      "y": 1.7359
+      "x": 1.9463,
+      "y": 1.2152
      },
      {
       "id": "ladrao",
       "rotulo": "ladrao",
       "tipo": "palavra",
-      "n": 72,
+      "n": 75,
       "grupo": 0,
-      "x": 1.0222,
-      "y": 0.9744
+      "x": 0.9564,
+      "y": 0.9936
      },
      {
-      "id": "sabe",
-      "rotulo": "sabe",
+      "id": "saber",
+      "rotulo": "saber",
       "tipo": "palavra",
-      "n": 6,
+      "n": 9,
       "grupo": 0,
-      "x": 1.0298,
-      "y": 2.0
+      "x": 1.8467,
+      "y": 0.6538
      },
      {
-      "id": "nasceu",
-      "rotulo": "nasceu",
+      "id": "nascer",
+      "rotulo": "nascer",
       "tipo": "palavra",
-      "n": 11,
+      "n": 15,
       "grupo": 0,
-      "x": 1.8668,
-      "y": 0.525
+      "x": 1.3812,
+      "y": 0.406
      },
      {
       "id": "bolsonaro",
@@ -6162,35 +6162,62 @@
       "tipo": "palavra",
       "n": 10,
       "grupo": 1,
-      "x": 0.4465,
-      "y": 0.4097
+      "x": 0.1688,
+      "y": 1.3153
      },
      {
       "id": "lula",
       "rotulo": "lula",
       "tipo": "palavra",
-      "n": 17,
+      "n": 19,
       "grupo": 1,
-      "x": 0.6497,
-      "y": 0.7607
+      "x": 0.5171,
+      "y": 1.0829
+     },
+     {
+      "id": "dia",
+      "rotulo": "dia",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 0,
+      "x": 0.7199,
+      "y": 0.0
+     },
+     {
+      "id": "ano",
+      "rotulo": "ano",
+      "tipo": "palavra",
+      "n": 5,
+      "grupo": 0,
+      "x": 1.18,
+      "y": 1.9886
+     },
+     {
+      "id": "estar",
+      "rotulo": "estar",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 0,
+      "x": 0.3598,
+      "y": 0.6012
+     },
+     {
+      "id": "pegar",
+      "rotulo": "pegar",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 0,
+      "x": 1.3952,
+      "y": 1.2108
      },
      {
       "id": "flavio",
       "rotulo": "flavio",
       "tipo": "palavra",
-      "n": 10,
+      "n": 8,
       "grupo": 1,
-      "x": 0.8706,
-      "y": 0.3419
-     },
-     {
-      "id": "pega",
-      "rotulo": "pega",
-      "tipo": "palavra",
-      "n": 9,
-      "grupo": 0,
-      "x": 1.5622,
-      "y": 1.2523
+      "x": 0.5287,
+      "y": 1.5326
      }
     ],
     "arestas": [
@@ -6201,28 +6228,43 @@
      ],
      [
       "google",
-      "sabe",
+      "saber",
       3
      ],
      [
       "ladrao",
-      "sabe",
-      3
-     ],
-     [
-      "ladrao",
-      "nasceu",
+      "saber",
       4
      ],
      [
       "ladrao",
-      "lula",
-      15
+      "nascer",
+      7
      ],
      [
       "ladrao",
-      "pega",
-      9
+      "lula",
+      16
+     ],
+     [
+      "ladrao",
+      "dia",
+      4
+     ],
+     [
+      "ladrao",
+      "ano",
+      4
+     ],
+     [
+      "ladrao",
+      "estar",
+      7
+     ],
+     [
+      "ladrao",
+      "pegar",
+      10
      ],
      [
       "ladrao",
@@ -6235,6 +6277,11 @@
       7
      ],
      [
+      "saber",
+      "nascer",
+      3
+     ],
+     [
       "bolsonaro",
       "lula",
       7
@@ -6242,16 +6289,21 @@
      [
       "bolsonaro",
       "flavio",
-      7
+      5
      ],
      [
       "lula",
       "flavio",
       5
+     ],
+     [
+      "lula",
+      "estar",
+      3
      ]
     ],
-    "total_nos": 9,
-    "total_arestas": 11,
+    "total_nos": 12,
+    "total_arestas": 16,
     "comunidades": 2
    },
    "gexf": "rede_palavras_comentarios_posts.gexf",
@@ -6259,278 +6311,360 @@
   },
   "classes": {
    "comentarios": 212,
-   "classificados": 66,
-   "pct_classificados": 31.1,
+   "classificados": 105,
+   "pct_classificados": 49.5,
    "classes": [
     {
      "classe": 1,
-     "segmentos": 19,
-     "pct": 28.8,
+     "segmentos": 22,
+     "pct": 21.0,
      "formas": [
       [
-       "nasceu",
-       22.5
+       "nascer",
+       16.1
       ],
       [
        "cidade",
-       10.5
-      ],
-      [
-       "lampiao",
-       10.5
-      ],
-      [
-       "existe",
-       7.8
-      ],
-      [
-       "historia",
-       7.8
-      ],
-      [
-       "respondendo",
-       7.8
+       15.7
       ],
       [
        "origem",
-       7.8
+       15.7
       ],
       [
-       "del",
-       7.8
+       "lampiao",
+       15.7
+      ],
+      [
+       "historia",
+       11.7
+      ],
+      [
+       "grande",
+       11.7
+      ],
+      [
+       "existir",
+       11.7
+      ],
+      [
+       "brasileiro",
+       11.7
+      ],
+      [
+       "museu",
+       11.7
       ],
       [
        "rei",
-       7.8
+       11.7
       ],
       [
-       "viu",
-       7.8
-      ]
-     ],
-     "por_ano": {
-      "2022": 1,
-      "2023": 2,
-      "2024": 0,
-      "2025": 2,
-      "2026": 14
-     }
-    },
-    {
-     "classe": 2,
-     "segmentos": 18,
-     "pct": 27.3,
-     "formas": [
-      [
-       "lula",
-       43.2
+       "ver",
+       11.1
       ],
       [
-       "bolsonaro",
-       31.4
+       "contar",
+       7.7
       ],
       [
-       "flavio",
-       31.4
+       "crescer",
+       7.7
       ],
       [
-       "google",
-       5.5
+       "comecar",
+       7.7
+      ],
+      [
+       "bom",
+       7.7
       ]
      ],
      "por_ano": {
       "2022": 0,
       "2023": 2,
-      "2024": 1,
-      "2025": 0,
-      "2026": 15
+      "2024": 2,
+      "2025": 4,
+      "2026": 14
+     }
+    },
+    {
+     "classe": 2,
+     "segmentos": 65,
+     "pct": 61.9,
+     "formas": [
+      [
+       "ladrao",
+       39.7
+      ]
+     ],
+     "por_ano": {
+      "2022": 4,
+      "2023": 3,
+      "2024": 3,
+      "2025": 2,
+      "2026": 53
      }
     },
     {
      "classe": 3,
-     "segmentos": 29,
-     "pct": 43.9,
+     "segmentos": 18,
+     "pct": 17.1,
      "formas": [
       [
-       "ladrao",
-       24.1
+       "bolsonaro",
+       41.3
+      ],
+      [
+       "flavio",
+       20.4
+      ],
+      [
+       "abrir",
+       20.1
+      ],
+      [
+       "familia",
+       14.9
+      ],
+      [
+       "sigilo",
+       14.9
+      ],
+      [
+       "desafio",
+       9.9
+      ],
+      [
+       "argumento",
+       9.9
+      ],
+      [
+       "dizer",
+       9.9
+      ],
+      [
+       "ninar",
+       9.9
+      ],
+      [
+       "pergunta",
+       9.9
+      ],
+      [
+       "responder",
+       9.8
+      ],
+      [
+       "lula",
+       6.3
+      ],
+      [
+       "roubar",
+       5.3
+      ],
+      [
+       "chamar",
+       5.3
+      ],
+      [
+       "edit",
+       4.9
       ]
      ],
      "por_ano": {
-      "2022": 1,
-      "2023": 2,
+      "2022": 0,
+      "2023": 3,
       "2024": 1,
-      "2025": 1,
-      "2026": 24
+      "2025": 0,
+      "2026": 14
      }
     }
    ],
    "arvore": [
     {
      "id": 0,
-     "n": 103,
+     "n": 132,
      "filhos": [
       1,
       2
      ],
-     "chi2": 161.2,
+     "chi2": 457.0,
      "classe": null
     },
     {
      "id": 1,
-     "n": 19,
+     "n": 2,
      "filhos": null,
-     "classe": 1
+     "eliminado": true,
+     "classe": null
     },
     {
      "id": 2,
-     "n": 84,
+     "n": 130,
      "filhos": [
       3,
       4
      ],
-     "chi2": 116.4,
+     "chi2": 455.0,
      "classe": null
     },
     {
      "id": 3,
+     "n": 128,
+     "filhos": [
+      5,
+      6
+     ],
+     "chi2": 375.1,
+     "classe": null
+    },
+    {
+     "id": 4,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 5,
+     "n": 123,
+     "filhos": [
+      7,
+      8
+     ],
+     "chi2": 334.3,
+     "classe": null
+    },
+    {
+     "id": 6,
      "n": 5,
      "filhos": null,
      "eliminado": true,
      "classe": null
     },
     {
-     "id": 4,
-     "n": 79,
-     "filhos": [
-      5,
-      6
-     ],
-     "chi2": 95.4,
-     "classe": null
-    },
-    {
-     "id": 5,
-     "n": 9,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 6,
-     "n": 70,
-     "filhos": [
-      7,
-      8
-     ],
-     "chi2": 82.7,
-     "classe": null
-    },
-    {
      "id": 7,
-     "n": 22,
-     "filhos": [
-      17,
-      18
-     ],
-     "chi2": 32.6,
-     "classe": null
-    },
-    {
-     "id": 8,
-     "n": 48,
+     "n": 116,
      "filhos": [
       9,
       10
      ],
-     "chi2": 45.7,
+     "chi2": 287.3,
      "classe": null
     },
     {
-     "id": 9,
-     "n": 4,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 10,
-     "n": 44,
-     "filhos": [
-      11,
-      12
-     ],
-     "chi2": 33.9,
-     "classe": null
-    },
-    {
-     "id": 11,
-     "n": 40,
-     "filhos": [
-      13,
-      14
-     ],
-     "chi2": 27.0,
-     "classe": null
-    },
-    {
-     "id": 12,
-     "n": 4,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 13,
-     "n": 36,
-     "filhos": [
-      15,
-      16
-     ],
-     "chi2": 17.3,
-     "classe": null
-    },
-    {
-     "id": 14,
-     "n": 4,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 15,
-     "n": 29,
-     "filhos": null,
-     "classe": 3
-    },
-    {
-     "id": 16,
+     "id": 8,
      "n": 7,
      "filhos": null,
      "eliminado": true,
      "classe": null
     },
     {
+     "id": 9,
+     "n": 22,
+     "filhos": null,
+     "classe": 1
+    },
+    {
+     "id": 10,
+     "n": 94,
+     "filhos": [
+      11,
+      12
+     ],
+     "chi2": 174.6,
+     "classe": null
+    },
+    {
+     "id": 11,
+     "n": 92,
+     "filhos": [
+      13,
+      14
+     ],
+     "chi2": 186.1,
+     "classe": null
+    },
+    {
+     "id": 12,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 13,
+     "n": 90,
+     "filhos": [
+      15,
+      16
+     ],
+     "chi2": 165.1,
+     "classe": null
+    },
+    {
+     "id": 14,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 15,
+     "n": 7,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 16,
+     "n": 83,
+     "filhos": [
+      17,
+      18
+     ],
+     "chi2": 145.0,
+     "classe": null
+    },
+    {
      "id": 17,
-     "n": 18,
+     "n": 65,
      "filhos": null,
      "classe": 2
     },
     {
      "id": 18,
-     "n": 4,
+     "n": 18,
      "filhos": null,
-     "eliminado": true,
-     "classe": null
+     "classe": 3
     }
    ],
    "min_classe": 10,
+   "escolha_classes": {
+    "classes_terminais": 3,
+    "tentativas": [
+     {
+      "classes_terminais": 5,
+      "aproveitamento_pct": 43.9
+     },
+     {
+      "classes_terminais": 4,
+      "aproveitamento_pct": 43.9
+     },
+     {
+      "classes_terminais": 3,
+      "aproveitamento_pct": 49.5
+     }
+    ],
+    "regra": "CHD com a regra do tutorial do IRaMuTeQ (Camargo & Justo, 2021, p. 31): começa com 10 classes terminais e, se a CHD não retiver 75% dos segmentos, muda o número de classes terminais e refaz. Regra fixa do Atlas, declarada antes de ver o resultado (01/11/2026): de 10 para baixo (10, 9, …, 3), a primeira partição com aproveitamento ≥ 75%; nenhuma → a de maior aproveitamento, marcada ⛔. Como as divisões são sempre as mesmas (a maior classe é dividida primeiro), as partições de 10 a 3 saem de uma só CHD."
+   },
    "aproveitamento": {
-    "pct_classificados": 31.1,
+    "pct_classificados": 49.5,
     "minimo_pct": 75.0,
     "atinge_minimo": false,
     "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
-    "regra": "classe mínima de 5% dos segmentos ativos (mín. 10), até 10 divisões por classe pedida, grupo menor que o mínimo fica não classificado",
+    "regra": "10 classes terminais (padrão do IRaMuTeQ), reduzidas uma a uma até o aproveitamento chegar a 75% (tutorial do IRaMuTeQ, p. 31); classe mínima de 5% dos segmentos ativos (mín. 10); grupo menor que o mínimo fica não classificado; formas ativas: nomes, verbos, adjetivos e não reconhecidas (lematizadas pelo dicionário do IRaMuTeQ); frequência mínima 2; até 3.000 formas",
     "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"
    },
    "variavel": null,

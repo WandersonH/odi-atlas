@@ -1,0 +1,8212 @@
+{
+ "caso": "007",
+ "gerado_em_utc": "2026-11-02T01:40:23Z",
+ "livro": {
+  "titulo": "Livro de códigos — caso 007: \"Lula amassa a bandeira\" (fake news do dia da eleição) (ODI Atlas)",
+  "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+  "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação ou comentário (texto, sem links); codificação por presença/ausência, várias categorias por unidade. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+  "simetria": "A acusação (Lula amassou/jogou a bandeira) e a reação (desmentido do contexto, denúncia de desinformação, comparação e humor) são codificadas separadamente; insulto e pedido de voto valem para qualquer alvo e qualquer candidato. Nenhuma categoria mede a posição política de quem publica.",
+  "amostra_humana": {
+   "tamanho": 200,
+   "estratos": "rede/fonte × dia de publicação, proporcional, semente fixa 42",
+   "codificadores": 2,
+   "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+  },
+  "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto (na ordem da lista)."
+ },
+ "categorias": {
+  "acusa_desrespeito_bandeira": {
+   "nome": "Acusação de desrespeito à bandeira",
+   "definicao": "Afirma ou repete que Lula amassou, jogou no chão ou desrespeitou a bandeira (a alegação do caso, falsa segundo a AFP Checamos).",
+   "n": 78,
+   "pct": 45.6
+  },
+  "ultraje_patriotico": {
+   "nome": "Ultraje patriótico",
+   "definicao": "Enquadra o episódio pela honra dos símbolos nacionais e da pátria (\"nossa bandeira\", \"jamais será vermelha\", símbolo sagrado).",
+   "n": 37,
+   "pct": 21.6
+  },
+  "pede_punicao": {
+   "nome": "Pedido de punição ou criminalização",
+   "definicao": "Diz que o gesto é crime, pede prisão, cassação, impeachment ou aplicação da lei dos símbolos.",
+   "n": 4,
+   "pct": 2.3
+  },
+  "desmentido_contexto": {
+   "nome": "Desmentido pelo contexto",
+   "definicao": "Corrige a alegação com o contexto do vídeo: Lula entregou ou passou a bandeira ao fotógrafo, não a jogou; vídeo cortado; cita checagem.",
+   "n": 13,
+   "pct": 7.6
+  },
+  "denuncia_desinformacao": {
+   "nome": "Denúncia de desinformação",
+   "definicao": "Classifica o post como fake news, mentira, montagem ou manipulação; critica quem espalha ou orienta denunciar.",
+   "n": 4,
+   "pct": 2.3
+  },
+  "comparacao_inversao": {
+   "nome": "Comparação e inversão (\"e se fosse...\")",
+   "definicao": "Compara com o outro lado ou inverte a acusação, em qualquer direção (\"se fosse o Bolsonaro\", continência à bandeira dos EUA, \"e o Flávio?\").",
+   "n": 6,
+   "pct": 3.5
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, ironia ou deboche na publicação (o alvo do humor é decidido pelo codificador humano).",
+   "n": 0,
+   "pct": 0.0
+  },
+  "insulto_desumanizacao": {
+   "nome": "Insulto e desumanização (qualquer alvo)",
+   "definicao": "Rotula pessoa ou grupo com insulto, xingamento ou termo de desprezo, qualquer que seja o alvo (Lula, Flávio, eleitores, autor do post).",
+   "n": 15,
+   "pct": 8.8
+  },
+  "chamado_voto": {
+   "nome": "Pedido de voto ou torcida eleitoral (qualquer candidato)",
+   "definicao": "Pede voto, faz contagem ou grito de torcida para qualquer candidato (13 ou 22) ou \"fora\" para qualquer um.",
+   "n": 12,
+   "pct": 7.0
+  }
+ },
+ "publicacoes": 171,
+ "sem_categoria": {
+  "n": 61,
+  "pct": 35.7
+ },
+ "blocos": {
+  "incitacao": {
+   "categorias": [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico",
+    "pede_punicao"
+   ],
+   "n": 93,
+   "pct": 54.4
+  },
+  "reacao": {
+   "categorias": [
+    "desmentido_contexto",
+    "denuncia_desinformacao",
+    "comparacao_inversao",
+    "ironia_humor"
+   ],
+   "n": 21,
+   "pct": 12.3
+  },
+  "os_dois": {
+   "n": 14,
+   "pct": 8.2
+  }
+ },
+ "por_rede": {
+  "facebook": {
+   "n": 93,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 49,
+     "pct": 52.7
+    },
+    "ultraje_patriotico": {
+     "n": 19,
+     "pct": 20.4
+    },
+    "pede_punicao": {
+     "n": 2,
+     "pct": 2.2
+    },
+    "desmentido_contexto": {
+     "n": 7,
+     "pct": 7.5
+    },
+    "denuncia_desinformacao": {
+     "n": 3,
+     "pct": 3.2
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 12,
+     "pct": 12.9
+    },
+    "chamado_voto": {
+     "n": 9,
+     "pct": 9.7
+    }
+   }
+  },
+  "instagram": {
+   "n": 78,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 29,
+     "pct": 37.2
+    },
+    "ultraje_patriotico": {
+     "n": 18,
+     "pct": 23.1
+    },
+    "pede_punicao": {
+     "n": 2,
+     "pct": 2.6
+    },
+    "desmentido_contexto": {
+     "n": 6,
+     "pct": 7.7
+    },
+    "denuncia_desinformacao": {
+     "n": 1,
+     "pct": 1.3
+    },
+    "comparacao_inversao": {
+     "n": 6,
+     "pct": 7.7
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 3,
+     "pct": 3.8
+    },
+    "chamado_voto": {
+     "n": 3,
+     "pct": 3.8
+    }
+   }
+  }
+ },
+ "por_termo": {
+  "facebook · Lula amassa bandeira": {
+   "n": 37,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 10,
+     "pct": 27.0
+    },
+    "ultraje_patriotico": {
+     "n": 5,
+     "pct": 13.5
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 1,
+     "pct": 2.7
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 5,
+     "pct": 13.5
+    },
+    "chamado_voto": {
+     "n": 2,
+     "pct": 5.4
+    }
+   }
+  },
+  "facebook · Lula amassou a bandeira": {
+   "n": 59,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 39,
+     "pct": 66.1
+    },
+    "ultraje_patriotico": {
+     "n": 14,
+     "pct": 23.7
+    },
+    "pede_punicao": {
+     "n": 2,
+     "pct": 3.4
+    },
+    "desmentido_contexto": {
+     "n": 6,
+     "pct": 10.2
+    },
+    "denuncia_desinformacao": {
+     "n": 3,
+     "pct": 5.1
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 7,
+     "pct": 11.9
+    },
+    "chamado_voto": {
+     "n": 7,
+     "pct": 11.9
+    }
+   }
+  },
+  "instagram · reels: Lula amassa bandeira": {
+   "n": 42,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 22,
+     "pct": 52.4
+    },
+    "ultraje_patriotico": {
+     "n": 11,
+     "pct": 26.2
+    },
+    "pede_punicao": {
+     "n": 1,
+     "pct": 2.4
+    },
+    "desmentido_contexto": {
+     "n": 4,
+     "pct": 9.5
+    },
+    "denuncia_desinformacao": {
+     "n": 1,
+     "pct": 2.4
+    },
+    "comparacao_inversao": {
+     "n": 4,
+     "pct": 9.5
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 3,
+     "pct": 7.1
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 2.4
+    }
+   }
+  },
+  "instagram · reels: Lula bandeira amassada": {
+   "n": 42,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 9,
+     "pct": 21.4
+    },
+    "ultraje_patriotico": {
+     "n": 9,
+     "pct": 21.4
+    },
+    "pede_punicao": {
+     "n": 1,
+     "pct": 2.4
+    },
+    "desmentido_contexto": {
+     "n": 4,
+     "pct": 9.5
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 3,
+     "pct": 7.1
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 3,
+     "pct": 7.1
+    }
+   }
+  }
+ },
+ "por_dia": {
+  "2026-10-04": {
+   "n": 72,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 43,
+     "pct": 59.7
+    },
+    "ultraje_patriotico": {
+     "n": 18,
+     "pct": 25.0
+    },
+    "pede_punicao": {
+     "n": 3,
+     "pct": 4.2
+    },
+    "desmentido_contexto": {
+     "n": 7,
+     "pct": 9.7
+    },
+    "denuncia_desinformacao": {
+     "n": 2,
+     "pct": 2.8
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 9,
+     "pct": 12.5
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-05": {
+   "n": 19,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 13,
+     "pct": 68.4
+    },
+    "ultraje_patriotico": {
+     "n": 3,
+     "pct": 15.8
+    },
+    "pede_punicao": {
+     "n": 1,
+     "pct": 5.3
+    },
+    "desmentido_contexto": {
+     "n": 3,
+     "pct": 15.8
+    },
+    "denuncia_desinformacao": {
+     "n": 1,
+     "pct": 5.3
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 1,
+     "pct": 5.3
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 5.3
+    }
+   }
+  },
+  "2026-10-06": {
+   "n": 5,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 5,
+     "pct": 100.0
+    },
+    "ultraje_patriotico": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 2,
+     "pct": 40.0
+    },
+    "denuncia_desinformacao": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-07": {
+   "n": 4,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 2,
+     "pct": 50.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 1,
+     "pct": 25.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-08": {
+   "n": 3,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "ultraje_patriotico": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 33.3
+    }
+   }
+  },
+  "2026-10-09": {
+   "n": 2,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 2,
+     "pct": 100.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 2,
+     "pct": 100.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-10": {
+   "n": 2,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "ultraje_patriotico": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-11": {
+   "n": 8,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 2,
+     "pct": 25.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 12.5
+    }
+   }
+  },
+  "2026-10-12": {
+   "n": 3,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 2,
+     "pct": 66.7
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 33.3
+    }
+   }
+  },
+  "2026-10-15": {
+   "n": 2,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-16": {
+   "n": 2,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 2,
+     "pct": 100.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-17": {
+   "n": 16,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 6,
+     "pct": 37.5
+    },
+    "ultraje_patriotico": {
+     "n": 7,
+     "pct": 43.8
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 5,
+     "pct": 31.2
+    }
+   }
+  },
+  "2026-10-18": {
+   "n": 5,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 2,
+     "pct": 40.0
+    },
+    "ultraje_patriotico": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 20.0
+    }
+   }
+  },
+  "2026-10-19": {
+   "n": 3,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-20": {
+   "n": 1,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-21": {
+   "n": 2,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-22": {
+   "n": 4,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 1,
+     "pct": 25.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-24": {
+   "n": 8,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 1,
+     "pct": 12.5
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 2,
+     "pct": 25.0
+    }
+   }
+  },
+  "2026-10-25": {
+   "n": 5,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-26": {
+   "n": 1,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-28": {
+   "n": 1,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-29": {
+   "n": 1,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-30": {
+   "n": 2,
+   "categorias": {
+    "acusa_desrespeito_bandeira": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ultraje_patriotico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_punicao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_contexto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_desinformacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "comparacao_inversao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  }
+ },
+ "pares": [
+  {
+   "a": "acusa_desrespeito_bandeira",
+   "b": "ultraje_patriotico",
+   "n": 22
+  },
+  {
+   "a": "acusa_desrespeito_bandeira",
+   "b": "insulto_desumanizacao",
+   "n": 11
+  },
+  {
+   "a": "acusa_desrespeito_bandeira",
+   "b": "desmentido_contexto",
+   "n": 9
+  },
+  {
+   "a": "acusa_desrespeito_bandeira",
+   "b": "denuncia_desinformacao",
+   "n": 4
+  },
+  {
+   "a": "chamado_voto",
+   "b": "ultraje_patriotico",
+   "n": 4
+  },
+  {
+   "a": "insulto_desumanizacao",
+   "b": "ultraje_patriotico",
+   "n": 3
+  },
+  {
+   "a": "desmentido_contexto",
+   "b": "ultraje_patriotico",
+   "n": 3
+  },
+  {
+   "a": "acusa_desrespeito_bandeira",
+   "b": "chamado_voto",
+   "n": 3
+  },
+  {
+   "a": "pede_punicao",
+   "b": "ultraje_patriotico",
+   "n": 2
+  },
+  {
+   "a": "denuncia_desinformacao",
+   "b": "ultraje_patriotico",
+   "n": 2
+  },
+  {
+   "a": "denuncia_desinformacao",
+   "b": "desmentido_contexto",
+   "n": 2
+  },
+  {
+   "a": "desmentido_contexto",
+   "b": "insulto_desumanizacao",
+   "n": 2
+  },
+  {
+   "a": "acusa_desrespeito_bandeira",
+   "b": "pede_punicao",
+   "n": 2
+  },
+  {
+   "a": "comparacao_inversao",
+   "b": "ultraje_patriotico",
+   "n": 1
+  }
+ ],
+ "exemplos_contas_10mil": {
+  "acusa_desrespeito_bandeira": [],
+  "ultraje_patriotico": [],
+  "pede_punicao": [],
+  "desmentido_contexto": [],
+  "denuncia_desinformacao": [],
+  "comparacao_inversao": [],
+  "ironia_humor": [],
+  "insulto_desumanizacao": [],
+  "chamado_voto": []
+ },
+ "amostra_humana": {
+  "arquivo_privado": "casos/007/codificacao/amostra_bardin_v2.csv",
+  "publicacoes": 171,
+  "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"
+ },
+ "chd_palavras": {
+  "comentarios": 171,
+  "autores": 167,
+  "respostas": 0,
+  "por_dia": {
+   "2026-10-04": 72,
+   "2026-10-05": 19,
+   "2026-10-06": 5,
+   "2026-10-07": 4,
+   "2026-10-08": 3,
+   "2026-10-09": 2,
+   "2026-10-10": 2,
+   "2026-10-11": 8,
+   "2026-10-12": 3,
+   "2026-10-15": 2,
+   "2026-10-16": 2,
+   "2026-10-17": 16,
+   "2026-10-18": 5,
+   "2026-10-19": 3,
+   "2026-10-20": 1,
+   "2026-10-21": 2,
+   "2026-10-22": 4,
+   "2026-10-24": 8,
+   "2026-10-25": 5,
+   "2026-10-26": 1,
+   "2026-10-28": 1,
+   "2026-10-29": 1,
+   "2026-10-30": 2
+  },
+  "temas": {},
+  "temas_regex": {},
+  "palavras": [
+   [
+    "lula",
+    264
+   ],
+   [
+    "bandeira",
+    218
+   ],
+   [
+    "brasil",
+    156
+   ],
+   [
+    "chão",
+    92
+   ],
+   [
+    "presidente",
+    74
+   ],
+   [
+    "amassa",
+    43
+   ],
+   [
+    "amassou",
+    39
+   ],
+   [
+    "jogou",
+    37
+   ],
+   [
+    "após",
+    36
+   ],
+   [
+    "povo",
+    36
+   ],
+   [
+    "joga",
+    35
+   ],
+   [
+    "redes",
+    34
+   ],
+   [
+    "sociais",
+    33
+   ],
+   [
+    "vídeo",
+    30
+   ],
+   [
+    "democracia",
+    30
+   ],
+   [
+    "eleições",
+    29
+   ],
+   [
+    "depois",
+    28
+   ],
+   [
+    "país",
+    27
+   ],
+   [
+    "bolsonaro",
+    26
+   ],
+   [
+    "respeito",
+    26
+   ],
+   [
+    "votar",
+    25
+   ],
+   [
+    "imagens",
+    24
+   ],
+   [
+    "domingo",
+    22
+   ],
+   [
+    "nacional",
+    22
+   ],
+   [
+    "turno",
+    22
+   ],
+   [
+    "paulista",
+    21
+   ],
+   [
+    "alckmin",
+    19
+   ],
+   [
+    "dia",
+    19
+   ],
+   [
+    "símbolo",
+    18
+   ],
+   [
+    "ainda",
+    18
+   ],
+   [
+    "durante",
+    18
+   ],
+   [
+    "ato",
+    18
+   ],
+   [
+    "cena",
+    17
+   ],
+   [
+    "neste",
+    17
+   ],
+   [
+    "maior",
+    16
+   ],
+   [
+    "esquerda",
+    16
+   ],
+   [
+    "apoiadores",
+    16
+   ],
+   [
+    "foto",
+    15
+   ],
+   [
+    "símbolos",
+    15
+   ],
+   [
+    "silva",
+    15
+   ]
+  ],
+  "rede_palavras": {
+   "desenho": {
+    "nos": [
+     {
+      "id": "tirar",
+      "rotulo": "tirar",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 1,
+      "x": 0.6133,
+      "y": 0.8032
+     },
+     {
+      "id": "gente",
+      "rotulo": "gente",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 0.0,
+      "y": 1.1062
+     },
+     {
+      "id": "brasil",
+      "rotulo": "brasil",
+      "tipo": "palavra",
+      "n": 98,
+      "grupo": 1,
+      "x": 0.9615,
+      "y": 1.0101
+     },
+     {
+      "id": "rede",
+      "rotulo": "rede",
+      "tipo": "palavra",
+      "n": 27,
+      "grupo": 0,
+      "x": 1.0716,
+      "y": 0.897
+     },
+     {
+      "id": "eleicao",
+      "rotulo": "eleicao",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 0,
+      "x": 1.0623,
+      "y": 0.9868
+     },
+     {
+      "id": "paulista",
+      "rotulo": "paulista",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 0,
+      "x": 1.5542,
+      "y": 1.1006
+     },
+     {
+      "id": "so",
+      "rotulo": "so",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 1,
+      "x": 0.4694,
+      "y": 1.3897
+     },
+     {
+      "id": "sair",
+      "rotulo": "sair",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 1,
+      "x": 0.4057,
+      "y": 0.8837
+     },
+     {
+      "id": "historia",
+      "rotulo": "historia",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 0.3738,
+      "y": 1.2417
+     },
+     {
+      "id": "foto",
+      "rotulo": "foto",
+      "tipo": "palavra",
+      "n": 21,
+      "grupo": 0,
+      "x": 0.9684,
+      "y": 0.7494
+     },
+     {
+      "id": "circular",
+      "rotulo": "circular",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 1.203,
+      "y": 0.5371
+     },
+     {
+      "id": "jogar",
+      "rotulo": "jogar",
+      "tipo": "palavra",
+      "n": 76,
+      "grupo": 1,
+      "x": 0.8774,
+      "y": 0.9793
+     },
+     {
+      "id": "sp",
+      "rotulo": "sp",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 1.0625,
+      "y": 0.4605
+     },
+     {
+      "id": "domingo",
+      "rotulo": "domingo",
+      "tipo": "palavra",
+      "n": 21,
+      "grupo": 0,
+      "x": 1.1597,
+      "y": 0.852
+     },
+     {
+      "id": "amassado",
+      "rotulo": "amassado",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 1.3982,
+      "y": 0.5629
+     },
+     {
+      "id": "pais",
+      "rotulo": "pais",
+      "tipo": "palavra",
+      "n": 24,
+      "grupo": 1,
+      "x": 0.8325,
+      "y": 1.1836
+     },
+     {
+      "id": "lixo",
+      "rotulo": "lixo",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 1,
+      "x": 0.8194,
+      "y": 1.6364
+     },
+     {
+      "id": "bandeira",
+      "rotulo": "bandeira",
+      "tipo": "palavra",
+      "n": 136,
+      "grupo": 1,
+      "x": 0.999,
+      "y": 1.0376
+     },
+     {
+      "id": "vice",
+      "rotulo": "vice",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 0,
+      "x": 1.0101,
+      "y": 0.6122
+     },
+     {
+      "id": "dar",
+      "rotulo": "dar",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 1,
+      "x": 0.7022,
+      "y": 1.2393
+     },
+     {
+      "id": "silva",
+      "rotulo": "silva",
+      "tipo": "palavra",
+      "n": 15,
+      "grupo": 0,
+      "x": 1.3612,
+      "y": 0.8549
+     },
+     {
+      "id": "passar",
+      "rotulo": "passar",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 1.5518,
+      "y": 0.9046
+     },
+     {
+      "id": "acompanhar",
+      "rotulo": "acompanhar",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 0,
+      "x": 0.837,
+      "y": 0.6682
+     },
+     {
+      "id": "presidente",
+      "rotulo": "presidente",
+      "tipo": "palavra",
+      "n": 46,
+      "grupo": 0,
+      "x": 1.1104,
+      "y": 0.9865
+     },
+     {
+      "id": "deixar",
+      "rotulo": "deixar",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 0,
+      "x": 1.2039,
+      "y": 0.7405
+     },
+     {
+      "id": "maior",
+      "rotulo": "maior",
+      "tipo": "palavra",
+      "n": 14,
+      "grupo": 1,
+      "x": 0.6365,
+      "y": 1.077
+     },
+     {
+      "id": "apoiador",
+      "rotulo": "apoiador",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 0,
+      "x": 1.3813,
+      "y": 1.102
+     },
+     {
+      "id": "fotografo",
+      "rotulo": "fotografo",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 0,
+      "x": 0.8015,
+      "y": 0.5518
+     },
+     {
+      "id": "proprio",
+      "rotulo": "proprio",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 1,
+      "x": 0.6216,
+      "y": 0.9708
+     },
+     {
+      "id": "seguir",
+      "rotulo": "seguir",
+      "tipo": "palavra",
+      "n": 14,
+      "grupo": 1,
+      "x": 1.4723,
+      "y": 0.8757
+     },
+     {
+      "id": "dia",
+      "rotulo": "dia",
+      "tipo": "palavra",
+      "n": 16,
+      "grupo": 1,
+      "x": 0.8159,
+      "y": 1.299
+     },
+     {
+      "id": "merecer",
+      "rotulo": "merecer",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 1,
+      "x": 0.3333,
+      "y": 1.1143
+     },
+     {
+      "id": "urna",
+      "rotulo": "urna",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 1,
+      "x": 0.5743,
+      "y": 1.2353
+     },
+     {
+      "id": "entregar",
+      "rotulo": "entregar",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 1,
+      "x": 1.2126,
+      "y": 1.1884
+     },
+     {
+      "id": "estar",
+      "rotulo": "estar",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 1,
+      "x": 0.7413,
+      "y": 1.0565
+     },
+     {
+      "id": "bernardo",
+      "rotulo": "bernardo",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 0.9782,
+      "y": 0.4865
+     },
+     {
+      "id": "pessoa",
+      "rotulo": "pessoa",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 1.3579,
+      "y": 0.64
+     },
+     {
+      "id": "votar",
+      "rotulo": "votar",
+      "tipo": "palavra",
+      "n": 33,
+      "grupo": 1,
+      "x": 0.9675,
+      "y": 0.8739
+     },
+     {
+      "id": "bolsonaro",
+      "rotulo": "bolsonaro",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 1,
+      "x": 0.6471,
+      "y": 1.4751
+     },
+     {
+      "id": "amassar",
+      "rotulo": "amassar",
+      "tipo": "palavra",
+      "n": 82,
+      "grupo": 1,
+      "x": 0.8724,
+      "y": 1.0825
+     },
+     {
+      "id": "campo",
+      "rotulo": "campo",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 0,
+      "x": 1.1185,
+      "y": 0.5484
+     },
+     {
+      "id": "respeito",
+      "rotulo": "respeito",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 1,
+      "x": 0.7011,
+      "y": 1.1516
+     },
+     {
+      "id": "simbolo",
+      "rotulo": "simbolo",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 2,
+      "x": 0.9786,
+      "y": 0.931
+     },
+     {
+      "id": "social",
+      "rotulo": "social",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 0,
+      "x": 1.1547,
+      "y": 0.9566
+     },
+     {
+      "id": "lado",
+      "rotulo": "lado",
+      "tipo": "palavra",
+      "n": 14,
+      "grupo": 0,
+      "x": 0.8469,
+      "y": 0.7524
+     },
+     {
+      "id": "aparecer",
+      "rotulo": "aparecer",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 0,
+      "x": 1.4375,
+      "y": 1.0501
+     },
+     {
+      "id": "defender",
+      "rotulo": "defender",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 1,
+      "x": 0.7923,
+      "y": 1.5303
+     },
+     {
+      "id": "inacio",
+      "rotulo": "inacio",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 0,
+      "x": 1.3257,
+      "y": 0.7427
+     },
+     {
+      "id": "esquerdo",
+      "rotulo": "esquerdo",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 1,
+      "x": 1.123,
+      "y": 1.6132
+     },
+     {
+      "id": "video",
+      "rotulo": "video",
+      "tipo": "palavra",
+      "n": 28,
+      "grupo": 0,
+      "x": 1.0939,
+      "y": 0.815
+     },
+     {
+      "id": "ato",
+      "rotulo": "ato",
+      "tipo": "palavra",
+      "n": 14,
+      "grupo": 0,
+      "x": 1.4267,
+      "y": 1.1889
+     },
+     {
+      "id": "cena",
+      "rotulo": "cena",
+      "tipo": "palavra",
+      "n": 15,
+      "grupo": 2,
+      "x": 0.7294,
+      "y": 0.7681
+     },
+     {
+      "id": "cara",
+      "rotulo": "cara",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 1,
+      "x": 0.963,
+      "y": 1.6393
+     },
+     {
+      "id": "candidato",
+      "rotulo": "candidato",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 1.2705,
+      "y": 0.4717
+     },
+     {
+      "id": "paulo",
+      "rotulo": "paulo",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 1.3271,
+      "y": 1.1814
+     },
+     {
+      "id": "imagem",
+      "rotulo": "imagem",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 0,
+      "x": 1.1834,
+      "y": 0.8443
+     },
+     {
+      "id": "luiz",
+      "rotulo": "luiz",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 0,
+      "x": 1.3866,
+      "y": 0.7789
+     },
+     {
+      "id": "democracia",
+      "rotulo": "democracia",
+      "tipo": "palavra",
+      "n": 16,
+      "grupo": 0,
+      "x": 1.1701,
+      "y": 1.2851
+     },
+     {
+      "id": "lula",
+      "rotulo": "lula",
+      "tipo": "palavra",
+      "n": 143,
+      "grupo": 1,
+      "x": 0.9943,
+      "y": 1.0325
+     },
+     {
+      "id": "querer",
+      "rotulo": "querer",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 1,
+      "x": 0.9221,
+      "y": 1.3978
+     },
+     {
+      "id": "geraldo",
+      "rotulo": "geraldo",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 0,
+      "x": 1.0758,
+      "y": 0.6588
+     },
+     {
+      "id": "brasileiro",
+      "rotulo": "brasileiro",
+      "tipo": "palavra",
+      "n": 29,
+      "grupo": 1,
+      "x": 0.915,
+      "y": 1.2035
+     },
+     {
+      "id": "momento",
+      "rotulo": "momento",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 1.624,
+      "y": 0.9407
+     },
+     {
+      "id": "turno",
+      "rotulo": "turno",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.1435,
+      "y": 1.1441
+     },
+     {
+      "id": "mao",
+      "rotulo": "mao",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 0,
+      "x": 0.6796,
+      "y": 0.6155
+     },
+     {
+      "id": "direito",
+      "rotulo": "direito",
+      "tipo": "palavra",
+      "n": 14,
+      "grupo": 0,
+      "x": 1.205,
+      "y": 1.3811
+     },
+     {
+      "id": "voto",
+      "rotulo": "voto",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 1,
+      "x": 0.9959,
+      "y": 1.3049
+     },
+     {
+      "id": "avenida",
+      "rotulo": "avenida",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 0,
+      "x": 1.4722,
+      "y": 1.2902
+     },
+     {
+      "id": "nacional",
+      "rotulo": "nacional",
+      "tipo": "palavra",
+      "n": 24,
+      "grupo": 2,
+      "x": 0.8282,
+      "y": 0.9095
+     },
+     {
+      "id": "chao",
+      "rotulo": "chao",
+      "tipo": "palavra",
+      "n": 78,
+      "grupo": 1,
+      "x": 0.9504,
+      "y": 0.9817
+     },
+     {
+      "id": "mostrar",
+      "rotulo": "mostrar",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 0,
+      "x": 1.1839,
+      "y": 0.9212
+     },
+     {
+      "id": "votacao",
+      "rotulo": "votacao",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 0,
+      "x": 0.9587,
+      "y": 0.6677
+     },
+     {
+      "id": "pt",
+      "rotulo": "pt",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.2794,
+      "y": 0.9556
+     },
+     {
+      "id": "frente",
+      "rotulo": "frente",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 0.5173,
+      "y": 0.7292
+     },
+     {
+      "id": "posar",
+      "rotulo": "posar",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 0,
+      "x": 0.8852,
+      "y": 0.5573
+     },
+     {
+      "id": "manifestacao",
+      "rotulo": "manifestacao",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 1.592,
+      "y": 1.2507
+     },
+     {
+      "id": "dizer",
+      "rotulo": "dizer",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 1,
+      "x": 1.1003,
+      "y": 1.4395
+     },
+     {
+      "id": "alckmin",
+      "rotulo": "alckmin",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 0.8862,
+      "y": 0.8149
+     },
+     {
+      "id": "fossar",
+      "rotulo": "fossar",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 0.5279,
+      "y": 1.5631
+     },
+     {
+      "id": "politica",
+      "rotulo": "politica",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 1,
+      "x": 1.2119,
+      "y": 1.5391
+     }
+    ],
+    "arestas": [
+     [
+      "tirar",
+      "alckmin",
+      4
+     ],
+     [
+      "tirar",
+      "bandeira",
+      11
+     ],
+     [
+      "tirar",
+      "brasil",
+      9
+     ],
+     [
+      "tirar",
+      "imagem",
+      3
+     ],
+     [
+      "tirar",
+      "lula",
+      11
+     ],
+     [
+      "tirar",
+      "maior",
+      3
+     ],
+     [
+      "tirar",
+      "merecer",
+      3
+     ],
+     [
+      "tirar",
+      "mostrar",
+      4
+     ],
+     [
+      "tirar",
+      "posar",
+      3
+     ],
+     [
+      "tirar",
+      "simbolo",
+      5
+     ],
+     [
+      "tirar",
+      "video",
+      3
+     ],
+     [
+      "tirar",
+      "amassar",
+      8
+     ],
+     [
+      "tirar",
+      "chao",
+      9
+     ],
+     [
+      "tirar",
+      "foto",
+      10
+     ],
+     [
+      "tirar",
+      "jogar",
+      9
+     ],
+     [
+      "tirar",
+      "rede",
+      4
+     ],
+     [
+      "tirar",
+      "social",
+      4
+     ],
+     [
+      "tirar",
+      "domingo",
+      3
+     ],
+     [
+      "tirar",
+      "lado",
+      3
+     ],
+     [
+      "tirar",
+      "nacional",
+      4
+     ],
+     [
+      "tirar",
+      "presidente",
+      5
+     ],
+     [
+      "tirar",
+      "votacao",
+      3
+     ],
+     [
+      "tirar",
+      "votar",
+      3
+     ],
+     [
+      "tirar",
+      "brasileiro",
+      3
+     ],
+     [
+      "tirar",
+      "geraldo",
+      3
+     ],
+     [
+      "tirar",
+      "pais",
+      3
+     ],
+     [
+      "tirar",
+      "respeito",
+      3
+     ],
+     [
+      "tirar",
+      "dar",
+      3
+     ],
+     [
+      "tirar",
+      "eleicao",
+      4
+     ],
+     [
+      "gente",
+      "bandeira",
+      7
+     ],
+     [
+      "gente",
+      "lula",
+      7
+     ],
+     [
+      "gente",
+      "brasil",
+      4
+     ],
+     [
+      "gente",
+      "historia",
+      3
+     ],
+     [
+      "brasil",
+      "lula",
+      93
+     ],
+     [
+      "brasil",
+      "presidente",
+      34
+     ],
+     [
+      "brasil",
+      "amassar",
+      55
+     ],
+     [
+      "brasil",
+      "bandeira",
+      86
+     ],
+     [
+      "brasil",
+      "chao",
+      55
+     ],
+     [
+      "brasil",
+      "jogar",
+      55
+     ],
+     [
+      "brasil",
+      "lixo",
+      6
+     ],
+     [
+      "brasil",
+      "alckmin",
+      15
+     ],
+     [
+      "brasil",
+      "imagem",
+      18
+     ],
+     [
+      "brasil",
+      "maior",
+      10
+     ],
+     [
+      "brasil",
+      "merecer",
+      6
+     ],
+     [
+      "brasil",
+      "mostrar",
+      21
+     ],
+     [
+      "brasil",
+      "posar",
+      11
+     ],
+     [
+      "brasil",
+      "proprio",
+      7
+     ],
+     [
+      "brasil",
+      "simbolo",
+      19
+     ],
+     [
+      "brasil",
+      "video",
+      20
+     ],
+     [
+      "brasil",
+      "acompanhar",
+      10
+     ],
+     [
+      "brasil",
+      "bernardo",
+      9
+     ],
+     [
+      "brasil",
+      "campo",
+      9
+     ],
+     [
+      "brasil",
+      "candidato",
+      7
+     ],
+     [
+      "brasil",
+      "circular",
+      8
+     ],
+     [
+      "brasil",
+      "domingo",
+      17
+     ],
+     [
+      "brasil",
+      "estar",
+      8
+     ],
+     [
+      "brasil",
+      "foto",
+      17
+     ],
+     [
+      "brasil",
+      "fotografo",
+      8
+     ],
+     [
+      "brasil",
+      "frente",
+      7
+     ],
+     [
+      "brasil",
+      "geraldo",
+      11
+     ],
+     [
+      "brasil",
+      "lado",
+      11
+     ],
+     [
+      "brasil",
+      "mao",
+      7
+     ],
+     [
+      "brasil",
+      "paulo",
+      6
+     ],
+     [
+      "brasil",
+      "pessoa",
+      7
+     ],
+     [
+      "brasil",
+      "pt",
+      14
+     ],
+     [
+      "brasil",
+      "rede",
+      18
+     ],
+     [
+      "brasil",
+      "sair",
+      7
+     ],
+     [
+      "brasil",
+      "social",
+      19
+     ],
+     [
+      "brasil",
+      "sp",
+      8
+     ],
+     [
+      "brasil",
+      "vice",
+      10
+     ],
+     [
+      "brasil",
+      "votar",
+      28
+     ],
+     [
+      "brasil",
+      "cena",
+      13
+     ],
+     [
+      "brasil",
+      "eleicao",
+      17
+     ],
+     [
+      "brasil",
+      "amassado",
+      7
+     ],
+     [
+      "brasil",
+      "inacio",
+      9
+     ],
+     [
+      "brasil",
+      "luiz",
+      9
+     ],
+     [
+      "brasil",
+      "momento",
+      6
+     ],
+     [
+      "brasil",
+      "silva",
+      10
+     ],
+     [
+      "brasil",
+      "querer",
+      13
+     ],
+     [
+      "brasil",
+      "pais",
+      13
+     ],
+     [
+      "brasil",
+      "respeito",
+      14
+     ],
+     [
+      "brasil",
+      "so",
+      6
+     ],
+     [
+      "brasil",
+      "fossar",
+      5
+     ],
+     [
+      "brasil",
+      "aparecer",
+      6
+     ],
+     [
+      "brasil",
+      "nacional",
+      15
+     ],
+     [
+      "brasil",
+      "votacao",
+      8
+     ],
+     [
+      "brasil",
+      "brasileiro",
+      21
+     ],
+     [
+      "brasil",
+      "historia",
+      7
+     ],
+     [
+      "brasil",
+      "urna",
+      7
+     ],
+     [
+      "brasil",
+      "dia",
+      10
+     ],
+     [
+      "brasil",
+      "esquerdo",
+      7
+     ],
+     [
+      "brasil",
+      "seguir",
+      9
+     ],
+     [
+      "brasil",
+      "deixar",
+      10
+     ],
+     [
+      "brasil",
+      "passar",
+      3
+     ],
+     [
+      "brasil",
+      "apoiador",
+      9
+     ],
+     [
+      "brasil",
+      "voto",
+      10
+     ],
+     [
+      "brasil",
+      "dar",
+      11
+     ],
+     [
+      "brasil",
+      "manifestacao",
+      4
+     ],
+     [
+      "brasil",
+      "democracia",
+      12
+     ],
+     [
+      "brasil",
+      "dizer",
+      6
+     ],
+     [
+      "brasil",
+      "ato",
+      8
+     ],
+     [
+      "brasil",
+      "turno",
+      12
+     ],
+     [
+      "brasil",
+      "defender",
+      7
+     ],
+     [
+      "brasil",
+      "entregar",
+      9
+     ],
+     [
+      "brasil",
+      "cara",
+      4
+     ],
+     [
+      "brasil",
+      "politica",
+      5
+     ],
+     [
+      "brasil",
+      "bolsonaro",
+      9
+     ],
+     [
+      "brasil",
+      "paulista",
+      7
+     ],
+     [
+      "brasil",
+      "avenida",
+      6
+     ],
+     [
+      "brasil",
+      "direito",
+      10
+     ],
+     [
+      "rede",
+      "acompanhar",
+      7
+     ],
+     [
+      "rede",
+      "alckmin",
+      9
+     ],
+     [
+      "rede",
+      "bandeira",
+      26
+     ],
+     [
+      "rede",
+      "bernardo",
+      6
+     ],
+     [
+      "rede",
+      "campo",
+      6
+     ],
+     [
+      "rede",
+      "candidato",
+      6
+     ],
+     [
+      "rede",
+      "chao",
+      15
+     ],
+     [
+      "rede",
+      "circular",
+      7
+     ],
+     [
+      "rede",
+      "domingo",
+      14
+     ],
+     [
+      "rede",
+      "estar",
+      6
+     ],
+     [
+      "rede",
+      "foto",
+      12
+     ],
+     [
+      "rede",
+      "fotografo",
+      5
+     ],
+     [
+      "rede",
+      "frente",
+      4
+     ],
+     [
+      "rede",
+      "geraldo",
+      7
+     ],
+     [
+      "rede",
+      "imagem",
+      15
+     ],
+     [
+      "rede",
+      "jogar",
+      11
+     ],
+     [
+      "rede",
+      "lado",
+      6
+     ],
+     [
+      "rede",
+      "lula",
+      27
+     ],
+     [
+      "rede",
+      "mao",
+      3
+     ],
+     [
+      "rede",
+      "mostrar",
+      13
+     ],
+     [
+      "rede",
+      "paulo",
+      5
+     ],
+     [
+      "rede",
+      "pessoa",
+      5
+     ],
+     [
+      "rede",
+      "posar",
+      6
+     ],
+     [
+      "rede",
+      "presidente",
+      14
+     ],
+     [
+      "rede",
+      "pt",
+      7
+     ],
+     [
+      "rede",
+      "social",
+      22
+     ],
+     [
+      "rede",
+      "sp",
+      5
+     ],
+     [
+      "rede",
+      "vice",
+      6
+     ],
+     [
+      "rede",
+      "votar",
+      12
+     ],
+     [
+      "rede",
+      "amassar",
+      7
+     ],
+     [
+      "rede",
+      "video",
+      12
+     ],
+     [
+      "rede",
+      "amassado",
+      6
+     ],
+     [
+      "rede",
+      "cena",
+      7
+     ],
+     [
+      "rede",
+      "inacio",
+      7
+     ],
+     [
+      "rede",
+      "luiz",
+      7
+     ],
+     [
+      "rede",
+      "momento",
+      4
+     ],
+     [
+      "rede",
+      "silva",
+      8
+     ],
+     [
+      "rede",
+      "aparecer",
+      3
+     ],
+     [
+      "rede",
+      "nacional",
+      7
+     ],
+     [
+      "rede",
+      "proprio",
+      3
+     ],
+     [
+      "rede",
+      "simbolo",
+      7
+     ],
+     [
+      "rede",
+      "votacao",
+      4
+     ],
+     [
+      "rede",
+      "brasileiro",
+      3
+     ],
+     [
+      "rede",
+      "dia",
+      3
+     ],
+     [
+      "rede",
+      "pais",
+      5
+     ],
+     [
+      "rede",
+      "deixar",
+      7
+     ],
+     [
+      "rede",
+      "eleicao",
+      6
+     ],
+     [
+      "rede",
+      "passar",
+      4
+     ],
+     [
+      "rede",
+      "seguir",
+      7
+     ],
+     [
+      "rede",
+      "apoiador",
+      4
+     ],
+     [
+      "rede",
+      "voto",
+      5
+     ],
+     [
+      "rede",
+      "so",
+      4
+     ],
+     [
+      "rede",
+      "democracia",
+      5
+     ],
+     [
+      "rede",
+      "dizer",
+      3
+     ],
+     [
+      "rede",
+      "respeito",
+      3
+     ],
+     [
+      "rede",
+      "dar",
+      3
+     ],
+     [
+      "rede",
+      "entregar",
+      6
+     ],
+     [
+      "rede",
+      "turno",
+      5
+     ],
+     [
+      "rede",
+      "manifestacao",
+      4
+     ],
+     [
+      "rede",
+      "politica",
+      3
+     ],
+     [
+      "rede",
+      "bolsonaro",
+      4
+     ],
+     [
+      "rede",
+      "ato",
+      3
+     ],
+     [
+      "rede",
+      "avenida",
+      3
+     ],
+     [
+      "rede",
+      "paulista",
+      3
+     ],
+     [
+      "rede",
+      "querer",
+      3
+     ],
+     [
+      "eleicao",
+      "amassar",
+      12
+     ],
+     [
+      "eleicao",
+      "bandeira",
+      22
+     ],
+     [
+      "eleicao",
+      "cena",
+      5
+     ],
+     [
+      "eleicao",
+      "lula",
+      23
+     ],
+     [
+      "eleicao",
+      "votar",
+      14
+     ],
+     [
+      "eleicao",
+      "querer",
+      5
+     ],
+     [
+      "eleicao",
+      "acompanhar",
+      3
+     ],
+     [
+      "eleicao",
+      "alckmin",
+      6
+     ],
+     [
+      "eleicao",
+      "bernardo",
+      5
+     ],
+     [
+      "eleicao",
+      "campo",
+      5
+     ],
+     [
+      "eleicao",
+      "chao",
+      12
+     ],
+     [
+      "eleicao",
+      "circular",
+      4
+     ],
+     [
+      "eleicao",
+      "deixar",
+      7
+     ],
+     [
+      "eleicao",
+      "domingo",
+      7
+     ],
+     [
+      "eleicao",
+      "estar",
+      5
+     ],
+     [
+      "eleicao",
+      "foto",
+      6
+     ],
+     [
+      "eleicao",
+      "fotografo",
+      3
+     ],
+     [
+      "eleicao",
+      "frente",
+      3
+     ],
+     [
+      "eleicao",
+      "geraldo",
+      5
+     ],
+     [
+      "eleicao",
+      "imagem",
+      7
+     ],
+     [
+      "eleicao",
+      "inacio",
+      7
+     ],
+     [
+      "eleicao",
+      "jogar",
+      11
+     ],
+     [
+      "eleicao",
+      "lado",
+      5
+     ],
+     [
+      "eleicao",
+      "luiz",
+      7
+     ],
+     [
+      "eleicao",
+      "mao",
+      4
+     ],
+     [
+      "eleicao",
+      "mostrar",
+      8
+     ],
+     [
+      "eleicao",
+      "passar",
+      5
+     ],
+     [
+      "eleicao",
+      "paulo",
+      5
+     ],
+     [
+      "eleicao",
+      "presidente",
+      12
+     ],
+     [
+      "eleicao",
+      "pt",
+      4
+     ],
+     [
+      "eleicao",
+      "silva",
+      7
+     ],
+     [
+      "eleicao",
+      "social",
+      8
+     ],
+     [
+      "eleicao",
+      "sp",
+      4
+     ],
+     [
+      "eleicao",
+      "vice",
+      5
+     ],
+     [
+      "eleicao",
+      "video",
+      7
+     ],
+     [
+      "eleicao",
+      "votacao",
+      6
+     ],
+     [
+      "eleicao",
+      "amassado",
+      4
+     ],
+     [
+      "eleicao",
+      "aparecer",
+      5
+     ],
+     [
+      "eleicao",
+      "apoiador",
+      6
+     ],
+     [
+      "eleicao",
+      "momento",
+      3
+     ],
+     [
+      "eleicao",
+      "nacional",
+      6
+     ],
+     [
+      "eleicao",
+      "simbolo",
+      5
+     ],
+     [
+      "eleicao",
+      "voto",
+      7
+     ],
+     [
+      "eleicao",
+      "brasileiro",
+      8
+     ],
+     [
+      "eleicao",
+      "democracia",
+      4
+     ],
+     [
+      "eleicao",
+      "dia",
+      9
+     ],
+     [
+      "eleicao",
+      "dizer",
+      4
+     ],
+     [
+      "eleicao",
+      "pais",
+      5
+     ],
+     [
+      "eleicao",
+      "urna",
+      6
+     ],
+     [
+      "eleicao",
+      "ato",
+      3
+     ],
+     [
+      "eleicao",
+      "sair",
+      3
+     ],
+     [
+      "eleicao",
+      "turno",
+      11
+     ],
+     [
+      "eleicao",
+      "entregar",
+      7
+     ],
+     [
+      "eleicao",
+      "manifestacao",
+      3
+     ],
+     [
+      "eleicao",
+      "politica",
+      3
+     ],
+     [
+      "eleicao",
+      "proprio",
+      4
+     ],
+     [
+      "eleicao",
+      "dar",
+      4
+     ],
+     [
+      "eleicao",
+      "defender",
+      3
+     ],
+     [
+      "eleicao",
+      "maior",
+      3
+     ],
+     [
+      "eleicao",
+      "pessoa",
+      3
+     ],
+     [
+      "eleicao",
+      "bolsonaro",
+      3
+     ],
+     [
+      "eleicao",
+      "cara",
+      4
+     ],
+     [
+      "eleicao",
+      "avenida",
+      4
+     ],
+     [
+      "eleicao",
+      "paulista",
+      4
+     ],
+     [
+      "paulista",
+      "bandeira",
+      11
+     ],
+     [
+      "paulista",
+      "lula",
+      11
+     ],
+     [
+      "paulista",
+      "mostrar",
+      9
+     ],
+     [
+      "paulista",
+      "avenida",
+      11
+     ],
+     [
+      "paulista",
+      "democracia",
+      7
+     ],
+     [
+      "paulista",
+      "direito",
+      5
+     ],
+     [
+      "paulista",
+      "domingo",
+      7
+     ],
+     [
+      "paulista",
+      "presidente",
+      9
+     ],
+     [
+      "paulista",
+      "turno",
+      5
+     ],
+     [
+      "paulista",
+      "ato",
+      6
+     ],
+     [
+      "paulista",
+      "imagem",
+      5
+     ],
+     [
+      "paulista",
+      "video",
+      3
+     ],
+     [
+      "paulista",
+      "manifestacao",
+      4
+     ],
+     [
+      "paulista",
+      "apoiador",
+      6
+     ],
+     [
+      "paulista",
+      "inacio",
+      3
+     ],
+     [
+      "paulista",
+      "luiz",
+      3
+     ],
+     [
+      "paulista",
+      "paulo",
+      5
+     ],
+     [
+      "paulista",
+      "silva",
+      3
+     ],
+     [
+      "paulista",
+      "simbolo",
+      3
+     ],
+     [
+      "paulista",
+      "social",
+      4
+     ],
+     [
+      "paulista",
+      "acompanhar",
+      3
+     ],
+     [
+      "paulista",
+      "nacional",
+      3
+     ],
+     [
+      "paulista",
+      "momento",
+      3
+     ],
+     [
+      "so",
+      "amassar",
+      4
+     ],
+     [
+      "so",
+      "bandeira",
+      10
+     ],
+     [
+      "so",
+      "lula",
+      10
+     ],
+     [
+      "so",
+      "querer",
+      3
+     ],
+     [
+      "so",
+      "votar",
+      4
+     ],
+     [
+      "so",
+      "chao",
+      3
+     ],
+     [
+      "so",
+      "historia",
+      3
+     ],
+     [
+      "so",
+      "maior",
+      3
+     ],
+     [
+      "so",
+      "nacional",
+      3
+     ],
+     [
+      "so",
+      "seguir",
+      3
+     ],
+     [
+      "sair",
+      "acompanhar",
+      3
+     ],
+     [
+      "sair",
+      "alckmin",
+      3
+     ],
+     [
+      "sair",
+      "bandeira",
+      8
+     ],
+     [
+      "sair",
+      "chao",
+      6
+     ],
+     [
+      "sair",
+      "estar",
+      3
+     ],
+     [
+      "sair",
+      "frente",
+      3
+     ],
+     [
+      "sair",
+      "geraldo",
+      3
+     ],
+     [
+      "sair",
+      "jogar",
+      6
+     ],
+     [
+      "sair",
+      "lula",
+      8
+     ],
+     [
+      "sair",
+      "posar",
+      3
+     ],
+     [
+      "sair",
+      "presidente",
+      3
+     ],
+     [
+      "sair",
+      "vice",
+      3
+     ],
+     [
+      "sair",
+      "votar",
+      5
+     ],
+     [
+      "sair",
+      "amassar",
+      6
+     ],
+     [
+      "sair",
+      "brasileiro",
+      3
+     ],
+     [
+      "sair",
+      "dia",
+      3
+     ],
+     [
+      "sair",
+      "urna",
+      3
+     ],
+     [
+      "sair",
+      "bolsonaro",
+      4
+     ],
+     [
+      "historia",
+      "amassar",
+      3
+     ],
+     [
+      "historia",
+      "bandeira",
+      7
+     ],
+     [
+      "historia",
+      "brasileiro",
+      3
+     ],
+     [
+      "historia",
+      "chao",
+      3
+     ],
+     [
+      "historia",
+      "lado",
+      3
+     ],
+     [
+      "historia",
+      "lula",
+      8
+     ],
+     [
+      "historia",
+      "maior",
+      4
+     ],
+     [
+      "historia",
+      "merecer",
+      4
+     ],
+     [
+      "historia",
+      "nacional",
+      3
+     ],
+     [
+      "historia",
+      "pais",
+      3
+     ],
+     [
+      "historia",
+      "respeito",
+      4
+     ],
+     [
+      "historia",
+      "simbolo",
+      4
+     ],
+     [
+      "historia",
+      "mostrar",
+      3
+     ],
+     [
+      "historia",
+      "presidente",
+      3
+     ],
+     [
+      "historia",
+      "democracia",
+      3
+     ],
+     [
+      "foto",
+      "acompanhar",
+      6
+     ],
+     [
+      "foto",
+      "alckmin",
+      11
+     ],
+     [
+      "foto",
+      "bandeira",
+      21
+     ],
+     [
+      "foto",
+      "bernardo",
+      7
+     ],
+     [
+      "foto",
+      "campo",
+      7
+     ],
+     [
+      "foto",
+      "candidato",
+      4
+     ],
+     [
+      "foto",
+      "chao",
+      15
+     ],
+     [
+      "foto",
+      "circular",
+      6
+     ],
+     [
+      "foto",
+      "domingo",
+      10
+     ],
+     [
+      "foto",
+      "fotografo",
+      5
+     ],
+     [
+      "foto",
+      "frente",
+      4
+     ],
+     [
+      "foto",
+      "geraldo",
+      8
+     ],
+     [
+      "foto",
+      "imagem",
+      9
+     ],
+     [
+      "foto",
+      "jogar",
+      16
+     ],
+     [
+      "foto",
+      "lado",
+      8
+     ],
+     [
+      "foto",
+      "lula",
+      21
+     ],
+     [
+      "foto",
+      "mao",
+      3
+     ],
+     [
+      "foto",
+      "mostrar",
+      9
+     ],
+     [
+      "foto",
+      "pessoa",
+      3
+     ],
+     [
+      "foto",
+      "posar",
+      9
+     ],
+     [
+      "foto",
+      "presidente",
+      11
+     ],
+     [
+      "foto",
+      "pt",
+      4
+     ],
+     [
+      "foto",
+      "social",
+      10
+     ],
+     [
+      "foto",
+      "sp",
+      6
+     ],
+     [
+      "foto",
+      "vice",
+      6
+     ],
+     [
+      "foto",
+      "votar",
+      10
+     ],
+     [
+      "foto",
+      "amassar",
+      10
+     ],
+     [
+      "foto",
+      "video",
+      10
+     ],
+     [
+      "foto",
+      "amassado",
+      4
+     ],
+     [
+      "foto",
+      "cena",
+      7
+     ],
+     [
+      "foto",
+      "inacio",
+      5
+     ],
+     [
+      "foto",
+      "luiz",
+      5
+     ],
+     [
+      "foto",
+      "silva",
+      5
+     ],
+     [
+      "foto",
+      "nacional",
+      7
+     ],
+     [
+      "foto",
+      "simbolo",
+      7
+     ],
+     [
+      "foto",
+      "votacao",
+      5
+     ],
+     [
+      "foto",
+      "brasileiro",
+      5
+     ],
+     [
+      "foto",
+      "maior",
+      3
+     ],
+     [
+      "foto",
+      "pais",
+      6
+     ],
+     [
+      "foto",
+      "respeito",
+      4
+     ],
+     [
+      "foto",
+      "urna",
+      3
+     ],
+     [
+      "foto",
+      "dia",
+      4
+     ],
+     [
+      "foto",
+      "deixar",
+      3
+     ],
+     [
+      "foto",
+      "passar",
+      3
+     ],
+     [
+      "foto",
+      "seguir",
+      4
+     ],
+     [
+      "foto",
+      "dar",
+      4
+     ],
+     [
+      "foto",
+      "dizer",
+      3
+     ],
+     [
+      "foto",
+      "entregar",
+      3
+     ],
+     [
+      "foto",
+      "turno",
+      3
+     ],
+     [
+      "circular",
+      "acompanhar",
+      3
+     ],
+     [
+      "circular",
+      "alckmin",
+      6
+     ],
+     [
+      "circular",
+      "bandeira",
+      8
+     ],
+     [
+      "circular",
+      "bernardo",
+      4
+     ],
+     [
+      "circular",
+      "campo",
+      4
+     ],
+     [
+      "circular",
+      "candidato",
+      3
+     ],
+     [
+      "circular",
+      "chao",
+      7
+     ],
+     [
+      "circular",
+      "domingo",
+      7
+     ],
+     [
+      "circular",
+      "estar",
+      3
+     ],
+     [
+      "circular",
+      "fotografo",
+      4
+     ],
+     [
+      "circular",
+      "geraldo",
+      5
+     ],
+     [
+      "circular",
+      "imagem",
+      8
+     ],
+     [
+      "circular",
+      "jogar",
+      6
+     ],
+     [
+      "circular",
+      "lado",
+      3
+     ],
+     [
+      "circular",
+      "lula",
+      8
+     ],
+     [
+      "circular",
+      "mostrar",
+      6
+     ],
+     [
+      "circular",
+      "posar",
+      4
+     ],
+     [
+      "circular",
+      "presidente",
+      7
+     ],
+     [
+      "circular",
+      "pt",
+      3
+     ],
+     [
+      "circular",
+      "social",
+      7
+     ],
+     [
+      "circular",
+      "sp",
+      3
+     ],
+     [
+      "circular",
+      "vice",
+      4
+     ],
+     [
+      "circular",
+      "votar",
+      6
+     ],
+     [
+      "circular",
+      "amassado",
+      3
+     ],
+     [
+      "circular",
+      "cena",
+      3
+     ],
+     [
+      "circular",
+      "inacio",
+      4
+     ],
+     [
+      "circular",
+      "luiz",
+      4
+     ],
+     [
+      "circular",
+      "silva",
+      4
+     ],
+     [
+      "circular",
+      "video",
+      6
+     ],
+     [
+      "circular",
+      "deixar",
+      3
+     ],
+     [
+      "circular",
+      "nacional",
+      3
+     ],
+     [
+      "circular",
+      "simbolo",
+      3
+     ],
+     [
+      "circular",
+      "voto",
+      3
+     ],
+     [
+      "jogar",
+      "amassar",
+      65
+     ],
+     [
+      "jogar",
+      "bandeira",
+      74
+     ],
+     [
+      "jogar",
+      "chao",
+      68
+     ],
+     [
+      "jogar",
+      "lula",
+      69
+     ],
+     [
+      "jogar",
+      "lixo",
+      8
+     ],
+     [
+      "jogar",
+      "defender",
+      5
+     ],
+     [
+      "jogar",
+      "estar",
+      7
+     ],
+     [
+      "jogar",
+      "fossar",
+      7
+     ],
+     [
+      "jogar",
+      "pais",
+      12
+     ],
+     [
+      "jogar",
+      "proprio",
+      4
+     ],
+     [
+      "jogar",
+      "acompanhar",
+      7
+     ],
+     [
+      "jogar",
+      "alckmin",
+      13
+     ],
+     [
+      "jogar",
+      "bernardo",
+      6
+     ],
+     [
+      "jogar",
+      "campo",
+      6
+     ],
+     [
+      "jogar",
+      "candidato",
+      4
+     ],
+     [
+      "jogar",
+      "domingo",
+      8
+     ],
+     [
+      "jogar",
+      "fotografo",
+      11
+     ],
+     [
+      "jogar",
+      "frente",
+      6
+     ],
+     [
+      "jogar",
+      "geraldo",
+      10
+     ],
+     [
+      "jogar",
+      "imagem",
+      10
+     ],
+     [
+      "jogar",
+      "lado",
+      8
+     ],
+     [
+      "jogar",
+      "mao",
+      7
+     ],
+     [
+      "jogar",
+      "mostrar",
+      11
+     ],
+     [
+      "jogar",
+      "pessoa",
+      6
+     ],
+     [
+      "jogar",
+      "posar",
+      8
+     ],
+     [
+      "jogar",
+      "presidente",
+      15
+     ],
+     [
+      "jogar",
+      "pt",
+      9
+     ],
+     [
+      "jogar",
+      "social",
+      10
+     ],
+     [
+      "jogar",
+      "sp",
+      5
+     ],
+     [
+      "jogar",
+      "vice",
+      8
+     ],
+     [
+      "jogar",
+      "votar",
+      22
+     ],
+     [
+      "jogar",
+      "video",
+      16
+     ],
+     [
+      "jogar",
+      "brasileiro",
+      14
+     ],
+     [
+      "jogar",
+      "cena",
+      6
+     ],
+     [
+      "jogar",
+      "nacional",
+      12
+     ],
+     [
+      "jogar",
+      "simbolo",
+      13
+     ],
+     [
+      "jogar",
+      "querer",
+      8
+     ],
+     [
+      "jogar",
+      "respeito",
+      8
+     ],
+     [
+      "jogar",
+      "deixar",
+      7
+     ],
+     [
+      "jogar",
+      "dizer",
+      5
+     ],
+     [
+      "jogar",
+      "maior",
+      6
+     ],
+     [
+      "jogar",
+      "merecer",
+      4
+     ],
+     [
+      "jogar",
+      "urna",
+      5
+     ],
+     [
+      "jogar",
+      "dia",
+      7
+     ],
+     [
+      "jogar",
+      "esquerdo",
+      6
+     ],
+     [
+      "jogar",
+      "votacao",
+      6
+     ],
+     [
+      "jogar",
+      "cara",
+      5
+     ],
+     [
+      "jogar",
+      "seguir",
+      6
+     ],
+     [
+      "jogar",
+      "inacio",
+      5
+     ],
+     [
+      "jogar",
+      "luiz",
+      5
+     ],
+     [
+      "jogar",
+      "silva",
+      5
+     ],
+     [
+      "jogar",
+      "dar",
+      10
+     ],
+     [
+      "jogar",
+      "voto",
+      4
+     ],
+     [
+      "jogar",
+      "turno",
+      8
+     ],
+     [
+      "jogar",
+      "entregar",
+      10
+     ],
+     [
+      "jogar",
+      "direito",
+      3
+     ],
+     [
+      "jogar",
+      "politica",
+      3
+     ],
+     [
+      "jogar",
+      "bolsonaro",
+      3
+     ],
+     [
+      "sp",
+      "acompanhar",
+      3
+     ],
+     [
+      "sp",
+      "alckmin",
+      5
+     ],
+     [
+      "sp",
+      "bandeira",
+      8
+     ],
+     [
+      "sp",
+      "bernardo",
+      8
+     ],
+     [
+      "sp",
+      "campo",
+      8
+     ],
+     [
+      "sp",
+      "candidato",
+      4
+     ],
+     [
+      "sp",
+      "chao",
+      8
+     ],
+     [
+      "sp",
+      "domingo",
+      6
+     ],
+     [
+      "sp",
+      "fotografo",
+      4
+     ],
+     [
+      "sp",
+      "geraldo",
+      5
+     ],
+     [
+      "sp",
+      "imagem",
+      6
+     ],
+     [
+      "sp",
+      "lado",
+      6
+     ],
+     [
+      "sp",
+      "lula",
+      8
+     ],
+     [
+      "sp",
+      "mao",
+      3
+     ],
+     [
+      "sp",
+      "mostrar",
+      6
+     ],
+     [
+      "sp",
+      "posar",
+      6
+     ],
+     [
+      "sp",
+      "presidente",
+      7
+     ],
+     [
+      "sp",
+      "pt",
+      3
+     ],
+     [
+      "sp",
+      "social",
+      5
+     ],
+     [
+      "sp",
+      "vice",
+      5
+     ],
+     [
+      "sp",
+      "votar",
+      8
+     ],
+     [
+      "sp",
+      "amassado",
+      3
+     ],
+     [
+      "sp",
+      "cena",
+      4
+     ],
+     [
+      "sp",
+      "inacio",
+      4
+     ],
+     [
+      "sp",
+      "luiz",
+      4
+     ],
+     [
+      "sp",
+      "silva",
+      4
+     ],
+     [
+      "sp",
+      "video",
+      4
+     ],
+     [
+      "sp",
+      "amassar",
+      3
+     ],
+     [
+      "sp",
+      "nacional",
+      3
+     ],
+     [
+      "sp",
+      "simbolo",
+      3
+     ],
+     [
+      "sp",
+      "votacao",
+      4
+     ],
+     [
+      "domingo",
+      "acompanhar",
+      5
+     ],
+     [
+      "domingo",
+      "alckmin",
+      8
+     ],
+     [
+      "domingo",
+      "bandeira",
+      20
+     ],
+     [
+      "domingo",
+      "bernardo",
+      7
+     ],
+     [
+      "domingo",
+      "campo",
+      7
+     ],
+     [
+      "domingo",
+      "candidato",
+      4
+     ],
+     [
+      "domingo",
+      "chao",
+      10
+     ],
+     [
+      "domingo",
+      "estar",
+      6
+     ],
+     [
+      "domingo",
+      "fotografo",
+      5
+     ],
+     [
+      "domingo",
+      "frente",
+      4
+     ],
+     [
+      "domingo",
+      "geraldo",
+      6
+     ],
+     [
+      "domingo",
+      "imagem",
+      14
+     ],
+     [
+      "domingo",
+      "lado",
+      7
+     ],
+     [
+      "domingo",
+      "lula",
+      21
+     ],
+     [
+      "domingo",
+      "mao",
+      3
+     ],
+     [
+      "domingo",
+      "mostrar",
+      14
+     ],
+     [
+      "domingo",
+      "paulo",
+      7
+     ],
+     [
+      "domingo",
+      "pessoa",
+      3
+     ],
+     [
+      "domingo",
+      "posar",
+      6
+     ],
+     [
+      "domingo",
+      "presidente",
+      16
+     ],
+     [
+      "domingo",
+      "pt",
+      6
+     ],
+     [
+      "domingo",
+      "social",
+      13
+     ],
+     [
+      "domingo",
+      "vice",
+      5
+     ],
+     [
+      "domingo",
+      "votar",
+      10
+     ],
+     [
+      "domingo",
+      "amassado",
+      4
+     ],
+     [
+      "domingo",
+      "cena",
+      7
+     ],
+     [
+      "domingo",
+      "inacio",
+      9
+     ],
+     [
+      "domingo",
+      "luiz",
+      9
+     ],
+     [
+      "domingo",
+      "momento",
+      3
+     ],
+     [
+      "domingo",
+      "silva",
+      9
+     ],
+     [
+      "domingo",
+      "video",
+      10
+     ],
+     [
+      "domingo",
+      "amassar",
+      3
+     ],
+     [
+      "domingo",
+      "aparecer",
+      4
+     ],
+     [
+      "domingo",
+      "nacional",
+      8
+     ],
+     [
+      "domingo",
+      "proprio",
+      3
+     ],
+     [
+      "domingo",
+      "simbolo",
+      9
+     ],
+     [
+      "domingo",
+      "votacao",
+      4
+     ],
+     [
+      "domingo",
+      "deixar",
+      5
+     ],
+     [
+      "domingo",
+      "passar",
+      4
+     ],
+     [
+      "domingo",
+      "apoiador",
+      6
+     ],
+     [
+      "domingo",
+      "voto",
+      5
+     ],
+     [
+      "domingo",
+      "democracia",
+      7
+     ],
+     [
+      "domingo",
+      "dizer",
+      3
+     ],
+     [
+      "domingo",
+      "pais",
+      4
+     ],
+     [
+      "domingo",
+      "respeito",
+      3
+     ],
+     [
+      "domingo",
+      "dar",
+      3
+     ],
+     [
+      "domingo",
+      "entregar",
+      4
+     ],
+     [
+      "domingo",
+      "turno",
+      6
+     ],
+     [
+      "domingo",
+      "avenida",
+      7
+     ],
+     [
+      "domingo",
+      "direito",
+      3
+     ],
+     [
+      "domingo",
+      "ato",
+      5
+     ],
+     [
+      "domingo",
+      "manifestacao",
+      5
+     ],
+     [
+      "domingo",
+      "querer",
+      3
+     ],
+     [
+      "amassado",
+      "bandeira",
+      8
+     ],
+     [
+      "amassado",
+      "bernardo",
+      3
+     ],
+     [
+      "amassado",
+      "campo",
+      3
+     ],
+     [
+      "amassado",
+      "cena",
+      3
+     ],
+     [
+      "amassado",
+      "chao",
+      7
+     ],
+     [
+      "amassado",
+      "imagem",
+      5
+     ],
+     [
+      "amassado",
+      "inacio",
+      4
+     ],
+     [
+      "amassado",
+      "luiz",
+      4
+     ],
+     [
+      "amassado",
+      "lula",
+      7
+     ],
+     [
+      "amassado",
+      "momento",
+      5
+     ],
+     [
+      "amassado",
+      "mostrar",
+      5
+     ],
+     [
+      "amassado",
+      "presidente",
+      7
+     ],
+     [
+      "amassado",
+      "silva",
+      4
+     ],
+     [
+      "amassado",
+      "social",
+      5
+     ],
+     [
+      "amassado",
+      "video",
+      6
+     ],
+     [
+      "amassado",
+      "votar",
+      4
+     ],
+     [
+      "amassado",
+      "nacional",
+      3
+     ],
+     [
+      "amassado",
+      "pessoa",
+      3
+     ],
+     [
+      "amassado",
+      "simbolo",
+      3
+     ],
+     [
+      "amassado",
+      "aparecer",
+      3
+     ],
+     [
+      "amassado",
+      "deixar",
+      4
+     ],
+     [
+      "amassado",
+      "alckmin",
+      3
+     ],
+     [
+      "amassado",
+      "geraldo",
+      3
+     ],
+     [
+      "amassado",
+      "vice",
+      3
+     ],
+     [
+      "pais",
+      "amassar",
+      14
+     ],
+     [
+      "pais",
+      "bandeira",
+      22
+     ],
+     [
+      "pais",
+      "chao",
+      13
+     ],
+     [
+      "pais",
+      "defender",
+      6
+     ],
+     [
+      "pais",
+      "estar",
+      3
+     ],
+     [
+      "pais",
+      "fossar",
+      3
+     ],
+     [
+      "pais",
+      "lula",
+      22
+     ],
+     [
+      "pais",
+      "proprio",
+      5
+     ],
+     [
+      "pais",
+      "respeito",
+      7
+     ],
+     [
+      "pais",
+      "votar",
+      4
+     ],
+     [
+      "pais",
+      "querer",
+      5
+     ],
+     [
+      "pais",
+      "alckmin",
+      4
+     ],
+     [
+      "pais",
+      "brasileiro",
+      9
+     ],
+     [
+      "pais",
+      "cena",
+      5
+     ],
+     [
+      "pais",
+      "lado",
+      5
+     ],
+     [
+      "pais",
+      "maior",
+      9
+     ],
+     [
+      "pais",
+      "nacional",
+      9
+     ],
+     [
+      "pais",
+      "simbolo",
+      7
+     ],
+     [
+      "pais",
+      "urna",
+      3
+     ],
+     [
+      "pais",
+      "dia",
+      4
+     ],
+     [
+      "pais",
+      "esquerdo",
+      3
+     ],
+     [
+      "pais",
+      "presidente",
+      7
+     ],
+     [
+      "pais",
+      "social",
+      5
+     ],
+     [
+      "pais",
+      "votacao",
+      4
+     ],
+     [
+      "pais",
+      "democracia",
+      6
+     ],
+     [
+      "pais",
+      "dizer",
+      3
+     ],
+     [
+      "pais",
+      "imagem",
+      3
+     ],
+     [
+      "pais",
+      "video",
+      6
+     ],
+     [
+      "pais",
+      "dar",
+      3
+     ],
+     [
+      "pais",
+      "apoiador",
+      3
+     ],
+     [
+      "pais",
+      "ato",
+      3
+     ],
+     [
+      "pais",
+      "momento",
+      3
+     ],
+     [
+      "pais",
+      "mostrar",
+      3
+     ],
+     [
+      "pais",
+      "passar",
+      3
+     ],
+     [
+      "pais",
+      "pt",
+      3
+     ],
+     [
+      "pais",
+      "deixar",
+      4
+     ],
+     [
+      "pais",
+      "turno",
+      3
+     ],
+     [
+      "pais",
+      "paulo",
+      3
+     ],
+     [
+      "lixo",
+      "amassar",
+      8
+     ],
+     [
+      "lixo",
+      "bandeira",
+      10
+     ],
+     [
+      "lixo",
+      "chao",
+      7
+     ],
+     [
+      "lixo",
+      "lula",
+      8
+     ],
+     [
+      "lixo",
+      "brasileiro",
+      5
+     ],
+     [
+      "lixo",
+      "fossar",
+      4
+     ],
+     [
+      "lixo",
+      "votar",
+      4
+     ],
+     [
+      "lixo",
+      "cara",
+      3
+     ],
+     [
+      "lixo",
+      "dar",
+      3
+     ],
+     [
+      "lixo",
+      "aparecer",
+      3
+     ],
+     [
+      "bandeira",
+      "amassar",
+      81
+     ],
+     [
+      "bandeira",
+      "chao",
+      77
+     ],
+     [
+      "bandeira",
+      "lula",
+      127
+     ],
+     [
+      "bandeira",
+      "alckmin",
+      17
+     ],
+     [
+      "bandeira",
+      "imagem",
+      25
+     ],
+     [
+      "bandeira",
+      "maior",
+      14
+     ],
+     [
+      "bandeira",
+      "merecer",
+      8
+     ],
+     [
+      "bandeira",
+      "mostrar",
+      25
+     ],
+     [
+      "bandeira",
+      "posar",
+      11
+     ],
+     [
+      "bandeira",
+      "proprio",
+      11
+     ],
+     [
+      "bandeira",
+      "simbolo",
+      26
+     ],
+     [
+      "bandeira",
+      "video",
+      27
+     ],
+     [
+      "bandeira",
+      "defender",
+      11
+     ],
+     [
+      "bandeira",
+      "estar",
+      13
+     ],
+     [
+      "bandeira",
+      "fossar",
+      8
+     ],
+     [
+      "bandeira",
+      "acompanhar",
+      11
+     ],
+     [
+      "bandeira",
+      "bernardo",
+      9
+     ],
+     [
+      "bandeira",
+      "campo",
+      10
+     ],
+     [
+      "bandeira",
+      "candidato",
+      9
+     ],
+     [
+      "bandeira",
+      "fotografo",
+      11
+     ],
+     [
+      "bandeira",
+      "frente",
+      8
+     ],
+     [
+      "bandeira",
+      "geraldo",
+      12
+     ],
+     [
+      "bandeira",
+      "lado",
+      14
+     ],
+     [
+      "bandeira",
+      "mao",
+      10
+     ],
+     [
+      "bandeira",
+      "paulo",
+      9
+     ],
+     [
+      "bandeira",
+      "pessoa",
+      8
+     ],
+     [
+      "bandeira",
+      "presidente",
+      37
+     ],
+     [
+      "bandeira",
+      "pt",
+      18
+     ],
+     [
+      "bandeira",
+      "social",
+      25
+     ],
+     [
+      "bandeira",
+      "vice",
+      11
+     ],
+     [
+      "bandeira",
+      "votar",
+      31
+     ],
+     [
+      "bandeira",
+      "cena",
+      15
+     ],
+     [
+      "bandeira",
+      "brasileiro",
+      26
+     ],
+     [
+      "bandeira",
+      "nacional",
+      23
+     ],
+     [
+      "bandeira",
+      "inacio",
+      12
+     ],
+     [
+      "bandeira",
+      "luiz",
+      12
+     ],
+     [
+      "bandeira",
+      "momento",
+      8
+     ],
+     [
+      "bandeira",
+      "silva",
+      13
+     ],
+     [
+      "bandeira",
+      "querer",
+      15
+     ],
+     [
+      "bandeira",
+      "respeito",
+      16
+     ],
+     [
+      "bandeira",
+      "deixar",
+      13
+     ],
+     [
+      "bandeira",
+      "dizer",
+      10
+     ],
+     [
+      "bandeira",
+      "aparecer",
+      10
+     ],
+     [
+      "bandeira",
+      "votacao",
+      10
+     ],
+     [
+      "bandeira",
+      "urna",
+      8
+     ],
+     [
+      "bandeira",
+      "dia",
+      15
+     ],
+     [
+      "bandeira",
+      "esquerdo",
+      9
+     ],
+     [
+      "bandeira",
+      "cara",
+      8
+     ],
+     [
+      "bandeira",
+      "seguir",
+      14
+     ],
+     [
+      "bandeira",
+      "passar",
+      7
+     ],
+     [
+      "bandeira",
+      "apoiador",
+      13
+     ],
+     [
+      "bandeira",
+      "voto",
+      11
+     ],
+     [
+      "bandeira",
+      "dar",
+      13
+     ],
+     [
+      "bandeira",
+      "manifestacao",
+      9
+     ],
+     [
+      "bandeira",
+      "democracia",
+      13
+     ],
+     [
+      "bandeira",
+      "entregar",
+      13
+     ],
+     [
+      "bandeira",
+      "ato",
+      14
+     ],
+     [
+      "bandeira",
+      "turno",
+      17
+     ],
+     [
+      "bandeira",
+      "politica",
+      8
+     ],
+     [
+      "bandeira",
+      "direito",
+      13
+     ],
+     [
+      "bandeira",
+      "bolsonaro",
+      9
+     ],
+     [
+      "bandeira",
+      "avenida",
+      10
+     ],
+     [
+      "vice",
+      "acompanhar",
+      5
+     ],
+     [
+      "vice",
+      "alckmin",
+      10
+     ],
+     [
+      "vice",
+      "bernardo",
+      5
+     ],
+     [
+      "vice",
+      "campo",
+      5
+     ],
+     [
+      "vice",
+      "candidato",
+      4
+     ],
+     [
+      "vice",
+      "chao",
+      9
+     ],
+     [
+      "vice",
+      "fotografo",
+      4
+     ],
+     [
+      "vice",
+      "geraldo",
+      10
+     ],
+     [
+      "vice",
+      "imagem",
+      6
+     ],
+     [
+      "vice",
+      "lado",
+      5
+     ],
+     [
+      "vice",
+      "lula",
+      11
+     ],
+     [
+      "vice",
+      "mao",
+      4
+     ],
+     [
+      "vice",
+      "mostrar",
+      6
+     ],
+     [
+      "vice",
+      "paulo",
+      3
+     ],
+     [
+      "vice",
+      "pessoa",
+      3
+     ],
+     [
+      "vice",
+      "posar",
+      5
+     ],
+     [
+      "vice",
+      "presidente",
+      10
+     ],
+     [
+      "vice",
+      "pt",
+      5
+     ],
+     [
+      "vice",
+      "social",
+      8
+     ],
+     [
+      "vice",
+      "votar",
+      6
+     ],
+     [
+      "vice",
+      "amassar",
+      3
+     ],
+     [
+      "vice",
+      "brasileiro",
+      3
+     ],
+     [
+      "vice",
+      "dia",
+      3
+     ],
+     [
+      "vice",
+      "nacional",
+      4
+     ],
+     [
+      "vice",
+      "simbolo",
+      3
+     ],
+     [
+      "vice",
+      "votacao",
+      4
+     ],
+     [
+      "vice",
+      "deixar",
+      4
+     ],
+     [
+      "vice",
+      "inacio",
+      4
+     ],
+     [
+      "vice",
+      "luiz",
+      4
+     ],
+     [
+      "vice",
+      "silva",
+      4
+     ],
+     [
+      "vice",
+      "video",
+      6
+     ],
+     [
+      "vice",
+      "apoiador",
+      3
+     ],
+     [
+      "vice",
+      "dar",
+      3
+     ],
+     [
+      "vice",
+      "turno",
+      5
+     ],
+     [
+      "vice",
+      "voto",
+      3
+     ],
+     [
+      "dar",
+      "amassar",
+      9
+     ],
+     [
+      "dar",
+      "lula",
+      13
+     ]
+    ],
+    "total_nos": 173,
+    "total_arestas": 3154,
+    "comunidades": 3
+   },
+   "gexf": "rede_palavras_comentarios_posts.gexf",
+   "o_que_e": "palavras que aparecem juntas no mesmo comentário (3+ vezes); cor = comunidade"
+  },
+  "classes": {
+   "comentarios": 171,
+   "classificados": 131,
+   "pct_classificados": 76.6,
+   "classes": [
+    {
+     "classe": 1,
+     "segmentos": 19,
+     "pct": 14.5,
+     "formas": [
+      [
+       "bernardo",
+       57.0
+      ],
+      [
+       "sp",
+       50.2
+      ],
+      [
+       "circular",
+       50.2
+      ],
+      [
+       "campo",
+       49.8
+      ],
+      [
+       "votar",
+       48.8
+      ],
+      [
+       "imagem",
+       45.5
+      ],
+      [
+       "alckmin",
+       39.7
+      ],
+      [
+       "geraldo",
+       39.0
+      ],
+      [
+       "posar",
+       37.5
+      ],
+      [
+       "angulo",
+       37.1
+      ],
+      [
+       "fotografo",
+       36.6
+      ],
+      [
+       "amassado",
+       36.6
+      ],
+      [
+       "vice",
+       32.8
+      ],
+      [
+       "rede",
+       31.9
+      ],
+      [
+       "social",
+       31.9
+      ]
+     ],
+     "por_ano": {
+      "2026": 19
+     }
+    },
+    {
+     "classe": 2,
+     "segmentos": 29,
+     "pct": 22.1,
+     "formas": [
+      [
+       "paulista",
+       46.5
+      ],
+      [
+       "avenida",
+       42.2
+      ],
+      [
+       "ato",
+       32.7
+      ],
+      [
+       "estado",
+       26.0
+      ],
+      [
+       "unido",
+       26.0
+      ],
+      [
+       "apoiador",
+       25.1
+      ],
+      [
+       "participar",
+       22.1
+      ],
+      [
+       "reunir",
+       22.1
+      ],
+      [
+       "campanha",
+       21.1
+      ],
+      [
+       "manifestacao",
+       21.1
+      ],
+      [
+       "manifestante",
+       18.3
+      ],
+      [
+       "palestina",
+       18.3
+      ],
+      [
+       "mobilizacao",
+       17.3
+      ],
+      [
+       "direito",
+       15.2
+      ],
+      [
+       "metro",
+       14.5
+      ]
+     ],
+     "por_ano": {
+      "2026": 29
+     }
+    },
+    {
+     "classe": 3,
+     "segmentos": 45,
+     "pct": 34.4,
+     "formas": [
+      [
+       "amassar",
+       37.9
+      ],
+      [
+       "jogar",
+       17.7
+      ],
+      [
+       "chao",
+       9.5
+      ],
+      [
+       "viralizar",
+       3.9
+      ]
+     ],
+     "por_ano": {
+      "2026": 45
+     }
+    },
+    {
+     "classe": 4,
+     "segmentos": 11,
+     "pct": 8.4,
+     "formas": [
+      [
+       "verde",
+       45.9
+      ],
+      [
+       "amarelo",
+       45.9
+      ],
+      [
+       "patriota",
+       27.8
+      ],
+      [
+       "hipocrita",
+       22.2
+      ],
+      [
+       "pisar",
+       22.2
+      ],
+      [
+       "esquerdo",
+       16.3
+      ],
+      [
+       "vermelho",
+       14.1
+      ],
+      [
+       "flavio",
+       14.1
+      ],
+      [
+       "fogo",
+       13.6
+      ],
+      [
+       "vergonha",
+       13.6
+      ],
+      [
+       "terminar",
+       11.0
+      ],
+      [
+       "esquerdista",
+       11.0
+      ],
+      [
+       "lugar",
+       11.0
+      ],
+      [
+       "brasileiro",
+       9.8
+      ],
+      [
+       "bolsonaro",
+       9.4
+      ]
+     ],
+     "por_ano": {
+      "2026": 11
+     }
+    },
+    {
+     "classe": 5,
+     "segmentos": 12,
+     "pct": 9.2,
+     "formas": [
+      [
+       "maior",
+       43.4
+      ],
+      [
+       "patriotismo",
+       40.9
+      ],
+      [
+       "pais",
+       27.0
+      ],
+      [
+       "atitude",
+       25.0
+      ],
+      [
+       "nacao",
+       21.5
+      ],
+      [
+       "patria",
+       20.5
+      ],
+      [
+       "cidadao",
+       20.1
+      ],
+      [
+       "comunista",
+       20.1
+      ],
+      [
+       "patriotico",
+       20.1
+      ],
+      [
+       "simples",
+       20.1
+      ],
+      [
+       "stf",
+       20.1
+      ],
+      [
+       "deus",
+       20.1
+      ],
+      [
+       "punir",
+       20.1
+      ],
+      [
+       "vergonhoso",
+       20.1
+      ],
+      [
+       "esperar",
+       20.1
+      ]
+     ],
+     "por_ano": {
+      "2026": 12
+     }
+    },
+    {
+     "classe": 6,
+     "segmentos": 15,
+     "pct": 11.5,
+     "formas": [
+      [
+       "lutar",
+       31.9
+      ],
+      [
+       "futuro",
+       24.1
+      ],
+      [
+       "publico",
+       24.1
+      ],
+      [
+       "vontade",
+       23.7
+      ],
+      [
+       "vida",
+       23.7
+      ],
+      [
+       "orgulho",
+       23.7
+      ],
+      [
+       "cara",
+       23.7
+      ],
+      [
+       "melhor",
+       23.7
+      ],
+      [
+       "aprender",
+       23.7
+      ],
+      [
+       "bora",
+       18.9
+      ],
+      [
+       "proximo",
+       16.4
+      ],
+      [
+       "voz",
+       16.4
+      ],
+      [
+       "motivo",
+       15.7
+      ],
+      [
+       "significar",
+       15.7
+      ],
+      [
+       "olho",
+       15.7
+      ]
+     ],
+     "por_ano": {
+      "2026": 15
+     }
+    }
+   ],
+   "arvore": [
+    {
+     "id": 0,
+     "n": 164,
+     "filhos": [
+      1,
+      2
+     ],
+     "chi2": 1716.9,
+     "classe": null
+    },
+    {
+     "id": 1,
+     "n": 162,
+     "filhos": [
+      3,
+      4
+     ],
+     "chi2": 1638.0,
+     "classe": null
+    },
+    {
+     "id": 2,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 3,
+     "n": 161,
+     "filhos": [
+      5,
+      6
+     ],
+     "chi2": 1525.2,
+     "classe": null
+    },
+    {
+     "id": 4,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 5,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 6,
+     "n": 156,
+     "filhos": [
+      7,
+      8
+     ],
+     "chi2": 1342.2,
+     "classe": null
+    },
+    {
+     "id": 7,
+     "n": 48,
+     "filhos": [
+      31,
+      32
+     ],
+     "chi2": 888.1,
+     "classe": null
+    },
+    {
+     "id": 8,
+     "n": 108,
+     "filhos": [
+      9,
+      10
+     ],
+     "chi2": 700.4,
+     "classe": null
+    },
+    {
+     "id": 9,
+     "n": 93,
+     "filhos": [
+      11,
+      12
+     ],
+     "chi2": 507.3,
+     "classe": null
+    },
+    {
+     "id": 10,
+     "n": 15,
+     "filhos": null,
+     "classe": 6
+    },
+    {
+     "id": 11,
+     "n": 91,
+     "filhos": [
+      13,
+      14
+     ],
+     "chi2": 462.0,
+     "classe": null
+    },
+    {
+     "id": 12,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 13,
+     "n": 79,
+     "filhos": [
+      15,
+      16
+     ],
+     "chi2": 331.1,
+     "classe": null
+    },
+    {
+     "id": 14,
+     "n": 12,
+     "filhos": null,
+     "classe": 5
+    },
+    {
+     "id": 15,
+     "n": 3,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 16,
+     "n": 76,
+     "filhos": [
+      17,
+      18
+     ],
+     "chi2": 306.9,
+     "classe": null
+    },
+    {
+     "id": 17,
+     "n": 65,
+     "filhos": [
+      19,
+      20
+     ],
+     "chi2": 239.1,
+     "classe": null
+    },
+    {
+     "id": 18,
+     "n": 11,
+     "filhos": null,
+     "classe": 4
+    },
+    {
+     "id": 19,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 20,
+     "n": 61,
+     "filhos": [
+      21,
+      22
+     ],
+     "chi2": 191.8,
+     "classe": null
+    },
+    {
+     "id": 21,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 22,
+     "n": 60,
+     "filhos": [
+      23,
+      24
+     ],
+     "chi2": 180.6,
+     "classe": null
+    },
+    {
+     "id": 23,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 24,
+     "n": 56,
+     "filhos": [
+      25,
+      26
+     ],
+     "chi2": 154.7,
+     "classe": null
+    },
+    {
+     "id": 25,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 26,
+     "n": 51,
+     "filhos": [
+      27,
+      28
+     ],
+     "chi2": 136.0,
+     "classe": null
+    },
+    {
+     "id": 27,
+     "n": 50,
+     "filhos": [
+      29,
+      30
+     ],
+     "chi2": 127.4,
+     "classe": null
+    },
+    {
+     "id": 28,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 29,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 30,
+     "n": 45,
+     "filhos": null,
+     "classe": 3
+    },
+    {
+     "id": 31,
+     "n": 19,
+     "filhos": null,
+     "classe": 1
+    },
+    {
+     "id": 32,
+     "n": 29,
+     "filhos": null,
+     "classe": 2
+    }
+   ],
+   "min_classe": 10,
+   "escolha_classes": {
+    "classes_terminais": 6,
+    "tentativas": [
+     {
+      "classes_terminais": 6,
+      "aproveitamento_pct": 76.6
+     },
+     {
+      "classes_terminais": 5,
+      "aproveitamento_pct": 88.3
+     },
+     {
+      "classes_terminais": 4,
+      "aproveitamento_pct": 90.1
+     },
+     {
+      "classes_terminais": 3,
+      "aproveitamento_pct": 91.2
+     }
+    ],
+    "regra": "CHD com a regra do tutorial do IRaMuTeQ (Camargo & Justo, 2021, p. 31): começa com 10 classes terminais e, se a CHD não retiver 75% dos segmentos, muda o número de classes terminais e refaz. Regra fixa do Atlas, declarada antes de ver o resultado (01/11/2026): de 10 para baixo (10, 9, …, 3), a primeira partição com aproveitamento ≥ 75%; nenhuma → a de maior aproveitamento, marcada ⛔. Como as divisões são sempre as mesmas (a maior classe é dividida primeiro), as partições de 10 a 3 saem de uma só CHD."
+   },
+   "aproveitamento": {
+    "pct_classificados": 76.6,
+    "minimo_pct": 75.0,
+    "atinge_minimo": true,
+    "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
+    "regra": "10 classes terminais (padrão do IRaMuTeQ), reduzidas uma a uma até o aproveitamento chegar a 75% (tutorial do IRaMuTeQ, p. 31); classe mínima de 5% dos segmentos ativos (mín. 10); grupo menor que o mínimo fica não classificado; formas ativas: nomes, verbos, adjetivos e não reconhecidas (lematizadas pelo dicionário do IRaMuTeQ); frequência mínima 2; até 3.000 formas",
+    "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"
+   },
+   "variavel": null,
+   "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado.",
+   "amostra": {
+    "comentarios": 171,
+    "de": 171,
+    "semente": 42
+   }
+  },
+  "erro_redes": "KeyError: 'video_id'"
+ },
+ "universo": [
+  {
+   "rede": "instagram",
+   "termo": "#lulaamassabandeira",
+   "lidos_no_periodo": 0,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: Lula amassa bandeira",
+   "lidos_no_periodo": 42,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "instagram",
+   "termo": "reels: Lula bandeira amassada",
+   "lidos_no_periodo": 42,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "facebook",
+   "termo": "Lula amassa bandeira",
+   "lidos_no_periodo": 37,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "facebook",
+   "termo": "Lula amassou a bandeira",
+   "lidos_no_periodo": 59,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  }
+ ],
+ "pontos": [
+  [
+   "2026-10-04T15:07",
+   "facebook",
+   14,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T15:45",
+   "instagram",
+   113744,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T15:51",
+   "instagram",
+   4111,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:13",
+   "facebook",
+   9,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:13",
+   "instagram",
+   5954,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:17",
+   "instagram",
+   563403,
+   [
+    "desmentido_contexto",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:29",
+   "instagram",
+   288,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:36",
+   "instagram",
+   1547741,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:37",
+   "instagram",
+   126550,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:42",
+   "instagram",
+   2978,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:43",
+   "instagram",
+   4937399,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:44",
+   "facebook",
+   390,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:47",
+   "instagram",
+   77963,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:49",
+   "instagram",
+   121,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:50",
+   "instagram",
+   2866,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:58",
+   "instagram",
+   84,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:02",
+   "facebook",
+   317,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:03",
+   "instagram",
+   4003,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:04",
+   "facebook",
+   3508,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:10",
+   "facebook",
+   18,
+   [
+    "insulto_desumanizacao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:16",
+   "instagram",
+   1375,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:24",
+   "facebook",
+   36,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:24",
+   "facebook",
+   61,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:38",
+   "instagram",
+   18206,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T17:49",
+   "instagram",
+   6072,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:02",
+   "facebook",
+   98,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:12",
+   "facebook",
+   29,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:14",
+   "instagram",
+   90850,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:15",
+   "facebook",
+   4,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:19",
+   "instagram",
+   1050386,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:22",
+   "instagram",
+   3385,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:24",
+   "instagram",
+   1019301,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:24",
+   "facebook",
+   1,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:32",
+   "instagram",
+   374087,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:34",
+   "instagram",
+   1456,
+   [
+    "pede_punicao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:42",
+   "instagram",
+   1842,
+   [
+    "acusa_desrespeito_bandeira",
+    "desmentido_contexto",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:45",
+   "instagram",
+   1155,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T18:58",
+   "facebook",
+   22,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:01",
+   "instagram",
+   60201,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:01",
+   "facebook",
+   2,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:10",
+   "instagram",
+   579103,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:11",
+   "instagram",
+   928401,
+   [
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:12",
+   "facebook",
+   65,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:14",
+   "instagram",
+   40728,
+   [
+    "pede_punicao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:30",
+   "facebook",
+   518,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:31",
+   "instagram",
+   779,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:36",
+   "instagram",
+   733,
+   [
+    "acusa_desrespeito_bandeira",
+    "denuncia_desinformacao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:48",
+   "facebook",
+   126,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:48",
+   "facebook",
+   3,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:49",
+   "facebook",
+   1,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:54",
+   "instagram",
+   5479992,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T19:59",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T20:03",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T20:25",
+   "instagram",
+   15582,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T20:29",
+   "instagram",
+   373150,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T20:35",
+   "facebook",
+   10,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T20:42",
+   "instagram",
+   332332,
+   [
+    "acusa_desrespeito_bandeira",
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T20:43",
+   "facebook",
+   10,
+   [
+    "acusa_desrespeito_bandeira",
+    "denuncia_desinformacao",
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T20:53",
+   "instagram",
+   16691,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T21:17",
+   "instagram",
+   416430,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T21:24",
+   "facebook",
+   232,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T21:28",
+   "facebook",
+   28,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T21:36",
+   "instagram",
+   2644655,
+   [
+    "desmentido_contexto",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T21:44",
+   "instagram",
+   1456,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T21:54",
+   "facebook",
+   16,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T22:18",
+   "facebook",
+   5,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T22:27",
+   "facebook",
+   1,
+   [
+    "acusa_desrespeito_bandeira",
+    "desmentido_contexto",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T22:48",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T23:42",
+   "facebook",
+   2,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T00:24",
+   "facebook",
+   37,
+   [
+    "acusa_desrespeito_bandeira",
+    "pede_punicao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T00:37",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T01:34",
+   "facebook",
+   16,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T05:28",
+   "facebook",
+   55,
+   [
+    "acusa_desrespeito_bandeira",
+    "pede_punicao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T10:33",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T11:08",
+   "instagram",
+   313,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T11:42",
+   "facebook",
+   2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T12:00",
+   "instagram",
+   940,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T13:53",
+   "facebook",
+   18,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T14:21",
+   "facebook",
+   0,
+   [
+    "acusa_desrespeito_bandeira",
+    "chamado_voto",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T15:35",
+   "facebook",
+   3,
+   [
+    "acusa_desrespeito_bandeira",
+    "denuncia_desinformacao",
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T15:58",
+   "facebook",
+   5,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T16:10",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T18:20",
+   "facebook",
+   5,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T18:23",
+   "facebook",
+   3,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T18:34",
+   "facebook",
+   6,
+   [
+    "acusa_desrespeito_bandeira",
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T19:25",
+   "facebook",
+   33,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T19:48",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T23:53",
+   "instagram",
+   226,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T00:55",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T01:04",
+   "instagram",
+   91,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T02:24",
+   "instagram",
+   134525,
+   [
+    "acusa_desrespeito_bandeira",
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T13:01",
+   "facebook",
+   3361,
+   [
+    "acusa_desrespeito_bandeira",
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T14:04",
+   "facebook",
+   1148,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T14:51",
+   "instagram",
+   2480,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T17:01",
+   "facebook",
+   5,
+   [
+    "acusa_desrespeito_bandeira",
+    "desmentido_contexto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-06T19:57",
+   "facebook",
+   51,
+   [
+    "acusa_desrespeito_bandeira",
+    "denuncia_desinformacao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-07T11:21",
+   "facebook",
+   5,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-07T14:13",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-07T21:05",
+   "instagram",
+   2510185,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-07T23:34",
+   "facebook",
+   38,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-08T03:54",
+   "facebook",
+   18,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-08T15:55",
+   "facebook",
+   2,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-08T18:01",
+   "facebook",
+   13,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T15:53",
+   "facebook",
+   1,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T15:56",
+   "facebook",
+   1,
+   [
+    "acusa_desrespeito_bandeira",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-10T15:24",
+   "instagram",
+   1289828,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-10T15:52",
+   "facebook",
+   2,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T16:27",
+   "instagram",
+   1183817,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T18:32",
+   "instagram",
+   127396,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T19:09",
+   "instagram",
+   324763,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T19:31",
+   "instagram",
+   1683376,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T23:17",
+   "instagram",
+   434896,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T23:51",
+   "instagram",
+   298599,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T23:59",
+   "instagram",
+   217944,
+   [
+    "comparacao_inversao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-12T01:39",
+   "instagram",
+   54321,
+   [
+    "comparacao_inversao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-12T12:36",
+   "instagram",
+   323364,
+   [
+    "comparacao_inversao",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-12T20:33",
+   "facebook",
+   78,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-12T23:54",
+   "instagram",
+   278723,
+   [
+    "chamado_voto",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-15T11:00",
+   "facebook",
+   2130,
+   [
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-15T12:27",
+   "facebook",
+   3038,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-16T21:52",
+   "instagram",
+   82159,
+   [
+    "comparacao_inversao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-16T23:32",
+   "instagram",
+   866299,
+   [
+    "comparacao_inversao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T12:00",
+   "facebook",
+   54,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T12:00",
+   "facebook",
+   35,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T12:01",
+   "facebook",
+   223,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T12:05",
+   "facebook",
+   142,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T12:39",
+   "facebook",
+   24,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T13:10",
+   "facebook",
+   3,
+   [
+    "acusa_desrespeito_bandeira",
+    "chamado_voto",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T13:18",
+   "facebook",
+   26,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T13:25",
+   "facebook",
+   13,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T16:56",
+   "instagram",
+   96711,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T18:04",
+   "facebook",
+   45,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T19:13",
+   "facebook",
+   7,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T19:29",
+   "facebook",
+   10,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T20:01",
+   "facebook",
+   5,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T20:13",
+   "facebook",
+   71,
+   [
+    "acusa_desrespeito_bandeira",
+    "chamado_voto",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-17T23:53",
+   "facebook",
+   17,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-18T01:10",
+   "facebook",
+   39,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-18T11:08",
+   "facebook",
+   23,
+   [
+    "acusa_desrespeito_bandeira",
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-18T12:46",
+   "facebook",
+   7,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-18T17:54",
+   "facebook",
+   39,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-18T22:27",
+   "instagram",
+   222557,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T00:34",
+   "instagram",
+   1273223,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T22:46",
+   "instagram",
+   359976,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T00:09",
+   "instagram",
+   4523,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T00:27",
+   "instagram",
+   486,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T19:55",
+   "facebook",
+   12,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T15:20",
+   "facebook",
+   0,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T21:51",
+   "facebook",
+   1,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T05:03",
+   "instagram",
+   6098,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T10:47",
+   "instagram",
+   1645585,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T11:21",
+   "facebook",
+   7,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T15:48",
+   "facebook",
+   29,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:04",
+   "instagram",
+   1298283,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:33",
+   "instagram",
+   926574,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T20:51",
+   "facebook",
+   2,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T22:17",
+   "facebook",
+   65,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T00:09",
+   "instagram",
+   823028,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T00:19",
+   "instagram",
+   78852,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T01:05",
+   "instagram",
+   736687,
+   [
+    "chamado_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T01:35",
+   "instagram",
+   695061,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T04:29",
+   "instagram",
+   166926,
+   [
+    "ultraje_patriotico"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T15:26",
+   "facebook",
+   5,
+   [
+    "desmentido_contexto",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T00:04",
+   "facebook",
+   30,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T00:13",
+   "facebook",
+   389,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T02:55",
+   "instagram",
+   23483,
+   [
+    "comparacao_inversao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T03:21",
+   "facebook",
+   24,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T18:14",
+   "facebook",
+   30,
+   [
+    "acusa_desrespeito_bandeira"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-30T02:36",
+   "instagram",
+   118311,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-30T13:32",
+   "instagram",
+   1168382,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-30T16:53",
+   "instagram",
+   670876,
+   [],
+   null,
+   null
+  ]
+ ],
+ "nota": "Pré-codificação automática por indicadores (sugestão, não decisão); várias categorias por publicação; percentuais sobre as publicações lidas, não sobre o universo."
+}
