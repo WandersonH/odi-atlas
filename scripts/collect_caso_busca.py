@@ -152,6 +152,24 @@ CASOS = {
             "janela_noticias": "14d", "checagens": ["Brazil election 2026"], "arquivo_web": []},
     # 01/11 (18h26): #DeportTheBolsonaros × #BrasiliansStandWithFlavio: quanto veio do Brasil e quanto de outros países.
     # Trends no mundo inteiro (geo vazio), com o mapa por país em cada janela; YouTube sem região nem língua.
+    # 02/11 (01h38): janonismo — "Exército do Lula" (Janones) na eleição, repercussão no mundo e canais copiados em outros países
+    "026": {"variantes": ["Janones", "Exército do Lula", "André Janones"],
+            "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m", "today 12-m"], "geo_trends": "", "paises_trends": True,
+            "grupos_extra": {"janones_mundo": {"titulo": "\"Janones\" no mundo (interesse por país)", "termos": ["Janones"]},
+                             "janones_uf": {"titulo": "\"Janones\" por estado (Brasil)", "termos": ["Janones"], "geo": "BR"},
+                             "exercito_uf": {"titulo": "\"Exército do Lula\" por estado (Brasil)", "termos": ["Exército do Lula"], "geo": "BR"}},
+            "youtube": ["Exército do Lula Janones", "Janones WhatsApp canal", "Ejército de Lula Janones", "armée de Lula Janones WhatsApp",
+                        "Ejército del Peronismo WhatsApp", "La Fuerza de la Gente WhatsApp", "équipe de Mélenchon WhatsApp", "Janones general Lula"],
+            "youtube_mundo": True,
+            "desde_yt": "2026-10-05T00:00:00Z", "rx_titulo": r"janones|ex[eé]rcito|ej[eé]rcito|arm[ée]e|army|peronismo|fuerza de la gente|m[ée]lenchon|whats",
+            "rx_atributo": r"janones|lula|whats|canal|channel|cha[iî]ne|ex[eé]rcito|ej[eé]rcito|arm[ée]e|army",
+            "noticias": ["\"Exército do Lula\"", "Janones WhatsApp", "Janones general Lula", "\"Exército do Lula\" outros países",
+                         {"q": "\"Ejército de Lula\"", "ed": "ES"}, {"q": "Janones WhatsApp", "ed": "ES"}, {"q": "\"La Fuerza de la Gente\" WhatsApp", "ed": "ES"},
+                         {"q": "\"Ejército del Peronismo\"", "ed": "AR"}, {"q": "Janones", "ed": "AR"},
+                         {"q": "\"armée de Lula\"", "ed": "FR"}, {"q": "Janones", "ed": "FR"}, {"q": "Mélenchon WhatsApp chaîne", "ed": "FR"},
+                         {"q": "Janones Lula WhatsApp", "ed": "US"}, {"q": "\"Lula's army\"", "ed": "US"},
+                         {"q": "Janones", "ed": "CO"}, {"q": "Janones", "ed": "PT"}],
+            "janela_noticias": "30d", "checagens": ["Exército do Lula", "Janones"], "arquivo_web": []},
     "025": {"variantes": ["deport Bolsonaro", "Flávio Bolsonaro Miami", "Flavio Bolsonaro", "DeportTheBolsonaros"],
             "controles": ["Bolsonaro"], "janelas": ["now 7-d", "today 1-m"], "geo_trends": "", "paises_trends": True,
             # com vários termos, o mapa por país dá a divisão entre os termos; com um termo só, o interesse por país (0 a 100)
@@ -257,18 +275,20 @@ def trends() -> dict:
         for jan in janelas:
             try:
                 geo_t = CASOS[CASO].get("geo_trends", "BR")  # 01/11/2026 (caso 025): "" = mundo inteiro
+                if nome in extras and "geo" in extras[nome]:  # 02/11/2026 (caso 026): grupo com região própria (ex.: estados do Brasil num caso mundial)
+                    geo_t = extras[nome]["geo"]
                 ws = {w["id"]: w for w in t.explore(termos, jan, geo_t)}
                 ts = t.widget("multiline", ws["TIMESERIES"])
                 g[jan] = [{"t": dt.datetime.fromtimestamp(int(p["time"]), dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                            "v": dict(zip(termos, p.get("value") or []))} for p in ts["default"]["timelineData"]]
-                if CASOS[CASO].get("paises_trends"):  # interesse por país em cada janela (caso 025)
+                if CASOS[CASO].get("paises_trends") and geo_t == "":  # interesse por país em cada janela (caso 025), só na busca mundial
                     gw = next((w for k, w in ws.items() if k.startswith("GEO_MAP")), None)
                     if gw:
                         gm = t.widget("comparedgeo", gw)
                         g["paises_" + jan] = [{"pais": r.get("geoCode"), "nome": r.get("geoName"), "v": dict(zip(termos, r.get("value") or []))}
                                               for r in gm["default"]["geoMapData"] if any(r.get("value") or [])]
                 if jan == "today 12-m":
-                    geo = next((w for k, w in ws.items() if k.startswith("GEO_MAP")), None)
+                    geo = None if geo_t != "BR" else next((w for k, w in ws.items() if k.startswith("GEO_MAP")), None)
                     if geo:
                         gm = t.widget("comparedgeo", geo)
                         g["uf_12m"] = [{"uf": (r.get("geoCode") or "").replace("BR-", ""), "nome": r.get("geoName"), "v": dict(zip(termos, r.get("value") or []))}
@@ -374,20 +394,29 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
     return {"videos": vids}, list(uniq.values())
 
 
+EDICOES = {"BR": {"hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"}, "PT": {"hl": "pt-PT", "gl": "PT", "ceid": "PT:pt-150"},
+           "ES": {"hl": "es", "gl": "ES", "ceid": "ES:es"}, "AR": {"hl": "es-419", "gl": "AR", "ceid": "AR:es-419"},
+           "CO": {"hl": "es-419", "gl": "CO", "ceid": "CO:es-419"}, "FR": {"hl": "fr", "gl": "FR", "ceid": "FR:fr"},
+           "US": {"hl": "en-US", "gl": "US", "ceid": "US:en"}}
+
+
 def noticias() -> list[dict]:
     from collect_google_busca import RSS, parse_rss
     out, vistos = [], set()
     c = CASOS[CASO]
     for q in c.get("noticias") or VARIANTES:
+        ed = "BR"
+        if isinstance(q, dict):  # 02/11/2026 (caso 026): edição do Google Notícias de outro país, para a repercussão fora do Brasil
+            q, ed = q["q"], q.get("ed", "BR")
         try:
             # termos próprios de notícias (sem aspas, com janela) quando o caso os define; senão, as variantes entre aspas
             busca = f"{q} when:{c['janela_noticias']}" if c.get("noticias") else f'"{q}"'
-            url = RSS + "?" + urllib.parse.urlencode({"q": busca, "hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"})
+            url = RSS + "?" + urllib.parse.urlencode({"q": busca, **EDICOES[ed]})
             for x in parse_rss(read_body(open_url(url, timeout=40))):
                 if x.get("link") in vistos or not RX_TITULO.search(x.get("titulo") or "") or (c.get("noticias") and not RX_ATRIBUTO.search(x.get("titulo") or "")):
                     continue
                 vistos.add(x.get("link"))
-                out.append({**{k: x.get(k) for k in ("titulo", "link", "veiculo", "dominio", "data_publicacao")}, "consulta": q})
+                out.append({**{k: x.get(k) for k in ("titulo", "link", "veiculo", "dominio", "data_publicacao")}, "consulta": q, "edicao": ed})
         except Exception as e:  # noqa: BLE001
             ERROS.append(f"notícias '{q}': {type(e).__name__}")
     return sorted(out, key=lambda x: x.get("data_publicacao") or "")

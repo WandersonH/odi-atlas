@@ -1,0 +1,36 @@
+name: Canais públicos do WhatsApp — seguidores (caso 026, grátis)
+
+# 02/11/2026: caso 026 (janonismo). Lê a página pública de cada canal listado em data/config/casos.json → "canais_whatsapp"
+# e acrescenta uma leitura em data/casos/026/canais_whatsapp.json. Sem custo, sem login, sem token.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso"
+        default: "026"
+  schedule:
+    - cron: "41 */6 * * *"   # a cada 6 horas: os canais cresceram dezenas de milhares por dia na semana do 2º turno
+
+permissions:
+  contents: write
+
+concurrency:
+  group: canais-whatsapp
+  cancel-in-progress: false
+
+jobs:
+  ler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Ler os canais
+        run: |
+          python scripts/canais_whatsapp.py --caso "${{ github.event.inputs.caso || '026' }}" | tee "$RUNNER_TEMP/s.txt"
+          while IFS= read -r l; do echo "::notice title=Canais do WhatsApp::$(echo "$l" | cut -c1-300)"; done < "$RUNNER_TEMP/s.txt"
+      - name: Commitar
+        if: always()
+        run: scripts/commit_push.sh "Canais do WhatsApp (run ${{ github.run_id }})"

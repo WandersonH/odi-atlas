@@ -4,6 +4,28 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.258 — Caso 026, janonismo: "Exército do Lula" na eleição, repercussão no mundo e canais copiados (2026-11-02) ⚠️
+
+- **Por quê:** pedido do responsável (02/11, 01h38): "vamos criar mais um case, janonismo… o efeito dele durante as eleições, quero uma busca geral mundial do efeito e acompanhar o crescimento de grupos que surgiram em alguns países". Ele também indicou a matéria do g1 de 28/10 e o link do canal francês.
+- **Configuração:** caso 026 em `data/config/casos.json`, com `coletar: false`, porque o teto da coleta paga nas redes ainda não foi autorizado (⛔). Inclui as leituras publicadas pela imprensa (CNN Brasil 30/10; g1 via Brasil 247 30/10; WhaTools 29–31/10), cada uma com veículo e data. Elas ficam separadas das leituras do Atlas e não se somam.
+- **`scripts/canais_whatsapp.py`** (novo) lê a página pública de cada canal: o universo é o total que o WhatsApp mostra, e o texto exibido é guardado ao lado do número. Ele acrescenta uma leitura por execução em `data/casos/026/canais_whatsapp.json` e nunca apaga as anteriores. Uma leitura que falha vira ⛔, nunca número.
+  - Canais com link público: L'équipe de Mélenchon officielle (FR), La Fuerza de la Gente (ES), Ejército del Peronismo (AR), Ejército de Lula LATAM e Ejército de Petro (CO). Os links vêm de posts públicos no Threads e da WhaTools.
+  - O link do "Exército do Lula" não foi localizado: ⛔ pendente.
+  - Workflow `canais-whatsapp.yml`: a cada 6 horas e por acionamento manual.
+- **`scripts/collect_caso_busca.py`:**
+  - Caso 026 com Trends no mundo ("Janones" por país) e por estado ("Janones" e "Exército do Lula"); YouTube sem região; checagens.
+  - Google Notícias em sete edições (BR, PT, ES, AR, CO, FR, US); cada notícia registra a edição em `edicao`.
+  - Grupos do Trends podem ter região própria (`geo`). Correção: numa busca mundial, o mapa de 12 meses não é mais gravado como `uf_12m`, porque seriam países. Nenhum caso publicado tinha essa combinação.
+- **Página:** aba `caso026` com o bloco "Canais no WhatsApp" (universo, lidos, critério, tabela, curva em escala log e a imprensa à parte) e as análises de busca. Entra no índice de casos.
+- **Teste executado:**
+  - `tests/test_canais_whatsapp.py` (formatos "161K", "1,2 mi", "44.926", "10 740 000"; sem número não inventa).
+  - `python -m unittest discover -s tests`: OK.
+  - Playwright: a ficha 026 abre a aba, sem erro de JavaScript.
+- **Pendente:**
+  - A primeira leitura dos canais e a coleta de busca do 026 rodam nos workflows acionados depois deste commit; os resultados entram na próxima entrada.
+  - A página do WhatsApp não foi testada daqui, porque a rede deste ambiente não alcança o whatsapp.com.
+  - Teto da coleta paga: ⛔.
+
 ## C19.257 — Casos: toda ficha abre a página do caso, com o dossiê no topo · corpus do Instagram com passo 3, estabilidade e similitude (2026-11-02) ⚠️
 
 - **Por quê:** o responsável (02/11): "essas telas tá bem zoada, uma mostra resumo, outras manda pro caso detalhado". No índice "Casos e dossiês", as fichas de 001, 002, 003 e 005 abriam o dossiê ali mesmo (sem `aba` em `casos.json`), e as demais pulavam para a página do caso — onde o dossiê não aparecia.
