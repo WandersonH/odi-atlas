@@ -2978,14 +2978,14 @@
   {
    "id": "028",
    "slug": "indigenas-ms",
-   "titulo": "Violência contra indígenas no Mato Grosso do Sul depois do 2º turno e a reação #ProtejamNossosPovosIndígenas",
+   "titulo": "Violência contra povos indígenas depois do 2º turno (Mato Grosso do Sul e outros estados) e a reação #ProtejamNossosPovosIndígenas",
    "tipo": "violência política e reação em rede",
    "rotulo_tipo": "em análise",
    "coletar": true,
    "aba": "caso028",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 02/11/2026, 02h53–02h54 (matéria do g1 de 27/10, \"grupos\", \"Exército povos indígenas\", \"protejam povos indígenas\", \"também foi criado grupo de Whats\" e o link do canal). Padrão dos casos: \"US$ 2,00 por caso\" (X 0,90, Instagram 0,70, Facebook 0,40) e TikTok \"US$ 1,00 por caso\"; conta 1, sem consulta de saldo.",
-   "descricao": "Depois da vitória de Lula no 2º turno (25/10/2026), indígenas Guarani e Kaiowá do Mato Grosso do Sul denunciaram ameaças de morte, atropelamentos e a ameaça de envenenar a água da aldeia Sassoró, em Tacuru, feita em áudios que circularam em grupos de WhatsApp; Funai e MPI acionaram a Polícia Federal, que ouviu ao menos dois suspeitos, e a Força Nacional foi enviada a três aldeias (O Tempo, 29/10; Revista Fórum, 01/11). Em reação, surgiram a hashtag #ProtejamNossosPovosIndígenas e o canal de WhatsApp \"Exército dos Povos Indígenas\", criado em 28/10 e inspirado no Exército do Lula (CartaCapital, 29/10). O caso mede a circulação do ataque e da reação, as buscas, a imprensa e o crescimento do canal. O Atlas não publica nem transcreve os áudios e não nomeia suspeitos não identificados oficialmente.",
+   "autorizacao": "Responsável em 02/11/2026, 02h53–02h54 (matéria do g1 de 27/10, \"grupos\", \"Exército povos indígenas\", \"protejam povos indígenas\", \"também foi criado grupo de Whats\" e o link do canal). Padrão dos casos: \"US$ 2,00 por caso\" (X 0,90, Instagram 0,70, Facebook 0,40) e TikTok \"US$ 1,00 por caso\"; conta 1, sem consulta de saldo. · Responsável em 02/11/2026, 03h24: \"povos indígenas deve ser abrangendo na busca\" — termos ampliados para os povos indígenas em geral.",
+   "descricao": "Depois da vitória de Lula no 2º turno (25/10/2026), indígenas Guarani e Kaiowá do Mato Grosso do Sul denunciaram ameaças de morte, atropelamentos e a ameaça de envenenar a água da aldeia Sassoró, em Tacuru, feita em áudios que circularam em grupos de WhatsApp; Funai e MPI acionaram a Polícia Federal, que ouviu ao menos dois suspeitos, e a Força Nacional foi enviada a três aldeias (O Tempo, 29/10; Revista Fórum, 01/11). Em reação, surgiram a hashtag #ProtejamNossosPovosIndígenas e o canal de WhatsApp \"Exército dos Povos Indígenas\", criado em 28/10 e inspirado no Exército do Lula (CartaCapital, 29/10). A busca abrange os povos indígenas em todo o país, não só o Mato Grosso do Sul (pedido do responsável, 02/11, 03h24: \"povos indígenas deve ser abrangendo na busca\"). O caso mede a circulação do ataque e da reação, as buscas, a imprensa e o crescimento do canal. O Atlas não publica nem transcreve os áudios e não nomeia suspeitos não identificados oficialmente.",
    "redes_previstas": [
     "tiktok",
     "x",
@@ -2999,24 +2999,31 @@
    "hashtags": [
     "protejamnossospovosindigenas",
     "exercitodospovosindigenas",
-    "guaranikaiowa"
+    "guaranikaiowa",
+    "povosindigenas",
+    "indigenas",
+    "demarcacaoja"
    ],
    "buscas_tiktok": [
-    "indígenas Mato Grosso do Sul ameaça",
+    "povos indígenas ameaça",
+    "indígenas atacados eleição",
     "Protejam nossos povos indígenas",
     "Exército dos Povos Indígenas",
+    "indígenas Mato Grosso do Sul ameaça",
     "Tacuru aldeia"
    ],
    "rolagens_tiktok": 15,
    "termos_trends": [
-    "Guarani Kaiowá",
-    "Tacuru",
-    "indígenas Mato Grosso do Sul"
+    "povos indígenas",
+    "indígenas",
+    "Guarani Kaiowá"
    ],
    "termos_noticias": [
+    "povos indígenas ataques eleição",
+    "indígenas ameaças depois da eleição",
+    "Apib violência indígenas",
     "Tacuru indígenas",
     "Sassoró",
-    "Guarani Kaiowá ameaças",
     "\"Exército dos Povos Indígenas\"",
     "ProtejamNossosPovosIndígenas"
    ],
@@ -3025,7 +3032,9 @@
     "Kaiowá",
     "Tacuru",
     "Sassoró",
-    "aldeia"
+    "aldeia",
+    "povos originários",
+    "Apib"
    ],
    "maximo_por_termo": 2000,
    "teto_usd": {
@@ -3038,25 +3047,28 @@
    "complementos_x": [
     {
      "termo": "o caso (busca por termo)",
-     "busca": "(Sassoró OR Tacuru OR \"Guarani Kaiowá\" OR \"Guarani e Kaiowá\" OR \"veneno na água\" OR #ProtejamNossosPovosIndígenas OR #ProtejamNossosPovosIndigenas OR \"Exército dos Povos Indígenas\" OR (indígenas (\"Mato Grosso do Sul\" OR MS) (ameaça OR ataque OR atropelamento OR envenenamento))) since:2026-10-25",
-     "motivo": "coleta por termo do caso",
+     "busca": "((\"povos indígenas\" OR indígenas OR indígena OR aldeia OR aldeias OR \"Guarani Kaiowá\" OR \"Guarani e Kaiowá\" OR Sassoró OR Tacuru) (ameaça OR ameaças OR ataque OR ataques OR atropelamento OR envenenamento OR \"veneno na água\" OR violência OR racismo OR eleição OR Lula OR \"Força Nacional\" OR PF)) OR #ProtejamNossosPovosIndígenas OR #ProtejamNossosPovosIndigenas OR #PovosIndígenas OR \"Exército dos Povos Indígenas\" since:2026-10-25",
+     "motivo": "coleta por termo do caso, ampliada aos povos indígenas em geral (02/11, 03h24)",
      "rodada": 1
     }
    ],
    "hashtags_instagram": [
     "protejamnossospovosindigenas",
-    "exercitodospovosindigenas"
+    "exercitodospovosindigenas",
+    "povosindigenas"
    ],
    "perfis_instagram": [
     "https://www.instagram.com/exercitodospovosindigenas/"
    ],
    "buscas_instagram": [
+    "povos indígenas ameaças",
     "indígenas Mato Grosso do Sul"
    ],
    "buscas_facebook": [
+    "povos indígenas ameaças eleição",
+    "indígenas atacados depois da eleição",
     "indígenas Tacuru veneno",
-    "Protejam nossos povos indígenas",
-    "Guarani Kaiowá ataques eleição"
+    "Protejam nossos povos indígenas"
    ],
    "buscas_kwai": [],
    "canais_whatsapp": [

@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.269 — Caso 028 abrange os povos indígenas em geral · classes lematizadas de 006, 007 e 008 (2026-11-02) ⚠️
+
+- **Caso 028:** o responsável pediu (02/11, 03h24): "povos indígenas deve ser abrangendo na busca". Os termos deixaram de se limitar ao Mato Grosso do Sul.
+  - **X:** "povos indígenas", indígenas, aldeia e Guarani Kaiowá, combinados com ameaça, ataque, atropelamento, envenenamento, violência, racismo, eleição, Lula, Força Nacional ou PF; mais as hashtags e o nome do canal; desde 25/10.
+  - **TikTok, Instagram e Facebook:** buscas gerais ("povos indígenas ameaça", "indígenas atacados eleição"); hashtags #povosindigenas, #indigenas e #demarcacaoja.
+  - **Trends:** "povos indígenas", "indígenas", "Guarani Kaiowá", mais o grupo Apib × Funai.
+  - **YouTube e notícias:** buscas gerais e Apib.
+  - Título e página atualizados. A coleta paga do 028 ainda não tinha rodado (está na fila), então já sai com os termos amplos.
+- **Classes lematizadas** (CHD nova com 1º fator aleatorizado; regra dos 75%):
+
+| Caso | Comentários | Classificados | Classes terminais |
+|---|---|---|---|
+| 006 | 18.224 | 84,3% | 9 |
+| 007 | 6.242 | 83,3% | 7 |
+| 008 | 8.814 | 82,6% | 4 |
+
+  - Os três atingem o mínimo. O 006 sai do artefato das classes com exatamente 859 segmentos.
+  - Os GEXF do 009 entraram; o `busca.json` dele segue em reconstrução.
+- **Teste:** `python -m unittest discover -s tests`: OK.
+
 ## C19.268 — CHD mais rápida (1º fator por SVD aleatorizada) e classes lematizadas do caso 005 (2026-11-02) ⚠️
 
 - **Por quê:** a reconstrução de 005–007 estourava 25 minutos (C19.267). Perfil num corte de 3.000 comentários do 005: 199 dos 232 s iam para a SVD completa da matriz padronizada, chamada a cada divisão (`primeiro_fator`, 100 chamadas).

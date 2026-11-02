@@ -153,13 +153,17 @@ CASOS = {
     # 01/11 (18h26): #DeportTheBolsonaros × #BrasiliansStandWithFlavio: quanto veio do Brasil e quanto de outros países.
     # Trends no mundo inteiro (geo vazio), com o mapa por país em cada janela; YouTube sem região nem língua.
     # 02/11 (02h53): violência contra indígenas em MS depois do 2º turno e a reação (#ProtejamNossosPovosIndígenas, Exército dos Povos Indígenas)
-    "028": {"variantes": ["Guarani Kaiowá", "Tacuru", "indígenas Mato Grosso do Sul"],
-            "controles": ["indígenas"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],
-            "youtube": ["indígenas Mato Grosso do Sul ameaças eleição", "Tacuru aldeia Sassoró", "veneno na água aldeia indígena", "Exército dos Povos Indígenas", "Guarani Kaiowá ataques 2026"],
-            "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"ind[ií]gen|kaiow|guarani|tacuru|sassor|aldeia",
-            "rx_atributo": r"amea|ataq|atropel|venen|viol[eê]n|pf|pol[ií]cia|for[cç]a nacional|elei|lula|racis|ex[eé]rcito|protej",
-            "noticias": ["Tacuru indígenas", "Sassoró aldeia", "Guarani Kaiowá ameaças eleição", "\"Exército dos Povos Indígenas\"", "ProtejamNossosPovosIndígenas", "Força Nacional aldeias Mato Grosso do Sul"],
-            "janela_noticias": "30d", "checagens": ["indígenas Mato Grosso do Sul", "envenenamento água aldeia", "Tacuru"], "arquivo_web": []},
+    "028": {"variantes": ["povos indígenas", "indígenas", "Guarani Kaiowá"],
+            "controles": ["Funai"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],
+            # 02/11 (03h24): "povos indígenas deve ser abrangendo na busca" — termos gerais, não só MS
+            "grupos_extra": {"apib": {"titulo": "Apib e Funai", "termos": ["Apib", "Funai"]}},
+            "youtube": ["povos indígenas ataques eleição 2026", "indígenas ameaçados depois da eleição", "indígenas Mato Grosso do Sul ameaças eleição",
+                        "Tacuru aldeia Sassoró", "veneno na água aldeia indígena", "Exército dos Povos Indígenas", "Guarani Kaiowá ataques 2026"],
+            "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"ind[ií]gen|kaiow|guarani|tacuru|sassor|aldeia|povos origin|apib|funai",
+            "rx_atributo": r"amea|ataq|atropel|venen|viol[eê]n|pf|pol[ií]cia|for[cç]a nacional|elei|lula|racis|ex[eé]rcito|protej|apib|funai|direito",
+            "noticias": ["povos indígenas ataques eleição", "indígenas ameaças depois da eleição", "Apib violência indígenas", "Tacuru indígenas",
+                         "Sassoró aldeia", "\"Exército dos Povos Indígenas\"", "ProtejamNossosPovosIndígenas", "Força Nacional aldeias"],
+            "janela_noticias": "30d", "checagens": ["indígenas eleição", "povos indígenas ataques", "envenenamento água aldeia", "Tacuru"], "arquivo_web": []},
     # 02/11 (02h44): voto distrital misto (PEC articulada por Hugo Motta; transição pelo distritão em 2030); 5 anos para comparar com 2015/2017
     "027": {"variantes": ["voto distrital", "distrital misto", "distritão"],
             "controles": ["reforma política"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],
