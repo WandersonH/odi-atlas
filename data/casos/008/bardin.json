@@ -1,6 +1,6 @@
 {
  "caso": "008",
- "gerado_em_utc": "2026-11-02T02:59:07Z",
+ "gerado_em_utc": "2026-11-02T03:16:51Z",
  "livro": {
   "titulo": "Livro de códigos — caso 008: camisetas do PT em Piracicaba (reel de Derrite e acusação contra a PM) (ODI Atlas)",
   "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
@@ -19,7 +19,7 @@
    "nome": "Associação entre PT/eleitores de Lula e crime",
    "definicao": "Liga os detidos, o PT ou o eleitorado de Lula a crime ou bandidagem (\"bandido vota no PT\", \"uniforme\", \"faz o L\").",
    "n": 3,
-   "pct": 1.3
+   "pct": 1.0
   },
   "apoio_policia": {
    "nome": "Apoio à ação policial",
@@ -30,26 +30,26 @@
   "descredita_denuncia": {
    "nome": "Descrédito da denúncia de abuso",
    "definicao": "Ridiculariza ou nega a acusação contra a PM, retrata os detidos como falsas vítimas (\"vítimas da sociedade\", \"coitadinhos\").",
-   "n": 1,
-   "pct": 0.4
+   "n": 4,
+   "pct": 1.3
   },
   "denuncia_armacao": {
    "nome": "Denúncia de armação ou abuso policial",
    "definicao": "Afirma ou repete que policiais obrigaram os jovens a vestir as camisetas, que houve armação, montagem ou agressão.",
-   "n": 71,
-   "pct": 30.5
+   "n": 101,
+   "pct": 33.0
   },
   "pede_investigacao": {
    "nome": "Pedido de investigação ou enquadramento legal",
    "definicao": "Pede investigação, punição ou afastamento; classifica como crime eleitoral; cita MP, corregedoria, TSE, Justiça Eleitoral.",
-   "n": 90,
-   "pct": 38.6
+   "n": 120,
+   "pct": 39.2
   },
   "critica_uso_politico": {
    "nome": "Crítica ao uso político da polícia",
    "definicao": "Critica o uso da polícia ou da operação para campanha (\"polícia do Tarcísio\", milícia, jogo sujo, desespero).",
-   "n": 7,
-   "pct": 3.0
+   "n": 10,
+   "pct": 3.3
   },
   "ironia_humor": {
    "nome": "Ironia ou humor",
@@ -60,26 +60,26 @@
   "insulto_desumanizacao": {
    "nome": "Insulto e desumanização (qualquer alvo)",
    "definicao": "Rotula pessoa ou grupo com insulto ou termo de desprezo, qualquer que seja o alvo (detidos, policiais, políticos, eleitores).",
-   "n": 13,
-   "pct": 5.6
+   "n": 23,
+   "pct": 7.5
   },
   "informacao_noticia": {
    "nome": "Informação ou notícia",
    "definicao": "Relata o fato de modo informativo: detenção, nota da SSP ou da PM, reportagem, pedido do PT.",
-   "n": 98,
-   "pct": 42.1
+   "n": 130,
+   "pct": 42.5
   },
   "chamado_voto": {
    "nome": "Pedido de voto ou torcida eleitoral (qualquer candidato)",
    "definicao": "Pede voto ou faz torcida para qualquer candidato (13 ou 22) ou \"fora\" para qualquer um.",
-   "n": 2,
-   "pct": 0.9
+   "n": 3,
+   "pct": 1.0
   }
  },
- "publicacoes": 233,
+ "publicacoes": 306,
  "sem_categoria": {
-  "n": 114,
-  "pct": 48.9
+  "n": 135,
+  "pct": 44.1
  },
  "blocos": {
   "incitacao": {
@@ -88,8 +88,8 @@
     "apoio_policia",
     "descredita_denuncia"
    ],
-   "n": 4,
-   "pct": 1.7
+   "n": 7,
+   "pct": 2.3
   },
   "reacao": {
    "categorias": [
@@ -98,12 +98,12 @@
     "critica_uso_politico",
     "ironia_humor"
    ],
-   "n": 107,
-   "pct": 45.9
+   "n": 148,
+   "pct": 48.4
   },
   "os_dois": {
-   "n": 4,
-   "pct": 1.7
+   "n": 7,
+   "pct": 2.3
   }
  },
  "por_rede": {
@@ -194,6 +194,51 @@
     "chamado_voto": {
      "n": 2,
      "pct": 1.3
+    }
+   }
+  },
+  "x": {
+   "n": 73,
+   "categorias": {
+    "associa_pt_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_policia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredita_denuncia": {
+     "n": 3,
+     "pct": 4.1
+    },
+    "denuncia_armacao": {
+     "n": 30,
+     "pct": 41.1
+    },
+    "pede_investigacao": {
+     "n": 30,
+     "pct": 41.1
+    },
+    "critica_uso_politico": {
+     "n": 3,
+     "pct": 4.1
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 10,
+     "pct": 13.7
+    },
+    "informacao_noticia": {
+     "n": 32,
+     "pct": 43.8
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 1.4
     }
    }
   }
@@ -423,11 +468,56 @@
      "pct": 2.4
     }
    }
+  },
+  "x · o caso (busca por termo)": {
+   "n": 73,
+   "categorias": {
+    "associa_pt_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_policia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredita_denuncia": {
+     "n": 3,
+     "pct": 4.1
+    },
+    "denuncia_armacao": {
+     "n": 30,
+     "pct": 41.1
+    },
+    "pede_investigacao": {
+     "n": 30,
+     "pct": 41.1
+    },
+    "critica_uso_politico": {
+     "n": 3,
+     "pct": 4.1
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 10,
+     "pct": 13.7
+    },
+    "informacao_noticia": {
+     "n": 32,
+     "pct": 43.8
+    },
+    "chamado_voto": {
+     "n": 1,
+     "pct": 1.4
+    }
+   }
   }
  },
  "por_dia": {
   "2026-10-21": {
-   "n": 6,
+   "n": 14,
    "categorias": {
     "associa_pt_crime": {
      "n": 0,
@@ -438,16 +528,16 @@
      "pct": 0.0
     },
     "descredita_denuncia": {
-     "n": 0,
-     "pct": 0.0
+     "n": 1,
+     "pct": 7.1
     },
     "denuncia_armacao": {
-     "n": 1,
-     "pct": 16.7
+     "n": 4,
+     "pct": 28.6
     },
     "pede_investigacao": {
-     "n": 4,
-     "pct": 66.7
+     "n": 8,
+     "pct": 57.1
     },
     "critica_uso_politico": {
      "n": 0,
@@ -462,62 +552,62 @@
      "pct": 0.0
     },
     "informacao_noticia": {
-     "n": 2,
-     "pct": 33.3
+     "n": 6,
+     "pct": 42.9
     },
     "chamado_voto": {
-     "n": 0,
-     "pct": 0.0
+     "n": 1,
+     "pct": 7.1
     }
    }
   },
   "2026-10-22": {
-   "n": 78,
+   "n": 116,
    "categorias": {
     "associa_pt_crime": {
      "n": 2,
-     "pct": 2.6
+     "pct": 1.7
     },
     "apoio_policia": {
      "n": 0,
      "pct": 0.0
     },
     "descredita_denuncia": {
-     "n": 0,
-     "pct": 0.0
+     "n": 2,
+     "pct": 1.7
     },
     "denuncia_armacao": {
-     "n": 43,
-     "pct": 55.1
+     "n": 61,
+     "pct": 52.6
     },
     "pede_investigacao": {
-     "n": 50,
-     "pct": 64.1
+     "n": 62,
+     "pct": 53.4
     },
     "critica_uso_politico": {
-     "n": 6,
-     "pct": 7.7
+     "n": 9,
+     "pct": 7.8
     },
     "ironia_humor": {
      "n": 0,
      "pct": 0.0
     },
     "insulto_desumanizacao": {
-     "n": 6,
-     "pct": 7.7
+     "n": 11,
+     "pct": 9.5
     },
     "informacao_noticia": {
-     "n": 57,
-     "pct": 73.1
+     "n": 72,
+     "pct": 62.1
     },
     "chamado_voto": {
      "n": 2,
-     "pct": 2.6
+     "pct": 1.7
     }
    }
   },
   "2026-10-23": {
-   "n": 46,
+   "n": 64,
    "categorias": {
     "associa_pt_crime": {
      "n": 0,
@@ -529,31 +619,31 @@
     },
     "descredita_denuncia": {
      "n": 1,
-     "pct": 2.2
+     "pct": 1.6
     },
     "denuncia_armacao": {
-     "n": 23,
-     "pct": 50.0
+     "n": 28,
+     "pct": 43.8
     },
     "pede_investigacao": {
-     "n": 28,
-     "pct": 60.9
+     "n": 36,
+     "pct": 56.2
     },
     "critica_uso_politico": {
      "n": 1,
-     "pct": 2.2
+     "pct": 1.6
     },
     "ironia_humor": {
      "n": 0,
      "pct": 0.0
     },
     "insulto_desumanizacao": {
-     "n": 6,
-     "pct": 13.0
+     "n": 11,
+     "pct": 17.2
     },
     "informacao_noticia": {
-     "n": 33,
-     "pct": 71.7
+     "n": 40,
+     "pct": 62.5
     },
     "chamado_voto": {
      "n": 0,
@@ -607,7 +697,7 @@
    }
   },
   "2026-10-25": {
-   "n": 1,
+   "n": 3,
    "categorias": {
     "associa_pt_crime": {
      "n": 0,
@@ -627,7 +717,52 @@
     },
     "pede_investigacao": {
      "n": 1,
-     "pct": 100.0
+     "pct": 33.3
+    },
+    "critica_uso_politico": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "insulto_desumanizacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 2,
+     "pct": 66.7
+    },
+    "chamado_voto": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-26": {
+   "n": 3,
+   "categorias": {
+    "associa_pt_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apoio_policia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "descredita_denuncia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "denuncia_armacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pede_investigacao": {
+     "n": 1,
+     "pct": 33.3
     },
     "critica_uso_politico": {
      "n": 0,
@@ -643,7 +778,7 @@
     },
     "informacao_noticia": {
      "n": 1,
-     "pct": 100.0
+     "pct": 33.3
     },
     "chamado_voto": {
      "n": 0,
@@ -651,8 +786,8 @@
     }
    }
   },
-  "2026-10-26": {
-   "n": 2,
+  "2026-10-28": {
+   "n": 1,
    "categorias": {
     "associa_pt_crime": {
      "n": 0,
@@ -742,7 +877,7 @@
    }
   },
   "2026-10-30": {
-   "n": 3,
+   "n": 5,
    "categorias": {
     "associa_pt_crime": {
      "n": 0,
@@ -757,12 +892,12 @@
      "pct": 0.0
     },
     "denuncia_armacao": {
-     "n": 1,
-     "pct": 33.3
+     "n": 3,
+     "pct": 60.0
     },
     "pede_investigacao": {
-     "n": 1,
-     "pct": 33.3
+     "n": 3,
+     "pct": 60.0
     },
     "critica_uso_politico": {
      "n": 0,
@@ -777,8 +912,8 @@
      "pct": 0.0
     },
     "informacao_noticia": {
-     "n": 1,
-     "pct": 33.3
+     "n": 2,
+     "pct": 40.0
     },
     "chamado_voto": {
      "n": 0,
@@ -787,7 +922,7 @@
    }
   },
   "2026-10-31": {
-   "n": 1,
+   "n": 4,
    "categorias": {
     "associa_pt_crime": {
      "n": 0,
@@ -802,11 +937,11 @@
      "pct": 0.0
     },
     "denuncia_armacao": {
-     "n": 0,
-     "pct": 0.0
+     "n": 2,
+     "pct": 50.0
     },
     "pede_investigacao": {
-     "n": 1,
+     "n": 4,
      "pct": 100.0
     },
     "critica_uso_politico": {
@@ -822,7 +957,7 @@
      "pct": 0.0
     },
     "informacao_noticia": {
-     "n": 1,
+     "n": 4,
      "pct": 100.0
     },
     "chamado_voto": {
@@ -881,47 +1016,67 @@
   {
    "a": "informacao_noticia",
    "b": "pede_investigacao",
-   "n": 76
+   "n": 95
   },
   {
    "a": "denuncia_armacao",
    "b": "informacao_noticia",
-   "n": 61
+   "n": 77
   },
   {
    "a": "denuncia_armacao",
    "b": "pede_investigacao",
-   "n": 54
+   "n": 73
   },
   {
    "a": "insulto_desumanizacao",
    "b": "pede_investigacao",
-   "n": 8
+   "n": 12
   },
   {
    "a": "informacao_noticia",
    "b": "insulto_desumanizacao",
-   "n": 7
-  },
-  {
-   "a": "critica_uso_politico",
-   "b": "informacao_noticia",
-   "n": 7
+   "n": 11
   },
   {
    "a": "denuncia_armacao",
    "b": "insulto_desumanizacao",
-   "n": 5
+   "n": 11
+  },
+  {
+   "a": "critica_uso_politico",
+   "b": "informacao_noticia",
+   "n": 9
   },
   {
    "a": "critica_uso_politico",
    "b": "denuncia_armacao",
-   "n": 5
+   "n": 8
   },
   {
    "a": "critica_uso_politico",
    "b": "pede_investigacao",
-   "n": 5
+   "n": 7
+  },
+  {
+   "a": "denuncia_armacao",
+   "b": "descredita_denuncia",
+   "n": 4
+  },
+  {
+   "a": "descredita_denuncia",
+   "b": "informacao_noticia",
+   "n": 4
+  },
+  {
+   "a": "chamado_voto",
+   "b": "informacao_noticia",
+   "n": 3
+  },
+  {
+   "a": "descredita_denuncia",
+   "b": "pede_investigacao",
+   "n": 3
   },
   {
    "a": "associa_pt_crime",
@@ -929,41 +1084,147 @@
    "n": 3
   },
   {
-   "a": "chamado_voto",
-   "b": "informacao_noticia",
+   "a": "critica_uso_politico",
+   "b": "descredita_denuncia",
    "n": 2
-  },
-  {
-   "a": "chamado_voto",
-   "b": "pede_investigacao",
-   "n": 2
-  },
-  {
-   "a": "associa_pt_crime",
-   "b": "informacao_noticia",
-   "n": 2
-  },
-  {
-   "a": "chamado_voto",
-   "b": "denuncia_armacao",
-   "n": 1
-  },
-  {
-   "a": "associa_pt_crime",
-   "b": "insulto_desumanizacao",
-   "n": 1
   }
  ],
  "exemplos_contas_10mil": {
   "associa_pt_crime": [],
   "apoio_policia": [],
-  "descredita_denuncia": [],
-  "denuncia_armacao": [],
-  "pede_investigacao": [],
-  "critica_uso_politico": [],
+  "descredita_denuncia": [
+   {
+    "rede": "x",
+    "conta": "reinaldoazevedo",
+    "seguidores": 1642094,
+    "data": "2026-10-22",
+    "url": "https://x.com/reinaldoazevedo/status/2113085972271472900",
+    "trecho": "ntativa de associar o crime a candidatura do pt a narrativa no entanto foi desmentida pela propria mae do ado"
+   },
+   {
+    "rede": "x",
+    "conta": "ojornaleirobr",
+    "seguidores": 26753,
+    "data": "2026-10-22",
+    "url": "https://x.com/ojornaleirobr/status/2113204711666946554",
+    "trecho": "l utilizacao da policia militar para fabricar uma narrativa politica as vesperas do segundo turno o ministeri"
+   }
+  ],
+  "denuncia_armacao": [
+   {
+    "rede": "x",
+    "conta": "folha",
+    "seguidores": 8221805,
+    "data": "2026-10-22",
+    "url": "https://x.com/folha/status/2113329394949456133",
+    "trecho": "o de pms apos denuncia de que jovens presos foram obrigados a vestir camisa do pt https t co eel71prlqb"
+   },
+   {
+    "rede": "x",
+    "conta": "Metropoles",
+    "seguidores": 1757254,
+    "data": "2026-10-22",
+    "url": "https://x.com/Metropoles/status/2113189867408732409",
+    "trecho": "tos afirma que o flagra com a camiseta teria sido forjado pelos policiais reproducao"
+   },
+   {
+    "rede": "x",
+    "conta": "reinaldoazevedo",
+    "seguidores": 1642094,
+    "data": "2026-10-22",
+    "url": "https://x.com/reinaldoazevedo/status/2113085972271472900",
+    "trecho": "ia aponta que pms de sao paulo forjaram flagrante obrigando jovens detidos a vestirem camisetas do pt para ma"
+   }
+  ],
+  "pede_investigacao": [
+   {
+    "rede": "x",
+    "conta": "g1",
+    "seguidores": 14080936,
+    "data": "2026-10-22",
+    "url": "https://x.com/g1/status/2113332417981276640",
+    "trecho": "cao bebel afirmou que entrou com representacao na corregedoria da pm veja os detalhes no #g1 #pt #lula #eleicao2"
+   },
+   {
+    "rede": "x",
+    "conta": "folha",
+    "seguidores": 8221805,
+    "data": "2026-10-22",
+    "url": "https://x.com/folha/status/2113329394949456133",
+    "trecho": "ouvidoria pede afastamento de pms apos denuncia de que jovens presos foram obrigados a vestir cam"
+   },
+   {
+    "rede": "x",
+    "conta": "JornalOGlobo",
+    "seguidores": 6523006,
+    "data": "2026-10-22",
+    "url": "https://x.com/JornalOGlobo/status/2113408352650743831",
+    "trecho": "pm abre investigacao sobre suspeitos filmados com camisetas do pt em p"
+   }
+  ],
+  "critica_uso_politico": [
+   {
+    "rede": "x",
+    "conta": "ojornaleirobr",
+    "seguidores": 26753,
+    "data": "2026-10-22",
+    "url": "https://x.com/ojornaleirobr/status/2113204711666946554",
+    "trecho": "ombater o trafico e obrigacao da policia fabricar propaganda eleitoral se comprovado e um escandalo de outra natureza a"
+   }
+  ],
   "ironia_humor": [],
-  "insulto_desumanizacao": [],
-  "informacao_noticia": [],
+  "insulto_desumanizacao": [
+   {
+    "rede": "x",
+    "conta": "g1",
+    "seguidores": 14080936,
+    "data": "2026-10-22",
+    "url": "https://x.com/g1/status/2113332417981276640",
+    "trecho": "essa blusa sua ai que ja me interessou e partido vagabundo disse a militante dai comecou a falar do lula sao"
+   },
+   {
+    "rede": "x",
+    "conta": "orlandoguerreir",
+    "seguidores": 82992,
+    "data": "2026-10-23",
+    "url": "https://x.com/orlandoguerreir/status/2113585965893566688",
+    "trecho": "ga e o luxo de eduardo bolsonaro nos eua o terror fascista na universidade federal de roraima a invasao e de"
+   },
+   {
+    "rede": "x",
+    "conta": "UJSBRASIL",
+    "seguidores": 43113,
+    "data": "2026-10-22",
+    "url": "https://x.com/UJSBRASIL/status/2113346993904877759",
+    "trecho": "para sustentar as suas mentiras e os seus amigos milicianos https t co d4hadz4gn4"
+   }
+  ],
+  "informacao_noticia": [
+   {
+    "rede": "x",
+    "conta": "g1",
+    "seguidores": 14080936,
+    "data": "2026-10-22",
+    "url": "https://x.com/g1/status/2113332417981276640",
+    "trecho": "rabalhar logo com um vagabundo ladrao desse ainda segundo a militante os policiais militares exigiram que ela"
+   },
+   {
+    "rede": "x",
+    "conta": "reinaldoazevedo",
+    "seguidores": 1642094,
+    "data": "2026-10-22",
+    "url": "https://x.com/reinaldoazevedo/status/2113085972271472900",
+    "trecho": "de sao paulo forjaram flagrante obrigando jovens detidos a vestirem camisetas do pt para manipular as elei"
+   },
+   {
+    "rede": "x",
+    "conta": "BlogdoNoblat",
+    "seguidores": 1164668,
+    "data": "2026-10-22",
+    "url": "https://x.com/BlogdoNoblat/status/2113359912767996300",
+    "trecho": "e sao paulo sao acusados de obrigarem tres jovens detidos por suspeita de trafico de drogas em piracicaba n"
+   }
+  ],
   "chamado_voto": []
  },
  "amostra_humana": {
@@ -972,19 +1233,20 @@
   "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"
  },
  "chd_palavras": {
-  "comentarios": 233,
-  "autores": 177,
+  "comentarios": 306,
+  "autores": 238,
   "respostas": 0,
   "por_dia": {
-   "2026-10-21": 6,
-   "2026-10-22": 78,
-   "2026-10-23": 46,
+   "2026-10-21": 14,
+   "2026-10-22": 116,
+   "2026-10-23": 64,
    "2026-10-24": 10,
-   "2026-10-25": 1,
-   "2026-10-26": 2,
+   "2026-10-25": 3,
+   "2026-10-26": 3,
+   "2026-10-28": 1,
    "2026-10-29": 1,
-   "2026-10-30": 3,
-   "2026-10-31": 1,
+   "2026-10-30": 5,
+   "2026-10-31": 4,
    "2026-11-01": 85
   },
   "temas": {},
@@ -992,4832 +1254,4836 @@
   "palavras": [
    [
     "piracicaba",
-    297
+    360
    ],
    [
     "camisetas",
-    271
+    345
    ],
    [
     "lula",
-    202
+    269
    ],
    [
     "policiais",
-    193
+    245
    ],
    [
     "três",
-    136
-   ],
-   [
-    "foram",
-    131
+    169
    ],
    [
     "polícia",
-    125
+    168
    ],
    [
-    "adolescente",
-    110
-   ],
-   [
-    "anos",
-    110
+    "foram",
+    152
    ],
    [
     "paulo",
-    108
+    138
    ],
    [
-    "abordagem",
-    99
+    "adolescente",
+    133
    ],
    [
-    "caso",
-    93
-   ],
-   [
-    "derrite",
-    92
-   ],
-   [
-    "mãe",
-    91
-   ],
-   [
-    "detidos",
-    84
-   ],
-   [
-    "imagens",
-    84
-   ],
-   [
-    "apoio",
-    83
+    "anos",
+    125
    ],
    [
     "jovens",
-    82
+    121
    ],
    [
-    "drogas",
-    81
+    "abordagem",
+    116
    ],
    [
-    "camiseta",
-    80
+    "detidos",
+    114
+   ],
+   [
+    "apoio",
+    110
+   ],
+   [
+    "derrite",
+    108
+   ],
+   [
+    "mãe",
+    107
+   ],
+   [
+    "caso",
+    107
    ],
    [
     "tráfico",
-    80
+    104
    ],
    [
     "vestir",
-    79
+    101
    ],
    [
-    "suspeitos",
-    76
+    "imagens",
+    100
    ],
    [
-    "segundo",
-    75
-   ],
-   [
-    "pública",
-    75
+    "drogas",
+    100
    ],
    [
     "militares",
-    74
+    97
+   ],
+   [
+    "camiseta",
+    96
+   ],
+   [
+    "segundo",
+    93
+   ],
+   [
+    "suspeitos",
+    91
    ],
    [
     "segurança",
-    74
-   ],
-   [
-    "feira",
-    72
-   ],
-   [
-    "presidente",
-    71
+    90
    ],
    [
     "militar",
-    68
+    89
    ],
    [
-    "guilherme",
-    68
+    "pública",
+    88
    ],
    [
-    "campanha",
-    66
+    "feira",
+    85
+   ],
+   [
+    "presidente",
+    85
    ],
    [
     "policial",
-    65
+    84
+   ],
+   [
+    "campanha",
+    83
+   ],
+   [
+    "guilherme",
+    78
    ],
    [
     "senador",
-    64
-   ],
-   [
-    "afirmou",
-    63
-   ],
-   [
-    "dois",
-    60
+    76
    ],
    [
     "durante",
-    59
+    75
    ],
    [
-    "eleito",
-    58
+    "eleitoral",
+    71
    ],
    [
-    "filho",
-    56
+    "denúncia",
+    70
+   ],
+   [
+    "afirmou",
+    70
    ],
    [
     "presos",
-    56
+    70
+   ],
+   [
+    "interior",
+    68
    ]
   ],
   "rede_palavras": {
    "desenho": {
     "nos": [
      {
-      "id": "afastamento",
-      "rotulo": "afastamento",
+      "id": "trafico",
+      "rotulo": "trafico",
       "tipo": "palavra",
-      "n": 27,
-      "grupo": 1,
-      "x": 0.0881,
-      "y": 1.3197
+      "n": 91,
+      "grupo": 2,
+      "x": 1.1902,
+      "y": 0.6863
      },
      {
       "id": "droga",
       "rotulo": "droga",
       "tipo": "palavra",
-      "n": 69,
-      "grupo": 0,
-      "x": 1.3468,
-      "y": 0.8986
-     },
-     {
-      "id": "informar",
-      "rotulo": "informar",
-      "tipo": "palavra",
-      "n": 26,
-      "grupo": 1,
-      "x": 1.1817,
-      "y": 0.1822
-     },
-     {
-      "id": "acusacao",
-      "rotulo": "acusacao",
-      "tipo": "palavra",
-      "n": 26,
-      "grupo": 1,
-      "x": 1.8297,
-      "y": 1.497
-     },
-     {
-      "id": "envolvido",
-      "rotulo": "envolvido",
-      "tipo": "palavra",
-      "n": 32,
-      "grupo": 1,
-      "x": 0.301,
-      "y": 0.5362
-     },
-     {
-      "id": "filho",
-      "rotulo": "filho",
-      "tipo": "palavra",
-      "n": 46,
-      "grupo": 0,
-      "x": 1.1077,
-      "y": 1.2911
-     },
-     {
-      "id": "paulo",
-      "rotulo": "paulo",
-      "tipo": "palavra",
-      "n": 81,
-      "grupo": 0,
-      "x": 0.8111,
-      "y": 1.1726
-     },
-     {
-      "id": "ocorrencia",
-      "rotulo": "ocorrencia",
-      "tipo": "palavra",
-      "n": 34,
-      "grupo": 1,
-      "x": 0.1022,
-      "y": 0.6436
-     },
-     {
-      "id": "delegacia",
-      "rotulo": "delegacia",
-      "tipo": "palavra",
-      "n": 27,
-      "grupo": 1,
-      "x": 1.4864,
-      "y": 0.0667
-     },
-     {
-      "id": "politica",
-      "rotulo": "politica",
-      "tipo": "palavra",
-      "n": 27,
-      "grupo": 1,
-      "x": 0.2418,
-      "y": 1.7169
-     },
-     {
-      "id": "agressao",
-      "rotulo": "agressao",
-      "tipo": "palavra",
-      "n": 29,
-      "grupo": 1,
-      "x": 0.6468,
-      "y": 0.1901
-     },
-     {
-      "id": "lula",
-      "rotulo": "lula",
-      "tipo": "palavra",
-      "n": 105,
-      "grupo": 0,
-      "x": 1.003,
-      "y": 0.8565
-     },
-     {
-      "id": "solicitar",
-      "rotulo": "solicitar",
-      "tipo": "palavra",
-      "n": 27,
-      "grupo": 1,
-      "x": 1.9664,
-      "y": 1.1221
-     },
-     {
-      "id": "estadual",
-      "rotulo": "estadual",
-      "tipo": "palavra",
-      "n": 29,
-      "grupo": 1,
-      "x": 0.6747,
-      "y": 0.0962
-     },
-     {
-      "id": "jovem",
-      "rotulo": "jovem",
-      "tipo": "palavra",
-      "n": 57,
-      "grupo": 0,
-      "x": 1.6717,
-      "y": 1.0255
-     },
-     {
-      "id": "interior",
-      "rotulo": "interior",
-      "tipo": "palavra",
-      "n": 49,
-      "grupo": 0,
-      "x": 0.6119,
-      "y": 1.3925
-     },
-     {
-      "id": "roupa",
-      "rotulo": "roupa",
-      "tipo": "palavra",
-      "n": 30,
-      "grupo": 1,
-      "x": 1.6195,
-      "y": 0.9816
-     },
-     {
-      "id": "usar",
-      "rotulo": "usar",
-      "tipo": "palavra",
-      "n": 68,
-      "grupo": 0,
-      "x": 0.9784,
-      "y": 1.4726
-     },
-     {
-      "id": "campanha",
-      "rotulo": "campanha",
-      "tipo": "palavra",
-      "n": 47,
-      "grupo": 1,
-      "x": 0.7587,
-      "y": 0.5159
-     },
-     {
-      "id": "seguranca",
-      "rotulo": "seguranca",
-      "tipo": "palavra",
-      "n": 55,
-      "grupo": 0,
-      "x": 1.0178,
-      "y": 1.6676
-     },
-     {
-      "id": "publico",
-      "rotulo": "publico",
-      "tipo": "palavra",
-      "n": 58,
-      "grupo": 0,
-      "x": 1.2108,
-      "y": 1.4474
-     },
-     {
-      "id": "comunidade",
-      "rotulo": "comunidade",
-      "tipo": "palavra",
-      "n": 39,
-      "grupo": 1,
-      "x": 0.2475,
-      "y": 1.0263
-     },
-     {
-      "id": "momento",
-      "rotulo": "momento",
-      "tipo": "palavra",
-      "n": 35,
-      "grupo": 1,
-      "x": 1.7717,
-      "y": 1.4269
-     },
-     {
-      "id": "denuncia",
-      "rotulo": "denuncia",
-      "tipo": "palavra",
-      "n": 63,
-      "grupo": 1,
-      "x": 1.1677,
-      "y": 0.6339
-     },
-     {
-      "id": "preso",
-      "rotulo": "preso",
-      "tipo": "palavra",
-      "n": 54,
-      "grupo": 0,
-      "x": 0.3134,
-      "y": 1.0649
-     },
-     {
-      "id": "obrigar",
-      "rotulo": "obrigar",
-      "tipo": "palavra",
-      "n": 91,
-      "grupo": 0,
-      "x": 1.2848,
-      "y": 1.02
-     },
-     {
-      "id": "camiseta",
-      "rotulo": "camiseta",
-      "tipo": "palavra",
-      "n": 126,
-      "grupo": 0,
-      "x": 0.9841,
-      "y": 0.9356
-     },
-     {
-      "id": "deter",
-      "rotulo": "deter",
-      "tipo": "palavra",
-      "n": 54,
-      "grupo": 0,
-      "x": 1.3947,
-      "y": 0.7706
-     },
-     {
-      "id": "pantanal",
-      "rotulo": "pantanal",
-      "tipo": "palavra",
-      "n": 32,
-      "grupo": 1,
-      "x": 0.4619,
-      "y": 0.3659
-     },
-     {
-      "id": "imagem",
-      "rotulo": "imagem",
-      "tipo": "palavra",
-      "n": 68,
-      "grupo": 0,
-      "x": 0.6819,
-      "y": 1.3866
-     },
-     {
-      "id": "guilherme",
-      "rotulo": "guilherme",
-      "tipo": "palavra",
-      "n": 64,
-      "grupo": 0,
-      "x": 1.4734,
-      "y": 1.3192
+      "n": 90,
+      "grupo": 2,
+      "x": 1.3363,
+      "y": 0.8456
      },
      {
       "id": "vestir",
       "rotulo": "vestir",
       "tipo": "palavra",
-      "n": 103,
-      "grupo": 0,
-      "x": 1.0174,
-      "y": 0.9099
+      "n": 146,
+      "grupo": 2,
+      "x": 0.8736,
+      "y": 1.1706
      },
      {
       "id": "corregedoria",
       "rotulo": "corregedoria",
       "tipo": "palavra",
-      "n": 30,
-      "grupo": 1,
-      "x": 0.2276,
-      "y": 0.5426
-     },
-     {
-      "id": "trafico",
-      "rotulo": "trafico",
-      "tipo": "palavra",
-      "n": 67,
+      "n": 36,
       "grupo": 0,
-      "x": 1.4275,
-      "y": 0.913
-     },
-     {
-      "id": "homem",
-      "rotulo": "homem",
-      "tipo": "palavra",
-      "n": 44,
-      "grupo": 0,
-      "x": 0.8318,
-      "y": 1.7065
-     },
-     {
-      "id": "rede",
-      "rotulo": "rede",
-      "tipo": "palavra",
-      "n": 41,
-      "grupo": 1,
-      "x": 1.5734,
-      "y": 0.6095
-     },
-     {
-      "id": "pt",
-      "rotulo": "pt",
-      "tipo": "palavra",
-      "n": 108,
-      "grupo": 0,
-      "x": 0.7789,
-      "y": 0.8996
-     },
-     {
-      "id": "dizer",
-      "rotulo": "dizer",
-      "tipo": "palavra",
-      "n": 28,
-      "grupo": 1,
-      "x": 0.4412,
-      "y": 1.6781
-     },
-     {
-      "id": "policial",
-      "rotulo": "policial",
-      "tipo": "palavra",
-      "n": 108,
-      "grupo": 0,
-      "x": 1.0367,
-      "y": 0.9591
-     },
-     {
-      "id": "mae",
-      "rotulo": "mae",
-      "tipo": "palavra",
-      "n": 70,
-      "grupo": 0,
-      "x": 1.3838,
-      "y": 1.3088
-     },
-     {
-      "id": "estar",
-      "rotulo": "estar",
-      "tipo": "palavra",
-      "n": 39,
-      "grupo": 1,
-      "x": 0.335,
-      "y": 1.3794
-     },
-     {
-      "id": "acusar",
-      "rotulo": "acusar",
-      "tipo": "palavra",
-      "n": 43,
-      "grupo": 0,
-      "x": 0.6552,
-      "y": 1.7927
-     },
-     {
-      "id": "agente",
-      "rotulo": "agente",
-      "tipo": "palavra",
-      "n": 37,
-      "grupo": 1,
-      "x": 0.3503,
-      "y": 1.1175
-     },
-     {
-      "id": "secretario",
-      "rotulo": "secretario",
-      "tipo": "palavra",
-      "n": 38,
-      "grupo": 0,
-      "x": 1.3743,
-      "y": 1.81
-     },
-     {
-      "id": "ano",
-      "rotulo": "ano",
-      "tipo": "palavra",
-      "n": 66,
-      "grupo": 0,
-      "x": 1.1517,
-      "y": 1.377
-     },
-     {
-      "id": "eleito",
-      "rotulo": "eleito",
-      "tipo": "palavra",
-      "n": 54,
-      "grupo": 0,
-      "x": 1.4359,
-      "y": 1.395
-     },
-     {
-      "id": "sp",
-      "rotulo": "sp",
-      "tipo": "palavra",
-      "n": 68,
-      "grupo": 0,
-      "x": 1.2437,
-      "y": 0.5357
-     },
-     {
-      "id": "feira",
-      "rotulo": "feira",
-      "tipo": "palavra",
-      "n": 53,
-      "grupo": 1,
-      "x": 0.8487,
-      "y": 1.4775
-     },
-     {
-      "id": "eleitoral",
-      "rotulo": "eleitoral",
-      "tipo": "palavra",
-      "n": 41,
-      "grupo": 1,
-      "x": 1.5865,
-      "y": 1.195
-     },
-     {
-      "id": "apreender",
-      "rotulo": "apreender",
-      "tipo": "palavra",
-      "n": 54,
-      "grupo": 0,
-      "x": 0.6075,
-      "y": 1.3007
-     },
-     {
-      "id": "presidente",
-      "rotulo": "presidente",
-      "tipo": "palavra",
-      "n": 60,
-      "grupo": 1,
-      "x": 0.5676,
-      "y": 0.8975
-     },
-     {
-      "id": "senador",
-      "rotulo": "senador",
-      "tipo": "palavra",
-      "n": 59,
-      "grupo": 0,
-      "x": 1.3175,
-      "y": 1.5131
-     },
-     {
-      "id": "abordagem",
-      "rotulo": "abordagem",
-      "tipo": "palavra",
-      "n": 65,
-      "grupo": 0,
-      "x": 1.3324,
-      "y": 0.8463
-     },
-     {
-      "id": "social",
-      "rotulo": "social",
-      "tipo": "palavra",
-      "n": 37,
-      "grupo": 1,
-      "x": 1.1154,
-      "y": 0.3934
-     },
-     {
-      "id": "afirmar",
-      "rotulo": "afirmar",
-      "tipo": "palavra",
-      "n": 71,
-      "grupo": 0,
-      "x": 1.2176,
-      "y": 0.7746
-     },
-     {
-      "id": "suspeito",
-      "rotulo": "suspeito",
-      "tipo": "palavra",
-      "n": 54,
-      "grupo": 1,
-      "x": 0.5864,
-      "y": 0.5907
-     },
-     {
-      "id": "suspeita",
-      "rotulo": "suspeita",
-      "tipo": "palavra",
-      "n": 42,
-      "grupo": 0,
-      "x": 0.4348,
-      "y": 1.4365
-     },
-     {
-      "id": "adolescente",
-      "rotulo": "adolescente",
-      "tipo": "palavra",
-      "n": 73,
-      "grupo": 0,
-      "x": 0.7426,
-      "y": 0.8646
-     },
-     {
-      "id": "derrite",
-      "rotulo": "derrite",
-      "tipo": "palavra",
-      "n": 70,
-      "grupo": 0,
-      "x": 1.0417,
-      "y": 1.4518
-     },
-     {
-      "id": "professor",
-      "rotulo": "professor",
-      "tipo": "palavra",
-      "n": 34,
-      "grupo": 1,
-      "x": 1.5385,
-      "y": 0.4669
-     },
-     {
-      "id": "partido",
-      "rotulo": "partido",
-      "tipo": "palavra",
-      "n": 38,
-      "grupo": 1,
-      "x": 1.7053,
-      "y": 0.6888
-     },
-     {
-      "id": "acompanhar",
-      "rotulo": "acompanhar",
-      "tipo": "palavra",
-      "n": 26,
-      "grupo": 1,
-      "x": 2.0,
-      "y": 0.2909
-     },
-     {
-      "id": "acao",
-      "rotulo": "acao",
-      "tipo": "palavra",
-      "n": 31,
-      "grupo": 1,
-      "x": 1.8201,
-      "y": 0.8531
-     },
-     {
-      "id": "deputado",
-      "rotulo": "deputado",
-      "tipo": "palavra",
-      "n": 34,
-      "grupo": 1,
-      "x": 1.0815,
-      "y": 0.1608
+      "x": 1.4688,
+      "y": 1.6315
      },
      {
       "id": "divulgar",
       "rotulo": "divulgar",
       "tipo": "palavra",
-      "n": 54,
-      "grupo": 0,
-      "x": 1.2536,
-      "y": 1.2883
-     },
-     {
-      "id": "caso",
-      "rotulo": "caso",
-      "tipo": "palavra",
       "n": 64,
       "grupo": 1,
-      "x": 0.7525,
-      "y": 0.6928
+      "x": 0.5138,
+      "y": 1.2717
      },
      {
-      "id": "relato",
-      "rotulo": "relato",
+      "id": "agente",
+      "rotulo": "agente",
       "tipo": "palavra",
-      "n": 27,
-      "grupo": 1,
-      "x": 0.4277,
-      "y": 0.0513
-     },
-     {
-      "id": "pedir",
-      "rotulo": "pedir",
-      "tipo": "palavra",
-      "n": 51,
-      "grupo": 1,
-      "x": 0.4881,
-      "y": 0.8634
-     },
-     {
-      "id": "investigacao",
-      "rotulo": "investigacao",
-      "tipo": "palavra",
-      "n": 41,
-      "grupo": 1,
-      "x": 0.315,
-      "y": 0.8725
-     },
-     {
-      "id": "militar",
-      "rotulo": "militar",
-      "tipo": "palavra",
-      "n": 97,
+      "n": 46,
       "grupo": 0,
-      "x": 0.9258,
-      "y": 0.8125
+      "x": 1.0732,
+      "y": 1.5288
      },
      {
-      "id": "ex",
-      "rotulo": "ex",
+      "id": "roupa",
+      "rotulo": "roupa",
       "tipo": "palavra",
-      "n": 34,
+      "n": 39,
       "grupo": 0,
-      "x": 1.4454,
-      "y": 1.8514
+      "x": 1.0922,
+      "y": 1.7656
      },
      {
-      "id": "ouvidoria",
-      "rotulo": "ouvidoria",
+      "id": "pt",
+      "rotulo": "pt",
       "tipo": "palavra",
-      "n": 34,
-      "grupo": 1,
-      "x": 0.9048,
-      "y": 0.3943
-     },
-     {
-      "id": "pp",
-      "rotulo": "pp",
-      "tipo": "palavra",
-      "n": 36,
-      "grupo": 0,
-      "x": 1.1187,
-      "y": 1.8713
-     },
-     {
-      "id": "pm",
-      "rotulo": "pm",
-      "tipo": "palavra",
-      "n": 50,
-      "grupo": 0,
-      "x": 0.9428,
-      "y": 1.7197
-     },
-     {
-      "id": "bebel",
-      "rotulo": "bebel",
-      "tipo": "palavra",
-      "n": 28,
-      "grupo": 1,
-      "x": 1.4831,
-      "y": 0.2441
-     },
-     {
-      "id": "operacao",
-      "rotulo": "operacao",
-      "tipo": "palavra",
-      "n": 29,
-      "grupo": 0,
-      "x": 1.5315,
-      "y": 1.8471
-     },
-     {
-      "id": "denunciar",
-      "rotulo": "denunciar",
-      "tipo": "palavra",
-      "n": 30,
-      "grupo": 1,
-      "x": 0.8869,
-      "y": 0.1301
+      "n": 151,
+      "grupo": 2,
+      "x": 1.144,
+      "y": 1.2289
      },
      {
       "id": "policia",
       "rotulo": "policia",
       "tipo": "palavra",
+      "n": 102,
+      "grupo": 2,
+      "x": 0.6307,
+      "y": 0.8361
+     },
+     {
+      "id": "lula",
+      "rotulo": "lula",
+      "tipo": "palavra",
+      "n": 149,
+      "grupo": 2,
+      "x": 1.0931,
+      "y": 0.9699
+     },
+     {
+      "id": "agressao",
+      "rotulo": "agressao",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 0,
+      "x": 0.1987,
+      "y": 1.048
+     },
+     {
+      "id": "sp",
+      "rotulo": "sp",
+      "tipo": "palavra",
+      "n": 94,
+      "grupo": 2,
+      "x": 0.4979,
+      "y": 1.1309
+     },
+     {
+      "id": "senador",
+      "rotulo": "senador",
+      "tipo": "palavra",
       "n": 71,
       "grupo": 1,
-      "x": 0.6367,
-      "y": 1.0293
+      "x": 0.9477,
+      "y": 0.7318
+     },
+     {
+      "id": "denunciar",
+      "rotulo": "denunciar",
+      "tipo": "palavra",
+      "n": 43,
+      "grupo": 2,
+      "x": 1.1848,
+      "y": 1.7517
+     },
+     {
+      "id": "pantanal",
+      "rotulo": "pantanal",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 0,
+      "x": 1.7366,
+      "y": 0.5368
+     },
+     {
+      "id": "militar",
+      "rotulo": "militar",
+      "tipo": "palavra",
+      "n": 129,
+      "grupo": 2,
+      "x": 1.1645,
+      "y": 1.0446
+     },
+     {
+      "id": "afastamento",
+      "rotulo": "afastamento",
+      "tipo": "palavra",
+      "n": 32,
+      "grupo": 0,
+      "x": 0.186,
+      "y": 0.5636
+     },
+     {
+      "id": "mae",
+      "rotulo": "mae",
+      "tipo": "palavra",
+      "n": 83,
+      "grupo": 1,
+      "x": 0.8163,
+      "y": 0.6125
+     },
+     {
+      "id": "momento",
+      "rotulo": "momento",
+      "tipo": "palavra",
+      "n": 36,
+      "grupo": 0,
+      "x": 0.9095,
+      "y": 1.6994
+     },
+     {
+      "id": "pm",
+      "rotulo": "pm",
+      "tipo": "palavra",
+      "n": 73,
+      "grupo": 2,
+      "x": 1.4582,
+      "y": 0.6648
+     },
+     {
+      "id": "guilherme",
+      "rotulo": "guilherme",
+      "tipo": "palavra",
+      "n": 73,
+      "grupo": 1,
+      "x": 0.5682,
+      "y": 0.6438
+     },
+     {
+      "id": "apreender",
+      "rotulo": "apreender",
+      "tipo": "palavra",
+      "n": 65,
+      "grupo": 1,
+      "x": 1.3789,
+      "y": 1.0758
      },
      {
       "id": "piracicaba",
       "rotulo": "piracicaba",
       "tipo": "palavra",
-      "n": 142,
+      "n": 200,
+      "grupo": 2,
+      "x": 1.1238,
+      "y": 1.0981
+     },
+     {
+      "id": "seguranca",
+      "rotulo": "seguranca",
+      "tipo": "palavra",
+      "n": 63,
+      "grupo": 1,
+      "x": 0.4439,
+      "y": 0.7403
+     },
+     {
+      "id": "acao",
+      "rotulo": "acao",
+      "tipo": "palavra",
+      "n": 37,
       "grupo": 0,
-      "x": 0.9806,
-      "y": 0.7852
+      "x": 1.5124,
+      "y": 0.2992
+     },
+     {
+      "id": "envolvido",
+      "rotulo": "envolvido",
+      "tipo": "palavra",
+      "n": 39,
+      "grupo": 0,
+      "x": 1.6453,
+      "y": 1.3743
+     },
+     {
+      "id": "rede",
+      "rotulo": "rede",
+      "tipo": "palavra",
+      "n": 51,
+      "grupo": 0,
+      "x": 1.1738,
+      "y": 1.6539
+     },
+     {
+      "id": "social",
+      "rotulo": "social",
+      "tipo": "palavra",
+      "n": 44,
+      "grupo": 0,
+      "x": 1.2968,
+      "y": 1.4911
+     },
+     {
+      "id": "jovem",
+      "rotulo": "jovem",
+      "tipo": "palavra",
+      "n": 89,
+      "grupo": 2,
+      "x": 0.6895,
+      "y": 1.1621
+     },
+     {
+      "id": "imagem",
+      "rotulo": "imagem",
+      "tipo": "palavra",
+      "n": 81,
+      "grupo": 1,
+      "x": 0.7888,
+      "y": 1.1376
+     },
+     {
+      "id": "solicitar",
+      "rotulo": "solicitar",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 0,
+      "x": 0.3917,
+      "y": 0.3149
+     },
+     {
+      "id": "publico",
+      "rotulo": "publico",
+      "tipo": "palavra",
+      "n": 65,
+      "grupo": 1,
+      "x": 0.6142,
+      "y": 0.9103
+     },
+     {
+      "id": "ocorrencia",
+      "rotulo": "ocorrencia",
+      "tipo": "palavra",
+      "n": 43,
+      "grupo": 2,
+      "x": 0.5058,
+      "y": 1.6464
+     },
+     {
+      "id": "operacao",
+      "rotulo": "operacao",
+      "tipo": "palavra",
+      "n": 39,
+      "grupo": 1,
+      "x": 1.1731,
+      "y": 0.22
+     },
+     {
+      "id": "mulher",
+      "rotulo": "mulher",
+      "tipo": "palavra",
+      "n": 35,
+      "grupo": 0,
+      "x": 0.6399,
+      "y": 1.8276
      },
      {
       "id": "apoio",
       "rotulo": "apoio",
       "tipo": "palavra",
-      "n": 69,
+      "n": 93,
+      "grupo": 1,
+      "x": 1.2931,
+      "y": 0.827
+     },
+     {
+      "id": "ano",
+      "rotulo": "ano",
+      "tipo": "palavra",
+      "n": 79,
+      "grupo": 1,
+      "x": 1.0829,
+      "y": 0.5773
+     },
+     {
+      "id": "eleito",
+      "rotulo": "eleito",
+      "tipo": "palavra",
+      "n": 62,
+      "grupo": 1,
+      "x": 0.7733,
+      "y": 0.4559
+     },
+     {
+      "id": "camiseta",
+      "rotulo": "camiseta",
+      "tipo": "palavra",
+      "n": 185,
+      "grupo": 2,
+      "x": 0.9989,
+      "y": 0.8877
+     },
+     {
+      "id": "partido",
+      "rotulo": "partido",
+      "tipo": "palavra",
+      "n": 42,
       "grupo": 0,
-      "x": 0.6608,
-      "y": 1.3675
+      "x": 1.6433,
+      "y": 0.9603
+     },
+     {
+      "id": "preso",
+      "rotulo": "preso",
+      "tipo": "palavra",
+      "n": 68,
+      "grupo": 1,
+      "x": 1.3477,
+      "y": 0.5647
+     },
+     {
+      "id": "ex",
+      "rotulo": "ex",
+      "tipo": "palavra",
+      "n": 39,
+      "grupo": 1,
+      "x": 0.2339,
+      "y": 0.7591
+     },
+     {
+      "id": "denuncia",
+      "rotulo": "denuncia",
+      "tipo": "palavra",
+      "n": 81,
+      "grupo": 0,
+      "x": 0.6236,
+      "y": 1.0492
+     },
+     {
+      "id": "ouvidoria",
+      "rotulo": "ouvidoria",
+      "tipo": "palavra",
+      "n": 41,
+      "grupo": 0,
+      "x": 0.3795,
+      "y": 1.3584
+     },
+     {
+      "id": "abordagem",
+      "rotulo": "abordagem",
+      "tipo": "palavra",
+      "n": 81,
+      "grupo": 1,
+      "x": 0.5293,
+      "y": 0.793
+     },
+     {
+      "id": "derrite",
+      "rotulo": "derrite",
+      "tipo": "palavra",
+      "n": 84,
+      "grupo": 1,
+      "x": 0.7349,
+      "y": 1.2573
+     },
+     {
+      "id": "video",
+      "rotulo": "video",
+      "tipo": "palavra",
+      "n": 30,
+      "grupo": 2,
+      "x": 0.1626,
+      "y": 1.4331
+     },
+     {
+      "id": "investigacao",
+      "rotulo": "investigacao",
+      "tipo": "palavra",
+      "n": 52,
+      "grupo": 0,
+      "x": 0.5725,
+      "y": 0.5177
+     },
+     {
+      "id": "deter",
+      "rotulo": "deter",
+      "tipo": "palavra",
+      "n": 79,
+      "grupo": 2,
+      "x": 0.6829,
+      "y": 1.3732
+     },
+     {
+      "id": "caso",
+      "rotulo": "caso",
+      "tipo": "palavra",
+      "n": 75,
+      "grupo": 0,
+      "x": 1.3313,
+      "y": 1.1649
+     },
+     {
+      "id": "acusar",
+      "rotulo": "acusar",
+      "tipo": "palavra",
+      "n": 66,
+      "grupo": 2,
+      "x": 1.6346,
+      "y": 0.9799
+     },
+     {
+      "id": "interior",
+      "rotulo": "interior",
+      "tipo": "palavra",
+      "n": 62,
+      "grupo": 1,
+      "x": 0.6572,
+      "y": 1.4287
+     },
+     {
+      "id": "secretario",
+      "rotulo": "secretario",
+      "tipo": "palavra",
+      "n": 43,
+      "grupo": 1,
+      "x": 0.2962,
+      "y": 1.2021
+     },
+     {
+      "id": "feira",
+      "rotulo": "feira",
+      "tipo": "palavra",
+      "n": 64,
+      "grupo": 2,
+      "x": 1.2481,
+      "y": 0.4684
+     },
+     {
+      "id": "pms",
+      "rotulo": "pms",
+      "tipo": "palavra",
+      "n": 36,
+      "grupo": 2,
+      "x": 0.0,
+      "y": 0.8808
+     },
+     {
+      "id": "deputado",
+      "rotulo": "deputado",
+      "tipo": "palavra",
+      "n": 36,
+      "grupo": 0,
+      "x": 1.8672,
+      "y": 1.1658
+     },
+     {
+      "id": "suspeito",
+      "rotulo": "suspeito",
+      "tipo": "palavra",
+      "n": 69,
+      "grupo": 2,
+      "x": 0.8284,
+      "y": 0.4164
+     },
+     {
+      "id": "professor",
+      "rotulo": "professor",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 0,
+      "x": 1.5998,
+      "y": 0.9417
+     },
+     {
+      "id": "filho",
+      "rotulo": "filho",
+      "tipo": "palavra",
+      "n": 54,
+      "grupo": 1,
+      "x": 1.0181,
+      "y": 0.3574
+     },
+     {
+      "id": "relato",
+      "rotulo": "relato",
+      "tipo": "palavra",
+      "n": 35,
+      "grupo": 0,
+      "x": 0.8469,
+      "y": 1.9883
+     },
+     {
+      "id": "politica",
+      "rotulo": "politica",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 0,
+      "x": 0.6478,
+      "y": 0.1587
+     },
+     {
+      "id": "suspeita",
+      "rotulo": "suspeita",
+      "tipo": "palavra",
+      "n": 49,
+      "grupo": 1,
+      "x": 1.5082,
+      "y": 1.3295
+     },
+     {
+      "id": "dizer",
+      "rotulo": "dizer",
+      "tipo": "palavra",
+      "n": 32,
+      "grupo": 0,
+      "x": 1.6356,
+      "y": 0.7182
+     },
+     {
+      "id": "pedir",
+      "rotulo": "pedir",
+      "tipo": "palavra",
+      "n": 67,
+      "grupo": 0,
+      "x": 0.8677,
+      "y": 1.4141
+     },
+     {
+      "id": "obrigar",
+      "rotulo": "obrigar",
+      "tipo": "palavra",
+      "n": 124,
+      "grupo": 2,
+      "x": 0.9722,
+      "y": 1.1841
+     },
+     {
+      "id": "pp",
+      "rotulo": "pp",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 1,
+      "x": 0.7714,
+      "y": 1.5985
+     },
+     {
+      "id": "comunidade",
+      "rotulo": "comunidade",
+      "tipo": "palavra",
+      "n": 46,
+      "grupo": 0,
+      "x": 1.672,
+      "y": 0.9269
+     },
+     {
+      "id": "delegacia",
+      "rotulo": "delegacia",
+      "tipo": "palavra",
+      "n": 32,
+      "grupo": 2,
+      "x": 0.9665,
+      "y": 0.127
+     },
+     {
+      "id": "adolescente",
+      "rotulo": "adolescente",
+      "tipo": "palavra",
+      "n": 95,
+      "grupo": 1,
+      "x": 1.0748,
+      "y": 1.1799
+     },
+     {
+      "id": "presidente",
+      "rotulo": "presidente",
+      "tipo": "palavra",
+      "n": 74,
+      "grupo": 0,
+      "x": 1.4198,
+      "y": 1.1576
+     },
+     {
+      "id": "eleitoral",
+      "rotulo": "eleitoral",
+      "tipo": "palavra",
+      "n": 54,
+      "grupo": 0,
+      "x": 1.2328,
+      "y": 0.2926
+     },
+     {
+      "id": "paulo",
+      "rotulo": "paulo",
+      "tipo": "palavra",
+      "n": 103,
+      "grupo": 1,
+      "x": 0.864,
+      "y": 0.7218
+     },
+     {
+      "id": "estadual",
+      "rotulo": "estadual",
+      "tipo": "palavra",
+      "n": 32,
+      "grupo": 0,
+      "x": 1.8795,
+      "y": 0.8352
+     },
+     {
+      "id": "policial",
+      "rotulo": "policial",
+      "tipo": "palavra",
+      "n": 149,
+      "grupo": 2,
+      "x": 0.9818,
+      "y": 0.8929
+     },
+     {
+      "id": "usar",
+      "rotulo": "usar",
+      "tipo": "palavra",
+      "n": 79,
+      "grupo": 1,
+      "x": 1.0442,
+      "y": 0.5674
+     },
+     {
+      "id": "campanha",
+      "rotulo": "campanha",
+      "tipo": "palavra",
+      "n": 61,
+      "grupo": 2,
+      "x": 1.3761,
+      "y": 1.5005
+     },
+     {
+      "id": "estar",
+      "rotulo": "estar",
+      "tipo": "palavra",
+      "n": 49,
+      "grupo": 0,
+      "x": 1.3804,
+      "y": 1.4032
+     },
+     {
+      "id": "vitoria",
+      "rotulo": "vitoria",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 0,
+      "x": 1.8303,
+      "y": 1.4772
+     },
+     {
+      "id": "homem",
+      "rotulo": "homem",
+      "tipo": "palavra",
+      "n": 48,
+      "grupo": 1,
+      "x": 1.3794,
+      "y": 0.4627
+     },
+     {
+      "id": "afirmar",
+      "rotulo": "afirmar",
+      "tipo": "palavra",
+      "n": 87,
+      "grupo": 1,
+      "x": 0.6465,
+      "y": 0.9292
      }
     ],
     "arestas": [
      [
-      "afastamento",
-      "acusar",
-      7
-     ],
-     [
-      "afastamento",
-      "agente",
-      19
-     ],
-     [
-      "afastamento",
-      "apoio",
-      22
-     ],
-     [
-      "afastamento",
-      "camiseta",
-      27
-     ],
-     [
-      "afastamento",
-      "denuncia",
-      22
-     ],
-     [
-      "afastamento",
-      "derrite",
-      14
-     ],
-     [
-      "afastamento",
-      "divulgar",
-      19
-     ],
-     [
-      "afastamento",
-      "eleito",
-      13
-     ],
-     [
-      "afastamento",
-      "eleitoral",
-      8
-     ],
-     [
-      "afastamento",
-      "envolvido",
-      20
-     ],
-     [
-      "afastamento",
-      "guilherme",
-      13
-     ],
-     [
-      "afastamento",
-      "imagem",
-      22
-     ],
-     [
-      "afastamento",
-      "informar",
-      10
-     ],
-     [
-      "afastamento",
-      "investigacao",
-      17
-     ],
-     [
-      "afastamento",
-      "lula",
-      26
-     ],
-     [
-      "afastamento",
-      "militar",
-      25
-     ],
-     [
-      "afastamento",
-      "obrigar",
-      21
-     ],
-     [
-      "afastamento",
-      "operacao",
-      11
-     ],
-     [
-      "afastamento",
-      "ouvidoria",
-      26
-     ],
-     [
-      "afastamento",
-      "paulo",
-      23
-     ],
-     [
-      "afastamento",
-      "pedir",
-      25
-     ],
-     [
-      "afastamento",
-      "piracicaba",
-      27
-     ],
-     [
-      "afastamento",
-      "policia",
-      27
-     ],
-     [
-      "afastamento",
-      "policial",
-      26
-     ],
-     [
-      "afastamento",
-      "pp",
-      11
-     ],
-     [
-      "afastamento",
-      "pt",
-      24
-     ],
-     [
-      "afastamento",
-      "relato",
-      7
-     ],
-     [
-      "afastamento",
-      "senador",
-      13
-     ],
-     [
-      "afastamento",
-      "solicitar",
-      16
-     ],
-     [
-      "afastamento",
-      "sp",
-      9
-     ],
-     [
-      "afastamento",
-      "suspeita",
-      14
-     ],
-     [
-      "afastamento",
-      "vestir",
-      27
-     ],
-     [
-      "afastamento",
-      "abordagem",
-      16
-     ],
-     [
-      "afastamento",
-      "acao",
-      7
-     ],
-     [
-      "afastamento",
-      "acompanhar",
-      4
-     ],
-     [
-      "afastamento",
-      "acusacao",
-      13
-     ],
-     [
-      "afastamento",
-      "adolescente",
-      19
-     ],
-     [
-      "afastamento",
-      "afirmar",
-      21
-     ],
-     [
-      "afastamento",
-      "agressao",
-      9
-     ],
-     [
-      "afastamento",
-      "ano",
-      13
-     ],
-     [
-      "afastamento",
-      "apreender",
-      13
-     ],
-     [
-      "afastamento",
-      "caso",
-      13
-     ],
-     [
-      "afastamento",
-      "comunidade",
-      9
-     ],
-     [
-      "afastamento",
-      "corregedoria",
-      15
-     ],
-     [
-      "afastamento",
-      "deter",
-      12
-     ],
-     [
-      "afastamento",
-      "dizer",
-      11
-     ],
-     [
-      "afastamento",
-      "droga",
-      13
-     ],
-     [
-      "afastamento",
-      "estar",
-      14
-     ],
-     [
-      "afastamento",
-      "feira",
-      9
-     ],
-     [
-      "afastamento",
-      "filho",
-      12
-     ],
-     [
-      "afastamento",
-      "homem",
-      19
-     ],
-     [
-      "afastamento",
-      "jovem",
-      9
-     ],
-     [
-      "afastamento",
-      "mae",
-      16
-     ],
-     [
-      "afastamento",
-      "momento",
-      11
-     ],
-     [
-      "afastamento",
-      "ocorrencia",
-      12
-     ],
-     [
-      "afastamento",
-      "pantanal",
-      4
-     ],
-     [
-      "afastamento",
-      "pm",
-      14
-     ],
-     [
-      "afastamento",
-      "preso",
-      14
-     ],
-     [
-      "afastamento",
-      "publico",
-      18
-     ],
-     [
-      "afastamento",
-      "seguranca",
-      18
-     ],
-     [
-      "afastamento",
       "trafico",
-      14
+      "apreender",
+      49
      ],
      [
-      "afastamento",
-      "usar",
-      17
+      "trafico",
+      "camiseta",
+      91
      ],
      [
-      "afastamento",
-      "bebel",
-      3
-     ],
-     [
-      "afastamento",
+      "trafico",
       "campanha",
-      12
-     ],
-     [
-      "afastamento",
-      "denunciar",
-      9
-     ],
-     [
-      "afastamento",
-      "deputado",
-      4
-     ],
-     [
-      "afastamento",
-      "ex",
-      8
-     ],
-     [
-      "afastamento",
-      "professor",
-      4
-     ],
-     [
-      "afastamento",
-      "roupa",
-      9
-     ],
-     [
-      "afastamento",
-      "secretario",
-      8
-     ],
-     [
-      "afastamento",
-      "suspeito",
-      15
-     ],
-     [
-      "afastamento",
-      "presidente",
-      16
-     ],
-     [
-      "afastamento",
-      "interior",
-      11
-     ],
-     [
-      "afastamento",
-      "politica",
-      7
-     ],
-     [
-      "afastamento",
-      "rede",
-      9
-     ],
-     [
-      "afastamento",
-      "social",
-      8
-     ],
-     [
-      "afastamento",
-      "partido",
-      7
-     ],
-     [
-      "droga",
-      "acao",
-      20
-     ],
-     [
-      "droga",
-      "adolescente",
-      52
-     ],
-     [
-      "droga",
-      "ano",
       48
      ],
      [
-      "droga",
-      "apoio",
-      42
+      "trafico",
+      "dizer",
+      22
      ],
      [
+      "trafico",
       "droga",
-      "camiseta",
-      67
+      82
      ],
      [
-      "droga",
-      "campanha",
-      36
+      "trafico",
+      "lula",
+      87
      ],
      [
-      "droga",
-      "denuncia",
-      33
+      "trafico",
+      "piracicaba",
+      88
      ],
      [
-      "droga",
-      "divulgar",
-      32
-     ],
-     [
-      "droga",
-      "envolvido",
-      20
-     ],
-     [
-      "droga",
-      "feira",
+      "trafico",
+      "pm",
       38
      ],
      [
-      "droga",
-      "imagem",
-      41
+      "trafico",
+      "policia",
+      59
      ],
      [
-      "droga",
-      "interior",
-      34
+      "trafico",
+      "sp",
+      51
      ],
      [
-      "droga",
-      "lula",
+      "trafico",
+      "suspeito",
+      48
+     ],
+     [
+      "trafico",
+      "acao",
+      26
+     ],
+     [
+      "trafico",
+      "adolescente",
       65
      ],
      [
-      "droga",
-      "militar",
-      60
+      "trafico",
+      "ano",
+      59
      ],
      [
-      "droga",
+      "trafico",
+      "apoio",
+      54
+     ],
+     [
+      "trafico",
+      "denuncia",
+      42
+     ],
+     [
+      "trafico",
+      "divulgar",
+      36
+     ],
+     [
+      "trafico",
+      "envolvido",
+      23
+     ],
+     [
+      "trafico",
+      "feira",
+      46
+     ],
+     [
+      "trafico",
+      "imagem",
+      49
+     ],
+     [
+      "trafico",
+      "interior",
+      41
+     ],
+     [
+      "trafico",
+      "militar",
+      78
+     ],
+     [
+      "trafico",
       "ocorrencia",
+      25
+     ],
+     [
+      "trafico",
+      "operacao",
+      24
+     ],
+     [
+      "trafico",
+      "paulo",
+      59
+     ],
+     [
+      "trafico",
+      "presidente",
+      46
+     ],
+     [
+      "trafico",
+      "pt",
+      75
+     ],
+     [
+      "trafico",
+      "rede",
+      32
+     ],
+     [
+      "trafico",
+      "social",
+      28
+     ],
+     [
+      "trafico",
+      "usar",
+      51
+     ],
+     [
+      "trafico",
+      "vestir",
+      82
+     ],
+     [
+      "trafico",
+      "abordagem",
+      49
+     ],
+     [
+      "trafico",
+      "afirmar",
+      55
+     ],
+     [
+      "trafico",
+      "caso",
+      44
+     ],
+     [
+      "trafico",
+      "derrite",
+      44
+     ],
+     [
+      "trafico",
+      "deter",
+      37
+     ],
+     [
+      "trafico",
+      "eleito",
+      38
+     ],
+     [
+      "trafico",
+      "eleitoral",
+      31
+     ],
+     [
+      "trafico",
+      "estar",
+      31
+     ],
+     [
+      "trafico",
+      "filho",
+      35
+     ],
+     [
+      "trafico",
+      "guilherme",
+      42
+     ],
+     [
+      "trafico",
+      "jovem",
+      50
+     ],
+     [
+      "trafico",
+      "mae",
+      52
+     ],
+     [
+      "trafico",
+      "momento",
+      23
+     ],
+     [
+      "trafico",
+      "obrigar",
+      68
+     ],
+     [
+      "trafico",
+      "partido",
+      24
+     ],
+     [
+      "trafico",
+      "pedir",
+      32
+     ],
+     [
+      "trafico",
+      "pms",
       22
      ],
      [
-      "droga",
-      "operacao",
+      "trafico",
+      "policial",
+      81
+     ],
+     [
+      "trafico",
+      "politica",
+      21
+     ],
+     [
+      "trafico",
+      "preso",
+      48
+     ],
+     [
+      "trafico",
+      "relato",
+      14
+     ],
+     [
+      "trafico",
+      "roupa",
+      27
+     ],
+     [
+      "trafico",
+      "senador",
+      43
+     ],
+     [
+      "trafico",
+      "video",
+      13
+     ],
+     [
+      "trafico",
+      "acusar",
+      41
+     ],
+     [
+      "trafico",
+      "comunidade",
+      31
+     ],
+     [
+      "trafico",
+      "delegacia",
+      28
+     ],
+     [
+      "trafico",
+      "pantanal",
+      23
+     ],
+     [
+      "trafico",
+      "vitoria",
+      19
+     ],
+     [
+      "trafico",
+      "denunciar",
+      26
+     ],
+     [
+      "trafico",
+      "ex",
+      21
+     ],
+     [
+      "trafico",
+      "investigacao",
+      29
+     ],
+     [
+      "trafico",
+      "mulher",
       20
      ],
      [
+      "trafico",
+      "publico",
+      36
+     ],
+     [
+      "trafico",
+      "secretario",
+      22
+     ],
+     [
+      "trafico",
+      "seguranca",
+      35
+     ],
+     [
+      "trafico",
+      "homem",
+      33
+     ],
+     [
+      "trafico",
+      "pp",
+      22
+     ],
+     [
+      "trafico",
+      "suspeita",
+      44
+     ],
+     [
+      "trafico",
+      "deputado",
+      22
+     ],
+     [
+      "trafico",
+      "professor",
+      23
+     ],
+     [
+      "trafico",
+      "agressao",
+      22
+     ],
+     [
+      "trafico",
+      "solicitar",
+      11
+     ],
+     [
+      "trafico",
+      "estadual",
+      19
+     ],
+     [
+      "trafico",
+      "ouvidoria",
+      15
+     ],
+     [
+      "trafico",
+      "corregedoria",
+      18
+     ],
+     [
+      "trafico",
+      "agente",
+      25
+     ],
+     [
+      "trafico",
+      "afastamento",
+      14
+     ],
+     [
       "droga",
-      "paulo",
+      "apreender",
       48
      ],
      [
       "droga",
+      "camiseta",
+      87
+     ],
+     [
+      "droga",
+      "campanha",
+      49
+     ],
+     [
+      "droga",
+      "dizer",
+      23
+     ],
+     [
+      "droga",
+      "lula",
+      84
+     ],
+     [
+      "droga",
       "piracicaba",
-      68
+      88
+     ],
+     [
+      "droga",
+      "pm",
+      35
      ],
      [
       "droga",
       "policia",
-      42
-     ],
-     [
-      "droga",
-      "presidente",
-      38
-     ],
-     [
-      "droga",
-      "pt",
       58
      ],
      [
       "droga",
-      "rede",
-      25
-     ],
-     [
-      "droga",
-      "social",
-      24
-     ],
-     [
-      "droga",
-      "trafico",
-      63
-     ],
-     [
-      "droga",
-      "usar",
-      44
-     ],
-     [
-      "droga",
-      "vestir",
-      61
-     ],
-     [
-      "droga",
-      "abordagem",
-      43
-     ],
-     [
-      "droga",
-      "afirmar",
+      "sp",
       46
      ],
      [
       "droga",
-      "agente",
-      22
+      "suspeito",
+      45
      ],
      [
       "droga",
-      "agressao",
-      22
-     ],
-     [
-      "droga",
-      "bebel",
-      20
-     ],
-     [
-      "droga",
-      "caso",
-      37
-     ],
-     [
-      "droga",
-      "comunidade",
-      28
-     ],
-     [
-      "droga",
-      "delegacia",
-      23
-     ],
-     [
-      "droga",
-      "denunciar",
-      22
-     ],
-     [
-      "droga",
-      "deputado",
-      23
-     ],
-     [
-      "droga",
-      "dizer",
-      20
-     ],
-     [
-      "droga",
-      "estadual",
-      18
-     ],
-     [
-      "droga",
-      "investigacao",
+      "acao",
       26
      ],
      [
       "droga",
-      "obrigar",
+      "adolescente",
+      62
+     ],
+     [
+      "droga",
+      "ano",
+      57
+     ],
+     [
+      "droga",
+      "apoio",
       53
      ],
      [
       "droga",
-      "ouvidoria",
-      17
-     ],
-     [
-      "droga",
-      "pantanal",
-      21
-     ],
-     [
-      "droga",
-      "partido",
-      22
-     ],
-     [
-      "droga",
-      "pedir",
-      29
-     ],
-     [
-      "droga",
-      "policial",
-      64
-     ],
-     [
-      "droga",
-      "politica",
-      18
-     ],
-     [
-      "droga",
-      "professor",
-      24
-     ],
-     [
-      "droga",
-      "relato",
-      13
-     ],
-     [
-      "droga",
-      "sp",
+      "denuncia",
       39
      ],
      [
       "droga",
-      "apreender",
-      43
-     ],
-     [
-      "droga",
-      "derrite",
-      40
-     ],
-     [
-      "droga",
-      "guilherme",
-      38
-     ],
-     [
-      "droga",
-      "informar",
-      20
-     ],
-     [
-      "droga",
-      "acusar",
-      28
-     ],
-     [
-      "droga",
-      "deter",
-      27
-     ],
-     [
-      "droga",
-      "eleito",
-      34
-     ],
-     [
-      "droga",
-      "eleitoral",
-      26
-     ],
-     [
-      "droga",
-      "estar",
-      24
-     ],
-     [
-      "droga",
-      "filho",
-      30
-     ],
-     [
-      "droga",
-      "homem",
-      31
-     ],
-     [
-      "droga",
-      "jovem",
-      37
-     ],
-     [
-      "droga",
-      "mae",
-      44
-     ],
-     [
-      "droga",
-      "pm",
-      28
-     ],
-     [
-      "droga",
-      "pp",
-      21
-     ],
-     [
-      "droga",
-      "preso",
-      40
-     ],
-     [
-      "droga",
-      "senador",
-      37
-     ],
-     [
-      "droga",
-      "ex",
-      17
-     ],
-     [
-      "droga",
-      "publico",
-      34
-     ],
-     [
-      "droga",
-      "secretario",
-      19
-     ],
-     [
-      "droga",
-      "seguranca",
-      33
-     ],
-     [
-      "droga",
-      "suspeita",
-      38
-     ],
-     [
-      "droga",
-      "momento",
-      22
-     ],
-     [
-      "droga",
-      "roupa",
-      22
-     ],
-     [
-      "droga",
-      "suspeito",
-      38
-     ],
-     [
-      "droga",
-      "acompanhar",
-      8
-     ],
-     [
-      "droga",
-      "solicitar",
-      11
-     ],
-     [
-      "droga",
-      "corregedoria",
-      16
-     ],
-     [
-      "droga",
-      "acusacao",
-      20
-     ],
-     [
-      "informar",
-      "agente",
-      13
-     ],
-     [
-      "informar",
-      "agressao",
-      16
-     ],
-     [
-      "informar",
-      "bebel",
-      9
-     ],
-     [
-      "informar",
-      "camiseta",
-      24
-     ],
-     [
-      "informar",
-      "comunidade",
-      13
-     ],
-     [
-      "informar",
-      "delegacia",
-      6
-     ],
-     [
-      "informar",
-      "denuncia",
-      24
-     ],
-     [
-      "informar",
-      "denunciar",
-      13
-     ],
-     [
-      "informar",
-      "deputado",
-      11
-     ],
-     [
-      "informar",
-      "envolvido",
-      12
-     ],
-     [
-      "informar",
-      "estadual",
-      9
-     ],
-     [
-      "informar",
-      "feira",
-      19
-     ],
-     [
-      "informar",
-      "militar",
-      26
-     ],
-     [
-      "informar",
-      "ocorrencia",
-      16
-     ],
-     [
-      "informar",
-      "ouvidoria",
-      12
-     ],
-     [
-      "informar",
-      "pantanal",
-      8
-     ],
-     [
-      "informar",
-      "partido",
-      6
-     ],
-     [
-      "informar",
-      "piracicaba",
-      26
-     ],
-     [
-      "informar",
-      "policia",
-      26
-     ],
-     [
-      "informar",
-      "policial",
-      24
-     ],
-     [
-      "informar",
-      "professor",
-      9
-     ],
-     [
-      "informar",
-      "pt",
-      23
-     ],
-     [
-      "informar",
-      "relato",
-      9
-     ],
-     [
-      "informar",
-      "solicitar",
-      7
-     ],
-     [
-      "informar",
-      "adolescente",
-      24
-     ],
-     [
-      "informar",
-      "apreender",
-      18
-     ],
-     [
-      "informar",
-      "derrite",
-      16
-     ],
-     [
-      "informar",
       "divulgar",
-      16
-     ],
-     [
-      "informar",
-      "guilherme",
-      15
-     ],
-     [
-      "informar",
-      "interior",
-      11
-     ],
-     [
-      "informar",
-      "operacao",
-      7
-     ],
-     [
-      "informar",
-      "paulo",
-      21
-     ],
-     [
-      "informar",
-      "politica",
-      9
-     ],
-     [
-      "informar",
-      "rede",
-      11
-     ],
-     [
-      "informar",
-      "social",
-      11
-     ],
-     [
-      "informar",
-      "acao",
-      10
-     ],
-     [
-      "informar",
-      "acusar",
-      9
-     ],
-     [
-      "informar",
-      "afirmar",
-      18
-     ],
-     [
-      "informar",
-      "ano",
-      21
-     ],
-     [
-      "informar",
-      "apoio",
-      16
-     ],
-     [
-      "informar",
-      "campanha",
-      15
-     ],
-     [
-      "informar",
-      "deter",
-      13
-     ],
-     [
-      "informar",
-      "eleito",
-      12
-     ],
-     [
-      "informar",
-      "eleitoral",
-      13
-     ],
-     [
-      "informar",
-      "estar",
-      11
-     ],
-     [
-      "informar",
-      "filho",
-      7
-     ],
-     [
-      "informar",
-      "homem",
-      13
-     ],
-     [
-      "informar",
-      "imagem",
-      16
-     ],
-     [
-      "informar",
-      "jovem",
-      10
-     ],
-     [
-      "informar",
-      "lula",
-      22
-     ],
-     [
-      "informar",
-      "mae",
-      15
-     ],
-     [
-      "informar",
-      "pm",
-      13
-     ],
-     [
-      "informar",
-      "pp",
-      7
-     ],
-     [
-      "informar",
-      "presidente",
-      14
-     ],
-     [
-      "informar",
-      "preso",
-      15
-     ],
-     [
-      "informar",
-      "senador",
-      12
-     ],
-     [
-      "informar",
-      "sp",
-      11
-     ],
-     [
-      "informar",
-      "trafico",
-      18
-     ],
-     [
-      "informar",
-      "usar",
-      13
-     ],
-     [
-      "informar",
-      "vestir",
-      22
-     ],
-     [
-      "informar",
-      "abordagem",
-      15
-     ],
-     [
-      "informar",
-      "momento",
-      11
-     ],
-     [
-      "informar",
-      "obrigar",
-      20
-     ],
-     [
-      "informar",
-      "pedir",
-      17
-     ],
-     [
-      "informar",
-      "roupa",
-      13
-     ],
-     [
-      "informar",
-      "suspeita",
-      11
-     ],
-     [
-      "informar",
-      "caso",
-      13
-     ],
-     [
-      "informar",
-      "corregedoria",
-      12
-     ],
-     [
-      "informar",
-      "investigacao",
-      15
-     ],
-     [
-      "informar",
-      "publico",
-      15
-     ],
-     [
-      "informar",
-      "seguranca",
-      14
-     ],
-     [
-      "informar",
-      "suspeito",
-      17
-     ],
-     [
-      "informar",
-      "acusacao",
-      11
-     ],
-     [
-      "informar",
-      "dizer",
-      11
-     ],
-     [
-      "informar",
-      "ex",
-      3
-     ],
-     [
-      "informar",
-      "secretario",
-      4
-     ],
-     [
-      "acusacao",
-      "abordagem",
-      14
-     ],
-     [
-      "acusacao",
-      "acao",
-      7
-     ],
-     [
-      "acusacao",
-      "acompanhar",
-      5
-     ],
-     [
-      "acusacao",
-      "acusar",
-      10
-     ],
-     [
-      "acusacao",
-      "adolescente",
-      23
-     ],
-     [
-      "acusacao",
-      "afirmar",
-      21
-     ],
-     [
-      "acusacao",
-      "agressao",
-      13
-     ],
-     [
-      "acusacao",
-      "ano",
-      21
-     ],
-     [
-      "acusacao",
-      "apreender",
-      17
-     ],
-     [
-      "acusacao",
-      "camiseta",
-      26
-     ],
-     [
-      "acusacao",
-      "caso",
-      18
-     ],
-     [
-      "acusacao",
-      "deter",
-      17
-     ],
-     [
-      "acusacao",
-      "estar",
-      11
-     ],
-     [
-      "acusacao",
-      "feira",
-      13
-     ],
-     [
-      "acusacao",
-      "filho",
-      10
-     ],
-     [
-      "acusacao",
-      "homem",
-      18
-     ],
-     [
-      "acusacao",
-      "investigacao",
-      17
-     ],
-     [
-      "acusacao",
-      "lula",
-      24
-     ],
-     [
-      "acusacao",
-      "mae",
-      17
-     ],
-     [
-      "acusacao",
-      "militar",
-      25
-     ],
-     [
-      "acusacao",
-      "momento",
-      8
-     ],
-     [
-      "acusacao",
-      "ocorrencia",
-      18
-     ],
-     [
-      "acusacao",
-      "piracicaba",
-      25
-     ],
-     [
-      "acusacao",
-      "policia",
-      21
-     ],
-     [
-      "acusacao",
-      "policial",
-      26
-     ],
-     [
-      "acusacao",
-      "presidente",
-      15
-     ],
-     [
-      "acusacao",
-      "relato",
-      3
-     ],
-     [
-      "acusacao",
-      "usar",
-      12
-     ],
-     [
-      "acusacao",
-      "apoio",
-      16
-     ],
-     [
-      "acusacao",
-      "delegacia",
-      8
-     ],
-     [
-      "acusacao",
-      "derrite",
-      13
-     ],
-     [
-      "acusacao",
-      "eleito",
-      13
-     ],
-     [
-      "acusacao",
-      "guilherme",
-      13
-     ],
-     [
-      "acusacao",
-      "imagem",
-      21
-     ],
-     [
-      "acusacao",
-      "jovem",
-      10
-     ],
-     [
-      "acusacao",
-      "operacao",
-      6
-     ],
-     [
-      "acusacao",
-      "preso",
-      15
-     ],
-     [
-      "acusacao",
-      "senador",
-      13
-     ],
-     [
-      "acusacao",
-      "sp",
-      15
-     ],
-     [
-      "acusacao",
-      "trafico",
-      20
-     ],
-     [
-      "acusacao",
-      "vestir",
-      24
-     ],
-     [
-      "acusacao",
-      "comunidade",
-      12
-     ],
-     [
-      "acusacao",
-      "corregedoria",
-      11
-     ],
-     [
-      "acusacao",
-      "denuncia",
-      19
-     ],
-     [
-      "acusacao",
-      "divulgar",
-      15
-     ],
-     [
-      "acusacao",
-      "dizer",
-      10
-     ],
-     [
-      "acusacao",
-      "obrigar",
-      23
-     ],
-     [
-      "acusacao",
-      "ouvidoria",
-      14
-     ],
-     [
-      "acusacao",
-      "pantanal",
-      7
-     ],
-     [
-      "acusacao",
-      "paulo",
-      18
-     ],
-     [
-      "acusacao",
-      "pedir",
-      17
-     ],
-     [
-      "acusacao",
-      "pm",
-      13
-     ],
-     [
-      "acusacao",
-      "publico",
-      16
-     ],
-     [
-      "acusacao",
-      "seguranca",
-      16
-     ],
-     [
-      "acusacao",
-      "solicitar",
-      7
-     ],
-     [
-      "acusacao",
-      "agente",
-      15
-     ],
-     [
-      "acusacao",
-      "bebel",
-      7
-     ],
-     [
-      "acusacao",
-      "campanha",
-      17
-     ],
-     [
-      "acusacao",
-      "deputado",
-      8
-     ],
-     [
-      "acusacao",
-      "eleitoral",
-      6
-     ],
-     [
-      "acusacao",
-      "envolvido",
-      13
-     ],
-     [
-      "acusacao",
-      "estadual",
-      7
-     ],
-     [
-      "acusacao",
-      "interior",
-      6
-     ],
-     [
-      "acusacao",
-      "partido",
-      5
-     ],
-     [
-      "acusacao",
-      "politica",
-      6
-     ],
-     [
-      "acusacao",
-      "professor",
-      9
-     ],
-     [
-      "acusacao",
-      "pt",
-      22
-     ],
-     [
-      "acusacao",
-      "rede",
-      9
-     ],
-     [
-      "acusacao",
-      "social",
-      9
-     ],
-     [
-      "acusacao",
-      "suspeito",
-      18
-     ],
-     [
-      "acusacao",
-      "denunciar",
-      11
-     ],
-     [
-      "acusacao",
-      "pp",
-      6
-     ],
-     [
-      "acusacao",
-      "roupa",
-      10
-     ],
-     [
-      "acusacao",
-      "suspeita",
-      14
-     ],
-     [
-      "acusacao",
-      "ex",
-      5
-     ],
-     [
-      "acusacao",
-      "secretario",
-      5
-     ],
-     [
-      "envolvido",
-      "agente",
-      20
-     ],
-     [
-      "envolvido",
-      "agressao",
-      12
-     ],
-     [
-      "envolvido",
-      "bebel",
-      10
-     ],
-     [
-      "envolvido",
-      "camiseta",
-      32
-     ],
-     [
-      "envolvido",
-      "comunidade",
-      14
-     ],
-     [
-      "envolvido",
-      "delegacia",
-      6
-     ],
-     [
-      "envolvido",
-      "denuncia",
-      23
-     ],
-     [
-      "envolvido",
-      "denunciar",
-      14
-     ],
-     [
-      "envolvido",
-      "deputado",
-      12
-     ],
-     [
-      "envolvido",
-      "estadual",
-      10
-     ],
-     [
-      "envolvido",
-      "feira",
-      16
-     ],
-     [
-      "envolvido",
-      "militar",
-      29
-     ],
-     [
-      "envolvido",
-      "ocorrencia",
-      14
-     ],
-     [
-      "envolvido",
-      "ouvidoria",
-      23
-     ],
-     [
-      "envolvido",
-      "pantanal",
-      8
-     ],
-     [
-      "envolvido",
-      "partido",
-      11
-     ],
-     [
-      "envolvido",
-      "piracicaba",
-      31
-     ],
-     [
-      "envolvido",
-      "policia",
-      30
-     ],
-     [
-      "envolvido",
-      "policial",
-      29
-     ],
-     [
-      "envolvido",
-      "professor",
-      11
-     ],
-     [
-      "envolvido",
-      "pt",
-      29
-     ],
-     [
-      "envolvido",
-      "relato",
-      9
-     ],
-     [
-      "envolvido",
-      "solicitar",
-      16
-     ],
-     [
-      "envolvido",
-      "acao",
-      12
-     ],
-     [
-      "envolvido",
-      "adolescente",
-      22
-     ],
-     [
-      "envolvido",
-      "ano",
-      18
-     ],
-     [
-      "envolvido",
-      "apoio",
-      25
-     ],
-     [
-      "envolvido",
-      "campanha",
-      19
-     ],
-     [
-      "envolvido",
-      "divulgar",
-      16
-     ],
-     [
-      "envolvido",
-      "imagem",
-      24
-     ],
-     [
-      "envolvido",
-      "interior",
-      12
-     ],
-     [
-      "envolvido",
-      "lula",
-      29
-     ],
-     [
-      "envolvido",
-      "operacao",
-      11
-     ],
-     [
-      "envolvido",
-      "paulo",
-      23
-     ],
-     [
-      "envolvido",
-      "presidente",
-      21
-     ],
-     [
-      "envolvido",
-      "rede",
-      13
-     ],
-     [
-      "envolvido",
-      "social",
-      12
-     ],
-     [
-      "envolvido",
-      "trafico",
-      19
-     ],
-     [
-      "envolvido",
-      "usar",
-      19
-     ],
-     [
-      "envolvido",
-      "vestir",
-      29
-     ],
-     [
-      "envolvido",
-      "abordagem",
-      18
-     ],
-     [
-      "envolvido",
-      "afirmar",
-      21
-     ],
-     [
-      "envolvido",
-      "caso",
-      15
-     ],
-     [
-      "envolvido",
-      "dizer",
-      10
-     ],
-     [
-      "envolvido",
-      "investigacao",
-      20
-     ],
-     [
-      "envolvido",
-      "obrigar",
-      25
-     ],
-     [
-      "envolvido",
-      "pedir",
-      24
-     ],
-     [
-      "envolvido",
-      "politica",
-      12
-     ],
-     [
-      "envolvido",
-      "sp",
-      13
-     ],
-     [
-      "envolvido",
-      "derrite",
-      15
-     ],
-     [
-      "envolvido",
-      "eleito",
-      12
-     ],
-     [
-      "envolvido",
-      "filho",
-      8
-     ],
-     [
-      "envolvido",
-      "guilherme",
-      13
-     ],
-     [
-      "envolvido",
-      "jovem",
-      9
-     ],
-     [
-      "envolvido",
-      "mae",
-      15
-     ],
-     [
-      "envolvido",
-      "momento",
-      13
-     ],
-     [
-      "envolvido",
-      "pm",
-      13
-     ],
-     [
-      "envolvido",
-      "pp",
-      7
-     ],
-     [
-      "envolvido",
-      "senador",
-      11
-     ],
-     [
-      "envolvido",
-      "suspeito",
-      21
-     ],
-     [
-      "envolvido",
-      "acusar",
-      9
-     ],
-     [
-      "envolvido",
-      "apreender",
-      16
-     ],
-     [
-      "envolvido",
-      "corregedoria",
-      13
-     ],
-     [
-      "envolvido",
-      "eleitoral",
-      12
-     ],
-     [
-      "envolvido",
-      "preso",
-      17
-     ],
-     [
-      "envolvido",
-      "publico",
-      16
-     ],
-     [
-      "envolvido",
-      "roupa",
-      11
-     ],
-     [
-      "envolvido",
-      "seguranca",
-      14
-     ],
-     [
-      "envolvido",
-      "suspeita",
-      14
-     ],
-     [
-      "envolvido",
-      "deter",
-      13
-     ],
-     [
-      "envolvido",
-      "estar",
-      12
-     ],
-     [
-      "envolvido",
-      "homem",
-      16
-     ],
-     [
-      "envolvido",
-      "ex",
-      3
-     ],
-     [
-      "envolvido",
-      "secretario",
-      4
-     ],
-     [
-      "envolvido",
-      "acompanhar",
-      3
-     ],
-     [
-      "filho",
-      "abordagem",
-      32
-     ],
-     [
-      "filho",
-      "acao",
-      13
-     ],
-     [
-      "filho",
-      "acompanhar",
-      5
-     ],
-     [
-      "filho",
-      "acusar",
-      11
-     ],
-     [
-      "filho",
-      "adolescente",
-      38
-     ],
-     [
-      "filho",
-      "afirmar",
-      41
-     ],
-     [
-      "filho",
-      "agressao",
-      11
-     ],
-     [
-      "filho",
-      "ano",
       36
      ],
      [
-      "filho",
-      "apreender",
-      32
+      "droga",
+      "envolvido",
+      22
      ],
      [
-      "filho",
-      "camiseta",
-      44
-     ],
-     [
-      "filho",
-      "caso",
-      28
-     ],
-     [
-      "filho",
-      "deter",
-      19
-     ],
-     [
-      "filho",
-      "estar",
-      19
-     ],
-     [
-      "filho",
+      "droga",
       "feira",
-      15
+      46
      ],
      [
-      "filho",
-      "homem",
-      28
-     ],
-     [
-      "filho",
-      "investigacao",
-      11
-     ],
-     [
-      "filho",
-      "lula",
-      42
-     ],
-     [
-      "filho",
-      "mae",
+      "droga",
+      "imagem",
       45
      ],
      [
-      "filho",
-      "militar",
-      39
-     ],
-     [
-      "filho",
-      "momento",
-      18
-     ],
-     [
-      "filho",
-      "ocorrencia",
-      6
-     ],
-     [
-      "filho",
-      "piracicaba",
-      44
-     ],
-     [
-      "filho",
-      "policia",
-      26
-     ],
-     [
-      "filho",
-      "policial",
+      "droga",
+      "interior",
       42
      ],
      [
-      "filho",
-      "presidente",
-      22
+      "droga",
+      "militar",
+      76
      ],
      [
-      "filho",
-      "relato",
-      8
-     ],
-     [
-      "filho",
-      "usar",
-      36
-     ],
-     [
-      "filho",
-      "apoio",
-      29
-     ],
-     [
-      "filho",
-      "campanha",
-      13
-     ],
-     [
-      "filho",
-      "comunidade",
-      14
-     ],
-     [
-      "filho",
-      "denuncia",
+      "droga",
+      "ocorrencia",
       26
      ],
      [
-      "filho",
-      "derrite",
-      32
-     ],
-     [
-      "filho",
-      "divulgar",
-      25
-     ],
-     [
-      "filho",
-      "eleito",
-      28
-     ],
-     [
-      "filho",
-      "eleitoral",
-      11
-     ],
-     [
-      "filho",
-      "guilherme",
-      32
-     ],
-     [
-      "filho",
-      "imagem",
-      34
-     ],
-     [
-      "filho",
-      "interior",
-      27
-     ],
-     [
-      "filho",
-      "jovem",
-      27
-     ],
-     [
-      "filho",
+      "droga",
       "operacao",
-      16
-     ],
-     [
-      "filho",
-      "pantanal",
-      14
-     ],
-     [
-      "filho",
-      "paulo",
-      32
-     ],
-     [
-      "filho",
-      "pm",
-      21
-     ],
-     [
-      "filho",
-      "politica",
-      9
-     ],
-     [
-      "filho",
-      "pp",
-      24
-     ],
-     [
-      "filho",
-      "preso",
-      24
-     ],
-     [
-      "filho",
-      "pt",
-      35
-     ],
-     [
-      "filho",
-      "senador",
-      29
-     ],
-     [
-      "filho",
-      "sp",
       25
      ],
      [
-      "filho",
-      "trafico",
-      30
-     ],
-     [
-      "filho",
-      "vestir",
-      43
-     ],
-     [
-      "filho",
-      "ex",
-      20
-     ],
-     [
-      "filho",
-      "obrigar",
-      30
-     ],
-     [
-      "filho",
-      "publico",
-      27
-     ],
-     [
-      "filho",
-      "secretario",
-      20
-     ],
-     [
-      "filho",
-      "seguranca",
-      26
-     ],
-     [
-      "filho",
-      "suspeita",
-      22
-     ],
-     [
-      "filho",
-      "delegacia",
-      12
-     ],
-     [
-      "filho",
-      "partido",
-      12
-     ],
-     [
-      "filho",
-      "pedir",
-      17
-     ],
-     [
-      "filho",
-      "roupa",
-      8
-     ],
-     [
-      "filho",
-      "suspeito",
-      17
-     ],
-     [
-      "filho",
-      "dizer",
-      16
-     ],
-     [
-      "filho",
-      "professor",
-      8
-     ],
-     [
-      "filho",
-      "rede",
-      15
-     ],
-     [
-      "filho",
-      "social",
-      13
-     ],
-     [
-      "filho",
-      "solicitar",
-      10
-     ],
-     [
-      "filho",
-      "bebel",
-      6
-     ],
-     [
-      "filho",
-      "deputado",
-      7
-     ],
-     [
-      "filho",
-      "estadual",
-      6
-     ],
-     [
-      "filho",
-      "ouvidoria",
-      13
-     ],
-     [
-      "filho",
-      "denunciar",
-      8
-     ],
-     [
-      "filho",
-      "corregedoria",
-      11
-     ],
-     [
-      "filho",
-      "agente",
-      16
-     ],
-     [
+      "droga",
       "paulo",
-      "acao",
-      20
+      59
      ],
      [
-      "paulo",
-      "adolescente",
-      57
-     ],
-     [
-      "paulo",
-      "ano",
-      46
-     ],
-     [
-      "paulo",
-      "apoio",
-      55
-     ],
-     [
-      "paulo",
-      "camiseta",
-      75
-     ],
-     [
-      "paulo",
-      "campanha",
-      29
-     ],
-     [
-      "paulo",
-      "denuncia",
+      "droga",
+      "presidente",
       48
      ],
      [
-      "paulo",
-      "divulgar",
-      39
-     ],
-     [
-      "paulo",
-      "feira",
-      32
-     ],
-     [
-      "paulo",
-      "imagem",
-      52
-     ],
-     [
-      "paulo",
-      "interior",
-      47
-     ],
-     [
-      "paulo",
-      "lula",
-      72
-     ],
-     [
-      "paulo",
-      "militar",
+      "droga",
+      "pt",
       73
      ],
      [
-      "paulo",
-      "ocorrencia",
-      23
-     ],
-     [
-      "paulo",
-      "operacao",
-      21
-     ],
-     [
-      "paulo",
-      "piracicaba",
-      75
-     ],
-     [
-      "paulo",
-      "policia",
-      52
-     ],
-     [
-      "paulo",
-      "presidente",
-      48
-     ],
-     [
-      "paulo",
-      "pt",
-      66
-     ],
-     [
-      "paulo",
+      "droga",
       "rede",
-      27
-     ],
-     [
-      "paulo",
-      "social",
-      26
-     ],
-     [
-      "paulo",
-      "trafico",
-      46
-     ],
-     [
-      "paulo",
-      "usar",
-      48
-     ],
-     [
-      "paulo",
-      "vestir",
-      71
-     ],
-     [
-      "paulo",
-      "apreender",
-      38
-     ],
-     [
-      "paulo",
-      "deputado",
-      19
-     ],
-     [
-      "paulo",
-      "derrite",
-      50
-     ],
-     [
-      "paulo",
-      "guilherme",
-      49
-     ],
-     [
-      "paulo",
-      "politica",
-      21
-     ],
-     [
-      "paulo",
-      "relato",
-      14
-     ],
-     [
-      "paulo",
-      "acusar",
-      27
-     ],
-     [
-      "paulo",
-      "afirmar",
-      54
-     ],
-     [
-      "paulo",
-      "comunidade",
-      28
-     ],
-     [
-      "paulo",
-      "deter",
-      37
-     ],
-     [
-      "paulo",
-      "eleito",
-      43
-     ],
-     [
-      "paulo",
-      "eleitoral",
-      26
-     ],
-     [
-      "paulo",
-      "estar",
-      26
-     ],
-     [
-      "paulo",
-      "homem",
-      33
-     ],
-     [
-      "paulo",
-      "jovem",
-      38
-     ],
-     [
-      "paulo",
-      "mae",
-      50
-     ],
-     [
-      "paulo",
-      "pantanal",
-      23
-     ],
-     [
-      "paulo",
-      "pm",
       31
      ],
      [
-      "paulo",
-      "policial",
-      73
+      "droga",
+      "social",
+      29
      ],
      [
-      "paulo",
-      "pp",
-      32
+      "droga",
+      "usar",
+      51
      ],
      [
-      "paulo",
-      "preso",
-      35
+      "droga",
+      "vestir",
+      77
      ],
      [
-      "paulo",
-      "senador",
+      "droga",
+      "abordagem",
+      49
+     ],
+     [
+      "droga",
+      "afirmar",
+      53
+     ],
+     [
+      "droga",
+      "agente",
+      26
+     ],
+     [
+      "droga",
+      "agressao",
+      23
+     ],
+     [
+      "droga",
+      "caso",
       44
      ],
      [
-      "paulo",
-      "sp",
-      36
+      "droga",
+      "comunidade",
+      30
      ],
      [
-      "paulo",
-      "abordagem",
-      49
+      "droga",
+      "delegacia",
+      28
      ],
      [
-      "paulo",
-      "ex",
-      29
-     ],
-     [
-      "paulo",
-      "obrigar",
-      60
-     ],
-     [
-      "paulo",
-      "publico",
-      46
-     ],
-     [
-      "paulo",
-      "secretario",
-      32
-     ],
-     [
-      "paulo",
-      "seguranca",
-      46
-     ],
-     [
-      "paulo",
-      "suspeita",
-      35
-     ],
-     [
-      "paulo",
-      "bebel",
-      16
-     ],
-     [
-      "paulo",
+      "droga",
       "denunciar",
-      19
+      25
      ],
      [
-      "paulo",
+      "droga",
+      "deputado",
+      25
+     ],
+     [
+      "droga",
+      "estadual",
+      20
+     ],
+     [
+      "droga",
       "investigacao",
       26
      ],
      [
-      "paulo",
-      "pedir",
-      38
+      "droga",
+      "mulher",
+      20
      ],
      [
-      "paulo",
-      "professor",
-      22
+      "droga",
+      "obrigar",
+      65
      ],
      [
-      "paulo",
-      "agressao",
-      18
-     ],
-     [
-      "paulo",
-      "momento",
-      22
-     ],
-     [
-      "paulo",
-      "partido",
-      24
-     ],
-     [
-      "paulo",
-      "roupa",
-      25
-     ],
-     [
-      "paulo",
-      "delegacia",
-      14
-     ],
-     [
-      "paulo",
-      "suspeito",
-      32
-     ],
-     [
-      "paulo",
-      "acompanhar",
-      12
-     ],
-     [
-      "paulo",
-      "caso",
-      39
-     ],
-     [
-      "paulo",
-      "dizer",
-      21
-     ],
-     [
-      "paulo",
-      "solicitar",
-      18
-     ],
-     [
-      "paulo",
-      "estadual",
-      16
-     ],
-     [
-      "paulo",
-      "ouvidoria",
-      28
-     ],
-     [
-      "paulo",
-      "corregedoria",
-      25
-     ],
-     [
-      "paulo",
-      "agente",
-      28
-     ],
-     [
-      "ocorrencia",
-      "agente",
-      18
-     ],
-     [
-      "ocorrencia",
-      "agressao",
-      15
-     ],
-     [
-      "ocorrencia",
-      "bebel",
-      7
-     ],
-     [
-      "ocorrencia",
-      "camiseta",
-      31
-     ],
-     [
-      "ocorrencia",
-      "comunidade",
-      15
-     ],
-     [
-      "ocorrencia",
-      "delegacia",
-      10
-     ],
-     [
-      "ocorrencia",
-      "denuncia",
-      24
-     ],
-     [
-      "ocorrencia",
-      "denunciar",
-      10
-     ],
-     [
-      "ocorrencia",
-      "deputado",
-      10
-     ],
-     [
-      "ocorrencia",
-      "estadual",
-      8
-     ],
-     [
-      "ocorrencia",
-      "feira",
-      21
-     ],
-     [
-      "ocorrencia",
-      "militar",
-      31
-     ],
-     [
-      "ocorrencia",
+      "droga",
       "ouvidoria",
       17
      ],
      [
-      "ocorrencia",
+      "droga",
       "pantanal",
-      10
+      24
      ],
      [
-      "ocorrencia",
+      "droga",
       "partido",
-      11
+      25
      ],
      [
-      "ocorrencia",
-      "piracicaba",
+      "droga",
+      "pedir",
+      31
+     ],
+     [
+      "droga",
+      "policial",
+      79
+     ],
+     [
+      "droga",
+      "politica",
+      20
+     ],
+     [
+      "droga",
+      "professor",
+      25
+     ],
+     [
+      "droga",
+      "relato",
+      17
+     ],
+     [
+      "droga",
+      "vitoria",
+      20
+     ],
+     [
+      "droga",
+      "derrite",
+      45
+     ],
+     [
+      "droga",
+      "deter",
       33
      ],
      [
-      "ocorrencia",
-      "policia",
-      29
+      "droga",
+      "eleito",
+      37
      ],
      [
-      "ocorrencia",
-      "policial",
+      "droga",
+      "eleitoral",
       31
      ],
      [
-      "ocorrencia",
-      "professor",
-      10
+      "droga",
+      "estar",
+      30
      ],
      [
-      "ocorrencia",
-      "pt",
-      28
+      "droga",
+      "filho",
+      33
      ],
      [
-      "ocorrencia",
-      "relato",
-      9
+      "droga",
+      "guilherme",
+      42
      ],
      [
-      "ocorrencia",
-      "solicitar",
-      6
+      "droga",
+      "jovem",
+      48
      ],
      [
-      "ocorrencia",
-      "abordagem",
+      "droga",
+      "mae",
+      50
+     ],
+     [
+      "droga",
+      "momento",
+      23
+     ],
+     [
+      "droga",
+      "pms",
       19
      ],
      [
-      "ocorrencia",
-      "acao",
-      9
+      "droga",
+      "preso",
+      42
      ],
      [
-      "ocorrencia",
-      "acompanhar",
-      6
-     ],
-     [
-      "ocorrencia",
-      "acusar",
-      11
-     ],
-     [
-      "ocorrencia",
-      "adolescente",
+      "droga",
+      "roupa",
       26
      ],
      [
-      "ocorrencia",
-      "afirmar",
-      21
+      "droga",
+      "senador",
+      42
      ],
      [
-      "ocorrencia",
-      "ano",
-      19
+      "droga",
+      "video",
+      13
      ],
      [
-      "ocorrencia",
-      "apreender",
-      19
+      "droga",
+      "acusar",
+      35
      ],
      [
-      "ocorrencia",
-      "caso",
-      22
-     ],
-     [
-      "ocorrencia",
-      "deter",
-      17
-     ],
-     [
-      "ocorrencia",
-      "estar",
-      12
-     ],
-     [
-      "ocorrencia",
+      "droga",
       "homem",
-      18
+      32
      ],
      [
-      "ocorrencia",
-      "investigacao",
-      18
-     ],
-     [
-      "ocorrencia",
-      "lula",
-      28
-     ],
-     [
-      "ocorrencia",
-      "mae",
-      14
-     ],
-     [
-      "ocorrencia",
-      "momento",
-      7
-     ],
-     [
-      "ocorrencia",
-      "presidente",
-      18
-     ],
-     [
-      "ocorrencia",
-      "usar",
-      15
-     ],
-     [
-      "ocorrencia",
-      "apoio",
-      17
-     ],
-     [
-      "ocorrencia",
-      "campanha",
-      20
-     ],
-     [
-      "ocorrencia",
-      "divulgar",
-      15
-     ],
-     [
-      "ocorrencia",
-      "imagem",
+      "droga",
+      "pp",
       22
      ],
      [
-      "ocorrencia",
-      "interior",
-      10
-     ],
-     [
-      "ocorrencia",
-      "operacao",
-      5
-     ],
-     [
-      "ocorrencia",
-      "rede",
-      15
-     ],
-     [
-      "ocorrencia",
-      "social",
-      15
-     ],
-     [
-      "ocorrencia",
-      "trafico",
-      21
-     ],
-     [
-      "ocorrencia",
-      "vestir",
-      27
-     ],
-     [
-      "ocorrencia",
-      "dizer",
-      11
-     ],
-     [
-      "ocorrencia",
-      "obrigar",
-      25
-     ],
-     [
-      "ocorrencia",
-      "pedir",
-      22
-     ],
-     [
-      "ocorrencia",
-      "politica",
-      9
-     ],
-     [
-      "ocorrencia",
-      "sp",
-      16
-     ],
-     [
-      "ocorrencia",
-      "derrite",
-      11
-     ],
-     [
-      "ocorrencia",
-      "guilherme",
-      11
-     ],
-     [
-      "ocorrencia",
-      "eleito",
-      9
-     ],
-     [
-      "ocorrencia",
+      "droga",
       "ex",
-      3
+      18
      ],
      [
-      "ocorrencia",
-      "pp",
-      4
-     ],
-     [
-      "ocorrencia",
+      "droga",
       "publico",
-      15
+      35
      ],
      [
-      "ocorrencia",
-      "roupa",
+      "droga",
+      "secretario",
+      20
+     ],
+     [
+      "droga",
+      "seguranca",
+      34
+     ],
+     [
+      "droga",
+      "suspeita",
+      43
+     ],
+     [
+      "droga",
+      "solicitar",
       11
      ],
      [
-      "ocorrencia",
-      "secretario",
-      4
-     ],
-     [
-      "ocorrencia",
-      "seguranca",
-      15
-     ],
-     [
-      "ocorrencia",
-      "senador",
-      9
-     ],
-     [
-      "ocorrencia",
-      "suspeito",
-      22
-     ],
-     [
-      "ocorrencia",
+      "droga",
       "corregedoria",
+      17
+     ],
+     [
+      "droga",
+      "afastamento",
       13
      ],
      [
-      "ocorrencia",
-      "jovem",
-      8
+      "vestir",
+      "acao",
+      32
      ],
      [
-      "ocorrencia",
-      "pm",
-      13
+      "vestir",
+      "adolescente",
+      82
      ],
      [
-      "ocorrencia",
-      "preso",
-      18
+      "vestir",
+      "ano",
+      68
      ],
      [
-      "ocorrencia",
-      "eleitoral",
-      8
+      "vestir",
+      "apoio",
+      81
      ],
      [
-      "ocorrencia",
-      "suspeita",
-      12
-     ],
-     [
-      "delegacia",
-      "agente",
-      10
-     ],
-     [
-      "delegacia",
-      "agressao",
-      8
-     ],
-     [
-      "delegacia",
-      "bebel",
-      8
-     ],
-     [
-      "delegacia",
+      "vestir",
       "camiseta",
-      27
+      139
      ],
      [
-      "delegacia",
-      "comunidade",
-      12
+      "vestir",
+      "campanha",
+      56
      ],
      [
-      "delegacia",
+      "vestir",
       "denuncia",
-      14
+      70
      ],
      [
-      "delegacia",
-      "denunciar",
-      7
+      "vestir",
+      "divulgar",
+      54
      ],
      [
-      "delegacia",
-      "deputado",
-      10
+      "vestir",
+      "envolvido",
+      31
      ],
      [
-      "delegacia",
-      "estadual",
-      9
-     ],
-     [
-      "delegacia",
+      "vestir",
       "feira",
-      18
+      47
      ],
      [
-      "delegacia",
+      "vestir",
+      "imagem",
+      68
+     ],
+     [
+      "vestir",
+      "interior",
+      54
+     ],
+     [
+      "vestir",
+      "lula",
+      124
+     ],
+     [
+      "vestir",
       "militar",
+      111
+     ],
+     [
+      "vestir",
+      "ocorrencia",
+      32
+     ],
+     [
+      "vestir",
+      "operacao",
+      29
+     ],
+     [
+      "vestir",
+      "paulo",
+      86
+     ],
+     [
+      "vestir",
+      "piracicaba",
+      133
+     ],
+     [
+      "vestir",
+      "policia",
+      81
+     ],
+     [
+      "vestir",
+      "presidente",
+      63
+     ],
+     [
+      "vestir",
+      "pt",
+      120
+     ],
+     [
+      "vestir",
+      "rede",
+      40
+     ],
+     [
+      "vestir",
+      "social",
+      37
+     ],
+     [
+      "vestir",
+      "usar",
+      63
+     ],
+     [
+      "vestir",
+      "abordagem",
+      68
+     ],
+     [
+      "vestir",
+      "afirmar",
+      74
+     ],
+     [
+      "vestir",
+      "agente",
+      41
+     ],
+     [
+      "vestir",
+      "agressao",
+      29
+     ],
+     [
+      "vestir",
+      "caso",
+      63
+     ],
+     [
+      "vestir",
+      "comunidade",
+      33
+     ],
+     [
+      "vestir",
+      "delegacia",
+      30
+     ],
+     [
+      "vestir",
+      "denunciar",
+      33
+     ],
+     [
+      "vestir",
+      "deputado",
       25
      ],
      [
-      "delegacia",
+      "vestir",
+      "dizer",
+      29
+     ],
+     [
+      "vestir",
+      "estadual",
+      22
+     ],
+     [
+      "vestir",
+      "investigacao",
+      39
+     ],
+     [
+      "vestir",
+      "mulher",
+      22
+     ],
+     [
+      "vestir",
+      "obrigar",
+      111
+     ],
+     [
+      "vestir",
       "ouvidoria",
-      5
+      36
      ],
      [
-      "delegacia",
+      "vestir",
       "pantanal",
-      11
-     ],
-     [
-      "delegacia",
-      "partido",
-      13
-     ],
-     [
-      "delegacia",
-      "piracicaba",
       27
      ],
      [
-      "delegacia",
-      "policia",
+      "vestir",
+      "partido",
+      32
+     ],
+     [
+      "vestir",
+      "pedir",
+      53
+     ],
+     [
+      "vestir",
+      "policial",
+      122
+     ],
+     [
+      "vestir",
+      "politica",
+      28
+     ],
+     [
+      "vestir",
+      "professor",
+      27
+     ],
+     [
+      "vestir",
+      "relato",
+      25
+     ],
+     [
+      "vestir",
+      "sp",
+      68
+     ],
+     [
+      "vestir",
+      "vitoria",
+      26
+     ],
+     [
+      "vestir",
+      "apreender",
+      56
+     ],
+     [
+      "vestir",
+      "derrite",
+      71
+     ],
+     [
+      "vestir",
+      "deter",
+      68
+     ],
+     [
+      "vestir",
+      "eleito",
+      54
+     ],
+     [
+      "vestir",
+      "eleitoral",
+      41
+     ],
+     [
+      "vestir",
+      "estar",
+      35
+     ],
+     [
+      "vestir",
+      "filho",
+      48
+     ],
+     [
+      "vestir",
+      "guilherme",
+      64
+     ],
+     [
+      "vestir",
+      "jovem",
+      77
+     ],
+     [
+      "vestir",
+      "mae",
+      75
+     ],
+     [
+      "vestir",
+      "momento",
+      28
+     ],
+     [
+      "vestir",
+      "pms",
+      31
+     ],
+     [
+      "vestir",
+      "preso",
+      56
+     ],
+     [
+      "vestir",
+      "roupa",
+      35
+     ],
+     [
+      "vestir",
+      "senador",
+      62
+     ],
+     [
+      "vestir",
+      "video",
+      23
+     ],
+     [
+      "vestir",
+      "acusar",
+      51
+     ],
+     [
+      "vestir",
+      "pm",
+      57
+     ],
+     [
+      "vestir",
+      "suspeito",
+      60
+     ],
+     [
+      "vestir",
+      "homem",
+      41
+     ],
+     [
+      "vestir",
+      "pp",
+      37
+     ],
+     [
+      "vestir",
+      "ex",
+      35
+     ],
+     [
+      "vestir",
+      "publico",
+      57
+     ],
+     [
+      "vestir",
+      "secretario",
+      38
+     ],
+     [
+      "vestir",
+      "seguranca",
+      57
+     ],
+     [
+      "vestir",
+      "suspeita",
+      47
+     ],
+     [
+      "vestir",
+      "solicitar",
+      22
+     ],
+     [
+      "vestir",
+      "corregedoria",
+      31
+     ],
+     [
+      "vestir",
+      "afastamento",
+      30
+     ],
+     [
+      "corregedoria",
+      "abordagem",
+      20
+     ],
+     [
+      "corregedoria",
+      "acao",
+      12
+     ],
+     [
+      "corregedoria",
+      "acusar",
+      9
+     ],
+     [
+      "corregedoria",
+      "adolescente",
+      23
+     ],
+     [
+      "corregedoria",
+      "afirmar",
+      27
+     ],
+     [
+      "corregedoria",
+      "agressao",
+      14
+     ],
+     [
+      "corregedoria",
+      "ano",
+      15
+     ],
+     [
+      "corregedoria",
+      "apoio",
+      23
+     ],
+     [
+      "corregedoria",
+      "apreender",
       18
      ],
      [
-      "delegacia",
-      "policial",
-      27
+      "corregedoria",
+      "camiseta",
+      36
      ],
      [
-      "delegacia",
+      "corregedoria",
+      "campanha",
+      16
+     ],
+     [
+      "corregedoria",
+      "caso",
+      23
+     ],
+     [
+      "corregedoria",
+      "denuncia",
+      29
+     ],
+     [
+      "corregedoria",
+      "denunciar",
+      15
+     ],
+     [
+      "corregedoria",
+      "deputado",
+      12
+     ],
+     [
+      "corregedoria",
+      "derrite",
+      16
+     ],
+     [
+      "corregedoria",
+      "eleitoral",
+      10
+     ],
+     [
+      "corregedoria",
+      "envolvido",
+      15
+     ],
+     [
+      "corregedoria",
+      "estadual",
+      11
+     ],
+     [
+      "corregedoria",
+      "feira",
+      23
+     ],
+     [
+      "corregedoria",
+      "imagem",
+      25
+     ],
+     [
+      "corregedoria",
+      "interior",
+      13
+     ],
+     [
+      "corregedoria",
+      "investigacao",
+      15
+     ],
+     [
+      "corregedoria",
+      "lula",
+      30
+     ],
+     [
+      "corregedoria",
+      "mae",
+      19
+     ],
+     [
+      "corregedoria",
+      "militar",
+      34
+     ],
+     [
+      "corregedoria",
+      "momento",
+      9
+     ],
+     [
+      "corregedoria",
+      "obrigar",
+      25
+     ],
+     [
+      "corregedoria",
+      "paulo",
+      29
+     ],
+     [
+      "corregedoria",
+      "pedir",
+      24
+     ],
+     [
+      "corregedoria",
+      "piracicaba",
+      35
+     ],
+     [
+      "corregedoria",
+      "policia",
+      34
+     ],
+     [
+      "corregedoria",
+      "policial",
+      36
+     ],
+     [
+      "corregedoria",
+      "presidente",
+      22
+     ],
+     [
+      "corregedoria",
+      "preso",
+      19
+     ],
+     [
+      "corregedoria",
       "professor",
       10
      ],
      [
-      "delegacia",
+      "corregedoria",
       "pt",
-      25
+      31
      ],
      [
-      "delegacia",
-      "relato",
+      "corregedoria",
+      "publico",
+      19
+     ],
+     [
+      "corregedoria",
+      "rede",
       7
      ],
      [
-      "delegacia",
-      "abordagem",
+      "corregedoria",
+      "roupa",
+      10
+     ],
+     [
+      "corregedoria",
+      "seguranca",
+      19
+     ],
+     [
+      "corregedoria",
+      "social",
+      7
+     ],
+     [
+      "corregedoria",
+      "solicitar",
+      17
+     ],
+     [
+      "corregedoria",
+      "suspeito",
+      18
+     ],
+     [
+      "corregedoria",
+      "usar",
       16
      ],
      [
-      "delegacia",
-      "acao",
+      "corregedoria",
+      "comunidade",
+      16
+     ],
+     [
+      "corregedoria",
+      "jovem",
+      12
+     ],
+     [
+      "corregedoria",
+      "ouvidoria",
+      23
+     ],
+     [
+      "corregedoria",
+      "pantanal",
+      11
+     ],
+     [
+      "corregedoria",
+      "partido",
       9
      ],
      [
-      "delegacia",
-      "afirmar",
-      15
+      "corregedoria",
+      "pms",
+      4
      ],
      [
-      "delegacia",
-      "apoio",
+      "corregedoria",
+      "senador",
+      13
+     ],
+     [
+      "corregedoria",
+      "suspeita",
+      13
+     ],
+     [
+      "corregedoria",
+      "vitoria",
       8
      ],
      [
+      "corregedoria",
+      "agente",
+      18
+     ],
+     [
+      "corregedoria",
       "delegacia",
+      8
+     ],
+     [
+      "corregedoria",
+      "deter",
+      13
+     ],
+     [
+      "corregedoria",
+      "divulgar",
+      18
+     ],
+     [
+      "corregedoria",
+      "dizer",
+      13
+     ],
+     [
+      "corregedoria",
+      "eleito",
+      12
+     ],
+     [
+      "corregedoria",
+      "guilherme",
+      15
+     ],
+     [
+      "corregedoria",
+      "homem",
+      18
+     ],
+     [
+      "corregedoria",
+      "pm",
+      23
+     ],
+     [
+      "corregedoria",
+      "pp",
+      12
+     ],
+     [
+      "corregedoria",
+      "relato",
+      6
+     ],
+     [
+      "corregedoria",
+      "sp",
+      10
+     ],
+     [
+      "corregedoria",
+      "afastamento",
+      18
+     ],
+     [
+      "corregedoria",
+      "estar",
+      12
+     ],
+     [
+      "corregedoria",
+      "filho",
+      11
+     ],
+     [
+      "corregedoria",
+      "ocorrencia",
+      15
+     ],
+     [
+      "corregedoria",
+      "mulher",
+      10
+     ],
+     [
+      "corregedoria",
+      "politica",
+      6
+     ],
+     [
+      "corregedoria",
+      "video",
+      4
+     ],
+     [
+      "corregedoria",
+      "secretario",
+      9
+     ],
+     [
+      "corregedoria",
+      "ex",
+      7
+     ],
+     [
+      "corregedoria",
+      "operacao",
+      8
+     ],
+     [
+      "divulgar",
+      "acao",
+      18
+     ],
+     [
+      "divulgar",
+      "adolescente",
+      41
+     ],
+     [
+      "divulgar",
+      "ano",
+      37
+     ],
+     [
+      "divulgar",
+      "apoio",
+      48
+     ],
+     [
+      "divulgar",
+      "camiseta",
+      60
+     ],
+     [
+      "divulgar",
       "campanha",
       20
      ],
      [
-      "delegacia",
-      "caso",
-      18
+      "divulgar",
+      "denuncia",
+      36
      ],
      [
-      "delegacia",
-      "dizer",
-      9
+      "divulgar",
+      "envolvido",
+      20
      ],
      [
-      "delegacia",
-      "investigacao",
-      5
-     ],
-     [
-      "delegacia",
-      "lula",
-      24
-     ],
-     [
-      "delegacia",
-      "obrigar",
-      21
-     ],
-     [
-      "delegacia",
-      "pedir",
-      9
-     ],
-     [
-      "delegacia",
-      "politica",
-      7
-     ],
-     [
-      "delegacia",
-      "presidente",
-      13
-     ],
-     [
-      "delegacia",
-      "sp",
-      19
-     ],
-     [
-      "delegacia",
-      "usar",
-      12
-     ],
-     [
-      "delegacia",
-      "vestir",
-      26
-     ],
-     [
-      "delegacia",
-      "acusar",
-      15
-     ],
-     [
-      "delegacia",
-      "pm",
-      10
-     ],
-     [
-      "delegacia",
-      "roupa",
-      7
-     ],
-     [
-      "delegacia",
-      "suspeito",
-      21
-     ],
-     [
-      "delegacia",
-      "trafico",
+      "divulgar",
+      "feira",
       23
      ],
      [
-      "delegacia",
-      "adolescente",
-      14
-     ],
-     [
-      "delegacia",
-      "ano",
-      14
-     ],
-     [
-      "delegacia",
-      "derrite",
-      11
-     ],
-     [
-      "delegacia",
-      "eleito",
-      11
-     ],
-     [
-      "delegacia",
-      "eleitoral",
-      7
-     ],
-     [
-      "delegacia",
-      "guilherme",
-      11
-     ],
-     [
-      "delegacia",
-      "interior",
-      10
-     ],
-     [
-      "delegacia",
-      "jovem",
-      15
-     ],
-     [
-      "delegacia",
-      "mae",
-      14
-     ],
-     [
-      "delegacia",
-      "momento",
-      11
-     ],
-     [
-      "delegacia",
-      "operacao",
-      6
-     ],
-     [
-      "delegacia",
-      "pp",
-      6
-     ],
-     [
-      "delegacia",
-      "senador",
-      12
-     ],
-     [
-      "delegacia",
-      "acompanhar",
-      3
-     ],
-     [
-      "delegacia",
-      "deter",
-      10
-     ],
-     [
-      "delegacia",
-      "estar",
-      9
-     ],
-     [
-      "delegacia",
+      "divulgar",
       "imagem",
-      10
+      47
      ],
      [
-      "delegacia",
-      "rede",
-      5
+      "divulgar",
+      "interior",
+      25
      ],
      [
-      "delegacia",
-      "social",
-      5
+      "divulgar",
+      "lula",
+      57
      ],
      [
-      "delegacia",
-      "suspeita",
-      7
+      "divulgar",
+      "militar",
+      51
      ],
      [
-      "delegacia",
-      "apreender",
-      10
+      "divulgar",
+      "ocorrencia",
+      18
      ],
      [
-      "delegacia",
-      "preso",
-      13
-     ],
-     [
-      "delegacia",
-      "corregedoria",
-      7
-     ],
-     [
-      "delegacia",
-      "homem",
-      6
-     ],
-     [
-      "delegacia",
-      "publico",
-      5
-     ],
-     [
-      "delegacia",
-      "seguranca",
-      4
-     ],
-     [
-      "politica",
-      "abordagem",
+      "divulgar",
+      "operacao",
       19
      ],
      [
-      "politica",
-      "acao",
-      12
+      "divulgar",
+      "paulo",
+      47
      ],
      [
-      "politica",
-      "afirmar",
-      18
+      "divulgar",
+      "piracicaba",
+      60
      ],
      [
-      "politica",
-      "agente",
-      11
+      "divulgar",
+      "policia",
+      42
      ],
      [
-      "politica",
-      "agressao",
-      6
+      "divulgar",
+      "presidente",
+      30
      ],
      [
-      "politica",
-      "apoio",
-      18
+      "divulgar",
+      "pt",
+      51
      ],
      [
-      "politica",
-      "bebel",
-      8
+      "divulgar",
+      "rede",
+      23
      ],
      [
-      "politica",
-      "camiseta",
-      26
+      "divulgar",
+      "social",
+      20
      ],
      [
-      "politica",
-      "campanha",
-      12
+      "divulgar",
+      "usar",
+      37
      ],
      [
-      "politica",
-      "caso",
+      "divulgar",
+      "acusar",
       17
      ],
      [
-      "politica",
+      "divulgar",
+      "afirmar",
+      44
+     ],
+     [
+      "divulgar",
+      "derrite",
+      48
+     ],
+     [
+      "divulgar",
+      "deter",
+      30
+     ],
+     [
+      "divulgar",
+      "jovem",
+      31
+     ],
+     [
+      "divulgar",
+      "obrigar",
+      44
+     ],
+     [
+      "divulgar",
+      "pm",
+      29
+     ],
+     [
+      "divulgar",
       "comunidade",
+      20
+     ],
+     [
+      "divulgar",
+      "denunciar",
+      19
+     ],
+     [
+      "divulgar",
+      "eleito",
+      37
+     ],
+     [
+      "divulgar",
+      "eleitoral",
+      22
+     ],
+     [
+      "divulgar",
+      "estar",
+      17
+     ],
+     [
+      "divulgar",
+      "ex",
+      30
+     ],
+     [
+      "divulgar",
+      "filho",
+      29
+     ],
+     [
+      "divulgar",
+      "guilherme",
+      47
+     ],
+     [
+      "divulgar",
+      "investigacao",
+      23
+     ],
+     [
+      "divulgar",
+      "mae",
+      37
+     ],
+     [
+      "divulgar",
+      "mulher",
+      16
+     ],
+     [
+      "divulgar",
+      "pedir",
+      25
+     ],
+     [
+      "divulgar",
+      "policial",
+      53
+     ],
+     [
+      "divulgar",
+      "politica",
+      16
+     ],
+     [
+      "divulgar",
+      "preso",
+      29
+     ],
+     [
+      "divulgar",
+      "publico",
+      42
+     ],
+     [
+      "divulgar",
+      "roupa",
+      19
+     ],
+     [
+      "divulgar",
+      "secretario",
+      31
+     ],
+     [
+      "divulgar",
+      "seguranca",
+      42
+     ],
+     [
+      "divulgar",
+      "senador",
+      41
+     ],
+     [
+      "divulgar",
+      "sp",
+      35
+     ],
+     [
+      "divulgar",
+      "apreender",
+      28
+     ],
+     [
+      "divulgar",
+      "deputado",
+      12
+     ],
+     [
+      "divulgar",
+      "relato",
+      12
+     ],
+     [
+      "divulgar",
+      "homem",
+      31
+     ],
+     [
+      "divulgar",
+      "pantanal",
+      12
+     ],
+     [
+      "divulgar",
+      "pms",
+      8
+     ],
+     [
+      "divulgar",
+      "pp",
+      25
+     ],
+     [
+      "divulgar",
+      "vitoria",
       10
      ],
      [
-      "politica",
-      "denunciar",
-      7
+      "divulgar",
+      "abordagem",
+      31
      ],
      [
-      "politica",
+      "divulgar",
+      "suspeita",
+      25
+     ],
+     [
+      "divulgar",
+      "professor",
+      13
+     ],
+     [
+      "divulgar",
+      "agressao",
+      16
+     ],
+     [
+      "divulgar",
+      "video",
+      14
+     ],
+     [
+      "divulgar",
+      "partido",
+      12
+     ],
+     [
+      "divulgar",
+      "estadual",
+      11
+     ],
+     [
+      "divulgar",
+      "afastamento",
+      19
+     ],
+     [
+      "divulgar",
+      "agente",
+      21
+     ],
+     [
+      "divulgar",
+      "ouvidoria",
+      20
+     ],
+     [
+      "divulgar",
+      "solicitar",
+      14
+     ],
+     [
+      "divulgar",
+      "caso",
+      26
+     ],
+     [
+      "divulgar",
+      "delegacia",
+      3
+     ],
+     [
+      "divulgar",
+      "dizer",
+      17
+     ],
+     [
+      "divulgar",
+      "suspeito",
+      19
+     ],
+     [
+      "divulgar",
+      "momento",
+      12
+     ],
+     [
+      "agente",
+      "agressao",
+      16
+     ],
+     [
+      "agente",
+      "camiseta",
+      46
+     ],
+     [
+      "agente",
+      "comunidade",
+      20
+     ],
+     [
+      "agente",
+      "delegacia",
+      12
+     ],
+     [
+      "agente",
+      "denuncia",
+      30
+     ],
+     [
+      "agente",
+      "denunciar",
+      18
+     ],
+     [
+      "agente",
       "deputado",
+      13
+     ],
+     [
+      "agente",
+      "envolvido",
+      20
+     ],
+     [
+      "agente",
+      "estadual",
+      14
+     ],
+     [
+      "agente",
+      "feira",
+      21
+     ],
+     [
+      "agente",
+      "militar",
+      43
+     ],
+     [
+      "agente",
+      "mulher",
+      16
+     ],
+     [
+      "agente",
+      "ocorrencia",
+      20
+     ],
+     [
+      "agente",
+      "ouvidoria",
+      25
+     ],
+     [
+      "agente",
+      "pantanal",
+      15
+     ],
+     [
+      "agente",
+      "partido",
+      20
+     ],
+     [
+      "agente",
+      "piracicaba",
+      46
+     ],
+     [
+      "agente",
+      "policia",
+      36
+     ],
+     [
+      "agente",
+      "policial",
+      44
+     ],
+     [
+      "agente",
+      "professor",
+      15
+     ],
+     [
+      "agente",
+      "pt",
+      43
+     ],
+     [
+      "agente",
+      "relato",
+      12
+     ],
+     [
+      "agente",
+      "solicitar",
+      13
+     ],
+     [
+      "agente",
+      "vitoria",
+      11
+     ],
+     [
+      "agente",
+      "abordagem",
+      27
+     ],
+     [
+      "agente",
+      "acao",
+      11
+     ],
+     [
+      "agente",
+      "afirmar",
+      31
+     ],
+     [
+      "agente",
+      "apoio",
+      29
+     ],
+     [
+      "agente",
+      "campanha",
+      21
+     ],
+     [
+      "agente",
+      "caso",
+      26
+     ],
+     [
+      "agente",
+      "dizer",
+      20
+     ],
+     [
+      "agente",
+      "investigacao",
+      23
+     ],
+     [
+      "agente",
+      "lula",
+      41
+     ],
+     [
+      "agente",
+      "obrigar",
+      36
+     ],
+     [
+      "agente",
+      "pedir",
+      29
+     ],
+     [
+      "agente",
+      "politica",
+      11
+     ],
+     [
+      "agente",
+      "presidente",
+      25
+     ],
+     [
+      "agente",
+      "sp",
+      22
+     ],
+     [
+      "agente",
+      "usar",
+      23
+     ],
+     [
+      "agente",
+      "deter",
+      26
+     ],
+     [
+      "agente",
+      "jovem",
+      24
+     ],
+     [
+      "agente",
+      "operacao",
+      11
+     ],
+     [
+      "agente",
+      "pm",
+      21
+     ],
+     [
+      "agente",
+      "acusar",
+      16
+     ],
+     [
+      "agente",
+      "adolescente",
+      28
+     ],
+     [
+      "agente",
+      "ano",
+      23
+     ],
+     [
+      "agente",
+      "apreender",
+      21
+     ],
+     [
+      "agente",
+      "derrite",
+      20
+     ],
+     [
+      "agente",
+      "eleito",
+      19
+     ],
+     [
+      "agente",
+      "ex",
       9
      ],
      [
-      "politica",
-      "dizer",
+      "agente",
+      "guilherme",
+      19
+     ],
+     [
+      "agente",
+      "homem",
+      22
+     ],
+     [
+      "agente",
+      "imagem",
+      28
+     ],
+     [
+      "agente",
+      "interior",
+      17
+     ],
+     [
+      "agente",
+      "mae",
+      26
+     ],
+     [
+      "agente",
+      "paulo",
+      32
+     ],
+     [
+      "agente",
+      "pp",
+      16
+     ],
+     [
+      "agente",
+      "publico",
+      20
+     ],
+     [
+      "agente",
+      "rede",
+      15
+     ],
+     [
+      "agente",
+      "roupa",
+      16
+     ],
+     [
+      "agente",
+      "secretario",
+      9
+     ],
+     [
+      "agente",
+      "seguranca",
+      20
+     ],
+     [
+      "agente",
+      "senador",
+      20
+     ],
+     [
+      "agente",
+      "social",
+      14
+     ],
+     [
+      "agente",
+      "suspeito",
+      24
+     ],
+     [
+      "agente",
+      "eleitoral",
+      16
+     ],
+     [
+      "agente",
+      "filho",
+      18
+     ],
+     [
+      "agente",
+      "afastamento",
+      20
+     ],
+     [
+      "agente",
+      "pms",
+      7
+     ],
+     [
+      "agente",
+      "suspeita",
+      20
+     ],
+     [
+      "agente",
+      "video",
+      7
+     ],
+     [
+      "agente",
+      "estar",
+      17
+     ],
+     [
+      "agente",
+      "momento",
+      12
+     ],
+     [
+      "agente",
+      "preso",
+      18
+     ],
+     [
+      "roupa",
+      "abordagem",
+      23
+     ],
+     [
+      "roupa",
+      "acao",
+      9
+     ],
+     [
+      "roupa",
+      "adolescente",
+      28
+     ],
+     [
+      "roupa",
+      "afirmar",
+      31
+     ],
+     [
+      "roupa",
+      "ano",
+      27
+     ],
+     [
+      "roupa",
+      "apoio",
+      25
+     ],
+     [
+      "roupa",
+      "apreender",
+      16
+     ],
+     [
+      "roupa",
+      "camiseta",
+      38
+     ],
+     [
+      "roupa",
+      "campanha",
+      17
+     ],
+     [
+      "roupa",
+      "caso",
+      22
+     ],
+     [
+      "roupa",
+      "denuncia",
+      24
+     ],
+     [
+      "roupa",
+      "derrite",
+      24
+     ],
+     [
+      "roupa",
+      "deter",
+      23
+     ],
+     [
+      "roupa",
+      "eleito",
+      19
+     ],
+     [
+      "roupa",
+      "eleitoral",
+      18
+     ],
+     [
+      "roupa",
+      "estar",
+      16
+     ],
+     [
+      "roupa",
+      "filho",
+      14
+     ],
+     [
+      "roupa",
+      "guilherme",
+      23
+     ],
+     [
+      "roupa",
+      "imagem",
+      20
+     ],
+     [
+      "roupa",
+      "jovem",
+      25
+     ],
+     [
+      "roupa",
+      "lula",
+      37
+     ],
+     [
+      "roupa",
+      "mae",
+      25
+     ],
+     [
+      "roupa",
+      "militar",
+      34
+     ],
+     [
+      "roupa",
+      "momento",
+      12
+     ],
+     [
+      "roupa",
+      "obrigar",
+      31
+     ],
+     [
+      "roupa",
+      "partido",
+      12
+     ],
+     [
+      "roupa",
+      "paulo",
+      31
+     ],
+     [
+      "roupa",
+      "pedir",
+      22
+     ],
+     [
+      "roupa",
+      "piracicaba",
+      36
+     ],
+     [
+      "roupa",
+      "pms",
       6
      ],
      [
+      "roupa",
+      "policia",
+      27
+     ],
+     [
+      "roupa",
+      "policial",
+      37
+     ],
+     [
+      "roupa",
       "politica",
+      9
+     ],
+     [
+      "roupa",
+      "preso",
+      16
+     ],
+     [
+      "roupa",
+      "pt",
+      35
+     ],
+     [
+      "roupa",
+      "rede",
+      16
+     ],
+     [
+      "roupa",
+      "relato",
+      10
+     ],
+     [
+      "roupa",
+      "senador",
+      22
+     ],
+     [
+      "roupa",
+      "social",
+      13
+     ],
+     [
+      "roupa",
+      "usar",
+      24
+     ],
+     [
+      "roupa",
+      "video",
+      10
+     ],
+     [
+      "roupa",
+      "acusar",
+      12
+     ],
+     [
+      "roupa",
+      "comunidade",
+      18
+     ],
+     [
+      "roupa",
+      "denunciar",
+      19
+     ],
+     [
+      "roupa",
+      "envolvido",
+      13
+     ],
+     [
+      "roupa",
+      "ex",
+      12
+     ],
+     [
+      "roupa",
+      "investigacao",
+      16
+     ],
+     [
+      "roupa",
+      "mulher",
+      13
+     ],
+     [
+      "roupa",
+      "operacao",
+      8
+     ],
+     [
+      "roupa",
+      "publico",
+      21
+     ],
+     [
+      "roupa",
+      "secretario",
+      14
+     ],
+     [
+      "roupa",
+      "seguranca",
+      23
+     ],
+     [
+      "roupa",
+      "sp",
+      17
+     ],
+     [
+      "roupa",
+      "agressao",
+      17
+     ],
+     [
+      "roupa",
+      "interior",
+      15
+     ],
+     [
+      "roupa",
+      "suspeita",
+      17
+     ],
+     [
+      "roupa",
+      "delegacia",
+      8
+     ],
+     [
+      "roupa",
+      "deputado",
+      10
+     ],
+     [
+      "roupa",
+      "pm",
+      14
+     ],
+     [
+      "roupa",
+      "suspeito",
+      22
+     ],
+     [
+      "roupa",
+      "feira",
+      18
+     ],
+     [
+      "roupa",
+      "pantanal",
+      10
+     ],
+     [
+      "roupa",
+      "pp",
+      11
+     ],
+     [
+      "roupa",
+      "presidente",
+      23
+     ],
+     [
+      "roupa",
+      "vitoria",
+      11
+     ],
+     [
+      "roupa",
       "estadual",
       8
      ],
      [
-      "politica",
-      "feira",
-      11
+      "roupa",
+      "professor",
+      12
      ],
      [
-      "politica",
-      "investigacao",
-      14
+      "roupa",
+      "solicitar",
+      5
      ],
      [
-      "politica",
-      "lula",
-      24
-     ],
-     [
-      "politica",
-      "militar",
-      24
-     ],
-     [
-      "politica",
-      "obrigar",
-      19
-     ],
-     [
-      "politica",
-      "ouvidoria",
-      8
-     ],
-     [
-      "politica",
-      "pantanal",
+      "roupa",
+      "homem",
       9
      ],
      [
-      "politica",
+      "roupa",
+      "ocorrencia",
+      11
+     ],
+     [
+      "roupa",
+      "dizer",
+      12
+     ],
+     [
+      "roupa",
+      "ouvidoria",
+      12
+     ],
+     [
+      "roupa",
+      "afastamento",
+      9
+     ],
+     [
+      "pt",
+      "agressao",
+      29
+     ],
+     [
+      "pt",
+      "camiseta",
+      140
+     ],
+     [
+      "pt",
+      "comunidade",
+      41
+     ],
+     [
+      "pt",
+      "delegacia",
+      29
+     ],
+     [
+      "pt",
+      "denuncia",
+      68
+     ],
+     [
+      "pt",
+      "denunciar",
+      39
+     ],
+     [
+      "pt",
+      "deputado",
+      33
+     ],
+     [
+      "pt",
+      "envolvido",
+      33
+     ],
+     [
+      "pt",
+      "estadual",
+      30
+     ],
+     [
+      "pt",
+      "feira",
+      53
+     ],
+     [
+      "pt",
+      "militar",
+      109
+     ],
+     [
+      "pt",
+      "mulher",
+      31
+     ],
+     [
+      "pt",
+      "ocorrencia",
+      33
+     ],
+     [
+      "pt",
+      "ouvidoria",
+      33
+     ],
+     [
+      "pt",
+      "pantanal",
+      33
+     ],
+     [
+      "pt",
       "partido",
-      13
+      38
      ],
      [
-      "politica",
-      "pedir",
-      16
-     ],
-     [
-      "politica",
+      "pt",
       "piracicaba",
+      137
+     ],
+     [
+      "pt",
+      "policia",
+      82
+     ],
+     [
+      "pt",
+      "policial",
+      120
+     ],
+     [
+      "pt",
+      "professor",
+      36
+     ],
+     [
+      "pt",
+      "relato",
+      26
+     ],
+     [
+      "pt",
+      "solicitar",
       24
      ],
      [
+      "pt",
+      "vitoria",
+      28
+     ],
+     [
+      "pt",
+      "acao",
+      34
+     ],
+     [
+      "pt",
+      "adolescente",
+      79
+     ],
+     [
+      "pt",
+      "ano",
+      65
+     ],
+     [
+      "pt",
+      "apoio",
+      77
+     ],
+     [
+      "pt",
+      "campanha",
+      54
+     ],
+     [
+      "pt",
+      "imagem",
+      65
+     ],
+     [
+      "pt",
+      "interior",
+      53
+     ],
+     [
+      "pt",
+      "lula",
+      112
+     ],
+     [
+      "pt",
+      "operacao",
+      30
+     ],
+     [
+      "pt",
+      "paulo",
+      82
+     ],
+     [
+      "pt",
+      "presidente",
+      68
+     ],
+     [
+      "pt",
+      "rede",
+      44
+     ],
+     [
+      "pt",
+      "social",
+      39
+     ],
+     [
+      "pt",
+      "usar",
+      68
+     ],
+     [
+      "pt",
+      "abordagem",
+      65
+     ],
+     [
+      "pt",
+      "afirmar",
+      72
+     ],
+     [
+      "pt",
+      "caso",
+      62
+     ],
+     [
+      "pt",
+      "dizer",
+      28
+     ],
+     [
+      "pt",
+      "investigacao",
+      46
+     ],
+     [
+      "pt",
+      "obrigar",
+      99
+     ],
+     [
+      "pt",
+      "pedir",
+      55
+     ],
+     [
+      "pt",
       "politica",
+      28
+     ],
+     [
+      "pt",
+      "sp",
+      63
+     ],
+     [
+      "pt",
+      "apreender",
+      49
+     ],
+     [
+      "pt",
+      "derrite",
+      67
+     ],
+     [
+      "pt",
+      "deter",
+      62
+     ],
+     [
+      "pt",
+      "eleito",
+      52
+     ],
+     [
+      "pt",
+      "eleitoral",
+      44
+     ],
+     [
+      "pt",
+      "estar",
+      39
+     ],
+     [
+      "pt",
+      "filho",
+      42
+     ],
+     [
+      "pt",
+      "guilherme",
+      60
+     ],
+     [
+      "pt",
+      "jovem",
+      70
+     ],
+     [
+      "pt",
+      "mae",
+      70
+     ],
+     [
+      "pt",
+      "momento",
+      27
+     ],
+     [
+      "pt",
+      "pms",
+      29
+     ],
+     [
+      "pt",
+      "preso",
+      60
+     ],
+     [
+      "pt",
+      "senador",
+      59
+     ],
+     [
+      "pt",
+      "video",
+      24
+     ],
+     [
+      "pt",
+      "suspeito",
+      57
+     ],
+     [
+      "pt",
+      "acusar",
+      53
+     ],
+     [
+      "pt",
+      "ex",
+      33
+     ],
+     [
+      "pt",
+      "publico",
+      55
+     ],
+     [
+      "pt",
+      "secretario",
+      36
+     ],
+     [
+      "pt",
+      "seguranca",
+      54
+     ],
+     [
+      "pt",
+      "pm",
+      51
+     ],
+     [
+      "pt",
+      "homem",
+      40
+     ],
+     [
+      "pt",
+      "pp",
+      37
+     ],
+     [
+      "pt",
+      "suspeita",
+      44
+     ],
+     [
+      "pt",
+      "afastamento",
+      27
+     ],
+     [
       "policia",
+      "agressao",
+      27
+     ],
+     [
+      "policia",
+      "camiseta",
+      96
+     ],
+     [
+      "policia",
+      "comunidade",
+      33
+     ],
+     [
+      "policia",
+      "delegacia",
       23
      ],
      [
-      "politica",
-      "policial",
+      "policia",
+      "denuncia",
+      64
+     ],
+     [
+      "policia",
+      "denunciar",
+      29
+     ],
+     [
+      "policia",
+      "deputado",
+      22
+     ],
+     [
+      "policia",
+      "envolvido",
+      36
+     ],
+     [
+      "policia",
+      "estadual",
+      19
+     ],
+     [
+      "policia",
+      "feira",
+      45
+     ],
+     [
+      "policia",
+      "militar",
+      87
+     ],
+     [
+      "policia",
+      "mulher",
+      22
+     ],
+     [
+      "policia",
+      "ocorrencia",
+      36
+     ],
+     [
+      "policia",
+      "ouvidoria",
+      36
+     ],
+     [
+      "policia",
+      "pantanal",
       25
      ],
      [
-      "politica",
-      "presidente",
-      14
+      "policia",
+      "partido",
+      28
      ],
      [
-      "politica",
+      "policia",
+      "piracicaba",
+      92
+     ],
+     [
+      "policia",
+      "policial",
+      85
+     ],
+     [
+      "policia",
       "professor",
-      10
+      22
      ],
      [
-      "politica",
-      "pt",
-      23
-     ],
-     [
-      "politica",
+      "policia",
       "relato",
-      7
+      25
      ],
      [
-      "politica",
+      "policia",
+      "solicitar",
+      27
+     ],
+     [
+      "policia",
+      "vitoria",
+      21
+     ],
+     [
+      "policia",
+      "abordagem",
+      55
+     ],
+     [
+      "policia",
+      "acao",
+      32
+     ],
+     [
+      "policia",
+      "acusar",
+      30
+     ],
+     [
+      "policia",
+      "adolescente",
+      64
+     ],
+     [
+      "policia",
+      "afirmar",
+      58
+     ],
+     [
+      "policia",
+      "ano",
+      50
+     ],
+     [
+      "policia",
+      "apreender",
+      39
+     ],
+     [
+      "policia",
+      "caso",
+      49
+     ],
+     [
+      "policia",
+      "deter",
+      45
+     ],
+     [
+      "policia",
+      "estar",
+      32
+     ],
+     [
+      "policia",
+      "filho",
+      33
+     ],
+     [
+      "policia",
+      "homem",
+      33
+     ],
+     [
+      "policia",
+      "investigacao",
+      40
+     ],
+     [
+      "policia",
+      "lula",
+      84
+     ],
+     [
+      "policia",
+      "mae",
+      51
+     ],
+     [
+      "policia",
+      "momento",
+      27
+     ],
+     [
+      "policia",
+      "presidente",
+      43
+     ],
+     [
+      "policia",
+      "usar",
+      54
+     ],
+     [
+      "policia",
+      "video",
+      17
+     ],
+     [
+      "policia",
+      "campanha",
+      41
+     ],
+     [
+      "policia",
+      "dizer",
+      25
+     ],
+     [
+      "policia",
+      "pm",
+      42
+     ],
+     [
+      "policia",
       "sp",
-      15
+      43
+     ],
+     [
+      "policia",
+      "suspeito",
+      45
+     ],
+     [
+      "policia",
+      "apoio",
+      59
+     ],
+     [
+      "policia",
+      "imagem",
+      56
+     ],
+     [
+      "policia",
+      "interior",
+      36
+     ],
+     [
+      "policia",
+      "operacao",
+      33
+     ],
+     [
+      "policia",
+      "paulo",
+      67
+     ],
+     [
+      "policia",
+      "rede",
+      32
+     ],
+     [
+      "policia",
+      "social",
+      26
+     ],
+     [
+      "policia",
+      "obrigar",
+      61
+     ],
+     [
+      "policia",
+      "pedir",
+      50
+     ],
+     [
+      "policia",
+      "politica",
+      27
+     ],
+     [
+      "policia",
+      "derrite",
+      51
+     ],
+     [
+      "policia",
+      "eleito",
+      40
+     ],
+     [
+      "policia",
+      "eleitoral",
+      39
+     ],
+     [
+      "policia",
+      "guilherme",
+      47
+     ],
+     [
+      "policia",
+      "jovem",
+      44
+     ],
+     [
+      "policia",
+      "pms",
+      17
+     ],
+     [
+      "policia",
+      "preso",
+      41
+     ],
+     [
+      "policia",
+      "senador",
+      45
+     ],
+     [
+      "policia",
+      "ex",
+      22
+     ],
+     [
+      "policia",
+      "publico",
+      42
+     ],
+     [
+      "policia",
+      "secretario",
+      24
+     ],
+     [
+      "policia",
+      "seguranca",
+      41
+     ],
+     [
+      "policia",
+      "pp",
+      25
+     ],
+     [
+      "policia",
+      "suspeita",
+      28
+     ],
+     [
+      "policia",
+      "afastamento",
+      30
+     ],
+     [
+      "lula",
+      "abordagem",
+      71
+     ],
+     [
+      "lula",
+      "acao",
+      33
+     ],
+     [
+      "lula",
+      "acusar",
+      53
+     ],
+     [
+      "lula",
+      "adolescente",
+      80
+     ],
+     [
+      "lula",
+      "afirmar",
+      80
+     ],
+     [
+      "lula",
+      "agressao",
+      27
+     ],
+     [
+      "lula",
+      "ano",
+      68
+     ],
+     [
+      "lula",
+      "apreender",
+      57
+     ],
+     [
+      "lula",
+      "camiseta",
+      144
+     ],
+     [
+      "lula",
+      "caso",
+      65
+     ],
+     [
+      "lula",
+      "deter",
+      69
+     ],
+     [
+      "lula",
+      "estar",
+      41
+     ],
+     [
+      "lula",
+      "feira",
+      53
+     ],
+     [
+      "lula",
+      "filho",
+      49
+     ],
+     [
+      "lula",
+      "homem",
+      43
+     ],
+     [
+      "lula",
+      "investigacao",
+      44
+     ],
+     [
+      "lula",
+      "mae",
+      77
+     ],
+     [
+      "lula",
+      "militar",
+      114
+     ],
+     [
+      "lula",
+      "momento",
+      30
+     ],
+     [
+      "lula",
+      "ocorrencia",
+      33
+     ],
+     [
+      "lula",
+      "piracicaba",
+      141
+     ],
+     [
+      "lula",
+      "policial",
+      127
+     ],
+     [
+      "lula",
+      "presidente",
+      73
+     ],
+     [
+      "lula",
+      "relato",
+      27
+     ],
+     [
+      "lula",
+      "usar",
+      71
      ]
     ],
-    "total_nos": 450,
-    "total_arestas": 30997,
-    "comunidades": 2
+    "total_nos": 529,
+    "total_arestas": 37389,
+    "comunidades": 3
    },
    "gexf": "rede_palavras_comentarios_posts.gexf",
    "o_que_e": "palavras que aparecem juntas no mesmo comentário (3+ vezes); cor = comunidade"
   },
   "classes": {
-   "comentarios": 233,
-   "classificados": 161,
-   "pct_classificados": 69.1,
+   "comentarios": 306,
+   "classificados": 220,
+   "pct_classificados": 71.9,
    "classes": [
     {
      "classe": 1,
-     "segmentos": 71,
-     "pct": 44.1,
+     "segmentos": 53,
+     "pct": 24.1,
      "formas": [
       [
-       "feira",
-       48.7
+       "secretario",
+       79.0
       ],
       [
-       "policial",
-       41.3
+       "ex",
+       78.4
       ],
       [
-       "pt",
-       39.8
+       "tarcisio",
+       71.9
       ],
       [
-       "militar",
-       39.7
+       "freitas",
+       60.5
       ],
       [
-       "policia",
-       39.2
+       "derrite",
+       56.3
       ],
       [
-       "suspeito",
-       38.7
+       "seguranca",
+       48.9
       ],
       [
-       "camiseta",
-       38.5
+       "governo",
+       48.2
       ],
       [
-       "trafico",
-       37.0
+       "publico",
+       45.2
       ],
       [
-       "pantanal",
-       35.1
+       "guilherme",
+       37.2
       ],
       [
-       "campanha",
-       34.3
+       "senador",
+       37.2
       ],
       [
-       "comunidade",
-       34.1
+       "eleito",
+       32.9
       ],
       [
-       "lula",
-       33.6
-      ],
-      [
-       "caso",
-       33.3
-      ],
-      [
-       "delegacia",
-       32.3
-      ],
-      [
-       "droga",
+       "identico",
        31.3
+      ],
+      [
+       "folha",
+       30.9
+      ],
+      [
+       "grave",
+       27.6
+      ],
+      [
+       "bandido",
+       22.8
       ]
      ],
      "por_ano": {
-      "2026": 71
+      "2026": 53
      }
     },
     {
      "classe": 2,
-     "segmentos": 41,
-     "pct": 25.5,
+     "segmentos": 119,
+     "pct": 54.1,
      "formas": [
       [
-       "secretario",
-       58.3
-      ],
-      [
-       "ex",
-       57.4
-      ],
-      [
-       "tarcisio",
-       50.8
-      ],
-      [
-       "freitas",
+       "camiseta",
        47.2
       ],
       [
-       "derrite",
-       36.3
+       "feira",
+       36.2
       ],
       [
-       "seguranca",
-       36.1
+       "lula",
+       28.0
       ],
       [
-       "governo",
-       35.8
+       "policial",
+       26.4
       ],
       [
-       "publico",
-       35.8
+       "pt",
+       25.1
       ],
       [
-       "identico",
-       28.2
+       "agressao",
+       24.3
       ],
       [
-       "guilherme",
-       27.2
+       "vestir",
+       22.6
       ],
       [
-       "aparencia",
-       24.6
+       "suspeito",
+       22.3
       ],
       [
-       "republicano",
+       "militar",
+       22.2
+      ],
+      [
+       "pantanal",
+       22.1
+      ],
+      [
+       "delegacia",
+       21.5
+      ],
+      [
+       "trafico",
        20.2
       ],
       [
-       "folha",
-       20.0
+       "deputado",
+       19.4
       ],
       [
-       "senador",
-       18.6
+       "estadual",
+       19.4
       ],
       [
-       "bergamo",
-       17.1
+       "pms",
+       18.9
       ]
      ],
      "por_ano": {
-      "2026": 41
+      "2026": 119
      }
     },
     {
      "classe": 3,
-     "segmentos": 49,
-     "pct": 30.4,
+     "segmentos": 48,
+     "pct": 21.8,
      "formas": [
       [
-       "vir",
-       21.8
-      ],
-      [
        "especial",
-       21.7
+       32.3
       ],
       [
        "novembro",
-       19.2
+       29.7
       ],
       [
        "conhecer",
-       16.7
+       25.9
+      ],
+      [
+       "vir",
+       25.9
       ],
       [
        "whatsapp",
-       15.4
-      ],
-      [
-       "gente",
-       12.4
-      ],
-      [
-       "novidade",
-       11.8
+       20.8
       ],
       [
        "cliente",
-       11.8
+       18.3
       ],
       [
-       "hora",
-       11.8
-      ],
-      [
-       "disponivel",
-       11.8
+       "novidade",
+       18.3
       ],
       [
        "agendar",
-       11.8
+       18.3
       ],
       [
-       "garantir",
-       10.6
+       "gente",
+       17.6
       ],
       [
-       "dia",
-       10.3
+       "disponivel",
+       14.6
       ],
       [
-       "historia",
-       10.1
+       "festa",
+       14.6
       ],
       [
-       "pedro",
-       9.4
+       "celebrar",
+       14.6
+      ],
+      [
+       "produto",
+       14.6
+      ],
+      [
+       "experiencia",
+       14.6
+      ],
+      [
+       "sabado",
+       14.6
       ]
      ],
      "por_ano": {
-      "2026": 49
+      "2026": 48
      }
     }
    ],
    "arvore": [
     {
      "id": 0,
-     "n": 187,
+     "n": 259,
      "filhos": [
       1,
       2
      ],
-     "chi2": 5728.7,
+     "chi2": 6830.2,
      "classe": null
     },
     {
      "id": 1,
-     "n": 138,
+     "n": 256,
      "filhos": [
       3,
       4
      ],
-     "chi2": 3549.9,
+     "chi2": 6572.0,
      "classe": null
     },
     {
      "id": 2,
-     "n": 49,
-     "filhos": null,
-     "classe": 3
-    },
-    {
-     "id": 3,
-     "n": 137,
-     "filhos": [
-      5,
-      6
-     ],
-     "chi2": 2916.8,
-     "classe": null
-    },
-    {
-     "id": 4,
-     "n": 1,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 5,
-     "n": 129,
-     "filhos": [
-      7,
-      8
-     ],
-     "chi2": 2789.3,
-     "classe": null
-    },
-    {
-     "id": 6,
-     "n": 8,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 7,
-     "n": 2,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 8,
-     "n": 127,
-     "filhos": [
-      9,
-      10
-     ],
-     "chi2": 2388.1,
-     "classe": null
-    },
-    {
-     "id": 9,
-     "n": 124,
-     "filhos": [
-      11,
-      12
-     ],
-     "chi2": 2290.0,
-     "classe": null
-    },
-    {
-     "id": 10,
      "n": 3,
      "filhos": null,
      "eliminado": true,
      "classe": null
     },
     {
+     "id": 3,
+     "n": 208,
+     "filhos": [
+      5,
+      6
+     ],
+     "chi2": 3428.5,
+     "classe": null
+    },
+    {
+     "id": 4,
+     "n": 48,
+     "filhos": null,
+     "classe": 3
+    },
+    {
+     "id": 5,
+     "n": 9,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 6,
+     "n": 199,
+     "filhos": [
+      7,
+      8
+     ],
+     "chi2": 3210.7,
+     "classe": null
+    },
+    {
+     "id": 7,
+     "n": 196,
+     "filhos": [
+      9,
+      10
+     ],
+     "chi2": 2930.2,
+     "classe": null
+    },
+    {
+     "id": 8,
+     "n": 3,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 9,
+     "n": 10,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 10,
+     "n": 186,
+     "filhos": [
+      11,
+      12
+     ],
+     "chi2": 2669.9,
+     "classe": null
+    },
+    {
      "id": 11,
-     "n": 5,
+     "n": 6,
      "filhos": null,
      "eliminado": true,
      "classe": null
     },
     {
      "id": 12,
-     "n": 119,
+     "n": 180,
      "filhos": [
       13,
       14
      ],
-     "chi2": 2104.3,
+     "chi2": 2484.1,
      "classe": null
     },
     {
      "id": 13,
-     "n": 118,
-     "filhos": [
-      15,
-      16
-     ],
-     "chi2": 2099.3,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
      "classe": null
     },
     {
      "id": 14,
-     "n": 1,
-     "filhos": null,
-     "eliminado": true,
+     "n": 179,
+     "filhos": [
+      15,
+      16
+     ],
+     "chi2": 2411.7,
      "classe": null
     },
     {
      "id": 15,
-     "n": 1,
-     "filhos": null,
-     "eliminado": true,
-     "classe": null
-    },
-    {
-     "id": 16,
-     "n": 117,
+     "n": 175,
      "filhos": [
       17,
       18
      ],
-     "chi2": 2000.4,
+     "chi2": 2328.3,
      "classe": null
     },
     {
-     "id": 17,
-     "n": 113,
-     "filhos": [
-      19,
-      20
-     ],
-     "chi2": 1726.2,
-     "classe": null
-    },
-    {
-     "id": 18,
+     "id": 16,
      "n": 4,
      "filhos": null,
      "eliminado": true,
      "classe": null
     },
     {
-     "id": 19,
-     "n": 112,
-     "filhos": [
-      21,
-      22
-     ],
-     "chi2": 1695.5,
-     "classe": null
-    },
-    {
-     "id": 20,
+     "id": 17,
      "n": 1,
      "filhos": null,
      "eliminado": true,
      "classe": null
     },
     {
+     "id": 18,
+     "n": 174,
+     "filhos": [
+      19,
+      20
+     ],
+     "chi2": 2222.1,
+     "classe": null
+    },
+    {
+     "id": 19,
+     "n": 172,
+     "filhos": [
+      21,
+      22
+     ],
+     "chi2": 2088.6,
+     "classe": null
+    },
+    {
+     "id": 20,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
      "id": 21,
-     "n": 71,
+     "n": 53,
      "filhos": null,
      "classe": 1
     },
     {
      "id": 22,
-     "n": 41,
+     "n": 119,
      "filhos": null,
      "classe": 2
     }
    ],
-   "min_classe": 10,
+   "min_classe": 12,
    "escolha_classes": {
     "classes_terminais": 3,
     "tentativas": [
      {
+      "classes_terminais": 7,
+      "aproveitamento_pct": 59.5
+     },
+     {
       "classes_terminais": 6,
-      "aproveitamento_pct": 44.6
+      "aproveitamento_pct": 64.7
      },
      {
       "classes_terminais": 5,
-      "aproveitamento_pct": 47.2
+      "aproveitamento_pct": 65.4
      },
      {
       "classes_terminais": 4,
-      "aproveitamento_pct": 52.4
+      "aproveitamento_pct": 69.0
      },
      {
       "classes_terminais": 3,
-      "aproveitamento_pct": 69.1
+      "aproveitamento_pct": 71.9
      }
     ],
     "regra": "CHD com a regra do tutorial do IRaMuTeQ (Camargo & Justo, 2021, p. 31): começa com 10 classes terminais e, se a CHD não retiver 75% dos segmentos, muda o número de classes terminais e refaz. Regra fixa do Atlas, declarada antes de ver o resultado (01/11/2026): de 10 para baixo (10, 9, …, 3), a primeira partição com aproveitamento ≥ 75%; nenhuma → a de maior aproveitamento, marcada ⛔. Como as divisões são sempre as mesmas (a maior classe é dividida primeiro), as partições de 10 a 3 saem de uma só CHD."
    },
    "aproveitamento": {
-    "pct_classificados": 69.1,
+    "pct_classificados": 71.9,
     "minimo_pct": 75.0,
     "atinge_minimo": false,
     "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
@@ -5827,8 +6093,8 @@
    "variavel": null,
    "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado.",
    "amostra": {
-    "comentarios": 233,
-    "de": 233,
+    "comentarios": 306,
+    "de": 306,
     "semente": 42
    }
   },
@@ -5884,6 +6150,16 @@
    "universo": null,
    "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
    "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
+  },
+  {
+   "rede": "x",
+   "termo": "o caso (busca por termo)",
+   "lidos_no_periodo": 73,
+   "coletas": 1,
+   "bateu_no_limite": false,
+   "universo": null,
+   "fonte_universo": "⛔ a plataforma não informa o total de publicações com o termo",
+   "leitura": "abaixo do limite pedido: tudo o que a busca da plataforma devolveu"
   }
  ],
  "pontos": [
@@ -5909,6 +6185,27 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-21T19:28",
+   "x",
+   737,
+   [
+    "chamado_voto",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T20:09",
+   "x",
+   573,
+   [
+    "pede_investigacao"
+   ],
+   "paulazanelli",
+   "https://x.com/paulazanelli/status/2112999843874652317"
   ],
   [
    "2026-10-21T20:56",
@@ -5947,6 +6244,114 @@
    null
   ],
   [
+   "2026-10-21T21:11",
+   "x",
+   460,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T22:59",
+   "x",
+   3203,
+   [
+    "pede_investigacao"
+   ],
+   "MachadoDarlon",
+   "https://x.com/MachadoDarlon/status/2113042478781612106"
+  ],
+  [
+   "2026-10-22T01:52",
+   "x",
+   65968,
+   [
+    "denuncia_armacao",
+    "descredita_denuncia",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "reinaldoazevedo",
+   "https://x.com/reinaldoazevedo/status/2113085972271472900"
+  ],
+  [
+   "2026-10-22T02:46",
+   "x",
+   199,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T02:51",
+   "x",
+   19097,
+   [
+    "denuncia_armacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T02:52",
+   "x",
+   3562,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T08:45",
+   "x",
+   9417,
+   [
+    "denuncia_armacao"
+   ],
+   "Metropoles",
+   "https://x.com/Metropoles/status/2113189867408732409"
+  ],
+  [
+   "2026-10-22T09:43",
+   "x",
+   53376,
+   [
+    "critica_uso_politico",
+    "denuncia_armacao",
+    "descredita_denuncia",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "ojornaleirobr",
+   "https://x.com/ojornaleirobr/status/2113204711666946554"
+  ],
+  [
+   "2026-10-22T09:57",
+   "x",
+   454,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T10:23",
+   "x",
+   954,
+   [
+    "denuncia_armacao",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
    "2026-10-22T10:40",
    "instagram",
    7053,
@@ -5958,12 +6363,44 @@
    null
   ],
   [
+   "2026-10-22T10:58",
+   "x",
+   30743,
+   [],
+   "jnascim",
+   "https://x.com/jnascim/status/2113223534038462564"
+  ],
+  [
+   "2026-10-22T11:12",
+   "x",
+   761,
+   [
+    "critica_uso_politico",
+    "denuncia_armacao",
+    "descredita_denuncia",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
    "2026-10-22T11:29",
    "facebook",
    2,
    [],
    null,
    null
+  ],
+  [
+   "2026-10-22T11:35",
+   "x",
+   1061,
+   [
+    "informacao_noticia"
+   ],
+   "bnews_oficial",
+   "https://x.com/bnews_oficial/status/2113232692615467358"
   ],
   [
    "2026-10-22T11:47",
@@ -5978,6 +6415,14 @@
    null
   ],
   [
+   "2026-10-22T12:48",
+   "x",
+   323,
+   [],
+   "IrlanSimoes",
+   "https://x.com/IrlanSimoes/status/2113251154217910310"
+  ],
+  [
    "2026-10-22T12:55",
    "facebook",
    1972,
@@ -5987,6 +6432,14 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-22T13:05",
+   "x",
+   220,
+   [],
+   "Helenasth",
+   "https://x.com/Helenasth/status/2113255535126446260"
   ],
   [
    "2026-10-22T13:07",
@@ -6013,6 +6466,16 @@
    null
   ],
   [
+   "2026-10-22T13:08",
+   "x",
+   14691,
+   [
+    "denuncia_armacao"
+   ],
+   "republiqueBRA",
+   "https://x.com/republiqueBRA/status/2113256198401135044"
+  ],
+  [
    "2026-10-22T13:20",
    "facebook",
    52,
@@ -6032,6 +6495,14 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-22T13:29",
+   "x",
+   450,
+   [],
+   "LemusteleSUR",
+   "https://x.com/LemusteleSUR/status/2113261442321244189"
   ],
   [
    "2026-10-22T13:42",
@@ -6057,11 +6528,31 @@
    null
   ],
   [
+   "2026-10-22T13:55",
+   "x",
+   352,
+   [],
+   "turcci1",
+   "https://x.com/turcci1/status/2113267916078481885"
+  ],
+  [
    "2026-10-22T14:05",
    "instagram",
    930,
    [
     "informacao_noticia",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T14:17",
+   "x",
+   200,
+   [
+    "critica_uso_politico",
+    "denuncia_armacao",
     "insulto_desumanizacao"
    ],
    null,
@@ -6092,6 +6583,18 @@
    null
   ],
   [
+   "2026-10-22T14:27",
+   "x",
+   1167,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
    "2026-10-22T14:32",
    "facebook",
    214,
@@ -6100,6 +6603,14 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-22T14:37",
+   "x",
+   28028,
+   [],
+   "JornalOGlobo",
+   "https://x.com/JornalOGlobo/status/2113278521673977873"
   ],
   [
    "2026-10-22T14:43",
@@ -6158,6 +6669,18 @@
    null
   ],
   [
+   "2026-10-22T15:12",
+   "x",
+   2078,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "roberta_bastoss",
+   "https://x.com/roberta_bastoss/status/2113287475099471914"
+  ],
+  [
    "2026-10-22T15:21",
    "instagram",
    41,
@@ -6191,6 +6714,26 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-22T15:50",
+   "x",
+   433,
+   [],
+   "Rejaneaandreia",
+   "https://x.com/Rejaneaandreia/status/2113296840166723589"
+  ],
+  [
+   "2026-10-22T16:07",
+   "x",
+   4712,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "stagepopbr",
+   "https://x.com/stagepopbr/status/2113301245817499835"
   ],
   [
    "2026-10-22T16:08",
@@ -6236,6 +6779,29 @@
    null
   ],
   [
+   "2026-10-22T16:46",
+   "x",
+   74,
+   [
+    "denuncia_armacao",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T16:57",
+   "x",
+   17090,
+   [
+    "denuncia_armacao",
+    "insulto_desumanizacao",
+    "pede_investigacao"
+   ],
+   "So_Quem_e_Lula",
+   "https://x.com/So_Quem_e_Lula/status/2113313878599667904"
+  ],
+  [
    "2026-10-22T17:37",
    "instagram",
    186,
@@ -6266,6 +6832,17 @@
    null
   ],
   [
+   "2026-10-22T17:59",
+   "x",
+   48799,
+   [
+    "denuncia_armacao",
+    "pede_investigacao"
+   ],
+   "folha",
+   "https://x.com/folha/status/2113329394949456133"
+  ],
+  [
    "2026-10-22T18:03",
    "instagram",
    1371,
@@ -6288,6 +6865,40 @@
    null
   ],
   [
+   "2026-10-22T18:03",
+   "x",
+   21139,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "fernandapsol",
+   "https://x.com/fernandapsol/status/2113330391247401208"
+  ],
+  [
+   "2026-10-22T18:11",
+   "x",
+   34276,
+   [
+    "informacao_noticia",
+    "insulto_desumanizacao",
+    "pede_investigacao"
+   ],
+   "g1",
+   "https://x.com/g1/status/2113332417981276640"
+  ],
+  [
+   "2026-10-22T18:35",
+   "x",
+   2367,
+   [
+    "pede_investigacao"
+   ],
+   "revistaforum",
+   "https://x.com/revistaforum/status/2113338574821106109"
+  ],
+  [
    "2026-10-22T18:40",
    "facebook",
    2955,
@@ -6295,6 +6906,16 @@
     "denuncia_armacao",
     "informacao_noticia",
     "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T18:43",
+   "x",
+   82,
+   [
+    "denuncia_armacao"
    ],
    null,
    null
@@ -6325,6 +6946,18 @@
    [],
    null,
    null
+  ],
+  [
+   "2026-10-22T19:09",
+   "x",
+   626,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "insulto_desumanizacao"
+   ],
+   "UJSBRASIL",
+   "https://x.com/UJSBRASIL/status/2113346993904877759"
   ],
   [
    "2026-10-22T19:13",
@@ -6410,6 +7043,16 @@
    null
   ],
   [
+   "2026-10-22T20:00",
+   "x",
+   4511,
+   [
+    "informacao_noticia"
+   ],
+   "BlogdoNoblat",
+   "https://x.com/BlogdoNoblat/status/2113359912767996300"
+  ],
+  [
    "2026-10-22T20:06",
    "instagram",
    159,
@@ -6420,6 +7063,22 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-22T20:08",
+   "x",
+   91,
+   [],
+   "RaimundoDante",
+   "https://x.com/RaimundoDante/status/2113361749386674396"
+  ],
+  [
+   "2026-10-22T20:08",
+   "x",
+   738,
+   [],
+   "vista_patria",
+   "https://x.com/vista_patria/status/2113361928156573714"
   ],
   [
    "2026-10-22T20:10",
@@ -6478,6 +7137,14 @@
    null
   ],
   [
+   "2026-10-22T20:32",
+   "x",
+   57,
+   [],
+   "kabokiko",
+   "https://x.com/kabokiko/status/2113368003324621116"
+  ],
+  [
    "2026-10-22T20:33",
    "facebook",
    13391,
@@ -6486,6 +7153,14 @@
     "informacao_noticia",
     "pede_investigacao"
    ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:33",
+   "x",
+   183,
+   [],
    null,
    null
   ],
@@ -6514,6 +7189,14 @@
    null
   ],
   [
+   "2026-10-22T20:55",
+   "x",
+   79,
+   [],
+   null,
+   null
+  ],
+  [
    "2026-10-22T20:57",
    "facebook",
    1,
@@ -6529,6 +7212,17 @@
     "denuncia_armacao",
     "informacao_noticia",
     "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:03",
+   "x",
+   393,
+   [
+    "denuncia_armacao",
+    "informacao_noticia"
    ],
    null,
    null
@@ -6658,6 +7352,45 @@
    null
   ],
   [
+   "2026-10-22T23:00",
+   "x",
+   474,
+   [
+    "denuncia_armacao",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:04",
+   "x",
+   94,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:13",
+   "x",
+   3617,
+   [
+    "pede_investigacao"
+   ],
+   "JornalOGlobo",
+   "https://x.com/JornalOGlobo/status/2113408352650743831"
+  ],
+  [
+   "2026-10-22T23:37",
+   "x",
+   190,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
    "2026-10-22T23:51",
    "facebook",
    0,
@@ -6711,6 +7444,17 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-23T00:25",
+   "x",
+   3474,
+   [
+    "denuncia_armacao",
+    "informacao_noticia"
+   ],
+   "dudelbem",
+   "https://x.com/dudelbem/status/2113426566071955555"
   ],
   [
    "2026-10-23T01:21",
@@ -6804,12 +7548,30 @@
    null
   ],
   [
+   "2026-10-23T03:17",
+   "x",
+   8801,
+   [
+    "insulto_desumanizacao"
+   ],
+   "plocsocial",
+   "https://x.com/plocsocial/status/2113469843722662236"
+  ],
+  [
    "2026-10-23T04:22",
    "facebook",
    3,
    [
     "informacao_noticia"
    ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T06:33",
+   "x",
+   110,
+   [],
    null,
    null
   ],
@@ -6829,6 +7591,27 @@
    29,
    [
     "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T09:53",
+   "x",
+   1680,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T10:31",
+   "x",
+   455,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "insulto_desumanizacao",
     "pede_investigacao"
    ],
    null,
@@ -6879,6 +7662,28 @@
    null
   ],
   [
+   "2026-10-23T10:57",
+   "x",
+   3677,
+   [
+    "informacao_noticia"
+   ],
+   "Ieonunes",
+   "https://x.com/Ieonunes/status/2113585505669681651"
+  ],
+  [
+   "2026-10-23T10:58",
+   "x",
+   2316,
+   [
+    "denuncia_armacao",
+    "insulto_desumanizacao",
+    "pede_investigacao"
+   ],
+   "orlandoguerreir",
+   "https://x.com/orlandoguerreir/status/2113585965893566688"
+  ],
+  [
    "2026-10-23T11:02",
    "instagram",
    219,
@@ -6910,6 +7715,17 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-23T11:34",
+   "x",
+   3241,
+   [
+    "denuncia_armacao",
+    "pede_investigacao"
+   ],
+   "xandeobsesso",
+   "https://x.com/xandeobsesso/status/2113594844257865953"
   ],
   [
    "2026-10-23T11:37",
@@ -6955,6 +7771,17 @@
    null
   ],
   [
+   "2026-10-23T11:48",
+   "x",
+   628,
+   [
+    "informacao_noticia",
+    "insulto_desumanizacao"
+   ],
+   null,
+   null
+  ],
+  [
    "2026-10-23T11:51",
    "instagram",
    2633,
@@ -6990,12 +7817,45 @@
    null
   ],
   [
+   "2026-10-23T12:14",
+   "x",
+   791,
+   [
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "orlandoguerreir",
+   "https://x.com/orlandoguerreir/status/2113605049918091460"
+  ],
+  [
+   "2026-10-23T12:20",
+   "x",
+   821,
+   [
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "orlandoguerreir",
+   "https://x.com/orlandoguerreir/status/2113606528821288988"
+  ],
+  [
    "2026-10-23T13:12",
    "instagram",
    429,
    [
     "critica_uso_politico",
     "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T13:16",
+   "x",
+   260,
+   [
     "informacao_noticia",
     "pede_investigacao"
    ],
@@ -7034,6 +7894,27 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-23T14:25",
+   "x",
+   345,
+   [
+    "insulto_desumanizacao"
+   ],
+   "Monicasfrancisc",
+   "https://x.com/Monicasfrancisc/status/2113637936054821076"
+  ],
+  [
+   "2026-10-23T14:30",
+   "x",
+   2887,
+   [
+    "denuncia_armacao",
+    "pede_investigacao"
+   ],
+   "ocolunista_",
+   "https://x.com/ocolunista_/status/2113639181985390801"
   ],
   [
    "2026-10-23T14:50",
@@ -7121,6 +8002,14 @@
    null
   ],
   [
+   "2026-10-23T16:36",
+   "x",
+   40837,
+   [],
+   "centralreality",
+   "https://x.com/centralreality/status/2113670968862261269"
+  ],
+  [
    "2026-10-23T17:07",
    "facebook",
    3,
@@ -7186,6 +8075,16 @@
    null
   ],
   [
+   "2026-10-23T19:13",
+   "x",
+   159,
+   [
+    "denuncia_armacao"
+   ],
+   "hbj_r77032",
+   "https://x.com/hbj_r77032/status/2113710492086591678"
+  ],
+  [
    "2026-10-23T20:25",
    "instagram",
    13452,
@@ -7208,8 +8107,24 @@
   ],
   [
    "2026-10-23T21:38",
+   "x",
+   530,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:38",
    "facebook",
    62,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:05",
+   "x",
+   101,
    [],
    null,
    null
@@ -7293,6 +8208,17 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-24T01:30",
+   "x",
+   1067,
+   [
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "sbtnews",
+   "https://x.com/sbtnews/status/2113805172669350230"
   ],
   [
    "2026-10-24T02:17",
@@ -7402,6 +8328,24 @@
    null
   ],
   [
+   "2026-10-25T13:29",
+   "x",
+   75,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T17:35",
+   "x",
+   133,
+   [],
+   null,
+   null
+  ],
+  [
    "2026-10-25T18:14",
    "facebook",
    3,
@@ -7424,6 +8368,25 @@
    "2026-10-26T17:52",
    "facebook",
    2,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T22:20",
+   "x",
+   6472,
+   [
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "mattayahuMATEUS",
+   "https://x.com/mattayahuMATEUS/status/2114844625366143429"
+  ],
+  [
+   "2026-10-28T17:42",
+   "x",
+   54,
    [],
    null,
    null
@@ -7453,9 +8416,56 @@
    null
   ],
   [
+   "2026-10-31T01:13",
+   "x",
+   3750,
+   [
+    "denuncia_armacao",
+    "pede_investigacao"
+   ],
+   "revistaforum",
+   "https://x.com/revistaforum/status/2116337777042485376"
+  ],
+  [
    "2026-10-31T01:41",
    "facebook",
    49,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-31T01:41",
+   "x",
+   555,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-31T06:28",
+   "x",
+   54,
+   [
+    "denuncia_armacao",
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-31T06:49",
+   "x",
+   23,
    [
     "denuncia_armacao",
     "informacao_noticia",
@@ -7474,6 +8484,17 @@
    ],
    null,
    null
+  ],
+  [
+   "2026-10-31T15:40",
+   "x",
+   272,
+   [
+    "informacao_noticia",
+    "pede_investigacao"
+   ],
+   "DilmaResiste",
+   "https://x.com/DilmaResiste/status/2116555797014478858"
   ],
   [
    "2026-11-01T19:37",
