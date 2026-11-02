@@ -1,67 +1,44 @@
 {
  "caso": "007",
  "titulo": "\"Lula amassa a bandeira\" (fake news do dia da eleição)",
- "run_started_utc": "2026-11-02T02:05:14Z",
+ "run_started_utc": "2026-11-02T02:27:36Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-03",
  "redes": [
   {
-   "rede": "x",
-   "teto_usd": 0.9,
-   "gasto_antes_usd": 0,
-   "teto_execucao_usd": 0.9,
-   "termos": [
-    {
-     "termo": "o caso (busca por termo)",
-     "ator": "xquik/x-tweet-scraper",
-     "itens": 94,
-     "lidos": 94,
-     "no_periodo": 94,
-     "no_limite": false,
-     "run": "oMr3JZiYkwKjdy8wi",
-     "custo_usd": 0.0141,
-     "erro": null,
-     "chaves_1o_item": [
-      "author",
-      "bookmarkCount",
-      "conversationId",
-      "createdAt",
-      "displayTextRange",
-      "edit",
-      "entities",
-      "id",
-      "inReplyToId",
-      "inReplyToUserId",
-      "inReplyToUsername",
-      "isNoteTweet",
-      "isPinned",
-      "isQuoteStatus",
-      "isReply",
-      "isRetweet",
-      "isTranslatable",
-      "lang",
-      "likeCount",
-      "quoteCount",
-      "replyCount",
-      "retweetCount",
-      "text",
-      "textHighlights",
-      "type",
-      "url",
-      "viewCount",
-      "viewState"
-     ],
-     "mais_antigo": "2026-10-04T15:25:28Z"
+   "rede": "tiktok",
+   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
+   "termos": {
+    "Lula amassa bandeira": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "Lula bandeira amassada": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
     }
-   ],
-   "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 3000,
-   "custo_usd": 0.0141,
+   },
+   "custo_usd": 0.0,
+   "status": "⛔ nenhum vídeo lido",
+   "itens_no_periodo": 0
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_pontos": 169,
+   "noticias": 15,
    "status": "ok",
-   "itens_no_periodo": 94
+   "itens_no_periodo": 0
   }
  ],
  "itens_acumulados": 265,
- "custo_usd": 0.0141
+ "custo_usd": 0.0
 }
