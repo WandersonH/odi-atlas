@@ -1,23 +1,62 @@
 {
- "gerado_em_utc": "2026-11-02T22:30:00Z",
+ "gerado_em_utc": "2026-11-02T22:50:00Z",
  "pedido": "Responsável, 02/11/2026, 19h19: link do Poder360 (\"Carta de Flávio Bolsonaro foi redigida com ajuda do ChatGPT\"), \"cartas bolso\"; \"aqui temos pdf de cada versão\".",
  "o_que_e": "Como a carta foi produzida, segundo a imprensa e segundo os próprios aliados; e o que o Atlas conseguiu ou não verificar no arquivo.",
  "linha": [
-  {"quando": "2026-10-28 (tarde)", "fato": "Carta distribuída à imprensa em PDF; 1ª versão com brasão antigo (\"Estados Unidos do Brazil\", vigente até 1967) e \"verdadeiro presidente eleito\".", "fonte": "Metrópoles (coluna Andreza Matais, por Andre Shalders), 28/10/2026, 19h23", "url": "https://www.metropoles.com/colunas/andreza-matais/ferramenta-da-adobe-aponta-que-pdf-da-carta-de-flavio-foi-gerado-no-chatgpt"},
-  {"quando": "2026-10-28, 19h23", "fato": "A ferramenta Adobe Content Authenticity lê nas Content Credentials do PDF o uso do modelo GPT-6 (OpenAI) na exportação do arquivo. A própria reportagem frisa: isso mostra que a IA exportou o PDF, não que escreveu o texto.", "fonte": "Metrópoles, 28/10/2026, 19h23", "url": "https://www.metropoles.com/colunas/andreza-matais/ferramenta-da-adobe-aponta-que-pdf-da-carta-de-flavio-foi-gerado-no-chatgpt"},
-  {"quando": "2026-10-28, 20h17", "fato": "Brasil 247 repercute o achado do Metrópoles.", "fonte": "Brasil 247, 28/10/2026, 20h17", "url": "https://www.brasil247.com/brasil/ferramenta-aponta-uso-do-chatgpt-para-gerar-pdf-de-carta-golpista-de-flavio-bolsonaro/"},
-  {"quando": "2026-10-29", "fato": "Paulo Figueiredo, no X, diz que Eduardo Bolsonaro usou o ChatGPT para finalizar a carta; atribui à IA o brasão errado e a volta de uma versão anterior com \"presidente eleito\"; diz que a carta teve várias versões preliminares e várias mãos e que os erros só foram notados depois da distribuição à imprensa.", "fonte": "Money Times, a partir da Reuters, 30/10/2026", "url": "https://www.moneytimes.com.br/desinteligencia-artificial-paulo-figueiredo-culpa-chatgpt-por-carta-que-flavio-bolsonario-seria-o-presidente-eleito-fets/"},
-  {"quando": "2026-10-29 ou depois", "fato": "Poder360: \"Carta de Flávio Bolsonaro foi redigida com ajuda do ChatGPT\". ⛔ A página recusou a leitura automática do Atlas (erro do lado do site); data e detalhes não conferidos.", "fonte": "Poder360", "url": "https://www.poder360.com.br/poder-eleicoes-2026/carta-de-flavio-bolsonaro-foi-redigida-com-ajuda-do-chatgpt/"}
+  {
+   "quando": "2026-10-28 (tarde)",
+   "fato": "Carta distribuída à imprensa em PDF; 1ª versão com brasão antigo (\"Estados Unidos do Brazil\", vigente até 1967) e \"verdadeiro presidente eleito\".",
+   "fonte": "Metrópoles (coluna Andreza Matais, por Andre Shalders), 28/10/2026, 19h23",
+   "url": "https://www.metropoles.com/colunas/andreza-matais/ferramenta-da-adobe-aponta-que-pdf-da-carta-de-flavio-foi-gerado-no-chatgpt"
+  },
+  {
+   "quando": "2026-10-28, 19h23",
+   "fato": "A ferramenta Adobe Content Authenticity lê nas Content Credentials do PDF o uso do modelo GPT-6 (OpenAI) na exportação do arquivo. A própria reportagem frisa: isso mostra que a IA exportou o PDF, não que escreveu o texto.",
+   "fonte": "Metrópoles, 28/10/2026, 19h23",
+   "url": "https://www.metropoles.com/colunas/andreza-matais/ferramenta-da-adobe-aponta-que-pdf-da-carta-de-flavio-foi-gerado-no-chatgpt"
+  },
+  {
+   "quando": "2026-10-28, 20h17",
+   "fato": "Brasil 247 repercute o achado do Metrópoles.",
+   "fonte": "Brasil 247, 28/10/2026, 20h17",
+   "url": "https://www.brasil247.com/brasil/ferramenta-aponta-uso-do-chatgpt-para-gerar-pdf-de-carta-golpista-de-flavio-bolsonaro/"
+  },
+  {
+   "quando": "2026-10-29",
+   "fato": "Paulo Figueiredo, no X, diz que Eduardo Bolsonaro usou o ChatGPT para finalizar a carta; atribui à IA o brasão errado e a volta de uma versão anterior com \"presidente eleito\"; diz que a carta teve várias versões preliminares e várias mãos e que os erros só foram notados depois da distribuição à imprensa.",
+   "fonte": "Money Times, a partir da Reuters, 30/10/2026",
+   "url": "https://www.moneytimes.com.br/desinteligencia-artificial-paulo-figueiredo-culpa-chatgpt-por-carta-que-flavio-bolsonario-seria-o-presidente-eleito-fets/"
+  },
+  {
+   "quando": "2026-10-29 ou depois",
+   "fato": "Poder360: \"Carta de Flávio Bolsonaro foi redigida com ajuda do ChatGPT\". ⛔ A página recusou a leitura automática do Atlas (erro do lado do site); data e detalhes não conferidos.",
+   "fonte": "Poder360",
+   "url": "https://www.poder360.com.br/poder-eleicoes-2026/carta-de-flavio-bolsonaro-foi-redigida-com-ajuda-do-chatgpt/"
+  }
  ],
  "verificacao_do_atlas": {
-  "arquivo": "data/casos/017/midia/versao_imprensa.pdf (cópia publicada pelo Congresso em Foco em 28/10/2026, 17h19)",
-  "resultado": "⛔ Não dá para verificar nesta cópia: o PDF foi regravado pelo iLovePDF (Producer \"iLovePDF\", ModDate 28/10/2026 20h21 UTC), que não preserva Content Credentials nem metadados de origem. Sem XMP, sem C2PA, sem Creator.",
-  "o_que_falta": "Os PDFs originais de cada versão, como foram distribuídos (não a cópia reexportada por um veículo). Com eles, o Atlas lê as Content Credentials localmente e guarda o hash SHA-256 de cada arquivo.",
-  "cuidado": "Content Credentials dizem qual ferramenta gerou ou exportou o arquivo; não dizem quem escreveu o texto nem se o texto foi gerado por IA."
+  "arquivos": "Os três PDFs originais hospedados pelo Poder360 (links enviados pelo responsável em 02/11/2026, 19h33), guardados em data/casos/017/midia/carta_v1.pdf, carta_v2.pdf e carta_v3.pdf, com SHA-256 em data/casos/017/pdfs.json. Lidos no run 41539033776 (carta-pdfs-017.yml) com pdfinfo, leitura dos metadados, biblioteca c2pa-python e OCR (tesseract) na versão só com imagens.",
+  "v1": "Versão 1 (brasão \"Estados Unidos do Brazil\", \"presidente eleito\"): tem Content Credentials (C2PA 2.2) íntegras. Gerador declarado: ChatGPT; ação c2pa.created por \"gpt-6\" em 28/10/2026 19h38m50s UTC (16h38 em Brasília), tipo \"trainedAlgorithmicMedia\"; assinatura de \"OpenAI OpCo, LLC\" (OpenAI Media Service) às 19h38m53s UTC; CreationDate do PDF 19h38m22s UTC; Producer ReportLab (biblioteca que o ChatGPT usa para exportar PDF). A biblioteca marca o certificado como \"untrusted\" só porque a OpenAI não está na lista de confiança dela; a assinatura confere com o conteúdo.",
+  "v2": "Versão 2 (brasão atual, \"presidente eleito\"): texto embutido idêntico ao da v1 (mesmo hash do texto, 1.091 palavras). O arquivo ainda carrega os bytes do manifesto C2PA e a marca \"gpt-6\", mas o manifesto está com cabeçalho inválido: o PDF foi alterado depois da exportação (coerente com a troca do brasão) e a credencial deixou de validar. Sem Producer/Creator/data legíveis.",
+  "v3": "Versão 3 (\"líder do Brasil\"): PDF só com 3 imagens de página, regravado pelo iLovePDF às 20h59 UTC (17h59 em Brasília); sem texto embutido, sem metadados de origem, sem C2PA. Texto lido por OCR.",
+  "texto": "v1 e v2 têm o mesmo texto. De v2 para v3 (OCR), só duas trocas: \"como o verdadeiro presidente eleito do Brasil\" → \"como o líder do Brasil\" e \"que eu sou o presidente eleito\" → \"que eu sou o líder\"; o resto (fraude, STF, TSE, cassação da chapa) é igual (semelhança 99,5%; três números de nota de rodapé somem no OCR).",
+  "cuidado": "Content Credentials dizem qual ferramenta gerou ou exportou o arquivo; não dizem quem escreveu o texto nem se o texto foi gerado por IA. O que o Atlas confirma: o PDF da v1 saiu do ChatGPT (gpt-6) às 16h38 de 28/10, 41 minutos antes do post de Flávio no X (17h19)."
  },
  "versoes_segundo_a_imprensa": [
-  {"n": 1, "marca": "brasão \"Estados Unidos do Brazil\" + \"verdadeiro presidente eleito\"", "situacao": "apagada; ⛔ sem o arquivo no Atlas"},
-  {"n": 2, "marca": "brasão atual + \"verdadeiro presidente eleito\"", "situacao": "post do X 2115538982012682337 (imagens guardadas) e PDF do Congresso em Foco (regravado)"},
-  {"n": 3, "marca": "\"líder do Brasil\" no lugar de \"presidente eleito\"", "situacao": "post do X 2115544562219315474 (imagens guardadas)"}
+  {
+   "n": 1,
+   "marca": "brasão \"Estados Unidos do Brazil\" + \"verdadeiro presidente eleito\"",
+   "situacao": "PDF original guardado (carta_v1.pdf): C2PA íntegra, ChatGPT / gpt-6, 28/10 16h38 BRT"
+  },
+  {
+   "n": 2,
+   "marca": "brasão atual + \"verdadeiro presidente eleito\"",
+   "situacao": "PDF original guardado (carta_v2.pdf): mesmo texto da v1; C2PA quebrada (arquivo editado após a exportação). Post do X 2115538982012682337"
+  },
+  {
+   "n": 3,
+   "marca": "\"líder do Brasil\" no lugar de \"presidente eleito\"",
+   "situacao": "PDF guardado (carta_v3.pdf): só imagens, iLovePDF 17h59 BRT; duas trocas de palavras. Post do X 2115544562219315474"
+  }
  ]
 }

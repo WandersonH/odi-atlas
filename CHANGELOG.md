@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.316 — Caso 017: os três PDFs originais da carta lidos; a v1 saiu do ChatGPT (gpt-6) às 16h38 de 28/10 (2026-11-02) ✅
+
+- Links enviados pelo responsável (02/11/2026, 19h33), do Poder360. O ambiente de trabalho não alcança o site; `scripts/carta_pdfs_017.py` + `carta-pdfs-017.yml` (runs 41538641571 e 41539033776) baixaram, guardaram (`data/casos/017/midia/carta_v{1,2,3}.pdf`, SHA-256 em `pdfs.json`) e leram com pdfinfo, metadados brutos, c2pa-python e OCR (tesseract, por).
+- v1 (brasão "Brazil", "presidente eleito"): Content Credentials C2PA 2.2 íntegras; claim generator ChatGPT; c2pa.created por "gpt-6" em 2026-10-28T19:38:50Z (16h38 BRT), digitalSourceType trainedAlgorithmicMedia; assinatura OpenAI OpCo, LLC às 19:38:53Z; CreationDate 19:38:22Z; Producer ReportLab. ("signingCredential.untrusted" é só a lista de confiança da biblioteca.)
+- v2 (brasão atual): texto embutido idêntico ao da v1 (mesmo hash); manifesto C2PA presente mas com cabeçalho inválido ("invalid JUMBF header"): arquivo editado após a exportação.
+- v3 ("líder do Brasil"): só imagens, Producer iLovePDF, ModDate 20:59:52Z; sem C2PA. OCR: semelhança de 99,5% com a v2; diferenças reais = "verdadeiro presidente eleito do Brasil" → "líder do Brasil" e "eu sou o presidente eleito" → "eu sou o líder".
+- O que isso confirma e o que não: o PDF da v1 foi gerado pelo ChatGPT 41 min antes do post no X (17h19); não diz quem escreveu o texto.
+- Página: bloco do 017 atualizado com as três verificações e downloads. `producao.json` atualizado.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.315 — Caso 017: produção da carta com IA (ChatGPT / GPT-6), o que a imprensa apurou e o que o Atlas pôde verificar (2026-11-02) ⚠️
 
 - Enviado pelo responsável (02/11/2026, 19h19): Poder360, "Carta de Flávio Bolsonaro foi redigida com ajuda do ChatGPT"; "aqui temos pdf de cada versão".
