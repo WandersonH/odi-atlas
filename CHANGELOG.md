@@ -4,6 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.244 — Lematização com o dicionário do próprio IRaMuTeQ e risadas normalizadas (2026-11-01) ⚠️
+
+- **Pedido do responsável:** colocar a lematização antes da conferência no IRaMuTeQ, para validar uma vez só. Ele enviou às 22h08 o `lexique_pt.txt` da instalação dele.
+- **Arquivo:** `data/config/lexique_pt.txt`, com 142.622 linhas de forma, lema e classe gramatical.
+  - SHA-256: 3819f90f…6923.
+  - A nota `lexique_pt.LEIAME.txt` registra a origem e a licença: o IRaMuTeQ é GPL v2 (Camargo & Justo, 2013).
+- **`chd_reinert.tokens`:**
+  - Tira links, @menções e #hashtags.
+  - Troca cada palavra pelo lema do dicionário ("votaram", "votando" → "votar"; "eleições" → "eleição").
+  - Mantém só as formas ativas: nome, verbo, adjetivo, advérbio e palavra não reconhecida. Os auxiliares (`ver_sup`), artigos, preposições, pronomes e conjunções saem. Essa escolha de formas ativas é uma aproximação do padrão do IRaMuTeQ, a conferir no tutorial.
+  - Risadas (kkkk, hahaha, rsrs) viram a forma "risada", tanto no Atlas quanto no corpus exportado para o IRaMuTeQ (`redes_caso.corpus_iramuteq` e `corpus_populismo.limpar_iramuteq`), para que os dois vejam o mesmo texto.
+  - Toda saída do corpus principal ganha o campo `lematizacao`.
+  - Vale para todas as análises de classes do Atlas: casos, comentários, imprensa e debate. Elas são regeneradas pelas rotinas.
+- **Teste:** `python -m unittest discover -s tests` OK, com `tests/test_lematizacao.py` novo (4 testes).
+
 ## C19.243 — 2º turno conferido com o total oficial: votos e seções iguais (2026-11-01) ✅
 
 - **Conferência:** `data/elections_2t.json` (municípios mais exterior) e `data/tse/secoes/presidente_2t_resumo.json` (soma das 499.205 seções do arquivo `votacao_secao_2026_BR.zip` do TSE), comparados com os totais com 100% das seções apuradas.

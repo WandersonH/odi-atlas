@@ -14,8 +14,8 @@ Procedimento (Reinert, 1983/1990; o mesmo descrito no IRaMuTeQ e no pacote R rai
   3. Cada classe final é descrita pelas formas e variáveis com qui-quadrado positivo e significativo
      (χ² ≥ 3,84; p < 0,05), e pelos segmentos mais característicos.
 
-Diferenças em relação ao IRaMuTeQ (declaradas): sem lematização (o IRaMuTeQ usa dicionário de lemas do
-português); classificação simples (o IRaMuTeQ por padrão faz a dupla e pode deixar segmentos não classificados).
+Diferenças em relação ao IRaMuTeQ (declaradas): desde 01/11/2026 a lematização usa o mesmo dicionário do IRaMuTeQ
+(lexique_pt.txt), mas a escolha de formas ativas é uma aproximação; classificação simples (o IRaMuTeQ por padrão faz a dupla e pode deixar segmentos não classificados).
 Por isso o corpus também é exportado no formato do IRaMuTeQ, para conferência no programa de referência.
 Os NOMES das classes são dados pelo pesquisador, lendo formas e segmentos (como em Montuori Fernandes, 2022).
 """
@@ -47,9 +47,53 @@ ser estar ter fazer vai vamos foi sao esta estao tem pode podem deve vez cada ou
 """).split())
 
 
+# 01/11/2026: lematização com o dicionário de português do próprio IRaMuTeQ (data/config/lexique_pt.txt: forma, lema, classe),
+# enviado pelo responsável da instalação dele, para que a conferência no IRaMuTeQ compare a mesma coisa. Formas ativas, como no
+# padrão do IRaMuTeQ (aproximação, conferir nas propriedades do corpus): nomes, verbos, adjetivos, advérbios e formas não
+# reconhecidas; auxiliares (ver_sup), artigos, preposições, pronomes e conjunções ficam de fora. Risadas (kkkk, hahaha, rsrs)
+# viram uma forma só ("risada") aqui e no corpus exportado para o IRaMuTeQ (normalizar_risadas), para os dois verem o mesmo texto.
+LEXICO_ARQ = Path(__file__).resolve().parents[1] / "data/config/lexique_pt.txt"
+ATIVAS = {"nom", "ver", "adj", "adv", "nr"}
+RISADA = re.compile(r"\b(?:k{3,}\w*|(?:ha|he|hi|ah){2,}h?|(?:rs){2,}|(?:kkk+|ksks+|kakaka+)\w*)\b", re.I)
+_LEX: dict | None = None
+
+
+def lexico() -> dict:
+    global _LEX
+    if _LEX is None:
+        _LEX = {}
+        if LEXICO_ARQ.exists():
+            for linha in LEXICO_ARQ.read_text(encoding="utf-8").splitlines():
+                p = linha.split("\t")
+                if len(p) >= 3:
+                    _LEX.setdefault(p[0].strip(), (p[1].strip(), p[2].strip()))
+    return _LEX
+
+
+def lematizacao() -> dict:
+    """O que a página e os JSON informam sobre a lematização."""
+    lx = lexico()
+    return {"dicionario": "lexique_pt.txt do IRaMuTeQ (instalação do responsável, 01/11/2026)", "formas_no_dicionario": len(lx),
+            "formas_ativas": sorted(ATIVAS), "risadas": "kkkk, hahaha, rsrs… → 'risada'"} if lx else \
+           {"dicionario": "⛔ data/config/lexique_pt.txt ausente: sem lematização"}
+
+
+def normalizar_risadas(texto: str) -> str:
+    return RISADA.sub(" risada ", texto or "")
+
+
 def tokens(texto: str) -> list[str]:
-    return [t for t in bc.norm(texto).split()
-            if len(t) >= 3 and not t.isdigit() and t not in bc.STOP and t not in STOP_EXTRA and not t.startswith("#")]
+    lx = lexico()
+    t = re.sub(r"https?://\S+|[@#]\w+", " ", normalizar_risadas(bc.EMOJI_TAG.sub(" ", texto or ""))).lower()
+    out = []
+    for w in re.findall(r"[^\W\d_]+", t):
+        lema, cl = lx.get(w, (w, "nr")) if lx else (w, "nr")
+        if cl.strip() not in ATIVAS:
+            continue
+        n = bc.norm(lema).strip()
+        if len(n) >= 3 and not n.isdigit() and n not in bc.STOP and n not in STOP_EXTRA and " " not in n:
+            out.append(n)
+    return out
 
 
 def matriz(segs: list[str], min_freq: int = MIN_FREQ):
@@ -261,7 +305,7 @@ def main(argv=None) -> int:
            "metodo": (f"CHD de Reinert (implementação própria em Python/numpy, classificação simples): {K} classes no máximo, "
                       f"formas com {MIN_FREQ}+ segmentos, classe mínima de {int(MIN_CLASSE_PCT*100)}% dos segmentos (grupo menor que isso não vira classe e fica não classificado; teste de sensibilidade com 3%, 5% e 8% registrado), aproveitamento mínimo de {APROVEITAMENTO_MIN:.0f}% dos segmentos (Camargo & Justo, 2013), formas características com χ² ≥ {CHI_CRIT} (p < 0,05). "
                       "Sem lematização. Os nomes das classes devem ser dados pelo pesquisador. Conferir no IRaMuTeQ com o corpus exportado."),
-           "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
+           "lematizacao": lematizacao(), "parametros": {"k": K, "min_freq": MIN_FREQ, "min_classe": mc, "min_classe_pct": MIN_CLASSE_PCT, "chi_crit": CHI_CRIT},
            "sensibilidade": sens,
            "nota_sensibilidade": "Regra única do Atlas desde 01/11/2026: classe mínima de 5%, até 60 divisões, aproveitamento mínimo de 75%. Antes, com o corte forçado no mínimo, 8% tinha sido adotado aqui porque 3% e 5% formavam classes por nomes próprios; as três versões ficam registradas para comparação. Aguardando conferência no IRaMuTeQ.",
            "segmentos_total": len(linhas), "segmentos_classificados": n,

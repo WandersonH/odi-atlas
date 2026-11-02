@@ -58,6 +58,7 @@ def precodificar(texto: str, regs: dict) -> dict[str, str]:
 def limpar_iramuteq(texto: str) -> str:
     """Remove o que o IRaMuTeQ interpreta como marcação ou quebra o corpus (*, $, %, aspas, apóstrofos, quebras)."""
     t = bc.URL.sub(" ", texto or "")
+    t = re.sub(r"\b(?:k{3,}\w*|(?:ha|he|hi|ah){2,}h?|(?:rs){2,})\b", " risada ", t, flags=re.I)  # como chd_reinert.normalizar_risadas (01/11/2026)
     t = re.sub(r"[*$%\"'`´“”‘’#@|_\\]", " ", t)
     t = re.sub(r"[\U0001F000-\U0001FAFF☀-➿️]", " ", t)
     return re.sub(r"\s+", " ", t).strip()
