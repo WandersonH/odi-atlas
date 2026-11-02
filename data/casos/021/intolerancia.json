@@ -1,0 +1,187 @@
+{
+ "caso": "021",
+ "gerado_em_utc": "2026-11-02T07:29:00Z",
+ "estado": "processado",
+ "aviso": "Triagem automática, NÃO validada: percentuais do modelo sobre a amostra lida. ⛔ Validação humana (duas pessoas, kappa ≥ 0,61) pendente.",
+ "metodo": "intolerância dos casos — triagem automática (piloto). Pedido do responsável (02/11/2026, 02h29: \"pode aplicar\"), sobre a proposta \"Frente de intolerância e desinformação nos casos do ODI Atlas\" (piloto nos casos 014, 021 e 022). - Textos: publicações coletadas do caso (ODI_INTERNO_DIR/casos/<id>/itens.csv.gz) e, se houver, comentários do YouTube do caso (youtube_comentarios.csv.gz). Textos repetidos são lidos uma vez. - Modelos (Hugging Face, pesos públicos): cada um é tentado; o que não carregar fica ⛔ com o motivo. Os rótulos vêm da configuração do próprio modelo (id2label), sem renomear. Limiar 0,5 por rótulo. - O modelo é TRIAGEM, não resultado: estado \"processado\". Nada vira \"validado\" sem a amostra codificada por duas pessoas (kappa ≥ 0,61), como na proposta. - Universo: as plataformas não informam o total de publicações por termo (⛔ desconhecido); o JSON diz quantos textos foram lidos por rede e a fonte de cada contagem. - Privacidade: escores por texto e amostra de validação só no repositório privado; no público, só contagens e percentuais.",
+ "limiar": 0.5,
+ "lidos": {
+  "textos_com_3_ou_mais_palavras": 5526,
+  "textos_unicos": 5478,
+  "por_rede": {
+   "x": 5203,
+   "facebook": 137,
+   "instagram": 138
+  },
+  "fonte": "itens.csv.gz (publicações coletadas por termo) e youtube_comentarios.csv.gz do caso, repositório privado"
+ },
+ "universo": "⛔ desconhecido: as plataformas não informam o total de publicações por termo; ver o bloco de cada rede no dossiê do caso",
+ "modelos": {
+  "ofensividade_hatebr": {
+   "modelo": "ruanchaves/bert-large-portuguese-cased-hatebr",
+   "descricao": "HateBR (Vargas et al., LREC 2022): comentários do Instagram em perfis de políticos; ofensivo × não ofensivo",
+   "rotulos_do_modelo": [
+    "False",
+    "True"
+   ],
+   "rotulos_contados_como_sinal": [
+    "True"
+   ],
+   "multirrotulo": false,
+   "total": {
+    "lidos": 5478,
+    "sinalizados": 1845,
+    "pct": 33.7
+   },
+   "por_rede": {
+    "facebook": {
+     "lidos": 137,
+     "sinalizados_algum_rotulo": 8,
+     "pct_algum": 5.8,
+     "por_rotulo": {
+      "True": {
+       "n": 8,
+       "pct": 5.8
+      }
+     }
+    },
+    "instagram": {
+     "lidos": 138,
+     "sinalizados_algum_rotulo": 12,
+     "pct_algum": 8.7,
+     "por_rotulo": {
+      "True": {
+       "n": 12,
+       "pct": 8.7
+      }
+     }
+    },
+    "x": {
+     "lidos": 5203,
+     "sinalizados_algum_rotulo": 1825,
+     "pct_algum": 35.1,
+     "por_rotulo": {
+      "True": {
+       "n": 1825,
+       "pct": 35.1
+      }
+     }
+    }
+   }
+  },
+  "odio_alvos_bertabaporu": {
+   "modelo": "pysentimiento/bertabaporu-pt-hate-speech",
+   "descricao": "pysentimiento (Pérez et al.), BERTabaporu: ódio por alvo; métricas não publicadas no cartão do modelo",
+   "rotulos_do_modelo": [
+    "Sexism",
+    "Body",
+    "Racism",
+    "Ideology",
+    "Homophobia"
+   ],
+   "rotulos_contados_como_sinal": [
+    "Sexism",
+    "Body",
+    "Racism",
+    "Ideology",
+    "Homophobia"
+   ],
+   "multirrotulo": true,
+   "total": {
+    "lidos": 5478,
+    "sinalizados": 288,
+    "pct": 5.3
+   },
+   "por_rede": {
+    "facebook": {
+     "lidos": 137,
+     "sinalizados_algum_rotulo": 1,
+     "pct_algum": 0.7,
+     "por_rotulo": {
+      "Sexism": {
+       "n": 1,
+       "pct": 0.7
+      },
+      "Body": {
+       "n": 0,
+       "pct": 0.0
+      },
+      "Racism": {
+       "n": 0,
+       "pct": 0.0
+      },
+      "Ideology": {
+       "n": 0,
+       "pct": 0.0
+      },
+      "Homophobia": {
+       "n": 0,
+       "pct": 0.0
+      }
+     }
+    },
+    "instagram": {
+     "lidos": 138,
+     "sinalizados_algum_rotulo": 0,
+     "pct_algum": 0.0,
+     "por_rotulo": {
+      "Sexism": {
+       "n": 0,
+       "pct": 0.0
+      },
+      "Body": {
+       "n": 0,
+       "pct": 0.0
+      },
+      "Racism": {
+       "n": 0,
+       "pct": 0.0
+      },
+      "Ideology": {
+       "n": 0,
+       "pct": 0.0
+      },
+      "Homophobia": {
+       "n": 0,
+       "pct": 0.0
+      }
+     }
+    },
+    "x": {
+     "lidos": 5203,
+     "sinalizados_algum_rotulo": 287,
+     "pct_algum": 5.5,
+     "por_rotulo": {
+      "Sexism": {
+       "n": 215,
+       "pct": 4.1
+      },
+      "Body": {
+       "n": 26,
+       "pct": 0.5
+      },
+      "Racism": {
+       "n": 4,
+       "pct": 0.1
+      },
+      "Ideology": {
+       "n": 12,
+       "pct": 0.2
+      },
+      "Homophobia": {
+       "n": 62,
+       "pct": 1.2
+      }
+     }
+    }
+   }
+  }
+ },
+ "validacao": {
+  "amostra": 200,
+  "sinalizados": 100,
+  "nao_sinalizados": 100,
+  "desenho": "metade marcada e metade não marcada pelo modelo de ofensividade, cada metade estratificada por rede (maior resto); a chave fica num arquivo separado",
+  "situacao": "⛔ aguardando codificação por duas pessoas"
+ }
+}
