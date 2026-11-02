@@ -71,6 +71,7 @@ jobs:
           CASO: ${{ github.event.inputs.caso }}
           REDES: ${{ github.event_name == 'schedule' && 'tiktok google' || github.event.inputs.redes }}  # 02/11/2026: TikTok de volta com filtro de data (run 41501506012: 10 de 10 vídeos de outubro); pago dentro do teto de US$ 1 por caso
         run: |
+          git pull -q --rebase origin main || true   # 02/11/2026: o teto cumulativo lê os manifestos; sem isto, um run enfileirado não via o gasto do anterior (TikTok cobrado 2× em 29 casos)
           a=""
           if [ "$MODO" = "teste" ]; then a="--teste"; fi
           if [ "$MODO" = "complemento" ]; then a="--complemento --rede x"; fi

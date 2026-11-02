@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.317 — TikTok pago em todos os casos: 13.198 vídeos; gasto US$ 10,01 (2× o previsto, por falha no teto cumulativo); Kwai 0 (2026-11-02) ⚠️
+
+- Autorização: C19.310 ("resolve essa merda vc tem 10 dolares"; "essa verba é pra tudo, não só pra um caso").
+- O que aconteceu: a rodada diária do `casos.yml` (agendada 08h17, executada pelo GitHub só às 17h44, run 41521973674) já incluía TikTok (C19.295) e a carga manual (run 41524299377, 18h00) entrou na fila atrás dela. O 2º run leu os manifestos do checkout feito antes do 1º gravar os dele: `gasto_antes_usd` = 0 nos dois, e cada caso gastou até US$ 0,20 duas vezes. Soma dos manifestos das 21h01 e 21h56 UTC: TikTok **US$ 10,01** (de 0,15 a 0,38 por caso; 027 ⛔ teto já esgotado antes); Kwai US$ 0,00. Ultrapassa em US$ 1,01 o máximo que eu tinha escrito (US$ 9,00) e em US$ 0,01 os US$ 10 autorizados.
+- Correção: `git pull` antes do passo de coleta, para o teto cumulativo ler o gasto do run anterior. Os tetos por caso (TikTok 0,20) já estão estourados, então as próximas rodadas diárias não gastam mais nada no TikTok ("⛔ teto da rede esgotado") até nova autorização.
+- Resultado TikTok (caso.json de cada caso, união das duas rodadas; universo ⛔ desconhecido): 13.198 vídeos no período somando os 30 casos; por caso de 174 (031) a 898 (002); 027 = 0. Visualizações somadas informadas pela plataforma de 5,8 mi (031) a 356 mi (002).
+- Kwai: 0 vídeos no período em 27 casos mesmo com o campo "hashtags" do ator (C19.311); 014 e 028 ⛔ "teto não cabe nem 5 itens por termo" (muitos termos para US$ 0,10). Nenhum custo. Hipótese: o ator não acha vídeos recentes por hashtag/termo político; a página pública do Kwai também não entregou nada no diagnóstico de 17/10. Kwai fica fora dos casos (segue só nos perfis das campanhas).
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.316 — Caso 017: os três PDFs originais da carta lidos; a v1 saiu do ChatGPT (gpt-6) às 16h38 de 28/10 (2026-11-02) ✅
 
 - Links enviados pelo responsável (02/11/2026, 19h33), do Poder360. O ambiente de trabalho não alcança o site; `scripts/carta_pdfs_017.py` + `carta-pdfs-017.yml` (runs 41538641571 e 41539033776) baixaram, guardaram (`data/casos/017/midia/carta_v{1,2,3}.pdf`, SHA-256 em `pdfs.json`) e leram com pdfinfo, metadados brutos, c2pa-python e OCR (tesseract, por).
