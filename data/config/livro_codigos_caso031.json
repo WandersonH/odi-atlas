@@ -1,0 +1,136 @@
+{
+ "titulo": "Livro de códigos — caso 031: \"Nota ao Brasil\" de Flávio Bolsonaro (1º/11/2026) (ODI Atlas)",
+ "versao": "0.1 (2026-11-02) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 02/11/2026, 03h28: \"vamos pra mais 3 cases: nordeste é o câncer do Brasil toda eleição; brasileiros Paraguai, tem que abranger busca Google sobre isto pré e pós 2º turno; e por último Nota ao Brasil, Flávio Bolsonaro saiu hoje\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Apoio, crítica e ironia são codificados separadamente; nenhuma categoria mede a posição política de quem publica. Afirmações factuais da nota ou sobre ela (\"decisão sete minutos após o resultado\", \"fugiu\") são marcadas para conferência humana com fonte; o indicador não decide se procedem.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "apoio": [
+   "defesa_perseguicao",
+   "ataque_imprensa",
+   "ataque_judiciario"
+  ],
+  "critica": [
+   "fuga_exilio",
+   "quem_pagou",
+   "ironia_humor"
+  ],
+  "transversal": [
+   "alegacao_factual"
+  ]
+ },
+ "categorias": {
+  "defesa_perseguicao": {
+   "nome": "Defesa: perseguição",
+   "definicao": "Apoia Flávio e repete que há perseguição política a ele ou ao pai.",
+   "indicadores": [
+    "perseguicao",
+    "perseguido",
+    "perseguida",
+    "injustica",
+    "preso politico",
+    "exilado politico",
+    "forca flavio",
+    "estamos com voce"
+   ],
+   "excluir_trechos": []
+  },
+  "ataque_imprensa": {
+   "nome": "Ataque à imprensa",
+   "definicao": "Critica a Globo ou a imprensa (\"sem cortes\", \"Globo lixo\").",
+   "indicadores": [
+    "globo",
+    "globolixo",
+    "globo lixo",
+    "imprensa",
+    "midia",
+    "sem cortes",
+    "edita",
+    "editada"
+   ],
+   "excluir_trechos": []
+  },
+  "ataque_judiciario": {
+   "nome": "Ataque ao Judiciário",
+   "definicao": "Critica Moraes, o STF, a PF ou as medidas cautelares.",
+   "indicadores": [
+    "moraes",
+    "xandao",
+    "stf",
+    "cautelar",
+    "cautelares",
+    "passaporte",
+    "pf",
+    "ditadura do judiciario"
+   ],
+   "excluir_trechos": []
+  },
+  "fuga_exilio": {
+   "nome": "Crítica: fuga",
+   "definicao": "Diz que Flávio fugiu ou se exilou (\"saiu pelo Brasil\" ironizado).",
+   "indicadores": [
+    "fugiu",
+    "fuga",
+    "fujao",
+    "fugitivo",
+    "foragido",
+    "saiu pelo brasil",
+    "sai pelo brasil",
+    "miami",
+    "argentina"
+   ],
+   "excluir_trechos": []
+  },
+  "quem_pagou": {
+   "nome": "Crítica: quem pagou",
+   "definicao": "Pergunta quem pagou a viagem ou como se mantém no exterior.",
+   "indicadores": [
+    "quem pagou",
+    "quem banca",
+    "quem esta pagando",
+    "dinheiro",
+    "pix",
+    "vaquinha"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Trata a nota com piada, meme ou ironia explícita.",
+   "indicadores": [
+    "kkk",
+    "rsrs",
+    "hahaha",
+    "piada",
+    "meme"
+   ],
+   "excluir_trechos": []
+  },
+  "alegacao_factual": {
+   "nome": "Afirmação factual a conferir",
+   "definicao": "Afirma fato sobre a nota, a viagem ou a decisão judicial (horário, valores, rota).",
+   "indicadores": [
+    "sete minutos",
+    "7 minutos",
+    "decisao judicial",
+    "passaporte",
+    "entrou na argentina",
+    "voou",
+    "recolher"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

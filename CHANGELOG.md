@@ -4,6 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.270 — Três casos novos: 029 xenofobia contra o Nordeste, 030 brasileiros e o Paraguai, 031 "Nota ao Brasil" de Flávio (2026-11-02) ⚠️
+
+- **Pedido do responsável** (02/11, 03h28), com duas imagens de posts do Instagram (@atuarparaguai, fila por documentação paraguaia; @aopontopb, "Nordeste é alvo de 27 milhões de ataques nas redes após eleição").
+- **029, xenofobia contra o Nordeste:** desde 25/10.
+  - **Achado de checagem:** os "27 milhões" que voltaram a circular depois do 2º turno são do estudo "O Nordeste no Banco dos Réus" (Ativaweb DataLab). O estudo cobre as 72 h depois do **1º turno**: 32,8 milhões de menções, links e compartilhamentos, 82,2% classificados como hostis; os tipos de ofensa vêm de uma amostra de 535 comentários (Vermelho, 08/10). Não são posts únicos e não são do 2º turno. Isso está registrado na página e no livro de códigos.
+  - Livro v0.1: hostilidade (desumanização, culpar o voto, inferiorização, separação) × reação (denúncia, orgulho regional, cobrança legal, ironia).
+- **030, brasileiros e o Paraguai:** Trends antes e depois do 2º turno: 12 meses, 30 dias e 7 dias, com estados e os controles "morar em Portugal" e "morar nos Estados Unidos". Redes desde 18/10, uma semana antes do 2º turno.
+  - O "1.700%" (Guia do Investidor, 26/10) é citado com a ressalva do próprio texto e sem volume absoluto. Os números oficiais de residência ficam ⛔ até serem lidos na Dirección General de Migraciones.
+  - Livro v0.1: motivos, prática (requisitos, fila, oferta de serviço) e reação.
+- **031, "Nota ao Brasil" de Flávio:** a nota é de **1º/11** (O Tempo, 01/11; o responsável escreveu "saiu hoje" na madrugada de 02/11). Redes desde 1º/11; o post no X entra no arquivo web.
+  - Livro v0.1: apoio (perseguição, ataque à imprensa, ataque ao Judiciário) × crítica (fuga, quem pagou, ironia), mais as afirmações factuais a conferir ("sete minutos após o resultado").
+- **Os três:** padrão completo, com os tetos do padrão (X 0,90, Instagram 0,70, Facebook 0,40, TikTok 1,00; conta 1). Abas próprias; os casos entram no índice e no laço diário de busca.
+- **Teste:** `python -m unittest discover -s tests`: OK. Playwright: as fichas 029, 030, 031 e 028 abrem as abas certas, sem erro de JavaScript.
+- **Pendente:** as coletas acionadas depois deste commit (busca grátis já; redes pagas na fila única).
+
 ## C19.269 — Caso 028 abrange os povos indígenas em geral · classes lematizadas de 006, 007 e 008 (2026-11-02) ⚠️
 
 - **Caso 028:** o responsável pediu (02/11, 03h24): "povos indígenas deve ser abrangendo na busca". Os termos deixaram de se limitar ao Mato Grosso do Sul.

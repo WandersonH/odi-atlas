@@ -1,0 +1,151 @@
+{
+ "titulo": "Livro de códigos — caso 029: xenofobia contra o Nordeste depois do 2º turno (\"o Nordeste é o câncer do Brasil\") (ODI Atlas)",
+ "versao": "0.1 (2026-11-02) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 02/11/2026, 03h28: \"vamos pra mais 3 cases: nordeste é o câncer do Brasil toda eleição; brasileiros Paraguai, tem que abranger busca Google sobre isto pré e pós 2º turno; e por último Nota ao Brasil, Flávio Bolsonaro saiu hoje\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Hostilidade e reação são codificadas separadamente; nenhuma categoria mede a posição política de quem publica. Reproduzir um insulto para denunciá-lo é 'denuncia_xenofobia' — decisão humana. A mesma régua vale para ataques a qualquer região.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "hostilidade": [
+   "desumanizacao",
+   "culpabilizacao_voto",
+   "inferiorizacao",
+   "separacao"
+  ],
+  "reacao": [
+   "denuncia_xenofobia",
+   "orgulho_regional",
+   "cobranca_legal",
+   "ironia_humor"
+  ]
+ },
+ "categorias": {
+  "desumanizacao": {
+   "nome": "Desumanização",
+   "definicao": "Compara nordestinos ou o Nordeste a doença, animal ou praga (\"câncer do Brasil\", \"jumento\", \"gado\").",
+   "indicadores": [
+    "cancer do brasil",
+    "e o cancer",
+    "jumento",
+    "jumentos",
+    "praga",
+    "parasita",
+    "parasitas",
+    "bicho",
+    "animal"
+   ],
+   "excluir_trechos": []
+  },
+  "culpabilizacao_voto": {
+   "nome": "Culpar o Nordeste pelo resultado",
+   "definicao": "Atribui a vitória de Lula ao voto nordestino, com desprezo (\"votou por esmola\", \"bolsa família\").",
+   "indicadores": [
+    "votou no lula",
+    "culpa do nordeste",
+    "nordeste elegeu",
+    "bolsa familia",
+    "bolsa esmola",
+    "esmola",
+    "vendeu o voto",
+    "troca de voto"
+   ],
+   "excluir_trechos": []
+  },
+  "inferiorizacao": {
+   "nome": "Inferiorização",
+   "definicao": "Chama nordestinos de burros, analfabetos, preguiçosos ou incapazes.",
+   "indicadores": [
+    "burro",
+    "burros",
+    "analfabeto",
+    "analfabetos",
+    "preguicoso",
+    "vagabundo",
+    "vagabundos",
+    "ignorante",
+    "atrasado"
+   ],
+   "excluir_trechos": []
+  },
+  "separacao": {
+   "nome": "Separar ou excluir o Nordeste",
+   "definicao": "Defende separar, murar ou expulsar o Nordeste ou os nordestinos.",
+   "indicadores": [
+    "separar o nordeste",
+    "separa o nordeste",
+    "muro",
+    "fora nordestino",
+    "volta pro nordeste",
+    "vai pro nordeste",
+    "pais do nordeste"
+   ],
+   "excluir_trechos": []
+  },
+  "denuncia_xenofobia": {
+   "nome": "Denúncia de xenofobia",
+   "definicao": "Denuncia ou relata ataque xenofóbico a nordestinos.",
+   "indicadores": [
+    "xenofobia",
+    "xenofobo",
+    "xenofobico",
+    "preconceito contra nordestino",
+    "ataque ao nordeste",
+    "odio ao nordeste"
+   ],
+   "excluir_trechos": []
+  },
+  "orgulho_regional": {
+   "nome": "Orgulho regional",
+   "definicao": "Afirma orgulho nordestino ou responde com valorização da região.",
+   "indicadores": [
+    "orgulho de ser nordestino",
+    "orgulhodesernordestino",
+    "sou nordestino",
+    "nordeste e forte",
+    "nordeste resiste",
+    "arretado"
+   ],
+   "excluir_trechos": []
+  },
+  "cobranca_legal": {
+   "nome": "Cobrança legal",
+   "definicao": "Lembra que xenofobia é crime, cita denúncia, MP, polícia ou processo.",
+   "indicadores": [
+    "e crime",
+    "crime de",
+    "denuncie",
+    "denunciar",
+    "ministerio publico",
+    "mp",
+    "policia",
+    "processo",
+    "lei 7716",
+    "safernet"
+   ],
+   "excluir_trechos": []
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Trata o tema com piada, meme ou ironia explícita.",
+   "indicadores": [
+    "kkk",
+    "rsrs",
+    "hahaha",
+    "piada",
+    "meme"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}

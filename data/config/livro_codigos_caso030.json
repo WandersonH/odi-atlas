@@ -1,0 +1,153 @@
+{
+ "titulo": "Livro de códigos — caso 030: brasileiros que buscam o Paraguai antes e depois do 2º turno (ODI Atlas)",
+ "versao": "0.1 (2026-11-02) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+ "pedido": "Responsável em 02/11/2026, 03h28: \"vamos pra mais 3 cases: nordeste é o câncer do Brasil toda eleição; brasileiros Paraguai, tem que abranger busca Google sobre isto pré e pós 2º turno; e por último Nota ao Brasil, Flávio Bolsonaro saiu hoje\".",
+ "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+ "simetria": "Motivo declarado e reação (zoação, crítica) são codificados separadamente; nenhuma categoria mede a posição política de quem publica. Oferta de serviço (despachante, imobiliária, curso) é codificada à parte, porque pode inflar a conversa.",
+ "codigos_gerais": {
+  "0": "ausente",
+  "1": "presente",
+  "UC": "incerto"
+ },
+ "amostra_humana": {
+  "tamanho": 200,
+  "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+  "codificadores": 2,
+  "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+ },
+ "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto.",
+ "blocos": {
+  "motivo": [
+   "motivo_politico",
+   "motivo_economico",
+   "motivo_seguranca"
+  ],
+  "pratica": [
+   "informacao_requisitos",
+   "relato_fila",
+   "oferta_servico"
+  ],
+  "reacao": [
+   "zoacao_ironia",
+   "critica_exodo"
+  ]
+ },
+ "categorias": {
+  "motivo_politico": {
+   "nome": "Motivo político",
+   "definicao": "Diz que vai (ou quer ir) ao Paraguai por causa de Lula, do PT, do comunismo ou do resultado.",
+   "indicadores": [
+    "por causa do lula",
+    "lula ganhou",
+    "lula venceu",
+    "comunismo",
+    "comunista",
+    "pt ganhou",
+    "resultado da eleicao",
+    "nao aguento mais"
+   ],
+   "excluir_trechos": []
+  },
+  "motivo_economico": {
+   "nome": "Motivo econômico",
+   "definicao": "Cita impostos, custo de vida, negócios ou investimento.",
+   "indicadores": [
+    "imposto",
+    "impostos",
+    "custo de vida",
+    "mais barato",
+    "investir",
+    "empresa",
+    "negocio",
+    "dolar"
+   ],
+   "excluir_trechos": []
+  },
+  "motivo_seguranca": {
+   "nome": "Motivo de segurança",
+   "definicao": "Cita violência, insegurança ou crime.",
+   "indicadores": [
+    "seguranca",
+    "violencia",
+    "inseguranca",
+    "bandido",
+    "crime"
+   ],
+   "excluir_trechos": []
+  },
+  "informacao_requisitos": {
+   "nome": "Informação sobre requisitos",
+   "definicao": "Explica documentos, residência temporária ou permanente, cédula ou custos.",
+   "indicadores": [
+    "residencia temporaria",
+    "residencia permanente",
+    "cedula",
+    "migraciones",
+    "apostila",
+    "apostilado",
+    "antecedentes",
+    "mercosul",
+    "documentos"
+   ],
+   "excluir_trechos": []
+  },
+  "relato_fila": {
+   "nome": "Relato de fila ou mutirão",
+   "definicao": "Relata fila, acampamento, espera ou mutirão por documentação.",
+   "indicadores": [
+    "fila",
+    "acampados",
+    "acampamento",
+    "barraca",
+    "barracas",
+    "dias de antecedencia",
+    "mutirao",
+    "senha"
+   ],
+   "excluir_trechos": []
+  },
+  "oferta_servico": {
+   "nome": "Oferta de serviço",
+   "definicao": "Anuncia despachante, assessoria, imóvel, curso ou consultoria.",
+   "indicadores": [
+    "despachante",
+    "assessoria",
+    "consultoria",
+    "chama no direct",
+    "link na bio",
+    "whatsapp",
+    "agende",
+    "pacote"
+   ],
+   "excluir_trechos": []
+  },
+  "zoacao_ironia": {
+   "nome": "Zoação ou ironia",
+   "definicao": "Ironiza quem diz que vai embora (\"vai logo\", \"não esquece de levar...\").",
+   "indicadores": [
+    "vai logo",
+    "ja vai tarde",
+    "tchau",
+    "boa viagem",
+    "nao volta",
+    "kkk",
+    "rsrs",
+    "hahaha"
+   ],
+   "excluir_trechos": []
+  },
+  "critica_exodo": {
+   "nome": "Crítica ao 'êxodo'",
+   "definicao": "Questiona a dimensão do movimento ou o chama de exagero ou propaganda.",
+   "indicadores": [
+    "exagero",
+    "ninguem vai",
+    "so fala",
+    "propaganda",
+    "fake",
+    "balela"
+   ],
+   "excluir_trechos": []
+  }
+ }
+}
