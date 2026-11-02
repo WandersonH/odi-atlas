@@ -53,4 +53,5 @@ jobs:
           for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done; exit 1
       - name: Commitar
         if: always()
-        run: scripts/commit_push.sh "Intolerância: triagem (run ${{ github.run_id }})"
+        run: |
+          scripts/commit_push.sh "Intolerância: triagem (run ${{ github.run_id }})"

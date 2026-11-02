@@ -13,6 +13,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Grava escores e a amostra de validação v1 só no privado: 200 textos, metade marcados e metade não marcados pelo modelo, estratificados por rede. A chave do modelo fica em arquivo separado, e a amostra nunca é sobrescrita.
   - No público, só `data/casos/<id>/intolerancia.json`: contagens e percentuais com estado **processado**, aviso de que não há validação e universo ⛔ desconhecido.
 - **Workflow `intolerancia.yml`:** manual, CPU do runner, sem custo. Este ambiente não alcança o Hugging Face, então os modelos são carregados no Actions. Modelo que não carregar fica ⛔ com o motivo.
+- **Correção (mesma entrada):** o primeiro envio do workflow tinha um erro de YAML: na última linha, ": " dentro de um texto sem aspas de bloco. O GitHub recusou o acionamento (run 41394587204, falha no push). Corrigido com bloco `|`, e todos os workflows passaram no `yaml.safe_load`.
 - **Teste executado:** `tests/test_intolerancia.py` (rótulos que contam como sinal; amostra com tamanho exato e cotas por rede); `python -m unittest discover -s tests`: OK.
 - **Pendente:**
   - O run do piloto, com resultados na próxima entrada.
