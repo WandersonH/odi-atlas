@@ -347,8 +347,11 @@ def trends() -> dict:
                 ERROS.append(f"trends {nome} {jan}: {type(e).__name__}: {str(e)[:120]}")
         out[nome] = g
         print(f"trends {nome}: janelas lidas {[j for j in janelas if j in g]}")
-    out["aviso"] = ("0 a 100, relativo ao pico dentro de cada consulta (variantes e controles são consultas separadas; o termo "
-                    "'onde mora o ladrão' está nas duas como âncora). Interesse relativo não diz a quem as pessoas se referiam.")
+    # 02/11/2026: a frase da âncora era do caso 002 e saía em todos os casos; agora só cita âncora quando ela existe
+    ancora = [x for x in VARIANTES if x in CONTROLES]
+    out["aviso"] = ("0 a 100, relativo ao pico dentro de cada consulta (cada grupo de termos é uma consulta separada"
+                    + (f"; o termo '{ancora[0]}' está em variantes e controles como âncora" if ancora else "; sem termo-âncora comum, então os níveis de grupos diferentes não se comparam")
+                    + "). Interesse relativo não diz a quem as pessoas se referiam.")
     return out
 
 

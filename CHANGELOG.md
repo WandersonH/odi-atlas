@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.291 — Casos 028 a 031: coleta concluída sem TikTok; aviso do Google Trends corrigido (2026-11-02) ⚠️
+
+- Coletas (filas fila12/fila13, `casos.yml`, todas com sucesso): 028 runs 41411818419, 41414109423, 41415484231; 031 runs 41417442448, 41419406363, 41422191731; 029 runs 41424557273, 41427106321, 41429688827; 030 runs 41432276871, 41433985889, 41436760165. Sem TikTok (ver C19.289).
+- Lidos (de `data/casos/<id>/caso.json`; universo ⛔ desconhecido, as plataformas não informam o total por termo): 028 = 2.382 publicações (X 2.000 no teto, Instagram 279, Facebook 103); 029 = 2.338 (X 2.000 no teto, Instagram 237, Facebook 101); 030 = 1.342 (X 1.006, Instagram 231, Facebook 105); 031 = 351 (X 262, Instagram 24, Facebook 65). Kwai 0 nos quatro.
+- Caso 030, Google Trends 12 meses ("morar no Paraguai", `data/casos/030/busca.json`): semanas de 16/08 a 18/10 entre 3 e 6; semana de 25/10 (2º turno) = 100; semana de 01/11 = 28. Controles na mesma semana também saltaram ("morar em Portugal" 21→100, "morar nos Estados Unidos" 14→94), então o pico não é exclusivo do Paraguai.
+- Correção: `scripts/collect_caso_busca.py` escrevia em todos os casos o aviso do Trends do caso 002 ("'onde mora o ladrão' está nas duas como âncora"). Agora só cita âncora quando há termo comum. O texto não aparecia nas páginas dos casos (só no JSON); os `busca.json` atuais se corrigem na próxima coleta de busca.
+- Teste: `python -m unittest discover -s tests`.
+- Pendente: TikTok dos casos 026–031 (aguarda filtro de data); YouTube sem comentários nos casos 027–031 (cota).
+
 ## C19.290 — Intolerância: resultado do piloto nos casos 014, 021 e 022 (triagem automática, não validada) (2026-11-02) ⚠️
 
 - O que: registro do run 41406452552 (`intolerancia.yml`, commit 583d0774), que gerou `data/casos/{014,021,022}/intolerancia.json` (estado "processado") e, no privado, `casos/<id>/intolerancia/` (escores, caches e `amostra_validacao_v1.csv` com 200 textos: 100 marcados e 100 não marcados pelo modelo de ofensividade, chave em arquivo separado).
