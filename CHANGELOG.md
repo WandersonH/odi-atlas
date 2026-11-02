@@ -4,6 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.262 — Frente de intolerância: proposta aprovada e piloto da triagem (014, 021, 022) (2026-11-02) ⚠️
+
+- **Por quê:** o responsável pediu (02/11, 02h20–02h28) uma avaliação de recursos de discurso de ódio para os casos ("o observatório é focado em intolerância e desinformação") e a proposta. Depois aprovou (02h29): "pode aplicar". A proposta está no doc "Proposta: frente de intolerância e desinformação nos casos do ODI Atlas".
+- **`scripts/intolerancia.py`** (novo):
+  - Lê as publicações (`itens.csv.gz`) e os comentários do YouTube de cada caso, no repositório privado.
+  - Roda dois modelos públicos: ofensividade, treinado no HateBR (`ruanchaves/bert-large-portuguese-cased-hatebr`); e ódio por alvo (`pysentimiento/bertabaporu-pt-hate-speech`). Os rótulos são os do próprio modelo; limiar 0,5.
+  - Grava escores e a amostra de validação v1 só no privado: 200 textos, metade marcados e metade não marcados pelo modelo, estratificados por rede. A chave do modelo fica em arquivo separado, e a amostra nunca é sobrescrita.
+  - No público, só `data/casos/<id>/intolerancia.json`: contagens e percentuais com estado **processado**, aviso de que não há validação e universo ⛔ desconhecido.
+- **Workflow `intolerancia.yml`:** manual, CPU do runner, sem custo. Este ambiente não alcança o Hugging Face, então os modelos são carregados no Actions. Modelo que não carregar fica ⛔ com o motivo.
+- **Teste executado:** `tests/test_intolerancia.py` (rótulos que contam como sinal; amostra com tamanho exato e cotas por rede); `python -m unittest discover -s tests`: OK.
+- **Pendente:**
+  - O run do piloto, com resultados na próxima entrada.
+  - A codificação humana (dois codificadores, kappa) e o pedido da versão 1.0 do HateBR à autora: ⛔ decisões do responsável.
+  - A página só mostra a frente depois da validação.
+
 ## C19.261 — Classes lematizadas dos comentários: caso 003 (reconstrução em andamento) (2026-11-02) ⚠️
 
 - `data/casos/003/busca.json` foi regenerado por `scripts/build_caso_busca.py`, com lematização, passo 3 e a regra dos 75%.

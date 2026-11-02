@@ -1,0 +1,56 @@
+name: Intolerância nos casos — triagem automática (piloto, grátis)
+
+# 02/11/2026: piloto da frente de intolerância (casos 014, 021, 022). Modelos públicos do Hugging Face na CPU do runner.
+# Escores e amostra de validação só no repositório privado; no público, data/casos/<id>/intolerancia.json (contagens).
+on:
+  workflow_dispatch:
+    inputs:
+      casos:
+        description: "ids separados por espaço"
+        default: "014 021 022"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: intolerancia
+  cancel-in-progress: false
+
+jobs:
+  triagem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: |
+          pip install -q --index-url https://download.pytorch.org/whl/cpu torch
+          pip install -q transformers sentencepiece emoji
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Triagem
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          a=""; for c in ${{ github.event.inputs.casos }}; do a="$a --caso $c"; done
+          rc=0; python scripts/intolerancia.py $a > s.txt 2>&1 || rc=$?
+          grep -v "Warning\|warn(" s.txt | tail -n 30 | while IFS= read -r l; do echo "::notice title=Intolerância::$(echo "$l" | cut -c1-400)"; done
+          exit $rc
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A; git diff --cached --quiet || git commit -q -m "Intolerância: triagem (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done; exit 1
+      - name: Commitar
+        if: always()
+        run: scripts/commit_push.sh "Intolerância: triagem (run ${{ github.run_id }})"
