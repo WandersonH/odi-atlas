@@ -60,9 +60,17 @@ TEMAS = {
 UA = {"User-Agent": "Mozilla/5.0 (ODI Atlas; pesquisa acadêmica)"}
 
 
+RX_EPISODIO = re.compile(r"\bEp\.?\s*#?\s*\d+|#\s*Ep\.?\s*\d+|\bepis[oó]dio\s*\d+", re.I)
+
+
+def e_episodio(titulo: str) -> bool:
+    """Episódio completo (título com "Ep #N"); o resto são cortes, teasers e vídeos avulsos."""
+    return bool(RX_EPISODIO.search(titulo or "")) and not re.search(r"\bteaser\b|\bcorte\b|\btrailer\b", titulo or "", re.I)
+
+
 def assunto(titulo: str) -> str:
-    """Assunto do episódio para o Trends: o maior pedaço do título sem a marca, o número do episódio e a pontuação."""
-    t = re.sub(r"\bREVELANDO\b|#\d+|\bEP\.?\s*\d+|\bepis[oó]dio\s*\d+|\bparte\s*\d+", " ", titulo or "", flags=re.I)
+    """Assunto do episódio para o Trends: o título sem a marca, o número do episódio, o convidado (", com …") e a pontuação."""
+    t = re.sub(r"\bREVELANDO\b|#\d+|\bEP\.?\s*\d+|\bepis[oó]dio\s*\d+|\bparte\s*\d+|,?\s+com\s+[A-ZÁ-Ú][^|—–:]*$", " ", titulo or "", flags=re.I)
     partes = [p.strip(" .,:;—–-|!?\"'“”‘’") for p in re.split(r"[|—–]|\s-\s|\s:\s|:\s", t)]
     partes = [p for p in partes if len(p.split()) >= 2] or [t]
     t = re.sub(r"[\"'“”‘’!?]", "", partes[0]).strip(" .,:;-")  # a primeira parte com 2+ palavras: costuma ser a manchete
@@ -175,6 +183,7 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path, trends: dict | N
     arq = priv / "youtube_comentarios.csv.gz"
     rows = list(csv.DictReader(gzip.open(arq, "rt", encoding="utf-8"), delimiter=";")) if arq.exists() else []
     lados = lados_do_acervo(interno)
+    comp = Counter(lados.values())  # composição do próprio acervo, para a comparação ser justa
     envios = dados.get("envios", [])
     c = dados.get("canal") or {}
     por_video = defaultdict(list)
@@ -185,7 +194,7 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path, trends: dict | N
     for v in envios:
         rs = por_video.get(v["id"], [])
         tags = sorted({h.lower() for h in re.findall(r"#(\w+)", v.get("descricao") or "")})
-        episodios.append({"id": v["id"], "titulo": v["titulo"], "assunto": assunto(v["titulo"] or ""), "publicado_em": v["publicado_em"],
+        episodios.append({"id": v["id"], "titulo": v["titulo"], "episodio_completo": e_episodio(v["titulo"] or ""), "assunto": assunto(v["titulo"] or ""), "publicado_em": v["publicado_em"],
                           "duracao": v.get("duracao"), "visualizacoes": v.get("visualizacoes"), "curtidas": v.get("curtidas"),
                           "comentarios_informados": v.get("comentarios"), "hashtags": tags[:12], "url": f"https://www.youtube.com/watch?v={v['id']}",
                           "comentarios_lidos": len(rs), "pct_lidos": round(100 * len(rs) / v["comentarios"], 1) if v.get("comentarios") else None,
@@ -244,6 +253,8 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path, trends: dict | N
     return {"caso": CASO, "gerado_em_utc": now_utc(), "canal": c, "redes_do_projeto": REDES, "serie_canal": serie, "wayback_inscritos": dados.get("wayback_inscritos", []),
             "episodios": sorted(episodios, key=lambda e: e["publicado_em"] or ""), "por_mes": dict(sorted(por_mes.items())),
             "bolha": {"total": perfil(rows, lados), "por_mes": bolha_mes, "acervo_autores": len(lados),
+                      "acervo_composicao_pct": {k: round(100 * comp.get(k, 0) / len(lados), 1) if lados else None for k in ("lula", "flavio", "ambos")},
+                      "so_episodios_completos": perfil([r for r in rows if r["video_id"] in {e["id"] for e in episodios if e["episodio_completo"]}], lados),
                       "autores_por_numero_de_episodios": {("5 ou mais" if k == 5 else str(k)): v for k, v in sorted(ep_por_autor.items())}},
             "comentarios": analise, "universo": universo, "trends_assuntos": trends,
             "redes": {"episodios_autores": {"nos": len(nos), "arestas": len(ar)}},
@@ -275,7 +286,8 @@ def main(argv=None) -> int:
     tr_arq = pub / "trends_assuntos.json"
     trends = None
     if "--sem-trends" not in argv:
-        assuntos = sorted({assunto(v["titulo"] or "") for v in dados.get("envios", []) if assunto(v["titulo"] or "")})
+        # só episódios completos (cortes e teasers repetem o assunto); 02/11/2026: 116 envios viravam 20 consultas de 5 títulos
+        assuntos = sorted({assunto(v["titulo"] or "") for v in dados.get("envios", []) if e_episodio(v["titulo"] or "") and assunto(v["titulo"] or "")})
         trends = trends_assuntos(assuntos, erros)
         tr_arq.write_text(json.dumps(trends, ensure_ascii=False), encoding="utf-8")
     elif tr_arq.exists():
