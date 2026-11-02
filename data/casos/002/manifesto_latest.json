@@ -1,51 +1,130 @@
 {
  "caso": "002",
  "titulo": "Consulta depreciativa associada a um candidato no Google (\"onde mora/nasceu o ladrão\")",
- "run_started_utc": "2026-11-01T17:07:32Z",
+ "run_started_utc": "2026-11-02T21:01:19Z",
  "modo": "carga",
  "privado": true,
  "desde": "2022-01-01",
  "redes": [
   {
    "rede": "tiktok",
-   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
-   "termos": {
-    "ondemoraoladrao": {
-     "lado": "caso",
-     "respostas_api": 0,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+   "teto_usd": 0.2,
+   "gasto_antes_usd": 0.0,
+   "teto_execucao_usd": 0.2,
+   "termos": [
+    {
+     "termo": "#ondemoraoladrao",
+     "ator": "apidojo/tiktok-scraper",
+     "itens": 143,
+     "lidos": 143,
+     "no_periodo": 142,
+     "no_limite": true,
+     "run": "JbcdxO6EXU5vBpu0Y",
+     "custo_usd": 0.0632,
+     "erro": null,
+     "chaves_1o_item": [
+      "bookmarks",
+      "channel",
+      "collabInfo",
+      "comments",
+      "hashtags",
+      "id",
+      "inputSource",
+      "likes",
+      "poi",
+      "postPage",
+      "shares",
+      "song",
+      "subtitleInformation",
+      "title",
+      "uploadedAt",
+      "uploadedAtFormatted",
+      "video",
+      "views"
+     ],
+     "mais_antigo": "2022-06-18T00:51:22Z"
     },
-    "ondenasceuoladrao": {
-     "lado": "caso",
-     "respostas_api": 1,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+    {
+     "termo": "#ondenasceuoladrao",
+     "ator": "apidojo/tiktok-scraper",
+     "itens": 143,
+     "lidos": 143,
+     "no_periodo": 141,
+     "no_limite": true,
+     "run": "xHRrINVJpLvNZMnpN",
+     "custo_usd": 0.0632,
+     "erro": null,
+     "chaves_1o_item": [
+      "bookmarks",
+      "channel",
+      "collabInfo",
+      "comments",
+      "hashtags",
+      "id",
+      "inputSource",
+      "likes",
+      "poi",
+      "postPage",
+      "shares",
+      "song",
+      "subtitleInformation",
+      "title",
+      "uploadedAt",
+      "uploadedAtFormatted",
+      "video",
+      "views"
+     ],
+     "mais_antigo": "2022-09-29T14:30:03Z"
     },
-    "quantosanostemoladrao": {
-     "lado": "caso",
-     "respostas_api": 0,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+    {
+     "termo": "#quantosanostemoladrao",
+     "ator": "apidojo/tiktok-scraper",
+     "itens": 143,
+     "lidos": 143,
+     "no_periodo": 138,
+     "no_limite": true,
+     "run": "pR9QEWuMFHGfIrT9e",
+     "custo_usd": 0.0632,
+     "erro": null,
+     "chaves_1o_item": [
+      "bookmarks",
+      "channel",
+      "collabInfo",
+      "comments",
+      "hashtags",
+      "id",
+      "inputSource",
+      "likes",
+      "poi",
+      "postPage",
+      "shares",
+      "song",
+      "subtitleInformation",
+      "title",
+      "uploadedAt",
+      "uploadedAtFormatted",
+      "video",
+      "views"
+     ],
+     "mais_antigo": "2022-04-15T18:12:24Z"
     }
-   },
-   "custo_usd": 0.0,
-   "status": "⛔ nenhum vídeo lido",
-   "itens_no_periodo": 0
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 143,
+   "custo_usd": 0.1896,
+   "status": "ok",
+   "itens_no_periodo": 421
   },
   {
    "rede": "google",
    "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
    "custo_usd": 0.0,
-   "trends_pontos": 169,
+   "trends_pontos": 168,
    "noticias": 0,
    "status": "ok",
    "itens_no_periodo": 0
   }
  ],
- "itens_acumulados": 212,
- "custo_usd": 0.0
+ "itens_acumulados": 576,
+ "custo_usd": 0.1896
 }

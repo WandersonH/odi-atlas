@@ -1,26 +1,26 @@
 {
  "caso": "006",
  "titulo": "PCC e CV como organizações terroristas (post de Marco Rubio)",
- "run_started_utc": "2026-11-02T06:25:18Z",
- "modo": "teste",
+ "run_started_utc": "2026-11-02T21:01:19Z",
+ "modo": "carga",
  "privado": true,
  "desde": "2026-05-28",
  "redes": [
   {
    "rede": "tiktok",
-   "teto_usd": 1.0,
-   "gasto_antes_usd": 0.0,
-   "teto_execucao_usd": 0.05,
+   "teto_usd": 0.2,
+   "gasto_antes_usd": 0.01,
+   "teto_execucao_usd": 0.19,
    "termos": [
     {
      "termo": "PCC terrorista Rubio",
      "ator": "apidojo/tiktok-scraper",
-     "itens": 10,
-     "lidos": 10,
-     "no_periodo": 10,
-     "no_limite": true,
-     "run": "u2jZLoKnpGOuijPGi",
-     "custo_usd": 0.01,
+     "itens": 131,
+     "lidos": 131,
+     "no_periodo": 128,
+     "no_limite": false,
+     "run": "kr4whF0UWYQna3Tkv",
+     "custo_usd": 0.0584,
      "erro": null,
      "chaves_1o_item": [
       "bookmarks",
@@ -42,16 +42,57 @@
       "video",
       "views"
      ],
-     "mais_antigo": null
+     "mais_antigo": "2026-05-28T09:37:11Z"
+    },
+    {
+     "termo": "PCC CV terroristas EUA",
+     "ator": "apidojo/tiktok-scraper",
+     "itens": 210,
+     "lidos": 210,
+     "no_periodo": 208,
+     "no_limite": true,
+     "run": "ntCUZe24zc2UXsjm9",
+     "custo_usd": 0.09,
+     "erro": null,
+     "chaves_1o_item": [
+      "bookmarks",
+      "channel",
+      "collabInfo",
+      "comments",
+      "hashtags",
+      "id",
+      "inputSource",
+      "likes",
+      "poi",
+      "postPage",
+      "shares",
+      "song",
+      "subtitleInformation",
+      "title",
+      "uploadedAt",
+      "uploadedAtFormatted",
+      "video",
+      "views"
+     ],
+     "mais_antigo": "2026-05-28T22:24:24Z"
     }
    ],
    "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 10,
-   "custo_usd": 0.01,
+   "itens_pedidos_por_termo": 210,
+   "custo_usd": 0.1484,
    "status": "ok",
-   "itens_no_periodo": 10
+   "itens_no_periodo": 336
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_pontos": 169,
+   "noticias": 116,
+   "status": "ok",
+   "itens_no_periodo": 0
   }
  ],
- "itens_acumulados": 3138,
- "custo_usd": 0.01
+ "itens_acumulados": 3430,
+ "custo_usd": 0.1484
 }

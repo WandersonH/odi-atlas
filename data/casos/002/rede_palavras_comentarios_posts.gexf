@@ -3,35 +3,324 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="nascer" label="nascer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="15"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="ladrao" label="ladrao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="75"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="pegar" label="pegar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="dia" label="dia"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="ver" label="ver"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G3"/></attvalues></node>
-<node id="google" label="google"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="flavio" label="flavio"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="19"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="estar" label="estar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="ano" label="ano"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="saber" label="saber"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="bolsonaro" label="bolsonaro"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="origem" label="origem"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G9"/></attvalues></node>
+<node id="so" label="so"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="pt" label="pt"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="to" label="to"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="roubar" label="roubar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="gabriel" label="gabriel"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G10"/></attvalues></node>
+<node id="zona" label="zona"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G8"/></attvalues></node>
+<node id="crescer" label="crescer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="pegar" label="pegar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="estar" label="estar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="13"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="brasileiro" label="brasileiro"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="silva" label="silva"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="12"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="comentar" label="comentar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G11"/></attvalues></node>
+<node id="corrupcao" label="corrupcao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="the" label="the"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="12"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="melhor" label="melhor"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G12"/></attvalues></node>
+<node id="caso" label="caso"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="morador" label="morador"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G13"/></attvalues></node>
+<node id="slowed" label="slowed"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="brasil" label="brasil"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="13"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="saber" label="saber"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="21"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="eleicao" label="eleicao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="contar" label="contar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="morar" label="morar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="flavio" label="flavio"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="14"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="montagem" label="montagem"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="grande" label="grande"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G14"/></attvalues></node>
+<node id="presidente" label="presidente"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="prisao" label="prisao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="del" label="del"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G15"/></attvalues></node>
+<node id="my" label="my"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="gente" label="gente"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G16"/></attvalues></node>
+<node id="informacao" label="informacao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="mostrar" label="mostrar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="homem" label="homem"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="un" label="un"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G7"/></attvalues></node>
+<node id="abrir" label="abrir"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="perder" label="perder"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="song" label="song"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="idade" label="idade"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G17"/></attvalues></node>
+<node id="conhecer" label="conhecer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="on" label="on"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="chamar" label="chamar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="terca" label="terca"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="nascer" label="nascer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="33"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="ver" label="ver"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="falar" label="falar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="32"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="el" label="el"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G7"/></attvalues></node>
+<node id="levar" label="levar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="ouvir" label="ouvir"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="risada" label="risada"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="13"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="achar" label="achar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="votar" label="votar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="dia" label="dia"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="14"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="novo" label="novo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="sair" label="sair"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G18"/></attvalues></node>
+<node id="deixar" label="deixar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="policia" label="policia"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="dar" label="dar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="this" label="this"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="marcar" label="marcar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="filho" label="filho"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="junto" label="junto"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G19"/></attvalues></node>
+<node id="criar" label="criar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="video" label="video"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="google" label="google"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="17"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="querer" label="querer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="ano" label="ano"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="20"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="governo" label="governo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="cidade" label="cidade"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="social" label="social"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="bolsonaro" label="bolsonaro"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="16"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="seguir" label="seguir"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="con" label="con"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G7"/></attvalues></node>
+<node id="historia" label="historia"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="15"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="super" label="super"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="existir" label="existir"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="vir" label="vir"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="pai" label="pai"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="comecar" label="comecar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="dizer" label="dizer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="feira" label="feira"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="of" label="of"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="ladrao" label="ladrao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="127"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="acabar" label="acabar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="name" label="name"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="pais" label="pais"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="rio" label="rio"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G8"/></attvalues></node>
+<node id="bandido" label="bandido"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G20"/></attvalues></node>
+<node id="morrer" label="morrer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="ficar" label="ficar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="lampiao" label="lampiao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="lugar" label="lugar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="casa" label="casa"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="familia" label="familia"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="musica" label="musica"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G2"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="google" target="ladrao" weight="4"/>
-<edge id="1" source="google" target="saber" weight="3"/>
-<edge id="2" source="ladrao" target="saber" weight="4"/>
-<edge id="3" source="ladrao" target="nascer" weight="7"/>
-<edge id="4" source="nascer" target="saber" weight="3"/>
-<edge id="5" source="bolsonaro" target="lula" weight="7"/>
-<edge id="6" source="ladrao" target="lula" weight="16"/>
-<edge id="7" source="dia" target="ladrao" weight="4"/>
-<edge id="8" source="ano" target="ladrao" weight="4"/>
-<edge id="9" source="estar" target="ladrao" weight="7"/>
-<edge id="10" source="ladrao" target="pegar" weight="10"/>
-<edge id="11" source="bolsonaro" target="ladrao" weight="5"/>
-<edge id="12" source="bolsonaro" target="flavio" weight="5"/>
-<edge id="13" source="flavio" target="ladrao" weight="7"/>
-<edge id="14" source="flavio" target="lula" weight="5"/>
-<edge id="15" source="estar" target="lula" weight="3"/>
+<edge id="0" source="google" target="risada" weight="3"/>
+<edge id="1" source="google" target="saber" weight="5"/>
+<edge id="2" source="google" target="ladrao" weight="8"/>
+<edge id="3" source="ladrao" target="saber" weight="8"/>
+<edge id="4" source="google" target="nascer" weight="5"/>
+<edge id="5" source="ladrao" target="nascer" weight="13"/>
+<edge id="6" source="nascer" target="saber" weight="5"/>
+<edge id="7" source="acabar" target="ladrao" weight="5"/>
+<edge id="8" source="ladrao" target="silva" weight="6"/>
+<edge id="9" source="cidade" target="nascer" weight="9"/>
+<edge id="10" source="bolsonaro" target="lula" weight="9"/>
+<edge id="11" source="falar" target="ladrao" weight="7"/>
+<edge id="12" source="chamar" target="ladrao" weight="6"/>
+<edge id="13" source="chamar" target="lula" weight="5"/>
+<edge id="14" source="ladrao" target="lula" weight="22"/>
+<edge id="15" source="lula" target="silva" weight="4"/>
+<edge id="16" source="nascer" target="silva" weight="4"/>
+<edge id="17" source="my" target="the" weight="3"/>
+<edge id="18" source="on" target="the" weight="3"/>
+<edge id="19" source="dia" target="ladrao" weight="6"/>
+<edge id="20" source="ladrao" target="montagem" weight="8"/>
+<edge id="21" source="ladrao" target="name" weight="4"/>
+<edge id="22" source="ladrao" target="song" weight="6"/>
+<edge id="23" source="montagem" target="name" weight="5"/>
+<edge id="24" source="montagem" target="song" weight="5"/>
+<edge id="25" source="name" target="song" weight="5"/>
+<edge id="26" source="ladrao" target="slowed" weight="6"/>
+<edge id="27" source="montagem" target="slowed" weight="5"/>
+<edge id="28" source="ladrao" target="risada" weight="4"/>
+<edge id="29" source="this" target="to" weight="3"/>
+<edge id="30" source="ladrao" target="super" weight="3"/>
+<edge id="31" source="montagem" target="super" weight="3"/>
+<edge id="32" source="slowed" target="super" weight="3"/>
+<edge id="33" source="con" target="un" weight="3"/>
+<edge id="34" source="of" target="on" weight="3"/>
+<edge id="35" source="of" target="the" weight="5"/>
+<edge id="36" source="of" target="to" weight="3"/>
+<edge id="37" source="the" target="this" weight="3"/>
+<edge id="38" source="the" target="to" weight="4"/>
+<edge id="39" source="ano" target="pai" weight="4"/>
+<edge id="40" source="ano" target="criar" weight="3"/>
+<edge id="41" source="ano" target="dar" weight="3"/>
+<edge id="42" source="ano" target="estar" weight="3"/>
+<edge id="43" source="ano" target="filho" weight="3"/>
+<edge id="44" source="ano" target="ladrao" weight="6"/>
+<edge id="45" source="ano" target="morrer" weight="5"/>
+<edge id="46" source="ano" target="musica" weight="3"/>
+<edge id="47" source="ano" target="nascer" weight="3"/>
+<edge id="48" source="ano" target="ver" weight="3"/>
+<edge id="49" source="brasileiro" target="ladrao" weight="3"/>
+<edge id="50" source="brasileiro" target="nascer" weight="3"/>
+<edge id="51" source="comecar" target="levar" weight="3"/>
+<edge id="52" source="comecar" target="nascer" weight="3"/>
+<edge id="53" source="crescer" target="criar" weight="4"/>
+<edge id="54" source="crescer" target="nascer" weight="5"/>
+<edge id="55" source="criar" target="dar" weight="3"/>
+<edge id="56" source="criar" target="filho" weight="3"/>
+<edge id="57" source="criar" target="morrer" weight="3"/>
+<edge id="58" source="criar" target="nascer" weight="6"/>
+<edge id="59" source="dar" target="ladrao" weight="5"/>
+<edge id="60" source="dar" target="morrer" weight="3"/>
+<edge id="61" source="dar" target="nascer" weight="3"/>
+<edge id="62" source="dia" target="estar" weight="3"/>
+<edge id="63" source="dia" target="social" weight="3"/>
+<edge id="64" source="estar" target="ladrao" weight="9"/>
+<edge id="65" source="estar" target="social" weight="3"/>
+<edge id="66" source="existir" target="nascer" weight="3"/>
+<edge id="67" source="filho" target="morar" weight="3"/>
+<edge id="68" source="filho" target="morrer" weight="3"/>
+<edge id="69" source="filho" target="nascer" weight="4"/>
+<edge id="70" source="ladrao" target="mostrar" weight="3"/>
+<edge id="71" source="ladrao" target="musica" weight="3"/>
+<edge id="72" source="ladrao" target="pegar" weight="11"/>
+<edge id="73" source="ladrao" target="seguir" weight="3"/>
+<edge id="74" source="ladrao" target="social" weight="3"/>
+<edge id="75" source="ladrao" target="ver" weight="3"/>
+<edge id="76" source="levar" target="nascer" weight="3"/>
+<edge id="77" source="morrer" target="musica" weight="3"/>
+<edge id="78" source="morrer" target="nascer" weight="3"/>
+<edge id="79" source="mostrar" target="social" weight="3"/>
+<edge id="80" source="musica" target="pai" weight="4"/>
+<edge id="81" source="nascer" target="seguir" weight="3"/>
+<edge id="82" source="achar" target="nascer" weight="3"/>
+<edge id="83" source="ano" target="casa" weight="3"/>
+<edge id="84" source="ano" target="deixar" weight="4"/>
+<edge id="85" source="ano" target="feira" weight="5"/>
+<edge id="86" source="ano" target="ficar" weight="3"/>
+<edge id="87" source="ano" target="historia" weight="3"/>
+<edge id="88" source="ano" target="marcar" weight="4"/>
+<edge id="89" source="ano" target="terca" weight="4"/>
+<edge id="90" source="brasil" target="cidade" weight="5"/>
+<edge id="91" source="brasil" target="crescer" weight="3"/>
+<edge id="92" source="brasil" target="deixar" weight="3"/>
+<edge id="93" source="brasil" target="familia" weight="3"/>
+<edge id="94" source="brasil" target="historia" weight="6"/>
+<edge id="95" source="brasil" target="nascer" weight="6"/>
+<edge id="96" source="casa" target="nascer" weight="3"/>
+<edge id="97" source="cidade" target="crescer" weight="3"/>
+<edge id="98" source="cidade" target="criar" weight="3"/>
+<edge id="99" source="cidade" target="deixar" weight="3"/>
+<edge id="100" source="cidade" target="historia" weight="6"/>
+<edge id="101" source="criar" target="historia" weight="3"/>
+<edge id="102" source="deixar" target="feira" weight="4"/>
+<edge id="103" source="deixar" target="ficar" weight="3"/>
+<edge id="104" source="deixar" target="historia" weight="5"/>
+<edge id="105" source="deixar" target="marcar" weight="3"/>
+<edge id="106" source="deixar" target="nascer" weight="4"/>
+<edge id="107" source="deixar" target="querer" weight="3"/>
+<edge id="108" source="dizer" target="feira" weight="3"/>
+<edge id="109" source="dizer" target="ficar" weight="3"/>
+<edge id="110" source="dizer" target="mostrar" weight="3"/>
+<edge id="111" source="feira" target="ficar" weight="3"/>
+<edge id="112" source="feira" target="historia" weight="3"/>
+<edge id="113" source="feira" target="marcar" weight="3"/>
+<edge id="114" source="feira" target="morrer" weight="4"/>
+<edge id="115" source="feira" target="terca" weight="5"/>
+<edge id="116" source="ficar" target="nascer" weight="3"/>
+<edge id="117" source="ficar" target="querer" weight="3"/>
+<edge id="118" source="historia" target="marcar" weight="3"/>
+<edge id="119" source="historia" target="nascer" weight="6"/>
+<edge id="120" source="historia" target="novo" weight="3"/>
+<edge id="121" source="morrer" target="terca" weight="4"/>
+<edge id="122" source="nascer" target="perder" weight="3"/>
+<edge id="123" source="el" target="un" weight="3"/>
+<edge id="124" source="caso" target="policia" weight="3"/>
+<edge id="125" source="dar" target="dizer" weight="3"/>
+<edge id="126" source="dizer" target="ladrao" weight="4"/>
+<edge id="127" source="dizer" target="policia" weight="3"/>
+<edge id="128" source="feira" target="ladrao" weight="3"/>
+<edge id="129" source="feira" target="policia" weight="3"/>
+<edge id="130" source="ladrao" target="policia" weight="4"/>
+<edge id="131" source="ladrao" target="roubar" weight="8"/>
+<edge id="132" source="ano" target="ouvir" weight="3"/>
+<edge id="133" source="ano" target="saber" weight="3"/>
+<edge id="134" source="estar" target="ficar" weight="3"/>
+<edge id="135" source="estar" target="informacao" weight="3"/>
+<edge id="136" source="ficar" target="informacao" weight="3"/>
+<edge id="137" source="ficar" target="ladrao" weight="4"/>
+<edge id="138" source="ficar" target="policia" weight="3"/>
+<edge id="139" source="informacao" target="ladrao" weight="5"/>
+<edge id="140" source="informacao" target="policia" weight="3"/>
+<edge id="141" source="informacao" target="saber" weight="3"/>
+<edge id="142" source="informacao" target="silva" weight="4"/>
+<edge id="143" source="ladrao" target="ouvir" weight="3"/>
+<edge id="144" source="rio" target="zona" weight="3"/>
+<edge id="145" source="casa" target="existir" weight="3"/>
+<edge id="146" source="historia" target="saber" weight="3"/>
+<edge id="147" source="historia" target="seguir" weight="3"/>
+<edge id="148" source="saber" target="video" weight="3"/>
+<edge id="149" source="seguir" target="video" weight="3"/>
+<edge id="150" source="casa" target="ladrao" weight="4"/>
+<edge id="151" source="lampiao" target="nascer" weight="4"/>
+<edge id="152" source="mostrar" target="video" weight="3"/>
+<edge id="153" source="casa" target="saber" weight="3"/>
+<edge id="154" source="conhecer" target="saber" weight="3"/>
+<edge id="155" source="nascer" target="vir" weight="3"/>
+<edge id="156" source="saber" target="ver" weight="3"/>
+<edge id="157" source="falar" target="so" weight="3"/>
+<edge id="158" source="ladrao" target="so" weight="4"/>
+<edge id="159" source="ladrao" target="video" weight="3"/>
+<edge id="160" source="brasileiro" target="historia" weight="4"/>
+<edge id="161" source="brasileiro" target="silva" weight="3"/>
+<edge id="162" source="bolsonaro" target="dia" weight="3"/>
+<edge id="163" source="bolsonaro" target="dizer" weight="3"/>
+<edge id="164" source="bolsonaro" target="estar" weight="3"/>
+<edge id="165" source="bolsonaro" target="flavio" weight="9"/>
+<edge id="166" source="bolsonaro" target="informacao" weight="3"/>
+<edge id="167" source="bolsonaro" target="ladrao" weight="8"/>
+<edge id="168" source="contar" target="ladrao" weight="3"/>
+<edge id="169" source="dia" target="flavio" weight="3"/>
+<edge id="170" source="dizer" target="flavio" weight="3"/>
+<edge id="171" source="dizer" target="lula" weight="4"/>
+<edge id="172" source="dizer" target="presidente" weight="3"/>
+<edge id="173" source="estar" target="flavio" weight="3"/>
+<edge id="174" source="estar" target="lula" weight="4"/>
+<edge id="175" source="ficar" target="homem" weight="3"/>
+<edge id="176" source="flavio" target="informacao" weight="3"/>
+<edge id="177" source="flavio" target="ladrao" weight="10"/>
+<edge id="178" source="flavio" target="lula" weight="9"/>
+<edge id="179" source="governo" target="lula" weight="3"/>
+<edge id="180" source="homem" target="ladrao" weight="4"/>
+<edge id="181" source="informacao" target="lula" weight="3"/>
+<edge id="182" source="ladrao" target="presidente" weight="3"/>
+<edge id="183" source="ladrao" target="pt" weight="4"/>
+<edge id="184" source="lula" target="presidente" weight="6"/>
+<edge id="185" source="lula" target="pt" weight="5"/>
+<edge id="186" source="presidente" target="pt" weight="4"/>
+<edge id="187" source="pt" target="silva" weight="3"/>
+<edge id="188" source="slowed" target="song" weight="4"/>
+<edge id="189" source="brasil" target="lula" weight="3"/>
+<edge id="190" source="brasil" target="presidente" weight="3"/>
+<edge id="191" source="brasileiro" target="lula" weight="3"/>
+<edge id="192" source="brasileiro" target="pt" weight="3"/>
+<edge id="193" source="eleicao" target="lula" weight="4"/>
+<edge id="194" source="eleicao" target="pais" weight="3"/>
+<edge id="195" source="familia" target="lula" weight="3"/>
+<edge id="196" source="lula" target="pais" weight="3"/>
+<edge id="197" source="comecar" target="historia" weight="3"/>
+<edge id="198" source="comecar" target="lugar" weight="3"/>
+<edge id="199" source="lugar" target="nascer" weight="3"/>
+<edge id="200" source="corrupcao" target="ladrao" weight="3"/>
+<edge id="201" source="corrupcao" target="lula" weight="3"/>
+<edge id="202" source="ladrao" target="querer" weight="3"/>
+<edge id="203" source="lula" target="querer" weight="3"/>
+<edge id="204" source="lampiao" target="saber" weight="3"/>
+<edge id="205" source="achar" target="ladrao" weight="3"/>
+<edge id="206" source="falar" target="lula" weight="4"/>
+<edge id="207" source="ladrao" target="prisao" weight="3"/>
+<edge id="208" source="lula" target="prisao" weight="3"/>
+<edge id="209" source="lula" target="saber" weight="4"/>
+<edge id="210" source="lula" target="votar" weight="3"/>
+<edge id="211" source="abrir" target="familia" weight="4"/>
+<edge id="212" source="abrir" target="ladrao" weight="5"/>
+<edge id="213" source="familia" target="ladrao" weight="4"/>
+<edge id="214" source="abrir" target="flavio" weight="4"/>
+<edge id="215" source="abrir" target="lula" weight="3"/>
+<edge id="216" source="familia" target="flavio" weight="3"/>
+<edge id="217" source="lula" target="so" weight="3"/>
+<edge id="218" source="ladrao" target="lugar" weight="3"/>
+<edge id="219" source="lugar" target="lula" weight="3"/>
 </edges>
 </graph>
 </gexf>

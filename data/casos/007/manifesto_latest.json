@@ -1,44 +1,98 @@
 {
  "caso": "007",
  "titulo": "\"Lula amassa a bandeira\" (fake news do dia da eleição)",
- "run_started_utc": "2026-11-02T02:27:36Z",
+ "run_started_utc": "2026-11-02T21:01:19Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-03",
  "redes": [
   {
    "rede": "tiktok",
-   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
-   "termos": {
-    "Lula amassa bandeira": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+   "teto_usd": 0.2,
+   "gasto_antes_usd": 0.0,
+   "teto_execucao_usd": 0.2,
+   "termos": [
+    {
+     "termo": "Lula amassa bandeira",
+     "ator": "apidojo/tiktok-scraper",
+     "itens": 222,
+     "lidos": 222,
+     "no_periodo": 222,
+     "no_limite": true,
+     "run": "YC6b7cpMeLuTBPpCt",
+     "custo_usd": 0.0948,
+     "erro": null,
+     "chaves_1o_item": [
+      "bookmarks",
+      "channel",
+      "collabInfo",
+      "comments",
+      "hashtags",
+      "id",
+      "inputSource",
+      "likes",
+      "poi",
+      "postPage",
+      "shares",
+      "song",
+      "subtitleInformation",
+      "title",
+      "uploadedAt",
+      "uploadedAtFormatted",
+      "video",
+      "views"
+     ],
+     "mais_antigo": "2026-10-04T10:18:37Z"
     },
-    "Lula bandeira amassada": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+    {
+     "termo": "Lula bandeira amassada",
+     "ator": "apidojo/tiktok-scraper",
+     "itens": 201,
+     "lidos": 201,
+     "no_periodo": 201,
+     "no_limite": false,
+     "run": "kHc5dMW9C8HAq5yFd",
+     "custo_usd": 0.0864,
+     "erro": null,
+     "chaves_1o_item": [
+      "bookmarks",
+      "channel",
+      "collabInfo",
+      "comments",
+      "hashtags",
+      "id",
+      "inputSource",
+      "likes",
+      "poi",
+      "postPage",
+      "shares",
+      "song",
+      "subtitleInformation",
+      "title",
+      "uploadedAt",
+      "uploadedAtFormatted",
+      "video",
+      "views"
+     ],
+     "mais_antigo": "2026-10-04T10:45:02Z"
     }
-   },
-   "custo_usd": 0.0,
-   "status": "⛔ nenhum vídeo lido",
-   "itens_no_periodo": 0
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 222,
+   "custo_usd": 0.1812,
+   "status": "ok",
+   "itens_no_periodo": 423
   },
   {
    "rede": "google",
    "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
    "custo_usd": 0.0,
    "trends_pontos": 169,
-   "noticias": 15,
+   "noticias": 20,
    "status": "ok",
    "itens_no_periodo": 0
   }
  ],
- "itens_acumulados": 265,
- "custo_usd": 0.0
+ "itens_acumulados": 606,
+ "custo_usd": 0.1812
 }

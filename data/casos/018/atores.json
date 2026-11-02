@@ -1,7 +1,7 @@
 {
  "caso": "018",
  "titulo": "Antigo como atual: falas, vídeos e reportagens antigas recirculadas depois do 2º turno",
- "gerado_em_utc": "2026-11-02T20:41:50Z",
+ "gerado_em_utc": "2026-11-02T21:35:48Z",
  "pedido": "Responsável, 02/11/2026, 15h57: quais principais atores políticos, partidos e postagens ajudam a disseminar cada caso.",
  "universo": {
   "perfis_declarados_por_rede": {
@@ -15,47 +15,74 @@
   "nota": "Universo de atores políticos = perfis declarados ao TSE por todas as candidaturas de 2026, nas redes cruzadas. O universo de publicações do caso é ⛔ desconhecido (as plataformas não informam o total por termo)."
  },
  "amostra": {
-  "publicacoes_lidas": 1721,
+  "publicacoes_lidas": 2121,
   "por_rede": {
    "instagram": 102,
    "facebook": 71,
-   "x": 1548
+   "tiktok": 330,
+   "x": 1618
   },
   "como": "todas as publicações coletadas do caso por termo e hashtag (mesma coleta do dossiê); repetidas contam uma vez",
   "facebook": "⛔ não cruzado: a coleta do Facebook traz o nome do autor, não o endereço do perfil"
  },
  "resumo": {
-  "candidaturas_no_caso": 15,
-  "perfis_de_candidaturas_no_caso": 18,
-  "publicacoes_de_candidaturas": 18,
-  "pct_publicacoes_de_candidaturas": 1.05,
-  "contas_10mil_nao_candidatas": 75,
-  "publicacoes_de_contas_10mil": 105,
-  "pct_publicacoes_de_contas_10mil": 6.1,
+  "candidaturas_no_caso": 19,
+  "perfis_de_candidaturas_no_caso": 25,
+  "publicacoes_de_candidaturas": 25,
+  "pct_publicacoes_de_candidaturas": 1.18,
+  "contas_10mil_nao_candidatas": 186,
+  "publicacoes_de_contas_10mil": 224,
+  "pct_publicacoes_de_contas_10mil": 10.56,
   "publicacoes_de_candidaturas_por_posicao_do_partido_2t": {
-   "flavio": 16,
-   "sem_fonte": 1,
-   "lula": 1
+   "neutro": 1,
+   "flavio": 21,
+   "lula": 2,
+   "sem_fonte": 1
   }
  },
  "criterio_nomeacao": "Nomeadas: candidaturas (perfil público declarado ao TSE) e contas com 10 mil+ seguidores. Demais contas só nas contagens.",
  "metodo": "Cruzamento exato da conta da publicação com o perfil declarado ao TSE na mesma rede (minúsculas, sem @). Partido e cargo vêm da candidatura; posição no 2º turno é a do partido (data/config/apoio_partidos_2t.json), não do candidato. Interações = curtidas + comentários + compartilhamentos informados pela plataforma na coleta.",
  "partidos": [
   {
+   "partido": "PSD",
+   "candidaturas": 1,
+   "publicacoes": 1,
+   "visualizacoes": 1061199,
+   "interacoes": 116840,
+   "posicao_2t": "neutro",
+   "nomes": [
+    "Flavio Caminhoneiro"
+   ],
+   "pct_publicacoes_do_caso": 0.05
+  },
+  {
    "partido": "PL",
-   "candidaturas": 12,
-   "publicacoes": 15,
-   "visualizacoes": 549660,
-   "interacoes": 62955,
+   "candidaturas": 13,
+   "publicacoes": 19,
+   "visualizacoes": 776024,
+   "interacoes": 93751,
    "posicao_2t": "flavio",
    "nomes": [
+    "Sargento Lima",
     "Bia Kicis",
     "Capitão Alden",
     "Jessé Lopes",
-    "Sóstenes Cavalcante",
-    "Gil Diniz"
+    "Sóstenes Cavalcante"
    ],
-   "pct_publicacoes_do_caso": 0.87
+   "pct_publicacoes_do_caso": 0.9
+  },
+  {
+   "partido": "PDT",
+   "candidaturas": 2,
+   "publicacoes": 2,
+   "visualizacoes": 62350,
+   "interacoes": 5377,
+   "posicao_2t": "lula",
+   "nomes": [
+    "Tamir Felipe",
+    "André Figueiredo"
+   ],
+   "pct_publicacoes_do_caso": 0.09
   },
   {
    "partido": "MOBILIZA",
@@ -67,19 +94,7 @@
    "nomes": [
     "Ethienne Gayer"
    ],
-   "pct_publicacoes_do_caso": 0.06
-  },
-  {
-   "partido": "PDT",
-   "candidaturas": 1,
-   "publicacoes": 1,
-   "visualizacoes": 8607,
-   "interacoes": 1066,
-   "posicao_2t": "lula",
-   "nomes": [
-    "André Figueiredo"
-   ],
-   "pct_publicacoes_do_caso": 0.06
+   "pct_publicacoes_do_caso": 0.05
   },
   {
    "partido": "REPUBLICANOS",
@@ -91,10 +106,110 @@
    "nomes": [
     "Coronel Frota"
    ],
-   "pct_publicacoes_do_caso": 0.06
+   "pct_publicacoes_do_caso": 0.05
+  },
+  {
+   "partido": "NOVO",
+   "candidaturas": 1,
+   "publicacoes": 1,
+   "visualizacoes": 583,
+   "interacoes": 26,
+   "posicao_2t": "flavio",
+   "nomes": [
+    "Delegado Felício Laterça"
+   ],
+   "pct_publicacoes_do_caso": 0.05
   }
  ],
  "atores": [
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "davoslingo",
+   "nome": "Davo’s Lingo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 4218574,
+   "publicacoes": 1,
+   "visualizacoes": 3036422,
+   "interacoes": 284932,
+   "primeira": "2026-10-30T10:44:04Z",
+   "ultima": "2026-10-30T10:44:04Z",
+   "termos": [
+    "Haddad Davos"
+   ],
+   "top_url": "https://www.tiktok.com/@davoslingo/video/7702409802818850056"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "flaviozimermann",
+   "nome": "Flavio Caminhoneiro",
+   "numero": "55163",
+   "partido": "PSD",
+   "cargo": "Deputado Estadual",
+   "uf": "MT",
+   "situacao": "SUPLENTE",
+   "posicao_partido_2t": "neutro",
+   "seguidores": 68024,
+   "publicacoes": 1,
+   "visualizacoes": 1061199,
+   "interacoes": 116840,
+   "primeira": "2026-10-26T15:58:45Z",
+   "ultima": "2026-10-26T15:58:45Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@flaviozimermann/video/7701006566006213940"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "vocesabia_eleicoes2026",
+   "nome": "ACORDA BRASIL",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 13744,
+   "publicacoes": 1,
+   "visualizacoes": 613992,
+   "interacoes": 97540,
+   "primeira": "2026-10-31T15:30:46Z",
+   "ultima": "2026-10-31T15:30:46Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@vocesabia_eleicoes2026/video/7702854795828153620"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "guga.figueiredo",
+   "nome": "Guga Figueiredo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 182542,
+   "publicacoes": 1,
+   "visualizacoes": 425219,
+   "interacoes": 65049,
+   "primeira": "2026-10-28T16:41:37Z",
+   "ultima": "2026-10-28T16:41:37Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@guga.figueiredo/video/7701759792905440533"
+  },
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
@@ -116,6 +231,72 @@
     "C agora: corte de R$ 6 bilhões na saúde e educação"
    ],
    "top_url": "https://x.com/thaixkronbauer/status/2115146661647282514"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "nathalia.mp4",
+   "nome": "Nathalia Oliveira",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 141515,
+   "publicacoes": 2,
+   "visualizacoes": 219772,
+   "interacoes": 38214,
+   "primeira": "2026-10-29T03:03:52Z",
+   "ultima": "2026-10-29T20:46:24Z",
+   "termos": [
+    "Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@nathalia.mp4/video/7701920109639519508"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "dep.sargentolima",
+   "nome": "Sargento Lima",
+   "numero": "2212",
+   "partido": "PL",
+   "cargo": "Deputado Federal",
+   "uf": "SC",
+   "situacao": "ELEITO POR QP",
+   "posicao_partido_2t": "flavio",
+   "seguidores": 49585,
+   "publicacoes": 1,
+   "visualizacoes": 215127,
+   "interacoes": 29819,
+   "primeira": "2026-10-29T16:40:35Z",
+   "ultima": "2026-10-29T16:40:35Z",
+   "termos": [
+    "Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@dep.sargentolima/video/7702130608553676040"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "opatria1",
+   "nome": "opatria1",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 30815,
+   "publicacoes": 1,
+   "visualizacoes": 279180,
+   "interacoes": 28011,
+   "primeira": "2026-10-28T21:36:41Z",
+   "ultima": "2026-10-28T21:36:41Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@opatria1/video/7701835818230385928"
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -163,6 +344,95 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "flagra.news",
+   "nome": "flagra.news",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 45646,
+   "publicacoes": 2,
+   "visualizacoes": 205901,
+   "interacoes": 23529,
+   "primeira": "2026-10-31T11:20:31Z",
+   "ultima": "2026-10-31T14:53:24Z",
+   "termos": [
+    "Haddad boicote",
+    "Haddad Davos|Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@flagra.news/video/7702790309054401812"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "cortescodigo22",
+   "nome": "cortescodigo22",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 33300,
+   "publicacoes": 1,
+   "visualizacoes": 125419,
+   "interacoes": 17212,
+   "primeira": "2026-10-30T23:30:17Z",
+   "ultima": "2026-10-30T23:30:17Z",
+   "termos": [
+    "Haddad Davos|Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@cortescodigo22/video/7702607226128682246"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "user18357134",
+   "nome": "Leandro Z Souza Z",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 10240,
+   "publicacoes": 1,
+   "visualizacoes": 98123,
+   "interacoes": 14471,
+   "primeira": "2026-11-01T00:15:55Z",
+   "ultima": "2026-11-01T00:15:55Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@user18357134/video/7702990122286959892"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "saito_junior01",
+   "nome": "Saito Junior",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 96441,
+   "publicacoes": 1,
+   "visualizacoes": 227511,
+   "interacoes": 13159,
+   "primeira": "2026-10-26T23:12:31Z",
+   "ultima": "2026-10-26T23:12:31Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@saito_junior01/video/7701118358493809940"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
    "conta": "desireerugani",
    "nome": "Desiree Rugani",
@@ -182,6 +452,72 @@
     "C agora: corte de R$ 6 bilhões na saúde e educação"
    ],
    "top_url": "https://x.com/desireerugani/status/2115300650351522182"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "anderson.oficial001",
+   "nome": "anderson.oficial001",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 285892,
+   "publicacoes": 1,
+   "visualizacoes": 106998,
+   "interacoes": 10643,
+   "primeira": "2026-10-29T21:52:06Z",
+   "ultima": "2026-10-29T21:52:06Z",
+   "termos": [
+    "Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@anderson.oficial001/video/7702210879231790357"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "bombilloclipss",
+   "nome": "Bombillo Clips",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 370858,
+   "publicacoes": 1,
+   "visualizacoes": 119039,
+   "interacoes": 8516,
+   "primeira": "2026-10-28T20:21:01Z",
+   "ultima": "2026-10-28T20:21:01Z",
+   "termos": [
+    "Haddad Davos"
+   ],
+   "top_url": "https://www.tiktok.com/@bombilloclipss/video/7701816328520240385"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "fofocadehetero10",
+   "nome": "FofocaDeHetero",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 449111,
+   "publicacoes": 1,
+   "visualizacoes": 81686,
+   "interacoes": 8028,
+   "primeira": "2026-10-28T22:05:25Z",
+   "ultima": "2026-10-28T22:05:25Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@fofocadehetero10/video/7701843210703785217"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -294,6 +630,94 @@
    "top_url": "https://x.com/Haaaysb/status/2115629007660057056"
   },
   {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "clipsdopedro96",
+   "nome": "Clips do Pedro ⚽️",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 22696,
+   "publicacoes": 1,
+   "visualizacoes": 109001,
+   "interacoes": 5427,
+   "primeira": "2026-11-01T00:53:16Z",
+   "ultima": "2026-11-01T00:53:16Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@clipsdopedro96/video/7702999737460477217"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "br.peres",
+   "nome": "Br.Peres",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 55294,
+   "publicacoes": 1,
+   "visualizacoes": 79507,
+   "interacoes": 5161,
+   "primeira": "2026-10-27T22:49:14Z",
+   "ultima": "2026-10-27T22:49:14Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@br.peres/video/7701483445872037127"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "agueropnico71",
+   "nome": "AgueroPânico71",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 59210,
+   "publicacoes": 1,
+   "visualizacoes": 90352,
+   "interacoes": 5153,
+   "primeira": "2026-10-27T01:50:52Z",
+   "ultima": "2026-10-27T01:50:52Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@agueropnico71/video/7701159158577368328"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "graciele2308",
+   "nome": "Doce Cacau",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 34472,
+   "publicacoes": 1,
+   "visualizacoes": 25932,
+   "interacoes": 4606,
+   "primeira": "2026-11-01T21:29:48Z",
+   "ultima": "2026-11-01T21:29:48Z",
+   "termos": [
+    "Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@graciele2308/video/7703318362180439304"
+  },
+  {
    "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "Instagram",
    "conta": "sostenescavalcante",
@@ -314,6 +738,28 @@
     "reels: Haddad boicote Davos|reels: Haddad palito de fósforo"
    ],
    "top_url": "https://www.instagram.com/p/DfFLrFxpkuK/"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "fabianesantana107",
+   "nome": "fabianesantana107",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 305903,
+   "publicacoes": 1,
+   "visualizacoes": 36455,
+   "interacoes": 4488,
+   "primeira": "2026-10-30T20:33:58Z",
+   "ultima": "2026-10-30T20:33:58Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@fabianesantana107/video/7702561811064704308"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -338,6 +784,28 @@
    "top_url": "https://x.com/Byanu/status/2115807477082054841"
   },
   {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "guilhermecardosobc",
+   "nome": "gui cardoso",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 37880,
+   "publicacoes": 1,
+   "visualizacoes": 29996,
+   "interacoes": 4382,
+   "primeira": "2026-10-29T22:38:00Z",
+   "ultima": "2026-10-29T22:38:00Z",
+   "termos": [
+    "Haddad Davos|Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@guilhermecardosobc/video/7702222725938498837"
+  },
+  {
    "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "X",
    "conta": "DepSostenes",
@@ -358,6 +826,72 @@
     "A agora: Haddad boicote/Davos"
    ],
    "top_url": "https://x.com/DepSostenes/status/2115809548959158454"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "tamirfelipe",
+   "nome": "Tamir Felipe",
+   "numero": "1290",
+   "partido": "PDT",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "situacao": "NÃO ELEITO",
+   "posicao_partido_2t": "lula",
+   "seguidores": 29343,
+   "publicacoes": 1,
+   "visualizacoes": 53743,
+   "interacoes": 4311,
+   "primeira": "2026-10-28T13:16:10Z",
+   "ultima": "2026-10-28T13:16:10Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@tamirfelipe/video/7701706848872942855"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "jackeeoliver",
+   "nome": "Jacke Oliver",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 109470,
+   "publicacoes": 1,
+   "visualizacoes": 29524,
+   "interacoes": 4245,
+   "primeira": "2026-10-29T19:48:28Z",
+   "ultima": "2026-10-29T19:48:28Z",
+   "termos": [
+    "Haddad Davos"
+   ],
+   "top_url": "https://www.tiktok.com/@jackeeoliver/video/7702179017595702535"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "fernandinoqueiros2",
+   "nome": "FERNANDINO QUEIRÓS",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 254318,
+   "publicacoes": 1,
+   "visualizacoes": 79833,
+   "interacoes": 3832,
+   "primeira": "2026-10-28T15:56:15Z",
+   "ultima": "2026-10-28T15:56:15Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@fernandinoqueiros2/video/7701748119402253601"
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -493,6 +1027,50 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "lunoticias5",
+   "nome": "Lunoticias",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 75326,
+   "publicacoes": 1,
+   "visualizacoes": 62897,
+   "interacoes": 2435,
+   "primeira": "2026-11-01T11:00:00Z",
+   "ultima": "2026-11-01T11:00:00Z",
+   "termos": [
+    "Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@lunoticias5/video/7702888408737123602"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "talkey.br",
+   "nome": "Talkey?",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 42949,
+   "publicacoes": 1,
+   "visualizacoes": 21656,
+   "interacoes": 2129,
+   "primeira": "2026-10-27T20:37:54Z",
+   "ultima": "2026-10-27T20:37:54Z",
+   "termos": [
+    "Lula cortou saúde educação"
+   ],
+   "top_url": "https://www.tiktok.com/@talkey.br/video/7701449552901033236"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
    "conta": "wallaceolive_r",
    "nome": "Oliveira. W. ⚖️",
@@ -556,6 +1134,50 @@
     "A agora: Haddad boicote/Davos"
    ],
    "top_url": "https://x.com/rodrigolima/status/2115754794564432010"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "rodrigohzg",
+   "nome": "Rodrigo Herzog",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 20103,
+   "publicacoes": 1,
+   "visualizacoes": 8830,
+   "interacoes": 1826,
+   "primeira": "2026-11-01T05:10:09Z",
+   "ultima": "2026-11-01T05:10:09Z",
+   "termos": [
+    "Haddad Davos|Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@rodrigohzg/video/7703065886088809742"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "silvvia37",
+   "nome": "Silvia e seus marcos",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 85287,
+   "publicacoes": 1,
+   "visualizacoes": 16123,
+   "interacoes": 1608,
+   "primeira": "2026-10-29T12:54:27Z",
+   "ultima": "2026-10-29T12:54:27Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@silvvia37/video/7702072346416385300"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -713,6 +1335,50 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "rodrigolimamdh",
+   "nome": "Rodrigo Lima",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 19247,
+   "publicacoes": 1,
+   "visualizacoes": 8500,
+   "interacoes": 1204,
+   "primeira": "2026-10-29T10:42:24Z",
+   "ultima": "2026-10-29T10:42:24Z",
+   "termos": [
+    "Haddad boicote"
+   ],
+   "top_url": "https://www.tiktok.com/@rodrigolimamdh/video/7702038309404413192"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "marcio_mrb",
+   "nome": "Márcio",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 27647,
+   "publicacoes": 1,
+   "visualizacoes": 22062,
+   "interacoes": 1177,
+   "primeira": "2026-10-29T12:25:47Z",
+   "ultima": "2026-10-29T12:25:47Z",
+   "termos": [
+    "greve professores Sergipe"
+   ],
+   "top_url": "https://www.tiktok.com/@marcio_mrb/video/7702064441533205766"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
    "conta": "rafaelgloves",
    "nome": "Rafael Gloves 🥊",
@@ -734,691 +1400,101 @@
    "top_url": "https://x.com/rafaelgloves/status/2116148902437240990"
   },
   {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "depandrefigueiredo",
-   "nome": "André Figueiredo",
-   "numero": "1234",
-   "partido": "PDT",
-   "cargo": "Deputado Federal",
-   "uf": "CE",
-   "situacao": "NÃO ELEITO",
-   "posicao_partido_2t": "lula",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 8607,
-   "interacoes": 1066,
-   "primeira": "2026-10-24T04:15:27Z",
-   "ultima": "2026-10-24T04:15:27Z",
-   "termos": [
-    "reels: Lula cortou saúde educação"
-   ],
-   "top_url": "https://www.instagram.com/p/De3P0UQOTTQ/"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "walbervirgolino",
-   "nome": "Wallber Virgolino",
-   "numero": "22190",
-   "partido": "PL",
-   "cargo": "Deputado Estadual",
-   "uf": "PB",
-   "situacao": "ELEITO POR MÉDIA",
-   "posicao_partido_2t": "flavio",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 19476,
-   "interacoes": 909,
-   "primeira": "2026-10-30T10:59:28Z",
-   "ultima": "2026-10-30T10:59:28Z",
-   "termos": [
-    "reels: Haddad boicote Davos"
-   ],
-   "top_url": "https://www.instagram.com/p/DfHbCl6gBvW/"
-  },
-  {
    "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "dr_francisco79",
-   "nome": "Francisco Cardoso",
+   "rede": "TikTok",
+   "conta": "rodi_netto",
+   "nome": "rodi_netto",
    "numero": null,
    "partido": null,
    "cargo": null,
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 23459,
+   "seguidores": 91228,
    "publicacoes": 1,
-   "visualizacoes": 3563,
-   "interacoes": 881,
-   "primeira": "2026-10-30T13:06:15Z",
-   "ultima": "2026-10-30T13:06:15Z",
+   "visualizacoes": 29537,
+   "interacoes": 1119,
+   "primeira": "2026-10-26T22:24:22Z",
+   "ultima": "2026-10-26T22:24:22Z",
    "termos": [
-    "A agora: Haddad boicote/Davos"
+    "Lula cortou saúde educação"
    ],
-   "top_url": "https://x.com/dr_francisco79/status/2116154717353148620"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "faissalcalil",
-   "nome": "Faissal",
-   "numero": "22444",
-   "partido": "PL",
-   "cargo": "Deputado Estadual",
-   "uf": "MT",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "flavio",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 12274,
-   "interacoes": 825,
-   "primeira": "2026-10-30T15:41:19Z",
-   "ultima": "2026-10-30T15:41:19Z",
-   "termos": [
-    "reels: Haddad boicote Davos"
-   ],
-   "top_url": "https://www.instagram.com/p/DfH7KMnMNb-/"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "coronel.frota10",
-   "nome": "Coronel Frota",
-   "numero": "1065",
-   "partido": "REPUBLICANOS",
-   "cargo": "Deputado Federal",
-   "uf": "RS",
-   "situacao": "SUPLENTE",
-   "posicao_partido_2t": "flavio",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 9763,
-   "interacoes": 814,
-   "primeira": "2026-10-29T21:52:02Z",
-   "ultima": "2026-10-29T21:52:02Z",
-   "termos": [
-    "reels: Haddad boicote Davos"
-   ],
-   "top_url": "https://www.instagram.com/p/DfGArj0vOCT/"
+   "top_url": "https://www.tiktok.com/@rodi_netto/video/7701105942091418901"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "andrepiedade1",
-   "nome": "Golden News",
+   "rede": "TikTok",
+   "conta": "noticiafinal",
+   "nome": "Notícia Final",
    "numero": null,
    "partido": null,
    "cargo": null,
    "uf": null,
    "situacao": null,
    "posicao_partido_2t": null,
-   "seguidores": 21038,
-   "publicacoes": 1,
-   "visualizacoes": 4446,
-   "interacoes": 595,
-   "primeira": "2026-10-29T17:06:33Z",
-   "ultima": "2026-10-29T17:06:33Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/andrepiedade1/status/2115852803155296432"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "PlenoNews",
-   "nome": "Pleno.News",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 49553,
-   "publicacoes": 1,
-   "visualizacoes": 2409,
-   "interacoes": 576,
-   "primeira": "2026-10-30T01:54:50Z",
-   "ultima": "2026-10-30T01:54:50Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/PlenoNews/status/2115985748855812392"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "depsargentolima",
-   "nome": "Sargento Lima",
-   "numero": "2212",
-   "partido": "PL",
-   "cargo": "Deputado Federal",
-   "uf": "SC",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 4197,
-   "publicacoes": 1,
-   "visualizacoes": 3326,
-   "interacoes": 552,
-   "primeira": "2026-10-29T15:32:42Z",
-   "ultima": "2026-10-29T15:32:42Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/depsargentolima/status/2115829183385403492"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "damadanoite14",
-   "nome": "Maria P",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 98251,
-   "publicacoes": 2,
-   "visualizacoes": 4564,
-   "interacoes": 477,
-   "primeira": "2026-10-29T11:49:19Z",
-   "ultima": "2026-10-29T18:47:59Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/damadanoite14/status/2115772968618095025"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "valdemarpaiva1",
-   "nome": "Valdemar Paiva",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 57855,
-   "publicacoes": 2,
-   "visualizacoes": 1358,
-   "interacoes": 281,
-   "primeira": "2026-10-30T14:18:21Z",
-   "ultima": "2026-10-30T14:38:24Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/valdemarpaiva1/status/2116172862557925645"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "ranallipf",
-   "nome": "Ranalli",
-   "numero": "2211",
-   "partido": "PL",
-   "cargo": "Deputado Federal",
-   "uf": "MT",
-   "situacao": "SUPLENTE",
-   "posicao_partido_2t": "flavio",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 2717,
-   "interacoes": 219,
-   "primeira": "2026-10-30T12:13:24Z",
-   "ultima": "2026-10-30T12:13:24Z",
-   "termos": [
-    "reels: Haddad boicote Davos"
-   ],
-   "top_url": "https://www.instagram.com/p/DfHjYG-SL3T/"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "delegadopablo",
-   "nome": "Delegado Pablo",
-   "numero": "2255",
-   "partido": "PL",
-   "cargo": "Deputado Federal",
-   "uf": "AM",
-   "situacao": "SUPLENTE",
-   "posicao_partido_2t": "flavio",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 1066,
-   "interacoes": 211,
-   "primeira": "2026-10-30T15:58:01Z",
-   "ultima": "2026-10-30T15:58:01Z",
-   "termos": [
-    "reels: Haddad boicote Davos"
-   ],
-   "top_url": "https://www.instagram.com/p/DfH9FWfho8D/"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "analelis",
-   "nome": "Ana Lelis 🇧🇷",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 16544,
-   "publicacoes": 4,
-   "visualizacoes": 1594,
-   "interacoes": 142,
-   "primeira": "2026-10-30T00:25:13Z",
-   "ultima": "2026-10-30T17:11:04Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/analelis/status/2115963198809485810"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "O_PontoX",
-   "nome": "Ponto X",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 12239,
-   "publicacoes": 2,
-   "visualizacoes": 3034,
-   "interacoes": 114,
-   "primeira": "2026-10-29T09:14:56Z",
-   "ultima": "2026-10-29T11:12:08Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/O_PontoX/status/2115734116830503283"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "BlogdoBG",
-   "nome": "BLOGDOBG",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 128119,
-   "publicacoes": 1,
-   "visualizacoes": 2485,
-   "interacoes": 113,
-   "primeira": "2026-10-30T09:51:51Z",
-   "ultima": "2026-10-30T09:51:51Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/BlogdoBG/status/2116105792856510871"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Vidagringa",
-   "nome": "vida gringa",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 16730,
-   "publicacoes": 1,
-   "visualizacoes": 764,
-   "interacoes": 110,
-   "primeira": "2026-10-29T13:48:53Z",
-   "ultima": "2026-10-29T13:48:53Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/Vidagringa/status/2115803056722047141"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "jovianoa",
-   "nome": "J_Andrade🇧🇷🇧🇷🇺🇸🇮🇱",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 59319,
-   "publicacoes": 1,
-   "visualizacoes": 642,
-   "interacoes": 106,
-   "primeira": "2026-10-30T01:08:42Z",
-   "ultima": "2026-10-30T01:08:42Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/jovianoa/status/2115974140557513023"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Soul221122",
-   "nome": "SOUL",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 17017,
+   "seguidores": 20052,
    "publicacoes": 3,
-   "visualizacoes": 891,
-   "interacoes": 96,
-   "primeira": "2026-10-30T12:57:11Z",
-   "ultima": "2026-11-01T15:25:18Z",
+   "visualizacoes": 22152,
+   "interacoes": 1088,
+   "primeira": "2026-10-26T15:17:04Z",
+   "ultima": "2026-10-30T10:19:05Z",
    "termos": [
-    "A agora: Haddad boicote/Davos",
-    "diário: A agora: Haddad boicote/Davos"
+    "Lula cortou saúde educação",
+    "Haddad boicote"
    ],
-   "top_url": "https://x.com/Soul221122/status/2116152435844538816"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "FelipeTadewald",
-   "nome": "Felipe Tadewald",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 138220,
-   "publicacoes": 1,
-   "visualizacoes": 2523,
-   "interacoes": 94,
-   "primeira": "2026-10-30T16:52:23Z",
-   "ultima": "2026-10-30T16:52:23Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/FelipeTadewald/status/2116211627145977929"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "MarcioFantini99",
-   "nome": "Django Rabugento",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 30278,
-   "publicacoes": 1,
-   "visualizacoes": 879,
-   "interacoes": 92,
-   "primeira": "2026-10-29T14:28:09Z",
-   "ultima": "2026-10-29T14:28:09Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/MarcioFantini99/status/2115812939739373994"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "vowtz",
-   "nome": "Leandro Siqueira",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 90508,
-   "publicacoes": 1,
-   "visualizacoes": 6021,
-   "interacoes": 84,
-   "primeira": "2026-10-29T21:11:42Z",
-   "ultima": "2026-10-29T21:11:42Z",
-   "termos": [
-    "C agora: corte de R$ 6 bilhões na saúde e educação"
-   ],
-   "top_url": "https://x.com/vowtz/status/2115914498414629204"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "patyarqt",
-   "nome": "Patrícia",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 20848,
-   "publicacoes": 1,
-   "visualizacoes": 653,
-   "interacoes": 83,
-   "primeira": "2026-10-29T16:42:45Z",
-   "ultima": "2026-10-29T16:42:45Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/patyarqt/status/2115846815312695734"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Carolcoralmarin",
-   "nome": "Só Carol",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 29302,
-   "publicacoes": 1,
-   "visualizacoes": 495,
-   "interacoes": 82,
-   "primeira": "2026-10-30T10:58:58Z",
-   "ultima": "2026-10-30T10:58:58Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/Carolcoralmarin/status/2116122685423890607"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "TheIncorrupt_",
-   "nome": "The Incorrupt",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 136232,
-   "publicacoes": 1,
-   "visualizacoes": 1171,
-   "interacoes": 80,
-   "primeira": "2026-10-30T19:00:01Z",
-   "ultima": "2026-10-30T19:00:01Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/TheIncorrupt_/status/2116243744844620023"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "065999036707cba",
-   "nome": "Jonas Gonçalves de Lima 🔰",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 18282,
-   "publicacoes": 1,
-   "visualizacoes": 1995,
-   "interacoes": 74,
-   "primeira": "2026-10-30T09:53:18Z",
-   "ultima": "2026-10-30T09:53:18Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/065999036707cba/status/2116106159924896202"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "macunaimaz",
-   "nome": "Candy 🔰⚖️🔰",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 36073,
-   "publicacoes": 1,
-   "visualizacoes": 724,
-   "interacoes": 65,
-   "primeira": "2026-10-29T14:05:19Z",
-   "ultima": "2026-10-29T14:05:19Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/macunaimaz/status/2115807195497738348"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "superbrasil4",
-   "nome": "SuperBrasil4",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 24262,
-   "publicacoes": 1,
-   "visualizacoes": 369,
-   "interacoes": 54,
-   "primeira": "2026-10-30T09:22:25Z",
-   "ultima": "2026-10-30T09:22:25Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/superbrasil4/status/2116098388626129201"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Lelio_Gomes2",
-   "nome": "Lélio Gomes 🇧🇷🇮🇱🇺🇸🇦🇷",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 10107,
-   "publicacoes": 1,
-   "visualizacoes": 613,
-   "interacoes": 53,
-   "primeira": "2026-10-29T03:32:26Z",
-   "ultima": "2026-10-29T03:32:26Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/Lelio_Gomes2/status/2115647925623603708"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Ellian73101662",
-   "nome": "🇧🇷🇧🇷 Vandinha Addams 🇧🇷🇧🇷",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 13286,
-   "publicacoes": 1,
-   "visualizacoes": 618,
-   "interacoes": 48,
-   "primeira": "2026-10-29T12:10:59Z",
-   "ultima": "2026-10-29T12:10:59Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/Ellian73101662/status/2115778422248980525"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "rosanagazola",
-   "nome": "RoGrazoura",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 46498,
-   "publicacoes": 2,
-   "visualizacoes": 511,
-   "interacoes": 38,
-   "primeira": "2026-10-30T03:21:02Z",
-   "ultima": "2026-10-30T03:42:56Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/rosanagazola/status/2116007443549351950"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "JornalBrasilOn2",
-   "nome": "Jornal da Direita Online 🇧🇷🇮🇱",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 82355,
-   "publicacoes": 1,
-   "visualizacoes": 613,
-   "interacoes": 37,
-   "primeira": "2026-10-30T15:23:25Z",
-   "ultima": "2026-10-30T15:23:25Z",
-   "termos": [
-    "A agora: Haddad boicote/Davos"
-   ],
-   "top_url": "https://x.com/JornalBrasilOn2/status/2116189238056177906"
+   "top_url": "https://www.tiktok.com/@noticiafinal/video/7701389133712772360"
   }
  ],
- "atores_total": 93,
+ "atores_total": 211,
  "postagens": [
+  {
+   "rede": "TikTok",
+   "conta": "davoslingo",
+   "nome": "Davo’s Lingo",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@davoslingo/video/7702409802818850056",
+   "texto": "Chuyện gì đang xảy ra vậy 😨 #LearnOnTikTok #hoccungtikok #davoslingo",
+   "publicado_em": "2026-10-30T10:44:04Z",
+   "interacoes": 284932,
+   "visualizacoes": 3036422
+  },
+  {
+   "rede": "TikTok",
+   "conta": "flaviozimermann",
+   "nome": "Flavio Caminhoneiro",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PSD",
+   "url": "https://www.tiktok.com/@flaviozimermann/video/7701006566006213940",
+   "texto": "LULA LADRÃO #lulaladrao #lula #flaviobolsonaro #picanha #fazol",
+   "publicado_em": "2026-10-26T15:58:45Z",
+   "interacoes": 116840,
+   "visualizacoes": 1061199
+  },
+  {
+   "rede": "TikTok",
+   "conta": "vocesabia_eleicoes2026",
+   "nome": "ACORDA BRASIL",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@vocesabia_eleicoes2026/video/7702854795828153620",
+   "texto": "🚨 PROFESSOR NÃO POUPA PAVANATO, CHAMA VEREADOR DE “MOLEQUE MIMADO” E MANDA ELE IR TRABALHAR! Um professor da rede municipal protagonizou um confronto com o vereador Lucas Pavanato. Durante o embate, o educador não mediu as palavras, chamou o parlamentar de “moleque mimado” e aind",
+   "publicado_em": "2026-10-31T15:30:46Z",
+   "interacoes": 97540,
+   "visualizacoes": 613992
+  },
+  {
+   "rede": "TikTok",
+   "conta": "guga.figueiredo",
+   "nome": "Guga Figueiredo",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@guga.figueiredo/video/7701759792905440533",
+   "texto": "Não é verdade que em 2026 Lula tenha cortado quase 6B da saúde e educação.",
+   "publicado_em": "2026-10-28T16:41:37Z",
+   "interacoes": 65049,
+   "visualizacoes": 425219
+  },
   {
    "rede": "X",
    "conta": "thaixkronbauer",
@@ -1430,6 +1506,42 @@
    "publicado_em": "2026-10-27T18:20:36Z",
    "interacoes": 55515,
    "visualizacoes": 5431745
+  },
+  {
+   "rede": "TikTok",
+   "conta": "dep.sargentolima",
+   "nome": "Sargento Lima",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PL",
+   "url": "https://www.tiktok.com/@dep.sargentolima/video/7702130608553676040",
+   "texto": "Quem inventou esse negócio de boicotar empresa por viés político não foi a direita, foi a esquerda. E não sou eu que tô dizendo: é o próprio Haddad, no próprio vídeo. Agora que a pimenta voltou pros olhos deles, virou choradeira?",
+   "publicado_em": "2026-10-29T16:40:35Z",
+   "interacoes": 29819,
+   "visualizacoes": 215127
+  },
+  {
+   "rede": "TikTok",
+   "conta": "opatria1",
+   "nome": "opatria1",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@opatria1/video/7701835818230385928",
+   "texto": "Professores no nordeste entram em greve e culpam Flávio Bolsonaro por falta de reajuste salarial, sendo que, Flávio nunca foi presidente do Brasil e esquecem de Lula, que é o atual presidente do Brasil. #professores #nordeste #flaviobolsonaro #lula #greve",
+   "publicado_em": "2026-10-28T21:36:41Z",
+   "interacoes": 28011,
+   "visualizacoes": 279180
+  },
+  {
+   "rede": "TikTok",
+   "conta": "nathalia.mp4",
+   "nome": "Nathalia Oliveira",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@nathalia.mp4/video/7701920109639519508",
+   "texto": "Fernando Haddad já defendeu publicamente o boicote a empresas por questões ideológicas. Agora que a direita resolveu falar em boicotar petistas, quero ver se a turma do amor continua achando a ideia maravilhosa. Engraçado como tudo vira fascismo quando o feitiço se volta contra o",
+   "publicado_em": "2026-10-29T03:03:52Z",
+   "interacoes": 25468,
+   "visualizacoes": 154459
   },
   {
    "rede": "Instagram",
@@ -1456,6 +1568,54 @@
    "visualizacoes": 185724
   },
   {
+   "rede": "TikTok",
+   "conta": "flagra.news",
+   "nome": "flagra.news",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@flagra.news/video/7702790309054401812",
+   "texto": "\"Fez o L? Não compro.\" A esquerda chama de crime, mas já fez igual: Havan, Madero, Jovem Pan. Boicote vale pros dois lados? #boicote #fezoL #direita #esquerda #politica",
+   "publicado_em": "2026-10-31T11:20:31Z",
+   "interacoes": 22368,
+   "visualizacoes": 188988
+  },
+  {
+   "rede": "TikTok",
+   "conta": "cortescodigo22",
+   "nome": "cortescodigo22",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@cortescodigo22/video/7702607226128682246",
+   "texto": "A RESPOSTA DA DIREITA CHEGOU! HADDAD DEFENDEU BOICOTE EM DAVOS, AGORA O JOGO VIROU! 🇧🇷 #CortesCodigo22 #Haddad #Boicote #Politica #Brasil",
+   "publicado_em": "2026-10-30T23:30:17Z",
+   "interacoes": 17212,
+   "visualizacoes": 125419
+  },
+  {
+   "rede": "TikTok",
+   "conta": "user18357134",
+   "nome": "Leandro Z Souza Z",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@user18357134/video/7702990122286959892",
+   "texto": "",
+   "publicado_em": "2026-11-01T00:15:55Z",
+   "interacoes": 14471,
+   "visualizacoes": 98123
+  },
+  {
+   "rede": "TikTok",
+   "conta": "saito_junior01",
+   "nome": "Saito Junior",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@saito_junior01/video/7701118358493809940",
+   "texto": "Lula 4 já mira cortes em benefícios sociais e mudanças nos pisos da saúde e educação Redução de gastos tributários, revisão de benefícios sociais e mudanças nas regras de financiamento da saúde e da educação estão no radar do governo Lula 4. A proposta levanta questionamentos sob",
+   "publicado_em": "2026-10-26T23:12:31Z",
+   "interacoes": 13159,
+   "visualizacoes": 227511
+  },
+  {
    "rede": "X",
    "conta": "desireerugani",
    "nome": "Desiree Rugani",
@@ -1466,138 +1626,6 @@
    "publicado_em": "2026-10-28T04:32:30Z",
    "interacoes": 11324,
    "visualizacoes": 77704
-  },
-  {
-   "rede": "X",
-   "conta": "claudio_dantas_",
-   "nome": "Claudio Dantas",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/claudio_dantas_/status/2116216254369333675",
-   "texto": "SOBRE O BOICOTE, FAÇO MINHAS AS PALAVRAS DO HADDAD. https://t.co/rPZCG8Z9ts",
-   "publicado_em": "2026-10-30T17:10:47Z",
-   "interacoes": 7864,
-   "visualizacoes": 41857
-  },
-  {
-   "rede": "Instagram",
-   "conta": "capitao_alden",
-   "nome": "Capitão Alden",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://www.instagram.com/p/DfHNGsluap8/",
-   "texto": "Uma declaração feita por Fernando Haddad (PT) em janeiro de 2023 voltou a repercutir em meio à polêmica sobre listas de boicote a comerciantes identificados como apoiadores de Lula. Durante o Fórum Econômico Mundial, em Davos, na Suíça, o então ministro da Fazenda defendeu que co",
-   "publicado_em": "2026-10-30T08:57:59Z",
-   "interacoes": 7074,
-   "visualizacoes": 74810
-  },
-  {
-   "rede": "Instagram",
-   "conta": "deputadojesselopes",
-   "nome": "Jessé Lopes",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://www.instagram.com/p/DfHj41kxe9I/",
-   "texto": "Eu, Jessé, farei igual ao Haddad: não comprarei um palito de fósforo de quem não tem compromisso com as minhas causas.",
-   "publicado_em": "2026-10-30T12:17:51Z",
-   "interacoes": 7057,
-   "visualizacoes": 47525
-  },
-  {
-   "rede": "X",
-   "conta": "Louh_novak",
-   "nome": "Lou Novak 💚💛💚💛",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/Louh_novak/status/2115838635098382744",
-   "texto": "Quem inventou esse negócio de boicotar empresa por viés político não foi a direita, foi a esquerda. E não sou eu que tô dizendo: é o próprio Haddad, no próprio vídeo. Agora que a pimenta voltou pros olhos deles, virou choradeira? https://t.co/MWrkVACHkJ",
-   "publicado_em": "2026-10-29T16:10:15Z",
-   "interacoes": 6794,
-   "visualizacoes": 32400
-  },
-  {
-   "rede": "X",
-   "conta": "Haaaysb",
-   "nome": "Hayy⚡️",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/Haaaysb/status/2115629007660057056",
-   "texto": "🚨 Fernando Haddad defendeu que consumidores boicotem empresas por questões ideológicas e afirmou que brasileiros deixaram de consumir produtos associados ao “governo extremista que foi derrotado”. 17 de janeiro de 2023 https://t.co/ub6MANFFY3",
-   "publicado_em": "2026-10-29T02:17:16Z",
-   "interacoes": 5699,
-   "visualizacoes": 72562
-  },
-  {
-   "rede": "Instagram",
-   "conta": "sostenescavalcante",
-   "nome": "Sóstenes Cavalcante",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://www.instagram.com/p/DfFLrFxpkuK/",
-   "texto": "QUANDO É A ESQUERDA, PODE. QUANDO É A DIREITA, VIRA CRIME? Em janeiro de 2023, durante o Fórum Econômico Mundial, em Davos, Fernando Haddad declarou: “Eu não compro nem um palito de fósforo de uma empresa que não tenha compromisso com essas questões.” Na ocasião, o petista defend",
-   "publicado_em": "2026-10-29T14:06:56Z",
-   "interacoes": 4541,
-   "visualizacoes": 45232
-  },
-  {
-   "rede": "X",
-   "conta": "Byanu",
-   "nome": "Byanu",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/Byanu/status/2115807477082054841",
-   "texto": "Eu sigo a orientação do Haddad, tem que boicotar. https://t.co/glQ9R1etPC",
-   "publicado_em": "2026-10-29T14:06:26Z",
-   "interacoes": 4400,
-   "visualizacoes": 54563
-  },
-  {
-   "rede": "X",
-   "conta": "DepSostenes",
-   "nome": "Sóstenes Cavalcante",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://x.com/DepSostenes/status/2115809548959158454",
-   "texto": "QUANDO É A ESQUERDA, PODE. QUANDO É A DIREITA, VIRA CRIME? Em janeiro de 2023, durante o Fórum Econômico Mundial, em Davos, Fernando Haddad declarou: “Eu não compro nem um palito de fósforo de uma empresa que não tenha compromisso com essas questões.” Na ocasião, o petista defend",
-   "publicado_em": "2026-10-29T14:14:40Z",
-   "interacoes": 4345,
-   "visualizacoes": 24480
-  },
-  {
-   "rede": "Instagram",
-   "conta": "carteiroreaca",
-   "nome": "Gil Diniz",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://www.instagram.com/p/DfIEG-_o3A_/",
-   "texto": "Siga @carteiroreaca HIPÓCRITAS! O PT agora se faz de vítima alegando sofrer boicotes, mas esconde que o próprio Fernando Haddad, em pleno Fórum Econômico Mundial em 2023, pregou abertamente o boicote a empresas de conservadores e apoiadores do Presidente Bolsonaro. Na ocasião, o ",
-   "publicado_em": "2026-10-30T16:58:30Z",
-   "interacoes": 3817,
-   "visualizacoes": 26443
-  },
-  {
-   "rede": "Instagram",
-   "conta": "carolinedetoni",
-   "nome": "Carol De Toni",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://www.instagram.com/p/DfIVXXFsMjM/",
-   "texto": "Em 2023, Fernando Haddad defendeu publicamente o boicote a empresas associadas ao governo Bolsonaro. Disse, inclusive, que não comprava nem um palito de fósforo de empresas cujas posições contrariassem suas convicções. Agora, quando consumidores da direita fazem movimentos semelh",
-   "publicado_em": "2026-10-30T19:29:27Z",
-   "interacoes": 3233,
-   "visualizacoes": 53111
-  },
-  {
-   "rede": "X",
-   "conta": "mineirotchotcho",
-   "nome": "🟢🔴🟣Ⓜ️ineiro 2026.🟢🔴🟣",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/mineirotchotcho/status/2115749365159768083",
-   "texto": "FERNANDO HADDAD MANDOU VOCÊ BOICOTAR EMPRESAS CONSERVADORAS , AGORA É SUA VEZ https://t.co/wrsJISiFqU",
-   "publicado_em": "2026-10-29T10:15:32Z",
-   "interacoes": 3116,
-   "visualizacoes": 26203
   }
  ],
  "arquivos": {
