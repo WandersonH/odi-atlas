@@ -1,6 +1,6 @@
 {
  "caso": "018",
- "gerado_em_utc": "2026-11-01T19:13:00Z",
+ "gerado_em_utc": "2026-11-02T17:29:45Z",
  "corte_pos_eleicao": "2026-10-25",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -142,14 +142,14 @@
     "respostas_entre_publicacoes": 148
    },
    "x_agora": {
-    "publicacoes": 1144,
-    "contas": 779,
-    "visualizacoes": 1211930,
-    "curtidas": 77881,
-    "respostas_recebidas": 3005,
-    "compartilhamentos": 25495,
+    "publicacoes": 1228,
+    "contas": 843,
+    "visualizacoes": 1215648,
+    "curtidas": 78021,
+    "respostas_recebidas": 3019,
+    "compartilhamentos": 25534,
     "primeiro_dia": "2026-10-26",
-    "ultimo_dia": "2026-10-30",
+    "ultimo_dia": "2026-11-01",
     "pico": {
      "dia": "2026-10-29",
      "publicacoes": 462
@@ -160,7 +160,9 @@
      55,
      166,
      462,
-     460
+     460,
+     1,
+     83
     ],
     "contas_10mil": [
      {
@@ -201,6 +203,12 @@
      },
      {
       "rede": "x",
+      "conta": "Soul221122",
+      "seguidores": 17017,
+      "publicacoes": 3
+     },
+     {
+      "rede": "x",
       "conta": "jornalrazao",
       "seguidores": 116615,
       "publicacoes": 2
@@ -227,12 +235,6 @@
       "rede": "x",
       "conta": "teresinhalopes",
       "seguidores": 37491,
-      "publicacoes": 2
-     },
-     {
-      "rede": "x",
-      "conta": "evamanaos",
-      "seguidores": 33635,
       "publicacoes": 2
      }
     ]
@@ -287,7 +289,7 @@
    ],
    "filtro_pertinencia": "haddad.{0,200}(boicot|davos|palito|n[aã]o compr)|(boicot|davos|palito|n[aã]o compr).{0,200}haddad",
    "titulo": null,
-   "contas_nos_dois_periodos": 12,
+   "contas_nos_dois_periodos": 13,
    "contas_10mil_nos_dois": [
     [
      "o_antagonista",
@@ -389,46 +391,46 @@
       26
      ],
      [
-      "crescimento",
-      17
+      "ministros",
+      39
      ]
     ],
     "agora": [
      [
       "giants",
-      136
+      144
      ],
      [
       "boicote",
-      928
+      980
      ],
      [
       "fósforo",
-      161
+      171
      ],
      [
       "protocolo",
-      63
+      66
      ],
      [
       "sleeping",
-      107
+      111
      ],
      [
       "palito",
-      166
+      176
      ],
      [
       "listas",
-      72
+      74
      ],
      [
       "compromissos",
-      42
+      43
      ],
      [
       "escolher",
-      41
+      42
      ],
      [
       "polícia",
@@ -439,6 +441,10 @@
       39
      ],
      [
+      "liberdade",
+      71
+     ],
+     [
       "janeiro",
       91
      ],
@@ -447,12 +453,8 @@
       37
      ],
      [
-      "liberdade",
-      65
-     ],
-     [
       "pregou",
-      51
+      55
      ]
     ]
    },
@@ -476,43 +478,43 @@
      "epoca": [],
      "depois": [
       [
-       "mentira",
+       "chega",
        0
       ],
       [
-       "querem",
+       "metade",
        0
       ],
       [
-       "nada",
+       "vão",
        0
       ],
       [
-       "ver",
+       "atrás",
        0
       ],
       [
-       "olha",
+       "nosso",
        0
       ],
       [
-       "tão",
+       "tempo",
        0
       ],
       [
-       "contra",
+       "dizendo",
        0
       ],
       [
-       "sabem",
+       "nação",
        0
       ],
       [
-       "passam",
+       "políticos",
        0
       ],
       [
-       "grandes",
+       "frente",
        0
       ]
      ]
@@ -538,10 +540,10 @@
      "POS": 6.2
     },
     "x_agora": {
-     "n": 1144,
-     "NEG": 47.6,
+     "n": 1228,
+     "NEG": 47.7,
      "NEU": 50.0,
-     "POS": 2.4
+     "POS": 2.3
     },
     "instagram_agora": {
      "n": 89,
@@ -562,7 +564,7 @@
    "x_agora": {
     "publicacoes": 4,
     "contas": 4,
-    "visualizacoes": 119,
+    "visualizacoes": 126,
     "curtidas": 3,
     "respostas_recebidas": 2,
     "compartilhamentos": 0,
@@ -754,14 +756,14 @@
     "respostas_entre_publicacoes": 5
    },
    "x_agora": {
-    "publicacoes": 111,
-    "contas": 97,
-    "visualizacoes": 6492837,
-    "curtidas": 74202,
-    "respostas_recebidas": 1908,
-    "compartilhamentos": 4681,
+    "publicacoes": 125,
+    "contas": 108,
+    "visualizacoes": 6494207,
+    "curtidas": 74240,
+    "respostas_recebidas": 1912,
+    "compartilhamentos": 4687,
     "primeiro_dia": "2026-10-25",
-    "ultimo_dia": "2026-10-30",
+    "ultimo_dia": "2026-11-01",
     "pico": {
      "dia": "2026-10-27",
      "publicacoes": 34
@@ -773,7 +775,9 @@
      34,
      33,
      31,
-     7
+     11,
+     6,
+     4
     ],
     "contas_10mil": [
      {
@@ -918,11 +922,11 @@
       27
      ],
      [
-      "foram",
+      "bloqueio",
       14
      ],
      [
-      "bloqueio",
+      "foram",
       14
      ],
      [
@@ -930,65 +934,65 @@
       7
      ],
      [
-      "governo",
-      56
-     ],
-     [
       "ministério",
       25
      ],
      [
-      "afetadas",
+      "governo",
+      56
+     ],
+     [
+      "atingidos",
+      6
+     ],
+     [
+      "arcabouço",
       6
      ],
      [
       "equilibrar",
-      6
-     ],
-     [
-      "atingidos",
       6
      ]
     ],
     "agora": [
      [
       "cortou",
-      46
+      51
      ],
      [
       "cortar",
-      31
+      34
+     ],
+     [
+      "fake",
+      15
      ],
      [
       "news",
       14
      ],
      [
-      "fake",
+      "saude",
       13
      ],
      [
-      "saude",
-      12
+      "caso",
+      13
      ],
      [
       "verdade",
       12
      ],
      [
-      "caso",
-      12
+      "sancionou",
+      11
      ],
      [
       "reduzir",
       11
      ],
      [
-      "sancionou",
-      11
-     ],
-     [
-      "senado",
+      "falar",
       10
      ],
      [
@@ -996,7 +1000,7 @@
       10
      ],
      [
-      "falar",
+      "instituição",
       10
      ],
      [
@@ -1004,11 +1008,11 @@
       10
      ],
      [
-      "greve",
+      "piso",
       10
      ],
      [
-      "instituição",
+      "senado",
       10
      ]
     ]
@@ -1021,10 +1025,10 @@
      "POS": 0.0
     },
     "x_agora": {
-     "n": 111,
-     "NEG": 54.1,
-     "NEU": 44.1,
-     "POS": 1.8
+     "n": 125,
+     "NEG": 50.4,
+     "NEU": 47.2,
+     "POS": 2.4
     },
     "instagram_agora": {
      "n": 2,
