@@ -1,0 +1,12557 @@
+{
+ "caso": "005",
+ "gerado_em_utc": "2026-11-02T00:55:37Z",
+ "livro": {
+  "titulo": "Livro de códigos — caso 005: caso Ana Clara (ODI Atlas)",
+  "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+  "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+  "simetria": "A difusão da cobrança (convite à busca, acusação, apelo por justiça, associação ao crime) e a reação (contraponto da defesa, crítica ao uso eleitoral, ironia) são codificadas separadamente; associação ao crime e pedido de voto valem para qualquer candidato e alvo; nenhuma categoria mede a posição política de quem publica. O livro não julga o processo: registra o que as publicações dizem dele. Nomes de pessoas privadas (família, acusado) não são indicador.",
+  "amostra_humana": {
+   "tamanho": 200,
+   "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+   "codificadores": 2,
+   "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+  },
+  "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto."
+ },
+ "categorias": {
+  "convite_busca": {
+   "nome": "Convite a pesquisar o caso",
+   "definicao": "Convida a pesquisar o caso no Google ou nas redes (\"pesquise\", \"pesquisem\", #PesquiseOCasoAnaClara), como forma de difusão.",
+   "n": 115,
+   "pct": 26.2
+  },
+  "acusacao_defesa_pm": {
+   "nome": "Acusação: o candidato defendeu o policial acusado",
+   "definicao": "Afirma ou cobra que o senador/candidato atuou na defesa do PM acusado (recurso, tentativa de evitar o júri), ou pede que ele explique o caso; inclui hashtags que ligam o candidato ao caso (#ExplicaOCasoAnaClaraFlavio, #FlavioBolsonaroCasoAnaClara).",
+   "n": 95,
+   "pct": 21.6
+  },
+  "apelo_justica_vitima": {
+   "nome": "Apelo por justiça e comoção pela vítima",
+   "definicao": "Pede justiça para a criança ou a família, ou apela à emoção (idade da vítima, a mãe, \"e se fosse seu filho\").",
+   "n": 143,
+   "pct": 32.6
+  },
+  "associacao_crime": {
+   "nome": "Associação de político ao crime ou à milícia (qualquer alvo)",
+   "definicao": "Associa candidato, família ou partido a milícia, crime organizado, bandidos ou mandantes de crime.",
+   "n": 18,
+   "pct": 4.1
+  },
+  "pedido_voto": {
+   "nome": "Pedido de voto ou rejeição eleitoral",
+   "definicao": "Pede voto ou rejeição para qualquer candidato.",
+   "n": 38,
+   "pct": 8.7
+  },
+  "contraponto_defesa": {
+   "nome": "Contraponto: direito de defesa e versão do acusado",
+   "definicao": "Contesta ou relativiza a acusação: advogado não é cúmplice, todo acusado tem direito de defesa, houve confronto, ainda não foi provado.",
+   "n": 33,
+   "pct": 7.5
+  },
+  "critica_uso_eleitoral": {
+   "nome": "Crítica ao uso eleitoral do caso ou acusação de desinformação",
+   "definicao": "Critica o uso político/eleitoral da morte da criança ou diz que a acusação é mentira, distorção ou fake news (de qualquer lado).",
+   "n": 7,
+   "pct": 1.6
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Usa humor, deboche, meme ou ironia (de qualquer lado).",
+   "n": 2,
+   "pct": 0.5
+  },
+  "informacao_noticia": {
+   "nome": "Informação ou notícia",
+   "definicao": "Relata fatos do caso, do processo ou do debate em tom de notícia (júri, STJ, recurso, Ministério Público, fala no debate), sem chamada direta.",
+   "n": 129,
+   "pct": 29.4
+  },
+  "fora_escopo_homonimo": {
+   "nome": "Outro caso com o mesmo nome (homônimo)",
+   "definicao": "Publicação sobre outra vítima chamada Ana Clara (outras cidades, outros crimes). Serve para medir o ruído da coleta; não entra nos blocos.",
+   "n": 35,
+   "pct": 8.0
+  }
+ },
+ "publicacoes": 439,
+ "sem_categoria": {
+  "n": 111,
+  "pct": 25.3
+ },
+ "blocos": {
+  "incitacao": {
+   "categorias": [
+    "convite_busca",
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "associacao_crime"
+   ],
+   "n": 254,
+   "pct": 57.9
+  },
+  "reacao": {
+   "categorias": [
+    "contraponto_defesa",
+    "critica_uso_eleitoral",
+    "ironia_humor"
+   ],
+   "n": 39,
+   "pct": 8.9
+  },
+  "os_dois": {
+   "n": 29,
+   "pct": 6.6
+  }
+ },
+ "por_rede": {
+  "tiktok": {
+   "n": 439,
+   "categorias": {
+    "convite_busca": {
+     "n": 115,
+     "pct": 26.2
+    },
+    "acusacao_defesa_pm": {
+     "n": 95,
+     "pct": 21.6
+    },
+    "apelo_justica_vitima": {
+     "n": 143,
+     "pct": 32.6
+    },
+    "associacao_crime": {
+     "n": 18,
+     "pct": 4.1
+    },
+    "pedido_voto": {
+     "n": 38,
+     "pct": 8.7
+    },
+    "contraponto_defesa": {
+     "n": 33,
+     "pct": 7.5
+    },
+    "critica_uso_eleitoral": {
+     "n": 7,
+     "pct": 1.6
+    },
+    "ironia_humor": {
+     "n": 2,
+     "pct": 0.5
+    },
+    "informacao_noticia": {
+     "n": 129,
+     "pct": 29.4
+    },
+    "fora_escopo_homonimo": {
+     "n": 35,
+     "pct": 8.0
+    }
+   }
+  }
+ },
+ "por_termo": {
+  "tiktok · #casoanaclara": {
+   "n": 268,
+   "categorias": {
+    "convite_busca": {
+     "n": 16,
+     "pct": 6.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 50,
+     "pct": 18.7
+    },
+    "apelo_justica_vitima": {
+     "n": 97,
+     "pct": 36.2
+    },
+    "associacao_crime": {
+     "n": 10,
+     "pct": 3.7
+    },
+    "pedido_voto": {
+     "n": 22,
+     "pct": 8.2
+    },
+    "contraponto_defesa": {
+     "n": 27,
+     "pct": 10.1
+    },
+    "critica_uso_eleitoral": {
+     "n": 5,
+     "pct": 1.9
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 0.4
+    },
+    "informacao_noticia": {
+     "n": 87,
+     "pct": 32.5
+    },
+    "fora_escopo_homonimo": {
+     "n": 13,
+     "pct": 4.9
+    }
+   }
+  },
+  "tiktok · #pesquiseocasoanaclara": {
+   "n": 218,
+   "categorias": {
+    "convite_busca": {
+     "n": 107,
+     "pct": 49.1
+    },
+    "acusacao_defesa_pm": {
+     "n": 54,
+     "pct": 24.8
+    },
+    "apelo_justica_vitima": {
+     "n": 60,
+     "pct": 27.5
+    },
+    "associacao_crime": {
+     "n": 9,
+     "pct": 4.1
+    },
+    "pedido_voto": {
+     "n": 17,
+     "pct": 7.8
+    },
+    "contraponto_defesa": {
+     "n": 16,
+     "pct": 7.3
+    },
+    "critica_uso_eleitoral": {
+     "n": 3,
+     "pct": 1.4
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 0.5
+    },
+    "informacao_noticia": {
+     "n": 64,
+     "pct": 29.4
+    },
+    "fora_escopo_homonimo": {
+     "n": 27,
+     "pct": 12.4
+    }
+   }
+  }
+ },
+ "por_dia": {
+  "2021-07-28": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-01-17": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-11-18": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-01-03": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-08-06": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-10-27": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-01-04": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-01-12": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-01-15": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-01-16": {
+   "n": 2,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 2,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-01-17": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-01-18": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-02-01": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-03-16": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-03-17": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-05-02": {
+   "n": 2,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-05-03": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-05-05": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-05-06": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-05-08": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-05-15": {
+   "n": 2,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 2,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-06-01": {
+   "n": 2,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 2,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 2,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-06-13": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-06-17": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-06-19": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-06-25": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-06-26": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-06-29": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-09": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-10": {
+   "n": 5,
+   "categorias": {
+    "convite_busca": {
+     "n": 1,
+     "pct": 20.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 5,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 4,
+     "pct": 80.0
+    }
+   }
+  },
+  "2026-09-11": {
+   "n": 2,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 2,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-09-30": {
+   "n": 5,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 4,
+     "pct": 80.0
+    },
+    "apelo_justica_vitima": {
+     "n": 5,
+     "pct": 100.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 5,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-08": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-12": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-13": {
+   "n": 2,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 2,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-10-14": {
+   "n": 5,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 5,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-10-16": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-10-18": {
+   "n": 6,
+   "categorias": {
+    "convite_busca": {
+     "n": 2,
+     "pct": 33.3
+    },
+    "acusacao_defesa_pm": {
+     "n": 4,
+     "pct": 66.7
+    },
+    "apelo_justica_vitima": {
+     "n": 1,
+     "pct": 16.7
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 3,
+     "pct": 50.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-19": {
+   "n": 54,
+   "categorias": {
+    "convite_busca": {
+     "n": 19,
+     "pct": 35.2
+    },
+    "acusacao_defesa_pm": {
+     "n": 18,
+     "pct": 33.3
+    },
+    "apelo_justica_vitima": {
+     "n": 12,
+     "pct": 22.2
+    },
+    "associacao_crime": {
+     "n": 1,
+     "pct": 1.9
+    },
+    "pedido_voto": {
+     "n": 6,
+     "pct": 11.1
+    },
+    "contraponto_defesa": {
+     "n": 1,
+     "pct": 1.9
+    },
+    "critica_uso_eleitoral": {
+     "n": 1,
+     "pct": 1.9
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 10,
+     "pct": 18.5
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-20": {
+   "n": 49,
+   "categorias": {
+    "convite_busca": {
+     "n": 14,
+     "pct": 28.6
+    },
+    "acusacao_defesa_pm": {
+     "n": 25,
+     "pct": 51.0
+    },
+    "apelo_justica_vitima": {
+     "n": 22,
+     "pct": 44.9
+    },
+    "associacao_crime": {
+     "n": 4,
+     "pct": 8.2
+    },
+    "pedido_voto": {
+     "n": 2,
+     "pct": 4.1
+    },
+    "contraponto_defesa": {
+     "n": 18,
+     "pct": 36.7
+    },
+    "critica_uso_eleitoral": {
+     "n": 1,
+     "pct": 2.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 2.0
+    },
+    "informacao_noticia": {
+     "n": 22,
+     "pct": 44.9
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-21": {
+   "n": 43,
+   "categorias": {
+    "convite_busca": {
+     "n": 25,
+     "pct": 58.1
+    },
+    "acusacao_defesa_pm": {
+     "n": 7,
+     "pct": 16.3
+    },
+    "apelo_justica_vitima": {
+     "n": 14,
+     "pct": 32.6
+    },
+    "associacao_crime": {
+     "n": 2,
+     "pct": 4.7
+    },
+    "pedido_voto": {
+     "n": 3,
+     "pct": 7.0
+    },
+    "contraponto_defesa": {
+     "n": 2,
+     "pct": 4.7
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 8,
+     "pct": 18.6
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-22": {
+   "n": 35,
+   "categorias": {
+    "convite_busca": {
+     "n": 18,
+     "pct": 51.4
+    },
+    "acusacao_defesa_pm": {
+     "n": 4,
+     "pct": 11.4
+    },
+    "apelo_justica_vitima": {
+     "n": 13,
+     "pct": 37.1
+    },
+    "associacao_crime": {
+     "n": 3,
+     "pct": 8.6
+    },
+    "pedido_voto": {
+     "n": 4,
+     "pct": 11.4
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 3,
+     "pct": 8.6
+    },
+    "fora_escopo_homonimo": {
+     "n": 1,
+     "pct": 2.9
+    }
+   }
+  },
+  "2026-10-23": {
+   "n": 42,
+   "categorias": {
+    "convite_busca": {
+     "n": 14,
+     "pct": 33.3
+    },
+    "acusacao_defesa_pm": {
+     "n": 7,
+     "pct": 16.7
+    },
+    "apelo_justica_vitima": {
+     "n": 6,
+     "pct": 14.3
+    },
+    "associacao_crime": {
+     "n": 1,
+     "pct": 2.4
+    },
+    "pedido_voto": {
+     "n": 6,
+     "pct": 14.3
+    },
+    "contraponto_defesa": {
+     "n": 2,
+     "pct": 4.8
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 7,
+     "pct": 16.7
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-24": {
+   "n": 124,
+   "categorias": {
+    "convite_busca": {
+     "n": 20,
+     "pct": 16.1
+    },
+    "acusacao_defesa_pm": {
+     "n": 21,
+     "pct": 16.9
+    },
+    "apelo_justica_vitima": {
+     "n": 55,
+     "pct": 44.4
+    },
+    "associacao_crime": {
+     "n": 6,
+     "pct": 4.8
+    },
+    "pedido_voto": {
+     "n": 11,
+     "pct": 8.9
+    },
+    "contraponto_defesa": {
+     "n": 5,
+     "pct": 4.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 2,
+     "pct": 1.6
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 45,
+     "pct": 36.3
+    },
+    "fora_escopo_homonimo": {
+     "n": 2,
+     "pct": 1.6
+    }
+   }
+  },
+  "2026-10-25": {
+   "n": 13,
+   "categorias": {
+    "convite_busca": {
+     "n": 2,
+     "pct": 15.4
+    },
+    "acusacao_defesa_pm": {
+     "n": 2,
+     "pct": 15.4
+    },
+    "apelo_justica_vitima": {
+     "n": 5,
+     "pct": 38.5
+    },
+    "associacao_crime": {
+     "n": 1,
+     "pct": 7.7
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 7.7
+    },
+    "contraponto_defesa": {
+     "n": 3,
+     "pct": 23.1
+    },
+    "critica_uso_eleitoral": {
+     "n": 2,
+     "pct": 15.4
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 4,
+     "pct": 30.8
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-26": {
+   "n": 10,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 3,
+     "pct": 30.0
+    },
+    "apelo_justica_vitima": {
+     "n": 2,
+     "pct": 20.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 10.0
+    },
+    "contraponto_defesa": {
+     "n": 1,
+     "pct": 10.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 1,
+     "pct": 10.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 10.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-27": {
+   "n": 7,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 2,
+     "pct": 28.6
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 14.3
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 14.3
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 14.3
+    },
+    "fora_escopo_homonimo": {
+     "n": 2,
+     "pct": 28.6
+    }
+   }
+  },
+  "2026-10-28": {
+   "n": 1,
+   "categorias": {
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "acusacao_defesa_pm": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "apelo_justica_vitima": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "associacao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "contraponto_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_uso_eleitoral": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo_homonimo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  }
+ },
+ "pares": [
+  {
+   "a": "apelo_justica_vitima",
+   "b": "informacao_noticia",
+   "n": 81
+  },
+  {
+   "a": "acusacao_defesa_pm",
+   "b": "apelo_justica_vitima",
+   "n": 56
+  },
+  {
+   "a": "acusacao_defesa_pm",
+   "b": "informacao_noticia",
+   "n": 52
+  },
+  {
+   "a": "contraponto_defesa",
+   "b": "informacao_noticia",
+   "n": 30
+  },
+  {
+   "a": "apelo_justica_vitima",
+   "b": "convite_busca",
+   "n": 29
+  },
+  {
+   "a": "acusacao_defesa_pm",
+   "b": "convite_busca",
+   "n": 26
+  },
+  {
+   "a": "apelo_justica_vitima",
+   "b": "contraponto_defesa",
+   "n": 26
+  },
+  {
+   "a": "acusacao_defesa_pm",
+   "b": "contraponto_defesa",
+   "n": 24
+  },
+  {
+   "a": "convite_busca",
+   "b": "informacao_noticia",
+   "n": 17
+  },
+  {
+   "a": "fora_escopo_homonimo",
+   "b": "informacao_noticia",
+   "n": 16
+  },
+  {
+   "a": "convite_busca",
+   "b": "pedido_voto",
+   "n": 13
+  },
+  {
+   "a": "apelo_justica_vitima",
+   "b": "pedido_voto",
+   "n": 12
+  },
+  {
+   "a": "acusacao_defesa_pm",
+   "b": "pedido_voto",
+   "n": 9
+  },
+  {
+   "a": "acusacao_defesa_pm",
+   "b": "associacao_crime",
+   "n": 8
+  },
+  {
+   "a": "associacao_crime",
+   "b": "convite_busca",
+   "n": 8
+  }
+ ],
+ "exemplos_contas_10mil": {
+  "convite_busca": [
+   {
+    "rede": "tiktok",
+    "conta": "gohanplz",
+    "seguidores": 1700000,
+    "data": "2026-10-22",
+    "url": "https://www.tiktok.com/@gohanplz/video/7699491218488691976",
+    "trecho": "tam mais alto nao acredita na historia procure no google caso ana clara e flavio bolsonaro no dia 25 vote 13 pe"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "samiabomfim",
+    "seguidores": 1000000,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@samiabomfim/video/7700064182116338964",
+    "trecho": "pela vida das mulheres pesquise no google flavio bolsonaro e ana clara"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "prof.santana",
+    "seguidores": 495800,
+    "data": "2026-10-19",
+    "url": "https://www.tiktok.com/@prof.santana/video/7698468846658719028",
+    "trecho": "buscas por flavio bolsonaro e ana clara disparam no google por que um senador da republica foi defender o po"
+   }
+  ],
+  "acusacao_defesa_pm": [
+   {
+    "rede": "tiktok",
+    "conta": "lulaoficial",
+    "seguidores": 6200000,
+    "data": "2026-09-30",
+    "url": "https://www.tiktok.com/@lulaoficial/video/7691468872863517973",
+    "trecho": "io bolsonaro ele chegou a assinar um recurso para tentar reverter a decisao que levaria o caso ao tribunal do juri"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "uol",
+    "seguidores": 2800000,
+    "data": "2026-10-19",
+    "url": "https://www.tiktok.com/@uol/video/7698351202949614866",
+    "trecho": "es machado de 5 anos em niteroi rj em 2021 flavio assinou recurso ao stj tentando reverter decisao que levou o caso"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "a_pior_influencer",
+    "seguidores": 2000000,
+    "data": "2026-10-21",
+    "url": "https://www.tiktok.com/@a_pior_influencer/video/7699231716409412884",
+    "trecho": "bolsonaro pq um candidato a presidencia ajudou a defender um policial acusado de mat uma crianca de 5 anos #eladeveriae"
+   }
+  ],
+  "apelo_justica_vitima": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17800000,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7700070250661825798",
+    "trecho": "mae de ana clara reage a fala de #flavio em debate da globo mentir"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "lulaoficial",
+    "seguidores": 6200000,
+    "data": "2026-09-30",
+    "url": "https://www.tiktok.com/@lulaoficial/video/7691468872863517973",
+    "trecho": "epoimento emocionante de cristiane gomes da silva mae de ana clara ela ainda chora pela filha e espera por justica p"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "uol",
+    "seguidores": 2800000,
+    "data": "2026-10-19",
+    "url": "https://www.tiktok.com/@uol/video/7698351202949614866",
+    "trecho": "litar acusado de matar ana clara gomes machado de 5 anos em niteroi rj em 2021 flavio assinou recurso ao s"
+   }
+  ],
+  "associacao_crime": [
+   {
+    "rede": "tiktok",
+    "conta": "nandaomusico2",
+    "seguidores": 76800,
+    "data": "2026-10-23",
+    "url": "https://www.tiktok.com/@nandaomusico2/video/7699672475268926740",
+    "trecho": "acreditar mas ha mulheres apoiando quem defendeu miliciano no caso ana clara e ainda e contra os proprios di"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "ivan_leandrof",
+    "seguidores": 44100,
+    "data": "2026-10-21",
+    "url": "https://www.tiktok.com/@ivan_leandrof/video/7699201205494730005",
+    "trecho": "nte pelo o cv ajudar do lado dos irmaos rodrigues milicianos de estimacao que ameacavam a comunidade se nao vo"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "politica.do.povo2",
+    "seguidores": 41300,
+    "data": "2026-10-23",
+    "url": "https://www.tiktok.com/@politica.do.povo2/video/7699878359479684359",
+    "trecho": "x #flaviobolsonaro #flaviobolsonarocasoanaclara #flaviobolsonaromiliciano"
+   }
+  ],
+  "pedido_voto": [
+   {
+    "rede": "tiktok",
+    "conta": "gohanplz",
+    "seguidores": 1700000,
+    "data": "2026-10-22",
+    "url": "https://www.tiktok.com/@gohanplz/video/7699491218488691976",
+    "trecho": "oogle caso ana clara e flavio bolsonaro no dia 25 vote 13 pela democracia e por justica por ana clara"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "plocsocial",
+    "seguidores": 209800,
+    "data": "2026-10-19",
+    "url": "https://www.tiktok.com/@plocsocial/video/7698525896709557511",
+    "trecho": "#abreosigiloflavio #exercitodolula #casoanaclara #boralula #riodejaneiro"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "renatasouzario",
+    "seguidores": 128000,
+    "data": "2026-10-21",
+    "url": "https://www.tiktok.com/@renatasouzario/video/7699243417473223943",
+    "trecho": "da no domingo precisamos defender nossas criancas vote 13"
+   }
+  ],
+  "contraponto_defesa": [
+   {
+    "rede": "tiktok",
+    "conta": "redetvt",
+    "seguidores": 783800,
+    "data": "2026-10-21",
+    "url": "https://www.tiktok.com/@redetvt/video/7699229864548650261",
+    "trecho": "l do policial e nao foram encontrados indicios de confronto armado no local #redetvt #tvtnews #anaclara #viol"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "marcelofreixo",
+    "seguidores": 268500,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@marcelofreixo/video/7700100508341619976",
+    "trecho": "dele em toda a regiao da cena do crime nao houve confronto nao houve tiroteio e inacreditavel o desrespeito"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "portalriodejaneiro",
+    "seguidores": 163800,
+    "data": "2026-10-20",
+    "url": "https://www.tiktok.com/@portalriodejaneiro/video/7698744742967807264",
+    "trecho": "flavio sobre sua atuacao no caso todo acusado tem direito a defesa mas a familia de ana clara tambem tem direito a j"
+   }
+  ],
+  "critica_uso_eleitoral": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17800000,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7700070250661825798",
+    "trecho": "clara reage a fala de #flavio em debate da globo mentiroso #metropoles reproducao"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "marasilva.silva",
+    "seguidores": 113000,
+    "data": "2026-10-20",
+    "url": "https://www.tiktok.com/@marasilva.silva/video/7698705338379422994",
+    "trecho": "entos e voces gados da direita antes de dizer que e mentira se deem ao trabalho de pesquisar #casoanaclara #f"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "direita.brasil._",
+    "seguidores": 42900,
+    "data": "2026-10-25",
+    "url": "https://www.tiktok.com/@direita.brasil._/video/7700616844058643733",
+    "trecho": "u se a acusacao e verdadeira ou falsa juri decide palanque nao qual e a sua opiniao sobre esse caso comenta"
+   }
+  ],
+  "ironia_humor": [
+   {
+    "rede": "tiktok",
+    "conta": "micheliannaclara",
+    "seguidores": 120500,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@micheliannaclara/video/7701497557813398804",
+    "trecho": "adas e vc falou mamae tem ate pintinho com oculos kkk me lembro cada detalhe da nossa conversa e a sua"
+   }
+  ],
+  "informacao_noticia": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7700042159403191573",
+    "trecho": "e o senador ter participado da defesa do policial acusado de ass4ssinar a crianca #metropoles reproducao"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17800000,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7700054846204022023",
+    "trecho": "#flavio diz acreditar na #inocencia de #pm acusado de matar #anaclara #metropoles tv globo"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17800000,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7700070250661825798",
+    "trecho": "mae de ana clara reage a fala de #flavio em debate da globo mentiroso #metropoles reproducao"
+   }
+  ],
+  "fora_escopo_homonimo": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17700000,
+    "data": "2026-01-12",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7594564044896455943",
+    "trecho": "de buscas investigadores e militares do corpo de #bombeiros do #riodejaneiro encontraram no ultimo sabado 10"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17700000,
+    "data": "2026-10-14",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7696465498820709652",
+    "trecho": "morreu no ultimo domingo 11 enquanto estava com o namorado na residencia de um amigo a versao apresentada po"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "ehgiulia",
+    "seguidores": 2100000,
+    "data": "2026-10-22",
+    "url": "https://www.tiktok.com/@ehgiulia/video/7699535785955134727",
+    "trecho": "justica por ana clara #truecrime #historiasbizarras #casosreais #fy #anaclaramacha"
+   }
+  ]
+ },
+ "amostra_humana": {
+  "arquivo_privado": "casos/005/codificacao/amostra_bardin_v2.csv",
+  "publicacoes": 200,
+  "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"
+ },
+ "chd_palavras": {
+  "comentarios": 439,
+  "autores": 397,
+  "respostas": 0,
+  "por_dia": {
+   "2021-07-28": 1,
+   "2023-01-17": 1,
+   "2023-11-18": 1,
+   "2025-01-03": 1,
+   "2025-08-06": 1,
+   "2025-10-27": 1,
+   "2026-01-04": 1,
+   "2026-01-12": 1,
+   "2026-01-15": 1,
+   "2026-01-16": 2,
+   "2026-01-17": 1,
+   "2026-01-18": 1,
+   "2026-02-01": 1,
+   "2026-03-16": 1,
+   "2026-03-17": 1,
+   "2026-05-02": 2,
+   "2026-05-03": 1,
+   "2026-05-05": 1,
+   "2026-05-06": 1,
+   "2026-05-08": 1,
+   "2026-05-15": 2,
+   "2026-06-01": 2,
+   "2026-06-13": 1,
+   "2026-06-17": 1,
+   "2026-06-19": 1,
+   "2026-06-25": 1,
+   "2026-06-26": 1,
+   "2026-06-29": 1,
+   "2026-09-09": 1,
+   "2026-09-10": 5,
+   "2026-09-11": 2,
+   "2026-09-30": 5,
+   "2026-10-08": 1,
+   "2026-10-12": 1,
+   "2026-10-13": 2,
+   "2026-10-14": 5,
+   "2026-10-16": 1,
+   "2026-10-18": 6,
+   "2026-10-19": 54,
+   "2026-10-20": 49,
+   "2026-10-21": 43,
+   "2026-10-22": 35,
+   "2026-10-23": 42,
+   "2026-10-24": 124,
+   "2026-10-25": 13,
+   "2026-10-26": 10,
+   "2026-10-27": 7,
+   "2026-10-28": 1
+  },
+  "temas": {},
+  "temas_regex": {},
+  "palavras": [
+   [
+    "clara",
+    409
+   ],
+   [
+    "ana",
+    404
+   ],
+   [
+    "caso",
+    317
+   ],
+   [
+    "flávio",
+    202
+   ],
+   [
+    "casoanaclara",
+    169
+   ],
+   [
+    "bolsonaro",
+    160
+   ],
+   [
+    "anos",
+    159
+   ],
+   [
+    "policial",
+    145
+   ],
+   [
+    "justiça",
+    135
+   ],
+   [
+    "lula",
+    115
+   ],
+   [
+    "acusado",
+    94
+   ],
+   [
+    "defesa",
+    87
+   ],
+   [
+    "mãe",
+    79
+   ],
+   [
+    "debate",
+    73
+   ],
+   [
+    "flaviobolsonaro",
+    72
+   ],
+   [
+    "brasil",
+    68
+   ],
+   [
+    "menina",
+    66
+   ],
+   [
+    "anaclara",
+    65
+   ],
+   [
+    "família",
+    61
+   ],
+   [
+    "julgamento",
+    60
+   ],
+   [
+    "durante",
+    57
+   ],
+   [
+    "niterói",
+    57
+   ],
+   [
+    "recurso",
+    57
+   ],
+   [
+    "criança",
+    50
+   ],
+   [
+    "decisão",
+    48
+   ],
+   [
+    "pesquise",
+    48
+   ],
+   [
+    "júri",
+    48
+   ],
+   [
+    "google",
+    46
+   ],
+   [
+    "ainda",
+    43
+   ],
+   [
+    "direito",
+    42
+   ],
+   [
+    "fuzil",
+    41
+   ],
+   [
+    "justiçaporanaclara",
+    40
+   ],
+   [
+    "senador",
+    39
+   ],
+   [
+    "abreosigiloflavio",
+    39
+   ],
+   [
+    "eleicoes",
+    39
+   ],
+   [
+    "segundo",
+    36
+   ],
+   [
+    "vida",
+    36
+   ],
+   [
+    "apenas",
+    36
+   ],
+   [
+    "gomes",
+    35
+   ],
+   [
+    "stj",
+    35
+   ]
+  ],
+  "rede_palavras": {
+   "desenho": {
+    "nos": [
+     {
+      "id": "caso",
+      "rotulo": "caso",
+      "tipo": "palavra",
+      "n": 228,
+      "grupo": 1,
+      "x": 0.7856,
+      "y": 0.9775
+     },
+     {
+      "id": "local",
+      "rotulo": "local",
+      "tipo": "palavra",
+      "n": 21,
+      "grupo": 0,
+      "x": 1.074,
+      "y": 1.2747
+     },
+     {
+      "id": "vida",
+      "rotulo": "vida",
+      "tipo": "palavra",
+      "n": 35,
+      "grupo": 0,
+      "x": 0.8941,
+      "y": 1.2721
+     },
+     {
+      "id": "defesa",
+      "rotulo": "defesa",
+      "tipo": "palavra",
+      "n": 42,
+      "grupo": 1,
+      "x": 1.0169,
+      "y": 0.8996
+     },
+     {
+      "id": "filha",
+      "rotulo": "filha",
+      "tipo": "palavra",
+      "n": 16,
+      "grupo": 1,
+      "x": 0.418,
+      "y": 0.4506
+     },
+     {
+      "id": "reverter",
+      "rotulo": "reverter",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 0,
+      "x": 1.1661,
+      "y": 0.8909
+     },
+     {
+      "id": "cobrou",
+      "rotulo": "cobrou",
+      "tipo": "palavra",
+      "n": 20,
+      "grupo": 0,
+      "x": 1.0674,
+      "y": 1.2869
+     },
+     {
+      "id": "justica",
+      "rotulo": "justica",
+      "tipo": "palavra",
+      "n": 81,
+      "grupo": 1,
+      "x": 0.8213,
+      "y": 1.0658
+     },
+     {
+      "id": "direito",
+      "rotulo": "direito",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 0,
+      "x": 1.1908,
+      "y": 1.1389
+     },
+     {
+      "id": "debate",
+      "rotulo": "debate",
+      "tipo": "palavra",
+      "n": 45,
+      "grupo": 1,
+      "x": 1.0923,
+      "y": 0.8674
+     },
+     {
+      "id": "globo",
+      "rotulo": "globo",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 1,
+      "x": 0.7723,
+      "y": 0.3373
+     },
+     {
+      "id": "morreu",
+      "rotulo": "morreu",
+      "tipo": "palavra",
+      "n": 27,
+      "grupo": 0,
+      "x": 0.9252,
+      "y": 1.2564
+     },
+     {
+      "id": "julgamento",
+      "rotulo": "julgamento",
+      "tipo": "palavra",
+      "n": 36,
+      "grupo": 0,
+      "x": 0.9912,
+      "y": 1.075
+     },
+     {
+      "id": "atingida",
+      "rotulo": "atingida",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 0,
+      "x": 1.1738,
+      "y": 0.763
+     },
+     {
+      "id": "apenas",
+      "rotulo": "apenas",
+      "tipo": "palavra",
+      "n": 35,
+      "grupo": 0,
+      "x": 1.0706,
+      "y": 0.762
+     },
+     {
+      "id": "ministerio",
+      "rotulo": "ministerio",
+      "tipo": "palavra",
+      "n": 24,
+      "grupo": 0,
+      "x": 1.0262,
+      "y": 1.2401
+     },
+     {
+      "id": "entra",
+      "rotulo": "entra",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 0.9905,
+      "y": 1.3377
+     },
+     {
+      "id": "lula",
+      "rotulo": "lula",
+      "tipo": "palavra",
+      "n": 37,
+      "grupo": 0,
+      "x": 1.0247,
+      "y": 1.1042
+     },
+     {
+      "id": "casa",
+      "rotulo": "casa",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 1,
+      "x": 0.4094,
+      "y": 0.7928
+     },
+     {
+      "id": "tribunal",
+      "rotulo": "tribunal",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 0,
+      "x": 1.1687,
+      "y": 0.8848
+     },
+     {
+      "id": "continua",
+      "rotulo": "continua",
+      "tipo": "palavra",
+      "n": 21,
+      "grupo": 0,
+      "x": 1.3083,
+      "y": 1.1063
+     },
+     {
+      "id": "jovem",
+      "rotulo": "jovem",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 1,
+      "x": 0.0561,
+      "y": 1.241
+     },
+     {
+      "id": "demora",
+      "rotulo": "demora",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 1.3763,
+      "y": 1.1098
+     },
+     {
+      "id": "advogado",
+      "rotulo": "advogado",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 1,
+      "x": 0.5918,
+      "y": 0.668
+     },
+     {
+      "id": "armado",
+      "rotulo": "armado",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.2073,
+      "y": 1.3182
+     },
+     {
+      "id": "integrou",
+      "rotulo": "integrou",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 0,
+      "x": 1.1274,
+      "y": 1.1872
+     },
+     {
+      "id": "tentar",
+      "rotulo": "tentar",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 0,
+      "x": 1.2332,
+      "y": 1.0615
+     },
+     {
+      "id": "senador",
+      "rotulo": "senador",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 0,
+      "x": 0.9652,
+      "y": 0.8137
+     },
+     {
+      "id": "segundo",
+      "rotulo": "segundo",
+      "tipo": "palavra",
+      "n": 36,
+      "grupo": 0,
+      "x": 0.8244,
+      "y": 1.1777
+     },
+     {
+      "id": "crianca",
+      "rotulo": "crianca",
+      "tipo": "palavra",
+      "n": 47,
+      "grupo": 1,
+      "x": 0.9126,
+      "y": 1.0072
+     },
+     {
+      "id": "flavio",
+      "rotulo": "flavio",
+      "tipo": "palavra",
+      "n": 141,
+      "grupo": 1,
+      "x": 0.8168,
+      "y": 0.8914
+     },
+     {
+      "id": "precisou",
+      "rotulo": "precisou",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 1.3214,
+      "y": 1.1209
+     },
+     {
+      "id": "criminal",
+      "rotulo": "criminal",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.1317,
+      "y": 1.354
+     },
+     {
+      "id": "tiro",
+      "rotulo": "tiro",
+      "tipo": "palavra",
+      "n": 24,
+      "grupo": 0,
+      "x": 1.2387,
+      "y": 0.9156
+     },
+     {
+      "id": "acusado",
+      "rotulo": "acusado",
+      "tipo": "palavra",
+      "n": 53,
+      "grupo": 1,
+      "x": 0.9033,
+      "y": 0.8229
+     },
+     {
+      "id": "confronto",
+      "rotulo": "confronto",
+      "tipo": "palavra",
+      "n": 23,
+      "grupo": 0,
+      "x": 1.2737,
+      "y": 0.8361
+     },
+     {
+      "id": "acao",
+      "rotulo": "acao",
+      "tipo": "palavra",
+      "n": 21,
+      "grupo": 0,
+      "x": 1.3318,
+      "y": 0.9518
+     },
+     {
+      "id": "depende",
+      "rotulo": "depende",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 1.3609,
+      "y": 1.0371
+     },
+     {
+      "id": "idade",
+      "rotulo": "idade",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 1.4067,
+      "y": 1.0165
+     },
+     {
+      "id": "esperando",
+      "rotulo": "esperando",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.3445,
+      "y": 0.9472
+     },
+     {
+      "id": "rio",
+      "rotulo": "rio",
+      "tipo": "palavra",
+      "n": 33,
+      "grupo": 0,
+      "x": 1.0077,
+      "y": 1.1967
+     },
+     {
+      "id": "ana",
+      "rotulo": "ana",
+      "tipo": "palavra",
+      "n": 288,
+      "grupo": 1,
+      "x": 0.8064,
+      "y": 0.9581
+     },
+     {
+      "id": "relatou",
+      "rotulo": "relatou",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.4018,
+      "y": 1.1003
+     },
+     {
+      "id": "niteroi",
+      "rotulo": "niteroi",
+      "tipo": "palavra",
+      "n": 37,
+      "grupo": 0,
+      "x": 0.9812,
+      "y": 0.9674
+     },
+     {
+      "id": "responsabilidade",
+      "rotulo": "responsabilidade",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.1981,
+      "y": 1.2189
+     },
+     {
+      "id": "havia",
+      "rotulo": "havia",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 1.2288,
+      "y": 1.2245
+     },
+     {
+      "id": "decisao",
+      "rotulo": "decisao",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 0,
+      "x": 1.0784,
+      "y": 1.0238
+     },
+     {
+      "id": "mae",
+      "rotulo": "mae",
+      "tipo": "palavra",
+      "n": 64,
+      "grupo": 1,
+      "x": 0.8768,
+      "y": 0.9008
+     },
+     {
+      "id": "socorro",
+      "rotulo": "socorro",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.3773,
+      "y": 0.8959
+     },
+     {
+      "id": "durante",
+      "rotulo": "durante",
+      "tipo": "palavra",
+      "n": 37,
+      "grupo": 0,
+      "x": 1.0363,
+      "y": 0.7776
+     },
+     {
+      "id": "menina",
+      "rotulo": "menina",
+      "tipo": "palavra",
+      "n": 59,
+      "grupo": 1,
+      "x": 0.9759,
+      "y": 0.959
+     },
+     {
+      "id": "stj",
+      "rotulo": "stj",
+      "tipo": "palavra",
+      "n": 32,
+      "grupo": 0,
+      "x": 0.8993,
+      "y": 1.1497
+     },
+     {
+      "id": "presidencial",
+      "rotulo": "presidencial",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 0,
+      "x": 1.1738,
+      "y": 0.7705
+     },
+     {
+      "id": "google",
+      "rotulo": "google",
+      "tipo": "palavra",
+      "n": 44,
+      "grupo": 1,
+      "x": 0.199,
+      "y": 1.0431
+     },
+     {
+      "id": "judicial",
+      "rotulo": "judicial",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 1.2913,
+      "y": 1.2869
+     },
+     {
+      "id": "gomes",
+      "rotulo": "gomes",
+      "tipo": "palavra",
+      "n": 33,
+      "grupo": 0,
+      "x": 0.9012,
+      "y": 1.092
+     },
+     {
+      "id": "assinou",
+      "rotulo": "assinou",
+      "tipo": "palavra",
+      "n": 30,
+      "grupo": 0,
+      "x": 1.1191,
+      "y": 0.8203
+     },
+     {
+      "id": "atuacao",
+      "rotulo": "atuacao",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 0,
+      "x": 1.2083,
+      "y": 1.0051
+     },
+     {
+      "id": "brasil",
+      "rotulo": "brasil",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 1,
+      "x": 0.1815,
+      "y": 0.5317
+     },
+     {
+      "id": "recurso",
+      "rotulo": "recurso",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 0,
+      "x": 0.9601,
+      "y": 0.8967
+     },
+     {
+      "id": "interrompida",
+      "rotulo": "interrompida",
+      "tipo": "palavra",
+      "n": 19,
+      "grupo": 0,
+      "x": 1.2016,
+      "y": 1.2807
+     },
+     {
+      "id": "determinou",
+      "rotulo": "determinou",
+      "tipo": "palavra",
+      "n": 20,
+      "grupo": 0,
+      "x": 1.3034,
+      "y": 1.2156
+     },
+     {
+      "id": "fuzil",
+      "rotulo": "fuzil",
+      "tipo": "palavra",
+      "n": 39,
+      "grupo": 0,
+      "x": 0.9727,
+      "y": 0.7766
+     },
+     {
+      "id": "implorar",
+      "rotulo": "implorar",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.1266,
+      "y": 1.3533
+     },
+     {
+      "id": "negado",
+      "rotulo": "negado",
+      "tipo": "palavra",
+      "n": 24,
+      "grupo": 0,
+      "x": 1.2421,
+      "y": 0.8289
+     },
+     {
+      "id": "julgado",
+      "rotulo": "julgado",
+      "tipo": "palavra",
+      "n": 31,
+      "grupo": 0,
+      "x": 0.9336,
+      "y": 1.1515
+     },
+     {
+      "id": "pensa",
+      "rotulo": "pensa",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 0,
+      "x": 1.3468,
+      "y": 1.2206
+     },
+     {
+      "id": "clara",
+      "rotulo": "clara",
+      "tipo": "palavra",
+      "n": 289,
+      "grupo": 1,
+      "x": 0.7807,
+      "y": 0.9607
+     },
+     {
+      "id": "pesquise",
+      "rotulo": "pesquise",
+      "tipo": "palavra",
+      "n": 48,
+      "grupo": 1,
+      "x": 0.2896,
+      "y": 0.9096
+     },
+     {
+      "id": "publico",
+      "rotulo": "publico",
+      "tipo": "palavra",
+      "n": 27,
+      "grupo": 0,
+      "x": 1.1793,
+      "y": 1.0328
+     },
+     {
+      "id": "familia",
+      "rotulo": "familia",
+      "tipo": "palavra",
+      "n": 38,
+      "grupo": 0,
+      "x": 0.8402,
+      "y": 1.0809
+     },
+     {
+      "id": "machado",
+      "rotulo": "machado",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 0,
+      "x": 0.9116,
+      "y": 1.1705
+     },
+     {
+      "id": "juri",
+      "rotulo": "juri",
+      "tipo": "palavra",
+      "n": 37,
+      "grupo": 0,
+      "x": 1.0487,
+      "y": 0.8332
+     },
+     {
+      "id": "bolsonaro",
+      "rotulo": "bolsonaro",
+      "tipo": "palavra",
+      "n": 116,
+      "grupo": 1,
+      "x": 0.8771,
+      "y": 0.9667
+     },
+     {
+      "id": "pesquisem",
+      "rotulo": "pesquisem",
+      "tipo": "palavra",
+      "n": 28,
+      "grupo": 1,
+      "x": 0.0,
+      "y": 0.8538
+     },
+     {
+      "id": "disparo",
+      "rotulo": "disparo",
+      "tipo": "palavra",
+      "n": 29,
+      "grupo": 0,
+      "x": 1.0872,
+      "y": 1.1024
+     },
+     {
+      "id": "policial",
+      "rotulo": "policial",
+      "tipo": "palavra",
+      "n": 69,
+      "grupo": 1,
+      "x": 0.8821,
+      "y": 0.8584
+     },
+     {
+      "id": "cinco",
+      "rotulo": "cinco",
+      "tipo": "palavra",
+      "n": 25,
+      "grupo": 0,
+      "x": 1.2372,
+      "y": 0.9343
+     },
+     {
+      "id": "explicacoes",
+      "rotulo": "explicacoes",
+      "tipo": "palavra",
+      "n": 19,
+      "grupo": 0,
+      "x": 1.3407,
+      "y": 0.8634
+     },
+     {
+      "id": "militar",
+      "rotulo": "militar",
+      "tipo": "palavra",
+      "n": 21,
+      "grupo": 1,
+      "x": 0.685,
+      "y": 0.5257
+     }
+    ],
+    "arestas": [
+     [
+      "caso",
+      "ana",
+      224
+     ],
+     [
+      "caso",
+      "clara",
+      224
+     ],
+     [
+      "caso",
+      "durante",
+      35
+     ],
+     [
+      "caso",
+      "rio",
+      30
+     ],
+     [
+      "caso",
+      "menina",
+      47
+     ],
+     [
+      "caso",
+      "casa",
+      19
+     ],
+     [
+      "caso",
+      "familia",
+      32
+     ],
+     [
+      "caso",
+      "filha",
+      7
+     ],
+     [
+      "caso",
+      "jovem",
+      13
+     ],
+     [
+      "caso",
+      "mae",
+      43
+     ],
+     [
+      "caso",
+      "publico",
+      27
+     ],
+     [
+      "caso",
+      "segundo",
+      34
+     ],
+     [
+      "caso",
+      "continua",
+      21
+     ],
+     [
+      "caso",
+      "crianca",
+      35
+     ],
+     [
+      "caso",
+      "justica",
+      52
+     ],
+     [
+      "caso",
+      "local",
+      21
+     ],
+     [
+      "caso",
+      "morreu",
+      23
+     ],
+     [
+      "caso",
+      "socorro",
+      18
+     ],
+     [
+      "caso",
+      "acao",
+      20
+     ],
+     [
+      "caso",
+      "ministerio",
+      24
+     ],
+     [
+      "caso",
+      "vida",
+      28
+     ],
+     [
+      "caso",
+      "decisao",
+      30
+     ],
+     [
+      "caso",
+      "acusado",
+      43
+     ],
+     [
+      "caso",
+      "atuacao",
+      25
+     ],
+     [
+      "caso",
+      "pesquise",
+      46
+     ],
+     [
+      "caso",
+      "apenas",
+      30
+     ],
+     [
+      "caso",
+      "brasil",
+      10
+     ],
+     [
+      "caso",
+      "policial",
+      53
+     ],
+     [
+      "caso",
+      "advogado",
+      15
+     ],
+     [
+      "caso",
+      "atingida",
+      25
+     ],
+     [
+      "caso",
+      "bolsonaro",
+      95
+     ],
+     [
+      "caso",
+      "cinco",
+      21
+     ],
+     [
+      "caso",
+      "flavio",
+      108
+     ],
+     [
+      "caso",
+      "fuzil",
+      33
+     ],
+     [
+      "caso",
+      "gomes",
+      32
+     ],
+     [
+      "caso",
+      "julgamento",
+      31
+     ],
+     [
+      "caso",
+      "machado",
+      26
+     ],
+     [
+      "caso",
+      "militar",
+      13
+     ],
+     [
+      "caso",
+      "senador",
+      32
+     ],
+     [
+      "caso",
+      "assinou",
+      30
+     ],
+     [
+      "caso",
+      "defesa",
+      38
+     ],
+     [
+      "caso",
+      "determinou",
+      20
+     ],
+     [
+      "caso",
+      "disparo",
+      26
+     ],
+     [
+      "caso",
+      "integrou",
+      21
+     ],
+     [
+      "caso",
+      "julgado",
+      28
+     ],
+     [
+      "caso",
+      "juri",
+      35
+     ],
+     [
+      "caso",
+      "lula",
+      32
+     ],
+     [
+      "caso",
+      "recurso",
+      34
+     ],
+     [
+      "caso",
+      "reverter",
+      25
+     ],
+     [
+      "caso",
+      "stj",
+      32
+     ],
+     [
+      "caso",
+      "tentar",
+      23
+     ],
+     [
+      "caso",
+      "niteroi",
+      36
+     ],
+     [
+      "caso",
+      "tribunal",
+      24
+     ],
+     [
+      "caso",
+      "interrompida",
+      19
+     ],
+     [
+      "caso",
+      "google",
+      35
+     ],
+     [
+      "caso",
+      "pesquisem",
+      24
+     ],
+     [
+      "caso",
+      "esperando",
+      18
+     ],
+     [
+      "caso",
+      "debate",
+      34
+     ],
+     [
+      "caso",
+      "direito",
+      22
+     ],
+     [
+      "caso",
+      "negado",
+      24
+     ],
+     [
+      "caso",
+      "cobrou",
+      19
+     ],
+     [
+      "caso",
+      "explicacoes",
+      19
+     ],
+     [
+      "caso",
+      "presidencial",
+      22
+     ],
+     [
+      "caso",
+      "tiro",
+      24
+     ],
+     [
+      "caso",
+      "armado",
+      18
+     ],
+     [
+      "caso",
+      "confronto",
+      21
+     ],
+     [
+      "caso",
+      "criminal",
+      18
+     ],
+     [
+      "caso",
+      "demora",
+      17
+     ],
+     [
+      "caso",
+      "depende",
+      17
+     ],
+     [
+      "caso",
+      "entra",
+      18
+     ],
+     [
+      "caso",
+      "havia",
+      17
+     ],
+     [
+      "caso",
+      "idade",
+      17
+     ],
+     [
+      "caso",
+      "implorar",
+      17
+     ],
+     [
+      "caso",
+      "judicial",
+      17
+     ],
+     [
+      "caso",
+      "pensa",
+      17
+     ],
+     [
+      "caso",
+      "precisou",
+      17
+     ],
+     [
+      "caso",
+      "relatou",
+      17
+     ],
+     [
+      "caso",
+      "responsabilidade",
+      18
+     ],
+     [
+      "caso",
+      "globo",
+      11
+     ],
+     [
+      "local",
+      "casa",
+      3
+     ],
+     [
+      "local",
+      "clara",
+      21
+     ],
+     [
+      "local",
+      "continua",
+      18
+     ],
+     [
+      "local",
+      "crianca",
+      18
+     ],
+     [
+      "local",
+      "familia",
+      19
+     ],
+     [
+      "local",
+      "justica",
+      20
+     ],
+     [
+      "local",
+      "morreu",
+      18
+     ],
+     [
+      "local",
+      "socorro",
+      18
+     ],
+     [
+      "local",
+      "ana",
+      20
+     ],
+     [
+      "local",
+      "rio",
+      19
+     ],
+     [
+      "local",
+      "segundo",
+      19
+     ],
+     [
+      "local",
+      "vida",
+      19
+     ],
+     [
+      "local",
+      "acao",
+      18
+     ],
+     [
+      "local",
+      "acusado",
+      19
+     ],
+     [
+      "local",
+      "apenas",
+      17
+     ],
+     [
+      "local",
+      "armado",
+      18
+     ],
+     [
+      "local",
+      "assinou",
+      19
+     ],
+     [
+      "local",
+      "atingida",
+      19
+     ],
+     [
+      "local",
+      "atuacao",
+      17
+     ],
+     [
+      "local",
+      "bolsonaro",
+      19
+     ],
+     [
+      "local",
+      "cinco",
+      18
+     ],
+     [
+      "local",
+      "cobrou",
+      17
+     ],
+     [
+      "local",
+      "confronto",
+      18
+     ],
+     [
+      "local",
+      "criminal",
+      17
+     ],
+     [
+      "local",
+      "debate",
+      17
+     ],
+     [
+      "local",
+      "decisao",
+      18
+     ],
+     [
+      "local",
+      "defesa",
+      19
+     ],
+     [
+      "local",
+      "demora",
+      17
+     ],
+     [
+      "local",
+      "depende",
+      17
+     ],
+     [
+      "local",
+      "determinou",
+      17
+     ],
+     [
+      "local",
+      "direito",
+      17
+     ],
+     [
+      "local",
+      "disparo",
+      18
+     ],
+     [
+      "local",
+      "durante",
+      19
+     ],
+     [
+      "local",
+      "entra",
+      17
+     ],
+     [
+      "local",
+      "esperando",
+      17
+     ],
+     [
+      "local",
+      "explicacoes",
+      17
+     ],
+     [
+      "local",
+      "flavio",
+      19
+     ],
+     [
+      "local",
+      "fuzil",
+      19
+     ],
+     [
+      "local",
+      "gomes",
+      18
+     ],
+     [
+      "local",
+      "havia",
+      17
+     ],
+     [
+      "local",
+      "idade",
+      17
+     ],
+     [
+      "local",
+      "implorar",
+      17
+     ],
+     [
+      "local",
+      "integrou",
+      19
+     ],
+     [
+      "local",
+      "interrompida",
+      18
+     ],
+     [
+      "local",
+      "judicial",
+      17
+     ],
+     [
+      "local",
+      "julgado",
+      17
+     ],
+     [
+      "local",
+      "julgamento",
+      18
+     ],
+     [
+      "local",
+      "juri",
+      19
+     ],
+     [
+      "local",
+      "lula",
+      18
+     ],
+     [
+      "local",
+      "machado",
+      18
+     ],
+     [
+      "local",
+      "mae",
+      18
+     ],
+     [
+      "local",
+      "menina",
+      19
+     ],
+     [
+      "local",
+      "ministerio",
+      18
+     ],
+     [
+      "local",
+      "negado",
+      17
+     ],
+     [
+      "local",
+      "niteroi",
+      19
+     ],
+     [
+      "local",
+      "pensa",
+      17
+     ],
+     [
+      "local",
+      "policial",
+      19
+     ],
+     [
+      "local",
+      "precisou",
+      17
+     ],
+     [
+      "local",
+      "presidencial",
+      17
+     ],
+     [
+      "local",
+      "publico",
+      18
+     ],
+     [
+      "local",
+      "recurso",
+      18
+     ],
+     [
+      "local",
+      "relatou",
+      17
+     ],
+     [
+      "local",
+      "responsabilidade",
+      17
+     ],
+     [
+      "local",
+      "reverter",
+      17
+     ],
+     [
+      "local",
+      "senador",
+      18
+     ],
+     [
+      "local",
+      "stj",
+      19
+     ],
+     [
+      "local",
+      "tentar",
+      18
+     ],
+     [
+      "local",
+      "tiro",
+      17
+     ],
+     [
+      "local",
+      "tribunal",
+      19
+     ],
+     [
+      "vida",
+      "ana",
+      34
+     ],
+     [
+      "vida",
+      "casa",
+      4
+     ],
+     [
+      "vida",
+      "clara",
+      34
+     ],
+     [
+      "vida",
+      "rio",
+      20
+     ],
+     [
+      "vida",
+      "segundo",
+      19
+     ],
+     [
+      "vida",
+      "bolsonaro",
+      24
+     ],
+     [
+      "vida",
+      "filha",
+      3
+     ],
+     [
+      "vida",
+      "flavio",
+      24
+     ],
+     [
+      "vida",
+      "juri",
+      19
+     ],
+     [
+      "vida",
+      "mae",
+      19
+     ],
+     [
+      "vida",
+      "niteroi",
+      19
+     ],
+     [
+      "vida",
+      "policial",
+      24
+     ],
+     [
+      "vida",
+      "senador",
+      19
+     ],
+     [
+      "vida",
+      "acusado",
+      22
+     ],
+     [
+      "vida",
+      "advogado",
+      3
+     ],
+     [
+      "vida",
+      "menina",
+      24
+     ],
+     [
+      "vida",
+      "determinou",
+      18
+     ],
+     [
+      "vida",
+      "interrompida",
+      19
+     ],
+     [
+      "vida",
+      "justica",
+      23
+     ],
+     [
+      "vida",
+      "acao",
+      18
+     ],
+     [
+      "vida",
+      "apenas",
+      20
+     ],
+     [
+      "vida",
+      "armado",
+      17
+     ],
+     [
+      "vida",
+      "assinou",
+      18
+     ],
+     [
+      "vida",
+      "atingida",
+      19
+     ],
+     [
+      "vida",
+      "atuacao",
+      17
+     ],
+     [
+      "vida",
+      "cinco",
+      19
+     ],
+     [
+      "vida",
+      "cobrou",
+      17
+     ],
+     [
+      "vida",
+      "confronto",
+      17
+     ],
+     [
+      "vida",
+      "continua",
+      18
+     ],
+     [
+      "vida",
+      "crianca",
+      19
+     ],
+     [
+      "vida",
+      "criminal",
+      17
+     ],
+     [
+      "vida",
+      "debate",
+      19
+     ],
+     [
+      "vida",
+      "decisao",
+      17
+     ],
+     [
+      "vida",
+      "defesa",
+      20
+     ],
+     [
+      "vida",
+      "demora",
+      17
+     ],
+     [
+      "vida",
+      "depende",
+      17
+     ],
+     [
+      "vida",
+      "direito",
+      18
+     ],
+     [
+      "vida",
+      "disparo",
+      18
+     ],
+     [
+      "vida",
+      "durante",
+      19
+     ],
+     [
+      "vida",
+      "entra",
+      17
+     ],
+     [
+      "vida",
+      "esperando",
+      17
+     ],
+     [
+      "vida",
+      "explicacoes",
+      17
+     ],
+     [
+      "vida",
+      "familia",
+      21
+     ],
+     [
+      "vida",
+      "fuzil",
+      18
+     ],
+     [
+      "vida",
+      "gomes",
+      17
+     ],
+     [
+      "vida",
+      "havia",
+      17
+     ],
+     [
+      "vida",
+      "idade",
+      17
+     ],
+     [
+      "vida",
+      "implorar",
+      18
+     ],
+     [
+      "vida",
+      "integrou",
+      19
+     ],
+     [
+      "vida",
+      "judicial",
+      17
+     ],
+     [
+      "vida",
+      "julgado",
+      18
+     ],
+     [
+      "vida",
+      "julgamento",
+      18
+     ],
+     [
+      "vida",
+      "lula",
+      17
+     ],
+     [
+      "vida",
+      "machado",
+      17
+     ],
+     [
+      "vida",
+      "ministerio",
+      18
+     ],
+     [
+      "vida",
+      "morreu",
+      17
+     ],
+     [
+      "vida",
+      "negado",
+      17
+     ],
+     [
+      "vida",
+      "pensa",
+      17
+     ],
+     [
+      "vida",
+      "precisou",
+      17
+     ],
+     [
+      "vida",
+      "presidencial",
+      18
+     ],
+     [
+      "vida",
+      "publico",
+      20
+     ],
+     [
+      "vida",
+      "recurso",
+      18
+     ],
+     [
+      "vida",
+      "relatou",
+      17
+     ],
+     [
+      "vida",
+      "responsabilidade",
+      17
+     ],
+     [
+      "vida",
+      "reverter",
+      17
+     ],
+     [
+      "vida",
+      "socorro",
+      17
+     ],
+     [
+      "vida",
+      "stj",
+      18
+     ],
+     [
+      "vida",
+      "tentar",
+      17
+     ],
+     [
+      "vida",
+      "tiro",
+      17
+     ],
+     [
+      "vida",
+      "tribunal",
+      18
+     ],
+     [
+      "defesa",
+      "ana",
+      41
+     ],
+     [
+      "defesa",
+      "assinou",
+      28
+     ],
+     [
+      "defesa",
+      "bolsonaro",
+      40
+     ],
+     [
+      "defesa",
+      "clara",
+      41
+     ],
+     [
+      "defesa",
+      "decisao",
+      27
+     ],
+     [
+      "defesa",
+      "determinou",
+      19
+     ],
+     [
+      "defesa",
+      "disparo",
+      22
+     ],
+     [
+      "defesa",
+      "flavio",
+      42
+     ],
+     [
+      "defesa",
+      "gomes",
+      26
+     ],
+     [
+      "defesa",
+      "integrou",
+      22
+     ],
+     [
+      "defesa",
+      "julgado",
+      26
+     ],
+     [
+      "defesa",
+      "juri",
+      30
+     ],
+     [
+      "defesa",
+      "lula",
+      28
+     ],
+     [
+      "defesa",
+      "machado",
+      23
+     ],
+     [
+      "defesa",
+      "menina",
+      32
+     ],
+     [
+      "defesa",
+      "militar",
+      9
+     ],
+     [
+      "defesa",
+      "ministerio",
+      22
+     ],
+     [
+      "defesa",
+      "policial",
+      38
+     ],
+     [
+      "defesa",
+      "publico",
+      22
+     ],
+     [
+      "defesa",
+      "recurso",
+      31
+     ],
+     [
+      "defesa",
+      "reverter",
+      24
+     ],
+     [
+      "defesa",
+      "segundo",
+      23
+     ],
+     [
+      "defesa",
+      "stj",
+      29
+     ],
+     [
+      "defesa",
+      "tentar",
+      23
+     ],
+     [
+      "defesa",
+      "apenas",
+      25
+     ],
+     [
+      "defesa",
+      "brasil",
+      4
+     ],
+     [
+      "defesa",
+      "casa",
+      6
+     ],
+     [
+      "defesa",
+      "crianca",
+      25
+     ],
+     [
+      "defesa",
+      "familia",
+      25
+     ],
+     [
+      "defesa",
+      "filha",
+      3
+     ],
+     [
+      "defesa",
+      "fuzil",
+      30
+     ],
+     [
+      "defesa",
+      "justica",
+      30
+     ],
+     [
+      "defesa",
+      "mae",
+      25
+     ],
+     [
+      "defesa",
+      "niteroi",
+      29
+     ],
+     [
+      "defesa",
+      "rio",
+      23
+     ],
+     [
+      "defesa",
+      "tribunal",
+      23
+     ],
+     [
+      "defesa",
+      "advogado",
+      9
+     ],
+     [
+      "defesa",
+      "atingida",
+      23
+     ],
+     [
+      "defesa",
+      "cinco",
+      23
+     ],
+     [
+      "defesa",
+      "julgamento",
+      24
+     ],
+     [
+      "defesa",
+      "senador",
+      27
+     ],
+     [
+      "defesa",
+      "acusado",
+      37
+     ],
+     [
+      "defesa",
+      "atuacao",
+      23
+     ],
+     [
+      "defesa",
+      "debate",
+      25
+     ],
+     [
+      "defesa",
+      "direito",
+      22
+     ],
+     [
+      "defesa",
+      "durante",
+      24
+     ],
+     [
+      "defesa",
+      "morreu",
+      20
+     ],
+     [
+      "defesa",
+      "negado",
+      22
+     ],
+     [
+      "defesa",
+      "cobrou",
+      19
+     ],
+     [
+      "defesa",
+      "explicacoes",
+      19
+     ],
+     [
+      "defesa",
+      "presidencial",
+      18
+     ],
+     [
+      "defesa",
+      "pesquise",
+      3
+     ],
+     [
+      "defesa",
+      "tiro",
+      23
+     ],
+     [
+      "defesa",
+      "acao",
+      19
+     ],
+     [
+      "defesa",
+      "armado",
+      18
+     ],
+     [
+      "defesa",
+      "confronto",
+      18
+     ],
+     [
+      "defesa",
+      "continua",
+      17
+     ],
+     [
+      "defesa",
+      "criminal",
+      17
+     ],
+     [
+      "defesa",
+      "demora",
+      17
+     ],
+     [
+      "defesa",
+      "depende",
+      17
+     ],
+     [
+      "defesa",
+      "entra",
+      18
+     ],
+     [
+      "defesa",
+      "esperando",
+      17
+     ],
+     [
+      "defesa",
+      "havia",
+      17
+     ],
+     [
+      "defesa",
+      "idade",
+      17
+     ],
+     [
+      "defesa",
+      "implorar",
+      18
+     ],
+     [
+      "defesa",
+      "interrompida",
+      18
+     ],
+     [
+      "defesa",
+      "judicial",
+      17
+     ],
+     [
+      "defesa",
+      "pensa",
+      17
+     ],
+     [
+      "defesa",
+      "precisou",
+      17
+     ],
+     [
+      "defesa",
+      "relatou",
+      17
+     ],
+     [
+      "defesa",
+      "responsabilidade",
+      18
+     ],
+     [
+      "defesa",
+      "socorro",
+      17
+     ],
+     [
+      "defesa",
+      "globo",
+      3
+     ],
+     [
+      "filha",
+      "ana",
+      13
+     ],
+     [
+      "filha",
+      "casa",
+      5
+     ],
+     [
+      "filha",
+      "clara",
+      15
+     ],
+     [
+      "filha",
+      "familia",
+      4
+     ],
+     [
+      "filha",
+      "jovem",
+      3
+     ],
+     [
+      "filha",
+      "mae",
+      11
+     ],
+     [
+      "filha",
+      "justica",
+      5
+     ],
+     [
+      "filha",
+      "apenas",
+      4
+     ],
+     [
+      "filha",
+      "brasil",
+      3
+     ],
+     [
+      "filha",
+      "crianca",
+      4
+     ],
+     [
+      "filha",
+      "durante",
+      3
+     ],
+     [
+      "filha",
+      "policial",
+      8
+     ],
+     [
+      "filha",
+      "bolsonaro",
+      7
+     ],
+     [
+      "filha",
+      "flavio",
+      8
+     ],
+     [
+      "filha",
+      "juri",
+      4
+     ],
+     [
+      "filha",
+      "niteroi",
+      3
+     ],
+     [
+      "filha",
+      "senador",
+      4
+     ],
+     [
+      "filha",
+      "fuzil",
+      3
+     ],
+     [
+      "filha",
+      "gomes",
+      5
+     ],
+     [
+      "filha",
+      "tribunal",
+      3
+     ],
+     [
+      "filha",
+      "militar",
+      3
+     ],
+     [
+      "filha",
+      "acusado",
+      4
+     ],
+     [
+      "filha",
+      "menina",
+      4
+     ],
+     [
+      "filha",
+      "julgamento",
+      3
+     ],
+     [
+      "reverter",
+      "ana",
+      25
+     ],
+     [
+      "reverter",
+      "assinou",
+      22
+     ],
+     [
+      "reverter",
+      "bolsonaro",
+      25
+     ],
+     [
+      "reverter",
+      "clara",
+      25
+     ],
+     [
+      "reverter",
+      "decisao",
+      25
+     ],
+     [
+      "reverter",
+      "determinou",
+      19
+     ],
+     [
+      "reverter",
+      "disparo",
+      19
+     ],
+     [
+      "reverter",
+      "flavio",
+      25
+     ],
+     [
+      "reverter",
+      "gomes",
+      22
+     ],
+     [
+      "reverter",
+      "integrou",
+      19
+     ],
+     [
+      "reverter",
+      "julgado",
+      22
+     ],
+     [
+      "reverter",
+      "juri",
+      25
+     ],
+     [
+      "reverter",
+      "lula",
+      22
+     ],
+     [
+      "reverter",
+      "machado",
+      21
+     ],
+     [
+      "reverter",
+      "menina",
+      23
+     ],
+     [
+      "reverter",
+      "militar",
+      5
+     ],
+     [
+      "reverter",
+      "ministerio",
+      19
+     ],
+     [
+      "reverter",
+      "policial",
+      23
+     ],
+     [
+      "reverter",
+      "publico",
+      19
+     ],
+     [
+      "reverter",
+      "recurso",
+      25
+     ],
+     [
+      "reverter",
+      "segundo",
+      19
+     ],
+     [
+      "reverter",
+      "stj",
+      24
+     ],
+     [
+      "reverter",
+      "tentar",
+      21
+     ],
+     [
+      "reverter",
+      "apenas",
+      20
+     ],
+     [
+      "reverter",
+      "casa",
+      3
+     ],
+     [
+      "reverter",
+      "crianca",
+      19
+     ],
+     [
+      "reverter",
+      "familia",
+      19
+     ],
+     [
+      "reverter",
+      "fuzil",
+      22
+     ],
+     [
+      "reverter",
+      "justica",
+      22
+     ],
+     [
+      "reverter",
+      "mae",
+      21
+     ],
+     [
+      "reverter",
+      "niteroi",
+      23
+     ],
+     [
+      "reverter",
+      "rio",
+      20
+     ],
+     [
+      "reverter",
+      "tribunal",
+      22
+     ],
+     [
+      "reverter",
+      "acusado",
+      22
+     ],
+     [
+      "reverter",
+      "advogado",
+      3
+     ],
+     [
+      "reverter",
+      "atuacao",
+      19
+     ],
+     [
+      "reverter",
+      "cobrou",
+      18
+     ],
+     [
+      "reverter",
+      "debate",
+      20
+     ],
+     [
+      "reverter",
+      "durante",
+      19
+     ],
+     [
+      "reverter",
+      "explicacoes",
+      18
+     ],
+     [
+      "reverter",
+      "presidencial",
+      19
+     ],
+     [
+      "reverter",
+      "senador",
+      22
+     ],
+     [
+      "reverter",
+      "acao",
+      17
+     ],
+     [
+      "reverter",
+      "armado",
+      17
+     ],
+     [
+      "reverter",
+      "atingida",
+      19
+     ],
+     [
+      "reverter",
+      "cinco",
+      18
+     ],
+     [
+      "reverter",
+      "confronto",
+      17
+     ],
+     [
+      "reverter",
+      "continua",
+      17
+     ],
+     [
+      "reverter",
+      "criminal",
+      17
+     ],
+     [
+      "reverter",
+      "demora",
+      17
+     ],
+     [
+      "reverter",
+      "depende",
+      17
+     ],
+     [
+      "reverter",
+      "direito",
+      17
+     ],
+     [
+      "reverter",
+      "entra",
+      17
+     ],
+     [
+      "reverter",
+      "esperando",
+      17
+     ],
+     [
+      "reverter",
+      "havia",
+      17
+     ],
+     [
+      "reverter",
+      "idade",
+      17
+     ],
+     [
+      "reverter",
+      "implorar",
+      17
+     ],
+     [
+      "reverter",
+      "interrompida",
+      17
+     ],
+     [
+      "reverter",
+      "judicial",
+      17
+     ],
+     [
+      "reverter",
+      "julgamento",
+      19
+     ],
+     [
+      "reverter",
+      "morreu",
+      18
+     ],
+     [
+      "reverter",
+      "negado",
+      18
+     ],
+     [
+      "reverter",
+      "pensa",
+      17
+     ],
+     [
+      "reverter",
+      "precisou",
+      17
+     ],
+     [
+      "reverter",
+      "relatou",
+      17
+     ],
+     [
+      "reverter",
+      "responsabilidade",
+      17
+     ],
+     [
+      "reverter",
+      "socorro",
+      17
+     ],
+     [
+      "reverter",
+      "tiro",
+      19
+     ],
+     [
+      "cobrou",
+      "acusado",
+      20
+     ],
+     [
+      "cobrou",
+      "ana",
+      20
+     ],
+     [
+      "cobrou",
+      "assinou",
+      19
+     ],
+     [
+      "cobrou",
+      "atuacao",
+      18
+     ],
+     [
+      "cobrou",
+      "bolsonaro",
+      20
+     ],
+     [
+      "cobrou",
+      "clara",
+      20
+     ],
+     [
+      "cobrou",
+      "debate",
+      19
+     ],
+     [
+      "cobrou",
+      "decisao",
+      18
+     ],
+     [
+      "cobrou",
+      "durante",
+      18
+     ],
+     [
+      "cobrou",
+      "explicacoes",
+      18
+     ],
+     [
+      "cobrou",
+      "flavio",
+      20
+     ],
+     [
+      "cobrou",
+      "gomes",
+      18
+     ],
+     [
+      "cobrou",
+      "juri",
+      19
+     ],
+     [
+      "cobrou",
+      "lula",
+      19
+     ],
+     [
+      "cobrou",
+      "machado",
+      18
+     ],
+     [
+      "cobrou",
+      "niteroi",
+      18
+     ],
+     [
+      "cobrou",
+      "policial",
+      18
+     ],
+     [
+      "cobrou",
+      "presidencial",
+      18
+     ],
+     [
+      "cobrou",
+      "recurso",
+      19
+     ],
+     [
+      "cobrou",
+      "senador",
+      19
+     ],
+     [
+      "cobrou",
+      "stj",
+      19
+     ],
+     [
+      "cobrou",
+      "apenas",
+      19
+     ],
+     [
+      "cobrou",
+      "crianca",
+      18
+     ],
+     [
+      "cobrou",
+      "justica",
+      18
+     ],
+     [
+      "cobrou",
+      "acao",
+      17
+     ],
+     [
+      "cobrou",
+      "armado",
+      17
+     ],
+     [
+      "cobrou",
+      "atingida",
+      17
+     ],
+     [
+      "cobrou",
+      "cinco",
+      18
+     ],
+     [
+      "cobrou",
+      "confronto",
+      17
+     ],
+     [
+      "cobrou",
+      "continua",
+      17
+     ],
+     [
+      "cobrou",
+      "criminal",
+      17
+     ],
+     [
+      "cobrou",
+      "demora",
+      17
+     ],
+     [
+      "cobrou",
+      "depende",
+      17
+     ],
+     [
+      "cobrou",
+      "determinou",
+      17
+     ],
+     [
+      "cobrou",
+      "direito",
+      17
+     ],
+     [
+      "cobrou",
+      "disparo",
+      17
+     ],
+     [
+      "cobrou",
+      "entra",
+      17
+     ],
+     [
+      "cobrou",
+      "esperando",
+      17
+     ],
+     [
+      "cobrou",
+      "familia",
+      17
+     ],
+     [
+      "cobrou",
+      "fuzil",
+      18
+     ],
+     [
+      "cobrou",
+      "havia",
+      17
+     ],
+     [
+      "cobrou",
+      "idade",
+      17
+     ],
+     [
+      "cobrou",
+      "implorar",
+      17
+     ],
+     [
+      "cobrou",
+      "integrou",
+      17
+     ],
+     [
+      "cobrou",
+      "interrompida",
+      17
+     ],
+     [
+      "cobrou",
+      "judicial",
+      17
+     ],
+     [
+      "cobrou",
+      "julgado",
+      17
+     ],
+     [
+      "cobrou",
+      "julgamento",
+      17
+     ],
+     [
+      "cobrou",
+      "mae",
+      17
+     ],
+     [
+      "cobrou",
+      "menina",
+      18
+     ],
+     [
+      "cobrou",
+      "ministerio",
+      17
+     ],
+     [
+      "cobrou",
+      "morreu",
+      17
+     ],
+     [
+      "cobrou",
+      "negado",
+      17
+     ],
+     [
+      "cobrou",
+      "pensa",
+      17
+     ],
+     [
+      "cobrou",
+      "precisou",
+      17
+     ],
+     [
+      "cobrou",
+      "publico",
+      17
+     ],
+     [
+      "cobrou",
+      "relatou",
+      17
+     ],
+     [
+      "cobrou",
+      "responsabilidade",
+      17
+     ],
+     [
+      "cobrou",
+      "rio",
+      18
+     ],
+     [
+      "cobrou",
+      "segundo",
+      18
+     ],
+     [
+      "cobrou",
+      "socorro",
+      17
+     ],
+     [
+      "cobrou",
+      "tentar",
+      18
+     ],
+     [
+      "cobrou",
+      "tiro",
+      18
+     ],
+     [
+      "cobrou",
+      "tribunal",
+      17
+     ],
+     [
+      "justica",
+      "ana",
+      77
+     ],
+     [
+      "justica",
+      "casa",
+      10
+     ],
+     [
+      "justica",
+      "clara",
+      79
+     ],
+     [
+      "justica",
+      "jovem",
+      3
+     ],
+     [
+      "justica",
+      "continua",
+      20
+     ],
+     [
+      "justica",
+      "crianca",
+      29
+     ],
+     [
+      "justica",
+      "familia",
+      27
+     ],
+     [
+      "justica",
+      "morreu",
+      20
+     ],
+     [
+      "justica",
+      "socorro",
+      18
+     ],
+     [
+      "justica",
+      "ministerio",
+      21
+     ],
+     [
+      "justica",
+      "publico",
+      22
+     ],
+     [
+      "justica",
+      "segundo",
+      22
+     ],
+     [
+      "justica",
+      "decisao",
+      27
+     ],
+     [
+      "justica",
+      "durante",
+      25
+     ],
+     [
+      "justica",
+      "rio",
+      24
+     ],
+     [
+      "justica",
+      "advogado",
+      7
+     ],
+     [
+      "justica",
+      "atingida",
+      24
+     ],
+     [
+      "justica",
+      "bolsonaro",
+      45
+     ],
+     [
+      "justica",
+      "cinco",
+      22
+     ],
+     [
+      "justica",
+      "flavio",
+      50
+     ],
+     [
+      "justica",
+      "fuzil",
+      28
+     ],
+     [
+      "justica",
+      "gomes",
+      24
+     ],
+     [
+      "justica",
+      "julgamento",
+      28
+     ],
+     [
+      "justica",
+      "machado",
+      22
+     ],
+     [
+      "justica",
+      "mae",
+      35
+     ],
+     [
+      "justica",
+      "militar",
+      9
+     ],
+     [
+      "justica",
+      "policial",
+      38
+     ],
+     [
+      "justica",
+      "senador",
+      24
+     ],
+     [
+      "justica",
+      "apenas",
+      26
+     ],
+     [
+      "justica",
+      "brasil",
+      5
+     ],
+     [
+      "justica",
+      "julgado",
+      26
+     ],
+     [
+      "justica",
+      "juri",
+      30
+     ],
+     [
+      "justica",
+      "niteroi",
+      29
+     ],
+     [
+      "justica",
+      "recurso",
+      27
+     ],
+     [
+      "justica",
+      "tentar",
+      20
+     ],
+     [
+      "justica",
+      "tribunal",
+      25
+     ],
+     [
+      "justica",
+      "menina",
+      28
+     ],
+     [
+      "justica",
+      "determinou",
+      19
+     ],
+     [
+      "justica",
+      "interrompida",
+      19
+     ],
+     [
+      "justica",
+      "esperando",
+      18
+     ],
+     [
+      "justica",
+      "acusado",
+      33
+     ],
+     [
+      "justica",
+      "assinou",
+      25
+     ],
+     [
+      "justica",
+      "atuacao",
+      19
+     ],
+     [
+      "justica",
+      "debate",
+      25
+     ],
+     [
+      "justica",
+      "direito",
+      20
+     ],
+     [
+      "justica",
+      "lula",
+      25
+     ],
+     [
+      "justica",
+      "negado",
+      22
+     ],
+     [
+      "justica",
+      "acao",
+      18
+     ],
+     [
+      "justica",
+      "armado",
+      18
+     ],
+     [
+      "justica",
+      "confronto",
+      19
+     ],
+     [
+      "justica",
+      "criminal",
+      17
+     ],
+     [
+      "justica",
+      "demora",
+      17
+     ],
+     [
+      "justica",
+      "depende",
+      17
+     ],
+     [
+      "justica",
+      "disparo",
+      21
+     ],
+     [
+      "justica",
+      "entra",
+      18
+     ],
+     [
+      "justica",
+      "explicacoes",
+      17
+     ],
+     [
+      "justica",
+      "havia",
+      17
+     ],
+     [
+      "justica",
+      "idade",
+      17
+     ],
+     [
+      "justica",
+      "implorar",
+      18
+     ],
+     [
+      "justica",
+      "integrou",
+      21
+     ],
+     [
+      "justica",
+      "judicial",
+      17
+     ],
+     [
+      "justica",
+      "pensa",
+      17
+     ],
+     [
+      "justica",
+      "precisou",
+      17
+     ],
+     [
+      "justica",
+      "presidencial",
+      19
+     ],
+     [
+      "justica",
+      "relatou",
+      17
+     ],
+     [
+      "justica",
+      "responsabilidade",
+      18
+     ],
+     [
+      "justica",
+      "stj",
+      26
+     ],
+     [
+      "justica",
+      "tiro",
+      20
+     ],
+     [
+      "justica",
+      "pesquisem",
+      4
+     ],
+     [
+      "justica",
+      "google",
+      4
+     ],
+     [
+      "justica",
+      "pesquise",
+      3
+     ],
+     [
+      "justica",
+      "globo",
+      4
+     ],
+     [
+      "direito",
+      "acusado",
+      22
+     ],
+     [
+      "direito",
+      "ana",
+      23
+     ],
+     [
+      "direito",
+      "apenas",
+      19
+     ],
+     [
+      "direito",
+      "assinou",
+      20
+     ],
+     [
+      "direito",
+      "atuacao",
+      19
+     ],
+     [
+      "direito",
+      "bolsonaro",
+      21
+     ],
+     [
+      "direito",
+      "clara",
+      23
+     ],
+     [
+      "direito",
+      "debate",
+      20
+     ],
+     [
+      "direito",
+      "decisao",
+      20
+     ],
+     [
+      "direito",
+      "durante",
+      18
+     ],
+     [
+      "direito",
+      "familia",
+      19
+     ],
+     [
+      "direito",
+      "flavio",
+      23
+     ],
+     [
+      "direito",
+      "gomes",
+      18
+     ],
+     [
+      "direito",
+      "julgado",
+      20
+     ],
+     [
+      "direito",
+      "julgamento",
+      18
+     ],
+     [
+      "direito",
+      "juri",
+      20
+     ],
+     [
+      "direito",
+      "lula",
+      20
+     ],
+     [
+      "direito",
+      "machado",
+      18
+     ],
+     [
+      "direito",
+      "menina",
+      20
+     ],
+     [
+      "direito",
+      "ministerio",
+      19
+     ],
+     [
+      "direito",
+      "morreu",
+      18
+     ],
+     [
+      "direito",
+      "negado",
+      20
+     ],
+     [
+      "direito",
+      "niteroi",
+      20
+     ],
+     [
+      "direito",
+      "policial",
+      22
+     ],
+     [
+      "direito",
+      "publico",
+      19
+     ],
+     [
+      "direito",
+      "recurso",
+      21
+     ],
+     [
+      "direito",
+      "segundo",
+      18
+     ],
+     [
+      "direito",
+      "acao",
+      17
+     ],
+     [
+      "direito",
+      "armado",
+      17
+     ],
+     [
+      "direito",
+      "atingida",
+      17
+     ],
+     [
+      "direito",
+      "cinco",
+      18
+     ],
+     [
+      "direito",
+      "confronto",
+      17
+     ],
+     [
+      "direito",
+      "continua",
+      18
+     ],
+     [
+      "direito",
+      "crianca",
+      17
+     ],
+     [
+      "direito",
+      "criminal",
+      17
+     ],
+     [
+      "direito",
+      "demora",
+      17
+     ],
+     [
+      "direito",
+      "depende",
+      17
+     ],
+     [
+      "direito",
+      "determinou",
+      17
+     ],
+     [
+      "direito",
+      "disparo",
+      17
+     ],
+     [
+      "direito",
+      "entra",
+      18
+     ],
+     [
+      "direito",
+      "esperando",
+      17
+     ],
+     [
+      "direito",
+      "explicacoes",
+      17
+     ],
+     [
+      "direito",
+      "fuzil",
+      17
+     ],
+     [
+      "direito",
+      "havia",
+      17
+     ],
+     [
+      "direito",
+      "idade",
+      17
+     ],
+     [
+      "direito",
+      "implorar",
+      17
+     ],
+     [
+      "direito",
+      "integrou",
+      17
+     ],
+     [
+      "direito",
+      "interrompida",
+      17
+     ],
+     [
+      "direito",
+      "judicial",
+      17
+     ],
+     [
+      "direito",
+      "mae",
+      18
+     ],
+     [
+      "direito",
+      "pensa",
+      17
+     ],
+     [
+      "direito",
+      "precisou",
+      17
+     ],
+     [
+      "direito",
+      "presidencial",
+      17
+     ],
+     [
+      "direito",
+      "relatou",
+      17
+     ],
+     [
+      "direito",
+      "responsabilidade",
+      17
+     ],
+     [
+      "direito",
+      "rio",
+      17
+     ],
+     [
+      "direito",
+      "senador",
+      17
+     ],
+     [
+      "direito",
+      "socorro",
+      17
+     ],
+     [
+      "direito",
+      "stj",
+      19
+     ],
+     [
+      "direito",
+      "tentar",
+      17
+     ],
+     [
+      "direito",
+      "tiro",
+      17
+     ],
+     [
+      "direito",
+      "tribunal",
+      17
+     ],
+     [
+      "direito",
+      "advogado",
+      4
+     ],
+     [
+      "debate",
+      "acusado",
+      31
+     ],
+     [
+      "debate",
+      "ana",
+      43
+     ],
+     [
+      "debate",
+      "apenas",
+      24
+     ],
+     [
+      "debate",
+      "assinou",
+      23
+     ],
+     [
+      "debate",
+      "atuacao",
+      22
+     ],
+     [
+      "debate",
+      "bolsonaro",
+      34
+     ],
+     [
+      "debate",
+      "clara",
+      43
+     ],
+     [
+      "debate",
+      "decisao",
+      22
+     ],
+     [
+      "debate",
+      "durante",
+      27
+     ],
+     [
+      "debate",
+      "familia",
+      20
+     ],
+     [
+      "debate",
+      "flavio",
+      40
+     ],
+     [
+      "debate",
+      "gomes",
+      22
+     ],
+     [
+      "debate",
+      "julgado",
+      22
+     ],
+     [
+      "debate",
+      "julgamento",
+      20
+     ],
+     [
+      "debate",
+      "juri",
+      23
+     ],
+     [
+      "debate",
+      "lula",
+      30
+     ],
+     [
+      "debate",
+      "machado",
+      21
+     ],
+     [
+      "debate",
+      "menina",
+      27
+     ],
+     [
+      "debate",
+      "ministerio",
+      18
+     ],
+     [
+      "debate",
+      "morreu",
+      23
+     ],
+     [
+      "debate",
+      "negado",
+      20
+     ],
+     [
+      "debate",
+      "niteroi",
+      24
+     ],
+     [
+      "debate",
+      "policial",
+      33
+     ],
+     [
+      "debate",
+      "publico",
+      19
+     ],
+     [
+      "debate",
+      "recurso",
+      24
+     ],
+     [
+      "debate",
+      "segundo",
+      20
+     ],
+     [
+      "debate",
+      "advogado",
+      10
+     ],
+     [
+      "debate",
+      "explicacoes",
+      18
+     ],
+     [
+      "debate",
+      "militar",
+      9
+     ],
+     [
+      "debate",
+      "presidencial",
+      22
+     ],
+     [
+      "debate",
+      "senador",
+      25
+     ],
+     [
+      "debate",
+      "stj",
+      22
+     ],
+     [
+      "debate",
+      "atingida",
+      20
+     ],
+     [
+      "debate",
+      "crianca",
+      26
+     ],
+     [
+      "debate",
+      "fuzil",
+      23
+     ],
+     [
+      "debate",
+      "tiro",
+      21
+     ],
+     [
+      "debate",
+      "acao",
+      17
+     ],
+     [
+      "debate",
+      "armado",
+      17
+     ],
+     [
+      "debate",
+      "cinco",
+      17
+     ],
+     [
+      "debate",
+      "confronto",
+      19
+     ],
+     [
+      "debate",
+      "continua",
+      18
+     ],
+     [
+      "debate",
+      "criminal",
+      17
+     ],
+     [
+      "debate",
+      "demora",
+      17
+     ],
+     [
+      "debate",
+      "depende",
+      17
+     ],
+     [
+      "debate",
+      "determinou",
+      18
+     ],
+     [
+      "debate",
+      "disparo",
+      23
+     ],
+     [
+      "debate",
+      "entra",
+      18
+     ],
+     [
+      "debate",
+      "esperando",
+      17
+     ],
+     [
+      "debate",
+      "havia",
+      17
+     ],
+     [
+      "debate",
+      "idade",
+      17
+     ],
+     [
+      "debate",
+      "implorar",
+      17
+     ],
+     [
+      "debate",
+      "integrou",
+      18
+     ],
+     [
+      "debate",
+      "interrompida",
+      17
+     ],
+     [
+      "debate",
+      "judicial",
+      17
+     ],
+     [
+      "debate",
+      "mae",
+      32
+     ],
+     [
+      "debate",
+      "pensa",
+      17
+     ],
+     [
+      "debate",
+      "precisou",
+      17
+     ],
+     [
+      "debate",
+      "relatou",
+      17
+     ],
+     [
+      "debate",
+      "responsabilidade",
+      18
+     ],
+     [
+      "debate",
+      "rio",
+      17
+     ],
+     [
+      "debate",
+      "socorro",
+      17
+     ],
+     [
+      "debate",
+      "tentar",
+      18
+     ],
+     [
+      "debate",
+      "tribunal",
+      19
+     ],
+     [
+      "debate",
+      "globo",
+      17
+     ],
+     [
+      "globo",
+      "acusado",
+      10
+     ],
+     [
+      "globo",
+      "advogado",
+      6
+     ],
+     [
+      "globo",
+      "ana",
+      16
+     ],
+     [
+      "globo",
+      "atuacao",
+      3
+     ],
+     [
+      "globo",
+      "bolsonaro",
+      12
+     ],
+     [
+      "globo",
+      "clara",
+      16
+     ],
+     [
+      "globo",
+      "crianca",
+      7
+     ],
+     [
+      "globo",
+      "durante",
+      7
+     ],
+     [
+      "globo",
+      "flavio",
+      16
+     ],
+     [
+      "globo",
+      "mae",
+      12
+     ],
+     [
+      "globo",
+      "policial",
+      11
+     ],
+     [
+      "globo",
+      "disparo",
+      6
+     ],
+     [
+      "globo",
+      "menina",
+      8
+     ],
+     [
+      "globo",
+      "militar",
+      7
+     ],
+     [
+      "globo",
+      "morreu",
+      4
+     ],
+     [
+      "globo",
+      "apenas",
+      4
+     ],
+     [
+      "globo",
+      "fuzil",
+      5
+     ],
+     [
+      "globo",
+      "niteroi",
+      3
+     ],
+     [
+      "globo",
+      "presidencial",
+      4
+     ],
+     [
+      "globo",
+      "lula",
+      7
+     ],
+     [
+      "globo",
+      "senador",
+      5
+     ],
+     [
+      "globo",
+      "tiro",
+      3
+     ],
+     [
+      "morreu",
+      "ana",
+      26
+     ],
+     [
+      "morreu",
+      "casa",
+      3
+     ],
+     [
+      "morreu",
+      "clara",
+      27
+     ],
+     [
+      "morreu",
+      "confronto",
+      18
+     ],
+     [
+      "morreu",
+      "menina",
+      24
+     ],
+     [
+      "morreu",
+      "continua",
+      18
+     ],
+     [
+      "morreu",
+      "crianca",
+      22
+     ],
+     [
+      "morreu",
+      "familia",
+      20
+     ],
+     [
+      "morreu",
+      "socorro",
+      18
+     ],
+     [
+      "morreu",
+      "disparo",
+      23
+     ],
+     [
+      "morreu",
+      "durante",
+      22
+     ],
+     [
+      "morreu",
+      "militar",
+      5
+     ],
+     [
+      "morreu",
+      "segundo",
+      20
+     ],
+     [
+      "morreu",
+      "acusado",
+      24
+     ],
+     [
+      "morreu",
+      "apenas",
+      19
+     ],
+     [
+      "morreu",
+      "assinou",
+      21
+     ],
+     [
+      "morreu",
+      "atuacao",
+      18
+     ],
+     [
+      "morreu",
+      "bolsonaro",
+      21
+     ],
+     [
+      "morreu",
+      "decisao",
+      19
+     ],
+     [
+      "morreu",
+      "flavio",
+      24
+     ],
+     [
+      "morreu",
+      "gomes",
+      20
+     ],
+     [
+      "morreu",
+      "julgado",
+      19
+     ],
+     [
+      "morreu",
+      "julgamento",
+      21
+     ],
+     [
+      "morreu",
+      "juri",
+      20
+     ],
+     [
+      "morreu",
+      "lula",
+      20
+     ],
+     [
+      "morreu",
+      "machado",
+      20
+     ],
+     [
+      "morreu",
+      "ministerio",
+      18
+     ],
+     [
+      "morreu",
+      "negado",
+      20
+     ],
+     [
+      "morreu",
+      "niteroi",
+      21
+     ],
+     [
+      "morreu",
+      "policial",
+      24
+     ],
+     [
+      "morreu",
+      "publico",
+      18
+     ],
+     [
+      "morreu",
+      "recurso",
+      21
+     ]
+    ],
+    "total_nos": 205,
+    "total_arestas": 4631,
+    "comunidades": 2
+   },
+   "gexf": "rede_palavras_comentarios_posts.gexf",
+   "o_que_e": "palavras que aparecem juntas no mesmo comentário (3+ vezes); cor = comunidade"
+  },
+  "classes": {
+   "comentarios": 439,
+   "classificados": 250,
+   "pct_classificados": 56.9,
+   "classes": [
+    {
+     "classe": 1,
+     "segmentos": 57,
+     "pct": 22.8,
+     "formas": [
+      [
+       "policial",
+       33.6
+      ],
+      [
+       "globo",
+       33.2
+      ],
+      [
+       "mae",
+       26.3
+      ],
+      [
+       "reage",
+       24.4
+      ],
+      [
+       "defender",
+       19.9
+      ],
+      [
+       "militar",
+       19.9
+      ],
+      [
+       "flavio",
+       17.9
+      ],
+      [
+       "morte",
+       17.4
+      ],
+      [
+       "reproducao",
+       17.3
+      ],
+      [
+       "pitanga",
+       17.3
+      ],
+      [
+       "feita",
+       17.3
+      ],
+      [
+       "camila",
+       17.3
+      ],
+      [
+       "poder",
+       13.8
+      ],
+      [
+       "fala",
+       13.2
+      ],
+      [
+       "defendeu",
+       12.8
+      ]
+     ],
+     "por_ano": {
+      "2021": 0,
+      "2023": 0,
+      "2025": 0,
+      "2026": 57
+     }
+    },
+    {
+     "classe": 2,
+     "segmentos": 29,
+     "pct": 11.6,
+     "formas": [
+      [
+       "popular",
+       87.7
+      ],
+      [
+       "bruno",
+       72.8
+      ],
+      [
+       "delaroli",
+       64.9
+      ],
+      [
+       "juri",
+       58.1
+      ],
+      [
+       "recurso",
+       56.6
+      ],
+      [
+       "matar",
+       49.4
+      ],
+      [
+       "superior",
+       46.8
+      ],
+      [
+       "stj",
+       44.5
+      ],
+      [
+       "diz",
+       41.9
+      ],
+      [
+       "cabo",
+       38.9
+      ],
+      [
+       "band",
+       38.9
+      ],
+      [
+       "assassino",
+       38.6
+      ],
+      [
+       "advogado",
+       37.2
+      ],
+      [
+       "niteroi",
+       37.1
+      ],
+      [
+       "assinou",
+       33.5
+      ]
+     ],
+     "por_ano": {
+      "2021": 0,
+      "2023": 0,
+      "2025": 0,
+      "2026": 29
+     }
+    },
+    {
+     "classe": 3,
+     "segmentos": 81,
+     "pct": 32.4,
+     "formas": [
+      [
+       "pesquise",
+       55.4
+      ],
+      [
+       "caso",
+       45.1
+      ],
+      [
+       "google",
+       42.8
+      ],
+      [
+       "pesquisem",
+       14.2
+      ],
+      [
+       "ana",
+       10.3
+      ],
+      [
+       "clara",
+       8.7
+      ]
+     ],
+     "por_ano": {
+      "2021": 0,
+      "2023": 0,
+      "2025": 0,
+      "2026": 81
+     }
+    },
+    {
+     "classe": 4,
+     "segmentos": 24,
+     "pct": 9.6,
+     "formas": [
+      [
+       "justica",
+       32.1
+      ],
+      [
+       "pesquisem",
+       11.7
+      ],
+      [
+       "explicando",
+       11.4
+      ]
+     ],
+     "por_ano": {
+      "2021": 0,
+      "2023": 0,
+      "2025": 0,
+      "2026": 24
+     }
+    },
+    {
+     "classe": 5,
+     "segmentos": 41,
+     "pct": 16.4,
+     "formas": [
+      [
+       "jovem",
+       74.6
+      ],
+      [
+       "policia",
+       41.2
+      ],
+      [
+       "quixeramobim",
+       36.7
+      ],
+      [
+       "investigacao",
+       31.6
+      ],
+      [
+       "suspeito",
+       31.3
+      ],
+      [
+       "namorado",
+       26.0
+      ],
+      [
+       "oliveira",
+       26.0
+      ],
+      [
+       "cidade",
+       26.0
+      ],
+      [
+       "adolescente",
+       26.0
+      ],
+      [
+       "teria",
+       26.0
+      ],
+      [
+       "informacoes",
+       25.7
+      ],
+      [
+       "estava",
+       23.2
+      ],
+      [
+       "casa",
+       21.6
+      ],
+      [
+       "contato",
+       20.7
+      ],
+      [
+       "desaparecida",
+       20.7
+      ]
+     ],
+     "por_ano": {
+      "2021": 0,
+      "2023": 0,
+      "2025": 1,
+      "2026": 40
+     }
+    },
+    {
+     "classe": 6,
+     "segmentos": 18,
+     "pct": 7.2,
+     "formas": [
+      [
+       "precisou",
+       235.1
+      ],
+      [
+       "depende",
+       235.1
+      ],
+      [
+       "demora",
+       235.1
+      ],
+      [
+       "esperando",
+       235.1
+      ],
+      [
+       "pensa",
+       235.1
+      ],
+      [
+       "idade",
+       235.1
+      ],
+      [
+       "judicial",
+       235.1
+      ],
+      [
+       "havia",
+       235.1
+      ],
+      [
+       "entra",
+       221.0
+      ],
+      [
+       "criminal",
+       221.0
+      ],
+      [
+       "relatou",
+       221.0
+      ],
+      [
+       "armado",
+       221.0
+      ],
+      [
+       "implorar",
+       221.0
+      ],
+      [
+       "responsabilidade",
+       221.0
+      ],
+      [
+       "socorro",
+       221.0
+      ]
+     ],
+     "por_ano": {
+      "2021": 0,
+      "2023": 0,
+      "2025": 0,
+      "2026": 18
+     }
+    }
+   ],
+   "arvore": [
+    {
+     "id": 0,
+     "n": 344,
+     "filhos": [
+      1,
+      2
+     ],
+     "chi2": 2489.5,
+     "classe": null
+    },
+    {
+     "id": 1,
+     "n": 326,
+     "filhos": [
+      3,
+      4
+     ],
+     "chi2": 1850.5,
+     "classe": null
+    },
+    {
+     "id": 2,
+     "n": 18,
+     "filhos": null,
+     "classe": 6
+    },
+    {
+     "id": 3,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 4,
+     "n": 324,
+     "filhos": [
+      5,
+      6
+     ],
+     "chi2": 1812.8,
+     "classe": null
+    },
+    {
+     "id": 5,
+     "n": 283,
+     "filhos": [
+      7,
+      8
+     ],
+     "chi2": 1434.0,
+     "classe": null
+    },
+    {
+     "id": 6,
+     "n": 41,
+     "filhos": null,
+     "classe": 5
+    },
+    {
+     "id": 7,
+     "n": 91,
+     "filhos": [
+      53,
+      54
+     ],
+     "chi2": 914.8,
+     "classe": null
+    },
+    {
+     "id": 8,
+     "n": 192,
+     "filhos": [
+      9,
+      10
+     ],
+     "chi2": 547.9,
+     "classe": null
+    },
+    {
+     "id": 9,
+     "n": 191,
+     "filhos": [
+      11,
+      12
+     ],
+     "chi2": 521.9,
+     "classe": null
+    },
+    {
+     "id": 10,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 11,
+     "n": 189,
+     "filhos": [
+      13,
+      14
+     ],
+     "chi2": 509.7,
+     "classe": null
+    },
+    {
+     "id": 12,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 13,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 14,
+     "n": 188,
+     "filhos": [
+      15,
+      16
+     ],
+     "chi2": 501.3,
+     "classe": null
+    },
+    {
+     "id": 15,
+     "n": 187,
+     "filhos": [
+      17,
+      18
+     ],
+     "chi2": 424.0,
+     "classe": null
+    },
+    {
+     "id": 16,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 17,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 18,
+     "n": 182,
+     "filhos": [
+      19,
+      20
+     ],
+     "chi2": 395.8,
+     "classe": null
+    },
+    {
+     "id": 19,
+     "n": 14,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 20,
+     "n": 168,
+     "filhos": [
+      21,
+      22
+     ],
+     "chi2": 341.9,
+     "classe": null
+    },
+    {
+     "id": 21,
+     "n": 164,
+     "filhos": [
+      23,
+      24
+     ],
+     "chi2": 326.1,
+     "classe": null
+    },
+    {
+     "id": 22,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 23,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 24,
+     "n": 163,
+     "filhos": [
+      25,
+      26
+     ],
+     "chi2": 318.4,
+     "classe": null
+    },
+    {
+     "id": 25,
+     "n": 13,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 26,
+     "n": 150,
+     "filhos": [
+      27,
+      28
+     ],
+     "chi2": 291.1,
+     "classe": null
+    },
+    {
+     "id": 27,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 28,
+     "n": 148,
+     "filhos": [
+      29,
+      30
+     ],
+     "chi2": 276.3,
+     "classe": null
+    },
+    {
+     "id": 29,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 30,
+     "n": 143,
+     "filhos": [
+      31,
+      32
+     ],
+     "chi2": 262.5,
+     "classe": null
+    },
+    {
+     "id": 31,
+     "n": 139,
+     "filhos": [
+      33,
+      34
+     ],
+     "chi2": 230.4,
+     "classe": null
+    },
+    {
+     "id": 32,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 33,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 34,
+     "n": 138,
+     "filhos": [
+      35,
+      36
+     ],
+     "chi2": 226.4,
+     "classe": null
+    },
+    {
+     "id": 35,
+     "n": 133,
+     "filhos": [
+      37,
+      38
+     ],
+     "chi2": 225.4,
+     "classe": null
+    },
+    {
+     "id": 36,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 37,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 38,
+     "n": 131,
+     "filhos": [
+      39,
+      40
+     ],
+     "chi2": 208.8,
+     "classe": null
+    },
+    {
+     "id": 39,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 40,
+     "n": 127,
+     "filhos": [
+      41,
+      42
+     ],
+     "chi2": 190.4,
+     "classe": null
+    },
+    {
+     "id": 41,
+     "n": 103,
+     "filhos": [
+      43,
+      44
+     ],
+     "chi2": 155.3,
+     "classe": null
+    },
+    {
+     "id": 42,
+     "n": 24,
+     "filhos": null,
+     "classe": 4
+    },
+    {
+     "id": 43,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 44,
+     "n": 99,
+     "filhos": [
+      45,
+      46
+     ],
+     "chi2": 136.1,
+     "classe": null
+    },
+    {
+     "id": 45,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 46,
+     "n": 97,
+     "filhos": [
+      47,
+      48
+     ],
+     "chi2": 115.9,
+     "classe": null
+    },
+    {
+     "id": 47,
+     "n": 95,
+     "filhos": [
+      49,
+      50
+     ],
+     "chi2": 111.2,
+     "classe": null
+    },
+    {
+     "id": 48,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 49,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 50,
+     "n": 93,
+     "filhos": [
+      51,
+      52
+     ],
+     "chi2": 110.3,
+     "classe": null
+    },
+    {
+     "id": 51,
+     "n": 86,
+     "filhos": [
+      59,
+      60
+     ],
+     "chi2": 105.0,
+     "classe": null
+    },
+    {
+     "id": 52,
+     "n": 7,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 53,
+     "n": 90,
+     "filhos": [
+      55,
+      56
+     ],
+     "chi2": 805.9,
+     "classe": null
+    },
+    {
+     "id": 54,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 55,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 56,
+     "n": 89,
+     "filhos": [
+      57,
+      58
+     ],
+     "chi2": 719.4,
+     "classe": null
+    },
+    {
+     "id": 57,
+     "n": 3,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 58,
+     "n": 86,
+     "filhos": [
+      61,
+      62
+     ],
+     "chi2": 653.5,
+     "classe": null
+    },
+    {
+     "id": 59,
+     "n": 81,
+     "filhos": null,
+     "classe": 3
+    },
+    {
+     "id": 60,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 61,
+     "n": 57,
+     "filhos": null,
+     "classe": 1
+    },
+    {
+     "id": 62,
+     "n": 29,
+     "filhos": null,
+     "classe": 2
+    }
+   ],
+   "min_classe": 17,
+   "aproveitamento": {
+    "pct_classificados": 56.9,
+    "minimo_pct": 75.0,
+    "atinge_minimo": false,
+    "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
+    "regra": "classe mínima de 5% dos segmentos ativos (mín. 10), até 10 divisões por classe pedida, grupo menor que o mínimo fica não classificado",
+    "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"
+   },
+   "variavel": null,
+   "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado.",
+   "amostra": {
+    "comentarios": 439,
+    "de": 439,
+    "semente": 42
+   }
+  },
+  "erro_redes": "KeyError: 'video_id'"
+ },
+ "universo": [],
+ "pontos": [
+  [
+   "2021-07-29T00:27",
+   "tiktok",
+   128500,
+   [],
+   "nathaliecarneiroo",
+   "https://www.tiktok.com/@nathaliecarneiroo/video/6990138501853400325"
+  ],
+  [
+   "2023-01-17T15:55",
+   "tiktok",
+   653,
+   [],
+   null,
+   null
+  ],
+  [
+   "2023-11-18T21:11",
+   "tiktok",
+   419400,
+   [],
+   "amandacsi.of",
+   "https://www.tiktok.com/@amandacsi.of/video/7302912721555557638"
+  ],
+  [
+   "2025-01-03T23:28",
+   "tiktok",
+   155100,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "diasdenoticias24hr",
+   "https://www.tiktok.com/@diasdenoticias24hr/video/7455835214435126534"
+  ],
+  [
+   "2025-08-07T00:58",
+   "tiktok",
+   2394,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "katcriminologia",
+   "https://www.tiktok.com/@katcriminologia/video/7535641725159607557"
+  ],
+  [
+   "2025-10-28T00:30",
+   "tiktok",
+   14000,
+   [
+    "contraponto_defesa"
+   ],
+   "strangers_cases",
+   "https://www.tiktok.com/@strangers_cases/video/7566063460895755541"
+  ],
+  [
+   "2026-01-05T00:03",
+   "tiktok",
+   139700,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-01-12T19:47",
+   "tiktok",
+   3700000,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "metropolesoficial",
+   "https://www.tiktok.com/@metropolesoficial/video/7594564044896455943"
+  ],
+  [
+   "2026-01-15T22:52",
+   "tiktok",
+   18500,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "orlandopesotioficial",
+   "https://www.tiktok.com/@orlandopesotioficial/video/7595724982307638548"
+  ],
+  [
+   "2026-01-16T20:34",
+   "tiktok",
+   112100,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "vickleemos",
+   "https://www.tiktok.com/@vickleemos/video/7596060482667072786"
+  ],
+  [
+   "2026-01-16T22:24",
+   "tiktok",
+   14600,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "midiaemalta",
+   "https://www.tiktok.com/@midiaemalta/video/7596088986863406343"
+  ],
+  [
+   "2026-01-18T01:11",
+   "tiktok",
+   19800,
+   [
+    "apelo_justica_vitima",
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "boomnews1",
+   "https://www.tiktok.com/@boomnews1/video/7596502925791300884"
+  ],
+  [
+   "2026-01-18T17:42",
+   "tiktok",
+   5429,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "gusttavobrittonews",
+   "https://www.tiktok.com/@gusttavobrittonews/video/7596758386922802450"
+  ],
+  [
+   "2026-02-01T12:01",
+   "tiktok",
+   5481,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "gatopretonews",
+   "https://www.tiktok.com/@gatopretonews/video/7601865795714534676"
+  ],
+  [
+   "2026-03-16T13:12",
+   "tiktok",
+   1991,
+   [
+    "fora_escopo_homonimo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-03-18T01:06",
+   "tiktok",
+   556400,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "manulandiaaa",
+   "https://www.tiktok.com/@manulandiaaa/video/7618395673054039303"
+  ],
+  [
+   "2026-05-02T21:10",
+   "tiktok",
+   76900,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-05-02T22:52",
+   "tiktok",
+   30600,
+   [],
+   "maristelalmeidaa",
+   "https://www.tiktok.com/@maristelalmeidaa/video/7635431236114074900"
+  ],
+  [
+   "2026-05-04T00:29",
+   "tiktok",
+   19300,
+   [
+    "apelo_justica_vitima"
+   ],
+   "radialistaclesiomarques",
+   "https://www.tiktok.com/@radialistaclesiomarques/video/7635827023331560725"
+  ],
+  [
+   "2026-05-05T17:59",
+   "tiktok",
+   11400,
+   [
+    "informacao_noticia"
+   ],
+   "radialistaclesiomarques",
+   "https://www.tiktok.com/@radialistaclesiomarques/video/7636468985755749653"
+  ],
+  [
+   "2026-05-06T20:29",
+   "tiktok",
+   17900,
+   [],
+   "radialistaclesiomarques",
+   "https://www.tiktok.com/@radialistaclesiomarques/video/7636878398169779476"
+  ],
+  [
+   "2026-05-08T03:02",
+   "tiktok",
+   7023,
+   [
+    "informacao_noticia"
+   ],
+   "dhessycacasoscriminais",
+   "https://www.tiktok.com/@dhessycacasoscriminais/video/7637351031667461397"
+  ],
+  [
+   "2026-05-15T18:30",
+   "tiktok",
+   12400,
+   [
+    "informacao_noticia"
+   ],
+   "radialistaclesiomarques",
+   "https://www.tiktok.com/@radialistaclesiomarques/video/7640187663156382994"
+  ],
+  [
+   "2026-05-15T18:54",
+   "tiktok",
+   57400,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "radialistaclesiomarques",
+   "https://www.tiktok.com/@radialistaclesiomarques/video/7640193923771600135"
+  ],
+  [
+   "2026-06-01T20:02",
+   "tiktok",
+   43600,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "casoschocantes7",
+   "https://www.tiktok.com/@casoschocantes7/video/7646519697277521173"
+  ],
+  [
+   "2026-06-01T21:21",
+   "tiktok",
+   4169,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "casoschocantes7",
+   "https://www.tiktok.com/@casoschocantes7/video/7646540113823960340"
+  ],
+  [
+   "2026-06-13T12:08",
+   "tiktok",
+   7985,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "sempreconceitoredencao",
+   "https://www.tiktok.com/@sempreconceitoredencao/video/7650850864671853844"
+  ],
+  [
+   "2026-06-17T23:42",
+   "tiktok",
+   52000,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-06-19T20:21",
+   "tiktok",
+   18900,
+   [],
+   "micheliannaclara",
+   "https://www.tiktok.com/@micheliannaclara/video/7653204228868934933"
+  ],
+  [
+   "2026-06-25T15:38",
+   "tiktok",
+   1680,
+   [
+    "fora_escopo_homonimo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-06-27T01:45",
+   "tiktok",
+   6876,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "radialistaclesiomarques",
+   "https://www.tiktok.com/@radialistaclesiomarques/video/7655885477630741768"
+  ],
+  [
+   "2026-06-29T23:16",
+   "tiktok",
+   4473,
+   [],
+   "por.paula.andrea",
+   "https://www.tiktok.com/@por.paula.andrea/video/7656960325580901652"
+  ],
+  [
+   "2026-09-09T18:12",
+   "tiktok",
+   292700,
+   [
+    "informacao_noticia"
+   ],
+   "fbnews123",
+   "https://www.tiktok.com/@fbnews123/video/7683600128783109397"
+  ],
+  [
+   "2026-09-10T18:00",
+   "tiktok",
+   123800,
+   [
+    "convite_busca",
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "abrasegat",
+   "https://www.tiktok.com/@abrasegat/video/7683958224738995474"
+  ],
+  [
+   "2026-09-10T19:49",
+   "tiktok",
+   914600,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "portal6noticias",
+   "https://www.tiktok.com/@portal6noticias/video/7683996055179922708"
+  ],
+  [
+   "2026-09-10T21:32",
+   "tiktok",
+   69100,
+   [
+    "informacao_noticia"
+   ],
+   "rbfofocando",
+   "https://www.tiktok.com/@rbfofocando/video/7684022710657207568"
+  ],
+  [
+   "2026-09-10T22:17",
+   "tiktok",
+   297700,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "descobertasfsntasticas1",
+   "https://www.tiktok.com/@descobertasfsntasticas1/video/7684034225808411912"
+  ],
+  [
+   "2026-09-10T23:26",
+   "tiktok",
+   2314,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-09-11T10:23",
+   "tiktok",
+   2494,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "sergipeweb1",
+   "https://www.tiktok.com/@sergipeweb1/video/7684221379964669205"
+  ],
+  [
+   "2026-09-11T19:55",
+   "tiktok",
+   48400,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "xandabarreto73",
+   "https://www.tiktok.com/@xandabarreto73/video/7684368684692884754"
+  ],
+  [
+   "2026-09-30T13:36",
+   "tiktok",
+   1300000,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "revelando.br",
+   "https://www.tiktok.com/@revelando.br/video/7691321756333919509"
+  ],
+  [
+   "2026-09-30T18:04",
+   "tiktok",
+   1200000,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-09-30T22:17",
+   "tiktok",
+   58600,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "pragmatismopolitico",
+   "https://www.tiktok.com/@pragmatismopolitico/video/7691455821338692865"
+  ],
+  [
+   "2026-09-30T23:07",
+   "tiktok",
+   97500,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "lulaoficial",
+   "https://www.tiktok.com/@lulaoficial/video/7691468872863517973"
+  ],
+  [
+   "2026-09-30T23:21",
+   "tiktok",
+   154600,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "revelando.br",
+   "https://www.tiktok.com/@revelando.br/video/7691472398775749940"
+  ],
+  [
+   "2026-10-08T22:52",
+   "tiktok",
+   1100000,
+   [],
+   "trizpariz",
+   "https://www.tiktok.com/@trizpariz/video/7694433706668297493"
+  ],
+  [
+   "2026-10-12T13:39",
+   "tiktok",
+   1800000,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "euluizapereira_",
+   "https://www.tiktok.com/@euluizapereira_/video/7695775406464486677"
+  ],
+  [
+   "2026-10-13T14:45",
+   "tiktok",
+   76600,
+   [
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "noticiasagora__",
+   "https://www.tiktok.com/@noticiasagora__/video/7696163632471706901"
+  ],
+  [
+   "2026-10-13T16:55",
+   "tiktok",
+   88100,
+   [
+    "apelo_justica_vitima",
+    "fora_escopo_homonimo"
+   ],
+   "jornal.cidade.em5",
+   "https://www.tiktok.com/@jornal.cidade.em5/video/7696197039914323252"
+  ],
+  [
+   "2026-10-14T06:48",
+   "tiktok",
+   207400,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "jornal.cidade.em5",
+   "https://www.tiktok.com/@jornal.cidade.em5/video/7696411709480783111"
+  ],
+  [
+   "2026-10-14T10:17",
+   "tiktok",
+   1700000,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "metropolesoficial",
+   "https://www.tiktok.com/@metropolesoficial/video/7696465498820709652"
+  ],
+  [
+   "2026-10-14T17:06",
+   "tiktok",
+   555,
+   [
+    "fora_escopo_homonimo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-14T23:33",
+   "tiktok",
+   6474,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "jornalspreporter",
+   "https://www.tiktok.com/@jornalspreporter/video/7696670718112681234"
+  ],
+  [
+   "2026-10-15T00:55",
+   "tiktok",
+   76900,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "radarnewss",
+   "https://www.tiktok.com/@radarnewss/video/7696691905974897940"
+  ],
+  [
+   "2026-10-17T00:43",
+   "tiktok",
+   595400,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "manulandiaaa",
+   "https://www.tiktok.com/@manulandiaaa/video/7697430957980208391"
+  ],
+  [
+   "2026-10-19T00:27",
+   "tiktok",
+   6573,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T01:19",
+   "tiktok",
+   92700,
+   [
+    "acusacao_defesa_pm",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T01:54",
+   "tiktok",
+   618,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   "0ficialuts",
+   "https://www.tiktok.com/@0ficialuts/video/7698191368803355912"
+  ],
+  [
+   "2026-10-19T01:57",
+   "tiktok",
+   5291,
+   [
+    "apelo_justica_vitima",
+    "pedido_voto"
+   ],
+   "fakenewsna0",
+   "https://www.tiktok.com/@fakenewsna0/video/7698192221991980304"
+  ],
+  [
+   "2026-10-19T02:37",
+   "tiktok",
+   642,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T02:52",
+   "tiktok",
+   4535,
+   [
+    "acusacao_defesa_pm"
+   ],
+   "somostodosesquerdista",
+   "https://www.tiktok.com/@somostodosesquerdista/video/7698206440028359956"
+  ],
+  [
+   "2026-10-19T04:22",
+   "tiktok",
+   397200,
+   [
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   "seguidoresfieislula",
+   "https://www.tiktok.com/@seguidoresfieislula/video/7698229662115187988"
+  ],
+  [
+   "2026-10-19T05:20",
+   "tiktok",
+   177600,
+   [
+    "acusacao_defesa_pm"
+   ],
+   "rachelsherazade",
+   "https://www.tiktok.com/@rachelsherazade/video/7698244382004120849"
+  ],
+  [
+   "2026-10-19T07:08",
+   "tiktok",
+   832,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T08:54",
+   "tiktok",
+   5091,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T09:14",
+   "tiktok",
+   111800,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "fernandodaroca_oficial",
+   "https://www.tiktok.com/@fernandodaroca_oficial/video/7698304782364085522"
+  ],
+  [
+   "2026-10-19T09:59",
+   "tiktok",
+   217,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T11:05",
+   "tiktok",
+   1375,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T11:16",
+   "tiktok",
+   236,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T11:33",
+   "tiktok",
+   552,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T11:36",
+   "tiktok",
+   11000,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "salverainha7",
+   "https://www.tiktok.com/@salverainha7/video/7698341383857360148"
+  ],
+  [
+   "2026-10-19T12:14",
+   "tiktok",
+   158300,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "uol",
+   "https://www.tiktok.com/@uol/video/7698351202949614866"
+  ],
+  [
+   "2026-10-19T12:29",
+   "tiktok",
+   326,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T12:46",
+   "tiktok",
+   166,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T12:52",
+   "tiktok",
+   167,
+   [
+    "convite_busca"
+   ],
+   "nayale.jesus",
+   "https://www.tiktok.com/@nayale.jesus/video/7698360905754676498"
+  ],
+  [
+   "2026-10-19T12:56",
+   "tiktok",
+   487500,
+   [
+    "acusacao_defesa_pm",
+    "informacao_noticia",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T13:16",
+   "tiktok",
+   724,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T13:38",
+   "tiktok",
+   3250,
+   [],
+   "alemdodiscurso",
+   "https://www.tiktok.com/@alemdodiscurso/video/7698372711227133191"
+  ],
+  [
+   "2026-10-19T14:24",
+   "tiktok",
+   12400,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T14:59",
+   "tiktok",
+   558,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T15:18",
+   "tiktok",
+   728,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T16:09",
+   "tiktok",
+   3504,
+   [],
+   "nickedf",
+   "https://www.tiktok.com/@nickedf/video/7698411801280646406"
+  ],
+  [
+   "2026-10-19T16:27",
+   "tiktok",
+   326,
+   [],
+   "chrisaraujoficial",
+   "https://www.tiktok.com/@chrisaraujoficial/video/7698416416445271316"
+  ],
+  [
+   "2026-10-19T17:12",
+   "tiktok",
+   607,
+   [],
+   "lupt76",
+   "https://www.tiktok.com/@lupt76/video/7698428045400591636"
+  ],
+  [
+   "2026-10-19T17:14",
+   "tiktok",
+   683,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T17:15",
+   "tiktok",
+   5810,
+   [],
+   "ajuvichagas",
+   "https://www.tiktok.com/@ajuvichagas/video/7698428690283253044"
+  ],
+  [
+   "2026-10-19T17:23",
+   "tiktok",
+   216,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T18:07",
+   "tiktok",
+   619,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T18:08",
+   "tiktok",
+   11000,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T18:21",
+   "tiktok",
+   1531,
+   [
+    "convite_busca"
+   ],
+   "louieponto",
+   "https://www.tiktok.com/@louieponto/video/7698445811608194312"
+  ],
+  [
+   "2026-10-19T18:28",
+   "tiktok",
+   596,
+   [
+    "critica_uso_eleitoral"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T18:43",
+   "tiktok",
+   1124,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T19:25",
+   "tiktok",
+   100,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T19:51",
+   "tiktok",
+   19600,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   "prof.santana",
+   "https://www.tiktok.com/@prof.santana/video/7698468846658719028"
+  ],
+  [
+   "2026-10-19T20:30",
+   "tiktok",
+   993,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T21:39",
+   "tiktok",
+   3615,
+   [
+    "apelo_justica_vitima"
+   ],
+   "seinformeaqui",
+   "https://www.tiktok.com/@seinformeaqui/video/7698496804328918290"
+  ],
+  [
+   "2026-10-19T21:46",
+   "tiktok",
+   344,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T21:49",
+   "tiktok",
+   14200,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T21:52",
+   "tiktok",
+   236,
+   [],
+   "lucianokys",
+   "https://www.tiktok.com/@lucianokys/video/7698500198858853684"
+  ],
+  [
+   "2026-10-19T23:04",
+   "tiktok",
+   9639,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:18",
+   "tiktok",
+   201,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:21",
+   "tiktok",
+   813,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:27",
+   "tiktok",
+   691,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:32",
+   "tiktok",
+   16400,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia",
+    "pedido_voto"
+   ],
+   "plocsocial",
+   "https://www.tiktok.com/@plocsocial/video/7698525896709557511"
+  ],
+  [
+   "2026-10-19T23:40",
+   "tiktok",
+   179,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:41",
+   "tiktok",
+   1110,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:50",
+   "tiktok",
+   67000,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:53",
+   "tiktok",
+   25800,
+   [
+    "apelo_justica_vitima",
+    "associacao_crime",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:55",
+   "tiktok",
+   976,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T23:58",
+   "tiktok",
+   102,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T00:09",
+   "tiktok",
+   332,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T00:10",
+   "tiktok",
+   583,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T00:42",
+   "tiktok",
+   171,
+   [
+    "pedido_voto"
+   ],
+   ".mahlevolla",
+   "https://www.tiktok.com/@.mahlevolla/video/7698543963719978260"
+  ],
+  [
+   "2026-10-20T01:00",
+   "tiktok",
+   492,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T02:50",
+   "tiktok",
+   7,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T04:00",
+   "tiktok",
+   502,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T04:10",
+   "tiktok",
+   154,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T07:30",
+   "tiktok",
+   191,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T08:49",
+   "tiktok",
+   3149,
+   [
+    "acusacao_defesa_pm",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T09:14",
+   "tiktok",
+   506,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "ponto.de.vista.pr",
+   "https://www.tiktok.com/@ponto.de.vista.pr/video/7698675973977394452"
+  ],
+  [
+   "2026-10-20T09:25",
+   "tiktok",
+   489,
+   [
+    "acusacao_defesa_pm",
+    "associacao_crime",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T09:32",
+   "tiktok",
+   814,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T09:45",
+   "tiktok",
+   137,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T09:46",
+   "tiktok",
+   471,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T10:47",
+   "tiktok",
+   185,
+   [],
+   "valtermarotto",
+   "https://www.tiktok.com/@valtermarotto/video/7698699854364642567"
+  ],
+  [
+   "2026-10-20T11:08",
+   "tiktok",
+   201,
+   [
+    "critica_uso_eleitoral"
+   ],
+   "marasilva.silva",
+   "https://www.tiktok.com/@marasilva.silva/video/7698705338379422994"
+  ],
+  [
+   "2026-10-20T11:17",
+   "tiktok",
+   890,
+   [],
+   "walderleimaia",
+   "https://www.tiktok.com/@walderleimaia/video/7698707548383235336"
+  ],
+  [
+   "2026-10-20T11:58",
+   "tiktok",
+   878,
+   [],
+   "caito.martins",
+   "https://www.tiktok.com/@caito.martins/video/7698718087629049089"
+  ],
+  [
+   "2026-10-20T12:20",
+   "tiktok",
+   249,
+   [],
+   "jassi.costa2024",
+   "https://www.tiktok.com/@jassi.costa2024/video/7698723855799487765"
+  ],
+  [
+   "2026-10-20T12:58",
+   "tiktok",
+   531,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T13:02",
+   "tiktok",
+   497,
+   [
+    "associacao_crime",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T13:04",
+   "tiktok",
+   333300,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "noticiasagora__",
+   "https://www.tiktok.com/@noticiasagora__/video/7698735268219669780"
+  ],
+  [
+   "2026-10-20T13:27",
+   "tiktok",
+   0,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "vivendonapolitica",
+   "https://www.tiktok.com/@vivendonapolitica/video/7698741135732264225"
+  ],
+  [
+   "2026-10-20T13:27",
+   "tiktok",
+   93,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "somostodos_13",
+   "https://www.tiktok.com/@somostodos_13/video/7698741218771193108"
+  ],
+  [
+   "2026-10-20T13:27",
+   "tiktok",
+   68,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "viralspot20",
+   "https://www.tiktok.com/@viralspot20/video/7698741272843914529"
+  ],
+  [
+   "2026-10-20T13:29",
+   "tiktok",
+   64,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "politicacorreta_",
+   "https://www.tiktok.com/@politicacorreta_/video/7698741525416512789"
+  ],
+  [
+   "2026-10-20T13:29",
+   "tiktok",
+   38,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "_brasilcomlula",
+   "https://www.tiktok.com/@_brasilcomlula/video/7698741720921509141"
+  ],
+  [
+   "2026-10-20T13:30",
+   "tiktok",
+   55,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "politicadeprimeira",
+   "https://www.tiktok.com/@politicadeprimeira/video/7698741924559359284"
+  ],
+  [
+   "2026-10-20T13:32",
+   "tiktok",
+   43,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "povoemfoco_",
+   "https://www.tiktok.com/@povoemfoco_/video/7698742365086829831"
+  ],
+  [
+   "2026-10-20T13:32",
+   "tiktok",
+   60,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "breakingpulse.news",
+   "https://www.tiktok.com/@breakingpulse.news/video/7698742332832632077"
+  ],
+  [
+   "2026-10-20T13:33",
+   "tiktok",
+   141,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "politicobrasil_",
+   "https://www.tiktok.com/@politicobrasil_/video/7698742478261783822"
+  ],
+  [
+   "2026-10-20T13:33",
+   "tiktok",
+   68,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "politicobrr_",
+   "https://www.tiktok.com/@politicobrr_/video/7698742536428391693"
+  ],
+  [
+   "2026-10-20T13:35",
+   "tiktok",
+   155,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "primeiramentepolitica",
+   "https://www.tiktok.com/@primeiramentepolitica/video/7698742865798745358"
+  ],
+  [
+   "2026-10-20T13:36",
+   "tiktok",
+   70,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "buscandopolitica",
+   "https://www.tiktok.com/@buscandopolitica/video/7698743202978860301"
+  ],
+  [
+   "2026-10-20T13:38",
+   "tiktok",
+   70,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "politicadeverdade_",
+   "https://www.tiktok.com/@politicadeverdade_/video/7698744051713035540"
+  ],
+  [
+   "2026-10-20T13:39",
+   "tiktok",
+   51,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "politicodemocrata",
+   "https://www.tiktok.com/@politicodemocrata/video/7698744105152630030"
+  ],
+  [
+   "2026-10-20T13:40",
+   "tiktok",
+   20,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "fatopopularbr",
+   "https://www.tiktok.com/@fatopopularbr/video/7698744585157168405"
+  ],
+  [
+   "2026-10-20T13:40",
+   "tiktok",
+   21,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "impavidocolosso_",
+   "https://www.tiktok.com/@impavidocolosso_/video/7698744692011289889"
+  ],
+  [
+   "2026-10-20T13:41",
+   "tiktok",
+   93,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "portalriodejaneiro",
+   "https://www.tiktok.com/@portalriodejaneiro/video/7698744742967807264"
+  ],
+  [
+   "2026-10-20T17:11",
+   "tiktok",
+   5532,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T17:11",
+   "tiktok",
+   469,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T17:35",
+   "tiktok",
+   196300,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T18:12",
+   "tiktok",
+   231,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T19:53",
+   "tiktok",
+   18,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T22:36",
+   "tiktok",
+   591,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T22:40",
+   "tiktok",
+   8998,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T22:41",
+   "tiktok",
+   723,
+   [
+    "acusacao_defesa_pm",
+    "associacao_crime",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T22:57",
+   "tiktok",
+   208,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T23:35",
+   "tiktok",
+   194,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T00:17",
+   "tiktok",
+   762,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T01:10",
+   "tiktok",
+   217,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T01:10",
+   "tiktok",
+   866,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T01:15",
+   "tiktok",
+   593,
+   [
+    "acusacao_defesa_pm",
+    "associacao_crime",
+    "convite_busca",
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T01:40",
+   "tiktok",
+   573,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T09:36",
+   "tiktok",
+   411,
+   [
+    "convite_busca"
+   ],
+   "vozescomproposito",
+   "https://www.tiktok.com/@vozescomproposito/video/7699052676171992341"
+  ],
+  [
+   "2026-10-21T10:54",
+   "tiktok",
+   172,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T11:29",
+   "tiktok",
+   348,
+   [],
+   "arilsonchiorato",
+   "https://www.tiktok.com/@arilsonchiorato/video/7699081699623406869"
+  ],
+  [
+   "2026-10-21T11:52",
+   "tiktok",
+   377200,
+   [
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "rubinho.politizando",
+   "https://www.tiktok.com/@rubinho.politizando/video/7699087753375386887"
+  ],
+  [
+   "2026-10-21T12:38",
+   "tiktok",
+   533,
+   [
+    "convite_busca",
+    "informacao_noticia",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T13:05",
+   "tiktok",
+   11200,
+   [
+    "convite_busca"
+   ],
+   "gabriela.makar",
+   "https://www.tiktok.com/@gabriela.makar/video/7699106574459014421"
+  ],
+  [
+   "2026-10-21T13:14",
+   "tiktok",
+   18200,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T14:10",
+   "tiktok",
+   276,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T14:28",
+   "tiktok",
+   125,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T14:34",
+   "tiktok",
+   215,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T14:36",
+   "tiktok",
+   620,
+   [],
+   "marcos.p..incio",
+   "https://www.tiktok.com/@marcos.p..incio/video/7699129983658118418"
+  ],
+  [
+   "2026-10-21T14:57",
+   "tiktok",
+   1100000,
+   [
+    "pedido_voto"
+   ],
+   "falamirelacosta",
+   "https://www.tiktok.com/@falamirelacosta/video/7699135299279965461"
+  ],
+  [
+   "2026-10-21T15:49",
+   "tiktok",
+   192,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "associacao_crime",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T16:16",
+   "tiktok",
+   184,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T17:11",
+   "tiktok",
+   33400,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "wimarcelo",
+   "https://www.tiktok.com/@wimarcelo/video/7699169861464804628"
+  ],
+  [
+   "2026-10-21T17:26",
+   "tiktok",
+   11600,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   "eemilianee",
+   "https://www.tiktok.com/@eemilianee/video/7699173736469007624"
+  ],
+  [
+   "2026-10-21T18:03",
+   "tiktok",
+   585,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T18:10",
+   "tiktok",
+   354,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T18:19",
+   "tiktok",
+   668,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T18:28",
+   "tiktok",
+   360,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T19:12",
+   "tiktok",
+   444200,
+   [
+    "apelo_justica_vitima",
+    "associacao_crime",
+    "informacao_noticia"
+   ],
+   "ivan_leandrof",
+   "https://www.tiktok.com/@ivan_leandrof/video/7699201205494730005"
+  ],
+  [
+   "2026-10-21T19:29",
+   "tiktok",
+   904,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T19:30",
+   "tiktok",
+   203400,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "revistaforum",
+   "https://www.tiktok.com/@revistaforum/video/7699197914849070342"
+  ],
+  [
+   "2026-10-21T19:48",
+   "tiktok",
+   707,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T20:07",
+   "tiktok",
+   104,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T20:48",
+   "tiktok",
+   1660,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T21:04",
+   "tiktok",
+   204500,
+   [
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "redetvt",
+   "https://www.tiktok.com/@redetvt/video/7699229864548650261"
+  ],
+  [
+   "2026-10-21T21:05",
+   "tiktok",
+   342900,
+   [
+    "convite_busca"
+   ],
+   "gustabritoo",
+   "https://www.tiktok.com/@gustabritoo/video/7699230223195311412"
+  ],
+  [
+   "2026-10-21T21:11",
+   "tiktok",
+   226600,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "a_pior_influencer",
+   "https://www.tiktok.com/@a_pior_influencer/video/7699231716409412884"
+  ],
+  [
+   "2026-10-21T21:12",
+   "tiktok",
+   920,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T21:56",
+   "tiktok",
+   106100,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "pedido_voto"
+   ],
+   "renatasouzario",
+   "https://www.tiktok.com/@renatasouzario/video/7699243417473223943"
+  ],
+  [
+   "2026-10-21T22:05",
+   "tiktok",
+   2106,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T22:10",
+   "tiktok",
+   126,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T22:22",
+   "tiktok",
+   612,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T22:27",
+   "tiktok",
+   452,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T23:37",
+   "tiktok",
+   242,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T23:57",
+   "tiktok",
+   1716,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T00:07",
+   "tiktok",
+   216,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T00:50",
+   "tiktok",
+   427,
+   [],
+   "darlenecostaneizer",
+   "https://www.tiktok.com/@darlenecostaneizer/video/7699288105098136840"
+  ],
+  [
+   "2026-10-22T01:03",
+   "tiktok",
+   922,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T01:30",
+   "tiktok",
+   965,
+   [
+    "convite_busca"
+   ],
+   "_barbaracandido",
+   "https://www.tiktok.com/@_barbaracandido/video/7699298535980125447"
+  ],
+  [
+   "2026-10-22T02:59",
+   "tiktok",
+   171,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T02:59",
+   "tiktok",
+   1106,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T03:05",
+   "tiktok",
+   254900,
+   [],
+   "adeliabristot",
+   "https://www.tiktok.com/@adeliabristot/video/7699322984867089685"
+  ],
+  [
+   "2026-10-22T09:01",
+   "tiktok",
+   205,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "varejaoseguidores",
+   "https://www.tiktok.com/@varejaoseguidores/video/7699414685862448404"
+  ],
+  [
+   "2026-10-22T10:06",
+   "tiktok",
+   384,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T12:17",
+   "tiktok",
+   557,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T13:11",
+   "tiktok",
+   303,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T13:27",
+   "tiktok",
+   18600,
+   [],
+   "atletadefimdesemana",
+   "https://www.tiktok.com/@atletadefimdesemana/video/7699483162245664021"
+  ],
+  [
+   "2026-10-22T13:30",
+   "tiktok",
+   3123,
+   [],
+   "_daniloverso",
+   "https://www.tiktok.com/@_daniloverso/video/7699483966360882438"
+  ],
+  [
+   "2026-10-22T13:36",
+   "tiktok",
+   198,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T13:58",
+   "tiktok",
+   31800,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia",
+    "pedido_voto"
+   ],
+   "gohanplz",
+   "https://www.tiktok.com/@gohanplz/video/7699491218488691976"
+  ],
+  [
+   "2026-10-22T14:33",
+   "tiktok",
+   3064,
+   [
+    "convite_busca"
+   ],
+   "fabianarato",
+   "https://www.tiktok.com/@fabianarato/video/7699500242563108117"
+  ],
+  [
+   "2026-10-22T14:47",
+   "tiktok",
+   384,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T15:08",
+   "tiktok",
+   338,
+   [
+    "associacao_crime"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T16:46",
+   "tiktok",
+   212,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T16:51",
+   "tiktok",
+   234700,
+   [
+    "apelo_justica_vitima",
+    "fora_escopo_homonimo"
+   ],
+   "ehgiulia",
+   "https://www.tiktok.com/@ehgiulia/video/7699535785955134727"
+  ],
+  [
+   "2026-10-22T17:00",
+   "tiktok",
+   125800,
+   [],
+   "armandinhoh",
+   "https://www.tiktok.com/@armandinhoh/video/7699538126649298197"
+  ],
+  [
+   "2026-10-22T17:10",
+   "tiktok",
+   604,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T18:02",
+   "tiktok",
+   999600,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T18:03",
+   "tiktok",
+   737,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T18:21",
+   "tiktok",
+   609,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T19:22",
+   "tiktok",
+   305500,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:20",
+   "tiktok",
+   3682,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:43",
+   "tiktok",
+   167,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:48",
+   "tiktok",
+   195,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T20:49",
+   "tiktok",
+   611,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:26",
+   "tiktok",
+   846,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T21:33",
+   "tiktok",
+   697,
+   [],
+   "coachironicaoficial",
+   "https://www.tiktok.com/@coachironicaoficial/video/7699608536451501320"
+  ],
+  [
+   "2026-10-22T21:56",
+   "tiktok",
+   778,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T22:49",
+   "tiktok",
+   90100,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   "ana_cavazotto",
+   "https://www.tiktok.com/@ana_cavazotto/video/7699628030636870932"
+  ],
+  [
+   "2026-10-22T23:05",
+   "tiktok",
+   573,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:47",
+   "tiktok",
+   1095,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "midianinja",
+   "https://www.tiktok.com/@midianinja/video/7699643081263418632"
+  ],
+  [
+   "2026-10-22T23:48",
+   "tiktok",
+   229,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T23:50",
+   "tiktok",
+   123,
+   [
+    "apelo_justica_vitima",
+    "associacao_crime",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T01:41",
+   "tiktok",
+   28600,
+   [
+    "associacao_crime"
+   ],
+   "nandaomusico2",
+   "https://www.tiktok.com/@nandaomusico2/video/7699672475268926740"
+  ],
+  [
+   "2026-10-23T01:55",
+   "tiktok",
+   2487,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T02:09",
+   "tiktok",
+   94,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T03:22",
+   "tiktok",
+   125500,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T11:11",
+   "tiktok",
+   207,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T13:35",
+   "tiktok",
+   357,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T13:37",
+   "tiktok",
+   355,
+   [],
+   "canhoto_consciente",
+   "https://www.tiktok.com/@canhoto_consciente/video/7699856802292272391"
+  ],
+  [
+   "2026-10-23T13:56",
+   "tiktok",
+   499,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T14:31",
+   "tiktok",
+   566,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T14:32",
+   "tiktok",
+   556,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T14:35",
+   "tiktok",
+   228600,
+   [
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "flagra.news",
+   "https://www.tiktok.com/@flagra.news/video/7699871916491934997"
+  ],
+  [
+   "2026-10-23T15:00",
+   "tiktok",
+   278,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:00",
+   "tiktok",
+   106200,
+   [
+    "acusacao_defesa_pm",
+    "associacao_crime"
+   ],
+   "politica.do.povo2",
+   "https://www.tiktok.com/@politica.do.povo2/video/7699878359479684359"
+  ],
+  [
+   "2026-10-23T15:24",
+   "tiktok",
+   504,
+   [],
+   "coachironicaoficial",
+   "https://www.tiktok.com/@coachironicaoficial/video/7699884577426377992"
+  ],
+  [
+   "2026-10-23T15:31",
+   "tiktok",
+   461,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T15:59",
+   "tiktok",
+   466,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T16:01",
+   "tiktok",
+   7795,
+   [],
+   "nandaomusico2",
+   "https://www.tiktok.com/@nandaomusico2/video/7699893930623503636"
+  ],
+  [
+   "2026-10-23T16:04",
+   "tiktok",
+   563,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T16:10",
+   "tiktok",
+   8452,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T17:01",
+   "tiktok",
+   770,
+   [],
+   "crlmag",
+   "https://www.tiktok.com/@crlmag/video/7699909534181149973"
+  ],
+  [
+   "2026-10-23T17:53",
+   "tiktok",
+   169,
+   [
+    "acusacao_defesa_pm",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T17:57",
+   "tiktok",
+   71,
+   [],
+   "claudia_teles_",
+   "https://www.tiktok.com/@claudia_teles_/video/7699921930656271622"
+  ],
+  [
+   "2026-10-23T18:08",
+   "tiktok",
+   535,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:13",
+   "tiktok",
+   111,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:26",
+   "tiktok",
+   105,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T18:35",
+   "tiktok",
+   5783,
+   [],
+   "passa_rinho",
+   "https://www.tiktok.com/@passa_rinho/video/7699933782509473045"
+  ],
+  [
+   "2026-10-23T19:28",
+   "tiktok",
+   342,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:30",
+   "tiktok",
+   330000,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T19:33",
+   "tiktok",
+   529,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:08",
+   "tiktok",
+   99,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T21:49",
+   "tiktok",
+   261,
+   [
+    "acusacao_defesa_pm"
+   ],
+   "cehfaz",
+   "https://www.tiktok.com/@cehfaz/video/7699983797558775061"
+  ],
+  [
+   "2026-10-23T22:19",
+   "tiktok",
+   574,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T22:20",
+   "tiktok",
+   162500,
+   [
+    "pedido_voto"
+   ],
+   "ito.081621",
+   "https://www.tiktok.com/@ito.081621/video/7699991725338676500"
+  ],
+  [
+   "2026-10-23T22:50",
+   "tiktok",
+   96,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:11",
+   "tiktok",
+   557,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T23:39",
+   "tiktok",
+   72,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T01:36",
+   "tiktok",
+   678000,
+   [
+    "informacao_noticia"
+   ],
+   "metropolesoficial",
+   "https://www.tiktok.com/@metropolesoficial/video/7700042159403191573"
+  ],
+  [
+   "2026-10-24T01:50",
+   "tiktok",
+   975200,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "viral_cariri",
+   "https://www.tiktok.com/@viral_cariri/video/7700045862193433876"
+  ],
+  [
+   "2026-10-24T02:00",
+   "tiktok",
+   420,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T02:17",
+   "tiktok",
+   197,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T02:25",
+   "tiktok",
+   2300000,
+   [
+    "informacao_noticia"
+   ],
+   "metropolesoficial",
+   "https://www.tiktok.com/@metropolesoficial/video/7700054846204022023"
+  ],
+  [
+   "2026-10-24T02:27",
+   "tiktok",
+   660,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T02:30",
+   "tiktok",
+   289300,
+   [],
+   "luisinho_fotocopia2",
+   "https://www.tiktok.com/@luisinho_fotocopia2/video/7700055977395080469"
+  ],
+  [
+   "2026-10-24T02:44",
+   "tiktok",
+   7145,
+   [],
+   "elenvieirac",
+   "https://www.tiktok.com/@elenvieirac/video/7700059803116145938"
+  ],
+  [
+   "2026-10-24T02:49",
+   "tiktok",
+   4500000,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "jornaloglobo",
+   "https://www.tiktok.com/@jornaloglobo/video/7700060972861361415"
+  ],
+  [
+   "2026-10-24T03:01",
+   "tiktok",
+   5786,
+   [
+    "convite_busca"
+   ],
+   "samiabomfim",
+   "https://www.tiktok.com/@samiabomfim/video/7700064182116338964"
+  ],
+  [
+   "2026-10-24T03:05",
+   "tiktok",
+   8194,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "desperta.brasil88",
+   "https://www.tiktok.com/@desperta.brasil88/video/7700065048051633426"
+  ],
+  [
+   "2026-10-24T03:09",
+   "tiktok",
+   318,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:12",
+   "tiktok",
+   4149,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:14",
+   "tiktok",
+   609,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:16",
+   "tiktok",
+   978,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:19",
+   "tiktok",
+   722000,
+   [],
+   "fofocamentando",
+   "https://www.tiktok.com/@fofocamentando/video/7700068777072889106"
+  ],
+  [
+   "2026-10-24T03:19",
+   "tiktok",
+   3401,
+   [
+    "convite_busca"
+   ],
+   "pimenta13br",
+   "https://www.tiktok.com/@pimenta13br/video/7700068816809659668"
+  ],
+  [
+   "2026-10-24T03:23",
+   "tiktok",
+   5043,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:25",
+   "tiktok",
+   2200000,
+   [
+    "apelo_justica_vitima",
+    "critica_uso_eleitoral",
+    "informacao_noticia"
+   ],
+   "metropolesoficial",
+   "https://www.tiktok.com/@metropolesoficial/video/7700070250661825798"
+  ],
+  [
+   "2026-10-24T03:29",
+   "tiktok",
+   582,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:30",
+   "tiktok",
+   284,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "dionyyyyyyyy",
+   "https://www.tiktok.com/@dionyyyyyyyy/video/7700071491970272533"
+  ],
+  [
+   "2026-10-24T03:44",
+   "tiktok",
+   405,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:45",
+   "tiktok",
+   1140,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T03:45",
+   "tiktok",
+   68400,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "bbcnewsbrasil",
+   "https://www.tiktok.com/@bbcnewsbrasil/video/7700075294081715478"
+  ],
+  [
+   "2026-10-24T03:46",
+   "tiktok",
+   1641,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:06",
+   "tiktok",
+   582,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:10",
+   "tiktok",
+   453400,
+   [
+    "informacao_noticia"
+   ],
+   "correio.braziliense",
+   "https://www.tiktok.com/@correio.braziliense/video/7700082013251964212"
+  ],
+  [
+   "2026-10-24T04:11",
+   "tiktok",
+   4572,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:16",
+   "tiktok",
+   106000,
+   [
+    "informacao_noticia"
+   ],
+   "brownebr",
+   "https://www.tiktok.com/@brownebr/video/7700083454423321877"
+  ],
+  [
+   "2026-10-24T04:17",
+   "tiktok",
+   6321,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "supostosbabados",
+   "https://www.tiktok.com/@supostosbabados/video/7700083635881381140"
+  ],
+  [
+   "2026-10-24T04:20",
+   "tiktok",
+   5020,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:22",
+   "tiktok",
+   59800,
+   [
+    "associacao_crime"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:30",
+   "tiktok",
+   408,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T04:35",
+   "tiktok",
+   5501,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "diariodepernambuco",
+   "https://www.tiktok.com/@diariodepernambuco/video/7700088350492888340"
+  ],
+  [
+   "2026-10-24T04:45",
+   "tiktok",
+   491400,
+   [],
+   "poder360",
+   "https://www.tiktok.com/@poder360/video/7700090867108891924"
+  ],
+  [
+   "2026-10-24T04:46",
+   "tiktok",
+   4799,
+   [
+    "informacao_noticia"
+   ],
+   "cleomarlages",
+   "https://www.tiktok.com/@cleomarlages/video/7700091269669866772"
+  ],
+  [
+   "2026-10-24T04:53",
+   "tiktok",
+   463,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T05:01",
+   "tiktok",
+   1416,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T05:20",
+   "tiktok",
+   21300,
+   [
+    "informacao_noticia"
+   ],
+   "niltonphilipe01",
+   "https://www.tiktok.com/@niltonphilipe01/video/7700100034888535317"
+  ],
+  [
+   "2026-10-24T05:22",
+   "tiktok",
+   2000000,
+   [
+    "contraponto_defesa"
+   ],
+   "marcelofreixo",
+   "https://www.tiktok.com/@marcelofreixo/video/7700100508341619976"
+  ],
+  [
+   "2026-10-24T05:32",
+   "tiktok",
+   3976,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T05:38",
+   "tiktok",
+   465,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T06:56",
+   "tiktok",
+   1825,
+   [
+    "apelo_justica_vitima",
+    "fora_escopo_homonimo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T07:40",
+   "tiktok",
+   1448,
+   [
+    "informacao_noticia"
+   ],
+   "amadrinhamor",
+   "https://www.tiktok.com/@amadrinhamor/video/7700135936394300693"
+  ],
+  [
+   "2026-10-24T07:43",
+   "tiktok",
+   194,
+   [],
+   "alcinolima4",
+   "https://www.tiktok.com/@alcinolima4/video/7700136691562056980"
+  ],
+  [
+   "2026-10-24T08:17",
+   "tiktok",
+   49300,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T08:30",
+   "tiktok",
+   1300000,
+   [
+    "informacao_noticia"
+   ],
+   "centraldopoder777",
+   "https://www.tiktok.com/@centraldopoder777/video/7700083902135782676"
+  ],
+  [
+   "2026-10-24T08:58",
+   "tiktok",
+   35300,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T09:03",
+   "tiktok",
+   60,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T09:23",
+   "tiktok",
+   577,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T09:40",
+   "tiktok",
+   289,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T09:48",
+   "tiktok",
+   10500,
+   [],
+   "_2_5_20_15",
+   "https://www.tiktok.com/@_2_5_20_15/video/7700169084654079253"
+  ],
+  [
+   "2026-10-24T09:50",
+   "tiktok",
+   58100,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "pirambupensante",
+   "https://www.tiktok.com/@pirambupensante/video/7700169453484461332"
+  ],
+  [
+   "2026-10-24T09:58",
+   "tiktok",
+   212800,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T10:08",
+   "tiktok",
+   1096,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T10:10",
+   "tiktok",
+   1289,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T10:20",
+   "tiktok",
+   102600,
+   [
+    "apelo_justica_vitima"
+   ],
+   "lu_mizu",
+   "https://www.tiktok.com/@lu_mizu/video/7700177165832228117"
+  ],
+  [
+   "2026-10-24T10:23",
+   "tiktok",
+   375,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T10:37",
+   "tiktok",
+   7311,
+   [
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T10:49",
+   "tiktok",
+   17300,
+   [
+    "informacao_noticia"
+   ],
+   "hqsemroteiro",
+   "https://www.tiktok.com/@hqsemroteiro/video/7700184712114867476"
+  ],
+  [
+   "2026-10-24T10:50",
+   "tiktok",
+   181,
+   [
+    "associacao_crime",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T10:57",
+   "tiktok",
+   16600,
+   [
+    "apelo_justica_vitima"
+   ],
+   "salverainha7",
+   "https://www.tiktok.com/@salverainha7/video/7700186676512984321"
+  ],
+  [
+   "2026-10-24T11:13",
+   "tiktok",
+   864,
+   [
+    "apelo_justica_vitima"
+   ],
+   "fabiolbk2",
+   "https://www.tiktok.com/@fabiolbk2/video/7700190826390949140"
+  ],
+  [
+   "2026-10-24T11:15",
+   "tiktok",
+   78900,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "salverainha7",
+   "https://www.tiktok.com/@salverainha7/video/7700191251152342273"
+  ],
+  [
+   "2026-10-24T11:18",
+   "tiktok",
+   2529,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:24",
+   "tiktok",
+   3673,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:31",
+   "tiktok",
+   419,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:31",
+   "tiktok",
+   415,
+   [],
+   "selmavilela227",
+   "https://www.tiktok.com/@selmavilela227/video/7700195619629174023"
+  ],
+  [
+   "2026-10-24T11:35",
+   "tiktok",
+   301,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:39",
+   "tiktok",
+   575,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:44",
+   "tiktok",
+   164,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:48",
+   "tiktok",
+   1455,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia",
+    "pedido_voto"
+   ],
+   "servicosburocraticos",
+   "https://www.tiktok.com/@servicosburocraticos/video/7700199581375630593"
+  ],
+  [
+   "2026-10-24T11:52",
+   "tiktok",
+   116,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T11:55",
+   "tiktok",
+   73,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:00",
+   "tiktok",
+   110,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:03",
+   "tiktok",
+   13300,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:23",
+   "tiktok",
+   1864,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "associacao_crime",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:30",
+   "tiktok",
+   454,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:41",
+   "tiktok",
+   218,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T12:50",
+   "tiktok",
+   6255,
+   [
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   "fiscalizapilao",
+   "https://www.tiktok.com/@fiscalizapilao/video/7700215952880848146"
+  ],
+  [
+   "2026-10-24T12:53",
+   "tiktok",
+   10500,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "nandaomusico2",
+   "https://www.tiktok.com/@nandaomusico2/video/7700216639974870293"
+  ],
+  [
+   "2026-10-24T12:55",
+   "tiktok",
+   1406,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T13:00",
+   "tiktok",
+   434100,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "noticiasurgentes17",
+   "https://www.tiktok.com/@noticiasurgentes17/video/7700218430988799238"
+  ],
+  [
+   "2026-10-24T13:05",
+   "tiktok",
+   419,
+   [
+    "associacao_crime"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T14:05",
+   "tiktok",
+   73100,
+   [],
+   "nandaomusico2",
+   "https://www.tiktok.com/@nandaomusico2/video/7700235281814785301"
+  ],
+  [
+   "2026-10-24T14:06",
+   "tiktok",
+   566,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T14:18",
+   "tiktok",
+   4816,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "navegueioficial",
+   "https://www.tiktok.com/@navegueioficial/video/7700238642408721682"
+  ],
+  [
+   "2026-10-24T14:28",
+   "tiktok",
+   1594,
+   [
+    "apelo_justica_vitima"
+   ],
+   "josikka",
+   "https://www.tiktok.com/@josikka/video/7700241065395178770"
+  ],
+  [
+   "2026-10-24T14:35",
+   "tiktok",
+   358,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T14:49",
+   "tiktok",
+   108,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T14:57",
+   "tiktok",
+   276,
+   [
+    "acusacao_defesa_pm",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:00",
+   "tiktok",
+   727,
+   [],
+   "povoemmovimentopt",
+   "https://www.tiktok.com/@povoemmovimentopt/video/7700249301099760904"
+  ],
+  [
+   "2026-10-24T15:03",
+   "tiktok",
+   116,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:13",
+   "tiktok",
+   128,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:23",
+   "tiktok",
+   573,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:38",
+   "tiktok",
+   90400,
+   [],
+   "leticiaa.ribas",
+   "https://www.tiktok.com/@leticiaa.ribas/video/7700259088516517128"
+  ],
+  [
+   "2026-10-24T15:41",
+   "tiktok",
+   252,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:58",
+   "tiktok",
+   677,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T16:46",
+   "tiktok",
+   141100,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T16:59",
+   "tiktok",
+   570,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:00",
+   "tiktok",
+   350,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:05",
+   "tiktok",
+   1482,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:06",
+   "tiktok",
+   1708,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:15",
+   "tiktok",
+   1588,
+   [
+    "apelo_justica_vitima",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:31",
+   "tiktok",
+   724,
+   [
+    "apelo_justica_vitima",
+    "associacao_crime"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:36",
+   "tiktok",
+   342,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T17:59",
+   "tiktok",
+   767,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T18:16",
+   "tiktok",
+   280300,
+   [
+    "informacao_noticia"
+   ],
+   "dompedronoficial",
+   "https://www.tiktok.com/@dompedronoficial/video/7700299864298605831"
+  ],
+  [
+   "2026-10-24T18:43",
+   "tiktok",
+   272800,
+   [
+    "informacao_noticia"
+   ],
+   "tvmpn_",
+   "https://www.tiktok.com/@tvmpn_/video/7700306824985300244"
+  ],
+  [
+   "2026-10-24T18:49",
+   "tiktok",
+   1964,
+   [
+    "apelo_justica_vitima",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T20:41",
+   "tiktok",
+   560,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T20:50",
+   "tiktok",
+   567,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T21:33",
+   "tiktok",
+   180,
+   [],
+   "keilasandre",
+   "https://www.tiktok.com/@keilasandre/video/7700350785925713173"
+  ],
+  [
+   "2026-10-24T22:25",
+   "tiktok",
+   1822,
+   [
+    "apelo_justica_vitima",
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T22:32",
+   "tiktok",
+   533,
+   [
+    "acusacao_defesa_pm",
+    "associacao_crime",
+    "convite_busca"
+   ],
+   "cidabarrosfashion",
+   "https://www.tiktok.com/@cidabarrosfashion/video/7700365929347190017"
+  ],
+  [
+   "2026-10-24T22:51",
+   "tiktok",
+   78900,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T23:10",
+   "tiktok",
+   49100,
+   [],
+   "euarizona_",
+   "https://www.tiktok.com/@euarizona_/video/7700375544285646100"
+  ],
+  [
+   "2026-10-24T23:38",
+   "tiktok",
+   5750,
+   [
+    "apelo_justica_vitima"
+   ],
+   "lucasdivulgacoesf.95",
+   "https://www.tiktok.com/@lucasdivulgacoesf.95/video/7700382934036909332"
+  ],
+  [
+   "2026-10-24T23:45",
+   "tiktok",
+   376,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T23:54",
+   "tiktok",
+   459,
+   [
+    "convite_busca"
+   ],
+   "lalassousaa",
+   "https://www.tiktok.com/@lalassousaa/video/7700386888175127860"
+  ],
+  [
+   "2026-10-25T00:00",
+   "tiktok",
+   2877,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T00:32",
+   "tiktok",
+   856,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   "exercitodolulanotiktok",
+   "https://www.tiktok.com/@exercitodolulanotiktok/video/7700396830441393409"
+  ],
+  [
+   "2026-10-25T00:35",
+   "tiktok",
+   3460,
+   [
+    "apelo_justica_vitima",
+    "fora_escopo_homonimo",
+    "informacao_noticia"
+   ],
+   "exercitodolulanotiktok",
+   "https://www.tiktok.com/@exercitodolulanotiktok/video/7700397564155251988"
+  ],
+  [
+   "2026-10-25T00:37",
+   "tiktok",
+   1800000,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T00:37",
+   "tiktok",
+   2086,
+   [
+    "apelo_justica_vitima",
+    "convite_busca",
+    "informacao_noticia"
+   ],
+   "exercitodolulanotiktok",
+   "https://www.tiktok.com/@exercitodolulanotiktok/video/7700398106126322965"
+  ],
+  [
+   "2026-10-25T00:42",
+   "tiktok",
+   4495,
+   [
+    "contraponto_defesa",
+    "critica_uso_eleitoral",
+    "informacao_noticia"
+   ],
+   "rubinho.politizando",
+   "https://www.tiktok.com/@rubinho.politizando/video/7700399265868270855"
+  ],
+  [
+   "2026-10-25T00:52",
+   "tiktok",
+   297100,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T00:57",
+   "tiktok",
+   340,
+   [],
+   "baptistalula013",
+   "https://www.tiktok.com/@baptistalula013/video/7700402542282296577"
+  ],
+  [
+   "2026-10-25T01:17",
+   "tiktok",
+   560,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T01:55",
+   "tiktok",
+   366,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T02:01",
+   "tiktok",
+   643100,
+   [
+    "informacao_noticia"
+   ],
+   "bryantropia",
+   "https://www.tiktok.com/@bryantropia/video/7700419614248897800"
+  ],
+  [
+   "2026-10-25T02:31",
+   "tiktok",
+   379,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T02:41",
+   "tiktok",
+   796,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T03:39",
+   "tiktok",
+   989,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T04:07",
+   "tiktok",
+   219,
+   [
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T04:08",
+   "tiktok",
+   1156,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T04:24",
+   "tiktok",
+   303,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T13:40",
+   "tiktok",
+   193,
+   [
+    "pedido_voto"
+   ],
+   "baptistalula013",
+   "https://www.tiktok.com/@baptistalula013/video/7700599635626282246"
+  ],
+  [
+   "2026-10-25T13:45",
+   "tiktok",
+   236,
+   [
+    "contraponto_defesa",
+    "critica_uso_eleitoral",
+    "informacao_noticia"
+   ],
+   "yasjacobina",
+   "https://www.tiktok.com/@yasjacobina/video/7700601162747235605"
+  ],
+  [
+   "2026-10-25T14:22",
+   "tiktok",
+   193,
+   [],
+   "baptistalula013",
+   "https://www.tiktok.com/@baptistalula013/video/7700610412236115201"
+  ],
+  [
+   "2026-10-25T14:46",
+   "tiktok",
+   2445,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "critica_uso_eleitoral",
+    "informacao_noticia"
+   ],
+   "direita.brasil._",
+   "https://www.tiktok.com/@direita.brasil._/video/7700616844058643733"
+  ],
+  [
+   "2026-10-25T19:00",
+   "tiktok",
+   425,
+   [
+    "apelo_justica_vitima",
+    "contraponto_defesa"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T21:24",
+   "tiktok",
+   649,
+   [
+    "apelo_justica_vitima"
+   ],
+   "eatriiiz",
+   "https://www.tiktok.com/@eatriiiz/video/7700719550815358228"
+  ],
+  [
+   "2026-10-26T00:27",
+   "tiktok",
+   234,
+   [
+    "acusacao_defesa_pm",
+    "associacao_crime",
+    "convite_busca"
+   ],
+   "cidabarrosfashion",
+   "https://www.tiktok.com/@cidabarrosfashion/video/7700766530581056788"
+  ],
+  [
+   "2026-10-26T00:39",
+   "tiktok",
+   122900,
+   [],
+   "tonyvieira007",
+   "https://www.tiktok.com/@tonyvieira007/video/7700769699981839623"
+  ],
+  [
+   "2026-10-26T02:01",
+   "tiktok",
+   1310,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   "mundo_dos_famosos00",
+   "https://www.tiktok.com/@mundo_dos_famosos00/video/7700790909109325077"
+  ],
+  [
+   "2026-10-26T03:06",
+   "tiktok",
+   455,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T07:57",
+   "tiktok",
+   380,
+   [
+    "acusacao_defesa_pm"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T09:07",
+   "tiktok",
+   3143,
+   [
+    "acusacao_defesa_pm",
+    "apelo_justica_vitima",
+    "contraponto_defesa",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T11:51",
+   "tiktok",
+   213,
+   [
+    "pedido_voto"
+   ],
+   "baptistalula013",
+   "https://www.tiktok.com/@baptistalula013/video/7700942776204102964"
+  ],
+  [
+   "2026-10-26T18:05",
+   "tiktok",
+   815,
+   [
+    "apelo_justica_vitima"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T19:12",
+   "tiktok",
+   4096,
+   [],
+   "tblackcast",
+   "https://www.tiktok.com/@tblackcast/video/7701056530430446868"
+  ],
+  [
+   "2026-10-26T20:11",
+   "tiktok",
+   26800,
+   [
+    "acusacao_defesa_pm",
+    "critica_uso_eleitoral"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T20:34",
+   "tiktok",
+   186,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T21:14",
+   "tiktok",
+   559,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T00:41",
+   "tiktok",
+   328,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T07:54",
+   "tiktok",
+   32400,
+   [],
+   "portaljuniorcomenta",
+   "https://www.tiktok.com/@portaljuniorcomenta/video/7701252820057476370"
+  ],
+  [
+   "2026-10-27T08:21",
+   "tiktok",
+   4300,
+   [
+    "apelo_justica_vitima",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T13:33",
+   "tiktok",
+   586,
+   [
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:13",
+   "tiktok",
+   628,
+   [
+    "apelo_justica_vitima",
+    "fora_escopo_homonimo"
+   ],
+   "rafaelmoulinn",
+   "https://www.tiktok.com/@rafaelmoulinn/video/7701427795661999380"
+  ],
+  [
+   "2026-10-27T19:42",
+   "tiktok",
+   1818,
+   [
+    "fora_escopo_homonimo"
+   ],
+   "rafaelmoulinn",
+   "https://www.tiktok.com/@rafaelmoulinn/video/7701435187925929237"
+  ],
+  [
+   "2026-10-27T21:13",
+   "tiktok",
+   621,
+   [],
+   "entreter2",
+   "https://www.tiktok.com/@entreter2/video/7701458736220491060"
+  ],
+  [
+   "2026-10-27T23:44",
+   "tiktok",
+   9017,
+   [
+    "ironia_humor"
+   ],
+   "micheliannaclara",
+   "https://www.tiktok.com/@micheliannaclara/video/7701497557813398804"
+  ],
+  [
+   "2026-10-28T16:23",
+   "tiktok",
+   4876,
+   [],
+   "fanesempano",
+   "https://www.tiktok.com/@fanesempano/video/7701755118391184648"
+  ]
+ ],
+ "nota": "Pré-codificação automática por indicadores (sugestão, não decisão); várias categorias por publicação; percentuais sobre as publicações lidas, não sobre o universo."
+}

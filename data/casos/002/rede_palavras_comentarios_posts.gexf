@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://gexf.net/1.3" version="1.3">
+<graph defaultedgetype="undirected">
+<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/></attributes>
+<nodes>
+<node id="flavio" label="flavio"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/></attvalues></node>
+<node id="gabriel" label="gabriel"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
+<node id="ladrao" label="ladrao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="72"/></attvalues></node>
+<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="17"/></attvalues></node>
+<node id="bolsonaro" label="bolsonaro"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/></attvalues></node>
+<node id="nasceu" label="nasceu"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/></attvalues></node>
+<node id="sabe" label="sabe"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/></attvalues></node>
+<node id="pega" label="pega"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/></attvalues></node>
+<node id="google" label="google"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/></attvalues></node>
+</nodes><edges>
+<edge id="0" source="google" target="ladrao" weight="4"/>
+<edge id="1" source="google" target="sabe" weight="3"/>
+<edge id="2" source="ladrao" target="sabe" weight="3"/>
+<edge id="3" source="ladrao" target="nasceu" weight="4"/>
+<edge id="4" source="bolsonaro" target="lula" weight="7"/>
+<edge id="5" source="bolsonaro" target="flavio" weight="7"/>
+<edge id="6" source="ladrao" target="lula" weight="15"/>
+<edge id="7" source="ladrao" target="pega" weight="9"/>
+<edge id="8" source="bolsonaro" target="ladrao" weight="5"/>
+<edge id="9" source="flavio" target="ladrao" weight="7"/>
+<edge id="10" source="flavio" target="lula" weight="5"/>
+</edges>
+</graph>
+</gexf>

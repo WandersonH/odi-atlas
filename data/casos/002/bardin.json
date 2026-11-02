@@ -1,0 +1,8529 @@
+{
+ "caso": "002",
+ "gerado_em_utc": "2026-11-02T00:55:23Z",
+ "livro": {
+  "titulo": "Livro de códigos — caso 002: consulta depreciativa associada a um candidato no Google (\"onde mora/nasceu o ladrão\") (ODI Atlas)",
+  "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+  "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho dos livros dos casos 014 e 016: unidade de registro = cada publicação (texto do post, sem links); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+  "simetria": "Difusão (rótulo de ladrão, convite à busca) e reação (crítica ao algoritmo, desmentido, ironia) são codificadas separadamente; rótulo, crime e pedido de voto valem para qualquer candidato e qualquer alvo; nenhuma categoria mede a posição política de quem publica. O livro não afirma a associação: registra o que as publicações dizem dela.",
+  "amostra_humana": {
+   "tamanho": 200,
+   "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+   "codificadores": 2,
+   "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+  },
+  "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto."
+ },
+ "categorias": {
+  "rotulo_ladrao": {
+   "nome": "Rótulo de \"ladrão\" atribuído a candidato ou político",
+   "definicao": "Chama um candidato, político ou família política de ladrão, corrupto ou presidiário (qualquer alvo), inclusive por hashtag.",
+   "n": 38,
+   "pct": 17.9
+  },
+  "convite_busca": {
+   "nome": "Convite a pesquisar no Google ou na IA",
+   "definicao": "Convida a fazer a consulta no Google/IA (\"pesquise\", \"dá um Google\", \"onde nasceu o ladrão\") ou exibe o resultado da busca como prova.",
+   "n": 11,
+   "pct": 5.2
+  },
+  "corrupcao_crime": {
+   "nome": "Corrupção, crime e prisão",
+   "definicao": "Associa candidato ou partido a corrupção, crime, sigilo, prisão ou condenação (qualquer alvo).",
+   "n": 14,
+   "pct": 6.6
+  },
+  "pedido_voto": {
+   "nome": "Pedido de voto ou rejeição eleitoral",
+   "definicao": "Pede voto ou rejeição para qualquer candidato (\"fora Lula\", \"fora Bolsonaro\", \"vote 22\", \"Lula 13\").",
+   "n": 15,
+   "pct": 7.1
+  },
+  "critica_algoritmo": {
+   "nome": "Crítica ao Google, à IA ou à manipulação da busca",
+   "definicao": "Denuncia ou critica a manipulação da busca, o algoritmo, a IA do Google ou a campanha de consultas como desinformação.",
+   "n": 0,
+   "pct": 0.0
+  },
+  "desmentido_explicacao": {
+   "nome": "Desmentido, checagem ou explicação",
+   "definicao": "Explica por que a busca devolve esse resultado, corrige ou checa a associação (\"é falso\", \"entenda\", agências de checagem).",
+   "n": 0,
+   "pct": 0.0
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Usa humor, meme, paródia ou ironia (de qualquer lado).",
+   "n": 17,
+   "pct": 8.0
+  },
+  "informacao_noticia": {
+   "nome": "Informação ou notícia",
+   "definicao": "Relata fato noticioso ligado ao caso (debate, declaração, reportagem) sem chamada direta.",
+   "n": 8,
+   "pct": 3.8
+  },
+  "fora_escopo": {
+   "nome": "Fora do caso (música, homônimos e outros usos de \"ladrão\")",
+   "definicao": "Publicação que traz o termo de coleta em outro sentido: letras e músicas (samba, rap, funk), \"ladrão de sono\", biografias de onde nasceu outra pessoa etc. Serve para medir o ruído da coleta; não entra nos blocos.",
+   "n": 52,
+   "pct": 24.5
+  }
+ },
+ "publicacoes": 212,
+ "sem_categoria": {
+  "n": 84,
+  "pct": 39.6
+ },
+ "blocos": {
+  "incitacao": {
+   "categorias": [
+    "rotulo_ladrao",
+    "convite_busca",
+    "corrupcao_crime"
+   ],
+   "n": 55,
+   "pct": 25.9
+  },
+  "reacao": {
+   "categorias": [
+    "critica_algoritmo",
+    "desmentido_explicacao",
+    "ironia_humor"
+   ],
+   "n": 17,
+   "pct": 8.0
+  },
+  "os_dois": {
+   "n": 4,
+   "pct": 1.9
+  }
+ },
+ "por_rede": {
+  "tiktok": {
+   "n": 212,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 38,
+     "pct": 17.9
+    },
+    "convite_busca": {
+     "n": 11,
+     "pct": 5.2
+    },
+    "corrupcao_crime": {
+     "n": 14,
+     "pct": 6.6
+    },
+    "pedido_voto": {
+     "n": 15,
+     "pct": 7.1
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 17,
+     "pct": 8.0
+    },
+    "informacao_noticia": {
+     "n": 8,
+     "pct": 3.8
+    },
+    "fora_escopo": {
+     "n": 52,
+     "pct": 24.5
+    }
+   }
+  }
+ },
+ "por_termo": {
+  "tiktok · #ondenasceuoladrao": {
+   "n": 212,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 38,
+     "pct": 17.9
+    },
+    "convite_busca": {
+     "n": 11,
+     "pct": 5.2
+    },
+    "corrupcao_crime": {
+     "n": 14,
+     "pct": 6.6
+    },
+    "pedido_voto": {
+     "n": 15,
+     "pct": 7.1
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 17,
+     "pct": 8.0
+    },
+    "informacao_noticia": {
+     "n": 8,
+     "pct": 3.8
+    },
+    "fora_escopo": {
+     "n": 52,
+     "pct": 24.5
+    }
+   }
+  }
+ },
+ "por_dia": {
+  "2022-01-07": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2022-02-10": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2022-05-23": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2022-07-13": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2022-11-02": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2022-11-03": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-02-10": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2023-02-18": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-03-17": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-05-11": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-05-22": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2023-07-02": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-07-24": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2023-09-06": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2023-09-11": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2023-09-19": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-10-05": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-10-17": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-12-20": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2023-12-21": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2024-01-26": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2024-05-22": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2024-05-31": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2024-06-11": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2024-06-29": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2024-07-15": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2024-07-23": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2024-09-26": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2024-12-04": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2024-12-10": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2024-12-13": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2024-12-29": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-01-15": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-01-28": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-02-15": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-03-19": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-03-20": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-04-27": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-05-14": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-07-22": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-08-03": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-08-12": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-09-27": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-09-29": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-10-02": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-10-18": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2025-10-20": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-10-30": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-11-20": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-12-01": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2025-12-05": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-01-02": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-01-21": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-01-29": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-02-15": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-02-16": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 2,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-02-25": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-03-07": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-03-15": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 50.0
+    }
+   }
+  },
+  "2026-03-22": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-03-30": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-04-09": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 50.0
+    }
+   }
+  },
+  "2026-04-10": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-04-16": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-04-21": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-04-22": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 50.0
+    }
+   }
+  },
+  "2026-05-01": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-05-02": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-05-04": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-05-14": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 50.0
+    }
+   }
+  },
+  "2026-05-17": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-06-09": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-06-10": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-06-19": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-06-28": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-07-01": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-07-04": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-07-07": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-07-20": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-07-23": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-07-29": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-07-30": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-06": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-09": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-08-11": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-16": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-17": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-18": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-08-19": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-08-22": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-08-23": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-08-24": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-25": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-28": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-08-29": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-09-07": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-12": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-09-15": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-16": {
+   "n": 3,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 2,
+     "pct": 66.7
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-17": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-09-21": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-26": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-09-27": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-28": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 50.0
+    }
+   }
+  },
+  "2026-09-29": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-09-30": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-01": {
+   "n": 3,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-03": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-04": {
+   "n": 3,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-05": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-07": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 100.0
+    }
+   }
+  },
+  "2026-10-08": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-09": {
+   "n": 6,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 16.7
+    },
+    "convite_busca": {
+     "n": 3,
+     "pct": 50.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-10": {
+   "n": 4,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-11": {
+   "n": 3,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-12": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-13": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-14": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 50.0
+    }
+   }
+  },
+  "2026-10-15": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-16": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-17": {
+   "n": 2,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-18": {
+   "n": 8,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 3,
+     "pct": 37.5
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-19": {
+   "n": 8,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 4,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 12.5
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 12.5
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 12.5
+    },
+    "informacao_noticia": {
+     "n": 1,
+     "pct": 12.5
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-20": {
+   "n": 9,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 5,
+     "pct": 55.6
+    },
+    "convite_busca": {
+     "n": 1,
+     "pct": 11.1
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 11.1
+    },
+    "pedido_voto": {
+     "n": 2,
+     "pct": 22.2
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 11.1
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-21": {
+   "n": 6,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 3,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 2,
+     "pct": 33.3
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 16.7
+    },
+    "pedido_voto": {
+     "n": 2,
+     "pct": 33.3
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 16.7
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-22": {
+   "n": 6,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 3,
+     "pct": 50.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 2,
+     "pct": 33.3
+    },
+    "pedido_voto": {
+     "n": 2,
+     "pct": 33.3
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-23": {
+   "n": 3,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 33.3
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-24": {
+   "n": 9,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 11.1
+    },
+    "convite_busca": {
+     "n": 1,
+     "pct": 11.1
+    },
+    "corrupcao_crime": {
+     "n": 1,
+     "pct": 11.1
+    },
+    "pedido_voto": {
+     "n": 2,
+     "pct": 22.2
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 11.1
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 1,
+     "pct": 11.1
+    }
+   }
+  },
+  "2026-10-25": {
+   "n": 11,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 1,
+     "pct": 9.1
+    },
+    "convite_busca": {
+     "n": 1,
+     "pct": 9.1
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 1,
+     "pct": 9.1
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 3,
+     "pct": 27.3
+    }
+   }
+  },
+  "2026-10-26": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-27": {
+   "n": 1,
+   "categorias": {
+    "rotulo_ladrao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "convite_busca": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "corrupcao_crime": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pedido_voto": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "critica_algoritmo": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_explicacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "fora_escopo": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  }
+ },
+ "pares": [
+  {
+   "a": "corrupcao_crime",
+   "b": "rotulo_ladrao",
+   "n": 5
+  },
+  {
+   "a": "pedido_voto",
+   "b": "rotulo_ladrao",
+   "n": 5
+  },
+  {
+   "a": "convite_busca",
+   "b": "rotulo_ladrao",
+   "n": 3
+  },
+  {
+   "a": "ironia_humor",
+   "b": "rotulo_ladrao",
+   "n": 3
+  },
+  {
+   "a": "ironia_humor",
+   "b": "pedido_voto",
+   "n": 3
+  },
+  {
+   "a": "corrupcao_crime",
+   "b": "pedido_voto",
+   "n": 3
+  },
+  {
+   "a": "convite_busca",
+   "b": "pedido_voto",
+   "n": 3
+  },
+  {
+   "a": "fora_escopo",
+   "b": "ironia_humor",
+   "n": 2
+  },
+  {
+   "a": "corrupcao_crime",
+   "b": "fora_escopo",
+   "n": 2
+  },
+  {
+   "a": "fora_escopo",
+   "b": "rotulo_ladrao",
+   "n": 1
+  },
+  {
+   "a": "corrupcao_crime",
+   "b": "informacao_noticia",
+   "n": 1
+  },
+  {
+   "a": "corrupcao_crime",
+   "b": "ironia_humor",
+   "n": 1
+  },
+  {
+   "a": "fora_escopo",
+   "b": "pedido_voto",
+   "n": 1
+  }
+ ],
+ "exemplos_contas_10mil": {
+  "rotulo_ladrao": [
+   {
+    "rede": "tiktok",
+    "conta": "kennedlages1",
+    "seguidores": 351200,
+    "data": "2026-10-19",
+    "url": "https://www.tiktok.com/@kennedlages1/video/7698411627263184134",
+    "trecho": "#meme #humor #politica #flaviobolsonaro #lulaladrao"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "yzaluiza233",
+    "seguidores": 137800,
+    "data": "2022-01-07",
+    "url": "https://www.tiktok.com/@yzaluiza233/video/7050578024110099717",
+    "trecho": "esse e ladrao#yzaluiza233 #fyp #fyp viral #esseeladrao #f800 #fpy #fy #funk"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "wwltkk",
+    "seguidores": 132200,
+    "data": "2024-12-30",
+    "url": "https://www.tiktok.com/@wwltkk/video/7454022592291278085",
+    "trecho": "desenterrando hits nostalgicos #2022 #letra #esseeladrao #trendantiga #dancinhaantiga #nostalgia #oldtikto"
+   }
+  ],
+  "convite_busca": [
+   {
+    "rede": "tiktok",
+    "conta": "josecamara1",
+    "seguidores": 100600,
+    "data": "2026-10-12",
+    "url": "https://www.tiktok.com/@josecamara1/video/7695572677804756231",
+    "trecho": "pergunte ao google onde nasceu o ladrao"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "ggouverney123",
+    "seguidores": 24700,
+    "data": "2026-10-25",
+    "url": "https://www.tiktok.com/@ggouverney123/video/7700727013186948373",
+    "trecho": "#foraesquerda #flaviobolsonaro #foralula #anistia pergunta no google"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "22bolsonaro22presidente",
+    "seguidores": 12900,
+    "data": "2026-10-21",
+    "url": "https://www.tiktok.com/@22bolsonaro22presidente/video/7699268390782897415",
+    "trecho": "voce pesquisa no google quando e o aniversario do ladrao e aparece o lula"
+   }
+  ],
+  "corrupcao_crime": [
+   {
+    "rede": "tiktok",
+    "conta": "rodrigaoac",
+    "seguidores": 209600,
+    "data": "2026-08-06",
+    "url": "https://www.tiktok.com/@rodrigaoac/video/7671029447147015445",
+    "trecho": "ista tem que ver isso aqui todos sabem que lula e corrupto e todos ja falaram sobre isso inclusive a justica"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "gomesnews",
+    "seguidores": 149600,
+    "data": "2026-09-16",
+    "url": "https://www.tiktok.com/@gomesnews/video/7686242058817785109",
+    "trecho": "ntado como um dos maiores ladroes da bahia estava preso e sumiu por onde anda joanito #tiktoknews #mister"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "rodrigoastolfiphd",
+    "seguidores": 127900,
+    "data": "2023-10-05",
+    "url": "https://www.tiktok.com/@rodrigoastolfiphd/video/7286589880447126790",
+    "trecho": "a origem do bandido #crime #violencia #impunidade"
+   }
+  ],
+  "pedido_voto": [
+   {
+    "rede": "tiktok",
+    "conta": "rodrigaoac",
+    "seguidores": 209600,
+    "data": "2026-08-06",
+    "url": "https://www.tiktok.com/@rodrigaoac/video/7671029447147015445",
+    "trecho": "zer que lula nao e ladrao voce e um trouxa mesmo #foralula #forapt #presidente #flaviobolsonaro #22"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "josecardosoblbl",
+    "seguidores": 190600,
+    "data": "2026-10-20",
+    "url": "https://www.tiktok.com/@josecardosoblbl/video/7698710006643821842",
+    "trecho": "#lulapresidente2026 #"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "clickdovalemusic",
+    "seguidores": 80200,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@clickdovalemusic/video/7700279208622214452",
+    "trecho": "da minha conclua a musica nos comentarios #lula #lula13 #flaviobolsonaro #eleicoes2026 #lulapresidente"
+   }
+  ],
+  "critica_algoritmo": [],
+  "desmentido_explicacao": [],
+  "ironia_humor": [
+   {
+    "rede": "tiktok",
+    "conta": "kennedlages1",
+    "seguidores": 351200,
+    "data": "2026-10-19",
+    "url": "https://www.tiktok.com/@kennedlages1/video/7698411627263184134",
+    "trecho": "#meme #humor #politica #flaviobolsonaro #lulaladrao"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "audiodowhatssap",
+    "seguidores": 320500,
+    "data": "2024-06-29",
+    "url": "https://www.tiktok.com/@audiodowhatssap/video/7385947275664706821",
+    "trecho": "#gruposdewhatssap #audiosengracados #viral #bolsonaro #lula"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "clickdovalemusic",
+    "seguidores": 80200,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@clickdovalemusic/video/7700279208622214452",
+    "trecho": "i e golpista flavio rachadinha na cabeca da minha conclua a musica nos comentarios #lula #lula13 #flaviobolsonaro #e"
+   }
+  ],
+  "informacao_noticia": [
+   {
+    "rede": "tiktok",
+    "conta": "clipcityoficial",
+    "seguidores": 207200,
+    "data": "2025-10-20",
+    "url": "https://www.tiktok.com/@clipcityoficial/video/7563155796834487583",
+    "trecho": "donde nacio el leandrino #leandro #brasil #los40 #entrevista #clipcity"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "megamente0001",
+    "seguidores": 202400,
+    "data": "2026-10-19",
+    "url": "https://www.tiktok.com/@megamente0001/video/7698180751686126866",
+    "trecho": "onaro de ladrao #pl #lula #flaviobolsonaro #band #debate"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "luiz_patriota",
+    "seguidores": 141200,
+    "data": "2023-09-19",
+    "url": "https://www.tiktok.com/@luiz_patriota/video/7280598871212887342",
+    "trecho": "il #fazueli #brazil #jornalismo #janjo #petistas #noticias #noticiastiktok #janja #nineladrao"
+   }
+  ],
+  "fora_escopo": [
+   {
+    "rede": "tiktok",
+    "conta": "historiasdeterapia",
+    "seguidores": 1400000,
+    "data": "2025-07-22",
+    "url": "https://www.tiktok.com/@historiasdeterapia/video/7529880097273236741",
+    "trecho": "e viu ali o mundo que a favela nao tinha aulas de musica danca teatro esporte e uma merenda boa foi observ"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "rk_musics",
+    "seguidores": 1000000,
+    "data": "2025-02-15",
+    "url": "https://www.tiktok.com/@rk_musics/video/7471693639417105719",
+    "trecho": "nao acaba mais #eladrao #eladraoquenaoacabamais #bezerradasilva #bezerradasilvaeterno #samba #sambaraiz #pagode"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "terra.trend",
+    "seguidores": 419700,
+    "data": "2024-12-14",
+    "url": "https://www.tiktok.com/@terra.trend/video/7448092853420428550",
+    "trecho": "escubra onde o fenomeno iniciou sua trajetoria no futebol #ronaldo #fenomeno #futebol #historiadofutebol #r"
+   }
+  ]
+ },
+ "amostra_humana": {
+  "arquivo_privado": "casos/002/codificacao/amostra_bardin_v2.csv",
+  "publicacoes": 200,
+  "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"
+ },
+ "chd_palavras": {
+  "comentarios": 212,
+  "autores": 207,
+  "respostas": 0,
+  "por_dia": {
+   "2022-01-07": 1,
+   "2022-02-10": 1,
+   "2022-05-23": 1,
+   "2022-07-13": 1,
+   "2022-11-02": 1,
+   "2022-11-03": 1,
+   "2023-02-10": 1,
+   "2023-02-18": 1,
+   "2023-03-17": 1,
+   "2023-05-11": 1,
+   "2023-05-22": 1,
+   "2023-07-02": 1,
+   "2023-07-24": 1,
+   "2023-09-06": 1,
+   "2023-09-11": 1,
+   "2023-09-19": 1,
+   "2023-10-05": 1,
+   "2023-10-17": 1,
+   "2023-12-20": 1,
+   "2023-12-21": 1,
+   "2024-01-26": 1,
+   "2024-05-22": 1,
+   "2024-05-31": 1,
+   "2024-06-11": 1,
+   "2024-06-29": 1,
+   "2024-07-15": 1,
+   "2024-07-23": 1,
+   "2024-09-26": 1,
+   "2024-12-04": 1,
+   "2024-12-10": 1,
+   "2024-12-13": 1,
+   "2024-12-29": 1,
+   "2025-01-15": 1,
+   "2025-01-28": 1,
+   "2025-02-15": 1,
+   "2025-03-19": 1,
+   "2025-03-20": 1,
+   "2025-04-27": 1,
+   "2025-05-14": 1,
+   "2025-07-22": 1,
+   "2025-08-03": 1,
+   "2025-08-12": 1,
+   "2025-09-27": 1,
+   "2025-09-29": 1,
+   "2025-10-02": 1,
+   "2025-10-18": 1,
+   "2025-10-20": 1,
+   "2025-10-30": 1,
+   "2025-11-20": 1,
+   "2025-12-01": 1,
+   "2025-12-05": 1,
+   "2026-01-02": 1,
+   "2026-01-21": 1,
+   "2026-01-29": 1,
+   "2026-02-15": 1,
+   "2026-02-16": 2,
+   "2026-02-25": 1,
+   "2026-03-07": 1,
+   "2026-03-15": 2,
+   "2026-03-22": 1,
+   "2026-03-30": 1,
+   "2026-04-09": 2,
+   "2026-04-10": 1,
+   "2026-04-16": 1,
+   "2026-04-21": 1,
+   "2026-04-22": 2,
+   "2026-05-01": 1,
+   "2026-05-02": 1,
+   "2026-05-04": 1,
+   "2026-05-14": 2,
+   "2026-05-17": 1,
+   "2026-06-09": 1,
+   "2026-06-10": 1,
+   "2026-06-19": 1,
+   "2026-06-28": 1,
+   "2026-07-01": 1,
+   "2026-07-04": 1,
+   "2026-07-07": 1,
+   "2026-07-20": 1,
+   "2026-07-23": 1,
+   "2026-07-29": 1,
+   "2026-07-30": 1,
+   "2026-08-06": 1,
+   "2026-08-09": 1,
+   "2026-08-11": 1,
+   "2026-08-16": 1,
+   "2026-08-17": 1,
+   "2026-08-18": 1,
+   "2026-08-19": 1,
+   "2026-08-22": 1,
+   "2026-08-23": 1,
+   "2026-08-24": 1,
+   "2026-08-25": 1,
+   "2026-08-28": 1,
+   "2026-08-29": 1,
+   "2026-09-07": 1,
+   "2026-09-12": 1,
+   "2026-09-15": 1,
+   "2026-09-16": 3,
+   "2026-09-17": 1,
+   "2026-09-21": 1,
+   "2026-09-26": 1,
+   "2026-09-27": 1,
+   "2026-09-28": 2,
+   "2026-09-29": 2,
+   "2026-09-30": 1,
+   "2026-10-01": 3,
+   "2026-10-03": 1,
+   "2026-10-04": 3,
+   "2026-10-05": 2,
+   "2026-10-07": 1,
+   "2026-10-08": 2,
+   "2026-10-09": 6,
+   "2026-10-10": 4,
+   "2026-10-11": 3,
+   "2026-10-12": 1,
+   "2026-10-13": 1,
+   "2026-10-14": 2,
+   "2026-10-15": 2,
+   "2026-10-16": 2,
+   "2026-10-17": 2,
+   "2026-10-18": 8,
+   "2026-10-19": 8,
+   "2026-10-20": 9,
+   "2026-10-21": 6,
+   "2026-10-22": 6,
+   "2026-10-23": 3,
+   "2026-10-24": 9,
+   "2026-10-25": 11,
+   "2026-10-26": 1,
+   "2026-10-27": 1
+  },
+  "temas": {},
+  "temas_regex": {},
+  "palavras": [
+   [
+    "ladrão",
+    53
+   ],
+   [
+    "lula",
+    43
+   ],
+   [
+    "fyp",
+    32
+   ],
+   [
+    "viral",
+    30
+   ],
+   [
+    "bolsonaro",
+    29
+   ],
+   [
+    "ladrao",
+    28
+   ],
+   [
+    "brasil",
+    20
+   ],
+   [
+    "flaviobolsonaro",
+    19
+   ],
+   [
+    "pegaladrao",
+    16
+   ],
+   [
+    "lulaladrao",
+    15
+   ],
+   [
+    "eleicoes",
+    15
+   ],
+   [
+    "politica",
+    15
+   ],
+   [
+    "gabrielopensador",
+    13
+   ],
+   [
+    "google",
+    12
+   ],
+   [
+    "nasceu",
+    12
+   ],
+   [
+    "musica",
+    11
+   ],
+   [
+    "foralula",
+    10
+   ],
+   [
+    "edit",
+    9
+   ],
+   [
+    "foryou",
+    9
+   ],
+   [
+    "pega",
+    9
+   ],
+   [
+    "samba",
+    8
+   ],
+   [
+    "dia",
+    8
+   ],
+   [
+    "história",
+    8
+   ],
+   [
+    "del",
+    7
+   ],
+   [
+    "cidade",
+    7
+   ],
+   [
+    "foryoupage",
+    7
+   ],
+   [
+    "lyrics",
+    7
+   ],
+   [
+    "sou",
+    7
+   ],
+   [
+    "rei",
+    7
+   ],
+   [
+    "sabe",
+    6
+   ],
+   [
+    "bezerradasilva",
+    6
+   ],
+   [
+    "rap",
+    6
+   ],
+   [
+    "tipografia",
+    6
+   ],
+   [
+    "favela",
+    6
+   ],
+   [
+    "douglas",
+    6
+   ],
+   [
+    "comunidade",
+    6
+   ],
+   [
+    "dentro",
+    6
+   ],
+   [
+    "hoje",
+    6
+   ],
+   [
+    "viralvideo",
+    6
+   ],
+   [
+    "lampião",
+    6
+   ]
+  ],
+  "rede_palavras": {
+   "desenho": {
+    "nos": [
+     {
+      "id": "google",
+      "rotulo": "google",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 0.5522,
+      "y": 1.7359
+     },
+     {
+      "id": "ladrao",
+      "rotulo": "ladrao",
+      "tipo": "palavra",
+      "n": 72,
+      "grupo": 0,
+      "x": 1.0222,
+      "y": 0.9744
+     },
+     {
+      "id": "sabe",
+      "rotulo": "sabe",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 1.0298,
+      "y": 2.0
+     },
+     {
+      "id": "nasceu",
+      "rotulo": "nasceu",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 0,
+      "x": 1.8668,
+      "y": 0.525
+     },
+     {
+      "id": "bolsonaro",
+      "rotulo": "bolsonaro",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 1,
+      "x": 0.4465,
+      "y": 0.4097
+     },
+     {
+      "id": "lula",
+      "rotulo": "lula",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 1,
+      "x": 0.6497,
+      "y": 0.7607
+     },
+     {
+      "id": "flavio",
+      "rotulo": "flavio",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 1,
+      "x": 0.8706,
+      "y": 0.3419
+     },
+     {
+      "id": "pega",
+      "rotulo": "pega",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 1.5622,
+      "y": 1.2523
+     }
+    ],
+    "arestas": [
+     [
+      "google",
+      "ladrao",
+      4
+     ],
+     [
+      "google",
+      "sabe",
+      3
+     ],
+     [
+      "ladrao",
+      "sabe",
+      3
+     ],
+     [
+      "ladrao",
+      "nasceu",
+      4
+     ],
+     [
+      "ladrao",
+      "lula",
+      15
+     ],
+     [
+      "ladrao",
+      "pega",
+      9
+     ],
+     [
+      "ladrao",
+      "bolsonaro",
+      5
+     ],
+     [
+      "ladrao",
+      "flavio",
+      7
+     ],
+     [
+      "bolsonaro",
+      "lula",
+      7
+     ],
+     [
+      "bolsonaro",
+      "flavio",
+      7
+     ],
+     [
+      "lula",
+      "flavio",
+      5
+     ]
+    ],
+    "total_nos": 9,
+    "total_arestas": 11,
+    "comunidades": 2
+   },
+   "gexf": "rede_palavras_comentarios_posts.gexf",
+   "o_que_e": "palavras que aparecem juntas no mesmo comentário (3+ vezes); cor = comunidade"
+  },
+  "classes": {
+   "comentarios": 212,
+   "classificados": 66,
+   "pct_classificados": 31.1,
+   "classes": [
+    {
+     "classe": 1,
+     "segmentos": 19,
+     "pct": 28.8,
+     "formas": [
+      [
+       "nasceu",
+       22.5
+      ],
+      [
+       "cidade",
+       10.5
+      ],
+      [
+       "lampiao",
+       10.5
+      ],
+      [
+       "existe",
+       7.8
+      ],
+      [
+       "historia",
+       7.8
+      ],
+      [
+       "respondendo",
+       7.8
+      ],
+      [
+       "origem",
+       7.8
+      ],
+      [
+       "del",
+       7.8
+      ],
+      [
+       "rei",
+       7.8
+      ],
+      [
+       "viu",
+       7.8
+      ]
+     ],
+     "por_ano": {
+      "2022": 1,
+      "2023": 2,
+      "2024": 0,
+      "2025": 2,
+      "2026": 14
+     }
+    },
+    {
+     "classe": 2,
+     "segmentos": 18,
+     "pct": 27.3,
+     "formas": [
+      [
+       "lula",
+       43.2
+      ],
+      [
+       "bolsonaro",
+       31.4
+      ],
+      [
+       "flavio",
+       31.4
+      ],
+      [
+       "google",
+       5.5
+      ]
+     ],
+     "por_ano": {
+      "2022": 0,
+      "2023": 2,
+      "2024": 1,
+      "2025": 0,
+      "2026": 15
+     }
+    },
+    {
+     "classe": 3,
+     "segmentos": 29,
+     "pct": 43.9,
+     "formas": [
+      [
+       "ladrao",
+       24.1
+      ]
+     ],
+     "por_ano": {
+      "2022": 1,
+      "2023": 2,
+      "2024": 1,
+      "2025": 1,
+      "2026": 24
+     }
+    }
+   ],
+   "arvore": [
+    {
+     "id": 0,
+     "n": 103,
+     "filhos": [
+      1,
+      2
+     ],
+     "chi2": 161.2,
+     "classe": null
+    },
+    {
+     "id": 1,
+     "n": 19,
+     "filhos": null,
+     "classe": 1
+    },
+    {
+     "id": 2,
+     "n": 84,
+     "filhos": [
+      3,
+      4
+     ],
+     "chi2": 116.4,
+     "classe": null
+    },
+    {
+     "id": 3,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 4,
+     "n": 79,
+     "filhos": [
+      5,
+      6
+     ],
+     "chi2": 95.4,
+     "classe": null
+    },
+    {
+     "id": 5,
+     "n": 9,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 6,
+     "n": 70,
+     "filhos": [
+      7,
+      8
+     ],
+     "chi2": 82.7,
+     "classe": null
+    },
+    {
+     "id": 7,
+     "n": 22,
+     "filhos": [
+      17,
+      18
+     ],
+     "chi2": 32.6,
+     "classe": null
+    },
+    {
+     "id": 8,
+     "n": 48,
+     "filhos": [
+      9,
+      10
+     ],
+     "chi2": 45.7,
+     "classe": null
+    },
+    {
+     "id": 9,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 10,
+     "n": 44,
+     "filhos": [
+      11,
+      12
+     ],
+     "chi2": 33.9,
+     "classe": null
+    },
+    {
+     "id": 11,
+     "n": 40,
+     "filhos": [
+      13,
+      14
+     ],
+     "chi2": 27.0,
+     "classe": null
+    },
+    {
+     "id": 12,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 13,
+     "n": 36,
+     "filhos": [
+      15,
+      16
+     ],
+     "chi2": 17.3,
+     "classe": null
+    },
+    {
+     "id": 14,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 15,
+     "n": 29,
+     "filhos": null,
+     "classe": 3
+    },
+    {
+     "id": 16,
+     "n": 7,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 17,
+     "n": 18,
+     "filhos": null,
+     "classe": 2
+    },
+    {
+     "id": 18,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    }
+   ],
+   "min_classe": 10,
+   "aproveitamento": {
+    "pct_classificados": 31.1,
+    "minimo_pct": 75.0,
+    "atinge_minimo": false,
+    "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
+    "regra": "classe mínima de 5% dos segmentos ativos (mín. 10), até 10 divisões por classe pedida, grupo menor que o mínimo fica não classificado",
+    "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"
+   },
+   "variavel": null,
+   "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado.",
+   "amostra": {
+    "comentarios": 212,
+    "de": 212,
+    "semente": 42
+   }
+  },
+  "erro_redes": "KeyError: 'video_id'"
+ },
+ "universo": [],
+ "pontos": [
+  [
+   "2022-01-07T21:23",
+   "tiktok",
+   109800,
+   [
+    "fora_escopo",
+    "rotulo_ladrao"
+   ],
+   "yzaluiza233",
+   "https://www.tiktok.com/@yzaluiza233/video/7050578024110099717"
+  ],
+  [
+   "2022-02-10T20:41",
+   "tiktok",
+   121400,
+   [
+    "rotulo_ladrao"
+   ],
+   "narafps",
+   "https://www.tiktok.com/@narafps/video/7063183939313224966"
+  ],
+  [
+   "2022-05-23T22:55",
+   "tiktok",
+   320300,
+   [],
+   "lyric_wxn_chile2",
+   "https://www.tiktok.com/@lyric_wxn_chile2/video/7101069346864188678"
+  ],
+  [
+   "2022-07-13T22:37",
+   "tiktok",
+   932500,
+   [
+    "fora_escopo"
+   ],
+   "efrasalazarmusic",
+   "https://www.tiktok.com/@efrasalazarmusic/video/7119989861511073029"
+  ],
+  [
+   "2022-11-03T02:44",
+   "tiktok",
+   1326,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2022-11-03T21:56",
+   "tiktok",
+   2042,
+   [
+    "convite_busca",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2023-02-10T03:19",
+   "tiktok",
+   215700,
+   [
+    "fora_escopo"
+   ],
+   "bezerraobrabao",
+   "https://www.tiktok.com/@bezerraobrabao/video/7198361690063392006"
+  ],
+  [
+   "2023-02-18T21:29",
+   "tiktok",
+   2500000,
+   [],
+   "clipcastmoney",
+   "https://www.tiktok.com/@clipcastmoney/video/7201611128160505094"
+  ],
+  [
+   "2023-03-17T21:40",
+   "tiktok",
+   995700,
+   [
+    "rotulo_ladrao"
+   ],
+   "fabiocordeoli",
+   "https://www.tiktok.com/@fabiocordeoli/video/7211633235519130886"
+  ],
+  [
+   "2023-05-11T21:41",
+   "tiktok",
+   11600,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2023-05-23T00:44",
+   "tiktok",
+   6320,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2023-07-02T17:20",
+   "tiktok",
+   160000,
+   [
+    "informacao_noticia"
+   ],
+   "silvestre_souza_rondon",
+   "https://www.tiktok.com/@silvestre_souza_rondon/video/7251272483637038342"
+  ],
+  [
+   "2023-07-24T16:26",
+   "tiktok",
+   8112,
+   [
+    "fora_escopo"
+   ],
+   "adrianaliberali31",
+   "https://www.tiktok.com/@adrianaliberali31/video/7259422481163898117"
+  ],
+  [
+   "2023-09-07T00:08",
+   "tiktok",
+   3647,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2023-09-11T21:35",
+   "tiktok",
+   3081,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2023-09-19T18:02",
+   "tiktok",
+   1202,
+   [
+    "informacao_noticia"
+   ],
+   "luiz_patriota",
+   "https://www.tiktok.com/@luiz_patriota/video/7280598871212887342"
+  ],
+  [
+   "2023-10-05T21:30",
+   "tiktok",
+   15900,
+   [
+    "corrupcao_crime"
+   ],
+   "rodrigoastolfiphd",
+   "https://www.tiktok.com/@rodrigoastolfiphd/video/7286589880447126790"
+  ],
+  [
+   "2023-10-17T17:59",
+   "tiktok",
+   78500,
+   [
+    "rotulo_ladrao"
+   ],
+   "ramon.edit.8d",
+   "https://www.tiktok.com/@ramon.edit.8d/video/7290988479339662598"
+  ],
+  [
+   "2023-12-20T20:49",
+   "tiktok",
+   4300000,
+   [],
+   "andrefernandes_br",
+   "https://www.tiktok.com/@andrefernandes_br/video/7314781732098575621"
+  ],
+  [
+   "2023-12-21T20:30",
+   "tiktok",
+   120200,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2024-01-26T19:04",
+   "tiktok",
+   24200,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2024-05-22T19:45",
+   "tiktok",
+   11700,
+   [],
+   null,
+   null
+  ],
+  [
+   "2024-05-31T20:54",
+   "tiktok",
+   8425,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2024-06-11T10:51",
+   "tiktok",
+   808,
+   [],
+   "user1088528270768",
+   "https://www.tiktok.com/@user1088528270768/video/7379196461147262213"
+  ],
+  [
+   "2024-06-29T15:27",
+   "tiktok",
+   256300,
+   [
+    "ironia_humor"
+   ],
+   "audiodowhatssap",
+   "https://www.tiktok.com/@audiodowhatssap/video/7385947275664706821"
+  ],
+  [
+   "2024-07-15T20:24",
+   "tiktok",
+   20500,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2024-07-23T21:19",
+   "tiktok",
+   471000,
+   [
+    "fora_escopo"
+   ],
+   "pagodeysamba",
+   "https://www.tiktok.com/@pagodeysamba/video/7394943858976492806"
+  ],
+  [
+   "2024-09-26T23:36",
+   "tiktok",
+   3960,
+   [
+    "fora_escopo"
+   ],
+   "charadamusic1",
+   "https://www.tiktok.com/@charadamusic1/video/7419099737120427269"
+  ],
+  [
+   "2024-12-04T03:13",
+   "tiktok",
+   1100000,
+   [],
+   null,
+   null
+  ],
+  [
+   "2024-12-10T22:39",
+   "tiktok",
+   28000,
+   [
+    "corrupcao_crime",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2024-12-14T02:44",
+   "tiktok",
+   23000,
+   [
+    "fora_escopo"
+   ],
+   "terra.trend",
+   "https://www.tiktok.com/@terra.trend/video/7448092853420428550"
+  ],
+  [
+   "2024-12-30T02:14",
+   "tiktok",
+   524300,
+   [
+    "rotulo_ladrao"
+   ],
+   "wwltkk",
+   "https://www.tiktok.com/@wwltkk/video/7454022592291278085"
+  ],
+  [
+   "2025-01-15T20:17",
+   "tiktok",
+   43200,
+   [
+    "fora_escopo"
+   ],
+   "musicaboabrasil01",
+   "https://www.tiktok.com/@musicaboabrasil01/video/7460239052336401669"
+  ],
+  [
+   "2025-01-28T18:03",
+   "tiktok",
+   116100,
+   [
+    "fora_escopo"
+   ],
+   "musicaboabrasil01",
+   "https://www.tiktok.com/@musicaboabrasil01/video/7465028645287939334"
+  ],
+  [
+   "2025-02-15T17:07",
+   "tiktok",
+   345000,
+   [
+    "fora_escopo"
+   ],
+   "rk_musics",
+   "https://www.tiktok.com/@rk_musics/video/7471693639417105719"
+  ],
+  [
+   "2025-03-19T21:32",
+   "tiktok",
+   8332,
+   [
+    "ironia_humor",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2025-03-20T13:55",
+   "tiktok",
+   95300,
+   [
+    "fora_escopo"
+   ],
+   "musicaboabrasil01",
+   "https://www.tiktok.com/@musicaboabrasil01/video/7483889927487262007"
+  ],
+  [
+   "2025-04-27T08:58",
+   "tiktok",
+   24200,
+   [],
+   null,
+   null
+  ],
+  [
+   "2025-05-14T11:33",
+   "tiktok",
+   80,
+   [],
+   null,
+   null
+  ],
+  [
+   "2025-07-22T12:20",
+   "tiktok",
+   819100,
+   [
+    "fora_escopo"
+   ],
+   "historiasdeterapia",
+   "https://www.tiktok.com/@historiasdeterapia/video/7529880097273236741"
+  ],
+  [
+   "2025-08-04T02:56",
+   "tiktok",
+   107600,
+   [
+    "fora_escopo"
+   ],
+   "alexboladao_letras",
+   "https://www.tiktok.com/@alexboladao_letras/video/7534558743162391864"
+  ],
+  [
+   "2025-08-12T22:52",
+   "tiktok",
+   189400,
+   [],
+   "chilenofurioso",
+   "https://www.tiktok.com/@chilenofurioso/video/7537835640612719928"
+  ],
+  [
+   "2025-09-27T11:32",
+   "tiktok",
+   36500,
+   [],
+   "18.letras",
+   "https://www.tiktok.com/@18.letras/video/7554730329303452984"
+  ],
+  [
+   "2025-09-29T03:37",
+   "tiktok",
+   52500,
+   [
+    "corrupcao_crime"
+   ],
+   null,
+   null
+  ],
+  [
+   "2025-10-03T01:08",
+   "tiktok",
+   40100,
+   [],
+   null,
+   null
+  ],
+  [
+   "2025-10-18T15:59",
+   "tiktok",
+   104300,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2025-10-20T04:27",
+   "tiktok",
+   35600,
+   [
+    "informacao_noticia"
+   ],
+   "clipcityoficial",
+   "https://www.tiktok.com/@clipcityoficial/video/7563155796834487583"
+  ],
+  [
+   "2025-10-31T00:27",
+   "tiktok",
+   1761,
+   [],
+   null,
+   null
+  ],
+  [
+   "2025-11-20T03:16",
+   "tiktok",
+   64,
+   [],
+   null,
+   null
+  ],
+  [
+   "2025-12-02T02:38",
+   "tiktok",
+   38600,
+   [],
+   "gipsia.gisbert",
+   "https://www.tiktok.com/@gipsia.gisbert/video/7579084308942474527"
+  ],
+  [
+   "2025-12-06T00:13",
+   "tiktok",
+   2224,
+   [],
+   "emejota.lyrics1.7",
+   "https://www.tiktok.com/@emejota.lyrics1.7/video/7580531464576568584"
+  ],
+  [
+   "2026-01-02T23:26",
+   "tiktok",
+   322600,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-01-22T02:59",
+   "tiktok",
+   995,
+   [
+    "fora_escopo"
+   ],
+   "jogapramidia",
+   "https://www.tiktok.com/@jogapramidia/video/7598015087235861767"
+  ],
+  [
+   "2026-01-29T20:56",
+   "tiktok",
+   54000,
+   [],
+   "renansantosmbl",
+   "https://www.tiktok.com/@renansantosmbl/video/7600890354442767634"
+  ],
+  [
+   "2026-02-15T16:44",
+   "tiktok",
+   102800,
+   [
+    "fora_escopo"
+   ],
+   "emily333455",
+   "https://www.tiktok.com/@emily333455/video/7607133844134825223"
+  ],
+  [
+   "2026-02-16T17:08",
+   "tiktok",
+   3868,
+   [
+    "fora_escopo",
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-02-17T01:06",
+   "tiktok",
+   1060,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-02-25T10:09",
+   "tiktok",
+   38400,
+   [],
+   "eliasgomes92",
+   "https://www.tiktok.com/@eliasgomes92/video/7610742936988339463"
+  ],
+  [
+   "2026-03-07T22:39",
+   "tiktok",
+   64600,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-03-15T15:29",
+   "tiktok",
+   434600,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-03-15T22:06",
+   "tiktok",
+   260,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-03-22T13:02",
+   "tiktok",
+   2492,
+   [
+    "fora_escopo"
+   ],
+   "estacao.caipira",
+   "https://www.tiktok.com/@estacao.caipira/video/7620064462724189460"
+  ],
+  [
+   "2026-03-31T02:10",
+   "tiktok",
+   556000,
+   [],
+   "percebendojesuss",
+   "https://www.tiktok.com/@percebendojesuss/video/7623236325587553557"
+  ],
+  [
+   "2026-04-09T19:49",
+   "tiktok",
+   190300,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-04-09T22:03",
+   "tiktok",
+   1600000,
+   [],
+   "projetocurioso_",
+   "https://www.tiktok.com/@projetocurioso_/video/7626883460832988433"
+  ],
+  [
+   "2026-04-10T21:59",
+   "tiktok",
+   79200,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-04-16T21:16",
+   "tiktok",
+   5701,
+   [],
+   "moisescambuy1",
+   "https://www.tiktok.com/@moisescambuy1/video/7629468906058452225"
+  ],
+  [
+   "2026-04-22T00:24",
+   "tiktok",
+   129400,
+   [
+    "ironia_humor"
+   ],
+   "brasil.futuro3",
+   "https://www.tiktok.com/@brasil.futuro3/video/7631373008208284935"
+  ],
+  [
+   "2026-04-22T18:18",
+   "tiktok",
+   33300,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-04-22T23:48",
+   "tiktok",
+   13200,
+   [],
+   "sjddoficial",
+   "https://www.tiktok.com/@sjddoficial/video/7631734611202231570"
+  ],
+  [
+   "2026-05-01T10:52",
+   "tiktok",
+   1300000,
+   [
+    "fora_escopo"
+   ],
+   "loyylz.ae",
+   "https://www.tiktok.com/@loyylz.ae/video/7634874561875447062"
+  ],
+  [
+   "2026-05-02T19:19",
+   "tiktok",
+   32300,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-05-04T07:46",
+   "tiktok",
+   1300000,
+   [
+    "fora_escopo"
+   ],
+   "glooaoj",
+   "https://www.tiktok.com/@glooaoj/video/7635939890814864661"
+  ],
+  [
+   "2026-05-14T03:30",
+   "tiktok",
+   1930,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-05-14T22:22",
+   "tiktok",
+   660,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-05-17T16:36",
+   "tiktok",
+   3424,
+   [
+    "rotulo_ladrao"
+   ],
+   "rodolfofioravante33",
+   "https://www.tiktok.com/@rodolfofioravante33/video/7640900389587537183"
+  ],
+  [
+   "2026-06-09T07:01",
+   "tiktok",
+   386300,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-06-10T15:54",
+   "tiktok",
+   11300,
+   [
+    "fora_escopo"
+   ],
+   "nordesteoxente",
+   "https://www.tiktok.com/@nordesteoxente/video/7649795646987275541"
+  ],
+  [
+   "2026-06-19T14:50",
+   "tiktok",
+   2405,
+   [],
+   "videos.vs1",
+   "https://www.tiktok.com/@videos.vs1/video/7653118859712433416"
+  ],
+  [
+   "2026-06-28T04:34",
+   "tiktok",
+   2592,
+   [
+    "pedido_voto"
+   ],
+   "elioenayfalcao22",
+   "https://www.tiktok.com/@elioenayfalcao22/video/7656299977982971156"
+  ],
+  [
+   "2026-07-01T15:45",
+   "tiktok",
+   1006,
+   [
+    "fora_escopo"
+   ],
+   "nordesteoxente",
+   "https://www.tiktok.com/@nordesteoxente/video/7657586280980679957"
+  ],
+  [
+   "2026-07-04T16:33",
+   "tiktok",
+   24400,
+   [
+    "fora_escopo"
+   ],
+   "mainstreet.orochi",
+   "https://www.tiktok.com/@mainstreet.orochi/video/7658711704439917845"
+  ],
+  [
+   "2026-07-07T07:33",
+   "tiktok",
+   21300,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-07-20T14:39",
+   "tiktok",
+   463,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-07-24T01:08",
+   "tiktok",
+   1764,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-07-30T02:45",
+   "tiktok",
+   4749,
+   [
+    "fora_escopo"
+   ],
+   "adrx_ch",
+   "https://www.tiktok.com/@adrx_ch/video/7668146600291683591"
+  ],
+  [
+   "2026-07-31T01:59",
+   "tiktok",
+   13900,
+   [
+    "ironia_humor",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-08-06T21:12",
+   "tiktok",
+   674800,
+   [
+    "corrupcao_crime",
+    "pedido_voto"
+   ],
+   "rodrigaoac",
+   "https://www.tiktok.com/@rodrigaoac/video/7671029447147015445"
+  ],
+  [
+   "2026-08-09T22:49",
+   "tiktok",
+   2086,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-08-11T15:01",
+   "tiktok",
+   867400,
+   [],
+   "indio.abravanel.33",
+   "https://www.tiktok.com/@indio.abravanel.33/video/7672789346587577607"
+  ],
+  [
+   "2026-08-16T15:12",
+   "tiktok",
+   89800,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-08-17T23:40",
+   "tiktok",
+   2600000,
+   [
+    "ironia_humor"
+   ],
+   "varkovisk",
+   "https://www.tiktok.com/@varkovisk/video/7675149598469524744"
+  ],
+  [
+   "2026-08-18T23:53",
+   "tiktok",
+   3447,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-08-19T15:35",
+   "tiktok",
+   1100000,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-08-22T10:00",
+   "tiktok",
+   520000,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-08-23T18:52",
+   "tiktok",
+   103400,
+   [
+    "fora_escopo"
+   ],
+   "aranxxpp",
+   "https://www.tiktok.com/@aranxxpp/video/7677301959971441928"
+  ],
+  [
+   "2026-08-24T19:25",
+   "tiktok",
+   412,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-08-25T12:16",
+   "tiktok",
+   4576,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-08-29T01:41",
+   "tiktok",
+   1700000,
+   [
+    "pedido_voto"
+   ],
+   "kdrayy5",
+   "https://www.tiktok.com/@kdrayy5/video/7679262693559160071"
+  ],
+  [
+   "2026-08-29T23:54",
+   "tiktok",
+   951,
+   [
+    "corrupcao_crime",
+    "fora_escopo"
+   ],
+   "musicvibestatus",
+   "https://www.tiktok.com/@musicvibestatus/video/7679606216544341256"
+  ],
+  [
+   "2026-09-07T21:02",
+   "tiktok",
+   11000,
+   [
+    "rotulo_ladrao"
+   ],
+   "cleiton_oficial47",
+   "https://www.tiktok.com/@cleiton_oficial47/video/7682901677602524423"
+  ],
+  [
+   "2026-09-12T10:53",
+   "tiktok",
+   564400,
+   [
+    "fora_escopo"
+   ],
+   "goa1ed.zx",
+   "https://www.tiktok.com/@goa1ed.zx/video/7684599912863911182"
+  ],
+  [
+   "2026-09-15T16:12",
+   "tiktok",
+   7899,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-09-16T19:58",
+   "tiktok",
+   136600,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-09-16T20:21",
+   "tiktok",
+   1300000,
+   [
+    "corrupcao_crime"
+   ],
+   ".olivvhzs",
+   "https://www.tiktok.com/@.olivvhzs/video/7686230979186281736"
+  ],
+  [
+   "2026-09-16T21:04",
+   "tiktok",
+   43000,
+   [
+    "corrupcao_crime"
+   ],
+   "gomesnews",
+   "https://www.tiktok.com/@gomesnews/video/7686242058817785109"
+  ],
+  [
+   "2026-09-17T15:49",
+   "tiktok",
+   519000,
+   [
+    "fora_escopo"
+   ],
+   "teussilvva",
+   "https://www.tiktok.com/@teussilvva/video/7686531898142706965"
+  ],
+  [
+   "2026-09-21T15:21",
+   "tiktok",
+   83400,
+   [],
+   ".olivvhzs",
+   "https://www.tiktok.com/@.olivvhzs/video/7688009044849659144"
+  ],
+  [
+   "2026-09-26T15:35",
+   "tiktok",
+   292500,
+   [
+    "fora_escopo"
+   ],
+   "blacklyrics75",
+   "https://www.tiktok.com/@blacklyrics75/video/7689867938442218770"
+  ],
+  [
+   "2026-09-28T02:20",
+   "tiktok",
+   2200000,
+   [
+    "rotulo_ladrao"
+   ],
+   "jh6di",
+   "https://www.tiktok.com/@jh6di/video/7690405365564935431"
+  ],
+  [
+   "2026-09-28T16:56",
+   "tiktok",
+   8384,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-09-29T00:18",
+   "tiktok",
+   78300,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-09-29T18:25",
+   "tiktok",
+   1100000,
+   [],
+   ".gbrielhk",
+   "https://www.tiktok.com/@.gbrielhk/video/7691025108810435847"
+  ],
+  [
+   "2026-09-30T02:07",
+   "tiktok",
+   16800000,
+   [
+    "rotulo_ladrao"
+   ],
+   "politicaconservadoraof",
+   "https://www.tiktok.com/@politicaconservadoraof/video/7691144230542101768"
+  ],
+  [
+   "2026-09-30T04:52",
+   "tiktok",
+   320700,
+   [
+    "rotulo_ladrao"
+   ],
+   "omagodamidiaofc",
+   "https://www.tiktok.com/@omagodamidiaofc/video/7691186580911967508"
+  ],
+  [
+   "2026-10-01T21:16",
+   "tiktok",
+   677,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-01T21:48",
+   "tiktok",
+   423900,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-02T00:48",
+   "tiktok",
+   562700,
+   [],
+   "eblifestyle_",
+   "https://www.tiktok.com/@eblifestyle_/video/7691866047720295688"
+  ],
+  [
+   "2026-10-03T03:35",
+   "tiktok",
+   1019,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T13:33",
+   "tiktok",
+   367,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-04T16:23",
+   "tiktok",
+   3799,
+   [],
+   "naile244",
+   "https://www.tiktok.com/@naile244/video/7692849072356494593"
+  ],
+  [
+   "2026-10-04T17:07",
+   "tiktok",
+   24200,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-05T22:16",
+   "tiktok",
+   24200,
+   [
+    "corrupcao_crime"
+   ],
+   "illegal_7456",
+   "https://www.tiktok.com/@illegal_7456/video/7693311203543633173"
+  ],
+  [
+   "2026-10-06T00:20",
+   "tiktok",
+   832800,
+   [],
+   "paulamanci",
+   "https://www.tiktok.com/@paulamanci/video/7693343064844225812"
+  ],
+  [
+   "2026-10-08T01:21",
+   "tiktok",
+   10500,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-08T22:41",
+   "tiktok",
+   427800,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T01:53",
+   "tiktok",
+   301,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T12:57",
+   "tiktok",
+   620,
+   [
+    "convite_busca",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T16:10",
+   "tiktok",
+   1124,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T18:06",
+   "tiktok",
+   207,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T19:13",
+   "tiktok",
+   5116,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-09T23:01",
+   "tiktok",
+   244,
+   [
+    "convite_busca"
+   ],
+   "fanny0243",
+   "https://www.tiktok.com/@fanny0243/video/7694807040203476244"
+  ],
+  [
+   "2026-10-09T23:48",
+   "tiktok",
+   200,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-10T14:33",
+   "tiktok",
+   44000,
+   [],
+   "jessycasoares.ofc",
+   "https://www.tiktok.com/@jessycasoares.ofc/video/7695047363609627911"
+  ],
+  [
+   "2026-10-10T15:34",
+   "tiktok",
+   201,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-10T15:50",
+   "tiktok",
+   179700,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T01:48",
+   "tiktok",
+   199,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-11T13:23",
+   "tiktok",
+   2534,
+   [],
+   "nanday0.o",
+   "https://www.tiktok.com/@nanday0.o/video/7695400221668297991"
+  ],
+  [
+   "2026-10-11T17:54",
+   "tiktok",
+   423,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-12T00:32",
+   "tiktok",
+   428,
+   [
+    "convite_busca"
+   ],
+   "josecamara1",
+   "https://www.tiktok.com/@josecamara1/video/7695572677804756231"
+  ],
+  [
+   "2026-10-13T01:16",
+   "tiktok",
+   11600,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-13T14:29",
+   "tiktok",
+   3838,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-14T21:44",
+   "tiktok",
+   175100,
+   [
+    "fora_escopo"
+   ],
+   "lyrics.342",
+   "https://www.tiktok.com/@lyrics.342/video/7696642728721026324"
+  ],
+  [
+   "2026-10-15T00:49",
+   "tiktok",
+   1647,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-16T00:16",
+   "tiktok",
+   2691,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-16T01:48",
+   "tiktok",
+   694,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-16T12:42",
+   "tiktok",
+   573,
+   [],
+   "danielmessias484",
+   "https://www.tiktok.com/@danielmessias484/video/7697245183867505941"
+  ],
+  [
+   "2026-10-16T15:54",
+   "tiktok",
+   1967,
+   [
+    "rotulo_ladrao"
+   ],
+   "patriotaspelobrasil1977",
+   "https://www.tiktok.com/@patriotaspelobrasil1977/video/7697294660787604742"
+  ],
+  [
+   "2026-10-17T14:18",
+   "tiktok",
+   266200,
+   [],
+   "gersongp3",
+   "https://www.tiktok.com/@gersongp3/video/7697640909562793232"
+  ],
+  [
+   "2026-10-17T18:55",
+   "tiktok",
+   34000,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-18T08:09",
+   "tiktok",
+   1878,
+   [
+    "informacao_noticia"
+   ],
+   "tv.promove.comedia",
+   "https://www.tiktok.com/@tv.promove.comedia/video/7697916766718119174"
+  ],
+  [
+   "2026-10-18T17:01",
+   "tiktok",
+   476,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-18T17:59",
+   "tiktok",
+   331,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T00:54",
+   "tiktok",
+   4595,
+   [],
+   "conectshow_noticias",
+   "https://www.tiktok.com/@conectshow_noticias/video/7698175899014860053"
+  ],
+  [
+   "2026-10-19T01:04",
+   "tiktok",
+   632,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T01:13",
+   "tiktok",
+   138500,
+   [
+    "informacao_noticia"
+   ],
+   "megamente0001",
+   "https://www.tiktok.com/@megamente0001/video/7698180751686126866"
+  ],
+  [
+   "2026-10-19T02:15",
+   "tiktok",
+   565,
+   [],
+   "marino.coellho",
+   "https://www.tiktok.com/@marino.coellho/video/7698196780147690765"
+  ],
+  [
+   "2026-10-19T02:38",
+   "tiktok",
+   7826,
+   [
+    "informacao_noticia"
+   ],
+   "thiagoseiixas",
+   "https://www.tiktok.com/@thiagoseiixas/video/7698202841902615826"
+  ],
+  [
+   "2026-10-19T03:11",
+   "tiktok",
+   1344,
+   [],
+   "prjuliocarneiro",
+   "https://www.tiktok.com/@prjuliocarneiro/video/7698211276454956309"
+  ],
+  [
+   "2026-10-19T09:41",
+   "tiktok",
+   252,
+   [
+    "corrupcao_crime",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-19T09:49",
+   "tiktok",
+   20300,
+   [
+    "informacao_noticia"
+   ],
+   "ronny_da_midia",
+   "https://www.tiktok.com/@ronny_da_midia/video/7698313870800178439"
+  ],
+  [
+   "2026-10-19T15:50",
+   "tiktok",
+   12500,
+   [],
+   "vidanocampotv",
+   "https://www.tiktok.com/@vidanocampotv/video/7698406847576870145"
+  ],
+  [
+   "2026-10-19T16:09",
+   "tiktok",
+   39800,
+   [
+    "ironia_humor",
+    "rotulo_ladrao"
+   ],
+   "kennedlages1",
+   "https://www.tiktok.com/@kennedlages1/video/7698411627263184134"
+  ],
+  [
+   "2026-10-19T18:18",
+   "tiktok",
+   273,
+   [],
+   "eddiemorais1965",
+   "https://www.tiktok.com/@eddiemorais1965/video/7698444773518052660"
+  ],
+  [
+   "2026-10-19T19:30",
+   "tiktok",
+   415900,
+   [
+    "pedido_voto",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T02:24",
+   "tiktok",
+   604700,
+   [
+    "rotulo_ladrao"
+   ],
+   "multiversobolsolula",
+   "https://www.tiktok.com/@multiversobolsolula/video/7698570126051822866"
+  ],
+  [
+   "2026-10-20T10:39",
+   "tiktok",
+   281,
+   [
+    "corrupcao_crime",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T11:26",
+   "tiktok",
+   1049,
+   [
+    "pedido_voto"
+   ],
+   "josecardosoblbl",
+   "https://www.tiktok.com/@josecardosoblbl/video/7698710006643821842"
+  ],
+  [
+   "2026-10-20T14:15",
+   "tiktok",
+   65500,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T15:21",
+   "tiktok",
+   397,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T16:44",
+   "tiktok",
+   591,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T20:14",
+   "tiktok",
+   307,
+   [
+    "convite_busca",
+    "pedido_voto",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T21:53",
+   "tiktok",
+   332,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-20T23:04",
+   "tiktok",
+   358,
+   [
+    "ironia_humor"
+   ],
+   "mundocaipiramiranda1968",
+   "https://www.tiktok.com/@mundocaipiramiranda1968/video/7698889819614629140"
+  ],
+  [
+   "2026-10-21T01:44",
+   "tiktok",
+   5257,
+   [],
+   "tritaoph",
+   "https://www.tiktok.com/@tritaoph/video/7698930992471428373"
+  ],
+  [
+   "2026-10-21T13:56",
+   "tiktok",
+   19400,
+   [
+    "pedido_voto",
+    "rotulo_ladrao"
+   ],
+   "catiaaraujo787",
+   "https://www.tiktok.com/@catiaaraujo787/video/7699119650206158088"
+  ],
+  [
+   "2026-10-21T14:47",
+   "tiktok",
+   80400,
+   [],
+   "teresinado22",
+   "https://www.tiktok.com/@teresinado22/video/7699132849332538632"
+  ],
+  [
+   "2026-10-21T15:54",
+   "tiktok",
+   262,
+   [
+    "convite_busca"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T20:39",
+   "tiktok",
+   190,
+   [
+    "corrupcao_crime",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T21:25",
+   "tiktok",
+   582,
+   [
+    "ironia_humor",
+    "pedido_voto",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-21T23:33",
+   "tiktok",
+   271,
+   [
+    "convite_busca"
+   ],
+   "22bolsonaro22presidente",
+   "https://www.tiktok.com/@22bolsonaro22presidente/video/7699268390782897415"
+  ],
+  [
+   "2026-10-22T10:54",
+   "tiktok",
+   302,
+   [
+    "corrupcao_crime",
+    "pedido_voto",
+    "rotulo_ladrao"
+   ],
+   "julyaninha635",
+   "https://www.tiktok.com/@julyaninha635/video/7699443956798475540"
+  ],
+  [
+   "2026-10-22T14:36",
+   "tiktok",
+   378,
+   [
+    "corrupcao_crime",
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-22T16:48",
+   "tiktok",
+   3861,
+   [],
+   "pegadinhavandermaromba",
+   "https://www.tiktok.com/@pegadinhavandermaromba/video/7699535043512847624"
+  ],
+  [
+   "2026-10-22T17:52",
+   "tiktok",
+   83500,
+   [
+    "pedido_voto"
+   ],
+   "loganfala",
+   "https://www.tiktok.com/@loganfala/video/7699551526200659208"
+  ],
+  [
+   "2026-10-22T18:29",
+   "tiktok",
+   24700,
+   [
+    "rotulo_ladrao"
+   ],
+   "isisurania_",
+   "https://www.tiktok.com/@isisurania_/video/7699560977318022420"
+  ],
+  [
+   "2026-10-23T00:18",
+   "tiktok",
+   205,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-23T11:48",
+   "tiktok",
+   19200,
+   [
+    "pedido_voto"
+   ],
+   "alefkhodair",
+   "https://www.tiktok.com/@alefkhodair/video/7699828908794907956"
+  ],
+  [
+   "2026-10-23T12:03",
+   "tiktok",
+   280,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T02:12",
+   "tiktok",
+   9002,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:00",
+   "tiktok",
+   1770,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:00",
+   "tiktok",
+   1787,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T15:25",
+   "tiktok",
+   232,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T16:28",
+   "tiktok",
+   499,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T16:56",
+   "tiktok",
+   79900,
+   [
+    "corrupcao_crime",
+    "fora_escopo",
+    "ironia_humor",
+    "pedido_voto"
+   ],
+   "clickdovalemusic",
+   "https://www.tiktok.com/@clickdovalemusic/video/7700279208622214452"
+  ],
+  [
+   "2026-10-24T17:02",
+   "tiktok",
+   325,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T22:48",
+   "tiktok",
+   278,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-24T23:24",
+   "tiktok",
+   418,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T00:32",
+   "tiktok",
+   258,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T11:26",
+   "tiktok",
+   160,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T16:38",
+   "tiktok",
+   3355,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T20:24",
+   "tiktok",
+   33900,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T20:37",
+   "tiktok",
+   382,
+   [],
+   "doissemrumo.ofc",
+   "https://www.tiktok.com/@doissemrumo.ofc/video/7700707347945082132"
+  ],
+  [
+   "2026-10-25T20:38",
+   "tiktok",
+   658,
+   [
+    "fora_escopo"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T21:53",
+   "tiktok",
+   580,
+   [
+    "convite_busca",
+    "pedido_voto"
+   ],
+   "ggouverney123",
+   "https://www.tiktok.com/@ggouverney123/video/7700727013186948373"
+  ],
+  [
+   "2026-10-25T23:23",
+   "tiktok",
+   4441,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T00:41",
+   "tiktok",
+   688,
+   [],
+   "marcoscoelho4805",
+   "https://www.tiktok.com/@marcoscoelho4805/video/7700770252690377991"
+  ],
+  [
+   "2026-10-26T00:44",
+   "tiktok",
+   114600,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T00:45",
+   "tiktok",
+   162200,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T02:09",
+   "tiktok",
+   546900,
+   [
+    "rotulo_ladrao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T13:53",
+   "tiktok",
+   251,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T12:19",
+   "tiktok",
+   409,
+   [],
+   null,
+   null
+  ]
+ ],
+ "nota": "Pré-codificação automática por indicadores (sugestão, não decisão); várias categorias por publicação; percentuais sobre as publicações lidas, não sobre o universo."
+}

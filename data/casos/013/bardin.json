@@ -1,0 +1,9473 @@
+{
+ "caso": "013",
+ "gerado_em_utc": "2026-11-02T01:00:06Z",
+ "livro": {
+  "titulo": "Livro de códigos — caso 013: \"Onde está Flávio?\" e \"Flávio fugiu\" depois do 2º turno (ODI Atlas)",
+  "versao": "0.1 (2026-11-01) — rascunho redigido pelo Claude; ⛔ revisão do responsável pendente antes de valer",
+  "metodo": "Análise de conteúdo categorial (Bardin, 2011), no desenho do livro do caso 014: unidade de registro = cada publicação (texto/legenda do post, sem links; vídeos do TikTok pela legenda e hashtags); codificação por presença/ausência, várias categorias por publicação. Os indicadores fazem uma PRÉ-CODIFICAÇÃO automática (sugestão), comparados depois de normalizar o texto (minúsculas, sem acentos, termo inteiro; '*' = prefixo); a decisão é humana, em amostra de 200 codificada por duas pessoas, com concordância pelo kappa de Cohen.",
+  "simetria": "O Atlas não afirma nem nega a fuga. As categorias separam quem afirma a fuga ou pergunta pelo paradeiro (incitação) de quem a contesta, explica ou ridiculariza (reação), e codificam à parte o que é notícia, o destino citado e a menção à Justiça. Ataque pessoal é codificado venha de que lado vier. Nenhuma categoria mede a posição política de quem publica. O corpus é em português, espanhol e inglês, por isso há indicadores nas três línguas.",
+  "amostra_humana": {
+   "tamanho": 200,
+   "estratos": "rede × dia de publicação, proporcional, semente fixa 42",
+   "codificadores": 2,
+   "regra": "Codificadores independentes, sem ver a pré-codificação automática (arquivo separado). A amostra é gerada uma vez e nunca sobrescrita; fica só no repositório privado (textos de pessoas comuns)."
+  },
+  "regra_exclusao": "Antes de procurar os indicadores de uma categoria, os trechos em 'excluir_trechos' são retirados do texto."
+ },
+ "categorias": {
+  "afirma_fuga": {
+   "nome": "Afirma a fuga",
+   "definicao": "Afirma ou dá como certo que Flávio Bolsonaro fugiu, saiu escondido do país ou está foragido.",
+   "n": 151,
+   "pct": 44.4
+  },
+  "pergunta_paradeiro": {
+   "nome": "Pergunta pelo paradeiro",
+   "definicao": "Pergunta onde Flávio está, diz que sumiu ou que ninguém sabe dele (\"Cadê o Flávio?\").",
+   "n": 88,
+   "pct": 25.9
+  },
+  "destino_exterior": {
+   "nome": "Destino citado: EUA, Argentina ou outro país",
+   "definicao": "Menciona o país ou lugar para onde Flávio teria ido ou estaria (EUA, Miami, Argentina, fronteira).",
+   "n": 97,
+   "pct": 28.5
+  },
+  "justica_investigacao": {
+   "nome": "Justiça, polícia e investigação",
+   "definicao": "Cita Polícia Federal, STF, Moraes, passaporte, investigação, lavagem de dinheiro, prisão ou extradição.",
+   "n": 50,
+   "pct": 14.7
+  },
+  "episodios_anteriores": {
+   "nome": "Comparação com episódios anteriores",
+   "definicao": "Liga o caso a viagens ou acusações anteriores (Lisboa em julho de 2025; EUA em maio de 2026) ou diz que \"de novo\"/\"mais uma vez\" ele sumiu.",
+   "n": 1,
+   "pct": 0.3
+  },
+  "desqualificacao": {
+   "nome": "Desqualificação e insulto",
+   "definicao": "Rotula a pessoa com insulto ou desprezo (covarde, rato, frouxo, bandido, traidor), venha de que lado vier.",
+   "n": 13,
+   "pct": 3.8
+  },
+  "desmentido_defesa": {
+   "nome": "Desmentido ou defesa",
+   "definicao": "Nega a fuga, diz que é boato/fake ou explica a viagem (agenda, compromisso, nota da assessoria, já voltou).",
+   "n": 4,
+   "pct": 1.2
+  },
+  "informacao_noticia": {
+   "nome": "Informação e notícia",
+   "definicao": "Formato de notícia ou de reprodução de imprensa (\"segundo\", \"de acordo com\", \"urgente\", nome de veículo).",
+   "n": 53,
+   "pct": 15.6
+  },
+  "ironia_humor": {
+   "nome": "Ironia ou humor",
+   "definicao": "Marca de riso, deboche ou ironia na publicação, venha de que lado vier. A direção da ironia (contra quem) é decidida pelo codificador humano.",
+   "n": 33,
+   "pct": 9.7
+  }
+ },
+ "publicacoes": 340,
+ "sem_categoria": {
+  "n": 66,
+  "pct": 19.4
+ },
+ "blocos": {
+  "incitacao": {
+   "categorias": [
+    "afirma_fuga",
+    "pergunta_paradeiro",
+    "desqualificacao"
+   ],
+   "n": 216,
+   "pct": 63.5
+  },
+  "reacao": {
+   "categorias": [
+    "desmentido_defesa",
+    "ironia_humor"
+   ],
+   "n": 37,
+   "pct": 10.9
+  },
+  "os_dois": {
+   "n": 23,
+   "pct": 6.8
+  }
+ },
+ "por_rede": {
+  "tiktok": {
+   "n": 340,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 151,
+     "pct": 44.4
+    },
+    "pergunta_paradeiro": {
+     "n": 88,
+     "pct": 25.9
+    },
+    "destino_exterior": {
+     "n": 97,
+     "pct": 28.5
+    },
+    "justica_investigacao": {
+     "n": 50,
+     "pct": 14.7
+    },
+    "episodios_anteriores": {
+     "n": 1,
+     "pct": 0.3
+    },
+    "desqualificacao": {
+     "n": 13,
+     "pct": 3.8
+    },
+    "desmentido_defesa": {
+     "n": 4,
+     "pct": 1.2
+    },
+    "informacao_noticia": {
+     "n": 53,
+     "pct": 15.6
+    },
+    "ironia_humor": {
+     "n": 33,
+     "pct": 9.7
+    }
+   }
+  }
+ },
+ "por_termo": {
+  "tiktok · #cadeoflavio": {
+   "n": 80,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 16,
+     "pct": 20.0
+    },
+    "pergunta_paradeiro": {
+     "n": 50,
+     "pct": 62.5
+    },
+    "destino_exterior": {
+     "n": 4,
+     "pct": 5.0
+    },
+    "justica_investigacao": {
+     "n": 5,
+     "pct": 6.2
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 6,
+     "pct": 7.5
+    },
+    "desmentido_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 2,
+     "pct": 2.5
+    },
+    "ironia_humor": {
+     "n": 10,
+     "pct": 12.5
+    }
+   }
+  },
+  "tiktok · #flaviofugiu": {
+   "n": 120,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 103,
+     "pct": 85.8
+    },
+    "pergunta_paradeiro": {
+     "n": 1,
+     "pct": 0.8
+    },
+    "destino_exterior": {
+     "n": 36,
+     "pct": 30.0
+    },
+    "justica_investigacao": {
+     "n": 16,
+     "pct": 13.3
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 5,
+     "pct": 4.2
+    },
+    "desmentido_defesa": {
+     "n": 3,
+     "pct": 2.5
+    },
+    "informacao_noticia": {
+     "n": 24,
+     "pct": 20.0
+    },
+    "ironia_humor": {
+     "n": 12,
+     "pct": 10.0
+    }
+   }
+  },
+  "tiktok · #ondeestaflavio": {
+   "n": 89,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 24,
+     "pct": 27.0
+    },
+    "pergunta_paradeiro": {
+     "n": 32,
+     "pct": 36.0
+    },
+    "destino_exterior": {
+     "n": 40,
+     "pct": 44.9
+    },
+    "justica_investigacao": {
+     "n": 21,
+     "pct": 23.6
+    },
+    "episodios_anteriores": {
+     "n": 1,
+     "pct": 1.1
+    },
+    "desqualificacao": {
+     "n": 1,
+     "pct": 1.1
+    },
+    "desmentido_defesa": {
+     "n": 1,
+     "pct": 1.1
+    },
+    "informacao_noticia": {
+     "n": 20,
+     "pct": 22.5
+    },
+    "ironia_humor": {
+     "n": 7,
+     "pct": 7.9
+    }
+   }
+  },
+  "tiktok · #ondeestaoflavio": {
+   "n": 88,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 20,
+     "pct": 22.7
+    },
+    "pergunta_paradeiro": {
+     "n": 22,
+     "pct": 25.0
+    },
+    "destino_exterior": {
+     "n": 27,
+     "pct": 30.7
+    },
+    "justica_investigacao": {
+     "n": 14,
+     "pct": 15.9
+    },
+    "episodios_anteriores": {
+     "n": 1,
+     "pct": 1.1
+    },
+    "desqualificacao": {
+     "n": 4,
+     "pct": 4.5
+    },
+    "desmentido_defesa": {
+     "n": 2,
+     "pct": 2.3
+    },
+    "informacao_noticia": {
+     "n": 9,
+     "pct": 10.2
+    },
+    "ironia_humor": {
+     "n": 9,
+     "pct": 10.2
+    }
+   }
+  }
+ },
+ "por_dia": {
+  "2026-10-23": {
+   "n": 1,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pergunta_paradeiro": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "destino_exterior": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "justica_investigacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_defesa": {
+     "n": 1,
+     "pct": 100.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-24": {
+   "n": 1,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pergunta_paradeiro": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "destino_exterior": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "justica_investigacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-25": {
+   "n": 8,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pergunta_paradeiro": {
+     "n": 1,
+     "pct": 12.5
+    },
+    "destino_exterior": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "justica_investigacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 1,
+     "pct": 12.5
+    }
+   }
+  },
+  "2026-10-26": {
+   "n": 5,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "pergunta_paradeiro": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "destino_exterior": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "justica_investigacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 2,
+     "pct": 40.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  },
+  "2026-10-27": {
+   "n": 239,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 120,
+     "pct": 50.2
+    },
+    "pergunta_paradeiro": {
+     "n": 76,
+     "pct": 31.8
+    },
+    "destino_exterior": {
+     "n": 66,
+     "pct": 27.6
+    },
+    "justica_investigacao": {
+     "n": 38,
+     "pct": 15.9
+    },
+    "episodios_anteriores": {
+     "n": 1,
+     "pct": 0.4
+    },
+    "desqualificacao": {
+     "n": 11,
+     "pct": 4.6
+    },
+    "desmentido_defesa": {
+     "n": 3,
+     "pct": 1.3
+    },
+    "informacao_noticia": {
+     "n": 41,
+     "pct": 17.2
+    },
+    "ironia_humor": {
+     "n": 21,
+     "pct": 8.8
+    }
+   }
+  },
+  "2026-10-28": {
+   "n": 76,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 27,
+     "pct": 35.5
+    },
+    "pergunta_paradeiro": {
+     "n": 11,
+     "pct": 14.5
+    },
+    "destino_exterior": {
+     "n": 28,
+     "pct": 36.8
+    },
+    "justica_investigacao": {
+     "n": 9,
+     "pct": 11.8
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 2,
+     "pct": 2.6
+    },
+    "desmentido_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 10,
+     "pct": 13.2
+    },
+    "ironia_humor": {
+     "n": 11,
+     "pct": 14.5
+    }
+   }
+  },
+  "2026-10-29": {
+   "n": 10,
+   "categorias": {
+    "afirma_fuga": {
+     "n": 4,
+     "pct": 40.0
+    },
+    "pergunta_paradeiro": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "destino_exterior": {
+     "n": 3,
+     "pct": 30.0
+    },
+    "justica_investigacao": {
+     "n": 3,
+     "pct": 30.0
+    },
+    "episodios_anteriores": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desqualificacao": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "desmentido_defesa": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "informacao_noticia": {
+     "n": 0,
+     "pct": 0.0
+    },
+    "ironia_humor": {
+     "n": 0,
+     "pct": 0.0
+    }
+   }
+  }
+ },
+ "pares": [
+  {
+   "a": "afirma_fuga",
+   "b": "destino_exterior",
+   "n": 53
+  },
+  {
+   "a": "afirma_fuga",
+   "b": "justica_investigacao",
+   "n": 34
+  },
+  {
+   "a": "destino_exterior",
+   "b": "informacao_noticia",
+   "n": 34
+  },
+  {
+   "a": "destino_exterior",
+   "b": "justica_investigacao",
+   "n": 34
+  },
+  {
+   "a": "afirma_fuga",
+   "b": "informacao_noticia",
+   "n": 28
+  },
+  {
+   "a": "afirma_fuga",
+   "b": "pergunta_paradeiro",
+   "n": 23
+  },
+  {
+   "a": "destino_exterior",
+   "b": "pergunta_paradeiro",
+   "n": 15
+  },
+  {
+   "a": "informacao_noticia",
+   "b": "justica_investigacao",
+   "n": 14
+  },
+  {
+   "a": "justica_investigacao",
+   "b": "pergunta_paradeiro",
+   "n": 13
+  },
+  {
+   "a": "afirma_fuga",
+   "b": "ironia_humor",
+   "n": 13
+  },
+  {
+   "a": "afirma_fuga",
+   "b": "desqualificacao",
+   "n": 13
+  },
+  {
+   "a": "ironia_humor",
+   "b": "pergunta_paradeiro",
+   "n": 12
+  },
+  {
+   "a": "informacao_noticia",
+   "b": "pergunta_paradeiro",
+   "n": 7
+  },
+  {
+   "a": "desqualificacao",
+   "b": "pergunta_paradeiro",
+   "n": 7
+  },
+  {
+   "a": "desmentido_defesa",
+   "b": "destino_exterior",
+   "n": 3
+  }
+ ],
+ "exemplos_contas_10mil": {
+  "afirma_fuga": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7701418243205958933",
+    "trecho": "flavio fugiu com a #familia para os #eua e pedira asilo #polit"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7701487935647960340",
+    "trecho": "evo este artigo ninguem sabe se #flaviobolsonaro #fugiu mesmo do pais depois de #alexandredemoraes ter or"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "aljazeeraenglish",
+    "seguidores": 16700000,
+    "data": "2026-10-29",
+    "url": "https://www.tiktok.com/@aljazeeraenglish/video/7702013543683558687",
+    "trecho": "thing brazilians are split over flavio bolsonaro fleeing to the us after refusing to concede the election"
+   }
+  ],
+  "pergunta_paradeiro": [
+   {
+    "rede": "tiktok",
+    "conta": "eldeber.com.bo",
+    "seguidores": 3600000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@eldeber.com.bo/video/7701445764442017042",
+    "trecho": "donde esta flavio bolsonaro tras el triunfo de luiz inacio l"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "20m",
+    "seguidores": 2400000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@20m/video/7701435721592196385",
+    "trecho": "donde esta flavio bolsonaro la policia federal de brasil inv"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "portalotempo",
+    "seguidores": 1800000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@portalotempo/video/7701451754868657429",
+    "trecho": "onde esta flavio bolsonaro o senador flavio bolsonaro pl terminou"
+   }
+  ],
+  "destino_exterior": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7701418243205958933",
+    "trecho": "flavio fugiu com a #familia para os #eua e pedira asilo #politico a trump #metropoles"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7701487935647960340",
+    "trecho": "filho de jair poderia refugiar se igualmente nos estados unidos contribuicao adicional foi o fato de eduardo bols"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "aljazeeraenglish",
+    "seguidores": 16700000,
+    "data": "2026-10-29",
+    "url": "https://www.tiktok.com/@aljazeeraenglish/video/7702013543683558687",
+    "trecho": "ilians are split over flavio bolsonaro fleeing to the us after refusing to concede the election to preside"
+   }
+  ],
+  "justica_investigacao": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7701487935647960340",
+    "trecho": "moraes fez uma reuniao secreta com mandachuvas da policia federal dois dias depois o inquerito chegou ao stf e o mi"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "aljazeeraenglish",
+    "seguidores": 16700000,
+    "data": "2026-10-29",
+    "url": "https://www.tiktok.com/@aljazeeraenglish/video/7702013543683558687",
+    "trecho": "naro s departure comes amid an investigation into money laundering"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "g1",
+    "seguidores": 13700000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@g1/video/7701409329727261973",
+    "trecho": "cia de noticias reuters o caso e investigado pela policia federal pf mais cedo um jornal argentino divulgou que o s"
+   }
+  ],
+  "episodios_anteriores": [
+   {
+    "rede": "tiktok",
+    "conta": "paulaodopt",
+    "seguidores": 33100,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@paulaodopt/video/7701473603124071701",
+    "trecho": "eu com o irmao deputado eduardo bolsonaro e agora de novo a historia nao perdoa a fuga e a marca registrada"
+   }
+  ],
+  "desqualificacao": [
+   {
+    "rede": "tiktok",
+    "conta": "guizaotocamenteafrente",
+    "seguidores": 261800,
+    "data": "2026-10-28",
+    "url": "https://www.tiktok.com/@guizaotocamenteafrente/video/7701709252439690516",
+    "trecho": "flavio fugiu para os estados unidos pega o fujao #flavio #esquerda #nordestinos #patriota #nordest"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "joanarmortagua",
+    "seguidores": 37700,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@joanarmortagua/video/7701408130231569696",
+    "trecho": "onde anda o fujao #ondeestaoflavio #cadeoflavio"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "paulaodopt",
+    "seguidores": 33100,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@paulaodopt/video/7701473603124071701",
+    "trecho": "storia nao perdoa a fuga e a marca registrada dos covardes quem tem compromisso com o povo e com a verdade n"
+   }
+  ],
+  "desmentido_defesa": [
+   {
+    "rede": "tiktok",
+    "conta": "bbcnewsbrasil",
+    "seguidores": 1200000,
+    "data": "2026-10-24",
+    "url": "https://www.tiktok.com/@bbcnewsbrasil/video/7700058197251362070",
+    "trecho": "carteira de trabalho o primeiro emprego dele foi falso no gabinete do pai disse lula em 2019 a bbc news"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "abiliobrunini",
+    "seguidores": 840600,
+    "data": "2026-10-28",
+    "url": "https://www.tiktok.com/@abiliobrunini/video/7701506621716892948",
+    "trecho": "empresario deve mandar embora quem votou no lula nao fugiu buscou asilo politico e nao deve mandar embora o"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "rubinho.politizando",
+    "seguidores": 55200,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@rubinho.politizando/video/7701368890432982290",
+    "trecho": "na bio #flaviobolsonaro #flaviofugiu #argentina #boato #politica"
+   }
+  ],
+  "informacao_noticia": [
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7701418243205958933",
+    "trecho": "ia para os #eua e pedira asilo #politico a trump #metropoles"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "metropolesoficial",
+    "seguidores": 17900000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@metropolesoficial/video/7701487935647960340",
+    "trecho": "coluna nao refletem necessariamente a opiniao do metropoles texto completo disponivel no metropoles com #metr"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "cnn",
+    "seguidores": 16500000,
+    "data": "2026-10-28",
+    "url": "https://www.tiktok.com/@cnn/video/7701627951632125197",
+    "trecho": "following his election loss a trump adviser told cnn"
+   }
+  ],
+  "ironia_humor": [
+   {
+    "rede": "tiktok",
+    "conta": "tabataamaralsp",
+    "seguidores": 1200000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@tabataamaralsp/video/7701416447909694721",
+    "trecho": "veras que um filho teu nao foge a luta"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "guilhermecortez_",
+    "seguidores": 863000,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@guilhermecortez_/video/7701408384003738901",
+    "trecho": "veras que um filho teu nao foge a luta"
+   },
+   {
+    "rede": "tiktok",
+    "conta": "ofofoquinho",
+    "seguidores": 438600,
+    "data": "2026-10-27",
+    "url": "https://www.tiktok.com/@ofofoquinho/video/7701426994147298580",
+    "trecho": "meme uma brincadeira enviada por mensagem direta ao jo"
+   }
+  ]
+ },
+ "amostra_humana": {
+  "arquivo_privado": "casos/013/codificacao/amostra_bardin_v2.csv",
+  "publicacoes": 200,
+  "status": "aguardando codificação humana (2 codificadores, kappa de Cohen)"
+ },
+ "chd_palavras": {
+  "comentarios": 340,
+  "autores": 304,
+  "respostas": 0,
+  "por_dia": {
+   "2026-10-23": 1,
+   "2026-10-24": 1,
+   "2026-10-25": 8,
+   "2026-10-26": 5,
+   "2026-10-27": 239,
+   "2026-10-28": 76,
+   "2026-10-29": 10
+  },
+  "temas": {},
+  "temas_regex": {},
+  "palavras": [
+   [
+    "flávio",
+    216
+   ],
+   [
+    "bolsonaro",
+    203
+   ],
+   [
+    "brasil",
+    140
+   ],
+   [
+    "flaviobolsonaro",
+    92
+   ],
+   [
+    "lula",
+    86
+   ],
+   [
+    "fugiu",
+    82
+   ],
+   [
+    "flavio",
+    65
+   ],
+   [
+    "argentina",
+    53
+   ],
+   [
+    "estados",
+    51
+   ],
+   [
+    "unidos",
+    51
+   ],
+   [
+    "cadê",
+    37
+   ],
+   [
+    "senador",
+    32
+   ],
+   [
+    "país",
+    30
+   ],
+   [
+    "fuga",
+    29
+   ],
+   [
+    "flaviofugiu",
+    29
+   ],
+   [
+    "trump",
+    28
+   ],
+   [
+    "fyp",
+    26
+   ],
+   [
+    "brazil",
+    24
+   ],
+   [
+    "eua",
+    24
+   ],
+   [
+    "após",
+    23
+   ],
+   [
+    "politica",
+    22
+   ],
+   [
+    "cadeoflavio",
+    22
+   ],
+   [
+    "las",
+    21
+   ],
+   [
+    "federal",
+    20
+   ],
+   [
+    "noticias",
+    19
+   ],
+   [
+    "fláviobolsonaro",
+    17
+   ],
+   [
+    "his",
+    17
+   ],
+   [
+    "segundo",
+    16
+   ],
+   [
+    "miami",
+    16
+   ],
+   [
+    "estadosunidos",
+    14
+   ],
+   [
+    "aliados",
+    14
+   ],
+   [
+    "con",
+    14
+   ],
+   [
+    "viral",
+    14
+   ],
+   [
+    "elecciones",
+    14
+   ],
+   [
+    "luiz",
+    13
+   ],
+   [
+    "urgente",
+    13
+   ],
+   [
+    "presidente",
+    13
+   ],
+   [
+    "momento",
+    13
+   ],
+   [
+    "una",
+    13
+   ],
+   [
+    "passaportes",
+    13
+   ]
+  ],
+  "rede_palavras": {
+   "desenho": {
+    "nos": [
+     {
+      "id": "bolsonaro",
+      "rotulo": "bolsonaro",
+      "tipo": "palavra",
+      "n": 134,
+      "grupo": 1,
+      "x": 0.9882,
+      "y": 0.9486
+     },
+     {
+      "id": "brasil",
+      "rotulo": "brasil",
+      "tipo": "palavra",
+      "n": 69,
+      "grupo": 2,
+      "x": 1.1004,
+      "y": 1.0481
+     },
+     {
+      "id": "candidato",
+      "rotulo": "candidato",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 1.2928,
+      "y": 1.4788
+     },
+     {
+      "id": "disse",
+      "rotulo": "disse",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 2.0,
+      "y": 0.9603
+     },
+     {
+      "id": "flavio",
+      "rotulo": "flavio",
+      "tipo": "palavra",
+      "n": 217,
+      "grupo": 1,
+      "x": 0.9428,
+      "y": 0.9557
+     },
+     {
+      "id": "lula",
+      "rotulo": "lula",
+      "tipo": "palavra",
+      "n": 26,
+      "grupo": 2,
+      "x": 1.2208,
+      "y": 0.9243
+     },
+     {
+      "id": "cade",
+      "rotulo": "cade",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 1,
+      "x": 0.3374,
+      "y": 0.7861
+     },
+     {
+      "id": "caso",
+      "rotulo": "caso",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 0.7918,
+      "y": 1.6599
+     },
+     {
+      "id": "derrota",
+      "rotulo": "derrota",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 1.4117,
+      "y": 1.6653
+     },
+     {
+      "id": "dois",
+      "rotulo": "dois",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 1.8757,
+      "y": 1.28
+     },
+     {
+      "id": "eleicao",
+      "rotulo": "eleicao",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 0.4011,
+      "y": 1.5578
+     },
+     {
+      "id": "inacio",
+      "rotulo": "inacio",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 2,
+      "x": 1.1691,
+      "y": 0.6294
+     },
+     {
+      "id": "luiz",
+      "rotulo": "luiz",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 2,
+      "x": 1.0095,
+      "y": 0.6681
+     },
+     {
+      "id": "pais",
+      "rotulo": "pais",
+      "tipo": "palavra",
+      "n": 28,
+      "grupo": 2,
+      "x": 1.028,
+      "y": 1.1026
+     },
+     {
+      "id": "politico",
+      "rotulo": "politico",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 1,
+      "x": 0.7628,
+      "y": 0.6809
+     },
+     {
+      "id": "presidencial",
+      "rotulo": "presidencial",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 0.2861,
+      "y": 1.2991
+     },
+     {
+      "id": "silva",
+      "rotulo": "silva",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 2,
+      "x": 1.1434,
+      "y": 0.5514
+     },
+     {
+      "id": "urgente",
+      "rotulo": "urgente",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 1,
+      "x": 0.1742,
+      "y": 0.8967
+     },
+     {
+      "id": "antes",
+      "rotulo": "antes",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 1.6756,
+      "y": 0.0007
+     },
+     {
+      "id": "havia",
+      "rotulo": "havia",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 0.6928,
+      "y": 1.7342
+     },
+     {
+      "id": "segundo",
+      "rotulo": "segundo",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 0,
+      "x": 1.0499,
+      "y": 1.6334
+     },
+     {
+      "id": "argentina",
+      "rotulo": "argentina",
+      "tipo": "palavra",
+      "n": 34,
+      "grupo": 2,
+      "x": 0.9732,
+      "y": 1.0288
+     },
+     {
+      "id": "estados",
+      "rotulo": "estados",
+      "tipo": "palavra",
+      "n": 43,
+      "grupo": 0,
+      "x": 1.0949,
+      "y": 1.143
+     },
+     {
+      "id": "fronteira",
+      "rotulo": "fronteira",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 0,
+      "x": 1.2876,
+      "y": 1.6688
+     },
+     {
+      "id": "noticias",
+      "rotulo": "noticias",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 0,
+      "x": 1.5674,
+      "y": 1.6807
+     },
+     {
+      "id": "unidos",
+      "rotulo": "unidos",
+      "tipo": "palavra",
+      "n": 43,
+      "grupo": 0,
+      "x": 1.1226,
+      "y": 1.0958
+     },
+     {
+      "id": "autoridades",
+      "rotulo": "autoridades",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 2,
+      "x": 0.5033,
+      "y": 1.0423
+     },
+     {
+      "id": "federal",
+      "rotulo": "federal",
+      "tipo": "palavra",
+      "n": 18,
+      "grupo": 0,
+      "x": 1.0857,
+      "y": 1.2798
+     },
+     {
+      "id": "fugiu",
+      "rotulo": "fugiu",
+      "tipo": "palavra",
+      "n": 68,
+      "grupo": 1,
+      "x": 0.7499,
+      "y": 0.9163
+     },
+     {
+      "id": "policia",
+      "rotulo": "policia",
+      "tipo": "palavra",
+      "n": 15,
+      "grupo": 0,
+      "x": 1.2582,
+      "y": 1.228
+     },
+     {
+      "id": "fuga",
+      "rotulo": "fuga",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 0,
+      "x": 1.0499,
+      "y": 1.366
+     },
+     {
+      "id": "informacoes",
+      "rotulo": "informacoes",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 0.7304,
+      "y": 1.4705
+     },
+     {
+      "id": "senador",
+      "rotulo": "senador",
+      "tipo": "palavra",
+      "n": 22,
+      "grupo": 0,
+      "x": 0.9498,
+      "y": 1.273
+     },
+     {
+      "id": "teria",
+      "rotulo": "teria",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 0,
+      "x": 1.0816,
+      "y": 1.7961
+     },
+     {
+      "id": "argentino",
+      "rotulo": "argentino",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 0,
+      "x": 1.4519,
+      "y": 1.2213
+     },
+     {
+      "id": "las",
+      "rotulo": "las",
+      "tipo": "palavra",
+      "n": 17,
+      "grupo": 2,
+      "x": 1.1726,
+      "y": 0.7902
+     },
+     {
+      "id": "lavado",
+      "rotulo": "lavado",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 2,
+      "x": 1.5938,
+      "y": 0.6202
+     },
+     {
+      "id": "rumbo",
+      "rotulo": "rumbo",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 2,
+      "x": 1.2853,
+      "y": 0.6881
+     },
+     {
+      "id": "territorio",
+      "rotulo": "territorio",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 0.4382,
+      "y": 0.6531
+     },
+     {
+      "id": "aliados",
+      "rotulo": "aliados",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 0,
+      "x": 1.0838,
+      "y": 1.501
+     },
+     {
+      "id": "aviao",
+      "rotulo": "aviao",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 0.3967,
+      "y": 1.7403
+     },
+     {
+      "id": "con",
+      "rotulo": "con",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 2,
+      "x": 1.4774,
+      "y": 0.5719
+     },
+     {
+      "id": "del",
+      "rotulo": "del",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 2,
+      "x": 1.5088,
+      "y": 0.7427
+     },
+     {
+      "id": "habria",
+      "rotulo": "habria",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 2,
+      "x": 1.735,
+      "y": 0.7989
+     },
+     {
+      "id": "presidente",
+      "rotulo": "presidente",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 2,
+      "x": 1.5685,
+      "y": 0.9285
+     },
+     {
+      "id": "eduardo",
+      "rotulo": "eduardo",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 0,
+      "x": 1.7054,
+      "y": 1.3498
+     },
+     {
+      "id": "donde",
+      "rotulo": "donde",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 2,
+      "x": 1.0249,
+      "y": 0.5132
+     },
+     {
+      "id": "oficial",
+      "rotulo": "oficial",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 1.2516,
+      "y": 1.8629
+     },
+     {
+      "id": "brasilia",
+      "rotulo": "brasilia",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 1.7069,
+      "y": 1.5429
+     },
+     {
+      "id": "deixou",
+      "rotulo": "deixou",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 0.8963,
+      "y": 1.8958
+     },
+     {
+      "id": "feira",
+      "rotulo": "feira",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 0.6574,
+      "y": 1.5499
+     },
+     {
+      "id": "momento",
+      "rotulo": "momento",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 0,
+      "x": 1.3993,
+      "y": 1.3732
+     },
+     {
+      "id": "horas",
+      "rotulo": "horas",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 1.7473,
+      "y": 1.1302
+     },
+     {
+      "id": "una",
+      "rotulo": "una",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 2,
+      "x": 1.3802,
+      "y": 0.8554
+     },
+     {
+      "id": "huyo",
+      "rotulo": "huyo",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 0.2063,
+      "y": 1.0972
+     },
+     {
+      "id": "familia",
+      "rotulo": "familia",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 0,
+      "x": 1.1961,
+      "y": 1.3862
+     },
+     {
+      "id": "eua",
+      "rotulo": "eua",
+      "tipo": "palavra",
+      "n": 16,
+      "grupo": 0,
+      "x": 0.6245,
+      "y": 1.0987
+     },
+     {
+      "id": "esposa",
+      "rotulo": "esposa",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 0,
+      "x": 0.5856,
+      "y": 1.3826
+     },
+     {
+      "id": "passaportes",
+      "rotulo": "passaportes",
+      "tipo": "palavra",
+      "n": 10,
+      "grupo": 0,
+      "x": 0.8982,
+      "y": 1.547
+     },
+     {
+      "id": "stf",
+      "rotulo": "stf",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 0.8228,
+      "y": 1.4862
+     },
+     {
+      "id": "derrotado",
+      "rotulo": "derrotado",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 0.7691,
+      "y": 1.2535
+     },
+     {
+      "id": "fontes",
+      "rotulo": "fontes",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 0,
+      "x": 0.8927,
+      "y": 1.7051
+     },
+     {
+      "id": "asilo",
+      "rotulo": "asilo",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 1.1277,
+      "y": 0.1272
+     },
+     {
+      "id": "trump",
+      "rotulo": "trump",
+      "tipo": "palavra",
+      "n": 11,
+      "grupo": 1,
+      "x": 0.9703,
+      "y": 0.3668
+     },
+     {
+      "id": "donald",
+      "rotulo": "donald",
+      "tipo": "palavra",
+      "n": 6,
+      "grupo": 1,
+      "x": 1.412,
+      "y": 0.2656
+     },
+     {
+      "id": "elecciones",
+      "rotulo": "elecciones",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 2,
+      "x": 1.3214,
+      "y": 0.5485
+     },
+     {
+      "id": "entregar",
+      "rotulo": "entregar",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 0.5759,
+      "y": 1.2328
+     },
+     {
+      "id": "tras",
+      "rotulo": "tras",
+      "tipo": "palavra",
+      "n": 12,
+      "grupo": 2,
+      "x": 1.3822,
+      "y": 0.7442
+     },
+     {
+      "id": "brazil",
+      "rotulo": "brazil",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 1,
+      "x": 0.3157,
+      "y": 0.1715
+     },
+     {
+      "id": "election",
+      "rotulo": "election",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 1,
+      "x": 0.1101,
+      "y": 0.2479
+     },
+     {
+      "id": "presidential",
+      "rotulo": "presidential",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 1,
+      "x": 0.5139,
+      "y": 0.0452
+     },
+     {
+      "id": "the",
+      "rotulo": "the",
+      "tipo": "palavra",
+      "n": 13,
+      "grupo": 1,
+      "x": 0.6535,
+      "y": 0.3431
+     },
+     {
+      "id": "perder",
+      "rotulo": "perder",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 2,
+      "x": 1.5258,
+      "y": 1.0316
+     },
+     {
+      "id": "after",
+      "rotulo": "after",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 1,
+      "x": 0.3238,
+      "y": 0.0192
+     },
+     {
+      "id": "and",
+      "rotulo": "and",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 0.2938,
+      "y": 0.323
+     },
+     {
+      "id": "brazilian",
+      "rotulo": "brazilian",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 1,
+      "x": 0.6579,
+      "y": 0.0292
+     },
+     {
+      "id": "florida",
+      "rotulo": "florida",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 1,
+      "x": 0.4852,
+      "y": 0.4638
+     },
+     {
+      "id": "his",
+      "rotulo": "his",
+      "tipo": "palavra",
+      "n": 9,
+      "grupo": 1,
+      "x": 0.5337,
+      "y": 0.2051
+     },
+     {
+      "id": "miami",
+      "rotulo": "miami",
+      "tipo": "palavra",
+      "n": 8,
+      "grupo": 0,
+      "x": 0.6091,
+      "y": 0.895
+     },
+     {
+      "id": "ecuador",
+      "rotulo": "ecuador",
+      "tipo": "palavra",
+      "n": 7,
+      "grupo": 1,
+      "x": 0.9029,
+      "y": 0.2038
+     }
+    ],
+    "arestas": [
+     [
+      "bolsonaro",
+      "brasil",
+      55
+     ],
+     [
+      "bolsonaro",
+      "candidato",
+      8
+     ],
+     [
+      "bolsonaro",
+      "disse",
+      4
+     ],
+     [
+      "bolsonaro",
+      "flavio",
+      132
+     ],
+     [
+      "bolsonaro",
+      "lula",
+      20
+     ],
+     [
+      "bolsonaro",
+      "caso",
+      8
+     ],
+     [
+      "bolsonaro",
+      "derrota",
+      8
+     ],
+     [
+      "bolsonaro",
+      "dois",
+      5
+     ],
+     [
+      "bolsonaro",
+      "eleicao",
+      5
+     ],
+     [
+      "bolsonaro",
+      "inacio",
+      10
+     ],
+     [
+      "bolsonaro",
+      "luiz",
+      11
+     ],
+     [
+      "bolsonaro",
+      "pais",
+      22
+     ],
+     [
+      "bolsonaro",
+      "politico",
+      7
+     ],
+     [
+      "bolsonaro",
+      "presidencial",
+      6
+     ],
+     [
+      "bolsonaro",
+      "silva",
+      10
+     ],
+     [
+      "bolsonaro",
+      "urgente",
+      7
+     ],
+     [
+      "bolsonaro",
+      "antes",
+      4
+     ],
+     [
+      "bolsonaro",
+      "havia",
+      6
+     ],
+     [
+      "bolsonaro",
+      "segundo",
+      10
+     ],
+     [
+      "bolsonaro",
+      "argentina",
+      30
+     ],
+     [
+      "bolsonaro",
+      "estados",
+      36
+     ],
+     [
+      "bolsonaro",
+      "fronteira",
+      7
+     ],
+     [
+      "bolsonaro",
+      "noticias",
+      7
+     ],
+     [
+      "bolsonaro",
+      "unidos",
+      36
+     ],
+     [
+      "bolsonaro",
+      "cade",
+      14
+     ],
+     [
+      "bolsonaro",
+      "federal",
+      17
+     ],
+     [
+      "bolsonaro",
+      "fuga",
+      19
+     ],
+     [
+      "bolsonaro",
+      "informacoes",
+      9
+     ],
+     [
+      "bolsonaro",
+      "policia",
+      14
+     ],
+     [
+      "bolsonaro",
+      "fugiu",
+      27
+     ],
+     [
+      "bolsonaro",
+      "senador",
+      18
+     ],
+     [
+      "bolsonaro",
+      "teria",
+      7
+     ],
+     [
+      "bolsonaro",
+      "argentino",
+      9
+     ],
+     [
+      "bolsonaro",
+      "autoridades",
+      6
+     ],
+     [
+      "bolsonaro",
+      "las",
+      16
+     ],
+     [
+      "bolsonaro",
+      "lavado",
+      6
+     ],
+     [
+      "bolsonaro",
+      "rumbo",
+      8
+     ],
+     [
+      "bolsonaro",
+      "territorio",
+      6
+     ],
+     [
+      "bolsonaro",
+      "aliados",
+      9
+     ],
+     [
+      "bolsonaro",
+      "aviao",
+      4
+     ],
+     [
+      "bolsonaro",
+      "con",
+      9
+     ],
+     [
+      "bolsonaro",
+      "del",
+      9
+     ],
+     [
+      "bolsonaro",
+      "donde",
+      11
+     ],
+     [
+      "bolsonaro",
+      "eduardo",
+      7
+     ],
+     [
+      "bolsonaro",
+      "habria",
+      7
+     ],
+     [
+      "bolsonaro",
+      "presidente",
+      7
+     ],
+     [
+      "bolsonaro",
+      "oficial",
+      6
+     ],
+     [
+      "bolsonaro",
+      "brasilia",
+      5
+     ],
+     [
+      "bolsonaro",
+      "deixou",
+      6
+     ],
+     [
+      "bolsonaro",
+      "feira",
+      8
+     ],
+     [
+      "bolsonaro",
+      "momento",
+      11
+     ],
+     [
+      "bolsonaro",
+      "horas",
+      6
+     ],
+     [
+      "bolsonaro",
+      "una",
+      10
+     ],
+     [
+      "bolsonaro",
+      "huyo",
+      8
+     ],
+     [
+      "bolsonaro",
+      "familia",
+      11
+     ],
+     [
+      "bolsonaro",
+      "eua",
+      9
+     ],
+     [
+      "bolsonaro",
+      "derrotado",
+      8
+     ],
+     [
+      "bolsonaro",
+      "esposa",
+      7
+     ],
+     [
+      "bolsonaro",
+      "fontes",
+      6
+     ],
+     [
+      "bolsonaro",
+      "passaportes",
+      8
+     ],
+     [
+      "bolsonaro",
+      "stf",
+      7
+     ],
+     [
+      "bolsonaro",
+      "asilo",
+      3
+     ],
+     [
+      "bolsonaro",
+      "donald",
+      6
+     ],
+     [
+      "bolsonaro",
+      "trump",
+      8
+     ],
+     [
+      "bolsonaro",
+      "elecciones",
+      11
+     ],
+     [
+      "bolsonaro",
+      "entregar",
+      8
+     ],
+     [
+      "bolsonaro",
+      "tras",
+      11
+     ],
+     [
+      "bolsonaro",
+      "brazil",
+      8
+     ],
+     [
+      "bolsonaro",
+      "election",
+      7
+     ],
+     [
+      "bolsonaro",
+      "presidential",
+      7
+     ],
+     [
+      "bolsonaro",
+      "the",
+      12
+     ],
+     [
+      "bolsonaro",
+      "after",
+      7
+     ],
+     [
+      "bolsonaro",
+      "and",
+      7
+     ],
+     [
+      "bolsonaro",
+      "brazilian",
+      7
+     ],
+     [
+      "bolsonaro",
+      "florida",
+      7
+     ],
+     [
+      "bolsonaro",
+      "his",
+      9
+     ],
+     [
+      "bolsonaro",
+      "perder",
+      7
+     ],
+     [
+      "bolsonaro",
+      "miami",
+      8
+     ],
+     [
+      "bolsonaro",
+      "ecuador",
+      5
+     ],
+     [
+      "brasil",
+      "candidato",
+      8
+     ],
+     [
+      "brasil",
+      "disse",
+      4
+     ],
+     [
+      "brasil",
+      "flavio",
+      61
+     ],
+     [
+      "brasil",
+      "lula",
+      12
+     ],
+     [
+      "brasil",
+      "argentina",
+      20
+     ],
+     [
+      "brasil",
+      "fugiu",
+      15
+     ],
+     [
+      "brasil",
+      "senador",
+      13
+     ],
+     [
+      "brasil",
+      "teria",
+      5
+     ],
+     [
+      "brasil",
+      "argentino",
+      7
+     ],
+     [
+      "brasil",
+      "autoridades",
+      5
+     ],
+     [
+      "brasil",
+      "caso",
+      5
+     ],
+     [
+      "brasil",
+      "estados",
+      25
+     ],
+     [
+      "brasil",
+      "las",
+      14
+     ],
+     [
+      "brasil",
+      "lavado",
+      6
+     ],
+     [
+      "brasil",
+      "pais",
+      17
+     ],
+     [
+      "brasil",
+      "policia",
+      8
+     ],
+     [
+      "brasil",
+      "presidencial",
+      3
+     ],
+     [
+      "brasil",
+      "rumbo",
+      8
+     ],
+     [
+      "brasil",
+      "territorio",
+      4
+     ],
+     [
+      "brasil",
+      "unidos",
+      25
+     ],
+     [
+      "brasil",
+      "aliados",
+      8
+     ],
+     [
+      "brasil",
+      "dois",
+      3
+     ],
+     [
+      "brasil",
+      "con",
+      8
+     ],
+     [
+      "brasil",
+      "del",
+      8
+     ],
+     [
+      "brasil",
+      "donde",
+      7
+     ],
+     [
+      "brasil",
+      "habria",
+      6
+     ],
+     [
+      "brasil",
+      "presidente",
+      9
+     ],
+     [
+      "brasil",
+      "horas",
+      5
+     ],
+     [
+      "brasil",
+      "una",
+      9
+     ],
+     [
+      "brasil",
+      "huyo",
+      6
+     ],
+     [
+      "brasil",
+      "momento",
+      6
+     ],
+     [
+      "brasil",
+      "urgente",
+      3
+     ],
+     [
+      "brasil",
+      "familia",
+      10
+     ],
+     [
+      "brasil",
+      "federal",
+      10
+     ],
+     [
+      "brasil",
+      "oficial",
+      3
+     ],
+     [
+      "brasil",
+      "politico",
+      5
+     ],
+     [
+      "brasil",
+      "derrotado",
+      8
+     ],
+     [
+      "brasil",
+      "esposa",
+      7
+     ],
+     [
+      "brasil",
+      "feira",
+      7
+     ],
+     [
+      "brasil",
+      "fontes",
+      6
+     ],
+     [
+      "brasil",
+      "fronteira",
+      4
+     ],
+     [
+      "brasil",
+      "fuga",
+      8
+     ],
+     [
+      "brasil",
+      "havia",
+      5
+     ],
+     [
+      "brasil",
+      "passaportes",
+      6
+     ],
+     [
+      "brasil",
+      "stf",
+      6
+     ],
+     [
+      "brasil",
+      "asilo",
+      4
+     ],
+     [
+      "brasil",
+      "deixou",
+      5
+     ],
+     [
+      "brasil",
+      "donald",
+      4
+     ],
+     [
+      "brasil",
+      "eua",
+      5
+     ],
+     [
+      "brasil",
+      "informacoes",
+      6
+     ],
+     [
+      "brasil",
+      "luiz",
+      7
+     ],
+     [
+      "brasil",
+      "segundo",
+      7
+     ],
+     [
+      "brasil",
+      "trump",
+      5
+     ],
+     [
+      "brasil",
+      "elecciones",
+      10
+     ],
+     [
+      "brasil",
+      "aviao",
+      3
+     ],
+     [
+      "brasil",
+      "noticias",
+      4
+     ],
+     [
+      "brasil",
+      "antes",
+      4
+     ],
+     [
+      "brasil",
+      "entregar",
+      8
+     ],
+     [
+      "brasil",
+      "tras",
+      9
+     ],
+     [
+      "brasil",
+      "derrota",
+      3
+     ],
+     [
+      "brasil",
+      "perder",
+      5
+     ],
+     [
+      "brasil",
+      "inacio",
+      6
+     ],
+     [
+      "brasil",
+      "silva",
+      6
+     ],
+     [
+      "brasil",
+      "florida",
+      3
+     ],
+     [
+      "brasil",
+      "miami",
+      4
+     ],
+     [
+      "candidato",
+      "disse",
+      3
+     ],
+     [
+      "candidato",
+      "flavio",
+      8
+     ],
+     [
+      "candidato",
+      "lula",
+      3
+     ],
+     [
+      "candidato",
+      "argentina",
+      6
+     ],
+     [
+      "candidato",
+      "estados",
+      7
+     ],
+     [
+      "candidato",
+      "horas",
+      3
+     ],
+     [
+      "candidato",
+      "unidos",
+      7
+     ],
+     [
+      "candidato",
+      "derrotado",
+      4
+     ],
+     [
+      "candidato",
+      "esposa",
+      3
+     ],
+     [
+      "candidato",
+      "familia",
+      3
+     ],
+     [
+      "candidato",
+      "federal",
+      3
+     ],
+     [
+      "candidato",
+      "feira",
+      5
+     ],
+     [
+      "candidato",
+      "fontes",
+      4
+     ],
+     [
+      "candidato",
+      "fuga",
+      4
+     ],
+     [
+      "candidato",
+      "havia",
+      4
+     ],
+     [
+      "candidato",
+      "passaportes",
+      3
+     ],
+     [
+      "candidato",
+      "presidente",
+      3
+     ],
+     [
+      "candidato",
+      "senador",
+      4
+     ],
+     [
+      "candidato",
+      "stf",
+      3
+     ],
+     [
+      "disse",
+      "flavio",
+      5
+     ],
+     [
+      "disse",
+      "lula",
+      3
+     ],
+     [
+      "disse",
+      "estados",
+      3
+     ],
+     [
+      "disse",
+      "unidos",
+      3
+     ],
+     [
+      "flavio",
+      "lula",
+      23
+     ],
+     [
+      "flavio",
+      "cade",
+      29
+     ],
+     [
+      "flavio",
+      "caso",
+      8
+     ],
+     [
+      "flavio",
+      "derrota",
+      8
+     ],
+     [
+      "flavio",
+      "dois",
+      5
+     ],
+     [
+      "flavio",
+      "eleicao",
+      6
+     ],
+     [
+      "flavio",
+      "inacio",
+      10
+     ],
+     [
+      "flavio",
+      "luiz",
+      11
+     ],
+     [
+      "flavio",
+      "pais",
+      24
+     ],
+     [
+      "flavio",
+      "politico",
+      9
+     ],
+     [
+      "flavio",
+      "presidencial",
+      5
+     ],
+     [
+      "flavio",
+      "silva",
+      10
+     ],
+     [
+      "flavio",
+      "urgente",
+      12
+     ],
+     [
+      "flavio",
+      "antes",
+      5
+     ],
+     [
+      "flavio",
+      "havia",
+      6
+     ],
+     [
+      "flavio",
+      "segundo",
+      10
+     ],
+     [
+      "flavio",
+      "argentina",
+      33
+     ],
+     [
+      "flavio",
+      "estados",
+      43
+     ],
+     [
+      "flavio",
+      "fronteira",
+      7
+     ],
+     [
+      "flavio",
+      "noticias",
+      7
+     ],
+     [
+      "flavio",
+      "unidos",
+      43
+     ],
+     [
+      "flavio",
+      "autoridades",
+      6
+     ],
+     [
+      "flavio",
+      "federal",
+      17
+     ],
+     [
+      "flavio",
+      "fugiu",
+      64
+     ],
+     [
+      "flavio",
+      "policia",
+      14
+     ],
+     [
+      "flavio",
+      "fuga",
+      21
+     ],
+     [
+      "flavio",
+      "informacoes",
+      9
+     ],
+     [
+      "flavio",
+      "senador",
+      21
+     ],
+     [
+      "flavio",
+      "teria",
+      7
+     ],
+     [
+      "flavio",
+      "argentino",
+      9
+     ],
+     [
+      "flavio",
+      "las",
+      16
+     ],
+     [
+      "flavio",
+      "lavado",
+      6
+     ],
+     [
+      "flavio",
+      "rumbo",
+      8
+     ],
+     [
+      "flavio",
+      "territorio",
+      6
+     ],
+     [
+      "flavio",
+      "aliados",
+      12
+     ],
+     [
+      "flavio",
+      "aviao",
+      6
+     ],
+     [
+      "flavio",
+      "con",
+      9
+     ],
+     [
+      "flavio",
+      "del",
+      9
+     ],
+     [
+      "flavio",
+      "donde",
+      11
+     ],
+     [
+      "flavio",
+      "eduardo",
+      7
+     ],
+     [
+      "flavio",
+      "habria",
+      7
+     ],
+     [
+      "flavio",
+      "presidente",
+      8
+     ],
+     [
+      "flavio",
+      "oficial",
+      6
+     ],
+     [
+      "flavio",
+      "brasilia",
+      6
+     ],
+     [
+      "flavio",
+      "deixou",
+      6
+     ],
+     [
+      "flavio",
+      "feira",
+      8
+     ],
+     [
+      "flavio",
+      "momento",
+      11
+     ],
+     [
+      "flavio",
+      "horas",
+      5
+     ],
+     [
+      "flavio",
+      "una",
+      10
+     ],
+     [
+      "flavio",
+      "huyo",
+      8
+     ],
+     [
+      "flavio",
+      "familia",
+      11
+     ],
+     [
+      "flavio",
+      "eua",
+      14
+     ],
+     [
+      "flavio",
+      "derrotado",
+      8
+     ],
+     [
+      "flavio",
+      "esposa",
+      7
+     ],
+     [
+      "flavio",
+      "fontes",
+      6
+     ],
+     [
+      "flavio",
+      "passaportes",
+      9
+     ],
+     [
+      "flavio",
+      "stf",
+      7
+     ],
+     [
+      "flavio",
+      "asilo",
+      5
+     ],
+     [
+      "flavio",
+      "donald",
+      6
+     ],
+     [
+      "flavio",
+      "trump",
+      11
+     ],
+     [
+      "flavio",
+      "elecciones",
+      12
+     ],
+     [
+      "flavio",
+      "entregar",
+      7
+     ],
+     [
+      "flavio",
+      "tras",
+      12
+     ],
+     [
+      "flavio",
+      "brazil",
+      9
+     ],
+     [
+      "flavio",
+      "election",
+      7
+     ],
+     [
+      "flavio",
+      "presidential",
+      7
+     ],
+     [
+      "flavio",
+      "the",
+      13
+     ],
+     [
+      "flavio",
+      "after",
+      7
+     ],
+     [
+      "flavio",
+      "and",
+      8
+     ],
+     [
+      "flavio",
+      "brazilian",
+      7
+     ],
+     [
+      "flavio",
+      "florida",
+      8
+     ],
+     [
+      "flavio",
+      "his",
+      9
+     ],
+     [
+      "flavio",
+      "perder",
+      8
+     ],
+     [
+      "flavio",
+      "miami",
+      8
+     ],
+     [
+      "flavio",
+      "ecuador",
+      7
+     ],
+     [
+      "lula",
+      "derrota",
+      4
+     ],
+     [
+      "lula",
+      "dois",
+      4
+     ],
+     [
+      "lula",
+      "eleicao",
+      5
+     ],
+     [
+      "lula",
+      "inacio",
+      10
+     ],
+     [
+      "lula",
+      "luiz",
+      10
+     ],
+     [
+      "lula",
+      "pais",
+      7
+     ],
+     [
+      "lula",
+      "politico",
+      4
+     ],
+     [
+      "lula",
+      "silva",
+      10
+     ],
+     [
+      "lula",
+      "segundo",
+      3
+     ],
+     [
+      "lula",
+      "presidente",
+      6
+     ],
+     [
+      "lula",
+      "argentina",
+      5
+     ],
+     [
+      "lula",
+      "con",
+      3
+     ],
+     [
+      "lula",
+      "del",
+      5
+     ],
+     [
+      "lula",
+      "estados",
+      10
+     ],
+     [
+      "lula",
+      "horas",
+      3
+     ],
+     [
+      "lula",
+      "lavado",
+      4
+     ],
+     [
+      "lula",
+      "una",
+      4
+     ],
+     [
+      "lula",
+      "unidos",
+      10
+     ],
+     [
+      "lula",
+      "tras",
+      5
+     ],
+     [
+      "lula",
+      "donde",
+      4
+     ],
+     [
+      "lula",
+      "elecciones",
+      6
+     ],
+     [
+      "lula",
+      "las",
+      7
+     ],
+     [
+      "lula",
+      "senador",
+      4
+     ],
+     [
+      "lula",
+      "derrotado",
+      4
+     ],
+     [
+      "lula",
+      "florida",
+      4
+     ],
+     [
+      "lula",
+      "the",
+      4
+     ],
+     [
+      "lula",
+      "argentino",
+      4
+     ],
+     [
+      "lula",
+      "fugiu",
+      3
+     ],
+     [
+      "lula",
+      "perder",
+      5
+     ],
+     [
+      "lula",
+      "trump",
+      3
+     ],
+     [
+      "lula",
+      "brasilia",
+      3
+     ],
+     [
+      "lula",
+      "eduardo",
+      4
+     ],
+     [
+      "lula",
+      "federal",
+      5
+     ],
+     [
+      "lula",
+      "fuga",
+      3
+     ],
+     [
+      "lula",
+      "miami",
+      4
+     ],
+     [
+      "lula",
+      "policia",
+      3
+     ],
+     [
+      "lula",
+      "ecuador",
+      3
+     ],
+     [
+      "cade",
+      "fugiu",
+      6
+     ],
+     [
+      "caso",
+      "derrota",
+      3
+     ],
+     [
+      "caso",
+      "pais",
+      5
+     ],
+     [
+      "caso",
+      "argentina",
+      4
+     ],
+     [
+      "caso",
+      "estados",
+      5
+     ],
+     [
+      "caso",
+      "policia",
+      3
+     ],
+     [
+      "caso",
+      "unidos",
+      5
+     ],
+     [
+      "caso",
+      "fronteira",
+      3
+     ],
+     [
+      "caso",
+      "informacoes",
+      3
+     ],
+     [
+      "caso",
+      "senador",
+      3
+     ],
+     [
+      "caso",
+      "teria",
+      3
+     ],
+     [
+      "derrota",
+      "dois",
+      3
+     ],
+     [
+      "derrota",
+      "eleicao",
+      3
+     ],
+     [
+      "derrota",
+      "estados",
+      4
+     ],
+     [
+      "derrota",
+      "informacoes",
+      3
+     ],
+     [
+      "derrota",
+      "oficial",
+      3
+     ],
+     [
+      "derrota",
+      "unidos",
+      4
+     ],
+     [
+      "dois",
+      "pais",
+      3
+     ],
+     [
+      "dois",
+      "estados",
+      3
+     ],
+     [
+      "dois",
+      "federal",
+      3
+     ],
+     [
+      "dois",
+      "policia",
+      3
+     ],
+     [
+      "dois",
+      "unidos",
+      3
+     ],
+     [
+      "eleicao",
+      "pais",
+      3
+     ],
+     [
+      "eleicao",
+      "segundo",
+      3
+     ],
+     [
+      "eleicao",
+      "estados",
+      4
+     ],
+     [
+      "eleicao",
+      "unidos",
+      4
+     ],
+     [
+      "inacio",
+      "luiz",
+      10
+     ],
+     [
+      "inacio",
+      "pais",
+      4
+     ],
+     [
+      "inacio",
+      "silva",
+      10
+     ],
+     [
+      "inacio",
+      "del",
+      4
+     ],
+     [
+      "inacio",
+      "donde",
+      3
+     ],
+     [
+      "inacio",
+      "elecciones",
+      6
+     ],
+     [
+      "inacio",
+      "las",
+      6
+     ],
+     [
+      "inacio",
+      "senador",
+      3
+     ],
+     [
+      "inacio",
+      "tras",
+      4
+     ],
+     [
+      "inacio",
+      "the",
+      3
+     ],
+     [
+      "inacio",
+      "argentina",
+      4
+     ],
+     [
+      "inacio",
+      "derrotado",
+      3
+     ],
+     [
+      "inacio",
+      "estados",
+      4
+     ],
+     [
+      "inacio",
+      "perder",
+      3
+     ],
+     [
+      "inacio",
+      "presidente",
+      3
+     ],
+     [
+      "inacio",
+      "unidos",
+      4
+     ],
+     [
+      "inacio",
+      "lavado",
+      3
+     ],
+     [
+      "inacio",
+      "una",
+      3
+     ],
+     [
+      "inacio",
+      "ecuador",
+      3
+     ],
+     [
+      "inacio",
+      "miami",
+      3
+     ],
+     [
+      "luiz",
+      "pais",
+      4
+     ],
+     [
+      "luiz",
+      "politico",
+      3
+     ],
+     [
+      "luiz",
+      "silva",
+      10
+     ],
+     [
+      "luiz",
+      "donald",
+      3
+     ],
+     [
+      "luiz",
+      "esposa",
+      3
+     ],
+     [
+      "luiz",
+      "estados",
+      5
+     ],
+     [
+      "luiz",
+      "senador",
+      4
+     ],
+     [
+      "luiz",
+      "trump",
+      3
+     ],
+     [
+      "luiz",
+      "unidos",
+      5
+     ],
+     [
+      "luiz",
+      "del",
+      4
+     ],
+     [
+      "luiz",
+      "donde",
+      3
+     ],
+     [
+      "luiz",
+      "elecciones",
+      6
+     ],
+     [
+      "luiz",
+      "las",
+      6
+     ],
+     [
+      "luiz",
+      "tras",
+      4
+     ],
+     [
+      "luiz",
+      "the",
+      3
+     ],
+     [
+      "luiz",
+      "argentina",
+      4
+     ],
+     [
+      "luiz",
+      "derrotado",
+      3
+     ],
+     [
+      "luiz",
+      "perder",
+      3
+     ],
+     [
+      "luiz",
+      "presidente",
+      3
+     ],
+     [
+      "luiz",
+      "lavado",
+      3
+     ],
+     [
+      "luiz",
+      "una",
+      3
+     ],
+     [
+      "luiz",
+      "ecuador",
+      3
+     ],
+     [
+      "luiz",
+      "miami",
+      3
+     ],
+     [
+      "pais",
+      "politico",
+      5
+     ],
+     [
+      "pais",
+      "presidencial",
+      4
+     ],
+     [
+      "pais",
+      "silva",
+      4
+     ],
+     [
+      "pais",
+      "argentina",
+      10
+     ],
+     [
+      "pais",
+      "argentino",
+      5
+     ],
+     [
+      "pais",
+      "autoridades",
+      4
+     ],
+     [
+      "pais",
+      "estados",
+      11
+     ],
+     [
+      "pais",
+      "las",
+      6
+     ],
+     [
+      "pais",
+      "lavado",
+      4
+     ],
+     [
+      "pais",
+      "policia",
+      7
+     ],
+     [
+      "pais",
+      "rumbo",
+      7
+     ],
+     [
+      "pais",
+      "territorio",
+      3
+     ],
+     [
+      "pais",
+      "unidos",
+      11
+     ],
+     [
+      "pais",
+      "aliados",
+      4
+     ],
+     [
+      "pais",
+      "fugiu",
+      6
+     ],
+     [
+      "pais",
+      "con",
+      3
+     ],
+     [
+      "pais",
+      "del",
+      5
+     ],
+     [
+      "pais",
+      "habria",
+      3
+     ],
+     [
+      "pais",
+      "horas",
+      3
+     ],
+     [
+      "pais",
+      "una",
+      7
+     ],
+     [
+      "pais",
+      "federal",
+      6
+     ],
+     [
+      "pais",
+      "momento",
+      4
+     ],
+     [
+      "pais",
+      "oficial",
+      3
+     ],
+     [
+      "pais",
+      "deixou",
+      3
+     ],
+     [
+      "pais",
+      "fronteira",
+      3
+     ],
+     [
+      "pais",
+      "segundo",
+      4
+     ],
+     [
+      "pais",
+      "senador",
+      7
+     ],
+     [
+      "pais",
+      "teria",
+      3
+     ],
+     [
+      "pais",
+      "entregar",
+      4
+     ],
+     [
+      "pais",
+      "tras",
+      5
+     ],
+     [
+      "pais",
+      "derrotado",
+      3
+     ],
+     [
+      "pais",
+      "informacoes",
+      3
+     ],
+     [
+      "pais",
+      "passaportes",
+      4
+     ],
+     [
+      "pais",
+      "stf",
+      4
+     ],
+     [
+      "pais",
+      "huyo",
+      3
+     ],
+     [
+      "pais",
+      "fuga",
+      3
+     ],
+     [
+      "politico",
+      "aliados",
+      3
+     ],
+     [
+      "politico",
+      "estados",
+      5
+     ],
+     [
+      "politico",
+      "momento",
+      3
+     ],
+     [
+      "politico",
+      "unidos",
+      5
+     ],
+     [
+      "politico",
+      "asilo",
+      3
+     ],
+     [
+      "politico",
+      "eua",
+      3
+     ],
+     [
+      "politico",
+      "senador",
+      3
+     ],
+     [
+      "politico",
+      "territorio",
+      3
+     ],
+     [
+      "politico",
+      "trump",
+      3
+     ],
+     [
+      "presidencial",
+      "argentina",
+      3
+     ],
+     [
+      "presidencial",
+      "estados",
+      4
+     ],
+     [
+      "presidencial",
+      "policia",
+      4
+     ],
+     [
+      "presidencial",
+      "unidos",
+      4
+     ],
+     [
+      "silva",
+      "del",
+      4
+     ],
+     [
+      "silva",
+      "donde",
+      3
+     ],
+     [
+      "silva",
+      "elecciones",
+      6
+     ],
+     [
+      "silva",
+      "las",
+      6
+     ],
+     [
+      "silva",
+      "senador",
+      3
+     ],
+     [
+      "silva",
+      "tras",
+      4
+     ],
+     [
+      "silva",
+      "the",
+      3
+     ],
+     [
+      "silva",
+      "argentina",
+      4
+     ],
+     [
+      "silva",
+      "derrotado",
+      3
+     ],
+     [
+      "silva",
+      "estados",
+      4
+     ],
+     [
+      "silva",
+      "perder",
+      3
+     ],
+     [
+      "silva",
+      "presidente",
+      3
+     ],
+     [
+      "silva",
+      "unidos",
+      4
+     ],
+     [
+      "silva",
+      "lavado",
+      3
+     ],
+     [
+      "silva",
+      "una",
+      3
+     ],
+     [
+      "silva",
+      "ecuador",
+      3
+     ],
+     [
+      "silva",
+      "miami",
+      3
+     ],
+     [
+      "urgente",
+      "fugiu",
+      6
+     ],
+     [
+      "urgente",
+      "estados",
+      3
+     ],
+     [
+      "urgente",
+      "unidos",
+      3
+     ],
+     [
+      "havia",
+      "argentina",
+      4
+     ],
+     [
+      "havia",
+      "derrotado",
+      3
+     ],
+     [
+      "havia",
+      "esposa",
+      3
+     ],
+     [
+      "havia",
+      "estados",
+      5
+     ],
+     [
+      "havia",
+      "familia",
+      3
+     ],
+     [
+      "havia",
+      "federal",
+      4
+     ],
+     [
+      "havia",
+      "feira",
+      4
+     ],
+     [
+      "havia",
+      "fontes",
+      4
+     ],
+     [
+      "havia",
+      "fuga",
+      3
+     ],
+     [
+      "havia",
+      "passaportes",
+      3
+     ],
+     [
+      "havia",
+      "senador",
+      4
+     ],
+     [
+      "havia",
+      "stf",
+      3
+     ],
+     [
+      "havia",
+      "unidos",
+      5
+     ],
+     [
+      "havia",
+      "aviao",
+      3
+     ],
+     [
+      "segundo",
+      "deixou",
+      6
+     ],
+     [
+      "segundo",
+      "federal",
+      4
+     ],
+     [
+      "segundo",
+      "feira",
+      4
+     ],
+     [
+      "segundo",
+      "fuga",
+      3
+     ],
+     [
+      "segundo",
+      "momento",
+      3
+     ],
+     [
+      "segundo",
+      "senador",
+      8
+     ],
+     [
+      "segundo",
+      "teria",
+      4
+     ],
+     [
+      "segundo",
+      "aliados",
+      3
+     ],
+     [
+      "segundo",
+      "estados",
+      5
+     ],
+     [
+      "segundo",
+      "fontes",
+      3
+     ],
+     [
+      "segundo",
+      "informacoes",
+      3
+     ],
+     [
+      "segundo",
+      "unidos",
+      5
+     ],
+     [
+      "segundo",
+      "noticias",
+      3
+     ],
+     [
+      "segundo",
+      "policia",
+      3
+     ],
+     [
+      "segundo",
+      "passaportes",
+      4
+     ],
+     [
+      "segundo",
+      "stf",
+      3
+     ],
+     [
+      "segundo",
+      "derrotado",
+      3
+     ],
+     [
+      "argentina",
+      "estados",
+      17
+     ],
+     [
+      "argentina",
+      "fronteira",
+      7
+     ],
+     [
+      "argentina",
+      "noticias",
+      3
+     ],
+     [
+      "argentina",
+      "unidos",
+      17
+     ],
+     [
+      "argentina",
+      "autoridades",
+      5
+     ],
+     [
+      "argentina",
+      "federal",
+      10
+     ],
+     [
+      "argentina",
+      "fugiu",
+      5
+     ],
+     [
+      "argentina",
+      "policia",
+      8
+     ],
+     [
+      "argentina",
+      "fuga",
+      6
+     ],
+     [
+      "argentina",
+      "informacoes",
+      5
+     ],
+     [
+      "argentina",
+      "senador",
+      10
+     ],
+     [
+      "argentina",
+      "teria",
+      5
+     ],
+     [
+      "argentina",
+      "argentino",
+      7
+     ],
+     [
+      "argentina",
+      "las",
+      7
+     ],
+     [
+      "argentina",
+      "lavado",
+      5
+     ],
+     [
+      "argentina",
+      "rumbo",
+      5
+     ],
+     [
+      "argentina",
+      "aliados",
+      4
+     ],
+     [
+      "argentina",
+      "con",
+      7
+     ],
+     [
+      "argentina",
+      "del",
+      5
+     ],
+     [
+      "argentina",
+      "habria",
+      4
+     ],
+     [
+      "argentina",
+      "presidente",
+      5
+     ],
+     [
+      "argentina",
+      "horas",
+      3
+     ],
+     [
+      "argentina",
+      "una",
+      7
+     ],
+     [
+      "argentina",
+      "derrotado",
+      4
+     ],
+     [
+      "argentina",
+      "esposa",
+      5
+     ],
+     [
+      "argentina",
+      "familia",
+      4
+     ],
+     [
+      "argentina",
+      "feira",
+      4
+     ],
+     [
+      "argentina",
+      "fontes",
+      5
+     ],
+     [
+      "argentina",
+      "passaportes",
+      3
+     ],
+     [
+      "argentina",
+      "stf",
+      3
+     ],
+     [
+      "argentina",
+      "aviao",
+      3
+     ],
+     [
+      "argentina",
+      "entregar",
+      4
+     ],
+     [
+      "argentina",
+      "tras",
+      3
+     ],
+     [
+      "argentina",
+      "perder",
+      4
+     ],
+     [
+      "argentina",
+      "the",
+      4
+     ],
+     [
+      "argentina",
+      "eua",
+      4
+     ],
+     [
+      "argentina",
+      "trump",
+      3
+     ],
+     [
+      "argentina",
+      "miami",
+      7
+     ],
+     [
+      "argentina",
+      "and",
+      3
+     ],
+     [
+      "argentina",
+      "brazilian",
+      3
+     ],
+     [
+      "argentina",
+      "ecuador",
+      6
+     ],
+     [
+      "argentina",
+      "his",
+      3
+     ],
+     [
+      "argentina",
+      "presidential",
+      3
+     ],
+     [
+      "argentina",
+      "elecciones",
+      4
+     ],
+     [
+      "estados",
+      "fronteira",
+      7
+     ],
+     [
+      "estados",
+      "noticias",
+      4
+     ],
+     [
+      "estados",
+      "unidos",
+      43
+     ],
+     [
+      "estados",
+      "argentino",
+      7
+     ],
+     [
+      "estados",
+      "autoridades",
+      4
+     ],
+     [
+      "estados",
+      "las",
+      10
+     ],
+     [
+      "estados",
+      "lavado",
+      5
+     ],
+     [
+      "estados",
+      "policia",
+      11
+     ],
+     [
+      "estados",
+      "rumbo",
+      8
+     ],
+     [
+      "estados",
+      "territorio",
+      5
+     ],
+     [
+      "estados",
+      "con",
+      6
+     ],
+     [
+      "estados",
+      "del",
+      8
+     ],
+     [
+      "estados",
+      "donde",
+      5
+     ],
+     [
+      "estados",
+      "eduardo",
+      6
+     ],
+     [
+      "estados",
+      "habria",
+      5
+     ],
+     [
+      "estados",
+      "presidente",
+      5
+     ],
+     [
+      "estados",
+      "fuga",
+      10
+     ],
+     [
+      "estados",
+      "informacoes",
+      7
+     ],
+     [
+      "estados",
+      "oficial",
+      4
+     ],
+     [
+      "estados",
+      "senador",
+      11
+     ],
+     [
+      "estados",
+      "teria",
+      5
+     ],
+     [
+      "estados",
+      "horas",
+      5
+     ],
+     [
+      "estados",
+      "una",
+      6
+     ],
+     [
+      "estados",
+      "aliados",
+      6
+     ],
+     [
+      "estados",
+      "federal",
+      12
+     ],
+     [
+      "estados",
+      "momento",
+      6
+     ],
+     [
+      "estados",
+      "derrotado",
+      5
+     ],
+     [
+      "estados",
+      "esposa",
+      6
+     ],
+     [
+      "estados",
+      "familia",
+      9
+     ],
+     [
+      "estados",
+      "feira",
+      6
+     ],
+     [
+      "estados",
+      "fontes",
+      6
+     ],
+     [
+      "estados",
+      "fugiu",
+      6
+     ],
+     [
+      "estados",
+      "passaportes",
+      6
+     ],
+     [
+      "estados",
+      "stf",
+      5
+     ],
+     [
+      "estados",
+      "asilo",
+      3
+     ],
+     [
+      "estados",
+      "deixou",
+      4
+     ],
+     [
+      "estados",
+      "donald",
+      4
+     ],
+     [
+      "estados",
+      "eua",
+      5
+     ],
+     [
+      "estados",
+      "trump",
+      5
+     ],
+     [
+      "estados",
+      "elecciones",
+      6
+     ],
+     [
+      "estados",
+      "aviao",
+      3
+     ],
+     [
+      "estados",
+      "brasilia",
+      4
+     ],
+     [
+      "estados",
+      "tras",
+      6
+     ],
+     [
+      "estados",
+      "entregar",
+      4
+     ],
+     [
+      "estados",
+      "huyo",
+      3
+     ],
+     [
+      "estados",
+      "perder",
+      7
+     ],
+     [
+      "estados",
+      "florida",
+      3
+     ],
+     [
+      "estados",
+      "miami",
+      5
+     ],
+     [
+      "fronteira",
+      "noticias",
+      3
+     ],
+     [
+      "fronteira",
+      "unidos",
+      7
+     ],
+     [
+      "fronteira",
+      "senador",
+      4
+     ],
+     [
+      "fronteira",
+      "teria",
+      4
+     ],
+     [
+      "fronteira",
+      "argentino",
+      3
+     ],
+     [
+      "fronteira",
+      "fontes",
+      3
+     ],
+     [
+      "noticias",
+      "unidos",
+      4
+     ],
+     [
+      "noticias",
+      "fuga",
+      3
+     ],
+     [
+      "unidos",
+      "argentino",
+      7
+     ],
+     [
+      "unidos",
+      "autoridades",
+      4
+     ],
+     [
+      "unidos",
+      "las",
+      10
+     ],
+     [
+      "unidos",
+      "lavado",
+      5
+     ],
+     [
+      "unidos",
+      "policia",
+      11
+     ],
+     [
+      "unidos",
+      "rumbo",
+      8
+     ],
+     [
+      "unidos",
+      "territorio",
+      5
+     ],
+     [
+      "unidos",
+      "con",
+      6
+     ],
+     [
+      "unidos",
+      "del",
+      8
+     ],
+     [
+      "unidos",
+      "donde",
+      5
+     ],
+     [
+      "unidos",
+      "eduardo",
+      6
+     ],
+     [
+      "unidos",
+      "habria",
+      5
+     ],
+     [
+      "unidos",
+      "presidente",
+      5
+     ],
+     [
+      "unidos",
+      "fuga",
+      10
+     ],
+     [
+      "unidos",
+      "informacoes",
+      7
+     ],
+     [
+      "unidos",
+      "oficial",
+      4
+     ],
+     [
+      "unidos",
+      "senador",
+      11
+     ],
+     [
+      "unidos",
+      "teria",
+      5
+     ],
+     [
+      "unidos",
+      "horas",
+      5
+     ],
+     [
+      "unidos",
+      "una",
+      6
+     ],
+     [
+      "unidos",
+      "aliados",
+      6
+     ],
+     [
+      "unidos",
+      "federal",
+      12
+     ],
+     [
+      "unidos",
+      "momento",
+      6
+     ],
+     [
+      "unidos",
+      "derrotado",
+      5
+     ],
+     [
+      "unidos",
+      "esposa",
+      6
+     ],
+     [
+      "unidos",
+      "familia",
+      9
+     ],
+     [
+      "unidos",
+      "feira",
+      6
+     ],
+     [
+      "unidos",
+      "fontes",
+      6
+     ],
+     [
+      "unidos",
+      "fugiu",
+      6
+     ],
+     [
+      "unidos",
+      "passaportes",
+      6
+     ],
+     [
+      "unidos",
+      "stf",
+      5
+     ],
+     [
+      "unidos",
+      "asilo",
+      3
+     ],
+     [
+      "unidos",
+      "deixou",
+      4
+     ],
+     [
+      "unidos",
+      "donald",
+      4
+     ],
+     [
+      "unidos",
+      "eua",
+      5
+     ],
+     [
+      "unidos",
+      "trump",
+      5
+     ],
+     [
+      "unidos",
+      "elecciones",
+      6
+     ],
+     [
+      "unidos",
+      "aviao",
+      3
+     ],
+     [
+      "unidos",
+      "brasilia",
+      4
+     ],
+     [
+      "unidos",
+      "tras",
+      6
+     ],
+     [
+      "unidos",
+      "entregar",
+      4
+     ],
+     [
+      "unidos",
+      "huyo",
+      3
+     ],
+     [
+      "unidos",
+      "perder",
+      7
+     ],
+     [
+      "unidos",
+      "florida",
+      3
+     ],
+     [
+      "unidos",
+      "miami",
+      5
+     ],
+     [
+      "autoridades",
+      "federal",
+      5
+     ],
+     [
+      "autoridades",
+      "policia",
+      6
+     ],
+     [
+      "autoridades",
+      "las",
+      4
+     ],
+     [
+      "autoridades",
+      "rumbo",
+      3
+     ],
+     [
+      "autoridades",
+      "aliados",
+      3
+     ],
+     [
+      "federal",
+      "fugiu",
+      3
+     ],
+     [
+      "federal",
+      "policia",
+      13
+     ],
+     [
+      "federal",
+      "fuga",
+      10
+     ],
+     [
+      "federal",
+      "informacoes",
+      5
+     ],
+     [
+      "federal",
+      "brasilia",
+      5
+     ],
+     [
+      "federal",
+      "deixou",
+      3
+     ],
+     [
+      "federal",
+      "feira",
+      5
+     ],
+     [
+      "federal",
+      "momento",
+      4
+     ],
+     [
+      "federal",
+      "senador",
+      9
+     ],
+     [
+      "federal",
+      "aliados",
+      4
+     ],
+     [
+      "federal",
+      "con",
+      3
+     ],
+     [
+      "federal",
+      "donde",
+      3
+     ],
+     [
+      "federal",
+      "las",
+      6
+     ],
+     [
+      "federal",
+      "oficial",
+      3
+     ],
+     [
+      "federal",
+      "una",
+      4
+     ],
+     [
+      "federal",
+      "argentino",
+      5
+     ],
+     [
+      "federal",
+      "derrotado",
+      3
+     ],
+     [
+      "federal",
+      "esposa",
+      6
+     ],
+     [
+      "federal",
+      "familia",
+      5
+     ],
+     [
+      "federal",
+      "fontes",
+      4
+     ],
+     [
+      "federal",
+      "horas",
+      3
+     ],
+     [
+      "federal",
+      "passaportes",
+      6
+     ],
+     [
+      "federal",
+      "stf",
+      5
+     ],
+     [
+      "federal",
+      "aviao",
+      3
+     ],
+     [
+      "federal",
+      "eua",
+      3
+     ],
+     [
+      "federal",
+      "entregar",
+      5
+     ],
+     [
+      "federal",
+      "eduardo",
+      3
+     ],
+     [
+      "federal",
+      "miami",
+      5
+     ],
+     [
+      "federal",
+      "perder",
+      4
+     ],
+     [
+      "fugiu",
+      "policia",
+      3
+     ],
+     [
+      "fugiu",
+      "senador",
+      3
+     ],
+     [
+      "fugiu",
+      "argentino",
+      4
+     ],
+     [
+      "fugiu",
+      "eua",
+      3
+     ],
+     [
+      "fugiu",
+      "fuga",
+      4
+     ],
+     [
+      "policia",
+      "fuga",
+      7
+     ],
+     [
+      "policia",
+      "informacoes",
+      3
+     ],
+     [
+      "policia",
+      "argentino",
+      5
+     ],
+     [
+      "policia",
+      "las",
+      5
+     ],
+     [
+      "policia",
+      "rumbo",
+      4
+     ],
+     [
+      "policia",
+      "aliados",
+      4
+     ],
+     [
+      "policia",
+      "donde",
+      3
+     ],
+     [
+      "policia",
+      "momento",
+      3
+     ],
+     [
+      "policia",
+      "oficial",
+      3
+     ],
+     [
+      "policia",
+      "una",
+      3
+     ],
+     [
+      "policia",
+      "familia",
+      4
+     ],
+     [
+      "policia",
+      "horas",
+      3
+     ],
+     [
+      "policia",
+      "passaportes",
+      4
+     ],
+     [
+      "policia",
+      "senador",
+      5
+     ],
+     [
+      "policia",
+      "stf",
+      3
+     ],
+     [
+      "policia",
+      "brasilia",
+      4
+     ],
+     [
+      "policia",
+      "eduardo",
+      3
+     ],
+     [
+      "policia",
+      "perder",
+      3
+     ],
+     [
+      "fuga",
+      "informacoes",
+      5
+     ],
+     [
+      "fuga",
+      "eduardo",
+      5
+     ],
+     [
+      "fuga",
+      "senador",
+      8
+     ],
+     [
+      "fuga",
+      "brasilia",
+      4
+     ],
+     [
+      "fuga",
+      "feira",
+      4
+     ],
+     [
+      "fuga",
+      "momento",
+      3
+     ],
+     [
+      "fuga",
+      "argentino",
+      3
+     ],
+     [
+      "fuga",
+      "derrotado",
+      4
+     ],
+     [
+      "fuga",
+      "esposa",
+      3
+     ],
+     [
+      "fuga",
+      "familia",
+      5
+     ],
+     [
+      "fuga",
+      "fontes",
+      3
+     ],
+     [
+      "fuga",
+      "passaportes",
+      7
+     ],
+     [
+      "fuga",
+      "stf",
+      6
+     ],
+     [
+      "fuga",
+      "entregar",
+      4
+     ],
+     [
+      "fuga",
+      "las",
+      3
+     ],
+     [
+      "fuga",
+      "miami",
+      3
+     ],
+     [
+      "fuga",
+      "eua",
+      3
+     ],
+     [
+      "fuga",
+      "perder",
+      4
+     ],
+     [
+      "informacoes",
+      "oficial",
+      4
+     ],
+     [
+      "informacoes",
+      "senador",
+      6
+     ],
+     [
+      "informacoes",
+      "teria",
+      3
+     ],
+     [
+      "informacoes",
+      "deixou",
+      3
+     ],
+     [
+      "informacoes",
+      "esposa",
+      4
+     ],
+     [
+      "informacoes",
+      "eua",
+      4
+     ],
+     [
+      "informacoes",
+      "fontes",
+      3
+     ],
+     [
+      "informacoes",
+      "familia",
+      3
+     ],
+     [
+      "informacoes",
+      "feira",
+      4
+     ],
+     [
+      "informacoes",
+      "passaportes",
+      5
+     ],
+     [
+      "informacoes",
+      "stf",
+      5
+     ],
+     [
+      "informacoes",
+      "derrotado",
+      3
+     ],
+     [
+      "informacoes",
+      "entregar",
+      3
+     ],
+     [
+      "informacoes",
+      "miami",
+      3
+     ],
+     [
+      "senador",
+      "teria",
+      6
+     ],
+     [
+      "senador",
+      "oficial",
+      3
+     ],
+     [
+      "senador",
+      "brasilia",
+      3
+     ],
+     [
+      "senador",
+      "deixou",
+      6
+     ],
+     [
+      "senador",
+      "feira",
+      7
+     ],
+     [
+      "senador",
+      "momento",
+      4
+     ],
+     [
+      "senador",
+      "aliados",
+      6
+     ],
+     [
+      "senador",
+      "argentino",
+      3
+     ],
+     [
+      "senador",
+      "derrotado",
+      6
+     ],
+     [
+      "senador",
+      "esposa",
+      6
+     ],
+     [
+      "senador",
+      "familia",
+      5
+     ],
+     [
+      "senador",
+      "fontes",
+      6
+     ],
+     [
+      "senador",
+      "passaportes",
+      9
+     ],
+     [
+      "senador",
+      "stf",
+      7
+     ],
+     [
+      "senador",
+      "eua",
+      6
+     ],
+     [
+      "senador",
+      "aviao",
+      3
+     ],
+     [
+      "senador",
+      "entregar",
+      6
+     ],
+     [
+      "senador",
+      "las",
+      4
+     ]
+    ],
+    "total_nos": 126,
+    "total_arestas": 1309,
+    "comunidades": 3
+   },
+   "gexf": "rede_palavras_comentarios_posts.gexf",
+   "o_que_e": "palavras que aparecem juntas no mesmo comentário (3+ vezes); cor = comunidade"
+  },
+  "classes": {
+   "comentarios": 340,
+   "classificados": 185,
+   "pct_classificados": 54.4,
+   "classes": [
+    {
+     "classe": 1,
+     "segmentos": 13,
+     "pct": 7.0,
+     "formas": [
+      [
+       "the",
+       155.7
+      ],
+      [
+       "his",
+       125.2
+      ],
+      [
+       "brazil",
+       125.2
+      ],
+      [
+       "and",
+       110.6
+      ],
+      [
+       "after",
+       96.3
+      ],
+      [
+       "presidential",
+       96.3
+      ],
+      [
+       "election",
+       96.3
+      ],
+      [
+       "brazilian",
+       96.3
+      ],
+      [
+       "has",
+       82.0
+      ],
+      [
+       "family",
+       82.0
+      ],
+      [
+       "states",
+       68.0
+      ],
+      [
+       "senator",
+       68.0
+      ],
+      [
+       "president",
+       68.0
+      ],
+      [
+       "united",
+       68.0
+      ],
+      [
+       "country",
+       68.0
+      ]
+     ],
+     "por_ano": {
+      "2026": 13
+     }
+    },
+    {
+     "classe": 2,
+     "segmentos": 40,
+     "pct": 21.6,
+     "formas": [
+      [
+       "las",
+       59.2
+      ],
+      [
+       "tras",
+       42.4
+      ],
+      [
+       "una",
+       38.3
+      ],
+      [
+       "elecciones",
+       38.3
+      ],
+      [
+       "del",
+       34.3
+      ],
+      [
+       "con",
+       34.3
+      ],
+      [
+       "donde",
+       34.3
+      ],
+      [
+       "brasil",
+       31.7
+      ],
+      [
+       "rumbo",
+       30.3
+      ],
+      [
+       "unidos",
+       28.7
+      ],
+      [
+       "estados",
+       28.7
+      ],
+      [
+       "habria",
+       26.4
+      ],
+      [
+       "huyo",
+       22.5
+      ],
+      [
+       "lavado",
+       22.5
+      ],
+      [
+       "presidenciales",
+       22.5
+      ]
+     ],
+     "por_ano": {
+      "2026": 40
+     }
+    },
+    {
+     "classe": 3,
+     "segmentos": 45,
+     "pct": 24.3,
+     "formas": [
+      [
+       "senador",
+       44.8
+      ],
+      [
+       "segundo",
+       32.9
+      ],
+      [
+       "passaportes",
+       32.9
+      ],
+      [
+       "informacoes",
+       29.4
+      ],
+      [
+       "eua",
+       26.0
+      ],
+      [
+       "feira",
+       26.0
+      ],
+      [
+       "stf",
+       26.0
+      ],
+      [
+       "fuga",
+       25.4
+      ],
+      [
+       "teria",
+       22.6
+      ],
+      [
+       "fronteira",
+       22.6
+      ],
+      [
+       "aliados",
+       21.0
+      ],
+      [
+       "federal",
+       19.4
+      ],
+      [
+       "eleicao",
+       19.3
+      ],
+      [
+       "deixou",
+       19.3
+      ],
+      [
+       "fontes",
+       19.3
+      ]
+     ],
+     "por_ano": {
+      "2026": 45
+     }
+    },
+    {
+     "classe": 4,
+     "segmentos": 27,
+     "pct": 14.6,
+     "formas": [],
+     "por_ano": {
+      "2026": 27
+     }
+    },
+    {
+     "classe": 5,
+     "segmentos": 19,
+     "pct": 10.3,
+     "formas": [
+      [
+       "cade",
+       118.7
+      ]
+     ],
+     "por_ano": {
+      "2026": 19
+     }
+    },
+    {
+     "classe": 6,
+     "segmentos": 41,
+     "pct": 22.2,
+     "formas": [
+      [
+       "fugiu",
+       111.8
+      ],
+      [
+       "reinaldo",
+       7.1
+      ],
+      [
+       "urgente",
+       6.6
+      ]
+     ],
+     "por_ano": {
+      "2026": 41
+     }
+    }
+   ],
+   "arvore": [
+    {
+     "id": 0,
+     "n": 254,
+     "filhos": [
+      1,
+      2
+     ],
+     "chi2": 1606.7,
+     "classe": null
+    },
+    {
+     "id": 1,
+     "n": 13,
+     "filhos": null,
+     "classe": 1
+    },
+    {
+     "id": 2,
+     "n": 241,
+     "filhos": [
+      3,
+      4
+     ],
+     "chi2": 1247.2,
+     "classe": null
+    },
+    {
+     "id": 3,
+     "n": 238,
+     "filhos": [
+      5,
+      6
+     ],
+     "chi2": 1105.6,
+     "classe": null
+    },
+    {
+     "id": 4,
+     "n": 3,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 5,
+     "n": 10,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 6,
+     "n": 228,
+     "filhos": [
+      7,
+      8
+     ],
+     "chi2": 917.1,
+     "classe": null
+    },
+    {
+     "id": 7,
+     "n": 94,
+     "filhos": [
+      31,
+      32
+     ],
+     "chi2": 701.7,
+     "classe": null
+    },
+    {
+     "id": 8,
+     "n": 134,
+     "filhos": [
+      9,
+      10
+     ],
+     "chi2": 259.5,
+     "classe": null
+    },
+    {
+     "id": 9,
+     "n": 130,
+     "filhos": [
+      11,
+      12
+     ],
+     "chi2": 202.1,
+     "classe": null
+    },
+    {
+     "id": 10,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 11,
+     "n": 126,
+     "filhos": [
+      13,
+      14
+     ],
+     "chi2": 174.0,
+     "classe": null
+    },
+    {
+     "id": 12,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 13,
+     "n": 123,
+     "filhos": [
+      15,
+      16
+     ],
+     "chi2": 169.9,
+     "classe": null
+    },
+    {
+     "id": 14,
+     "n": 3,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 15,
+     "n": 5,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 16,
+     "n": 118,
+     "filhos": [
+      17,
+      18
+     ],
+     "chi2": 161.6,
+     "classe": null
+    },
+    {
+     "id": 17,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 18,
+     "n": 117,
+     "filhos": [
+      19,
+      20
+     ],
+     "chi2": 154.6,
+     "classe": null
+    },
+    {
+     "id": 19,
+     "n": 3,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 20,
+     "n": 114,
+     "filhos": [
+      21,
+      22
+     ],
+     "chi2": 151.4,
+     "classe": null
+    },
+    {
+     "id": 21,
+     "n": 113,
+     "filhos": [
+      23,
+      24
+     ],
+     "chi2": 139.0,
+     "classe": null
+    },
+    {
+     "id": 22,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 23,
+     "n": 112,
+     "filhos": [
+      25,
+      26
+     ],
+     "chi2": 125.3,
+     "classe": null
+    },
+    {
+     "id": 24,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 25,
+     "n": 105,
+     "filhos": [
+      27,
+      28
+     ],
+     "chi2": 124.6,
+     "classe": null
+    },
+    {
+     "id": 26,
+     "n": 7,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 27,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 28,
+     "n": 101,
+     "filhos": [
+      29,
+      30
+     ],
+     "chi2": 90.0,
+     "classe": null
+    },
+    {
+     "id": 29,
+     "n": 60,
+     "filhos": [
+      33,
+      34
+     ],
+     "chi2": 49.5,
+     "classe": null
+    },
+    {
+     "id": 30,
+     "n": 41,
+     "filhos": null,
+     "classe": 6
+    },
+    {
+     "id": 31,
+     "n": 49,
+     "filhos": [
+      37,
+      38
+     ],
+     "chi2": 315.5,
+     "classe": null
+    },
+    {
+     "id": 32,
+     "n": 45,
+     "filhos": null,
+     "classe": 3
+    },
+    {
+     "id": 33,
+     "n": 53,
+     "filhos": [
+      35,
+      36
+     ],
+     "chi2": 40.2,
+     "classe": null
+    },
+    {
+     "id": 34,
+     "n": 7,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 35,
+     "n": 49,
+     "filhos": [
+      39,
+      40
+     ],
+     "chi2": 34.7,
+     "classe": null
+    },
+    {
+     "id": 36,
+     "n": 4,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 37,
+     "n": 48,
+     "filhos": [
+      41,
+      42
+     ],
+     "chi2": 236.2,
+     "classe": null
+    },
+    {
+     "id": 38,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 39,
+     "n": 1,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 40,
+     "n": 48,
+     "filhos": [
+      43,
+      44
+     ],
+     "chi2": 32.6,
+     "classe": null
+    },
+    {
+     "id": 41,
+     "n": 40,
+     "filhos": null,
+     "classe": 2
+    },
+    {
+     "id": 42,
+     "n": 8,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 43,
+     "n": 2,
+     "filhos": null,
+     "eliminado": true,
+     "classe": null
+    },
+    {
+     "id": 44,
+     "n": 46,
+     "filhos": [
+      45,
+      46
+     ],
+     "chi2": 24.8,
+     "classe": null
+    },
+    {
+     "id": 45,
+     "n": 27,
+     "filhos": null,
+     "classe": 4
+    },
+    {
+     "id": 46,
+     "n": 19,
+     "filhos": null,
+     "classe": 5
+    }
+   ],
+   "min_classe": 12,
+   "aproveitamento": {
+    "pct_classificados": 54.4,
+    "minimo_pct": 75.0,
+    "atinge_minimo": false,
+    "fonte_minimo": "Camargo & Justo (2013), tutorial do IRaMuTeQ; citado em Amaral-Rosa (2019), Rev Esc Enferm USP 53:e03468",
+    "regra": "classe mínima de 5% dos segmentos ativos (mín. 10), até 10 divisões por classe pedida, grupo menor que o mínimo fica não classificado",
+    "conferencia_iramuteq": "⛔ pendente: validação do responsável no IRaMuTeQ"
+   },
+   "variavel": null,
+   "nota": "CHD de Reinert do Atlas (chd_reinert.py), um comentário = um segmento; sem lematização. Os nomes das classes são dados por quem lê as formas. O corpus no formato do IRaMuTeQ (com *video_, *ano_ e *tipo_) fica no repositório privado.",
+   "amostra": {
+    "comentarios": 340,
+    "de": 340,
+    "semente": 42
+   }
+  },
+  "erro_redes": "KeyError: 'video_id'"
+ },
+ "universo": [],
+ "pontos": [
+  [
+   "2026-10-24T02:39",
+   "tiktok",
+   1700000,
+   [
+    "desmentido_defesa"
+   ],
+   "bbcnewsbrasil",
+   "https://www.tiktok.com/@bbcnewsbrasil/video/7700058197251362070"
+  ],
+  [
+   "2026-10-24T13:45",
+   "tiktok",
+   268,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T14:37",
+   "tiktok",
+   2272,
+   [],
+   "gzeraazh_",
+   "https://www.tiktok.com/@gzeraazh_/video/7700614481071656244"
+  ],
+  [
+   "2026-10-25T15:00",
+   "tiktok",
+   2240,
+   [
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-25T17:41",
+   "tiktok",
+   7062,
+   [],
+   "daily1ester",
+   "https://www.tiktok.com/@daily1ester/video/7700661851549453589"
+  ],
+  [
+   "2026-10-25T17:49",
+   "tiktok",
+   150800,
+   [],
+   "daily1ester",
+   "https://www.tiktok.com/@daily1ester/video/7700664136451230996"
+  ],
+  [
+   "2026-10-25T23:37",
+   "tiktok",
+   102,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T00:43",
+   "tiktok",
+   5620,
+   [],
+   "sunrises99",
+   "https://www.tiktok.com/@sunrises99/video/7700770743428107526"
+  ],
+  [
+   "2026-10-26T01:06",
+   "tiktok",
+   195,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T01:32",
+   "tiktok",
+   662500,
+   [],
+   "bahiafeed",
+   "https://www.tiktok.com/@bahiafeed/video/7700783491470085396"
+  ],
+  [
+   "2026-10-26T13:52",
+   "tiktok",
+   96400,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T14:30",
+   "tiktok",
+   232,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-26T19:54",
+   "tiktok",
+   2894,
+   [
+    "informacao_noticia"
+   ],
+   "mariajoaotavares_",
+   "https://www.tiktok.com/@mariajoaotavares_/video/7701067407091109126"
+  ],
+  [
+   "2026-10-26T22:51",
+   "tiktok",
+   74800,
+   [],
+   "eduardobamboocha",
+   "https://www.tiktok.com/@eduardobamboocha/video/7701112950530116885"
+  ],
+  [
+   "2026-10-27T01:25",
+   "tiktok",
+   63600,
+   [
+    "informacao_noticia"
+   ],
+   "felinosemfiltro",
+   "https://www.tiktok.com/@felinosemfiltro/video/7701152696694344967"
+  ],
+  [
+   "2026-10-27T12:34",
+   "tiktok",
+   1600000,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "noticiasredetv",
+   "https://www.tiktok.com/@noticiasredetv/video/7701325116151549205"
+  ],
+  [
+   "2026-10-27T12:39",
+   "tiktok",
+   252900,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "dieguinhotv",
+   "https://www.tiktok.com/@dieguinhotv/video/7701326312492829960"
+  ],
+  [
+   "2026-10-27T12:43",
+   "tiktok",
+   17500,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "mateusatualiza",
+   "https://www.tiktok.com/@mateusatualiza/video/7701327378760387860"
+  ],
+  [
+   "2026-10-27T12:58",
+   "tiktok",
+   18500,
+   [
+    "afirma_fuga"
+   ],
+   "adv.otaviano",
+   "https://www.tiktok.com/@adv.otaviano/video/7701331253349436692"
+  ],
+  [
+   "2026-10-27T13:08",
+   "tiktok",
+   96300,
+   [
+    "afirma_fuga"
+   ],
+   "ferreredna",
+   "https://www.tiktok.com/@ferreredna/video/7701333662750608692"
+  ],
+  [
+   "2026-10-27T13:22",
+   "tiktok",
+   382,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T13:32",
+   "tiktok",
+   1700000,
+   [],
+   "postagemdiaria01",
+   "https://www.tiktok.com/@postagemdiaria01/video/7701339973605264658"
+  ],
+  [
+   "2026-10-27T13:38",
+   "tiktok",
+   11900,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "vicenzohenriquecyrilo",
+   "https://www.tiktok.com/@vicenzohenriquecyrilo/video/7701341416059866389"
+  ],
+  [
+   "2026-10-27T14:17",
+   "tiktok",
+   411,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T14:19",
+   "tiktok",
+   31500,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   "paulinho_tok",
+   "https://www.tiktok.com/@paulinho_tok/video/7701351988113542420"
+  ],
+  [
+   "2026-10-27T14:19",
+   "tiktok",
+   469,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T14:21",
+   "tiktok",
+   710000,
+   [
+    "afirma_fuga",
+    "justica_investigacao"
+   ],
+   "uelvisonsilv",
+   "https://www.tiktok.com/@uelvisonsilv/video/7701352478444506388"
+  ],
+  [
+   "2026-10-27T14:31",
+   "tiktok",
+   3200000,
+   [
+    "afirma_fuga"
+   ],
+   "renansantosmbl",
+   "https://www.tiktok.com/@renansantosmbl/video/7701355189109869844"
+  ],
+  [
+   "2026-10-27T14:53",
+   "tiktok",
+   31700,
+   [
+    "afirma_fuga"
+   ],
+   "brunodossantossss",
+   "https://www.tiktok.com/@brunodossantossss/video/7701360882470669588"
+  ],
+  [
+   "2026-10-27T15:02",
+   "tiktok",
+   19500,
+   [
+    "afirma_fuga"
+   ],
+   "luanagauchaoficial",
+   "https://www.tiktok.com/@luanagauchaoficial/video/7701363255070952712"
+  ],
+  [
+   "2026-10-27T15:07",
+   "tiktok",
+   3285,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T15:17",
+   "tiktok",
+   26600,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "latinanoticias",
+   "https://www.tiktok.com/@latinanoticias/video/7701366975015996693"
+  ],
+  [
+   "2026-10-27T15:18",
+   "tiktok",
+   1673,
+   [
+    "pergunta_paradeiro"
+   ],
+   "escritorvaldemar",
+   "https://www.tiktok.com/@escritorvaldemar/video/7701367233200655668"
+  ],
+  [
+   "2026-10-27T15:24",
+   "tiktok",
+   602000,
+   [
+    "afirma_fuga",
+    "desmentido_defesa",
+    "destino_exterior"
+   ],
+   "rubinho.politizando",
+   "https://www.tiktok.com/@rubinho.politizando/video/7701368890432982290"
+  ],
+  [
+   "2026-10-27T15:25",
+   "tiktok",
+   303200,
+   [
+    "informacao_noticia",
+    "pergunta_paradeiro"
+   ],
+   "ptpiaui",
+   "https://www.tiktok.com/@ptpiaui/video/7701369083496910100"
+  ],
+  [
+   "2026-10-27T15:30",
+   "tiktok",
+   454,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "destino_exterior",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "ufplanos",
+   "https://www.tiktok.com/@ufplanos/video/7701370356182830343"
+  ],
+  [
+   "2026-10-27T15:30",
+   "tiktok",
+   669,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T15:31",
+   "tiktok",
+   56400,
+   [
+    "afirma_fuga",
+    "informacao_noticia"
+   ],
+   "donatopt",
+   "https://www.tiktok.com/@donatopt/video/7701370534507924756"
+  ],
+  [
+   "2026-10-27T15:41",
+   "tiktok",
+   197,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T15:48",
+   "tiktok",
+   384,
+   [
+    "afirma_fuga",
+    "pergunta_paradeiro"
+   ],
+   "tstlopes",
+   "https://www.tiktok.com/@tstlopes/video/7701374930838965510"
+  ],
+  [
+   "2026-10-27T15:49",
+   "tiktok",
+   1506,
+   [
+    "pergunta_paradeiro"
+   ],
+   "48silvaadaelson",
+   "https://www.tiktok.com/@48silvaadaelson/video/7701375325707439367"
+  ],
+  [
+   "2026-10-27T16:01",
+   "tiktok",
+   4214,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T16:05",
+   "tiktok",
+   304100,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   "cortes.6793",
+   "https://www.tiktok.com/@cortes.6793/video/7701379230701030663"
+  ],
+  [
+   "2026-10-27T16:07",
+   "tiktok",
+   4395,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "pergunta_paradeiro"
+   ],
+   "brasil.247",
+   "https://www.tiktok.com/@brasil.247/video/7701379805127642389"
+  ],
+  [
+   "2026-10-27T16:08",
+   "tiktok",
+   10400,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "noticiando_7",
+   "https://www.tiktok.com/@noticiando_7/video/7701380136746208530"
+  ],
+  [
+   "2026-10-27T16:09",
+   "tiktok",
+   4986,
+   [],
+   "sem_filtro_oficial",
+   "https://www.tiktok.com/@sem_filtro_oficial/video/7701380354032160008"
+  ],
+  [
+   "2026-10-27T16:15",
+   "tiktok",
+   110400,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "terragora",
+   "https://www.tiktok.com/@terragora/video/7701381936249310485"
+  ],
+  [
+   "2026-10-27T16:15",
+   "tiktok",
+   672,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T16:23",
+   "tiktok",
+   17300,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "revolucion.popular",
+   "https://www.tiktok.com/@revolucion.popular/video/7701384114443701525"
+  ],
+  [
+   "2026-10-27T16:34",
+   "tiktok",
+   892300,
+   [
+    "afirma_fuga"
+   ],
+   "gabinetedoocio",
+   "https://www.tiktok.com/@gabinetedoocio/video/7701386981984505140"
+  ],
+  [
+   "2026-10-27T16:36",
+   "tiktok",
+   3274,
+   [
+    "pergunta_paradeiro"
+   ],
+   "diretoaoponto.nalata",
+   "https://www.tiktok.com/@diretoaoponto.nalata/video/7701387477218528519"
+  ],
+  [
+   "2026-10-27T16:38",
+   "tiktok",
+   636,
+   [
+    "afirma_fuga"
+   ],
+   "flavianesantos.pt",
+   "https://www.tiktok.com/@flavianesantos.pt/video/7701387975732645140"
+  ],
+  [
+   "2026-10-27T16:41",
+   "tiktok",
+   1163,
+   [
+    "pergunta_paradeiro"
+   ],
+   "maps_black",
+   "https://www.tiktok.com/@maps_black/video/7701388579229977863"
+  ],
+  [
+   "2026-10-27T16:41",
+   "tiktok",
+   41100,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "victor_jose_guillen",
+   "https://www.tiktok.com/@victor_jose_guillen/video/7701388589862636831"
+  ],
+  [
+   "2026-10-27T16:42",
+   "tiktok",
+   1113,
+   [],
+   "vibededuas",
+   "https://www.tiktok.com/@vibededuas/video/7701388879093337351"
+  ],
+  [
+   "2026-10-27T16:46",
+   "tiktok",
+   5208,
+   [
+    "afirma_fuga"
+   ],
+   "user250105749",
+   "https://www.tiktok.com/@user250105749/video/7701390008955030792"
+  ],
+  [
+   "2026-10-27T16:47",
+   "tiktok",
+   224,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T16:48",
+   "tiktok",
+   22100,
+   [],
+   "barbudodapolitica",
+   "https://www.tiktok.com/@barbudodapolitica/video/7701390474325527828"
+  ],
+  [
+   "2026-10-27T17:01",
+   "tiktok",
+   533,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T17:01",
+   "tiktok",
+   1042,
+   [
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T17:03",
+   "tiktok",
+   275400,
+   [
+    "afirma_fuga",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "ptnacamara",
+   "https://www.tiktok.com/@ptnacamara/video/7701394328358358292"
+  ],
+  [
+   "2026-10-27T17:04",
+   "tiktok",
+   3948,
+   [],
+   "rlmlnews",
+   "https://www.tiktok.com/@rlmlnews/video/7701394705606708500"
+  ],
+  [
+   "2026-10-27T17:10",
+   "tiktok",
+   15200,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "tugonews",
+   "https://www.tiktok.com/@tugonews/video/7701395642370755892"
+  ],
+  [
+   "2026-10-27T17:10",
+   "tiktok",
+   300,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T17:12",
+   "tiktok",
+   117,
+   [],
+   "estati02",
+   "https://www.tiktok.com/@estati02/video/7701396712245431573"
+  ],
+  [
+   "2026-10-27T17:14",
+   "tiktok",
+   529,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T17:15",
+   "tiktok",
+   33100,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "jenscastro",
+   "https://www.tiktok.com/@jenscastro/video/7701397456898166036"
+  ],
+  [
+   "2026-10-27T17:17",
+   "tiktok",
+   529,
+   [
+    "pergunta_paradeiro"
+   ],
+   "tvcasa.oficial",
+   "https://www.tiktok.com/@tvcasa.oficial/video/7701397825569033524"
+  ],
+  [
+   "2026-10-27T17:21",
+   "tiktok",
+   734800,
+   [],
+   "gusgayer",
+   "https://www.tiktok.com/@gusgayer/video/7701399107700641044"
+  ],
+  [
+   "2026-10-27T17:21",
+   "tiktok",
+   4476,
+   [
+    "destino_exterior",
+    "pergunta_paradeiro"
+   ],
+   "diogxgg",
+   "https://www.tiktok.com/@diogxgg/video/7701398438277041460"
+  ],
+  [
+   "2026-10-27T17:25",
+   "tiktok",
+   61700,
+   [
+    "pergunta_paradeiro"
+   ],
+   "pedrocampospe",
+   "https://www.tiktok.com/@pedrocampospe/video/7701400023250046215"
+  ],
+  [
+   "2026-10-27T17:34",
+   "tiktok",
+   162,
+   [
+    "pergunta_paradeiro"
+   ],
+   "samueldiasbarros1",
+   "https://www.tiktok.com/@samueldiasbarros1/video/7701402444873583892"
+  ],
+  [
+   "2026-10-27T17:36",
+   "tiktok",
+   1378,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "americatvpy",
+   "https://www.tiktok.com/@americatvpy/video/7701402812692892936"
+  ],
+  [
+   "2026-10-27T17:36",
+   "tiktok",
+   263200,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "bemoreiradf",
+   "https://www.tiktok.com/@bemoreiradf/video/7701402785216056597"
+  ],
+  [
+   "2026-10-27T17:37",
+   "tiktok",
+   249300,
+   [],
+   "dejota.corts",
+   "https://www.tiktok.com/@dejota.corts/video/7701402981266115861"
+  ],
+  [
+   "2026-10-27T17:38",
+   "tiktok",
+   142100,
+   [],
+   "mauriciobmarcon",
+   "https://www.tiktok.com/@mauriciobmarcon/video/7701403233687751943"
+  ],
+  [
+   "2026-10-27T17:42",
+   "tiktok",
+   225,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T17:49",
+   "tiktok",
+   1600000,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "cnnbrasil",
+   "https://www.tiktok.com/@cnnbrasil/video/7701406227372461320"
+  ],
+  [
+   "2026-10-27T17:49",
+   "tiktok",
+   182,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T17:56",
+   "tiktok",
+   2828,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "pergunta_paradeiro"
+   ],
+   "joanarmortagua",
+   "https://www.tiktok.com/@joanarmortagua/video/7701408130231569696"
+  ],
+  [
+   "2026-10-27T17:57",
+   "tiktok",
+   730900,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T17:57",
+   "tiktok",
+   757700,
+   [
+    "ironia_humor"
+   ],
+   "guilhermecortez_",
+   "https://www.tiktok.com/@guilhermecortez_/video/7701408384003738901"
+  ],
+  [
+   "2026-10-27T18:02",
+   "tiktok",
+   161700,
+   [
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "pablopadula1",
+   "https://www.tiktok.com/@pablopadula1/video/7701409394847747358"
+  ],
+  [
+   "2026-10-27T18:02",
+   "tiktok",
+   4858,
+   [
+    "destino_exterior"
+   ],
+   "fabiolopes.38",
+   "https://www.tiktok.com/@fabiolopes.38/video/7701409485373754644"
+  ],
+  [
+   "2026-10-27T18:02",
+   "tiktok",
+   392800,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "g1",
+   "https://www.tiktok.com/@g1/video/7701409329727261973"
+  ],
+  [
+   "2026-10-27T18:06",
+   "tiktok",
+   495,
+   [
+    "pergunta_paradeiro"
+   ],
+   "marcelloradio09",
+   "https://www.tiktok.com/@marcelloradio09/video/7701410710214954247"
+  ],
+  [
+   "2026-10-27T18:11",
+   "tiktok",
+   5447,
+   [
+    "afirma_fuga",
+    "informacao_noticia",
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:12",
+   "tiktok",
+   1458,
+   [
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:19",
+   "tiktok",
+   4115,
+   [
+    "afirma_fuga"
+   ],
+   "advborelli",
+   "https://www.tiktok.com/@advborelli/video/7701413883721829640"
+  ],
+  [
+   "2026-10-27T18:20",
+   "tiktok",
+   640,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:21",
+   "tiktok",
+   3640,
+   [
+    "destino_exterior"
+   ],
+   "postagemdiaria01",
+   "https://www.tiktok.com/@postagemdiaria01/video/7701414431703584018"
+  ],
+  [
+   "2026-10-27T18:25",
+   "tiktok",
+   103400,
+   [
+    "afirma_fuga"
+   ],
+   "leidfernandes4",
+   "https://www.tiktok.com/@leidfernandes4/video/7701415351535389960"
+  ],
+  [
+   "2026-10-27T18:25",
+   "tiktok",
+   79100,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:29",
+   "tiktok",
+   611800,
+   [
+    "ironia_humor"
+   ],
+   "tabataamaralsp",
+   "https://www.tiktok.com/@tabataamaralsp/video/7701416447909694721"
+  ],
+  [
+   "2026-10-27T18:29",
+   "tiktok",
+   267700,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:30",
+   "tiktok",
+   5353,
+   [
+    "afirma_fuga",
+    "justica_investigacao"
+   ],
+   "critico.minuto",
+   "https://www.tiktok.com/@critico.minuto/video/7701416725916486919"
+  ],
+  [
+   "2026-10-27T18:34",
+   "tiktok",
+   101200,
+   [
+    "afirma_fuga"
+   ],
+   "karoin.eu",
+   "https://www.tiktok.com/@karoin.eu/video/7701417645823888647"
+  ],
+  [
+   "2026-10-27T18:36",
+   "tiktok",
+   164000,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "metropolesoficial",
+   "https://www.tiktok.com/@metropolesoficial/video/7701418243205958933"
+  ],
+  [
+   "2026-10-27T18:36",
+   "tiktok",
+   9399,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "justica_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:38",
+   "tiktok",
+   79600,
+   [
+    "afirma_fuga"
+   ],
+   "pedrocampospe",
+   "https://www.tiktok.com/@pedrocampospe/video/7701418852059581704"
+  ],
+  [
+   "2026-10-27T18:41",
+   "tiktok",
+   654,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:44",
+   "tiktok",
+   6083,
+   [
+    "pergunta_paradeiro"
+   ],
+   "coelhoneww",
+   "https://www.tiktok.com/@coelhoneww/video/7701420257260342536"
+  ],
+  [
+   "2026-10-27T18:46",
+   "tiktok",
+   624000,
+   [
+    "informacao_noticia"
+   ],
+   "noticiasurgentes17",
+   "https://www.tiktok.com/@noticiasurgentes17/video/7701420710190681350"
+  ],
+  [
+   "2026-10-27T18:46",
+   "tiktok",
+   206,
+   [
+    "afirma_fuga",
+    "ironia_humor",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:49",
+   "tiktok",
+   2581,
+   [
+    "afirma_fuga"
+   ],
+   "nordestemeulindo",
+   "https://www.tiktok.com/@nordestemeulindo/video/7701421617166945557"
+  ],
+  [
+   "2026-10-27T18:49",
+   "tiktok",
+   4965,
+   [
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:50",
+   "tiktok",
+   191100,
+   [
+    "afirma_fuga"
+   ],
+   "esquerdaunidaa",
+   "https://www.tiktok.com/@esquerdaunidaa/video/7701421888127372552"
+  ],
+  [
+   "2026-10-27T18:50",
+   "tiktok",
+   218,
+   [
+    "pergunta_paradeiro"
+   ],
+   "angela_semiss",
+   "https://www.tiktok.com/@angela_semiss/video/7701421881236294933"
+  ],
+  [
+   "2026-10-27T18:51",
+   "tiktok",
+   9498,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "saiufofoca",
+   "https://www.tiktok.com/@saiufofoca/video/7701422254306987282"
+  ],
+  [
+   "2026-10-27T18:54",
+   "tiktok",
+   516,
+   [
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T18:55",
+   "tiktok",
+   17000,
+   [
+    "afirma_fuga",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "noticiasredetv",
+   "https://www.tiktok.com/@noticiasredetv/video/7701423262428892423"
+  ],
+  [
+   "2026-10-27T19:10",
+   "tiktok",
+   1300000,
+   [
+    "ironia_humor"
+   ],
+   "ofofoquinho",
+   "https://www.tiktok.com/@ofofoquinho/video/7701426994147298580"
+  ],
+  [
+   "2026-10-27T19:10",
+   "tiktok",
+   152400,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   "leticiariibas",
+   "https://www.tiktok.com/@leticiariibas/video/7701427051168795911"
+  ],
+  [
+   "2026-10-27T19:10",
+   "tiktok",
+   17500,
+   [
+    "informacao_noticia"
+   ],
+   "goldnews.oficial",
+   "https://www.tiktok.com/@goldnews.oficial/video/7701426344504069382"
+  ],
+  [
+   "2026-10-27T19:11",
+   "tiktok",
+   103300,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   "elyduquemx",
+   "https://www.tiktok.com/@elyduquemx/video/7701427289417977108"
+  ],
+  [
+   "2026-10-27T19:11",
+   "tiktok",
+   312,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:17",
+   "tiktok",
+   1098,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:20",
+   "tiktok",
+   178400,
+   [
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "cnnee",
+   "https://www.tiktok.com/@cnnee/video/7701428797689777460"
+  ],
+  [
+   "2026-10-27T19:20",
+   "tiktok",
+   35600,
+   [
+    "destino_exterior"
+   ],
+   "unitel.bo",
+   "https://www.tiktok.com/@unitel.bo/video/7701428500535938356"
+  ],
+  [
+   "2026-10-27T19:21",
+   "tiktok",
+   120200,
+   [],
+   "aarontura",
+   "https://www.tiktok.com/@aarontura/video/7701428500535954740"
+  ],
+  [
+   "2026-10-27T19:31",
+   "tiktok",
+   364,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:32",
+   "tiktok",
+   259800,
+   [
+    "afirma_fuga"
+   ],
+   "diretoapalavra",
+   "https://www.tiktok.com/@diretoapalavra/video/7701432598748220679"
+  ],
+  [
+   "2026-10-27T19:34",
+   "tiktok",
+   1663,
+   [
+    "afirma_fuga",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:37",
+   "tiktok",
+   168900,
+   [
+    "informacao_noticia"
+   ],
+   "sergin_oficial",
+   "https://www.tiktok.com/@sergin_oficial/video/7701434047175724295"
+  ],
+  [
+   "2026-10-27T19:38",
+   "tiktok",
+   454,
+   [
+    "pergunta_paradeiro"
+   ],
+   "samueldiasbarros1",
+   "https://www.tiktok.com/@samueldiasbarros1/video/7701434275287256340"
+  ],
+  [
+   "2026-10-27T19:39",
+   "tiktok",
+   208400,
+   [
+    "destino_exterior"
+   ],
+   "c4news",
+   "https://www.tiktok.com/@c4news/video/7701434543387168003"
+  ],
+  [
+   "2026-10-27T19:41",
+   "tiktok",
+   2224,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:43",
+   "tiktok",
+   142800,
+   [
+    "afirma_fuga",
+    "informacao_noticia"
+   ],
+   "explainernoticias",
+   "https://www.tiktok.com/@explainernoticias/video/7701435401377959169"
+  ],
+  [
+   "2026-10-27T19:43",
+   "tiktok",
+   6368,
+   [
+    "destino_exterior",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "20m",
+   "https://www.tiktok.com/@20m/video/7701435721592196385"
+  ],
+  [
+   "2026-10-27T19:43",
+   "tiktok",
+   326,
+   [
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "oantagonista_oficial",
+   "https://www.tiktok.com/@oantagonista_oficial/video/7701435610187238677"
+  ],
+  [
+   "2026-10-27T19:45",
+   "tiktok",
+   116200,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:50",
+   "tiktok",
+   9306,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:54",
+   "tiktok",
+   1496,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   "nascimentocaramba",
+   "https://www.tiktok.com/@nascimentocaramba/video/7701438322119331079"
+  ],
+  [
+   "2026-10-27T19:54",
+   "tiktok",
+   299,
+   [
+    "ironia_humor"
+   ],
+   "joelgregorio09",
+   "https://www.tiktok.com/@joelgregorio09/video/7701438413739740437"
+  ],
+  [
+   "2026-10-27T19:56",
+   "tiktok",
+   1500,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:56",
+   "tiktok",
+   21600,
+   [
+    "afirma_fuga"
+   ],
+   "quinta.livre.ofc",
+   "https://www.tiktok.com/@quinta.livre.ofc/video/7701438978955775252"
+  ],
+  [
+   "2026-10-27T19:57",
+   "tiktok",
+   45,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T19:57",
+   "tiktok",
+   25000,
+   [
+    "destino_exterior"
+   ],
+   "alansilvafenne",
+   "https://www.tiktok.com/@alansilvafenne/video/7701439104671567112"
+  ],
+  [
+   "2026-10-27T20:03",
+   "tiktok",
+   24700,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "dieguinhotv",
+   "https://www.tiktok.com/@dieguinhotv/video/7701440707285798196"
+  ],
+  [
+   "2026-10-27T20:03",
+   "tiktok",
+   162,
+   [
+    "afirma_fuga",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:04",
+   "tiktok",
+   251,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:06",
+   "tiktok",
+   320,
+   [
+    "pergunta_paradeiro"
+   ],
+   "edizuers",
+   "https://www.tiktok.com/@edizuers/video/7701441394459544850"
+  ],
+  [
+   "2026-10-27T20:09",
+   "tiktok",
+   4299,
+   [
+    "afirma_fuga"
+   ],
+   "pqdt.alves",
+   "https://www.tiktok.com/@pqdt.alves/video/7701442250332441876"
+  ],
+  [
+   "2026-10-27T20:10",
+   "tiktok",
+   232,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:15",
+   "tiktok",
+   7986,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "revolucion.popular",
+   "https://www.tiktok.com/@revolucion.popular/video/7701436686105955604"
+  ],
+  [
+   "2026-10-27T20:16",
+   "tiktok",
+   4283,
+   [
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "pastor.rogrio.far6",
+   "https://www.tiktok.com/@pastor.rogrio.far6/video/7701444165200071942"
+  ],
+  [
+   "2026-10-27T20:19",
+   "tiktok",
+   552,
+   [
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:19",
+   "tiktok",
+   55500,
+   [
+    "afirma_fuga"
+   ],
+   "big_vitor1",
+   "https://www.tiktok.com/@big_vitor1/video/7701444835042987284"
+  ],
+  [
+   "2026-10-27T20:20",
+   "tiktok",
+   249900,
+   [
+    "afirma_fuga"
+   ],
+   "tioarmapedia",
+   "https://www.tiktok.com/@tioarmapedia/video/7701444925015002386"
+  ],
+  [
+   "2026-10-27T20:23",
+   "tiktok",
+   9196,
+   [
+    "informacao_noticia",
+    "pergunta_paradeiro"
+   ],
+   "eldeber.com.bo",
+   "https://www.tiktok.com/@eldeber.com.bo/video/7701445764442017042"
+  ],
+  [
+   "2026-10-27T20:23",
+   "tiktok",
+   41500,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:26",
+   "tiktok",
+   873,
+   [
+    "destino_exterior",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:26",
+   "tiktok",
+   2455,
+   [],
+   "eddiemorais1965",
+   "https://www.tiktok.com/@eddiemorais1965/video/7701446734056099124"
+  ],
+  [
+   "2026-10-27T20:32",
+   "tiktok",
+   575,
+   [
+    "afirma_fuga",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:32",
+   "tiktok",
+   31700,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:35",
+   "tiktok",
+   249,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:37",
+   "tiktok",
+   365,
+   [],
+   "albertofranca1310",
+   "https://www.tiktok.com/@albertofranca1310/video/7701449439281466644"
+  ],
+  [
+   "2026-10-27T20:38",
+   "tiktok",
+   225,
+   [
+    "pergunta_paradeiro"
+   ],
+   "laizasouza22",
+   "https://www.tiktok.com/@laizasouza22/video/7701449690130304277"
+  ],
+  [
+   "2026-10-27T20:38",
+   "tiktok",
+   16800,
+   [
+    "destino_exterior"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T20:38",
+   "tiktok",
+   452,
+   [
+    "informacao_noticia",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "fofoca_onl",
+   "https://www.tiktok.com/@fofoca_onl/video/7701449806388153618"
+  ],
+  [
+   "2026-10-27T20:42",
+   "tiktok",
+   17500,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   "martinhamartamartins",
+   "https://www.tiktok.com/@martinhamartamartins/video/7701450690408828168"
+  ],
+  [
+   "2026-10-27T20:46",
+   "tiktok",
+   7436,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "portalotempo",
+   "https://www.tiktok.com/@portalotempo/video/7701451754868657429"
+  ],
+  [
+   "2026-10-27T20:51",
+   "tiktok",
+   947300,
+   [
+    "afirma_fuga"
+   ],
+   "renansantosmbl",
+   "https://www.tiktok.com/@renansantosmbl/video/7701453216864587028"
+  ],
+  [
+   "2026-10-27T20:52",
+   "tiktok",
+   33700,
+   [
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "chloe_khloe2",
+   "https://www.tiktok.com/@chloe_khloe2/video/7701453339287981325"
+  ],
+  [
+   "2026-10-27T20:55",
+   "tiktok",
+   22300,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "ntn24",
+   "https://www.tiktok.com/@ntn24/video/7701453979049282834"
+  ],
+  [
+   "2026-10-27T20:56",
+   "tiktok",
+   705,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   "enfocoreal",
+   "https://www.tiktok.com/@enfocoreal/video/7701454414682361101"
+  ],
+  [
+   "2026-10-27T21:03",
+   "tiktok",
+   486800,
+   [
+    "justica_investigacao"
+   ],
+   "tomasfenati",
+   "https://www.tiktok.com/@tomasfenati/video/7701456235131915521"
+  ],
+  [
+   "2026-10-27T21:03",
+   "tiktok",
+   553900,
+   [
+    "afirma_fuga"
+   ],
+   "kimkataguiri",
+   "https://www.tiktok.com/@kimkataguiri/video/7701456310738390273"
+  ],
+  [
+   "2026-10-27T21:07",
+   "tiktok",
+   920,
+   [
+    "afirma_fuga",
+    "desqualificacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:09",
+   "tiktok",
+   34000,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:13",
+   "tiktok",
+   192900,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:16",
+   "tiktok",
+   15300,
+   [
+    "pergunta_paradeiro"
+   ],
+   "carnavalstream",
+   "https://www.tiktok.com/@carnavalstream/video/7701459663182777620"
+  ],
+  [
+   "2026-10-27T21:18",
+   "tiktok",
+   113500,
+   [
+    "afirma_fuga"
+   ],
+   "maltezzialeatorio2",
+   "https://www.tiktok.com/@maltezzialeatorio2/video/7701459998018145557"
+  ],
+  [
+   "2026-10-27T21:24",
+   "tiktok",
+   90800,
+   [
+    "afirma_fuga"
+   ],
+   "bandnewsfm",
+   "https://www.tiktok.com/@bandnewsfm/video/7701461604789013778"
+  ],
+  [
+   "2026-10-27T21:25",
+   "tiktok",
+   785,
+   [
+    "afirma_fuga",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:27",
+   "tiktok",
+   162,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "pergunta_paradeiro"
+   ],
+   "andresilvaoficial8",
+   "https://www.tiktok.com/@andresilvaoficial8/video/7701462414570605842"
+  ],
+  [
+   "2026-10-27T21:30",
+   "tiktok",
+   8243,
+   [
+    "afirma_fuga"
+   ],
+   "tugonews",
+   "https://www.tiktok.com/@tugonews/video/7701399223975087366"
+  ],
+  [
+   "2026-10-27T21:35",
+   "tiktok",
+   6202,
+   [
+    "pergunta_paradeiro"
+   ],
+   "juniorbascule",
+   "https://www.tiktok.com/@juniorbascule/video/7701464484673572103"
+  ],
+  [
+   "2026-10-27T21:39",
+   "tiktok",
+   30900,
+   [
+    "afirma_fuga"
+   ],
+   "joaodmarco",
+   "https://www.tiktok.com/@joaodmarco/video/7701465353389444359"
+  ],
+  [
+   "2026-10-27T21:39",
+   "tiktok",
+   4966,
+   [
+    "afirma_fuga"
+   ],
+   "toomacena",
+   "https://www.tiktok.com/@toomacena/video/7701465546323578120"
+  ],
+  [
+   "2026-10-27T21:42",
+   "tiktok",
+   5859,
+   [
+    "afirma_fuga"
+   ],
+   "mundodaclenice",
+   "https://www.tiktok.com/@mundodaclenice/video/7701466121278344466"
+  ],
+  [
+   "2026-10-27T21:44",
+   "tiktok",
+   183,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:46",
+   "tiktok",
+   1400000,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "g1",
+   "https://www.tiktok.com/@g1/video/7701467227349994759"
+  ],
+  [
+   "2026-10-27T21:48",
+   "tiktok",
+   663,
+   [
+    "destino_exterior",
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:49",
+   "tiktok",
+   70700,
+   [
+    "afirma_fuga"
+   ],
+   "crf.isaias.ofc",
+   "https://www.tiktok.com/@crf.isaias.ofc/video/7701467945595145480"
+  ],
+  [
+   "2026-10-27T21:49",
+   "tiktok",
+   741,
+   [
+    "afirma_fuga",
+    "justica_investigacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:49",
+   "tiktok",
+   215,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:52",
+   "tiktok",
+   490700,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:53",
+   "tiktok",
+   7000,
+   [
+    "afirma_fuga",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T21:53",
+   "tiktok",
+   1253,
+   [
+    "destino_exterior"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T22:00",
+   "tiktok",
+   30200,
+   [
+    "destino_exterior"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T22:01",
+   "tiktok",
+   24200,
+   [
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "edwcomunicaciones",
+   "https://www.tiktok.com/@edwcomunicaciones/video/7701471209841528116"
+  ],
+  [
+   "2026-10-27T22:02",
+   "tiktok",
+   130700,
+   [],
+   "juniorcaldeiraoo",
+   "https://www.tiktok.com/@juniorcaldeiraoo/video/7701471440272477460"
+  ],
+  [
+   "2026-10-27T22:05",
+   "tiktok",
+   4182,
+   [
+    "destino_exterior",
+    "informacao_noticia",
+    "pergunta_paradeiro"
+   ],
+   "cadenaarednacional",
+   "https://www.tiktok.com/@cadenaarednacional/video/7701472094873275656"
+  ],
+  [
+   "2026-10-27T22:05",
+   "tiktok",
+   172500,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "noticiascaracol",
+   "https://www.tiktok.com/@noticiascaracol/video/7701472133158898965"
+  ],
+  [
+   "2026-10-27T22:10",
+   "tiktok",
+   202200,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T22:10",
+   "tiktok",
+   8601,
+   [
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   "martinhamartamartins",
+   "https://www.tiktok.com/@martinhamartamartins/video/7701473473398344968"
+  ],
+  [
+   "2026-10-27T22:11",
+   "tiktok",
+   23800,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "episodios_anteriores",
+    "pergunta_paradeiro"
+   ],
+   "paulaodopt",
+   "https://www.tiktok.com/@paulaodopt/video/7701473603124071701"
+  ],
+  [
+   "2026-10-27T22:11",
+   "tiktok",
+   543400,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "gossip_silves",
+   "https://www.tiktok.com/@gossip_silves/video/7701473774247480594"
+  ],
+  [
+   "2026-10-27T22:20",
+   "tiktok",
+   31900,
+   [],
+   "1966victo",
+   "https://www.tiktok.com/@1966victo/video/7701475993692785928"
+  ],
+  [
+   "2026-10-27T22:20",
+   "tiktok",
+   1939,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "tico_sem_limites",
+   "https://www.tiktok.com/@tico_sem_limites/video/7701476086919548161"
+  ],
+  [
+   "2026-10-27T22:21",
+   "tiktok",
+   84,
+   [
+    "afirma_fuga",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T22:23",
+   "tiktok",
+   214700,
+   [
+    "afirma_fuga"
+   ],
+   "videosvirais044",
+   "https://www.tiktok.com/@videosvirais044/video/7701476729700830471"
+  ],
+  [
+   "2026-10-27T22:24",
+   "tiktok",
+   242700,
+   [
+    "afirma_fuga",
+    "informacao_noticia"
+   ],
+   "lia_lemos1",
+   "https://www.tiktok.com/@lia_lemos1/video/7701476981417823495"
+  ],
+  [
+   "2026-10-27T22:24",
+   "tiktok",
+   198,
+   [
+    "afirma_fuga",
+    "desqualificacao"
+   ],
+   "pontodaesquerda",
+   "https://www.tiktok.com/@pontodaesquerda/video/7701477114851183879"
+  ],
+  [
+   "2026-10-27T22:27",
+   "tiktok",
+   13100,
+   [
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "aranha.fontaine",
+   "https://www.tiktok.com/@aranha.fontaine/video/7701477845192690964"
+  ],
+  [
+   "2026-10-27T22:34",
+   "tiktok",
+   554000,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "jarbaslemoss",
+   "https://www.tiktok.com/@jarbaslemoss/video/7701479697380560136"
+  ],
+  [
+   "2026-10-27T22:36",
+   "tiktok",
+   33000,
+   [],
+   "vanusa__limma",
+   "https://www.tiktok.com/@vanusa__limma/video/7701480153263705365"
+  ],
+  [
+   "2026-10-27T22:41",
+   "tiktok",
+   244,
+   [
+    "informacao_noticia",
+    "pergunta_paradeiro"
+   ],
+   "dirio.das.celebri4",
+   "https://www.tiktok.com/@dirio.das.celebri4/video/7701481489346612481"
+  ],
+  [
+   "2026-10-27T22:43",
+   "tiktok",
+   309,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   "sandrajubileucomedia",
+   "https://www.tiktok.com/@sandrajubileucomedia/video/7701481939429018888"
+  ],
+  [
+   "2026-10-27T22:45",
+   "tiktok",
+   98,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T22:48",
+   "tiktok",
+   59900,
+   [
+    "destino_exterior"
+   ],
+   "bbcnews",
+   "https://www.tiktok.com/@bbcnews/video/7701483165235334422"
+  ],
+  [
+   "2026-10-27T22:52",
+   "tiktok",
+   288900,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T22:55",
+   "tiktok",
+   103500,
+   [
+    "destino_exterior"
+   ],
+   "juninn_of1",
+   "https://www.tiktok.com/@juninn_of1/video/7701485051950796052"
+  ],
+  [
+   "2026-10-27T22:56",
+   "tiktok",
+   12500,
+   [
+    "pergunta_paradeiro"
+   ],
+   "milenalopescarneiro",
+   "https://www.tiktok.com/@milenalopescarneiro/video/7701485175347203348"
+  ],
+  [
+   "2026-10-27T23:02",
+   "tiktok",
+   4766,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T23:06",
+   "tiktok",
+   373600,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "metropolesoficial",
+   "https://www.tiktok.com/@metropolesoficial/video/7701487935647960340"
+  ],
+  [
+   "2026-10-27T23:15",
+   "tiktok",
+   399700,
+   [
+    "afirma_fuga"
+   ],
+   "bandnewsfm",
+   "https://www.tiktok.com/@bandnewsfm/video/7701488865554599174"
+  ],
+  [
+   "2026-10-27T23:16",
+   "tiktok",
+   5000000,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "bandjornalismo",
+   "https://www.tiktok.com/@bandjornalismo/video/7701490383699709191"
+  ],
+  [
+   "2026-10-27T23:16",
+   "tiktok",
+   483000,
+   [
+    "destino_exterior"
+   ],
+   "maltiempo3",
+   "https://www.tiktok.com/@maltiempo3/video/7701490534086495508"
+  ],
+  [
+   "2026-10-27T23:17",
+   "tiktok",
+   427,
+   [
+    "afirma_fuga"
+   ],
+   "pqdt.alves",
+   "https://www.tiktok.com/@pqdt.alves/video/7701490840392174849"
+  ],
+  [
+   "2026-10-27T23:18",
+   "tiktok",
+   367,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T23:23",
+   "tiktok",
+   289,
+   [
+    "afirma_fuga"
+   ],
+   "ricardoguarnieri6",
+   "https://www.tiktok.com/@ricardoguarnieri6/video/7701492309061405960"
+  ],
+  [
+   "2026-10-27T23:31",
+   "tiktok",
+   168,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T23:39",
+   "tiktok",
+   221,
+   [
+    "afirma_fuga"
+   ],
+   "deuzapereirasanto",
+   "https://www.tiktok.com/@deuzapereirasanto/video/7701496318358785281"
+  ],
+  [
+   "2026-10-27T23:39",
+   "tiktok",
+   87,
+   [
+    "afirma_fuga",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T23:41",
+   "tiktok",
+   73300,
+   [
+    "afirma_fuga"
+   ],
+   "bandnewsfm",
+   "https://www.tiktok.com/@bandnewsfm/video/7701495049225309446"
+  ],
+  [
+   "2026-10-27T23:45",
+   "tiktok",
+   190,
+   [],
+   "khabyooluvadepedreiro",
+   "https://www.tiktok.com/@khabyooluvadepedreiro/video/7701497991194070293"
+  ],
+  [
+   "2026-10-27T23:54",
+   "tiktok",
+   104,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T23:54",
+   "tiktok",
+   141,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-27T23:55",
+   "tiktok",
+   427000,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "milenio",
+   "https://www.tiktok.com/@milenio/video/7701500599660973332"
+  ],
+  [
+   "2026-10-27T23:59",
+   "tiktok",
+   4473,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T00:00",
+   "tiktok",
+   700,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T00:00",
+   "tiktok",
+   5900000,
+   [
+    "afirma_fuga"
+   ],
+   "felipecamozzato",
+   "https://www.tiktok.com/@felipecamozzato/video/7701501775303478536"
+  ],
+  [
+   "2026-10-28T00:01",
+   "tiktok",
+   17000,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T00:08",
+   "tiktok",
+   265,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T00:12",
+   "tiktok",
+   163200,
+   [
+    "afirma_fuga"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T00:19",
+   "tiktok",
+   1900000,
+   [
+    "afirma_fuga",
+    "desmentido_defesa",
+    "destino_exterior"
+   ],
+   "abiliobrunini",
+   "https://www.tiktok.com/@abiliobrunini/video/7701506621716892948"
+  ],
+  [
+   "2026-10-28T00:23",
+   "tiktok",
+   363300,
+   [
+    "destino_exterior"
+   ],
+   "cbseveningnews",
+   "https://www.tiktok.com/@cbseveningnews/video/7701507607055387918"
+  ],
+  [
+   "2026-10-28T00:33",
+   "tiktok",
+   600,
+   [
+    "afirma_fuga",
+    "desqualificacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T00:35",
+   "tiktok",
+   1199,
+   [
+    "pergunta_paradeiro"
+   ],
+   "baxinho.oficial0",
+   "https://www.tiktok.com/@baxinho.oficial0/video/7701510792281099540"
+  ],
+  [
+   "2026-10-28T00:49",
+   "tiktok",
+   564,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T01:00",
+   "tiktok",
+   6071,
+   [
+    "desmentido_defesa",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "gutemnunes",
+   "https://www.tiktok.com/@gutemnunes/video/7701517218776911112"
+  ],
+  [
+   "2026-10-28T01:20",
+   "tiktok",
+   5073,
+   [],
+   "dutypaiva",
+   "https://www.tiktok.com/@dutypaiva/video/7701522303665917190"
+  ],
+  [
+   "2026-10-28T01:25",
+   "tiktok",
+   150,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T01:36",
+   "tiktok",
+   12600,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "jornaloglobo",
+   "https://www.tiktok.com/@jornaloglobo/video/7701526484183223558"
+  ],
+  [
+   "2026-10-28T01:57",
+   "tiktok",
+   248600,
+   [
+    "afirma_fuga",
+    "desqualificacao"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T02:01",
+   "tiktok",
+   281400,
+   [
+    "afirma_fuga"
+   ],
+   "123kkkmr",
+   "https://www.tiktok.com/@123kkkmr/video/7701533085325610260"
+  ],
+  [
+   "2026-10-28T02:19",
+   "tiktok",
+   3889,
+   [],
+   "extranews_mundo",
+   "https://www.tiktok.com/@extranews_mundo/video/7701537607687130369"
+  ],
+  [
+   "2026-10-28T02:25",
+   "tiktok",
+   199,
+   [
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "antoniel.santos090",
+   "https://www.tiktok.com/@antoniel.santos090/video/7701539272049822994"
+  ],
+  [
+   "2026-10-28T02:29",
+   "tiktok",
+   122400,
+   [],
+   "podcasttribunaonline",
+   "https://www.tiktok.com/@podcasttribunaonline/video/7701540131143978258"
+  ],
+  [
+   "2026-10-28T02:37",
+   "tiktok",
+   237,
+   [
+    "justica_investigacao",
+    "pergunta_paradeiro"
+   ],
+   "antoniel.santos090",
+   "https://www.tiktok.com/@antoniel.santos090/video/7701542378129181960"
+  ],
+  [
+   "2026-10-28T02:42",
+   "tiktok",
+   648900,
+   [
+    "ironia_humor"
+   ],
+   "r7.kkj1",
+   "https://www.tiktok.com/@r7.kkj1/video/7701543542576925959"
+  ],
+  [
+   "2026-10-28T02:49",
+   "tiktok",
+   180600,
+   [
+    "destino_exterior"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T04:00",
+   "tiktok",
+   1252,
+   [],
+   "syribeiro15",
+   "https://www.tiktok.com/@syribeiro15/video/7701563675563347220"
+  ],
+  [
+   "2026-10-28T04:41",
+   "tiktok",
+   3063,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T05:15",
+   "tiktok",
+   12100,
+   [],
+   "dabootywizard",
+   "https://www.tiktok.com/@dabootywizard/video/7701583059585404173"
+  ],
+  [
+   "2026-10-28T06:14",
+   "tiktok",
+   234,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T06:35",
+   "tiktok",
+   1896,
+   [
+    "destino_exterior"
+   ],
+   "univision23mia",
+   "https://www.tiktok.com/@univision23mia/video/7701603645539863821"
+  ],
+  [
+   "2026-10-28T07:02",
+   "tiktok",
+   505300,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "economesteter",
+   "https://www.tiktok.com/@economesteter/video/7701610627181104391"
+  ],
+  [
+   "2026-10-28T07:39",
+   "tiktok",
+   3464,
+   [
+    "destino_exterior",
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T08:10",
+   "tiktok",
+   247400,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "cnn",
+   "https://www.tiktok.com/@cnn/video/7701627951632125197"
+  ],
+  [
+   "2026-10-28T09:00",
+   "tiktok",
+   7964,
+   [
+    "afirma_fuga"
+   ],
+   "favorito060",
+   "https://www.tiktok.com/@favorito060/video/7701491969196887314"
+  ],
+  [
+   "2026-10-28T09:44",
+   "tiktok",
+   2923,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T10:03",
+   "tiktok",
+   8015,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T10:24",
+   "tiktok",
+   252,
+   [
+    "afirma_fuga"
+   ],
+   "anacelyalunna99",
+   "https://www.tiktok.com/@anacelyalunna99/video/7701662634730474760"
+  ],
+  [
+   "2026-10-28T10:35",
+   "tiktok",
+   11900,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   "skynews",
+   "https://www.tiktok.com/@skynews/video/7701665563529071894"
+  ],
+  [
+   "2026-10-28T10:44",
+   "tiktok",
+   1982,
+   [
+    "afirma_fuga"
+   ],
+   "yuricrav",
+   "https://www.tiktok.com/@yuricrav/video/7701667747536719124"
+  ],
+  [
+   "2026-10-28T11:09",
+   "tiktok",
+   6023,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T11:13",
+   "tiktok",
+   4318,
+   [
+    "pergunta_paradeiro"
+   ],
+   "cebolinha020",
+   "https://www.tiktok.com/@cebolinha020/video/7701675205294443797"
+  ],
+  [
+   "2026-10-28T11:14",
+   "tiktok",
+   12700,
+   [
+    "afirma_fuga",
+    "informacao_noticia"
+   ],
+   "professor.fofinho",
+   "https://www.tiktok.com/@professor.fofinho/video/7701675492646128904"
+  ],
+  [
+   "2026-10-28T11:22",
+   "tiktok",
+   499,
+   [
+    "afirma_fuga"
+   ],
+   "rodrigogualberto10",
+   "https://www.tiktok.com/@rodrigogualberto10/video/7701677534160620820"
+  ],
+  [
+   "2026-10-28T11:26",
+   "tiktok",
+   465900,
+   [
+    "ironia_humor"
+   ],
+   "ritmoparodia",
+   "https://www.tiktok.com/@ritmoparodia/video/7701678567163170069"
+  ],
+  [
+   "2026-10-28T12:00",
+   "tiktok",
+   2759,
+   [
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   "joelma__barbosa",
+   "https://www.tiktok.com/@joelma__barbosa/video/7701687326656843028"
+  ],
+  [
+   "2026-10-28T12:00",
+   "tiktok",
+   23000,
+   [
+    "pergunta_paradeiro"
+   ],
+   "marcoseduardobtc",
+   "https://www.tiktok.com/@marcoseduardobtc/video/7701687531477273874"
+  ],
+  [
+   "2026-10-28T12:03",
+   "tiktok",
+   74000,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "pergunta_paradeiro"
+   ],
+   "martinhamartamartins",
+   "https://www.tiktok.com/@martinhamartamartins/video/7701688219435388168"
+  ],
+  [
+   "2026-10-28T12:29",
+   "tiktok",
+   158,
+   [
+    "pergunta_paradeiro"
+   ],
+   "junioor1981",
+   "https://www.tiktok.com/@junioor1981/video/7701694722410155284"
+  ],
+  [
+   "2026-10-28T12:57",
+   "tiktok",
+   1540,
+   [],
+   "fatoseverdades1",
+   "https://www.tiktok.com/@fatoseverdades1/video/7701702075134119189"
+  ],
+  [
+   "2026-10-28T13:00",
+   "tiktok",
+   1937,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "mcbimbao",
+   "https://www.tiktok.com/@mcbimbao/video/7701702696910408980"
+  ],
+  [
+   "2026-10-28T13:11",
+   "tiktok",
+   166900,
+   [],
+   "leidfernandes4",
+   "https://www.tiktok.com/@leidfernandes4/video/7701705630322543880"
+  ],
+  [
+   "2026-10-28T13:25",
+   "tiktok",
+   98700,
+   [
+    "afirma_fuga",
+    "desqualificacao",
+    "destino_exterior"
+   ],
+   "guizaotocamenteafrente",
+   "https://www.tiktok.com/@guizaotocamenteafrente/video/7701709252439690516"
+  ],
+  [
+   "2026-10-28T13:30",
+   "tiktok",
+   502,
+   [
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "raymund.curtis",
+   "https://www.tiktok.com/@raymund.curtis/video/7701710526371335454"
+  ],
+  [
+   "2026-10-28T13:35",
+   "tiktok",
+   9282,
+   [
+    "destino_exterior"
+   ],
+   "cheguerreroeng",
+   "https://www.tiktok.com/@cheguerreroeng/video/7701711745110330637"
+  ],
+  [
+   "2026-10-28T13:41",
+   "tiktok",
+   964600,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "g1",
+   "https://www.tiktok.com/@g1/video/7701713459594956052"
+  ],
+  [
+   "2026-10-28T13:45",
+   "tiktok",
+   5300000,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia",
+    "justica_investigacao"
+   ],
+   "g1",
+   "https://www.tiktok.com/@g1/video/7701714293473135892"
+  ],
+  [
+   "2026-10-28T13:52",
+   "tiktok",
+   32600,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   "apnews",
+   "https://www.tiktok.com/@apnews/video/7701716259381005581"
+  ],
+  [
+   "2026-10-28T14:07",
+   "tiktok",
+   302500,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "telemundo51miami",
+   "https://www.tiktok.com/@telemundo51miami/video/7701720163036728607"
+  ],
+  [
+   "2026-10-28T14:11",
+   "tiktok",
+   459600,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "nbcsouthflorida",
+   "https://www.tiktok.com/@nbcsouthflorida/video/7701721101591727390"
+  ],
+  [
+   "2026-10-28T14:12",
+   "tiktok",
+   206,
+   [
+    "destino_exterior"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T14:33",
+   "tiktok",
+   356500,
+   [
+    "pergunta_paradeiro"
+   ],
+   "editdebochado",
+   "https://www.tiktok.com/@editdebochado/video/7701726775155510536"
+  ],
+  [
+   "2026-10-28T14:52",
+   "tiktok",
+   540600,
+   [],
+   "r7.kkj1",
+   "https://www.tiktok.com/@r7.kkj1/video/7701731781615324423"
+  ],
+  [
+   "2026-10-28T14:53",
+   "tiktok",
+   943,
+   [
+    "destino_exterior"
+   ],
+   "bloombergenespanol",
+   "https://www.tiktok.com/@bloombergenespanol/video/7701731673079155982"
+  ],
+  [
+   "2026-10-28T15:15",
+   "tiktok",
+   212400,
+   [
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "cbsnews",
+   "https://www.tiktok.com/@cbsnews/video/7701737457951247629"
+  ],
+  [
+   "2026-10-28T15:22",
+   "tiktok",
+   324,
+   [],
+   "gottardimorello23",
+   "https://www.tiktok.com/@gottardimorello23/video/7701739434793831702"
+  ],
+  [
+   "2026-10-28T15:38",
+   "tiktok",
+   229800,
+   [],
+   "ciceromario001",
+   "https://www.tiktok.com/@ciceromario001/video/7701743645195521287"
+  ],
+  [
+   "2026-10-28T15:45",
+   "tiktok",
+   825,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   "paulinho_tok",
+   "https://www.tiktok.com/@paulinho_tok/video/7701745398876212500"
+  ],
+  [
+   "2026-10-28T15:49",
+   "tiktok",
+   524,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T15:50",
+   "tiktok",
+   64,
+   [
+    "pergunta_paradeiro"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T16:04",
+   "tiktok",
+   201,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T16:22",
+   "tiktok",
+   1234,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T16:31",
+   "tiktok",
+   82200,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   "abcnews",
+   "https://www.tiktok.com/@abcnews/video/7701757187923741983"
+  ],
+  [
+   "2026-10-28T16:37",
+   "tiktok",
+   538,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T16:45",
+   "tiktok",
+   1503,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T17:44",
+   "tiktok",
+   173,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T18:08",
+   "tiktok",
+   662,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T18:22",
+   "tiktok",
+   26500,
+   [
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "milenio",
+   "https://www.tiktok.com/@milenio/video/7701785755521240341"
+  ],
+  [
+   "2026-10-28T18:38",
+   "tiktok",
+   19300,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T19:49",
+   "tiktok",
+   173,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T20:01",
+   "tiktok",
+   4130,
+   [
+    "afirma_fuga"
+   ],
+   "quinta.livre.ofc",
+   "https://www.tiktok.com/@quinta.livre.ofc/video/7701811216624356628"
+  ],
+  [
+   "2026-10-28T20:03",
+   "tiktok",
+   8673,
+   [
+    "ironia_humor"
+   ],
+   "brealcici",
+   "https://www.tiktok.com/@brealcici/video/7701811653427449106"
+  ],
+  [
+   "2026-10-28T20:06",
+   "tiktok",
+   216,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T20:27",
+   "tiktok",
+   746,
+   [
+    "afirma_fuga"
+   ],
+   "videosvirais044",
+   "https://www.tiktok.com/@videosvirais044/video/7701817948314275080"
+  ],
+  [
+   "2026-10-28T20:36",
+   "tiktok",
+   12000,
+   [
+    "ironia_humor"
+   ],
+   "mauromayck",
+   "https://www.tiktok.com/@mauromayck/video/7701820412107312405"
+  ],
+  [
+   "2026-10-28T20:53",
+   "tiktok",
+   24500,
+   [
+    "destino_exterior"
+   ],
+   "visionariasec",
+   "https://www.tiktok.com/@visionariasec/video/7701824619241655573"
+  ],
+  [
+   "2026-10-28T20:58",
+   "tiktok",
+   347,
+   [
+    "ironia_humor"
+   ],
+   null,
+   null
+  ],
+  [
+   "2026-10-28T21:02",
+   "tiktok",
+   6283,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "noticiasredetv",
+   "https://www.tiktok.com/@noticiasredetv/video/7701827071600905492"
+  ],
+  [
+   "2026-10-28T21:12",
+   "tiktok",
+   5006,
+   [
+    "informacao_noticia",
+    "pergunta_paradeiro"
+   ],
+   "cortesdoalojuca1",
+   "https://www.tiktok.com/@cortesdoalojuca1/video/7701829467374767367"
+  ],
+  [
+   "2026-10-28T21:17",
+   "tiktok",
+   793100,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "anima.mapas8",
+   "https://www.tiktok.com/@anima.mapas8/video/7701830899867929876"
+  ],
+  [
+   "2026-10-28T21:30",
+   "tiktok",
+   212800,
+   [
+    "destino_exterior"
+   ],
+   "philipdefranco",
+   "https://www.tiktok.com/@philipdefranco/video/7701810843306020127"
+  ],
+  [
+   "2026-10-28T22:18",
+   "tiktok",
+   144500,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "informacao_noticia"
+   ],
+   "folha",
+   "https://www.tiktok.com/@folha/video/7701846516973014292"
+  ],
+  [
+   "2026-10-28T22:26",
+   "tiktok",
+   18200,
+   [],
+   "gabrielsilvaczzz",
+   "https://www.tiktok.com/@gabrielsilvaczzz/video/7701848694877900063"
+  ],
+  [
+   "2026-10-28T22:39",
+   "tiktok",
+   214300,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "geonoticia_",
+   "https://www.tiktok.com/@geonoticia_/video/7701852013780421902"
+  ],
+  [
+   "2026-10-28T23:05",
+   "tiktok",
+   561100,
+   [
+    "afirma_fuga",
+    "destino_exterior"
+   ],
+   "bandjornalismo",
+   "https://www.tiktok.com/@bandjornalismo/video/7701858853427662087"
+  ],
+  [
+   "2026-10-28T23:33",
+   "tiktok",
+   8579,
+   [
+    "pergunta_paradeiro"
+   ],
+   "dachaga38",
+   "https://www.tiktok.com/@dachaga38/video/7701865881193680149"
+  ],
+  [
+   "2026-10-28T23:49",
+   "tiktok",
+   246100,
+   [],
+   "clipadasbianquinha182",
+   "https://www.tiktok.com/@clipadasbianquinha182/video/7701870112013421844"
+  ],
+  [
+   "2026-10-28T23:52",
+   "tiktok",
+   284400,
+   [
+    "afirma_fuga",
+    "ironia_humor"
+   ],
+   "ladyplayoficial",
+   "https://www.tiktok.com/@ladyplayoficial/video/7701870694241520948"
+  ],
+  [
+   "2026-10-29T00:38",
+   "tiktok",
+   3065,
+   [
+    "afirma_fuga"
+   ],
+   "eudes_felix0",
+   "https://www.tiktok.com/@eudes_felix0/video/7701882714844171540"
+  ],
+  [
+   "2026-10-29T00:44",
+   "tiktok",
+   1908,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T01:15",
+   "tiktok",
+   491,
+   [
+    "ironia_humor",
+    "pergunta_paradeiro"
+   ],
+   "alineamoriim.s",
+   "https://www.tiktok.com/@alineamoriim.s/video/7701892121996971285"
+  ],
+  [
+   "2026-10-29T02:20",
+   "tiktok",
+   413,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T04:17",
+   "tiktok",
+   192,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T04:25",
+   "tiktok",
+   67100,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "gustavo.petro.fans",
+   "https://www.tiktok.com/@gustavo.petro.fans/video/7701941126910987553"
+  ],
+  [
+   "2026-10-29T05:15",
+   "tiktok",
+   357,
+   [
+    "destino_exterior"
+   ],
+   "barbiereport",
+   "https://www.tiktok.com/@barbiereport/video/7701953902685588767"
+  ],
+  [
+   "2026-10-29T06:35",
+   "tiktok",
+   13500,
+   [
+    "afirma_fuga"
+   ],
+   "cidalio13",
+   "https://www.tiktok.com/@cidalio13/video/7701974740289867028"
+  ],
+  [
+   "2026-10-29T07:05",
+   "tiktok",
+   313,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T09:06",
+   "tiktok",
+   141600,
+   [
+    "afirma_fuga",
+    "destino_exterior",
+    "justica_investigacao"
+   ],
+   "aljazeeraenglish",
+   "https://www.tiktok.com/@aljazeeraenglish/video/7702013543683558687"
+  ],
+  [
+   "2026-10-29T10:32",
+   "tiktok",
+   80,
+   [],
+   "matheusverse1",
+   "https://www.tiktok.com/@matheusverse1/video/7702035800741137672"
+  ],
+  [
+   "2026-10-29T11:37",
+   "tiktok",
+   285,
+   [],
+   null,
+   null
+  ],
+  [
+   "2026-10-29T12:27",
+   "tiktok",
+   29200,
+   [
+    "afirma_fuga",
+    "justica_investigacao"
+   ],
+   "cnnbrasil",
+   "https://www.tiktok.com/@cnnbrasil/video/7702065405367536917"
+  ],
+  [
+   "2026-10-29T14:45",
+   "tiktok",
+   457,
+   [],
+   null,
+   null
+  ]
+ ],
+ "nota": "Pré-codificação automática por indicadores (sugestão, não decisão); várias categorias por publicação; percentuais sobre as publicações lidas, não sobre o universo."
+}
