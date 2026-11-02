@@ -1,0 +1,840 @@
+{
+ "caso": "007",
+ "titulo": "\"Lula amassa a bandeira\" (fake news do dia da eleição)",
+ "gerado_em_utc": "2026-11-02T19:01:47Z",
+ "pedido": "Responsável, 02/11/2026, 15h57: quais principais atores políticos, partidos e postagens ajudam a disseminar cada caso.",
+ "universo": {
+  "perfis_declarados_por_rede": {
+   "instagram": 17124,
+   "x": 2571,
+   "tiktok": 5774,
+   "kwai": 801
+  },
+  "candidaturas_com_perfil": 15579,
+  "fonte": "TSE, Candidatos 2026 (consulta_cand e rede_social_candidato), dadosabertos.tse.jus.br/dataset/candidatos-2026",
+  "nota": "Universo de atores políticos = perfis declarados ao TSE por todas as candidaturas de 2026, nas redes cruzadas. O universo de publicações do caso é ⛔ desconhecido (as plataformas não informam o total por termo)."
+ },
+ "amostra": {
+  "publicacoes_lidas": 265,
+  "por_rede": {
+   "facebook": 93,
+   "x": 94,
+   "instagram": 78
+  },
+  "como": "todas as publicações coletadas do caso por termo e hashtag (mesma coleta do dossiê); repetidas contam uma vez",
+  "facebook": "⛔ não cruzado: a coleta do Facebook traz o nome do autor, não o endereço do perfil"
+ },
+ "resumo": {
+  "candidaturas_no_caso": 3,
+  "perfis_de_candidaturas_no_caso": 3,
+  "publicacoes_de_candidaturas": 3,
+  "pct_publicacoes_de_candidaturas": 1.13,
+  "contas_10mil_nao_candidatas": 23,
+  "publicacoes_de_contas_10mil": 25,
+  "pct_publicacoes_de_contas_10mil": 9.43,
+  "publicacoes_de_candidaturas_por_posicao_do_partido_2t": {
+   "lula": 2,
+   "flavio": 1
+  }
+ },
+ "criterio_nomeacao": "Nomeadas: candidaturas (perfil público declarado ao TSE) e contas com 10 mil+ seguidores. Demais contas só nas contagens.",
+ "metodo": "Cruzamento exato da conta da publicação com o perfil declarado ao TSE na mesma rede (minúsculas, sem @). Partido e cargo vêm da candidatura; posição no 2º turno é a do partido (data/config/apoio_partidos_2t.json), não do candidato. Interações = curtidas + comentários + compartilhamentos informados pela plataforma na coleta.",
+ "partidos": [
+  {
+   "partido": "PCDOB",
+   "candidaturas": 1,
+   "publicacoes": 1,
+   "visualizacoes": 736687,
+   "interacoes": 84659,
+   "posicao_2t": "lula",
+   "nomes": [
+    "Emerson Osasco"
+   ],
+   "pct_publicacoes_do_caso": 0.38
+  },
+  {
+   "partido": "PL",
+   "candidaturas": 1,
+   "publicacoes": 1,
+   "visualizacoes": 217944,
+   "interacoes": 15980,
+   "posicao_2t": "flavio",
+   "nomes": [
+    "Mario Frias"
+   ],
+   "pct_publicacoes_do_caso": 0.38
+  },
+  {
+   "partido": "PDT",
+   "candidaturas": 1,
+   "publicacoes": 1,
+   "visualizacoes": 78852,
+   "interacoes": 6141,
+   "posicao_2t": "lula",
+   "nomes": [
+    "Mirelle Buêno"
+   ],
+   "pct_publicacoes_do_caso": 0.38
+  }
+ ],
+ "atores": [
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "Instagram",
+   "conta": "emersonozoficial",
+   "nome": "Emerson Osasco",
+   "numero": "65777",
+   "partido": "PCDOB",
+   "cargo": "Deputado Estadual",
+   "uf": "SP",
+   "situacao": "SUPLENTE",
+   "posicao_partido_2t": "lula",
+   "seguidores": null,
+   "publicacoes": 1,
+   "visualizacoes": 736687,
+   "interacoes": 84659,
+   "primeira": "2026-10-25T01:05:40Z",
+   "ultima": "2026-10-25T01:05:40Z",
+   "termos": [
+    "reels: Lula bandeira amassada"
+   ],
+   "top_url": "https://www.instagram.com/p/De5en7_NMNA/"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "Instagram",
+   "conta": "mariofriasoficial",
+   "nome": "Mario Frias",
+   "numero": "2208",
+   "partido": "PL",
+   "cargo": "Deputado Federal",
+   "uf": "SP",
+   "situacao": "ELEITO POR QP",
+   "posicao_partido_2t": "flavio",
+   "seguidores": null,
+   "publicacoes": 1,
+   "visualizacoes": 217944,
+   "interacoes": 15980,
+   "primeira": "2026-10-11T23:59:39Z",
+   "ultima": "2026-10-11T23:59:39Z",
+   "termos": [
+    "reels: Lula amassa bandeira"
+   ],
+   "top_url": "https://www.instagram.com/p/DeX5PL3O5Wf/"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "CamargoDireita",
+   "nome": "Sérgio Camargo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 339856,
+   "publicacoes": 2,
+   "visualizacoes": 85332,
+   "interacoes": 14182,
+   "primeira": "2026-10-04T16:53:01Z",
+   "ultima": "2026-10-12T17:03:07Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/CamargoDireita/status/2106789699280920826"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "Instagram",
+   "conta": "amirellebueno",
+   "nome": "Mirelle Buêno",
+   "numero": "12888",
+   "partido": "PDT",
+   "cargo": "Deputado Estadual",
+   "uf": "SP",
+   "situacao": "NÃO ELEITO",
+   "posicao_partido_2t": "lula",
+   "seguidores": null,
+   "publicacoes": 1,
+   "visualizacoes": 78852,
+   "interacoes": 6141,
+   "primeira": "2026-10-25T00:19:31Z",
+   "ultima": "2026-10-25T00:19:31Z",
+   "termos": [
+    "reels: Lula bandeira amassada"
+   ],
+   "top_url": "https://www.instagram.com/p/De5YXxaRILZ/"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "pizzolatto",
+   "nome": "Professor Pizzolatto",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 11559,
+   "publicacoes": 1,
+   "visualizacoes": 18390,
+   "interacoes": 3957,
+   "primeira": "2026-10-04T16:41:33Z",
+   "ultima": "2026-10-04T16:41:33Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/pizzolatto/status/2106786814413435270"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "Claudiotuck2017",
+   "nome": "Cl@u🇧🇷Florid@",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 84694,
+   "publicacoes": 1,
+   "visualizacoes": 13853,
+   "interacoes": 2908,
+   "primeira": "2026-10-04T16:39:04Z",
+   "ultima": "2026-10-04T16:39:04Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/Claudiotuck2017/status/2106786190963663172"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "Fernanda_CidL",
+   "nome": "𝐅𝐞𝐫𝐧𝐚𝐧𝐝𝐚",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 74564,
+   "publicacoes": 1,
+   "visualizacoes": 7554,
+   "interacoes": 913,
+   "primeira": "2026-10-04T15:25:28Z",
+   "ultima": "2026-10-04T15:25:28Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/Fernanda_CidL/status/2106767667017433180"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "infortunioeduca",
+   "nome": "Liberal Republicano",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 25168,
+   "publicacoes": 1,
+   "visualizacoes": 4460,
+   "interacoes": 760,
+   "primeira": "2026-10-04T17:47:37Z",
+   "ultima": "2026-10-04T17:47:37Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/infortunioeduca/status/2106803442807181576"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "JornalDaCidadeO",
+   "nome": "Jornal da Cidade Online",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 771783,
+   "publicacoes": 1,
+   "visualizacoes": 87556,
+   "interacoes": 538,
+   "primeira": "2026-10-06T01:03:25Z",
+   "ultima": "2026-10-06T01:03:25Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/JornalDaCidadeO/status/2107275501236527577"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "Gardenalpequen3",
+   "nome": "🇧🇷 ENFIA O L NO SEU KÚ 🇧🇷",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 75697,
+   "publicacoes": 1,
+   "visualizacoes": 2395,
+   "interacoes": 439,
+   "primeira": "2026-10-04T17:03:52Z",
+   "ultima": "2026-10-04T17:03:52Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/Gardenalpequen3/status/2106792431593169097"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "o_olavista_news",
+   "nome": "Prof.Giliarde ✝️🇺🇲🇧🇷🇮🇱📚🦅",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 10103,
+   "publicacoes": 1,
+   "visualizacoes": 2251,
+   "interacoes": 334,
+   "primeira": "2026-10-04T16:32:49Z",
+   "ultima": "2026-10-04T16:32:49Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/o_olavista_news/status/2106784615058800906"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "Laurinha_2050_",
+   "nome": "@Laurinha_2050_🇧🇷 “Patriota | Liberal",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 58459,
+   "publicacoes": 2,
+   "visualizacoes": 1987,
+   "interacoes": 326,
+   "primeira": "2026-10-04T17:49:49Z",
+   "ultima": "2026-10-17T15:07:19Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/Laurinha_2050_/status/2106803994039321078"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "nayara_ccp",
+   "nome": "Nayara",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 21804,
+   "publicacoes": 1,
+   "visualizacoes": 1025,
+   "interacoes": 204,
+   "primeira": "2026-10-04T16:33:54Z",
+   "ultima": "2026-10-04T16:33:54Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/nayara_ccp/status/2106784888544215375"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "aguiar_dirce",
+   "nome": "🟢 Dirce Aguiar",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 14345,
+   "publicacoes": 1,
+   "visualizacoes": 2128,
+   "interacoes": 145,
+   "primeira": "2026-10-04T16:46:35Z",
+   "ultima": "2026-10-04T16:46:35Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/aguiar_dirce/status/2106788080950694231"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "MidiaConservada",
+   "nome": "Mídia Conservadora",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 15587,
+   "publicacoes": 1,
+   "visualizacoes": 1550,
+   "interacoes": 118,
+   "primeira": "2026-10-05T09:18:41Z",
+   "ultima": "2026-10-05T09:18:41Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/MidiaConservada/status/2107037749895106754"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "aosfatos",
+   "nome": "Aos Fatos",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 263785,
+   "publicacoes": 1,
+   "visualizacoes": 6046,
+   "interacoes": 115,
+   "primeira": "2026-10-05T17:03:27Z",
+   "ultima": "2026-10-05T17:03:27Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/aosfatos/status/2107154715414827255"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "patyarqt",
+   "nome": "Patrícia",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 20915,
+   "publicacoes": 1,
+   "visualizacoes": 1146,
+   "interacoes": 107,
+   "primeira": "2026-10-04T21:25:44Z",
+   "ultima": "2026-10-04T21:25:44Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/patyarqt/status/2106858332271022463"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "TCelTitoCanto",
+   "nome": "Coronel Tito Canto ∴",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 24708,
+   "publicacoes": 1,
+   "visualizacoes": 470,
+   "interacoes": 41,
+   "primeira": "2026-10-06T11:21:33Z",
+   "ultima": "2026-10-06T11:21:33Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/TCelTitoCanto/status/2107431059008757766"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "Rudriguo",
+   "nome": "rd™",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 16859,
+   "publicacoes": 1,
+   "visualizacoes": 650,
+   "interacoes": 40,
+   "primeira": "2026-10-05T17:27:39Z",
+   "ultima": "2026-10-05T17:27:39Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/Rudriguo/status/2107160802251755986"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "RoseCarvalhoTe1",
+   "nome": "Rose Carvalho Telles",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 12571,
+   "publicacoes": 1,
+   "visualizacoes": 487,
+   "interacoes": 25,
+   "primeira": "2026-10-05T13:24:07Z",
+   "ultima": "2026-10-05T13:24:07Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/RoseCarvalhoTe1/status/2107099518080585775"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "TAbreu24",
+   "nome": "Hamlet24",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 17942,
+   "publicacoes": 1,
+   "visualizacoes": 458,
+   "interacoes": 22,
+   "primeira": "2026-10-05T16:29:23Z",
+   "ultima": "2026-10-05T16:29:23Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/TAbreu24/status/2107146139375931538"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "Poder360",
+   "nome": "Poder360",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 163516,
+   "publicacoes": 1,
+   "visualizacoes": 688,
+   "interacoes": 22,
+   "primeira": "2026-10-12T11:56:58Z",
+   "ultima": "2026-10-12T11:56:58Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/Poder360/status/2109614300448833781"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "065999036707cba",
+   "nome": "Jonas Gonçalves de Lima 🔰",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 20055,
+   "publicacoes": 1,
+   "visualizacoes": 572,
+   "interacoes": 16,
+   "primeira": "2026-10-05T10:30:50Z",
+   "ultima": "2026-10-05T10:30:50Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/065999036707cba/status/2107055908903702879"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "NdiaBaptistell3",
+   "nome": "Xadrez D4",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 12815,
+   "publicacoes": 1,
+   "visualizacoes": 73,
+   "interacoes": 6,
+   "primeira": "2026-10-06T18:50:37Z",
+   "ultima": "2026-10-06T18:50:37Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/NdiaBaptistell3/status/2107544071937884296"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "sitepopmais",
+   "nome": "POP Mais",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 92619,
+   "publicacoes": 1,
+   "visualizacoes": 1991,
+   "interacoes": 5,
+   "primeira": "2026-10-04T20:11:21Z",
+   "ultima": "2026-10-04T20:11:21Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/sitepopmais/status/2106839612144402881"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "X",
+   "conta": "fredvgs",
+   "nome": "Comandante VIEGAS⚓🇧🇷🇮🇹",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 17238,
+   "publicacoes": 1,
+   "visualizacoes": 189,
+   "interacoes": 3,
+   "primeira": "2026-10-04T18:48:51Z",
+   "ultima": "2026-10-04T18:48:51Z",
+   "termos": [
+    "o caso (busca por termo)"
+   ],
+   "top_url": "https://x.com/fredvgs/status/2106818849593298969"
+  }
+ ],
+ "atores_total": 26,
+ "postagens": [
+  {
+   "rede": "Instagram",
+   "conta": "emersonozoficial",
+   "nome": "Emerson Osasco",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PCDOB",
+   "url": "https://www.instagram.com/p/De5en7_NMNA/",
+   "texto": "🇧🇷❤️ A PAULISTA TREMEU COM A FORÇA DO POVO! ✊🏾🚩 Foi emocionante ver a Avenida Paulista tomada por tanta gente, tantas bandeiras e tanta esperança! Um mar de pessoas reunidas, mostrando que a participação popular segue viva e que a democracia se constrói também nas ruas. A energia",
+   "publicado_em": "2026-10-25T01:05:40Z",
+   "interacoes": 84659,
+   "visualizacoes": 736687
+  },
+  {
+   "rede": "Instagram",
+   "conta": "mariofriasoficial",
+   "nome": "Mario Frias",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PL",
+   "url": "https://www.instagram.com/p/DeX5PL3O5Wf/",
+   "texto": "Manifestantes pró-Lula, queimam e rasgam a bandeira dos Estados Unidos, além de vandalizarem a estação do Metrô.",
+   "publicado_em": "2026-10-11T23:59:39Z",
+   "interacoes": 15980,
+   "visualizacoes": 217944
+  },
+  {
+   "rede": "X",
+   "conta": "CamargoDireita",
+   "nome": "Sérgio Camargo",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/CamargoDireita/status/2106789699280920826",
+   "texto": "Lula amassa e joga bandeira do Brasil no chão como se fosse um pano velho. https://t.co/8L4BAkvLqv",
+   "publicado_em": "2026-10-04T16:53:01Z",
+   "interacoes": 11223,
+   "visualizacoes": 70543
+  },
+  {
+   "rede": "Instagram",
+   "conta": "amirellebueno",
+   "nome": "Mirelle Buêno",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PDT",
+   "url": "https://www.instagram.com/p/De5YXxaRILZ/",
+   "texto": "É muito louco pensar em tudo o que vivi nesta eleição. Estive nas maiores mobilizações do PT em São Paulo e entendi o petismo. Lá no fundo, acreditei que, por um capricho dos Orixás, eu poderia ser eleita. Afinal, tenho luta, tenho bandeira, tenho lado. O que mais faltaria? Desde",
+   "publicado_em": "2026-10-25T00:19:31Z",
+   "interacoes": 6141,
+   "visualizacoes": 78852
+  },
+  {
+   "rede": "X",
+   "conta": "pizzolatto",
+   "nome": "Professor Pizzolatto",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/pizzolatto/status/2106786814413435270",
+   "texto": "Lula e Alckmin pegam a bandeira do Brasil, posam para as fotos em frente à urna e, depois, Lula a amassa e a joga no chão. É exatamente sobre isso. Mais simbólico, impossível.",
+   "publicado_em": "2026-10-04T16:41:33Z",
+   "interacoes": 3957,
+   "visualizacoes": 18390
+  },
+  {
+   "rede": "X",
+   "conta": "Claudiotuck2017",
+   "nome": "Cl@u🇧🇷Florid@",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/Claudiotuck2017/status/2106786190963663172",
+   "texto": "PATRIOTISMO DE FACHADA! Lula posa com a bandeira do Brasil, depois a amassa e joga no chão. O respeito durou só o até o clique. https://t.co/aC4AeJn1yM",
+   "publicado_em": "2026-10-04T16:39:04Z",
+   "interacoes": 2908,
+   "visualizacoes": 13853
+  },
+  {
+   "rede": "X",
+   "conta": "Fernanda_CidL",
+   "nome": "𝐅𝐞𝐫𝐧𝐚𝐧𝐝𝐚",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/Fernanda_CidL/status/2106767667017433180",
+   "texto": "Lula amassou e largou no chão a nossa bandeira.",
+   "publicado_em": "2026-10-04T15:25:28Z",
+   "interacoes": 913,
+   "visualizacoes": 7554
+  },
+  {
+   "rede": "X",
+   "conta": "infortunioeduca",
+   "nome": "Liberal Republicano",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/infortunioeduca/status/2106803442807181576",
+   "texto": "Lula amassa e joga bandeira nacional no chão, como se fosse pano de chão. Traidora da Pátria #Eleições2026 #eleição2026 FlavioBolsonaro22 https://t.co/v3B3S0pxq6",
+   "publicado_em": "2026-10-04T17:47:37Z",
+   "interacoes": 760,
+   "visualizacoes": 4460
+  },
+  {
+   "rede": "X",
+   "conta": "JornalDaCidadeO",
+   "nome": "Jornal da Cidade Online",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/JornalDaCidadeO/status/2107275501236527577",
+   "texto": "URGENTE: MENDONÇA DÁ PRAZO DE 24H EM DECISÃO SOBRE VÍDEO DE LULA COM BANDEIRA O ministro André Mendonça, do Tribunal Superior Eleitoral (TSE), determinou que sejam removidas, no prazo de 24 horas, publicações nas redes sociais que atribuem ao candidato à reeleição Luiz Inácio Lul",
+   "publicado_em": "2026-10-06T01:03:25Z",
+   "interacoes": 538,
+   "visualizacoes": 87556
+  },
+  {
+   "rede": "X",
+   "conta": "Gardenalpequen3",
+   "nome": "🇧🇷 ENFIA O L NO SEU KÚ 🇧🇷",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/Gardenalpequen3/status/2106792431593169097",
+   "texto": "lula trata a bandeira do Brasil igual ele trata o povo... amassando e jogando fora quando não precisa mais...",
+   "publicado_em": "2026-10-04T17:03:52Z",
+   "interacoes": 439,
+   "visualizacoes": 2395
+  },
+  {
+   "rede": "X",
+   "conta": "o_olavista_news",
+   "nome": "Prof.Giliarde ✝️🇺🇲🇧🇷🇮🇱📚🦅",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/o_olavista_news/status/2106784615058800906",
+   "texto": "O Lula fez pose com a bandeira do Brasil e, logo depois, a amassou e a jogou no chão. Esse rato odeia o Brasil!",
+   "publicado_em": "2026-10-04T16:32:49Z",
+   "interacoes": 334,
+   "visualizacoes": 2251
+  },
+  {
+   "rede": "X",
+   "conta": "Laurinha_2050_",
+   "nome": "@Laurinha_2050_🇧🇷 “Patriota | Liberal",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/Laurinha_2050_/status/2106803994039321078",
+   "texto": "Atenção ao vídeo de Lula votando em São Bernardo. O verme amassou a bandeira do Brasil e jogou ao chão, depois de votar. Dizem que sua equipe está transtornada.. “Ele não podia ter feito isso; tem milhões de pessoas votando agora, vai custar votos.” diz um membro da equipe https:",
+   "publicado_em": "2026-10-04T17:49:49Z",
+   "interacoes": 305,
+   "visualizacoes": 1445
+  },
+  {
+   "rede": "X",
+   "conta": "nayara_ccp",
+   "nome": "Nayara",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/nayara_ccp/status/2106784888544215375",
+   "texto": "O Coiso do Lula depois da foto , amassando e jogando a bandeira no chão 😡😡😡😡😡",
+   "publicado_em": "2026-10-04T16:33:54Z",
+   "interacoes": 204,
+   "visualizacoes": 1025
+  },
+  {
+   "rede": "X",
+   "conta": "aguiar_dirce",
+   "nome": "🟢 Dirce Aguiar",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/aguiar_dirce/status/2106788080950694231",
+   "texto": "O 4 de outubro de 2026 é o dia em que o 🇧🇷Brasil decide se ainda é nação ou se continua cenário de quem posa com a bandeira e a joga no chão. Para o LADRÃO a pátria virou adereço. E adereço, depois da foto, se joga fora. Lula e Alckmin seguraram a bandeira do 🇧🇷 Brasil em São Ber",
+   "publicado_em": "2026-10-04T16:46:35Z",
+   "interacoes": 145,
+   "visualizacoes": 2128
+  },
+  {
+   "rede": "X",
+   "conta": "MidiaConservada",
+   "nome": "Mídia Conservadora",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://x.com/MidiaConservada/status/2107037749895106754",
+   "texto": "Lula USOU a bandeira do Brasileira e depois amassou e jogou no chão. Sua equipe está desesperada porque esse vídeo está viralizando na internet. https://t.co/m0tIta2j6h",
+   "publicado_em": "2026-10-05T09:18:41Z",
+   "interacoes": 118,
+   "visualizacoes": 1550
+  }
+ ],
+ "arquivos": {
+  "csv": "data/casos/007/atores.csv"
+ }
+}

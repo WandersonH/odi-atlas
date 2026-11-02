@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.297 — Quem dissemina: atores políticos, partidos e postagens em todos os casos (2026-11-02) ⚠️
+
+- Pedido do responsável (02/11/2026, 15h57): "Em todos casos quero uma análise de quais principais atores políticos, partidos e postagens pra entendermos quem ajuda a disseminar o que, temos tudo declarado".
+- Novo `scripts/build_atores_caso.py`: cruza a conta de cada publicação do caso (privado `casos/<id>/itens.csv.gz`) com os perfis declarados ao TSE por todas as candidaturas de 2026 (`data/tse/redes_sociais_candidatos_2026.csv.gz` + `candidatos_2026.csv.gz`; situação após a apuração pelo `bolhas_apoio/votos_2026.json` do privado), em X, Instagram, TikTok e Kwai. Facebook ⛔ (a coleta traz nome do autor, não endereço do perfil). Partido e posição oficial do partido no 2º turno (`data/config/apoio_partidos_2t.json`; não é declaração do candidato). Nomeia candidaturas e contas com 10 mil+ seguidores; o resto só entra em contagens.
+- Saídas: `data/casos/<id>/atores.json` e `atores.csv` (29 casos com itens: 001–003, 005–025, 027–031; 026 sem itens coletados ainda) e `data/casos/atores_todos.csv` (6.203 linhas). Roda também no passo de agregados do `casos.yml`.
+- Universo de atores: 15.579 candidaturas com perfil identificável; perfis por rede: Instagram 17.124, TikTok 5.774, X 2.571, Kwai 801. Universo de publicações: ⛔ desconhecido.
+- Números (rodado localmente sobre um clone novo do privado, 02/11 ~16h): 310 candidaturas distintas aparecem em ao menos um caso; por interações somadas, PL (88 candidaturas, 18 casos), PSB, NOVO, PT (67 candidaturas, 16 casos), PSOL. Candidaturas presentes em mais casos: Paulo Mansur (PL, 6 casos), Gil Diniz (PL, 5), Flavio Bolsonaro, Jones Manoel, Thiago dos Reis, Vinicios Betiol e Jandira Feghali (4 cada). Contas 10 mil+ não candidatas mais recorrentes (12 casos): brasil247, bnews_oficial, JornalDaCidadeO, DilmaResiste. Casos sem nenhuma candidatura entre as publicações lidas: 010, 016, 019, 029, 030.
+- Página: bloco "QUEM DISSEMINA · ATORES POLÍTICOS E PARTIDOS" no dossiê de cada caso (universo, amostra, resumo por posição do partido, tabela de partidos, 25 principais atores, 10 postagens de maior interação, downloads).
+- Teste: `tests/test_atores_caso.py` (repetidas contam uma vez; mesma candidatura em duas redes conta uma vez; conta comum não é nomeada); `python -m unittest discover -s tests` OK; página do caso 006 aberta no Chromium: bloco renderizado, sem erro de JS, sem rolagem lateral a 390 px.
+- Pendente: interações medem alcance da postagem, não a posição dela no caso (apoio, crítica ou desmentido); ler o conteúdo é a próxima camada (Bardin do caso).
+
 ## C19.296 — Primeira coleta paga da série "Vídeos por hashtag · TikTok" (2026-11-02) ✅
 
 - Run 41503971434 (`tiktok-hashtags.yml`, conta 1, apidojo~tiktok-scraper, dateRange THIS_WEEK): 1.049 vídeos novos nas 14 hashtags (de 5 em #bloquinho22 a 100 em #exercitodolula, #lulapresidente, #flaviobolsonaro e #flaviopresidente), todos publicados desde 26/10/2026 (o mais antigo por hashtag, em `data/tiktok/hashtags/manifesto_latest.json`). Acumulado: 7.019 vídeos de 4.859 contas (2.153 com 10 mil+ seguidores); 4.146 vídeos no arquivo público. Universo: ⛔ desconhecido (o TikTok não informa o total por hashtag).
