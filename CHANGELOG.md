@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.309 — Caso 026: o canal novo é "Blue Voting Army - Disrupt the Midterms" (EUA), 639 seguidores (2026-11-02) ⚠️
+
+- Leitura de `canais-whatsapp.yml` (02/11/2026, 17h17 de Brasília): título da página pública "BLUE VOTING ARMY - DISRUPT THE MIDTERMS", "639 followers". Nome e país atualizados em `data/config/casos.json` (país pelo nome do canal: eleições de meio de mandato dos EUA). A ligação com o Exército do Lula é a informada pelo responsável; a página não diz.
+- Na mesma leitura: Exército do Lula 10M; Tropa do Flávio 1,9M; Exército dos Povos Indígenas 334K; L'équipe de Mélenchon 171K; Peronismo 69K; La Fuerza de la Gente 48K; Petro 7,3K; LATAM 23.
+- Página: as leituras de um canal passam a ser agrupadas pelo link (com o nome da leitura mais recente), para a troca de nome não partir a série em duas. Caso 026 aberto no Chromium sem erro de JS.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.308 — Caso 026: mais um canal de WhatsApp inspirado no Exército do Lula (2026-11-02) 🔜
 
 - Enviado pelo responsável (02/11/2026, 17h15): https://whatsapp.com/channel/0029VbEZEveFSAsyxGG4Wp0n ("mais um grupo inspirado em janones"; o link veio com fbclid, removido).

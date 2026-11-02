@@ -3500,7 +3500,7 @@ function montarCanais(id){const el=document.getElementById('cb'+id+'Canais');if(
  const COR=['#b3261e','#297de2','#d7a14a','#1f8a3b','#7a5c99','#172238','#00a2a8','#c13584'];
  fetch('./data/casos/'+id+'/canais_whatsapp.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(D=>{
   if(!D){el.innerHTML='<div class="card"><div class="eyebrow">01 · Canais no WhatsApp</div><p class="yt-cloudnote">⛔ Ainda sem leitura dos canais: a primeira roda no próximo ciclo da coleta.</p></div>';return;}
-  const L=D.leituras||[];const por={};Object.entries(D.historico_painel||{}).forEach(([k,v])=>{por[k]=v.map(x=>({...x,canal:k}));});L.forEach(x=>{(por[x.canal]=por[x.canal]||[]).push(x);});Object.values(por).forEach(v=>v.sort((a,b)=>String(a.lido_em_utc).localeCompare(String(b.lido_em_utc))));
+  const L=D.leituras||[];const por={};Object.entries(D.historico_painel||{}).forEach(([k,v])=>{por[k]=v.map(x=>({...x,canal:k}));});const nomeLink={};L.forEach(x=>{if(x.link)nomeLink[x.link]=x.canal;});L.forEach(x=>{x={...x,canal:(x.link&&nomeLink[x.link])||x.canal};(por[x.canal]=por[x.canal]||[]).push(x);});Object.values(por).forEach(v=>v.sort((a,b)=>String(a.lido_em_utc).localeCompare(String(b.lido_em_utc))));
   const canais=(D.canais||[]);
   const linhas=canais.map((c,i)=>{const ls=(por[c.nome]||[]);const ok=ls.filter(x=>x.seguidores!=null);const ult=ls[ls.length-1];const pri=ok[0],fim=ok[ok.length-1];
    const cres=pri&&fim&&pri!==fim?`${fim.seguidores-pri.seguidores>=0?'+':''}${n(fim.seguidores-pri.seguidores)} desde ${br(pri.lido_em_utc)}`:'—';
