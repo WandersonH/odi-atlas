@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.310 — TikTok e Kwai pagos em todos os casos: teto total de US$ 10 (2026-11-02) 🔜
+
+- Autorização do responsável (02/11/2026, 17h22), sobre a ficha "TikTok ⛔ não coletada · coleta paga ainda não feita · Kwai 0 publicações": "resolve essa merda vc tem 10 dolares".
+- O quê: `data/config/casos.json` → teto por caso TikTok US$ 0,20 e Kwai US$ 0,10 em 30 casos (até US$ 9,00 no total; teto cumulativo, somado dos manifestos), conta 1 (segredo APIFY_TOKEN). Antes: TikTok US$ 1,00 por caso (02/11, 02h1x) e Kwai US$ 0,00 na maioria. Ordem: teste de 10 itens do Kwai num caso; se vier conteúdo do período, carga de TikTok e Kwai caso a caso.
+- Teste: `python -m unittest discover -s tests` OK; runs na próxima entrada.
+
 ## C19.309 — Caso 026: o canal novo é "Blue Voting Army - Disrupt the Midterms" (EUA), 639 seguidores (2026-11-02) ⚠️
 
 - Leitura de `canais-whatsapp.yml` (02/11/2026, 17h17 de Brasília): título da página pública "BLUE VOTING ARMY - DISRUPT THE MIDTERMS", "639 followers". Nome e país atualizados em `data/config/casos.json` (país pelo nome do canal: eleições de meio de mandato dos EUA). A ligação com o Exército do Lula é a informada pelo responsável; a página não diz.
