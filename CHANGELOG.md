@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.295 — TikTok de volta: filtro de data confirmado; série "Vídeos por hashtag" passa a usar a conta 1 (teto US$ 20/mês) (2026-11-02) ⚠️
+
+- Teste real (run 41501506012, caso 029, modo teste, 10 itens, termo "nordeste câncer do Brasil", dateRange THIS_MONTH): os 10 vídeos são de 05/10 a 28/10/2026 (bruto `casos/029/bruto_tiktok_20261102T183405Z.jsonl.gz`, privado), contra 10 de 10 de maio sem o filtro (C19.289). 1 dos 10 cai no período do caso (desde 25/10); os demais são da onda do 1º turno. `sortType: DATE_POSTED` não pôs os vídeos em ordem de data (vieram misturados): o que vale é o filtro de janela, e o corte pelo "desde" do caso continua no código.
+- Casos: `casos.yml` volta a ter TikTok na rodada diária (REDES "tiktok google"), pago dentro do teto de US$ 1 por caso já autorizado (02/11, 02h1x).
+- Série "Vídeos por hashtag · TikTok" (`collect_tiktok_hashtags.py`): modo pago pela conta 1 (segredo APIFY_TOKEN), ator apidojo~tiktok-scraper, busca "#hashtag" com dateRange THIS_WEEK, até 100 vídeos por hashtag (14 hashtags). Autorização do responsável: 15h28 ("to te dando crédito pra rodar na conta 01") e 15h44 ("ok" à proposta de cerca de US$ 20 por mês). O teto do dia é o que sobra do mês dividido pelos dias que faltam; o gasto é registrado só no privado (`tiktok/hashtags/gastos.csv`) e não aparece na página. Sem o repositório privado o modo pago não roda (não há como respeitar o teto). O manifesto público ganhou "universo": ⛔ desconhecido.
+- Testes: `tests/test_tiktok_hashtags_pago.py` (teto do dia, mês esgotado, entrada com filtro, normalização); `python -m unittest discover -s tests` OK (286 testes).
+- Pendente: primeira coleta paga da série (disparada após este commit; resultado na próxima entrada).
+
 ## C19.294 — TikTok pago com filtro de data: dateRange + sortType DATE_POSTED (2026-11-02) ⚠️
 
 - Achado do diagnóstico grátis C19.293 (run 41501163374): o ator apidojo~tiktok-scraper tem `dateRange` (THIS_WEEK, THIS_MONTH, LAST_THREE_MONTHS, LAST_SIX_MONTHS…) e `sortType` (DATE_POSTED), que o teste de C19.289 não passava; por isso vieram vídeos de maio. clockworks~tiktok-scraper tem filtro equivalente cobrado à parte (videoSearchDateFilter, videoSearchSorting); clockworks~tiktok-hashtag-scraper e novi não têm filtro de data.

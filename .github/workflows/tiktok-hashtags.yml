@@ -44,6 +44,7 @@ jobs:
         continue-on-error: true
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}  # modo pago (conta 1), só se "pago.ativo" em data/config/tiktok_hashtags.json
         run: python scripts/collect_tiktok_hashtags.py
       - name: Rede de contas (Gephi)
         if: steps.coleta.outcome == 'success'

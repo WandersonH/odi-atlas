@@ -69,7 +69,7 @@ jobs:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
           MODO: ${{ github.event_name == 'schedule' && 'carga' || github.event.inputs.modo }}
           CASO: ${{ github.event.inputs.caso }}
-          REDES: ${{ github.event_name == 'schedule' && 'google' || github.event.inputs.redes }}  # 02/11/2026: TikTok fora da rodada diária até confirmar o filtro de data do ator pago (teste no 006: 10 de 10 vídeos de maio)
+          REDES: ${{ github.event_name == 'schedule' && 'tiktok google' || github.event.inputs.redes }}  # 02/11/2026: TikTok de volta com filtro de data (run 41501506012: 10 de 10 vídeos de outubro); pago dentro do teto de US$ 1 por caso
         run: |
           a=""
           if [ "$MODO" = "teste" ]; then a="--teste"; fi

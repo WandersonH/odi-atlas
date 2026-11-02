@@ -93,6 +93,75 @@ async def coletar(cfg: dict, agora: str) -> tuple[list[dict], dict]:
     return out, resumo
 
 
+# ---- modo pago (02/11/2026): a página pública da hashtag não entrega vídeos desde 30/10; o responsável autorizou a conta 1 ----
+def dia_mes(hoje: dt.date) -> int:
+    """Dias que faltam no mês, contando hoje."""
+    prox = (hoje.replace(day=28) + dt.timedelta(days=4)).replace(day=1)
+    return (prox - hoje).days
+
+
+def gasto_mes(p: Path, mes: str) -> float:
+    if not p.exists():
+        return 0.0
+    return round(sum(float(r["custo_usd"] or 0) for r in csv.DictReader(open(p, encoding="utf-8"), delimiter=";") if r["data"][:7] == mes), 4)
+
+
+def plano_pago(pg: dict, n_tags: int, gasto: float, hoje: dt.date) -> tuple[float, int]:
+    """Teto de hoje (o que sobra do mês dividido pelos dias que faltam) e vídeos por hashtag que cabem nele."""
+    teto = round(max(0.0, pg["teto_mensal_usd"] - gasto) / dia_mes(hoje), 4)
+    n = int((teto * 0.95 - n_tags * pg["usd_por_busca"]) / (n_tags * pg["usd_por_item"])) if n_tags else 0
+    return teto, max(0, min(pg["itens_por_hashtag"], n))
+
+
+def linha_paga(x: dict, tag: str, lado: str, agora: str) -> dict | None:
+    from collect_casos import norm
+    r = norm("tiktok", x, tag, agora)
+    if not r or not r["conta"]:
+        return None
+    ht = x.get("hashtags") or []
+    tags = sorted({(h.get("name") or h.get("title") or "") if isinstance(h, dict) else str(h) for h in ht} - {""}) if isinstance(ht, list) else []
+    if not tags:
+        tags = sorted({w[1:].lower() for w in r["texto"].split() if w.startswith("#") and len(w) > 1})
+    return {"video_id": r["item_id"], "conta": r["conta"], "nome_conta": r["nome_conta"], "seguidores": r["seguidores"] if r["seguidores"] is not None else "",
+            "verificada": r["verificada"], "publicado_em": r["publicado_em"], "legenda": r["texto"], "hashtags": "|".join(t.lower() for t in tags),
+            "visualizacoes": r["visualizacoes"] if r["visualizacoes"] is not None else "", "curtidas": r["curtidas"] if r["curtidas"] is not None else "",
+            "comentarios": r["comentarios"] if r["comentarios"] is not None else "", "compartilhamentos": r["compartilhamentos"] if r["compartilhamentos"] is not None else "",
+            "hashtag_coletada": tag, "lado_hashtag": lado, "url": r["url"], "coletado_em": agora}
+
+
+def coletar_pago(cfg: dict, agora: str, token: str, gastos: Path, executar=None) -> tuple[list[dict], dict, dict]:
+    pg = cfg["pago"]
+    hoje = dt.date.fromisoformat(agora[:10])
+    alvos = [(lado, tag) for lado, tags in cfg["hashtags"].items() for tag in tags]
+    gasto = gasto_mes(gastos, agora[:7])
+    teto, n = plano_pago(pg, len(alvos), gasto, hoje)
+    info = {"ator": pg["ator"], "conta": pg["segredo"], "teto_mensal_usd": pg["teto_mensal_usd"], "gasto_mes_antes_usd": gasto,
+            "teto_hoje_usd": teto, "videos_pedidos_por_hashtag": n, "dateRange": pg["dateRange"], "sortType": "DATE_POSTED"}
+    if n < 5:
+        return [], {}, {**info, "custo_usd": 0.0, "status": "⛔ teto do mês esgotado (não cabem 5 vídeos por hashtag)"}
+    if executar is None:
+        from collect_meta_apify import run_actor
+        executar = lambda ator, pl, cap: run_actor(token, ator, pl, cap)  # noqa: E731
+    from collect_meta_anuncios_apify import custo_run
+    out, resumo, custo = [], {}, 0.0
+    cap = round(pg["usd_por_busca"] + pg["usd_por_item"] * n * 1.3 + 0.01, 4)
+    for lado, tag in alvos:
+        erro, itens, run = None, [], {}
+        try:
+            run, itens = executar(pg["ator"], {"keywords": [f"#{tag}"], "maxItems": n, "dateRange": pg["dateRange"], "sortType": "DATE_POSTED"}, cap)
+            itens = itens or []
+        except Exception as e:  # noqa: BLE001 — o token vai no cabeçalho, não na mensagem
+            erro = f"{type(e).__name__} {getattr(e, 'code', '')}".strip()
+        c = max(custo_run(run or {}) or 0, round(pg["usd_por_busca"] + pg["usd_por_item"] * len(itens), 5)) if not erro else 0.0
+        custo += c
+        ls = [l for x in itens if (l := linha_paga(x, tag, lado, agora))]
+        out += ls
+        resumo[tag] = {"lado": lado, "itens_do_ator": len(itens), "videos": len(ls), "contas": len({l["conta"] for l in ls}),
+                       "mais_antigo": min((l["publicado_em"] for l in ls if l["publicado_em"]), default=None), "run": (run or {}).get("id"), "erro": erro}
+        print(f"#{tag}: {len(ls)} vídeos de {resumo[tag]['contas']} contas (pedido {n}){' · ' + erro if erro else ''}")
+    return out, resumo, {**info, "custo_usd": round(custo, 4), "status": "ok" if out else "⛔ nenhum vídeo lido"}
+
+
 def ler(p: Path) -> list[dict]:
     return list(csv.DictReader(gzip.open(p, "rt", encoding="utf-8"), delimiter=";")) if p.exists() else []
 
@@ -121,10 +190,26 @@ def main(argv=None) -> int:
     root = Path(".")
     cfg = json.loads((root / "data/config/tiktok_hashtags.json").read_text(encoding="utf-8"))
     agora = now_utc()
-    novos, resumo = asyncio.run(coletar(cfg, agora))
-    novos = [r for r in novos if r["publicado_em"][:10] >= cfg["desde"]]
     d = os.environ.get("ODI_INTERNO_DIR")
     priv = Path(d) / "tiktok/hashtags" if d else Path(os.environ.get("RUNNER_TEMP") or tempfile.gettempdir()) / "odi_tiktok_hashtags"
+    pg = cfg.get("pago") or {}
+    token = os.environ.get(pg.get("segredo", ""), "").strip() if pg.get("ativo") else ""
+    pago = None
+    if pg.get("ativo") and token and d:
+        # o gasto do mês fica no privado; sem o privado não há como respeitar o teto mensal, então não roda pago
+        novos, resumo, pago = coletar_pago(cfg, agora, token, priv / "gastos.csv")
+        priv.mkdir(parents=True, exist_ok=True)
+        novo_arq = not (priv / "gastos.csv").exists()
+        with open(priv / "gastos.csv", "a", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, delimiter=";")
+            if novo_arq:
+                w.writerow(["data", "ator", "custo_usd", "videos"])
+            w.writerow([agora, pg["ator"], pago["custo_usd"], len(novos)])
+    else:
+        if pg.get("ativo"):
+            print("⚠️ modo pago ativo, mas sem token ou sem repositório privado: página pública (grátis)")
+        novos, resumo = asyncio.run(coletar(cfg, agora))
+    novos = [r for r in novos if r["publicado_em"][:10] >= cfg["desde"]]
     todos = mesclar(ler(priv / "videos_todos.csv.gz"), novos)
     gravar(priv / "videos_todos.csv.gz", todos)
     pub = root / "data/tiktok/hashtags"
@@ -133,7 +218,10 @@ def main(argv=None) -> int:
     gravar(pub / "videos.csv.gz", publico)
     contas = {r["conta"]: r for r in todos}
     man = {"schema_version": 1, "run_started_utc": agora, "modo": "interno" if d else "efemero",
-           "fonte": "páginas públicas de hashtag do TikTok, navegador headless sem login",
+           "fonte": ("busca do TikTok por #hashtag via Apify (apidojo/tiktok-scraper), mais recentes primeiro, filtro de data "
+                     f"{pago['dateRange']}; {pago['videos_pedidos_por_hashtag']} vídeos pedidos por hashtag") if pago else
+                    "páginas públicas de hashtag do TikTok, navegador headless sem login",
+           "universo": "⛔ desconhecido: o TikTok não informa quantos vídeos cada hashtag tem no período",
            "hashtags": resumo, "videos_desta_coleta": len(novos), "videos_acumulados": len(todos),
            "contas_acumuladas": len(contas), "contas_com_10mil_ou_mais": sum(1 for r in contas.values() if grandes(r)),
            "videos_publicos_acumulados": len(publico),
