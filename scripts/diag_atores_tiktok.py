@@ -9,7 +9,7 @@ import sys
 import urllib.request
 
 TOKEN = os.environ.get("APIFY_TOKEN", "")
-CHAVE = re.compile(r"date|time|sort|order|recent|newest|oldest|since|until|period|range|hashtag|keyword|search|max|limit|result", re.I)
+CHAVE = re.compile(r"after|before|posted|newer|older|from|day|date|time|sort|order|recent|newest|oldest|since|until|period|range|hashtag|keyword|search|max|limit|result", re.I)
 
 for ator in sys.argv[1:]:
     try:
