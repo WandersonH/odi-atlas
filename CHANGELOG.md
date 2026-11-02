@@ -7,15 +7,16 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 ## C19.240 — Padronização, passo 2: coleta por termo em 8 casos sem redes (teto de US$ 2,00 por caso) (2026-11-01) 🔜
 
 - **Decisões do responsável** (01/11, 21h3x):
-  - "US$ 2,00 por caso" para os casos 004, 006, 007, 008, 009, 011, 012 e 019, até US$ 16,00 no total.
+  - "US$ 2,00 por caso" para os casos 006, 007, 008, 009, 011, 012 e 019, até US$ 14,00 no total.
+  - O 004 saiu: foi unido ao caso 003 pelo responsável em 22/10, e a auditoria o contou por engano. Eu também o tinha configurado no commit 187305f8, que deixou um teste falhando (`test_casos`: 004 "unido ao caso 003"). A configuração original do 004 foi restaurada e o 004 não é coletado.
   - Bardin com "um livro por caso". Os livros vêm nas próximas entradas, como rascunho para a revisão dele.
 - **Configuração** (`casos.json`):
   - Divisão do teto: X 0,90, Instagram 0,70, Facebook 0,40; TikTok, Trends e notícias são grátis.
   - Uma busca por termo no X por caso, com a data de início do episódio. O 019 busca fora do português (`-lang:pt`).
   - Hashtags e frases no Instagram e no Facebook.
-  - Datas de início: 004 em 07/10 (até 19/10), 006 em 28/05, 007 em 03/10, 008 em 21/10, 009 em 20/10, 011 em 22/10, 012 em 20/07, 019 em 20/10.
+  - Datas de início: 006 em 28/05, 007 em 03/10, 008 em 21/10, 009 em 20/10, 011 em 22/10, 012 em 20/07, 019 em 20/10.
 - **Correção:** a busca do caso 012 tinha Eduardo Bolsonaro no lugar de Alexandre Ramagem.
-- **Teste:** `python -m unittest discover -s tests` OK.
+- **Teste:** `python -m unittest discover -s tests` OK (268 testes), depois da restauração do 004.
 - **⛔ Pendente:** a execução, na fila: frases (Instagram e Facebook), depois complemento (X), depois carga grátis (TikTok e Google), caso a caso. Runs e resultados na próxima entrada.
 
 ## C19.239 — Padronização dos casos, passo 1: matriz real caso × análise; Trends por estado e checagens nos casos que não tinham (2026-11-01) ⚠️
