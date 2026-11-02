@@ -1190,8 +1190,8 @@ new MutationObserver(ativo).observe(sec,{attributes:true,attributeFilter:['class
     <p>O <strong>ATLAS</strong> é um protótipo editorial e exploratório do Observatório de Desinformação e Intolerância Digital (PPGCOM/UNIP). Reúne métricas públicas e estimativas de plataformas, registros eleitorais e estatísticas de acesso digital. Esta edição documenta <strong>o que já está incorporado, de quando são os dados e o que ainda não podemos afirmar</strong>.</p>
   </div>
   <div class="kpigrid" id="readmeKpis" aria-label="Resumo do acervo"></div>
-  <div class="readme-divider" id="saudeColeta"><span>00 / SAÚDE DA COLETA</span><span id="scQuando">VERIFICAÇÃO AUTOMÁTICA</span></div>
-  <p class="muted" style="margin:10px 6px 0;font-size:13px;line-height:1.5">Esta tabela não depende de ninguém dizer que está tudo certo: é gerada por <code>scripts/build_saude_coleta.py</code> a partir dos próprios arquivos publicados (planilhas de seguidores e registros de cada coleta). Conta o tempo desde o último <strong>dado novo</strong>, não desde a última tentativa. Série fora do prazo aparece com ⛔, e o workflow <em>Saúde da coleta</em> fica vermelho no GitHub.</p>
+  <div class="readme-divider" id="saudeColeta"><span>00 / SAÚDE OPERACIONAL E QUALIDADE DA COLETA</span><span id="scQuando">VERIFICAÇÃO AUTOMÁTICA</span></div>
+  <p class="muted" style="margin:10px 6px 0;font-size:13px;line-height:1.5">Esta tabela não depende de ninguém dizer que está tudo certo: é gerada por <code>scripts/build_saude_coleta.py</code> a partir dos próprios arquivos publicados (planilhas de seguidores e registros de cada coleta). Conta o tempo desde o último <strong>dado novo</strong>, não desde a última tentativa. Série fora do prazo aparece com ⛔, e o workflow <em>Saúde da coleta</em> fica vermelho no GitHub. <strong>"Atualizada" não quer dizer "completa"</strong>: a linha de qualidade de cada série mostra o que os arquivos permitem verificar (perfis esperados × lidos, buscas que bateram no limite pedido, execução parcial, zero registros novos). Desde 01/11/2026, revisão do segundo par.</p>
   <div class="readme-source-table" id="scTabela" role="region" aria-label="Saúde da coleta"><div class="readme-source-row"><strong>…</strong><span>carregando data/saude_coleta.json</span><span></span></div></div>
   <div class="readme-divider"><span>01 / COLEÇÕES E FONTES</span><span>REFERÊNCIA E RASTREABILIDADE</span></div>
   <div class="readme-source-table" role="region" aria-label="Inventário das coleções de dados">
@@ -6734,13 +6734,13 @@ const ha=h=>h==null?'':h<1?' (há menos de 1 h)':h<48?` (há ${Math.round(h)} h)
 fetch('./data/saude_coleta.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(S=>{const ch=document.getElementById('ultimaColeta'),tb=document.getElementById('scTabela');
 if(!S){if(ch)ch.textContent='⛔ saúde da coleta indisponível';if(tb)tb.innerHTML='<div class="readme-source-row"><strong>⛔</strong><span>data/saude_coleta.json não encontrado</span><span></span></div>';return;}
 const n=S.series.length,at=S.atrasadas.length;
-if(ch){ch.textContent=at?`⛔ ${at} de ${n} coletas atrasadas`:`● ${n} de ${n} coletas em dia`;ch.style.color=at?'#9b1c1c':'';ch.style.borderColor=at?'#9b1c1c':'';
+const rq=(S.com_ressalva_de_qualidade||[]).length;if(ch){ch.textContent=(at?`⛔ ${at} de ${n} coletas atrasadas`:`● ${n} de ${n} coletas atualizadas`)+(rq?` · ⚠️ ${rq} com ressalva`:'');ch.title='Atualização operacional: dado novo dentro do prazo. Não quer dizer coleta completa; a ressalva de qualidade está na tabela do LEIA-ME.';ch.style.color=at?'#9b1c1c':'';ch.style.borderColor=at?'#9b1c1c':'';
 const ir=()=>{if(typeof setTab==='function')setTab('leiaMe');setTimeout(()=>document.getElementById('saudeColeta')?.scrollIntoView({behavior:'smooth'}),60);};ch.onclick=ir;ch.onkeydown=e=>{if(e.key==='Enter')ir();};}
-const q=document.getElementById('scQuando');if(q)q.textContent='VERIFICADO EM '+dh(S.gerado_em_utc).toUpperCase()+' · '+(n-at)+' DE '+n+' EM DIA';
+const q=document.getElementById('scQuando');if(q)q.textContent='VERIFICADO EM '+dh(S.gerado_em_utc).toUpperCase()+' · '+(n-at)+' DE '+n+' ATUALIZADAS'+(rq?' · '+rq+' COM RESSALVA DE QUALIDADE':'');
 if(tb){const ord=[...S.series].sort((a,b)=>(a.situacao==='em dia')-(b.situacao==='em dia'));
 tb.innerHTML='<div class="readme-source-header"><span>SÉRIE</span><span>ÚLTIMO DADO NOVO · ÚLTIMA TENTATIVA</span><span>SITUAÇÃO / FONTE</span></div>'+ord.map(x=>{const ok=x.situacao==='em dia';
 const perf=x.perfis_no_arquivo!=null?` · ${x.perfis_lidos_no_ultimo_dia} de ${x.perfis_no_arquivo} perfis com leitura nessa data`:'';
-return `<div class="readme-source-row"><strong>${esc(x.nome)}<small>página: ${esc(x.pagina)}</small></strong><span>Último dado novo: <b>${esc(x.so_data&&x.ultimo_dado?x.ultimo_dado.slice(8,10)+'/'+x.ultimo_dado.slice(5,7):dh(x.ultimo_dado))}</b>${ha(x.horas_desde_ultimo_dado)}${perf}<small>Última tentativa: ${esc(dh(x.ultima_execucao))} · ${esc(x.status_ultima_execucao)}</small></span><span style="color:${ok?'#25613a':'#9b1c1c'};font-weight:700">${ok?'● em dia':'⛔ atrasada'}<small>prazo: ${x.max_horas} h · <a href="./${esc(x.fonte)}" download>${esc(x.fonte.split('/').slice(-2).join('/'))}</a></small></span></div>`;}).join('');}
+return `<div class="readme-source-row"><strong>${esc(x.nome)}<small>página: ${esc(x.pagina)}</small></strong><span>Último dado novo: <b>${esc(x.so_data&&x.ultimo_dado?x.ultimo_dado.slice(8,10)+'/'+x.ultimo_dado.slice(5,7):dh(x.ultimo_dado))}</b>${ha(x.horas_desde_ultimo_dado)}${perf}<small>Última tentativa: ${esc(dh(x.ultima_execucao))} · ${esc(x.status_ultima_execucao)}</small></span><span style="color:${ok?'#25613a':'#9b1c1c'};font-weight:700">${ok?'● em dia':'⛔ atrasada'}<small>prazo: ${x.max_horas} h · <a href="./${esc(x.fonte)}" download>${esc(x.fonte.split('/').slice(-2).join('/'))}</a></small>${x.qualidade?`<small style="color:${x.qualidade.startsWith('⚠️')?'#8a5a00':'#25613a'};font-weight:600">Qualidade: ${esc(x.qualidade)}</small>`:''}</span></div>`;}).join('');}
 }).catch(()=>{});})();
 </script>
 <script>
@@ -6872,6 +6872,19 @@ const go=()=>{anexar();new MutationObserver(ms=>{if(ms.some(m=>m.addedNodes.leng
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 window.odiGexfParaNodexl={ler,graphml,arestas,vertices};
 })();
+/* 01/11/2026 · Estado da evidência em cada painel: coletado → processado → validado → interpretável (revisão do segundo par,
+   aprovada pelo responsável às 21h56). Lê data/config/estado_evidencia.json; painel sem entrada própria recebe o padrão. */
+(()=>{'use strict';const esc=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('./data/config/estado_evidencia.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(C=>{if(!C)return;
+ const ordem=['coletado','processado','validado','interpretavel'];const sem=new Set(['leiaMe','declarations']);
+ document.querySelectorAll('section.panel[id]').forEach(sec=>{if(sem.has(sec.id)||sec.querySelector('.odi-evid'))return;
+  const P=C.paineis[sec.id]||C.padrao;const E=C.estados[P.estado];if(!E)return;const k=ordem.indexOf(P.estado);
+  const passos=ordem.map((o,i)=>`<span title="${esc(C.estados[o].definicao)}" style="display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border:1px solid ${i<=k?C.estados[o].cor:'#d9d3c4'};background:${i===k?C.estados[o].cor:'transparent'};color:${i===k?'#fff':i<k?C.estados[o].cor:'#a29b8c'};font:600 11px/1.4 Arial,sans-serif;border-radius:2px">${i<=k?'●':'○'} ${esc(C.estados[o].rotulo)}</span>`).join('<span style="color:#a29b8c">→</span>');
+  const d=document.createElement('div');d.className='odi-evid';d.setAttribute('role','note');d.setAttribute('aria-label','Estado da evidência: '+E.rotulo);
+  d.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:6px 0 10px;padding:7px 10px;border-left:3px solid '+E.cor+';background:#faf7ef;font-size:12px;line-height:1.45';
+  d.innerHTML=`<b style="font:700 11px 'Courier New',monospace;letter-spacing:.04em;color:#172238">ESTADO DA EVIDÊNCIA</b>${passos}<span style="flex-basis:100%;color:#3b4555">${esc(P.motivo)}${P.escopo?` <b>Escopo:</b> ${esc(P.escopo)}.`:''}${P.falta?` <b style="color:#8a5a00">Falta para avançar:</b> ${esc(P.falta)}.`:''}</span>`;
+  const rib=sec.querySelector('.paper-ribbon');if(rib)rib.insertAdjacentElement('afterend',d);else sec.prepend(d);});
+}).catch(()=>{});})();
 /* C19.206 · Baixar cada grafo/gráfico como imagem (PNG ou JPG). Pedido do responsável em 30/10/2026: "adicione em todos os
    grafos a opção de download do grafo em png ou jpg". Vale para todo SVG de visualização da página (redes, mapas, séries,
    barras), inclusive os desenhados depois do carregamento. A imagem leva o título do bloco, a data de exportação e o

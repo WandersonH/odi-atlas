@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-01T23:45:48Z",
+ "gerado_em_utc": "2026-11-02T00:57:17Z",
  "regra": "Séries que o Atlas promete atualizar sozinho. 'max_horas' é o atraso máximo aceito desde o último dado real (não desde a última tentativa). Pedido do responsável em 23/10/2026, 13h13: 'como posso acreditar em vc que tudo tá sendo coletado'.",
  "series": [
   {
@@ -8,13 +8,16 @@
    "fonte": "data/seguidores/latest.csv",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T00:00:00Z",
-   "horas_desde_ultimo_dado": 23.8,
+   "horas_desde_ultimo_dado": 25.0,
    "ultima_execucao": "2026-11-01T16:47:59Z",
    "status_ultima_execucao": "ok",
    "perfis_no_arquivo": 72,
    "perfis_lidos_no_ultimo_dia": 72,
    "so_data": true,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos",
+   "perfis_esperados": null,
+   "fonte_esperados": "⛔ lista de perfis esperados não declarada para esta série"
   },
   {
    "nome": "Seguidores · YouTube",
@@ -22,13 +25,16 @@
    "fonte": "data/seguidores/youtube_latest.csv",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T00:00:00Z",
-   "horas_desde_ultimo_dado": 23.8,
+   "horas_desde_ultimo_dado": 25.0,
    "ultima_execucao": "2026-11-01T20:37:43Z",
    "status_ultima_execucao": "ok",
    "perfis_no_arquivo": 13,
    "perfis_lidos_no_ultimo_dia": 13,
    "so_data": true,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos",
+   "perfis_esperados": null,
+   "fonte_esperados": "⛔ lista de perfis esperados não declarada para esta série"
   },
   {
    "nome": "Seguidores · TikTok",
@@ -36,13 +42,16 @@
    "fonte": "data/seguidores/tiktok_latest.csv",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T00:00:00Z",
-   "horas_desde_ultimo_dado": 23.8,
+   "horas_desde_ultimo_dado": 25.0,
    "ultima_execucao": "2026-11-01T16:56:20Z",
    "status_ultima_execucao": "ok · 10 de 10 perfis",
    "perfis_no_arquivo": 10,
    "perfis_lidos_no_ultimo_dia": 10,
    "so_data": true,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "⚠️ 10 de 11 perfis no arquivo",
+   "perfis_esperados": 11,
+   "fonte_esperados": "data/tiktok/manifesto_latest.json → perfis_total"
   },
   {
    "nome": "Seguidores · Kwai",
@@ -50,13 +59,16 @@
    "fonte": "data/seguidores/kwai_latest.csv",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T00:00:00Z",
-   "horas_desde_ultimo_dado": 23.8,
+   "horas_desde_ultimo_dado": 25.0,
    "ultima_execucao": null,
    "status_ultima_execucao": "sem manifesto",
    "perfis_no_arquivo": 3,
    "perfis_lidos_no_ultimo_dia": 3,
    "so_data": true,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos",
+   "perfis_esperados": null,
+   "fonte_esperados": "⛔ lista de perfis esperados não declarada para esta série"
   },
   {
    "nome": "Seguidores · X",
@@ -64,13 +76,16 @@
    "fonte": "data/seguidores/x_latest.csv",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T00:00:00Z",
-   "horas_desde_ultimo_dado": 23.8,
+   "horas_desde_ultimo_dado": 25.0,
    "ultima_execucao": null,
    "status_ultima_execucao": "sem manifesto",
    "perfis_no_arquivo": 1,
    "perfis_lidos_no_ultimo_dia": 1,
    "so_data": true,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "⚠️ 1 de 10 perfis no arquivo",
+   "perfis_esperados": 10,
+   "fonte_esperados": "data/config/x_posts.json → perfis"
   },
   {
    "nome": "Vídeos · YouTube",
@@ -78,11 +93,12 @@
    "fonte": "data/youtube/conteudo.json",
    "max_horas": 12,
    "ultimo_dado": "2026-11-01T20:37:43Z",
-   "horas_desde_ultimo_dado": 3.1,
+   "horas_desde_ultimo_dado": 4.3,
    "ultima_execucao": "2026-11-01T20:37:43Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Vídeos · TikTok",
@@ -90,11 +106,12 @@
    "fonte": "data/tiktok/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T16:54:50Z",
-   "horas_desde_ultimo_dado": 6.8,
+   "horas_desde_ultimo_dado": 8.0,
    "ultima_execucao": "2026-11-01T16:54:50Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "⚠️ 8 de 11 perfis lidos"
   },
   {
    "nome": "Vídeos · Kwai",
@@ -102,11 +119,12 @@
    "fonte": "data/kwai/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T18:25:07Z",
-   "horas_desde_ultimo_dado": 5.3,
+   "horas_desde_ultimo_dado": 6.5,
    "ultima_execucao": "2026-11-01T18:25:07Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Posts · Instagram",
@@ -114,11 +132,12 @@
    "fonte": "data/instagram/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T18:05:09Z",
-   "horas_desde_ultimo_dado": 5.7,
+   "horas_desde_ultimo_dado": 6.9,
    "ultima_execucao": "2026-11-01T18:05:09Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Posts · Facebook",
@@ -126,11 +145,12 @@
    "fonte": "data/facebook/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T17:58:39Z",
-   "horas_desde_ultimo_dado": 5.8,
+   "horas_desde_ultimo_dado": 7.0,
    "ultima_execucao": "2026-11-01T17:58:39Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Posts · X",
@@ -138,11 +158,12 @@
    "fonte": "data/x/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T18:06:21Z",
-   "horas_desde_ultimo_dado": 5.7,
+   "horas_desde_ultimo_dado": 6.8,
    "ultima_execucao": "2026-11-01T18:06:21Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Respostas · X",
@@ -150,11 +171,12 @@
    "fonte": "data/x/respostas/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T18:25:28Z",
-   "horas_desde_ultimo_dado": 5.3,
+   "horas_desde_ultimo_dado": 6.5,
    "ultima_execucao": "2026-11-01T18:25:28Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "⚠️ 2 de 2 buscas bateram no limite pedido: a coleta é amostra dos mais recentes, não o total"
   },
   {
    "nome": "Comentários · YouTube",
@@ -162,11 +184,12 @@
    "fonte": "data/youtube/comentarios/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T16:56:23Z",
-   "horas_desde_ultimo_dado": 6.8,
+   "horas_desde_ultimo_dado": 8.0,
    "ultima_execucao": "2026-11-01T16:56:23Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Comentários · TikTok",
@@ -174,11 +197,12 @@
    "fonte": "data/tiktok/comentarios/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T02:39:35Z",
-   "horas_desde_ultimo_dado": 21.1,
+   "horas_desde_ultimo_dado": 22.3,
    "ultima_execucao": "2026-11-01T02:39:35Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Comentários · Kwai",
@@ -186,11 +210,12 @@
    "fonte": "data/kwai/comentarios/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T18:25:16Z",
-   "horas_desde_ultimo_dado": 5.3,
+   "horas_desde_ultimo_dado": 6.5,
    "ultima_execucao": "2026-11-01T18:25:16Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Comentários · Facebook",
@@ -198,11 +223,12 @@
    "fonte": "data/facebook/comentarios/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T18:19:51Z",
-   "horas_desde_ultimo_dado": 5.4,
+   "horas_desde_ultimo_dado": 6.6,
    "ultima_execucao": "2026-11-01T18:19:51Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Comentários · Instagram",
@@ -210,11 +236,12 @@
    "fonte": "data/instagram/comentarios/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T18:26:27Z",
-   "horas_desde_ultimo_dado": 5.3,
+   "horas_desde_ultimo_dado": 6.5,
    "ultima_execucao": "2026-11-01T18:26:27Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   },
   {
    "nome": "Canais · WhatsApp",
@@ -222,13 +249,21 @@
    "fonte": "data/whatsapp/manifesto_latest.json",
    "max_horas": 36,
    "ultimo_dado": "2026-11-01T23:30:36Z",
-   "horas_desde_ultimo_dado": 0.3,
+   "horas_desde_ultimo_dado": 1.4,
    "ultima_execucao": "2026-11-01T23:30:36Z",
    "status_ultima_execucao": "ok",
    "so_data": false,
-   "situacao": "em dia"
+   "situacao": "em dia",
+   "qualidade": "sem problema detectável nos arquivos"
   }
  ],
  "em_dia": 18,
- "atrasadas": []
+ "atrasadas": [],
+ "o_que_mede": "Saúde operacional: se cada série recebeu dado real dentro do prazo. 'Em dia' não quer dizer coleta completa: a coluna de qualidade mostra o que os arquivos permitem verificar (perfis esperados × lidos, buscas que bateram no limite, execuções parciais, zero registros novos).",
+ "com_ressalva_de_qualidade": [
+  "Seguidores · TikTok",
+  "Seguidores · X",
+  "Vídeos · TikTok",
+  "Respostas · X"
+ ]
 }

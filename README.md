@@ -2,20 +2,45 @@
 
 Protótipo de observatório acadêmico do **Observatório de Desinformação e Intolerância Digital (ODI) · PPGCOM/UNIP**, sobre as eleições de 2026.
 
-> **Estado real (15/10/2026):** o mapa do caderno 12 já recebe votos reais do TSE (1º turno 2022 e 2026, por município) via `data/elections.json`. Veja o `CHANGELOG.md` para o que foi verificado e o que falta. Este repositório começa pela etapa **P1 — Origem**: trazer os originais oficiais com proveniência verificável. Nada além disso está declarado como pronto.
+> **Estado em 01/11/2026.** Esta seção foi reescrita depois da revisão do segundo par. A anterior, de 15/10, descrevia só a etapa P1. O registro completo, versão a versão, está no `CHANGELOG.md`.
 
-## O que existe
+## O que o Atlas é hoje
 
-| Item | Estado |
-|---|---|
-| `ODI_Atlas_v15_MVP.html` | Interface editorial com 14 cadernos. Caderno 12 (Geografia do Voto) com votos reais do TSE; caderno 13 (Conteúdo · YouTube por tema) com vídeos de Lula e Flávio, temas por dicionário aberto, linha do tempo, nuvem de palavras, rede de coocorrência e rede de influenciadores (Lula vermelho × Flávio verde); caderno 14 (Buscas · Google Trends). |
-| `scripts/fetch_sources.py` | P1: baixa os originais do TSE (CKAN) e do IBGE, registra SHA-256, tamanho e cabeçalhos HTTP, e extrai Presidente / 1º turno sem alterar colunas. |
-| `tests/` | Testes com arquivos sintéticos (filtro de cargo/turno, deduplicação entre arquivos BR e UF, conflitos, encoding Latin-1, execução completa sem rede). **Não substituem** a execução real. |
-| `.github/workflows/p1-fontes.yml` | Executa a P1 no GitHub Actions: manual ou toda segunda-feira. |
-| `data/manifest/` | Manifestos de cada execução (gerados pelo workflow). |
-| `CHANGELOG.md` | **Registro de cada versão**: o que mudou, o que foi testado, pendências e evidências. |
-| Releases `fontes-*` | ZIPs originais exatamente como baixados, imutáveis. |
+Um sistema de **coleta, processamento, preservação e visualização** sobre a eleição de 2026. Tem 129 scripts em `scripts/`, 79 workflows em `.github/workflows/` e 271 testes unitários em 79 arquivos de `tests/` (contagens de 01/11/2026). A interface é `ODI_Atlas_v15_MVP.html`.
 
+| Frente | O que cobre | Onde |
+|---|---|---|
+| Resultados eleitorais | 1º turno 2022 e 2026 por município, conferidos com fonte oficial e independente (`VALIDACAO_P1.md`); 2º turno 2026 por seção | `data/elections*.json`, `data/tse/` |
+| Comunicação das campanhas (universo A) | Contas declaradas ao TSE das chapas 13 e 22: YouTube, TikTok, Kwai, Instagram, Facebook e X | `data/youtube/`, `data/tiktok/`, `data/kwai/`, `data/instagram/`, `data/facebook/`, `data/x/` |
+| Circulação pública (universo B) | Comentários, respostas, Google Trends, imprensa, checagens, anúncios e 25 casos por termo ou hashtag | `data/*/comentarios/`, `data/trends/`, `data/casos/` |
+| Análise | Livros de códigos (Bardin, pré-codificação), CHD de Reinert própria, redes (GEXF, GraphML e NodeXL), sentimento por modelo | `data/config/livro_codigos_*.json`, `data/corpus/` |
+| Controle | Manifesto de cada coleta, saúde operacional e qualidade da coleta, estado da evidência por painel, matriz caso × análise | `data/saude_coleta.json`, `data/config/estado_evidencia.json`, `data/casos/matriz.json` |
+
+## Como ler um resultado
+
+Todo painel da página mostra o **estado da evidência**:
+
+- **coletado:** há evidência bruta com proveniência;
+- **processado:** os scripts calcularam indicadores, mas sem avaliação independente;
+- **validado:** cumpriu um critério de avaliação registrado;
+- **interpretável:** sustenta a afirmação específica que o painel faz, dentro do escopo indicado.
+
+Em 01/11/2026, quase tudo está como **processado**. Ainda faltam:
+
+- a codificação humana (kappa) dos livros de códigos;
+- a conferência da CHD no IRaMuTeQ;
+- a revisão humana das bolhas de apoio e das posições.
+
+Mais regras de leitura:
+
+- **Universo e amostra:** toda amostra aparece com o universo que a plataforma informa. Quando a plataforma não informa, o universo fica ⛔ desconhecido, nunca estimado (regra 9 do `CLAUDE.md`).
+- **"Coleta em dia" não é "coleta completa":** a saúde operacional diz se chegou dado novo dentro do prazo. A linha de qualidade de cada série diz o que os arquivos permitem verificar: perfis esperados × lidos, buscas que bateram no limite, execuções parciais.
+- **Cuidados de interpretação:**
+  - uma comunidade de rede não é, sozinha, uma "bolha";
+  - citar um candidato não é apoiá-lo;
+  - Trends por estado e voto por município são medidas agregadas de unidades diferentes, sem inferência individual nem causal.
+
+## Origem: a etapa P1
 ## Como a proveniência funciona
 
 1. O workflow consulta a API CKAN do TSE (`resultados-2022`, `resultados-2026`) e só aceita o arquivo cujo nome é exatamente `votacao_candidato_munzona_<ANO>.zip`.
@@ -26,11 +51,15 @@ Protótipo de observatório acadêmico do **Observatório de Desinformação e I
 
 **Dado ausente é bloqueio, não sucesso:** se um ano não tiver o arquivo no CKAN, o manifesto registra `bloqueado` e o workflow termina em erro.
 
-## Próximas etapas (não implementadas aqui)
+## Próximas etapas
 
-- **P2 · Ingestão:** totalizar por município a partir do recorte; conferir com as tabelas oficiais do TSE e, como prova cruzada independente, com os totais municipais publicados pelo votocruzado.com.br.
-- **P3 · Correspondência TSE ↔ IBGE:** sem *fuzzy matching*; exceções documentadas.
-- **P4 · Front-end:** ligar o caderno 12 ao JSON real e trocar a geometria provisória pela malha oficial do IBGE.
+As prioridades estão na revisão do segundo par (01/11/2026) e no `CHANGELOG.md`:
+
+1. Validação humana dos livros de códigos, com kappa.
+2. Conferência da CHD no IRaMuTeQ.
+3. Integração de atores, narrativas e tempo.
+4. O caso 002 como piloto de busca e IA generativa.
+5. Ampliação controlada do universo eleitoral.
 
 ## Rodar localmente
 
@@ -39,7 +68,7 @@ python -m unittest discover -s tests -v
 python scripts/fetch_sources.py --years 2022 2026 --malha 2025
 ```
 
-Só biblioteca padrão do Python 3.10+.
+A etapa P1 usa só a biblioteca padrão do Python 3.10+. As análises usam numpy, networkx e os modelos citados em cada script.
 
 ## Licenças
 

@@ -4,6 +4,34 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.242 — Estado da evidência em cada painel; saúde operacional separada da qualidade da coleta; README atualizado (2026-11-01) ⚠️
+
+- **Pedido do responsável** (01/11, 21h56, "sim"): adotar o que a revisão do segundo par propôs e foi confirmado no código.
+- **Estado da evidência** (`data/config/estado_evidencia.json`, componente na página):
+  - Todo painel ganhou um selo com os quatro estados, coletado → processado → validado → interpretável, com o motivo, o escopo e o que falta para avançar.
+  - 60 painéis têm entrada própria; os outros recebem o padrão, "processado".
+  - **Interpretável:** só o 1º turno, porque os votos de 2022 e 2026 foram conferidos com fonte oficial e independente (`VALIDACAO_P1.md`). O escopo é a contagem de votos, não o porquê do voto.
+  - **Validado:** o mapa do eleitorado no 1º turno, PNAD e Reuters, que são fontes citadas.
+  - **2º turno e urnas:** ficaram como "processado", porque não há registro de conferência com o total oficial.
+  - **Casos, comentários, conteúdo e bolhas:** "processado", com o que falta (kappa, IRaMuTeQ, revisão humana).
+  - **Rótulo de IA:** "coletado", porque não é perícia.
+- **Saúde da coleta:** `build_saude_coleta.py` ganhou a camada `qualidade`, separada da atualização. Ela verifica:
+  - perfis esperados × perfis no arquivo (`esperados_de`, por enquanto no X e no TikTok);
+  - perfis com dado fora do prazo;
+  - execução parcial;
+  - buscas que bateram no limite pedido;
+  - zero registros novos.
+  - Resultado de hoje: 18 de 18 séries atualizadas e 4 com ressalva:
+    - Seguidores do X: 1 de 10 perfis.
+    - Seguidores do TikTok: 10 de 11.
+    - Vídeos do TikTok: 8 de 11 perfis lidos.
+    - Respostas no X: 2 de 2 buscas no limite de 150, ou seja, amostra dos mais recentes e não o total do dia.
+  - O selo do topo passou a dizer "atualizadas" (e não "em dia"), com a contagem de ressalvas. A tabela do LEIA-ME ganhou a linha de qualidade.
+- **README:** a seção "Estado real (15/10/2026)" foi trocada pelo estado de 01/11: frentes, universos A e B, como ler os estados, regra do universo, cuidados de interpretação e próximas etapas. As contagens de scripts, workflows e testes foram tiradas do próprio repositório nesse dia.
+- **Teste:**
+  - `python -m unittest discover -s tests` OK, com `tests/test_saude_qualidade.py` novo.
+  - Playwright: 60 selos na página, sem erros de JavaScript. Selos conferidos em captura no 1º turno, no caso 020 e nos comentários do YouTube.
+
 ## C19.241 — Livros de códigos (rascunho 0.1) para 21 casos e correção da amostra da codificação humana do Bardin (2026-11-01) ⚠️
 
 - **Livros de códigos:** decisão do responsável de "um livro por caso" (21h3x).
