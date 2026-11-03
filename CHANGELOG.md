@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.322 — Caso 026: Janones em Buenos Aires (02/11) entra na coleta; carga paga de X, Instagram e Facebook do caso (2026-11-03) 🔜
+
+- Pergunta do responsável (03/11/2026, 00h48): "tu coletou material do Janones em Buenos Aires?". Não especificamente: o caso tinha 21 notícias sobre Argentina até 30/10 (Agencia Noticias Argentinas, Ámbito, Buenos Aires Times, Rosario3, Tiempo Argentino etc., em `busca.json`), mas nada da viagem de 02/11, e o caso 026 nunca tinha rodado a carga paga de X, Instagram e Facebook (só TikTok, US$ 0,38).
+- Fatos (fontes lidas): em 02/11, em Buenos Aires, Janones se reuniu com Sergio Massa e visitou Cristina Kirchner (prisão domiciliar), com Chico Kertész e Rafael Marroquim; gravou vídeo em espanhol para o canal "Ejército del Peronismo" (70 mil seguidores no WhatsApp, 19,7 mil no Instagram, segundo o Brasil de Fato). Registrados em `fontes_contexto` do caso.
+- O quê: busca nova no X (rodada 2: Janones/Ejército del Peronismo × Kirchner, Massa, Argentina, Buenos Aires, Milei, desde 01/11), 4 termos de notícias e 2 buscas no Instagram. Carga paga do 026 em X, Instagram e Facebook dentro do teto já autorizado (02/11, "Sim, US$ 2,00 + TikTok": X 0,90, Instagram 0,70, Facebook 0,40) e complemento do X; notícias pela busca do caso (grátis). O canal "Ejército del Peronismo" já é lido a cada 6 h.
+- Teste: `python -m unittest discover -s tests` OK; runs na próxima entrada.
+
 ## C19.321 — Caso 032: penetração no público de Flávio; assunto do Ep 5; crédito do CNPq na página (2026-11-03) ⚠️
 
 - Pedido do responsável (03/11/2026, 00h22): "no Revelando também queria o % de penetração [no] público do Flávio". `caso_revelando.py` calcula, sobre os autores do acervo do Atlas de cada lado (Flávio: só Flávio + os dois; Lula: só Lula + os dois), quantos comentaram nos vídeos lidos do Revelando. Resultado (comentários lidos: 22.609, 14% do universo de 161.709): público de Flávio 262 de 132.822 = 0,20%; público de Lula 4.462 de 197.919 = 2,25%; razão 11,4×. Por mês, Flávio 0,05% (set.) e 0,16% (out.). Por episódio completo, no máximo 9 pessoas do lado de Flávio (Entrevista com General Santos Cruz). Piso: comentários não lidos e quem só assiste não entram.
