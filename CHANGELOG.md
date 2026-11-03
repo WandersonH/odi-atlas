@@ -4,7 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.329 — TikTok autorizado nos casos 033 e 026 (US$ 4,00) (2026-11-03) 🔜
+## C19.330 — Coletas pagas dos casos 033 e 026 concluídas (2026-11-03) ✅
+
+- Contexto: o laço em segundo plano que enfileiraria X/Instagram/Facebook do 033 parou por tempo limite antes de disparar; os dois modos foram disparados à mão às 07h53 UTC.
+- Caso 033 (desenhos bíblicos da Record; amostra por termo desde 29/10/2026; universo das plataformas ⛔ desconhecido): 1.883 publicações lidas, 1.627 contas — TikTok 339 (run 41586491650), X 1.305 (modo complemento, run 41599335026), Instagram 112 reels no período de 113 lidos, Facebook 128 no período (63 + 65, um termo cada; run 41599375783), Kwai 0 (teto 0). 281 contas com 10 mil+; 50 publicações de 38 candidaturas declaradas ao TSE (2,66% das publicações), a codificar.
+- Gasto acumulado nos manifestos de `data/casos/033/` (tetos): X 0,1958 (0,90), Instagram 0,2875 (0,70), Facebook 0,3316 (0,40), TikTok 0,2052 (2,00).
+- Caso 026: TikTok com os termos de Buenos Aires (run 41586491650) — 1.773 itens nesta coleta, 6.126 acumulados; gasto TikTok acumulado 1,1444 (teto 2,38). Recorte "Janones em Buenos Aires" refeito pelo próprio run: 1.144 de 6.126 publicações (X 1.041, TikTok 76, Instagram 15, Facebook 12), 25 contas ≥10 mil, 638 menores, 64 notícias (`data/casos/026/recortes.json`).
+- Teste: `python -m unittest discover -s tests` OK. Pendente: YouTube do 033 (cota esgotada no run anterior; busca redisparada às 08h18 UTC, run 41602238970).
+
+## C19.329 — TikTok autorizado nos casos 033 e 026 (US$ 4,00) (2026-11-03) ✅
 
 - Responsável em 03/11/2026, 02h19: "4 dólares", logo após o aviso de que TikTok nos casos 033 e 026 dependia de verba nova. Leitura adotada: US$ 2,00 para cada caso. 033: teto TikTok 0 → 2,00. 026: já gastou US$ 0,3752 em TikTok (manifestos do caso), teto acumulado 0,20 → 2,38 (US$ 2,00 a mais), com três buscas novas sobre Buenos Aires ("Janones Buenos Aires", "Janones Cristina Kirchner", "Janones Massa Argentina").
 - Teste: `python -m unittest discover -s tests` OK. Runs `casos.yml` (modo carga, rede tiktok) disparados em fila, um caso por vez; resultados na próxima entrada.
