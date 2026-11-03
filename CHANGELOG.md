@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.324 — Pardal: comparação entre 1º e 2º turno (2026-11-03) 🔜
+
+- Pedido do responsável (03/11/2026, 01h51): "pardal também deveria ter uma análise 1 × 2 turno".
+- O quê: `collect_tse_denuncias_pesquisas.py` grava `comparacao_turnos` no `data/tse/denuncias/resumo.json`: totais, % que virou petição no PJe, presidente e internet por turno, e tabelas por tipo, cargo, UF, situação, origem, tipo nas denúncias sobre presidente e tipo nas digitais, cada uma com contagem e parcela dentro do turno e a variação da parcela em pontos percentuais. Página "Denúncias eleitorais (Pardal)": novo bloco "00 · 1º × 2º turno" com seletor de recorte. Ressalva na página: o 1º turno cobre a campanha inteira e o 2º só três semanas, com só presidente e governador em disputa; compare parcelas, não totais.
+- Teste: função conferida com duas denúncias sintéticas; `python -m unittest discover -s tests` OK. Números na próxima coleta (run disparado).
+
 ## C19.323 — Alienação eleitoral: comparação entre o 1º e o 2º turno no mapa (2026-11-03) ✅
 
 - Pedido do responsável (03/11/2026, 01h48, print do mapa de alienação): "adoraria ter a possibilidade de comparar primeiro e segundo turno".

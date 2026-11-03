@@ -135,7 +135,33 @@ def resumo_denuncias(rows: list[dict]) -> dict:
                            "por_situacao": contar(pres, "ST_PETICIONAMENTO")},
             "digitais": {"tipos": sorted({r.get("TP_IRREGULARIDADE") for r in dig}), "total": len(dig), "por_cargo": contar(dig, "DS_CARGO"),
                          "por_uf": contar(dig, "SG_UF"), "por_turno": [[k, n] for k, n in Counter(turno(r) for r in dig).most_common()]},
-            "tipo_por_cargo": {t: dict(c.most_common()) for t, c in por_tipo_cargo.items()}}
+            "tipo_por_cargo": {t: dict(c.most_common()) for t, c in por_tipo_cargo.items()},
+            # 03/11/2026, 01h51: "pardal também deveria ter uma análise 1 × 2 turno"
+            "comparacao_turnos": comparar_turnos(rows, pres, dig)}
+
+
+def comparar_turnos(rows: list[dict], pres: list[dict], dig: list[dict]) -> dict:
+    """Mesmas contagens separadas por turno, com a parcela de cada categoria dentro do turno (os turnos têm durações diferentes:
+    o 1º reúne toda a campanha desde 16/08; o 2º, as três semanas até 25/10)."""
+    def tab(rs: list[dict], campo: str, top: int = 15) -> list[dict]:
+        t1 = Counter(limpo(r.get(campo)) or "não informado" for r in rs if turno(r) == "1º turno")
+        t2 = Counter(limpo(r.get(campo)) or "não informado" for r in rs if turno(r) == "2º turno")
+        n1, n2 = sum(t1.values()), sum(t2.values())
+        chaves = [k for k, _ in (t1 + t2).most_common(top)]
+        return [{"categoria": k, "t1": t1.get(k, 0), "t2": t2.get(k, 0), "pct_t1": round(100 * t1.get(k, 0) / n1, 1) if n1 else None,
+                 "pct_t2": round(100 * t2.get(k, 0) / n2, 1) if n2 else None,
+                 "dif_pp": round(100 * t2.get(k, 0) / n2 - 100 * t1.get(k, 0) / n1, 1) if n1 and n2 else None} for k in chaves]
+    tot = Counter(turno(r) for r in rows)
+    pet = Counter(turno(r) for r in rows if (r.get("ST_PETICIONAMENTO") or "").upper().startswith("PETICIONADA"))
+    return {"totais": {"1º turno": tot.get("1º turno", 0), "2º turno": tot.get("2º turno", 0)},
+            "peticionadas_pct": {k: round(100 * pet.get(k, 0) / tot[k], 1) if tot.get(k) else None for k in ("1º turno", "2º turno")},
+            "presidente": {k: sum(1 for r in pres if turno(r) == k) for k in ("1º turno", "2º turno")},
+            "digitais": {k: sum(1 for r in dig if turno(r) == k) for k in ("1º turno", "2º turno")},
+            "por_tipo": tab(rows, "TP_IRREGULARIDADE"), "por_cargo": tab(rows, "DS_CARGO", 10), "por_uf": tab(rows, "SG_UF", 27),
+            "por_situacao": tab(rows, "ST_PETICIONAMENTO", 5), "por_origem": tab(rows, "DS_ORIGEM_DENUNCIA", 5),
+            "presidente_por_tipo": tab(pres, "TP_IRREGULARIDADE", 12), "digitais_por_tipo": tab(dig, "TP_IRREGULARIDADE", 8),
+            "nota": "Turno pela eleição a que a denúncia se refere (DS_ELEICAO). O 1º turno cobre a campanha inteira até 04/10 e o 2º só 05–25/10, "
+                    "e no 2º turno só presidente e governador (em 13 UFs + DF) estavam em disputa: compare as parcelas (%), não os totais."}
 
 
 def historico(arq: Path, d: dict) -> list[dict]:
