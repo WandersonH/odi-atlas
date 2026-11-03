@@ -4,13 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.331 — YouTube dos casos recentes lido após a renovação da cota (2026-11-03) ✅
+
+- A busca completa (`casos-busca.yml` sem caso, run 41602238970, 08h18 UTC) foi cancelada pelo limite de 45 min do job antes de gravar; nada foi salvo. Redisparada caso a caso (um run por caso, em fila), na ordem 033, 021, 022, 024–031, 016 — runs 41608024986 a 41615336374, todos com sucesso.
+- Vídeos lidos (`data/casos/<id>/busca.json`, campo `youtube`; busca da API filtrada por título/descrição, total é piso, universo ⛔ desconhecido): 033 61 vídeos / 57 canais; 021 298 / 219; 022 118 / 102; 024 276 / 174; 025 299 / 209; 026 321 / 161; 027 167 / 126; 028 134 / 103; 029 10 / 9; 030 204 / 145; 031 172 / 128; 016 21 / 21.
+- HTTP 429: 4 consultas no 1º run do 033 e 1 no 016 ("queime seu título"). 033 refeito (run 41615927098): 61 vídeos, 0 erros. 016 mantém 1 consulta com 429.
+- Pendente: a busca sem caso não cabe em 45 min com 30 casos; até ajustar o workflow, disparar por caso.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.330 — Coletas pagas dos casos 033 e 026 concluídas (2026-11-03) ✅
 
 - Contexto: o laço em segundo plano que enfileiraria X/Instagram/Facebook do 033 parou por tempo limite antes de disparar; os dois modos foram disparados à mão às 07h53 UTC.
 - Caso 033 (desenhos bíblicos da Record; amostra por termo desde 29/10/2026; universo das plataformas ⛔ desconhecido): 1.883 publicações lidas, 1.627 contas — TikTok 339 (run 41586491650), X 1.305 (modo complemento, run 41599335026), Instagram 112 reels no período de 113 lidos, Facebook 128 no período (63 + 65, um termo cada; run 41599375783), Kwai 0 (teto 0). 281 contas com 10 mil+; 50 publicações de 38 candidaturas declaradas ao TSE (2,66% das publicações), a codificar.
 - Gasto acumulado nos manifestos de `data/casos/033/` (tetos): X 0,1958 (0,90), Instagram 0,2875 (0,70), Facebook 0,3316 (0,40), TikTok 0,2052 (2,00).
 - Caso 026: TikTok com os termos de Buenos Aires (run 41586491650) — 1.773 itens nesta coleta, 6.126 acumulados; gasto TikTok acumulado 1,1444 (teto 2,38). Recorte "Janones em Buenos Aires" refeito pelo próprio run: 1.144 de 6.126 publicações (X 1.041, TikTok 76, Instagram 15, Facebook 12), 25 contas ≥10 mil, 638 menores, 64 notícias (`data/casos/026/recortes.json`).
-- Teste: `python -m unittest discover -s tests` OK. Pendente: YouTube do 033 (cota esgotada no run anterior; busca redisparada às 08h18 UTC, run 41602238970).
+- Teste: `python -m unittest discover -s tests` OK. YouTube do 033: ver C19.331.
 
 ## C19.329 — TikTok autorizado nos casos 033 e 026 (US$ 4,00) (2026-11-03) ✅
 
