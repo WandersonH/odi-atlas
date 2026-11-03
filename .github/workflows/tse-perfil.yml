@@ -30,6 +30,11 @@ jobs:
           rc=0; python scripts/collect_tse_perfil.py ${{ inputs.quais }} > s.txt 2>&1 || rc=$?
           tail -n 20 s.txt | while IFS= read -r l; do echo "::notice title=TSE perfil::$(echo "$l" | cut -c1-1500)"; done
           exit $rc
+      - name: Correlações territoriais (C19.326)
+        continue-on-error: true
+        run: |
+          python scripts/build_correlacoes.py > c.txt 2>&1 || true
+          head -n 14 c.txt | while IFS= read -r l; do echo "::notice title=Correlações::$(echo "$l" | cut -c1-1500)"; done
       - name: Commitar
         if: always()
         run: |
