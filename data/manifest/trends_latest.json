@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-11-03T04:01:16Z",
+  "run_started_utc": "2026-11-03T18:42:30Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -168,7 +168,7 @@
       "geo": "BR",
       "serie_pontos": 180,
       "uf_linhas": 27,
-      "relacionados_linhas": 52,
+      "relacionados_linhas": 70,
       "status": "ok"
     },
     {
@@ -196,7 +196,7 @@
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
-      "serie_pontos": 168,
+      "serie_pontos": 169,
       "uf_linhas": 27,
       "relacionados_linhas": 100,
       "status": "ok"
@@ -257,8 +257,8 @@
       "geo": "BR",
       "serie_pontos": 98,
       "uf_linhas": 27,
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "relacionados_linhas": 100,
+      "status": "ok"
     },
     {
       "grupo": "segundo_turno_topicos",
@@ -285,8 +285,10 @@
       "periodo": "campanha_e_depois",
       "janela_trends": "2026-07-20 2026-11-03",
       "geo": "BR",
-      "status": "erro",
-      "error": "HTTPError: HTTP Error 429: unknown"
+      "serie_pontos": 107,
+      "uf_linhas": 27,
+      "relacionados_linhas": 100,
+      "status": "ok"
     },
     {
       "grupo": "primeiro_turno_5_topicos",
@@ -564,7 +566,7 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 181,
+      "serie_pontos": 180,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -669,10 +671,7 @@
       "status": "ok"
     }
   ],
-  "blocked": [
-    "segundo_turno_topicos__eleitoral: HTTPError: HTTP Error 429: unknown",
-    "segundo_turno_topicos__campanha_e_depois: HTTPError: HTTP Error 429: unknown"
-  ],
-  "run_finished_utc": "2026-11-03T04:08:20Z",
-  "status": "bloqueado"
+  "blocked": [],
+  "run_finished_utc": "2026-11-03T18:50:46Z",
+  "status": "ok"
 }
