@@ -58,6 +58,12 @@ TEMAS = {
     "ofensa ou ataque": r"\blixo\b|vagabund\w*|nojent\w*|\bburr\w*|idiot\w*|imbecil|canalha|bandid\w*",
 }
 UA = {"User-Agent": "Mozilla/5.0 (ODI Atlas; pesquisa acadêmica)"}
+CFG_ASSUNTOS = Path(__file__).resolve().parents[1] / "data/config/caso032_assuntos.json"
+
+
+def assuntos_manuais() -> dict:
+    """{video_id: {assunto, termos_trends, fonte}} informados pelo responsável (03/11/2026)."""
+    return json.loads(CFG_ASSUNTOS.read_text(encoding="utf-8")).get("episodios", {}) if CFG_ASSUNTOS.exists() else {}
 
 
 RX_EPISODIO = re.compile(r"\bEp\.?\s*#?\s*\d+|#\s*Ep\.?\s*\d+|\bepis[oó]dio\s*\d+", re.I)
@@ -185,6 +191,18 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path, trends: dict | N
     rows = list(csv.DictReader(gzip.open(arq, "rt", encoding="utf-8"), delimiter=";")) if arq.exists() else []
     lados = lados_do_acervo(interno)
     comp = Counter(lados.values())  # composição do próprio acervo, para a comparação ser justa
+
+    def penetracao(rs: list[dict]) -> dict:
+        """03/11/2026, 00h22: "% de penetração no público do Flávio". Quantos autores do acervo de cada lado apareceram nos comentários
+        lidos, sobre o total de autores daquele lado no acervo (ambos contam nos dois lados)."""
+        au = {r["autor_canal"] for r in rs if r.get("autor_canal")}
+        out = {}
+        for lado, inclui in (("flavio", ("flavio", "ambos")), ("lula", ("lula", "ambos"))):
+            base = sum(comp.get(k, 0) for k in inclui)
+            n = sum(1 for a in au if lados.get(a) in inclui)
+            out[lado] = {"autores_no_acervo": base, "apareceram": n, "pct": round(100 * n / base, 3) if base else None}
+        out["razao_lula_flavio"] = round(out["lula"]["pct"] / out["flavio"]["pct"], 1) if out["flavio"]["pct"] else None
+        return out
     envios = dados.get("envios", [])
     c = dados.get("canal") or {}
     por_video = defaultdict(list)
@@ -192,10 +210,12 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path, trends: dict | N
         por_video[r["video_id"]].append(r)
     mes = lambda iso: (iso or "")[:7]  # noqa: E731
     episodios = []
+    MAN = assuntos_manuais()
     for v in envios:
         rs = por_video.get(v["id"], [])
         tags = sorted({h.lower() for h in re.findall(r"#(\w+)", v.get("descricao") or "")})
-        episodios.append({"id": v["id"], "titulo": v["titulo"], "episodio_completo": e_episodio(v["titulo"] or ""), "assunto": assunto(v["titulo"] or ""), "publicado_em": v["publicado_em"],
+        episodios.append({"id": v["id"], "titulo": v["titulo"], "episodio_completo": e_episodio(v["titulo"] or ""), "assunto": (MAN.get(v["id"]) or {}).get("assunto") or assunto(v["titulo"] or ""),
+                          "assunto_fonte": (MAN.get(v["id"]) or {}).get("fonte") or "título do vídeo (automático)", "termos_trends": (MAN.get(v["id"]) or {}).get("termos_trends"), "publicado_em": v["publicado_em"],
                           "duracao": v.get("duracao"), "visualizacoes": v.get("visualizacoes"), "curtidas": v.get("curtidas"),
                           "comentarios_informados": v.get("comentarios"), "hashtags": tags[:12], "url": f"https://www.youtube.com/watch?v={v['id']}",
                           "comentarios_lidos": len(rs), "pct_lidos": round(100 * len(rs) / v["comentarios"], 1) if v.get("comentarios") else None,
@@ -253,6 +273,10 @@ def analisar(dados: dict, priv: Path, interno: Path, pub: Path, trends: dict | N
                  "amostra": len(lados), "pct": None, "criterio": "autor visto no acervo recebe o lado dos canais em que comentou"}]
     return {"caso": CASO, "gerado_em_utc": now_utc(), "canal": c, "redes_do_projeto": REDES, "serie_canal": serie, "wayback_inscritos": dados.get("wayback_inscritos", []),
             "episodios": sorted(episodios, key=lambda e: e["publicado_em"] or ""), "por_mes": dict(sorted(por_mes.items())),
+            "penetracao": {"total": penetracao(rows), "por_mes": {m: penetracao([r for r in rows if mes(r.get("publicado_em")) == m]) for m in bolha_mes},
+                           "por_episodio": {e["id"]: penetracao(por_video.get(e["id"], [])) for e in episodios if e["episodio_completo"]},
+                           "como_ler": "De cada 100 pessoas que já comentaram nos canais da campanha de Flávio (acervo do Atlas, desde a pré-campanha), quantas "
+                                       "comentaram nos vídeos do Revelando lidos pelo Atlas. Piso: só 14% dos comentários foram lidos, e quem só assiste não aparece."},
             "bolha": {"total": perfil(rows, lados), "por_mes": bolha_mes, "acervo_autores": len(lados),
                       "acervo_composicao_pct": {k: round(100 * comp.get(k, 0) / len(lados), 1) if lados else None for k in ("lula", "flavio", "ambos")},
                       "so_episodios_completos": perfil([r for r in rows if r["video_id"] in {e["id"] for e in episodios if e["episodio_completo"]}], lados),
@@ -288,7 +312,13 @@ def main(argv=None) -> int:
     trends = None
     if "--sem-trends" not in argv:
         # só episódios completos (cortes e teasers repetem o assunto); 02/11/2026: 116 envios viravam 20 consultas de 5 títulos
-        assuntos = sorted({assunto(v["titulo"] or "") for v in dados.get("envios", []) if e_episodio(v["titulo"] or "") and assunto(v["titulo"] or "")})
+        man = assuntos_manuais()
+        assuntos = []
+        for v in dados.get("envios", []):
+            if not e_episodio(v["titulo"] or ""):
+                continue
+            assuntos += (man.get(v["id"]) or {}).get("termos_trends") or [assunto(v["titulo"] or "")]
+        assuntos = sorted({a for a in assuntos if a})
         trends = trends_assuntos(assuntos, erros)
         tr_arq.write_text(json.dumps(trends, ensure_ascii=False), encoding="utf-8")
     elif tr_arq.exists():

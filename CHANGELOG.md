@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.321 — Caso 032: penetração no público de Flávio; assunto do Ep 5; crédito do CNPq na página (2026-11-03) ⚠️
+
+- Pedido do responsável (03/11/2026, 00h22): "no Revelando também queria o % de penetração [no] público do Flávio". `caso_revelando.py` calcula, sobre os autores do acervo do Atlas de cada lado (Flávio: só Flávio + os dois; Lula: só Lula + os dois), quantos comentaram nos vídeos lidos do Revelando. Resultado (comentários lidos: 22.609, 14% do universo de 161.709): público de Flávio 262 de 132.822 = 0,20%; público de Lula 4.462 de 197.919 = 2,25%; razão 11,4×. Por mês, Flávio 0,05% (set.) e 0,16% (out.). Por episódio completo, no máximo 9 pessoas do lado de Flávio (Entrevista com General Santos Cruz). Piso: comentários não lidos e quem só assiste não entram.
+- Assunto do Ep 5 ("A Guerra à Santa"), informado pelo responsável (03/11, 00h25): JB Carvalho, pastor de Flávio Bolsonaro, e a proposta de remover Nossa Senhora Aparecida como padroeira. Novo `data/config/caso032_assuntos.json` (assunto e termos de busca por episódio, com fonte); o Trends passa a usar os termos informados ("JB Carvalho", "Nossa Senhora Aparecida padroeira", "padroeira do Brasil") no lugar do título.
+- Pedido do responsável (03/11, 00h23): "precisamos deixar em algum lugar que este é apoiado pela bolsa CNPq". Frase "Pesquisa apoiada pelo CNPq (Conselho Nacional de Desenvolvimento Científico e Tecnológico), por meio de bolsa." no rodapé de todas as páginas, no expediente e no cabeçalho dos PDFs exportados. ⛔ Número do processo e modalidade da bolsa não informados.
+- Teste: página aberta no Chromium (aba do caso 032 e rodapé), sem erro de JS, sem rolagem lateral a 390 px; `python -m unittest discover -s tests` OK.
+
 ## C19.320 — Intolerância em 29 casos: lotes concluídos (2026-11-02) ⚠️
 
 - Os 12 lotes de `intolerancia.yml` (C19.305; runs 41517084749 a 41517217833) terminaram com sucesso. Agora 29 casos têm `intolerancia.json`, `intolerancia_escores.csv` e `intolerancia_resumo.csv` (todos menos 026, sem publicações coletadas, e 032, criado depois).
