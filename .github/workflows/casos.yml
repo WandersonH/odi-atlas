@@ -105,6 +105,7 @@ jobs:
           for d in "$ODI_INTERNO_DIR"/casos/*/; do c=$(basename "$d"); [ -f "$d/itens.csv.gz" ] && python scripts/caso_candidatos.py --caso "$c" >> b.txt 2>&1 || true; done
           # YouTube e redes vazias na linha do tempo de bolhas (pedido de 02/11/2026, 16h32)
           python scripts/build_bolhas_extra.py >> b.txt 2>&1 || rc=1
+          python scripts/build_recortes_caso.py >> b.txt 2>&1 || rc=1
           # Bardin (pré-codificação pelo livro de códigos do caso), pedido de 28/10/2026, 00h05
           for c in $(ls data/config | sed -n 's/^livro_codigos_caso\([0-9]*\)\.json$/\1/p'); do
             if [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; python scripts/saturacao_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi

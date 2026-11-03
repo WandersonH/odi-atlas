@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.328 — Caso 026 (Janonismo): recorte "Janones em Buenos Aires" dentro da página do caso (2026-11-03) ✅
+
+- Pedido do responsável (03/11/2026, 02h08): "isso deveria estar dentro de janonismo".
+- O quê: novo `scripts/build_recortes_caso.py` (genérico, campo `recortes` do caso em `casos.json`) grava `data/casos/<id>/recortes.json` só com agregados: publicações do caso cujo texto cita Buenos Aires, Argentina, Kirchner, Massa, peronismo, Milei ou Kertész desde 01/11, por rede e por dia, interações, contas com ≥10 mil seguidores (as demais só contadas) e notícias do caso que casam no título. Bloco novo no topo da página do caso 026. Roda no passo de agregados do `casos.yml`.
+- Números (privado `casos/026/itens.csv.gz` em 03/11 ~05h; amostra = publicações coletadas por termo no caso, universo das plataformas ⛔ desconhecido): 1.078 das 5.017 publicações lidas no caso (21,5%): X 1.041 de 4.075, Instagram 15 de 253, Facebook 12 de 149, TikTok 10 de 540. Por dia: 01/11 26, 02/11 661, 03/11 391 (dia em curso). 188.484 interações; 25 contas ≥10 mil seguidores listadas, 612 abaixo. 64 notícias desde 01/11.
+- Teste: `python -m unittest discover -s tests` OK; página do caso aberta no Chromium, bloco renderizado, sem erro de JS.
+
 ## C19.327 — Correlações com o perfil do eleitorado por município; caso 033 com verba autorizada (2026-11-03) ✅
 
 - Perfil por município lido (run 41581256529 do `tse-perfil.yml`, `data/tse/perfil/eleitorado_2026_municipios_perfil.csv.gz`; soma de gênero = 158.745.463, igual ao total nacional do cadastro; mulheres 52,84%). `build_correlacoes.py` refeito: todos os 19 indicadores com cobertura (5.571 municípios; 5.556 nos de 2º turno, sem RR).
