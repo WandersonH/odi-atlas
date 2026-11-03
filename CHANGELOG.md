@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.323 — Alienação eleitoral: comparação entre o 1º e o 2º turno no mapa (2026-11-03) ✅
+
+- Pedido do responsável (03/11/2026, 01h48, print do mapa de alienação): "adoraria ter a possibilidade de comparar primeiro e segundo turno".
+- O quê: no seletor "Turno" da aba Alienação eleitoral, nova opção "Comparar: 2º − 1º turno". Calcula, município a município, UF a UF e no Brasil, a diferença em pontos percentuais de alienação, abstenção, brancos e nulos (`data/tse/alienacao/1t` e `2t`, mesmo método). Escala divergente simétrica em torno de zero (verde = caiu, marrom = subiu), ranking "mais subiu / mais caiu", barras por UF com sinal, e a dica mostra 1º turno → 2º turno. Clique no município abre os locais do 2º turno.
+- Números (dos dois resumos; universo = seções apuradas pelo TSE, não amostra): Brasil alienação 24,8% → 21,8% (−3,0 p.p.); abstenção 21,1% → 19,2% (33.469.244 → 30.509.005 eleitores); brancos 1,5% → 0,9%; nulos 2,3% → 1,7%; 5.571 municípios comparados. A alienação subiu sobretudo no Norte: Itaubal (AP) +23,0 p.p., Cutias (AP) +21,8, Porto Walter (AC) +21,8, Marechal Thaumaturgo (AC) +19,7 (municípios com 1.000+ aptos); caiu mais em São João (PE) −9,5, Tacuru (MS) −9,1. Motivo não verificado.
+- Teste: aba aberta no Chromium no modo de comparação, mapa, legenda e ranking renderizados, sem erro de JS; `python -m unittest discover -s tests` OK.
+
 ## C19.322 — Caso 026: Janones em Buenos Aires (02/11) entra na coleta; carga paga de X, Instagram e Facebook do caso (2026-11-03) 🔜
 
 - Pergunta do responsável (03/11/2026, 00h48): "tu coletou material do Janones em Buenos Aires?". Não especificamente: o caso tinha 21 notícias sobre Argentina até 30/10 (Agencia Noticias Argentinas, Ámbito, Buenos Aires Times, Rosario3, Tiempo Argentino etc., em `busca.json`), mas nada da viagem de 02/11, e o caso 026 nunca tinha rodado a carga paga de X, Instagram e Facebook (só TikTok, US$ 0,38).

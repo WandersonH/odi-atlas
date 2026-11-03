@@ -2535,7 +2535,7 @@ J('./data/casos/indice.json').then(d=>{if(!d){$('csCaso').innerHTML='<div class=
   <div class="card yc-block"><div class="eyebrow">Big numbers · Brasil</div><div class="db-big" id="alBig"></div><p class="yt-cloudnote" id="alDef"></p></div>
   <div class="card yc-block">
     <div class="al-ctrl">
-      <div><label for="alTurno">Turno</label><select id="alTurno"><option value="1">1º turno (04/10)</option><option value="2">2º turno (25/10)</option></select></div>
+      <div><label for="alTurno">Turno</label><select id="alTurno"><option value="1">1º turno (04/10)</option><option value="2">2º turno (25/10)</option><option value="d">Comparar: 2º − 1º turno</option></select></div>
       <div><label for="alUf">Área</label><select id="alUf"></select></div>
       <div><label for="alMet">Indicador</label><select id="alMet"><option value="pct_alienacao">Alienação (abstenção + brancos + nulos)</option><option value="pct_abstencoes">Abstenção</option><option value="pct_brancos">Brancos</option><option value="pct_nulos">Nulos</option></select></div>
     </div>
@@ -2555,12 +2555,16 @@ const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const nf=n=>n==null?'—':Number(n).toLocaleString('pt-BR');const pc=v=>v==null||!isFinite(v)?'—':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
 const UFS=['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO'];
 const ROT={pct_alienacao:'Alienação',pct_abstencoes:'Abstenção',pct_brancos:'Brancos',pct_nulos:'Nulos'};
-const PAL=['#f4f1ea','#e3dccd','#c9b9a0','#ad8f6a','#8a6440','#5f3f22','#2f1e10'];
+const PAL0=['#f4f1ea','#e3dccd','#c9b9a0','#ad8f6a','#8a6440','#5f3f22','#2f1e10'];
+/* 03/11/2026, 01h48: "adoraria ter a possibilidade de comparar primeiro e segundo turno" — diferença em pontos percentuais, escala divergente (verde = caiu, marrom = subiu) */
+const PALD=['#1f6b3a','#5fa173','#b9d8bf','#f4f1ea','#e3c9a8','#ad7a4a','#5f3f22'];let PAL=PAL0;
+const pp=v=>v==null||!isFinite(v)?'—':(v>0?'+':v<0?'−':'')+Math.abs(v).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+' p.p.';
 let R=null,turno='1',uf='BR',met='pct_alienacao',sel=null,vb=null,G=null,cortes=[];const geo={},proj={},locais={},res={};let feito=false;
 $('alUf').innerHTML='<option value="BR">Brasil · todos os municípios</option>'+UFS.map(u=>`<option value="${u}">${u}</option>`).join('');
 function quebras(vals){const v=vals.filter(x=>x!=null&&isFinite(x)).sort((a,b)=>a-b);if(!v.length)return [];return [1,2,3,4,5,6].map(i=>v[Math.min(v.length-1,Math.floor(i*v.length/7))]);}
+function quebrasD(vals){const v=vals.filter(x=>x!=null&&isFinite(x));if(!v.length)return [];const a=v.map(Math.abs).sort((x,y)=>x-y),m=a[Math.floor(.95*(a.length-1))]||1;return [-m*.6,-m*.3,-m*.08,m*.08,m*.3,m*.6];}
 function cor(v){if(v==null||!isFinite(v))return '#dfe3e6';const i=cortes.findIndex(c=>v<c);return PAL[i===-1?6:i];}
-function legenda(){const c=cortes;$('alLeg').innerHTML=['<span class="odi-legend-item"><span class="odi-swatch" style="background:#dfe3e6"></span>sem dado</span>'].concat(PAL.map((p,i)=>`<span class="odi-legend-item"><span class="odi-swatch" style="background:${p}"></span>${i===0?'< '+pc(c[0]):i===6?'≥ '+pc(c[5]):pc(c[i-1])+' – '+pc(c[i])}</span>`)).join('')+'<span class="yt-cloudnote" style="margin-left:6px">faixas = sétimos dos municípios da área</span>';}
+function legenda(){const c=cortes,f=turno==='d'?pp:pc;$('alLeg').innerHTML=['<span class="odi-legend-item"><span class="odi-swatch" style="background:#dfe3e6"></span>sem dado</span>'].concat(PAL.map((p,i)=>`<span class="odi-legend-item"><span class="odi-swatch" style="background:${p}"></span>${i===0?'< '+f(c[0]):i===6?'≥ '+f(c[5]):f(c[i-1])+' a '+f(c[i])}</span>`)).join('')+`<span class="yt-cloudnote" style="margin-left:6px">${turno==='d'?'diferença do 2º para o 1º turno, em pontos percentuais; verde = caiu, marrom = subiu; faixas simétricas em torno de zero':'faixas = sétimos dos municípios da área'}</span>`;}
 async function geometria(u){if(proj[u])return proj[u];
  if(!geo[u]){const r=await fetch(u==='BR'?'./data/geo/2025/brasil_municipios.json':'./data/geo/2025/mun_'+u+'.json');if(!r.ok)throw new Error('HTTP '+r.status);geo[u]=await r.json();}
  const fs=geo[u].features;let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;const anel=(g,fn)=>{const ps=g.type==='Polygon'?[g.coordinates]:g.type==='MultiPolygon'?g.coordinates:[];for(const p of ps)for(const r of p)fn(r);};
@@ -2568,27 +2572,32 @@ async function geometria(u){if(proj[u])return proj[u];
  const k=Math.cos((y0+y1)/2*Math.PI/180),W=1000,sc=W/Math.max((x1-x0)*k,(y1-y0)),H=(y1-y0)*sc;const P=(x,y)=>[(x-x0)*k*sc,(y1-y)*sc];
  const paths=fs.map(ft=>{let d='',bx=[1e9,1e9,-1e9,-1e9];anel(ft.geometry,r=>{d+='M'+r.map(([x,y])=>{const [a,b]=P(x,y);if(a<bx[0])bx[0]=a;if(b<bx[1])bx[1]=b;if(a>bx[2])bx[2]=a;if(b>bx[3])bx[3]=b;return a.toFixed(1)+','+b.toFixed(1);}).join('L')+'Z';});const p=ft.properties||{};return {code:String(p.CD_MUN||''),name:p.NM_MUN||'',uf:p.SIGLA_UF||u,d,bx};});
  proj[u]={paths,W,H,P};return proj[u];}
-async function resumo(t){if(res[t]!==undefined)return res[t];res[t]=await fetch(`./data/tse/alienacao/${t}t/resumo.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);return res[t];}
+async function resumo(t){if(t==='d'){if(res.d!==undefined)return res.d;const [a,b]=[await resumo('1'),await resumo('2')];if(!a||!b){res.d=null;return null;}
+  const K=['pct_alienacao','pct_abstencoes','pct_brancos','pct_nulos'],dif=(x,y)=>{const o={...y,t1:x,t2:y};K.forEach(k=>{o[k]=(y[k]!=null&&x[k]!=null)?+(y[k]-x[k]).toFixed(2):null;});return o;};
+  const mun={};for(const [c,m2] of Object.entries(b.municipios)){const m1=a.municipios[c];if(m1)mun[c]=dif(m1,m2);}
+  const ufs={};for(const [u,x2] of Object.entries(b.ufs)){if(a.ufs[u])ufs[u]=dif(a.ufs[u],x2);}
+  res.d={...b,turno:'d',brasil:dif(a.brasil,b.brasil),ufs,municipios:mun,definicao:'Diferença entre o 2º turno (25/10) e o 1º turno (04/10) para presidente, em pontos percentuais do eleitorado apto de cada turno',nota:'Positivo = subiu no 2º turno; negativo = caiu. Mesmo método nos dois turnos (detalhe da apuração por seção, TSE). '+(b.nota||'')};return res.d;}
+ if(res[t]!==undefined)return res[t];res[t]=await fetch(`./data/tse/alienacao/${t}t/resumo.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);return res[t];}
 async function locaisUF(t,u){const k=t+u;if(locais[k]!==undefined)return locais[k];locais[k]=await fetch(`./data/tse/alienacao/${t}t/locais_${u}.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null);return locais[k];}
-function big(){const B=R.brasil;$('alBig').innerHTML=[['Alienação',pc(B.pct_alienacao),`${nf(B.alienacao)} de ${nf(B.aptos)} aptos`],['Abstenção',pc(B.pct_abstencoes),`${nf(B.abstencoes)} eleitores não foram votar`],['Brancos',pc(B.pct_brancos),`${nf(B.brancos)} votos para presidente`],['Nulos',pc(B.pct_nulos),`${nf(B.nulos)} votos para presidente`],['Seções apuradas',nf(R.diagnostico.secoes),`${nf(Object.keys(R.municipios).length)} municípios`],['Seções fora do mapa de pontos',nf((R.diagnostico.secoes_sem_local||0)+(R.diagnostico.secoes_sem_coordenada||0)),'sem local ou sem coordenada no TSE; entram nas somas']].map(([a,b,c])=>`<div><span>${esc(a)}</span><b>${b}</b><small>${esc(c)}</small></div>`).join('');
+function big(){const B=R.brasil;if(turno==='d'){const b1=B.t1,b2=B.t2;$('alBig').innerHTML=[['Alienação',pp(B.pct_alienacao),`${pc(b1.pct_alienacao)} no 1º → ${pc(b2.pct_alienacao)} no 2º turno`],['Abstenção',pp(B.pct_abstencoes),`${pc(b1.pct_abstencoes)} → ${pc(b2.pct_abstencoes)} · ${nf(b1.abstencoes)} → ${nf(b2.abstencoes)} eleitores`],['Brancos',pp(B.pct_brancos),`${pc(b1.pct_brancos)} → ${pc(b2.pct_brancos)}`],['Nulos',pp(B.pct_nulos),`${pc(b1.pct_nulos)} → ${pc(b2.pct_nulos)}`],['Municípios comparados',nf(Object.keys(R.municipios).length),'presentes nos dois turnos']].map(([a,b,c])=>`<div><span>${a}</span><b>${b}</b><small>${c}</small></div>`).join('');$('alDef').textContent=`${R.definicao}. ${R.nota}`;$('alData').textContent='comparação 2º − 1º turno';return;}$('alBig').innerHTML=[['Alienação',pc(B.pct_alienacao),`${nf(B.alienacao)} de ${nf(B.aptos)} aptos`],['Abstenção',pc(B.pct_abstencoes),`${nf(B.abstencoes)} eleitores não foram votar`],['Brancos',pc(B.pct_brancos),`${nf(B.brancos)} votos para presidente`],['Nulos',pc(B.pct_nulos),`${nf(B.nulos)} votos para presidente`],['Seções apuradas',nf(R.diagnostico.secoes),`${nf(Object.keys(R.municipios).length)} municípios`],['Seções fora do mapa de pontos',nf((R.diagnostico.secoes_sem_local||0)+(R.diagnostico.secoes_sem_coordenada||0)),'sem local ou sem coordenada no TSE; entram nas somas']].map(([a,b,c])=>`<div><span>${esc(a)}</span><b>${b}</b><small>${esc(c)}</small></div>`).join('');
  $('alDef').textContent=`${R.definicao}. ${R.nota}`;$('alData').textContent=`${turno}º turno · gerado em ${new Date(R.gerado_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}`;}
 async function desenhar(){R=await resumo(turno);
  if(!R){$('alBig').innerHTML=`<div class="odi-signal">⛔ ${turno}º turno ainda não publicado pelo TSE (ou não coletado).</div>`;$('alMapa').innerHTML='';$('alTit').textContent='—';$('alRank').innerHTML='';$('alUfs').innerHTML='';$('alLeg').innerHTML='';return;}
- big();try{G=await geometria(uf);}catch(e){$('alMapa').innerHTML='';$('alHint').textContent='⛔ Falha ao carregar a malha municipal: '+e.message;return;}
- const M=R.municipios,dentro=G.paths.map(p=>M[p.code]?.[met]);cortes=quebras(dentro);legenda();
+ PAL=turno==='d'?PALD:PAL0;big();try{G=await geometria(uf);}catch(e){$('alMapa').innerHTML='';$('alHint').textContent='⛔ Falha ao carregar a malha municipal: '+e.message;return;}
+ const M=R.municipios,dentro=G.paths.map(p=>M[p.code]?.[met]);cortes=turno==='d'?quebrasD(dentro):quebras(dentro);legenda();const F=turno==='d'?pp:pc;
  vb=[-20,-20,G.W+40,G.H+40];
- $('alTit').textContent=`${ROT[met]} por município · ${uf==='BR'?'Brasil':uf} · ${turno}º turno, Presidente`;
+ $('alTit').textContent=`${ROT[met]} por município · ${uf==='BR'?'Brasil':uf} · ${turno==='d'?'variação do 1º para o 2º turno':turno+'º turno'}, Presidente`;
  $('alMapa').innerHTML=`<svg viewBox="${vb.join(' ')}" preserveAspectRatio="xMidYMid meet"><g id="alG">${G.paths.map(p=>`<path d="${p.d}" fill="${cor(M[p.code]?.[met])}" data-c="${p.code}"${p.code===sel?' class="odi-sel"':''}/>`).join('')}</g><g id="alPts"></g></svg>`;
  const tip=$('alTip'),wrap=$('alMapa').parentElement;
  $('alMapa').querySelectorAll('path').forEach(el=>{const c=el.dataset.c,m=M[c],p=G.paths.find(x=>x.code===c);
-  el.addEventListener('mousemove',ev=>{const r=wrap.getBoundingClientRect();tip.hidden=false;tip.innerHTML=`<b>${esc(p.name)}</b> / ${esc(p.uf)}<br>${m?`${ROT[met]}: <b>${pc(m[met])}</b><br>${nf(m.aptos)} aptos · ${nf(m.secoes)} seções`:'sem dado'}`;let x=ev.clientX-r.left+12;if(x>r.width-220)x-=230;tip.style.left=x+'px';tip.style.top=(ev.clientY-r.top+12)+'px';});
+  el.addEventListener('mousemove',ev=>{const r=wrap.getBoundingClientRect();tip.hidden=false;tip.innerHTML=`<b>${esc(p.name)}</b> / ${esc(p.uf)}<br>${m?(turno==='d'?`${ROT[met]}: <b>${pp(m[met])}</b><br>1º turno ${pc(m.t1[met])} → 2º turno ${pc(m.t2[met])}<br>${nf(m.aptos)} aptos no 2º turno`:`${ROT[met]}: <b>${pc(m[met])}</b><br>${nf(m.aptos)} aptos · ${nf(m.secoes)} seções`):'sem dado'}`;let x=ev.clientX-r.left+12;if(x>r.width-220)x-=230;tip.style.left=x+'px';tip.style.top=(ev.clientY-r.top+12)+'px';});
   el.addEventListener('mouseleave',()=>{tip.hidden=true;});el.addEventListener('click',()=>cidade(p));});
  const vals=G.paths.map(p=>[p,M[p.code]]).filter(([,m])=>m&&m.aptos>=1000).sort((a,b)=>b[1][met]-a[1][met]);
- const li=a=>a.map(([p,m])=>`<li data-c="${p.code}">${esc(p.name)}${uf==='BR'?' / '+p.uf:''}<span>${pc(m[met])}</span></li>`).join('');
- $('alRank').innerHTML=vals.length?`<div class="odi-rank"><h3>Maior ${ROT[met].toLowerCase()} (municípios com 1.000+ aptos)</h3><ol>${li(vals.slice(0,8))}</ol><h3 style="margin-top:10px">Menor</h3><ol>${li(vals.slice(-8).reverse())}</ol></div>`:'';
+ const li=a=>a.map(([p,m])=>`<li data-c="${p.code}">${esc(p.name)}${uf==='BR'?' / '+p.uf:''}<span>${F(m[met])}</span></li>`).join('');
+ $('alRank').innerHTML=vals.length?`<div class="odi-rank"><h3>${turno==='d'?'Mais subiu':'Maior'} ${ROT[met].toLowerCase()} (municípios com 1.000+ aptos)</h3><ol>${li(vals.slice(0,8))}</ol><h3 style="margin-top:10px">${turno==='d'?'Mais caiu':'Menor'}</h3><ol>${li(vals.slice(-8).reverse())}</ol></div>`:'';
  $('alRank').querySelectorAll('li').forEach(el=>el.addEventListener('click',()=>cidade(G.paths.find(x=>x.code===el.dataset.c))));
- const U=Object.entries(R.ufs).filter(([u])=>u!=='ZZ').sort((a,b)=>b[1][met]-a[1][met]),mx=Math.max(...U.map(([,x])=>x[met]));
- $('alUfs').innerHTML=`<h3 class="tk-h3">${ROT[met]} por UF</h3><div class="yt-bars">${U.map(([u,x])=>`<div class="yt-bar"><span>${u}</span><i style="width:${(100*x[met]/mx).toFixed(1)}%;background:#8a6440"></i><span>${pc(x[met])}</span></div>`).join('')}</div>${R.ufs.ZZ?`<p class="yt-cloudnote">Exterior (fora do mapa): ${pc(R.ufs.ZZ[met])}.</p>`:''}`;
+ const U=Object.entries(R.ufs).filter(([u])=>u!=='ZZ').sort((a,b)=>b[1][met]-a[1][met]),mx=Math.max(...U.map(([,x])=>Math.abs(x[met])))||1;
+ $('alUfs').innerHTML=`<h3 class="tk-h3">${ROT[met]} por UF${turno==='d'?' · variação 2º − 1º':''}</h3><div class="yt-bars">${U.map(([u,x])=>`<div class="yt-bar"><span>${u}</span><i style="width:${(100*Math.abs(x[met])/mx).toFixed(1)}%;background:${turno==='d'&&x[met]<0?'#1f6b3a':'#8a6440'}"></i><span>${F(x[met])}</span></div>`).join('')}</div>${R.ufs.ZZ?`<p class="yt-cloudnote">Exterior (fora do mapa): ${F(R.ufs.ZZ[met])}.</p>`:''}`;
  $('alHint').textContent=`Malha municipal do IBGE 2025 · ${nf(G.paths.length)} municípios · passe o cursor para ver, clique para os locais de votação · roda do mouse para aproximar, arraste para mover.`;
  zoomPan();if(sel){const p=G.paths.find(x=>x.code===sel);if(p)cidade(p,true);}}
 function zoomPan(){const sv=$('alMapa').querySelector('svg');if(!sv)return;let drag=null;const ap=()=>sv.setAttribute('viewBox',vb.join(' '));
@@ -2604,7 +2613,7 @@ async function cidade(p,manterZoom){if(!p)return;sel=p.code;const m=R.municipios
  if(!manterZoom){const b=p.bx,w=Math.max(b[2]-b[0],b[3]-b[1],6)*1.3;vb=[(b[0]+b[2])/2-w/2,(b[1]+b[3])/2-w/2,w,w];$('alMapa').querySelector('svg').setAttribute('viewBox',vb.join(' '));}
  let h=m?`<div class="db-big">${[['Alienação',pc(m.pct_alienacao),`${nf(m.alienacao)} de ${nf(m.aptos)} aptos`],['Abstenção',pc(m.pct_abstencoes),nf(m.abstencoes)],['Brancos',pc(m.pct_brancos),nf(m.brancos)],['Nulos',pc(m.pct_nulos),nf(m.nulos)],['Seções',nf(m.secoes),'apuradas']].map(([a,b,c])=>`<div><span>${esc(a)}</span><b>${b}</b><small>${esc(c)}</small></div>`).join('')}</div>`:'<div class="odi-signal">⛔ sem dado para este município.</div>';
  $('alCid').innerHTML=h+'<p class="yt-cloudnote">Carregando locais de votação…</p>';
- const L=await locaisUF(turno,p.uf),pts=$('alPts');pts.innerHTML='';
+ const L=await locaisUF(turno==='d'?'2':turno,p.uf),pts=$('alPts');pts.innerHTML='';
  if(!L){$('alCid').innerHTML=h+`<div class="odi-signal">⛔ Locais de votação de ${esc(p.uf)} sem coordenadas no arquivo do TSE (ou não coletados): o mapa por seção não está disponível para esta UF; as somas do município estão acima.</div>`;return;}
  const ls=L.locais.filter(l=>l.mun===p.code);const cs=L.campos_secao;
  const r=Math.max(vb[2]/180,0.15);const comCoord=ls.filter(l=>l.lat!=null&&l.lon!=null);
