@@ -1,80 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gexf xmlns="http://gexf.net/1.3" version="1.3">
 <graph defaultedgetype="undirected">
-<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/></attributes>
+<attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="preso" label="preso"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/></attvalues></node>
-<node id="cara" label="cara"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="flavio" label="flavio"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="25"/></attvalues></node>
-<node id="vencer" label="vencer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="verdade" label="verdade"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="volta" label="volta"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/></attvalues></node>
-<node id="deus" label="deus"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="48"/></attvalues></node>
-<node id="fugiu" label="fugiu"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/></attvalues></node>
-<node id="fala" label="fala"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="kkkkk" label="kkkkk"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="sair" label="sair"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/></attvalues></node>
-<node id="povo" label="povo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/></attvalues></node>
-<node id="vida" label="vida"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="forca" label="forca"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="14"/></attvalues></node>
-<node id="fica" label="fica"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/></attvalues></node>
-<node id="presidente" label="presidente"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="51"/></attvalues></node>
-<node id="sai" label="sai"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="juntos" label="juntos"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="12"/></attvalues></node>
-<node id="familia" label="familia"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="16"/></attvalues></node>
-<node id="fujao" label="fujao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/></attvalues></node>
-<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/></attvalues></node>
-<node id="pais" label="pais"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/></attvalues></node>
-<node id="bolsonaro" label="bolsonaro"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/></attvalues></node>
-<node id="brasil" label="brasil"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="32"/></attvalues></node>
-<node id="certo" label="certo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="jesus" label="jesus"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="firme" label="firme"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/></attvalues></node>
-<node id="controle" label="controle"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/></attvalues></node>
-<node id="proteja" label="proteja"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/></attvalues></node>
-<node id="abencoe" label="abencoe"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="21"/></attvalues></node>
+<node id="cara" label="cara"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="querer" label="querer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="dar" label="dar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="certo" label="certo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="risada" label="risada"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="25"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="deus" label="deus"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="48"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="ficar" label="ficar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="14"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="contar" label="contar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G7"/></attvalues></node>
+<node id="gente" label="gente"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G8"/></attvalues></node>
+<node id="abencoar" label="abencoar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="23"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="preso" label="preso"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="estar" label="estar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="40"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="vc" label="vc"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="26"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="junto" label="junto"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="13"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="sair" label="sair"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="17"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="bandido" label="bandido"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G9"/></attvalues></node>
+<node id="firme" label="firme"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="perder" label="perder"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G10"/></attvalues></node>
+<node id="pais" label="pais"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="proteger" label="proteger"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="presidente" label="presidente"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="51"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="fugir" label="fugir"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G11"/></attvalues></node>
+<node id="continuar" label="continuar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="so" label="so"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G12"/></attvalues></node>
+<node id="vir" label="vir"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G13"/></attvalues></node>
+<node id="chorar" label="chorar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G14"/></attvalues></node>
+<node id="jesus" label="jesus"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="controlo" label="controlo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="brasil" label="brasil"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="32"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="falar" label="falar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="esperar" label="esperar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G15"/></attvalues></node>
+<node id="volta" label="volta"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G16"/></attvalues></node>
+<node id="pq" label="pq"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="familia" label="familia"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="16"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="orar" label="orar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G17"/></attvalues></node>
+<node id="saber" label="saber"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="bolsonaro" label="bolsonaro"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="11"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="fujao" label="fujao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="10"/><attvalue for="2" value="G18"/></attvalues></node>
+<node id="vencer" label="vencer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="cuidar" label="cuidar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G19"/></attvalues></node>
+<node id="tomar" label="tomar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="9"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="vida" label="vida"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G20"/></attvalues></node>
+<node id="flavio" label="flavio"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="25"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="forca" label="forca"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="14"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="ne" label="ne"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G4"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="flavio" target="presidente" weight="5"/>
-<edge id="1" source="abencoe" target="deus" weight="21"/>
-<edge id="2" source="abencoe" target="brasil" weight="3"/>
-<edge id="3" source="abencoe" target="familia" weight="8"/>
-<edge id="4" source="abencoe" target="flavio" weight="3"/>
-<edge id="5" source="brasil" target="deus" weight="8"/>
-<edge id="6" source="brasil" target="familia" weight="4"/>
-<edge id="7" source="brasil" target="firme" weight="3"/>
-<edge id="8" source="brasil" target="flavio" weight="7"/>
-<edge id="9" source="deus" target="familia" weight="12"/>
-<edge id="10" source="deus" target="firme" weight="3"/>
-<edge id="11" source="deus" target="flavio" weight="10"/>
-<edge id="12" source="deus" target="juntos" weight="3"/>
-<edge id="13" source="abencoe" target="presidente" weight="4"/>
-<edge id="14" source="deus" target="presidente" weight="9"/>
-<edge id="15" source="brasil" target="forca" weight="5"/>
-<edge id="16" source="brasil" target="presidente" weight="6"/>
-<edge id="17" source="deus" target="forca" weight="6"/>
-<edge id="18" source="deus" target="proteja" weight="7"/>
-<edge id="19" source="familia" target="presidente" weight="3"/>
-<edge id="20" source="forca" target="presidente" weight="6"/>
-<edge id="21" source="presidente" target="proteja" weight="3"/>
-<edge id="22" source="deus" target="jesus" weight="3"/>
-<edge id="23" source="brasil" target="povo" weight="3"/>
-<edge id="24" source="bolsonaro" target="deus" weight="7"/>
-<edge id="25" source="bolsonaro" target="flavio" weight="8"/>
-<edge id="26" source="flavio" target="vencer" weight="3"/>
-<edge id="27" source="controle" target="deus" weight="5"/>
-<edge id="28" source="flavio" target="forca" weight="6"/>
-<edge id="29" source="deus" target="sair" weight="3"/>
-<edge id="30" source="brasil" target="cara" weight="3"/>
-<edge id="31" source="brasil" target="preso" weight="3"/>
-<edge id="32" source="cara" target="preso" weight="3"/>
-<edge id="33" source="brasil" target="vencer" weight="3"/>
-<edge id="34" source="brasil" target="sair" weight="6"/>
-<edge id="35" source="abencoe" target="proteja" weight="6"/>
-<edge id="36" source="firme" target="presidente" weight="3"/>
-<edge id="37" source="brasil" target="pais" weight="3"/>
-<edge id="38" source="abencoe" target="bolsonaro" weight="3"/>
-<edge id="39" source="bolsonaro" target="proteja" weight="3"/>
-<edge id="40" source="juntos" target="presidente" weight="4"/>
+<edge id="0" source="brasil" target="sair" weight="10"/>
+<edge id="1" source="flavio" target="presidente" weight="5"/>
+<edge id="2" source="abencoar" target="deus" weight="23"/>
+<edge id="3" source="estar" target="junto" weight="11"/>
+<edge id="4" source="abencoar" target="brasil" weight="3"/>
+<edge id="5" source="abencoar" target="estar" weight="4"/>
+<edge id="6" source="abencoar" target="familia" weight="9"/>
+<edge id="7" source="abencoar" target="flavio" weight="3"/>
+<edge id="8" source="brasil" target="deus" weight="8"/>
+<edge id="9" source="brasil" target="estar" weight="6"/>
+<edge id="10" source="brasil" target="familia" weight="4"/>
+<edge id="11" source="brasil" target="firme" weight="3"/>
+<edge id="12" source="brasil" target="flavio" weight="7"/>
+<edge id="13" source="deus" target="estar" weight="8"/>
+<edge id="14" source="deus" target="familia" weight="12"/>
+<edge id="15" source="deus" target="firme" weight="3"/>
+<edge id="16" source="deus" target="flavio" weight="10"/>
+<edge id="17" source="deus" target="junto" weight="4"/>
+<edge id="18" source="estar" target="flavio" weight="8"/>
+<edge id="19" source="flavio" target="junto" weight="3"/>
+<edge id="20" source="abencoar" target="presidente" weight="6"/>
+<edge id="21" source="deus" target="presidente" weight="9"/>
+<edge id="22" source="estar" target="presidente" weight="12"/>
+<edge id="23" source="brasil" target="forca" weight="5"/>
+<edge id="24" source="brasil" target="presidente" weight="6"/>
+<edge id="25" source="deus" target="forca" weight="6"/>
+<edge id="26" source="deus" target="proteger" weight="7"/>
+<edge id="27" source="familia" target="presidente" weight="3"/>
+<edge id="28" source="forca" target="presidente" weight="6"/>
+<edge id="29" source="presidente" target="proteger" weight="3"/>
+<edge id="30" source="flavio" target="vc" weight="5"/>
+<edge id="31" source="estar" target="vc" weight="8"/>
+<edge id="32" source="certo" target="presidente" weight="3"/>
+<edge id="33" source="ficar" target="preso" weight="3"/>
+<edge id="34" source="deus" target="vc" weight="3"/>
+<edge id="35" source="estar" target="ficar" weight="3"/>
+<edge id="36" source="deus" target="jesus" weight="3"/>
+<edge id="37" source="ne" target="saber" weight="3"/>
+<edge id="38" source="risada" target="tomar" weight="3"/>
+<edge id="39" source="risada" target="vc" weight="3"/>
+<edge id="40" source="bolsonaro" target="deus" weight="7"/>
+<edge id="41" source="bolsonaro" target="flavio" weight="8"/>
+<edge id="42" source="continuar" target="deus" weight="3"/>
+<edge id="43" source="deus" target="saber" weight="3"/>
+<edge id="44" source="deus" target="vencer" weight="3"/>
+<edge id="45" source="flavio" target="vencer" weight="4"/>
+<edge id="46" source="controlo" target="deus" weight="5"/>
+<edge id="47" source="estar" target="forca" weight="4"/>
+<edge id="48" source="flavio" target="forca" weight="6"/>
+<edge id="49" source="falar" target="presidente" weight="4"/>
+<edge id="50" source="deus" target="sair" weight="3"/>
+<edge id="51" source="brasil" target="vc" weight="4"/>
+<edge id="52" source="presidente" target="vc" weight="6"/>
+<edge id="53" source="brasil" target="pq" weight="3"/>
+<edge id="54" source="brasil" target="cara" weight="3"/>
+<edge id="55" source="brasil" target="preso" weight="3"/>
+<edge id="56" source="cara" target="preso" weight="3"/>
+<edge id="57" source="estar" target="preso" weight="3"/>
+<edge id="58" source="estar" target="sair" weight="3"/>
+<edge id="59" source="ficar" target="sair" weight="3"/>
+<edge id="60" source="preso" target="sair" weight="3"/>
+<edge id="61" source="brasil" target="vencer" weight="4"/>
+<edge id="62" source="forca" target="vencer" weight="3"/>
+<edge id="63" source="brasil" target="certo" weight="3"/>
+<edge id="64" source="certo" target="sair" weight="3"/>
+<edge id="65" source="abencoar" target="proteger" weight="6"/>
+<edge id="66" source="firme" target="presidente" weight="3"/>
+<edge id="67" source="risada" target="sair" weight="3"/>
+<edge id="68" source="brasil" target="pais" weight="3"/>
+<edge id="69" source="abencoar" target="bolsonaro" weight="4"/>
+<edge id="70" source="continuar" target="presidente" weight="3"/>
+<edge id="71" source="certo" target="vc" weight="3"/>
+<edge id="72" source="certo" target="dar" weight="3"/>
+<edge id="73" source="bolsonaro" target="proteger" weight="3"/>
+<edge id="74" source="junto" target="presidente" weight="4"/>
+<edge id="75" source="cara" target="dar" weight="3"/>
 </edges>
 </graph>
 </gexf>
