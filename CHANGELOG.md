@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.332 — Caso 026: novo canal de WhatsApp da Colômbia na lista acompanhada (2026-11-03) 🔜
+
+- Pedido do responsável (03/11/2026, 10h57): link https://www.whatsapp.com/channel/0029Vb7MG3rCHDycAmqMXw1b com a nota "colombia". Incluído em `data/config/casos.json` → caso 026 → `canais_whatsapp` (país Colômbia; parâmetro fbclid removido). É outro canal, diferente do "Ejército de Petro" já listado.
+- O nome fica "a confirmar" até a leitura da página pública (`canais-whatsapp.yml`); seguidores = número que a própria página mostra (universo da plataforma).
+- Teste: `python -m unittest discover -s tests` OK. Leitura disparada após o push; resultado na próxima entrada.
+
 ## C19.331 — YouTube dos casos recentes lido após a renovação da cota (2026-11-03) ✅
 
 - A busca completa (`casos-busca.yml` sem caso, run 41602238970, 08h18 UTC) foi cancelada pelo limite de 45 min do job antes de gravar; nada foi salvo. Redisparada caso a caso (um run por caso, em fila), na ordem 033, 021, 022, 024–031, 016 — runs 41608024986 a 41615336374, todos com sucesso.
