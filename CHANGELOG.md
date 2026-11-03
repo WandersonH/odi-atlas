@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.329 — TikTok autorizado nos casos 033 e 026 (US$ 4,00) (2026-11-03) 🔜
+
+- Responsável em 03/11/2026, 02h19: "4 dólares", logo após o aviso de que TikTok nos casos 033 e 026 dependia de verba nova. Leitura adotada: US$ 2,00 para cada caso. 033: teto TikTok 0 → 2,00. 026: já gastou US$ 0,3752 em TikTok (manifestos do caso), teto acumulado 0,20 → 2,38 (US$ 2,00 a mais), com três buscas novas sobre Buenos Aires ("Janones Buenos Aires", "Janones Cristina Kirchner", "Janones Massa Argentina").
+- Teste: `python -m unittest discover -s tests` OK. Runs `casos.yml` (modo carga, rede tiktok) disparados em fila, um caso por vez; resultados na próxima entrada.
+
 ## C19.328 — Caso 026 (Janonismo): recorte "Janones em Buenos Aires" dentro da página do caso (2026-11-03) ✅
 
 - Pedido do responsável (03/11/2026, 02h08): "isso deveria estar dentro de janonismo".
