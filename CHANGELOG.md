@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.320 — Intolerância em 29 casos: lotes concluídos (2026-11-02) ⚠️
+
+- Os 12 lotes de `intolerancia.yml` (C19.305; runs 41517084749 a 41517217833) terminaram com sucesso. Agora 29 casos têm `intolerancia.json`, `intolerancia_escores.csv` e `intolerancia_resumo.csv` (todos menos 026, sem publicações coletadas, e 032, criado depois).
+- Percentual de textos marcados como ofensivos (HateBR, limiar 0,5; universo ⛔ desconhecido; sobre os textos únicos lidos): de 19,3% (031, 331 textos) a 77,9% (025, 3.045 textos); ódio com alvo (BERTabaporu) de 0,0% a 5,3% (021). Os maiores: 025 77,9%, 028 67,0%, 002 62,5%, 010 57,5%, 019 55,9%, 029 53,9%, 008 52,8%.
+- ⚠️ Viés de língua: os dois modelos são treinados em português. 025 (#DeportTheBolsonaros, majoritariamente em inglês) e 019 (vídeos e comentários de vários países) têm taxas que podem ser artefato do modelo lendo outra língua. Ficam marcados na página só pela ressalva geral; a validação humana (kappa ≥ 0,61) segue pendente em todos.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.319 — Caso 032 (Revelando): primeira leitura (2026-11-02) ⚠️
 
 - Runs 41544395905 (coleta) e 41547538919 (análise) de `caso-revelando.yml`, grátis; cota do YouTube ainda disponível, sem erro.
