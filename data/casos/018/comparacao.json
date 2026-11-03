@@ -1,6 +1,6 @@
 {
  "caso": "018",
- "gerado_em_utc": "2026-11-02T17:29:45Z",
+ "gerado_em_utc": "2026-11-03T16:43:38Z",
  "corte_pos_eleicao": "2026-10-25",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -142,14 +142,14 @@
     "respostas_entre_publicacoes": 148
    },
    "x_agora": {
-    "publicacoes": 1228,
-    "contas": 843,
-    "visualizacoes": 1215648,
-    "curtidas": 78021,
-    "respostas_recebidas": 3019,
-    "compartilhamentos": 25534,
+    "publicacoes": 1290,
+    "contas": 895,
+    "visualizacoes": 1219929,
+    "curtidas": 78163,
+    "respostas_recebidas": 3029,
+    "compartilhamentos": 25557,
     "primeiro_dia": "2026-10-26",
-    "ultimo_dia": "2026-11-01",
+    "ultimo_dia": "2026-11-02",
     "pico": {
      "dia": "2026-10-29",
      "publicacoes": 462
@@ -162,7 +162,8 @@
      462,
      460,
      1,
-     83
+     97,
+     48
     ],
     "contas_10mil": [
      {
@@ -170,6 +171,12 @@
       "conta": "mineirotchotcho",
       "seguidores": 13825,
       "publicacoes": 6
+     },
+     {
+      "rede": "x",
+      "conta": "luizlima10",
+      "seguidores": 13141,
+      "publicacoes": 5
      },
      {
       "rede": "x",
@@ -187,12 +194,6 @@
       "rede": "x",
       "conta": "analelis",
       "seguidores": 16544,
-      "publicacoes": 4
-     },
-     {
-      "rede": "x",
-      "conta": "luizlima10",
-      "seguidores": 13115,
       "publicacoes": 4
      },
      {
@@ -227,14 +228,14 @@
      },
      {
       "rede": "x",
-      "conta": "wallaceolive_r",
-      "seguidores": 10071,
+      "conta": "Ellian73101662",
+      "seguidores": 13300,
       "publicacoes": 2
      },
      {
       "rede": "x",
-      "conta": "teresinhalopes",
-      "seguidores": 37491,
+      "conta": "wallaceolive_r",
+      "seguidores": 10071,
       "publicacoes": 2
      }
     ]
@@ -289,7 +290,7 @@
    ],
    "filtro_pertinencia": "haddad.{0,200}(boicot|davos|palito|n[aã]o compr)|(boicot|davos|palito|n[aã]o compr).{0,200}haddad",
    "titulo": null,
-   "contas_nos_dois_periodos": 13,
+   "contas_nos_dois_periodos": 15,
    "contas_10mil_nos_dois": [
     [
      "o_antagonista",
@@ -316,6 +317,10 @@
      82013
     ],
     [
+     "iaraperez47",
+     70847
+    ],
+    [
      "PlenoNews",
      49553
     ],
@@ -326,10 +331,6 @@
     [
      "andrepiedade1",
      21038
-    ],
-    [
-     "wallaceolive_r",
-     10071
     ]
    ],
    "palavras_tipicas": {
@@ -347,12 +348,12 @@
       48
      ],
      [
-      "fiscal",
-      61
-     ],
-     [
       "guedes",
       33
+     ],
+     [
+      "fiscal",
+      61
      ],
      [
       "silva",
@@ -371,20 +372,16 @@
       41
      ],
      [
-      "brasil",
-      192
+      "ministra",
+      33
      ],
      [
       "diz",
       97
      ],
      [
-      "ministra",
-      33
-     ],
-     [
-      "evento",
-      18
+      "brasil",
+      192
      ],
      [
       "passando",
@@ -393,68 +390,72 @@
      [
       "ministros",
       39
+     ],
+     [
+      "brasileiras",
+      17
      ]
     ],
     "agora": [
      [
       "giants",
-      144
+      154
      ],
      [
       "boicote",
-      980
+      1087
      ],
      [
       "fósforo",
-      171
-     ],
-     [
-      "protocolo",
-      66
-     ],
-     [
-      "sleeping",
-      111
+      200
      ],
      [
       "palito",
-      176
+      204
+     ],
+     [
+      "protocolo",
+      68
+     ],
+     [
+      "sleeping",
+      118
      ],
      [
       "listas",
-      74
-     ],
-     [
-      "compromissos",
-      43
+      92
      ],
      [
       "escolher",
-      42
+      51
      ],
      [
-      "polícia",
-      41
-     ],
-     [
-      "investigação",
-      39
-     ],
-     [
-      "liberdade",
-      71
+      "compromissos",
+      50
      ],
      [
       "janeiro",
-      91
+      113
+     ],
+     [
+      "investigação",
+      47
      ],
      [
       "perseguição",
-      37
+      46
      ],
      [
-      "pregou",
-      55
+      "polícia",
+      45
+     ],
+     [
+      "liberdade",
+      81
+     ],
+     [
+      "profissionais",
+      42
      ]
     ]
    },
@@ -478,27 +479,15 @@
      "epoca": [],
      "depois": [
       [
-       "chega",
+       "presidente",
        0
       ],
       [
-       "metade",
+       "diz",
        0
       ],
       [
-       "vão",
-       0
-      ],
-      [
-       "atrás",
-       0
-      ],
-      [
-       "nosso",
-       0
-      ],
-      [
-       "tempo",
+       "ano",
        0
       ],
       [
@@ -506,15 +495,27 @@
        0
       ],
       [
-       "nação",
+       "entrevista",
        0
       ],
       [
-       "políticos",
+       "kkkk",
        0
       ],
       [
-       "frente",
+       "boicotar",
+       0
+      ],
+      [
+       "dar",
+       0
+      ],
+      [
+       "fome",
+       0
+      ],
+      [
+       "vão",
        0
       ]
      ]
@@ -540,10 +541,10 @@
      "POS": 6.2
     },
     "x_agora": {
-     "n": 1228,
-     "NEG": 47.7,
-     "NEU": 50.0,
-     "POS": 2.3
+     "n": 1290,
+     "NEG": 48.1,
+     "NEU": 49.7,
+     "POS": 2.2
     },
     "instagram_agora": {
      "n": 89,
@@ -756,14 +757,14 @@
     "respostas_entre_publicacoes": 5
    },
    "x_agora": {
-    "publicacoes": 125,
-    "contas": 108,
-    "visualizacoes": 6494207,
-    "curtidas": 74240,
-    "respostas_recebidas": 1912,
-    "compartilhamentos": 4687,
+    "publicacoes": 131,
+    "contas": 113,
+    "visualizacoes": 6498385,
+    "curtidas": 74726,
+    "respostas_recebidas": 1923,
+    "compartilhamentos": 4795,
     "primeiro_dia": "2026-10-25",
-    "ultimo_dia": "2026-11-01",
+    "ultimo_dia": "2026-11-02",
     "pico": {
      "dia": "2026-10-27",
      "publicacoes": 34
@@ -777,7 +778,8 @@
      31,
      11,
      6,
-     4
+     5,
+     5
     ],
     "contas_10mil": [
      {
@@ -832,6 +834,24 @@
       "rede": "x",
       "conta": "AfpChecamos",
       "seguidores": 22098,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "damadanoite14",
+      "seguidores": 98284,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "CuscoB222",
+      "seguidores": 29250,
+      "publicacoes": 1
+     },
+     {
+      "rede": "x",
+      "conta": "Kabulozocensura",
+      "seguidores": 53033,
       "publicacoes": 1
      }
     ]
@@ -889,8 +909,13 @@
    ],
    "filtro_pertinencia": "(bilh|congel|bloquei|corte|cortou|cortar).{0,200}(sa[uú]de|educa)|(sa[uú]de|educa).{0,200}(bilh|congel|bloquei|corte|cortou|cortar)",
    "titulo": null,
-   "contas_nos_dois_periodos": 0,
-   "contas_10mil_nos_dois": [],
+   "contas_nos_dois_periodos": 1,
+   "contas_10mil_nos_dois": [
+    [
+     "damadanoite14",
+     98284
+    ]
+   ],
    "palavras_tipicas": {
     "epoca": [
      [
@@ -910,16 +935,12 @@
       11
      ],
      [
-      "pastas",
-      8
-     ],
-     [
-      "meta",
-      12
-     ],
-     [
       "cidades",
       27
+     ],
+     [
+      "pastas",
+      8
      ],
      [
       "bloqueio",
@@ -934,12 +955,12 @@
       7
      ],
      [
-      "ministério",
-      25
+      "afetadas",
+      6
      ],
      [
-      "governo",
-      56
+      "equilibrar",
+      6
      ],
      [
       "atingidos",
@@ -950,70 +971,74 @@
       6
      ],
      [
-      "equilibrar",
+      "afetados",
       6
+     ],
+     [
+      "total",
+      9
      ]
     ],
     "agora": [
      [
       "cortou",
-      51
+      55
      ],
      [
       "cortar",
-      34
+      40
+     ],
+     [
+      "saude",
+      17
+     ],
+     [
+      "sancionou",
+      17
+     ],
+     [
+      "complementar",
+      16
      ],
      [
       "fake",
       15
      ],
      [
+      "piso",
+      14
+     ],
+     [
       "news",
       14
      ],
      [
-      "saude",
+      "caso",
+      14
+     ],
+     [
+      "senado",
+      14
+     ],
+     [
+      "reduzir",
       13
      ],
      [
-      "caso",
+      "instituição",
       13
      ],
      [
       "verdade",
+      13
+     ],
+     [
+      "paulo",
       12
      ],
      [
-      "sancionou",
+      "professores",
       11
-     ],
-     [
-      "reduzir",
-      11
-     ],
-     [
-      "falar",
-      10
-     ],
-     [
-      "dilma",
-      10
-     ],
-     [
-      "instituição",
-      10
-     ],
-     [
-      "complementar",
-      10
-     ],
-     [
-      "piso",
-      10
-     ],
-     [
-      "senado",
-      10
      ]
     ]
    },
@@ -1025,10 +1050,10 @@
      "POS": 0.0
     },
     "x_agora": {
-     "n": 125,
-     "NEG": 50.4,
-     "NEU": 47.2,
-     "POS": 2.4
+     "n": 131,
+     "NEG": 51.1,
+     "NEU": 45.0,
+     "POS": 3.8
     },
     "instagram_agora": {
      "n": 2,
