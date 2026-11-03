@@ -175,6 +175,14 @@ CASOS = {
             "rx_atributo": r"nota|globo|entrevista|sem cortes|sa[ií] pelo|persegui|eua|miami|moraes|cautelar",
             "noticias": ["Flávio Bolsonaro \"Nota ao Brasil\"", "Flávio Bolsonaro Globo entrevista", "\"saí pelo Brasil\" Flávio"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro nota", "Flávio Bolsonaro Globo"], "arquivo_web": ["https://x.com/FlavioBolsonaro/status/2117015474219446473"]},
+    # 03/11 (02h02): "desenhos bíblicos da Record, fake news lançada hoje" — classificação indicativa vendida como censura
+    "033": {"variantes": ["desenhos bíblicos", "Record Kids", "classificação indicativa"],
+            "controles": ["Record"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
+            "youtube": ["desenhos bíblicos Record censura", "Lula censura desenhos bíblicos", "Record Kids classificação indicativa", "desenho bíblico 12 anos Ministério da Justiça"],
+            "desde_yt": "2026-10-29T00:00:00Z", "rx_titulo": r"b[ií]blic|record|classifica[çc][aã]o indicativa",
+            "rx_atributo": r"censur|lula|governo|minist[eé]rio|classifica|crist[aã]|evang[eé]l|12 anos|portaria|record",
+            "noticias": ["\"desenhos bíblicos\" Record", "\"Desenhos Bíblicos\" classificação indicativa", "Record Kids censura", "portaria 2.272 classificação indicativa"],
+            "janela_noticias": "7d", "checagens": ["desenhos bíblicos Record", "classificação indicativa Record"], "arquivo_web": []},
     # 02/11 (02h53): violência contra indígenas em MS depois do 2º turno e a reação (#ProtejamNossosPovosIndígenas, Exército dos Povos Indígenas)
     "028": {"variantes": ["povos indígenas", "indígenas", "Guarani Kaiowá"],
             "controles": ["Funai"], "janelas": ["today 5-y", "today 12-m", "now 7-d"],

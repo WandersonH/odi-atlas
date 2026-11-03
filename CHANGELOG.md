@@ -10,6 +10,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - O quê: novo `scripts/build_recortes_caso.py` (genérico, campo `recortes` do caso em `casos.json`) grava `data/casos/<id>/recortes.json` só com agregados: publicações do caso cujo texto cita Buenos Aires, Argentina, Kirchner, Massa, peronismo, Milei ou Kertész desde 01/11, por rede e por dia, interações, contas com ≥10 mil seguidores (as demais só contadas) e notícias do caso que casam no título. Bloco novo no topo da página do caso 026. Roda no passo de agregados do `casos.yml`.
 - Números (privado `casos/026/itens.csv.gz` em 03/11 ~05h; amostra = publicações coletadas por termo no caso, universo das plataformas ⛔ desconhecido): 1.078 das 5.017 publicações lidas no caso (21,5%): X 1.041 de 4.075, Instagram 15 de 253, Facebook 12 de 149, TikTok 10 de 540. Por dia: 01/11 26, 02/11 661, 03/11 391 (dia em curso). 188.484 interações; 25 contas ≥10 mil seguidores listadas, 612 abaixo. 64 notícias desde 01/11.
 - Teste: `python -m unittest discover -s tests` OK; página do caso aberta no Chromium, bloco renderizado, sem erro de JS.
+- Correção do C19.326: a busca grátis do caso 033 falhou (run 41581869386, `KeyError: '033'`) porque o caso não estava registrado em `collect_caso_busca.py`; registrado (Trends, YouTube desde 29/10, notícias, checagens) e redisparado.
 
 ## C19.327 — Correlações com o perfil do eleitorado por município; caso 033 com verba autorizada (2026-11-03) ✅
 
