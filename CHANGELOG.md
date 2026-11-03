@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.327 — Correlações com o perfil do eleitorado por município; caso 033 com verba autorizada (2026-11-03) ✅
+
+- Perfil por município lido (run 41581256529 do `tse-perfil.yml`, `data/tse/perfil/eleitorado_2026_municipios_perfil.csv.gz`; soma de gênero = 158.745.463, igual ao total nacional do cadastro; mulheres 52,84%). `build_correlacoes.py` refeito: todos os 19 indicadores com cobertura (5.571 municípios; 5.556 nos de 2º turno, sem RR).
+- Números (`data/tse/correlacoes/resumo.json`; correlação ecológica, Pearson / dentro da UF): pretos e pardos × Lula 2º turno 0,68 / 0,33; superior completo × Lula 2º turno −0,58 / −0,25; até fundamental incompleto × Lula 2º turno 0,56 / 0,24; 16 a 24 anos × Lula 2º turno 0,56 / 0,31; mulheres × variação de Lula 2022 → 2026 0,47 / 0,48; mulheres × Lula 2º turno 0,01 / −0,12; tamanho do eleitorado × variação 2022 → 2026 0,49 / 0,47; até fundamental incompleto × voto fora de 13 e 22 no 1º turno −0,45 / −0,36.
+- Caso 033: responsável em 03/11/2026, 02h07, "autorizado" → tetos X 0,90, Instagram 0,70, Facebook 0,40 (US$ 2,00, conta 1). TikTok e Kwai seguem 0. Carga disparada em `casos.yml` (modo carga, caso 033, redes x instagram facebook).
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.326 — Página "Correlações territoriais" (substitui o topo de "Escala digital"); novo caso 033, desenhos bíblicos da Record (2026-11-03) ⚠️
 
 - Pedido do responsável (03/11/2026): "essa página parece inútil / Camada adicional · Universo digital e cadastro eleitoral / Escala digital em contexto eleitoral / as correlações acho que deveriam entrar aqui / vc consegue fazer algo melhor aqui".
