@@ -4,7 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.324 — Pardal: comparação entre 1º e 2º turno (2026-11-03) 🔜
+## C19.325 — Perfil do eleitorado por município (para as correlações); números do Pardal 1º × 2º turno (2026-11-03) 🔜
+
+- Pedido do responsável (03/11/2026): "essa página parece inútil / Camada adicional · Universo digital e cadastro eleitoral / as correlações acho que deveriam entrar aqui". Para correlacionar perfil do eleitorado e voto por município, o agregado municipal de C19.299 não bastava (só totais). `collect_tse_perfil.py` passa a gravar também `data/tse/perfil/<nome>_2026_municipios_perfil.csv.gz` (formato longo: turno, UF, município, dimensão, valor, quantidade) para gênero, faixa etária, escolaridade e raça/cor. Só agregados que o TSE já publica.
+- Números do C19.324 (run 41580715838, `data/tse/denuncias/resumo.json`, universo = todas as denúncias publicadas pelo TSE no Pardal): 1º turno 71.780 denúncias, 2º turno 11.467; viraram petição 26,3% → 19,5%; sobre presidente 1.519 → 3.862; internet 7.148 → 2.497. "Vias públicas" 41,7% → 8,4% das denúncias do turno; "Propaganda na Internet" 7,9% → 18,4%; "Não Informado" 0,2% → 20,5% (provavelmente ainda não classificadas pelo TSE).
+- Teste: `python -m unittest discover -s tests` OK. Perfil municipal: run do `tse-perfil.yml` (eleitorado) disparado; números na próxima entrada.
+
+## C19.324 — Pardal: comparação entre 1º e 2º turno (2026-11-03) ✅
 
 - Pedido do responsável (03/11/2026, 01h51): "pardal também deveria ter uma análise 1 × 2 turno".
 - O quê: `collect_tse_denuncias_pesquisas.py` grava `comparacao_turnos` no `data/tse/denuncias/resumo.json`: totais, % que virou petição no PJe, presidente e internet por turno, e tabelas por tipo, cargo, UF, situação, origem, tipo nas denúncias sobre presidente e tipo nas digitais, cada uma com contagem e parcela dentro do turno e a variação da parcela em pontos percentuais. Página "Denúncias eleitorais (Pardal)": novo bloco "00 · 1º × 2º turno" com seletor de recorte. Ressalva na página: o 1º turno cobre a campanha inteira e o 2º só três semanas, com só presidente e governador em disputa; compare parcelas, não totais.

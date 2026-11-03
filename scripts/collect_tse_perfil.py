@@ -12,6 +12,7 @@ Uso: python scripts/collect_tse_perfil.py [comparecimento] [eleitorado]
 from __future__ import annotations
 
 import csv
+import gzip
 import io
 import json
 import sys
@@ -34,6 +35,8 @@ ARQ = {
                    "https://dadosabertos.tse.jus.br/dataset/eleitorado-2026"),
 }
 NAO_DIM = {"DS_ELEICAO", "DS_TIPO_ELEICAO", "DS_CARGO", "DS_MUN_SIT_BIOMETRIA", "DS_TURNO"}
+# C19.325: perfil por município (formato longo) para as correlações territoriais. Só dimensões usadas na página.
+DIM_MUN = {"DS_GENERO", "DS_FAIXA_ETARIA", "DS_GRAU_ESCOLARIDADE", "DS_RACA_COR"}
 
 
 def baixar(url: str, pasta: Path) -> Path:
@@ -60,6 +63,7 @@ def agregar(z: zipfile.ZipFile) -> dict:
     uf = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))  # uf → (turno, dim) → valor → qt
     mun = defaultdict(lambda: defaultdict(int))  # (turno, uf, cd, nome) → qt
     tot = defaultdict(lambda: defaultdict(int))
+    mdim = defaultdict(int)  # (turno, uf, cd, dim, valor) → primeira medida QT_*
     linhas = 0
     for n in nomes:
         with z.open(n) as f:
@@ -80,12 +84,14 @@ def agregar(z: zipfile.ZipFile) -> dict:
                         v = num(r.get(q))
                         nac[(t, d)][val][q] += v
                         uf[r.get("SG_UF")][(t, d)][val][q] += v
+                    if d in DIM_MUN and qts:
+                        mdim[(t, r.get("SG_UF"), r.get("CD_MUNICIPIO"), d, val)] += num(r.get(qts[0]))
     dd = lambda x: {k: dict(v) for k, v in x.items()}  # noqa: E731
     return {"arquivos_csv": nomes, "linhas_lidas": linhas, "colunas": cab, "medidas": qts, "dimensoes": dims,
             "totais_por_turno": dd(tot),
             "brasil": {f"turno {t} · {d}": dd(v) for (t, d), v in nac.items()},
             "ufs": {u: {f"turno {t} · {d}": dd(v) for (t, d), v in x.items()} for u, x in sorted(uf.items())},
-            "_mun": mun}
+            "_mun": mun, "_mdim": mdim}
 
 
 def main(argv: list[str]) -> int:
@@ -105,6 +111,7 @@ def main(argv: list[str]) -> int:
             rc = 1
             continue
         mun = a.pop("_mun")
+        mdim = a.pop("_mdim")
         out = {"schema_version": 1, "gerado_em_utc": now_utc(), "fonte": fonte, "arquivo": url, "mb": mb,
                "universo": "agregados publicados pelo TSE para todo o eleitorado (não é amostra)", **a}
         (pasta / f"{nome}_2026.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
@@ -113,6 +120,12 @@ def main(argv: list[str]) -> int:
             w.writerow(["turno", "uf", "cd_municipio_tse", "municipio", *a["medidas"]])
             for (t, u, cd, nm), v in sorted(mun.items(), key=lambda kv: tuple(str(x) for x in kv[0])):
                 w.writerow([t, u, cd, nm, *[v.get(q, 0) for q in a["medidas"]]])
+        if mdim:
+            with gzip.open(pasta / f"{nome}_2026_municipios_perfil.csv.gz", "wt", encoding="utf-8", newline="") as fh:
+                w = csv.writer(fh, delimiter=";")
+                w.writerow(["turno", "uf", "cd_municipio_tse", "dimensao", "valor", a["medidas"][0]])
+                for k, v in sorted(mdim.items(), key=lambda kv: tuple(str(x) for x in kv[0])):
+                    w.writerow([*k, v])
         print(f"{nome}: {a['linhas_lidas']} linhas · {mb} MB · medidas {a['medidas']} · dimensões {a['dimensoes']} · totais {a['totais_por_turno']} · municípios {len(mun)}")
     return rc
 
