@@ -4,11 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.333 — Debate da Globo: transcrição do Poder360 entra nas análises (2026-11-04) 🔜
+## C19.333 — Debate da Globo: transcrição do Poder360 entra nas análises (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 00h06): link da transcrição do debate Lula × Flávio Bolsonaro na Globo (23/10/2026) publicada pelo Poder360 (https://static.poder360.com.br/uploads/2026/10/transcricao-debate-Lula-Flavio-Bolsonaro-Globo-23out2026.pdf), "transcrição debate".
-- O proxy da sessão recusou o site (CONNECT 403). Novo workflow `baixar-privado.yml`: o runner baixa um link https indicado e grava no repositório privado (texto integral da transmissão não vai para o público).
-- Teste: `python -m unittest discover -s tests` OK. Download e análise na próxima atualização desta entrada.
+- Download: o proxy da sessão recusou o site (CONNECT 403). Novo workflow `baixar-privado.yml` (runner baixa um link https e grava no privado); run 41765499322 → privado `debate/globo/transcricao_poder360_23out2026.pdf`, 730.454 bytes, 32 páginas, sha256 39eaa874fa2a0e41….
+- Novo `scripts/importar_transcricao_pdf.py`: texto por `pdftotext`, sem cabeçalho/rodapé/número de página; quem fala = rótulo da própria transcrição ("CÉSAR TRALLI:", "FLÁVIO BOLSONARO:", "LUIZ INÁCIO LULA DA SILVA:" ou "LULA:"); bloco novo a cada "Estamos de volta" da mediação (4 blocos). O PDF não tem horário: posição em palavras, não segundos. Saída no privado: `debate/globo/transcricao.json` (167 falas) e `corpus_iramuteq.txt`.
+- `build_debate_transcricao.py --debate globo`: usa o rótulo da fonte no lugar das deixas, corta as falas em trechos de até 40 palavras, bloco da transcrição no corpus; sem horário, tempo de fala fica ⛔ (null) e a página mostra a proporção por palavras. O debate da Band (sem `--debate`) segue igual; seus arquivos públicos não foram regravados.
+- Números (`data/debate/globo/analise.json`): 18.240 palavras; Lula 6.652 (36,5%) em 58 falas; Flávio Bolsonaro 8.994 (49,3%) em 55 falas; mediação 2.594 (14,2%) em 54 falas; 548 trechos; CHD com 7 classes, 359 de 454 trechos dos candidatos classificados (79,1%). Temas mais citados: economia e trabalho (Lula 22,1% dos trechos, Flávio 23,5%); segurança (5,0% / 11,4%).
+- Página: bloco "Análise da transcrição" e big numbers do debate da Globo passam a ler o arquivo; aviso diz de onde vem quem fala e que não há tempo. `estado_evidencia.json` → debateGlobo atualizado.
+- Teste: `python -m unittest discover -s tests` OK (novo `tests/test_transcricao_pdf.py`); páginas dos dois debates abertas no Chromium (Playwright), sem erro de JS; Band igual a antes.
+- Pendente: o cartão "O debate · vídeo" da Globo ainda diz "Aguardando o debate" (texto anterior ao debate); conferência da transcrição com o vídeo.
 
 ## C19.332 — Caso 026: novo canal de WhatsApp da Colômbia na lista acompanhada (2026-11-03) ✅
 

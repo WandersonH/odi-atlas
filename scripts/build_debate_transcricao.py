@@ -15,6 +15,9 @@ Passos:
 5. CHD de Reinert (chd_reinert.py) sobre os segmentos dos dois candidatos, com a variável orador.
 6. Corpus IRaMuTeQ (**** *orador_ *bloco_) — privado (texto integral da transmissão).
 Saída pública: data/debate/analise.json, data/debate/rede_palavras_{lula,flavio,todos}.gexf. Trechos públicos ≤ 25 palavras.
+04/11/2026: `--debate globo` lê ODI_INTERNO_DIR/debate/globo/transcricao.json (importar_transcricao_pdf.py, transcrição do
+Poder360) e grava em data/debate/globo/. Quando os trechos já trazem "orador" (rótulo da transcrição publicada), ele vale no
+lugar das deixas; sem horário ("sem_tempo"), o tempo de fala fica ⛔ e a proporção é por palavras; o bloco é o da transcrição.
 """
 from __future__ import annotations
 
@@ -62,17 +65,17 @@ def orador_por_deixas(segs: list[dict], correcoes: dict) -> list[str]:
 
 
 def segmentar(segs: list[dict], quem: list[str]) -> list[dict]:
-    out, buf, ini, dono = [], [], None, None
+    out, buf, ini, dono, bl = [], [], None, None, None
     for s, q in zip(segs, quem):
         if dono is not None and (q != dono or len(buf) >= PALAVRAS_SEG):
-            out.append({"orador": dono, "ini": ini, "texto": " ".join(buf)})
+            out.append({"orador": dono, "ini": ini, "bloco": bl, "texto": " ".join(buf)})
             buf, ini = [], None
         if ini is None:
-            ini, dono = s["ini"], q
+            ini, dono, bl = s["ini"], q, s.get("bloco")
         dono = q
         buf += s["texto"].replace(">>", " ").split()  # ">>" é a marca de troca de voz da legenda automática
     if buf:
-        out.append({"orador": dono, "ini": ini, "texto": " ".join(buf)})
+        out.append({"orador": dono, "ini": ini, "bloco": bl, "texto": " ".join(buf)})
     return out
 
 
@@ -160,16 +163,21 @@ def iramuteq(segmentos: list[dict], inicio: float) -> str:
     for s in segmentos:
         if s["orador"] in FORA:
             continue
-        bloco = int((s["ini"] - inicio) // 1800) + 1  # blocos de 30 min desde o início do debate
+        bloco = s.get("bloco") or int((s["ini"] - inicio) // 1800) + 1  # bloco da transcrição; sem ele, blocos de 30 min
         tx = re.sub(r"[*\-$]", " ", s["texto"])
         linhas.append(f"**** *orador_{s['orador']} *bloco_{bloco}\n{tx}\n")
     return "\n".join(linhas)
 
 
 def main(argv=None) -> int:
+    argv = list(argv or [])
+    debate = argv[argv.index("--debate") + 1] if "--debate" in argv else ""
+    if "--debate" in argv:
+        del argv[argv.index("--debate"):argv.index("--debate") + 2]
     root = Path(argv[0]) if argv else Path(".")
+    sub = f"debate/{debate}" if debate else "debate"
     interno = os.environ.get("ODI_INTERNO_DIR")
-    arq = Path(interno) / "debate/transcricao.json" if interno else None
+    arq = Path(interno) / sub / "transcricao.json" if interno else None
     if not arq or not arq.exists():
         print("⛔ transcrição não encontrada no privado")
         return 1
@@ -178,14 +186,25 @@ def main(argv=None) -> int:
     pc = root / "data/config/debate_turnos.json"
     cfg_turnos = json.loads(pc.read_text(encoding="utf-8")) if pc.exists() else {}
     correcoes = cfg_turnos.get("turnos", {})
-    quem = orador_por_deixas(segs, correcoes)
+    rotulada = bool(segs) and all(s.get("orador") for s in segs)
+    sem_tempo = bool(tr.get("sem_tempo"))
+    if rotulada:
+        correcoes = {}
+        falas = Counter(s["orador"] for s in segs)  # falas (turnos) como a transcrição publicada traz
+        partes = []  # falas inteiras da transcrição publicada viram trechos de até PALAVRAS_SEG palavras (como no IRaMuTeQ)
+        for s in segs:
+            ws = s["texto"].split()
+            for i in range(0, len(ws), PALAVRAS_SEG):
+                partes.append({**s, "texto": " ".join(ws[i:i + PALAVRAS_SEG]), "ini": s["ini"] + i, "fim": s["ini"] + min(i + PALAVRAS_SEG, len(ws))})
+        segs = partes
+    quem = [s["orador"] for s in segs] if rotulada else orador_por_deixas(segs, correcoes)
     segmentos = segmentar(segs, quem)
     tempo = Counter()
     for i, (s, q) in enumerate(zip(segs, quem)):  # legendas automáticas se sobrepõem: o trecho vai até o início do seguinte
         seg_fim = min(s["fim"], segs[i + 1]["ini"]) if i + 1 < len(segs) and segs[i + 1].get("bloco") == s.get("bloco") else s["fim"]
         tempo[q] += max(0.0, seg_fim - s["ini"])
     cfg = json.loads((root / "data/config/temas_youtube.json").read_text(encoding="utf-8"))
-    out_dir = root / "data/debate"
+    out_dir = root / "data" / sub
     out_dir.mkdir(parents=True, exist_ok=True)
     redes = {}
     for nome, filtro in (("todos", ("lula", "flavio", "indefinido")), ("lula", ("lula",)), ("flavio", ("flavio",))):
@@ -194,23 +213,25 @@ def main(argv=None) -> int:
             gexf(nos, ar, out_dir / f"rede_palavras_{nome}.gexf")
         redes[nome] = des
     ch = chd_debate(segmentos)
-    pi = Path(interno) / "debate"
+    pi = Path(interno) / sub
     (pi / "corpus_iramuteq.txt").write_text(iramuteq(segmentos, segs[0]["ini"] if segs else 0), encoding="utf-8")
     deixas = sum(1 for i, q in enumerate(quem) if q == "mediacao" and i and quem[i - 1] != "mediacao")
     out = {"schema_version": 1, "gerado_em_utc": now_utc(), "video": tr["video"], "fonte_transcricao": tr["fonte"],
-           "inicio_s": segs[0]["ini"] if segs else None, "fim_s": segs[-1]["fim"] if segs else None,
+           "inicio_s": None if sem_tempo else (segs[0]["ini"] if segs else None), "fim_s": None if sem_tempo else (segs[-1]["fim"] if segs else None),
+           "sem_tempo": sem_tempo, "blocos": max((s.get("bloco") or 0) for s in segs) or None if segs else None,
+           "falas_por_orador": {ORADORES[o]: falas[o] for o in ORADORES if falas[o]} if rotulada else None,
            "segmentos": len(segmentos), "palavras": sum(len(s["texto"].split()) for s in segmentos),
-           "tempo_de_fala_min": {ORADORES[o]: round(tempo[o] / 60, 1) for o in ORADORES if o != "intervalo"},
-           "intervalos_min": round(tempo["intervalo"] / 60, 1),
+           "tempo_de_fala_min": None if sem_tempo else {ORADORES[o]: round(tempo[o] / 60, 1) for o in ORADORES if o != "intervalo"},
+           "intervalos_min": None if sem_tempo else round(tempo["intervalo"] / 60, 1),
            "palavras_por_orador": {ORADORES[o]: sum(len(s["texto"].split()) for s in segmentos if s["orador"] == o) for o in ORADORES},
-           "atribuicao": {"metodo": (cfg_turnos.get("metodo") or "codificação manual dos turnos") if correcoes else "automática por deixas da mediação (nome do candidato + passagem de tempo); não validada",
-                          "manual": bool(correcoes),
+           "atribuicao": {"metodo": "rótulo de quem fala da própria transcrição publicada" if rotulada else (cfg_turnos.get("metodo") or "codificação manual dos turnos") if correcoes else "automática por deixas da mediação (nome do candidato + passagem de tempo); não validada",
+                          "manual": bool(correcoes), "rotulos_da_fonte": rotulada,
                           "deixas_encontradas": deixas, "correcoes_manuais": len(correcoes)},
            "temas": temas(segmentos, cfg), "rede": redes, "chd": ch,
            "palavras_mais_usadas": {ORADORES[o]: bc.nuvem([s["texto"] for s in segmentos if s["orador"] == o], set(), top=40, minimo=3) for o in ("lula", "flavio")},
-           "arquivos": {"gexf": {n: f"data/debate/rede_palavras_{n}.gexf" for n in redes if redes[n]}, "iramuteq": "privado: debate/corpus_iramuteq.txt"}}
+           "arquivos": {"gexf": {n: f"data/{sub}/rede_palavras_{n}.gexf" for n in redes if redes[n]}, "iramuteq": f"privado: {sub}/corpus_iramuteq.txt"}}
     (out_dir / "analise.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    print(f"debate: {len(segmentos)} segmentos · tempo de fala (min) {out['tempo_de_fala_min']} · deixas {deixas} · classes CHD {len(ch['classes']) if ch else 0}")
+    print(f"{sub}: {len(segmentos)} segmentos · tempo de fala (min) {out['tempo_de_fala_min']} · deixas {deixas} · classes CHD {len(ch['classes']) if ch else 0}")
     return 0
 
 
