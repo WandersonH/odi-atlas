@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.335 — Resultado do 2º turno: cartões dos candidatos com o texto todo numa linha (2026-11-04) ✅
+
+- Pedido do responsável (04/11/2026, 00h31, com print): "essa visualização ficou bem ruim, tudo grudado". Os cartões de `#r2Br` usavam `<small>/<strong>/<span>` dentro de `.kpi`, cujo CSS espera `.klabel/.kval/.knote`; nome, percentual e votos saíam colados na mesma linha. Agora usam as classes do Atlas: rótulo em monoespaçada, percentual grande na cor do candidato, votos abaixo.
+- Teste: `python -m unittest discover -s tests` OK; página do 2º turno aberta no Chromium a 1366 px e 390 px, sem erro de JS (prints conferidos).
+
 ## C19.334 — Caso 034 (oculto): deepfake de Jair Bolsonaro na convenção do PL e a tese do TSE, apoio ao artigo de deepfake (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 00h23): "cria um caso oculto pra mim da lista", com 4 PDFs anexados (Res. TSE 23.610 compilada; ConJur, "TSE esvazia regra sobre deepfake…", 03/09/2026; petição de Flávio Bolsonaro na RP 0601315-97.2026.6.00.0000 com parecer de Diogo Rais; transcrição parcial da sessão), o vídeo https://www.youtube.com/watch?v=SvVd0Nu2XpQ ("quero transcrição completa"), Res. 23.610 e 23.755/2026 no site do TSE, Agência Brasil (TSE e Google, 26/08/2026) e a ajuda do YouTube (answer/16440338); "buscas redes caso necessário"; foco: apoio ao artigo de deepfake.
