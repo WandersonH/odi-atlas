@@ -24,7 +24,7 @@ def ler(p: Path):
 def main() -> int:
     cfg = json.loads((ROOT / "data/config/casos.json").read_text(encoding="utf-8"))["casos"]
     linhas = []
-    for c in cfg:
+    for c in (c for c in cfg if not c.get("oculto")):  # 04/11/2026: caso oculto (034) fica fora da matriz pública
         cid = c["id"]
         d = ROOT / "data/casos" / cid
         caso, busca, bardin, mundo = ler(d / "caso.json"), ler(d / "busca.json"), ler(d / "bardin.json"), ler(d / "mundo.json")

@@ -176,6 +176,16 @@ CASOS = {
             "noticias": ["Flávio Bolsonaro \"Nota ao Brasil\"", "Flávio Bolsonaro Globo entrevista", "\"saí pelo Brasil\" Flávio"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro nota", "Flávio Bolsonaro Globo"], "arquivo_web": ["https://x.com/FlavioBolsonaro/status/2117015474219446473"]},
     # 03/11 (02h02): "desenhos bíblicos da Record, fake news lançada hoje" — classificação indicativa vendida como censura
+    # 04/11 (00h23): caso oculto — deepfake de Jair Bolsonaro na convenção do PL (25/07) e a tese do TSE (01/09); apoio ao artigo de deepfake
+    "034": {"variantes": ["deepfake", "Bolsonaro IA", "inteligência artificial eleição"],
+            "controles": ["inteligência artificial"], "janelas": ["today 12-m", "today 5-y", "now 7-d"],
+            "youtube": ["Bolsonaro IA convenção PL", "deepfake Bolsonaro TSE", "TSE julga deepfake Flávio Bolsonaro", "vídeo inteligência artificial Bolsonaro convenção",
+                        "TSE deepfake tese convenção partidária", "TSE Google detecção de semelhança deepfake candidatos"],
+            "desde_yt": "2026-07-25T00:00:00Z", "rx_titulo": r"deep ?fake|intelig[eê]ncia artificial|\bIA\b|\bAI\b|avatar|sint[eé]tic",
+            "rx_atributo": r"bolsonaro|fl[aá]vio|tse|conven[cç][aã]o|\bpl\b|elei|candidat|propaganda|google|youtube",
+            "noticias": ["deepfake Bolsonaro convenção PL", "TSE deepfake Flávio Bolsonaro", "vídeo IA Bolsonaro convenção TSE", "TSE tese deepfake propaganda eleitoral",
+                         "TSE Google detecção de semelhança candidatos", "deepfake eleições 2026 TSE"],
+            "janela_noticias": "105d", "checagens": ["deepfake Bolsonaro", "vídeo inteligência artificial Bolsonaro", "deepfake eleição 2026"], "arquivo_web": []},
     "033": {"variantes": ["desenhos bíblicos", "Record Kids", "classificação indicativa"],
             "controles": ["Record"], "janelas": ["now 7-d", "today 1-m", "today 12-m"],
             "youtube": ["desenhos bíblicos Record censura", "Lula censura desenhos bíblicos", "Record Kids classificação indicativa", "desenho bíblico 12 anos Ministério da Justiça"],

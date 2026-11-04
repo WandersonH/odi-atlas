@@ -322,7 +322,7 @@ def main(argv=None) -> int:
         coleta_redes = json.loads((pasta / "caso.json").read_text(encoding="utf-8")).get("coletado_em") if (pasta / "caso.json").exists() else None
         indice.append({"id": caso["id"], "titulo": caso["titulo"], "resumo": resumo, "coleta_redes_em": coleta_redes, "tipo": caso.get("rotulo_tipo"), "descricao": caso.get("descricao"),
                        "desde": caso.get("desde"), "janela_indicada": caso.get("janela_indicada"), "redes_previstas": caso.get("redes_previstas"),
-                       "estado": estado, "publicacoes": n, "aba": caso.get("aba"), "busca_google": bool(caso.get("busca_google")), "arquivo": f"data/casos/{caso['id']}/caso.json" if estado == "coletado" else None})
+                       "estado": estado, "publicacoes": n, "aba": caso.get("aba"), "oculto": bool(caso.get("oculto")), "busca_google": bool(caso.get("busca_google")), "arquivo": f"data/casos/{caso['id']}/caso.json" if estado == "coletado" else None})
     (root / "data/casos").mkdir(parents=True, exist_ok=True)
     (root / "data/casos/indice.json").write_text(json.dumps({"gerado_em_utc": now_utc(), "casos": indice}, ensure_ascii=False, indent=1), encoding="utf-8")
     return 0
