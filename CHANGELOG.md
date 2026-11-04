@@ -8,7 +8,9 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 
 - Pedido do responsável (04/11/2026, 00h52): "https://www.youtube.com/@justicaeleitoral será que conseguimos achar aqui; não vi rede circulação". `transcrever_video.py` ganha `--canal/--dia/--q` (YouTube Data API: canal pelo @, vídeos publicados no dia e no seguinte, mais longos primeiro; escolhe o que tem "sess" no título); `transcrever-video.yml` ganha as entradas. Candidatos em `data/casos/034/busca_canal.json`.
 - Rede de circulação: já existe (`data/casos/034/rede_circulacao.gexf`, 90 nós desenhados), gerada pela busca grátis (runs 41767617741 e 41768222644) depois que a página foi publicada; conferida no Chromium.
-- Teste: `python -m unittest discover -s tests` OK. Resultado da busca no canal na atualização desta entrada.
+- Primeira tentativa (run 41769908587, 00h55): a API do YouTube respondeu HTTP 429 (cota do dia gasta pelas buscas dos casos). Nova tentativa agendada para 05h20 (cota renova às 05h).
+- Documento do PJe enviado pelo responsável (consultaunificadapje.tse.jus.br, 00h54): a página pede código de imagem (CAPTCHA); o Atlas não contorna. Pedido ao responsável: salvar o documento em PDF e anexar.
+- Teste: `python -m unittest discover -s tests` OK.
 
 ## C19.336 — Caso 034 no menu de Casos, ao lado de "Rótulo de IA", sem cartão na lista (2026-11-04) ✅
 
