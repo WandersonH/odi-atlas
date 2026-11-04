@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.336 — Caso 034 no menu de Casos, ao lado de "Rótulo de IA", sem cartão na lista (2026-11-04) ✅
+
+- Pedido do responsável (04/11/2026, 00h44): "não abriu assim. coloca na lista ao lado com rótulo de IA, mas não gera um card". O caso 034 ganha botão no submenu de Casos logo depois de "Rótulo de IA nas campanhas" ("Deepfake e a tese do TSE"); continua fora dos cartões do índice de casos (`oculto` em `casos.json`/`indice.json`), da exportação de todos os casos e da matriz. Aviso da página reescrito ("Caso sem cartão").
+- Teste: `python -m unittest discover -s tests` OK; no Chromium: submenu mostra Casos e dossiês · Rótulo de IA nas campanhas · Deepfake e a tese do TSE; o botão abre o caso (dossiê com 3 tabelas); o índice segue com 32 casos e sem o 034; o link `#caso034` também abre. Sem erro de JS.
+
 ## C19.335 — Resultado do 2º turno: cartões dos candidatos com o texto todo numa linha (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 00h31, com print): "essa visualização ficou bem ruim, tudo grudado". Os cartões de `#r2Br` usavam `<small>/<strong>/<span>` dentro de `.kpi`, cujo CSS espera `.klabel/.kval/.knote`; nome, percentual e votos saíam colados na mesma linha. Agora usam as classes do Atlas: rótulo em monoespaçada, percentual grande na cor do candidato, votos abaixo.
