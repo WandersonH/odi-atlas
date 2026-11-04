@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.340 — Caso 034: os processos de IA e deepfake na Justiça Eleitoral (dados abertos do TSE) e peças anexadas (2026-11-04) ✅
+
+- Pedido do responsável (04/11/2026, 01h16): "você consegue consultar processos que temos deste e sobre IA aqui? https://consultaunificadapje.tse.jus.br/ e anexar documentos". A consulta pública do PJe pede código de imagem (CAPTCHA), que o Atlas não contorna; a lista vem dos dados abertos do TSE que o Atlas já lê (`collect_processual.py`, arquivo gerado pelo TSE em 03/11/2026).
+- Novo `scripts/processos_caso.py` → `data/casos/034/processos.json`; roda também no `tse-denuncias-pesquisas.yml`, depois do `collect_processual.py`. Números: universo 100.653 processos eleitorais de 2026; 790 com IA ou deep fake no assunto (0,78%); 305 com "Deep Fake", 663 com "Uso de IA", 178 com os dois; 724 com decisão, 239 baixados; 55 com candidatura à Presidência como parte (Flávio Bolsonaro 28 no polo ativo e 21 no passivo; Lula 3 e 3; Pablo Marçal 4 no passivo). Por mês de autuação: set/2026 298, ago 202, out 121. Por tribunal: TSE 157, TRE-BA 112, TRE-SP 58.
+- A RP 0601315-97.2026.6.00.0000 foi autuada em 26/07/2026 (dia seguinte à convenção), com assunto "Uso de Inteligência Artificial" e Flávio Bolsonaro no polo passivo; o arquivo do TSE registra 0 decisões, apesar do julgamento de 01/09. A linha do tempo do dossiê passa a usar a data de autuação.
+- Peças: os PDFs enviados pelo responsável foram guardados no privado (`casos/034/pecas/` e `casos/034/fontes/`); a página só lista a peça (`data/casos/034/pecas.json`: petição da defesa com parecer de Diogo Rais, 8 páginas, sha256 fb8e076c98fd7400…).
+- Página: bloco "07 · Os processos" no caso 034 (números, autuação por mês com Deep Fake em destaque, tribunais, lista dos 55 processos com link para a consulta pública, peças anexadas).
+- Teste: `python -m unittest discover -s tests` OK; bloco aberto no Chromium, sem erro de JS (print conferido).
+
 ## C19.339 — "Fake news, deepfake, cheapfake": interesse por estado no Google Trends (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 01h05): "Trends por estado só existe para candidatos, não para os termos. Se quiser mapa de 'deepfake' por UF, precisa rodar uma consulta nova. pode implantar".
