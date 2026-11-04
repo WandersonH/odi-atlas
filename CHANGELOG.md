@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.343 — Caso 034: as sessões de 2024 e de março de 2026 entram na página (2026-11-04) ✅
+
+- Pergunta do responsável (04/11/2026, 10h52): "tu levou essas partes de IA pra lá?". Não tinham ido: o C19.341 só transcreveu. Agora o dossiê do 034 traz: tabela das três sessões do TSE (27/02/2024, 02/03/2026, 01/09/2026) com o que foi decidido, link do vídeo oficial e tamanho da transcrição; linha do tempo de 27/02/2024 e 02/03/2026 com o minuto no vídeo (IA aos 2:17:33 e proclamação às 2:45:04 em 2024; relator aos 21:21, IA aos 23:55 e aprovação às 27:54 em 2026); dois trechos novos de até 25 palavras (Cármen Lúcia, "vedação absoluta…", 2:18:00; Nunes Marques, "limitação temporal específica (72 horas antes e 24 horas após o pleito)…", 23:55); um ponto de leitura para o artigo (da "vedação absoluta" de 2024 à vedação condicionada à propaganda de 2026, com o mesmo texto do 9º-C, § 1º).
+- Página: o quadro "04" passa a "As sessões em vídeo" e cada trecho mostra a sessão e o minuto, com link para o vídeo certo.
+- Teste: `python -m unittest discover -s tests` OK; quadro aberto no Chromium, links por sessão, sem erro de JS (print conferido).
+
 ## C19.342 — Caso 034 volta ao menu de Casos, ao lado de "Rótulo de IA" (desfaz o C19.338) (2026-11-04) ✅
 
 - Responsável (04/11/2026, 10h45): "não localizei o caso 34 como tínhamos deixado ao lado de rótulo de IA". A leitura do C19.338 ("junto com outro que colocamos na lista" = página "Fake news, deepfake, cheapfake") estava errada: o pedido era manter ao lado de "Rótulo de IA nas campanhas". O botão "Deepfake e a tese do TSE" volta ao menu Casos, logo depois de "Rótulo de IA"; sai do menu Buscas; faixa da página volta a "CADERNO 08 / CASOS". Continua sem cartão no índice de casos e fora da exportação de todos os casos.
