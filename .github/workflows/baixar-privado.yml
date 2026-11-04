@@ -1,0 +1,42 @@
+name: Baixar arquivo público para o repositório privado (grátis)
+
+# 04/11/2026: o proxy da sessão de trabalho não alcança alguns sites (ex.: static.poder360.com.br). O runner do GitHub
+# baixa o arquivo indicado pelo responsável e grava no privado, sem publicar nada no repositório público.
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: "link do arquivo (https://...)"
+        required: true
+      destino:
+        description: "caminho no repositório privado (ex.: debate/globo/transcricao_poder360.pdf)"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  baixar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Repositório privado
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+      - name: Baixar e gravar
+        env:
+          URL: ${{ github.event.inputs.url }}
+          DESTINO: ${{ github.event.inputs.destino }}
+        run: |
+          case "$URL" in https://*) ;; *) echo "::error::só links https"; exit 1;; esac
+          case "$DESTINO" in /*|*..*) echo "::error::destino inválido"; exit 1;; esac
+          cd "$RUNNER_TEMP/interno"
+          mkdir -p "$(dirname "$DESTINO")"
+          curl -fsSL -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36" -o "$DESTINO" "$URL"
+          echo "::notice title=Baixado::$DESTINO · $(stat -c %s "$DESTINO") bytes · sha256 $(sha256sum "$DESTINO" | cut -c1-16) · $URL"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -- "$DESTINO"
+          git diff --cached --quiet || git commit -q -m "Arquivo baixado: $DESTINO (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1

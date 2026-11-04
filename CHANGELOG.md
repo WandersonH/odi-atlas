@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.333 — Debate da Globo: transcrição do Poder360 entra nas análises (2026-11-04) 🔜
+
+- Pedido do responsável (04/11/2026, 00h06): link da transcrição do debate Lula × Flávio Bolsonaro na Globo (23/10/2026) publicada pelo Poder360 (https://static.poder360.com.br/uploads/2026/10/transcricao-debate-Lula-Flavio-Bolsonaro-Globo-23out2026.pdf), "transcrição debate".
+- O proxy da sessão recusou o site (CONNECT 403). Novo workflow `baixar-privado.yml`: o runner baixa um link https indicado e grava no repositório privado (texto integral da transmissão não vai para o público).
+- Teste: `python -m unittest discover -s tests` OK. Download e análise na próxima atualização desta entrada.
+
 ## C19.332 — Caso 026: novo canal de WhatsApp da Colômbia na lista acompanhada (2026-11-03) ✅
 
 - Pedido do responsável (03/11/2026, 10h57): link https://www.whatsapp.com/channel/0029Vb7MG3rCHDycAmqMXw1b com a nota "colombia". Incluído em `data/config/casos.json` → caso 026 → `canais_whatsapp` (país Colômbia; parâmetro fbclid removido). É outro canal, diferente do "Ejército de Petro" já listado.
