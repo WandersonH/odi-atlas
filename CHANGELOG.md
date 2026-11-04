@@ -4,12 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.344 — Caso 035: "vote como brasileiro" ("vote like a Brazilian") nas campanhas americanas, de 25/10 até hoje (2026-11-04) 🔜
+## C19.344 — Caso 035: "vote como brasileiro" ("vote like a Brazilian") nas campanhas americanas, de 25/10 até hoje (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 16h46): "novo caso postagens com Vote como brasileiro usado nas campanhas americanas de 25 até hoje".
 - Busca prévia (WebSearch, 04/11): nenhuma página encontrada com "vote like a Brazilian" ligada às eleições americanas; origem e primeira ocorrência ficam ⛔ até a coleta.
 - `casos.json` (035; desde 2026-10-25; termos em inglês e português; tetos pagos 0), `collect_caso_busca.py` (Trends mundo, por país e por estado dos EUA; YouTube no mundo; notícias edição EUA e Brasil, 11 dias; checagens), laço padrão do `casos-busca.yml`, seção `#caso035` na página (menu de Casos, com cartão), `estado_evidencia.json`.
-- Teste: `python -m unittest discover -s tests` OK. Resultado da coleta grátis na atualização desta entrada.
+- Coleta grátis (runs 41900806956, 41901902859, 41902688891). Notícias com a frase no título: 5 — O Globo 29/10 ("'Vote like a Brazilian'"), O Globo, Área VIP, Agenda do Poder e Terra em 03/11 (ativistas americanos usando "vote como um brasileiro"; piadas sobre a fuga de Flávio). YouTube: com o filtro amplo ("brazil|lula" + voto) vinham 306 vídeos sobre a eleição em geral e nenhum com a frase; filtro trocado pela frase, e a leitura refeita com a nova opção `forcar_youtube` do `casos-busca.yml`: 3 vídeos, 3 canais, 23.872 visualizações somadas, todos de 04/11 (Metrópoles, live; Barbarize-se; Marco Aurélio Numerólogo). Trends (índice relativo; universo ⛔): por país nos últimos 30 dias, Brasil ("vote como brasileiro" 48, "vote like a Brazilian" 44) e EUA ("vote like Brazil" 73, "vote like a Brazilian" 27); países de busca mínima (Cazaquistão, Zâmbia, Anguila, Uganda) aparecem com 100 e não são lidos como sinal. Por estado dos EUA: o Google não devolveu dados (pouca busca).
+- Redes pagas: teto 0; a frase é de redes sociais, então X, TikTok e Instagram ficam pendentes de autorização do valor.
+- Teste: `python -m unittest discover -s tests` OK; página do caso aberta no Chromium (Trends, YouTube, rede de circulação com 10 nós, imprensa), sem erro de JS.
 
 ## C19.343 — Caso 034: as sessões de 2024 e de março de 2026 entram na página (2026-11-04) ✅
 
