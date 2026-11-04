@@ -183,8 +183,9 @@ CASOS = {
             "youtube": ["vote like a Brazilian", "vote like Brazilians midterms", "vote like Brazil midterms", "Brazil Lula midterms Democrats lesson",
                         "vote como brasileiro eleição americana", "Brazilian voters midterms 2026"],
             "youtube_mundo": True,
-            "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"brazil|brasil|lula",
-            "rx_atributo": r"vote|voting|vota|midterm|election|elei[cç]|democrat|republican|trump|ballot",
+            "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"vote (like|as) (a )?brazil|vote como (um )?brasileir|votelikeabrazil|like (a )?brazilian",
+            # 04/11 (17h): só a frase; com "brazil|lula" + voto vinham 306 vídeos sobre a eleição em geral e nenhum com a frase
+            "rx_atributo": r"vote|voting|vota|midterm|election|elei[cç]|democrat|republican|trump|ballot|brazil|brasil|lula",
             "noticias": [{"q": "\"vote like a Brazilian\"", "ed": "US"}, {"q": "\"vote like Brazil\"", "ed": "US"}, {"q": "\"vote like Brazilians\"", "ed": "US"},
                          {"q": "Brazil Lula midterms Democrats", "ed": "US"}, {"q": "\"like Brazil\" midterms vote", "ed": "US"},
                          "\"vote como brasileiro\"", "\"vote like a Brazilian\"", "eleição americana Lula exemplo Brasil democratas"],
