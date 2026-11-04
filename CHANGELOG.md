@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.334 — Caso 034 (oculto): deepfake de Jair Bolsonaro na convenção do PL e a regra do TSE, apoio ao artigo de deepfake (2026-11-04) 🔜
+
+- Pedido do responsável (04/11/2026, 00h23): "cria um caso oculto pra mim da lista", com 4 PDFs anexados (Res. TSE 23.610 compilada; ConJur, "TSE esvazia regra sobre deepfake…", 03/09/2026; petição de Flávio Bolsonaro na RP 0601315-97.2026.6.00.0000 com parecer de Diogo Rais; transcrição parcial da sessão do TSE), o vídeo https://www.youtube.com/watch?v=SvVd0Nu2XpQ ("quero transcrição completa"), Res. 23.610 e 23.755/2026 no site do TSE, Agência Brasil (TSE e Google, ferramenta contra deepfakes) e a ajuda do YouTube (answer/16440338); "buscas redes caso necessário"; foco: apoio ao artigo de deepfake.
+- Primeira parte: novo `scripts/transcrever_video.py` + workflow `transcrever-video.yml` (legendas do YouTube grátis; Apify só com autorização; texto integral no privado, metadados no público `data/casos/<id>/transcricoes.json`).
+- Teste: `python -m unittest discover -s tests` OK. Resultado da transcrição e montagem do caso na próxima atualização desta entrada.
+
 ## C19.333 — Debate da Globo: transcrição do Poder360 entra nas análises (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 00h06): link da transcrição do debate Lula × Flávio Bolsonaro na Globo (23/10/2026) publicada pelo Poder360 (https://static.poder360.com.br/uploads/2026/10/transcricao-debate-Lula-Flavio-Bolsonaro-Globo-23out2026.pdf), "transcrição debate".

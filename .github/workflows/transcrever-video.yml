@@ -1,0 +1,71 @@
+name: Transcrição completa de vídeo do YouTube para um caso (legendas grátis; Apify ou Whisper opcionais)
+
+# 04/11/2026 (caso 034): texto integral só no repositório privado; no público, só metadados e situação.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso (ex.: 034)"
+        required: true
+      video:
+        description: "id do vídeo no YouTube"
+        required: true
+      apify:
+        description: "ler as legendas pela Apify (conta 1, teto US$ 0,05) — só com autorização do responsável"
+        type: boolean
+        default: false
+      whisper:
+        description: "transcrever o áudio se não houver legenda"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: transcrever-video
+  cancel-in-progress: false
+
+jobs:
+  transcrever:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: |
+          pip install -q -U yt-dlp
+          if [ "${{ github.event.inputs.whisper }}" = "true" ]; then pip install -q faster-whisper==1.1.1; sudo apt-get install -y -qq ffmpeg > /dev/null; fi
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Transcrever
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          a="--caso ${{ github.event.inputs.caso }} --video ${{ github.event.inputs.video }}"
+          if [ "${{ github.event.inputs.apify }}" = "true" ]; then a="$a --apify"; fi
+          if [ "${{ github.event.inputs.whisper }}" = "true" ]; then a="$a --whisper"; fi
+          python scripts/transcrever_video.py $a | tee t.txt
+          while IFS= read -r l; do echo "::notice title=Transcrição::$(echo "$l" | cut -c1-600)"; done < t.txt
+      - name: Gravar no repositório privado
+        if: always()
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Transcrição de vídeo, caso ${{ github.event.inputs.caso }} (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Commitar
+        if: always()
+        run: scripts/commit_push.sh "Transcrição de vídeo, caso ${{ github.event.inputs.caso }} (run ${{ github.run_id }})"
