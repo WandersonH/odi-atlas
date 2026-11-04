@@ -30,6 +30,7 @@ import collect_debate_video as cdv  # noqa: E402
 from net import get_json, now_utc  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
+BRUTOS: list[tuple[str, str]] = []  # VTT baixados (cópia no privado, para conferir a leitura)
 
 
 def metadados(vid: str) -> dict:
@@ -79,7 +80,7 @@ def legenda_automatica(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
     import subprocess
     for cli in cdv.CLIENTES:
         extra = [] if cli == "default" else ["--extractor-args", f"youtube:player_client={cli}"]
-        r = subprocess.run(["yt-dlp", "--write-auto-subs", "--sub-langs", "pt-orig,pt", *extra, "--skip-download", "--sub-format", "vtt",
+        r = subprocess.run(["yt-dlp", "--write-auto-subs", "--sub-langs", "pt-orig,pt,pt-BR,pt.*", *extra, "--skip-download", "--sub-format", "vtt",
                             "-o", str(pasta / "%(id)s.%(ext)s"), f"https://www.youtube.com/watch?v={vid}"], capture_output=True, text=True, timeout=600)
         cdv.ERROS.append(f"{cli} automática: " + " | ".join(l for l in (r.stderr or "").splitlines() if "ERROR" in l)[-300:])
         arqs = sorted(glob.glob(str(pasta / f"{vid}*.vtt")))
@@ -129,6 +130,7 @@ def main(argv: list[str]) -> int:
                 segs, fonte = r
         if not segs and "--whisper" in argv:
             segs, fonte = cdv.whisper(vid, Path(t))
+        BRUTOS.extend((f.name, f.read_text(encoding="utf-8", errors="replace")) for f in Path(t).glob("*.vtt"))
     pub = ROOT / "data/casos" / caso / "transcricoes.json"
     pub.parent.mkdir(parents=True, exist_ok=True)
     reg = json.loads(pub.read_text(encoding="utf-8")) if pub.exists() else {"videos": {}}
@@ -137,6 +139,8 @@ def main(argv: list[str]) -> int:
     if segs:
         priv = Path(interno) / "casos" / caso / "transcricoes"
         priv.mkdir(parents=True, exist_ok=True)
+        for nome, txt in BRUTOS:
+            (priv / nome).write_text(txt, encoding="utf-8")
         (priv / f"{vid}.json").write_text(json.dumps({"video": meta, "fonte": fonte, "segmentos": segs}, ensure_ascii=False), encoding="utf-8")
         (priv / f"{vid}.txt").write_text(f"{meta.get('titulo')} · {meta.get('canal')} · https://www.youtube.com/watch?v={vid}\nFonte: {fonte}\n\n" + texto_corrido(segs), encoding="utf-8")
         ent.update(situacao="transcrita", privado=f"casos/{caso}/transcricoes/{vid}.txt", fim_s=segs[-1]["fim"])
