@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.342 — Caso 034 volta ao menu de Casos, ao lado de "Rótulo de IA" (desfaz o C19.338) (2026-11-04) ✅
+
+- Responsável (04/11/2026, 10h45): "não localizei o caso 34 como tínhamos deixado ao lado de rótulo de IA". A leitura do C19.338 ("junto com outro que colocamos na lista" = página "Fake news, deepfake, cheapfake") estava errada: o pedido era manter ao lado de "Rótulo de IA nas campanhas". O botão "Deepfake e a tese do TSE" volta ao menu Casos, logo depois de "Rótulo de IA"; sai do menu Buscas; faixa da página volta a "CADERNO 08 / CASOS". Continua sem cartão no índice de casos e fora da exportação de todos os casos.
+- Teste: `python -m unittest discover -s tests` OK; no Chromium: Casos mostra Casos e dossiês · Rótulo de IA nas campanhas · Deepfake e a tese do TSE; o botão abre o caso (4 tabelas no dossiê); Buscas sem o 034. Sem erro de JS.
+
 ## C19.341 — Caso 034: sessões do TSE que aprovaram as regras de IA (27/02/2024 e 02/03/2026) transcritas (2026-11-04) ✅
 
 - Pergunta do responsável (04/11/2026, 10h34): "teríamos as sessões que deliberaram sobre o tema anteriormente? a que gerou a primeira resolução?". Busca no canal @justicaeleitoral (`transcrever-video.yml`, runs 41839570022, 41839809109 e o seguinte para `_gBmvuKrqvo`), texto integral no privado `casos/034/transcricoes/`:
