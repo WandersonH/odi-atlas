@@ -11,6 +11,7 @@ Metadados (título, canal, data, duração) pela YouTube Data API (YOUTUBE_API_K
 Saídas: privado ODI_INTERNO_DIR/casos/<caso>/transcricoes/<video>.json (segmentos com tempo) e .txt (texto corrido com
 marcas de tempo a cada ~minuto); público data/casos/<caso>/transcricoes.json (só metadados, fonte, nº de palavras, situação).
 Falha vira ⛔ com o diagnóstico, nunca texto inventado.
+`--reler ARQ.vtt`: refaz a transcrição a partir de um VTT já guardado no privado (sem baixar de novo).
 Uso: ODI_INTERNO_DIR=... python scripts/transcrever_video.py --caso 034 --video SvVd0Nu2XpQ [--apify] [--whisper]
      ou --canal @justicaeleitoral --dia 2026-09-01 [--q sessão] [--titulo_rx sess]: procura no canal o vídeo do dia (o mais longo cujo
      título casa com --titulo_rx) e transcreve esse; a lista de candidatos vai para data/casos/<caso>/busca_canal.json.
@@ -73,6 +74,30 @@ def procurar(canal: str, dia: str, q: str | None) -> list[dict]:
     return sorted((m for m in out if not m.get("erro")), key=lambda m: -(m.get("duracao_s") or 0))
 
 
+def vtt_blocos(txt: str) -> list[dict]:
+    """VTT de legenda "pronta" (cada bloco com 1–2 linhas novas, sem marcas de tempo por palavra): junta todas as linhas do bloco.
+    04/11/2026: a faixa pt-BR da sessão do TSE é assim; o leitor das legendas automáticas em rolagem (vtt_segmentos) guardava só a
+    última linha de cada bloco e perdia metade do texto."""
+    import html as _h
+    out = []
+    for bl in re.split(r"\n\n+", txt):
+        ls = [l for l in bl.strip().splitlines() if l.strip()]
+        i = next((k for k, l in enumerate(ls) if "-->" in l), None)
+        if i is None:
+            continue
+        a, b = [x.strip().split(" ")[0] for x in ls[i].split("-->")]
+        seg = lambda t: sum(float(p) * 60 ** k for k, p in enumerate(reversed(t.replace(",", ".").split(":"))))  # noqa: E731
+        texto = " ".join(_h.unescape(re.sub(r"<[^>]+>", "", l)).replace("\xa0", " ") for l in ls[i + 1:])
+        texto = " ".join(texto.split())
+        if texto:
+            out.append({"ini": round(seg(a), 2), "fim": round(seg(b), 2), "texto": texto})
+    return out
+
+
+def ler_vtt(txt: str) -> list[dict]:
+    return cdv.vtt_segmentos(txt) if "<c>" in txt or re.search(r"<\d\d:\d\d", txt) else vtt_blocos(txt)
+
+
 def legenda_automatica(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
     """Só a legenda automática (pt-orig/pt). 04/11/2026: na sessão do TSE (BelBrFw2uuE) a faixa "manual" é uma legenda em rolagem
     mal formatada e o leitor de VTT perdia metade das linhas (10.162 palavras em 2h35); a automática é a mesma usada no vídeo do UOL."""
@@ -85,7 +110,7 @@ def legenda_automatica(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
         cdv.ERROS.append(f"{cli} automática: " + " | ".join(l for l in (r.stderr or "").splitlines() if "ERROR" in l)[-300:])
         arqs = sorted(glob.glob(str(pasta / f"{vid}*.vtt")))
         if arqs:
-            return cdv.vtt_segmentos(Path(arqs[0]).read_text(encoding="utf-8")), f"legenda automática do YouTube ({Path(arqs[0]).name.split('.')[-2]}) · cliente {cli}"
+            return ler_vtt(Path(arqs[0]).read_text(encoding="utf-8")), f"legenda automática do YouTube ({Path(arqs[0]).name.split('.')[-2]}) · cliente {cli}"
     return [], None
 
 
@@ -121,7 +146,11 @@ def main(argv: list[str]) -> int:
     meta = metadados(vid)
     segs, fonte = [], None
     with tempfile.TemporaryDirectory() as t:
-        segs, fonte = legenda_automatica(vid, Path(t)) if "--auto" in argv else cdv.legendas(vid, Path(t))
+        if arg("--reler"):
+            bruto = Path(interno) / arg("--reler")
+            segs, fonte = ler_vtt(bruto.read_text(encoding="utf-8")), f"legenda do YouTube ({bruto.name.split('.')[-2]}), relida do VTT guardado"
+        else:
+            segs, fonte = legenda_automatica(vid, Path(t)) if "--auto" in argv else cdv.legendas(vid, Path(t))
         for x in segs:
             x["texto"] = " ".join(x["texto"].replace("&nbsp;", " ").replace("&gt;&gt;", "»").split())
         if not segs and "--apify" in argv:
@@ -131,9 +160,15 @@ def main(argv: list[str]) -> int:
         if not segs and "--whisper" in argv:
             segs, fonte = cdv.whisper(vid, Path(t))
         BRUTOS.extend((f.name, f.read_text(encoding="utf-8", errors="replace")) for f in Path(t).glob("*.vtt"))
+        if BRUTOS and fonte and "legenda" in fonte:  # relê o VTT com o leitor certo para o formato (rolagem ou blocos prontos)
+            novos = ler_vtt(BRUTOS[0][1])
+            if sum(len(x["texto"].split()) for x in novos) > sum(len(x["texto"].split()) for x in segs):
+                segs = novos
     pub = ROOT / "data/casos" / caso / "transcricoes.json"
     pub.parent.mkdir(parents=True, exist_ok=True)
     reg = json.loads(pub.read_text(encoding="utf-8")) if pub.exists() else {"videos": {}}
+    if meta.get("erro") and reg["videos"].get(vid, {}).get("titulo"):  # sem chave da API (releitura local): mantém os metadados já lidos
+        meta = {k: reg["videos"][vid].get(k) for k in ("id", "titulo", "canal", "canal_id", "publicado_em", "duracao_s", "visualizacoes", "lido_em_utc")}
     ent = {**meta, "tentado_em_utc": now_utc(), "fonte": fonte, "segmentos": len(segs),
            "palavras": sum(len(s["texto"].split()) for s in segs), "diagnostico": [e for e in cdv.ERROS if e.split(": ", 1)[-1]][-12:]}
     if segs:
