@@ -8,8 +8,17 @@ on:
         description: "id do caso (ex.: 034)"
         required: true
       video:
-        description: "id do vídeo no YouTube"
-        required: true
+        description: "id do vídeo no YouTube (vazio = procurar no canal)"
+        default: ""
+      canal:
+        description: "@canal para procurar o vídeo do dia (ex.: @justicaeleitoral)"
+        default: ""
+      dia:
+        description: "dia da publicação (AAAA-MM-DD), com canal"
+        default: ""
+      q:
+        description: "termo de busca no canal (opcional)"
+        default: ""
       apify:
         description: "ler as legendas pela Apify (conta 1, teto US$ 0,05) — só com autorização do responsável"
         type: boolean
@@ -52,7 +61,10 @@ jobs:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          a="--caso ${{ github.event.inputs.caso }} --video ${{ github.event.inputs.video }}"
+          a="--caso ${{ github.event.inputs.caso }}"
+          if [ -n "${{ github.event.inputs.video }}" ]; then a="$a --video ${{ github.event.inputs.video }}"; fi
+          if [ -n "${{ github.event.inputs.canal }}" ]; then a="$a --canal ${{ github.event.inputs.canal }} --dia ${{ github.event.inputs.dia }}"; fi
+          if [ -n "${{ github.event.inputs.q }}" ]; then a="$a --q ${{ github.event.inputs.q }}"; fi
           if [ "${{ github.event.inputs.apify }}" = "true" ]; then a="$a --apify"; fi
           if [ "${{ github.event.inputs.whisper }}" = "true" ]; then a="$a --whisper"; fi
           python scripts/transcrever_video.py $a | tee t.txt

@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.337 — Caso 034: procurar a sessão inteira no canal da Justiça Eleitoral e transcrever (2026-11-04) 🔜
+
+- Pedido do responsável (04/11/2026, 00h52): "https://www.youtube.com/@justicaeleitoral será que conseguimos achar aqui; não vi rede circulação". `transcrever_video.py` ganha `--canal/--dia/--q` (YouTube Data API: canal pelo @, vídeos publicados no dia e no seguinte, mais longos primeiro; escolhe o que tem "sess" no título); `transcrever-video.yml` ganha as entradas. Candidatos em `data/casos/034/busca_canal.json`.
+- Rede de circulação: já existe (`data/casos/034/rede_circulacao.gexf`, 90 nós desenhados), gerada pela busca grátis (runs 41767617741 e 41768222644) depois que a página foi publicada; conferida no Chromium.
+- Teste: `python -m unittest discover -s tests` OK. Resultado da busca no canal na atualização desta entrada.
+
 ## C19.336 — Caso 034 no menu de Casos, ao lado de "Rótulo de IA", sem cartão na lista (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 00h44): "não abriu assim. coloca na lista ao lado com rótulo de IA, mas não gera um card". O caso 034 ganha botão no submenu de Casos logo depois de "Rótulo de IA nas campanhas" ("Deepfake e a tese do TSE"); continua fora dos cartões do índice de casos (`oculto` em `casos.json`/`indice.json`), da exportação de todos os casos e da matriz. Aviso da página reescrito ("Caso sem cartão").

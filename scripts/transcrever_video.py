@@ -12,11 +12,14 @@ Saídas: privado ODI_INTERNO_DIR/casos/<caso>/transcricoes/<video>.json (segment
 marcas de tempo a cada ~minuto); público data/casos/<caso>/transcricoes.json (só metadados, fonte, nº de palavras, situação).
 Falha vira ⛔ com o diagnóstico, nunca texto inventado.
 Uso: ODI_INTERNO_DIR=... python scripts/transcrever_video.py --caso 034 --video SvVd0Nu2XpQ [--apify] [--whisper]
+     ou --canal @justicaeleitoral --dia 2026-09-01 [--q sessão] [--titulo_rx sess]: procura no canal o vídeo do dia (o mais longo cujo
+     título casa com --titulo_rx) e transcreve esse; a lista de candidatos vai para data/casos/<caso>/busca_canal.json.
 """
 from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import tempfile
 import urllib.parse
@@ -46,6 +49,29 @@ def metadados(vid: str) -> dict:
             "visualizacoes": int(st["viewCount"]) if st.get("viewCount") else None, "lido_em_utc": now_utc()}
 
 
+def procurar(canal: str, dia: str, q: str | None) -> list[dict]:
+    """Vídeos de um canal (@handle) publicados entre `dia` e o dia seguinte (UTC−3), pela YouTube Data API; mais longos primeiro.
+    04/11/2026, 00h52: "@justicaeleitoral, será que conseguimos achar aqui" (a sessão inteira do TSE de 01/09/2026)."""
+    import datetime as dt
+    key = os.environ.get("YOUTUBE_API_KEY", "").strip()
+    if not key:
+        return []
+    h = canal.lstrip("@")
+    ch = (get_json(f"{cdv.API}/channels?" + urllib.parse.urlencode({"part": "id", "forHandle": h, "key": key})).get("items") or [{}])[0].get("id")
+    if not ch:
+        print(f"⛔ canal @{h} não encontrado")
+        return []
+    d0 = dt.datetime.fromisoformat(dia).replace(tzinfo=dt.timezone(dt.timedelta(hours=-3)))
+    p = {"part": "snippet", "channelId": ch, "type": "video", "order": "date", "maxResults": 50, "key": key,
+         "publishedAfter": d0.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+         "publishedBefore": (d0 + dt.timedelta(days=2)).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
+    if q:
+        p["q"] = q
+    ids = [x["id"]["videoId"] for x in get_json(f"{cdv.API}/search?{urllib.parse.urlencode(p)}").get("items") or []]
+    out = [metadados(v) for v in ids]
+    return sorted((m for m in out if not m.get("erro")), key=lambda m: -(m.get("duracao_s") or 0))
+
+
 def texto_corrido(segs: list[dict]) -> str:
     linhas, marca = [], -60.0
     for s in segs:
@@ -61,6 +87,17 @@ def main(argv: list[str]) -> int:
     arg = lambda k, d=None: argv[argv.index(k) + 1] if k in argv else d  # noqa: E731
     caso, vid = arg("--caso"), arg("--video")
     interno = os.environ.get("ODI_INTERNO_DIR")
+    if not vid and arg("--canal") and arg("--dia"):
+        cands = procurar(arg("--canal"), arg("--dia"), arg("--q"))
+        for m in cands:
+            print(f"candidato: {m['id']} · {m.get('duracao_s')} s · {m.get('publicado_em')} · {m.get('titulo')}")
+        alvo = [m for m in cands if re.search(arg("--titulo_rx", "sess"), m.get("titulo") or "", re.I)] or cands
+        vid = alvo[0]["id"] if alvo else None
+        if caso and cands:
+            pc = ROOT / "data/casos" / caso / "busca_canal.json"
+            pc.parent.mkdir(parents=True, exist_ok=True)
+            pc.write_text(json.dumps({"canal": arg("--canal"), "dia": arg("--dia"), "q": arg("--q"), "lido_em_utc": now_utc(), "escolhido": vid,
+                                      "candidatos": cands}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     if not (caso and vid and interno):
         print("⛔ uso: --caso ID --video ID, com ODI_INTERNO_DIR")
         return 1
