@@ -4,6 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.344 — Caso 035: "vote como brasileiro" ("vote like a Brazilian") nas campanhas americanas, de 25/10 até hoje (2026-11-04) 🔜
+
+- Pedido do responsável (04/11/2026, 16h46): "novo caso postagens com Vote como brasileiro usado nas campanhas americanas de 25 até hoje".
+- Busca prévia (WebSearch, 04/11): nenhuma página encontrada com "vote like a Brazilian" ligada às eleições americanas; origem e primeira ocorrência ficam ⛔ até a coleta.
+- `casos.json` (035; desde 2026-10-25; termos em inglês e português; tetos pagos 0), `collect_caso_busca.py` (Trends mundo, por país e por estado dos EUA; YouTube no mundo; notícias edição EUA e Brasil, 11 dias; checagens), laço padrão do `casos-busca.yml`, seção `#caso035` na página (menu de Casos, com cartão), `estado_evidencia.json`.
+- Teste: `python -m unittest discover -s tests` OK. Resultado da coleta grátis na atualização desta entrada.
+
 ## C19.343 — Caso 034: as sessões de 2024 e de março de 2026 entram na página (2026-11-04) ✅
 
 - Pergunta do responsável (04/11/2026, 10h52): "tu levou essas partes de IA pra lá?". Não tinham ido: o C19.341 só transcreveu. Agora o dossiê do 034 traz: tabela das três sessões do TSE (27/02/2024, 02/03/2026, 01/09/2026) com o que foi decidido, link do vídeo oficial e tamanho da transcrição; linha do tempo de 27/02/2024 e 02/03/2026 com o minuto no vídeo (IA aos 2:17:33 e proclamação às 2:45:04 em 2024; relator aos 21:21, IA aos 23:55 e aprovação às 27:54 em 2026); dois trechos novos de até 25 palavras (Cármen Lúcia, "vedação absoluta…", 2:18:00; Nunes Marques, "limitação temporal específica (72 horas antes e 24 horas após o pleito)…", 23:55); um ponto de leitura para o artigo (da "vedação absoluta" de 2024 à vedação condicionada à propaganda de 2026, com o mesmo texto do 9º-C, § 1º).
