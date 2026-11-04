@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: "29 15 * * 1"   # toda segunda, 12h29 em Brasília
   workflow_dispatch:
+    inputs:
+      partes:
+        description: "o que ler: tudo (Trends, estados e acervo) ou só uf (mapa por estado)"
+        default: "tudo"
 
 concurrency:
   group: termos-desinformacao
@@ -36,7 +40,8 @@ jobs:
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
         run: |
-          rc=0; python scripts/termos_desinformacao.py --trends --corpus > f.txt 2>&1 || rc=$?
+          a="--trends --uf --corpus"; if [ "${{ github.event.inputs.partes }}" = "uf" ]; then a="--uf"; fi
+          rc=0; python scripts/termos_desinformacao.py $a > f.txt 2>&1 || rc=$?
           while IFS= read -r l; do echo "::notice title=Termos::$(echo "$l" | cut -c1-900)"; done < f.txt
           exit $rc
       - name: Commitar

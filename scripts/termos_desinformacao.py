@@ -245,6 +245,41 @@ def trends() -> dict:
     return out
 
 
+TRENDS_UF = ["deepfake", "deep fake", "fake news", "desinformação"]
+
+
+def trends_uf() -> dict:
+    """Interesse por estado (Google Trends, Brasil, resolução UF), uma consulta por termo — 04/11/2026, 01h05: "se quiser mapa de
+    'deepfake' por UF, precisa rodar uma consulta nova. pode implantar". Termo sozinho: o índice 0–100 de cada UF é a parcela das
+    buscas do estado que foram por aquele termo, relativa ao estado com a maior parcela (não é volume nem comparação entre termos)."""
+    from collect_trends import Trends
+    hoje = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=3)).strftime("%Y-%m-%d")
+    janelas = [("2017-01-01 " + hoje, "2017 até hoje"), ("today 12-m", "últimos 12 meses")]
+    t = Trends(pause=5)
+    out = {"termos": TRENDS_UF, "janelas": [{"id": j, "rotulo": r} for j, r in janelas], "consultas": []}
+    for termo in TRENDS_UF:
+        for jan, rot in janelas:
+            reg = {"termo": termo, "janela": jan, "rotulo": rot, "ufs": None}
+            for tentativa in range(3):
+                try:
+                    ws = {w["id"]: w for w in t.explore([termo], jan, "BR")}
+                    gw = next((w for k, w in ws.items() if k.startswith("GEO_MAP")), None)
+                    gm = t.widget("comparedgeo", gw) if gw else None
+                    reg["ufs"] = [{"uf": (r.get("geoCode") or "").replace("BR-", ""), "nome": r.get("geoName"),
+                                   "v": (r.get("value") or [None])[0], "tem_dado": bool((r.get("hasData") or [bool((r.get("value") or [0])[0])])[0])}
+                                  for r in (gm or {}).get("default", {}).get("geoMapData", [])]
+                    reg.pop("erro", None)
+                    break
+                except Exception as e:  # noqa: BLE001
+                    reg["erro"] = f"{type(e).__name__}: {str(e)[:160]}"
+                    if "429" not in str(e) or tentativa == 2:
+                        break
+                    time.sleep(90 * (tentativa + 1))
+            out["consultas"].append(reg)
+            print(f"trends UF {termo} · {rot}: {len(reg['ufs'] or [])} UFs {reg.get('erro', '')}")
+    return out
+
+
 def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else list(argv)
     dest = Path("data/termos")
@@ -258,6 +293,9 @@ def main(argv=None) -> int:
                          "aviso": "Google Trends: índice 0–100 relativo ao maior ponto de cada consulta (não é volume). \"fake news\" aparece nas duas consultas como âncora; termos sem volume suficiente aparecem como 0. \"Montagem\" e \"inteligência artificial\" são palavras de uso geral: a busca não separa o sentido de manipulação. Universo de buscas ⛔ (o Google não informa)."}
         for c in out["trends"]["consultas"]:
             print(f"trends {c['geo']} {c['id']}: {len(c['pontos'] or [])} meses {c.get('erro', '')}")
+    if "--uf" in argv:
+        out["trends_uf"] = {**trends_uf(), "lido_em_utc": now_utc(),
+                            "aviso": "Google Trends por estado: uma consulta por termo; índice 0–100 = parcela das buscas do estado que foram pelo termo, relativa ao estado com a maior parcela. Não é volume, não soma entre estados e não compara termos entre si. Estados com pouca busca aparecem como 0 (sem dado suficiente). Universo de buscas ⛔ (o Google não informa)."}
     if "--corpus" in argv:
         interno = os.environ.get("ODI_INTERNO_DIR")
         if not interno:

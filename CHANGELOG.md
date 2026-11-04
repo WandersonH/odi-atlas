@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.339 — "Fake news, deepfake, cheapfake": interesse por estado no Google Trends (2026-11-04) 🔜
+
+- Pedido do responsável (04/11/2026, 01h05): "Trends por estado só existe para candidatos, não para os termos. Se quiser mapa de 'deepfake' por UF, precisa rodar uma consulta nova. pode implantar".
+- `termos_desinformacao.py --uf`: uma consulta por termo (deepfake, deep fake, fake news, desinformação), Brasil por UF, em duas janelas (2017 até hoje; últimos 12 meses); grava `trends_uf` em `data/termos/desinformacao.json`. `termos-desinformacao.yml` passa a ler os estados toda segunda e ganha a entrada `partes=uf` (só o mapa).
+- Teste: `python -m unittest discover -s tests` OK. Leitura e mapa na página na atualização desta entrada.
+
 ## C19.338 — Caso 034 vai para o menu de Buscas, junto de "Fake news, deepfake, cheapfake" (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 00h56): "esse caso deve ficar junto com outro que colocamos na lista". Leitura adotada: a página "Fake news, deepfake, cheapfake" (C19.201), que também foi feita para o artigo de deepfake. O botão "Deepfake e a tese do TSE" sai do menu de Casos (depois de "Rótulo de IA") e entra no de Buscas, logo depois dela; a faixa da página passa a "CADERNO 05 / BUSCAS · CASO 034". Continua sem cartão no índice de casos e fora da exportação de todos os casos.
