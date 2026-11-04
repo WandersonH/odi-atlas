@@ -1,7 +1,7 @@
 {
  "caso": "007",
  "titulo": "\"Lula amassa a bandeira\" (fake news do dia da eleição)",
- "run_started_utc": "2026-11-02T21:56:28Z",
+ "run_started_utc": "2026-11-04T18:39:44Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-03",
@@ -9,120 +9,23 @@
   {
    "rede": "tiktok",
    "teto_usd": 0.2,
-   "gasto_antes_usd": 0.0,
-   "teto_execucao_usd": 0.2,
-   "termos": [
-    {
-     "termo": "Lula amassa bandeira",
-     "ator": "apidojo/tiktok-scraper",
-     "itens": 222,
-     "lidos": 222,
-     "no_periodo": 222,
-     "no_limite": true,
-     "run": "pa6bcI8AALAa0jcV3",
-     "custo_usd": 0.0948,
-     "erro": null,
-     "chaves_1o_item": [
-      "bookmarks",
-      "channel",
-      "collabInfo",
-      "comments",
-      "hashtags",
-      "id",
-      "inputSource",
-      "likes",
-      "poi",
-      "postPage",
-      "shares",
-      "song",
-      "subtitleInformation",
-      "title",
-      "uploadedAt",
-      "uploadedAtFormatted",
-      "video",
-      "views"
-     ],
-     "mais_antigo": "2026-10-04T10:18:37Z"
-    },
-    {
-     "termo": "Lula bandeira amassada",
-     "ator": "apidojo/tiktok-scraper",
-     "itens": 143,
-     "lidos": 143,
-     "no_periodo": 143,
-     "no_limite": false,
-     "run": "tfGDICXbmYxfDUFre",
-     "custo_usd": 0.0632,
-     "erro": null,
-     "chaves_1o_item": [
-      "bookmarks",
-      "channel",
-      "collabInfo",
-      "comments",
-      "hashtags",
-      "id",
-      "inputSource",
-      "likes",
-      "poi",
-      "postPage",
-      "shares",
-      "song",
-      "subtitleInformation",
-      "title",
-      "uploadedAt",
-      "uploadedAtFormatted",
-      "video",
-      "views"
-     ],
-     "mais_antigo": "2026-10-04T15:27:46Z"
-    }
-   ],
-   "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 222,
-   "custo_usd": 0.158,
-   "status": "ok",
-   "itens_no_periodo": 365
+   "gasto_antes_usd": 0.3392,
+   "teto_execucao_usd": -0.1392,
+   "termos": [],
+   "custo_usd": 0.0,
+   "status": "⛔ teto da rede esgotado",
+   "itens_no_periodo": 0
   },
   {
-   "rede": "kwai",
-   "teto_usd": 0.1,
-   "gasto_antes_usd": 0.0,
-   "teto_execucao_usd": 0.1,
-   "termos": [
-    {
-     "termo": "Lula amassa bandeira",
-     "ator": "unfenced-group/kwai-scraper",
-     "itens": 0,
-     "lidos": 0,
-     "no_periodo": 0,
-     "no_limite": false,
-     "run": "QSefNjYCX5GsfckyJ",
-     "custo_usd": 0,
-     "erro": null,
-     "chaves_1o_item": null,
-     "mais_antigo": null
-    },
-    {
-     "termo": "Lula bandeira amassada",
-     "ator": "unfenced-group/kwai-scraper",
-     "itens": 0,
-     "lidos": 0,
-     "no_periodo": 0,
-     "no_limite": false,
-     "run": "XnvJdaOg6OBDxeYPl",
-     "custo_usd": 0,
-     "erro": null,
-     "chaves_1o_item": null,
-     "mais_antigo": null
-    }
-   ],
-   "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 23,
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
    "custo_usd": 0.0,
-   "status": "⛔ nada no período",
+   "trends_pontos": 169,
+   "noticias": 16,
+   "status": "ok",
    "itens_no_periodo": 0
   }
  ],
  "itens_acumulados": 789,
- "custo_usd": 0.158
+ "custo_usd": 0.0
 }
