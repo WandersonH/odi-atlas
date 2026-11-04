@@ -72,6 +72,22 @@ def procurar(canal: str, dia: str, q: str | None) -> list[dict]:
     return sorted((m for m in out if not m.get("erro")), key=lambda m: -(m.get("duracao_s") or 0))
 
 
+def legenda_automatica(vid: str, pasta: Path) -> tuple[list[dict], str | None]:
+    """Só a legenda automática (pt-orig/pt). 04/11/2026: na sessão do TSE (BelBrFw2uuE) a faixa "manual" é uma legenda em rolagem
+    mal formatada e o leitor de VTT perdia metade das linhas (10.162 palavras em 2h35); a automática é a mesma usada no vídeo do UOL."""
+    import glob
+    import subprocess
+    for cli in cdv.CLIENTES:
+        extra = [] if cli == "default" else ["--extractor-args", f"youtube:player_client={cli}"]
+        r = subprocess.run(["yt-dlp", "--write-auto-subs", "--sub-langs", "pt-orig,pt", *extra, "--skip-download", "--sub-format", "vtt",
+                            "-o", str(pasta / "%(id)s.%(ext)s"), f"https://www.youtube.com/watch?v={vid}"], capture_output=True, text=True, timeout=600)
+        cdv.ERROS.append(f"{cli} automática: " + " | ".join(l for l in (r.stderr or "").splitlines() if "ERROR" in l)[-300:])
+        arqs = sorted(glob.glob(str(pasta / f"{vid}*.vtt")))
+        if arqs:
+            return cdv.vtt_segmentos(Path(arqs[0]).read_text(encoding="utf-8")), f"legenda automática do YouTube ({Path(arqs[0]).name.split('.')[-2]}) · cliente {cli}"
+    return [], None
+
+
 def texto_corrido(segs: list[dict]) -> str:
     linhas, marca = [], -60.0
     for s in segs:
@@ -104,7 +120,9 @@ def main(argv: list[str]) -> int:
     meta = metadados(vid)
     segs, fonte = [], None
     with tempfile.TemporaryDirectory() as t:
-        segs, fonte = cdv.legendas(vid, Path(t))
+        segs, fonte = legenda_automatica(vid, Path(t)) if "--auto" in argv else cdv.legendas(vid, Path(t))
+        for x in segs:
+            x["texto"] = " ".join(x["texto"].replace("&nbsp;", " ").replace("&gt;&gt;", "»").split())
         if not segs and "--apify" in argv:
             r = cdv.apify_legendas([vid]).get(vid)
             if r:

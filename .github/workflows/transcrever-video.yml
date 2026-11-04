@@ -19,6 +19,10 @@ on:
       q:
         description: "termo de busca no canal (opcional)"
         default: ""
+      auto:
+        description: "usar só a legenda automática (quando a faixa manual vem quebrada)"
+        type: boolean
+        default: false
       apify:
         description: "ler as legendas pela Apify (conta 1, teto US$ 0,05) — só com autorização do responsável"
         type: boolean
@@ -65,6 +69,7 @@ jobs:
           if [ -n "${{ github.event.inputs.video }}" ]; then a="$a --video ${{ github.event.inputs.video }}"; fi
           if [ -n "${{ github.event.inputs.canal }}" ]; then a="$a --canal ${{ github.event.inputs.canal }} --dia ${{ github.event.inputs.dia }}"; fi
           if [ -n "${{ github.event.inputs.q }}" ]; then a="$a --q ${{ github.event.inputs.q }}"; fi
+          if [ "${{ github.event.inputs.auto }}" = "true" ]; then a="$a --auto"; fi
           if [ "${{ github.event.inputs.apify }}" = "true" ]; then a="$a --apify"; fi
           if [ "${{ github.event.inputs.whisper }}" = "true" ]; then a="$a --whisper"; fi
           python scripts/transcrever_video.py $a | tee t.txt
