@@ -4,6 +4,11 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.338 — Caso 034 vai para o menu de Buscas, junto de "Fake news, deepfake, cheapfake" (2026-11-04) ✅
+
+- Pedido do responsável (04/11/2026, 00h56): "esse caso deve ficar junto com outro que colocamos na lista". Leitura adotada: a página "Fake news, deepfake, cheapfake" (C19.201), que também foi feita para o artigo de deepfake. O botão "Deepfake e a tese do TSE" sai do menu de Casos (depois de "Rótulo de IA") e entra no de Buscas, logo depois dela; a faixa da página passa a "CADERNO 05 / BUSCAS · CASO 034". Continua sem cartão no índice de casos e fora da exportação de todos os casos.
+- Teste: `python -m unittest discover -s tests` OK; no Chromium: Buscas mostra Google Trends · Fake news, deepfake, cheapfake · Deepfake e a tese do TSE · Debate da Band · Debate da Globo; o botão abre o caso com o menu Buscas ativo; Casos volta a Casos e dossiês · Rótulo de IA · #brasilinteiro. Sem erro de JS.
+
 ## C19.337 — Caso 034: procurar a sessão inteira no canal da Justiça Eleitoral e transcrever (2026-11-04) 🔜
 
 - Pedido do responsável (04/11/2026, 00h52): "https://www.youtube.com/@justicaeleitoral será que conseguimos achar aqui; não vi rede circulação". `transcrever_video.py` ganha `--canal/--dia/--q` (YouTube Data API: canal pelo @, vídeos publicados no dia e no seguinte, mais longos primeiro; escolhe o que tem "sess" no título); `transcrever-video.yml` ganha as entradas. Candidatos em `data/casos/034/busca_canal.json`.
