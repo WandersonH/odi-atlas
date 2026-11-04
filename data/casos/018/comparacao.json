@@ -1,6 +1,6 @@
 {
  "caso": "018",
- "gerado_em_utc": "2026-11-03T16:43:38Z",
+ "gerado_em_utc": "2026-11-04T16:40:53Z",
  "corte_pos_eleicao": "2026-10-25",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -142,14 +142,14 @@
     "respostas_entre_publicacoes": 148
    },
    "x_agora": {
-    "publicacoes": 1290,
-    "contas": 895,
-    "visualizacoes": 1219929,
-    "curtidas": 78163,
-    "respostas_recebidas": 3029,
-    "compartilhamentos": 25557,
+    "publicacoes": 1329,
+    "contas": 925,
+    "visualizacoes": 1222786,
+    "curtidas": 78234,
+    "respostas_recebidas": 3038,
+    "compartilhamentos": 25579,
     "primeiro_dia": "2026-10-26",
-    "ultimo_dia": "2026-11-02",
+    "ultimo_dia": "2026-11-03",
     "pico": {
      "dia": "2026-10-29",
      "publicacoes": 462
@@ -163,7 +163,8 @@
      460,
      1,
      97,
-     48
+     55,
+     32
     ],
     "contas_10mil": [
      {
@@ -175,7 +176,7 @@
      {
       "rede": "x",
       "conta": "luizlima10",
-      "seguidores": 13141,
+      "seguidores": 13146,
       "publicacoes": 5
      },
      {
@@ -195,6 +196,12 @@
       "conta": "analelis",
       "seguidores": 16544,
       "publicacoes": 4
+     },
+     {
+      "rede": "x",
+      "conta": "Ellian73101662",
+      "seguidores": 13300,
+      "publicacoes": 3
      },
      {
       "rede": "x",
@@ -224,12 +231,6 @@
       "rede": "x",
       "conta": "damadanoite14",
       "seguidores": 98251,
-      "publicacoes": 2
-     },
-     {
-      "rede": "x",
-      "conta": "Ellian73101662",
-      "seguidores": 13300,
       "publicacoes": 2
      },
      {
@@ -376,12 +377,12 @@
       33
      ],
      [
-      "diz",
-      97
-     ],
-     [
       "brasil",
       192
+     ],
+     [
+      "diz",
+      97
      ],
      [
       "passando",
@@ -392,34 +393,34 @@
       39
      ],
      [
-      "brasileiras",
+      "crescimento",
       17
      ]
     ],
     "agora": [
      [
       "giants",
-      154
+      157
      ],
      [
       "boicote",
-      1087
+      1114
      ],
      [
       "fósforo",
-      200
+      202
      ],
      [
       "palito",
-      204
+      206
      ],
      [
       "protocolo",
-      68
+      70
      ],
      [
       "sleeping",
-      118
+      121
      ],
      [
       "listas",
@@ -427,7 +428,7 @@
      ],
      [
       "escolher",
-      51
+      52
      ],
      [
       "compromissos",
@@ -435,7 +436,7 @@
      ],
      [
       "janeiro",
-      113
+      114
      ],
      [
       "investigação",
@@ -454,7 +455,7 @@
       81
      ],
      [
-      "profissionais",
+      "escolhas",
       42
      ]
     ]
@@ -479,15 +480,11 @@
      "epoca": [],
      "depois": [
       [
-       "presidente",
+       "muita",
        0
       ],
       [
-       "diz",
-       0
-      ],
-      [
-       "ano",
+       "palavras",
        0
       ],
       [
@@ -495,27 +492,31 @@
        0
       ],
       [
-       "entrevista",
+       "fosse",
        0
       ],
       [
-       "kkkk",
+       "diferença",
        0
       ],
       [
-       "boicotar",
+       "daqui",
        0
       ],
       [
-       "dar",
+       "dizer",
        0
       ],
       [
-       "fome",
+       "prefeito",
        0
       ],
       [
-       "vão",
+       "pouco",
+       0
+      ],
+      [
+       "baixo",
        0
       ]
      ]
@@ -541,8 +542,8 @@
      "POS": 6.2
     },
     "x_agora": {
-     "n": 1290,
-     "NEG": 48.1,
+     "n": 1329,
+     "NEG": 48.2,
      "NEU": 49.7,
      "POS": 2.2
     },
@@ -757,14 +758,14 @@
     "respostas_entre_publicacoes": 5
    },
    "x_agora": {
-    "publicacoes": 131,
-    "contas": 113,
-    "visualizacoes": 6498385,
-    "curtidas": 74726,
-    "respostas_recebidas": 1923,
-    "compartilhamentos": 4795,
+    "publicacoes": 135,
+    "contas": 117,
+    "visualizacoes": 6530669,
+    "curtidas": 77950,
+    "respostas_recebidas": 2000,
+    "compartilhamentos": 5151,
     "primeiro_dia": "2026-10-25",
-    "ultimo_dia": "2026-11-02",
+    "ultimo_dia": "2026-11-03",
     "pico": {
      "dia": "2026-10-27",
      "publicacoes": 34
@@ -779,7 +780,8 @@
      11,
      6,
      5,
-     5
+     5,
+     4
     ],
     "contas_10mil": [
      {
@@ -839,19 +841,19 @@
      {
       "rede": "x",
       "conta": "damadanoite14",
-      "seguidores": 98284,
+      "seguidores": 98272,
       "publicacoes": 1
      },
      {
       "rede": "x",
       "conta": "CuscoB222",
-      "seguidores": 29250,
+      "seguidores": 29808,
       "publicacoes": 1
      },
      {
       "rede": "x",
       "conta": "Kabulozocensura",
-      "seguidores": 53033,
+      "seguidores": 53083,
       "publicacoes": 1
      }
     ]
@@ -909,11 +911,15 @@
    ],
    "filtro_pertinencia": "(bilh|congel|bloquei|corte|cortou|cortar).{0,200}(sa[uú]de|educa)|(sa[uú]de|educa).{0,200}(bilh|congel|bloquei|corte|cortou|cortar)",
    "titulo": null,
-   "contas_nos_dois_periodos": 1,
+   "contas_nos_dois_periodos": 2,
    "contas_10mil_nos_dois": [
     [
+     "Estadao",
+     6811716
+    ],
+    [
      "damadanoite14",
-     98284
+     98272
     ]
    ],
    "palavras_tipicas": {
@@ -943,16 +949,20 @@
       8
      ],
      [
-      "bloqueio",
+      "foram",
       14
      ],
      [
-      "foram",
+      "bloqueio",
       14
      ],
      [
       "bloqueia",
       7
+     ],
+     [
+      "afetados",
+      6
      ],
      [
       "afetadas",
@@ -971,10 +981,6 @@
       6
      ],
      [
-      "afetados",
-      6
-     ],
-     [
       "total",
       9
      ]
@@ -982,15 +988,15 @@
     "agora": [
      [
       "cortou",
-      55
+      56
      ],
      [
       "cortar",
-      40
+      41
      ],
      [
       "saude",
-      17
+      18
      ],
      [
       "sancionou",
@@ -1009,6 +1015,10 @@
       14
      ],
      [
+      "senado",
+      14
+     ],
+     [
       "news",
       14
      ],
@@ -1017,8 +1027,8 @@
       14
      ],
      [
-      "senado",
-      14
+      "verdade",
+      13
      ],
      [
       "reduzir",
@@ -1029,16 +1039,12 @@
       13
      ],
      [
-      "verdade",
-      13
+      "professores",
+      12
      ],
      [
       "paulo",
       12
-     ],
-     [
-      "professores",
-      11
      ]
     ]
    },
@@ -1050,10 +1056,10 @@
      "POS": 0.0
     },
     "x_agora": {
-     "n": 131,
-     "NEG": 51.1,
-     "NEU": 45.0,
-     "POS": 3.8
+     "n": 135,
+     "NEG": 50.4,
+     "NEU": 45.2,
+     "POS": 4.4
     },
     "instagram_agora": {
      "n": 2,
