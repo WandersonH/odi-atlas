@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.341 — Caso 034: sessões do TSE que aprovaram as regras de IA (27/02/2024 e 02/03/2026) transcritas (2026-11-04) ✅
+
+- Pergunta do responsável (04/11/2026, 10h34): "teríamos as sessões que deliberaram sobre o tema anteriormente? a que gerou a primeira resolução?". Busca no canal @justicaeleitoral (`transcrever-video.yml`, runs 41839570022, 41839809109 e o seguinte para `_gBmvuKrqvo`), texto integral no privado `casos/034/transcricoes/`:
+  - Sessão Plenária de 27/02/2024 (hr05rWalyGk, 13.066 s, 25.542 palavras): aprovação das resoluções das eleições de 2024 relatadas por Cármen Lúcia, entre elas a 23.732/2024, que criou os arts. 9º-B e 9º-C, § 1º; a apresentação das regras de IA (rótulo, chatbots e avatares, vedação absoluta de deep fake) está por volta de 2:17–2:21.
+  - Sessão Plenária de 02/03/2026 (_gBmvuKrqvo, 2.926 s, 4.369 palavras): Instrução 0600751-65, alteração da 23.610 relatada por Nunes Marques (Res. 23.755/2026); 326 contribuições por SRE e audiência pública; o relator apresenta o § 3º-A do art. 9º-B (72 h antes e 24 h depois) a partir de ~21:20.
+  - Sessão Plenária de 03/03/2026 (kk_5_t9fyoc, 10.586 palavras) também transcrita (o buscador escolheu o vídeo mais longo do intervalo); cita IA três vezes.
+- Leitura dos VTT conferida: os três usam blocos de duas linhas; o leitor novo (C19.337) traz o dobro de palavras do leitor antigo em todos.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.340 — Caso 034: os processos de IA e deepfake na Justiça Eleitoral (dados abertos do TSE) e peças anexadas (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 01h16): "você consegue consultar processos que temos deste e sobre IA aqui? https://consultaunificadapje.tse.jus.br/ e anexar documentos". A consulta pública do PJe pede código de imagem (CAPTCHA), que o Atlas não contorna; a lista vem dos dados abertos do TSE que o Atlas já lê (`collect_processual.py`, arquivo gerado pelo TSE em 03/11/2026).
