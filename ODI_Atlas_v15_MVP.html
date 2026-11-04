@@ -2962,6 +2962,7 @@ fetch('./data/ia/rotulo.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).th
     <p>O artigo "Da notícia falsa ao conteúdo sintético" reconstrói como <i>fake news</i>, <i>deepfake</i> e <i>cheapfake</i> entraram na Comunicação e no Direito Eleitoral brasileiros. Esta página compara essa recepção acadêmica com o uso fora dela: o interesse de busca no Google desde 2017 e a frequência dos termos, e dos nomes populares para os mesmos fenômenos ("fake", "montagem", "feito com IA"), nos comentários e publicações que o Atlas coletou.</p></div>
   <div class="td-aviso"><strong>Como ler.</strong> O Google Trends dá um índice de 0 a 100 relativo ao maior ponto de cada consulta, não volume; "fake news" entra nas duas consultas como referência comum. O acervo do Atlas foi coletado para outras perguntas (comentários aos posts das campanhas e casos de 2026), então é uma <b>amostra de conveniência</b>: as taxas valem para os textos lidos, não para as redes inteiras. Universo de buscas e de comentários: ⛔ não informado pelas plataformas. Os marcos acadêmicos são os primeiros registros localizados no corpus do artigo.</div>
   <div id="tdCorpo"><p class="yt-cloudnote">Carregando…</p></div>
+  <div id="tdUf"></div>
   <div id="tdRede"></div>
 </section>
 <style>
@@ -7537,6 +7538,35 @@ Promise.all(['dossie.json','transcricoes.json'].map(f=>fetch('./data/casos/034/'
  h+=card('06 · Para o artigo','Pontos de leitura',`<ul style="font-size:13.5px;margin:4px 0;padding-left:18px">${D.leituras_para_o_artigo.map(x=>`<li style="margin:5px 0">${e(x)}</li>`).join('')}</ul><p class="yt-cloudnote">Leitura da equipe para orientar a análise; não é veredito jurídico.</p>`);
  h+=card('Fontes','',`<ol style="font-size:12.5px;padding-left:18px">${D.fontes.map(f=>`<li>${lk(f)}</li>`).join('')}</ol><p class="yt-cloudnote">As seções abaixo (Google Trends, YouTube, notícias e checagens) são coletas automáticas e grátis do Atlas. As redes pagas (X, Instagram, Facebook, TikTok, Kwai) estão com teto US$ 0 até autorização.</p>`);
  el.innerHTML=h;});
+})();
+</script>
+<script>
+/* Termos por estado (C19.339, 04/11/2026): data/termos/desinformacao.json → trends_uf. Uma consulta por termo; índice relativo dentro do termo. */
+(function(){const el=document.getElementById('tdUf');if(!el)return;
+const e=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const G={RR:[2,0],AP:[4,0],AM:[1,1],PA:[3,1],MA:[4,1],CE:[5,1],RN:[6,1],AC:[0,2],RO:[1,2],MT:[2,2],TO:[3,2],PI:[4,2],PE:[5,2],PB:[6,2],MS:[2,3],GO:[3,3],DF:[4,3],BA:[5,3],AL:[6,3],PR:[2,4],SP:[3,4],MG:[4,4],ES:[5,4],SE:[6,4],SC:[2,5],RJ:[4,5],RS:[2,6]};
+const REG={N:['AC','AP','AM','PA','RO','RR','TO'],NE:['AL','BA','CE','MA','PB','PE','PI','RN','SE'],CO:['DF','GO','MT','MS'],SE:['ES','MG','RJ','SP'],S:['PR','RS','SC']};
+const mix=f=>{const a=[23,34,56],b=[239,231,214];return `rgb(${a.map((v,i)=>Math.round(b[i]+(v-b[i])*f)).join(',')})`;};
+let U=null,termo='deepfake',jan=null;
+function draw(){const C=U.consultas.find(c=>c.termo===termo&&c.janela===jan);
+ const chips=(id,arr,sel)=>`<div class="td-chips" id="${id}" role="group">${arr.map(([v,r])=>`<button type="button" data-v="${e(v)}" aria-pressed="${v===sel}">${e(r)}</button>`).join('')}</div>`;
+ let h=`<div class="td-card"><div class="eyebrow">Google Trends · interesse por estado</div><h2 class="tk-h2">Onde cada termo pesa mais nas buscas</h2>
+  ${chips('tdUfT',U.termos.map(t=>[t,t]),termo)}${chips('tdUfJ',U.janelas.map(j=>[j.id,j.rotulo]),jan)}`;
+ if(!C||!C.ufs||!C.ufs.length){h+=`<div class="odi-signal">⛔ ${e((C&&C.erro)||'Sem dado do Google para este termo nesta janela.')}</div>`;}
+ else{const V=Object.fromEntries(C.ufs.map(u=>[u.uf,u]));const mx=Math.max(1,...C.ufs.map(u=>u.v||0)),lo=Math.min(...C.ufs.filter(u=>u.v).map(u=>u.v));const S=58,W=7*S+20,H=7*S+20;
+  const sv=Object.entries(G).map(([uf,[x,y]])=>{const u=V[uf],v=u&&u.v||0,f=mx>lo?(v-lo)/(mx-lo):1;return `<g><rect x="${10+x*S}" y="${10+y*S}" width="${S-4}" height="${S-4}" fill="${v?mix(.12+.88*f):'#f3eee3'}" stroke="#d9d3c4"><title>${e(u?u.nome:uf)}: ${v||'sem dado suficiente'}</title></rect><text x="${10+x*S+(S-4)/2}" y="${10+y*S+22}" text-anchor="middle" font-family="Courier New" font-size="12" font-weight="700" fill="${f>.4?'#fff':'#172238'}">${uf}</text><text x="${10+x*S+(S-4)/2}" y="${10+y*S+40}" text-anchor="middle" font-family="Courier New" font-size="11" fill="${f>.4?'#fff':'#172238'}">${v||'—'}</text></g>`;}).join('');
+  const ord=C.ufs.filter(u=>u.v).sort((a,b)=>b.v-a.v);const zero=C.ufs.filter(u=>!u.v).map(u=>u.uf);
+  const media=Object.entries(REG).map(([r,ls])=>{const vs=ls.map(x=>(V[x]||{}).v||0).filter(Boolean);return [r,vs.length?Math.round(vs.reduce((a,b)=>a+b,0)/vs.length):null,vs.length,ls.length];});
+  const RN={N:'Norte',NE:'Nordeste',CO:'Centro-Oeste',SE:'Sudeste',S:'Sul'};
+  h+=`<div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;margin-top:8px"><svg viewBox="0 0 ${W} ${H}" style="flex:0 1 420px;max-width:100%" role="img" aria-label="Mapa em grade dos estados: ${e(termo)}">${sv}</svg>
+   <div style="flex:1 1 260px;min-width:0"><div style="display:flex;align-items:center;gap:6px;font:11px 'Courier New',monospace;color:#56616a;margin-bottom:10px"><span>${lo}</span><i style="display:inline-block;width:140px;height:10px;background:linear-gradient(90deg,${mix(.12)},${mix(1)})"></i><span>${mx}</span><span>· cor do menor ao maior índice deste termo</span></div><div class="eyebrow">Ordem dos estados</div><div class="db-scroll" style="max-height:330px"><table class="db-tab"><thead><tr><th>#</th><th>Estado</th><th>Índice</th></tr></thead><tbody>${ord.map((u,i)=>`<tr><td class="n">${i+1}</td><td>${e(u.nome)}</td><td class="n"><div style="display:flex;align-items:center;gap:6px;justify-content:flex-end"><i style="display:inline-block;height:8px;width:${Math.round(60*u.v/mx)}px;background:#172238"></i>${u.v}</div></td></tr>`).join('')}</tbody></table></div>
+   <p class="yt-cloudnote" style="margin-top:8px"><b>Média simples por região</b> (estados com dado): ${media.map(([r,m,n,t])=>`${RN[r]} ${m==null?'—':m} <small>(${n}/${t})</small>`).join(' · ')}</p>
+   ${zero.length?`<p class="yt-cloudnote">Sem busca suficiente para o Google mostrar: ${zero.join(', ')}.</p>`:''}</div></div>`;}
+ h+=`<p class="yt-cloudnote">${e(U.aviso)} Lido em ${new Date(U.lido_em_utc).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'})}; atualizado toda segunda. Mapa em grade: cada quadrado é um estado na posição aproximada, todos do mesmo tamanho. <b>Cuidado na leitura:</b> estados com pouca população (AP, RR, AC) costumam aparecer no topo porque o Google calcula sobre uma amostra pequena de buscas; diferenças de poucos pontos não indicam diferença real.</p></div>`;
+ el.innerHTML=h;
+ el.querySelectorAll('#tdUfT button').forEach(b=>b.addEventListener('click',()=>{termo=b.dataset.v;draw();}));
+ el.querySelectorAll('#tdUfJ button').forEach(b=>b.addEventListener('click',()=>{jan=b.dataset.v;draw();}));}
+fetch('./data/termos/desinformacao.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(D=>{U=D&&D.trends_uf;if(!U){el.innerHTML='<div class="td-card"><div class="eyebrow">Google Trends · interesse por estado</div><div class="odi-signal">⛔ Leitura por estado ainda não feita.</div></div>';return;}jan=U.janelas[0].id;draw();}).catch(()=>{});
 })();
 </script>
 </body></html>

@@ -4,11 +4,13 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.339 — "Fake news, deepfake, cheapfake": interesse por estado no Google Trends (2026-11-04) 🔜
+## C19.339 — "Fake news, deepfake, cheapfake": interesse por estado no Google Trends (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 01h05): "Trends por estado só existe para candidatos, não para os termos. Se quiser mapa de 'deepfake' por UF, precisa rodar uma consulta nova. pode implantar".
 - `termos_desinformacao.py --uf`: uma consulta por termo (deepfake, deep fake, fake news, desinformação), Brasil por UF, em duas janelas (2017 até hoje; últimos 12 meses); grava `trends_uf` em `data/termos/desinformacao.json`. `termos-desinformacao.yml` passa a ler os estados toda segunda e ganha a entrada `partes=uf` (só o mapa).
-- Teste: `python -m unittest discover -s tests` OK. Leitura e mapa na página na atualização desta entrada.
+- Leitura (run 41771229398, `partes=uf`): 8 consultas, todas com os 27 estados; o resto de `desinformacao.json` (Trends mensal e acervo) foi mantido. "deepfake", 2017 até hoje: AP 100, PB 94, RS 86, RN 84, AM 84, SP 84; menor RO 56. Últimos 12 meses: AP 100, AM 93, SP 92; RR sem busca suficiente (0).
+- Página: novo bloco "Onde cada termo pesa mais nas buscas" (`#tdUf`) com botões de termo e janela, mapa em grade dos estados (cor esticada do menor ao maior índice do termo, com legenda), ordem dos estados, média simples por região e aviso sobre estados de pouca população no topo.
+- Teste: `python -m unittest discover -s tests` OK; Chromium a 1366 px e 390 px, troca de termo funciona, 27 quadrados, sem erro de JS (prints conferidos).
 
 ## C19.338 — Caso 034 vai para o menu de Buscas, junto de "Fake news, deepfake, cheapfake" (2026-11-04) ✅
 
