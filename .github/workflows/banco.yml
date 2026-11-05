@@ -1,0 +1,63 @@
+name: Banco DuckDB do Atlas — público e completo (toda noite, grátis)
+
+# 05/11/2026: tarefa "Banco DuckDB com tudo que já temos", combinada no início e cobrada pelo responsável ("monta esse banco").
+# O banco é refeito do zero a partir dos arquivos dos dois repositórios; nada é apagado nem alterado nos repositórios.
+# - público:  release "banco" deste repositório (atlas_publico.duckdb) + catálogo em data/banco/
+# - completo: release "banco" do repositório privado (atlas_completo.duckdb, com texto e autor de pessoas comuns)
+on:
+  schedule:
+    - cron: "43 6 * * *"   # 03h43 em Brasília, depois das coletas da madrugada
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: banco
+  cancel-in-progress: false
+
+jobs:
+  banco:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q duckdb==2.0.0
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Banco público
+        run: |
+          python scripts/build_banco.py --publico "$RUNNER_TEMP/atlas_publico.duckdb" --zip | tee p.txt
+          mkdir -p data/banco && cp "$RUNNER_TEMP/atlas_publico.catalogo.json" data/banco/atlas_publico.catalogo.json
+          echo "::notice title=Banco público::$(tail -1 p.txt)"
+      - name: Banco completo
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/build_banco.py --completo "$RUNNER_TEMP/atlas_completo.duckdb" --zip | tee c.txt
+          echo "::notice title=Banco completo::$(tail -1 c.txt)"
+      - name: Publicar o público (release "banco" deste repositório)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view banco >/dev/null 2>&1 || gh release create banco --title "Banco DuckDB público do Atlas" --notes "Refeito toda noite a partir de data/. Catálogo: data/banco/atlas_publico.catalogo.json. Descompactar o .zip e abrir com DuckDB 2.0+ (Python: duckdb.connect('atlas_publico.duckdb', read_only=True)). Ver docs/BANCO.md."
+          gh release upload banco "$RUNNER_TEMP/atlas_publico.zip" --clobber
+      - name: Publicar o completo (release "banco" do repositório privado)
+        env:
+          GH_TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          R=WandersonH/odi-atlas-interno
+          gh release view banco -R $R >/dev/null 2>&1 || gh release create banco -R $R --title "Banco DuckDB completo do Atlas (restrito)" --notes "Contém texto e autor de pessoas comuns. Uso restrito à equipe e a pesquisadores aprovados; não redistribuir; anonimizar em publicação."
+          gh release upload banco -R $R "$RUNNER_TEMP/atlas_completo.zip" "$RUNNER_TEMP/atlas_completo.catalogo.json" --clobber
+      - name: Commitar o catálogo público
+        if: always()
+        run: scripts/commit_push.sh "Banco DuckDB: catálogo (run ${{ github.run_id }})"
