@@ -60,4 +60,5 @@ jobs:
           gh release upload banco -R $R "$RUNNER_TEMP/atlas_completo.zip" "$RUNNER_TEMP/atlas_completo.catalogo.json" --clobber
       - name: Commitar o catálogo público
         if: always()
-        run: scripts/commit_push.sh "Banco DuckDB: catálogo (run ${{ github.run_id }})"
+        run: |
+          scripts/commit_push.sh "Banco DuckDB: catálogo (run ${{ github.run_id }})"
