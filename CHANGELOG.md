@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.345 — Busca diária dos casos: mais tempo e casos mais atrasados primeiro (2026-11-04) ✅
+
+- Pergunta do responsável (04/11/2026, 22h57): "as coletas de YouTube tá toda ok, normalizou?". Conferência: comentários do YouTube (run 41885334409: 2.584 chamadas, cota não cortada, 958.843 registros acumulados), conteúdo e fichas (22h UTC), seguidores e sentimento rodaram com sucesso hoje. O que não normalizou: a busca diária dos casos (`casos-busca.yml`) começou às 16h21 UTC em vez de 08h17 (atraso do agendamento do GitHub) e foi cortada aos 45 min (runs 41672525293 em 03/11 e 41866360234 em 04/11); a fila fixa deixou 001–023 sem atualizar desde 30/10–03/11, e 014, 016, 017, 020 e 023 guardam erros HTTP 429 de leituras antigas.
+- Mudança: tempo máximo do job 45 → 150 min; sem caso escolhido, a ordem passa a ser da busca mais antiga para a mais recente (a próxima execução começa por 010, 011, 012, 018, 019, 017, 020, 023, 014…). A cota diária do YouTube continua sendo o limite: casos lidos há menos de 48 h reaproveitam a leitura.
+- Teste: `python -m unittest discover -s tests` OK; ordenação conferida localmente com os `busca.json` atuais.
+
 ## C19.344 — Caso 035: "vote como brasileiro" ("vote like a Brazilian") nas campanhas americanas, de 25/10 até hoje (2026-11-04) ✅
 
 - Pedido do responsável (04/11/2026, 16h46): "novo caso postagens com Vote como brasileiro usado nas campanhas americanas de 25 até hoje".
