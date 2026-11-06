@@ -4,12 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.351 — Caso 036: entrevista de Flávio Bolsonaro ao New York Times, em Miami (2026-11-06) 🔜
+## C19.351 — Caso 036: entrevista de Flávio Bolsonaro ao New York Times, em Miami (2026-11-06) ✅
 
 - Pedido do responsável (06/11/2026, 10h38): link do New York Times (05/11/2026, "flavio-bolsonaro-florida-brazil") e "novo case".
 - Contexto (o site do NYT bloqueia a leitura automática; lida a republicação da InfoMoney de 05/11, assinada por Ana Ionova/NYT, e a NPR/WAMC de 27/10): entrevista de 75 min em Miami em 04/11; "Fui só eu", "Levarei isso para o túmulo comigo", negação de ajuda de governos; segundo autoridades americanas citadas pelo jornal, jato providenciado por uma autoridade da Casa Branca e entrada autorizada por Trump.
 - Mudança: caso 036 em `data/config/casos.json` (teto 0 em todas as redes pagas até autorização), `CASOS["036"]` em `collect_caso_busca.py` (Trends Brasil/EUA/mundo, YouTube desde 05/11 com filtro de título, notícias BR e US, checagens), seção `caso036` na página (menu Casos, ao lado do 035), `estado_evidencia.json` e fila de `casos-busca.yml`.
-- Teste: `python -m unittest discover -s tests` OK. Coleta grátis disparada; resultado na atualização desta entrada.
+- Teste: `python -m unittest discover -s tests` OK (296 testes). Coleta grátis: run 42227850539 (success), `data/casos/036/busca.json`: YouTube 153 vídeos de 120 canais desde 05/11 (busca por termo, até 100 por consulta; universo ⛔, a busca não informa o total; filtro de título "Flávio|Bolsonaro", então inclui vídeos sobre Flávio que não citam a entrevista); 120 notícias (Google Notícias BR e US, janela 7 dias; universo ⛔); 0 checagens.
 - Pendente: autorização de valor para X, Instagram, Facebook e TikTok.
 
 ## C19.350 — Caso 035: redes pagas autorizadas (US$ 2,00) (2026-11-06) 🔜
