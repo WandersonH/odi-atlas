@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.350 — Caso 035: redes pagas autorizadas (US$ 2,00) (2026-11-06) 🔜
+
+- Autorização do responsável (06/11/2026, 10h29): "US$ 2,00". Aplicada na divisão padrão dos casos: X 0,90, Instagram 0,70, Facebook 0,40; TikTok e Kwai seguem 0 (o US$ 1,00 do TikTok, proposto em separado, não foi autorizado). `buscas_instagram` ganha "vote como um brasileiro".
+- Disparo: `casos.yml` modo complemento (X: busca por termo desde 25/10, com "vote like a Brazilian", "vote like Brazilians", "vote like Brazil", "vote como brasileiro", "vote como um brasileiro" e #VoteLikeABrazilian) e modo frases (Instagram reels e Facebook). Resultado na atualização desta entrada.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.349 — Caso 035: variante "vote como um brasileiro" e por que as redes não foram coletadas (2026-11-06) ✅
 
 - Pergunta do responsável (06/11/2026, 10h19): "por que vote como um brasileiro não foi coletado". Dois motivos: (1) a frase com "um" só estava na busca do X (que não rodou); Trends, notícias, TikTok, Facebook e YouTube usavam "vote como brasileiro"; (2) as redes sociais (X, Instagram, Facebook, TikTok) estão com teto US$ 0 desde a criação do caso (C19.344), à espera da autorização do valor; a carga de 05/11 (manifesto `data/casos/035/manifesto-20261105T184356Z.json`) registra TikTok "⛔ nenhum vídeo lido", custo 0. Só a parte grátis (Google, notícias, YouTube, Trends) foi lida.

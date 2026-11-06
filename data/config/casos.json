@@ -3571,7 +3571,7 @@
    "coletar": true,
    "aba": "caso035",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 04/11/2026, 16h46: \"novo caso postagens com Vote como brasileiro usado nas campanhas americanas de 25 até hoje\". Coleta grátis (Google, notícias, YouTube, Trends) liberada; carga paga (X, Instagram, Facebook, TikTok, Kwai) com teto 0 até autorização explícita do valor.",
+   "autorizacao": "Responsável em 04/11/2026, 16h46: \"novo caso postagens com Vote como brasileiro usado nas campanhas americanas de 25 até hoje\". Coleta grátis (Google, notícias, YouTube, Trends) liberada; carga paga (X, Instagram, Facebook, TikTok, Kwai) com teto 0 até autorização explícita do valor. Responsável em 06/11/2026, 10h29: \"US$ 2,00\" — aplicado na divisão padrão (X 0,90, Instagram 0,70, Facebook 0,40); TikTok continua 0 (o US$ 1,00 extra proposto não foi autorizado).",
    "descricao": "Depois da vitória de Lula no 2º turno (25/10/2026), a frase \"vote como brasileiro\" (em inglês, \"vote like a Brazilian\") passou a circular em publicações ligadas às campanhas das eleições americanas de meio de mandato (03/11/2026), segundo o responsável; O Globo registrou a frase em 29/10/2026 (\"'Vote like a Brazilian'\") e, em 03/11, O Globo, Terra, Agenda do Poder e Área VIP noticiaram ativistas americanos usando \"vote como um brasileiro\" e piadas sobre a fuga de Flávio Bolsonaro. O caso mede a circulação da frase e das variantes de 25/10 até hoje, em inglês e em português, nos EUA e no Brasil, e quem a usou. Primeira ocorrência nas redes: ⛔ ainda não identificada pelo Atlas. Relaciona-se ao caso 026 (canais copiados do Exército do Lula, entre eles o americano \"Blue Voting Army\") e ao 019 (como o mundo viu a eleição).",
    "redes_previstas": [
     "x",
@@ -3612,13 +3612,13 @@
    ],
    "maximo_por_termo": 2000,
    "teto_usd": {
-    "x": 0,
-    "instagram": 0,
-    "facebook": 0,
+    "x": 0.9,
+    "instagram": 0.7,
+    "facebook": 0.4,
     "kwai": 0,
     "tiktok": 0
    },
-   "notas_teto": "Tudo 0 até autorização do valor (padrão dos casos: US$ 2,00 — X 0,90, Instagram 0,70, Facebook 0,40).",
+   "notas_teto": "Autorizado US$ 2,00 em 06/11/2026 (X 0,90, Instagram 0,70, Facebook 0,40). TikTok e Kwai 0.",
    "complementos_x": [
     {
      "termo": "o caso (busca por termo)",
@@ -3631,7 +3631,8 @@
     "votelikeabrazilian"
    ],
    "buscas_instagram": [
-    "vote like a Brazilian"
+    "vote like a Brazilian",
+    "vote como um brasileiro"
    ],
    "buscas_facebook": [
     "\"vote like a Brazilian\"",
