@@ -1,7 +1,7 @@
 {
  "caso": "035",
  "titulo": "\"Vote como brasileiro\" (\"vote like a Brazilian\") nas campanhas americanas, desde o 2º turno (25/10/2026)",
- "gerado_em_utc": "2026-11-06T13:32:57Z",
+ "gerado_em_utc": "2026-11-06T13:51:20Z",
  "pedido": "Responsável, 02/11/2026, 15h57: quais principais atores políticos, partidos e postagens ajudam a disseminar cada caso.",
  "universo": {
   "perfis_declarados_por_rede": {
@@ -15,28 +15,46 @@
   "nota": "Universo de atores políticos = perfis declarados ao TSE por todas as candidaturas de 2026, nas redes cruzadas. O universo de publicações do caso é ⛔ desconhecido (as plataformas não informam o total por termo)."
  },
  "amostra": {
-  "publicacoes_lidas": 576,
+  "publicacoes_lidas": 722,
   "por_rede": {
+   "facebook": 85,
+   "instagram": 61,
    "x": 576
   },
   "como": "todas as publicações coletadas do caso por termo e hashtag (mesma coleta do dossiê); repetidas contam uma vez",
   "facebook": "⛔ não cruzado: a coleta do Facebook traz o nome do autor, não o endereço do perfil"
  },
  "resumo": {
-  "candidaturas_no_caso": 4,
-  "perfis_de_candidaturas_no_caso": 4,
-  "publicacoes_de_candidaturas": 4,
-  "pct_publicacoes_de_candidaturas": 0.69,
+  "candidaturas_no_caso": 6,
+  "perfis_de_candidaturas_no_caso": 6,
+  "publicacoes_de_candidaturas": 6,
+  "pct_publicacoes_de_candidaturas": 0.83,
   "contas_10mil_nao_candidatas": 32,
   "publicacoes_de_contas_10mil": 35,
-  "pct_publicacoes_de_contas_10mil": 6.08,
+  "pct_publicacoes_de_contas_10mil": 4.85,
   "publicacoes_de_candidaturas_por_posicao_do_partido_2t": {
-   "lula": 4
+   "lula": 6
   }
  },
  "criterio_nomeacao": "Nomeadas: candidaturas (perfil público declarado ao TSE) e contas com 10 mil+ seguidores. Demais contas só nas contagens.",
  "metodo": "Cruzamento exato da conta da publicação com o perfil declarado ao TSE na mesma rede (minúsculas, sem @). Partido e cargo vêm da candidatura; posição no 2º turno é a do partido (data/config/apoio_partidos_2t.json), não do candidato. Interações = curtidas + comentários + compartilhamentos informados pela plataforma na coleta.",
  "partidos": [
+  {
+   "partido": "PT",
+   "candidaturas": 5,
+   "publicacoes": 5,
+   "visualizacoes": 8626143,
+   "interacoes": 630335,
+   "posicao_2t": "lula",
+   "nomes": [
+    "Lula",
+    "Eliziane Gama",
+    "Professor Pedro Uczai",
+    "Sofia Cavedon",
+    "Juliana Cardoso"
+   ],
+   "pct_publicacoes_do_caso": 0.69
+  },
   {
    "partido": "PSB",
    "candidaturas": 1,
@@ -47,24 +65,32 @@
    "nomes": [
     "Tabata Amaral"
    ],
-   "pct_publicacoes_do_caso": 0.17
-  },
-  {
-   "partido": "PT",
-   "candidaturas": 3,
-   "publicacoes": 3,
-   "visualizacoes": 1533,
-   "interacoes": 125,
-   "posicao_2t": "lula",
-   "nomes": [
-    "Professor Pedro Uczai",
-    "Sofia Cavedon",
-    "Juliana Cardoso"
-   ],
-   "pct_publicacoes_do_caso": 0.52
+   "pct_publicacoes_do_caso": 0.14
   }
  ],
  "atores": [
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "Instagram",
+   "conta": "lulaoficial",
+   "nome": "Lula",
+   "numero": "13",
+   "partido": "PT",
+   "cargo": "Presidente",
+   "uf": "BR",
+   "situacao": "ELEITO",
+   "posicao_partido_2t": "lula",
+   "seguidores": null,
+   "publicacoes": 1,
+   "visualizacoes": 8591650,
+   "interacoes": 625925,
+   "primeira": "2026-10-25T02:55:28Z",
+   "ultima": "2026-10-25T02:55:28Z",
+   "termos": [
+    "reels: vote como um brasileiro"
+   ],
+   "top_url": "https://www.instagram.com/p/De5rygpxXFg/"
+  },
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
@@ -174,6 +200,28 @@
     "o caso (busca por termo)"
    ],
    "top_url": "https://x.com/welmelo/status/2117854826771963990"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "Instagram",
+   "conta": "elizianegama",
+   "nome": "Eliziane Gama",
+   "numero": "133",
+   "partido": "PT",
+   "cargo": "Senador",
+   "uf": "MA",
+   "situacao": "NÃO ELEITO",
+   "posicao_partido_2t": "lula",
+   "seguidores": null,
+   "publicacoes": 1,
+   "visualizacoes": 32960,
+   "interacoes": 4285,
+   "primeira": "2026-11-05T00:28:42Z",
+   "ultima": "2026-11-05T00:28:42Z",
+   "termos": [
+    "reels: vote como um brasileiro"
+   ],
+   "top_url": "https://www.instagram.com/p/DfVs_QGyl5F/"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -858,8 +906,20 @@
    "top_url": "https://x.com/Sonecarox/status/2118146346733478365"
   }
  ],
- "atores_total": 36,
+ "atores_total": 38,
  "postagens": [
+  {
+   "rede": "Instagram",
+   "conta": "lulaoficial",
+   "nome": "Lula",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PT",
+   "url": "https://www.instagram.com/p/De5rygpxXFg/",
+   "texto": "O Brasil que sonhamos se constrói com o povo, na luta e na esperança! ❤️🇧🇷 Obrigado a cada brasileira e brasileiro que está ao nosso lado nessa caminhada. É essa força que nos move e essa união que nos fortalece. Amanhã, vamos transformar toda essa energia em futuro! Com o povo, ",
+   "publicado_em": "2026-10-25T02:55:28Z",
+   "interacoes": 625925,
+   "visualizacoes": 8591650
+  },
   {
    "rede": "X",
    "conta": "isaiahrmartin",
@@ -919,6 +979,18 @@
    "publicado_em": "2026-11-04T05:41:53Z",
    "interacoes": 6358,
    "visualizacoes": 24532
+  },
+  {
+   "rede": "Instagram",
+   "conta": "elizianegama",
+   "nome": "Eliziane Gama",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PT",
+   "url": "https://www.instagram.com/p/DfVs_QGyl5F/",
+   "texto": "“Vote como um brasileiro” 🇧🇷 A vitória do presidente @lulaoficial devolveu a esperança para o mundo! ⭐️",
+   "publicado_em": "2026-11-05T00:28:42Z",
+   "interacoes": 4285,
+   "visualizacoes": 32960
   },
   {
    "rede": "X",
@@ -1015,30 +1087,6 @@
    "publicado_em": "2026-11-05T19:06:19Z",
    "interacoes": 150,
    "visualizacoes": 892
-  },
-  {
-   "rede": "X",
-   "conta": "sabrinmrs",
-   "nome": "sabrí ",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/sabrinmrs/status/2117960478676893796",
-   "texto": "em 25 anos de vida eu nunca imaginei viver um plot twist tão grande na política brasileira, nós fomos de “país de terceiro mundo” pra “vote como um brasileiro” viramos símbolo MUNDIAL de luta contra o fascismo eu tô gag de la gag https://t.co/m6ASce5VQY",
-   "publicado_em": "2026-11-04T12:41:42Z",
-   "interacoes": 137,
-   "visualizacoes": 1045
-  },
-  {
-   "rede": "X",
-   "conta": "uczai",
-   "nome": "Professor Pedro Uczai",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PT",
-   "url": "https://x.com/uczai/status/2117968896447705362",
-   "texto": "Quem diria que o Kansas votaria em um senador democrata após quase um século, ou o Texas após quase 40 anos? A eleição nos EUA confirma o movimento que já vivemos no Brasil com presidente @LulaOficial , o eleitorado quer progresso social. A democracia voltou a ser tendência globa",
-   "publicado_em": "2026-11-04T13:15:09Z",
-   "interacoes": 76,
-   "visualizacoes": 806
   }
  ],
  "arquivos": {
