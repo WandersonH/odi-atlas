@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.347 — Busca diária dos casos: fila pela leitura do YouTube mais antiga e parada após a cota (2026-11-05) ✅
+
+- Pergunta do responsável (05/11/2026, 22h06): "todas coletas em dia? os cases que estavam faltantes de YouTube foram completados?". Conferência:
+  - `data/saude_coleta.json` (21h10 UTC): as 19 séries "em dia"; avisos de qualidade em Seguidores TikTok (10 de 11 perfis no arquivo), Seguidores X (2 de 10), Vídeos TikTok (8 de 11 lidos) e Respostas X (2 buscas no limite pedido). Banco DuckDB: runs de 03h35 e 14h58 UTC com sucesso.
+  - Busca diária dos casos (run 42064921991, agendada para 08h17 UTC, começou 16h29 e terminou 18h51, sem corte): os 32 casos atualizados. Os atrasados (001–009, 013, 014, 017, 020, 023) foram lidos, com YouTube; a cota diária do YouTube acabou no caso 008 e 15 casos ficaram com HTTP 429 nas buscas (008, 009, 013, 016, 021, 022, 024–031, 033). Nesses, só 008 (1), 009 (1), 013 (10), 016 (1) e 026 (18) ganharam vídeos novos; os demais mantiveram a lista anterior.
+  - A queda no número de vídeos desses casos (ex.: 021 de 298 para 244, 027 de 167 para 123) não é perda: dos 280 vídeos que saíram, os 280 não passam no filtro de título do caso (ex.: "Disputa de pênaltis completa"); o coletor revalida a lista antiga com o filtro atual e tira o ruído que regras antigas deixavam entrar (conferido no histórico do privado, `casos/<id>/busca_coleta.json`).
+- Mudança no `casos-busca.yml`: a fila passa a ser pela leitura do YouTube mais antiga (arquivo privado), para que os 15 casos com 429 sejam lidos primeiro amanhã; depois do primeiro 429 do YouTube no dia, os casos seguintes reaproveitam a última leitura (sem gastar tempo em buscas que vão falhar), e o resto da coleta (Trends, notícias, checagens) continua. Ordem conferida com os arquivos atuais: 021, 022, 024, 025, 027–031, 033 primeiro.
+- Teste: `python -m unittest discover -s tests` OK; YAML validado; detecção do 429 conferida no `busca_coleta.json` do 021.
+
 ## C19.346 — Banco DuckDB do Atlas (público e completo), refeito toda noite (2026-11-05) ✅
 
 - Pedido do responsável (05/11/2026, 00h20): "monta esse banco". Correção de registro: a tarefa "Banco DuckDB com tudo que já temos" foi combinada no início do projeto e nunca tinha sido feita. Mesmo assim, o C19.20 (18/10) fala em "o DuckDB" como se existisse, a resposta de 03/11 (02h27) confirmou "todos os dados guardados no banco" querendo dizer os arquivos dos repositórios, e o plano de validação de 03/11 pede o "arquivo DuckDB mais recente". Até esta entrada, não havia banco: só os arquivos de cada coleta nos dois repositórios (nenhum dado perdido).

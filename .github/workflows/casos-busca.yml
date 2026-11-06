@@ -55,10 +55,26 @@ jobs:
           # 02/11/2026: casos ainda sem YouTube primeiro (a cota acabava antes deles); os que já têm leitura recente a reaproveitam
           # 04/11/2026: sem caso escolhido, vão primeiro os casos com a busca mais antiga (a fila fixa deixava 001–023 sem atualizar quando o tempo ou a cota acabavam)
           LISTA="021 022 024 025 026 027 028 029 030 031 033 034 035 016 010 011 012 018 019 001 002 003 005 006 007 008 009 013 014 017 020 023"
-          if [ -z "$CASO" ]; then LISTA=$(python3 -c "import json,os,sys;ids=sys.argv[1:];idade=lambda c:(json.load(open(f'data/casos/{c}/busca.json')).get('coletado_em_utc') or '') if os.path.exists(f'data/casos/{c}/busca.json') else '';print(' '.join(sorted(ids,key=idade)))" $LISTA); fi
+          # 05/11/2026: a ordem passa a ser pela leitura do YouTube mais antiga (arquivo privado), não pela data da busca: em 05/11 a cota
+          # acabou no 15º caso e os 15 seguintes (008–033) ficaram com HTTP 429. Depois do primeiro 429, os casos restantes reaproveitam
+          # a última leitura do YouTube (YT_INTERVALO_H alto) em vez de gastar tempo com buscas que vão falhar; o resto da coleta segue.
+          if [ -z "$CASO" ]; then LISTA=$(python3 -c "
+          import json,os,sys
+          P=os.environ.get('ODI_INTERNO_DIR') or ''
+          def idade(c):
+              f=os.path.join(P,'casos',c,'busca_coleta.json')
+              try:
+                  o=json.load(open(f)); y=o.get('youtube') or {}
+                  return (y.get('lido_em') or y.get('reaproveitado_de') or '') if y.get('videos') else ''
+              except Exception:
+                  return ''
+          print(' '.join(sorted(sys.argv[1:],key=idade)))" $LISTA); fi
           echo "ordem: $LISTA"
+          COTA=""
           for c in ${CASO:-$LISTA}; do
-            python scripts/collect_caso_busca.py --caso $c $FY >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+            YT_INTERVALO_H=${COTA:-48} python scripts/collect_caso_busca.py --caso $c $FY > "$RUNNER_TEMP/caso.txt" 2>&1 || rc=1
+            cat "$RUNNER_TEMP/caso.txt" >> "$RUNNER_TEMP/s.txt"
+            if [ -z "$COTA" ] && python3 -c "import json,os,sys;o=json.load(open(os.path.join(os.environ['ODI_INTERNO_DIR'],'casos',sys.argv[1],'busca_coleta.json')));sys.exit(0 if any(e.startswith('youtube') and '429' in e for e in o.get('erros',[])) else 1)" $c 2>/dev/null; then COTA=1000000; echo "cota do YouTube acabou no caso $c: os seguintes reaproveitam a última leitura" >> "$RUNNER_TEMP/s.txt"; fi
             # conversas importadas do Apify (X, Instagram) do caso, quando houver: unifica e agrega antes do build do caso
             case "$c" in 006) python scripts/build_caso_x.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1;; esac
             case "$c" in 007|008|009|024) python scripts/build_caso_instagram.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1;; esac
