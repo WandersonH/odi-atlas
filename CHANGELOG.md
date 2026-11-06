@@ -20,10 +20,15 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - Teste: `python -m unittest discover -s tests` OK (296 testes). Coleta grátis: run 42227850539 (success), `data/casos/036/busca.json`: YouTube 153 vídeos de 120 canais desde 05/11 (busca por termo, até 100 por consulta; universo ⛔, a busca não informa o total; filtro de título "Flávio|Bolsonaro", então inclui vídeos sobre Flávio que não citam a entrevista); 120 notícias (Google Notícias BR e US, janela 7 dias; universo ⛔); 0 checagens.
 - Pendente: autorização de valor para X, Instagram, Facebook e TikTok.
 
-## C19.350 — Caso 035: redes pagas autorizadas (US$ 2,00) (2026-11-06) 🔜
+## C19.350 — Caso 035: redes pagas autorizadas (US$ 2,00) (2026-11-06) ✅
 
 - Autorização do responsável (06/11/2026, 10h29): "US$ 2,00". Aplicada na divisão padrão dos casos: X 0,90, Instagram 0,70, Facebook 0,40; TikTok e Kwai seguem 0 (o US$ 1,00 do TikTok, proposto em separado, não foi autorizado). `buscas_instagram` ganha "vote como um brasileiro".
 - Disparo: `casos.yml` modo complemento (X: busca por termo desde 25/10, com "vote like a Brazilian", "vote like Brazilians", "vote like Brazil", "vote como brasileiro", "vote como um brasileiro" e #VoteLikeABrazilian) e modo frases (Instagram reels e Facebook). Resultado na atualização desta entrada.
+- Resultado (amostra lida; universo ⛔ em todas: nem a busca do X, nem a de reels do Instagram, nem a do Facebook informam o total):
+  X (run 42226039945; manifesto `data/casos/035/manifesto-20261106T133205Z.json`): 576 posts, todos desde 25/10, sem atingir o limite; US$ 0,0864 de 0,90.
+  Instagram (run 42228129236; `manifesto-20261106T134750Z.json`): #votelikeabrazilian 28 (27 no período), reels "vote like a Brazilian" 12 (11), reels "vote como um brasileiro" 29 (24); US$ 0,1853 de 0,70.
+  Facebook (mesmo run): "vote like a Brazilian" 26, "vote como brasileiro" 36, "vote como um brasileiro" 38, todos no período; US$ 0,2591 de 0,40.
+  Acumulado do caso: 722 itens; gasto pago US$ 0,53 de 2,00.
 - Teste: `python -m unittest discover -s tests` OK.
 
 ## C19.349 — Caso 035: variante "vote como um brasileiro" e por que as redes não foram coletadas (2026-11-06) ✅
