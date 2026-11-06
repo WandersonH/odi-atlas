@@ -1,6 +1,6 @@
 {
  "caso": "023",
- "gerado_em_utc": "2026-11-05T21:35:19Z",
+ "gerado_em_utc": "2026-11-06T21:04:17Z",
  "corte_pos_eleicao": "2026-10-28",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -117,14 +117,14 @@
     "respostas_entre_publicacoes": 84
    },
    "x_agora": {
-    "publicacoes": 415,
-    "contas": 372,
-    "visualizacoes": 1963437,
-    "curtidas": 50908,
-    "respostas_recebidas": 3353,
+    "publicacoes": 430,
+    "contas": 386,
+    "visualizacoes": 1965435,
+    "curtidas": 50918,
+    "respostas_recebidas": 3358,
     "compartilhamentos": 6279,
     "primeiro_dia": "2026-10-28",
-    "ultimo_dia": "2026-11-05",
+    "ultimo_dia": "2026-11-06",
     "pico": {
      "dia": "2026-10-31",
      "publicacoes": 128
@@ -138,15 +138,16 @@
      87,
      43,
      46,
-     14,
-     7
+     15,
+     13,
+     8
     ],
     "contas_10mil": [
      {
       "rede": "x",
       "conta": "TAbreu24",
-      "seguidores": 18642,
-      "publicacoes": 3
+      "seguidores": 18922,
+      "publicacoes": 4
      },
      {
       "rede": "x",
@@ -304,11 +305,11 @@
       16
      ],
      [
-      "feriado",
+      "vivo",
       13
      ],
      [
-      "vivo",
+      "feriado",
       13
      ],
      [
@@ -328,11 +329,11 @@
       17
      ],
      [
-      "poluição",
+      "lição",
       10
      ],
      [
-      "bilhão",
+      "poluição",
       10
      ]
     ],
@@ -355,7 +356,7 @@
      ],
      [
       "possível",
-      182
+      183
      ],
      [
       "mobilização",
@@ -386,12 +387,12 @@
       72
      ],
      [
-      "nacional",
-      221
+      "quinta",
+      138
      ],
      [
-      "quinta",
-      137
+      "nacional",
+      221
      ],
      [
       "sociais",
@@ -407,10 +408,10 @@
      "POS": 4.7
     },
     "x_agora": {
-     "n": 415,
-     "NEG": 32.0,
-     "NEU": 65.1,
-     "POS": 2.9
+     "n": 430,
+     "NEG": 33.3,
+     "NEU": 63.7,
+     "POS": 3.0
     },
     "instagram_agora": {
      "n": 127,
@@ -542,14 +543,14 @@
     "respostas_entre_publicacoes": 220
    },
    "x_agora": {
-    "publicacoes": 415,
-    "contas": 372,
-    "visualizacoes": 1963437,
-    "curtidas": 50908,
-    "respostas_recebidas": 3353,
+    "publicacoes": 430,
+    "contas": 386,
+    "visualizacoes": 1965435,
+    "curtidas": 50918,
+    "respostas_recebidas": 3358,
     "compartilhamentos": 6279,
     "primeiro_dia": "2026-10-28",
-    "ultimo_dia": "2026-11-05",
+    "ultimo_dia": "2026-11-06",
     "pico": {
      "dia": "2026-10-31",
      "publicacoes": 128
@@ -563,15 +564,16 @@
      87,
      43,
      46,
-     14,
-     7
+     15,
+     13,
+     8
     ],
     "contas_10mil": [
      {
       "rede": "x",
       "conta": "TAbreu24",
-      "seguidores": 18642,
-      "publicacoes": 3
+      "seguidores": 18922,
+      "publicacoes": 4
      },
      {
       "rede": "x",
@@ -705,7 +707,7 @@
       106
      ],
      [
-      "manifestacao",
+      "censuradotse",
       103
      ],
      [
@@ -713,7 +715,7 @@
       103
      ],
      [
-      "censuradotse",
+      "manifestacao",
       103
      ],
      [
@@ -768,19 +770,19 @@
      ],
      [
       "diesel",
-      225
+      226
      ],
      [
       "confirmação",
       116
      ],
      [
-      "novembro",
-      232
+      "preço",
+      162
      ],
      [
-      "preço",
-      160
+      "novembro",
+      232
      ],
      [
       "redes",
@@ -799,20 +801,20 @@
       164
      ],
      [
+      "possível",
+      183
+     ],
+     [
       "sociais",
       163
      ],
      [
-      "possível",
-      182
+      "quinta",
+      138
      ],
      [
       "regiões",
       76
-     ],
-     [
-      "quinta",
-      137
      ],
      [
       "abastecimento",
@@ -832,10 +834,10 @@
      "POS": 4.5
     },
     "x_agora": {
-     "n": 415,
-     "NEG": 32.0,
-     "NEU": 65.1,
-     "POS": 2.9
+     "n": 430,
+     "NEG": 33.3,
+     "NEU": 63.7,
+     "POS": 3.0
     },
     "instagram_agora": {
      "n": 127,
