@@ -176,6 +176,17 @@ CASOS = {
             "noticias": ["Flávio Bolsonaro \"Nota ao Brasil\"", "Flávio Bolsonaro Globo entrevista", "\"saí pelo Brasil\" Flávio"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro nota", "Flávio Bolsonaro Globo"], "arquivo_web": ["https://x.com/FlavioBolsonaro/status/2117015474219446473"]},
     # 03/11 (02h02): "desenhos bíblicos da Record, fake news lançada hoje" — classificação indicativa vendida como censura
+    # 06/11 (10h38): entrevista de Flávio Bolsonaro ao New York Times em Miami (04/11, publicada em 05/11): "Levarei isso para o túmulo"
+    "036": {"variantes": ["Flávio Bolsonaro New York Times", "levarei isso para o túmulo", "Flávio Bolsonaro Miami"],
+            "controles": ["Flávio Bolsonaro"], "janelas": ["now 7-d", "today 1-m"], "paises_trends": True,
+            "youtube": ["Flávio Bolsonaro New York Times", "Flávio Bolsonaro NYT entrevista", "levarei isso para o túmulo Flávio", "Flávio Bolsonaro Miami entrevista",
+                        "Flavio Bolsonaro New York Times interview", "Flávio Bolsonaro fuga jato Casa Branca"],
+            "youtube_mundo": True,
+            "desde_yt": "2026-11-05T00:00:00Z", "rx_titulo": r"fl[aá]vio|bolsonaro",
+            "rx_atributo": r"new york times|nyt|t[uú]mulo|miami|fl[oó]rida|fuga|fugiu|jato|casa branca|entrevista|interview|exil|eua|estados unidos",
+            "noticias": ["Flávio Bolsonaro \"New York Times\"", "\"levarei isso para o túmulo\"", "Flávio Bolsonaro NYT entrevista Miami", "\"fui só eu\" Flávio",
+                         {"q": "\"Flavio Bolsonaro\" \"New York Times\"", "ed": "US"}, {"q": "\"Flavio Bolsonaro\" Miami interview", "ed": "US"}],
+            "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro New York Times", "Flávio Bolsonaro jato Casa Branca"], "arquivo_web": []},
     # 04/11 (16h46): "Vote como brasileiro" / "vote like a Brazilian" usado nas campanhas americanas (meio de mandato, 03/11/2026), desde o 2º turno
     "035": {"variantes": ["vote like a Brazilian", "vote like Brazil", "vote como brasileiro", "vote como um brasileiro"],
             "controles": ["Brazil election"], "janelas": ["now 7-d", "today 1-m"], "geo_trends": "", "paises_trends": True,

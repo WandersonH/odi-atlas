@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.351 — Caso 036: entrevista de Flávio Bolsonaro ao New York Times, em Miami (2026-11-06) 🔜
+
+- Pedido do responsável (06/11/2026, 10h38): link do New York Times (05/11/2026, "flavio-bolsonaro-florida-brazil") e "novo case".
+- Contexto (o site do NYT bloqueia a leitura automática; lida a republicação da InfoMoney de 05/11, assinada por Ana Ionova/NYT, e a NPR/WAMC de 27/10): entrevista de 75 min em Miami em 04/11; "Fui só eu", "Levarei isso para o túmulo comigo", negação de ajuda de governos; segundo autoridades americanas citadas pelo jornal, jato providenciado por uma autoridade da Casa Branca e entrada autorizada por Trump.
+- Mudança: caso 036 em `data/config/casos.json` (teto 0 em todas as redes pagas até autorização), `CASOS["036"]` em `collect_caso_busca.py` (Trends Brasil/EUA/mundo, YouTube desde 05/11 com filtro de título, notícias BR e US, checagens), seção `caso036` na página (menu Casos, ao lado do 035), `estado_evidencia.json` e fila de `casos-busca.yml`.
+- Teste: `python -m unittest discover -s tests` OK. Coleta grátis disparada; resultado na atualização desta entrada.
+- Pendente: autorização de valor para X, Instagram, Facebook e TikTok.
+
 ## C19.350 — Caso 035: redes pagas autorizadas (US$ 2,00) (2026-11-06) 🔜
 
 - Autorização do responsável (06/11/2026, 10h29): "US$ 2,00". Aplicada na divisão padrão dos casos: X 0,90, Instagram 0,70, Facebook 0,40; TikTok e Kwai seguem 0 (o US$ 1,00 do TikTok, proposto em separado, não foi autorizado). `buscas_instagram` ganha "vote como um brasileiro".
