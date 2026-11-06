@@ -1,6 +1,6 @@
 {
  "caso": "018",
- "gerado_em_utc": "2026-11-05T16:55:15Z",
+ "gerado_em_utc": "2026-11-06T16:32:06Z",
  "corte_pos_eleicao": "2026-10-25",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -142,19 +142,19 @@
     "respostas_entre_publicacoes": 148
    },
    "x_agora": {
-    "publicacoes": 1354,
-    "contas": 946,
-    "visualizacoes": 1224587,
-    "curtidas": 78319,
-    "respostas_recebidas": 3043,
-    "compartilhamentos": 25591,
+    "publicacoes": 1374,
+    "contas": 962,
+    "visualizacoes": 1225542,
+    "curtidas": 78349,
+    "respostas_recebidas": 3044,
+    "compartilhamentos": 25593,
     "primeiro_dia": "2026-10-26",
-    "ultimo_dia": "2026-11-04",
+    "ultimo_dia": "2026-11-05",
     "pico": {
      "dia": "2026-10-29",
      "publicacoes": 462
     },
-    "dias_ate_metade": 3,
+    "dias_ate_metade": 4,
     "serie_desde_dia0": [
      1,
      55,
@@ -165,7 +165,8 @@
      97,
      55,
      38,
-     19
+     22,
+     17
     ],
     "contas_10mil": [
      {
@@ -394,30 +395,30 @@
       39
      ],
      [
-      "arcabouço",
+      "brasileiras",
       17
      ]
     ],
     "agora": [
      [
+      "boicote",
+      1147
+     ],
+     [
       "giants",
       157
      ],
      [
-      "boicote",
-      1133
-     ],
-     [
       "fósforo",
-      205
-     ],
-     [
-      "palito",
       208
      ],
      [
+      "palito",
+      211
+     ],
+     [
       "protocolo",
-      70
+      71
      ],
      [
       "sleeping",
@@ -433,7 +434,7 @@
      ],
      [
       "compromissos",
-      50
+      51
      ],
      [
       "janeiro",
@@ -456,7 +457,7 @@
       81
      ],
      [
-      "profissionais",
+      "escolhas",
       42
      ]
     ]
@@ -481,31 +482,19 @@
      "epoca": [],
      "depois": [
       [
-       "mundial",
+       "pouco",
        0
       ],
       [
-       "empresas",
+       "diz",
        0
       ],
       [
-       "ministros",
+       "inteligência",
        0
       ],
       [
-       "fosse",
-       0
-      ],
-      [
-       "será",
-       0
-      ],
-      [
-       "kkkkk",
-       0
-      ],
-      [
-       "números",
+       "contra",
        0
       ],
       [
@@ -513,11 +502,23 @@
        0
       ],
       [
-       "desenvolvimento",
+       "famintos",
        0
       ],
       [
-       "vem",
+       "duas",
+       0
+      ],
+      [
+       "baixo",
+       0
+      ],
+      [
+       "assim",
+       0
+      ],
+      [
+       "pessoal",
        0
       ]
      ]
@@ -543,9 +544,9 @@
      "POS": 6.2
     },
     "x_agora": {
-     "n": 1354,
-     "NEG": 48.3,
-     "NEU": 49.6,
+     "n": 1374,
+     "NEG": 48.5,
+     "NEU": 49.4,
      "POS": 2.1
     },
     "instagram_agora": {
@@ -565,14 +566,14 @@
   "B": {
    "x_epoca": null,
    "x_agora": {
-    "publicacoes": 4,
-    "contas": 4,
-    "visualizacoes": 126,
-    "curtidas": 3,
+    "publicacoes": 5,
+    "contas": 5,
+    "visualizacoes": 380,
+    "curtidas": 5,
     "respostas_recebidas": 2,
-    "compartilhamentos": 0,
+    "compartilhamentos": 2,
     "primeiro_dia": "2026-10-29",
-    "ultimo_dia": "2026-10-30",
+    "ultimo_dia": "2026-11-04",
     "pico": {
      "dia": "2026-10-29",
      "publicacoes": 3
@@ -580,9 +581,21 @@
     "dias_ate_metade": 0,
     "serie_desde_dia0": [
      3,
+     1,
+     0,
+     0,
+     0,
+     0,
      1
     ],
-    "contas_10mil": []
+    "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "AfpChecamos",
+      "seguidores": 22091,
+      "publicacoes": 1
+     }
+    ]
    },
    "instagram_agora": {
     "publicacoes": 0,
@@ -631,9 +644,9 @@
      "POS": null
     },
     "x_agora": {
-     "n": 4,
-     "NEG": 50.0,
-     "NEU": 50.0,
+     "n": 5,
+     "NEG": 40.0,
+     "NEU": 60.0,
      "POS": 0.0
     },
     "instagram_agora": {
@@ -759,14 +772,14 @@
     "respostas_entre_publicacoes": 5
    },
    "x_agora": {
-    "publicacoes": 137,
-    "contas": 119,
-    "visualizacoes": 6561155,
-    "curtidas": 80418,
-    "respostas_recebidas": 2049,
-    "compartilhamentos": 5838,
+    "publicacoes": 142,
+    "contas": 122,
+    "visualizacoes": 6617095,
+    "curtidas": 83770,
+    "respostas_recebidas": 2164,
+    "compartilhamentos": 6917,
     "primeiro_dia": "2026-10-25",
-    "ultimo_dia": "2026-11-04",
+    "ultimo_dia": "2026-11-05",
     "pico": {
      "dia": "2026-10-27",
      "publicacoes": 34
@@ -783,9 +796,16 @@
      5,
      6,
      4,
-     1
+     4,
+     2
     ],
     "contas_10mil": [
+     {
+      "rede": "x",
+      "conta": "AfpChecamos",
+      "seguidores": 22098,
+      "publicacoes": 2
+     },
      {
       "rede": "x",
       "conta": "thaixkronbauer",
@@ -832,12 +852,6 @@
       "rede": "x",
       "conta": "demetera2",
       "seguidores": 13552,
-      "publicacoes": 1
-     },
-     {
-      "rede": "x",
-      "conta": "AfpChecamos",
-      "seguidores": 22098,
       "publicacoes": 1
      },
      {
@@ -917,11 +931,11 @@
    "contas_10mil_nos_dois": [
     [
      "g1",
-     14082585
+     14083102
     ],
     [
      "Estadao",
-     6811912
+     6811944
     ],
     [
      "damadanoite14",
@@ -971,6 +985,14 @@
       6
      ],
      [
+      "atingidos",
+      6
+     ],
+     [
+      "afetados",
+      6
+     ],
+     [
       "arcabouço",
       6
      ],
@@ -979,22 +1001,14 @@
       6
      ],
      [
-      "afetados",
-      6
-     ],
-     [
-      "atingidos",
-      6
-     ],
-     [
-      "total",
+      "programa",
       9
      ]
     ],
     "agora": [
      [
       "cortou",
-      57
+      59
      ],
      [
       "cortar",
@@ -1010,18 +1024,18 @@
      ],
      [
       "fake",
-      16
+      17
      ],
      [
       "complementar",
       16
      ],
      [
-      "piso",
-      14
+      "news",
+      15
      ],
      [
-      "news",
+      "piso",
       14
      ],
      [
@@ -1031,6 +1045,10 @@
      [
       "senado",
       14
+     ],
+     [
+      "professores",
+      13
      ],
      [
       "verdade",
@@ -1045,11 +1063,7 @@
       13
      ],
      [
-      "professores",
-      12
-     ],
-     [
-      "paulo",
+      "família",
       12
      ]
     ]
@@ -1062,10 +1076,10 @@
      "POS": 0.0
     },
     "x_agora": {
-     "n": 137,
-     "NEG": 50.4,
-     "NEU": 45.3,
-     "POS": 4.4
+     "n": 142,
+     "NEG": 50.0,
+     "NEU": 45.8,
+     "POS": 4.2
     },
     "instagram_agora": {
      "n": 2,
