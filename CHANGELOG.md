@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.348 — YouTube completado nos casos que ficaram com HTTP 429 em 05/11 (2026-11-06) ✅
+
+- Pedido do responsável (05/11/2026, 22h49): "pode completar?". Com a cota renovada (05h de Brasília), `casos-busca.yml` disparado caso a caso com `forcar_youtube=true`, a partir das 05h13, parando no primeiro caso com 429.
+- Resultado (vídeos no caso antes → depois; canais; runs 42186330285 a 42192793426), amostra por busca, universo ⛔ (a busca do YouTube não informa o total):
+  021 244 → 337 (244 canais); 022 86 → 150 (124); 024 269 → 391 (226); 025 282 → 423 (274); 027 123 → 247 (191); 028 112 → 163 (122); 029 7 → 57 (49); 030 195 → 284 (194); 031 162 → 264 (180); 033 51 → 258 (220), sem nenhum 429.
+  008 73 → 77 (49) com 1 consulta em 429: a cota do dia acabou aí. Ficam para a busca diária (que já começa pelos mais atrasados, C19.347): 009, 013, 016, 026 e a consulta restante do 008.
+- 033 conferido por causa do salto: 210 dos 258 vídeos têm "bíblico" no título; a maior parte do resto trata da mesma reclassificação ("Governo recua e libera desenhos bíblicos…"); poucos itens marginais (ex.: "4 de novembro de 2026").
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.347 — Busca diária dos casos: fila pela leitura do YouTube mais antiga e parada após a cota (2026-11-05) ✅
 
 - Pergunta do responsável (05/11/2026, 22h06): "todas coletas em dia? os cases que estavam faltantes de YouTube foram completados?". Conferência:
