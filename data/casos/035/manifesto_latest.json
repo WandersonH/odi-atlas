@@ -1,51 +1,66 @@
 {
  "caso": "035",
  "titulo": "\"Vote como brasileiro\" (\"vote like a Brazilian\") nas campanhas americanas, desde o 2º turno (25/10/2026)",
- "run_started_utc": "2026-11-05T18:43:56Z",
+ "run_started_utc": "2026-11-06T13:32:05Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-10-25",
  "redes": [
   {
-   "rede": "tiktok",
-   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
-   "termos": {
-    "VoteLikeABrazilian": {
-     "lado": "caso",
-     "respostas_api": 1,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "vote like a Brazilian": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "vote like Brazil midterms": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+   "rede": "x",
+   "teto_usd": 0.9,
+   "gasto_antes_usd": 0,
+   "teto_execucao_usd": 0.9,
+   "termos": [
+    {
+     "termo": "o caso (busca por termo)",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 576,
+     "lidos": 576,
+     "no_periodo": 576,
+     "no_limite": false,
+     "run": "RWm5bI0DQpNgpyql9",
+     "custo_usd": 0.0864,
+     "erro": null,
+     "chaves_1o_item": [
+      "author",
+      "bookmarkCount",
+      "conversationId",
+      "createdAt",
+      "displayTextRange",
+      "edit",
+      "entities",
+      "id",
+      "isNoteTweet",
+      "isPinned",
+      "isQuoteStatus",
+      "isReply",
+      "isRetweet",
+      "isTranslatable",
+      "lang",
+      "likeCount",
+      "media",
+      "possiblySensitive",
+      "quoteCount",
+      "replyCount",
+      "retweetCount",
+      "text",
+      "textHighlights",
+      "type",
+      "url",
+      "viewCount",
+      "viewState"
+     ],
+     "mais_antigo": "2026-10-25T16:18:24Z"
     }
-   },
-   "custo_usd": 0.0,
-   "status": "⛔ nenhum vídeo lido",
-   "itens_no_periodo": 0
-  },
-  {
-   "rede": "google",
-   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
-   "custo_usd": 0.0,
-   "trends_erro": "HTTPError: HTTP Error 429: Too Many Requests",
-   "noticias": 7,
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 2000,
+   "custo_usd": 0.0864,
    "status": "ok",
-   "itens_no_periodo": 0
+   "itens_no_periodo": 576
   }
  ],
- "itens_acumulados": 0,
- "custo_usd": 0.0
+ "itens_acumulados": 576,
+ "custo_usd": 0.0864
 }
