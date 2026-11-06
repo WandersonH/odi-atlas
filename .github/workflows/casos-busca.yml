@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       caso:
-        description: "id do caso (001, 002, 003, 005, 006, 007, 008, 009, 013, 014, 016, 017, 020, 021, 022, 023, 024, 025, 026, 027, 028, 029, 030, 031, 033, 034, 035 ou 036; vazio = todos)"
+        description: "id do caso (001, 002, 003, 005, 006, 007, 008, 009, 013, 014, 016, 017, 020, 021, 022, 023, 024, 025, 026, 027, 028, 029, 030, 031, 033, 034, 035, 036 ou 037; vazio = todos)"
         default: ""
       forcar_youtube:
         description: "ler o YouTube de novo mesmo com leitura recente (ex.: depois de mudar o filtro do caso)"
@@ -54,7 +54,7 @@ jobs:
           FY=""; if [ "${{ github.event.inputs.forcar_youtube }}" = "true" ]; then FY="--forcar-youtube"; fi
           # 02/11/2026: casos ainda sem YouTube primeiro (a cota acabava antes deles); os que já têm leitura recente a reaproveitam
           # 04/11/2026: sem caso escolhido, vão primeiro os casos com a busca mais antiga (a fila fixa deixava 001–023 sem atualizar quando o tempo ou a cota acabavam)
-          LISTA="021 022 024 025 026 027 028 029 030 031 033 034 035 036 016 010 011 012 018 019 001 002 003 005 006 007 008 009 013 014 017 020 023"
+          LISTA="021 022 024 025 026 027 028 029 030 031 033 034 035 036 037 016 010 011 012 018 019 001 002 003 005 006 007 008 009 013 014 017 020 023"
           # 05/11/2026: a ordem passa a ser pela leitura do YouTube mais antiga (arquivo privado), não pela data da busca: em 05/11 a cota
           # acabou no 15º caso e os 15 seguintes (008–033) ficaram com HTTP 429. Depois do primeiro 429, os casos restantes reaproveitam
           # a última leitura do YouTube (YT_INTERVALO_H alto) em vez de gastar tempo com buscas que vão falhar; o resto da coleta segue.

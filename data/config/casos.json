@@ -3651,7 +3651,7 @@
    "coletar": true,
    "aba": "caso036",
    "segredo": "APIFY_TOKEN",
-   "autorizacao": "Responsável em 06/11/2026, 10h38: link da reportagem do New York Times (https://www.nytimes.com/2026/11/05/world/americas/flavio-bolsonaro-florida-brazil.html) e \"novo case\". Coleta grátis (Google, notícias, YouTube, Trends) liberada; redes pagas com teto 0 até autorização do valor.",
+   "autorizacao": "Responsável em 06/11/2026, 10h38: link da reportagem do New York Times (https://www.nytimes.com/2026/11/05/world/americas/flavio-bolsonaro-florida-brazil.html) e \"novo case\". Coleta grátis (Google, notícias, YouTube, Trends) liberada; redes pagas com teto 0 até autorização do valor. Redes pagas: US$ 2,00 autorizados em 06/11/2026, 11h02 (\"Sim mesma verba\").",
    "descricao": "Em entrevista de 75 minutos ao New York Times em Miami (04/11/2026, publicada em 05/11, por Ana Ionova), Flávio Bolsonaro disse que saiu do Brasil sozinho (\"Fui só eu\") e que o caminho da fuga é segredo (\"Levarei isso para o túmulo comigo\"); negou ajuda de qualquer governo, manteve, sem provas, a suspeita de fraude e disse que será candidato se houver novas eleições. A reportagem informa, segundo autoridades americanas, que um jato foi providenciado por uma autoridade da Casa Branca e que Trump autorizou a entrada. O caso mede a repercussão da entrevista no Brasil e nos EUA. Ver os casos 013 (\"Flávio fugiu\"), 024 (primeiro vídeo nos EUA), 025 (#DeportTheBolsonaros) e 031 (Nota ao Brasil).",
    "redes_previstas": [
     "x",
@@ -3685,13 +3685,13 @@
    ],
    "maximo_por_termo": 2000,
    "teto_usd": {
-    "x": 0,
-    "instagram": 0,
-    "facebook": 0,
+    "x": 0.9,
+    "instagram": 0.7,
+    "facebook": 0.4,
     "kwai": 0,
     "tiktok": 0
    },
-   "notas_teto": "Tudo 0 até autorização do valor.",
+   "notas_teto": "Autorizado pelo responsável em 06/11/2026, 11h02 (\"Sim mesma verba\" = US$ 2,00 do caso 035): X 0,90, Instagram 0,70, Facebook 0,40; TikTok e Kwai 0.",
    "complementos_x": [
     {
      "termo": "o caso (busca por termo)",
@@ -3713,6 +3713,108 @@
     "https://www.nytimes.com/2026/11/05/world/americas/flavio-bolsonaro-florida-brazil.html",
     "https://www.infomoney.com.br/business/global/como-flavio-bolsonaro-fugiu-do-brasil-levarei-isso-para-o-tumulo-diz-ele-ao-nyt/",
     "https://www.wamc.org/2026-10-27/flavio-bolsonaro-arrives-in-florida-after-fleeing-brazil"
+   ]
+  },
+  {
+   "id": "037",
+   "slug": "faz-o-l",
+   "titulo": "\"Faz o L\": origem e circulação da frase, em português e outros idiomas",
+   "tipo": "bordão de campanha e apropriação irônica",
+   "rotulo_tipo": "em análise",
+   "coletar": true,
+   "aba": "caso037",
+   "segredo": "APIFY_TOKEN",
+   "autorizacao": "Responsável em 06/11/2026, 11h02: \"preciso de um case que analise a frase faz o L em português e outros idiomas; minha pergunta principal: qual a origem deste movimento\". Coleta grátis liberada; redes pagas com teto 0 até autorização do valor.",
+   "descricao": "O gesto do \"L\" com a mão, para Lula, foi criado em 1989 pelo publicitário paranaense Mário Milani, segundo a Gazeta do Povo. Na campanha de 2022, \"Faz o L\" virou bordão de mobilização. Depois da posse, a partir de janeiro de 2023, opositores passaram a usá-lo com ironia para atribuir a Lula preços, impostos e crimes (Aos Fatos, 17/01/2023; Extra, 26/02/2023), inclusive em grafias como \"fazueli\". Em 2024, um pedido de registro de marca de Léo Santana e a reivindicação de Latino reabriram a disputa sobre a autoria. O caso mede quando a frase aparece e cresce (Google Trends desde 2004), quem a usa em cada fase e como circula em outros idiomas (\"haz la L\", \"make the L\", \"do the L\", \"fais le L\"). Em inglês, o \"L\" com a mão também é o gesto de \"loser\" e o meme \"take the L\".",
+   "redes_previstas": [
+    "x",
+    "instagram",
+    "facebook",
+    "tiktok",
+    "google",
+    "youtube"
+   ],
+   "desde": "2022-01-01",
+   "hashtags": [
+    "FazOL"
+   ],
+   "buscas_tiktok": [
+    "faz o L",
+    "fazueli"
+   ],
+   "rolagens_tiktok": 15,
+   "termos_trends": [
+    "faz o L",
+    "fazueli",
+    "fiz o L",
+    "haz la L",
+    "make the L"
+   ],
+   "termos_noticias": [
+    "\"faz o L\"",
+    "\"fazueli\"",
+    "\"fiz o L\""
+   ],
+   "filtro_titulo_noticias": [
+    "faz o L",
+    "Faz o L",
+    "fazueli",
+    "fiz o L",
+    "fez o L",
+    "\"L\""
+   ],
+   "maximo_por_termo": 2000,
+   "teto_usd": {
+    "x": 0,
+    "instagram": 0,
+    "facebook": 0,
+    "kwai": 0,
+    "tiktok": 0
+   },
+   "notas_teto": "Tudo 0 até autorização do valor.",
+   "complementos_x": [
+    {
+     "termo": "origem (até a eleição de 2022)",
+     "busca": "(\"faz o L\" OR \"fazoele\" OR \"fazueli\" OR #FazOL) until:2022-10-31",
+     "motivo": "primeiros usos da frase",
+     "rodada": 1
+    },
+    {
+     "termo": "virada irônica (posse a março de 2023)",
+     "busca": "(\"faz o L\" OR \"fazueli\" OR \"fazoele\" OR \"fiz o L\") since:2023-01-01 until:2023-03-31",
+     "motivo": "apropriação pela oposição",
+     "rodada": 1
+    },
+    {
+     "termo": "eleição de 2026",
+     "busca": "(\"faz o L\" OR \"fazueli\" OR \"fiz o L\" OR #FazOL) since:2026-08-16",
+     "motivo": "uso na campanha atual",
+     "rodada": 1
+    },
+    {
+     "termo": "outros idiomas",
+     "busca": "((\"haz la L\" OR \"hace la L\" OR \"make the L\" OR \"do the L\" OR \"fais le L\") (Lula OR Brasil OR Brazil))",
+     "motivo": "circulação fora do português",
+     "rodada": 1
+    }
+   ],
+   "hashtags_instagram": [
+    "fazol"
+   ],
+   "buscas_instagram": [
+    "faz o L",
+    "fazueli"
+   ],
+   "buscas_facebook": [
+    "\"faz o L\"",
+    "\"fazueli\""
+   ],
+   "buscas_kwai": [],
+   "fontes_contexto": [
+    "https://en.wikipedia.org/wiki/Faz_o_L",
+    "https://www.gazetadopovo.com.br/vida-publica/criador-do-l-de-lula-acompanha-posse-do-presidente-abj5d8oqdbdham0drkyit8i8e",
+    "https://atarde.com.br/entretenimento/latino-entra-na-polemica-de-leo-santana-com-o-faz-o-l-o-primeiro-1286637",
+    "https://cj.estrategia.com/portal/propriedade-intelectual-leo-santana-lula/"
    ]
   }
  ],

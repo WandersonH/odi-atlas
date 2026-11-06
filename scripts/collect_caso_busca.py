@@ -176,6 +176,15 @@ CASOS = {
             "noticias": ["Flávio Bolsonaro \"Nota ao Brasil\"", "Flávio Bolsonaro Globo entrevista", "\"saí pelo Brasil\" Flávio"],
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro nota", "Flávio Bolsonaro Globo"], "arquivo_web": ["https://x.com/FlavioBolsonaro/status/2117015474219446473"]},
     # 03/11 (02h02): "desenhos bíblicos da Record, fake news lançada hoje" — classificação indicativa vendida como censura
+    # 06/11 (11h02): "Faz o L" em português e outros idiomas; pergunta principal: a origem. Janelas longas (2004 em diante) para datar o surgimento
+    "037": {"variantes": ["faz o L", "fazueli", "fiz o L", "haz la L", "make the L"],
+            "controles": ["Lula"], "janelas": ["2004-01-01 2026-11-06", "today 5-y", "today 12-m", "now 7-d"], "paises_trends": True,
+            "youtube": ["faz o L", "faz o L Lula", "fazueli", "fiz o L", "faz o L origem", "faz o L jingle", "haz la L Lula", "make the L Lula"],
+            "youtube_mundo": True,
+            "desde_yt": "2005-01-01T00:00:00Z", "rx_titulo": r"fa[zs] o l\b|fazueli|fazuele|fazoel[ei]|fi[zs] o l\b|fez o l\b|haz(e)? la l\b|hace la l\b|(make|do) the l\b|fais le l\b|#?fazol\b",
+            "rx_atributo": r"lula|petista|governo|ironi|meme|origem|criador|jingle|gesto|marca|l[eé]o santana|latino|bolsonar|gasolina|picanha|imposto",
+            "noticias": ["\"faz o L\"", "\"fazueli\"", "\"fiz o L\"", "\"faz o L\" origem", {"q": "\"haz la L\" Lula", "ed": "US"}, {"q": "\"faz o L\" Lula", "ed": "US"}],
+            "janela_noticias": "", "checagens": ["faz o L", "fazueli"], "arquivo_web": []},
     # 06/11 (10h38): entrevista de Flávio Bolsonaro ao New York Times em Miami (04/11, publicada em 05/11): "Levarei isso para o túmulo"
     "036": {"variantes": ["Flávio Bolsonaro New York Times", "levarei isso para o túmulo", "Flávio Bolsonaro Miami"],
             "controles": ["Flávio Bolsonaro"], "janelas": ["now 7-d", "today 1-m"], "paises_trends": True,
@@ -499,7 +508,7 @@ def noticias() -> list[dict]:
             q, ed = q["q"], q.get("ed", "BR")
         try:
             # termos próprios de notícias (sem aspas, com janela) quando o caso os define; senão, as variantes entre aspas
-            busca = f"{q} when:{c['janela_noticias']}" if c.get("noticias") else f'"{q}"'
+            busca = (f"{q} when:{c['janela_noticias']}" if c.get("janela_noticias") else q) if c.get("noticias") else f'"{q}"'  # 06/11/2026 (caso 037): janela vazia = sem limite de data
             url = RSS + "?" + urllib.parse.urlencode({"q": busca, **EDICOES[ed]})
             for x in parse_rss(read_body(open_url(url, timeout=40))):
                 if x.get("link") in vistos or not RX_TITULO.search(x.get("titulo") or "") or (c.get("noticias") and not RX_ATRIBUTO.search(x.get("titulo") or "")):

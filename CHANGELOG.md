@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.352 — Caso 037 ("Faz o L": origem e outros idiomas) e redes pagas do 036 (2026-11-06) 🔜
+
+- Pedidos do responsável (06/11/2026, 11h02): "Sim mesma verba" (caso 036) e "preciso de um case que analise a frase faz o L em português e outros idiomas; minha pergunta principal: qual a origem deste movimento".
+- 036: teto US$ 2,00 (X 0,90, Instagram 0,70, Facebook 0,40; TikTok e Kwai 0). Disparo de `casos.yml` complemento (X) e frases (Instagram, Facebook) depois que terminar a coleta do 035 (mesmo grupo de concorrência).
+- 037: caso novo, teto 0 nas redes pagas até autorização. Contexto de origem levantado na web (fontes em `fontes_contexto`): gesto do "L" criado em 1989 por Mário Milani (Gazeta do Povo); bordão da campanha de 2022; apropriação irônica pela oposição a partir de janeiro de 2023 (Aos Fatos, 17/01/2023; Extra, 26/02/2023), com grafias como "fazueli"; pedido de registro de marca de Léo Santana e reivindicação de Latino em 2024. Coleta grátis com Google Trends de 2004 a hoje (Brasil e por país), YouTube mundial desde 2005, notícias sem limite de data (BR e US), checagens. O X tem quatro buscas preparadas por fase (até 31/10/2022; jan–mar/2023; desde 16/08/2026; outros idiomas).
+- `collect_caso_busca.py`: `janela_noticias` vazia passa a significar "sem limite de data" (antes geraria "when:" vazio).
+- Teste: `python -m unittest discover -s tests` OK. Resultado das coletas na atualização desta entrada.
+
 ## C19.351 — Caso 036: entrevista de Flávio Bolsonaro ao New York Times, em Miami (2026-11-06) ✅
 
 - Pedido do responsável (06/11/2026, 10h38): link do New York Times (05/11/2026, "flavio-bolsonaro-florida-brazil") e "novo case".
