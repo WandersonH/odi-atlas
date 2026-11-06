@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.349 — Caso 035: variante "vote como um brasileiro" e por que as redes não foram coletadas (2026-11-06) ✅
+
+- Pergunta do responsável (06/11/2026, 10h19): "por que vote como um brasileiro não foi coletado". Dois motivos: (1) a frase com "um" só estava na busca do X (que não rodou); Trends, notícias, TikTok, Facebook e YouTube usavam "vote como brasileiro"; (2) as redes sociais (X, Instagram, Facebook, TikTok) estão com teto US$ 0 desde a criação do caso (C19.344), à espera da autorização do valor; a carga de 05/11 (manifesto `data/casos/035/manifesto-20261105T184356Z.json`) registra TikTok "⛔ nenhum vídeo lido", custo 0. Só a parte grátis (Google, notícias, YouTube, Trends) foi lida.
+- Mudança: "vote como um brasileiro" entra em `termos_trends`, `termos_noticias`, `buscas_tiktok`, `buscas_facebook` (`casos.json`) e nas variantes, notícias e YouTube de `collect_caso_busca.py`. Busca grátis redisparada; redes pagas continuam com teto 0 até autorização.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.348 — YouTube completado nos casos que ficaram com HTTP 429 em 05/11 (2026-11-06) ✅
 
 - Pedido do responsável (05/11/2026, 22h49): "pode completar?". Com a cota renovada (05h de Brasília), `casos-busca.yml` disparado caso a caso com `forcar_youtube=true`, a partir das 05h13, parando no primeiro caso com 429.

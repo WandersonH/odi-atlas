@@ -177,18 +177,18 @@ CASOS = {
             "janela_noticias": "7d", "checagens": ["Flávio Bolsonaro nota", "Flávio Bolsonaro Globo"], "arquivo_web": ["https://x.com/FlavioBolsonaro/status/2117015474219446473"]},
     # 03/11 (02h02): "desenhos bíblicos da Record, fake news lançada hoje" — classificação indicativa vendida como censura
     # 04/11 (16h46): "Vote como brasileiro" / "vote like a Brazilian" usado nas campanhas americanas (meio de mandato, 03/11/2026), desde o 2º turno
-    "035": {"variantes": ["vote like a Brazilian", "vote like Brazil", "vote como brasileiro"],
+    "035": {"variantes": ["vote like a Brazilian", "vote like Brazil", "vote como brasileiro", "vote como um brasileiro"],
             "controles": ["Brazil election"], "janelas": ["now 7-d", "today 1-m"], "geo_trends": "", "paises_trends": True,
             "grupos_extra": {"eua": {"titulo": "Nos Estados Unidos (interesse por estado)", "termos": ["vote like a Brazilian", "vote like Brazil"], "geo": "US"}},
             "youtube": ["vote like a Brazilian", "vote like Brazilians midterms", "vote like Brazil midterms", "Brazil Lula midterms Democrats lesson",
-                        "vote como brasileiro eleição americana", "Brazilian voters midterms 2026"],
+                        "vote como brasileiro eleição americana", "vote como um brasileiro", "Brazilian voters midterms 2026"],
             "youtube_mundo": True,
             "desde_yt": "2026-10-25T00:00:00Z", "rx_titulo": r"vote (like|as) (a )?brazil|vote como (um )?brasileir|votelikeabrazil|like (a )?brazilian",
             # 04/11 (17h): só a frase; com "brazil|lula" + voto vinham 306 vídeos sobre a eleição em geral e nenhum com a frase
             "rx_atributo": r"vote|voting|vota|midterm|election|elei[cç]|democrat|republican|trump|ballot|brazil|brasil|lula",
             "noticias": [{"q": "\"vote like a Brazilian\"", "ed": "US"}, {"q": "\"vote like Brazil\"", "ed": "US"}, {"q": "\"vote like Brazilians\"", "ed": "US"},
                          {"q": "Brazil Lula midterms Democrats", "ed": "US"}, {"q": "\"like Brazil\" midterms vote", "ed": "US"},
-                         "\"vote como brasileiro\"", "\"vote like a Brazilian\"", "eleição americana Lula exemplo Brasil democratas"],
+                         "\"vote como brasileiro\"", "\"vote como um brasileiro\"", "\"vote like a Brazilian\"", "eleição americana Lula exemplo Brasil democratas"],
             "janela_noticias": "11d", "checagens": ["vote like a Brazilian", "Brazil election midterms"], "arquivo_web": []},
     # 04/11 (00h23): caso oculto — deepfake de Jair Bolsonaro na convenção do PL (25/07) e a tese do TSE (01/09); apoio ao artigo de deepfake
     "034": {"variantes": ["deepfake", "Bolsonaro IA", "inteligência artificial eleição"],
