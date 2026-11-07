@@ -4,12 +4,30 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.357 — Estatísticas das redes (Modularity, % por comunidade, polarização) e teste no Gephi (2026-11-07) 🔜
+## C19.357 — Redes: tamanho, densidade, componente gigante, todo o painel do Gephi; Gephi Toolkit com prints (2026-11-07) ⚠️
 
-- Pedido do responsável (07/11/2026, 19h25): explorar as redes no Gephi com ForceAtlas 2 (comunidades) e OpenOrd (polarização), ver grupos pelo Modularity e a % de cada um, e registrar em CSV os cálculos, com prints.
-- `scripts/estatisticas_redes.py` (novo): os indicadores do painel Statistics do Gephi para cada `data/casos/*/*.gexf`. Inclui nós, arestas, densidade, grau médio e ponderado, componentes, clustering, diâmetro e caminho médio (até 3.000 nós no maior componente) e Modularity por Louvain (resolução 1,0, pesos, semente 42): Q, comunidades e % de nós nas maiores. Também o índice E-I de Krackhardt entre as duas maiores comunidades, como medida numérica de polarização. Saídas: `data/redes/estatisticas_redes.csv` e `data/redes/comunidades_redes.csv`.
-- Estado deste commit: os CSVs têm só o caso 026 (teste); a rodada com as 207 redes está em andamento e substitui os arquivos quando terminar.
-- Conferência no Gephi 0.11.4 do responsável (computador dele, 07/11, ~19h30), rede `026/rede_circulacao.gexf` (3.296 nós, 4.591 arestas): Modularity Q = 0,636, 11 comunidades (Python: 0,6364); % de nós por comunidade no Gephi: 31,49; 19,54; 16,11; 10,59; 9,77; 7,68; 4,13; 0,33; 0,18; 0,12; 0,06. ForceAtlas 2 rodado (LinLog, Stronger Gravity, Scaling 20) e colorido por comunidade. Interrompido porque o responsável passou a usar a mesma janela. Pendentes: prints finais, OpenOrd e exportação do Data Laboratory.
+- Pedidos do responsável (07/11/2026): 19h25, "Force Atlas 2 para comunidades e OpenOrd para polarização; grupos pelo Modularity e a % desses; registre o csv com os cálculos e print rede Gephi"; 19h37, "registre seu método de avaliação em um doc para validar"; 19h58, "você não olhou o tamanho, não olhou densidade, eu veria tudo".
+- `scripts/estatisticas_redes.py` faz, para cada `data/casos/*/*.gexf`:
+  - o painel Statistics do Gephi em Python: nós, arestas, densidade, grau médio e ponderado, componentes, tamanho do componente gigante, clustering, diâmetro e caminho médio (até 3.000 nós), assortatividade de grau e reciprocidade (dirigidas);
+  - Modularity por Louvain (resolução 1,0, pesos, semente 42) na rede inteira E no componente gigante, com Q, comunidades, % das maiores e E-I das duas maiores;
+  - os 5 nós de maior grau ponderado, PageRank, intermediação, autovetor e HITS.
+  Saídas: `data/redes/estatisticas_redes.csv`, `comunidades_redes.csv` e `centralidades_redes.csv`. Rodada com as 207 redes no workflow `redes-estatisticas.yml` (run 42423854923, em andamento); neste commit os CSVs têm só o 026.
+- `scripts/gephi/RedesGephi.java` + `redes-gephi.yml` (Gephi Toolkit 0.10.1 no runner, com tela virtual). Faz:
+  - as mesmas classes do aplicativo: Density, Degree, Weighted Degree, Connected Components, Clustering, Network Diameter (até 5.000 nós), PageRank, HITS, Eigenvector, Modularity e Statistical Inference;
+  - o desenho no componente gigante (filtro Giant Component), com nós dimensionados pelo grau (de entrada nas dirigidas) e coloridos pela Modularity Class;
+  - ForceAtlas 2 (LinLog, Stronger Gravity, Scaling 20/10, Prevent Overlap) e OpenOrd padrão, com PNG de cada e espessura das arestas reescalada.
+  Saídas: `data/redes/gephi/` com `gephi_resumo.csv`, `<caso>_<rede>_nos_gephi.csv` e os PNG.
+- Run 42423853008: 4 redes do 026 (contas × hashtags, circulação, palavras, respostas). Os resultados batem com o Python: Q da rede inteira 0,5977/0,6095; 0,6365/0,6364; 0,4163/0,4243; 0,9786/0,9790; componentes e gigante idênticos.
+- No Gephi 0.11.4 do responsável (19h30), a circulação do 026 deu Q 0,636 e 11 comunidades, igual às rotinas. O controle pela tela parou porque a janela Java do Gephi não confirma o documento ativo e as ações eram recusadas. Por isso a rotina passou a rodar no Toolkit.
+- Achados de método (registrados no documento de método):
+  1. Na rede de respostas do 026, só 29,48% dos autores estão no componente gigante (472 componentes). O Q de 0,979 e as 486 comunidades vêm de pares soltos.
+  2. A assortatividade de grau é negativa em todas as redes (estrelas). Nelas, o E-I das duas maiores dá perto de −1 sem que haja dois lados.
+  3. A reciprocidade na rede de respostas do YouTube é 0 por construção: a API liga toda resposta ao autor que abriu o fio. Fica ⛔.
+- Documento de método para validação: "Método de avaliação das redes do ODI Atlas (Gephi e Python)" (Claude Docs).
+- Ressalvas (⚠️):
+  - prints só do 026: as 207 redes em PNG pesariam centenas de MB no repositório, e a escolha fica com o responsável;
+  - o E-I depende de rótulo de posição para indicar polarização;
+  - a primeira rodada do Toolkit (run 42421778490) gravou PNGs vazios (HeadlessException), substituídos na rodada seguinte.
 - Teste: `python -m unittest discover -s tests` OK.
 
 ## C19.356 — Protótipo: imagens dos posts de TikTok, Instagram e Facebook na página do caso 030 (2026-11-07) 🔜
