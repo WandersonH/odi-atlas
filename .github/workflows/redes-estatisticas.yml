@@ -1,0 +1,37 @@
+name: Estatísticas das redes (Modularity, % por comunidade, E-I) — grátis
+
+# 07/11/2026 (C19.357): scripts/estatisticas_redes.py para todas as redes dos casos; saída em data/redes/.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso (vazio = todos)"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: redes-estatisticas
+  cancel-in-progress: false
+
+jobs:
+  estatisticas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q networkx==3.6.1 numpy==2.3.4 scipy
+      - name: Calcular
+        run: |
+          A=""; [ -n "${{ github.event.inputs.caso }}" ] && A="--caso ${{ github.event.inputs.caso }}"
+          python scripts/estatisticas_redes.py $A | tee e.txt
+          echo "::notice title=Redes::$(tail -1 e.txt)"
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Estatísticas das redes (run ${{ github.run_id }})"
