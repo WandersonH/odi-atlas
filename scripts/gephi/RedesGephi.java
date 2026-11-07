@@ -16,13 +16,13 @@ import org.gephi.appearance.api.Function;
 import org.gephi.appearance.api.Partition;
 import org.gephi.appearance.api.PartitionFunction;
 import org.gephi.appearance.plugin.PartitionElementColorTransformer;
+import org.gephi.appearance.plugin.RankingNodeSizeTransformer;
 import org.gephi.appearance.plugin.palette.Palette;
 import org.gephi.appearance.plugin.palette.PaletteManager;
 import org.gephi.graph.api.*;
 import org.gephi.io.exporter.api.ExportController;
 import org.gephi.io.exporter.preview.PNGExporter;
 import org.gephi.io.importer.api.Container;
-import org.gephi.io.importer.api.EdgeDirectionDefault;
 import org.gephi.io.importer.api.ImportController;
 import org.gephi.io.processor.plugin.DefaultProcessor;
 import org.gephi.layout.plugin.forceAtlas2.ForceAtlas2;
@@ -40,6 +40,11 @@ import org.gephi.statistics.plugin.ConnectedComponents;
 import org.gephi.statistics.plugin.Degree;
 import org.gephi.statistics.plugin.GraphDensity;
 import org.gephi.statistics.plugin.Modularity;
+import org.gephi.statistics.plugin.EigenvectorCentrality;
+import org.gephi.statistics.plugin.GraphDistance;
+import org.gephi.statistics.plugin.Hits;
+import org.gephi.statistics.plugin.PageRank;
+import org.gephi.statistics.plugin.WeightedDegree;
 import org.openide.util.Lookup;
 
 public class RedesGephi {
@@ -52,7 +57,7 @@ public class RedesGephi {
         File saida = new File(args[0]);
         saida.mkdirs();
         PrintWriter resumo = new PrintWriter(new File(saida, "gephi_resumo.csv"), StandardCharsets.UTF_8);
-        resumo.println("caso,rede,nos,arestas,densidade,grau_medio,componentes,clustering_medio,modularidade_q,comunidades,pct_comunidades,separacao_openord_2_maiores,separacao_fa2_2_maiores,iteracoes_fa2,iteracoes_openord");
+        resumo.println("caso,rede,dirigida,nos,arestas,densidade,grau_medio,grau_ponderado_medio,componentes,clustering_medio,diametro,caminho_medio,modularidade_q,comunidades,nos_componente_gigante,pct_componente_gigante,gc_densidade,gc_modularidade_q,gc_comunidades,gc_pct_comunidades,inferencia_estatistica_classes,top5_pagerank,top5_hits_autoridade,top5_autovetor,top5_intermediacao,separacao_openord_2_maiores,separacao_fa2_2_maiores,iteracoes_fa2,iteracoes_openord");
         for (int a = 1; a < args.length; a++) {
             File f = new File(args[a]);
             String caso = f.getParentFile().getName(), rede = f.getName().replace(".gexf", "");
@@ -74,10 +79,10 @@ public class RedesGephi {
         Workspace ws = pc.getCurrentWorkspace();
         ImportController ic = Lookup.getDefault().lookup(ImportController.class);
         Container c = ic.importFile(f);
-        c.getLoader().setEdgeDefault(EdgeDirectionDefault.UNDIRECTED);
+        // 07/11/2026: mantém a direção do arquivo (respostas e contas → hashtags são dirigidas); o Modularity usa a vista não dirigida
         ic.process(c, new DefaultProcessor(), ws);
         GraphModel gm = Lookup.getDefault().lookup(GraphController.class).getGraphModel(ws);
-        UndirectedGraph g = gm.getUndirectedGraph();
+        UndirectedGraph g = gm.getUndirectedGraph();  // reatribuído ao componente gigante adiante
         int n = g.getNodeCount(), m = g.getEdgeCount();
 
         GraphDensity dens = new GraphDensity();
@@ -98,7 +103,72 @@ public class RedesGephi {
         mod.execute(gm);
         Column colMod = gm.getNodeTable().getColumn(Modularity.MODULARITY_CLASS);
 
-        // % por comunidade (ordem decrescente de tamanho)
+        // 07/11/2026 ("você não olhou o tamanho, não olhou densidade, eu veria tudo"): todo o painel Statistics do Gephi
+        boolean dir = gm.isDirected();
+        WeightedDegree wdeg = new WeightedDegree();
+        wdeg.execute(gm);
+        PageRank pr = new PageRank();
+        pr.setDirected(dir);
+        pr.setUseEdgeWeight(true);
+        pr.execute(gm);
+        Hits hits = new Hits();
+        hits.setUndirected(!dir);
+        hits.execute(gm);
+        EigenvectorCentrality eig = new EigenvectorCentrality();
+        eig.setDirected(dir);
+        eig.execute(gm);
+        String diam = "", camin = "";
+        Column colBet = null;
+        if (n <= 5000) {  // Network Diameter e Avg. Path Length (também gera intermediação/proximidade): caro acima disso
+            GraphDistance gd = new GraphDistance();
+            gd.setDirected(false);
+            gd.setNormalized(true);
+            gd.execute(gm);
+            diam = String.format(Locale.ROOT, "%.0f", gd.getDiameter());
+            camin = String.format(Locale.ROOT, "%.3f", gd.getPathLength());
+            colBet = gm.getNodeTable().getColumn(GraphDistance.BETWEENNESS);
+        }
+        String infer = "";
+        try {  // Statistical Inference (SBM), quando a versão do Toolkit traz a classe
+            Object si = Class.forName("org.gephi.statistics.plugin.StatisticalInferenceClustering").getDeclaredConstructor().newInstance();
+            si.getClass().getMethod("execute", GraphModel.class).invoke(si, gm);
+            for (Column cl2 : gm.getNodeTable()) {
+                if (cl2.getId().toLowerCase().contains("stat_inf") || cl2.getId().toLowerCase().contains("inference")) {
+                    Set<Object> cls = new HashSet<>();
+                    for (Node v : g.getNodes()) cls.add(v.getAttribute(cl2));
+                    infer = "" + cls.size();
+                }
+            }
+        } catch (Throwable t) {
+            infer = "indisponível";
+        }
+        String topPr = top(g, gm.getNodeTable().getColumn(PageRank.PAGERANK)), topAut = top(g, gm.getNodeTable().getColumn(Hits.AUTHORITY)),
+               topEig = top(g, gm.getNodeTable().getColumn(EigenvectorCentrality.EIGENVECTOR)), topBet = colBet == null ? "" : top(g, colBet);
+
+        // 07/11/2026: Q e nº de comunidades da rede inteira; o desenho e os % ficam no componente gigante (como o filtro
+        // Topology → Giant Component do Gephi). Em redes fragmentadas os pares soltos inflam o Q e viram centenas de "comunidades".
+        double qTotal = mod.getModularity();
+        Set<Object> clsTotal = new HashSet<>();
+        for (Node v : g.getNodes()) clsTotal.add(v.getAttribute(colMod));
+        int nTotal = n;
+        Column colComp = gm.getNodeTable().getColumn(ConnectedComponents.WEAKLY);
+        int gid = cc.getGiantComponent();
+        List<Node> fora = new ArrayList<>();
+        for (Node v : g.getNodes()) if (((Number) v.getAttribute(colComp)).intValue() != gid) fora.add(v);
+        gm.getGraph().removeAllNodes(fora);  // só na cópia em memória do Toolkit; o GEXF não muda
+        g = gm.getUndirectedGraph();
+        n = g.getNodeCount();
+        GraphDensity densGc = new GraphDensity();
+        densGc.setDirected(false);
+        densGc.execute(gm);
+        Modularity modGc = new Modularity();
+        modGc.setUseWeight(true);
+        modGc.setRandom(true);
+        modGc.setResolution(1.0);
+        modGc.execute(gm);
+        colMod = gm.getNodeTable().getColumn(Modularity.MODULARITY_CLASS);
+
+        // % por comunidade no componente gigante (ordem decrescente de tamanho)
         Map<Integer, Integer> tam = new HashMap<>();
         for (Node v : g.getNodes()) tam.merge((Integer) v.getAttribute(colMod), 1, Integer::sum);
         List<Map.Entry<Integer, Integer>> ord = new ArrayList<>(tam.entrySet());
@@ -117,6 +187,12 @@ public class RedesGephi {
         Palette pal = PaletteManager.getInstance().generatePalette(part.size(g));
         part.setColors(g, pal.getColors());
         ac.transform(func);
+        Column colTam = gm.getNodeTable().getColumn(dir ? Degree.INDEGREE : Degree.DEGREE);
+        Function fTam = am.getNodeFunction(colTam, RankingNodeSizeTransformer.class);
+        RankingNodeSizeTransformer tTam = (RankingNodeSizeTransformer) fTam.getTransformer();
+        tTam.setMinSize(4f);
+        tTam.setMaxSize(n > 5000 ? 60f : 80f);
+        ac.transform(fTam);
 
         // ForceAtlas 2 (comunidades): LinLog, gravidade forte, scaling conforme o tamanho; depois evita sobreposição
         ForceAtlas2 fa2 = new ForceAtlas2Builder().buildLayout();
@@ -160,13 +236,29 @@ public class RedesGephi {
                         + p[0] + "," + p[1] + "," + v.x() + "," + v.y());
             }
         }
-        resumo.println(String.join(",", q(caso), q(rede), "" + n, "" + m,
+        resumo.println(String.join(",", q(caso), q(rede), "" + dir, "" + nTotal, "" + m,
                 String.format(Locale.ROOT, "%.6f", dens.getDensity()), String.format(Locale.ROOT, "%.3f", deg.getAverageDegree()),
-                "" + cc.getConnectedComponentsCount(), String.format(Locale.ROOT, "%.4f", cl.getAverageClusteringCoefficient()),
-                String.format(Locale.ROOT, "%.4f", mod.getModularity()), "" + tam.size(), q(pcts),
+                String.format(Locale.ROOT, "%.3f", wdeg.getAverageDegree()),
+                "" + cc.getConnectedComponentsCount(), String.format(Locale.ROOT, "%.4f", cl.getAverageClusteringCoefficient()), diam, camin,
+                String.format(Locale.ROOT, "%.4f", qTotal), "" + clsTotal.size(), "" + n, String.format(Locale.ROOT, "%.2f", 100.0 * n / nTotal),
+                String.format(Locale.ROOT, "%.6f", densGc.getDensity()), String.format(Locale.ROOT, "%.4f", modGc.getModularity()), "" + tam.size(), q(pcts), q(infer), q(topPr), q(topAut), q(topEig), q(topBet),
                 String.format(Locale.ROOT, "%.3f", sepOo), String.format(Locale.ROOT, "%.3f", sepFa2), "" + itFa2, "" + itOo));
-        System.out.println(nome + ": " + n + " nós, Q=" + String.format(Locale.ROOT, "%.4f", mod.getModularity()) + ", " + tam.size()
+        System.out.println(nome + ": " + nTotal + " nós (gigante " + n + "), Q=" + String.format(Locale.ROOT, "%.4f", qTotal) + ", Q gigante=" + String.format(Locale.ROOT, "%.4f", modGc.getModularity()) + ", " + tam.size()
                 + " comunidades, separação OpenOrd " + String.format(Locale.ROOT, "%.2f", sepOo));
+    }
+
+    // os 5 nós de maior valor numa coluna (rótulo do GEXF público: pessoas comuns já em código)
+    static String top(UndirectedGraph g, Column col) {
+        if (col == null) return "";
+        List<Node> ns = new ArrayList<>();
+        for (Node v : g.getNodes()) ns.add(v);
+        ns.sort((x, y) -> Double.compare(((Number) y.getAttribute(col)).doubleValue(), ((Number) x.getAttribute(col)).doubleValue()));
+        StringBuilder b = new StringBuilder();
+        for (int i = 0; i < Math.min(5, ns.size()); i++) {
+            if (i > 0) b.append(" | ");
+            b.append(ns.get(i).getLabel()).append(String.format(Locale.ROOT, " (%.4f)", ((Number) ns.get(i).getAttribute(col)).doubleValue()));
+        }
+        return b.toString();
     }
 
     // distância entre os centróides das duas maiores comunidades ÷ média dos raios (desvio das distâncias ao centróide)
@@ -214,6 +306,10 @@ public class RedesGephi {
         pm.getProperties().putValue(PreviewProperty.SHOW_NODE_LABELS, Boolean.FALSE);
         pm.getProperties().putValue(PreviewProperty.EDGE_CURVED, Boolean.FALSE);
         pm.getProperties().putValue(PreviewProperty.EDGE_OPACITY, 25f);
+        // 07/11/2026: espessura reescalada (na circulação o peso é em visualizações e as arestas cobriam o desenho)
+        pm.getProperties().putValue(PreviewProperty.EDGE_RESCALE_WEIGHT, Boolean.TRUE);
+        pm.getProperties().putValue(PreviewProperty.EDGE_RESCALE_WEIGHT_MIN, 0.1f);
+        pm.getProperties().putValue(PreviewProperty.EDGE_RESCALE_WEIGHT_MAX, 1.5f);
         pm.getProperties().putValue(PreviewProperty.EDGE_COLOR, new EdgeColor(EdgeColor.Mode.SOURCE));
         pm.getProperties().putValue(PreviewProperty.NODE_BORDER_WIDTH, 0f);
         pm.getProperties().putValue(PreviewProperty.BACKGROUND_COLOR, Color.WHITE);
