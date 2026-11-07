@@ -1,6 +1,5 @@
 Source,Target,Weight,Type
 6x1,comprar,8,Undirected
-6x1,conseguir,9,Undirected
 6x1,dignidade,9,Undirected
 6x1,direitos,8,Undirected
 6x1,escolher,10,Undirected
@@ -43,6 +42,8 @@ alfredo,vcs,4,Undirected
 alfredo,vice,4,Undirected
 alfredo,vitoria,3,Undirected
 antes,comprar,8,Undirected
+antes,oportunidade,9,Undirected
+antes,precisam,8,Undirected
 apenas,comprar,8,Undirected
 bolsa,apenas,9,Undirected
 bolsa,comprar,8,Undirected
@@ -58,7 +59,7 @@ brasil,bets,3,Undirected
 brasil,bom,4,Undirected
 brasil,brasileiro,6,Undirected
 brasil,brasileiros,11,Undirected
-brasil,cara,5,Undirected
+brasil,cara,6,Undirected
 brasil,certeza,5,Undirected
 brasil,certo,3,Undirected
 brasil,cima,6,Undirected
@@ -70,7 +71,7 @@ brasil,debate,3,Undirected
 brasil,demais,3,Undirected
 brasil,democracia,4,Undirected
 brasil,desde,8,Undirected
-brasil,deus,18,Undirected
+brasil,deus,19,Undirected
 brasil,dinheiro,5,Undirected
 brasil,esperanca,6,Undirected
 brasil,falar,6,Undirected
@@ -78,12 +79,13 @@ brasil,favor,4,Undirected
 brasil,forca,4,Undirected
 brasil,frente,3,Undirected
 brasil,futuro,15,Undirected
-brasil,ganhar,9,Undirected
+brasil,ganhar,10,Undirected
 brasil,gaspar,11,Undirected
 brasil,geraldo,5,Undirected
 brasil,governo,4,Undirected
 brasil,historia,13,Undirected
 brasil,homem,7,Undirected
+brasil,importante,3,Undirected
 brasil,junto,3,Undirected
 brasil,juntos,12,Undirected
 brasil,lindo,6,Undirected
@@ -129,7 +131,6 @@ brasil,verdade,4,Undirected
 brasil,vitoria,6,Undirected
 brasil,viva,4,Undirected
 brasil,voto,5,Undirected
-brasileiro,dar,3,Undirected
 brasileiros,antes,9,Undirected
 brasileiros,comprar,8,Undirected
 brasileiros,esperanca,3,Undirected
@@ -142,7 +143,6 @@ cade,picanha,12,Undirected
 cara,nem,3,Undirected
 casa,bolsa,9,Undirected
 casa,comprar,8,Undirected
-casa,conseguir,9,Undirected
 casa,direitos,9,Undirected
 casa,hora,10,Undirected
 casa,milhoes,9,Undirected
@@ -162,6 +162,7 @@ coisa,salario,9,Undirected
 colombia,contigo,3,Undirected
 coracao,esperanca,3,Undirected
 coracao,vermelho,18,Undirected
+dar,brasileiro,3,Undirected
 dar,certo,5,Undirected
 dar,segundo,3,Undirected
 deixar,trabalhar,4,Undirected
@@ -181,12 +182,13 @@ deus,amem,13,Undirected
 deus,amo,4,Undirected
 deus,boa,4,Undirected
 deus,bom,5,Undirected
+deus,cara,3,Undirected
 deus,certo,4,Undirected
 deus,contigo,7,Undirected
 deus,familia,17,Undirected
 deus,forca,3,Undirected
 deus,frente,5,Undirected
-deus,ganhar,6,Undirected
+deus,ganhar,7,Undirected
 deus,gaspar,14,Undirected
 deus,homem,4,Undirected
 deus,jesus,12,Undirected
@@ -221,7 +223,6 @@ direitos,minimo,9,Undirected
 direitos,mulheres,10,Undirected
 direitos,oportunidade,9,Undirected
 escala,6x1,23,Undirected
-escala,conseguir,9,Undirected
 escala,escolher,10,Undirected
 escala,hora,10,Undirected
 escala,minimo,11,Undirected
@@ -271,7 +272,7 @@ futuro,oportunidade,11,Undirected
 futuro,podemos,9,Undirected
 futuro,precisamos,10,Undirected
 futuro,vida,11,Undirected
-ganhar,cara,3,Undirected
+ganhar,cara,4,Undirected
 ganhar,deixar,3,Undirected
 ganhar,senhor,3,Undirected
 gaspar,abencoe,6,Undirected
@@ -281,7 +282,6 @@ gaspar,homem,6,Undirected
 gaspar,juntos,10,Undirected
 gaspar,nordeste,6,Undirected
 gaspar,orgulho,4,Undirected
-gaspar,parabens,24,Undirected
 gaspar,proteja,4,Undirected
 gaspar,respeito,3,Undirected
 gaspar,tamo,3,Undirected
@@ -339,7 +339,7 @@ mexico,con,9,Undirected
 milhoes,oportunidade,9,Undirected
 mulheres,antes,8,Undirected
 mulheres,apenas,8,Undirected
-mundo,conseguir,9,Undirected
+mundo,antes,8,Undirected
 mundo,escolher,10,Undirected
 nem,antes,10,Undirected
 nem,apenas,9,Undirected
@@ -355,6 +355,7 @@ nem,minimo,10,Undirected
 nem,mudar,3,Undirected
 nem,oportunidade,10,Undirected
 nem,pagar,10,Undirected
+nem,pessoas,12,Undirected
 nem,precisam,9,Undirected
 nem,salario,10,Undirected
 nem,tao,3,Undirected
@@ -366,7 +367,6 @@ nordeste,escolher,3,Undirected
 nordeste,governo,3,Undirected
 nordeste,vcs,3,Undirected
 nordeste,viva,3,Undirected
-oportunidade,antes,9,Undirected
 orgulho,alagoas,4,Undirected
 orgulho,brasileiro,4,Undirected
 orgulho,certeza,4,Undirected
@@ -411,11 +411,12 @@ pais,trabalhadores,10,Undirected
 pais,unidos,3,Undirected
 parabens,abencoe,13,Undirected
 parabens,alagoas,3,Undirected
-parabens,alckmin,5,Undirected
+parabens,alckmin,6,Undirected
 parabens,boa,3,Undirected
 parabens,bom,3,Undirected
 parabens,deixar,3,Undirected
 parabens,demais,3,Undirected
+parabens,gaspar,24,Undirected
 parabens,geraldo,7,Undirected
 parabens,juntos,4,Undirected
 parabens,melhor,5,Undirected
@@ -427,18 +428,16 @@ parabens,tamos,3,Undirected
 parabens,vcs,4,Undirected
 parabens,verdade,3,Undirected
 parabens,vitoria,5,Undirected
-paulo,saude,6,Undirected
 paulo,trabalho,5,Undirected
 pessoas,6x1,10,Undirected
 pessoas,antes,10,Undirected
 pessoas,apenas,11,Undirected
 pessoas,bolsa,9,Undirected
 pessoas,coisa,10,Undirected
-pessoas,conseguir,9,Undirected
 pessoas,dignidade,13,Undirected
 pessoas,escala,10,Undirected
 pessoas,homem,4,Undirected
-pessoas,nem,11,Undirected
+pessoas,importante,3,Undirected
 pessoas,pagar,10,Undirected
 pessoas,precisam,13,Undirected
 pessoas,tao,3,Undirected
@@ -469,9 +468,7 @@ povo,trabalhar,4,Undirected
 povo,vida,7,Undirected
 povo,virar,3,Undirected
 povo,vitoria,4,Undirected
-precisam,antes,8,Undirected
 precisamos,6x1,10,Undirected
-precisamos,conseguir,9,Undirected
 precisamos,escolher,10,Undirected
 precisamos,hora,10,Undirected
 precisamos,mundo,9,Undirected
@@ -488,7 +485,7 @@ presidente,certo,5,Undirected
 presidente,cima,4,Undirected
 presidente,colombia,17,Undirected
 presidente,con,4,Undirected
-presidente,contigo,4,Undirected
+presidente,contigo,5,Undirected
 presidente,coracao,5,Undirected
 presidente,dar,3,Undirected
 presidente,deixar,4,Undirected
@@ -497,10 +494,10 @@ presidente,deus,18,Undirected
 presidente,falar,6,Undirected
 presidente,favor,7,Undirected
 presidente,feliz,5,Undirected
-presidente,futuro,25,Undirected
+presidente,futuro,27,Undirected
 presidente,ganhar,5,Undirected
 presidente,geraldo,8,Undirected
-presidente,historia,12,Undirected
+presidente,historia,13,Undirected
 presidente,jesus,4,Undirected
 presidente,junto,5,Undirected
 presidente,lindo,5,Undirected
@@ -511,8 +508,8 @@ presidente,nome,4,Undirected
 presidente,orgulho,10,Undirected
 presidente,pai,4,Undirected
 presidente,pais,15,Undirected
-presidente,parabens,21,Undirected
-presidente,povo,13,Undirected
+presidente,parabens,22,Undirected
+presidente,povo,14,Undirected
 presidente,primeiro,5,Undirected
 presidente,querido,16,Undirected
 presidente,quiser,4,Undirected
@@ -555,6 +552,7 @@ salario,comprar,9,Undirected
 salario,direitos,9,Undirected
 salario,minimo,14,Undirected
 salario,trabalhadores,9,Undirected
+saude,paulo,6,Undirected
 saude,sus,4,Undirected
 saude,trabalho,5,Undirected
 segundo,votei,3,Undirected
@@ -608,7 +606,6 @@ vida,brasileiro,4,Undirected
 vida,brasileiros,11,Undirected
 vida,casa,12,Undirected
 vida,coisa,9,Undirected
-vida,conseguir,9,Undirected
 vida,dar,4,Undirected
 vida,dignidade,10,Undirected
 vida,direitos,9,Undirected
@@ -626,7 +623,6 @@ viva,sus,4,Undirected
 votar,bolsa,11,Undirected
 votar,brasileiros,10,Undirected
 votar,casa,11,Undirected
-votar,conseguir,10,Undirected
 votar,coracao,3,Undirected
 votar,depois,3,Undirected
 votar,escala,10,Undirected
@@ -634,6 +630,7 @@ votar,familia,15,Undirected
 votar,nele,4,Undirected
 votar,nem,12,Undirected
 votar,pais,10,Undirected
+votar,pessoas,10,Undirected
 votar,segundo,6,Undirected
 votar,sus,10,Undirected
 votar,votei,5,Undirected
