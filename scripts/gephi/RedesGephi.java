@@ -234,9 +234,9 @@ public class RedesGephi {
         for (Node v : topGrau) {
             Set<Node> a = viz1.get(v), b = viz2.get(v), uni = new HashSet<>(a);
             uni.addAll(b);
-            Set<Node> int = new HashSet<>(a);
-            int.retainAll(b);
-            jac += uni.isEmpty() ? 0 : (double) int.size() / uni.size();
+            Set<Node> inter = new HashSet<>(a);
+            inter.retainAll(b);
+            jac += uni.isEmpty() ? 0 : (double) inter.size() / uni.size();
         }
         double estab = topGrau.isEmpty() ? Double.NaN : jac / topGrau.size();
 
