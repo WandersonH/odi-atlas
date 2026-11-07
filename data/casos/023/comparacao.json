@@ -1,6 +1,6 @@
 {
  "caso": "023",
- "gerado_em_utc": "2026-11-06T21:04:17Z",
+ "gerado_em_utc": "2026-11-07T19:38:02Z",
  "corte_pos_eleicao": "2026-10-28",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -117,19 +117,19 @@
     "respostas_entre_publicacoes": 84
    },
    "x_agora": {
-    "publicacoes": 430,
-    "contas": 386,
-    "visualizacoes": 1965435,
-    "curtidas": 50918,
-    "respostas_recebidas": 3358,
-    "compartilhamentos": 6279,
+    "publicacoes": 531,
+    "contas": 479,
+    "visualizacoes": 1986091,
+    "curtidas": 51678,
+    "respostas_recebidas": 3411,
+    "compartilhamentos": 6453,
     "primeiro_dia": "2026-10-28",
-    "ultimo_dia": "2026-11-06",
+    "ultimo_dia": "2026-11-07",
     "pico": {
      "dia": "2026-10-31",
      "publicacoes": 128
     },
-    "dias_ate_metade": 3,
+    "dias_ate_metade": 4,
     "serie_desde_dia0": [
      37,
      10,
@@ -140,13 +140,14 @@
      46,
      15,
      13,
-     8
+     59,
+     50
     ],
     "contas_10mil": [
      {
       "rede": "x",
       "conta": "TAbreu24",
-      "seguidores": 18922,
+      "seguidores": 19050,
       "publicacoes": 4
      },
      {
@@ -165,6 +166,18 @@
       "rede": "x",
       "conta": "Rudriguo",
       "seguidores": 16872,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "otempo",
+      "seguidores": 440512,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "LaudelinoRJ",
+      "seguidores": 47052,
       "publicacoes": 2
      },
      {
@@ -201,18 +214,6 @@
       "rede": "x",
       "conta": "GalvaoLaizah",
       "seguidores": 31415,
-      "publicacoes": 1
-     },
-     {
-      "rede": "x",
-      "conta": "Haaaysb",
-      "seguidores": 53719,
-      "publicacoes": 1
-     },
-     {
-      "rede": "x",
-      "conta": "george1BR2",
-      "seguidores": 23818,
       "publicacoes": 1
      }
     ]
@@ -267,8 +268,24 @@
    "filtro_pertinencia": "caminhoneir|grevedoscaminhoneiros",
    "titulo": "Greve dos caminhoneiros de maio de 2018",
    "aviso_epoca": "Amostra da época = busca única no limite (as mais recentes, concentradas nos últimos dias da janela) + uma quantidade fixa por dia (as mais relevantes). A curva e o pico da época mostram a amostra, não o volume real daquela época (⛔ não informado pela plataforma).",
-   "contas_nos_dois_periodos": 2,
+   "contas_nos_dois_periodos": 6,
    "contas_10mil_nos_dois": [
+    [
+     "portalnsctotal",
+     448268
+    ],
+    [
+     "otempo",
+     440512
+    ],
+    [
+     "jornalhojeemdia",
+     182132
+    ],
+    [
+     "canalrural",
+     60902
+    ],
     [
      "Rudriguo",
      16872
@@ -277,56 +294,44 @@
    "palavras_tipicas": {
     "epoca": [
      [
-      "amanhã",
-      24
-     ],
-     [
       "parente",
       23
-     ],
-     [
-      "pedro",
-      20
-     ],
-     [
-      "durante",
-      80
-     ],
-     [
-      "segunda",
-      35
      ],
      [
       "aula",
       17
      ],
      [
+      "durante",
+      80
+     ],
+     [
       "petroleiros",
       16
      ],
      [
-      "vivo",
-      13
+      "amanhã",
+      24
+     ],
+     [
+      "segunda",
+      35
      ],
      [
       "feriado",
       13
      ],
      [
+      "vivo",
+      13
+     ],
+     [
+      "pedro",
+      20
+     ],
+     [
       "pesquisa",
       12
-     ],
-     [
-      "diz",
-      35
-     ],
-     [
-      "via",
-      35
-     ],
-     [
-      "militar",
-      17
      ],
      [
       "lição",
@@ -335,6 +340,18 @@
      [
       "poluição",
       10
+     ],
+     [
+      "bilhão",
+      10
+     ],
+     [
+      "diz",
+      35
+     ],
+     [
+      "junho",
+      9
      ]
     ],
     "agora": [
@@ -360,7 +377,7 @@
      ],
      [
       "mobilização",
-      164
+      165
      ],
      [
       "adesão",
@@ -368,31 +385,31 @@
      ],
      [
       "fretes",
-      101
-     ],
-     [
-      "redes",
-      178
+      102
      ],
      [
       "abrava",
       73
      ],
      [
-      "wallace",
-      72
+      "redes",
+      179
      ],
      [
       "landim",
       72
      ],
      [
+      "wallace",
+      72
+     ],
+     [
       "quinta",
-      138
+      139
      ],
      [
       "nacional",
-      221
+      222
      ],
      [
       "sociais",
@@ -408,10 +425,10 @@
      "POS": 4.7
     },
     "x_agora": {
-     "n": 430,
-     "NEG": 33.3,
-     "NEU": 63.7,
-     "POS": 3.0
+     "n": 531,
+     "NEG": 33.9,
+     "NEU": 62.1,
+     "POS": 4.0
     },
     "instagram_agora": {
      "n": 127,
@@ -543,19 +560,19 @@
     "respostas_entre_publicacoes": 220
    },
    "x_agora": {
-    "publicacoes": 430,
-    "contas": 386,
-    "visualizacoes": 1965435,
-    "curtidas": 50918,
-    "respostas_recebidas": 3358,
-    "compartilhamentos": 6279,
+    "publicacoes": 531,
+    "contas": 479,
+    "visualizacoes": 1986091,
+    "curtidas": 51678,
+    "respostas_recebidas": 3411,
+    "compartilhamentos": 6453,
     "primeiro_dia": "2026-10-28",
-    "ultimo_dia": "2026-11-06",
+    "ultimo_dia": "2026-11-07",
     "pico": {
      "dia": "2026-10-31",
      "publicacoes": 128
     },
-    "dias_ate_metade": 3,
+    "dias_ate_metade": 4,
     "serie_desde_dia0": [
      37,
      10,
@@ -566,13 +583,14 @@
      46,
      15,
      13,
-     8
+     59,
+     50
     ],
     "contas_10mil": [
      {
       "rede": "x",
       "conta": "TAbreu24",
-      "seguidores": 18922,
+      "seguidores": 19050,
       "publicacoes": 4
      },
      {
@@ -591,6 +609,18 @@
       "rede": "x",
       "conta": "Rudriguo",
       "seguidores": 16872,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "otempo",
+      "seguidores": 440512,
+      "publicacoes": 2
+     },
+     {
+      "rede": "x",
+      "conta": "LaudelinoRJ",
+      "seguidores": 47052,
       "publicacoes": 2
      },
      {
@@ -627,18 +657,6 @@
       "rede": "x",
       "conta": "GalvaoLaizah",
       "seguidores": 31415,
-      "publicacoes": 1
-     },
-     {
-      "rede": "x",
-      "conta": "Haaaysb",
-      "seguidores": 53719,
-      "publicacoes": 1
-     },
-     {
-      "rede": "x",
-      "conta": "george1BR2",
-      "seguidores": 23818,
       "publicacoes": 1
      }
     ]
@@ -693,8 +711,16 @@
    "filtro_pertinencia": "caminhoneir|grevedoscaminhoneiros",
    "titulo": "Bloqueios de caminhoneiros depois da eleição de 2022",
    "aviso_epoca": "Amostra da época = busca única no limite (as mais recentes, concentradas nos últimos dias da janela) + uma quantidade fixa por dia (as mais relevantes). A curva e o pico da época mostram a amostra, não o volume real daquela época (⛔ não informado pela plataforma).",
-   "contas_nos_dois_periodos": 2,
+   "contas_nos_dois_periodos": 4,
    "contas_10mil_nos_dois": [
+    [
+     "otempo",
+     440512
+    ],
+    [
+     "canalrural",
+     60902
+    ],
     [
      "Rudriguo",
      16872
@@ -711,19 +737,19 @@
       103
      ],
      [
-      "liberdadedeexpressao",
-      103
-     ],
-     [
       "manifestacao",
       103
      ],
      [
-      "ffaa",
-      102
+      "liberdadedeexpressao",
+      103
      ],
      [
       "resistenciacivilbrasil",
+      102
+     ],
+     [
+      "ffaa",
       102
      ],
      [
@@ -755,12 +781,12 @@
       41
      ],
      [
-      "prf",
-      56
-     ],
-     [
       "rodovias",
       219
+     ],
+     [
+      "federais",
+      33
      ]
     ],
     "agora": [
@@ -770,7 +796,7 @@
      ],
      [
       "diesel",
-      226
+      229
      ],
      [
       "confirmação",
@@ -778,7 +804,7 @@
      ],
      [
       "preço",
-      162
+      164
      ],
      [
       "novembro",
@@ -786,7 +812,7 @@
      ],
      [
       "redes",
-      178
+      179
      ],
      [
       "impactos",
@@ -794,27 +820,27 @@
      ],
      [
       "nacional",
-      221
+      222
      ],
      [
       "mobilização",
-      164
+      165
      ],
      [
       "possível",
       183
      ],
      [
-      "sociais",
-      163
+      "regiões",
+      76
      ],
      [
       "quinta",
-      138
+      139
      ],
      [
-      "regiões",
-      76
+      "sociais",
+      163
      ],
      [
       "abastecimento",
@@ -834,10 +860,10 @@
      "POS": 4.5
     },
     "x_agora": {
-     "n": 430,
-     "NEG": 33.3,
-     "NEU": 63.7,
-     "POS": 3.0
+     "n": 531,
+     "NEG": 33.9,
+     "NEU": 62.1,
+     "POS": 4.0
     },
     "instagram_agora": {
      "n": 127,
