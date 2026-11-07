@@ -1,0 +1,49 @@
+name: Imagens dos posts de um caso (galeria visual; grátis)
+
+# 07/11/2026 (C19.356): protótipo no caso 030, pedido do responsável ("assim como mostra os tweets, mostrar as imagens dos
+# posts em outras redes"). Só contas com 10 mil+ seguidores ou perfil do TSE; miniaturas guardadas porque os endereços expiram.
+on:
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso (ex.: 030)"
+        required: true
+      max:
+        description: "máximo de peças na galeria"
+        default: "24"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: imagens-caso
+  cancel-in-progress: false
+
+jobs:
+  imagens:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q pillow==11.3.0 networkx==3.6.1 numpy==2.3.4
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"
+          echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+      - name: Imagens
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          python scripts/imagens_caso.py --caso "${{ github.event.inputs.caso }}" --max "${{ github.event.inputs.max }}" | tee i.txt
+          echo "::notice title=Imagens::$(tail -1 i.txt | cut -c1-400)"
+      - name: Commitar
+        if: always()
+        run: |
+          scripts/commit_push.sh "Imagens dos posts do caso ${{ github.event.inputs.caso }} (run ${{ github.run_id }})"
