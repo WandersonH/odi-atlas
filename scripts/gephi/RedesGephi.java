@@ -136,7 +136,7 @@ public class RedesGephi {
         fa2.endAlgo();
         Map<Node, float[]> posFa2 = new HashMap<>();
         for (Node v : g.getNodes()) posFa2.put(v, new float[]{v.x(), v.y()});
-        exporta(ws, new File(saida, nome + "_forceatlas2.png"));
+        exportaSeguro(ws, new File(saida, nome + "_forceatlas2.png"));
         double sepFa2 = separacao(g, colMod, ord);
 
         // OpenOrd (polarização): parâmetros padrão do Gephi
@@ -147,7 +147,7 @@ public class RedesGephi {
         int itOo = 0;
         while (oo.canAlgo() && itOo < 100000) { oo.goAlgo(); itOo++; }
         oo.endAlgo();
-        exporta(ws, new File(saida, nome + "_openord.png"));
+        exportaSeguro(ws, new File(saida, nome + "_openord.png"));
         double sepOo = separacao(g, colMod, ord);
 
         // nós: id, rótulo, classe, grau, posições dos dois layouts (o rótulo é o do GEXF público: pessoas comuns já em código)
@@ -197,6 +197,16 @@ public class RedesGephi {
         double s = 0;
         for (float[] p : ps) s += Math.hypot(p[0] - c[0], p[1] - c[1]);
         return s / ps.size();
+    }
+
+    // uma falha na imagem não derruba os números da rede
+    static void exportaSeguro(Workspace ws, File png) {
+        try {
+            exporta(ws, png);
+        } catch (Throwable t) {
+            System.out.println("⛔ imagem " + png.getName() + ": " + t);
+            png.delete();
+        }
     }
 
     static void exporta(Workspace ws, File png) throws Exception {
