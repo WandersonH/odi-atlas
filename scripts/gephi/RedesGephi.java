@@ -57,7 +57,7 @@ public class RedesGephi {
         File saida = new File(args[0]);
         saida.mkdirs();
         PrintWriter resumo = new PrintWriter(new File(saida, "gephi_resumo.csv"), StandardCharsets.UTF_8);
-        resumo.println("caso,rede,dirigida,nos,arestas,densidade,grau_medio,grau_ponderado_medio,componentes,clustering_medio,diametro,caminho_medio,modularidade_q,comunidades,nos_componente_gigante,pct_componente_gigante,gc_densidade,gc_modularidade_q,gc_comunidades,gc_pct_comunidades,inferencia_estatistica_classes,top5_pagerank,top5_hits_autoridade,top5_autovetor,top5_intermediacao,separacao_openord_2_maiores,separacao_fa2_2_maiores,iteracoes_fa2,iteracoes_openord");
+        resumo.println("caso,rede,dirigida,nos,arestas,densidade,grau_medio,grau_ponderado_medio,componentes,clustering_medio,diametro,caminho_medio,modularidade_q,comunidades,nos_componente_gigante,pct_componente_gigante,gc_densidade,gc_modularidade_q,gc_comunidades,gc_pct_comunidades,inferencia_estatistica_classes,top5_pagerank,top5_hits_autoridade,top5_autovetor,top5_intermediacao,separacao_openord_2_maiores,separacao_openord_edgecut0,separacao_fa2_2_maiores,estabilidade_fa2_jaccard_top50,arestas_dentro_grupo1,arestas_dentro_grupo2,arestas_entre_1_e_2,pct_arestas_cruzando,iteracoes_fa2,iteracoes_openord");
         for (int a = 1; a < args.length; a++) {
             File f = new File(args[a]);
             String caso = f.getParentFile().getName(), rede = f.getName().replace(".gexf", "");
@@ -215,6 +215,47 @@ public class RedesGephi {
         exportaSeguro(ws, new File(saida, nome + "_forceatlas2.png"));
         double sepFa2 = separacao(g, colMod, ord);
 
+        // 07/11/2026 (guia de layouts do responsável): estabilidade — Random Layout e ForceAtlas 2 de novo; os mesmos perfis
+        // voltam a ficar próximos? Média de Jaccard entre os 10 vizinhos mais próximos dos 50 nós de maior grau nas duas rodadas.
+        Column colDeg0 = gm.getNodeTable().getColumn(Degree.DEGREE);
+        List<Node> topGrau = new ArrayList<>();
+        for (Node v : g.getNodes()) topGrau.add(v);
+        topGrau.sort((x, y) -> ((Number) y.getAttribute(colDeg0)).intValue() - ((Number) x.getAttribute(colDeg0)).intValue());
+        topGrau = topGrau.subList(0, Math.min(50, topGrau.size()));
+        Map<Node, Set<Node>> viz1 = vizinhos(g, topGrau, 10);
+        Random rnd = new Random(7);
+        for (Node v : g.getNodes()) { v.setX((rnd.nextFloat() - 0.5f) * 2000f); v.setY((rnd.nextFloat() - 0.5f) * 2000f); }
+        fa2.setAdjustSizes(false);
+        fa2.initAlgo();
+        for (int i = 0; i < itFa2 && fa2.canAlgo(); i++) fa2.goAlgo();
+        fa2.endAlgo();
+        Map<Node, Set<Node>> viz2 = vizinhos(g, topGrau, 10);
+        double jac = 0;
+        for (Node v : topGrau) {
+            Set<Node> a = viz1.get(v), b = viz2.get(v), uni = new HashSet<>(a);
+            uni.addAll(b);
+            Set<Node> int = new HashSet<>(a);
+            int.retainAll(b);
+            jac += uni.isEmpty() ? 0 : (double) int.size() / uni.size();
+        }
+        double estab = topGrau.isEmpty() ? Double.NaN : jac / topGrau.size();
+
+        // pontes: ligações dentro de cada um dos dois maiores grupos e entre eles (para ler cada cruzamento: crítica, resposta, amplificação)
+        int ca = ord.size() > 0 ? ord.get(0).getKey() : -1, cb = ord.size() > 1 ? ord.get(1).getKey() : -1;
+        int dentroA = 0, dentroB = 0, cruz = 0;
+        try (PrintWriter w = new PrintWriter(new File(saida, nome + "_pontes.csv"), StandardCharsets.UTF_8)) {
+            w.println("origem,destino,peso,grupo_origem,grupo_destino");
+            for (Edge e : gm.getGraph().getEdges()) {
+                int k1 = (Integer) e.getSource().getAttribute(colMod), k2 = (Integer) e.getTarget().getAttribute(colMod);
+                if (k1 == ca && k2 == ca) dentroA++;
+                else if (k1 == cb && k2 == cb) dentroB++;
+                else if ((k1 == ca && k2 == cb) || (k1 == cb && k2 == ca)) {
+                    cruz++;
+                    w.println(q(e.getSource().getLabel()) + "," + q(e.getTarget().getLabel()) + "," + e.getWeight() + "," + k1 + "," + k2);
+                }
+            }
+        }
+
         // OpenOrd (polarização): parâmetros padrão do Gephi
         OpenOrdLayout oo = (OpenOrdLayout) new OpenOrdLayoutBuilder().buildLayout();
         oo.setGraphModel(gm);
@@ -225,6 +266,19 @@ public class RedesGephi {
         oo.endAlgo();
         exportaSeguro(ws, new File(saida, nome + "_openord.png"));
         double sepOo = separacao(g, colMod, ord);
+        Map<Node, float[]> posOo = new HashMap<>();
+        for (Node v : g.getNodes()) posOo.put(v, new float[]{v.x(), v.y()});
+        // Edge Cut 0 (sem cortar arestas longas): se os blocos se juntam, a separação era do desenho
+        OpenOrdLayout oo0 = (OpenOrdLayout) new OpenOrdLayoutBuilder().buildLayout();
+        oo0.setGraphModel(gm);
+        oo0.resetPropertiesValues();
+        oo0.setEdgeCut(0f);
+        oo0.initAlgo();
+        int itOo0 = 0;
+        while (oo0.canAlgo() && itOo0 < 100000) { oo0.goAlgo(); itOo0++; }
+        oo0.endAlgo();
+        exportaSeguro(ws, new File(saida, nome + "_openord_edgecut0.png"));
+        double sepOo0 = separacao(g, colMod, ord);
 
         // nós: id, rótulo, classe, grau, posições dos dois layouts (o rótulo é o do GEXF público: pessoas comuns já em código)
         Column colDeg = gm.getNodeTable().getColumn(Degree.DEGREE);
@@ -233,7 +287,7 @@ public class RedesGephi {
             for (Node v : g.getNodes()) {
                 float[] p = posFa2.get(v);
                 w.println(q(v.getId()) + "," + q(v.getLabel()) + "," + v.getAttribute(colMod) + "," + v.getAttribute(colDeg) + ","
-                        + p[0] + "," + p[1] + "," + v.x() + "," + v.y());
+                        + p[0] + "," + p[1] + "," + posOo.get(v)[0] + "," + posOo.get(v)[1]);
             }
         }
         resumo.println(String.join(",", q(caso), q(rede), "" + dir, "" + nTotal, "" + m,
@@ -242,9 +296,26 @@ public class RedesGephi {
                 "" + cc.getConnectedComponentsCount(), String.format(Locale.ROOT, "%.4f", cl.getAverageClusteringCoefficient()), diam, camin,
                 String.format(Locale.ROOT, "%.4f", qTotal), "" + clsTotal.size(), "" + n, String.format(Locale.ROOT, "%.2f", 100.0 * n / nTotal),
                 String.format(Locale.ROOT, "%.6f", densGc.getDensity()), String.format(Locale.ROOT, "%.4f", modGc.getModularity()), "" + tam.size(), q(pcts), q(infer), q(topPr), q(topAut), q(topEig), q(topBet),
-                String.format(Locale.ROOT, "%.3f", sepOo), String.format(Locale.ROOT, "%.3f", sepFa2), "" + itFa2, "" + itOo));
+                String.format(Locale.ROOT, "%.3f", sepOo), String.format(Locale.ROOT, "%.3f", sepOo0), String.format(Locale.ROOT, "%.3f", sepFa2),
+                String.format(Locale.ROOT, "%.3f", estab), "" + dentroA, "" + dentroB, "" + cruz,
+                String.format(Locale.ROOT, "%.2f", (dentroA + dentroB + cruz) > 0 ? 100.0 * cruz / (dentroA + dentroB + cruz) : Double.NaN), "" + itFa2, "" + itOo));
         System.out.println(nome + ": " + nTotal + " nós (gigante " + n + "), Q=" + String.format(Locale.ROOT, "%.4f", qTotal) + ", Q gigante=" + String.format(Locale.ROOT, "%.4f", modGc.getModularity()) + ", " + tam.size()
-                + " comunidades, separação OpenOrd " + String.format(Locale.ROOT, "%.2f", sepOo));
+                + " comunidades, separação OpenOrd " + String.format(Locale.ROOT, "%.2f", sepOo) + " (edge cut 0: " + String.format(Locale.ROOT, "%.2f", sepOo0)
+                + "), estabilidade FA2 " + String.format(Locale.ROOT, "%.2f", estab) + ", cruzando " + cruz + " de " + (dentroA + dentroB + cruz));
+    }
+
+    // os k vizinhos mais próximos (no desenho) de cada nó da lista
+    static Map<Node, Set<Node>> vizinhos(UndirectedGraph g, List<Node> alvo, int k) {
+        List<Node> todos = new ArrayList<>();
+        for (Node v : g.getNodes()) todos.add(v);
+        Map<Node, Set<Node>> out = new HashMap<>();
+        for (Node a : alvo) {
+            List<Node> c = new ArrayList<>(todos);
+            c.remove(a);
+            c.sort(Comparator.comparingDouble(b -> Math.hypot(b.x() - a.x(), b.y() - a.y())));
+            out.put(a, new HashSet<>(c.subList(0, Math.min(k, c.size()))));
+        }
+        return out;
     }
 
     // os 5 nós de maior valor numa coluna (rótulo do GEXF público: pessoas comuns já em código)
