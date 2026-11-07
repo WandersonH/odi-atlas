@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.355 — Caso 038: Flávio e Eduardo Bolsonaro na CPAC (Mar-a-Lago, 4–7/11/2026) (2026-11-07) 🔜
+
+- Pedido do responsável (07/11/2026, 19h09): "novo case Flávio e Eduardo Bolsonaro na CPAC; transcrição entrevista Eduardo e painel Flávio; rede de disseminação Brasil, vi que a Revista Oeste fez conteúdo apoiando; no insta da CPAC achei stories e posts contendo Bolsonaro e alto nível de comentários em português".
+- Contexto (fontes em `fontes_contexto`): jantar de gala da CPAC em Mar-a-Lago, 05/11/2026, 18h–22h locais (Mix Vale); primeira aparição pública de Flávio desde a saída do Brasil, no palco com Eduardo (Latin Times, 06/11); anúncio de Matt Schlapp (04/11).
+- Mudança: caso 038 em `casos.json` (redes pagas com teto 0 até autorização; X com busca do caso e busca pelos links da Revista Oeste; Instagram da conta @cpac desde 04/11), `CASOS["038"]` em `collect_caso_busca.py` (Trends Brasil/EUA/mundo, YouTube mundo desde 04/11, notícias BR/US/ES/AR e domínio revistaoeste.com), seção `caso038` na página (menu Casos), `estado_evidencia.json`, fila diária de `casos-busca.yml` e a metodologia completa em `metodologia_casos.json` (por que o recorte começa em 04/11 e não em março; por que cada família de termos; por que os stories ficam fora).
+- Teste: `python -m unittest discover -s tests` OK. Coleta grátis e busca dos vídeos no canal da CPAC disparadas; resultado na atualização desta entrada.
+- Pendente: autorização de valor para X, Instagram (posts e comentários da @cpac), Facebook e TikTok; escolha dos vídeos da entrevista de Eduardo e do painel de Flávio para transcrição.
+
 ## C19.354 — Metodologia da amostra por caso; Paraguai com cidadania; janonismo com o Diplomatique; gráfico de línguas do "Faz o L" (2026-11-07) ✅
 
 - Pedidos do responsável (07/11/2026, 18h40 e 19h05): "morar no Paraguay" e "cidadania paraguaia" no caso 030; o artigo do Le Monde Diplomatique no caso do janonismo; gráfico dos termos em outras línguas do "Faz o L"; e "detalhar metodologicamente como foi feita a amostra do case, o porquê de raspar cada termo… isso vai embasar pesquisas e artigos".

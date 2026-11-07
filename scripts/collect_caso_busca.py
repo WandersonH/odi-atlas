@@ -191,6 +191,17 @@ CASOS = {
             "rx_atributo": r"lula|petista|governo|ironi|meme|origem|criador|jingle|gesto|marca|l[eé]o santana|latino|bolsonar|gasolina|picanha|imposto",
             "noticias": ["\"faz o L\"", "\"fazueli\"", "\"fiz o L\"", "\"faz o L\" origem", {"q": "\"haz la L\" Lula", "ed": "US"}, {"q": "\"faz o L\" Lula", "ed": "US"}],
             "janela_noticias": "", "checagens": ["faz o L", "fazueli"], "arquivo_web": []},
+    # 07/11 (19h09): Flávio e Eduardo Bolsonaro na CPAC (Mar-a-Lago, 4–7/11/2026); entrevista de Eduardo, painel de Flávio, rede no Brasil
+    "038": {"variantes": ["CPAC Bolsonaro", "Flávio Bolsonaro CPAC", "Eduardo Bolsonaro CPAC", "CPAC Mar-a-Lago"],
+            "controles": ["Flávio Bolsonaro"], "janelas": ["now 7-d", "today 1-m", "today 12-m"], "paises_trends": True,
+            "youtube": ["Flávio Bolsonaro CPAC", "Eduardo Bolsonaro CPAC", "Bolsonaro CPAC Mar-a-Lago", "CPAC 2026 Bolsonaro", "Eduardo Bolsonaro entrevista CPAC",
+                        "Flávio Bolsonaro painel CPAC", "Bolsonaro CPAC gala speech", "Bolsonaro brothers CPAC"],
+            "youtube_mundo": True,
+            "desde_yt": "2026-11-04T00:00:00Z", "rx_titulo": r"cpac|mar-?a-?lago|bolsonaro",
+            "rx_atributo": r"cpac|mar-?a-?lago|gala|conserv|schlapp|caviezel|trump|palm beach",
+            "noticias": ["Flávio Bolsonaro CPAC", "Eduardo Bolsonaro CPAC", "CPAC Mar-a-Lago Bolsonaro", "site:revistaoeste.com CPAC",
+                         {"q": "Bolsonaro CPAC Mar-a-Lago", "ed": "US"}, {"q": "Bolsonaro CPAC", "ed": "ES"}, {"q": "Bolsonaro CPAC", "ed": "AR"}],
+            "janela_noticias": "7d", "checagens": ["Bolsonaro CPAC", "Flávio Bolsonaro Mar-a-Lago"], "arquivo_web": []},
     # 06/11 (10h38): entrevista de Flávio Bolsonaro ao New York Times em Miami (04/11, publicada em 05/11): "Levarei isso para o túmulo"
     "036": {"variantes": ["Flávio Bolsonaro New York Times", "levarei isso para o túmulo", "Flávio Bolsonaro Miami"],
             "controles": ["Flávio Bolsonaro"], "janelas": ["now 7-d", "today 1-m"], "paises_trends": True,

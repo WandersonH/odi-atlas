@@ -7,31 +7,95 @@
   "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
   "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
   "referencias": [
-   {"ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.", "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"},
-   {"ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.", "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"},
-   {"ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.", "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"}
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
   ]
  },
  "026": {
   "pergunta": "O formato de mobilização por canal de WhatsApp criado por André Janones na campanha de Lula (o \"Exército do Lula\") foi copiado por campanhas e militâncias de outros países depois do 2º turno? Com que nomes, em que línguas e com que alcance?",
   "por_que_importa": "O caso testa a circulação transnacional de uma técnica de mobilização digital, e não só de um conteúdo. Se o nome e o formato se repetem em outras línguas, há difusão de repertório de ação. A imprensa brasileira e estrangeira (g1, 28/10/2026; CNN Brasil; Le Monde Diplomatique Brasil, 03/11/2026) passou a tratar o \"janonismo\" como modelo exportável. O caso mede essa afirmação com dados.",
-  "recorte_temporal": {"inicio": "2026-10-05", "justificativa": "5/10/2026 é a criação do canal, um dia depois do 1º turno: antes dessa data o fenômeno não existe com esse nome. A janela cobre o 2º turno (25/10), quando a imprensa registra as cópias, e segue aberta para medir a duração. O recorte \"Buenos Aires\" (desde 01/11) isola a viagem de 02/11, um evento com vocabulário próprio (Kirchner, Massa, peronismo)."},
+  "recorte_temporal": {
+   "inicio": "2026-10-05",
+   "justificativa": "5/10/2026 é a criação do canal, um dia depois do 1º turno: antes dessa data o fenômeno não existe com esse nome. A janela cobre o 2º turno (25/10), quando a imprensa registra as cópias, e segue aberta para medir a duração. O recorte \"Buenos Aires\" (desde 01/11) isola a viagem de 02/11, um evento com vocabulário próprio (Kirchner, Massa, peronismo)."
+  },
   "familias_de_termos": [
-   {"familia": "Nome do canal original", "termos": ["Exército do Lula", "Exercito do Lula", "#ExercitoDoLula"], "justificativa": "É o nome próprio do objeto. Entra com e sem acento porque a grafia sem acento é comum em hashtags e buscas."},
-   {"familia": "Nome do canal traduzido e nomes das cópias", "termos": ["Ejército de Lula", "armée de Lula", "Lula's army", "Ejército del Peronismo", "La Fuerza de la Gente", "équipe de Mélenchon"], "justificativa": "A hipótese é de difusão do formato. A evidência mais direta é a reprodução do nome (\"Exército de X\") e as menções à origem brasileira em espanhol, francês e inglês. Os nomes das cópias vêm da imprensa e da leitura das páginas públicas dos canais."},
-   {"familia": "Ator e meio", "termos": ["Janones + WhatsApp/canal/general/exército"], "justificativa": "\"Janones\" sozinho traz toda a atividade política do deputado, que é anterior e mais ampla que o caso. No X, o nome só entra junto de palavras do meio (WhatsApp, canal) ou da metáfora militar (general, exército), que identificam o janonismo como técnica."},
-   {"familia": "Evento (recorte)", "termos": ["Janones + Kirchner/CFK/Cristina/Massa/Argentina/Buenos Aires/peronismo/Milei"], "justificativa": "Um evento com nome e lugar permite medir se a exportação do modelo gerou repercussão própria no país de destino."}
+   {
+    "familia": "Nome do canal original",
+    "termos": [
+     "Exército do Lula",
+     "Exercito do Lula",
+     "#ExercitoDoLula"
+    ],
+    "justificativa": "É o nome próprio do objeto. Entra com e sem acento porque a grafia sem acento é comum em hashtags e buscas."
+   },
+   {
+    "familia": "Nome do canal traduzido e nomes das cópias",
+    "termos": [
+     "Ejército de Lula",
+     "armée de Lula",
+     "Lula's army",
+     "Ejército del Peronismo",
+     "La Fuerza de la Gente",
+     "équipe de Mélenchon"
+    ],
+    "justificativa": "A hipótese é de difusão do formato. A evidência mais direta é a reprodução do nome (\"Exército de X\") e as menções à origem brasileira em espanhol, francês e inglês. Os nomes das cópias vêm da imprensa e da leitura das páginas públicas dos canais."
+   },
+   {
+    "familia": "Ator e meio",
+    "termos": [
+     "Janones + WhatsApp/canal/general/exército"
+    ],
+    "justificativa": "\"Janones\" sozinho traz toda a atividade política do deputado, que é anterior e mais ampla que o caso. No X, o nome só entra junto de palavras do meio (WhatsApp, canal) ou da metáfora militar (general, exército), que identificam o janonismo como técnica."
+   },
+   {
+    "familia": "Evento (recorte)",
+    "termos": [
+     "Janones + Kirchner/CFK/Cristina/Massa/Argentina/Buenos Aires/peronismo/Milei"
+    ],
+    "justificativa": "Um evento com nome e lugar permite medir se a exportação do modelo gerou repercussão própria no país de destino."
+   }
   ],
   "excluidos": [
-   {"termo": "\"exército\" sozinho; \"army\" sozinho", "motivo": "Ruído militar e esportivo; sem relação com o caso."},
-   {"termo": "\"Janones\" sozinho no X", "motivo": "Trazia controvérsias anteriores do deputado. No Google Trends ele fica, como medida de interesse pelo ator, com \"Lula\" de controle."}
+   {
+    "termo": "\"exército\" sozinho; \"army\" sozinho",
+    "motivo": "Ruído militar e esportivo; sem relação com o caso."
+   },
+   {
+    "termo": "\"Janones\" sozinho no X",
+    "motivo": "Trazia controvérsias anteriores do deputado. No Google Trends ele fica, como medida de interesse pelo ator, com \"Lula\" de controle."
+   }
   ],
   "fontes_e_por_que": [
-   {"fonte": "Páginas públicas dos canais de WhatsApp (leitura diária)", "por_que": "É o único lugar em que a plataforma informa o tamanho real (seguidores). Dá a série de crescimento de cada canal: é universo, não amostra."},
-   {"fonte": "X, TikTok, Instagram, Facebook (busca por termo, Apify)", "por_que": "Onde os canais são divulgados e comentados. Medem a conversa em torno do formato, não o conteúdo dos canais (fechado ao público)."},
-   {"fonte": "Google Trends (Brasil, por estado e por país)", "por_que": "Mede o interesse de busca pelo ator e pelo nome do canal; o recorte por país testa a hipótese de difusão."},
-   {"fonte": "Google Notícias em seis edições (BR, ES, AR, FR, US, CO, PT)", "por_que": "A difusão transnacional precisa ser vista na imprensa de cada país, na língua de cada país."},
-   {"fonte": "YouTube (mundo)", "por_que": "Registra vídeos explicativos e de divulgação em várias línguas."}
+   {
+    "fonte": "Páginas públicas dos canais de WhatsApp (leitura diária)",
+    "por_que": "É o único lugar em que a plataforma informa o tamanho real (seguidores). Dá a série de crescimento de cada canal: é universo, não amostra."
+   },
+   {
+    "fonte": "X, TikTok, Instagram, Facebook (busca por termo, Apify)",
+    "por_que": "Onde os canais são divulgados e comentados. Medem a conversa em torno do formato, não o conteúdo dos canais (fechado ao público)."
+   },
+   {
+    "fonte": "Google Trends (Brasil, por estado e por país)",
+    "por_que": "Mede o interesse de busca pelo ator e pelo nome do canal; o recorte por país testa a hipótese de difusão."
+   },
+   {
+    "fonte": "Google Notícias em seis edições (BR, ES, AR, FR, US, CO, PT)",
+    "por_que": "A difusão transnacional precisa ser vista na imprensa de cada país, na língua de cada país."
+   },
+   {
+    "fonte": "YouTube (mundo)",
+    "por_que": "Registra vídeos explicativos e de divulgação em várias línguas."
+   }
   ],
   "controles": "No Trends, \"Lula\" como controle: separa o interesse pelo janonismo do interesse geral pelo candidato. O canal \"Tropa do Flávio\", apontado pela imprensa como resposta da chapa adversária, é lido junto como contraponto.",
   "limites": [
@@ -43,21 +107,78 @@
  "030": {
   "pergunta": "A vitória de Lula no 2º turno (25/10/2026) produziu aumento da intenção de brasileiros de emigrar para o Paraguai, expressa em buscas práticas (morar, residência, cédula, cidadania) e em conteúdo nas redes? Quem produz esse conteúdo?",
   "por_que_importa": "A emigração como reação a um resultado eleitoral é um comportamento político mensurável. Em 2026 ela foi associada pela imprensa ao Paraguai (alta das buscas por \"como morar no Paraguai\" e dos pedidos de residência, segundo Guia do Investidor e Tribuna PR). O caso separa três camadas: interesse de busca (Trends), discurso (redes) e oferta (perfis que vendem assessoria de documentação). Essa separação evita confundir conversa com migração.",
-  "recorte_temporal": {"inicio": "2026-10-18", "justificativa": "Uma semana antes do 2º turno, para ter linha de base pré-evento no mesmo nível de detalhe. Sem ela, um aumento depois de 25/10 não pode ser atribuído ao resultado. O Trends de 12 meses dá a base longa."},
+  "recorte_temporal": {
+   "inicio": "2026-10-18",
+   "justificativa": "Uma semana antes do 2º turno, para ter linha de base pré-evento no mesmo nível de detalhe. Sem ela, um aumento depois de 25/10 não pode ser atribuído ao resultado. O Trends de 12 meses dá a base longa."
+  },
   "familias_de_termos": [
-   {"familia": "Intenção de mudança", "termos": ["morar no Paraguai", "como morar no Paraguai", "mudar pro/para o Paraguai", "ir pro Paraguai", "fugir pro Paraguai"], "justificativa": "Verbos de deslocamento ligados ao destino expressam intenção, e não só menção ao país. \"Paraguai\" sozinho traria futebol, contrabando, turismo de compras e política paraguaia."},
-   {"familia": "Etapas legais da migração", "termos": ["residência no Paraguai", "residência paraguaia", "cédula paraguaia", "residência permanente", "Migraciones"], "justificativa": "Marcam o passo concreto (documento, órgão migratório), que é um indicador mais forte de intenção que o desejo genérico de mudar. São também os termos usados por quem vende assessoria."},
-   {"familia": "Cidadania e naturalização (incluída em 07/11/2026)", "termos": ["cidadania paraguaia", "naturalização paraguaia", "cidadania no Paraguai"], "justificativa": "A cidadania é o horizonte de permanência, diferente da residência. A distinção permite ver se o discurso fala de mudança temporária ou definitiva. É também uma promessa comum em ofertas de assessoria, que convém medir à parte."},
-   {"familia": "Grafia em espanhol", "termos": ["morar no Paraguay", "mudar pro Paraguay"], "justificativa": "Quem procura os sites oficiais paraguaios e a imprensa local escreve \"Paraguay\". Sem essa grafia, a busca perde justamente a fase mais prática da intenção."},
-   {"familia": "Imprensa paraguaia (edição PY, em espanhol)", "termos": ["brasileños residencia Paraguay Migraciones", "brasileños ciudadanía paraguaya"], "justificativa": "O efeito no país de destino (filas, prazos, regras) aparece primeiro na imprensa local."}
+   {
+    "familia": "Intenção de mudança",
+    "termos": [
+     "morar no Paraguai",
+     "como morar no Paraguai",
+     "mudar pro/para o Paraguai",
+     "ir pro Paraguai",
+     "fugir pro Paraguai"
+    ],
+    "justificativa": "Verbos de deslocamento ligados ao destino expressam intenção, e não só menção ao país. \"Paraguai\" sozinho traria futebol, contrabando, turismo de compras e política paraguaia."
+   },
+   {
+    "familia": "Etapas legais da migração",
+    "termos": [
+     "residência no Paraguai",
+     "residência paraguaia",
+     "cédula paraguaia",
+     "residência permanente",
+     "Migraciones"
+    ],
+    "justificativa": "Marcam o passo concreto (documento, órgão migratório), que é um indicador mais forte de intenção que o desejo genérico de mudar. São também os termos usados por quem vende assessoria."
+   },
+   {
+    "familia": "Cidadania e naturalização (incluída em 07/11/2026)",
+    "termos": [
+     "cidadania paraguaia",
+     "naturalização paraguaia",
+     "cidadania no Paraguai"
+    ],
+    "justificativa": "A cidadania é o horizonte de permanência, diferente da residência. A distinção permite ver se o discurso fala de mudança temporária ou definitiva. É também uma promessa comum em ofertas de assessoria, que convém medir à parte."
+   },
+   {
+    "familia": "Grafia em espanhol",
+    "termos": [
+     "morar no Paraguay",
+     "mudar pro Paraguay"
+    ],
+    "justificativa": "Quem procura os sites oficiais paraguaios e a imprensa local escreve \"Paraguay\". Sem essa grafia, a busca perde justamente a fase mais prática da intenção."
+   },
+   {
+    "familia": "Imprensa paraguaia (edição PY, em espanhol)",
+    "termos": [
+     "brasileños residencia Paraguay Migraciones",
+     "brasileños ciudadanía paraguaya"
+    ],
+    "justificativa": "O efeito no país de destino (filas, prazos, regras) aparece primeiro na imprensa local."
+   }
   ],
   "excluidos": [
-   {"termo": "\"Paraguai\" ou \"Paraguay\" sozinhos", "motivo": "Ruído alto (futebol, Ciudad del Este, política paraguaia)."}
+   {
+    "termo": "\"Paraguai\" ou \"Paraguay\" sozinhos",
+    "motivo": "Ruído alto (futebol, Ciudad del Este, política paraguaia)."
+   }
   ],
   "fontes_e_por_que": [
-   {"fonte": "Google Trends (Brasil e por estado; 12 meses, 1 mês, 7 dias)", "por_que": "Mede o interesse de busca, a camada mais próxima da intenção individual."},
-   {"fonte": "X, TikTok, Instagram, Facebook (busca por termo)", "por_que": "Discurso e oferta: quem fala em ir e quem vende o caminho."},
-   {"fonte": "Google Notícias (BR e PY) e YouTube", "por_que": "Validação externa (filas, pedidos de residência relatados por autoridades) e conteúdo explicativo de alcance."}
+   {
+    "fonte": "Google Trends (Brasil e por estado; 12 meses, 1 mês, 7 dias)",
+    "por_que": "Mede o interesse de busca, a camada mais próxima da intenção individual."
+   },
+   {
+    "fonte": "X, TikTok, Instagram, Facebook (busca por termo)",
+    "por_que": "Discurso e oferta: quem fala em ir e quem vende o caminho."
+   },
+   {
+    "fonte": "Google Notícias (BR e PY) e YouTube",
+    "por_que": "Validação externa (filas, pedidos de residência relatados por autoridades) e conteúdo explicativo de alcance."
+   }
   ],
   "controles": "No Trends, \"morar em Portugal\" e \"morar nos Estados Unidos\": destinos tradicionais da emigração brasileira. Se só o Paraguai sobe depois de 25/10, o efeito é específico; se todos sobem, é interesse geral em emigrar.",
   "limites": [
@@ -69,19 +190,57 @@
  "035": {
   "pergunta": "A expressão \"vote like a Brazilian\" (\"vote como (um) brasileiro\") foi usada na campanha das eleições de meio de mandato dos EUA de 2026? Por quem, com que sentido (exemplo a seguir ou alerta), e quando começou?",
   "por_que_importa": "O caso mede a circulação de um resultado eleitoral brasileiro como argumento em outra eleição: o Brasil como referência de mobilização ou como ameaça na retórica política dos EUA. É o mesmo fenômeno de difusão do caso 026, visto do lado do país que recebe.",
-  "recorte_temporal": {"inicio": "2026-10-25", "justificativa": "A expressão depende do resultado do 2º turno brasileiro (25/10). Antes dela, \"vote like a Brazilian\" não tem o referente do caso. A janela vai até as midterms e depois."},
+  "recorte_temporal": {
+   "inicio": "2026-10-25",
+   "justificativa": "A expressão depende do resultado do 2º turno brasileiro (25/10). Antes dela, \"vote like a Brazilian\" não tem o referente do caso. A janela vai até as midterms e depois."
+  },
   "familias_de_termos": [
-   {"familia": "Frase exata em inglês e variações", "termos": ["vote like a Brazilian", "vote like Brazilians", "vote like Brazil", "#VoteLikeABrazilian"], "justificativa": "A frase entre aspas é a unidade do caso. As variações de número (singular/plural) e a forma com o país cobrem como a frase aparece em slogans, títulos e hashtags."},
-   {"familia": "Tradução em português", "termos": ["vote como brasileiro", "vote como um brasileiro"], "justificativa": "Mede a volta da frase ao Brasil: como a imprensa e os usuários brasileiros comentam o uso americano. A forma com \"um\" entrou em 06/11/2026, quando se viu que era a tradução usada pela imprensa."},
-   {"familia": "Contexto (só imprensa)", "termos": ["Brazil Lula midterms Democrats", "\"like Brazil\" midterms vote"], "justificativa": "Captura reportagens que discutem o uso da referência sem citar a frase exata."}
+   {
+    "familia": "Frase exata em inglês e variações",
+    "termos": [
+     "vote like a Brazilian",
+     "vote like Brazilians",
+     "vote like Brazil",
+     "#VoteLikeABrazilian"
+    ],
+    "justificativa": "A frase entre aspas é a unidade do caso. As variações de número (singular/plural) e a forma com o país cobrem como a frase aparece em slogans, títulos e hashtags."
+   },
+   {
+    "familia": "Tradução em português",
+    "termos": [
+     "vote como brasileiro",
+     "vote como um brasileiro"
+    ],
+    "justificativa": "Mede a volta da frase ao Brasil: como a imprensa e os usuários brasileiros comentam o uso americano. A forma com \"um\" entrou em 06/11/2026, quando se viu que era a tradução usada pela imprensa."
+   },
+   {
+    "familia": "Contexto (só imprensa)",
+    "termos": [
+     "Brazil Lula midterms Democrats",
+     "\"like Brazil\" midterms vote"
+    ],
+    "justificativa": "Captura reportagens que discutem o uso da referência sem citar a frase exata."
+   }
   ],
   "excluidos": [
-   {"termo": "\"like a Brazilian\" sem \"vote\"", "motivo": "Em inglês, \"Brazilian\" é também nome de um tipo de depilação, ruído grande. O filtro de título exige \"vote\" junto, ou termos de eleição."}
+   {
+    "termo": "\"like a Brazilian\" sem \"vote\"",
+    "motivo": "Em inglês, \"Brazilian\" é também nome de um tipo de depilação, ruído grande. O filtro de título exige \"vote\" junto, ou termos de eleição."
+   }
   ],
   "fontes_e_por_que": [
-   {"fonte": "X, Instagram, Facebook", "por_que": "Onde campanhas e militâncias americanas publicam slogans e respondem."},
-   {"fonte": "Google Notícias (edição US e BR)", "por_que": "Mostra a adoção pela imprensa e a cronologia; o primeiro título encontrado data o surgimento na imprensa."},
-   {"fonte": "Google Trends (EUA, mundo e Brasil)", "por_que": "Mede se a frase gerou busca, isto é, se passou do círculo militante para o público."}
+   {
+    "fonte": "X, Instagram, Facebook",
+    "por_que": "Onde campanhas e militâncias americanas publicam slogans e respondem."
+   },
+   {
+    "fonte": "Google Notícias (edição US e BR)",
+    "por_que": "Mostra a adoção pela imprensa e a cronologia; o primeiro título encontrado data o surgimento na imprensa."
+   },
+   {
+    "fonte": "Google Trends (EUA, mundo e Brasil)",
+    "por_que": "Mede se a frase gerou busca, isto é, se passou do círculo militante para o público."
+   }
   ],
   "controles": "No Trends, \"Brazil election\" como controle de interesse geral pela eleição brasileira.",
   "limites": [
@@ -92,19 +251,55 @@
  "036": {
   "pergunta": "Como foi recebida, no Brasil e nos EUA, a entrevista de Flávio Bolsonaro ao New York Times em Miami (04/11/2026, publicada em 05/11), em que ele trata da saída do Brasil? Que trechos circularam e que leituras se formaram (segredo da rota, ajuda do governo americano, nova candidatura)?",
   "por_que_importa": "Uma entrevista é um evento discursivo datado, com autoria e texto conhecidos. Isso permite medir com precisão como um conteúdo de imprensa vira circulação nas redes e quais frases são selecionadas. O caso se liga aos casos 013 (\"Flávio fugiu\"), 024, 025 e 031, que tratam da mesma saída.",
-  "recorte_temporal": {"inicio": "2026-11-05", "justificativa": "A data de publicação. A janela de 7 dias para notícias capta o ciclo de repercussão; o YouTube é lido desde a mesma data."},
+  "recorte_temporal": {
+   "inicio": "2026-11-05",
+   "justificativa": "A data de publicação. A janela de 7 dias para notícias capta o ciclo de repercussão; o YouTube é lido desde a mesma data."
+  },
   "familias_de_termos": [
-   {"familia": "Ator + veículo", "termos": ["Flávio Bolsonaro New York Times", "Flávio NYT"], "justificativa": "Delimita a repercussão da entrevista dentro da conversa geral sobre Flávio, que é muito maior."},
-   {"familia": "Frases-assinatura da entrevista", "termos": ["levarei isso para o túmulo", "fui só eu"], "justificativa": "Citações literais identificam a recepção daquela entrevista específica e mostram quais frases a audiência escolheu repetir: é o indicador de enquadramento."},
-   {"familia": "Lugar e contexto", "termos": ["Flávio Bolsonaro Miami", "jato Casa Branca"], "justificativa": "Captam a leitura que liga a entrevista à ajuda americana relatada pelo jornal."}
+   {
+    "familia": "Ator + veículo",
+    "termos": [
+     "Flávio Bolsonaro New York Times",
+     "Flávio NYT"
+    ],
+    "justificativa": "Delimita a repercussão da entrevista dentro da conversa geral sobre Flávio, que é muito maior."
+   },
+   {
+    "familia": "Frases-assinatura da entrevista",
+    "termos": [
+     "levarei isso para o túmulo",
+     "fui só eu"
+    ],
+    "justificativa": "Citações literais identificam a recepção daquela entrevista específica e mostram quais frases a audiência escolheu repetir: é o indicador de enquadramento."
+   },
+   {
+    "familia": "Lugar e contexto",
+    "termos": [
+     "Flávio Bolsonaro Miami",
+     "jato Casa Branca"
+    ],
+    "justificativa": "Captam a leitura que liga a entrevista à ajuda americana relatada pelo jornal."
+   }
   ],
   "excluidos": [
-   {"termo": "\"Flávio Bolsonaro\" sozinho", "motivo": "Traria toda a cobertura sobre o candidato; só entra no Trends como controle."}
+   {
+    "termo": "\"Flávio Bolsonaro\" sozinho",
+    "motivo": "Traria toda a cobertura sobre o candidato; só entra no Trends como controle."
+   }
   ],
   "fontes_e_por_que": [
-   {"fonte": "Google Notícias (BR e US)", "por_que": "A entrevista é originalmente em inglês; a repercussão nos dois países é o objeto."},
-   {"fonte": "YouTube (mundo), X, Instagram, Facebook", "por_que": "Cortes e comentários da entrevista."},
-   {"fonte": "Google Trends (Brasil, EUA, mundo)", "por_que": "Se a entrevista gerou busca para além da cobertura."}
+   {
+    "fonte": "Google Notícias (BR e US)",
+    "por_que": "A entrevista é originalmente em inglês; a repercussão nos dois países é o objeto."
+   },
+   {
+    "fonte": "YouTube (mundo), X, Instagram, Facebook",
+    "por_que": "Cortes e comentários da entrevista."
+   },
+   {
+    "fonte": "Google Trends (Brasil, EUA, mundo)",
+    "por_que": "Se a entrevista gerou busca para além da cobertura."
+   }
   ],
   "controles": "No Trends, \"Flávio Bolsonaro\" como controle de interesse geral pelo candidato.",
   "limites": [
@@ -115,28 +310,178 @@
  "037": {
   "pergunta": "Qual a origem da expressão \"Faz o L\" e como ela mudou de sentido e de língua: do bordão de campanha (2022) à apropriação irônica pela oposição (2023) e ao gesto adotado por políticos e militantes de outros países depois de 25/10/2026?",
   "por_que_importa": "A frase é um caso raro de símbolo político que circula nos dois sentidos, adesão e ironia, e atravessa fronteiras. Datar cada fase com dados permite testar as versões de origem que circulam: gesto atribuído a Mário Milani (1989), disputas de autoria entre Latino e Léo Santana (2024), bordão da campanha (2022). O caso alimenta a discussão sobre apropriação e ressignificação de símbolos em campanhas.",
-  "recorte_temporal": {"inicio": "2004-01-01 (Trends) · 2005 (YouTube) · 2022 (redes)", "justificativa": "A pergunta é de origem. O Google Trends começa em 2004 e o YouTube em 2005, por isso a leitura começa no limite de cada fonte. No X, a busca é dividida em fases para que o volume de 2026 não esconda o começo: até 31/10/2022 (origem e campanha), jan–mar/2023 (virada irônica), desde 16/08/2026 (campanha de 2026) e outros idiomas sem data."},
+  "recorte_temporal": {
+   "inicio": "2004-01-01 (Trends) · 2005 (YouTube) · 2022 (redes)",
+   "justificativa": "A pergunta é de origem. O Google Trends começa em 2004 e o YouTube em 2005, por isso a leitura começa no limite de cada fonte. No X, a busca é dividida em fases para que o volume de 2026 não esconda o começo: até 31/10/2022 (origem e campanha), jan–mar/2023 (virada irônica), desde 16/08/2026 (campanha de 2026) e outros idiomas sem data."
+  },
   "familias_de_termos": [
-   {"familia": "Forma canônica", "termos": ["faz o L", "#FazOL"], "justificativa": "É a frase do bordão e a mais buscada; serve de âncora para as outras."},
-   {"familia": "Grafias irônicas", "termos": ["fazueli", "fazuele", "fazoele", "fazuéli"], "justificativa": "A grafia fonética é marca da apropriação irônica: quem escreve \"fazueli\" quase sempre está zombando. Por isso essas grafias funcionam como indicador de sentido, separando adesão de ironia sem depender só de leitura manual."},
-   {"familia": "Primeira pessoa e passado", "termos": ["fiz o L", "fez o L"], "justificativa": "\"Fiz o L\" aparece em autoatribuição, de apoio ou de arrependimento (\"fiz o L e...\"), e é a forma usada para cobrar o eleitor. Mede o uso do bordão como identidade de quem votou."},
-   {"familia": "Traduções", "termos": ["haz la L", "hace la L", "make the L", "do the L", "fais le L"], "justificativa": "Testam a difusão internacional. Nas redes, só entram junto de Lula, Brasil ou Brazil: em inglês, \"take an L\" e o gesto do \"L\" na testa significam \"perdedor\" (loser), e a letra L sozinha aparece em qualquer assunto."}
+   {
+    "familia": "Forma canônica",
+    "termos": [
+     "faz o L",
+     "#FazOL"
+    ],
+    "justificativa": "É a frase do bordão e a mais buscada; serve de âncora para as outras."
+   },
+   {
+    "familia": "Grafias irônicas",
+    "termos": [
+     "fazueli",
+     "fazuele",
+     "fazoele",
+     "fazuéli"
+    ],
+    "justificativa": "A grafia fonética é marca da apropriação irônica: quem escreve \"fazueli\" quase sempre está zombando. Por isso essas grafias funcionam como indicador de sentido, separando adesão de ironia sem depender só de leitura manual."
+   },
+   {
+    "familia": "Primeira pessoa e passado",
+    "termos": [
+     "fiz o L",
+     "fez o L"
+    ],
+    "justificativa": "\"Fiz o L\" aparece em autoatribuição, de apoio ou de arrependimento (\"fiz o L e...\"), e é a forma usada para cobrar o eleitor. Mede o uso do bordão como identidade de quem votou."
+   },
+   {
+    "familia": "Traduções",
+    "termos": [
+     "haz la L",
+     "hace la L",
+     "make the L",
+     "do the L",
+     "fais le L"
+    ],
+    "justificativa": "Testam a difusão internacional. Nas redes, só entram junto de Lula, Brasil ou Brazil: em inglês, \"take an L\" e o gesto do \"L\" na testa significam \"perdedor\" (loser), e a letra L sozinha aparece em qualquer assunto."
+   }
   ],
   "excluidos": [
-   {"termo": "\"L\" sozinho; \"the L\" sem Lula/Brasil", "motivo": "Ruído total; em inglês, sentido de derrota (\"loser\", \"take an L\")."},
-   {"termo": "\"L.U.L.A. – Liga Universal da Luta Antifascista\"", "motivo": "Citado pela imprensa como acrônimo em posts internacionais. Ainda não está nas buscas: entra quando houver coleta paga no X (pendente de autorização)."}
+   {
+    "termo": "\"L\" sozinho; \"the L\" sem Lula/Brasil",
+    "motivo": "Ruído total; em inglês, sentido de derrota (\"loser\", \"take an L\")."
+   },
+   {
+    "termo": "\"L.U.L.A. – Liga Universal da Luta Antifascista\"",
+    "motivo": "Citado pela imprensa como acrônimo em posts internacionais. Ainda não está nas buscas: entra quando houver coleta paga no X (pendente de autorização)."
+   }
   ],
   "fontes_e_por_que": [
-   {"fonte": "Google Trends (Brasil; 2004 até hoje, 5 anos, 12 meses, 7 dias; por estado)", "por_que": "Data o surgimento do interesse de busca e mostra os picos de cada fase."},
-   {"fonte": "YouTube (mundo, desde 2005)", "por_que": "O jingle e as paródias foram publicados ali; a data de publicação é verificável e ajuda a datar a origem do bordão."},
-   {"fonte": "Google Notícias sem limite de data (BR e US)", "por_que": "Registra as versões de origem e as apropriações noticiadas."},
-   {"fonte": "X por fase (pendente de autorização de custo)", "por_que": "É a rede onde a ironia de 2023 foi mais documentada (Aos Fatos, 17/01/2023)."}
+   {
+    "fonte": "Google Trends (Brasil; 2004 até hoje, 5 anos, 12 meses, 7 dias; por estado)",
+    "por_que": "Data o surgimento do interesse de busca e mostra os picos de cada fase."
+   },
+   {
+    "fonte": "YouTube (mundo, desde 2005)",
+    "por_que": "O jingle e as paródias foram publicados ali; a data de publicação é verificável e ajuda a datar a origem do bordão."
+   },
+   {
+    "fonte": "Google Notícias sem limite de data (BR e US)",
+    "por_que": "Registra as versões de origem e as apropriações noticiadas."
+   },
+   {
+    "fonte": "X por fase (pendente de autorização de custo)",
+    "por_que": "É a rede onde a ironia de 2023 foi mais documentada (Aos Fatos, 17/01/2023)."
+   }
   ],
   "controles": "No Trends, \"Lula\" como controle: separa o interesse pela frase do interesse pelo candidato.",
   "limites": [
    "O Google Trends está, até agora, só no Brasil: a leitura por país (que mostraria o interesse em outras línguas) deu HTTP 429 e fica ⛔ até a próxima leitura.",
    "Nas fontes grátis a busca em outras línguas ainda não achou vídeos nem notícias com as traduções; isso é ausência na amostra lida, não prova de ausência.",
    "O YouTube só permite buscar por termo e devolve até 100 vídeos por consulta: os vídeos antigos encontrados são um piso, não o total."
+  ]
+ },
+ "038": {
+  "pergunta": "Como a participação de Flávio e Eduardo Bolsonaro na CPAC de Mar-a-Lago (4–7/11/2026), a primeira aparição pública de Flávio depois da derrota e da saída do Brasil, circulou no Brasil e fora dele? Quem difundiu o evento (imprensa e perfis alinhados, como a Revista Oeste), com que enquadramento, e quanto do engajamento nas contas da própria CPAC vem do público brasileiro?",
+  "por_que_importa": "A CPAC é a principal vitrine da direita conservadora dos EUA e, desde 2019, tem edição brasileira ligada a Eduardo Bolsonaro. A presença dos dois depois do 2º turno testa uma hipótese de internacionalização da oposição: transformar um evento americano em palco para o público brasileiro (\"largada dos irmãos Bolsonaro na oposição a Lula no exterior\", Jovem Pan). Se os comentários em português dominam as postagens da CPAC sobre os Bolsonaro, o evento funciona como produção de conteúdo para o Brasil. A rede de disseminação (quem compartilha, de que veículos) mostra a infraestrutura de mídia alinhada que leva o conteúdo de volta.",
+  "recorte_temporal": {
+   "inicio": "2026-11-04",
+   "justificativa": "Primeiro dia da programação da CPAC em Mar-a-Lago (4 a 7/11/2026). Começar antes traria a CPAC de março de 2026, em que Flávio também discursou (\"Bolsonaro 2.0\"), e misturaria os dois eventos: muitas páginas e títulos sobre \"Flávio na CPAC\" são de março. A janela de notícias é de 7 dias, o ciclo de repercussão de um evento."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Ator + evento",
+    "termos": [
+     "Flávio Bolsonaro CPAC",
+     "Eduardo Bolsonaro CPAC",
+     "CPAC Bolsonaro"
+    ],
+    "justificativa": "Delimitam a conversa sobre os dois no evento, que é uma fração pequena da conversa sobre cada um. São as formas usadas pela imprensa brasileira e americana nos títulos lidos."
+   },
+   {
+    "familia": "Lugar e personagens do evento",
+    "termos": [
+     "Mar-a-Lago",
+     "Matt Schlapp",
+     "Jim Caviezel"
+    ],
+    "justificativa": "O local (clube de Trump) e as figuras que aparecem com os irmãos são o que distingue a edição de novembro da de março. No X, servem de alternativa a \"CPAC\" para captar posts que mostram as fotos e o vídeo com Caviezel sem nomear a conferência."
+   },
+   {
+    "familia": "Perfis oficiais",
+    "termos": [
+     "@FlavioBolsonaro",
+     "@BolsonaroSP"
+    ],
+    "justificativa": "Captam respostas e menções às publicações dos dois sobre o evento, a principal fonte primária de imagem e vídeo."
+   },
+   {
+    "familia": "Rede de disseminação: Revista Oeste",
+    "termos": [
+     "site:revistaoeste.com CPAC",
+     "url:revistaoeste.com",
+     "@revistaoeste"
+    ],
+    "justificativa": "Indicação do responsável de que a Revista Oeste produziu conteúdo de apoio ao evento. A busca pelo domínio e pela conta mede quem compartilha essas matérias e com que alcance: é um modo de ver a rede de distribuição de um veículo alinhado, não só o que ele publicou."
+   },
+   {
+    "familia": "Conta da CPAC no Instagram",
+    "termos": [
+     "@cpac (posts desde 04/11)",
+     "comentários dos posts que citam Bolsonaro"
+    ],
+    "justificativa": "Testa a hipótese de que o público brasileiro ocupa as contas do evento: mede a proporção de comentários em português nos posts da CPAC sobre os Bolsonaro, comparada com a dos posts sobre outros oradores do mesmo evento."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"CPAC\" sozinho",
+    "motivo": "Traz toda a conferência (Trump, outros oradores) e as edições anteriores. Só entra com Bolsonaro, Flávio, Eduardo ou os marcadores de lugar."
+   },
+   {
+    "termo": "Itens anteriores a 04/11/2026",
+    "motivo": "Evita confundir com a CPAC de março de 2026."
+   },
+   {
+    "termo": "Stories do Instagram da CPAC",
+    "motivo": "Duram 24 horas, e os coletores que leem stories exigem login de conta, que o Atlas não usa. Ficam ⛔ fora da coleta automática; registros feitos à mão pelo responsável (captura de tela ou gravação) podem entrar no arquivo privado, com data e hora."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Google Notícias (BR, US, ES, AR) e o domínio da Revista Oeste",
+    "por_que": "Cronologia e enquadramento da imprensa nos dois países; o domínio mede a produção de um veículo alinhado."
+   },
+   {
+    "fonte": "YouTube (mundo, desde 04/11)",
+    "por_que": "Vídeos do evento, entrevistas e cortes. É de onde saem as transcrições da entrevista de Eduardo e do painel de Flávio."
+   },
+   {
+    "fonte": "X (busca por termo e pelos links da Revista Oeste)",
+    "por_que": "Rede de compartilhamento: quem posta, quem repassa e a partir de quais veículos."
+   },
+   {
+    "fonte": "Instagram da CPAC (posts e comentários)",
+    "por_que": "Língua e volume dos comentários nos posts sobre os Bolsonaro."
+   },
+   {
+    "fonte": "Google Trends (Brasil, EUA e por país)",
+    "por_que": "Se o evento gerou busca e onde."
+   }
+  ],
+  "controles": "No Trends, \"Flávio Bolsonaro\" como controle de interesse geral pelo candidato. No Instagram da CPAC, os posts sobre outros oradores do mesmo evento são o controle da proporção de comentários em português.",
+  "limites": [
+   "A busca por termo não capta posts que mostram o evento sem nomear CPAC, Mar-a-Lago ou os irmãos.",
+   "A língua do comentário é detectada automaticamente, e comentários curtos (emojis, nomes) ficam como indeterminados.",
+   "Stories (24 horas) não entram na coleta automática.",
+   "As redes pagas e o Instagram da CPAC dependem de autorização de custo; até ela, a amostra é só das fontes grátis."
   ]
  }
 }
