@@ -1,44 +1,67 @@
 {
  "caso": "036",
  "titulo": "Flávio Bolsonaro ao New York Times, em Miami: \"Levarei isso para o túmulo\" (04–05/11/2026)",
- "run_started_utc": "2026-11-07T16:51:00Z",
+ "run_started_utc": "2026-11-07T22:18:24Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-11-05",
  "redes": [
   {
-   "rede": "tiktok",
-   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
-   "termos": {
-    "Flávio Bolsonaro New York Times": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
-    },
-    "levarei isso para o túmulo": {
-     "lado": "busca",
-     "respostas_api": 2,
-     "videos": 0,
-     "contas": 0,
-     "erro": null
+   "rede": "x",
+   "teto_usd": 0.9,
+   "gasto_antes_usd": 0,
+   "teto_execucao_usd": 0.9,
+   "termos": [
+    {
+     "termo": "o caso (busca por termo)",
+     "ator": "xquik/x-tweet-scraper",
+     "itens": 2000,
+     "lidos": 2000,
+     "no_periodo": 2000,
+     "no_limite": true,
+     "run": "7O1xS4ZQSSe0O9pI8",
+     "custo_usd": 0.3,
+     "erro": null,
+     "chaves_1o_item": [
+      "author",
+      "bookmarkCount",
+      "conversationId",
+      "createdAt",
+      "displayTextRange",
+      "edit",
+      "entities",
+      "id",
+      "isNoteTweet",
+      "isPinned",
+      "isQuoteStatus",
+      "isReply",
+      "isRetweet",
+      "isTranslatable",
+      "lang",
+      "likeCount",
+      "media",
+      "noteTweet",
+      "possiblySensitive",
+      "quoteCount",
+      "replyCount",
+      "retweetCount",
+      "text",
+      "textHighlights",
+      "type",
+      "url",
+      "viewCount",
+      "viewState"
+     ],
+     "mais_antigo": "2026-11-06T03:36:32Z"
     }
-   },
-   "custo_usd": 0.0,
-   "status": "⛔ nenhum vídeo lido",
-   "itens_no_periodo": 0
-  },
-  {
-   "rede": "google",
-   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
-   "custo_usd": 0.0,
-   "trends_erro": "HTTPError: HTTP Error 429: Too Many Requests",
-   "noticias": 157,
+   ],
+   "conta": "APIFY_TOKEN",
+   "itens_pedidos_por_termo": 2000,
+   "custo_usd": 0.3,
    "status": "ok",
-   "itens_no_periodo": 0
+   "itens_no_periodo": 2000
   }
  ],
- "itens_acumulados": 0,
- "custo_usd": 0.0
+ "itens_acumulados": 2000,
+ "custo_usd": 0.3
 }
