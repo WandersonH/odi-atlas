@@ -80,6 +80,9 @@ jobs:
             case "$c" in 007|008|009|024) python scripts/build_caso_instagram.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1;; esac
             python scripts/build_caso_busca.py --caso $c >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
           done
+          # 07/11/2026 (C19.354): metodologia (universo × amostra dos manifestos) e, no 037, a contagem por língua
+          python scripts/build_metodologia.py >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
+          python scripts/caso_idiomas.py >> "$RUNNER_TEMP/s.txt" 2>&1 || rc=1
           tail -n 12 "$RUNNER_TEMP/s.txt" | while IFS= read -r l; do echo "::notice title=Casos de busca::$(echo "$l" | cut -c1-400)"; done
           exit $rc
       - name: Gravar no repositório privado

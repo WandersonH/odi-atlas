@@ -1,0 +1,345 @@
+{
+ "gerado_em_utc": "2026-11-07T22:09:24Z",
+ "caso": "026",
+ "titulo": "Janonismo: o \"Exército do Lula\" na eleição e os canais que o copiaram no mundo",
+ "pergunta": "O formato de mobilização por canal de WhatsApp criado por André Janones na campanha de Lula (o \"Exército do Lula\") foi copiado por campanhas e militâncias de outros países depois do 2º turno? Com que nomes, em que línguas e com que alcance?",
+ "por_que_importa": "O caso testa a circulação transnacional de uma técnica de mobilização digital, e não só de um conteúdo. Se o nome e o formato se repetem em outras línguas, há difusão de repertório de ação. A imprensa brasileira e estrangeira (g1, 28/10/2026; CNN Brasil; Le Monde Diplomatique Brasil, 03/11/2026) passou a tratar o \"janonismo\" como modelo exportável. O caso mede essa afirmação com dados.",
+ "recorte_temporal": {
+  "inicio": "2026-10-05",
+  "justificativa": "5/10/2026 é a criação do canal, um dia depois do 1º turno: antes dessa data o fenômeno não existe com esse nome. A janela cobre o 2º turno (25/10), quando a imprensa registra as cópias, e segue aberta para medir a duração. O recorte \"Buenos Aires\" (desde 01/11) isola a viagem de 02/11, um evento com vocabulário próprio (Kirchner, Massa, peronismo)."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Nome do canal original",
+   "termos": [
+    "Exército do Lula",
+    "Exercito do Lula",
+    "#ExercitoDoLula"
+   ],
+   "justificativa": "É o nome próprio do objeto. Entra com e sem acento porque a grafia sem acento é comum em hashtags e buscas."
+  },
+  {
+   "familia": "Nome do canal traduzido e nomes das cópias",
+   "termos": [
+    "Ejército de Lula",
+    "armée de Lula",
+    "Lula's army",
+    "Ejército del Peronismo",
+    "La Fuerza de la Gente",
+    "équipe de Mélenchon"
+   ],
+   "justificativa": "A hipótese é de difusão do formato. A evidência mais direta é a reprodução do nome (\"Exército de X\") e as menções à origem brasileira em espanhol, francês e inglês. Os nomes das cópias vêm da imprensa e da leitura das páginas públicas dos canais."
+  },
+  {
+   "familia": "Ator e meio",
+   "termos": [
+    "Janones + WhatsApp/canal/general/exército"
+   ],
+   "justificativa": "\"Janones\" sozinho traz toda a atividade política do deputado, que é anterior e mais ampla que o caso. No X, o nome só entra junto de palavras do meio (WhatsApp, canal) ou da metáfora militar (general, exército), que identificam o janonismo como técnica."
+  },
+  {
+   "familia": "Evento (recorte)",
+   "termos": [
+    "Janones + Kirchner/CFK/Cristina/Massa/Argentina/Buenos Aires/peronismo/Milei"
+   ],
+   "justificativa": "Um evento com nome e lugar permite medir se a exportação do modelo gerou repercussão própria no país de destino."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"exército\" sozinho; \"army\" sozinho",
+   "motivo": "Ruído militar e esportivo; sem relação com o caso."
+  },
+  {
+   "termo": "\"Janones\" sozinho no X",
+   "motivo": "Trazia controvérsias anteriores do deputado. No Google Trends ele fica, como medida de interesse pelo ator, com \"Lula\" de controle."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Páginas públicas dos canais de WhatsApp (leitura diária)",
+   "por_que": "É o único lugar em que a plataforma informa o tamanho real (seguidores). Dá a série de crescimento de cada canal: é universo, não amostra."
+  },
+  {
+   "fonte": "X, TikTok, Instagram, Facebook (busca por termo, Apify)",
+   "por_que": "Onde os canais são divulgados e comentados. Medem a conversa em torno do formato, não o conteúdo dos canais (fechado ao público)."
+  },
+  {
+   "fonte": "Google Trends (Brasil, por estado e por país)",
+   "por_que": "Mede o interesse de busca pelo ator e pelo nome do canal; o recorte por país testa a hipótese de difusão."
+  },
+  {
+   "fonte": "Google Notícias em seis edições (BR, ES, AR, FR, US, CO, PT)",
+   "por_que": "A difusão transnacional precisa ser vista na imprensa de cada país, na língua de cada país."
+  },
+  {
+   "fonte": "YouTube (mundo)",
+   "por_que": "Registra vídeos explicativos e de divulgação em várias línguas."
+  }
+ ],
+ "controles": "No Trends, \"Lula\" como controle: separa o interesse pelo janonismo do interesse geral pelo candidato. O canal \"Tropa do Flávio\", apontado pela imprensa como resposta da chapa adversária, é lido junto como contraponto.",
+ "limites": [
+  "O conteúdo dos canais de WhatsApp não é coletado: a página pública mostra nome e seguidores, não as mensagens. O caso mede alcance e conversa sobre o formato, não as \"missões\".",
+  "Seguidores de canal não é o mesmo que pessoas ativas. A plataforma arredonda o número (ex.: \"10M\"), então variações abaixo do arredondamento não aparecem.",
+  "A busca por nome não capta cópias com nome diferente. A lista de canais depende da imprensa e de indicações, e fica aberta."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#exercitodolula",
+   "o caso (busca por termo): (\"Exército do Lula\" OR \"Exercito do Lula\" OR #ExercitoDoLula OR \"Ejército de Lula\" OR \"Ejército del Peronismo\" OR \"La Fuerza de la Gente\" OR \"armée de Lula\" OR (Janones (WhatsApp OR canal OR general OR exército))) since:2026-10-05",
+   "Janones em Buenos Aires (Kirchner, Massa, peronismo): (Janones OR \"Ejército del Peronismo\" OR \"Ejercito del Peronismo\") (Kirchner OR CFK OR Cristina OR Massa OR Argentina OR \"Buenos Aires\" OR peronismo OR Milei OR Kertész OR Marroquim) since:2026-11-01"
+  ],
+  "tiktok": [
+   "#exercitodolula",
+   "Janones Buenos Aires",
+   "Janones Cristina Kirchner",
+   "Janones Massa Argentina",
+   "Exército do Lula",
+   "Janones WhatsApp",
+   "Janones general Lula",
+   "Ejército de Lula",
+   "Ejército del Peronismo",
+   "La Fuerza de la Gente"
+  ],
+  "instagram": [
+   "#exercitodolula",
+   "#janones",
+   "reels: Exército do Lula",
+   "reels: Janones WhatsApp",
+   "reels: Janones Argentina",
+   "reels: Janones Cristina Kirchner"
+  ],
+  "facebook": [
+   "Exército do Lula",
+   "Janones WhatsApp canal",
+   "Ejército de Lula"
+  ],
+  "google_trends": [
+   "Janones",
+   "Exército do Lula"
+  ],
+  "google_noticias": [
+   "\"Exército do Lula\"",
+   "Janones WhatsApp",
+   "\"Ejército de Lula\"",
+   "\"armée de Lula\"",
+   "\"Lula's army\" WhatsApp",
+   "Janones Cristina Kirchner",
+   "Janones Sergio Massa",
+   "Janones Argentina Milei 2027",
+   "\"Ejército del Peronismo\" Janones",
+   "\"esquerda hacker\" Janones"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 5194,
+   "no_periodo": 5192,
+   "na_analise": 3646,
+   "pct": null,
+   "termos_buscados": 44,
+   "termos_no_limite": [
+    "#exercitodolula",
+    "Ejército de Lula",
+    "Ejército del Peronismo",
+    "Exército do Lula",
+    "Janones Buenos Aires",
+    "Janones Massa Argentina",
+    "Janones WhatsApp",
+    "Janones general Lula",
+    "La Fuerza de la Gente"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto não cabe nem 5 itens por termo"
+   ],
+   "origem": "data/casos/026/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 7,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede",
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/026/manifesto-20261102T215628Z.json, manifesto-20261103T043251Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 4932,
+   "no_periodo": 4932,
+   "na_analise": 4075,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "#exercitodolula",
+    "o caso (busca por termo)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/026/manifesto-20261103T035152Z.json, manifesto-20261103T041110Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 255,
+   "no_periodo": 253,
+   "na_analise": 253,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [
+    "#exercitodolula"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto não cabe nem 5 itens por termo"
+   ],
+   "origem": "data/casos/026/manifesto-20261103T035152Z.json, manifesto-20261103T043251Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 150,
+   "no_periodo": 150,
+   "na_analise": 149,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [
+    "Ejército de Lula",
+    "Exército do Lula",
+    "Janones WhatsApp canal"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/026/manifesto-20261103T035152Z.json, manifesto-20261103T043251Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 295,
+   "no_periodo": 295,
+   "na_analise": 295,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/026/busca.json (youtube)",
+   "coletado_em": "2026-11-07T16:02:22Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 540,
+   "no_periodo": 540,
+   "na_analise": 540,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/026/busca.json (noticias)",
+   "coletado_em": "2026-11-07T16:02:22Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: Janones, Exército do Lula, André Janones",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/026/busca.json (trends)",
+   "coletado_em": "2026-11-07T16:02:22Z"
+  },
+  {
+   "fonte": "Canais de WhatsApp (página pública)",
+   "universo": "informado pela plataforma: seguidores de cada canal (número arredondado pelo WhatsApp)",
+   "lidos": 12,
+   "no_periodo": 12,
+   "na_analise": 12,
+   "pct": null,
+   "como": "12 canais lidos todo dia; é censo dos canais listados (não amostra), mas a lista de canais é aberta",
+   "seguidores_ultima_leitura": {
+    "L'équipe de Mélenchon officielle": [
+     174000,
+     "2026-11-07T13:30:52Z"
+    ],
+    "La Fuerza de la Gente": [
+     57000,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Ejército del Peronismo": [
+     146000,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Ejército de Lula / Exército do Lula - LATAM": [
+     23,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Ejército de Petro": [
+     7600,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Exército do Lula": [
+     10000000,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Tropa do Flávio": [
+     1900000,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Exército dos Povos Indígenas": [
+     344000,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Canal 0029VbEZEveFSAsyxGG4Wp0n (nome a confirmar pela leitura da página)": [
+     639,
+     "2026-11-02T20:17:12Z"
+    ],
+    "Blue Voting Army - Disrupt the Midterms": [
+     2400,
+     "2026-11-07T13:30:52Z"
+    ],
+    "Canal da Colômbia (nome a confirmar pela página)": [
+     1100,
+     "2026-11-03T14:02:42Z"
+    ],
+    "Ejército de la verdad": [
+     1900,
+     "2026-11-07T13:30:52Z"
+    ]
+   },
+   "origem": "data/casos/026/canais_whatsapp.json",
+   "coletado_em": "2026-11-07T13:30:52Z"
+  }
+ ]
+}

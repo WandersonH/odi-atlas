@@ -1,0 +1,169 @@
+{
+ "gerado_em_utc": "2026-11-07T22:09:57Z",
+ "caso": "037",
+ "amostra": {
+  "videos_youtube": 74,
+  "noticias": 27,
+  "youtube_coletado_em": "2026-11-07T16:48:42Z",
+  "universo": "⛔ desconhecido (YouTube e Google Notícias não informam o total)"
+ },
+ "familias": [
+  {
+   "id": "pt_canonica",
+   "rotulo": "\"faz o L\" / #FazOL",
+   "lingua": "português",
+   "regex": "\\bfa[zs] o l\\b|#fazol\\b",
+   "youtube": 56,
+   "noticias": 23
+  },
+  {
+   "id": "pt_ironica",
+   "rotulo": "grafias irônicas (fazueli, fazuele, fazoele)",
+   "lingua": "português",
+   "regex": "fazu[eé]l+i|fazuele|fazoel[ei]",
+   "youtube": 37,
+   "noticias": 1
+  },
+  {
+   "id": "pt_primeira",
+   "rotulo": "\"fiz o L\" / \"fez o L\"",
+   "lingua": "português",
+   "regex": "\\bfi[zs] o l\\b|\\bfez o l\\b",
+   "youtube": 1,
+   "noticias": 3
+  },
+  {
+   "id": "es",
+   "rotulo": "\"haz la L\" / \"hace la L\" / \"haz el L\"",
+   "lingua": "espanhol",
+   "regex": "\\bha(z|ce|cer) (la|el) l\\b",
+   "youtube": 0,
+   "noticias": 0
+  },
+  {
+   "id": "en",
+   "rotulo": "\"do the L\" / \"make the L\"",
+   "lingua": "inglês",
+   "regex": "\\b(do|make|doing|making) the l\\b",
+   "youtube": 0,
+   "noticias": 0
+  },
+  {
+   "id": "fr",
+   "rotulo": "\"fais le L\" / \"faites le L\"",
+   "lingua": "francês",
+   "regex": "\\bfai(s|tes) le l\\b",
+   "youtube": 0,
+   "noticias": 0
+  },
+  {
+   "id": "de",
+   "rotulo": "\"mach das L\"",
+   "lingua": "alemão",
+   "regex": "\\bmach das l\\b",
+   "youtube": 0,
+   "noticias": 0
+  },
+  {
+   "id": "lula_acronimo",
+   "rotulo": "L.U.L.A. (Liga Universal da Luta Antifascista)",
+   "lingua": "várias",
+   "regex": "l\\.u\\.l\\.a|liga universal da luta antifascista",
+   "youtube": 0,
+   "noticias": 0
+  }
+ ],
+ "loser": {
+  "regex": "\\bloser\\b|\\btake (an|the) l\\b|\\btook (an|the) l\\b|\\bl on (the|your) forehead",
+  "youtube": 0,
+  "noticias": 0,
+  "nota": "Em inglês, \"take an L\" e o gesto do L na testa significam derrota (\"loser\"). Contado à parte para não misturar com o L de Lula; nas buscas pagas, as traduções só entram com Lula/Brasil/Brazil."
+ },
+ "trends_brasil_5_anos": {
+  "termos": {
+   "faz o L": {
+    "pico": 100,
+    "semanas_com_interesse": 261,
+    "semanas": 261
+   },
+   "fazueli": {
+    "pico": 5,
+    "semanas_com_interesse": 52,
+    "semanas": 261
+   },
+   "fiz o L": {
+    "pico": 2,
+    "semanas_com_interesse": 40,
+    "semanas": 261
+   },
+   "haz la L": {
+    "pico": 1,
+    "semanas_com_interesse": 1,
+    "semanas": 261
+   },
+   "make the L": {
+    "pico": 3,
+    "semanas_com_interesse": 17,
+    "semanas": 261
+   }
+  },
+  "nota": "Google Trends, Brasil, semanal, índice 0–100 relativo ao pico da consulta (os cinco termos na mesma consulta, então se comparam entre si). Por país: ⛔ (HTTP 429 na leitura de 06–07/11)."
+ },
+ "usos_youtube_por_ano": {
+  "2022": {
+   "campanha": 16,
+   "outro": 2
+  },
+  "2023": {
+   "outro": 1,
+   "ironia": 7
+  },
+  "2024": {
+   "ironia": 28,
+   "outro": 2,
+   "campanha": 1
+  },
+  "2025": {
+   "ironia": 1
+  },
+  "2026": {
+   "internacional": 3,
+   "campanha": 6,
+   "noticia": 2,
+   "ironia": 4,
+   "outro": 1
+  }
+ },
+ "usos_regras": [
+  {
+   "id": "internacional",
+   "rotulo": "difusão internacional (o \"L\" no mundo)",
+   "regex": "mundo|global|world|internacional|esquerda pelo mundo|lenda global|exterior"
+  },
+  {
+   "id": "ironia",
+   "rotulo": "ironia / oposição",
+   "regex": "fazu[eé]l+i|fazuele|fazoel|#?foralula|lula ?dr[aã]o|ladr[aã]o|arrependid|picanha|militont|comuna|chora|#direita|patriota|sosbrasil|#bolsonaro|leitoa|petista!|kkk"
+  },
+  {
+   "id": "campanha",
+   "rotulo": "campanha / apoio (jingle, música)",
+   "regex": "jingle|m[uú]sica|lula 13|\\b13\\b|vira voto|cora[cç][aã]o grand|desenrola|faz o l e vem|lula livre|pra continuar"
+  },
+  {
+   "id": "noticia",
+   "rotulo": "notícia / análise",
+   "regex": "'faz o l'|“faz o l”|\\\"faz o l\\\"|vereadora|imposto|ator|s[ií]mbolo|diz|afirma"
+  },
+  {
+   "id": "outro",
+   "rotulo": "outro / sem marca no título",
+   "regex": ""
+  }
+ ],
+ "nota_usos": "Classificação automática pelo título do vídeo, por regras explícitas (a primeira que casa vale). É uma triagem: a leitura manual dos vídeos de maior alcance confere o sentido antes de qualquer conclusão.",
+ "fontes": [
+  "data/casos/037/busca.json",
+  "ODI_INTERNO_DIR/casos/037/busca_coleta.json (privado: títulos)"
+ ]
+}

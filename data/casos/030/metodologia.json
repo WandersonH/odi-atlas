@@ -1,0 +1,270 @@
+{
+ "gerado_em_utc": "2026-11-07T22:09:24Z",
+ "caso": "030",
+ "titulo": "Brasileiros que buscam o Paraguai antes e depois do 2º turno",
+ "pergunta": "A vitória de Lula no 2º turno (25/10/2026) produziu aumento da intenção de brasileiros de emigrar para o Paraguai, expressa em buscas práticas (morar, residência, cédula, cidadania) e em conteúdo nas redes? Quem produz esse conteúdo?",
+ "por_que_importa": "A emigração como reação a um resultado eleitoral é um comportamento político mensurável. Em 2026 ela foi associada pela imprensa ao Paraguai (alta das buscas por \"como morar no Paraguai\" e dos pedidos de residência, segundo Guia do Investidor e Tribuna PR). O caso separa três camadas: interesse de busca (Trends), discurso (redes) e oferta (perfis que vendem assessoria de documentação). Essa separação evita confundir conversa com migração.",
+ "recorte_temporal": {
+  "inicio": "2026-10-18",
+  "justificativa": "Uma semana antes do 2º turno, para ter linha de base pré-evento no mesmo nível de detalhe. Sem ela, um aumento depois de 25/10 não pode ser atribuído ao resultado. O Trends de 12 meses dá a base longa."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Intenção de mudança",
+   "termos": [
+    "morar no Paraguai",
+    "como morar no Paraguai",
+    "mudar pro/para o Paraguai",
+    "ir pro Paraguai",
+    "fugir pro Paraguai"
+   ],
+   "justificativa": "Verbos de deslocamento ligados ao destino expressam intenção, e não só menção ao país. \"Paraguai\" sozinho traria futebol, contrabando, turismo de compras e política paraguaia."
+  },
+  {
+   "familia": "Etapas legais da migração",
+   "termos": [
+    "residência no Paraguai",
+    "residência paraguaia",
+    "cédula paraguaia",
+    "residência permanente",
+    "Migraciones"
+   ],
+   "justificativa": "Marcam o passo concreto (documento, órgão migratório), que é um indicador mais forte de intenção que o desejo genérico de mudar. São também os termos usados por quem vende assessoria."
+  },
+  {
+   "familia": "Cidadania e naturalização (incluída em 07/11/2026)",
+   "termos": [
+    "cidadania paraguaia",
+    "naturalização paraguaia",
+    "cidadania no Paraguai"
+   ],
+   "justificativa": "A cidadania é o horizonte de permanência, diferente da residência. A distinção permite ver se o discurso fala de mudança temporária ou definitiva. É também uma promessa comum em ofertas de assessoria, que convém medir à parte."
+  },
+  {
+   "familia": "Grafia em espanhol",
+   "termos": [
+    "morar no Paraguay",
+    "mudar pro Paraguay"
+   ],
+   "justificativa": "Quem procura os sites oficiais paraguaios e a imprensa local escreve \"Paraguay\". Sem essa grafia, a busca perde justamente a fase mais prática da intenção."
+  },
+  {
+   "familia": "Imprensa paraguaia (edição PY, em espanhol)",
+   "termos": [
+    "brasileños residencia Paraguay Migraciones",
+    "brasileños ciudadanía paraguaya"
+   ],
+   "justificativa": "O efeito no país de destino (filas, prazos, regras) aparece primeiro na imprensa local."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Paraguai\" ou \"Paraguay\" sozinhos",
+   "motivo": "Ruído alto (futebol, Ciudad del Este, política paraguaia)."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Google Trends (Brasil e por estado; 12 meses, 1 mês, 7 dias)",
+   "por_que": "Mede o interesse de busca, a camada mais próxima da intenção individual."
+  },
+  {
+   "fonte": "X, TikTok, Instagram, Facebook (busca por termo)",
+   "por_que": "Discurso e oferta: quem fala em ir e quem vende o caminho."
+  },
+  {
+   "fonte": "Google Notícias (BR e PY) e YouTube",
+   "por_que": "Validação externa (filas, pedidos de residência relatados por autoridades) e conteúdo explicativo de alcance."
+  }
+ ],
+ "controles": "No Trends, \"morar em Portugal\" e \"morar nos Estados Unidos\": destinos tradicionais da emigração brasileira. Se só o Paraguai sobe depois de 25/10, o efeito é específico; se todos sobem, é interesse geral em emigrar.",
+ "limites": [
+  "Busca e post não são migração. O número de pedidos de residência da Dirección General de Migraciones seria a validação externa: não é coletado pelo Atlas (⛔), só citado quando a imprensa o publica.",
+  "Parte do conteúdo é comercial (assessoria de documentos) e infla a conversa; a análise separa oferta de intenção.",
+  "Nas redes pagas o teto de custo cortou parte das buscas (TikTok e Instagram atingiram o teto); a página mostra em quais termos."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#morarnoparaguai",
+   "#paraguai",
+   "o caso (busca por termo): (\"morar no Paraguai\" OR \"mudar pro Paraguai\" OR \"mudar para o Paraguai\" OR \"ir pro Paraguai\" OR \"residência paraguaia\" OR \"residencia paraguaia\" OR \"cédula paraguaia\" OR \"fugir pro Paraguai\" OR (Paraguai (fila OR migraciones OR residência OR mudança))) since:2026-10-18",
+   "cidadania e documentos (busca por termo): (\"cidadania paraguaia\" OR \"cidadania no Paraguai\" OR \"naturalização paraguaia\" OR \"naturalizar no Paraguai\" OR \"cédula paraguaia\" OR \"cedula paraguaia\" OR \"residência permanente no Paraguai\" OR \"morar no Paraguay\" OR \"mudar pro Paraguay\") since:2026-10-18"
+  ],
+  "tiktok": [
+   "#morarnoparaguai",
+   "#paraguai",
+   "morar no Paraguai",
+   "residência paraguaia",
+   "fila Paraguai brasileiros",
+   "mudar pro Paraguai Lula",
+   "cidadania paraguaia",
+   "morar no Paraguay"
+  ],
+  "instagram": [
+   "#morarnoparaguai",
+   "reels: morar no Paraguai",
+   "reels: residência no Paraguai",
+   "reels (rodada 2): cidadania paraguaia"
+  ],
+  "facebook": [
+   "morar no Paraguai",
+   "residência paraguaia brasileiros",
+   "mudar para o Paraguai",
+   "cidadania paraguaia (rodada 2)",
+   "morar no Paraguay (rodada 2)"
+  ],
+  "google_trends": [
+   "morar no Paraguai",
+   "como morar no Paraguai",
+   "residência no Paraguai",
+   "cidadania paraguaia",
+   "morar no Paraguay"
+  ],
+  "google_noticias": [
+   "morar no Paraguai brasileiros",
+   "residência paraguaia brasileiros",
+   "fila Paraguai brasileiros eleição",
+   "cidadania paraguaia brasileiros",
+   "cédula paraguaia brasileiros"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 254,
+   "no_periodo": 254,
+   "na_analise": 231,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [
+    "#morarnoparaguai",
+    "#paraguai"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto não cabe nem 5 itens por termo"
+   ],
+   "origem": "data/casos/030/manifesto-20261102T105359Z.json, manifesto-20261102T110711Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 114,
+   "no_periodo": 114,
+   "na_analise": 105,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/030/manifesto-20261102T110711Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/030/manifesto-20261102T110711Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 1006,
+   "no_periodo": 1006,
+   "na_analise": 1006,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/030/manifesto-20261102T112728Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 746,
+   "no_periodo": 675,
+   "na_analise": 383,
+   "pct": null,
+   "termos_buscados": 12,
+   "termos_no_limite": [
+    "#morarnoparaguai",
+    "#paraguai",
+    "fila Paraguai brasileiros",
+    "morar no Paraguai",
+    "mudar pro Paraguai Lula",
+    "residência paraguaia"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/030/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 399,
+   "no_periodo": 399,
+   "na_analise": 399,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/030/busca.json (youtube)",
+   "coletado_em": "2026-11-07T21:51:38Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 104,
+   "no_periodo": 104,
+   "na_analise": 104,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/030/busca.json (noticias)",
+   "coletado_em": "2026-11-07T21:51:38Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 12-m, today 1-m, now 7-d), termos: morar no Paraguai, como morar no Paraguai, residência no Paraguai, cidadania paraguaia, morar no Paraguay",
+   "avisos": [],
+   "origem": "data/casos/030/busca.json (trends)",
+   "coletado_em": "2026-11-07T21:51:38Z"
+  }
+ ]
+}
