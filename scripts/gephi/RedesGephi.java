@@ -205,7 +205,6 @@ public class RedesGephi {
             exporta(ws, png);
         } catch (Throwable t) {
             System.out.println("⛔ imagem " + png.getName() + ": " + t);
-            png.delete();
         }
     }
 

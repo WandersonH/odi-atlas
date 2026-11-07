@@ -36,7 +36,6 @@ jobs:
         run: |
           ARQS=$(ls ${{ github.event.inputs.redes }} 2>/dev/null)
           echo "$ARQS"
-          rm -f data/redes/gephi/*.png  # 07/11: PNGs vazios da 1ª rodada (HeadlessException)
           sudo apt-get install -y -qq xvfb >/dev/null 2>&1 || true
           xvfb-run -a -s "-screen 0 1920x1080x24" java -Xmx6g --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED -cp "$RUNNER_TEMP/gephi-toolkit.jar:$RUNNER_TEMP/cls" RedesGephi data/redes/gephi $ARQS | tee g.txt
           tail -n 8 g.txt | while IFS= read -r l; do echo "::notice title=Gephi::$(echo "$l" | cut -c1-300)"; done
