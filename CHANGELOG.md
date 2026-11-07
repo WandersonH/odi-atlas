@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.357 — Estatísticas das redes (Modularity, % por comunidade, polarização) e teste no Gephi (2026-11-07) 🔜
+
+- Pedido do responsável (07/11/2026, 19h25): explorar as redes no Gephi com ForceAtlas 2 (comunidades) e OpenOrd (polarização), ver grupos pelo Modularity e a % de cada um, e registrar em CSV os cálculos, com prints.
+- `scripts/estatisticas_redes.py` (novo): os indicadores do painel Statistics do Gephi para cada `data/casos/*/*.gexf`. Inclui nós, arestas, densidade, grau médio e ponderado, componentes, clustering, diâmetro e caminho médio (até 3.000 nós no maior componente) e Modularity por Louvain (resolução 1,0, pesos, semente 42): Q, comunidades e % de nós nas maiores. Também o índice E-I de Krackhardt entre as duas maiores comunidades, como medida numérica de polarização. Saídas: `data/redes/estatisticas_redes.csv` e `data/redes/comunidades_redes.csv`.
+- Estado deste commit: os CSVs têm só o caso 026 (teste); a rodada com as 207 redes está em andamento e substitui os arquivos quando terminar.
+- Conferência no Gephi 0.11.4 do responsável (computador dele, 07/11, ~19h30), rede `026/rede_circulacao.gexf` (3.296 nós, 4.591 arestas): Modularity Q = 0,636, 11 comunidades (Python: 0,6364); % de nós por comunidade no Gephi: 31,49; 19,54; 16,11; 10,59; 9,77; 7,68; 4,13; 0,33; 0,18; 0,12; 0,06. ForceAtlas 2 rodado (LinLog, Stronger Gravity, Scaling 20) e colorido por comunidade. Interrompido porque o responsável passou a usar a mesma janela. Pendentes: prints finais, OpenOrd e exportação do Data Laboratory.
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.356 — Protótipo: imagens dos posts de TikTok, Instagram e Facebook na página do caso 030 (2026-11-07) 🔜
 
 - Pedido do responsável (07/11/2026, 18h40): "assim como mostra os tweets, que pudesse mostrar as imagens dos posts em outras redes pra ver; caso aprovado, aplicaremos em tudo".
