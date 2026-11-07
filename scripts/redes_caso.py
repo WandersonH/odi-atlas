@@ -119,7 +119,7 @@ def circulacao(videos: list[dict], noticias: list[dict], tiktok: list[dict]) -> 
         ar[(s, t)] += 1
     for r in tiktok:
         seg = int(r["seguidores"]) if str(r.get("seguidores") or "").isdigit() else 0
-        s = fonte(f"tt:{r.get('conta')}", "@" + (r.get("conta") or "?"), "conta do TikTok", seg >= MIN_PUBLICO or str(r.get("verificada")) == "1")
+        s = fonte(f"tt:{r.get('conta')}", "@" + (r.get("conta") or "?"), "conta do TikTok", seg >= MIN_PUBLICO)  # 07/11/2026: selo do TikTok não confiável (C19.353)
         for termo in (r.get("termo") or "").split("|"):
             if not termo:
                 continue

@@ -7,7 +7,7 @@ Saída pública:
 - data/casos/<id>/caso.json: números por rede e termo, série por hora (horário de Brasília), marco zero, quem puxou,
   galeria, palavras, Google (Trends e Notícias), desenho da rede e método. Sem custo de coleta.
 - data/casos/<id>/rede.gexf, rede_nos.csv, rede_arestas.csv: contas × hashtags/menções, para o Gephi.
-Privacidade: conta com menos de `min_seguidores_publico` seguidores e sem selo aparece só como código (C001…, ordem de
+Privacidade: conta com menos de `min_seguidores_publico` seguidores (o selo não basta: C19.353) aparece só como código (C001…, ordem de
 atividade), sem texto nem link; perfis declarados ao TSE e contas grandes aparecem com nome. Palavras: só contagens.
 Tom da audiência: não calculado (o caso não coleta comentários) — fica ⛔ na página.
 """
@@ -124,7 +124,10 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
             return None  # proteção de criança (caso 020): a conta nunca aparece pelo nome, mesmo com 10 mil+ seguidores
         if k in dec:
             return f"@{r['conta']} · perfil de {dec[k]}"
-        if num(r.get("seguidores")) >= minimo or str(r.get("verificada")) == "1":
+        # 07/11/2026: o selo deixou de valer sozinho. No TikTok o campo "verified" do coletor oscila (a mesma conta vem
+        # verdadeira e falsa; no caso 030, 306 itens de contas com menos de 10 mil seguidores vinham com selo) e no X o selo é pago.
+        # Regra do responsável: nome só com 10 mil+ seguidores ou perfil declarado ao TSE.
+        if num(r.get("seguidores")) >= minimo:
             return f"@{r['conta']}" if r["rede"] != "facebook" else r["conta"]
         return None
 
@@ -281,7 +284,7 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
                        "primeira_noticia": noticias[0] if noticias else None, "titulos": noticias[:15], "coletado_em": g.get("coletado_em")},
             "lacunas": caso.get("lacunas") or [], "nota_x": caso.get("nota_x"),
             "tom": None, "tom_motivo": "⛔ não calculado: a coleta do caso traz publicações, não os comentários a elas.",
-            "metodo": metodo, "privacidade": f"Contas com menos de {minimo:,} seguidores e sem selo aparecem só como código (ordem de atividade), sem texto nem link. Textos completos só no repositório privado.".replace(",", ".")}
+            "metodo": metodo, "privacidade": f"Contas com menos de {minimo:,} seguidores aparecem só como código (ordem de atividade; o selo da plataforma não basta), sem texto nem link. Textos completos só no repositório privado.".replace(",", ".")}
 
 
 def main(argv=None) -> int:

@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.353 — Privacidade: o selo da plataforma deixa de bastar para mostrar o nome da conta (2026-11-07) ✅
+
+- Achado ao preparar a galeria de imagens do caso 030 (pedido do responsável, 07/11/2026, 18h40): a página mostrava com nome, texto e link perfis de pessoas comuns. Ex.: no 030, uma conta do TikTok com 951 seguidores. O motivo: `build_casos.py` e `redes_caso.py` tratavam como pública qualquer conta "verificada", mas o campo `channel.verified` do coletor do TikTok oscila. A mesma conta vem verdadeira numa leitura e falsa em outra. No bruto do 030 (`bruto_tiktok_*.jsonl.gz`, privado) há 306 itens marcados "verificado" de contas com menos de 10 mil seguidores. No X o selo é pago.
+- Mudança: nome só com 10 mil+ seguidores ou perfil declarado ao TSE (regra do responsável); o selo sozinho não conta mais. Nota de privacidade da página ajustada.
+- Efeito, medido ao refazer `data/casos/*/caso.json` com `build_casos.py` (privado atualizado em 07/11, 21h09 UTC): 105 contas pequenas, em 31 casos, deixam de aparecer pelo nome em galeria, "primeiros" e "maiores"; passam a código. Redes do Gephi (`rede*.gexf/csv`) refeitas pela mesma regra. Os scripts que usam `redes_caso.py` (comentários, mundo, similitude) aplicam a regra na próxima execução.
+- Não feito: o histórico do git continua com as versões anteriores; reescrever exige autorização (regra 8).
+- Teste: `python -m unittest discover -s tests` OK.
+
 ## C19.352 — Caso 037 ("Faz o L": origem e outros idiomas) e redes pagas do 036 (2026-11-06) 🔜
 
 - Pedidos do responsável (06/11/2026, 11h02): "Sim mesma verba" (caso 036) e "preciso de um case que analise a frase faz o L em português e outros idiomas; minha pergunta principal: qual a origem deste movimento".
