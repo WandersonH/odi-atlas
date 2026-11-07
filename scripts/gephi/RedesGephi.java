@@ -57,7 +57,7 @@ public class RedesGephi {
         File saida = new File(args[0]);
         saida.mkdirs();
         PrintWriter resumo = new PrintWriter(new File(saida, "gephi_resumo.csv"), StandardCharsets.UTF_8);
-        resumo.println("caso,rede,dirigida,nos,arestas,densidade,grau_medio,grau_ponderado_medio,componentes,clustering_medio,diametro,caminho_medio,modularidade_q,comunidades,nos_componente_gigante,pct_componente_gigante,gc_densidade,gc_modularidade_q,gc_comunidades,gc_pct_comunidades,inferencia_estatistica_classes,top5_pagerank,top5_hits_autoridade,top5_autovetor,top5_intermediacao,separacao_openord_2_maiores,separacao_openord_edgecut0,separacao_fa2_2_maiores,estabilidade_fa2_jaccard_top50,arestas_dentro_grupo1,arestas_dentro_grupo2,arestas_entre_1_e_2,pct_arestas_cruzando,iteracoes_fa2,iteracoes_openord");
+        resumo.println("caso,rede,dirigida,nos,arestas,densidade,grau_medio,grau_ponderado_medio,componentes,clustering_medio,diametro,caminho_medio,modularidade_q,comunidades,nos_componente_gigante,pct_componente_gigante,gc_densidade,gc_modularidade_q,gc_comunidades,gc_pct_comunidades,inferencia_estatistica_classes,top5_pagerank,top5_hits_autoridade,top5_autovetor,top5_intermediacao,separacao_openord_2_maiores,separacao_openord_edgecut0,separacao_fa2_2_maiores,estabilidade_fa2_corr_distancias_top50,arestas_dentro_grupo1,arestas_dentro_grupo2,arestas_entre_1_e_2,pct_arestas_cruzando,iteracoes_fa2,iteracoes_openord");
         for (int a = 1; a < args.length; a++) {
             File f = new File(args[a]);
             String caso = f.getParentFile().getName(), rede = f.getName().replace(".gexf", "");
@@ -222,23 +222,18 @@ public class RedesGephi {
         for (Node v : g.getNodes()) topGrau.add(v);
         topGrau.sort((x, y) -> ((Number) y.getAttribute(colDeg0)).intValue() - ((Number) x.getAttribute(colDeg0)).intValue());
         topGrau = topGrau.subList(0, Math.min(50, topGrau.size()));
-        Map<Node, Set<Node>> viz1 = vizinhos(g, topGrau, 10);
+        // correlação (Pearson) entre as distâncias de cada par dos 50 nós de maior grau na 1ª e na 2ª rodada; não depende de
+        // rotação nem de espelhamento. Perto de 1: os mesmos perfis voltam a ficar próximos; perto de 0: o desenho não é estável.
+        // (07/11: a 1ª versão usava os 10 vizinhos mais próximos e dava ~0 em redes em estrela, porque as folhas de um hub trocam de lugar.)
+        double[] d1 = distancias(topGrau);
         Random rnd = new Random(7);
         for (Node v : g.getNodes()) { v.setX((rnd.nextFloat() - 0.5f) * 2000f); v.setY((rnd.nextFloat() - 0.5f) * 2000f); }
         fa2.setAdjustSizes(false);
         fa2.initAlgo();
         for (int i = 0; i < itFa2 && fa2.canAlgo(); i++) fa2.goAlgo();
         fa2.endAlgo();
-        Map<Node, Set<Node>> viz2 = vizinhos(g, topGrau, 10);
-        double jac = 0;
-        for (Node v : topGrau) {
-            Set<Node> a = viz1.get(v), b = viz2.get(v), uni = new HashSet<>(a);
-            uni.addAll(b);
-            Set<Node> inter = new HashSet<>(a);
-            inter.retainAll(b);
-            jac += uni.isEmpty() ? 0 : (double) inter.size() / uni.size();
-        }
-        double estab = topGrau.isEmpty() ? Double.NaN : jac / topGrau.size();
+        double[] d2 = distancias(topGrau);
+        double estab = pearson(d1, d2);
 
         // pontes: ligações dentro de cada um dos dois maiores grupos e entre eles (para ler cada cruzamento: crítica, resposta, amplificação)
         int ca = ord.size() > 0 ? ord.get(0).getKey() : -1, cb = ord.size() > 1 ? ord.get(1).getKey() : -1;
@@ -302,6 +297,26 @@ public class RedesGephi {
         System.out.println(nome + ": " + nTotal + " nós (gigante " + n + "), Q=" + String.format(Locale.ROOT, "%.4f", qTotal) + ", Q gigante=" + String.format(Locale.ROOT, "%.4f", modGc.getModularity()) + ", " + tam.size()
                 + " comunidades, separação OpenOrd " + String.format(Locale.ROOT, "%.2f", sepOo) + " (edge cut 0: " + String.format(Locale.ROOT, "%.2f", sepOo0)
                 + "), estabilidade FA2 " + String.format(Locale.ROOT, "%.2f", estab) + ", cruzando " + cruz + " de " + (dentroA + dentroB + cruz));
+    }
+
+    static double[] distancias(List<Node> ns) {
+        int k = ns.size();
+        double[] d = new double[Math.max(0, k * (k - 1) / 2)];
+        int t = 0;
+        for (int i = 0; i < k; i++)
+            for (int j = i + 1; j < k; j++) d[t++] = Math.hypot(ns.get(i).x() - ns.get(j).x(), ns.get(i).y() - ns.get(j).y());
+        return d;
+    }
+
+    static double pearson(double[] a, double[] b) {
+        int n = a.length;
+        if (n < 3) return Double.NaN;
+        double ma = 0, mb = 0;
+        for (int i = 0; i < n; i++) { ma += a[i]; mb += b[i]; }
+        ma /= n; mb /= n;
+        double sab = 0, saa = 0, sbb = 0;
+        for (int i = 0; i < n; i++) { sab += (a[i] - ma) * (b[i] - mb); saa += (a[i] - ma) * (a[i] - ma); sbb += (b[i] - mb) * (b[i] - mb); }
+        return (saa > 0 && sbb > 0) ? sab / Math.sqrt(saa * sbb) : Double.NaN;
     }
 
     // os k vizinhos mais próximos (no desenho) de cada nó da lista
