@@ -1,6 +1,6 @@
 {
  "caso": "018",
- "gerado_em_utc": "2026-11-06T16:32:06Z",
+ "gerado_em_utc": "2026-11-07T15:14:19Z",
  "corte_pos_eleicao": "2026-10-25",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -142,14 +142,14 @@
     "respostas_entre_publicacoes": 148
    },
    "x_agora": {
-    "publicacoes": 1374,
-    "contas": 962,
-    "visualizacoes": 1225542,
-    "curtidas": 78349,
-    "respostas_recebidas": 3044,
-    "compartilhamentos": 25593,
+    "publicacoes": 1408,
+    "contas": 982,
+    "visualizacoes": 1225960,
+    "curtidas": 78364,
+    "respostas_recebidas": 3047,
+    "compartilhamentos": 25597,
     "primeiro_dia": "2026-10-26",
-    "ultimo_dia": "2026-11-05",
+    "ultimo_dia": "2026-11-06",
     "pico": {
      "dia": "2026-10-29",
      "publicacoes": 462
@@ -166,7 +166,8 @@
      55,
      38,
      22,
-     17
+     22,
+     29
     ],
     "contas_10mil": [
      {
@@ -375,12 +376,12 @@
       33
      ],
      [
-      "ministra",
-      33
-     ],
-     [
       "diz",
       97
+     ],
+     [
+      "ministra",
+      33
      ],
      [
       "brasil",
@@ -402,23 +403,23 @@
     "agora": [
      [
       "boicote",
-      1147
+      1173
+     ],
+     [
+      "fósforo",
+      214
      ],
      [
       "giants",
       157
      ],
      [
-      "fósforo",
-      208
-     ],
-     [
       "palito",
-      211
+      217
      ],
      [
       "protocolo",
-      71
+      72
      ],
      [
       "sleeping",
@@ -446,7 +447,7 @@
      ],
      [
       "perseguição",
-      46
+      47
      ],
      [
       "polícia",
@@ -457,8 +458,8 @@
       81
      ],
      [
-      "escolhas",
-      42
+      "petistas",
+      102
      ]
     ]
    },
@@ -482,23 +483,11 @@
      "epoca": [],
      "depois": [
       [
-       "pouco",
+       "maior",
        0
       ],
       [
-       "diz",
-       0
-      ],
-      [
-       "inteligência",
-       0
-      ],
-      [
-       "contra",
-       0
-      ],
-      [
-       "dinheiro",
+       "competente",
        0
       ],
       [
@@ -506,19 +495,31 @@
        0
       ],
       [
-       "duas",
+       "melhor",
        0
       ],
       [
-       "baixo",
+       "nosso",
        0
       ],
       [
-       "assim",
+       "boicotar",
        0
       ],
       [
-       "pessoal",
+       "deles",
+       0
+      ],
+      [
+       "estou",
+       0
+      ],
+      [
+       "existe",
+       0
+      ],
+      [
+       "kkk",
        0
       ]
      ]
@@ -544,7 +545,7 @@
      "POS": 6.2
     },
     "x_agora": {
-     "n": 1374,
+     "n": 1408,
      "NEG": 48.5,
      "NEU": 49.4,
      "POS": 2.1
@@ -568,7 +569,7 @@
    "x_agora": {
     "publicacoes": 5,
     "contas": 5,
-    "visualizacoes": 380,
+    "visualizacoes": 393,
     "curtidas": 5,
     "respostas_recebidas": 2,
     "compartilhamentos": 2,
@@ -592,7 +593,7 @@
      {
       "rede": "x",
       "conta": "AfpChecamos",
-      "seguidores": 22091,
+      "seguidores": 22087,
       "publicacoes": 1
      }
     ]
@@ -772,14 +773,14 @@
     "respostas_entre_publicacoes": 5
    },
    "x_agora": {
-    "publicacoes": 142,
-    "contas": 122,
-    "visualizacoes": 6617095,
-    "curtidas": 83770,
-    "respostas_recebidas": 2164,
-    "compartilhamentos": 6917,
+    "publicacoes": 143,
+    "contas": 123,
+    "visualizacoes": 6657988,
+    "curtidas": 84460,
+    "respostas_recebidas": 2174,
+    "compartilhamentos": 7132,
     "primeiro_dia": "2026-10-25",
-    "ultimo_dia": "2026-11-05",
+    "ultimo_dia": "2026-11-06",
     "pico": {
      "dia": "2026-10-27",
      "publicacoes": 34
@@ -797,7 +798,8 @@
      6,
      4,
      4,
-     2
+     2,
+     1
     ],
     "contas_10mil": [
      {
@@ -931,7 +933,7 @@
    "contas_10mil_nos_dois": [
     [
      "g1",
-     14083102
+     14083772
     ],
     [
      "Estadao",
@@ -969,16 +971,28 @@
       8
      ],
      [
-      "bloqueio",
+      "foram",
       14
      ],
      [
-      "foram",
+      "bloqueio",
       14
      ],
      [
       "bloqueia",
       7
+     ],
+     [
+      "equilibrar",
+      6
+     ],
+     [
+      "arcabouço",
+      6
+     ],
+     [
+      "afetados",
+      6
      ],
      [
       "afetadas",
@@ -989,18 +1003,6 @@
       6
      ],
      [
-      "afetados",
-      6
-     ],
-     [
-      "arcabouço",
-      6
-     ],
-     [
-      "equilibrar",
-      6
-     ],
-     [
       "programa",
       9
      ]
@@ -1008,7 +1010,7 @@
     "agora": [
      [
       "cortou",
-      59
+      60
      ],
      [
       "cortar",
@@ -1035,10 +1037,6 @@
       15
      ],
      [
-      "piso",
-      14
-     ],
-     [
       "caso",
       14
      ],
@@ -1047,12 +1045,8 @@
       14
      ],
      [
-      "professores",
-      13
-     ],
-     [
-      "verdade",
-      13
+      "piso",
+      14
      ],
      [
       "reduzir",
@@ -1060,6 +1054,14 @@
      ],
      [
       "instituição",
+      13
+     ],
+     [
+      "verdade",
+      13
+     ],
+     [
+      "professores",
       13
      ],
      [
@@ -1076,9 +1078,9 @@
      "POS": 0.0
     },
     "x_agora": {
-     "n": 142,
-     "NEG": 50.0,
-     "NEU": 45.8,
+     "n": 143,
+     "NEG": 49.7,
+     "NEU": 46.2,
      "POS": 4.2
     },
     "instagram_agora": {
