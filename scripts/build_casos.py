@@ -104,6 +104,8 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
             validos |= {f"#{h}" for h in v_}
         if k_.startswith("buscas_instagram_r"):
             validos |= {f"reels_{k_.rsplit('_', 1)[1]}: {q}" for q in v_}
+        if k_.startswith("buscas_facebook_r"):  # 07/11/2026: a rodada 2 do Facebook (caso 030) não entrava no agregado
+            validos |= set(v_)
     if caso.get("posts_instagram"):
         validos.add("indicado pelo responsável")
     itens = [{**r, "termo": "|".join(t for t in r["termo"].split("|") if t in validos)} for r in itens]

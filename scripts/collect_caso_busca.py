@@ -160,14 +160,20 @@ CASOS = {
             "rx_atributo": r"xenofob|ataq|[oó]dio|preconceit|elei|lula|c[aâ]ncer|crime|voto|separa",
             "noticias": ["xenofobia Nordeste eleição", "ataques a nordestinos eleição", "\"câncer do Brasil\" Nordeste", "nordestinos ódio redes sociais"],
             "janela_noticias": "30d", "checagens": ["Nordeste eleição", "27 milhões ataques Nordeste", "xenofobia Nordeste"], "arquivo_web": []},
-    "030": {"variantes": ["morar no Paraguai", "como morar no Paraguai", "residência no Paraguai"],
+    # 07/11 (18h40): o responsável pede "morar no Paraguay" e "cidadania paraguaia" (grafia em espanhol e cidadania entram)
+    "030": {"variantes": ["morar no Paraguai", "como morar no Paraguai", "residência no Paraguai", "cidadania paraguaia", "morar no Paraguay"],
             "controles": ["morar em Portugal", "morar nos Estados Unidos"], "janelas": ["today 12-m", "today 1-m", "now 7-d"],
-            "grupos_extra": {"paraguai_so": {"titulo": "\"morar no Paraguai\" sozinho (interesse por estado e consultas relacionadas)", "termos": ["morar no Paraguai"]}},
-            "youtube": ["morar no Paraguai 2026", "brasileiros fila Paraguai documentação", "residência paraguaia brasileiros", "mudar para o Paraguai depois da eleição"],
+            "grupos_extra": {"paraguai_so": {"titulo": "\"morar no Paraguai\" sozinho (interesse por estado e consultas relacionadas)", "termos": ["morar no Paraguai"]},
+                             "cidadania": {"titulo": "Cidadania e documentos paraguaios (interesse por estado e consultas relacionadas)",
+                                           "termos": ["cidadania paraguaia", "naturalização Paraguai", "cédula paraguaia", "residência permanente Paraguai"]}},
+            "youtube": ["morar no Paraguai 2026", "brasileiros fila Paraguai documentação", "residência paraguaia brasileiros", "mudar para o Paraguai depois da eleição",
+                        "cidadania paraguaia brasileiro", "como tirar cidadania paraguaia", "cédula paraguaia brasileiro", "morar no Paraguay 2026"],
             "desde_yt": "2026-10-18T00:00:00Z", "rx_titulo": r"paragua",
-            "rx_atributo": r"morar|mudar|resid[eê]ncia|c[eé]dula|fila|document|migra|brasileir|elei|lula",
-            "noticias": ["morar no Paraguai brasileiros", "residência paraguaia brasileiros", "Paraguai brasileiros eleição Lula", "Migraciones Paraguai brasileiros"],
-            "janela_noticias": "30d", "checagens": ["Paraguai brasileiros", "morar no Paraguai"], "arquivo_web": []},
+            "rx_atributo": r"morar|mudar|resid[eê]ncia|c[eé]dula|fila|document|migra|brasileir|elei|lula|cidadan|naturaliza",
+            "noticias": ["morar no Paraguai brasileiros", "residência paraguaia brasileiros", "Paraguai brasileiros eleição Lula", "Migraciones Paraguai brasileiros",
+                         "cidadania paraguaia brasileiros", "cédula paraguaia brasileiros", "naturalização Paraguai brasileiros",
+                         {"q": "brasileños residencia Paraguay Migraciones", "ed": "PY"}, {"q": "brasileños ciudadanía paraguaya", "ed": "PY"}],
+            "janela_noticias": "30d", "checagens": ["Paraguai brasileiros", "morar no Paraguai", "cidadania paraguaia"], "arquivo_web": []},
     "031": {"variantes": ["Flávio Bolsonaro", "nota ao Brasil", "Flávio Bolsonaro Globo"],
             "controles": ["Lula"], "janelas": ["now 7-d", "today 1-m"],
             "youtube": ["Flávio Bolsonaro nota ao Brasil", "Flávio Bolsonaro Globo entrevista sem cortes", "saí pelo Brasil Flávio Bolsonaro"],
@@ -495,7 +501,7 @@ def youtube(key: str, agora: str) -> tuple[dict, list[dict]]:
 EDICOES = {"BR": {"hl": "pt-BR", "gl": "BR", "ceid": "BR:pt-419"}, "PT": {"hl": "pt-PT", "gl": "PT", "ceid": "PT:pt-150"},
            "ES": {"hl": "es", "gl": "ES", "ceid": "ES:es"}, "AR": {"hl": "es-419", "gl": "AR", "ceid": "AR:es-419"},
            "CO": {"hl": "es-419", "gl": "CO", "ceid": "CO:es-419"}, "FR": {"hl": "fr", "gl": "FR", "ceid": "FR:fr"},
-           "US": {"hl": "en-US", "gl": "US", "ceid": "US:en"}}
+           "US": {"hl": "en-US", "gl": "US", "ceid": "US:en"}, "PY": {"hl": "es-419", "gl": "PY", "ceid": "PY:es-419"}}
 
 
 def noticias() -> list[dict]:
