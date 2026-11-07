@@ -24,6 +24,12 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   2. A assortatividade de grau é negativa em todas as redes (estrelas). Nelas, o E-I das duas maiores dá perto de −1 sem que haja dois lados.
   3. A reciprocidade na rede de respostas do YouTube é 0 por construção: a API liga toda resposta ao autor que abriu o fio. Fica ⛔.
 - Documento de método para validação: "Método de avaliação das redes do ODI Atlas (Gephi e Python)" (Claude Docs).
+- 07/11, 20h33: guia de layouts do responsável incorporado ao documento (o que cada layout faz e quando usar). O exercício proposto entrou na rotina do Toolkit:
+  - ligações dentro de cada um dos dois maiores grupos e entre eles, com a lista das que cruzam em `<caso>_<rede>_pontes.csv`, para ler crítica, resposta ou amplificação;
+  - OpenOrd também com Edge Cut 0;
+  - estabilidade do ForceAtlas 2 após Random Layout, medida pela correlação das distâncias entre os 50 nós de maior grau.
+  A 1ª versão dessa medida, com os 10 vizinhos mais próximos, dava cerca de 0 em redes em estrela e foi trocada.
+- Resultado no 026 (run 42426159628): ligações cruzando os dois maiores grupos: contas × hashtags 283 (7,47%), circulação 136 (5,85%), palavras 2.633 (17,76%), respostas 0. Estabilidade do FA2: circulação 0,89; demais 0,03 a 0,17. Separação do OpenOrd na circulação em três rodadas: 0,88, 1,12 e 2,01, o que mostra que o OpenOrd varia a cada rodada.
 - Ressalvas (⚠️):
   - prints só do 026: as 207 redes em PNG pesariam centenas de MB no repositório, e a escolha fica com o responsável;
   - o E-I depende de rótulo de posição para indicar polarização;
