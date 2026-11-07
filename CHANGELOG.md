@@ -10,6 +10,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
 - `scripts/imagens_caso.py` + `.github/workflows/imagens-caso.yml` (novo, grátis): escolhe as peças de maior alcance de contas públicas (10 mil+ seguidores ou perfil do TSE; o selo não basta, C19.353) e baixa a miniatura no dia, porque os endereços das plataformas expiram. TikTok pelo oEmbed público; Instagram e Facebook pelo endereço gravado na coleta, se ainda responder. Guarda até 480 px em `data/casos/<id>/imagens/`, com sha256 do original, data e fonte, em `imagens.json`. Página: bloco "Imagens dos posts" (função genérica `montarImagens`, ligada só no 030).
 - Achado antes de rodar (itens privados do 030, conferência local): TikTok 383 posts na amostra, 160 de contas públicas; Instagram 231 e Facebook 105, todos ⛔ sem número de seguidores (os coletores dessas redes não informam), então nenhum pode entrar na galeria pela regra de nome sem a leitura de perfil, que é paga. A página mostra esse corte.
 - Teste: `python -m unittest discover -s tests` OK. Rodada no runner (a rede deste ambiente não alcança o TikTok): resultado na atualização desta entrada.
+- Correção no mesmo dia: a seção `caso038` da página (C19.355) não tinha sido gravada (o menu apontava para uma seção inexistente) e o bloco da galeria também não; ambos entram neste commit.
 
 ## C19.355 — Caso 038: Flávio e Eduardo Bolsonaro na CPAC (Mar-a-Lago, 4–7/11/2026) (2026-11-07) 🔜
 
