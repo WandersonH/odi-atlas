@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T03:16:46Z",
+ "gerado_em_utc": "2026-11-08T17:39:55Z",
  "caso": "026",
  "titulo": "Janonismo: o \"Exército do Lula\" na eleição e os canais que o copiaram no mundo",
  "pergunta": "O formato de mobilização por canal de WhatsApp criado por André Janones na campanha de Lula (o \"Exército do Lula\") foi copiado por campanhas e militâncias de outros países depois do 2º turno? Com que nomes, em que línguas e com que alcance?",
@@ -256,18 +256,18 @@
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/026/busca.json (youtube)",
-   "coletado_em": "2026-11-08T03:05:05Z"
+   "coletado_em": "2026-11-08T17:29:50Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 538,
-   "no_periodo": 538,
-   "na_analise": 538,
+   "lidos": 500,
+   "no_periodo": 500,
+   "na_analise": 500,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/026/busca.json (noticias)",
-   "coletado_em": "2026-11-08T03:05:05Z"
+   "coletado_em": "2026-11-08T17:29:50Z"
   },
   {
    "fonte": "Google Trends",
@@ -276,10 +276,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (now 7-d, today 1-m, today 12-m), termos: Janones, Exército do Lula, André Janones",
-   "avisos": [],
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: Janones, Exército do Lula, André Janones",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
    "origem": "data/casos/026/busca.json (trends)",
-   "coletado_em": "2026-11-08T03:05:05Z"
+   "coletado_em": "2026-11-08T17:29:50Z"
   },
   {
    "fonte": "Canais de WhatsApp (página pública)",
@@ -292,35 +294,35 @@
    "seguidores_ultima_leitura": {
     "L'équipe de Mélenchon officielle": [
      175000,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "La Fuerza de la Gente": [
      57000,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "Ejército del Peronismo": [
-     147000,
-     "2026-11-07T22:17:10Z"
+     148000,
+     "2026-11-08T13:53:24Z"
     ],
     "Ejército de Lula / Exército do Lula - LATAM": [
      23,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "Ejército de Petro": [
      7600,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "Exército do Lula": [
      10000000,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "Tropa do Flávio": [
      1900000,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "Exército dos Povos Indígenas": [
      344000,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "Canal 0029VbEZEveFSAsyxGG4Wp0n (nome a confirmar pela leitura da página)": [
      639,
@@ -328,19 +330,19 @@
     ],
     "Blue Voting Army - Disrupt the Midterms": [
      2400,
-     "2026-11-07T22:17:10Z"
+     "2026-11-08T13:53:24Z"
     ],
     "Canal da Colômbia (nome a confirmar pela página)": [
      1100,
      "2026-11-03T14:02:42Z"
     ],
     "Ejército de la verdad": [
-     1900,
-     "2026-11-07T22:17:10Z"
+     2000,
+     "2026-11-08T13:53:24Z"
     ]
    },
    "origem": "data/casos/026/canais_whatsapp.json",
-   "coletado_em": "2026-11-07T22:17:10Z"
+   "coletado_em": "2026-11-08T13:53:24Z"
   }
  ],
  "fontes_contexto": [

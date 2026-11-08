@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T05:10:56Z",
+ "gerado_em_utc": "2026-11-08T17:39:55Z",
  "caso": "038",
  "titulo": "Flávio e Eduardo Bolsonaro na CPAC (Mar-a-Lago, 4–7/11/2026)",
  "pergunta": "Como a participação de Flávio e Eduardo Bolsonaro na CPAC de Mar-a-Lago (4–7/11/2026), a primeira aparição pública de Flávio depois da derrota e da saída do Brasil, circulou no Brasil e fora dele? Quem difundiu o evento (imprensa e perfis alinhados, como a Revista Oeste), com que enquadramento, e quanto do engajamento nas contas da própria CPAC vem do público brasileiro?",
@@ -239,18 +239,18 @@
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/038/busca.json (youtube)",
-   "coletado_em": "2026-11-07T22:17:54Z"
+   "coletado_em": "2026-11-08T17:26:36Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 137,
-   "no_periodo": 137,
-   "na_analise": 137,
+   "lidos": 134,
+   "no_periodo": 134,
+   "na_analise": 134,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/038/busca.json (noticias)",
-   "coletado_em": "2026-11-07T22:17:54Z"
+   "coletado_em": "2026-11-08T17:26:36Z"
   },
   {
    "fonte": "Google Trends",
@@ -259,10 +259,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (now 7-d, today 1-m, today 12-m), termos: CPAC Bolsonaro, Flávio Bolsonaro CPAC, Eduardo Bolsonaro CPAC, CPAC Mar-a-Lago",
-   "avisos": [],
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: CPAC Bolsonaro, Flávio Bolsonaro CPAC, Eduardo Bolsonaro CPAC, CPAC Mar-a-Lago",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
    "origem": "data/casos/038/busca.json (trends)",
-   "coletado_em": "2026-11-07T22:17:54Z"
+   "coletado_em": "2026-11-08T17:26:36Z"
   }
  ],
  "fontes_contexto": [

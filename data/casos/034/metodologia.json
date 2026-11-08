@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T03:16:46Z",
+ "gerado_em_utc": "2026-11-08T17:39:55Z",
  "caso": "034",
  "titulo": "Deepfake de Jair Bolsonaro na convenção do PL e a tese do TSE (25/07 e 01/09/2026)",
  "pergunta": "Como o TSE tratou o vídeo feito com inteligência artificial que recriou imagem e voz de Jair Bolsonaro na convenção do PL que lançou Flávio Bolsonaro (25/07/2026), e que tese fixou ao julgar a representação (01/09/2026, 4 a 3)? Como a regra sobre deep fake foi lida da sua criação (2024) até essa tese, e como o caso circulou?",
@@ -163,18 +163,18 @@
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/034/busca.json (youtube)",
-   "coletado_em": "2026-11-07T14:55:50Z"
+   "coletado_em": "2026-11-08T17:16:31Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 148,
-   "no_periodo": 148,
-   "na_analise": 148,
+   "lidos": 146,
+   "no_periodo": 146,
+   "na_analise": 146,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/034/busca.json (noticias)",
-   "coletado_em": "2026-11-07T14:55:50Z"
+   "coletado_em": "2026-11-08T17:16:31Z"
   },
   {
    "fonte": "Google Trends",
@@ -183,10 +183,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 12-m, today 5-y, now 7-d), termos: deepfake, Bolsonaro IA, inteligência artificial eleição",
-   "avisos": [],
+   "como": "índice semanal/diário por janela (today 5-y, now 7-d, today 12-m), termos: deepfake, Bolsonaro IA, inteligência artificial eleição",
+   "avisos": [
+    "trends variantes today 12-m: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
    "origem": "data/casos/034/busca.json (trends)",
-   "coletado_em": "2026-11-07T14:55:50Z"
+   "coletado_em": "2026-11-08T17:16:31Z"
   }
  ],
  "fontes_contexto": [

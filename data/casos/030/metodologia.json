@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T03:16:46Z",
+ "gerado_em_utc": "2026-11-08T17:39:55Z",
  "caso": "030",
  "titulo": "Brasileiros que buscam o Paraguai antes e depois do 2º turno",
  "pergunta": "A vitória de Lula no 2º turno (25/10/2026) produziu aumento da intenção de brasileiros de emigrar para o Paraguai, expressa em buscas práticas (morar, residência, cédula, cidadania) e em conteúdo nas redes? Quem produz esse conteúdo?",
@@ -243,18 +243,18 @@
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/030/busca.json (youtube)",
-   "coletado_em": "2026-11-07T21:51:38Z"
+   "coletado_em": "2026-11-08T17:21:21Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 104,
-   "no_periodo": 104,
-   "na_analise": 104,
+   "lidos": 98,
+   "no_periodo": 98,
+   "na_analise": 98,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/030/busca.json (noticias)",
-   "coletado_em": "2026-11-07T21:51:38Z"
+   "coletado_em": "2026-11-08T17:21:21Z"
   },
   {
    "fonte": "Google Trends",
@@ -263,10 +263,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 12-m, today 1-m, now 7-d), termos: morar no Paraguai, como morar no Paraguai, residência no Paraguai, cidadania paraguaia, morar no Paraguay",
-   "avisos": [],
+   "como": "índice semanal/diário por janela (today 1-m, now 7-d, today 12-m), termos: morar no Paraguai, como morar no Paraguai, residência no Paraguai, cidadania paraguaia, morar no Paraguay",
+   "avisos": [
+    "trends variantes today 12-m: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
    "origem": "data/casos/030/busca.json (trends)",
-   "coletado_em": "2026-11-07T21:51:38Z"
+   "coletado_em": "2026-11-08T17:21:21Z"
   }
  ],
  "fontes_contexto": [
