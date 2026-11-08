@@ -39,6 +39,13 @@ jobs:
           sudo apt-get install -y -qq xvfb >/dev/null 2>&1 || true
           xvfb-run -a -s "-screen 0 1920x1080x24" java -Xmx6g --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED -cp "$RUNNER_TEMP/gephi-toolkit.jar:$RUNNER_TEMP/cls" RedesGephi data/redes/gephi $ARQS | tee g.txt
           tail -n 8 g.txt | while IFS= read -r l; do echo "::notice title=Gephi::$(echo "$l" | cut -c1-300)"; done
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lado a lado (Mirror/Rotate automáticos) com rótulos só de contas públicas
+        run: |
+          pip install -q matplotlib==3.10.7 numpy==2.3.4 networkx==3.6.1 adjustText==1.3.0
+          for f in ${{ github.event.inputs.redes }}; do c=$(basename $(dirname $f)); r=$(basename $f .gexf); [ -f "data/redes/gephi/${c}_${r}_nos_gephi.csv" ] && python scripts/comparar_layouts.py "data/redes/gephi/${c}_${r}_nos_gephi.csv"; done || true
       - name: Commitar
         if: always()
         run: |

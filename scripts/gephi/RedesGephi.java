@@ -28,6 +28,10 @@ import org.gephi.io.processor.plugin.DefaultProcessor;
 import org.gephi.layout.plugin.forceAtlas2.ForceAtlas2;
 import org.gephi.layout.plugin.forceAtlas2.ForceAtlas2Builder;
 import org.gephi.layout.plugin.openord.OpenOrdLayout;
+import org.gephi.layout.plugin.force.yifanHu.YifanHu;
+import org.gephi.layout.plugin.force.yifanHu.YifanHuLayout;
+import org.gephi.layout.plugin.fruchterman.FruchtermanReingold;
+import org.gephi.layout.plugin.fruchterman.FruchtermanReingoldBuilder;
 import org.gephi.layout.plugin.openord.OpenOrdLayoutBuilder;
 import org.gephi.preview.api.PreviewController;
 import org.gephi.preview.api.PreviewModel;
@@ -204,7 +208,18 @@ public class RedesGephi {
         fa2.setScalingRatio(n > 2000 ? 20.0 : 10.0);
         fa2.setBarnesHutOptimize(n > 1000);
         fa2.setThreadsCount(Math.max(1, Runtime.getRuntime().availableProcessors()));
-        int itFa2 = n > 20000 ? 600 : 1500;
+        int itFa2 = n > 20000 ? 300 : 1500;
+        // 07/11/2026 (guia de layouts): acima de 20 mil nós, Yifan Hu primeiro (visão geral eficiente: onde a rede é densa e onde
+        // é periférica); o ForceAtlas 2 refina a partir dele com menos iterações
+        if (n > 20000) {
+            YifanHuLayout yh = new YifanHu().buildLayout();
+            yh.setGraphModel(gm);
+            yh.resetPropertiesValues();
+            yh.initAlgo();
+            for (int i = 0; i < 500 && yh.canAlgo(); i++) yh.goAlgo();
+            yh.endAlgo();
+            exportaSeguro(ws, new File(saida, nome + "_yifanhu.png"));
+        }
         fa2.initAlgo();
         for (int i = 0; i < itFa2 && fa2.canAlgo(); i++) fa2.goAlgo();
         fa2.setAdjustSizes(true);
@@ -249,6 +264,18 @@ public class RedesGephi {
                     w.println(q(e.getSource().getLabel()) + "," + q(e.getTarget().getLabel()) + "," + e.getWeight() + "," + k1 + "," + k2);
                 }
             }
+        }
+
+        // 07/11/2026 (guia de layouts): Fruchterman-Reingold em recortes pequenos (até 2 mil nós no componente gigante), como a
+        // rede de um vídeo só: distribui de forma mais uniforme e facilita seguir as linhas
+        if (n <= 2000) {
+            FruchtermanReingold fr = new FruchtermanReingoldBuilder().buildLayout();
+            fr.setGraphModel(gm);
+            fr.resetPropertiesValues();
+            fr.initAlgo();
+            for (int i = 0; i < 2000 && fr.canAlgo(); i++) fr.goAlgo();
+            fr.endAlgo();
+            exportaSeguro(ws, new File(saida, nome + "_fruchterman.png"));
         }
 
         // OpenOrd (polarização): parâmetros padrão do Gephi
