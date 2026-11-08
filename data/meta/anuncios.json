@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-11-07T17:53:41Z",
+ "coletado_em_utc": "2026-11-08T18:08:26Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -9,18 +9,18 @@
    "candidato": "Lula",
    "termo": "Lula",
    "paginas_api": null,
-   "lidos_nesta_execucao": 900,
+   "lidos_nesta_execucao": 348,
    "limite_da_coleta": 900,
-   "no_limite": true,
-   "anuncios": 6710,
-   "paginas": 1935,
+   "no_limite": false,
+   "anuncios": 6929,
+   "paginas": 1982,
    "gasto": {
-    "min": 10374800,
+    "min": 10383000,
     "max": null,
     "faixas_abertas": 3592
    },
    "impressoes": {
-    "min": 757948600,
+    "min": 760079800,
     "max": null,
     "faixas_abertas": 3914
    },
@@ -28,11 +28,11 @@
     "BRL"
    ],
    "plataformas": {
-    "instagram": 6596,
-    "facebook": 5905,
-    "audience_network": 2482,
-    "threads": 2284,
-    "whatsapp": 512,
+    "instagram": 6806,
+    "facebook": 6038,
+    "audience_network": 2485,
+    "threads": 2287,
+    "whatsapp": 514,
     "messenger": 67
    },
    "fases": [
@@ -65,9 +65,9 @@
      "rotulo": "2º turno",
      "de": "2026-10-05",
      "ate": "2026-10-25",
-     "anuncios": 2551,
+     "anuncios": 2553,
      "gasto": {
-      "min": 4696800,
+      "min": 4697000,
       "max": null,
       "faixas_abertas": 876
      }
@@ -77,9 +77,9 @@
      "rotulo": "Depois do 2º turno",
      "de": "2026-10-26",
      "ate": "2026-12-31",
-     "anuncios": 3166,
+     "anuncios": 3383,
      "gasto": {
-      "min": 183700,
+      "min": 191700,
       "max": null,
       "faixas_abertas": 2340
      }
@@ -210,14 +210,14 @@
     {
      "page_id": "185105811599662",
      "pagina": "Edinho Silva",
-     "anuncios": 47,
+     "anuncios": 48,
      "gasto": {
-      "min": 158100,
-      "max": 182284,
+      "min": 160100,
+      "max": 184384,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 18550100,
+      "min": 18915100,
       "max": null,
       "faixas_abertas": 9
      },
@@ -559,18 +559,18 @@
    "candidato": "Flávio Bolsonaro",
    "termo": "Flávio Bolsonaro",
    "paginas_api": null,
-   "lidos_nesta_execucao": 107,
+   "lidos_nesta_execucao": 86,
    "limite_da_coleta": 900,
    "no_limite": false,
-   "anuncios": 3434,
-   "paginas": 717,
+   "anuncios": 3451,
+   "paginas": 720,
    "gasto": {
-    "min": 17176600,
+    "min": 17177500,
     "max": null,
     "faixas_abertas": 224
    },
    "impressoes": {
-    "min": 618889700,
+    "min": 619166900,
     "max": null,
     "faixas_abertas": 513
    },
@@ -578,8 +578,8 @@
     "BRL"
    ],
    "plataformas": {
-    "instagram": 3304,
-    "facebook": 2647,
+    "instagram": 3317,
+    "facebook": 2656,
     "audience_network": 116,
     "threads": 97,
     "whatsapp": 78,
@@ -617,7 +617,7 @@
      "ate": "2026-10-25",
      "anuncios": 2365,
      "gasto": {
-      "min": 10490300,
+      "min": 10490500,
       "max": null,
       "faixas_abertas": 79
      }
@@ -627,9 +627,9 @@
      "rotulo": "Depois do 2º turno",
      "de": "2026-10-26",
      "ate": "2026-12-31",
-     "anuncios": 566,
+     "anuncios": 583,
      "gasto": {
-      "min": 31700,
+      "min": 32400,
       "max": null,
       "faixas_abertas": 139
      }
@@ -1109,24 +1109,24 @@
  "erros": {},
  "modo": "diário",
  "teto_usd": 0.3,
- "gasto_mes_antes_usd": 0.9051,
+ "gasto_mes_antes_usd": 1.0421,
  "runs_apify": [
   {
    "consulta": "lula",
-   "id": "8ha7kcaAboNupcVj8",
+   "id": "vsA5Clz2olOE6bbdE",
    "status": "SUCCEEDED",
-   "custo_usd": 0.1255,
-   "itens": 900
+   "custo_usd": 0.048,
+   "itens": 348
   },
   {
    "consulta": "flavio",
-   "id": "aYHtPQAPOGCfCJqBB",
+   "id": "YpK2plhYb8KeIP2ce",
    "status": "SUCCEEDED",
-   "custo_usd": 0.0115,
-   "itens": 107
+   "custo_usd": 0.0075,
+   "itens": 86
   }
  ],
- "janela_desta_execucao": "2026-11-06",
+ "janela_desta_execucao": "2026-11-07",
  "status": "ok",
- "custo_usd": 0.137
+ "custo_usd": 0.0555
 }
