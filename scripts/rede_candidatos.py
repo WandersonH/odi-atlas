@@ -142,9 +142,92 @@ def main() -> int:
         for n in nomes:
             i = info.get(n, {})
             w.writerow([n, i.get("partido", ""), i.get("cargo", ""), i.get("uf", ""), pubs[n], len(casos_de[n]), citacoes[n], len(quem_cita[n])])
+    por_caso_saida(root, cfg, handle, info, interno)
     print(f"rede_candidatos: {len(nos)} nós, {len(ar)} arestas · {len(pubs)} candidatos publicaram ({sum(pubs.values())} publicações) · "
           f"{len(citacoes)} candidatos citados ({sum(citacoes.values())} citações em {lidos} posts lidos)")
     return 0
+
+
+def por_caso_saida(root: Path, cfg: dict, handle: dict, info: dict, interno: str | None) -> None:
+    """07/11/2026, 22h04 (responsável: "as redes de candidatos vão pro ODI Atlas naquele campo candidato", "por caso"):
+    uma rede por caso — contas que citam o @ de candidatos nos posts lidos do caso (e candidatos que citam candidatos) —,
+    com os candidatos que publicaram sobre o caso marcados. Saídas: data/casos/<id>/rede_candidatos.gexf e
+    data/casos/<id>/candidatos_influencia.json (métricas da rede e ranking por citações recebidas)."""
+    import networkx as nx
+    if not interno:
+        return
+    for f in sorted(glob.glob(os.path.join(interno, "casos/*/itens.csv.gz"))):
+        cid = Path(f).parent.name
+        if cid not in cfg:
+            continue
+        pub = Counter()
+        cj = root / "data/casos" / cid / "candidatos.json"
+        if cj.exists():
+            for x in json.loads(cj.read_text(encoding="utf-8")).get("candidatos", []):
+                pub[x["candidato"].title()] += len(x.get("publicacoes", []))
+        g = nx.DiGraph()
+        codigo, lidos, cit, quem = {}, 0, Counter(), defaultdict(set)
+        pub_contas = defaultdict(Counter)
+        for r in csv.DictReader(gzip.open(f, "rt", encoding="utf-8"), delimiter=";"):
+            lidos += 1
+            rede, conta = r.get("rede"), r.get("conta") or "?"
+            for h in set(re.findall(r"@([\w.]{2,30})", r.get("texto") or "")):
+                nome = handle.get((rede, h.lower()))
+                if not nome:
+                    continue
+                autor_cand = handle.get((rede, conta.lower()))
+                if autor_cand == nome:
+                    continue
+                seg = num(r.get("seguidores"))
+                if autor_cand:
+                    a = f"cand:{autor_cand}"
+                    g.add_node(a, label=autor_cand, tipo="candidato", **{k: v for k, v in info.get(autor_cand, {}).items()})
+                elif seg >= MIN:
+                    a = f"{rede}:{conta}"
+                    g.add_node(a, label=f"@{conta}", tipo="conta pública", rede=rede)
+                    pub_contas[nome][f"@{conta}"] += 1
+                else:
+                    codigo.setdefault((rede, conta), f"P{len(codigo) + 1:05d}")
+                    a = codigo[(rede, conta)]
+                    g.add_node(a, label=f"perfil pequeno {a}", tipo="perfil pequeno", rede=rede)
+                c = f"cand:{nome}"
+                g.add_node(c, label=nome, tipo="candidato", publicou_no_caso=str(pub.get(nome, 0)), **{k: v for k, v in info.get(nome, {}).items()})
+                w = g[a][c]["weight"] + 1 if g.has_edge(a, c) else 1
+                g.add_edge(a, c, weight=w, tipo="citou o candidato")
+                cit[nome] += 1
+                quem[nome].add(a)
+        for nome, k in pub.items():  # quem publicou sobre o caso entra mesmo sem ser citado
+            g.add_node(f"cand:{nome}", label=nome, tipo="candidato", publicou_no_caso=str(k), **{kk: v for kk, v in info.get(nome, {}).items()})
+        out = root / "data/casos" / cid
+        nx.write_gexf(g, out / "rede_candidatos.gexf")
+        met = {"nos": g.number_of_nodes(), "arestas": g.number_of_edges()}
+        if g.number_of_edges():
+            u = g.to_undirected()
+            comps = sorted(nx.connected_components(u), key=len, reverse=True)
+            h = u.subgraph(comps[0])
+            coms = sorted(nx.community.louvain_communities(h, weight="weight", seed=42), key=len, reverse=True)
+            pr = nx.pagerank(g, weight="weight")
+            met.update({"densidade": round(nx.density(g), 6), "componentes": len(comps), "nos_componente_gigante": len(comps[0]),
+                        "pct_componente_gigante": round(100 * len(comps[0]) / g.number_of_nodes(), 2),
+                        "modularidade_q_gigante": round(nx.community.modularity(h, coms, weight="weight"), 4) if h.number_of_edges() else None,
+                        "comunidades_gigante": len(coms)})
+            com_de = {v: i + 1 for i, cc in enumerate(coms) for v in cc}
+        else:
+            pr, com_de = {}, {}
+        nomes = sorted(set(pub) | set(cit), key=lambda n: (0 if n.lower().startswith("lula") else 1, -cit[n], -pub[n]))
+        rank = [{"candidato": n, **info.get(n, {}), "citacoes_recebidas": cit[n], "contas_que_citaram": len(quem[n]),
+                 "publicacoes_no_caso": pub[n], "pagerank": round(pr.get(f"cand:{n}", 0), 6),
+                 "comunidade_no_gigante": com_de.get(f"cand:{n}"),
+                 "contas_publicas_que_mais_citaram": [f"{k} ({v})" for k, v in pub_contas[n].most_common(5)]} for n in nomes]
+        (out / "candidatos_influencia.json").write_text(json.dumps({
+            "gerado_em_utc": now_utc(), "caso": cid, "posts_lidos": lidos,
+            "tipo_de_rede": "Influência dos candidatos na circulação do caso: conta → candidato quando a conta cita o @ do candidato num post lido do caso "
+                            "(peso = citações); candidatos que publicaram sobre o caso entram como nós mesmo sem citação. Dirigida.",
+            "universo": "⛔ universo das plataformas não informado: são os posts que as buscas do caso devolveram.",
+            "metricas": met, "candidatos": rank,
+            "nota": "Candidatos (contas declaradas ao TSE, todos os cargos) com nome; contas com menos de 10 mil seguidores em código. "
+                    "PageRank alto = candidato citado por quem também é citado (centro da conversa). GEXF: data/casos/" + cid + "/rede_candidatos.gexf."},
+            ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":

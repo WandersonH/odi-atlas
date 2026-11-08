@@ -4,6 +4,30 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.358 — Influência dos candidatos por caso; tipo e métricas das redes na página; layouts do guia (2026-11-07) ✅
+
+- Pedidos do responsável (07/11/2026): 21h42, aplicar os layouts do guia (Fruchterman-Reingold num recorte pequeno, Yifan Hu nas redes grandes, Mirror/Rotate para comparar, Label Adjust); 21h46, "rede Gephi para entender a influência na circulação dos candidatos"; 21h48, "as métricas e o tipo de rede informados em algum lugar no ODI"; 22h04, "as redes de candidatos vão pro ODI Atlas naquele campo candidato", "por caso"; "no Gephi é para validarmos os casos e o que fizemos".
+- **Candidatos por caso** (`scripts/rede_candidatos.py`):
+  - saídas por caso: `data/casos/<id>/rede_candidatos.gexf` e `candidatos_influencia.json`;
+  - aresta conta → candidato quando a conta cita o @ de uma conta declarada ao TSE (todos os cargos) num post lido do caso;
+  - os candidatos que publicaram sobre o caso entram como nós;
+  - métricas da rede: nós, arestas, densidade, componente gigante, Modularity;
+  - ranking com citações recebidas, contas que citaram, publicações no caso, PageRank e as contas públicas que mais citaram.
+  Gerado para 34 casos com os itens privados atualizados em 07/11. Total: 9.065 citações de 321 candidatos em 112.481 posts lidos; 991 publicações de 426 candidatos.
+  Exemplo, 026: 418 nós, 86,1% no gigante, Q 0,455; Lula 141 citações de 113 contas; André Janones 307 de 234.
+  Na página: sub-bloco "Quem puxa cada candidato para a conversa", dentro do bloco de candidatos de cada caso. A versão geral (`data/redes/rede_candidatos.gexf`) fica só como arquivo.
+- **Redes do caso** (`scripts/build_redes_pagina.py` → `data/redes/redes_pagina.json`): bloco em cada caso com
+  - o tipo de cada rede (o que é nó, o que é aresta, para que serve);
+  - nós, arestas, densidade, componente gigante, Q da rede inteira e do gigante, comunidades ≥1% e as duas maiores, E-I, % de ligações cruzando e assortatividade;
+  - links para o GEXF, os prints e as pontes.
+  São 208 redes em 37 casos (run 42423854923 das estatísticas).
+- **Layouts do guia:**
+  - `scripts/rede_video.py` gera a rede de um vídeo com respostas e @menções; no 026, o vídeo de mais comentários (568) tem 455 autores, 249 respostas e 10 menções;
+  - o Toolkit roda Fruchterman-Reingold até 2 mil nós e Yifan Hu acima de 20 mil;
+  - `scripts/comparar_layouts.py` põe ForceAtlas 2 e OpenOrd lado a lado, alinhados por Procrustes (Mirror/Rotate automáticos), com rótulos só de contas públicas e termos (adjustText = Label Adjust).
+- Gephi do responsável: a rede de candidatos abriu (5.950 nós, 7.823 arestas, dirigida), mas o controle pela tela voltou a ser recusado depois da importação ("não foi possível verificar o documento da janela"). A validação segue pelo Toolkit.
+- Teste: `python -m unittest discover -s tests` OK; página aberta no Chromium (Playwright), blocos do 026 renderizados sem erro de JavaScript.
+
 ## C19.357 — Redes: tamanho, densidade, componente gigante, todo o painel do Gephi; Gephi Toolkit com prints (2026-11-07) ⚠️
 
 - Pedidos do responsável (07/11/2026): 19h25, "Force Atlas 2 para comunidades e OpenOrd para polarização; grupos pelo Modularity e a % desses; registre o csv com os cálculos e print rede Gephi"; 19h37, "registre seu método de avaliação em um doc para validar"; 19h58, "você não olhou o tamanho, não olhou densidade, eu veria tudo".
