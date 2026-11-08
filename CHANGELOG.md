@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.364 — Bloco de redes do 037 e do 038 com a rede de contas (2026-11-08) ✅
+
+- `build_redes_viewer.py --caso 037` e `--caso 038`, rodado com o repositório privado atualizado (dados das coletas de C19.363). Entra a rede "Contas × hashtags e menções", que não existia antes da coleta do X: 037 com 4 redes (corpus em 86 nós), 038 com 4 redes (corpus em 173 nós), saída do próprio script.
+- Métricas do Gephi da rede de contas: ⛔ ainda não calculadas (falta rodar `redes-estatisticas`).
+- **Teste:** `python -m unittest discover -s tests`; contagem de nós por rede conferida no `redes_viewer.json`.
+
 ## C19.363 — 037 e 038 com X, Instagram e Facebook; 026 com "Janones" por país desde 2018; Bardin do 019 sem erro (2026-11-08) ⚠️
 
 - **Coletas pagas (C19.361) concluídas** (runs 42439971227, 42441591068, 42443026350, 42444640324, 42445631955; manifestos `data/casos/037/manifesto-20261108T*.json` e `data/casos/038/manifesto-20261108T*.json`). Publicações únicas por rede, depois de tirar repetidos (`caso.json`):
