@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.361 — Verba de US$ 2,00 por caso novo; coleta paga do 037 e do 038 (2026-11-07) 🔜
+
+- Responsável (07/11/2026, 23h45), sobre as redes sem coleta do 037 e do 038: "e as outras vc tem 2 dólares pra todo caso novo". Virou a regra 10 do `CLAUDE.md`.
+- Tetos (`data/config/casos.json`, cumulativos por rede, o coletor desconta o que já foi gasto):
+  - 037: X 0,90 · Instagram 0,50 · Facebook 0,30 · TikTok 0,30 · Kwai 0 (= 2,00);
+  - 038: X 0,80 · Instagram 0,60 (perfil da CPAC e busca) · Facebook 0,30 · TikTok 0,30 · Kwai 0 (= 2,00).
+- Execuções disparadas em sequência (o grupo de concorrência `casos` só guarda uma pendente): 037 frases (TikTok, Instagram, Facebook) → 037 complemento (X) → 038 carga (Instagram: perfil da CPAC) → 038 frases → 038 complemento (X).
+- Teste: `python -m unittest discover -s tests`. ⛔ Resultado das coletas pendente; os cabeçalhos "sem coleta" do 037 e do 038 (C19.360) só mudam quando houver dados.
+
 ## C19.360 — 037 e 038 sem redes sociais deixam isso claro; frase do 001 sobre o "cross" corrigida (2026-11-07) ✅
 
 - Responsável (07/11/2026, 23h37): "os 2 últimos casos estão sem coleta e eu não tinha te autorizado fazer a coleta deste", citando a frase da metodologia do 001: "A coleta extra para medir o cross foi autorizada em 18/10, mas não foi feita".
