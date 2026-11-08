@@ -4,6 +4,21 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.362 — Caso 026: recorte desde 2018, Trends por país e consultas relacionadas por país; fontes de contexto na metodologia; tipo de grafo do Gephi no bloco de redes (2026-11-08) 🔜
+
+- Responsável (08/11/2026, 00h00), sobre o 026, com a reportagem do Le Monde (30/10/2026) e o livro "Janonismo Cultural": "recorte mais antigo", "sugiro uma busca por países no Trends", "incluir o resultado das principais buscas por língua relacionadas a André Janones".
+- **Coletor** (`collect_caso_busca.py`, caso 026), só fontes grátis:
+  - `historico_mundo`: "Janones", "janonismo" e "Exército do Lula" no mundo, desde 01/01/2018 e em 5 anos, com interesse por país;
+  - `janones_mundo_hist`: "Janones" sozinho desde 2018, por país (0 a 100);
+  - `rel_<país>`: consultas relacionadas a "Janones" em 12 meses em PT, AR, ES, UY, CO, MX, CL, FR, US, GB, IT e DE. A língua é a do país da busca.
+- **Fontes de contexto:** `fontes_contexto` de cada caso (`casos.json`) passa para `metodologia.json` (`build_metodologia.py`) e aparece na metodologia da página. No 026 entram:
+  - o livro de Janones (Civilização Brasileira, 2023), como referência bibliográfica, sem reproduzir o texto. A cópia recebida é de site de distribuição não autorizada e não foi guardada no repositório;
+  - a reportagem do Le Monde (30/10/2026, cópia em archive.today), em paráfrase. O número de membros é atribuído ao veículo.
+- **Metodologia do 026:** recorte mais antigo justificado (2018 → 2022 → livro de 2023 → canal de 2026); fonte Trends ampliada; três limites novos (consultas relacionadas por país, comparabilidade do Trends desde 2018, livro só como referência).
+- **Bloco de redes:** o painel mostra o tipo de grafo nas opções do Gephi (dirigida ou não dirigida, uni ou bipartida, ponderada, estática). É padrão fixo por tipo de rede, igual ao `defaultedgetype` dos GEXF conferidos (rede, candidatos e respostas dirigidas; circulação e palavras não dirigidas).
+- **Teste:** `build_metodologia.py` (38 casos); `python -m unittest discover -s tests`.
+- **Pendente:** ⛔ resultado da coleta do 026 (casos-busca); o Trends pode devolver 429 em parte das consultas.
+
 ## C19.361 — Verba de US$ 2,00 por caso novo; coleta paga do 037 e do 038 (2026-11-07) 🔜
 
 - Responsável (07/11/2026, 23h45), sobre as redes sem coleta do 037 e do 038: "e as outras vc tem 2 dólares pra todo caso novo". Virou a regra 10 do `CLAUDE.md`.

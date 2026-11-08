@@ -139,7 +139,9 @@ def main(argv=None) -> int:
         if cid.startswith("_") or (so and cid != so) or cid not in casos:
             continue
         out = {"gerado_em_utc": now_utc(), "caso": cid, "titulo": casos[cid]["titulo"], **m, "comum": met["_comum"],
-               "termos_por_rede": termos_por_rede(casos[cid]), "amostra": amostra(root, cid, casos[cid])}
+               "termos_por_rede": termos_por_rede(casos[cid]), "amostra": amostra(root, cid, casos[cid]),
+               # 08/11/2026: fontes de contexto (imprensa, artigos, bibliografia) registradas no caso
+               "fontes_contexto": [f if isinstance(f, dict) else {"url": f} for f in casos[cid].get("fontes_contexto", [])]}
         (root / "data/casos" / cid).mkdir(parents=True, exist_ok=True)
         (root / "data/casos" / cid / "metodologia.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
         feitos.append(cid)
