@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.369 — 001: Instagram e Facebook para o cross entre redes (2026-11-08) ✅
+
+- Run 42518116529 (`casos.yml`, `carga`, Instagram, Facebook e Kwai), dentro dos tetos que já estavam em `casos.json` e não tinham sido gastos. Saída do coletor:
+  - Instagram: #brasilinteiro 218 no período (de 218 lidos, no limite pedido), #verdeeamarelo 216 (de 218, no limite);
+  - Facebook: #brasilinteiro 96 (de 96; pedido 112), #verdeeamarelo 93 (de 93; pedido 112);
+  - Kwai: 0 nos dois termos.
+- Caso 001 depois da coleta: 11.818 publicações, 6.345 contas · X 10.862 · Instagram 421 (antes 20) · TikTok 346 · Facebook 189 (antes 10) · Kwai 0.
+- Universo: ⛔ desconhecido (as buscas não informam o total); no Instagram, os dois termos bateram no limite pedido, então há mais posts do que os lidos.
+- **Pendente:** ⛔ a medida do cross (mesmas contas e mesmas peças em mais de uma rede) ainda não foi calculada com estes dados; TikTok do 001 com teto esgotado.
+
 ## C19.368 — Redes dinâmicas, rede de linguagem ofensiva e ódio (triagem), rede de volta ao card 05, metodologia única, bolhas em todos os casos (2026-11-08) ⚠️
 
 Pedidos do responsável (08/11/2026, 16h57 a 17h09): sinalizar o algoritmo do desenho (ForceAtlas ou ForceAtlas 2); rede dinâmica "se temos as datas de todas as publicações"; "uma rede contendo as mensagens marcadas no linguagem ofensiva e discurso de ódio"; "a rede desta área do print deve voltar a ser exibida" (card 05); "tem 2 áreas de metodologia, mantenha só a do fim da página, leve as outras infos pra lá"; e as bolhas da linha do tempo ("essas aqui que sumiram"). Sobre o aviso "nenhuma conta dos outros pesquisadores com saldo" do 001: "isso já tinha sido orientado corrigir"; "eu mandei você coletar há quase 15 dias".
