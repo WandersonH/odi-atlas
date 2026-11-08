@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.365 — TikTok do 037 e do 038 (2026-11-08) ✅
+
+- Coleta paga só de TikTok, em `carga` (corrige o disparo em `frases` de C19.363), dentro do teto de US$ 0,30 por caso já autorizado. Runs 42447435764 (037) e 42448755561 (038), saída do coletor:
+  - 037: "faz o L" 222 no período (de 222 lidos, no limite), "fazueli" 221 (de 222), #FazOL 163 (de 163) → 510 vídeos únicos, 415 contas. Caso: 7.172 publicações, 5.501 contas.
+  - 038: "Flávio Bolsonaro CPAC" 69 (de 77), "Eduardo Bolsonaro CPAC" 110 (de 136), #CPAC 88 (de 99) → 226 vídeos únicos, 199 contas. Caso: 2.586 publicações, 1.956 contas.
+  - Universo: ⛔ desconhecido (a busca do TikTok não informa total). No 037 as buscas bateram no limite, então há mais vídeos do que os lidos; no 038 nenhuma bateu.
+- Página: cabeçalhos do 037 e do 038 com TikTok coletado; metodologia com a fonte TikTok; `redes_viewer.json` refeito (corpus em 133 nós no 037, 212 no 038).
+- **Teste:** `python -m unittest discover -s tests`; `build_metodologia.py`; `build_redes_viewer.py --caso 037/038`.
+- **Pendente:** ⛔ comentários e stories do Instagram da CPAC (038); métricas do Gephi das redes de contas.
+
 ## C19.364 — Bloco de redes do 037 e do 038 com a rede de contas (2026-11-08) ✅
 
 - `build_redes_viewer.py --caso 037` e `--caso 038`, rodado com o repositório privado atualizado (dados das coletas de C19.363). Entra a rede "Contas × hashtags e menções", que não existia antes da coleta do X: 037 com 4 redes (corpus em 86 nós), 038 com 4 redes (corpus em 173 nós), saída do próprio script.
