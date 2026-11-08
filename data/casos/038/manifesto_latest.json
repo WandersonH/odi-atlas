@@ -1,7 +1,7 @@
 {
  "caso": "038",
  "titulo": "Flávio e Eduardo Bolsonaro na CPAC (Mar-a-Lago, 4–7/11/2026)",
- "run_started_utc": "2026-11-08T04:57:34Z",
+ "run_started_utc": "2026-11-08T17:02:39Z",
  "modo": "carga",
  "privado": true,
  "desde": "2026-11-04",
@@ -9,18 +9,18 @@
   {
    "rede": "tiktok",
    "teto_usd": 0.3,
-   "gasto_antes_usd": 0.0,
-   "teto_execucao_usd": 0.3,
+   "gasto_antes_usd": 0.1428,
+   "teto_execucao_usd": 0.1572,
    "termos": [
     {
      "termo": "Flávio Bolsonaro CPAC",
      "ator": "apidojo/tiktok-scraper",
-     "itens": 77,
-     "lidos": 77,
-     "no_periodo": 69,
+     "itens": 61,
+     "lidos": 61,
+     "no_periodo": 58,
      "no_limite": false,
-     "run": "vmPEnkH59pMCKwOIa",
-     "custo_usd": 0.0368,
+     "run": "wj2MOLbbVPRgYPyXH",
+     "custo_usd": 0.0304,
      "erro": null,
      "chaves_1o_item": [
       "bookmarks",
@@ -48,12 +48,12 @@
     {
      "termo": "Eduardo Bolsonaro CPAC",
      "ator": "apidojo/tiktok-scraper",
-     "itens": 136,
-     "lidos": 136,
-     "no_periodo": 110,
-     "no_limite": false,
-     "run": "tVIbT9mfKiVl67BKQ",
-     "custo_usd": 0.0604,
+     "itens": 109,
+     "lidos": 109,
+     "no_periodo": 87,
+     "no_limite": true,
+     "run": "tBzLC77SRgNaW4zoo",
+     "custo_usd": 0.0496,
      "erro": null,
      "chaves_1o_item": [
       "bookmarks",
@@ -76,17 +76,17 @@
       "video",
       "views"
      ],
-     "mais_antigo": "2026-11-04T01:37:24Z"
+     "mais_antigo": "2026-11-04T02:36:49Z"
     },
     {
      "termo": "#CPAC",
      "ator": "apidojo/tiktok-scraper",
-     "itens": 99,
-     "lidos": 99,
-     "no_periodo": 88,
+     "itens": 33,
+     "lidos": 33,
+     "no_periodo": 23,
      "no_limite": false,
-     "run": "40Ln5SjjhzsbSQ54Y",
-     "custo_usd": 0.0456,
+     "run": "a03HqD1FUVgkpxmsA",
+     "custo_usd": 0.0192,
      "erro": null,
      "chaves_1o_item": [
       "bookmarks",
@@ -113,12 +113,21 @@
     }
    ],
    "conta": "APIFY_TOKEN",
-   "itens_pedidos_por_termo": 222,
-   "custo_usd": 0.1428,
+   "itens_pedidos_por_termo": 109,
+   "custo_usd": 0.0992,
    "status": "ok",
-   "itens_no_periodo": 267
+   "itens_no_periodo": 168
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_erro": "HTTPError: HTTP Error 429: Too Many Requests",
+   "noticias": 33,
+   "status": "ok",
+   "itens_no_periodo": 0
   }
  ],
- "itens_acumulados": 2586,
- "custo_usd": 0.1428
+ "itens_acumulados": 2668,
+ "custo_usd": 0.0992
 }

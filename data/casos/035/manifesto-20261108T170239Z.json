@@ -1,0 +1,58 @@
+{
+ "caso": "035",
+ "titulo": "\"Vote como brasileiro\" (\"vote like a Brazilian\") nas campanhas americanas, desde o 2º turno (25/10/2026)",
+ "run_started_utc": "2026-11-08T17:02:39Z",
+ "modo": "carga",
+ "privado": true,
+ "desde": "2026-10-25",
+ "redes": [
+  {
+   "rede": "tiktok",
+   "ferramenta": "página pública da hashtag (Playwright, sem login; grátis)",
+   "termos": {
+    "VoteLikeABrazilian": {
+     "lado": "caso",
+     "respostas_api": 1,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "vote like a Brazilian": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "vote like Brazil midterms": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    },
+    "vote como um brasileiro": {
+     "lado": "busca",
+     "respostas_api": 2,
+     "videos": 0,
+     "contas": 0,
+     "erro": null
+    }
+   },
+   "custo_usd": 0.0,
+   "status": "⛔ nenhum vídeo lido",
+   "itens_no_periodo": 0
+  },
+  {
+   "rede": "google",
+   "ferramenta": "Google Trends (endereços da própria página) e RSS do Google Notícias",
+   "custo_usd": 0.0,
+   "trends_erro": "HTTPError: HTTP Error 429: Too Many Requests",
+   "noticias": 15,
+   "status": "ok",
+   "itens_no_periodo": 0
+  }
+ ],
+ "itens_acumulados": 722,
+ "custo_usd": 0.0
+}
