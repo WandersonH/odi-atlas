@@ -94,11 +94,12 @@ def main(argv=None) -> int:
     if not interno:
         print("⛔ ODI_INTERNO_DIR ausente")
         return 1
-    livro = json.loads(Path(f"data/config/livro_codigos_caso{caso}.json").read_text(encoding="utf-8"))
-    if any("indicadores" not in c for c in livro.get("categorias", {}).values()):
-        # 08/11/2026: o livro do 019 usa "regex" (formato do caso_mundo.py, que faz o próprio Bardin); antes dava KeyError e marcava erro em todo run
-        print(f"caso {caso} Bardin: livro em outro formato (sem 'indicadores'); feito por outro script, pulado aqui")
-        return 0
+    f_livro = Path(f"data/config/livro_codigos_caso{caso}.json")
+    livro = json.loads(f_livro.read_text(encoding="utf-8")) if f_livro.exists() else None
+    if livro is None or any("indicadores" not in c for c in livro.get("categorias", {}).values()):
+        # 08/11/2026: sem livro de códigos neste formato (019 usa "regex" do caso_mundo.py; 026 e 033 a 038 não têm livro), só a linha
+        # do tempo em bolhas (pontos.json), sem categoria. Antes o 019 dava KeyError e os outros ficavam sem as bolhas.
+        return so_pontos(caso, interno)
     cfg = next(c for c in json.loads(Path("data/config/casos.json").read_text(encoding="utf-8"))["casos"] if c["id"] == caso)
     priv, pub = Path(interno) / "casos" / caso, Path("data/casos") / caso
     pub.mkdir(parents=True, exist_ok=True)
@@ -164,6 +165,25 @@ def main(argv=None) -> int:
     (pub / "bardin.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"caso {caso} Bardin: {n} publicações · incitação {out['blocos']['incitacao']['pct']}% · reação {out['blocos']['reacao']['pct']}% · sem categoria "
           f"{out['sem_categoria']['pct']}% · " + " · ".join(f"{c} {v['pct']}%" for c, v in out["categorias"].items()))
+    return 0
+
+
+def so_pontos(caso: str, interno: str) -> int:
+    cfg = next(c for c in json.loads(Path("data/config/casos.json").read_text(encoding="utf-8"))["casos"] if c["id"] == caso)
+    arq = Path(interno) / "casos" / caso / "itens.csv.gz"
+    if not arq.exists():
+        print(f"⛔ {arq} não existe")
+        return 1
+    rows = [r for r in csv.DictReader(gzip.open(arq, "rt", encoding="utf-8"), delimiter=";") if (r.get("publicado_em") or "")[:10] >= cfg["desde"]]
+    rows = list({(r["rede"], r["item_id"]): r for r in rows}.values())
+    for r in rows:
+        r["_cod"] = {}
+    out = {"caso": caso, "gerado_em_utc": now_utc(), "publicacoes": len(rows), "pontos": pontos(rows),
+           "nota": "Sem livro de códigos de Bardin neste caso: as bolhas não têm categoria. Conta e link só de contas com 10 mil+ seguidores; nada de texto."}
+    pub = Path("data/casos") / caso
+    pub.mkdir(parents=True, exist_ok=True)
+    (pub / "pontos.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    print(f"caso {caso}: linha do tempo em bolhas sem categoria, {len(rows)} publicações (pontos.json)")
     return 0
 
 

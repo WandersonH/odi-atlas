@@ -80,8 +80,11 @@ def amostra(root: Path, cid: str, c: dict) -> list[dict]:
                     a["lidos"] += int(t.get("videos") or 0)
                     a["no_periodo"] += int(t.get("videos") or 0)
             a["manifestos"].append(Path(f).name)
-            if r.get("status") and r["status"] != "ok":
-                a["status"].append(r["status"])
+            # 08/11/2026: o aviso é o estado da coleta mais recente (fora os testes); antes juntava avisos de todas as coletas,
+            # e o 001 mostrava "nenhuma conta… com saldo" de um teste de 18/10 que a carga seguinte já tinha superado
+            if m.get("modo") != "teste" or not a.get("real"):
+                a["status"] = [r["status"]] if r.get("status") and r["status"] != "ok" else []
+                a["real"] = a.get("real") or m.get("modo") != "teste"
     cj = pasta / "caso.json"
     caso = json.loads(cj.read_text(encoding="utf-8")) if cj.exists() else {}
     for rede, a in por.items():

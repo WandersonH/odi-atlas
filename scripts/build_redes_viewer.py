@@ -39,7 +39,7 @@ from net import now_utc  # noqa: E402
 
 MIN = 10000
 TOPN = 220
-ORDEM = ["rede", "rede_candidatos", "rede_circulacao", "rede_palavras_comentarios", "rede_palavras_comentarios_posts",
+ORDEM = ["rede", "rede_ofensiva", "rede_candidatos", "rede_circulacao", "rede_palavras_comentarios", "rede_palavras_comentarios_posts",
          "rede_respostas_comentarios", "rede_respostas_comentarios_posts"]
 PRIVADO = re.compile(r"^(perfil pequeno|[ACPV]\d{4,5}$)", re.I)
 
@@ -189,7 +189,7 @@ def main(argv=None) -> int:
         cid = Path(pasta).name
         if so and cid != so:
             continue
-        gexfs = [f for f in glob.glob(pasta + "*.gexf") if os.path.getsize(f) > 400]
+        gexfs = [f for f in glob.glob(pasta + "*.gexf") if os.path.getsize(f) > 400 and not f.endswith("_dinamica.gexf")]
         if not gexfs:
             continue
         itens = []
@@ -197,6 +197,11 @@ def main(argv=None) -> int:
         if interno and os.path.exists(f_it):
             itens = list(csv.DictReader(gzip.open(f_it, "rt", encoding="utf-8"), delimiter=";"))
         cp, _ = corpus_posts(itens, tse) if itens else ({}, {})
+        cp_of = {}
+        if itens and os.path.exists(os.path.join(pasta, "rede_ofensiva.gexf")):  # corpus da rede ofensiva: só publicações marcadas
+            from build_casos import marcas_intolerancia
+            mk = marcas_intolerancia(cid) or {}
+            cp_of, _ = corpus_posts([r for r in itens if mk.get(r.get("item_id"))], tse)
         publicos = {(r.get("conta") or "").lower() for r in itens if num(r.get("seguidores")) >= MIN} | {c for _, c in tse}
         # canais e veículos: títulos públicos (YouTube do caso; notícias do caso)
         videos = defaultdict(list)
@@ -221,6 +226,18 @@ def main(argv=None) -> int:
             d = desenho(g)
             if not d:
                 continue
+            fd = f[:-5] + "_dinamica.gexf" if rede != "rede" else os.path.join(pasta, "rede_dinamica.gexf")
+            dinamica = None
+            if os.path.exists(fd):  # 08/11/2026: data da 1ª publicação de cada nó, para o controle de data da página
+                try:
+                    gd = nx.read_gexf(fd)
+                    d0 = {v: (gd.nodes[v].get("start") or "")[:10] for v in gd.nodes}
+                    for n in d["nos"]:
+                        n["d"] = d0.get(n["id"]) or None
+                    ds = sorted(x for x in d0.values() if x)
+                    dinamica = {"gexf": fd, "de": ds[0] if ds else None, "ate": ds[-1] if ds else None}
+                except Exception as e:  # noqa: BLE001
+                    print(f"⛔ {fd}: {e}")
             nome, no, aresta, serve = tipo_de(rede)
             corpus = {}
             for n in d["nos"]:
@@ -236,11 +253,12 @@ def main(argv=None) -> int:
                     chave = None
                 if k.startswith("tt:"):  # circulação: conta pública do TikTok → as publicações dela no caso
                     chave = "tiktok:" + k[3:]
-                if chave and chave in cp:
-                    corpus[k] = {"tipo": "posts", **cp[chave]}
+                fonte = cp_of if rede == "rede_ofensiva" else cp
+                if chave and chave in fonte:
+                    corpus[k] = {"tipo": "posts", **fonte[chave]}
             m = est.get((cid, rede), {})
             gg = gep.get((cid, rede), {})
-            redes.append({"rede": rede, "tipo": nome, "no": no, "aresta": aresta, "serve_para": serve, "gexf": f"data/casos/{cid}/{rede}.gexf",
+            redes.append({"rede": rede, "tipo": nome, "no": no, "aresta": aresta, "serve_para": serve, "gexf": f"data/casos/{cid}/{rede}.gexf", "dinamica": dinamica,
                           "metricas": {k: m.get(k) for k in ("nos", "arestas", "dirigida", "densidade", "componentes", "nos_maior_componente",
                                                               "pct_nos_maior_componente", "modularidade_q", "gc_modularidade_q", "gc_comunidades_1pct_ou_mais",
                                                               "gc_pct_maior", "gc_pct_segunda", "gc_polarizacao_ei_2_maiores", "assortatividade_grau",

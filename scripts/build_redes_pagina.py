@@ -19,6 +19,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from net import now_utc  # noqa: E402
 
 TIPOS = {
+    "rede_ofensiva": ("Linguagem ofensiva e discurso de ódio (triagem)", "conta e hashtag ou @ citado, só nas publicações marcadas",
+                      "a conta usou a hashtag ou citou o @ numa publicação marcada pela triagem automática (limiar 0,5, não validada); peso = nº de posts",
+                      "quem concentra as publicações marcadas e em torno de quais marcadores"),
     "rede": ("Contas × hashtags e menções", "conta (X, TikTok, Instagram, Facebook) e hashtag ou @ citado", "a conta usou a hashtag ou citou o @; peso = nº de posts", "quem se agrupa em torno de quais marcadores"),
     "rede_circulacao": ("Circulação", "fonte (canal do YouTube, veículo, conta do TikTok) e termo de busca", "a fonte apareceu na busca do termo; peso = visualizações (YouTube, TikTok) ou 1 (notícia)", "por onde o tema circula e com que audiência"),
     "rede_respostas_comentarios": ("Respostas nos comentários do YouTube", "autor de comentário (código)", "A respondeu no fio aberto por B; peso = nº de respostas", "quem conversa com quem; sem reciprocidade na API do YouTube"),

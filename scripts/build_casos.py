@@ -88,6 +88,48 @@ def gexf(nos: dict, arestas: Counter, caminho: Path):
     caminho.write_text("\n".join(linhas), encoding="utf-8")
 
 
+def marcas_intolerancia(cid: str) -> dict | None:
+    """item_id → lista de marcas da triagem (ofensivo; ódio: <alvo>), limiar 0,5; None se o caso não tem escores."""
+    interno = os.environ.get("ODI_INTERNO_DIR")
+    f = Path(interno or "") / "casos" / cid / "intolerancia" / "escores.csv.gz"
+    if not interno or not f.exists():
+        return None
+    out = {}
+    for r in csv.DictReader(gzip.open(f, "rt", encoding="utf-8"), delimiter=";"):
+        mk = []
+        if float(r.get("ofensividade_hatebr:True") or 0) >= 0.5:
+            mk.append("ofensivo")
+        mk += [f"ódio: {k.split(':', 1)[1]}" for k, v in r.items() if k.startswith("odio_") and v and float(v) >= 0.5]
+        out[r["id"]] = mk
+    return out
+
+
+def gexf_dinamico(nos: dict, dias: dict, caminho: Path, marcas: dict | None = None):
+    """GEXF 1.3 dinâmico (timeformat=date): cada ligação com um intervalo por dia em que houve publicação e o peso daquele dia;
+    cada nó começa no dia da primeira publicação. Abre na linha do tempo do Gephi (Janela → Linha do tempo)."""
+    esc = lambda s: str(s).replace("&", "&amp;").replace("<", "&lt;").replace('"', "&quot;")  # noqa: E731
+    fim = max((d for c in dias.values() for d in c), default="")
+    L = ['<?xml version="1.0" encoding="UTF-8"?>', '<gexf xmlns="http://gexf.net/1.3" version="1.3">',
+         f'<graph defaultedgetype="directed" mode="dynamic" timeformat="date" timerepresentation="interval">',
+         '<attributes class="node" mode="static"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="rede" type="string"/>'
+         '<attribute id="2" title="publicacoes" type="integer"/></attributes>',
+         '<attributes class="edge" mode="dynamic"><attribute id="peso_dia" title="publicacoes no dia" type="integer"/></attributes>'
+         + ('<attributes class="edge" mode="static"><attribute id="marcas" title="marcas da triagem" type="string"/></attributes>' if marcas else ''), "<nodes>"]
+    for k, v in nos.items():
+        L.append(f'<node id="{esc(k)}" label="{esc(v["rotulo"])}" start="{v.get("d0") or ""}" end="{fim}"><attvalues><attvalue for="0" value="{esc(v["tipo"])}"/>'
+                 f'<attvalue for="1" value="{esc(v.get("rede", ""))}"/><attvalue for="2" value="{v["n"]}"/></attvalues></node>')
+    L.append("</nodes><edges>")
+    for i, ((a, b), c) in enumerate(dias.items()):
+        ds = sorted(c)
+        att = "".join(f'<attvalue for="peso_dia" value="{c[d]}" start="{d}" end="{d}"/>' for d in ds)
+        if marcas:
+            att += f'<attvalue for="marcas" value="{esc("; ".join(f"{m} {n}" for m, n in marcas[(a, b)].most_common()))}"/>'
+        sp = "".join(f'<spell start="{d}" end="{d}"/>' for d in ds)
+        L.append(f'<edge id="{i}" source="{esc(a)}" target="{esc(b)}" weight="{sum(c.values())}"><attvalues>{att}</attvalues><spells>{sp}</spells></edge>')
+    L += ["</edges>", "</graph>", "</gexf>"]
+    caminho.write_text("\n".join(L), encoding="utf-8")
+
+
 def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     pasta = root / "data/casos" / caso["id"]
     minimo = cfg.get("min_seguidores_publico", 10000)
@@ -210,22 +252,49 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     excl = base | {"#" + b for b in base} | {"@" + b for b in base}
     palavras = bc.nuvem([r["texto"] for r in itens], excl, top=60, minimo=3)
     # rede para o Gephi: conta → hashtag/menção
+    # 08/11/2026 (pedido do responsável: rede dinâmica "se temos as datas de todas as publicações" e rede das mensagens marcadas como
+    # linguagem ofensiva e discurso de ódio): o mesmo laço guarda o dia de cada ligação e, à parte, a rede só das publicações que a
+    # triagem automática (intolerancia.py, limiar 0,5, NÃO validada) marcou.
+    marca = marcas_intolerancia(caso["id"])
+    protegido = bool(caso.get("mascarar_regex"))  # 020: nenhuma rede pública nova enquanto a rede atual não for revista (criança)
     nos, arestas = {}, Counter()
+    dias = defaultdict(Counter)  # (a, b) → dia → publicações
+    nos_of, arestas_of, dias_of, tipo_of = {}, Counter(), defaultdict(Counter), defaultdict(Counter)
+    n_of, n_esc, por_marca = 0, 0, Counter()
     for r in itens:
         if not r["conta"]:
             continue
         q = quem(r)
         a = f"{r['rede']}:{r['conta']}" if q["publico"] else codigo[(r["rede"], r["conta"])]
-        nos.setdefault(a, {"rotulo": q["conta"], "tipo": "conta oficial" if q["declarado_tse"] else "conta", "rede": ROTULO[r["rede"]], "n": 0})["n"] += 1
+        dia = (r.get("publicado_em") or "")[:10]
+        mk = marca.get(r.get("item_id")) if marca else None
+        if marca and r.get("item_id") in marca:
+            n_esc += 1
+        if mk:
+            n_of += 1
+            por_marca.update(mk)
+        alvos = []
+        nos.setdefault(a, {"rotulo": q["conta"], "tipo": "conta oficial" if q["declarado_tse"] else "conta", "rede": ROTULO[r["rede"]], "n": 0, "d0": dia})["n"] += 1
         for tag in set(re.findall(r"#(\w+)", r["texto"].lower())) | {t.lstrip("#").lower() for t in r["termo"].split("|") if t.startswith("#")}:
             b = f"#{tag}"
-            nos.setdefault(b, {"rotulo": b, "tipo": "hashtag", "n": 0})["n"] += 1
+            nos.setdefault(b, {"rotulo": b, "tipo": "hashtag", "n": 0, "d0": dia})["n"] += 1
             arestas[(a, b)] += 1
+            dias[(a, b)][dia] += 1
+            alvos.append((b, {"rotulo": b, "tipo": "hashtag"}))
         for m in set(re.findall(r"@(\w{2,30})", r["texto"].lower())):
             if (r["rede"], m) in dec:  # só menções a perfis declarados ao TSE (os demais podem ser pessoas comuns)
                 b = f"{r['rede']}:{m}"
-                nos.setdefault(b, {"rotulo": f"@{m} · perfil de {dec[(r['rede'], m)]}", "tipo": "conta oficial mencionada", "rede": ROTULO[r["rede"]], "n": 0})
+                nos.setdefault(b, {"rotulo": f"@{m} · perfil de {dec[(r['rede'], m)]}", "tipo": "conta oficial mencionada", "rede": ROTULO[r["rede"]], "n": 0, "d0": dia})
                 arestas[(a, b)] += 1
+                dias[(a, b)][dia] += 1
+                alvos.append((b, {"rotulo": nos[b]["rotulo"], "tipo": "conta oficial mencionada", "rede": ROTULO[r["rede"]]}))
+        if mk:
+            nos_of.setdefault(a, {**{k: v for k, v in nos[a].items() if k not in ("n", "d0")}, "n": 0, "d0": dia})["n"] += 1
+            for b, info in alvos:
+                nos_of.setdefault(b, {**info, "n": 0, "d0": dia})["n"] += 1
+                arestas_of[(a, b)] += 1
+                dias_of[(a, b)][dia] += 1
+                tipo_of[(a, b)].update(mk)
     if nos:
         gexf(nos, arestas, pasta / "rede.gexf")
         with open(pasta / "rede_nos.csv", "w", encoding="utf-8", newline="") as f:
@@ -238,6 +307,19 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
             w.writerow(["origem", "destino", "peso"])
             for (a, b), p in arestas.items():
                 w.writerow([a, b, p])
+    rede_ofensiva = None
+    if nos and not protegido:
+        gexf_dinamico(nos, dias, pasta / "rede_dinamica.gexf")
+    if marca is not None and not protegido:
+        rede_ofensiva = {"publicacoes_na_rede": sum(1 for r in itens if r["conta"]), "com_escore": n_esc, "marcadas": n_of,
+                         "por_marca": dict(por_marca.most_common()), "nos": len(nos_of), "ligacoes": len(arestas_of),
+                         "aviso": "Triagem automática (HateBR para ofensividade; BERTabaporu para ódio por alvo), limiar 0,5, NÃO validada por pessoas: "
+                                  "uma ligação entra se a publicação que a gerou foi marcada. Percentuais valem para as publicações lidas e com escore.",
+                         "arquivos": None}
+        if nos_of:
+            gexf(nos_of, arestas_of, pasta / "rede_ofensiva.gexf")
+            gexf_dinamico(nos_of, dias_of, pasta / "rede_ofensiva_dinamica.gexf", tipo_of)
+            rede_ofensiva["arquivos"] = {"gexf": f"data/casos/{caso['id']}/rede_ofensiva.gexf", "dinamica": f"data/casos/{caso['id']}/rede_ofensiva_dinamica.gexf"}
     desenho = None
     try:
         import networkx as nx
@@ -280,7 +362,8 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
             "pico": {"hora_brt": eixo[ip] if ip is not None else None, "publicacoes": total[ip] if ip is not None else None,
                      "horas_desde_marco_zero": ip, "meia_vida_horas": mv},
             "marco_zero": marcos, "primeiros": primeiros, "maiores": maiores, "galeria": galeria, "palavras": palavras,
-            "rede_desenho": desenho, "rede_arquivos": {"gexf": f"data/casos/{caso['id']}/rede.gexf", "nos": f"data/casos/{caso['id']}/rede_nos.csv",
+            "rede_ofensiva": rede_ofensiva,
+            "rede_desenho": desenho, "rede_arquivos": {"dinamica": None if protegido else f"data/casos/{caso['id']}/rede_dinamica.gexf", "gexf": f"data/casos/{caso['id']}/rede.gexf", "nos": f"data/casos/{caso['id']}/rede_nos.csv",
                                                      "arestas": f"data/casos/{caso['id']}/rede_arestas.csv"} if nos else None,
             "google": {"trends": g.get("trends"), "noticias": len(noticias), "veiculos": len({n.get("veiculo") for n in noticias if n.get("veiculo")}),
                        "primeira_noticia": noticias[0] if noticias else None, "titulos": noticias[:15], "coletado_em": g.get("coletado_em")},

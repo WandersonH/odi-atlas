@@ -110,6 +110,10 @@ jobs:
           for c in $(ls data/config | sed -n 's/^livro_codigos_caso\([0-9]*\)\.json$/\1/p'); do
             if [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; python scripts/saturacao_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi
           done
+          # 08/11/2026: casos sem livro de códigos também ganham a linha do tempo em bolhas (pontos.json, sem categoria)
+          for d in data/casos/[0-9][0-9][0-9]; do c=$(basename $d)
+            if [ ! -f "data/config/livro_codigos_caso$c.json" ] && [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi
+          done
           while IFS= read -r l; do echo "::notice title=Casos agregados::$(echo "$l" | cut -c1-600)"; done < b.txt
           exit $rc
       - name: Gravar no repositório privado
