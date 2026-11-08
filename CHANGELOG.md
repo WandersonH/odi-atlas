@@ -4,6 +4,14 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.360 — 037 e 038 sem redes sociais deixam isso claro; frase do 001 sobre o "cross" corrigida (2026-11-07) ✅
+
+- Responsável (07/11/2026, 23h37): "os 2 últimos casos estão sem coleta e eu não tinha te autorizado fazer a coleta deste", citando a frase da metodologia do 001: "A coleta extra para medir o cross foi autorizada em 18/10, mas não foi feita".
+- **001:** a frase afirmava uma autorização. O texto passa a dizer só o que os arquivos mostram: a coleta do cross foi preparada em 18/10 (C19.51) e não rodou (chaves da Apify recusadas, C19.54); nada foi coletado nessa tentativa. O registro de autorização em C19.51 fica como está no histórico (regra 8), contestado pelo responsável nesta data.
+- **037 e 038:** o cabeçalho listava "X · Instagram · Facebook · TikTok" como se fossem fontes. Agora marca ⛔ sem coleta (não autorizada). No 037, o TikTok grátis devolveu 0 (manifestos 20261106T175854Z e 20261107T165100Z, custo 0). As fontes X e Instagram da metodologia do 037 e do 038 recebem o mesmo aviso.
+- O que os dois casos têm, todo de fontes grátis (`busca.json`): 037 com 74 vídeos do YouTube, 4.471 comentários lidos em 30 vídeos e 27 notícias; 038 com 146 vídeos, 3.793 comentários em 30 vídeos e 137 notícias. Nenhuma coleta paga rodou nos dois casos.
+- Teste: `build_metodologia.py`; `python -m unittest discover -s tests`.
+
 ## C19.359 — Bloco único de redes com corpus por nó; metodologia em todos os casos (2026-11-07) ⚠️
 
 - Pedido do responsável (07/11/2026, 23h04): "você não aplicou metodologia pra todos os casos e criou 2 campos de redes, ideal seria confluir" e "meu esquema de rede favorito é aquele dinâmico que montou no YouTube, onde clico e consigo ver o corpus presente, mantendo nossa anonimização".
