@@ -11,6 +11,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - 037: X 0,90 · Instagram 0,50 · Facebook 0,30 · TikTok 0,30 · Kwai 0 (= 2,00);
   - 038: X 0,80 · Instagram 0,60 (perfil da CPAC e busca) · Facebook 0,30 · TikTok 0,30 · Kwai 0 (= 2,00).
 - Execuções disparadas em sequência (o grupo de concorrência `casos` só guarda uma pendente): 037 frases (TikTok, Instagram, Facebook) → 037 complemento (X) → 038 carga (Instagram: perfil da CPAC) → 038 frases → 038 complemento (X).
+- 23h49: o responsável ampliou o 037 para US$ 4,00 ("o faz o l pode usar 4 dolares"). O acréscimo foi todo para o X (0,90 → 2,90), porque a rodada de Instagram, Facebook e TikTok já tinha começado (run 42439971227) com os tetos anteriores; o X ainda não tinha rodado.
 - Teste: `python -m unittest discover -s tests`. ⛔ Resultado das coletas pendente; os cabeçalhos "sem coleta" do 037 e do 038 (C19.360) só mudam quando houver dados.
 
 ## C19.360 — 037 e 038 sem redes sociais deixam isso claro; frase do 001 sobre o "cross" corrigida (2026-11-07) ✅
