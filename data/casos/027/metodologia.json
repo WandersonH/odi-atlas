@@ -1,0 +1,255 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "027",
+ "titulo": "Voto distrital misto: a reação aos \"puxadores de voto\" depois da eleição",
+ "pergunta": "Como o debate sobre trocar o sistema proporcional pelo voto distrital misto (PEC articulada por Hugo Motta, com transição pelo \"distritão\" em 2030 e adoção a partir de 2034) circulou depois da eleição de 2026? Quem puxa a conversa, com que argumentos de cada lado, e qual o peso das votações de Nikolas Ferreira e Lucas Pavanato, acima de 3 milhões de votos cada?",
+ "por_que_importa": "Reformas do sistema eleitoral costumam voltar depois de eleições com resultados vistos como distorcidos. Em 2026, o gatilho público foram os \"puxadores de voto\", candidatos cuja votação elege outros da lista. O caso mede se o tema sai da elite parlamentar e chega às redes, e como os lados se organizam: o PL, partido dos dois puxadores, se declara contra (Diário ESP e Gazeta Brasil, 01/11/2026).",
+ "recorte_temporal": {
+  "inicio": "2026-10-26",
+  "justificativa": "Dia seguinte ao 2º turno, quando termina a disputa e começa a agenda pós-eleitoral do Congresso. A janela de 5 anos do Trends dá a base longa do interesse pelo tema. ⛔ Ressalva: as votações dos puxadores são do 1º turno (4/10), então a conversa sobre eles entre 4/10 e 25/10 fica fora das redes."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Nome do sistema proposto",
+   "termos": [
+    "\"voto distrital\"",
+    "\"distrital misto\"",
+    "#VotoDistrital",
+    "#DistritalMisto",
+    "#votodistritalmisto"
+   ],
+   "justificativa": "É o objeto da PEC. As formas compostas evitam o adjetivo \"distrital\" sozinho, que no Brasil remete aos deputados distritais do Distrito Federal."
+  },
+  {
+   "familia": "Sistema de transição",
+   "termos": [
+    "distritão",
+    "distritao",
+    "#Distritao",
+    "distritão 2030",
+    "distritão PEC"
+   ],
+   "justificativa": "O distritão é a etapa de 2030 na proposta e tem nome próprio no debate. Entra com e sem til porque hashtags não aceitam acento."
+  },
+  {
+   "familia": "Atores do gatilho e da articulação",
+   "termos": [
+    "voto distrital Nikolas",
+    "voto distrital Nikolas Ferreira",
+    "voto distrital Nikolas Pavanato",
+    "Hugo Motta voto distrital"
+   ],
+   "justificativa": "Ligam o tema aos puxadores que reacenderam o debate e ao presidente da Câmara que articula a PEC. O nome só entra junto do sistema: sozinho, traria toda a atividade política dos três."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"distrital\" sozinho",
+   "motivo": "Traz a Câmara Legislativa do DF e os deputados distritais, sem relação com o caso."
+  },
+  {
+   "termo": "\"reforma política\" nas redes",
+   "motivo": "Termo guarda-chuva, ruído alto. Fica só no Trends, como controle."
+  },
+  {
+   "termo": "\"puxador de voto\" sem o nome do sistema",
+   "motivo": "⛔ Não documentado no repositório. Não está nas buscas: posts que falam dos puxadores sem citar o sistema ficam fora."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 26/10)",
+   "por_que": "Mostram quem puxa a conversa (parlamentares, partidos, comentaristas) e com que argumentos."
+  },
+  {
+   "fonte": "Google Trends (5 anos, 12 meses, 7 dias; por estado)",
+   "por_que": "Mede se o tema gerou busca para além da conversa política, e em que estados."
+  },
+  {
+   "fonte": "YouTube (Brasil, desde 26/10), Google Notícias (BR, 30 dias), checagens",
+   "por_que": "Vídeos explicativos e cobertura da tramitação; checagens sobre o que muda com cada sistema."
+  }
+ ],
+ "controles": "No Trends, \"reforma política\" como controle: separa o interesse pelo sistema específico do interesse geral por mudanças nas regras eleitorais. É uma consulta separada das variantes, sem termo comum: comparam-se datas e formas das curvas, não níveis. ⛔ O motivo da escolha não está documentado no repositório; esta é a leitura proposta.",
+ "limites": [
+  "O comentário do código diz que a janela de 5 anos serve \"para comparar com 2015/2017\". A janela de 5 anos do Trends começa no fim de 2021 e não alcança 2015 nem 2017. ⛔ A comparação com aqueles anos não está feita.",
+  "No YouTube e nas notícias (busca.json), o filtro de título exige \"distrit\" e um atributo que inclui \"deputad\". Um vídeo sobre deputado distrital do DF passa no filtro.",
+  "O filtro de título de notícias em casos.json usa o radical \"distrit\", mas collect_casos.py compara palavras inteiras depois da normalização. Por isso data/casos/027/google.json tem 0 notícias. A camada de notícias do caso é a de busca.json.",
+  "A busca do X e as hashtags do Instagram bateram no limite pedido (manifestos 20261102T065339Z e 20261102T064006Z).",
+  "TikTok: o manifesto 20261102T054810Z registra itens lidos, mas data/casos/027/caso.json mostra 0 publicações do TikTok. A coleta foi anterior às correções do normalizador e do filtro de data (C19.289, C19.294), e depois o teto da rede estava esgotado (C19.317). ⛔ TikTok sem amostra válida.",
+  "O número da PEC não tinha sido informado quando o caso foi aberto (C19.265).",
+  "Livro de códigos v0.1 em rascunho; revisão pendente."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#votodistrital",
+   "#votodistritalmisto",
+   "#distritao",
+   "o caso (busca por termo): (\"voto distrital\" OR \"distrital misto\" OR distritão OR distritao OR #VotoDistrital OR #DistritalMisto OR #Distritao) since:2026-10-26"
+  ],
+  "tiktok": [
+   "#votodistrital",
+   "#votodistritalmisto",
+   "#distritao",
+   "voto distrital",
+   "distrital misto",
+   "distritão"
+  ],
+  "instagram": [
+   "#votodistrital",
+   "#distritao",
+   "reels: voto distrital misto",
+   "reels: distritão"
+  ],
+  "facebook": [
+   "voto distrital misto",
+   "distritão 2030",
+   "voto distrital Nikolas"
+  ],
+  "google_trends": [
+   "voto distrital",
+   "distrital misto",
+   "distritão"
+  ],
+  "google_noticias": [
+   "\"voto distrital\"",
+   "\"distrital misto\"",
+   "distritão PEC",
+   "Hugo Motta voto distrital"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 1570,
+   "no_periodo": 1570,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/027/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 227,
+   "no_periodo": 130,
+   "na_analise": 129,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [
+    "#distritao",
+    "#votodistrital"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/027/manifesto-20261102T064006Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 103,
+   "no_periodo": 103,
+   "na_analise": 101,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/027/manifesto-20261102T064006Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/027/manifesto-20261102T064006Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 2000,
+   "no_periodo": 2000,
+   "na_analise": 2000,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [
+    "o caso (busca por termo)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/027/manifesto-20261102T065339Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 247,
+   "no_periodo": 247,
+   "na_analise": 247,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/027/busca.json (youtube)",
+   "coletado_em": "2026-11-07T16:23:28Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 164,
+   "no_periodo": 164,
+   "na_analise": 164,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/027/busca.json (noticias)",
+   "coletado_em": "2026-11-07T16:23:28Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 12-m, now 7-d, today 5-y), termos: voto distrital, distrital misto, distritão",
+   "avisos": [
+    "trends variantes today 5-y: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/027/busca.json (trends)",
+   "coletado_em": "2026-11-07T16:23:28Z"
+  }
+ ]
+}

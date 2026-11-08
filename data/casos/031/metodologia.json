@@ -1,0 +1,236 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "031",
+ "titulo": "\"Nota ao Brasil\" de Flávio Bolsonaro (1º/11/2026)",
+ "pergunta": "Como circulou a \"Nota ao Brasil\" publicada por Flávio Bolsonaro em 1º/11/2026, em que ele diz ter aceitado entrevista à Globo com exibição \"sem cortes e sem temas proibidos\", afirma que \"sete minutos após o resultado\" já havia decisão judicial com medidas cautelares contra ele e escreve \"Não saí do Brasil, saí pelo Brasil!\"? Que frases foram repetidas e quais afirmações factuais podem ser conferidas?",
+ "por_que_importa": "A nota é um texto de autor e data conhecidos, escrito para disputar a narrativa da saída do país. Ela ataca a imprensa e o Judiciário e não diz quem pagou a viagem aos EUA (O Tempo e Gazeta do Povo, 01/11). O caso permite medir a recepção de um texto de campanha pós-derrota e marcar para conferência afirmações verificáveis. Liga-se aos casos 024 e 025.",
+ "recorte_temporal": {
+  "inicio": "2026-11-01",
+  "justificativa": "A data de publicação da nota (O Tempo, 01/11). A janela de 7 dias para notícias capta o ciclo de repercussão."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Título da nota",
+   "termos": [
+    "\"Nota ao Brasil\"",
+    "Flávio Bolsonaro nota ao Brasil"
+   ],
+   "justificativa": "É o nome que o próprio autor deu ao texto. Identifica a peça."
+  },
+  {
+   "familia": "Frase-assinatura",
+   "termos": [
+    "\"saí pelo Brasil\"",
+    "\"sai pelo Brasil\""
+   ],
+   "justificativa": "Quem repete a frase está reagindo à versão de Flávio sobre a saída, a favor ou contra. Entra com e sem acento."
+  },
+  {
+   "familia": "Entrevista à Globo",
+   "termos": [
+    "Flávio + Globo + entrevista",
+    "Flávio + Globo + \"sem cortes\"",
+    "Flávio Bolsonaro Globo entrevista sem cortes"
+   ],
+   "justificativa": "É a acusação central contra a imprensa. \"Globo\" sozinha traria toda a programação da emissora; só entra com Flávio e com entrevista ou \"sem cortes\"."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Flávio Bolsonaro\" sozinho nas redes",
+   "motivo": "Traria toda a conversa sobre o candidato. Fica no Trends, como variante de base."
+  },
+  {
+   "termo": "Hashtags",
+   "motivo": "Nenhuma hashtag própria da nota foi identificada; o caso não tem lista de hashtags."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Post da nota no X (arquivo web)",
+   "por_que": "É o texto original. A cópia no Internet Archive guarda a versão publicada, caso o post mude ou saia do ar."
+  },
+  {
+   "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 1º/11)",
+   "por_que": "Repercussão e reações à nota."
+  },
+  {
+   "fonte": "Google Notícias (BR, 7 dias), YouTube (Brasil, desde 1º/11), checagens",
+   "por_que": "Como a imprensa tratou a nota e as afirmações a conferir."
+  },
+  {
+   "fonte": "Google Trends (7 dias, 1 mês)",
+   "por_que": "Se a nota gerou busca para além da conversa nas redes."
+  }
+ ],
+ "controles": "No Trends, \"Lula\" como controle de interesse geral, numa consulta separada das variantes. Dentro das variantes, \"Flávio Bolsonaro\" sozinho é a âncora de \"nota ao Brasil\" e \"Flávio Bolsonaro Globo\", que estão na mesma consulta. ⛔ O motivo da escolha de \"Lula\" não está documentado no repositório.",
+ "limites": [
+  "\"Saí pelo Brasil\" já aparece na live de 31/10 (caso 024). O corte em 1º/11 separa as datas, mas não distingue quem reage à nota de quem reage à live.",
+  "\"Nota ao Brasil\" é expressão genérica, usada por outros autores; no Trends é ambígua.",
+  "O filtro de título de notícias aceita qualquer título com \"Flávio\", inclusive sobre outros temas do candidato. No YouTube, o atributo exigido inclui palavras gerais (EUA, Miami, Moraes).",
+  "A amostra do X é pequena e não bateu no limite (C19.291): no X, a busca devolveu tudo o que encontrou.",
+  "As afirmações factuais (\"sete minutos após o resultado\", condições da entrevista) estão marcadas para conferência no livro de códigos (C19.270). ⛔ A conferência não está registrada no repositório.",
+  "Kwai: 0 itens."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): (\"Nota ao Brasil\" OR \"saí pelo Brasil\" OR \"sai pelo Brasil\" OR (Flávio (Globo (entrevista OR \"sem cortes\")))) since:2026-11-01"
+  ],
+  "tiktok": [
+   "Flávio Bolsonaro nota ao Brasil",
+   "saí pelo Brasil Flávio",
+   "Flávio Bolsonaro Globo entrevista"
+  ],
+  "instagram": [
+   "reels: Flávio Bolsonaro nota ao Brasil"
+  ],
+  "facebook": [
+   "Flávio Bolsonaro Nota ao Brasil",
+   "saí pelo Brasil Flávio"
+  ],
+  "google_trends": [
+   "Flávio Bolsonaro",
+   "nota ao Brasil",
+   "Flávio Bolsonaro Globo"
+  ],
+  "google_noticias": [
+   "Flávio Bolsonaro \"Nota ao Brasil\"",
+   "Flávio Bolsonaro Globo entrevista sem cortes",
+   "\"saí pelo Brasil\""
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 128,
+   "no_periodo": 24,
+   "na_analise": 24,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/031/manifesto-20261102T090351Z.json, manifesto-20261102T091856Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 75,
+   "no_periodo": 75,
+   "na_analise": 65,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/031/manifesto-20261102T091856Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/031/manifesto-20261102T091856Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 262,
+   "no_periodo": 262,
+   "na_analise": 262,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/031/manifesto-20261102T093903Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 704,
+   "no_periodo": 248,
+   "na_analise": 174,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [
+    "Flávio Bolsonaro nota ao Brasil",
+    "saí pelo Brasil Flávio"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/031/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 264,
+   "no_periodo": 264,
+   "na_analise": 264,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/031/busca.json (youtube)",
+   "coletado_em": "2026-11-07T16:36:31Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 96,
+   "no_periodo": 96,
+   "na_analise": 96,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/031/busca.json (noticias)",
+   "coletado_em": "2026-11-07T16:36:31Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, now 7-d), termos: Flávio Bolsonaro, nota ao Brasil, Flávio Bolsonaro Globo",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/031/busca.json (trends)",
+   "coletado_em": "2026-11-07T16:36:31Z"
+  }
+ ]
+}

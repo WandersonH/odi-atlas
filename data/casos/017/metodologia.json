@@ -1,0 +1,306 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "017",
+ "titulo": "As cartas de Flávio Bolsonaro: de \"verdadeiro presidente eleito\" a \"líder do Brasil\"",
+ "pergunta": "Como circularam as versões da carta em que Flávio Bolsonaro, depois de viajar aos EUA, se dizia \"verdadeiro presidente eleito\" e, na versão editada, \"líder do Brasil\"? Que versões existiram, quem as publicou, como foram respondidas e checadas, e o que os metadados dos arquivos mostram sobre sua produção?",
+ "por_que_importa": "A carta é uma contestação do resultado feita pelo candidato derrotado. As versões sucessivas mostram o recuo de uma autoproclamação para um título político sem efeito institucional. O caso permite medir a circulação de cada formulação e verificar, por documentos e metadados, a ordem dos fatos. Liga-se aos casos 013, 024, 025 e 036.",
+ "recorte_temporal": {
+  "inicio": "2026-10-27",
+  "justificativa": "A carta foi publicada no X em 28/10/2026. A janela começa um dia antes, o que dá uma linha de base da conversa sobre o candidato antes da carta. ⛔ O motivo explícito de 27/10 não está documentado no repositório. A busca dos posts de Paulo Figueiredo começa em 28/10, data da primeira versão. A leitura diária do X segue até 15/11."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Fonte primária: posts do autor",
+   "termos": [
+    "from:flaviobolsonaro"
+   ],
+   "justificativa": "Reúne o que o próprio candidato publicou no período, inclusive as versões e as reações dele."
+  },
+  {
+   "familia": "Conversa em torno do post da carta",
+   "termos": [
+    "conversation_id:2115538982012682337",
+    "url:2115538982012682337",
+    "quoted_tweet_id:2115538982012682337"
+   ],
+   "justificativa": "Respostas, citações e links do post indicado medem a recepção direta da carta, sem depender de palavras. É a unidade mais precisa do caso."
+  },
+  {
+   "familia": "Carta + marcadores de versão",
+   "termos": [
+    "(carta OR nota) + (Flávio OR @flaviobolsonaro) + (\"presidente eleito\" OR \"verdadeiro presidente\" OR \"líder do Brasil\" OR versão OR versões OR editou OR apagou)"
+   ],
+   "justificativa": "As palavras que mudaram entre as versões (presidente eleito → líder) e os verbos de edição permitem ver qual formulação circulou mais e se a edição foi notada."
+  },
+  {
+   "familia": "Expressões de autoproclamação",
+   "termos": [
+    "Flávio presidente eleito",
+    "verdadeiro presidente eleito",
+    "Flávio líder do Brasil",
+    "presidente no exílio",
+    "#FlavioPresidenteEleito"
+   ],
+   "justificativa": "Captam a adesão ou o deboche à tese da carta fora da conversa do post. \"Presidente no exílio\" liga a carta à saída do país."
+  },
+  {
+   "familia": "Primeira versão: Paulo Figueiredo",
+   "termos": [
+    "from:realpfigueiredo"
+   ],
+   "justificativa": "Segundo a imprensa, a versão com o brasão de 1889 foi publicada e apagada por esse perfil (CHANGELOG, C19.196). A busca tenta recuperar a circulação dessa versão."
+  },
+  {
+   "familia": "Produção com IA (rodada 3)",
+   "termos": [
+    "(carta OR nota OR PDF) + (Flávio OR Eduardo OR Figueiredo) + (ChatGPT OR \"GPT-6\" OR \"inteligência artificial\" OR \"Content Credentials\" OR brasão)",
+    "carta Flávio ChatGPT",
+    "carta Flávio GPT-6 Content Credentials"
+   ],
+   "justificativa": "A imprensa relatou metadados de IA no PDF. A família mede se essa leitura entrou na conversa, o que liga o caso à pesquisa sobre conteúdo sintético na eleição."
+  },
+  {
+   "familia": "Checagens",
+   "termos": [
+    "site:aosfatos.org Flávio",
+    "site:lupa.uol.com.br Flávio",
+    "site:estadao.com.br/estadao-verifica Flávio",
+    "site:g1.globo.com/fato-ou-fake Flávio",
+    "Comprova Flávio carta",
+    "checagem carta Flávio Bolsonaro"
+   ],
+   "justificativa": "Busca dirigida aos domínios das agências, porque o título de uma checagem nem sempre repete as palavras da carta."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Flávio Bolsonaro\" sozinho como busca",
+   "motivo": "Traria toda a cobertura do candidato; fica no Trends como controle."
+  },
+  {
+   "termo": "\"carta\" ou \"nota\" sem Flávio",
+   "motivo": "Palavras de uso geral."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X (busca por termo, conversa do post, leitura diária)",
+   "por_que": "Rede em que a carta foi publicada e editada; a cadeia de edição é observável."
+  },
+  {
+   "fonte": "Endpoint público de incorporação do X e Internet Archive (scripts/carta_versoes.py)",
+   "por_que": "Registram cada versão do post (texto, imagens) e a série de curtidas e respostas de cada uma."
+  },
+  {
+   "fonte": "PDFs das três versões, com metadados e Content Credentials (scripts/carta_pdfs_017.py)",
+   "por_que": "Permitem datar a produção do arquivo e ver a ferramenta que o exportou, de forma verificável."
+  },
+  {
+   "fonte": "Instagram (perfil de Flávio, posts e comentários; reels por assunto) e Facebook (frases)",
+   "por_que": "Publicações do autor e recepção nas redes de maior público."
+  },
+  {
+   "fonte": "Google Notícias, checagens, YouTube, TikTok e Google Trends",
+   "por_que": "Cronologia da imprensa, checagem das afirmações, vídeos de comentário e interesse de busca por cada formulação."
+  }
+ ],
+ "controles": "No Trends, \"Flávio Bolsonaro\" e \"Lula\" (CASOS[\"017\"]). O primeiro separa o interesse pela carta do interesse pelo candidato; o segundo dá a escala da atenção ao resultado.",
+ "limites": [
+  "Três buscas do X chegaram ao limite de 1.300 itens na carga (respostas ao post; carta + presidente eleito/líder; Flávio presidente eleito/líder), e duas na leitura diária (manifesto-20261030T010818Z; manifesto-20261101T205817Z): há mais do que o lido.",
+  "O post apagado de Paulo Figueiredo não volta na busca do X: a circulação da primeira versão no X fica ⛔ (CHANGELOG, C19.199).",
+  "\"from:flaviobolsonaro\" devolveu 1 post na carga (ordem \"mais recentes\" do X; CHANGELOG, C19.197). Os posts do autor dependem da cadeia de edição lida à parte.",
+  "O Instagram de Flávio devolveu \"Empty or private data\" para posts desde 27/10; foi relido desde 20/10 (CHANGELOG, C19.197).",
+  "Os metadados mostram que o PDF da primeira versão foi exportado pelo ChatGPT; não mostram quem escreveu o texto (CHANGELOG, C19.316). A página do Poder360 não pôde ser lida automaticamente (⛔).",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "posts de Flávio: from:flaviobolsonaro since:2026-10-27",
+   "respostas ao post da carta: conversation_id:2115538982012682337 since:2026-10-27",
+   "citações e links do post: (url:2115538982012682337 OR quoted_tweet_id:2115538982012682337) since:2026-10-27",
+   "carta: presidente eleito × líder: (carta OR nota) (Flávio OR Flavio OR @flaviobolsonaro) (\"presidente eleito\" OR \"verdadeiro presidente\" OR \"líder do Brasil\" OR \"lider do Brasil\" OR versão OR versões OR editou OR apagou) since:2026-10-27",
+   "Flávio presidente eleito / líder: (\"Flávio presidente eleito\" OR \"Flavio presidente eleito\" OR \"verdadeiro presidente eleito\" OR \"Flávio líder do Brasil\" OR \"presidente no exílio\" OR #FlavioPresidenteEleito) since:2026-10-27",
+   "posts de Paulo Figueiredo: from:realpfigueiredo since:2026-10-28",
+   "carta e ChatGPT / IA: (carta OR nota OR PDF) (Flávio OR Flavio OR Eduardo OR Figueiredo) (ChatGPT OR \"GPT-6\" OR \"inteligência artificial\" OR \"Content Credentials\" OR brasão) since:2026-10-28"
+  ],
+  "tiktok": [
+   "carta Flávio Bolsonaro",
+   "Flávio presidente eleito",
+   "Flávio líder do Brasil"
+  ],
+  "instagram": [
+   "reels: carta Flávio Bolsonaro",
+   "reels: Flávio presidente eleito",
+   "reels: Flávio líder do Brasil"
+  ],
+  "facebook": [
+   "carta Flávio Bolsonaro",
+   "Flávio presidente eleito",
+   "Flávio líder do Brasil"
+  ],
+  "google_trends": [
+   "carta Flávio Bolsonaro",
+   "Flávio presidente eleito",
+   "Flávio líder do Brasil"
+  ],
+  "google_noticias": [
+   "carta Flávio Bolsonaro",
+   "Flávio \"presidente eleito\" carta",
+   "Flávio \"líder do Brasil\"",
+   "carta Flávio versões",
+   "site:aosfatos.org Flávio",
+   "site:lupa.uol.com.br Flávio",
+   "site:estadao.com.br/estadao-verifica Flávio",
+   "site:g1.globo.com/fato-ou-fake Flávio",
+   "Comprova Flávio carta",
+   "checagem carta Flávio Bolsonaro",
+   "carta Flávio ChatGPT",
+   "carta Flávio GPT-6 Content Credentials"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 5443,
+   "no_periodo": 5443,
+   "na_analise": 4408,
+   "pct": null,
+   "termos_buscados": 37,
+   "termos_no_limite": [
+    "Flávio presidente eleito / líder",
+    "carta: presidente eleito × líder",
+    "diário: Flávio presidente eleito / líder",
+    "diário: carta: presidente eleito × líder",
+    "respostas ao post da carta"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/017/manifesto-20261105T185529Z.json, manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 149,
+   "no_periodo": 125,
+   "na_analise": 108,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/017/manifesto-20261030T011254Z.json, manifesto-20261030T015150Z.json, manifesto-20261030T015445Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 138,
+   "no_periodo": 138,
+   "na_analise": 131,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "Flávio líder do Brasil"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/017/manifesto-20261030T011254Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/017/manifesto-20261030T011254Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 824,
+   "no_periodo": 822,
+   "na_analise": 608,
+   "pct": null,
+   "termos_buscados": 18,
+   "termos_no_limite": [
+    "Flávio líder do Brasil",
+    "Flávio presidente eleito",
+    "carta Flávio Bolsonaro"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/017/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 256,
+   "no_periodo": 256,
+   "na_analise": 256,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/017/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:08:28Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 72,
+   "no_periodo": 72,
+   "na_analise": 72,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/017/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:08:28Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: carta Flávio Bolsonaro, Flávio presidente eleito, Flávio líder do Brasil, Flávio Bolsonaro EUA",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/017/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:08:28Z"
+  }
+ ]
+}

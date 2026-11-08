@@ -1,0 +1,303 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "021",
+ "titulo": "\"O Sul é meu país\": o movimento separatista do Sul na campanha e depois da eleição",
+ "pergunta": "Como o movimento \"O Sul é meu país\", que defende a separação do Paraná, de Santa Catarina e do Rio Grande do Sul, circulou na pré-campanha, na campanha e depois da eleição de 2026? O interesse de 2026 é maior que o de ciclos anteriores, e que eventos (fala de um governador em julho, consulta informal em agosto, proposta de plebiscito depois do 2º turno) marcam os picos?",
+ "por_que_importa": "O separatismo regional é um ataque à unidade nacional que volta em momentos de derrota eleitoral de um lado. Medir a circulação desde a pré-campanha permite ver se o tema é mobilizado de forma estratégica antes da eleição ou só como reação ao resultado. O caso dialoga com o caso 029 (xenofobia contra o Nordeste), em que o separatismo aparece com o sinal geográfico invertido.",
+ "recorte_temporal": {
+  "inicio": "2026-07-01",
+  "justificativa": "A pré-campanha inclui a fala do governador de Santa Catarina sobre separar o Sul (julho) e a consulta popular informal (agosto) (CHANGELOG, C19.219). Começar em 01/07 permite ver se o tema já estava ativo antes da campanha. O Google Trends usa também uma janela de 5 anos, e as notícias, 125 dias (cerca de 01/07 até a coleta). A leitura diária do X segue até 15/11."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Nome do movimento",
+   "termos": [
+    "o sul é meu país",
+    "o sul e meu pais",
+    "sul é meu país",
+    "#osulemeupais",
+    "#osuléomeupaís"
+   ],
+   "justificativa": "É o nome próprio do objeto. Entra com e sem acento e sem o artigo, porque é assim que aparece em hashtags e buscas."
+  },
+  {
+   "familia": "Plebiscito e consulta",
+   "termos": [
+    "plebisul",
+    "#plebisul",
+    "(plebiscito OR \"consulta popular\" OR referendo) + (\"separar o sul\" OR \"separação do sul\" OR \"região sul\" OR \"sul do brasil\") + (separa OR separação OR independência OR país)"
+   ],
+   "justificativa": "O plebiscito é o instrumento que o movimento usa para dar forma institucional ao separatismo. \"Plebisul\" é o nome das consultas anteriores. A co-ocorrência separa plebiscitos sobre o Sul de qualquer outro plebiscito."
+  },
+  {
+   "familia": "Expressões de separação",
+   "termos": [
+    "separar o sul",
+    "separação do sul",
+    "separacao do sul",
+    "independência do sul",
+    "república do sul",
+    "sul independente",
+    "separatismo no sul",
+    "#sulindependente",
+    "#separaosul"
+   ],
+   "justificativa": "Captam o discurso separatista de quem não usa o nome do movimento: apoio, crítica e deboche."
+  },
+  {
+   "familia": "Movimento separatista + Sul e estados (rodada 3)",
+   "termos": [
+    "(\"movimento separatista\" OR separatista OR separatistas OR separatismo) + (sul OR \"região sul\" OR \"Rio Grande do Sul\" OR \"Santa Catarina\" OR \"Paraná\" OR gaúcho OR catarinense OR paranaense)",
+    "#movimentoseparatista"
+   ],
+   "justificativa": "É o termo genérico usado pela imprensa e pelos críticos. Só entra com o nome da região, de um estado ou do gentílico, para não trazer outros separatismos. Substituiu \"plebisul\" na lista do Trends (CHANGELOG, C19.228)."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"separatista\" ou \"separatismo\" sozinhos nas redes",
+   "motivo": "Trazem outros separatismos (inclusive o do Nordeste, do caso 029, e os de outros países). No Trends, \"separatismo\" fica como controle."
+  },
+  {
+   "termo": "\"sul\" ou \"independência\" sozinhos",
+   "motivo": "Palavras de uso geral."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X (busca por termo, fatias mensais de julho a outubro e leitura diária)",
+   "por_que": "Rede com busca por data, que permite reconstruir a pré-campanha. As fatias mensais foram criadas porque a busca única chegou ao limite e só trouxe as publicações mais recentes."
+  },
+  {
+   "fonte": "Instagram (hashtags e reels) e Facebook (frases)",
+   "por_que": "Onde páginas e grupos regionalistas publicam."
+  },
+  {
+   "fonte": "Google Trends (5 anos, 12 meses, 7 dias; por UF)",
+   "por_que": "Compara o interesse de 2026 com ciclos anteriores e mostra onde se concentra."
+  },
+  {
+   "fonte": "Google Notícias (125 dias), YouTube e checagens",
+   "por_que": "Datam os eventos que marcam os picos (a fala de julho, a consulta, a proposta de plebiscito)."
+  },
+  {
+   "fonte": "TikTok",
+   "por_que": "Vídeo curto, com público mais jovem."
+  }
+ ],
+ "controles": "No Trends, \"separatismo\" (CASOS[\"021\"]). Ele separa o interesse pelo movimento do Sul do interesse geral pelo tema do separatismo.",
+ "limites": [
+  "A janela de 5 anos do Trends começa no fim de 2021 e não alcança o Plebisul de 2016 e 2017. A comparação com esses anos, prevista na descrição do caso, fica ⛔ sem dado nesta janela.",
+  "A busca principal do X chegou ao limite de 3.000 itens e trouxe só as mais recentes (manifesto-20261031T210441Z); as fatias mensais corrigiram isso para julho a outubro. A rodada 3 (manifesto-20261101T204100Z) e a leitura diária (manifesto-20261101T205817Z) também chegaram ao limite.",
+  "#plebisul devolveu zero no X e no Instagram (manifesto-20261031T205925Z; manifesto-20261031T210945Z). No Instagram, #osulemeupais, #sulindependente e #movimentoseparatista chegaram ao limite de itens.",
+  "O filtro de título das notícias e do YouTube aceita \"sul\" sozinho: notícias sobre o Rio Grande do Sul ou a região Sul sem relação com o separatismo podem passar.",
+  "O YouTube deu HTTP 429 na primeira carga (CHANGELOG, C19.222).",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+  "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#osulemeupais",
+   "#plebisul",
+   "#sulindependente",
+   "#separaosul",
+   "O Sul é meu país / separação do Sul: (\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-07-01",
+   "plebiscito / consulta sobre o Sul: ((plebiscito OR \"consulta popular\" OR referendo) (\"separar o sul\" OR \"separação do sul\" OR \"região sul\" OR \"sul do brasil\") (separa OR separação OR independência OR país)) since:2026-07-01",
+   "O Sul é meu país (jul): (\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-07-01 until:2026-08-01",
+   "O Sul é meu país (ago): (\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-08-01 until:2026-09-01",
+   "O Sul é meu país (set): (\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-09-01 until:2026-10-01",
+   "O Sul é meu país (out até 24): (\"o sul é meu país\" OR \"o sul e meu pais\" OR \"sul é meu país\" OR #osulemeupais OR #osuléomeupaís OR plebisul OR \"separar o sul\" OR \"separação do sul\" OR \"separacao do sul\" OR \"independência do sul\" OR \"república do sul\" OR \"sul independente\" OR \"separatismo no sul\") since:2026-10-01 until:2026-10-25",
+   "movimento separatista (Sul): ((\"movimento separatista\" OR separatista OR separatistas OR separatismo) (sul OR \"região sul\" OR \"Rio Grande do Sul\" OR \"Santa Catarina\" OR \"Paraná\" OR gaúcho OR catarinense OR paranaense)) since:2026-07-01"
+  ],
+  "tiktok": [
+   "#osulemeupais",
+   "#plebisul",
+   "#sulindependente",
+   "#separaosul",
+   "o sul é meu país",
+   "separação do sul",
+   "plebisul",
+   "independência do sul"
+  ],
+  "instagram": [
+   "#osulemeupais",
+   "#plebisul",
+   "#sulindependente",
+   "reels: o sul é meu país",
+   "reels: separação do sul",
+   "reels: plebisul",
+   "reels: independência do sul",
+   "reels: separatismo sul",
+   "reels (rodada 3): movimento separatista sul",
+   "reels (rodada 3): separatistas do sul"
+  ],
+  "facebook": [
+   "o sul é meu país",
+   "separar o sul do Brasil",
+   "plebiscito separação sul"
+  ],
+  "google_trends": [
+   "o sul é meu país",
+   "separação do sul",
+   "movimento separatista"
+  ],
+  "google_noticias": [
+   "\"o sul é meu país\"",
+   "separação do sul",
+   "plebisul",
+   "separatismo sul Brasil",
+   "plebiscito separar o sul",
+   "movimento separatista sul"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 704,
+   "no_periodo": 667,
+   "na_analise": 441,
+   "pct": null,
+   "termos_buscados": 30,
+   "termos_no_limite": [
+    "#osulemeupais",
+    "#plebisul",
+    "#separaosul",
+    "#sulindependente",
+    "independência do sul",
+    "o sul é meu país",
+    "plebisul",
+    "separação do sul"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/021/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 10030,
+   "no_periodo": 10030,
+   "na_analise": 5295,
+   "pct": null,
+   "termos_buscados": 21,
+   "termos_no_limite": [
+    "O Sul é meu país / separação do Sul",
+    "diário: O Sul é meu país / separação do Sul",
+    "movimento separatista (Sul)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/021/manifesto-20261105T185529Z.json, manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 444,
+   "no_periodo": 168,
+   "na_analise": 142,
+   "pct": null,
+   "termos_buscados": 11,
+   "termos_no_limite": [
+    "#movimentoseparatista",
+    "#osulemeupais",
+    "#sulindependente"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/021/manifesto-20261031T210945Z.json, manifesto-20261031T212040Z.json, manifesto-20261101T204100Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 158,
+   "no_periodo": 158,
+   "na_analise": 154,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/021/manifesto-20261031T210945Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 8,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/021/manifesto-20261031T210945Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 337,
+   "no_periodo": 337,
+   "na_analise": 337,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/021/busca.json (youtube)",
+   "coletado_em": "2026-11-07T16:08:36Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 70,
+   "no_periodo": 70,
+   "na_analise": 70,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/021/busca.json (noticias)",
+   "coletado_em": "2026-11-07T16:08:36Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 12-m, now 7-d, today 5-y), termos: o sul é meu país, separação do sul, plebisul, sul independente, movimento separatista",
+   "avisos": [
+    "trends variantes today 5-y: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/021/busca.json (trends)",
+   "coletado_em": "2026-11-07T16:08:36Z"
+  }
+ ]
+}

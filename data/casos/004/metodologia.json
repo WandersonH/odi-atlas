@@ -1,0 +1,59 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "004",
+ "titulo": "Flamengo e a proibição das bets",
+ "pergunta": "Caso unido ao 003. O protesto e a mensagem do Flamengo contra a proibição das bets (janela indicada de 07 a 12/10/2026) fazem parte da mesma pergunta do caso 003: como circulou o conteúdo sobre a torcida e as bets, o falso e o real.",
+ "por_que_importa": "O objeto é o mesmo do 003 (Flamengo × proibição das bets), com os mesmos termos. Separar os dois dividiria uma única conversa pública em duas amostras sobrepostas e contaria os mesmos posts duas vezes. A união foi registrada em 22/10/2026 (nota_unificacao em casos.json); o registro do 004 fica para histórico.",
+ "recorte_temporal": {
+  "inicio": "2026-10-07",
+  "justificativa": "Janela indicada de 07 a 12/10/2026, em torno da mensagem do clube em campo (08/10). Ela está dentro do recorte do caso 003 (25/09 a 19/10 nas buscas do X)."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Ver caso 003, família \"Clube + pauta + ação\"",
+   "termos": [
+    "flamengo (bets OR apostas OR bet) (proibição OR proibir OR MP OR protesto OR faixa OR mensagem)"
+   ],
+   "justificativa": "É a família do 003 que capta o protesto e a mensagem do clube sem depender da frase."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "Coleta própria do 004",
+   "motivo": "O caso não é coletado (coletar: false). Todos os números ficam no 003."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "As mesmas do caso 003",
+   "por_que": "Mesma coleta e mesma página."
+  }
+ ],
+ "controles": "Os do caso 003 (\"Flamengo\" como controle no Google Trends).",
+ "limites": [
+  "Não há coleta nem número próprio do 004. Os limites são os do caso 003."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {},
+ "amostra": []
+}

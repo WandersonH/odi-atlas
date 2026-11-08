@@ -1,0 +1,251 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "001",
+ "titulo": "#brasilinteiro e #verdeeamarelo",
+ "pergunta": "De onde partiram as hashtags #brasilinteiro e #verdeeamarelo, indicadas pela equipe como movimento de apoio a Lula em outubro de 2026, quem as amplificou e quanto elas circularam em cada rede?",
+ "por_que_importa": "O caso testa como nasce uma mobilização por hashtag em campanha: por difusão gradual ou por publicação concentrada num horário. Também envolve disputa de símbolo: #verdeeamarelo é hashtag antiga e genérica, usada por apoiadores de Bolsonaro desde 2018 (aviso registrado em casos.json). O uso dela em apoio a Lula é, portanto, apropriação de um marcador do campo adversário. Medir de onde o movimento parte e em que redes ele aparece separa o lançamento (quem publica primeiro) da amplificação (quem repete).",
+ "recorte_temporal": {
+  "inicio": "2026-10-16",
+  "justificativa": "O caso não parte de um evento externo datado: o marco zero é a primeira publicação localizada pela coleta. Os primeiros usos lidos são de 16/10 (um post de futebol no TikTok, sem relação com a campanha, e o primeiro #verdeeamarelo no X), e a decolagem (1ª hora com pelo menos 5% do pico) é a manhã de 17/10 (CHANGELOG, C19.49 e C19.50). Por isso a página separa marco zero e decolagem. Começar antes traria os usos antigos de #verdeeamarelo, de outras campanhas e anos. ⛔ Não documentado no repositório: por que a carga de 18/10 fixou 16/10, e não outra data, como início; nem o motivo de o YouTube ser lido desde 10/10. No Google Trends, a janela de 12 meses dá a linha de base do interesse pelas expressões antes do caso, e a de 7 dias mostra o pico hora a hora."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "As duas hashtags do caso",
+   "termos": [
+    "#brasilinteiro",
+    "#verdeeamarelo"
+   ],
+   "justificativa": "São a unidade observável: a publicação que usa a marca. Cada publicação guarda o termo que a trouxe, para que a hashtag genérica (#verdeeamarelo) não contamine a leitura da específica (#brasilinteiro). O caso foi corrigido em 18/10 para duas hashtags: o perfil @verdeeamarelo saiu, porque um perfil não é um movimento de hashtag."
+  },
+  {
+   "familia": "As expressões por extenso (busca e imprensa)",
+   "termos": [
+    "brasil inteiro",
+    "verde e amarelo",
+    "brasilinteiro"
+   ],
+   "justificativa": "Quem procura no Google ou escreve um título não usa o #. A forma por extenso mede o interesse de busca; a forma colada (\"brasilinteiro\") pega quem digita a hashtag sem o símbolo. \"brasil inteiro\" fica nos dois grupos do Trends como âncora, o que permite comparar os níveis das consultas."
+  },
+  {
+   "familia": "Expressão + candidato (imprensa e YouTube)",
+   "termos": [
+    "\"brasil inteiro\" Lula",
+    "\"verde e amarelo\" Lula",
+    "brasil inteiro Lula",
+    "#verdeeamarelo Lula",
+    "#brasilinteiro"
+   ],
+   "justificativa": "\"Brasil inteiro\" e \"verde e amarelo\" são expressões do português corrente. Juntas de \"Lula\", restringem a busca ao sentido de campanha e deixam de fora futebol, moda e publicidade."
+  },
+  {
+   "familia": "Janelas de horário no X (mesmos termos)",
+   "termos": [
+    "#brasilinteiro since:2026-10-17_12:59:00_UTC until:2026-10-17_14:01:00_UTC",
+    "#brasilinteiro e #verdeeamarelo por janelas desde 16/10"
+   ],
+   "justificativa": "Não são termos novos, e sim a mesma hashtag lida em fatias de tempo. A busca do X devolve primeiro os posts mais recentes e para no limite de itens; no pico, o começo do caso ficava de fora. Dividir em janelas até cada uma fechar abaixo do limite recupera o início, que é justamente o que a pergunta de origem precisa."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "@verdeeamarelo (perfil)",
+   "motivo": "Correção de 18/10: o caso são duas hashtags. Publicações trazidas só pela busca do perfil saem dos agregados (o bruto fica no privado)."
+  },
+  {
+   "termo": "Títulos de notícia sem um dos termos do caso",
+   "motivo": "A busca do Google Notícias também devolve textos que só citam as palavras no corpo. Só entram títulos com \"brasil inteiro\", \"brasilinteiro\", \"verde e amarelo\", \"verde-amarelo\" ou \"verdeeamarelo\"."
+  },
+  {
+   "termo": "Vídeos do YouTube sem a expressão e sem um elemento de campanha",
+   "motivo": "O filtro exige \"brasil inteiro\" ou \"verde e amarelo\" no título ou na descrição e, junto, Lula, eleição, campanha, 13 ou Brasil. Para \"verde e amarelo\" o segundo filtro tira vídeos de moda e futebol; para \"brasil inteiro\" ele não filtra nada, porque a própria expressão já contém \"brasil\" (ver limites)."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X (busca por hashtag e por janelas de horário)",
+   "por_que": "Onde está quase todo o volume do caso. É a única rede em que foi possível ler o começo hora a hora."
+  },
+  {
+   "fonte": "TikTok, Instagram, Facebook e Kwai (busca por hashtag)",
+   "por_que": "A pergunta inclui \"quanto circulou em cada rede\". Essas redes medem se o movimento saiu do X (o cross entre redes)."
+  },
+  {
+   "fonte": "Google Trends (Brasil; 12 meses e 7 dias; por estado)",
+   "por_que": "Mostra se a hashtag virou busca, isto é, se chegou a quem não estava na conversa."
+  },
+  {
+   "fonte": "Google Notícias, checagens e YouTube",
+   "por_que": "Registram se a imprensa e os canais trataram o movimento, e com que leitura."
+  }
+ ],
+ "controles": "No Google Trends, \"Lula\" é o controle: separa o interesse pelas expressões do interesse geral pelo candidato, que também sobe na reta final. \"brasil inteiro\" está nas variantes e nos controles como âncora comum. Dentro das redes, o termo que trouxe cada publicação funciona como controle interno: a hashtag genérica é lida à parte da específica.",
+ "limites": [
+  "A busca do X não garante devolver tudo, mesmo com as janelas fechadas abaixo do limite: os números são posts lidos, não o total oficial (nota em casos.json).",
+  "As redes fora do X trouxeram pouco. A coleta extra para medir o cross foi autorizada em 18/10, mas não foi feita: as chaves da Apify foram recusadas naquele dia (CHANGELOG, 18/10).",
+  "TikTok: a página pública passou a devolver lista vazia desde 30/10, e o teto pago da rede se esgotou na leitura de 05/11 (manifesto-20261105T184356Z.json). Kwai: nada no período nas leituras feitas.",
+  "#verdeeamarelo também é usada pelo campo adversário. O sentido de cada uso (apoio a Lula, apoio a Bolsonaro, uso neutro) é classificado na leitura, não pela busca.",
+  "O marco zero geral pode ser um uso sem relação com o caso (o primeiro post localizado é de futebol). Por isso a decolagem é a referência para a origem do movimento.",
+  "Os dados mostram publicação concentrada num horário. Eles não dizem quem combinou nem se houve automação.",
+  "No YouTube, o filtro de \"brasil inteiro\" é fraco: qualquer vídeo com a expressão passa, porque a palavra \"brasil\" satisfaz a segunda condição."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#brasilinteiro",
+   "#verdeeamarelo",
+   "#brasilinteiro: #brasilinteiro since:2026-10-17_12:59:00_UTC until:2026-10-17_14:01:00_UTC"
+  ],
+  "tiktok": [
+   "#brasilinteiro",
+   "#verdeeamarelo"
+  ],
+  "google_trends": [
+   "brasil inteiro",
+   "verde e amarelo"
+  ],
+  "google_noticias": [
+   "brasilinteiro",
+   "\"brasil inteiro\" Lula",
+   "\"verde e amarelo\" Lula"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 584,
+   "no_periodo": 508,
+   "na_analise": 346,
+   "pct": null,
+   "termos_buscados": 30,
+   "termos_no_limite": [
+    "#brasilinteiro",
+    "#verdeeamarelo"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/001/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 14923,
+   "no_periodo": 14923,
+   "na_analise": 10862,
+   "pct": null,
+   "termos_buscados": 10,
+   "termos_no_limite": [
+    "#brasilinteiro",
+    "#verdeeamarelo"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/001/manifesto-20261018T135742Z.json, manifesto-20261018T195724Z.json, manifesto-20261018T200053Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 20,
+   "no_periodo": 20,
+   "na_analise": 19,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/001/manifesto-20261018T133352Z.json, manifesto-20261018T202819Z.json, manifesto-20261018T203018Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 15,
+   "no_periodo": 15,
+   "na_analise": 13,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/001/manifesto-20261018T132625Z.json, manifesto-20261018T133352Z.json, manifesto-20261018T202819Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ nenhuma conta dos outros pesquisadores com saldo"
+   ],
+   "origem": "data/casos/001/manifesto-20261018T202819Z.json, manifesto-20261018T203018Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 225,
+   "no_periodo": 225,
+   "na_analise": 225,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/001/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:26:48Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 108,
+   "no_periodo": 108,
+   "na_analise": 108,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/001/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:26:48Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (now 7-d, today 12-m), termos: brasil inteiro, verde e amarelo, brasilinteiro",
+   "avisos": [
+    "trends variantes today 12-m: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/001/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:26:48Z"
+  }
+ ]
+}

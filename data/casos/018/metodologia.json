@@ -1,0 +1,267 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "018",
+ "titulo": "Antigo como atual: falas, vídeos e reportagens antigas recirculadas depois do 2º turno",
+ "pergunta": "Como três conteúdos antigos voltaram a circular como se fossem atuais depois do 2º turno: (A) a fala de Fernando Haddad em Davos (janeiro de 2023) sobre não comprar de empresas sem compromisso social, usada contra as denúncias de boicote a petistas; (B) um vídeo de greve de professores em Sergipe apresentado como reação a corte na educação; (C) uma reportagem da CNN de julho de 2024 apresentada como corte de R$ 6 bilhões depois da eleição? Quanto circularam na época original e agora, por canal, e quem os fez circular em cada momento?",
+ "por_que_importa": "A recontextualização é desinformação sem montagem: o conteúdo é autêntico, o que é falso é a data ou o contexto. É a forma de \"cheapfake\" mais barata e mais difícil de refutar, porque a checagem de autenticidade não basta. Comparar a mesma peça em dois momentos mostra o que muda: quem a difunde, com que palavras e com que alcance. O episódio A se liga ao caso 014 (boicote a petistas).",
+ "recorte_temporal": {
+  "inicio": "2026-10-24 (agora) · 2023-01-15 a 2023-02-28 (época do episódio A) · 2024-07-29 a 2024-08-15 (época do episódio C)",
+  "justificativa": "O \"agora\" começa um dia antes do 2º turno, para separar a recirculação do resultado; as buscas do X usam 25/10, o dia do turno. As janelas da época cobrem a data original de cada peça e as semanas de repercussão: a fala de Davos (janeiro de 2023) e a reportagem de julho de 2024. A época do episódio B fica ⛔: a data de origem do vídeo não foi confirmada. A leitura diária do X segue até 15/11."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Episódio A: Haddad + boicote/Davos",
+   "termos": [
+    "Haddad + (boicote OR boicotar OR boicotem OR \"palito de fósforo\" OR Davos OR \"não compro\")",
+    "Haddad boicote",
+    "Haddad Davos",
+    "Haddad \"palito de fósforo\""
+   ],
+   "justificativa": "O nome do ator só entra com o lugar (Davos), o tema (boicote) ou uma expressão da fala citada pela imprensa (\"palito de fósforo\", \"não compro\"). Assim a busca pega a peça e não toda a atividade do ministro. A mesma busca é usada na época e agora, o que torna os dois períodos comparáveis."
+  },
+  {
+   "familia": "Episódio A: post que reativou a fala",
+   "termos": [
+    "conversation_id, url e quoted_tweet_id do post de Carol De Toni (2116251466734436605)"
+   ],
+   "justificativa": "O post é uma das fontes do episódio registradas no caso. Respostas e citações medem a recepção direta da peça recirculada, sem depender de palavras."
+  },
+  {
+   "familia": "Episódio B: greve de professores em Sergipe",
+   "termos": [
+    "(greve OR professores OR professoras) + Sergipe + (corte OR cortes OR Lula OR educação OR eleição)",
+    "greve professores Sergipe"
+   ],
+   "justificativa": "O lugar é o marcador mais estável do vídeo. Exigir também corte, Lula, educação ou eleição separa a leitura falsa (reação a corte) de notícias comuns sobre greves no estado."
+  },
+  {
+   "familia": "Episódio C: valor e verbo de corte",
+   "termos": [
+    "(\"6 bilhões\" OR \"6 bi\" OR \"15 bilhões\" OR \"5,9 bilhões\") + (saúde OR educação) + (corte OR cortou OR cortar OR cortes OR congelamento OR congelou)",
+    "época: (\"15 bilhões\" OR \"15 bi\" OR congelamento OR bloqueio) + (saúde OR educação) + (Haddad OR Lula OR governo)"
+   ],
+   "justificativa": "O número é a âncora da alegação falsa (\"R$ 6 bilhões\"). \"15 bilhões\" e \"congelamento\" são o vocabulário da reportagem original de 2024; incluí-los mede a peça nos dois momentos. ⛔ A origem do valor \"5,9 bilhões\" na busca não está documentada no repositório."
+  },
+  {
+   "familia": "Marcadores de checagem (notícias)",
+   "termos": [
+    "vídeo antigo checagem",
+    "antig",
+    "2023",
+    "2024"
+   ],
+   "justificativa": "Títulos de checagem costumam dizer que o vídeo \"é antigo\" ou \"é de 2024\". O filtro de título aceita esses marcadores para não perder as refutações."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Haddad\" sozinho",
+   "motivo": "Traria toda a cobertura do ministro; só entra no Trends como controle."
+  },
+  {
+   "termo": "\"corte na saúde/educação\" sem valor",
+   "motivo": "Tema recorrente em qualquer debate de orçamento; o valor é o que identifica a peça."
+  },
+  {
+   "termo": "\"vídeo antigo\" e \"é de 20xx\" como marcador geral",
+   "motivo": "Testado no acervo e descartado: muitos usos sem relação (CHANGELOG, C19.204)."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X (agora e na janela da época)",
+   "por_que": "A única rede com busca retroativa por data. Permite comparar a mesma peça nos dois momentos com a mesma consulta."
+  },
+  {
+   "fonte": "YouTube: vídeos originais do episódio A (comentários por mês) e vídeos publicados em cada janela",
+   "por_que": "O YouTube não informa visualizações passadas; os comentários datados e os vídeos publicados em cada janela reconstroem a época (scripts/caso_antigo_atual.py)."
+  },
+  {
+   "fonte": "Instagram (posts indicados e reels por assunto), Facebook, TikTok",
+   "por_que": "Onde a peça recirculou depois da eleição, sobretudo em vídeo."
+  },
+  {
+   "fonte": "Google Trends semanal desde 2023 e por janela",
+   "por_que": "Mostra o pico da época e o de agora na mesma escala."
+  },
+  {
+   "fonte": "Google Notícias e checagens (UOL Confere, Lupa, Boatos.org)",
+   "por_que": "As checagens identificam a recontextualização e dão a data original."
+  }
+ ],
+ "controles": "No Trends, \"Haddad\" (CASOS[\"018\"]). Ele separa o interesse pela fala de Davos do interesse geral pelo ministro. Para os episódios B e C não há termo de controle próprio no Trends. A comparação época × agora funciona como controle interno: o mesmo filtro de pertinência é aplicado aos dois períodos (scripts/caso018_comparacao.py).",
+ "limites": [
+  "Instagram e Facebook não têm busca retroativa: a época fica ⛔ nessas redes, e a comparação de canais na época depende do X e do YouTube.",
+  "O YouTube só informa as visualizações de hoje; a circulação da época é reconstruída por comentários datados e vídeos publicados na janela.",
+  "Episódio B: a data de origem do vídeo não foi confirmada (o UOL Confere não pôde ser lido pela ferramenta), então não há janela da época (⛔). A leitura diária do X do episódio B devolveu zero (manifesto-20261102T213304Z).",
+  "Na coleta de notícias de collect_caso_busca.py, o título precisa citar Haddad ou Lula; notícias do episódio B que não citam nenhum dos dois ficam fora dessa coleta. A outra coleta (casos.json) aceita \"greve\" e \"sergipe\".",
+  "As buscas do episódio A chegaram ao limite na leitura diária (manifesto-20261101T205817Z).",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "A agora: Haddad boicote/Davos: Haddad (boicote OR boicotar OR boicotem OR \"palito de fósforo\" OR \"palito de fosforo\" OR Davos OR \"não compro\") since:2026-10-25",
+   "A agora: post de Carol De Toni (respostas e citações): (conversation_id:2116251466734436605 OR url:2116251466734436605 OR quoted_tweet_id:2116251466734436605)",
+   "B agora: greve de professores em Sergipe: (greve OR professores OR professoras) Sergipe (corte OR cortes OR Lula OR educação OR eleição) since:2026-10-25",
+   "C agora: corte de R$ 6 bilhões na saúde e educação: (\"6 bilhões\" OR \"6 bi\" OR \"15 bilhões\" OR \"5,9 bilhões\") (saúde OR educação) (corte OR cortou OR cortar OR cortes OR congelamento OR congelou) since:2026-10-25"
+  ],
+  "tiktok": [
+   "Haddad boicote",
+   "Haddad Davos",
+   "greve professores Sergipe",
+   "Lula cortou saúde educação"
+  ],
+  "instagram": [
+   "reels: Haddad boicote Davos",
+   "reels: Haddad palito de fósforo",
+   "reels: Lula cortou saúde educação"
+  ],
+  "facebook": [
+   "Haddad boicote",
+   "Lula cortou 6 bilhões saúde educação",
+   "greve professores Sergipe corte"
+  ],
+  "google_trends": [
+   "Haddad boicote",
+   "Haddad Davos",
+   "Lula corte saúde"
+  ],
+  "google_noticias": [
+   "Haddad boicote Davos",
+   "Haddad \"palito de fósforo\"",
+   "greve professores Sergipe vídeo",
+   "Lula corte 6 bilhões saúde educação",
+   "vídeo antigo checagem"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 2390,
+   "no_periodo": 2390,
+   "na_analise": 1374,
+   "pct": null,
+   "termos_buscados": 28,
+   "termos_no_limite": [
+    "diário: A agora: Haddad boicote/Davos",
+    "diário: A agora: post de Carol De Toni (respostas e citações)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/018/manifesto-20261105T185529Z.json, manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 143,
+   "no_periodo": 128,
+   "na_analise": 102,
+   "pct": null,
+   "termos_buscados": 5,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/018/manifesto-20261030T204517Z.json, manifesto-20261030T205256Z.json, manifesto-20261031T013509Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 71,
+   "no_periodo": 71,
+   "na_analise": 71,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/018/manifesto-20261030T204517Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/018/manifesto-20261030T204517Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 766,
+   "no_periodo": 726,
+   "na_analise": 507,
+   "pct": null,
+   "termos_buscados": 20,
+   "termos_no_limite": [
+    "Haddad Davos",
+    "Haddad boicote",
+    "Lula cortou saúde educação",
+    "greve professores Sergipe"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/018/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 15,
+   "no_periodo": 15,
+   "na_analise": 15,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/018/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:02:19Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: Haddad boicote, Haddad Davos, Lula corte saúde",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/018/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:02:19Z"
+  }
+ ]
+}

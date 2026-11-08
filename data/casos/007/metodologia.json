@@ -1,0 +1,227 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "007",
+ "titulo": "\"Lula amassa a bandeira\" (fake news do dia da eleição)",
+ "pergunta": "Como circulou a acusação falsa (AFP Checamos) de que Lula amassou a bandeira do Brasil, publicada num reel do Instagram em 04/10/2026, dia do 1º turno? Como a audiência do reel reagiu (adesão ou contestação) e quanto o tema se espalhou para outras redes, buscas e imprensa?",
+ "por_que_importa": "Desinformação publicada no dia da votação deixa pouco tempo para resposta antes do voto. A acusação usa um símbolo nacional como prova de desprezo pela pátria, o mesmo terreno simbólico disputado no caso 001 (#verdeeamarelo). Os comentários do reel mostram, no lugar da publicação, se a audiência aceita a acusação ou aponta montagem; a busca por termo mostra se ela saiu da peça original.",
+ "recorte_temporal": {
+  "inicio": "2026-10-03",
+  "justificativa": "Um dia antes do reel e do 1º turno, para captar circulação da mesma acusação anterior à peça indicada. ⛔ O repositório registra 03/10 como início do episódio, mas não o motivo de começar na véspera. O YouTube é lido desde 01/10. Os comentários do reel vêm de coletas feitas em 06 e 07/10, dois e três dias depois da publicação."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Ação + objeto",
+   "termos": [
+    "Lula amassa bandeira",
+    "Lula amassou a bandeira",
+    "Lula bandeira amassada",
+    "#lulaamassabandeira",
+    "Lula (amassa OR amassou OR amassando OR amassada OR amassado OR rasgou) bandeira"
+   ],
+   "justificativa": "A acusação aparece narrada (\"amassou\"), descrita (\"bandeira amassada\") ou no presente das legendas (\"amassa\"). No X, as flexões entram juntas; \"rasgou\" pega versões que exageram o mesmo gesto."
+  },
+  {
+   "familia": "Contexto eleitoral e desmentido",
+   "termos": [
+    "Lula bandeira do Brasil",
+    "Lula bandeira do Brasil eleição",
+    "Lula amassa bandeira checagem",
+    "Lula bandeira amassada falso"
+   ],
+   "justificativa": "Captam o enquadramento eleitoral da peça e orientam a busca de notícias para as checagens e desmentidos, que são a outra metade da circulação."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"bandeira\" sozinho",
+   "motivo": "Ruído alto (bandeiras de clube, de partido, datas cívicas). O filtro do YouTube exige \"bandeira\" e, junto, Lula, \"amass\", eleição, voto ou urna."
+  },
+  {
+   "termo": "\"Lula bandeira\" nas redes",
+   "motivo": "Traria qualquer post de Lula com bandeira (comícios, atos). Fica só no Trends, como controle."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Instagram: comentários do reel (importados e unificados por id)",
+   "por_que": "É a audiência direta da peça. A pré-codificação separa quem aponta montagem ou fake, quem ataca e quem defende Lula."
+  },
+  {
+   "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+   "por_que": "Medem se a acusação saiu do reel original."
+  },
+  {
+   "fonte": "Google Notícias e checagens (AFP Checamos)",
+   "por_que": "Registram o desmentido e permitem comparar seu alcance com o da peça."
+  },
+  {
+   "fonte": "Google Trends e YouTube",
+   "por_que": "Se a acusação gerou busca e vídeos de repercussão."
+  }
+ ],
+ "controles": "No Google Trends, \"Lula bandeira\" e \"bandeira do Brasil\": o segundo separa o interesse geral pelo símbolo nacional, que pode variar em torno do dia da votação, do interesse pela acusação. Não há termo-âncora comum aos dois grupos, então os níveis não se comparam diretamente.",
+ "limites": [
+  "Os comentários são o que as coletas de 06 e 07/10 devolveram, na ordem \"populares\" do Instagram, não o total (nota em instagram.json). Comentários posteriores não são vistos.",
+  "A busca por termo nas redes só foi feita em 01–02/11, quase um mês depois: posts apagados antes disso ficam de fora.",
+  "TikTok: na leitura paga de 02/11, \"Lula amassa bandeira\" chegou ao limite de itens (manifesto-20261102T210119Z.json), e o teto se esgotou em 04/11 (manifesto-20261104T183944Z.json). Kwai: teto esgotado e depois nada no período.",
+  "No filtro de títulos da coleta diária de notícias, basta \"Lula\" ou \"bandeira\" como palavra inteira: qualquer título com Lula desde 03/10 passa. A leitura manual separa o que é do caso."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): (Lula (amassa OR amassou OR amassando OR amassada OR amassado OR rasgou) bandeira) since:2026-10-03"
+  ],
+  "tiktok": [
+   "Lula amassa bandeira",
+   "Lula bandeira amassada"
+  ],
+  "instagram": [
+   "#lulaamassabandeira",
+   "reels: Lula amassa bandeira",
+   "reels: Lula bandeira amassada"
+  ],
+  "facebook": [
+   "Lula amassa bandeira",
+   "Lula amassou a bandeira"
+  ],
+  "google_trends": [
+   "Lula amassa bandeira",
+   "Lula bandeira"
+  ],
+  "google_noticias": [
+   "Lula amassa bandeira checagem",
+   "Lula bandeira amassada falso"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 94,
+   "no_periodo": 84,
+   "na_analise": 78,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/007/manifesto-20261102T013531Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 96,
+   "no_periodo": 96,
+   "na_analise": 93,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/007/manifesto-20261102T013531Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/007/manifesto-20261102T013531Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 94,
+   "no_periodo": 94,
+   "na_analise": 94,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/007/manifesto-20261102T020514Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 788,
+   "no_periodo": 788,
+   "na_analise": 524,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [
+    "Lula amassa bandeira"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/007/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 109,
+   "no_periodo": 109,
+   "na_analise": 109,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/007/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:46:56Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 4,
+   "no_periodo": 4,
+   "na_analise": 4,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/007/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:46:56Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (now 7-d, today 12-m), termos: Lula amassa bandeira, Lula bandeira amassada, Lula bandeira do Brasil",
+   "avisos": [
+    "trends variantes today 12-m: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/007/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:46:56Z"
+  }
+ ]
+}

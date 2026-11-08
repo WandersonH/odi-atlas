@@ -1,0 +1,282 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "020",
+ "titulo": "O menino que vendia balas: criança constrangida por dizer que votava em Lula, em Fortaleza",
+ "pergunta": "Como circulou, desde 28/10/2026, o vídeo em que uma influenciadora bolsonarista constrange uma criança que vendia balas em Fortaleza por dizer que a família votava em Lula? Que reações se formaram (repúdio, doações, pedido para a criança subir a rampa na posse), em que redes (com foco no Instagram), e o que o Google mostra no topo da busca?",
+ "por_que_importa": "O caso registra intolerância política dirigida a uma criança, um limite que a polarização raramente cruza de forma tão explícita. Ele permite medir como um ato individual vira objeto de repúdio coletivo e de mobilização política do lado oposto. O ranking da busca do Google mostra que versão do episódio fica disponível para quem procura depois. A proteção da criança é parte do método.",
+ "recorte_temporal": {
+  "inicio": "2026-10-28",
+  "justificativa": "Data da publicação do vídeo que deu origem ao caso; antes dela o episódio não existe. A leitura diária do X e do ranking do Google segue até 15/11/2026, o que cobre a posse prevista, objeto da mobilização da rampa."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Apelido da criança usado pela imprensa (só como termo de busca)",
+   "termos": [
+    "[apelido da criança na imprensa]",
+    "[duas hashtags formadas pelo apelido]"
+   ],
+   "justificativa": "É a forma pela qual o episódio foi nomeado na imprensa e nas redes; sem ela, a busca perde a maior parte da circulação. O termo nunca aparece nas saídas públicas: o nome é trocado por \"[menino]\" (mascarar_regex) e a conta da criança não aparece pelo nome (contas_ocultas_regex)."
+  },
+  {
+   "familia": "Autora do vídeo",
+   "termos": [
+    "Valéria Diniz",
+    "Valeria Diniz",
+    "@valeriadiniz",
+    "#valeriadiniz"
+   ],
+   "justificativa": "A autora tinha cerca de 70 mil seguidores na conta anterior, acima do limite de figura pública do projeto. O nome capta a repercussão centrada nela, inclusive o pedido de desculpas e a saída da conta."
+  },
+  {
+   "familia": "Descrição do episódio, sem nome",
+   "termos": [
+    "(\"vendia balas\" OR \"vendendo balas\") + Lula",
+    "(\"faz o L\" OR \"fazer o L\") + menino",
+    "menino + descritor usado pela imprensa + Lula",
+    "menino balas Fortaleza (Lula)",
+    "influenciadora menino fazer o L"
+   ],
+   "justificativa": "Muita gente comenta o caso sem nomear ninguém. A combinação do gesto (\"fazer o L\") ou da atividade (vender balas) com o candidato ou com \"menino\" capta esse discurso e evita o bordão \"faz o L\" em geral."
+  },
+  {
+   "familia": "Mobilização da rampa e da posse",
+   "termos": [
+    "(prenome da criança OR menino) + (rampa OR posse) + (Lula OR Janones) + (parte do apelido OR balas OR Fortaleza)",
+    "menino + parte do apelido + Lula rampa"
+   ],
+   "justificativa": "Mede a passagem do repúdio à apropriação política do episódio pelo lado oposto. André Janones é citado pela imprensa nessa mobilização."
+  },
+  {
+   "familia": "Ranking do Google",
+   "termos": [
+    "as mesmas frases do caso, cinco consultas, primeira página, Brasil, português, sem login"
+   ],
+   "justificativa": "Mostra que resultados ficam no topo e como mudam a cada leitura: é a memória pública do episódio."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"faz o L\" / \"fazer o L\" sozinhos",
+   "motivo": "É o bordão de campanha (caso 037). Só entra com \"menino\"."
+  },
+  {
+   "termo": "Prenome da criança sozinho e \"Fortaleza\" sozinho",
+   "motivo": "Ruído total e risco de identificar a criança."
+  },
+  {
+   "termo": "Imagem, conta, escola ou local exato da criança; mídia dos vídeos",
+   "motivo": "Proteção da criança: nada disso é publicado nem preservado; comentários ficam só no repositório privado."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Instagram (hashtags e busca de reels; foco do caso)",
+   "por_que": "O vídeo original e a maior parte da repercussão estavam no Instagram."
+  },
+  {
+   "fonte": "X (busca e leitura diária), Facebook, TikTok, YouTube",
+   "por_que": "Circulação nas outras redes e comentário em vídeo."
+  },
+  {
+   "fonte": "Ranking da busca do Google (scripts/serp_caso.py, diário)",
+   "por_que": "Registra posição, título e domínio dos resultados, o carrossel de notícias e as buscas relacionadas."
+  },
+  {
+   "fonte": "Google Trends e Google Notícias (7 dias)",
+   "por_que": "Interesse de busca e cobertura da imprensa."
+  }
+ ],
+ "controles": "No Trends, \"Lula\" (CASOS[\"020\"]). Ele dá a escala do interesse pelo candidato no mesmo período, para ver se o episódio teve pico próprio.",
+ "limites": [
+  "A busca de reels por \"Valéria Diniz\" devolveu zero (manifesto-20261031T002207Z). A conta original saiu do ar; ⛔ não está documentado no repositório se o post original foi lido.",
+  "As duas hashtags com o apelido não devolveram nada no X (manifesto-20261031T001215Z).",
+  "O ranking do Google não informa o total de resultados (⛔), e parte dos links vem como redirecionamento; publicações de redes sociais no ranking ficam sem link (serp_ocultar_links_redes). A 1ª leitura publicou o nome da criança; foi corrigida e a cópia original foi movida para o privado (CHANGELOG, C19.214).",
+  "Como a mídia não é preservada, vídeos apagados depois da coleta não podem ser revistos.",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+  "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#matheusdosbombons",
+   "#valeriadiniz",
+   "#meninodosbombons",
+   "menino das balas / Valéria Diniz: (\"Matheus dos Bombons\" OR \"menino dos bombons\" OR \"Valéria Diniz\" OR \"Valeria Diniz\" OR \"@valeriadiniz\" OR (\"vendia balas\" Lula) OR (\"vendendo balas\" Lula) OR (\"faz o L\" menino) OR (\"fazer o L\" menino) OR (\"menino autista\" Lula)) since:2026-10-28",
+   "rampa / posse com o menino: ((\"Matheus\" OR menino) (rampa OR posse) (Lula OR Janones) (bombons OR balas OR Fortaleza)) since:2026-10-28"
+  ],
+  "tiktok": [
+   "#matheusdosbombons",
+   "#valeriadiniz",
+   "#meninodosbombons",
+   "Matheus dos Bombons",
+   "Valéria Diniz",
+   "menino balas Fortaleza Lula",
+   "influenciadora menino fazer o L"
+  ],
+  "instagram": [
+   "#matheusdosbombons",
+   "#valeriadiniz",
+   "#meninodosbombons",
+   "reels: Matheus dos Bombons",
+   "reels: Valéria Diniz",
+   "reels: menino balas Fortaleza",
+   "reels: menino fazer o L",
+   "reels: menino bombons Lula rampa"
+  ],
+  "facebook": [
+   "Matheus dos Bombons",
+   "Valéria Diniz menino",
+   "menino balas Fortaleza Lula"
+  ],
+  "google_trends": [
+   "Matheus dos Bombons",
+   "Valéria Diniz",
+   "menino balas Fortaleza"
+  ],
+  "google_noticias": [
+   "Matheus dos Bombons",
+   "Valéria Diniz",
+   "menino balas Fortaleza Lula",
+   "influenciadora menino fazer o L",
+   "menino bombons rampa Lula"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 728,
+   "no_periodo": 728,
+   "na_analise": 352,
+   "pct": null,
+   "termos_buscados": 35,
+   "termos_no_limite": [
+    "#matheusdosbombons",
+    "#meninodosbombons",
+    "#valeriadiniz",
+    "Matheus dos Bombons",
+    "Valéria Diniz",
+    "influenciadora menino fazer o L",
+    "menino balas Fortaleza Lula"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/020/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 510,
+   "no_periodo": 510,
+   "na_analise": 219,
+   "pct": null,
+   "termos_buscados": 11,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/020/manifesto-20261105T185529Z.json, manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 288,
+   "no_periodo": 268,
+   "na_analise": 182,
+   "pct": null,
+   "termos_buscados": 11,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/020/manifesto-20261031T001215Z.json, manifesto-20261031T002207Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 154,
+   "no_periodo": 154,
+   "na_analise": 138,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/020/manifesto-20261031T001215Z.json, manifesto-20261031T002207Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 7,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/020/manifesto-20261031T001215Z.json, manifesto-20261031T002207Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 107,
+   "no_periodo": 107,
+   "na_analise": 107,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/020/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:13:24Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 6,
+   "no_periodo": 6,
+   "na_analise": 6,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/020/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:13:24Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: Matheus dos Bombons, Valéria Diniz, menino balas Fortaleza, menino fazer o L",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/020/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:13:24Z"
+  }
+ ]
+}

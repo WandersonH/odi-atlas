@@ -1,0 +1,206 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "010",
+ "titulo": "Brasileiros nos perfis de Donald Trump e Marco Rubio (24 a 27/10/2026)",
+ "pergunta": "Entre a véspera do 2º turno e os dois dias seguintes (24 a 27/10/2026), quanto do que se publicou em português nos perfis de Donald Trump e Marco Rubio no X e no Instagram falava do Brasil ou da eleição? O que esses usuários afirmavam ou pediam (fraude, golpe, ajuda, sanção, intervenção)?",
+ "por_que_importa": "O espaço de respostas de autoridades estrangeiras vira arena de política doméstica: usuários endereçam a um governo estrangeiro pedidos sobre a eleição do próprio país. O caso mede essa internacionalização do lado de quem pede, e complementa os casos que tratam o mesmo fenômeno do lado das autoridades (006, o anúncio de Rubio) e dos atores brasileiros no exterior (012). A proporção que cita o Brasil ou a eleição indica se a presença em português é reação ao resultado ou atividade geral desses usuários.",
+ "recorte_temporal": {
+  "inicio": "2026-10-24",
+  "justificativa": "A véspera do 2º turno (25/10) dá um dia de base antes do resultado; a janela fecha em 27/10, dois dias depois. Começar antes misturaria a reação ao resultado com a conversa de campanha. O Trends usa 7 dias, 1 mês e 12 meses (linha de base); as notícias da coleta de busca, janela de 14 dias."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Respostas em português aos perfis",
+   "termos": [
+    "to:realDonaldTrump lang:pt",
+    "to:marcorubio lang:pt",
+    "to:SecRubio lang:pt"
+   ],
+   "justificativa": "A resposta é o gesto de se dirigir à autoridade. Rubio entra com o perfil pessoal e o oficial de secretário de Estado, porque quem escreve pode se dirigir a qualquer um dos dois."
+  },
+  {
+   "familia": "Menções em português que não são resposta",
+   "termos": [
+    "(@realDonaldTrump OR @marcorubio OR @SecRubio) lang:pt -filter:replies"
+   ],
+   "justificativa": "Captam quem marca os perfis em posts próprios (chamados, apelos), um modo de se dirigir a eles sem estar na conversa do post."
+  },
+  {
+   "familia": "Posts dos próprios perfis",
+   "termos": [
+    "(from:realDonaldTrump OR from:marcorubio OR from:SecRubio)",
+    "posts de @realdonaldtrump, @marcorubio e @secrubio no Instagram desde 24/10"
+   ],
+   "justificativa": "Dão o contexto e o denominador: mostram a que posts as respostas se dirigem e se eles falavam do Brasil. O número de respostas que o X informa nesses posts é o universo das respostas."
+  },
+  {
+   "familia": "Busca e imprensa",
+   "termos": [
+    "Trump Brasil",
+    "Rubio Brasil",
+    "Trump Lula",
+    "Rubio Lula",
+    "Trump eleição Brasil",
+    "Rubio eleição Brasil",
+    "Trump Brasil Lula (TikTok)",
+    "brasileiros Trump comentários (TikTok)"
+   ],
+   "justificativa": "Medem se a relação entre as autoridades americanas e a eleição brasileira foi buscada e noticiada, e se o próprio fenômeno dos comentários virou assunto."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "Posts em outras línguas",
+   "motivo": "A pergunta é sobre o público de língua portuguesa. O filtro lang:pt é o idioma detectado pelo X: inclui portugueses e outros lusófonos, e a página fala em \"em português\", não em nacionalidade."
+  },
+  {
+   "termo": "Notícias sem Trump ou Rubio e sem Brasil, Lula ou eleição no título",
+   "motivo": "O filtro da coleta de busca exige os dois elementos no título."
+  },
+  {
+   "termo": "YouTube",
+   "motivo": "O caso não lê o YouTube (sem_youtube em collect_caso_busca.py). ⛔ O repositório não registra o motivo além de que ele \"não se aplica\" a este caso."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X (respostas, menções e posts dos perfis)",
+   "por_que": "Rede em que os dois perfis publicam com frequência e em que a resposta é pública e pesquisável por destinatário e idioma."
+  },
+  {
+   "fonte": "Instagram (posts dos três perfis e comentários)",
+   "por_que": "Segunda arena de comentários; o português é separado depois por marcadores da língua."
+  },
+  {
+   "fonte": "Google Trends, Google Notícias (14 dias), checagens e TikTok",
+   "por_que": "Se o tema virou busca, notícia e vídeo curto."
+  }
+ ],
+ "controles": "No Google Trends, \"Trump\" é o controle: separa o interesse por Trump ligado ao Brasil do interesse geral por ele. Não há termo-âncora comum aos dois grupos. No X, o universo das respostas (soma do que o X informa nos posts dos perfis, em todas as línguas) serve de denominador para a fração em português (data/casos/010/resumo.json). ⛔ Não há perfil de controle (outra autoridade estrangeira) para saber se a presença em português é específica de Trump e Rubio.",
+ "limites": [
+  "lang:pt é detecção automática do X; textos curtos podem ser mal classificados, e português não é prova de nacionalidade.",
+  "A busca to:perfil também pega respostas a posts anteriores ao período, o que infla a amostra em relação ao universo dos posts do período (resumo.json).",
+  "O X não informa o total de menções: o universo das menções é ⛔ desconhecido. Nenhuma busca do X bateu no limite pedido, então é o que a busca devolveu para o período (CHANGELOG, C19.173).",
+  "No Instagram, a coleta achou um único post dos três perfis no período (instagram_coleta.json); os comentários vêm na ordem \"populares\", sem respostas.",
+  "A coleta foi feita na madrugada de 27/10: reações posteriores não são vistas.",
+  "\"Trump Brasil\" no Trends é termo amplo e mistura outros assuntos da relação entre os países.",
+  "TikTok: teto esgotado na leitura de 04/11 (manifesto-20261104T183944Z.json). Na coleta diária de notícias o caso não tem filtro de título (casos.json sem filtro_titulo_noticias)."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "resp. @realDonaldTrump: to:realDonaldTrump lang:pt since:2026-10-24",
+   "resp. @marcorubio: to:marcorubio lang:pt since:2026-10-24",
+   "resp. @SecRubio: to:SecRubio lang:pt since:2026-10-24",
+   "menções em pt: (@realDonaldTrump OR @marcorubio OR @SecRubio) lang:pt -filter:replies since:2026-10-24",
+   "posts dos perfis: (from:realDonaldTrump OR from:marcorubio OR from:SecRubio) since:2026-10-24"
+  ],
+  "tiktok": [
+   "Trump Brasil Lula",
+   "Rubio Brasil Lula",
+   "brasileiros Trump comentários"
+  ],
+  "google_trends": [
+   "Trump Brasil",
+   "Rubio Brasil"
+  ],
+  "google_noticias": [
+   "Trump eleição Brasil",
+   "Rubio eleição Brasil",
+   "Trump Lula",
+   "Rubio Lula"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 3455,
+   "no_periodo": 3455,
+   "na_analise": 2819,
+   "pct": null,
+   "termos_buscados": 5,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/010/manifesto-20261027T050107Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 832,
+   "no_periodo": 728,
+   "na_analise": 569,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [
+    "Trump Brasil Lula",
+    "brasileiros Trump comentários"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/010/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/010/manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 179,
+   "no_periodo": 179,
+   "na_analise": 179,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/010/busca.json (noticias)",
+   "coletado_em": "2026-11-07T14:57:44Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (now 7-d, today 1-m, today 12-m), termos: Trump Brasil, Rubio Brasil, Trump Lula, Rubio Lula",
+   "avisos": [],
+   "origem": "data/casos/010/busca.json (trends)",
+   "coletado_em": "2026-11-07T14:57:44Z"
+  }
+ ]
+}

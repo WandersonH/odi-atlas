@@ -1,0 +1,243 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "008",
+ "titulo": "Camisetas do PT em Piracicaba (reel de Derrite e acusação contra a PM)",
+ "pergunta": "Como circulou o reel de Guilherme Derrite (21/10/2026) com jovens detidos em Piracicaba (SP) vestindo camisetas de Lula/PT, e a acusação, trazida por reportagens, de que policiais os obrigaram a vestir as camisetas (o PT pediu investigação em 22/10)? Que versão a audiência do reel e as outras redes adotaram: ilícito de militantes ou armação policial?",
+ "por_que_importa": "A mesma imagem sustenta duas versões opostas: prova de ilícito de apoiadores de um candidato, ou encenação feita por agentes do Estado. O caso mede onde cada versão circula e se a acusação de armação alcança o público do reel original. O reel saiu do ar (CHANGELOG, C19.147); a cópia guardada permite estudar uma peça que deixou de existir na plataforma.",
+ "recorte_temporal": {
+  "inicio": "2026-10-21",
+  "justificativa": "Data do reel. O YouTube é lido desde 21/10. As notícias da coleta de busca usam janela de 3 dias (\"when:3d\"), sem aspas, porque o ciclo do episódio é curto e os títulos quase nunca trazem \"Piracicaba\". No Trends, 7 dias e 1 mês cobrem o episódio; 12 meses dá a linha de base de termos que existem fora dele, como o nome da cidade."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Lugar + objeto + ator",
+   "termos": [
+    "camisetas PT Piracicaba",
+    "Piracicaba camiseta Lula",
+    "Piracicaba (camiseta OR camisetas OR camisa) (PT OR Lula OR PM OR polícia OR Derrite)"
+   ],
+   "justificativa": "No X, a busca exige a cidade, o objeto e um ator (partido, candidato, polícia ou o autor do reel). Cada elemento sozinho traria assuntos sem relação."
+  },
+  {
+   "familia": "Objeto + polícia, sem lugar",
+   "termos": [
+    "PM camiseta Lula presos",
+    "presos camiseta Lula PM",
+    "jovens presos camiseta Lula",
+    "PM obriga presos camiseta Lula",
+    "policiais camiseta Lula militantes",
+    "PM camisetas PT Piracicaba"
+   ],
+   "justificativa": "Entraram em 22/10, quando a primeira busca de notícias deu 0 porque exigia \"Piracicaba\" no título (CHANGELOG, C19.111). Captam a versão da acusação contra a polícia, que a imprensa narra sem citar a cidade."
+  },
+  {
+   "familia": "Autor do reel",
+   "termos": [
+    "Derrite camisetas PT",
+    "Derrite Piracicaba",
+    "Derrite camisetas Piracicaba"
+   ],
+   "justificativa": "Captam a versão original e a repercussão ligada ao autor."
+  },
+  {
+   "familia": "Denúncia",
+   "termos": [
+    "PT denúncia PM camisetas",
+    "PT denúncia PM camisetas Lula"
+   ],
+   "justificativa": "Captam a reação do partido (22/10), marco da virada para a versão da armação."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Piracicaba\" sozinho",
+   "motivo": "Todo o noticiário da cidade. Fica no Trends como controle (mas ver limites sobre #piracicaba no Instagram)."
+  },
+  {
+   "termo": "Vídeos e notícias sem \"camis\" e sem um elemento do caso",
+   "motivo": "O filtro da coleta de busca exige \"camis\" no título e, junto, Piracicaba, PM, polícia, policiais, presos, jovens, Derrite, Tarcísio, militantes, \"incrimin\", armação, PT ou Lula."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Instagram: o reel, os comentários e a cópia do vídeo",
+   "por_que": "A audiência da versão original. A cópia (vídeo, capa e legenda) substitui o post apagado na página."
+  },
+  {
+   "fonte": "YouTube",
+   "por_que": "Foi nos vídeos que a acusação contra a polícia apareceu primeiro de forma clara (CHANGELOG, C19.111)."
+  },
+  {
+   "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+   "por_que": "Medem a circulação das duas versões fora do reel."
+  },
+  {
+   "fonte": "Google Notícias (3 dias), checagens e Google Trends",
+   "por_que": "Cronologia da imprensa, verificação e interesse de busca."
+  }
+ ],
+ "controles": "No Google Trends, \"Piracicaba\" e \"camiseta Lula\": separam o interesse geral pela cidade e pelo produto de campanha do interesse pelo episódio. Não há termo-âncora comum aos dois grupos, então os níveis não se comparam diretamente.",
+ "limites": [
+  "No Instagram, a hashtag #piracicaba é a hashtag genérica da cidade e chegou ao limite de itens (manifesto-20261102T025443Z.json). O repositório não tem filtro posterior de texto para as publicações das redes (build_casos.py filtra só por data e termo): a separação do que é do caso depende de leitura.",
+  "O reel saiu do ar. Os comentários são o que a coleta de 22/10 devolveu, na ordem \"populares\", não o total (nota em instagram.json). O pedido de cópia ao Internet Archive falhou (HTTP 520).",
+  "A coleta de busca regrava a lista de notícias a cada leitura, com janela de 3 dias (collect_caso_busca.py): notícias mais antigas que isso saem dessa lista. A lista da coleta diária (termos_noticias, desde 21/10) não tem essa janela, mas o filtro dela é frouxo: basta \"PT\" ou \"PM\" como palavra inteira no título.",
+  "TikTok: teto esgotado na leitura de 04/11 (manifesto-20261104T183944Z.json). Kwai: teto esgotado e depois nada no período."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): (Piracicaba (camiseta OR camisetas OR camisa) (PT OR Lula OR PM OR polícia OR Derrite)) since:2026-10-21"
+  ],
+  "tiktok": [
+   "camisetas PT Piracicaba",
+   "Derrite Piracicaba"
+  ],
+  "instagram": [
+   "#piracicaba",
+   "reels: camisetas PT Piracicaba",
+   "reels: Derrite camisetas Piracicaba"
+  ],
+  "facebook": [
+   "camisetas PT Piracicaba",
+   "Derrite Piracicaba camisetas"
+  ],
+  "google_trends": [
+   "camisetas PT Piracicaba",
+   "Piracicaba PM"
+  ],
+  "google_noticias": [
+   "camisetas PT Piracicaba PM",
+   "Derrite Piracicaba camisetas"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 197,
+   "no_periodo": 171,
+   "na_analise": 158,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "#piracicaba"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/008/manifesto-20261102T025443Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 78,
+   "no_periodo": 78,
+   "na_analise": 75,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/008/manifesto-20261102T025443Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/008/manifesto-20261102T025443Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 73,
+   "no_periodo": 73,
+   "na_analise": 73,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/008/manifesto-20261102T031432Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 397,
+   "no_periodo": 308,
+   "na_analise": 221,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/008/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 77,
+   "no_periodo": 77,
+   "na_analise": 77,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/008/busca.json (youtube)",
+   "coletado_em": "2026-11-07T16:42:24Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/008/busca.json (noticias)",
+   "coletado_em": "2026-11-07T16:42:24Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m), termos: camisetas PT Piracicaba, PM camiseta Lula presos, Piracicaba camiseta Lula, Derrite camisetas PT",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/008/busca.json (trends)",
+   "coletado_em": "2026-11-07T16:42:24Z"
+  }
+ ]
+}

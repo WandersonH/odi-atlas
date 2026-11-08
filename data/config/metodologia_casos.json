@@ -21,6 +21,2307 @@
    }
   ]
  },
+ "001": {
+  "pergunta": "De onde partiram as hashtags #brasilinteiro e #verdeeamarelo, indicadas pela equipe como movimento de apoio a Lula em outubro de 2026, quem as amplificou e quanto elas circularam em cada rede?",
+  "por_que_importa": "O caso testa como nasce uma mobilização por hashtag em campanha: por difusão gradual ou por publicação concentrada num horário. Também envolve disputa de símbolo: #verdeeamarelo é hashtag antiga e genérica, usada por apoiadores de Bolsonaro desde 2018 (aviso registrado em casos.json). O uso dela em apoio a Lula é, portanto, apropriação de um marcador do campo adversário. Medir de onde o movimento parte e em que redes ele aparece separa o lançamento (quem publica primeiro) da amplificação (quem repete).",
+  "recorte_temporal": {
+   "inicio": "2026-10-16",
+   "justificativa": "O caso não parte de um evento externo datado: o marco zero é a primeira publicação localizada pela coleta. Os primeiros usos lidos são de 16/10 (um post de futebol no TikTok, sem relação com a campanha, e o primeiro #verdeeamarelo no X), e a decolagem (1ª hora com pelo menos 5% do pico) é a manhã de 17/10 (CHANGELOG, C19.49 e C19.50). Por isso a página separa marco zero e decolagem. Começar antes traria os usos antigos de #verdeeamarelo, de outras campanhas e anos. ⛔ Não documentado no repositório: por que a carga de 18/10 fixou 16/10, e não outra data, como início; nem o motivo de o YouTube ser lido desde 10/10. No Google Trends, a janela de 12 meses dá a linha de base do interesse pelas expressões antes do caso, e a de 7 dias mostra o pico hora a hora."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "As duas hashtags do caso",
+    "termos": [
+     "#brasilinteiro",
+     "#verdeeamarelo"
+    ],
+    "justificativa": "São a unidade observável: a publicação que usa a marca. Cada publicação guarda o termo que a trouxe, para que a hashtag genérica (#verdeeamarelo) não contamine a leitura da específica (#brasilinteiro). O caso foi corrigido em 18/10 para duas hashtags: o perfil @verdeeamarelo saiu, porque um perfil não é um movimento de hashtag."
+   },
+   {
+    "familia": "As expressões por extenso (busca e imprensa)",
+    "termos": [
+     "brasil inteiro",
+     "verde e amarelo",
+     "brasilinteiro"
+    ],
+    "justificativa": "Quem procura no Google ou escreve um título não usa o #. A forma por extenso mede o interesse de busca; a forma colada (\"brasilinteiro\") pega quem digita a hashtag sem o símbolo. \"brasil inteiro\" fica nos dois grupos do Trends como âncora, o que permite comparar os níveis das consultas."
+   },
+   {
+    "familia": "Expressão + candidato (imprensa e YouTube)",
+    "termos": [
+     "\"brasil inteiro\" Lula",
+     "\"verde e amarelo\" Lula",
+     "brasil inteiro Lula",
+     "#verdeeamarelo Lula",
+     "#brasilinteiro"
+    ],
+    "justificativa": "\"Brasil inteiro\" e \"verde e amarelo\" são expressões do português corrente. Juntas de \"Lula\", restringem a busca ao sentido de campanha e deixam de fora futebol, moda e publicidade."
+   },
+   {
+    "familia": "Janelas de horário no X (mesmos termos)",
+    "termos": [
+     "#brasilinteiro since:2026-10-17_12:59:00_UTC until:2026-10-17_14:01:00_UTC",
+     "#brasilinteiro e #verdeeamarelo por janelas desde 16/10"
+    ],
+    "justificativa": "Não são termos novos, e sim a mesma hashtag lida em fatias de tempo. A busca do X devolve primeiro os posts mais recentes e para no limite de itens; no pico, o começo do caso ficava de fora. Dividir em janelas até cada uma fechar abaixo do limite recupera o início, que é justamente o que a pergunta de origem precisa."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "@verdeeamarelo (perfil)",
+    "motivo": "Correção de 18/10: o caso são duas hashtags. Publicações trazidas só pela busca do perfil saem dos agregados (o bruto fica no privado)."
+   },
+   {
+    "termo": "Títulos de notícia sem um dos termos do caso",
+    "motivo": "A busca do Google Notícias também devolve textos que só citam as palavras no corpo. Só entram títulos com \"brasil inteiro\", \"brasilinteiro\", \"verde e amarelo\", \"verde-amarelo\" ou \"verdeeamarelo\"."
+   },
+   {
+    "termo": "Vídeos do YouTube sem a expressão e sem um elemento de campanha",
+    "motivo": "O filtro exige \"brasil inteiro\" ou \"verde e amarelo\" no título ou na descrição e, junto, Lula, eleição, campanha, 13 ou Brasil. Para \"verde e amarelo\" o segundo filtro tira vídeos de moda e futebol; para \"brasil inteiro\" ele não filtra nada, porque a própria expressão já contém \"brasil\" (ver limites)."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (busca por hashtag e por janelas de horário)",
+    "por_que": "Onde está quase todo o volume do caso. É a única rede em que foi possível ler o começo hora a hora."
+   },
+   {
+    "fonte": "TikTok, Instagram, Facebook e Kwai (busca por hashtag)",
+    "por_que": "A pergunta inclui \"quanto circulou em cada rede\". Essas redes medem se o movimento saiu do X (o cross entre redes)."
+   },
+   {
+    "fonte": "Google Trends (Brasil; 12 meses e 7 dias; por estado)",
+    "por_que": "Mostra se a hashtag virou busca, isto é, se chegou a quem não estava na conversa."
+   },
+   {
+    "fonte": "Google Notícias, checagens e YouTube",
+    "por_que": "Registram se a imprensa e os canais trataram o movimento, e com que leitura."
+   }
+  ],
+  "controles": "No Google Trends, \"Lula\" é o controle: separa o interesse pelas expressões do interesse geral pelo candidato, que também sobe na reta final. \"brasil inteiro\" está nas variantes e nos controles como âncora comum. Dentro das redes, o termo que trouxe cada publicação funciona como controle interno: a hashtag genérica é lida à parte da específica.",
+  "limites": [
+   "A busca do X não garante devolver tudo, mesmo com as janelas fechadas abaixo do limite: os números são posts lidos, não o total oficial (nota em casos.json).",
+   "As redes fora do X trouxeram pouco. A coleta extra para medir o cross foi autorizada em 18/10, mas não foi feita: as chaves da Apify foram recusadas naquele dia (CHANGELOG, 18/10).",
+   "TikTok: a página pública passou a devolver lista vazia desde 30/10, e o teto pago da rede se esgotou na leitura de 05/11 (manifesto-20261105T184356Z.json). Kwai: nada no período nas leituras feitas.",
+   "#verdeeamarelo também é usada pelo campo adversário. O sentido de cada uso (apoio a Lula, apoio a Bolsonaro, uso neutro) é classificado na leitura, não pela busca.",
+   "O marco zero geral pode ser um uso sem relação com o caso (o primeiro post localizado é de futebol). Por isso a decolagem é a referência para a origem do movimento.",
+   "Os dados mostram publicação concentrada num horário. Eles não dizem quem combinou nem se houve automação.",
+   "No YouTube, o filtro de \"brasil inteiro\" é fraco: qualquer vídeo com a expressão passa, porque a palavra \"brasil\" satisfaz a segunda condição."
+  ]
+ },
+ "002": {
+  "pergunta": "Consultas depreciativas como \"onde mora o ladrão\" (2022) e \"onde nasceu o ladrão\" / \"quantos anos tem o ladrão\" (2026) passaram a devolver, no Google e nas respostas de IA do Google, dados biográficos de um candidato? Com que fontes o sistema respondeu, e quanto interesse de busca e circulação essas consultas tiveram?",
+  "por_que_importa": "O caso trata o buscador e a IA como intermediários de um rótulo político. Um apelido pejorativo vira resposta com aparência de fato quando o sistema devolve local de nascimento ou idade de uma pessoa real. Isso desloca a desinformação do conteúdo para a infraestrutura que responde a perguntas. O caso mede o que o sistema respondeu e com que fontes, sem afirmar a associação. A forma de 2022 (\"onde mora\") e as de 2026 (\"onde nasceu\", \"quantos anos\") permitem ver se o padrão persistiu e migrou para as respostas de IA.",
+  "recorte_temporal": {
+   "inicio": "2022-01-01",
+   "justificativa": "A primeira forma documentada da consulta é de 2022 (\"onde mora o ladrão\"), registrada num artigo daquele ano cuja cópia no Internet Archive serve de linha de base. Começar em 2022 põe os dois episódios, 2022 e 2026, na mesma escala do Google Trends de 5 anos. As janelas de 12 meses e 7 dias detalham 2026. O YouTube é lido desde 01/01/2022 pelo mesmo motivo. ⛔ O repositório não registra uso anterior a 2022, então a busca não testa se a consulta é mais antiga."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Consulta de 2022 (linha de base)",
+    "termos": [
+     "onde mora o ladrão",
+     "#ondemoraoladrao"
+    ],
+    "justificativa": "É a forma do primeiro episódio. Fica nos dois grupos do Trends como âncora, o que permite comparar os níveis das variantes e dos controles."
+   },
+   {
+    "familia": "Consultas de 2026: pergunta biográfica + rótulo",
+    "termos": [
+     "onde nasceu o ladrão",
+     "aonde nasceu o ladrão",
+     "quantos anos tem o ladrão",
+     "qual a idade do ladrão",
+     "#ondenasceuoladrao",
+     "#quantosanostemoladrao"
+    ],
+    "justificativa": "A estrutura \"pergunta de atributo pessoal + rótulo\" é o que leva o sistema a responder com um dado biográfico, e não com uma lista de páginas. \"aonde\" entra porque é a forma coloquial usada na fala e na digitação. As variantes não são agrupadas: cada formulação é medida à parte, porque o sistema pode responder diferente a cada uma."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"ladrão\" sozinho",
+    "motivo": "Traz noticiário policial e vídeos de assalto. O filtro do YouTube exige \"ladrão\" e, junto, a estrutura da consulta (\"onde mora/nasceu\", \"quantos anos\", \"idade do ladrão\", \"em que ano nasceu\") ou a palavra \"Google\". Até 20/10 o filtro aceitava \"ladrão\" + \"anos\" e trazia vídeos de assalto; \"pesquis\" saiu do filtro pelo mesmo motivo (CHANGELOG, C19.77 e caderno 08)."
+   },
+   {
+    "termo": "Títulos de notícia sem \"ladrão\"",
+    "motivo": "A busca de notícias por frase pode devolver textos que só citam a frase no corpo."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Bateria manual de consultas ao Google, com e sem IA (data/casos/002/bateria.csv)",
+    "por_que": "É o único modo de ver a resposta que o sistema dá. O Google não oferece API para isso (a Custom Search API recusou o projeto) e bloqueia robôs. Cada execução registra consulta, resposta e fontes citadas pela IA."
+   },
+   {
+    "fonte": "Google Trends (Brasil; 5 anos, 12 meses, 7 dias; por estado; consultas relacionadas)",
+    "por_que": "Mede quanto as pessoas fizeram a consulta, isto é, quanto do fenômeno é comportamento de busca."
+   },
+   {
+    "fonte": "YouTube (vídeos desde 2022 e comentários dos mais vistos)",
+    "por_que": "Vídeos do tipo \"o Google responde\" mostram o teste sendo divulgado; os comentários trazem relatos de quem repetiu a consulta e percebeu mudança na resposta (pré-codificação: relato de teste, mudança percebida, contestação)."
+   },
+   {
+    "fonte": "Google Notícias, checagens (Fact Check Tools) e Internet Archive",
+    "por_que": "Mostram se a imprensa e as agências trataram o caso, e preservam a página de 2022 que serve de linha de base."
+   },
+   {
+    "fonte": "TikTok (hashtags)",
+    "por_que": "Rede de vídeo curto onde o teste da consulta também é gravado e divulgado."
+   }
+  ],
+  "controles": "No Google Trends há três controles, além da âncora \"onde mora o ladrão\": \"onde mora o político\" e \"onde nasceu o político corrupto\" têm a mesma estrutura com rótulo genérico e separam o efeito deste rótulo do hábito geral de \"testar\" o Google com insultos; \"onde nasceu Lula\" é a busca biográfica direta pelo candidato a quem as respostas registradas associam o rótulo e serve de comparação neutra. Na bateria, o grupo B (\"onde nasceu o político corrupto\") e o grupo C (consultas biográficas diretas) fazem o mesmo papel para as respostas do sistema.",
+  "limites": [
+   "A resposta do Google varia com a pessoa, o lugar, a conta e o momento. A bateria de 02/11 foi feita fora do protocolo (sessão com login, extensão de navegador aberta, local não informado): vale como registro, não como execução padronizada (CHANGELOG, C19.302).",
+   "O Google Trends mede interesse relativo e não diz a quem as pessoas se referiam. Várias leituras foram recusadas com HTTP 429; a coleta reaproveita a última leitura boa da mesma janela, marcada com a data.",
+   "O caso não tem busca por termo no X, no Instagram nem no Facebook: ⛔ a circulação nessas redes não é medida.",
+   "TikTok: a página pública passou a devolver lista vazia desde 30/10; na leitura paga de 02/11 as três hashtags chegaram ao limite de itens (manifesto-20261102T210119Z.json), e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z.json). Kwai: nada no período.",
+   "Na primeira leitura, #ondemoraoladrao e #quantosanostemoladrao devolveram 0 vídeos no TikTok (CHANGELOG, C19.77)."
+  ]
+ },
+ "003": {
+  "pergunta": "Quanto circularam, e em que redes, os posts que apresentaram torcedores do Flamengo com a frase \"ninguém morre nos devendo\" como protesto contra a medida provisória que proibiu as bets (25/09/2026), posts que o Aos Fatos (29/09) mostrou usar imagens antigas ou feitas por IA? E como essa circulação se relaciona com a mensagem real do Flamengo contra a proibição, levada a campo em 08/10?",
+  "por_que_importa": "O caso junta esporte e política regulatória. O conteúdo usa a identidade de uma torcida para fabricar a imagem de apoio popular a uma pauta, com material antigo ou sintético (cheapfake e IA). Em seguida, o próprio clube se manifesta de verdade contra a proibição (Poder360, 08/10). A convivência do protesto inventado com a mensagem real permite medir se o fato posterior passa a circular junto do falso, e se a checagem alcança o mesmo público.",
+  "recorte_temporal": {
+   "inicio": "2026-09-25",
+   "justificativa": "Data da medida provisória que proibiu as bets. Antes dela, a frase não tem o sentido de protesto contra o fim das apostas. As buscas exatas no X vão até 19/10 e cobrem a checagem (29/09), a mensagem do clube (08/10) e a janela de 07 a 12/10 do antigo caso 004, que foi unido a este. O YouTube é lido desde 25/09; o Trends usa 12 meses (linha de base) e 7 dias."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "A frase do caso",
+    "termos": [
+     "ninguém morre nos devendo",
+     "ninguem morre nos devendo",
+     "#ninguemmorrenosdevendo"
+    ],
+    "justificativa": "É a unidade do caso. No X, a frase exata foi buscada nas duas grafias, em consultas separadas, porque a forma sem acento é comum na digitação rápida e na hashtag."
+   },
+   {
+    "familia": "Frase + clube",
+    "termos": [
+     "flamengo ninguém morre nos devendo"
+    ],
+    "justificativa": "Restringe a frase ao uso ligado ao clube, que é o enquadramento do conteúdo falso. Usada no TikTok e no YouTube, onde a busca não aceita aspas e devolve resultados por proximidade."
+   },
+   {
+    "familia": "Clube + pauta + ação",
+    "termos": [
+     "flamengo (bets OR apostas OR bet) (proibição OR proibir OR MP OR protesto OR faixa OR mensagem)",
+     "flamengo bets",
+     "proibição das bets",
+     "Flamengo bets protesto torcida",
+     "torcida do flamengo bets protesto"
+    ],
+    "justificativa": "Capta a conversa sobre o protesto sem a frase, inclusive a mensagem real do clube em campo. No X, a busca exige o clube, a pauta (bets, apostas) e uma palavra de ação política (proibição, MP, protesto, faixa, mensagem). Isso deixa de fora posts de patrocínio e de palpite, que usam \"Flamengo\" e \"bet\" sem a pauta."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Flamengo\" sozinho",
+    "motivo": "Traz todo o noticiário do clube. Só entra no Trends, como controle."
+   },
+   {
+    "termo": "Vídeos do YouTube sem a frase ou a pauta e sem o clube",
+    "motivo": "O filtro exige \"devendo\", \"bet(s)\" ou \"apostas\" no título ou na descrição e, junto, Flamengo, Mengão, torcida ou Lula. \"Lula\" entra porque a medida provisória é ato do presidente e parte dos vídeos trata a proibição como tema do governo."
+   },
+   {
+    "termo": "Títulos de notícia sem a frase, \"bets\" ou \"apostas\"",
+    "motivo": "A busca de notícias devolve textos que só citam os termos no corpo."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "TikTok (hashtag e busca por frase)",
+    "por_que": "Rede de vídeo curto, formato dos posts com imagens de torcida. Foi a primeira rede lida."
+   },
+   {
+    "fonte": "X (frase exata nas duas grafias e Flamengo + bets), Instagram, Facebook e Kwai (hashtag)",
+    "por_que": "Medem quanto o conteúdo saiu do vídeo curto e se a mensagem real do clube circulou nos mesmos espaços."
+   },
+   {
+    "fonte": "Aos Fatos (29/09) e Poder360 (08/10)",
+    "por_que": "Contexto externo: a checagem que estabelece que as imagens eram antigas ou feitas por IA, e a reportagem sobre a mensagem real do clube."
+   },
+   {
+    "fonte": "Google Trends, Google Notícias, checagens e YouTube",
+    "por_que": "Se a frase gerou busca, como a imprensa tratou o protesto e que vídeos repercutiram."
+   }
+  ],
+  "controles": "No Google Trends, \"Flamengo\" é o controle: separa o interesse pela frase e pela pauta do interesse geral pelo clube, que é alto e oscila com os jogos. \"ninguém morre nos devendo\" está nos dois grupos como âncora comum.",
+  "limites": [
+   "Sem login, a busca por frase do TikTok nunca devolveu vídeos (CHANGELOG, C19.72). Na leitura paga de 02/11 os três termos do TikTok chegaram ao limite de itens (manifesto-20261102T210119Z.json), e o teto se esgotou em 04/11 (manifesto-20261104T183944Z.json).",
+   "No X, as buscas vão de 25/09 a 19/10: a circulação posterior não é vista nessa rede.",
+   "Instagram, Facebook e Kwai foram lidos só pela hashtag; não há busca por frase nessas redes, então posts que usam a frase sem a hashtag ficam de fora.",
+   "A coleta não distingue imagem antiga, imagem feita por IA e imagem real. Essa classificação vem da checagem do Aos Fatos e da leitura manual.",
+   "Kwai: nada no período na leitura de 02/11."
+  ]
+ },
+ "004": {
+  "pergunta": "Caso unido ao 003. O protesto e a mensagem do Flamengo contra a proibição das bets (janela indicada de 07 a 12/10/2026) fazem parte da mesma pergunta do caso 003: como circulou o conteúdo sobre a torcida e as bets, o falso e o real.",
+  "por_que_importa": "O objeto é o mesmo do 003 (Flamengo × proibição das bets), com os mesmos termos. Separar os dois dividiria uma única conversa pública em duas amostras sobrepostas e contaria os mesmos posts duas vezes. A união foi registrada em 22/10/2026 (nota_unificacao em casos.json); o registro do 004 fica para histórico.",
+  "recorte_temporal": {
+   "inicio": "2026-10-07",
+   "justificativa": "Janela indicada de 07 a 12/10/2026, em torno da mensagem do clube em campo (08/10). Ela está dentro do recorte do caso 003 (25/09 a 19/10 nas buscas do X)."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Ver caso 003, família \"Clube + pauta + ação\"",
+    "termos": [
+     "flamengo (bets OR apostas OR bet) (proibição OR proibir OR MP OR protesto OR faixa OR mensagem)"
+    ],
+    "justificativa": "É a família do 003 que capta o protesto e a mensagem do clube sem depender da frase."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "Coleta própria do 004",
+    "motivo": "O caso não é coletado (coletar: false). Todos os números ficam no 003."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "As mesmas do caso 003",
+    "por_que": "Mesma coleta e mesma página."
+   }
+  ],
+  "controles": "Os do caso 003 (\"Flamengo\" como controle no Google Trends).",
+  "limites": [
+   "Não há coleta nem número próprio do 004. Os limites são os do caso 003."
+  ]
+ },
+ "005": {
+  "pergunta": "Como o caso Ana Clara (menina de 5 anos morta baleada em Niterói em fevereiro de 2021; o PM acusado vai a júri, e em 2024 o senador Flávio Bolsonaro assinou recurso na defesa do policial) foi buscado e circulou depois de Lula citá-lo no debate da Band de 18/10/2026? Qual o alcance total do assunto em buscas, vídeos e imprensa?",
+  "por_que_importa": "Um fato antigo é trazido ao debate como argumento contra o adversário. O caso mede o efeito de agenda de uma fala de debate: se ela reativa um tema que estava fora da conversa e por quanto tempo. A hashtag #pesquiseocasoanaclara é uma instrução ao público (\"pesquise\"), o que torna o Google Trends uma medida direta do sucesso da mobilização. O tema também aparece em outros casos: hashtags sobre Ana Clara estão entre as palavras mais frequentes nos comentários do reel do caso 011 (CHANGELOG, C19.178).",
+  "recorte_temporal": {
+   "inicio": "2021-02-01",
+   "justificativa": "Mês da morte. A pergunta inclui o alcance total, então a leitura começa no fato, e não no debate. Isso separa três momentos: a cobertura do crime (2021), o recurso assinado em 2024 e o efeito do debate (18/10/2026). O Trends de 5 anos cobre os três na mesma escala; as janelas de 12 meses e 7 dias detalham a reta final. O YouTube é lido desde 01/02/2021."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Nome do caso",
+    "termos": [
+     "caso Ana Clara",
+     "#casoanaclara"
+    ],
+    "justificativa": "É a forma usada pela imprensa e nas falas do debate. Fica nos dois grupos do Trends como âncora comum."
+   },
+   {
+    "familia": "Chamada à busca",
+    "termos": [
+     "#pesquiseocasoanaclara"
+    ],
+    "justificativa": "Hashtag no imperativo, própria da mobilização posterior ao debate. Medida à parte, mostra o tamanho da campanha que pedia às pessoas que pesquisassem."
+   },
+   {
+    "familia": "Nome + lugar, ator ou circunstância",
+    "termos": [
+     "Ana Clara Niterói",
+     "Ana Clara Flávio Bolsonaro",
+     "Ana Clara PM",
+     "Flávio Bolsonaro advogado PM criança",
+     "menina Ana Clara tiro fuzil"
+    ],
+    "justificativa": "\"Ana Clara\" é nome comum. O lugar, o ator político e a circunstância do crime identificam este caso. A forma com \"Flávio Bolsonaro\" capta o enquadramento usado no debate (a ligação do candidato com a defesa do policial)."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Ana Clara\" sozinho",
+    "motivo": "Nome comum: entre os vídeos mais vistos da primeira leitura havia dois de outros casos com o mesmo nome. Desde 20/10 o filtro do YouTube exige \"ana clara\" e, junto, um elemento deste caso (lugar, polícia, arma, júri, debate, Flávio, Bolsonaro, Lula, entre outros) (CHANGELOG, C19.77)."
+   },
+   {
+    "termo": "Títulos de notícia sem \"ana clara\"",
+    "motivo": "A busca de notícias devolve textos que só citam o nome no corpo."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Google Trends (Brasil; 5 anos, 12 meses, 7 dias; por estado; consultas relacionadas)",
+    "por_que": "Mede se a fala do debate e a hashtag se converteram em busca, e onde."
+   },
+   {
+    "fonte": "Transcrição do debate (privada, com a codificação de turnos)",
+    "por_que": "Localiza as falas que citam o caso, com minuto e orador. Isso permite ligar o pico de busca ao momento exato do debate."
+   },
+   {
+    "fonte": "YouTube (vídeos desde 2021 e comentários dos mais vistos)",
+    "por_que": "Principal medida de alcance em vídeo, com datas de publicação verificáveis desde o crime."
+   },
+   {
+    "fonte": "Google Notícias, checagens e a reportagem da Agência Pública (19/10/2026), arquivada no Internet Archive",
+    "por_que": "Cobertura da imprensa e contexto do caso depois do debate."
+   },
+   {
+    "fonte": "TikTok (hashtags)",
+    "por_que": "Onde circulam a hashtag de mobilização e os vídeos curtos sobre o caso."
+   }
+  ],
+  "controles": "No Google Trends, \"Flávio Bolsonaro\" é o controle: separa o interesse pelo caso do interesse geral pelo candidato, que também sobe em torno do debate. \"caso Ana Clara\" fica nos dois grupos como âncora comum.",
+  "limites": [
+   "No TikTok, #casoanaclara também traz vídeos de outros casos com o mesmo nome; o marco zero de 2021 nessa rede precisa de conferência humana (CHANGELOG, C19.77).",
+   "O caso não tem busca por termo no X, no Instagram nem no Facebook: ⛔ o \"alcance total\" fica restrito a Google, YouTube e TikTok.",
+   "TikTok: a página pública passou a devolver lista vazia desde 30/10; na leitura paga de 02/11, #pesquiseocasoanaclara e #casoanaclara chegaram ao limite de itens (manifesto-20261102T215628Z.json), e o teto se esgotou em 04/11 (manifesto-20261104T183944Z.json). Kwai: nada no período.",
+   "O Google Trends recusou janelas com HTTP 429 em várias leituras; a coleta reaproveita a última leitura boa, marcada com a data.",
+   "O caso envolve uma criança morta. O texto não acrescenta dados de identificação além do nome pelo qual o caso é conhecido publicamente."
+  ]
+ },
+ "006": {
+  "pergunta": "Como circulou, no X e nas outras redes, o anúncio de Marco Rubio (28/05/2026) de que os EUA classificariam o PCC e o Comando Vermelho como organizações terroristas? Quem respondeu ao post, em que línguas, e como o tema foi buscado e noticiado no Brasil durante a campanha?",
+  "por_que_importa": "Uma decisão de política externa dos EUA sobre facções brasileiras entra na eleição como tema de segurança pública e de soberania. O post de Rubio é um evento datado, com autor e texto conhecidos, o que permite medir a resposta direta (respostas, citações, repostagens) e, à parte, a difusão do tema por termo. O caso se liga a outros que tratam a eleição brasileira vista dos perfis de autoridades americanas (010) e a transnacionalização do debate (012).",
+  "recorte_temporal": {
+   "inicio": "2026-05-28",
+   "justificativa": "Data do anúncio (La Nación e Forbes Brasil, 28/05/2026). Antes dela, \"PCC terrorista\" não tem o referente do caso. O Trends de 12 meses cobre o anúncio e toda a campanha; o de 7 dias, a reta final. O YouTube é lido desde 01/05/2026, o que permite ver se havia vídeos sobre a classificação antes do anúncio. ⛔ O motivo dessa data do YouTube não está registrado no repositório."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Facção + rótulo",
+    "termos": [
+     "PCC terrorista",
+     "Comando Vermelho terrorista",
+     "PCC organização terrorista",
+     "#pccterrorista"
+    ],
+    "justificativa": "O rótulo junto do nome é o enquadramento do caso. A facção sozinha traz o noticiário policial cotidiano."
+   },
+   {
+    "familia": "Facção + rótulo + origem da decisão",
+    "termos": [
+     "Rubio PCC",
+     "PCC CV terroristas EUA",
+     "Rubio PCC Comando Vermelho",
+     "PCC CV terroristas Trump",
+     "PCC Comando Vermelho terroristas Rubio"
+    ],
+    "justificativa": "Ligam a classificação a quem a fez (o governo dos EUA). Separam o caso de usos antigos de \"terrorista\" como xingamento às facções."
+   },
+   {
+    "familia": "Busca por termo no X",
+    "termos": [
+     "(PCC OR \"Comando Vermelho\" OR \"CV\") (terrorista OR terroristas OR terrorismo) (Rubio OR EUA OR \"Estados Unidos\" OR \"Departamento de Estado\")"
+    ],
+    "justificativa": "Exige os três elementos: facção, rótulo e origem. A sigla \"CV\" é ambígua (currículo, por exemplo) e só entra junto dos outros dois."
+   },
+   {
+    "familia": "O post original",
+    "termos": [
+     "respostas, citações, fio e repostagens do post de @SecRubio"
+    ],
+    "justificativa": "Medem a reação no próprio lugar do anúncio. Vêm de coletas feitas em 23 e 24/09/2026, importadas e unificadas por id do post e do perfil."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"PCC\" e \"Comando Vermelho\" sozinhos",
+    "motivo": "Noticiário policial sem relação com a classificação. Só entram no Trends, como controle."
+   },
+   {
+    "termo": "Vídeos do YouTube sem a facção e sem a designação",
+    "motivo": "O filtro exige no título ou na descrição a facção (PCC, Comando Vermelho, CV, Primeiro Comando) e, junto, um elemento da designação (terror, Rubio, EUA, Estados Unidos, Trump, designa, classifica, narco)."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X: o post de Rubio (importação) e a busca por termo",
+    "por_que": "É a rede do anúncio. A importação mede a reação direta; a busca por termo, a difusão fora do post."
+   },
+   {
+    "fonte": "Instagram, Facebook e TikTok (busca por termo e hashtag)",
+    "por_que": "Medem se o tema saiu do X para redes de vídeo e imagem."
+   },
+   {
+    "fonte": "Google Trends (Brasil; 12 meses e 7 dias; por estado)",
+    "por_que": "Mostra se o anúncio gerou busca e se ela voltou na campanha."
+   },
+   {
+    "fonte": "Google Notícias, checagens e YouTube",
+    "por_que": "Cobertura e explicações do anúncio, e eventuais conteúdos falsos sobre ele."
+   }
+  ],
+  "controles": "No Google Trends, \"PCC\" e \"Comando Vermelho\" são os controles: separam o interesse pela classificação do interesse geral pelas facções, que é alto e constante. Não há termo-âncora comum aos dois grupos, então os níveis das variantes e dos controles não se comparam diretamente. No post, a cobertura da importação é comparada com o que o X informa (respostas, citações e repostagens) em data/casos/006/x.json.",
+  "limites": [
+   "A reação ao post vem de coletas feitas em 23 e 24/09, quase quatro meses depois do anúncio e antes do primeiro commit do repositório (15/10). É o que essas coletas devolveram, não o total da conversa (nota em x.json).",
+   "No X, a busca por termo chegou ao limite de itens (manifesto-20261102T004741Z.json): o total real é maior que o lido. No Instagram, #pccterrorista também chegou ao limite (manifesto-20261102T003543Z.json).",
+   "O idioma das respostas é o detectado pelo X.",
+   "TikTok: teto esgotado na leitura de 04/11 (manifesto-20261104T183944Z.json). Kwai: teto esgotado e depois nada no período.",
+   "No filtro de títulos da coleta diária de notícias, basta \"PCC\", \"Comando\", \"Vermelho\" ou \"terrorista\" como palavra inteira: é um filtro frouxo, e a leitura manual separa o que é do caso."
+  ]
+ },
+ "007": {
+  "pergunta": "Como circulou a acusação falsa (AFP Checamos) de que Lula amassou a bandeira do Brasil, publicada num reel do Instagram em 04/10/2026, dia do 1º turno? Como a audiência do reel reagiu (adesão ou contestação) e quanto o tema se espalhou para outras redes, buscas e imprensa?",
+  "por_que_importa": "Desinformação publicada no dia da votação deixa pouco tempo para resposta antes do voto. A acusação usa um símbolo nacional como prova de desprezo pela pátria, o mesmo terreno simbólico disputado no caso 001 (#verdeeamarelo). Os comentários do reel mostram, no lugar da publicação, se a audiência aceita a acusação ou aponta montagem; a busca por termo mostra se ela saiu da peça original.",
+  "recorte_temporal": {
+   "inicio": "2026-10-03",
+   "justificativa": "Um dia antes do reel e do 1º turno, para captar circulação da mesma acusação anterior à peça indicada. ⛔ O repositório registra 03/10 como início do episódio, mas não o motivo de começar na véspera. O YouTube é lido desde 01/10. Os comentários do reel vêm de coletas feitas em 06 e 07/10, dois e três dias depois da publicação."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Ação + objeto",
+    "termos": [
+     "Lula amassa bandeira",
+     "Lula amassou a bandeira",
+     "Lula bandeira amassada",
+     "#lulaamassabandeira",
+     "Lula (amassa OR amassou OR amassando OR amassada OR amassado OR rasgou) bandeira"
+    ],
+    "justificativa": "A acusação aparece narrada (\"amassou\"), descrita (\"bandeira amassada\") ou no presente das legendas (\"amassa\"). No X, as flexões entram juntas; \"rasgou\" pega versões que exageram o mesmo gesto."
+   },
+   {
+    "familia": "Contexto eleitoral e desmentido",
+    "termos": [
+     "Lula bandeira do Brasil",
+     "Lula bandeira do Brasil eleição",
+     "Lula amassa bandeira checagem",
+     "Lula bandeira amassada falso"
+    ],
+    "justificativa": "Captam o enquadramento eleitoral da peça e orientam a busca de notícias para as checagens e desmentidos, que são a outra metade da circulação."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"bandeira\" sozinho",
+    "motivo": "Ruído alto (bandeiras de clube, de partido, datas cívicas). O filtro do YouTube exige \"bandeira\" e, junto, Lula, \"amass\", eleição, voto ou urna."
+   },
+   {
+    "termo": "\"Lula bandeira\" nas redes",
+    "motivo": "Traria qualquer post de Lula com bandeira (comícios, atos). Fica só no Trends, como controle."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Instagram: comentários do reel (importados e unificados por id)",
+    "por_que": "É a audiência direta da peça. A pré-codificação separa quem aponta montagem ou fake, quem ataca e quem defende Lula."
+   },
+   {
+    "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+    "por_que": "Medem se a acusação saiu do reel original."
+   },
+   {
+    "fonte": "Google Notícias e checagens (AFP Checamos)",
+    "por_que": "Registram o desmentido e permitem comparar seu alcance com o da peça."
+   },
+   {
+    "fonte": "Google Trends e YouTube",
+    "por_que": "Se a acusação gerou busca e vídeos de repercussão."
+   }
+  ],
+  "controles": "No Google Trends, \"Lula bandeira\" e \"bandeira do Brasil\": o segundo separa o interesse geral pelo símbolo nacional, que pode variar em torno do dia da votação, do interesse pela acusação. Não há termo-âncora comum aos dois grupos, então os níveis não se comparam diretamente.",
+  "limites": [
+   "Os comentários são o que as coletas de 06 e 07/10 devolveram, na ordem \"populares\" do Instagram, não o total (nota em instagram.json). Comentários posteriores não são vistos.",
+   "A busca por termo nas redes só foi feita em 01–02/11, quase um mês depois: posts apagados antes disso ficam de fora.",
+   "TikTok: na leitura paga de 02/11, \"Lula amassa bandeira\" chegou ao limite de itens (manifesto-20261102T210119Z.json), e o teto se esgotou em 04/11 (manifesto-20261104T183944Z.json). Kwai: teto esgotado e depois nada no período.",
+   "No filtro de títulos da coleta diária de notícias, basta \"Lula\" ou \"bandeira\" como palavra inteira: qualquer título com Lula desde 03/10 passa. A leitura manual separa o que é do caso."
+  ]
+ },
+ "008": {
+  "pergunta": "Como circulou o reel de Guilherme Derrite (21/10/2026) com jovens detidos em Piracicaba (SP) vestindo camisetas de Lula/PT, e a acusação, trazida por reportagens, de que policiais os obrigaram a vestir as camisetas (o PT pediu investigação em 22/10)? Que versão a audiência do reel e as outras redes adotaram: ilícito de militantes ou armação policial?",
+  "por_que_importa": "A mesma imagem sustenta duas versões opostas: prova de ilícito de apoiadores de um candidato, ou encenação feita por agentes do Estado. O caso mede onde cada versão circula e se a acusação de armação alcança o público do reel original. O reel saiu do ar (CHANGELOG, C19.147); a cópia guardada permite estudar uma peça que deixou de existir na plataforma.",
+  "recorte_temporal": {
+   "inicio": "2026-10-21",
+   "justificativa": "Data do reel. O YouTube é lido desde 21/10. As notícias da coleta de busca usam janela de 3 dias (\"when:3d\"), sem aspas, porque o ciclo do episódio é curto e os títulos quase nunca trazem \"Piracicaba\". No Trends, 7 dias e 1 mês cobrem o episódio; 12 meses dá a linha de base de termos que existem fora dele, como o nome da cidade."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Lugar + objeto + ator",
+    "termos": [
+     "camisetas PT Piracicaba",
+     "Piracicaba camiseta Lula",
+     "Piracicaba (camiseta OR camisetas OR camisa) (PT OR Lula OR PM OR polícia OR Derrite)"
+    ],
+    "justificativa": "No X, a busca exige a cidade, o objeto e um ator (partido, candidato, polícia ou o autor do reel). Cada elemento sozinho traria assuntos sem relação."
+   },
+   {
+    "familia": "Objeto + polícia, sem lugar",
+    "termos": [
+     "PM camiseta Lula presos",
+     "presos camiseta Lula PM",
+     "jovens presos camiseta Lula",
+     "PM obriga presos camiseta Lula",
+     "policiais camiseta Lula militantes",
+     "PM camisetas PT Piracicaba"
+    ],
+    "justificativa": "Entraram em 22/10, quando a primeira busca de notícias deu 0 porque exigia \"Piracicaba\" no título (CHANGELOG, C19.111). Captam a versão da acusação contra a polícia, que a imprensa narra sem citar a cidade."
+   },
+   {
+    "familia": "Autor do reel",
+    "termos": [
+     "Derrite camisetas PT",
+     "Derrite Piracicaba",
+     "Derrite camisetas Piracicaba"
+    ],
+    "justificativa": "Captam a versão original e a repercussão ligada ao autor."
+   },
+   {
+    "familia": "Denúncia",
+    "termos": [
+     "PT denúncia PM camisetas",
+     "PT denúncia PM camisetas Lula"
+    ],
+    "justificativa": "Captam a reação do partido (22/10), marco da virada para a versão da armação."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Piracicaba\" sozinho",
+    "motivo": "Todo o noticiário da cidade. Fica no Trends como controle (mas ver limites sobre #piracicaba no Instagram)."
+   },
+   {
+    "termo": "Vídeos e notícias sem \"camis\" e sem um elemento do caso",
+    "motivo": "O filtro da coleta de busca exige \"camis\" no título e, junto, Piracicaba, PM, polícia, policiais, presos, jovens, Derrite, Tarcísio, militantes, \"incrimin\", armação, PT ou Lula."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Instagram: o reel, os comentários e a cópia do vídeo",
+    "por_que": "A audiência da versão original. A cópia (vídeo, capa e legenda) substitui o post apagado na página."
+   },
+   {
+    "fonte": "YouTube",
+    "por_que": "Foi nos vídeos que a acusação contra a polícia apareceu primeiro de forma clara (CHANGELOG, C19.111)."
+   },
+   {
+    "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+    "por_que": "Medem a circulação das duas versões fora do reel."
+   },
+   {
+    "fonte": "Google Notícias (3 dias), checagens e Google Trends",
+    "por_que": "Cronologia da imprensa, verificação e interesse de busca."
+   }
+  ],
+  "controles": "No Google Trends, \"Piracicaba\" e \"camiseta Lula\": separam o interesse geral pela cidade e pelo produto de campanha do interesse pelo episódio. Não há termo-âncora comum aos dois grupos, então os níveis não se comparam diretamente.",
+  "limites": [
+   "No Instagram, a hashtag #piracicaba é a hashtag genérica da cidade e chegou ao limite de itens (manifesto-20261102T025443Z.json). O repositório não tem filtro posterior de texto para as publicações das redes (build_casos.py filtra só por data e termo): a separação do que é do caso depende de leitura.",
+   "O reel saiu do ar. Os comentários são o que a coleta de 22/10 devolveu, na ordem \"populares\", não o total (nota em instagram.json). O pedido de cópia ao Internet Archive falhou (HTTP 520).",
+   "A coleta de busca regrava a lista de notícias a cada leitura, com janela de 3 dias (collect_caso_busca.py): notícias mais antigas que isso saem dessa lista. A lista da coleta diária (termos_noticias, desde 21/10) não tem essa janela, mas o filtro dela é frouxo: basta \"PT\" ou \"PM\" como palavra inteira no título.",
+   "TikTok: teto esgotado na leitura de 04/11 (manifesto-20261104T183944Z.json). Kwai: teto esgotado e depois nada no período."
+  ]
+ },
+ "009": {
+  "pergunta": "Como circulou e foi recebido o reel de Nikolas Ferreira \"O Nordeste que foi esquecido\" (20/10/2026), que contrapõe a pobreza do Nordeste aos governos de Lula e termina com \"Na hora de votar, não se esqueça de quem esqueceu de você\"? Que leituras os comentários fazem, e como a circulação do reel se compara à de um carrossel de bastidores publicado no mesmo dia?",
+  "por_que_importa": "É uma peça de campanha dirigida a uma região como eleitorado, às vésperas do 2º turno, apoiada em cartelas com números (não verificadas pelo Atlas) e depoimentos. O caso mede o alcance de um formato de persuasão regional, se as cartelas foram checadas, e como a audiência reage ao enquadramento. O vocabulário regional se cruza com o caso 029 (xenofobia contra o Nordeste depois do 2º turno). O post foi arquivado pelo autor; a cópia guardada mantém a peça disponível para análise.",
+  "recorte_temporal": {
+   "inicio": "2026-10-20",
+   "justificativa": "Data do reel. O YouTube é lido desde 20/10; as notícias da coleta de busca usam janela de 7 dias, o ciclo de repercussão de uma peça. No Trends, 7 dias e 1 mês cobrem o episódio; 12 meses dá a linha de base de \"Nordeste\", termo de uso constante."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "A legenda",
+    "termos": [
+     "Nordeste que foi esquecido",
+     "nordeste esquecido",
+     "#nordesteesquecido"
+    ],
+    "justificativa": "A legenda literal é a assinatura da peça. A forma curta pega paráfrases, títulos e a hashtag."
+   },
+   {
+    "familia": "Autor + região",
+    "termos": [
+     "Nikolas (Nordeste OR nordestino OR nordestinos)",
+     "Nikolas Ferreira Nordeste",
+     "Nikolas Nordeste",
+     "Nikolas Ferreira vídeo Nordeste"
+    ],
+    "justificativa": "Captam quem comenta o vídeo sem citar a legenda. Os gentílicos entram porque o vídeo é feito de depoimentos de nordestinos e a conversa fala deles, não só da região."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Nordeste\" e \"Nikolas Ferreira\" sozinhos",
+    "motivo": "Trariam toda a conversa sobre a região e sobre o deputado. Só entram no Trends, como controles."
+   },
+   {
+    "termo": "Vídeos e notícias sem \"nordest\" e sem elemento do caso",
+    "motivo": "O filtro exige \"nordest\" no título e, junto, Nikolas, vídeo, \"esquecid\", Lula, eleição ou voto."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Instagram: o reel, os comentários, a cópia do vídeo e as falas",
+    "por_que": "A audiência direta da peça. O áudio foi silenciado pelo Instagram, então as falas e cartelas foram lidas das legendas gravadas na imagem (OCR, corrigido à mão)."
+   },
+   {
+    "fonte": "Leitura diária do reel e do carrossel DeujIRxGDYZ (até 02/11)",
+    "por_que": "Compara a circulação de duas peças do mesmo dia e da mesma produção, uma em vídeo e outra em imagens."
+   },
+   {
+    "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+    "por_que": "Medem a circulação fora do post."
+   },
+   {
+    "fonte": "YouTube, Google Notícias (7 dias), checagens e Google Trends",
+    "por_que": "Repercussão em vídeo e na imprensa, verificação das cartelas e interesse de busca."
+   }
+  ],
+  "controles": "No Google Trends, \"Nordeste\" e \"Nikolas Ferreira\": separam o interesse pelo caso do interesse geral pela região e pelo deputado. Não há termo-âncora comum aos dois grupos, então os níveis não se comparam diretamente. O carrossel do mesmo dia é termo de comparação para a circulação do reel, não controle no sentido estrito.",
+  "limites": [
+   "No X, a busca por termo chegou ao limite de itens (manifesto-20261102T040355Z.json): o total real é maior que o lido. No TikTok, \"Nikolas Nordeste esquecido\" chegou ao limite na leitura paga de 02/11 (manifesto-20261102T210119Z.json), e o teto se esgotou em 04/11 (manifesto-20261104T183944Z.json).",
+   "Os comentários são o que a coleta de 26/10 devolveu, na ordem \"populares\", não o total (nota em instagram.json).",
+   "As falas vêm de OCR das legendas, não do áudio, e as cartelas são afirmações do vídeo, não verificadas pelo Atlas. Até 26/10 nenhuma checagem foi encontrada (CHANGELOG, C19.172).",
+   "O pedido de cópia ao Internet Archive falhou (HTTP 523).",
+   "A coleta de busca regrava a lista de notícias a cada leitura, com janela de 7 dias (collect_caso_busca.py).",
+   "\"Nordeste esquecido\" também é expressão usada fora do caso, em outros debates sobre a região."
+  ]
+ },
+ "010": {
+  "pergunta": "Entre a véspera do 2º turno e os dois dias seguintes (24 a 27/10/2026), quanto do que se publicou em português nos perfis de Donald Trump e Marco Rubio no X e no Instagram falava do Brasil ou da eleição? O que esses usuários afirmavam ou pediam (fraude, golpe, ajuda, sanção, intervenção)?",
+  "por_que_importa": "O espaço de respostas de autoridades estrangeiras vira arena de política doméstica: usuários endereçam a um governo estrangeiro pedidos sobre a eleição do próprio país. O caso mede essa internacionalização do lado de quem pede, e complementa os casos que tratam o mesmo fenômeno do lado das autoridades (006, o anúncio de Rubio) e dos atores brasileiros no exterior (012). A proporção que cita o Brasil ou a eleição indica se a presença em português é reação ao resultado ou atividade geral desses usuários.",
+  "recorte_temporal": {
+   "inicio": "2026-10-24",
+   "justificativa": "A véspera do 2º turno (25/10) dá um dia de base antes do resultado; a janela fecha em 27/10, dois dias depois. Começar antes misturaria a reação ao resultado com a conversa de campanha. O Trends usa 7 dias, 1 mês e 12 meses (linha de base); as notícias da coleta de busca, janela de 14 dias."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Respostas em português aos perfis",
+    "termos": [
+     "to:realDonaldTrump lang:pt",
+     "to:marcorubio lang:pt",
+     "to:SecRubio lang:pt"
+    ],
+    "justificativa": "A resposta é o gesto de se dirigir à autoridade. Rubio entra com o perfil pessoal e o oficial de secretário de Estado, porque quem escreve pode se dirigir a qualquer um dos dois."
+   },
+   {
+    "familia": "Menções em português que não são resposta",
+    "termos": [
+     "(@realDonaldTrump OR @marcorubio OR @SecRubio) lang:pt -filter:replies"
+    ],
+    "justificativa": "Captam quem marca os perfis em posts próprios (chamados, apelos), um modo de se dirigir a eles sem estar na conversa do post."
+   },
+   {
+    "familia": "Posts dos próprios perfis",
+    "termos": [
+     "(from:realDonaldTrump OR from:marcorubio OR from:SecRubio)",
+     "posts de @realdonaldtrump, @marcorubio e @secrubio no Instagram desde 24/10"
+    ],
+    "justificativa": "Dão o contexto e o denominador: mostram a que posts as respostas se dirigem e se eles falavam do Brasil. O número de respostas que o X informa nesses posts é o universo das respostas."
+   },
+   {
+    "familia": "Busca e imprensa",
+    "termos": [
+     "Trump Brasil",
+     "Rubio Brasil",
+     "Trump Lula",
+     "Rubio Lula",
+     "Trump eleição Brasil",
+     "Rubio eleição Brasil",
+     "Trump Brasil Lula (TikTok)",
+     "brasileiros Trump comentários (TikTok)"
+    ],
+    "justificativa": "Medem se a relação entre as autoridades americanas e a eleição brasileira foi buscada e noticiada, e se o próprio fenômeno dos comentários virou assunto."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "Posts em outras línguas",
+    "motivo": "A pergunta é sobre o público de língua portuguesa. O filtro lang:pt é o idioma detectado pelo X: inclui portugueses e outros lusófonos, e a página fala em \"em português\", não em nacionalidade."
+   },
+   {
+    "termo": "Notícias sem Trump ou Rubio e sem Brasil, Lula ou eleição no título",
+    "motivo": "O filtro da coleta de busca exige os dois elementos no título."
+   },
+   {
+    "termo": "YouTube",
+    "motivo": "O caso não lê o YouTube (sem_youtube em collect_caso_busca.py). ⛔ O repositório não registra o motivo além de que ele \"não se aplica\" a este caso."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (respostas, menções e posts dos perfis)",
+    "por_que": "Rede em que os dois perfis publicam com frequência e em que a resposta é pública e pesquisável por destinatário e idioma."
+   },
+   {
+    "fonte": "Instagram (posts dos três perfis e comentários)",
+    "por_que": "Segunda arena de comentários; o português é separado depois por marcadores da língua."
+   },
+   {
+    "fonte": "Google Trends, Google Notícias (14 dias), checagens e TikTok",
+    "por_que": "Se o tema virou busca, notícia e vídeo curto."
+   }
+  ],
+  "controles": "No Google Trends, \"Trump\" é o controle: separa o interesse por Trump ligado ao Brasil do interesse geral por ele. Não há termo-âncora comum aos dois grupos. No X, o universo das respostas (soma do que o X informa nos posts dos perfis, em todas as línguas) serve de denominador para a fração em português (data/casos/010/resumo.json). ⛔ Não há perfil de controle (outra autoridade estrangeira) para saber se a presença em português é específica de Trump e Rubio.",
+  "limites": [
+   "lang:pt é detecção automática do X; textos curtos podem ser mal classificados, e português não é prova de nacionalidade.",
+   "A busca to:perfil também pega respostas a posts anteriores ao período, o que infla a amostra em relação ao universo dos posts do período (resumo.json).",
+   "O X não informa o total de menções: o universo das menções é ⛔ desconhecido. Nenhuma busca do X bateu no limite pedido, então é o que a busca devolveu para o período (CHANGELOG, C19.173).",
+   "No Instagram, a coleta achou um único post dos três perfis no período (instagram_coleta.json); os comentários vêm na ordem \"populares\", sem respostas.",
+   "A coleta foi feita na madrugada de 27/10: reações posteriores não são vistas.",
+   "\"Trump Brasil\" no Trends é termo amplo e mistura outros assuntos da relação entre os países.",
+   "TikTok: teto esgotado na leitura de 04/11 (manifesto-20261104T183944Z.json). Na coleta diária de notícias o caso não tem filtro de título (casos.json sem filtro_titulo_noticias)."
+  ]
+ },
+ "011": {
+  "pergunta": "A declaração de voto de Joice Hasselmann em Lula, na entrevista a Leonardo Attuch na TV 247 (22/10/2026), em que ela também diz que Bolsonaro mandou agredi-la em 2021, alcançou públicos de fora da bolha dela? Quem comenta a entrevista e os recortes tem histórico de comentar nos canais de Lula, de Flávio ou de nenhum dos dois, e o perfil dela cresceu depois do vídeo?",
+  "por_que_importa": "Uma declaração de voto pública só tem efeito eleitoral se chega a quem ainda não estava convencido. O caso testa isso com dados de audiência, e não com o volume de menções: cruza quem comenta com o acervo de comentários do Atlas nos canais das campanhas. Se o público da entrevista e dos recortes é quase todo do lado de Lula, a declaração circulou entre convertidos; se traz gente sem histórico ou do lado de Flávio, furou a bolha. O desenho serve de modelo para outros casos de canal (032).",
+  "recorte_temporal": {
+   "inicio": "2026-10-22",
+   "justificativa": "Data da entrevista. O reel de declaração de voto foi publicado no mesmo dia, antes da estreia da entrevista. Os recortes são lidos desde 22/10. A linha de base são os 10 envios do canal dela anteriores a 22/10 (público histórico): o vídeo dela de 23/10 está com comentários desligados e o envio anterior é de dezembro de 2025, então comparar \"antes e depois\" no próprio canal não era possível (CHANGELOG, C19.177). O Trends usa 7 dias, 1 mês e 12 meses; as notícias da coleta de busca, janela de 14 dias."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Nome e grafias",
+    "termos": [
+     "Joice Hasselmann",
+     "Joice Hasselman",
+     "joicehasselmann",
+     "#joicehasselmann"
+    ],
+    "justificativa": "O nome completo identifica a pessoa. A grafia com um \"n\" é erro comum de digitação; a forma colada é o @ e a hashtag."
+   },
+   {
+    "familia": "Nome + elemento da entrevista",
+    "termos": [
+     "(\"Joice Hasselmann\" OR joicehasselmann OR \"Joice Hasselman\") (Lula OR 247 OR voto OR Attuch OR Bolsonaro)",
+     "Joice Hasselmann Lula",
+     "Joice Hasselmann voto",
+     "Joice Hasselmann TV 247",
+     "Joice TV 247"
+    ],
+    "justificativa": "O nome sozinho traz toda a atividade dela. O voto, o programa, o entrevistador e a acusação a Bolsonaro ligam o post a esta entrevista."
+   },
+   {
+    "familia": "Recortes no YouTube",
+    "termos": [
+     "Joice Hasselmann",
+     "Joice Hasselmann Lula",
+     "Joice Hasselmann Bolsonaro",
+     "Joice Hasselmann 247",
+     "Joice Lula voto"
+    ],
+    "justificativa": "Cinco buscas, cada uma ordenada por data e por relevância, para achar os cortes publicados por outros canais. Só entram vídeos com Joice ou Hasselmann no título ou na descrição."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Joice\" sozinho nas redes",
+    "motivo": "Nome próprio comum. No X a busca exige o nome completo (ou o @) e um elemento da entrevista."
+   },
+   {
+    "termo": "Notícias sem \"Joice\" e sem voto, Lula, 247 ou eleição no título",
+    "motivo": "O filtro da coleta de busca exige os dois elementos no título."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "YouTube: entrevista, recortes, canal dela e comentários",
+    "por_que": "É onde a entrevista e os cortes circulam. O cruzamento dos autores com o acervo de comentários nos canais das campanhas dá o \"lado\" de cada um (Lula, Flávio, ambos ou nenhum)."
+   },
+   {
+    "fonte": "Instagram: o reel de declaração de voto, os comentários e a leitura diária de seguidores",
+    "por_que": "Mede o alcance da declaração no perfil dela e o crescimento do perfil depois do vídeo."
+   },
+   {
+    "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+    "por_que": "Circulação da declaração fora do YouTube e do perfil dela."
+   },
+   {
+    "fonte": "Google Trends, Google Notícias (14 dias) e checagens",
+    "por_que": "Se a declaração gerou busca e cobertura."
+   },
+   {
+    "fonte": "Redes para o Gephi (canais × autores e canais × canais)",
+    "por_que": "Mostram que canais compartilham público, que é a forma visual da pergunta da bolha."
+   }
+  ],
+  "controles": "O público histórico do canal dela (comentários até 21/10) é a linha de base da composição do público. O acervo de comentários nos canais de Lula e de Flávio é a referência para o lado de cada autor. No Google Trends, \"Lula\" separa o interesse por ela do interesse geral pelo candidato; não há termo-âncora comum aos dois grupos.",
+  "limites": [
+   "O lado de cada autor é indício, não prova de voto. \"Nenhum\" inclui quem nunca comentou nos canais das campanhas, que são a única referência do acervo.",
+   "A API do YouTube só dá o número atual de inscritos: o histórico anterior à primeira leitura é ⛔.",
+   "No Instagram, a amostra de comentários é uma fração pequena do universo informado pela plataforma (data/casos/011/youtube.json, conjunto \"Reel no Instagram\"), na ordem \"populares\", sem respostas. Quem comenta no Instagram não é cruzado com o acervo do YouTube.",
+   "Não há contagem total de vídeos sobre o tema: o universo dos recortes é ⛔ desconhecido, e a busca do YouTube devolve até 100 vídeos por consulta.",
+   "No Instagram, #joicehasselmann chegou ao limite de itens (manifesto-20261102T043856Z.json). TikTok: teto esgotado na leitura de 04/11 (manifesto-20261104T183944Z.json).",
+   "A coleta de busca regrava a lista de notícias a cada leitura, com janela de 14 dias (collect_caso_busca.py)."
+  ]
+ },
+ "012": {
+  "pergunta": "Que discurso produzem, a partir dos EUA, três bolsonaristas que vivem ou atuam fora do Brasil (Allan dos Santos, Paulo Figueiredo e Alexandre Ramagem) em seus canais do YouTube durante a campanha de 2026? Que temas transnacionais (EUA, Trump, Rubio, sanções, exílio) aparecem, e quanto público esses canais compartilham entre si e com os canais das campanhas?",
+  "por_que_importa": "O caso testa a hipótese de uma frente externa do bolsonarismo: atores fora do país que produzem conteúdo para o eleitor brasileiro e ligam a eleição à política dos EUA. O objeto é a produção dos canais, que o YouTube permite ler por inteiro, e não uma expressão que circula. Por isso a base é o universo de vídeos dos três canais, e a busca por termo nas outras redes só mede a repercussão em torno deles.",
+  "recorte_temporal": {
+   "inicio": "2026-07-20",
+   "justificativa": "20/07/2026 é o início das convenções partidárias, que o Atlas usa como começo do período eleitoral (CHANGELOG, C19.150 e C19.226). Começar aí dá a linha de base da pré-campanha antes da propaganda (16/08) e permite ver se a produção muda com a campanha e com o resultado. Antes dessa data, a produção dos canais não tem o referente eleitoral do caso. Os comentários são lidos desde 27/09/2026 (data/config/caso_canais.json)."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Canais (universo, não busca)",
+    "termos": [
+     "@allandossantosbr",
+     "@PauloFigueiredoShow",
+     "@delegadoramagem"
+    ],
+    "justificativa": "Os canais são lidos pelo identificador, com todos os envios desde 20/07. Aqui não há amostra por palavra: é o universo de vídeos de cada canal. Isso evita o viés da busca do YouTube, que ordena e corta resultados."
+   },
+   {
+    "familia": "Temas no título e na descrição dos vídeos",
+    "termos": [
+     "EUA/Trump/Rubio",
+     "sanções/Magnitsky/tarifas/vistos",
+     "exílio/asilo/perseguição",
+     "Moraes/STF/censura",
+     "eleição/urna/fraude",
+     "golpe/8 de janeiro/anistia",
+     "Lula/PT",
+     "família Bolsonaro",
+     "Venezuela/Cuba/América Latina"
+    ],
+    "justificativa": "Classificam cada vídeo por expressão regular (scripts/caso_canais.py). A lista separa o tema transnacional (EUA, sanções, exílio) dos temas domésticos (STF, eleição, Lula). Só assim dá para medir quanto da produção é de fato voltada à relação com os EUA."
+   },
+   {
+    "familia": "Nome do ator + marcador transnacional ou eleitoral (X)",
+    "termos": [
+     "(\"Allan dos Santos\" OR \"Paulo Figueiredo\" OR Ramagem) + (EUA OR exílio OR exilado OR Trump OR Rubio OR sanções OR Magnitsky OR STF OR eleição)"
+    ],
+    "justificativa": "Os nomes sozinhos trazem ruído: \"Paulo Figueiredo\" tem homônimos, e \"Ramagem\" traz toda a carreira policial e parlamentar do ator. Exigir um marcador do enquadramento transnacional ou eleitoral prende a busca ao objeto. A busca tinha, por erro, Eduardo Bolsonaro no lugar de Ramagem; foi corrigida (CHANGELOG, C19.240)."
+   },
+   {
+    "familia": "Nome do ator + contexto (Instagram, Facebook, TikTok, notícias)",
+    "termos": [
+     "Allan dos Santos EUA",
+     "Paulo Figueiredo eleição",
+     "Ramagem EUA",
+     "Allan dos Santos eleição 2026",
+     "Paulo Figueiredo eleição 2026"
+    ],
+    "justificativa": "Nas redes sem operadores de busca, o par nome + contexto faz o papel do filtro do X. \"Ramagem EUA\" marca a situação do ator fora do país, que é o que o liga à frente externa."
+   },
+   {
+    "familia": "Google Trends",
+    "termos": [
+     "Allan dos Santos",
+     "Paulo Figueiredo",
+     "Ramagem"
+    ],
+    "justificativa": "Os nomes entram sozinhos porque o Trends mede o interesse pelo ator, não pelo enquadramento. A ambiguidade é tratada pelo controle e pela leitura das consultas relacionadas."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Paulo Figueiredo\" e \"Ramagem\" sozinhos nas redes",
+    "motivo": "Homônimos e atividade do ator anterior e alheia ao caso."
+   },
+   {
+    "termo": "Eduardo Bolsonaro",
+    "motivo": "Entrou por erro na primeira versão da busca e foi retirado: não é um dos três canais do caso."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "YouTube Data API (canais, vídeos, comentários, inscritos; leitura diária)",
+    "por_que": "É onde os três atores publicam. A API entrega todos os envios do canal, o que faz da produção um universo, e os comentários permitem medir público em comum (autores repetidos entre canais) e cruzar com o acervo de comentários dos canais das campanhas."
+   },
+   {
+    "fonte": "X, Instagram, Facebook, TikTok (busca por termo)",
+    "por_que": "Medem a circulação em torno dos atores fora do YouTube. Entraram na padronização dos casos (01/11/2026), como camada secundária."
+   },
+   {
+    "fonte": "Google Trends e Google Notícias (30 dias)",
+    "por_que": "Interesse de busca pelos atores e cobertura da imprensa, que dá o contexto dos episódios citados nos vídeos."
+   }
+  ],
+  "controles": "No Trends, \"Bolsonaro\" é o controle (scripts/collect_caso_busca.py, CASOS[\"012\"]). Ele separa o interesse pelos três atores do interesse geral pelo bolsonarismo. No YouTube, o controle é interno: o acervo de comentários dos canais de Lula e de Flávio indica de que lado vem o público de cada canal.",
+  "limites": [
+   "Os comentários só são lidos desde 27/09/2026, e até 3 páginas de 100 conversas por vídeo (data/config/caso_canais.json). A pré-campanha tem vídeos, mas não tem comentários. ⛔ O motivo da data de 27/09 não está documentado no repositório.",
+   "Os temas vêm de expressão regular no título e na descrição, não da fala do vídeo. Um vídeo pode tratar de EUA sem dizer isso no título.",
+   "O filtro de título das notícias (casos.json, filtro_titulo_noticias) inclui a palavra \"dos\". Como o filtro aceita qualquer palavra da lista, quase todo título em português passa por ele; a pertinência das notícias depende da própria consulta. Na outra coleta de notícias (collect_caso_busca.py), o título precisa citar Allan, Figueiredo ou Ramagem e um marcador (EUA, exterior, eleição, Lula, Bolsonaro).",
+   "O Facebook chegou ao limite de itens em \"Paulo Figueiredo eleição\" (manifesto-20261102T070921Z): há mais do que o lido.",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+   "\"Público em comum\" é autor de comentário repetido entre canais. Não mede quem só assiste."
+  ]
+ },
+ "013": {
+  "pergunta": "Depois da derrota no 2º turno (25/10/2026), quanto circularam a pergunta \"Onde está Flávio?\" e a afirmação \"Flávio fugiu\", em buscas, notícias, vídeos e posts públicos? Como essa circulação se compara com episódios anteriores da mesma acusação (viagem a Lisboa em julho de 2025; viagem aos EUA em maio de 2026)?",
+  "por_que_importa": "A acusação de fuga é um enquadramento recorrente contra o candidato, que volta a cada viagem. O caso mede se o resultado eleitoral reativou esse enquadramento e com que intensidade. O Atlas não afirma nem nega a fuga: mede o que circula e o que a imprensa e as agências publicam. O caso se liga aos casos 017, 024, 025 e 036, que tratam da mesma saída do país.",
+  "recorte_temporal": {
+   "inicio": "2026-10-24",
+   "justificativa": "Um dia antes do 2º turno. Esse dia dá a linha de base imediata: se as buscas e os posts sobem depois de 25/10, o aumento pode ser ligado ao resultado. Antes disso, a acusação pertence a episódios anteriores, que o caso compara pelo Trends de 12 meses e pelas fontes de contexto, não pela coleta das redes."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Pergunta e afirmação do caso",
+    "termos": [
+     "onde está flávio",
+     "flávio fugiu",
+     "flávio bolsonaro fugiu",
+     "cadê o flávio",
+     "\"onde está Flávio\""
+    ],
+    "justificativa": "São as duas formas que o caso estuda: a pergunta (dúvida insinuada) e a afirmação (acusação direta). \"Cadê o Flávio\" é a forma coloquial da mesma pergunta. A versão com sobrenome tira a ambiguidade do prenome."
+   },
+   {
+    "familia": "Hashtags",
+    "termos": [
+     "#ondeestaflavio",
+     "#ondeestaoflavio",
+     "#flaviofugiu",
+     "#cadeoflavio"
+    ],
+    "justificativa": "Hashtag é o marcador de um público em torno do tema. A forma com artigo (#ondeestaoflavio) entrou porque já tinha aparecido nos comentários do reel de Joice Hasselmann (caso 011), segundo o CHANGELOG (C19.180): é vocabulário observado, não suposto."
+   },
+   {
+    "familia": "Paradeiro e viagem (imprensa e YouTube)",
+    "termos": [
+     "Flávio Bolsonaro paradeiro",
+     "Flávio Bolsonaro viagem exterior",
+     "Flávio Bolsonaro sumiu",
+     "Flávio Bolsonaro fuga"
+    ],
+    "justificativa": "A imprensa raramente usa \"fugiu\" no título; usa paradeiro, viagem, exterior. Esses termos captam a cobertura factual que responde à acusação, e não só quem a repete."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Flávio\" sozinho",
+    "motivo": "Prenome comum; o filtro exige \"Flávio\" e um marcador de fuga ou paradeiro (fug, onde está, cadê, sumiu, exterior, EUA, Europa, Lisboa, Miami, asilo)."
+   },
+   {
+    "termo": "\"Flávio Bolsonaro\" sozinho como busca",
+    "motivo": "Traria toda a cobertura do candidato. Só entra no Trends, como controle."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Google Trends (7 dias, 30 dias, 12 meses; por UF)",
+    "por_que": "É a camada central do caso: mede se a pergunta virou busca. A janela de 12 meses foi escolhida para comparar com episódios anteriores da acusação."
+   },
+   {
+    "fonte": "Google Notícias (7 dias) e checagens",
+    "por_que": "Mostram como a imprensa tratou a acusação e se houve checagem."
+   },
+   {
+    "fonte": "YouTube (desde 24/10)",
+    "por_que": "Vídeos de comentário político, onde a acusação ganha forma narrativa."
+   },
+   {
+    "fonte": "TikTok",
+    "por_que": "Única rede social do caso: a autorização inicial foi só de coleta grátis, e o TikTok era lido pela página pública."
+   }
+  ],
+  "controles": "No Trends, \"Flávio Bolsonaro\" e \"Lula\" (CASOS[\"013\"]). O primeiro separa a acusação do interesse geral pelo candidato: se \"flávio fugiu\" sobe junto com \"Flávio Bolsonaro\", é atenção ao candidato; se sobe sozinho, é o enquadramento. \"Lula\" dá a escala do interesse pela eleição no mesmo período.",
+  "limites": [
+   "X, Instagram e Facebook não foram coletados: a autorização do caso foi só de coleta grátis (casos.json, autorizacao). A circulação nessas redes fica ⛔ fora da amostra.",
+   "A janela de 12 meses do Trends, contada a partir da coleta (fim de outubro de 2026), não alcança julho de 2025. A comparação com a viagem a Lisboa fica ⛔ sem dado de busca; só a de maio de 2026 está dentro da janela.",
+   "No YouTube, o filtro aceita título ou descrição com \"Flávio\" e um marcador de fuga ou viagem. Vídeos sobre a viagem que não usam \"fuga\" entram; vídeos que repetem a acusação com outras palavras ficam fora.",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+   "Parte das buscas do YouTube deu HTTP 429 na primeira coleta (CHANGELOG, C19.180, run 40617220536)."
+  ]
+ },
+ "014": {
+  "pergunta": "Depois do 2º turno (25/10/2026), como circularam os chamados para demitir eleitores do PT, boicotar empresas e prestadores identificados como petistas e montar listas de estabelecimentos? Que vocabulário o movimento usa, quem é alvo (trabalhadores, professores, comerciantes, profissionais liberais) e como isso se relaciona com as denúncias de assédio eleitoral ao Ministério Público do Trabalho?",
+  "por_que_importa": "O caso trata de retaliação econômica por voto: a passagem da disputa eleitoral para o emprego e o consumo. É intolerância política com consequência material, e toca a fronteira legal do assédio eleitoral. Medir o vocabulário, os alvos e a duração permite distinguir desabafo pontual de mobilização organizada. O outro lado (relatos de demissão, denúncias) entra para não medir só a incitação.",
+  "recorte_temporal": {
+   "inicio": "2026-10-25",
+   "justificativa": "Os chamados são uma reação ao resultado: antes de 25/10, \"demita um petista\" não tem o referente do caso. O assédio eleitoral antes do voto (coação para votar) é outro objeto. Ele é medido à parte, por um grupo do Trends com janela de 01/08/2022 a 31/10/2026, que põe os picos das duas eleições na mesma escala, e pelos números do MPT. A leitura diária do X segue até 15/11/2026."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Pedido de demissão",
+    "termos": [
+     "demita um petista",
+     "demitir petista",
+     "demitam os petistas",
+     "demite petista",
+     "demitir os petistas",
+     "demiti um petista",
+     "#demitaumpetista"
+    ],
+    "justificativa": "É a frase-núcleo e suas flexões. O imperativo (demita, demitam) marca a incitação; a primeira pessoa (demiti) marca o relato de quem diz ter feito. As duas formas são analisadas em separado no livro de códigos."
+   },
+   {
+    "familia": "Boicote a petistas e à esquerda",
+    "termos": [
+     "boicote + (petista OR petistas OR esquerda OR esquerdistas OR esquerdopatas)",
+     "#boicote + (petista, esquerda, Lula, PT, comunista, empresa, loja)",
+     "#boicoteesquerda",
+     "#boicotepetista"
+    ],
+    "justificativa": "\"Boicote\" sozinho é genérico (marcas, times, países). Exigir o alvo político prende a busca ao caso. O termo pejorativo \"esquerdopatas\" entra porque é como parte do movimento nomeia o alvo."
+   },
+   {
+    "familia": "Empresas e prestadores identificados como petistas",
+    "termos": [
+     "empresa(s) petista(s)",
+     "prestador(es) petista(s)",
+     "loja(s) petista(s)",
+     "comércio petista",
+     "médico petista",
+     "dentista petista"
+    ],
+    "justificativa": "Mostram a extensão do boicote ao comércio e aos serviços profissionais. Profissões nomeadas indicam alvos individuais, não só empresas."
+   },
+   {
+    "familia": "Listas e \"não contrate\"",
+    "termos": [
+     "não contrate petista",
+     "não compre de petista",
+     "lista de petistas",
+     "lista de empresas + petista",
+     "lista de boicote",
+     "boicote a empresas/estabelecimentos",
+     "empresas/estabelecimentos/comerciantes de esquerda"
+    ],
+    "justificativa": "A lista é o instrumento que transforma o chamado em ação coordenada. Medir \"lista\" separadamente distingue a incitação genérica da organização."
+   },
+   {
+    "familia": "Professores como alvo",
+    "termos": [
+     "professor(a) petista",
+     "professores petistas",
+     "professor(a) de esquerda",
+     "demitir professor",
+     "boicote professor"
+    ],
+    "justificativa": "Professores são um alvo histórico da acusação de doutrinação. A família testa se o movimento se estende à escola, com variação de gênero e número."
+   },
+   {
+    "familia": "Preferência intragrupo",
+    "termos": [
+     "direita apoia direita",
+     "#direitaapoiadireita",
+     "direita compra de direita",
+     "compre de quem é de direita",
+     "compre de direita",
+     "só compro de direita",
+     "empresário(s) de direita",
+     "#comprededireita",
+     "#direitacompradedireita"
+    ],
+    "justificativa": "É a face positiva do boicote: o movimento se nomeia pela preferência, não pela exclusão. Sem essa família, a coleta veria só a agressão e perderia o enquadramento que o próprio movimento usa."
+   },
+   {
+    "familia": "Exclusão do convívio (rodada 2)",
+    "termos": [
+     "não ajude petista",
+     "nenhum petista",
+     "não trabalhem com petistas",
+     "amizade com petistas",
+     "relacionamento com petistas",
+     "excluam os petistas",
+     "#movimentoexcluaospetistas"
+    ],
+    "justificativa": "Vocabulário encontrado nos textos já coletados (contagens no privado; CHANGELOG, C19.188). Mostra que a retaliação passa do trabalho e do consumo para as relações pessoais. Deu origem à categoria \"exclusão do convívio\" do livro de códigos v1.2."
+   },
+   {
+    "familia": "Como demitir (rodada 2)",
+    "termos": [
+     "vigiar e demitir",
+     "demita em silêncio",
+     "evite processo",
+     "demitir por voto",
+     "demissão de petistas"
+    ],
+    "justificativa": "Expressões que dão instrução para demitir sem risco jurídico. São o indício mais forte de consciência da ilegalidade e interessam ao debate sobre assédio eleitoral."
+   },
+   {
+    "familia": "Hashtags derivadas e termos pejorativos (rodadas 2 e 3)",
+    "termos": [
+     "#vocejademitiuumpetistahoje",
+     "#demitaospetistas",
+     "#demitaumptista",
+     "#naocontratepetista",
+     "#naocompredepetista",
+     "#demitapetistas",
+     "petralha/ptralha + (demitir, boicote, contratar, compre, lista)",
+     "compre nada de petista",
+     "ignore e boicote",
+     "boicote essa raça",
+     "raça esquerdista",
+     "demitir petista é gostoso",
+     "devagarzinho + demita"
+    ],
+    "justificativa": "A rodada 3 usou termos com 10 ou mais ocorrências nos textos da rodada 2. \"Petralha\" só entra junto de um verbo de ação, porque sozinho é xingamento genérico, sem o chamado. \"Raça\" aplicado a um grupo político marca desumanização, que interessa à análise de intolerância."
+   },
+   {
+    "familia": "Nova tag (rodada 5)",
+    "termos": [
+     "não contrate quem odeia os empresários",
+     "variações sem acento e no singular",
+     "#naocontratequemodeiaosempresarios"
+    ],
+    "justificativa": "Reformulação do chamado em linguagem que evita nomear o partido. Medir a nova tag ao lado de \"demita um petista\" (grupo próprio no Trends) testa se o movimento troca de vocabulário para escapar de moderação ou de responsabilização."
+   },
+   {
+    "familia": "O outro lado: relatos e denúncias",
+    "termos": [
+     "demitido(a) por votar",
+     "demissão por voto",
+     "demitido por votar em Lula",
+     "assédio eleitoral",
+     "assédio eleitoral MPT",
+     "denunciar assédio eleitoral",
+     "denúncia MPT",
+     "assédio eleitoral no trabalho"
+    ],
+    "justificativa": "Sem esta família, a amostra teria só a incitação. Os relatos e as buscas por como denunciar medem o efeito do chamado sobre quem é alvo e a procura por proteção legal."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"boicote\" e \"#boicote\" sozinhos",
+    "motivo": "Hashtag genérica, com mais de um milhão de posts no Instagram em todos os tempos (data/casos/014/contagens_plataforma.json); só entra com alvo político."
+   },
+   {
+    "termo": "\"petralha\" sozinho",
+    "motivo": "Xingamento de uso geral; sem verbo de ação não é chamado de retaliação."
+   },
+   {
+    "termo": "Nomes de empresas, prestadores e pessoas das listas",
+    "motivo": "Não são termos de busca e não são publicados: ficam só no repositório privado."
+   },
+   {
+    "termo": "Kwai a partir da rodada 2",
+    "motivo": "Não devolveu nenhum item na carga; o teto da rede foi redistribuído para X e Instagram."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (busca por termo, em 5 rodadas, e leitura diária até 15/11)",
+    "por_que": "Rede em que o vocabulário do movimento é mais visível e onde os operadores de busca permitem flexões e co-ocorrência. As rodadas sucessivas medem a saturação: quanto cada ampliação do vocabulário ainda traz de novo (data/casos/014/saturacao.json)."
+   },
+   {
+    "fonte": "Instagram (hashtags, busca de reels, reels indicados) e Facebook (frases)",
+    "por_que": "Onde os vídeos de maior alcance circularam. Reels indicados pelo responsável que a busca não trouxe entram marcados como tal."
+   },
+   {
+    "fonte": "TikTok e Kwai",
+    "por_que": "Redes de vídeo curto com público diferente do X."
+   },
+   {
+    "fonte": "Google Trends (variantes, grupo \"assédio eleitoral\" 2022–2026, grupo da nova tag)",
+    "por_que": "Mede o interesse de busca pelo chamado e, à parte, a procura por informação sobre assédio eleitoral, comparada com 2022."
+   },
+   {
+    "fonte": "Google Notícias (7 dias), YouTube e checagens",
+    "por_que": "Cobertura e enquadramento pela imprensa e conteúdo em vídeo longo."
+   },
+   {
+    "fonte": "Números do MPT sobre assédio eleitoral (data/casos/014/mpt.json)",
+    "por_que": "Validação externa: denúncias formais são o dado institucional do fenômeno. Cada número tem fonte e data de corte."
+   },
+   {
+    "fonte": "Totais informados pelas plataformas (data/casos/014/contagens_plataforma.json)",
+    "por_que": "O único universo disponível: posts por hashtag no Instagram e estimativa do YouTube."
+   }
+  ],
+  "controles": "No Trends, \"assédio eleitoral\" e \"petista\" (CASOS[\"014\"]). \"Petista\" dá a escala do interesse pelo termo político em geral, para ver se o chamado tem pico próprio. \"Assédio eleitoral\" mede a procura pelo enquadramento legal do mesmo fenômeno. No grupo da nova tag, \"demita um petista\" e \"boicote petista\" servem de referência para a frase nova.",
+  "limites": [
+   "Saturação não alcançada: a fração de itens novos caiu a cada rodada do X, mas não chegou perto de zero (data/casos/014/saturacao.json; CHANGELOG, C19.190). O universo alcançável é maior do que o lido.",
+   "Lacuna de 28/10 (cerca de 04h UTC) até a rodada 4: X, Instagram e Facebook pararam nesse intervalo e foram atualizados depois (CHANGELOG, C19.198).",
+   "Termos no limite de itens no X (rodada 4, manifesto-20261030T013553Z; leitura diária, manifesto-20261101T205817Z), no Instagram (manifesto-20261028T032546Z) e no Facebook (manifesto-20261030T014212Z): há mais do que o lido nesses termos.",
+   "Várias hashtags do Instagram e do X não devolveram nada (ex.: #boicoteesquerda, #empresaspetistas; manifesto-20261028T020828Z) e não têm total informado: ⛔.",
+   "O MPT não publica série aberta. Os números vêm da imprensa, com data de corte, e as denúncias posteriores a 25/10 ficam ⛔ até serem divulgadas (data/casos/014/mpt.json).",
+   "A busca por frase pega quem cita o chamado para criticá-lo. Incitação, relato e reação só se separam pela codificação (livro de códigos v1.2), não pela busca.",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+   "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+  ]
+ },
+ "015": {
+  "pergunta": "Quais figuras públicas com 100 mil seguidores ou mais declararam publicamente voto ou apoio a Lula ou a Flávio Bolsonaro no 2º turno de 2026, entre 01/08 e 25/10/2026, e como essas declarações se distribuem por lado, rede e faixa de seguidores? Como se comparam com a posição dos políticos eleitos e de seus partidos?",
+  "por_que_importa": "Declarações públicas de voto de pessoas com grande audiência são um recurso de campanha: transferem capital simbólico e sinalizam pertencimento. O caso mapeia essas bolhas de apoio com o link de cada publicação como prova. Não é pesquisa eleitoral e não mede intenção de voto: mede quem se expôs, onde e quando.",
+  "recorte_temporal": {
+   "inicio": "2026-08-01",
+   "justificativa": "A janela cobre o mês de agosto, antes e durante o início da propaganda (16/08), e toda a campanha até o dia do 2º turno. Termina em 25/10 (a busca usa until:2026-10-26) porque o objeto é a declaração feita antes do voto; o que vem depois é comemoração ou lamento, outro objeto. ⛔ O motivo de escolher 01/08, e não 20/07 (convenções) ou 16/08, não está documentado no repositório."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Declaração de voto em primeira pessoa",
+    "termos": [
+     "meu voto é (do) Lula",
+     "voto no Lula",
+     "vou votar no Lula",
+     "vou de Lula",
+     "vou de 13",
+     "voto 13",
+     "meu voto é (do) Flávio",
+     "voto no Flávio",
+     "vou votar no Flávio",
+     "vou de Flávio",
+     "vou de 22",
+     "voto 22"
+    ],
+    "justificativa": "A primeira pessoa distingue a declaração do próprio voto da notícia sobre o voto de outro. O número na urna (13, 22) é a forma curta usada em vídeos e legendas. As duas listas são simétricas para não favorecer um lado."
+   },
+   {
+    "familia": "Declaração de apoio",
+    "termos": [
+     "declaro meu voto",
+     "declaro (meu) apoio",
+     "fechado com Lula/Flávio",
+     "tô com Lula/Flávio",
+     "estou com Lula/Flávio",
+     "#Lula13",
+     "#Flavio22",
+     "#FlavioPresidente"
+    ],
+    "justificativa": "Captam a forma ritual do anúncio de apoio, comum entre artistas e influenciadores. Exigem o nome do candidato no mesmo texto, para não pegar apoio a outra causa."
+   },
+   {
+    "familia": "Contexto do 2º turno",
+    "termos": [
+     "\"segundo turno\" + (meu voto OR declaro OR apoio) + (Lula OR Flávio)"
+    ],
+    "justificativa": "Pega declarações que não usam as fórmulas acima mas se referem explicitamente ao 2º turno. Exige mais curtidas (1.000) por ser uma busca mais larga."
+   },
+   {
+    "familia": "Nulo, branco ou nenhum",
+    "termos": [
+     "voto nulo",
+     "anular meu voto",
+     "vou anular",
+     "voto em branco",
+     "nem Lula nem Flávio",
+     "não voto em nenhum"
+    ],
+    "justificativa": "A recusa pública também é posição. Sem ela, a página sugeriria que toda figura pública escolheu um lado."
+   },
+   {
+    "familia": "Filtros da busca no X",
+    "termos": [
+     "min_faves:200 a 1000",
+     "busca Top",
+     "lang:pt",
+     "fatias mensais (ago, set, out)"
+    ],
+    "justificativa": "O objeto são perfis grandes. Curtidas mínimas e a ordem Top da plataforma levam a busca a eles, em vez de milhares de declarações de pessoas comuns. As fatias por mês foram criadas porque a busca do período inteiro chegou ao limite de itens."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "Contas com menos de 100 mil seguidores",
+    "motivo": "Fora do recorte de figura pública do caso (casos.json, min_seguidores_bolha)."
+   },
+   {
+    "termo": "Veículos que noticiam a declaração de outra pessoa, ironia, sátira, negação, condicional, partidos e organizações",
+    "motivo": "A busca por frase os trouxe, mas não são declaração do próprio voto. Foram retirados na conferência texto a texto (data/config/bolhas_conferencia.json)."
+   },
+   {
+    "termo": "Retuítes",
+    "motivo": "Repassar não é declarar (scripts/bolhas_apoio.py)."
+   },
+   {
+    "termo": "Posição do partido como voto do político",
+    "motivo": "O sinal do partido aparece separado e não entra na contagem de apoio declarado."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (busca Top com curtidas mínimas)",
+    "por_que": "Rede em que as declarações escritas de figuras públicas são mais frequentes e a busca permite data e idioma."
+   },
+   {
+    "fonte": "Instagram (busca de reels) e leitura dos seguidores dos autores",
+    "por_que": "Onde artistas e influenciadores declaram voto em vídeo. A busca de reels não traz seguidores; por isso os perfis dos autores com frase de declaração são lidos à parte."
+   },
+   {
+    "fonte": "TikTok (frases)",
+    "por_que": "Declarações em vídeo curto de público mais jovem."
+   },
+   {
+    "fonte": "TSE: candidatos eleitos, contas declaradas e votos de 2026",
+    "por_que": "Base completa (universo) dos políticos eleitos. As contas declaradas ao TSE permitem casar o político com o autor da publicação."
+   },
+   {
+    "fonte": "Posição oficial dos partidos no 2º turno (data/config/apoio_partidos_2t.json)",
+    "por_que": "Sinal indireto, com fonte para cada partido, para comparar o apoio declarado com a orientação partidária."
+   }
+  ],
+  "controles": "Não há termos de controle no Google Trends: o caso não usa Trends nem Google Notícias (não está em CASOS de collect_caso_busca.py). O controle de validade é a conferência texto a texto de cada conta marcada pela frase antes de publicar o nome, e a separação entre declaração própria e sinal do partido.",
+  "limites": [
+   "O universo de figuras públicas que declararam voto é ⛔ desconhecido: nenhuma plataforma informa esse total.",
+   "A busca por frase errou muito: muitas contas marcadas não eram declaração própria (data/config/bolhas_conferencia.json). A conferência foi feita por IA (Claude) lendo o texto completo; a conferência humana está ⛔ pendente (CHANGELOG, C19.194).",
+   "Curtidas mínimas e ordem Top favorecem publicações de maior alcance e deixam de fora declarações com outras palavras, em vídeo sem legenda ou em stories.",
+   "A busca chegou ao limite de itens em \"declarou voto em Lula\" (manifesto-20261028T181452Z) e, mesmo fatiada, em outubro para os dois lados (manifesto-20261030T011811Z): há mais do que o lido.",
+   "Facebook e YouTube não entram nas bolhas (casos.json: teto do Facebook 0; CHANGELOG, C19.195: YouTube ainda não entra). A base do Quem Apoia Quem foi pedida e não recebida (⛔).",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+  ]
+ },
+ "016": {
+  "pergunta": "Depois do 2º turno (25/10/2026), quanto circularam vídeos e chamados para queimar, rasgar ou destruir o título de eleitor? Em que redes, com que pico, e com que sentido (chamado, relato do ato, descrédito do voto, deboche, informação legal)?",
+  "por_que_importa": "Destruir o título é um gesto simbólico de rejeição à participação eleitoral. Ele desloca a derrota de um candidato para a descrença no próprio voto. Medir o volume e o sentido desse gesto ajuda a ver se a contestação do resultado se converte em ataque à instituição eleitoral, e não só ao vencedor.",
+  "recorte_temporal": {
+   "inicio": "2026-10-24",
+   "justificativa": "Um dia antes do 2º turno, como linha de base: se os chamados aparecem antes do resultado, o gesto não é reação a ele. A leitura diária do X segue até 15/11/2026, para ver se o gesto se sustenta ou se é um pico do pós-eleição."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Queimar o título (imperativo, infinitivo, relato)",
+    "termos": [
+     "queime seu título",
+     "queimem seus títulos",
+     "queimem o título",
+     "queimar o título",
+     "queimar meu título",
+     "queimei meu título",
+     "queimando (o/meu) título",
+     "queimou o título",
+     "variantes sem acento"
+    ],
+    "justificativa": "As flexões separam o chamado (queime, queimem) do relato de quem diz ter feito (queimei, queimando). É essa distinção que o livro de códigos usa. A grafia sem acento é comum em posts e hashtags."
+   },
+   {
+    "familia": "Fogo no título (forma coloquial)",
+    "termos": [
+     "fogo no título",
+     "fogo no meu título",
+     "tacar/taca/botar fogo no título",
+     "#queimeseutitulo",
+     "#fogonotitulo",
+     "#queimeotitulo"
+    ],
+    "justificativa": "A forma coloquial e as hashtags captam vídeos curtos, em que o gesto é mostrado mais do que dito."
+   },
+   {
+    "familia": "Destruir, rasgar, jogar fora",
+    "termos": [
+     "destrua seu título",
+     "destruam seus títulos",
+     "destruir o título",
+     "destruí meu título",
+     "rasgue/rasguem/rasguei/rasgar o título",
+     "jogue fora seu título",
+     "#destruaseutitulo"
+    ],
+    "justificativa": "O gesto não se limita ao fogo. Sem essas formas, a medida dependeria de um só verbo."
+   },
+   {
+    "familia": "Co-ocorrência com \"título de eleitor\"",
+    "termos": [
+     "(\"título de eleitor\" OR \"titulo de eleitor\") + (queimar, queimei, queimando, queimem, queime, rasgar, rasguei, rasguem, destruir, destruí, fogo, lixo)"
+    ],
+    "justificativa": "Pega frases que nomeiam o documento por extenso e usam o verbo em outra posição. É a busca mais larga, por isso exige o nome completo do documento."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"título\" sozinho",
+    "motivo": "Ruído alto: títulos de campeonato, título de notícia, título de propriedade. O documento só entra como \"título de eleitor\" ou junto de um verbo de destruição."
+   },
+   {
+    "termo": "\"título de eleitor\" sozinho como busca nas redes",
+    "motivo": "Traz a conversa prática sobre o documento (emissão, segunda via, regularização), que cresce em toda eleição. No Trends, ele fica como controle."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (4 buscas e leitura diária até 15/11)",
+    "por_que": "Onde chamados e relatos aparecem por escrito e a busca permite flexões e co-ocorrência."
+   },
+   {
+    "fonte": "Instagram (hashtags e reels), Facebook (frases), TikTok",
+    "por_que": "O gesto é visual: a queima do documento circula como vídeo."
+   },
+   {
+    "fonte": "Google Trends (7 dias, 30 dias, 12 meses)",
+    "por_que": "Mede se o gesto gerou busca, inclusive busca prática (o que acontece se eu queimar o título)."
+   },
+   {
+    "fonte": "Google Notícias, YouTube e checagens",
+    "por_que": "Cobertura e informação legal sobre as consequências do ato."
+   }
+  ],
+  "controles": "No Trends, \"título de eleitor\" e \"Lula\" (CASOS[\"016\"]). \"Título de eleitor\" é a busca prática de rotina sobre o documento: se \"queimar título\" sobe sem ela, o pico é do gesto, não da procura habitual. \"Lula\" dá a escala do interesse pelo resultado.",
+  "limites": [
+   "O filtro de título das notícias em casos.json é só \"título/titulo\". Ele deixa passar notícias de serviço sobre o documento (ex.: reabertura de cadastro eleitoral, em data/casos/016/google.json). A outra coleta (collect_caso_busca.py) exige também um verbo de destruição (queim, fogo, destr, rasg, lixo).",
+   "As três hashtags do Instagram não devolveram nada, e a busca de reels \"destrua seu título\" também não (manifesto-20261030T010308Z). No Instagram e no TikTok as hashtags não têm total informado (CHANGELOG, C19.198): ⛔.",
+   "O YouTube recusou as consultas de total para o caso (CHANGELOG, C19.198): ⛔.",
+   "O ato em si não é verificável: o caso mede publicações que mostram ou anunciam o gesto, não títulos destruídos.",
+   "Pessoas comuns que aparecem nos vídeos não são identificadas.",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+   "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+  ]
+ },
+ "017": {
+  "pergunta": "Como circularam as versões da carta em que Flávio Bolsonaro, depois de viajar aos EUA, se dizia \"verdadeiro presidente eleito\" e, na versão editada, \"líder do Brasil\"? Que versões existiram, quem as publicou, como foram respondidas e checadas, e o que os metadados dos arquivos mostram sobre sua produção?",
+  "por_que_importa": "A carta é uma contestação do resultado feita pelo candidato derrotado. As versões sucessivas mostram o recuo de uma autoproclamação para um título político sem efeito institucional. O caso permite medir a circulação de cada formulação e verificar, por documentos e metadados, a ordem dos fatos. Liga-se aos casos 013, 024, 025 e 036.",
+  "recorte_temporal": {
+   "inicio": "2026-10-27",
+   "justificativa": "A carta foi publicada no X em 28/10/2026. A janela começa um dia antes, o que dá uma linha de base da conversa sobre o candidato antes da carta. ⛔ O motivo explícito de 27/10 não está documentado no repositório. A busca dos posts de Paulo Figueiredo começa em 28/10, data da primeira versão. A leitura diária do X segue até 15/11."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Fonte primária: posts do autor",
+    "termos": [
+     "from:flaviobolsonaro"
+    ],
+    "justificativa": "Reúne o que o próprio candidato publicou no período, inclusive as versões e as reações dele."
+   },
+   {
+    "familia": "Conversa em torno do post da carta",
+    "termos": [
+     "conversation_id:2115538982012682337",
+     "url:2115538982012682337",
+     "quoted_tweet_id:2115538982012682337"
+    ],
+    "justificativa": "Respostas, citações e links do post indicado medem a recepção direta da carta, sem depender de palavras. É a unidade mais precisa do caso."
+   },
+   {
+    "familia": "Carta + marcadores de versão",
+    "termos": [
+     "(carta OR nota) + (Flávio OR @flaviobolsonaro) + (\"presidente eleito\" OR \"verdadeiro presidente\" OR \"líder do Brasil\" OR versão OR versões OR editou OR apagou)"
+    ],
+    "justificativa": "As palavras que mudaram entre as versões (presidente eleito → líder) e os verbos de edição permitem ver qual formulação circulou mais e se a edição foi notada."
+   },
+   {
+    "familia": "Expressões de autoproclamação",
+    "termos": [
+     "Flávio presidente eleito",
+     "verdadeiro presidente eleito",
+     "Flávio líder do Brasil",
+     "presidente no exílio",
+     "#FlavioPresidenteEleito"
+    ],
+    "justificativa": "Captam a adesão ou o deboche à tese da carta fora da conversa do post. \"Presidente no exílio\" liga a carta à saída do país."
+   },
+   {
+    "familia": "Primeira versão: Paulo Figueiredo",
+    "termos": [
+     "from:realpfigueiredo"
+    ],
+    "justificativa": "Segundo a imprensa, a versão com o brasão de 1889 foi publicada e apagada por esse perfil (CHANGELOG, C19.196). A busca tenta recuperar a circulação dessa versão."
+   },
+   {
+    "familia": "Produção com IA (rodada 3)",
+    "termos": [
+     "(carta OR nota OR PDF) + (Flávio OR Eduardo OR Figueiredo) + (ChatGPT OR \"GPT-6\" OR \"inteligência artificial\" OR \"Content Credentials\" OR brasão)",
+     "carta Flávio ChatGPT",
+     "carta Flávio GPT-6 Content Credentials"
+    ],
+    "justificativa": "A imprensa relatou metadados de IA no PDF. A família mede se essa leitura entrou na conversa, o que liga o caso à pesquisa sobre conteúdo sintético na eleição."
+   },
+   {
+    "familia": "Checagens",
+    "termos": [
+     "site:aosfatos.org Flávio",
+     "site:lupa.uol.com.br Flávio",
+     "site:estadao.com.br/estadao-verifica Flávio",
+     "site:g1.globo.com/fato-ou-fake Flávio",
+     "Comprova Flávio carta",
+     "checagem carta Flávio Bolsonaro"
+    ],
+    "justificativa": "Busca dirigida aos domínios das agências, porque o título de uma checagem nem sempre repete as palavras da carta."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Flávio Bolsonaro\" sozinho como busca",
+    "motivo": "Traria toda a cobertura do candidato; fica no Trends como controle."
+   },
+   {
+    "termo": "\"carta\" ou \"nota\" sem Flávio",
+    "motivo": "Palavras de uso geral."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (busca por termo, conversa do post, leitura diária)",
+    "por_que": "Rede em que a carta foi publicada e editada; a cadeia de edição é observável."
+   },
+   {
+    "fonte": "Endpoint público de incorporação do X e Internet Archive (scripts/carta_versoes.py)",
+    "por_que": "Registram cada versão do post (texto, imagens) e a série de curtidas e respostas de cada uma."
+   },
+   {
+    "fonte": "PDFs das três versões, com metadados e Content Credentials (scripts/carta_pdfs_017.py)",
+    "por_que": "Permitem datar a produção do arquivo e ver a ferramenta que o exportou, de forma verificável."
+   },
+   {
+    "fonte": "Instagram (perfil de Flávio, posts e comentários; reels por assunto) e Facebook (frases)",
+    "por_que": "Publicações do autor e recepção nas redes de maior público."
+   },
+   {
+    "fonte": "Google Notícias, checagens, YouTube, TikTok e Google Trends",
+    "por_que": "Cronologia da imprensa, checagem das afirmações, vídeos de comentário e interesse de busca por cada formulação."
+   }
+  ],
+  "controles": "No Trends, \"Flávio Bolsonaro\" e \"Lula\" (CASOS[\"017\"]). O primeiro separa o interesse pela carta do interesse pelo candidato; o segundo dá a escala da atenção ao resultado.",
+  "limites": [
+   "Três buscas do X chegaram ao limite de 1.300 itens na carga (respostas ao post; carta + presidente eleito/líder; Flávio presidente eleito/líder), e duas na leitura diária (manifesto-20261030T010818Z; manifesto-20261101T205817Z): há mais do que o lido.",
+   "O post apagado de Paulo Figueiredo não volta na busca do X: a circulação da primeira versão no X fica ⛔ (CHANGELOG, C19.199).",
+   "\"from:flaviobolsonaro\" devolveu 1 post na carga (ordem \"mais recentes\" do X; CHANGELOG, C19.197). Os posts do autor dependem da cadeia de edição lida à parte.",
+   "O Instagram de Flávio devolveu \"Empty or private data\" para posts desde 27/10; foi relido desde 20/10 (CHANGELOG, C19.197).",
+   "Os metadados mostram que o PDF da primeira versão foi exportado pelo ChatGPT; não mostram quem escreveu o texto (CHANGELOG, C19.316). A página do Poder360 não pôde ser lida automaticamente (⛔).",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+  ]
+ },
+ "018": {
+  "pergunta": "Como três conteúdos antigos voltaram a circular como se fossem atuais depois do 2º turno: (A) a fala de Fernando Haddad em Davos (janeiro de 2023) sobre não comprar de empresas sem compromisso social, usada contra as denúncias de boicote a petistas; (B) um vídeo de greve de professores em Sergipe apresentado como reação a corte na educação; (C) uma reportagem da CNN de julho de 2024 apresentada como corte de R$ 6 bilhões depois da eleição? Quanto circularam na época original e agora, por canal, e quem os fez circular em cada momento?",
+  "por_que_importa": "A recontextualização é desinformação sem montagem: o conteúdo é autêntico, o que é falso é a data ou o contexto. É a forma de \"cheapfake\" mais barata e mais difícil de refutar, porque a checagem de autenticidade não basta. Comparar a mesma peça em dois momentos mostra o que muda: quem a difunde, com que palavras e com que alcance. O episódio A se liga ao caso 014 (boicote a petistas).",
+  "recorte_temporal": {
+   "inicio": "2026-10-24 (agora) · 2023-01-15 a 2023-02-28 (época do episódio A) · 2024-07-29 a 2024-08-15 (época do episódio C)",
+   "justificativa": "O \"agora\" começa um dia antes do 2º turno, para separar a recirculação do resultado; as buscas do X usam 25/10, o dia do turno. As janelas da época cobrem a data original de cada peça e as semanas de repercussão: a fala de Davos (janeiro de 2023) e a reportagem de julho de 2024. A época do episódio B fica ⛔: a data de origem do vídeo não foi confirmada. A leitura diária do X segue até 15/11."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Episódio A: Haddad + boicote/Davos",
+    "termos": [
+     "Haddad + (boicote OR boicotar OR boicotem OR \"palito de fósforo\" OR Davos OR \"não compro\")",
+     "Haddad boicote",
+     "Haddad Davos",
+     "Haddad \"palito de fósforo\""
+    ],
+    "justificativa": "O nome do ator só entra com o lugar (Davos), o tema (boicote) ou uma expressão da fala citada pela imprensa (\"palito de fósforo\", \"não compro\"). Assim a busca pega a peça e não toda a atividade do ministro. A mesma busca é usada na época e agora, o que torna os dois períodos comparáveis."
+   },
+   {
+    "familia": "Episódio A: post que reativou a fala",
+    "termos": [
+     "conversation_id, url e quoted_tweet_id do post de Carol De Toni (2116251466734436605)"
+    ],
+    "justificativa": "O post é uma das fontes do episódio registradas no caso. Respostas e citações medem a recepção direta da peça recirculada, sem depender de palavras."
+   },
+   {
+    "familia": "Episódio B: greve de professores em Sergipe",
+    "termos": [
+     "(greve OR professores OR professoras) + Sergipe + (corte OR cortes OR Lula OR educação OR eleição)",
+     "greve professores Sergipe"
+    ],
+    "justificativa": "O lugar é o marcador mais estável do vídeo. Exigir também corte, Lula, educação ou eleição separa a leitura falsa (reação a corte) de notícias comuns sobre greves no estado."
+   },
+   {
+    "familia": "Episódio C: valor e verbo de corte",
+    "termos": [
+     "(\"6 bilhões\" OR \"6 bi\" OR \"15 bilhões\" OR \"5,9 bilhões\") + (saúde OR educação) + (corte OR cortou OR cortar OR cortes OR congelamento OR congelou)",
+     "época: (\"15 bilhões\" OR \"15 bi\" OR congelamento OR bloqueio) + (saúde OR educação) + (Haddad OR Lula OR governo)"
+    ],
+    "justificativa": "O número é a âncora da alegação falsa (\"R$ 6 bilhões\"). \"15 bilhões\" e \"congelamento\" são o vocabulário da reportagem original de 2024; incluí-los mede a peça nos dois momentos. ⛔ A origem do valor \"5,9 bilhões\" na busca não está documentada no repositório."
+   },
+   {
+    "familia": "Marcadores de checagem (notícias)",
+    "termos": [
+     "vídeo antigo checagem",
+     "antig",
+     "2023",
+     "2024"
+    ],
+    "justificativa": "Títulos de checagem costumam dizer que o vídeo \"é antigo\" ou \"é de 2024\". O filtro de título aceita esses marcadores para não perder as refutações."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Haddad\" sozinho",
+    "motivo": "Traria toda a cobertura do ministro; só entra no Trends como controle."
+   },
+   {
+    "termo": "\"corte na saúde/educação\" sem valor",
+    "motivo": "Tema recorrente em qualquer debate de orçamento; o valor é o que identifica a peça."
+   },
+   {
+    "termo": "\"vídeo antigo\" e \"é de 20xx\" como marcador geral",
+    "motivo": "Testado no acervo e descartado: muitos usos sem relação (CHANGELOG, C19.204)."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (agora e na janela da época)",
+    "por_que": "A única rede com busca retroativa por data. Permite comparar a mesma peça nos dois momentos com a mesma consulta."
+   },
+   {
+    "fonte": "YouTube: vídeos originais do episódio A (comentários por mês) e vídeos publicados em cada janela",
+    "por_que": "O YouTube não informa visualizações passadas; os comentários datados e os vídeos publicados em cada janela reconstroem a época (scripts/caso_antigo_atual.py)."
+   },
+   {
+    "fonte": "Instagram (posts indicados e reels por assunto), Facebook, TikTok",
+    "por_que": "Onde a peça recirculou depois da eleição, sobretudo em vídeo."
+   },
+   {
+    "fonte": "Google Trends semanal desde 2023 e por janela",
+    "por_que": "Mostra o pico da época e o de agora na mesma escala."
+   },
+   {
+    "fonte": "Google Notícias e checagens (UOL Confere, Lupa, Boatos.org)",
+    "por_que": "As checagens identificam a recontextualização e dão a data original."
+   }
+  ],
+  "controles": "No Trends, \"Haddad\" (CASOS[\"018\"]). Ele separa o interesse pela fala de Davos do interesse geral pelo ministro. Para os episódios B e C não há termo de controle próprio no Trends. A comparação época × agora funciona como controle interno: o mesmo filtro de pertinência é aplicado aos dois períodos (scripts/caso018_comparacao.py).",
+  "limites": [
+   "Instagram e Facebook não têm busca retroativa: a época fica ⛔ nessas redes, e a comparação de canais na época depende do X e do YouTube.",
+   "O YouTube só informa as visualizações de hoje; a circulação da época é reconstruída por comentários datados e vídeos publicados na janela.",
+   "Episódio B: a data de origem do vídeo não foi confirmada (o UOL Confere não pôde ser lido pela ferramenta), então não há janela da época (⛔). A leitura diária do X do episódio B devolveu zero (manifesto-20261102T213304Z).",
+   "Na coleta de notícias de collect_caso_busca.py, o título precisa citar Haddad ou Lula; notícias do episódio B que não citam nenhum dos dois ficam fora dessa coleta. A outra coleta (casos.json) aceita \"greve\" e \"sergipe\".",
+   "As buscas do episódio A chegaram ao limite na leitura diária (manifesto-20261101T205817Z).",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+  ]
+ },
+ "019": {
+  "pergunta": "Como o mundo viu a eleição brasileira de 2026 no YouTube? Quantos vídeos sobre a eleição foram publicados em 18 línguas desde 16/08/2026, de que países e continentes (pelo país declarado pelo canal), que candidatos citam, e em que língua são escritos os comentários dos vídeos mais vistos de cada língua?",
+  "por_que_importa": "A eleição brasileira é também um objeto da mídia estrangeira. Medir a produção em outras línguas mostra quanto e onde o resultado foi tema, e a rede língua do vídeo → língua do comentário mostra se brasileiros ocupam os espaços de discussão de fora. O caso dá a base empírica para os casos de difusão transnacional (026, 035).",
+  "recorte_temporal": {
+   "inicio": "2026-08-16 (YouTube) · 2026-10-20 (X, Instagram, Facebook)",
+   "justificativa": "16/08/2026 é o início da propaganda eleitoral, que abre o período eleitoral destacado pelo Atlas: a cobertura estrangeira antes disso é esparsa e não tem o referente da campanha. A busca por termo nas outras redes entrou na padronização dos casos (01/11/2026) com início em 20/10, cobrindo a reta final, o 2º turno e a repercussão. ⛔ O motivo de 20/10 não está documentado no repositório. A coleta diária vai até 15/11."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Consultas do YouTube por língua",
+    "termos": [
+     "en: Brazil election 2026; Lula Flavio Bolsonaro election",
+     "es: elecciones Brasil 2026; Lula Flávio Bolsonaro elecciones",
+     "fr, de, it, nl, pl, ru, uk, tr, ar, he, hi, zh, ja, ko, id, vi: palavra para eleição + Brasil + 2026 + Lula (às vezes Bolsonaro), na escrita de cada língua"
+    ],
+    "justificativa": "Cada consulta é escrita na língua e na escrita do público-alvo, com a palavra local para eleição e o nome do país (data/config/caso_mundo.json). Inglês e espanhol têm duas consultas e duas páginas porque produzem mais. A ordem é de relevância com a língua da busca: a primeira leitura por visualizações trouxe quase só vídeos em português na busca em inglês."
+   },
+   {
+    "familia": "Filtro de pertinência (YouTube)",
+    "termos": [
+     "título ou descrição cita Brasil, Lula ou Flávio/Bolsonaro"
+    ],
+    "justificativa": "Tira vídeos que a busca trouxe por outras eleições ou outros temas. Vídeos em português ou de canais do Brasil são contados à parte, para não confundir a visão de fora com a de dentro."
+   },
+   {
+    "familia": "Busca no X fora do português",
+    "termos": [
+     "(Brazil OR Brazilian OR Brasil) + (election OR elección OR élection OR elezioni OR Wahl OR Lula OR Bolsonaro) -lang:pt"
+    ],
+    "justificativa": "O país com a palavra para eleição nas línguas principais, ou com o nome dos candidatos. Excluir o português isola a conversa de fora."
+   },
+   {
+    "familia": "Instagram, Facebook, TikTok, notícias, Trends",
+    "termos": [
+     "#brazilelection",
+     "Brazil election Lula",
+     "Brazil election Bolsonaro",
+     "Brazil election 2026",
+     "Lula Brazil election",
+     "elección Brasil 2026",
+     "Brazil election",
+     "Lula election",
+     "Bolsonaro"
+    ],
+    "justificativa": "Formas em inglês (e uma em espanhol) que a mídia internacional usa em títulos e hashtags."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "Publicações em português no X",
+    "motivo": "Excluídas por -lang:pt, para isolar a visão de fora."
+   },
+   {
+    "termo": "Vídeos em português e de canais do Brasil no YouTube",
+    "motivo": "Lidos, mas contados à parte."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "YouTube Data API (18 línguas, país do canal, comentários dos 8 mais vistos de cada língua)",
+    "por_que": "É a fonte central: informa o total estimado da busca (pageInfo.totalResults), o país declarado pelo canal e os comentários, o que permite a rede de línguas."
+   },
+   {
+    "fonte": "Identificação de língua dos comentários (py3langid 0.3.0)",
+    "por_que": "Classifica a língua escrita de cada comentário; comentários curtos ou de baixa confiança ficam como indeterminados."
+   },
+   {
+    "fonte": "X, Instagram, Facebook, TikTok (busca por termo)",
+    "por_que": "Camada secundária, da padronização dos casos, para a conversa fora do YouTube."
+   },
+   {
+    "fonte": "Google Trends no mundo, com mapa por país, e Google Notícias",
+    "por_que": "Mede onde a eleição gerou busca e o que a imprensa de fora publicou."
+   }
+  ],
+  "controles": "No Trends, \"Brazil\" (CASOS[\"019\"]), com geografia mundial e mapa por país. Ele separa o interesse pela eleição do interesse geral pelo país em cada lugar. No YouTube, os vídeos em português e de canais do Brasil, contados à parte, servem de referência para a produção de fora.",
+  "limites": [
+   "Língua materna não é observável: mede-se a língua em que o comentário foi escrito. Comentários com menos de 20 letras ou confiança abaixo de 0,90 ficam indeterminados (CHANGELOG, C19.208).",
+   "O país é o que o canal declara; canal sem país declarado não tem continente.",
+   "O YouTube devolve no máximo uma ou duas páginas por consulta, e as buscas rodam em dias alternados por causa da cota diária (CHANGELOG, C19.225). Os vídeos lidos são uma amostra do total que a API estima.",
+   "-lang:pt exclui também Portugal e os países lusófonos: a \"visão de fora\" do X é a de fora da língua portuguesa.",
+   "As notícias são buscadas na edição brasileira do Google Notícias, inclusive \"elección Brasil 2026\"; a imprensa estrangeira em sua própria edição não é coberta por esta coleta. O filtro de título (\"Brazil\" ou \"election\") é largo.",
+   "O X chegou ao limite de itens (manifesto-20261102T080410Z) e o Instagram também em #brazilelection (manifesto-20261102T074530Z).",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+  ]
+ },
+ "020": {
+  "pergunta": "Como circulou, desde 28/10/2026, o vídeo em que uma influenciadora bolsonarista constrange uma criança que vendia balas em Fortaleza por dizer que a família votava em Lula? Que reações se formaram (repúdio, doações, pedido para a criança subir a rampa na posse), em que redes (com foco no Instagram), e o que o Google mostra no topo da busca?",
+  "por_que_importa": "O caso registra intolerância política dirigida a uma criança, um limite que a polarização raramente cruza de forma tão explícita. Ele permite medir como um ato individual vira objeto de repúdio coletivo e de mobilização política do lado oposto. O ranking da busca do Google mostra que versão do episódio fica disponível para quem procura depois. A proteção da criança é parte do método.",
+  "recorte_temporal": {
+   "inicio": "2026-10-28",
+   "justificativa": "Data da publicação do vídeo que deu origem ao caso; antes dela o episódio não existe. A leitura diária do X e do ranking do Google segue até 15/11/2026, o que cobre a posse prevista, objeto da mobilização da rampa."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Apelido da criança usado pela imprensa (só como termo de busca)",
+    "termos": [
+     "[apelido da criança na imprensa]",
+     "[duas hashtags formadas pelo apelido]"
+    ],
+    "justificativa": "É a forma pela qual o episódio foi nomeado na imprensa e nas redes; sem ela, a busca perde a maior parte da circulação. O termo nunca aparece nas saídas públicas: o nome é trocado por \"[menino]\" (mascarar_regex) e a conta da criança não aparece pelo nome (contas_ocultas_regex)."
+   },
+   {
+    "familia": "Autora do vídeo",
+    "termos": [
+     "Valéria Diniz",
+     "Valeria Diniz",
+     "@valeriadiniz",
+     "#valeriadiniz"
+    ],
+    "justificativa": "A autora tinha cerca de 70 mil seguidores na conta anterior, acima do limite de figura pública do projeto. O nome capta a repercussão centrada nela, inclusive o pedido de desculpas e a saída da conta."
+   },
+   {
+    "familia": "Descrição do episódio, sem nome",
+    "termos": [
+     "(\"vendia balas\" OR \"vendendo balas\") + Lula",
+     "(\"faz o L\" OR \"fazer o L\") + menino",
+     "menino + descritor usado pela imprensa + Lula",
+     "menino balas Fortaleza (Lula)",
+     "influenciadora menino fazer o L"
+    ],
+    "justificativa": "Muita gente comenta o caso sem nomear ninguém. A combinação do gesto (\"fazer o L\") ou da atividade (vender balas) com o candidato ou com \"menino\" capta esse discurso e evita o bordão \"faz o L\" em geral."
+   },
+   {
+    "familia": "Mobilização da rampa e da posse",
+    "termos": [
+     "(prenome da criança OR menino) + (rampa OR posse) + (Lula OR Janones) + (parte do apelido OR balas OR Fortaleza)",
+     "menino + parte do apelido + Lula rampa"
+    ],
+    "justificativa": "Mede a passagem do repúdio à apropriação política do episódio pelo lado oposto. André Janones é citado pela imprensa nessa mobilização."
+   },
+   {
+    "familia": "Ranking do Google",
+    "termos": [
+     "as mesmas frases do caso, cinco consultas, primeira página, Brasil, português, sem login"
+    ],
+    "justificativa": "Mostra que resultados ficam no topo e como mudam a cada leitura: é a memória pública do episódio."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"faz o L\" / \"fazer o L\" sozinhos",
+    "motivo": "É o bordão de campanha (caso 037). Só entra com \"menino\"."
+   },
+   {
+    "termo": "Prenome da criança sozinho e \"Fortaleza\" sozinho",
+    "motivo": "Ruído total e risco de identificar a criança."
+   },
+   {
+    "termo": "Imagem, conta, escola ou local exato da criança; mídia dos vídeos",
+    "motivo": "Proteção da criança: nada disso é publicado nem preservado; comentários ficam só no repositório privado."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Instagram (hashtags e busca de reels; foco do caso)",
+    "por_que": "O vídeo original e a maior parte da repercussão estavam no Instagram."
+   },
+   {
+    "fonte": "X (busca e leitura diária), Facebook, TikTok, YouTube",
+    "por_que": "Circulação nas outras redes e comentário em vídeo."
+   },
+   {
+    "fonte": "Ranking da busca do Google (scripts/serp_caso.py, diário)",
+    "por_que": "Registra posição, título e domínio dos resultados, o carrossel de notícias e as buscas relacionadas."
+   },
+   {
+    "fonte": "Google Trends e Google Notícias (7 dias)",
+    "por_que": "Interesse de busca e cobertura da imprensa."
+   }
+  ],
+  "controles": "No Trends, \"Lula\" (CASOS[\"020\"]). Ele dá a escala do interesse pelo candidato no mesmo período, para ver se o episódio teve pico próprio.",
+  "limites": [
+   "A busca de reels por \"Valéria Diniz\" devolveu zero (manifesto-20261031T002207Z). A conta original saiu do ar; ⛔ não está documentado no repositório se o post original foi lido.",
+   "As duas hashtags com o apelido não devolveram nada no X (manifesto-20261031T001215Z).",
+   "O ranking do Google não informa o total de resultados (⛔), e parte dos links vem como redirecionamento; publicações de redes sociais no ranking ficam sem link (serp_ocultar_links_redes). A 1ª leitura publicou o nome da criança; foi corrigida e a cópia original foi movida para o privado (CHANGELOG, C19.214).",
+   "Como a mídia não é preservada, vídeos apagados depois da coleta não podem ser revistos.",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+   "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+  ]
+ },
+ "021": {
+  "pergunta": "Como o movimento \"O Sul é meu país\", que defende a separação do Paraná, de Santa Catarina e do Rio Grande do Sul, circulou na pré-campanha, na campanha e depois da eleição de 2026? O interesse de 2026 é maior que o de ciclos anteriores, e que eventos (fala de um governador em julho, consulta informal em agosto, proposta de plebiscito depois do 2º turno) marcam os picos?",
+  "por_que_importa": "O separatismo regional é um ataque à unidade nacional que volta em momentos de derrota eleitoral de um lado. Medir a circulação desde a pré-campanha permite ver se o tema é mobilizado de forma estratégica antes da eleição ou só como reação ao resultado. O caso dialoga com o caso 029 (xenofobia contra o Nordeste), em que o separatismo aparece com o sinal geográfico invertido.",
+  "recorte_temporal": {
+   "inicio": "2026-07-01",
+   "justificativa": "A pré-campanha inclui a fala do governador de Santa Catarina sobre separar o Sul (julho) e a consulta popular informal (agosto) (CHANGELOG, C19.219). Começar em 01/07 permite ver se o tema já estava ativo antes da campanha. O Google Trends usa também uma janela de 5 anos, e as notícias, 125 dias (cerca de 01/07 até a coleta). A leitura diária do X segue até 15/11."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Nome do movimento",
+    "termos": [
+     "o sul é meu país",
+     "o sul e meu pais",
+     "sul é meu país",
+     "#osulemeupais",
+     "#osuléomeupaís"
+    ],
+    "justificativa": "É o nome próprio do objeto. Entra com e sem acento e sem o artigo, porque é assim que aparece em hashtags e buscas."
+   },
+   {
+    "familia": "Plebiscito e consulta",
+    "termos": [
+     "plebisul",
+     "#plebisul",
+     "(plebiscito OR \"consulta popular\" OR referendo) + (\"separar o sul\" OR \"separação do sul\" OR \"região sul\" OR \"sul do brasil\") + (separa OR separação OR independência OR país)"
+    ],
+    "justificativa": "O plebiscito é o instrumento que o movimento usa para dar forma institucional ao separatismo. \"Plebisul\" é o nome das consultas anteriores. A co-ocorrência separa plebiscitos sobre o Sul de qualquer outro plebiscito."
+   },
+   {
+    "familia": "Expressões de separação",
+    "termos": [
+     "separar o sul",
+     "separação do sul",
+     "separacao do sul",
+     "independência do sul",
+     "república do sul",
+     "sul independente",
+     "separatismo no sul",
+     "#sulindependente",
+     "#separaosul"
+    ],
+    "justificativa": "Captam o discurso separatista de quem não usa o nome do movimento: apoio, crítica e deboche."
+   },
+   {
+    "familia": "Movimento separatista + Sul e estados (rodada 3)",
+    "termos": [
+     "(\"movimento separatista\" OR separatista OR separatistas OR separatismo) + (sul OR \"região sul\" OR \"Rio Grande do Sul\" OR \"Santa Catarina\" OR \"Paraná\" OR gaúcho OR catarinense OR paranaense)",
+     "#movimentoseparatista"
+    ],
+    "justificativa": "É o termo genérico usado pela imprensa e pelos críticos. Só entra com o nome da região, de um estado ou do gentílico, para não trazer outros separatismos. Substituiu \"plebisul\" na lista do Trends (CHANGELOG, C19.228)."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"separatista\" ou \"separatismo\" sozinhos nas redes",
+    "motivo": "Trazem outros separatismos (inclusive o do Nordeste, do caso 029, e os de outros países). No Trends, \"separatismo\" fica como controle."
+   },
+   {
+    "termo": "\"sul\" ou \"independência\" sozinhos",
+    "motivo": "Palavras de uso geral."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (busca por termo, fatias mensais de julho a outubro e leitura diária)",
+    "por_que": "Rede com busca por data, que permite reconstruir a pré-campanha. As fatias mensais foram criadas porque a busca única chegou ao limite e só trouxe as publicações mais recentes."
+   },
+   {
+    "fonte": "Instagram (hashtags e reels) e Facebook (frases)",
+    "por_que": "Onde páginas e grupos regionalistas publicam."
+   },
+   {
+    "fonte": "Google Trends (5 anos, 12 meses, 7 dias; por UF)",
+    "por_que": "Compara o interesse de 2026 com ciclos anteriores e mostra onde se concentra."
+   },
+   {
+    "fonte": "Google Notícias (125 dias), YouTube e checagens",
+    "por_que": "Datam os eventos que marcam os picos (a fala de julho, a consulta, a proposta de plebiscito)."
+   },
+   {
+    "fonte": "TikTok",
+    "por_que": "Vídeo curto, com público mais jovem."
+   }
+  ],
+  "controles": "No Trends, \"separatismo\" (CASOS[\"021\"]). Ele separa o interesse pelo movimento do Sul do interesse geral pelo tema do separatismo.",
+  "limites": [
+   "A janela de 5 anos do Trends começa no fim de 2021 e não alcança o Plebisul de 2016 e 2017. A comparação com esses anos, prevista na descrição do caso, fica ⛔ sem dado nesta janela.",
+   "A busca principal do X chegou ao limite de 3.000 itens e trouxe só as mais recentes (manifesto-20261031T210441Z); as fatias mensais corrigiram isso para julho a outubro. A rodada 3 (manifesto-20261101T204100Z) e a leitura diária (manifesto-20261101T205817Z) também chegaram ao limite.",
+   "#plebisul devolveu zero no X e no Instagram (manifesto-20261031T205925Z; manifesto-20261031T210945Z). No Instagram, #osulemeupais, #sulindependente e #movimentoseparatista chegaram ao limite de itens.",
+   "O filtro de título das notícias e do YouTube aceita \"sul\" sozinho: notícias sobre o Rio Grande do Sul ou a região Sul sem relação com o separatismo podem passar.",
+   "O YouTube deu HTTP 429 na primeira carga (CHANGELOG, C19.222).",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+   "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+  ]
+ },
+ "022": {
+  "pergunta": "Como circulou, desde 28/10/2026, o \"Relatório Pericial Independente — Eleições 2026\", documento sem autor que alega fraude no 2º turno (votos depois das 17h, habilitações sem biometria, seções unânimes, Lei de Benford, indisponibilidade de boletins)? Quem o difundiu, inclusive pela conta do comentarista americano Joey Mannarino, e o que os dados públicos do TSE dizem sobre cada alegação?",
+  "por_que_importa": "O documento usa a forma de um laudo técnico para dar autoridade a alegações de fraude. É desinformação sobre a integridade eleitoral com aparência de perícia. O caso mede a circulação, a rede de difusão (inclusive a passagem por um perfil estrangeiro) e confronta cada alegação com os dados abertos do TSE, o que transforma a refutação em dado verificável.",
+  "recorte_temporal": {
+   "inicio": "2026-10-28",
+   "justificativa": "Data que o próprio documento traz e dia da primeira checagem da Justiça Eleitoral. Antes dela o objeto não existe. Os posts de Joey Mannarino sobre o Brasil são lidos desde 01/10, para saber se ele já tratava da eleição brasileira antes do documento; as menções a ele, desde 25/10, o dia do 2º turno. A leitura diária do X segue até 15/11."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Nome do documento",
+    "termos": [
+     "\"relatório pericial independente\"",
+     "relatório pericial",
+     "relatorio pericial",
+     "laudo pericial independente",
+     "perícia independente",
+     "#relatoriopericial",
+     "#relatoriopericialindependente"
+    ],
+    "justificativa": "O título do documento e seus sinônimos técnicos. \"Laudo\" e \"perícia\" entram porque quem repassa o documento costuma trocar a palavra."
+   },
+   {
+    "familia": "Alegações técnicas",
+    "termos": [
+     "votos após/depois das 17h",
+     "votos sem biometria",
+     "\"sem biometria\" + urna",
+     "lei de Benford",
+     "fraude urna 2026",
+     "#fraudeeleitoral2026",
+     "#fraudenaseleicoes"
+    ],
+    "justificativa": "As alegações circulam soltas, sem o nome do documento, em prints e vídeos. \"Sem biometria\" exige \"urna\" porque a expressão aparece em outros contextos (bancos, documentos). As alegações de horário e biometria são as que os dados do TSE permitem testar diretamente."
+   },
+   {
+    "familia": "Joey Mannarino",
+    "termos": [
+     "from:JoeyMannarino + (Brazil OR Brasil OR Lula OR Bolsonaro OR Brazilian OR Moraes OR election)",
+     "(JoeyMannarino OR \"Joey Mannarino\") + (Brasil OR Brazil OR Lula OR fraude OR relatório)",
+     "Joey Mannarino Lula",
+     "Joey Mannarino Brasil"
+    ],
+    "justificativa": "A conta é citada como divulgadora dos prints. Os posts dele medem a produção; as menções medem a repercussão no Brasil. O nome foi corrigido de \"Joey Marino\", forma do primeiro pedido, para a grafia correta (CHANGELOG, C19.222)."
+   },
+   {
+    "familia": "Apócrifo e checagem (notícias)",
+    "termos": [
+     "relatório apócrifo fraude eleição",
+     "votos após 17h TSE",
+     "votos sem biometria segundo turno"
+    ],
+    "justificativa": "Pegam a cobertura que trata o documento como apócrifo e as checagens, que usam essas palavras no título."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"fraude\" ou \"fraude eleição\" sozinhos nas redes",
+    "motivo": "Trariam toda a contestação genérica do resultado. No Trends, \"fraude eleição\" fica entre as variantes, lida junto com o controle."
+   },
+   {
+    "termo": "\"sem biometria\" sem \"urna\"",
+    "motivo": "Uso em outros contextos."
+   },
+   {
+    "termo": "Cruzamento com a lista de mesários",
+    "motivo": "Identificaria pessoas comuns uma a uma; substituído pela contagem de publicações que citam mesários (CHANGELOG, C19.298 e C19.299)."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (busca, posts e menções de Joey Mannarino, leitura diária)",
+    "por_que": "Rede em que os prints circularam e em que a rede de difusão pode ser reconstruída."
+   },
+   {
+    "fonte": "Instagram (hashtags e reels), Facebook (frases), TikTok, YouTube",
+    "por_que": "Circulação em vídeo e nas redes de maior público."
+   },
+   {
+    "fonte": "Dados abertos do TSE do 2º turno: boletins de urna e correspondência de urnas (scripts/collect_tse_auditoria_urna.py)",
+    "por_que": "Testam as alegações com o universo das seções: eleitores liberados sem a digital e horário de encerramento de cada seção."
+   },
+   {
+    "fonte": "Checagens (Justiça Eleitoral, Fato ou Boato, 28/10; Lupa, 30/10) e repositório público de conferência reproduzível",
+    "por_que": "Refutação das alegações; o repositório informa a conferência dos boletins."
+   },
+   {
+    "fonte": "Google Trends e Google Notícias (7 dias)",
+    "por_que": "Se as alegações viraram busca e como a imprensa as tratou."
+   }
+  ],
+  "controles": "No Trends, \"urna eletrônica\" (CASOS[\"022\"]). Ele separa o interesse pelas alegações do documento do interesse geral pela urna, que cresce em toda eleição. Nos dados do TSE, a correlação por seção entre eleitores sem digital e voto em Lula é publicada com a ressalva de que correlação não é causa.",
+  "limites": [
+   "Duas das cinco alegações do documento (seções unânimes e indisponibilidade de boletins) não têm termo de busca próprio; a circulação delas só entra quando vem junto do nome do documento ou de outra alegação.",
+   "As menções a Joey Mannarino chegaram ao limite de 2.000 itens (manifesto-20261031T213041Z), e a busca do relatório chegou ao limite na leitura diária (manifesto-20261101T205817Z): há mais do que o lido.",
+   "#relatoriopericial e #relatoriopericialindependente devolveram zero no X, e #relatoriopericial também no Instagram (manifesto-20261031T212543Z; manifesto-20261031T213446Z).",
+   "A atribuição dos prints à conta de Joey Mannarino vem do repositório público de conferência, que diz não verificar autoria. O resultado desse repositório é declarado pelo projeto, não verificado pelo Atlas (CHANGELOG, C19.222).",
+   "Nos dados do TSE, Roraima fica ⛔: o boletim de urna do 2º turno não estava listado no catálogo (CHANGELOG, C19.301). O significado do tipo \"C\" de divergência não foi lido no leia-me do TSE.",
+   "O YouTube deu HTTP 429 na primeira carga (CHANGELOG, C19.222).",
+   "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+   "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+   "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+  ]
+ },
+ "023": {
+  "pergunta": "A convocação de uma greve nacional de caminhoneiros para 5/11/2026 circulou acompanhada de vídeos e reportagens de greves anteriores (maio de 2018; bloqueios depois da eleição de 2022) apresentados como atuais? Em que a conversa de agora difere da conversa daquelas épocas em vocabulário e tom?",
+  "por_que_importa": "É um caso de cheapfake por recontextualização: o material é verdadeiro, mas a data e o contexto são trocados. Não há montagem para detectar, então a desinformação só aparece quando se compara a peça com a época de origem. A greve de caminhoneiros é um bom objeto para isso porque tem episódios anteriores fartamente documentados em vídeo e porque a convocação de 2026 não tinha confirmação de entidades nacionais (DCI e Brasil do Trecho, 31/10/2026). O desenho \"época × agora\" mede se o repertório antigo volta e com que vocabulário.",
+  "recorte_temporal": {
+   "inicio": "2026-10-28 (agora) · 18/05 a 05/06/2018 e 30/10 a 20/11/2022 (épocas, só no X)",
+   "justificativa": "A janela de agora começa uma semana antes da data convocada (5/11) e três dias antes das primeiras matérias que negam a confirmação (31/10). Assim capta a convocação antes da cobertura e o ciclo até a data. ⛔ Não documentado no repositório: por que 28/10 e não outra data. As duas janelas de época cobrem os episódios cujo material costuma voltar: a greve de maio de 2018 e os bloqueios que começaram no dia do 2º turno de 2022 (30/10/2022). A comparação usa a mesma rede (X) e a mesma regra de pertinência nos três períodos."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Nome do evento",
+    "termos": [
+     "greve dos caminhoneiros",
+     "greve de caminhoneiros",
+     "greve caminhoneiros",
+     "paralisação dos caminhoneiros",
+     "paralisação de caminhoneiros",
+     "#grevedoscaminhoneiros",
+     "#grevecaminhoneiros",
+     "#caminhoneirosparados"
+    ],
+    "justificativa": "São as formas com que o evento é nomeado em posts, títulos e hashtags. \"Greve\" e \"paralisação\" entram juntas porque a mesma mobilização é chamada pelos dois nomes. As formas com \"dos\", \"de\" e sem preposição cobrem a escrita formal e a escrita de busca."
+   },
+   {
+    "familia": "Marcador da data convocada",
+    "termos": [
+     "caminhoneiros + \"dia 5\"",
+     "caminhoneiros + \"5/11\"",
+     "caminhoneiros + \"5 de novembro\"",
+     "greve dos caminhoneiros 5 de novembro"
+    ],
+    "justificativa": "A data separa a convocação de 2026 das menções genéricas a caminhoneiros. \"Caminhoneiros\" sozinho traria frete, estradas e acidentes; com a data, só entra o que fala da greve de agora."
+   },
+   {
+    "familia": "Marcador de recirculação",
+    "termos": [
+     "caminhoneiros + \"vídeo antigo\"/\"video antigo\"",
+     "\"é de 2018\"",
+     "\"é de 2022\"",
+     "\"não é atual\"/\"nao e atual\"",
+     "fake",
+     "boato"
+    ],
+    "justificativa": "O rastro mais visível de um conteúdo recontextualizado é a correção feita por outros usuários e por checadores. Essas expressões captam a denúncia da recirculação. Entram com e sem acento porque a correção costuma ser escrita às pressas."
+   },
+   {
+    "familia": "Épocas (X, uma leitura por episódio)",
+    "termos": [
+     "2018: \"greve dos caminhoneiros\", \"greve caminhoneiros\", \"paralisação dos caminhoneiros\", #grevedoscaminhoneiros, lang:pt",
+     "2022: caminhoneiros + bloqueio/bloqueios/bloqueiam/greve/paralisação/rodovia/rodovias, lang:pt"
+    ],
+    "justificativa": "Cada época é buscada pelo nome que teve. Em 2018 o movimento foi chamado de greve. Em 2022 foi chamado de bloqueio de rodovias, e uma busca só por \"greve\" perderia a maior parte dele. \"lang:pt\" restringe ao português, a língua da conversa brasileira."
+   },
+   {
+    "familia": "Busca (Trends) e vídeo (YouTube)",
+    "termos": [
+     "greve dos caminhoneiros",
+     "greve caminhoneiros 5 de novembro",
+     "paralisação caminhoneiros",
+     "caminhoneiros",
+     "caminhoneiros greve vídeo antigo"
+    ],
+    "justificativa": "No Trends, a forma ampla \"caminhoneiros\" mede o interesse geral pela categoria; as outras medem o evento. No YouTube, a busca \"vídeo antigo\" procura os vídeos de correção. O vídeo e o reel que deram origem ao caso entram sempre, como peças de referência da recirculação."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"caminhoneiros\" sozinho (X, Instagram, Facebook)",
+    "motivo": "Traz toda a pauta da categoria (frete, estradas, acidentes). Só entra com a data convocada ou com um marcador de recirculação. No Trends fica, como medida de interesse geral."
+   },
+   {
+    "termo": "Episódio de 2021",
+    "motivo": "A descrição do caso cita 2021 como precedente, mas a leitura das épocas no X tem teto de custo próprio e foi limitada a 2018 e 2022. 2021 fica fora da comparação."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (busca do caso desde 28/10 e leitura diária até 15/11)",
+    "por_que": "É a única rede em que se pode buscar o passado por data. Por isso é a rede da comparação época × agora."
+   },
+   {
+    "fonte": "X das épocas (2018 e 2022), busca única e complemento por dia",
+    "por_que": "A busca única devolve os itens mais recentes da janela. O complemento por dia espalha a amostra pela época inteira e evita que a curva da época mostre só os últimos dias."
+   },
+   {
+    "fonte": "Instagram, Facebook, TikTok",
+    "por_que": "Onde circulam vídeos curtos: é o formato mais provável da peça recirculada."
+   },
+   {
+    "fonte": "YouTube (Brasil, desde 28/10) e Google Notícias (BR, 7 dias)",
+    "por_que": "O YouTube guarda vídeos com data de publicação verificável, o que permite datar a peça original. A imprensa registra a falta de confirmação da greve e os desmentidos."
+   },
+   {
+    "fonte": "Google Fact Check Tools",
+    "por_que": "Recolhe checagens publicadas sobre greve e vídeo antigo."
+   },
+   {
+    "fonte": "Google Trends (5 anos, 12 meses, 7 dias)",
+    "por_que": "Mostra se a convocação gerou busca e compara com o pico dos bloqueios de 2022, que cabe na janela de 5 anos."
+   }
+  ],
+  "controles": "No Trends, \"diesel\" como controle. O preço do diesel é a pauta econômica associada às greves da categoria. Se \"greve dos caminhoneiros\" sobe sem \"diesel\", o interesse é pelo evento convocado; se os dois sobem juntos, pode ser interesse pela causa. Em collect_caso_busca.py o controle é uma consulta separada das variantes (sem termo-âncora comum), então se comparam formas e datas das curvas, não níveis. Em collect_casos.py (7 dias), \"diesel\" entra na mesma consulta dos termos do evento e aí os níveis se comparam. ⛔ O motivo da escolha de \"diesel\" não está documentado no repositório; esta é a leitura proposta. Na comparação de épocas, o controle é a própria época: mesma rede, mesma regra de pertinência (\"caminhoneir|grevedoscaminhoneiros\").",
+  "limites": [
+   "As buscas únicas das épocas bateram no limite pedido e cobriram só os últimos dias de cada janela (CHANGELOG C19.225). O complemento por dia corrige a cobertura, mas a curva e o pico de cada época mostram a amostra, não o volume real.",
+   "A janela de 5 anos do Trends não chega a 2018. A greve de 2018 só é comparada no X.",
+   "O filtro de título do YouTube e de notícias (busca.json) aceita \"greve\" nas duas expressões regulares (rx_titulo e rx_atributo). Um vídeo sobre outra greve passa no filtro. A leitura dos itens de maior alcance separa os casos.",
+   "O filtro de título de notícias em casos.json usa radicais (\"caminhoneir\", \"paralisa\"), mas collect_casos.py compara palavras inteiras depois da normalização. Na prática só passa título com a palavra \"greve\" (ou \"paralisa\" como palavra). A camada de notícias completa é a de busca.json.",
+   "TikTok: a coleta grátis pela página pública devolveu lista vazia desde 30/10 (run 41392136539). A coleta paga veio depois, com filtro de janela de data, e várias buscas bateram no limite de itens (manifestos 20261102T210119Z e 20261102T215628Z).",
+   "As hashtags do Instagram bateram no limite pedido (manifesto 20261101T185534Z). Kwai: 0 itens em todos os termos.",
+   "A busca acha a peça pelo texto do post. Um vídeo antigo repostado sem legenda ou com legenda que não usa os termos fica fora. Identificar a data original da peça exige leitura manual."
+  ]
+ },
+ "024": {
+  "pergunta": "Como circulou o primeiro vídeo de Flávio Bolsonaro gravado nos EUA (live no Instagram, 31/10/2026, cerca de 17 minutos), em que ele dá sua versão da saída do Brasil (\"saí pelo Brasil\"), critica Alexandre de Moraes e a apreensão dos passaportes e diz que pode voltar a disputar a Presidência \"antes de 2030\"? Quem comentou o vídeo e que trechos foram repetidos?",
+  "por_que_importa": "É a primeira fala pública do candidato derrotado depois de deixar o país. Ela inaugura o discurso pós-eleitoral do grupo: deslegitimação do Judiciário e antecipação de uma nova candidatura. Por ser um vídeo único, com autor, data e transcrição conhecidos, permite medir quais frases a audiência seleciona. Liga-se aos casos 013 (\"Flávio fugiu\"), 025, 031 e 036, que tratam da mesma saída.",
+  "recorte_temporal": {
+   "inicio": "2026-10-31",
+   "justificativa": "É a data da live. Antes dela o objeto não existe. A conversa anterior sobre a saída de Flávio está no caso 013. A leitura diária do X segue até 15/11 para medir a duração do ciclo."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Ator (nome e perfil)",
+    "termos": [
+     "\"Flávio Bolsonaro\"",
+     "\"Flavio Bolsonaro\"",
+     "@FlavioBolsonaro",
+     "\"Flávio\"",
+     "\"Flavio\""
+    ],
+    "justificativa": "O nome entra com e sem acento, porque o acento some em hashtags e na escrita rápida. O primeiro nome sozinho entra porque é como a militância e os críticos se referem a ele. No X, nenhuma dessas formas entra sozinha: só junto de um marcador do vídeo."
+   },
+   {
+    "familia": "Marcadores do vídeo e das falas",
+    "termos": [
+     "\"2030\"",
+     "\"antes de 2030\"",
+     "live",
+     "\"vídeo\"/\"video\"",
+     "Miami",
+     "EUA",
+     "\"Estados Unidos\"",
+     "\"saí pelo Brasil\"/\"sai pelo Brasil\""
+    ],
+    "justificativa": "Delimitam a conversa sobre a live dentro da conversa geral sobre o candidato, que é muito maior. \"Antes de 2030\" e \"saí pelo Brasil\" são frases-assinatura: quem as repete está reagindo àquele vídeo. Lugar e formato (Miami, EUA, live) captam quem comenta o vídeo sem citar a frase."
+   },
+   {
+    "familia": "Hashtags",
+    "termos": [
+     "#flaviobolsonaro",
+     "#flavio2030"
+    ],
+    "justificativa": "#flavio2030 é a marca da promessa de candidatura. #flaviobolsonaro é a hashtag geral do candidato, usada para alcançar as publicações da militância sobre o vídeo."
+   },
+   {
+    "familia": "O post e seus comentários",
+    "termos": [
+     "post da live no Instagram (DfI1WaujjI_)"
+    ],
+    "justificativa": "O vídeo é lido na fonte: números do post, comentários, seguidores de quem comenta e transcrição da fala. A transcrição é a base para saber que frases do vídeo foram depois repetidas nas redes."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Flávio Bolsonaro\" ou \"Flávio\" sozinhos no X",
+    "motivo": "Trariam toda a cobertura do candidato. No Trends o nome fica, como medida de interesse pelo ator."
+   },
+   {
+    "termo": "A palavra \"golpe\"",
+    "motivo": "Aparece no título de uma reportagem estrangeira (El Destape, 31/10), mas não nas falas citadas. O Atlas não a usa para descrever o vídeo nem como termo de busca."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Post da live no Instagram (números, comentários, transcrição)",
+    "por_que": "É o objeto. A plataforma informa o total de reproduções, curtidas e comentários do post: é o universo do vídeo."
+   },
+   {
+    "fonte": "X (busca desde 31/10 e leitura diária até 15/11)",
+    "por_que": "Onde a fala é citada, cortada e contestada por perfis políticos e pela imprensa."
+   },
+   {
+    "fonte": "Instagram (reels), Facebook, TikTok",
+    "por_que": "Cortes do vídeo e reações em vídeo curto."
+   },
+   {
+    "fonte": "YouTube (Brasil, desde 31/10), Google Notícias (BR, 7 dias), checagens",
+    "por_que": "Repercussão em canais e na imprensa; checagens sobre as afirmações da live."
+   },
+   {
+    "fonte": "Google Trends (7 dias, 1 mês, 12 meses)",
+    "por_que": "Se a live gerou busca pelo candidato e pelos marcadores (EUA, 2030, live)."
+   }
+  ],
+  "controles": "No Trends, \"Lula\" como controle de interesse geral pela eleição e pelo vencedor. Dentro das variantes, \"Flávio Bolsonaro\" sozinho funciona como âncora dos marcadores (\"EUA\", \"2030\", \"live\"), porque estão na mesma consulta. O grupo de controle é uma consulta separada, sem termo comum com as variantes: comparam-se as datas dos picos, não os níveis. ⛔ O motivo da escolha de \"Lula\" não está documentado no repositório.",
+  "limites": [
+   "Os comentários do post são uma fração mínima dos que o Instagram informa, lidos na ordem \"popular\" (CHANGELOG C19.228). Valem como amostra dos mais destacados, não do conjunto.",
+   "A busca principal do X bateu no limite de itens e trouxe os mais recentes (CHANGELOG C19.230; manifesto 20261101T202641Z). A leitura diária também bateu no limite em todas as execuções (manifestos de 01/11 a 07/11).",
+   "No X, \"Flávio\"/\"Flavio\" com \"vídeo\", \"live\" ou \"EUA\" pode captar outras figuras chamadas Flávio. A confusão com outro Flávio já foi registrada no projeto em outra regra (CHANGELOG C19.0: “Flávio Dino” como frase de controle).",
+   "No TikTok, a maior parte dos vídeos da série de hashtags entra por #flaviobolsonaro, que é também hashtag geral do candidato (C19.304).",
+   "A transcrição é automática (faster-whisper), sem edição. A coleta paga não trouxe transcrição porque a etapa cobre cerca de 6 minutos e a live tem cerca de 17 (C19.228).",
+   "As classes de comentários (CHD) do caso ficaram abaixo do mínimo de 75% e precisam ser refeitas (C19.287).",
+   "Kwai: 0 itens em todos os termos."
+  ]
+ },
+ "025": {
+  "pergunta": "Quanto da hashtag #DeportTheBolsonaros, que pede a deportação de Flávio Bolsonaro e familiares dos EUA depois da chegada dele a Miami (28/10/2026), veio de perfis do Brasil e quanto de outros países? E quanto da resposta #BrasiliansStandWithFlavio?",
+  "por_que_importa": "O caso testa se uma campanha em inglês, dirigida ao público e às autoridades americanas, é de fato estrangeira ou é produzida por brasileiros na língua do país de destino. A diferença importa para entender a internacionalização da disputa pós-eleitoral: a mesma hashtag pode ser pressão externa ou conflito doméstico encenado em outra língua. A resposta com a hashtag oposta permite comparar os dois lados com o mesmo método.",
+  "recorte_temporal": {
+   "inicio": "2026-10-25",
+   "justificativa": "Começa no 2º turno, três dias antes da chegada de Flávio a Miami. Os dias sem a hashtag servem de linha de base e permitem datar quando ela surge. Por isso o X é lido em fatias diárias de 25/10 a 01/11, e não numa busca única."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Hashtag de ataque e variações",
+    "termos": [
+     "#DeportTheBolsonaros",
+     "#DeportBolsonaros",
+     "#DeportTheBolsonaro",
+     "\"deport the Bolsonaros\"",
+     "\"deport Bolsonaro\"",
+     "\"deport Flavio\"",
+     "\"deport Flávio\""
+    ],
+    "justificativa": "A hashtag é a unidade do caso. As variações de número (Bolsonaro/Bolsonaros), sem artigo e em frase cobrem como ela é reescrita. \"Flávio\" entra com e sem acento: o acento marca quem escreve em português, a forma sem acento é a do teclado em inglês."
+   },
+   {
+    "familia": "Hashtag de resposta, nas duas grafias",
+    "termos": [
+     "#BrasiliansStandWithFlavio",
+     "#BraziliansStandWithFlavio",
+     "#BrazilStandsWithFlavio",
+     "\"Brazilians stand with Flavio\"",
+     "\"Brazilians stand with Flávio\""
+    ],
+    "justificativa": "A grafia \"Brasilians\", com s, é a do português aplicada ao inglês e circula ao lado da grafia correta. As duas entram porque a diferença é, ela mesma, um indício da língua de quem escreve."
+   },
+   {
+    "familia": "Tradução em português",
+    "termos": [
+     "\"deportem os Bolsonaros\"",
+     "Flávio Bolsonaro deportação EUA"
+    ],
+    "justificativa": "Mede a volta da campanha ao Brasil: como usuários e imprensa brasileiros comentam a hashtag em inglês."
+   },
+   {
+    "familia": "Busca (Trends no mundo)",
+    "termos": [
+     "deport Bolsonaro",
+     "Flávio Bolsonaro Miami",
+     "Flavio Bolsonaro",
+     "DeportTheBolsonaros"
+    ],
+    "justificativa": "O Trends é lido no mundo inteiro, com interesse por país. A forma sem acento é a que um usuário de fora digita. Os termos únicos \"Flavio Bolsonaro\" e \"deport Bolsonaro\" são lidos à parte, porque numa consulta com vários termos o mapa só divide cada país entre eles."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "Reels e posts trazidos pela busca sem a hashtag ou a frase no texto",
+    "motivo": "A busca de reels por frase devolve vídeos parecidos sem o termo, inclusive anteriores à hashtag. Sem o termo no texto, o item não entra nos percentuais de nenhum lado (C19.236)."
+   },
+   {
+    "termo": "Bandeiras de causa (Palestina, Israel, Ucrânia, União Europeia, ONU) como sinal de país",
+    "motivo": "São declaração política, não de origem. Bandeiras dos EUA e de Israel ao lado da do Brasil também não mudam a classe (C19.234–C19.235)."
+   },
+   {
+    "termo": "Palavras de lugar ambíguas na bio",
+    "motivo": "\"usa\" (verbo), \"Israel\", nomes de cidades homônimas no Brasil e no exterior (Santos, Natal, Vitória, Salvador, Belém, Porto, Roma, Barcelona e outras) davam falso lugar e foram retirados ou restringidos (C19.234)."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X (fatias diárias de 25/10 a 01/11, busca da resposta e leitura diária)",
+    "por_que": "É onde a hashtag nasceu e onde o perfil tem campo de localização, o sinal de origem mais direto."
+   },
+   {
+    "fonte": "Instagram (feed da hashtag e reels), Facebook, TikTok",
+    "por_que": "Medem se a campanha passou do X para redes de vídeo, e em que língua."
+   },
+   {
+    "fonte": "Google Trends (mundo, por país; 7 dias e 1 mês)",
+    "por_que": "Mede onde se buscou o nome e a deportação, fora das redes."
+   },
+   {
+    "fonte": "YouTube (mundo, sem região nem língua) e Google Notícias (BR, 7 dias)",
+    "por_que": "Sem filtro de região, a busca pode achar vídeos de fora. O canal informa o país declarado, que entra na análise."
+   }
+  ],
+  "controles": "No Trends, \"Bolsonaro\" como controle de interesse geral pela família, numa consulta separada das variantes. Na análise de origem, o controle é a outra hashtag: as duas são classificadas pelos mesmos sinais declarados (língua do texto, língua da bio, bandeiras e lugares no nome, na bio e na localização do X), e as classes são as mesmas (Brasil, Brasil + outro país, outro país, outra língua com país não declarado, sem sinal). As regras foram revisadas antes numa amostra de bios do caso 014, um caso doméstico, para medir falsos lugares (C19.234).",
+  "limites": [
+   "Nenhuma rede informa o país de quem posta. A origem é inferida por sinais declarados, e uma parte grande fica \"sem sinal\" (C19.235–C19.236).",
+   "As fatias diárias de 28/10 a 01/11 e a busca da resposta bateram no limite pedido: nesses dias a amostra são os itens mais recentes de cada dia (C19.235; manifesto 20261101T213817Z). A leitura diária também bateu no limite em todas as execuções.",
+   "Contar por publicações e contar por visualizações dão resultados opostos, porque poucos posts estrangeiros concentram a maior parte das exibições do X (C19.235). As visualizações não se somam entre redes: no X são exibições, no Instagram são reproduções (C19.236).",
+   "No Trends de 30 dias, \"deport Bolsonaro\" aparece em países de volume ínfimo; a página usa a janela de 7 dias (C19.236).",
+   "Usar a hashtag não é apoiar a causa: inclui quem a cita para criticar.",
+   "Os modelos de ofensividade são treinados em português; a taxa alta do caso pode ser artefato da leitura de textos em inglês (C19.320). Validação humana pendente.",
+   "Kwai: 0 itens. TikTok pago bateu no limite de itens em todos os termos (manifestos 20261102T210119Z e 20261102T215628Z)."
+  ]
+ },
  "026": {
   "pergunta": "O formato de mobilização por canal de WhatsApp criado por André Janones na campanha de Lula (o \"Exército do Lula\") foi copiado por campanhas e militâncias de outros países depois do 2º turno? Com que nomes, em que línguas e com que alcance?",
   "por_que_importa": "O caso testa a circulação transnacional de uma técnica de mobilização digital, e não só de um conteúdo. Se o nome e o formato se repetem em outras línguas, há difusão de repertório de ação. A imprensa brasileira e estrangeira (g1, 28/10/2026; CNN Brasil; Le Monde Diplomatique Brasil, 03/11/2026) passou a tratar o \"janonismo\" como modelo exportável. O caso mede essa afirmação com dados.",
@@ -104,6 +2405,282 @@
    "A busca por nome não capta cópias com nome diferente. A lista de canais depende da imprensa e de indicações, e fica aberta."
   ]
  },
+ "027": {
+  "pergunta": "Como o debate sobre trocar o sistema proporcional pelo voto distrital misto (PEC articulada por Hugo Motta, com transição pelo \"distritão\" em 2030 e adoção a partir de 2034) circulou depois da eleição de 2026? Quem puxa a conversa, com que argumentos de cada lado, e qual o peso das votações de Nikolas Ferreira e Lucas Pavanato, acima de 3 milhões de votos cada?",
+  "por_que_importa": "Reformas do sistema eleitoral costumam voltar depois de eleições com resultados vistos como distorcidos. Em 2026, o gatilho público foram os \"puxadores de voto\", candidatos cuja votação elege outros da lista. O caso mede se o tema sai da elite parlamentar e chega às redes, e como os lados se organizam: o PL, partido dos dois puxadores, se declara contra (Diário ESP e Gazeta Brasil, 01/11/2026).",
+  "recorte_temporal": {
+   "inicio": "2026-10-26",
+   "justificativa": "Dia seguinte ao 2º turno, quando termina a disputa e começa a agenda pós-eleitoral do Congresso. A janela de 5 anos do Trends dá a base longa do interesse pelo tema. ⛔ Ressalva: as votações dos puxadores são do 1º turno (4/10), então a conversa sobre eles entre 4/10 e 25/10 fica fora das redes."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Nome do sistema proposto",
+    "termos": [
+     "\"voto distrital\"",
+     "\"distrital misto\"",
+     "#VotoDistrital",
+     "#DistritalMisto",
+     "#votodistritalmisto"
+    ],
+    "justificativa": "É o objeto da PEC. As formas compostas evitam o adjetivo \"distrital\" sozinho, que no Brasil remete aos deputados distritais do Distrito Federal."
+   },
+   {
+    "familia": "Sistema de transição",
+    "termos": [
+     "distritão",
+     "distritao",
+     "#Distritao",
+     "distritão 2030",
+     "distritão PEC"
+    ],
+    "justificativa": "O distritão é a etapa de 2030 na proposta e tem nome próprio no debate. Entra com e sem til porque hashtags não aceitam acento."
+   },
+   {
+    "familia": "Atores do gatilho e da articulação",
+    "termos": [
+     "voto distrital Nikolas",
+     "voto distrital Nikolas Ferreira",
+     "voto distrital Nikolas Pavanato",
+     "Hugo Motta voto distrital"
+    ],
+    "justificativa": "Ligam o tema aos puxadores que reacenderam o debate e ao presidente da Câmara que articula a PEC. O nome só entra junto do sistema: sozinho, traria toda a atividade política dos três."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"distrital\" sozinho",
+    "motivo": "Traz a Câmara Legislativa do DF e os deputados distritais, sem relação com o caso."
+   },
+   {
+    "termo": "\"reforma política\" nas redes",
+    "motivo": "Termo guarda-chuva, ruído alto. Fica só no Trends, como controle."
+   },
+   {
+    "termo": "\"puxador de voto\" sem o nome do sistema",
+    "motivo": "⛔ Não documentado no repositório. Não está nas buscas: posts que falam dos puxadores sem citar o sistema ficam fora."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 26/10)",
+    "por_que": "Mostram quem puxa a conversa (parlamentares, partidos, comentaristas) e com que argumentos."
+   },
+   {
+    "fonte": "Google Trends (5 anos, 12 meses, 7 dias; por estado)",
+    "por_que": "Mede se o tema gerou busca para além da conversa política, e em que estados."
+   },
+   {
+    "fonte": "YouTube (Brasil, desde 26/10), Google Notícias (BR, 30 dias), checagens",
+    "por_que": "Vídeos explicativos e cobertura da tramitação; checagens sobre o que muda com cada sistema."
+   }
+  ],
+  "controles": "No Trends, \"reforma política\" como controle: separa o interesse pelo sistema específico do interesse geral por mudanças nas regras eleitorais. É uma consulta separada das variantes, sem termo comum: comparam-se datas e formas das curvas, não níveis. ⛔ O motivo da escolha não está documentado no repositório; esta é a leitura proposta.",
+  "limites": [
+   "O comentário do código diz que a janela de 5 anos serve \"para comparar com 2015/2017\". A janela de 5 anos do Trends começa no fim de 2021 e não alcança 2015 nem 2017. ⛔ A comparação com aqueles anos não está feita.",
+   "No YouTube e nas notícias (busca.json), o filtro de título exige \"distrit\" e um atributo que inclui \"deputad\". Um vídeo sobre deputado distrital do DF passa no filtro.",
+   "O filtro de título de notícias em casos.json usa o radical \"distrit\", mas collect_casos.py compara palavras inteiras depois da normalização. Por isso data/casos/027/google.json tem 0 notícias. A camada de notícias do caso é a de busca.json.",
+   "A busca do X e as hashtags do Instagram bateram no limite pedido (manifestos 20261102T065339Z e 20261102T064006Z).",
+   "TikTok: o manifesto 20261102T054810Z registra itens lidos, mas data/casos/027/caso.json mostra 0 publicações do TikTok. A coleta foi anterior às correções do normalizador e do filtro de data (C19.289, C19.294), e depois o teto da rede estava esgotado (C19.317). ⛔ TikTok sem amostra válida.",
+   "O número da PEC não tinha sido informado quando o caso foi aberto (C19.265).",
+   "Livro de códigos v0.1 em rascunho; revisão pendente."
+  ]
+ },
+ "028": {
+  "pergunta": "Como circularam, depois do 2º turno (25/10/2026), as ameaças e ataques a povos indígenas, a começar pelos Guarani e Kaiowá do Mato Grosso do Sul (aldeia Sassoró, Tacuru), e como circulou a reação (#ProtejamNossosPovosIndígenas e o canal de WhatsApp \"Exército dos Povos Indígenas\")? O que vem do ataque e o que vem da defesa, e quanto o canal cresceu?",
+  "por_que_importa": "É violência política com alvo étnico, ligada pelos próprios agressores ao resultado da eleição. As ameaças circularam em áudios de WhatsApp, um meio fechado; o que se pode medir em rede aberta é a denúncia, a cobertura e a reação. O canal de WhatsApp foi criado em 28/10 e se diz inspirado no Exército do Lula (CartaCapital, 29/10), o que liga o caso à difusão do formato estudada no caso 026.",
+  "recorte_temporal": {
+   "inicio": "2026-10-25",
+   "justificativa": "As ameaças relatadas pela imprensa vêm depois da vitória de Lula no 2º turno (O Tempo, 29/10; g1, 27/10). Começar no dia do resultado permite ver a sequência ataque → denúncia → reação. A janela de 5 anos do Trends dá a base do interesse por povos indígenas fora do período eleitoral."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Povo e lugar do caso",
+    "termos": [
+     "\"Guarani Kaiowá\"",
+     "\"Guarani e Kaiowá\"",
+     "Tacuru",
+     "Sassoró",
+     "#guaranikaiowa",
+     "Tacuru aldeia"
+    ],
+    "justificativa": "São os marcadores mais específicos. As duas grafias do nome do povo circulam na imprensa e entre os próprios indígenas. \"Sassoró\" segue a grafia de O Tempo e da Revista Fórum."
+   },
+   {
+    "familia": "Povos indígenas em geral × violência ou eleição",
+    "termos": [
+     "\"povos indígenas\"/indígenas/indígena/aldeia/aldeias",
+     "+ ameaça/ameaças/ataque/ataques/atropelamento/envenenamento/\"veneno na água\"/violência/racismo",
+     "+ eleição/Lula/\"Força Nacional\"/PF"
+    ],
+    "justificativa": "A busca foi ampliada a todo o país para captar ataques fora do Mato Grosso do Sul. No X, o termo geral só entra junto de uma palavra de violência ou de eleição: \"indígenas\" sozinho traria cultura, educação e saúde. As palavras de violência vêm dos fatos relatados (atropelamentos, ameaça de envenenar a água). Força Nacional e PF captam a resposta do Estado."
+   },
+   {
+    "familia": "Reação",
+    "termos": [
+     "#ProtejamNossosPovosIndígenas",
+     "#ProtejamNossosPovosIndigenas",
+     "#PovosIndígenas",
+     "\"Exército dos Povos Indígenas\"",
+     "#exercitodospovosindigenas",
+     "Protejam nossos povos indígenas"
+    ],
+    "justificativa": "A hashtag e o nome do canal são as marcas da mobilização em defesa. A hashtag entra com e sem acento, porque as plataformas tratam as duas como hashtags diferentes."
+   },
+   {
+    "familia": "Agenda indígena ampla (Instagram e TikTok)",
+    "termos": [
+     "#povosindigenas",
+     "#indigenas",
+     "#demarcacaoja"
+    ],
+    "justificativa": "São as hashtags do movimento indígena em geral. Mostram se o caso entrou na agenda permanente do movimento, como a demarcação de terras."
+   },
+   {
+    "familia": "Instituições (Trends e notícias)",
+    "termos": [
+     "Apib",
+     "Funai",
+     "Apib violência indígenas",
+     "Força Nacional aldeias"
+    ],
+    "justificativa": "A Apib é a principal articulação do movimento; a Funai é o órgão do Estado. Separam a voz do movimento da voz do governo na cobertura."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "Conteúdo e transcrição dos áudios de ameaça",
+    "motivo": "Não são coletados, descritos nem transcritos. Reproduzir a ameaça amplia o dano."
+   },
+   {
+    "termo": "Nomes de suspeitos",
+    "motivo": "O Atlas não nomeia suspeitos não identificados oficialmente."
+   },
+   {
+    "termo": "\"Mossoró\"",
+    "motivo": "Grafia usada pela Rádio Yandê para a aldeia. É também nome de cidade do Rio Grande do Norte e traria ruído. O Atlas segue \"Sassoró\"."
+   },
+   {
+    "termo": "\"indígenas\" sozinho no X",
+    "motivo": "Ruído alto. Só entra com palavra de violência ou de eleição."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Página pública do canal de WhatsApp (leitura a cada 6 horas)",
+    "por_que": "É o único lugar em que a plataforma informa o tamanho real (seguidores). Dá a série de crescimento: é universo, não amostra."
+   },
+   {
+    "fonte": "Perfil @exercitodospovosindigenas no Instagram",
+    "por_que": "É o braço aberto da mobilização; o conteúdo do canal de WhatsApp não é público."
+   },
+   {
+    "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 25/10)",
+    "por_que": "Onde a denúncia, a reação e os ataques em texto aparecem em rede aberta."
+   },
+   {
+    "fonte": "Google Trends (5 anos, 12 meses, 7 dias)",
+    "por_que": "Mede se o caso gerou busca e a compara com o interesse de base pelo tema."
+   },
+   {
+    "fonte": "YouTube (Brasil, desde 25/10), Google Notícias (BR, 30 dias), checagens",
+    "por_que": "Cobertura da investigação (Funai, MPI, PF, Força Nacional) e conteúdo das organizações indígenas."
+   }
+  ],
+  "controles": "No Trends, \"Funai\" como controle, e um grupo à parte \"Apib × Funai\". \"Funai\" mede o interesse de base pela política indigenista do Estado: se \"povos indígenas\" sobe sem \"Funai\", o interesse vem do caso e da mobilização. Apib × Funai compara movimento e órgão do Estado. São consultas separadas das variantes: comparam-se datas e formas, não níveis. ⛔ O motivo da escolha não está documentado no repositório; esta é a leitura proposta. Para o canal, o controle é o próprio Exército do Lula, lido no caso 026 pelo mesmo método.",
+  "limites": [
+   "As ameaças circularam em grupos fechados de WhatsApp. O Atlas mede a circulação aberta, não a dos grupos.",
+   "A ampliação a todo o país mistura o caso com outras pautas indígenas do período. As hashtags amplas (#indigenas, #demarcacaoja) trazem a agenda permanente do movimento, não só a reação aos ataques.",
+   "A busca do X bateu no limite pedido (C19.291; manifesto 20261102T084752Z). Todas as hashtags e o perfil no Instagram bateram no limite (manifesto 20261102T081749Z). No TikTok, todas as buscas bateram no limite (manifestos 20261102T210119Z e 20261102T215628Z).",
+   "Os números de seguidores citados pela CartaCapital não têm data de medição e ficam como da imprensa (C19.266). O número que vale é o da leitura da página pública, e o WhatsApp o arredonda.",
+   "O filtro de título de notícias em casos.json usa radicais (\"indígen\"), mas collect_casos.py compara palavras inteiras. Em google.json só passam títulos com aldeia, Tacuru, Sassoró, Kaiowá, Apib ou \"povos originários\". A camada completa é a de busca.json.",
+   "Kwai: teto não cabia nem 5 itens por termo (C19.317).",
+   "Livro de códigos v0.1 em rascunho; revisão pendente (C19.266)."
+  ]
+ },
+ "029": {
+  "pergunta": "Depois do 2º turno de 2026, voltaram a circular ataques xenofóbicos ao Nordeste (\"o Nordeste é o câncer do Brasil\")? Com que vocabulário, e como foi a reação? O número \"27 milhões de ataques ao Nordeste após a eleição\", que circulou nesse período, se sustenta?",
+  "por_que_importa": "A xenofobia regional contra o Nordeste reaparece a cada eleição em que a região vota em maioria por um candidato. É discurso de ódio com alvo territorial que culpa o voto de uma população pelo resultado. O caso mede o ataque e a reação com o mesmo método e checa um número viral: os \"27 milhões\" vêm do estudo \"O Nordeste no Banco dos Réus\" (Ativaweb DataLab), sobre as 72 horas depois do 1º turno, e contam menções, links e compartilhamentos, não posts únicos (Vermelho, 08/10/2026). Liga-se ao caso 009 e à frente de intolerância.",
+  "recorte_temporal": {
+   "inicio": "2026-10-25",
+   "justificativa": "O dia do resultado do 2º turno, que é o gatilho do ciclo de ataques estudado. A onda do 1º turno, a do estudo dos \"27 milhões\", fica antes e pertence ao caso 009. A janela de 5 anos do Trends cobre a eleição de 2022 e permite ver se o padrão se repete."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Região e gentílico × léxico de ataque",
+    "termos": [
+     "nordeste/nordestino/nordestinos/nordestina",
+     "+ câncer/cancer",
+     "+ jumento/burro/burros/analfabeto",
+     "+ esmola/\"bolsa família\"/vagabundo/parasita",
+     "+ separar"
+    ],
+    "justificativa": "O ataque xenofóbico combina o alvo (a região ou quem nasce nela) com um estereótipo. O léxico cobre as formas recorrentes: desumanização (câncer, parasita), inferiorização (jumento, burro, analfabeto), culpar o voto pela dependência de programas sociais (esmola, bolsa família, vagabundo) e separatismo (separar). Essas são as categorias de hostilidade do livro de códigos do caso. O gentílico sozinho não entra, porque traria toda a conversa sobre a região."
+   },
+   {
+    "familia": "Frase-símbolo",
+    "termos": [
+     "\"câncer do Brasil\"",
+     "nordeste câncer do Brasil"
+    ],
+    "justificativa": "É a formulação que dá nome ao caso e se repete a cada eleição. Entra também sozinha no X, para captar o uso da frase quando o alvo está implícito."
+   },
+   {
+    "familia": "Nomeação e reação",
+    "termos": [
+     "#xenofobia",
+     "xenofobia nordeste",
+     "#OrgulhoDeSerNordestino",
+     "orgulho de ser nordestino"
+    ],
+    "justificativa": "Quem denuncia nomeia o ataque como xenofobia; quem reage afirma a identidade regional. Medir os dois com o mesmo método evita contar só o ataque."
+   },
+   {
+    "familia": "Separatismo (Trends)",
+    "termos": [
+     "separar o nordeste"
+    ],
+    "justificativa": "A proposta de separar a região é a forma mais extrema do discurso e é buscada como frase. Liga o caso ao separatismo estudado no caso 021."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"nordeste\" ou \"nordestino\" sozinhos no X",
+    "motivo": "Turismo, clima, futebol, economia regional. Só entram com o léxico de ataque. No Trends, \"nordeste\" fica como controle."
+   },
+   {
+    "termo": "O número \"27 milhões\" como medida do 2º turno",
+    "motivo": "É do 1º turno e conta menções, links e compartilhamentos. O Atlas o registra como achado de checagem, não como dado do caso."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 25/10)",
+    "por_que": "Onde ataque e reação circulam em texto e em vídeo curto."
+   },
+   {
+    "fonte": "Google Trends (5 anos, 12 meses, 7 dias)",
+    "por_que": "Mede se o tema gerou busca e compara com eleições anteriores."
+   },
+   {
+    "fonte": "YouTube (Brasil, desde 25/10), Google Notícias (BR, 30 dias)",
+    "por_que": "Cobertura dos ataques e vídeos de reação."
+   },
+   {
+    "fonte": "Google Fact Check Tools",
+    "por_que": "Checagens sobre o número dos \"27 milhões\" e sobre a xenofobia eleitoral."
+   }
+  ],
+  "controles": "No Trends, \"nordeste\" como controle de interesse geral pela região, numa consulta separada das variantes: comparam-se datas e formas das curvas, não níveis. ⛔ O motivo da escolha não está documentado no repositório. Na análise, o controle é a simetria: ataque e reação são buscados e classificados pelo mesmo método.",
+  "limites": [
+   "A busca do X bateu no limite pedido (C19.291; manifesto 20261102T103438Z). As três hashtags do Instagram bateram no limite (manifesto 20261102T095651Z). No TikTok, todas as buscas bateram no limite.",
+   "\"câncer do Brasil\" sozinho no X não tem âncora regional e pode trazer a frase dirigida a outros alvos. A leitura separa.",
+   "#nordeste e #xenofobia são amplas: trazem turismo e xenofobia contra outros grupos.",
+   "O léxico não capta ironia, eufemismo nem ofensas fora da lista. Ataques sem nenhuma das palavras ficam fora.",
+   "O filtro de título de notícias em casos.json usa radicais (\"nordest\", \"xenofob\"), mas collect_casos.py compara palavras inteiras. Por isso data/casos/029/google.json tem 0 notícias. A camada de notícias do caso é a de busca.json.",
+   "A busca do YouTube achou poucos vídeos no período (C19.331).",
+   "A ofensividade automática (HateBR) ainda não foi validada por codificação humana. Kwai: 0 itens."
+  ]
+ },
  "030": {
   "pergunta": "A vitória de Lula no 2º turno (25/10/2026) produziu aumento da intenção de brasileiros de emigrar para o Paraguai, expressa em buscas práticas (morar, residência, cédula, cidadania) e em conteúdo nas redes? Quem produz esse conteúdo?",
   "por_que_importa": "A emigração como reação a um resultado eleitoral é um comportamento político mensurável. Em 2026 ela foi associada pela imprensa ao Paraguai (alta das buscas por \"como morar no Paraguai\" e dos pedidos de residência, segundo Guia do Investidor e Tribuna PR). O caso separa três camadas: interesse de busca (Trends), discurso (redes) e oferta (perfis que vendem assessoria de documentação). Essa separação evita confundir conversa com migração.",
@@ -185,6 +2762,348 @@
    "Busca e post não são migração. O número de pedidos de residência da Dirección General de Migraciones seria a validação externa: não é coletado pelo Atlas (⛔), só citado quando a imprensa o publica.",
    "Parte do conteúdo é comercial (assessoria de documentos) e infla a conversa; a análise separa oferta de intenção.",
    "Nas redes pagas o teto de custo cortou parte das buscas (TikTok e Instagram atingiram o teto); a página mostra em quais termos."
+  ]
+ },
+ "031": {
+  "pergunta": "Como circulou a \"Nota ao Brasil\" publicada por Flávio Bolsonaro em 1º/11/2026, em que ele diz ter aceitado entrevista à Globo com exibição \"sem cortes e sem temas proibidos\", afirma que \"sete minutos após o resultado\" já havia decisão judicial com medidas cautelares contra ele e escreve \"Não saí do Brasil, saí pelo Brasil!\"? Que frases foram repetidas e quais afirmações factuais podem ser conferidas?",
+  "por_que_importa": "A nota é um texto de autor e data conhecidos, escrito para disputar a narrativa da saída do país. Ela ataca a imprensa e o Judiciário e não diz quem pagou a viagem aos EUA (O Tempo e Gazeta do Povo, 01/11). O caso permite medir a recepção de um texto de campanha pós-derrota e marcar para conferência afirmações verificáveis. Liga-se aos casos 024 e 025.",
+  "recorte_temporal": {
+   "inicio": "2026-11-01",
+   "justificativa": "A data de publicação da nota (O Tempo, 01/11). A janela de 7 dias para notícias capta o ciclo de repercussão."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Título da nota",
+    "termos": [
+     "\"Nota ao Brasil\"",
+     "Flávio Bolsonaro nota ao Brasil"
+    ],
+    "justificativa": "É o nome que o próprio autor deu ao texto. Identifica a peça."
+   },
+   {
+    "familia": "Frase-assinatura",
+    "termos": [
+     "\"saí pelo Brasil\"",
+     "\"sai pelo Brasil\""
+    ],
+    "justificativa": "Quem repete a frase está reagindo à versão de Flávio sobre a saída, a favor ou contra. Entra com e sem acento."
+   },
+   {
+    "familia": "Entrevista à Globo",
+    "termos": [
+     "Flávio + Globo + entrevista",
+     "Flávio + Globo + \"sem cortes\"",
+     "Flávio Bolsonaro Globo entrevista sem cortes"
+    ],
+    "justificativa": "É a acusação central contra a imprensa. \"Globo\" sozinha traria toda a programação da emissora; só entra com Flávio e com entrevista ou \"sem cortes\"."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Flávio Bolsonaro\" sozinho nas redes",
+    "motivo": "Traria toda a conversa sobre o candidato. Fica no Trends, como variante de base."
+   },
+   {
+    "termo": "Hashtags",
+    "motivo": "Nenhuma hashtag própria da nota foi identificada; o caso não tem lista de hashtags."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Post da nota no X (arquivo web)",
+    "por_que": "É o texto original. A cópia no Internet Archive guarda a versão publicada, caso o post mude ou saia do ar."
+   },
+   {
+    "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 1º/11)",
+    "por_que": "Repercussão e reações à nota."
+   },
+   {
+    "fonte": "Google Notícias (BR, 7 dias), YouTube (Brasil, desde 1º/11), checagens",
+    "por_que": "Como a imprensa tratou a nota e as afirmações a conferir."
+   },
+   {
+    "fonte": "Google Trends (7 dias, 1 mês)",
+    "por_que": "Se a nota gerou busca para além da conversa nas redes."
+   }
+  ],
+  "controles": "No Trends, \"Lula\" como controle de interesse geral, numa consulta separada das variantes. Dentro das variantes, \"Flávio Bolsonaro\" sozinho é a âncora de \"nota ao Brasil\" e \"Flávio Bolsonaro Globo\", que estão na mesma consulta. ⛔ O motivo da escolha de \"Lula\" não está documentado no repositório.",
+  "limites": [
+   "\"Saí pelo Brasil\" já aparece na live de 31/10 (caso 024). O corte em 1º/11 separa as datas, mas não distingue quem reage à nota de quem reage à live.",
+   "\"Nota ao Brasil\" é expressão genérica, usada por outros autores; no Trends é ambígua.",
+   "O filtro de título de notícias aceita qualquer título com \"Flávio\", inclusive sobre outros temas do candidato. No YouTube, o atributo exigido inclui palavras gerais (EUA, Miami, Moraes).",
+   "A amostra do X é pequena e não bateu no limite (C19.291): no X, a busca devolveu tudo o que encontrou.",
+   "As afirmações factuais (\"sete minutos após o resultado\", condições da entrevista) estão marcadas para conferência no livro de códigos (C19.270). ⛔ A conferência não está registrada no repositório.",
+   "Kwai: 0 itens."
+  ]
+ },
+ "032": {
+  "pergunta": "Quem assiste e comenta a série de reportagens \"Revelando\" (Calma Urgente, YouTube @revelando_br), de que lado do acervo do Atlas vêm os comentaristas (público de Lula ou de Flávio), que assuntos ela aborda e quanto o canal cresceu?",
+  "por_que_importa": "O Revelando é um projeto de mídia com apoio de distribuição de veículos de esquerda (ICL, Mídia Ninja, 342 Artes, Intercept Brasil) e convidados famosos. O caso testa se esse jornalismo alcança quem está fora da própria bolha, ou se fala para quem já concorda. É a mesma pergunta do caso 011, aplicada a um canal novo e de crescimento rápido. Os assuntos dos episódios também se cruzam com outros casos (o Ep 5, \"A Guerra à Santa\", com o 033).",
+  "recorte_temporal": {
+   "inicio": "2026-08-01",
+   "justificativa": "O canal foi criado em 03/08/2026 (YouTube Data API, data/casos/032/youtube.json). Antes disso o objeto não existe. ⛔ Não documentado no repositório: por que 01/08 e não 03/08; a data cobre o mês de criação. A unidade não é a busca por termo: são todos os envios do canal, então o período é o da vida do canal."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Canal (sem busca por termo)",
+    "termos": [
+     "@revelando_br (todos os envios)"
+    ],
+    "justificativa": "O caso não usa amostra por palavra-chave. Lê o canal inteiro pela API: estatísticas, todos os vídeos e os comentários de cada episódio. A plataforma informa o total de vídeos e de comentários, então o universo é conhecido."
+   },
+   {
+    "familia": "Assunto de cada episódio (Trends)",
+    "termos": [
+     "título limpo de cada episódio completo",
+     "Ep 5: \"JB Carvalho\", \"Nossa Senhora Aparecida padroeira\", \"padroeira do Brasil\""
+    ],
+    "justificativa": "O título do episódio é limpo da marca, do número e do nome do convidado. O convidado sai para medir o interesse pelo assunto, não pela celebridade. Quando o título não diz o assunto real, ele é informado à parte com a fonte (data/config/caso032_assuntos.json): no Ep 5, o pastor JB Carvalho e a proposta de tirar Nossa Senhora Aparecida de padroeira."
+   },
+   {
+    "familia": "Imprensa",
+    "termos": [
+     "Revelando Calma Urgente",
+     "série Revelando reportagem"
+    ],
+    "justificativa": "\"Revelando\" sozinho é palavra comum; só entra com o nome do projeto ou com \"série\" e \"reportagem\"."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "Cortes, teasers, trailers e versões em Libras",
+    "motivo": "Não são episódios. Só entram na análise por episódio os vídeos com \"Ep #N\" no título; os demais ficam nos totais do canal."
+   },
+   {
+    "termo": "Nome do convidado no assunto do episódio",
+    "motivo": "Mediria o interesse pela celebridade, não pelo tema da reportagem."
+   },
+   {
+    "termo": "Instagram, X, TikTok e Kwai do projeto",
+    "motivo": "Teto de custo 0 para redes pagas. Os perfis estão registrados, mas não são coletados."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "YouTube Data API (canal, envios, comentários)",
+    "por_que": "É a fonte primária. Dá inscritos, visualizações, todos os vídeos e os comentários de cada episódio, com o total que a plataforma informa."
+   },
+   {
+    "fonte": "Acervo do Atlas (comentários nos canais das campanhas)",
+    "por_que": "Cada autor de comentário é cruzado com quem já comentou nos canais de Lula, de Flávio, dos dois ou de nenhum. É o indício de bolha."
+   },
+   {
+    "fonte": "Internet Archive (capturas da página do canal)",
+    "por_que": "Dá pontos antigos de inscritos, antes de o Atlas começar a série diária."
+   },
+   {
+    "fonte": "Google Trends (Brasil; 12 meses e 7 dias)",
+    "por_que": "Mede se os assuntos dos episódios geraram busca."
+   }
+  ],
+  "controles": "Não há termo de controle no Trends: os assuntos são comparados em grupos de 5 por consulta, e grupos diferentes não se comparam. Na análise de bolha, o controle é a composição do próprio acervo: a parcela de autores de cada lado nos comentários do Revelando é comparada com a parcela de cada lado no acervo inteiro (caso_revelando.py, \"para a comparação ser justa\"). A penetração mede quantos autores de cada lado do acervo apareceram nos comentários lidos.",
+  "limites": [
+   "Os comentários são lidos até 5 páginas de 100 conversas por episódio, das mais recentes. A amostra é uma fração do total informado (C19.319, C19.321).",
+   "O acervo cobre só quem comentou nos canais das campanhas. Cerca de dois em cada três autores do Revelando não estão nele (C19.319). Lado no acervo é indício de bolha, não prova de voto. Quem só assiste e não comenta não entra.",
+   "A busca por título no Trends é fraca e ambígua (C19.319).",
+   "As capturas do Internet Archive são esparsas; a série diária do Atlas começa em 02/11/2026 (C19.319).",
+   "Os termos de notícias estão em casos.json, mas o caso tem coletar=false e não há google.json. ⛔ A imprensa sobre a série não foi coletada.",
+   "As outras redes do projeto não são lidas (teto 0)."
+  ]
+ },
+ "033": {
+  "pergunta": "Como a classificação indicativa dada pelo Ministério da Justiça ao programa \"Record Kids: Desenhos Bíblicos\" (Portaria nº 2.272, DOU de 29/10/2026: não recomendado para menores de 12 anos) circulou como \"censura\" do governo Lula a conteúdo cristão? Quem difundiu essa leitura, e como ela se compara ao texto da portaria?",
+  "por_que_importa": "É desinformação sobre ato de governo: um fato real (a portaria) com enquadramento falso (censura). Classificação indicativa não proíbe exibição nem exige cortes (Portaria MJSP 1.048/2025, art. 9º; STF, ADI 2404). O caso junta dois eixos do observatório: religião como campo de disputa política e a ideia de perseguição logo depois da eleição. Ele confronta a narrativa com o documento e mede quem a espalha (Ponto PB, O Antagonista, Jornal da Cidade Online, Revista Oeste foram os primeiros registros).",
+  "recorte_temporal": {
+   "inicio": "2026-10-29",
+   "justificativa": "Data da publicação da portaria no Diário Oficial. Antes dela não há o ato a ser distorcido. A janela de 12 meses do Trends dá a base de interesse por \"classificação indicativa\"."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "Nome do programa",
+    "termos": [
+     "\"desenhos bíblicos\"",
+     "\"desenho bíblico\"",
+     "\"Record Kids\"",
+     "desenhos bíblicos Record"
+    ],
+    "justificativa": "É o objeto da portaria. Singular e plural entram porque a narrativa fala de \"desenho bíblico\" e o programa se chama \"Desenhos Bíblicos\". \"Record Kids\" é a faixa da emissora em que o programa passa."
+   },
+   {
+    "familia": "Enquadramento da narrativa",
+    "termos": [
+     "Record + censura + bíblico/bíblicos/Bíblia",
+     "Record censura desenho bíblico",
+     "Lula censura desenhos bíblicos",
+     "Record Kids censura"
+    ],
+    "justificativa": "Captam a versão \"censura\". A palavra só entra junto da emissora e do tema religioso, porque \"censura\" sozinha traria todo o debate sobre liberdade de expressão."
+   },
+   {
+    "familia": "Enquadramento institucional",
+    "termos": [
+     "\"classificação indicativa\"",
+     "Record + classificação + bíblico",
+     "Record Kids classificação indicativa",
+     "portaria 2.272 classificação indicativa"
+    ],
+    "justificativa": "Captam a versão que descreve o ato como ele é. Buscar os dois enquadramentos evita uma amostra só da narrativa. No Trends, \"classificação indicativa\" mostra se o público procurou o mecanismo real."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"Record\" sozinho",
+    "motivo": "Traz toda a programação da emissora. No Trends fica como controle."
+   },
+   {
+    "termo": "\"censura\" sozinho",
+    "motivo": "Ruído alto: debate geral sobre liberdade de expressão, redes, STF."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Texto da portaria e normas citadas",
+    "por_que": "É a referência contra a qual a narrativa é conferida."
+   },
+   {
+    "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 29/10)",
+    "por_que": "Onde a narrativa e a correção circulam. O TikTok tem verba própria porque o tema é muito difundido em vídeo curto."
+   },
+   {
+    "fonte": "Google Notícias (BR, 7 dias), YouTube (Brasil, desde 29/10), checagens",
+    "por_que": "Mostram quais sites lançaram a leitura de \"censura\" e quais a corrigiram."
+   },
+   {
+    "fonte": "Google Trends (7 dias, 1 mês, 12 meses)",
+    "por_que": "Se a narrativa gerou busca, e por qual dos enquadramentos."
+   }
+  ],
+  "controles": "No Trends, \"Record\" como controle de interesse geral pela emissora, numa consulta separada das variantes: comparam-se datas e formas, não níveis. ⛔ O motivo da escolha não está documentado no repositório. Na análise, o controle é o próprio texto da portaria: cada afirmação da narrativa é comparada com o que o ato diz.",
+  "limites": [
+   "No TikTok, duas das três buscas contêm \"censura\" (\"Record censura desenho bíblico\", \"Lula censura desenhos bíblicos\"). A amostra dessa rede pende para o enquadramento da narrativa.",
+   "\"Record Kids\" pode trazer outros programas da mesma faixa.",
+   "O filtro de título de notícias em casos.json usa radicais (\"bíblic\"), mas collect_casos.py compara palavras inteiras. Em google.json só passam títulos com a palavra \"Record\". A camada completa é a de busca.json.",
+   "A busca grátis falhou na primeira vez porque o caso não estava registrado em collect_caso_busca.py (run 41581869386); foi corrigida e refeita (C19.328).",
+   "Kwai fora (teto 0). O caso não tem hashtags próprias.",
+   "Relação com o Ep 5 do Revelando (caso 032) é temática; não há medida de ligação entre as duas audiências."
+  ]
+ },
+ "034": {
+  "pergunta": "Como o TSE tratou o vídeo feito com inteligência artificial que recriou imagem e voz de Jair Bolsonaro na convenção do PL que lançou Flávio Bolsonaro (25/07/2026), e que tese fixou ao julgar a representação (01/09/2026, 4 a 3)? Como a regra sobre deep fake foi lida da sua criação (2024) até essa tese, e como o caso circulou?",
+  "por_que_importa": "É o caso-teste da regra brasileira de deep fake em campanha (art. 9º-C, § 1º, da Res. 23.610/2019). O vídeo se anunciava como simulação. A tese vencedora deslocou o critério da técnica (o conteúdo é sintético?) para o enquadramento (é propaganda eleitoral?), e exigiu grau de realismo. Com o mesmo texto normativo, a leitura passou da \"vedação absoluta\" de 2024 para uma vedação condicionada. O caso é apoio ao artigo sobre a genealogia de fake news, cheapfake e deepfake: mostra como o Direito Eleitoral define o que é deepfake. É oculto na página e serve de dossiê.",
+  "recorte_temporal": {
+   "inicio": "2026-07-25 (circulação) · 27/02/2024 (norma)",
+   "justificativa": "A circulação começa na convenção, quando o vídeo foi exibido e transmitido; antes não há objeto. A busca de notícias de 105 dias cobre da convenção até a abertura do caso. A linha do tempo normativa começa em 27/02/2024, na sessão que criou os arts. 9º-B e 9º-C, porque a pergunta é sobre a leitura da regra, e só se mede mudança de leitura a partir da origem. Inclui a Res. 23.755 (02/03/2026) e o julgado de 20/05/2026 citado na sessão."
+  },
+  "familias_de_termos": [
+   {
+    "familia": "O objeto",
+    "termos": [
+     "deepfake Bolsonaro convenção PL",
+     "vídeo IA Bolsonaro convenção TSE",
+     "Bolsonaro IA convenção PL",
+     "vídeo inteligência artificial Bolsonaro convenção"
+    ],
+    "justificativa": "Delimitam o vídeo da convenção dentro da conversa geral sobre IA na eleição. Juntam ator, técnica e lugar."
+   },
+   {
+    "familia": "A decisão e a tese",
+    "termos": [
+     "TSE deepfake Flávio Bolsonaro",
+     "TSE julga deepfake Flávio Bolsonaro",
+     "TSE tese deepfake propaganda eleitoral",
+     "TSE deepfake tese convenção partidária"
+    ],
+    "justificativa": "Captam a cobertura do julgamento e da tese. \"Propaganda eleitoral\" e \"convenção partidária\" são os dois conceitos que decidiram o caso."
+   },
+   {
+    "familia": "Grafias e sinônimos da técnica (filtro)",
+    "termos": [
+     "deep fake",
+     "deepfake",
+     "inteligência artificial",
+     "IA",
+     "AI",
+     "avatar",
+     "sintético"
+    ],
+    "justificativa": "A resolução escreve \"deep fake\", separado; a imprensa escreve \"deepfake\". \"Conteúdo sintético\" é o termo da norma. O filtro aceita as duas grafias e os sinônimos, mas exige junto um ator ou instituição (Bolsonaro, Flávio, TSE, convenção, PL, candidato, propaganda, Google, YouTube)."
+   },
+   {
+    "familia": "Ferramenta da plataforma",
+    "termos": [
+     "TSE Google detecção de semelhança candidatos",
+     "TSE Google detecção de semelhança deepfake candidatos"
+    ],
+    "justificativa": "A ferramenta do YouTube lançada com o TSE em 26/08/2026 é a resposta das plataformas, em paralelo ao Judiciário. Mostra a autorregulação ao lado da regra."
+   },
+   {
+    "familia": "Interesse geral (Trends)",
+    "termos": [
+     "deepfake",
+     "Bolsonaro IA",
+     "inteligência artificial eleição"
+    ],
+    "justificativa": "Medem se o caso mexeu no interesse de busca pelo tema, em 12 meses e 5 anos."
+   }
+  ],
+  "excluidos": [
+   {
+    "termo": "\"IA\" ou \"AI\" sem ator ou instituição",
+    "motivo": "Ruído total. O filtro exige um ator ou instituição junto."
+   },
+   {
+    "termo": "Redes sociais (X, Instagram, Facebook, TikTok, Kwai)",
+    "motivo": "Teto 0 até autorização de valor. O caso é dossiê documental; a circulação vem do YouTube, da imprensa e das checagens."
+   },
+   {
+    "termo": "Consulta pública do PJe",
+    "motivo": "Pede CAPTCHA, que o Atlas não contorna. A lista de processos vem dos dados abertos do TSE; as peças foram enviadas em PDF."
+   },
+   {
+    "termo": "Falas da sessão com mais de 25 palavras",
+    "motivo": "O dossiê cita trechos curtos, com o minuto no vídeo oficial; o texto integral fica no privado."
+   }
+  ],
+  "fontes_e_por_que": [
+   {
+    "fonte": "Vídeos oficiais das sessões do TSE (27/02/2024, 02/03/2026, 01/09/2026) e transcrições",
+    "por_que": "São a fonte primária do que foi decidido e dos votos. O vídeo oficial de 01/09 cobre a sessão inteira; o recorte do UOL começa no fim de um voto."
+   },
+   {
+    "fonte": "Res. 23.610/2019 compilada e Res. 23.755/2026",
+    "por_que": "O texto da regra, para mostrar que ele não mudou entre 2024 e a tese de 2026."
+   },
+   {
+    "fonte": "Petição da defesa com parecer jurídico (PDF)",
+    "por_que": "Mostra o argumento que separa rotulagem (9º-B) de proibição (9º-C, § 1º)."
+   },
+   {
+    "fonte": "Dados abertos processuais do TSE",
+    "por_que": "Dão o universo dos processos eleitorais de 2026 e quantos tratam de IA ou deep fake (data/casos/034/processos.json). É universo, não amostra."
+   },
+   {
+    "fonte": "Imprensa (ConJur, SBT News, Agência Brasil), checagens, YouTube (desde 25/07)",
+    "por_que": "Cobertura e crítica da tese; placar por ministro; circulação do caso em vídeo."
+   },
+   {
+    "fonte": "Ajuda do YouTube (detecção de semelhanças)",
+    "por_que": "Descreve o funcionamento e os limites da ferramenta das plataformas."
+   },
+   {
+    "fonte": "Google Trends (12 meses, 5 anos, 7 dias)",
+    "por_que": "Interesse de busca pelo tema."
+   }
+  ],
+  "controles": "No Trends, \"inteligência artificial\" como controle: separa o interesse por deepfake e por IA na eleição do interesse geral por IA, que cresce por outros motivos. É uma consulta separada das variantes: comparam-se datas e formas, não níveis. ⛔ O motivo da escolha não está documentado no repositório; esta é a leitura proposta. Na leitura jurídica, o controle é o próprio texto do 9º-C, § 1º, que é o mesmo em 2024 e em 2026.",
+  "limites": [
+   "O texto oficial do acórdão ainda não foi lido (C19.334, pendente). A tese vem da transcrição da sessão.",
+   "O arquivo de dados abertos do TSE registra 0 decisões na RP 0601315-97.2026.6.00.0000, apesar do julgamento de 01/09 (C19.340).",
+   "O placar por ministro segue o SBT News (02/09/2026); o resultado foi conferido na transcrição (C19.334).",
+   "As transcrições vêm de legendas do YouTube. Nomes errados na legenda foram corrigidos à mão no dossiê.",
+   "O dossiê descreve o vídeo da convenção pela imprensa (SBT News). ⛔ Não documentado no repositório: coleta ou transcrição do próprio vídeo exibido na convenção.",
+   "Sem redes sociais (teto 0), a circulação medida é a do YouTube, da imprensa e das checagens.",
+   "\"deepfake\" no Trends é termo mundial e genérico; \"Bolsonaro IA\" é ambíguo.",
+   "O Atlas não dá veredito jurídico."
   ]
  },
  "035": {

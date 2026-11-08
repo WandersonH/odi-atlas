@@ -1,0 +1,270 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "029",
+ "titulo": "Xenofobia contra o Nordeste depois do 2º turno (\"o Nordeste é o câncer do Brasil\")",
+ "pergunta": "Depois do 2º turno de 2026, voltaram a circular ataques xenofóbicos ao Nordeste (\"o Nordeste é o câncer do Brasil\")? Com que vocabulário, e como foi a reação? O número \"27 milhões de ataques ao Nordeste após a eleição\", que circulou nesse período, se sustenta?",
+ "por_que_importa": "A xenofobia regional contra o Nordeste reaparece a cada eleição em que a região vota em maioria por um candidato. É discurso de ódio com alvo territorial que culpa o voto de uma população pelo resultado. O caso mede o ataque e a reação com o mesmo método e checa um número viral: os \"27 milhões\" vêm do estudo \"O Nordeste no Banco dos Réus\" (Ativaweb DataLab), sobre as 72 horas depois do 1º turno, e contam menções, links e compartilhamentos, não posts únicos (Vermelho, 08/10/2026). Liga-se ao caso 009 e à frente de intolerância.",
+ "recorte_temporal": {
+  "inicio": "2026-10-25",
+  "justificativa": "O dia do resultado do 2º turno, que é o gatilho do ciclo de ataques estudado. A onda do 1º turno, a do estudo dos \"27 milhões\", fica antes e pertence ao caso 009. A janela de 5 anos do Trends cobre a eleição de 2022 e permite ver se o padrão se repete."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Região e gentílico × léxico de ataque",
+   "termos": [
+    "nordeste/nordestino/nordestinos/nordestina",
+    "+ câncer/cancer",
+    "+ jumento/burro/burros/analfabeto",
+    "+ esmola/\"bolsa família\"/vagabundo/parasita",
+    "+ separar"
+   ],
+   "justificativa": "O ataque xenofóbico combina o alvo (a região ou quem nasce nela) com um estereótipo. O léxico cobre as formas recorrentes: desumanização (câncer, parasita), inferiorização (jumento, burro, analfabeto), culpar o voto pela dependência de programas sociais (esmola, bolsa família, vagabundo) e separatismo (separar). Essas são as categorias de hostilidade do livro de códigos do caso. O gentílico sozinho não entra, porque traria toda a conversa sobre a região."
+  },
+  {
+   "familia": "Frase-símbolo",
+   "termos": [
+    "\"câncer do Brasil\"",
+    "nordeste câncer do Brasil"
+   ],
+   "justificativa": "É a formulação que dá nome ao caso e se repete a cada eleição. Entra também sozinha no X, para captar o uso da frase quando o alvo está implícito."
+  },
+  {
+   "familia": "Nomeação e reação",
+   "termos": [
+    "#xenofobia",
+    "xenofobia nordeste",
+    "#OrgulhoDeSerNordestino",
+    "orgulho de ser nordestino"
+   ],
+   "justificativa": "Quem denuncia nomeia o ataque como xenofobia; quem reage afirma a identidade regional. Medir os dois com o mesmo método evita contar só o ataque."
+  },
+  {
+   "familia": "Separatismo (Trends)",
+   "termos": [
+    "separar o nordeste"
+   ],
+   "justificativa": "A proposta de separar a região é a forma mais extrema do discurso e é buscada como frase. Liga o caso ao separatismo estudado no caso 021."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"nordeste\" ou \"nordestino\" sozinhos no X",
+   "motivo": "Turismo, clima, futebol, economia regional. Só entram com o léxico de ataque. No Trends, \"nordeste\" fica como controle."
+  },
+  {
+   "termo": "O número \"27 milhões\" como medida do 2º turno",
+   "motivo": "É do 1º turno e conta menções, links e compartilhamentos. O Atlas o registra como achado de checagem, não como dado do caso."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 25/10)",
+   "por_que": "Onde ataque e reação circulam em texto e em vídeo curto."
+  },
+  {
+   "fonte": "Google Trends (5 anos, 12 meses, 7 dias)",
+   "por_que": "Mede se o tema gerou busca e compara com eleições anteriores."
+  },
+  {
+   "fonte": "YouTube (Brasil, desde 25/10), Google Notícias (BR, 30 dias)",
+   "por_que": "Cobertura dos ataques e vídeos de reação."
+  },
+  {
+   "fonte": "Google Fact Check Tools",
+   "por_que": "Checagens sobre o número dos \"27 milhões\" e sobre a xenofobia eleitoral."
+  }
+ ],
+ "controles": "No Trends, \"nordeste\" como controle de interesse geral pela região, numa consulta separada das variantes: comparam-se datas e formas das curvas, não níveis. ⛔ O motivo da escolha não está documentado no repositório. Na análise, o controle é a simetria: ataque e reação são buscados e classificados pelo mesmo método.",
+ "limites": [
+  "A busca do X bateu no limite pedido (C19.291; manifesto 20261102T103438Z). As três hashtags do Instagram bateram no limite (manifesto 20261102T095651Z). No TikTok, todas as buscas bateram no limite.",
+  "\"câncer do Brasil\" sozinho no X não tem âncora regional e pode trazer a frase dirigida a outros alvos. A leitura separa.",
+  "#nordeste e #xenofobia são amplas: trazem turismo e xenofobia contra outros grupos.",
+  "O léxico não capta ironia, eufemismo nem ofensas fora da lista. Ataques sem nenhuma das palavras ficam fora.",
+  "O filtro de título de notícias em casos.json usa radicais (\"nordest\", \"xenofob\"), mas collect_casos.py compara palavras inteiras. Por isso data/casos/029/google.json tem 0 notícias. A camada de notícias do caso é a de busca.json.",
+  "A busca do YouTube achou poucos vídeos no período (C19.331).",
+  "A ofensividade automática (HateBR) ainda não foi validada por codificação humana. Kwai: 0 itens."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#xenofobia",
+   "#orgulhodesernordestino",
+   "#nordeste",
+   "o caso (busca por termo): ((nordeste OR nordestino OR nordestinos OR nordestina) (câncer OR cancer OR jumento OR burro OR burros OR analfabeto OR esmola OR \"bolsa família\" OR separar OR xenofobia OR vagabundo OR parasita)) OR \"câncer do Brasil\" OR #xenofobia OR #OrgulhoDeSerNordestino since:2026-10-25"
+  ],
+  "tiktok": [
+   "#xenofobia",
+   "#orgulhodesernordestino",
+   "#nordeste",
+   "nordeste câncer do Brasil",
+   "xenofobia nordeste eleição",
+   "nordestino voto Lula",
+   "orgulho de ser nordestino"
+  ],
+  "instagram": [
+   "#xenofobia",
+   "#orgulhodesernordestino",
+   "reels: xenofobia nordeste",
+   "reels: nordeste câncer do Brasil"
+  ],
+  "facebook": [
+   "nordeste câncer do Brasil",
+   "xenofobia nordestinos eleição",
+   "separar o nordeste"
+  ],
+  "google_trends": [
+   "xenofobia",
+   "nordestino",
+   "separar o nordeste"
+  ],
+  "google_noticias": [
+   "xenofobia Nordeste eleição",
+   "ataques a nordestinos",
+   "\"câncer do Brasil\" Nordeste"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 255,
+   "no_periodo": 237,
+   "na_analise": 237,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "#nordeste",
+    "#orgulhodesernordestino",
+    "#xenofobia"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto não cabe nem 5 itens por termo"
+   ],
+   "origem": "data/casos/029/manifesto-20261102T095651Z.json, manifesto-20261102T101533Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 101,
+   "no_periodo": 101,
+   "na_analise": 101,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/029/manifesto-20261102T101533Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 9,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/029/manifesto-20261102T202450Z.json, manifesto-20261102T204112Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 2000,
+   "no_periodo": 2000,
+   "na_analise": 2000,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [
+    "o caso (busca por termo)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/029/manifesto-20261102T103438Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 696,
+   "no_periodo": 366,
+   "na_analise": 273,
+   "pct": null,
+   "termos_buscados": 15,
+   "termos_no_limite": [
+    "#nordeste",
+    "#orgulhodesernordestino",
+    "#xenofobia",
+    "nordeste câncer do Brasil",
+    "nordestino voto Lula",
+    "orgulho de ser nordestino",
+    "xenofobia nordeste eleição"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/029/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 57,
+   "no_periodo": 57,
+   "na_analise": 57,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/029/busca.json (youtube)",
+   "coletado_em": "2026-11-07T16:30:00Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 47,
+   "no_periodo": 47,
+   "na_analise": 47,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/029/busca.json (noticias)",
+   "coletado_em": "2026-11-07T16:30:00Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 12-m, now 7-d, today 5-y), termos: xenofobia, nordestino, separar o nordeste",
+   "avisos": [
+    "trends variantes today 5-y: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/029/busca.json (trends)",
+   "coletado_em": "2026-11-07T16:30:00Z"
+  }
+ ]
+}

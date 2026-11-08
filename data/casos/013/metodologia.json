@@ -1,0 +1,207 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "013",
+ "titulo": "\"Onde está Flávio?\" e \"Flávio fugiu\" (buscas e notícias depois do 2º turno)",
+ "pergunta": "Depois da derrota no 2º turno (25/10/2026), quanto circularam a pergunta \"Onde está Flávio?\" e a afirmação \"Flávio fugiu\", em buscas, notícias, vídeos e posts públicos? Como essa circulação se compara com episódios anteriores da mesma acusação (viagem a Lisboa em julho de 2025; viagem aos EUA em maio de 2026)?",
+ "por_que_importa": "A acusação de fuga é um enquadramento recorrente contra o candidato, que volta a cada viagem. O caso mede se o resultado eleitoral reativou esse enquadramento e com que intensidade. O Atlas não afirma nem nega a fuga: mede o que circula e o que a imprensa e as agências publicam. O caso se liga aos casos 017, 024, 025 e 036, que tratam da mesma saída do país.",
+ "recorte_temporal": {
+  "inicio": "2026-10-24",
+  "justificativa": "Um dia antes do 2º turno. Esse dia dá a linha de base imediata: se as buscas e os posts sobem depois de 25/10, o aumento pode ser ligado ao resultado. Antes disso, a acusação pertence a episódios anteriores, que o caso compara pelo Trends de 12 meses e pelas fontes de contexto, não pela coleta das redes."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Pergunta e afirmação do caso",
+   "termos": [
+    "onde está flávio",
+    "flávio fugiu",
+    "flávio bolsonaro fugiu",
+    "cadê o flávio",
+    "\"onde está Flávio\""
+   ],
+   "justificativa": "São as duas formas que o caso estuda: a pergunta (dúvida insinuada) e a afirmação (acusação direta). \"Cadê o Flávio\" é a forma coloquial da mesma pergunta. A versão com sobrenome tira a ambiguidade do prenome."
+  },
+  {
+   "familia": "Hashtags",
+   "termos": [
+    "#ondeestaflavio",
+    "#ondeestaoflavio",
+    "#flaviofugiu",
+    "#cadeoflavio"
+   ],
+   "justificativa": "Hashtag é o marcador de um público em torno do tema. A forma com artigo (#ondeestaoflavio) entrou porque já tinha aparecido nos comentários do reel de Joice Hasselmann (caso 011), segundo o CHANGELOG (C19.180): é vocabulário observado, não suposto."
+  },
+  {
+   "familia": "Paradeiro e viagem (imprensa e YouTube)",
+   "termos": [
+    "Flávio Bolsonaro paradeiro",
+    "Flávio Bolsonaro viagem exterior",
+    "Flávio Bolsonaro sumiu",
+    "Flávio Bolsonaro fuga"
+   ],
+   "justificativa": "A imprensa raramente usa \"fugiu\" no título; usa paradeiro, viagem, exterior. Esses termos captam a cobertura factual que responde à acusação, e não só quem a repete."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Flávio\" sozinho",
+   "motivo": "Prenome comum; o filtro exige \"Flávio\" e um marcador de fuga ou paradeiro (fug, onde está, cadê, sumiu, exterior, EUA, Europa, Lisboa, Miami, asilo)."
+  },
+  {
+   "termo": "\"Flávio Bolsonaro\" sozinho como busca",
+   "motivo": "Traria toda a cobertura do candidato. Só entra no Trends, como controle."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Google Trends (7 dias, 30 dias, 12 meses; por UF)",
+   "por_que": "É a camada central do caso: mede se a pergunta virou busca. A janela de 12 meses foi escolhida para comparar com episódios anteriores da acusação."
+  },
+  {
+   "fonte": "Google Notícias (7 dias) e checagens",
+   "por_que": "Mostram como a imprensa tratou a acusação e se houve checagem."
+  },
+  {
+   "fonte": "YouTube (desde 24/10)",
+   "por_que": "Vídeos de comentário político, onde a acusação ganha forma narrativa."
+  },
+  {
+   "fonte": "TikTok",
+   "por_que": "Única rede social do caso: a autorização inicial foi só de coleta grátis, e o TikTok era lido pela página pública."
+  }
+ ],
+ "controles": "No Trends, \"Flávio Bolsonaro\" e \"Lula\" (CASOS[\"013\"]). O primeiro separa a acusação do interesse geral pelo candidato: se \"flávio fugiu\" sobe junto com \"Flávio Bolsonaro\", é atenção ao candidato; se sobe sozinho, é o enquadramento. \"Lula\" dá a escala do interesse pela eleição no mesmo período.",
+ "limites": [
+  "X, Instagram e Facebook não foram coletados: a autorização do caso foi só de coleta grátis (casos.json, autorizacao). A circulação nessas redes fica ⛔ fora da amostra.",
+  "A janela de 12 meses do Trends, contada a partir da coleta (fim de outubro de 2026), não alcança julho de 2025. A comparação com a viagem a Lisboa fica ⛔ sem dado de busca; só a de maio de 2026 está dentro da janela.",
+  "No YouTube, o filtro aceita título ou descrição com \"Flávio\" e um marcador de fuga ou viagem. Vídeos sobre a viagem que não usam \"fuga\" entram; vídeos que repetem a acusação com outras palavras ficam fora.",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+  "Parte das buscas do YouTube deu HTTP 429 na primeira coleta (CHANGELOG, C19.180, run 40617220536)."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#ondeestaflavio",
+   "#ondeestaoflavio",
+   "#flaviofugiu",
+   "#cadeoflavio"
+  ],
+  "tiktok": [
+   "#ondeestaflavio",
+   "#ondeestaoflavio",
+   "#flaviofugiu",
+   "#cadeoflavio",
+   "onde está flávio",
+   "flávio fugiu",
+   "flávio bolsonaro fugiu"
+  ],
+  "google_trends": [
+   "onde está flávio",
+   "flávio fugiu",
+   "flávio bolsonaro"
+  ],
+  "google_noticias": [
+   "\"onde está Flávio\"",
+   "Flávio Bolsonaro fugiu",
+   "Flávio Bolsonaro paradeiro",
+   "Flávio Bolsonaro viagem exterior"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 1440,
+   "no_periodo": 1410,
+   "na_analise": 645,
+   "pct": null,
+   "termos_buscados": 56,
+   "termos_no_limite": [
+    "#cadeoflavio",
+    "#flaviofugiu",
+    "#ondeestaflavio",
+    "#ondeestaoflavio",
+    "flávio bolsonaro fugiu",
+    "flávio fugiu",
+    "onde está flávio"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/013/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 7,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/013/manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 246,
+   "no_periodo": 246,
+   "na_analise": 246,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/013/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:54:15Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 91,
+   "no_periodo": 91,
+   "na_analise": 91,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/013/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:54:15Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: onde está flávio, flávio fugiu, flávio bolsonaro fugiu, cadê o flávio",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/013/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:54:15Z"
+  }
+ ]
+}

@@ -1,0 +1,282 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "016",
+ "titulo": "\"Queime seu título\": chamados para queimar ou destruir o título de eleitor depois do 2º turno",
+ "pergunta": "Depois do 2º turno (25/10/2026), quanto circularam vídeos e chamados para queimar, rasgar ou destruir o título de eleitor? Em que redes, com que pico, e com que sentido (chamado, relato do ato, descrédito do voto, deboche, informação legal)?",
+ "por_que_importa": "Destruir o título é um gesto simbólico de rejeição à participação eleitoral. Ele desloca a derrota de um candidato para a descrença no próprio voto. Medir o volume e o sentido desse gesto ajuda a ver se a contestação do resultado se converte em ataque à instituição eleitoral, e não só ao vencedor.",
+ "recorte_temporal": {
+  "inicio": "2026-10-24",
+  "justificativa": "Um dia antes do 2º turno, como linha de base: se os chamados aparecem antes do resultado, o gesto não é reação a ele. A leitura diária do X segue até 15/11/2026, para ver se o gesto se sustenta ou se é um pico do pós-eleição."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Queimar o título (imperativo, infinitivo, relato)",
+   "termos": [
+    "queime seu título",
+    "queimem seus títulos",
+    "queimem o título",
+    "queimar o título",
+    "queimar meu título",
+    "queimei meu título",
+    "queimando (o/meu) título",
+    "queimou o título",
+    "variantes sem acento"
+   ],
+   "justificativa": "As flexões separam o chamado (queime, queimem) do relato de quem diz ter feito (queimei, queimando). É essa distinção que o livro de códigos usa. A grafia sem acento é comum em posts e hashtags."
+  },
+  {
+   "familia": "Fogo no título (forma coloquial)",
+   "termos": [
+    "fogo no título",
+    "fogo no meu título",
+    "tacar/taca/botar fogo no título",
+    "#queimeseutitulo",
+    "#fogonotitulo",
+    "#queimeotitulo"
+   ],
+   "justificativa": "A forma coloquial e as hashtags captam vídeos curtos, em que o gesto é mostrado mais do que dito."
+  },
+  {
+   "familia": "Destruir, rasgar, jogar fora",
+   "termos": [
+    "destrua seu título",
+    "destruam seus títulos",
+    "destruir o título",
+    "destruí meu título",
+    "rasgue/rasguem/rasguei/rasgar o título",
+    "jogue fora seu título",
+    "#destruaseutitulo"
+   ],
+   "justificativa": "O gesto não se limita ao fogo. Sem essas formas, a medida dependeria de um só verbo."
+  },
+  {
+   "familia": "Co-ocorrência com \"título de eleitor\"",
+   "termos": [
+    "(\"título de eleitor\" OR \"titulo de eleitor\") + (queimar, queimei, queimando, queimem, queime, rasgar, rasguei, rasguem, destruir, destruí, fogo, lixo)"
+   ],
+   "justificativa": "Pega frases que nomeiam o documento por extenso e usam o verbo em outra posição. É a busca mais larga, por isso exige o nome completo do documento."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"título\" sozinho",
+   "motivo": "Ruído alto: títulos de campeonato, título de notícia, título de propriedade. O documento só entra como \"título de eleitor\" ou junto de um verbo de destruição."
+  },
+  {
+   "termo": "\"título de eleitor\" sozinho como busca nas redes",
+   "motivo": "Traz a conversa prática sobre o documento (emissão, segunda via, regularização), que cresce em toda eleição. No Trends, ele fica como controle."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X (4 buscas e leitura diária até 15/11)",
+   "por_que": "Onde chamados e relatos aparecem por escrito e a busca permite flexões e co-ocorrência."
+  },
+  {
+   "fonte": "Instagram (hashtags e reels), Facebook (frases), TikTok",
+   "por_que": "O gesto é visual: a queima do documento circula como vídeo."
+  },
+  {
+   "fonte": "Google Trends (7 dias, 30 dias, 12 meses)",
+   "por_que": "Mede se o gesto gerou busca, inclusive busca prática (o que acontece se eu queimar o título)."
+  },
+  {
+   "fonte": "Google Notícias, YouTube e checagens",
+   "por_que": "Cobertura e informação legal sobre as consequências do ato."
+  }
+ ],
+ "controles": "No Trends, \"título de eleitor\" e \"Lula\" (CASOS[\"016\"]). \"Título de eleitor\" é a busca prática de rotina sobre o documento: se \"queimar título\" sobe sem ela, o pico é do gesto, não da procura habitual. \"Lula\" dá a escala do interesse pelo resultado.",
+ "limites": [
+  "O filtro de título das notícias em casos.json é só \"título/titulo\". Ele deixa passar notícias de serviço sobre o documento (ex.: reabertura de cadastro eleitoral, em data/casos/016/google.json). A outra coleta (collect_caso_busca.py) exige também um verbo de destruição (queim, fogo, destr, rasg, lixo).",
+  "As três hashtags do Instagram não devolveram nada, e a busca de reels \"destrua seu título\" também não (manifesto-20261030T010308Z). No Instagram e no TikTok as hashtags não têm total informado (CHANGELOG, C19.198): ⛔.",
+  "O YouTube recusou as consultas de total para o caso (CHANGELOG, C19.198): ⛔.",
+  "O ato em si não é verificável: o caso mede publicações que mostram ou anunciam o gesto, não títulos destruídos.",
+  "Pessoas comuns que aparecem nos vídeos não são identificadas.",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+  "X, Facebook, busca de reels do Instagram, YouTube (busca por termo) e Google Notícias não informam o total da busca: universo ⛔ desconhecido. O Google Trends é índice relativo (0 a 100), não volume."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#queimeseutitulo",
+   "#destruaseutitulo",
+   "#queimeotitulo",
+   "queimar o título: (\"queime seu título\" OR \"queimem seus títulos\" OR \"queimem o título\" OR \"queimar o título\" OR \"queimar meu título\" OR \"queimei meu título\" OR \"queimando o título\" OR \"queimando meu título\" OR \"queimou o título\" OR \"queime seu titulo\" OR \"queimar o titulo\") since:2026-10-24",
+   "fogo no título: (\"fogo no título\" OR \"fogo no titulo\" OR \"fogo no meu título\" OR \"tacar fogo no título\" OR \"taca fogo no título\" OR \"botar fogo no título\" OR #queimeseutitulo OR #fogonotitulo OR #queimeotitulo) since:2026-10-24",
+   "destruir ou rasgar o título: (\"destrua seu título\" OR \"destruam seus títulos\" OR \"destruir o título\" OR \"destruí meu título\" OR \"rasgue seu título\" OR \"rasguem seus títulos\" OR \"rasguei meu título\" OR \"rasgar o título\" OR \"jogue fora seu título\" OR \"destrua seu titulo\" OR #destruaseutitulo) since:2026-10-24",
+   "título de eleitor + queimar/rasgar/lixo: (\"título de eleitor\" OR \"titulo de eleitor\") (queimar OR queimei OR queimando OR queimem OR queime OR rasgar OR rasguei OR rasguem OR destruir OR destruí OR fogo OR lixo) since:2026-10-24"
+  ],
+  "tiktok": [
+   "#queimeseutitulo",
+   "#destruaseutitulo",
+   "#queimeotitulo",
+   "queimando título de eleitor",
+   "queime seu título",
+   "destrua seu título",
+   "fogo no título de eleitor"
+  ],
+  "instagram": [
+   "#queimeseutitulo",
+   "#destruaseutitulo",
+   "#fogonotitulo",
+   "reels: queimando título de eleitor",
+   "reels: queime seu título",
+   "reels: destrua seu título",
+   "reels: rasgando título de eleitor"
+  ],
+  "facebook": [
+   "queime seu título",
+   "destrua seu título",
+   "queimando título de eleitor"
+  ],
+  "google_trends": [
+   "queimar título",
+   "destruir título de eleitor",
+   "título de eleitor"
+  ],
+  "google_noticias": [
+   "queimar título de eleitor",
+   "queima título eleitoral",
+   "destruir título de eleitor",
+   "rasgar título de eleitor"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 920,
+   "no_periodo": 920,
+   "na_analise": 514,
+   "pct": null,
+   "termos_buscados": 28,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/016/manifesto-20261105T185529Z.json, manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 112,
+   "no_periodo": 77,
+   "na_analise": 56,
+   "pct": null,
+   "termos_buscados": 7,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/016/manifesto-20261030T010308Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 62,
+   "no_periodo": 62,
+   "na_analise": 62,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/016/manifesto-20261030T010308Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 7,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/016/manifesto-20261030T010308Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 843,
+   "no_periodo": 671,
+   "na_analise": 234,
+   "pct": null,
+   "termos_buscados": 42,
+   "termos_no_limite": [
+    "#destruaseutitulo",
+    "#queimeotitulo",
+    "#queimeseutitulo",
+    "destrua seu título",
+    "fogo no título de eleitor",
+    "queimando título de eleitor",
+    "queime seu título"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/016/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 20,
+   "no_periodo": 20,
+   "na_analise": 20,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/016/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:59:57Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/016/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:59:57Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: queimar título de eleitor, queimar título, destruir título de eleitor, rasgar título de eleitor",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/016/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:59:57Z"
+  }
+ ]
+}

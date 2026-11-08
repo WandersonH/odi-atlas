@@ -1,0 +1,265 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "015",
+ "titulo": "Bolhas de apoio: quem declarou voto no 2º turno",
+ "pergunta": "Quais figuras públicas com 100 mil seguidores ou mais declararam publicamente voto ou apoio a Lula ou a Flávio Bolsonaro no 2º turno de 2026, entre 01/08 e 25/10/2026, e como essas declarações se distribuem por lado, rede e faixa de seguidores? Como se comparam com a posição dos políticos eleitos e de seus partidos?",
+ "por_que_importa": "Declarações públicas de voto de pessoas com grande audiência são um recurso de campanha: transferem capital simbólico e sinalizam pertencimento. O caso mapeia essas bolhas de apoio com o link de cada publicação como prova. Não é pesquisa eleitoral e não mede intenção de voto: mede quem se expôs, onde e quando.",
+ "recorte_temporal": {
+  "inicio": "2026-08-01",
+  "justificativa": "A janela cobre o mês de agosto, antes e durante o início da propaganda (16/08), e toda a campanha até o dia do 2º turno. Termina em 25/10 (a busca usa until:2026-10-26) porque o objeto é a declaração feita antes do voto; o que vem depois é comemoração ou lamento, outro objeto. ⛔ O motivo de escolher 01/08, e não 20/07 (convenções) ou 16/08, não está documentado no repositório."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Declaração de voto em primeira pessoa",
+   "termos": [
+    "meu voto é (do) Lula",
+    "voto no Lula",
+    "vou votar no Lula",
+    "vou de Lula",
+    "vou de 13",
+    "voto 13",
+    "meu voto é (do) Flávio",
+    "voto no Flávio",
+    "vou votar no Flávio",
+    "vou de Flávio",
+    "vou de 22",
+    "voto 22"
+   ],
+   "justificativa": "A primeira pessoa distingue a declaração do próprio voto da notícia sobre o voto de outro. O número na urna (13, 22) é a forma curta usada em vídeos e legendas. As duas listas são simétricas para não favorecer um lado."
+  },
+  {
+   "familia": "Declaração de apoio",
+   "termos": [
+    "declaro meu voto",
+    "declaro (meu) apoio",
+    "fechado com Lula/Flávio",
+    "tô com Lula/Flávio",
+    "estou com Lula/Flávio",
+    "#Lula13",
+    "#Flavio22",
+    "#FlavioPresidente"
+   ],
+   "justificativa": "Captam a forma ritual do anúncio de apoio, comum entre artistas e influenciadores. Exigem o nome do candidato no mesmo texto, para não pegar apoio a outra causa."
+  },
+  {
+   "familia": "Contexto do 2º turno",
+   "termos": [
+    "\"segundo turno\" + (meu voto OR declaro OR apoio) + (Lula OR Flávio)"
+   ],
+   "justificativa": "Pega declarações que não usam as fórmulas acima mas se referem explicitamente ao 2º turno. Exige mais curtidas (1.000) por ser uma busca mais larga."
+  },
+  {
+   "familia": "Nulo, branco ou nenhum",
+   "termos": [
+    "voto nulo",
+    "anular meu voto",
+    "vou anular",
+    "voto em branco",
+    "nem Lula nem Flávio",
+    "não voto em nenhum"
+   ],
+   "justificativa": "A recusa pública também é posição. Sem ela, a página sugeriria que toda figura pública escolheu um lado."
+  },
+  {
+   "familia": "Filtros da busca no X",
+   "termos": [
+    "min_faves:200 a 1000",
+    "busca Top",
+    "lang:pt",
+    "fatias mensais (ago, set, out)"
+   ],
+   "justificativa": "O objeto são perfis grandes. Curtidas mínimas e a ordem Top da plataforma levam a busca a eles, em vez de milhares de declarações de pessoas comuns. As fatias por mês foram criadas porque a busca do período inteiro chegou ao limite de itens."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "Contas com menos de 100 mil seguidores",
+   "motivo": "Fora do recorte de figura pública do caso (casos.json, min_seguidores_bolha)."
+  },
+  {
+   "termo": "Veículos que noticiam a declaração de outra pessoa, ironia, sátira, negação, condicional, partidos e organizações",
+   "motivo": "A busca por frase os trouxe, mas não são declaração do próprio voto. Foram retirados na conferência texto a texto (data/config/bolhas_conferencia.json)."
+  },
+  {
+   "termo": "Retuítes",
+   "motivo": "Repassar não é declarar (scripts/bolhas_apoio.py)."
+  },
+  {
+   "termo": "Posição do partido como voto do político",
+   "motivo": "O sinal do partido aparece separado e não entra na contagem de apoio declarado."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "X (busca Top com curtidas mínimas)",
+   "por_que": "Rede em que as declarações escritas de figuras públicas são mais frequentes e a busca permite data e idioma."
+  },
+  {
+   "fonte": "Instagram (busca de reels) e leitura dos seguidores dos autores",
+   "por_que": "Onde artistas e influenciadores declaram voto em vídeo. A busca de reels não traz seguidores; por isso os perfis dos autores com frase de declaração são lidos à parte."
+  },
+  {
+   "fonte": "TikTok (frases)",
+   "por_que": "Declarações em vídeo curto de público mais jovem."
+  },
+  {
+   "fonte": "TSE: candidatos eleitos, contas declaradas e votos de 2026",
+   "por_que": "Base completa (universo) dos políticos eleitos. As contas declaradas ao TSE permitem casar o político com o autor da publicação."
+  },
+  {
+   "fonte": "Posição oficial dos partidos no 2º turno (data/config/apoio_partidos_2t.json)",
+   "por_que": "Sinal indireto, com fonte para cada partido, para comparar o apoio declarado com a orientação partidária."
+  }
+ ],
+ "controles": "Não há termos de controle no Google Trends: o caso não usa Trends nem Google Notícias (não está em CASOS de collect_caso_busca.py). O controle de validade é a conferência texto a texto de cada conta marcada pela frase antes de publicar o nome, e a separação entre declaração própria e sinal do partido.",
+ "limites": [
+  "O universo de figuras públicas que declararam voto é ⛔ desconhecido: nenhuma plataforma informa esse total.",
+  "A busca por frase errou muito: muitas contas marcadas não eram declaração própria (data/config/bolhas_conferencia.json). A conferência foi feita por IA (Claude) lendo o texto completo; a conferência humana está ⛔ pendente (CHANGELOG, C19.194).",
+  "Curtidas mínimas e ordem Top favorecem publicações de maior alcance e deixam de fora declarações com outras palavras, em vídeo sem legenda ou em stories.",
+  "A busca chegou ao limite de itens em \"declarou voto em Lula\" (manifesto-20261028T181452Z) e, mesmo fatiada, em outubro para os dois lados (manifesto-20261030T011811Z): há mais do que o lido.",
+  "Facebook e YouTube não entram nas bolhas (casos.json: teto do Facebook 0; CHANGELOG, C19.195: YouTube ainda não entra). A base do Quem Apoia Quem foi pedida e não recebida (⛔).",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "declarou voto em Lula: (\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-08-01 until:2026-10-26 lang:pt",
+   "declarou apoio a Lula: (\"declaro meu voto\" OR \"declaro apoio\" OR \"declaro meu apoio\" OR \"fechado com Lula\" OR \"tô com Lula\" OR \"estou com Lula\" OR \"#Lula13\") Lula min_faves:300 since:2026-08-01 until:2026-10-26 lang:pt",
+   "declarou voto em Flávio: (\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-08-01 until:2026-10-26 lang:pt",
+   "declarou apoio a Flávio: (\"declaro meu voto\" OR \"declaro apoio\" OR \"declaro meu apoio\" OR \"fechado com Flávio\" OR \"tô com Flávio\" OR \"estou com Flávio\" OR \"#Flavio22\" OR \"#FlavioPresidente\") (Flávio OR Flavio) min_faves:300 since:2026-08-01 until:2026-10-26 lang:pt",
+   "2º turno: voto e apoio: \"segundo turno\" (\"meu voto\" OR \"declaro\" OR \"apoio\") (Lula OR Flávio OR Flavio) min_faves:1000 since:2026-08-01 until:2026-10-26 lang:pt",
+   "nulo, branco ou nenhum: (\"voto nulo\" OR \"anular meu voto\" OR \"vou anular\" OR \"voto em branco\" OR \"nem Lula nem Flávio\" OR \"não voto em nenhum\") min_faves:300 since:2026-08-01 until:2026-10-26 lang:pt",
+   "declarou voto em Lula (ago): (\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-08-01 until:2026-09-01 lang:pt",
+   "declarou voto em Lula (set): (\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-09-01 until:2026-10-01 lang:pt",
+   "declarou voto em Lula (out): (\"meu voto é Lula\" OR \"meu voto é do Lula\" OR \"voto no Lula\" OR \"vou votar no Lula\" OR \"vou de Lula\" OR \"vou de 13\" OR \"voto 13\") min_faves:200 since:2026-10-01 until:2026-10-26 lang:pt",
+   "declarou voto em Flávio (ago): (\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-08-01 until:2026-09-01 lang:pt",
+   "declarou voto em Flávio (set): (\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-09-01 until:2026-10-01 lang:pt",
+   "declarou voto em Flávio (out): (\"meu voto é Flávio\" OR \"meu voto é do Flávio\" OR \"voto no Flávio\" OR \"vou votar no Flávio\" OR \"vou de Flávio\" OR \"vou de 22\" OR \"voto 22\") min_faves:200 since:2026-10-01 until:2026-10-26 lang:pt"
+  ],
+  "tiktok": [
+   "meu voto é Lula",
+   "meu voto é Flávio",
+   "vou de 13",
+   "vou de 22",
+   "declaro meu voto"
+  ],
+  "instagram": [
+   "reels: meu voto é Lula",
+   "reels: vou de 13 Lula",
+   "reels: declaro meu voto Lula",
+   "reels: meu voto é Flávio Bolsonaro",
+   "reels: vou de 22 Flávio",
+   "reels: declaro meu voto Flávio Bolsonaro",
+   "reels: segundo turno Lula ou Flávio",
+   "reels: vou anular meu voto"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 7695,
+   "no_periodo": 7695,
+   "na_analise": 5271,
+   "pct": null,
+   "termos_buscados": 12,
+   "termos_no_limite": [
+    "declarou voto em Flávio (out)",
+    "declarou voto em Lula",
+    "declarou voto em Lula (out)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/015/manifesto-20261028T181452Z.json, manifesto-20261030T011811Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 378,
+   "no_periodo": 369,
+   "na_analise": 357,
+   "pct": null,
+   "termos_buscados": 8,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/015/manifesto-20261028T181935Z.json, manifesto-20261030T011811Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 0,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/015/manifesto-20261028T181935Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 5,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/015/manifesto-20261028T181935Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 800,
+   "no_periodo": 728,
+   "na_analise": 616,
+   "pct": null,
+   "termos_buscados": 30,
+   "termos_no_limite": [
+    "declaro meu voto",
+    "meu voto é Flávio",
+    "meu voto é Lula",
+    "vou de 13",
+    "vou de 22"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/015/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  }
+ ]
+}

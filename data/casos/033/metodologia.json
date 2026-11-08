@@ -1,0 +1,240 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "033",
+ "titulo": "\"Governo Lula censura desenhos bíblicos da Record\" (classificação indicativa, 29/10/2026)",
+ "pergunta": "Como a classificação indicativa dada pelo Ministério da Justiça ao programa \"Record Kids: Desenhos Bíblicos\" (Portaria nº 2.272, DOU de 29/10/2026: não recomendado para menores de 12 anos) circulou como \"censura\" do governo Lula a conteúdo cristão? Quem difundiu essa leitura, e como ela se compara ao texto da portaria?",
+ "por_que_importa": "É desinformação sobre ato de governo: um fato real (a portaria) com enquadramento falso (censura). Classificação indicativa não proíbe exibição nem exige cortes (Portaria MJSP 1.048/2025, art. 9º; STF, ADI 2404). O caso junta dois eixos do observatório: religião como campo de disputa política e a ideia de perseguição logo depois da eleição. Ele confronta a narrativa com o documento e mede quem a espalha (Ponto PB, O Antagonista, Jornal da Cidade Online, Revista Oeste foram os primeiros registros).",
+ "recorte_temporal": {
+  "inicio": "2026-10-29",
+  "justificativa": "Data da publicação da portaria no Diário Oficial. Antes dela não há o ato a ser distorcido. A janela de 12 meses do Trends dá a base de interesse por \"classificação indicativa\"."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Nome do programa",
+   "termos": [
+    "\"desenhos bíblicos\"",
+    "\"desenho bíblico\"",
+    "\"Record Kids\"",
+    "desenhos bíblicos Record"
+   ],
+   "justificativa": "É o objeto da portaria. Singular e plural entram porque a narrativa fala de \"desenho bíblico\" e o programa se chama \"Desenhos Bíblicos\". \"Record Kids\" é a faixa da emissora em que o programa passa."
+  },
+  {
+   "familia": "Enquadramento da narrativa",
+   "termos": [
+    "Record + censura + bíblico/bíblicos/Bíblia",
+    "Record censura desenho bíblico",
+    "Lula censura desenhos bíblicos",
+    "Record Kids censura"
+   ],
+   "justificativa": "Captam a versão \"censura\". A palavra só entra junto da emissora e do tema religioso, porque \"censura\" sozinha traria todo o debate sobre liberdade de expressão."
+  },
+  {
+   "familia": "Enquadramento institucional",
+   "termos": [
+    "\"classificação indicativa\"",
+    "Record + classificação + bíblico",
+    "Record Kids classificação indicativa",
+    "portaria 2.272 classificação indicativa"
+   ],
+   "justificativa": "Captam a versão que descreve o ato como ele é. Buscar os dois enquadramentos evita uma amostra só da narrativa. No Trends, \"classificação indicativa\" mostra se o público procurou o mecanismo real."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Record\" sozinho",
+   "motivo": "Traz toda a programação da emissora. No Trends fica como controle."
+  },
+  {
+   "termo": "\"censura\" sozinho",
+   "motivo": "Ruído alto: debate geral sobre liberdade de expressão, redes, STF."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Texto da portaria e normas citadas",
+   "por_que": "É a referência contra a qual a narrativa é conferida."
+  },
+  {
+   "fonte": "X, Instagram, Facebook, TikTok (busca por termo desde 29/10)",
+   "por_que": "Onde a narrativa e a correção circulam. O TikTok tem verba própria porque o tema é muito difundido em vídeo curto."
+  },
+  {
+   "fonte": "Google Notícias (BR, 7 dias), YouTube (Brasil, desde 29/10), checagens",
+   "por_que": "Mostram quais sites lançaram a leitura de \"censura\" e quais a corrigiram."
+  },
+  {
+   "fonte": "Google Trends (7 dias, 1 mês, 12 meses)",
+   "por_que": "Se a narrativa gerou busca, e por qual dos enquadramentos."
+  }
+ ],
+ "controles": "No Trends, \"Record\" como controle de interesse geral pela emissora, numa consulta separada das variantes: comparam-se datas e formas, não níveis. ⛔ O motivo da escolha não está documentado no repositório. Na análise, o controle é o próprio texto da portaria: cada afirmação da narrativa é comparada com o que o ato diz.",
+ "limites": [
+  "No TikTok, duas das três buscas contêm \"censura\" (\"Record censura desenho bíblico\", \"Lula censura desenhos bíblicos\"). A amostra dessa rede pende para o enquadramento da narrativa.",
+  "\"Record Kids\" pode trazer outros programas da mesma faixa.",
+  "O filtro de título de notícias em casos.json usa radicais (\"bíblic\"), mas collect_casos.py compara palavras inteiras. Em google.json só passam títulos com a palavra \"Record\". A camada completa é a de busca.json.",
+  "A busca grátis falhou na primeira vez porque o caso não estava registrado em collect_caso_busca.py (run 41581869386); foi corrigida e refeita (C19.328).",
+  "Kwai fora (teto 0). O caso não tem hashtags próprias.",
+  "Relação com o Ep 5 do Revelando (caso 032) é temática; não há medida de ligação entre as duas audiências."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): (\"desenhos bíblicos\" OR \"desenho bíblico\" OR \"Record Kids\" OR (Record (censura OR classificação) (bíblico OR bíblicos OR Bíblia))) since:2026-10-29"
+  ],
+  "tiktok": [
+   "desenhos bíblicos Record",
+   "Record censura desenho bíblico",
+   "Lula censura desenhos bíblicos"
+  ],
+  "instagram": [
+   "reels: desenhos bíblicos Record"
+  ],
+  "facebook": [
+   "desenhos bíblicos Record censura",
+   "Record Kids classificação indicativa"
+  ],
+  "google_trends": [
+   "desenhos bíblicos",
+   "Record Kids",
+   "classificação indicativa"
+  ],
+  "google_noticias": [
+   "\"desenhos bíblicos\" Record",
+   "\"Desenhos Bíblicos\" classificação indicativa",
+   "Record Kids censura",
+   "portaria 2.272 classificação indicativa"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 1305,
+   "no_periodo": 1305,
+   "na_analise": 1305,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/033/manifesto-20261103T051011Z.json, manifesto-20261103T075509Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 113,
+   "no_periodo": 112,
+   "na_analise": 112,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/033/manifesto-20261103T051011Z.json, manifesto-20261103T080837Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 128,
+   "no_periodo": 128,
+   "na_analise": 127,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/033/manifesto-20261103T051011Z.json, manifesto-20261103T080837Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 2296,
+   "no_periodo": 2287,
+   "na_analise": 1188,
+   "pct": null,
+   "termos_buscados": 15,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/033/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 0,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/033/manifesto-20261103T080837Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 258,
+   "no_periodo": 258,
+   "na_analise": 258,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/033/busca.json (youtube)",
+   "coletado_em": "2026-11-07T16:39:19Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 143,
+   "no_periodo": 143,
+   "na_analise": 143,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/033/busca.json (noticias)",
+   "coletado_em": "2026-11-07T16:39:19Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: desenhos bíblicos, Record Kids, classificação indicativa",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/033/busca.json (trends)",
+   "coletado_em": "2026-11-07T16:39:19Z"
+  }
+ ]
+}

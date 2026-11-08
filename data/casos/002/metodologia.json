@@ -1,0 +1,187 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "002",
+ "titulo": "Consulta depreciativa associada a um candidato no Google (\"onde mora/nasceu o ladrão\")",
+ "pergunta": "Consultas depreciativas como \"onde mora o ladrão\" (2022) e \"onde nasceu o ladrão\" / \"quantos anos tem o ladrão\" (2026) passaram a devolver, no Google e nas respostas de IA do Google, dados biográficos de um candidato? Com que fontes o sistema respondeu, e quanto interesse de busca e circulação essas consultas tiveram?",
+ "por_que_importa": "O caso trata o buscador e a IA como intermediários de um rótulo político. Um apelido pejorativo vira resposta com aparência de fato quando o sistema devolve local de nascimento ou idade de uma pessoa real. Isso desloca a desinformação do conteúdo para a infraestrutura que responde a perguntas. O caso mede o que o sistema respondeu e com que fontes, sem afirmar a associação. A forma de 2022 (\"onde mora\") e as de 2026 (\"onde nasceu\", \"quantos anos\") permitem ver se o padrão persistiu e migrou para as respostas de IA.",
+ "recorte_temporal": {
+  "inicio": "2022-01-01",
+  "justificativa": "A primeira forma documentada da consulta é de 2022 (\"onde mora o ladrão\"), registrada num artigo daquele ano cuja cópia no Internet Archive serve de linha de base. Começar em 2022 põe os dois episódios, 2022 e 2026, na mesma escala do Google Trends de 5 anos. As janelas de 12 meses e 7 dias detalham 2026. O YouTube é lido desde 01/01/2022 pelo mesmo motivo. ⛔ O repositório não registra uso anterior a 2022, então a busca não testa se a consulta é mais antiga."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Consulta de 2022 (linha de base)",
+   "termos": [
+    "onde mora o ladrão",
+    "#ondemoraoladrao"
+   ],
+   "justificativa": "É a forma do primeiro episódio. Fica nos dois grupos do Trends como âncora, o que permite comparar os níveis das variantes e dos controles."
+  },
+  {
+   "familia": "Consultas de 2026: pergunta biográfica + rótulo",
+   "termos": [
+    "onde nasceu o ladrão",
+    "aonde nasceu o ladrão",
+    "quantos anos tem o ladrão",
+    "qual a idade do ladrão",
+    "#ondenasceuoladrao",
+    "#quantosanostemoladrao"
+   ],
+   "justificativa": "A estrutura \"pergunta de atributo pessoal + rótulo\" é o que leva o sistema a responder com um dado biográfico, e não com uma lista de páginas. \"aonde\" entra porque é a forma coloquial usada na fala e na digitação. As variantes não são agrupadas: cada formulação é medida à parte, porque o sistema pode responder diferente a cada uma."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"ladrão\" sozinho",
+   "motivo": "Traz noticiário policial e vídeos de assalto. O filtro do YouTube exige \"ladrão\" e, junto, a estrutura da consulta (\"onde mora/nasceu\", \"quantos anos\", \"idade do ladrão\", \"em que ano nasceu\") ou a palavra \"Google\". Até 20/10 o filtro aceitava \"ladrão\" + \"anos\" e trazia vídeos de assalto; \"pesquis\" saiu do filtro pelo mesmo motivo (CHANGELOG, C19.77 e caderno 08)."
+  },
+  {
+   "termo": "Títulos de notícia sem \"ladrão\"",
+   "motivo": "A busca de notícias por frase pode devolver textos que só citam a frase no corpo."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Bateria manual de consultas ao Google, com e sem IA (data/casos/002/bateria.csv)",
+   "por_que": "É o único modo de ver a resposta que o sistema dá. O Google não oferece API para isso (a Custom Search API recusou o projeto) e bloqueia robôs. Cada execução registra consulta, resposta e fontes citadas pela IA."
+  },
+  {
+   "fonte": "Google Trends (Brasil; 5 anos, 12 meses, 7 dias; por estado; consultas relacionadas)",
+   "por_que": "Mede quanto as pessoas fizeram a consulta, isto é, quanto do fenômeno é comportamento de busca."
+  },
+  {
+   "fonte": "YouTube (vídeos desde 2022 e comentários dos mais vistos)",
+   "por_que": "Vídeos do tipo \"o Google responde\" mostram o teste sendo divulgado; os comentários trazem relatos de quem repetiu a consulta e percebeu mudança na resposta (pré-codificação: relato de teste, mudança percebida, contestação)."
+  },
+  {
+   "fonte": "Google Notícias, checagens (Fact Check Tools) e Internet Archive",
+   "por_que": "Mostram se a imprensa e as agências trataram o caso, e preservam a página de 2022 que serve de linha de base."
+  },
+  {
+   "fonte": "TikTok (hashtags)",
+   "por_que": "Rede de vídeo curto onde o teste da consulta também é gravado e divulgado."
+  }
+ ],
+ "controles": "No Google Trends há três controles, além da âncora \"onde mora o ladrão\": \"onde mora o político\" e \"onde nasceu o político corrupto\" têm a mesma estrutura com rótulo genérico e separam o efeito deste rótulo do hábito geral de \"testar\" o Google com insultos; \"onde nasceu Lula\" é a busca biográfica direta pelo candidato a quem as respostas registradas associam o rótulo e serve de comparação neutra. Na bateria, o grupo B (\"onde nasceu o político corrupto\") e o grupo C (consultas biográficas diretas) fazem o mesmo papel para as respostas do sistema.",
+ "limites": [
+  "A resposta do Google varia com a pessoa, o lugar, a conta e o momento. A bateria de 02/11 foi feita fora do protocolo (sessão com login, extensão de navegador aberta, local não informado): vale como registro, não como execução padronizada (CHANGELOG, C19.302).",
+  "O Google Trends mede interesse relativo e não diz a quem as pessoas se referiam. Várias leituras foram recusadas com HTTP 429; a coleta reaproveita a última leitura boa da mesma janela, marcada com a data.",
+  "O caso não tem busca por termo no X, no Instagram nem no Facebook: ⛔ a circulação nessas redes não é medida.",
+  "TikTok: a página pública passou a devolver lista vazia desde 30/10; na leitura paga de 02/11 as três hashtags chegaram ao limite de itens (manifesto-20261102T210119Z.json), e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z.json). Kwai: nada no período.",
+  "Na primeira leitura, #ondemoraoladrao e #quantosanostemoladrao devolveram 0 vídeos no TikTok (CHANGELOG, C19.77)."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#ondemoraoladrao",
+   "#ondenasceuoladrao",
+   "#quantosanostemoladrao"
+  ],
+  "tiktok": [
+   "#ondemoraoladrao",
+   "#ondenasceuoladrao",
+   "#quantosanostemoladrao"
+  ],
+  "google_trends": [
+   "onde mora o ladrão",
+   "onde nasceu o ladrão"
+  ],
+  "google_noticias": [
+   "\"onde mora o ladrão\"",
+   "\"onde nasceu o ladrão\""
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 1326,
+   "no_periodo": 1310,
+   "na_analise": 898,
+   "pct": null,
+   "termos_buscados": 39,
+   "termos_no_limite": [
+    "#ondemoraoladrao",
+    "#ondenasceuoladrao",
+    "#quantosanostemoladrao"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/002/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/002/manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 22,
+   "no_periodo": 22,
+   "na_analise": 22,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/002/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:29:54Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 1,
+   "no_periodo": 1,
+   "na_analise": 1,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/002/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:29:54Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 12-m, now 7-d, today 5-y), termos: onde mora o ladrão, onde nasceu o ladrão, quantos anos tem o ladrão, qual a idade do ladrão, aonde nasceu o ladrão",
+   "avisos": [
+    "trends variantes today 5-y: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/002/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:29:54Z"
+  }
+ ]
+}

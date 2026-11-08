@@ -1,0 +1,228 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "009",
+ "titulo": "\"O Nordeste que foi esquecido\" (reel de Nikolas Ferreira)",
+ "pergunta": "Como circulou e foi recebido o reel de Nikolas Ferreira \"O Nordeste que foi esquecido\" (20/10/2026), que contrapõe a pobreza do Nordeste aos governos de Lula e termina com \"Na hora de votar, não se esqueça de quem esqueceu de você\"? Que leituras os comentários fazem, e como a circulação do reel se compara à de um carrossel de bastidores publicado no mesmo dia?",
+ "por_que_importa": "É uma peça de campanha dirigida a uma região como eleitorado, às vésperas do 2º turno, apoiada em cartelas com números (não verificadas pelo Atlas) e depoimentos. O caso mede o alcance de um formato de persuasão regional, se as cartelas foram checadas, e como a audiência reage ao enquadramento. O vocabulário regional se cruza com o caso 029 (xenofobia contra o Nordeste depois do 2º turno). O post foi arquivado pelo autor; a cópia guardada mantém a peça disponível para análise.",
+ "recorte_temporal": {
+  "inicio": "2026-10-20",
+  "justificativa": "Data do reel. O YouTube é lido desde 20/10; as notícias da coleta de busca usam janela de 7 dias, o ciclo de repercussão de uma peça. No Trends, 7 dias e 1 mês cobrem o episódio; 12 meses dá a linha de base de \"Nordeste\", termo de uso constante."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "A legenda",
+   "termos": [
+    "Nordeste que foi esquecido",
+    "nordeste esquecido",
+    "#nordesteesquecido"
+   ],
+   "justificativa": "A legenda literal é a assinatura da peça. A forma curta pega paráfrases, títulos e a hashtag."
+  },
+  {
+   "familia": "Autor + região",
+   "termos": [
+    "Nikolas (Nordeste OR nordestino OR nordestinos)",
+    "Nikolas Ferreira Nordeste",
+    "Nikolas Nordeste",
+    "Nikolas Ferreira vídeo Nordeste"
+   ],
+   "justificativa": "Captam quem comenta o vídeo sem citar a legenda. Os gentílicos entram porque o vídeo é feito de depoimentos de nordestinos e a conversa fala deles, não só da região."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Nordeste\" e \"Nikolas Ferreira\" sozinhos",
+   "motivo": "Trariam toda a conversa sobre a região e sobre o deputado. Só entram no Trends, como controles."
+  },
+  {
+   "termo": "Vídeos e notícias sem \"nordest\" e sem elemento do caso",
+   "motivo": "O filtro exige \"nordest\" no título e, junto, Nikolas, vídeo, \"esquecid\", Lula, eleição ou voto."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "Instagram: o reel, os comentários, a cópia do vídeo e as falas",
+   "por_que": "A audiência direta da peça. O áudio foi silenciado pelo Instagram, então as falas e cartelas foram lidas das legendas gravadas na imagem (OCR, corrigido à mão)."
+  },
+  {
+   "fonte": "Leitura diária do reel e do carrossel DeujIRxGDYZ (até 02/11)",
+   "por_que": "Compara a circulação de duas peças do mesmo dia e da mesma produção, uma em vídeo e outra em imagens."
+  },
+  {
+   "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+   "por_que": "Medem a circulação fora do post."
+  },
+  {
+   "fonte": "YouTube, Google Notícias (7 dias), checagens e Google Trends",
+   "por_que": "Repercussão em vídeo e na imprensa, verificação das cartelas e interesse de busca."
+  }
+ ],
+ "controles": "No Google Trends, \"Nordeste\" e \"Nikolas Ferreira\": separam o interesse pelo caso do interesse geral pela região e pelo deputado. Não há termo-âncora comum aos dois grupos, então os níveis não se comparam diretamente. O carrossel do mesmo dia é termo de comparação para a circulação do reel, não controle no sentido estrito.",
+ "limites": [
+  "No X, a busca por termo chegou ao limite de itens (manifesto-20261102T040355Z.json): o total real é maior que o lido. No TikTok, \"Nikolas Nordeste esquecido\" chegou ao limite na leitura paga de 02/11 (manifesto-20261102T210119Z.json), e o teto se esgotou em 04/11 (manifesto-20261104T183944Z.json).",
+  "Os comentários são o que a coleta de 26/10 devolveu, na ordem \"populares\", não o total (nota em instagram.json).",
+  "As falas vêm de OCR das legendas, não do áudio, e as cartelas são afirmações do vídeo, não verificadas pelo Atlas. Até 26/10 nenhuma checagem foi encontrada (CHANGELOG, C19.172).",
+  "O pedido de cópia ao Internet Archive falhou (HTTP 523).",
+  "A coleta de busca regrava a lista de notícias a cada leitura, com janela de 7 dias (collect_caso_busca.py).",
+  "\"Nordeste esquecido\" também é expressão usada fora do caso, em outros debates sobre a região."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): (\"Nordeste que foi esquecido\" OR \"nordeste esquecido\" OR (Nikolas (Nordeste OR nordestino OR nordestinos))) since:2026-10-20"
+  ],
+  "tiktok": [
+   "Nikolas Nordeste esquecido",
+   "Nordeste que foi esquecido"
+  ],
+  "instagram": [
+   "#nordesteesquecido",
+   "reels: Nordeste que foi esquecido Nikolas",
+   "reels: Nikolas Ferreira Nordeste"
+  ],
+  "facebook": [
+   "Nordeste que foi esquecido",
+   "Nikolas Ferreira Nordeste"
+  ],
+  "google_trends": [
+   "Nordeste esquecido",
+   "Nikolas Nordeste"
+  ],
+  "google_noticias": [
+   "Nikolas Ferreira Nordeste vídeo",
+   "Nordeste que foi esquecido Nikolas"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 151,
+   "no_periodo": 134,
+   "na_analise": 121,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/009/manifesto-20261102T034039Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 97,
+   "no_periodo": 97,
+   "na_analise": 97,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/009/manifesto-20261102T034039Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/009/manifesto-20261102T034039Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 3000,
+   "no_periodo": 3000,
+   "na_analise": 3000,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [
+    "o caso (busca por termo)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/009/manifesto-20261102T040355Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 777,
+   "no_periodo": 754,
+   "na_analise": 501,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [
+    "Nikolas Nordeste esquecido"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/009/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 143,
+   "no_periodo": 143,
+   "na_analise": 143,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/009/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:50:00Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 2,
+   "no_periodo": 2,
+   "na_analise": 2,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/009/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:50:00Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: Nordeste esquecido, Nikolas Nordeste, Nikolas Ferreira Nordeste vídeo",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/009/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:50:00Z"
+  }
+ ]
+}

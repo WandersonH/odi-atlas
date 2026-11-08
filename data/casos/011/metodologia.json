@@ -1,0 +1,232 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "011",
+ "titulo": "Joice Hasselmann declara voto em Lula (TV 247, 22/10/2026): furou a bolha?",
+ "pergunta": "A declaração de voto de Joice Hasselmann em Lula, na entrevista a Leonardo Attuch na TV 247 (22/10/2026), em que ela também diz que Bolsonaro mandou agredi-la em 2021, alcançou públicos de fora da bolha dela? Quem comenta a entrevista e os recortes tem histórico de comentar nos canais de Lula, de Flávio ou de nenhum dos dois, e o perfil dela cresceu depois do vídeo?",
+ "por_que_importa": "Uma declaração de voto pública só tem efeito eleitoral se chega a quem ainda não estava convencido. O caso testa isso com dados de audiência, e não com o volume de menções: cruza quem comenta com o acervo de comentários do Atlas nos canais das campanhas. Se o público da entrevista e dos recortes é quase todo do lado de Lula, a declaração circulou entre convertidos; se traz gente sem histórico ou do lado de Flávio, furou a bolha. O desenho serve de modelo para outros casos de canal (032).",
+ "recorte_temporal": {
+  "inicio": "2026-10-22",
+  "justificativa": "Data da entrevista. O reel de declaração de voto foi publicado no mesmo dia, antes da estreia da entrevista. Os recortes são lidos desde 22/10. A linha de base são os 10 envios do canal dela anteriores a 22/10 (público histórico): o vídeo dela de 23/10 está com comentários desligados e o envio anterior é de dezembro de 2025, então comparar \"antes e depois\" no próprio canal não era possível (CHANGELOG, C19.177). O Trends usa 7 dias, 1 mês e 12 meses; as notícias da coleta de busca, janela de 14 dias."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Nome e grafias",
+   "termos": [
+    "Joice Hasselmann",
+    "Joice Hasselman",
+    "joicehasselmann",
+    "#joicehasselmann"
+   ],
+   "justificativa": "O nome completo identifica a pessoa. A grafia com um \"n\" é erro comum de digitação; a forma colada é o @ e a hashtag."
+  },
+  {
+   "familia": "Nome + elemento da entrevista",
+   "termos": [
+    "(\"Joice Hasselmann\" OR joicehasselmann OR \"Joice Hasselman\") (Lula OR 247 OR voto OR Attuch OR Bolsonaro)",
+    "Joice Hasselmann Lula",
+    "Joice Hasselmann voto",
+    "Joice Hasselmann TV 247",
+    "Joice TV 247"
+   ],
+   "justificativa": "O nome sozinho traz toda a atividade dela. O voto, o programa, o entrevistador e a acusação a Bolsonaro ligam o post a esta entrevista."
+  },
+  {
+   "familia": "Recortes no YouTube",
+   "termos": [
+    "Joice Hasselmann",
+    "Joice Hasselmann Lula",
+    "Joice Hasselmann Bolsonaro",
+    "Joice Hasselmann 247",
+    "Joice Lula voto"
+   ],
+   "justificativa": "Cinco buscas, cada uma ordenada por data e por relevância, para achar os cortes publicados por outros canais. Só entram vídeos com Joice ou Hasselmann no título ou na descrição."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Joice\" sozinho nas redes",
+   "motivo": "Nome próprio comum. No X a busca exige o nome completo (ou o @) e um elemento da entrevista."
+  },
+  {
+   "termo": "Notícias sem \"Joice\" e sem voto, Lula, 247 ou eleição no título",
+   "motivo": "O filtro da coleta de busca exige os dois elementos no título."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "YouTube: entrevista, recortes, canal dela e comentários",
+   "por_que": "É onde a entrevista e os cortes circulam. O cruzamento dos autores com o acervo de comentários nos canais das campanhas dá o \"lado\" de cada um (Lula, Flávio, ambos ou nenhum)."
+  },
+  {
+   "fonte": "Instagram: o reel de declaração de voto, os comentários e a leitura diária de seguidores",
+   "por_que": "Mede o alcance da declaração no perfil dela e o crescimento do perfil depois do vídeo."
+  },
+  {
+   "fonte": "X, Instagram, Facebook e TikTok (busca por termo e hashtag)",
+   "por_que": "Circulação da declaração fora do YouTube e do perfil dela."
+  },
+  {
+   "fonte": "Google Trends, Google Notícias (14 dias) e checagens",
+   "por_que": "Se a declaração gerou busca e cobertura."
+  },
+  {
+   "fonte": "Redes para o Gephi (canais × autores e canais × canais)",
+   "por_que": "Mostram que canais compartilham público, que é a forma visual da pergunta da bolha."
+  }
+ ],
+ "controles": "O público histórico do canal dela (comentários até 21/10) é a linha de base da composição do público. O acervo de comentários nos canais de Lula e de Flávio é a referência para o lado de cada autor. No Google Trends, \"Lula\" separa o interesse por ela do interesse geral pelo candidato; não há termo-âncora comum aos dois grupos.",
+ "limites": [
+  "O lado de cada autor é indício, não prova de voto. \"Nenhum\" inclui quem nunca comentou nos canais das campanhas, que são a única referência do acervo.",
+  "A API do YouTube só dá o número atual de inscritos: o histórico anterior à primeira leitura é ⛔.",
+  "No Instagram, a amostra de comentários é uma fração pequena do universo informado pela plataforma (data/casos/011/youtube.json, conjunto \"Reel no Instagram\"), na ordem \"populares\", sem respostas. Quem comenta no Instagram não é cruzado com o acervo do YouTube.",
+  "Não há contagem total de vídeos sobre o tema: o universo dos recortes é ⛔ desconhecido, e a busca do YouTube devolve até 100 vídeos por consulta.",
+  "No Instagram, #joicehasselmann chegou ao limite de itens (manifesto-20261102T043856Z.json). TikTok: teto esgotado na leitura de 04/11 (manifesto-20261104T183944Z.json).",
+  "A coleta de busca regrava a lista de notícias a cada leitura, com janela de 14 dias (collect_caso_busca.py)."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): ((\"Joice Hasselmann\" OR joicehasselmann OR \"Joice Hasselman\") (Lula OR 247 OR voto OR Attuch OR Bolsonaro)) since:2026-10-22"
+  ],
+  "tiktok": [
+   "Joice Hasselmann Lula",
+   "Joice Hasselmann voto Lula"
+  ],
+  "instagram": [
+   "#joicehasselmann",
+   "reels: Joice Hasselmann Lula",
+   "reels: Joice Hasselmann voto"
+  ],
+  "facebook": [
+   "Joice Hasselmann Lula",
+   "Joice Hasselmann TV 247"
+  ],
+  "google_trends": [
+   "Joice Hasselmann"
+  ],
+  "google_noticias": [
+   "Joice Hasselmann Lula voto",
+   "Joice Hasselmann TV 247"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 244,
+   "no_periodo": 204,
+   "na_analise": 160,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "#joicehasselmann"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/011/manifesto-20261102T043856Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 108,
+   "no_periodo": 108,
+   "na_analise": 105,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/011/manifesto-20261102T043856Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/011/manifesto-20261102T043856Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 1415,
+   "no_periodo": 1415,
+   "na_analise": 1415,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/011/manifesto-20261102T051431Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 868,
+   "no_periodo": 832,
+   "na_analise": 446,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [
+    "Joice Hasselmann Lula",
+    "Joice Hasselmann voto Lula"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/011/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 6,
+   "no_periodo": 6,
+   "na_analise": 6,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/011/busca.json (noticias)",
+   "coletado_em": "2026-11-07T14:59:21Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (now 7-d, today 1-m, today 12-m), termos: Joice Hasselmann, Joice Hasselmann Lula, Joice TV 247",
+   "avisos": [],
+   "origem": "data/casos/011/busca.json (trends)",
+   "coletado_em": "2026-11-07T14:59:21Z"
+  }
+ ]
+}

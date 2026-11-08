@@ -1,0 +1,249 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "012",
+ "titulo": "Frente de transnacionalização do bolsonarismo: Allan dos Santos, Paulo Figueiredo e Alexandre Ramagem no YouTube",
+ "pergunta": "Que discurso produzem, a partir dos EUA, três bolsonaristas que vivem ou atuam fora do Brasil (Allan dos Santos, Paulo Figueiredo e Alexandre Ramagem) em seus canais do YouTube durante a campanha de 2026? Que temas transnacionais (EUA, Trump, Rubio, sanções, exílio) aparecem, e quanto público esses canais compartilham entre si e com os canais das campanhas?",
+ "por_que_importa": "O caso testa a hipótese de uma frente externa do bolsonarismo: atores fora do país que produzem conteúdo para o eleitor brasileiro e ligam a eleição à política dos EUA. O objeto é a produção dos canais, que o YouTube permite ler por inteiro, e não uma expressão que circula. Por isso a base é o universo de vídeos dos três canais, e a busca por termo nas outras redes só mede a repercussão em torno deles.",
+ "recorte_temporal": {
+  "inicio": "2026-07-20",
+  "justificativa": "20/07/2026 é o início das convenções partidárias, que o Atlas usa como começo do período eleitoral (CHANGELOG, C19.150 e C19.226). Começar aí dá a linha de base da pré-campanha antes da propaganda (16/08) e permite ver se a produção muda com a campanha e com o resultado. Antes dessa data, a produção dos canais não tem o referente eleitoral do caso. Os comentários são lidos desde 27/09/2026 (data/config/caso_canais.json)."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Canais (universo, não busca)",
+   "termos": [
+    "@allandossantosbr",
+    "@PauloFigueiredoShow",
+    "@delegadoramagem"
+   ],
+   "justificativa": "Os canais são lidos pelo identificador, com todos os envios desde 20/07. Aqui não há amostra por palavra: é o universo de vídeos de cada canal. Isso evita o viés da busca do YouTube, que ordena e corta resultados."
+  },
+  {
+   "familia": "Temas no título e na descrição dos vídeos",
+   "termos": [
+    "EUA/Trump/Rubio",
+    "sanções/Magnitsky/tarifas/vistos",
+    "exílio/asilo/perseguição",
+    "Moraes/STF/censura",
+    "eleição/urna/fraude",
+    "golpe/8 de janeiro/anistia",
+    "Lula/PT",
+    "família Bolsonaro",
+    "Venezuela/Cuba/América Latina"
+   ],
+   "justificativa": "Classificam cada vídeo por expressão regular (scripts/caso_canais.py). A lista separa o tema transnacional (EUA, sanções, exílio) dos temas domésticos (STF, eleição, Lula). Só assim dá para medir quanto da produção é de fato voltada à relação com os EUA."
+  },
+  {
+   "familia": "Nome do ator + marcador transnacional ou eleitoral (X)",
+   "termos": [
+    "(\"Allan dos Santos\" OR \"Paulo Figueiredo\" OR Ramagem) + (EUA OR exílio OR exilado OR Trump OR Rubio OR sanções OR Magnitsky OR STF OR eleição)"
+   ],
+   "justificativa": "Os nomes sozinhos trazem ruído: \"Paulo Figueiredo\" tem homônimos, e \"Ramagem\" traz toda a carreira policial e parlamentar do ator. Exigir um marcador do enquadramento transnacional ou eleitoral prende a busca ao objeto. A busca tinha, por erro, Eduardo Bolsonaro no lugar de Ramagem; foi corrigida (CHANGELOG, C19.240)."
+  },
+  {
+   "familia": "Nome do ator + contexto (Instagram, Facebook, TikTok, notícias)",
+   "termos": [
+    "Allan dos Santos EUA",
+    "Paulo Figueiredo eleição",
+    "Ramagem EUA",
+    "Allan dos Santos eleição 2026",
+    "Paulo Figueiredo eleição 2026"
+   ],
+   "justificativa": "Nas redes sem operadores de busca, o par nome + contexto faz o papel do filtro do X. \"Ramagem EUA\" marca a situação do ator fora do país, que é o que o liga à frente externa."
+  },
+  {
+   "familia": "Google Trends",
+   "termos": [
+    "Allan dos Santos",
+    "Paulo Figueiredo",
+    "Ramagem"
+   ],
+   "justificativa": "Os nomes entram sozinhos porque o Trends mede o interesse pelo ator, não pelo enquadramento. A ambiguidade é tratada pelo controle e pela leitura das consultas relacionadas."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Paulo Figueiredo\" e \"Ramagem\" sozinhos nas redes",
+   "motivo": "Homônimos e atividade do ator anterior e alheia ao caso."
+  },
+  {
+   "termo": "Eduardo Bolsonaro",
+   "motivo": "Entrou por erro na primeira versão da busca e foi retirado: não é um dos três canais do caso."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "YouTube Data API (canais, vídeos, comentários, inscritos; leitura diária)",
+   "por_que": "É onde os três atores publicam. A API entrega todos os envios do canal, o que faz da produção um universo, e os comentários permitem medir público em comum (autores repetidos entre canais) e cruzar com o acervo de comentários dos canais das campanhas."
+  },
+  {
+   "fonte": "X, Instagram, Facebook, TikTok (busca por termo)",
+   "por_que": "Medem a circulação em torno dos atores fora do YouTube. Entraram na padronização dos casos (01/11/2026), como camada secundária."
+  },
+  {
+   "fonte": "Google Trends e Google Notícias (30 dias)",
+   "por_que": "Interesse de busca pelos atores e cobertura da imprensa, que dá o contexto dos episódios citados nos vídeos."
+  }
+ ],
+ "controles": "No Trends, \"Bolsonaro\" é o controle (scripts/collect_caso_busca.py, CASOS[\"012\"]). Ele separa o interesse pelos três atores do interesse geral pelo bolsonarismo. No YouTube, o controle é interno: o acervo de comentários dos canais de Lula e de Flávio indica de que lado vem o público de cada canal.",
+ "limites": [
+  "Os comentários só são lidos desde 27/09/2026, e até 3 páginas de 100 conversas por vídeo (data/config/caso_canais.json). A pré-campanha tem vídeos, mas não tem comentários. ⛔ O motivo da data de 27/09 não está documentado no repositório.",
+  "Os temas vêm de expressão regular no título e na descrição, não da fala do vídeo. Um vídeo pode tratar de EUA sem dizer isso no título.",
+  "O filtro de título das notícias (casos.json, filtro_titulo_noticias) inclui a palavra \"dos\". Como o filtro aceita qualquer palavra da lista, quase todo título em português passa por ele; a pertinência das notícias depende da própria consulta. Na outra coleta de notícias (collect_caso_busca.py), o título precisa citar Allan, Figueiredo ou Ramagem e um marcador (EUA, exterior, eleição, Lula, Bolsonaro).",
+  "O Facebook chegou ao limite de itens em \"Paulo Figueiredo eleição\" (manifesto-20261102T070921Z): há mais do que o lido.",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura.",
+  "\"Público em comum\" é autor de comentário repetido entre canais. Não mede quem só assiste."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): ((\"Allan dos Santos\" OR \"Paulo Figueiredo\" OR Ramagem) (EUA OR exílio OR exilado OR Trump OR Rubio OR sanções OR Magnitsky OR STF OR eleição)) since:2026-07-20"
+  ],
+  "tiktok": [
+   "Allan dos Santos",
+   "Paulo Figueiredo",
+   "Ramagem EUA"
+  ],
+  "instagram": [
+   "reels: Allan dos Santos EUA",
+   "reels: Paulo Figueiredo eleição",
+   "reels: Ramagem EUA"
+  ],
+  "facebook": [
+   "Allan dos Santos EUA",
+   "Paulo Figueiredo eleição",
+   "Ramagem EUA"
+  ],
+  "google_trends": [
+   "Allan dos Santos",
+   "Paulo Figueiredo",
+   "Ramagem"
+  ],
+  "google_noticias": [
+   "Allan dos Santos eleição 2026",
+   "Paulo Figueiredo eleição 2026",
+   "Ramagem EUA"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 160,
+   "no_periodo": 93,
+   "na_analise": 93,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/012/manifesto-20261102T070921Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 136,
+   "no_periodo": 136,
+   "na_analise": 136,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "Paulo Figueiredo eleição"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/012/manifesto-20261102T070921Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/012/manifesto-20261102T070921Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 2763,
+   "no_periodo": 2763,
+   "na_analise": 2763,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/012/manifesto-20261102T072628Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 581,
+   "no_periodo": 507,
+   "na_analise": 401,
+   "pct": null,
+   "termos_buscados": 6,
+   "termos_no_limite": [
+    "Allan dos Santos",
+    "Ramagem EUA"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/012/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 29,
+   "no_periodo": 29,
+   "na_analise": 29,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/012/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:00:49Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (now 7-d, today 1-m, today 12-m), termos: Allan dos Santos, Paulo Figueiredo, Ramagem",
+   "avisos": [],
+   "origem": "data/casos/012/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:00:49Z"
+  }
+ ]
+}

@@ -4,6 +4,36 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.359 — Bloco único de redes com corpus por nó; metodologia em todos os casos (2026-11-07) ⚠️
+
+- Pedido do responsável (07/11/2026, 23h04): "você não aplicou metodologia pra todos os casos e criou 2 campos de redes, ideal seria confluir" e "meu esquema de rede favorito é aquele dinâmico que montou no YouTube, onde clico e consigo ver o corpus presente, mantendo nossa anonimização".
+- **Redes num bloco só** ("Como o caso circula em rede", `montarRedesCaso` em `ODI_Atlas_v15_MVP.html`):
+  - substitui o bloco "Circulação e comentários em rede" e a tabela "Redes do caso: tipo e métricas" (C19.358), que saiu da página;
+  - o card 05 do dossiê passa a apontar para o bloco;
+  - uma aba por rede (contas × hashtags, candidatos, circulação, palavras, respostas), no padrão da rede do YouTube: zoom com a roda, arrastar, foco ao passar o mouse, clique fixa e abre o painel;
+  - painel sem seleção: tipo (nó, aresta, para que serve), métricas da rede (`estatisticas_redes.csv`) e validação no Gephi Toolkit, quando houver;
+  - painel com seleção: vizinhos na rede inteira e o corpus do nó.
+- **Dados** (`scripts/build_redes_viewer.py`, novo; saída `data/casos/<id>/redes_viewer.json`, 37 casos): desenho com os até 220 nós de maior grau do componente gigante (ForceAtlas 2 do networkx, semente 42) e comunidades de Louvain no gigante inteiro.
+- **Anonimização no corpus:**
+  - texto só de contas públicas (10 mil+ seguidores ou declaradas ao TSE), com @ de terceiros mascarado;
+  - perfis pequenos entram só na contagem; títulos só de canais com 10 mil+ inscritos e de veículos;
+  - @ citado que não é conta pública aparece como "@… (perfil citado)";
+  - **caso 020:** todo nó, trecho, título ou conta que remete à criança (apelido, variações e condição de saúde citada na imprensa) vira "[referência à criança]" ou sai da lista, inclusive nos ids. Conferido: 0 ocorrências dos termos no arquivo gerado.
+- **Metodologia nos 38 casos** (`data/config/metodologia_casos.json`; `build_metodologia.py` gerou `metodologia.json` para todos; a página chama o bloco em toda seção de caso):
+  - textos de 001 a 034 redigidos a partir dos arquivos do repositório (configs, manifestos, CHANGELOG);
+  - onde o repositório não documenta o motivo de uma escolha (início de janela, controle do Trends), o texto marca ⛔ e diz que a leitura é proposta;
+  - valores em dólar retirados dos textos (a página não exibe custo).
+- **Testado:**
+  - `build_redes_viewer.py` para todos os casos (37 casos; 032 sem corpus público);
+  - Playwright, página local: blocos 001, 020, 026 e 030 com 220 nós, 6 abas e metodologia, tabela antiga ausente, metodologia nas 36 seções de caso, nenhum erro de JS;
+  - clique em #patria (001) mostra vizinhos e 5 publicações de contas públicas;
+  - `python -m unittest discover -s tests`.
+- **Pendente:**
+  - revisão humana dos textos de metodologia 001–034, sobretudo os pontos ⛔ e as leituras propostas;
+  - o subagente apontou que os filtros de título por radical em `casos.json` não casam em `collect_casos.py` (027 e 029 com 0 notícias no `google.json`), registrado como limite e sem correção no código;
+  - ⚠️ arquivos públicos anteriores do 020 (`busca.json`, `caso.json`, GEXF, manifestos) ainda contêm o apelido da criança. Não foram alterados aqui (regra 8); mover para o privado depende de decisão do responsável;
+  - incluir `build_redes_viewer.py` num workflow com acesso ao privado para atualização automática.
+
 ## C19.358 — Influência dos candidatos por caso; tipo e métricas das redes na página; layouts do guia (2026-11-07) ✅
 
 - Pedidos do responsável (07/11/2026): 21h42, aplicar os layouts do guia (Fruchterman-Reingold num recorte pequeno, Yifan Hu nas redes grandes, Mirror/Rotate para comparar, Label Adjust); 21h46, "rede Gephi para entender a influência na circulação dos candidatos"; 21h48, "as métricas e o tipo de rede informados em algum lugar no ODI"; 22h04, "as redes de candidatos vão pro ODI Atlas naquele campo candidato", "por caso"; "no Gephi é para validarmos os casos e o que fizemos".

@@ -1,0 +1,105 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "032",
+ "titulo": "\"Revelando\" (Calma Urgente): quem assiste, de que bolha vem, assuntos e crescimento",
+ "pergunta": "Quem assiste e comenta a série de reportagens \"Revelando\" (Calma Urgente, YouTube @revelando_br), de que lado do acervo do Atlas vêm os comentaristas (público de Lula ou de Flávio), que assuntos ela aborda e quanto o canal cresceu?",
+ "por_que_importa": "O Revelando é um projeto de mídia com apoio de distribuição de veículos de esquerda (ICL, Mídia Ninja, 342 Artes, Intercept Brasil) e convidados famosos. O caso testa se esse jornalismo alcança quem está fora da própria bolha, ou se fala para quem já concorda. É a mesma pergunta do caso 011, aplicada a um canal novo e de crescimento rápido. Os assuntos dos episódios também se cruzam com outros casos (o Ep 5, \"A Guerra à Santa\", com o 033).",
+ "recorte_temporal": {
+  "inicio": "2026-08-01",
+  "justificativa": "O canal foi criado em 03/08/2026 (YouTube Data API, data/casos/032/youtube.json). Antes disso o objeto não existe. ⛔ Não documentado no repositório: por que 01/08 e não 03/08; a data cobre o mês de criação. A unidade não é a busca por termo: são todos os envios do canal, então o período é o da vida do canal."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Canal (sem busca por termo)",
+   "termos": [
+    "@revelando_br (todos os envios)"
+   ],
+   "justificativa": "O caso não usa amostra por palavra-chave. Lê o canal inteiro pela API: estatísticas, todos os vídeos e os comentários de cada episódio. A plataforma informa o total de vídeos e de comentários, então o universo é conhecido."
+  },
+  {
+   "familia": "Assunto de cada episódio (Trends)",
+   "termos": [
+    "título limpo de cada episódio completo",
+    "Ep 5: \"JB Carvalho\", \"Nossa Senhora Aparecida padroeira\", \"padroeira do Brasil\""
+   ],
+   "justificativa": "O título do episódio é limpo da marca, do número e do nome do convidado. O convidado sai para medir o interesse pelo assunto, não pela celebridade. Quando o título não diz o assunto real, ele é informado à parte com a fonte (data/config/caso032_assuntos.json): no Ep 5, o pastor JB Carvalho e a proposta de tirar Nossa Senhora Aparecida de padroeira."
+  },
+  {
+   "familia": "Imprensa",
+   "termos": [
+    "Revelando Calma Urgente",
+    "série Revelando reportagem"
+   ],
+   "justificativa": "\"Revelando\" sozinho é palavra comum; só entra com o nome do projeto ou com \"série\" e \"reportagem\"."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "Cortes, teasers, trailers e versões em Libras",
+   "motivo": "Não são episódios. Só entram na análise por episódio os vídeos com \"Ep #N\" no título; os demais ficam nos totais do canal."
+  },
+  {
+   "termo": "Nome do convidado no assunto do episódio",
+   "motivo": "Mediria o interesse pela celebridade, não pelo tema da reportagem."
+  },
+  {
+   "termo": "Instagram, X, TikTok e Kwai do projeto",
+   "motivo": "Teto de custo 0 para redes pagas. Os perfis estão registrados, mas não são coletados."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "YouTube Data API (canal, envios, comentários)",
+   "por_que": "É a fonte primária. Dá inscritos, visualizações, todos os vídeos e os comentários de cada episódio, com o total que a plataforma informa."
+  },
+  {
+   "fonte": "Acervo do Atlas (comentários nos canais das campanhas)",
+   "por_que": "Cada autor de comentário é cruzado com quem já comentou nos canais de Lula, de Flávio, dos dois ou de nenhum. É o indício de bolha."
+  },
+  {
+   "fonte": "Internet Archive (capturas da página do canal)",
+   "por_que": "Dá pontos antigos de inscritos, antes de o Atlas começar a série diária."
+  },
+  {
+   "fonte": "Google Trends (Brasil; 12 meses e 7 dias)",
+   "por_que": "Mede se os assuntos dos episódios geraram busca."
+  }
+ ],
+ "controles": "Não há termo de controle no Trends: os assuntos são comparados em grupos de 5 por consulta, e grupos diferentes não se comparam. Na análise de bolha, o controle é a composição do próprio acervo: a parcela de autores de cada lado nos comentários do Revelando é comparada com a parcela de cada lado no acervo inteiro (caso_revelando.py, \"para a comparação ser justa\"). A penetração mede quantos autores de cada lado do acervo apareceram nos comentários lidos.",
+ "limites": [
+  "Os comentários são lidos até 5 páginas de 100 conversas por episódio, das mais recentes. A amostra é uma fração do total informado (C19.319, C19.321).",
+  "O acervo cobre só quem comentou nos canais das campanhas. Cerca de dois em cada três autores do Revelando não estão nele (C19.319). Lado no acervo é indício de bolha, não prova de voto. Quem só assiste e não comenta não entra.",
+  "A busca por título no Trends é fraca e ambígua (C19.319).",
+  "As capturas do Internet Archive são esparsas; a série diária do Atlas começa em 02/11/2026 (C19.319).",
+  "Os termos de notícias estão em casos.json, mas o caso tem coletar=false e não há google.json. ⛔ A imprensa sobre a série não foi coletada.",
+  "As outras redes do projeto não são lidas (teto 0)."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "google_noticias": [
+   "Revelando Calma Urgente",
+   "série Revelando reportagem"
+  ]
+ },
+ "amostra": []
+}

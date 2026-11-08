@@ -1,0 +1,233 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:49Z",
+ "caso": "003",
+ "titulo": "\"Ninguém morre nos devendo\" (Flamengo e as bets)",
+ "pergunta": "Quanto circularam, e em que redes, os posts que apresentaram torcedores do Flamengo com a frase \"ninguém morre nos devendo\" como protesto contra a medida provisória que proibiu as bets (25/09/2026), posts que o Aos Fatos (29/09) mostrou usar imagens antigas ou feitas por IA? E como essa circulação se relaciona com a mensagem real do Flamengo contra a proibição, levada a campo em 08/10?",
+ "por_que_importa": "O caso junta esporte e política regulatória. O conteúdo usa a identidade de uma torcida para fabricar a imagem de apoio popular a uma pauta, com material antigo ou sintético (cheapfake e IA). Em seguida, o próprio clube se manifesta de verdade contra a proibição (Poder360, 08/10). A convivência do protesto inventado com a mensagem real permite medir se o fato posterior passa a circular junto do falso, e se a checagem alcança o mesmo público.",
+ "recorte_temporal": {
+  "inicio": "2026-09-25",
+  "justificativa": "Data da medida provisória que proibiu as bets. Antes dela, a frase não tem o sentido de protesto contra o fim das apostas. As buscas exatas no X vão até 19/10 e cobrem a checagem (29/09), a mensagem do clube (08/10) e a janela de 07 a 12/10 do antigo caso 004, que foi unido a este. O YouTube é lido desde 25/09; o Trends usa 12 meses (linha de base) e 7 dias."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "A frase do caso",
+   "termos": [
+    "ninguém morre nos devendo",
+    "ninguem morre nos devendo",
+    "#ninguemmorrenosdevendo"
+   ],
+   "justificativa": "É a unidade do caso. No X, a frase exata foi buscada nas duas grafias, em consultas separadas, porque a forma sem acento é comum na digitação rápida e na hashtag."
+  },
+  {
+   "familia": "Frase + clube",
+   "termos": [
+    "flamengo ninguém morre nos devendo"
+   ],
+   "justificativa": "Restringe a frase ao uso ligado ao clube, que é o enquadramento do conteúdo falso. Usada no TikTok e no YouTube, onde a busca não aceita aspas e devolve resultados por proximidade."
+  },
+  {
+   "familia": "Clube + pauta + ação",
+   "termos": [
+    "flamengo (bets OR apostas OR bet) (proibição OR proibir OR MP OR protesto OR faixa OR mensagem)",
+    "flamengo bets",
+    "proibição das bets",
+    "Flamengo bets protesto torcida",
+    "torcida do flamengo bets protesto"
+   ],
+   "justificativa": "Capta a conversa sobre o protesto sem a frase, inclusive a mensagem real do clube em campo. No X, a busca exige o clube, a pauta (bets, apostas) e uma palavra de ação política (proibição, MP, protesto, faixa, mensagem). Isso deixa de fora posts de patrocínio e de palpite, que usam \"Flamengo\" e \"bet\" sem a pauta."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "\"Flamengo\" sozinho",
+   "motivo": "Traz todo o noticiário do clube. Só entra no Trends, como controle."
+  },
+  {
+   "termo": "Vídeos do YouTube sem a frase ou a pauta e sem o clube",
+   "motivo": "O filtro exige \"devendo\", \"bet(s)\" ou \"apostas\" no título ou na descrição e, junto, Flamengo, Mengão, torcida ou Lula. \"Lula\" entra porque a medida provisória é ato do presidente e parte dos vídeos trata a proibição como tema do governo."
+  },
+  {
+   "termo": "Títulos de notícia sem a frase, \"bets\" ou \"apostas\"",
+   "motivo": "A busca de notícias devolve textos que só citam os termos no corpo."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "TikTok (hashtag e busca por frase)",
+   "por_que": "Rede de vídeo curto, formato dos posts com imagens de torcida. Foi a primeira rede lida."
+  },
+  {
+   "fonte": "X (frase exata nas duas grafias e Flamengo + bets), Instagram, Facebook e Kwai (hashtag)",
+   "por_que": "Medem quanto o conteúdo saiu do vídeo curto e se a mensagem real do clube circulou nos mesmos espaços."
+  },
+  {
+   "fonte": "Aos Fatos (29/09) e Poder360 (08/10)",
+   "por_que": "Contexto externo: a checagem que estabelece que as imagens eram antigas ou feitas por IA, e a reportagem sobre a mensagem real do clube."
+  },
+  {
+   "fonte": "Google Trends, Google Notícias, checagens e YouTube",
+   "por_que": "Se a frase gerou busca, como a imprensa tratou o protesto e que vídeos repercutiram."
+  }
+ ],
+ "controles": "No Google Trends, \"Flamengo\" é o controle: separa o interesse pela frase e pela pauta do interesse geral pelo clube, que é alto e oscila com os jogos. \"ninguém morre nos devendo\" está nos dois grupos como âncora comum.",
+ "limites": [
+  "Sem login, a busca por frase do TikTok nunca devolveu vídeos (CHANGELOG, C19.72). Na leitura paga de 02/11 os três termos do TikTok chegaram ao limite de itens (manifesto-20261102T210119Z.json), e o teto se esgotou em 04/11 (manifesto-20261104T183944Z.json).",
+  "No X, as buscas vão de 25/09 a 19/10: a circulação posterior não é vista nessa rede.",
+  "Instagram, Facebook e Kwai foram lidos só pela hashtag; não há busca por frase nessas redes, então posts que usam a frase sem a hashtag ficam de fora.",
+  "A coleta não distingue imagem antiga, imagem feita por IA e imagem real. Essa classificação vem da checagem do Aos Fatos e da leitura manual.",
+  "Kwai: nada no período na leitura de 02/11."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "#ninguemmorrenosdevendo",
+   "\"ninguém morre nos devendo\": \"ninguém morre nos devendo\" since:2026-09-25 until:2026-10-20",
+   "Flamengo bets: flamengo (bets OR apostas OR bet) (proibição OR proibir OR MP OR protesto OR faixa OR mensagem) since:2026-09-25 until:2026-10-20",
+   "\"ninguem morre nos devendo\": \"ninguem morre nos devendo\" since:2026-09-25 until:2026-10-20"
+  ],
+  "tiktok": [
+   "#ninguemmorrenosdevendo",
+   "ninguém morre nos devendo",
+   "flamengo ninguém morre nos devendo"
+  ],
+  "google_trends": [
+   "ninguém morre nos devendo"
+  ],
+  "google_noticias": [
+   "\"ninguém morre nos devendo\"",
+   "Flamengo bets protesto torcida"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 1337,
+   "no_periodo": 1069,
+   "na_analise": 360,
+   "pct": null,
+   "termos_buscados": 39,
+   "termos_no_limite": [
+    "#ninguemmorrenosdevendo",
+    "flamengo ninguém morre nos devendo",
+    "ninguém morre nos devendo"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nenhum vídeo lido",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/003/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 1890,
+   "no_periodo": 1890,
+   "na_analise": 1290,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/003/manifesto-20261027T061028Z.json, manifesto-20261027T061709Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 207,
+   "no_periodo": 24,
+   "na_analise": 24,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/003/manifesto-20261027T061028Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 24,
+   "no_periodo": 24,
+   "na_analise": 24,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/003/manifesto-20261027T061028Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 3,
+   "no_periodo": 3,
+   "na_analise": 3,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/003/manifesto-20261027T061028Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "YouTube",
+   "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
+   "lidos": 226,
+   "no_periodo": 226,
+   "na_analise": 226,
+   "pct": null,
+   "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
+   "origem": "data/casos/003/busca.json (youtube)",
+   "coletado_em": "2026-11-07T15:32:48Z"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 154,
+   "no_periodo": 154,
+   "na_analise": 154,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/003/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:32:48Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (now 7-d, today 12-m), termos: ninguém morre nos devendo, flamengo bets, proibição das bets",
+   "avisos": [
+    "trends variantes today 12-m: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/003/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:32:48Z"
+  }
+ ]
+}

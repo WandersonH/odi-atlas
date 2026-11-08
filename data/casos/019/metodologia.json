@@ -1,0 +1,237 @@
+{
+ "gerado_em_utc": "2026-11-08T02:19:50Z",
+ "caso": "019",
+ "titulo": "Como o mundo viu a eleição brasileira de 2026: YouTube em outras línguas, por continente e país",
+ "pergunta": "Como o mundo viu a eleição brasileira de 2026 no YouTube? Quantos vídeos sobre a eleição foram publicados em 18 línguas desde 16/08/2026, de que países e continentes (pelo país declarado pelo canal), que candidatos citam, e em que língua são escritos os comentários dos vídeos mais vistos de cada língua?",
+ "por_que_importa": "A eleição brasileira é também um objeto da mídia estrangeira. Medir a produção em outras línguas mostra quanto e onde o resultado foi tema, e a rede língua do vídeo → língua do comentário mostra se brasileiros ocupam os espaços de discussão de fora. O caso dá a base empírica para os casos de difusão transnacional (026, 035).",
+ "recorte_temporal": {
+  "inicio": "2026-08-16 (YouTube) · 2026-10-20 (X, Instagram, Facebook)",
+  "justificativa": "16/08/2026 é o início da propaganda eleitoral, que abre o período eleitoral destacado pelo Atlas: a cobertura estrangeira antes disso é esparsa e não tem o referente da campanha. A busca por termo nas outras redes entrou na padronização dos casos (01/11/2026) com início em 20/10, cobrindo a reta final, o 2º turno e a repercussão. ⛔ O motivo de 20/10 não está documentado no repositório. A coleta diária vai até 15/11."
+ },
+ "familias_de_termos": [
+  {
+   "familia": "Consultas do YouTube por língua",
+   "termos": [
+    "en: Brazil election 2026; Lula Flavio Bolsonaro election",
+    "es: elecciones Brasil 2026; Lula Flávio Bolsonaro elecciones",
+    "fr, de, it, nl, pl, ru, uk, tr, ar, he, hi, zh, ja, ko, id, vi: palavra para eleição + Brasil + 2026 + Lula (às vezes Bolsonaro), na escrita de cada língua"
+   ],
+   "justificativa": "Cada consulta é escrita na língua e na escrita do público-alvo, com a palavra local para eleição e o nome do país (data/config/caso_mundo.json). Inglês e espanhol têm duas consultas e duas páginas porque produzem mais. A ordem é de relevância com a língua da busca: a primeira leitura por visualizações trouxe quase só vídeos em português na busca em inglês."
+  },
+  {
+   "familia": "Filtro de pertinência (YouTube)",
+   "termos": [
+    "título ou descrição cita Brasil, Lula ou Flávio/Bolsonaro"
+   ],
+   "justificativa": "Tira vídeos que a busca trouxe por outras eleições ou outros temas. Vídeos em português ou de canais do Brasil são contados à parte, para não confundir a visão de fora com a de dentro."
+  },
+  {
+   "familia": "Busca no X fora do português",
+   "termos": [
+    "(Brazil OR Brazilian OR Brasil) + (election OR elección OR élection OR elezioni OR Wahl OR Lula OR Bolsonaro) -lang:pt"
+   ],
+   "justificativa": "O país com a palavra para eleição nas línguas principais, ou com o nome dos candidatos. Excluir o português isola a conversa de fora."
+  },
+  {
+   "familia": "Instagram, Facebook, TikTok, notícias, Trends",
+   "termos": [
+    "#brazilelection",
+    "Brazil election Lula",
+    "Brazil election Bolsonaro",
+    "Brazil election 2026",
+    "Lula Brazil election",
+    "elección Brasil 2026",
+    "Brazil election",
+    "Lula election",
+    "Bolsonaro"
+   ],
+   "justificativa": "Formas em inglês (e uma em espanhol) que a mídia internacional usa em títulos e hashtags."
+  }
+ ],
+ "excluidos": [
+  {
+   "termo": "Publicações em português no X",
+   "motivo": "Excluídas por -lang:pt, para isolar a visão de fora."
+  },
+  {
+   "termo": "Vídeos em português e de canais do Brasil no YouTube",
+   "motivo": "Lidos, mas contados à parte."
+  }
+ ],
+ "fontes_e_por_que": [
+  {
+   "fonte": "YouTube Data API (18 línguas, país do canal, comentários dos 8 mais vistos de cada língua)",
+   "por_que": "É a fonte central: informa o total estimado da busca (pageInfo.totalResults), o país declarado pelo canal e os comentários, o que permite a rede de línguas."
+  },
+  {
+   "fonte": "Identificação de língua dos comentários (py3langid 0.3.0)",
+   "por_que": "Classifica a língua escrita de cada comentário; comentários curtos ou de baixa confiança ficam como indeterminados."
+  },
+  {
+   "fonte": "X, Instagram, Facebook, TikTok (busca por termo)",
+   "por_que": "Camada secundária, da padronização dos casos, para a conversa fora do YouTube."
+  },
+  {
+   "fonte": "Google Trends no mundo, com mapa por país, e Google Notícias",
+   "por_que": "Mede onde a eleição gerou busca e o que a imprensa de fora publicou."
+  }
+ ],
+ "controles": "No Trends, \"Brazil\" (CASOS[\"019\"]), com geografia mundial e mapa por país. Ele separa o interesse pela eleição do interesse geral pelo país em cada lugar. No YouTube, os vídeos em português e de canais do Brasil, contados à parte, servem de referência para a produção de fora.",
+ "limites": [
+  "Língua materna não é observável: mede-se a língua em que o comentário foi escrito. Comentários com menos de 20 letras ou confiança abaixo de 0,90 ficam indeterminados (CHANGELOG, C19.208).",
+  "O país é o que o canal declara; canal sem país declarado não tem continente.",
+  "O YouTube devolve no máximo uma ou duas páginas por consulta, e as buscas rodam em dias alternados por causa da cota diária (CHANGELOG, C19.225). Os vídeos lidos são uma amostra do total que a API estima.",
+  "-lang:pt exclui também Portugal e os países lusófonos: a \"visão de fora\" do X é a de fora da língua portuguesa.",
+  "As notícias são buscadas na edição brasileira do Google Notícias, inclusive \"elección Brasil 2026\"; a imprensa estrangeira em sua própria edição não é coberta por esta coleta. O filtro de título (\"Brazil\" ou \"election\") é largo.",
+  "O X chegou ao limite de itens (manifesto-20261102T080410Z) e o Instagram também em #brazilelection (manifesto-20261102T074530Z).",
+  "TikTok: a página pública deixou de devolver vídeos desde 30/10 (diagnóstico no run 41392136539). Na leitura paga de 02/11 os termos chegaram ao limite de itens (manifesto-20261102T210119Z) e o teto se esgotou na leitura seguinte (manifesto-20261104T183944Z). A amostra do TikTok é, portanto, uma fotografia de um dia, não uma série.",
+  "Kwai: nenhum item no período para os termos do caso (manifesto-20261102T215628Z). A rede fica ⛔ sem leitura."
+ ],
+ "comum": {
+  "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
+  "por_que_palavra_chave": "Os casos tratam de expressões, nomes e frases que circulam (bordões, nomes de canais, citações). A unidade observável é a publicação que usa a expressão. A coleta por termo é o modo de chegar a ela quando a plataforma não oferece amostra aleatória do fluxo. O custo conhecido dessa escolha: o que é dito sem os termos fica de fora, e termos genéricos trazem ruído. Por isso cada caso define termos-núcleo, variantes, exclusões e um filtro posterior de título ou texto.",
+  "universo": "Universo é o total que a própria plataforma informa para a mesma busca. A busca do X, a de reels do Instagram, a de posts do Facebook, a do YouTube (Data API) e a do Google Notícias não informam esse total. Nesses casos o universo é ⛔ desconhecido e nunca é estimado. O Google Trends dá um índice relativo de 0 a 100, não um volume. Quando a coleta chega ao limite de itens de um termo, o total real é maior que o lido, e a página avisa.",
+  "validade": "Três salvaguardas: (1) filtro posterior de título ou texto, que tira itens que a busca trouxe sem o termo; (2) termos de controle no Google Trends, que separam o efeito do caso do interesse geral pelo tema; (3) leitura manual das peças de maior alcance antes de qualquer interpretação. Percentuais de análise valem para a amostra lida.",
+  "etica": "Pessoas comuns (menos de 10 mil seguidores e sem perfil declarado ao TSE) aparecem só como código, sem texto nem link; o texto fica no repositório privado. Candidatos declarados ao TSE aparecem com nome.",
+  "referencias": [
+   {
+    "ref": "TUFEKCI, Zeynep. Big questions for social media big data: representativeness, validity and other methodological pitfalls. Proceedings of the 8th International AAAI Conference on Weblogs and Social Media (ICWSM), 2014.",
+    "uso": "limites da amostra por palavra-chave e por hashtag (o que fica fora da busca)"
+   },
+   {
+    "ref": "BRUNS, Axel; BURGESS, Jean. The use of Twitter hashtags in the formation of ad hoc publics. 6th European Consortium for Political Research General Conference, Reykjavík, 2011.",
+    "uso": "hashtag e expressão como marcador de um público formado em torno de um tema"
+   },
+   {
+    "ref": "MELLON, Jonathan. Internet search data and issue salience: the properties of Google Trends as a measure of issue salience. Journal of Elections, Public Opinion and Parties, v. 24, n. 1, 2014.",
+    "uso": "Google Trends como medida relativa de saliência, e o cuidado com termos ambíguos"
+   }
+  ]
+ },
+ "termos_por_rede": {
+  "x": [
+   "o caso (busca por termo): ((Brazil OR Brazilian OR Brasil) (election OR elección OR élection OR elezioni OR Wahl OR Lula OR Bolsonaro)) -lang:pt since:2026-10-20"
+  ],
+  "tiktok": [
+   "Brazil election",
+   "Lula Brazil election"
+  ],
+  "instagram": [
+   "#brazilelection",
+   "reels: Brazil election Lula",
+   "reels: Brazil election Bolsonaro"
+  ],
+  "facebook": [
+   "Brazil election Lula",
+   "Brazil election 2026"
+  ],
+  "google_trends": [
+   "Brazil election"
+  ],
+  "google_noticias": [
+   "Brazil election 2026 Lula",
+   "elección Brasil 2026"
+  ]
+ },
+ "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 214,
+   "no_periodo": 192,
+   "na_analise": 170,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "#brazilelection"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/019/manifesto-20261102T074530Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 117,
+   "no_periodo": 117,
+   "na_analise": 114,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/019/manifesto-20261102T074530Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ nada no período",
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/019/manifesto-20261102T074530Z.json, manifesto-20261102T215628Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 3000,
+   "no_periodo": 3000,
+   "na_analise": 3000,
+   "pct": null,
+   "termos_buscados": 1,
+   "termos_no_limite": [
+    "o caso (busca por termo)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/019/manifesto-20261102T080410Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 741,
+   "no_periodo": 637,
+   "na_analise": 448,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/019/manifesto-20261105T184356Z.json, manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+  },
+  {
+   "fonte": "Google Notícias",
+   "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
+   "lidos": 46,
+   "no_periodo": 46,
+   "na_analise": 46,
+   "pct": null,
+   "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
+   "origem": "data/casos/019/busca.json (noticias)",
+   "coletado_em": "2026-11-07T15:04:33Z"
+  },
+  {
+   "fonte": "Google Trends",
+   "universo": "não se aplica: o Google Trends dá índice relativo (0–100), não volume",
+   "lidos": null,
+   "no_periodo": null,
+   "na_analise": null,
+   "pct": null,
+   "como": "índice semanal/diário por janela (today 1-m), termos: Brazil election, Lula election, Bolsonaro",
+   "avisos": [
+    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
+   ],
+   "origem": "data/casos/019/busca.json (trends)",
+   "coletado_em": "2026-11-07T15:04:33Z"
+  }
+ ]
+}
