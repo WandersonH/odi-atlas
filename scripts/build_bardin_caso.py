@@ -95,6 +95,10 @@ def main(argv=None) -> int:
         print("⛔ ODI_INTERNO_DIR ausente")
         return 1
     livro = json.loads(Path(f"data/config/livro_codigos_caso{caso}.json").read_text(encoding="utf-8"))
+    if any("indicadores" not in c for c in livro.get("categorias", {}).values()):
+        # 08/11/2026: o livro do 019 usa "regex" (formato do caso_mundo.py, que faz o próprio Bardin); antes dava KeyError e marcava erro em todo run
+        print(f"caso {caso} Bardin: livro em outro formato (sem 'indicadores'); feito por outro script, pulado aqui")
+        return 0
     cfg = next(c for c in json.loads(Path("data/config/casos.json").read_text(encoding="utf-8"))["casos"] if c["id"] == caso)
     priv, pub = Path(interno) / "casos" / caso, Path("data/casos") / caso
     pub.mkdir(parents=True, exist_ok=True)

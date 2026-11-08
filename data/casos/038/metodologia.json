@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T03:16:46Z",
+ "gerado_em_utc": "2026-11-08T04:43:41Z",
  "caso": "038",
  "titulo": "Flávio e Eduardo Bolsonaro na CPAC (Mar-a-Lago, 4–7/11/2026)",
  "pergunta": "Como a participação de Flávio e Eduardo Bolsonaro na CPAC de Mar-a-Lago (4–7/11/2026), a primeira aparição pública de Flávio depois da derrota e da saída do Brasil, circulou no Brasil e fora dele? Quem difundiu o evento (imprensa e perfis alinhados, como a Revista Oeste), com que enquadramento, e quanto do engajamento nas contas da própria CPAC vem do público brasileiro?",
@@ -77,11 +77,15 @@
    "por_que": "Vídeos do evento, entrevistas e cortes. É de onde saem as transcrições da entrevista de Eduardo e do painel de Flávio."
   },
   {
-   "fonte": "X (busca por termo e pelos links da Revista Oeste) — ⛔ não coletado (sem autorização)",
+   "fonte": "X (busca por termo e pelos links da Revista Oeste), coleta paga de 08/11/2026",
    "por_que": "Rede de compartilhamento: quem posta, quem repassa e a partir de quais veículos."
   },
   {
-   "fonte": "Instagram da CPAC (posts e comentários) — ⛔ não coletado (sem autorização)",
+   "fonte": "Facebook (busca por \"Bolsonaro CPAC\" e \"Flávio Bolsonaro Mar-a-Lago\"), coleta paga de 08/11/2026",
+   "por_que": "Compartilhamento em páginas e perfis fora do X."
+  },
+  {
+   "fonte": "Instagram: feed de #CPAC, posts do perfil da CPAC desde 04/11 e busca de reels por \"Bolsonaro CPAC\" (coleta paga de 08/11/2026); ⛔ comentários dos posts e stories ainda não coletados",
    "por_que": "Língua e volume dos comentários nos posts sobre os Bolsonaro."
   },
   {
@@ -94,7 +98,7 @@
   "A busca por termo não capta posts que mostram o evento sem nomear CPAC, Mar-a-Lago ou os irmãos.",
   "A língua do comentário é detectada automaticamente, e comentários curtos (emojis, nomes) ficam como indeterminados.",
   "Stories (24 horas) não entram na coleta automática.",
-  "As redes pagas e o Instagram da CPAC dependem de autorização de custo; até ela, a amostra é só das fontes grátis."
+  "O perfil da CPAC no Instagram teve 9 posts desde 04/11; os comentários desses posts (onde o responsável viu muito português) ainda não foram lidos, então a língua dos comentários fica ⛔ por ora."
  ],
  "comum": {
   "desenho": "Amostra não probabilística, por palavra-chave (keyword sampling). Em cada rede, as buscas por termo devolvem o que o mecanismo de busca da plataforma ordena e entrega até um limite de itens por termo. Não há sorteio, e o resultado não representa a população de usuários da rede. Representa o discurso público que usa os termos escolhidos, na janela escolhida, tal como a plataforma o devolve.",
@@ -148,6 +152,80 @@
   ]
  },
  "amostra": [
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 239,
+   "no_periodo": 178,
+   "na_analise": 178,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "#CPAC",
+    "reels: Bolsonaro CPAC"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/038/manifesto-20261108T033242Z.json, manifesto-20261108T035616Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 99,
+   "no_periodo": 99,
+   "na_analise": 93,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/038/manifesto-20261108T035616Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 0,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/038/manifesto-20261108T035616Z.json"
+  },
+  {
+   "fonte": "TikTok",
+   "universo": "⛔ desconhecido: a busca do TikTok não informa o total de vídeos",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 0,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "sem termos para esta rede"
+   ],
+   "origem": "data/casos/038/manifesto-20261108T035616Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 2092,
+   "no_periodo": 2092,
+   "na_analise": 2089,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [
+    "o caso (busca por termo)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/038/manifesto-20261108T041140Z.json"
+  },
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",

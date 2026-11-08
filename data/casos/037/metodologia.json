@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T03:16:46Z",
+ "gerado_em_utc": "2026-11-08T04:43:41Z",
  "caso": "037",
  "titulo": "\"Faz o L\": origem e circulação da frase, em português e outros idiomas",
  "pergunta": "Qual a origem da expressão \"Faz o L\" e como ela mudou de sentido e de língua: do bordão de campanha (2022) à apropriação irônica pela oposição (2023) e ao gesto adotado por políticos e militantes de outros países depois de 25/10/2026?",
@@ -71,8 +71,12 @@
    "por_que": "Registra as versões de origem e as apropriações noticiadas."
   },
   {
-   "fonte": "X por fase — ⛔ não coletado (sem autorização)",
+   "fonte": "X por fase (origem até 31/10/2022; posse a 31/03/2023; desde 16/08/2026; outros idiomas), coleta paga de 08/11/2026",
    "por_que": "É a rede onde a ironia de 2023 foi mais documentada (Aos Fatos, 17/01/2023)."
+  },
+  {
+   "fonte": "Instagram (feed de #fazol e busca de reels por \"faz o L\" e \"fazueli\") e Facebook (busca por \"faz o L\" e \"fazueli\"), coleta paga de 08/11/2026",
+   "por_que": "Mostra se a frase circula fora do X e em que fase; a busca de reels por \"faz o L\" devolveu 0."
   }
  ],
  "controles": "No Trends, \"Lula\" como controle: separa o interesse pela frase do interesse pelo candidato.",
@@ -149,9 +153,72 @@
    "termos_no_limite": [],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
    "avisos": [
+    "sem termos para esta rede",
     "⛔ nenhum vídeo lido"
    ],
-   "origem": "data/casos/037/manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json"
+   "origem": "data/casos/037/manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json, manifesto-20261108T024908Z.json"
+  },
+  {
+   "fonte": "Instagram",
+   "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
+   "lidos": 108,
+   "no_periodo": 108,
+   "na_analise": 108,
+   "pct": null,
+   "termos_buscados": 3,
+   "termos_no_limite": [
+    "#fazol"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/037/manifesto-20261108T024908Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 107,
+   "no_periodo": 107,
+   "na_analise": 107,
+   "pct": null,
+   "termos_buscados": 2,
+   "termos_no_limite": [
+    "\"faz o L\""
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/037/manifesto-20261108T024908Z.json"
+  },
+  {
+   "fonte": "Kwai",
+   "universo": "⛔ desconhecido: a busca do Kwai não informa o total",
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
+   "pct": null,
+   "termos_buscados": 0,
+   "termos_no_limite": [],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/037/manifesto-20261108T024908Z.json"
+  },
+  {
+   "fonte": "X",
+   "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
+   "lidos": 6463,
+   "no_periodo": 6447,
+   "na_analise": 6447,
+   "pct": null,
+   "termos_buscados": 4,
+   "termos_no_limite": [
+    "eleição de 2026",
+    "origem (até a eleição de 2022)",
+    "virada irônica (posse a março de 2023)"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/037/manifesto-20261108T031235Z.json"
   },
   {
    "fonte": "YouTube",

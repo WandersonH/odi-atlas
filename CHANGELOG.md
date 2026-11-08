@@ -4,6 +4,24 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.363 — 037 e 038 com X, Instagram e Facebook; 026 com "Janones" por país desde 2018; Bardin do 019 sem erro (2026-11-08) ⚠️
+
+- **Coletas pagas (C19.361) concluídas** (runs 42439971227, 42441591068, 42443026350, 42444640324, 42445631955; manifestos `data/casos/037/manifesto-20261108T*.json` e `data/casos/038/manifesto-20261108T*.json`). Publicações únicas por rede, depois de tirar repetidos (`caso.json`):
+  - 037: X 6.447 (4.899 contas; 3 fases bateram no limite de 2.000; "outros idiomas" 447 no período de 463 lidos) · Instagram 108 (#fazol 61, reels "fazueli" 47, reels "faz o L" 0) · Facebook 107 · total 6.662 publicações, 5.086 contas.
+  - 038: X 2.089 (busca por termo 2.000, no limite; links da Revista Oeste 92) · Instagram 178 (#CPAC 161 no período de 215 lidos; perfil da CPAC 9 posts; reels 8 de 15) · Facebook 93 · total 2.360 publicações, 1.757 contas.
+  - **Universo:** ⛔ desconhecido em todas: as buscas do X, do Instagram e do Facebook não informam quantos posts existem. Onde a coleta bateu no limite, a amostra é parcial e o universo é maior que o lido.
+- **TikTok ficou fora:** foi pedido no modo `frases`, que não lê TikTok ("sem termos para esta rede"). Erro de disparo; o teto de US$ 0,30 de cada caso não foi gasto. Nova execução em `carga` só com TikTok: 037 run 42447435764, depois 038. ⛔ Resultado pendente.
+- **Página:** cabeçalhos do 037 e do 038 deixam de dizer "sem coleta" para X, Instagram e Facebook; TikTok continua ⛔. Metodologia (`metodologia_casos.json`): fontes do X, do Instagram e do Facebook com a data da coleta; no 038, o limite "depende de autorização" trocado por "comentários e stories da CPAC ⛔ não lidos".
+- **026, Google Trends** (run 42441091755, `data/casos/026/busca.json`, lido em 08/11/2026 03h05 UTC), novo bloco "01b" no caso:
+  - "Janones" sozinho no mundo, mês a mês desde 01/2018: meses com 5 ou mais foram 08/2022 (16), 10/2022 (37), 10/2026 (100) e 11/2026 (37), entre outros listados na página;
+  - por país, no período todo, só Brasil (100) e Portugal (4) passam do mínimo do Trends;
+  - em cada um dos 12 países consultados sozinho (12 meses), o pico foi a semana de 25/10/2026 (2º turno);
+  - consultas relacionadas: ⛔ vazias nos 12 países (volume abaixo do mínimo do Google), então não há resultado "por língua";
+  - 5 buscas do YouTube deram HTTP 429 (registradas em `erros`).
+- **Bardin:** `build_bardin_caso.py` pula livro de códigos sem `indicadores`. O do 019 usa `regex` (formato do `caso_mundo.py`, que faz o próprio Bardin) e dava `KeyError` no passo "Agregados" de todo run desde C19.215. Nada deixava de ser gravado: o passo seguia e só marcava erro.
+- **Teste:** `python -m unittest discover -s tests` (296 testes, OK); `build_metodologia.py` (38 casos); página aberta no Chromium, bloco 01b do 026 renderizado sem erro de JavaScript.
+- **Pendente:** ⛔ TikTok do 037 e do 038; ⛔ comentários dos posts da CPAC no Instagram (pedem outro leitor e outra autorização de valor, se passar da verba do caso); `redes_viewer.json` do 037 e do 038 a refazer com os dados novos (precisa do repositório privado).
+
 ## C19.362 — Caso 026: recorte desde 2018, Trends por país e consultas relacionadas por país; fontes de contexto na metodologia; tipo de grafo do Gephi no bloco de redes (2026-11-08) 🔜
 
 - Responsável (08/11/2026, 00h00), sobre o 026, com a reportagem do Le Monde (30/10/2026) e o livro "Janonismo Cultural": "recorte mais antigo", "sugiro uma busca por países no Trends", "incluir o resultado das principais buscas por língua relacionadas a André Janones".
