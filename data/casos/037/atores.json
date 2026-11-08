@@ -1,7 +1,7 @@
 {
  "caso": "037",
  "titulo": "\"Faz o L\": origem e circulação da frase, em português e outros idiomas",
- "gerado_em_utc": "2026-11-08T04:13:35Z",
+ "gerado_em_utc": "2026-11-08T04:39:01Z",
  "pedido": "Responsável, 02/11/2026, 15h57: quais principais atores políticos, partidos e postagens ajudam a disseminar cada caso.",
  "universo": {
   "perfis_declarados_por_rede": {
@@ -15,9 +15,10 @@
   "nota": "Universo de atores políticos = perfis declarados ao TSE por todas as candidaturas de 2026, nas redes cruzadas. O universo de publicações do caso é ⛔ desconhecido (as plataformas não informam o total por termo)."
  },
  "amostra": {
-  "publicacoes_lidas": 6662,
+  "publicacoes_lidas": 7172,
   "por_rede": {
    "x": 6447,
+   "tiktok": 510,
    "instagram": 108,
    "facebook": 107
   },
@@ -25,22 +26,46 @@
   "facebook": "⛔ não cruzado: a coleta do Facebook traz o nome do autor, não o endereço do perfil"
  },
  "resumo": {
-  "candidaturas_no_caso": 35,
-  "perfis_de_candidaturas_no_caso": 35,
-  "publicacoes_de_candidaturas": 70,
-  "pct_publicacoes_de_candidaturas": 1.05,
-  "contas_10mil_nao_candidatas": 708,
-  "publicacoes_de_contas_10mil": 1078,
-  "pct_publicacoes_de_contas_10mil": 16.18,
+  "candidaturas_no_caso": 36,
+  "perfis_de_candidaturas_no_caso": 37,
+  "publicacoes_de_candidaturas": 72,
+  "pct_publicacoes_de_candidaturas": 1.0,
+  "contas_10mil_nao_candidatas": 889,
+  "publicacoes_de_contas_10mil": 1327,
+  "pct_publicacoes_de_contas_10mil": 18.5,
   "publicacoes_de_candidaturas_por_posicao_do_partido_2t": {
-   "lula": 45,
-   "flavio": 24,
-   "neutro": 1
+   "lula": 46,
+   "neutro": 2,
+   "flavio": 24
   }
  },
  "criterio_nomeacao": "Nomeadas: candidaturas (perfil público declarado ao TSE) e contas com 10 mil+ seguidores. Demais contas só nas contagens.",
  "metodo": "Cruzamento exato da conta da publicação com o perfil declarado ao TSE na mesma rede (minúsculas, sem @). Partido e cargo vêm da candidatura; posição no 2º turno é a do partido (data/config/apoio_partidos_2t.json), não do candidato. Interações = curtidas + comentários + compartilhamentos informados pela plataforma na coleta.",
  "partidos": [
+  {
+   "partido": "PSB",
+   "candidaturas": 1,
+   "publicacoes": 2,
+   "visualizacoes": 1141698,
+   "interacoes": 241799,
+   "posicao_2t": "lula",
+   "nomes": [
+    "Maria Arraes"
+   ],
+   "pct_publicacoes_do_caso": 0.03
+  },
+  {
+   "partido": "PSD",
+   "candidaturas": 1,
+   "publicacoes": 1,
+   "visualizacoes": 1213696,
+   "interacoes": 137124,
+   "posicao_2t": "neutro",
+   "nomes": [
+    "Flavio Caminhoneiro"
+   ],
+   "pct_publicacoes_do_caso": 0.01
+  },
   {
    "partido": "PT",
    "candidaturas": 12,
@@ -55,7 +80,7 @@
     "Paulo Guedes",
     "Thiago Dos Reis"
    ],
-   "pct_publicacoes_do_caso": 0.63
+   "pct_publicacoes_do_caso": 0.59
   },
   {
    "partido": "PL",
@@ -71,7 +96,7 @@
     "Delegado Paulo Bilynskyj",
     "Sargento Fahur"
    ],
-   "pct_publicacoes_do_caso": 0.26
+   "pct_publicacoes_do_caso": 0.24
   },
   {
    "partido": "REPUBLICANOS",
@@ -83,7 +108,7 @@
    "nomes": [
     "Gleidson Azevedo"
    ],
-   "pct_publicacoes_do_caso": 0.02
+   "pct_publicacoes_do_caso": 0.01
   },
   {
    "partido": "PP",
@@ -97,7 +122,7 @@
     "Samantha Cavalca",
     "Rodrigo Lorenzoni"
    ],
-   "pct_publicacoes_do_caso": 0.05
+   "pct_publicacoes_do_caso": 0.04
   },
   {
    "partido": "UNIÃO",
@@ -110,7 +135,7 @@
     "Adrilles Jorge",
     "Douglas Garcia"
    ],
-   "pct_publicacoes_do_caso": 0.05
+   "pct_publicacoes_do_caso": 0.04
   },
   {
    "partido": "REDE",
@@ -126,18 +151,6 @@
    "pct_publicacoes_do_caso": 0.03
   },
   {
-   "partido": "PSB",
-   "candidaturas": 1,
-   "publicacoes": 1,
-   "visualizacoes": 582,
-   "interacoes": 34,
-   "posicao_2t": "lula",
-   "nomes": [
-    "Maria Arraes"
-   ],
-   "pct_publicacoes_do_caso": 0.02
-  },
-  {
    "partido": "MISSÃO",
    "candidaturas": 1,
    "publicacoes": 1,
@@ -147,10 +160,275 @@
    "nomes": [
     "Robson Cacau"
    ],
-   "pct_publicacoes_do_caso": 0.02
+   "pct_publicacoes_do_caso": 0.01
   }
  ],
  "atores": [
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "mindaylee_",
+   "nome": "minday",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1661634,
+   "publicacoes": 1,
+   "visualizacoes": 26960417,
+   "interacoes": 3001100,
+   "primeira": "2026-08-19T13:20:29Z",
+   "ultima": "2026-08-19T13:20:29Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@mindaylee_/video/7675732008068205842"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "ismeiow",
+   "nome": "Ismeiow",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 2881795,
+   "publicacoes": 1,
+   "visualizacoes": 5238217,
+   "interacoes": 1905529,
+   "primeira": "2026-10-04T13:33:57Z",
+   "ultima": "2026-10-04T13:33:57Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@ismeiow/video/7692805389066374420"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "ptsaopaulo",
+   "nome": "PT São Paulo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1307267,
+   "publicacoes": 2,
+   "visualizacoes": 5391052,
+   "interacoes": 1104171,
+   "primeira": "2026-09-28T12:51:39Z",
+   "ultima": "2026-09-28T13:29:02Z",
+   "termos": [
+    "faz o L",
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@ptsaopaulo/video/7690577627387579666"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "pedacobrasil",
+   "nome": "Pedaço Brasil",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 127817,
+   "publicacoes": 8,
+   "visualizacoes": 4896498,
+   "interacoes": 473731,
+   "primeira": "2024-08-18T11:28:01Z",
+   "ultima": "2026-06-15T01:58:08Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@pedacobrasil/video/7409640304304868614"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "sr.cauan",
+   "nome": "Cauan",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 16568,
+   "publicacoes": 2,
+   "visualizacoes": 2267357,
+   "interacoes": 460774,
+   "primeira": "2026-11-01T21:56:22Z",
+   "ultima": "2026-11-02T01:44:04Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@sr.cauan/video/7703325235675729172"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "popzone.brr",
+   "nome": "POPZone",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 312351,
+   "publicacoes": 1,
+   "visualizacoes": 1240500,
+   "interacoes": 448845,
+   "primeira": "2026-10-27T15:48:10Z",
+   "ultima": "2026-10-27T15:48:10Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@popzone.brr/video/7701374938485181716"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "apavoradores",
+   "nome": "Apavoradores",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 343206,
+   "publicacoes": 13,
+   "visualizacoes": 3646615,
+   "interacoes": 406789,
+   "primeira": "2023-02-28T21:51:49Z",
+   "ultima": "2026-08-07T14:00:00Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@apavoradores/video/7535200679787269432"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "celaasecret",
+   "nome": "celaasecret",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 13016,
+   "publicacoes": 1,
+   "visualizacoes": 1677146,
+   "interacoes": 399966,
+   "primeira": "2026-10-25T15:21:04Z",
+   "ultima": "2026-10-25T15:21:04Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@celaasecret/video/7700625763401403656"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "_maxpacienza",
+   "nome": "max",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 280359,
+   "publicacoes": 1,
+   "visualizacoes": 966215,
+   "interacoes": 326321,
+   "primeira": "2026-10-25T17:01:00Z",
+   "ultima": "2026-10-25T17:01:00Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@_maxpacienza/video/7700627448022568213"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "_laismelo10",
+   "nome": "Laís",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 14307,
+   "publicacoes": 1,
+   "visualizacoes": 2742347,
+   "interacoes": 310915,
+   "primeira": "2025-07-30T00:17:55Z",
+   "ultima": "2025-07-30T00:17:55Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@_laismelo10/video/7532662550375320838"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "applesauceandadhd",
+   "nome": "Jessica Secrest",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 4950361,
+   "publicacoes": 1,
+   "visualizacoes": 3035589,
+   "interacoes": 245500,
+   "primeira": "2024-09-19T00:00:27Z",
+   "ultima": "2024-09-19T00:00:27Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@applesauceandadhd/video/7416137300767313198"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "mariaarraes",
+   "nome": "Maria Arraes",
+   "numero": "40140",
+   "partido": "PSB",
+   "cargo": "Deputado Estadual",
+   "uf": "PE",
+   "situacao": "ELEITO POR QP",
+   "posicao_partido_2t": "lula",
+   "seguidores": 55693,
+   "publicacoes": 1,
+   "visualizacoes": 1141116,
+   "interacoes": 241765,
+   "primeira": "2026-10-19T22:02:37Z",
+   "ultima": "2026-10-19T22:02:37Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@mariaarraes/video/7698502714426264852"
+  },
   {
    "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
@@ -172,6 +450,94 @@
     "origem (até a eleição de 2022)"
    ],
    "top_url": "https://x.com/pabllovittar/status/1586726106236944384"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "ferzauliboxing",
+   "nome": "FERZAULI",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 222969,
+   "publicacoes": 10,
+   "visualizacoes": 2635185,
+   "interacoes": 179721,
+   "primeira": "2026-04-30T20:03:20Z",
+   "ultima": "2026-10-29T19:53:11Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@ferzauliboxing/video/7689811484091649313"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "vitoriabernardoc",
+   "nome": "Vitoria Bernardo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 85192,
+   "publicacoes": 1,
+   "visualizacoes": 1090822,
+   "interacoes": 176262,
+   "primeira": "2024-12-25T19:07:18Z",
+   "ultima": "2024-12-25T19:07:18Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@vitoriabernardoc/video/7452428100425534726"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "rayanelima453",
+   "nome": "Rayane Lima",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 15955,
+   "publicacoes": 1,
+   "visualizacoes": 3057067,
+   "interacoes": 167774,
+   "primeira": "2022-10-24T22:08:00Z",
+   "ultima": "2022-10-24T22:08:00Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@rayanelima453/video/7158204126894034182"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "pietrofrancoofc",
+   "nome": "Pietro Franco 🇮🇹🇧🇷",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 773849,
+   "publicacoes": 1,
+   "visualizacoes": 457474,
+   "interacoes": 148667,
+   "primeira": "2026-10-24T22:47:24Z",
+   "ultima": "2026-10-24T22:47:24Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@pietrofrancoofc/video/7700369717151698196"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -197,6 +563,270 @@
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
+   "rede": "TikTok",
+   "conta": "flaviozimermann",
+   "nome": "Flavio Caminhoneiro",
+   "numero": "55163",
+   "partido": "PSD",
+   "cargo": "Deputado Estadual",
+   "uf": "MT",
+   "situacao": "SUPLENTE",
+   "posicao_partido_2t": "neutro",
+   "seguidores": 69731,
+   "publicacoes": 1,
+   "visualizacoes": 1213696,
+   "interacoes": 137124,
+   "primeira": "2026-10-26T15:58:45Z",
+   "ultima": "2026-10-26T15:58:45Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@flaviozimermann/video/7701006566006213940"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "amarinaperes",
+   "nome": "Marina Peres",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 40605,
+   "publicacoes": 1,
+   "visualizacoes": 334738,
+   "interacoes": 135442,
+   "primeira": "2026-10-29T01:51:05Z",
+   "ultima": "2026-10-29T01:51:05Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@amarinaperes/video/7701901371154631957"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "anapanizo",
+   "nome": "Ana Panizo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 63159,
+   "publicacoes": 1,
+   "visualizacoes": 574070,
+   "interacoes": 131962,
+   "primeira": "2026-10-27T23:29:58Z",
+   "ultima": "2026-10-27T23:29:58Z",
+   "termos": [
+    "#FazOL|faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@anapanizo/video/7701493932936432948"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "sofrenc1a",
+   "nome": "🌀",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 23318,
+   "publicacoes": 1,
+   "visualizacoes": 1101451,
+   "interacoes": 131760,
+   "primeira": "2025-12-30T13:43:45Z",
+   "ultima": "2025-12-30T13:43:45Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@sofrenc1a/video/7589646229638860052"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "_beccafrances",
+   "nome": "Becca Frances",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 110576,
+   "publicacoes": 1,
+   "visualizacoes": 341217,
+   "interacoes": 123291,
+   "primeira": "2026-10-28T20:28:45Z",
+   "ultima": "2026-10-28T20:28:45Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@_beccafrances/video/7701818327500410133"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "cercogkp35d",
+   "nome": "cercogkp35d",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 59768,
+   "publicacoes": 1,
+   "visualizacoes": 386011,
+   "interacoes": 117956,
+   "primeira": "2026-10-17T17:55:14Z",
+   "ultima": "2026-10-17T17:55:14Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@cercogkp35d/video/7697696844503141665"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "casacomcostura",
+   "nome": "Aline | Lar Doce Lar",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 26431,
+   "publicacoes": 1,
+   "visualizacoes": 1126383,
+   "interacoes": 114928,
+   "primeira": "2024-12-31T13:39:21Z",
+   "ultima": "2024-12-31T13:39:21Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@casacomcostura/video/7454570105502977286"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "amberflop.com",
+   "nome": "Amber 🔪",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 71218,
+   "publicacoes": 1,
+   "visualizacoes": 528309,
+   "interacoes": 108625,
+   "primeira": "2023-09-11T20:58:00Z",
+   "ultima": "2023-09-11T20:58:00Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@amberflop.com/video/7277675518722346246"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "quinta.livre.ofc",
+   "nome": "Quinta Livre",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 505591,
+   "publicacoes": 5,
+   "visualizacoes": 2117777,
+   "interacoes": 104068,
+   "primeira": "2024-02-11T11:59:45Z",
+   "ultima": "2026-11-03T23:39:59Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@quinta.livre.ofc/video/7334312847972846853"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "sonobrasilverso",
+   "nome": "Só no Brasilverso",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 109721,
+   "publicacoes": 1,
+   "visualizacoes": 1848253,
+   "interacoes": 97352,
+   "primeira": "2025-06-20T16:54:00Z",
+   "ultima": "2025-06-20T16:54:00Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@sonobrasilverso/video/7518075829918665989"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "souvilu",
+   "nome": "VILU",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 2310408,
+   "publicacoes": 1,
+   "visualizacoes": 330025,
+   "interacoes": 95871,
+   "primeira": "2026-10-27T21:32:07Z",
+   "ultima": "2026-10-27T21:32:07Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@souvilu/video/7701462256386657556"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "flavio.esquerdabrasil",
+   "nome": "Flávio a voz da Esquerda",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 144829,
+   "publicacoes": 1,
+   "visualizacoes": 991464,
+   "interacoes": 93779,
+   "primeira": "2023-09-03T18:08:39Z",
+   "ultima": "2023-09-03T18:08:39Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@flavio.esquerdabrasil/video/7274663200543526150"
+  },
+  {
+   "tipo": "candidatura (perfil declarado ao TSE)",
    "rede": "X",
    "conta": "senadorhumberto",
    "nome": "Humberto Costa",
@@ -219,6 +849,50 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "esquerda.brasill",
+   "nome": "esquerdabrasil",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 26463,
+   "publicacoes": 1,
+   "visualizacoes": 336794,
+   "interacoes": 71205,
+   "primeira": "2026-10-28T00:33:44Z",
+   "ultima": "2026-10-28T00:33:44Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@esquerda.brasill/video/7701510370678033685"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "zandulohaha",
+   "nome": "A droga do Zandulo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 113668,
+   "publicacoes": 1,
+   "visualizacoes": 390823,
+   "interacoes": 66577,
+   "primeira": "2026-10-27T13:20:00Z",
+   "ultima": "2026-10-27T13:20:00Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@zandulohaha/video/7701336735245929736"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
    "conta": "npsidoka",
    "nome": "doka, the glove boy. ‘9",
@@ -238,6 +912,28 @@
     "origem (até a eleição de 2022)"
    ],
    "top_url": "https://x.com/npsidoka/status/1586805339491540992"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "luamboer",
+   "nome": "luamboer",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 124793,
+   "publicacoes": 2,
+   "visualizacoes": 356482,
+   "interacoes": 63660,
+   "primeira": "2026-10-31T09:46:50Z",
+   "ultima": "2026-11-04T10:07:59Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@luamboer/video/7704255959048326420"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -264,6 +960,28 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "amflima__",
+   "nome": "Amanda Ferreira",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 10584,
+   "publicacoes": 1,
+   "visualizacoes": 340445,
+   "interacoes": 62574,
+   "primeira": "2026-10-04T17:02:46Z",
+   "ultima": "2026-10-04T17:02:46Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@amflima__/video/7692859199566515476"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
    "conta": "kimpaim",
    "nome": "Kim D. Paim",
@@ -283,6 +1001,270 @@
     "virada irônica (posse a março de 2023)"
    ],
    "top_url": "https://x.com/kimpaim/status/1640992594527420417"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "ojunioroof",
+   "nome": "Júnior Azevedo 🇧🇷",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 309376,
+   "publicacoes": 1,
+   "visualizacoes": 280670,
+   "interacoes": 59961,
+   "primeira": "2026-10-27T15:41:30Z",
+   "ultima": "2026-10-27T15:41:30Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@ojunioroof/video/7701373219017674005"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "djcaraiofc",
+   "nome": "djcaraiofc",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 50738,
+   "publicacoes": 1,
+   "visualizacoes": 224822,
+   "interacoes": 59730,
+   "primeira": "2026-10-21T00:27:00Z",
+   "ultima": "2026-10-21T00:27:00Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@djcaraiofc/video/7698911025726278933"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "jarlenelima943",
+   "nome": "Jarlene Lima",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 10481,
+   "publicacoes": 1,
+   "visualizacoes": 760310,
+   "interacoes": 55343,
+   "primeira": "2026-09-27T13:21:11Z",
+   "ultima": "2026-09-27T13:21:11Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@jarlenelima943/video/7690204509829647636"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "direitasergipana",
+   "nome": "Flávio do Direita Sergipana",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 127221,
+   "publicacoes": 1,
+   "visualizacoes": 446188,
+   "interacoes": 54272,
+   "primeira": "2024-01-30T21:10:22Z",
+   "ultima": "2024-01-30T21:10:22Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@direitasergipana/video/7330001714222861574"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "revista_veja",
+   "nome": "VEJA",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1396399,
+   "publicacoes": 1,
+   "visualizacoes": 642206,
+   "interacoes": 46904,
+   "primeira": "2026-10-12T17:09:00Z",
+   "ultima": "2026-10-12T17:09:00Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@revista_veja/video/7695829480320879880"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "carolbrito4_",
+   "nome": "Carolbrito4🧸",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 223091,
+   "publicacoes": 1,
+   "visualizacoes": 243090,
+   "interacoes": 46713,
+   "primeira": "2026-10-25T14:06:31Z",
+   "ultima": "2026-10-25T14:06:31Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@carolbrito4_/video/7700606579720244500"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "faiizuly",
+   "nome": "Faizuly Arango",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 154957,
+   "publicacoes": 1,
+   "visualizacoes": 810880,
+   "interacoes": 43891,
+   "primeira": "2023-06-16T21:39:00Z",
+   "ultima": "2023-06-16T21:39:00Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@faiizuly/video/7245401667963784453"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "nukaprisho",
+   "nome": "Nukaprisho!",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 38917,
+   "publicacoes": 1,
+   "visualizacoes": 435863,
+   "interacoes": 43561,
+   "primeira": "2023-01-05T02:56:53Z",
+   "ultima": "2023-01-05T02:56:53Z",
+   "termos": [
+    "fazueli"
+   ],
+   "top_url": "https://www.tiktok.com/@nukaprisho/video/7184996692771474693"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "lugomes636",
+   "nome": "lúGomes🍀",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 12796,
+   "publicacoes": 1,
+   "visualizacoes": 282047,
+   "interacoes": 39922,
+   "primeira": "2026-11-04T12:00:59Z",
+   "ultima": "2026-11-04T12:00:59Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@lugomes636/video/7704285080981720340"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "__fazol",
+   "nome": "fazol",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 12724,
+   "publicacoes": 1,
+   "visualizacoes": 305961,
+   "interacoes": 38886,
+   "primeira": "2026-06-05T04:03:59Z",
+   "ultima": "2026-06-05T04:03:59Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@__fazol/video/7647757213208956178"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "terragora",
+   "nome": "Terra",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1665382,
+   "publicacoes": 2,
+   "visualizacoes": 497209,
+   "interacoes": 36891,
+   "primeira": "2026-10-22T02:04:56Z",
+   "ultima": "2026-10-26T22:12:40Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@terragora/video/7699307364935142676"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "votofobico",
+   "nome": "VOTONIKEM",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 59819,
+   "publicacoes": 1,
+   "visualizacoes": 170761,
+   "interacoes": 33140,
+   "primeira": "2026-11-03T18:55:49Z",
+   "ultima": "2026-11-03T18:55:49Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@votofobico/video/7704020869005200647"
   },
   {
    "tipo": "candidatura (perfil declarado ao TSE)",
@@ -305,6 +1287,117 @@
     "virada irônica (posse a março de 2023)"
    ],
    "top_url": "https://x.com/PeKelmon/status/1641063690567929856"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "uol",
+   "nome": "uol",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 2861169,
+   "publicacoes": 1,
+   "visualizacoes": 940546,
+   "interacoes": 30177,
+   "primeira": "2026-10-30T18:23:30Z",
+   "ultima": "2026-10-30T18:23:30Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@uol/video/7702528226089864500"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "gabinetedoocio",
+   "nome": "Gabinete do Ócio",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 310407,
+   "publicacoes": 2,
+   "visualizacoes": 127740,
+   "interacoes": 29593,
+   "primeira": "2026-10-29T20:09:17Z",
+   "ultima": "2026-11-05T21:39:49Z",
+   "termos": [
+    "fazueli",
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@gabinetedoocio/video/7702184369372417301"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "pontodeconhecimento1",
+   "nome": "ponto de conhecimento 🌻",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 31206,
+   "publicacoes": 1,
+   "visualizacoes": 126049,
+   "interacoes": 28387,
+   "primeira": "2026-10-19T14:09:35Z",
+   "ultima": "2026-10-19T14:09:35Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@pontodeconhecimento1/video/7698380854967504136"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "gifrateschi_",
+   "nome": "Gi Frateschi",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 130092,
+   "publicacoes": 1,
+   "visualizacoes": 686720,
+   "interacoes": 28357,
+   "primeira": "2026-09-26T14:28:13Z",
+   "ultima": "2026-09-26T14:28:13Z",
+   "termos": [
+    "#FazOL"
+   ],
+   "top_url": "https://www.tiktok.com/@gifrateschi_/video/7689850699357719814"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "alfaeomegasoundsystem",
+   "nome": "Alfa e Ômega & Sound System",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 37065,
+   "publicacoes": 1,
+   "visualizacoes": 165025,
+   "interacoes": 28274,
+   "primeira": "2026-10-28T22:30:07Z",
+   "ultima": "2026-10-28T22:30:07Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@alfaeomegasoundsystem/video/7701849543196839175"
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
@@ -331,6 +1424,50 @@
   },
   {
    "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "igjoaoricardolisboaa",
+   "nome": "João Ricardo",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 23563,
+   "publicacoes": 1,
+   "visualizacoes": 136978,
+   "interacoes": 27553,
+   "primeira": "2026-10-27T20:17:24Z",
+   "ultima": "2026-10-27T20:17:24Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@igjoaoricardolisboaa/video/7701444298599959829"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
+   "rede": "TikTok",
+   "conta": "barreirabanidodenovo",
+   "nome": "barreirinha",
+   "numero": null,
+   "partido": null,
+   "cargo": null,
+   "uf": null,
+   "situacao": null,
+   "posicao_partido_2t": null,
+   "seguidores": 1020426,
+   "publicacoes": 1,
+   "visualizacoes": 538988,
+   "interacoes": 27171,
+   "primeira": "2026-01-22T21:44:02Z",
+   "ultima": "2026-01-22T21:44:02Z",
+   "termos": [
+    "faz o L"
+   ],
+   "top_url": "https://www.tiktok.com/@barreirabanidodenovo/video/7598304959259577618"
+  },
+  {
+   "tipo": "conta com 10 mil+ seguidores",
    "rede": "X",
    "conta": "bchartsnet",
    "nome": "BCharts",
@@ -350,1142 +1487,130 @@
     "origem (até a eleição de 2022)"
    ],
    "top_url": "https://x.com/bchartsnet/status/1586755453215711236"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Dra_Deolane",
-   "nome": "Deolane ⚖️",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 635302,
-   "publicacoes": 3,
-   "visualizacoes": 0,
-   "interacoes": 24643,
-   "primeira": "2022-10-30T17:02:02Z",
-   "ultima": "2022-10-30T22:34:33Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/Dra_Deolane/status/1586849063533682688"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "Instagram",
-   "conta": "gleidsonazevedovmj",
-   "nome": "Gleidson Azevedo",
-   "numero": "1000",
-   "partido": "REPUBLICANOS",
-   "cargo": "Deputado Federal",
-   "uf": "MG",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "flavio",
-   "seguidores": null,
-   "publicacoes": 1,
-   "visualizacoes": 520963,
-   "interacoes": 21890,
-   "primeira": "2026-11-05T23:17:45Z",
-   "ultima": "2026-11-05T23:17:45Z",
-   "termos": [
-    "reels: fazueli"
-   ],
-   "top_url": "https://www.instagram.com/p/DfYMNn2vXnV/"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "FlavioBolsonaro",
-   "nome": "Flavio Bolsonaro",
-   "numero": "22",
-   "partido": "PL",
-   "cargo": "Presidente",
-   "uf": "BR",
-   "situacao": "NÃO ELEITO",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 3898304,
-   "publicacoes": 2,
-   "visualizacoes": 327367,
-   "interacoes": 19705,
-   "primeira": "2023-03-23T11:42:39Z",
-   "ultima": "2023-03-29T11:54:37Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/FlavioBolsonaro/status/1638868858026053633"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "albaaoficial",
-   "nome": "Alba",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 288571,
-   "publicacoes": 1,
-   "visualizacoes": 0,
-   "interacoes": 18934,
-   "primeira": "2022-10-29T18:59:10Z",
-   "ultima": "2022-10-29T18:59:10Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/albaaoficial/status/1586432472522592256"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "EdRaposo_",
-   "nome": "Ed Raposo",
-   "numero": "2207",
-   "partido": "PL",
-   "cargo": "Deputado Federal",
-   "uf": "RJ",
-   "situacao": "SUPLENTE",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 322642,
-   "publicacoes": 3,
-   "visualizacoes": 64774,
-   "interacoes": 18238,
-   "primeira": "2022-10-29T21:18:05Z",
-   "ultima": "2023-03-21T20:55:04Z",
-   "termos": [
-    "origem (até a eleição de 2022)",
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/EdRaposo_/status/1638283102970695711"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "FluminenseFC",
-   "nome": "Fluminense F.C.",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1355802,
-   "publicacoes": 4,
-   "visualizacoes": 997926,
-   "interacoes": 17968,
-   "primeira": "2023-03-22T21:20:35Z",
-   "ultima": "2023-03-30T21:25:54Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/FluminenseFC/status/1641552355521855488"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "UOLNoticias",
-   "nome": "UOL Notícias",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 5052317,
-   "publicacoes": 4,
-   "visualizacoes": 642585,
-   "interacoes": 16810,
-   "primeira": "2023-03-25T18:56:56Z",
-   "ultima": "2023-03-30T12:02:55Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/UOLNoticias/status/1641405092937990146"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "marcosaraujjoo",
-   "nome": "Marcos Araújo",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 10332,
-   "publicacoes": 22,
-   "visualizacoes": 109359,
-   "interacoes": 15702,
-   "primeira": "2022-10-30T16:28:48Z",
-   "ultima": "2023-03-30T12:36:11Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)",
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/marcosaraujjoo/status/1586762971426037762"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "_janoninho_",
-   "nome": "Janoninho",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 230888,
-   "publicacoes": 7,
-   "visualizacoes": 120415,
-   "interacoes": 12788,
-   "primeira": "2023-03-22T19:22:50Z",
-   "ultima": "2023-03-30T23:58:58Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/_janoninho_/status/1638622281210404893"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "moreiraviw",
-   "nome": "se a terra não é plana como explica o céu reto?",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 581275,
-   "publicacoes": 1,
-   "visualizacoes": 0,
-   "interacoes": 12708,
-   "primeira": "2022-10-30T22:39:13Z",
-   "ultima": "2022-10-30T22:39:13Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/moreiraviw/status/1586850238148612102"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "izanildo_sabino",
-   "nome": "IzanildoSabino 🦉 Juntos pelo Brasil - Faz o L 🚩",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 22345,
-   "publicacoes": 27,
-   "visualizacoes": 50354,
-   "interacoes": 11496,
-   "primeira": "2022-10-29T19:04:10Z",
-   "ultima": "2026-11-08T00:59:25Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)",
-    "origem (até a eleição de 2022)",
-    "eleição de 2026"
-   ],
-   "top_url": "https://x.com/izanildo_sabino/status/1586433729442054144"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "smurdomuca",
-   "nome": "danyel",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 27191,
-   "publicacoes": 1,
-   "visualizacoes": 0,
-   "interacoes": 10314,
-   "primeira": "2022-10-30T23:00:02Z",
-   "ultima": "2022-10-30T23:00:02Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/smurdomuca/status/1586855476603625475"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "heldersalomao",
-   "nome": "Helder Salomão",
-   "numero": "13",
-   "partido": "PT",
-   "cargo": "Governador",
-   "uf": "ES",
-   "situacao": "NÃO ELEITO",
-   "posicao_partido_2t": "lula",
-   "seguidores": 135491,
-   "publicacoes": 13,
-   "visualizacoes": 125677,
-   "interacoes": 9667,
-   "primeira": "2023-03-21T19:39:42Z",
-   "ultima": "2023-03-30T10:49:50Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/heldersalomao/status/1639938038154313729"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "smurfdomuca",
-   "nome": "danyel",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 340140,
-   "publicacoes": 1,
-   "visualizacoes": 0,
-   "interacoes": 9506,
-   "primeira": "2022-10-30T22:59:05Z",
-   "ultima": "2022-10-30T22:59:05Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/smurfdomuca/status/1586855237377302530"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "giraldirenato",
-   "nome": "Renato Giraldi",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 197928,
-   "publicacoes": 6,
-   "visualizacoes": 177359,
-   "interacoes": 9269,
-   "primeira": "2023-03-22T17:04:05Z",
-   "ultima": "2023-03-30T21:46:29Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/giraldirenato/status/1640717312788668418"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "CarlosS48442375",
-   "nome": "Carlos Santos",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 44954,
-   "publicacoes": 16,
-   "visualizacoes": 176474,
-   "interacoes": 9129,
-   "primeira": "2022-10-30T13:59:00Z",
-   "ultima": "2023-03-30T13:28:19Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)",
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/CarlosS48442375/status/1640072639468191744"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Metropoles",
-   "nome": "Metrópoles",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1760932,
-   "publicacoes": 2,
-   "visualizacoes": 384226,
-   "interacoes": 9005,
-   "primeira": "2023-03-30T12:52:04Z",
-   "ultima": "2026-07-16T14:48:49Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)",
-    "outros idiomas"
-   ],
-   "top_url": "https://x.com/Metropoles/status/1641423042919235584"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "KriskaCarvalho",
-   "nome": "Kriska Carvalho",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 112596,
-   "publicacoes": 5,
-   "visualizacoes": 174107,
-   "interacoes": 8798,
-   "primeira": "2023-03-21T16:35:58Z",
-   "ultima": "2023-03-30T23:25:09Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/KriskaCarvalho/status/1638304942401155085"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "randolfeap",
-   "nome": "Randolfe",
-   "numero": "130",
-   "partido": "PT",
-   "cargo": "Senador",
-   "uf": "AP",
-   "situacao": "NÃO ELEITO",
-   "posicao_partido_2t": "lula",
-   "seguidores": 1068915,
-   "publicacoes": 1,
-   "visualizacoes": 181797,
-   "interacoes": 8679,
-   "primeira": "2023-03-26T21:15:22Z",
-   "ultima": "2023-03-26T21:15:22Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/randolfeap/status/1640100152059867138"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "andreariell",
-   "nome": "andrezin",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 115105,
-   "publicacoes": 1,
-   "visualizacoes": 0,
-   "interacoes": 7929,
-   "primeira": "2022-10-29T22:42:01Z",
-   "ultima": "2022-10-29T22:42:01Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/andreariell/status/1586488552811921408"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "updatecharts",
-   "nome": "UpdateCharts",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 645623,
-   "publicacoes": 3,
-   "visualizacoes": 144908,
-   "interacoes": 7505,
-   "primeira": "2022-10-30T14:30:36Z",
-   "ultima": "2026-11-08T00:34:17Z",
-   "termos": [
-    "origem (até a eleição de 2022)",
-    "virada irônica (posse a março de 2023)",
-    "eleição de 2026"
-   ],
-   "top_url": "https://x.com/updatecharts/status/1638558135962009603"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "cesarcalejon1",
-   "nome": "Cesar Calejon",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 170721,
-   "publicacoes": 1,
-   "visualizacoes": 104781,
-   "interacoes": 7102,
-   "primeira": "2023-03-26T19:54:45Z",
-   "ultima": "2023-03-26T19:54:45Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/cesarcalejon1/status/1640079865033502721"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "ACatracaBR",
-   "nome": "A Catraca 🇧🇷 𝕏",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 66990,
-   "publicacoes": 23,
-   "visualizacoes": 135656,
-   "interacoes": 6928,
-   "primeira": "2023-03-21T11:36:32Z",
-   "ultima": "2023-03-29T13:51:47Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/ACatracaBR/status/1638492177184481281"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "jacked_x",
-   "nome": "Jacked",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 69743,
-   "publicacoes": 3,
-   "visualizacoes": 214306,
-   "interacoes": 6762,
-   "primeira": "2023-03-22T14:29:31Z",
-   "ultima": "2023-03-26T23:47:56Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/jacked_x/status/1638548465205628928"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "ATROMBETA3",
-   "nome": "A TROMBETA",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 149888,
-   "publicacoes": 5,
-   "visualizacoes": 87494,
-   "interacoes": 6486,
-   "primeira": "2023-03-22T14:33:54Z",
-   "ultima": "2023-03-30T01:31:50Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/ATROMBETA3/status/1638549566231400451"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "CamargoDireita",
-   "nome": "Sérgio Camargo",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 339814,
-   "publicacoes": 3,
-   "visualizacoes": 86795,
-   "interacoes": 6216,
-   "primeira": "2023-03-22T00:03:05Z",
-   "ultima": "2023-03-28T12:05:53Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/CamargoDireita/status/1640682096812277761"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "LOUDgg",
-   "nome": "LOUD 🇧🇷",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1825778,
-   "publicacoes": 1,
-   "visualizacoes": 117176,
-   "interacoes": 6057,
-   "primeira": "2023-03-26T20:49:43Z",
-   "ultima": "2023-03-26T20:49:43Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/LOUDgg/status/1640093698745671682"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "SilasPortugalR1",
-   "nome": "Silas Portugal",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 59152,
-   "publicacoes": 4,
-   "visualizacoes": 61809,
-   "interacoes": 5891,
-   "primeira": "2023-03-22T12:33:11Z",
-   "ultima": "2023-03-30T22:02:25Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/SilasPortugalR1/status/1639286997087821834"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "ciro_nogueira",
-   "nome": "Ciro Nogueira",
-   "numero": "111",
-   "partido": "PP",
-   "cargo": "Senador",
-   "uf": "PI",
-   "situacao": "NÃO ELEITO",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 249376,
-   "publicacoes": 1,
-   "visualizacoes": 76691,
-   "interacoes": 5797,
-   "primeira": "2023-03-30T11:27:21Z",
-   "ultima": "2023-03-30T11:27:21Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/ciro_nogueira/status/1641401723884392449"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "RTdoBrasil",
-   "nome": "RT do Brasil",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 107510,
-   "publicacoes": 5,
-   "visualizacoes": 139145,
-   "interacoes": 5684,
-   "primeira": "2023-03-21T22:36:09Z",
-   "ultima": "2023-03-28T14:48:46Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/RTdoBrasil/status/1638308540757442561"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "DefecatingB",
-   "nome": "Defecating News 🗞️💩",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 90492,
-   "publicacoes": 6,
-   "visualizacoes": 54099,
-   "interacoes": 5352,
-   "primeira": "2023-03-23T19:15:28Z",
-   "ultima": "2023-03-29T19:18:32Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/DefecatingB/status/1639360168847724545"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "LiloVLOG",
-   "nome": "Lilo",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 215341,
-   "publicacoes": 1,
-   "visualizacoes": 0,
-   "interacoes": 5272,
-   "primeira": "2022-10-31T19:13:50Z",
-   "ultima": "2022-10-31T19:13:50Z",
-   "termos": [
-    "outros idiomas"
-   ],
-   "top_url": "https://x.com/LiloVLOG/status/1587160940151185410"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "galvao_jo",
-   "nome": "Jô Galvão Lula da Silva🇪🇭",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 12655,
-   "publicacoes": 5,
-   "visualizacoes": 75400,
-   "interacoes": 5127,
-   "primeira": "2023-03-22T12:20:34Z",
-   "ultima": "2023-03-30T01:16:51Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/galvao_jo/status/1639072589891903488"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "deppauloguedes",
-   "nome": "Paulo Guedes",
-   "numero": "1378",
-   "partido": "PT",
-   "cargo": "Deputado Federal",
-   "uf": "MG",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "lula",
-   "seguidores": 24641,
-   "publicacoes": 8,
-   "visualizacoes": 90080,
-   "interacoes": 5108,
-   "primeira": "2023-03-22T19:43:31Z",
-   "ultima": "2023-03-30T18:06:12Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/deppauloguedes/status/1639749457242669056"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "juliovschneider",
-   "nome": "Julio Schneider 🇧🇷🇺🇸",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 266479,
-   "publicacoes": 7,
-   "visualizacoes": 76421,
-   "interacoes": 5065,
-   "primeira": "2023-03-23T12:35:40Z",
-   "ultima": "2023-03-30T20:33:40Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/juliovschneider/status/1639220291556573184"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "revistaforum",
-   "nome": "Revista Fórum",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 577331,
-   "publicacoes": 1,
-   "visualizacoes": 67189,
-   "interacoes": 4884,
-   "primeira": "2023-03-30T11:54:51Z",
-   "ultima": "2023-03-30T11:54:51Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/revistaforum/status/1641408645857529858"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "ptbrasil",
-   "nome": "PT Brasil",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1610201,
-   "publicacoes": 4,
-   "visualizacoes": 143674,
-   "interacoes": 4697,
-   "primeira": "2023-03-25T00:27:29Z",
-   "ultima": "2023-03-26T10:00:02Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/ptbrasil/status/1639930197981159429"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "tteuw_",
-   "nome": "tteuw",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 137353,
-   "publicacoes": 1,
-   "visualizacoes": 0,
-   "interacoes": 4654,
-   "primeira": "2022-10-30T22:36:04Z",
-   "ultima": "2022-10-30T22:36:04Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/tteuw_/status/1586849446159171584"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "flferronato",
-   "nome": "Flavia Ferronato",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 777981,
-   "publicacoes": 1,
-   "visualizacoes": 67292,
-   "interacoes": 4597,
-   "primeira": "2023-03-21T23:20:44Z",
-   "ultima": "2023-03-21T23:20:44Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/flferronato/status/1638319760755572736"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "galas_oficial",
-   "nome": "Galãs Feios",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 110568,
-   "publicacoes": 1,
-   "visualizacoes": 83000,
-   "interacoes": 4339,
-   "primeira": "2023-03-21T20:29:53Z",
-   "ultima": "2023-03-21T20:29:53Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/galas_oficial/status/1638276764706263046"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "beruta",
-   "nome": "Robs™ tá com Lula🌵",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 60687,
-   "publicacoes": 2,
-   "visualizacoes": 148458,
-   "interacoes": 4210,
-   "primeira": "2023-03-21T21:27:09Z",
-   "ultima": "2023-03-22T02:28:41Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/beruta/status/1638291178641604608"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "mc_maneirinho",
-   "nome": "MC MANEIRINHO",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 786982,
-   "publicacoes": 3,
-   "visualizacoes": 0,
-   "interacoes": 4072,
-   "primeira": "2022-10-30T10:57:34Z",
-   "ultima": "2022-10-30T23:59:10Z",
-   "termos": [
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/mc_maneirinho/status/1586864697105678337"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Ideiasradicais",
-   "nome": "Raphaël Lima - Ideias Radicais",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 207280,
-   "publicacoes": 2,
-   "visualizacoes": 132644,
-   "interacoes": 3925,
-   "primeira": "2022-11-17T14:26:22Z",
-   "ultima": "2023-03-21T12:10:30Z",
-   "termos": [
-    "outros idiomas",
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/Ideiasradicais/status/1638151091303981056"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "lazarorosa25",
-   "nome": "Lázaro Rosa 🇧🇷",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 353010,
-   "publicacoes": 4,
-   "visualizacoes": 76313,
-   "interacoes": 3509,
-   "primeira": "2023-03-22T14:04:03Z",
-   "ultima": "2023-03-30T02:12:16Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/lazarorosa25/status/1640303167639281664"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "paulobilynskyj1",
-   "nome": "Delegado Paulo Bilynskyj",
-   "numero": "2247",
-   "partido": "PL",
-   "cargo": "Deputado Federal",
-   "uf": "SP",
-   "situacao": "ELEITO POR QP",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 207324,
-   "publicacoes": 1,
-   "visualizacoes": 39553,
-   "interacoes": 3408,
-   "primeira": "2023-03-21T17:37:55Z",
-   "ultima": "2023-03-21T17:37:55Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/paulobilynskyj1/status/1638233491237117971"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "JoaquinTeixeira",
-   "nome": "Joaquin Teixeira",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 1021592,
-   "publicacoes": 1,
-   "visualizacoes": 76495,
-   "interacoes": 3362,
-   "primeira": "2023-03-24T12:07:01Z",
-   "ultima": "2023-03-24T12:07:01Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/JoaquinTeixeira/status/1639237379968970752"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "AdrianaSchmit20",
-   "nome": "Adriana Schmitz",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 76682,
-   "publicacoes": 4,
-   "visualizacoes": 33010,
-   "interacoes": 3300,
-   "primeira": "2023-03-23T13:32:59Z",
-   "ultima": "2023-03-26T03:28:32Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/AdrianaSchmit20/status/1639831674421747713"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "Jakelyneloiola_",
-   "nome": "Jakelyne Loiola",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 176846,
-   "publicacoes": 4,
-   "visualizacoes": 146677,
-   "interacoes": 3180,
-   "primeira": "2023-03-24T20:00:38Z",
-   "ultima": "2023-03-28T15:28:26Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/Jakelyneloiola_/status/1640737620463419399"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "BrasilPost13",
-   "nome": "Na Mira do Repórter.",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 47928,
-   "publicacoes": 3,
-   "visualizacoes": 38428,
-   "interacoes": 3169,
-   "primeira": "2023-03-23T16:27:16Z",
-   "ultima": "2023-03-26T16:43:04Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/BrasilPost13/status/1640031627219697672"
-  },
-  {
-   "tipo": "conta com 10 mil+ seguidores",
-   "rede": "X",
-   "conta": "UOL",
-   "nome": "UOL",
-   "numero": null,
-   "partido": null,
-   "cargo": null,
-   "uf": null,
-   "situacao": null,
-   "posicao_partido_2t": null,
-   "seguidores": 2760436,
-   "publicacoes": 3,
-   "visualizacoes": 69162,
-   "interacoes": 3152,
-   "primeira": "2022-10-30T02:05:08Z",
-   "ultima": "2023-03-30T11:41:45Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)",
-    "origem (até a eleição de 2022)"
-   ],
-   "top_url": "https://x.com/UOL/status/1586539669902266368"
-  },
-  {
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "rede": "X",
-   "conta": "AdrillesRJorge",
-   "nome": "Adrilles Jorge",
-   "numero": "4401",
-   "partido": "UNIÃO",
-   "cargo": "Deputado Federal",
-   "uf": "SP",
-   "situacao": "SUPLENTE",
-   "posicao_partido_2t": "flavio",
-   "seguidores": 1086699,
-   "publicacoes": 1,
-   "visualizacoes": 53151,
-   "interacoes": 3019,
-   "primeira": "2023-03-26T02:48:39Z",
-   "ultima": "2023-03-26T02:48:39Z",
-   "termos": [
-    "virada irônica (posse a março de 2023)"
-   ],
-   "top_url": "https://x.com/AdrillesRJorge/status/1639821638106595329"
   }
  ],
- "atores_total": 743,
+ "atores_total": 926,
  "postagens": [
+  {
+   "rede": "TikTok",
+   "conta": "mindaylee_",
+   "nome": "minday",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@mindaylee_/video/7675732008068205842",
+   "texto": "I just love Vaseline.. #vaseline",
+   "publicado_em": "2026-08-19T13:20:29Z",
+   "interacoes": 3001100,
+   "visualizacoes": 26960417
+  },
+  {
+   "rede": "TikTok",
+   "conta": "ismeiow",
+   "nome": "Ismeiow",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@ismeiow/video/7692805389066374420",
+   "texto": "Fazueli",
+   "publicado_em": "2026-10-04T13:33:57Z",
+   "interacoes": 1905529,
+   "visualizacoes": 5238217
+  },
+  {
+   "rede": "TikTok",
+   "conta": "ptsaopaulo",
+   "nome": "PT São Paulo",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@ptsaopaulo/video/7690577627387579666",
+   "texto": "Faz o L",
+   "publicado_em": "2026-09-28T13:29:02Z",
+   "interacoes": 1086768,
+   "visualizacoes": 5277966
+  },
+  {
+   "rede": "TikTok",
+   "conta": "popzone.brr",
+   "nome": "POPZone",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@popzone.brr/video/7701374938485181716",
+   "texto": "O “fazer o L” está ganhando novos significados para além da política brasileira. Em meio à luta por justiça, democracia e dignidade, o gesto começa a ser associado à resistência à extrema-direita e à esperança de dias melhores em diferentes partes do mundo. Isso é história sendo ",
+   "publicado_em": "2026-10-27T15:48:10Z",
+   "interacoes": 448845,
+   "visualizacoes": 1240500
+  },
+  {
+   "rede": "TikTok",
+   "conta": "sr.cauan",
+   "nome": "Cauan",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@sr.cauan/video/7703325235675729172",
+   "texto": "#lula #presidente #brasil #fazoL #bolsonaro",
+   "publicado_em": "2026-11-01T21:56:22Z",
+   "interacoes": 431377,
+   "visualizacoes": 2091859
+  },
+  {
+   "rede": "TikTok",
+   "conta": "celaasecret",
+   "nome": "celaasecret",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@celaasecret/video/7700625763401403656",
+   "texto": "faz o L!!!! #foryou #politica #fyp",
+   "publicado_em": "2026-10-25T15:21:04Z",
+   "interacoes": 399966,
+   "visualizacoes": 1677146
+  },
+  {
+   "rede": "TikTok",
+   "conta": "_maxpacienza",
+   "nome": "max",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@_maxpacienza/video/7700627448022568213",
+   "texto": "a minha avó fofinha😭 #lula #lulapresidente #eleicoes #fazol #democracia",
+   "publicado_em": "2026-10-25T17:01:00Z",
+   "interacoes": 326321,
+   "visualizacoes": 966215
+  },
+  {
+   "rede": "TikTok",
+   "conta": "_laismelo10",
+   "nome": "Laís",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@_laismelo10/video/7532662550375320838",
+   "texto": "Dancinha do mago, as neiff KKK Faz o L 📍 #neiff #🏳️‍🌈 @laisestevam.00 @ANDERSON NEIFF 👍🏻👎🏿",
+   "publicado_em": "2025-07-30T00:17:55Z",
+   "interacoes": 310915,
+   "visualizacoes": 2742347
+  },
+  {
+   "rede": "TikTok",
+   "conta": "applesauceandadhd",
+   "nome": "Jessica Secrest",
+   "tipo": "conta com 10 mil+ seguidores",
+   "partido": null,
+   "url": "https://www.tiktok.com/@applesauceandadhd/video/7416137300767313198",
+   "texto": "#AggressiveTutorials #AggressiveTutorialLady #AggressiveCookingShow #AggressiveCookingTutorials #Aggrecipes #fazolis #repurposingleftovers #leftoversfordinner",
+   "publicado_em": "2024-09-19T00:00:27Z",
+   "interacoes": 245500,
+   "visualizacoes": 3035589
+  },
+  {
+   "rede": "TikTok",
+   "conta": "mariaarraes",
+   "nome": "Maria Arraes",
+   "tipo": "candidatura (perfil declarado ao TSE)",
+   "partido": "PSB",
+   "url": "https://www.tiktok.com/@mariaarraes/video/7698502714426264852",
+   "texto": "Deixe ele com o Lulinha dele 💁🏻‍♀️ @Presidente Lula",
+   "publicado_em": "2026-10-19T22:02:37Z",
+   "interacoes": 241765,
+   "visualizacoes": 1141116
+  },
   {
    "rede": "X",
    "conta": "pabllovittar",
@@ -1499,172 +1624,52 @@
    "visualizacoes": 0
   },
   {
-   "rede": "X",
-   "conta": "Ludmilla",
-   "nome": "LUDMILLA",
+   "rede": "TikTok",
+   "conta": "vitoriabernardoc",
+   "nome": "Vitoria Bernardo",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://x.com/Ludmilla/status/1586720198907731969",
-   "texto": "Hoje não é dia de fazer uma escolha pensando na SUA realidade. Hoje é dia de fazer uma escolha pensando em menos ódio e na realidade do Brasil que está com fome, sem trabalho e sem acesso ao básico. Bora sair da bolha, galera. Bora ver o Brasil sorrindo de novo. Faz o L!",
-   "publicado_em": "2022-10-30T14:02:29Z",
-   "interacoes": 142042,
-   "visualizacoes": 0
+   "url": "https://www.tiktok.com/@vitoriabernardoc/video/7452428100425534726",
+   "texto": "FAZ O L!🤌🏻 #lula #bolsonaro #fazol #dolar #imposto #taxadashein",
+   "publicado_em": "2024-12-25T19:07:18Z",
+   "interacoes": 176262,
+   "visualizacoes": 1090822
   },
   {
-   "rede": "X",
-   "conta": "choquei",
-   "nome": "CHOQUEI",
+   "rede": "TikTok",
+   "conta": "rayanelima453",
+   "nome": "Rayane Lima",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://x.com/choquei/status/1586726521024151558",
-   "texto": "🚨EXCLUSIVO: Felipe Neto chega na sessão eleitoral, vota em Lula e faz o L. #Eleições2022 https://t.co/mLcP8rgFap",
-   "publicado_em": "2022-10-30T14:27:37Z",
-   "interacoes": 56672,
-   "visualizacoes": 0
+   "url": "https://www.tiktok.com/@rayanelima453/video/7158204126894034182",
+   "texto": "#lulapresidente2022 #lula",
+   "publicado_em": "2022-10-24T22:08:00Z",
+   "interacoes": 167774,
+   "visualizacoes": 3057067
   },
   {
-   "rede": "X",
-   "conta": "npsidoka",
-   "nome": "doka, the glove boy. ‘9",
+   "rede": "TikTok",
+   "conta": "pedacobrasil",
+   "nome": "Pedaço Brasil",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://x.com/npsidoka/status/1586805339491540992",
-   "texto": "fodase eu nao fico em cima de muro sou artista eu vim do nada eu tava no bolsa familia faz o L",
-   "publicado_em": "2022-10-30T19:40:49Z",
-   "interacoes": 50823,
-   "visualizacoes": 0
+   "url": "https://www.tiktok.com/@pedacobrasil/video/7409640304304868614",
+   "texto": "\"A Triste História de Petelino #fyp #promessa #picanha #Brasitolândia #pobreza #abobora #foryou #direita #direitaconservadora #fazueli",
+   "publicado_em": "2024-09-01T11:48:51Z",
+   "interacoes": 162567,
+   "visualizacoes": 1521872
   },
   {
-   "rede": "X",
-   "conta": "PeKelmon",
-   "nome": "Padre Kelmon",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://x.com/PeKelmon/status/1641063690567929856",
-   "texto": "Ele está voltando! Quem não gostou, faz o L e entra na fila para conseguir uma abóbora, porque picanha já ficou óbvio que não vai ter. https://t.co/kfG1x8MplD",
-   "publicado_em": "2023-03-29T13:04:07Z",
-   "interacoes": 33061,
-   "visualizacoes": 386310
-  },
-  {
-   "rede": "X",
-   "conta": "bchartsnet",
-   "nome": "BCharts",
+   "rede": "TikTok",
+   "conta": "apavoradores",
+   "nome": "Apavoradores",
    "tipo": "conta com 10 mil+ seguidores",
    "partido": null,
-   "url": "https://x.com/bchartsnet/status/1586755453215711236",
-   "texto": "Bonita pra caramba, Bruna Marquezine cumpre seu papel de cidadã no Rio de Janeiro, com um belo batom vermelho, e faz o L após sair da cabine de votação. Amamos uma lenda! https://t.co/rG6fWlU85w",
-   "publicado_em": "2022-10-30T16:22:35Z",
-   "interacoes": 26594,
-   "visualizacoes": 0
-  },
-  {
-   "rede": "Instagram",
-   "conta": "gleidsonazevedovmj",
-   "nome": "Gleidson Azevedo",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "REPUBLICANOS",
-   "url": "https://www.instagram.com/p/DfYMNn2vXnV/",
-   "texto": "Fazuéli 🌟",
-   "publicado_em": "2026-11-05T23:17:45Z",
-   "interacoes": 21890,
-   "visualizacoes": 520963
-  },
-  {
-   "rede": "X",
-   "conta": "senadorhumberto",
-   "nome": "Humberto Costa",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PT",
-   "url": "https://x.com/senadorhumberto/status/1638887308630925319",
-   "texto": "A PF de Lula salvou a vida de Moro E essa operação prova por A mais B que Lula governa para todos. FIZ O L PRA ISSO! https://t.co/Tl4oP3ec5V",
-   "publicado_em": "2023-03-23T12:55:58Z",
-   "interacoes": 21107,
-   "visualizacoes": 757236
-  },
-  {
-   "rede": "X",
-   "conta": "albaaoficial",
-   "nome": "Alba",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/albaaoficial/status/1586432472522592256",
-   "texto": "O agro é fascista e o MEI não é emprego. É isso produção. Regulamentação de Uber, iFood, Mídia e dinheiro pra ditadura vizinha. Faz o L.",
-   "publicado_em": "2022-10-29T18:59:10Z",
-   "interacoes": 18934,
-   "visualizacoes": 0
-  },
-  {
-   "rede": "X",
-   "conta": "kimpaim",
-   "nome": "Kim D. Paim",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/kimpaim/status/1640992594527420417",
-   "texto": "🚨BOMBA: Dilmo REVELA que Picanha fatiada na verdade é Coxão Duro e o povo tá sendo feito de besta. Faz o L !!! https://t.co/t0RhgtSaNp",
-   "publicado_em": "2023-03-29T08:21:37Z",
-   "interacoes": 17633,
-   "visualizacoes": 237040
-  },
-  {
-   "rede": "X",
-   "conta": "Dra_Deolane",
-   "nome": "Deolane ⚖️",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/Dra_Deolane/status/1586849063533682688",
-   "texto": "OBRIGADA, BRASIL! E parabéns ao presidente Lula. Que você tenha sabedoria para conduzir nosso país com excelência. Confiamos em você para fazer o povo brasileiro voltar a sorrir! FAZ O L!!!! O bem venceu o mal ⭐️❤️ https://t.co/Hcu2dK75cG",
-   "publicado_em": "2022-10-30T22:34:33Z",
-   "interacoes": 17570,
-   "visualizacoes": 0
-  },
-  {
-   "rede": "X",
-   "conta": "BolsonaroSP",
-   "nome": "Eduardo Bolsonaro🇧🇷",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/BolsonaroSP/status/1639333176551014415",
-   "texto": "Para petista, água deve ser coisa de rico e a cobrança do Lula só afetará a classe média. Faz o L e toca o barco, o amor venceu. https://t.co/As9L0tdRYH",
-   "publicado_em": "2023-03-24T18:27:41Z",
-   "interacoes": 16988,
-   "visualizacoes": 247411
-  },
-  {
-   "rede": "X",
-   "conta": "FlavioBolsonaro",
-   "nome": "Flavio Bolsonaro",
-   "tipo": "candidatura (perfil declarado ao TSE)",
-   "partido": "PL",
-   "url": "https://x.com/FlavioBolsonaro/status/1638868858026053633",
-   "texto": "Na campanha era picanha passada na farinha com uma cervejinha, agora, se você não ajudar a plantar abóbora, vai passar fome… FAZUELI https://t.co/Mb2ipbW6XM",
-   "publicado_em": "2023-03-23T11:42:39Z",
-   "interacoes": 14930,
-   "visualizacoes": 259364
-  },
-  {
-   "rede": "X",
-   "conta": "moreiraviw",
-   "nome": "se a terra não é plana como explica o céu reto?",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/moreiraviw/status/1586850238148612102",
-   "texto": "Faz o L https://t.co/EE5VeWnyXy",
-   "publicado_em": "2022-10-30T22:39:13Z",
-   "interacoes": 12708,
-   "visualizacoes": 0
-  },
-  {
-   "rede": "X",
-   "conta": "UOLNoticias",
-   "nome": "UOL Notícias",
-   "tipo": "conta com 10 mil+ seguidores",
-   "partido": null,
-   "url": "https://x.com/UOLNoticias/status/1641405092937990146",
-   "texto": "Passageiro do mesmo voo de Bolsonaro faz o L no aeroporto: 'Não tenho medo' https://t.co/1qCNSs3ToU",
-   "publicado_em": "2023-03-30T11:40:44Z",
-   "interacoes": 11952,
-   "visualizacoes": 381514
+   "url": "https://www.tiktok.com/@apavoradores/video/7535200679787269432",
+   "texto": "Noticiário Fazuéli 05 de Agosto de 2025",
+   "publicado_em": "2025-08-05T22:00:00Z",
+   "interacoes": 149689,
+   "visualizacoes": 1697928
   }
  ],
  "arquivos": {
