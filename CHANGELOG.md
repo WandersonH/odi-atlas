@@ -4,6 +4,12 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.367 — Dados da CHD com detalhe por palavra, publicados por caso à medida que o build termina (2026-11-08) 🔜
+
+- `build_caso_busca.py` (código de C19.366) rodando em todos os casos com `busca.json`, exceto o 020, sobre os dados do privado de 18h55 UTC. Cada caso entra em commit próprio quando o build dele termina sem erro (`rc=0`), para não publicar arquivo pela metade nem colidir com as execuções automáticas.
+- Junto vêm os GEXF de circulação e de palavras regravados pelo código atual (perfis pequenos do TikTok como código P…).
+- **Teste:** `python -m unittest discover -s tests` a cada commit; conferência final (classes iguais às anteriores, `@` só de contas públicas, 020 intacto) no último commit da série.
+
 ## C19.366 — CHD dos comentários: clique na palavra mostra de onde ela vem (2026-11-08) ⚠️
 
 - Responsável (08/11/2026, 15h04), sobre as classes de discurso dos comentários do YouTube: "seria possível ao clicar ter exemplos do corpus ao clicar sobre a palavra".
