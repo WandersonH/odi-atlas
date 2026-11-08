@@ -1,6 +1,6 @@
 {
  "caso": "018",
- "gerado_em_utc": "2026-11-07T15:14:19Z",
+ "gerado_em_utc": "2026-11-08T15:39:17Z",
  "corte_pos_eleicao": "2026-10-25",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -142,14 +142,14 @@
     "respostas_entre_publicacoes": 148
    },
    "x_agora": {
-    "publicacoes": 1408,
-    "contas": 982,
-    "visualizacoes": 1225960,
-    "curtidas": 78364,
-    "respostas_recebidas": 3047,
-    "compartilhamentos": 25597,
+    "publicacoes": 1427,
+    "contas": 998,
+    "visualizacoes": 1238735,
+    "curtidas": 79296,
+    "respostas_recebidas": 3094,
+    "compartilhamentos": 25949,
     "primeiro_dia": "2026-10-26",
-    "ultimo_dia": "2026-11-06",
+    "ultimo_dia": "2026-11-07",
     "pico": {
      "dia": "2026-10-29",
      "publicacoes": 462
@@ -166,8 +166,9 @@
      55,
      38,
      22,
-     22,
-     29
+     28,
+     36,
+     6
     ],
     "contas_10mil": [
      {
@@ -396,18 +397,18 @@
       39
      ],
      [
-      "brasileiras",
+      "arcabouço",
       17
      ]
     ],
     "agora": [
      [
       "boicote",
-      1173
+      1189
      ],
      [
       "fósforo",
-      214
+      218
      ],
      [
       "giants",
@@ -415,7 +416,7 @@
      ],
      [
       "palito",
-      217
+      221
      ],
      [
       "protocolo",
@@ -427,19 +428,19 @@
      ],
      [
       "listas",
-      92
+      93
+     ],
+     [
+      "compromissos",
+      53
      ],
      [
       "escolher",
       52
      ],
      [
-      "compromissos",
-      51
-     ],
-     [
       "janeiro",
-      114
+      115
      ],
      [
       "investigação",
@@ -458,8 +459,8 @@
       81
      ],
      [
-      "petistas",
-      102
+      "profissionais",
+      43
      ]
     ]
    },
@@ -483,43 +484,43 @@
      "epoca": [],
      "depois": [
       [
-       "maior",
+       "imposto",
        0
       ],
       [
-       "competente",
+       "inteligentes",
        0
       ],
       [
-       "famintos",
+       "bolsonaro",
        0
       ],
       [
-       "melhor",
+       "kkkkk",
        0
       ],
       [
-       "nosso",
+       "esquerda",
        0
       ],
       [
-       "boicotar",
+       "coisa",
        0
       ],
       [
-       "deles",
+       "vergonha",
        0
       ],
       [
-       "estou",
+       "desmatamento",
        0
       ],
       [
-       "existe",
+       "estar",
        0
       ],
       [
-       "kkk",
+       "dizendo",
        0
       ]
      ]
@@ -545,10 +546,10 @@
      "POS": 6.2
     },
     "x_agora": {
-     "n": 1408,
-     "NEG": 48.5,
+     "n": 1427,
+     "NEG": 48.4,
      "NEU": 49.4,
-     "POS": 2.1
+     "POS": 2.2
     },
     "instagram_agora": {
      "n": 89,
@@ -773,14 +774,14 @@
     "respostas_entre_publicacoes": 5
    },
    "x_agora": {
-    "publicacoes": 143,
-    "contas": 123,
-    "visualizacoes": 6657988,
+    "publicacoes": 144,
+    "contas": 124,
+    "visualizacoes": 6658007,
     "curtidas": 84460,
     "respostas_recebidas": 2174,
-    "compartilhamentos": 7132,
+    "compartilhamentos": 7133,
     "primeiro_dia": "2026-10-25",
-    "ultimo_dia": "2026-11-06",
+    "ultimo_dia": "2026-11-07",
     "pico": {
      "dia": "2026-10-27",
      "publicacoes": 34
@@ -799,6 +800,7 @@
      4,
      4,
      2,
+     1,
      1
     ],
     "contas_10mil": [
@@ -971,11 +973,11 @@
       8
      ],
      [
-      "foram",
+      "bloqueio",
       14
      ],
      [
-      "bloqueio",
+      "foram",
       14
      ],
      [
@@ -983,15 +985,15 @@
       7
      ],
      [
+      "afetados",
+      6
+     ],
+     [
       "equilibrar",
       6
      ],
      [
       "arcabouço",
-      6
-     ],
-     [
-      "afetados",
       6
      ],
      [
@@ -1041,23 +1043,15 @@
       14
      ],
      [
-      "senado",
-      14
-     ],
-     [
       "piso",
       14
      ],
      [
-      "reduzir",
-      13
+      "senado",
+      14
      ],
      [
       "instituição",
-      13
-     ],
-     [
-      "verdade",
       13
      ],
      [
@@ -1065,7 +1059,15 @@
       13
      ],
      [
-      "família",
+      "verdade",
+      13
+     ],
+     [
+      "reduzir",
+      13
+     ],
+     [
+      "vídeo",
       12
      ]
     ]
@@ -1078,10 +1080,10 @@
      "POS": 0.0
     },
     "x_agora": {
-     "n": 143,
-     "NEG": 49.7,
-     "NEU": 46.2,
-     "POS": 4.2
+     "n": 144,
+     "NEG": 49.3,
+     "NEU": 45.8,
+     "POS": 4.9
     },
     "instagram_agora": {
      "n": 2,
