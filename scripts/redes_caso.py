@@ -175,9 +175,13 @@ def respostas(rows: list[dict]) -> tuple[dict, dict, dict]:
 ULTIMOS_ROTULOS: list[int] = []
 
 
-def classes(textos: list[str], anos: list[str], grupos: list[str] | None = None, rotulo_grupo: str | None = None) -> dict | None:
+def classes(textos: list[str], anos: list[str], grupos: list[str] | None = None, rotulo_grupo: str | None = None,
+            fontes: list[tuple | None] | None = None) -> dict | None:
     """CHD; com `grupos` (um rótulo por texto: canal, rede, época, língua…), cada classe traz a composição por grupo e o χ² de associação
-    (01/11/2026: formato único com gráfico, pedido do responsável)."""
+    (01/11/2026: formato único com gráfico, pedido do responsável).
+    `fontes` (08/11/2026, pedido "exemplos do corpus ao clicar sobre a palavra"): uma tupla pública (título, canal, url) por texto, ou None
+    quando a fonte não pode ser nomeada. Para cada forma da classe sai quantos textos da classe a usam e os vídeos de onde vêm; o texto
+    dos comentários (pessoas comuns) continua só no privado."""
     import numpy as np
     if len(textos) < 100:
         return None
@@ -200,6 +204,19 @@ def classes(textos: list[str], anos: list[str], grupos: list[str] | None = None,
         out.append({"classe": int(k), "segmentos": int(m.sum()), "pct": round(100 * m.sum() / ok.sum(), 1),
                     "formas": [[voc[j], round(float(ch[j]), 1)] for j in idx],
                     "por_ano": {a: int((m & (anos == a)).sum()) for a in sorted(set(anos.tolist()))}})
+        if fontes is not None:
+            fc = {}
+            Xm = X[m]
+            im = np.flatnonzero(m)
+            for j in idx:
+                col = Xm[:, j]
+                col = col.toarray().ravel() if hasattr(col, "toarray") else np.asarray(col).ravel()
+                tem = im[col > 0]
+                cont = Counter(fontes[i] for i in tem.tolist())
+                sem = cont.pop(None, 0)
+                fc[voc[j]] = {"n": int(len(tem)), "fontes": [[t, c, u, int(q)] for (t, c, u), q in cont.most_common(4)],
+                              "outras_fontes": int(len(tem) - sem - sum(q for _, q in cont.most_common(4))), "sem_nome": int(sem)}
+            out[-1]["formas_corpus"] = fc
         if grupos is not None:
             gr = np.array(grupos)
             comp = {}

@@ -20,6 +20,8 @@ import build_conteudo as bc  # noqa: E402
 import collect_caso_busca as cb  # noqa: E402
 from net import now_utc  # noqa: E402
 
+# 08/11/2026: no 020 os títulos dos vídeos citam o apelido e a condição da criança; a CHD não lista vídeos por palavra
+SEM_FONTES_CHD = {"020"}
 DEBATE_RX = {"005": re.compile(r"crian[çc]a de 5 anos|bala de fuzil|ana clara", re.I)}
 EXCLUIR = set(bc.norm("vc voce voces q ta tá ne né tb tbm pq porque ai aí ja já so só sim nao não ate até la lá ser ter vai vou faz fazer "
                       "tem esta está isso esse essa aqui agora hoje ainda nunca sempre tudo todo toda todos kkk kkkk kkkkk").split())
@@ -132,7 +134,10 @@ def redes(caso: str, c: dict, pv: Path, pasta: Path, vids: set) -> tuple[dict, d
             canais = [nome(vs.get(r["video_id"])) for r in rows]
             top = {k for k, _ in Counter(canais).most_common(4)}
             canais = [k if k in top else "outros canais" for k in canais]
-            cls = rc.classes(textos, [(r.get("publicado_em") or "0000")[:4] for r in rows], canais, "canal do vídeo comentado")
+            # 08/11/2026: fonte pública de cada comentário (vídeo de canal com 10 mil+ inscritos); canal menor fica sem nome
+            fonte = lambda v: (v.get("titulo") or "", v.get("canal") or "", f"https://www.youtube.com/watch?v={v['id']}") if v and (v.get("inscritos") or 0) >= 10000 else None  # noqa: E731
+            cls = rc.classes(textos, [(r.get("publicado_em") or "0000")[:4] for r in rows], canais, "canal do vídeo comentado",
+                             None if caso in SEM_FONTES_CHD else [fonte(vs.get(r["video_id"])) for r in rows])
             (pv / "corpus_iramuteq_comentarios.txt").write_text(rc.corpus_iramuteq(rows), encoding="utf-8")
             # 01/11/2026: classe do Atlas por comentário, na ordem do corpus do IRaMuTeQ (comentários sem texto ficam fora dos dois)
             if cls and len(rc.ULTIMOS_ROTULOS) == len(rows):

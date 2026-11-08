@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.366 — CHD dos comentários: clique na palavra mostra de onde ela vem (2026-11-08) ⚠️
+
+- Responsável (08/11/2026, 15h04), sobre as classes de discurso dos comentários do YouTube: "seria possível ao clicar ter exemplos do corpus ao clicar sobre a palavra".
+- **Como ficou:** cada palavra das classes vira clicável. O clique mostra em quantos comentários da classe ela aparece (n e %) e os até 4 vídeos de onde vêm esses comentários (título, canal, link, quantos comentários), mais o resto em outros vídeos. O texto dos comentários é de pessoas comuns e **não** é publicado: continua só no repositório privado (`classes_atlas_por_comentario.csv.gz` e corpus do IRaMuTeQ).
+  - `redes_caso.classes(..., fontes=)` calcula `formas_corpus` por classe; `build_caso_busca.py` passa como fonte o vídeo de canal com 10 mil+ inscritos. Vídeo de canal menor entra só na contagem ("não nomeados").
+  - **020 fica de fora** (`SEM_FONTES_CHD`): os títulos dos vídeos citam o apelido e a condição da criança (o primeiro build de teste achou 102 ocorrências no detalhe).
+  - 028: os 32 títulos que entrariam no detalhe foram conferidos um a um; nenhum nomeia suspeito.
+- **Teste (build local, dados de 08/11 até ~18h UTC):** `build_caso_busca.py` em 34 casos; as classes saíram idênticas às publicadas (mesmas classes, tamanhos e formas), com 910 títulos distintos no detalhe; página no Chromium (caso 037: 131 palavras clicáveis, abre e fecha, sem erro de JavaScript); `python -m unittest discover -s tests`.
+- **Por que só o código neste commit:** durante o build, as execuções automáticas de 18h50 UTC atualizaram o `busca.json` de todos os casos com comentários novos. Os dados do build local ficaram no ramo local `backup-c19366` (não publicado) e são refeitos a partir dos dados novos no commit seguinte.
+- **Pendente:** dados com o detalhe por palavra (próximo commit); o clique nas outras CHDs (X, Instagram, Facebook, TikTok, Kwai, canais dos candidatos).
+
 ## C19.365 — TikTok do 037 e do 038 (2026-11-08) ✅
 
 - Coleta paga só de TikTok, em `carga` (corrige o disparo em `frases` de C19.363), dentro do teto de US$ 0,30 por caso já autorizado. Runs 42447435764 (037) e 42448755561 (038), saída do coletor:
