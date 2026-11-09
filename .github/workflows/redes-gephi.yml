@@ -35,7 +35,10 @@ jobs:
       - name: Rodar
         run: |
           ARQS=$(ls ${{ github.event.inputs.redes }} 2>/dev/null)
-          echo "$ARQS"
+          # C19.370: casos com mascarar_regex (ex.: 020, criança) não são desenhados no repositório público
+          PROT=$(python -c "import json;d=json.load(open('data/config/casos.json'));d=d if isinstance(d,list) else d.get('casos',list(d.values()));print(' '.join(str(c['id']) for c in d if c.get('mascarar_regex')))")
+          for p in $PROT; do ARQS=$(echo "$ARQS" | grep -v "data/casos/$p/" || true); done
+          echo "$ARQS"; [ -n "$ARQS" ] || { echo "nada a desenhar"; exit 0; }
           sudo apt-get install -y -qq xvfb >/dev/null 2>&1 || true
           xvfb-run -a -s "-screen 0 1920x1080x24" java -Xmx6g --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED -cp "$RUNNER_TEMP/gephi-toolkit.jar:$RUNNER_TEMP/cls" RedesGephi data/redes/gephi $ARQS | tee g.txt
           tail -n 8 g.txt | while IFS= read -r l; do echo "::notice title=Gephi::$(echo "$l" | cut -c1-300)"; done

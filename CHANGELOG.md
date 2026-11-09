@@ -4,6 +4,18 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.370 — Gephi Toolkit em 002–031; 020 fora do público (2026-11-08) ⚠️
+
+- `redes-gephi.yml` despachado caso a caso para 002 a 025 e 027 a 031 (001 e 026 já tinham), só as versões sem data (`*_dinamica.gexf` ficam de fora). Todos os runs terminaram `success`; o primeiro foi 42522141932 (002) e o último 42541902785 (031). Lista dos runs nos commits "Redes no Gephi Toolkit (run …)" do bot.
+- Caso 020 (criança): o run 42535403828 publicou 42 arquivos (PNGs e tabelas de nós e pontes). As tabelas tinham o apelido protegido: 173 ocorrências na contagem pelo `mascarar_regex`, por exemplo 134 em `020_rede_palavras_comentarios_pontes.csv`. Pela regra 8, os 42 arquivos foram **movidos** para o repositório privado (`casos/020/gephi/`, commit 179a0bf) e retirados da árvore pública, sem reescrever o histórico.
+- `redes-gephi.yml`: os casos com `mascarar_regex` são tirados da entrada antes de desenhar, para isso não se repetir.
+- `build_redes_viewer.py` e `build_redes_pagina.py` foram rodados de novo. Os painéis agora apontam 782 imagens do Gephi (contagem nos `redes_viewer.json`). No 020, o `redes_viewer.json` tem 0 ocorrências do apelido.
+- Teste: `python -m unittest discover -s tests` → 296 testes OK.
+- ⛔ Pendente:
+  - 032 a 038 ainda sem desenho no Gephi: a sequência parou no limite de tempo da tarefa em segundo plano depois do 031;
+  - os `.gexf` públicos do 020, que já existiam antes, continuam com o apelido; a decisão é do responsável;
+  - o histórico do git mantém os 42 arquivos do 020, e o histórico só é reescrito com autorização.
+
 ## C19.369 — 001: Instagram e Facebook para o cross entre redes (2026-11-08) ✅
 
 - Run 42518116529 (`casos.yml`, `carga`, Instagram, Facebook e Kwai), dentro dos tetos que já estavam em `casos.json` e não tinham sido gastos. Saída do coletor:
