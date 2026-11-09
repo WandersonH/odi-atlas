@@ -3,44 +3,48 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="termo:fake_news" label="fake news"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="143"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="termo:deepfake" label="deepfake"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="3"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="termo:fake_news" label="fake news"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="201"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:deepfake" label="deepfake"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="7"/><attvalue for="2" value="G2"/></attvalues></node>
 <node id="termo:cheapfake" label="cheapfake / shallowfake"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="0"/><attvalue for="2" value="G4"/></attvalues></node>
-<node id="termo:noticia_falsa" label="notícia falsa"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="14"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="termo:desinformacao" label="desinformação"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="66"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="termo:fake" label="&quot;fake&quot; (sozinho)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="86"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="termo:ia" label="atribuição a IA (&quot;feito com IA&quot;, &quot;isso é IA&quot;)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="43"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="termo:ia_tema" label="inteligência artificial (tema)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="32"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="termo:montagem" label="montagem"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="15"/><attvalue for="2" value="G3"/></attvalues></node>
-<node id="termo:fora_de_contexto" label="fora de contexto / notícia antiga"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="10"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="termo:noticia_falsa" label="notícia falsa"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="22"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:desinformacao" label="desinformação"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="96"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:fake" label="&quot;fake&quot; (sozinho)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="110"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="termo:ia" label="atribuição a IA (&quot;feito com IA&quot;, &quot;isso é IA&quot;)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="52"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="termo:ia_tema" label="inteligência artificial (tema)"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="39"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="termo:montagem" label="montagem"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="19"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="termo:fora_de_contexto" label="fora de contexto / notícia antiga"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="14"/><attvalue for="2" value="G3"/></attvalues></node>
 <node id="termo:editado" label="editado / cortado / acelerado"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="termo:fake" target="termo:fake_news" weight="60"/>
-<edge id="1" source="termo:fake" target="termo:ia" weight="8"/>
-<edge id="2" source="termo:ia" target="termo:ia_tema" weight="22"/>
-<edge id="3" source="termo:fake" target="termo:ia_tema" weight="2"/>
-<edge id="4" source="termo:desinformacao" target="termo:fake_news" weight="49"/>
-<edge id="5" source="termo:desinformacao" target="termo:fake" weight="8"/>
-<edge id="6" source="termo:fake_news" target="termo:noticia_falsa" weight="6"/>
-<edge id="7" source="termo:fake_news" target="termo:fora_de_contexto" weight="5"/>
-<edge id="8" source="termo:fake_news" target="termo:ia" weight="9"/>
+<edge id="0" source="termo:fake" target="termo:fake_news" weight="78"/>
+<edge id="1" source="termo:fake" target="termo:ia" weight="11"/>
+<edge id="2" source="termo:ia" target="termo:ia_tema" weight="23"/>
+<edge id="3" source="termo:fake" target="termo:ia_tema" weight="3"/>
+<edge id="4" source="termo:desinformacao" target="termo:fake_news" weight="73"/>
+<edge id="5" source="termo:desinformacao" target="termo:fake" weight="9"/>
+<edge id="6" source="termo:fake_news" target="termo:noticia_falsa" weight="10"/>
+<edge id="7" source="termo:fake_news" target="termo:fora_de_contexto" weight="9"/>
+<edge id="8" source="termo:fake_news" target="termo:ia" weight="14"/>
 <edge id="9" source="termo:desinformacao" target="termo:ia" weight="3"/>
-<edge id="10" source="termo:desinformacao" target="termo:noticia_falsa" weight="5"/>
-<edge id="11" source="termo:fake_news" target="termo:ia_tema" weight="4"/>
+<edge id="10" source="termo:desinformacao" target="termo:noticia_falsa" weight="8"/>
+<edge id="11" source="termo:fake_news" target="termo:ia_tema" weight="5"/>
 <edge id="12" source="termo:fake" target="termo:noticia_falsa" weight="3"/>
-<edge id="13" source="termo:fake" target="termo:montagem" weight="3"/>
-<edge id="14" source="termo:fake_news" target="termo:montagem" weight="8"/>
-<edge id="15" source="termo:ia_tema" target="termo:montagem" weight="2"/>
+<edge id="13" source="termo:fake" target="termo:montagem" weight="4"/>
+<edge id="14" source="termo:fake_news" target="termo:montagem" weight="9"/>
+<edge id="15" source="termo:ia_tema" target="termo:montagem" weight="3"/>
 <edge id="16" source="termo:desinformacao" target="termo:fora_de_contexto" weight="1"/>
-<edge id="17" source="termo:deepfake" target="termo:fake_news" weight="1"/>
-<edge id="18" source="termo:deepfake" target="termo:ia_tema" weight="1"/>
+<edge id="17" source="termo:deepfake" target="termo:fake_news" weight="2"/>
+<edge id="18" source="termo:deepfake" target="termo:ia_tema" weight="2"/>
 <edge id="19" source="termo:ia" target="termo:montagem" weight="1"/>
 <edge id="20" source="termo:fora_de_contexto" target="termo:ia_tema" weight="1"/>
 <edge id="21" source="termo:editado" target="termo:fake_news" weight="1"/>
 <edge id="22" source="termo:fora_de_contexto" target="termo:montagem" weight="1"/>
 <edge id="23" source="termo:deepfake" target="termo:fake" weight="1"/>
-<edge id="24" source="termo:fake" target="termo:fora_de_contexto" weight="1"/>
-<edge id="25" source="termo:editado" target="termo:fora_de_contexto" weight="1"/>
+<edge id="24" source="termo:deepfake" target="termo:montagem" weight="1"/>
+<edge id="25" source="termo:fake" target="termo:fora_de_contexto" weight="1"/>
+<edge id="26" source="termo:desinformacao" target="termo:ia_tema" weight="1"/>
+<edge id="27" source="termo:ia_tema" target="termo:noticia_falsa" weight="1"/>
+<edge id="28" source="termo:editado" target="termo:fora_de_contexto" weight="1"/>
+<edge id="29" source="termo:deepfake" target="termo:desinformacao" weight="1"/>
 </edges>
 </graph>
 </gexf>
