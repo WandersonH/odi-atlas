@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-influenciadores-youtube",
-  "run_started_utc": "2026-11-08T16:45:33Z",
+  "run_started_utc": "2026-11-09T20:52:11Z",
   "config": {
     "nota": "Canais do YouTube (fora das campanhas) que publicaram vídeos citando Lula ou Flávio Bolsonaro. 'Cita' não quer dizer 'apoia': o vídeo pode ser a favor, contra ou neutro. Só entram canais públicos com min_inscritos ou mais (perfil de influenciador/veículo, não pessoa comum).",
     "desde": "2026-08-16",
@@ -113,23 +113,23 @@
       "ordem": "viewCount",
       "desde": "2026-08-16T00:00:00Z",
       "paginas": 4,
-      "videos": 200
+      "videos": 0
     },
     {
       "candidato": "Lula",
       "q": "Lula",
       "ordem": "viewCount",
-      "desde": "2026-11-01T16:45:33Z",
+      "desde": "2026-11-02T20:52:11Z",
       "paginas": 2,
-      "videos": 100
+      "videos": 0
     },
     {
       "candidato": "Lula",
       "q": "Lula",
       "ordem": "date",
-      "desde": "2026-11-05T16:45:33Z",
+      "desde": "2026-11-06T20:52:11Z",
       "paginas": 4,
-      "videos": 200
+      "videos": 0
     },
     {
       "candidato": "Flávio Bolsonaro",
@@ -137,13 +137,13 @@
       "ordem": "viewCount",
       "desde": "2026-08-16T00:00:00Z",
       "paginas": 4,
-      "videos": 200
+      "videos": 0
     },
     {
       "candidato": "Flávio Bolsonaro",
       "q": "Flávio Bolsonaro",
       "ordem": "viewCount",
-      "desde": "2026-11-01T16:45:33Z",
+      "desde": "2026-11-02T20:52:11Z",
       "paginas": 2,
       "videos": 0
     },
@@ -151,30 +151,36 @@
       "candidato": "Flávio Bolsonaro",
       "q": "Flávio Bolsonaro",
       "ordem": "date",
-      "desde": "2026-11-05T16:45:33Z",
+      "desde": "2026-11-06T20:52:11Z",
       "paginas": 4,
       "videos": 0
     }
   ],
-  "blocked": [],
+  "blocked": [
+    "nenhum vídeo retornado pela busca"
+  ],
   "warnings": [
+    "busca 'Lula' viewCount: HTTPError: HTTP Error 429: Too Many Requests",
+    "busca 'Lula' viewCount: HTTPError: HTTP Error 429: Too Many Requests",
+    "busca 'Lula' date: HTTPError: HTTP Error 429: Too Many Requests",
+    "busca 'Flávio Bolsonaro' viewCount: HTTPError: HTTP Error 429: Too Many Requests",
     "busca 'Flávio Bolsonaro' viewCount: HTTPError: HTTP Error 429: Too Many Requests",
     "busca 'Flávio Bolsonaro' date: HTTPError: HTTP Error 429: Too Many Requests"
   ],
-  "status": "ok",
-  "cota_usada": 1748,
-  "videos_retornados": 659,
-  "videos_detalhados": 659,
+  "status": "bloqueado",
+  "cota_usada": 834,
+  "videos_retornados": 0,
+  "videos_detalhados": 0,
   "videos_acumulados": 7840,
   "videos_validos": 7477,
   "exclusoes": {
-    "categoria 20": 57,
-    "categoria 26": 20,
     "canal de campanha (declarado ao TSE)": 114,
-    "sem menção no título/descrição": 23,
-    "categoria 10": 87,
+    "categoria 20": 57,
+    "termo de exclusão": 8,
     "categoria 17": 54,
-    "termo de exclusão": 8
+    "categoria 26": 20,
+    "sem menção no título/descrição": 23,
+    "categoria 10": 87
   },
   "canais_validos": 1660,
   "canais_com_dados": 1660
