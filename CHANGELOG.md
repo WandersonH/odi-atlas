@@ -4,6 +4,24 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.372 — Gephi Toolkit em 020 e 032–038 (2026-11-09) ✅
+
+- `redes-gephi.yml` despachado caso a caso, com autorização do responsável de 09/11. Todos os runs terminaram `success`:
+  - 020: run 42629125063, 6 redes, a partir dos GEXF já anonimizados (C19.371);
+  - 032: 42630066040;
+  - 033: 42631045177;
+  - 034: 42631946588;
+  - 035: 42632620215;
+  - 036: 42633174205;
+  - 037: 42633957432;
+  - 038: 42634640407.
+- PNGs por caso em `data/redes/gephi/`: 020 30, 032 13, 033 25, 034 15, 035 25, 036 25, 037 19, 038 20.
+- Painéis refeitos com `build_redes_viewer.py --caso` e `build_redes_pagina.py`. Os `redes_viewer.json` passam a apontar 919 imagens do Gephi (eram 782).
+- Testes:
+  - `anonimizar_publico.py --verificar` depois dos runs → 0 ocorrências, incluindo as tabelas `020_*_nos_gephi.csv` e `020_*_pontes.csv`;
+  - `python -m unittest discover -s tests` → OK.
+- Com isso, os 38 casos têm desenho no Gephi.
+
 ## C19.371 — 020: redes públicas com a criança anonimizada (2026-11-09) ⚠️
 
 - Pedido do responsável (09/11, 10h42): "manteria anonimizado nome dele mais exibiria as redes". Também autorizou o Gephi para 032 a 038.
