@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.371 — 020: redes públicas com a criança anonimizada (2026-11-09) ⚠️
+
+- Pedido do responsável (09/11, 10h42): "manteria anonimizado nome dele mais exibiria as redes". Também autorizou o Gephi para 032 a 038.
+- Novo `scripts/anonimizar_publico.py`. Ele usa o novo campo `anonimizar_publico_regex` de `casos.json`, a mesma expressão do visualizador: apelido e variações, "bombons" e a condição de saúde citada pela imprensa.
+  - Nos GEXF, o nó que casa com a expressão vira `crianca_<n>`, com o rótulo "[referência à criança]"; as ligações seguem o novo id. Nós diferentes não se fundem; há teste para isso.
+  - Nos demais textos, cada ocorrência vira "[…]".
+- Aplicado agora em 22 arquivos públicos do 020 (as 7 redes `.gexf`, `caso.json`, `busca.json`, `google.json`, manifestos e outros). Pela regra 8, os originais foram copiados antes para o repositório privado (`casos/020/publico_antes_anonimizacao_20261109/`, commit a4c9b72). O histórico do git não foi reescrito.
+- `scripts/commit_push.sh`, usado por 73 workflows, roda a anonimização antes de todo commit. Se ela falhar, o commit é cancelado.
+- `redes-gephi.yml`: a trava do C19.370 agora deixa o 020 entrar, porque os GEXF chegam anonimizados.
+- `build_casos.py`: o 020 volta a ganhar as redes novas, incluindo a versão com data, na próxima rodada diária.
+- Testes:
+  - `anonimizar_publico.py --verificar` → 0 arquivos com ocorrência;
+  - `networkx.read_gexf` leu os 7 GEXF (rede: 1.141 nós, 40 anonimizados);
+  - `redes_viewer.json` do 020 refeito com 6 redes;
+  - `python -m unittest discover -s tests` → 298 testes OK, 2 novos em `tests/test_anonimizar_publico.py`.
+- ⛔ Pendente:
+  - os desenhos do Gephi do 020 e de 032 a 038 (disparados depois deste commit);
+  - fora da pasta do caso, `data/kwai/manifesto-2026-11-20261107T180201Z.json` e `data/trends/agora/retratos_globo/20261024-0203.json` citam o apelido e não foram mexidos;
+  - o histórico do git guarda as versões antigas.
+
 ## C19.370 — Gephi Toolkit em 002–031; 020 fora do público (2026-11-08) ⚠️
 
 - `redes-gephi.yml` despachado caso a caso para 002 a 025 e 027 a 031 (001 e 026 já tinham), só as versões sem data (`*_dinamica.gexf` ficam de fora). Todos os runs terminaram `success`; o primeiro foi 42522141932 (002) e o último 42541902785 (031). Lista dos runs nos commits "Redes no Gephi Toolkit (run …)" do bot.

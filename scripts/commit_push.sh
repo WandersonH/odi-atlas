@@ -5,6 +5,8 @@ set -u
 msg="$1"
 git config user.name "odi-atlas-coletor"
 git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+# C19.371: casos protegidos (020, criança) saem anonimizados no público; se não for possível, nada é commitado
+[ ! -f scripts/anonimizar_publico.py ] || [ ! -f data/config/casos.json ] || python3 scripts/anonimizar_publico.py || { echo "::error title=anonimizar_publico::arquivo público de caso protegido não pôde ser anonimizado; commit cancelado"; exit 1; }
 git add data/
 if git diff --cached --quiet; then echo "nada novo"; exit 0; fi
 git commit -q -m "$msg"

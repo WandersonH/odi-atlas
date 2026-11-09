@@ -256,7 +256,9 @@ def construir(root: Path, caso: dict, cfg: dict, itens: list[dict]) -> dict:
     # linguagem ofensiva e discurso de ódio): o mesmo laço guarda o dia de cada ligação e, à parte, a rede só das publicações que a
     # triagem automática (intolerancia.py, limiar 0,5, NÃO validada) marcou.
     marca = marcas_intolerancia(caso["id"])
-    protegido = bool(caso.get("mascarar_regex"))  # 020: nenhuma rede pública nova enquanto a rede atual não for revista (criança)
+    # 020 (criança): desde C19.371 as redes saem e scripts/anonimizar_publico.py (rodado no commit_push.sh) troca o que identifica a
+    # criança; sem anonimizar_publico_regex o caso protegido continua sem rede pública nova.
+    protegido = bool(caso.get("mascarar_regex")) and not caso.get("anonimizar_publico_regex")
     nos, arestas = {}, Counter()
     dias = defaultdict(Counter)  # (a, b) → dia → publicações
     nos_of, arestas_of, dias_of, tipo_of = {}, Counter(), defaultdict(Counter), defaultdict(Counter)

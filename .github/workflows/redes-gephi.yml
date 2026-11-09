@@ -35,9 +35,11 @@ jobs:
       - name: Rodar
         run: |
           ARQS=$(ls ${{ github.event.inputs.redes }} 2>/dev/null)
-          # C19.370: casos com mascarar_regex (ex.: 020, criança) não são desenhados no repositório público
-          PROT=$(python -c "import json;d=json.load(open('data/config/casos.json'));d=d if isinstance(d,list) else d.get('casos',list(d.values()));print(' '.join(str(c['id']) for c in d if c.get('mascarar_regex')))")
-          for p in $PROT; do ARQS=$(echo "$ARQS" | grep -v "data/casos/$p/" || true); done
+          # C19.371: casos protegidos (020) só entram com os GEXF já anonimizados (scripts/anonimizar_publico.py); arquivo com ocorrência fica de fora
+          python3 scripts/anonimizar_publico.py
+          if ! python3 scripts/anonimizar_publico.py --verificar; then
+            for p in $(python3 -c "import sys;sys.path.insert(0,'scripts');import anonimizar_publico as a;print(' '.join(a.casos_protegidos()))"); do ARQS=$(echo "$ARQS" | grep -v "data/casos/$p/" || true); done
+          fi
           echo "$ARQS"; [ -n "$ARQS" ] || { echo "nada a desenhar"; exit 0; }
           sudo apt-get install -y -qq xvfb >/dev/null 2>&1 || true
           xvfb-run -a -s "-screen 0 1920x1080x24" java -Xmx6g --add-opens java.base/java.net=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED -cp "$RUNNER_TEMP/gephi-toolkit.jar:$RUNNER_TEMP/cls" RedesGephi data/redes/gephi $ARQS | tee g.txt
