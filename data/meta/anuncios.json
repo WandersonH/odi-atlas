@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-11-09T22:46:18Z",
+ "coletado_em_utc": "2026-11-10T20:05:11Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -9,30 +9,30 @@
    "candidato": "Lula",
    "termo": "Lula",
    "paginas_api": null,
-   "lidos_nesta_execucao": 418,
+   "lidos_nesta_execucao": 449,
    "limite_da_coleta": 900,
    "no_limite": false,
-   "anuncios": 7041,
-   "paginas": 2007,
+   "anuncios": 7113,
+   "paginas": 2025,
    "gasto": {
-    "min": 10393800,
+    "min": 10403500,
     "max": null,
     "faixas_abertas": 3592
    },
    "impressoes": {
-    "min": 762161700,
+    "min": 763569800,
     "max": null,
-    "faixas_abertas": 3914
+    "faixas_abertas": 3915
    },
    "moedas": [
     "BRL"
    ],
    "plataformas": {
-    "instagram": 6908,
-    "facebook": 6116,
-    "audience_network": 2487,
-    "threads": 2289,
-    "whatsapp": 516,
+    "instagram": 6975,
+    "facebook": 6159,
+    "audience_network": 2488,
+    "threads": 2290,
+    "whatsapp": 517,
     "messenger": 67
    },
    "fases": [
@@ -53,9 +53,9 @@
      "rotulo": "Campanha do 1º turno",
      "de": "2026-08-16",
      "ate": "2026-10-04",
-     "anuncios": 508,
+     "anuncios": 510,
      "gasto": {
-      "min": 4540900,
+      "min": 4543400,
       "max": null,
       "faixas_abertas": 230
      }
@@ -67,7 +67,7 @@
      "ate": "2026-10-25",
      "anuncios": 2554,
      "gasto": {
-      "min": 4697900,
+      "min": 4698200,
       "max": null,
       "faixas_abertas": 876
      }
@@ -77,9 +77,9 @@
      "rotulo": "Depois do 2º turno",
      "de": "2026-10-26",
      "ate": "2026-12-31",
-     "anuncios": 3494,
+     "anuncios": 3564,
      "gasto": {
-      "min": 201100,
+      "min": 208000,
       "max": null,
       "faixas_abertas": 2340
      }
@@ -212,14 +212,14 @@
      "pagina": "Edinho Silva",
      "anuncios": 50,
      "gasto": {
-      "min": 163300,
-      "max": 188683,
+      "min": 166700,
+      "max": 192484,
       "faixas_abertas": 0
      },
      "impressoes": {
-      "min": 19491100,
+      "min": 19731100,
       "max": null,
-      "faixas_abertas": 9
+      "faixas_abertas": 10
      },
      "pagadores": [
       "ELEICAO 2026 EDSON ANTONIO EDINHO DA SILVA DEPUTADO FEDERAL 68.373.149/0001-50",
@@ -562,15 +562,15 @@
    "lidos_nesta_execucao": 98,
    "limite_da_coleta": 900,
    "no_limite": false,
-   "anuncios": 3469,
-   "paginas": 723,
+   "anuncios": 3480,
+   "paginas": 727,
    "gasto": {
-    "min": 17182500,
+    "min": 17183100,
     "max": null,
     "faixas_abertas": 221
    },
    "impressoes": {
-    "min": 619941500,
+    "min": 620077600,
     "max": null,
     "faixas_abertas": 510
    },
@@ -578,11 +578,11 @@
     "BRL"
    ],
    "plataformas": {
-    "instagram": 3335,
-    "facebook": 2664,
-    "audience_network": 116,
-    "threads": 97,
-    "whatsapp": 78,
+    "instagram": 3346,
+    "facebook": 2672,
+    "audience_network": 117,
+    "threads": 98,
+    "whatsapp": 79,
     "messenger": 2
    },
    "fases": [
@@ -617,7 +617,7 @@
      "ate": "2026-10-25",
      "anuncios": 2365,
      "gasto": {
-      "min": 10491100,
+      "min": 10491200,
       "max": null,
       "faixas_abertas": 79
      }
@@ -627,9 +627,9 @@
      "rotulo": "Depois do 2º turno",
      "de": "2026-10-26",
      "ate": "2026-12-31",
-     "anuncios": 601,
+     "anuncios": 612,
      "gasto": {
-      "min": 36800,
+      "min": 37300,
       "max": null,
       "faixas_abertas": 136
      }
@@ -1109,24 +1109,24 @@
  "erros": {},
  "modo": "diário",
  "teto_usd": 0.3,
- "gasto_mes_antes_usd": 1.0976,
+ "gasto_mes_antes_usd": 1.1681,
  "runs_apify": [
   {
    "consulta": "lula",
-   "id": "o3NCldyaMJQ3CQj4i",
+   "id": "oASpJeKt29ZeOygZY",
    "status": "SUCCEEDED",
-   "custo_usd": 0.0585,
-   "itens": 418
+   "custo_usd": 0.0645,
+   "itens": 449
   },
   {
    "consulta": "flavio",
-   "id": "Eqq0lK9pK3bvo4hjD",
+   "id": "u56MWLVxONyUlWqda",
    "status": "SUCCEEDED",
-   "custo_usd": 0.012,
+   "custo_usd": 0.0075,
    "itens": 98
   }
  ],
- "janela_desta_execucao": "2026-11-08",
+ "janela_desta_execucao": "2026-11-09",
  "status": "ok",
- "custo_usd": 0.07050000000000001
+ "custo_usd": 0.07200000000000001
 }
