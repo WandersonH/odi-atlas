@@ -158,6 +158,10 @@ def main(argv=None) -> int:
             enviar(url, chave, lote)
         total += n
         print(f"{cid}: {n} textos {'contados' if a.seco else 'enviados'}")
+    if not a.seco:  # nuvem de palavras preparada por caso × rede × tipo (a contagem ao vivo do corpus inteiro passa do limite de 8 s)
+        req = urllib.request.Request(f"{url}/rest/v1/rpc/atualizar_frequencias", data=b"{}", method="POST",
+                                     headers={"apikey": chave, "Authorization": f"Bearer {chave}", "Content-Type": "application/json"})
+        print(f"frequências preparadas: {urllib.request.urlopen(req, timeout=900).read().decode()} linhas")
     print(f"total: {total}" + ("" if a.seco else f" · banco com {tamanho_mb(url, chave)} MB"))
     return 0
 

@@ -4,6 +4,27 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.376 — Área do pesquisador: corpus completo carregado (2026-11-10) ⚠️
+
+- Pedido do responsável (10/11, 15h00): "pode carregar os casos que temos". Depois ele quer reativar o chat do Gemini ligado a este banco.
+- Economia de espaço (migração `area_pesquisador_indice_expressao`, arquivo `20261110c_…`):
+  - sai a coluna `tsv` guardada e entra um índice GIN sobre a expressão `odi_interno.tsv_simples(texto)`;
+  - depois, `VACUUM FULL`: o 001 caiu de 20 MB para 11 MB;
+  - a carga ganhou uma trava: para se o banco passar de 430 MB (`tamanho_banco_mb`, só para o service role).
+- Run 42871168472 → `success`: **529.456 textos de 37 casos** (o 004 não tem corpus), banco com 281,3 MB.
+  - Conferência no banco: 117.072 textos com emoji, 23.163 com autor (contas de 10 mil seguidores ou mais) e 0 ocorrências do que identifica a criança no 020.
+- Desempenho (arquivo `20261110d_…`), porque o usuário logado tem limite de 8 s por consulta:
+  - a frequência de palavras do corpus inteiro levava 19,4 s; agora usa a tabela `odi_interno.freq_palavras`, refeita a cada carga (64.990 linhas, 7,7 MB);
+  - `_filtro` passou a montar o SQL só com os filtros usados: a busca "fraude" no corpus inteiro caiu de 17,5 s para 0,57 s (3.767 textos);
+  - a nuvem de emojis do corpus inteiro leva 1,6 s, a matriz por caso 2,2 s e a busca sem filtro 1,2 s (todos medidos com `explain analyze`).
+- Conferências com `_filtro`: 🤡 nos casos 001 e 013 → 79 textos; "voto impresso" → 422; comentários do YouTube de outubro → 250.769.
+- `carregar_area_pesquisador.py` passa a chamar `atualizar_frequencias` no fim de cada carga.
+- `python -m unittest discover -s tests` → OK.
+- ⛔ Pendente:
+  - `auth.users` ainda vazio: falta o convite do responsável, e o login real continua não testado;
+  - uma frequência de palavras com filtro de data sobre recortes muito grandes (por exemplo, 250 mil comentários) pode passar de 8 s;
+  - o chat do Gemini ligado ao banco fica para a próxima etapa.
+
 ## C19.375 — Área do pesquisador: banco criado e carga de teste do 001 (2026-11-10) ⚠️
 
 - O responsável avisou às 11h12 ("feito pode testar") e a conexão com o banco voltou.
