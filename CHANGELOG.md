@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.375 — Área do pesquisador: banco criado e carga de teste do 001 (2026-11-10) ⚠️
+
+- O responsável avisou às 11h12 ("feito pode testar") e a conexão com o banco voltou.
+- Migrações aplicadas no projeto `vidnoyzechknrqhczmrr`:
+  - `area_pesquisador`, igual a `supabase/migrations/20261110_area_pesquisador.sql`. O `unaccent` foi para o schema `extensions` e a função do gatilho ganhou `search_path`.
+  - `area_pesquisador_funcoes_internas` (`20261110b_…`): `_registrar` e `eh_pesquisador` passam para o schema `odi_interno`, que a API não expõe, por causa do aviso do linter de segurança do Supabase.
+  - Continuam como aviso **intencional** do linter: `aceitar_termo` e `minha_situacao`, que o pesquisador logado chama, e que só leem ou gravam a linha dele mesmo.
+- Run 42832293647 (`area-pesquisador.yml`, caso 001) → `success`, com "001: 23832 textos enviados". No banco:
+  - X: 10.862 posts, 450 com autor de 10 mil seguidores ou mais;
+  - comentários do YouTube: 12.033, sem autor;
+  - Instagram: 419; TikTok: 329, 173 com autor; Facebook: 189;
+  - tabela com 20 MB.
+- ⛔ Espaço: projeção linear para os 529.456 textos (20 MB × 529.456 / 23.832) ≈ 444 MB. O plano gratuito tem limite de 500 MB, então a carga completa **não foi feita**.
+  - Tentei tirar a coluna `tsv` guardada (4 MB dos 9,3 MB da tabela no 001) e indexar a expressão.
+  - A migração `area_pesquisador_indice_expressao` pediu confirmação ao responsável no painel e não teve resposta no tempo. Nada foi aplicado; o banco continua na versão anterior, que funciona.
+- ⛔ `auth.users` está vazio: o convite do responsável ainda não foi feito, e por isso o login real não foi testado.
+
 ## C19.374 — Área do pesquisador com login (2026-11-10) ⛔ banco ainda não criado
 
 - Aprovado pelo responsável em 10/11, às 01h04 ("pode executar") e às 09h53 ("validado"). O CLAUDE.md ganha a regra 11, com a exceção dos textos.

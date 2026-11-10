@@ -3,7 +3,8 @@
 -- neste banco (região sa-east-1), legíveis SÓ por pesquisador convidado, ativo e com o termo aceito.
 -- Autores comuns não entram (autor = @conta só com 10 mil seguidores ou mais); 020 chega anonimizado; 028 sem áudios.
 
-create extension if not exists unaccent;
+create schema if not exists extensions;
+create extension if not exists unaccent with schema extensions;
 
 create table if not exists public.pesquisadores (
   user_id uuid primary key references auth.users(id) on delete cascade,
@@ -35,8 +36,8 @@ create index if not exists corpus_tsv on public.corpus using gin (tsv);
 create index if not exists corpus_emojis on public.corpus using gin (emojis);
 create index if not exists corpus_caso on public.corpus (caso, rede, publicado_em);
 
-create or replace function public.corpus_tsv() returns trigger language plpgsql as $$
-begin new.tsv := to_tsvector('simple', public.unaccent(lower(coalesce(new.texto, '')))); return new; end $$;
+create or replace function public.corpus_tsv() returns trigger language plpgsql set search_path = public as $$
+begin new.tsv := to_tsvector('simple', extensions.unaccent(lower(coalesce(new.texto, '')))); return new; end $$;
 drop trigger if exists corpus_tsv on public.corpus;
 create trigger corpus_tsv before insert or update of texto on public.corpus for each row execute function public.corpus_tsv();
 
@@ -88,7 +89,7 @@ $$;
 create or replace function public._filtro(p_q text, p_emoji text, p_casos text[], p_redes text[], p_fonte text, p_de date, p_ate date)
 returns setof public.corpus language sql stable security invoker set search_path = public as $$
   select c.* from public.corpus c
-  where (p_q is null or p_q = '' or c.tsv @@ websearch_to_tsquery('simple', public.unaccent(lower(p_q))))
+  where (p_q is null or p_q = '' or c.tsv @@ websearch_to_tsquery('simple', extensions.unaccent(lower(p_q))))
     and (p_emoji is null or p_emoji = '' or c.emojis @> array[p_emoji])
     and (p_casos is null or cardinality(p_casos) = 0 or c.caso = any(p_casos))
     and (p_redes is null or cardinality(p_redes) = 0 or c.rede = any(p_redes))
