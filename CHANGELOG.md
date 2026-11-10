@@ -4,6 +4,34 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.373 — Emojis e palavras em cada caso (2026-11-10) ⚠️
+
+- Pedido do responsável (10/11, 00h37–01h15): um mapa de emojis dos comentários com classificação automática, depois validada por pesquisadores. Os métodos úteis do NVivo (frequência, nuvem, matriz) entram na página, e o bloco fica logo acima da metodologia.
+- Novo `scripts/emojis_caso.py`. Ele lê do privado os posts e os comentários do YouTube e do Instagram e grava `data/casos/<id>/emojis.json`, só com contagens:
+  - universo informado por fonte; para os comentários do YouTube, a soma que o YouTube informa nos vídeos lidos; nas buscas de posts, ⛔;
+  - textos lidos e textos com emoji;
+  - os 120 emojis mais usados, com as variantes unidas (❤ = ❤️, tons de pele somados);
+  - para cada emoji: nome em português (CLDR), posição no texto (Paiva, 2016), % repetido em sequência, divisão por fonte e escore do Emoji Sentiment Ranking (Kralj Novak et al., 2015, `data/config/emoji_sentiment_ranking_v1.csv`, copiado do pacote emosent-py; licença original ⛔ a confirmar no CLARIN);
+  - nuvem de palavras com a função das nuvens do YouTube, sem os termos de busca do caso, sem @ e sem links.
+- Rodado nos 37 casos com corpus (o 004 não tem). Saída do script, por exemplo: 001 com 23.853 textos e 6.165 com emoji (25,8%); 019 com 23.081 e 825 (3,6%).
+- Página: novo bloco "06b · Emojis e palavras", logo acima da metodologia. Traz:
+  - a tabela de universo e amostra;
+  - os botões de fonte;
+  - o mapa de emojis clicável (contagens, posição, sentimento, "sugestão automática · não validada");
+  - a nuvem de palavras;
+  - a barra de posição;
+  - a matriz dos 15 emojis mais usados × fonte.
+- `casos.yml` instala `emoji==2.16.0` e roda o script todo dia.
+- Testes:
+  - Playwright em 1300 px e 390 px: o bloco aparece em 001, 019, 020 e 037, logo antes da metodologia, sem erro de JavaScript e sem rolagem lateral no celular;
+  - `anonimizar_publico.py --verificar` → 0 ocorrências;
+  - `python -m unittest discover -s tests` → OK, com 2 testes novos em `tests/test_emojis_caso.py`.
+- ⛔ Pendente:
+  - a validação humana: livro de códigos, rodadas com 2 ou 3 pesquisadores e concordância;
+  - o campo `tipo` dos casos, à espera da revisão do responsável;
+  - a área do pesquisador com login;
+  - o 034 não tem dossiê na página, então o bloco não aparece nele.
+
 ## C19.372 — Gephi Toolkit em 020 e 032–038 (2026-11-09) ✅
 
 - `redes-gephi.yml` despachado caso a caso, com autorização do responsável de 09/11. Todos os runs terminaram `success`:

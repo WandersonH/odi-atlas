@@ -2467,6 +2467,7 @@ function caso(c,p){const mz=c.marco_zero&&c.marco_zero.geral;const bn=REDES.map(
   <div class="card"><div class="eyebrow">06 · Palavras e tom</div><h2 class="tk-h2">O que aparece nas publicações</h2><div class="cs-words">${pal||'—'}</div><p class="yt-cloudnote">Palavras e pares em pelo menos 3 publicações (sem os próprios termos do caso); tamanho = número de publicações.</p>
    <p class="yt-cloudnote"><b>Tom da audiência:</b> ${esc(c.tom_motivo||'—')}</p>
    ${(g.titulos||[]).length?`<div class="eyebrow" style="margin-top:10px">Imprensa · primeiros títulos</div><table class="cs-tab cs-news">${g.titulos.slice(0,8).map(t=>`<tr><td>${br(t.data_publicacao)}</td><td><a href="${esc(t.link)}" target="_blank" rel="noopener noreferrer">${esc(t.titulo)}</a> <span style="color:#69768a">· ${esc(t.veiculo)}</span></td></tr>`).join('')}</table>`:''}</div></div>
+ <div id="ce06_${esc(c.id)}"></div>
  ${odiMet07(c.id,`<h4>Estado da última coleta em cada rede</h4><ul>${met}</ul><p>${esc(c.privacidade||'')}</p><p>O que não é coberto: WhatsApp privado e buscas por voz (sem fonte pública). Cada rede devolve só parte do que existe; "no limite" quer dizer que a coleta parou no máximo pedido. Os números são da coleta de ${br(c.coletado_em)} e mudam a cada nova coleta.</p>
   <p class="yt-cloudnote"><a href="./data/casos/${esc(c.id)}/caso.json" download>↓ Agregados do caso (JSON)</a></p>`)}`;}
 /* 08/11/2026 (pedido "tem 2 áreas de metodologia, mantenha só a do fim da página, leve as outras infos pra lá"): o antigo
@@ -2528,6 +2529,7 @@ async function dossie(id,host){const meta=IDX.casos.find(c=>c.id===id);if(!meta|
  // 08/11/2026 ("essas aqui que sumiram"): linha do tempo em bolhas (cada bolha é um post) em todo caso com dossiê; antes só nos 15 casos montados entre 29/10 e 02/11
  if(!document.getElementById('cb'+id+'Graficos')&&typeof montarGraficosCaso==='function'){host.insertAdjacentHTML('beforeend',`<div id="cb${id}Graficos"></div>`);montarGraficosCaso(id);}
  if(typeof montarRedesCaso==='function')setTimeout(()=>montarRedesCaso(id),0); // 08/11/2026: o desenho volta ao card 05
+ if(typeof montarEmojisCaso==='function')setTimeout(()=>montarEmojisCaso(id),0); // 10/11/2026 (C19.373): emojis e palavras
  if(id!=='014'&&typeof montarCandidatosCaso==='function')montarCandidatosCaso(id,$(p+'Cand'));
  if(id==='022')J('./data/tse/auditoria_urna/2t/resumo.json').then(U=>{const el=$(p+'Atores');if(el&&U)el.insertAdjacentHTML('beforebegin',urnaHtml(U));});
  J(`./data/casos/${id}/atores.json`).then(A=>{const el=$(p+'Atores');if(el&&A)el.innerHTML=atoresHtml(A,id);});
@@ -4183,7 +4185,7 @@ function montarMetodologia(caso){const sec=document.getElementById('caso'+caso);
    <h4>Limites</h4>${li(m.limites)}
    <details><summary>Busca exata em cada rede</summary><ul>${tr}</ul></details>
    <details><summary>Desenho comum a todos os casos</summary><p><b>Desenho.</b> ${esc(c.desenho)}</p><p><b>Por que palavra-chave.</b> ${esc(c.por_que_palavra_chave)}</p><p><b>Universo.</b> ${esc(c.universo)}</p><p><b>Validade.</b> ${esc(c.validade)}</p><p><b>Ética.</b> ${esc(c.etica)}</p><h4>Referências metodológicas</h4><ul>${refs}</ul></details>`;
-  sec.appendChild(box);}).catch(()=>{});}
+  sec.appendChild(box);const em=document.getElementById('ce06_'+caso);if(em)sec.insertBefore(em,box); /* 10/11: emojis logo acima do método */}).catch(()=>{});}
 /* 07/11/2026 (C19.354): caso 037, termos por língua e uso do bordão (data/casos/037/idiomas.json) */
 function montarIdiomas037(){const sec=document.getElementById('caso037');if(!sec)return;
  const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -7829,5 +7831,55 @@ function draw(){const C=U.consultas.find(c=>c.termo===termo&&c.janela===jan);
  el.querySelectorAll('#tdUfJ button').forEach(b=>b.addEventListener('click',()=>{jan=b.dataset.v;draw();}));}
 fetch('./data/termos/desinformacao.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(D=>{U=D&&D.trends_uf;if(!U){el.innerHTML='<div class="td-card"><div class="eyebrow">Google Trends · interesse por estado</div><div class="odi-signal">⛔ Leitura por estado ainda não feita.</div></div>';return;}jan=U.janelas[0].id;draw();}).catch(()=>{});
 })();
+</script>
+<style>
+/* 10/11/2026 (C19.373): emojis e palavras dos textos de cada caso */
+.em-card{margin-top:16px}.em-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;margin-top:10px}
+@media(max-width:820px){.em-grid{grid-template-columns:1fr}}
+.em-cloud{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;line-height:1.1;min-height:60px}
+.em-cloud button{background:none;border:0;padding:2px 3px;cursor:pointer;border-radius:6px;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.em-cloud button:hover,.em-cloud button[aria-pressed=true]{background:var(--sky);outline:1px solid var(--line)}
+.em-words .yt-word{color:var(--ink);margin:0 6px 4px 0;display:inline-block;white-space:normal;overflow-wrap:anywhere}
+.em-pos{display:flex;height:16px;border-radius:3px;overflow:hidden;margin:6px 0 4px;background:var(--slate)}.em-pos span{display:block;height:100%}
+.em-leg{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--muted)}.em-leg i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.em-det{border:1px solid var(--line);background:var(--bg);padding:10px 12px;margin-top:10px;font-size:13px}.em-det h4{margin:0 0 4px;font:700 16px Georgia,serif}
+.em-det .em-big{font-size:34px;float:right;line-height:1;margin-left:8px}
+.em-tag{display:inline-block;font-size:11px;padding:1px 6px;border:1px dashed var(--muted);color:var(--muted);border-radius:3px;margin-left:6px}
+.em-mx{overflow-x:auto;margin-top:8px}.em-mx table{border-collapse:collapse;font-size:12px;min-width:100%}.em-mx th,.em-mx td{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.em-mx th:first-child,.em-mx td:first-child{text-align:left}.em-mx td.e{font-size:18px;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}.em-det .em-big{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.em-univ{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0}.em-univ th,.em-univ td{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}.em-univ th:first-child,.em-univ td:first-child{text-align:left}
+</style>
+<script>
+/* 10/11/2026 (C19.373): mapa de emojis e nuvem de palavras de cada caso (data/casos/<id>/emojis.json — só contagens; os textos ficam no privado).
+   Classificação automática = SUGESTÃO até a validação dos pesquisadores. */
+function montarEmojisCaso(caso){const el=document.getElementById('ce06_'+caso);if(!el||el.dataset.feito)return;el.dataset.feito='1';
+ const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const nf=(v,d=0)=>v==null?'—':Number(v).toLocaleString('pt-BR',{maximumFractionDigits:d,minimumFractionDigits:d});const pc=v=>v==null?'—':nf(v,1)+'%';
+ const POS=[['início','#1f6fb2'],['meio','#d7a14a'],['fim','#c8102e'],['só emoji','#1f8a3b']];
+ const sent=v=>v==null?'<span title="Emoji fora do Emoji Sentiment Ranking (Kralj Novak et al., 2015)">⛔ sem escore</span>':`${v>0?'+':''}${nf(v,2)} · ${v>=0.3?'positivo':v<=-0.1?'negativo':'neutro/ambíguo'}`;
+ fetch(`./data/casos/${caso}/emojis.json`,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(D=>{if(!D||!D.emojis||!D.emojis.length){el.innerHTML='';return;}
+  const T=D.total,F=D.fontes;let fonte='Todas',sel=null;
+  const occF=f=>f==='Todas'?T.ocorrencias:(F.find(x=>x.fonte===f)||{}).ocorrencias||0;
+  const lista=()=>D.emojis.map(e=>({...e,n:fonte==='Todas'?e.ocorrencias:(e.por_fonte[fonte]||0)})).filter(e=>e.n>0).sort((a,b)=>b.n-a.n);
+  const univ=`<table class="em-univ"><tr><th>Fonte</th><th>Universo informado</th><th>Textos lidos</th><th>% lido</th><th>Com emoji</th></tr>${F.map(f=>`<tr><td>${esc(f.fonte)}</td><td>${f.universo!=null?nf(f.universo):'⛔ não informado'}</td><td>${nf(f.lidos)}</td><td>${f.universo?pc(100*f.lidos/f.universo):'⛔'}</td><td>${nf(f.com_emoji)} (${pc(100*f.com_emoji/Math.max(f.lidos,1))})</td></tr>`).join('')}<tr><td><b>Total</b></td><td></td><td><b>${nf(T.lidos)}</b></td><td></td><td><b>${nf(T.com_emoji)} (${pc(T.pct_com_emoji)})</b></td></tr></table><p class="yt-cloudnote">Universo: ${[...new Set(F.map(f=>f.universo_fonte))].map(esc).join(' · ')}. Amostra: todos os textos já coletados no caso (posts das buscas e comentários lidos), sem sorteio. Percentuais valem para a amostra lida.</p>`;
+  const nuvemE=()=>{const l=lista().slice(0,90);if(!l.length)return '<p class="yt-cloudnote">Sem emojis nesta fonte.</p>';const mx=l[0].n,mn=l[l.length-1].n;return l.map(e=>{const r=mx===mn?1:Math.sqrt((e.n-mn)/(mx-mn));return `<button type="button" data-em="${esc(e.e)}" aria-pressed="${sel===e.e}" style="font-size:${(16+r*34).toFixed(0)}px" title="${esc(e.nome||e.e)}: ${nf(e.n)} ocorrências">${esc(e.e)}</button>`;}).join('');};
+  const nuvemP=()=>{const l=(D.palavras||{})[fonte]||[];if(!l.length)return '<p class="yt-cloudnote">Sem palavras suficientes nesta fonte (mínimo de 30 textos e de 3 textos por palavra).</p>';const mx=l[0][1],mn=l[l.length-1][1];return [...l].sort((a,b)=>a[0].localeCompare(b[0],'pt')).map(([t,n])=>{const r=mx===mn?1:(n-mn)/(mx-mn);return `<span class="yt-word" style="font-size:${(12+Math.sqrt(r)*24).toFixed(1)}px;opacity:${(0.55+r*0.45).toFixed(2)}" title="${esc(t)}: ${nf(n)} textos">${esc(t)}</span>`;}).join('');};
+  const barra=p=>{const s=POS.reduce((a,[k])=>a+(p[k]||0),0)||1;return `<div class="em-pos" role="img" aria-label="Posição no texto">${POS.map(([k,c])=>p[k]?`<span style="width:${100*p[k]/s}%;background:${c}" title="${k}: ${nf(p[k])} (${pc(100*p[k]/s)})"></span>`:'').join('')}</div><div class="em-leg">${POS.map(([k,c])=>`<span><i style="background:${c}"></i>${k} ${pc(100*(p[k]||0)/s)}</span>`).join('')}</div>`;};
+  const det=()=>{const e=D.emojis.find(x=>x.e===sel);if(!e)return '<p class="yt-cloudnote">Clique num emoji para ver contagens, posição no texto e sentimento.</p>';
+   return `<div class="em-det"><span class="em-big">${esc(e.e)}</span><h4>${esc(e.nome||'(sem nome CLDR)')}<span class="em-tag">sugestão automática · não validada</span></h4>
+   <p>${nf(e.ocorrencias)} ocorrências em ${nf(e.textos)} textos (${pc(e.pct_textos_lidos)} dos textos lidos). Repetido em sequência (😂😂, intensificador): ${pc(e.repeticao_pct)} das ocorrências.</p>
+   <p><b>Sentimento (Emoji Sentiment Ranking):</b> ${sent(e.sentimento)}</p><p style="margin:6px 0 0"><b>Posição no texto</b> (nível sintático)</p>${barra(e.posicao||{})}
+   <p style="margin:8px 0 0"><b>Por fonte:</b> ${Object.entries(e.por_fonte).map(([f,n])=>`${esc(f)} ${nf(n)} (${pc(100*n/Math.max(occF(f),1))} das ocorrências da fonte)`).join(' · ')}</p></div>`;};
+  const matriz=()=>{const top=D.emojis.slice(0,15),fs=F.filter(f=>f.ocorrencias>0);return `<div class="em-mx"><table><tr><th>Emoji</th>${fs.map(f=>`<th>${esc(f.fonte)}</th>`).join('')}<th>Sentimento</th></tr>${top.map(e=>`<tr><td class="e" title="${esc(e.nome||'')}">${esc(e.e)}</td>${fs.map(f=>{const n=e.por_fonte[f.fonte]||0;return `<td title="${nf(n)} ocorrências">${n?pc(100*n/f.ocorrencias):'—'}</td>`;}).join('')}<td>${e.sentimento==null?'⛔':(e.sentimento>0?'+':'')+nf(e.sentimento,2)}</td></tr>`).join('')}</table></div><p class="yt-cloudnote">Matriz (como a de codificação do NVivo): % das ocorrências de emoji de cada fonte que cabem a cada um dos 15 emojis mais usados no caso.</p>`;};
+  const pintar=()=>{el.innerHTML=`<div class="card em-card"><div class="eyebrow">06b · Emojis e palavras</div><h2 class="tk-h2">Os emojis e as palavras dos textos do caso</h2>${univ}
+   <div class="pt-chips" role="group" aria-label="Fonte">${['Todas',...F.map(f=>f.fonte)].map(f=>`<button type="button" data-emf="${esc(f)}" aria-pressed="${f===fonte}">${esc(f)}</button>`).join('')}</div>
+   <div class="em-grid"><div><div class="eyebrow">Mapa de emojis${fonte==='Todas'?'':' · '+esc(fonte)}</div><div class="em-cloud">${nuvemE()}</div><div id="ce06d_${esc(caso)}">${det()}</div></div>
+   <div><div class="eyebrow">Nuvem de palavras${fonte==='Todas'?'':' · '+esc(fonte)}</div><div class="em-words">${nuvemP()}</div>
+   <div class="eyebrow" style="margin-top:12px">Posição dos emojis no texto · caso inteiro</div>${barra(D.posicao||{})}
+   <p class="yt-cloudnote">${nf(T.ocorrencias)} ocorrências de ${nf(T.distintos)} emojis distintos. O ranking de sentimento cobre ${pc(T.cobertura_sentimento_pct)} das ocorrências.</p></div></div>
+   ${matriz()}<p class="yt-cloudnote"><b>⚠ ${esc(D.aviso)}</b> ${esc(D.metodo)}</p></div>`;
+   el.querySelectorAll('[data-emf]').forEach(b=>b.onclick=()=>{fonte=b.dataset.emf;pintar();});
+   el.querySelectorAll('[data-em]').forEach(b=>b.onclick=()=>{sel=sel===b.dataset.em?null:b.dataset.em;el.querySelectorAll('[data-em]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.em===sel));document.getElementById('ce06d_'+caso).innerHTML=det();});};
+  pintar();const m=document.getElementById('cb'+caso+'Metodo');if(m&&m.parentNode)m.parentNode.insertBefore(el,m); /* pedido de 10/11: logo acima do método */}).catch(()=>{el.innerHTML='';});}
 </script>
 </body></html>

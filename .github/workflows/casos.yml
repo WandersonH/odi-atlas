@@ -36,7 +36,7 @@ jobs:
           python-version: "3.12"
       - name: Dependências
         run: |
-          pip install -q networkx==3.6.1 numpy==2.3.4 playwright
+          pip install -q networkx==3.6.1 numpy==2.3.4 playwright emoji==2.16.0
           python -m playwright install --with-deps chromium > /dev/null 2>&1
       - name: Testes
         run: scripts/testes_ci.sh
@@ -114,6 +114,8 @@ jobs:
           for d in data/casos/[0-9][0-9][0-9]; do c=$(basename $d)
             if [ ! -f "data/config/livro_codigos_caso$c.json" ] && [ -f "$ODI_INTERNO_DIR/casos/$c/itens.csv.gz" ]; then python scripts/build_bardin_caso.py --caso "$c" >> b.txt 2>&1 || rc=1; fi
           done
+          # 10/11/2026 (C19.373): emojis e palavras dos textos de cada caso (só contagens no público)
+          python scripts/emojis_caso.py >> b.txt 2>&1 || rc=1
           while IFS= read -r l; do echo "::notice title=Casos agregados::$(echo "$l" | cut -c1-600)"; done < b.txt
           exit $rc
       - name: Gravar no repositório privado
