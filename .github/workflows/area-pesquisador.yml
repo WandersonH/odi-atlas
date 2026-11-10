@@ -1,0 +1,51 @@
+name: Área do pesquisador — carga do corpus no Supabase (C19.374)
+
+# Envia ao banco da área do pesquisador (public.corpus, protegido por login e RLS) os posts e comentários lidos de cada
+# caso, a partir do repositório privado. Nenhuma chave no código: SUPABASE_SERVICE_ROLE_KEY vem dos secrets do GitHub
+# (cadastrado pelo responsável). Autores comuns não vão; 020 vai anonimizado. Sem custo de coleta.
+on:
+  schedule:
+    - cron: "41 13 * * *"   # todo dia, 10h41 em Brasília, depois da coleta diária dos casos
+  workflow_dispatch:
+    inputs:
+      caso:
+        description: "id do caso (vazio = todos)"
+        default: ""
+
+concurrency:
+  group: area-pesquisador
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  carga:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q emoji==2.16.0
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ] && git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno"; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error title=Área do pesquisador::⛔ sem acesso ao repositório privado (secret ODI_INTERNO_TOKEN)"; exit 1
+          fi
+      - name: Carga
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          SUPABASE_URL: https://vidnoyzechknrqhczmrr.supabase.co
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then echo "::error title=Área do pesquisador::⛔ falta o secret SUPABASE_SERVICE_ROLE_KEY (cadastro do responsável)"; exit 1; fi
+          C="${{ github.event.inputs.caso }}"
+          python scripts/carregar_area_pesquisador.py ${C:+--caso "$C"} | tee c.txt
+          tail -n 3 c.txt | while IFS= read -r l; do echo "::notice title=Área do pesquisador::$l"; done

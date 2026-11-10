@@ -4,6 +4,43 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.374 — Área do pesquisador com login (2026-11-10) ⛔ banco ainda não criado
+
+- Aprovado pelo responsável em 10/11, às 01h04 ("pode executar") e às 09h53 ("validado"). O CLAUDE.md ganha a regra 11, com a exceção dos textos.
+- `supabase/migrations/20261110_area_pesquisador.sql`:
+  - **Tabelas:** `pesquisadores`, `corpus` (texto, emojis normalizados, candidato, triagem automática) e `acessos` (registro de cada consulta).
+  - **Leitura protegida (RLS):** o corpus só é lido por quem está em `pesquisadores`, ativo e com termo aceito. Sem permissão para `anon` e sem escrita para o pesquisador.
+  - **Funções que incorporam métodos do NVivo:** `buscar` (busca de texto e emoji com contexto e filtros), `frequencia` (palavras e emojis, em quantos textos aparecem), `matriz` (emoji × caso, rede, tipo, canal do candidato ou mês) e `resumo_corpus`.
+  - **Outras funções:** `minha_situacao` e `aceitar_termo`.
+  - **Teste em Postgres 16 local** com `auth` simulado:
+    - a migração aplica duas vezes seguidas;
+    - um não convidado vê 0 linhas;
+    - um convidado sem termo vê 0;
+    - com o termo aceito, vê 3 de 3;
+    - `buscar`, `frequencia` e `matriz` respondem e gravam em `acessos`;
+    - a escrita direta em `acessos` e `corpus` é negada;
+    - `anon` é negado.
+- `scripts/carregar_area_pesquisador.py` lê o privado e faz upsert via PostgREST, com a chave de serviço só no ambiente.
+  - O autor só vai para contas com 10 mil seguidores ou mais; links nunca vão.
+  - O 020 vai com "[…]".
+  - A contagem a seco deu **529.456 textos** em 38 casos, cerca de 69 MB de texto. No 020: 10.120 textos e 0 ocorrências do que identifica a criança.
+- `.github/workflows/area-pesquisador.yml` faz a carga todo dia às 10h41 de Brasília. Precisa do secret `SUPABASE_SERVICE_ROLE_KEY`, que é cadastrado pelo responsável.
+- `supabase/functions/odi-area-config` foi **publicada** (versão 1, sem JWT). Ela entrega a URL e a chave pública lidas dos segredos do Supabase, para não haver chave no código (regra 6).
+- Nova página `area-pesquisador.html`, com a identidade ODI e `noindex`:
+  - login, "esqueci ou ainda não criei a senha" e definição de senha pelo link do convite;
+  - termo de uso;
+  - resumo do que está carregado;
+  - filtros;
+  - abas Busca com contexto, Frequência e nuvem, e Matriz.
+  - Testada com Playwright em 1300 e 390 px, com respostas **simuladas** do servidor (aqui não há rede até o Supabase): sem erro de JavaScript e sem rolagem lateral.
+- Testes: `tests/test_area_pesquisador.py` (autor ≥10 mil, 020, RLS em todas as tabelas, nenhuma chave no código) e `python -m unittest discover -s tests` → OK.
+- ⛔ Bloqueios:
+  - **Migração:** a conexão do conector com o banco falha com "password authentication failed for user postgres" (5 tentativas em 10/11, entre 09h53 e 10h10). A migração não foi aplicada.
+  - **Secret:** falta o `SUPABASE_SERVICE_ROLE_KEY` no GitHub.
+  - **Acesso do responsável:** falta o convite do responsável e a inclusão dele em `pesquisadores`.
+  - **Painel do Supabase:** falta configurar a URL de retorno para `area-pesquisador.html` e fechar o cadastro aberto.
+  - **Exportação em CSV:** fica para decisão do responsável.
+
 ## C19.373 — Emojis e palavras em cada caso (2026-11-10) ⚠️
 
 - Pedido do responsável (10/11, 00h37–01h15): um mapa de emojis dos comentários com classificação automática, depois validada por pesquisadores. Os métodos úteis do NVivo (frequência, nuvem, matriz) entram na página, e o bloco fica logo acima da metodologia.

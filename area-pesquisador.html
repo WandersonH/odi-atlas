@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="light">
+<link rel="icon" href="./assets/favicon.ico" sizes="any"><title>ODI Atlas · Área do pesquisador</title>
+<!-- C19.374 (10/11/2026): área com login para pesquisadores convidados. Textos de pessoas comuns só aparecem para quem está
+     na lista de pesquisadores, ativo e com o termo aceito (RLS no Supabase). Nenhuma chave no código: a chave pública vem da
+     função odi-area-config. Métodos do NVivo incorporados: busca de texto com contexto, frequência/nuvem e matriz. -->
+<style>
+:root{--navy:#101b30;--navy2:#17243c;--ink:#172238;--muted:#69768a;--bg:#f5f7fb;--card:#fff;--line:#e8edf3;--cyan:#198b9e;--cyan2:#38bbc9;--sky:#eaf7f8;--slate:#d8e1ed;--amber:#d7a14a;--warning:#fff8ec;--red:#c8102e;--shadow:0 16px 45px rgba(17,40,75,.035)}
+*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font:14px/1.55 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+button,select,input{font:inherit}button{cursor:pointer}a{color:var(--cyan)}
+.top{background:var(--navy);color:#e8f0f9;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.top b{font-size:12px;letter-spacing:1.6px}.top strong{display:block;font-size:20px;letter-spacing:-.5px;color:#fff}.top small{color:#9fb3c8}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:16px}
+.eyebrow{text-transform:uppercase;letter-spacing:1.4px;font-size:10.5px;font-weight:800;color:var(--cyan);margin-bottom:6px}
+h1{font:700 24px Georgia,serif;margin:0 0 8px;color:var(--navy)}h2{font:700 18px Georgia,serif;margin:0 0 8px;color:var(--navy)}
+.muted{color:var(--muted);font-size:12.5px}.aviso{background:var(--warning);border:1px solid #f0dfc4;border-radius:12px;padding:12px 14px;font-size:13px;color:#625039}
+label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:8px 0 3px}
+input,select{width:100%;border:1px solid var(--slate);border-radius:9px;padding:9px 11px;background:#fff;color:var(--ink)}
+select[multiple]{min-height:120px}
+.btn{border:0;background:var(--navy);color:#fff;border-radius:9px;padding:10px 16px;font-weight:700}.btn.sec{background:#ecf1f6;color:var(--navy)}.btn:disabled{opacity:.5}
+.lin{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media(max-width:820px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.grid{grid-template-columns:1fr}}
+.abas{display:flex;gap:6px;background:#ecf1f6;padding:5px;border-radius:12px;width:max-content;max-width:100%;overflow-x:auto;margin:6px 0 12px}
+.abas button{border:0;background:transparent;color:#66788d;padding:8px 14px;border-radius:8px;font-size:12.5px;font-weight:750;white-space:nowrap}.abas button[aria-pressed=true]{background:#fff;color:var(--navy);box-shadow:0 2px 7px #0c294b12}
+.res{border-top:1px solid var(--line);padding:10px 0}.res .meta{font-size:11.5px;color:var(--muted);margin-bottom:3px}.res mark{background:#fde9a8;padding:0 1px}
+.tag{display:inline-block;font-size:10.5px;border:1px solid var(--slate);border-radius:20px;padding:0 7px;margin-left:4px;color:var(--muted)}.tag.of{border-color:#f0b4bd;color:var(--red)}
+.nuvem{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;line-height:1.15}.nuvem button{background:none;border:0;padding:1px 2px;color:var(--ink)}.nuvem button:hover{background:var(--sky)}
+.emo{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+table{border-collapse:collapse;width:100%;font-size:12.5px}th,td{border-bottom:1px solid var(--line);padding:5px 7px;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}
+.tabwrap{overflow-x:auto}.oculto{display:none!important}.erro{color:var(--red);font-size:13px}
+</style></head><body>
+<div class="top"><div><b>ODI ATLAS</b><strong>Área do pesquisador</strong><small>Observatório de Desinformação e Intolerância Digital · PPGCOM/UNIP</small></div><div class="lin"><span id="quem" class="muted" style="color:#c3d7df"></span><button id="sair" class="btn sec oculto" type="button">Sair</button></div></div>
+<div class="wrap">
+
+<section id="vLogin" class="card oculto" style="max-width:440px;margin:30px auto">
+ <div class="eyebrow">Acesso restrito</div><h1>Entrar</h1>
+ <p class="muted">Só pesquisadores convidados pelo responsável do ODI. Não há cadastro aberto.</p>
+ <form id="fLogin"><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required>
+ <label for="senha">Senha</label><input id="senha" type="password" autocomplete="current-password" required>
+ <div class="lin" style="margin-top:12px"><button class="btn" type="submit">Entrar</button><button id="esqueci" class="btn sec" type="button">Esqueci ou ainda não criei a senha</button></div>
+ <p id="msgLogin" class="muted" role="status"></p></form>
+</section>
+
+<section id="vSenha" class="card oculto" style="max-width:440px;margin:30px auto">
+ <div class="eyebrow">Convite ou nova senha</div><h1>Defina sua senha</h1>
+ <form id="fSenha"><label for="s1">Nova senha (mínimo 10 caracteres)</label><input id="s1" type="password" autocomplete="new-password" minlength="10" required>
+ <label for="s2">Repita a senha</label><input id="s2" type="password" autocomplete="new-password" minlength="10" required>
+ <div style="margin-top:12px"><button class="btn" type="submit">Salvar senha</button></div><p id="msgSenha" class="muted" role="status"></p></form>
+</section>
+
+<section id="vSemAcesso" class="card oculto"><div class="eyebrow">Acesso pendente</div><h1>Sua conta não está na lista de pesquisadores</h1>
+ <p>O login funcionou, mas o acesso ao corpus depende de o responsável do ODI incluir sua conta na lista de pesquisadores. Avise o responsável.</p></section>
+
+<section id="vTermo" class="card oculto"><div class="eyebrow">Termo de uso de pesquisa</div><h1>Antes de abrir o corpus</h1>
+ <div class="aviso"><p style="margin-top:0">Os textos desta área são posts e comentários públicos coletados pelo ODI para pesquisa acadêmica sobre a eleição de 2026. Muitos foram escritos por pessoas comuns. Ao entrar, você se compromete a:</p>
+ <ul><li>usar os textos apenas para a pesquisa do ODI (PPGCOM/UNIP);</li><li>não copiar, publicar nem repassar textos ou trechos que permitam identificar pessoas comuns;</li>
+ <li>citar, em trabalhos, só contagens e exemplos anonimizados;</li><li>não tentar identificar a criança do caso 020 nem divulgar conteúdo do caso 028 além do que a página pública mostra;</li>
+ <li>saber que cada consulta fica registrada (quem, quando, o quê).</li></ul></div>
+ <div style="margin-top:12px"><button id="aceito" class="btn" type="button">Li e aceito</button></div></section>
+
+<section id="vApp" class="oculto">
+ <div class="card"><div class="eyebrow">Corpus carregado</div><h2>O que está no banco</h2><div id="resumo" class="tabwrap muted">Carregando…</div>
+  <p class="muted">Universo: o que cada plataforma informa existir está no dossiê de cada caso, na página pública. Aqui está a amostra lida e carregada (posts das buscas e comentários lidos). Percentuais das análises valem para o recorte filtrado da amostra.</p></div>
+ <div class="card"><div class="eyebrow">Recorte</div><h2>Filtros</h2>
+  <form id="fFiltro"><div class="grid">
+   <div><label for="q">Palavras (busca de texto)</label><input id="q" placeholder='ex.: fraude, "voto impresso", -lula'></div>
+   <div><label for="emj">Emoji</label><input id="emj" class="emo" placeholder="ex.: 🤡"></div>
+   <div><label for="de">De</label><input id="de" type="date"></div><div><label for="ate">Até</label><input id="ate" type="date"></div>
+   <div><label for="casos">Casos (Ctrl/Cmd para vários; nenhum = todos)</label><select id="casos" multiple></select></div>
+   <div><label for="redes">Redes</label><select id="redes" multiple></select></div>
+   <div><label for="fonte">Tipo de texto</label><select id="fonte"><option value="">Posts e comentários</option><option value="post">Só posts</option><option value="comentario">Só comentários</option></select></div>
+   <div style="align-self:end"><button class="btn" type="submit" style="width:100%">Aplicar</button></div></div></form></div>
+ <div class="card"><div class="abas" role="tablist"><button type="button" data-aba="busca" aria-pressed="true">Busca com contexto</button><button type="button" data-aba="freq" aria-pressed="false">Frequência e nuvem</button><button type="button" data-aba="matriz" aria-pressed="false">Matriz</button></div>
+  <div id="aBusca"></div><div id="aFreq" class="oculto"></div><div id="aMatriz" class="oculto"></div></div>
+ <p class="muted">Triagem de ofensividade e ódio: modelos automáticos (HateBR, BERTabaporu), limiar 0,5, não validados. Contas com menos de 10 mil seguidores não têm o nome exibido. Caso 020: a criança aparece como "[…]".</p>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+(async()=>{
+const $=id=>document.getElementById(id);const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nf=v=>v==null?'—':Number(v).toLocaleString('pt-BR');const pc=v=>Number(v).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
+const VIS=['vLogin','vSenha','vSemAcesso','vTermo','vApp'];const ver=v=>VIS.forEach(x=>$(x).classList.toggle('oculto',x!==v));
+let sb,casosCfg={},F={},pag=0,aba='busca';
+try{const c=await (await fetch('https://vidnoyzechknrqhczmrr.supabase.co/functions/v1/odi-area-config')).json();sb=supabase.createClient(c.url,c.chave,{auth:{persistSession:true,detectSessionInUrl:true}});}
+catch(e){document.querySelector('.wrap').innerHTML='<div class="card erro">Não foi possível falar com o servidor da área do pesquisador. Tente de novo em alguns minutos.</div>';return;}
+try{const d=await (await fetch('./data/config/casos.json',{cache:'no-store'})).json();(Array.isArray(d)?d:(d.casos||Object.values(d))).forEach(c=>casosCfg[String(c.id)]=c.titulo);}catch(e){}
+const novaSenha=/type=(invite|recovery)/.test(location.hash);
+sb.auth.onAuthStateChange(ev=>{if(ev==='PASSWORD_RECOVERY')ver('vSenha');});
+async function entrar(){const {data:{session}}=await sb.auth.getSession();
+ if(!session){ver('vLogin');$('sair').classList.add('oculto');$('quem').textContent='';return;}
+ $('quem').textContent=session.user.email;$('sair').classList.remove('oculto');
+ if(novaSenha&&!sessionStorage.getItem('odiSenhaOk')){ver('vSenha');return;}
+ const {data:s,error}=await sb.rpc('minha_situacao');if(error){ver('vSemAcesso');return;}
+ if(!s||!s.convidado||!s.ativo){ver('vSemAcesso');return;}if(!s.termo_aceito){ver('vTermo');return;}
+ ver('vApp');iniciar();}
+$('fLogin').onsubmit=async e=>{e.preventDefault();$('msgLogin').textContent='Entrando…';const {error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('senha').value});
+ $('msgLogin').textContent=error?'E-mail ou senha não conferem.':'';if(!error)entrar();};
+$('esqueci').onclick=async()=>{const em=$('email').value.trim();if(!em){$('msgLogin').textContent='Escreva seu e-mail acima.';return;}
+ await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});$('msgLogin').textContent='Se o e-mail estiver convidado, chega uma mensagem com o link para criar a senha.';};
+$('fSenha').onsubmit=async e=>{e.preventDefault();if($('s1').value!==$('s2').value){$('msgSenha').textContent='As senhas não são iguais.';return;}
+ const {error}=await sb.auth.updateUser({password:$('s1').value});if(error){$('msgSenha').textContent='Não foi possível salvar: '+error.message;return;}
+ sessionStorage.setItem('odiSenhaOk','1');history.replaceState(null,'',location.pathname);entrar();};
+$('aceito').onclick=async()=>{const {data}=await sb.rpc('aceitar_termo');if(data)entrar();};
+$('sair').onclick=async()=>{await sb.auth.signOut();location.reload();};
+
+let iniciado=false;
+async function iniciar(){if(iniciado)return;iniciado=true;
+ const {data:r,error}=await sb.rpc('resumo_corpus');if(error){$('resumo').innerHTML='<span class="erro">'+esc(error.message)+'</span>';return;}
+ const porCaso={};let tot=0,te=0;const redes=new Set();(r||[]).forEach(x=>{(porCaso[x.caso]=porCaso[x.caso]||{t:0,e:0,l:[]});porCaso[x.caso].t+=x.textos;porCaso[x.caso].e+=x.com_emoji;porCaso[x.caso].l.push(x);tot+=x.textos;te+=x.com_emoji;redes.add(x.rede);});
+ const ult=(r||[]).reduce((a,x)=>x.carregado_em>a?x.carregado_em:a,'');
+ $('resumo').innerHTML=`<p style="color:var(--ink)"><b>${nf(tot)}</b> textos de ${Object.keys(porCaso).length} casos · ${nf(te)} com emoji (${tot?pc(100*te/tot):'—'}) · carga mais recente: ${ult?new Date(ult).toLocaleString('pt-BR'):'—'}</p>
+  <table><tr><th>Caso</th><th>Textos</th><th>Com emoji</th><th>Redes e tipos</th></tr>${Object.entries(porCaso).map(([c,v])=>`<tr><td>${esc(c)} · ${esc(casosCfg[c]||'')}</td><td>${nf(v.t)}</td><td>${nf(v.e)}</td><td style="text-align:left">${v.l.map(x=>`${esc(x.rede)} ${x.fonte==='post'?'posts':'coment.'} ${nf(x.textos)}`).join(' · ')}</td></tr>`).join('')}</table>`;
+ $('casos').innerHTML=Object.keys(porCaso).map(c=>`<option value="${esc(c)}">${esc(c)} · ${esc(casosCfg[c]||'')}</option>`).join('');
+ $('redes').innerHTML=[...redes].sort().map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
+ lerFiltro();rodar();}
+const sel=id=>[...$(id).selectedOptions].map(o=>o.value);
+function lerFiltro(){F={p_q:$('q').value.trim()||null,p_emoji:$('emj').value.trim().replace(/[\ufe0f\u{1F3FB}-\u{1F3FF}]/gu,'')||null,p_casos:sel('casos').length?sel('casos'):null,p_redes:sel('redes').length?sel('redes'):null,p_fonte:$('fonte').value||null,p_de:$('de').value||null,p_ate:$('ate').value||null};}
+$('fFiltro').onsubmit=e=>{e.preventDefault();lerFiltro();pag=0;rodar();};
+document.querySelectorAll('[data-aba]').forEach(b=>b.onclick=()=>{aba=b.dataset.aba;document.querySelectorAll('[data-aba]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+ ['busca','freq','matriz'].forEach(a=>$('a'+a[0].toUpperCase()+a.slice(1)).classList.toggle('oculto',a!==aba));rodar();});
+function realce(t){let h=esc(t);const termos=(F.p_q||'').replace(/["()-]/g,' ').split(/\s+/).filter(w=>w.length>2&&!/^(or|and)$/i.test(w));
+ termos.forEach(w=>{h=h.replace(new RegExp('('+w.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.*+?^${}()|[\]\\]/g,'\\$&').split('').map(ch=>/[aeiouc]/i.test(ch)?'['+ch+'áàâãéêíóôõúç]':ch).join('')+')','gi'),'<mark>$1</mark>');});
+ if(F.p_emoji)h=h.split(F.p_emoji).join('<mark class="emo">'+esc(F.p_emoji)+'</mark>');return h;}
+async function rodar(){if(aba==='busca')return busca();if(aba==='freq')return freq();return matriz();}
+async function busca(){const el=$('aBusca');el.innerHTML='<p class="muted">Buscando…</p>';
+ const {data,error}=await sb.rpc('buscar',{...F,p_lim:50,p_pagina:pag});if(error){el.innerHTML='<p class="erro">'+esc(error.message)+'</p>';return;}
+ const tot=data&&data.length?data[0].total:0;
+ el.innerHTML=`<p class="muted">${nf(tot)} textos no recorte · página ${pag+1} de ${Math.max(1,Math.ceil(tot/50))} · mais recentes primeiro</p>`+
+ (data||[]).map(x=>`<div class="res"><div class="meta">Caso ${esc(x.caso)} · ${esc(x.rede)} · ${x.fonte==='post'?'post':'comentário'} · ${x.publicado_em?new Date(x.publicado_em).toLocaleString('pt-BR'):'sem data'}${x.autor?' · '+esc(x.autor):''}${x.candidato?' · canal: '+esc(x.candidato):''}${x.ofensivo?'<span class="tag of">ofensivo (triagem)</span>':''}${x.odio?'<span class="tag of">ódio: '+esc(x.odio)+' (triagem)</span>':''}</div><div>${realce(x.texto)}</div></div>`).join('')+
+ `<div class="lin" style="margin-top:10px"><button class="btn sec" type="button" id="ant" ${pag?'':'disabled'}>Anterior</button><button class="btn sec" type="button" id="prox" ${(pag+1)*50<tot?'':'disabled'}>Próxima</button></div>`;
+ $('ant').onclick=()=>{pag--;busca();};$('prox').onclick=()=>{pag++;busca();};}
+async function freq(){const el=$('aFreq');el.innerHTML='<p class="muted">Contando…</p>';
+ const {data,error}=await sb.rpc('frequencia',{...F,p_top:80});if(error){el.innerHTML='<p class="erro">'+esc(error.message)+'</p>';return;}
+ const nuv=(l,emo)=>{if(!l.length)return '<p class="muted">Nada no recorte.</p>';const mx=l[0].textos,mn=l[l.length-1].textos;
+  return `<div class="nuvem">${[...l].sort((a,b)=>emo?b.textos-a.textos:a.termo.localeCompare(b.termo,'pt')).map(x=>{const r=mx===mn?1:Math.sqrt((x.textos-mn)/(mx-mn));return `<button type="button" class="${emo?'emo':''}" data-t="${esc(x.termo)}" data-emo="${emo?1:''}" style="font-size:${(emo?16+r*30:12+r*22).toFixed(0)}px" title="${esc(x.termo)}: ${nf(x.textos)} textos">${esc(x.termo)}</button>`;}).join('')}</div>`;};
+ const E=(data||[]).filter(x=>x.tipo==='emoji'),P=(data||[]).filter(x=>x.tipo==='palavra');
+ el.innerHTML=`<div class="grid" style="grid-template-columns:1fr 1fr"><div><div class="eyebrow">Emojis · em quantos textos</div>${nuv(E,true)}</div><div><div class="eyebrow">Palavras · em quantos textos</div>${nuv(P,false)}</div></div>
+  <p class="muted">Como a Consulta de Frequência do NVivo, sobre o recorte filtrado. Clique num termo para ver os textos com contexto.</p>
+  <div class="tabwrap"><table><tr><th>Emoji</th><th>Textos</th><th>Palavra</th><th>Textos</th></tr>${Array.from({length:Math.max(E.length,P.length)}).slice(0,30).map((_,i)=>`<tr><td class="emo">${esc(E[i]?.termo||'')}</td><td>${E[i]?nf(E[i].textos):''}</td><td>${esc(P[i]?.termo||'')}</td><td>${P[i]?nf(P[i].textos):''}</td></tr>`).join('')}</table></div>`;
+ el.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{if(b.dataset.emo)$('emj').value=b.dataset.t;else $('q').value=b.dataset.t;lerFiltro();pag=0;document.querySelector('[data-aba="busca"]').click();});}
+async function matriz(){const el=$('aMatriz');const dim=el.dataset.dim||'caso';el.innerHTML='<p class="muted">Cruzando…</p>';
+ const {data,error}=await sb.rpc('matriz',{p_dimensao:dim,...F,p_top:20});if(error){el.innerHTML='<p class="erro">'+esc(error.message)+'</p>';return;}
+ const cols=[...new Set((data||[]).map(x=>x.coluna))].sort(),ems=[...new Set((data||[]).map(x=>x.emoji))];const m={},tc={};(data||[]).forEach(x=>{m[x.emoji+'|'+x.coluna]=x.textos;tc[x.coluna]=(tc[x.coluna]||0)+x.textos;});
+ ems.sort((a,b)=>cols.reduce((s,c)=>s+(m[b+'|'+c]||0),0)-cols.reduce((s,c)=>s+(m[a+'|'+c]||0),0));
+ el.innerHTML=`<div class="lin"><label for="dim" style="margin:0">Cruzar os 20 emojis mais usados com</label><select id="dim" style="width:auto">${[['caso','caso'],['rede','rede'],['fonte','tipo de texto'],['candidato','canal do candidato (YouTube)'],['mes','mês']].map(([v,t])=>`<option value="${v}" ${v===dim?'selected':''}>${t}</option>`).join('')}</select></div>
+  <div class="tabwrap" style="margin-top:8px"><table><tr><th>Emoji</th>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>${ems.map(e=>`<tr><td class="emo" style="font-size:18px">${esc(e)}</td>${cols.map(c=>{const n=m[e+'|'+c]||0;return `<td title="${nf(n)} textos">${n?nf(n)+' <span class="muted">('+pc(100*n/tc[c])+')</span>':'—'}</td>`;}).join('')}</tr>`).join('')}</table></div>
+  <p class="muted">Como a Matriz de Codificação do NVivo: número de textos do recorte com cada emoji em cada coluna; entre parênteses, a parte da coluna (soma dos 20 emojis).</p>`;
+ $('dim').onchange=e=>{el.dataset.dim=e.target.value;matriz();};}
+entrar();
+})();
+</script>
+</body></html>
