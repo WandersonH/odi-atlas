@@ -33,6 +33,7 @@ csv.field_size_limit(10**9)
 VAR = re.compile("[️\U0001F3FB-\U0001F3FF]")
 LOTE = 500
 MIN_SEG = 10_000
+LIMITE_MB = 430  # plano gratuito do Supabase: 500 MB; a carga para antes (C19.375)
 
 
 def casos_cfg() -> dict:
@@ -115,6 +116,12 @@ def enviar(url: str, chave: str, lote: list[dict]):
             time.sleep(5 * (tentativa + 1))
 
 
+def tamanho_mb(url: str, chave: str) -> float:
+    req = urllib.request.Request(f"{url}/rest/v1/rpc/tamanho_banco_mb", data=b"{}", method="POST",
+                                 headers={"apikey": chave, "Authorization": f"Bearer {chave}", "Content-Type": "application/json"})
+    return float(json.loads(urllib.request.urlopen(req, timeout=60).read()))
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--caso")
@@ -130,6 +137,11 @@ def main(argv=None) -> int:
     ids = [a.caso] if a.caso else sorted(p.name for p in (interno / "casos").iterdir() if re.fullmatch(r"\d{3}", p.name))
     total = 0
     for cid in ids:
+        if not a.seco:
+            mb = tamanho_mb(url, chave)
+            if mb >= LIMITE_MB:
+                print(f"⛔ banco com {mb} MB (limite de segurança {LIMITE_MB} MB): carga parada antes do caso {cid}")
+                return 1
         lote, n, vistos = [], 0, set()
         for r in linhas(cid, interno, cfg.get(cid, {})):
             k = (r["fonte"], r["item_id"])
@@ -146,7 +158,7 @@ def main(argv=None) -> int:
             enviar(url, chave, lote)
         total += n
         print(f"{cid}: {n} textos {'contados' if a.seco else 'enviados'}")
-    print(f"total: {total}")
+    print(f"total: {total}" + ("" if a.seco else f" · banco com {tamanho_mb(url, chave)} MB"))
     return 0
 
 
