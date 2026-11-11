@@ -1,153 +1,544 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="color-scheme" content="light">
-<link rel="icon" href="./assets/favicon.ico" sizes="any"><title>ODI Atlas · Área do pesquisador</title>
-<!-- C19.374 (10/11/2026): área com login para pesquisadores convidados. Textos de pessoas comuns só aparecem para quem está
-     na lista de pesquisadores, ativo e com o termo aceito (RLS no Supabase). Nenhuma chave no código: a chave pública vem da
-     função odi-area-config. Métodos do NVivo incorporados: busca de texto com contexto, frequência/nuvem e matriz. -->
+<link rel="icon" href="./assets/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png"><title>ODI Atlas · Área do pesquisador</title>
+<!-- C19.377 (11/11/2026): área do pesquisador refeita depois das críticas do responsável:
+     1) MESMA identidade visual do Atlas: esta página não reescreve estilo, carrega assets/odi-atlas.css (cópia literal dos estilos da
+        página principal, gerada por scripts/build_css_compartilhado.py) e usa a mesma estrutura (barra lateral, cadernos, fichas);
+     2) abre no MENU DE CASOS, como o caderno "Casos e análises";
+     3) é onde o pesquisador VALIDA: lê o corpus e avalia na tela (amostra de validação igual para todos, concordância medida);
+     4) recebe arquivos vindos do Iramuteq e do Gephi, com o que o Atlas calculou ao lado;
+     5) busca geral refeita: primeiro mostra onde o termo aparece (por caso e por rede), depois os textos.
+     Textos de pessoas comuns só para pesquisador convidado, ativo e com termo aceito (regra 11 do CLAUDE.md). Nenhuma chave no código. -->
+<link rel="stylesheet" href="./assets/odi-atlas.css">
 <style>
-:root{--navy:#101b30;--navy2:#17243c;--ink:#172238;--muted:#69768a;--bg:#f5f7fb;--card:#fff;--line:#e8edf3;--cyan:#198b9e;--cyan2:#38bbc9;--sky:#eaf7f8;--slate:#d8e1ed;--amber:#d7a14a;--warning:#fff8ec;--red:#c8102e;--shadow:0 16px 45px rgba(17,40,75,.035)}
-*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font:14px/1.55 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-button,select,input{font:inherit}button{cursor:pointer}a{color:var(--cyan)}
-.top{background:var(--navy);color:#e8f0f9;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.top b{font-size:12px;letter-spacing:1.6px}.top strong{display:block;font-size:20px;letter-spacing:-.5px;color:#fff}.top small{color:#9fb3c8}
-.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:18px 20px;margin-bottom:16px}
-.eyebrow{text-transform:uppercase;letter-spacing:1.4px;font-size:10.5px;font-weight:800;color:var(--cyan);margin-bottom:6px}
-h1{font:700 24px Georgia,serif;margin:0 0 8px;color:var(--navy)}h2{font:700 18px Georgia,serif;margin:0 0 8px;color:var(--navy)}
-.muted{color:var(--muted);font-size:12.5px}.aviso{background:var(--warning);border:1px solid #f0dfc4;border-radius:12px;padding:12px 14px;font-size:13px;color:#625039}
-label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:8px 0 3px}
-input,select{width:100%;border:1px solid var(--slate);border-radius:9px;padding:9px 11px;background:#fff;color:var(--ink)}
-select[multiple]{min-height:120px}
-.btn{border:0;background:var(--navy);color:#fff;border-radius:9px;padding:10px 16px;font-weight:700}.btn.sec{background:#ecf1f6;color:var(--navy)}.btn:disabled{opacity:.5}
-.lin{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-@media(max-width:820px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.grid{grid-template-columns:1fr}}
-.abas{display:flex;gap:6px;background:#ecf1f6;padding:5px;border-radius:12px;width:max-content;max-width:100%;overflow-x:auto;margin:6px 0 12px}
-.abas button{border:0;background:transparent;color:#66788d;padding:8px 14px;border-radius:8px;font-size:12.5px;font-weight:750;white-space:nowrap}.abas button[aria-pressed=true]{background:#fff;color:var(--navy);box-shadow:0 2px 7px #0c294b12}
-.res{border-top:1px solid var(--line);padding:10px 0}.res .meta{font-size:11.5px;color:var(--muted);margin-bottom:3px}.res mark{background:#fde9a8;padding:0 1px}
-.tag{display:inline-block;font-size:10.5px;border:1px solid var(--slate);border-radius:20px;padding:0 7px;margin-left:4px;color:var(--muted)}.tag.of{border-color:#f0b4bd;color:var(--red)}
-.nuvem{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;line-height:1.15}.nuvem button{background:none;border:0;padding:1px 2px;color:var(--ink)}.nuvem button:hover{background:var(--sky)}
-.emo{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
-table{border-collapse:collapse;width:100%;font-size:12.5px}th,td{border-bottom:1px solid var(--line);padding:5px 7px;text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}
-.tabwrap{overflow-x:auto}.oculto{display:none!important}.erro{color:var(--red);font-size:13px}
-</style></head><body>
-<div class="top"><div><b>ODI ATLAS</b><strong>Área do pesquisador</strong><small>Observatório de Desinformação e Intolerância Digital · PPGCOM/UNIP</small></div><div class="lin"><span id="quem" class="muted" style="color:#c3d7df"></span><button id="sair" class="btn sec oculto" type="button">Sair</button></div></div>
-<div class="wrap">
-
-<section id="vLogin" class="card oculto" style="max-width:440px;margin:30px auto">
- <div class="eyebrow">Acesso restrito</div><h1>Entrar</h1>
- <p class="muted">Só pesquisadores convidados pelo responsável do ODI. Não há cadastro aberto.</p>
- <form id="fLogin"><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required>
- <label for="senha">Senha</label><input id="senha" type="password" autocomplete="current-password" required>
- <div class="lin" style="margin-top:12px"><button class="btn" type="submit">Entrar</button><button id="esqueci" class="btn sec" type="button">Esqueci ou ainda não criei a senha</button></div>
- <p id="msgLogin" class="muted" role="status"></p></form>
-</section>
-
-<section id="vSenha" class="card oculto" style="max-width:440px;margin:30px auto">
- <div class="eyebrow">Convite ou nova senha</div><h1>Defina sua senha</h1>
- <form id="fSenha"><label for="s1">Nova senha (mínimo 10 caracteres)</label><input id="s1" type="password" autocomplete="new-password" minlength="10" required>
- <label for="s2">Repita a senha</label><input id="s2" type="password" autocomplete="new-password" minlength="10" required>
- <div style="margin-top:12px"><button class="btn" type="submit">Salvar senha</button></div><p id="msgSenha" class="muted" role="status"></p></form>
-</section>
-
-<section id="vSemAcesso" class="card oculto"><div class="eyebrow">Acesso pendente</div><h1>Sua conta não está na lista de pesquisadores</h1>
- <p>O login funcionou, mas o acesso ao corpus depende de o responsável do ODI incluir sua conta na lista de pesquisadores. Avise o responsável.</p></section>
-
-<section id="vTermo" class="card oculto"><div class="eyebrow">Termo de uso de pesquisa</div><h1>Antes de abrir o corpus</h1>
- <div class="aviso"><p style="margin-top:0">Os textos desta área são posts e comentários públicos coletados pelo ODI para pesquisa acadêmica sobre a eleição de 2026. Muitos foram escritos por pessoas comuns. Ao entrar, você se compromete a:</p>
- <ul><li>usar os textos apenas para a pesquisa do ODI (PPGCOM/UNIP);</li><li>não copiar, publicar nem repassar textos ou trechos que permitam identificar pessoas comuns;</li>
- <li>citar, em trabalhos, só contagens e exemplos anonimizados;</li><li>não tentar identificar a criança do caso 020 nem divulgar conteúdo do caso 028 além do que a página pública mostra;</li>
- <li>saber que cada consulta fica registrada (quem, quando, o quê).</li></ul></div>
- <div style="margin-top:12px"><button id="aceito" class="btn" type="button">Li e aceito</button></div></section>
-
-<section id="vApp" class="oculto">
- <div class="card"><div class="eyebrow">Corpus carregado</div><h2>O que está no banco</h2><div id="resumo" class="tabwrap muted">Carregando…</div>
-  <p class="muted">Universo: o que cada plataforma informa existir está no dossiê de cada caso, na página pública. Aqui está a amostra lida e carregada (posts das buscas e comentários lidos). Percentuais das análises valem para o recorte filtrado da amostra.</p></div>
- <div class="card"><div class="eyebrow">Recorte</div><h2>Filtros</h2>
-  <form id="fFiltro"><div class="grid">
-   <div><label for="q">Palavras (busca de texto)</label><input id="q" placeholder='ex.: fraude, "voto impresso", -lula'></div>
-   <div><label for="emj">Emoji</label><input id="emj" class="emo" placeholder="ex.: 🤡"></div>
-   <div><label for="de">De</label><input id="de" type="date"></div><div><label for="ate">Até</label><input id="ate" type="date"></div>
-   <div><label for="casos">Casos (Ctrl/Cmd para vários; nenhum = todos)</label><select id="casos" multiple></select></div>
-   <div><label for="redes">Redes</label><select id="redes" multiple></select></div>
-   <div><label for="fonte">Tipo de texto</label><select id="fonte"><option value="">Posts e comentários</option><option value="post">Só posts</option><option value="comentario">Só comentários</option></select></div>
-   <div style="align-self:end"><button class="btn" type="submit" style="width:100%">Aplicar</button></div></div></form></div>
- <div class="card"><div class="abas" role="tablist"><button type="button" data-aba="busca" aria-pressed="true">Busca com contexto</button><button type="button" data-aba="freq" aria-pressed="false">Frequência e nuvem</button><button type="button" data-aba="matriz" aria-pressed="false">Matriz</button></div>
-  <div id="aBusca"></div><div id="aFreq" class="oculto"></div><div id="aMatriz" class="oculto"></div></div>
- <p class="muted">Triagem de ofensividade e ódio: modelos automáticos (HateBR, BERTabaporu), limiar 0,5, não validados. Contas com menos de 10 mil seguidores não têm o nome exibido. Caso 020: a criança aparece como "[…]".</p>
-</section>
-</div>
+/* Só o que é próprio da área (formulário, cartão de texto, botões de código). Cores, letras e bordas são as do Atlas. */
+.ap-emo{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.ap-auth{max-width:470px;margin:34px 0}.ap-auth form{margin:0}
+.ap-campo{display:block;font:700 10px 'Courier New',monospace;letter-spacing:.08em;text-transform:uppercase;color:#53606b;margin:13px 0 4px}
+.ap-in{width:100%;height:40px;border:1px solid #172238;border-radius:0;background:#fffdf8;padding:0 10px;font:15px Georgia,'Times New Roman',serif;color:#172238;max-width:100%}
+.ap-in:focus{outline:2px solid #2376d3;outline-offset:1px}
+select.ap-in{font:12px 'Courier New',monospace;height:34px;padding:0 6px}
+.ap-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+.ap-chips .rot{font:700 10px 'Courier New',monospace;letter-spacing:.08em;text-transform:uppercase;color:#53606b;margin-right:4px;min-width:74px}
+.ap-chips button,.ap-op{border:1px solid #172238;background:#fffdf8;color:#172238;font:700 11px 'Courier New',monospace;letter-spacing:.04em;padding:6px 10px;cursor:pointer;border-radius:0}
+.ap-chips button[aria-pressed=true],.ap-op[aria-pressed=true]{background:#172238;color:#fffdf8}
+.ap-chips button:focus-visible,.ap-op:focus-visible{outline:2px solid #2376d3;outline-offset:2px}
+.ap-item{background:#fffdf8;border:1px solid #d9d3c4;box-shadow:3px 3px 0 #e4ddcc;padding:14px 16px 10px;margin:0 0 16px}
+.ap-item[data-feito="1"]{border-left:4px solid #1f8a3b}
+.ap-meta{font:11px 'Courier New',monospace;color:#5d6a76;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.ap-meta .n{font:700 15px 'Courier New',monospace;color:#b3261e}
+.ap-selo{border:1px solid #172238;font:700 9px 'Courier New',monospace;padding:2px 5px;text-transform:uppercase;color:#172238;background:#fffdf8}
+.ap-selo.tri{border-color:#b3261e;color:#b3261e}.ap-selo.ok{border-color:#1f8a3b;color:#1f8a3b}
+.ap-texto{font:16px/1.55 Georgia,'Times New Roman',serif;color:#172238;margin:10px 0 12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.ap-texto mark{background:#fde9a8;padding:0 1px}
+.ap-linha{display:grid;grid-template-columns:172px minmax(0,1fr);gap:4px 12px;align-items:start;padding:7px 0;border-top:1px dotted #d9d3c4}
+.ap-rot{font:700 10px/1.4 'Courier New',monospace;letter-spacing:.06em;text-transform:uppercase;color:#53606b;padding-top:6px}
+.ap-rot small{display:block;font-weight:400;text-transform:none;letter-spacing:0;color:#8a5a12;margin-top:2px}
+.ap-rot .ap-emo{font-size:22px;line-height:1;vertical-align:-3px;margin-right:4px}
+.ap-ops{display:flex;flex-wrap:wrap;gap:5px}.ap-op{font-weight:600;padding:5px 8px}
+.ap-estado{font:10px 'Courier New',monospace;color:#1f8a3b;min-height:14px;margin-top:4px}.ap-estado.erro{color:#b3261e}
+.ap-prog{height:8px;background:#e7e3dc;margin:6px 0 2px}.ap-prog>span{display:block;height:100%;background:#172238}
+.ap-busca{display:grid;grid-template-columns:minmax(0,1fr) 130px auto;gap:8px;margin:12px 0 6px;align-items:end}
+.ap-busca .ap-in.grande{height:48px;font-size:19px}
+.ap-barras{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:10px 0 4px}
+.ap-barra{display:grid;grid-template-columns:minmax(90px,250px) minmax(40px,1fr) 62px;gap:8px;align-items:center;font:12px 'Courier New',monospace;padding:4px 2px;border:0;background:none;width:100%;text-align:left;color:#172238;cursor:pointer}
+.ap-barra:hover{background:#efe9da}.ap-barra .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ap-barra .q{text-align:right}
+.ap-barra .b{height:10px;background:#e7e3dc}.ap-barra .b>span{display:block;height:100%;background:#57789d}.ap-barra[aria-pressed=true]{background:#efe9da}.ap-barra[aria-pressed=true] .b>span{background:#b3261e}
+.ap-nuvem{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;line-height:1.15}.ap-nuvem button{background:none;border:0;padding:1px 2px;color:#172238;cursor:pointer;font-family:Georgia,serif}.ap-nuvem button:hover{background:#efe9da}
+.ap-dois{display:grid;grid-template-columns:1fr 1fr;gap:16px}.ap-dois>*{min-width:0}.ap-dois>.card{margin-top:0}
+.ap-acoes{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.ap-rolar{overflow-x:auto}.ap-rolar table{min-width:100%}
+.ap-dic td{vertical-align:middle}.ap-dic .ap-emo{font-size:24px}
+.ap-mais{display:block;margin:6px auto 0}
+.ap-vazio{border:1px dashed #b9b2a0;padding:16px;font:12px 'Courier New',monospace;color:#5d6a76;background:#fbf8f0}
+.ap-usuario{font:10px 'Courier New',monospace;color:#4c5b65;overflow-wrap:anywhere}
+.card+.card,.ap-dois+.card,.card+.ap-dois{margin-top:16px}
+#app .cs-tab td:last-child{white-space:normal;overflow-wrap:anywhere;padding-left:10px}#app .cs-tab td{overflow-wrap:anywhere}
+@media(max-width:820px){.ap-barras,.ap-dois{grid-template-columns:1fr}.ap-linha{grid-template-columns:1fr}.ap-rot{padding-top:0}.ap-busca{grid-template-columns:1fr}}
+</style></head>
+<body><div class="layout"><aside class="side"><div class="mark" aria-label="Observatório de Desinformação e Intolerância Digital — área do pesquisador"><div class="brand-head"><img class="odi-brand-img" alt="Identidade visual do Observatório de Desinformação e Intolerância Digital" src="./assets/odi-marca.jpg"><div class="brand-name"><strong>ATLAS</strong><span>Observatório de Desinformação<br>e Intolerância Digital</span></div></div><div class="brand-footer"><span>PPGCOM / UNIP</span><span>ÁREA DO PESQUISADOR</span></div></div><div class="navcaption">ÍNDICE / VALIDAÇÃO</div><nav class="nav" id="nav" hidden>
+<button class="navbutton" data-rota="casos">Casos · ler e avaliar</button>
+<button class="navbutton" data-rota="busca">Busca em todos os casos</button>
+<button class="navbutton" data-rota="concordancia">Concordância e triagem</button>
+<button class="navbutton" data-rota="livro">Livro de códigos</button>
+</nav><div class="sidefoot"><span>ACESSO RESTRITO / PESQUISA</span><span class="ap-usuario" id="quem" style="font-weight:400;letter-spacing:0">Sem sessão aberta.</span><a href="./ODI_Atlas_v15_MVP.html">← Atlas público</a></div><div class="odi-direitos odi-direitos-lateral" role="note" aria-label="Aviso de confidencialidade"><span class="odi-direitos-selo">Confidencial</span><p>Os textos desta área são de pessoas comuns e servem só à pesquisa do ODI. Proibido copiar, publicar ou repassar. Cada consulta fica registrada.</p></div></aside>
+<main class="main"><header class="header"><span class="crumb">ÁREA DO PESQUISADOR  /  VALIDAÇÃO  /  2026</span><div class="actions"><span class="datechip" id="carga" hidden></span><a class="ghostbutton" href="./ODI_Atlas_v15_MVP.html#casos">Atlas público ↗</a><button class="primarybutton" id="sair" hidden>Sair</button></div></header>
+<div id="app" aria-live="polite"><section class="panel active"><div class="paper-ribbon"><span>ÁREA DO PESQUISADOR</span><span>ABRINDO…</span></div></section></div>
+</main></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="./assets/odi-concordancia.js"></script>
 <script>
-(async()=>{
-const $=id=>document.getElementById(id);const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const nf=v=>v==null?'—':Number(v).toLocaleString('pt-BR');const pc=v=>Number(v).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
-const VIS=['vLogin','vSenha','vSemAcesso','vTermo','vApp'];const ver=v=>VIS.forEach(x=>$(x).classList.toggle('oculto',x!==v));
-let sb,casosCfg={},F={},pag=0,aba='busca';
-try{const c=await (await fetch('https://vidnoyzechknrqhczmrr.supabase.co/functions/v1/odi-area-config')).json();sb=supabase.createClient(c.url,c.chave,{auth:{persistSession:true,detectSessionInUrl:true}});}
-catch(e){document.querySelector('.wrap').innerHTML='<div class="card erro">Não foi possível falar com o servidor da área do pesquisador. Tente de novo em alguns minutos.</div>';return;}
-try{const d=await (await fetch('./data/config/casos.json',{cache:'no-store'})).json();(Array.isArray(d)?d:(d.casos||Object.values(d))).forEach(c=>casosCfg[String(c.id)]=c.titulo);}catch(e){}
-const novaSenha=/type=(invite|recovery)/.test(location.hash);
-sb.auth.onAuthStateChange(ev=>{if(ev==='PASSWORD_RECOVERY')ver('vSenha');});
-async function entrar(){const {data:{session}}=await sb.auth.getSession();
- if(!session){ver('vLogin');$('sair').classList.add('oculto');$('quem').textContent='';return;}
- $('quem').textContent=session.user.email;$('sair').classList.remove('oculto');
- if(novaSenha&&!sessionStorage.getItem('odiSenhaOk')){ver('vSenha');return;}
- const {data:s,error}=await sb.rpc('minha_situacao');if(error){ver('vSemAcesso');return;}
- if(!s||!s.convidado||!s.ativo){ver('vSemAcesso');return;}if(!s.termo_aceito){ver('vTermo');return;}
- ver('vApp');iniciar();}
-$('fLogin').onsubmit=async e=>{e.preventDefault();$('msgLogin').textContent='Entrando…';const {error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('senha').value});
- $('msgLogin').textContent=error?'E-mail ou senha não conferem.':'';if(!error)entrar();};
-$('esqueci').onclick=async()=>{const em=$('email').value.trim();if(!em){$('msgLogin').textContent='Escreva seu e-mail acima.';return;}
- await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});$('msgLogin').textContent='Se o e-mail estiver convidado, chega uma mensagem com o link para criar a senha.';};
-$('fSenha').onsubmit=async e=>{e.preventDefault();if($('s1').value!==$('s2').value){$('msgSenha').textContent='As senhas não são iguais.';return;}
- const {error}=await sb.auth.updateUser({password:$('s1').value});if(error){$('msgSenha').textContent='Não foi possível salvar: '+error.message;return;}
- sessionStorage.setItem('odiSenhaOk','1');history.replaceState(null,'',location.pathname);entrar();};
-$('aceito').onclick=async()=>{const {data}=await sb.rpc('aceitar_termo');if(data)entrar();};
-$('sair').onclick=async()=>{await sb.auth.signOut();location.reload();};
+(async () => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const app = $('#app');
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const nf = v => v == null ? '—' : Number(v).toLocaleString('pt-BR');
+const pc = (v, d = 1) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString('pt-BR', { maximumFractionDigits: d, minimumFractionDigits: d }) + '%';
+const dh = d => d ? new Date(d).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'sem data';
+const emoV = e => /⃣/.test(e) ? e.replace(/️?⃣/, '️⃣') : (/️/.test(e) ? e : e + '️'); // forma colorida
+const normEmo = e => String(e || '').trim().replace(/[️\u{1F3FB}-\u{1F3FF}]/gu, '');
+const REDE = { x: 'X', youtube: 'YouTube', instagram: 'Instagram', facebook: 'Facebook', tiktok: 'TikTok', kwai: 'Kwai' };
+const rede = r => REDE[r] || r;
+const ALVO_TRIAGEM = { Sexism: 'mulheres / gênero', Ideology: 'posição política', Homophobia: 'LGBTQIA+', Racism: 'raça / cor / etnia', Body: 'corpo / aparência' }; // rótulos do modelo de triagem
+const painel = (faixa, direita, html) => `<section class="panel active"><div class="paper-ribbon"><span>${faixa}</span><span>${direita || ''}</span></div>${html}</section>`;
+const J = u => fetch(u, { cache: 'no-store' }).then(r => r.ok ? r.json() : null).catch(() => null);
 
-let iniciado=false;
-async function iniciar(){if(iniciado)return;iniciado=true;
- const {data:r,error}=await sb.rpc('resumo_corpus');if(error){$('resumo').innerHTML='<span class="erro">'+esc(error.message)+'</span>';return;}
- const porCaso={};let tot=0,te=0;const redes=new Set();(r||[]).forEach(x=>{(porCaso[x.caso]=porCaso[x.caso]||{t:0,e:0,l:[]});porCaso[x.caso].t+=x.textos;porCaso[x.caso].e+=x.com_emoji;porCaso[x.caso].l.push(x);tot+=x.textos;te+=x.com_emoji;redes.add(x.rede);});
- const ult=(r||[]).reduce((a,x)=>x.carregado_em>a?x.carregado_em:a,'');
- $('resumo').innerHTML=`<p style="color:var(--ink)"><b>${nf(tot)}</b> textos de ${Object.keys(porCaso).length} casos · ${nf(te)} com emoji (${tot?pc(100*te/tot):'—'}) · carga mais recente: ${ult?new Date(ult).toLocaleString('pt-BR'):'—'}</p>
-  <table><tr><th>Caso</th><th>Textos</th><th>Com emoji</th><th>Redes e tipos</th></tr>${Object.entries(porCaso).map(([c,v])=>`<tr><td>${esc(c)} · ${esc(casosCfg[c]||'')}</td><td>${nf(v.t)}</td><td>${nf(v.e)}</td><td style="text-align:left">${v.l.map(x=>`${esc(x.rede)} ${x.fonte==='post'?'posts':'coment.'} ${nf(x.textos)}`).join(' · ')}</td></tr>`).join('')}</table>`;
- $('casos').innerHTML=Object.keys(porCaso).map(c=>`<option value="${esc(c)}">${esc(c)} · ${esc(casosCfg[c]||'')}</option>`).join('');
- $('redes').innerHTML=[...redes].sort().map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join('');
- lerFiltro();rodar();}
-const sel=id=>[...$(id).selectedOptions].map(o=>o.value);
-function lerFiltro(){F={p_q:$('q').value.trim()||null,p_emoji:$('emj').value.trim().replace(/[\ufe0f\u{1F3FB}-\u{1F3FF}]/gu,'')||null,p_casos:sel('casos').length?sel('casos'):null,p_redes:sel('redes').length?sel('redes'):null,p_fonte:$('fonte').value||null,p_de:$('de').value||null,p_ate:$('ate').value||null};}
-$('fFiltro').onsubmit=e=>{e.preventDefault();lerFiltro();pag=0;rodar();};
-document.querySelectorAll('[data-aba]').forEach(b=>b.onclick=()=>{aba=b.dataset.aba;document.querySelectorAll('[data-aba]').forEach(x=>x.setAttribute('aria-pressed',x===b));
- ['busca','freq','matriz'].forEach(a=>$('a'+a[0].toUpperCase()+a.slice(1)).classList.toggle('oculto',a!==aba));rodar();});
-function realce(t){let h=esc(t);const termos=(F.p_q||'').replace(/["()-]/g,' ').split(/\s+/).filter(w=>w.length>2&&!/^(or|and)$/i.test(w));
- termos.forEach(w=>{h=h.replace(new RegExp('('+w.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[.*+?^${}()|[\]\\]/g,'\\$&').split('').map(ch=>/[aeiouc]/i.test(ch)?'['+ch+'áàâãéêíóôõúç]':ch).join('')+')','gi'),'<mark>$1</mark>');});
- if(F.p_emoji)h=h.split(F.p_emoji).join('<mark class="emo">'+esc(F.p_emoji)+'</mark>');return h;}
-async function rodar(){if(aba==='busca')return busca();if(aba==='freq')return freq();return matriz();}
-async function busca(){const el=$('aBusca');el.innerHTML='<p class="muted">Buscando…</p>';
- const {data,error}=await sb.rpc('buscar',{...F,p_lim:50,p_pagina:pag});if(error){el.innerHTML='<p class="erro">'+esc(error.message)+'</p>';return;}
- const tot=data&&data.length?data[0].total:0;
- el.innerHTML=`<p class="muted">${nf(tot)} textos no recorte · página ${pag+1} de ${Math.max(1,Math.ceil(tot/50))} · mais recentes primeiro</p>`+
- (data||[]).map(x=>`<div class="res"><div class="meta">Caso ${esc(x.caso)} · ${esc(x.rede)} · ${x.fonte==='post'?'post':'comentário'} · ${x.publicado_em?new Date(x.publicado_em).toLocaleString('pt-BR'):'sem data'}${x.autor?' · '+esc(x.autor):''}${x.candidato?' · canal: '+esc(x.candidato):''}${x.ofensivo?'<span class="tag of">ofensivo (triagem)</span>':''}${x.odio?'<span class="tag of">ódio: '+esc(x.odio)+' (triagem)</span>':''}</div><div>${realce(x.texto)}</div></div>`).join('')+
- `<div class="lin" style="margin-top:10px"><button class="btn sec" type="button" id="ant" ${pag?'':'disabled'}>Anterior</button><button class="btn sec" type="button" id="prox" ${(pag+1)*50<tot?'':'disabled'}>Próxima</button></div>`;
- $('ant').onclick=()=>{pag--;busca();};$('prox').onclick=()=>{pag++;busca();};}
-async function freq(){const el=$('aFreq');el.innerHTML='<p class="muted">Contando…</p>';
- const {data,error}=await sb.rpc('frequencia',{...F,p_top:80});if(error){el.innerHTML='<p class="erro">'+esc(error.message)+'</p>';return;}
- const nuv=(l,emo)=>{if(!l.length)return '<p class="muted">Nada no recorte.</p>';const mx=l[0].textos,mn=l[l.length-1].textos;
-  return `<div class="nuvem">${[...l].sort((a,b)=>emo?b.textos-a.textos:a.termo.localeCompare(b.termo,'pt')).map(x=>{const r=mx===mn?1:Math.sqrt((x.textos-mn)/(mx-mn));return `<button type="button" class="${emo?'emo':''}" data-t="${esc(x.termo)}" data-emo="${emo?1:''}" style="font-size:${(emo?16+r*30:12+r*22).toFixed(0)}px" title="${esc(x.termo)}: ${nf(x.textos)} textos">${esc(x.termo)}</button>`;}).join('')}</div>`;};
- const E=(data||[]).filter(x=>x.tipo==='emoji'),P=(data||[]).filter(x=>x.tipo==='palavra');
- el.innerHTML=`<div class="grid" style="grid-template-columns:1fr 1fr"><div><div class="eyebrow">Emojis · em quantos textos</div>${nuv(E,true)}</div><div><div class="eyebrow">Palavras · em quantos textos</div>${nuv(P,false)}</div></div>
-  <p class="muted">Como a Consulta de Frequência do NVivo, sobre o recorte filtrado. Clique num termo para ver os textos com contexto.</p>
-  <div class="tabwrap"><table><tr><th>Emoji</th><th>Textos</th><th>Palavra</th><th>Textos</th></tr>${Array.from({length:Math.max(E.length,P.length)}).slice(0,30).map((_,i)=>`<tr><td class="emo">${esc(E[i]?.termo||'')}</td><td>${E[i]?nf(E[i].textos):''}</td><td>${esc(P[i]?.termo||'')}</td><td>${P[i]?nf(P[i].textos):''}</td></tr>`).join('')}</table></div>`;
- el.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{if(b.dataset.emo)$('emj').value=b.dataset.t;else $('q').value=b.dataset.t;lerFiltro();pag=0;document.querySelector('[data-aba="busca"]').click();});}
-async function matriz(){const el=$('aMatriz');const dim=el.dataset.dim||'caso';el.innerHTML='<p class="muted">Cruzando…</p>';
- const {data,error}=await sb.rpc('matriz',{p_dimensao:dim,...F,p_top:20});if(error){el.innerHTML='<p class="erro">'+esc(error.message)+'</p>';return;}
- const cols=[...new Set((data||[]).map(x=>x.coluna))].sort(),ems=[...new Set((data||[]).map(x=>x.emoji))];const m={},tc={};(data||[]).forEach(x=>{m[x.emoji+'|'+x.coluna]=x.textos;tc[x.coluna]=(tc[x.coluna]||0)+x.textos;});
- ems.sort((a,b)=>cols.reduce((s,c)=>s+(m[b+'|'+c]||0),0)-cols.reduce((s,c)=>s+(m[a+'|'+c]||0),0));
- el.innerHTML=`<div class="lin"><label for="dim" style="margin:0">Cruzar os 20 emojis mais usados com</label><select id="dim" style="width:auto">${[['caso','caso'],['rede','rede'],['fonte','tipo de texto'],['candidato','canal do candidato (YouTube)'],['mes','mês']].map(([v,t])=>`<option value="${v}" ${v===dim?'selected':''}>${t}</option>`).join('')}</select></div>
-  <div class="tabwrap" style="margin-top:8px"><table><tr><th>Emoji</th>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>${ems.map(e=>`<tr><td class="emo" style="font-size:18px">${esc(e)}</td>${cols.map(c=>{const n=m[e+'|'+c]||0;return `<td title="${nf(n)} textos">${n?nf(n)+' <span class="muted">('+pc(100*n/tc[c])+')</span>':'—'}</td>`;}).join('')}</tr>`).join('')}</table></div>
-  <p class="muted">Como a Matriz de Codificação do NVivo: número de textos do recorte com cada emoji em cada coluna; entre parênteses, a parte da coluna (soma dos 20 emojis).</p>`;
- $('dim').onchange=e=>{el.dataset.dim=e.target.value;matriz();};}
+let sb, eu = null, LIVRO = null, TIT = {}, PAINEL = null;
+const AV = {};      // avaliação minha por id de texto
+const EST = {};     // estado dos filtros por caso
+const BUSCA = { q: '', emoji: '', fonte: '', caso: null, rede: null, resumo: null };
+
+/* ---------- sessão ---------- */
+try {
+  const c = await (await fetch('https://vidnoyzechknrqhczmrr.supabase.co/functions/v1/odi-area-config')).json();
+  sb = supabase.createClient(c.url, c.chave, { auth: { persistSession: true, detectSessionInUrl: true } });
+} catch (e) {
+  app.innerHTML = painel('ÁREA DO PESQUISADOR', 'SEM CONEXÃO', '<div class="pt-aviso"><strong>Não foi possível falar com o servidor da área.</strong> Tente de novo em alguns minutos.</div>');
+  return;
+}
+[LIVRO] = await Promise.all([J('./data/config/livro_codigos_validacao.json'),
+  J('./data/casos/indice.json').then(d => ((d && d.casos) || []).forEach(c => { TIT[String(c.id)] = c.titulo; }))]);
+const dim = id => (LIVRO && LIVRO.dimensoes.find(d => d.id === id)) || { opcoes: [], rotulo: id };
+const rot = (d, v) => { const o = dim(d).opcoes.find(o => o.id === v); return o ? o.rotulo : v; };
+const novaSenha = /type=(invite|recovery)/.test(location.hash);
+sb.auth.onAuthStateChange(ev => { if (ev === 'PASSWORD_RECOVERY') telaSenha(); });
+
+async function rpc(nome, args) {
+  const { data, error } = await sb.rpc(nome, args || {});
+  if (error) {
+    if (/statement timeout|57014/.test(error.message + error.code)) throw new Error('A consulta passou do tempo permitido (8 segundos). Diminua o recorte: escolha um caso, uma rede ou um termo mais específico.');
+    if (/Could not find the function|PGRST202/.test(error.message + error.code)) throw new Error('⛔ O banco ainda não recebeu a atualização desta área. Avise o responsável.');
+    throw new Error(error.message);
+  }
+  return data;
+}
+const falha = e => `<div class="pt-aviso" style="border-left-color:#b3261e"><strong>Não deu certo.</strong> ${esc(e.message || e)}</div>`;
+
+function telaLogin(msg) {
+  $('#nav').hidden = true; $('#sair').hidden = true; $('#quem').textContent = 'Sem sessão aberta.';
+  app.innerHTML = painel('ÁREA DO PESQUISADOR / ACESSO RESTRITO', 'ENTRAR', `
+   <div class="intro odi-map-hero"><div class="eyebrow">Só pesquisadores convidados pelo responsável do ODI</div><h1>Área do pesquisador.<br><em>Ler o corpus, avaliar na tela, conferir no Iramuteq e no Gephi.</em></h1></div>
+   <div class="card ap-auth"><form id="fLogin"><label class="ap-campo" for="email">E-mail</label><input class="ap-in" id="email" type="email" autocomplete="username" required>
+   <label class="ap-campo" for="senha">Senha</label><input class="ap-in" id="senha" type="password" autocomplete="current-password" required>
+   <div class="ap-acoes"><button class="primarybutton" type="submit">Entrar</button><button class="ghostbutton" type="button" id="esqueci">Esqueci ou ainda não criei a senha</button></div>
+   <p class="ap-estado ${msg ? 'erro' : ''}" id="msgLogin" role="status">${esc(msg || '')}</p></form></div>
+   <div class="pt-aviso"><strong>Não há cadastro aberto.</strong> O responsável convida cada pesquisador; o link para criar a senha chega por e-mail.</div>`);
+  $('#fLogin').onsubmit = async e => { e.preventDefault(); $('#msgLogin').className = 'ap-estado'; $('#msgLogin').textContent = 'Entrando…';
+    const { error } = await sb.auth.signInWithPassword({ email: $('#email').value.trim(), password: $('#senha').value });
+    if (error) { $('#msgLogin').className = 'ap-estado erro'; $('#msgLogin').textContent = 'E-mail ou senha não conferem.'; } else entrar(); };
+  $('#esqueci').onclick = async () => { const em = $('#email').value.trim(); if (!em) { $('#msgLogin').className = 'ap-estado erro'; $('#msgLogin').textContent = 'Escreva seu e-mail acima.'; return; }
+    await sb.auth.resetPasswordForEmail(em, { redirectTo: location.origin + location.pathname });
+    $('#msgLogin').className = 'ap-estado'; $('#msgLogin').textContent = 'Se o e-mail estiver convidado, chega uma mensagem com o link para criar a senha.'; };
+}
+function telaSenha() {
+  app.innerHTML = painel('ÁREA DO PESQUISADOR / CONVITE', 'NOVA SENHA', `<div class="intro odi-map-hero"><h1>Defina sua senha.</h1></div>
+   <div class="card ap-auth"><form id="fSenha"><label class="ap-campo" for="s1">Nova senha (mínimo de 10 caracteres)</label><input class="ap-in" id="s1" type="password" autocomplete="new-password" minlength="10" required>
+   <label class="ap-campo" for="s2">Repita a senha</label><input class="ap-in" id="s2" type="password" autocomplete="new-password" minlength="10" required>
+   <div class="ap-acoes"><button class="primarybutton" type="submit">Salvar senha</button></div><p class="ap-estado" id="msgSenha" role="status"></p></form></div>`);
+  $('#fSenha').onsubmit = async e => { e.preventDefault(); const m = $('#msgSenha');
+    if ($('#s1').value !== $('#s2').value) { m.className = 'ap-estado erro'; m.textContent = 'As senhas não são iguais.'; return; }
+    const { error } = await sb.auth.updateUser({ password: $('#s1').value });
+    if (error) { m.className = 'ap-estado erro'; m.textContent = 'Não foi possível salvar: ' + error.message; return; }
+    sessionStorage.setItem('odiSenhaOk', '1'); history.replaceState(null, '', location.pathname); entrar(); };
+}
+function telaTermo() {
+  app.innerHTML = painel('ÁREA DO PESQUISADOR / TERMO DE USO', 'ANTES DE ABRIR O CORPUS', `<div class="intro odi-map-hero"><div class="eyebrow">Pesquisa acadêmica · eleição de 2026</div><h1>Termo de uso de pesquisa.</h1>
+   <p>Os textos desta área são posts e comentários públicos coletados pelo ODI. Muitos foram escritos por pessoas comuns.</p></div>
+   <div class="card"><h2 class="tk-h2">Ao entrar, você se compromete a:</h2><ul style="font:15px/1.7 Georgia,serif;margin:6px 0 14px 18px;padding:0">
+   <li>usar os textos apenas para a pesquisa do ODI (PPGCOM/UNIP);</li><li>não copiar, publicar nem repassar textos ou trechos que permitam identificar pessoas comuns;</li>
+   <li>citar, em trabalhos, só contagens e exemplos anonimizados;</li><li>não tentar identificar a criança do caso 020 nem divulgar conteúdo do caso 028 além do que o Atlas público mostra;</li>
+   <li>saber que cada consulta fica registrada (quem, quando, o quê).</li></ul><button class="primarybutton" id="aceito" type="button">Li e aceito</button></div>`);
+  $('#aceito').onclick = async () => { try { if (await rpc('aceitar_termo')) entrar(); } catch (e) { app.insertAdjacentHTML('beforeend', falha(e)); } };
+}
+async function entrar() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session) return telaLogin();
+  eu = session.user; $('#quem').textContent = eu.email; $('#sair').hidden = false;
+  if (novaSenha && !sessionStorage.getItem('odiSenhaOk')) return telaSenha();
+  let s; try { s = await rpc('minha_situacao'); } catch (e) { s = null; }
+  if (!s || !s.convidado || !s.ativo) {
+    app.innerHTML = painel('ÁREA DO PESQUISADOR', 'ACESSO PENDENTE', `<div class="intro odi-map-hero"><h1>Sua conta ainda não está na lista de pesquisadores.</h1><p>O login funcionou, mas o acesso ao corpus depende de o responsável do ODI incluir sua conta. Avise o responsável.</p></div>`);
+    return;
+  }
+  if (!s.termo_aceito) return telaTermo();
+  $('#nav').hidden = false;
+  if (!location.hash || /type=|access_token/.test(location.hash)) history.replaceState(null, '', '#casos');
+  rotear();
+}
+$('#sair').onclick = async () => { await sb.auth.signOut(); location.hash = ''; location.reload(); };
+$('#nav').addEventListener('click', e => { const b = e.target.closest('[data-rota]'); if (b) location.hash = '#' + b.dataset.rota; });
+window.addEventListener('hashchange', () => { if (eu && !$('#nav').hidden) rotear(); });
+
+/* ---------- rotas ---------- */
+function rotear() {
+  const [r, a, b] = location.hash.replace(/^#/, '').split('/');
+  $$('#nav .navbutton').forEach(x => x.classList.toggle('active', x.dataset.rota === (r === 'caso' ? 'casos' : r)));
+  window.scrollTo(0, 0);
+  if (r === 'caso' && a) return vCaso(a, b || 'avaliar');
+  if (r === 'busca') return vBusca();
+  if (r === 'concordancia') return vConcordancia();
+  if (r === 'livro') return vLivro();
+  return vCasos();
+}
+async function carregarPainel(forcar) {
+  if (!PAINEL || forcar) {
+    PAINEL = await rpc('painel_casos');
+    const ult = PAINEL.reduce((m, x) => x.carregado_em > m ? x.carregado_em : m, '');
+    if (ult) { $('#carga').hidden = false; $('#carga').textContent = '● Corpus carregado em ' + dh(ult); }
+  }
+  return PAINEL;
+}
+const tituloCaso = id => TIT[id] || 'Caso ' + id;
+
+/* ---------- 01 · menu de casos ---------- */
+async function vCasos() {
+  app.innerHTML = painel('CADERNO DE VALIDAÇÃO / CASOS', 'CARREGANDO…', '');
+  let P; try { P = await carregarPainel(true); } catch (e) { app.innerHTML = painel('CADERNO DE VALIDAÇÃO / CASOS', '', falha(e)); return; }
+  const T = P.reduce((s, x) => ({ t: s.t + x.textos, a: s.a + x.amostra, v: s.v + x.avaliados_amostra, q: s.q + x.arquivos, e: s.e + x.com_emoji }), { t: 0, a: 0, v: 0, q: 0, e: 0 });
+  const tag = x => x.amostra && x.avaliados_amostra >= x.amostra ? 'amostra concluída' : (x.avaliados_amostra ? 'em validação' : 'a validar');
+  app.innerHTML = painel('CADERNO DE VALIDAÇÃO / CASOS', `${P.length} CASOS`, `
+   <div class="intro odi-map-hero"><div class="eyebrow">Corpus · amostra de validação · Iramuteq e Gephi</div>
+    <h1>Casos para validar.<br><em>Leia o corpus, avalie na tela e confira nos programas.</em></h1>
+    <p>Escolha um caso. Dentro dele você lê os textos e marca, em cada um, o que o livro de códigos pede; classifica os emojis do caso; e envia os arquivos que rodou no Iramuteq ou no Gephi para comparar com o que o Atlas calculou.</p></div>
+   <div class="pt-aviso"><strong>A mesma amostra para todos.</strong> Em cada caso há uma amostra de validação de até 300 textos, metade com emoji e metade sem, tirada por sorteio fixo. Todos os pesquisadores avaliam os mesmos textos, e é isso que permite medir a concordância. O corpus inteiro também pode ser lido e avaliado.</div>
+   <div class="kpigrid" style="margin:14px 0 6px">
+    <div class="kpi"><div class="klabel">Textos no banco</div><div class="kval">${nf(T.t)}</div><div class="knote">amostra lida pela coleta nos ${P.length} casos · ${nf(T.e)} com emoji · universo de cada plataforma no dossiê público</div></div>
+    <div class="kpi"><div class="klabel">Amostra de validação</div><div class="kval">${nf(T.a)}</div><div class="knote">${pc(100 * T.a / Math.max(T.t, 1), 2)} dos textos do banco · sorteio fixo por caso</div></div>
+    <div class="kpi"><div class="klabel">Avaliados por você</div><div class="kval">${nf(T.v)}</div><div class="knote">${pc(100 * T.v / Math.max(T.a, 1))} da amostra de validação</div></div>
+    <div class="kpi"><div class="klabel">Arquivos enviados</div><div class="kval">${nf(T.q)}</div><div class="knote">Iramuteq e Gephi, de todos os pesquisadores</div></div></div>
+   <div class="cs-idx" role="group" aria-label="Casos">${P.map(x => `<button type="button" class="cs-ficha" data-caso="${esc(x.caso)}"><div class="cs-ficha-top"><span class="num">${esc(x.caso)}</span><span class="tag">${tag(x)}</span></div>
+     <h3>${esc(tituloCaso(x.caso))}</h3><div class="meta"><span>banco: ${nf(x.textos)} textos</span><span>com emoji: ${nf(x.com_emoji)}</span><span>amostra: ${nf(x.avaliados_amostra)} de ${nf(x.amostra)} avaliados por você</span>
+     <span>pesquisadores que já avaliaram: ${nf(x.pesquisadores)}</span><span>arquivos enviados: ${nf(x.arquivos)}</span></div><span class="cs-abrir">abrir o caso →</span></button>`).join('')}</div>`);
+  $$('.cs-ficha', app).forEach(b => b.onclick = () => { location.hash = '#caso/' + b.dataset.caso + '/avaliar'; });
+}
+
+/* ---------- cartão de texto com avaliação na tela ---------- */
+function opcoes(id, campo, valor, emoji) {
+  const d = dim(campo === 'emojis' ? 'emoji_funcao' : campo);
+  return `<div class="ap-ops" role="group" aria-label="${esc(d.rotulo)}">${d.opcoes.map(o => `<button type="button" class="ap-op" data-av="${id}" data-campo="${campo}" data-valor="${o.id}"${emoji ? ` data-emoji="${esc(emoji)}"` : ''} aria-pressed="${valor === o.id}" title="${esc(o.definicao)}">${esc(o.rotulo)}</button>`).join('')}</div>`;
+}
+function realce(t, q, emoji) {
+  let h = esc(t);
+  (q || '').replace(/["()]/g, ' ').split(/\s+/).filter(w => w.length > 2 && !/^(or|and)$/i.test(w) && w[0] !== '-').forEach(w => {
+    const padrao = w.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&').split('').map(ch => /[aeiouc]/i.test(ch) ? '[' + ch + 'áàâãäéêëíïóôõöúüç]' : ch).join('');
+    try { h = h.replace(new RegExp('(' + padrao + ')', 'gi'), '<mark>$1</mark>'); } catch (e) { /* termo estranho: sem destaque */ }
+  });
+  if (emoji) h = h.split(emoji).join('<mark>' + esc(emoji) + '</mark>');
+  return h;
+}
+function cartao(r, n, ctx) {
+  const a = AV[r.id] = r.avaliacao || null, em = (r.emojis || []).slice(0, 6);
+  const alvoPt = o => String(o).split(',').map(x => ALVO_TRIAGEM[x.trim()] || x.trim()).join(', ');
+  const triagem = [r.ofensivo ? 'ofensivo' : null, r.odio ? 'ódio: ' + alvoPt(r.odio) : null].filter(Boolean);
+  const auto = r.ofensivo == null ? 'sem triagem neste texto' : 'triagem automática: ' + (r.ofensivo ? 'sim' : 'não');
+  return `<article class="ap-item" data-id="${r.id}" data-feito="${a ? 1 : 0}">
+   <div class="ap-meta"><span class="n">${n}</span>${ctx && ctx.mostrarCaso ? `<a href="#caso/${esc(r.caso)}/avaliar">caso ${esc(r.caso)}</a>` : ''}<span>${esc(rede(r.rede))} · ${r.fonte === 'post' ? 'post' : 'comentário'}</span><span>${dh(r.publicado_em)}</span>
+    ${r.autor ? `<span>${esc(r.autor)}</span>` : '<span>autor não exibido</span>'}${r.candidato ? `<span>canal: ${esc(r.candidato)}</span>` : ''}
+    ${r.na_amostra ? '<span class="ap-selo">amostra de validação</span>' : ''}${triagem.map(t => `<span class="ap-selo tri" title="Triagem automática, não validada">${esc(t)}</span>`).join('')}
+    <span class="ap-selo ok" data-selo ${a ? '' : 'hidden'}>avaliado por você</span></div>
+   <p class="ap-texto">${realce(r.texto, ctx && ctx.q, ctx && ctx.emoji)}</p>
+   <div class="ap-linha"><div class="ap-rot">${esc(dim('ofensivo').rotulo)}<small>${esc(auto)}</small></div>${opcoes(r.id, 'ofensivo', a && a.ofensivo)}</div>
+   <div class="ap-linha"><div class="ap-rot">${esc(dim('odio').rotulo)}${r.odio ? `<small>triagem automática: ${esc(alvoPt(r.odio))}</small>` : ''}</div>${opcoes(r.id, 'odio', a && a.odio)}</div>
+   <div class="ap-linha" data-alvo ${a && a.odio === 'sim' ? '' : 'hidden'}><div class="ap-rot">${esc(dim('odio_alvo').rotulo)}</div>${opcoes(r.id, 'odio_alvo', a && a.odio_alvo)}</div>
+   <div class="ap-linha"><div class="ap-rot">${esc(dim('tom').rotulo)}</div>${opcoes(r.id, 'tom', a && a.tom)}</div>
+   ${em.map(e => `<div class="ap-linha"><div class="ap-rot"><span class="ap-emo">${esc(emoV(e))}</span>função aqui</div>${opcoes(r.id, 'emojis', a && a.emojis && a.emojis[e], e)}</div>`).join('')}
+   <div class="ap-linha"><div class="ap-rot"><label for="obs${r.id}">Observação</label></div><div><input class="ap-in" style="height:32px;font-size:13px" id="obs${r.id}" data-obs="${r.id}" maxlength="1000" value="${esc(a && a.obs || '')}" placeholder="dúvida, contexto, por que marcou assim">
+    <div class="ap-estado" data-estado role="status"></div></div></div></article>`;
+}
+async function salvar(id, dados, cartaoEl) {
+  const est = $('[data-estado]', cartaoEl); est.className = 'ap-estado'; est.textContent = 'salvando…';
+  try {
+    const a = await rpc('avaliar', { p_corpus_id: Number(id), p_dados: dados });
+    const novo = !AV[id]; AV[id] = a; cartaoEl.dataset.feito = '1'; $('[data-selo]', cartaoEl).hidden = false;
+    est.textContent = 'salvo às ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    $('[data-alvo]', cartaoEl).hidden = a.odio !== 'sim';
+    $$('.ap-op', cartaoEl).forEach(b => { const v = b.dataset.campo === 'emojis' ? (a.emojis || {})[b.dataset.emoji] : a[b.dataset.campo]; b.setAttribute('aria-pressed', v === b.dataset.valor); });
+    if (novo) document.dispatchEvent(new CustomEvent('odi-avaliou', { detail: { id } }));
+  } catch (e) { est.className = 'ap-estado erro'; est.textContent = 'não salvou: ' + e.message; }
+}
+app.addEventListener('click', e => {
+  const b = e.target.closest('.ap-op[data-av]'); if (!b) return;
+  const el = b.closest('.ap-item'), ja = b.getAttribute('aria-pressed') === 'true', v = ja ? null : b.dataset.valor; // clicar de novo desmarca
+  salvar(b.dataset.av, b.dataset.campo === 'emojis' ? { emojis: { [b.dataset.emoji]: v } } : { [b.dataset.campo]: v }, el);
+});
+app.addEventListener('change', e => { const i = e.target.closest('[data-obs]'); if (i) salvar(i.dataset.obs, { obs: i.value.trim() }, i.closest('.ap-item')); });
+
+/* ---------- 02 · caso ---------- */
+const ABAS = [['avaliar', 'Ler e avaliar o corpus'], ['emojis', 'Emojis do caso'], ['frequencia', 'Frequência e matriz'], ['arquivos', 'Iramuteq e Gephi']];
+async function vCaso(id, aba) {
+  if (!ABAS.some(a => a[0] === aba)) aba = 'avaliar';
+  let P; try { P = await carregarPainel(); } catch (e) { app.innerHTML = painel('CASO ' + esc(id), '', falha(e)); return; }
+  const x = P.find(p => p.caso === id);
+  if (!x) { app.innerHTML = painel('CASO ' + esc(id), '', '<div class="ap-vazio">⛔ Este caso não tem textos no banco.</div><p class="cs-volta"><a href="#casos">← todos os casos</a></p>'); return; }
+  app.innerHTML = `<section class="panel active"><div class="subtabs" role="tablist"><button type="button" data-ir="#casos">← Todos os casos</button>${ABAS.map(([k, t]) => `<button type="button" data-ir="#caso/${esc(id)}/${k}" aria-pressed="${k === aba}">${t}</button>`).join('')}</div>
+   <div class="paper-ribbon"><span>CASO ${esc(id)} / VALIDAÇÃO</span><span><a href="./ODI_Atlas_v15_MVP.html#caso${esc(id)}" target="_blank" rel="noopener">DOSSIÊ PÚBLICO ↗</a></span></div>
+   <div class="intro odi-map-hero" style="padding-bottom:8px"><div class="eyebrow">${nf(x.textos)} textos no banco · ${nf(x.com_emoji)} com emoji · amostra de validação: ${nf(x.amostra)}</div><h1 style="font-size:clamp(26px,3.2vw,40px)">${esc(tituloCaso(id))}</h1></div>
+   <div id="aba"></div></section>`;
+  $$('[data-ir]', app).forEach(b => b.onclick = () => { location.hash = b.dataset.ir; });
+  const el = $('#aba');
+  try { await ({ avaliar: abaAvaliar, emojis: abaEmojis, frequencia: abaFrequencia, arquivos: abaArquivos })[aba](id, x, el); } catch (e) { el.innerHTML = falha(e); }
+}
+
+async function abaAvaliar(id, x, el) {
+  const S = EST[id] = EST[id] || { modo: 'amostra', pendentes: false, so_emoji: false, so_triagem: false, redes: [], fonte: '', q: '', emoji: '', pag: 0 };
+  const R = await rpc('resumo_caso', { p_caso: id });
+  const redes = [...new Set(R.map(r => r.rede))];
+  el.innerHTML = `<div class="card"><div class="eyebrow">Universo e amostra</div><h2 class="tk-h2">O que você está avaliando</h2>
+    <table class="cs-tab"><tr><td>Universo (o que cada plataforma informa existir)</td><td><a href="./ODI_Atlas_v15_MVP.html#caso${esc(id)}" target="_blank" rel="noopener">no dossiê público</a>; ⛔ onde a plataforma não informa</td></tr>
+     <tr><td>Textos do caso lidos pela coleta e carregados no banco</td><td>${nf(x.textos)}</td></tr>
+     ${R.map(r => `<tr><td style="padding-left:18px">${esc(rede(r.rede))} · ${r.fonte === 'post' ? 'posts' : 'comentários'}</td><td>${nf(r.textos)} · ${nf(r.com_emoji)} com emoji</td></tr>`).join('')}
+     <tr><td>Amostra de validação (a mesma para todos os pesquisadores)</td><td>${nf(x.amostra)} · ${pc(100 * x.amostra / Math.max(x.textos, 1), 2)} do caso</td></tr>
+     <tr><td>Como a amostra foi tirada</td><td style="white-space:normal">até 150 textos com emoji e até 150 sem, por sorteio fixo; quem entrou não sai</td></tr></table>
+    <div class="ap-prog" aria-hidden="true"><span id="progBarra" style="width:0"></span></div><p class="yt-cloudnote" id="progTexto"></p></div>
+   <div class="card"><div class="eyebrow">O que mostrar</div>
+    <div class="ap-chips"><span class="rot">Conjunto</span><button type="button" data-f="modo" data-v="amostra">Amostra de validação</button><button type="button" data-f="modo" data-v="corpus">Todo o corpus do caso</button></div>
+    <div class="ap-chips"><span class="rot">Filtro</span><button type="button" data-t="pendentes">Só os que ainda não avaliei</button><button type="button" data-t="so_emoji">Só com emoji</button><button type="button" data-t="so_triagem">Só marcados pela triagem</button>
+      <button type="button" data-f="fonte" data-v="post">Só posts</button><button type="button" data-f="fonte" data-v="comentario">Só comentários</button></div>
+    <div class="ap-chips"><span class="rot">Rede</span>${redes.map(r => `<button type="button" data-rede="${esc(r)}">${esc(rede(r))}</button>`).join('')}</div>
+    <form class="ap-busca" id="fTexto"><div><label class="ap-campo" for="tq" style="margin-top:0">Palavra ou expressão</label><input class="ap-in" id="tq" value="${esc(S.q)}" placeholder='ex.: fraude, "voto impresso"'></div>
+      <div><label class="ap-campo" for="te" style="margin-top:0">Emoji</label><input class="ap-in ap-emo" id="te" value="${esc(S.emoji)}" placeholder="🤡"></div><button class="primarybutton" type="submit" style="height:40px">Aplicar</button></form></div>
+   <p class="yt-cloudnote" id="contagem"></p><div id="lista"></div><button class="ghostbutton ap-mais" id="mais" type="button" hidden>Mostrar mais 20</button>`;
+  const prog = () => { const v = x.avaliados_amostra, t = Math.max(x.amostra, 1); $('#progBarra').style.width = Math.min(100, 100 * v / t) + '%';
+    $('#progTexto').textContent = `Você avaliou ${nf(v)} de ${nf(x.amostra)} textos da amostra (${pc(100 * v / t)}). Cada clique já fica salvo; clicar de novo na mesma opção desmarca.`; };
+  prog();
+  const pintaChips = () => {
+    $$('[data-f]', el).forEach(b => b.setAttribute('aria-pressed', S[b.dataset.f] === b.dataset.v));
+    $$('[data-t]', el).forEach(b => b.setAttribute('aria-pressed', !!S[b.dataset.t]));
+    $$('[data-rede]', el).forEach(b => b.setAttribute('aria-pressed', S.redes.includes(b.dataset.rede)));
+  };
+  let total = 0, mostrados = 0;
+  const carregar = async acrescenta => {
+    if (!acrescenta) { S.pag = 0; mostrados = 0; $('#lista').innerHTML = '<div class="ap-vazio">Buscando os textos…</div>'; }
+    try {
+      const L = await rpc('textos', { p_caso: id, p_modo: S.modo, p_q: S.q || null, p_emoji: S.emoji || null, p_redes: S.redes.length ? S.redes : null, p_fonte: S.fonte || null,
+        p_so_emoji: S.so_emoji, p_so_triagem: S.so_triagem, p_pendentes: S.pendentes, p_lim: 20, p_pagina: S.pag });
+      total = L.length ? L[0].total : (acrescenta ? total : 0);
+      const html = L.map((r, i) => cartao(r, mostrados + i + 1, { q: S.q, emoji: S.emoji })).join('');
+      if (acrescenta) $('#lista').insertAdjacentHTML('beforeend', html); else $('#lista').innerHTML = html || '<div class="ap-vazio">Nenhum texto neste recorte.</div>';
+      mostrados += L.length;
+      $('#contagem').textContent = `${nf(total)} textos neste recorte (${S.modo === 'amostra' ? 'amostra de validação, na ordem do sorteio' : 'corpus do caso, mais recentes primeiro'}); mostrando ${nf(mostrados)}.`;
+      $('#mais').hidden = mostrados >= total || !L.length;
+    } catch (e) { $('#lista').innerHTML = falha(e); $('#mais').hidden = true; }
+  };
+  el.addEventListener('click', e => {
+    const b = e.target.closest('[data-f],[data-t],[data-rede]'); if (!b) return;
+    if (b.dataset.f) S[b.dataset.f] = b.dataset.f === 'fonte' && S.fonte === b.dataset.v ? '' : b.dataset.v;
+    else if (b.dataset.t) S[b.dataset.t] = !S[b.dataset.t];
+    else S.redes = S.redes.includes(b.dataset.rede) ? S.redes.filter(r => r !== b.dataset.rede) : [...S.redes, b.dataset.rede];
+    pintaChips(); carregar(false);
+  });
+  $('#fTexto').onsubmit = e => { e.preventDefault(); S.q = $('#tq').value.trim(); S.emoji = normEmo($('#te').value); carregar(false); };
+  $('#mais').onclick = () => { S.pag++; carregar(true); };
+  const aoAvaliar = ev => { if (!document.body.contains(el)) { document.removeEventListener('odi-avaliou', aoAvaliar); return; }
+    const c = $(`.ap-item[data-id="${ev.detail.id}"]`, el); if (c && $('.ap-selo:not(.tri):not(.ok)', c)) { x.avaliados_amostra++; } x.avaliados++; prog(); };
+  document.addEventListener('odi-avaliou', aoAvaliar);
+  pintaChips(); carregar(false);
+}
+
+async function abaEmojis(id, x, el) {
+  const [D, minhas] = await Promise.all([J(`./data/casos/${id}/emojis.json`), sb.from('avaliacoes_emoji').select('*').eq('caso', id).then(r => { if (r.error) throw new Error(r.error.message); return r.data; })]);
+  if (!D || !D.emojis || !D.emojis.length) { el.innerHTML = '<div class="ap-vazio">⛔ O Atlas ainda não tem a contagem de emojis deste caso (data/casos/' + esc(id) + '/emojis.json).</div>'; return; }
+  const M = {}; minhas.forEach(m => { M[m.emoji] = m; });
+  const campos = LIVRO.dicionario.campos.map(c => c.usa_opcoes_de ? Object.assign({}, c, { opcoes: dim(c.usa_opcoes_de).opcoes }) : c);
+  const posTop = p => { const e = Object.entries(p || {}).sort((a, b) => b[1] - a[1])[0]; return e ? e[0] : '—'; };
+  const sel = (e, c, v) => `<select class="ap-in" data-dic="${esc(e)}" data-campo="${c.id}" aria-label="${esc(c.rotulo)}"><option value="">—</option>${c.opcoes.map(o => `<option value="${o.id}" ${v === o.id ? 'selected' : ''} title="${esc(o.definicao)}">${esc(o.rotulo)}</option>`).join('')}</select>`;
+  const feitos = () => Object.values(M).filter(m => m.tipo || m.funcao || m.sentimento || m.alinhamento).length;
+  el.innerHTML = `<div class="card"><div class="eyebrow">Dicionário de emojis · avaliação por emoji</div><h2 class="tk-h2">Como cada emoji é usado neste caso</h2>
+    <p class="yt-cloudnote">${esc(LIVRO.dicionario.explicacao)} As colunas "automático" vêm da contagem do Atlas (posição no texto e Emoji Sentiment Ranking) e são sugestão, não resposta.</p>
+    <table class="cs-tab" style="max-width:640px"><tr><td>Textos lidos no caso (contagem pública do Atlas)</td><td>${nf(D.total.lidos)}</td></tr><tr><td>Textos com emoji</td><td>${nf(D.total.com_emoji)} · ${pc(D.total.pct_com_emoji)}</td></tr>
+     <tr><td>Emojis distintos · listados aqui</td><td>${nf(D.total.distintos)} · os ${Math.min(40, D.emojis.length)} mais usados</td></tr><tr><td>Avaliados por você</td><td id="dicFeitos">${nf(feitos())}</td></tr></table></div>
+   <div class="card ap-rolar"><table class="db-tab ap-dic"><thead><tr><th>Emoji</th><th>Usos</th><th>Posição (automático)</th><th>Sentimento (automático)</th>${campos.map(c => `<th>${esc(c.rotulo)}</th>`).join('')}<th>Observação</th><th></th></tr></thead><tbody>
+    ${D.emojis.slice(0, 40).map(e => { const k = normEmo(e.e), m = M[k] || {};
+      return `<tr><td><span class="ap-emo" title="${esc(e.nome || '')}">${esc(e.e)}</span></td><td>${nf(e.ocorrencias)}<br><small>${pc(e.pct_textos_lidos, 2)} dos textos</small></td><td>${esc(posTop(e.posicao))}</td>
+       <td>${e.sentimento == null ? '⛔ fora do ranking' : (e.sentimento > 0 ? '+' : '') + Number(e.sentimento).toLocaleString('pt-BR', { maximumFractionDigits: 2 })}</td>
+       ${campos.map(c => `<td>${sel(k, c, m[c.id])}</td>`).join('')}<td><input class="ap-in" style="height:34px;font-size:12px;min-width:150px" data-dic="${esc(k)}" data-campo="obs" maxlength="1000" value="${esc(m.obs || '')}" aria-label="Observação"></td>
+       <td><button type="button" class="ghostbutton" data-ctx="${esc(k)}">ver contextos</button></td></tr>`; }).join('')}</tbody></table><p class="ap-estado" id="dicEstado" role="status"></p></div>`;
+  el.addEventListener('change', async e => { const c = e.target.closest('[data-dic]'); if (!c) return; const st = $('#dicEstado'); st.className = 'ap-estado'; st.textContent = 'salvando…';
+    try { M[c.dataset.dic] = await rpc('avaliar_emoji', { p_caso: id, p_emoji: c.dataset.dic, p_dados: { [c.dataset.campo]: c.value || null } }); st.textContent = 'salvo às ' + new Date().toLocaleTimeString('pt-BR'); $('#dicFeitos').textContent = nf(feitos()); }
+    catch (er) { st.className = 'ap-estado erro'; st.textContent = 'não salvou: ' + er.message; } });
+  $$('[data-ctx]', el).forEach(b => b.onclick = () => { EST[id] = Object.assign(EST[id] || { pendentes: false, so_emoji: false, so_triagem: false, redes: [], fonte: '', q: '', pag: 0 }, { modo: 'corpus', emoji: b.dataset.ctx }); location.hash = '#caso/' + id + '/avaliar'; });
+}
+
+function nuvem(l, emo, aoClicar) {
+  if (!l.length) return '<div class="ap-vazio">Nada neste recorte.</div>';
+  const mx = l[0].textos, mn = l[l.length - 1].textos;
+  return `<div class="ap-nuvem">${[...l].sort((a, b) => emo ? b.textos - a.textos : a.termo.localeCompare(b.termo, 'pt')).map(x => { const r = mx === mn ? 1 : Math.sqrt((x.textos - mn) / (mx - mn));
+    return `<button type="button" class="${emo ? 'ap-emo' : ''}" data-termo="${esc(x.termo)}" data-emo="${emo ? 1 : ''}" style="font-size:${(emo ? 16 + r * 30 : 13 + r * 24).toFixed(0)}px" title="${esc(x.termo)}: ${nf(x.textos)} textos">${esc(emo ? emoV(x.termo) : x.termo)}</button>`; }).join('')}</div>`;
+}
+async function abaFrequencia(id, x, el) {
+  el.innerHTML = '<div class="ap-vazio">Contando…</div>';
+  const F = await rpc('frequencia', { p_casos: [id], p_top: 80 });
+  const E = F.filter(f => f.tipo === 'emoji'), P = F.filter(f => f.tipo === 'palavra');
+  el.innerHTML = `<div class="pt-aviso"><strong>Como ler.</strong> As duas nuvens contam em quantos textos do caso cada emoji ou palavra aparece (${nf(x.textos)} textos no banco). Clique num termo para abrir os textos e avaliar.</div>
+   <div class="ap-dois"><div class="card"><div class="eyebrow">Emojis · em quantos textos</div>${nuvem(E, true)}</div><div class="card"><div class="eyebrow">Palavras · em quantos textos</div>${nuvem(P, false)}</div></div>
+   <div class="card"><div class="eyebrow">Matriz de cruzamento</div><h2 class="tk-h2">Os 20 emojis mais usados do caso, por</h2>
+    <div class="ap-chips" id="mxDim">${[['rede', 'rede'], ['fonte', 'tipo de texto'], ['candidato', 'canal do candidato (YouTube)'], ['mes', 'mês']].map(([v, t], i) => `<button type="button" data-dimx="${v}" aria-pressed="${i === 0}">${t}</button>`).join('')}</div><div id="mx" class="ap-rolar"></div>
+    <p class="yt-cloudnote">Número de textos com o emoji em cada coluna; entre parênteses, a parte que o emoji tem na soma da coluna.</p></div>`;
+  $$('[data-termo]', el).forEach(b => b.onclick = () => { EST[id] = Object.assign(EST[id] || { pendentes: false, so_emoji: false, so_triagem: false, redes: [], fonte: '', pag: 0 }, { modo: 'corpus', q: b.dataset.emo ? '' : b.dataset.termo, emoji: b.dataset.emo ? b.dataset.termo : '' }); location.hash = '#caso/' + id + '/avaliar'; });
+  const matriz = async d => { $('#mx').innerHTML = '<div class="ap-vazio">Cruzando…</div>';
+    try { const M = await rpc('matriz', { p_dimensao: d, p_casos: [id], p_top: 20 }); const cols = [...new Set(M.map(m => m.coluna))].sort(), ems = [...new Set(M.map(m => m.emoji))], v = {}, tc = {};
+      M.forEach(m => { v[m.emoji + '|' + m.coluna] = m.textos; tc[m.coluna] = (tc[m.coluna] || 0) + m.textos; });
+      ems.sort((a, b) => cols.reduce((s, c) => s + (v[b + '|' + c] || 0), 0) - cols.reduce((s, c) => s + (v[a + '|' + c] || 0), 0));
+      $('#mx').innerHTML = ems.length ? `<table class="db-tab"><thead><tr><th>Emoji</th>${cols.map(c => `<th>${esc(d === 'rede' ? rede(c) : c)}</th>`).join('')}</tr></thead><tbody>${ems.map(e => `<tr><td class="ap-emo" style="font-size:19px">${esc(emoV(e))}</td>${cols.map(c => { const n = v[e + '|' + c] || 0; return `<td>${n ? nf(n) + ' <small>(' + pc(100 * n / tc[c]) + ')</small>' : '—'}</td>`; }).join('')}</tr>`).join('')}</tbody></table>` : '<div class="ap-vazio">Sem emojis neste caso.</div>';
+    } catch (e) { $('#mx').innerHTML = falha(e); } };
+  $('#mxDim').onclick = e => { const b = e.target.closest('[data-dimx]'); if (!b) return; $$('[data-dimx]', el).forEach(o => o.setAttribute('aria-pressed', o === b)); matriz(b.dataset.dimx); };
+  matriz('rede');
+}
+
+/* ---------- Iramuteq e Gephi ---------- */
+const EXT = ['gexf', 'graphml', 'gephi', 'net', 'csv', 'tsv', 'txt', 'png', 'jpg', 'jpeg', 'svg', 'pdf', 'html', 'zip', 'xlsx', 'ods'];
+const ANALISES = { iramuteq: ['CHD (classes de Reinert)', 'AFC', 'Similitude', 'Nuvem de palavras', 'Estatísticas do corpus', 'Outra'], gephi: ['Rede (arquivo do grafo)', 'Métricas (modularidade, grau…)', 'Imagem do desenho', 'Outra'], outro: ['Outra'] };
+async function lerGrafo(arq) {
+  const ext = arq.name.split('.').pop().toLowerCase();
+  if (!['gexf', 'graphml'].includes(ext) || arq.size > 30 * 1048576) return null;
+  try { const doc = new DOMParser().parseFromString(await arq.text(), 'application/xml'); if (doc.querySelector('parsererror')) return null;
+    return { formato: ext, nos: doc.getElementsByTagNameNS('*', 'node').length, ligacoes: doc.getElementsByTagNameNS('*', 'edge').length }; } catch (e) { return null; }
+}
+async function abaArquivos(id, x, el) {
+  const [busca, redes] = await Promise.all([J(`./data/casos/${id}/busca.json`), J(`./data/casos/${id}/redes_viewer.json`)]);
+  const chd = busca && busca.classes && busca.classes.classes && busca.classes.classes.length ? busca.classes : null;
+  const R = (redes && redes.redes) || [];
+  el.innerHTML = `<div class="pt-aviso"><strong>Para que serve.</strong> Rode a análise no Iramuteq ou no Gephi, envie aqui o arquivo que o programa gerou e registre se o resultado confere com o que o Atlas calculou. O arquivo fica guardado no armazenamento privado da área; só pesquisadores convidados baixam.</div>
+   <div class="ap-dois"><div class="card"><div class="eyebrow">O que o Atlas calculou · classes (CHD de Reinert)</div><h2 class="tk-h2">Para conferir no Iramuteq</h2>
+     ${chd ? `<table class="cs-tab"><tr><td>Comentários do YouTube no corpus da CHD</td><td>${nf(chd.comentarios)}</td></tr><tr><td>Classificados</td><td>${nf(chd.classificados)} · ${pc(chd.pct_classificados)}</td></tr><tr><td>Classes</td><td>${chd.classes.length}</td></tr>
+       ${chd.classes.map(c => `<tr><td style="padding-left:18px;white-space:normal">Classe ${esc(c.classe)}: ${esc((c.formas || []).slice(0, 6).map(f => f[0]).join(', '))}</td><td>${pc(c.pct)}</td></tr>`).join('')}</table>
+       <p class="yt-cloudnote">${esc(chd.nota || '')}</p>` : '<div class="ap-vazio">⛔ Este caso não tem CHD calculada pelo Atlas.</div>'}</div>
+    <div class="card"><div class="eyebrow">O que o Atlas calculou · redes</div><h2 class="tk-h2">Para conferir no Gephi</h2>
+     ${R.length ? `<div class="ap-rolar"><table class="db-tab"><thead><tr><th>Rede</th><th>Nós</th><th>Ligações</th><th>Modularidade</th><th>Arquivo</th></tr></thead><tbody>${R.map(r => `<tr><td style="white-space:normal">${esc(r.tipo)}</td><td>${nf((r.metricas || {}).nos)}</td><td>${nf((r.metricas || {}).arestas)}</td><td>${(r.metricas || {}).modularidade_q ? Number(r.metricas.modularidade_q).toLocaleString('pt-BR', { maximumFractionDigits: 3 }) : '—'}</td><td><a href="./${esc(r.gexf)}" download>GEXF ↓</a></td></tr>`).join('')}</tbody></table></div>
+       <p class="yt-cloudnote">Os arquivos GEXF são os mesmos do Atlas público (contas com menos de 10 mil seguidores aparecem como código). Abra no Gephi, rode as métricas e envie o resultado.</p>` : '<div class="ap-vazio">⛔ Este caso não tem redes calculadas pelo Atlas.</div>'}</div></div>
+   <div class="card"><div class="eyebrow">Enviar arquivo</div><h2 class="tk-h2">Arquivo vindo do Iramuteq ou do Gephi</h2>
+    <form id="fArq"><div class="ap-chips"><span class="rot">Programa</span><button type="button" data-prog="iramuteq" aria-pressed="true">Iramuteq</button><button type="button" data-prog="gephi" aria-pressed="false">Gephi</button><button type="button" data-prog="outro" aria-pressed="false">Outro</button></div>
+     <div class="ap-dois"><div><label class="ap-campo" for="aAnalise">Qual análise</label><select class="ap-in" id="aAnalise"></select></div>
+      <div id="cmpBox" hidden><label class="ap-campo" for="aCmp">Comparar com qual rede do Atlas</label><select class="ap-in" id="aCmp"><option value="">—</option>${R.map((r, i) => `<option value="${i}">${esc(r.tipo)}</option>`).join('')}</select></div></div>
+     <label class="ap-campo" for="aArq">Arquivo (até 50 MB · ${EXT.join(', ')})</label><input class="ap-in" id="aArq" type="file" style="padding:7px;height:auto" required accept="${EXT.map(e => '.' + e).join(',')}">
+     <div class="ap-chips"><span class="rot">Parecer</span><button type="button" data-par="" aria-pressed="true">Ainda não comparei</button><button type="button" data-par="confere" aria-pressed="false">Confere com o Atlas</button><button type="button" data-par="parcial" aria-pressed="false">Confere em parte</button><button type="button" data-par="diverge" aria-pressed="false">Diverge</button></div>
+     <label class="ap-campo" for="aNota">O que você fez e o que encontrou</label><input class="ap-in" id="aNota" maxlength="2000" placeholder="ex.: CHD com 5 classes, 78% de aproveitamento; a classe 2 junta o que o Atlas separou">
+     <div class="ap-acoes"><button class="primarybutton" type="submit">Enviar</button><span class="ap-estado" id="arqEstado" role="status"></span></div></form></div>
+   <div class="card"><div class="eyebrow">Arquivos do caso</div><h2 class="tk-h2">O que já foi enviado</h2><div id="arqLista" class="ap-rolar"></div></div>`;
+  const F = { prog: 'iramuteq', par: '' };
+  const pintaForm = () => { $$('[data-prog]', el).forEach(b => b.setAttribute('aria-pressed', b.dataset.prog === F.prog)); $$('[data-par]', el).forEach(b => b.setAttribute('aria-pressed', b.dataset.par === F.par));
+    $('#aAnalise').innerHTML = ANALISES[F.prog].map(a => `<option>${esc(a)}</option>`).join(''); $('#cmpBox').hidden = F.prog !== 'gephi' || !R.length; };
+  $('#fArq').addEventListener('click', e => { const b = e.target.closest('[data-prog],[data-par]'); if (!b) return; if (b.dataset.prog != null && b.hasAttribute('data-prog')) F.prog = b.dataset.prog; else F.par = b.dataset.par; pintaForm(); });
+  pintaForm();
+  const PAR = { confere: 'confere', parcial: 'confere em parte', diverge: 'diverge' };
+  const listar = async () => {
+    const { data, error } = await sb.from('arquivos').select('*').eq('caso', id).order('criado_em', { ascending: false });
+    if (error) { $('#arqLista').innerHTML = falha(error); return; }
+    $('#arqLista').innerHTML = data.length ? `<table class="db-tab"><thead><tr><th>Quando</th><th>Programa · análise</th><th>Arquivo</th><th>Lido do arquivo</th><th>Parecer</th><th>Nota</th><th>Quem</th></tr></thead><tbody>${data.map(a => { const r = a.resumo || {};
+      const lido = r.nos != null ? `${nf(r.nos)} nós · ${nf(r.ligacoes)} ligações${r.atlas ? `<br><small>Atlas (${esc(r.atlas.tipo)}): ${nf(r.atlas.nos)} nós · ${nf(r.atlas.arestas)} ligações</small>` : ''}` : '—';
+      return `<tr><td>${dh(a.criado_em)}</td><td style="white-space:normal">${esc(a.programa === 'iramuteq' ? 'Iramuteq' : a.programa === 'gephi' ? 'Gephi' : 'Outro')} · ${esc(a.analise || '—')}</td>
+       <td style="white-space:normal"><button type="button" class="ghostbutton" data-baixar="${esc(a.caminho)}">${esc(a.nome)} ↓</button><br><small>${nf(Math.round((a.tamanho || 0) / 1024))} KB</small></td><td>${lido}</td>
+       <td>${a.parecer ? esc(PAR[a.parecer]) : 'ainda não comparado'}</td><td style="white-space:normal;max-width:320px">${esc(a.nota || '—')}</td><td>${a.user_id === eu.id ? 'você' : 'outro pesquisador'}</td></tr>`; }).join('')}</tbody></table>` : '<div class="ap-vazio">Nenhum arquivo enviado neste caso.</div>';
+    $$('[data-baixar]', el).forEach(b => b.onclick = async () => { const { data: u, error: er } = await sb.storage.from('validacao').createSignedUrl(b.dataset.baixar, 120); if (er) { alertaArq('não foi possível baixar: ' + er.message, true); return; } window.open(u.signedUrl, '_blank', 'noopener'); });
+  };
+  const alertaArq = (t, erro) => { const s = $('#arqEstado'); s.className = 'ap-estado' + (erro ? ' erro' : ''); s.textContent = t; };
+  $('#fArq').onsubmit = async e => { e.preventDefault(); const arq = $('#aArq').files[0]; if (!arq) return;
+    const ext = arq.name.split('.').pop().toLowerCase();
+    if (!EXT.includes(ext)) return alertaArq('tipo de arquivo não aceito: .' + ext, true);
+    if (arq.size > 50 * 1048576) return alertaArq('arquivo acima de 50 MB', true);
+    alertaArq('enviando…');
+    const limpo = arq.name.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^A-Za-z0-9._-]+/g, '_').slice(-120), caminho = `${id}/${eu.id}/${Date.now()}_${limpo}`;
+    const resumo = await lerGrafo(arq), ci = $('#aCmp').value;
+    if (resumo && F.prog === 'gephi' && ci !== '' && R[ci]) resumo.atlas = { tipo: R[ci].tipo, nos: Number((R[ci].metricas || {}).nos) || null, arestas: Number((R[ci].metricas || {}).arestas) || null };
+    const up = await sb.storage.from('validacao').upload(caminho, arq, { upsert: false, contentType: arq.type || 'application/octet-stream' });
+    if (up.error) return alertaArq('não enviou: ' + up.error.message, true);
+    const ins = await sb.from('arquivos').insert({ caso: id, programa: F.prog, analise: $('#aAnalise').value, nome: arq.name.slice(0, 200), caminho, tamanho: arq.size, resumo, parecer: F.par || null, nota: $('#aNota').value.trim() || null });
+    if (ins.error) return alertaArq('o arquivo subiu, mas o registro falhou: ' + ins.error.message, true);
+    alertaArq('enviado às ' + new Date().toLocaleTimeString('pt-BR')); $('#fArq').reset(); F.par = ''; pintaForm(); x.arquivos++; listar(); };
+  listar();
+}
+
+/* ---------- 03 · busca em todos os casos ---------- */
+async function vBusca() {
+  const B = BUSCA;
+  app.innerHTML = painel('BUSCA / TODOS OS CASOS', 'CORPUS INTEIRO', `<div class="intro odi-map-hero" style="padding-bottom:6px"><div class="eyebrow">Palavra, expressão ou emoji · posts e comentários de todos os casos</div>
+    <h1>Onde isso aparece?<br><em>Primeiro o mapa, depois os textos.</em></h1></div>
+   <form class="ap-busca" id="fBusca"><div><label class="ap-campo" for="bq">Palavra ou expressão</label><input class="ap-in grande" id="bq" value="${esc(B.q)}" placeholder='fraude · "voto impresso" · urna -eletrônica' autofocus></div>
+    <div><label class="ap-campo" for="be">Emoji</label><input class="ap-in grande ap-emo" id="be" value="${esc(B.emoji)}" placeholder="🤡"></div><button class="primarybutton" type="submit" style="height:48px">Buscar</button></form>
+   <div class="ap-chips"><span class="rot">Em</span><button type="button" data-bf="" aria-pressed="${B.fonte === ''}">Posts e comentários</button><button type="button" data-bf="post" aria-pressed="${B.fonte === 'post'}">Só posts</button><button type="button" data-bf="comentario" aria-pressed="${B.fonte === 'comentario'}">Só comentários</button></div>
+   <p class="yt-cloudnote">Como escrever: várias palavras = textos com todas elas; aspas = expressão exata; sinal de menos = sem a palavra; <em>or</em> entre duas palavras = uma ou outra. Acentos e maiúsculas não importam.</p>
+   <div id="bMapa"></div><div id="bLista"></div><button class="ghostbutton ap-mais" id="bMais" type="button" hidden>Mostrar mais 20</button>`);
+  let pag = 0, mostrados = 0, total = 0;
+  const textos = async acrescenta => {
+    if (!acrescenta) { pag = 0; mostrados = 0; $('#bLista').innerHTML = '<div class="ap-vazio">Buscando os textos…</div>'; }
+    try {
+      const L = await rpc('textos', { p_caso: B.caso, p_modo: 'corpus', p_q: B.q || null, p_emoji: B.emoji || null, p_redes: B.rede ? [B.rede] : null, p_fonte: B.fonte || null, p_lim: 20, p_pagina: pag });
+      total = L.length ? L[0].total : (acrescenta ? total : 0);
+      const html = L.map((r, i) => cartao(r, mostrados + i + 1, { q: B.q, emoji: B.emoji, mostrarCaso: true })).join('');
+      if (acrescenta) $('#bLista').insertAdjacentHTML('beforeend', html); else $('#bLista').innerHTML = (total ? `<p class="yt-cloudnote">${nf(total)} textos${B.caso ? ' no caso ' + esc(B.caso) : ''}${B.rede ? ' · ' + esc(rede(B.rede)) : ''}, mais recentes primeiro. Você pode avaliar aqui mesmo.</p>` : '') + (html || '<div class="ap-vazio">Nenhum texto.</div>');
+      mostrados += L.length; $('#bMais').hidden = mostrados >= total || !L.length;
+    } catch (e) { $('#bLista').innerHTML = falha(e); $('#bMais').hidden = true; }
+  };
+  const mapa = () => {
+    const R = B.resumo || [], porCaso = {}, porRede = {}; let tot = 0;
+    R.forEach(r => { if (!B.rede || r.rede === B.rede) porCaso[r.caso] = (porCaso[r.caso] || 0) + r.textos; if (!B.caso || r.caso === B.caso) porRede[r.rede] = (porRede[r.rede] || 0) + r.textos; tot += r.textos; });
+    if (!R.length) { $('#bMapa').innerHTML = '<div class="ap-vazio">Nenhum texto com esse termo no banco.</div>'; return; }
+    const barras = (o, tipo, sel) => { const l = Object.entries(o).sort((a, b) => b[1] - a[1]), mx = l.length ? l[0][1] : 1;
+      return l.map(([k, n]) => `<button type="button" class="ap-barra" data-${tipo}="${esc(k)}" aria-pressed="${sel === k}"><span class="t" title="${esc(tipo === 'bcaso' ? tituloCaso(k) : rede(k))}">${tipo === 'bcaso' ? esc(k) + ' · ' + esc(tituloCaso(k)) : esc(rede(k))}</span><span class="b"><span style="width:${100 * n / mx}%"></span></span><span class="q">${nf(n)}</span></button>`).join(''); };
+    $('#bMapa').innerHTML = `<div class="card"><div class="eyebrow">Onde aparece</div><h2 class="tk-h2">${nf(tot)} textos em ${new Set(R.map(r => r.caso)).size} casos</h2>
+      <p class="yt-cloudnote">Contagem na amostra lida pela coleta (o banco), não no universo das plataformas. Clique numa linha para ver só aquele caso ou rede; clique de novo para soltar.</p>
+      <div class="ap-barras"><div><div class="eyebrow">Por caso</div>${barras(porCaso, 'bcaso', B.caso)}</div><div><div class="eyebrow">Por rede</div>${barras(porRede, 'brede', B.rede)}</div></div></div>`;
+  };
+  const buscar = async () => {
+    B.q = $('#bq').value.trim(); B.emoji = normEmo($('#be').value); B.caso = null; B.rede = null; $('#bLista').innerHTML = ''; $('#bMais').hidden = true;
+    if (!B.q && !B.emoji) { $('#bMapa').innerHTML = '<div class="ap-vazio">Escreva uma palavra, uma expressão ou um emoji.</div>'; return; }
+    $('#bMapa').innerHTML = '<div class="ap-vazio">Procurando em todos os casos…</div>';
+    try { B.resumo = await rpc('buscar_resumo', { p_q: B.q || null, p_emoji: B.emoji || null, p_fonte: B.fonte || null }); mapa(); if (B.resumo.length) textos(false); } catch (e) { $('#bMapa').innerHTML = falha(e); }
+  };
+  $('#fBusca').onsubmit = e => { e.preventDefault(); buscar(); };
+  $$('[data-bf]', app).forEach(b => b.onclick = () => { B.fonte = b.dataset.bf; $$('[data-bf]', app).forEach(o => o.setAttribute('aria-pressed', o === b)); if (B.q || B.emoji) buscar(); });
+  $('#bMapa').addEventListener('click', e => { const b = e.target.closest('[data-bcaso],[data-brede]'); if (!b) return;
+    if (b.dataset.bcaso != null && b.hasAttribute('data-bcaso')) B.caso = B.caso === b.dataset.bcaso ? null : b.dataset.bcaso; else B.rede = B.rede === b.dataset.brede ? null : b.dataset.brede; mapa(); textos(false); });
+  $('#bMais').onclick = () => { pag++; textos(true); };
+  if (B.resumo && (B.q || B.emoji)) { mapa(); if (B.resumo.length) textos(false); }
+}
+
+/* ---------- 04 · concordância e triagem ---------- */
+const ROT_DIM = { ofensivo: 'Linguagem ofensiva', odio: 'Discurso de ódio', tom: 'Tom do texto', emoji_funcao: 'Função do emoji no texto', dic_tipo: 'Dicionário · tipo de signo', dic_funcao: 'Dicionário · função mais comum', dic_sentimento: 'Dicionário · sentimento', dic_alinhamento: 'Dicionário · de quem é o emoji' };
+async function vConcordancia() {
+  let P; try { P = await carregarPainel(); } catch (e) { app.innerHTML = painel('CONCORDÂNCIA', '', falha(e)); return; }
+  app.innerHTML = painel('CONCORDÂNCIA ENTRE PESQUISADORES / TRIAGEM AUTOMÁTICA', 'VALIDAÇÃO', `<div class="intro odi-map-hero" style="padding-bottom:6px"><div class="eyebrow">Alfa de Krippendorff · triagem automática × leitura humana</div>
+    <h1>As avaliações batem?<br><em>Entre pesquisadores e com a máquina.</em></h1><p>${esc(LIVRO.concordancia)}</p></div>
+   <div class="ap-chips"><span class="rot">Caso</span><select class="ap-in" id="cCaso" style="width:auto;max-width:100%"><option value="">Todos os casos</option>${P.map(p => `<option value="${esc(p.caso)}">${esc(p.caso)} · ${esc(tituloCaso(p.caso))}</option>`).join('')}</select></div>
+   <div id="cAlfa"></div><div id="cTri"></div>`);
+  const calcular = async () => {
+    const caso = $('#cCaso').value || null; $('#cAlfa').innerHTML = '<div class="ap-vazio">Calculando…</div>'; $('#cTri').innerHTML = '';
+    try {
+      const [L, T] = await Promise.all([rpc('concordancia', { p_caso: caso }), rpc('triagem_x_humano', { p_caso: caso })]);
+      const D = ODIConcordancia.porDimensao(L), ks = Object.keys(ROT_DIM).filter(k => D[k]);
+      const leitura = a => a == null ? '—' : a >= 0.8 ? 'confiável' : a >= 0.667 ? 'só para conclusões provisórias' : 'rever o livro de códigos';
+      $('#cAlfa').innerHTML = `<div class="card"><div class="eyebrow">Entre pesquisadores</div><h2 class="tk-h2">Concordância por dimensão</h2>${ks.length ? `<div class="ap-rolar"><table class="db-tab"><thead><tr><th>Dimensão</th><th>Itens com 2 ou mais avaliações</th><th>Pesquisadores</th><th>Acordo simples (pares)</th><th>Alfa de Krippendorff</th><th>Leitura</th></tr></thead><tbody>
+        ${ks.map(k => { const d = D[k]; return `<tr><td>${esc(ROT_DIM[k])}</td><td>${nf(d.itens)}</td><td>${nf(d.pesquisadores)}</td><td>${pc(100 * d.acordo_pares)}</td><td>${d.alfa == null ? (d.sem_variacao ? '— (todos usaram a mesma categoria)' : '—') : d.alfa.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}</td><td>${esc(leitura(d.alfa))}</td></tr>`; }).join('')}</tbody></table></div>
+        <p class="yt-cloudnote">Só entram itens que dois ou mais pesquisadores avaliaram. Os pesquisadores não são identificados aqui. Com poucos itens o alfa oscila muito: leia junto com a coluna de itens.</p>`
+        : '<div class="ap-vazio">⛔ Ainda não há nenhum item avaliado por dois pesquisadores' + (caso ? ' neste caso' : '') + '. A concordância aparece quando o segundo pesquisador avaliar textos da mesma amostra.</div>'}</div>`;
+      const m = { 'true|sim': 0, 'true|nao': 0, 'false|sim': 0, 'false|nao': 0 }; let ns = 0;
+      T.forEach(t => { if (t.humano === 'nao_sei') ns += t.textos; else m[t.triagem + '|' + t.humano] = t.textos; });
+      const n = m['true|sim'] + m['true|nao'] + m['false|sim'] + m['false|nao'];
+      $('#cTri').innerHTML = `<div class="card"><div class="eyebrow">Máquina × você · linguagem ofensiva</div><h2 class="tk-h2">A triagem automática acerta?</h2>${n ? `<div class="ap-rolar"><table class="db-tab" style="max-width:560px"><thead><tr><th></th><th>Você: ofensivo</th><th>Você: não ofensivo</th></tr></thead><tbody>
+        <tr><td>Triagem: ofensivo</td><td>${nf(m['true|sim'])}</td><td>${nf(m['true|nao'])}</td></tr><tr><td>Triagem: não ofensivo</td><td>${nf(m['false|sim'])}</td><td>${nf(m['false|nao'])}</td></tr></tbody></table></div>
+        <table class="cs-tab" style="max-width:560px;margin-top:8px"><tr><td>Textos comparados (com triagem e com a sua resposta sim ou não)</td><td>${nf(n)}</td></tr>
+         <tr><td>A triagem coincide com você</td><td>${pc(100 * (m['true|sim'] + m['false|nao']) / n)}</td></tr>
+         <tr><td>Do que a triagem marcou, você confirma (precisão)</td><td>${m['true|sim'] + m['true|nao'] ? pc(100 * m['true|sim'] / (m['true|sim'] + m['true|nao'])) : '—'}</td></tr>
+         <tr><td>Do que você marcou, a triagem pegou (cobertura)</td><td>${m['true|sim'] + m['false|sim'] ? pc(100 * m['true|sim'] / (m['true|sim'] + m['false|sim'])) : '—'}</td></tr>${ns ? `<tr><td>Marcados por você como "não sei" (fora da conta)</td><td>${nf(ns)}</td></tr>` : ''}</table>
+        <p class="yt-cloudnote">Modelo HateBR, limiar 0,5. A conta usa só as SUAS avaliações e vale para os textos que você avaliou${caso ? ' neste caso' : ''}, não para o corpus inteiro.</p>` : '<div class="ap-vazio">⛔ Você ainda não avaliou "linguagem ofensiva" em textos que tenham triagem automática' + (caso ? ' neste caso' : '') + '.</div>'}</div>`;
+    } catch (e) { $('#cAlfa').innerHTML = falha(e); }
+  };
+  $('#cCaso').onchange = calcular; calcular();
+}
+
+/* ---------- 05 · livro de códigos ---------- */
+function vLivro() {
+  const L = LIVRO; if (!L) { app.innerHTML = painel('LIVRO DE CÓDIGOS', '', '<div class="ap-vazio">⛔ Livro de códigos não encontrado.</div>'); return; }
+  const tab = o => `<table class="cs-tab">${o.map(x => `<tr><td style="width:190px;font-weight:700">${esc(x.rotulo)}</td><td style="text-align:left;white-space:normal">${esc(x.definicao || '')}</td></tr>`).join('')}</table>`;
+  app.innerHTML = painel('LIVRO DE CÓDIGOS / ' + esc(L.versao.toUpperCase()), esc(L.data.split('-').reverse().join('/')), `<div class="intro odi-map-hero" style="padding-bottom:6px"><div class="eyebrow">O que cada botão quer dizer</div><h1>Livro de códigos.<br><em>Versão ${esc(L.versao)}, ainda em rascunho.</em></h1><p>${esc(L.como_usar)}</p></div>
+   <div class="pt-aviso" style="border-left-color:#b3261e"><strong>Estado.</strong> ${esc(L.estado)}</div>
+   ${L.dimensoes.map(d => `<div class="card"><div class="eyebrow">Por texto</div><h2 class="tk-h2">${esc(d.rotulo)}</h2><p style="font:15px/1.6 Georgia,serif;margin:0 0 8px">${esc(d.pergunta)}</p>${tab(d.opcoes)}
+     <p class="yt-cloudnote">${d.serve_para ? esc(d.serve_para) + ' ' : ''}${d.fonte ? 'Fonte: ' + esc(d.fonte) : ''}</p></div>`).join('')}
+   ${L.dicionario.campos.filter(c => c.opcoes).map(c => `<div class="card"><div class="eyebrow">Por emoji, no caso</div><h2 class="tk-h2">${esc(c.rotulo)}</h2>${tab(c.opcoes)}<p class="yt-cloudnote">${c.fonte ? 'Fonte: ' + esc(c.fonte) : ''}</p></div>`).join('')}
+   <div class="card"><div class="eyebrow">Referências</div><ul style="font:13px/1.6 Georgia,serif;margin:4px 0 6px 18px;padding:0">${L.referencias.map(r => `<li>${esc(r)}</li>`).join('')}</ul><p class="yt-cloudnote">${esc(L.referencias_nota || '')}</p></div>`);
+}
+
 entrar();
 })();
 </script>

@@ -4,6 +4,43 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.377 — Área do pesquisador refeita: visual do Atlas, menu de casos, validação na tela, Iramuteq e Gephi (2026-11-11) ⛔ banco ainda sem a atualização
+
+- Críticas do responsável (11/11, 13h49): "mudou totalmente a linha de design"; "poderíamos ter aquela tela de menu" dos casos; a busca geral "bem ruim"; a área "deve ser onde o pesquisador vai validar", vendo o corpus e avaliando na tela; "tem que permitir upload de arquivos vindos do Iramuteq e Gephi".
+- **Defeito achado na versão anterior (C19.376):** medi o desempenho como dono do banco, sem a regra de leitura. Como usuário logado, a regra chamava a função de permissão uma vez por linha (529 mil vezes).
+  - `resumo_corpus()` como `authenticated` no banco real: 7.530 ms, de um limite de 8 s (`explain analyze` com `set local role authenticated`).
+  - `public.acessos` só tinha o registro `aceitou_termo` do responsável: nenhuma busca dele chegou a completar.
+  - Correção na migração nova: a regra passa a `using ((select odi_interno.eh_pesquisador()))`, avaliada uma vez por consulta.
+- **Identidade visual (regra 5):**
+  - novo `scripts/build_css_compartilhado.py` gera `assets/odi-atlas.css` (cópia literal dos 11 blocos de estilo da página principal, 166.705 caracteres) e `assets/odi-marca.jpg`;
+  - `area-pesquisador.html` carrega essa folha e usa a mesma estrutura: barra lateral com a marca, índice numerado, faixa do caderno, título em serifa, fichas dos casos, abas;
+  - o estilo próprio da página só cobre o que o Atlas não tem (cartão de texto, botões de código, formulário);
+  - `tests/test_css_compartilhado.py` falha se a página principal mudar sem regerar a folha, ou se a área redefinir peças do Atlas.
+- **Telas novas:**
+  - **Casos:** menu com as fichas (textos no banco, com emoji, amostra avaliada por você, pesquisadores, arquivos).
+  - **Caso → Ler e avaliar o corpus:** tabela de universo e amostra (regra 9); amostra de validação ou corpus inteiro; filtros por rede, tipo, emoji, triagem e pendentes; cada texto com os botões do livro de códigos (linguagem ofensiva, discurso de ódio e alvo, tom, função de cada emoji, observação). Cada clique salva.
+  - **Caso → Emojis do caso:** dicionário por emoji (tipo de signo, função, sentimento, de quem é), ao lado da posição e do sentimento automáticos, com "ver contextos".
+  - **Caso → Frequência e matriz.**
+  - **Caso → Iramuteq e Gephi:** o que o Atlas calculou (CHD e redes, com os GEXF públicos), envio de arquivo (até 50 MB), leitura de nós e ligações de GEXF/GraphML no navegador, parecer (confere, em parte, diverge) e nota.
+  - **Busca em todos os casos:** primeiro o mapa (por caso e por rede, clicável), depois os textos, que podem ser avaliados ali mesmo.
+  - **Concordância e triagem:** alfa de Krippendorff por dimensão; matriz triagem HateBR × avaliação do pesquisador.
+  - **Livro de códigos.**
+- `data/config/livro_codigos_validacao.json` (v0): ⛔ rascunho redigido pela IA a partir de Paiva (2016), Pompeu e Sato (2018), Wurst et al. (2023), Luxmoore et al. (2023) e Vargas et al. (2022). Ainda não foi revisto pelos pesquisadores; as referências precisam ser conferidas antes de citar.
+- `assets/odi-concordancia.js`: alfa de Krippendorff nominal. Conferido com o exemplo clássico de 4 observadores e 12 unidades: 0,7434 (esperado 0,743), em `tests/test_concordancia.py`.
+- `supabase/migrations/20261111_area_validacao.sql`:
+  - tabelas `amostra_validacao` (até 300 por caso, 150 com emoji e 150 sem, sorteio fixo por md5), `avaliacoes`, `avaliacoes_emoji`, `arquivos` e o armazenamento privado `validacao`;
+  - resumo pronto por caso;
+  - funções `painel_casos`, `resumo_caso`, `textos`, `avaliar`, `avaliar_emoji`, `buscar_resumo`, `concordancia`, `triagem_x_humano` e `preparar_area` (esta só para a carga);
+  - nenhuma função do schema exposto roda com privilégio elevado, fora `preparar_area`, restrita ao service role.
+- `carregar_area_pesquisador.py` chama `preparar_area` depois da carga, com recuo para `atualizar_frequencias`.
+- Testes executados:
+  - **Banco local (Postgres 16):** `supabase/tests/00_simula_supabase.sql`, as 5 migrações em ordem e `supabase/tests/01_area_validacao.sql`. Resultado: não convidado vê 0 textos e não avalia; amostra de 10 + 10 no caso 001; `avaliar` junta campos e limpa alvo e emoji; valores fora do livro são recusados; B não vê avaliações de A; a concordância lista só itens com 2 pesquisadores; arquivo só entra na pasta do próprio usuário; `anon` é negado.
+  - **Telas (Playwright, 1300 e 390 px), com servidor simulado e textos inventados:** login → menu → caso → avaliar (cliques salvam, o alvo aparece, o progresso sobe) → emojis → frequência → arquivos → busca → concordância → livro, sem erro de JavaScript e sem rolagem lateral.
+  - `python -m unittest discover -s tests` → 309 testes OK.
+- ⛔ **A migração não foi aplicada ao banco real.** Duas tentativas pelo conector (13h55 e 14h07) ficaram esperando a confirmação do responsável e expiraram. Até aplicar, a página nova entra e mostra o aviso "o banco ainda não recebeu a atualização".
+- ⛔ Não testado com dados reais: nenhuma das telas novas, o envio de arquivos ao armazenamento e a amostra real (falta rodar `preparar_area`).
+- ⛔ Decisões do responsável: exportar o corpus de um caso no formato do Iramuteq a partir da área (hoje o arquivo fica só no repositório privado); revisão do livro de códigos; tipos de caso (022, 009, 030).
+
 ## C19.376 — Área do pesquisador: corpus completo carregado (2026-11-10) ⚠️
 
 - Pedido do responsável (10/11, 15h00): "pode carregar os casos que temos". Depois ele quer reativar o chat do Gemini ligado a este banco.

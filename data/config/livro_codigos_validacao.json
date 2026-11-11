@@ -1,0 +1,312 @@
+{
+  "versao": "v0",
+  "data": "2026-11-11",
+  "estado": "⛔ rascunho redigido pela IA a partir da bibliografia; ainda NÃO revisto pelos pesquisadores. As categorias podem mudar depois da primeira rodada.",
+  "como_usar": "Leia o texto inteiro antes de marcar. Marque o que o texto faz, não o que você acha do assunto. Na dúvida, use \"não sei\" e escreva a dúvida na observação: as dúvidas servem para corrigir este livro.",
+  "dimensoes": [
+    {
+      "id": "ofensivo",
+      "rotulo": "Linguagem ofensiva",
+      "pergunta": "O texto tem termo ou expressão usado para ofender, xingar ou rebaixar alguém?",
+      "serve_para": "Conferir a triagem automática (modelo HateBR, limiar 0,5).",
+      "fonte": "Vargas et al. (2022), corpus HateBR.",
+      "opcoes": [
+        {
+          "id": "sim",
+          "rotulo": "Sim",
+          "definicao": "Há xingamento, insulto ou termo pejorativo, explícito ou implícito, dirigido a pessoa ou grupo."
+        },
+        {
+          "id": "nao",
+          "rotulo": "Não",
+          "definicao": "Não há ofensa. Crítica dura sem xingamento continua sendo \"não\"."
+        },
+        {
+          "id": "nao_sei",
+          "rotulo": "Não sei",
+          "definicao": "O texto não permite decidir (gíria desconhecida, ironia sem contexto, texto cortado)."
+        }
+      ]
+    },
+    {
+      "id": "odio",
+      "rotulo": "Discurso de ódio",
+      "pergunta": "A ofensa ataca alguém por pertencer a um grupo (o que a pessoa é, não o que ela fez)?",
+      "serve_para": "Conferir a triagem automática de ódio por alvo (modelo BERTabaporu, limiar 0,5).",
+      "fonte": "Vargas et al. (2022), corpus HateBR; alvos adaptados dos rótulos do modelo usado na triagem.",
+      "opcoes": [
+        {
+          "id": "nao",
+          "rotulo": "Não",
+          "definicao": "Não há ataque a grupo. Ofensa só à pessoa (\"ladrão\", \"mentiroso\") não é ódio."
+        },
+        {
+          "id": "sim",
+          "rotulo": "Sim",
+          "definicao": "Há ataque, desumanização ou incitação contra um grupo. Marque também o alvo."
+        },
+        {
+          "id": "nao_sei",
+          "rotulo": "Não sei",
+          "definicao": "Não dá para decidir pelo texto."
+        }
+      ]
+    },
+    {
+      "id": "odio_alvo",
+      "rotulo": "Alvo do ódio",
+      "pergunta": "Contra qual grupo? (só quando \"discurso de ódio\" for sim)",
+      "depende_de": {
+        "odio": "sim"
+      },
+      "opcoes": [
+        {
+          "id": "sexismo",
+          "rotulo": "Mulheres / gênero",
+          "definicao": "Ataque por ser mulher ou por gênero."
+        },
+        {
+          "id": "ideologia",
+          "rotulo": "Posição política",
+          "definicao": "Ataque ao grupo por ser de esquerda, de direita, petista, bolsonarista etc., tratado como categoria a eliminar ou desumanizar."
+        },
+        {
+          "id": "homofobia",
+          "rotulo": "LGBTQIA+",
+          "definicao": "Ataque por orientação sexual ou identidade de gênero."
+        },
+        {
+          "id": "racismo",
+          "rotulo": "Raça / cor / etnia",
+          "definicao": "Ataque por raça, cor ou etnia, inclusive a povos indígenas."
+        },
+        {
+          "id": "xenofobia",
+          "rotulo": "Origem / região",
+          "definicao": "Ataque por país, estado ou região de origem (por exemplo, contra nordestinos)."
+        },
+        {
+          "id": "religiao",
+          "rotulo": "Religião",
+          "definicao": "Ataque por religião ou crença."
+        },
+        {
+          "id": "corpo",
+          "rotulo": "Corpo / aparência",
+          "definicao": "Ataque por peso, idade, deficiência ou aparência."
+        },
+        {
+          "id": "outro",
+          "rotulo": "Outro grupo",
+          "definicao": "Outro grupo; diga qual na observação."
+        }
+      ]
+    },
+    {
+      "id": "tom",
+      "rotulo": "Tom do texto",
+      "pergunta": "O que o texto faz em relação ao assunto ou à pessoa de que fala?",
+      "serve_para": "Ler os emojis no contexto: o mesmo emoji muda de sentido conforme o tom.",
+      "fonte": "Categorias de trabalho do ODI (rascunho).",
+      "opcoes": [
+        {
+          "id": "apoio",
+          "rotulo": "Apoio",
+          "definicao": "Elogia, defende, declara voto ou adesão."
+        },
+        {
+          "id": "critica",
+          "rotulo": "Crítica",
+          "definicao": "Discorda ou reprova, com argumento ou sem, mas sem xingar."
+        },
+        {
+          "id": "ataque",
+          "rotulo": "Ataque",
+          "definicao": "Xinga, ameaça ou desqualifica a pessoa ou o grupo."
+        },
+        {
+          "id": "ironia",
+          "rotulo": "Ironia / deboche",
+          "definicao": "Diz uma coisa para significar outra, ou zomba."
+        },
+        {
+          "id": "informativo",
+          "rotulo": "Informativo",
+          "definicao": "Relata, pergunta ou divulga sem tomar posição clara."
+        },
+        {
+          "id": "nao_da",
+          "rotulo": "Não dá para dizer",
+          "definicao": "Texto curto demais, só emoji sem contexto, outro assunto."
+        }
+      ]
+    },
+    {
+      "id": "emoji_funcao",
+      "rotulo": "Função do emoji neste texto",
+      "pergunta": "O que este emoji faz NESTE texto? (nível pragmático)",
+      "serve_para": "Montar o dicionário de emojis por tipo de caso, a partir do uso real.",
+      "fonte": "Paiva (2016): substituição de palavra, emoção, afeto, intensificação e ironia. Wurst et al. (2023): mobilizar e estruturar. Luxmoore et al. (2023): emoji como sinal de posição política.",
+      "opcoes": [
+        {
+          "id": "emocao",
+          "rotulo": "Emoção",
+          "definicao": "Mostra o que quem escreve sente (riso, raiva, tristeza, espanto)."
+        },
+        {
+          "id": "afeto",
+          "rotulo": "Afeto",
+          "definicao": "Carinho, apoio ou bênção dirigidos a alguém (❤️, 🙏, 👏)."
+        },
+        {
+          "id": "intensificador",
+          "rotulo": "Intensifica",
+          "definicao": "Reforça o que o texto já diz, muitas vezes por repetição (😂😂😂, 🔥🔥)."
+        },
+        {
+          "id": "substitui",
+          "rotulo": "Substitui palavra",
+          "definicao": "Está no lugar de uma palavra ou ideia; sem ele a frase fica incompleta."
+        },
+        {
+          "id": "ironia",
+          "rotulo": "Ironia / deboche",
+          "definicao": "Inverte o sentido do texto ou zomba."
+        },
+        {
+          "id": "alinhamento",
+          "rotulo": "Alinhamento político",
+          "definicao": "Marca de que lado a pessoa está: bandeira, número de urna, cor, símbolo de candidato."
+        },
+        {
+          "id": "ataque",
+          "rotulo": "Ataque",
+          "definicao": "Desqualifica uma pessoa ou um grupo (🤡, 🤮, 💩 dirigidos a alguém)."
+        },
+        {
+          "id": "mobilizacao",
+          "rotulo": "Mobiliza",
+          "definicao": "Chama para agir: votar, compartilhar, ir à rua."
+        },
+        {
+          "id": "decorativo",
+          "rotulo": "Decorativo",
+          "definicao": "Enfeita ou organiza o texto (marcador de lista, seta), sem sentido próprio."
+        },
+        {
+          "id": "nao_sei",
+          "rotulo": "Não sei",
+          "definicao": "Não dá para decidir pelo texto."
+        }
+      ]
+    }
+  ],
+  "dicionario": {
+    "rotulo": "Dicionário de emojis do caso",
+    "explicacao": "Aqui a avaliação é do emoji no caso inteiro, não de um texto: como ele costuma ser usado neste caso. Antes de marcar, veja os contextos.",
+    "campos": [
+      {
+        "id": "tipo",
+        "rotulo": "Tipo de signo",
+        "fonte": "Pompeu e Sato (2018), a partir de Peirce.",
+        "opcoes": [
+          {
+            "id": "iconico",
+            "rotulo": "Icônico (literal)",
+            "definicao": "Vale pelo que desenha: 🍕 é pizza, 🗳️ é urna."
+          },
+          {
+            "id": "indicial",
+            "rotulo": "Indicial (circunstância)",
+            "definicao": "Aponta para uma situação ou estado: 😂 indica riso de quem escreve, 🔥 indica algo em alta."
+          },
+          {
+            "id": "simbolico",
+            "rotulo": "Simbólico (cultural)",
+            "definicao": "Vale por convenção do grupo: 🇧🇷 como marca de um campo político, 2️⃣2️⃣ como número de urna, 🤡 como xingamento."
+          },
+          {
+            "id": "nao_sei",
+            "rotulo": "Não sei",
+            "definicao": "Os contextos não deixam decidir."
+          }
+        ]
+      },
+      {
+        "id": "funcao",
+        "rotulo": "Função mais comum",
+        "usa_opcoes_de": "emoji_funcao"
+      },
+      {
+        "id": "sentimento",
+        "rotulo": "Sentimento no caso",
+        "fonte": "Para comparar com o Emoji Sentiment Ranking (Kralj Novak et al., 2015), calculado em tweets europeus de 2013 a 2015.",
+        "opcoes": [
+          {
+            "id": "positivo",
+            "rotulo": "Positivo",
+            "definicao": ""
+          },
+          {
+            "id": "negativo",
+            "rotulo": "Negativo",
+            "definicao": ""
+          },
+          {
+            "id": "neutro",
+            "rotulo": "Neutro",
+            "definicao": ""
+          },
+          {
+            "id": "ambiguo",
+            "rotulo": "Ambíguo",
+            "definicao": "Aparece com os dois sentidos neste caso."
+          }
+        ]
+      },
+      {
+        "id": "alinhamento",
+        "rotulo": "De quem é o emoji",
+        "fonte": "Luxmoore et al. (2023).",
+        "opcoes": [
+          {
+            "id": "lula",
+            "rotulo": "Campo de Lula",
+            "definicao": "Usado como marca por apoiadores de Lula."
+          },
+          {
+            "id": "flavio",
+            "rotulo": "Campo de Flávio",
+            "definicao": "Usado como marca por apoiadores de Flávio Bolsonaro."
+          },
+          {
+            "id": "disputado",
+            "rotulo": "Disputado",
+            "definicao": "Os dois campos usam, com sentidos diferentes."
+          },
+          {
+            "id": "nenhum",
+            "rotulo": "Nenhum",
+            "definicao": "Não marca lado."
+          },
+          {
+            "id": "outro",
+            "rotulo": "Outro",
+            "definicao": "Outro grupo; diga qual na observação."
+          }
+        ]
+      }
+    ]
+  },
+  "concordancia": "Alfa de Krippendorff (nominal), calculado nos itens avaliados por dois ou mais pesquisadores. Leitura usual (Krippendorff, 2004): a partir de 0,800, confiável; entre 0,667 e 0,800, só para conclusões provisórias; abaixo de 0,667, o livro de códigos precisa ser revisto.",
+  "referencias": [
+    "KRALJ NOVAK, P. et al. Sentiment of emojis. PLOS ONE, v. 10, n. 12, e0144296, 2015.",
+    "KRIPPENDORFF, K. Content analysis: an introduction to its methodology. 2. ed. Thousand Oaks: Sage, 2004.",
+    "LUXMOORE, M.; CARDOSO SILVA, J.; RAMACIOTTI, P. Emoji, language games and political polarisation. CHR 2023, CEUR-WS, v. 3558, 2023.",
+    "PAIVA, V. L. M. O. A linguagem dos emojis. Trabalhos em Linguística Aplicada, v. 55, n. 2, 2016.",
+    "POMPEU, B.; SATO, S. K. (2018), artigo sobre emojis e semiótica peirceana enviado pelo responsável em 10/11/2026.",
+    "VARGAS, F. et al. HateBR: a large expert annotated corpus of Brazilian Instagram comments for offensive language and hate speech detection. LREC 2022.",
+    "WURST, A.-K. et al. (2023), funções dos emojis em campanhas nas redes sociais. International Journal of Communication, v. 17, p. 4686–4706."
+  ],
+  "referencias_nota": "Lista de trabalho: conferir título, volume e páginas de cada referência antes de citar em texto acadêmico."
+}
