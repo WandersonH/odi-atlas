@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-11-10T20:05:11Z",
+ "coletado_em_utc": "2026-11-11T19:55:03Z",
  "fonte": "Meta · Biblioteca de Anúncios via Apify (jmlp/meta-ad-library-scraper)",
  "nota": "Biblioteca de Anúncios da Meta via ator da Apify (jmlp/meta-ad-library-scraper), anúncios sobre temas sociais, eleições ou política veiculados no Brasil desde 20/07/2026 que mencionam o nome do candidato (busca por palavra-chave da própria Biblioteca: campanhas, apoiadores e adversários). Coleta limitada por teto de gasto: quando o teto é atingido, a amostra fica parcial e a página diz quantos anúncios entraram. Gasto e alcance são faixas informadas pela Meta. Texto dos anúncios só no repositório privado.",
  "desde": "2026-07-20",
@@ -9,7 +9,7 @@
    "candidato": "Lula",
    "termo": "Lula",
    "paginas_api": null,
-   "lidos_nesta_execucao": 449,
+   "lidos_nesta_execucao": 0,
    "limite_da_coleta": 900,
    "no_limite": false,
    "anuncios": 7113,
@@ -559,7 +559,7 @@
    "candidato": "Flávio Bolsonaro",
    "termo": "Flávio Bolsonaro",
    "paginas_api": null,
-   "lidos_nesta_execucao": 98,
+   "lidos_nesta_execucao": 0,
    "limite_da_coleta": 900,
    "no_limite": false,
    "anuncios": 3480,
@@ -1106,27 +1106,15 @@
    ]
   }
  },
- "erros": {},
+ "erros": {
+  "lula": "HTTPError 401",
+  "flavio": "HTTPError 401"
+ },
  "modo": "diário",
  "teto_usd": 0.3,
- "gasto_mes_antes_usd": 1.1681,
- "runs_apify": [
-  {
-   "consulta": "lula",
-   "id": "oASpJeKt29ZeOygZY",
-   "status": "SUCCEEDED",
-   "custo_usd": 0.0645,
-   "itens": 449
-  },
-  {
-   "consulta": "flavio",
-   "id": "u56MWLVxONyUlWqda",
-   "status": "SUCCEEDED",
-   "custo_usd": 0.0075,
-   "itens": 98
-  }
- ],
- "janela_desta_execucao": "2026-11-09",
- "status": "ok",
- "custo_usd": 0.07200000000000001
+ "gasto_mes_antes_usd": 1.2401,
+ "runs_apify": [],
+ "janela_desta_execucao": "2026-11-10",
+ "status": "⚠️ parcial",
+ "custo_usd": 0.0
 }
