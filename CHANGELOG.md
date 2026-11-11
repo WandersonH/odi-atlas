@@ -4,6 +4,27 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.378 — Banco da área do pesquisador atualizado (validação na tela) e busca geral corrigida (2026-11-11) ⚠️ falta 1 confirmação do responsável
+
+- O responsável reportou na página: "Não deu certo. ⛔ O banco ainda não recebeu a atualização desta área." A migração `20261111_area_validacao.sql` foi aplicada no projeto `vidnoyzechknrqhczmrr` em três partes (o conector trava esperando confirmação quando o arquivo vai inteiro):
+  - ✅ parte 1 `area_validacao_tabelas_e_funcoes` (tabelas, regras de leitura e funções da tela);
+  - ✅ parte 2 `area_validacao_leitura_e_armazenamento` (regra do corpus avaliada uma vez por consulta; armazenamento privado `validacao`);
+  - ⛔ parte 3 `area_validacao_preparo_e_permissoes` (função `preparar_area` e os `revoke`): o conector pediu confirmação ao responsável e não teve resposta em 230 s. **Não aplicada.**
+- Como `preparar_area` não existe no banco, a amostra e o resumo por caso foram criados com os mesmos `insert` da função, direto (as duas tabelas estavam vazias; nada foi apagado). As nuvens já estavam prontas (64.990 linhas em `odi_interno.freq_palavras`).
+  - Amostra de validação: 11.100 textos em 37 casos (300 por caso: 150 com emoji, 150 sem). Universo no banco: 530.226 textos (soma de `odi_interno.resumo_casos`, 164 linhas caso × rede × tipo).
+- **Teste com dado real**, como o usuário do responsável (papel `authenticated`, sessão simulada em transação desfeita; conferido depois: 0 avaliações, 0 arquivos e 0 registros de acesso gravados pelo teste):
+  - `painel_casos` 37 casos em 9 ms; `resumo_caso('001')` 1 ms; `textos('001','amostra')` 20 textos de 300 em 76 ms; pendentes 37 ms; por emoji no caso 16 ms; `textos('001','corpus','fraude')` 559 ms;
+  - `avaliar` 3 ms; `avaliar_emoji` 1 ms; `concordancia` 2 ms; `triagem_x_humano` 1 ms; inclusão em `arquivos` aceita na pasta do próprio usuário.
+- **Defeito achado nesse teste: a busca geral não cabe no limite de 8 s.** `buscar_resumo('fraude')` 16.692 ms, `buscar_resumo('lula')` 16.573 ms, `textos(null,'corpus','lula')` 16.786 ms.
+  - Causa (plano do `explain analyze`): com a regra de leitura por linha, o Postgres não usa o índice de texto (o operador de busca não é "leakproof") e lê os 530 mil textos um a um. A mesma consulta sem a regra usa o índice: 87 ms (contagem por caso e rede de "lula", 53.340 textos) e 103 ms (página de 20).
+  - Correção: `supabase/migrations/20261111b_area_busca_rapida.sql`. A permissão é checada uma vez e a seleção dos identificadores roda em duas funções internas (`odi_interno.busca_ids`, `odi_interno.busca_contagem`, fora da API, sem devolver texto); `textos` (modo corpus) e `buscar_resumo` passam a usá-las. O texto continua lido pela tabela com a regra de leitura.
+  - Testado no Postgres 16 local (bancos `t4`, `t5`, `t6`): saída de `supabase/tests/01_area_validacao.sql` idêntica antes e depois da correção (170 linhas); não convidado e `anon` recusados nas funções internas; pendentes e paginação conferidos.
+  - ⛔ **Ainda não aplicada no banco real** (vai junto com a parte 3, na próxima confirmação). Até lá a busca geral da página falha por tempo; a busca dentro de um caso funciona.
+- Estado de segurança enquanto a parte 3 não entra (consulta a `has_table_privilege`/`has_function_privilege`): `anon` tem permissão de tabela nas 4 tabelas novas, mas todas têm RLS sem regra para `anon` (lê 0 linhas); as funções novas são chamáveis por `anon` e recusam na checagem de pesquisador; `anon` não tem acesso ao esquema `odi_interno`. Os `revoke` da parte 3 fecham isso.
+- Conselheiro de segurança do Supabase depois da aplicação: os mesmos 2 avisos de antes (`aceitar_termo` e `minha_situacao`, intencionais) e a proteção de senha vazada desligada (painel do responsável).
+- Testes: `python -m unittest discover -s tests` → 310 testes, OK (novo: `test_busca_interna_checa_permissao_antes_de_ler`).
+- ⛔ Não testado: a página aberta pelo responsável no navegador depois da atualização; envio real de arquivo ao armazenamento.
+
 ## C19.377 — Área do pesquisador refeita: visual do Atlas, menu de casos, validação na tela, Iramuteq e Gephi (2026-11-11) ⛔ banco ainda sem a atualização
 
 - Críticas do responsável (11/11, 13h49): "mudou totalmente a linha de design"; "poderíamos ter aquela tela de menu" dos casos; a busca geral "bem ruim"; a área "deve ser onde o pesquisador vai validar", vendo o corpus e avaliando na tela; "tem que permitir upload de arquivos vindos do Iramuteq e Gephi".

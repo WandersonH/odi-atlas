@@ -14,6 +14,7 @@ import carregar_area_pesquisador as c  # noqa: E402
 
 MIG = Path("supabase/migrations/20261110_area_pesquisador.sql")
 MIG2 = Path("supabase/migrations/20261111_area_validacao.sql")
+MIG3 = Path("supabase/migrations/20261111b_area_busca_rapida.sql")
 
 
 class TestArea(unittest.TestCase):
@@ -54,6 +55,17 @@ class TestArea(unittest.TestCase):
                 self.assertIn(f"alter table public.{t} enable row level security", s, t)
             self.assertNotRegex(s, r"to anon")
         self.assertIn("revoke all on public.corpus, public.pesquisadores, public.acessos from anon", MIG.read_text(encoding="utf-8"))
+
+    def test_busca_interna_checa_permissao_antes_de_ler(self):
+        # C19.378: as funções que leem o corpus sem RLS (para usar o índice) ficam fora da API e recusam quem não é pesquisador
+        s = MIG3.read_text(encoding="utf-8")
+        fs = re.findall(r"create or replace function (\S+?)\((.*?)\$\$(.*?)\$\$", s, re.S)
+        definer = [(n, corpo) for n, cab, corpo in fs if "security definer" in cab]
+        self.assertEqual(sorted(n for n, _ in definer), ["odi_interno.busca_contagem", "odi_interno.busca_ids"])
+        for n, corpo in definer:
+            self.assertRegex(corpo.split("return query")[0], r"if not odi_interno\.eh_pesquisador\(\) then raise exception", n)
+        self.assertNotRegex(s, r"to (anon|public)\b")
+        self.assertNotIn("c.texto,", s.split("create or replace function public.textos")[0])  # as internas não devolvem texto
 
     def test_validacao_sem_privilegio_elevado_no_schema_exposto(self):
         # funções que o pesquisador chama (schema public) não rodam como dono; só a carga (service role) tem exceção
