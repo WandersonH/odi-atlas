@@ -11,6 +11,8 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Mesmo defeito de 30/10 (C19.203, numpy/networkx). Eu rodei os testes só na minha máquina, onde o pacote existe.
 - Correção: `scripts/testes_ci.sh` instala `emoji==2.16.0` quando falta.
 - Teste: `bash -n scripts/testes_ci.sh`; `python -m unittest discover -s tests` → 310 testes, OK (local). ⛔ A confirmação que vale é um workflow de coleta passar no GitHub: IDs na entrada seguinte ou abaixo, quando rodarem.
+- ✅ Confirmado no GitHub depois da correção (disparo manual, só coletas gratuitas, 12/11 11h35 UTC): Seguidores YouTube 43210679580, Checagens 43210691377, TSE Pardal 43210696799, TSE alienação 43210700310, todos `success`. Trends 43210687167 e Comentários YouTube 43210683091 ainda rodando às 11h44 UTC.
+- ⛔ Não redisparadas: as coletas pagas (Apify: Instagram, Facebook, X, comentários do Facebook, seguidores Meta, TikTok, TikTok por hashtag, busca ranqueada, casos de época); voltam no horário agendado ou com autorização do responsável.
 - ⛔ Pendente, causa diferente (não é o pacote): Kwai com `Apify: HTTPError 401` (run 43093983318) e Respostas do X com "nenhuma resposta lida" (run 43093861659); 4 runs em fila desde 11/11 20h24 UTC.
 
 ## C19.378 — Banco da área do pesquisador atualizado (validação na tela) e busca geral corrigida (2026-11-11) ⚠️ falta 1 confirmação do responsável
