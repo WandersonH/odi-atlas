@@ -16,24 +16,24 @@
     </attributes>
     <nodes>
       <node id="brasil" label="brasil">
-        <viz:color r="190" g="23" b="47" a="1.0" />
-        <viz:size value="14.36931687685298" />
-        <viz:position x="0.0" y="-984.9" z="0.0" />
+        <viz:color r="191" g="23" b="47" a="1.0" />
+        <viz:size value="14.727922061357855" />
+        <viz:position x="514.9" y="-99.2" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="17" />
-          <attvalue for="1" value="16" />
+          <attvalue for="0" value="18" />
+          <attvalue for="1" value="17" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="0.941" />
+          <attvalue for="3" value="0.944" />
           <attvalue for="4" value="0" />
           <attvalue for="5" value="0.0" />
-          <attvalue for="6" value="1" />
-          <attvalue for="7" value="#be172f" />
+          <attvalue for="6" value="2" />
+          <attvalue for="7" value="#bf172f" />
         </attvalues>
       </node>
-      <node id="povo" label="povo">
+      <node id="futuro" label="futuro">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="10.485281374238571" />
-        <viz:position x="1000.0" y="-0.0" z="0.0" />
+        <viz:position x="1000.0" y="-192.8" z="0.0" />
         <attvalues>
           <attvalue for="0" value="8" />
           <attvalue for="1" value="8" />
@@ -41,13 +41,30 @@
           <attvalue for="3" value="1.0" />
           <attvalue for="4" value="0" />
           <attvalue for="5" value="0.0" />
-          <attvalue for="6" value="1" />
+          <attvalue for="6" value="2" />
+          <attvalue for="7" value="#c8102e" />
+        </attvalues>
+      </node>
+      <node id="povo" label="povo">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="0.0" y="-0.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="8" />
+          <attvalue for="2" value="0" />
+          <attvalue for="3" value="1.0" />
+          <attvalue for="4" value="0" />
+          <attvalue for="5" value="0.0" />
+          <attvalue for="6" value="2" />
           <attvalue for="7" value="#c8102e" />
         </attvalues>
       </node>
     </nodes>
     <edges>
       <edge source="brasil" target="povo" id="0" weight="6" />
+      <edge source="brasil" target="futuro" id="1" weight="5" />
+      <edge source="futuro" target="povo" id="2" weight="3" />
     </edges>
   </graph>
 </gexf>
