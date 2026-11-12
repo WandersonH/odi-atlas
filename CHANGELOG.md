@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.379 — Coletas paradas desde 10/11 por erro meu nos testes: corrigido (2026-11-12) ⚠️ recuperação em andamento
+
+- O responsável perguntou (12/11, 08h32): "como estão nossas coletas?". `data/saude_coleta.json` (run 43197033215, 12/11 10h05 UTC): **3 de 19 séries em dia, 16 atrasadas**; último dado real da maioria entre 09/11 e 10/11.
+- **Causa (erro meu):** os testes criados em 10/11 (C19.373 emojis por caso, C19.374 área do pesquisador) importam o pacote `emoji`. `scripts/testes_ci.sh`, que 31 workflows rodam antes de coletar, não instalava o pacote; o passo de testes falhava e a coleta não rodava. Evidência: `ModuleNotFoundError: No module named 'emoji'` nos runs 43114954967 (Seguidores YouTube), 43091014619 (X), 43147275226 (TikTok), 43174465481 (Checagens), 43152936600 (Trends), 43138292751 (TSE Pardal), 43074715350 (Comentários YouTube), 43060337707 (Caso 018).
+  - Mesmo defeito de 30/10 (C19.203, numpy/networkx). Eu rodei os testes só na minha máquina, onde o pacote existe.
+- Correção: `scripts/testes_ci.sh` instala `emoji==2.16.0` quando falta.
+- Teste: `bash -n scripts/testes_ci.sh`; `python -m unittest discover -s tests` → 310 testes, OK (local). ⛔ A confirmação que vale é um workflow de coleta passar no GitHub: IDs na entrada seguinte ou abaixo, quando rodarem.
+- ⛔ Pendente, causa diferente (não é o pacote): Kwai com `Apify: HTTPError 401` (run 43093983318) e Respostas do X com "nenhuma resposta lida" (run 43093861659); 4 runs em fila desde 11/11 20h24 UTC.
+
 ## C19.378 — Banco da área do pesquisador atualizado (validação na tela) e busca geral corrigida (2026-11-11) ⚠️ falta 1 confirmação do responsável
 
 - O responsável reportou na página: "Não deu certo. ⛔ O banco ainda não recebeu a atualização desta área." A migração `20261111_area_validacao.sql` foi aplicada no projeto `vidnoyzechknrqhczmrr` em três partes (o conector trava esperando confirmação quando o arquivo vai inteiro):
