@@ -13,90 +13,25 @@
       <attribute id="5" title="comunidade" type="long" />
     </attributes>
     <nodes>
-      <node id="Agência Brasil" label="Agência Brasil">
-        <viz:color r="200" g="16" b="46" a="1.0" />
-        <viz:size value="6.024922359499621" />
-        <viz:position x="357.6" y="-520.3" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="agenciabrasil.ebc.com.br" />
-          <attvalue for="1" value="9" />
-          <attvalue for="2" value="9" />
-          <attvalue for="3" value="0" />
-          <attvalue for="4" value="1.0" />
-          <attvalue for="5" value="1" />
-        </attvalues>
-      </node>
-      <node id="Brasil de Fato" label="Brasil de Fato">
-        <viz:color r="200" g="16" b="46" a="1.0" />
-        <viz:size value="4.683281572999748" />
-        <viz:position x="115.9" y="-106.0" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="brasildefato.com.br" />
-          <attvalue for="1" value="4" />
-          <attvalue for="2" value="4" />
-          <attvalue for="3" value="0" />
-          <attvalue for="4" value="1.0" />
-          <attvalue for="5" value="1" />
-        </attvalues>
-      </node>
-      <node id="CNN Brasil" label="CNN Brasil">
-        <viz:color r="122" g="72" b="52" a="1.0" />
-        <viz:size value="6.6475800154489" />
-        <viz:position x="696.4" y="-110.6" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="cnnbrasil.com.br" />
-          <attvalue for="1" value="12" />
-          <attvalue for="2" value="9" />
-          <attvalue for="3" value="3" />
-          <attvalue for="4" value="0.54" />
-          <attvalue for="5" value="2" />
-        </attvalues>
-      </node>
-      <node id="G1" label="G1">
-        <viz:color r="200" g="16" b="46" a="1.0" />
-        <viz:size value="5.286335345030997" />
-        <viz:position x="317.0" y="-248.4" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="g1.globo.com" />
-          <attvalue for="1" value="6" />
-          <attvalue for="2" value="6" />
-          <attvalue for="3" value="0" />
-          <attvalue for="4" value="1.0" />
-          <attvalue for="5" value="1" />
-        </attvalues>
-      </node>
       <node id="Instagram" label="Instagram">
-        <viz:color r="105" g="84" b="53" a="1.0" />
+        <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="4.32379000772445" />
-        <viz:position x="1000.0" y="-0.0" z="0.0" />
+        <viz:position x="0" y="0" z="0.0" />
         <attvalues>
           <attvalue for="0" value="instagram.com" />
           <attvalue for="1" value="3" />
-          <attvalue for="2" value="2" />
-          <attvalue for="3" value="1" />
-          <attvalue for="4" value="0.439" />
-          <attvalue for="5" value="2" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="0" />
+          <attvalue for="4" value="1.0" />
+          <attvalue for="5" value="1" />
         </attvalues>
       </node>
-      <node id="O GLOBO" label="O GLOBO">
-        <viz:color r="159" g="46" b="49" a="1.0" />
-        <viz:size value="6.024922359499621" />
-        <viz:position x="250.0" y="-970.0" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="oglobo.globo.com" />
-          <attvalue for="1" value="9" />
-          <attvalue for="2" value="8" />
-          <attvalue for="3" value="1" />
-          <attvalue for="4" value="0.758" />
-          <attvalue for="5" value="3" />
-        </attvalues>
-      </node>
-      <node id="Partido dos Trabalhadores" label="Partido dos Trabalhadores">
+      <node id="Poder360" label="Poder360">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="5.0" />
-        <viz:position x="0.0" y="-264.0" z="0.0" />
+        <viz:position x="0" y="0" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="pt.org.br" />
+          <attvalue for="0" value="poder360.com.br" />
           <attvalue for="1" value="5" />
           <attvalue for="2" value="5" />
           <attvalue for="3" value="0" />
@@ -104,28 +39,9 @@
           <attvalue for="5" value="1" />
         </attvalues>
       </node>
-      <node id="Poder360" label="Poder360">
-        <viz:color r="122" g="72" b="52" a="1.0" />
-        <viz:size value="4.683281572999748" />
-        <viz:position x="750.0" y="-970.0" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="poder360.com.br" />
-          <attvalue for="1" value="4" />
-          <attvalue for="2" value="3" />
-          <attvalue for="3" value="1" />
-          <attvalue for="4" value="0.54" />
-          <attvalue for="5" value="3" />
-        </attvalues>
-      </node>
     </nodes>
     <edges>
-      <edge source="Agência Brasil" target="G1" id="0" weight="0.1923" />
-      <edge source="Brasil de Fato" target="G1" id="1" weight="0.2714" />
-      <edge source="Brasil de Fato" target="Partido dos Trabalhadores" id="2" weight="0.1688" />
-      <edge source="CNN Brasil" target="Instagram" id="3" weight="0.1641" />
-      <edge source="CNN Brasil" target="G1" id="4" weight="0.1587" />
-      <edge source="G1" target="Partido dos Trabalhadores" id="5" weight="0.1827" />
-      <edge source="O GLOBO" target="Poder360" id="6" weight="0.1814" />
+      <edge source="Instagram" target="Poder360" id="0" weight="0.1673" />
     </edges>
   </graph>
 </gexf>
