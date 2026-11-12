@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "stage": "seguidores-meta",
- "run_started_utc": "2026-11-09T20:44:11Z",
+ "run_started_utc": "2026-11-12T18:14:26Z",
  "config": {
   "nota": "Coleta de seguidores de perfis Instagram e Facebook declarados ao TSE pelas chapas presidenciais. Tetos em dólares (cobrança da Apify). Altere aqui para mudar o orçamento.",
   "cargos": [
@@ -25,34 +25,29 @@
    "ator": "apify~instagram-profile-scraper",
    "perfis_pedidos": 52,
    "teto_usd": 0.25,
-   "run_id": "4WDlvUnmzrULroUsy",
-   "status_apify": "SUCCEEDED",
-   "custo_usd": 0.1173,
-   "itens": 52,
-   "perfis_com_numero": 48
+   "erro": "HTTPError: HTTP Error 401: Unauthorized [user-or-token-not-found]"
   },
   {
    "plataforma": "facebook",
    "ator": "apify~facebook-pages-scraper",
    "perfis_pedidos": 27,
    "teto_usd": 0.25,
-   "run_id": "tnh7kjmSDyYJ6coSO",
-   "status_apify": "SUCCEEDED",
-   "custo_usd": 0.20500000000000002,
-   "itens": 27,
-   "perfis_com_numero": 24
+   "erro": "HTTPError: HTTP Error 401: Unauthorized [user-or-token-not-found]"
   }
  ],
- "blocked": [],
+ "blocked": [
+  "instagram: HTTPError: HTTP Error 401: Unauthorized [user-or-token-not-found]",
+  "facebook: HTTPError: HTTP Error 401: Unauthorized [user-or-token-not-found]"
+ ],
  "warnings": [],
- "gasto_mes_antes_usd": 2.4841,
+ "gasto_mes_antes_usd": 2.8064,
  "alvos": {
   "instagram": 53,
   "facebook": 28
  },
  "alvos_sem_chave": [],
- "linhas_csv": 72,
- "custo_total_usd": 0.3223,
- "run_finished_utc": "2026-11-09T20:45:36Z",
- "status": "ok"
+ "linhas_csv": 0,
+ "custo_total_usd": 0,
+ "run_finished_utc": "2026-11-12T18:14:27Z",
+ "status": "bloqueado"
 }
