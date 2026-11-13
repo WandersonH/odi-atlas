@@ -1,6 +1,6 @@
 {
  "caso": "023",
- "gerado_em_utc": "2026-11-12T21:56:55Z",
+ "gerado_em_utc": "2026-11-13T21:39:07Z",
  "corte_pos_eleicao": "2026-10-28",
  "metodo": "Pedido do responsável (30/10/2026, 22h32): \"eu tinha pedido uma comparação [da] circulação e [dos] comentários da data e pós-eleições\".\nFontes (privado: ODI_INTERNO_DIR/casos/018): x_epoca_<ep>.jsonl.gz (busca do X na janela da época, lida uma vez), itens.csv.gz\n(coleta desde 24/10/2026: X, Instagram, Facebook), youtube_comentarios.csv.gz (comentários datados dos vídeos originais).\nPara cada episódio, os dois períodos passam pelo MESMO filtro de pertinência (regex do episódio) e são comparados em:\n  - circulação: publicações, contas, visualizações, curtidas, respostas recebidas; curva por dia desde o 1º dia (dia 0), pico,\n    dias até metade do total; contas de 10 mil+ seguidores em cada período e as que aparecem nos dois;\n  - comentários: respostas no X (publicações que são resposta) e comentários datados dos vídeos originais do YouTube, antes e depois de 25/10/2026;\n  - palavras: as mais típicas de cada período (razão de frequências com suavização);\n  - tom: sentimento (pysentimiento/bertweet-pt-sentiment, o mesmo modelo dos comentários do Atlas) dos textos em português, se o\n    modelo estiver instalado (senão ⛔ registrado).\nA época do Instagram e do Facebook não tem busca retroativa: ⛔ (informado). Público: data/casos/018/comparacao.json (contagens,\npalavras e contas de 10 mil+). Uso: python scripts/caso018_comparacao.py",
  "episodios": {
@@ -322,11 +322,11 @@
       80
      ],
      [
-      "feriado",
+      "vivo",
       13
      ],
      [
-      "vivo",
+      "feriado",
       13
      ],
      [
@@ -338,11 +338,11 @@
       10
      ],
      [
-      "poluição",
+      "lição",
       10
      ],
      [
-      "lição",
+      "poluição",
       10
      ],
      [
@@ -350,11 +350,11 @@
       20
      ],
      [
-      "derrubar",
+      "junho",
       9
      ],
      [
-      "junho",
+      "derrubar",
       9
      ]
     ],
@@ -741,10 +741,6 @@
    "palavras_tipicas": {
     "epoca": [
      [
-      "censuradotse",
-      103
-     ],
-     [
       "liberdadedeexpressao",
       103
      ],
@@ -753,11 +749,15 @@
       103
      ],
      [
-      "ffaa",
-      102
+      "censuradotse",
+      103
      ],
      [
       "resistenciacivilbrasil",
+      102
+     ],
+     [
+      "ffaa",
       102
      ],
      [
