@@ -3,40 +3,685 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="yt:UCgwcuts-Mx4nOKb1d1vY39w" label="Paulo Figueiredo Show"><attvalues><attvalue for="0" value="canal do YouTube"/><attvalue for="1" value="29567456"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="busca: EUA, Trump ou Rubio" label="busca: EUA, Trump ou Rubio"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="6767012"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="busca: eleição, urna ou fraude" label="busca: eleição, urna ou fraude"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="8296771"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="busca: Bolsonaro e família" label="busca: Bolsonaro e família"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="6629434"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="yt:UCl6TokEHENkWcu3G6ghIANA" label="Delegado Ramagem"><attvalues><attvalue for="0" value="canal do YouTube"/><attvalue for="1" value="2749345"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="busca: Venezuela, Cuba ou América Latina" label="busca: Venezuela, Cuba ou América Latina"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="187783"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="busca: Lula ou PT" label="busca: Lula ou PT"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="3165794"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="busca: Moraes, STF ou censura" label="busca: Moraes, STF ou censura"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="4411984"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="busca: exílio, asilo ou perseguição" label="busca: exílio, asilo ou perseguição"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="195632"/><attvalue for="2" value="G3"/></attvalues></node>
-<node id="busca: sanções, Magnitsky, tarifas ou vistos" label="busca: sanções, Magnitsky, tarifas ou vistos"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1397769"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="busca: golpe ou 8 de janeiro" label="busca: golpe ou 8 de janeiro"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1749456"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="yt:UC9A4SgqQRUWJG-mCd9qb23A" label="Allan L. Dos Santos"><attvalues><attvalue for="0" value="canal do YouTube"/><attvalue for="1" value="484834"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="imprensa:InfoMoney" label="InfoMoney"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="notícia: Ramagem EUA eleição" label="notícia: Ramagem EUA eleição"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="9"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:CartaCapital" label="CartaCapital"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="notícia: Paulo Figueiredo eleição" label="notícia: Paulo Figueiredo eleição"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="11"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Diário do Centro do Mundo" label="Diário do Centro do Mundo"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:cenarium" label="cenarium"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Poder360" label="Poder360"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="2"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:O GLOBO" label="O GLOBO"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Diario de Cuiabá" label="Diario de Cuiabá"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Revista Fórum" label="Revista Fórum"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Estadão" label="Estadão"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:A Crítica de Campo Grande" label="A Crítica de Campo Grande"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Repórter Diário" label="Repórter Diário"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Folha BV" label="Folha BV"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Gazeta do Paraná" label="Gazeta do Paraná"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Vero Notícias" label="Vero Notícias"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Pleno.News" label="Pleno.News"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:Money Times" label="Money Times"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="imprensa:TV Florida USA" label="TV Florida USA"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="3"/><attvalue for="2" value="G4"/></attvalues></node>
+<node id="tt:z.paulo89" label="@z.paulo89"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2108971"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="TikTok Paulo Figueiredo" label="TikTok Paulo Figueiredo"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="7197571"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:adelinecamargooficial" label="@adelinecamargooficial"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4071312"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="TikTok Ramagem EUA" label="TikTok Ramagem EUA"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="47257746"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:medidpgmm5x" label="@medidpgmm5x"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4268362"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0001" label="perfil pequeno P0001"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="323"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="TikTok Allan dos Santos" label="TikTok Allan dos Santos"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="13006142"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0002" label="perfil pequeno P0002"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1368"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0003" label="perfil pequeno P0003"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="12482"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0004" label="perfil pequeno P0004"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="706"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:exom4t1c" label="@exom4t1c"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="39811"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0005" label="perfil pequeno P0005"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="131230"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:armyvibesusa" label="@armyvibesusa"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="3209851"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:valdirofc072" label="@valdirofc072"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="7037"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:user15416277034262" label="@user15416277034262"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="92746"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0006" label="perfil pequeno P0006"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1440"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:derynoticia" label="@derynoticia"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="124955"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:sabiosofficial" label="@sabiosofficial"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="18598"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:manoelsilva3023" label="@manoelsilva3023"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="747"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:telenovelahub" label="@telenovelahub"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="127504"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:fwd.vision" label="@fwd.vision"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1464075"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:_cortesdorei" label="@_cortesdorei"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1497231"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:carloszarattini" label="@carloszarattini"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="33373"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0007" label="perfil pequeno P0007"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="184"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:aeroporto.area.restrita" label="@aeroporto.area.restrita"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="206383"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0008" label="perfil pequeno P0008"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="38457"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0009" label="perfil pequeno P0009"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="11732"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:juicyallann" label="@juicyallann"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="657226"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0010" label="perfil pequeno P0010"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="54648"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0011" label="perfil pequeno P0011"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="538038"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:maksilon" label="@maksilon"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="498186"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0012" label="perfil pequeno P0012"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2078"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:model9420" label="@model9420"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="45687"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0013" label="perfil pequeno P0013"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4216"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0014" label="perfil pequeno P0014"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="63949"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:reaganfoundation" label="@reaganfoundation"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="757180"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:j23hart" label="@j23hart"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="37161"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:jefersoncoutoribe" label="@jefersoncoutoribe"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="38103"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:izzyefizzy" label="@izzyefizzy"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="596474"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0015" label="perfil pequeno P0015"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="747"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0016" label="perfil pequeno P0016"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="35023"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:marcialeila30" label="@marcialeila30"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="149899"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:alan.santos2518" label="@alan.santos2518"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="692037"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:sd_rodrigues04" label="@sd_rodrigues04"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2627"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0017" label="perfil pequeno P0017"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="517391"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:alissonnoronhausa" label="@alissonnoronhausa"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="489421"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:veronicagrisalesc" label="@veronicagrisalesc"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4870402"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:trumpfan268" label="@trumpfan268"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="212209"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:pk.nagringa" label="@pk.nagringa"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1917767"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0018" label="perfil pequeno P0018"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="428"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0019" label="perfil pequeno P0019"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="60236"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:euahot" label="@euahot"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1188589"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:realtalkwithtee_" label="@realtalkwithtee_"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="6881"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0020" label="perfil pequeno P0020"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1569"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0021" label="perfil pequeno P0021"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="469478"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0022" label="perfil pequeno P0022"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="740"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0023" label="perfil pequeno P0023"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="11064"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0024" label="perfil pequeno P0024"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="118061"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0025" label="perfil pequeno P0025"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="261466"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0026" label="perfil pequeno P0026"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="118"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:galegonagringa6" label="@galegonagringa6"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="854514"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:finance.and.quant" label="@finance.and.quant"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="256825"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:robson_dcn" label="@robson_dcn"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="49766"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:misteryeeyee14" label="@misteryeeyee14"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1460597"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0027" label="perfil pequeno P0027"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="241"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0028" label="perfil pequeno P0028"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1145"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0029" label="perfil pequeno P0029"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="30885"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:marcos.p..incio" label="@marcos.p..incio"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="748"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0030" label="perfil pequeno P0030"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="242437"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0031" label="perfil pequeno P0031"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="924410"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:pfigueiredoshow" label="@pfigueiredoshow"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="619534"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:iamdavyd" label="@iamdavyd"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="835429"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0032" label="perfil pequeno P0032"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="502"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0033" label="perfil pequeno P0033"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="7494"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:politicapordentro" label="@politicapordentro"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4143"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0034" label="perfil pequeno P0034"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="111226"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:usaworrior" label="@usaworrior"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="597796"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0035" label="perfil pequeno P0035"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="46212"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:clipadaspz" label="@clipadaspz"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="31181"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0036" label="perfil pequeno P0036"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1876"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:brvertical" label="@brvertical"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="175133"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0037" label="perfil pequeno P0037"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="11189"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:gabinetedoocio" label="@gabinetedoocio"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="77924"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:redetvt" label="@redetvt"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="17006"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:cortes_oscriaa" label="@cortes_oscriaa"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="525150"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:horaum.suamidia" label="@horaum.suamidia"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="500"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:frassetti" label="@frassetti"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="225124"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0038" label="perfil pequeno P0038"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="171"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:lukkass.eduardo" label="@lukkass.eduardo"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="511896"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:khlashin27" label="@khlashin27"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="12184"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:alansantosofi" label="@alansantosofi"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="19562"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0039" label="perfil pequeno P0039"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="62967"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:manuelsilvan1981" label="@manuelsilvan1981"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="7123"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:eufrancieliotto" label="@eufrancieliotto"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="203898"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:bbcnewsbrasil" label="@bbcnewsbrasil"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="649062"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0040" label="perfil pequeno P0040"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="5787"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:rg.news56" label="@rg.news56"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4956"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0041" label="perfil pequeno P0041"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="232"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0042" label="perfil pequeno P0042"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="394"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:emandtheholograms" label="@emandtheholograms"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="316428"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0043" label="perfil pequeno P0043"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2516"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:tmcnewsbr" label="@tmcnewsbr"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1250735"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0044" label="perfil pequeno P0044"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="3391"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0045" label="perfil pequeno P0045"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="6846"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0046" label="perfil pequeno P0046"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="204"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0047" label="perfil pequeno P0047"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="126063"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:politiza.educacio" label="@politiza.educacio"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="348"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:professor.penal.br" label="@professor.penal.br"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="328966"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:erimar.almeida1" label="@erimar.almeida1"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="10713"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0048" label="perfil pequeno P0048"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="243"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:poderososdapolitica" label="@poderososdapolitica"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="435535"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0049" label="perfil pequeno P0049"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1087"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:user9481075703576" label="@user9481075703576"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="69452"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0050" label="perfil pequeno P0050"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="167187"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:otarianonews" label="@otarianonews"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="3413508"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:raquelamaraladv" label="@raquelamaraladv"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="273742"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:deltandallagnol" label="@deltandallagnol"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="94639"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0051" label="perfil pequeno P0051"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="122840"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:23maly_" label="@23maly_"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1363371"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0052" label="perfil pequeno P0052"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="206"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:sralanodestemido" label="@sralanodestemido"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="540145"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:araujodossanttos" label="@araujodossanttos"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1377267"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:clipsdoalexandresantos" label="@clipsdoalexandresantos"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="47612"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0053" label="perfil pequeno P0053"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="202612"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:dunia_santos_urbina" label="@dunia_santos_urbina"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1500986"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0054" label="perfil pequeno P0054"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="34651"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:entretanto_br" label="@entretanto_br"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="25381"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:brasil24hroficial" label="@brasil24hroficial"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1514"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0055" label="perfil pequeno P0055"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="228161"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0056" label="perfil pequeno P0056"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="48082"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:terapianofogo" label="@terapianofogo"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="142575"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:delegadoramagem" label="@delegadoramagem"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="18454"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:infomoney" label="@infomoney"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1763"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:ciege_tv" label="@ciege_tv"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="8843"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:eral___0" label="@eral___0"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="315344"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:simplesfatocuriosidades" label="@simplesfatocuriosidades"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="21344"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:ecatherinealexandra42" label="@ecatherinealexandra42"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="5429"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0057" label="perfil pequeno P0057"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="502"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0058" label="perfil pequeno P0058"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="269"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0059" label="perfil pequeno P0059"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="24483"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0060" label="perfil pequeno P0060"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="7265"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0061" label="perfil pequeno P0061"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="585"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:ofofoquinho" label="@ofofoquinho"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="62813"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0062" label="perfil pequeno P0062"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="5997"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:pedro_debastosdossantos" label="@pedro_debastosdossantos"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="160841"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0063" label="perfil pequeno P0063"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1138"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:copaibanoticias" label="@copaibanoticias"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="105730"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0064" label="perfil pequeno P0064"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="25466"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:andrevieira221981" label="@andrevieira221981"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1250"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0065" label="perfil pequeno P0065"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2402"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:direitasergipana" label="@direitasergipana"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="353"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:tvconnectusa" label="@tvconnectusa"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="25324"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0066" label="perfil pequeno P0066"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="36711"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0067" label="perfil pequeno P0067"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="355"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0068" label="perfil pequeno P0068"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="113116"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:apautapopular" label="@apautapopular"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="5488"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0069" label="perfil pequeno P0069"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="3269"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:newstrumpz11" label="@newstrumpz11"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2795"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:guga.figueiredo" label="@guga.figueiredo"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="425549"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0070" label="perfil pequeno P0070"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="374"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:canalpilhado" label="@canalpilhado"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="131877"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0071" label="perfil pequeno P0071"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="8724"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0072" label="perfil pequeno P0072"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1617"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0073" label="perfil pequeno P0073"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="595"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:bandnewsfm" label="@bandnewsfm"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="7121"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0074" label="perfil pequeno P0074"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4153"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0075" label="perfil pequeno P0075"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="626"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:.rotadasabedoria" label="@.rotadasabedoria"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="5578"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:foxnews" label="@foxnews"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="783711"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0076" label="perfil pequeno P0076"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1584"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:gabriel.neves.da1" label="@gabriel.neves.da1"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="34576"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:_dhundal1" label="@_dhundal1"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="31397"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:avantedireitaofc" label="@avantedireitaofc"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4162"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0077" label="perfil pequeno P0077"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="161063"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0078" label="perfil pequeno P0078"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="43591"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:nldrmedia" label="@nldrmedia"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="14358"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0079" label="perfil pequeno P0079"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2825"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0080" label="perfil pequeno P0080"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="290"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:plantaodatretaofc" label="@plantaodatretaofc"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="713"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:nordestelivredopt" label="@nordestelivredopt"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="252566"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:politica01br" label="@politica01br"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="126715"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0081" label="perfil pequeno P0081"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2940"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0082" label="perfil pequeno P0082"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1097"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0083" label="perfil pequeno P0083"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="257"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:uelvisonsilv" label="@uelvisonsilv"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="11609"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0084" label="perfil pequeno P0084"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="358"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0085" label="perfil pequeno P0085"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="861"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0086" label="perfil pequeno P0086"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="305441"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:portalrumopolitico" label="@portalrumopolitico"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="5012"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:podernofoco.news" label="@podernofoco.news"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="61331"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:debatenacionaloficial" label="@debatenacionaloficial"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="152161"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0087" label="perfil pequeno P0087"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="203"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:fabinoticiasbr.noticia" label="@fabinoticiasbr.noticia"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="556"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0088" label="perfil pequeno P0088"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="872"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0089" label="perfil pequeno P0089"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1373"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:mcgillmedia" label="@mcgillmedia"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="485632"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:noticiasredetv" label="@noticiasredetv"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="6797"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:noticias.urgentes39" label="@noticias.urgentes39"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1914"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:115billionviews" label="@115billionviews"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="330"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:fatoem1minut" label="@fatoem1minut"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="67180"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:alinepepe" label="@alinepepe"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="770827"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:pontopoliticooficial" label="@pontopoliticooficial"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="76155"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0090" label="perfil pequeno P0090"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="797"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:baccinoticiasofc" label="@baccinoticiasofc"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="74664"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:guerraagoraoficia" label="@guerraagoraoficia"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="24720"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0091" label="perfil pequeno P0091"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="251"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0092" label="perfil pequeno P0092"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="19703"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:milson_alves_" label="@milson_alves_"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="39985"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0093" label="perfil pequeno P0093"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="806"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:mateusatualiza" label="@mateusatualiza"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="17283"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:reeisfut" label="@reeisfut"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2775902"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:globalstar_" label="@globalstar_"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1186631"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0094" label="perfil pequeno P0094"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2063"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:maurodamiao" label="@maurodamiao"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="3668"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:politizando3" label="@politizando3"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="224165"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:politicaemfocobrs" label="@politicaemfocobrs"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2158"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0095" label="perfil pequeno P0095"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="197410"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:michaelsolakiewicz" label="@michaelsolakiewicz"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="44148"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:clickdodia01" label="@clickdodia01"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="153457"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:marcoscomenta" label="@marcoscomenta"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="5392"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:galasfeios" label="@galasfeios"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="16714"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0096" label="perfil pequeno P0096"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="8585"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0097" label="perfil pequeno P0097"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="908"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:ruyspratini" label="@ruyspratini"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="159"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0098" label="perfil pequeno P0098"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="218"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:fabio_noticias" label="@fabio_noticias"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="23105"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0099" label="perfil pequeno P0099"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1094"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0100" label="perfil pequeno P0100"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1005"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0101" label="perfil pequeno P0101"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="205843"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:alarabiya_eng" label="@alarabiya_eng"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="22965"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0102" label="perfil pequeno P0102"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="3536"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0103" label="perfil pequeno P0103"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1917"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0104" label="perfil pequeno P0104"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="100"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0105" label="perfil pequeno P0105"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="309"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:msavvv234" label="@msavvv234"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="17538"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0106" label="perfil pequeno P0106"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="209"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0107" label="perfil pequeno P0107"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1227"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:jadsong64" label="@jadsong64"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="362"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0108" label="perfil pequeno P0108"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="798"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:acordameubrasil2" label="@acordameubrasil2"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="827"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:jornalmeiahora" label="@jornalmeiahora"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="12553"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0109" label="perfil pequeno P0109"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="529"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0110" label="perfil pequeno P0110"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="6474"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0111" label="perfil pequeno P0111"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2109"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:brasil.oficial01" label="@brasil.oficial01"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1272"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:cgtneurope" label="@cgtneurope"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4122"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0112" label="perfil pequeno P0112"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="525"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0113" label="perfil pequeno P0113"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="121"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0114" label="perfil pequeno P0114"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="986"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:patriotaraiz2026" label="@patriotaraiz2026"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1182"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:cbseveningnews" label="@cbseveningnews"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="8037"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:mdgcortes2" label="@mdgcortes2"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="4216"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:aulasinh0" label="@aulasinh0"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="66888"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:juanpablo2santos" label="@juanpablo2santos"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="418860"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0115" label="perfil pequeno P0115"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="764"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0116" label="perfil pequeno P0116"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="93"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0117" label="perfil pequeno P0117"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="147"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:brasildehoje22" label="@brasildehoje22"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="155636"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0118" label="perfil pequeno P0118"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="587"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0119" label="perfil pequeno P0119"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="163895"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:insightwire.com" label="@insightwire.com"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="49848"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0120" label="perfil pequeno P0120"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2951"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:aaronparnas1" label="@aaronparnas1"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="559190"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:g1" label="@g1"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1005130"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0121" label="perfil pequeno P0121"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="6002"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:itanhaemfacil" label="@itanhaemfacil"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="28152"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0122" label="perfil pequeno P0122"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="80169"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0123" label="perfil pequeno P0123"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1136"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:exercitodolulanotiktok" label="@exercitodolulanotiktok"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="78154"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:ligue1plus" label="@ligue1plus"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="338394"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0124" label="perfil pequeno P0124"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="301"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0125" label="perfil pequeno P0125"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="486"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:no.hate.hot.takes" label="@no.hate.hot.takes"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="595"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:kjoftiktok" label="@kjoftiktok"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="11812"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:sebsousapinto" label="@sebsousapinto"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2515"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:rafamaurt" label="@rafamaurt"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="411672"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0126" label="perfil pequeno P0126"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="37617"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:teacherjoseed" label="@teacherjoseed"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="125927"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:luciavalentim62" label="@luciavalentim62"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="222"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0127" label="perfil pequeno P0127"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="356"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:entry_team" label="@entry_team"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="15047"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0128" label="perfil pequeno P0128"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="318"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0129" label="perfil pequeno P0129"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="160"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0130" label="perfil pequeno P0130"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="565"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:arquivoreal3" label="@arquivoreal3"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1139"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0131" label="perfil pequeno P0131"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="358"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:realmagaking" label="@realmagaking"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="9994"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0132" label="perfil pequeno P0132"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="263"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:acorda.direita" label="@acorda.direita"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1155"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:portal.audra" label="@portal.audra"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="380257"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:heena.khan90" label="@heena.khan90"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2330"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:sicnoticiaspt" label="@sicnoticiaspt"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="346481"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:tico_sem_limites" label="@tico_sem_limites"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="180724"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0133" label="perfil pequeno P0133"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="158"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0134" label="perfil pequeno P0134"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="7229"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0135" label="perfil pequeno P0135"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1386"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0136" label="perfil pequeno P0136"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="347"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:anagloria135" label="@anagloria135"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="33"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0137" label="perfil pequeno P0137"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="101"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="P0138" label="perfil pequeno P0138"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="151"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:is671155vq0" label="@is671155vq0"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1780"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0139" label="perfil pequeno P0139"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="509"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0140" label="perfil pequeno P0140"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="196"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="tt:dudazzanini" label="@dudazzanini"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="6109"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:olivia.sophie97" label="@olivia.sophie97"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="326"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:nome_invalido" label="@nome_invalido"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="143702"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:ed.romero" label="@ed.romero"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="10150"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:opatria1" label="@opatria1"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="64612"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:canalcomercios" label="@canalcomercios"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="783"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:noticiabrasil10" label="@noticiabrasil10"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="16458"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0141" label="perfil pequeno P0141"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="107425"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0142" label="perfil pequeno P0142"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="146"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="tt:livia_savin" label="@livia_savin"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="7803"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:carteiroreaca" label="@carteiroreaca"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="31036"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:edivaldo.dos.santoss" label="@edivaldo.dos.santoss"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="149"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="P0143" label="perfil pequeno P0143"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="123"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0144" label="perfil pequeno P0144"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="3637"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:saibaaverdade3" label="@saibaaverdade3"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="1645"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="P0145" label="perfil pequeno P0145"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="tt:vandotiktok19" label="@vandotiktok19"><attvalues><attvalue for="0" value="conta do TikTok"/><attvalue for="1" value="223"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: EUA, Trump ou Rubio" weight="6767012"/>
-<edge id="1" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: eleição, urna ou fraude" weight="7151857"/>
-<edge id="2" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: Bolsonaro e família" weight="6482623"/>
-<edge id="3" source="yt:UCl6TokEHENkWcu3G6ghIANA" target="busca: eleição, urna ou fraude" weight="1046116"/>
-<edge id="4" source="yt:UCl6TokEHENkWcu3G6ghIANA" target="busca: Bolsonaro e família" weight="77658"/>
-<edge id="5" source="yt:UCl6TokEHENkWcu3G6ghIANA" target="busca: Venezuela, Cuba ou América Latina" weight="1966"/>
-<edge id="6" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: Venezuela, Cuba ou América Latina" weight="185817"/>
-<edge id="7" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: Lula ou PT" weight="2776349"/>
-<edge id="8" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: Moraes, STF ou censura" weight="3188534"/>
-<edge id="9" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: exílio, asilo ou perseguição" weight="9691"/>
-<edge id="10" source="yt:UCl6TokEHENkWcu3G6ghIANA" target="busca: Lula ou PT" weight="223208"/>
-<edge id="11" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: sanções, Magnitsky, tarifas ou vistos" weight="1397769"/>
-<edge id="12" source="yt:UCgwcuts-Mx4nOKb1d1vY39w" target="busca: golpe ou 8 de janeiro" weight="1607804"/>
-<edge id="13" source="yt:UCl6TokEHENkWcu3G6ghIANA" target="busca: Moraes, STF ou censura" weight="1216929"/>
-<edge id="14" source="yt:UC9A4SgqQRUWJG-mCd9qb23A" target="busca: Bolsonaro e família" weight="69153"/>
-<edge id="15" source="yt:UC9A4SgqQRUWJG-mCd9qb23A" target="busca: Lula ou PT" weight="166237"/>
-<edge id="16" source="yt:UCl6TokEHENkWcu3G6ghIANA" target="busca: golpe ou 8 de janeiro" weight="141652"/>
-<edge id="17" source="yt:UC9A4SgqQRUWJG-mCd9qb23A" target="busca: exílio, asilo ou perseguição" weight="144125"/>
-<edge id="18" source="yt:UCl6TokEHENkWcu3G6ghIANA" target="busca: exílio, asilo ou perseguição" weight="41816"/>
-<edge id="19" source="yt:UC9A4SgqQRUWJG-mCd9qb23A" target="busca: eleição, urna ou fraude" weight="98798"/>
-<edge id="20" source="yt:UC9A4SgqQRUWJG-mCd9qb23A" target="busca: Moraes, STF ou censura" weight="6521"/>
+<edge id="0" source="imprensa:InfoMoney" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="1" source="imprensa:CartaCapital" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="2" source="imprensa:Diário do Centro do Mundo" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="3" source="imprensa:cenarium" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="4" source="imprensa:Poder360" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="5" source="imprensa:O GLOBO" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="6" source="imprensa:Diario de Cuiabá" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="7" source="imprensa:Revista Fórum" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="8" source="imprensa:Estadão" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="9" source="imprensa:A Crítica de Campo Grande" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="10" source="imprensa:Repórter Diário" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="11" source="imprensa:Folha BV" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="12" source="imprensa:Gazeta do Paraná" target="notícia: Ramagem EUA eleição" weight="1"/>
+<edge id="13" source="imprensa:Poder360" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="14" source="imprensa:Vero Notícias" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="15" source="imprensa:Pleno.News" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="16" source="imprensa:Money Times" target="notícia: Paulo Figueiredo eleição" weight="1"/>
+<edge id="17" source="imprensa:TV Florida USA" target="notícia: Paulo Figueiredo eleição" weight="3"/>
+<edge id="18" source="tt:z.paulo89" target="TikTok Paulo Figueiredo" weight="2108971"/>
+<edge id="19" source="tt:adelinecamargooficial" target="TikTok Ramagem EUA" weight="4071312"/>
+<edge id="20" source="tt:medidpgmm5x" target="TikTok Ramagem EUA" weight="4268362"/>
+<edge id="21" source="P0001" target="TikTok Allan dos Santos" weight="323"/>
+<edge id="22" source="P0002" target="TikTok Allan dos Santos" weight="1368"/>
+<edge id="23" source="P0003" target="TikTok Ramagem EUA" weight="12482"/>
+<edge id="24" source="P0004" target="TikTok Allan dos Santos" weight="706"/>
+<edge id="25" source="tt:exom4t1c" target="TikTok Paulo Figueiredo" weight="39811"/>
+<edge id="26" source="P0005" target="TikTok Ramagem EUA" weight="131230"/>
+<edge id="27" source="tt:armyvibesusa" target="TikTok Ramagem EUA" weight="3209851"/>
+<edge id="28" source="tt:valdirofc072" target="TikTok Allan dos Santos" weight="7037"/>
+<edge id="29" source="tt:user15416277034262" target="TikTok Allan dos Santos" weight="92746"/>
+<edge id="30" source="P0006" target="TikTok Ramagem EUA" weight="1440"/>
+<edge id="31" source="tt:derynoticia" target="TikTok Ramagem EUA" weight="124955"/>
+<edge id="32" source="tt:sabiosofficial" target="TikTok Ramagem EUA" weight="18598"/>
+<edge id="33" source="tt:manoelsilva3023" target="TikTok Ramagem EUA" weight="747"/>
+<edge id="34" source="tt:telenovelahub" target="TikTok Ramagem EUA" weight="127504"/>
+<edge id="35" source="tt:fwd.vision" target="TikTok Ramagem EUA" weight="1464075"/>
+<edge id="36" source="tt:_cortesdorei" target="TikTok Allan dos Santos" weight="1497231"/>
+<edge id="37" source="tt:carloszarattini" target="TikTok Ramagem EUA" weight="33373"/>
+<edge id="38" source="P0007" target="TikTok Allan dos Santos" weight="184"/>
+<edge id="39" source="tt:aeroporto.area.restrita" target="TikTok Ramagem EUA" weight="206383"/>
+<edge id="40" source="P0008" target="TikTok Allan dos Santos" weight="38457"/>
+<edge id="41" source="P0009" target="TikTok Ramagem EUA" weight="11732"/>
+<edge id="42" source="tt:juicyallann" target="TikTok Allan dos Santos" weight="657226"/>
+<edge id="43" source="P0010" target="TikTok Ramagem EUA" weight="54648"/>
+<edge id="44" source="P0011" target="TikTok Ramagem EUA" weight="538038"/>
+<edge id="45" source="tt:maksilon" target="TikTok Allan dos Santos" weight="498186"/>
+<edge id="46" source="P0012" target="TikTok Ramagem EUA" weight="2078"/>
+<edge id="47" source="tt:model9420" target="TikTok Ramagem EUA" weight="45687"/>
+<edge id="48" source="P0013" target="TikTok Paulo Figueiredo" weight="4216"/>
+<edge id="49" source="P0014" target="TikTok Ramagem EUA" weight="63949"/>
+<edge id="50" source="tt:reaganfoundation" target="TikTok Ramagem EUA" weight="757180"/>
+<edge id="51" source="tt:j23hart" target="TikTok Allan dos Santos" weight="37161"/>
+<edge id="52" source="tt:jefersoncoutoribe" target="TikTok Allan dos Santos" weight="38103"/>
+<edge id="53" source="tt:izzyefizzy" target="TikTok Ramagem EUA" weight="596474"/>
+<edge id="54" source="P0015" target="TikTok Ramagem EUA" weight="747"/>
+<edge id="55" source="P0016" target="TikTok Allan dos Santos" weight="35023"/>
+<edge id="56" source="tt:marcialeila30" target="TikTok Allan dos Santos" weight="140368"/>
+<edge id="57" source="tt:alan.santos2518" target="TikTok Allan dos Santos" weight="692037"/>
+<edge id="58" source="tt:sd_rodrigues04" target="TikTok Ramagem EUA" weight="2627"/>
+<edge id="59" source="P0017" target="TikTok Ramagem EUA" weight="517391"/>
+<edge id="60" source="tt:alissonnoronhausa" target="TikTok Ramagem EUA" weight="489421"/>
+<edge id="61" source="tt:veronicagrisalesc" target="TikTok Ramagem EUA" weight="4870402"/>
+<edge id="62" source="tt:trumpfan268" target="TikTok Ramagem EUA" weight="212209"/>
+<edge id="63" source="tt:pk.nagringa" target="TikTok Ramagem EUA" weight="1917767"/>
+<edge id="64" source="P0018" target="TikTok Allan dos Santos" weight="428"/>
+<edge id="65" source="P0019" target="TikTok Allan dos Santos" weight="60236"/>
+<edge id="66" source="tt:euahot" target="TikTok Allan dos Santos" weight="1188589"/>
+<edge id="67" source="tt:realtalkwithtee_" target="TikTok Allan dos Santos" weight="6881"/>
+<edge id="68" source="P0020" target="TikTok Paulo Figueiredo" weight="1569"/>
+<edge id="69" source="P0021" target="TikTok Allan dos Santos" weight="469478"/>
+<edge id="70" source="P0022" target="TikTok Ramagem EUA" weight="740"/>
+<edge id="71" source="P0023" target="TikTok Ramagem EUA" weight="11064"/>
+<edge id="72" source="P0024" target="TikTok Allan dos Santos" weight="118061"/>
+<edge id="73" source="P0025" target="TikTok Ramagem EUA" weight="261466"/>
+<edge id="74" source="P0026" target="TikTok Allan dos Santos" weight="118"/>
+<edge id="75" source="tt:galegonagringa6" target="TikTok Ramagem EUA" weight="854514"/>
+<edge id="76" source="tt:finance.and.quant" target="TikTok Ramagem EUA" weight="256825"/>
+<edge id="77" source="tt:robson_dcn" target="TikTok Allan dos Santos" weight="49766"/>
+<edge id="78" source="tt:misteryeeyee14" target="TikTok Ramagem EUA" weight="1460597"/>
+<edge id="79" source="P0027" target="TikTok Allan dos Santos" weight="241"/>
+<edge id="80" source="P0028" target="TikTok Ramagem EUA" weight="1145"/>
+<edge id="81" source="P0029" target="TikTok Ramagem EUA" weight="30885"/>
+<edge id="82" source="tt:marcos.p..incio" target="TikTok Paulo Figueiredo" weight="748"/>
+<edge id="83" source="P0030" target="TikTok Ramagem EUA" weight="242437"/>
+<edge id="84" source="P0031" target="TikTok Ramagem EUA" weight="924410"/>
+<edge id="85" source="tt:pfigueiredoshow" target="TikTok Paulo Figueiredo" weight="619534"/>
+<edge id="86" source="tt:iamdavyd" target="TikTok Ramagem EUA" weight="835429"/>
+<edge id="87" source="P0032" target="TikTok Allan dos Santos" weight="502"/>
+<edge id="88" source="P0033" target="TikTok Allan dos Santos" weight="7494"/>
+<edge id="89" source="tt:politicapordentro" target="TikTok Allan dos Santos" weight="4143"/>
+<edge id="90" source="P0034" target="TikTok Ramagem EUA" weight="111226"/>
+<edge id="91" source="tt:usaworrior" target="TikTok Ramagem EUA" weight="597796"/>
+<edge id="92" source="P0035" target="TikTok Ramagem EUA" weight="46212"/>
+<edge id="93" source="tt:clipadaspz" target="TikTok Paulo Figueiredo" weight="31181"/>
+<edge id="94" source="P0036" target="TikTok Allan dos Santos" weight="1876"/>
+<edge id="95" source="tt:brvertical" target="TikTok Allan dos Santos" weight="175133"/>
+<edge id="96" source="P0037" target="TikTok Ramagem EUA" weight="11189"/>
+<edge id="97" source="tt:gabinetedoocio" target="TikTok Allan dos Santos" weight="77924"/>
+<edge id="98" source="tt:redetvt" target="TikTok Allan dos Santos" weight="17006"/>
+<edge id="99" source="tt:cortes_oscriaa" target="TikTok Allan dos Santos" weight="525150"/>
+<edge id="100" source="tt:horaum.suamidia" target="TikTok Paulo Figueiredo" weight="500"/>
+<edge id="101" source="tt:frassetti" target="TikTok Allan dos Santos" weight="225124"/>
+<edge id="102" source="P0038" target="TikTok Allan dos Santos" weight="171"/>
+<edge id="103" source="tt:lukkass.eduardo" target="TikTok Allan dos Santos" weight="511896"/>
+<edge id="104" source="tt:khlashin27" target="TikTok Ramagem EUA" weight="12184"/>
+<edge id="105" source="tt:alansantosofi" target="TikTok Allan dos Santos" weight="19562"/>
+<edge id="106" source="P0039" target="TikTok Allan dos Santos" weight="62967"/>
+<edge id="107" source="tt:manuelsilvan1981" target="TikTok Allan dos Santos" weight="7123"/>
+<edge id="108" source="tt:eufrancieliotto" target="TikTok Allan dos Santos" weight="203898"/>
+<edge id="109" source="tt:bbcnewsbrasil" target="TikTok Ramagem EUA" weight="649062"/>
+<edge id="110" source="P0040" target="TikTok Ramagem EUA" weight="5787"/>
+<edge id="111" source="tt:rg.news56" target="TikTok Allan dos Santos" weight="4956"/>
+<edge id="112" source="P0041" target="TikTok Allan dos Santos" weight="232"/>
+<edge id="113" source="P0042" target="TikTok Paulo Figueiredo" weight="394"/>
+<edge id="114" source="tt:emandtheholograms" target="TikTok Ramagem EUA" weight="316428"/>
+<edge id="115" source="P0043" target="TikTok Ramagem EUA" weight="2516"/>
+<edge id="116" source="tt:tmcnewsbr" target="TikTok Ramagem EUA" weight="1250735"/>
+<edge id="117" source="P0044" target="TikTok Ramagem EUA" weight="3391"/>
+<edge id="118" source="P0045" target="TikTok Allan dos Santos" weight="6846"/>
+<edge id="119" source="P0046" target="TikTok Allan dos Santos" weight="204"/>
+<edge id="120" source="P0047" target="TikTok Allan dos Santos" weight="126063"/>
+<edge id="121" source="tt:politiza.educacio" target="TikTok Allan dos Santos" weight="348"/>
+<edge id="122" source="tt:professor.penal.br" target="TikTok Paulo Figueiredo" weight="328966"/>
+<edge id="123" source="tt:erimar.almeida1" target="TikTok Allan dos Santos" weight="10713"/>
+<edge id="124" source="P0048" target="TikTok Allan dos Santos" weight="243"/>
+<edge id="125" source="tt:poderososdapolitica" target="TikTok Allan dos Santos" weight="435535"/>
+<edge id="126" source="P0049" target="TikTok Allan dos Santos" weight="1087"/>
+<edge id="127" source="tt:user9481075703576" target="TikTok Paulo Figueiredo" weight="69452"/>
+<edge id="128" source="P0050" target="TikTok Paulo Figueiredo" weight="167187"/>
+<edge id="129" source="tt:otarianonews" target="TikTok Ramagem EUA" weight="3413508"/>
+<edge id="130" source="tt:raquelamaraladv" target="TikTok Paulo Figueiredo" weight="273742"/>
+<edge id="131" source="tt:deltandallagnol" target="TikTok Allan dos Santos" weight="94639"/>
+<edge id="132" source="P0051" target="TikTok Ramagem EUA" weight="122840"/>
+<edge id="133" source="tt:23maly_" target="TikTok Ramagem EUA" weight="1300008"/>
+<edge id="134" source="P0052" target="TikTok Allan dos Santos" weight="206"/>
+<edge id="135" source="tt:sralanodestemido" target="TikTok Allan dos Santos" weight="540145"/>
+<edge id="136" source="tt:araujodossanttos" target="TikTok Allan dos Santos" weight="1377267"/>
+<edge id="137" source="tt:clipsdoalexandresantos" target="TikTok Allan dos Santos" weight="47612"/>
+<edge id="138" source="P0053" target="TikTok Ramagem EUA" weight="202612"/>
+<edge id="139" source="tt:dunia_santos_urbina" target="TikTok Allan dos Santos" weight="1500986"/>
+<edge id="140" source="P0054" target="TikTok Ramagem EUA" weight="34651"/>
+<edge id="141" source="tt:entretanto_br" target="TikTok Ramagem EUA" weight="25381"/>
+<edge id="142" source="tt:brasil24hroficial" target="TikTok Ramagem EUA" weight="1514"/>
+<edge id="143" source="P0055" target="TikTok Ramagem EUA" weight="228161"/>
+<edge id="144" source="P0056" target="TikTok Allan dos Santos" weight="48082"/>
+<edge id="145" source="tt:terapianofogo" target="TikTok Paulo Figueiredo" weight="142575"/>
+<edge id="146" source="tt:delegadoramagem" target="TikTok Ramagem EUA" weight="18454"/>
+<edge id="147" source="tt:infomoney" target="TikTok Ramagem EUA" weight="1763"/>
+<edge id="148" source="tt:ciege_tv" target="TikTok Allan dos Santos" weight="8843"/>
+<edge id="149" source="tt:eral___0" target="TikTok Allan dos Santos" weight="315344"/>
+<edge id="150" source="tt:simplesfatocuriosidades" target="TikTok Paulo Figueiredo" weight="21344"/>
+<edge id="151" source="tt:ecatherinealexandra42" target="TikTok Paulo Figueiredo" weight="4856"/>
+<edge id="152" source="P0057" target="TikTok Allan dos Santos" weight="502"/>
+<edge id="153" source="P0058" target="TikTok Allan dos Santos" weight="269"/>
+<edge id="154" source="P0059" target="TikTok Allan dos Santos" weight="24483"/>
+<edge id="155" source="P0060" target="TikTok Allan dos Santos" weight="7265"/>
+<edge id="156" source="P0061" target="TikTok Ramagem EUA" weight="585"/>
+<edge id="157" source="tt:ofofoquinho" target="TikTok Paulo Figueiredo" weight="62813"/>
+<edge id="158" source="P0062" target="TikTok Paulo Figueiredo" weight="5997"/>
+<edge id="159" source="tt:pedro_debastosdossantos" target="TikTok Allan dos Santos" weight="160841"/>
+<edge id="160" source="P0063" target="TikTok Allan dos Santos" weight="1138"/>
+<edge id="161" source="tt:copaibanoticias" target="TikTok Allan dos Santos" weight="105730"/>
+<edge id="162" source="P0064" target="TikTok Allan dos Santos" weight="25466"/>
+<edge id="163" source="tt:andrevieira221981" target="TikTok Allan dos Santos" weight="1250"/>
+<edge id="164" source="P0065" target="TikTok Allan dos Santos" weight="2402"/>
+<edge id="165" source="tt:direitasergipana" target="TikTok Paulo Figueiredo" weight="353"/>
+<edge id="166" source="tt:tvconnectusa" target="TikTok Ramagem EUA" weight="25324"/>
+<edge id="167" source="P0066" target="TikTok Ramagem EUA" weight="36711"/>
+<edge id="168" source="P0067" target="TikTok Paulo Figueiredo" weight="355"/>
+<edge id="169" source="P0068" target="TikTok Allan dos Santos" weight="113116"/>
+<edge id="170" source="tt:apautapopular" target="TikTok Allan dos Santos" weight="5488"/>
+<edge id="171" source="P0069" target="TikTok Ramagem EUA" weight="3269"/>
+<edge id="172" source="tt:newstrumpz11" target="TikTok Ramagem EUA" weight="2795"/>
+<edge id="173" source="tt:guga.figueiredo" target="TikTok Paulo Figueiredo" weight="425549"/>
+<edge id="174" source="P0070" target="TikTok Allan dos Santos" weight="374"/>
+<edge id="175" source="tt:canalpilhado" target="TikTok Paulo Figueiredo" weight="131877"/>
+<edge id="176" source="P0071" target="TikTok Allan dos Santos" weight="8724"/>
+<edge id="177" source="P0072" target="TikTok Paulo Figueiredo" weight="1617"/>
+<edge id="178" source="P0073" target="TikTok Allan dos Santos" weight="595"/>
+<edge id="179" source="tt:bandnewsfm" target="TikTok Paulo Figueiredo" weight="7121"/>
+<edge id="180" source="P0074" target="TikTok Paulo Figueiredo" weight="4153"/>
+<edge id="181" source="tt:marcialeila30" target="TikTok Paulo Figueiredo" weight="9531"/>
+<edge id="182" source="P0075" target="TikTok Ramagem EUA" weight="626"/>
+<edge id="183" source="tt:.rotadasabedoria" target="TikTok Ramagem EUA" weight="5578"/>
+<edge id="184" source="tt:foxnews" target="TikTok Ramagem EUA" weight="783711"/>
+<edge id="185" source="P0076" target="TikTok Paulo Figueiredo" weight="1584"/>
+<edge id="186" source="tt:gabriel.neves.da1" target="TikTok Paulo Figueiredo" weight="34576"/>
+<edge id="187" source="tt:_dhundal1" target="TikTok Ramagem EUA" weight="31397"/>
+<edge id="188" source="tt:avantedireitaofc" target="TikTok Paulo Figueiredo" weight="4162"/>
+<edge id="189" source="P0077" target="TikTok Ramagem EUA" weight="161063"/>
+<edge id="190" source="P0078" target="TikTok Paulo Figueiredo" weight="42844"/>
+<edge id="191" source="tt:nldrmedia" target="TikTok Ramagem EUA" weight="14358"/>
+<edge id="192" source="P0079" target="TikTok Paulo Figueiredo" weight="2825"/>
+<edge id="193" source="P0080" target="TikTok Ramagem EUA" weight="290"/>
+<edge id="194" source="tt:plantaodatretaofc" target="TikTok Paulo Figueiredo" weight="713"/>
+<edge id="195" source="tt:nordestelivredopt" target="TikTok Paulo Figueiredo" weight="252566"/>
+<edge id="196" source="tt:politica01br" target="TikTok Paulo Figueiredo" weight="126715"/>
+<edge id="197" source="P0081" target="TikTok Paulo Figueiredo" weight="2940"/>
+<edge id="198" source="P0082" target="TikTok Allan dos Santos" weight="1097"/>
+<edge id="199" source="P0083" target="TikTok Allan dos Santos" weight="257"/>
+<edge id="200" source="tt:uelvisonsilv" target="TikTok Paulo Figueiredo" weight="11609"/>
+<edge id="201" source="P0084" target="TikTok Ramagem EUA" weight="358"/>
+<edge id="202" source="P0085" target="TikTok Ramagem EUA" weight="861"/>
+<edge id="203" source="P0086" target="TikTok Paulo Figueiredo" weight="305441"/>
+<edge id="204" source="tt:portalrumopolitico" target="TikTok Paulo Figueiredo" weight="5012"/>
+<edge id="205" source="tt:podernofoco.news" target="TikTok Paulo Figueiredo" weight="61331"/>
+<edge id="206" source="tt:debatenacionaloficial" target="TikTok Paulo Figueiredo" weight="152161"/>
+<edge id="207" source="P0087" target="TikTok Allan dos Santos" weight="203"/>
+<edge id="208" source="tt:fabinoticiasbr.noticia" target="TikTok Paulo Figueiredo" weight="556"/>
+<edge id="209" source="P0088" target="TikTok Allan dos Santos" weight="872"/>
+<edge id="210" source="P0089" target="TikTok Paulo Figueiredo" weight="1373"/>
+<edge id="211" source="tt:mcgillmedia" target="TikTok Ramagem EUA" weight="485632"/>
+<edge id="212" source="tt:noticiasredetv" target="TikTok Paulo Figueiredo" weight="6797"/>
+<edge id="213" source="tt:noticias.urgentes39" target="TikTok Paulo Figueiredo" weight="1914"/>
+<edge id="214" source="tt:115billionviews" target="TikTok Ramagem EUA" weight="330"/>
+<edge id="215" source="tt:fatoem1minut" target="TikTok Paulo Figueiredo" weight="67180"/>
+<edge id="216" source="tt:alinepepe" target="TikTok Ramagem EUA" weight="770827"/>
+<edge id="217" source="tt:pontopoliticooficial" target="TikTok Paulo Figueiredo" weight="76155"/>
+<edge id="218" source="P0090" target="TikTok Ramagem EUA" weight="797"/>
+<edge id="219" source="tt:baccinoticiasofc" target="TikTok Paulo Figueiredo" weight="74664"/>
+<edge id="220" source="tt:guerraagoraoficia" target="TikTok Ramagem EUA" weight="24720"/>
+<edge id="221" source="P0091" target="TikTok Paulo Figueiredo" weight="251"/>
+<edge id="222" source="P0092" target="TikTok Paulo Figueiredo" weight="19703"/>
+<edge id="223" source="tt:milson_alves_" target="TikTok Paulo Figueiredo" weight="39985"/>
+<edge id="224" source="P0093" target="TikTok Ramagem EUA" weight="806"/>
+<edge id="225" source="tt:mateusatualiza" target="TikTok Allan dos Santos" weight="17283"/>
+<edge id="226" source="tt:reeisfut" target="TikTok Ramagem EUA" weight="2775902"/>
+<edge id="227" source="tt:globalstar_" target="TikTok Ramagem EUA" weight="1186631"/>
+<edge id="228" source="P0094" target="TikTok Ramagem EUA" weight="2063"/>
+<edge id="229" source="tt:maurodamiao" target="TikTok Ramagem EUA" weight="3668"/>
+<edge id="230" source="tt:politizando3" target="TikTok Paulo Figueiredo" weight="224165"/>
+<edge id="231" source="tt:politicaemfocobrs" target="TikTok Paulo Figueiredo" weight="2158"/>
+<edge id="232" source="P0095" target="TikTok Paulo Figueiredo" weight="197410"/>
+<edge id="233" source="tt:michaelsolakiewicz" target="TikTok Ramagem EUA" weight="44148"/>
+<edge id="234" source="tt:clickdodia01" target="TikTok Ramagem EUA" weight="153457"/>
+<edge id="235" source="tt:marcoscomenta" target="TikTok Paulo Figueiredo" weight="5392"/>
+<edge id="236" source="tt:galasfeios" target="TikTok Allan dos Santos" weight="16714"/>
+<edge id="237" source="P0096" target="TikTok Allan dos Santos" weight="8585"/>
+<edge id="238" source="tt:ecatherinealexandra42" target="TikTok Allan dos Santos" weight="573"/>
+<edge id="239" source="P0097" target="TikTok Ramagem EUA" weight="908"/>
+<edge id="240" source="tt:ruyspratini" target="TikTok Paulo Figueiredo" weight="159"/>
+<edge id="241" source="P0098" target="TikTok Paulo Figueiredo" weight="218"/>
+<edge id="242" source="tt:fabio_noticias" target="TikTok Paulo Figueiredo" weight="23105"/>
+<edge id="243" source="P0099" target="TikTok Ramagem EUA" weight="1094"/>
+<edge id="244" source="P0100" target="TikTok Paulo Figueiredo" weight="1005"/>
+<edge id="245" source="P0101" target="TikTok Ramagem EUA" weight="205843"/>
+<edge id="246" source="tt:alarabiya_eng" target="TikTok Ramagem EUA" weight="22965"/>
+<edge id="247" source="P0102" target="TikTok Allan dos Santos" weight="3536"/>
+<edge id="248" source="P0103" target="TikTok Ramagem EUA" weight="1917"/>
+<edge id="249" source="P0104" target="TikTok Ramagem EUA" weight="100"/>
+<edge id="250" source="P0105" target="TikTok Ramagem EUA" weight="309"/>
+<edge id="251" source="tt:msavvv234" target="TikTok Ramagem EUA" weight="17538"/>
+<edge id="252" source="P0106" target="TikTok Ramagem EUA" weight="209"/>
+<edge id="253" source="P0107" target="TikTok Ramagem EUA" weight="1227"/>
+<edge id="254" source="tt:jadsong64" target="TikTok Paulo Figueiredo" weight="362"/>
+<edge id="255" source="P0108" target="TikTok Ramagem EUA" weight="798"/>
+<edge id="256" source="tt:acordameubrasil2" target="TikTok Paulo Figueiredo" weight="827"/>
+<edge id="257" source="tt:jornalmeiahora" target="TikTok Allan dos Santos" weight="12553"/>
+<edge id="258" source="P0109" target="TikTok Allan dos Santos" weight="529"/>
+<edge id="259" source="P0110" target="TikTok Paulo Figueiredo" weight="6474"/>
+<edge id="260" source="P0111" target="TikTok Ramagem EUA" weight="2109"/>
+<edge id="261" source="tt:brasil.oficial01" target="TikTok Allan dos Santos" weight="1272"/>
+<edge id="262" source="tt:cgtneurope" target="TikTok Ramagem EUA" weight="4122"/>
+<edge id="263" source="P0112" target="TikTok Allan dos Santos" weight="525"/>
+<edge id="264" source="P0078" target="TikTok Allan dos Santos" weight="747"/>
+<edge id="265" source="P0113" target="TikTok Ramagem EUA" weight="121"/>
+<edge id="266" source="P0114" target="TikTok Allan dos Santos" weight="986"/>
+<edge id="267" source="tt:patriotaraiz2026" target="TikTok Paulo Figueiredo" weight="1182"/>
+<edge id="268" source="tt:cbseveningnews" target="TikTok Ramagem EUA" weight="8037"/>
+<edge id="269" source="tt:mdgcortes2" target="TikTok Paulo Figueiredo" weight="4216"/>
+<edge id="270" source="tt:aulasinh0" target="TikTok Paulo Figueiredo" weight="66888"/>
+<edge id="271" source="tt:juanpablo2santos" target="TikTok Allan dos Santos" weight="418860"/>
+<edge id="272" source="P0115" target="TikTok Ramagem EUA" weight="764"/>
+<edge id="273" source="P0116" target="TikTok Ramagem EUA" weight="93"/>
+<edge id="274" source="P0117" target="TikTok Ramagem EUA" weight="147"/>
+<edge id="275" source="tt:brasildehoje22" target="TikTok Paulo Figueiredo" weight="155636"/>
+<edge id="276" source="P0118" target="TikTok Ramagem EUA" weight="587"/>
+<edge id="277" source="P0119" target="TikTok Paulo Figueiredo" weight="163895"/>
+<edge id="278" source="tt:insightwire.com" target="TikTok Ramagem EUA" weight="49848"/>
+<edge id="279" source="P0120" target="TikTok Paulo Figueiredo" weight="2951"/>
+<edge id="280" source="tt:aaronparnas1" target="TikTok Ramagem EUA" weight="559190"/>
+<edge id="281" source="tt:g1" target="TikTok Ramagem EUA" weight="1005130"/>
+<edge id="282" source="tt:23maly_" target="TikTok Allan dos Santos" weight="63363"/>
+<edge id="283" source="P0121" target="TikTok Ramagem EUA" weight="6002"/>
+<edge id="284" source="tt:itanhaemfacil" target="TikTok Ramagem EUA" weight="28152"/>
+<edge id="285" source="P0122" target="TikTok Ramagem EUA" weight="80169"/>
+<edge id="286" source="P0123" target="TikTok Ramagem EUA" weight="1136"/>
+<edge id="287" source="tt:exercitodolulanotiktok" target="TikTok Paulo Figueiredo" weight="78154"/>
+<edge id="288" source="tt:ligue1plus" target="TikTok Paulo Figueiredo" weight="338394"/>
+<edge id="289" source="P0124" target="TikTok Allan dos Santos" weight="301"/>
+<edge id="290" source="P0125" target="TikTok Ramagem EUA" weight="486"/>
+<edge id="291" source="tt:no.hate.hot.takes" target="TikTok Ramagem EUA" weight="595"/>
+<edge id="292" source="tt:kjoftiktok" target="TikTok Ramagem EUA" weight="11812"/>
+<edge id="293" source="tt:sebsousapinto" target="TikTok Paulo Figueiredo" weight="2515"/>
+<edge id="294" source="tt:rafamaurt" target="TikTok Ramagem EUA" weight="411672"/>
+<edge id="295" source="P0126" target="TikTok Paulo Figueiredo" weight="37617"/>
+<edge id="296" source="tt:teacherjoseed" target="TikTok Paulo Figueiredo" weight="125927"/>
+<edge id="297" source="tt:luciavalentim62" target="TikTok Allan dos Santos" weight="222"/>
+<edge id="298" source="P0127" target="TikTok Allan dos Santos" weight="356"/>
+<edge id="299" source="tt:entry_team" target="TikTok Ramagem EUA" weight="15047"/>
+<edge id="300" source="P0128" target="TikTok Ramagem EUA" weight="318"/>
+<edge id="301" source="P0129" target="TikTok Ramagem EUA" weight="160"/>
+<edge id="302" source="P0130" target="TikTok Ramagem EUA" weight="565"/>
+<edge id="303" source="tt:arquivoreal3" target="TikTok Allan dos Santos" weight="1139"/>
+<edge id="304" source="P0131" target="TikTok Ramagem EUA" weight="358"/>
+<edge id="305" source="tt:realmagaking" target="TikTok Ramagem EUA" weight="9994"/>
+<edge id="306" source="P0132" target="TikTok Ramagem EUA" weight="263"/>
+<edge id="307" source="tt:acorda.direita" target="TikTok Paulo Figueiredo" weight="1155"/>
+<edge id="308" source="tt:portal.audra" target="TikTok Ramagem EUA" weight="380257"/>
+<edge id="309" source="tt:heena.khan90" target="TikTok Ramagem EUA" weight="2330"/>
+<edge id="310" source="tt:sicnoticiaspt" target="TikTok Ramagem EUA" weight="346481"/>
+<edge id="311" source="tt:tico_sem_limites" target="TikTok Ramagem EUA" weight="180724"/>
+<edge id="312" source="P0133" target="TikTok Allan dos Santos" weight="158"/>
+<edge id="313" source="P0134" target="TikTok Allan dos Santos" weight="7229"/>
+<edge id="314" source="P0135" target="TikTok Allan dos Santos" weight="1386"/>
+<edge id="315" source="P0136" target="TikTok Ramagem EUA" weight="347"/>
+<edge id="316" source="tt:anagloria135" target="TikTok Allan dos Santos" weight="33"/>
+<edge id="317" source="P0137" target="TikTok Paulo Figueiredo" weight="101"/>
+<edge id="318" source="P0138" target="TikTok Allan dos Santos" weight="151"/>
+<edge id="319" source="tt:is671155vq0" target="TikTok Ramagem EUA" weight="1780"/>
+<edge id="320" source="P0139" target="TikTok Ramagem EUA" weight="509"/>
+<edge id="321" source="P0140" target="TikTok Paulo Figueiredo" weight="196"/>
+<edge id="322" source="tt:dudazzanini" target="TikTok Ramagem EUA" weight="6109"/>
+<edge id="323" source="tt:olivia.sophie97" target="TikTok Ramagem EUA" weight="326"/>
+<edge id="324" source="tt:nome_invalido" target="TikTok Ramagem EUA" weight="143702"/>
+<edge id="325" source="tt:ed.romero" target="TikTok Ramagem EUA" weight="10150"/>
+<edge id="326" source="tt:opatria1" target="TikTok Ramagem EUA" weight="64612"/>
+<edge id="327" source="tt:canalcomercios" target="TikTok Ramagem EUA" weight="783"/>
+<edge id="328" source="tt:noticiabrasil10" target="TikTok Ramagem EUA" weight="16458"/>
+<edge id="329" source="P0141" target="TikTok Ramagem EUA" weight="107425"/>
+<edge id="330" source="P0142" target="TikTok Allan dos Santos" weight="146"/>
+<edge id="331" source="tt:livia_savin" target="TikTok Ramagem EUA" weight="7803"/>
+<edge id="332" source="tt:carteiroreaca" target="TikTok Ramagem EUA" weight="31036"/>
+<edge id="333" source="tt:edivaldo.dos.santoss" target="TikTok Allan dos Santos" weight="149"/>
+<edge id="334" source="P0143" target="TikTok Ramagem EUA" weight="123"/>
+<edge id="335" source="P0144" target="TikTok Ramagem EUA" weight="3637"/>
+<edge id="336" source="tt:saibaaverdade3" target="TikTok Ramagem EUA" weight="1645"/>
+<edge id="337" source="P0145" target="TikTok Ramagem EUA" weight="2"/>
+<edge id="338" source="tt:vandotiktok19" target="TikTok Ramagem EUA" weight="223"/>
 </edges>
 </graph>
 </gexf>
