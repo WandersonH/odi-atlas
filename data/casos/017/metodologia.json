@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T20:03:48Z",
+ "gerado_em_utc": "2026-11-15T17:33:00Z",
  "caso": "017",
  "titulo": "As cartas de Flávio Bolsonaro: de \"verdadeiro presidente eleito\" a \"líder do Brasil\"",
  "pergunta": "Como circularam as versões da carta em que Flávio Bolsonaro, depois de viajar aos EUA, se dizia \"verdadeiro presidente eleito\" e, na versão editada, \"líder do Brasil\"? Que versões existiram, quem as publicou, como foram respondidas e checadas, e o que os metadados dos arquivos mostram sobre sua produção?",
@@ -184,11 +184,11 @@
   {
    "fonte": "X",
    "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
-   "lidos": 5536,
-   "no_periodo": 5536,
+   "lidos": 5847,
+   "no_periodo": 5847,
    "na_analise": 4408,
    "pct": null,
-   "termos_buscados": 42,
+   "termos_buscados": 72,
    "termos_no_limite": [
     "Flávio presidente eleito / líder",
     "carta: presidente eleito × líder",
@@ -197,8 +197,10 @@
     "respostas ao post da carta"
    ],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
-   "avisos": [],
-   "origem": "data/casos/017/manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json, manifesto-20261108T171606Z.json"
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/017/manifesto-20261112T190706Z.json, manifesto-20261113T184401Z.json, manifesto-20261114T171557Z.json"
   },
   {
    "fonte": "Instagram",
@@ -262,29 +264,29 @@
    "avisos": [
     "⛔ teto da rede esgotado"
    ],
-   "origem": "data/casos/017/manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json, manifesto-20261108T170239Z.json"
+   "origem": "data/casos/017/manifesto-20261112T185543Z.json, manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json"
   },
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
-   "lidos": 287,
-   "no_periodo": 287,
-   "na_analise": 287,
+   "lidos": 50,
+   "no_periodo": 50,
+   "na_analise": 50,
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/017/busca.json (youtube)",
-   "coletado_em": "2026-11-08T15:24:29Z"
+   "coletado_em": "2026-11-15T17:21:49Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 60,
-   "no_periodo": 60,
-   "na_analise": 60,
+   "lidos": 9,
+   "no_periodo": 9,
+   "na_analise": 9,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/017/busca.json (noticias)",
-   "coletado_em": "2026-11-08T15:24:29Z"
+   "coletado_em": "2026-11-15T17:21:49Z"
   },
   {
    "fonte": "Google Trends",
@@ -293,12 +295,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: carta Flávio Bolsonaro, Flávio presidente eleito, Flávio líder do Brasil, Flávio Bolsonaro EUA",
+   "como": "índice semanal/diário por janela (today 1-m, today 12-m), termos: carta Flávio Bolsonaro, Flávio presidente eleito, Flávio líder do Brasil, Flávio Bolsonaro EUA",
    "avisos": [
     "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
    ],
    "origem": "data/casos/017/busca.json (trends)",
-   "coletado_em": "2026-11-08T15:24:29Z"
+   "coletado_em": "2026-11-15T17:21:49Z"
   }
  ],
  "fontes_contexto": []

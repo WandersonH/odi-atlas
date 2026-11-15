@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T20:03:48Z",
+ "gerado_em_utc": "2026-11-15T17:33:00Z",
  "caso": "001",
  "titulo": "#brasilinteiro e #verdeeamarelo",
  "pergunta": "De onde partiram as hashtags #brasilinteiro e #verdeeamarelo, indicadas pela equipe como movimento de apoio a Lula em outubro de 2026, quem as amplificou e quanto elas circularam em cada rede?",
@@ -146,7 +146,7 @@
    "avisos": [
     "⛔ teto da rede esgotado"
    ],
-   "origem": "data/casos/001/manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json, manifesto-20261108T170239Z.json"
+   "origem": "data/casos/001/manifesto-20261112T185543Z.json, manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json"
   },
   {
    "fonte": "X",
@@ -167,28 +167,31 @@
   {
    "fonte": "Instagram",
    "universo": "⛔ desconhecido: a busca de reels e a página da hashtag do Instagram (via Apify) não devolvem o total",
-   "lidos": 20,
-   "no_periodo": 20,
-   "na_analise": 19,
+   "lidos": 456,
+   "no_periodo": 454,
+   "na_analise": 421,
+   "pct": null,
+   "termos_buscados": 8,
+   "termos_no_limite": [
+    "#brasilinteiro",
+    "#verdeeamarelo"
+   ],
+   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
+   "avisos": [],
+   "origem": "data/casos/001/manifesto-20261018T202819Z.json, manifesto-20261018T203018Z.json, manifesto-20261108T200539Z.json"
+  },
+  {
+   "fonte": "Facebook",
+   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
+   "lidos": 204,
+   "no_periodo": 204,
+   "na_analise": 189,
    "pct": null,
    "termos_buscados": 6,
    "termos_no_limite": [],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
    "avisos": [],
-   "origem": "data/casos/001/manifesto-20261018T133352Z.json, manifesto-20261018T202819Z.json, manifesto-20261018T203018Z.json"
-  },
-  {
-   "fonte": "Facebook",
-   "universo": "⛔ desconhecido: a busca de posts do Facebook (via Apify) não informa o total",
-   "lidos": 15,
-   "no_periodo": 15,
-   "na_analise": 13,
-   "pct": null,
-   "termos_buscados": 4,
-   "termos_no_limite": [],
-   "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
-   "avisos": [],
-   "origem": "data/casos/001/manifesto-20261018T132625Z.json, manifesto-20261018T133352Z.json, manifesto-20261018T202819Z.json"
+   "origem": "data/casos/001/manifesto-20261018T133352Z.json, manifesto-20261018T202819Z.json, manifesto-20261108T200539Z.json"
   },
   {
    "fonte": "Kwai",
@@ -197,35 +200,35 @@
    "no_periodo": 0,
    "na_analise": 0,
    "pct": null,
-   "termos_buscados": 6,
+   "termos_buscados": 8,
    "termos_no_limite": [],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
    "avisos": [
     "⛔ nada no período"
    ],
-   "origem": "data/casos/001/manifesto-20261018T202819Z.json, manifesto-20261018T203018Z.json, manifesto-20261102T215628Z.json"
+   "origem": "data/casos/001/manifesto-20261018T203018Z.json, manifesto-20261102T215628Z.json, manifesto-20261108T200539Z.json"
   },
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
-   "lidos": 246,
-   "no_periodo": 246,
-   "na_analise": 246,
+   "lidos": 0,
+   "no_periodo": 0,
+   "na_analise": 0,
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/001/busca.json (youtube)",
-   "coletado_em": "2026-11-08T15:49:16Z"
+   "coletado_em": "2026-11-15T16:55:35Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 112,
-   "no_periodo": 112,
-   "na_analise": 112,
+   "lidos": 101,
+   "no_periodo": 101,
+   "na_analise": 101,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/001/busca.json (noticias)",
-   "coletado_em": "2026-11-08T15:49:16Z"
+   "coletado_em": "2026-11-15T16:55:35Z"
   },
   {
    "fonte": "Google Trends",
@@ -234,12 +237,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (now 7-d, today 12-m), termos: brasil inteiro, verde e amarelo, brasilinteiro",
+   "como": "índice semanal/diário por janela (now 7-d), termos: brasil inteiro, verde e amarelo, brasilinteiro",
    "avisos": [
     "trends variantes today 12-m: HTTPError: HTTP Error 429: Too Many Requests"
    ],
    "origem": "data/casos/001/busca.json (trends)",
-   "coletado_em": "2026-11-08T15:49:16Z"
+   "coletado_em": "2026-11-15T16:55:35Z"
   }
  ],
  "fontes_contexto": []

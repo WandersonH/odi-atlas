@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T20:03:48Z",
+ "gerado_em_utc": "2026-11-15T17:33:00Z",
  "caso": "025",
  "titulo": "#DeportTheBolsonaros × #BrasiliansStandWithFlavio: de onde veio cada lado",
  "pergunta": "Quanto da hashtag #DeportTheBolsonaros, que pede a deportação de Flávio Bolsonaro e familiares dos EUA depois da chegada dele a Miami (28/10/2026), veio de perfis do Brasil e quanto de outros países? E quanto da resposta #BrasiliansStandWithFlavio?",
@@ -187,7 +187,7 @@
    "avisos": [
     "⛔ teto da rede esgotado"
    ],
-   "origem": "data/casos/025/manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json, manifesto-20261108T170239Z.json"
+   "origem": "data/casos/025/manifesto-20261112T185543Z.json, manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json"
   },
   {
    "fonte": "Instagram",
@@ -222,11 +222,11 @@
   {
    "fonte": "X",
    "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
-   "lidos": 7569,
-   "no_periodo": 7569,
+   "lidos": 8296,
+   "no_periodo": 8296,
    "na_analise": 6057,
    "pct": null,
-   "termos_buscados": 21,
+   "termos_buscados": 33,
    "termos_no_limite": [
     "#BrasiliansStandWithFlavio",
     "#DeportTheBolsonaros (01/11)",
@@ -238,8 +238,10 @@
     "diário: #DeportTheBolsonaros"
    ],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
-   "avisos": [],
-   "origem": "data/casos/025/manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json, manifesto-20261108T171606Z.json"
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/025/manifesto-20261112T190706Z.json, manifesto-20261113T184401Z.json, manifesto-20261114T171557Z.json"
   },
   {
    "fonte": "Kwai",
@@ -259,24 +261,24 @@
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
-   "lidos": 423,
-   "no_periodo": 423,
-   "na_analise": 423,
+   "lidos": 361,
+   "no_periodo": 361,
+   "na_analise": 361,
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/025/busca.json (youtube)",
-   "coletado_em": "2026-11-08T16:43:28Z"
+   "coletado_em": "2026-11-15T15:52:22Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 68,
-   "no_periodo": 68,
-   "na_analise": 68,
+   "lidos": 5,
+   "no_periodo": 5,
+   "na_analise": 5,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/025/busca.json (noticias)",
-   "coletado_em": "2026-11-08T16:43:28Z"
+   "coletado_em": "2026-11-15T15:52:22Z"
   },
   {
    "fonte": "Google Trends",
@@ -285,12 +287,10 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 1-m, now 7-d), termos: deport Bolsonaro, Flávio Bolsonaro Miami, Flavio Bolsonaro, DeportTheBolsonaros",
-   "avisos": [
-    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
-   ],
+   "como": "índice semanal/diário por janela (now 7-d, today 1-m), termos: deport Bolsonaro, Flávio Bolsonaro Miami, Flavio Bolsonaro, DeportTheBolsonaros",
+   "avisos": [],
    "origem": "data/casos/025/busca.json (trends)",
-   "coletado_em": "2026-11-08T16:43:28Z"
+   "coletado_em": "2026-11-15T15:52:22Z"
   }
  ],
  "fontes_contexto": []

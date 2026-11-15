@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T20:03:48Z",
+ "gerado_em_utc": "2026-11-15T17:33:00Z",
  "caso": "022",
  "titulo": "\"Relatório Pericial Independente\": documento apócrifo que alega fraude no 2º turno",
  "pergunta": "Como circulou, desde 28/10/2026, o \"Relatório Pericial Independente — Eleições 2026\", documento sem autor que alega fraude no 2º turno (votos depois das 17h, habilitações sem biometria, seções unânimes, Lei de Benford, indisponibilidade de boletins)? Quem o difundiu, inclusive pela conta do comentarista americano Joey Mannarino, e o que os dados públicos do TSE dizem sobre cada alegação?",
@@ -192,23 +192,25 @@
    "avisos": [
     "⛔ teto da rede esgotado"
    ],
-   "origem": "data/casos/022/manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json, manifesto-20261108T170239Z.json"
+   "origem": "data/casos/022/manifesto-20261112T185543Z.json, manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json"
   },
   {
    "fonte": "X",
    "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
-   "lidos": 4237,
-   "no_periodo": 4117,
+   "lidos": 4458,
+   "no_periodo": 4338,
    "na_analise": 3110,
    "pct": null,
-   "termos_buscados": 13,
+   "termos_buscados": 19,
    "termos_no_limite": [
     "diário: Relatório pericial / 17h / biometria / Benford",
     "menções a Joey Mannarino e o Brasil"
    ],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
-   "avisos": [],
-   "origem": "data/casos/022/manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json, manifesto-20261108T171606Z.json"
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/022/manifesto-20261112T190706Z.json, manifesto-20261113T184401Z.json, manifesto-20261114T171557Z.json"
   },
   {
    "fonte": "Instagram",
@@ -256,24 +258,24 @@
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
-   "lidos": 150,
-   "no_periodo": 150,
-   "na_analise": 150,
+   "lidos": 166,
+   "no_periodo": 166,
+   "na_analise": 166,
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/022/busca.json (youtube)",
-   "coletado_em": "2026-11-08T16:33:54Z"
+   "coletado_em": "2026-11-15T15:45:25Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 24,
-   "no_periodo": 24,
-   "na_analise": 24,
+   "lidos": 7,
+   "no_periodo": 7,
+   "na_analise": 7,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/022/busca.json (noticias)",
-   "coletado_em": "2026-11-08T16:33:54Z"
+   "coletado_em": "2026-11-15T15:45:25Z"
   },
   {
    "fonte": "Google Trends",
@@ -282,12 +284,10 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: relatório pericial, votos sem biometria, fraude eleição, lei de Benford",
-   "avisos": [
-    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
-   ],
+   "como": "índice semanal/diário por janela (now 7-d, today 1-m, today 12-m), termos: relatório pericial, votos sem biometria, fraude eleição, lei de Benford",
+   "avisos": [],
    "origem": "data/casos/022/busca.json (trends)",
-   "coletado_em": "2026-11-08T16:33:54Z"
+   "coletado_em": "2026-11-15T15:45:25Z"
   }
  ],
  "fontes_contexto": []

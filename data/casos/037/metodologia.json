@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T20:03:48Z",
+ "gerado_em_utc": "2026-11-15T17:33:00Z",
  "caso": "037",
  "titulo": "\"Faz o L\": origem e circulação da frase, em português e outros idiomas",
  "pergunta": "Qual a origem da expressão \"Faz o L\" e como ela mudou de sentido e de língua: do bordão de campanha (2022) à apropriação irônica pela oposição (2023) e ao gesto adotado por políticos e militantes de outros países depois de 25/10/2026?",
@@ -160,8 +160,10 @@
     "fazueli"
    ],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
-   "avisos": [],
-   "origem": "data/casos/037/manifesto-20261108T024908Z.json, manifesto-20261108T043728Z.json, manifesto-20261108T170239Z.json"
+   "avisos": [
+    "⛔ teto da rede esgotado"
+   ],
+   "origem": "data/casos/037/manifesto-20261112T185543Z.json, manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json"
   },
   {
    "fonte": "Instagram",
@@ -228,24 +230,24 @@
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
-   "lidos": 74,
-   "no_periodo": 74,
-   "na_analise": 74,
+   "lidos": 33,
+   "no_periodo": 33,
+   "na_analise": 33,
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/037/busca.json (youtube)",
-   "coletado_em": "2026-11-08T17:12:28Z"
+   "coletado_em": "2026-11-15T16:36:44Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 29,
-   "no_periodo": 29,
-   "na_analise": 29,
+   "lidos": 27,
+   "no_periodo": 27,
+   "na_analise": 27,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/037/busca.json (noticias)",
-   "coletado_em": "2026-11-08T17:12:28Z"
+   "coletado_em": "2026-11-15T16:36:44Z"
   },
   {
    "fonte": "Google Trends",
@@ -254,12 +256,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 5-y, today 12-m, now 7-d, 2004-01-01 2026-11-06), termos: faz o L, fazueli, fiz o L, haz la L, make the L",
+   "como": "índice semanal/diário por janela (today 5-y, today 12-m, now 7-d), termos: faz o L, fazueli, fiz o L, haz la L, make the L",
    "avisos": [
     "trends variantes 2004-01-01 2026-11-06: HTTPError: HTTP Error 429: Too Many Requests"
    ],
    "origem": "data/casos/037/busca.json (trends)",
-   "coletado_em": "2026-11-08T17:12:28Z"
+   "coletado_em": "2026-11-15T16:36:44Z"
   }
  ],
  "fontes_contexto": [

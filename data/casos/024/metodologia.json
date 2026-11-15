@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-08T20:03:48Z",
+ "gerado_em_utc": "2026-11-15T17:33:00Z",
  "caso": "024",
  "titulo": "\"Antes de 2030\": o primeiro vídeo de Flávio Bolsonaro nos EUA",
  "pergunta": "Como circulou o primeiro vídeo de Flávio Bolsonaro gravado nos EUA (live no Instagram, 31/10/2026, cerca de 17 minutos), em que ele dá sua versão da saída do Brasil (\"saí pelo Brasil\"), critica Alexandre de Moraes e a apreensão dos passaportes e diz que pode voltar a disputar a Presidência \"antes de 2030\"? Quem comentou o vídeo e que trechos foram repetidos?",
@@ -167,23 +167,25 @@
    "avisos": [
     "⛔ teto da rede esgotado"
    ],
-   "origem": "data/casos/024/manifesto-20261106T175854Z.json, manifesto-20261107T165100Z.json, manifesto-20261108T170239Z.json"
+   "origem": "data/casos/024/manifesto-20261112T185543Z.json, manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json"
   },
   {
    "fonte": "X",
    "universo": "⛔ desconhecido: a busca do X (via Apify) não informa o total de posts",
-   "lidos": 4029,
-   "no_periodo": 4029,
+   "lidos": 4599,
+   "no_periodo": 4599,
    "na_analise": 2680,
    "pct": null,
-   "termos_buscados": 10,
+   "termos_buscados": 16,
    "termos_no_limite": [
     "diário: vídeo de Flávio nos EUA / 2030",
     "vídeo de Flávio nos EUA / 2030"
    ],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
-   "avisos": [],
-   "origem": "data/casos/024/manifesto-20261106T181308Z.json, manifesto-20261107T170209Z.json, manifesto-20261108T171606Z.json"
+   "avisos": [
+    "⛔ nada no período"
+   ],
+   "origem": "data/casos/024/manifesto-20261112T190706Z.json, manifesto-20261113T184401Z.json, manifesto-20261114T171557Z.json"
   },
   {
    "fonte": "Instagram",
@@ -231,24 +233,24 @@
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
-   "lidos": 391,
-   "no_periodo": 391,
-   "na_analise": 391,
+   "lidos": 277,
+   "no_periodo": 277,
+   "na_analise": 277,
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/024/busca.json (youtube)",
-   "coletado_em": "2026-11-08T16:37:45Z"
+   "coletado_em": "2026-11-15T15:48:30Z"
   },
   {
    "fonte": "Google Notícias",
    "universo": "⛔ desconhecido: o RSS do Google Notícias devolve até 100 títulos por consulta e não informa o total",
-   "lidos": 100,
-   "no_periodo": 100,
-   "na_analise": 100,
+   "lidos": 69,
+   "no_periodo": 69,
+   "na_analise": 69,
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/024/busca.json (noticias)",
-   "coletado_em": "2026-11-08T16:37:45Z"
+   "coletado_em": "2026-11-15T15:48:30Z"
   },
   {
    "fonte": "Google Trends",
@@ -257,12 +259,10 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 1-m, today 12-m, now 7-d), termos: Flávio Bolsonaro, Flávio Bolsonaro EUA, Flávio Bolsonaro 2030, Flávio Bolsonaro live",
-   "avisos": [
-    "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
-   ],
+   "como": "índice semanal/diário por janela (now 7-d, today 1-m, today 12-m), termos: Flávio Bolsonaro, Flávio Bolsonaro EUA, Flávio Bolsonaro 2030, Flávio Bolsonaro live",
+   "avisos": [],
    "origem": "data/casos/024/busca.json (trends)",
-   "coletado_em": "2026-11-08T16:37:45Z"
+   "coletado_em": "2026-11-15T15:48:30Z"
   }
  ],
  "fontes_contexto": []
