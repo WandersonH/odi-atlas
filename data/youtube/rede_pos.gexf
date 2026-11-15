@@ -16,24 +16,24 @@
     </attributes>
     <nodes>
       <node id="brasil" label="brasil">
-        <viz:color r="181" g="30" b="47" a="1.0" />
-        <viz:size value="17.588457268119896" />
-        <viz:position x="340.9" y="-558.7" z="0.0" />
+        <viz:color r="172" g="36" b="48" a="1.0" />
+        <viz:size value="18.431676725154983" />
+        <viz:position x="546.4" y="-541.7" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="27" />
-          <attvalue for="1" value="24" />
-          <attvalue for="2" value="3" />
-          <attvalue for="3" value="0.889" />
+          <attvalue for="0" value="30" />
+          <attvalue for="1" value="25" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="0.833" />
           <attvalue for="4" value="0" />
-          <attvalue for="5" value="0.6" />
-          <attvalue for="6" value="5" />
-          <attvalue for="7" value="#b51e2f" />
+          <attvalue for="5" value="0.4889" />
+          <attvalue for="6" value="6" />
+          <attvalue for="7" value="#ac2430" />
         </attvalues>
       </node>
       <node id="presidente" label="presidente">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="13.224972160321824" />
-        <viz:position x="495.2" y="-0.0" z="0.0" />
+        <viz:position x="707.7" y="-0.0" z="0.0" />
         <attvalues>
           <attvalue for="0" value="14" />
           <attvalue for="1" value="14" />
@@ -48,37 +48,37 @@
       <node id="futuro" label="futuro">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="12.816653826391967" />
-        <viz:position x="347.9" y="-1000.0" z="0.0" />
+        <viz:position x="919.9" y="-732.8" z="0.0" />
         <attvalues>
           <attvalue for="0" value="13" />
           <attvalue for="1" value="13" />
           <attvalue for="2" value="0" />
           <attvalue for="3" value="1.0" />
           <attvalue for="4" value="0" />
-          <attvalue for="5" value="0.05" />
-          <attvalue for="6" value="3" />
+          <attvalue for="5" value="0.0667" />
+          <attvalue for="6" value="4" />
           <attvalue for="7" value="#c8102e" />
         </attvalues>
       </node>
       <node id="povo" label="povo">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="11.486832980505138" />
-        <viz:position x="696.5" y="-608.9" z="0.0" />
+        <viz:position x="418.4" y="-925.7" z="0.0" />
         <attvalues>
           <attvalue for="0" value="10" />
           <attvalue for="1" value="10" />
           <attvalue for="2" value="0" />
           <attvalue for="3" value="1.0" />
           <attvalue for="4" value="1" />
-          <attvalue for="5" value="0.05" />
-          <attvalue for="6" value="3" />
+          <attvalue for="5" value="0.0222" />
+          <attvalue for="6" value="4" />
           <attvalue for="7" value="#c8102e" />
         </attvalues>
       </node>
       <node id="construir" label="construir">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="11.0" />
-        <viz:position x="0.0" y="-965.5" z="0.0" />
+        <viz:position x="1000.0" y="-460.8" z="0.0" />
         <attvalues>
           <attvalue for="0" value="9" />
           <attvalue for="1" value="9" />
@@ -90,10 +90,25 @@
           <attvalue for="7" value="#c8102e" />
         </attvalues>
       </node>
+      <node id="democracia" label="democracia">
+        <viz:color r="179" g="31" b="48" a="1.0" />
+        <viz:size value="10.485281374238571" />
+        <viz:position x="185.6" y="-378.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="8" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="0.875" />
+          <attvalue for="4" value="1" />
+          <attvalue for="5" value="0.0222" />
+          <attvalue for="6" value="4" />
+          <attvalue for="7" value="#b31f30" />
+        </attvalues>
+      </node>
       <node id="vitoria" label="vitoria">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="10.485281374238571" />
-        <viz:position x="180.0" y="-233.2" z="0.0" />
+        <viz:position x="0.0" y="-756.5" z="0.0" />
         <attvalues>
           <attvalue for="0" value="8" />
           <attvalue for="1" value="8" />
@@ -101,7 +116,7 @@
           <attvalue for="3" value="1.0" />
           <attvalue for="4" value="1" />
           <attvalue for="5" value="0.0" />
-          <attvalue for="6" value="2" />
+          <attvalue for="6" value="3" />
           <attvalue for="7" value="#c8102e" />
         </attvalues>
       </node>
@@ -109,12 +124,16 @@
     <edges>
       <edge source="brasil" target="futuro" id="0" weight="10" />
       <edge source="brasil" target="povo" id="1" weight="8" />
-      <edge source="brasil" target="construir" id="2" weight="6" />
-      <edge source="brasil" target="vitoria" id="3" weight="4" />
-      <edge source="brasil" target="presidente" id="4" weight="3" />
-      <edge source="futuro" target="construir" id="5" weight="6" />
-      <edge source="futuro" target="povo" id="6" weight="5" />
-      <edge source="povo" target="vitoria" id="7" weight="5" />
+      <edge source="brasil" target="democracia" id="2" weight="7" />
+      <edge source="brasil" target="construir" id="3" weight="6" />
+      <edge source="brasil" target="vitoria" id="4" weight="4" />
+      <edge source="brasil" target="presidente" id="5" weight="3" />
+      <edge source="futuro" target="construir" id="6" weight="6" />
+      <edge source="futuro" target="povo" id="7" weight="5" />
+      <edge source="futuro" target="democracia" id="8" weight="4" />
+      <edge source="povo" target="democracia" id="9" weight="6" />
+      <edge source="povo" target="vitoria" id="10" weight="5" />
+      <edge source="democracia" target="vitoria" id="11" weight="5" />
     </edges>
   </graph>
 </gexf>
