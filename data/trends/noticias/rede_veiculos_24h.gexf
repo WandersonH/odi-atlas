@@ -13,25 +13,38 @@
       <attribute id="5" title="comunidade" type="long" />
     </attributes>
     <nodes>
-      <node id="Agência Brasil" label="Agência Brasil">
-        <viz:color r="200" g="16" b="46" a="1.0" />
-        <viz:size value="5.549647869859769" />
-        <viz:position x="0.0" y="-837.2" z="0.0" />
+      <node id="CNN Brasil" label="CNN Brasil">
+        <viz:color r="130" g="67" b="51" a="1.0" />
+        <viz:size value="5.286335345030997" />
+        <viz:position x="0.0" y="-850.0" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="agenciabrasil.ebc.com.br" />
-          <attvalue for="1" value="7" />
-          <attvalue for="2" value="7" />
+          <attvalue for="0" value="cnnbrasil.com.br" />
+          <attvalue for="1" value="6" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="1" />
+          <attvalue for="4" value="0.583" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="G1" label="G1">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="6.242640687119286" />
+        <viz:position x="37.8" y="-216.4" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="g1.globo.com" />
+          <attvalue for="1" value="10" />
+          <attvalue for="2" value="10" />
           <attvalue for="3" value="0" />
           <attvalue for="4" value="1.0" />
           <attvalue for="5" value="1" />
         </attvalues>
       </node>
-      <node id="Partido dos Trabalhadores" label="Partido dos Trabalhadores">
+      <node id="Governo Federal" label="Governo Federal">
         <viz:color r="200" g="16" b="46" a="1.0" />
         <viz:size value="4.683281572999748" />
-        <viz:position x="1000.0" y="-0.0" z="0.0" />
+        <viz:position x="50.7" y="-0.0" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="pt.org.br" />
+          <attvalue for="0" value="gov.br" />
           <attvalue for="1" value="4" />
           <attvalue for="2" value="4" />
           <attvalue for="3" value="0" />
@@ -39,36 +52,38 @@
           <attvalue for="5" value="1" />
         </attvalues>
       </node>
-      <node id="Poder360" label="Poder360">
-        <viz:color r="143" g="57" b="50" a="1.0" />
-        <viz:size value="6.024922359499621" />
-        <viz:position x="250.0" y="-970.0" z="0.0" />
+      <node id="TV Sim Brasil" label="TV Sim Brasil">
+        <viz:color r="108" g="82" b="53" a="1.0" />
+        <viz:size value="4.683281572999748" />
+        <viz:position x="10.8" y="-668.3" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="poder360.com.br" />
-          <attvalue for="1" value="9" />
-          <attvalue for="2" value="8" />
+          <attvalue for="0" value="tvsimbrasil.com.br" />
+          <attvalue for="1" value="4" />
+          <attvalue for="2" value="3" />
           <attvalue for="3" value="1" />
-          <attvalue for="4" value="0.662" />
+          <attvalue for="4" value="0.456" />
           <attvalue for="5" value="2" />
         </attvalues>
       </node>
-      <node id="VEJA" label="VEJA">
+      <node id="UOL Notícias" label="UOL Notícias">
         <viz:color r="200" g="16" b="46" a="1.0" />
-        <viz:size value="5.286335345030997" />
-        <viz:position x="750.0" y="-970.0" z="0.0" />
+        <viz:size value="5.549647869859769" />
+        <viz:position x="24.0" y="-447.8" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="veja.abril.com.br" />
-          <attvalue for="1" value="6" />
-          <attvalue for="2" value="6" />
+          <attvalue for="0" value="noticias.uol.com.br" />
+          <attvalue for="1" value="7" />
+          <attvalue for="2" value="7" />
           <attvalue for="3" value="0" />
           <attvalue for="4" value="1.0" />
-          <attvalue for="5" value="2" />
+          <attvalue for="5" value="1" />
         </attvalues>
       </node>
     </nodes>
     <edges>
-      <edge source="Agência Brasil" target="Partido dos Trabalhadores" id="0" weight="0.1687" />
-      <edge source="Poder360" target="VEJA" id="1" weight="0.2631" />
+      <edge source="CNN Brasil" target="TV Sim Brasil" id="0" weight="0.2542" />
+      <edge source="G1" target="UOL Notícias" id="1" weight="0.1898" />
+      <edge source="G1" target="Governo Federal" id="2" weight="0.1587" />
+      <edge source="TV Sim Brasil" target="UOL Notícias" id="3" weight="0.2164" />
     </edges>
   </graph>
 </gexf>
