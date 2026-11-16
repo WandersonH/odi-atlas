@@ -3,22 +3,24 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="imprensa:Pipoca Moderna" label="Pipoca Moderna"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: Nikolas Ferreira Nordeste vídeo" label="notícia: Nikolas Ferreira Nordeste vídeo"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="7"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="imprensa:Pipoca Moderna" label="Pipoca Moderna"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="notícia: Nikolas Nordeste esquecido" label="notícia: Nikolas Nordeste esquecido"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
 <node id="imprensa:Revista Fórum" label="Revista Fórum"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="notícia: Nikolas Ferreira Nordeste vídeo" label="notícia: Nikolas Ferreira Nordeste vídeo"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="7"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:GP1" label="GP1"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Varela Net" label="Varela Net"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:UOL Notícias" label="UOL Notícias"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Click Sergipe" label="Click Sergipe"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="notícia: Nikolas Nordeste esquecido" label="notícia: Nikolas Nordeste esquecido"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="imprensa:YouTube" label="YouTube"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:Pipoca Moderna" target="notícia: Nikolas Ferreira Nordeste vídeo" weight="1"/>
+<edge id="0" source="imprensa:Pipoca Moderna" target="notícia: Nikolas Nordeste esquecido" weight="1"/>
 <edge id="1" source="imprensa:Revista Fórum" target="notícia: Nikolas Ferreira Nordeste vídeo" weight="1"/>
 <edge id="2" source="imprensa:GP1" target="notícia: Nikolas Ferreira Nordeste vídeo" weight="2"/>
 <edge id="3" source="imprensa:Varela Net" target="notícia: Nikolas Ferreira Nordeste vídeo" weight="1"/>
 <edge id="4" source="imprensa:UOL Notícias" target="notícia: Nikolas Ferreira Nordeste vídeo" weight="1"/>
 <edge id="5" source="imprensa:Click Sergipe" target="notícia: Nikolas Ferreira Nordeste vídeo" weight="1"/>
 <edge id="6" source="imprensa:Click Sergipe" target="notícia: Nikolas Nordeste esquecido" weight="1"/>
+<edge id="7" source="imprensa:YouTube" target="notícia: Nikolas Ferreira Nordeste vídeo" weight="1"/>
 </edges>
 </graph>
 </gexf>

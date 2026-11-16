@@ -1,5 +1,5 @@
 {
- "gerado_em_utc": "2026-11-15T17:33:00Z",
+ "gerado_em_utc": "2026-11-16T20:16:12Z",
  "caso": "016",
  "titulo": "\"Queime seu título\": chamados para queimar ou destruir o título de eleitor depois do 2º turno",
  "pergunta": "Depois do 2º turno (25/10/2026), quanto circularam vídeos e chamados para queimar, rasgar ou destruir o título de eleitor? Em que redes, com que pico, e com que sentido (chamado, relato do ato, descrédito do voto, deboche, informação legal)?",
@@ -170,13 +170,13 @@
    "no_periodo": 995,
    "na_analise": 514,
    "pct": null,
-   "termos_buscados": 56,
+   "termos_buscados": 60,
    "termos_no_limite": [],
    "como": "busca por termo na plataforma (Apify ou página pública), na ordem que a plataforma devolve, até o limite por termo; depois, filtro de período e de termo; duplicados unidos",
    "avisos": [
     "⛔ nada no período"
    ],
-   "origem": "data/casos/016/manifesto-20261112T190706Z.json, manifesto-20261113T184401Z.json, manifesto-20261114T171557Z.json"
+   "origem": "data/casos/016/manifesto-20261113T184401Z.json, manifesto-20261114T171557Z.json, manifesto-20261115T175511Z.json"
   },
   {
    "fonte": "Instagram",
@@ -240,18 +240,18 @@
    "avisos": [
     "⛔ teto da rede esgotado"
    ],
-   "origem": "data/casos/016/manifesto-20261112T185543Z.json, manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json"
+   "origem": "data/casos/016/manifesto-20261113T183236Z.json, manifesto-20261114T170448Z.json, manifesto-20261115T174359Z.json"
   },
   {
    "fonte": "YouTube",
    "universo": "⛔ desconhecido: a YouTube Data API não informa o total exato (devolve até 100 vídeos por consulta)",
-   "lidos": 13,
-   "no_periodo": 13,
-   "na_analise": 13,
+   "lidos": 4,
+   "no_periodo": 4,
+   "na_analise": 4,
    "pct": null,
    "como": "busca da YouTube Data API por consulta, desde a data do caso, filtrada pelo título e descrição; Busca da YouTube Data API (até 100 vídeos por consulta) filtrada pelo título/descrição. Só aparecem com nome canais com 10.000 inscritos ou mais; os demais entram nas somas. A busca não garante todos os vídeos: o total é um piso.",
    "origem": "data/casos/016/busca.json (youtube)",
-   "coletado_em": "2026-11-15T16:42:18Z"
+   "coletado_em": "2026-11-16T19:33:00Z"
   },
   {
    "fonte": "Google Notícias",
@@ -262,7 +262,7 @@
    "pct": null,
    "como": "RSS do Google Notícias por consulta e edição de país, filtrado pelo título; duplicados unidos",
    "origem": "data/casos/016/busca.json (noticias)",
-   "coletado_em": "2026-11-15T16:42:18Z"
+   "coletado_em": "2026-11-16T19:33:00Z"
   },
   {
    "fonte": "Google Trends",
@@ -271,12 +271,12 @@
    "no_periodo": null,
    "na_analise": null,
    "pct": null,
-   "como": "índice semanal/diário por janela (today 1-m, today 12-m), termos: queimar título de eleitor, queimar título, destruir título de eleitor, rasgar título de eleitor",
+   "como": "índice semanal/diário por janela (today 12-m), termos: queimar título de eleitor, queimar título, destruir título de eleitor, rasgar título de eleitor",
    "avisos": [
     "trends variantes now 7-d: HTTPError: HTTP Error 429: Too Many Requests"
    ],
    "origem": "data/casos/016/busca.json (trends)",
-   "coletado_em": "2026-11-15T16:42:18Z"
+   "coletado_em": "2026-11-16T19:33:00Z"
   }
  ],
  "fontes_contexto": []

@@ -3,14 +3,12 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="imprensa:Folha Vitória" label="Folha Vitória"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: &quot;vote como um brasileiro&quot;" label="notícia: &quot;vote como um brasileiro&quot;"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Observatório do Terceiro Setor" label="Observatório do Terceiro Setor"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="notícia: &quot;vote como um brasileiro&quot;" label="notícia: &quot;vote como um brasileiro&quot;"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Terra" label="Terra"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:Folha Vitória" target="notícia: &quot;vote como um brasileiro&quot;" weight="1"/>
-<edge id="1" source="imprensa:Observatório do Terceiro Setor" target="notícia: &quot;vote como um brasileiro&quot;" weight="1"/>
-<edge id="2" source="imprensa:Terra" target="notícia: &quot;vote como um brasileiro&quot;" weight="1"/>
+<edge id="0" source="imprensa:Observatório do Terceiro Setor" target="notícia: &quot;vote como um brasileiro&quot;" weight="1"/>
+<edge id="1" source="imprensa:Terra" target="notícia: &quot;vote como um brasileiro&quot;" weight="1"/>
 </edges>
 </graph>
 </gexf>

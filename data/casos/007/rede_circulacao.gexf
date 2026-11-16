@@ -3,15 +3,7 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="imprensa:O POVO" label="O POVO"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="notícia: Lula bandeira do Brasil" label="notícia: Lula bandeira do Brasil"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="imprensa:Checamos AFP" label="Checamos AFP"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: Lula amassa bandeira" label="notícia: Lula amassa bandeira"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="imprensa:Reuters" label="Reuters"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:O POVO" target="notícia: Lula bandeira do Brasil" weight="1"/>
-<edge id="1" source="imprensa:Checamos AFP" target="notícia: Lula amassa bandeira" weight="1"/>
-<edge id="2" source="imprensa:Reuters" target="notícia: Lula amassa bandeira" weight="1"/>
 </edges>
 </graph>
 </gexf>

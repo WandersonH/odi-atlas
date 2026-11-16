@@ -3,13 +3,10 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="imprensa:O GLOBO" label="O GLOBO"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: Flávio Bolsonaro CPAC" label="notícia: Flávio Bolsonaro CPAC"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="imprensa:www.cpac.org" label="www.cpac.org"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="notícia: Bolsonaro CPAC Mar-a-Lago" label="notícia: Bolsonaro CPAC Mar-a-Lago"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="imprensa:www.cpac.org" label="www.cpac.org"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="notícia: Bolsonaro CPAC Mar-a-Lago" label="notícia: Bolsonaro CPAC Mar-a-Lago"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:O GLOBO" target="notícia: Flávio Bolsonaro CPAC" weight="1"/>
-<edge id="1" source="imprensa:www.cpac.org" target="notícia: Bolsonaro CPAC Mar-a-Lago" weight="1"/>
+<edge id="0" source="imprensa:www.cpac.org" target="notícia: Bolsonaro CPAC Mar-a-Lago" weight="1"/>
 </edges>
 </graph>
 </gexf>
