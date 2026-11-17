@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "coletado_em_utc": "2026-11-17T08:03:37Z",
+ "coletado_em_utc": "2026-11-17T21:02:15Z",
  "fonte": "Google Fact Check Tools API (claims:search, ClaimReview)",
  "consultas": [
   "Lula",
@@ -13,28 +13,28 @@
  "idioma": "pt",
  "janela_dias": 400,
  "debate_inicio": "2026-10-18",
- "total": 712,
- "desde_o_debate": 93,
+ "total": 709,
+ "desde_o_debate": 96,
  "por_agencia": [
   [
    "Aos Fatos",
-   184
+   182
   ],
   [
    "UOL Notícias",
-   179
+   171
   ],
   [
    "AFP Checamos",
-   148
+   158
   ],
   [
    "Estadão",
-   147
+   143
   ],
   [
    "Observador",
-   21
+   22
   ],
   [
    "Projeto Comprova",
@@ -52,11 +52,11 @@
  "rotulos": [
   [
    "falso",
-   505
+   491
   ],
   [
    "enganoso",
-   112
+   119
   ],
   [
    "distorcido",
@@ -64,15 +64,15 @@
   ],
   [
    "errado",
-   19
-  ],
-  [
-   "fora de contexto",
-   13
+   20
   ],
   [
    "nao_e_bem_assim",
-   12
+   14
+  ],
+  [
+   "fora de contexto",
+   14
   ],
   [
    "verdadeiro",
@@ -103,12 +103,12 @@
  "por_candidato": {
   "Lula": {
    "citam": {
-    "Falso": 349,
-    "Enganoso ou fora de contexto": 132,
+    "Falso": 339,
+    "Enganoso ou fora de contexto": 140,
     "Verdadeiro": 3,
     "Outros ou sem rótulo": 2
    },
-   "citam_total": 486,
+   "citam_total": 484,
    "ditas_pelo_candidato": {
     "Falso": 1,
     "Enganoso ou fora de contexto": 1,
@@ -119,24 +119,67 @@
   },
   "Flávio Bolsonaro": {
    "citam": {
-    "Falso": 188,
-    "Enganoso ou fora de contexto": 49,
+    "Falso": 185,
+    "Enganoso ou fora de contexto": 48,
     "Verdadeiro": 3,
     "Outros ou sem rótulo": 2
    },
-   "citam_total": 242,
+   "citam_total": 238,
    "ditas_pelo_candidato": {
     "Falso": 5,
-    "Enganoso ou fora de contexto": 3,
+    "Enganoso ou fora de contexto": 4,
     "Verdadeiro": 2,
     "Outros ou sem rótulo": 0
    },
-   "ditas_total": 10
+   "ditas_total": 11
   }
  },
  "status": "ok",
  "nota": "Rótulos e textos são das agências de checagem; o Atlas não dá veredito. A API só traz checagens marcadas em ClaimReview.",
  "itens": [
+  {
+   "afirmacao": "Flávio Bolsonaro no aeroporto após derrota no segundo turno.",
+   "quem_disse": "Utilizador de Facebook",
+   "data_afirmacao": "2026-10-26",
+   "agencia": "Observador",
+   "site": "observador.pt",
+   "titulo": "Flávio Bolsonaro visto no aeroporto após perder eleições ...",
+   "url": "https://observador.pt/factchecks/fact-check-imagens-mostram-flavio-bolsonaro-no-aeroporto-com-a-familia-depois-de-ser-derrotado-por-lula-da-silva/",
+   "data_checagem": "2026-11-17",
+   "rotulo": "Errado",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro",
+    "Lula"
+   ],
+   "candidatos": [
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Marco Rubio diz que o Departamento de Estado dos Estados Unidos confirmou que Lula conspirou contra os EUA em reunião com o Irã.",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-11-17",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "É falso post em que Marco Rubio acusa Lula de conspirar contra os ...",
+   "url": "https://www.aosfatos.org/noticias/falso-post-marco-rubio-lula-conspirar-eua-ira/",
+   "data_checagem": "2026-11-17",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
   {
    "afirmacao": "Foto mostra Lula com dez dedos na COP31, na Turquia",
    "quem_disse": "desinformação",
@@ -201,13 +244,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Governo Lula confirma que PixMEI de R$ 5 mil deverá ser pago apenas em 2030 e não será para todos os MEIs",
+   "afirmacao": "Lula começou a trabalhar pelo povo! Pente fino no INSS aposentado tem que devolver dinheiro das aposentadoria.",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-11-13",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que pagamento do Pix MEI só começa em 2030",
-   "url": "https://www.aosfatos.org/noticias/pagamento-pix-mei/",
+   "titulo": "Reportagem sobre pente-fino no INSS não é atual, mas de 2016",
+   "url": "https://www.aosfatos.org/noticias/reportagem-pente-fino-inss-2016/",
    "data_checagem": "2026-11-13",
    "rotulo": "falso",
    "idioma": "pt",
@@ -222,13 +265,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula começou a trabalhar pelo povo! Pente fino no INSS aposentado tem que devolver dinheiro das aposentadoria.",
+   "afirmacao": "Governo Lula confirma que PixMEI de R$ 5 mil deverá ser pago apenas em 2030 e não será para todos os MEIs",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-11-13",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Reportagem sobre pente-fino no INSS não é atual, mas de 2016",
-   "url": "https://www.aosfatos.org/noticias/reportagem-pente-fino-inss-2016/",
+   "titulo": "É falso que pagamento do Pix MEI só começa em 2030",
+   "url": "https://www.aosfatos.org/noticias/pagamento-pix-mei/",
    "data_checagem": "2026-11-13",
    "rotulo": "falso",
    "idioma": "pt",
@@ -347,20 +390,19 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "O presidente Donald Trump, afirma em rede sociais que Lula não assumirá a presidência do Brasil! E que o Flávio assumirá a presidência do nosso Brasil",
+   "afirmacao": "Trump ligou para Lula e disse que quer mandar Flávio Bolsonaro de volta ao Brasil",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-11-10",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Trump não disse que Flávio vai assumir Presidência no lugar de Lula",
-   "url": "https://www.aosfatos.org/noticias/trump-flavio-assumir-presidencia-lula/",
+   "titulo": "É falso que Trump ligou para Lula para dizer que pretende extraditar Flávio",
+   "url": "https://www.aosfatos.org/noticias/trump-lula-extraditar-flavio/",
    "data_checagem": "2026-11-10",
    "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
     "Flávio Bolsonaro",
-    "Lula",
-    "eleições 2026"
+    "Lula"
    ],
    "candidatos": [
     "Lula",
@@ -392,19 +434,20 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Trump ligou para Lula e disse que quer mandar Flávio Bolsonaro de volta ao Brasil",
+   "afirmacao": "O presidente Donald Trump, afirma em rede sociais que Lula não assumirá a presidência do Brasil! E que o Flávio assumirá a presidência do nosso Brasil",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-11-10",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que Trump ligou para Lula para dizer que pretende extraditar Flávio",
-   "url": "https://www.aosfatos.org/noticias/trump-lula-extraditar-flavio/",
+   "titulo": "Trump não disse que Flávio vai assumir Presidência no lugar de Lula",
+   "url": "https://www.aosfatos.org/noticias/trump-flavio-assumir-presidencia-lula/",
    "data_checagem": "2026-11-10",
    "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
     "Flávio Bolsonaro",
-    "Lula"
+    "Lula",
+    "eleições 2026"
    ],
    "candidatos": [
     "Lula",
@@ -478,27 +521,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra servidores do INSS criticando Lula após eleições",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-11-06",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Vídeo de servidores do INSS criticando Lula é de 2024, não de 2026",
-   "url": "https://www.aosfatos.org/noticias/servidores-inss-criticando-lula/",
-   "data_checagem": "2026-11-06",
-   "rotulo": "não_é_bem_assim",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": true,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "PEC da Segurança Pública dá o controle total das polícias para Lula",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-11-06",
@@ -517,6 +539,27 @@
    ],
    "desde_o_debate": true,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Vídeo mostra servidores do INSS criticando Lula após eleições",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-11-06",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Vídeo de servidores do INSS criticando Lula é de 2024, não de 2026",
+   "url": "https://www.aosfatos.org/noticias/servidores-inss-criticando-lula/",
+   "data_checagem": "2026-11-06",
+   "rotulo": "não_é_bem_assim",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -604,13 +647,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Declaração: Cidades que até os mortos votaram em Lula: Porto da Pedra, Pernambuco, habitantes 6.122, Lula 8.090 votos. Poço das Antas, Pernambuco, habitantes 4.342, Lula 5.873 votos. Xique-Xique, Bahia, habitantes Lula, 64.805 votos. Barragem, Bahia. Habitantes, 25.687. Lula, 31.338 votos. Nova Liberdade, Bahia. Habitantes, 11.026. Lula, 16.192 votos. Nova Açores, Bahia. Habitantes, 9.622. Lula, 12.351 votos. Guanambim, Bahia. habitantes 19.764, Lula 22.538 votos, Joaçaba, Bahia, habitantes 6.142, Lula 6.984 votos, Antas, Bahia, habitantes 11.434, Lula 18.001 votos.",
+   "afirmacao": "Enquanto Lula e Janja se lançam em nova tour internacional, com o fruto no “NOSSO TRABALHO”, moradores de Fortaleza procuram comida no CAMINHÃO DE LIXO.",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-11-05",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falsa lista de cidades que registraram mais votos que habitantes",
-   "url": "https://www.aosfatos.org/noticias/lista-cidades-mais-votos-que-habitantes/",
+   "titulo": "Vídeo de pessoas buscando comida em caminhão de lixo não é posterior à reeleição de Lula",
+   "url": "https://www.aosfatos.org/noticias/video-pessoas-buscam-comida-caminhao-lixo-reeleicao-lula/",
    "data_checagem": "2026-11-05",
    "rotulo": "falso",
    "idioma": "pt",
@@ -625,13 +668,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Enquanto Lula e Janja se lançam em nova tour internacional, com o fruto no “NOSSO TRABALHO”, moradores de Fortaleza procuram comida no CAMINHÃO DE LIXO.",
+   "afirmacao": "Declaração: Cidades que até os mortos votaram em Lula: Porto da Pedra, Pernambuco, habitantes 6.122, Lula 8.090 votos. Poço das Antas, Pernambuco, habitantes 4.342, Lula 5.873 votos. Xique-Xique, Bahia, habitantes Lula, 64.805 votos. Barragem, Bahia. Habitantes, 25.687. Lula, 31.338 votos. Nova Liberdade, Bahia. Habitantes, 11.026. Lula, 16.192 votos. Nova Açores, Bahia. Habitantes, 9.622. Lula, 12.351 votos. Guanambim, Bahia. habitantes 19.764, Lula 22.538 votos, Joaçaba, Bahia, habitantes 6.142, Lula 6.984 votos, Antas, Bahia, habitantes 11.434, Lula 18.001 votos.",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-11-05",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Vídeo de pessoas buscando comida em caminhão de lixo não é posterior à reeleição de Lula",
-   "url": "https://www.aosfatos.org/noticias/video-pessoas-buscam-comida-caminhao-lixo-reeleicao-lula/",
+   "titulo": "É falsa lista de cidades que registraram mais votos que habitantes",
+   "url": "https://www.aosfatos.org/noticias/lista-cidades-mais-votos-que-habitantes/",
    "data_checagem": "2026-11-05",
    "rotulo": "falso",
    "idioma": "pt",
@@ -731,6 +774,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Lula teve votos acima do número de habitantes em centenas de cidades",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-11-02",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Lista de cidades com “mais votos em Lula que habitantes” é falsa e circula desde 2022",
+   "url": "https://checamos.afp.com/doc.afp.com.D6EQ9WF",
+   "data_checagem": "2026-11-04",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Professores fazem greve três dias após as eleições contra Lula",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-10-28",
@@ -770,27 +834,6 @@
    ],
    "desde_o_debate": true,
    "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Lula teve votos acima do número de habitantes em centenas de cidades",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-11-02",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Lista de cidades com “mais votos em Lula que habitantes” é falsa e circula desde 2022",
-   "url": "https://checamos.afp.com/doc.afp.com.D6EQ9WF",
-   "data_checagem": "2026-11-04",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": true,
-   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -941,13 +984,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Cancelamento do Bolsa Família já começou após vitória do Lula",
+   "afirmacao": "Governo Lula bloqueia auxílio gás até dezembro após as eleições",
    "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-10-27",
+   "data_afirmacao": "2026-10-29",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Reportagens antigas sobre cortes no Bolsa Família circulam como se fossem de 2026",
-   "url": "https://checamos.afp.com/doc.afp.com.D4Y6863",
+   "titulo": "Reportagens antigas são usadas para alegar falsamente que benefício de gás será bloqueado até dezembro",
+   "url": "https://checamos.afp.com/doc.afp.com.D4Y93G3",
    "data_checagem": "2026-10-30",
    "rotulo": "Falso",
    "idioma": "pt",
@@ -962,18 +1005,19 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Governo Lula bloqueia auxílio gás até dezembro após as eleições",
+   "afirmacao": "Cancelamento do Bolsa Família já começou após vitória do Lula",
    "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-10-29",
+   "data_afirmacao": "2026-10-27",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Reportagens antigas são usadas para alegar falsamente que benefício de gás será bloqueado até dezembro",
-   "url": "https://checamos.afp.com/doc.afp.com.D4Y93G3",
+   "titulo": "Reportagens antigas sobre cortes no Bolsa Família circulam como se fossem de 2026",
+   "url": "https://checamos.afp.com/doc.afp.com.D4Y6863",
    "data_checagem": "2026-10-30",
    "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
-    "Lula"
+    "Lula",
+    "eleições 2026"
    ],
    "candidatos": [
     "Lula"
@@ -1085,27 +1129,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "PROFESSORES PETISTAS ENTRAM EM GREVE EM MENOS DE TRÊS DIAS APÓS ELEIÇÕES, DEPOIS QUE LULA ANUNCIOU CORTE DE 6 BILHÕES NA EDUCAÇÃO",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-10-29",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Vídeo mostra protesto de professores em setembro, não após reeleição de Lula",
-   "url": "https://www.aosfatos.org/noticias/video-protesto-professores-setembro/",
-   "data_checagem": "2026-10-29",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": true,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Governo Lula prevê cortes de 670 mil benefícios do BPC",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-29",
@@ -1127,22 +1150,44 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Submetemos o conjunto de 499.205 seções eleitorais ao teste forense do primeiro dígito significativo de Benford, uma ferramenta matemática consagrada internacionalmente para detectar manipulação",
+   "afirmacao": "PROFESSORES PETISTAS ENTRAM EM GREVE EM MENOS DE TRÊS DIAS APÓS ELEIÇÕES, DEPOIS QUE LULA ANUNCIOU CORTE DE 6 BILHÕES NA EDUCAÇÃO",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-29",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Relatório apócrifo distorce microdados do TSE para alegar fraude ...",
+   "titulo": "Vídeo mostra protesto de professores em setembro, não após reeleição de Lula",
+   "url": "https://www.aosfatos.org/noticias/video-protesto-professores-setembro/",
+   "data_checagem": "2026-10-29",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "A eleição regulamentar até às 17h00 foi vencida por Flávio Bolsonaro",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-10-29",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Relatório apócrifo distorce microdados do TSE para alegar fraude eleitoral",
    "url": "https://www.aosfatos.org/noticias/relatorio-fraude-eleitoral-distorce-dados-omite-fatos/",
    "data_checagem": "2026-10-29",
    "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
     "Flávio Bolsonaro",
-    "Lula",
     "eleições 2026"
    ],
-   "candidatos": [],
+   "candidatos": [
+    "Flávio Bolsonaro"
+   ],
    "desde_o_debate": true,
    "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
@@ -1167,27 +1212,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Governo Lula anuncia corte de quase R$ 6 Bilhões na Saúde e Educação",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-10-27",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Lula não cortou 6 bilhões da Saúde e Educação após ser reeleito; reportagem viral é de 2024",
-   "url": "https://checamos.afp.com/doc.afp.com.D4VF6NQ",
-   "data_checagem": "2026-10-29",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": true,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula teve 165 mil votos sem origem no 2º turno",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-10-25",
@@ -1201,6 +1225,27 @@
    "consulta": [
     "Lula",
     "eleições 2026"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Governo Lula anuncia corte de quase R$ 6 Bilhões na Saúde e Educação",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-10-27",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Lula não cortou 6 bilhões da Saúde e Educação após ser reeleito; reportagem viral é de 2024",
+   "url": "https://checamos.afp.com/doc.afp.com.D4VF6NQ",
+   "data_checagem": "2026-10-29",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
    ],
    "candidatos": [
     "Lula"
@@ -1252,13 +1297,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Homem mostra que conta do TSE não fechava e dava vantagem de Lula",
+   "afirmacao": "Governo Lula bloqueou recursos que seriam destinados ao Auxílio-gás de dezembro",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-28",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Vídeo não prova que Lula teve 165 mil votos de origem não identificada",
-   "url": "https://www.aosfatos.org/noticias/lula-165-mil-votos-origem-nao-identificada/",
+   "titulo": "Governo Lula não suspendeu pagamento de dezembro do Gás do Povo",
+   "url": "https://www.aosfatos.org/noticias/governo-lula-pagamento-dezembro-gas-do-povo/",
    "data_checagem": "2026-10-28",
    "rotulo": "falso",
    "idioma": "pt",
@@ -1273,13 +1318,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Governo Lula bloqueou recursos que seriam destinados ao Auxílio-gás de dezembro",
+   "afirmacao": "Homem mostra que conta do TSE não fechava e dava vantagem de Lula",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-28",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Governo Lula não suspendeu pagamento de dezembro do Gás do Povo",
-   "url": "https://www.aosfatos.org/noticias/governo-lula-pagamento-dezembro-gas-do-povo/",
+   "titulo": "Vídeo não prova que Lula teve 165 mil votos de origem não identificada",
+   "url": "https://www.aosfatos.org/noticias/lula-165-mil-votos-origem-nao-identificada/",
    "data_checagem": "2026-10-28",
    "rotulo": "falso",
    "idioma": "pt",
@@ -1379,27 +1424,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Passada a eleição, governo Lula recua e vai manter escala 6x1 para vários setores",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-10-27",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "É falso que Lula recuou sobre fim da escala 6x1",
-   "url": "https://www.aosfatos.org/noticias/Lula-fim-escala-6x1/",
-   "data_checagem": "2026-10-27",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": true,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Prorrogação da votação no segundo turno ajudou a eleger Lula.",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-27",
@@ -1412,8 +1436,28 @@
    "idioma": "pt",
    "consulta": [
     "Lula",
-    "eleições 2026",
-    "urna eletrônica"
+    "eleições 2026"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Passada a eleição, governo Lula recua e vai manter escala 6x1 para vários setores",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-10-27",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "É falso que Lula recuou sobre fim da escala 6x1",
+   "url": "https://www.aosfatos.org/noticias/Lula-fim-escala-6x1/",
+   "data_checagem": "2026-10-27",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
    ],
    "candidatos": [
     "Lula"
@@ -1444,6 +1488,25 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Erro da Justiça Eleitoral impede votos de dezenas de brasileiros em Londres no segundo turno",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-10-25",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Notícia da CNN sobre eleitores impedidos de votar em Londres foi ...",
+   "url": "https://checamos.afp.com/doc.afp.com.D4L78WE",
+   "data_checagem": "2026-10-27",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "eleições 2026"
+   ],
+   "candidatos": [],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Transporte de urnas em meio a divulgação de resultados indica fraude",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-10-25",
@@ -1459,6 +1522,27 @@
     "urna eletrônica"
    ],
    "candidatos": [],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Vídeo mostra presos comemorando reeleição de Lula neste domingo",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-10-26",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Vídeo mostra presos comemorando gol do Santa Cruz, não reeleição de Lula",
+   "url": "https://www.aosfatos.org/noticias/presos-comemorando-gol-santa-cruz-lula/",
+   "data_checagem": "2026-10-26",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
    "desde_o_debate": true,
    "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
@@ -1509,27 +1593,6 @@
    "desde_o_debate": true,
    "grupo_rotulo": "Falso",
    "dito_pelo_candidato": "Flávio Bolsonaro"
-  },
-  {
-   "afirmacao": "Vídeo mostra presos comemorando reeleição de Lula neste domingo",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-10-26",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Vídeo mostra presos comemorando gol do Santa Cruz, não reeleição de Lula",
-   "url": "https://www.aosfatos.org/noticias/presos-comemorando-gol-santa-cruz-lula/",
-   "data_checagem": "2026-10-26",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": true,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
   },
   {
    "afirmacao": "Flávio viajou para os EUA depois das eleições.",
@@ -1830,13 +1893,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Médicos de Lula se assustaram com o resultado dos seus exames em outubro de 2026",
-   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
-   "data_afirmacao": "2026-10-16",
+   "afirmacao": "Folha publica extrato bancário de Lula com R$ 300 bilhões em propina",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-10-21",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Vídeo de 2024 sobre boletim médico de Lula circula fora de contexto às vésperas do segundo turno",
-   "url": "https://checamos.afp.com/doc.afp.com.D4A47CQ",
+   "titulo": "Folha não publicou capa sobre suposto extrato bancário de Lula",
+   "url": "https://checamos.afp.com/doc.afp.com.D49Z3ZQ",
    "data_checagem": "2026-10-23",
    "rotulo": "Falso",
    "idioma": "pt",
@@ -1851,13 +1914,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Folha publica extrato bancário de Lula com R$ 300 bilhões em propina",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-10-21",
+   "afirmacao": "Médicos de Lula se assustaram com o resultado dos seus exames em outubro de 2026",
+   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
+   "data_afirmacao": "2026-10-16",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Folha não publicou capa sobre suposto extrato bancário de Lula",
-   "url": "https://checamos.afp.com/doc.afp.com.D49Z3ZQ",
+   "titulo": "Vídeo de 2024 sobre boletim médico de Lula circula fora de contexto às vésperas do segundo turno",
+   "url": "https://checamos.afp.com/doc.afp.com.D4A47CQ",
    "data_checagem": "2026-10-23",
    "rotulo": "Falso",
    "idioma": "pt",
@@ -2040,6 +2103,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Governo Lula avalia a possibilidade de encerrar o programa Bolsa Família",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-10-06",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Posts distorcem matéria de 2025 para alegar que governo Lula quer acabar com o Bolsa Família",
+   "url": "https://checamos.afp.com/doc.afp.com.D3RQ9WF",
+   "data_checagem": "2026-10-19",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": true,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Imagem mostra Flávio Bolsonaro na capa da revista IstoÉ como o \"anti-Lula\"",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-10-14",
@@ -2057,27 +2141,6 @@
    "candidatos": [
     "Lula",
     "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": true,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Governo Lula avalia a possibilidade de encerrar o programa Bolsa Família",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-10-06",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Posts distorcem matéria de 2025 para alegar que governo Lula quer acabar com o Bolsa Família",
-   "url": "https://checamos.afp.com/doc.afp.com.D3RQ9WF",
-   "data_checagem": "2026-10-19",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
    ],
    "desde_o_debate": true,
    "grupo_rotulo": "Falso",
@@ -2357,13 +2420,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "CNN noticiou que governo Lula avalia acabar com o Bolsa Família",
+   "afirmacao": "PCC e CV declararam apoio a Lula no segundo turno",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-09",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que governo Lula avalia extinguir Bolsa Família",
-   "url": "https://www.aosfatos.org/noticias/governo-lula-extinguir-bolsa-familia/",
+   "titulo": "É falso que PCC e CV declararam apoio a Lula",
+   "url": "https://www.aosfatos.org/noticias/pcc-comando-vermelho-apoio-lula-falso/",
    "data_checagem": "2026-10-09",
    "rotulo": "falso",
    "idioma": "pt",
@@ -2378,13 +2441,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "PCC e CV declararam apoio a Lula no segundo turno",
+   "afirmacao": "CNN noticiou que governo Lula avalia acabar com o Bolsa Família",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-09",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que PCC e CV declararam apoio a Lula",
-   "url": "https://www.aosfatos.org/noticias/pcc-comando-vermelho-apoio-lula-falso/",
+   "titulo": "É falso que governo Lula avalia extinguir Bolsa Família",
+   "url": "https://www.aosfatos.org/noticias/governo-lula-extinguir-bolsa-familia/",
    "data_checagem": "2026-10-09",
    "rotulo": "falso",
    "idioma": "pt",
@@ -2420,6 +2483,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Cleitinho mostra áudio de Flávio Bolsonaro sobre tirar Padroeira do Brasil",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-09-26",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Cleitinho não reproduziu áudio de Flávio Bolsonaro sobre tirar Padroeira do Brasil; vídeo é montagem",
+   "url": "https://checamos.afp.com/doc.afp.com.D2TQ6ZR",
+   "data_checagem": "2026-10-09",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro"
+   ],
+   "candidatos": [
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Mapa mostra que Flávio Bolsonaro ganhou a eleição com 54,98%",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-10-05",
@@ -2435,27 +2519,6 @@
    ],
    "candidatos": [
     "Lula",
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Cleitinho mostra áudio de Flávio Bolsonaro sobre tirar Padroeira do Brasil",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-09-26",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Cleitinho não reproduziu áudio de Flávio Bolsonaro sobre tirar Padroeira do Brasil; vídeo é montagem",
-   "url": "https://checamos.afp.com/doc.afp.com.D2TQ6ZR",
-   "data_checagem": "2026-10-09",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
     "Flávio Bolsonaro"
    ],
    "desde_o_debate": false,
@@ -2484,13 +2547,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "g1 noticiou declaração de teor pedófilo atribuída a Lula",
+   "afirmacao": "Vídeo mostra urna sendo substituída por outra já com votos em Lula",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-08",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Montagem simula ‘g1’ para difundir declaração falsa que associa Lula à pedofilia",
-   "url": "https://www.aosfatos.org/noticias/montagem-g1-declaracao-falsa-lula-pedofilia/",
+   "titulo": "É falso que vídeo mostra urna sendo trocada por outra com votos para Lula no RN",
+   "url": "https://www.aosfatos.org/noticias/urna-trocada-votos-lula-rn/",
    "data_checagem": "2026-10-08",
    "rotulo": "falso",
    "idioma": "pt",
@@ -2505,13 +2568,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra urna sendo substituída por outra já com votos em Lula",
+   "afirmacao": "g1 noticiou declaração de teor pedófilo atribuída a Lula",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-08",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que vídeo mostra urna sendo trocada por outra com votos para Lula no RN",
-   "url": "https://www.aosfatos.org/noticias/urna-trocada-votos-lula-rn/",
+   "titulo": "Montagem simula ‘g1’ para difundir declaração falsa que associa Lula à pedofilia",
+   "url": "https://www.aosfatos.org/noticias/montagem-g1-declaracao-falsa-lula-pedofilia/",
    "data_checagem": "2026-10-08",
    "rotulo": "falso",
    "idioma": "pt",
@@ -2610,7 +2673,7 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula disse que: “com 10 reais eu compro um baiano” e que “basta colocar um grão de arroz na mesa do nordestino, ele vota em você”.",
+   "afirmacao": "Lula disse que: “basta colocar um grão de arroz na mesa do nordestino, ele vota em você”.",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-07",
    "agencia": "Aos Fatos",
@@ -2871,7 +2934,8 @@
    "rotulo": "Enganoso",
    "idioma": "pt",
    "consulta": [
-    "Flávio Bolsonaro"
+    "Flávio Bolsonaro",
+    "eleições 2026"
    ],
    "candidatos": [
     "Flávio Bolsonaro"
@@ -3003,15 +3067,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "XUXA SE REVOLTA CONTRA LULA E PEDE PARA BRASILEIROS NÃO VOTAREM NELE",
+   "afirmacao": "Ministra do TSE proibiu candidatos de mencionar Lula em debate da Globo",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-02",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Não é verdade que Xuxa criticou Lula por fala sobre ‘tomar toque’",
-   "url": "https://www.aosfatos.org/noticias/xuxa-lula-tomar-toque/",
+   "titulo": "Ministra do TSE não proibiu menções a Lula no debate da Globo",
+   "url": "https://www.aosfatos.org/noticias/ministra-tse-lula-debate-globo/",
    "data_checagem": "2026-10-02",
-   "rotulo": "falso",
+   "rotulo": "não_é_bem_assim",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -3020,11 +3084,11 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "[Lula deixou o povo brasileiro] com fome",
+   "afirmacao": "Você [Lula] que é o pai do tigrinho",
    "quem_disse": "Flávio Bolsonaro",
    "data_afirmacao": "2026-10-02",
    "agencia": "Aos Fatos",
@@ -3047,15 +3111,15 @@
    "dito_pelo_candidato": "Flávio Bolsonaro"
   },
   {
-   "afirmacao": "Ministra do TSE proibiu candidatos de mencionar Lula em debate da Globo",
+   "afirmacao": "XUXA SE REVOLTA CONTRA LULA E PEDE PARA BRASILEIROS NÃO VOTAREM NELE",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-02",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Ministra do TSE não proibiu menções a Lula no debate da Globo",
-   "url": "https://www.aosfatos.org/noticias/ministra-tse-lula-debate-globo/",
+   "titulo": "Não é verdade que Xuxa criticou Lula por fala sobre ‘tomar toque’",
+   "url": "https://www.aosfatos.org/noticias/xuxa-lula-tomar-toque/",
    "data_checagem": "2026-10-02",
-   "rotulo": "não_é_bem_assim",
+   "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -3064,7 +3128,7 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -3110,15 +3174,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula diz no Flow que emprestou R$ 24 milhões a homem endividado com bets",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-10-02",
+   "afirmacao": "Janja disse que ‘nem Deus tira essa eleição de Lula’ em comício no Piauí",
+   "quem_disse": "Vária fontes",
+   "data_afirmacao": "2026-09-24",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Lula se corrigiu sobre empréstimo concedido a apostador: valor foi de R$ 24 mil, não R$ 24 milhões",
-   "url": "https://checamos.afp.com/doc.afp.com.D24F89E",
+   "titulo": "É falsa a notícia de que Janja disse “nem Deus tira de Lula essa eleição”",
+   "url": "https://checamos.afp.com/doc.afp.com.D2379ZQ",
    "data_checagem": "2026-10-02",
-   "rotulo": "Enganoso",
+   "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -3127,7 +3191,7 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -3173,15 +3237,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Janja disse que ‘nem Deus tira essa eleição de Lula’ em comício no Piauí",
-   "quem_disse": "Vária fontes",
-   "data_afirmacao": "2026-09-24",
+   "afirmacao": "Lula diz no Flow que emprestou R$ 24 milhões a homem endividado com bets",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-10-02",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "É falsa a notícia de que Janja disse “nem Deus tira de Lula essa eleição”",
-   "url": "https://checamos.afp.com/doc.afp.com.D2379ZQ",
+   "titulo": "Lula se corrigiu sobre empréstimo concedido a apostador: valor foi de R$ 24 mil, não R$ 24 milhões",
+   "url": "https://checamos.afp.com/doc.afp.com.D24F89E",
    "data_checagem": "2026-10-02",
-   "rotulo": "Falso",
+   "rotulo": "Enganoso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -3190,7 +3254,7 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -3215,13 +3279,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "LULA HOMENAGEIA JOÃO DE DEUS, CONDENADO POR ESTUPRO DE VULNERÁVEL EM NOVO HOSPITAL. PROTEJAM AS CRIANÇAS",
+   "afirmacao": "Projeto de Lei de deputado petista, com apoio de Lula, visa excluir Nossa Senhora Aparecida e favorecer umbanda",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-01",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Lula não homenageou médium João de Deus em nome de hospital no Pará",
-   "url": "https://www.aosfatos.org/noticias/lula-medium-joao-de-deus-hospital-para/",
+   "titulo": "Posts simulam capas da ‘Veja’ para associar Janja e Hilton a medidas rejeitadas por cristãos",
+   "url": "https://www.aosfatos.org/noticias/capas-veja-janja-erika-hilton-cristaos/",
    "data_checagem": "2026-10-01",
    "rotulo": "falso",
    "idioma": "pt",
@@ -3257,13 +3321,13 @@
    "dito_pelo_candidato": "Lula"
   },
   {
-   "afirmacao": "Projeto de Lei de deputado petista, com apoio de Lula, visa excluir Nossa Senhora Aparecida e favorecer umbanda",
+   "afirmacao": "LULA HOMENAGEIA JOÃO DE DEUS, CONDENADO POR ESTUPRO DE VULNERÁVEL EM NOVO HOSPITAL. PROTEJAM AS CRIANÇAS",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-10-01",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Posts simulam capas da ‘Veja’ para associar Janja e Hilton a medidas rejeitadas por cristãos",
-   "url": "https://www.aosfatos.org/noticias/capas-veja-janja-erika-hilton-cristaos/",
+   "titulo": "Lula não homenageou médium João de Deus em nome de hospital no Pará",
+   "url": "https://www.aosfatos.org/noticias/lula-medium-joao-de-deus-hospital-para/",
    "data_checagem": "2026-10-01",
    "rotulo": "falso",
    "idioma": "pt",
@@ -3341,6 +3405,46 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Governo Lula criou as bets no Brasil",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-09-27",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Quem liberou as bets no Brasil? Empresas de apostas foram legalizadas e regulamentadas ao longo de 3 governos",
+   "url": "https://checamos.afp.com/doc.afp.com.C9QE3CT",
+   "data_checagem": "2026-09-30",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Vídeos mostram protestos de torcidas do Corinthians e Flamengo contra o PT",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-09-27",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Vídeos não mostram atos de torcidas do Corinthians e Flamengo ...",
+   "url": "https://checamos.afp.com/doc.afp.com.C9VA4WE",
+   "data_checagem": "2026-09-30",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Milei fala aos brasileiros e faz pedido emocionado",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-09-26",
@@ -3383,13 +3487,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula defendeu pedofilia ao dizer que mulheres “aprendem a tomar toque” desde crianças",
+   "afirmacao": "Flamenguistas protestam contra Lula e decisões recentes do governo",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-09-29",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Lula discursa sobre câncer de próstata, e não em defesa da pedofilia",
-   "url": "https://www.aosfatos.org/noticias/lula-discursa-cancer-de-prostata-nao-sobre-defesa-pedofilia/",
+   "titulo": "Posts não mostram protesto da torcida do Flamengo contra fim das bets",
+   "url": "https://www.aosfatos.org/noticias/posts-nao-mostram-protesto-da-torcida-do-flamengo-contra-fim-das-bets/",
    "data_checagem": "2026-09-29",
    "rotulo": "falso",
    "idioma": "pt",
@@ -3425,14 +3529,54 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Flamenguistas protestam contra Lula e sua decisão de banir as bets",
+   "afirmacao": "Lula defendeu pedofilia ao dizer que mulheres “aprendem a tomar toque” desde crianças",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-09-29",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Posts não mostram protesto da torcida do Flamengo contra fim das bets",
-   "url": "https://www.aosfatos.org/noticias/posts-nao-mostram-protesto-da-torcida-do-flamengo-contra-fim-das-bets/",
+   "titulo": "Lula discursa sobre câncer de próstata, e não em defesa da pedofilia",
+   "url": "https://www.aosfatos.org/noticias/lula-discursa-cancer-de-prostata-nao-sobre-defesa-pedofilia/",
    "data_checagem": "2026-09-29",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Voto nas eleições 2026 não pode ser usado como prova de vida do INSS",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-09-29",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "É falso que voto nas eleições não pode ser utilizado como prova de ...",
+   "url": "https://www.aosfatos.org/noticias/falso-voto-eleicoes-prova-vida-inss/",
+   "data_checagem": "2026-09-29",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "eleições 2026"
+   ],
+   "candidatos": [],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula Foge de Rubio na ONU mas é Barrado pelo Presidente do Paraguai, que Agradece a Política que Faz Empresas Brasileiras Atravessarem a Fronteira",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-09-28",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "É falso que presidente do Paraguai agradeceu a Lula por migração de empresas",
+   "url": "https://www.aosfatos.org/noticias/presidente-paraguai-lula-migracao-empresas/",
+   "data_checagem": "2026-09-28",
    "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
@@ -3469,15 +3613,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula Foge de Rubio na ONU mas é Barrado pelo Presidente do Paraguai, que Agradece a Política que Faz Empresas Brasileiras Atravessarem a Fronteira",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-09-28",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "É falso que presidente do Paraguai agradeceu a Lula por migração de empresas",
-   "url": "https://www.aosfatos.org/noticias/presidente-paraguai-lula-migracao-empresas/",
+   "afirmacao": "Lula sugeriu destruir tudo o que o Estado faz",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-09-21",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Vídeo antigo de Lula volta a viralizar com falas editadas; petista não defendeu ‘destruir tudo que o Estado faz’",
+   "url": "https://checamos.afp.com/doc.afp.com.C9KP69E",
    "data_checagem": "2026-09-28",
-   "rotulo": "falso",
+   "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -3497,27 +3641,6 @@
    "site": "checamos.afp.com",
    "titulo": "Fala de porta-voz venezuelano sobre golpe de Estado no Brasil se referia a governo Temer, não a Lula em 2026",
    "url": "https://checamos.afp.com/doc.afp.com.C9K72CQ",
-   "data_checagem": "2026-09-28",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Lula sugeriu destruir tudo o que o Estado faz",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-09-21",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Vídeo antigo de Lula volta a viralizar com falas editadas; petista não defendeu ‘destruir tudo que o Estado faz’",
-   "url": "https://checamos.afp.com/doc.afp.com.C9KP69E",
    "data_checagem": "2026-09-28",
    "rotulo": "Falso",
    "idioma": "pt",
@@ -3574,29 +3697,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Netanyahu grava vídeo para Flávio Bolsonaro após Lula citar o nome dele na ONU",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-09-24",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Vídeo de Netanyahu em apoio a Flávio Bolsonaro foi gravado meses antes de Lula discursar na ONU",
-   "url": "https://checamos.afp.com/doc.afp.com.C9E94KE",
-   "data_checagem": "2026-09-25",
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro",
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula",
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Governo Lula distribui kit chuca no SUS",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-09-18",
@@ -3636,6 +3736,29 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Netanyahu grava vídeo para Flávio Bolsonaro após Lula citar o nome dele na ONU",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-09-24",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Vídeo de Netanyahu em apoio a Flávio Bolsonaro foi gravado meses antes de Lula discursar na ONU",
+   "url": "https://checamos.afp.com/doc.afp.com.C9E94KE",
+   "data_checagem": "2026-09-25",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro",
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula",
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -3826,27 +3949,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula sendo recebido em São José do Rio Preto com OVOS?",
-   "quem_disse": "Utilizador de Facebook",
-   "data_afirmacao": "2026-09-05",
-   "agencia": "Observador",
-   "site": "observador.pt",
-   "titulo": "Fact Check. Carro do Presidente do Brasil foi atingido com ovos durante a campanha?",
-   "url": "https://observador.pt/factchecks/fact-check-carro-do-presidente-do-brasil-foi-atingido-com-ovos-durante-a-campanha/",
-   "data_checagem": "2026-09-22",
-   "rotulo": "Errado",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "O povo deixando seu recado no Rock In Rio! É Lula e vai ser no 1º turno!!!",
    "quem_disse": "Utilizador de Facebook",
    "data_afirmacao": "2026-09-06",
@@ -3865,6 +3967,27 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula sendo recebido em São José do Rio Preto com OVOS?",
+   "quem_disse": "Utilizador de Facebook",
+   "data_afirmacao": "2026-09-05",
+   "agencia": "Observador",
+   "site": "observador.pt",
+   "titulo": "Fact Check. Carro do Presidente do Brasil foi atingido com ovos durante a campanha?",
+   "url": "https://observador.pt/factchecks/fact-check-carro-do-presidente-do-brasil-foi-atingido-com-ovos-durante-a-campanha/",
+   "data_checagem": "2026-09-22",
+   "rotulo": "Errado",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -4015,27 +4138,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Pesquisa Veritá mostra Flávio ganhando no primeiro turno com 64%",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-09-03",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Pesquisa Veritá mostra Flávio Bolsonaro com 64% das intenções de voto no Mato Grosso, não a nível nacional",
-   "url": "https://checamos.afp.com/doc.afp.com.C8X899F",
-   "data_checagem": "2026-09-21",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Flávio Bolsonaro viajou para os EUA em setembro de 2026",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-09-13",
@@ -4057,6 +4159,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Pesquisa Veritá mostra Flávio ganhando no primeiro turno com 64%",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-09-03",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Pesquisa Veritá mostra Flávio Bolsonaro com 64% das intenções de voto no Mato Grosso, não a nível nacional",
+   "url": "https://checamos.afp.com/doc.afp.com.C8X899F",
+   "data_checagem": "2026-09-21",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro"
+   ],
+   "candidatos": [
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Se eleito, Lula irá aumentar o salário mínimo para acima de R$ 3.000",
    "quem_disse": "redes sociais",
    "data_afirmacao": null,
@@ -4075,6 +4198,27 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula aumentou o Bolsa Família em 15%, mas reajustou o salário mínimo em apenas 6,79%",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-09-18",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Posts enganam ao comparar reajustes do Bolsa Família e do salário mínimo",
+   "url": "https://www.aosfatos.org/noticias/reajustes-bolsa-familia-salario-minimo/",
+   "data_checagem": "2026-09-18",
+   "rotulo": "não_é_bem_assim",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -4117,27 +4261,6 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Lula aumentou o Bolsa Família em 15%, mas reajustou o salário mínimo em apenas 6,79%",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-09-18",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Posts enganam ao comparar reajustes do Bolsa Família e do salário mínimo",
-   "url": "https://www.aosfatos.org/noticias/reajustes-bolsa-familia-salario-minimo/",
-   "data_checagem": "2026-09-18",
-   "rotulo": "não_é_bem_assim",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -4250,27 +4373,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula diz que se as delações continuarem, nenhum de nós escapa",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-09-06",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Publicações resgatam fala antiga de Lula sobre delações como se fosse recente",
-   "url": "https://checamos.afp.com/doc.afp.com.C8MH2CQ",
-   "data_checagem": "2026-09-17",
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Ciro Gomes denuncia que Lula pagou o Comando Vermelho",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-09-16",
@@ -4289,6 +4391,27 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula diz que se as delações continuarem, nenhum de nós escapa",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-09-06",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Publicações resgatam fala antiga de Lula sobre delações como se fosse recente",
+   "url": "https://checamos.afp.com/doc.afp.com.C8MH2CQ",
+   "data_checagem": "2026-09-17",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -4463,13 +4586,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo em que Lula diz que quer a cabeça do ministro André Mendonça",
+   "afirmacao": "Ministro do STF André Mendonça declarou Lula inelegível",
    "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-09-09",
+   "data_afirmacao": "2026-09-01",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Vídeo de Lula em reunião do G7 circula falsamente como pedido de silenciamento de Mendonça",
-   "url": "https://checamos.afp.com/doc.afp.com.C7ZY7CR",
+   "titulo": "Vídeo de IA simula JN para alegar falsamente que André Mendonça declarou Lula inelegível",
+   "url": "https://checamos.afp.com/doc.afp.com.C83A8KF",
    "data_checagem": "2026-09-11",
    "rotulo": "Falso",
    "idioma": "pt",
@@ -4484,13 +4607,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Ministro do STF André Mendonça declarou Lula inelegível",
+   "afirmacao": "Vídeo em que Lula diz que quer a cabeça do ministro André Mendonça",
    "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-09-01",
+   "data_afirmacao": "2026-09-09",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Vídeo de IA simula JN para alegar falsamente que André Mendonça declarou Lula inelegível",
-   "url": "https://checamos.afp.com/doc.afp.com.C83A8KF",
+   "titulo": "Vídeo de Lula em reunião do G7 circula falsamente como pedido de silenciamento de Mendonça",
+   "url": "https://checamos.afp.com/doc.afp.com.C7ZY7CR",
    "data_checagem": "2026-09-11",
    "rotulo": "Falso",
    "idioma": "pt",
@@ -4753,13 +4876,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Foto mostra garis com cartazes contra Lula",
+   "afirmacao": "Lula acaba de renunciar o seu mandato, Lula está fora das eleições de 2026",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-09-03",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Fotos falsas de protesto de garis circulam em posts como se fossem reais",
-   "url": "https://www.aosfatos.org/noticias/fotos-falsas-protesto-garis/",
+   "titulo": "É falso que Lula renunciou e desistiu de concorrer à reeleição",
+   "url": "https://www.aosfatos.org/noticias/lula-renunciou-desistiu-reeleicao/",
    "data_checagem": "2026-09-03",
    "rotulo": "falso",
    "idioma": "pt",
@@ -4781,27 +4904,6 @@
    "site": "checamos.afp.com",
    "titulo": "É falso post que mostra feridas na nuca de Lula antes das eleições de 2026",
    "url": "https://checamos.afp.com/doc.afp.com.C79L8CU",
-   "data_checagem": "2026-09-03",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Trump diz que se for preciso fará com Lula o que fez com Maduro",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-08-30",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Trump não afirmou em discurso que “fará com Lula o que fez com Maduro”",
-   "url": "https://checamos.afp.com/doc.afp.com.C7AQ3ZU",
    "data_checagem": "2026-09-03",
    "rotulo": "Falso",
    "idioma": "pt",
@@ -4856,13 +4958,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula já está esperando aqui no Brasil. Lulinha acaba de ser capturado pela polícia da Espanha",
+   "afirmacao": "Lula sancionou lei para pessoas usarem o banheiro que quiserem independentemente de seu gênero",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-09-02",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que Lulinha foi preso na Espanha",
-   "url": "https://www.aosfatos.org/noticias/lulinha-preso-espanha/",
+   "titulo": "É falso que Lula sancionou lei sobre banheiro sem gênero",
+   "url": "https://www.aosfatos.org/noticias/lula-lei-banheiro-sem-genero/",
    "data_checagem": "2026-09-02",
    "rotulo": "falso",
    "idioma": "pt",
@@ -4877,13 +4979,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula sancionou lei para pessoas usarem o banheiro que quiserem independentemente de seu gênero",
+   "afirmacao": "Lula já está esperando aqui no Brasil. Lulinha acaba de ser capturado pela polícia da Espanha",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-09-02",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que Lula sancionou lei sobre banheiro sem gênero",
-   "url": "https://www.aosfatos.org/noticias/lula-lei-banheiro-sem-genero/",
+   "titulo": "É falso que Lulinha foi preso na Espanha",
+   "url": "https://www.aosfatos.org/noticias/lulinha-preso-espanha/",
    "data_checagem": "2026-09-02",
    "rotulo": "falso",
    "idioma": "pt",
@@ -5232,13 +5334,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula diz que não acredita em Deus",
+   "afirmacao": "Lula pode ser preso por trump a qualquer momento e Exército Brasileiro já está posicionado para defendê-lo",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-08-25",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que Lula disse que não acredita em Deus",
-   "url": "https://www.aosfatos.org/noticias/lula-acredita-deus/",
+   "titulo": "É falso que vídeo mostra tropas posicionadas para defesa contra EUA",
+   "url": "https://www.aosfatos.org/noticias/tropas-posicionadas-defesa-eua/",
    "data_checagem": "2026-08-25",
    "rotulo": "falso",
    "idioma": "pt",
@@ -5253,13 +5355,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula pode ser preso por trump a qualquer momento e Exército Brasileiro já está posicionado para defendê-lo",
+   "afirmacao": "Lula diz que não acredita em Deus",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-08-25",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que vídeo mostra tropas posicionadas para defesa contra EUA",
-   "url": "https://www.aosfatos.org/noticias/tropas-posicionadas-defesa-eua/",
+   "titulo": "É falso que Lula disse que não acredita em Deus",
+   "url": "https://www.aosfatos.org/noticias/lula-acredita-deus/",
    "data_checagem": "2026-08-25",
    "rotulo": "falso",
    "idioma": "pt",
@@ -5482,6 +5584,25 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "CNN expõe fraude e dá vitória a Bolsonaro",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-07-24",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Não é verdade que a CNN Brasil tenha noticiado “fraude” nas ...",
+   "url": "https://checamos.afp.com/doc.afp.com.C4HY8WE",
+   "data_checagem": "2026-08-13",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "eleições 2026"
+   ],
+   "candidatos": [],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Bolsonaro não foi derrotado nas eleições de 2022",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-08-03",
@@ -5493,7 +5614,8 @@
    "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
-    "Lula"
+    "Lula",
+    "eleições 2026"
    ],
    "candidatos": [
     "Lula"
@@ -5544,28 +5666,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "O Brasil, naqueles dois anos [2015 e 2016], foi o único país do mundo que engatou marcha ré. O mundo todo crescendo, todos os alunos tirando nota nove e o Brasil tirando nota dois por causa do PT, do Lula e da Dilma.",
-   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
-   "data_afirmacao": "2026-08-05",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Presidenciáveis distorcem e inventam fatos ao atacar adversários",
-   "url": "https://www.aosfatos.org/noticias/presidenciaveis-distorcem-inventam-fatos-atacar-adversarios/",
-   "data_checagem": "2026-08-05",
-   "rotulo": "não_é_bem_assim",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro",
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Pesquisa mostra Flávio Bolsonaro com 68,4% dos votos e Lula com 9%",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-08-05",
@@ -5587,6 +5687,29 @@
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Ele mesmo [Lula] falou ‘quanto mais inteligente for o povo menos o povo vota no PT’",
+   "quem_disse": "Flávio Bolsonaro",
+   "data_afirmacao": "2026-08-05",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Presidenciáveis distorcem e inventam fatos ao atacar adversários",
+   "url": "https://www.aosfatos.org/noticias/presidenciaveis-distorcem-inventam-fatos-atacar-adversarios/",
+   "data_checagem": "2026-08-05",
+   "rotulo": "não_é_bem_assim",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro",
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula",
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": "Flávio Bolsonaro"
   },
   {
    "afirmacao": "Ministros compraram chips de Taiwan para incorporar na urna eletrônica e fraudar eleições",
@@ -5650,25 +5773,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "TSE anunciou novas urnas eletrônicas para eleições de 2026",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-07-27",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "TSE não anunciou novas urnas eletrônicas para as eleições deste ...",
-   "url": "https://www.aosfatos.org/noticias/tse-novas-urnas-eletronicas-eleicoes/",
-   "data_checagem": "2026-07-27",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "urna eletrônica"
-   ],
-   "candidatos": [],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Flavio Bolsonaro ultrapassa Lula na pesquisa Datafolha em julho de 2026",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-07-22",
@@ -5687,6 +5791,25 @@
     "Lula",
     "Flávio Bolsonaro"
    ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "TSE mentiu sobre a Smartmatic não atuar no Brasil",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-07-23",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "TSE não mentiu sobre atuação da Smartmatic no Brasil; empresa ...",
+   "url": "https://checamos.afp.com/doc.afp.com.C3BV8T3",
+   "data_checagem": "2026-07-27",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "eleições 2026"
+   ],
+   "candidatos": [],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
@@ -5923,13 +6046,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula tem rejeição de 85% em pesquisa de julho",
+   "afirmacao": "Fortuna de Lula chega a R$ 716 bilhões e de Marisa Letícia a R$ 11 milhões",
    "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-07-13",
+   "data_afirmacao": "2026-07-12",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Lula obteve 50% de rejeição em pesquisa de abril da Atlas, e não 85% como apontam publicações",
-   "url": "https://checamos.afp.com/doc.afp.com.C2EF6NR",
+   "titulo": "Post engana ao atribuir fortuna bilionária a Lula e outros valores a sua família",
+   "url": "https://checamos.afp.com/doc.afp.com.C2ED9ZQ",
    "data_checagem": "2026-07-16",
    "rotulo": "Enganoso",
    "idioma": "pt",
@@ -5965,13 +6088,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Fortuna de Lula chega a R$ 716 bilhões e de Marisa Letícia a R$ 11 milhões",
+   "afirmacao": "Lula tem rejeição de 85% em pesquisa de julho",
    "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-07-12",
+   "data_afirmacao": "2026-07-13",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Post engana ao atribuir fortuna bilionária a Lula e outros valores a sua família",
-   "url": "https://checamos.afp.com/doc.afp.com.C2ED9ZQ",
+   "titulo": "Lula obteve 50% de rejeição em pesquisa de abril da Atlas, e não 85% como apontam publicações",
+   "url": "https://checamos.afp.com/doc.afp.com.C2EF6NR",
    "data_checagem": "2026-07-16",
    "rotulo": "Enganoso",
    "idioma": "pt",
@@ -6009,6 +6132,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Número de brasileiros que passam fome subiu para 33 milhões na gestão Lula",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-07-07",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Reportagem do Jornal Nacional sobre 33 milhões de brasileiros com fome é de 2022, não de 2026",
+   "url": "https://checamos.afp.com/doc.afp.com.C27T6CQ",
+   "data_checagem": "2026-07-14",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Governo do Lula mandou desapropriar propriedade de idosa de 78 anos em Goiás",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-06-16",
@@ -6030,15 +6174,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Número de brasileiros que passam fome subiu para 33 milhões na gestão Lula",
+   "afirmacao": "Lula diz que 40% de tudo que foi feito no Brasil foi feito em 3 anos e meio",
    "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-07-07",
+   "data_afirmacao": "2026-05-25",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Reportagem do Jornal Nacional sobre 33 milhões de brasileiros com fome é de 2022, não de 2026",
-   "url": "https://checamos.afp.com/doc.afp.com.C27T6CQ",
-   "data_checagem": "2026-07-14",
-   "rotulo": "Falso",
+   "titulo": "Vídeo distorce fala de Lula sobre terras quilombolas para afirmar ...",
+   "url": "https://checamos.afp.com/doc.afp.com.B9W27KE",
+   "data_checagem": "2026-07-10",
+   "rotulo": "Enganoso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -6047,7 +6191,7 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -6072,15 +6216,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Volkswagen avalia demitir 100 mil funcionários por causa do governo Lula",
+   "afirmacao": "Governo excluiu o texto para tentar esconder que Lula sancionou a Lei das Bets",
    "quem_disse": "desinformação",
-   "data_afirmacao": "2026-07-08",
+   "data_afirmacao": "2026-07-07",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "É falso que Volkswagen vai demitir 100 mil funcionários no Brasil",
-   "url": "https://www.aosfatos.org/noticias/volkswagen-demitir-100-mil-brasil/",
-   "data_checagem": "2026-07-08",
-   "rotulo": "falso",
+   "titulo": "Texto sobre Lei das Bets está fora do ar para cumprir regra eleitoral",
+   "url": "https://www.aosfatos.org/noticias/lei-bets-regra-eleitoral/",
+   "data_checagem": "2026-07-07",
+   "rotulo": "não_é_bem_assim",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -6089,7 +6233,7 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -6161,10 +6305,31 @@
    "data_afirmacao": "2026-05-31",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Ratinho Júnior não declarou apoio a Lula em vídeo; registro de 2023 circula fora de contexto",
+   "titulo": "Ratinho Júnior não declarou apoio a Lula em vídeo; registro de ...",
    "url": "https://checamos.afp.com/doc.afp.com.B8FL2G3",
    "data_checagem": "2026-06-26",
    "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula disse não reconhecer vitória de Espriella na Colômbia",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-06-24",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "É falso que Lula disse não reconhecer vitória de Espriella na Colômbia",
+   "url": "https://www.aosfatos.org/noticias/lula-espriella-colombia/",
+   "data_checagem": "2026-06-24",
+   "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -6203,7 +6368,7 @@
    "data_afirmacao": "2026-05-28",
    "agencia": "Observador",
    "site": "observador.pt",
-   "titulo": "Fact Check. Donald Trump desmentiu visita do senador Flávio Bolsonaro à Casa Branca?",
+   "titulo": "Fact Check. Donald Trump desmentiu visita do senador Flávio ...",
    "url": "https://observador.pt/factchecks/fact-check-donald-trump-desmentiu-visita-do-senador-flavio-bolsonaro-a-casa-branca/",
    "data_checagem": "2026-06-22",
    "rotulo": "Errado",
@@ -6308,7 +6473,7 @@
    "data_afirmacao": "2026-06-08",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Pesquisa suspensa por Nunes Marques não mostrava Lula com 75 ...",
+   "titulo": "Pesquisa suspensa por Nunes Marques não mostrava Lula com 75% dos votos",
    "url": "https://checamos.afp.com/doc.afp.com.B6TN663",
    "data_checagem": "2026-06-11",
    "rotulo": "Falso",
@@ -6364,6 +6529,48 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Queda de ponte no Acre: mais uma ponte no governo Lula desaba",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-06-06",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Gestão Lula não participou da construção da Ponte Frei Paolino Baldassari; obra foi feita pelo governo do Acre",
+   "url": "https://checamos.afp.com/doc.afp.com.B6NG9WF",
+   "data_checagem": "2026-06-10",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Trump decreta Magnitsky contra Lula e Moraes",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-06-02",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Donald Trump não incluiu Lula e Moraes na lei Magnitsky; ministro ...",
+   "url": "https://checamos.afp.com/doc.afp.com.B6NK2WE",
+   "data_checagem": "2026-06-10",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Em evento nos EUA, Flávio disse que iria acabar com o Pix",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-06-09",
@@ -6372,69 +6579,6 @@
    "titulo": "Flávio Bolsonaro não disse que vai extinguir Pix para agradar a Trump",
    "url": "https://www.aosfatos.org/noticias/flavio-bolsonaro-nao-disse-vai-extinguir-pix-agradar-trump/",
    "data_checagem": "2026-06-09",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "PF descobriu que Lula só teve 36,32% dos votos em 2022",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-06-03",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "É falso que PF descobriu que Lula teve apenas 36% dos votos em 2022",
-   "url": "https://www.aosfatos.org/noticias/pf-policia-federal-lula-votos-2022-urna/",
-   "data_checagem": "2026-06-03",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Casa Branca desmente encontro de Flávio Bolsonaro com Donald Trump",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-05-28",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Casa Branca não desmentiu encontro de Flávio Bolsonaro com Trump",
-   "url": "https://checamos.afp.com/doc.afp.com.B4X69G3",
-   "data_checagem": "2026-06-03",
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "FBI pediu prisão de Flávio Bolsonaro",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-06-02",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "FBI não pediu prisão de Flávio Bolsonaro",
-   "url": "https://www.aosfatos.org/noticias/fbi-prisao-flavio-bolsonaro/",
-   "data_checagem": "2026-06-02",
    "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
@@ -6505,6 +6649,27 @@
    ],
    "candidatos": [
     "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula é capa desta semana de uma das revistas mais conhecidas em todo mundo.",
+   "quem_disse": "Utilizador do Facebook",
+   "data_afirmacao": "2026-05-11",
+   "agencia": "Observador",
+   "site": "observador.pt",
+   "titulo": "Fact Check. Lula da Silva foi capa da Time em maio de 2026?",
+   "url": "https://observador.pt/factchecks/fact-check-lula-da-silva-foi-capa-da-time-em-maio-de-2026/",
+   "data_checagem": "2026-05-27",
+   "rotulo": "Errado",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
@@ -6637,27 +6802,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula cria 5 mil empregos para chineses na Bahia enquanto o estado sofre com desemprego",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-05-19",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Vídeo não mostra militares chineses de farda da PM baiana",
-   "url": "https://www.aosfatos.org/noticias/militares-chineses-farda-pm-baiana/",
-   "data_checagem": "2026-05-19",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Pesquisas apontam que Lula deve vencer ainda no primeiro turno com 72,9%",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-05-09",
@@ -6758,27 +6902,6 @@
    "candidatos": [],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Lula é capa da revista Time nesta semana",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-05-11",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Capa da revista Time com Lula é de 2022, não de maio de 2026",
-   "url": "https://checamos.afp.com/doc.afp.com.B2VP2T3",
-   "data_checagem": "2026-05-14",
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -6971,27 +7094,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Shakira 'fez o L' durante show em Copacabana",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-05-04",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Shakira não declarou apoio a Lula nem a Bolsonaro em show no ...",
-   "url": "https://www.aosfatos.org/noticias/shakira-lula-bolsonaro-show-brasil/",
-   "data_checagem": "2026-05-04",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula beija o dono da Choquei que foi preso pela PF",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-04-15",
@@ -7031,27 +7133,6 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "\"Lula endurece tom com Trump e diz que todo o brasileiro está disposto a defender a sua soberania e a de Cuba também.\"",
-   "quem_disse": "Utilizador do Facebook",
-   "data_afirmacao": "2026-04-24",
-   "agencia": "Observador",
-   "site": "observador.pt",
-   "titulo": "Fact Check. Lula da Silva disse que Brasil está disposto a defender soberania de Cuba?",
-   "url": "https://observador.pt/factchecks/fact-check-lula-da-silva-disse-que-brasil-esta-disposto-a-defender-soberania-de-cuba/",
-   "data_checagem": "2026-04-27",
-   "rotulo": "Errado",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -7096,6 +7177,27 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "FAB de Lula fez 111 voos com 1 passageiro",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-04-18",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Auditoria do TCU que apontou viagens da FAB com apenas 1 passageiro analisou dados de voos dos governos Bolsonaro e Lula",
+   "url": "https://checamos.afp.com/doc.afp.com.A8W94T3",
+   "data_checagem": "2026-04-24",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -7226,27 +7328,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Foto mostra Lula beijando testa de dono da Choquei, preso pela PF",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-04-17",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Foto não mostra Lula com dono do Choquei, preso pela PF",
-   "url": "https://www.aosfatos.org/noticias/foto-lula-dono-choquei/",
-   "data_checagem": "2026-04-17",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Flávio Bolsonaro disse em Porto Alegre que irá privatizar o SUS no mesmo dia que tomar posse como presidente",
    "quem_disse": "Várias fontes",
    "data_afirmacao": "2026-04-13",
@@ -7265,6 +7346,48 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Depois de 3 anos governo Lula libera água no Nordeste",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-04-06",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Vídeo de fluxo de água foi registrado no Iêmen, não no Nordeste do Brasil",
+   "url": "https://checamos.afp.com/doc.afp.com.A7WX9NQ",
+   "data_checagem": "2026-04-15",
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Governo Lula quer reduzir um litro de gasolina para 680 ml para baraterar combustível",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-04-14",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Posts distorcem proposta para aumentar mistura de álcool na gasolina",
+   "url": "https://www.aosfatos.org/noticias/proposta-aumentar-mistura-alcool-gasolina/",
+   "data_checagem": "2026-04-14",
+   "rotulo": "não_é_bem_assim",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -7417,15 +7540,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra Lula recebendo refugiados muçulmanos no Brasil; cada um deles ganhará R$ 7.000 mensais por seis meses",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-04-01",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Não é verdade que governo Lula pagará auxílio de R$ 7.000 a refugiados muçulmanos",
-   "url": "https://www.aosfatos.org/noticias/falso-governo-lula-pagara-auxilios-7000-refugiados-muculmanos/",
-   "data_checagem": "2026-04-01",
-   "rotulo": "falso",
+   "afirmacao": "Trump manda a secretaria rasgar documento enviado por Lula",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-03-18",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Vídeo mostra protesto de Nancy Pelosi, e não uma “secretária de Trump” rasgando documento enviado por Lula",
+   "url": "https://checamos.afp.com/doc.afp.com.A6MA6CQ",
+   "data_checagem": "2026-04-02",
+   "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -7438,13 +7561,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra secretária de Trump rasgando documento enviado por Lula",
+   "afirmacao": "Vídeo mostra Lula recebendo refugiados muçulmanos no Brasil; cada um deles ganhará R$ 7.000 mensais por seis meses",
    "quem_disse": "desinformação",
    "data_afirmacao": "2026-04-01",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Vídeo não mostra secretária de Trump rasgando documento ...",
-   "url": "https://www.aosfatos.org/noticias/video-nao-mostra-secretaria-trump-rasgando-documento-lula/",
+   "titulo": "Não é verdade que governo Lula pagará auxílio de R$ 7.000 a refugiados muçulmanos",
+   "url": "https://www.aosfatos.org/noticias/falso-governo-lula-pagara-auxilios-7000-refugiados-muculmanos/",
    "data_checagem": "2026-04-01",
    "rotulo": "falso",
    "idioma": "pt",
@@ -7467,6 +7590,27 @@
    "titulo": "É falso que Lula afirmou que trabalhadores não podem ir ao teatro e ...",
    "url": "https://www.aosfatos.org/noticias/lula-trabalhadores-teatro-cinema/",
    "data_checagem": "2026-03-31",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula aparece em foto apertando a mão de Vorcaro",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-03-27",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Foto que mostra aperto de mãos de Lula e Vorcaro é montagem",
+   "url": "https://www.aosfatos.org/noticias/foto-aperto-maos-lula-vorcaro-montagem/",
+   "data_checagem": "2026-03-27",
    "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
@@ -7517,27 +7661,6 @@
    "candidatos": [
     "Lula",
     "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Daniel Vorcaro fez delação premiada e decidiu entregar os ministros do STF (Supremo Tribunal Federal) Alexandre de Moraes e Dias Toffoli e o presidente Lula (PT)",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-03-23",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Vídeo de IA engana ao dizer que Vorcaro delatou Moraes, Toffoli e Lula",
-   "url": "https://www.aosfatos.org/noticias/video-ia-engana-vorcaro-delatou-moraes-toffoli-lula/",
-   "data_checagem": "2026-03-23",
-   "rotulo": "falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
@@ -7612,7 +7735,7 @@
    "data_afirmacao": "2026-03-16",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Lula não disse ‘vai a pé’ em resposta ao aumento do preço da gasolina",
+   "titulo": "Lula não disse 'vai a pé' em resposta ao aumento do preço da ...",
    "url": "https://www.aosfatos.org/noticias/lula-nao-disse-vai-a-pe-resposta-aumento-preco-gasolina/",
    "data_checagem": "2026-03-16",
    "rotulo": "falso",
@@ -7633,7 +7756,7 @@
    "data_afirmacao": "2026-03-11",
    "agencia": "Aos Fatos",
    "site": "aosfatos.org",
-   "titulo": "Lula não disse que Brasil está sob ‘ameaça real de invasão’ estrangeira",
+   "titulo": "Lula não disse que Brasil está sob 'ameaça real de invasão ...",
    "url": "https://www.aosfatos.org/noticias/lula-nao-disse-que-brasil-esta-sob-ameaca-real-de-invasao-estrangeira/",
    "data_checagem": "2026-03-11",
    "rotulo": "não_é_bem_assim",
@@ -7738,7 +7861,7 @@
    "data_afirmacao": "2026-02-23",
    "agencia": "AFP Checamos",
    "site": "checamos.afp.com",
-   "titulo": "Publicações enganam ao comparar dados diferentes de gastos no cartão corporativo de Bolsonaro e Lula",
+   "titulo": "Publicações enganam ao comparar dados diferentes de gastos no ...",
    "url": "https://checamos.afp.com/doc.afp.com.98XY4WG",
    "data_checagem": "2026-02-25",
    "rotulo": "Enganoso",
@@ -7775,27 +7898,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Fila de pessoas em busca de gás no governo Lula",
-   "quem_disse": "Várias fontes",
-   "data_afirmacao": "2026-02-07",
-   "agencia": "AFP Checamos",
-   "site": "checamos.afp.com",
-   "titulo": "Foto da “fila do gás” foi registrada no governo Bolsonaro durante a pandemia, não na gestão Lula",
-   "url": "https://checamos.afp.com/doc.afp.com.98TX3T4",
-   "data_checagem": "2026-02-24",
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula da silva interrompido por estar totalmente confuso e bêbedo em público",
    "quem_disse": "Utilizador do Facebook",
    "data_afirmacao": "2026-01-31",
@@ -7817,15 +7919,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Público grita ‘Lula ladrão, seu lugar é na prisão’ na Sapucaí",
-   "quem_disse": "desinformação",
-   "data_afirmacao": "2026-02-19",
-   "agencia": "Aos Fatos",
-   "site": "aosfatos.org",
-   "titulo": "Vídeo que mostra vaias a Lula na Sapucaí usa áudio manipulado",
-   "url": "https://www.aosfatos.org/noticias/video-que-mostra-vaias-a-lula-na-sapucai-usa-audio-manipulado/",
+   "afirmacao": "Protesto de nordestinos contra Lula",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-01-03",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Vídeo mostra protesto contra ação policial na gestão de Cláudio Castro no Rio; não de nordestinos contra Lula",
+   "url": "https://checamos.afp.com/doc.afp.com.988A29E",
    "data_checagem": "2026-02-19",
-   "rotulo": "falso",
+   "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -7847,6 +7949,90 @@
    "url": "https://checamos.afp.com/doc.afp.com.983U6G3",
    "data_checagem": "2026-02-18",
    "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Alfaiate de Lula recebeu R$ 31 milhões para fazer terno",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-02-06",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "CPMI do INSS não concluiu que alfaiate recebeu R$ 31 milhões de Lula",
+   "url": "https://checamos.afp.com/doc.afp.com.972K9CQ",
+   "data_checagem": "2026-02-11",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Vídeo mostra protesto de nordestinos contra Lula",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-02-10",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Vídeo mostra protesto de cariocas contra Cláudio Castro, não de nordestinos contra Lula",
+   "url": "https://www.aosfatos.org/noticias/video-mostra-protesto-de-cariocas-contra-claudio-castro-nao-de-nordestinos-contra-lula/",
+   "data_checagem": "2026-02-10",
+   "rotulo": "falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "CNN desmente fala de Lula sobre mercado de trabalho",
+   "quem_disse": "Várias fontes",
+   "data_afirmacao": "2026-01-30",
+   "agencia": "AFP Checamos",
+   "site": "checamos.afp.com",
+   "titulo": "Lula não foi desmentido pela CNN sobre dados de trabalho citados em discurso; posts comparam dados diferentes",
+   "url": "https://checamos.afp.com/doc.afp.com.96X93G3",
+   "data_checagem": "2026-02-10",
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula diz que foliões não devem levar celular no Carnaval para evitar roubos",
+   "quem_disse": "desinformação",
+   "data_afirmacao": "2026-02-09",
+   "agencia": "Aos Fatos",
+   "site": "aosfatos.org",
+   "titulo": "Lula não aconselhou que população deixe celular em casa para ...",
+   "url": "https://www.aosfatos.org/noticias/lula-nao-aconselhou-populacao-deixe-celular-casa-evitar-roubo-carnaval/",
+   "data_checagem": "2026-02-09",
+   "rotulo": "falso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -8196,13 +8382,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Nordestinos ficam revoltados após as eleições, Lula bloqueou o auxílio gás até dezembro de 2026 após reeleição",
+   "afirmacao": "Lula defendeu prisão para trabalhadores e proteção a bandidos",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Matéria não exibe fila por suposto bloqueio do Auxílio Gás; vídeo é de 2023",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/11/06/falso-reportagem-pessoas-revoltadas-bloqueio-auxilio-gas.ghtm",
+   "titulo": "Lula não defendeu proteção a bandidos e prisão para trabalhadores",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/11/06/falso-lula-defendeu-protecao-bandidos-prisao-trabalhadores.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -8217,13 +8403,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula defendeu prisão para trabalhadores e proteção a bandidos",
+   "afirmacao": "Nordestinos ficam revoltados após as eleições, Lula bloqueou o auxílio gás até dezembro de 2026 após reeleição",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula não defendeu proteção a bandidos e prisão para trabalhadores",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/11/06/falso-lula-defendeu-protecao-bandidos-prisao-trabalhadores.ghtm",
+   "titulo": "Matéria não exibe fila por suposto bloqueio do Auxílio Gás; vídeo é de 2023",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/11/06/falso-reportagem-pessoas-revoltadas-bloqueio-auxilio-gas.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -8303,27 +8489,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula recebeu 165 mil votos de origem desconhecida no 2º turno",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "É falso que Lula recebeu 165 mil votos de origem desconhecida no 2º turno",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/30/falso-lula-165-mil-votos-origem-desconhecida.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula diz que Brasil não pode depender do Bolsa Família e vai alterar regras do programa",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
@@ -8345,13 +8510,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Professores petistas entram em greve em menos de três dias após eleições, depois que Lula anunciou corte de 6 bilhões na Educação",
+   "afirmacao": "Lula recebeu 165 mil votos de origem desconhecida no 2º turno",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Vídeo mostra greve de professores encerrada antes do resultado eleitoral",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/29/desinformacao-falso-video-greve-professores-sergipe-corte-educacao-eleicoes.ghtm",
+   "titulo": "É falso que Lula recebeu 165 mil votos de origem desconhecida no 2º turno",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/30/falso-lula-165-mil-votos-origem-desconhecida.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -8389,13 +8554,34 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula corta auxílio reclusão de presos: família vai pagar pela irresponsabilidade",
-   "quem_disse": "boato de internet",
+   "afirmacao": "Professores petistas entram em greve em menos de três dias após eleições, depois que Lula anunciou corte de 6 bilhões na Educação",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula vetou auxílio-reclusão a membro de facção em março; não após vitória",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/29/lula-nao-encerrou-auxilio-reclusao-apos-2-turno-fala-e-do-pl-antifaccao.ghtm",
+   "titulo": "Vídeo mostra greve de professores encerrada antes do resultado eleitoral",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/29/desinformacao-falso-video-greve-professores-sergipe-corte-educacao-eleicoes.ghtm",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula anuncia cortes de R$ 6 bilhões na Saúde e Educação",
+   "quem_disse": "Boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Lula não anunciou corte bilionário em Saúde e Educação; notícia é de 2024",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/29/lula-nao-anunciou-cortes-bilionarios-na-saude-e-educacao-noticia-e-de-2024.ghtm",
    "data_checagem": null,
    "rotulo": "Distorcido",
    "idioma": "pt",
@@ -8410,13 +8596,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula anuncia cortes de R$ 6 bilhões na Saúde e Educação",
-   "quem_disse": "Boato de internet",
+   "afirmacao": "Lula corta auxílio reclusão de presos: família vai pagar pela irresponsabilidade",
+   "quem_disse": "boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula não anunciou corte bilionário em Saúde e Educação; notícia é de 2024",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/29/lula-nao-anunciou-cortes-bilionarios-na-saude-e-educacao-noticia-e-de-2024.ghtm",
+   "titulo": "Lula vetou auxílio-reclusão a membro de facção em março; não após vitória",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/29/lula-nao-encerrou-auxilio-reclusao-apos-2-turno-fala-e-do-pl-antifaccao.ghtm",
    "data_checagem": null,
    "rotulo": "Distorcido",
    "idioma": "pt",
@@ -8559,27 +8745,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "PCC e CV declaram apoio a Lula no 2° turno",
-   "quem_disse": "boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "É falso que PCC e CV declararam apoio a Lula",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/20/e-falso-que-pcc-e-cv-declararam-apoio-a-lula.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "IstoÉ publicou capa com Flávio Bolsonaro e título \"Nasce o anti-Lula\"",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
@@ -8603,34 +8768,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Deputada Ana Elisa publicou em seu perfil do X, pedindo para Lula (PT) fechar as igrejas e que \"crente só faz m****\"",
-   "quem_disse": "Boato de internet",
+   "afirmacao": "PCC e CV declaram apoio a Lula no 2° turno",
+   "quem_disse": "boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Deputada nega post sobre fechar igrejas divulgado por Nikolas Ferreira",
-   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/16/deputada-nega-post-sobre-fechar-igrejas-divulgado-por-nikolas-ferreira.ghtm",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Donald Trump ameaça Lula de prisão",
-   "quem_disse": "Boatos de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Vídeo manipulado usa imagem de Trump para simular ameaça de prisão a Lula",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/16/e-falso-que-trump-mandou-recado-com-ameaca-a-lula-video-e-manipulado.ghtm",
+   "titulo": "É falso que PCC e CV declararam apoio a Lula",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/20/e-falso-que-pcc-e-cv-declararam-apoio-a-lula.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -8687,6 +8831,48 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Donald Trump ameaça Lula de prisão",
+   "quem_disse": "Boatos de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Vídeo manipulado usa imagem de Trump para simular ameaça de prisão a Lula",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/16/e-falso-que-trump-mandou-recado-com-ameaca-a-lula-video-e-manipulado.ghtm",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Deputada Ana Elisa publicou em seu perfil do X, pedindo para Lula (PT) fechar as igrejas e que \"crente só faz m****\"",
+   "quem_disse": "Boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Deputada nega post sobre fechar igrejas divulgado por Nikolas Ferreira",
+   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/16/deputada-nega-post-sobre-fechar-igrejas-divulgado-por-nikolas-ferreira.ghtm",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Assistente de inteligência artificial no WhatsApp faz artes para Lula e Flávio, sem distinção",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
@@ -8707,6 +8893,27 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Foto de ato pró-Lula mostra praia e mar de Copacabana lotados",
+   "quem_disse": "Boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Foto de ato pró-Lula em Copacabana é alterada com IA para encher praia",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/14/falso-ia-foto-ato-lula-copacabana-praia-lotada-eleicoes.ghtm",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -8752,69 +8959,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Foto de ato pró-Lula mostra praia e mar de Copacabana lotados",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Foto de ato pró-Lula em Copacabana é alterada com IA para encher praia",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/14/falso-ia-foto-ato-lula-copacabana-praia-lotada-eleicoes.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Imagem de manifestação pró-Lula deste domingo (11) foi gerada por IA",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Foto de ato pró-Lula na Paulista é real; imagem bolsonarista é que usou IA",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/13/desinformacao-falso-imagem-manifestacao-bolsonarista-ia-pro-lula-eleicoes.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Ato pró-Lula na Paulista teve invocação a Satanás",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Vídeo mostra Marcha para Exu, e não 'invocação a Satanás' em ato pró-Lula",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/13/falso-video-ato-lula-paulista-invocacao-satanas.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula diz que 'mulher é igual milho nasceu pelinho já pode comer'",
    "quem_disse": "Boatos de internet",
    "data_afirmacao": null,
@@ -8822,6 +8966,27 @@
    "site": "noticias.uol.com.br",
    "titulo": "É falso que Lula comparou mulheres a milho em fala com conotação pedófila",
    "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/13/e-falso-que-lula-comparou-mulheres-a-milho-em-contexto-pedofilo.ghtm",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Imagem mostra trabalhadora limpando pichações na estação do metrô Trianon-Masp após ato da campanha do presidente e candidato à reeleição Lula (PT) na Avenida Paulista",
+   "quem_disse": "boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Imagem de mulher limpando pichação em metrô de SP foi feita com IA",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/13/imagem-de-mulher-negra-limpando-pichacao-em-metro-e-ia.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -8857,13 +9022,34 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Imagem mostra trabalhadora limpando pichações na estação do metrô Trianon-Masp após ato da campanha do presidente e candidato à reeleição Lula (PT) na Avenida Paulista",
-   "quem_disse": "boato de internet",
+   "afirmacao": "Ato pró-Lula na Paulista teve invocação a Satanás",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Imagem de mulher limpando pichação em metrô de SP foi feita com IA",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/13/imagem-de-mulher-negra-limpando-pichacao-em-metro-e-ia.ghtm",
+   "titulo": "Vídeo mostra Marcha para Exu, e não 'invocação a Satanás' em ato pró-Lula",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/13/falso-video-ato-lula-paulista-invocacao-satanas.ghtm",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Imagem de manifestação pró-Lula deste domingo (11) foi gerada por IA",
+   "quem_disse": "Boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Foto de ato pró-Lula na Paulista é real; imagem bolsonarista é que usou IA",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/13/desinformacao-falso-imagem-manifestacao-bolsonarista-ia-pro-lula-eleicoes.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -8941,15 +9127,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Presidência Flávio Bolsonaro (PL) estaria com mais de 60% das intenções de voto e, Lula (PT), cerca de 30%",
-   "quem_disse": "boato de internet",
+   "afirmacao": "TSE determinou dias diferentes para eleitores do Flávio e do Lula votarem",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Gráfico que mostra 60% de chance de vitória para Flávio é de site de aposta",
-   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/04/60-de-chance-de-vitoria-de-flavio-aposta-nao-e-pesquisa-eleitoral.ghtm",
+   "titulo": "Todo mundo vota hoje; TSE não separou dias para eleitores de Flávio e Lula",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/04/desinformacao-audio-falso-tse-dias-diferentes-eleitores-flavio-lula-votarem.ghtm",
    "data_checagem": null,
-   "rotulo": "Enganoso",
+   "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
     "Flávio Bolsonaro",
@@ -8960,7 +9146,7 @@
     "Flávio Bolsonaro"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -8985,15 +9171,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "TSE determinou dias diferentes para eleitores do Flávio e do Lula votarem",
-   "quem_disse": "Boato de internet",
+   "afirmacao": "Presidência Flávio Bolsonaro (PL) estaria com mais de 60% das intenções de voto e, Lula (PT), cerca de 30%",
+   "quem_disse": "boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Todo mundo vota hoje; TSE não separou dias para eleitores de Flávio e Lula",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/04/desinformacao-audio-falso-tse-dias-diferentes-eleitores-flavio-lula-votarem.ghtm",
+   "titulo": "Gráfico que mostra 60% de chance de vitória para Flávio é de site de aposta",
+   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/04/60-de-chance-de-vitoria-de-flavio-aposta-nao-e-pesquisa-eleitoral.ghtm",
    "data_checagem": null,
-   "rotulo": "Falso",
+   "rotulo": "Enganoso",
    "idioma": "pt",
    "consulta": [
     "Flávio Bolsonaro",
@@ -9002,6 +9188,27 @@
    "candidatos": [
     "Lula",
     "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Avião usado pelo governo dos Estados Unidos na captura de Nicolás Maduro está no Brasil para levar o presidente Luiz Inácio Lula da Silva",
+   "quem_disse": "Boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Avião dos EUA veio ao Brasil para exercício militar e já deixou o país",
+   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/04/desinformacao-falso-aviao-maduro-brasil-capturar-lula.ghtm",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
@@ -9029,13 +9236,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Avião usado pelo governo dos Estados Unidos na captura de Nicolás Maduro está no Brasil para levar o presidente Luiz Inácio Lula da Silva",
+   "afirmacao": "Luiz Inácio Lula da Silva (PT) foi alvo de deboche por parte do presidente do Paraguai na ONU",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Avião dos EUA veio ao Brasil para exercício militar e já deixou o país",
-   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/04/desinformacao-falso-aviao-maduro-brasil-capturar-lula.ghtm",
+   "titulo": "Vídeo descontextualizado de Lula no Paraguai sugere constrangimento na ONU",
+   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/02/lula-paraguai-onu-marco-rubio-desinformacao-video-falso.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9057,27 +9264,6 @@
    "site": "noticias.uol.com.br",
    "titulo": "Vídeo de Xuxa é antigo e critica declaração de Bolsonaro sobre menores",
    "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/02/video-xuxa-criticando-lula-bolsonaro-menores-eleicoes-2026-2022.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Luiz Inácio Lula da Silva (PT) foi alvo de deboche por parte do presidente do Paraguai na ONU",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Vídeo descontextualizado de Lula no Paraguai sugere constrangimento na ONU",
-   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/10/02/lula-paraguai-onu-marco-rubio-desinformacao-video-falso.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9155,69 +9341,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Presidente do Paraguai agradece a Lula na ONU por fuga de empresas para o país",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Presidente do Paraguai não agradeceu a Lula na ONU por 'fuga' de empresas",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/30/falso-presidente-paraguai-agradece-lula-fuga-empresas.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Romário critica Lula pelo fim das bets e o acusa de debochar da torcida do Flamengo",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Vídeo de Romário criticando Lula pelo fim das bets foi manipulado por IA",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/30/falso-romario-video-critica-lula-fim-bets-ia.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Renan Santos anuncia apoio a Lula no segundo turno da eleição",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": "2026-09-29",
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "É falso que Renan Santos declarou apoio a Lula em eventual 2º turno",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/30/e-falso-que-renan-santos-anunciou-apoio-a-lula-em-eventual-2-turno.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Ives Granda teria afirmado que votar no Lula significaria uma ‘tolerância moralmente insustentável com o crime e o criminoso’",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
@@ -9225,6 +9348,27 @@
    "site": "noticias.uol.com.br",
    "titulo": "Post atribui fala a Ives Gandra sobre Lula, mas jurista desconhece frase",
    "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/09/29/desinformacao-falso-ives-gandra-votar-em-lula-tolerancia-crime.ghtm",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Governo Lula distribui kit de higiene anal no SUS",
+   "quem_disse": "Boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "É falso que governo Lula passou a distribuir kit de higiene anal no SUS",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/29/e-falso-que-governo-lula-esteja-distribuindo-kit-de-higiene-anal-no-sus.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9260,13 +9404,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Governo Lula distribui kit de higiene anal no SUS",
-   "quem_disse": "Boato de internet",
+   "afirmacao": "Lula acaba de anunciar em seu perfil oficial aulas de candomblé e umbanda nas escolas a partir de 2027 e punição criminal para os pais que se recusarem",
+   "quem_disse": "boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "É falso que governo Lula passou a distribuir kit de higiene anal no SUS",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/29/e-falso-que-governo-lula-esteja-distribuindo-kit-de-higiene-anal-no-sus.ghtm",
+   "titulo": "É falso que Lula anunciou aula obrigatória de candomblé e umbanda em escola",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/28/falso-lula-candomble-e-umbanda-nas-escolas-punicao-pais-que-recusarem.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9304,27 +9448,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula acaba de anunciar em seu perfil oficial aulas de candomblé e umbanda nas escolas a partir de 2027 e punição criminal para os pais que se recusarem",
-   "quem_disse": "boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "É falso que Lula anunciou aula obrigatória de candomblé e umbanda em escola",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/28/falso-lula-candomble-e-umbanda-nas-escolas-punicao-pais-que-recusarem.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula chorou ao falar sobre plano econômico de Flávio Bolsonaro na Record",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
@@ -9348,13 +9471,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "PF prende dupla com R$ 2,5 mi que seriam destinados à compra de voto para Lula",
+   "afirmacao": "Vídeo mostra comício de Lula lotado em Florianópolis (SC)",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Caso de dupla presa com R$ 2,5 milhões no Pará não tem ligação com Lula",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/24/e-falso-que-dupla-presa-com-r-25-mi-tinha-ligacao-com-campanha-de-lula.ghtm",
+   "titulo": "Vídeo é de ato contra PL da Dosimetria no Rio, e não comício de Lula em SC",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/24/falso-video-lula-comicio-florianopolis.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9369,13 +9492,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra comício de Lula lotado em Florianópolis (SC)",
+   "afirmacao": "PF prende dupla com R$ 2,5 mi que seriam destinados à compra de voto para Lula",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Vídeo é de ato contra PL da Dosimetria no Rio, e não comício de Lula em SC",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/24/falso-video-lula-comicio-florianopolis.ghtm",
+   "titulo": "Caso de dupla presa com R$ 2,5 milhões no Pará não tem ligação com Lula",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/24/e-falso-que-dupla-presa-com-r-25-mi-tinha-ligacao-com-campanha-de-lula.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9495,13 +9618,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Ato da esquerda em apoio aos presidente Lula reuniu 41, 8 mil pessoas",
+   "afirmacao": "Mendonça declarou Lula inelegível",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Vídeo que mostra ato da esquerda em Copacabana é de 2025, e não atual",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/16/e-de-2025-video-que-mostra-ato-da-esquerda-em-copacabana.ghtm",
+   "titulo": "Mendonça não tornou Lula inelegível; vídeo do JN foi adulterado por IA",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/16/falso-mendonca-declarou-lula-inelegivel-video-ia.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9516,13 +9639,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Mendonça declarou Lula inelegível",
+   "afirmacao": "Ato da esquerda em apoio aos presidente Lula reuniu 41, 8 mil pessoas",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Mendonça não tornou Lula inelegível; vídeo do JN foi adulterado por IA",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/16/falso-mendonca-declarou-lula-inelegivel-video-ia.ghtm",
+   "titulo": "Vídeo que mostra ato da esquerda em Copacabana é de 2025, e não atual",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/16/e-de-2025-video-que-mostra-ato-da-esquerda-em-copacabana.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -9558,13 +9681,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula é ovacionado por público durante o Rock in Rio 2026",
-   "quem_disse": "Boato de internet",
+   "afirmacao": "Lula diz: \"Época de eleição o pobre é o patrimônio mais importante de um país, depois das eleições o pobre é esquecido e a vida segue\"",
+   "quem_disse": "boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Vídeo de público cantando 'Olê, olê, olá, Lula' no Rock in Rio é de 2022",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/09/video-que-mostra-publico-cantando-lula-lula-no-rock-in-rio-e-de-2022.ghtm",
+   "titulo": "Frase de Lula sobre pobre nas eleições é tirada de contexto",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/09/enganoso-lula-pobre-patrimonio-eleicao.ghtm",
    "data_checagem": null,
    "rotulo": "Distorcido",
    "idioma": "pt",
@@ -9579,13 +9702,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula diz: \"Época de eleição o pobre é o patrimônio mais importante de um país, depois das eleições o pobre é esquecido e a vida segue\"",
-   "quem_disse": "boato de internet",
+   "afirmacao": "Lula é ovacionado por público durante o Rock in Rio 2026",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Frase de Lula sobre pobre nas eleições é tirada de contexto",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/09/enganoso-lula-pobre-patrimonio-eleicao.ghtm",
+   "titulo": "Vídeo de público cantando 'Olê, olê, olá, Lula' no Rock in Rio é de 2022",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/09/video-que-mostra-publico-cantando-lula-lula-no-rock-in-rio-e-de-2022.ghtm",
    "data_checagem": null,
    "rotulo": "Distorcido",
    "idioma": "pt",
@@ -9686,27 +9809,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula sanciona lei para instituir banheiros sem gênero definido",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "É falso que Lula tenha sancionado lei que institui banheiros unissex",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/03/lula-nao-sancionou-lei-que-institui-banheiros-unissex.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Ponte enorme foi construída no Brasil durante governo Lula",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
@@ -9728,23 +9830,21 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo de Javier Milei falando em português e apoiando Flávio Bolsonaro e criticando Lula",
+   "afirmacao": "Lula sanciona lei para instituir banheiros sem gênero definido",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Vídeo de Milei com motosserra criticando Lula e apoiando Flávio é IA",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/02/desinformacao-ia-falso-video-milei-portugues-apoio-flavio-critica-lula.ghtm",
+   "titulo": "É falso que Lula tenha sancionado lei que institui banheiros unissex",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/03/lula-nao-sancionou-lei-que-institui-banheiros-unissex.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
-    "Flávio Bolsonaro",
     "Lula"
    ],
    "candidatos": [
-    "Lula",
-    "Flávio Bolsonaro"
+    "Lula"
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
@@ -9772,24 +9872,26 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula menospreza garis durante discurso",
+   "afirmacao": "Vídeo de Javier Milei falando em português e apoiando Flávio Bolsonaro e criticando Lula",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula não menosprezou garis em discurso; vídeo é tirado de contexto",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/01/enganoso-lula-humilha-garis.ghtm",
+   "titulo": "Vídeo de Milei com motosserra criticando Lula e apoiando Flávio é IA",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/02/desinformacao-ia-falso-video-milei-portugues-apoio-flavio-critica-lula.ghtm",
    "data_checagem": null,
-   "rotulo": "Distorcido",
+   "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
+    "Flávio Bolsonaro",
     "Lula"
    ],
    "candidatos": [
-    "Lula"
+    "Lula",
+    "Flávio Bolsonaro"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -9814,15 +9916,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo em que o presidente Luiz Inácio Lula da Silva (PT) aparece com cinco dedos na mão esquerda questiona o uso de inteligência artificial (IA) e alimenta teorias conspiratórias sobre o uso de um sósia",
+   "afirmacao": "Lula menospreza garis durante discurso",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Vídeo de Lula com 10 dedos gera discussão sobre uso de IA nas eleições",
-   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/08/31/desinformacao-lula-10-dedos-ia-regras-tse-eleicoes.ghtm",
+   "titulo": "Lula não menosprezou garis em discurso; vídeo é tirado de contexto",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/01/enganoso-lula-humilha-garis.ghtm",
    "data_checagem": null,
-   "rotulo": "Enganoso",
+   "rotulo": "Distorcido",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -9835,15 +9937,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Ato de lançamento da campanha de Lula estava vazio",
+   "afirmacao": "Vídeo em que o presidente Luiz Inácio Lula da Silva (PT) aparece com cinco dedos na mão esquerda questiona o uso de inteligência artificial (IA) e alimenta teorias conspiratórias sobre o uso de um sósia",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula não lançou campanha em estádio vazio; vídeo mostra início de ato",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/08/28/ato-de-lula-nao-estava-vazio-video-foi-tirado-de-contexto.ghtm",
+   "titulo": "Vídeo de Lula com 10 dedos gera discussão sobre uso de IA nas eleições",
+   "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2026/08/31/desinformacao-lula-10-dedos-ia-regras-tse-eleicoes.ghtm",
    "data_checagem": null,
-   "rotulo": "Distorcido",
+   "rotulo": "Enganoso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -9874,6 +9976,27 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Ato de lançamento da campanha de Lula estava vazio",
+   "quem_disse": "Boato de internet",
+   "data_afirmacao": null,
+   "agencia": "UOL Notícias",
+   "site": "noticias.uol.com.br",
+   "titulo": "Lula não lançou campanha em estádio vazio; vídeo mostra início de ato",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/08/28/ato-de-lula-nao-estava-vazio-video-foi-tirado-de-contexto.ghtm",
+   "data_checagem": null,
+   "rotulo": "Distorcido",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -9982,13 +10105,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula deu reajuste de só R$ 18 a professores, enquanto Bolsonaro deu 33%",
-   "quem_disse": "boato de internet",
+   "afirmacao": "Lula diz que 'PT é uma merda'",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Governo Lula deu reajuste de R$ 262 a professores após MP, e não de R$ 18",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/08/19/governo-lula-deu-reajuste-de-r-262-a-professores-apos-mp-e-nao-de-r-18.ghtm",
+   "titulo": "Lula não chamou o PT de 'merda'; frase é de Maria da Conceição Tavares",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/08/19/video-em-que-lula-diz-que-pt-e-uma-merda-foi-retirado-de-contexto.ghtm",
    "data_checagem": null,
    "rotulo": "Distorcido",
    "idioma": "pt",
@@ -10003,13 +10126,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula diz que 'PT é uma merda'",
-   "quem_disse": "Boato de internet",
+   "afirmacao": "Lula deu reajuste de só R$ 18 a professores, enquanto Bolsonaro deu 33%",
+   "quem_disse": "boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula não chamou o PT de 'merda'; frase é de Maria da Conceição Tavares",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/08/19/video-em-que-lula-diz-que-pt-e-uma-merda-foi-retirado-de-contexto.ghtm",
+   "titulo": "Governo Lula deu reajuste de R$ 262 a professores após MP, e não de R$ 18",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/08/19/governo-lula-deu-reajuste-de-r-262-a-professores-apos-mp-e-nao-de-r-18.ghtm",
    "data_checagem": null,
    "rotulo": "Distorcido",
    "idioma": "pt",
@@ -10301,13 +10424,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula criticou Neymar após eliminação do Brasil na Copa do Mundo",
+   "afirmacao": "Mapa mostra que Lula foi o mais votado pelas mulheres em ampla maioria dos estados em 2022",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula não criticou Neymar após eliminação do Brasil na Copa do Mundo",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/07/07/falso-lula-critica-neymar-eliminacao-brasil-copa-do-mundo.ghtm",
+   "titulo": "Mapa que mostra voto feminino por estado nas eleições de 2022 é falso",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/07/03/falso-mapa-votacao-feminina-2022-brasil-lula-bolsonaro.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -10364,13 +10487,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula não reconhece presidente eleito na Colômbia",
-   "quem_disse": "Boatos de internet",
+   "afirmacao": "Ponte que desabou no Acre foi construída do governo Lula",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "É falso que Lula disse não reconhecer vitória da direita na Colômbia",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/06/25/e-falso-que-lula-disse-nao-reconhecer-vitoria-da-direita-na-colombia.ghtm",
+   "titulo": "Governo Lula não participou da construção de ponte que desabou no Acre",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/06/12/governo-lula-nao-participou-da-construcao-de-ponte-que-desabou-no-ac.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -10406,13 +10529,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Ponte que desabou no Acre foi construída do governo Lula",
+   "afirmacao": "Trump deporta diplomatas petistas dos EUA e Lula se revolta. Tensão internacional aumenta",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Governo Lula não participou da construção de ponte que desabou no Acre",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/06/12/governo-lula-nao-participou-da-construcao-de-ponte-que-desabou-no-ac.ghtm",
+   "titulo": "Trump não deportou 'diplomatas petistas' dos EUA; imagem é IA",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/06/10/falso-eua-trump-deportacao-diplomatas-brasileiros.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -10427,18 +10550,19 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "BOMBA EXPLODE AGORA! PF ABRE CÓDIGO FONTE! LULA TEVE SÓ 36,32%",
-   "quem_disse": "Boato de internet",
+   "afirmacao": "Pilili, mascote da urna eletrônica, faz o L de Lula",
+   "quem_disse": "boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "PF não descobriu que Lula teve 36% dos votos e perdeu a eleição em 2022",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/06/09/pf-nao-descobriu-que-lula-perdeu-a-eleicao-em-2022.ghtm",
+   "titulo": "É falso que Pilili, mascote da urna, fez o L de Lula",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/05/08/falso-mascote-tse-fez-o-l.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
-    "Lula"
+    "Lula",
+    "urna eletrônica"
    ],
    "candidatos": [
     "Lula"
@@ -10471,27 +10595,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Até quando vamos ser enganados? - imagem de Lula com 10 dedos",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Imagem de Lula com 10 dedos e mala de dinheiro é IA",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/04/30/falso-imagem-lula-mala-dinheiro-ia.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula diz: \"Eu só ganhei as eleições porque o povo nordestino é analfabeto\"",
    "quem_disse": "boato de internet",
    "data_afirmacao": null,
@@ -10513,13 +10616,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula é expulso de igreja após aparecer bêbado!?",
+   "afirmacao": "Lula rebate Trump e diz que o povo brasileiro está disposto a dar a vida por ele numa eventual guerra",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Lula não foi expulso da igreja por estar bêbado",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/04/23/falso-lula-expulso-igreja-espanha-bebado.ghtm",
+   "titulo": "Lula não disse que brasileiros 'dariam vida por ele' em guerra com EUA",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/04/23/falso-lula-brasileiros-dariam-vida-por-ele-guerra-eua.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -10534,34 +10637,36 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula destinou 15 milhões de reais a empresas do Oriente Médio afetadas pela guerra e esse dinheiro sai do bolso do povo brasileiro",
-   "quem_disse": "boato de internet",
+   "afirmacao": "Em evento na cidade de Porto Alegre (RS), o Senador Flávio Bolsonaro (PL-RJ) afirmou que pretende REVOGAR A ISENÇÃO DO IMPOSTO DE RENDA do Presidente Lula (PT-SP)",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "É falso que Lula enviou R$ 15 bi para empresas do Oriente Médio",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/04/10/checagem-governo-lula-15-bilhoes-empresas-oriente-medio.ghtm",
+   "titulo": "Flávio Bolsonaro não disse que revogará isenção do IR se ganhar eleição",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/04/22/falso-flavio-bolsonaro-revogar-isencao-ir.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
+    "Flávio Bolsonaro",
     "Lula"
    ],
    "candidatos": [
-    "Lula"
+    "Lula",
+    "Flávio Bolsonaro"
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Trump manda a secretaria dele rasgar o documento que o presidente Lula mandou pra ele assinar e foi aplaudido de pé pelo seu povo",
-   "quem_disse": "boato de internet",
+   "afirmacao": "Prisão de Lula é questão de tempo assim como foi com seu amigo Maduro",
+   "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "É falos que Trump não mandou secretária rasgar documento de Lula",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/03/30/falso-secretaria-trump-rasga-papel-lula-nancy-pelosi.ghtm",
+   "titulo": "Trump não ameaçou prender Lula e libertar Bolsonaro; dublagem é falsa",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/04/08/falso-video-trump-lula-presidiario-libertar-bolsonaro.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -10997,13 +11102,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Polícia descobre compra de votos para Flávio Bolsonaro em vários estados do norte e nordeste; R$ 27 milhões restantes são apreendidos",
+   "afirmacao": "Flávio Bolsonaro ganhou no 1º turno com 54,98%",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Flávio Bolsonaro não foi alvo de operação da PF por compra de votos",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/08/flavio-bolsonaro-nao-foi-alvo-de-operacao-da-pf-por-compra-de-votos.ghtm",
+   "titulo": "Posts usam cálculo incorreto para dizer que Flávio foi eleito no 1º turno",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/08/falso-flavio-bolsonaro-venceu-eleicao-1o-turno.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -11018,13 +11123,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Flávio Bolsonaro ganhou no 1º turno com 54,98%",
+   "afirmacao": "Polícia descobre compra de votos para Flávio Bolsonaro em vários estados do norte e nordeste; R$ 27 milhões restantes são apreendidos",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Posts usam cálculo incorreto para dizer que Flávio foi eleito no 1º turno",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/08/falso-flavio-bolsonaro-venceu-eleicao-1o-turno.ghtm",
+   "titulo": "Flávio Bolsonaro não foi alvo de operação da PF por compra de votos",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/10/08/flavio-bolsonaro-nao-foi-alvo-de-operacao-da-pf-por-compra-de-votos.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -11165,13 +11270,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Ato de Flávio Bolsonaro no Recife reúne multidão",
+   "afirmacao": "Flávio Bolsonaro usa camisa com frase ofensiva contra nordestinos",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Vídeo é de multidão em show na PB, e não ato de Flávio Bolsonaro no Recife",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/25/video-mostra-show-na-paraiba-nao-ato-de-flavio-bolsonaro.ghtm",
+   "titulo": "Montagem de Flávio com camisa ofensiva a nordestinos volta a circular",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/25/falso-imagem-flavio-bolsonaro-camisa-ofensa-nordestinos.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -11186,13 +11291,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Flávio Bolsonaro usa camisa com frase ofensiva contra nordestinos",
+   "afirmacao": "Ato de Flávio Bolsonaro no Recife reúne multidão",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
    "agencia": "UOL Notícias",
    "site": "noticias.uol.com.br",
-   "titulo": "Montagem de Flávio com camisa ofensiva a nordestinos volta a circular",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/25/falso-imagem-flavio-bolsonaro-camisa-ofensa-nordestinos.ghtm",
+   "titulo": "Vídeo é de multidão em show na PB, e não ato de Flávio Bolsonaro no Recife",
+   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/09/25/video-mostra-show-na-paraiba-nao-ato-de-flavio-bolsonaro.ghtm",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -11459,48 +11564,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Deu ruim! Moraes vai para cima e manda PF prender Flávio e Eduardo Bolsonaro após encontro com Trump",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Moraes não pediu prisão de Eduardo e Flávio Bolsonaro após visita a Trump",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/06/02/falso-moraes-mandado-prisao-flavio-eduardo-bolsonaro.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Casa Branca desmente encontro entre Flávio Bolsonaro com Donald Trump",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Casa Branca não desmentiu reunião entre Trump e Flávio Bolsonaro",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/06/01/falso-casa-branca-desmente-reuniao-donald-trump-flavio-bolsonaro.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "\"URGENTE - Flávio Bolsonaro vai acabar com o Bolsa Família de R$ 600,00 e poderá retornar com Auxílio Brasil de R$ 1.200,00 para famílias carentes caso seja eleito Presidente do Brasil\"",
    "quem_disse": "Boato de internet",
    "data_afirmacao": null,
@@ -11663,28 +11726,6 @@
     "Flávio Bolsonaro"
    ],
    "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Em evento na cidade de Porto Alegre (RS), o Senador Flávio Bolsonaro (PL-RJ) afirmou que pretende REVOGAR A ISENÇÃO DO IMPOSTO DE RENDA do Presidente Lula (PT-SP)",
-   "quem_disse": "Boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "Flávio Bolsonaro não disse que revogará isenção do IR se ganhar eleição",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/04/22/falso-flavio-bolsonaro-revogar-isencao-ir.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Lula",
     "Flávio Bolsonaro"
    ],
    "desde_o_debate": false,
@@ -11859,27 +11900,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Pilili, mascote da urna eletrônica, faz o L de Lula",
-   "quem_disse": "boato de internet",
-   "data_afirmacao": null,
-   "agencia": "UOL Notícias",
-   "site": "noticias.uol.com.br",
-   "titulo": "É falso que Pilili, mascote da urna, fez o L de Lula",
-   "url": "https://noticias.uol.com.br/confere/ultimas-noticias/2026/05/08/falso-mascote-tse-fez-o-l.ghtm",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "urna eletrônica"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula disse que “o vento está levando o ódio”, após tornados atingiram Santa Catarina",
    "quem_disse": "Boato nas redes sociais",
    "data_afirmacao": "2026-11-13",
@@ -12011,27 +12031,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Os R$5 mil prometidos pelo presidente Luiz Inácio Lula da Silva para microempreendedores individuais (MEls) podem cair para apenas R$363.",
-   "quem_disse": "Boatos em redes sociais.",
-   "data_afirmacao": "2026-11-03",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Não é verdade que os R$ 5 mil prometidos para Pix MEI podem cair para R$ 363",
-   "url": "https://www.estadao.com.br/estadao-verifica/enganoso-5-mil-prometidos-pix-mei-cair-363/",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Reportagem mostra que governo Lula anunciou corte de R$6 bi na Saúde e Educação.",
    "quem_disse": "Boato nas redes sociais",
    "data_afirmacao": "2026-11-03",
@@ -12053,13 +12052,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Reportagem diz que o governo Lula bloqueou o auxílio-gás de dezembro.",
-   "quem_disse": "Boato nas redes socias",
-   "data_afirmacao": "2026-10-30",
+   "afirmacao": "Os R$5 mil prometidos pelo presidente Luiz Inácio Lula da Silva para microempreendedores individuais (MEls) podem cair para apenas R$363.",
+   "quem_disse": "Boatos em redes sociais.",
+   "data_afirmacao": "2026-11-03",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Governo Lula não bloqueou auxílio-gás de dezembro; postagens usam reportagem antiga",
-   "url": "https://www.estadao.com.br/estadao-verifica/governo-nao-bloqueou-auxilio-gas-para-dezembro-2026/",
+   "titulo": "Não é verdade que os R$ 5 mil prometidos para Pix MEI podem cair para R$ 363",
+   "url": "https://www.estadao.com.br/estadao-verifica/enganoso-5-mil-prometidos-pix-mei-cair-363/",
    "data_checagem": null,
    "rotulo": "Enganoso",
    "idioma": "pt",
@@ -12095,6 +12094,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Reportagem diz que o governo Lula bloqueou o auxílio-gás de dezembro.",
+   "quem_disse": "Boato nas redes socias",
+   "data_afirmacao": "2026-10-30",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Governo Lula não bloqueou auxílio-gás de dezembro; postagens usam reportagem antiga",
+   "url": "https://www.estadao.com.br/estadao-verifica/governo-nao-bloqueou-auxilio-gas-para-dezembro-2026/",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Após a reeleição, Lula diz que o Brasil “não pode viver eternamente do Bolsa Família” e defende mudanças no benefício.",
    "quem_disse": "Boatos de redes sociais",
    "data_afirmacao": "2026-10-28",
@@ -12116,13 +12136,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra presídio comemorando reeleição de Lula",
-   "quem_disse": "Boatos de redes sociais",
+   "afirmacao": "Após eleição, Lula recua sobre escala 6x1 e vai manter modelo para vários setores",
+   "quem_disse": "Boato nas redes sociais",
    "data_afirmacao": "2026-10-28",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Nikolas divulga vídeo de presos comemorando gol e sugere que é festa por Lula",
-   "url": "https://www.estadao.com.br/estadao-verifica/presidio-comemora-reeleicao-lula-falso/",
+   "titulo": "É falso que governo Lula tenha recuado sobre fim da escala 6x1",
+   "url": "https://www.estadao.com.br/estadao-verifica/governo-lula-recua-escala-6x1-manter-varios-setores-falso/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -12137,13 +12157,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Após eleição, Lula recua sobre escala 6x1 e vai manter modelo para vários setores",
-   "quem_disse": "Boato nas redes sociais",
+   "afirmacao": "Vídeo mostra presídio comemorando reeleição de Lula",
+   "quem_disse": "Boatos de redes sociais",
    "data_afirmacao": "2026-10-28",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "É falso que governo Lula tenha recuado sobre fim da escala 6x1",
-   "url": "https://www.estadao.com.br/estadao-verifica/governo-lula-recua-escala-6x1-manter-varios-setores-falso/",
+   "titulo": "Nikolas divulga vídeo de presos comemorando gol e sugere que é festa por Lula",
+   "url": "https://www.estadao.com.br/estadao-verifica/presidio-comemora-reeleicao-lula-falso/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -12192,28 +12212,8 @@
    "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Lula disse que fará de tudo para tomar o poder, não importa se o País entrar em crise.",
-   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
-   "data_afirmacao": "2026-10-22",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "É falso que Lula tenha dito que fará de tudo para tomar o poder, mesmo se o País entrar em crise",
-   "url": "https://www.estadao.com.br/estadao-verifica/lula-tomar-o-poder-mesmo-se-pais-entrar-crise-falso/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
+    "Lula",
+    "eleições 2026"
    ],
    "candidatos": [
     "Lula"
@@ -12332,6 +12332,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Lula sinaliza que quer acabar com o programa do bolsa família, até o fim do seu mandato",
+   "quem_disse": "Boato de redes sociais",
+   "data_afirmacao": "2026-10-14",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Postagem usa notícia de 2025 para sugerir que Lula pretende acabar com Bolsa Família",
+   "url": "https://www.estadao.com.br/estadao-verifica/postagem-usa-noticia-de-2025-para-sugerir-que-lula-pretende-acabar-com-bolsa-familia/",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Trabalhadora doméstica 'faz o L' de apoio a Lula em apartamento com adesivo de Flávio Bolsonaro",
    "quem_disse": "Boatos em redes sociais",
    "data_afirmacao": "2026-10-14",
@@ -12349,27 +12370,6 @@
    "candidatos": [
     "Lula",
     "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Campanha de Lula vira ritual de invocação",
-   "quem_disse": "Redes Sociais",
-   "data_afirmacao": "2026-10-13",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Vídeo de marcha de religiões afro-brasileiras circula como se fosse de ato pró-Lula na Paulista",
-   "url": "https://www.estadao.com.br/estadao-verifica/video-marcha-religioes-afro-brasileiras-nao-manifestacao-lula/",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
@@ -12397,15 +12397,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula sinaliza que quer acabar com o programa do bolsa família, até o fim do seu mandato",
-   "quem_disse": "Boato de redes sociais",
-   "data_afirmacao": "2026-10-14",
+   "afirmacao": "Campanha de Lula vira ritual de invocação",
+   "quem_disse": "Redes Sociais",
+   "data_afirmacao": "2026-10-13",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Postagem usa notícia de 2025 para sugerir que Lula pretende acabar com Bolsa Família",
-   "url": "https://www.estadao.com.br/estadao-verifica/postagem-usa-noticia-de-2025-para-sugerir-que-lula-pretende-acabar-com-bolsa-familia/",
+   "titulo": "Vídeo de marcha de religiões afro-brasileiras circula como se fosse de ato pró-Lula na Paulista",
+   "url": "https://www.estadao.com.br/estadao-verifica/video-marcha-religioes-afro-brasileiras-nao-manifestacao-lula/",
    "data_checagem": null,
-   "rotulo": "Falso",
+   "rotulo": "Enganoso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -12414,7 +12414,7 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -12590,13 +12590,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Janja diz que “nem Deus tira essa eleição de Lula” em comício no Piauí",
-   "quem_disse": "Boatos de redes sociais",
+   "afirmacao": "Romário diz que Lula deu um \"tiro no pé\" ao proibir bets e debochar da torcida do Flamengo",
+   "quem_disse": "Boato nas redes sociais",
    "data_afirmacao": "2026-10-01",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Montagem altera título de notícia para atribuir a Janja a frase ‘nem Deus tira eleição de Lula’",
-   "url": "https://www.estadao.com.br/estadao-verifica/janja-nem-deus-tira-essa-eleicao-de-lula-falso/",
+   "titulo": "Vídeo manipula voz de Romário para simular que ele criticou Lula por fim das bets",
+   "url": "https://www.estadao.com.br/estadao-verifica/romario-diz-que-lula-deu-tiro-no-pe-ao-proibir-bets-falso/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -12611,13 +12611,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Romário diz que Lula deu um \"tiro no pé\" ao proibir bets e debochar da torcida do Flamengo",
-   "quem_disse": "Boato nas redes sociais",
+   "afirmacao": "Janja diz que “nem Deus tira essa eleição de Lula” em comício no Piauí",
+   "quem_disse": "Boatos de redes sociais",
    "data_afirmacao": "2026-10-01",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Vídeo manipula voz de Romário para simular que ele criticou Lula por fim das bets",
-   "url": "https://www.estadao.com.br/estadao-verifica/romario-diz-que-lula-deu-tiro-no-pe-ao-proibir-bets-falso/",
+   "titulo": "Montagem altera título de notícia para atribuir a Janja a frase ‘nem Deus tira eleição de Lula’",
+   "url": "https://www.estadao.com.br/estadao-verifica/janja-nem-deus-tira-essa-eleicao-de-lula-falso/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -12674,6 +12674,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Torcida do Flamengo protesta contra Lula após fim das bets",
+   "quem_disse": "Boato de redes sociais",
+   "data_afirmacao": "2026-09-29",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Vídeo não mostra torcida do Flamengo protestando contra Lula, e sim chegando ao Maracanã para jogo",
+   "url": "https://www.estadao.com.br/estadao-verifica/video-nao-mostra-torcida-do-flamengo-protestando-contra-lula-e-sim-chegando-ao-maracana-para-jogo/",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Daniela Lima disse que Lula avalia desistir de candidatura contra Flávio Bolsonaro",
    "quem_disse": "Boato nas redes sociais",
    "data_afirmacao": "2026-09-29",
@@ -12694,27 +12715,6 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Torcida do Flamengo protesta contra Lula após fim das bets",
-   "quem_disse": "Boato de redes sociais",
-   "data_afirmacao": "2026-09-29",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Vídeo não mostra torcida do Flamengo protestando contra Lula, e sim chegando ao Maracanã para jogo",
-   "url": "https://www.estadao.com.br/estadao-verifica/video-nao-mostra-torcida-do-flamengo-protestando-contra-lula-e-sim-chegando-ao-maracana-para-jogo/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -12823,27 +12823,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Multidão recepcionou Lula em Belo Horizonnte durante passeata",
-   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
-   "data_afirmacao": "2026-09-16",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "lula belo horizinte passeata 2022",
-   "url": "https://www.estadao.com.br/estadao-verifica/video-de-2022-de-lula-em-belo-horizonte-circula-como-se-fosse-atual/",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Ato da esquerda pró Lula realizado no domingo, dia 13, reuniu 41,8 mil manifestantes em Copacabana.",
    "quem_disse": "Boatos em redes sociais",
    "data_afirmacao": "2026-09-16",
@@ -12886,13 +12865,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra cantos de \"Olê, olê, olê, olá, Lula, Lula\" no Rock in Rio 2026",
-   "quem_disse": "Boatos de redes sociais",
-   "data_afirmacao": "2026-09-15",
+   "afirmacao": "Multidão recepcionou Lula em Belo Horizonnte durante passeata",
+   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
+   "data_afirmacao": "2026-09-16",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Vídeo de manifestação pró-Lula no Rock in Rio de 2022 circula como se fosse recente",
-   "url": "https://www.estadao.com.br/estadao-verifica/lula-ovacionado-rock-in-rio-2026-enganoso/",
+   "titulo": "lula belo horizinte passeata 2022",
+   "url": "https://www.estadao.com.br/estadao-verifica/video-de-2022-de-lula-em-belo-horizonte-circula-como-se-fosse-atual/",
    "data_checagem": null,
    "rotulo": "Enganoso",
    "idioma": "pt",
@@ -12916,6 +12895,27 @@
    "url": "https://www.estadao.com.br/estadao-verifica/video-mendonca-critica-apoio-grupo-terrorista-2024-nao-atual/",
    "data_checagem": null,
    "rotulo": "Fora de contexto",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Vídeo mostra cantos de \"Olê, olê, olê, olá, Lula, Lula\" no Rock in Rio 2026",
+   "quem_disse": "Boatos de redes sociais",
+   "data_afirmacao": "2026-09-15",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Vídeo de manifestação pró-Lula no Rock in Rio de 2022 circula como se fosse recente",
+   "url": "https://www.estadao.com.br/estadao-verifica/lula-ovacionado-rock-in-rio-2026-enganoso/",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -13201,6 +13201,27 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "tentativa de ataque a ônibus rumo ao ato do presidente Lula, em São Bernardo, termina de forma inesperada para os bolsonaristas.",
+   "quem_disse": "Boato de redes sociais",
+   "data_afirmacao": "2026-08-22",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Vídeo não mostra ataque a ônibus com apoiadores de Lula, e sim briga de trânsito em Macapá",
+   "url": "https://www.estadao.com.br/estadao-verifica/video-nao-mostra-ataque-a-onibus-com-apoiadores-de-lula-e-sim-briga-de-transito-em-macapa/",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Lula disse que 'o PT é uma merda'",
    "quem_disse": "Boato nas redes sociais",
    "data_afirmacao": "2026-08-24",
@@ -13229,27 +13250,6 @@
    "site": "estadao.com.br",
    "titulo": "Post engana sobre saúde de Lula para gerar cliques em link de compras online",
    "url": "https://www.estadao.com.br/estadao-verifica/post-engana-sobre-saude-de-lula-para-gerar-cliques-em-link-de-compras-online/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "tentativa de ataque a ônibus rumo ao ato do presidente Lula, em São Bernardo, termina de forma inesperada para os bolsonaristas.",
-   "quem_disse": "Boato de redes sociais",
-   "data_afirmacao": "2026-08-22",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Vídeo não mostra ataque a ônibus com apoiadores de Lula, e sim briga de trânsito em Macapá",
-   "url": "https://www.estadao.com.br/estadao-verifica/video-nao-mostra-ataque-a-onibus-com-apoiadores-de-lula-e-sim-briga-de-transito-em-macapa/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -13422,8 +13422,7 @@
    "rotulo": "Falso",
    "idioma": "pt",
    "consulta": [
-    "Lula",
-    "urna eletrônica"
+    "Lula"
    ],
    "candidatos": [
     "Lula"
@@ -13607,29 +13606,8 @@
    "data_afirmacao": "2026-05-25",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Viagens que custaram R$ 7,35 bilhões são de todo o Poder ...",
+   "titulo": "Viagens que custaram R$ 7,35 bilhões são de todo o Poder Executivo federal, e não só da Presidência",
    "url": "https://www.estadao.com.br/estadao-verifica/lula-nao-gastou-sozinho-7-bilhoes-viagens/",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Deputado do RN ameaça Lula com arma",
-   "quem_disse": "Boato de redes sociais",
-   "data_afirmacao": "2026-05-22",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Deputado do Rio Grande do Norte disse que receberia sindicalistas armado, e não Lula; vídeo é antigo",
-   "url": "https://www.estadao.com.br/estadao-verifica/deputano-rn-ameaca-lula-em-evento-natal-fora-contexto/",
    "data_checagem": null,
    "rotulo": "Enganoso",
    "idioma": "pt",
@@ -13662,6 +13640,27 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Deputado do RN ameaça Lula com arma",
+   "quem_disse": "Boato de redes sociais",
+   "data_afirmacao": "2026-05-22",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Deputado do Rio Grande do Norte disse que receberia sindicalistas armado, e não Lula; vídeo é antigo",
+   "url": "https://www.estadao.com.br/estadao-verifica/deputano-rn-ameaca-lula-em-evento-natal-fora-contexto/",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
@@ -13707,15 +13706,15 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Vídeo mostra Lula fugindo do Palácio após ser vaiado",
-   "quem_disse": "Boato nas redes sociais",
-   "data_afirmacao": "2026-04-30",
+   "afirmacao": "Eduardo Bolsonaro divulga nota de pesar após Trump receber Lula na Casa Branca",
+   "quem_disse": "Postagem em redes sociais",
+   "data_afirmacao": "2026-05-08",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Vídeo mostra Lula saindo de palco após problemas com microfone ...",
-   "url": "https://www.estadao.com.br/estadao-verifica/video-mostra-lula-saindo-de-palco-apos-problemas-com-microfone-e-nao-fugindo-de-vaias/",
+   "titulo": "Eduardo Bolsonaro não divulgou ‘nota de pesar’ sobre encontro de Lula e Trump na Casa Branca",
+   "url": "https://www.estadao.com.br/estadao-verifica/eduardo-bolsonaro-encontro-donald-trump-lula-casa-branca/",
    "data_checagem": null,
-   "rotulo": "Falso",
+   "rotulo": "Fora de contexto",
    "idioma": "pt",
    "consulta": [
     "Lula"
@@ -13724,17 +13723,17 @@
     "Lula"
    ],
    "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
+   "grupo_rotulo": "Enganoso ou fora de contexto",
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula foi recebido com chuva de ovos em Portugal",
-   "quem_disse": "Redes Sociais",
-   "data_afirmacao": "2026-04-24",
+   "afirmacao": "Vídeo mostra Lula fugindo do Palácio após ser vaiado",
+   "quem_disse": "Boato nas redes sociais",
+   "data_afirmacao": "2026-04-30",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Imagens de Lula recebendo 'chuva de ovos' em Portugal foram ...",
-   "url": "https://www.estadao.com.br/estadao-verifica/lula-ovada-em-portugal-falso-inteligencia-artificial/",
+   "titulo": "Vídeo mostra Lula saindo de palco após problemas com microfone, e não ‘fugindo de vaias’",
+   "url": "https://www.estadao.com.br/estadao-verifica/video-mostra-lula-saindo-de-palco-apos-problemas-com-microfone-e-nao-fugindo-de-vaias/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -13775,7 +13774,7 @@
    "data_afirmacao": "2026-04-16",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Lula não disse em discurso que mulher tem que ficar em casa para dar jantar aos filhos e marido",
+   "titulo": "Lula não disse em discurso que mulher tem que ficar em casa para ...",
    "url": "https://www.estadao.com.br/estadao-verifica/enganoso-lula-mulher-ficar-casa-jantar-filhos-marido/",
    "data_checagem": null,
    "rotulo": "Enganoso",
@@ -13940,48 +13939,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Motoboys estão se manifestando contra o governo Lula.",
-   "quem_disse": "Boatos em redes sociais.",
-   "data_afirmacao": "2026-03-19",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Vídeos não mostram protestos contra projeto do governo para regulamentar motoristas e entregadores",
-   "url": "https://www.estadao.com.br/estadao-verifica/enganoso-videos-protestos-motoboys-governo-lula/",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Lula disse que se a gasolina está cara, as pessoas devem andar a pé",
-   "quem_disse": "Boato nas redes sociais",
-   "data_afirmacao": "2026-03-16",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Lula recomendou 'andar a pé' quando falava sobre o uso de ...",
-   "url": "https://www.estadao.com.br/estadao-verifica/lula-gasolina-cara-vai-pe-ozempic/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Lula foi substitúído por sósia em homenagem no Carnaval do Rio",
    "quem_disse": "Redes sociais",
    "data_afirmacao": "2026-02-27",
@@ -14024,27 +13981,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Lula mandou esvaziar arquibancada por medo de ser vaiado no carnaval",
-   "quem_disse": "Boato nas redes sociais",
-   "data_afirmacao": "2026-02-20",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Vídeo mostra festa de carnaval suspensa após arquibancada ceder na Paraíba; não há relação com Lula",
-   "url": "https://www.estadao.com.br/estadao-verifica/video-mostra-festa-de-carnaval-suspensa-apos-arquibancada-ceder-na-paraiba-nao-ha-relacao-com-lula/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Vídeo mostra Lula sendo vaiado na arquibancada da Sapucaí",
    "quem_disse": "Boatos de redes sociais",
    "data_afirmacao": "2026-02-18",
@@ -14073,6 +14009,48 @@
    "site": "estadao.com.br",
    "titulo": "É falso que 50% da população brasileira dependa de programas de transferência de renda",
    "url": "https://www.estadao.com.br/estadao-verifica/50-da-populacao-depende-do-estado-para-sobreviver-enganoso/",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Lula e Janja pagaram R$ 31 milhões em ternos a alfaiate envolvido em fraude do INSS",
+   "quem_disse": "Boato nas redes sociais",
+   "data_afirmacao": "2026-02-09",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Não há registro de que Lula e Janja tenham pagado R$ 31 milhões em ternos",
+   "url": "https://www.estadao.com.br/estadao-verifica/lula-e-janja-pagaram-r-31-milhoes-em-ternos-alfaiate-fraude-inss/",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Técnicos do IBGE estão sendo demitidos porque se recusam a maquiar números do PIB para favorecer o governo Lula",
+   "quem_disse": "Boatos em redes sociais",
+   "data_afirmacao": "2026-02-06",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Técnicos do IBGE não foram demitidos por ‘se recusarem a maquiar PIB’; sindicato nega interferência",
+   "url": "https://www.estadao.com.br/estadao-verifica/enganoso-servidores-ibge-demitidos-recusarem-maquiar-pib/",
    "data_checagem": null,
    "rotulo": "Enganoso",
    "idioma": "pt",
@@ -14251,26 +14229,6 @@
    "candidatos": [
     "Flávio Bolsonaro"
    ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Relatório prova fraude nas eleições de 2026",
-   "quem_disse": "Redes Sociais",
-   "data_afirmacao": "2026-10-30",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "'Relatório pericial' apócrifo distorce dados para alegar falsa fraude ...",
-   "url": "https://www.estadao.com.br/estadao-verifica/falso-relatorio-apocrifo-fraude-eleicoes/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro",
-    "eleições 2026"
-   ],
-   "candidatos": [],
    "desde_o_debate": false,
    "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
@@ -14483,69 +14441,6 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Jair Bolsonaro criou o Pix",
-   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
-   "data_afirmacao": "2026-06-05",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "PL distorce fatos ao alegar que Bolsonaro criou o Pix; sistema foi desenvolvido a partir de 2018",
-   "url": "https://www.estadao.com.br/estadao-verifica/pl-distorce-fatos-ao-alegar-que-bolsonaro-criou-o-pix-sistema-foi-desenvolvido-a-partir-de-2018/",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Flávio Bolsonaro agradece a Trump por taxar o Brasil.",
-   "quem_disse": "Boatos em redes sociais.",
-   "data_afirmacao": "2026-06-03",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "PT tira de contexto fala de Flávio Bolsonaro para parecer que ele agradeceu a Trump por taxar Brasil",
-   "url": "https://www.estadao.com.br/estadao-verifica/pt-enganoso-flavio-agradece-trump-taxas-brasil/",
-   "data_checagem": null,
-   "rotulo": "Enganoso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "PF concluiu investigação sobre pedido de dinheiro feito por Flávio Bolsonaro a Daniel Vorcaro",
-   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
-   "data_afirmacao": "2026-06-02",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "PF ainda não concluiu investigação sobre pedido de dinheiro feito por Flávio Bolsonaro a Vorcaro",
-   "url": "https://www.estadao.com.br/estadao-verifica/falso-pf-conclui-investigacao-mensagens-flavio-bolsonaro-vorcaro/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": null
-  },
-  {
    "afirmacao": "Vendas da Ypê dispararam depois de foto de Flávio Bolsonaro com detergentes da marca",
    "quem_disse": "Boato nas redes sociais",
    "data_afirmacao": "2026-05-15",
@@ -14610,13 +14505,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Paulo Guedes diz que Bolsonaro não mandava na presidência e dependia dos filhos Eduardo e Flávio para aprovar tudo. Guedes diz que “cansava de reclamar que os filhos queriam colocar o dinheiro dos negócios junto com o Queiroz no orçamento secreto, sendo que o presidente Bolsonaro não sabia de nada”.",
-   "quem_disse": "Boatos em redes sociais",
+   "afirmacao": "Flávio Bolsonaro disse que irá privatizar o SUS no dia em que tomar posse como presidente da República",
+   "quem_disse": "Boatos de redes sociais",
    "data_afirmacao": "2026-04-14",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Vídeo em que Paulo Guedes fala que filhos de Bolsonaro mandavam na Presidência foi feito com IA",
-   "url": "https://www.estadao.com.br/estadao-verifica/video-paulo-guedes-filhos-bolsonaro-mandavam-presidencia-ia-falso/",
+   "titulo": "Flávio Bolsonaro não disse que irá privatizar o SUS se for eleito",
+   "url": "https://www.estadao.com.br/estadao-verifica/flavio-bolsonaro-privatizar-sus-falso/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -14631,13 +14526,13 @@
    "dito_pelo_candidato": null
   },
   {
-   "afirmacao": "Flávio Bolsonaro disse que irá privatizar o SUS no dia em que tomar posse como presidente da República",
-   "quem_disse": "Boatos de redes sociais",
+   "afirmacao": "Paulo Guedes diz que Bolsonaro não mandava na presidência e dependia dos filhos Eduardo e Flávio para aprovar tudo. Guedes diz que “cansava de reclamar que os filhos queriam colocar o dinheiro dos negócios junto com o Queiroz no orçamento secreto, sendo que o presidente Bolsonaro não sabia de nada”.",
+   "quem_disse": "Boatos em redes sociais",
    "data_afirmacao": "2026-04-14",
    "agencia": "Estadão",
    "site": "estadao.com.br",
-   "titulo": "Flávio Bolsonaro não disse que irá privatizar o SUS se for eleito",
-   "url": "https://www.estadao.com.br/estadao-verifica/flavio-bolsonaro-privatizar-sus-falso/",
+   "titulo": "Vídeo em que Paulo Guedes fala que filhos de Bolsonaro mandavam na Presidência foi feito com IA",
+   "url": "https://www.estadao.com.br/estadao-verifica/video-paulo-guedes-filhos-bolsonaro-mandavam-presidencia-ia-falso/",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -14797,6 +14692,25 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Relatório prova fraude nas eleições de 2026",
+   "quem_disse": "Redes Sociais",
+   "data_afirmacao": "2026-10-30",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "'Relatório pericial' apócrifo distorce dados para alegar falsa fraude ...",
+   "url": "https://www.estadao.com.br/estadao-verifica/falso-relatorio-apocrifo-fraude-eleicoes/",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "eleições 2026"
+   ],
+   "candidatos": [],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": null
+  },
+  {
    "afirmacao": "Mortos e crianças votam na Bahia",
    "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
    "data_afirmacao": "2026-08-10",
@@ -14809,6 +14723,44 @@
    "idioma": "pt",
    "consulta": [
     "eleições 2026"
+   ],
+   "candidatos": [],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Padre pede para fiéis não votarem no PT",
+   "quem_disse": "Redes sociais",
+   "data_afirmacao": "2026-10-03",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Vídeo antigo de padre contra o PT é usado fora de contexto como ...",
+   "url": "https://www.estadao.com.br/estadao-verifica/video-antigo-de-padre-contra-o-pt-e-usado-fora-de-contexto-como-convocacao-para-eleicao-de-2026/",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "eleições 2026"
+   ],
+   "candidatos": [],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": null
+  },
+  {
+   "afirmacao": "Vídeo de urnas eletrônicas guardadas em ônibus após a votação comprova fraude",
+   "quem_disse": "Boatos de redes sociais",
+   "data_afirmacao": "2026-11-13",
+   "agencia": "Estadão",
+   "site": "estadao.com.br",
+   "titulo": "Vídeo de urnas eletrônicas em ônibus não demonstra irregularidade ...",
+   "url": "https://www.estadao.com.br/estadao-verifica/urnas-eletronicas-onibus-fraude-enganoso/",
+   "data_checagem": null,
+   "rotulo": "Enganoso",
+   "idioma": "pt",
+   "consulta": [
+    "urna eletrônica"
    ],
    "candidatos": [],
    "desde_o_debate": false,
@@ -14832,25 +14784,6 @@
    "candidatos": [],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
-   "dito_pelo_candidato": null
-  },
-  {
-   "afirmacao": "Matemático Marcelo Trindade explica como algoritmo de penalizaçao fraudou a eleição",
-   "quem_disse": "pessoa ou perfil (nome omitido pelo Atlas)",
-   "data_afirmacao": "2026-11-09",
-   "agencia": "Estadão",
-   "site": "estadao.com.br",
-   "titulo": "Comportamento de gráfico da evolução dos votos não indica fraude ...",
-   "url": "https://www.estadao.com.br/estadao-verifica/grafico-eolucao-votos-eleicoes-fraude-eleitoral-falso/",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "urna eletrônica"
-   ],
-   "candidatos": [],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
    "dito_pelo_candidato": null
   },
   {
@@ -14968,6 +14901,28 @@
    "dito_pelo_candidato": null
   },
   {
+   "afirmacao": "Como na época do presidente Bolsonaro, você tinha lá os seus 600 reais de Bolsa Família, que foi o Bolsonaro que deu no mínimo 600 reais, e você conseguia encher um carrinho de compra.",
+   "quem_disse": "Flávio Bolsonaro",
+   "data_afirmacao": "2026-10-22",
+   "agencia": "AletheiaFact.org",
+   "site": "aletheiafact.org",
+   "titulo": "Como na época do presidente Bolsonaro, você ti",
+   "url": "https://aletheiafact.org/personality/flavio-bolsonaro/claim/debate-globo-2026-lula-x-flavio-bolsonaro/sentence/8b309ecf3e698c0ea4bbe08eb9810396",
+   "data_checagem": null,
+   "rotulo": "Falso",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro",
+    "Lula"
+   ],
+   "candidatos": [
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Falso",
+   "dito_pelo_candidato": "Flávio Bolsonaro"
+  },
+  {
    "afirmacao": "Você que recebe Bolsa Família, você foi esquecido pela atual governo por 4 anos. Sabe quando ele lembrou de você? Há 17 dias. E te deu um reajuste de 3 reais por dia.",
    "quem_disse": "Flávio Bolsonaro",
    "data_afirmacao": "2026-10-22",
@@ -15013,29 +14968,6 @@
    "dito_pelo_candidato": "Flávio Bolsonaro"
   },
   {
-   "afirmacao": "Você [Lula] é contra classificar Comando Vermelho, PCC e milícias como organizações terroristas.",
-   "quem_disse": "Flávio Bolsonaro",
-   "data_afirmacao": "2026-10-22",
-   "agencia": "AletheiaFact.org",
-   "site": "aletheiafact.org",
-   "titulo": "Você [Lula] é contra classificar Comando Verme",
-   "url": "https://aletheiafact.org/personality/flavio-bolsonaro/claim/debate-globo-2026-lula-x-flavio-bolsonaro/sentence/b6454c51e8f29ed68c2e9531efef3546",
-   "data_checagem": null,
-   "rotulo": "Verdadeiro",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro",
-    "Lula"
-   ],
-   "candidatos": [
-    "Lula",
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Verdadeiro",
-   "dito_pelo_candidato": "Flávio Bolsonaro"
-  },
-  {
    "afirmacao": "Você não vai precisar mais andar centenas de quilômetros, muitas vezes, pra poder se habilitar a receber a sua aposentadoria. Você não vai precisar ficar mais tanto tempo na fila, porque eu vou garantir isso na palma da sua mão.",
    "quem_disse": "Flávio Bolsonaro",
    "data_afirmacao": "2026-10-22",
@@ -15043,50 +14975,6 @@
    "site": "aletheiafact.org",
    "titulo": "Você não vai precisar mais andar centenas de q",
    "url": "https://aletheiafact.org/personality/flavio-bolsonaro/claim/debate-globo-2026-lula-x-flavio-bolsonaro/sentence/7fd567bee1a352f7214adb20cf43c8ef",
-   "data_checagem": null,
-   "rotulo": "Falso",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro",
-    "Lula"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Falso",
-   "dito_pelo_candidato": "Flávio Bolsonaro"
-  },
-  {
-   "afirmacao": "Como começou a fazer o presidente Bolsonaro, nós instalamos mais de 21 mil e 300 pontos de internet em vários locais do Brasil atingindo mais de 3 mil e 100 cidades atendendo a mais de 11 milhões de brasileiros",
-   "quem_disse": "Flávio Bolsonaro",
-   "data_afirmacao": "2026-10-22",
-   "agencia": "AletheiaFact.org",
-   "site": "aletheiafact.org",
-   "titulo": "Como começou a fazer o presidente Bolsonaro, n",
-   "url": "https://aletheiafact.org/personality/flavio-bolsonaro/claim/debate-globo-2026-lula-x-flavio-bolsonaro/sentence/17e325fba10392e3931b96b9d1c6ed3c",
-   "data_checagem": null,
-   "rotulo": "Verdadeiro",
-   "idioma": "pt",
-   "consulta": [
-    "Flávio Bolsonaro",
-    "Lula"
-   ],
-   "candidatos": [
-    "Flávio Bolsonaro"
-   ],
-   "desde_o_debate": false,
-   "grupo_rotulo": "Verdadeiro",
-   "dito_pelo_candidato": "Flávio Bolsonaro"
-  },
-  {
-   "afirmacao": "Como na época do presidente Bolsonaro, você tinha lá os seus 600 reais de Bolsa Família, que foi o Bolsonaro que deu no mínimo 600 reais, e você conseguia encher um carrinho de compra.",
-   "quem_disse": "Flávio Bolsonaro",
-   "data_afirmacao": "2026-10-22",
-   "agencia": "AletheiaFact.org",
-   "site": "aletheiafact.org",
-   "titulo": "Como na época do presidente Bolsonaro, você ti",
-   "url": "https://aletheiafact.org/personality/flavio-bolsonaro/claim/debate-globo-2026-lula-x-flavio-bolsonaro/sentence/8b309ecf3e698c0ea4bbe08eb9810396",
    "data_checagem": null,
    "rotulo": "Falso",
    "idioma": "pt",
@@ -15121,6 +15009,51 @@
    ],
    "desde_o_debate": false,
    "grupo_rotulo": "Enganoso ou fora de contexto",
+   "dito_pelo_candidato": "Flávio Bolsonaro"
+  },
+  {
+   "afirmacao": "Como começou a fazer o presidente Bolsonaro, nós instalamos mais de 21 mil e 300 pontos de internet em vários locais do Brasil atingindo mais de 3 mil e 100 cidades atendendo a mais de 11 milhões de brasileiros",
+   "quem_disse": "Flávio Bolsonaro",
+   "data_afirmacao": "2026-10-22",
+   "agencia": "AletheiaFact.org",
+   "site": "aletheiafact.org",
+   "titulo": "Como começou a fazer o presidente Bolsonaro, n",
+   "url": "https://aletheiafact.org/personality/flavio-bolsonaro/claim/debate-globo-2026-lula-x-flavio-bolsonaro/sentence/17e325fba10392e3931b96b9d1c6ed3c",
+   "data_checagem": null,
+   "rotulo": "Verdadeiro",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro",
+    "Lula"
+   ],
+   "candidatos": [
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Verdadeiro",
+   "dito_pelo_candidato": "Flávio Bolsonaro"
+  },
+  {
+   "afirmacao": "Você [Lula] é contra classificar Comando Vermelho, PCC e milícias como organizações terroristas.",
+   "quem_disse": "Flávio Bolsonaro",
+   "data_afirmacao": "2026-10-22",
+   "agencia": "AletheiaFact.org",
+   "site": "aletheiafact.org",
+   "titulo": "Você [Lula] é contra classificar Comando Verme",
+   "url": "https://aletheiafact.org/personality/flavio-bolsonaro/claim/debate-globo-2026-lula-x-flavio-bolsonaro/sentence/b6454c51e8f29ed68c2e9531efef3546",
+   "data_checagem": null,
+   "rotulo": "Verdadeiro",
+   "idioma": "pt",
+   "consulta": [
+    "Flávio Bolsonaro",
+    "Lula"
+   ],
+   "candidatos": [
+    "Lula",
+    "Flávio Bolsonaro"
+   ],
+   "desde_o_debate": false,
+   "grupo_rotulo": "Verdadeiro",
    "dito_pelo_candidato": "Flávio Bolsonaro"
   },
   {
