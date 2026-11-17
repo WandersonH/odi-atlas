@@ -3,34 +3,38 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="estar" label="estar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G4"/></attvalues></node>
-<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="12"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="risada" label="risada"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="43"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="perguntar" label="perguntar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G3"/></attvalues></node>
-<node id="saber" label="saber"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="12"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="falar" label="falar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="bom" label="bom"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G4"/></attvalues></node>
 <node id="brasil" label="brasil"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="google" label="google"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="25"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="so" label="so"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G6"/></attvalues></node>
-<node id="ladrao" label="ladrao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="16"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="bom" label="bom"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="7"/><attvalue for="2" value="G7"/></attvalues></node>
-<node id="teste" label="teste"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="coisa" label="coisa"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="risada" label="risada"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="44"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="mesmo" label="mesmo"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="google" label="google"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="25"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="falar" label="falar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G5"/></attvalues></node>
+<node id="saber" label="saber"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="12"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="coisa" label="coisa"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="ladrao" label="ladrao"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="17"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="teste" label="teste"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="nascer" label="nascer"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="so" label="so"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="5"/><attvalue for="2" value="G6"/></attvalues></node>
+<node id="estar" label="estar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="6"/><attvalue for="2" value="G7"/></attvalues></node>
+<node id="lula" label="lula"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="12"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="perguntar" label="perguntar"><attvalues><attvalue for="0" value="palavra"/><attvalue for="1" value="8"/><attvalue for="2" value="G3"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="google" target="perguntar" weight="3"/>
-<edge id="1" source="google" target="risada" weight="7"/>
-<edge id="2" source="google" target="saber" weight="9"/>
-<edge id="3" source="ladrao" target="saber" weight="3"/>
-<edge id="4" source="google" target="ladrao" weight="4"/>
-<edge id="5" source="brasil" target="ladrao" weight="4"/>
-<edge id="6" source="ladrao" target="risada" weight="5"/>
-<edge id="7" source="risada" target="saber" weight="3"/>
-<edge id="8" source="risada" target="teste" weight="3"/>
-<edge id="9" source="coisa" target="mesmo" weight="4"/>
-<edge id="10" source="coisa" target="perguntar" weight="3"/>
-<edge id="11" source="ladrao" target="lula" weight="7"/>
-<edge id="12" source="google" target="lula" weight="3"/>
+<edge id="0" source="ladrao" target="nascer" weight="3"/>
+<edge id="1" source="ladrao" target="perguntar" weight="3"/>
+<edge id="2" source="ladrao" target="risada" weight="6"/>
+<edge id="3" source="perguntar" target="risada" weight="3"/>
+<edge id="4" source="google" target="perguntar" weight="3"/>
+<edge id="5" source="google" target="risada" weight="7"/>
+<edge id="6" source="google" target="saber" weight="9"/>
+<edge id="7" source="ladrao" target="saber" weight="3"/>
+<edge id="8" source="google" target="ladrao" weight="4"/>
+<edge id="9" source="brasil" target="ladrao" weight="4"/>
+<edge id="10" source="risada" target="saber" weight="3"/>
+<edge id="11" source="risada" target="teste" weight="3"/>
+<edge id="12" source="coisa" target="mesmo" weight="4"/>
+<edge id="13" source="coisa" target="perguntar" weight="3"/>
+<edge id="14" source="ladrao" target="lula" weight="7"/>
+<edge id="15" source="google" target="lula" weight="3"/>
 </edges>
 </graph>
 </gexf>

@@ -3,31 +3,29 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="imprensa:Olhar Direto" label="Olhar Direto"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: Flávio Bolsonaro carta EUA" label="notícia: Flávio Bolsonaro carta EUA"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="imprensa:Olhar Direto" label="Olhar Direto"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="notícia: Flávio &quot;presidente eleito&quot; carta" label="notícia: Flávio &quot;presidente eleito&quot; carta"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="5"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="notícia: Flávio Bolsonaro carta EUA" label="notícia: Flávio Bolsonaro carta EUA"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2"/><attvalue for="2" value="G3"/></attvalues></node>
 <node id="imprensa:Revista Fórum" label="Revista Fórum"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="imprensa:Francês News" label="Francês News"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="imprensa:ND Mais" label="ND Mais"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="imprensa:R7" label="R7"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="imprensa:CartaCapital" label="CartaCapital"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="imprensa:Transmissão Política" label="Transmissão Política"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
-<node id="notícia: Flávio &quot;líder do Brasil&quot;" label="notícia: Flávio &quot;líder do Brasil&quot;"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="notícia: carta Flávio Bolsonaro" label="notícia: carta Flávio Bolsonaro"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="5"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="imprensa:R7" label="R7"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G3"/></attvalues></node>
+<node id="imprensa:Plantão Brasil" label="Plantão Brasil"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="imprensa:CartaCapital" label="CartaCapital"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="imprensa:Transmissão Política" label="Transmissão Política"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
 <node id="imprensa:bahia.ba" label="bahia.ba"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Bahia Econômica" label="Bahia Econômica"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="imprensa:NSC Total" label="NSC Total"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="imprensa:NSC Total" label="NSC Total"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:Olhar Direto" target="notícia: Flávio Bolsonaro carta EUA" weight="1"/>
-<edge id="1" source="imprensa:Olhar Direto" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
-<edge id="2" source="imprensa:Revista Fórum" target="notícia: Flávio Bolsonaro carta EUA" weight="1"/>
-<edge id="3" source="imprensa:Francês News" target="notícia: Flávio Bolsonaro carta EUA" weight="1"/>
-<edge id="4" source="imprensa:ND Mais" target="notícia: Flávio Bolsonaro carta EUA" weight="1"/>
-<edge id="5" source="imprensa:R7" target="notícia: Flávio Bolsonaro carta EUA" weight="1"/>
-<edge id="6" source="imprensa:CartaCapital" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
-<edge id="7" source="imprensa:Transmissão Política" target="notícia: Flávio &quot;líder do Brasil&quot;" weight="1"/>
-<edge id="8" source="imprensa:bahia.ba" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
-<edge id="9" source="imprensa:Bahia Econômica" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
-<edge id="10" source="imprensa:NSC Total" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
+<edge id="0" source="imprensa:Olhar Direto" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="2"/>
+<edge id="1" source="imprensa:Olhar Direto" target="notícia: Flávio Bolsonaro carta EUA" weight="1"/>
+<edge id="2" source="imprensa:Revista Fórum" target="notícia: carta Flávio Bolsonaro" weight="1"/>
+<edge id="3" source="imprensa:R7" target="notícia: Flávio Bolsonaro carta EUA" weight="1"/>
+<edge id="4" source="imprensa:Plantão Brasil" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
+<edge id="5" source="imprensa:CartaCapital" target="notícia: carta Flávio Bolsonaro" weight="2"/>
+<edge id="6" source="imprensa:Transmissão Política" target="notícia: carta Flávio Bolsonaro" weight="1"/>
+<edge id="7" source="imprensa:bahia.ba" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
+<edge id="8" source="imprensa:Bahia Econômica" target="notícia: Flávio &quot;presidente eleito&quot; carta" weight="1"/>
+<edge id="9" source="imprensa:NSC Total" target="notícia: carta Flávio Bolsonaro" weight="1"/>
 </edges>
 </graph>
 </gexf>
