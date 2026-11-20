@@ -3,10 +3,13 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="imprensa:Terra" label="Terra"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: &quot;vote como um brasileiro&quot;" label="notícia: &quot;vote como um brasileiro&quot;"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="yt:UC9mdw2mmn49ZuqGOpSri7Fw" label="Metrópoles"><attvalues><attvalue for="0" value="canal do YouTube"/><attvalue for="1" value="20790"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="busca: vote como brasileiro eleição americana" label="busca: vote como brasileiro eleição americana"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="20790"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="imprensa:Terra" label="Terra"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="notícia: &quot;vote como um brasileiro&quot;" label="notícia: &quot;vote como um brasileiro&quot;"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:Terra" target="notícia: &quot;vote como um brasileiro&quot;" weight="1"/>
+<edge id="0" source="yt:UC9mdw2mmn49ZuqGOpSri7Fw" target="busca: vote como brasileiro eleição americana" weight="20790"/>
+<edge id="1" source="imprensa:Terra" target="notícia: &quot;vote como um brasileiro&quot;" weight="1"/>
 </edges>
 </graph>
 </gexf>

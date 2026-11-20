@@ -3,10 +3,12 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
+<node id="imprensa:SBT News" label="SBT News"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="notícia: Joice Hasselmann Lula" label="notícia: Joice Hasselmann Lula"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Plantão Brasil" label="Plantão Brasil"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: Joice Hasselmann Lula" label="notícia: Joice Hasselmann Lula"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:Plantão Brasil" target="notícia: Joice Hasselmann Lula" weight="1"/>
+<edge id="0" source="imprensa:SBT News" target="notícia: Joice Hasselmann Lula" weight="1"/>
+<edge id="1" source="imprensa:Plantão Brasil" target="notícia: Joice Hasselmann Lula" weight="1"/>
 </edges>
 </graph>
 </gexf>

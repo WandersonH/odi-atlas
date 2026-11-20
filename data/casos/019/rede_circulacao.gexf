@@ -3,24 +3,24 @@
 <graph defaultedgetype="undirected">
 <attributes class="node"><attribute id="0" title="tipo" type="string"/><attribute id="1" title="peso" type="double"/><attribute id="2" title="comunidade" type="string"/></attributes>
 <nodes>
-<node id="imprensa:Folha de S.Paulo" label="Folha de S.Paulo"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="notícia: Brazil election 2026 Lula" label="notícia: Brazil election 2026 Lula"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="12"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="imprensa:Jornal de Angola" label="Jornal de Angola"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
+<node id="notícia: eleição Brasil imprensa internacional" label="notícia: eleição Brasil imprensa internacional"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="2"/><attvalue for="2" value="G2"/></attvalues></node>
 <node id="imprensa:Observador" label="Observador"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
-<node id="imprensa:Jornal de Angola" label="Jornal de Angola"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="notícia: eleição Brasil imprensa internacional" label="notícia: eleição Brasil imprensa internacional"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="1"/><attvalue for="2" value="G2"/></attvalues></node>
-<node id="imprensa:RTP" label="RTP"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="2"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="notícia: Brazil election 2026 Lula" label="notícia: Brazil election 2026 Lula"><attvalues><attvalue for="0" value="termo"/><attvalue for="1" value="11"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Checamos AFP" label="Checamos AFP"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="imprensa:Folha de S.Paulo" label="Folha de S.Paulo"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="3"/><attvalue for="2" value="G1"/></attvalues></node>
+<node id="imprensa:RTP" label="RTP"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Poder360" label="Poder360"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Agência Brasil" label="Agência Brasil"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:Global Voices Advox" label="Global Voices Advox"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:BBC" label="BBC"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 <node id="imprensa:boca.com.br" label="boca.com.br"><attvalues><attvalue for="0" value="veículo de imprensa"/><attvalue for="1" value="1"/><attvalue for="2" value="G1"/></attvalues></node>
 </nodes><edges>
-<edge id="0" source="imprensa:Folha de S.Paulo" target="notícia: Brazil election 2026 Lula" weight="3"/>
+<edge id="0" source="imprensa:Jornal de Angola" target="notícia: eleição Brasil imprensa internacional" weight="2"/>
 <edge id="1" source="imprensa:Observador" target="notícia: Brazil election 2026 Lula" weight="1"/>
-<edge id="2" source="imprensa:Jornal de Angola" target="notícia: eleição Brasil imprensa internacional" weight="1"/>
-<edge id="3" source="imprensa:RTP" target="notícia: Brazil election 2026 Lula" weight="2"/>
-<edge id="4" source="imprensa:Checamos AFP" target="notícia: Brazil election 2026 Lula" weight="1"/>
+<edge id="2" source="imprensa:Checamos AFP" target="notícia: Brazil election 2026 Lula" weight="1"/>
+<edge id="3" source="imprensa:Folha de S.Paulo" target="notícia: Brazil election 2026 Lula" weight="3"/>
+<edge id="4" source="imprensa:RTP" target="notícia: Brazil election 2026 Lula" weight="1"/>
 <edge id="5" source="imprensa:Poder360" target="notícia: Brazil election 2026 Lula" weight="1"/>
 <edge id="6" source="imprensa:Agência Brasil" target="notícia: Brazil election 2026 Lula" weight="1"/>
 <edge id="7" source="imprensa:Global Voices Advox" target="notícia: Brazil election 2026 Lula" weight="1"/>
