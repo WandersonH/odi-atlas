@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-11-20T04:15:50Z",
+  "run_started_utc": "2026-11-20T19:16:18Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -142,6 +142,155 @@
   "aviso_metodologico": "Valores 0-100 relativos dentro de cada consulta (grupo x período). Não são volumes; não compare entre consultas diferentes.",
   "consultas": [
     {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Senador"
+        }
+      ],
+      "periodo": "now 1-d",
+      "janela_trends": "now 1-d",
+      "geo": "BR",
+      "serie_pontos": 181,
+      "uf_linhas": 27,
+      "relacionados_linhas": 30,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Senador"
+        }
+      ],
+      "periodo": "now 7-d",
+      "janela_trends": "now 7-d",
+      "geo": "BR",
+      "serie_pontos": 169,
+      "uf_linhas": 27,
+      "relacionados_linhas": 43,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Senador"
+        }
+      ],
+      "periodo": "today 3-m",
+      "janela_trends": "today 3-m",
+      "geo": "BR",
+      "serie_pontos": 93,
+      "uf_linhas": 27,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Senador"
+        }
+      ],
+      "periodo": "eleitoral",
+      "janela_trends": "2026-07-20 2026-10-25",
+      "geo": "BR",
+      "serie_pontos": 98,
+      "uf_linhas": 27,
+      "relacionados_linhas": 89,
+      "status": "ok"
+    },
+    {
+      "grupo": "segundo_turno_topicos",
+      "termos": [
+        "Lula",
+        "Flávio Bolsonaro"
+      ],
+      "itens": [
+        {
+          "rotulo": "Lula",
+          "consulta": "/m/0pc9q",
+          "modo": "topico",
+          "topico_titulo": "Luiz Inácio Lula da Silva",
+          "topico_tipo": "Presidente do Brasil"
+        },
+        {
+          "rotulo": "Flávio Bolsonaro",
+          "consulta": "/g/122pdhqd",
+          "modo": "topico",
+          "topico_titulo": "Flávio Bolsonaro",
+          "topico_tipo": "Senador"
+        }
+      ],
+      "periodo": "campanha_e_depois",
+      "janela_trends": "2026-07-20 2026-11-20",
+      "geo": "BR",
+      "serie_pontos": 124,
+      "uf_linhas": 27,
+      "relacionados_linhas": 91,
+      "status": "ok"
+    },
+    {
       "grupo": "segundo_turno_palavras",
       "termos": [
         "Lula",
@@ -162,7 +311,7 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 180,
+      "serie_pontos": 181,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -268,9 +417,8 @@
     }
   ],
   "blocked": [
-    "grupo segundo_turno_topicos: HTTPError: HTTP Error 429: Too Many Requests",
     "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Ronaldo Caiado' com tipo contendo ['Presidente', 'Governador', 'Político']; opções: [('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado Filho', 'Filho de Ronaldo Caiado'), ('Gestão Ronaldo Caiado no governo de Goiás', 'Assunto'), ('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado', 'Assunto')]"
   ],
-  "run_finished_utc": "2026-11-20T04:18:29Z",
+  "run_finished_utc": "2026-11-20T19:20:19Z",
   "status": "bloqueado"
 }
