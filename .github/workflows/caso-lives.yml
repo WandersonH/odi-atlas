@@ -1,0 +1,62 @@
+name: Caso 039 (Nova forma de se comunicar) — lives de Lula com Janones no YouTube
+
+# Pedido do responsável (21/11/2026, 12h27). Não chama a API: lê os vídeos do canal (público) e os comentários já lidos pela
+# coleta "Comentários YouTube" (privado). Roda depois dela e da coleta de vídeos.
+on:
+  schedule:
+    - cron: "17 22 * * *"   # 19h17 em Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: caso-lives
+  cancel-in-progress: false
+
+jobs:
+  lives:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependências
+        run: pip install -q emoji==2.16.0
+      - name: Repositório privado
+        id: interno
+        env:
+          TOKEN: ${{ secrets.ODI_INTERNO_TOKEN }}
+        run: |
+          # sem o privado não há comentário para ler: o caso segue só com os números públicos (a análise anterior é mantida)
+          if git clone -q --depth 1 "https://x-access-token:${TOKEN}@github.com/WandersonH/odi-atlas-interno.git" "$RUNNER_TEMP/interno" 2>/dev/null; then
+            echo "dir=$RUNNER_TEMP/interno" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error title=Caso 039::⛔ sem acesso ao repositório privado (secret ODI_INTERNO_TOKEN): comentários não lidos"
+          fi
+      - name: Analisar
+        env:
+          ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+        run: |
+          rc=0; python scripts/caso_lives.py > s.txt 2>&1 || rc=$?
+          if [ -n "$ODI_INTERNO_DIR" ]; then python scripts/emojis_caso.py --caso 039 >> s.txt 2>&1 || rc=1; fi
+          while IFS= read -r l; do echo "::notice title=Caso 039::$(echo "$l" | cut -c1-600)"; done < s.txt
+          exit $rc
+      - name: Gravar no privado
+        if: always() && steps.interno.outputs.dir != ''
+        run: |
+          cd "${{ steps.interno.outputs.dir }}"
+          git config user.name "odi-atlas-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -q -m "Caso 039: lives (run ${{ github.run_id }})"
+          for t in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep $((t * 10)); done
+          exit 1
+      - name: Gravar no público
+        if: always()
+        run: |
+          scripts/commit_push.sh "Caso 039: lives (run ${{ github.run_id }})"
+      - name: Falhar se faltou o privado
+        if: steps.interno.outputs.dir == ''
+        run: exit 1

@@ -4,6 +4,26 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.380 — Caso 039 "Nova forma de se comunicar": lives de Lula com Janones no YouTube (2026-11-21) ⚠️ 2 das 4 lives ainda sem comentário lido
+
+- Pedido do responsável (21/11, 12h27): "preciso de uma nova coleta de caso de YouTube: Presidente Lula e Janones falam com o Exército; canal oficial dele e todos os vídeos canal e comentários; foi uma live"; nome do caso: "nova forma de se comunicar".
+- Leitura do pedido (a confirmar): "canal oficial dele" = canal oficial de Lula. A live de 21/11 (10h) foi transmitida nos canais de Lula (TVT News, 20/11) e apareceu na coleta de vídeos do canal como `HcMpIc_yQL8` (run 44919365966, "Seguidores YouTube", disparado para isso; leitura de 21/11 15h30 UTC). O canal tem outras 3 lives com Janones: `lDg8wNNbq3o` (22/10), `It90qdPs3yY` (05/11), `ri1gipvwfoo` (12/11). O caso reúne as 4 (`videos_youtube` em `data/config/casos.json`).
+- O que foi feito:
+  - `scripts/caso_lives.py`: não chama API. Lê os vídeos do canal em `data/youtube/conteudo.json` (1.192 vídeos desde 20/07/2026) e os comentários já lidos pela coleta diária no privado. Publica `data/casos/039/lives.json` (só contagens) e grava no privado `casos/039/youtube_comentarios.csv.gz` (texto e autor; commit d3ff3d0 do privado).
+  - Página: seção `caso039` com 4 blocos (live a live; as lives dentro do canal; público novo ou do canal; quem volta) e o bloco de emojis. Mesmas classes do Atlas.
+  - `scripts/emojis_caso.py`: universo do caso 039 vem de `lives.json`. `data/casos/indice.json`: entrada do 039.
+  - `.github/workflows/caso-lives.yml`: diário, 19h17. Sem o privado, mantém a análise anterior, atualiza só os números públicos e termina com erro.
+- **Executado com dado real** (privado clonado nesta sessão, estado de 15/11; `ODI_INTERNO_DIR=… python scripts/caso_lives.py`):
+  - Universo: 53.398 comentários informados pelo YouTube nas 4 lives. Lidos: 38.095 (71,3%), de 26.538 autores.
+  - Live de 22/10: 28.630 informados, 25.708 lidos (89,8%), 18.166 autores; 1º vídeo do canal em visualizações (7.727.443) e em comentários.
+  - Live de 05/11: 14.230 informados, 12.387 lidos (87,0%), 8.830 autores; 2º em visualizações (3.770.006).
+  - ⛔ Live de 12/11 (10.110 informados) e live de 21/11 (428 informados às 15h30 UTC): **nenhum comentário lido**. A coleta de comentários do YouTube está parada desde 15/11 (`ODI_INTERNO_TOKEN` recusado, HTTP 401).
+  - Público anterior (acervo de 987.863 comentários nos canais das campanhas): sem comentário anterior, 87,9% dos autores da live de 22/10 e 80,3% dos da live de 05/11. Autores nas duas lives: 458.
+  - Emojis (`scripts/emojis_caso.py --caso 039`): 38.095 textos, 17.899 com emoji (47,0%), 433 emojis distintos.
+- Testes: `python -m unittest discover -s tests` → 314 testes, OK, 1 pulado (novo: `tests/test_caso_lives.py`, 4 testes). Página aberta no Chromium (Playwright): 4 blocos, 30 linhas de tabela, bloco de emojis montado, sem erro de script, sem rolagem lateral em 1280 px. `python scripts/build_css_compartilhado.py --verificar` → em dia.
+- ⛔ Pendente: comentários das lives de 12/11 e 21/11 e atualização diária (dependem do token do privado); workflow `caso-lives.yml` ainda não rodou no GitHub; transcrição das lives e chat ao vivo não fazem parte desta entrega; confirmação do responsável sobre qual é o "canal oficial dele".
+- Estado geral das coletas em 21/11 (`data/saude_coleta.json`, 10h03 UTC): 7 de 19 séries em dia. Mesmas causas de 16/11, sem mudança: `ODI_INTERNO_TOKEN` (401 desde 15/11) e token da Apify (401).
+
 ## C19.379 — Coletas paradas desde 10/11 por erro meu nos testes: corrigido (2026-11-12) ⚠️ recuperação em andamento
 
 - O responsável perguntou (12/11, 08h32): "como estão nossas coletas?". `data/saude_coleta.json` (run 43197033215, 12/11 10h05 UTC): **3 de 19 séries em dia, 16 atrasadas**; último dado real da maioria entre 09/11 e 10/11.

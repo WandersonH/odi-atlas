@@ -84,6 +84,11 @@ def universo(cid: str) -> dict:
         y = (json.loads(b.read_text(encoding="utf-8")).get("youtube") or {})
         if isinstance(y.get("comentarios"), int):
             u["youtube_comentarios"] = (y["comentarios"], "soma dos comentários que o YouTube informa nos vídeos lidos (busca.json)")
+    lv = Path(f"data/casos/{cid}/lives.json")  # caso 039: o universo está na leitura das lives (C19.380)
+    if "youtube_comentarios" not in u and lv.exists():
+        for x in json.loads(lv.read_text(encoding="utf-8")).get("universo") or []:
+            if x.get("conjunto") == "Comentários das lives" and isinstance(x.get("universo"), int):
+                u["youtube_comentarios"] = (x["universo"], "soma dos comentários que o YouTube informa nas lives do caso (lives.json)")
     return u
 
 
