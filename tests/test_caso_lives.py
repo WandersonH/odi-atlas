@@ -67,5 +67,51 @@ class TestCasoLives(unittest.TestCase):
         self.assertEqual(c.cfg_caso()["videos_youtube"], [x["id"] for x in d["lives"]])
 
 
+class TestRetransmissoes(unittest.TestCase):
+    """C19.381: retransmissões em outros canais — filtro de título, tipo e canal pequeno sem título nem link."""
+
+    def setUp(self):
+        import caso_lives_retransmissoes as r
+        self.r = r
+        self.orig = {"inicio": "2026-11-21T13:00:00Z", "segundos": 5400}
+
+    def test_filtro_de_titulo(self):
+        self.assertTrue(self.r.titulo_serve("🔴 LULA & JANONES: Exército do Lula"))
+        self.assertTrue(self.r.titulo_serve("Lula fala ao exercito"))
+        self.assertFalse(self.r.titulo_serve("Lula no podcast Flow"))
+        self.assertFalse(self.r.titulo_serve("Janones comenta a semana"))
+
+    def test_tipos(self):
+        c = self.r.classificar
+        self.assertEqual(c({"inicio_ao_vivo": "2026-11-21T12:50:00Z", "segundos": 5000}, self.orig), "ao vivo simultânea")
+        self.assertEqual(c({"inicio_ao_vivo": "2026-11-21T20:00:00Z", "segundos": 5000}, self.orig), "transmissão ao vivo em outro horário")
+        self.assertEqual(c({"inicio_ao_vivo": "2026-11-21T13:00:00Z", "segundos": 600}, self.orig), "transmissão ao vivo em outro horário")
+        self.assertEqual(c({"inicio_ao_vivo": None, "segundos": 5400}, self.orig), "reenvio ou corte")
+
+    def test_canal_pequeno_vira_codigo(self):
+        v = {"id": "abc", "titulo": "Lula e Janones", "canal": "Canal do Zé", "canal_id": "UCx", "tipo": "reenvio ou corte", "visualizacoes": 10}
+        for insc in (None, 0, 9_999):
+            s = json.dumps(self.r.publicar({**v, "inscritos_canal": insc}, 7), ensure_ascii=False)
+            self.assertIn("canal_007", s)
+            for proibido in ("abc", "Canal do Zé", "UCx", "Lula e Janones", "youtube.com"):
+                self.assertNotIn(proibido, s)
+        g = self.r.publicar({**v, "inscritos_canal": 10_000}, 7)
+        self.assertEqual((g["canal"], g["url"]), ("Canal do Zé", "https://www.youtube.com/watch?v=abc"))
+
+    def test_publicado_sem_canal_pequeno_identificado(self):
+        p = "data/casos/039/retransmissoes.json"
+        if not os.path.exists(p):
+            self.skipTest("retransmissões ainda não coletadas")
+        d = json.load(open(p, encoding="utf-8"))
+        self.assertIn("⛔", d["universo"][0]["fonte_universo"])  # a busca não informa o universo
+        for s in d["lives"]:
+            for v in s.get("videos", []):
+                if not v["identificado"]:
+                    self.assertRegex(v["canal"], r"^canal_\d{3}$")
+                    self.assertFalse({"id", "url", "titulo"} & set(v))
+                else:
+                    self.assertGreaterEqual(v["inscritos_canal"], 10_000)
+
+
 if __name__ == "__main__":
     unittest.main()

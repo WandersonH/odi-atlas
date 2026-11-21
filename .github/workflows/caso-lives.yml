@@ -1,7 +1,7 @@
 name: Caso 039 (Nova forma de se comunicar) — lives de Lula com Janones no YouTube
 
-# Pedido do responsável (21/11/2026, 12h27). Não chama a API: lê os vídeos do canal (público) e os comentários já lidos pela
-# coleta "Comentários YouTube" (privado). Roda depois dela e da coleta de vídeos.
+# Pedido do responsável (21/11/2026, 12h27 e 12h53). Lives: lê os vídeos do canal (público) e os comentários já lidos pela coleta
+# "Comentários YouTube" (privado). Retransmissões em outros canais: busca na API oficial do YouTube (grátis).
 on:
   schedule:
     - cron: "17 22 * * *"   # 19h17 em Brasília
@@ -39,8 +39,11 @@ jobs:
       - name: Analisar
         env:
           ODI_INTERNO_DIR: ${{ steps.interno.outputs.dir }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           rc=0; python scripts/caso_lives.py > s.txt 2>&1 || rc=$?
+          # retransmissões em outros canais (21/11/2026, 12h53: "quero pegar retransmissões também"); API oficial, grátis
+          python scripts/caso_lives_retransmissoes.py >> s.txt 2>&1 || rc=1
           if [ -n "$ODI_INTERNO_DIR" ]; then python scripts/emojis_caso.py --caso 039 >> s.txt 2>&1 || rc=1; fi
           while IFS= read -r l; do echo "::notice title=Caso 039::$(echo "$l" | cut -c1-600)"; done < s.txt
           exit $rc

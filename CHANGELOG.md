@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.381 — Caso 039: retransmissões das lives em outros canais do YouTube (2026-11-21) ⛔ aguardando a primeira execução
+
+- Pedido do responsável (21/11, 12h53): "a live foi transmitida agora às 10, mas gostei da sua sugestão das outras lives"; "quero pegar retransmissões também".
+- `scripts/caso_lives_retransmissoes.py` (API oficial do YouTube, grátis): para cada live do caso, busca vídeos de outros canais de 6 h antes a 72 h depois do início (título da live + 2 buscas), fica com os de título com "Lula" e ("Janones" ou "Exército"), classifica (ao vivo simultânea, ao vivo em outro horário, reenvio ou corte) e lê inscritos dos canais.
+  - Canal com menos de 10 mil inscritos, ou com número oculto, vai ao público só como código, sem título nem link.
+  - Universo: ⛔ desconhecido (a busca não informa o total e devolve até 50 por consulta); a página mostra achados, filtrados e o critério.
+  - Comentários das retransmissões: só com o repositório privado (até 300 conversas nos 40 vídeos com mais comentários). A lista de vídeos achados também fica só no privado; sem ele, a busca é refeita a cada execução (300 unidades de cota por live).
+- Página: bloco "05 · Retransmissões e reenvios em outros canais" no caso 039. Workflow `caso-lives.yml` passa a rodar a coleta.
+- Testes: `python -m unittest discover -s tests` → 318 testes, OK (4 novos em `tests/test_caso_lives.py`: filtro de título, tipos, canal pequeno sem identificação, arquivo publicado). Página aberta no Chromium: sem erro de script; bloco novo mostra "⛔ ainda sem coleta" enquanto não há arquivo.
+- ⛔ Não executado com dado real ainda: a chave do YouTube só existe no GitHub. Primeira execução disparada logo depois deste commit; resultado na entrada seguinte.
+
 ## C19.380 — Caso 039 "Nova forma de se comunicar": lives de Lula com Janones no YouTube (2026-11-21) ⚠️ 2 das 4 lives ainda sem comentário lido
 
 - Pedido do responsável (21/11, 12h27): "preciso de uma nova coleta de caso de YouTube: Presidente Lula e Janones falam com o Exército; canal oficial dele e todos os vídeos canal e comentários; foi uma live"; nome do caso: "nova forma de se comunicar".
