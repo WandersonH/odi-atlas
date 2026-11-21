@@ -264,7 +264,7 @@ def main(argv=None) -> int:
     lid_c = sum(s.get("comentarios_lidos") or 0 for s in saida) if lidos is not None else None
     out = {"caso": CASO, "gerado_em_utc": agora(), "lives": saida,
            "universo": [
-               {"conjunto": "Retransmissões e reenvios em outros canais", "videos": sum(s.get("passaram_no_filtro") or 0 for s in saida), "universo": None,
+               {"conjunto": "Retransmissões e outros vídeos sobre as lives, em outros canais", "videos": sum(s.get("passaram_no_filtro") or 0 for s in saida), "universo": None,
                 "fonte_universo": "⛔ desconhecido: a busca do YouTube não informa quantos vídeos existem e devolve até 50 por consulta",
                 "amostra": sum(s.get("passaram_no_filtro") or 0 for s in saida), "pct": None,
                 "criterio": f"busca pelo título da live e por {', '.join(repr(b) for b in BUSCAS)}, de 6 h antes a 72 h depois do início; só outros canais; "

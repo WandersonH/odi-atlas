@@ -4,7 +4,7 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
-## C19.381 — Caso 039: retransmissões das lives em outros canais do YouTube (2026-11-21) ⛔ aguardando a primeira execução
+## C19.381 — Caso 039: retransmissões das lives em outros canais do YouTube (2026-11-21) ⚠️ sem os comentários (falta o privado)
 
 - Pedido do responsável (21/11, 12h53): "a live foi transmitida agora às 10, mas gostei da sua sugestão das outras lives"; "quero pegar retransmissões também".
 - `scripts/caso_lives_retransmissoes.py` (API oficial do YouTube, grátis): para cada live do caso, busca vídeos de outros canais de 6 h antes a 72 h depois do início (título da live + 2 buscas), fica com os de título com "Lula" e ("Janones" ou "Exército"), classifica (ao vivo simultânea, ao vivo em outro horário, reenvio ou corte) e lê inscritos dos canais.
@@ -13,7 +13,16 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Comentários das retransmissões: só com o repositório privado (até 300 conversas nos 40 vídeos com mais comentários). A lista de vídeos achados também fica só no privado; sem ele, a busca é refeita a cada execução (300 unidades de cota por live).
 - Página: bloco "05 · Retransmissões e reenvios em outros canais" no caso 039. Workflow `caso-lives.yml` passa a rodar a coleta.
 - Testes: `python -m unittest discover -s tests` → 318 testes, OK (4 novos em `tests/test_caso_lives.py`: filtro de título, tipos, canal pequeno sem identificação, arquivo publicado). Página aberta no Chromium: sem erro de script; bloco novo mostra "⛔ ainda sem coleta" enquanto não há arquivo.
-- ⛔ Não executado com dado real ainda: a chave do YouTube só existe no GitHub. Primeira execução disparada logo depois deste commit; resultado na entrada seguinte.
+- **Executado com dado real** no GitHub (workflow `caso-lives.yml`):
+  - 1ª execução, run 44921903990: mostrou dois defeitos. A busca do YouTube devolveu a mesma transmissão longa na janela de duas lives (contada duas vezes) e vídeos fora da janela. Correção (commit ef37db47): o vídeo precisa ter começado ou sido publicado dentro da janela e entra só na live de início mais próximo. O tipo "reenvio ou corte" passou a se chamar "outro vídeo sobre a live" (inclui reação e notícia).
+  - 2ª execução, run 44922125947 (21/11, 16h01 UTC), em `data/casos/039/retransmissoes.json`: 259 vídeos em outros canais, universo ⛔ desconhecido.
+    - 22/10: 85 vídeos de 44 canais (36 com 10 mil inscritos ou mais); 16 ao vivo simultâneas, com 4.493.896 visualizações; todos os 85 somam 13.245.941, contra 7.727.877 do original.
+    - 05/11: 71 vídeos de 49 canais (34); 25 simultâneas, 1.960.905 visualizações; total 5.399.419, original 3.773.184.
+    - 12/11: 69 vídeos de 56 canais (34); 7 simultâneas, 325.546; total 2.391.634, original 607.461.
+    - 21/11 (início real às 13h52 UTC): 34 vídeos de 28 canais (12); 10 simultâneas, 168.966; total 183.807, original 347.655 (números de poucas horas depois da live).
+    - Comentários informados pelo YouTube nesses vídeos: 125.119. ⛔ Lidos: nenhum (sem repositório privado).
+  - Os dois runs terminam com erro de propósito (passo "Falhar se faltou o privado"); os dados públicos foram gravados antes.
+- ⛔ Limite conhecido: o filtro é por título, então entram cortes, reações e notícias sobre a live ("outro vídeo sobre a live"); retransmissão no sentido estrito é o tipo "ao vivo simultânea". Sem o privado, a busca é refeita a cada execução e a lista pode variar de um dia para o outro.
 
 ## C19.380 — Caso 039 "Nova forma de se comunicar": lives de Lula com Janones no YouTube (2026-11-21) ⚠️ 2 das 4 lives ainda sem comentário lido
 
