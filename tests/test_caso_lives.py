@@ -86,10 +86,18 @@ class TestRetransmissoes(unittest.TestCase):
         self.assertEqual(c({"inicio_ao_vivo": "2026-11-21T12:50:00Z", "segundos": 5000}, self.orig), "ao vivo simultânea")
         self.assertEqual(c({"inicio_ao_vivo": "2026-11-21T20:00:00Z", "segundos": 5000}, self.orig), "transmissão ao vivo em outro horário")
         self.assertEqual(c({"inicio_ao_vivo": "2026-11-21T13:00:00Z", "segundos": 600}, self.orig), "transmissão ao vivo em outro horário")
-        self.assertEqual(c({"inicio_ao_vivo": None, "segundos": 5400}, self.orig), "reenvio ou corte")
+        self.assertEqual(c({"inicio_ao_vivo": None, "segundos": 5400}, self.orig), "outro vídeo sobre a live")
+
+    def test_cada_video_em_uma_live_so_e_dentro_da_janela(self):
+        ini = {"A": "2026-11-05T22:00:00Z", "B": "2026-11-12T13:00:00Z"}
+        longo = {"inicio_ao_vivo": "2026-11-05T21:00:00Z"}
+        self.assertEqual(self.r.mais_proxima(longo, ini), "A")
+        self.assertFalse(self.r.na_janela(longo, {"inicio": ini["B"]}))
+        self.assertTrue(self.r.na_janela(longo, {"inicio": ini["A"]}))
+        self.assertFalse(self.r.na_janela({"publicado_em": "2026-11-09T00:00:00Z"}, {"inicio": ini["A"]}))  # mais de 72 h depois
 
     def test_canal_pequeno_vira_codigo(self):
-        v = {"id": "abc", "titulo": "Lula e Janones", "canal": "Canal do Zé", "canal_id": "UCx", "tipo": "reenvio ou corte", "visualizacoes": 10}
+        v = {"id": "abc", "titulo": "Lula e Janones", "canal": "Canal do Zé", "canal_id": "UCx", "tipo": "outro vídeo sobre a live", "visualizacoes": 10}
         for insc in (None, 0, 9_999):
             s = json.dumps(self.r.publicar({**v, "inscritos_canal": insc}, 7), ensure_ascii=False)
             self.assertIn("canal_007", s)

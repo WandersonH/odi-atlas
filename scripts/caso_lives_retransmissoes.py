@@ -10,7 +10,7 @@ Para cada live do caso (videos_youtube em data/config/casos.json):
      achados fica no privado; sem o privado, a busca é refeita sempre);
   3. fica só com vídeos cujo título tem "Lula" e ("Janones" ou "Exército");
   4. classifica: "ao vivo simultânea" (transmissão ao vivo que começou até 3 h antes ou depois do original e dura ao menos metade
-     dele), "transmissão ao vivo em outro horário" ou "reenvio ou corte" (vídeo comum);
+     dele), "transmissão ao vivo em outro horário" ou "outro vídeo sobre a live" (vídeo comum);
   5. lê inscritos de cada canal. Canal com menos de 10 mil inscritos (ou que esconde o número) aparece só como código, sem
      título nem link (regra do Atlas para contas comuns).
 Comentários das retransmissões: só quando há repositório privado ($ODI_INTERNO_DIR), até PAGINAS páginas de 100 conversas nos
@@ -72,10 +72,25 @@ def segundos(dur: str | None) -> int | None:
 
 def classificar(v: dict, orig: dict) -> str:
     if not v.get("inicio_ao_vivo"):
-        return "reenvio ou corte"
+        return "outro vídeo sobre a live"
     perto = abs((t(v["inicio_ao_vivo"]) - t(orig["inicio"])).total_seconds()) <= 3 * 3600
     longo = (v.get("segundos") or 0) >= 0.5 * (orig.get("segundos") or 0) if orig.get("segundos") else True
     return "ao vivo simultânea" if perto and longo else "transmissão ao vivo em outro horário"
+
+
+def quando(v: dict) -> str:
+    return v.get("inicio_ao_vivo") or v.get("publicado_em") or ""
+
+
+def na_janela(v: dict, orig: dict) -> bool:
+    q = t(quando(v))
+    return bool(q) and t(orig["inicio"]) - timedelta(hours=6) <= q <= t(orig["inicio"]) + timedelta(hours=72)
+
+
+def mais_proxima(v: dict, inicios: dict[str, str]) -> str | None:
+    """Live de início mais próximo do vídeo: cada vídeo conta em uma live só."""
+    q = t(quando(v))
+    return min(inicios, key=lambda i: abs((q - t(inicios[i])).total_seconds())) if q and inicios else None
 
 
 def yt(rota, **q):
@@ -202,6 +217,7 @@ def main(argv=None) -> int:
     originais = detalhes(ids, key, erros)
     canais_lula = {o["canal_id"] for o in originais.values()}
     saida, todos_videos = [], []
+    inicios = {i: (o["inicio_ao_vivo"] or o["publicado_em"]) for i, o in originais.items()}
     for i in ids:
         o = originais.get(i)
         if not o:
@@ -218,7 +234,7 @@ def main(argv=None) -> int:
             e["consultas"], e["buscas_em"] = consultas, (e["buscas_em"] + [agora()])[-30:]
         det = detalhes([v for v in e["achados"] if v not in ids], key, erros)
         fora = [v for v in det.values() if v["canal_id"] not in canais_lula]
-        vs = [v for v in fora if titulo_serve(v["titulo"])]
+        vs = [v for v in fora if titulo_serve(v["titulo"]) and na_janela(v, orig) and mais_proxima(v, inicios) == i]
         for v in vs:
             v["tipo"], v["achado_pela_busca"], v["live"] = classificar(v, orig), e["achados"].get(v["id"]), i
         saida.append({"live": i, "original": orig, "consultas": e["consultas"], "buscas_em": e["buscas_em"], "achados_na_busca": len(e["achados"]),
@@ -240,7 +256,7 @@ def main(argv=None) -> int:
         s["videos"] = [publicar(v, codigos.setdefault(v["canal_id"], len(codigos) + 1)) for v in vs]
         s["canais"] = len({v["canal_id"] for v in vs})
         s["canais_identificados"] = len({v["canal_id"] for v in vs if (v.get("inscritos_canal") or 0) >= MIN_INSCRITOS})
-        s["por_tipo"] = {k: sum(1 for v in vs if v["tipo"] == k) for k in ("ao vivo simultânea", "transmissão ao vivo em outro horário", "reenvio ou corte")}
+        s["por_tipo"] = {k: sum(1 for v in vs if v["tipo"] == k) for k in ("ao vivo simultânea", "transmissão ao vivo em outro horário", "outro vídeo sobre a live")}
         s["soma_visualizacoes"] = sum(v.get("visualizacoes") or 0 for v in vs)
         s["soma_comentarios_informados"] = sum(v.get("comentarios_informados") or 0 for v in vs)
         s["comentarios_lidos"] = sum((lidos or {}).get(v["id"], 0) for v in vs) if lidos is not None else None
