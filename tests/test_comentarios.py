@@ -115,6 +115,22 @@ class TestAnalise(unittest.TestCase):
             am = list(csv.DictReader(open(tmp / "interno/codificacao/amostra_comentarios_v1.csv", encoding="utf-8"), delimiter=";"))
             self.assertEqual(len(am), 400)  # 200 por candidato
             self.assertTrue((tmp / "interno/youtube/comentarios/corpus_iramuteq_comentarios.txt").read_text(encoding="utf-8").startswith("**** *cand_"))
+            # C19.382: corpus grande vai compactado, e o .txt que já existia não é tocado
+            os.environ["ODI_INTERNO_DIR"] = str(tmp / "interno"); os.chdir(tmp)
+            velho, antes = tmp / "interno/youtube/comentarios/corpus_iramuteq_comentarios.txt", None
+            antes = velho.read_bytes(); velho.write_bytes(b"ANTIGO")
+            limite = bcm.LIMITE_TXT
+            try:
+                bcm.LIMITE_TXT = 10
+                self.assertEqual(bcm.main([str(bruto)]), 0)
+            finally:
+                bcm.LIMITE_TXT = limite
+                os.environ.pop("ODI_INTERNO_DIR", None)
+                os.chdir(cwd)
+            self.assertEqual(velho.read_bytes(), b"ANTIGO")
+            import gzip as _gz
+            self.assertEqual(_gz.open(str(velho) + ".gz", "rb").read(), antes)
+            self.assertFalse((velho.parent / "corpus_iramuteq_comentarios.txt.tmp").exists())
             txt = (tmp / "data/youtube/comentarios/analise.json").read_text(encoding="utf-8")
             self.assertNotIn(segredo.lower(), txt.lower())
             self.assertNotIn("Nome Privado", txt)

@@ -139,6 +139,9 @@ def amostra_humana(rows: list[dict], n: int, semente: int = SEMENTE) -> list[dic
     return sorted(out, key=lambda r: r["comment_id"])[:n]
 
 
+LIMITE_TXT = 90 * 1024 * 1024  # acima disto o corpus IRaMuTeQ vai compactado (limite do GitHub: 100 MiB por arquivo)
+
+
 def main(argv=None) -> int:
     root = Path(".")
     plat, argv = plataforma(argv)
@@ -267,7 +270,11 @@ def gravar_privado(dest: Path, privado: dict, cands: dict, intol: dict, pop: dic
                     w.writerow([r["comment_id"], cands[cid]["nome"], (f"https://www.kwai.com/@{r['channel_id']}/video/{r['video_id']}" if plat == "kwai" else f"https://www.instagram.com/p/{r['video_id']}/" if plat == "instagram" else f"https://www.tiktok.com/@{r['channel_id']}/video/{r['video_id']}" if plat == "tiktok" else f"https://www.facebook.com/{r['video_id']}" if plat == "facebook" else f"https://www.youtube.com/watch?v={r['video_id']}"), r["tipo"],
                                 r["publicado_em"], r["texto"].replace("\n", " ")] + [""] * len(cats) + [""])
                     wp.writerow([r["comment_id"]] + [int(k in (c_int[i] | c_pop[i])) for k in cats])
-    with open(dest / "corpus_iramuteq_comentarios.txt", "w", encoding="utf-8") as f:
+    # O GitHub recusa arquivo acima de 100 MiB e, com ele, o push inteiro (run 44967167368, 22/11/2026: o corpus do YouTube
+    # chegou a 108 MiB e nada da coleta foi gravado). Acima de LIMITE_TXT o corpus vai compactado (.txt.gz); o .txt antigo
+    # fica como está (nunca apagar dado sem autorização — regra 8) e deixa de ser atualizado.
+    tmp_corpus = dest / "corpus_iramuteq_comentarios.txt.tmp"
+    with open(tmp_corpus, "w", encoding="utf-8") as f:
         for cid, (_, c_int, _, rr) in privado["amostras"].items():
             nome = cp.var(cands[cid]["nome"].split()[0])
             for r, s in zip(rr, c_int):
@@ -276,7 +283,16 @@ def gravar_privado(dest: Path, privado: dict, cands: dict, intol: dict, pop: dic
                     continue
                 f.write(f"**** *cand_{nome} *sem_{cp.semana(r['publicado_em'])} *tipo_{r['tipo']} "
                         f"*incv_{int(bool(s & set(INCIVILIDADE)))} *intol_{int(bool(s & set(INTOLERANCIA)))}\n{t}\n")
-    print(f"privado: amostra e corpus IRaMuTeQ em {cod} e {dest}")
+    if tmp_corpus.stat().st_size <= LIMITE_TXT:
+        os.replace(tmp_corpus, dest / "corpus_iramuteq_comentarios.txt")
+        arq_corpus = "corpus_iramuteq_comentarios.txt"
+    else:
+        with open(tmp_corpus, "rb") as fi, gzip.open(dest / "corpus_iramuteq_comentarios.txt.gz", "wb", compresslevel=9) as fo:
+            while bloco := fi.read(1 << 20):
+                fo.write(bloco)
+        tmp_corpus.unlink()  # arquivo temporário desta execução, não é dado
+        arq_corpus = "corpus_iramuteq_comentarios.txt.gz (compactado: passou de 90 MiB; o .txt antigo não é mais atualizado)"
+    print(f"privado: amostra e corpus IRaMuTeQ em {cod} e {dest} · {arq_corpus}")
 
 
 if __name__ == "__main__":

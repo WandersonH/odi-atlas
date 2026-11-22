@@ -4,6 +4,17 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.382 — Token do privado voltou; coleta de comentários do YouTube barrada por arquivo acima de 100 MiB: corrigido (2026-11-22) ⚠️ confirmação em andamento
+
+- O responsável avisou (21/11, 21h32): "token ajustado pode testar". Teste: disparo de "Comentários YouTube" (run 44967167368, 22/11 00h33 UTC).
+  - ✅ O token novo funciona: o passo "Repositório privado" clonou o `odi-atlas-interno`, e a coleta e a leitura completa rodaram.
+  - ⛔ O passo "Gravar no repositório privado" falhou por outra causa: `GH001: Large files detected` — `youtube/comentarios/corpus_iramuteq_comentarios.txt` com 108,42 MiB (limite do GitHub: 100 MiB por arquivo). O GitHub recusa o push inteiro, então **os comentários lidos nesse run não foram gravados**. O arquivo anterior tinha 103.182.948 bytes (98,4 MiB): os 6 dias sem coleta acumularam e a primeira leitura passou do limite.
+- Correção em `scripts/build_comentarios.py`: o corpus completo do IRaMuTeQ é escrito num temporário; até 90 MiB vira o `.txt` de sempre, acima disso vira `corpus_iramuteq_comentarios.txt.gz`. O `.txt` antigo do privado não é apagado nem alterado (regra 8); fica parado na versão de 15/11.
+- Página: a nota do corpus (5 blocos de comentários) explica o `.txt.gz`.
+- Testes: `python -m unittest discover -s tests` → 318 testes, OK. `tests/test_comentarios.py` ganhou a verificação: com limite baixo, sai o `.gz` com o mesmo conteúdo, o `.txt` existente fica intacto e não sobra temporário.
+- ⛔ **Risco aberto, mesmo limite:** `youtube/comentarios/comentarios.csv.gz` (o acervo em si) está com 88,00 MiB segundo o aviso do GitHub nesse run; em 16/11 tinha 83.913.980 bytes (80,0 MiB). Quando passar de 100 MiB a coleta para de gravar outra vez. Precisa ser dividido em partes (31 scripts leem esse arquivo); ainda não feito.
+- ⛔ Pendente: nova execução de "Comentários YouTube" com a correção e, depois, do caso 039 (IDs na entrada seguinte); Apify continua sem token válido.
+
 ## C19.381 — Caso 039: retransmissões das lives em outros canais do YouTube (2026-11-21) ⚠️ sem os comentários (falta o privado)
 
 - Pedido do responsável (21/11, 12h53): "a live foi transmitida agora às 10, mas gostei da sua sugestão das outras lives"; "quero pegar retransmissões também".
