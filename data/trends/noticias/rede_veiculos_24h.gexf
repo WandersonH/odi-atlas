@@ -13,62 +13,76 @@
       <attribute id="5" title="comunidade" type="long" />
     </attributes>
     <nodes>
-      <node id="Estadão" label="Estadão">
-        <viz:color r="98" g="90" b="54" a="1.0" />
-        <viz:size value="5.286335345030997" />
-        <viz:position x="0.0" y="-837.2" z="0.0" />
+      <node id="Folha de S.Paulo" label="Folha de S.Paulo">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="6.024922359499621" />
+        <viz:position x="496.8" y="-197.1" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="estadao.com.br" />
+          <attvalue for="0" value="www1.folha.uol.com.br" />
+          <attvalue for="1" value="9" />
+          <attvalue for="2" value="9" />
+          <attvalue for="3" value="0" />
+          <attvalue for="4" value="1.0" />
+          <attvalue for="5" value="1" />
+        </attvalues>
+      </node>
+      <node id="Poder360" label="Poder360">
+        <viz:color r="119" g="74" b="52" a="1.0" />
+        <viz:size value="5.286335345030997" />
+        <viz:position x="1000.0" y="-396.7" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="poder360.com.br" />
           <attvalue for="1" value="6" />
           <attvalue for="2" value="4" />
           <attvalue for="3" value="2" />
-          <attvalue for="4" value="0.396" />
+          <attvalue for="4" value="0.521" />
           <attvalue for="5" value="1" />
         </attvalues>
       </node>
-      <node id="InfoMoney" label="InfoMoney">
-        <viz:color r="98" g="90" b="54" a="1.0" />
-        <viz:size value="4.32379000772445" />
-        <viz:position x="1000.0" y="-0.0" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="infomoney.com.br" />
-          <attvalue for="1" value="3" />
-          <attvalue for="2" value="2" />
-          <attvalue for="3" value="1" />
-          <attvalue for="4" value="0.396" />
-          <attvalue for="5" value="1" />
-        </attvalues>
-      </node>
-      <node id="O Potiguar" label="O Potiguar">
-        <viz:color r="200" g="16" b="46" a="1.0" />
-        <viz:size value="4.32379000772445" />
+      <node id="Portal VV8" label="Portal VV8">
+        <viz:color r="90" g="95" b="54" a="1.0" />
+        <viz:size value="4.683281572999748" />
         <viz:position x="250.0" y="-970.0" z="0.0" />
         <attvalues>
-          <attvalue for="0" value="opotiguar.com.br" />
+          <attvalue for="0" value="portalvv8.com.br" />
+          <attvalue for="1" value="4" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="0.352" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="Revista Oeste" label="Revista Oeste">
+        <viz:color r="67" g="112" b="56" a="1.0" />
+        <viz:size value="4.32379000772445" />
+        <viz:position x="750.0" y="-970.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="revistaoeste.com" />
+          <attvalue for="1" value="3" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="2" />
+          <attvalue for="4" value="0.214" />
+          <attvalue for="5" value="2" />
+        </attvalues>
+      </node>
+      <node id="Vero Notícias" label="Vero Notícias">
+        <viz:color r="200" g="16" b="46" a="1.0" />
+        <viz:size value="4.32379000772445" />
+        <viz:position x="0.0" y="-0.0" z="0.0" />
+        <attvalues>
+          <attvalue for="0" value="veronoticias.com" />
           <attvalue for="1" value="3" />
           <attvalue for="2" value="3" />
           <attvalue for="3" value="0" />
           <attvalue for="4" value="1.0" />
-          <attvalue for="5" value="2" />
-        </attvalues>
-      </node>
-      <node id="Poder360" label="Poder360">
-        <viz:color r="127" g="69" b="52" a="1.0" />
-        <viz:size value="5.0" />
-        <viz:position x="750.0" y="-970.0" z="0.0" />
-        <attvalues>
-          <attvalue for="0" value="poder360.com.br" />
-          <attvalue for="1" value="5" />
-          <attvalue for="2" value="4" />
-          <attvalue for="3" value="1" />
-          <attvalue for="4" value="0.567" />
-          <attvalue for="5" value="2" />
+          <attvalue for="5" value="1" />
         </attvalues>
       </node>
     </nodes>
     <edges>
-      <edge source="Estadão" target="InfoMoney" id="0" weight="0.2258" />
-      <edge source="O Potiguar" target="Poder360" id="1" weight="0.1533" />
+      <edge source="Folha de S.Paulo" target="Vero Notícias" id="0" weight="0.1767" />
+      <edge source="Folha de S.Paulo" target="Poder360" id="1" weight="0.1707" />
+      <edge source="Portal VV8" target="Revista Oeste" id="2" weight="0.2025" />
     </edges>
   </graph>
 </gexf>
