@@ -129,7 +129,10 @@ def analisar(lives: list[dict], linhas: dict, primeiro: dict) -> dict:
             l, f = bool(l and l < marco), bool(f and f < marco)
             lado["ambos" if l and f else "lula" if l else "flavio" if f else "nenhum"] += 1
         dias = Counter((r.get("publicado_em") or "")[:10] for r in rs)
-        x.update({"pct_lido": pct(len(rs), x.get("comentarios_informados")), "autores": len(aut),
+        inf = x.get("comentarios_informados")
+        if inf is not None and len(rs) > inf:  # a contagem do YouTube foi lida antes dos comentários (vídeo recente ainda crescendo)
+            x["nota"] = "mais comentários lidos do que a contagem informada: a contagem do YouTube é de uma leitura anterior à dos comentários; % não calculado"
+        x.update({"pct_lido": None if inf is not None and len(rs) > inf else pct(len(rs), inf), "autores": len(aut),
                   "respostas_lidas": sum(1 for r in rs if r.get("parent_id")),
                   "primeiro_comentario_lido": min(r["publicado_em"] for r in rs if r.get("publicado_em")),
                   "ultimo_comentario_lido": max(r["publicado_em"] for r in rs if r.get("publicado_em")),
@@ -179,12 +182,16 @@ def main(argv=None) -> int:
         else:
             for x in lives:
                 x.update({"comentarios_lidos": None, "pct_lido": None, "situacao": "⛔ comentários não lidos (sem repositório privado)"})
-    uni_c = sum(x.get("comentarios_informados") or 0 for x in lives)
-    lidos = sum(x.get("comentarios_lidos") or 0 for x in lives)
+    # universo e amostra somam só as lives em que a contagem informada é igual ou posterior à leitura (lidos ≤ informados)
+    comparaveis = [x for x in lives if not x.get("nota")]
+    uni_c = sum(x.get("comentarios_informados") or 0 for x in comparaveis)
+    lidos = sum(x.get("comentarios_lidos") or 0 for x in comparaveis)
+    fora = len(lives) - len(comparaveis)
     out = {"caso": CASO, "gerado_em_utc": agora(), "videos_lidos_em_utc": conteudo.get("coletado_em_utc"), "lives": lives, "canal": canal,
            **extra, "acervo_comentarios": total_acervo,
            "universo": [
-               {"conjunto": "Comentários das lives", "videos": len(lives), "universo": uni_c or None,
+               {"conjunto": "Comentários das lives" + (f" ({len(comparaveis)} de {len(lives)}; a mais recente fica fora: contagem do YouTube anterior à leitura)" if fora else ""),
+                "videos": len(comparaveis), "universo": uni_c or None,
                 "fonte_universo": "contagem de comentários informada pelo YouTube em cada vídeo (inclui respostas)", "amostra": lidos,
                 "pct": pct(lidos, uni_c), "criterio": "o que a coleta diária de comentários do YouTube já leu de cada live (API oficial)"},
                {"conjunto": "Vídeos do canal", "videos": canal["videos_no_canal"], "universo": None,

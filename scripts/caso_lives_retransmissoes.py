@@ -93,13 +93,21 @@ def mais_proxima(v: dict, inicios: dict[str, str]) -> str | None:
     return min(inicios, key=lambda i: abs((q - t(inicios[i])).total_seconds())) if q and inicios else None
 
 
+SEM_COTA = {"valor": False}  # cota diária da API esgotada (quotaExceeded ou 429 repetido): nada mais é pedido nesta execução
+
+
 def yt(rota, **q):
-    for k in range(3):
+    if SEM_COTA["valor"]:
+        raise RuntimeError("cota esgotada (chamada não feita)")
+    for k in range(2):
         try:
             return yt_api(rota, **q)
         except RuntimeError as e:
-            if "429" in str(e) and k < 2:
-                time.sleep(20 * (k + 1))
+            if "quotaExceeded" in str(e) or ("429" in str(e) and k == 1):
+                SEM_COTA["valor"] = True
+                raise
+            if "429" in str(e):
+                time.sleep(20)
                 continue
             raise
 
@@ -231,7 +239,9 @@ def main(argv=None) -> int:
             achados, consultas = buscar(orig, key, erros)
             for vid, b in achados.items():
                 e["achados"].setdefault(vid, b)
-            e["consultas"], e["buscas_em"] = consultas, (e["buscas_em"] + [agora()])[-30:]
+            e["consultas"] = consultas
+            if all(c.get("devolvidos") is not None for c in consultas):  # busca incompleta não conta como feita: repete na próxima execução
+                e["buscas_em"] = (e["buscas_em"] + [agora()])[-30:]
         det = detalhes([v for v in e["achados"] if v not in ids], key, erros)
         fora = [v for v in det.values() if v["canal_id"] not in canais_lula]
         vs = [v for v in fora if titulo_serve(v["titulo"]) and na_janela(v, orig) and mais_proxima(v, inicios) == i]
@@ -276,16 +286,23 @@ def main(argv=None) -> int:
                             + ("" if lidos is not None else " · ⛔ não lidos: sem repositório privado")}],
            "privacidade": f"Canal com menos de {MIN_INSCRITOS:,} inscritos, ou que esconde o número, aparece como código, sem título nem link.".replace(",", "."),
            "erros": erros}
-    (pub / "retransmissoes.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    incompleta = SEM_COTA["valor"] or any(c.get("devolvidos") is None for s in saida for c in s.get("consultas", []))
+    ja_tem = (pub / "retransmissoes.json").exists()
+    if incompleta and ja_tem:
+        # 22/11/2026 (run 44970566957): a cota da API acabou no meio e a lista parcial (69 vídeos) substituiu a completa (259).
+        # Leitura incompleta nunca substitui a anterior: o arquivo público fica como estava; achados e comentários lidos são mantidos no privado.
+        print("⛔ leitura incompleta (cota da API do YouTube esgotada ou busca com erro): retransmissoes.json mantido como estava")
+    else:
+        (pub / "retransmissoes.json").write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     if est_arq:
         est_arq.parent.mkdir(parents=True, exist_ok=True)
         est_arq.write_text(json.dumps(estado, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     for s in saida:
         print(f"{s['live']}: achados {s.get('achados_na_busca')} · outros canais {s.get('de_outros_canais')} · no filtro {s.get('passaram_no_filtro')} · "
               f"canais {s.get('canais')} · {s.get('por_tipo')} · visualizações {s.get('soma_visualizacoes')} · comentários lidos {s.get('comentarios_lidos')}")
-    for e in erros:
+    for e in sorted(set(erros)):
         print(e)
-    return 0
+    return 1 if incompleta else 0
 
 
 if __name__ == "__main__":

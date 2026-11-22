@@ -4,6 +4,23 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.383 — Caso 039 com as quatro lives lidas; retransmissões preservadas depois de a cota do YouTube acabar (2026-11-22) ⚠️ acervo perto do limite de 100 MiB
+
+- Confirmação do C19.382: "Comentários YouTube", run 44968883927 (22/11, 00h54 UTC) → `success`, inclusive "Gravar no repositório privado". No privado: `corpus_iramuteq_comentarios.txt.gz` com 27.041.948 bytes; o `.txt` antigo segue intacto (103.182.948 bytes, 16/11).
+- Caso 039, run 44970566957 (01h15 UTC, `success`), agora com o privado. Reprocessado nesta sessão com o mesmo acervo (`python scripts/caso_lives.py`):
+  - Acervo: 1.112.006 comentários. Lidos nas 4 lives: 54.297, de 37.083 autores.
+  - 22/10: 28.631 informados, 25.776 lidos (90,0%), 18.216 autores. 05/11: 14.241 / 12.511 (87,9%), 8.919. 12/11: 10.120 / 9.743 (96,3%), 7.252.
+  - 21/11: 6.267 lidos, 4.494 autores; a contagem do YouTube no arquivo de vídeos (5.496, leitura de 21/11 21h44 UTC) é anterior à leitura dos comentários, então o % não é calculado (antes saía 114,0%: defeito meu, corrigido). O universo somado da página cobre as 3 lives comparáveis: 52.992 informados, 48.030 lidos (90,6%).
+  - Sem comentário anterior no acervo: 87,9% (22/10), 80,3% (05/11), 58,6% (12/11), 56,8% (21/11). Autores em 1 live: 35.439; em 2: 1.506; em 3: 122; nas 4: 16.
+  - Emojis: 54.297 textos, 25.345 com emoji (46,7%), 533 emojis distintos.
+- **Defeito meu nas retransmissões:** nesse run a cota diária da API do YouTube acabou no meio (49 erros `HTTP 429`/`quotaExceeded`; as duas coletas de comentários do dia gastaram a cota) e a lista parcial (69 vídeos) substituiu a completa (259) em `retransmissoes.json`. O passo também ficou 10 minutos tentando de novo.
+  - Restaurado: `data/casos/039/retransmissoes.json` voltou à versão do run 44922125947 (commit 65f5f9da; 259 vídeos, leitura de 21/11 16h01 UTC).
+  - Correção em `scripts/caso_lives_retransmissoes.py`: na primeira recusa por cota nenhuma outra chamada sai; leitura incompleta não substitui o arquivo público e o script termina com erro; busca incompleta não conta como feita (repete na execução seguinte). No privado, o estado das 4 lives foi marcado para buscar de novo (commit fbd3d72 do privado); os achados foram mantidos.
+  - Comentários das retransmissões gravados no privado nesse run: 1.407 (parcial, por causa da cota). ⛔ Não aparecem na página até a próxima leitura completa.
+- Testes: `python -m unittest discover -s tests` → 320 testes, OK (novos: cota esgotada para as chamadas; lidos acima do informado não vira percentual).
+- ⛔ **Risco aberto, mais perto:** `youtube/comentarios/comentarios.csv.gz` está com 94.324.436 bytes (89,96 MiB) depois da recuperação de 6 dias; em 16/11 tinha 83.913.980. O GitHub recusa acima de 100 MiB. Dividir o acervo em partes é a próxima tarefa.
+- ⛔ Pendente: nova leitura das retransmissões quando a cota da API renovar (execução agendada de 22/11, 19h17); Apify sem token válido.
+
 ## C19.382 — Token do privado voltou; coleta de comentários do YouTube barrada por arquivo acima de 100 MiB: corrigido (2026-11-22) ⚠️ confirmação em andamento
 
 - O responsável avisou (21/11, 21h32): "token ajustado pode testar". Teste: disparo de "Comentários YouTube" (run 44967167368, 22/11 00h33 UTC).

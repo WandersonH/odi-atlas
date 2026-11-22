@@ -59,7 +59,10 @@ class TestCasoLives(unittest.TestCase):
             self.assertNotIn(proibido, s)
         d = json.loads(s)
         u = d["universo"][0]
-        self.assertEqual(u["conjunto"], "Comentários das lives")
+        self.assertTrue(u["conjunto"].startswith("Comentários das lives"))
+        for x in d["lives"]:
+            if x.get("pct_lido") is not None:
+                self.assertLessEqual(x["pct_lido"], 100)
         self.assertTrue(u["fonte_universo"] and u["criterio"])
         for x in d["lives"]:
             if not x.get("comentarios_lidos"):
@@ -95,6 +98,30 @@ class TestRetransmissoes(unittest.TestCase):
         self.assertFalse(self.r.na_janela(longo, {"inicio": ini["B"]}))
         self.assertTrue(self.r.na_janela(longo, {"inicio": ini["A"]}))
         self.assertFalse(self.r.na_janela({"publicado_em": "2026-11-09T00:00:00Z"}, {"inicio": ini["A"]}))  # mais de 72 h depois
+
+    def test_cota_esgotada_para_as_chamadas(self):
+        chamadas = []
+
+        def falsa(rota, **q):
+            chamadas.append(rota)
+            raise RuntimeError("quotaExceeded")
+        orig_api, self.r.yt_api = self.r.yt_api, falsa
+        try:
+            self.r.SEM_COTA["valor"] = False
+            for _ in range(3):
+                with self.assertRaises(RuntimeError):
+                    self.r.yt("search", q="x")
+            self.assertEqual(len(chamadas), 1)  # depois da primeira recusa, nenhuma outra chamada sai
+        finally:
+            self.r.yt_api, self.r.SEM_COTA["valor"] = orig_api, False
+
+    def test_lidos_acima_do_informado_nao_vira_percentual(self):
+        import caso_lives as c2
+        lives = [{"id": "L1", "publicado_em": "2026-11-21T13:00:00Z", "comentarios_informados": 2}]
+        linhas = {"L1": [linha("L1", a, "2026-11-21T14:00:00Z") for a in ("a", "b", "c")]}
+        c2.analisar(lives, linhas, {c2.LULA: {}, c2.FLAVIO: {}})
+        self.assertIsNone(lives[0]["pct_lido"])
+        self.assertIn("leitura anterior", lives[0]["nota"])
 
     def test_canal_pequeno_vira_codigo(self):
         v = {"id": "abc", "titulo": "Lula e Janones", "canal": "Canal do Zé", "canal_id": "UCx", "tipo": "outro vídeo sobre a live", "visualizacoes": 10}
