@@ -17,7 +17,7 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Restaurado: `data/casos/039/retransmissoes.json` voltou à versão do run 44922125947 (commit 65f5f9da; 259 vídeos, leitura de 21/11 16h01 UTC).
   - Correção em `scripts/caso_lives_retransmissoes.py`: na primeira recusa por cota nenhuma outra chamada sai; leitura incompleta não substitui o arquivo público e o script termina com erro; busca incompleta não conta como feita (repete na execução seguinte). No privado, o estado das 4 lives foi marcado para buscar de novo (commit fbd3d72 do privado); os achados foram mantidos.
   - Comentários das retransmissões gravados no privado nesse run: 1.407 (parcial, por causa da cota). ⛔ Não aparecem na página até a próxima leitura completa.
-- Testes: `python -m unittest discover -s tests` → 320 testes, OK (novos: cota esgotada para as chamadas; lidos acima do informado não vira percentual).
+- Testes: `python -m unittest discover -s tests` → 321 testes, OK, 1 pulado (novos: cota esgotada para as chamadas; lidos acima do informado não vira percentual).
 - ⛔ **Risco aberto, mais perto:** `youtube/comentarios/comentarios.csv.gz` está com 94.324.436 bytes (89,96 MiB) depois da recuperação de 6 dias; em 16/11 tinha 83.913.980. O GitHub recusa acima de 100 MiB. Dividir o acervo em partes é a próxima tarefa.
 - ⛔ Pendente: nova leitura das retransmissões quando a cota da API renovar (execução agendada de 22/11, 19h17); Apify sem token válido.
 
