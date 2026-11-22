@@ -1,10 +1,14 @@
 {
  "schema_version": 1,
  "stage": "seguidores-youtube",
- "run_started_utc": "2026-11-21T21:44:42Z",
+ "run_started_utc": "2026-11-22T02:22:53Z",
  "fonte": "YouTube Data API v3 · channels.list (statistics)",
- "blocked": [],
- "warnings": [],
+ "blocked": [
+  "HTTP 403 em handle=@GILBERTOKASSAB8731 (verifique a chave, se a YouTube Data API v3 está ativada e a cota)"
+ ],
+ "warnings": [
+  "vídeos de UCMLluq-qSne85Un73ToYI2w: HTTPError: HTTP Error 403: Forbidden"
+ ],
  "canais": [
   {
    "url": "https://www.youtube.com/@canaldohertz",
@@ -17,9 +21,9 @@
    "titulo": "Hertz Dias",
    "oculto": false,
    "inscritos": "4870",
-   "videos": "249",
+   "videos": "250",
    "visualizacoes": "224921",
-   "videos_desde_inicio_campanha": 32
+   "videos_desde_inicio_campanha": 33
   },
   {
    "url": "HTTPS://WWW.YOUTUBE.COM/CHANNEL/UC-TFM5Y5UN0X7UDLY5SBKBQ",
@@ -123,9 +127,9 @@
    "titulo": "Lula",
    "oculto": false,
    "inscritos": "3490000",
-   "videos": "2739",
+   "videos": "2743",
    "visualizacoes": "602435552",
-   "videos_desde_inicio_campanha": 642
+   "videos_desde_inicio_campanha": 646
   },
   {
    "url": "HTTPS://WWW.YOUTUBE.COM/@EDUARDOGIRAOOFICIAL",
@@ -137,7 +141,7 @@
    "channel_id": "UCnCLvcoF4iYagNOFA86ooAg",
    "titulo": "Eduardo Girão",
    "oculto": false,
-   "inscritos": "95800",
+   "inscritos": "96000",
    "videos": "1795",
    "visualizacoes": "10584728",
    "videos_desde_inicio_campanha": 6
@@ -170,60 +174,11 @@
    "inscritos": "472000",
    "videos": "1466",
    "visualizacoes": "192433682",
-   "videos_desde_inicio_campanha": 534
-  },
-  {
-   "url": "HTTPS://WWW.YOUTUBE.COM/@GILBERTOKASSAB8731",
-   "ref": [
-    "handle",
-    "@GILBERTOKASSAB8731"
-   ],
-   "encontrado": true,
-   "channel_id": "UCQ5eKuqFNEDnyOT_CIc_1Vw",
-   "titulo": "Gilberto Kassab",
-   "oculto": false,
-   "inscritos": "108",
-   "videos": "382",
-   "visualizacoes": "5568",
    "videos_desde_inicio_campanha": 0
-  },
-  {
-   "url": "https://www.youtube.com/@CanalTvCelular",
-   "ref": [
-    "handle",
-    "@CanalTvCelular"
-   ],
-   "encontrado": true,
-   "channel_id": "UCYJ4looDPmrgIF1FbGDmuUg",
-   "titulo": "TV Celular",
-   "oculto": false,
-   "inscritos": "226",
-   "videos": "40",
-   "visualizacoes": "46666",
-   "videos_desde_inicio_campanha": 41
-  },
-  {
-   "url": "HTTPS://WWW.YOUTUBE.COM/@RONALDOCAIADO55",
-   "ref": [
-    "handle",
-    "@RONALDOCAIADO55"
-   ],
-   "encontrado": true,
-   "channel_id": "UCAz1jGIUrdpGoC8GvRTqrTA",
-   "titulo": "Ronaldo Caiado",
-   "oculto": false,
-   "inscritos": "125000",
-   "videos": "888",
-   "visualizacoes": "28843053",
-   "videos_desde_inicio_campanha": 328
   }
  ],
  "alvos": 15,
  "nao_resolvidos": [],
- "cota_usada": 167,
- "linhas_csv": 13,
- "videos": 3551,
- "videos_desde": "2026-07-20",
- "run_finished_utc": "2026-11-21T21:45:15Z",
- "status": "ok"
+ "run_finished_utc": "2026-11-22T02:23:32Z",
+ "status": "bloqueado"
 }
