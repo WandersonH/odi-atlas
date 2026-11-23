@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-11-22T18:39:28Z",
+  "run_started_utc": "2026-11-23T04:00:02Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -166,10 +166,10 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 181,
+      "serie_pontos": 180,
       "uf_linhas": 27,
-      "relacionados_linhas": 35,
-      "status": "ok"
+      "status": "erro",
+      "error": "HTTPError: HTTP Error 429: unknown"
     },
     {
       "grupo": "segundo_turno_topicos",
@@ -196,9 +196,9 @@
       "periodo": "now 7-d",
       "janela_trends": "now 7-d",
       "geo": "BR",
-      "serie_pontos": 169,
+      "serie_pontos": 168,
       "uf_linhas": 27,
-      "relacionados_linhas": 42,
+      "relacionados_linhas": 39,
       "status": "ok"
     },
     {
@@ -257,7 +257,7 @@
       "geo": "BR",
       "serie_pontos": 98,
       "uf_linhas": 27,
-      "relacionados_linhas": 77,
+      "relacionados_linhas": 97,
       "status": "ok"
     },
     {
@@ -283,11 +283,11 @@
         }
       ],
       "periodo": "campanha_e_depois",
-      "janela_trends": "2026-07-20 2026-11-22",
+      "janela_trends": "2026-07-20 2026-11-23",
       "geo": "BR",
-      "serie_pontos": 126,
+      "serie_pontos": 127,
       "uf_linhas": 27,
-      "relacionados_linhas": 79,
+      "relacionados_linhas": 96,
       "status": "ok"
     },
     {
@@ -311,7 +311,7 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 180,
+      "serie_pontos": 181,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -409,16 +409,17 @@
         }
       ],
       "periodo": "campanha_e_depois",
-      "janela_trends": "2026-07-20 2026-11-22",
+      "janela_trends": "2026-07-20 2026-11-23",
       "geo": "BR",
-      "serie_pontos": 126,
+      "serie_pontos": 127,
       "uf_linhas": 27,
       "status": "ok"
     }
   ],
   "blocked": [
+    "segundo_turno_topicos__now_1-d: HTTPError: HTTP Error 429: unknown",
     "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Ronaldo Caiado' com tipo contendo ['Presidente', 'Governador', 'Político']; opções: [('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado Filho', 'Filho de Ronaldo Caiado'), ('Gestão Ronaldo Caiado no governo de Goiás', 'Assunto'), ('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado', 'Assunto')]"
   ],
-  "run_finished_utc": "2026-11-22T18:43:27Z",
+  "run_finished_utc": "2026-11-23T04:04:51Z",
   "status": "bloqueado"
 }
