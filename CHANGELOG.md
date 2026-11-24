@@ -4,6 +4,16 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.384 — Caso 039: coleta de retransmissões passa para depois da renovação da cota do YouTube (2026-11-24) ⛔ aguardando a execução das 05h53
+
+- O responsável perguntou (24/11, 02h21): "tudo funcionando e rodando?". Conferido em `data/saude_coleta.json` (24/11, 01h48 UTC): 9 de 19 séries em dia. Desde 23/11 00h (Brasília): 126 execuções, 104 certas, 6 com erro, 16 canceladas (publicações da página substituídas).
+- Defeito achado: o caso 039 falhou nas duas execuções agendadas (runs 44975468410 e 45102685421). Agendado para 19h17, o GitHub só o iniciou perto de 23h50, quando a cota diária da API do YouTube já tinha sido gasta pelas outras coletas ("vídeos: cota esgotada"). A proteção do C19.383 funcionou: `retransmissoes.json` ficou na leitura de 21/11 (259 vídeos) e as lives foram atualizadas em 23/11 02h54 UTC.
+- Correção: `caso-lives.yml` passa a rodar às 08h53 UTC (05h53 em Brasília), logo depois da renovação da cota (08h UTC) e antes da coleta de comentários das 07h50.
+- Não executado ainda com a mudança: a primeira execução no horário novo é a de 24/11. ⛔ Os comentários das retransmissões seguem fora da página até essa leitura completa.
+- Acervo de comentários do YouTube no privado: 95.378.150 bytes (90,96 MiB) em 24/11; limite do GitHub 100 MiB. Divisão em partes ainda não feita.
+- Sem mudança: token da Apify recusado (Instagram, seguidores Meta, Kwai); Google Trends com 2 falhas; comentários do TikTok e do Facebook e respostas do X rodam sem erro mas não leem nada.
+- Testes: `python -m unittest discover -s tests` → 321 testes, OK, 1 pulado.
+
 ## C19.383 — Caso 039 com as quatro lives lidas; retransmissões preservadas depois de a cota do YouTube acabar (2026-11-22) ⚠️ acervo perto do limite de 100 MiB
 
 - Confirmação do C19.382: "Comentários YouTube", run 44968883927 (22/11, 00h54 UTC) → `success`, inclusive "Gravar no repositório privado". No privado: `corpus_iramuteq_comentarios.txt.gz` com 27.041.948 bytes; o `.txt` antigo segue intacto (103.182.948 bytes, 16/11).

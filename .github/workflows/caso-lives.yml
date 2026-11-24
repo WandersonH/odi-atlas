@@ -4,7 +4,7 @@ name: Caso 039 (Nova forma de se comunicar) — lives de Lula com Janones no You
 # "Comentários YouTube" (privado). Retransmissões em outros canais: busca na API oficial do YouTube (grátis).
 on:
   schedule:
-    - cron: "17 22 * * *"   # 19h17 em Brasília
+    - cron: "53 8 * * *"   # 05h53 em Brasília: logo depois da renovação da cota do YouTube (08h UTC). Às 19h17 a cota do dia já tinha acabado (runs 44975468410 e 45102685421)
   workflow_dispatch:
 
 permissions:
