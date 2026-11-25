@@ -4,6 +4,24 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.385 — Supabase no plano Pro: banco reativado, busca geral corrigida no banco real e carga de tudo (2026-11-24) ⚠️ carga completa em andamento
+
+- O responsável avisou (24/11, 19h25): "assinatura supabase feita pode levar tudo pra lá tem espaço agora". Conferido: organização no plano `pro`. O projeto `odi-atlas` estava `INACTIVE` (pausado); foi restaurado e voltou.
+- Estado encontrado no banco: 676.208 textos de 38 casos, 430,2 MB. A carga diária tinha parado no limite de segurança do plano gratuito (430 MB). 7 avaliações gravadas por 1 pesquisador.
+- Aplicado no banco real (sem pedido de confirmação desta vez):
+  - `area_busca_rapida` (`20261111b`, pendente desde 11/11). Medido como o usuário do responsável (sessão simulada, transação desfeita): `buscar_resumo('fraude')` 23 ms e `buscar_resumo('lula')` 117 ms (eram 16,6 s, acima do limite de 8 s); `textos(null,'corpus','lula')` 142 ms com 75.959 textos no total; por emoji 54 ms; `painel_casos` 9 ms (38 casos).
+  - `area_preparo_por_caso` (novo, `20261124_area_preparo_por_caso.sql`): `preparar_area(p_n, p_caso)` refaz amostra, resumo e nuvens de UM caso. Com mais de 1,9 milhão de textos, refazer o banco inteiro numa chamada não cabe no tempo. Não usa `truncate`. Recusa quem não é a carga (testado: pesquisador logado recebe "acesso restrito à carga do corpus"). Testado no caso 039: 300 textos de amostra criados, 400 linhas de frequência.
+  - A versão de `preparar_area` escrita em 11/11 saiu de `20261111_area_validacao.sql`: nunca foi aplicada.
+- "Levar tudo": `scripts/carregar_area_pesquisador.py`
+  - limite de segurança sobe de 430 para 6.000 MB (o Pro inclui 8 GB de disco; variável `ODI_AREA_LIMITE_MB`);
+  - além dos 39 casos, carrega os acervos gerais como dois "casos" com nome: `campanhas` (comentários e respostas nos canais das campanhas: YouTube, Facebook, Instagram, TikTok, Kwai, X) e `debate` (comentários dos debates no YouTube). Sem autor, sem link, sem id de conta (regra 11);
+  - contagem a seco com o privado de 24/11 (`--seco --completo`): 1.970.564 textos no total; `campanhas` 1.213.662, `debate` 80.694, caso 039 55.009;
+  - carga diária dos acervos manda só o coletado nos últimos 3 dias e não regrava o que já está no banco; `--completo` manda tudo;
+  - o preparo passa a ser chamado caso a caso; falha de preparo faz a carga terminar com erro.
+- Página da área: nomes dos dois acervos no menu de casos. Workflow `area-pesquisador.yml`: entrada `completo`, limite de 300 minutos.
+- Testes: `python -m unittest discover -s tests` → 322 testes, OK, 1 pulado (novo: acervos sem autor e com id por rede; preparo com guarda e sem `truncate`).
+- ⛔ Pendente: a carga completa no GitHub (ID e números na entrada seguinte); os `revoke` de visitante (parte 3 de 11/11) ainda não aplicados — hoje o visitante sem login não lê nada (RLS) e as funções o recusam; a divisão do acervo de comentários do YouTube no repositório privado (90,96 MiB de 100).
+
 ## C19.384 — Caso 039: coleta de retransmissões passa para depois da renovação da cota do YouTube (2026-11-24) ⛔ aguardando a execução das 05h53
 
 - O responsável perguntou (24/11, 02h21): "tudo funcionando e rodando?". Conferido em `data/saude_coleta.json` (24/11, 01h48 UTC): 9 de 19 séries em dia. Desde 23/11 00h (Brasília): 126 execuções, 104 certas, 6 com erro, 16 canceladas (publicações da página substituídas).

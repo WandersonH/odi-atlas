@@ -8,7 +8,7 @@ insert into public.corpus(caso,rede,fonte,item_id,publicado_em,texto,emojis,ofen
 select case when g%2=0 then '001' else '002' end, case when g%3=0 then 'x' else 'youtube' end, case when g%3=0 then 'post' else 'comentario' end, 'i'||g,
        timestamptz '2026-10-01' + g*interval '1 hour', 'texto '||g||case when g%4=0 then ' fraude 🤡' else ' brasil' end, case when g%4=0 then array['🤡'] else '{}'::text[] end, g%5=0
 from generate_series(1,400) g;
-select public.preparar_area(20) as preparar;
+select public.preparar_area(20) - 'frequencias' as preparar;  -- C19.385: versão por caso (sem caso = todos)
 select caso, estrato, count(*) from public.amostra_validacao group by 1,2 order by 1,2;
 set role authenticated;
 select set_config('request.jwt.claim.sub','33333333-3333-3333-3333-333333333333',false);

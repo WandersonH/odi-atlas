@@ -71,10 +71,37 @@ class TestArea(unittest.TestCase):
         # funções que o pesquisador chama (schema public) não rodam como dono; só a carga (service role) tem exceção
         s = MIG2.read_text(encoding="utf-8")
         elevadas = re.findall(r"create or replace function (public\.\w+)\([^$]*?security definer", s)
-        self.assertEqual(elevadas, ["public.preparar_area"])
-        self.assertIn("revoke execute on function public.preparar_area(int) from public, anon, authenticated", s)
+        self.assertEqual(elevadas, [])
+        # C19.385: o preparo (por caso) está na migração de 24/11 e recusa quem não é a carga
+        m4 = Path("supabase/migrations/20261124_area_preparo_por_caso.sql").read_text(encoding="utf-8")
+        self.assertEqual(re.findall(r"create or replace function (public\.\w+)\([^$]*?security definer", m4), ["public.preparar_area"])
+        self.assertIn("if coalesce(auth.role(), 'service_role') <> 'service_role' then raise exception", m4)
+        self.assertNotRegex(m4, r"grant[^;]* to (anon|public|authenticated)\b")
+        self.assertNotIn("truncate", m4)
         # a regra de leitura avalia a permissão uma vez por consulta (a forma por linha levava 7,5 s)
         self.assertIn("alter policy corpus_so_pesquisador on public.corpus using ((select odi_interno.eh_pesquisador()))", s)
+
+    def test_acervos_gerais_sem_autor_e_com_id_por_rede(self):
+        # C19.385 (24/11/2026): acervos gerais no banco; comentário nunca leva autor, link ou id de conta
+        import gzip, tempfile
+        sys.path.insert(0, "scripts")
+        import carregar_area_pesquisador as c
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            cab = "comment_id;parent_id;tipo;video_id;candidate_id;channel_id;ordem;autor_canal;autor_nome;texto;curtidas;respostas;publicado_em;atualizado_em;coletado_em\n"
+            for rel, linhas in (("youtube/comentarios/comentarios.csv.gz", ["Ug1;;topo;v1;280002542548;UCx;1;UCautor;Fulano de Tal;bom 😂;0;0;2026-11-01T00:00:00Z;;2026-11-20T00:00:00Z", "Ug2;;topo;v1;;UCx;2;UCa;Beltrano; ;0;0;2026-11-01T00:00:00Z;;2026-11-20T00:00:00Z"]),
+                                ("facebook/comentarios/comentarios.csv.gz", ["123;;topo;p1;;;1;999;Ciclano;antigo;0;0;2026-10-01T00:00:00Z;;2026-10-02T00:00:00Z"])):
+                (d / rel).parent.mkdir(parents=True, exist_ok=True)
+                with gzip.open(d / rel, "wt", encoding="utf-8") as f:
+                    f.write(cab + "\n".join(linhas) + "\n")
+            todos = list(c.linhas_acervo("campanhas", d))
+            self.assertEqual([(r["rede"], r["item_id"]) for r in todos], [("youtube", "Ug1"), ("facebook", "facebook:123")])  # texto vazio fica fora
+            self.assertTrue(all(r["autor"] is None and r["fonte"] == "comentario" and r["caso"] == "campanhas" for r in todos))
+            s = json.dumps(todos, ensure_ascii=False)
+            for proibido in ("Fulano", "Ciclano", "UCautor", "999", "UCx"):
+                self.assertNotIn(proibido, s)
+            self.assertEqual(todos[0]["emojis"], ["😂"])
+            self.assertEqual([r["item_id"] for r in c.linhas_acervo("campanhas", d, "2026-11-01T00:00:00Z")], ["Ug1"])  # carga diária: só o recente
 
     def test_livro_de_codigos_igual_ao_banco(self):
         livro = json.loads(Path("data/config/livro_codigos_validacao.json").read_text(encoding="utf-8"))

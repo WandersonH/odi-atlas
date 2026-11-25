@@ -189,7 +189,9 @@ async function carregarPainel(forcar) {
   }
   return PAINEL;
 }
-const tituloCaso = id => TIT[id] || 'Caso ' + id;
+/* acervos gerais (24/11/2026): entram no banco como casos com nome próprio */
+const ACERVOS = { campanhas: 'Acervo geral: comentários e respostas nos canais das campanhas', debate: 'Acervo geral: comentários dos debates no YouTube' };
+const tituloCaso = id => TIT[id] || ACERVOS[id] || 'Caso ' + id;
 
 /* ---------- 01 · menu de casos ---------- */
 async function vCasos() {

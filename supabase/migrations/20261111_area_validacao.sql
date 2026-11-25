@@ -24,25 +24,8 @@ create policy amostra_so_pesquisador on public.amostra_validacao for select to a
 revoke all on public.amostra_validacao from anon;
 grant select on public.amostra_validacao to authenticated;
 
-create or replace function public.preparar_area(p_n int default 300) returns jsonb language plpgsql security definer set search_path = public set statement_timeout = '600s' as $$
-declare a int; f int;
-begin
-  insert into public.amostra_validacao (corpus_id, caso, estrato, ordem)
-  select id, caso, estrato, (o - 1) * 2 + case estrato when 'com_emoji' then 1 else 2 end from (
-    select c.id, c.caso, case when cardinality(c.emojis) > 0 then 'com_emoji' else 'sem_emoji' end as estrato,
-           row_number() over (partition by c.caso, cardinality(c.emojis) > 0 order by md5(c.caso || ':' || c.fonte || ':' || c.item_id || ':odi-2026')) as o
-    from public.corpus c where not exists (select 1 from public.amostra_validacao a where a.caso = c.caso)) x
-  where o <= p_n / 2;
-  get diagnostics a = row_count;
-  truncate odi_interno.resumo_casos;
-  insert into odi_interno.resumo_casos
-  select caso, rede, fonte, count(*), count(*) filter (where cardinality(emojis) > 0), count(*) filter (where ofensivo or odio is not null),
-         min(publicado_em), max(publicado_em), max(carregado_em) from public.corpus group by 1, 2, 3;
-  f := public.atualizar_frequencias();
-  return jsonb_build_object('amostra_novos', a, 'frequencias', f, 'amostra_total', (select count(*) from public.amostra_validacao));
-end $$;
-revoke execute on function public.preparar_area(int) from public, anon, authenticated;
-grant execute on function public.preparar_area(int) to service_role;
+-- preparar_area: a versão escrita aqui em 11/11 nunca foi aplicada no banco real (o conector esperou uma confirmação que não veio).
+-- A que está no banco é a de supabase/migrations/20261124_area_preparo_por_caso.sql (por caso).
 
 -- 4) avaliação do pesquisador, por texto (livro de códigos v0: data/config/livro_codigos_validacao.json)
 create or replace function odi_interno.emojis_validos(j jsonb) returns boolean language sql immutable set search_path = '' as $$

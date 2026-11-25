@@ -11,7 +11,8 @@ Proteções:
   - nenhum link nem id de conta comum é enviado.
 Triagem automática (não validada): ofensivo (HateBR ≥ 0,5) e ódio (BERTabaporu ≥ 0,5, alvo), quando o caso tem escores.
 
-Uso: ODI_INTERNO_DIR=… SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… python scripts/carregar_area_pesquisador.py [--caso 001] [--seco]
+Acervos gerais (24/11/2026): comentários e respostas nos canais das campanhas ("campanhas") e nos debates ("debate").
+Uso: ODI_INTERNO_DIR=… SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… python scripts/carregar_area_pesquisador.py [--caso 001|campanhas|debate] [--completo] [--seco]
   --seco: não envia nada; só conta o que seria enviado.
 """
 from __future__ import annotations
@@ -26,6 +27,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import emoji
@@ -34,7 +36,19 @@ csv.field_size_limit(10**9)
 VAR = re.compile("[️\U0001F3FB-\U0001F3FF]")
 LOTE = 500
 MIN_SEG = 10_000
-LIMITE_MB = 430  # plano gratuito do Supabase: 500 MB; a carga para antes (C19.375)
+# Limite de segurança do banco, em MB. Até 24/11/2026 o plano era o gratuito (500 MB) e a carga parava em 430 (C19.375).
+# Em 24/11/2026 o responsável assinou o plano Pro ("assinatura supabase feita pode levar tudo pra lá tem espaço agora");
+# o Pro inclui 8 GB de disco. O teto fica em 6.000 MB e pode ser mudado pela variável ODI_AREA_LIMITE_MB.
+LIMITE_MB = int(os.environ.get("ODI_AREA_LIMITE_MB") or 6000)
+# Acervos gerais (fora dos casos), levados ao banco a pedido do responsável em 24/11/2026. Entram como "casos" com nome
+# próprio. Todos os arquivos têm as mesmas colunas da coleta de comentários do YouTube. Comentário nunca leva autor.
+ACERVOS = {
+    "campanhas": [("youtube", "youtube/comentarios/comentarios.csv.gz"), ("facebook", "facebook/comentarios/comentarios.csv.gz"),
+                  ("instagram", "instagram/comentarios/comentarios.csv.gz"), ("tiktok", "tiktok/comentarios/comentarios.csv.gz"),
+                  ("kwai", "kwai/comentarios/comentarios.csv.gz"), ("x", "x/respostas/respostas.csv.gz")],
+    "debate": [("youtube", "debate/youtube_comentarios.csv.gz"), ("youtube", "debate/globo/youtube_comentarios.csv.gz")],
+}
+ACERVO_DIAS = 3  # carga diária dos acervos: só o que foi coletado nos últimos dias (o resto já está no banco); --completo manda tudo
 
 
 def casos_cfg() -> dict:
@@ -102,10 +116,30 @@ def linhas(cid: str, interno: Path, cfg: dict):
                 yield base(r["id"], "instagram", "comentario", r.get("criado_em_utc"), t)
 
 
-def enviar(url: str, chave: str, lote: list[dict]):
+def linhas_acervo(nome: str, interno: Path, desde: str | None = None):
+    """Comentários e respostas dos acervos gerais. Sem autor, sem link, sem id de conta. `desde`: só coletados a partir dessa data."""
+    for rede, rel in ACERVOS[nome]:
+        f = interno / rel
+        if not f.exists():
+            print(f"⛔ {nome}: arquivo ausente no privado: {rel}")
+            continue
+        for r in ler(f):
+            t = (r.get("texto") or "").strip()
+            if not t or not r.get("comment_id"):
+                continue
+            if desde and (r.get("coletado_em") or "") < desde:
+                continue
+            # o id do YouTube é único por si; nas outras redes é numérico e pode repetir entre redes
+            item = r["comment_id"] if rede == "youtube" else f"{rede}:{r['comment_id']}"
+            yield {"caso": nome, "rede": rede, "fonte": "comentario", "item_id": item, "publicado_em": r.get("publicado_em") or None, "autor": None,
+                   "texto": t, "emojis": emojis_de(t), "candidato": r.get("candidate_id") or None, "ofensivo": None, "odio": None}
+
+
+def enviar(url: str, chave: str, lote: list[dict], manter: bool = False):
+    """manter=True: texto que já está no banco não é regravado (acervos; comentário não muda e não tem triagem a atualizar)."""
     req = urllib.request.Request(f"{url}/rest/v1/corpus?on_conflict=caso,fonte,item_id", data=json.dumps(lote).encode(), method="POST",
                                  headers={"apikey": chave, "Authorization": f"Bearer {chave}", "Content-Type": "application/json",
-                                          "Prefer": "resolution=merge-duplicates,return=minimal"})
+                                          "Prefer": f"resolution={'ignore' if manter else 'merge'}-duplicates,return=minimal"})
     for tentativa in range(4):
         try:
             urllib.request.urlopen(req, timeout=120).read()
@@ -127,6 +161,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--caso")
     ap.add_argument("--seco", action="store_true")
+    ap.add_argument("--completo", action="store_true", help="acervos gerais inteiros (padrão: só o coletado nos últimos dias)")
     a = ap.parse_args(argv)
     interno = Path(os.environ.get("ODI_INTERNO_DIR", ""))
     if not (interno / "casos").is_dir():
@@ -135,8 +170,9 @@ def main(argv=None) -> int:
     if not a.seco and not (url and chave):
         print("⛔ faltam SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY no ambiente (secrets do GitHub)"); return 1
     cfg = casos_cfg()
-    ids = [a.caso] if a.caso else sorted(p.name for p in (interno / "casos").iterdir() if re.fullmatch(r"\d{3}", p.name))
-    total = 0
+    ids = [a.caso] if a.caso else sorted(p.name for p in (interno / "casos").iterdir() if re.fullmatch(r"\d{3}", p.name)) + list(ACERVOS)
+    desde = None if a.completo else (datetime.now(timezone.utc) - timedelta(days=ACERVO_DIAS)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    total, falhas = 0, 0
     for cid in ids:
         if not a.seco:
             mb = tamanho_mb(url, chave)
@@ -144,7 +180,7 @@ def main(argv=None) -> int:
                 print(f"⛔ banco com {mb} MB (limite de segurança {LIMITE_MB} MB): carga parada antes do caso {cid}")
                 return 1
         lote, n, vistos = [], 0, set()
-        for r in linhas(cid, interno, cfg.get(cid, {})):
+        for r in (linhas_acervo(cid, interno, desde) if cid in ACERVOS else linhas(cid, interno, cfg.get(cid, {}))):
             k = (r["fonte"], r["item_id"])
             if k in vistos:
                 continue
@@ -153,25 +189,22 @@ def main(argv=None) -> int:
             n += 1
             if len(lote) >= LOTE:
                 if not a.seco:
-                    enviar(url, chave, lote)
+                    enviar(url, chave, lote, manter=cid in ACERVOS)
                 lote = []
         if lote and not a.seco:
-            enviar(url, chave, lote)
+            enviar(url, chave, lote, manter=cid in ACERVOS)
         total += n
-        print(f"{cid}: {n} textos {'contados' if a.seco else 'enviados'}")
-    if not a.seco:
-        # depois da carga: amostra de validação dos casos novos, resumo por caso e nuvens preparadas (C19.377).
-        # Se o banco ainda não tem preparar_area (migração 20261111 não aplicada), cai para atualizar_frequencias.
-        for fn in ("preparar_area", "atualizar_frequencias"):
-            req = urllib.request.Request(f"{url}/rest/v1/rpc/{fn}", data=b"{}", method="POST",
+        if not a.seco:
+            # amostra de validação (se o caso é novo), resumo e nuvens DESTE caso (C19.385: por caso, para caber no tempo)
+            req = urllib.request.Request(f"{url}/rest/v1/rpc/preparar_area", data=json.dumps({"p_caso": cid}).encode(), method="POST",
                                          headers={"apikey": chave, "Authorization": f"Bearer {chave}", "Content-Type": "application/json"})
             try:
-                print(f"{fn}: {urllib.request.urlopen(req, timeout=900).read().decode()}")
-                break
-            except urllib.error.HTTPError as e:
-                print(f"⛔ {fn} não rodou (HTTP {e.code})")
+                preparo = urllib.request.urlopen(req, timeout=900).read().decode()
+            except Exception as e:  # noqa: BLE001
+                preparo, falhas = f"⛔ preparo não rodou ({e})", falhas + 1
+        print(f"{cid}: {n} textos {'contados' if a.seco else 'enviados'}" + (f" (coletados desde {desde})" if cid in ACERVOS and desde else "") + ("" if a.seco else f" · {preparo}"))
     print(f"total: {total}" + ("" if a.seco else f" · banco com {tamanho_mb(url, chave)} MB"))
-    return 0
+    return 1 if falhas else 0
 
 
 if __name__ == "__main__":
