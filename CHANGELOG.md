@@ -11,7 +11,11 @@ Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva
   - Até a falha entraram, do acervo `campanhas`: YouTube 1.124.813, Facebook 34.731, Instagram 4.456 (consulta ao banco). `debate` ainda não entrou.
 - Correção em `scripts/carregar_area_pesquisador.py`: `data_iso` converte segundos (ou milissegundos) em data e deixa vazio o que não é data; lote recusado por erro de dado mostra o motivo do banco e não é repetido 4 vezes.
 - Testes: `python -m unittest discover -s tests` → 322 testes, OK, 1 pulado.
-- ⛔ Pendente: recarga de `campanhas` e carga de `debate` (IDs na entrada seguinte).
+- ✅ Recarga com a correção (25/11): `campanhas`, run 45629094529 → `success`, 1.213.662 textos enviados, amostra de 300 criada; `debate`, run 45629112710 → `success`, 80.694 textos, amostra de 300 criada.
+- Banco depois da carga (consulta em 25/11): **1.971.554 textos em 40 conjuntos** (38 casos com corpus + `campanhas` + `debate`), 972,3 MB de 8 GB; 12.000 textos de amostra de validação (300 por conjunto).
+  - `campanhas` por rede: YouTube 1.124.813, X 35.698, Facebook 34.731, Instagram 8.448, TikTok 5.549, Kwai 4.423. `debate`: YouTube 80.694.
+  - Correção de número: o caso 004 não tem corpus; são 38 casos no banco, não 39 (escrevi 39 no C19.385 e nesta entrada).
+- ⛔ Pendente: abrir a área no navegador e conferir os dois acervos no menu; `revoke` de visitante; divisão do acervo de comentários no repositório privado.
 
 ## C19.385 — Supabase no plano Pro: banco reativado, busca geral corrigida no banco real e carga de tudo (2026-11-24) ⚠️ carga completa em andamento
 
