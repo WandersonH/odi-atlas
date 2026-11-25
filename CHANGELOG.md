@@ -4,6 +4,15 @@ Toda mudança no repositório entra aqui, da mais recente para a mais antiga. Ca
 
 Legenda de estado: ✅ concluído e verificado · ⚠️ concluído com ressalva · ⛔ bloqueado · 🔜 planejado (não implementado)
 
+## C19.386 — Carga completa no Supabase: 39 casos entraram; acervo "campanhas" parou numa data do Instagram, corrigido (2026-11-25) ⚠️ recarga dos acervos em andamento
+
+- Carga completa, run 45624468428 (`area-pesquisador.yml`, `completo=sim`): os 39 casos foram enviados e preparados um a um (amostra de 300 em todos; 039 com 55.009 textos). Terminou com erro no acervo `campanhas`.
+  - Causa: `HTTP 400` do banco num lote do Instagram. 394 comentários do Instagram têm a data gravada como segundos desde 1970 (exemplo: `1792064145`), e o banco recusa o lote inteiro. Conferido no privado: é o único defeito de formato em 1.303.653 linhas dos acervos (sem caractere nulo, sem outro formato de data).
+  - Até a falha entraram, do acervo `campanhas`: YouTube 1.124.813, Facebook 34.731, Instagram 4.456 (consulta ao banco). `debate` ainda não entrou.
+- Correção em `scripts/carregar_area_pesquisador.py`: `data_iso` converte segundos (ou milissegundos) em data e deixa vazio o que não é data; lote recusado por erro de dado mostra o motivo do banco e não é repetido 4 vezes.
+- Testes: `python -m unittest discover -s tests` → 322 testes, OK, 1 pulado.
+- ⛔ Pendente: recarga de `campanhas` e carga de `debate` (IDs na entrada seguinte).
+
 ## C19.385 — Supabase no plano Pro: banco reativado, busca geral corrigida no banco real e carga de tudo (2026-11-24) ⚠️ carga completa em andamento
 
 - O responsável avisou (24/11, 19h25): "assinatura supabase feita pode levar tudo pra lá tem espaço agora". Conferido: organização no plano `pro`. O projeto `odi-atlas` estava `INACTIVE` (pausado); foi restaurado e voltou.

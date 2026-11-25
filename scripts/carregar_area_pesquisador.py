@@ -116,6 +116,19 @@ def linhas(cid: str, interno: Path, cfg: dict):
                 yield base(r["id"], "instagram", "comentario", r.get("criado_em_utc"), t)
 
 
+def data_iso(v: str | None) -> str | None:
+    """Data do acervo no formato do banco. A coleta de comentários do Instagram grava parte das datas como segundos desde 1970
+    ("1792064145"); o banco recusou o lote inteiro (HTTP 400, run 45624468428). Valor que não é data vira vazio, nunca chute."""
+    v = (v or "").strip()
+    if not v:
+        return None
+    if re.fullmatch(r"\d{9,10}", v):
+        return datetime.fromtimestamp(int(v), timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if re.fullmatch(r"\d{12,13}", v):
+        return datetime.fromtimestamp(int(v) / 1000, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    return v if re.match(r"\d{4}-\d{2}-\d{2}", v) else None
+
+
 def linhas_acervo(nome: str, interno: Path, desde: str | None = None):
     """Comentários e respostas dos acervos gerais. Sem autor, sem link, sem id de conta. `desde`: só coletados a partir dessa data."""
     for rede, rel in ACERVOS[nome]:
@@ -131,7 +144,7 @@ def linhas_acervo(nome: str, interno: Path, desde: str | None = None):
                 continue
             # o id do YouTube é único por si; nas outras redes é numérico e pode repetir entre redes
             item = r["comment_id"] if rede == "youtube" else f"{rede}:{r['comment_id']}"
-            yield {"caso": nome, "rede": rede, "fonte": "comentario", "item_id": item, "publicado_em": r.get("publicado_em") or None, "autor": None,
+            yield {"caso": nome, "rede": rede, "fonte": "comentario", "item_id": item, "publicado_em": data_iso(r.get("publicado_em")), "autor": None,
                    "texto": t, "emojis": emojis_de(t), "candidato": r.get("candidate_id") or None, "ofensivo": None, "odio": None}
 
 
@@ -145,9 +158,11 @@ def enviar(url: str, chave: str, lote: list[dict], manter: bool = False):
             urllib.request.urlopen(req, timeout=120).read()
             return
         except Exception as e:  # noqa: BLE001
-            if tentativa == 3:
+            corpo = e.read().decode("utf-8", "replace")[:300] if isinstance(e, urllib.error.HTTPError) else ""
+            if tentativa == 3 or (isinstance(e, urllib.error.HTTPError) and 400 <= e.code < 500 and e.code != 429):
+                print(f"⛔ lote recusado pelo banco ({e}): {corpo}")  # erro de dado não melhora repetindo: mostra o motivo
                 raise
-            print(f"   nova tentativa ({e})")
+            print(f"   nova tentativa ({e}) {corpo}")
             time.sleep(5 * (tentativa + 1))
 
 

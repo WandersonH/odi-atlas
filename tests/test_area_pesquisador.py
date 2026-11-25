@@ -101,6 +101,9 @@ class TestArea(unittest.TestCase):
             for proibido in ("Fulano", "Ciclano", "UCautor", "999", "UCx"):
                 self.assertNotIn(proibido, s)
             self.assertEqual(todos[0]["emojis"], ["😂"])
+            # datas: segundos desde 1970 (Instagram) viram data; lixo vira vazio
+            self.assertEqual(c.data_iso("1792064145"), "2026-10-15T11:35:45Z")
+            self.assertEqual((c.data_iso("2026-11-01T00:00:00Z"), c.data_iso(""), c.data_iso("ontem")), ("2026-11-01T00:00:00Z", None, None))
             self.assertEqual([r["item_id"] for r in c.linhas_acervo("campanhas", d, "2026-11-01T00:00:00Z")], ["Ug1"])  # carga diária: só o recente
 
     def test_livro_de_codigos_igual_ao_banco(self):
