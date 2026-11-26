@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-11-26T05:26:47Z",
+  "run_started_utc": "2026-11-26T20:31:50Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -166,9 +166,9 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 181,
+      "serie_pontos": 180,
       "uf_linhas": 27,
-      "relacionados_linhas": 47,
+      "relacionados_linhas": 52,
       "status": "ok"
     },
     {
@@ -198,7 +198,7 @@
       "geo": "BR",
       "serie_pontos": 169,
       "uf_linhas": 27,
-      "relacionados_linhas": 79,
+      "relacionados_linhas": 77,
       "status": "ok"
     },
     {
@@ -287,7 +287,7 @@
       "geo": "BR",
       "serie_pontos": 130,
       "uf_linhas": 27,
-      "relacionados_linhas": 97,
+      "relacionados_linhas": 100,
       "status": "ok"
     },
     {
@@ -419,6 +419,6 @@
   "blocked": [
     "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Ronaldo Caiado' com tipo contendo ['Presidente', 'Governador', 'Político']; opções: [('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado Filho', 'Filho de Ronaldo Caiado'), ('Gestão Ronaldo Caiado no governo de Goiás', 'Assunto'), ('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado', 'Assunto')]"
   ],
-  "run_finished_utc": "2026-11-26T05:31:45Z",
+  "run_finished_utc": "2026-11-26T20:36:01Z",
   "status": "bloqueado"
 }
