@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-11-25T20:39:18Z",
+  "run_started_utc": "2026-11-26T05:26:47Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -168,7 +168,7 @@
       "geo": "BR",
       "serie_pontos": 181,
       "uf_linhas": 27,
-      "relacionados_linhas": 38,
+      "relacionados_linhas": 47,
       "status": "ok"
     },
     {
@@ -198,7 +198,7 @@
       "geo": "BR",
       "serie_pontos": 169,
       "uf_linhas": 27,
-      "relacionados_linhas": 23,
+      "relacionados_linhas": 79,
       "status": "ok"
     },
     {
@@ -257,7 +257,7 @@
       "geo": "BR",
       "serie_pontos": 98,
       "uf_linhas": 27,
-      "relacionados_linhas": 68,
+      "relacionados_linhas": 100,
       "status": "ok"
     },
     {
@@ -283,11 +283,11 @@
         }
       ],
       "periodo": "campanha_e_depois",
-      "janela_trends": "2026-07-20 2026-11-25",
+      "janela_trends": "2026-07-20 2026-11-26",
       "geo": "BR",
-      "serie_pontos": 129,
+      "serie_pontos": 130,
       "uf_linhas": 27,
-      "relacionados_linhas": 64,
+      "relacionados_linhas": 97,
       "status": "ok"
     },
     {
@@ -409,9 +409,9 @@
         }
       ],
       "periodo": "campanha_e_depois",
-      "janela_trends": "2026-07-20 2026-11-25",
+      "janela_trends": "2026-07-20 2026-11-26",
       "geo": "BR",
-      "serie_pontos": 129,
+      "serie_pontos": 130,
       "uf_linhas": 27,
       "status": "ok"
     }
@@ -419,6 +419,6 @@
   "blocked": [
     "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Ronaldo Caiado' com tipo contendo ['Presidente', 'Governador', 'Político']; opções: [('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado Filho', 'Filho de Ronaldo Caiado'), ('Gestão Ronaldo Caiado no governo de Goiás', 'Assunto'), ('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado', 'Assunto')]"
   ],
-  "run_finished_utc": "2026-11-25T20:43:19Z",
+  "run_finished_utc": "2026-11-26T05:31:45Z",
   "status": "bloqueado"
 }
