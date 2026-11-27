@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "stage": "coleta-trends",
-  "run_started_utc": "2026-11-26T20:31:50Z",
+  "run_started_utc": "2026-11-27T05:20:52Z",
   "config": {
     "nota": "Até 5 itens por grupo. Itens com 'busca' usam o TÓPICO do Trends (entidade), escolhido pelo tipo; texto simples usa a palavra solta (ambígua). Valores só são comparáveis dentro do mesmo grupo e período. Renan Santos não tem entidade no Trends (só 'Assunto' genérico, em 15/10/2026): entra como palavra.",
     "geo": "BR",
@@ -168,7 +168,7 @@
       "geo": "BR",
       "serie_pontos": 180,
       "uf_linhas": 27,
-      "relacionados_linhas": 52,
+      "relacionados_linhas": 55,
       "status": "ok"
     },
     {
@@ -198,7 +198,7 @@
       "geo": "BR",
       "serie_pontos": 169,
       "uf_linhas": 27,
-      "relacionados_linhas": 77,
+      "relacionados_linhas": 75,
       "status": "ok"
     },
     {
@@ -257,7 +257,7 @@
       "geo": "BR",
       "serie_pontos": 98,
       "uf_linhas": 27,
-      "relacionados_linhas": 100,
+      "relacionados_linhas": 68,
       "status": "ok"
     },
     {
@@ -283,11 +283,11 @@
         }
       ],
       "periodo": "campanha_e_depois",
-      "janela_trends": "2026-07-20 2026-11-26",
+      "janela_trends": "2026-07-20 2026-11-27",
       "geo": "BR",
-      "serie_pontos": 130,
+      "serie_pontos": 131,
       "uf_linhas": 27,
-      "relacionados_linhas": 100,
+      "relacionados_linhas": 70,
       "status": "ok"
     },
     {
@@ -311,7 +311,7 @@
       "periodo": "now 1-d",
       "janela_trends": "now 1-d",
       "geo": "BR",
-      "serie_pontos": 180,
+      "serie_pontos": 181,
       "uf_linhas": 27,
       "status": "ok"
     },
@@ -409,9 +409,9 @@
         }
       ],
       "periodo": "campanha_e_depois",
-      "janela_trends": "2026-07-20 2026-11-26",
+      "janela_trends": "2026-07-20 2026-11-27",
       "geo": "BR",
-      "serie_pontos": 130,
+      "serie_pontos": 131,
       "uf_linhas": 27,
       "status": "ok"
     }
@@ -419,6 +419,6 @@
   "blocked": [
     "grupo primeiro_turno_5_topicos: ValueError: tópico não encontrado para 'Ronaldo Caiado' com tipo contendo ['Presidente', 'Governador', 'Político']; opções: [('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado Filho', 'Filho de Ronaldo Caiado'), ('Gestão Ronaldo Caiado no governo de Goiás', 'Assunto'), ('Ronaldo Caiado', 'Assunto'), ('Ronaldo Caiado', 'Assunto')]"
   ],
-  "run_finished_utc": "2026-11-26T20:36:01Z",
+  "run_finished_utc": "2026-11-27T05:24:57Z",
   "status": "bloqueado"
 }
